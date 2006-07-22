@@ -1,0 +1,2842 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pVew/B: 426C6F6B70566577BBCC782F0000000000000000000000000000000000000000
+ Name/S: PresentSettingsWindow
+ Cont/N: -1131477780
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 144
+  Supr/S: PopupMenu
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Change
+   sorc/d: (Enco/N: 134217984
+		Sub Change()
+		  
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: TabPanel, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  Dim Settings As XmlElement 
+		  
+		  Settings = App.MyPresentSettings.DocumentElement
+		  
+		  SmartML.SetValue Settings, "alert/@valign", sal_alerts.GetVAlign
+		  SmartML.SetValue Settings, "alert/@align", sal_alerts.GetHAlign
+		  SmartML.SetValueF Settings, "alert", can_alerts_font.GetFont
+		  
+		  SmartML.SetValue(Settings, "logo", can_logo.GetImageAsString)
+		  SmartML.SetValue(Settings, "logo_mask", can_logo_mask.GetImageAsString)
+		  
+		  //++EMP 09/05
+		  SmartML.SetValueN(Settings, "style/@transition_frames", sld_style_frames.Value)
+		  SmartML.SetValueN(Settings, "style/@transition_time", sld_style_time.Value)
+		  //--
+		  
+		  //++EMP 11/05
+		  // Moved from Action routines for individual controls so cancelling this form will truly cancel.
+		  
+		  SmartML.SetValueB Settings, "style/@blanks", chk_style_blanks.Value
+		  SmartML.SetValueB Settings, "style/@transition", chk_style_use_transitions.Value
+		  SmartML.SetValueB Settings, "style/@highlight_chorus", chk_style_highlight_chorus.Value
+		  
+		  SmartML.SetValueB Settings, "style/@exit_prompt", chk_style_exit_prompt.Value
+		  '++JRC 12/05
+		  SmartML.SetValueB Settings, "style/@descriptive_subtitle_info", chk_style_descriptive_subtitle_info.Value
+		  if CurrAudioFile <> Nil then
+		    SmartML.SetValue(Settings, "style/@default_audio", CurrAudioFile.AbsolutePath) 'save filename
+		  end if
+		  '--
+		  
+		  SmartML.SetValueN Settings, "monitors/@control", pop_monitor_control.ListIndex+1
+		  SmartML.SetValueN Settings, "monitors/@present", pop_monitor_presentation.ListIndex+1
+		  
+		  ' pop_pres_mode added EMP, 2005
+		  ' Allows user to specify default presentation mode (single screen, dual, preview)
+		  ' Eventual goal is to support a hotkey to go to presenter mode
+		  '
+		  SmartML.SetValueN(Settings, "presentation_mode/@code", pop_monitor_mode.ListIndex + 1)
+		  
+		  // Initial presentation mode
+		  Dim temp As String
+		  Select Case pop_style_initial_mode.ListIndex
+		  Case 0
+		    temp = "N"
+		  Case 1
+		    temp = "B"
+		  Case 2
+		    temp = "W"
+		  Case 3
+		    temp = "L"
+		  Case 4
+		    temp = "H"
+		  Case 5
+		    temp = "F"
+		  End Select
+		  SmartML.SetValue Settings, "style/@initial_mode", temp
+		  
+		  Select Case pop_style_mouse_cursor.ListIndex
+		  Case 0
+		    temp = "arrow"
+		  Case 1
+		    temp = "cross"
+		  Case 2
+		    temp = "hidden"
+		  Case 3
+		    temp = "hourglass"
+		  Case 4
+		    temp = "ibeam"
+		  End Select
+		  SmartML.SetValue Settings, "style/@mouse_cursor", temp
+		  
+		  SmartML.SetValue Settings, "style/@song_subtitles", lst_style_subtitles.GetSelectedOptions
+		  
+		  SmartML.SetValueB Settings, "style/@blank_uses_next", rad_style_blank_next.Value
+		  
+		  '++JRC: Stop Audio if its playing
+		  if IsAudioPlaying = true then
+		    //++EMP, 17 Feb 2006
+		    //call Globals.SXMSAudio.SXMSWinampStop()
+		    //--
+		  end if
+		  '--
+		  Close
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: SAlignCanvas
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetValid "YYYNNNYYY"
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 136
+  Supr/S: StaticText
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Dim s as String
+		  s = App.T.Translate("presentation_settings/style/initial_mode/@caption")
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 124, Supr/S: SStyleCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 124, Supr/S: SStyleCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 148
+  Supr/S: CheckBox
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  
+		  sld_style_frames.Enabled = Me.Value
+		  sld_style_time.Enabled = Me.Value
+		  edt_style_frames.Enabled = Me.Value
+		  edt_style_time.Enabled = Me.Value
+		  lbl_style_time.Enabled = Me.Value
+		  lbl_style_frames.Enabled = Me.Value
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: EditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_style_border_thickness.Text  = Left(c.Text, 4)
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: TextChange
+   sorc/d: (Enco/N: 134217984
+		Sub TextChange()
+		  SmartML.SetValueN App.MyPresentSettings.DocumentElement, "style/@thickness", Val(edt_style_border_thickness.Text)
+		  GraphicsX.ThicknessFactor = Val(edt_style_border_thickness.Text)
+		  Refresh False
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 148, Supr/S: CheckBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: Slider
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: ValueChanged
+   sorc/d: (Enco/N: 134217984
+		Sub ValueChanged()
+		  edt_style_frames.Text = Str(Me.Value)
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: EditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  Dim n As Integer
+		  n = CDbl(Me.Text)
+		  if n < sld_style_frames.Minimum Then
+		    Me.Text = Str(sld_style_frames.Minimum)
+		  ElseIf n > sld_style_frames.Maximum Then
+		    Me.Text = Str(sld_style_frames.Maximum)
+		  Else
+		    sld_style_frames.Value = n
+		  End If
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: EditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  Dim n As Integer
+		  n = CDbl(Me.Text)
+		  if n < sld_style_time.Minimum Then
+		    Me.Text = Str(sld_style_time.Minimum)
+		  ElseIf n > sld_style_time.Maximum Then
+		    Me.Text = Str(sld_style_time.Maximum)
+		  Else
+		    sld_style_time.Value = n
+		  End If
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 148, Supr/S: CheckBox, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  '++JRC: Stop Audio if its playing
+		  //++EMP 17 Feb 2006
+		  //if IsAudioPlaying = true then
+		  //call Globals.SXMSAudio.SXMSWinampStop()
+		  //end if
+		  '--
+		  Close
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 132, Supr/S: SImageCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 132, Supr/S: SImageCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: Canvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 148, Supr/S: CheckBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 448, Supr/S: SubtitleList, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: Slider
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: ValueChanged
+   sorc/d: (Enco/N: 134217984
+		Sub ValueChanged()
+		  edt_style_time.Text = Str(Me.Value)
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  //++EMP, 17 Feb 2006
+		  // Joshua's audio module isn't cross-platform ready,
+		  // so it is commented out for the mainstream release
+		  //--
+		  //
+		  ''++JRC
+		  'Dim FileName As MemoryBlock
+		  'Dim FilterIndex As MemoryBlock
+		  'Dim Pos As integer
+		  'Dim error As integer
+		  'Declare Function OpenFileDialog lib "UTILITY.DLL" (Handle as integer, Title as Cstring, FileTypes as Ptr, FilterIndex as Ptr) as Ptr
+		  '
+		  'FilterIndex = NewMemoryBlock(4)
+		  'FileName = OpenFileDialog(Me.Handle, App.T.Translate("open_titles/audio"), Globals.Filters, FilterIndex)
+		  'CurrAudioFile = GetFolderItem(FileName.CString(0))
+		  'If CurrAudioFile = Nil Then 
+		  'CurrAudio = Nil
+		  'Return
+		  'end if
+		  'FilterString  = Globals.GetFilterString(FilterIndex.Long(0))
+		  'Pos = Instr(FilterString, " (*.")
+		  'FilterString = App.AppFolder.Child("Plugins").AbsolutePath + Mid(FilterString, 0, Pos)
+		  '
+		  'if IsAudioPlaying = true then
+		  'call Globals.SXMSAudio.SXMSWinampStop()
+		  'IsAudioPlaying = false
+		  'btn_audio_play.Enabled = false
+		  'btn_audio_stop.Enabled = false
+		  'end if
+		  '
+		  'error = Globals.SXMSAudio.SXMSWinampLoadPlugIn(FilterString)
+		  '
+		  'if error = 0 then
+		  'InputBox.Message App.T.Translate("errors\plugin_load_failed", FilterString)
+		  'return
+		  'end if
+		  ''CurrAudio = Nil
+		  ''CurrAudio = CurrAudioFile.OpenAsSound
+		  ''if CurrAudio = Nil then
+		  ''CurrAudioFile = Nil
+		  ''btn_audio_play.Enabled = false
+		  ''btn_audio_stop.Enabled = false
+		  ''else
+		  'btn_audio_play.Enabled = true
+		  ''btn_audio_stop.Enabled = true
+		  ''end if
+		  '
+		  'IsAudioPlaying = false
+		  ''--
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 148, Supr/S: CheckBox, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  '++JRC
+		  //++EMP, 17 Feb 2006
+		  //call Globals.SXMSAudio.SXMSWinampStop()
+		  //btn_audio_play.Enabled = true
+		  //btn_audio_stop.Enabled = false
+		  //IsAudioPlaying = false
+		  //--
+		  '--
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  //++EMP, 17 Feb 2006
+		  // Joshua's audio add-on isn't cross-platform ready,
+		  // so it is commented out for the mainstream release
+		  //--
+		  ''++JRC
+		  'Dim error As integer
+		  'Declare Sub delay lib "UTILITY.DLL" (Seconds as integer)
+		  '
+		  'if IsAudioPlaying = false then
+		  'error = Globals.SXMSAudio.SXMSWinampPlay(CurrAudioFile.AbsolutePath)
+		  'if error = 1 and Globals.SXMSAudio.SXMSWinampIsPlaying  = 1 then
+		  ''btn_audio_play.Enabled = false
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/pause/@caption")
+		  'btn_audio_stop.Enabled = true
+		  'IsAudioPlaying = true
+		  'end if
+		  'else
+		  'error = 0
+		  'error = Globals.SXMSAudio.SXMSWinampGetPaused()
+		  'if error = 0 then
+		  'Call Globals.SXMSAudio.SXMSWinampSetPause(1)
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/play/@caption")
+		  ''MsgBox "Paused"
+		  ''delay(5)
+		  'else
+		  'Call Globals.SXMSAudio.SXMSWinampSetPause(0)
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/pause/@caption")
+		  ''MsgBox "UnPaused"
+		  ''delay(5)
+		  'end if
+		  'end if
+		  ''--
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 56
+  Supr/S: Timer
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  '++JRC
+		  //++EMP 17 Feb 2006
+		  // Commented out for mainstream version
+		  //--
+		  'Just check every few seconds if CurrAudio has finished playing
+		  'Dim error As integer
+		  '
+		  'if IsAudioPlaying = true then
+		  'error = 0
+		  'error = Globals.SXMSAudio.SXMSWinampIsPlaying
+		  'if error  = 0 then
+		  'btn_audio_play.Enabled = true
+		  'btn_audio_stop.Enabled = false
+		  'IsAudioPlaying = false
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/play/@caption")
+		  '
+		  'end if
+		  'end if
+		  '--
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 11
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: OK, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: True)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 462)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_ok, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 407)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 70)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 39
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: True)
+  PDef/D: (name/S: Caption, PVal/S: Cancel, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: False)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 542)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_cancel, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 407)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 69)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: TabPanel
+  name/S: TabPanel
+  CBix/N: 10
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Facing, PVal/S: 0)
+  PDef/D: (name/S: Height, PVal/S: 385)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: PanelCount, PVal/S: 2)
+  PDef/D: (name/S: SmallTabs, PVal/S: False)
+  PDef/D: (name/S: TabDefinition, PVal/h: 5374796C65730D4F7074696F6E73, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 14)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: 2)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 600)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 3
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 48)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_default_slides, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: Default Slide Style:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 65)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 160)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SStyleCanvas
+  name/S: Canvas
+  CBix/N: 20
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 120)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 47)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: can_style_default, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Top, PVal/S: 80)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 160)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 2
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 13)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 47)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: nte_style_click_to_change_1, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: (click to change), Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 9)
+  PDef/D: (name/S: Top, PVal/S: 200)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 160)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 0
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 253)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_scripture_slides, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: Scripture Slide Style:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 65)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 160)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SStyleCanvas
+  name/S: Canvas
+  CBix/N: 19
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 120)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 254)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: can_style_scripture, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Top, PVal/S: 80)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 160)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 1
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 254)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: nte_style_click_to_change_2, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: (click to change), Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 9)
+  PDef/D: (name/S: Top, PVal/S: 200)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 160)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 12
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Alerts, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 130)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 38)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: grp_settings_alerts, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 237)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 387)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 13
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_alerts, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 46)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_alerts_align, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: Align:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 277)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 90)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SAlignCanvas
+  name/S: Canvas
+  CBix/N: 14
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 44)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_alerts, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 70)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: sal_alerts, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Top, PVal/S: 292)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 44)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 16
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_alerts, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 140)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_alerts_font, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: Font:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 258)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 250)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SFontCanvas
+  name/S: Canvas
+  CBix/N: 15
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AdvancedOptions, PVal/S: True)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 80)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_alerts, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 140)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: can_alerts_font, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Top, PVal/S: 272)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 250)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 40
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Logo, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 302)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 445)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: grp_option_logo, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 65)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 142)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SImageCanvas
+  name/S: Canvas
+  CBix/N: 41
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 60)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_option_logo, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 475)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: can_logo, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Top, PVal/S: 95)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 80)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 42
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_option_logo, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 450)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: nte_logo_click_to_change_1, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: (click to change), Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 9)
+  PDef/D: (name/S: Top, PVal/S: 159)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 137)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 43
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_option_logo, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 450)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: nte_logo_right_click_to_clear_1, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: (right-click to clear), Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 9)
+  PDef/D: (name/S: Top, PVal/S: 172)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 137)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 44
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_option_logo, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 454)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_logo_mask, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: Mask:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 223)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 125)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SImageCanvas
+  name/S: Canvas
+  CBix/N: 45
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 60)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_option_logo, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 475)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: can_logo_mask, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Top, PVal/S: 238)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 80)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 46
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_option_logo, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 454)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: nte_logo_click_to_change_2, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: (click to change), Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 9)
+  PDef/D: (name/S: Top, PVal/S: 302)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 125)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 47
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_option_logo, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 454)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: nte_logo_right_click_to_clear_2, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: (right-click to clear), Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 9)
+  PDef/D: (name/S: Top, PVal/S: 315)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 125)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 21
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Style, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 345)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 28)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 41)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 392)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: CheckBox
+  name/S: CheckBox
+  CBix/N: 22
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Use Transitions*, Enco/N: 134217984)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 43)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: chk_style_use_transitions, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 61)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 140)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 32
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_frames, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Frames, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 80)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 151)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: Slider
+  name/S: Slider
+  CBix/N: 33
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 16)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LineStep, PVal/S: 1)
+  PDef/D: (name/S: LiveScroll, PVal/S: True)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Maximum, PVal/S: 10)
+  PDef/D: (name/S: Minimum, PVal/S: 0)
+  PDef/D: (name/S: Name, PVal/S: sld_style_frames, Enco/N: 134217984)
+  PDef/D: (name/S: PageStep, PVal/S: 1)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Top, PVal/S: 99)
+  PDef/D: (name/S: Value, PVal/S: 5)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 112)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: EditField
+  name/S: EditField
+  CBix/N: 36
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 161)
+  PDef/D: (name/S: LimitText, PVal/S: 2)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Mask, PVal/S: 9#, Enco/N: 134217984)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: edt_style_frames, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: False)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 95)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 27)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 34
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_time, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Time:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 117)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 151)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: Slider
+  name/S: Slider
+  CBix/N: 55
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 16)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 38)
+  PDef/D: (name/S: LineStep, PVal/S: 10)
+  PDef/D: (name/S: LiveScroll, PVal/S: True)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Maximum, PVal/S: 1000)
+  PDef/D: (name/S: Minimum, PVal/S: 50)
+  PDef/D: (name/S: Name, PVal/S: sld_style_time, Enco/N: 134217984)
+  PDef/D: (name/S: PageStep, PVal/S: 20)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Top, PVal/S: 137)
+  PDef/D: (name/S: Value, PVal/S: 100)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 112)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: EditField
+  name/S: EditField
+  CBix/N: 37
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 150)
+  PDef/D: (name/S: LimitText, PVal/S: 4)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Mask, PVal/S: 99##, Enco/N: 134217984)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: edt_style_time, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: False)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 137)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 38)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 23
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_border_thickness, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Border Thickness:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 163)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 140)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: EditField
+  name/S: EditField
+  CBix/N: 24
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LimitText, PVal/S: 4)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Mask, PVal/S: 999#, Enco/N: 134217984)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: edt_style_border_thickness, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: False)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 178)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 50)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 25
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_initial_mode, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Initial Mode:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 203)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 140)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PopupMenu
+  name/S: PopupMenu
+  CBix/N: 26
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: InitialValue, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: ListIndex, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: pop_style_initial_mode, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 218)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 140)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 27
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_subtitles, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Song Subtitles:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 243)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 140)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SubtitleList
+  name/S: ListBox
+  CBix/N: 54
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: ColumnCount, PVal/S: 3)
+  PDef/D: (name/S: ColumnsResizable, PVal/S: False)
+  PDef/D: (name/S: ColumnWidths, PVal/S: 0,15%,*, Enco/N: 134217984)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DefaultRowHeight, PVal/S: 14)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: EnableDrag, PVal/S: False)
+  PDef/D: (name/S: EnableDragReorder, PVal/S: True)
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
+  PDef/D: (name/S: GridLinesVertical, PVal/S: 1)
+  PDef/D: (name/S: HasHeading, PVal/S: False)
+  PDef/D: (name/S: HeadingIndex, PVal/S: -1)
+  PDef/D: (name/S: Height, PVal/S: 74)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Hierarchical, PVal/S: False)
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: InitialValue, PVal/h: 0909436F707972696768740D0A0909417574686F720D0A090948796D6E204E756D6265720D0A090943434C49204C6963656E7365204E756D6265720D0A090943434C4920536F6E67204E756D626572, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lst_style_subtitles, Enco/N: 134217984)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: False)
+  PDef/D: (name/S: ScrollPosition, PVal/S: 0)
+  PDef/D: (name/S: ScrollPositionX, PVal/S: 0)
+  PDef/D: (name/S: SelectionType, PVal/S: 0)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 259)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 151)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: CheckBox
+  name/S: CheckBox
+  CBix/N: 38
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Highlight Chorus, Enco/N: 134217984)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 37)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: chk_style_highlight_chorus, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 343)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 145)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 30
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 222)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_mouse_cursor, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Mouse Cursor:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 203)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 136)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PopupMenu
+  name/S: PopupMenu
+  CBix/N: 31
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: InitialValue, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 222)
+  PDef/D: (name/S: ListIndex, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: pop_style_mouse_cursor, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 218)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 136)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: CheckBox
+  name/S: CheckBox
+  CBix/N: 29
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Insert Blank Slides, Enco/N: 134217984)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 222)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: chk_style_blanks, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 259)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 176)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 28
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 237)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: txt_style_blanks_between, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Between Set Items, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 274)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 161)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: Canvas
+  name/S: Canvas
+  CBix/N: 48
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 76)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Left, PVal/S: 221)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: nil_blanks, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Top, PVal/S: 294)
+  PDef/D: (name/S: UseFocusRing, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 177)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 49
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: nil_blanks, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 222)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_style_blank_style, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Blanks take style of:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 299)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 145)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: RadioButton
+  name/S: RadioButton
+  CBix/N: 50
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Previous slide, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: nil_blanks, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 222)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: rad_style_blank_prev, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 318)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 170)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: RadioButton
+  name/S: RadioButton
+  CBix/N: 51
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Next slide, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: nil_blanks, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 222)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: rad_style_blank_next, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 341)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 170)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 35
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 123)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_style, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 200)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: txt_style_transition_note, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/G: 
+   name/S: Text
+   PVal/S: *Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor.
+   Enco/N: 134217984
+  PDef/g: 
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 55)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 204)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 9
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Monitor Settings, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 161)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 432)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: grp_settings_monitor, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 41)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 150)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 7
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_monitor, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 447)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_monitor_control, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Control Monitor:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 55)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PopupMenu
+  name/S: PopupMenu
+  CBix/N: 5
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_monitor, Enco/N: 134217984)
+  PDef/D: (name/S: InitialValue, PVal/h: 310D0A32, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 447)
+  PDef/D: (name/S: ListIndex, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: pop_monitor_control, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 70)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 40)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 6
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_monitor, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 447)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_monitor_presentation, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Presentation Monitor:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 95)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PopupMenu
+  name/S: PopupMenu
+  CBix/N: 4
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_monitor, Enco/N: 134217984)
+  PDef/D: (name/S: InitialValue, PVal/h: 310D0A32, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 447)
+  PDef/D: (name/S: ListIndex, PVal/S: 1)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: pop_monitor_presentation, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 110)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 40)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 8
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_monitor, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 442)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: nte_monitor_detected, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: (1 monitor(s) detected.), Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 135)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 18
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_monitor, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 447)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_monitor_default_mode, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: Default Mode:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 155)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 125)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PopupMenu
+  name/S: PopupMenu
+  CBix/N: 17
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_monitor, Enco/N: 134217984)
+  PDef/D: (name/S: InitialValue, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 447)
+  PDef/D: (name/S: ListIndex, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: pop_monitor_mode, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 169)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 127)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 52
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Misc, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 100)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 432)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: grp_settings_misc, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 286)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 150)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: CheckBox
+  name/S: CheckBox
+  CBix/N: 53
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Prompt when exiting, Enco/N: 134217984)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 26)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_misc, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 442)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: chk_style_exit_prompt, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 307)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 135)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 56
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Audio, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 75)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: tab_present_settings, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 432)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: grp_settings_audio, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 205)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: False)
+  PDef/D: (name/S: Width, PVal/S: 150)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 57
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_audio, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 441)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_audio_file_to_play, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: Text, PVal/S: File to Play:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 223)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 100)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 58
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Browse, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: False)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_audio, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 503)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_audio_browse, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 222)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 69)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: CheckBox
+  name/S: CheckBox
+  CBix/N: 59
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Descriptive subtitle info, Enco/N: 134217984)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_misc, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 442)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: chk_style_descriptive_subtitle_info, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 333)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 135)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 60
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Stop, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: False)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_audio, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 440)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_audio_stop, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 250)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 40)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 61
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Play, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: False)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_audio, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 485)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_audio_play, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 250)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 40)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: Timer
+  name/S: Timer
+  CBix/N: 62
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: Left, PVal/S: 418)
+  PDef/D: (name/S: Mode, PVal/S: 2)
+  PDef/D: (name/S: Name, PVal/S: AudioTimer, Enco/N: 134217984)
+  PDef/D: (name/S: Period, PVal/S: 500)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 400)
+ Ctrl/g: 
+ FDef/G: 
+  Name/S: PresentSettingsWindow
+  Size/N: 164
+  Supr/S: Window
+  bNtr/N: 0
+  Cnst/D: (Enco/N: 134217984, name/S: ROW_AUTHOR, type/N: 1, defn/S: 1, flag/N: 1)
+  Cnst/D: (Enco/N: 134217984, name/S: ROW_CCLI_LICENSE, type/N: 1, defn/S: 4, flag/N: 1)
+  Cnst/D: (Enco/N: 134217984, name/S: ROW_CCLI_NUMBER, type/N: 1, defn/S: 3, flag/N: 1)
+  Cnst/D: (Enco/N: 134217984, name/S: ROW_COPYRIGHT, type/N: 1, defn/S: 0, flag/N: 1)
+  Cnst/D: (Enco/N: 134217984, name/S: ROW_HYMN_NUMBER, type/N: 1, defn/S: 2, flag/N: 1)
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  If Keyboard.AsyncKeyDown(&h35) Or Asc(Key) = 27 Then ' Escape
+		    Close
+		  End If
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  dim s as string
+		  Dim n As Integer 'EMP 09/05
+		  Dim subtitles() As String 'EMP 12/05
+		  App.MouseCursor = WatchCursor
+		  App.DebugWriter.Write("Opening PresentSettingsWindow")
+		  Me.BackColor = FillColor
+		  
+		  edt_style_border_thickness.Text = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@thickness")
+		  chk_style_use_transitions.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
+		  chk_style_blanks.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
+		  
+		  chk_style_exit_prompt.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt")
+		  '++JRC
+		  chk_style_descriptive_subtitle_info.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info")
+		  Dim file As String
+		  file = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@default_audio")
+		  CurrAudioFile = GetFolderItem(file)
+		  If CurrAudioFile <> Nil Then 
+		    CurrAudio = CurrAudioFile.OpenAsSound
+		  end if
+		  if CurrAudio = Nil then
+		    CurrAudioFile = Nil
+		    btn_audio_play.Enabled = false
+		    btn_audio_stop.Enabled = false
+		  else
+		    btn_audio_play.Enabled = true
+		    'btn_audio_stop.Enabled = true
+		  end if
+		  
+		  IsAudioPlaying = false
+		  '--
+		  pop_monitor_control.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+		  If pop_monitor_control.ListIndex < 0 Then pop_monitor_control.ListIndex = 0
+		  pop_monitor_presentation.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		  If pop_monitor_presentation.ListIndex < 0 Then pop_monitor_presentation.ListIndex = 1
+		  
+		  can_style_default.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
+		  can_style_scripture.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
+		  
+		  sal_alerts.SetVAlign SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@valign")
+		  sal_alerts.SetHAlign SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@align")
+		  can_alerts_font.SetFont SmartML.GetValueF(App.MyPresentSettings.DocumentElement, "alert")
+		  
+		  can_logo.SetImageAsString SmartML.GetValue(App.MyPresentSettings.DocumentElement, "logo")
+		  can_logo_mask.SetImageAsString SmartML.GetValue(App.MyPresentSettings.DocumentElement, "logo_mask")
+		  
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/normal/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/black/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/white/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/logo/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/hidden/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/frozen/@caption")
+		  
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/arrow/@caption")
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/cross/@caption")
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/hidden/@caption")
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/hourglass/@caption")
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/ibeam/@caption")
+		  
+		  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
+		  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
+		  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
+		  
+		  pop_monitor_mode.Listindex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code", True) - 1
+		  
+		  Dim temp As String
+		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@initial_mode")
+		  Select Case temp
+		  Case "B"
+		    pop_style_initial_mode.ListIndex = 1
+		  Case "W"
+		    pop_style_initial_mode.ListIndex = 2
+		  Case "L"
+		    pop_style_initial_mode.ListIndex = 3
+		  Case "H"
+		    pop_style_initial_mode.ListIndex = 4
+		  Case "F"
+		    pop_style_initial_mode.ListIndex = 5
+		  Else
+		    pop_style_initial_mode.ListIndex = 0
+		  End Select
+		  
+		  'Josh
+		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@mouse_cursor")
+		  Select Case temp
+		  Case "arrow"
+		    pop_style_mouse_cursor.ListIndex = 0
+		  Case "cross"
+		    pop_style_mouse_cursor.ListIndex = 1
+		  Case "hidden"
+		    pop_style_mouse_cursor.ListIndex = 2
+		  Case "hourglass"
+		    pop_style_mouse_cursor.ListIndex = 3
+		  Case "ibeam"
+		    pop_style_mouse_cursor.ListIndex = 4
+		  Else
+		    pop_style_mouse_cursor.ListIndex = 0
+		  End Select
+		  
+		  App.MouseCursor = Nil
+		  
+		  App.T.TranslateWindow Me, "presentation_settings", App.TranslationFonts
+		  s = App.T.Translate("presentation_settings/style/initial_mode/@caption")
+		  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(ScreenCount))
+		  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(ScreenCount))
+		  
+		  //++EMP 09/05
+		  // Code for user-selectable transitions
+		  
+		  n = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_frames", False)
+		  If n = 0 Then n = 5
+		  sld_style_frames.Value = n
+		  edt_style_frames.Text = Str(n)
+		  
+		  n = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
+		  If n = 0 Then n = 100
+		  sld_style_time.Value = n
+		  edt_style_time.Text = Str(n)
+		  
+		  sld_style_frames.Enabled = chk_style_use_transitions.Value
+		  sld_style_time.Enabled = chk_style_use_transitions.Value
+		  edt_style_frames.Enabled = chk_style_use_transitions.Value
+		  edt_style_time.Enabled = chk_style_use_transitions.Value
+		  lbl_style_time.Enabled = chk_style_use_transitions.Value
+		  lbl_style_frames.Enabled = chk_style_use_transitions.Value
+		  //--
+		  
+		  //++EMP, 11/05
+		  // Selectable highlight of choruses
+		  chk_style_highlight_chorus.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, _
+		      "style/@highlight_chorus", True, True)
+		  
+		  // Determine if blanks use the previous or next slide's style
+		  
+		  rad_style_blank_next.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, _
+		      "style/@blank_uses_next", True, True)
+		  rad_style_blank_prev.Value = Not rad_style_blank_next.Value
+		  //--
+		  
+		  lst_style_subtitles.SetSelected(SmartML.GetValue(App.MyPresentSettings.DocumentElement, _
+		      "style/@song_subtitles"))
+		  App.CenterInControlScreen Me
+		End Sub
+   )
+  HIns/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: PopTo
+   parm/S: str As String, pop As PopupMenu
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub PopTo(str As String, pop As PopupMenu)
+		  Dim i As Integer
+		  For i = 0 To pop.ListCount - 1
+		    If Lowercase(str) = Lowercase(pop.List(i)) Then
+		      pop.ListIndex = i
+		      Return
+		    End If
+		  Next i
+		End Sub
+   )
+  Meth/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: BGImage As Picture
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: BGImage As Picture
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: BGImageFile As FolderItem
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: BGImageFile As FolderItem
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: CurrAudio As Sound
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CurrAudio As Sound
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: CurrAudioFile As FolderItem
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CurrAudioFile As FolderItem
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: FilterString As string
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: FilterString As string
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: IsAudioPlaying As Boolean
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: IsAudioPlaying As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+ FDef/g: 
+ PDef/D: (name/S: BackColor, PVal/S: 16777215)
+ PDef/D: (name/S: Backdrop, PVal/S: 0)
+ PDef/D: (name/S: BalloonHelp, PVal/S: )
+ PDef/D: (name/S: CloseBox, PVal/S: True)
+ PDef/D: (name/S: Composite, PVal/S: False)
+ PDef/D: (name/S: Frame, PVal/S: 1)
+ PDef/D: (name/S: FullScreen, PVal/S: False)
+ PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: HasBackColor, PVal/S: False)
+ PDef/D: (name/S: Height, PVal/S: 438)
+ PDef/D: (name/S: LiveResize, PVal/S: False)
+ PDef/D: (name/S: MacProcID, PVal/S: 0)
+ PDef/D: (name/S: MaxHeight, PVal/S: 32000)
+ PDef/D: (name/S: MaxWidth, PVal/S: 32000)
+ PDef/D: (name/S: MenuBar, PVal/S: 0)
+ PDef/D: (name/S: MenuBarVisible, PVal/S: True)
+ PDef/D: (name/S: MinHeight, PVal/S: 64)
+ PDef/D: (name/S: MinWidth, PVal/S: 64)
+ PDef/D: (name/S: Name, PVal/S: PresentSettingsWindow, Enco/N: 134217984)
+ PDef/D: (name/S: Placement, PVal/S: 0)
+ PDef/D: (name/S: Title, PVal/S: Presentation Settings, Enco/N: 134217984)
+ PDef/D: (name/S: Visible, PVal/S: True)
+ PDef/D: (name/S: Width, PVal/S: 620)
+ PDef/D: (name/S: ZoomIcon, PVal/S: True)
+pVew/b: 
+##RBvx-End#

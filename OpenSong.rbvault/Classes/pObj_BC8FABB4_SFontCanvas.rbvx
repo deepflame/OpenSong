@@ -1,0 +1,139 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABC8FABB40000000000000000000000000000000000000000
+ Name/S: SFontCanvas
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SFontCanvas
+ Size/N: 125
+ Supr/S: SBufferedCanvas
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseDown
+  sorc/d: (Enco/N: 134217984
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  Dim newFont As FontFace
+		  
+		  If Enabled Then
+		    If MyFont = Nil Then MyFont = New FontFace
+		    newFont = FontChooser.Ask(MyFont, AdvancedOptions)
+		    If newFont <> Nil Then
+		      SetFont newFont
+		      Action
+		      Return True
+		    Else
+		      Refresh False
+		    End If
+		  Else
+		    Return False
+		  End If
+		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Paint
+  sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  Dim c As Color
+		  
+		  g.ForeColor = LightBevelColor
+		  g.FillRect 0, 0, Width, Height
+		  
+		  Dim bo, sh, thick As Integer
+		  
+		  thick = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@thickness")
+		  
+		  If MyFont <> Nil Then
+		    If MyFont.Border Then bo = 1
+		    If MyFont.Shadow Then sh = 1
+		    
+		    c = MyFont.ForeColor
+		    If (c.Red > 128 And c.Green > 128) Or _
+		        (c.Green > 128 And c.Blue > 128) Or _
+		        (c.Red > 128 And c.Blue > 128) Then
+		        g.ForeColor = DarkBevelColor
+		        g.FillRect 0, 0, Width, Height
+		      End If
+		      
+		      g.TextFont = MyFont.Name
+		      g.TextSize = MyFont.Size
+		      g.Bold = MyFont.Bold
+		      g.Italic = MyFont.Italic
+		      g.Underline = MyFont.Underline
+		      g.ForeColor = MyFont.ForeColor
+		      
+		      DrawFontString g, MyFont.Name + " " + Str(MyFont.Size), _
+		          (Width-GraphicsX.FontFaceWidth(g, MyFont.Name + " " + Str(MyFont.Size), MyFont))/2, _
+		          (Height+g.TextAscent*.75)/2, MyFont
+		          
+		          If (c.Red > 128 And c.Green > 128) Or _
+		              (c.Green > 128 And c.Blue > 128) Or _
+		              (c.Red > 128 And c.Blue > 128) Then
+		              g.ForeColor = RGB(0,0,0)
+		              g.DrawRect 0, 0, Width, Height
+		              Return
+		            End If
+		            
+		          End If
+		          
+		          g.ForeColor = DarkBevelColor
+		          g.DrawRect 0, 0, Width, Height
+		          
+		        End Sub
+  )
+ HIns/g: 
+ Hook/D: (Enco/N: 134217984, name/S: Action, parm/S: , rslt/S: , flag/N: 33)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetFont
+  parm/S: 
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetFont() As FontFace
+		  Return MyFont
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetFont
+  parm/S: newFont As FontFace
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetFont(newFont As FontFace)
+		  MyFont = newFont
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: AdvancedOptions As Boolean
+  flag/N: 4
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: AdvancedOptions As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyFont As FontFace
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyFont As FontFace
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

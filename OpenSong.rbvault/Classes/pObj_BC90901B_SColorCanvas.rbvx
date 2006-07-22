@@ -1,0 +1,153 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABC90901B0000000000000000000000000000000000000000
+ Name/S: SColorCanvas
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SColorCanvas
+ Size/N: 121
+ Supr/S: Canvas
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseDown
+  sorc/d: (Enco/N: 134217984
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  Dim c As Color
+		  
+		  If Enabled Then
+		    If IsCMMClick Then
+		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
+		        IsColorSet = False
+		        Action
+		        Repaint
+		        Return True
+		      Else
+		        Repaint
+		        Return False
+		      End If
+		    Else
+		      c = MyColor
+		      If SelectColor(c, "Color") Then
+		        SetColor c
+		        Action
+		        Return True
+		      Else
+		        Repaint
+		        Return False
+		      End If
+		    End If
+		  End If
+		  
+		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Paint
+  sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  Repaint g
+		End Sub
+  )
+ HIns/g: 
+ Hook/D: (Enco/N: 134217984, name/S: Action, parm/S: , rslt/S: , flag/N: 33)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ClearColor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub ClearColor()
+		  IsColorSet = False
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetColor
+  parm/S: ByRef c As Color
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetColor(ByRef c As Color) As Boolean
+		  If IsColorSet Then
+		    c = MyColor
+		    Return True
+		  Else
+		    Return False
+		  End If
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Repaint
+  parm/S: g As Graphics = Nil
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Repaint(g As Graphics = Nil)
+		  Dim c As Color
+		  
+		  If g = Nil then g = Graphics
+		  
+		  If IsColorSet Then
+		    g.ForeColor = MyColor
+		    g.FillRect 0, 0, Width, Height
+		    
+		    g.ForeColor = DarkBevelColor
+		    g.DrawRect 0, 0, Width, Height
+		  Else
+		    g.ForeColor = LightBevelColor
+		    g.FillRect 0, 0, Width, Height
+		    
+		    g.ForeColor = DarkBevelColor
+		    g.DrawRect 0, 0, Width, Height
+		    g.DrawLine 0, 0, Width, Height
+		  End If
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetColor
+  parm/S: c As Color
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetColor(c As Color)
+		  IsColorSet = True
+		  MyColor = c
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: IsColorSet As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: IsColorSet As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyColor As Color
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyColor As Color
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

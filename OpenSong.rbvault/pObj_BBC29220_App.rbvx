@@ -1,0 +1,766 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
+ Name/S: App
+ Cont/N: 0
+ bCls/N: 1
+ Name/S: App
+ Size/N: 128
+ Supr/S: Application
+ bNtr/N: 0
+ Intr/S: 
+ bApO/N: 1
+ Cnst/D: (Enco/N: 134217984, name/S: DEBUG, type/N: 3, defn/S: False, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: DEBUGLEVEL, type/N: 1, defn/S: 1, flag/N: 33)
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Close
+  sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  DebugWriter.Done
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Open
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub Open()
+   srcl/S: Dim OK As Boolean
+   srcl/S: 'Profiler.EnableProfiler
+   srcl/S: Profiler.BeginProfilerEntry "App::Open"
+   srcl/S: 
+   srcl/S: DebugWriter = New DebugOutput
+   srcl/S: DebugWriter.Enabled = DEBUG
+   srcl/S: DebugWriter.Level = DEBUGLEVEL
+   srcl/S: OK = DebugWriter.Init
+   srcl/S: DebugWriter.Write "-------------------- Begin Run ----------------------"
+   srcl/S: 
+   srcl/S: Splash.Show
+   srcl/S: 
+   srcl/S: SmartML.Init
+   srcl/S: 
+   srcl/S: AppFolder = App.ExecutableFile
+   srcl/S: If Not AppFolder.Directory Then AppFolder = AppFolder.Parent ' Linux points to the parent folder; the other OSes seem to point to the executable file.
+   srcl/S: 
+   srcl/S: Splash.SetStatus "Loading global settings..."
+   srcl/S: MyGlobals = SmartML.XDocFromFile(AppFolder.Child("OpenSong Settings").Child("Globals"))
+   srcl/S: If MyGlobals = Nil Then
+   srcl/S: MsgBox SmartML.ErrorString + ": " + _
+   srcl/S: AppFolder.Child("OpenSong Settings").AbsolutePath + _
+   srcl/S:  " (" + Str(SmartML.ErrorCode) + ")"
+   srcl/S: Quit
+   srcl/S: Return
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: Splash.SetStatus "Creating/Checking documents folders..."
+   srcl/S: 
+   srcl/S: Dim docsPath As String
+   srcl/S: ' --- CREATE DOCUMENTS FOLDER ---
+   srcl/S: docsPath = SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder", False)
+   srcl/S: If Len(docsPath) > 0 Then
+   srcl/S: DocsFolder = FileUtils.AbsolutePathToFolderItem(docsPath)
+   srcl/S: Else
+   srcl/S: DocsFolder = DocumentsFolder.Child("OpenSong")
+   srcl/S: End If
+   srcl/S: If DocsFolder = Nil Then DocsFolder = DocumentsFolder.Child("OpenSong")
+   srcl/S: 
+   srcl/S: ' Create whatever sub-folders are needed
+   srcl/S: //++EMP 11/27/05
+   srcl/S: If Not AppFolder.Child("OpenSong Defaults").Exists Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Can't find Defaults folder: " + AppFolder.Child("OpenSong Defaults").AbsolutePath
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: //--
+   srcl/S: If Not DocsFolder.Exists Then
+   srcl/S: If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults"), DocsFolder) Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Could not find Documents folder (" + DocsFolder.AbsolutePath + ") or could not create OpenSong folder."
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: //++EMP 11/27/05
+   srcl/S: If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Can't find default Settings folder: " + AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: //--
+   srcl/S: If Not DocsFolder.Child("Settings").Exists Then
+   srcl/S: If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Could not create/edit Settings folder."
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: //++EMP 11/27/05
+   srcl/S: If Not AppFolder.Child("OpenSong Defaults").Child("Songs").Exists Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Can't find default Songs folder: " + AppFolder.Child("OpenSong Defaults").Child("Songs").AbsolutePath
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: //--
+   srcl/S: If Not DocsFolder.Child("Songs").Exists Then
+   srcl/S: If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Songs"), DocsFolder.Child("Songs")) Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Could not create/edit Songs folder."
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: //++EMP 11/27/05
+   srcl/S: If Not AppFolder.Child("OpenSong Defaults").Child("Sets").Exists Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Can't find default Sets folder: " + AppFolder.Child("OpenSong Defaults").Child("Sets").AbsolutePath
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: //--
+   srcl/S: If Not DocsFolder.Child("Sets").Exists Then
+   srcl/S: If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Sets"), DocsFolder.Child("Sets")) Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Could not create/edit Sets folder."
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: //++EMP 11/27/05
+   srcl/S: If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Can't find default Settings folder: " + AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: //--
+   srcl/S: If Not DocsFolder.Child("Settings").Exists Then
+   srcl/S: If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Could not create/edit Settings folder."
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: //++EMP 11/27/05
+   srcl/S: If Not AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Exists Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Can't find default Backgrounds folder: " + AppFolder.Child("OpenSong Defaults").Child("Backgrounds").AbsolutePath
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: //--
+   srcl/S: If Not DocsFolder.Child("Backgrounds").Exists Then
+   srcl/S: If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Backgrounds"), DocsFolder.Child("Backgrounds")) Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Could not create/edit Backgrounds folder."
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: If (Not DocsFolder.Exists) Or _
+   srcl/S: (Not DocsFolder.Child("Songs").Exists) Or _
+   srcl/S: (Not DocsFolder.Child("Sets").Exists) Or _
+   srcl/S: (Not DocsFolder.Child("Settings").Exists) Or _
+   srcl/S: (Not DocsFolder.Child("Backgrounds").Exists) Then
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: MsgBox "Internal folder error. Contact technical support."
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: Dim xml As XmlDocument
+   srcl/S: Dim xnode As XmlNode
+   srcl/S: 
+   srcl/S: ' --- LOAD SETTINGS ---
+   srcl/S: Splash.SetStatus "Loading main settings..."
+   srcl/S: MyMainSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("MainSettings"))
+   srcl/S: If MyMainSettings = Nil Then
+   srcl/S: SmartML.DisplayError
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: Splash.SetStatus "Loading translation text..."
+   srcl/S: Dim temp As String
+   srcl/S: temp = SmartML.GetValue(MyMainSettings.DocumentElement, "language/@file")
+   srcl/S: If Len(temp) = 0 Then
+   srcl/S: temp = "English"
+   srcl/S: End If
+   srcl/S: T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
+   srcl/S: If Not T.IsLoaded Then
+   srcl/S: //++EMP 12/05
+   srcl/S: // I think we should alert the user, shouldn't we?
+   srcl/S: //
+   srcl/S: SmartML.DisplayError
+   srcl/S: //--
+   srcl/S: T = New Translator(AppFolder.Child("OpenSong Languages").Item(1))
+   srcl/S: If Not T.IsLoaded Then
+   srcl/S: SmartML.DisplayError
+   srcl/S: Quit
+   srcl/S: Else
+   srcl/S: SmartML.SetValue MyMainSettings.DocumentElement, "language/@file", AppFolder.Child("OpenSong Languages").Item(1).Name
+   srcl/S: End If
+   srcl/S: Else
+   srcl/S: SmartML.SetValue MyMainSettings.DocumentElement, "language/@file", temp
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: TranslateMe True
+   srcl/S: 
+   srcl/S: Splash.SetStatus T.Translate("load_settings/print") + "..."
+   srcl/S: MyPrintSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PrintSettings"))
+   srcl/S: If MyPrintSettings = Nil Then
+   srcl/S: SmartML.DisplayError
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: Splash.SetStatus T.Translate("load_settings/presentation") + "..."
+   srcl/S: MyPresentSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PresentSettings"))
+   srcl/S: If MyPresentSettings = Nil Then
+   srcl/S: SmartML.DisplayError
+   srcl/S: Quit
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: ' --- BUILD CAPO LIST ---
+   srcl/S: CapoList.Append "1"
+   srcl/S: CapoList.Append "2"
+   srcl/S: CapoList.Append "3"
+   srcl/S: CapoList.Append "4"
+   srcl/S: CapoList.Append "5"
+   srcl/S: 
+   srcl/S: ' --- BUILD FONT LIST ---
+   srcl/S: Dim i, j As Integer
+   srcl/S: Splash.SetStatus T.Translate("load_settings/fonts") + "..."
+   srcl/S: j = FontCount - 1
+   srcl/S: For i = 0 to j
+   srcl/S: FontList.Append Font(i)
+   srcl/S: Next i
+   srcl/S: FontList.Sort
+   srcl/S: 
+   srcl/S: UpdateTranslationFonts
+   srcl/S: 
+   srcl/S: ' --- CHECK FOR LATEST SONG AND SET VERSIONS ---
+   srcl/S: Dim songVersion, setVersion As Double
+   srcl/S: songVersion = SmartML.GetValueN(MyMainSettings.DocumentElement, "version/@songs")
+   srcl/S: setVersion = SmartML.GetValueN(MyMainSettings.DocumentElement, "version/@sets")
+   srcl/S: 
+   srcl/S: App.MouseCursor = Nil
+   srcl/S: Dim f As FolderItem
+   srcl/S: 
+   srcl/S: GraphicsX.ThicknessFactor = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@thickness")
+   srcl/S: 
+   srcl/S: Profiler.EndProfilerEntry
+   srcl/S: 
+   srcl/S: ' --- CHECK FOR A NEWER VERSION ---
+   srcl/S: 
+   srcl/S: If Len(SmartML.GetValue(App.MyMainSettings.DocumentElement, "version/@check", False)) < 4 Then _
+   srcl/S: SmartML.SetValueB(App.MyMainSettings.DocumentElement, "version/@check", True)
+   srcl/S: 
+   srcl/S: Dim checkVer As CheckVerThread
+   srcl/S: If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "version/@check") Then
+   srcl/S: Splash.SetStatus T.Translate("load_settings/latest_version") + "..."
+   srcl/S: checkVer = new CheckVerThread 
+   srcl/S: checkVer.Run
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: //++ EMP, 17 Feb 06
+   srcl/S: // Joshua's audio add-on isn't cross-platform ready, so it's commented out
+   srcl/S: // for the mainstream release
+   srcl/S: //--
+   srcl/S: ''++JRC:
+   srcl/S: 'dim error As integer
+   srcl/S: 'dim ToFind As  MemoryBlock
+   srcl/S: 'dim found As  MemoryBlock
+   srcl/S: 'dim s As string
+   srcl/S: 'dim plugin As string
+   srcl/S: 'Declare Function FindFiles lib "Utility.dll" (ToFind as Ptr, Found as Ptr, NewSearch as boolean) as integer
+   srcl/S: '
+   srcl/S: 'Splash.SetStatus T.Translate("load_settings/init_audio") + "..."
+   srcl/S: 'Globals.SXMSAudio = New SXMS
+   srcl/S: 'Globals.SXMSAudio.SXMSWinampInit
+   srcl/S: 'error = Globals.SXMSAudio.SXMSWinampLoadPlugOut("out_wave.dll")
+   srcl/S: '
+   srcl/S: 'Splash.SetStatus T.Translate("load_settings/load_plugins") + "..."
+   srcl/S: '
+   srcl/S: 'ToFind = NewMemoryBlock(255)
+   srcl/S: 'ToFind.CString(0) = AppFolder.Child("Plugins").AbsolutePath + "*.dll"
+   srcl/S: 'found = NewMemoryBlock(128)
+   srcl/S: 'error = FindFiles(ToFind, found, true)
+   srcl/S: '
+   srcl/S: 'while error <> -1
+   srcl/S: 'if found.CString(0) <> "" then
+   srcl/S: 'plugin = AppFolder.Child("Plugins").AbsolutePath + found.CString(0)
+   srcl/S: 'call Globals.SXMSAudio.SXMSWinampLoadPlugIn(plugin)
+   srcl/S: 's = Globals.SXMSAudio.SXMSWinampGetExt
+   srcl/S: '
+   srcl/S: 'if s <> "" then
+   srcl/S: 'Globals.AudioPluginFormats = Globals.AudioPluginFormats + found.CString(0) + "|" + s + "|"
+   srcl/S: 'end if
+   srcl/S: 'end if
+   srcl/S: '
+   srcl/S: 'error = FindFiles(ToFind, found, false)
+   srcl/S: '
+   srcl/S: 'wend
+   srcl/S: '
+   srcl/S: 'Globals.MakeFilterArray
+   srcl/S: ''MsgBox Globals.AudioPluginFormats
+   srcl/S: ''--
+   srcl/S: '
+   srcl/S: '++JRC
+   srcl/S: Globals.WhitespaceChars.Append " "
+   srcl/S: Globals.WhitespaceChars.Append Chr(ENTER)
+   srcl/S: '--
+   srcl/S: T.TranslateMenu("main_menu", MainMenu)
+   srcl/S: 
+   srcl/S: MainWindow.Show
+   srcl/S: End Sub
+  sorc/g: 
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: UnhandledException
+  sorc/d: (Enco/N: 134217984
+		Function UnhandledException(error As RuntimeException) As Boolean
+		  Call MsgBox("Top level exception handler, error is " + error.Message, 16, "Last Chance")
+		End Function
+  )
+ HIns/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CenterInControlScreen
+  parm/S: win As Window
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub CenterInControlScreen(win As Window)
+		  Dim controlScreen As Integer
+		  If App.MyPresentSettings <> Nil Then
+		    controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+		    If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
+		  Else
+		    controlScreen = 0
+		  End If
+		  win.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height  - win.Height) / 2 + 10
+		  win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: FriendlyXMLException
+  parm/S: e As XMLException
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function FriendlyXMLException(e As XMLException) As String
+		  Return e.Message + EndOfLine + " (" + e.Node + ":" + e.Line + ") " + e.Token + " (E" + Str(e.ErrorNumber) + ")"
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetFrontControlScreenWindow
+  parm/S: 
+  rslt/S: Window
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetFrontControlScreenWindow() As Window
+		  // Returns the frontmost window on the control screen
+		  // EMP 26 Feb 2006
+		  //
+		  Dim w As Window
+		  Dim wc As Integer
+		  Dim i As Integer
+		  Dim cs As Integer
+		  
+		  wc = WindowCount - 1
+		  cs = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+		  
+		  For i = 0 To wc
+		    If Window(i).Visible Then
+		      If Window(i).Left >= Screen(cs).Left _
+		          And Window(i).Left < Screen(cs).Left + Screen(cs).Width _
+		          And Window(i).Top >= Screen(cs).Top _
+		              And Window(i).Top < Screen(cs).Top + Screen(cs).Height _
+		              Then
+		              Return Window(i)
+		            End If
+		          End If
+		        Next i
+		        Return Nil // Fell through, no one is on the control screen 
+		      End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetPrinterSetup
+  parm/S: ShowDialog As Boolean = False, Wnd As Window = Nil
+  rslt/S: PrinterSetup
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function GetPrinterSetup(ShowDialog As Boolean = False, Wnd As Window = Nil) As PrinterSetup
+   srcl/S: //
+   srcl/S: // OpenSong maintains a single PrinterSetup object for the printer.  This routine controls
+   srcl/S: // access to that object.  If ShowDialog is True, then the PrinterSetup dialog will be shown.
+   srcl/S: // If Wnd is not Nil, that Dialog will be attached to the given window (Mac only).
+   srcl/S: //
+   srcl/S: // RealBasic for the Mac has an issue with the PrinterSetup object.  The one returned
+   srcl/S: // from PageSetupDialog is invalid.  It has to be copied into a new one to be used.  For
+   srcl/S: // this reason, a clone is returned on OS X.
+   srcl/S: //
+   srcl/S: // On Windows, a second call to OpenPrinterDialog with the same PrinterSetup object
+   srcl/S: // results in no dialog display and Nil returned for the Graphics object.  Copy it, and
+   srcl/S: // all works fine.  Go figure.
+   srcl/S: //
+   srcl/S: // TODO: Save SetupString across program invocations.  Issues to remember: SetupString is
+   srcl/S: // platform dependent.  SetupString on Windows can't just be sent to an XML file such as
+   srcl/S: // MyPrintSettings with SmartML.SetValue.  Use something like EncodeBase64 to store
+   srcl/S: // and retrieve (didn't test Mac to see if this was also true on that platform).
+   srcl/S: //
+   srcl/S: // Finally, this needs a different approach for Linux since (as of RB2005R4) PrinterSetup
+   srcl/S: // doesn't do anything useful.
+   srcl/S: //
+   srcl/S: 
+   srcl/S: Dim TempPS As PrinterSetup
+   srcl/S: Dim NewPS As PrinterSetup
+   srcl/S: 
+   srcl/S: If MyPrinterSetup = Nil And Not ShowDialog Then Return Nil
+   srcl/S: 
+   srcl/S: TempPS = New PrinterSetup
+   srcl/S: TempPS.MaxHorizontalResolution = -1
+   srcl/S: TempPS.MaxVerticalResolution = -1
+   srcl/S: 
+   srcl/S: If MyPrinterSetup <> Nil Then
+   srcl/S: TempPS.SetupString = MyPrinterSetup.SetupString
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: If ShowDialog Then
+   srcl/S: If TempPS.PageSetupDialog(Wnd) Then
+   srcl/S: MyPrinterSetup = TempPS // Save the new settings
+   srcl/S: SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height", _
+   srcl/S: TempPS.PageHeight / TempPS.VerticalResolution)
+   srcl/S: SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width", _
+   srcl/S: TempPS.PageWidth / TempPS.HorizontalResolution)
+   srcl/S: Else 
+   srcl/S: Return Nil // User cancelled dialog. 
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: // We have a non-null MyPrinterSetup now.  Copy it and return
+   srcl/S: // Sadly, this has to be OS-specific, at least under RB5.5.
+   srcl/S: // If, on OS X, if you do a straight copy it bombs.  If you copy
+   srcl/S: // the setup string, it doesn't bomb but the horizontal and vertical resolutions
+   srcl/S: // are set to 72, which really does a number on things if it is reporting
+   srcl/S: // height and width at something other than 72dpi.
+   srcl/S: // Copying the setup string on Windows started off working, but
+   srcl/S: // then started returning an invalid pointer that would crash OS.
+   srcl/S: // This is insane...
+   srcl/S: NewPS = New PrinterSetup
+   srcl/S: #If TargetMacOS
+   srcl/S: NewPS.MaxHorizontalResolution = -1
+   srcl/S: NewPS.MaxVerticalResolution = -1
+   srcl/S: NewPS.SetupString = MyPrinterSetup.SetupString
+   srcl/S: #ElseIf TargetWin32
+   srcl/S: NewPS = MyPrinterSetup
+   srcl/S: #EndIf
+   srcl/S: Return NewPS
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MaximizeInControlScreen
+  parm/S: win As Window
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub MaximizeInControlScreen(win As Window)
+		  Dim controlScreen As Integer
+		  If App.MyPresentSettings <> Nil Then
+		    controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+		    If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
+		  Else
+		    controlScreen = 0
+		  End If
+		  
+		  win.Width = Screen(controlScreen).Width - 40
+		  win.Height = Screen(controlScreen).Height - 115
+		  
+		  win.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height  - win.Height) / 2 + 10
+		  win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SmartVersion
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function SmartVersion() As String
+		  Dim t As String
+		  
+		  t = "v" +  Str(App.MajorVersion) + "." + Str(App.MinorVersion)
+		  If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion) 
+		  t = t + " Beta 2"
+		  If App.NonReleaseVersion > 0 Then t = t + "-" + Str(App.NonReleaseVersion)
+		  Return t
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TranslateMe
+  parm/S: splashShowing As Boolean = False
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub TranslateMe(splashShowing As Boolean = False)
+		  Dim xnode As XmlNode
+		  Dim i As Integer
+		  
+		  StylePreview = T.GetNode("style_preview")
+		  
+		  ' --- BUILD TEMPO LIST ---
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/tempos") + "..."
+		  xnode = T.GetNode("tempo_list").FirstChild
+		  For i = UBound(TempoList) DownTo 1
+		    TempoList.Remove i
+		  Next i
+		  While xnode <> Nil
+		    TempoList.Append SmartML.GetValue(xnode, "@name")
+		    xnode = xnode.NextSibling
+		  Wend
+		  
+		  ' --- BUILD THEME LIST ---
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/themes") + "..."
+		  xnode = T.GetNode("theme_list").FirstChild
+		  For i = UBound(ThemeList) DownTo 1
+		    ThemeList.Remove i
+		  Next i
+		  While xnode <> Nil
+		    ThemeList.Append SmartML.GetValue(xnode, "@name")
+		    xnode = xnode.NextSibling
+		  Wend
+		  
+		  ' --- BUILD TIME SIG LIST ---
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/time_signatures") + "..."
+		  xnode = T.GetNode("time_sig_list").FirstChild
+		  For i = UBound(TimeSigList) DownTo 1
+		    TimeSigList.Remove i
+		  Next i
+		  While xnode <> Nil
+		    TimeSigList.Append SmartML.GetValue(xnode, "@name")
+		    xnode = xnode.NextSibling
+		  Wend
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: UpdateTranslationFonts
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub UpdateTranslationFonts()
+		  Dim i As Integer
+		  For i = UBound(TranslationFonts) DownTo 1
+		    TranslationFonts.Remove i
+		  Next i
+		  TranslationFonts.Append SmartML.GetValueF(MyMainSettings.DocumentElement, "fonts/headings")
+		  TranslationFonts.Append SmartML.GetValueF(MyMainSettings.DocumentElement, "fonts/labels")
+		  TranslationFonts.Append SmartML.GetValueF(MyMainSettings.DocumentElement, "fonts/text_fields")
+		  TranslationFonts.Append SmartML.GetValueF(MyMainSettings.DocumentElement, "fonts/large_headings")
+		  TranslationFonts.Append SmartML.GetValueF(MyMainSettings.DocumentElement, "fonts/buttons")
+		  TranslationFonts.Append SmartML.GetValueF(MyMainSettings.DocumentElement, "fonts/fixed_width")
+		End Sub
+  )
+ Meth/g: 
+ PDef/D: (name/S: MenuBar, PVal/S: -1144876511)
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: AppFolder As FolderItem
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: AppFolder As FolderItem
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: CapoList(0) As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: CapoList(0) As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: DebugWriter As DebugOutput
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: DebugWriter As DebugOutput
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: DocsFolder As FolderItem
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: DocsFolder As FolderItem
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FontList(0) As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FontList(0) As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyBible As Bible
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyBible As Bible
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyFontChooser As FontChooser
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyFontChooser As FontChooser
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyGlobals As XmlDocument
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyGlobals As XmlDocument
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyMainSettings As XmlDocument
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyMainSettings As XmlDocument
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyPresentSettings As XmlDocument
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyPresentSettings As XmlDocument
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyPrinterSetup As PrinterSetup
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyPrinterSetup As PrinterSetup
+   ntln/S: Global printer settings.
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyPrintSettings As XmlDocument
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyPrintSettings As XmlDocument
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SplashShowing As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SplashShowing As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: StylePreview As XmlNode
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: StylePreview As XmlNode
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: T As Translator
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: T As Translator
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: TempoList(0) As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: TempoList(0) As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ThemeList(0) As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ThemeList(0) As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: TimeSigList(0) As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: TimeSigList(0) As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: TranslationFonts(0) As FontFace
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: TranslationFonts(0) As FontFace
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

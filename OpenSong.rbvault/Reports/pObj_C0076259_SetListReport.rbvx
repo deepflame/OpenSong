@@ -1,0 +1,170 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC00762590000000000000000000000000000000000000000
+ Name/S: SetListReport
+ Cont/N: -1072340153
+ bCls/N: 1
+ Name/S: SetListReport
+ Size/N: 24
+ Supr/S: LeadSheetReport
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: AddSet
+  parm/S: SetName As String, Set As XmlDocument
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function AddSet(SetName As String, Set As XmlDocument) As Boolean
+		  //
+		  // Setup the report.  Basically, this involves taking the set
+		  // that is passed in and converting it to Song format for use
+		  // by the LeadSheetReport superclass.  Most of this code was originally
+		  // in MainWindow.ActionSetPrintList
+		  //
+		  // Ed Palmer, February 2006
+		  //
+		  Dim node, slide As XmlNode
+		  Dim r As New Random
+		  Dim TempFileName As String
+		  Dim CurrentSetItem As XmlNode
+		  Dim ItemName As String
+		  Dim ItemType As String
+		  
+		  App.DebugWriter.Write "SetListReport.AddSet: Enter"
+		  LeadSheetDoc = New XmlDocument
+		  node = LeadSheetDoc.AppendChild(LeadSheetDoc.CreateElement("song"))
+		  'TODO: I18N
+		  SmartML.SetValue node, "title", SetName '"ORDER OF SERVICE"
+		  
+		  Dim d As New Date
+		  SmartML.SetValue node, "author", "Printed " + d.LongDate
+		  
+		  Dim body As String
+		  
+		  CurrentSetItem = SetML.GetSetItem(Set, 1)
+		  
+		  While CurrentSetItem <> Nil
+		    ItemName = SmartML.GetValue(CurrentSetItem, "@name")
+		    ItemType = SmartML.GetValue(CurrentSetItem, "@type")
+		    If Left(ItemName, 2) <> "--" And _
+		        SmartML.GetValueB(CurrentSetItem, "@print", True, True) Then
+		      body = body + Chr(10) + "[V" + ItemName + "]" + Chr(10)
+		      If InStr(ItemType, "scripture") > 0 Or InStr(ItemType, "custom") > 0 Then
+		        slide = SmartML.GetNode(CurrentSetItem, "slides/slide")
+		        While slide <> Nil
+		          body = body + " " + SmartML.GetValue(slide, "body") + Chr(10)
+		          slide = slide.NextSibling
+		        Wend
+		      End If
+		    End If
+		    CurrentSetItem = CurrentSetItem.NextSibling
+		  Wend
+		  SmartML.SetValue node, "lyrics", body
+		  
+		  // Generate temporary file to offer to AddSong
+		  
+		  TempFileName = "_tmp" + Format(r.InRange(0000, 9999), "0000")
+		  LeadSheetFile = App.DocsFolder.Child("Songs").Child(TempFileName)
+		  
+		  While LeadSheetFile.Exists
+		    TempFileName = "_tmp" + Format(r.InRange(0000, 9999), "0000")
+		    LeadSheetFile = App.DocsFolder.Child("Songs").Child(TempFileName)
+		  Wend
+		  
+		  If Not SmartML.XDocToFile(LeadSheetDoc, LeadSheetFile) Then
+		    InputBox.Message App.T.Translate("errors/internal")
+		    App.DebugWriter.Write "SetListReport.AddSet: XDocToFile failed on " + TempFileName, 1
+		    App.DebugWriter.Write "SetListReport.AddSet: Exit"
+		    Return False
+		  End If
+		  
+		  AddSong TempFileName
+		  App.DebugWriter.Write "SetListReport.AddSet: Exit"
+		  Return True
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Destructor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Destructor()
+		  //
+		  // Delete the temporary file we created
+		  //
+		  If LeadSheetFile <> Nil Then
+		    If LeadSheetFile.Exists Then LeadSheetFile.Delete
+		  End If
+		Catch ex
+		  App.DebugWriter.Write "~SetListReport: Exception caught"
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetSong
+  parm/S: 
+  rslt/S: 
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Sub GetSong()
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetSongCount
+  parm/S: 
+  rslt/S: 
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Sub GetSongCount()
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveSong
+  parm/S: 
+  rslt/S: 
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveSong()
+		  
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: LeadSheetDoc As XmlDocument
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: LeadSheetDoc As XmlDocument
+   ntln/S: This holds the XML for the dummy song used to build the report through
+   ntln/S: the LeadSheetReport interfaces.
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: LeadSheetFile As FolderItem
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: LeadSheetFile As FolderItem
+   ntln/S: Points to the temporary file created in AddSet so it can be removed in the destructor
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

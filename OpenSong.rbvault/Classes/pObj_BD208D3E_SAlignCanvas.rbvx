@@ -1,0 +1,170 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABD208D3E0000000000000000000000000000000000000000
+ Name/S: SAlignCanvas
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SAlignCanvas
+ Size/N: 128
+ Supr/S: Canvas
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseDown
+  sorc/d: (Enco/N: 134217984
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  Dim xx, yy, z As Integer
+		  For yy = 0 To 2
+		    For xx = 0 To 2
+		      z = yy * 3 + xx + 1
+		      If X > xx*(Width/3)+2 And X < xx*(Width/3)+2 + Width/3-4 And _
+		          Y > yy*(Height/3)+2 And Y < yy*(Height/3)+2 + Height/3-4 Then
+		        If Mid(Matrix, z, 1) <> "N" Then
+		          HAlign = xx
+		          VAlign = yy
+		          Refresh
+		        End If
+		      End If
+		    Next xx
+		  Next yy
+		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Paint
+  sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  Dim x, y, z As Integer
+		  'g.ForeColor = LightBevelColor
+		  'g.DrawRect 0, 0, g.Width, g.Height
+		  For y = 0 To 2
+		    For x = 0 To 2
+		      z = y * 3 + x + 1
+		      If Mid(Matrix, z, 1) <> "N" Then
+		        g.ForeColor = FrameColor
+		        g.DrawRect x*(g.Width/3)+2, y*(g.Height/3)+2, g.Width/3-4, g.Height/3-4
+		        If VAlign = y And HAlign = x Then
+		          g.ForeColor = HighlightColor
+		          g.FillRect x*(g.Width/3)+4, y*(g.Height/3)+4, g.Width/3-8, g.Height/3-8
+		        End If
+		      End If
+		    Next x
+		  Next y
+		End Sub
+  )
+ HIns/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetHAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetHAlign() As String
+		  If HAlign = 0 Then Return "left"
+		  If HAlign = 1 Then Return "center"
+		  If HAlign = 2 Then Return "right"
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetVAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetVAlign() As String
+		  If VAlign = 0 Then Return "top"
+		  If VAlign = 1 Then Return "middle"
+		  If VAlign = 2 Then Return "bottom"
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetHAlign
+  parm/S: align As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetHAlign(align As String)
+		  If align = "left" Then HAlign = 0
+		  If align = "center" Then HAlign = 1
+		  If align = "right" Then HAlign = 2
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetVAlign
+  parm/S: align As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetVAlign(align As String)
+		  If align = "top" Then VAlign = 0
+		  If align = "middle" Then VAlign = 1
+		  If align = "bottom" Then VAlign = 2
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValid
+  parm/S: matrix As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValid(matrix As String)
+		  ' matrix format = "123456789"; matrix values = "YNYNYNYNY"
+		  ' where...
+		  ' 1 2 3
+		  ' 4 5 6
+		  ' 7 8 9
+		  Me.Matrix = matrix
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: HAlign As Integer
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: HAlign As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Matrix As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Matrix As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: VAlign As Integer
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: VAlign As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

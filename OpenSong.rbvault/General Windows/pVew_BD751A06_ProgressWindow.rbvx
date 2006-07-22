@@ -1,0 +1,297 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
+ Name/S: ProgressWindow
+ Cont/N: -1131477727
+ CBhv/D: (Name/S: , Size/N: 108, Supr/S: ProgressBar, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 136
+  Supr/S: StaticText
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: AcceleratorKey
+   sorc/d: (Enco/N: 134217984
+		Sub AcceleratorKey()
+		  
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ Ctrl/G: 
+  ccls/S: ProgressBar
+  name/S: ProgressBar
+  CBix/N: 0
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 12)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Maximum, PVal/S: 100)
+  PDef/D: (name/S: Name, PVal/S: bar, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 25)
+  PDef/D: (name/S: Value, PVal/S: 0)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 280)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 1
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: StatusLine, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 40)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 280)
+ Ctrl/g: 
+ FDef/G: 
+  Name/S: ProgressWindow
+  Size/N: 142
+  Supr/S: Window
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  Dim Excep As RuntimeException
+		  If Not AllowEscape Then Return True
+		  
+		  If AscB(Key) = 27 Then //Escape
+		    CancelRequested = True
+		  End If
+		  Return True //Basically, just ignore everything else
+		End Function
+   )
+  HIns/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: AlignStatusCenter
+   parm/S: 
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub AlignStatusCenter()
+		  StatusLine.TextAlign = 1
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: AlignStatusLeft
+   parm/S: 
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub AlignStatusLeft()
+		  StatusLine.TextAlign = 0
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: CanCancel
+   parm/S: CancelValid As Boolean
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub CanCancel(CancelValid As Boolean)
+		  // TODO: Enable this again
+		  // (Turned off to get V1.0 Beta 2 BL 10 out)
+		  AllowEscape = False
+		  'AllowEscape = CancelValid
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Constructor
+   parm/S: 
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  // call the Window constructor, or Open events will not fire
+		  Super.Window()
+		  bar.Maximum = 100
+		  Bar.Value = 0
+		  StatusLine.Text = ""
+		  AllowEscape = False
+		  CancelRequested = False
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: QueryCancel
+   parm/S: 
+   rslt/S: Boolean
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function QueryCancel() As Boolean
+		  Return CancelRequested
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetMaximum
+   parm/S: max As Integer = 100
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub SetMaximum(max As Integer = 100)
+		  bar.Maximum = max
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetProgress
+   parm/S: percent As Integer
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub SetProgress(percent As Integer)
+		  bar.Value = percent
+		  If Visible Then
+		    Refresh False
+		    App.DoEvents 0
+		  End If
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetProgress
+   parm/S: percent As Integer
+   rslt/S: Boolean
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function SetProgress(percent As Integer) As Boolean
+		  //
+		  // Returns inverse value of CancelRequested in addition to setting
+		  // the progress bar
+		  //
+		  SetProgress percent
+		  Return Not CancelRequested
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetStatus
+   parm/S: StatusText As String
+   rslt/S: Boolean
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function SetStatus(StatusText As String) As Boolean
+		  //
+		  // Set the StatusLine text and return the inverse of CancelRequested value
+		  //
+		  SetStatus StatusText
+		  Return Not CancelRequested
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetStatus
+   parm/S: StatusText As String
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub SetStatus(StatusText As String)
+		  StatusLine.Text = StatusText
+		  If Visible Then Refresh False
+		End Sub
+   )
+  Meth/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: AllowEscape As Boolean
+   flag/N: 33
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: AllowEscape As Boolean
+    ntln/S: Flag to indicate if user is allowed to press the Escape
+    ntln/S: key to signal a request to cancel the operation in progress.
+    ntln/S: See KeyDown event.  Default False (from Constructor)
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: CancelRequested As Boolean
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CancelRequested As Boolean
+    ntln/S: Indicates if the user has requested to cancel.  Default False.
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+ FDef/g: 
+ PDef/D: (name/S: BackColor, PVal/S: 16777215)
+ PDef/D: (name/S: Backdrop, PVal/S: 0)
+ PDef/D: (name/S: BalloonHelp, PVal/S: )
+ PDef/D: (name/S: CloseBox, PVal/S: True)
+ PDef/D: (name/S: Composite, PVal/S: False)
+ PDef/D: (name/S: Frame, PVal/S: 4)
+ PDef/D: (name/S: FullScreen, PVal/S: False)
+ PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: HasBackColor, PVal/S: False)
+ PDef/D: (name/S: Height, PVal/S: 60)
+ PDef/D: (name/S: LiveResize, PVal/S: False)
+ PDef/D: (name/S: MacProcID, PVal/S: 0)
+ PDef/D: (name/S: MaxHeight, PVal/S: 32000)
+ PDef/D: (name/S: MaxWidth, PVal/S: 32000)
+ PDef/D: (name/S: MenuBar, PVal/S: 0)
+ PDef/D: (name/S: MenuBarVisible, PVal/S: True)
+ PDef/D: (name/S: MinHeight, PVal/S: 64)
+ PDef/D: (name/S: MinWidth, PVal/S: 64)
+ PDef/D: (name/S: Name, PVal/S: ProgressWindow, Enco/N: 134217984)
+ PDef/D: (name/S: Placement, PVal/S: 1)
+ PDef/D: (name/S: Title, PVal/S: OpenSong, Enco/N: 134217984)
+ PDef/D: (name/S: Visible, PVal/S: True)
+ PDef/D: (name/S: Width, PVal/S: 300)
+ PDef/D: (name/S: ZoomIcon, PVal/S: True)
+pVew/b: 
+##RBvx-End#

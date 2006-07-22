@@ -1,0 +1,875 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
+ Name/S: SearchWindow
+ Cont/N: -1131477727
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  search
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 448
+  Supr/S: Listbox
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: CellGotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub CellGotFocus(row as Integer, column as Integer)
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: CellKeyDown
+   sorc/d: (Enco/N: 134217984
+		Function CellKeyDown(row as Integer, column as Integer, key as String) As Boolean
+		  
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: DoubleClick
+   sorc/d: (Enco/N: 134217984
+		Sub DoubleClick()
+		  Dim verse as String
+		  
+		  if (lst_result.ListIndex>=0) then
+		    verse= lst_result.Cell(lst_result.ListIndex, 0)
+		    
+		    ScripturePickerWindow.SetSearchResult(verse)
+		  end if
+		  
+		  close
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: GotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  btn_search.default=false
+		  btn_ok.default=true
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  btn_search.default=true
+		  btn_ok.Default=false
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.Heading(-1)= "Verse"+Chr(9)+ "Text"
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  Dim verse as String
+		  
+		  if (lst_result.ListIndex>=0) then
+		    verse= lst_result.Cell(lst_result.ListIndex, 0)
+		    
+		    ScripturePickerWindow.SetSearchResult(verse)
+		  end if
+		  
+		  close
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  
+		  close
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: EditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: GotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  If Asc(Key) = 13 Or Asc(Key) = 10 Then
+		    search
+		    Return True
+		  End If
+		End Function
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ Ctrl/G: 
+  ccls/S: EditField
+  name/S: EditField
+  CBix/N: 10
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 87)
+  PDef/D: (name/S: LimitText, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: edt_search, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: False)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 114)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 169)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 0
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Search, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: True)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 280)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: btn_search, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 114)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 66)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: ListBox
+  name/S: ListBox
+  CBix/N: 1
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: ColumnCount, PVal/S: 2)
+  PDef/D: (name/S: ColumnsResizable, PVal/S: False)
+  PDef/G: 
+   name/S: ColumnWidths
+   PVal/S: 100, 350%
+   Enco/N: 134217984
+  PDef/g: 
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: EnableDrag, PVal/S: False)
+  PDef/D: (name/S: EnableDragReorder, PVal/S: False)
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
+  PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
+  PDef/D: (name/S: HasHeading, PVal/S: True)
+  PDef/D: (name/S: HeadingIndex, PVal/S: -1)
+  PDef/D: (name/S: Height, PVal/S: 186)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Hierarchical, PVal/S: False)
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: InitialValue, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 12)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: lst_result, Enco/N: 134217984)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: True)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: ScrollPosition, PVal/S: 0)
+  PDef/D: (name/S: ScrollPositionX, PVal/S: 0)
+  PDef/D: (name/S: SelectionType, PVal/S: 0)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 165)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 449)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 2
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Ok, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: False)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 128)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_ok, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 367)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 67)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 3
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: True)
+  PDef/D: (name/S: Caption, PVal/S: Cancel, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: False)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 281)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_cancel, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 367)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 67)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 4
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Match:, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 83)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 74)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: grp_match, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 14)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 166)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: RadioButton
+  name/S: RadioButton
+  CBix/N: 5
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Exact word, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_match, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 85)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: rad_match_exact, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 36)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 139)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: RadioButton
+  name/S: RadioButton
+  CBix/N: 6
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Begins with, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_match, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 85)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: rad_match_begin, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 63)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 139)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: RadioButton
+  name/S: RadioButton
+  CBix/N: 7
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: All words, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 276)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: rad_words_all, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 63)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 148)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: RadioButton
+  name/S: RadioButton
+  CBix/N: 8
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Any word, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 276)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: rad_words_any, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 36)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Value, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 143)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 9
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Verse must have:, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 78)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 252)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: grp_words, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 14)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 188)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 11
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 46)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_example, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/G: 
+   name/S: Text
+   PVal/S: To search for an exact phrase enclose it in double quotes, like "Simon Peter"
+   Enco/N: 134217984
+  PDef/g: 
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 144)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 373)
+ Ctrl/g: 
+ FDef/G: 
+  Name/S: SearchWindow
+  Size/N: 140
+  Supr/S: Window
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  App.CenterInControlScreen Self
+		End Sub
+   )
+  HIns/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: combineResults
+   parm/S: main() as SearchResult, add() as String
+   rslt/S: SearchResult()
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Function combineResults(main() as SearchResult, add() as String) As SearchResult()
+		  'method takes two sorted lists and combines them
+		  Dim returnVal(), temp as SearchResult
+		  Dim x,y, comp as Integer
+		  
+		  
+		  'since both lists are sorted all you have to do is combine them
+		  while x<= UBound(main) AND y<= UBound(add)
+		    
+		    temp= new SearchResult(add(y))
+		    
+		    comp= main(x).compareTo(temp)
+		    
+		    if comp=0 then
+		      main(x).value= main(x).value+temp.value
+		      
+		      returnVal.Append(main(x))
+		      
+		      x=x+1
+		      y=y+1
+		    elseif comp<0 then
+		      if rad_words_any.Value then
+		        returnVal.Append(main(x))
+		      end if
+		      
+		      x=x+1
+		    else
+		      if rad_words_any.Value then
+		        returnVal.Append(temp)
+		      end if
+		      
+		      y=y+1
+		    end if
+		    
+		  wend
+		  
+		  if rad_words_any.Value then
+		    while x<=UBound(main)
+		      returnVal.Append(main(x))
+		      x=x+1
+		    wend
+		    
+		    while y<= UBound(add)
+		      
+		      temp= new SearchResult(add(y))
+		      
+		      returnVal.Append(temp)
+		      y=y+1
+		    wend
+		  end if
+		  
+		  return returnVal
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: mergeSort
+   parm/S: list() as SearchResult, leftIndex as Integer, rightIndex as Integer
+   rslt/S: SearchResult()
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Function mergeSort(list() as SearchResult, leftIndex as Integer, rightIndex as Integer) As SearchResult()
+		  Dim left(), right(), returnVal() as SearchResult
+		  Dim mid, x, y as Integer
+		  
+		  'break list into smaller parts
+		  if rightIndex-leftIndex =0 then
+		    returnVal.Append(list(leftIndex))
+		    return returnVal
+		  elseif rightIndex<leftIndex then
+		    return returnVal
+		  end if
+		  
+		  mid= leftIndex+ (rightIndex-leftIndex)/2
+		  
+		  'sort smaller lists
+		  left= mergeSort(list, leftIndex, mid)
+		  right= mergeSort(list, mid+1, rightIndex)
+		  
+		  'combine lists back together
+		  while x<= UBound(left) AND y<= UBound(right)
+		    
+		    if left(x).value= right(y).value then
+		      
+		      returnVal.Append(left(x))
+		      
+		      x=x+1
+		    elseif left(x).value > right(y).value then
+		      
+		      returnVal.Append(left(x))
+		      
+		      x=x+1
+		    else
+		      returnVal.Append(right(y))
+		      
+		      y=y+1
+		    end if
+		    
+		  wend
+		  
+		  while x<=UBound(left)
+		    returnVal.Append(left(x))
+		    x=x+1
+		  wend
+		  
+		  while y<= UBound(right)
+		    returnVal.Append(right(y))
+		    y=y+1
+		  wend 
+		  
+		  
+		  return returnVal
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: search
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub search()
+		  Dim words(), results(), verse(),  phrase, searchString as String
+		  Dim x, y as Integer
+		  Dim list(), temp As SearchResult
+		  Dim reg as RegEx
+		  Dim found as Boolean
+		  
+		  'used to tell the difference between list being empty b/c we haven't searched for any words yet and we have searched for words, but haven't found any matches
+		  found=false
+		  
+		  'get user input
+		  searchString= edt_search.Text
+		  
+		  'remove old search results
+		  lst_result.DeleteAllRows
+		  
+		  'used to remove puncuation
+		  reg= New RegEx
+		  reg.SearchPattern= "[^a-zA-z0-9\s]+"
+		  reg.ReplacementPattern=""
+		  reg.Options.ReplaceAllMatches=true
+		  
+		  
+		  'get phrases (things in double quotes)
+		  for x=2 to CountFields(searchString, Chr(34))
+		    phrase= Trim(NthField(searchString, Chr(34), x))
+		    
+		    'remove from main searchString
+		    searchString= ReplaceAll(searchString, phrase, "")
+		    
+		    'search for first word in phrase that is in index
+		    y=1
+		    do until y> CountFields(phrase, " ") Or App.MyBible.validSearch(NthField(phrase, " ", y))=true
+		      y=y+1
+		      
+		    loop 
+		    
+		    if (y<=CountFields(phrase, " ")) then
+		      
+		      
+		      results=App.MyBible.search(NthField(phrase, " ", y), false)
+		      
+		      'remove results that don't contain the entire phrase
+		      for y=0 to UBound(results)
+		        temp= new SearchResult(results(y))
+		        verse= App.MyBible.GetPassage(App.MyBible.GetStdBookName(temp.book), Str(temp.chapter), Str(temp.verse), Str(temp.verse))
+		        
+		        'remove puncuation
+		        verse(1)= reg.Replace(verse(1))
+		        
+		        if InStr(verse(1), phrase)=0 then
+		          results.Remove(y)
+		          y=y-1
+		        end if
+		      next y
+		      
+		      if (UBound(results)>=0) then
+		        
+		        'add matches to list
+		        if (rad_words_all.value AND found=false) then
+		          for y=0 to UBound(results)
+		            list.Append(new SearchResult(Val(Nthfield(results(y), " ", 1)), Val(Nthfield(results(y), " ", 2)), Val(Nthfield(results(y), " ", 3))))
+		          next y
+		        else
+		          list= combineResults(list, results)
+		        end if
+		        
+		        x=x+1
+		        found=true
+		      end if
+		      
+		    end if
+		  next x
+		  
+		  'remove puncuation
+		  searchString= reg.Replace(searchString)
+		  
+		  'get individual words
+		  words= searchString.split(" ")
+		  
+		  'remove words that aren't indexed
+		  for x=0 to UBound(words)
+		    if App.MyBible.validSearch(words(x))=false OR Len(words(x))<1 then
+		      words.Remove(x)
+		      x=x-1
+		    end if
+		  next x
+		  
+		  
+		  if UBound(words) >= 0 then
+		    
+		    'find the word
+		    results= App.MyBible.search(words(0), rad_match_begin.value)
+		    
+		    if (found=false) then
+		      for x=0 to UBound(results)
+		        list.Append(new SearchResult(Val(Nthfield(results(x), " ", 1)), Val(Nthfield(results(x), " ", 2)), Val(Nthfield(results(x), " ", 3))))
+		      next x
+		      
+		    else
+		      list= combineResults(list, results)
+		    end if
+		    
+		    for x=1 to UBound(words)
+		      
+		      'find the word
+		      results= App.MyBible.search(words(x), rad_match_begin.value)
+		      
+		      list= combineResults(list, results)
+		      
+		    next x
+		    
+		  end if
+		  
+		  'sort by priority
+		  list= mergeSort(list, 0, UBound(list))
+		  
+		  'add results to list
+		  for x=0 to UBound(list)
+		    
+		    verse= App.MyBible.GetPassage(App.MyBible.GetBookName(list(x).book), Str(list(x).chapter), Str(list(x).verse), Str(list(x).verse))
+		    
+		    lst_result.AddRow(App.MyBible.GetBookName(list(x).book) + " "+ Str(list(x).chapter)+ ":" + Str(list(x).verse))
+		    lst_result.Cell(x, 1)= verse(1)
+		  next x
+		Catch ex
+		  MsgBox "SearchWindow.Search: " + ex.message + ":" + str(ex.errornumber)
+		  Return
+		End Sub
+   )
+  Meth/g: 
+ FDef/g: 
+ PDef/D: (name/S: BackColor, PVal/S: 16777215)
+ PDef/D: (name/S: Backdrop, PVal/S: 0)
+ PDef/D: (name/S: BalloonHelp, PVal/S: )
+ PDef/D: (name/S: CloseBox, PVal/S: True)
+ PDef/D: (name/S: Composite, PVal/S: False)
+ PDef/D: (name/S: Frame, PVal/S: 1)
+ PDef/D: (name/S: FullScreen, PVal/S: False)
+ PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: HasBackColor, PVal/S: False)
+ PDef/D: (name/S: Height, PVal/S: 409)
+ PDef/D: (name/S: LiveResize, PVal/S: False)
+ PDef/D: (name/S: MacProcID, PVal/S: 0)
+ PDef/D: (name/S: MaxHeight, PVal/S: 32000)
+ PDef/D: (name/S: MaxWidth, PVal/S: 32000)
+ PDef/D: (name/S: MenuBar, PVal/S: 0)
+ PDef/D: (name/S: MenuBarVisible, PVal/S: True)
+ PDef/D: (name/S: MinHeight, PVal/S: 400)
+ PDef/D: (name/S: MinWidth, PVal/S: 477)
+ PDef/D: (name/S: Name, PVal/S: SearchWindow, Enco/N: 134217984)
+ PDef/D: (name/S: Placement, PVal/S: 0)
+ PDef/D: (name/S: Title, PVal/S: Search, Enco/N: 134217984)
+ PDef/D: (name/S: Visible, PVal/S: True)
+ PDef/D: (name/S: Width, PVal/S: 477)
+ PDef/D: (name/S: ZoomIcon, PVal/S: True)
+pVew/b: 
+##RBvx-End#

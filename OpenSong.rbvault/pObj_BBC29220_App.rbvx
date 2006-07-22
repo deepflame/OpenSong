@@ -12,7 +12,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  bNtr/N: 0
  Intr/S: 
  bApO/N: 1
- Cnst/D: (Enco/N: 134217984, name/S: DEBUG, type/N: 3, defn/S: True, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: DEBUG, type/N: 3, defn/S: False, flag/N: 0)
  Cnst/D: (Enco/N: 134217984, name/S: DEBUGLEVEL, type/N: 1, defn/S: 3, flag/N: 33)
  Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_CM, type/N: 2, defn/S: 0.035277778, flag/N: 0)
  HIns/G: 

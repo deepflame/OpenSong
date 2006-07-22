@@ -5,7 +5,24 @@
 pMnu/B: 426C6F6B704D6E75BBC292210000000000000000000000000000000000000000
  Name/S: MainMenu
  Cont/N: -1078491255
- MItm/D: (spmu/N: 1, name/S: UntitledMenu8, text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu8, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+ MItm/G: 
+  spmu/N: 1
+  name/S: UntitledMenu8
+  text/S: 
+  indx/N: -2147483648
+  scut/S: 
+  bhlp/S: 
+  dhlp/S: 
+  styl/N: 0
+  Enco/N: 131072
+  flag/N: 0
+  maEn/N: 1
+  Name/S: UntitledMenu8
+  Size/N: 76
+  Supr/S: MenuItem
+  bNtr/N: 0
+  MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+ MItm/g: 
  MItm/G: 
   spmu/N: 0
   name/S: mnu_bar_file
@@ -120,9 +137,9 @@ pMnu/B: 426C6F6B704D6E75BBC292210000000000000000000000000000000000000000
   Size/N: 76
   Supr/S: MenuItem
   bNtr/N: 0
+  MItm/D: (spmu/N: 0, name/S: mnu_settings_general, text/S: &General Settings..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_general, Size/N: 76, Supr/S: PrefsMenuItem, bNtr/N: 0)
   MItm/D: (spmu/N: 0, name/S: mnu_settings_presentation, text/S: P&resentation Settings..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_presentation, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
   MItm/D: (spmu/N: 0, name/S: mnu_settings_print, text/S: &Print Settings..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_print, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
-  MItm/D: (spmu/N: 0, name/S: mnu_settings_general, text/S: &General Settings..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_general, Size/N: 76, Supr/S: PrefsMenuItem, bNtr/N: 0)
   MItm/D: (spmu/N: 0, name/S: UntitledMenu1, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu1, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
   MItm/D: (spmu/N: 0, name/S: mnu_settings_refresh_songs, text/S: &Refresh Songs Folder, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_refresh_songs, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
   MItm/D: (spmu/N: 0, name/S: mnu_settings_refresh_sets, text/S: R&efresh Sets Folder, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_refresh_sets, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)

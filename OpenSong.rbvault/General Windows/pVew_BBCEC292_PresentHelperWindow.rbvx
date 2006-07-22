@@ -993,9 +993,27 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentHelperWindow
-  Size/N: 144
+  Size/N: 152
   Supr/S: Window
   bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: CancelClose
+   sorc/d: (Enco/N: 134217984
+		Function CancelClose(appQuitting as Boolean) As Boolean
+		  If MainWindow.Status_Presentation And Not appQuitting Then Return True
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  
+		End Sub
+   )
+  HIns/g: 
   HIns/G: 
    Enco/N: 1280
    name/S: KeyDown
@@ -1024,6 +1042,15 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
 		  RecalcLstAllSlidesColumnWidths
 		  Refresh
 		  '--
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Resizing
+   sorc/d: (Enco/N: 134217984
+		Sub Resizing()
+		  
 		End Sub
    )
   HIns/g: 
@@ -1194,10 +1221,6 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
 		    btn_action_full_screen.SetIcon windowfullscreenpic, windowfullscreenmask
 		    btn_action_full_screen.SetLabel App.T.Translate("presentation_helper/actions/full_screen/@caption")
 		  End If
-		  '++JRC: Moved to Resized Event
-		  'RecalcLstAllSlidesColumnWidths
-		  'Refresh
-		  '--
 		End Sub
    )
   Meth/g: 
@@ -1216,7 +1239,7 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
  PDef/D: (name/S: BackColor, PVal/S: 16777215)
  PDef/D: (name/S: Backdrop, PVal/S: 0)
  PDef/D: (name/S: BalloonHelp, PVal/S: )
- PDef/D: (name/S: CloseBox, PVal/S: True)
+ PDef/D: (name/S: CloseBox, PVal/S: False)
  PDef/D: (name/S: Composite, PVal/S: False)
  PDef/D: (name/S: Frame, PVal/S: 0)
  PDef/D: (name/S: FullScreen, PVal/S: False)

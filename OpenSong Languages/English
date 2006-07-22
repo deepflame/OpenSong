@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="0.9.9">
+<language name="English" author="Sean Lickfold" version="1.0 Beta 2 BL 11">
 
   <load_settings>
     <print>Loading print settings</print>
@@ -709,6 +709,8 @@ Click on this slide to edit its style.</body>
     <insert caption="Insert"/>
     <close caption="Close"/>
     <search caption="Search"/>
+    <save caption="Save" message="%1 has not been saved."/>
+    <nosave caption="Don't Save"/>
   </shared>
 
   <questions>
@@ -754,10 +756,36 @@ Click on this slide to edit its style.</body>
     <bad_file_name>Invalid file name '%1'.</bad_file_name>
     <internal>Internal error. Contact technical support.</internal>
     <no_such_song>Cannot find song.</no_such_song>
+    <number_please>Please enter a valid number.</number_please>
+    <number_range>Please enter a number between %1 and %2.</number_range>
   </errors>
 
   <open_titles>
     <audio>Select Audio File to Open</audio>
   </open_titles>  
+  
+  <hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Go to first slide in section</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Go to next slide in the set</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Go to previous slide in the set</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Go to the first slide in the set</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Go to the last slide in the set</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Go to the next section in the set</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Go to the start of the current or previous set</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Go to the next verse</ACTION_VERSE> 	
+ 	<ACTION_BRIDGE>Go to the bridge</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Go to the chorus</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Go to the pre-chorus</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Go to the tag</ACTION_TAG>
+ 	<ACTION_NORMAL>Display current slide</ACTION_NORMAL>
+ 	<ACTION_BLACK>Display black screen	</ACTION_BLACK>
+ 	<ACTION_WHITE>Display white screen</ACTION_WHITE>
+ 	<ACTION_FREEZE>Freeze display on current slide</ACTION_FREEZE>
+ 	<ACTION_LOGO>Display the logo</ACTION_LOGO>
+ 	<ACTION_HIDE>Hide current slide (background is still displayed)</ACTION_HIDE>
+ 	<ACTION_EXIT>Exit presenter mode</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>Exit presenter mode, require confirmation	</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>Exit presenter mode immediately</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
 
 </language>

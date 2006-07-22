@@ -1225,7 +1225,7 @@ pVew/B: 426C6F6B70566577BCB298D40000000000000000000000000000000000000000
  PDef/D: (name/S: Composite, PVal/S: False)
  PDef/D: (name/S: Frame, PVal/S: 1)
  PDef/D: (name/S: FullScreen, PVal/S: False)
- PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: GrowIcon, PVal/S: False)
  PDef/D: (name/S: HasBackColor, PVal/S: False)
  PDef/D: (name/S: Height, PVal/S: 428)
  PDef/D: (name/S: LiveResize, PVal/S: False)

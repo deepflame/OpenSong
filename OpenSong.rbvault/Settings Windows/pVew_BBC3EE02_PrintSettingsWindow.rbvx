@@ -16,27 +16,51 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
+		  Dim PS As XmlElement
 		  
-		  SmartML.SetValueF(App.MyPrintSettings.DocumentElement, "title", can_font_title.GetFont)
-		  SmartML.SetValueF(App.MyPrintSettings.DocumentElement, "author", can_font_author.GetFont)
-		  SmartML.SetValueF(App.MyPrintSettings.DocumentElement, "heading", can_font_sections.GetFont)
-		  SmartML.SetValueF(App.MyPrintSettings.DocumentElement, "lyrics", can_font_lyrics.GetFont)
-		  SmartML.SetValueF(App.MyPrintSettings.DocumentElement, "chords", can_font_chords.GetFont)
-		  SmartML.SetValueF(App.MyPrintSettings.DocumentElement, "capo_chords", can_font_capo.GetFont)
-		  SmartML.SetValueF(App.MyPrintSettings.DocumentElement, "copyright", can_font_copyright.GetFont)
+		  PS = App.MyPrintSettings.DocumentElement
 		  
-		  SmartML.SetValue(App.MyPrintSettings.DocumentElement, "page/@top", edt_page_top.Text)
-		  SmartML.SetValue(App.MyPrintSettings.DocumentElement, "page/@bottom", edt_page_bottom.Text)
-		  SmartML.SetValue(App.MyPrintSettings.DocumentElement, "page/@left", edt_page_left.Text)
-		  SmartML.SetValue(App.MyPrintSettings.DocumentElement, "page/@right", edt_page_right.Text)
+		  SmartML.SetValueF(PS, "title", can_font_title.GetFont)
+		  SmartML.SetValueF(PS, "author", can_font_author.GetFont)
+		  SmartML.SetValueF(PS, "heading", can_font_sections.GetFont)
+		  SmartML.SetValueF(PS, "lyrics", can_font_lyrics.GetFont)
+		  SmartML.SetValueF(PS, "chords", can_font_chords.GetFont)
+		  SmartML.SetValueF(PS, "capo_chords", can_font_capo.GetFont)
+		  SmartML.SetValueF(PS, "copyright", can_font_copyright.GetFont)
 		  
-		  SmartML.SetValue(App.MyPrintSettings.DocumentElement, "page/@width", edt_page_width.Text)
-		  SmartML.SetValue(App.MyPrintSettings.DocumentElement, "page/@height", edt_page_height.Text)
+		  SmartML.SetValueB(PS, "page/@inches", rad_page_inches.Value)
+		  SmartML.SetValueB(PS, "page/@points", True) // Flags unit values in the settings as being in points rather than in/cm
 		  
-		  SmartML.SetValueB(App.MyPrintSettings.DocumentElement, "page/@inches", rad_page_inches.Value)
+		  If rad_page_inches.Value Then
+		    
+		    SmartML.SetValueN(PS, "page/@top", InchesToPoints(edt_page_top.Value))
+		    SmartML.SetValueN(PS, "page/@bottom", InchesToPoints(edt_page_bottom.Value))
+		    SmartML.SetValueN(PS, "page/@left", InchesToPoints(edt_page_left.Value))
+		    SmartML.SetValueN(PS, "page/@right", InchesToPoints(edt_page_right.Value))
+		    
+		    SmartML.SetValueN(PS, "page/@width", InchesToPoints(edt_page_width.Value))
+		    SmartML.SetValueN(PS, "page/@height", InchesToPoints(edt_page_height.Value))
+		    
+		  Else
+		    
+		    SmartML.SetValueN(PS, "page/@top", CMtoPoints(edt_page_top.Value))
+		    SmartML.SetValueN(PS, "page/@bottom", CMtoPoints(edt_page_bottom.Value))
+		    SmartML.SetValueN(PS, "page/@left", CMtoPoints(edt_page_left.Value))
+		    SmartML.SetValueN(PS, "page/@right", CMtoPoints(edt_page_right.Value))
+		    
+		    SmartML.SetValueN(PS, "page/@width", CMtoPoints(edt_page_width.Value))
+		    SmartML.SetValueN(PS, "page/@height", CMtoPoints(edt_page_height.Value))
+		    
+		  End If
 		  
-		  SmartML.SetValueB(App.MyPrintSettings.DocumentElement, "style/@caps_song_title", chk_layout_title_in_caps.Value)
-		  SmartML.SetValue(App.MyPrintSettings.DocumentElement, "style/@border_thickness", edt_layout_heading_border_thickness.Text)
+		  SmartML.SetValueB(PS, "style/@caps_song_title", chk_layout_title_in_caps.Value)
+		  SmartML.SetValue(PS, "style/@border_thickness", edt_layout_heading_border_thickness.Text)
+		  
+		  //++
+		  // Bug 1462055: Save settings on dialog exit
+		  //
+		  If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child("Settings").Child("PrintSettings")) Then SmartML.DisplayError
+		  //--
 		  
 		  Close
 		End Sub
@@ -60,162 +84,12 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: Canvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/G: 
-  Name/S: 
-  Size/N: 188
-  Supr/S: EditField
-  bNtr/N: 0
-  HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    
-		    if c.TextAvailable then
-		      edt_page_top.Text  = c.Text
-		      return true
-		    end if
-		    
-		  end if
-		  c.close
-		End Function
-   )
-  HIns/g: 
- CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/G: 
-  Name/S: 
-  Size/N: 188
-  Supr/S: EditField
-  bNtr/N: 0
-  HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    
-		    if c.TextAvailable then
-		      edt_page_left.Text  = c.Text
-		      return true
-		    end if
-		    
-		  end if
-		  c.close
-		End Function
-   )
-  HIns/g: 
- CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/G: 
-  Name/S: 
-  Size/N: 188
-  Supr/S: EditField
-  bNtr/N: 0
-  HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    
-		    if c.TextAvailable then
-		      edt_page_bottom.Text  = c.Text
-		      return true
-		    end if
-		    
-		  end if
-		  c.close
-		End Function
-   )
-  HIns/g: 
- CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/G: 
-  Name/S: 
-  Size/N: 188
-  Supr/S: EditField
-  bNtr/N: 0
-  HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    
-		    if c.TextAvailable then
-		      edt_page_right.Text  = c.Text
-		      return true
-		    end if
-		    
-		  end if
-		  c.close
-		End Function
-   )
-  HIns/g: 
- CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: Rectangle, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/G: 
-  Name/S: 
-  Size/N: 188
-  Supr/S: EditField
-  bNtr/N: 0
-  HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    
-		    if c.TextAvailable then
-		      edt_page_width.Text  = c.Text
-		      return true
-		    end if
-		    
-		  end if
-		  c.close
-		End Function
-   )
-  HIns/g: 
- CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/G: 
-  Name/S: 
-  Size/N: 188
-  Supr/S: EditField
-  bNtr/N: 0
-  HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    
-		    if c.TextAvailable then
-		      edt_page_height.Text  = c.Text
-		      return true
-		    end if
-		    
-		  end if
-		  c.close
-		End Function
-   )
-  HIns/g: 
- CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: Canvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
@@ -224,13 +98,13 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: Canvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/G: 
@@ -306,6 +180,174 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
 		  ToCM(edt_page_bottom)
 		  ToCM(edt_page_height)
 		  ToCM(edt_page_width)
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 232
+  Supr/S: SEditFieldNumeric
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_page_top.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 232
+  Supr/S: SEditFieldNumeric
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_page_right.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 232
+  Supr/S: SEditFieldNumeric
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_page_left.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 232
+  Supr/S: SEditFieldNumeric
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_page_bottom.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 232
+  Supr/S: SEditFieldNumeric
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_page_width.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 232
+  Supr/S: SEditFieldNumeric
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_page_height.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  
 		End Sub
    )
   HIns/g: 
@@ -467,9 +509,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: Width, PVal/S: 105)
  Ctrl/g: 
  Ctrl/G: 
-  ccls/S: EditField
+  ccls/S: SEditFieldNumeric
   name/S: EditField
-  CBix/N: 5
+  CBix/N: 33
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: Alignment, PVal/S: 0)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -480,7 +522,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: DataField, PVal/S: )
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisplayFormat, PVal/S: ##0.00, Enco/N: 134217984)
   PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: EnforceRange, PVal/S: False)
   PDef/D: (name/S: Format, PVal/S: )
   PDef/D: (name/S: Height, PVal/S: 20)
   PDef/D: (name/S: HelpTag, PVal/S: )
@@ -494,6 +538,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: Maximum, PVal/S: 2.409587e-8)
+  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_top, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -516,7 +562,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 6
+  CBix/N: 5
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -548,9 +594,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: Width, PVal/S: 95)
  Ctrl/g: 
  Ctrl/G: 
-  ccls/S: EditField
+  ccls/S: SEditFieldNumeric
   name/S: EditField
-  CBix/N: 7
+  CBix/N: 35
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: Alignment, PVal/S: 0)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -561,7 +607,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: DataField, PVal/S: )
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisplayFormat, PVal/S: ##0.00, Enco/N: 134217984)
   PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: EnforceRange, PVal/S: False)
   PDef/D: (name/S: Format, PVal/S: )
   PDef/D: (name/S: Height, PVal/S: 20)
   PDef/D: (name/S: HelpTag, PVal/S: )
@@ -575,6 +623,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_left, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -597,7 +647,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 8
+  CBix/N: 6
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -629,9 +679,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: Width, PVal/S: 105)
  Ctrl/g: 
  Ctrl/G: 
-  ccls/S: EditField
+  ccls/S: SEditFieldNumeric
   name/S: EditField
-  CBix/N: 9
+  CBix/N: 36
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: Alignment, PVal/S: 0)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -642,7 +692,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: DataField, PVal/S: )
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisplayFormat, PVal/S: ##0.00, Enco/N: 134217984)
   PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: EnforceRange, PVal/S: False)
   PDef/D: (name/S: Format, PVal/S: )
   PDef/D: (name/S: Height, PVal/S: 20)
   PDef/D: (name/S: HelpTag, PVal/S: )
@@ -656,6 +708,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_bottom, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -678,7 +732,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 10
+  CBix/N: 7
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -691,7 +745,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: can_print_margins, Enco/N: 134217984)
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 320)
+  PDef/D: (name/S: Left, PVal/S: 325)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: False)
@@ -704,15 +758,15 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: TextColor, PVal/S: 0)
   PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
   PDef/D: (name/S: TextSize, PVal/S: 10)
-  PDef/D: (name/S: Top, PVal/S: 130)
+  PDef/D: (name/S: Top, PVal/S: 132)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 95)
  Ctrl/g: 
  Ctrl/G: 
-  ccls/S: EditField
+  ccls/S: SEditFieldNumeric
   name/S: EditField
-  CBix/N: 11
+  CBix/N: 34
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: Alignment, PVal/S: 0)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -723,7 +777,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: DataField, PVal/S: )
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisplayFormat, PVal/S: ##0.00, Enco/N: 134217984)
   PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: EnforceRange, PVal/S: False)
   PDef/D: (name/S: Format, PVal/S: )
   PDef/D: (name/S: Height, PVal/S: 20)
   PDef/D: (name/S: HelpTag, PVal/S: )
@@ -737,6 +793,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_right, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -759,7 +817,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: Rectangle
   name/S: Rectangle
-  CBix/N: 12
+  CBix/N: 8
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: BorderWidth, PVal/S: 1)
@@ -786,7 +844,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 13
+  CBix/N: 9
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -818,9 +876,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: Width, PVal/S: 105)
  Ctrl/g: 
  Ctrl/G: 
-  ccls/S: EditField
+  ccls/S: SEditFieldNumeric
   name/S: EditField
-  CBix/N: 14
+  CBix/N: 37
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: Alignment, PVal/S: 0)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -831,7 +889,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: DataField, PVal/S: )
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisplayFormat, PVal/S: ##0.00, Enco/N: 134217984)
   PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: EnforceRange, PVal/S: False)
   PDef/D: (name/S: Format, PVal/S: )
   PDef/D: (name/S: Height, PVal/S: 20)
   PDef/D: (name/S: HelpTag, PVal/S: )
@@ -845,6 +905,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_width, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -867,7 +929,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 15
+  CBix/N: 10
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -899,9 +961,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: Width, PVal/S: 105)
  Ctrl/g: 
  Ctrl/G: 
-  ccls/S: EditField
+  ccls/S: SEditFieldNumeric
   name/S: EditField
-  CBix/N: 16
+  CBix/N: 38
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: Alignment, PVal/S: 0)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -912,7 +974,9 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: DataField, PVal/S: )
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisplayFormat, PVal/S: ##0.00, Enco/N: 134217984)
   PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: EnforceRange, PVal/S: False)
   PDef/D: (name/S: Format, PVal/S: )
   PDef/D: (name/S: Height, PVal/S: 20)
   PDef/D: (name/S: HelpTag, PVal/S: )
@@ -926,6 +990,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_height, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -948,7 +1014,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: Canvas
   name/S: Canvas
-  CBix/N: 17
+  CBix/N: 11
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -975,7 +1041,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 18
+  CBix/N: 12
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1009,7 +1075,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 19
+  CBix/N: 13
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1043,7 +1109,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 20
+  CBix/N: 14
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1077,7 +1143,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 21
+  CBix/N: 15
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1111,7 +1177,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 22
+  CBix/N: 16
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1145,7 +1211,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 23
+  CBix/N: 17
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1179,7 +1245,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 24
+  CBix/N: 18
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1213,7 +1279,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 25
+  CBix/N: 19
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1241,7 +1307,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 26
+  CBix/N: 20
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1269,7 +1335,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 27
+  CBix/N: 21
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1297,7 +1363,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 28
+  CBix/N: 22
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1325,7 +1391,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 29
+  CBix/N: 23
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1353,7 +1419,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 30
+  CBix/N: 24
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1381,7 +1447,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 31
+  CBix/N: 25
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1409,7 +1475,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: Canvas
   name/S: Canvas
-  CBix/N: 32
+  CBix/N: 26
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -1436,7 +1502,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 33
+  CBix/N: 27
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1470,7 +1536,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: EditField
   name/S: EditField
-  CBix/N: 34
+  CBix/N: 28
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: Alignment, PVal/S: 0)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -1517,7 +1583,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: CheckBox
   name/S: CheckBox
-  CBix/N: 35
+  CBix/N: 29
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1549,7 +1615,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: GroupBox
   name/S: GroupBox
-  CBix/N: 36
+  CBix/N: 30
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1578,7 +1644,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: RadioButton
   name/S: RadioButton
-  CBix/N: 37
+  CBix/N: 31
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1608,7 +1674,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: RadioButton
   name/S: RadioButton
-  CBix/N: 38
+  CBix/N: 32
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1637,7 +1703,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PrintSettingsWindow
-  Size/N: 141
+  Size/N: 150
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -1646,16 +1712,45 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     srcl/S: Sub Open()
-    srcl/S: edt_page_top.Text = SmartML.GetValue(App.MyPrintSettings.DocumentElement, "page/@top")
-    srcl/S: edt_page_bottom.Text = SmartML.GetValue(App.MyPrintSettings.DocumentElement, "page/@bottom")
-    srcl/S: edt_page_left.Text = SmartML.GetValue(App.MyPrintSettings.DocumentElement, "page/@left")
-    srcl/S: edt_page_right.Text = SmartML.GetValue(App.MyPrintSettings.DocumentElement, "page/@right")
     srcl/S: 
-    srcl/S: edt_page_width.Text = SmartML.GetValue(App.MyPrintSettings.DocumentElement, "page/@width")
-    srcl/S: edt_page_height.Text = SmartML.GetValue(App.MyPrintSettings.DocumentElement, "page/@height")
+    srcl/S: Dim PS As XmlElement
     srcl/S: 
-    srcl/S: rad_page_inches.Value = SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "page/@inches", True, True)
+    srcl/S: PS = App.MyPrintSettings.DocumentElement
+    srcl/S: 
+    srcl/S: ValuesInPoints = SmartML.GetValueB(PS, "page/@points", False)
+    srcl/S: 
+    srcl/S: rad_page_inches.Value = SmartML.GetValueB(PS, "page/@inches", True, True)
     srcl/S: rad_page_cm.Value = Not rad_page_inches.Value
+    srcl/S: 
+    srcl/S: If ValuesInPoints Then
+    srcl/S: If rad_page_inches.Value Then
+    srcl/S: edt_page_top.SetValue  PointsToInches(SmartML.GetValueN(PS, "page/@top"))
+    srcl/S: edt_page_bottom.SetValue  PointsToInches(SmartML.GetValueN(PS, "page/@bottom"))
+    srcl/S: edt_page_left.SetValue  PointsToInches(SmartML.GetValueN(PS, "page/@left"))
+    srcl/S: edt_page_right.SetValue  PointsToInches(SmartML.GetValueN(PS, "page/@right"))
+    srcl/S: 
+    srcl/S: edt_page_width.SetValue PointsToInches(SmartML.GetValueN(PS, "page/@width"))
+    srcl/S: edt_page_height.SetValue PointsToInches(SmartML.GetValueN(PS, "page/@height"))
+    srcl/S: 
+    srcl/S: Else
+    srcl/S: edt_page_top.SetValue  PointsToCM(SmartML.GetValueN(PS, "page/@top"))
+    srcl/S: edt_page_bottom.SetValue  PointsToCM(SmartML.GetValueN(PS, "page/@bottom"))
+    srcl/S: edt_page_left.SetValue  PointsToCM(SmartML.GetValueN(PS, "page/@left"))
+    srcl/S: edt_page_right.SetValue  PointsToCM(SmartML.GetValueN(PS, "page/@right"))
+    srcl/S: 
+    srcl/S: edt_page_width.SetValue PointsToCM(SmartML.GetValueN(PS, "page/@width"))
+    srcl/S: edt_page_height.SetValue PointsToCM(SmartML.GetValueN(PS, "page/@height"))
+    srcl/S: End If
+    srcl/S: Else
+    srcl/S: edt_page_top.SetValue  SmartML.GetValueN(PS, "page/@top")
+    srcl/S: edt_page_bottom.SetValue  SmartML.GetValueN(PS, "page/@bottom")
+    srcl/S: edt_page_left.SetValue  SmartML.GetValueN(PS, "page/@left")
+    srcl/S: edt_page_right.SetValue  SmartML.GetValueN(PS, "page/@right")
+    srcl/S: 
+    srcl/S: edt_page_width.SetValue SmartML.GetValueN(PS, "page/@width")
+    srcl/S: edt_page_height.SetValue SmartML.GetValueN(PS, "page/@height")
+    srcl/S: 
+    srcl/S: End If
     srcl/S: Initializing = False
     srcl/S: 
     srcl/S: // Mac and Windows use PrinterSetup for page size.
@@ -1668,16 +1763,16 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
     srcl/S: #Endif  
     srcl/S: 
     srcl/S: 
-    srcl/S: can_font_title.SetFont SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "title")
-    srcl/S: can_font_author.SetFont SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "author")
-    srcl/S: can_font_sections.SetFont SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "heading")
-    srcl/S: can_font_lyrics.SetFont SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
-    srcl/S: can_font_chords.SetFont SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
-    srcl/S: can_font_capo.SetFont SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
-    srcl/S: can_font_copyright.SetFont SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "copyright")
+    srcl/S: can_font_title.SetFont SmartML.GetValueF(PS, "title")
+    srcl/S: can_font_author.SetFont SmartML.GetValueF(PS, "author")
+    srcl/S: can_font_sections.SetFont SmartML.GetValueF(PS, "heading")
+    srcl/S: can_font_lyrics.SetFont SmartML.GetValueF(PS, "lyrics")
+    srcl/S: can_font_chords.SetFont SmartML.GetValueF(PS, "chords")
+    srcl/S: can_font_capo.SetFont SmartML.GetValueF(PS, "capo_chords")
+    srcl/S: can_font_copyright.SetFont SmartML.GetValueF(PS, "copyright")
     srcl/S: 
-    srcl/S: chk_layout_title_in_caps.Value = SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@caps_song_title")
-    srcl/S: edt_layout_heading_border_thickness.Text = SmartML.GetValue(App.MyPrintSettings.DocumentElement, "style/@border_thickness")
+    srcl/S: chk_layout_title_in_caps.Value = SmartML.GetValueB(PS, "style/@caps_song_title")
+    srcl/S: edt_layout_heading_border_thickness.Text = SmartML.GetValue(PS, "style/@border_thickness")
     srcl/S: 
     srcl/S: App.T.TranslateWindow Me, "print_settings", App.TranslationFonts
     srcl/S: App.CenterInControlScreen Me
@@ -1702,42 +1797,24 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   Meth/G: 
    Enco/N: 134217984
    name/S: ToCM
-   parm/S: e As EditField
+   parm/S: e As SEditFieldNumeric
    rslt/S: 
    flag/N: 1
    sorc/d: (Enco/N: 134217984
-		Sub ToCM(e As EditField)
-		  Dim temp As Double
-		  
-		  temp = CDbl(e.Text)
-		  temp = temp * 2.54
-		  e.Text = Format(temp, "###0.00")
-		  
-		Catch ex
-		  //
-		  // Chances are something messed up in CDbl.
-		  // Set to zero.
-		  e.Text = "0.00"
+		Sub ToCM(e As SEditFieldNumeric)
+		  e.SetValue PointsToCM(InchesToPoints(e.Value))
 		End Sub
    )
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
    name/S: ToInches
-   parm/S: e As EditField
+   parm/S: e As SEditFieldNumeric
    rslt/S: 
    flag/N: 1
    sorc/d: (Enco/N: 134217984
-		Sub ToInches(e As EditField)
-		  Dim temp As Double
-		  
-		  temp = CDbl(e.Text)
-		  temp = temp * 0.39
-		  e.Text = Format(temp, "###0.00")
-		  
-		Catch ex
-		  // Probably a conversion exception
-		  e.Text = "0.00"
+		Sub ToInches(e As SEditFieldNumeric)
+		  e.SetValue PointsToInches(CMtoPoints(e.Value))
 		End Sub
    )
   Meth/g: 
@@ -1752,6 +1829,25 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
     ntln/S: 
    sorc/g: 
   Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: ValuesInPoints As Boolean
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: ValuesInPoints As Boolean
+    ntln/S: 
+    ntln/S: This flag indicates if the margin values in the PrintSettings XML are in points.
+    ntln/S: 
+    ntln/S: This allows for a smooth transition from storing in inches or cm to storing in
+    ntln/S: points, and therefore being somewhat more precise and in line with the rest
+    ntln/S: of the page calculations since the base unit of measure for the Graphics object
+    ntln/S: is a point.
+    ntln/S: 
+    ntln/S: See documentation in the OpenSongUtils module for the conversion factors used.
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
  FDef/g: 
  PDef/D: (name/S: BackColor, PVal/S: 16777215)
  PDef/D: (name/S: Backdrop, PVal/S: 0)
@@ -1760,7 +1856,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  PDef/D: (name/S: Composite, PVal/S: True)
  PDef/D: (name/S: Frame, PVal/S: 1)
  PDef/D: (name/S: FullScreen, PVal/S: False)
- PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: GrowIcon, PVal/S: False)
  PDef/D: (name/S: HasBackColor, PVal/S: False)
  PDef/D: (name/S: Height, PVal/S: 325)
  PDef/D: (name/S: LiveResize, PVal/S: False)

@@ -1,0 +1,59 @@
+songs_mode/curr_folder
+sets_mode/current_set/saveas
+slide_editor/presentation
+slide_editor/origorder
+video_slides
+powerpoint_slides
+main_menu/settings/refresh_sets
+main_menu/file/quit
+main_menu/file/exit (Deleted)
+general_settings/general/startmode/song
+general_settings/general/startmode/set
+general_settings/newpaint
+presentation_helper/exit
+presentation_settings/click_to_change (Deleted)
+presentation_settings/right_click_to_clear (Deleted)
+presentation_settings/style/time
+presentation_settings/style/frames
+presentation_settings/style/initial_mode
+presentation_settings/default_slides -> presentation_settings/settings/default_slides
+presentation_settings/scripture_slides -> presentation_settings/settings/scripture_slides
+presentation_settings/transition_note -> presentation_settings/settings/transition_note
+presentation_settings/monitor/initial_mode
+*presentation_settings/style/song_subtitles/hymn_number
+*presentation_settings/style/song_subtitles/ccli_number
+*presentation_settings/style/song_subtitles/copyright
+*presentation_settings/style/song_subtitles/author
+presentation_settings/style/subtitles
+presentation_settings/style/subtitles/row0
+presentation_settings/style/subtitles/row1
+presentation_settings/style/subtitles/row2
+presentation_settings/style/subtitles/row3
+presentation_settings/style/subtitles/row4
+presentation_settings/style/highlight_chorus
+presentation_settings/style/initial_mode
+presentation_settings/style/blank_style
+presentation_settings/style/blank_prev
+presentation_settings/style/blank_next
+presentation_settings/logo/click_to_change
+presentation_settings/logo/right_click_to_clear
+presentation_settings/mouse_cursor
+presentation_settings/settings
+presentation_settings/settings/click_to_change
+presentation_settings/settings/right_click_to_clear
+print_preview/ccli_license
+print_preview/ccli_number
+print/*
+songml/*
+shared/untitled
+general_song_editor/hymn_number
+questions/changed
+
+help_topics
+style_editor/fonts_and_alignment/subtitles
+style_editor/fonts_and_alignment/song_subtitles
+song_lookup/folder
+print_settings/units
+print_settings/units/inches
+print_settings/units/cm
+main_menu/edit/selall

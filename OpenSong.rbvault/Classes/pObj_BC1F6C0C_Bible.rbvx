@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: Bible
- Size/N: 81
+ Size/N: 84
  bNtr/N: 0
  Intr/S: 
  Cnst/D: (Enco/N: 134217984, name/S: NT_PROTESTANT, type/N: 1, defn/S: 27, flag/N: 1)
@@ -986,8 +986,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    Try
 		      list = Scripture.Xql(query)
 		    Catch ex2 As XmlException
-		      ErrorCode = ex.ErrorNumber
-		      ErrorString = ex.Message + chr(10) + "At " + ex.Node + ", Token: " + ex.Token
+		      ErrorCode = ex2.ErrorNumber
+		      ErrorString = ex2.Message + chr(10) + "At " + ex2.Node + ", Token: " + ex2.Token
 		    End Try
 		    
 		    For i = 0 To list.Length - 1
@@ -1815,8 +1815,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    End If
 		    CanSearch = False
 		  Else // Toss it back up the chain
-		    Raise ex
 		    CanSearch = False
+		    Raise ex
 		  End If
 		End Sub
   )

@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626AC003E5AF0000000000000000000000000000000000000000
  Cont/N: -1072340153
  bCls/N: 1
  Name/S: Report
- Size/N: 72
+ Size/N: 80
  bNtr/N: 0
  Intr/S: 
  Meth/G: 
@@ -178,65 +178,76 @@ pObj/B: 426C6F6B704F626AC003E5AF0000000000000000000000000000000000000000
   parm/S: 
   rslt/S: Boolean
   flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Print() As Boolean
-		  //
-		  // Time to put it on paper
-		  //
-		  // Ed Palmer, January 2006
-		  //
-		  Dim i As Integer
-		  Dim CopyCount As Integer
-		  Dim PagesPrinted As Integer = 0
-		  Dim g As Graphics
-		  Dim PrinterPages As Group2D
-		  Dim xOffset, yOffset As Double
-		  
-		  App.DebugWriter.Write "Report.Print: Enter"
-		  // Let's check out some things to get ready
-		  
-		  If ps = Nil Then Return False // Gotta have a print setup object (TODO: Fix for Linux)
-		  
-		  PrinterPages = New Group2D
-		  
-		  If Not Generate(ps.HorizontalResolution / 72, PrinterPages) Then Return False
-		  
-		  If PrinterPages = Nil Then Return False // Nothing to print
-		  If PrinterPages.Count = 0 Then Return False // Ditto
-		  
-		  //
-		  // Should be OK now.  Time to print
-		  //
-		  
-		  g =  OpenPrinterDialog(ps, Window(0))
-		  If g = Nil Then Return False // Error, or user cancelled
-		  
-		  App.DebugWriter.Write StringUtils.Sprintf("Report.Print: copies %d, firstpage %d, lastpage %d, count %d",_
-		      g.Copies, g.FirstPage, g.LastPage, PrinterPages.Count)
-		  
-		  xOffset = (LeftMargin * ps.HorizontalResolution) + ps.PageLeft
-		  yOffset = (TopMargin * ps.VerticalResolution) + ps.PageTop
-		  
-		  For CopyCount = 1 To g.Copies
-		    For i = 1 To PrinterPages.Count 
-		      If i >= g.FirstPage And i <= g.LastPage Then
-		        App.DebugWriter.Write "Report.Print: Printing page "+ str(i)
-		        If PagesPrinted > 0 Then g.NextPage
-		        g.DrawObject PrinterPages.Item(i - 1), xOffset, yOffset
-		        PagesPrinted = PagesPrinted + 1
-		      End If
-		    Next i
-		  Next CopyCount
-		  
-		  //
-		  // For some reason, if this isn't done a second printing pass won't work
-		  //
-		  g = Nil
-		  App.DebugWriter.Write "Report.Print: Printed " + str(PagesPrinted) + " pages"
-		  App.DebugWriter.Write "Report.Print: Exit"
-		  Return True
-		End Function
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function Print() As Boolean
+   srcl/S: //
+   srcl/S: // Time to put it on paper
+   srcl/S: //
+   srcl/S: // Ed Palmer, January 2006
+   srcl/S: //
+   srcl/S: Dim i As Integer
+   srcl/S: Dim CopyCount As Integer
+   srcl/S: Dim PagesPrinted As Integer = 0
+   srcl/S: Dim g As Graphics
+   srcl/S: Dim PrinterPages As Group2D
+   srcl/S: Dim xOffset, yOffset As Double
+   srcl/S: 
+   srcl/S: App.DebugWriter.Write "Report.Print: Enter"
+   srcl/S: // Let's check out some things to get ready
+   srcl/S: 
+   srcl/S: If ps = Nil Then Return False // Gotta have a print setup object (TODO: Fix for Linux)
+   srcl/S: 
+   srcl/S: PrinterPages = New Group2D
+   srcl/S: 
+   srcl/S: If Not Generate(ps.HorizontalResolution / 72, PrinterPages) Then Return False
+   srcl/S: 
+   srcl/S: If PrinterPages = Nil Then Return False // Nothing to print
+   srcl/S: If PrinterPages.Count = 0 Then Return False // Ditto
+   srcl/S: 
+   srcl/S: //
+   srcl/S: // Should be OK now.  Time to print
+   srcl/S: //
+   srcl/S: 
+   srcl/S: g =  OpenPrinterDialog(ps, Window(0))
+   srcl/S: If g = Nil Then Return False // Error, or user cancelled
+   srcl/S: 
+   srcl/S: App.DebugWriter.Write StringUtils.Sprintf("Report.Print: copies %d, firstpage %d, lastpage %d, count %d",_
+   srcl/S: g.Copies, g.FirstPage, g.LastPage, PrinterPages.Count)
+   srcl/S: 
+   srcl/S: xOffset = (LeftMargin * ps.HorizontalResolution) + ps.PageLeft
+   srcl/S: yOffset = (TopMargin * ps.VerticalResolution) + ps.PageTop
+   srcl/S: 
+   srcl/S: //
+   srcl/S: // Mac OSX will manage copy count through the printer driver,
+   srcl/S: // but Windows requires the program to track this.
+   srcl/S: //
+   srcl/S: #If Not TargetMacOS
+   srcl/S: For CopyCount = 1 To g.Copies
+   srcl/S: #endif
+   srcl/S: For i = 1 To PrinterPages.Count 
+   srcl/S: If i >= g.FirstPage And i <= g.LastPage Then
+   srcl/S: App.DebugWriter.Write "Report.Print: Printing page "+ str(i)
+   srcl/S: If PagesPrinted > 0 Then g.NextPage
+   srcl/S: g.DrawObject PrinterPages.Item(i - 1), xOffset, yOffset
+   srcl/S: PagesPrinted = PagesPrinted + 1
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: Next i
+   srcl/S: 
+   srcl/S: #if Not TargetMacOS
+   srcl/S: Next CopyCount
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: //
+   srcl/S: // For some reason, if this isn't done a second printing pass won't work
+   srcl/S: //
+   srcl/S: g = Nil
+   srcl/S: App.DebugWriter.Write "Report.Print: Printed " + str(PagesPrinted) + " pages"
+   srcl/S: App.DebugWriter.Write "Report.Print: Exit"
+   srcl/S: Return True
+   srcl/S: End Function
+  sorc/g: 
  Meth/g: 
  Prop/G: 
   Enco/N: 134217984

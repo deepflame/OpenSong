@@ -39,16 +39,13 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
 		  App.DebugWriter.Write "Printwindow.cnv_page.paint: ps is OK"
 		  g.ForeColor = &cffffff
 		  g.FillRect 0, 0, g.Width, g.Height
-		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: set background to white"
 		  pg = PrintReport.GetPage(CurrentPage, Zoom)
-		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: assigned pg"
 		  If pg = Nil Then 
 		    App.DebugWriter.Write "PrintWindow.cnv_page.Paint: pg = Nil"
 		    Return
 		  End If
-		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: calculate xy offsets"
-		  x = PrintReport.LeftMargin * 72
-		  y = PrintReport.TopMargin * 72
+		  x = PrintReport.LeftMargin * 72 * Zoom
+		  y = PrintReport.TopMargin * 72 * Zoom
 		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: calling DrawObject with x, y: " + str(x) + ", " + str(y)
 		  g.DrawObject pg, x, y
 		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: Exit"
@@ -819,7 +816,7 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PrintWindow
-  Size/N: 208
+  Size/N: 216
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

@@ -4,7 +4,7 @@
 ##Format:2#
 Proj/B: 426C6F6B50726F6A000000000000000000000000000000000000000000000000
  PSIV/S: 5.5
- OPSp/S: OpenSong-10.rb
+ OPSp/S: OpenSong.rb
  ACnm/S: 
  AChp/S: 
  ACsv/S: localhost:7325
@@ -12,11 +12,11 @@ Proj/B: 426C6F6B50726F6A000000000000000000000000000000000000000000000000
  Ver2/S: 0
  Ver3/S: 0
  Rels/S: 2
- NnRl/S: 10
+ NnRl/S: 11
  Regn/S: 0
  SVer/S: 1.0.0 Beta 2
  LVer/S: 
- IVer/S: OpenSong 1.0.0 Beta 2 BL10
+ IVer/S: OpenSong 1.0.0 Beta 2 BL11
  DVew/N: 0
  prTp/N: 0
  DLan/N: 1

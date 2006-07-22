@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
  Cont/N: -1119363046
  bCls/N: 1
  Name/S: DebugOutput
- Size/N: 40
+ Size/N: 37
  bNtr/N: 0
  Intr/S: 
  Cnst/D: (Enco/N: 134217984, name/S: MAXDEBUGLEVEL, type/N: 1, defn/S: 10, flag/N: 0)
@@ -82,6 +82,18 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Level
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Level() As Integer
+		  Return DebugLevel
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Level
   parm/S: Assigns NewLevel As Integer
   rslt/S: 
   flag/N: 0
@@ -97,18 +109,6 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
 		    Raise ex
 		  End If
 		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Level
-  parm/S: 
-  rslt/S: Integer
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Level() As Integer
-		  Return DebugLevel
-		End Function
   )
  Meth/g: 
  Meth/G: 

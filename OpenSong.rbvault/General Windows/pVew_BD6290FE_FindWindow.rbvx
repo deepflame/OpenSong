@@ -1107,7 +1107,7 @@ pVew/B: 426C6F6B70566577BD6290FE0000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: FindWindow
-  Size/N: 148
+  Size/N: 153
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -1222,7 +1222,7 @@ pVew/B: 426C6F6B70566577BD6290FE0000000000000000000000000000000000000000
  PDef/D: (name/S: Composite, PVal/S: False)
  PDef/D: (name/S: Frame, PVal/S: 1)
  PDef/D: (name/S: FullScreen, PVal/S: False)
- PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: GrowIcon, PVal/S: False)
  PDef/D: (name/S: HasBackColor, PVal/S: False)
  PDef/D: (name/S: Height, PVal/S: 280)
  PDef/D: (name/S: LiveResize, PVal/S: False)

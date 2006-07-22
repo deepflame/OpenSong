@@ -58,14 +58,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  '
-		  ' Asking the user to save the song before going to sets mode could be considered
-		  ' controversial.  My philosophy is that since the user may go to sets mode and add this song to a
-		  ' set the user would assume the changes just made would be part of the set; this may not be true.
-		  'Or, the user might exit the program from sets mode; should the song be saved or abandoned?
-		  ' EMP, 1/8/05
-		  ActionSongAskSave
 		  SetMode 1
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: EnableMenuItems
+   sorc/d: (Enco/N: 134217984
+		Sub EnableMenuItems()
+		  
 		End Sub
    )
   HIns/g: 
@@ -315,21 +317,30 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Action
-   sorc/d: (Enco/N: 134217984
-		Sub Action()
-		  If Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/single_screen/@caption") Then
-		    ActionSongPresent PresentWindow.MODE_SINGLE_SCREEN
-		  ElseIf Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption") Then
-		    ActionSongPresent PresentWindow.MODE_PREVIEW
-		  ElseIf Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption") Then 
-		    If ScreenCount > 1 Then
-		      ActionSongPresent PresentWindow.MODE_DUAL_SCREEN
-		    Else
-		      InputBox.Message App.T.Translate("errors/no_multi_screen")
-		    End If
-		  End If
-		End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub Action()
+    srcl/S: If Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/single_screen/@caption") Then
+    srcl/S: ActionSongPresent PresentWindow.MODE_SINGLE_SCREEN
+    srcl/S: ElseIf Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption") Then
+    srcl/S: ActionSongPresent PresentWindow.MODE_PREVIEW
+    srcl/S: ElseIf Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption") Then 
+    srcl/S: #If TargetLinux
+    srcl/S: If (Screen(0).Width /2) > Screen(0).Height Then
+    srcl/S: ActionSongPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
+    srcl/S: Else
+    srcl/S: InputBox.Message App.T.Translate("errors/no_multi_screen")
+    srcl/S: End If
+    srcl/S: #Else
+    srcl/S: If ScreenCount > 1 Then
+    srcl/S: ActionSongPresent PresentWindow.MODE_DUAL_SCREEN
+    srcl/S: Else
+    srcl/S: InputBox.Message App.T.Translate("errors/no_multi_screen")
+    srcl/S: End If
+    srcl/S: #EndIF
+    srcl/S: End If
+    srcl/S: End Sub
+   sorc/g: 
   HIns/g: 
   HIns/G: 
    Enco/N: 1280
@@ -898,9 +909,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    'f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text)
 		    fullpath = lst_songs_songs.CellTag(Me.ListIndex, 0).StringValue + lst_songs_songs.Text
 		    f = Songs.GetFile(fullpath)
+		    
 		    If f <> Nil And f.Exists Then
 		      App.MouseCursor = WatchCursor
 		      CurrentSong = SmartML.XDocFromFile(f)
+		      
+		      // Open as Object...
+		      CurrentSongObj = New Song
+		      Call CurrentSongObj.Load(f) // We'll ignore error handling for the moment.  Not a good thing.
+		      
 		      'Changed save current song filename
 		      Globals.OldSongFileName = fullpath
 		      //++EMP 8/9/05 -- Show which folder this song is found in
@@ -972,17 +989,28 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(key As String) As Boolean
 		  Dim i, l As Integer
+		  Dim temp As TextEncoding
+		  Dim NewKey As String
+		  Dim SearchedEntry As String
 		  //++
 		  // Check for a modifier key being pressed...don't do anything if Control or Alt or Command is pressed
 		  //--
+		  App.DebugWriter.Write "MainWindow.lst_songs_songs.KeyDown: Enter"
 		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
 		  
-		  l = Len(KeyedSearch)
+		  App.DebugWriter.Write "MainWindow.lst_songs_songs.KeyDown: key = '" + key + "'"
+		  Key = ConvertEncoding(key, Encodings.UTF8)
+		  NewKey = ConvertEncoding(KeyedSearch + key, Encodings.UTF8)
+		  App.DebugWriter.Write "MainWindow.lst_songs_songs.KeyDown: NewKey = " + NewKey
+		  l = Len(NewKey)
+		  
 		  tmr_lookup.Reset
 		  For i = 0 To Me.ListCount - 1
-		    If Left(Me.List(i), l+1) = KeyedSearch + key Then
+		    SearchedEntry = ConvertEncoding(Left(Me.List(i), l), Encodings.UTF8)
+		    If SearchedEntry = NewKey Then
 		      Me.ListIndex = i
-		      KeyedSearch = KeyedSearch + key
+		      App.DebugWriter.Write "MainWindow.lst_songs_songs.KeyDown: Found match index, value: " + str(i) + " " + Me.List(i)
+		      KeyedSearch = NewKey
 		      Return True
 		    End If
 		  Next i
@@ -1041,6 +1069,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    lst_songs_songs.SortedColumn = 0
 		    lst_songs_songs.Sort
 		  End If
+		  edt_songs_curr_folder.Text = ""
 		End Sub
    )
   HIns/g: 
@@ -1287,7 +1316,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      edt_slide_title.Text = SmartML.GetValue(sDoc.DocumentElement, "title", True)
 		      edt_slide_order.Text = SmartML.GetValue(xgroup, "@presentation",False)
 		      edt_slide_origorder.Text = SmartML.GetValue(sDoc.DocumentElement, "presentation", False)
-		      Status_InSetEditable = True 'EMP, changed 1/18 for custom order
+		      Status_InSetEditable = True 'EMP, changed 1/18/2005 for custom order
 		      Status_InSetChanged = False
 		      Status_InSetSongEdit = True
 		      EnableMenuItems
@@ -1367,6 +1396,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(key As String) As Boolean
 		  Dim i, l As Integer
+		  If Asc(Key) = 27 Then 'Escape
+		    KeyedSearch = "" 'Reset search string
+		    Return True
+		  End If
+		  
+		  // If a modifier key is pressed, let RealBasic handle it so menus, etc. will work properly
+		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
+		  
 		  l = Len(KeyedSearch)
 		  tmr_lookup.Reset
 		  For i = 0 To Me.ListCount - 1
@@ -1820,21 +1857,30 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Action
-   sorc/d: (Enco/N: 134217984
-		Sub Action()
-		  If Me.MenuItem = App.T.Translate("sets_mode/current_set/present/single_screen/@caption") Then
-		    ActionSetPresent PresentWindow.MODE_SINGLE_SCREEN
-		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption") Then
-		    ActionSetPresent PresentWindow.MODE_PREVIEW
-		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/dual_screen/@caption") Then 
-		    If ScreenCount > 1 Then
-		      ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
-		    Else
-		      InputBox.Message App.T.Translate("errors/no_multi_screen")
-		    End If
-		  End If
-		End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub Action()
+    srcl/S: If Me.MenuItem = App.T.Translate("sets_mode/current_set/present/single_screen/@caption") Then
+    srcl/S: ActionSetPresent PresentWindow.MODE_SINGLE_SCREEN
+    srcl/S: ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption") Then
+    srcl/S: ActionSetPresent PresentWindow.MODE_PREVIEW
+    srcl/S: ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/dual_screen/@caption") Then 
+    srcl/S: #If TargetLinux
+    srcl/S: If (Screen(0).Width /2) > Screen(0).Height Then
+    srcl/S: ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
+    srcl/S: Else
+    srcl/S: InputBox.Message App.T.Translate("errors/no_multi_screen")
+    srcl/S: End If
+    srcl/S: #Else
+    srcl/S: If ScreenCount > 1 Then
+    srcl/S: ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
+    srcl/S: Else
+    srcl/S: InputBox.Message App.T.Translate("errors/no_multi_screen")
+    srcl/S: End If
+    srcl/S: #EndIF
+    srcl/S: End If
+    srcl/S: End Sub
+   sorc/g: 
   HIns/g: 
   HIns/G: 
    Enco/N: 1280
@@ -1959,6 +2005,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  Dim f As FolderItem
+		  Dim SongPath As String
+		  Dim FolderPath As String
 		  
 		  Dim xgroups, newGroup As XmlNode
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
@@ -1982,6 +2030,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    End If
 		    SmartML.SetValue newGroup, "@name", f.Name
 		    SmartML.SetValue newGroup, "@type", "song"
+		    //++
+		    // EMP, May 2006
+		    //
+		    // Add a path attribute relative to the base songs directory.  Otherwise, two instances
+		    // of the same song name in a parent/child folder relationship will never find the song
+		    // in the child folder.
+		    //
+		    SongPath = f.Parent.AbsolutePath
+		    FolderPath = MainWindow.Songs.GetRootFolder.AbsolutePath
+		    SongPath = Mid(SongPath, Len(FolderPath) + 1) //Take off the leading path separator
+		    SongPath = ReplaceAll(SongPath, "\", "/") // Canonical path for a FolderDB item
+		    SmartML.SetValue newGroup, "@path", SongPath
+		    //--
 		    f = SongPickerWindow.Popup
 		  Wend
 		End Sub
@@ -3534,7 +3595,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim f, oldf as FolderItem
 		  Dim i As Integer
 		  old = pop_sets_sets.Text
-		  ActionSetSave
 		  
 		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
 		  If Len(t) > 0 Then
@@ -4999,7 +5059,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: PanelCount, PVal/S: 4)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: Top, PVal/S: 34)
-  PDef/D: (name/S: Value, PVal/S: 2)
+  PDef/D: (name/S: Value, PVal/S: 1)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 495)
  Ctrl/g: 
@@ -7293,7 +7353,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: True)
-  PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: Mask, PVal/S: >CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC, Enco/N: 134217984)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_song_presentation, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -9883,7 +9943,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainWindow
-  Size/N: 230
+  Size/N: 244
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -9891,7 +9951,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Activate
    sorc/d: (Enco/N: 134217984
 		Sub Activate()
-		  If Status_Presentation Then PresentWindow.Show
+		  If Status_Presentation Then PresentWindow.SetFocus
 		  If App.SplashShowing Then Splash.Show
 		End Sub
    )
@@ -9901,12 +9961,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: CancelClose
    sorc/d: (Enco/N: 134217984
 		Function CancelClose(appQuitting as Boolean) As Boolean
+		  // Cancel the close if we're presenting.
+		  If Status_Presentation Then Return True
+		  
 		  App.MouseCursor = WatchCursor
 		  
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@y", Str(Top)
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@x", Str(Left)
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@width", Str(Width)
-		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@height", Str(Height)
+		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@y", CStr(Top)
+		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@x", CStr(Left)
+		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@width", CStr(Width)
+		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@height", CStr(Height)
 		  
 		  App.MouseCursor = Nil
 		  Return False
@@ -9946,7 +10009,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    mnu_file_pagesetup.Enabled = True
 		    If Status_SongOpen Then
 		      btn_song_print.Enabled = True
-		      btn_song_present.Enabled = True
+		      btn_song_present.Enabled = True And (Not Status_Presentation)
 		      btn_song_export.Enabled = True
 		      btn_song_rename.Enabled = True
 		      btn_song_move.Enabled = True
@@ -9964,7 +10027,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      edt_song_title.Enabled = True
 		      edt_song_author.Enabled = True
 		      edt_song_copyright.Enabled = True
-		      edt_song_presentation.Enabled = True
+		      edt_song_presentation.Enabled = True And (Not Status_Presentation)
 		      edt_song_ccli.Enabled = True
 		      lst_song_themes.Enabled = True
 		      pop_song_capo.Enabled = True
@@ -10097,7 +10160,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      btn_set_add_style.Enabled = True
 		      btn_set_add_slides.Enabled = True
 		      btn_set_add_scripture.Enabled = True
-		      btn_set_present.Enabled = True
+		      btn_set_present.Enabled = True And (Not Status_Presentation)
 		      btn_set_print_songs.Enabled = True
 		      btn_set_print_order.Enabled = True
 		      btn_set_rename.Enabled = True
@@ -10758,16 +10821,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    End If
 		    
 		    i = 0
-		    While i < pop_sets_sets.ListCount And StringUtils.StrCompT(t, pop_sets_sets.List(i)) = ">"
+		    While i < pop_sets_sets.ListCount And StringUtils.CompareHymnBookOrder(t, pop_sets_sets.List(i)) = 1
 		      i = i + 1
 		    Wend
+		    
 		    pop_sets_sets.InsertRow i, t
-		    pop_sets_sets.ListIndex = i
 		    
 		    Status_SetOpen = True
 		    Status_SetChanged = False
 		    Status_InSetOpen = False
 		    Status_InSetChanged = False
+		    
+		    pop_sets_sets.ListIndex = i
+		    
 		    EnableMenuItems
 		  End If
 		End Sub
@@ -10795,8 +10861,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  
 		  Status_Presentation = True
+		  'Self.Hide
 		  
+		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode
+		  
 		  '++JRC reset cursor
 		  App.MouseCursor = Nil
 		  'Me.MouseCursor = Nil
@@ -11147,7 +11216,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: App.MouseCursor = Nil
     srcl/S:  
     srcl/S: Status_Presentation = True
+    srcl/S: 
     srcl/S: PresentWindow.Present setDoc, Mode
+    srcl/S: 
+    srcl/S: 'Self.Hide
     srcl/S: 
     srcl/S: App.MouseCursor = Nil
     srcl/S: End Sub
@@ -11283,6 +11355,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim f As FolderItem
 		  Dim theme As String
 		  Dim i As Integer
+		  Dim FullName As String
 		  
 		  If Not noWrite Then
 		    'Changed
@@ -11292,9 +11365,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", Globals.OldSongFileName)
 		      End If
 		    Else
-		      f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text)
+		      FullName = lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0).StringValue + lst_songs_songs.Text
+		      f = Songs.GetFile(FullName)
 		      If f = Nil Then
-		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", FullName)
 		      End If
 		    End if
 		  End If
@@ -11352,7 +11426,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 1
    sorc/d: (Enco/N: 134217984
 		Sub Find()
-		  If FindWindow.Popup(Find) Then FindNext
+		  App.DebugWriter.Write "MainWindow.Find: Enter"
+		  If FindWindow.Popup(Find) Then 
+		    FindStartSong = lst_songs_songs.ListIndex
+		    App.DebugWriter.Write "MainWindow.Find: FindStartSong = " + Str(lst_songs_songs.ListIndex)
+		    FindNext
+		  End If
+		  App.DebugWriter.Write "MainWindow.Find: Exit"
 		End Sub
    )
   Meth/g: 
@@ -11364,6 +11444,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 1
    sorc/d: (Enco/N: 134217984
 		Sub FindNext()
+		  App.DebugWriter.Write "MainWindow.FindNext: Enter"
 		  If Find.FindString.Len = 0 Then
 		    Find
 		    Return
@@ -11388,7 +11469,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  i = lst_songs_songs.ListIndex
 		  If i < 0 Then
 		    i = 0 ' if there is no song selected, select the first
-		    f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.List(i))
+		    If FindStartSong < 0 Then FindStartSong = 0 //By implication, if i<0, this is too
+		    App.DebugWriter.Write("MainWindow.FindNext: Open " + str(i) + " " +  lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
+		    f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
 		    If f = Nil Or Not f.Exists Then
 		      App.MouseCursor = Nil
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
@@ -11453,18 +11536,39 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		        If pge_contents.Value <> 1 Then pge_contents.Value = 1
 		      End If
 		    Else
-		      i = i + 1
-		      If i < lst_songs_songs.ListCount Then
-		        f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.List(i))
-		        If f = Nil Or Not f.Exists Then
-		          App.MouseCursor = Nil
-		          InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
-		          Return
+		      Do 
+		        i = i + 1
+		        If i >= lst_songs_songs.ListCount Then 
+		          i = 0 // Circle around to the beginning
 		        End If
-		        s = SmartML.XDocFromFile(f)
-		      End If
+		        //
+		        //++ Check for finished
+		        //
+		        If i = FindStartSong Then Exit
+		        //--
+		        If i < lst_songs_songs.ListCount Then
+		          f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
+		          If f = Nil Or Not f.Exists Then
+		            App.MouseCursor = Nil
+		            InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+		            Return
+		          End If
+		          s = SmartML.XDocFromFile(f)
+		          If s = Nil Then
+		            App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.list(i), 1)
+		            App.MouseCursor = Nil
+		            InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
+		            App.MouseCursor = WatchCursor
+		          End If
+		        End If
+		      Loop Until s <> Nil
 		    End If
-		    
+		    //++ 
+		    // See if we left the loop because we are at the end.  If so, leave the While loop
+		    //--
+		    If i = FindStartSong Then 
+		      Exit
+		    End If
 		  Wend
 		  
 		  If found = Nil Then
@@ -11473,6 +11577,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  
 		  App.MouseCursor = Nil
+		  App.DebugWriter.Write("MainWindow.FindNext: Exit")
 		  Return
 		  
 		  ' First, let's check the current song after the cursor
@@ -11558,6 +11663,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  '++JRC
 		  Dim CurStyle As XmlNode
 		  '--
+		  Dim SongPath As String
 		  
 		  App.MouseCursor = WatchCursor
 		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
@@ -11565,7 +11671,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  While slide_group <> Nil
 		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
 		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
-		      f = Songs.GetFile(SmartML.GetValue(slide_group, "@name", True))
+		      SongPath = SmartML.GetValue(slide_group, "@path", False)
+		      If SongPath <> "" Then
+		        SongPath = SongPath + SmartML.GetValue(slide_group, "@name")
+		      Else
+		        SongPath = SmartML.GetValue(slide_group, "@name")
+		      End If
+		      f = Songs.GetFile(SongPath)
 		      If f = Nil Then
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
 		        songDoc = Nil
@@ -11654,29 +11766,45 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  btn_song_print.SetEnabled True
 		  btn_song_present.SetEnabled True
 		  
-		  edt_song_title.Text = SmartML.GetValue(CurrentSong.DocumentElement, "title", True)
-		  edt_song_author.Text = SmartML.GetValue(CurrentSong.DocumentElement, "author", True)
-		  edt_song_copyright.Text = SmartML.GetValue(CurrentSong.DocumentElement, "copyright", True)
-		  edt_song_hymn_number.Text = SmartML.GetValue(CurrentSong.DocumentElement, "hymn_number", True)
-		  ' Josh
-		  edt_song_presentation.Text = SmartML.GetValue(CurrentSong.DocumentElement, "presentation", True)
-		  edt_song_ccli.Text = SmartML.GetValue(CurrentSong.DocumentElement, "ccli", True)
-		  chk_song_capo_print.Value = SmartML.GetValueB(CurrentSong.DocumentElement, "capo/@print", True)
-		  edt_song_key.Text = SmartML.GetValue(CurrentSong.DocumentElement, "key", True)
-		  edt_song_aka.Text = SmartML.GetValue(CurrentSong.DocumentElement, "aka", True)
-		  edt_song_key_line.Text = SmartML.GetValue(CurrentSong.DocumentElement, "key_line", True)
-		  edt_song_user1.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user1", True)
-		  edt_song_user2.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user2", True)
-		  edt_song_user3.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user3", True)
+		  // Load from the object
 		  
+		  edt_song_title.Text = CurrentSongObj.Title
+		  edt_song_author.Text = CurrentSongObj.Author
+		  edt_song_copyright.Text = CurrentSongObj.Copyright
+		  edt_song_hymn_number.Text = CurrentSongObj.HymnNumber
+		  edt_song_presentation.Text = CurrentSongObj.Presentation
+		  edt_song_ccli.Text = CurrentSongObj.CCLISongNumber
+		  chk_song_capo_print.Value = CurrentSongObj.PrintCapoChords
+		  edt_song_key.Text = CurrentSongObj.Key
+		  edt_song_aka.Text = CurrentSongObj.AKA
+		  edt_song_key_line.Text = CurrentSongObj.KeyLine
+		  edt_song_user1.Text = CurrentSongObj.User1
+		  edt_song_user2.Text = CurrentSongObj.User2
+		  edt_song_user3.Text = CurrentSongObj.User3
+		  
+		  'edt_song_title.Text = SmartML.GetValue(CurrentSong.DocumentElement, "title", True)
+		  'edt_song_author.Text = SmartML.GetValue(CurrentSong.DocumentElement, "author", True)
+		  'edt_song_copyright.Text = SmartML.GetValue(CurrentSong.DocumentElement, "copyright", True)
+		  'edt_song_hymn_number.Text = SmartML.GetValue(CurrentSong.DocumentElement, "hymn_number", True)
+		  '' Josh
+		  'edt_song_presentation.Text = SmartML.GetValue(CurrentSong.DocumentElement, "presentation", True)
+		  'edt_song_ccli.Text = SmartML.GetValue(CurrentSong.DocumentElement, "ccli", True)
+		  'chk_song_capo_print.Value = SmartML.GetValueB(CurrentSong.DocumentElement, "capo/@print", True)
+		  'edt_song_key.Text = SmartML.GetValue(CurrentSong.DocumentElement, "key", True)
+		  'edt_song_aka.Text = SmartML.GetValue(CurrentSong.DocumentElement, "aka", True)
+		  'edt_song_key_line.Text = SmartML.GetValue(CurrentSong.DocumentElement, "key_line", True)
+		  'edt_song_user1.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user1", True)
+		  'edt_song_user2.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user2", True)
+		  'edt_song_user3.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user3", True)
+		  '
 		  Dim found, foundAlt, i As Integer
 		  found = 0
 		  
 		  Dim theme, alttheme As String
-		  theme = SmartML.GetValue(CurrentSong.DocumentElement, "theme", True)
-		  alttheme = SmartML.GetValue(CurrentSong.DocumentElement, "alttheme", False)
-		  If Len(alttheme) > 0 Then theme = theme + "; "+ alttheme
-		  theme = ";" + theme + ";"
+		  'theme = SmartML.GetValue(CurrentSong.DocumentElement, "theme", True)
+		  'alttheme = SmartML.GetValue(CurrentSong.DocumentElement, "alttheme", False)
+		  'If Len(alttheme) > 0 Then theme = theme + "; "+ alttheme
+		  theme = ";" + CurrentSongObj.ThemeList + ";"
 		  ' Build the dictionary
 		  Dim themeDict As new Dictionary
 		  For i = 1 To CountFields(theme, ";")
@@ -11703,7 +11831,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Next i
 		  
 		  Dim capo As Integer
-		  capo = SmartML.GetValueN(CurrentSong.DocumentElement, "capo", True)
+		  'capo = SmartML.GetValueN(CurrentSong.DocumentElement, "capo", True)
+		  capo = CurrentSongObj.Capo
 		  found = 0
 		  pop_song_capo.DeleteAllRows
 		  pop_song_capo.AddRow ""
@@ -11715,7 +11844,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  pop_song_capo.ListIndex = found
 		  
 		  Dim tempo As String
-		  tempo = SmartML.GetValue(CurrentSong.DocumentElement, "tempo", True)
+		  'tempo = SmartML.GetValue(CurrentSong.DocumentElement, "tempo", True)
+		  tempo = CurrentSongObj.Tempo
 		  found = 0
 		  pop_song_tempo.DeleteAllRows
 		  pop_song_tempo.AddRow ""
@@ -11727,7 +11857,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  pop_song_tempo.ListIndex = found
 		  
 		  Dim timesig As String
-		  timesig = SmartML.GetValue(CurrentSong.DocumentElement, "time_sig", True)
+		  'timesig = SmartML.GetValue(CurrentSong.DocumentElement, "time_sig", True)
+		  timesig = CurrentSongObj.TimeSignature
 		  found = 0
 		  pop_song_time_sig.DeleteAllRows
 		  pop_song_time_sig.AddRow ""
@@ -11740,13 +11871,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  edf_song_lyrics.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
 		  
-		  If SmartML.GetNode(CurrentSong.DocumentElement, "style", False) = Nil Then
+		  'If SmartML.GetNode(CurrentSong.DocumentElement, "style", False) = Nil Then
+		  If CurrentSongObj.SongStyle = Nil Then
 		    chk_song_style.Value = False
 		    can_song_style.SetEnabled False
 		  Else
 		    chk_song_style.Value = True
 		    can_song_style.Enabled = True
 		    can_song_style.SetStyleNode SmartML.GetNode(CurrentSong.DocumentElement, "style")
+		    can_song_style.SetStyleNode CurrentSongObj.SongStyle.ToXML.DocumentElement
 		  End If
 		End Sub
    )
@@ -11891,8 +12024,17 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub SetMode(i As Integer)
+		  Dim idx As Integer
 		  If i = 0 Then
 		    ' Change to Song mode
+		    ActionSetAskSave
+		    If Status_SetChanged Then //User cancelled from AskSave, revert the set since we are changing modes
+		      Status_InSetChanged = False // These two lines keep pop_sets_sets.Change calls to ActionSetAskSave from firing
+		      Status_SetChanged = False
+		      idx = pop_sets_sets.ListIndex //cheats, forces a change event that will reload the set
+		      pop_sets_sets.ListIndex = -1
+		      pop_sets_sets.ListIndex = idx
+		    End If
 		    btn_mode_songs_mode.SetStuck True
 		    btn_mode_sets_mode.SetStuck False
 		    pge_controls.Value = 0
@@ -11901,6 +12043,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    mnu_mode_sets.Checked = False
 		  Else
 		    ' Change to Set mode
+		    ActionSongAskSave
+		    If Status_SongChanged Then ActionSongRevert //Easier to do here; we've already got a method defined
 		    btn_mode_songs_mode.SetStuck False
 		    btn_mode_sets_mode.SetStuck True
 		    pge_controls.Value = 1
@@ -12534,6 +12678,17 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   Prop/g: 
   Prop/G: 
    Enco/N: 134217984
+   decl/S: CurrentSongObj As Song
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CurrentSongObj As Song
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
    decl/S: Find As FindClass
    sorc/G: 
     Enco/N: 134217984
@@ -12549,6 +12704,18 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     Enco/N: 134217984
     ntln/S: FindFocus As Integer
     ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: FindStartSong As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: FindStartSong As Integer
+    ntln/S: This holds the pointer to the first song (usually the current song) involved in the active search.
+    ntln/S: Allows wrapping search support.
     ntln/S: 
    sorc/g: 
   Prop/g: 
@@ -12787,7 +12954,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  PDef/D: (name/S: GrowIcon, PVal/S: True)
  PDef/D: (name/S: HasBackColor, PVal/S: False)
  PDef/D: (name/S: Height, PVal/S: 564)
- PDef/D: (name/S: LiveResize, PVal/S: True)
+ PDef/D: (name/S: LiveResize, PVal/S: False)
  PDef/D: (name/S: MacProcID, PVal/S: 0)
  PDef/D: (name/S: MaxHeight, PVal/S: 32000)
  PDef/D: (name/S: MaxWidth, PVal/S: 32000)

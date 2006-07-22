@@ -153,14 +153,34 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentWindow
-  Size/N: 196
+  Size/N: 200
   Supr/S: Window
   bNtr/N: 0
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_BLACK, type/N: 1, defn/S: 1013, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_BRIDGE, type/N: 1, defn/S: 1008, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_CHORUS, type/N: 1, defn/S: 1009, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_EXIT, type/N: 1, defn/S: 1018, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_EXIT_NOPROMPT, type/N: 1, defn/S: 1020, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_EXIT_PROMPT, type/N: 1, defn/S: 1019, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_FIRST_SLIDE, type/N: 1, defn/S: 1003, flag/N: 0)
   Cnst/D: (Enco/N: 134217984, name/S: ACTION_FIRST_SLIDE_OF_SECTION, type/N: 1, defn/S: 126, flag/N: 1)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_FREEZE, type/N: 1, defn/S: 1014, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_HIDE, type/N: 1, defn/S: 1017, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_LAST_SLIDE, type/N: 1, defn/S: 1004, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_LOGO, type/N: 1, defn/S: 1016, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_NEXT_SECTION, type/N: 1, defn/S: 1005, flag/N: 0)
   Cnst/D: (Enco/N: 134217984, name/S: ACTION_NEXT_SLIDE, type/N: 1, defn/S: 1001, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_NORMAL, type/N: 1, defn/S: 1012, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_PRECHORUS, type/N: 1, defn/S: 1010, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_PREV_SECTION, type/N: 1, defn/S: 1006, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_PREV_SLIDE, type/N: 1, defn/S: 1002, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_TAG, type/N: 1, defn/S: 1011, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_VERSE, type/N: 1, defn/S: 1007, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: ACTION_WHITE, type/N: 1, defn/S: 1014, flag/N: 0)
   Cnst/D: (Enco/N: 134217984, name/S: ControlKey, type/N: 1, defn/S: &h1000, flag/N: 1)
   Cnst/D: (Enco/N: 134217984, name/S: CopyAllChildren, type/N: 3, defn/S: True, flag/N: 1)
   Cnst/D: (Enco/N: 134217984, name/S: MODE_DUAL_SCREEN, type/N: 1, defn/S: 2, flag/N: 0)
+  Cnst/D: (Enco/N: 134217984, name/S: MODE_LINUX_DUAL_SCREEN, type/N: 1, defn/S: 4, flag/N: 0)
   Cnst/D: (Enco/N: 134217984, name/S: MODE_PREVIEW, type/N: 1, defn/S: 3, flag/N: 0)
   Cnst/D: (Enco/N: 134217984, name/S: MODE_SINGLE_SCREEN, type/N: 1, defn/S: 1, flag/N: 0)
   Cnst/D: (Enco/N: 134217984, name/S: OptionKey, type/N: 1, defn/S: &h10000, flag/N: 1)
@@ -170,9 +190,11 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: CancelClose
    sorc/d: (Enco/N: 134217984
 		Function CancelClose(appQuitting as Boolean) As Boolean
+		  MainWindow.Status_Presentation = False
 		  If HelperActive Then PresentHelperWindow.Close
 		  timerAdvance.Enabled = False
-		  MainWindow.Status_Presentation = False
+		  MainWindow.Show
+		  MainWindow.SetFocus
 		  
 		  'ShowCursorMBS
 		End Function
@@ -184,6 +206,8 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Close()
 		  MainWindow.Status_Presentation = False
+		  MainWindow.Show
+		  MainWindow.SetFocus
 		End Sub
    )
   HIns/g: 
@@ -438,10 +462,25 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		  ' Temporarily just do the regular function until the code is fleshed out
 		  '
 		  Const ASC_KEY_SPACE = 32
+		  Const ASC_KEY_LEFT = 28
+		  Const ASC_KEY_RIGHT = 29
+		  Const ASC_KEY_UP = 30
+		  Const ASC_KEY_DOWN = 31
+		  Const ASC_KEY_PGDN=12
+		  Const ASC_KEY_PGUP =11
+		  Const ASC_KEY_HOME=1
+		  Const ASC_KEY_END=4
+		  
 		  Dim DontCare As Boolean
 		  Dim Command As Integer
-		  Command = AscB(Key)
-		  If Key = " " Then Command = ACTION_NEXT_SLIDE
+		  
+		  Command = AscB(Lowercase(Key))
+		  
+		  Select Case Command
+		  Case ASC_KEY_SPACE
+		    Command = ACTION_NEXT_SLIDE
+		  End Select
+		  
 		  DontCare = PerformAction(Command)
 		  Return DontCare
 		End Function
@@ -794,7 +833,9 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		      ElseIf Keyboard.AsyncKeyDown(&h35) Or Action = 27 Then ' Escape
 		        '++JRC: made the prompt optional 
 		        if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
-		          If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then Close
+		          If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then 
+		            Close
+		          End If
 		        else
 		          Close
 		        end if
@@ -1250,21 +1291,25 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		        If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
 		          presentScreen = controlScreen
 		          HelperActive = False
+		          MenuBarVisible = False
 		          Top = Screen(presentScreen).Top
 		          Left = Screen(presentScreen).Left
 		          Width = Screen(presentScreen).Width
 		          Height = Screen(presentScreen).Height
 		          FullScreen = True
+		          
 		        ElseIf PresentMode = MODE_PREVIEW Then ' Split Screen
 		          HelperActive = True
+		          MenuBarVisible = True
 		          presentScreen = controlScreen
-		          Top = Screen(presentScreen).Top + 10
-		          Left = Screen(presentScreen).Left + 10
-		          Width = Screen(presentScreen).Width - PresentHelperWindow.Width - 30
-		          Height = Width * Screen(presentScreen).Height / Screen(presentScreen).Width ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
+		          Top = Screen(presentScreen).AvailableTop + 10
+		          Left = Screen(presentScreen).AvailableLeft + 10
+		          Width = Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 30
+		          Height = Width * Screen(presentScreen).AvailableHeight / Screen(presentScreen).Width ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
 		          
-		          PresentHelperWindow.Left = Screen(presentScreen).Left + Screen(presentScreen).Width - PresentHelperWindow.Width - 10
-		          PresentHelperWindow.Top = Screen(presentScreen).Top + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
+		          PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).Width - PresentHelperWindow.Width - 10
+		          PresentHelperWindow.Top = Screen(presentScreen).AvailableTop + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
+		          
 		        ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens
 		          HelperActive = True
 		          Top = Screen(presentScreen).Top
@@ -1272,9 +1317,20 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		          Width = Screen(presentScreen).Width
 		          Height = Screen(presentScreen).Height
 		          FullScreen = True
-		          
+		          MenuBarVisible = (presentScreen > 0) // Only show the menu bar if we're presenting on a secondary screen
 		          PresentHelperWindow.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - PresentHelperWindow.Width) / 2
 		          PresentHelperWindow.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height - PresentHelperWindow.Height) / 2
+		        ElseIf PresentMode = MODE_LINUX_DUAL_SCREEN Then ' Linux Xinerama Screen
+		          HelperActive = True
+		          presentScreen = controlScreen
+		          Top = Screen(presentScreen).Top
+		          Left = Screen(presentScreen).Left + (Screen(presentScreen).Width / 2)
+		          Width = Screen(presentScreen).Width / 2
+		          Height = Screen(presentScreen).Height
+		          
+		          
+		          PresentHelperWindow.Left = Screen(presentScreen).Left + (Screen(presentScreen).Width /2)  - PresentHelperWindow.Width - 10
+		          PresentHelperWindow.Top = Screen(presentScreen).Top + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
 		        End If
 		        
 		        If HelperActive And Width < 320 Then
@@ -1311,11 +1367,15 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		        End If
 		        
 		        'Show
+		        App.MinimizeWindow(MainWindow)
 		        If HelperActive Then
 		          PresentHelperWindow.SetMode Me.Mode, False
+		          App.RestoreWindow(PresentHelperWindow)
+		          PresentHelperWindow.lst_all_slides.SetFocus
 		        Else
 		          ResetPaint XCurrentSlide
 		        End If
+		        
 		        
 		        'TODO: Allow the user to use a custom image for the cursor, the trick will be in
 		        'drawing the image without destroying the background
@@ -1641,11 +1701,11 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  PDef/D: (name/S: BackColor, PVal/S: 0)
  PDef/D: (name/S: Backdrop, PVal/S: 0)
  PDef/D: (name/S: BalloonHelp, PVal/S: )
- PDef/D: (name/S: CloseBox, PVal/S: True)
+ PDef/D: (name/S: CloseBox, PVal/S: False)
  PDef/D: (name/S: Composite, PVal/S: False)
  PDef/D: (name/S: Frame, PVal/S: 3)
  PDef/D: (name/S: FullScreen, PVal/S: False)
- PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: GrowIcon, PVal/S: False)
  PDef/D: (name/S: HasBackColor, PVal/S: True)
  PDef/D: (name/S: Height, PVal/S: 300)
  PDef/D: (name/S: LiveResize, PVal/S: False)
@@ -1661,6 +1721,6 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  PDef/D: (name/S: Title, PVal/S: Presentation, Enco/N: 134217984)
  PDef/D: (name/S: Visible, PVal/S: True)
  PDef/D: (name/S: Width, PVal/S: 300)
- PDef/D: (name/S: ZoomIcon, PVal/S: True)
+ PDef/D: (name/S: ZoomIcon, PVal/S: False)
 pVew/b: 
 ##RBvx-End#

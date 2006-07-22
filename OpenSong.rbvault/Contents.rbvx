@@ -119,7 +119,6 @@
 #removemask	pPic	BD504015
 #SBufferedCanvas	pObj	BD5D5529
 #FindWindow	pVew	BD6290FE
-#FindClass	pObj	BD63392A
 #DebugOutput	pObj	BFB5C9C0
 #SetML	pObj	BCB48FB3
 #SongML	pObj	BC9C3ECD
@@ -146,13 +145,18 @@
 #Report	pObj	C003E5AF
 #LeadSheetReport	pObj	C003DEC5
 #SubtitleList	pObj	BFC0AAA8
-#SlideStyle	pObj	BF4CF8E0
 #ScripturePickerWindow	pVew	BC6ACDD5
 #SEditField	pObj	C0422E02
 #MainWindow	pVew	BBC29222
 #Bible	pObj	BC1F6C0C
 #SearchWindow	pVew	79910FFF
 #TOCReport	pObj	C00A2982
+#FindClass	pObj	BD63392A
+#SaveDialog	pObj	C091CF68
+#SEditFieldNumeric	pObj	C097E40A
+#OpenSongUtils	pObj	C09C57D6
+#Song	pObj	C0C3650C
+#SlideStyle	pObj	BF4CF8E0
 ##External Files:	
 ##VaultHdrEnd#
 ##RBvx-End#

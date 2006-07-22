@@ -1,0 +1,78 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC091CF680000000000000000000000000000000000000000
+ Name/S: SaveDialog
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SaveDialog
+ Size/N: 696
+ Supr/S: MessageDialog
+ bNtr/N: 0
+ Intr/S: 
+ Cnst/D: (Enco/N: 134217984, name/S: SAVEDIALOG_CANCEL, type/N: 1, defn/S: -1, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: SAVEDIALOG_DONTSAVE, type/N: 1, defn/S: 0, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: SAVEDIALOG_SAVE, type/N: 1, defn/S: 1, flag/N: 0)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Constructor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  
+		  ActionButton.Caption = App.T.Translate("shared/save/@caption")
+		  ActionButton.Default = True
+		  ActionButton.Visible = True
+		  
+		  AlternateActionButton.Caption = App.T.Translate("shared/nosave/@caption")
+		  AlternateActionButton.Visible = True
+		  
+		  CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
+		  CancelButton.Visible = True
+		  CancelButton.Cancel = True
+		  
+		  
+		  Title = App.T.Translate("input_box/@title")
+		  
+		  Icon = 3 // Question mark
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Display
+  parm/S: ItemName As String
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Display(ItemName As String) As Integer
+		  Dim ResultButton As MessageDialogButton
+		  Dim Result As Integer
+		  
+		  Message = App.T.Translate("shared/save/@message", ItemName)
+		  
+		  ResultButton = ShowModal
+		  
+		  Select Case ResultButton
+		    
+		  Case ActionButton
+		    Result = SAVEDIALOG_SAVE
+		    
+		  Case AlternateActionButton
+		    Result = SAVEDIALOG_DONTSAVE
+		    
+		  Case CancelButton
+		    Result = SAVEDIALOG_CANCEL
+		    
+		  End Select
+		  
+		  Return Result
+		End Function
+  )
+ Meth/g: 
+pObj/b: 
+##RBvx-End#

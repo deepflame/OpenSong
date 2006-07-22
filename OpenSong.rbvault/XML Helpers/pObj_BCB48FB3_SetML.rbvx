@@ -277,13 +277,13 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		          // Within reasonable wrapping limits?
 		          If MaxLineLen = 0 Then 
 		            Profiler.EndProfilerEntry
-		            GoTo DrawText // Why bother?
+		            GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
 		          End If
 		          HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
 		          VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
 		          WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
 		          If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
-		            g.TextSize = g.TextSize * WrapPercent
+		            g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
 		            Profiler.EndProfilerEntry
 		            GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
 		          End If
@@ -299,7 +299,7 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		          
 		          'While g.StringWidth(line) / (g.Width - (2*RealBorder)) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		          While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
-		            g.TextSize = g.TextSize * .95
+		            g.TextSize = Floor(g.TextSize * .95)
 		          Wend
 		          
 		          Profiler.EndProfilerEntry
@@ -344,11 +344,11 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		              lines(i) = line
 		              'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		              While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
-		                g.TextSize = g.TextSize * .95
+		                g.TextSize = Floor(g.TextSize * .95)
 		              Wend
 		              'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
 		              While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
-		                g.TextSize = g.TextSize * .95
+		                g.TextSize = Floor(g.TextSize * .95)
 		              Wend
 		              i = i + 1 ' skip the extra
 		            End If
@@ -357,16 +357,18 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		          Profiler.EndProfilerEntry
 		          Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
 		          
+		          DrawText: 'EMP 09/05
+		          
 		          ' Post-shrink - we did our best, this is just in case.
 		          While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
 		            ' FUTURE PROBLEM: When we size it down, we should rewrap it all
-		            g.TextSize = g.TextSize * .95
+		            g.TextSize = Floor(g.TextSize * .95)
 		          Wend
 		          
 		          Profiler.EndProfilerEntry
 		          Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
 		          
-		          DrawText: 'EMP 09/05
+		          
 		          
 		          bodyStyle.Size = g.TextSize
 		          line = ""

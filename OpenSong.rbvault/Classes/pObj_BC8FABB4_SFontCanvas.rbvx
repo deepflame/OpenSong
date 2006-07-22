@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABC8FABB40000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SFontCanvas
- Size/N: 125
+ Size/N: 128
  Supr/S: SBufferedCanvas
  bNtr/N: 0
  Intr/S: 

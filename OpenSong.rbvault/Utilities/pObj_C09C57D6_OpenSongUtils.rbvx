@@ -1,0 +1,188 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
+ Name/S: OpenSongUtils
+ Cont/N: -1119363046
+ bCls/N: 0
+ Name/S: OpenSongUtils
+ Size/N: 24
+ bNtr/N: 0
+ Intr/S: 
+ Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_CM, type/N: 2, defn/S: 0.035277778, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_INCH, type/N: 2, defn/S: 0.013888889, flag/N: 0)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CMtoPoints
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function CMtoPoints(Points As String) As String
+		  //++
+		  // Polymorphic version of CMtoPoints
+		  //--
+		  
+		  Return CStr(CMtoPoints(CDbl(Points)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CMtoPoints
+  parm/S: CM As Double
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function CMtoPoints(CM As Double) As Double
+		  //++
+		  //
+		  // Convert centimeters to points.
+		  // Uses the conversion value defined by Adobe
+		  // This converts 72 points to precisely 2.54 cm
+		  // Therefore, 72 pt = 2.54 cm = 1 in
+		  //
+		  // Value obtained from www.onlineconversion.com
+		  //
+		  // Ed Palmer, May 2006
+		  //++
+		  
+		  Return CM / POINT_TO_CM
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InchesToPoints
+  parm/S: Inches As Double
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function InchesToPoints(Inches As Double) As Double
+		  //++
+		  // Convert Inches to points
+		  //
+		  // Uses the value for point defined by Adobe
+		  // This precisely converts 72 points to one inch
+		  //
+		  // Value obtained from www.onlineconversion.com
+		  //
+		  // Ed Palmer, May 2006
+		  //--
+		  
+		  Return Inches / POINT_TO_INCH
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InchesToPoints
+  parm/S: Inches As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function InchesToPoints(Inches As String) As String
+		  //++
+		  // Polymorphic version of InchesToPoints
+		  //--
+		  
+		  Return CStr(InchesToPoints(CDbl(Inches)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToCM
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToCM(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToCM
+		  //--
+		  
+		  Return CStr(PointsToCM(CDbl(Points)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToCM
+  parm/S: Points As Double
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToCM(Points As Double) As Double
+		  //++
+		  //
+		  // Convert points to centimeters.
+		  // Uses the conversion value defined by Adobe
+		  // This converts 72 points to precisely 2.54 cm
+		  // Therefore, 72 pt = 2.54 cm = 1 in
+		  //
+		  // Value obtained from www.onlineconversion.com
+		  //
+		  // Ed Palmer, May 2006
+		  //++
+		  
+		  Return Points * POINT_TO_CM
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToInches
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToInches(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToInches
+		  //--
+		  
+		  Return CStr(PointsToInches(CDbl(Points)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToInches
+  parm/S: Points As Double
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToInches(Points As Double) As Double
+		  //++
+		  // Convert points to inches
+		  //
+		  // Uses the value for point defined by Adobe
+		  // This precisely converts 72 points to one inch
+		  //
+		  // Value obtained from www.onlineconversion.com
+		  //
+		  // Ed Palmer, May 2006
+		  //--
+		  
+		  Return Points * POINT_TO_INCH
+		End Function
+  )
+ Meth/g: 
+ Note/G: 
+  Enco/N: 134217984
+  name/S: Overview
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Overview
+   ntln/S: 
+   ntln/S: This module holds OpenSong specific methods that
+   ntln/S: provide general functions for the program but cannot
+   ntln/S: be classified in one of the other utility modules.
+   ntln/S: 
+  sorc/g: 
+ Note/g: 
+pObj/b: 
+##RBvx-End#

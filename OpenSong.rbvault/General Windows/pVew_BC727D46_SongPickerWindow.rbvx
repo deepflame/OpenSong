@@ -15,8 +15,10 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
-		  If lst_all_songs.ListIndex >= 0 Then
-		    f = MainWindow.Songs.GetFile(lst_all_songs.Text)
+		  If Me.ListIndex >= 0 Then
+		    App.DebugWriter.Write("SongPickerWindow.lst_all_songs.Change: New selection is '" +_
+		        Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
+		    f = MainWindow.Songs.GetFile(Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
 		    btn_add.Enabled = True
 		  End If
 		End Sub
@@ -49,18 +51,34 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		  ElseIf Asc(Key) = 30 Then ' Up
 		    KeyedSearch = ""
 		    Return False
+		  ElseIf Asc(Key) = 27 Then 'Escape
+		    KeyedSearch = ""
+		    Return True 'Keep dialog box from closing
 		  End If
 		  
 		  Dim i, l As Integer
-		  l = Len(KeyedSearch)
+		  Dim NewKey As String
+		  Dim SearchedEntry As String
+		  
+		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
+		  
+		  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: key = '" + key + "'"
+		  Key = ConvertEncoding(key, Encodings.UTF8)
+		  NewKey = ConvertEncoding(KeyedSearch + key, Encodings.UTF8)
+		  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: NewKey = " + NewKey
+		  l = Len(NewKey)
+		  
 		  timerLookup.Reset
 		  For i = 0 To Me.ListCount - 1
-		    If Left(Me.List(i), l+1) = KeyedSearch + key Then
+		    SearchedEntry = ConvertEncoding(Left(Me.List(i), l), Encodings.UTF8)
+		    If SearchedEntry = NewKey Then
 		      Me.ListIndex = i
-		      KeyedSearch = KeyedSearch + key
+		      App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: Found match index, value: " + str(i) + " " + Me.List(i)
+		      KeyedSearch = NewKey
 		      Return True
 		    End If
 		  Next i
+		  Return False
 		End Function
    )
   HIns/g: 
@@ -373,7 +391,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: SongPickerWindow
-  Size/N: 148
+  Size/N: 156
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -392,6 +410,8 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		  
 		  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
+		  lst_all_songs.ListIndex = 0
+		  lst_all_songs.SetFocus
 		End Sub
    )
   HIns/g: 

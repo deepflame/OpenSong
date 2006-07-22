@@ -166,7 +166,21 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 148, Supr/S: CheckBox, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 144
+  Supr/S: PopupMenu
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Change
+   sorc/d: (Enco/N: 134217984
+		Sub Change()
+		  
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
  CBhv/G: 
   Name/S: 
   Size/N: 128
@@ -314,6 +328,12 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  
 		  SmartML.SetValueB Settings, "paint/@new", chk_general_newpaint.Value
 		  //--
+		  
+		  //++
+		  // Bug 1462055: Save changes on dialog exit instead of program exit
+		  //
+		  If Not SmartML.XDocToFile(App.MyMainSettings, App.DocsFolder.Child("Settings").Child("MainSettings")) Then SmartML.DisplayError
+		  //--
 		  Close
 		End Sub
    )
@@ -340,13 +360,13 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SFontCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SFontCanvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
@@ -1824,7 +1844,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainSettingsWindow
-  Size/N: 144
+  Size/N: 152
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -1856,8 +1876,10 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  Dim i As Integer
 		  pop_general_language.DeleteAllRows
 		  For i = 1 To f.Count
-		    pop_general_language.AddRow f.Item(i).Name
-		    If f.Item(i).Name = s Then pop_general_language.ListIndex = i - 1
+		    If Not f.Item(i).Directory Then 
+		      pop_general_language.AddRow f.Item(i).Name
+		      If f.Item(i).Name = s Then pop_general_language.ListIndex = i - 1
+		    End If
 		  Next i
 		  If pop_general_language.ListIndex < 0 Then pop_general_language.ListIndex = 0
 		  
@@ -1922,7 +1944,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  PDef/D: (name/S: Composite, PVal/S: False)
  PDef/D: (name/S: Frame, PVal/S: 1)
  PDef/D: (name/S: FullScreen, PVal/S: False)
- PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: GrowIcon, PVal/S: False)
  PDef/D: (name/S: HasBackColor, PVal/S: False)
  PDef/D: (name/S: Height, PVal/S: 370)
  PDef/D: (name/S: LiveResize, PVal/S: False)

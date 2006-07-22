@@ -12,8 +12,9 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  bNtr/N: 0
  Intr/S: 
  bApO/N: 1
- Cnst/D: (Enco/N: 134217984, name/S: DEBUG, type/N: 3, defn/S: False, flag/N: 0)
- Cnst/D: (Enco/N: 134217984, name/S: DEBUGLEVEL, type/N: 1, defn/S: 1, flag/N: 33)
+ Cnst/D: (Enco/N: 134217984, name/S: DEBUG, type/N: 3, defn/S: True, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: DEBUGLEVEL, type/N: 1, defn/S: 3, flag/N: 33)
+ Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_CM, type/N: 2, defn/S: 0.035277778, flag/N: 0)
  HIns/G: 
   Enco/N: 1280
   name/S: Close
@@ -332,10 +333,39 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		  Else
 		    controlScreen = 0
 		  End If
+		  
+		  // Do something reasonable for TwinView screens.
+		  // Thanks, Jon!  EMP, June 2006
+		  
+		  '#If TargetLinux                                                                    
+		  If (Screen(controlScreen).Width /2) > Screen(controlScreen).Height Then
+		    win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 4
+		  Else
+		    '#EndIf
+		    win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
+		  End If
+		  
 		  win.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height  - win.Height) / 2 + 10
 		  win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
 		End Sub
   )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ChangeWindowState
+  parm/S: wnd As Window, style As Integer
+  rslt/S: 
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub ChangeWindowState(wnd As Window, style As Integer)
+   srcl/S: #if TargetWin32
+   srcl/S: Declare Sub ShowWindow Lib "User32" (wnd As Integer, nCmdShow As Integer)
+   srcl/S: 
+   srcl/S: ShowWindow( wnd.WinHWND, style )
+   srcl/S: #endif
+   srcl/S: End Sub
+  sorc/g: 
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
@@ -465,23 +495,108 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   parm/S: win As Window
   rslt/S: 
   flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub MaximizeInControlScreen(win As Window)
-		  Dim controlScreen As Integer
-		  If App.MyPresentSettings <> Nil Then
-		    controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
-		    If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
-		  Else
-		    controlScreen = 0
-		  End If
-		  
-		  win.Width = Screen(controlScreen).Width - 40
-		  win.Height = Screen(controlScreen).Height - 115
-		  
-		  win.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height  - win.Height) / 2 + 10
-		  win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
-		End Sub
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub MaximizeInControlScreen(win As Window)
+   srcl/S: Dim controlScreen As Integer
+   srcl/S: If App.MyPresentSettings <> Nil Then
+   srcl/S: controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+   srcl/S: If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
+   srcl/S: Else
+   srcl/S: controlScreen = 0
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: // Added to support TwinView displays under Linux
+   srcl/S: // Thanks, Jon!  EMP, June 2006
+   srcl/S: 
+   srcl/S: #If TargetLinux
+   srcl/S: If (Screen(controlScreen).Width /2) > Screen(controlScreen).Height Then
+   srcl/S: win.Width = (Screen(controlScreen).Width /2) - 40
+   srcl/S: else
+   srcl/S: win.Width = Screen(controlScreen).Width - 40
+   srcl/S: End If
+   srcl/S: #Else
+   srcl/S: win.Width = Screen(controlScreen).Width - 40
+   srcl/S: #EndIf
+   srcl/S: 
+   srcl/S: win.Height = Screen(controlScreen).Height - 115
+   srcl/S: 
+   srcl/S: win.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height  - win.Height) / 2 + 10
+   srcl/S: win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
+   srcl/S: End Sub
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MinimizeWindow
+  parm/S: Wnd As Window
+  rslt/S: 
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub MinimizeWindow(Wnd As Window)
+   srcl/S: //++
+   srcl/S: // Provides functionality to minimize a window to the taskbar on Windows, or Hide the window on Mac
+   srcl/S: // No functionality yet on Linux (due to testing constraints)
+   srcl/S: //
+   srcl/S: // This routine can be replaced for all platforms by the Window.Minimize method when OpenSong moves
+   srcl/S: // to RealBasic 2006 or later.
+   srcl/S: //
+   srcl/S: // Ed Palmer, May 2006
+   srcl/S: //--
+   srcl/S: 
+   srcl/S: Dim hwnd As Integer
+   srcl/S: Dim status As Integer
+   srcl/S: Dim lparam As New MemoryBlock(4)
+   srcl/S: Const WM_SYSCOMMAND = 274
+   srcl/S: Const SC_MINIMIZE = 61472
+   srcl/S: 
+   srcl/S: #If TargetWin32 Then
+   srcl/S: Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
+   srcl/S: 
+   srcl/S: hwnd = Wnd.WinHWND
+   srcl/S: 
+   srcl/S: status = SendMessageA(wnd.WinHWND, WM_SYSCOMMAND, SC_MINIMIZE, lparam)
+   srcl/S: 
+   srcl/S: Return
+   srcl/S: 
+   srcl/S: #ElseIf TargetMacOS
+   srcl/S: Wnd.Hide
+   srcl/S: #Endif
+   srcl/S: End Sub
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RestoreWindow
+  parm/S: Wnd As Window
+  rslt/S: 
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub RestoreWindow(Wnd As Window)
+   srcl/S: 
+   srcl/S: Dim hwnd As Integer
+   srcl/S: Dim status As Integer
+   srcl/S: Dim lparam As New MemoryBlock(4)
+   srcl/S: Const WM_SYSCOMMAND = 274
+   srcl/S: Const SC_MINIMIZE = 61472
+   srcl/S: Const SC_RESTORE = &HF120
+   srcl/S: 
+   srcl/S: #If TargetWin32 Then
+   srcl/S: Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
+   srcl/S: 
+   srcl/S: hwnd = Wnd.WinHWND
+   srcl/S: 
+   srcl/S: status = SendMessageA(wnd.WinHWND, WM_SYSCOMMAND, SC_RESTORE, lparam)
+   srcl/S: 
+   srcl/S: Return
+   srcl/S: 
+   srcl/S: #ElseIf TargetMacOS
+   srcl/S: Wnd.Show
+   srcl/S: #Endif
+   srcl/S: End Sub
+  sorc/g: 
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984

@@ -1,0 +1,117 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC0422E020000000000000000000000000000000000000000
+ Name/S: SEditField
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SEditField
+ Size/N: 188
+ Supr/S: EditField
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: EnableMenuItems
+  sorc/d: (Enco/N: 134217984
+		Sub EnableMenuItems()
+		  Dim State As Boolean
+		  Dim c As New Clipboard
+		  State = SelLength > 0
+		  mnu_edit_clear.Enabled = State
+		  mnu_edit_cut.Enabled = State
+		  mnu_edit_copy.Enabled = State
+		  mnu_edit_selall.Enabled = Len(Text) > 0
+		  
+		  mnu_copy_paste.Enabled = c.TextAvailable
+		End Sub
+  )
+ HIns/g: 
+ MnuH/G: 
+  Enco/N: 1280
+  name/S: mnu_copy_paste
+  sorc/d: (Enco/N: 134217984
+		Function mnu_copy_paste() As Boolean
+		  Dim c As New Clipboard
+		  Dim f As FontFace
+		  
+		  If c.TextAvailable Then
+		    SelText = ConvertEncoding(c.Text, Encodings.UTF8)
+		    If Left(Name, 3) = "edf" Then // Fixed font EditField
+		      f = SmartML.GetValueF(App.MyMainSettings.DocumentElement, "fonts/fixed_width")
+		      SelTextFont = f.Name
+		      SelTextSize = f.Size
+		      SelBold = f.Bold
+		      SelItalic = f.Italic
+		      SelUnderline = f.Underline
+		    End If
+		  End If
+		  Return True
+		End Function
+  )
+ MnuH/g: 
+ MnuH/G: 
+  Enco/N: 1280
+  name/S: mnu_edit_clear
+  sorc/d: (Enco/N: 134217984
+		Function mnu_edit_clear() As Boolean
+		  SelText = ""
+		  Return True
+		End Function
+  )
+ MnuH/g: 
+ MnuH/G: 
+  Enco/N: 1280
+  name/S: mnu_edit_copy
+  sorc/d: (Enco/N: 134217984
+		Function mnu_edit_copy() As Boolean
+		  Dim c As New Clipboard
+		  If SelText.Len > 0 Then
+		    c.SetText SelText
+		  End If
+		  Return True
+		End Function
+  )
+ MnuH/g: 
+ MnuH/G: 
+  Enco/N: 1280
+  name/S: mnu_edit_cut
+  sorc/d: (Enco/N: 134217984
+		Function mnu_edit_cut() As Boolean
+		  Dim c As New Clipboard
+		  If SelText.Len > 0 Then
+		    c.SetText SelText
+		    SelText = ""
+		  End If
+		  Return True
+		End Function
+  )
+ MnuH/g: 
+ MnuH/G: 
+  Enco/N: 1280
+  name/S: mnu_edit_selall
+  sorc/d: (Enco/N: 134217984
+		Function mnu_edit_selall() As Boolean
+		  SelStart = 0
+		  SelLength = Len(Text)
+		End Function
+  )
+ MnuH/g: 
+ Note/G: 
+  Enco/N: 1280
+  name/S: Overview
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Overview
+   ntln/S: Subclassed from EditField, SEditField has additional code to support
+   ntln/S: Cut, Paste, Clear and Copy menu items and accelerators.
+   ntln/S: 
+   ntln/S: Assumes that a control with a name starting "edt" is a standard
+   ntln/S: EditField, but one starting "edf" is a fixed-font EditField.
+   ntln/S: 
+  sorc/g: 
+ Note/g: 
+pObj/b: 
+##RBvx-End#

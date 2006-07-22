@@ -1,0 +1,261 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
+ Name/S: SImageCanvas
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SImageCanvas
+ Size/N: 132
+ Supr/S: SBufferedCanvas
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseDown
+  sorc/d: (Enco/N: 134217984
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  Dim f As FolderItem
+		  
+		  If Enabled Then
+		    If IsCMMClick Then
+		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
+		        Image = Nil
+		        Base64 = ""
+		        Repaint
+		        Action
+		        Return True
+		      Else
+		        Repaint
+		        Return False
+		      End If
+		    Else
+		      f = ImageChooserWindow.Lookup 'GetOpenFolderItem("image/jpeg")
+		      If f <> Nil Then
+		        SetImageAsFile f
+		        Action
+		      Else
+		        Repaint
+		      End If
+		      Return True
+		    End If
+		  Else
+		    Return False
+		  End If
+		  
+		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Paint
+  sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  
+		  Dim bgDrawH, bgDrawW As Integer
+		  Dim bgHeightRatio, bgWidthRatio As Double
+		  Dim display_height As Integer
+		  Dim aspect_ratio As Double
+		  
+		  If Not Enabled Then
+		    g.ForeColor = FillColor
+		    g.FillRect 0, 0, Width, Height
+		    g.ForeColor = DarkBevelColor
+		    g.DrawRect 0, 0, Width, Height
+		    Return
+		  End If
+		  
+		  If Image <> Nil Then
+		    bgDrawH = Image.Height 
+		    bgDrawW = Image.Width
+		    bgHeightRatio = g.Height / bgDrawH
+		    bgWidthRatio = g.Width / bgDrawW
+		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
+		    display_height = bgDrawH * aspect_ratio
+		    display_height = g.Height - display_height
+		    display_height = display_height / 2
+		    
+		    Select Case PictureAspect
+		      
+		    Case SlideStyle.POS_CENTER
+		      
+		      g.DrawPicture Image, _
+		          (g.Width / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		          display_height, _
+		              bgDrawW * aspect_ratio, _
+		              bgDrawH * aspect_ratio, _
+		                  0, 0, bgDrawW, bgDrawH
+		              
+		            Case SlideStyle.POS_STRETCH
+		              g.DrawPicture Image, 0, 0, g.Width, g.Height, 0, 0, Image.Width, Image.Height
+		            End Select
+		          Else
+		            g.ForeColor = LightBevelColor
+		            g.FillRect 0, 0, Width, Height
+		            
+		            g.ForeColor = DarkBevelColor
+		            g.DrawRect 0, 0, Width, Height
+		            g.DrawLine 0, 0, Width, Height
+		          End If
+		          
+		        End Sub
+  )
+ HIns/g: 
+ Hook/D: (Enco/N: 134217984, name/S: Action, parm/S: , rslt/S: , flag/N: 33)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ClearImage
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub ClearImage()
+		  Base64 = ""
+		  Image = Nil
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Constructor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  PictureAspect = SlideStyle.POS_STRETCH // Default handling of background picture
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetImageAsPicture
+  parm/S: 
+  rslt/S: Picture
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetImageAsPicture() As Picture
+		  Return Image
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetImageAsString
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetImageAsString() As String
+		  Return Base64
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetImageAsFile
+  parm/S: f As FolderItem
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetImageAsFile(f As FolderItem)
+		  Dim inputStream As BinaryStream
+		  
+		  If f <> Nil Then
+		    inputStream = f.OpenAsBinaryFile(False)
+		    If inputStream <> Nil Then
+		      Base64 = EncodeBase64(inputStream.Read(f.Length))
+		      inputStream.Close
+		      Image = f.OpenAsPicture
+		    Else
+		      InputBox.Message App.T.Translate("errors/unreadable_image", f.AbsolutePath)
+		    End If
+		  End If
+		  
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetImageAsString
+  parm/S: str As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetImageAsString(str As String)
+		  Dim r As New Random
+		  Dim f As FolderItem
+		  Dim outputStream As BinaryStream
+		  
+		  If Len(Trim(str)) = 0 Then
+		    ClearImage
+		    Return
+		  End If
+		  
+		  f = PreferencesFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
+		  If f <> Nil Then
+		    Base64 = str
+		    outputStream = f.CreateBinaryFile("image/jpeg")
+		    outputStream.Write DecodeBase64(Base64)
+		    outputStream.Close
+		    Image = f.OpenAsPicture
+		    f.Delete
+		  End If
+		  
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetImagePosition
+  parm/S: Pos As Integer
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetImagePosition(Pos As Integer)
+		  // Set Center/Stretch attribute
+		  PictureAspect = Pos
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Base64 As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Base64 As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Image As Picture
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Image As Picture
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: PictureAspect As Integer
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: PictureAspect As Integer
+   ntln/S: Added to allow the SImageCanvas preview to work in the same way as the real thing, with Stretch & Center options
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

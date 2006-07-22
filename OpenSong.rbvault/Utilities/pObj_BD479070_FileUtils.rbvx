@@ -1,0 +1,161 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABD4790700000000000000000000000000000000000000000
+ Name/S: FileUtils
+ Cont/N: -1119363046
+ bCls/N: 0
+ Name/S: FileUtils
+ Size/N: 24
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: AbsolutePathToFolderItem
+  parm/S: path As String
+  rslt/S: FolderItem
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function AbsolutePathToFolderItem(path As String) As FolderItem
+		  Dim i, l As Integer
+		  Dim f As FolderItem
+		  path = ReplaceAll(path, "\", "/")
+		  l = CountFields(path, "/")
+		  f = GetFolderItem(NthField(path, "/", 1))
+		  For i = 2 To l
+		    If f <> Nil Then f = f.Child(NthField(path, "/", i))
+		  Next i
+		  Return f
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CopyPath
+  parm/S: fromFolder As FolderItem, toFolder As FolderItem, overwrite As String = "NEVER"
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function CopyPath(fromFolder As FolderItem, toFolder As FolderItem, overwrite As String = "NEVER") As Boolean
+		  Dim i As Integer
+		  Dim fromItem, toItem As FolderItem
+		  
+		  If toFolder = Nil Then Return False
+		  
+		  If Not toFolder.Exists Then toFolder.CreateAsFolder
+		  
+		  If Not toFolder.Exists Then Return False
+		  
+		  For i = 1 To fromFolder.Count
+		    fromItem = fromFolder.Item(i)
+		    toItem = toFolder.Child(fromItem.Name)
+		    
+		    If fromItem.Directory Then
+		      If Left(fromItem.Name, 1) <> "." Then
+		        If Not toItem.Exists Then toItem.CreateAsFolder
+		        If Not toItem.Exists Then Return False
+		        If Not CopyPath(fromItem, toItem) Then Return False
+		      End If
+		    Else ' not a directory
+		      If Left(fromItem.Name, 1) <> "." Then
+		        If _
+		            (overwrite = "ALWAYS") Or _
+		            (overwrite = "NEVER" And Not toItem.Exists) Or _
+		                (overwrite = "NEWER" And ((Not toItem.Exists) Or toItem.ModificationDate.TotalSeconds < fromItem.ModificationDate.TotalSeconds)) Then
+		              If toItem.Exists Then toItem.Delete
+		              If toItem.Exists Then Return False
+		              fromItem.CopyFileTo toFolder
+		              If Not toItem.Exists Then Return False
+		            End If
+		          End If
+		        End If
+		      Next i
+		      
+		      Return True
+		    End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IsSafeFileName
+  parm/S: name As String
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function IsSafeFileName(name As String) As Boolean
+		  Dim c As String
+		  Dim i, leng As Integer
+		  leng = Len(name)
+		  For i = 1 To leng
+		    c = Mid(name, i, 1)
+		    If InStr("\/:*?""<>|", c) <> 0 Then Return False
+		  Next
+		  Return True
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MakeSafeFileName
+  parm/S: name As String
+  rslt/S: String
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function MakeSafeFileName(name As String) As String
+		  Dim c, ret As String
+		  Dim i, leng As Integer
+		  leng = Len(name)
+		  
+		  For i = 1 To leng
+		    c = Mid(name, i, 1)
+		    If c = "\" Or c = "/" Or c = ":" Or c = "*" Or c = "?" Or c = """" Or c = "<" Or c = ">" Or c = "|" Then
+		    Else
+		      ret = ret + c
+		    End If
+		  Next
+		  
+		  Return Trim(ret)
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MakeSafeURLName
+  parm/S: name As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function MakeSafeURLName(name As String) As String
+		  Return Lowercase(ReplaceAll(name, " ", "_"))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RelativePathToFolderItem
+  parm/S: parent As FolderItem, path As String
+  rslt/S: FolderItem
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function RelativePathToFolderItem(parent As FolderItem, path As String) As FolderItem
+		  Dim i, count As Integer
+		  Dim folder As String
+		  
+		  path = ReplaceAll(path, "\", "/")
+		  count = CountFields(path, "/")
+		  
+		  For i = 1 To count
+		    folder = NthField(path, "/", i)
+		    If folder.Len > 0 Then
+		      parent = parent.Child(folder)
+		      If parent = Nil Then Return Nil
+		    End If
+		  Next i
+		  
+		  Return parent
+		End Function
+  )
+ Meth/g: 
+pObj/b: 
+##RBvx-End#

@@ -1,0 +1,52 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABCCA3E6D0000000000000000000000000000000000000000
+ Name/S: CheckVerThread
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: CheckVerThread
+ Size/N: 36
+ Supr/S: Thread
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Run
+  sorc/d: (Enco/N: 134217984
+		Sub Run()
+		  Dim major, minor, bug As Integer
+		  Dim s As String
+		  Dim xml As XmlDocument
+		  
+		  Dim sock As New HTTPSocket
+		  sock.httpProxyAddress = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy")
+		  sock.httpProxyPort = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "proxy/@port")
+		  'sock.Yield = True
+		  s = sock.Get("http://www.opensong.org/downloads/OpenSongInstall.xml", 20)
+		  
+		  If Len(s) = 0 Then Return
+		  Try
+		    xml = SmartML.XDocFromString(s)
+		  Catch XmlException
+		    Return
+		  End Try
+		  
+		  If xml <> Nil Then
+		    major = SmartML.GetValueN(xml.DocumentElement, "version/@major")
+		    minor = SmartML.GetValueN(xml.DocumentElement, "version/@minor")
+		    bug = SmartML.GetValueN(xml.DocumentElement, "version/@bug")
+		    
+		    If major > App.MajorVersion Or _
+		        (major = App.MajorVersion And minor > App.MinorVersion) Or _
+		        (major = App.MajorVersion And minor = App.MinorVersion And bug > App.BugVersion) Then
+		        InputBox.Message App.T.Translate("load_settings/latest_version/newer_available", Str(major) + "." + Str(minor) + "." + Str(bug))
+		      End If
+		    End If
+		    
+		  End Sub
+  )
+ HIns/g: 
+pObj/b: 
+##RBvx-End#

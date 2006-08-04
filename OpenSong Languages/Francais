@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Francais" author="Karel Leorier" version="0.9.9">
+<language name="Francais" author="Karel Leorier / adorateur.com" version="1.0 Beta2-10 Français">
 
   <load_settings>
     <print>Chargement des paramètres d'impression</print>
@@ -9,8 +9,10 @@
     <time_signatures>Chargement de la liste des signatures</time_signatures>
     <fonts>Chargement de la liste des polices de caractères</fonts>
     <latest_version>Recherche de la dernière version
-      <newer_available>Une nouvelle version (%1) est disponible. Vous pouvez la télécharger sur www.opensong.org.</newer_available>
+      <newer_available>Une nouvelle version (%1) est dispo.</newer_available>
     </latest_version>
+      <init_audio>Chargement de SXMS Audio</init_audio>
+    <load_plugins>Vérification des formats de fichiers pris en charge par les plugins Winamp</load_plugins>
   </load_settings>
 
   <load_data>
@@ -54,6 +56,8 @@
 
     <songs caption="Chants">Choisir un chant de la liste à charger dans l'éditeur.</songs>
 
+    <curr_folder caption="Répertoire">Montre le répertoire qui contient ce chant (par rapport au répertoire courant)</curr_folder>
+
     <song_folders caption="Répertoires">Choisir un répertoire de la liste pour filter la liste des chants en cours.
       <new>Créée un nouveau répertoire pour stocker des chants.</new>
       <delete>Supprime le répertoire sélectionné. Celui-ci doit être vide.</delete>
@@ -70,6 +74,8 @@
     <author caption="Auteur">Définit l'auteur du chant sélectionné.</author>
     <copyright caption="Copyright">Définit le copyright du chant sélectionné.</copyright>
     <ccli caption="n°CCLI">Définit n°CCLI du chant sélectionné.</ccli>
+    <hymn_number caption="Numéro">Définit le numéro de chant (dans un carnet, une liste...)</hymn_number>
+
     <presentation caption="Ordre des sections">Définit l'ordre de présentation du chant sélectionné. Les sections doivent êtr séparées par des espaces (ex. "V1 C V2 C")</presentation>
     <lyrics caption="Accords/Paroles">Modifier le chant en utilisant des lignes de section, de commentaires, d'accords et de paroles.</lyrics>
     <insert caption="Insérer"/>
@@ -85,6 +91,8 @@
       </ins_multi_verse>
       <ins_comment caption="Commentaire">Les commentaires s'impriment sur les partitions mais ne sont pas présentés sur les diapositives.</ins_comment>
       <ins_column caption="Nouvelle colonne">Les partitions peuvent contenir deux colonnes pour aider à faire une seule page avec les chants longs.</ins_column>
+      <ins_page caption="Nouvelle page">Indique qu'à cet endroit doit être placé un saut de page lors de l'impression de chants plus longs.</ins_page>
+
     <transpose caption="Transposer">Utiliser cette option pour transoposer automatiquement votre chant en n'importe quelle tonalité. Le nombre est celui du nombre de demi-tons.
       <using caption="Sens">Choisir le sens de la transposition.
         <sharps caption="Dièses"/>
@@ -119,6 +127,7 @@
       <save caption="Sauvegarder">Enregistrer la liste en cours sur le disque.</save>
       <rename caption="Renommer">Renommer la liste en cours.</rename>
       <delete caption="Supprimer">Supprime la liste en cours. (Les chants se trouvant dans cette liste ne seront pas supprimés de l'éditeur)</delete>
+       <saveas caption="Sauveg. sous">Enregistre la liste en cours sous un autre nom.</saveas>
       <present caption="Diaporama">Projeter la liste à l'écran. Vous avez l'option de projeter sur l'écran en cours, sur un autre écran, ou d'utiliser un seul écran pour prévisualiser la projection.
         <single_screen caption="Simple ecran"/>
         <dual_screen caption="Double ecran"/>
@@ -154,6 +163,8 @@
     <subtitle caption="Sous-titre">Définit le titre affiché sur la diapositive.</subtitle>
     <name caption="Nom">Définit le nom affiché dans la fenêtre d'aide à la présentation. Ce nom ne s'affiche pas sur la diapositive elle-même.</name>
     <slides caption="Diapositives">Contient le corps de texte de la (des) diapositive(s) en cours.</slides>
+    <presentation caption="Ordre personnalisé">Modifier l'ordre pour cette présentation</presentation>
+    <origorder caption="Ordre de présentation d'origine">Ordre de présentation du chant</origorder>       
     <notes caption="Notes">Ces notes s'affichent dans la fenêtre d'aide à la présentation lors de la projection sur double-écran.</notes>
     <insert caption="Insérer"/>
       <ins_slide caption="Diapositive">Permet la création de diapositives multiples qui partagent, le même titre, le même sous-titre, le même style, et/ou le mode même paramètre d'avance automatique. Les diapositives crées de cette façon peuvent aussi passer automatiquement en boucle.</ins_slide>
@@ -177,6 +188,11 @@
     <file caption="Fichier Vidéo">Définit le nom du fichier de cette diapositive vidéo.</file>
   </video_chooser>
 
+  <powerpoint_slides>
+    <header caption="Editeur de diapositives PowerPoint"/>
+    <name caption="Nom des diapositives">Nom utilisé par OpenSong pour identifier ce groupe de diapositives.</name>
+    <file caption="Fichier PowerPoint">Définit le fichier PowerPoint pour cette diapositive.</file>
+  </powerpoint_slides>
   <song_search title="Recherche un chant">
     <search caption="Saisie une chaîne de caractères :"/>
     <fields caption="SChamps de recherche">
@@ -211,6 +227,7 @@
         <dual_screen caption="Dou_ble Ecran"/>
         <preview_dual_screen caption="_Prévisualiser Double Ecran"/>
       </present>
+      <pagesetup caption="Mise en pa_ge"/>
       <print caption="_Imprimer"/>
       <print_alphabetical_toc caption="Imprimer _Table des matières _alphabétique"/>
       <print_categorical_toc caption="Imprimer Table des matières par _catégories"/>
@@ -234,6 +251,7 @@
       <print caption="Paramètres d'_Impression"/>
       <general caption="Paramètres _Généraux"/>
       <refresh_songs caption="_Actualiser le répertoire des chants"/>
+      <refresh_songs caption="Actualiser le répertoire des _listes"/>
       <install_module caption="_Installer un module"/>
     </settings>
     <help caption="_Aide">
@@ -248,6 +266,10 @@
       <ccli caption="N° de licence CCLI"/>
       <version_check caption="Vérifier si une nouvelle version est disponible au démarrage"/>
       <language caption="Langue"/>
+      <startmode caption="Fenêtre initiale">
+	<song caption="Chants"/>
+	<set  caption="Listes"/>
+      </startmode>
     </general>
     <proxy caption="Proxy">
       <host caption="Host"/>
@@ -274,6 +296,7 @@
       <message>Fermeture d'OpenSong. Cliquez sur OK et redémarrez OpenSong SVP. Vous pouvez copier vos anciens documents OpenSong vers leur nouvel emplacement avant le redémarrage.</message>
       <change caption="Modifier"/>
     </documents_folder>
+    <newpaint caption="Utiliser un nouveau style visuel"/>
   </general_settings>
 
   <print_settings title="Paramètres d'impression">
@@ -285,6 +308,7 @@
       <bottom caption="Bas"/>
       <width caption="Largeur"/>
       <height caption="Hauteur"/>
+      <message caption="Consulter les paramètres de la page pour définir les marges"/>
     </margins>
     <fonts>
       <title caption="Titre"/>
@@ -292,18 +316,30 @@
       <sections caption="Sections"/>
       <lyrics caption="Paroles"/>
       <chords caption="Accords"/>
-      <capo caption="Capo"/>
+      <capo caption="Transp."/>
       <copyright caption="Copyright"/>
     </fonts>
     <layout>
       <heading_border_thickness caption="Epaisseur de la bordure de titre"/>
       <title_in_caps caption="Titre en MAJ."/>
     </layout>
+    <units caption="Unités">
+      <inches caption="Pouces"/>
+      <cm caption="Centimètres"/>
+    </units>
   </print_settings>
 
   <presentation_settings title="Paramètres du diaporama">
+    <settings head1="Style" head2="Options">
+        <default_slides caption="Style de diapo par défaut"/>
+        <scripture_slides caption="Style par défaut pour les versets"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        <transition_note caption="*Les transitions dépendent beaucoup de la résolution de l'écran. Si vos transitions sont lentes, baissez la resolution de l'écran de projection. De plus, si les transitions n'ont pas lieu, il est possible que le nombre de couleurs de l'acran de projection ne soit trop faible."/>
+    </settings>
     <style caption="Style">
       <use_transitions caption="Utiliser des Transitions"/>
+      <transition_note caption="*Les transitions dépendent beaucoup de la résolution de l'écran. Si vos transitions sont lentes, baissez la resolution de l'écran de projection. De plus, si les transitions n'ont pas lieu, il est possible que le nombre de couleurs de l'acran de projection ne soit trop faible."/>
       <border_thickness caption="Epaisseur de bordure"/>
       <initial_mode caption="Mode initial"/>
       <modes>
@@ -314,20 +350,29 @@
         <hidden caption="Caché"/>
         <frozen caption="Figé"/>
       </modes>
-      <song_subtitles caption="Sous-titre des chants">
-        <author caption="Auteur"/>
-        <copyright caption="Copyright"/>
-      </song_subtitles>
+      <mouse_cursor caption="Curseur">
+        <arrow caption="Flèche"/> 
+        <cross caption="Croix"/>
+        <hidden caption="Invisible"/>
+        <hourglass caption="Hourglass"/> 
+        <ibeam caption="IBeam"/> 
+      </mouse_cursor>
       <blanks caption="Insérer des diapos vierges"/>
       <blanks_between caption="Esp. entre éléments"/>
+      <time caption="Durée" helptag="Durée de transition (plus long sur les systèmes lents)"/>
+      <frames caption="Etapes" helptag="Nombre d'étapes de transition entre chaque diapositive"/>
+      <blank_style caption="Les diapos viergent prennent le style de"/>
+      <blank_prev caption="Diapo précédente"/>
+      <blank_next caption="Diapo suivante"/>
+      
+<highlight_chorus caption="Mettre en valeur le texte du refrain"/>
+      
+<initial_mode caption="Mode de présentation par défaut"/>
     </style>
-    <transition_note caption="Les transitions sont grandement affectées par la résolution de l'écran. Si vos transisitons sont lentes, essayez de diminuer la résolution de l'écran qui gère la présentation. De même, si vous remarque que des transitions ne fonctionnen pas, cela peut provenir d'un nombre de couleur trop faible sur l'écran de présentation."/>
     <alerts caption="Messages">
       <font caption="Police"/>
       <align caption="Alignement"/>
     </alerts>
-    <default_slides caption="Style par défaut des diapos"/>
-    <scripture_slides caption="Style par défaut pour les versets"/>
     <monitor caption="Ecrans">
       <control caption="Ecran de configuration"/>
       <presentation caption="Ecran de présentation"/>
@@ -335,9 +380,20 @@
     </monitor>
     <logo caption="Logo">
       <mask caption="Masque"/>
-    </logo>
     <click_to_change caption="link(shared/click_to_change/@caption)"/>
     <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </logo>
+    <audio caption="Audio">
+      <file_to_play caption="Fichier à lire"/>
+      <browse caption="Naviguer"/>
+      <stop caption="Stop"/>
+      <play caption="Lecture"/>
+    </audio>
+
+    <misc caption="Divers">
+      <exit_prompt caption="Confirmer avant de quitter"/>
+      <descriptive_subtitle_info caption="Info de sous-titre"/>
+   </misc>
   </presentation_settings>
 
   <presentation_helper title="Aide à la présentation">
@@ -358,6 +414,7 @@
       <normal_screen caption="[M] Ecran normal"/>
       <return caption="[Esc] Sortir"/>
     </actions>
+    <exit caption="Quitter la présentation ?"/>
     <loop caption="Boucle"/>
     <keys>- Touches -
 Haut: Diapo suiv
@@ -398,18 +455,55 @@ T: Tag</keys>
     <pages caption="%1 sur %2"/>
     <print_setup caption="Param. d'impression"/>
     <print caption="Imprimer"/>
+    <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+    <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
   </print_preview>
+<print>
+     <continued caption="(suite)"/>
+     <toc caption="Table des matières"/>
+     <categorized caption="Par catégorie"/>
+     <alphabetical caption="Par ordre alpha"/>
+     <copyright caption="Copyright"/>
+     <page caption="Page %1"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+     <create_list caption="Creation de la liste de %1..."/>
 
+  </print>
+ 
+<songml>
+     <page caption="Page"/>
+     <capo caption="Transposition"/>
+     <copyright caption="Copyright"/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Pre-refrain"/>
+     <chorus caption="Refrain"/>
+     <bridge caption="Pont"/>
+     <tag caption="Libellé"/>
+     <verse caption="Verset"/>
+     <author caption=""/>
+     <hymn_number caption="N°"/>
+     <ccli_number caption="N° CCLI"/>
+     <ccli_license caption="N° de licence CCLI"/>
+     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
+     <separator caption="|NL|"/>
+  </songml>
   <style_editor title="Editeur de style">
     <fonts_and_alignment caption="Polices et alignements">
       <title caption="Titre"/>
       <subtitle caption="Sous-titre"/>
       <body caption="Corps"/>
       <align caption="Alignement"/>
+      <subtitles caption="Sous-titres du chant"/>
     </fonts_and_alignment>
     <background caption="Arrière-plan">
       <color caption="Couleur"/>
       <image caption="Image"/>
+      <position caption="Position">
+          <row0 caption="Elargir"/>
+          <row1 caption="Centrer"/>
+          <!-- <row2 caption="Tile"/> -->
+     </position>
       <trim_bottom caption="Rogne le pied"/>
       <pixels caption="px"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
@@ -449,6 +543,8 @@ T: Tag</keys>
     </bad_reference>
     <colon caption=":"/>
     <dash caption="-"/>
+    <search caption="link(shared/search/@caption)"/>
+    <insert caption="link(shared/insert/@caption)"/>
   </scripture_lookup>
 
   <module>
@@ -581,6 +677,13 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     </slide_groups>
   </style_preview>
 
+ <subtitles caption="Sous-titres" head1="Tri" head2="Actif" head3="Description">
+        <row0 caption="Copyright|copyright"/>
+        <row1 caption="Auteur|author"/>
+        <row2 caption="Numéro|hymn_number"/> 
+        <row3 caption="N° CCLI|ccli_number"/> 
+        <row4 caption="N° de licence CCLI|ccli_license"/>
+</subtitles>
   <shared>
     <ok caption="OK"/>
     <cancel caption="Annuler"/>
@@ -589,8 +692,12 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <browse caption="Parcourir"/>
     <add caption="Ajouter"/>
     <done caption="Terminé"/>
+    <untitled caption="Sans titre"/>
     <click_to_change caption="Cliquer pour modifier"/>
     <right_click_to_clear caption="Clic-droit pour effacer"/>
+    <insert caption="Insérer"/>
+    <close caption="Fermer"/>
+    <search caption="rechercher"/>
   </shared>
 
   <questions>
@@ -599,6 +706,7 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <save caption="Voulez-vous enregistrer vos modifications pour '%1'?"/>
     <delete caption="Êtes-vous sûr(e) de vouloir supprimer '%1'?"/>
     <clear caption="Êtes-vous sûr(e) de vouloir effacer cela ?"/>
+    <changed caption="Le chant a changé, voulez-vous le sauvegarder ?"/>
   </questions>
 
   <about>
@@ -634,6 +742,10 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <no_multi_screen>Ecrans multiples non trouvés.</no_multi_screen>
     <bad_file_name>Nom de fichier invalide '%1'.</bad_file_name>
     <internal>Erreur interne. Contacter le support technique.</internal>
+    <no_such_song>Impossible de trouver le chant.</no_such_song>
   </errors>
 
+  <open_titles>
+    <audio>Choisir un fichier audio à ouvri</audio>
+  </open_titles>  
 </language>

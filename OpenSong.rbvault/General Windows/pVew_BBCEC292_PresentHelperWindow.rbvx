@@ -72,7 +72,12 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Paint(g As Graphics)
 		  edt_slide_notes.Text = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "notes", True)
-		  
+		  If edt_slide_notes.Text = "" Then
+		    // Load the text of the slide into the notes field for easy reference.
+		    If lst_all_slides.ListIndex > -1 Then
+		      edt_slide_notes.Text = lst_all_slides.Cell(lst_all_slides.ListIndex, 2)
+		    End If
+		  End If
 		  g.DrawPicture PresentWindow.PreviewPicture, 0, 0, g.Width, g.Height, 0, 0, PresentWindow.PreviewPicture.Width, PresentWindow.PreviewPicture.Height
 		  
 		  Dim RealBorder, w, h As Integer
@@ -993,7 +998,7 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentHelperWindow
-  Size/N: 152
+  Size/N: 144
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

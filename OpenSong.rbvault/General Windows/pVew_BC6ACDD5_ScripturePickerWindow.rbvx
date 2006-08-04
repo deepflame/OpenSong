@@ -1346,7 +1346,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 184
+  Size/N: 176
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

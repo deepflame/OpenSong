@@ -46,6 +46,12 @@
 
 * Starting a presentation will not hide the taskbar on Windows or the menubar on Macintosh unless in single screen mode or dual screen mode with the lowest numbered screen selected as the presentation screen.
 
+* The taskbar (Windows) or menubar (Macintosh) will be hidden during a presentation only if the presentation window is the primary monitor.
+
+* The presentation helper window (control window) will show the slide text in the notes field if there are no slide notes.  In some cases this can be easier for the user to read than the slide preview.
+
+* Require confirmation for revert and print all songs. [Request 1528693]
+
 -= 1.0 Beta 2 Baselevel 10 -=
 
 * Corrected issue with presentation window not appearing on the proper screen when the user selects to display it on the first screen defined by the OS in a multi-screen environment.  [Bug 1463669]

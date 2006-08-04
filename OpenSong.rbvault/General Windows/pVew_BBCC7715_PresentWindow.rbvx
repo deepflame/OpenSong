@@ -153,7 +153,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentWindow
-  Size/N: 200
+  Size/N: 192
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: ACTION_BLACK, type/N: 1, defn/S: 1013, flag/N: 0)

@@ -32,21 +32,6 @@ pObj/B: 426C6F6B704F626A456597FF0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: SearchResult
-  parm/S: tbook as Integer, tchap as Integer, tver as Integer
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub SearchResult(tbook as Integer, tchap as Integer, tver as Integer)
-		  book= tbook
-		  chapter= tchap
-		  verse= tver
-		  value=10 '10 is base value
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: SearchResult
   parm/S: verse as String
   rslt/S: 
   flag/N: 0
@@ -58,6 +43,21 @@ pObj/B: 426C6F6B704F626A456597FF0000000000000000000000000000000000000000
 		  Me.chapter= Val(Nthfield(verse, " ", 2))
 		  Me.verse= Val(Nthfield(verse, " ", 3))
 		  Me.value=10
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SearchResult
+  parm/S: tbook as Integer, tchap as Integer, tver as Integer
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SearchResult(tbook as Integer, tchap as Integer, tver as Integer)
+		  book= tbook
+		  chapter= tchap
+		  verse= tver
+		  value=10 '10 is base value
 		End Sub
   )
  Meth/g: 

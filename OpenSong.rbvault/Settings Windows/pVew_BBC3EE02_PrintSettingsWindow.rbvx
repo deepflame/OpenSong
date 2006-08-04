@@ -538,8 +538,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: 2.409587e-8)
-  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Maximum, PVal/S: -nan)
+  PDef/D: (name/S: Minimum, PVal/S: -nan)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_top, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -623,8 +623,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
-  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Maximum, PVal/S: -nan)
+  PDef/D: (name/S: Minimum, PVal/S: -nan)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_left, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -708,8 +708,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
-  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Maximum, PVal/S: -nan)
+  PDef/D: (name/S: Minimum, PVal/S: -nan)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_bottom, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -793,8 +793,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
-  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Maximum, PVal/S: -nan)
+  PDef/D: (name/S: Minimum, PVal/S: -nan)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_right, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -905,8 +905,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
-  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Maximum, PVal/S: -nan)
+  PDef/D: (name/S: Minimum, PVal/S: -nan)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_width, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -990,8 +990,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: 2.409587e+6)
-  PDef/D: (name/S: Minimum, PVal/S: 2.409587e+6)
+  PDef/D: (name/S: Maximum, PVal/S: -nan)
+  PDef/D: (name/S: Minimum, PVal/S: -nan)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_height, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -1703,7 +1703,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PrintSettingsWindow
-  Size/N: 150
+  Size/N: 142
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

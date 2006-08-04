@@ -347,7 +347,7 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: InputBox
-  Size/N: 153
+  Size/N: 145
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -378,6 +378,33 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
 		  
 		  ShowModal
 		  Return OutputB
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: AskYN
+   parm/S: question As String
+   rslt/S: Boolean
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function AskYN(question As String) As Boolean
+		  //++
+		  // Ask a yes/no question
+		  // EMP, July 2006
+		  //--
+		  Dim status As Boolean
+		  Dim ok, cancel As String
+		  
+		  ok = btn_ok.GetLabel
+		  cancel = btn_cancel.GetLabel
+		  
+		  btn_ok.SetLabel(App.T.Translate("shared/yes/@caption"))
+		  btn_cancel.SetLabel(App.T.Translate("shared/no/@caption"))
+		  
+		  status = Ask(question)
+		  
+		  Return status
 		End Function
    )
   Meth/g: 

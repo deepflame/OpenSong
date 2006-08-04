@@ -610,7 +610,7 @@ T: Tag</keys>
     <option name="Christ: Death/Atonement"/>
     <option name="Christ: Power/Majesty"/>
     <option name="Christ: Love/Mercy"/>
-    <option name="Christ: Ressurection"/>
+    <option name="Christ: Resurrection"/>
     <option name="Christ: Second Coming"/>
     <option name="Christ: Victory"/>
     <option name="Church: Commitment/Obedience"/>
@@ -720,6 +720,8 @@ Click on this slide to edit its style.</body>
     <delete caption="Are you sure you want to delete '%1'?"/>
     <clear caption="Are you sure you want to clear this?"/>
     <changed caption="Current Song has been changed, do you want to save?"/>
+    <revert caption="All changes will be lost. Continue?"/>
+    <long_operation caption="This may take a long time to complete. Continue?"/>
   </questions>
 
   <about>

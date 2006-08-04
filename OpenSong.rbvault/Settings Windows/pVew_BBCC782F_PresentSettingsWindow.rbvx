@@ -2567,7 +2567,7 @@ pVew/B: 426C6F6B70566577BBCC782F0000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentSettingsWindow
-  Size/N: 169
+  Size/N: 161
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: ROW_AUTHOR, type/N: 1, defn/S: 1, flag/N: 1)

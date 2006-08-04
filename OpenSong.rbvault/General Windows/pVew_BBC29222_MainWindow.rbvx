@@ -9943,7 +9943,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainWindow
-  Size/N: 244
+  Size/N: 234
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -11270,6 +11270,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  //
 		  Dim rpt As LeadSheetReport
 		  Dim i As Integer
+		  //++
+		  // Feature request 1528693: require confirmation
+		  //--
+		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
+		  
 		  ActionSongAskSave
 		  If Status_SongChanged Then Return 'Don't print if user cancelled the save
 		  App.MouseCursor = WatchCursor
@@ -11325,6 +11330,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub ActionSongRevert()
 		  Dim f As FolderItem
+		  //++
+		  // Feature request 1528693: require confirmation
+		  //--
+		  If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
+		  
 		  f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text)
 		  
 		  If f <> Nil And f.Exists Then

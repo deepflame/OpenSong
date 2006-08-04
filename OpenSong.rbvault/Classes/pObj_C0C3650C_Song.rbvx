@@ -90,18 +90,6 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Capo
-  parm/S: 
-  rslt/S: Integer
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Capo() As Integer
-		  Return SongCapo
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Capo
   parm/S: Assigns NewValue As Integer
   rslt/S: 
   flag/N: 0
@@ -112,6 +100,18 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
 		    SongCapo = NewValue
 		  End If
 		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Capo
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Capo() As Integer
+		  Return SongCapo
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -171,6 +171,18 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Copyright
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Copyright() As String
+		  Return SongCopyright
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Copyright
   parm/S: Assigns NewValue As String
   rslt/S: 
   flag/N: 0
@@ -185,13 +197,14 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: Copyright
+  name/S: CustomPresentation
   parm/S: 
   rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function Copyright() As String
-		  Return SongCopyright
+		Function CustomPresentation() As String
+		  Return SongCustomPresentation
+		  
 		End Function
   )
  Meth/g: 
@@ -211,19 +224,6 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
 		    SongCustomPresentation = NewValue
 		  End If
 		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: CustomPresentation
-  parm/S: 
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function CustomPresentation() As String
-		  Return SongCustomPresentation
-		  
-		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -422,6 +422,18 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Key
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Key() As String
+		  Return SongKey
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Key
   parm/S: Assigns NewValue As String
   rslt/S: 
   flag/N: 0
@@ -436,14 +448,17 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: Key
-  parm/S: 
-  rslt/S: String
+  name/S: KeyLine
+  parm/S: Assigns NewValue As String
+  rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function Key() As String
-		  Return SongKey
-		End Function
+		Sub KeyLine(Assigns NewValue As String)
+		  If NewValue <> SongKeyLine Then
+		    SongChanged = True
+		    SongKeyLine = NewValue
+		  End If
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -460,17 +475,35 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: KeyLine
-  parm/S: Assigns NewValue As String
-  rslt/S: 
+  name/S: Load
+  parm/S: sDoc As String
+  rslt/S: Boolean
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub KeyLine(Assigns NewValue As String)
-		  If NewValue <> SongKeyLine Then
-		    SongChanged = True
-		    SongKeyLine = NewValue
+		Function Load(sDoc As String) As Boolean
+		  //++
+		  // Load the object from the string that is passed.
+		  //
+		  // Note that SongFolderItem will be Nil when this is done.
+		  //--
+		  
+		  Dim xDoc As XmlDocument
+		  
+		  Try
+		    xDoc = New XmlDocument(sDoc)
+		  Catch ex As XmlException
+		    SongFolderItem = Nil
+		    Return False
+		  End Try
+		  
+		  If FromXML(xDoc) Then
+		    SongFolderItem = Nil
+		    SongChanged = True // True because this instance hasn't been written to a file
+		    Return True
+		  Else
+		    Return False
 		  End If
-		End Sub
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -513,39 +546,6 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
 		    Return True
 		  Else
 		    SongFolderItem = Nil
-		    Return False
-		  End If
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Load
-  parm/S: sDoc As String
-  rslt/S: Boolean
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Load(sDoc As String) As Boolean
-		  //++
-		  // Load the object from the string that is passed.
-		  //
-		  // Note that SongFolderItem will be Nil when this is done.
-		  //--
-		  
-		  Dim xDoc As XmlDocument
-		  
-		  Try
-		    xDoc = New XmlDocument(sDoc)
-		  Catch ex As XmlException
-		    SongFolderItem = Nil
-		    Return False
-		  End Try
-		  
-		  If FromXML(xDoc) Then
-		    SongFolderItem = Nil
-		    SongChanged = True // True because this instance hasn't been written to a file
-		    Return True
-		  Else
 		    Return False
 		  End If
 		End Function
@@ -608,6 +608,18 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: PrintCapoChords
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PrintCapoChords() As Boolean
+		  Return SongPrintCapoChords
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PrintCapoChords
   parm/S: Assigns NewValue As Boolean
   rslt/S: 
   flag/N: 0
@@ -618,18 +630,6 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
 		    SongPrintCapoChords = NewValue
 		  End If
 		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: PrintCapoChords
-  parm/S: 
-  rslt/S: Boolean
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function PrintCapoChords() As Boolean
-		  Return SongPrintCapoChords
-		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -681,18 +681,6 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: SongStyle
-  parm/S: 
-  rslt/S: SlideStyle
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function SongStyle() As SlideStyle
-		  Return SongStyle
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: SongStyle
   parm/S: Assigns NewStyle As SlideStyle
   rslt/S: 
   flag/N: 0
@@ -701,6 +689,18 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
 		  SongChanged = True
 		  SongStyle = NewStyle
 		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SongStyle
+  parm/S: 
+  rslt/S: SlideStyle
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function SongStyle() As SlideStyle
+		  Return SongStyle
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -810,6 +810,21 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: TimeSignature
+  parm/S: Assigns NewSignature As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub TimeSignature(Assigns NewSignature As String)
+		  If NewSignature <> SongTimeSignature Then
+		    SongChanged = True
+		    SongTimeSignature = NewSignature
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TimeSignature
   parm/S: 
   rslt/S: String
   flag/N: 0
@@ -821,17 +836,14 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: TimeSignature
-  parm/S: Assigns NewSignature As String
-  rslt/S: 
+  name/S: Title
+  parm/S: 
+  rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub TimeSignature(Assigns NewSignature As String)
-		  If NewSignature <> SongTimeSignature Then
-		    SongChanged = True
-		    SongTimeSignature = NewSignature
-		  End If
-		End Sub
+		Function Title() As String
+		  Return SongTitle
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -847,18 +859,6 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
 		    SongTitle = NewTitle
 		  End If
 		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Title
-  parm/S: 
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Title() As String
-		  Return SongTitle
-		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -1028,18 +1028,6 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: User1
-  parm/S: 
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function User1() As String
-		  Return SongUser1
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: User1
   parm/S: Assigns NewValue As String
   rslt/S: 
   flag/N: 0
@@ -1054,13 +1042,13 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: User2
+  name/S: User1
   parm/S: 
   rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function User2() As String
-		  Return SongUser2
+		Function User1() As String
+		  Return SongUser1
 		End Function
   )
  Meth/g: 
@@ -1081,17 +1069,14 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: User3
-  parm/S: Assigns NewValue As String
-  rslt/S: 
+  name/S: User2
+  parm/S: 
+  rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub User3(Assigns NewValue As String)
-		  If NewValue <> SongUser3 Then
-		    SongChanged = True
-		    SongUser3 = NewValue
-		  End If
-		End Sub
+		Function User2() As String
+		  Return SongUser2
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -1104,6 +1089,21 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
 		Function User3() As String
 		  Return SongUser3
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: User3
+  parm/S: Assigns NewValue As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub User3(Assigns NewValue As String)
+		  If NewValue <> SongUser3 Then
+		    SongChanged = True
+		    SongUser3 = NewValue
+		  End If
+		End Sub
   )
  Meth/g: 
  Prop/G: 

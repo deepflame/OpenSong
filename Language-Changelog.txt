@@ -57,3 +57,5 @@ print_settings/units
 print_settings/units/inches
 print_settings/units/cm
 main_menu/edit/selall
+questions/revert
+questions/long_operation

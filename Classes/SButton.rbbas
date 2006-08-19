@@ -8,7 +8,10 @@ Inherits Canvas
 		  MenuItem = ""
 		  If Enabled Then
 		    Refresh ' False
-		    If Popup <> Nil Then Popup.Open
+		    If Popup <> Nil Then
+		      Popup.Open
+		      Action
+		    End If
 		    Return True
 		  End If
 		End Function
@@ -34,7 +37,10 @@ Inherits Canvas
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
 		  IsMouseDown = False
-		  Action
+		  ' If a popup has been opened, the action will already trigger in the Close event
+		  If Popup = Nil Then
+		    Action
+		  End If
 		  Refresh ' False Graphics
 		End Sub
 	#tag EndEvent

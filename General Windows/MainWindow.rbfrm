@@ -38,7 +38,7 @@ Begin Window MainWindow
       TabPanelIndex   =   0
       PanelCount      =   4
       Panels          =   ""
-      Value           =   1
+      Value           =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -508,7 +508,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_hymn_number
             Index           =   -2147483648
-            ControlOrder    =   73
+            ControlOrder    =   23
             Left            =   625
             Top             =   176
             Width           =   105
@@ -538,7 +538,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_song_hymn_number
             Index           =   -2147483648
-            ControlOrder    =   74
+            ControlOrder    =   24
             Left            =   625
             Top             =   190
             Width           =   105
@@ -580,7 +580,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_insert
             Index           =   -2147483648
-            ControlOrder    =   75
+            ControlOrder    =   25
             Left            =   615
             Top             =   215
             Width           =   120
@@ -610,7 +610,7 @@ Begin Window MainWindow
          End
          Begin SButton btn_song_ins_section
             Index           =   -2147483648
-            ControlOrder    =   76
+            ControlOrder    =   26
             Left            =   615
             Top             =   231
             Width           =   115
@@ -634,7 +634,7 @@ Begin Window MainWindow
          End
          Begin SButton btn_song_ins_lyrics
             Index           =   -2147483648
-            ControlOrder    =   77
+            ControlOrder    =   27
             Left            =   615
             Top             =   256
             Width           =   115
@@ -658,7 +658,7 @@ Begin Window MainWindow
          End
          Begin SButton btn_song_ins_multi_verse
             Index           =   -2147483648
-            ControlOrder    =   78
+            ControlOrder    =   28
             Left            =   615
             Top             =   281
             Width           =   115
@@ -682,7 +682,7 @@ Begin Window MainWindow
          End
          Begin SButton btn_song_ins_comment
             Index           =   -2147483648
-            ControlOrder    =   79
+            ControlOrder    =   29
             Left            =   615
             Top             =   306
             Width           =   115
@@ -2767,7 +2767,7 @@ Begin Window MainWindow
       TabPanelIndex   =   0
       PanelCount      =   2
       Panels          =   ""
-      Value           =   1
+      Value           =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -2776,7 +2776,7 @@ Begin Window MainWindow
       BehaviorIndex   =   87
       Begin Canvas can_controls_songs_mode
          Index           =   -2147483648
-         ControlOrder    =   23
+         ControlOrder    =   30
          Left            =   5
          Top             =   40
          Width           =   240
@@ -2799,7 +2799,7 @@ Begin Window MainWindow
          BehaviorIndex   =   88
          Begin GroupBox grp_songs_all_songs
             Index           =   -2147483648
-            ControlOrder    =   24
+            ControlOrder    =   31
             Left            =   10
             Top             =   40
             Width           =   110
@@ -2823,7 +2823,7 @@ Begin Window MainWindow
             BehaviorIndex   =   89
             Begin SButton btn_songs_print
                Index           =   -2147483648
-               ControlOrder    =   25
+               ControlOrder    =   32
                Left            =   21
                Top             =   60
                Width           =   87
@@ -2847,7 +2847,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_songs_export
                Index           =   -2147483648
-               ControlOrder    =   26
+               ControlOrder    =   33
                Left            =   21
                Top             =   85
                Width           =   87
@@ -2871,7 +2871,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_songs_find
                Index           =   -2147483648
-               ControlOrder    =   27
+               ControlOrder    =   34
                Left            =   21
                Top             =   110
                Width           =   87
@@ -2896,7 +2896,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_songs_new_song
             Index           =   -2147483648
-            ControlOrder    =   28
+            ControlOrder    =   35
             Left            =   10
             Top             =   145
             Width           =   110
@@ -2920,7 +2920,7 @@ Begin Window MainWindow
             BehaviorIndex   =   93
             Begin SButton btn_song_create
                Index           =   -2147483648
-               ControlOrder    =   29
+               ControlOrder    =   36
                Left            =   21
                Top             =   165
                Width           =   87
@@ -2944,7 +2944,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_song_import
                Index           =   -2147483648
-               ControlOrder    =   30
+               ControlOrder    =   37
                Left            =   21
                Top             =   190
                Width           =   87
@@ -2969,7 +2969,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_songs_selected_song
             Index           =   -2147483648
-            ControlOrder    =   31
+            ControlOrder    =   38
             Left            =   130
             Top             =   40
             Width           =   110
@@ -2993,7 +2993,7 @@ Begin Window MainWindow
             BehaviorIndex   =   96
             Begin SButton btn_song_save
                Index           =   -2147483648
-               ControlOrder    =   32
+               ControlOrder    =   39
                Left            =   141
                Top             =   60
                Width           =   87
@@ -3017,7 +3017,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_song_revert
                Index           =   -2147483648
-               ControlOrder    =   33
+               ControlOrder    =   40
                Left            =   141
                Top             =   85
                Width           =   87
@@ -3041,7 +3041,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_song_print
                Index           =   -2147483648
-               ControlOrder    =   34
+               ControlOrder    =   41
                Left            =   141
                Top             =   110
                Width           =   87
@@ -3065,7 +3065,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_song_present
                Index           =   -2147483648
-               ControlOrder    =   35
+               ControlOrder    =   42
                Left            =   141
                Top             =   135
                Width           =   87
@@ -3089,7 +3089,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_song_export
                Index           =   -2147483648
-               ControlOrder    =   36
+               ControlOrder    =   43
                Left            =   141
                Top             =   160
                Width           =   87
@@ -3113,7 +3113,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_song_rename
                Index           =   -2147483648
-               ControlOrder    =   37
+               ControlOrder    =   44
                Left            =   141
                Top             =   185
                Width           =   87
@@ -3137,7 +3137,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_song_move
                Index           =   -2147483648
-               ControlOrder    =   38
+               ControlOrder    =   45
                Left            =   141
                Top             =   210
                Width           =   87
@@ -3161,7 +3161,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_song_delete
                Index           =   -2147483648
-               ControlOrder    =   39
+               ControlOrder    =   46
                Left            =   141
                Top             =   235
                Width           =   87
@@ -3186,7 +3186,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_songs_song_folders
             Index           =   -2147483648
-            ControlOrder    =   40
+            ControlOrder    =   47
             Left            =   10
             Top             =   256
             Width           =   230
@@ -3216,7 +3216,7 @@ Begin Window MainWindow
          End
          Begin PopupMenu pop_songs_song_folders
             Index           =   -2147483648
-            ControlOrder    =   41
+            ControlOrder    =   48
             Left            =   10
             Top             =   271
             Width           =   190
@@ -3244,7 +3244,7 @@ Begin Window MainWindow
          End
          Begin SButton btn_songs_song_folders_add
             Index           =   -2147483648
-            ControlOrder    =   42
+            ControlOrder    =   49
             Left            =   203
             Top             =   273
             Width           =   18
@@ -3268,7 +3268,7 @@ Begin Window MainWindow
          End
          Begin SButton btn_songs_song_folders_delete
             Index           =   -2147483648
-            ControlOrder    =   43
+            ControlOrder    =   50
             Left            =   222
             Top             =   273
             Width           =   18
@@ -3292,7 +3292,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_songs_songs
             Index           =   -2147483648
-            ControlOrder    =   44
+            ControlOrder    =   51
             Left            =   10
             Top             =   296
             Width           =   230
@@ -3322,7 +3322,7 @@ Begin Window MainWindow
          End
          Begin ListBox lst_songs_songs
             Index           =   -2147483648
-            ControlOrder    =   45
+            ControlOrder    =   52
             Left            =   10
             Top             =   314
             Width           =   230
@@ -3368,7 +3368,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_songs_curr_folder
             Index           =   -2147483648
-            ControlOrder    =   46
+            ControlOrder    =   53
             Left            =   10
             Top             =   509
             Width           =   230
@@ -3398,7 +3398,7 @@ Begin Window MainWindow
          End
          Begin EditField edt_songs_curr_folder
             Index           =   -2147483648
-            ControlOrder    =   47
+            ControlOrder    =   54
             Left            =   10
             Top             =   528
             Width           =   227
@@ -3441,7 +3441,7 @@ Begin Window MainWindow
       End
       Begin Canvas can_controls_sets_mode
          Index           =   -2147483648
-         ControlOrder    =   48
+         ControlOrder    =   55
          Left            =   5
          Top             =   40
          Width           =   240
@@ -3464,7 +3464,7 @@ Begin Window MainWindow
          BehaviorIndex   =   113
          Begin GroupBox grp_sets_sets
             Index           =   -2147483648
-            ControlOrder    =   49
+            ControlOrder    =   56
             Left            =   10
             Top             =   40
             Width           =   230
@@ -3488,7 +3488,7 @@ Begin Window MainWindow
             BehaviorIndex   =   114
             Begin PopupMenu pop_sets_sets
                Index           =   -2147483648
-               ControlOrder    =   50
+               ControlOrder    =   57
                Left            =   21
                Top             =   58
                Width           =   185
@@ -3516,7 +3516,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_sets_add
                Index           =   -2147483648
-               ControlOrder    =   51
+               ControlOrder    =   58
                Left            =   209
                Top             =   60
                Width           =   18
@@ -3541,7 +3541,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_set_current_set
             Index           =   -2147483648
-            ControlOrder    =   52
+            ControlOrder    =   59
             Left            =   10
             Top             =   89
             Width           =   230
@@ -3565,7 +3565,7 @@ Begin Window MainWindow
             BehaviorIndex   =   117
             Begin SButton btn_set_save
                Index           =   -2147483648
-               ControlOrder    =   53
+               ControlOrder    =   60
                Left            =   21
                Top             =   107
                Width           =   87
@@ -3589,7 +3589,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_rename
                Index           =   -2147483648
-               ControlOrder    =   54
+               ControlOrder    =   61
                Left            =   21
                Top             =   132
                Width           =   87
@@ -3613,7 +3613,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_delete
                Index           =   -2147483648
-               ControlOrder    =   55
+               ControlOrder    =   62
                Left            =   21
                Top             =   157
                Width           =   87
@@ -3637,7 +3637,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_saveas
                Index           =   -2147483648
-               ControlOrder    =   56
+               ControlOrder    =   63
                Left            =   21
                Top             =   182
                Width           =   87
@@ -3661,7 +3661,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_present
                Index           =   -2147483648
-               ControlOrder    =   57
+               ControlOrder    =   64
                Left            =   141
                Top             =   107
                Width           =   87
@@ -3685,7 +3685,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_print_songs
                Index           =   -2147483648
-               ControlOrder    =   58
+               ControlOrder    =   65
                Left            =   141
                Top             =   132
                Width           =   87
@@ -3709,7 +3709,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_print_order
                Index           =   -2147483648
-               ControlOrder    =   59
+               ControlOrder    =   66
                Left            =   141
                Top             =   157
                Width           =   87
@@ -3734,7 +3734,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_set_new_item
             Index           =   -2147483648
-            ControlOrder    =   60
+            ControlOrder    =   67
             Left            =   10
             Top             =   209
             Width           =   110
@@ -3758,7 +3758,7 @@ Begin Window MainWindow
             BehaviorIndex   =   125
             Begin SButton btn_set_add_song
                Index           =   -2147483648
-               ControlOrder    =   61
+               ControlOrder    =   68
                Left            =   21
                Top             =   229
                Width           =   87
@@ -3782,7 +3782,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_add_scripture
                Index           =   -2147483648
-               ControlOrder    =   62
+               ControlOrder    =   69
                Left            =   21
                Top             =   254
                Width           =   87
@@ -3806,7 +3806,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_add_slides
                Index           =   -2147483648
-               ControlOrder    =   63
+               ControlOrder    =   70
                Left            =   21
                Top             =   279
                Width           =   87
@@ -3830,7 +3830,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_add_style
                Index           =   -2147483648
-               ControlOrder    =   64
+               ControlOrder    =   71
                Left            =   21
                Top             =   304
                Width           =   87
@@ -3855,7 +3855,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_set_current_item
             Index           =   -2147483648
-            ControlOrder    =   65
+            ControlOrder    =   72
             Left            =   127
             Top             =   209
             Width           =   110
@@ -3879,7 +3879,7 @@ Begin Window MainWindow
             BehaviorIndex   =   130
             Begin SButton btn_set_move_up
                Index           =   -2147483648
-               ControlOrder    =   66
+               ControlOrder    =   73
                Left            =   138
                Top             =   229
                Width           =   87
@@ -3903,7 +3903,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_move_down
                Index           =   -2147483648
-               ControlOrder    =   67
+               ControlOrder    =   74
                Left            =   138
                Top             =   254
                Width           =   87
@@ -3927,7 +3927,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_remove
                Index           =   -2147483648
-               ControlOrder    =   68
+               ControlOrder    =   75
                Left            =   138
                Top             =   279
                Width           =   87
@@ -3951,7 +3951,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_copy
                Index           =   -2147483648
-               ControlOrder    =   69
+               ControlOrder    =   76
                Left            =   138
                Top             =   304
                Width           =   87
@@ -3975,7 +3975,7 @@ Begin Window MainWindow
             End
             Begin SButton btn_set_store
                Index           =   -2147483648
-               ControlOrder    =   70
+               ControlOrder    =   77
                Left            =   138
                Top             =   329
                Width           =   87
@@ -4000,7 +4000,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_set_items
             Index           =   -2147483648
-            ControlOrder    =   71
+            ControlOrder    =   78
             Left            =   10
             Top             =   350
             Width           =   115
@@ -4030,7 +4030,7 @@ Begin Window MainWindow
          End
          Begin ListBox lst_set_items
             Index           =   -2147483648
-            ControlOrder    =   72
+            ControlOrder    =   79
             Left            =   10
             Top             =   365
             Width           =   230
@@ -5653,7 +5653,6 @@ End
 	  dim j As Integer
 	  dim Loc As Integer 'location of file in list
 	  Dim xnode As XmlNode
-	  dim s(0) As string
 	  
 	  ActionSongAskSave
 	  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
@@ -5683,48 +5682,18 @@ End
 	      Return
 	    End If
 	    
-	    'lst_songs_songs.InsertRow lst_songs_songs.ListCount + 1, t
-	    'i = 0
-	    'While i < lst_songs_songs.ListCount
-	    's.Append lst_songs_songs.List(i)
-	    'i = i + 1
-	    'Wend
-	    '
-	    'Sort(s, i)
-	    'lst_songs_songs.DeleteAllRows
-	    '
-	    'j = 1
-	    'while j <= i
-	    'if StringUtils.StrCompT(s(j), t) = "=" then
-	    'Loc = j - 1
-	    'end if
-	    'lst_songs_songs.InsertRow j - 1, s(j)
-	    'j = j + 1
-	    'wend
-	    '
-	    'lst_songs_songs.ListIndex = Loc
-	    '
 	    i = 0
 	    // Look for the place to insert the new song
 	    While i < lst_songs_songs.ListCount And CompareHymnBookOrder(Lowercase(t), Lowercase(lst_songs_songs.List(i))) = 1
 	      i = i + 1
 	    Wend
+	    'fill list row, CellTag contains folder path
 	    lst_songs_songs.InsertRow i, t
-	    Globals.OldSongFileName = ""
-	    Globals.OldSongSel = -1 // This flags lst_songs_songs.Changed not to do anything yet
-	    Status_SongOpen = False //Hold off on unnecessary refreshes
-	    LoadSongFields 'f
-	    Status_SongOpen = True
-	    Status_SongChanged = False
+	    lst_songs_songs.CellTag(lst_songs_songs.LastIndex, 0) = GetSongFolderPath(pop_songs_song_folders.Text) + "/"
+	    'this will trigger the 'Change' event that should do all required updates
 	    lst_songs_songs.ListIndex = lst_songs_songs.LastIndex
-	    lst_songs_songs.selected(lst_songs_songs.LastIndex) = True
-	    Globals.OldSongFileName = GetSongFolderPath(pop_songs_song_folders.Text) + "/" + t
-	    Globals.OldSongSel = lst_songs_songs.LastIndex
 	  End If
 	  UpdateMenuItems
-	  If pge_contents.Value = 0 Then //General panel, go to author field
-	    edt_song_author.SetFocus
-	  End If
 	  edt_song_author.SetFocus
 	End Sub
 #tag EndMethod
@@ -7060,6 +7029,173 @@ End
 	    Status_SongChanged = True
 	    EnableMenuItems
 	  End If
+	End Sub
+#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_hymn_number
+#tag Event
+	Sub GotFocus()
+	  'FindFocus = 3
+	End Sub
+#tag EndEvent
+#tag Event
+	Function MouseDown(X As Integer, Y As Integer) As Boolean
+	  If Me.Enabled And IsCMMClick Then
+	    ActiveEditField = Me
+	    PopupClicked = False
+	    mnu_clipboard.Open
+	    Return PopupClicked
+	  End If
+	End Function
+#tag EndEvent
+#tag Event
+	Sub MouseEnter()
+	  SetHelp "general_song_editor/hymn_number"
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseExit()
+	  SetHelp ""
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub TextChange()
+	  If Status_SongOpen Then
+	    Status_SongChanged = True
+	    EnableMenuItems
+	  End If
+	End Sub
+#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_section
+#tag Event
+	Sub Action()
+	  Dim s As String
+	  If edf_song_lyrics.Enabled Then
+	    s = InputBox.Input(App.T.Translate("general_song_editor/ins_section/section_name/@caption") + ":", "V1")
+	    If Len(s) > 0 Then
+	      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then edf_song_lyrics.SelText = SmartML.Newline
+	      edf_song_lyrics.SelText = "[" + s + "]" + SmartML.Newline
+	    End If
+	  End If
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseEnter()
+	  SetHelp "general_song_editor/ins_section"
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseExit()
+	  SetHelp ""
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub Open()
+	  Me.SetIcon viewdetailedpic, viewdetailedmask
+	End Sub
+#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_lyrics
+#tag Event
+	Sub Action()
+	  Dim s, t As String
+	  Dim i As Integer
+	  If edf_song_lyrics.Enabled Then
+	    s = InputBox.Input(App.T.Translate("general_song_editor/ins_lyrics/number_of_lines/@caption") + ":", "1")
+	    If Len(s) > 0 And Val(s) > 0 Then
+	      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
+	      For i = 1 To Val(s)
+	        t = t + "." + SmartML.Newline + " " + SmartML.Newline
+	      Next i
+	      edf_song_lyrics.SelText = t
+	    End If
+	  End If
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseEnter()
+	  SetHelp "general_song_editor/ins_lyrics"
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseExit()
+	  SetHelp ""
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub Open()
+	  Me.SetIcon viewtextpic, viewtextmask
+	End Sub
+#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_multi_verse
+#tag Event
+	Sub Action()
+	  Dim s, t, u As String
+	  Dim i, j As Integer
+	  If edf_song_lyrics.Enabled Then
+	    s = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_verses/@caption") + ":", "4")
+	    If Len(s) > 0 And Val(s) > 0 Then
+	      t = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_lines/@caption") + ":", "4")
+	      If Len(t) > 0 And Val(t) > 0 Then
+	        If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then u = SmartML.Newline
+	        u = u + "[V]" + SmartML.Newline
+	        For j = 1 To Val(t)
+	          u = u + "." + SmartML.Newline
+	          For i = 1 To Val(s)
+	            u = u + Str(i) + SmartML.Newline
+	          Next i
+	        Next j
+	        edf_song_lyrics.SelText = u
+	      End If
+	    End If
+	  End If
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseEnter()
+	  SetHelp "general_song_editor/ins_multi_verse"
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseExit()
+	  SetHelp ""
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub Open()
+	  Me.SetIcon viewchoosepic, viewchoosemask
+	End Sub
+#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_comment
+#tag Event
+	Sub Action()
+	  Dim s, t As String
+	  If edf_song_lyrics.Enabled Then
+	    s = InputBox.Input(App.T.Translate("general_song_editor/ins_comment/@caption") + ":", "")
+	    If Len(s) > 0 Then
+	      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
+	      t = t + ";" + s + SmartML.Newline
+	      edf_song_lyrics.SelText = t
+	    End If
+	  End If
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseEnter()
+	  SetHelp "general_song_editor/ins_comment"
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub MouseExit()
+	  SetHelp ""
+	End Sub
+#tag EndEvent
+#tag Event
+	Sub Open()
+	  Me.SetIcon viewbottompic, viewbottommask
 	End Sub
 #tag EndEvent
 #tag EndEvents
@@ -8636,173 +8772,6 @@ End
 #tag Event
 	Sub MouseExit()
 	  SetHelp ""
-	End Sub
-#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_hymn_number
-#tag Event
-	Sub GotFocus()
-	  'FindFocus = 3
-	End Sub
-#tag EndEvent
-#tag Event
-	Function MouseDown(X As Integer, Y As Integer) As Boolean
-	  If Me.Enabled And IsCMMClick Then
-	    ActiveEditField = Me
-	    PopupClicked = False
-	    mnu_clipboard.Open
-	    Return PopupClicked
-	  End If
-	End Function
-#tag EndEvent
-#tag Event
-	Sub MouseEnter()
-	  SetHelp "general_song_editor/hymn_number"
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseExit()
-	  SetHelp ""
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub TextChange()
-	  If Status_SongOpen Then
-	    Status_SongChanged = True
-	    EnableMenuItems
-	  End If
-	End Sub
-#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_section
-#tag Event
-	Sub Action()
-	  Dim s As String
-	  If edf_song_lyrics.Enabled Then
-	    s = InputBox.Input(App.T.Translate("general_song_editor/ins_section/section_name/@caption") + ":", "V1")
-	    If Len(s) > 0 Then
-	      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then edf_song_lyrics.SelText = SmartML.Newline
-	      edf_song_lyrics.SelText = "[" + s + "]" + SmartML.Newline
-	    End If
-	  End If
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseEnter()
-	  SetHelp "general_song_editor/ins_section"
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseExit()
-	  SetHelp ""
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub Open()
-	  Me.SetIcon viewdetailedpic, viewdetailedmask
-	End Sub
-#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_lyrics
-#tag Event
-	Sub Action()
-	  Dim s, t As String
-	  Dim i As Integer
-	  If edf_song_lyrics.Enabled Then
-	    s = InputBox.Input(App.T.Translate("general_song_editor/ins_lyrics/number_of_lines/@caption") + ":", "1")
-	    If Len(s) > 0 And Val(s) > 0 Then
-	      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
-	      For i = 1 To Val(s)
-	        t = t + "." + SmartML.Newline + " " + SmartML.Newline
-	      Next i
-	      edf_song_lyrics.SelText = t
-	    End If
-	  End If
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseEnter()
-	  SetHelp "general_song_editor/ins_lyrics"
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseExit()
-	  SetHelp ""
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub Open()
-	  Me.SetIcon viewtextpic, viewtextmask
-	End Sub
-#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_multi_verse
-#tag Event
-	Sub Action()
-	  Dim s, t, u As String
-	  Dim i, j As Integer
-	  If edf_song_lyrics.Enabled Then
-	    s = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_verses/@caption") + ":", "4")
-	    If Len(s) > 0 And Val(s) > 0 Then
-	      t = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_lines/@caption") + ":", "4")
-	      If Len(t) > 0 And Val(t) > 0 Then
-	        If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then u = SmartML.Newline
-	        u = u + "[V]" + SmartML.Newline
-	        For j = 1 To Val(t)
-	          u = u + "." + SmartML.Newline
-	          For i = 1 To Val(s)
-	            u = u + Str(i) + SmartML.Newline
-	          Next i
-	        Next j
-	        edf_song_lyrics.SelText = u
-	      End If
-	    End If
-	  End If
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseEnter()
-	  SetHelp "general_song_editor/ins_multi_verse"
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseExit()
-	  SetHelp ""
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub Open()
-	  Me.SetIcon viewchoosepic, viewchoosemask
-	End Sub
-#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_comment
-#tag Event
-	Sub Action()
-	  Dim s, t As String
-	  If edf_song_lyrics.Enabled Then
-	    s = InputBox.Input(App.T.Translate("general_song_editor/ins_comment/@caption") + ":", "")
-	    If Len(s) > 0 Then
-	      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
-	      t = t + ";" + s + SmartML.Newline
-	      edf_song_lyrics.SelText = t
-	    End If
-	  End If
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseEnter()
-	  SetHelp "general_song_editor/ins_comment"
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub MouseExit()
-	  SetHelp ""
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub Open()
-	  Me.SetIcon viewbottompic, viewbottommask
 	End Sub
 #tag EndEvent
 #tag EndEvents

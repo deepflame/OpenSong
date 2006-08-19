@@ -54,7 +54,6 @@ Begin Window PresentWindow
          Top             =   248
          Mode            =   0
          Period          =   10000
-         InitialParent   =   "cnvSlide"
          TabPanelIndex   =   0
          BehaviorIndex   =   1
       End
@@ -65,8 +64,6 @@ Begin Window PresentWindow
          Top             =   248
          Mode            =   0
          Period          =   125
-         InitialParent   =   "cnvSlide"
-         TabPanelIndex   =   0
          BehaviorIndex   =   2
       End
    End
@@ -1311,9 +1308,9 @@ End
 	    timerTransition.Mode = 2
 	    timerTransition.Reset
 	    timerTransition.Enabled = True
-	  Else
-	    cnvSlide.Refresh False
 	  End If
+	  
+	  cnvSlide.Refresh False
 	  'App.DebugWriter.Write("PresentWindow.ResetPaint: Exit")
 	End Sub
 #tag EndMethod
@@ -1546,13 +1543,18 @@ End
 	  '#endif
 	  If doTransition Then
 	    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
-	    CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
+	    
+	    Dim transparency As Integer = 255 * (TransitionFrames-TransitionFrame) / TransitionFrames
+	    
+	    ' update alpha mask of new (current) picture
+	    CurrentPicture.Mask.Graphics.ForeColor = rgb(transparency, transparency, transparency)
 	    CurrentPicture.Mask.Graphics.FillRect(0, 0, CurrentPicture.Mask.Graphics.Width, CurrentPicture.Mask.Graphics.Height)
+	    
+	    ' Blend new picture over the last picture
 	    LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
+	    
 	    g.DrawPicture LastPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
-	    'LastPicture = LastPicture.CXG_Composite(CurrentPicture, TransitionFrame/TransitionFrames, 0, 0)
-	    'g.DrawPicture LastPicture.CXG_Composite(CurrentPicture, TransitionFrame/TransitionFrames, 0, 0, True), 0, 0
-	    'g.DrawPicture LastPicture.CXG_Transition(CurrentPicture, LastPicture, TransitionFrame/TransitionFrames), 0, 0
+	    
 	    Profiler.EndProfilerEntry
 	  Else
 	    g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height

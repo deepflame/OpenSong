@@ -26,12 +26,13 @@ Begin Window Splash
    MenuBar         =   0
    Begin Timer closeTimer
       Index           =   -2147483648
+      ControlOrder    =   0
       Left            =   20
+      Top             =   256
       Mode            =   2
       Period          =   1000
+      InitialParent   =   ""
       TabPanelIndex   =   0
-      Top             =   256
-      ControlOrder    =   0
       BehaviorIndex   =   0
    End
 End

@@ -539,7 +539,6 @@ Class FolderDB
 	#tag Note, Name = Description
 		Accesses the songs folder as a go-between
 		Implements folder caching to speed up load times dramatically
-		
 	#tag EndNote
 
 

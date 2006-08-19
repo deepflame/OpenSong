@@ -204,7 +204,7 @@ Module GraphicsX
 		    End If
 		    
 		    '--- Draw string ---
-		    If f <> Nil Then 
+		    If f <> Nil Then
 		      f.OntoGraphics g
 		      Strings.Append DrawStringShapeV(thisLine, xx, yy, f, zoom)
 		    End If

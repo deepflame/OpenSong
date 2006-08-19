@@ -535,7 +535,7 @@ Module SongML
 		        ' Check for dashes - this chord starts with a non-space
 		        dashWidth = g.StringWidth("-")
 		        If i > 0 And Len(slices(i*lineCount+j)) > 0 And Left(slices(i*lineCount+j), 1) <> " " Then
-		          If dashStarts(j) < lineLeft - dashWidth Then 
+		          If dashStarts(j) < lineLeft - dashWidth Then
 		            //g.DrawString "-", dashStarts(j) + ((lineLeft-dashStarts(j))/2) - (dashWidth/2), lineTop
 		            s = New StringShape
 		            tempFont.OntoStringShape s, zoom
@@ -586,7 +586,7 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function Draw_CommentLine(g As Graphics, x As Integer, y As Integer, Width as Integer,  zoom As Double, ByRef line As String, ByRef Page As Group2D) As Integer
+		Private Function Draw_CommentLine(g As Graphics, x As Integer, y As Integer, Width as Integer, zoom As Double, ByRef line As String, ByRef Page As Group2D) As Integer
 		  Dim tempFont As FontFace
 		  Dim s As New StringShape
 		  Dim Comment As String
@@ -1116,7 +1116,7 @@ Module SongML
 		    y = j + (g.PenWidth / 2) + (3 * zoom) // Add whitespace at bottom
 		    
 		  ElseIf Uppercase(Left(heading, 1)) = "C" Then   ' -- CHORUS --
-		    prefix = " " + Chorus 
+		    prefix = " " + Chorus
 		    If Len(heading) > 1 Then prefix = " " + Chorus + " "
 		    heading = prefix + Mid(heading, 2) + " "
 		    
@@ -1137,7 +1137,7 @@ Module SongML
 		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
 		    prefix = " " + Bridge
 		    If Len(heading) > 1 Then prefix = " " + Bridge + " "
-		    heading = prefix + Mid(heading, 2) + " "    
+		    heading = prefix + Mid(heading, 2) + " "
 		    
 		    rr = New RoundRectShape
 		    rr.Width = g.StringWidth(heading) + g.PenWidth + oddOffSet
@@ -1264,7 +1264,7 @@ Module SongML
 		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
 		    prefix = " Bridge"
 		    If Len(heading) > 1 Then prefix = " Bridge "
-		    heading = prefix + Mid(heading, 2) + " "    
+		    heading = prefix + Mid(heading, 2) + " "
 		    
 		    //++EMP
 		    //This stuff is here to test an alternative way of drawing,
@@ -1527,7 +1527,7 @@ Module SongML
 	#tag Method, Flags = &h21
 		Private Function Draw_SoloChordLine(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef chords() As String, ByRef Page As Group2D) As Integer
 		  //++
-		  // EMP, 23 March 2006 
+		  // EMP, 23 March 2006
 		  //  Fix bug where scaling doesn't get applied to font [Bug 1456327]
 		  //  Streamline to quit making calls to GetValueF all the time
 		  //--
@@ -2202,7 +2202,7 @@ Module SongML
 		  Dim Separator As String
 		  Dim CurrSubtitle As Integer
 		  
-		  Call SmartML.InsertChild(songElement, "subtitle", 0) 
+		  Call SmartML.InsertChild(songElement, "subtitle", 0)
 		  //Check for a direct override on subtitles in the style for the slide
 		  '++JRC: Fixed, style is not passed in songElement so use second parameter instead
 		  'SubtitleOptions = SmartML.GetValue(songElement, "style/song_subtitle", False)
@@ -2227,7 +2227,7 @@ Module SongML
 		        '++JRC 12/05
 		        'Made the extra text optional
 		        If InStr(ConvertEncoding(SmartML.GetValue(songElement, "copyright"), Encodings.UTF8), Encodings.UTF8.Chr(169)) = 0 And _'Copyright symbol?
-		          SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info") = true Then 
+		          SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info") = true Then
 		          '--
 		          SubtitleText = SubtitleText + App.T.Translate("songml/copyright/@caption") + " " + _
 		          App.T.Translate("songml/symbol/@caption") + " "

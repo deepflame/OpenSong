@@ -116,7 +116,6 @@ Module OpenSongUtils
 		This module holds OpenSong specific methods that
 		provide general functions for the program but cannot
 		be classified in one of the other utility modules.
-		
 	#tag EndNote
 
 

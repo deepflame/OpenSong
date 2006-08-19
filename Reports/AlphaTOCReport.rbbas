@@ -63,7 +63,7 @@ Inherits TOCReport
 		  // the raw items in ContentsArray to a Sorted form and
 		  // then with the categories inserted.
 		  // From here, Generate can be called to create the pages
-		  // 
+		  //
 		  // Ed Palmer, February 2006
 		  //
 		  
@@ -131,14 +131,12 @@ Inherits TOCReport
 		reports, and the creation of the Report classes.
 		
 		Ed Palmer, February 2006
-		
 	#tag EndNote
 
 
 	#tag Property, Flags = &h1
 		#tag Note
 			Final contents for report.  Sorted, with category headers inserted.
-			
 		#tag EndNote
 		Protected CategorizedArray() As String
 	#tag EndProperty
@@ -146,7 +144,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Raw contents, unsorted, in the order added by the caller
-			
 		#tag EndNote
 		Protected ContentsArray() As String
 	#tag EndProperty
@@ -154,7 +151,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Flags whether or not Prepare is complete
-			
 		#tag EndNote
 		Protected IsCategorized As Boolean
 	#tag EndProperty
@@ -162,7 +158,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Flags if ContentsArray has been sorted into SortedArray
-			
 		#tag EndNote
 		Protected IsSorted As Boolean
 	#tag EndProperty
@@ -170,7 +165,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Contents of report, sorted but without categories
-			
 		#tag EndNote
 		Protected SortedArray() As String
 	#tag EndProperty

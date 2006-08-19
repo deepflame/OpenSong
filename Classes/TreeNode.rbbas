@@ -1,7 +1,7 @@
 #tag Class
 Class TreeNode
 	#tag Method, Flags = &h0
-		Sub delete(word as String, parent as TreeNode=nil)
+		Sub delete(word as String, parent as TreeNode = nil)
 		  dim node as TreeNode
 		  
 		  if (entry.word=word) then 'found word
@@ -102,7 +102,7 @@ Class TreeNode
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub TreeNode(tentry As IndexEntry, tleft As TreeNode=nil, tright As TreeNode=nil)
+		Sub TreeNode(tentry As IndexEntry, tleft As TreeNode = nil, tright As TreeNode = nil)
 		  entry=tentry
 		  left=tleft
 		  right= tright

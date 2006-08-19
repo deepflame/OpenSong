@@ -48,7 +48,7 @@ Class Translator
 		  
 		  Dim temp As String
 		  
-		  If list = Nil Or list.Length = 0 Then 
+		  If list = Nil Or list.Length = 0 Then
 		    App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from)
 		    Return ""
 		  End If

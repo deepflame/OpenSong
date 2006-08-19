@@ -712,7 +712,7 @@ Class Bible
 		    
 		  Case XML_ZEFANIA
 		    //
-		    // Zefania books have an attribute with the book number.  
+		    // Zefania books have an attribute with the book number.
 		    // Book 40 is Matthew, Book 66 is Revelation.
 		    //
 		    // Have to do a lookup because Zefania permits a file to only have one
@@ -1064,7 +1064,7 @@ Class Bible
 		  
 		  'used to remove puncuation and xml tags
 		  reg= New RegEx
-		  reg.SearchPattern= "[^a-zA-Z0-9\s]+" 
+		  reg.SearchPattern= "[^a-zA-Z0-9\s]+"
 		  reg.ReplacementPattern=""
 		  reg.Options.ReplaceAllMatches=true
 		  
@@ -1120,7 +1120,7 @@ Class Bible
 		            
 		            if (Len(split(x))>=1 AND notIndexed.IndexOf(split(x)) <0) then
 		              
-		              if (root=nil) then 'first entry 
+		              if (root=nil) then 'first entry
 		                root= new TreeNode(new IndexEntry(split(x)))
 		              else
 		                wordNode=root.find(split(x))
@@ -1224,7 +1224,7 @@ Class Bible
 		Protected Function getVerse(node as XMLNode) As String
 		  if node=nil then
 		    return ""
-		  elseif node.Type=3 then 'text_node 
+		  elseif node.Type=3 then 'text_node
 		    return node.value
 		  else
 		    return getVerse(node.child(0)) + getVerse(node.nextSibling)
@@ -1273,7 +1273,7 @@ Class Bible
 		  //
 		  // Updated version by Ed Palmer based on original code by Sean Lickfold
 		  //
-		  // Future TO DO: Change the way this object is set up to do the load as 
+		  // Future TO DO: Change the way this object is set up to do the load as
 		  // part of the constructor.  This will lay the foundation for having multiple
 		  // translations in play in case support for comparison or side-by-side
 		  // presentation (i.e., multi-lingual services).
@@ -1326,7 +1326,7 @@ Class Bible
 		      ErrorCode = 7
 		      ErrorString = "Error parsing Bible " + file.Name + chr(10) +_
 		      "Node: " + XmlException(LoadErr).Node +_
-		       " at line: " + XmlException(LoadErr).Line
+		      " at line: " + XmlException(LoadErr).Line
 		      MsgBox(ErrorString)
 		      Scripture = Nil
 		      Return False
@@ -1383,7 +1383,7 @@ Class Bible
 		    End If
 		    
 		    'bhenny- either load or create index
-		    genIndex(file) 
+		    genIndex(file)
 		    
 		    Return True
 		    
@@ -1398,19 +1398,19 @@ Class Bible
 		    'bhenny- if the bible doesn't have the required bname attributes add them in from the file bnames.xml
 		    If list.Item(0).GetAttribute("bname")="" then
 		      try
-		         if addBNames(file)=false then
+		        if addBNames(file)=false then
+		          ErrorCode=111
+		          ErrorString="Bible does not have required bname attributes and they could not be added"
+		          Scripture=nil
+		          return false
+		        end if
+		      catch e
 		        ErrorCode=111
 		        ErrorString="Bible does not have required bname attributes and they could not be added"
 		        Scripture=nil
 		        return false
-		    end if
-		    catch e
-		      ErrorCode=111
-		      ErrorString="Bible does not have required bname attributes and they could not be added"
-		      Scripture=nil
-		      return false
-		    end try
-		    
+		      end try
+		      
 		    end if
 		    
 		    If list.Length > 0 Then
@@ -1432,7 +1432,7 @@ Class Bible
 		    LoadedBibleFilename = File.Name
 		    
 		    'bhenny- either load or create index
-		    genIndex(file) 
+		    genIndex(file)
 		    
 		    Return True
 		    
@@ -1539,7 +1539,7 @@ Class Bible
 		  // Validate the book.
 		  //
 		  // "Valid" book abbreviations are held in the BookAbbrev XmlDocument
-		  // 
+		  //
 		  BookList = BookAbbrev.Xql("/abbrev/" + book)
 		  
 		  Select Case BookList.Length
@@ -1704,11 +1704,10 @@ Class Bible
 	#tag EndMethod
 
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		#tag Note
 			Holds the list of valid abbreviations for book names
 			The abbreviation is the tag, the bname attribute holds the full book name
-			
 		#tag EndNote
 		Protected BookAbbrev As XmlDocument
 	#tag EndProperty
@@ -1721,7 +1720,6 @@ Class Bible
 		#tag Note
 			This flags if a search function is available (will be false if indexing failed or the
 			index file isn't available)
-			
 		#tag EndNote
 		Protected CanSearch As Boolean
 	#tag EndProperty
@@ -1742,7 +1740,7 @@ Class Bible
 		Protected LoadedBible As String
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected LoadedBibleFilename As String
 	#tag EndProperty
 
@@ -1770,7 +1768,7 @@ Class Bible
 		Protected WebBooks(0) As String
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		#tag Note
 			Defines the type of XML used to encode the Bible in this object.
 			See the XML_ constants for valid values
@@ -1778,7 +1776,6 @@ Class Bible
 			XML_ORIGINAL: Original OpenSong XML format
 			XML_NAB: Expanded format with self-describing books and chapters
 			XML_ZEFANIA: ZEFANIA XML format (http://www.zefania.de)
-			
 		#tag EndNote
 		Protected XMLTYPE As Integer
 	#tag EndProperty

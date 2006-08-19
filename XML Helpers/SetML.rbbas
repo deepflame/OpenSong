@@ -18,10 +18,10 @@ Module SetML
 		  // decided I couldn't state unequivocably that only one Style dictionary
 		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
 		  
-		  Dim Style As SlideStyle 
-		  Dim StyleIndex As String 
+		  Dim Style As SlideStyle
+		  Dim StyleIndex As String
 		  
-		  StyleIndex = SmartML.GetValue(xstyle, "@index") 
+		  StyleIndex = SmartML.GetValue(xstyle, "@index")
 		  If StyleIndex = "" Then 'is the XML a complete style?
 		    Style = New SlideStyle(xstyle)
 		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
@@ -253,7 +253,7 @@ Module SetML
 		  Next i
 		  
 		  // Within reasonable wrapping limits?
-		  If MaxLineLen = 0 Then 
+		  If MaxLineLen = 0 Then
 		    Profiler.EndProfilerEntry
 		    GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
 		  End If
@@ -702,7 +702,7 @@ Module SetML
 		  //++EMP 09/05
 		  'Take care of a corner case with this....since the loop counts upward, it can miss
 		  ' the case where two or more punctuation marks immediately follow each other
-		  ' example is something like: Here I am ("Here I am"), 
+		  ' example is something like: Here I am ("Here I am"),
 		  ' this should wrap after the comma, not the quote mark
 		  '
 		  c = mid(str, breakpoint + 1, 1)

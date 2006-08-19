@@ -22,7 +22,7 @@ Class DebugOutput
 		  If DebugTOS <> Nil Then Return True
 		  If Enabled Then
 		    DebugFile = New FolderItem("Debug.txt")
-		    If DebugFile.Exists Then 
+		    If DebugFile.Exists Then
 		      DebugTOS = DebugFile.AppendToTextFile
 		    Else
 		      DebugTOS = DebugFile.CreateTextFile
@@ -74,7 +74,7 @@ Class DebugOutput
 		Sub Write(text As String, Level As Integer = 3)
 		  If Not Enabled Then Return
 		  
-		  If DebugTOS = Nil Then 
+		  If DebugTOS = Nil Then
 		    If Not Init Then Return
 		  End  If
 		  
@@ -94,7 +94,6 @@ Class DebugOutput
 		#tag Note
 			Indicates the lowest level we should print
 			debug messages for (0 is effectively disabled)
-			
 		#tag EndNote
 		Protected DebugLevel As Integer
 	#tag EndProperty

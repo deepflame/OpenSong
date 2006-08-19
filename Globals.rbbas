@@ -131,7 +131,6 @@ Module Globals
 		(or an #ifdef) can be utilized
 		
 		EMP, 17 Feb 2006
-		
 	#tag EndNote
 
 

@@ -55,7 +55,7 @@ Inherits Canvas
 		Sub Paint(g As Graphics)
 		  Dim i, j, offset, tri(6) As Integer
 		  
-		  If NewPaint Then 
+		  If NewPaint Then
 		    PaintNew(g)
 		    Return
 		  End If
@@ -244,7 +244,7 @@ Inherits Canvas
 		    ' Left and Top Bevels
 		    g.ForeColor = DarkBevelColor
 		    g.PenWidth = ShadowWidth
-		    g.DrawLine 0, 0, 0, Height 
+		    g.DrawLine 0, 0, 0, Height
 		    g.PenWidth = 1
 		    g.PenHeight = ShadowWidth
 		    g.drawline 0, 0, Width, 0
@@ -273,7 +273,7 @@ Inherits Canvas
 		    'g.ForeColor = FillColor
 		    'g.FillRect 0, 0, Width, Height
 		    '
-		    ' This code path is for unselected controls that the mouse is not over.  Draw like a 
+		    ' This code path is for unselected controls that the mouse is not over.  Draw like a
 		    ' button ready to be pressed (appears to be poking out), but don't highlight it inside
 		    ' the bevels like a MouseOver
 		    '
@@ -335,7 +335,7 @@ Inherits Canvas
 		    '
 		    ' Right and bottom bevels
 		    g.ForeColor = LightBevelColor
-		    g.DrawLine 0, height - ShadowOffset, Width, height  - ShadowOffset 
+		    g.DrawLine 0, height - ShadowOffset, Width, height  - ShadowOffset
 		    g.DrawLine Width - ShadowOffset, 0, Width - ShadowOffset, Height
 		    ' Outline
 		    g.ForeColor = FrameColor
@@ -445,8 +445,7 @@ Inherits Canvas
 
 	#tag Property, Flags = &h1
 		#tag Note
-			'EMP, added to support PaintNew method 
-			
+			'EMP, added to support PaintNew method
 		#tag EndNote
 		Protected GrayIcon As Picture
 	#tag EndProperty
@@ -463,15 +462,15 @@ Inherits Canvas
 		Protected IsMouseOver As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected IsStuck As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected Label As String
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected LabelAlign As Integer
 	#tag EndProperty
 
@@ -487,7 +486,7 @@ Inherits Canvas
 		Protected Popup As SButtonPopup
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected StickyBevel As Boolean
 	#tag EndProperty
 

@@ -31,7 +31,7 @@ Inherits Application
 		  If MyGlobals = Nil Then
 		    MsgBox SmartML.ErrorString + ": " + _
 		    AppFolder.Child("OpenSong Settings").AbsolutePath + _
-		     " (" + Str(SmartML.ErrorCode) + ")"
+		    " (" + Str(SmartML.ErrorCode) + ")"
 		    Quit
 		    Return
 		  End If
@@ -231,7 +231,7 @@ Inherits Application
 		  Dim checkVer As CheckVerThread
 		  If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "version/@check") Then
 		    Splash.SetStatus T.Translate("load_settings/latest_version") + "..."
-		    checkVer = new CheckVerThread 
+		    checkVer = new CheckVerThread
 		    checkVer.Run
 		  End If
 		  
@@ -308,7 +308,7 @@ Inherits Application
 		  // Do something reasonable for TwinView screens.
 		  // Thanks, Jon!  EMP, June 2006
 		  
-		  '#If TargetLinux                                                                    
+		  '#If TargetLinux
 		  If (Screen(controlScreen).Width /2) > Screen(controlScreen).Height Then
 		    win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 4
 		  Else
@@ -361,7 +361,7 @@ Inherits Application
 		      End If
 		    End If
 		  Next i
-		  Return Nil // Fell through, no one is on the control screen 
+		  Return Nil // Fell through, no one is on the control screen
 		End Function
 	#tag EndMethod
 
@@ -409,8 +409,8 @@ Inherits Application
 		      TempPS.PageHeight / TempPS.VerticalResolution)
 		      SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width", _
 		      TempPS.PageWidth / TempPS.HorizontalResolution)
-		    Else 
-		      Return Nil // User cancelled dialog. 
+		    Else
+		      Return Nil // User cancelled dialog.
 		    End If
 		  End If
 		  // We have a non-null MyPrinterSetup now.  Copy it and return
@@ -483,7 +483,7 @@ Inherits Application
 		  Const SC_MINIMIZE = 61472
 		  
 		  #If TargetWin32 Then
-		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
+		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
 		    hwnd = Wnd.WinHWND
 		    
@@ -508,7 +508,7 @@ Inherits Application
 		  Const SC_RESTORE = &HF120
 		  
 		  #If TargetWin32 Then
-		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
+		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
 		    hwnd = Wnd.WinHWND
 		    
@@ -527,7 +527,7 @@ Inherits Application
 		  Dim t As String
 		  
 		  t = "v" +  Str(App.MajorVersion) + "." + Str(App.MinorVersion)
-		  If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion) 
+		  If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion)
 		  t = t + " Beta 2"
 		  If App.NonReleaseVersion > 0 Then t = t + "-" + Str(App.NonReleaseVersion)
 		  Return t
@@ -636,7 +636,6 @@ Inherits Application
 	#tag Property, Flags = &h0
 		#tag Note
 			Global printer settings.
-			
 		#tag EndNote
 		MyPrinterSetup As PrinterSetup
 	#tag EndProperty

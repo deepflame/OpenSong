@@ -241,7 +241,6 @@ Inherits TOCReport
 		#tag Note
 			The final categorized list, created by processing Themes().  This array is
 			in the form needed for TOCReport.PrintTOCPages
-			
 		#tag EndNote
 		Protected Categorized() As String
 	#tag EndProperty
@@ -249,7 +248,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			List of songs to examine for the report
-			
 		#tag EndNote
 		Protected Songs() As String
 	#tag EndProperty
@@ -257,7 +255,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Indicates if the Songs array has been transformed into the Themes array
-			
 		#tag EndNote
 		Protected SongsProcessed As Boolean
 	#tag EndProperty
@@ -266,7 +263,6 @@ Inherits TOCReport
 		#tag Note
 			The Songs array, but manipulated so each entry is
 			THEME|||SONG
-			
 		#tag EndNote
 		Protected ThemesList() As String
 	#tag EndProperty
@@ -274,7 +270,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Indicates if the Themes array has been processed  into the Categorized array
-			
 		#tag EndNote
 		Protected ThemesProcessed As Boolean
 	#tag EndProperty

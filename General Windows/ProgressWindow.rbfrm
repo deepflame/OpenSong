@@ -25,58 +25,54 @@ Begin Window ProgressWindow
    MacProcID       =   0
    MenuBar         =   0
    Begin ProgressBar bar
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   12
-      HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   ""
-      Left            =   10
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      Maximum         =   100
-      TabPanelIndex   =   0
-      Top             =   25
-      Value           =   0
-      Visible         =   "True"
-      Width           =   280
       ControlOrder    =   0
+      Left            =   10
+      Top             =   25
+      Width           =   280
+      Height          =   12
+      LockLeft        =   "False"
+      LockTop         =   "False"
+      LockRight       =   "False"
+      LockBottom      =   "False"
+      TabPanelIndex   =   0
+      Visible         =   True
+      HelpTag         =   ""
+      AutoDeactivate  =   "True"
+      Enabled         =   True
+      Value           =   0
+      Maximum         =   100
+      InitialParent   =   ""
       BehaviorIndex   =   0
    End
    Begin StaticText StatusLine
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      DataField       =   ""
-      DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   15
-      HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
+      ControlOrder    =   1
       Left            =   10
-      LockBottom      =   "False"
+      Top             =   40
+      Width           =   280
+      Height          =   15
       LockLeft        =   "False"
-      LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      LockRight       =   "False"
+      LockBottom      =   "False"
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
       TextColor       =   0
+      Multiline       =   "False"
+      Enabled         =   True
+      Visible         =   True
+      HelpTag         =   ""
+      AutoDeactivate  =   "True"
       TextFont        =   "Arial"
       TextSize        =   11
-      Top             =   40
+      Bold            =   "False"
+      Italic          =   "False"
       Underline       =   "False"
-      Visible         =   "True"
-      Width           =   280
-      ControlOrder    =   1
+      DataSource      =   ""
+      DataField       =   ""
+      InitialParent   =   ""
       BehaviorIndex   =   1
    End
 End
@@ -185,7 +181,6 @@ End
 		Flag to indicate if user is allowed to press the Escape
 		key to signal a request to cancel the operation in progress.
 		See KeyDown event.  Default False (from Constructor)
-		
 	#tag EndNote
 	Private AllowEscape As Boolean
 #tag EndProperty
@@ -193,8 +188,6 @@ End
 #tag Property, Flags = &h1
 	#tag Note
 		Indicates if the user has requested to cancel.  Default False.
-		
-		
 	#tag EndNote
 	Protected CancelRequested As Boolean
 #tag EndProperty

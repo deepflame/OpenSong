@@ -108,7 +108,6 @@ Inherits LeadSheetReport
 		#tag Note
 			This holds the XML for the dummy song used to build the report through
 			the LeadSheetReport interfaces.
-			
 		#tag EndNote
 		Protected LeadSheetDoc As XmlDocument
 	#tag EndProperty
@@ -116,7 +115,6 @@ Inherits LeadSheetReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Points to the temporary file created in AddSet so it can be removed in the destructor
-			
 		#tag EndNote
 		Protected LeadSheetFile As FolderItem
 	#tag EndProperty

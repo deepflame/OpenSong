@@ -279,7 +279,6 @@ Class SlideStyle
 		
 		09/16/05: Here's an interesting revelation that is probably an RTFM: Returning an object (i.e., the Get method)
 		returns the pointer, not a copy of the object.  Created an "interesting" display the first time I debugged this.
-		
 	#tag EndNote
 
 
@@ -307,7 +306,6 @@ Class SlideStyle
 		#tag Note
 			Defines the treatment of the background image. Valid values are the
 			constants that start with POS_
-			
 		#tag EndNote
 		Protected Position As Integer
 	#tag EndProperty
@@ -331,7 +329,6 @@ Class SlideStyle
 	#tag Property, Flags = &h21
 		#tag Note
 			Horizontal alignment
-			
 		#tag EndNote
 		Private TitleAlign As String
 	#tag EndProperty
@@ -343,8 +340,6 @@ Class SlideStyle
 	#tag Property, Flags = &h21
 		#tag Note
 			Vertical alignment of the title
-			
-			
 		#tag EndNote
 		Private TitleVAlign As String
 	#tag EndProperty

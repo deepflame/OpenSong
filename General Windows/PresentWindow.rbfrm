@@ -25,49 +25,50 @@ Begin Window PresentWindow
    MacProcID       =   0
    MenuBar         =   0
    Begin Canvas cnvSlide
+      Index           =   -2147483648
+      ControlOrder    =   0
+      Left            =   -1
+      Top             =   -1
+      Width           =   302
+      Height          =   302
+      LockLeft        =   "True"
+      LockTop         =   "True"
+      LockRight       =   "True"
+      LockBottom      =   "True"
+      TabPanelIndex   =   0
+      Visible         =   True
+      HelpTag         =   ""
+      AutoDeactivate  =   "True"
+      Enabled         =   True
+      UseFocusRing    =   "True"
+      Backdrop        =   0
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   302
-      HelpTag         =   ""
-      Index           =   -2147483648
+      EraseBackground =   "True"
       InitialParent   =   ""
-      Left            =   -1
-      LockBottom      =   "True"
-      LockLeft        =   "True"
-      LockRight       =   "True"
-      LockTop         =   "True"
-      TabPanelIndex   =   0
-      Top             =   -1
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   302
-      ControlOrder    =   0
-      BehaviorIndex   =   2
-   End
-   Begin Timer timerAdvance
-      Index           =   -2147483648
-      Left            =   248
-      Mode            =   0
-      Period          =   10000
-      TabPanelIndex   =   0
-      Top             =   248
-      ControlOrder    =   1
       BehaviorIndex   =   0
-   End
-   Begin Timer timerTransition
-      Index           =   -2147483648
-      Left            =   204
-      Mode            =   0
-      Period          =   125
-      TabPanelIndex   =   0
-      Top             =   248
-      ControlOrder    =   2
-      BehaviorIndex   =   1
+      Begin Timer timerAdvance
+         Index           =   -2147483648
+         ControlOrder    =   1
+         Left            =   248
+         Top             =   248
+         Mode            =   0
+         Period          =   10000
+         InitialParent   =   "cnvSlide"
+         TabPanelIndex   =   0
+         BehaviorIndex   =   1
+      End
+      Begin Timer timerTransition
+         Index           =   -2147483648
+         ControlOrder    =   2
+         Left            =   204
+         Top             =   248
+         Mode            =   0
+         Period          =   125
+         InitialParent   =   "cnvSlide"
+         TabPanelIndex   =   0
+         BehaviorIndex   =   2
+      End
    End
 End
 #tag EndWindow
@@ -284,7 +285,7 @@ End
 	  //++EMP
 	  // September 2005
 	  // Returns the SlideStyle referenced by the key
-	  // 
+	  //
 	  Return StyleDict.Value(Key)
 	  //--EMP
 	End Function
@@ -346,7 +347,7 @@ End
 	  ' handler using this code to modify something happening on the screen.
 	  '
 	  ' That break is still being defined, so for the moment we'll just pretend
-	  ' that the keycodes are the same as the command codes, and equate the 
+	  ' that the keycodes are the same as the command codes, and equate the
 	  ' old Key variable to the new Action command code until this is more
 	  ' fully fleshed out.
 	  '
@@ -401,7 +402,7 @@ End
 	  '
 	  If Keyboard.AsyncKeyDown(KEY_DOWN) Or _
 	    Action = ASC_KEY_DOWN Or _
-	    Action = ACTION_NEXT_SLIDE Then 
+	    Action = ACTION_NEXT_SLIDE Then
 	    xNewSlide = SetML.GetNextSlide(XCurrentSlide)
 	    If xNewSlide <> Nil Then
 	      currentSlide = currentSlide + 1
@@ -419,7 +420,7 @@ End
 	    ' PREVIOUS SLIDE
 	    '
 	  ElseIf Keyboard.AsyncKeyDown(KEY_UP)  Or _
-	    Action = ASC_KEY_UP Then 
+	    Action = ASC_KEY_UP Then
 	    xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
 	    If xNewSlide <> Nil Then
 	      currentSlide = currentSlide - 1
@@ -475,7 +476,7 @@ End
 	    // Updated to recognize new section type "blank" for program-generated blank slides
 	    //
 	    oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'What is the section name?
-	    oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?  
+	    oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?
 	    newSlide = CurrentSlide + 1 'move forward a slide
 	    xNewSlide = SetML.GetNextSlide(XCurrentSlide) 'keep slide number and XML in step with each other
 	    If xNewSlide = Nil Then // at end of presentation, just return
@@ -487,7 +488,7 @@ End
 	    ' Check to see if we started on a blank slide, if so, use the section name from the slide we just moved to
 	    '++JRC: Or if this is a custom slide without a name
 	    If xNewSlide <> Nil and oldType = "blank" Then
-	      'If oldName = "" And xNewSlide <> Nil And SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) <> "custom" Then 
+	      'If oldName = "" And xNewSlide <> Nil And SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) <> "custom" Then
 	      oldName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 	    end if
 	    '--
@@ -657,7 +658,7 @@ End
 	    if FindKey(key,  xCurrentSlide, CurrentSlide, xNewSlide, NewSlide) Then
 	      xCurrentSlide = xNewSlide
 	      CurrentSlide = NewSlide
-	    Else 
+	    Else
 	      Return False
 	    End If
 	    
@@ -672,9 +673,9 @@ End
 	    ' Close Presentation
 	    '
 	  ElseIf Keyboard.AsyncKeyDown(&h35) Or Action = 27 Then ' Escape
-	    '++JRC: made the prompt optional 
+	    '++JRC: made the prompt optional
 	    if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
-	      If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then 
+	      If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then
 	        Close
 	      End If
 	    else
@@ -687,7 +688,7 @@ End
 	    ' Black screen (can't be "B" since that's the hotkey for "Bridge" :-(
 	    '
 	  ElseIf Lowercase(Key) = "k"  Then
-	    'Great idea :) 
+	    'Great idea :)
 	    ' Now it's a toggle EMP 9/28
 	    if Mode <> "B" then
 	      Mode = "B"
@@ -808,7 +809,7 @@ End
 	    
 	    '
 	    ' SCRIPTURE
-	    ' 
+	    '
 	  ElseIf Lowercase(Key) = "s" Then
 	    ' Get a reference
 	    newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
@@ -954,7 +955,7 @@ End
 	      CurrentSlide  = OldSlide
 	      
 	      '
-	      If HelperActive Then 
+	      If HelperActive Then
 	        App.MouseCursor = Nil
 	        PresentHelperWindow.ScrollTo currentSlide
 	      Else
@@ -1085,7 +1086,7 @@ End
 	        tempSlideStyle = New SlideStyle(StyleNode)
 	        // We'll just use the dictionary index as the key; this makes it unique if unimaginative
 	        StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
-	        StyleNode.SetAttribute "index", Str(StyleDict.Count - 1) 
+	        StyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
 	        // Going for broke here: Replace the style node with a new one that just has the index...
 	        NewStyleNode = CurrentSet.CreateElement("style")
 	        NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
@@ -1374,8 +1375,7 @@ End
 	  Map(kLeft) = New Key("LEFT", &h7b)
 	  Map(kRight) = New Key("RIGHT", &h7c)
 	  Map(kDown) = New Key("DOWN", &h7d)
-	  Map(kUp) = New Key("UP", &h7e)  
-	
+	  Map(kUp) = New Key("UP", &h7e)
 #tag EndNote
 
 

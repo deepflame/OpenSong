@@ -1,0 +1,3 @@
+The new format of RB2006 creates directories in the source directory. These directories are currently mixed with the directories needed for OS operation during runtime.
+
+The directories needed during operation are prefixed with "OpenSong".

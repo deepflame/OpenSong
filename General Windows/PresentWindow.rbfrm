@@ -64,6 +64,7 @@ Begin Window PresentWindow
          Top             =   248
          Mode            =   0
          Period          =   125
+         TabPanelIndex   =   0
          BehaviorIndex   =   2
       End
    End
@@ -72,34 +73,18 @@ End
 
 #tag WindowCode
 #tag Event
-	Function CancelClose(appQuitting as Boolean) As Boolean
+	Sub Close()
 	  MainWindow.Status_Presentation = False
 	  If HelperActive Then PresentHelperWindow.Close
 	  timerAdvance.Enabled = False
 	  MainWindow.Show
 	  MainWindow.SetFocus
 	  
-	  'ShowCursorMBS
-	End Function
-#tag EndEvent
-
-#tag Event
-	Sub Close()
-	  MainWindow.Status_Presentation = False
-	  MainWindow.Show
-	  MainWindow.SetFocus
 	End Sub
 #tag EndEvent
 
 #tag Event
 	Function KeyDown(Key As String) As Boolean
-	  dim i as integer
-	  Dim Codes(0) As Integer
-	  For i = 0 to 127
-	    if Keyboard.AsyncKeyDown(i) Then codes.append i
-	  Next i
-	  
-	  i = ascb(Key)
 	  Return KeyDownX(Key)
 	End Function
 #tag EndEvent
@@ -1187,8 +1172,9 @@ End
 	    LogoCache.Mask.Graphics.DrawPicture SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo_mask"), 0, 0
 	  End If
 	  
+	  
+	  'Show
 	  If HelperActive Then
-	    PresentHelperWindow.Show
 	    i = 1
 	    slide = SetML.GetSlide(CurrentSet, i)
 	    While slide <> Nil
@@ -1197,18 +1183,14 @@ End
 	      slide = SetML.GetNextSlide(slide)
 	    Wend
 	    PresentHelperWindow.lst_all_slides.ListIndex = 0
-	  End If
-	  
-	  'Show
-	  App.MinimizeWindow(MainWindow)
-	  If HelperActive Then
 	    PresentHelperWindow.SetMode Me.Mode, False
-	    App.RestoreWindow(PresentHelperWindow)
 	    PresentHelperWindow.lst_all_slides.SetFocus
+	    Me.Show 'Important for SongMode, will otherwise steal Focus from Helper afterwards
+	    PresentHelperWindow.SetFocus
 	  Else
 	    ResetPaint XCurrentSlide
+	    Me.SetFocus 'Important for Key handling
 	  End If
-	  
 	  
 	  'TODO: Allow the user to use a custom image for the cursor, the trick will be in
 	  'drawing the image without destroying the background
@@ -1493,7 +1475,7 @@ End
 #tag Constant, Name = ACTION_VERSE, Type = Integer, Dynamic = False, Default = \"1007", Scope = Public
 #tag EndConstant
 
-#tag Constant, Name = ACTION_WHITE, Type = Integer, Dynamic = False, Default = \"1014", Scope = Public
+#tag Constant, Name = ACTION_WHITE, Type = Double, Dynamic = False, Default = \"1014", Scope = Public
 #tag EndConstant
 
 #tag Constant, Name = ControlKey, Type = Integer, Dynamic = False, Default = \"&h1000", Scope = Protected
@@ -1502,16 +1484,16 @@ End
 #tag Constant, Name = CopyAllChildren, Type = Boolean, Dynamic = False, Default = \"True", Scope = Protected
 #tag EndConstant
 
-#tag Constant, Name = MODE_DUAL_SCREEN, Type = Integer, Dynamic = False, Default = \"2", Scope = Public
+#tag Constant, Name = MODE_DUAL_SCREEN, Type = Double, Dynamic = False, Default = \"2", Scope = Public
 #tag EndConstant
 
-#tag Constant, Name = MODE_LINUX_DUAL_SCREEN, Type = Integer, Dynamic = False, Default = \"4", Scope = Public
+#tag Constant, Name = MODE_LINUX_DUAL_SCREEN, Type = Double, Dynamic = False, Default = \"4", Scope = Public
 #tag EndConstant
 
-#tag Constant, Name = MODE_PREVIEW, Type = Integer, Dynamic = False, Default = \"3", Scope = Public
+#tag Constant, Name = MODE_PREVIEW, Type = Double, Dynamic = False, Default = \"3", Scope = Public
 #tag EndConstant
 
-#tag Constant, Name = MODE_SINGLE_SCREEN, Type = Integer, Dynamic = False, Default = \"1", Scope = Public
+#tag Constant, Name = MODE_SINGLE_SCREEN, Type = Double, Dynamic = False, Default = \"1", Scope = Public
 #tag EndConstant
 
 #tag Constant, Name = OptionKey, Type = Integer, Dynamic = False, Default = \"&h10000", Scope = Protected
@@ -1526,13 +1508,6 @@ End
 #tag Events cnvSlide
 #tag Event
 	Function KeyDown(Key As String) As Boolean
-	  
-	  Dim I As Integer
-	  Dim Codes(0) As Integer
-	  For i = 0 to 127
-	    if Keyboard.AsyncKeyDown(i) Then codes.append(i)
-	  Next i
-	  
 	  Return KeyDownX(Key)
 	End Function
 #tag EndEvent
@@ -1584,7 +1559,7 @@ End
 #tag Events timerTransition
 #tag Event
 	Sub Action()
-	  If TransitionFrame = TransitionFrames Then
+	  If TransitionFrame >= TransitionFrames Then
 	    Me.Enabled = False
 	    Me.Reset
 	  Else

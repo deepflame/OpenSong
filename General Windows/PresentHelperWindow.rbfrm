@@ -7,7 +7,7 @@ Begin Window PresentHelperWindow
    MinHeight       =   480
    MaxWidth        =   32000
    MaxHeight       =   32000
-   Frame           =   0
+   Frame           =   1
    Composite       =   "False"
    HasBackColor    =   "False"
    BackColor       =   16777215
@@ -689,6 +689,11 @@ End
 	Function SortColumn(column As Integer) As Boolean
 	  Me.setFocus 'EMP: If we don't do this, focus stays on the header and keystrokes won't go to the command handler
 	  Return True
+	End Function
+#tag EndEvent
+#tag Event
+	Function KeyDown(key As String) As Boolean
+	  Return PresentWindow.KeyDownX(key)
 	End Function
 #tag EndEvent
 #tag EndEvents

@@ -465,64 +465,6 @@ Inherits Application
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub MinimizeWindow(Wnd As Window)
-		  //++
-		  // Provides functionality to minimize a window to the taskbar on Windows, or Hide the window on Mac
-		  // No functionality yet on Linux (due to testing constraints)
-		  //
-		  // This routine can be replaced for all platforms by the Window.Minimize method when OpenSong moves
-		  // to RealBasic 2006 or later.
-		  //
-		  // Ed Palmer, May 2006
-		  //--
-		  
-		  Dim hwnd As Integer
-		  Dim status As Integer
-		  Dim lparam As New MemoryBlock(4)
-		  Const WM_SYSCOMMAND = 274
-		  Const SC_MINIMIZE = 61472
-		  
-		  #If TargetWin32 Then
-		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
-		    
-		    hwnd = Wnd.WinHWND
-		    
-		    status = SendMessageA(wnd.WinHWND, WM_SYSCOMMAND, SC_MINIMIZE, lparam)
-		    
-		    Return
-		    
-		  #ElseIf TargetMacOS
-		    Wnd.Hide
-		  #Endif
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub RestoreWindow(Wnd As Window)
-		  
-		  Dim hwnd As Integer
-		  Dim status As Integer
-		  Dim lparam As New MemoryBlock(4)
-		  Const WM_SYSCOMMAND = 274
-		  Const SC_MINIMIZE = 61472
-		  Const SC_RESTORE = &HF120
-		  
-		  #If TargetWin32 Then
-		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
-		    
-		    hwnd = Wnd.WinHWND
-		    
-		    status = SendMessageA(wnd.WinHWND, WM_SYSCOMMAND, SC_RESTORE, lparam)
-		    
-		    Return
-		    
-		  #ElseIf TargetMacOS
-		    Wnd.Show
-		  #Endif
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function SmartVersion() As String
 		  Dim t As String
 		  

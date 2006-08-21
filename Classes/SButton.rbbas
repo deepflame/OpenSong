@@ -11,8 +11,11 @@ Inherits Canvas
 		    If Popup <> Nil Then
 		      Popup.Open
 		      Action
+		      IsMouseDown = False
+		      Return False
+		    Else
+		      Return True
 		    End If
-		    Return True
 		  End If
 		End Function
 	#tag EndEvent

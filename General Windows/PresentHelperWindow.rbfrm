@@ -7,7 +7,7 @@ Begin Window PresentHelperWindow
    MinHeight       =   480
    MaxWidth        =   32000
    MaxHeight       =   32000
-   Frame           =   1
+   Frame           =   0
    Composite       =   "False"
    HasBackColor    =   "False"
    BackColor       =   16777215

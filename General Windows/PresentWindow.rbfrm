@@ -7,7 +7,7 @@ Begin Window PresentWindow
    MinHeight       =   64
    MaxWidth        =   32000
    MaxHeight       =   32000
-   Frame           =   3
+   Frame           =   7
    Composite       =   "False"
    HasBackColor    =   "True"
    BackColor       =   0
@@ -54,6 +54,7 @@ Begin Window PresentWindow
          Top             =   248
          Mode            =   0
          Period          =   10000
+         InitialParent   =   "cnvSlide"
          TabPanelIndex   =   0
          BehaviorIndex   =   1
       End
@@ -64,6 +65,7 @@ Begin Window PresentWindow
          Top             =   248
          Mode            =   0
          Period          =   125
+         InitialParent   =   "cnvSlide"
          TabPanelIndex   =   0
          BehaviorIndex   =   2
       End
@@ -1172,7 +1174,6 @@ End
 	    LogoCache.Mask.Graphics.DrawPicture SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo_mask"), 0, 0
 	  End If
 	  
-	  
 	  'Show
 	  If HelperActive Then
 	    i = 1
@@ -1185,6 +1186,7 @@ End
 	    PresentHelperWindow.lst_all_slides.ListIndex = 0
 	    PresentHelperWindow.SetMode Me.Mode, False
 	    PresentHelperWindow.lst_all_slides.SetFocus
+	    MainWindow.Hide
 	    Me.Show 'Important for SongMode, will otherwise steal Focus from Helper afterwards
 	    PresentHelperWindow.SetFocus
 	  Else

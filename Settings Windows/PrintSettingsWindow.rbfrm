@@ -94,7 +94,7 @@ Begin Window PrintSettingsWindow
       TabDefinition   =   "Fonts\rLayout\rMargins"
       Panels          =   ""
       SmallTabs       =   "False"
-      Value           =   2
+      Value           =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -104,7 +104,6 @@ Begin Window PrintSettingsWindow
       Bold            =   "False"
       Italic          =   "False"
       Underline       =   "False"
-      InitialParent   =   ""
       BehaviorIndex   =   2
       Begin Canvas can_print_margins
          Index           =   -2147483648
@@ -129,269 +128,6 @@ Begin Window PrintSettingsWindow
          EraseBackground =   "True"
          InitialParent   =   "tab_main_tabs"
          BehaviorIndex   =   3
-         Begin StaticText lbl_page_top
-            Index           =   -2147483648
-            ControlOrder    =   4
-            Left            =   205
-            Top             =   36
-            Width           =   105
-            Height          =   15
-            LockLeft        =   "False"
-            LockTop         =   "False"
-            LockRight       =   "False"
-            LockBottom      =   "False"
-            TabPanelIndex   =   3
-            Text            =   "Top:"
-            TextAlign       =   1
-            TextColor       =   0
-            Multiline       =   "False"
-            Enabled         =   True
-            Visible         =   True
-            HelpTag         =   ""
-            AutoDeactivate  =   "True"
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Bold            =   "False"
-            Italic          =   "False"
-            Underline       =   "False"
-            DataSource      =   ""
-            DataField       =   ""
-            InitialParent   =   "can_print_margins"
-            BehaviorIndex   =   15
-         End
-         Begin StaticText lbl_page_bottom
-            Index           =   -2147483648
-            ControlOrder    =   5
-            Left            =   205
-            Top             =   234
-            Width           =   105
-            Height          =   15
-            LockLeft        =   "False"
-            LockTop         =   "False"
-            LockRight       =   "False"
-            LockBottom      =   "False"
-            TabPanelIndex   =   3
-            Text            =   "Bottom:"
-            TextAlign       =   1
-            TextColor       =   0
-            Multiline       =   "False"
-            Enabled         =   True
-            Visible         =   True
-            HelpTag         =   ""
-            AutoDeactivate  =   "True"
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Bold            =   "False"
-            Italic          =   "False"
-            Underline       =   "False"
-            DataSource      =   ""
-            DataField       =   ""
-            InitialParent   =   "can_print_margins"
-            BehaviorIndex   =   4
-         End
-         Begin StaticText lbl_page_left
-            Index           =   -2147483648
-            ControlOrder    =   6
-            Left            =   101
-            Top             =   137
-            Width           =   95
-            Height          =   15
-            LockLeft        =   "False"
-            LockTop         =   "False"
-            LockRight       =   "False"
-            LockBottom      =   "False"
-            TabPanelIndex   =   3
-            Text            =   "Left:"
-            TextAlign       =   1
-            TextColor       =   0
-            Multiline       =   "False"
-            Enabled         =   True
-            Visible         =   True
-            HelpTag         =   ""
-            AutoDeactivate  =   "True"
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Bold            =   "False"
-            Italic          =   "False"
-            Underline       =   "False"
-            DataSource      =   ""
-            DataField       =   ""
-            InitialParent   =   "can_print_margins"
-            BehaviorIndex   =   14
-         End
-         Begin Rectangle nil_page
-            Index           =   -2147483648
-            ControlOrder    =   9
-            Left            =   200
-            Top             =   81
-            Width           =   115
-            Height          =   150
-            LockLeft        =   "False"
-            LockTop         =   "False"
-            LockRight       =   "False"
-            LockBottom      =   "False"
-            TabPanelIndex   =   3
-            Visible         =   True
-            HelpTag         =   ""
-            AutoDeactivate  =   "True"
-            Enabled         =   True
-            FillColor       =   16777215
-            BorderWidth     =   1
-            TopLeftColor    =   0
-            BottomRightColor=   0
-            InitialParent   =   "can_print_margins"
-            BehaviorIndex   =   5
-            Begin StaticText lbl_page_height
-               Index           =   -2147483648
-               ControlOrder    =   11
-               Left            =   205
-               Top             =   161
-               Width           =   105
-               Height          =   15
-               LockLeft        =   "False"
-               LockTop         =   "False"
-               LockRight       =   "False"
-               LockBottom      =   "False"
-               TabPanelIndex   =   3
-               Text            =   "Height:"
-               TextAlign       =   1
-               TextColor       =   0
-               Multiline       =   "False"
-               Enabled         =   True
-               Visible         =   True
-               HelpTag         =   ""
-               AutoDeactivate  =   "True"
-               TextFont        =   "Arial"
-               TextSize        =   10
-               Bold            =   "False"
-               Italic          =   "False"
-               Underline       =   "False"
-               DataSource      =   ""
-               DataField       =   ""
-               InitialParent   =   "nil_page"
-               BehaviorIndex   =   6
-            End
-            Begin StaticText lbl_page_width
-               Index           =   -2147483648
-               ControlOrder    =   13
-               Left            =   205
-               Top             =   110
-               Width           =   105
-               Height          =   15
-               LockLeft        =   "False"
-               LockTop         =   "False"
-               LockRight       =   "False"
-               LockBottom      =   "False"
-               TabPanelIndex   =   3
-               Text            =   "Width:"
-               TextAlign       =   1
-               TextColor       =   0
-               Multiline       =   "False"
-               Enabled         =   True
-               Visible         =   True
-               HelpTag         =   ""
-               AutoDeactivate  =   "True"
-               TextFont        =   "Arial"
-               TextSize        =   10
-               Bold            =   "False"
-               Italic          =   "False"
-               Underline       =   "False"
-               DataSource      =   ""
-               DataField       =   ""
-               InitialParent   =   "nil_page"
-               BehaviorIndex   =   7
-            End
-            Begin SEditFieldNumeric edt_page_width
-               Index           =   -2147483648
-               ControlOrder    =   29
-               Left            =   217
-               Top             =   127
-               Width           =   80
-               Height          =   22
-               LockLeft        =   ""
-               LockTop         =   ""
-               LockRight       =   ""
-               LockBottom      =   ""
-               TabPanelIndex   =   3
-               Border          =   "True"
-               Multiline       =   ""
-               ScrollbarHorizontal=   ""
-               ScrollbarVertical=   "True"
-               Styled          =   ""
-               Password        =   ""
-               UseFocusRing    =   "True"
-               TextColor       =   &h000000
-               BackColor       =   &hFFFFFF
-               Enabled         =   "True"
-               Format          =   ""
-               Visible         =   "True"
-               HelpTag         =   ""
-               AutoDeactivate  =   "True"
-               TextFont        =   "System"
-               TextSize        =   0
-               Bold            =   ""
-               Italic          =   ""
-               Underline       =   ""
-               Text            =   ""
-               Mask            =   ""
-               ReadOnly        =   ""
-               LimitText       =   0
-               AcceptTabs      =   ""
-               Alignment       =   0
-               DataSource      =   ""
-               DataField       =   ""
-               InitialParent   =   "nil_page"
-               EnforceRange    =   0
-               Maximum         =   0
-               Minimum         =   0
-               BehaviorIndex   =   8
-            End
-            Begin SEditFieldNumeric edt_page_height
-               Index           =   -2147483648
-               ControlOrder    =   31
-               Left            =   217
-               Top             =   179
-               Width           =   80
-               Height          =   22
-               LockLeft        =   ""
-               LockTop         =   ""
-               LockRight       =   ""
-               LockBottom      =   ""
-               TabPanelIndex   =   3
-               Border          =   "True"
-               Multiline       =   ""
-               ScrollbarHorizontal=   ""
-               ScrollbarVertical=   "True"
-               Styled          =   ""
-               Password        =   ""
-               UseFocusRing    =   "True"
-               TextColor       =   &h000000
-               BackColor       =   &hFFFFFF
-               Enabled         =   "True"
-               Format          =   ""
-               Visible         =   "True"
-               HelpTag         =   ""
-               AutoDeactivate  =   "True"
-               TextFont        =   "System"
-               TextSize        =   0
-               Bold            =   ""
-               Italic          =   ""
-               Underline       =   ""
-               Text            =   ""
-               Mask            =   ""
-               ReadOnly        =   ""
-               LimitText       =   0
-               AcceptTabs      =   ""
-               Alignment       =   0
-               DataSource      =   ""
-               DataField       =   ""
-               InitialParent   =   "nil_page"
-               EnforceRange    =   0
-               Maximum         =   0
-               Minimum         =   0
-               BehaviorIndex   =   9
-            End
-         End
          Begin StaticText lbl_page_right
             Index           =   -2147483648
             ControlOrder    =   12
@@ -420,11 +156,11 @@ Begin Window PrintSettingsWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_print_margins"
-            BehaviorIndex   =   17
+            BehaviorIndex   =   12
          End
          Begin GroupBox grp_page_units
             Index           =   -2147483648
-            ControlOrder    =   32
+            ControlOrder    =   7
             Left            =   38
             Top             =   47
             Width           =   150
@@ -445,10 +181,10 @@ Begin Window PrintSettingsWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_print_margins"
-            BehaviorIndex   =   10
+            BehaviorIndex   =   13
             Begin RadioButton rad_page_inches
                Index           =   -2147483648
-               ControlOrder    =   34
+               ControlOrder    =   20
                Left            =   54
                Top             =   71
                Width           =   118
@@ -470,11 +206,11 @@ Begin Window PrintSettingsWindow
                Underline       =   "False"
                Value           =   "False"
                InitialParent   =   "grp_page_units"
-               BehaviorIndex   =   11
+               BehaviorIndex   =   14
             End
             Begin RadioButton rad_page_cm
                Index           =   -2147483648
-               ControlOrder    =   35
+               ControlOrder    =   21
                Left            =   54
                Top             =   95
                Width           =   118
@@ -496,12 +232,12 @@ Begin Window PrintSettingsWindow
                Underline       =   "False"
                Value           =   "False"
                InitialParent   =   "grp_page_units"
-               BehaviorIndex   =   12
+               BehaviorIndex   =   15
             End
          End
          Begin SEditFieldNumeric edt_page_top
             Index           =   -2147483648
-            ControlOrder    =   33
+            ControlOrder    =   9
             Left            =   217
             Top             =   55
             Width           =   80
@@ -542,11 +278,11 @@ Begin Window PrintSettingsWindow
             EnforceRange    =   0
             Maximum         =   0
             Minimum         =   0
-            BehaviorIndex   =   38
+            BehaviorIndex   =   16
          End
          Begin SEditFieldNumeric edt_page_left
             Index           =   -2147483648
-            ControlOrder    =   36
+            ControlOrder    =   11
             Left            =   108
             Top             =   154
             Width           =   80
@@ -587,11 +323,11 @@ Begin Window PrintSettingsWindow
             EnforceRange    =   0
             Maximum         =   0
             Minimum         =   0
-            BehaviorIndex   =   13
+            BehaviorIndex   =   17
          End
          Begin SEditFieldNumeric edt_page_right
             Index           =   -2147483648
-            ControlOrder    =   37
+            ControlOrder    =   13
             Left            =   332
             Top             =   154
             Width           =   80
@@ -632,11 +368,11 @@ Begin Window PrintSettingsWindow
             EnforceRange    =   0
             Maximum         =   0
             Minimum         =   0
-            BehaviorIndex   =   16
+            BehaviorIndex   =   18
          End
          Begin SEditFieldNumeric edt_page_bottom
             Index           =   -2147483648
-            ControlOrder    =   38
+            ControlOrder    =   15
             Left            =   217
             Top             =   251
             Width           =   80
@@ -677,262 +413,275 @@ Begin Window PrintSettingsWindow
             EnforceRange    =   0
             Maximum         =   0
             Minimum         =   0
-            BehaviorIndex   =   18
+            BehaviorIndex   =   19
          End
-      End
-      Begin StaticText lbl_layout_heading_border_thickness
-         Index           =   -2147483648
-         ControlOrder    =   7
-         Left            =   30
-         Top             =   55
-         Width           =   300
-         Height          =   15
-         LockLeft        =   "False"
-         LockTop         =   "False"
-         LockRight       =   "False"
-         LockBottom      =   "False"
-         TabPanelIndex   =   2
-         Text            =   "Heading Border Thickness:"
-         TextAlign       =   0
-         TextColor       =   0
-         Multiline       =   "False"
-         Enabled         =   True
-         Visible         =   True
-         HelpTag         =   ""
-         AutoDeactivate  =   "True"
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Bold            =   "False"
-         Italic          =   "False"
-         Underline       =   "False"
-         DataSource      =   ""
-         DataField       =   ""
-         InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   19
-      End
-      Begin EditField edt_layout_heading_border_thickness
-         Index           =   -2147483648
-         ControlOrder    =   8
-         Left            =   30
-         Top             =   70
-         Width           =   50
-         Height          =   20
-         LockLeft        =   "False"
-         LockTop         =   "False"
-         LockRight       =   "False"
-         LockBottom      =   "False"
-         TabPanelIndex   =   2
-         Border          =   "True"
-         Multiline       =   "False"
-         ScrollbarHorizontal=   "False"
-         ScrollbarVertical=   "True"
-         Styled          =   "False"
-         Password        =   "False"
-         UseFocusRing    =   "True"
-         TextColor       =   0
-         BackColor       =   16777215
-         Enabled         =   True
-         Format          =   ""
-         Visible         =   True
-         HelpTag         =   ""
-         AutoDeactivate  =   "True"
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Bold            =   "False"
-         Italic          =   "False"
-         Underline       =   "False"
-         Text            =   ""
-         Mask            =   ""
-         ReadOnly        =   "False"
-         LimitText       =   4
-         AcceptTabs      =   "False"
-         Alignment       =   0
-         DataSource      =   ""
-         DataField       =   ""
-         InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   20
-      End
-      Begin CheckBox chk_layout_title_in_caps
-         Index           =   -2147483648
-         ControlOrder    =   10
-         Left            =   30
-         Top             =   100
-         Width           =   300
-         Height          =   20
-         LockLeft        =   "False"
-         LockTop         =   "False"
-         LockRight       =   "False"
-         LockBottom      =   "False"
-         TabPanelIndex   =   2
-         Caption         =   "Title in CAPS"
-         Enabled         =   True
-         Visible         =   True
-         HelpTag         =   ""
-         AutoDeactivate  =   "True"
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Bold            =   "False"
-         Italic          =   "False"
-         Underline       =   "False"
-         Value           =   "False"
-         DataSource      =   ""
-         DataField       =   ""
-         InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   21
-      End
-      Begin StaticText lbl_font_title
-         Index           =   -2147483648
-         ControlOrder    =   14
-         Left            =   20
-         Top             =   65
-         Width           =   60
-         Height          =   15
-         LockLeft        =   "False"
-         LockTop         =   "False"
-         LockRight       =   "False"
-         LockBottom      =   "False"
-         TabPanelIndex   =   1
-         Text            =   "Title:"
-         TextAlign       =   2
-         TextColor       =   0
-         Multiline       =   "False"
-         Enabled         =   True
-         Visible         =   True
-         HelpTag         =   ""
-         AutoDeactivate  =   "True"
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Bold            =   "False"
-         Italic          =   "False"
-         Underline       =   "False"
-         DataSource      =   ""
-         DataField       =   ""
-         InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   22
-      End
-      Begin StaticText lbl_font_lyrics
-         Index           =   -2147483648
-         ControlOrder    =   15
-         Left            =   20
-         Top             =   230
-         Width           =   60
-         Height          =   15
-         LockLeft        =   "False"
-         LockTop         =   "False"
-         LockRight       =   "False"
-         LockBottom      =   "False"
-         TabPanelIndex   =   1
-         Text            =   "Lyrics:"
-         TextAlign       =   2
-         TextColor       =   0
-         Multiline       =   "False"
-         Enabled         =   True
-         Visible         =   True
-         HelpTag         =   ""
-         AutoDeactivate  =   "True"
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Bold            =   "False"
-         Italic          =   "False"
-         Underline       =   "False"
-         DataSource      =   ""
-         DataField       =   ""
-         InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   23
-      End
-      Begin StaticText lbl_font_chords
-         Index           =   -2147483648
-         ControlOrder    =   16
-         Left            =   255
-         Top             =   65
-         Width           =   80
-         Height          =   15
-         LockLeft        =   "False"
-         LockTop         =   "False"
-         LockRight       =   "False"
-         LockBottom      =   "False"
-         TabPanelIndex   =   1
-         Text            =   "Chords:"
-         TextAlign       =   2
-         TextColor       =   0
-         Multiline       =   "False"
-         Enabled         =   True
-         Visible         =   True
-         HelpTag         =   ""
-         AutoDeactivate  =   "True"
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Bold            =   "False"
-         Italic          =   "False"
-         Underline       =   "False"
-         DataSource      =   ""
-         DataField       =   ""
-         InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   24
-      End
-      Begin StaticText lbl_font_capo
-         Index           =   -2147483648
-         ControlOrder    =   17
-         Left            =   255
-         Top             =   120
-         Width           =   80
-         Height          =   15
-         LockLeft        =   "False"
-         LockTop         =   "False"
-         LockRight       =   "False"
-         LockBottom      =   "False"
-         TabPanelIndex   =   1
-         Text            =   "Capo Chords:"
-         TextAlign       =   2
-         TextColor       =   0
-         Multiline       =   "False"
-         Enabled         =   True
-         Visible         =   True
-         HelpTag         =   ""
-         AutoDeactivate  =   "True"
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Bold            =   "False"
-         Italic          =   "False"
-         Underline       =   "False"
-         DataSource      =   ""
-         DataField       =   ""
-         InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   25
-      End
-      Begin StaticText lbl_font_author
-         Index           =   -2147483648
-         ControlOrder    =   18
-         Left            =   20
-         Top             =   120
-         Width           =   60
-         Height          =   15
-         LockLeft        =   "False"
-         LockTop         =   "False"
-         LockRight       =   "False"
-         LockBottom      =   "False"
-         TabPanelIndex   =   1
-         Text            =   "Author:"
-         TextAlign       =   2
-         TextColor       =   0
-         Multiline       =   "False"
-         Enabled         =   True
-         Visible         =   True
-         HelpTag         =   ""
-         AutoDeactivate  =   "True"
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Bold            =   "False"
-         Italic          =   "False"
-         Underline       =   "False"
-         DataSource      =   ""
-         DataField       =   ""
-         InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   26
+         Begin Rectangle nil_page
+            Index           =   -2147483648
+            ControlOrder    =   6
+            Left            =   200
+            Top             =   81
+            Width           =   115
+            Height          =   150
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   3
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            Enabled         =   True
+            FillColor       =   16777215
+            BorderWidth     =   1
+            TopLeftColor    =   0
+            BottomRightColor=   0
+            InitialParent   =   "can_print_margins"
+            BehaviorIndex   =   7
+            Begin SEditFieldNumeric edt_page_width
+               Index           =   -2147483648
+               ControlOrder    =   17
+               Left            =   217
+               Top             =   127
+               Width           =   80
+               Height          =   22
+               LockLeft        =   ""
+               LockTop         =   ""
+               LockRight       =   ""
+               LockBottom      =   ""
+               TabPanelIndex   =   3
+               Border          =   "True"
+               Multiline       =   ""
+               ScrollbarHorizontal=   ""
+               ScrollbarVertical=   "True"
+               Styled          =   ""
+               Password        =   ""
+               UseFocusRing    =   "True"
+               TextColor       =   &h000000
+               BackColor       =   &hFFFFFF
+               Enabled         =   "True"
+               Format          =   ""
+               Visible         =   "True"
+               HelpTag         =   ""
+               AutoDeactivate  =   "True"
+               TextFont        =   "System"
+               TextSize        =   0
+               Bold            =   ""
+               Italic          =   ""
+               Underline       =   ""
+               Text            =   ""
+               Mask            =   ""
+               ReadOnly        =   ""
+               LimitText       =   0
+               AcceptTabs      =   ""
+               Alignment       =   0
+               DataSource      =   ""
+               DataField       =   ""
+               InitialParent   =   "nil_page"
+               EnforceRange    =   0
+               Maximum         =   0
+               Minimum         =   0
+               BehaviorIndex   =   10
+            End
+            Begin StaticText lbl_page_width
+               Index           =   -2147483648
+               ControlOrder    =   16
+               Left            =   205
+               Top             =   110
+               Width           =   105
+               Height          =   15
+               LockLeft        =   "False"
+               LockTop         =   "False"
+               LockRight       =   "False"
+               LockBottom      =   "False"
+               TabPanelIndex   =   3
+               Text            =   "Width:"
+               TextAlign       =   1
+               TextColor       =   0
+               Multiline       =   "False"
+               Enabled         =   True
+               Visible         =   True
+               HelpTag         =   ""
+               AutoDeactivate  =   "True"
+               TextFont        =   "Arial"
+               TextSize        =   10
+               Bold            =   "False"
+               Italic          =   "False"
+               Underline       =   "False"
+               DataSource      =   ""
+               DataField       =   ""
+               InitialParent   =   "nil_page"
+               BehaviorIndex   =   9
+            End
+            Begin SEditFieldNumeric edt_page_height
+               Index           =   -2147483648
+               ControlOrder    =   19
+               Left            =   217
+               Top             =   179
+               Width           =   80
+               Height          =   22
+               LockLeft        =   ""
+               LockTop         =   ""
+               LockRight       =   ""
+               LockBottom      =   ""
+               TabPanelIndex   =   3
+               Border          =   "True"
+               Multiline       =   ""
+               ScrollbarHorizontal=   ""
+               ScrollbarVertical=   "True"
+               Styled          =   ""
+               Password        =   ""
+               UseFocusRing    =   "True"
+               TextColor       =   &h000000
+               BackColor       =   &hFFFFFF
+               Enabled         =   "True"
+               Format          =   ""
+               Visible         =   "True"
+               HelpTag         =   ""
+               AutoDeactivate  =   "True"
+               TextFont        =   "System"
+               TextSize        =   0
+               Bold            =   ""
+               Italic          =   ""
+               Underline       =   ""
+               Text            =   ""
+               Mask            =   ""
+               ReadOnly        =   ""
+               LimitText       =   0
+               AcceptTabs      =   ""
+               Alignment       =   0
+               DataSource      =   ""
+               DataField       =   ""
+               InitialParent   =   "nil_page"
+               EnforceRange    =   0
+               Maximum         =   0
+               Minimum         =   0
+               BehaviorIndex   =   11
+            End
+            Begin StaticText lbl_page_height
+               Index           =   -2147483648
+               ControlOrder    =   18
+               Left            =   205
+               Top             =   161
+               Width           =   105
+               Height          =   15
+               LockLeft        =   "False"
+               LockTop         =   "False"
+               LockRight       =   "False"
+               LockBottom      =   "False"
+               TabPanelIndex   =   3
+               Text            =   "Height:"
+               TextAlign       =   1
+               TextColor       =   0
+               Multiline       =   "False"
+               Enabled         =   True
+               Visible         =   True
+               HelpTag         =   ""
+               AutoDeactivate  =   "True"
+               TextFont        =   "Arial"
+               TextSize        =   10
+               Bold            =   "False"
+               Italic          =   "False"
+               Underline       =   "False"
+               DataSource      =   ""
+               DataField       =   ""
+               InitialParent   =   "nil_page"
+               BehaviorIndex   =   8
+            End
+         End
+         Begin StaticText lbl_page_bottom
+            Index           =   -2147483648
+            ControlOrder    =   14
+            Left            =   205
+            Top             =   234
+            Width           =   105
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   3
+            Text            =   "Bottom:"
+            TextAlign       =   1
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_margins"
+            BehaviorIndex   =   5
+         End
+         Begin StaticText lbl_page_top
+            Index           =   -2147483648
+            ControlOrder    =   8
+            Left            =   205
+            Top             =   36
+            Width           =   105
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   3
+            Text            =   "Top:"
+            TextAlign       =   1
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_margins"
+            BehaviorIndex   =   4
+         End
+         Begin StaticText lbl_page_left
+            Index           =   -2147483648
+            ControlOrder    =   10
+            Left            =   101
+            Top             =   137
+            Width           =   95
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   3
+            Text            =   "Left:"
+            TextAlign       =   1
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_margins"
+            BehaviorIndex   =   6
+         End
       End
       Begin Canvas can_print_fonts
          Index           =   -2147483648
-         ControlOrder    =   19
+         ControlOrder    =   5
          Left            =   15
          Top             =   37
          Width           =   495
@@ -952,10 +701,210 @@ Begin Window PrintSettingsWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   27
+         BehaviorIndex   =   28
+         Begin StaticText lbl_font_lyrics
+            Index           =   -2147483648
+            ControlOrder    =   31
+            Left            =   20
+            Top             =   230
+            Width           =   60
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   1
+            Text            =   "Lyrics:"
+            TextAlign       =   2
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_fonts"
+            BehaviorIndex   =   24
+         End
+         Begin StaticText lbl_font_title
+            Index           =   -2147483648
+            ControlOrder    =   25
+            Left            =   20
+            Top             =   65
+            Width           =   60
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   1
+            Text            =   "Title:"
+            TextAlign       =   2
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_fonts"
+            BehaviorIndex   =   23
+         End
+         Begin SFontCanvas can_font_title
+            ControlOrder    =   26
+            Width           =   160
+            Height          =   50
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   1
+            Visible         =   "True"
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            Enabled         =   "True"
+            UseFocusRing    =   "True"
+            Backdrop        =   0
+            AcceptFocus     =   "False"
+            AcceptTabs      =   "False"
+            EraseBackground =   "True"
+            InitialParent   =   "can_print_fonts"
+            Index           =   -2147483648
+            Left            =   85
+            Top             =   50
+            AdvancedOptions =   "False"
+            BehaviorIndex   =   31
+         End
+         Begin StaticText lbl_font_chords
+            Index           =   -2147483648
+            ControlOrder    =   33
+            Left            =   255
+            Top             =   65
+            Width           =   80
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   1
+            Text            =   "Chords:"
+            TextAlign       =   2
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_fonts"
+            BehaviorIndex   =   25
+         End
+         Begin StaticText lbl_font_capo
+            Index           =   -2147483648
+            ControlOrder    =   35
+            Left            =   255
+            Top             =   120
+            Width           =   80
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   1
+            Text            =   "Capo Chords:"
+            TextAlign       =   2
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_fonts"
+            BehaviorIndex   =   26
+         End
+         Begin StaticText lbl_font_author
+            Index           =   -2147483648
+            ControlOrder    =   27
+            Left            =   20
+            Top             =   120
+            Width           =   60
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   1
+            Text            =   "Author:"
+            TextAlign       =   2
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_fonts"
+            BehaviorIndex   =   27
+         End
+         Begin SFontCanvas can_font_author
+            ControlOrder    =   28
+            Width           =   160
+            Height          =   50
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   1
+            Visible         =   "True"
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            Enabled         =   "True"
+            UseFocusRing    =   "True"
+            Backdrop        =   0
+            AcceptFocus     =   "False"
+            AcceptTabs      =   "False"
+            EraseBackground =   "True"
+            InitialParent   =   "can_print_fonts"
+            Index           =   -2147483648
+            Left            =   85
+            Top             =   105
+            AdvancedOptions =   "False"
+            BehaviorIndex   =   32
+         End
          Begin StaticText lbl_font_copyright
             Index           =   -2147483648
-            ControlOrder    =   20
+            ControlOrder    =   37
             Left            =   255
             Top             =   175
             Width           =   80
@@ -981,11 +930,11 @@ Begin Window PrintSettingsWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_print_fonts"
-            BehaviorIndex   =   28
+            BehaviorIndex   =   29
          End
          Begin StaticText lbl_font_sections
             Index           =   -2147483648
-            ControlOrder    =   21
+            ControlOrder    =   29
             Left            =   20
             Top             =   175
             Width           =   60
@@ -1011,60 +960,10 @@ Begin Window PrintSettingsWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_print_fonts"
-            BehaviorIndex   =   29
-         End
-         Begin SFontCanvas can_font_title
-            ControlOrder    =   22
-            Width           =   160
-            Height          =   50
-            LockLeft        =   "False"
-            LockTop         =   "False"
-            LockRight       =   "False"
-            LockBottom      =   "False"
-            TabPanelIndex   =   1
-            Visible         =   "True"
-            HelpTag         =   ""
-            AutoDeactivate  =   "True"
-            Enabled         =   "True"
-            UseFocusRing    =   "True"
-            Backdrop        =   0
-            AcceptFocus     =   "False"
-            AcceptTabs      =   "False"
-            EraseBackground =   "True"
-            InitialParent   =   "can_print_fonts"
-            Index           =   -2147483648
-            Left            =   85
-            Top             =   50
-            AdvancedOptions =   "False"
             BehaviorIndex   =   30
          End
-         Begin SFontCanvas can_font_author
-            ControlOrder    =   23
-            Width           =   160
-            Height          =   50
-            LockLeft        =   "False"
-            LockTop         =   "False"
-            LockRight       =   "False"
-            LockBottom      =   "False"
-            TabPanelIndex   =   1
-            Visible         =   "True"
-            HelpTag         =   ""
-            AutoDeactivate  =   "True"
-            Enabled         =   "True"
-            UseFocusRing    =   "True"
-            Backdrop        =   0
-            AcceptFocus     =   "False"
-            AcceptTabs      =   "False"
-            EraseBackground =   "True"
-            InitialParent   =   "can_print_fonts"
-            Index           =   -2147483648
-            Left            =   85
-            Top             =   105
-            AdvancedOptions =   "False"
-            BehaviorIndex   =   31
-         End
          Begin SFontCanvas can_font_sections
-            ControlOrder    =   24
+            ControlOrder    =   30
             Width           =   160
             Height          =   50
             LockLeft        =   "False"
@@ -1086,10 +985,10 @@ Begin Window PrintSettingsWindow
             Left            =   85
             Top             =   160
             AdvancedOptions =   "False"
-            BehaviorIndex   =   32
+            BehaviorIndex   =   33
          End
          Begin SFontCanvas can_font_lyrics
-            ControlOrder    =   25
+            ControlOrder    =   32
             Width           =   160
             Height          =   50
             LockLeft        =   "False"
@@ -1111,10 +1010,10 @@ Begin Window PrintSettingsWindow
             Left            =   85
             Top             =   215
             AdvancedOptions =   "False"
-            BehaviorIndex   =   33
+            BehaviorIndex   =   34
          End
          Begin SFontCanvas can_font_chords
-            ControlOrder    =   26
+            ControlOrder    =   34
             Width           =   160
             Height          =   50
             LockLeft        =   "False"
@@ -1136,10 +1035,10 @@ Begin Window PrintSettingsWindow
             Left            =   340
             Top             =   50
             AdvancedOptions =   "False"
-            BehaviorIndex   =   34
+            BehaviorIndex   =   35
          End
          Begin SFontCanvas can_font_capo
-            ControlOrder    =   27
+            ControlOrder    =   36
             Width           =   160
             Height          =   50
             LockLeft        =   "False"
@@ -1161,10 +1060,10 @@ Begin Window PrintSettingsWindow
             Left            =   340
             Top             =   105
             AdvancedOptions =   "False"
-            BehaviorIndex   =   35
+            BehaviorIndex   =   36
          End
          Begin SFontCanvas can_font_copyright
-            ControlOrder    =   28
+            ControlOrder    =   38
             Width           =   160
             Height          =   50
             LockLeft        =   "False"
@@ -1186,12 +1085,12 @@ Begin Window PrintSettingsWindow
             Left            =   340
             Top             =   160
             AdvancedOptions =   "False"
-            BehaviorIndex   =   36
+            BehaviorIndex   =   37
          End
       End
       Begin Canvas can_print_layout
          Index           =   -2147483648
-         ControlOrder    =   30
+         ControlOrder    =   4
          Left            =   15
          Top             =   37
          Width           =   495
@@ -1211,7 +1110,107 @@ Begin Window PrintSettingsWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "tab_main_tabs"
-         BehaviorIndex   =   37
+         BehaviorIndex   =   38
+         Begin StaticText lbl_layout_heading_border_thickness
+            Index           =   -2147483648
+            ControlOrder    =   22
+            Left            =   30
+            Top             =   55
+            Width           =   300
+            Height          =   15
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   2
+            Text            =   "Heading Border Thickness:"
+            TextAlign       =   0
+            TextColor       =   0
+            Multiline       =   "False"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_layout"
+            BehaviorIndex   =   20
+         End
+         Begin EditField edt_layout_heading_border_thickness
+            Index           =   -2147483648
+            ControlOrder    =   23
+            Left            =   30
+            Top             =   70
+            Width           =   50
+            Height          =   20
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   2
+            Border          =   "True"
+            Multiline       =   "False"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            Styled          =   "False"
+            Password        =   "False"
+            UseFocusRing    =   "True"
+            TextColor       =   0
+            BackColor       =   16777215
+            Enabled         =   True
+            Format          =   ""
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            Text            =   ""
+            Mask            =   ""
+            ReadOnly        =   "False"
+            LimitText       =   4
+            AcceptTabs      =   "False"
+            Alignment       =   0
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_layout"
+            BehaviorIndex   =   21
+         End
+         Begin CheckBox chk_layout_title_in_caps
+            Index           =   -2147483648
+            ControlOrder    =   24
+            Left            =   30
+            Top             =   100
+            Width           =   300
+            Height          =   20
+            LockLeft        =   "False"
+            LockTop         =   "False"
+            LockRight       =   "False"
+            LockBottom      =   "False"
+            TabPanelIndex   =   2
+            Caption         =   "Title in CAPS"
+            Enabled         =   True
+            Visible         =   True
+            HelpTag         =   ""
+            AutoDeactivate  =   "True"
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Bold            =   "False"
+            Italic          =   "False"
+            Underline       =   "False"
+            Value           =   "False"
+            DataSource      =   ""
+            DataField       =   ""
+            InitialParent   =   "can_print_layout"
+            BehaviorIndex   =   22
+         End
       End
    End
 End
@@ -1391,23 +1390,6 @@ End
 	End Sub
 #tag EndEvent
 #tag EndEvents
-#tag Events edt_layout_heading_border_thickness
-#tag Event
-	Function KeyDown(Key As String) As Boolean
-	  dim c As New Clipboard
-	  
-	  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-	    
-	    if c.TextAvailable then
-	      edt_layout_heading_border_thickness.Text  = Left(c.Text, 4)
-	      return true
-	    end if
-	    
-	  end if
-	  c.close
-	End Function
-#tag EndEvent
-#tag EndEvents
 #tag Events rad_page_inches
 #tag Event
 	Sub Action()
@@ -1440,5 +1422,22 @@ End
 	  ToCM(edt_page_height)
 	  ToCM(edt_page_width)
 	End Sub
+#tag EndEvent
+#tag EndEvents
+#tag Events edt_layout_heading_border_thickness
+#tag Event
+	Function KeyDown(Key As String) As Boolean
+	  dim c As New Clipboard
+	  
+	  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+	    
+	    if c.TextAvailable then
+	      edt_layout_heading_border_thickness.Text  = Left(c.Text, 4)
+	      return true
+	    end if
+	    
+	  end if
+	  c.close
+	End Function
 #tag EndEvent
 #tag EndEvents

@@ -405,10 +405,17 @@ Inherits Application
 		  If ShowDialog Then
 		    If TempPS.PageSetupDialog(Wnd) Then
 		      MyPrinterSetup = TempPS // Save the new settings
-		      SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height", _
-		      TempPS.PageHeight / TempPS.VerticalResolution)
-		      SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width", _
-		      TempPS.PageWidth / TempPS.HorizontalResolution)
+		      If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "page/@points", False, False) Then
+		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height", _
+		        InchesToPoints(TempPS.PageHeight) / TempPS.VerticalResolution)
+		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width", _
+		        InchesToPoints(TempPS.PageHeight) / TempPS.VerticalResolution)
+		      Else
+		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height", _
+		        TempPS.PageHeight / TempPS.VerticalResolution)
+		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width", _
+		        TempPS.PageWidth / TempPS.HorizontalResolution)
+		      End If
 		    Else
 		      Return Nil // User cancelled dialog.
 		    End If

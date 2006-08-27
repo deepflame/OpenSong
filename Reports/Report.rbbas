@@ -3,7 +3,7 @@ Class Report
 	#tag Method, Flags = &h0
 		Function CalcPrintableHeight() As Double
 		  //
-		  // Calculate the printable height of the page
+		  // Calculate the printable height of the page in inches
 		  // based upon the information in the PrintSettings XML document
 		  //
 		  // Margins are the maximum of what is in the PrinterSetup object returned
@@ -20,6 +20,13 @@ Class Report
 		  TMargin = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@top")
 		  BMargin = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@bottom")
 		  xmlHeight = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@height")
+		  
+		  If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "page/@points", False, False) Then
+		    TMargin = PointsToInches(TMargin)
+		    BMargin = PointsToInches(BMargin)
+		    xmlHeight = PointsToInches(xmlHeight)
+		  End If
+		  
 		  If ps <> Nil Then
 		    psHeight = ps.PageHeight / ps.VerticalResolution
 		    psTMargin = -(ps.PageTop / ps.VerticalResolution)
@@ -38,7 +45,7 @@ Class Report
 	#tag Method, Flags = &h0
 		Function CalcPrintableWidth() As Double
 		  //
-		  // Calculate the printable width of the page
+		  // Calculate the printable width of the page in inches
 		  // based upon the information in the PrintSettings XML document
 		  //
 		  // Margins are the maximum of what is in the PrinterSetup object returned
@@ -55,6 +62,13 @@ Class Report
 		  LMargin = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@left")
 		  RMargin = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@right")
 		  xmlWidth = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@width")
+		  
+		  If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "page/@points", False, False) Then
+		    LMargin = PointsToInches(LMargin)
+		    RMargin = PointsToInches(RMargin)
+		    xmlWidth = PointsToInches(xmlWidth)
+		  End If
+		  
 		  If ps <> Nil Then
 		    psWidth = ps.PageWidth / ps.HorizontalResolution
 		    psLMargin = -(ps.PageLeft / ps.HorizontalResolution)

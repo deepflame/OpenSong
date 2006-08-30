@@ -50,13 +50,13 @@ Inherits MessageDialog
 	#tag EndMethod
 
 
-	#tag Constant, Name = SAVEDIALOG_CANCEL, Type = Integer, Dynamic = False, Default = \"-1", Scope = Public
+	#tag Constant, Name = SAVEDIALOG_CANCEL, Type = Double, Dynamic = False, Default = \"-1", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = SAVEDIALOG_DONTSAVE, Type = Integer, Dynamic = False, Default = \"0", Scope = Public
+	#tag Constant, Name = SAVEDIALOG_DONTSAVE, Type = Double, Dynamic = False, Default = \"0", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = SAVEDIALOG_SAVE, Type = Integer, Dynamic = False, Default = \"1", Scope = Public
+	#tag Constant, Name = SAVEDIALOG_SAVE, Type = Double, Dynamic = False, Default = \"1", Scope = Public
 	#tag EndConstant
 
 

@@ -23,7 +23,11 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
 		  DebugTOS = Nil
 		  DebugFile = Nil
 		  Enabled = False
-		  DebugLevel = 1
+		  If System.EnvironmentVariable("OPENSONGDEBUGLEVEL") = "" Then
+		    DebugLevel = 1
+		  Else
+		    DebugLevel = CDbl(System.EnvironmentVariable("OPENSONGDEBUGLEVEL"))
+		  End If
 		End Sub
   )
  Meth/g: 
@@ -51,7 +55,11 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
 		Function Init() As Boolean
 		  If DebugTOS <> Nil Then Return True
 		  If Enabled Then
-		    DebugFile = New FolderItem("Debug.txt")
+		    If System.EnvironmentVariable("OPENSONGDEBUGFILE") = "" Then
+		      DebugFile = New FolderItem("Debug.txt")
+		    Else
+		      DebugFile = New FolderItem(System.EnvironmentVariable("OPENSONGDEBUGFILE"))
+		    End If
 		    If DebugFile.Exists Then 
 		      DebugTOS = DebugFile.AppendToTextFile
 		    Else
@@ -82,6 +90,18 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Level
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Level() As Integer
+		  Return DebugLevel
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Level
   parm/S: Assigns NewLevel As Integer
   rslt/S: 
   flag/N: 0
@@ -97,18 +117,6 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
 		    Raise ex
 		  End If
 		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Level
-  parm/S: 
-  rslt/S: Integer
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Level() As Integer
-		  Return DebugLevel
-		End Function
   )
  Meth/g: 
  Meth/G: 

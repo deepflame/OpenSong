@@ -29,6 +29,13 @@ pObj/B: 426C6F6B704F626AC003E5AF0000000000000000000000000000000000000000
 		  //
 		  // Ed Palmer 5 Feb 2006
 		  //
+		  // Update September 2006:
+		  //
+		  // MyPrintSettings can be in points or inches depending on the version of the
+		  // PrintSettings XML file.  Take this into account so all calculations here are done in inches.
+		  // (This isn't being US-centric, it's just that RB makes calculating in inches easier)
+		  //--
+		  
 		  Dim TMargin, BMargin As Double
 		  Dim psHeight, xmlHeight As Double
 		  Dim psTMargin, psBMargin As Double
@@ -36,6 +43,13 @@ pObj/B: 426C6F6B704F626AC003E5AF0000000000000000000000000000000000000000
 		  TMargin = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@top")
 		  BMargin = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@bottom")
 		  xmlHeight = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@height")
+		  
+		  If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "page/@points") Then
+		    TMargin = PointsToInches(TMargin)
+		    BMargin = PointsToInches(BMargin)
+		    xmlHeight = PointsToInches(xmlHeight)
+		  End If
+		  
 		  If ps <> Nil Then
 		    psHeight = ps.PageHeight / ps.VerticalResolution
 		    psTMargin = -(ps.PageTop / ps.VerticalResolution)
@@ -77,6 +91,13 @@ pObj/B: 426C6F6B704F626AC003E5AF0000000000000000000000000000000000000000
 		  LMargin = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@left")
 		  RMargin = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@right")
 		  xmlWidth = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "page/@width")
+		  
+		  If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "page/@points") Then
+		    LMargin = PointsToInches(LMargin)
+		    RMargin = PointsToInches(RMargin)
+		    xmlWidth = PointsToInches(xmlWidth)
+		  End If
+		  
 		  If ps <> Nil Then
 		    psWidth = ps.PageWidth / ps.HorizontalResolution
 		    psLMargin = -(ps.PageLeft / ps.HorizontalResolution)

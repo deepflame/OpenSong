@@ -776,9 +776,9 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: True)
@@ -1397,6 +1397,30 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Function FixHTML(html As String) As String
 		  Dim i, j As Integer
+		  Dim re As RegEx
+		  Dim rematch As RegExMatch
+		  Dim savedhtml As String
+		  //++
+		  // Make certain that there is no additional material outside the html
+		  // this will cause the conversion to an XML document to fail since
+		  // the XML parser will see multiple document elements
+		  // Ed Palmer, August 2006
+		  //--
+		  Try
+		    re = New RegEx
+		    re.SearchPattern = "\<html.*\/html>"
+		    re.Options.Greedy = True
+		    re.Options.CaseSensitive = False
+		    re.Options.TreatTargetAsOneLine = True
+		    re.Options.DotMatchAll = True
+		    rematch = re.Search(html)
+		    savedhtml = html
+		    If rematch <> Nil Then
+		      html = rematch.SubExpressionString(0)
+		    End If
+		  Catch reex
+		    html = savedhtml
+		  End Try
 		  
 		  html = ReplaceAll(html, "nowrap", " nowrap=""true""")
 		  html = ReplaceAll(html, "checked ", "checked=""true"" ")

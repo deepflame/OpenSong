@@ -42,6 +42,34 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
+   Enco/N: 1536
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(key As String) As Boolean
+		  Const ASC_KEY_SPACE = 32
+		  Const ASC_KEY_LEFT = 28
+		  Const ASC_KEY_RIGHT = 29
+		  Const ASC_KEY_UP = 30
+		  Const ASC_KEY_DOWN = 31
+		  Const ASC_KEY_PGDN=12
+		  Const ASC_KEY_PGUP =11
+		  Const ASC_KEY_HOME=1
+		  Const ASC_KEY_END=4
+		  Const ASC_KEY_INSERT = 5
+		  Const ASC_KEY_DELETE = 127
+		  //++
+		  // Pass editing keys to PresentWindow, otherwise lst_all_slides
+		  // "swallows" them to move the view of the list.
+		  //--
+		  If Asc(key) = ASC_KEY_PGDN Or Asc(Key) = ASC_KEY_PGUP _
+		      Or Asc(key) = ASC_KEY_HOME Or Asc(Key) = ASC_KEY_END _
+		      Or Asc(key) = ASC_KEY_INSERT Or Asc(Key) = ASC_KEY_DELETE Then
+		      Return PresentWindow.KeyDownX(key)
+		    End If
+		  End Function
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: SortColumn
    sorc/d: (Enco/N: 134217984
@@ -78,7 +106,15 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
 		      edt_slide_notes.Text = lst_all_slides.Cell(lst_all_slides.ListIndex, 2)
 		    End If
 		  End If
-		  g.DrawPicture PresentWindow.PreviewPicture, 0, 0, g.Width, g.Height, 0, 0, PresentWindow.PreviewPicture.Width, PresentWindow.PreviewPicture.Height
+		  // Catch a race condition between this Paint event and PresentWindow still initializing
+		  Try
+		    g.DrawPicture PresentWindow.PreviewPicture, 0, 0, g.Width, g.Height, 0, 0, PresentWindow.PreviewPicture.Width, PresentWindow.PreviewPicture.Height
+		  Catch e As NilObjectException
+		    // Just make it black for the moment
+		    g.ForeColor = RGB(0,0,0)
+		    g.FillRect 0, 0, g.Width, g.Height
+		    Return
+		  End Try
 		  
 		  Dim RealBorder, w, h As Integer
 		  RealBorder = 5
@@ -144,6 +180,8 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
 		  g.PenWidth = 1
 		  g.DrawRect 0, 0, g.Width, g.Height
 		  
+		Catch ex
+		  System.DebugLog "PresentHelperWindow.cnv_preview.Paint: Exception caught"
 		End Sub
    )
   HIns/g: 
@@ -484,9 +522,9 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: True)

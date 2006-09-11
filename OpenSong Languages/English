@@ -545,6 +545,7 @@ T: Tag</keys>
     <bad_reference>
       <empty>Bad reference: the reference was empty.</empty>
       <book>Bad reference: could not find book.</book>
+      <ambiguous>Bad reference: Multiple books match '%1': %2</ambiguous>
       <version>Bad reference: '%1' version could not be found.</version>
       <chapter>Bad reference: could not find chapter '%1'.</chapter>
       <verse>Bad reference: could not find verse '%1'.</verse>
@@ -711,6 +712,9 @@ Click on this slide to edit its style.</body>
     <search caption="Search"/>
     <save caption="Save" message="%1 has not been saved."/>
     <nosave caption="Don't Save"/>
+    <cut caption="Cut"/>
+    <copy caption="Copy"/>
+    <paste caption="Paste"/>
   </shared>
 
   <questions>
@@ -760,6 +764,8 @@ Click on this slide to edit its style.</body>
     <no_such_song>Cannot find song.</no_such_song>
     <number_please>Please enter a valid number.</number_please>
     <number_range>Please enter a number between %1 and %2.</number_range>
+    <no_path_allowed>File name may not include a path.</no_path_allowed>
+    <rename_error>Unable to rename file.</rename_error>
   </errors>
 
   <open_titles>

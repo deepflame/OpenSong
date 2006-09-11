@@ -102,21 +102,6 @@ pObj/B: 426C6F6B704F626ABD208D3E0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: SetVAlign
-  parm/S: align As String
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub SetVAlign(align As String)
-		  If align = "top" Then VAlign = 0
-		  If align = "middle" Then VAlign = 1
-		  If align = "bottom" Then VAlign = 2
-		  Refresh
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
   name/S: SetValid
   parm/S: matrix As String
   rslt/S: 
@@ -129,6 +114,21 @@ pObj/B: 426C6F6B704F626ABD208D3E0000000000000000000000000000000000000000
 		  ' 4 5 6
 		  ' 7 8 9
 		  Me.Matrix = matrix
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetVAlign
+  parm/S: align As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetVAlign(align As String)
+		  If align = "top" Then VAlign = 0
+		  If align = "middle" Then VAlign = 1
+		  If align = "bottom" Then VAlign = 2
 		  Refresh
 		End Sub
   )

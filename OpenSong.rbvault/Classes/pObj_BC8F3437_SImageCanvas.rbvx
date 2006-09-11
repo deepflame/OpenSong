@@ -223,6 +223,15 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
 		End Sub
   )
  Meth/g: 
+ MnuH/G: 
+  Enco/N: 134217984
+  name/S: mnu_options
+  sorc/d: (Enco/N: 134217984
+		Function Action() As Boolean
+		  
+		End Function
+  )
+ MnuH/g: 
  Prop/G: 
   Enco/N: 134217984
   decl/S: Base64 As String

@@ -87,7 +87,9 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  If PrintReport = Nil Then Return
-		  Call PrintReport.Print
+		  Self.Hide
+		  If PrintReport.Print Then Close
+		  Self.Show
 		End Sub
    )
   HIns/g: 
@@ -230,6 +232,16 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  PrintSettingsWindow.ShowModalWithin PrintWindow
+		  //++
+		  // September 2006, EMP
+		  //
+		  // Regenerate the report with the new settings.
+		  // Future TODO: Don't automatically regenerate.
+		  //--
+		  If PrintReport.Generate Then
+		    SetReport(PrintReport)
+		  End If
+		  
 		  SetupPage
 		End Sub
    )
@@ -298,9 +310,22 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(Key As String) As Boolean
+		  Dim i As Integer
+		  Dim zoomtext As String
+		  Dim newzoom As Double
 		  Dim txt As String = Chr(10) + Chr(13) + Chr(9)
 		  If InStr(txt, Key) > 0 Then
-		    zoom  = CDbl(Me.Text) / 100
+		    // Check to see if the user typed in the % or something else
+		    For i = 1 to Len(Me.Text)
+		      If StringUtils.isdigit(Asc(Mid(Me.Text, i, 1))) Then _
+		          zoomtext = zoomtext + Mid(Me.Text, i, 1)
+		    Next i
+		    Try
+		      Newzoom  = CDbl(zoomtext) / 100
+		    Catch e As typeMismatchException
+		      newzoom = Zoom // Set it back to where it was
+		    End Try
+		    Zoom = newzoom
 		    SetupPage
 		    cnv_page.Refresh False
 		  End If

@@ -52,6 +52,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		    KeyedSearch = ""
 		    Return False
 		  ElseIf Asc(Key) = 27 Then 'Escape
+		    If KeyedSearch = "" Then Return False 'Close dialog, no search in progress
 		    KeyedSearch = ""
 		    Return True 'Keep dialog box from closing
 		  End If
@@ -177,9 +178,9 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)

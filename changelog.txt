@@ -1,3 +1,43 @@
+-= 1.0 Beta 2 Baselevel 12 =-
+
+* Scripture quick lookup fixes: Better handling of translations, book name parser modified to check all characters of the name input by the user. Added scripture_lookup/bad_reference/ambiguous to language file. [Bug 1467887]
+
+* Fixed I18N issues on right-click menu in edit fields.  Added to language file: shared/cut, shared/copy, shared/paste.
+
+* In presentation preferences, the "blanks before/after" radio buttons disable if "add blanks" isn't selected.
+
+* Adding songs on-the-fly doesn't add unwanted blanks.
+
+* When adding songs on-the-fly and using the "type to search" feature, pressing Escape before the search times out (1.5 seconds) will reset the search.  Pressing Escape when a search is not in progress will close the window.
+
+* Program will display an error and not hang if the documents folder is mis-configured in Global Preferences [Bug 1204048]
+
+* Multiple fixes in Song/Find to prevent crashes due to invalid song files. [Bug 1089442]
+
+* Corrected "fencepost" error in preparing the set for presentation.  Error only became apparent if a custom slide with a slide style was the last slide in a set and the presentation preferences were set to insert blanks between set elements.
+
+* Program won't silently crash when presenting a single item that has no title and no unique style.  Similar to Bug report 1077772.
+
+* Slide transition starts at step 1 instead of step 2. [Bug 1484043]
+
+* Print preview window closes when "Print" button is selected.  Will reappear if the printer dialog box is cancelled. This applies to all platforms even though the report was filed as Mac-specific. [Bug 1511623]
+
+* Page break doesn't show as slide in presentation mode. [Bug 1515605]
+
+* Moved parameters for controlling debug output to environment variables.  OPENSONGDEBUG controls whether debug output is enabled ("True" = Enabled); OPENSONGDEBUGFILE is the filename, relative to the application's folder ("Debug.txt" is default); OPENSONGDEBUGLEVEL is the maximum level to log (default = 1).
+
+* Tried to fix (again) the issues with getting Windows to print multiple times during program execution.
+
+* Fixed page metric calculations that resulted in a program hang if the printer settings file used points instead of inches (new format).
+
+* Added attempted fix for randomly disappearing vertical scroll bar in song editor.  This is an "attempted fix" because there is no apparent reason for it disappearing other than a bug in RealBasic.
+
+* HTML parsing for CCLI Import changed to delete any text outside the <html></html> tags.
+
+* Corrected multiple errors in song rename.  Would incorrectly error if new name matched a song in another folder.  Would allow path characters in target filename.  Wouldn't sort the song list to reflect the proper position for the renamed song.
+
+* I18N error messages for rename errors added or used.  Added errors/path_not_allowed and errors/rename_error to language file.
+
 -= 1.0 Beta 2 Baselevel 11 -=
 
 * Print copy count calculated accurately on Mac OS X. [Bug 1467395]
@@ -46,7 +86,7 @@
 
 * Starting a presentation will not hide the taskbar on Windows or the menubar on Macintosh unless in single screen mode or dual screen mode with the lowest numbered screen selected as the presentation screen.
 
-* The taskbar (Windows) or menubar (Macintosh) will be hidden during a presentation only if the presentation window is the primary monitor.
+* The taskbar (Windows) or menubar (Macintosh) will be hidden during a presentation only if the presentation window is the primary monitor. [Bug 1521079]
 
 * The presentation helper window (control window) will show the slide text in the notes field if there are no slide notes.  In some cases this can be easier for the user to read than the slide preview.
 

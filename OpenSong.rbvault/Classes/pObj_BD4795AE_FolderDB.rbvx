@@ -582,11 +582,24 @@ pObj/B: 426C6F6B704F626ABD4795AE0000000000000000000000000000000000000000
 		  Dim f As FolderItem
 		  Dim found As Boolean
 		  Dim oldPath As String
+		  Dim tmpPath As String
 		  
-		  f = GetFile(newName)
+		  // Check for a path character in the new string.
+		  If Instr(newName, "/") > 0 Or Instr(newName, ":") > 0 Or Instr(newName, "\") > 0 Then
+		    ErrorCode = 0
+		    ErrorString = App.T.Translate("errors/no_path_allowed")
+		    Return False
+		  End If
+		  
+		  // Take the path from the "from" file, otherwise it's possible to get a false 'file exists'
+		  tmpPath = ""
+		  i = StringUtils.InStrReverse(path, "/")
+		  If i > 0 Then tmpPath = Left(path,  i)
+		  
+		  f = GetFile(tmpPath + newName)
 		  If f <> Nil And f.Exists And Lowercase(Mid(path, StringUtils.InStrReverse(path, "/")+1)) <> Lowercase(newName) Then
 		    ErrorCode = 3
-		    ErrorString = "File already exists."
+		    ErrorString = App.T.Translate("errors/already_exists", newName)
 		    Return False
 		  End If
 		  
@@ -598,14 +611,14 @@ pObj/B: 426C6F6B704F626ABD4795AE0000000000000000000000000000000000000000
 		    f = FileUtils.RelativePathToFolderItem(Folder, oldPath + newName)
 		    If f <> Nil And f.Exists And Lowercase(Mid(path, StringUtils.InStrReverse(path, "/")+1)) <> Lowercase(newName) Then
 		      ErrorCode = 3
-		      ErrorString = "File already exists."
+		      ErrorString = App.T.Translate("errors/already_exists", newName)
 		      Return False
 		    End If
 		    f = FileUtils.RelativePathToFolderItem(Folder, CachePathToPath(Cache(cacheSlots(i))))
 		    f.Name = newName
 		    If f.Name <> newName Then
 		      ErrorCode = 10
-		      ErrorString = "Could not rename file."
+		      ErrorString = App.T.Translate("errors/rename_error")
 		      Return False
 		    Else
 		      Cache(cacheSlots(i)) = newName + oldPath

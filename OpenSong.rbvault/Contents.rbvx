@@ -1,6 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
-##MacType,Creator:RbBF,RBv2
 ##Project Items:	
 #	Proj	00000000
 #App	pObj	BBC29220
@@ -136,7 +135,6 @@
 #viewnewpagemask	pPic	BFDAB03D
 #IndexProgress	pVew	495057FF
 #TreeNode	pObj	74426FFF
-#SearchResult	pObj	456597FF
 #IndexEntry	pObj	01D62FFF
 #Reports	pFol	C0156347
 #CategoryTOCReport	pObj	C00ACE96
@@ -157,6 +155,7 @@
 #OpenSongUtils	pObj	C09C57D6
 #Song	pObj	C0C3650C
 #SlideStyle	pObj	BF4CF8E0
+#SearchResult	pObj	456597FF
 ##External Files:	
 ##VaultHdrEnd#
 ##RBvx-End#

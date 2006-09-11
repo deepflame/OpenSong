@@ -16,18 +16,6 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Background
-  parm/S: 
-  rslt/S: Picture
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Background() As Picture
-		  Return Background
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Background
   parm/S: Assigns bg As Picture
   rslt/S: 
   flag/N: 0
@@ -39,14 +27,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: BGColor
-  parm/S: Assigns bg As Color
-  rslt/S: 
+  name/S: Background
+  parm/S: 
+  rslt/S: Picture
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub BGColor(Assigns bg As Color)
-		  BGColor = bg
-		End Sub
+		Function Background() As Picture
+		  Return Background
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -61,6 +49,18 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  C = BGColor
 		  Return C
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BGColor
+  parm/S: Assigns bg As Color
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub BGColor(Assigns bg As Color)
+		  BGColor = bg
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -116,6 +116,18 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: BodyVAlign
+  parm/S: Assigns VAlign As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub BodyVAlign(Assigns VAlign As String)
+		  BodyVAlign = VAlign
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BodyVAlign
   parm/S: 
   rslt/S: String
   flag/N: 0
@@ -125,18 +137,6 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  VA = Lowercase(BodyVAlign)
 		  Return VA
 		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: BodyVAlign
-  parm/S: Assigns VAlign As String
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub BodyVAlign(Assigns VAlign As String)
-		  BodyVAlign = VAlign
-		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -227,18 +227,6 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: SubtitleAlign
-  parm/S: Assigns Align As String
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub SubtitleAlign(Assigns Align As String)
-		  SubtitleAlign = Align
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: SubtitleAlign
   parm/S: 
   rslt/S: String
   flag/N: 0
@@ -252,13 +240,13 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: SubtitleFont
-  parm/S: Assigns NewFont As FontFace
+  name/S: SubtitleAlign
+  parm/S: Assigns Align As String
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub SubtitleFont(Assigns NewFont As FontFace)
-		  SubtitleFont = NewFont
+		Sub SubtitleAlign(Assigns Align As String)
+		  SubtitleAlign = Align
 		End Sub
   )
  Meth/g: 
@@ -276,13 +264,13 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: SubtitleVAlign
-  parm/S: Assigns VAlign As String
+  name/S: SubtitleFont
+  parm/S: Assigns NewFont As FontFace
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub SubtitleVAlign(Assigns VAlign As String)
-		  SubtitleVAlign = VAlign
+		Sub SubtitleFont(Assigns NewFont As FontFace)
+		  SubtitleFont = NewFont
 		End Sub
   )
  Meth/g: 
@@ -298,6 +286,18 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  VA = Lowercase(SubtitleVAlign)
 		  Return VA
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleVAlign
+  parm/S: Assigns VAlign As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SubtitleVAlign(Assigns VAlign As String)
+		  SubtitleVAlign = VAlign
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -329,6 +329,18 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: TitleFont
+  parm/S: 
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function TitleFont() As FontFace
+		  Return TitleFont.Clone
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TitleFont
   parm/S: Assigns NewFont As FontFace
   rslt/S: 
   flag/N: 0
@@ -340,14 +352,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: TitleFont
-  parm/S: 
-  rslt/S: FontFace
+  name/S: TitleVAlign
+  parm/S: Assigns VAlign As String
+  rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function TitleFont() As FontFace
-		  Return TitleFont.Clone
-		End Function
+		Sub TitleVAlign(Assigns VAlign As String)
+		  TitleVAlign = VAlign
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -362,18 +374,6 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  VA = Lowercase(TitleVAlign)
 		  Return VA
 		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: TitleVAlign
-  parm/S: Assigns VAlign As String
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub TitleVAlign(Assigns VAlign As String)
-		  TitleVAlign = VAlign
-		End Sub
   )
  Meth/g: 
  Meth/G: 

@@ -12,8 +12,6 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  bNtr/N: 0
  Intr/S: 
  bApO/N: 1
- Cnst/D: (Enco/N: 134217984, name/S: DEBUG, type/N: 3, defn/S: False, flag/N: 0)
- Cnst/D: (Enco/N: 134217984, name/S: DEBUGLEVEL, type/N: 1, defn/S: 3, flag/N: 33)
  Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_CM, type/N: 2, defn/S: 0.035277778, flag/N: 0)
  HIns/G: 
   Enco/N: 1280
@@ -35,8 +33,11 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Profiler.BeginProfilerEntry "App::Open"
    srcl/S: 
    srcl/S: DebugWriter = New DebugOutput
-   srcl/S: DebugWriter.Enabled = DEBUG
-   srcl/S: DebugWriter.Level = DEBUGLEVEL
+   srcl/S: If System.EnvironmentVariable("OPENSONGDEBUG") = "" Then
+   srcl/S: DebugWriter.Enabled = False
+   srcl/S: Else
+   srcl/S: DebugWriter.Enabled = (System.EnvironmentVariable("OPENSONGDEBUG") = "True")
+   srcl/S: End If
    srcl/S: OK = DebugWriter.Init
    srcl/S: DebugWriter.Write "-------------------- Begin Run ----------------------"
    srcl/S: 
@@ -62,6 +63,21 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Dim docsPath As String
    srcl/S: ' --- CREATE DOCUMENTS FOLDER ---
    srcl/S: docsPath = SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder", False)
+   srcl/S: //++
+   srcl/S: // Bug 1204048: DocsPath needs to be somewhere other than under OpenSong Defaults.
+   srcl/S: // As a temporary fix, just see if that's part of the docspath.  If so, post an error and
+   srcl/S: // reset to the default.
+   srcl/S: // This really needs a better solution than this.
+   srcl/S: // Also needing a better solution: App.Open has far too many non-I18N messages.
+   srcl/S: //--
+   srcl/S: If InStr(docsPath, "OpenSong Defaults") > 0 Then 
+   srcl/S: docsPath = ""
+   srcl/S: MsgBox "Documents folder cannot be a sub-folder of ""OpenSong Defaults""" + EndOfLine + _
+   srcl/S: "Temporarily changing to " + DocumentsFolder.Name + "." + EndOfLine + _
+   srcl/S: "Please modify your preferences."
+   srcl/S: SmartML.SetValue(MyGlobals.DocumentElement, "documents/@folder", "")
+   srcl/S: End If
+   srcl/S: 
    srcl/S: If Len(docsPath) > 0 Then
    srcl/S: DocsFolder = FileUtils.AbsolutePathToFolderItem(docsPath)
    srcl/S: Else
@@ -419,75 +435,90 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   parm/S: ShowDialog As Boolean = False, Wnd As Window = Nil
   rslt/S: PrinterSetup
   flag/N: 0
-  sorc/G: 
-   Enco/N: 134217984
-   srcl/S: Function GetPrinterSetup(ShowDialog As Boolean = False, Wnd As Window = Nil) As PrinterSetup
-   srcl/S: //
-   srcl/S: // OpenSong maintains a single PrinterSetup object for the printer.  This routine controls
-   srcl/S: // access to that object.  If ShowDialog is True, then the PrinterSetup dialog will be shown.
-   srcl/S: // If Wnd is not Nil, that Dialog will be attached to the given window (Mac only).
-   srcl/S: //
-   srcl/S: // RealBasic for the Mac has an issue with the PrinterSetup object.  The one returned
-   srcl/S: // from PageSetupDialog is invalid.  It has to be copied into a new one to be used.  For
-   srcl/S: // this reason, a clone is returned on OS X.
-   srcl/S: //
-   srcl/S: // On Windows, a second call to OpenPrinterDialog with the same PrinterSetup object
-   srcl/S: // results in no dialog display and Nil returned for the Graphics object.  Copy it, and
-   srcl/S: // all works fine.  Go figure.
-   srcl/S: //
-   srcl/S: // TODO: Save SetupString across program invocations.  Issues to remember: SetupString is
-   srcl/S: // platform dependent.  SetupString on Windows can't just be sent to an XML file such as
-   srcl/S: // MyPrintSettings with SmartML.SetValue.  Use something like EncodeBase64 to store
-   srcl/S: // and retrieve (didn't test Mac to see if this was also true on that platform).
-   srcl/S: //
-   srcl/S: // Finally, this needs a different approach for Linux since (as of RB2005R4) PrinterSetup
-   srcl/S: // doesn't do anything useful.
-   srcl/S: //
-   srcl/S: 
-   srcl/S: Dim TempPS As PrinterSetup
-   srcl/S: Dim NewPS As PrinterSetup
-   srcl/S: 
-   srcl/S: If MyPrinterSetup = Nil And Not ShowDialog Then Return Nil
-   srcl/S: 
-   srcl/S: TempPS = New PrinterSetup
-   srcl/S: TempPS.MaxHorizontalResolution = -1
-   srcl/S: TempPS.MaxVerticalResolution = -1
-   srcl/S: 
-   srcl/S: If MyPrinterSetup <> Nil Then
-   srcl/S: TempPS.SetupString = MyPrinterSetup.SetupString
-   srcl/S: End If
-   srcl/S: 
-   srcl/S: If ShowDialog Then
-   srcl/S: If TempPS.PageSetupDialog(Wnd) Then
-   srcl/S: MyPrinterSetup = TempPS // Save the new settings
-   srcl/S: SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height", _
-   srcl/S: TempPS.PageHeight / TempPS.VerticalResolution)
-   srcl/S: SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width", _
-   srcl/S: TempPS.PageWidth / TempPS.HorizontalResolution)
-   srcl/S: Else 
-   srcl/S: Return Nil // User cancelled dialog. 
-   srcl/S: End If
-   srcl/S: End If
-   srcl/S: // We have a non-null MyPrinterSetup now.  Copy it and return
-   srcl/S: // Sadly, this has to be OS-specific, at least under RB5.5.
-   srcl/S: // If, on OS X, if you do a straight copy it bombs.  If you copy
-   srcl/S: // the setup string, it doesn't bomb but the horizontal and vertical resolutions
-   srcl/S: // are set to 72, which really does a number on things if it is reporting
-   srcl/S: // height and width at something other than 72dpi.
-   srcl/S: // Copying the setup string on Windows started off working, but
-   srcl/S: // then started returning an invalid pointer that would crash OS.
-   srcl/S: // This is insane...
-   srcl/S: NewPS = New PrinterSetup
-   srcl/S: #If TargetMacOS
-   srcl/S: NewPS.MaxHorizontalResolution = -1
-   srcl/S: NewPS.MaxVerticalResolution = -1
-   srcl/S: NewPS.SetupString = MyPrinterSetup.SetupString
-   srcl/S: #ElseIf TargetWin32
-   srcl/S: NewPS = MyPrinterSetup
-   srcl/S: #EndIf
-   srcl/S: Return NewPS
-   srcl/S: End Function
-  sorc/g: 
+  sorc/d: (Enco/N: 134217984
+		Function GetPrinterSetup(ShowDialog As Boolean = False, Wnd As Window = Nil) As PrinterSetup
+		  //
+		  // OpenSong maintains a single PrinterSetup object for the printer.  This routine controls
+		  // access to that object.  If ShowDialog is True, then the PrinterSetup dialog will be shown.
+		  // If Wnd is not Nil, that Dialog will be attached to the given window (Mac only).
+		  //
+		  // RealBasic for the Mac has an issue with the PrinterSetup object.  The one returned
+		  // from PageSetupDialog is invalid.  It has to be copied into a new one to be used.  For
+		  // this reason, a clone is returned on OS X.
+		  //
+		  // On Windows, a second call to OpenPrinterDialog with the same PrinterSetup object
+		  // results in no dialog display and Nil returned for the Graphics object.  Copy it, and
+		  // all works fine.  Go figure.
+		  //
+		  // TODO: Save SetupString across program invocations.  Issues to remember: SetupString is
+		  // platform dependent.  SetupString on Windows can't just be sent to an XML file such as
+		  // MyPrintSettings with SmartML.SetValue.  Use something like EncodeBase64 to store
+		  // and retrieve.
+		  // This will also need to include the RB version as an attribute, as SetupStrings changed
+		  // format in RB 2006 r3.
+		  //
+		  // Finally, this needs a different approach for Linux since (as of RB2005R4) PrinterSetup
+		  // doesn't do anything useful.
+		  //
+		  
+		  Dim TempPS As PrinterSetup
+		  Dim NewPS As PrinterSetup
+		  
+		  If MyPrinterSetup = Nil And Not ShowDialog Then Return Nil
+		  
+		  TempPS = New PrinterSetup
+		  TempPS.MaxHorizontalResolution = -1
+		  TempPS.MaxVerticalResolution = -1
+		  
+		  If MyPrinterSetup <> Nil Then
+		    TempPS.SetupString = MyPrinterSetup.SetupString
+		  End If
+		  
+		  If ShowDialog Then
+		    If TempPS.PageSetupDialog(Wnd) Then
+		      MyPrinterSetup = TempPS // Save the new settings
+		      If SmartML.GetValueB(MyPrintSettings.DocumentElement, "page/@points") Then
+		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height",_
+		            InchesToPoints(TempPS.PageHeight / TempPS.VerticalResolution))
+		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width",_
+		            InchesToPoints(TempPs.PageWidth / TempPS.HorizontalResolution))
+		      Else
+		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height", _
+		            TempPS.PageHeight / TempPS.VerticalResolution)
+		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width", _
+		            TempPS.PageWidth / TempPS.HorizontalResolution)
+		      End If
+		    Else 
+		      Return Nil // User cancelled dialog. 
+		    End If
+		  Else // Don't show dialog
+		    
+		  End If
+		  // We have a non-null MyPrinterSetup now.  Copy it and return
+		  // Sadly, this has to be OS-specific, at least under RB5.5.
+		  // If, on OS X, if you do a straight copy it bombs.  If you copy
+		  // the setup string, it doesn't bomb but the horizontal and vertical resolutions
+		  // are set to 72, which really does a number on things if it is reporting
+		  // height and width at something other than 72dpi.
+		  // Copying the setup string on Windows started off working, but
+		  // then started returning an invalid pointer that would crash OS.
+		  // This is insane...
+		  // (September 2006: Curiouser and curiouser.  After taking another look
+		  // at this problem, the same code appears to work for both Mac and Windows.
+		  // Hopefully the printer fixes in RB 2006 r3 will let us put this to bed once
+		  // and for all.)
+		  
+		  '#If TargetMacOS
+		  NewPS = New PrinterSetup
+		  NewPS.MaxHorizontalResolution = -1
+		  NewPS.MaxVerticalResolution = -1
+		  NewPS.SetupString = MyPrinterSetup.SetupString
+		  Return NewPS
+		  '#ElseIf TargetWin32
+		  'Return MyPrinterSetup
+		  '#EndIf
+		End Function
+  )
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984

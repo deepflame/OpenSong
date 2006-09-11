@@ -475,10 +475,23 @@ Inherits Application
 		Function SmartVersion() As String
 		  Dim t As String
 		  
-		  t = "v" +  Str(App.MajorVersion) + "." + Str(App.MinorVersion)
-		  If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion)
-		  t = t + " Beta 2"
-		  If App.NonReleaseVersion > 0 Then t = t + "-" + Str(App.NonReleaseVersion)
+		  t = "v" + Str(App.MajorVersion) + "." + Str(App.MinorVersion) + "." + Str(App.BugVersion)
+		  
+		  Select Case App.StageCode
+		  Case Developement
+		    t = t + " dev "
+		  Case Alpha
+		    t = t + " alpha "
+		  Case Beta
+		    t = t + " beta "
+		  Case Final
+		    t = t + " final "
+		  Else
+		    t = t + " "
+		  End Select
+		  
+		  If App.NonReleaseVersion > 0 Then t = t + Str(App.NonReleaseVersion)
+		  
 		  Return t
 		End Function
 	#tag EndMethod

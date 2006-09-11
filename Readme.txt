@@ -1,20 +1,18 @@
-README for OpenSong V1.0 Beta 2 BL10
-7 April 2006
+README for OpenSong V1.0 Beta 2 BL12
+11 September 2006
 
-Beta 2 BL10 is an update to the March release.  This release fixes
-several high-priority bugs in printing and song display.  See the
-changelog for full details.
+Beta 2 BL12 is an update to the April Baselevel 10 release.  This release is focused on fixing the issues reported through the SourceForge bug tracking system.  There are a small number of incidental feature updates that could be added without significant effort.
 
 There are three ZIP files as part of this release:
 
-* Beta2-10-Src.zip contains the RealBasic .rb file, the new English
+* Beta2-12-Src.zip contains the RealBasic .rb file, the new English
   language file, the Images subdirectory with all the .jpg files that
   are part of the project, and a changelog for the language file.
 
-* Beta2-10-Win.zip contains the Windows executable program,
+* Beta2-12-Win.zip contains the Windows executable program,
   the English language file and the changelog.
 
-* Beta2-10-OSX.zip contains the Macintosh OS X executable program,
+* Beta2-12-OSX.dmg contains the Macintosh OS X executable program,
   the English language file and the changelog.
 
 THIS IS VERY IMPORTANT:

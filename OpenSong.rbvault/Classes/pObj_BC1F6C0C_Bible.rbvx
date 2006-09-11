@@ -356,40 +356,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: ConvVal
-  parm/S: intVal as Integer
-  rslt/S: Integer
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Function ConvVal(intVal as Integer) As Integer
-		  '
-		  ' Given the "rank" of a character from a Roman numeral, return its equivalent integer
-		  '
-		  ' EMP, 2005
-		  '
-		  dim Conv As Integer
-		  Select Case intVal
-		  Case 7
-		    Conv = 1000
-		  Case 6
-		    Conv = 500
-		  Case 5
-		    Conv = 100
-		  Case 4
-		    Conv = 50
-		  Case 3
-		    Conv= 10
-		  Case 2
-		    Conv= 5
-		  Case 1
-		    Conv = 1
-		  End Select
-		  return Conv
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
   name/S: combineLists
   parm/S: one() as String, two() as String
   rslt/S: String()
@@ -443,6 +409,40 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  
 		  
 		  return returnVal
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ConvVal
+  parm/S: intVal as Integer
+  rslt/S: Integer
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function ConvVal(intVal as Integer) As Integer
+		  '
+		  ' Given the "rank" of a character from a Roman numeral, return its equivalent integer
+		  '
+		  ' EMP, 2005
+		  '
+		  dim Conv As Integer
+		  Select Case intVal
+		  Case 7
+		    Conv = 1000
+		  Case 6
+		    Conv = 500
+		  Case 5
+		    Conv = 100
+		  Case 4
+		    Conv = 50
+		  Case 3
+		    Conv= 10
+		  Case 2
+		    Conv= 5
+		  Case 1
+		    Conv = 1
+		  End Select
+		  return Conv
 		End Function
   )
  Meth/g: 
@@ -557,6 +557,235 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		Next
 		Return tmpVal
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: genIndex
+  parm/S: file As FolderItem
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub genIndex(file As FolderItem)
+		  'bhenny- create index of words to use for searches
+		  Dim newFile as FolderItem
+		  Dim out as TextOutputStream
+		  Dim node as XMLNode
+		  Dim split(), verse, location, fileName, sBook, sChap, sVer as String
+		  Dim reg as RegEx
+		  Dim x,y,  book, chap, ver, bound as Integer
+		  Dim root, wordNode as TreeNode
+		  Dim Progress As Double
+		  Dim BookName As String
+		  
+		  'clear index
+		  reDim index(-1)
+		  reDim notIndexed(-1)
+		  
+		  'create folder if necessary
+		  newFile= New FolderItem(file.Parent.child("indexes"))
+		  if newFile.Exists=false then
+		    newFile.CreateAsFolder
+		  end if
+		  
+		  //strip file extension from file name
+		  fileName=file.Name
+		  x=InStr(filename, ".")
+		  if x>0 then
+		    fileName= Left(fileName, x-1)
+		  end if
+		  
+		  'create file
+		  newFile=newFile.Child(fileName+".ind")
+		  if newFile.Exists=true then
+		    try
+		      loadIndex(newFile) 'if index exists then just load it
+		    catch err
+		      newFile.delete
+		      genIndex(file)
+		    end try
+		    
+		    return
+		  end if
+		  
+		  out= newFile.CreateTextFile
+		  
+		  'go to first book
+		  //++EMP 18 Feb 2006
+		  // Had to change the original If to a Select
+		  // The structure for XML_NAB isn't quite the same
+		  // as the original, and the first two children define the OT and NT books
+		  //--
+		  'if XMLTYPE= XML_ZEFANIA then
+		  'node= Scripture.xql("/XMLBIBLE/BIBLEBOOK[1]").Item(0)
+		  'else
+		  'node= Scripture.Child(0).Child(0)
+		  'end if
+		  Select Case XMLTYPE
+		  Case XML_ZEFANIA
+		    node = Scripture.xql("/XMLBIBLE/BIBLEBOOK[1]").Item(0)
+		  Case XML_NAB
+		    node = Scripture.xql("/bible/b[1]").Item(0)
+		  Case XML_ORIGINAL
+		    node = Scripture.Child(0).Child(0)
+		  End Select
+		  
+		  'used to remove puncuation and xml tags
+		  reg= New RegEx
+		  reg.SearchPattern= "[^a-zA-Z0-9\s]+" 
+		  reg.ReplacementPattern=""
+		  reg.Options.ReplaceAllMatches=true
+		  
+		  'open progress window
+		  IndexProgress.ShowWithin App.GetFrontControlScreenWindow
+		  
+		  'books
+		  book=1
+		  sBook= "1"
+		  while node <> nil
+		    node=node.Child(0)
+		    
+		    'update progress window
+		    Progress = book/GetBookCount() * 100
+		    BookName = GetBookName(book)
+		    
+		    IndexProgress.setProgress(Progress, BookName)
+		    
+		    
+		    'chapters
+		    chap=1
+		    sChap="1"
+		    while node <> nil
+		      node=node.Child(0)
+		      
+		      'see if the user canceled creating the index
+		      if (IndexProgress.cancel=true) then
+		        out.close
+		        newFile.Delete
+		        IndexProgress.close
+		        CanSearch = False
+		        return
+		      end if
+		      
+		      App.DoEvents 0
+		      
+		      'verses
+		      ver=1
+		      sVer="1"
+		      while node <> nil
+		        if node.Child(0)<> nil then
+		          location=sBook + " " + sChap + " " + sVer
+		          
+		          'remove puncuation
+		          verse= reg.Replace( getVerse(node.child(0)), 0)
+		          
+		          'split verse into individual words
+		          split= verse.Split()
+		          
+		          'add to index
+		          for x=0 to UBound(split)
+		            'if string is empty or in the list of words not to index then skip
+		            
+		            if (Len(split(x))>=1 AND notIndexed.IndexOf(split(x)) <0) then
+		              
+		              if (root=nil) then 'first entry 
+		                root= new TreeNode(new IndexEntry(split(x)))
+		              else
+		                wordNode=root.find(split(x))
+		                
+		                bound=UBound(wordNode.entry.passages)
+		                
+		                if (bound >= 5000) then
+		                  ''add to not indexed list and remove from index
+		                  notIndexed.Append(split(x))
+		                  
+		                  root.delete(split(x))
+		                else
+		                  
+		                  ''make sure not to include the same verse twice
+		                  if (bound < 0 OR location <> wordNode.entry.passages(bound)) then
+		                    wordNode.entry.passages.Append(location)
+		                  end if '(bound < 0 Or location...
+		                end if '(bound >= 5000)
+		              end if '(root = Nil)
+		            end if '(Len(split(x)) >= 1)...
+		          next x
+		        end if
+		        
+		        if node.NextSibling=nil then
+		          node=node.Parent
+		          exit
+		        else
+		          node=node.NextSibling
+		        end if
+		        
+		        ver=ver+1
+		        sVer= Str(ver)
+		        // Since this is a s..l..o..w operation on OSX, update each verse (EMP)
+		        'IndexProgress.setProgress(Progress, _
+		        'stringutils.Sprintf("%s %d:%d",  BookName, chap, ver))
+		        'App.DoEvents 0 'Windows needs this to update the progress window
+		      wend
+		      
+		      if node.NextSibling=nil then
+		        node=node.Parent
+		        exit
+		      else
+		        node=node.NextSibling
+		      end if
+		      
+		      chap=chap+1
+		      sChap= Str(chap)
+		    wend
+		    
+		    if node.NextSibling=nil then
+		      exit
+		    else
+		      node=node.NextSibling
+		    end if
+		    
+		    book=book+1
+		    sBook= Str(book)
+		  wend
+		  
+		  'sort by priority
+		  root.inorderTraverse(index)
+		  
+		  'write to file
+		  for x=0 to UBound(index)
+		    out.write(index(x).word)
+		    
+		    for y=0 to UBound(index(x).passages)
+		      out.write("|"+index(x).passages(y))
+		    next y
+		    out.WriteLine("")
+		  next x
+		  
+		  out.WriteLine("---")
+		  
+		  for x=0 to UBound(notIndexed)
+		    out.writeLine(notIndexed(x))
+		  next x
+		  
+		  out.Close
+		  
+		  'close progress window
+		  IndexProgress.close
+		  CanSearch = True
+		  
+		Exception excep
+		  out.Close
+		  newFile.delete
+		  
+		  'reDim index as IndexEntry(-1)
+		  'reDim notIndexed as String(-1)
+		  
+		  MsgBox ("Error generating Bible index. Search will be disabled.")
+		  CanSearch = False
+		  If IndexProgress.Visible Then
+		    IndexProgress.Close
+		  End If
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -1048,6 +1277,24 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: getVerse
+  parm/S: node as XMLNode
+  rslt/S: String
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function getVerse(node as XMLNode) As String
+		  if node=nil then
+		    return ""
+		  elseif node.Type=3 then 'text_node 
+		    return node.value
+		  else
+		    return getVerse(node.child(0)) + getVerse(node.nextSibling)
+		  end if
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: GetVerseCount
   parm/S: booknum As Integer, chapternum As Integer
   rslt/S: Integer
@@ -1147,253 +1394,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  // Do not assume that this method is supported in V1
 		  //
 		  Return WebBooks(num)
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: genIndex
-  parm/S: file As FolderItem
-  rslt/S: 
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Sub genIndex(file As FolderItem)
-		  'bhenny- create index of words to use for searches
-		  Dim newFile as FolderItem
-		  Dim out as TextOutputStream
-		  Dim node as XMLNode
-		  Dim split(), verse, location, fileName, sBook, sChap, sVer as String
-		  Dim reg as RegEx
-		  Dim x,y,  book, chap, ver, bound as Integer
-		  Dim root, wordNode as TreeNode
-		  Dim Progress As Double
-		  Dim BookName As String
-		  
-		  'clear index
-		  reDim index(-1)
-		  reDim notIndexed(-1)
-		  
-		  'create folder if necessary
-		  newFile= New FolderItem(file.Parent.child("indexes"))
-		  if newFile.Exists=false then
-		    newFile.CreateAsFolder
-		  end if
-		  
-		  //strip file extension from file name
-		  fileName=file.Name
-		  x=InStr(filename, ".")
-		  if x>0 then
-		    fileName= Left(fileName, x-1)
-		  end if
-		  
-		  'create file
-		  newFile=newFile.Child(fileName+".ind")
-		  if newFile.Exists=true then
-		    try
-		      loadIndex(newFile) 'if index exists then just load it
-		    catch err
-		      newFile.delete
-		      genIndex(file)
-		    end try
-		    
-		    return
-		  end if
-		  
-		  out= newFile.CreateTextFile
-		  
-		  'go to first book
-		  //++EMP 18 Feb 2006
-		  // Had to change the original If to a Select
-		  // The structure for XML_NAB isn't quite the same
-		  // as the original, and the first two children define the OT and NT books
-		  //--
-		  'if XMLTYPE= XML_ZEFANIA then
-		  'node= Scripture.xql("/XMLBIBLE/BIBLEBOOK[1]").Item(0)
-		  'else
-		  'node= Scripture.Child(0).Child(0)
-		  'end if
-		  Select Case XMLTYPE
-		  Case XML_ZEFANIA
-		    node = Scripture.xql("/XMLBIBLE/BIBLEBOOK[1]").Item(0)
-		  Case XML_NAB
-		    node = Scripture.xql("/bible/b[1]").Item(0)
-		  Case XML_ORIGINAL
-		    node = Scripture.Child(0).Child(0)
-		  End Select
-		  
-		  'used to remove puncuation and xml tags
-		  reg= New RegEx
-		  reg.SearchPattern= "[^a-zA-Z0-9\s]+" 
-		  reg.ReplacementPattern=""
-		  reg.Options.ReplaceAllMatches=true
-		  
-		  'open progress window
-		  IndexProgress.ShowWithin App.GetFrontControlScreenWindow
-		  
-		  'books
-		  book=1
-		  sBook= "1"
-		  while node <> nil
-		    node=node.Child(0)
-		    
-		    'update progress window
-		    Progress = book/GetBookCount() * 100
-		    BookName = GetBookName(book)
-		    
-		    IndexProgress.setProgress(Progress, BookName)
-		    
-		    
-		    'chapters
-		    chap=1
-		    sChap="1"
-		    while node <> nil
-		      node=node.Child(0)
-		      
-		      'see if the user canceled creating the index
-		      if (IndexProgress.cancel=true) then
-		        out.close
-		        newFile.Delete
-		        IndexProgress.close
-		        CanSearch = False
-		        return
-		      end if
-		      
-		      App.DoEvents 0
-		      
-		      'verses
-		      ver=1
-		      sVer="1"
-		      while node <> nil
-		        if node.Child(0)<> nil then
-		          location=sBook + " " + sChap + " " + sVer
-		          
-		          'remove puncuation
-		          verse= reg.Replace( getVerse(node.child(0)), 0)
-		          
-		          'split verse into individual words
-		          split= verse.Split()
-		          
-		          'add to index
-		          for x=0 to UBound(split)
-		            'if string is empty or in the list of words not to index then skip
-		            
-		            if (Len(split(x))>=1 AND notIndexed.IndexOf(split(x)) <0) then
-		              
-		              if (root=nil) then 'first entry 
-		                root= new TreeNode(new IndexEntry(split(x)))
-		              else
-		                wordNode=root.find(split(x))
-		                
-		                bound=UBound(wordNode.entry.passages)
-		                
-		                if (bound >= 5000) then
-		                  ''add to not indexed list and remove from index
-		                  notIndexed.Append(split(x))
-		                  
-		                  root.delete(split(x))
-		                else
-		                  
-		                  ''make sure not to include the same verse twice
-		                  if (bound < 0 OR location <> wordNode.entry.passages(bound)) then
-		                    wordNode.entry.passages.Append(location)
-		                  end if '(bound < 0 Or location...
-		                end if '(bound >= 5000)
-		              end if '(root = Nil)
-		            end if '(Len(split(x)) >= 1)...
-		          next x
-		        end if
-		        
-		        if node.NextSibling=nil then
-		          node=node.Parent
-		          exit
-		        else
-		          node=node.NextSibling
-		        end if
-		        
-		        ver=ver+1
-		        sVer= Str(ver)
-		        // Since this is a s..l..o..w operation on OSX, update each verse (EMP)
-		        'IndexProgress.setProgress(Progress, _
-		        'stringutils.Sprintf("%s %d:%d",  BookName, chap, ver))
-		        'App.DoEvents 0 'Windows needs this to update the progress window
-		      wend
-		      
-		      if node.NextSibling=nil then
-		        node=node.Parent
-		        exit
-		      else
-		        node=node.NextSibling
-		      end if
-		      
-		      chap=chap+1
-		      sChap= Str(chap)
-		    wend
-		    
-		    if node.NextSibling=nil then
-		      exit
-		    else
-		      node=node.NextSibling
-		    end if
-		    
-		    book=book+1
-		    sBook= Str(book)
-		  wend
-		  
-		  'sort by priority
-		  root.inorderTraverse(index)
-		  
-		  'write to file
-		  for x=0 to UBound(index)
-		    out.write(index(x).word)
-		    
-		    for y=0 to UBound(index(x).passages)
-		      out.write("|"+index(x).passages(y))
-		    next y
-		    out.WriteLine("")
-		  next x
-		  
-		  out.WriteLine("---")
-		  
-		  for x=0 to UBound(notIndexed)
-		    out.writeLine(notIndexed(x))
-		  next x
-		  
-		  out.Close
-		  
-		  'close progress window
-		  IndexProgress.close
-		  CanSearch = True
-		  
-		Exception excep
-		  out.Close
-		  newFile.delete
-		  
-		  'reDim index as IndexEntry(-1)
-		  'reDim notIndexed as String(-1)
-		  
-		  MsgBox ("Error generating Bible index. Search will be disabled.")
-		  CanSearch = False
-		  If IndexProgress.Visible Then
-		    IndexProgress.Close
-		  End If
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: getVerse
-  parm/S: node as XMLNode
-  rslt/S: String
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Function getVerse(node as XMLNode) As String
-		  if node=nil then
-		    return ""
-		  elseif node.Type=3 then 'text_node 
-		    return node.value
-		  else
-		    return getVerse(node.child(0)) + getVerse(node.nextSibling)
-		  end if
 		End Function
   )
  Meth/g: 
@@ -1547,7 +1547,11 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: BookName = list.Item(i).GetAttribute("n")
    srcl/S: Books.Append BookName
    srcl/S: 
-   srcl/S: StdName = Lowercase(Left(MakeStandardName(BookName), 3)) //Assume first three characters are unique
+   srcl/S: 'StdName = Lowercase(Left(MakeStandardName(BookName), 3)) //Assume first three characters are unique
+   srcl/S: //++
+   srcl/S: // Testing...Store entire name since we have dups in first 3 chars such as Judges and Jude
+   srcl/S: //--
+   srcl/S: StdName = Lowercase(MakeStandardName(BookName))
    srcl/S: 
    srcl/S: BookNode = BookAbbrevRoot.AppendChild(BookAbbrev.CreateElement(StdName))
    srcl/S: BookNode.SetAttribute("bname", BookName)
@@ -1643,34 +1647,125 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: loadIndex
+  parm/S: file As FolderItem
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub loadIndex(file As FolderItem)
+		  Dim fileIn as TextInputStream
+		  Dim line() as String
+		  Dim entry as IndexEntry
+		  Dim x as Integer
+		  
+		  
+		  fileIn= file.OpenAsTextFile
+		  
+		  line= fileIn.ReadLine().split("|")
+		  
+		  'read indexed words
+		  while line(0) <> "---"
+		    entry= new IndexEntry(line(0))
+		    
+		    for x=1 to UBound(line)
+		      entry.passages.Append(line(x))
+		    next x
+		    
+		    index.Append(entry)
+		    
+		    
+		    line= fileIn.ReadLine().split("|")
+		  wend
+		  
+		  'read words that aren't indexed
+		  line(0)= fileIn.ReadLine()
+		  
+		  while (line(0) <> "")
+		    notIndexed.Append(line(0))
+		    
+		    line(0)= fileIn.ReadLine()
+		  wend
+		  CanSearch = True
+		  
+		  //++EMP 18 Feb 2006
+		  // Add exception block...ran into issue where a 0-length index file
+		  // was left after a debug crash.  Got a OOB exception on the first While
+		  //--
+		Catch ex
+		  If ex Isa OutOfBoundsException Then
+		    filein.Close
+		    file.Delete // Let's kill it for now
+		    Redim index(-1)
+		    Redim notIndexed(-1)
+		    CanSearch = False
+		    If IndexProgress.Visible = True Then
+		      IndexProgress.Close
+		    End If
+		    CanSearch = False
+		  Else // Toss it back up the chain
+		    CanSearch = False
+		    Raise ex
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: LookupBookName
   parm/S: ShortName As String
   rslt/S: String
   flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function LookupBookName(ShortName As String) As String
-		  //
-		  // Determine what book the passed string refers to.
-		  //
-		  // Ed Palmer, September 2005
-		  //
-		  Dim FoundBooks(0) As String
-		  Dim xn As XmlNodeList
-		  
-		  ShortName = Lowercase(ShortName)
-		  ShortName = ReplaceAll(ShortName, ".", "")
-		  ShortName = ReplaceAll(ShortName, " ", "")
-		  
-		  'xn = Scripture.Xql("//b[matches(@n, ShortName, 'i')]")
-		  xn = BookAbbrev.Xql("/abbrev/*[starts-with(name(), '" + Left(ShortName, 3) + "')]")
-		  
-		  If xn.Length = 1 Then
-		    Return xn.Item(0).GetAttribute("bname")
-		  Else
-		    Return ""
-		  End If
-		End Function
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function LookupBookName(ShortName As String) As String
+   srcl/S: //
+   srcl/S: // Determine what book the passed string refers to.
+   srcl/S: //
+   srcl/S: // Ed Palmer, September 2005
+   srcl/S: //
+   srcl/S: Dim FoundBooks() As String
+   srcl/S: Dim xn As XmlNodeList
+   srcl/S: Dim j As Integer
+   srcl/S: Dim i As Integer
+   srcl/S: 
+   srcl/S: ShortName = Lowercase(ShortName)
+   srcl/S: ShortName = ReplaceAll(ShortName, ".", "")
+   srcl/S: ShortName = ReplaceAll(ShortName, " ", "")
+   srcl/S: 
+   srcl/S: //++
+   srcl/S: // Bug 1467887: Fix issue where OS assumed book names are unique in 3 characters
+   srcl/S: // and there was no way to lookup Judges and Jude.
+   srcl/S: //--
+   srcl/S: 
+   srcl/S: If Len(ShortName) < 3 Then Return ""
+   srcl/S: For i = 3 To Len(ShortName)
+   srcl/S: xn = BookAbbrev.Xql("/abbrev/*[starts-with(name(), '" + Left(ShortName, i) + "')]")
+   srcl/S: Select Case xn.Length
+   srcl/S: Case 0 // Nothing matches
+   srcl/S: ErrorString = ""  // Indicates no match
+   srcl/S: Return ""
+   srcl/S: Case 1
+   srcl/S: Exit
+   srcl/S: Case Else
+   srcl/S: If i = Len(ShortName) Then // The reference is still ambiguous
+   srcl/S: ErrorString = ""
+   srcl/S: For j = 0 To xn.Length - 1
+   srcl/S: FoundBooks.Append xn.Item(j).GetAttribute("bname")
+   srcl/S: Next
+   srcl/S:  ErrorString = Join(FoundBooks, ", ")
+   srcl/S: Return ""
+   srcl/S: End If
+   srcl/S: End Select
+   srcl/S: Next i
+   srcl/S: 
+   srcl/S: // Control here means that at least a substring of ShortName matches exactly one book.
+   srcl/S: // Verify that the entire ShortName matches this book, otherwise it's not a match
+   srcl/S: 
+   srcl/S: If Left(xn.Item(0).name, Len(ShortName)) <> ShortName Then Return ""
+   srcl/S: 
+   srcl/S: Return xn.Item(0).GetAttribute("bname")
+   srcl/S: End Function
+  sorc/g: 
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
@@ -1755,70 +1850,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    Return ret
 		  End Select
 		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: loadIndex
-  parm/S: file As FolderItem
-  rslt/S: 
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Sub loadIndex(file As FolderItem)
-		  Dim fileIn as TextInputStream
-		  Dim line() as String
-		  Dim entry as IndexEntry
-		  Dim x as Integer
-		  
-		  
-		  fileIn= file.OpenAsTextFile
-		  
-		  line= fileIn.ReadLine().split("|")
-		  
-		  'read indexed words
-		  while line(0) <> "---"
-		    entry= new IndexEntry(line(0))
-		    
-		    for x=1 to UBound(line)
-		      entry.passages.Append(line(x))
-		    next x
-		    
-		    index.Append(entry)
-		    
-		    
-		    line= fileIn.ReadLine().split("|")
-		  wend
-		  
-		  'read words that aren't indexed
-		  line(0)= fileIn.ReadLine()
-		  
-		  while (line(0) <> "")
-		    notIndexed.Append(line(0))
-		    
-		    line(0)= fileIn.ReadLine()
-		  wend
-		  CanSearch = True
-		  
-		  //++EMP 18 Feb 2006
-		  // Add exception block...ran into issue where a 0-length index file
-		  // was left after a debug crash.  Got a OOB exception on the first While
-		  //--
-		Catch ex
-		  If ex Isa OutOfBoundsException Then
-		    filein.Close
-		    file.Delete // Let's kill it for now
-		    Redim index(-1)
-		    Redim notIndexed(-1)
-		    CanSearch = False
-		    If IndexProgress.Visible = True Then
-		      IndexProgress.Close
-		    End If
-		    CanSearch = False
-		  Else // Toss it back up the chain
-		    CanSearch = False
-		    Raise ex
-		  End If
-		End Sub
   )
  Meth/g: 
  Meth/G: 

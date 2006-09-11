@@ -576,9 +576,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -624,9 +624,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -672,9 +672,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -1215,9 +1215,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -1263,9 +1263,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -1350,6 +1350,24 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
+   Enco/N: 1536
+   name/S: Maximize
+   sorc/d: (Enco/N: 134217984
+		Sub Maximize()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Minimize
+   sorc/d: (Enco/N: 134217984
+		Sub Minimize()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: Open
    sorc/d: (Enco/N: 134217984
@@ -1377,6 +1395,28 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  App.CenterInControlScreen Me
 		  
 		  btn_search.Enabled = App.MyBible.IsSearchable
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Resized
+   sorc/d: (Enco/N: 134217984
+		Sub Resized()
+		  //
+		  // Add code to balance book lists
+		  // The Lock... attributes for controls don't seem
+		  // to be able to deal with two adjacent controls that need to resize equally
+		  // when the window size changes
+		  //
+		  // Ed Palmer, October 2005
+		  //
+		  Dim listwidth As Integer
+		  
+		  listwidth = (grp_Books.Width / 2) - 11
+		  lst_scr_nt.Left = lst_scr_ot.Left + listwidth + 5
+		  lst_scr_ot.Width = listwidth
+		  lst_scr_nt.Width = listwidth
 		End Sub
    )
   HIns/g: 
@@ -1608,16 +1648,32 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  ' Look for version
 		  open_paren_loc = InStr(lookup, "(")
 		  close_paren_loc = InStr(lookup, ")")
-		  If open_paren_loc > 0 And close_paren_loc > 0 Then
+		  If open_paren_loc > 0 And close_paren_loc > 0 And _
+		      (close_paren_loc > open_paren_loc) Then
 		    temp = Mid(lookup, open_paren_loc + 1, close_paren_loc - open_paren_loc - 1)
 		    i = 0
+		    
+		    //++ 
+		    // Bug 1467887: If xlations such as SCH and SCH51 exist, entering SCH may
+		    // return SCH51.  Test for exact match first, then substring.
+		    //--
 		    While i < pop_scr_version.ListCount
-		      If InStr(Lowercase(pop_scr_version.List(i)), Lowercase(temp)) > 0 Then
+		      If Lowercase(pop_scr_version.List(i)) = Lowercase(temp) Then
 		        pop_scr_version.ListIndex = i
 		        i = pop_scr_version.ListCount
 		      End If
 		      i = i + 1
 		    Wend
+		    If i = pop_scr_version.ListCount Then // No exact match, try substring
+		      While i < pop_scr_version.ListCount
+		        If InStr(Lowercase(pop_scr_version.List(i)),  Lowercase(temp)) > 0 Then
+		          pop_scr_version.ListIndex = i
+		          i = pop_scr_version.ListCount
+		        End If
+		        i = i + 1
+		      Wend
+		    End If
+		    
 		    If i = pop_scr_version.ListCount Then
 		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp))
 		      Return
@@ -1639,6 +1695,17 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  temp = Left(lookup, first_space_loc - 1)
 		  
 		  BookName = App.MyBible.LookupBookName(temp)
+		  
+		  If BookName = "" Then
+		    If App.MyBible.ErrorString = "" Then // Nothing found
+		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book")
+		    Else // Multiples found
+		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/ambiguous", _
+		          temp, App.MyBible.ErrorString)
+		    End If
+		    Return
+		  End If
+		  
 		  ' This was the original code to do the lookup.  Modified to just
 		  ' set the selection in the list boxes now
 		  i = 0
@@ -2077,6 +2144,17 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Prop/g: 
   Prop/G: 
    Enco/N: 134217984
+   decl/S: chapter As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: chapter As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
    decl/S: CurrentBook As String
    flag/N: 1
    sorc/G: 
@@ -2084,17 +2162,6 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
     ntln/S: CurrentBook As String
     ntln/S: This holds the full name of the currently selected book to make it easier
     ntln/S: than having to chase the ListIndex of both lst_scr_nt & lst_scr_nt
-    ntln/S: 
-   sorc/g: 
-  Prop/g: 
-  Prop/G: 
-   Enco/N: 134217984
-   decl/S: chapter As Integer
-   flag/N: 1
-   sorc/G: 
-    Enco/N: 134217984
-    ntln/S: chapter As Integer
-    ntln/S: 
     ntln/S: 
    sorc/g: 
   Prop/g: 

@@ -630,13 +630,13 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		    If GetNext Then
 		      neighbor_slide = GetNextSlide(xSlide)
 		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		      neighbor_slide = GetPrevSlide(xSlide)
-		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
+		      'neighbor_slide = GetPrevSlide(xSlide)
+		      'If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
 		    Else
 		      neighbor_slide = GetPrevSlide(xSlide)
 		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		      neighbor_slide = GetNextSlide(xSlide)
-		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
+		      'neighbor_slide = GetNextSlide(xSlide)
+		      'If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
 		    End If
 		  End If
 		  Dim reverting As Boolean

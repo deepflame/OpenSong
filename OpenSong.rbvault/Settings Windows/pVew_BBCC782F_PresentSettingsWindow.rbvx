@@ -234,7 +234,22 @@ pVew/B: 426C6F6B70566577BBCC782F0000000000000000000000000000000000000000
  CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 148, Supr/S: CheckBox, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 148
+  Supr/S: CheckBox
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  // Disable blanks style radio box if unchecked
+		  nil_blanks.Enabled = Me.Value
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
@@ -1686,9 +1701,9 @@ pVew/B: 426C6F6B70566577BBCC782F0000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: 14)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: True)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 1)
   PDef/D: (name/S: HasHeading, PVal/S: False)

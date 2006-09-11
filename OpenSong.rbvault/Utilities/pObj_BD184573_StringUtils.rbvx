@@ -896,21 +896,6 @@ pObj/B: 426C6F6B704F626ABD1845730000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: IsEmpty
-  parm/S: extends s As String
-  rslt/S: Boolean
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Function IsEmpty(extends s As String) As Boolean
-		  // Return true if the string is empty.
-		  
-		  return s = ""
-		  
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
   name/S: isalnum
   parm/S: c As Integer
   rslt/S: Boolean
@@ -979,6 +964,21 @@ pObj/B: 426C6F6B704F626ABD1845730000000000000000000000000000000000000000
 		  end if
 		  
 		  return false
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IsEmpty
+  parm/S: extends s As String
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function IsEmpty(extends s As String) As Boolean
+		  // Return true if the string is empty.
+		  
+		  return s = ""
+		  
 		End Function
   )
  Meth/g: 
@@ -2831,36 +2831,6 @@ pObj/B: 426C6F6B704F626ABD1845730000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: Trim
-  parm/S: source As String, charsToTrim As String
-  rslt/S: String
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Function Trim(source As String, charsToTrim As String) As String
-		  // This is an extended version of RB's Trim function that lets you specify
-		  // a set of characters to trim.
-		  
-		  Dim srcLen As Integer = source.Len
-		  Dim leftPos, i As Integer
-		  for i = 1 to srcLen
-		    if InStr( charsToTrim, Mid(source, i, 1) ) = 0 then exit
-		  next
-		  leftPos = i
-		  if leftPos > srcLen then return ""
-		  
-		  Dim rightPos As Integer
-		  for i = srcLen DownTo 1
-		    if InStr( charsToTrim, Mid(source, i, 1) ) = 0 then exit
-		  next
-		  rightPos = i
-		  
-		  return Mid( source, leftPos, rightPos - leftPos + 1 )
-		  
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
   name/S: tolower
   parm/S: c As Integer
   rslt/S: Integer
@@ -2892,6 +2862,36 @@ pObj/B: 426C6F6B704F626ABD1845730000000000000000000000000000000000000000
 		  end if
 		  
 		  return -1
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Trim
+  parm/S: source As String, charsToTrim As String
+  rslt/S: String
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function Trim(source As String, charsToTrim As String) As String
+		  // This is an extended version of RB's Trim function that lets you specify
+		  // a set of characters to trim.
+		  
+		  Dim srcLen As Integer = source.Len
+		  Dim leftPos, i As Integer
+		  for i = 1 to srcLen
+		    if InStr( charsToTrim, Mid(source, i, 1) ) = 0 then exit
+		  next
+		  leftPos = i
+		  if leftPos > srcLen then return ""
+		  
+		  Dim rightPos As Integer
+		  for i = srcLen DownTo 1
+		    if InStr( charsToTrim, Mid(source, i, 1) ) = 0 then exit
+		  next
+		  rightPos = i
+		  
+		  return Mid( source, leftPos, rightPos - leftPos + 1 )
+		  
 		End Function
   )
  Meth/g: 

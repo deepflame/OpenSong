@@ -138,12 +138,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  Dim c As New Clipboard
 		  
-		  If item = "Cut" Then
+		  If item = App.T.Translate("shared/cut/@caption") Then
 		    c.SetText  ActiveEditField.SelText
 		    ActiveEditField.SelText = ""
-		  ElseIf item = "Copy" Then
+		  ElseIf item = App.T.Translate("shared/copy/@caption") Then
 		    c.SetText ActiveEditField.SelText
-		  ElseIf item = "Paste" Then
+		  ElseIf item = App.T.Translate("shared/paste/@caption") Then
 		    ''++JRC
 		    'm = NewMemoryBlock(50000)
 		    'ClipboardUNICODEtoTXT(MainWindow.Handle, m)
@@ -170,9 +170,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
-		  Me.AddRow "Cut"
-		  Me.AddRow "Copy"
-		  Me.AddRow "Paste"
+		  Me.AddRow App.T.Translate("shared/cut/@caption")
+		  Me.AddRow App.T.Translate("shared/copy/@caption")
+		  Me.AddRow App.T.Translate("shared/paste/@caption")
 		End Sub
    )
   HIns/g: 
@@ -383,13 +383,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim i As Integer
 		  Dim dlg as New SelectFolderDialog
 		  Dim f, g as FolderItem
+		  Dim output, goutput As TextOutputStream
+		  Dim song As XmlDocument
+		  
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
 		  dlg.InitialDirectory = DocumentsFolder
 		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
-		  
-		  Dim output, goutput As TextOutputStream
-		  Dim song As XmlDocument
 		  
 		  f = dlg.ShowModal()
 		  If f <> Nil Then 
@@ -406,7 +406,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    If g <> Nil Then g.CopyFileTo f
 		    
 		    InputBox.Message App.T.Translate("shared/done/@caption")
-		  End If
+		  End If  
 		End Sub
    )
   HIns/g: 
@@ -452,6 +452,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim old as String
 		  Dim f as FolderItem
 		  Dim xdoc As XmlDocument
+		  Dim i As Integer
 		  
 		  'Changed Added Prompt
 		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
@@ -464,8 +465,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
 		  If Len(t) > 0 Then
-		    If Songs.RenameFile(pop_songs_song_folders.Text + "/" + old, t) Then
+		    //++
+		    // Check for path characters
+		    //--
+		    If Instr(t, "/") > 0 Or Instr(t, ":") > 0 Or Instr(t, "\") > 0 Then
+		      InputBox.Message(App.T.Translate("errors/no_path_allowed"))
+		      Return
+		    End If
+		    
+		    'If Songs.RenameFile(pop_songs_song_folders.Text + "/" + old, t) Then
+		    If Songs.RenameFile(edt_songs_curr_folder.Text + "/" + old, t) Then
 		      lst_songs_songs.List(lst_songs_songs.ListIndex) = t
+		      lst_songs_songs.SortedColumn = 0
+		      lst_songs_songs.Sort
 		    Else
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t, old)
 		    End If
@@ -782,13 +794,18 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim i As Integer
 		  Dim dlg as New SelectFolderDialog
 		  Dim f, g as FolderItem
+		  Dim output, goutput As TextOutputStream
+		  Dim song As XmlDocument
+		  
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
 		  dlg.InitialDirectory = DocumentsFolder
 		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
 		  
-		  Dim output, goutput As TextOutputStream
-		  Dim song As XmlDocument
+		  //++
+		  // Feature request 1528693: require confirmation
+		  //--
+		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
 		  
 		  'Changed Added Prompt
 		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
@@ -976,6 +993,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/g: 
   HIns/G: 
    Enco/N: 1536
+   name/S: GotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  tmr_lookup.Enabled = True
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
    name/S: HeaderPressed
    sorc/d: (Enco/N: 134217984
 		Function HeaderPressed(column as Integer) As Boolean
@@ -1016,6 +1042,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Next i
 		  Return False
 		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  tmr_lookup.Enabled = False
+		End Sub
    )
   HIns/g: 
   HIns/G: 
@@ -5946,9 +5981,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -6811,9 +6846,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: True)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -8022,9 +8057,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -10618,6 +10653,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Restore
+   sorc/d: (Enco/N: 134217984
+		Sub Restore()
+		  
+		End Sub
+   )
+  HIns/g: 
   Meth/G: 
    Enco/N: 134217984
    name/S: ActionInSetAskSave
@@ -10849,9 +10893,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		Sub ActionSetPresent(mode As Integer)
 		  Dim i As Integer
 		  Dim lastType As String
+		  Dim setDoc As New XmlDocument
 		  
 		  App.MouseCursor = WatchCursor
-		  Dim setDoc As New XmlDocument
 		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  ImportSongs setDoc
 		  
@@ -11335,7 +11379,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  //--
 		  If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
 		  
-		  f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text)
+		  f = Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text)
 		  
 		  If f <> Nil And f.Exists Then
 		    App.MouseCursor = WatchCursor
@@ -11492,6 +11536,18 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    s = CurrentSong
 		  End If
 		  
+		  //++
+		  // Bug 1089442: Catch s = Nil.  Unlikely to happen, but possible if i < 0 and the first document isn't valid
+		  //
+		  // For the moment, just error and return.  Could be avoided by splitting out the code that opens the song
+		  // files and determines when done (i.e., XmlDocument = GetNextSong( ByRef i, FindStartSong ))
+		  //--
+		  If s = Nil Then
+		    App.MouseCursor = Nil
+		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+		    Return
+		  End If
+		  
 		  While found = Nil And i < lst_songs_songs.ListCount
 		    
 		    If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 1 Or (FindFocus = 1 And (edt_song_title.SelStart+edt_song_title.SelLength = 0 Or InStr(edt_song_title.SelStart+edt_song_title.SelLength+1, Lowercase(edt_song_title.Text), t) > 0))) Then
@@ -11589,45 +11645,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  App.MouseCursor = Nil
 		  App.DebugWriter.Write("MainWindow.FindNext: Exit")
 		  Return
-		  
-		  ' First, let's check the current song after the cursor
-		  If lst_songs_songs.ListIndex >= 0 Then
-		    j = InStr(edf_song_lyrics.SelStart + edf_song_lyrics.SelLength, Lowercase(edf_song_lyrics.Text), Lowercase(t))
-		    If j > 0 Then
-		      edf_song_lyrics.SelStart = j - 1
-		      edf_song_lyrics.SelLength = Len(t)
-		      App.MouseCursor = Nil
-		      Return
-		    End If
-		  End If
-		  
-		  ' Nothing in this song, or no song open. Let's move on to other songs...
-		  If lst_songs_songs.ListIndex >= 0 Then
-		    st = lst_songs_songs.ListIndex + 1
-		  Else
-		    st = 0
-		  End If
-		  
-		  For i = st To lst_songs_songs.ListCount - 1
-		    f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.List(i))
-		    If f <> Nil And f.Exists Then
-		      s = SmartML.XDocFromFile(f)
-		      j = InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics", False)), Lowercase(t))
-		      If j > 0 Then
-		        lst_songs_songs.ListIndex = i
-		        ' Find it again? Why? Because of the newline convertions moving stuff around. I.e. Chr(10) >> Chr(13) + Chr(10)
-		        j = InStr(Lowercase(edf_song_lyrics.Text), Lowercase(t))
-		        edf_song_lyrics.SelStart = j - 1
-		        edf_song_lyrics.SelLength = Len(t)
-		        App.MouseCursor = Nil
-		        Return
-		      End If
-		    End If
-		  Next i
-		  App.MouseCursor = Nil
-		  InputBox.Message App.T.Translate("errors/end_of_songs")
-		  
-		  App.MouseCursor = Nil
 		End Sub
    )
   Meth/g: 
@@ -11879,7 +11896,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If found = 0 And Len(timesig) > 0 Then pop_song_time_sig.InsertRow 0, timesig
 		  pop_song_time_sig.ListIndex = found
 		  
+		  edf_song_lyrics.Text = ""
+		  edf_song_lyrics.ScrollBarVertical = False
 		  edf_song_lyrics.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		  edf_song_lyrics.ScrollBarVertical = True
 		  
 		  'If SmartML.GetNode(CurrentSong.DocumentElement, "style", False) = Nil Then
 		  If CurrentSongObj.SongStyle = Nil Then
@@ -12239,6 +12259,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Return False
 		  End If
 		  
+		  //++
+		  // Feature request 1528693: require confirmation
+		  //--
+		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return False
+		  
 		  If Not AlphaTOC.Setup Then Return False
 		  
 		  For i = 0 To lst_songs_songs.ListCount - 1
@@ -12291,6 +12316,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    InputBox.Message App.T.Translate("errors/no_songs")
 		    Return False
 		  End If
+		  
+		  //++
+		  // Feature request 1528693: require confirmation
+		  //--
+		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return False
 		  
 		  If Not CatTOC.Setup Then Return False
 		  

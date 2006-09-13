@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -284,6 +284,33 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
+		  '++JRC Try to read language file, if we can't return to MainSettingsWindow without saving
+		  Dim T As Translator
+		  
+		  T = New Translator(App.AppFolder.Child("OpenSong Languages").Child(pop_general_language.Text))
+		  If T <> Nil Then
+		    App.T = T
+		    'save language selection in globals
+		    SmartML.SetValue App.MyGlobals.DocumentElement, "language/@file", pop_general_language.Text
+		    MainWindow.TranslateMe
+		    App.TranslateMe
+		  Else
+		    InputBox.Message "Error in translation."
+		    Return
+		  End If
+		  
+		  'App.T = New Translator(App.AppFolder.Child("OpenSong Languages").Child(pop_general_language.Text))
+		  'If App.T <> Nil Then
+		  'SmartML.SetValue Settings, "language/@file", pop_general_language.Text
+		  'Else
+		  'InputBox.Message "Error in translation."
+		  'End If
+		  
+		  'If App.T <> Nil Then
+		  'MainWindow.TranslateMe
+		  'App.TranslateMe
+		  'End If
+		  
 		  Dim Settings As XmlElement
 		  Settings = App.MyMainSettings.DocumentElement
 		  
@@ -303,18 +330,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  SmartML.SetValueF Settings, "fonts/buttons", can_fonts_buttons.GetFont
 		  SmartML.SetValueF Settings, "fonts/large_headings", can_fonts_large_headings.GetFont
 		  App.UpdateTranslationFonts
-		  
-		  App.T = New Translator(App.AppFolder.Child("OpenSong Languages").Child(pop_general_language.Text))
-		  If App.T <> Nil Then
-		    SmartML.SetValue Settings, "language/@file", pop_general_language.Text
-		  Else
-		    InputBox.Message "Error in translation."
-		  End If
-		  
-		  If App.T <> Nil Then
-		    MainWindow.TranslateMe
-		    App.TranslateMe
-		  End If
+		  '--
 		  
 		  //++EMP
 		  // Save Start Mode selection
@@ -1868,9 +1884,10 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		    btn_browse.Enabled = False
 		    DocsFolder = Nil
 		  End If
-		  
-		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "language/@file")
-		  
+		  '++JRC moved to globals
+		  s = SmartML.GetValue(App.MyGlobals.DocumentElement, "language/@file")
+		  's = SmartML.GetValue(App.MyMainSettings.DocumentElement, "language/@file")
+		  '--
 		  Dim f As FolderItem
 		  f = App.AppFolder.Child("OpenSong Languages")
 		  Dim i As Integer

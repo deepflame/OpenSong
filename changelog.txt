@@ -1,3 +1,7 @@
+-= 1.0 Beta 2 Baselevel 13 =-
+
+* Changing the style of a song marks the song as changed but does not ask the user immediately if it should be saved. [Bug 1512827]
+
 -= 1.0 Beta 2 Baselevel 12 =-
 
 * Scripture quick lookup fixes: Better handling of translations, book name parser modified to check all characters of the name input by the user. Added scripture_lookup/bad_reference/ambiguous to language file. [Bug 1467887]

@@ -3038,12 +3038,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  If InputBox.Ask(App.T.Translate("questions/save/@caption", lst_songs_songs.Text)) Then
-		    ActionSongSave
-		  Else
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
+		  Status_SongChanged = True
+		  EnableMenuItems
 		End Sub
    )
   HIns/g: 

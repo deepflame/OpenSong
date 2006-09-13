@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -10020,6 +10020,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_InSetChanged Then ActionInSetAskSave
 		  If Status_SetChanged Then ActionSetAskSave
 		  
+		  '++JRC Save Globals
+		  If App.MyGlobals <> Nil Then
+		    If Not SmartML.XDocToFile(App.MyGlobals, App.AppFolder.Child("OpenSong Settings").Child("Globals")) Then SmartML.DisplayError
+		  End If
+		  '--
 		  If App.MyPrintSettings <> Nil Then
 		    If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child("Settings").Child("PrintSettings")) Then SmartML.DisplayError
 		  End If

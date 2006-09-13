@@ -1,3 +1,28 @@
+-= 1.0 Beta 2 JRC =-
+* Made several init Error Msgs translatable (see language changelog)
+
+* Just Exit if language file cannot be loaded on startup
+
+* Prevent NilObject Exception in XDocFromFile if file could not be opened
+
+* Prevent OutOfBounds Exception in InputBox when translator isn't loaded
+
+* Prevent NilObject Exception in SButton Class if MainSettings is Nil
+
+* Return Nil translator Object if file passed is Nil or Non-existant
+
+* Made a couple of Splash Msgs translatable (see language changelog)
+
+* Prevent MainSettingsWindow Saving Invalid Language files
+
+* Moved Language selection to Global Settings
+
+* Save Global Settings on exit
+
+* Moved translation init to beginning of App.Open so we can translate init error & status Msgs 
+
+* Check if Scriptures Folder Exists and exit if not found (I believe this was causing error #1555433)
+
 -= 1.0 Beta 2 Baselevel 12 =-
 
 * Scripture quick lookup fixes: Better handling of translations, book name parser modified to check all characters of the name input by the user. Added scripture_lookup/bad_reference/ambiguous to language file. [Bug 1467887]

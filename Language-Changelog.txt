@@ -1,3 +1,21 @@
+errors/folder_error
+errors/create_backgrounds_folder
+errors/no_backgrounds_folder
+errors/create_sets_folder
+errors/no_sets_folder
+errors/create_songs_folder
+errors/no_songs_folder
+errors/create_settings_folder
+errors/no_settings_folder
+errors/no_defaults_folder
+errors/no_scripture_folder
+errors/no_docs_folder
+errors_docs_folder
+load_settings/main
+load_settings/checking_folders
+load_settings/init_audio (Deleted)
+load_settings/load_plugins (Deleted)
+
 songs_mode/curr_folder
 sets_mode/current_set/saveas
 slide_editor/presentation

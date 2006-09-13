@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -355,7 +355,11 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
-		  App.T.TranslateWindow Me, "input_box", App.TranslationFonts
+		  '++JRC Prevent OutOfBounds Exception when translator isn't loaded
+		  If App.T.IsLoaded Then
+		    App.T.TranslateWindow Me, "input_box", App.TranslationFonts
+		  End If
+		  '--
 		  App.CenterInControlScreen Me
 		End Sub
    )

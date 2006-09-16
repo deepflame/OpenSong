@@ -226,7 +226,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		      End If
 		      //--
 		      If Not DocsFolder.Child("Sets").Exists Then
-		        If Not FileUtils.CopyPath(AppFolder.Child("OpenSon? Defaults").Child("Sets"), DocsFolder.Child("Sets")) Then
+		        If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Sets"), DocsFolder.Child("Sets")) Then
 		          App.MouseCursor = Nil
 		          '++JRC Translated
 		          MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child("Sets").AbsolutePath)
@@ -324,7 +324,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		            
 		            UpdateTranslationFonts
 		            
-		            ' --- CHECK FOR LATEST SONG AND SET VERSIONS --?
+		            ' --- CHECK FOR LATEST SONG AND SET VERSIONS ---
 		            Dim songVersion, setVersion As Double
 		            songVersion = SmartML.GetValueN(MyMainSettings.DocumentElement, "version/@songs")
 		            setVersion = SmartML.GetValueN(MyMainSettings.DocumentElement, "version/@sets")

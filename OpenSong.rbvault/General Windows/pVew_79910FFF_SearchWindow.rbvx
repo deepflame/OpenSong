@@ -841,7 +841,12 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
 		    lst_result.Cell(x, 1)= verse(1)
 		  next x
 		Catch ex
-		  MsgBox "SearchWindow.Search: " + ex.message + ":" + str(ex.errornumber)
+		  If ex.Message = "" Then
+		    InputBox.Message App.T.Translate("errors/general1", "SearchWindow.Search")
+		  Else
+		    InputBox.Message App.T.Translate("errors/general2", "SearchWindow.Search", _
+		        ex.Message)
+		  End If
 		  Return
 		End Sub
    )

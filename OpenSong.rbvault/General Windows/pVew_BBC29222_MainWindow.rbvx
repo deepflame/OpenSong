@@ -11918,17 +11918,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub Open()
-		  'Try
-		  'PPT = New PowerPointApplication
-		  'PPT.Visible = 1
-		  'PPT.Presentations.Open "C:\Documents and Settings\slickfold\My Documents\Youth Group\10Commandments_forkids.ppt", True, True, True
-		  'PPT.ActivePresentation.SlideShowSettings.Run
-		  'Catch e as RuntimeException
-		  'MsgBox e.Message
-		  'PPT = Nil
-		  'End Try
-		  
-		  'Why is this here? Is it used?
 		  
 		  Profiler.BeginProfilerEntry "MainWindow::Open"
 		  Dim output As TextOutputStream

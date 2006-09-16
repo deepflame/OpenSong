@@ -330,7 +330,62 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   name/S: UnhandledException
   sorc/d: (Enco/N: 134217984
 		Function UnhandledException(error As RuntimeException) As Boolean
-		  Call MsgBox("Top level exception handler, error is " + error.Message, 16, "Last Chance")
+		  Dim s As String
+		  Dim msg As String
+		  
+		  s = "Fatal OpenSong Error: "
+		  
+		  If error isA IllegalCastException Then
+		    msg = "IllegalCastException"
+		  ElseIf error isA KeyNotFoundException Then
+		    msg = "KeyNotFoundException"
+		  ElseIf error isA NilObjectException Then
+		    msg = "NilObjectException"
+		  ElseIf error isA OutOfBoundsException Then
+		    msg = "OutOfBoundsException"
+		  ElseIf error isA OutOfMemoryException Then
+		    msg = "OutOfMemoryException"
+		  ElseIf error isA RegExException Then
+		    msg = "RegExException"
+		  ElseIf error isA RegExSearchPatternException Then
+		    msg = "RegExSearchPatternException"
+		  ElseIf error isA ShellNotAvailableException Then
+		    msg = "ShellNotAvailableException"
+		  ElseIf error isA ShellNotRunningException Then
+		    msg = "ShellNotRunningException"
+		  ElseIf error isA stackOverflowException Then
+		    msg = "stackOverflowException"
+		  ElseIf error isA EndException Then
+		    msg = "EndException"
+		  ElseIf error isA InvalidParentException Then
+		    msg = "InvalidParentException"
+		  ElseIf error isA KeyChainException Then
+		    msg = "KeyChainException"
+		  ElseIf error isA NoOpenTransportException Then
+		    msg = "NoOpenTransportException"
+		  ElseIf error isA typeMismatchException Then
+		    msg = "typeMismatchException"
+		  ElseIf error isA UnsupportedFormatException Then
+		    msg = "UnsupportedFormatException"
+		  ElseIf error isA XmlDomException Then
+		    msg = "XmlDomException"
+		  ElseIf error isA XmlException Then
+		    msg = "XmlException"
+		  ElseIf error isA XmlReaderException Then
+		    msg = "XmlReaderException"
+		  Else
+		    msg = "Unknown exception"
+		  End If
+		  
+		  s = s + msg
+		  If error.Message <> "" Then
+		    s = s + ", error is '" + error.Message + "'"
+		    If error.ErrorNumber <> 0 Then
+		      s = s + ", number = " + CStr(error.ErrorNumber)
+		    End If
+		  End If
+		  InputBox.Message s
+		  'Quit
 		End Function
   )
  HIns/g: 

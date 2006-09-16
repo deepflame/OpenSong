@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.0 Beta 2 BL 11">
+<language name="English" author="Sean Lickfold" version="1.0 Beta 2 BL 13">
 
   <load_settings>
     <print>Loading print settings</print>
@@ -555,6 +555,10 @@ T: Tag</keys>
     <dash caption="-"/>
     <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <errors>
+      <ot_bounds>Error loading Old Testament list of books: '%1'</ot_bounds>
+      <nt_bounds>Error loading New Testament list of books: '%1'</nt_bounds>
+    </errors>
   </scripture_lookup>
 
   <module>
@@ -766,7 +770,52 @@ Click on this slide to edit its style.</body>
     <number_range>Please enter a number between %1 and %2.</number_range>
     <no_path_allowed>File name may not include a path.</no_path_allowed>
     <rename_error>Unable to rename file.</rename_error>
+    <general1>In '%1': Unknown error</general1>
+    <general2>In '%1': '%2'</general2>
   </errors>
+
+
+  <xml_errors>
+
+    <noattribute>Unable to find XML attribute '%1' in '%2'.</noattribute>
+  </xml_errors>
+
+
+  <bible>
+
+    <errors>
+      <index_generation>Error generating index for '%1.' Bible search will be disabled.</index_generation>
+
+      <loadxml>XML error loading %1
+.&#10; Error is '%2' at line %3</loadxml>
+
+      <load1>Unknown error loading %1</load1>
+      <load2>Error loading %1: %2</load2>
+
+      <noindex>No search index available.  Select a different translation or restart OpenSong.</noindex>
+
+      <missing_bnames>Unable to find Zefania support file 'bnames.xml' in 'OpenSong Settings'</missing_bnames>
+
+      <nobnames>Bible does not have required bname attributes and they could not be added</nobnames>
+      <roman>Error converting Roman numeral '%1': %2</roman>
+
+      <save>Error saving updated file '%1.'</save>
+
+    </errors>
+
+    <messages>
+
+      <bnames>Book names must be added to this translation.
+&#10;Please indicate the appropriate language for the names.</bnames>
+      <save>Save updated file?</save>
+    </messages>
+  </bible>
+
+  <song>
+    <errors>
+      <unknown_element>Unknown element loading song: '%1'</unknown_element>
+    </errors>
+  </song>
 
   <open_titles>
     <audio>Select Audio File to Open</audio>

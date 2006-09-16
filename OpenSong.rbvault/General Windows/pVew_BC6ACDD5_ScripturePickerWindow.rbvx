@@ -1484,7 +1484,11 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Dim slides, slide As XmlNode
 		  advance = 0
 		  
-		  Node.Name = "slide_group"
+		  ' MG: Have to clear the slide cache in case Insert is used before Add
+		  slides = SmartML.GetNode(Node, "slides", False)
+		  If slides <> Nil Then Node.RemoveChild slides
+		  '*******************************
+		  
 		  '  MG:  This is primarily for Insert.  Make sure that the reference doesn't have more than can be displayed in a live slide
 		  If rad_verses_one.Value then
 		    cntVerses = 1
@@ -1504,6 +1508,11 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1)
 		    verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+1))
 		  End If
+		  //++
+		  // Check for no verses returned
+		  //--
+		  If UBound(verses) = 0 Then Return
+		  
 		  '*******************************
 		  'If lst_scr_to_verse.ListIndex > lst_scr_from_verse.ListIndex Then
 		  'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_to_verse.ListIndex+1)
@@ -1514,15 +1523,12 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_to_verse.ListIndex + 1))
 		  
 		  ' ----- SET TITLE -----
+		  Node.Name = "slide_group"
 		  SmartML.SetValue Node, "@name", passage
 		  SmartML.SetValue Node, "@type", "scripture"
 		  SmartML.SetValue Node, "title", passage
 		  SmartML.SetValue Node, "subtitle", App.MyBible.GetBibleName
 		  
-		  ' MG: Have to clear the slide cache in case Insert is used before Add
-		  slides = SmartML.GetNode(Node, "slides", False)
-		  If slides <> Nil Then Node.RemoveChild slides
-		  '*******************************
 		  slides = SmartML.GetNode(Node, "slides", True)
 		  
 		  ' ----- SET VERSES -----

@@ -1,6 +1,16 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* If a Zefania format bible is loaded and the "bname" attribute is added from bnames.xml, prompt the user before writing the changed file.  If the user chooses not to save, supress generating the index file. [Bug 1467699]
+
+* InputBox on Windows forces itself to the top of the window stack so it doesn't get hidden behind the splash window or other floating windows. [Bug 1467699]
+
+* Added code to the "last chance" exception handler to recognize what kind of error was raised.  This isn't particularly useful now, but will be when the handler can produce a stack dump after OS moves to RB2006 or later.
+
 * Changing the style of a song marks the song as changed but does not ask the user immediately if it should be saved. [Bug 1512827]
+
+* Added translation support for previously hard-coded English messages.  Also changed use of MsgBox to InputBox for UI consistency. [Bugs 1500189, 1467699]
+
+* Corrected potential platform-specific file path in Bible.AddBNames method.
 
 -= 1.0 Beta 2 Baselevel 12 =-
 

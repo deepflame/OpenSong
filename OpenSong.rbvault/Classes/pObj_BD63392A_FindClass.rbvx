@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABD63392A0000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: FindClass
- Size/N: 47
+ Size/N: 48
  bNtr/N: 0
  Intr/S: 
  Meth/G: 
@@ -70,6 +70,16 @@ pObj/B: 426C6F6B704F626ABD63392A0000000000000000000000000000000000000000
   sorc/G: 
    Enco/N: 134217984
    ntln/S: FindCopyright As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindHymnNumber As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindHymnNumber As Boolean
    ntln/S: 
    ntln/S: 
   sorc/g: 

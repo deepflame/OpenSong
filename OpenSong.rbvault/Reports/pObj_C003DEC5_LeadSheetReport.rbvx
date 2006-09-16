@@ -95,6 +95,10 @@ pObj/B: 426C6F6B704F626AC003DEC50000000000000000000000000000000000000000
 		  // Build the pages for the songs
 		  // Show progress window if we have a few
 		  If UBound(Songs) > 10 Then
+		    '++JRC Add status message
+		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/lead_sheets") + "..."
+		    '--
+		    
 		    ProgressWindow.SetMaximum(UBound(Songs))
 		    ProgressWindow.SetProgress 0
 		    ProgressWindow.ShowWithin MainWindow

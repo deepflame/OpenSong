@@ -1,3 +1,12 @@
+song_search/hymn_number
+progress_status/folder
+progress_status/lead_sheets
+progress_status/process_themes
+progress_status/process_song
+progress_status/pass1
+progress_status/pass2
+progress_status/export
+progress_status
 errors/folder_error
 errors/create_backgrounds_folder
 errors/no_backgrounds_folder

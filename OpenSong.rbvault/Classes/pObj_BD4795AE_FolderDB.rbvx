@@ -117,7 +117,24 @@ pObj/B: 426C6F6B704F626ABD4795AE0000000000000000000000000000000000000000
 		  Dim s As String
 		  Dim f As FolderItem
 		  
+		  '++JRC
+		  Dim j As integer
+		  
+		  j = 0
+		  ProgressWindow.SetMaximum(folder.count) 
+		  ProgressWindow.SetProgress(j)
+		  ProgressWindow.Show
+		  ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/folder", folder.Name) + "..."
+		  '--
+		  
 		  For x = 1 to folder.count
+		    '++JRC
+		    j = j + 1
+		    ProgressWindow.SetMaximum(folder.count) 
+		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/folder", folder.Name) + "..."
+		    ProgressWindow.SetProgress(j)
+		    '--
+		    
 		    f = folder.Item(x)
 		    s = f.Name
 		    If InStr("._", Left(s, 1)) = 0 Then

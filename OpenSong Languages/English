@@ -152,7 +152,13 @@
       <copy caption="Copy">Creates a copy of the currently selected set item.</copy>
       <store caption="Save">Stores the currently selected item in the set.</store>
     </current_item>
-    <items caption="Set Items">Lists the items in the current set. Click on a custom slide to load it into the custom slide editor or double-click a song to load it into the song editor.</items>
+    <items caption="Set Items">Lists the items in the current set. Click on a custom slide to load it into the custom slide editor or double-click a song to load it into the song editor.
+      <song caption="(song)"/>
+      <custom caption="(custom)"/>
+      <scripture caption="(scripture)"/>
+      <style caption="(style)">-- Change Style --</style>
+      <revert caption="(style)">-- Revert Style --</revert>
+    </items>
   </sets_mode>
 
   <slide_editor>

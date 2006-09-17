@@ -85,3 +85,8 @@ bible/errors/save
 bible/messages
 bible/messages/bnames
 bible/messages/save
+sets_mode/items/custom
+sets_mode/items/song
+sets_mode/items/scripture
+sets_mode/items/style
+sets_mode/items/revert

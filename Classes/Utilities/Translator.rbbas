@@ -2,8 +2,12 @@
 Class Translator
 	#tag Method, Flags = &h0
 		Sub Constructor(f As FolderItem)
-		  File = f
-		  Document = SmartML.XDocFromFile(f)
+		  If f <> Nil And f.Exists Then
+		    File = f
+		    Document = SmartML.XDocFromFile(f)
+		  End If
+		  
+		  'Else leave File and Document as Nil
 		End Sub
 	#tag EndMethod
 
@@ -124,6 +128,11 @@ Class Translator
 		  Dim editCont As EditField
 		  Dim popCont As PopupMenu
 		  Dim sldCont As Slider 'EMP 09/05
+		  
+		  'Prevent Nil access
+		  If Ubound(fonts) < 6 Then
+		    doFonts = False
+		  End If
 		  
 		  For i = 0 To win.ControlCount - 1
 		    cont = win.Control(i)

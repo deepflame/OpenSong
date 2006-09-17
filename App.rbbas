@@ -162,14 +162,18 @@ Inherits Application
 		  End If
 		  T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
 		  If Not T.IsLoaded Then
-		    //++EMP 12/05
-		    // I think we should alert the user, shouldn't we?
-		    //
-		    SmartML.DisplayError
-		    //--
-		    T = New Translator(AppFolder.Child("OpenSong Languages").Item(1))
+		    'Search first usable language file in directory
+		    Dim i As Integer = 1
+		    While i <= AppFolder.Child("OpenSong Languages").Count And Not T.IsLoaded
+		      If Not AppFolder.Child("OpenSong Languages").Item(i).Directory Then
+		        T = New Translator(AppFolder.Child("OpenSong Languages").Item(i))
+		      End If
+		      i = i + 1
+		    Wend
 		    If Not T.IsLoaded Then
-		      SmartML.DisplayError
+		      'Show hardcoded error message, because we can't translate :(
+		      Dim result As Integer
+		      result = MsgBox("Error: Could not find a language file in " + AppFolder.Child("OpenSong Languages").AbsolutePath, 16)
 		      Quit
 		    Else
 		      SmartML.SetValue MyMainSettings.DocumentElement, "language/@file", AppFolder.Child("OpenSong Languages").Item(1).Name

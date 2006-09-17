@@ -661,7 +661,10 @@ Begin Window MainSettingsWindow
          BehaviorIndex   =   20
       End
       Begin SFontCanvas can_fonts_headings
+         Index           =   -2147483648
          ControlOrder    =   21
+         Left            =   281
+         Top             =   50
          Width           =   120
          Height          =   30
          LockLeft        =   "False"
@@ -679,9 +682,6 @@ Begin Window MainSettingsWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "grp_settings_fonts"
-         Index           =   -2147483648
-         Left            =   281
-         Top             =   50
          AdvancedOptions =   "False"
          BehaviorIndex   =   21
       End
@@ -716,7 +716,10 @@ Begin Window MainSettingsWindow
          BehaviorIndex   =   22
       End
       Begin SFontCanvas can_fonts_labels
+         Index           =   -2147483648
          ControlOrder    =   23
+         Left            =   281
+         Top             =   100
          Width           =   120
          Height          =   30
          LockLeft        =   "False"
@@ -734,9 +737,6 @@ Begin Window MainSettingsWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "grp_settings_fonts"
-         Index           =   -2147483648
-         Left            =   281
-         Top             =   100
          AdvancedOptions =   "False"
          BehaviorIndex   =   23
       End
@@ -771,7 +771,10 @@ Begin Window MainSettingsWindow
          BehaviorIndex   =   24
       End
       Begin SFontCanvas can_fonts_text_fields
+         Index           =   -2147483648
          ControlOrder    =   25
+         Left            =   281
+         Top             =   150
          Width           =   120
          Height          =   30
          LockLeft        =   "False"
@@ -789,9 +792,6 @@ Begin Window MainSettingsWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "grp_settings_fonts"
-         Index           =   -2147483648
-         Left            =   281
-         Top             =   150
          AdvancedOptions =   "False"
          BehaviorIndex   =   25
       End
@@ -826,7 +826,10 @@ Begin Window MainSettingsWindow
          BehaviorIndex   =   26
       End
       Begin SFontCanvas can_fonts_fixed_width
+         Index           =   -2147483648
          ControlOrder    =   27
+         Left            =   281
+         Top             =   200
          Width           =   120
          Height          =   30
          LockLeft        =   "False"
@@ -844,9 +847,6 @@ Begin Window MainSettingsWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "grp_settings_fonts"
-         Index           =   -2147483648
-         Left            =   281
-         Top             =   200
          AdvancedOptions =   "False"
          BehaviorIndex   =   27
       End
@@ -881,7 +881,10 @@ Begin Window MainSettingsWindow
          BehaviorIndex   =   28
       End
       Begin SFontCanvas can_fonts_buttons
+         Index           =   -2147483648
          ControlOrder    =   29
+         Left            =   281
+         Top             =   250
          Width           =   120
          Height          =   30
          LockLeft        =   "False"
@@ -899,9 +902,6 @@ Begin Window MainSettingsWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "grp_settings_fonts"
-         Index           =   -2147483648
-         Left            =   281
-         Top             =   250
          AdvancedOptions =   "False"
          BehaviorIndex   =   29
       End
@@ -936,7 +936,10 @@ Begin Window MainSettingsWindow
          BehaviorIndex   =   30
       End
       Begin SFontCanvas can_fonts_large_headings
+         Index           =   -2147483648
          ControlOrder    =   31
+         Left            =   281
+         Top             =   300
          Width           =   120
          Height          =   45
          LockLeft        =   "False"
@@ -954,9 +957,6 @@ Begin Window MainSettingsWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "grp_settings_fonts"
-         Index           =   -2147483648
-         Left            =   281
-         Top             =   300
          AdvancedOptions =   "False"
          BehaviorIndex   =   31
       End
@@ -1351,9 +1351,12 @@ End
 	  For i = 1 To f.Count
 	    If Not f.Item(i).Directory Then
 	      pop_general_language.AddRow f.Item(i).Name
-	      If f.Item(i).Name = s Then pop_general_language.ListIndex = i - 1
+	      If s = f.Item(i).Name Then
+	        pop_general_language.ListIndex = pop_general_language.ListCount - 1
+	      End If
 	    End If
 	  Next i
+	  
 	  If pop_general_language.ListIndex < 0 Then pop_general_language.ListIndex = 0
 	  
 	  chk_general_version_check.Caption = App.T.Translate("general_settings/general/version_check/@caption")

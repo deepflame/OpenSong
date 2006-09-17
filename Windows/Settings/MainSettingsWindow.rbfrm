@@ -1413,16 +1413,30 @@ End
 #tag Event
 	Sub Action()
 	  Dim Settings As XmlElement
-	  Settings = App.MyMainSettings.DocumentElement
+	  Dim T As Translator
 	  
-	  SmartML.SetValue Settings, "ccli/@number", edt_general_ccli.Text
+	  Settings = App.MyMainSettings.DocumentElement
+	  T = New Translator(App.AppFolder.Child("OpenSong Languages").Child(pop_general_language.Text))
+	  
+	  If T.IsLoaded Then
+	    App.T = T
+	    'save language selection in globals
+	    SmartML.SetValue Settings, "language/@file", T.GetFileName
+	    MainWindow.TranslateMe
+	    App.TranslateMe
+	  Else
+	    InputBox.Message "Error in translation."
+	    Return
+	  End If
+	  
+	  SmartML.SetValue  Settings, "ccli/@number", edt_general_ccli.Text
 	  SmartML.SetValueB Settings, "version/@check", chk_general_version_check.Value
-	  SmartML.SetValue Settings, "proxy/@host", edt_proxy_host.Text
+	  SmartML.SetValue  Settings, "proxy/@host", edt_proxy_host.Text
 	  SmartML.SetValueN Settings, "proxy/@port", Val(edt_proxy_port.Text)
 	  
-	  SmartML.SetValue Settings, "user_defined/@user1", edt_define_user1.Text
-	  SmartML.SetValue Settings, "user_defined/@user2", edt_define_user2.Text
-	  SmartML.SetValue Settings, "user_defined/@user3", edt_define_user3.Text
+	  SmartML.SetValue  Settings, "user_defined/@user1", edt_define_user1.Text
+	  SmartML.SetValue  Settings, "user_defined/@user2", edt_define_user2.Text
+	  SmartML.SetValue  Settings, "user_defined/@user3", edt_define_user3.Text
 	  
 	  SmartML.SetValueF Settings, "fonts/headings", can_fonts_headings.GetFont
 	  SmartML.SetValueF Settings, "fonts/labels", can_fonts_labels.GetFont
@@ -1431,18 +1445,6 @@ End
 	  SmartML.SetValueF Settings, "fonts/buttons", can_fonts_buttons.GetFont
 	  SmartML.SetValueF Settings, "fonts/large_headings", can_fonts_large_headings.GetFont
 	  App.UpdateTranslationFonts
-	  
-	  App.T = New Translator(App.AppFolder.Child("OpenSong Languages").Child(pop_general_language.Text))
-	  If App.T <> Nil Then
-	    SmartML.SetValue Settings, "language/@file", pop_general_language.Text
-	  Else
-	    InputBox.Message "Error in translation."
-	  End If
-	  
-	  If App.T <> Nil Then
-	    MainWindow.TranslateMe
-	    App.TranslateMe
-	  End If
 	  
 	  //++EMP
 	  // Save Start Mode selection

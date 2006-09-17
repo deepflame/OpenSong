@@ -175,12 +175,10 @@ Inherits Application
 		      Dim result As Integer
 		      result = MsgBox("Error: Could not find a language file in " + AppFolder.Child("OpenSong Languages").AbsolutePath, 16)
 		      Quit
-		    Else
-		      SmartML.SetValue MyMainSettings.DocumentElement, "language/@file", AppFolder.Child("OpenSong Languages").Item(1).Name
 		    End If
-		  Else
-		    SmartML.SetValue MyMainSettings.DocumentElement, "language/@file", temp
 		  End If
+		  
+		  SmartML.SetValue MyMainSettings.DocumentElement, "language/@file", T.GetFileName
 		  
 		  TranslateMe True
 		  

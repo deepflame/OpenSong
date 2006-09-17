@@ -467,9 +467,17 @@ Module SmartML
 		    ErrorString = "File not found: " + f.AbsolutePath
 		    Return Nil
 		  End If
+		  
 		  input = f.OpenAsTextFile
+		  If input = Nil Then
+		    ErrorCode = 4
+		    ErrorString = "Error Opening File: " + f.AbsolutePath
+		    return nil
+		  End If
+		  
 		  s = input.ReadAll.FormatUnixEndOfLine
 		  input.Close
+		  
 		  Try
 		    If Len(s) > 5 Then
 		      's = ConvertEncoding(s, Encodings.ISOLatin1)

@@ -418,6 +418,16 @@ Class Translator
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetFileName() As String
+		  If File <> Nil Then
+		    Return File.Name
+		  Else
+		    Return ""
+		  End If
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h1
 		Protected Document As XmlDocument

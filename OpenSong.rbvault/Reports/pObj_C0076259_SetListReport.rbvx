@@ -33,15 +33,16 @@ pObj/B: 426C6F6B704F626AC00762590000000000000000000000000000000000000000
 		  Dim CurrentSetItem As XmlNode
 		  Dim ItemName As String
 		  Dim ItemType As String
+		  Dim slidecount As Integer
 		  
 		  App.DebugWriter.Write "SetListReport.AddSet: Enter"
 		  LeadSheetDoc = New XmlDocument
 		  node = LeadSheetDoc.AppendChild(LeadSheetDoc.CreateElement("song"))
-		  'TODO: I18N
-		  SmartML.SetValue node, "title", SetName '"ORDER OF SERVICE"
+		  
+		  SmartML.SetValue node, "title", SetName + " " + App.T.Translate("print/setlist/@caption")
 		  
 		  Dim d As New Date
-		  SmartML.SetValue node, "author", "Printed " + d.LongDate
+		  SmartML.SetValue node, "author", App.T.Translate("print/setlist/date/@caption") + " " + d.LongDate
 		  
 		  Dim body As String
 		  
@@ -50,14 +51,21 @@ pObj/B: 426C6F6B704F626AC00762590000000000000000000000000000000000000000
 		  While CurrentSetItem <> Nil
 		    ItemName = SmartML.GetValue(CurrentSetItem, "@name")
 		    ItemType = SmartML.GetValue(CurrentSetItem, "@type")
+		    ItemName = ItemName + " " + App.T.Translate("sets_mode/items/" + ItemType + "/@caption")
+		    If ItemName = "" Then ItemName = Encodings.UTF8.Chr(160)  // prevents "Verse" being printed for an unnamed item
 		    If Left(ItemName, 2) <> "--" And _
 		        SmartML.GetValueB(CurrentSetItem, "@print", True, True) Then
 		      body = body + Chr(10) + "[V" + ItemName + "]" + Chr(10)
 		      If InStr(ItemType, "scripture") > 0 Or InStr(ItemType, "custom") > 0 Then
 		        slide = SmartML.GetNode(CurrentSetItem, "slides/slide")
+		        slidecount = 1
 		        While slide <> Nil
+		          If slidecount > 1 Then // Test for not the first slide
+		            body = body + "-__" + Chr(10) // Add a separator
+		          End If
 		          body = body + " " + SmartML.GetValue(slide, "body") + Chr(10)
 		          slide = slide.NextSibling
+		          slidecount = slidecount + 1
 		        Wend
 		      End If
 		    End If

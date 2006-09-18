@@ -1,7 +1,12 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
-* Added translation support for set items. [Bug 1500189]
+* Added translation support for set item identifiers (custom, song, style, etc.). [Bug 1500189]
 
+* Completed translation support for all reports.
+
+* Changed set list report to indicate the type of item in the item title.
+
+* New feature: custom slides will show a separator line at slide breaks when printing a set list.
 
 * If a Zefania format bible is loaded and the "bname" attribute is added from bnames.xml, prompt the user before writing the changed file.  If the user chooses not to save, supress generating the index file. [Bug 1467699]
 

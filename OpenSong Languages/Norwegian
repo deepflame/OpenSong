@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Norwegian" author="Daniel Fahre" version="0.9.9">
+<language name="Norwegian" author="Daniel Fahre" version="1.0">
 
   <load_settings>
    <print>Henter utskrifts instilinger</print>
@@ -16,7 +16,7 @@
  </load_settings>
 
   <load_data>
-      <bible>Helter standard bibelen</bible>
+      <bible>Henter standard bibelen</bible>
       <songs_cache>Tar imot sanger</songs_cache>
       <folders>henter sang mapper</folders>
       <songs>Laster opp sanger</songs>
@@ -62,7 +62,7 @@
       <new>Lag en ny mappe til å ha sanger i.</new>
       <delete>Slett den valgte mappen. Mappen må være tom.</delete>
       <filter_all caption="Alt"/>
-      <filter_main caption="Main"/>
+      <filter_main caption="Standard mappe"/>
     </song_folders>
   </songs_mode>
 
@@ -139,7 +139,7 @@
     </current_set>
     <new_item caption="Nytt innhold">
       <add_song caption="Sang">Legg til en sang inn i denne listen.</add_song>
-      <add_scripture caption="Tekst">Legg til tekst eller et lysbilde til denne .listen.</add_scripture>
+      <add_scripture caption="Bibeltekst">Legg til en bibeltekst eller et lysbilde til denne listen.</add_scripture>
       <add_slides caption="Lysbilde">Legg til et egendefinert lysbilde til denne listen.</add_slides>
       <add_style caption="Stil">Skift stil hvorsomhelst på listen.</add_style>
       <add_video caption="Video">Legg til en video fil til listen.</add_video>
@@ -169,7 +169,7 @@
     <loop caption="Loop Lysbilder">Kryss av her for at OpenSong skal starte på første lysbilde når det siste er ferdig</loop>
     <print caption="Skriv ut inn Listen">Kryss av denne boksen for å slippe å få med denne gruppen av lysbilder når du skriver ut spillelisten.</print>
     <auto_advance caption="Skift automatisk lysbilde hvert">Skriv inn et nummer som OpenSong skal vise hvært lysbilde og så automatisk skifte til neste lysbilde.</auto_advance>
-    <seconds caption="Sekunder"/>
+    <seconds caption="Sekund"/>
     <style caption="Unik Stil">Kryss av her for å få en egendefinert stil på disse lysbildene. Når den er krysset av klikker du på den lille forhåndsvisningen for å redigere stilen.</style>
   </slide_editor>
 
@@ -335,11 +335,11 @@
         <scripture_slides caption="Standard Tekst stil"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*Overganger berøres av skjermopløsning. Om Du erfarer langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om Du legger merke til at overganger ikke viser seg, det er fordi Deres fargenivåer er også lav på fremvisningsmonitoen."/>
+        <transition_note caption="*Overganger berøres av skjermopløsning. Om Du opplever langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om du legger merke til at overganger ikke viser seg, det er fordi deres fargenivåer er lav også på fremvisningsmonitoen."/>
     </settings>
     <style caption="Stil">
       <use_transitions caption="Bruk overganger*"/>
-      <transition_note caption="*Overganger berøres av skjermopløsning. Om Du erfarer langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om Du legger merke til at overganger ikke viser seg, det er fordi Deres fargenivåer er også lav på fremvisningsmonitoen"/>
+      <transition_note caption="*Overganger berøres av skjermopløsning. Om Du opplever langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om Du legger merke til at overganger ikke viser seg, det er fordi Deres fargenivåer er også lav på fremvisningsmonitoen"/>
       <border_thickness caption="Kant tykkelse"/>
       <subtitles caption="Under tittler"/>
       <modes>
@@ -414,7 +414,7 @@
     <actions caption="Handlinger">
       <alert caption="[A] Meldinger">Ny melding </alert>
       <quick_song caption="[Q] Legg til sang"/>
-      <scripture caption="[S] Bibel tekst"/>
+      <scripture caption="[S] Bibeltekst"/>
       <full_screen caption="[M] Full Skjerm"/>
       <normal_screen caption="[M] Normal Skjerm"/>
       <return caption="[Esc] Lukk"/>
@@ -519,16 +519,16 @@ T: Tag</keys>
   </style_editor>
 
   <song_lookup title="Sang oppslag">
-    <header caption="For å legge til en sang, cklikk på sang tittelen under og klikk på 'Legg til' knappen eller begyn å skriv inn sang tittelen og trykk."/>
+    <header caption="Klikk på sangtittelen på listen under og klikk på 'Legg til' knappen for å legge til en sang. Du kan også  begynne å skrive inn sang tittelen og trykke på 'Legg til' knappen."/>
     <no_selection>Du har ikke valgt en sang.</no_selection>
     <folder caption="Velg mappe"/>
   </song_lookup>
 
   <scripture_lookup title="Slå opp bibelvers">
-    <lookup caption="Hurtig slåopp">
+    <lookup caption="Hurtig oppslag">
       <reference caption="Referanse"/>
-      <lookup caption="slå opp"/>
-      <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
+      <lookup caption="Slå opp"/>
+      <example caption="Eks: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
     <version caption="Versjon"/>
     <verses_per_slide caption="Vers per lysbilde.">
@@ -536,7 +536,7 @@ T: Tag</keys>
       <two caption="2"/>
       <three caption="3"/>
     </verses_per_slide>
-    <H3>This form is inoperational!</H3> <Provisional users can't create formsat caption="Format">
+    <format caption="Format">
       <paragraph caption="Avsnitt"/>
       <verse caption="Vers"/>
     </format>
@@ -556,7 +556,7 @@ T: Tag</keys>
 
   <module>
     <read_error>Kunne ikke lese fil, eller ugyldig filnavn.</read_error>
-    <H3>This form is inoperational!</H3> <Provisional users can't create formsat_error>ugyldig modul format.</format_error>
+    <format_error>ugyldig modul format.</format_error>
     <move_error>Error med å flytte modul fil. Venligst bekreft at adressen er '%1'.</move_error>
     <rename_error>Error med å gi nytt navn til modul fil. Venligst bekreft at du skrev inn '%1'.</rename_error>
     <success>Modul ble hentet suksesfult.</success>
@@ -698,7 +698,7 @@ Klikk på dette lysbildet for å redigere stilen..</body>
     <cancel caption="Avbryt"/>
     <yes caption="Ja"/>
     <no caption="Nei"/>
-    <browse caption="Bla igjennom..."/>
+    <browse caption="Bla igjennom"/>
     <add caption="Legg til"/>
     <done caption="Ferdig"/>
     <untitled caption="Uten navn"/>
@@ -753,7 +753,7 @@ Klikk på dette lysbildet for å redigere stilen..</body>
     <internal>Internal error. Kontakt technical support.</internal>
   </errors>
   <open_titles>
-    <audio>Velg lyd fil til å åpne.</audio>
+    <audio>Velg en lydfil som du vill åpne.</audio>
   </open_titles>  
 
 </language>

@@ -2051,9 +2051,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim f As FolderItem
 		  Dim SongPath As String
 		  Dim FolderPath As String
+		  Dim Where As Integer
 		  
 		  Dim xgroups, newGroup As XmlNode
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  
+		  Where = lst_set_items.ListIndex
 		  
 		  f = SongPickerWindow.Popup
 		  If f <> Nil Then
@@ -2064,14 +2067,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  While f <> Nil
 		    If lst_set_items.ListIndex >= 0 Then
-		      newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
-		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, f.Name + " (song)"
-		      lst_set_items.ListIndex = lst_set_items.ListIndex + 1
+		      Where = lst_set_items.ListIndex + 1
 		    Else
-		      newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
-		      lst_set_items.AddRow f.Name + " (song)"
-		      lst_set_items.ListIndex = lst_set_items.ListCount - 1
+		      Where = lst_set_items.ListCount
 		    End If
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
 		    SmartML.SetValue newGroup, "@name", f.Name
 		    SmartML.SetValue newGroup, "@type", "song"
 		    //++
@@ -2087,8 +2087,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    SongPath = ReplaceAll(SongPath, "\", "/") // Canonical path for a FolderDB item
 		    SmartML.SetValue newGroup, "@path", SongPath
 		    //--
+		    If lst_set_items.ListIndex >= 0 Then
+		      lst_set_items.InsertRow Where, f.Name + " "  + App.T.Translate("sets_mode/items/song/@caption")
+		    Else
+		      lst_set_items.AddRow f.Name + " " + App.T.Translate("sets_mode/items/song/@caption")
+		    End If
+		    
+		    lst_set_items.ListIndex = Where
 		    f = SongPickerWindow.Popup
 		  Wend
+		  lst_set_items.ListIndex = Where
 		End Sub
    )
   HIns/g: 
@@ -2147,10 +2155,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  ' No need to EnableMenuItems, since the following selection change will call it
 		  
 		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/custom/@caption")
 		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/custom/@caption")
 		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
 		  End If
 		End Sub
@@ -2212,10 +2220,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    ' No need to EnableMenuItems, since the following selection change will call it
 		    
 		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
 		      lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		    Else
-		      lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		      lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
 		      lst_set_items.ListIndex = lst_set_items.ListCount - 1
 		    End If
 		    
@@ -2275,15 +2283,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  Dim xgroups, newGroup As XmlNode
-		  
+		  Dim Where As Integer
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If lst_set_items.ListIndex >= 0 Then
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
+		    Where = lst_set_items.ListIndex + 1
 		  Else
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
+		    Where = lst_set_items.ListCount
 		  End If
+		  newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
 		  
-		  SmartML.SetValue newGroup, "@name", "-- Style Change --"
+		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/items/revert")
 		  SmartML.SetValue newGroup, "@type", "style"
 		  SmartML.SetValue newGroup, "@action", "revert"
 		  
@@ -2291,12 +2300,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  ' No need to EnableMenuItems, since the following selection change will call it
 		  
 		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
-		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
+		    lst_set_items.InsertRow Where, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
 		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
-		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
+		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
 		  End If
+		  
+		  lst_set_items.ListIndex = Where
 		End Sub
    )
   HIns/g: 
@@ -3509,8 +3518,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_InSetEditable Then
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "revert"
-		    SmartML.SetValue slide_group, "@name", "-- Revert Style --"
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " (" + SmartML.GetValue(slide_group, "@type", True) + ")"
+		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/revert")
+		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
 		    SmartML.RemoveChildren slide_group
 		    
 		    can_style_style.ClearStyleNode
@@ -3556,8 +3565,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_InSetEditable Then
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "new"
-		    SmartML.SetValue slide_group, "@name", "-- Change Style --"
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " (" + SmartML.GetValue(slide_group, "@type", True) + ")"
+		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/style")
+		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/style/@caption")
 		    SmartML.SafeImport SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), SmartML.GetNode(slide_group, "style", True)
 		    can_style_style.SetStyleNode SmartML.GetNode(slide_group, "style")
 		    Status_SetChanged = True

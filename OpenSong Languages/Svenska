@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Svenska" author="Edvin Erdtman" version="1 Beta">
+<language name="Svenska" author="Edvin Erdtman" version="1 Beta 2-12">
 
   <load_settings>
     <print>Laddar skrivarinställningar</print>
@@ -487,9 +487,9 @@ T: Stick</keys>
      <bridge caption="Brygga"/>
      <tag caption="Stick"/>
      <verse caption="Vers"/>
-     <author caption="Författare"/>
-     <hymn_number caption="Sångnummer"/>
-     <ccli_number caption="CCLI Sångnummer"/>
+     <author caption="Författare:"/>
+     <hymn_number caption="Sångnummer:"/>
+     <ccli_number caption="CCLI Sångnr:"/>
      <ccli_license caption="Kopierat med tillstånd: CCLI#"/>
      <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
      <separator caption="|NL|"/>
@@ -545,6 +545,7 @@ T: Stick</keys>
     <bad_reference>
       <empty>Felaktig referens: Referensen var tom.</empty>
       <book>Felaktig referens: Hittade inte bok.</book>
+      <ambiguous>Felaktig referens: Flera böcker funna: '%1' och %2</ambiguous>
       <version>Felaktig referens: Översättningen '%1' hittades inte.</version>
       <chapter>Felaktig referens: Hittade inte kapitel '%1'.</chapter>
       <verse>Felaktig referens: Hittade inte versen '%1'.</verse>
@@ -709,6 +710,11 @@ Klicka på den här bilden för att ändra utseendet.</body>
     <insert caption="Visa"/>
     <close caption="Stäng"/>
     <search caption="Sök"/>
+    <save caption="Spara" message="%1 har inte sparats."/>
+    <nosave caption="Spara inte"/>
+    <cut caption="Klipp ut"/>
+    <copy caption="Kopiera"/>
+    <paste caption="Klistra in"/>
   </shared>
 
   <questions>
@@ -718,6 +724,8 @@ Klicka på den här bilden för att ändra utseendet.</body>
     <delete caption="Vill du verkligen ta bort '%1'?"/>
     <clear caption="Vill du verkligen ta bort den?"/>
     <changed caption="Aktuell sång har ändrats. Vill du spara?"/>
+    <revert caption="Alla ändringar kommer att försvinna. Vill du fortsätta?"/>
+    <long_operation caption="Detta kan ta ett tag... Vill du fortsätta?"/>
   </questions>
 
   <about>
@@ -754,10 +762,38 @@ Klicka på den här bilden för att ändra utseendet.</body>
     <bad_file_name>Felaktigt filnamn: '%1'.</bad_file_name>
     <internal>Internt fel! Kontakta teknisk support.</internal>
     <no_such_song>Kan inte hitta sången.</no_such_song>
+    <number_please>Skriv in en siffra tack.</number_please>
+    <number_range>Skriv in en siffra mellan %1 och %2.</number_range>
+    <no_path_allowed>Filnamnet får inte innehålla en hel sökväg.</no_path_allowed>
+    <rename_error>Kunde inte byta namn på filen.</rename_error>
   </errors>
 
   <open_titles>
     <audio>Välj Ljudfil att öppna</audio>
   </open_titles>  
+  
+  <hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Gå till första sidan i denna sektion</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Gå till nästa sida i presentationen</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Gå till föregående sida i presentationen</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Gå till den första sidan i presentationen</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Gå till den sista sidan i presentationen</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Gå till nästa sektion i presentationen</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Gå till föregående sektion i presentationen</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Gå till nästa vers</ACTION_VERSE> 	
+ 	<ACTION_BRIDGE>Gå till brygga</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Gå till refräng</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Gå till för-refräng</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Gå till sticket</ACTION_TAG>
+ 	<ACTION_NORMAL>Visa aktuell sida</ACTION_NORMAL>
+ 	<ACTION_BLACK>Visa svart skärm</ACTION_BLACK>
+ 	<ACTION_WHITE>Visa vit skärm</ACTION_WHITE>
+ 	<ACTION_FREEZE>Frys visning på aktuell sida</ACTION_FREEZE>
+ 	<ACTION_LOGO>Visa logotype</ACTION_LOGO>
+ 	<ACTION_HIDE>Göm aktuell sida (Endast bakgrunden visas)</ACTION_HIDE>
+ 	<ACTION_EXIT>Avbryt presentation</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>Avbryt presentaion, kräv bekräftelse</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>Avbryt presentation omedelbart</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
 
 </language>

@@ -1444,6 +1444,9 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		    App.RestoreWindow(PresentHelperWindow)
 		    PresentHelperWindow.lst_all_slides.SetFocus
 		  Else
+		    '++JRC Bring PresentWindow to front in Singe Screen Mode
+		    App.SetForeground(PresentWindow)
+		    '--
 		    ResetPaint XCurrentSlide
 		  End If
 		  

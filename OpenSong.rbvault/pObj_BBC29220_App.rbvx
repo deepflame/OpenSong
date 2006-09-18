@@ -665,6 +665,26 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: SetForeground
+  parm/S: Wnd As Window
+  rslt/S: 
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub SetForeground(Wnd As Window)
+   srcl/S: '++JRC
+   srcl/S: #If TargetWin32 Then
+   srcl/S: 
+   srcl/S: Declare Sub SetForegroundWindow Lib "user32" (ByVal hwnd as Integer)
+   srcl/S: 
+   srcl/S: SetForegroundWindow(wnd.WinHWND)
+   srcl/S: #Endif
+   srcl/S: '--
+   srcl/S: End Sub
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: SmartVersion
   parm/S: 
   rslt/S: String

@@ -1,4 +1,6 @@
 -= 1.0 Beta 2 JRC =-
+* Bring PresentWindow to front in Singe Screen Mode
+    
 * Added Ability to search songs by Hymn Number
 
 * Added/modified ProgressWindow for the folowing events:
@@ -42,6 +44,10 @@
 * Moved translation init to beginning of App.Open so we can translate init error & status Msgs 
 
 * Check if Scriptures Folder Exists and exit if not found (I believe this was causing error #1555433)
+
+-= 1.0 Beta 2 Baselevel 13 =-
+
+* Changing the style of a song marks the song as changed but does not ask the user immediately if it should be saved. [Bug 1512827]
 
 -= 1.0 Beta 2 Baselevel 12 =-
 

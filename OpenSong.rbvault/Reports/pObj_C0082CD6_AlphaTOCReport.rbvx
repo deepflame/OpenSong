@@ -58,37 +58,38 @@ pObj/B: 426C6F6B704F626AC0082CD60000000000000000000000000000000000000000
   parm/S: Zoom As Double = 1.0, MyPages As Group2D = Nil
   rslt/S: Boolean
   flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Generate(Zoom As Double = 1.0, MyPages As Group2D = Nil) As Boolean
-		  Dim Status As Boolean
-		  
-		  App.DebugWriter.Write "AlphaTOCReport.Generate: Enter"
-		  
-		  If MyPages = Nil Then MyPages = Pages
-		  
-		  If Not IsCategorized Then
-		    Status = Prepare
-		    If Not Status Then
-		      App.DebugWriter.Write "AlphaTOCReport.Generate: Exit (Prepare failed)"
-		      Return Status
-		    End If
-		  End If
-		  
-		  Indent = 0
-		  CategoryAlign = "center"
-		  ReportName = App.T.Translate("print/alphabetical/@caption")
-		  
-		  Status = PrintTOCPages(CategorizedArray, MyPages, Zoom)
-		  
-		  If Not Status Then
-		    App.DebugWriter.Write "AlphaTOCReport.Generate: PrintTOCPages failed", 1
-		  End If
-		  
-		  App.DebugWriter.Write "AlphaTOCReport.Generate: Exit"
-		  
-		  Return Status
-		End Function
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function Generate(Zoom As Double = 1.0, MyPages As Group2D = Nil) As Boolean
+   srcl/S:   Dim Status As Boolean
+   srcl/S: 
+   srcl/S: App.DebugWriter.Write "AlphaTOCReport.Generate: Enter"
+   srcl/S: 
+   srcl/S: If MyPages = Nil Then MyPages = Pages
+   srcl/S: 
+   srcl/S: If Not IsCategorized Then
+   srcl/S: Status = Prepare
+   srcl/S: If Not Status Then
+   srcl/S: App.DebugWriter.Write "AlphaTOCReport.Generate: Exit (Prepare failed)"
+   srcl/S: Return Status
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: Indent = 0
+   srcl/S: CategoryAlign = "center"
+   srcl/S: ReportName = App.T.Translate("print/alphabetical/@caption")
+   srcl/S: 
+   srcl/S: Status = PrintTOCPages(CategorizedArray, MyPages, Zoom)
+   srcl/S: 
+   srcl/S: If Not Status Then
+   srcl/S: App.DebugWriter.Write "AlphaTOCReport.Generate: PrintTOCPages failed", 1
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: App.DebugWriter.Write "AlphaTOCReport.Generate: Exit"
+   srcl/S: 
+   srcl/S: Return Status
+   srcl/S: End Function
+  sorc/g: 
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984

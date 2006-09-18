@@ -90,3 +90,9 @@ sets_mode/items/song
 sets_mode/items/scripture
 sets_mode/items/style
 sets_mode/items/revert
+print/setlist
+print/setlist/date
+songml/sharpchords
+songml/flatchords
+songml/altsharpchords
+songml/altflatchords

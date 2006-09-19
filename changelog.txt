@@ -1,5 +1,7 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Corrected issue wrapping slide when the line doesn't have a space (particularly troublesome in Chinese). [Feature Request 1530629]
+
 * Added translation support for set item identifiers (custom, song, style, etc.). [Bug 1500189]
 
 * Completed translation support for all reports.

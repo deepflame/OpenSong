@@ -92,6 +92,7 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		  Dim MainHeight As Integer
 		  Dim Subtitles() As String
 		  Dim i As Integer
+		  Dim isWrapped As Boolean
 		  
 		  If Style <> Nil Then 'TODO: What if it's NIL????  Ain't gonna be pretty....
 		    bodyStyle = Style.BodyFont
@@ -116,10 +117,8 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Background" ' --------------------------------------------------
 		  
-		  'aspect_ratio = g.Width / g.Height
-		  aspect_ratio = gWidth / gHeight 'EMP 09/05
+		  aspect_ratio = gWidth / gHeight
 		  
-		  'If xstyle <> Nil Then background = SmartML.GetValueP(xstyle, "background", True)
 		  If Style <> Nil Then background = Style.Background 'EMP 9/05
 		  
 		  //++EMP 09/05
@@ -130,11 +129,8 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		  //--EMP
 		  
 		  If background <> Nil Then
-		    'strip = (g.Height/background.Height) * SmartML.GetValueN(xstyle, "background/@strip_footer")
-		    strip = (g.Height/background.Height) * Style.StripFooter 'EMP 9/05
+		    strip = (g.Height/background.Height) * Style.StripFooter
 		    //++EMP 09/05, 12/05
-		    
-		    
 		    // This section makes the picture stretch at the picture's aspect ratio, not the screen's.
 		    //
 		    stripW = strip*aspect_ratio
@@ -160,11 +156,6 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		              
 		            Case SlideStyle.POS_STRETCH
 		              g.DrawPicture background, -(strip*aspect_ratio)/2, 0, g.Width+(strip*aspect_ratio), g.Height+strip, 0, 0, background.Width, background.Height
-		              // Else taken out -- background color already painted
-		              'Else
-		              ''If SmartML.GetValueC(xstyle, "background/@color", c) Then g.ForeColor = c
-		              'g.ForeColor = Style.BGColor 'EMP 9/05
-		              'g.FillRect 0, 0, g.Width, g.Height
 		            End Select
 		            //--EMP
 		          End If
@@ -297,7 +288,6 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		          line = ReplaceAll(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), Chr(10), "")
 		          '--
 		          
-		          'While g.StringWidth(line) / (g.Width - (2*RealBorder)) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		          While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		            g.TextSize = Floor(g.TextSize * .95)
 		          Wend
@@ -321,22 +311,32 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		              x = 1
 		              y = 2
 		              ' add character by character until we are too long...
-		              'While y <= Len(line) And g.StringWidth(Mid(line, x, y-x)) < g.Width - (2*RealBorder)
 		              While y <= Len(line) And g.StringWidth(Mid(line, x, y-x)) < UsableWidth 'EMP 09/05
 		                y = y + 1
 		              Wend
 		              y = y - 1
 		              ' back off until we fit...
+		              isWrapped = False
 		              For z = y DownTo x
 		                d = Mid(line, z, 1)
-		                If d = " " Then ' wrap it here
+		                If d = " " and z <> 2 Then ' wrap it here
 		                  lines(i) = Mid(line, x, z-x)
 		                  lines.Insert i+1, Mid(line, z+1)
-		                  'i = i + 1
+		                  isWrapped = True
 		                  Exit
 		                End If
 		              Next z
-		              'ElseIf g.StringWidth(lines(i)) > g.Width - (2*RealBorder) Then ' this line is less than twice as long, but still too long: smart wrap it
+		              
+		              //++
+		              // Fix added for wrapping Chinese characters [1530629]
+		              // May also affect other multi-byte character sets
+		              // Corrects issue where the line is too long but there isn't
+		              // a space character anywhere to be found.  Just wrap the midpoint.
+		              //--
+		              If Not isWrapped Then
+		                lines(i) = Mid(line, x, y-x)
+		                lines.Insert i + 1, Mid(line, y)
+		              End If
 		            ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
 		              ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
 		              line = lines(i)
@@ -377,7 +377,6 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		          Next i
 		          line = RTrim(line)
 		          
-		          'DrawFontString g, line, RealBorder, HeaderSize, bodyStyle, g.Width - RealBorder*2, Style.BodyAlign, MainHeight, Style.BodyVAlign
 		          DrawFontString g, line, RealBorder, HeaderSize, bodyStyle, UsableWidth, Style.BodyAlign, MainHeight, Style.BodyVAlign 'EMP 09/05
 		          
 		          Profiler.EndProfilerEntry

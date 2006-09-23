@@ -2,6 +2,8 @@
 <language name="English" author="Sean Lickfold" version="1.0 Beta 2 BL 13">
 
   <load_settings>
+    <checking_folders>Creating/Checking documents folders</checking_folders>
+    <main>Loading main settings</main>
     <print>Loading print settings</print>
     <presentation>Loading presentation settings</presentation>
     <tempos>Loading tempo list</tempos>
@@ -11,8 +13,6 @@
     <latest_version>Checking for the latest version
       <newer_available>A newer version (%1) is available. Visit www.opensong.org to download it.</newer_available>
     </latest_version>
-      <init_audio>Initializing SXMS Audio</init_audio>
-    <load_plugins>Checking File Formats Supported by Winamp Plugins</load_plugins>
  </load_settings>
 
   <load_data>
@@ -208,6 +208,7 @@
       <ccli caption="link(general_song_editor/ccli/@caption)"/>
       <presentation caption="link(general_song_editor/presentation/@caption)"/>
       <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+      <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
 
       <themes caption="link(advanced_song_editor/themes/@caption)"/>
       <capo caption="link(advanced_song_editor/capo/@caption)"/>
@@ -785,8 +786,23 @@ Click on this slide to edit its style.</body>
     <number_range>Please enter a number between %1 and %2.</number_range>
     <no_path_allowed>File name may not include a path.</no_path_allowed>
     <rename_error>Unable to rename file.</rename_error>
-    <general1>In '%1': Unknown error</general1>
-    <general2>In '%1': '%2'</general2>
+    <folder_error>Internal folder error. Contact technical support.</folder_error>
+    <create_backgrounds_folder>Could not create Backgrounds folder: %1</create_backgrounds_folder>
+    <create_sets_folder>Could not create/edit Sets folder %1</create_sets_folder>
+    <create_settings_folder>Could not create Settings folder: %1</create_settings_folder>
+    <create_songs_folder>Could not create songs folder: %1</create_songs_folder>
+    <no_backgrounds_folder>Can't find default Backgrounds folder: %1</no_backgrounds_folder>
+    <no_defaults_folder>Can't find Defaults folder: %1</no_defaults_folder>
+    <no_scripture_folder>Can't find Scriptures folder: %1</no_scripture_folder>
+    <no_sets_folder>Can't find default Sets folder: %1</no_sets_folder>
+    <no_settings_folder>Can't find default Settings folder: %1</no_settings_folder>
+    <no_songs_folder>Can't find default Songs folder: %1</no_songs_folder>
+    <no_docs_folder>Could not create/find Documents folder: %1</no_docs_folder>
+    <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
+Temporarily changing to: %1
+Please modify your preferences.</docs_folder>
+    <general1>In %1: Unknown error</general1>
+    <general2>In %1: %2</general2>
   </errors>
 
 
@@ -859,5 +875,15 @@ Click on this slide to edit its style.</body>
  	<ACTION_EXIT_PROMPT>Exit presenter mode, require confirmation	</ACTION_EXIT_PROMPT>
  	<ACTION_EXIT_NOPROMPT>Exit presenter mode immediately</ACTION_EXIT_NOPROMPT>
  </hotkeys>
+
+  <progress_status>
+    <folder>Caching Folder %1</folder>
+    <lead_sheets>Generating Lead Sheets</lead_sheets>
+    <process_themes>Processing Themes</process_themes>
+    <process_songs>Processing Songs</process_songs>
+    <export>Exporting Song(s)</export>
+    <pass1>Sorting, 1st Pass</pass1>
+    <pass2>Sorting, 2nd Pass</pass2>
+  </progress_status>
 
 </language>

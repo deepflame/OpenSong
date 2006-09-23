@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -58,8 +58,8 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		  Try
 		    attribute = xnode.GetAttributeNode(attribName)
 		  Catch err
-		    App.DebugWriter.Write App.T.Translate("xml_errors/noattribute", attribName, xnode.ToString), 1
-		    attribute = Nil // Continue as if it was not found
+		    MsgBox("SmartML.GetAttribute: Exception looking for attribute '" + attribName + "' in '" + xnode.ToString  + "'")
+		    Return ""
 		  End Try
 		  
 		  //--
@@ -382,24 +382,24 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: RemoveChild
-  parm/S: xnode As XmlNode, child As XmlNode
-  rslt/S: 
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Sub RemoveChild(xnode As XmlNode, child As XmlNode)
-		  xnode.RemoveChild child
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: RemoveChild
   parm/S: xnode As XmlNode, index As Integer
   rslt/S: 
   flag/N: 1
   sorc/d: (Enco/N: 134217984
 		Sub RemoveChild(xnode As XmlNode, index As Integer)
 		  xnode.RemoveChild xnode.Child(index)
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveChild
+  parm/S: xnode As XmlNode, child As XmlNode
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveChild(xnode As XmlNode, child As XmlNode)
+		  xnode.RemoveChild child
 		End Sub
   )
  Meth/g: 
@@ -660,6 +660,8 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		  Dim d As New XmlDocument
 		  d.PreserveWhitespace = False
 		  
+		  'TODO Translate these error strings
+		  
 		  If f = Nil Then
 		    ErrorCode = 1
 		    ErrorString = "Path not found."
@@ -670,6 +672,13 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		    Return Nil
 		  End If
 		  input = f.OpenAsTextFile
+		  '++JRC Prevent NilObject Exception if file could not be opened
+		  If input = Nil Then 
+		    ErrorCode = 4
+		    ErrorString = "Error Opening File: " + f.AbsolutePath
+		    return nil
+		  End If
+		  '--
 		  s = input.ReadAll.FormatUnixEndOfLine
 		  input.Close
 		  Try

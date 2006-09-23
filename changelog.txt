@@ -1,5 +1,7 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Fix NilObjectException when creating a new song [Bug 1563081]
+
 * Bring PresentWindow to front in Single Screen Mode
     
 * Added Ability to search songs by Hymn Number

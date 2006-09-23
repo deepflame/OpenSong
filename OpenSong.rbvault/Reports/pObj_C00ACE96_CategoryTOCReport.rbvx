@@ -166,6 +166,10 @@ pObj/B: 426C6F6B704F626AC00ACE960000000000000000000000000000000000000000
 		  ClearArray(ThemesList)
 		  ThemesProcessed = False
 		  SongsProcessed = False
+		  '++JRC Add status message
+		  ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/process_songs") + "..."
+		  '--
+		  
 		  ProgressWindow.SetMaximum(songCount) 'EMP 09/05
 		  ProgressWindow.SetProgress(0)
 		  ProgressWindow.CanCancel True
@@ -251,9 +255,14 @@ pObj/B: 426C6F6B704F626AC00ACE960000000000000000000000000000000000000000
 		  ProgressWindow.SetProgress(0) 'EMP 09/05
 		  ProgressWindow.Show
 		  
+		  '++JRC Heapsort now has it's own ProgressWindow 
+		  'lets just show the status of the Theme Processing in this function
 		  // Sort the themes
 		  
 		  Heapsort ThemesList
+		  '++JRC
+		  ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/process_themes") + "..."
+		  '--
 		  If Not ProgressWindow.SetProgress(UBound(ThemesList) / 2) Then // User has requested to cancel
 		    ClearArray Categorized
 		    ThemesProcessed = False

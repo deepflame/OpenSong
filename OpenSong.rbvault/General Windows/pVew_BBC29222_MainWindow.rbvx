@@ -616,13 +616,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  
-		  'Changed Added Prompt
-		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		    If InputBox.Ask(App.T.Translate("questions/changed/@caption")) Then
-		      ActionSongSave false, true
-		    End if
-		  End if
-		  
+		  '++JRC Oops lets delete the extra save prompt
+		  'if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
+		  'If InputBox.Ask(App.T.Translate("questions/changed/@caption")) Then
+		  'ActionSongSave false, true
+		  'End if
+		  'End if
+		  '--
 		  ActionSongNew
 		End Sub
    )
@@ -824,6 +824,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      goutput.WriteLine "<div id=""title"">" + App.T.Translate("songs_mode/songs/@caption") + "</div><ul id=""song_list"">"
 		    End If
 		    App.MouseCursor = WatchCursor
+		    ProgressWindow.Show
 		    For i = 0 To lst_songs_songs.ListCount - 1
 		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i)) + ".html").CreateTextFile
 		      song = SmartML.XDocFromFile(Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.List(i)))
@@ -833,6 +834,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		        output.Close
 		      End If
 		      ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
+		      '++JRC
+		      ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/export") + "..."
+		      '--
+		      ProgressWindow.SetStatus lst_songs_songs.List(i)
 		    Next i
 		    If goutput <> Nil Then
 		      goutput.WriteLine "</ul><p><a class=""opensong"" href=""http://www.opensong.org/"">" + App.T.Translate("about/created_with_opensong") + "</a></p>"
@@ -843,7 +848,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    g = App.AppFolder.Child("OpenSong Settings").Child("style.css")
 		    If g <> Nil Then g.CopyFileTo f
 		    
-		    InputBox.Message App.T.Translate("shared/done/@caption")
 		  End If
 		  ProgressWindow.Close
 		End Sub
@@ -1345,6 +1349,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Status_InSetOpen = True
 		    Status_InSetEditable = False
 		    UpdateMenuItems ' Clear out previous values
+		    
+		    '++JRC Just disable Song Style seletion for v1.0
+		    'This fixes bug #1559301
+		    chk_slide_style.Value = False
+		    can_slide_style.ClearStyleNode
+		    '--
 		    
 		    if sDoc <> Nil then
 		      edt_slide_slides.Text = SmartML.GetValue(sDoc.DocumentElement, "lyrics", True).FormatLocalEndOfLine
@@ -2042,12 +2052,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim f As FolderItem
 		  Dim SongPath As String
 		  Dim FolderPath As String
-		  Dim Where As Integer
 		  
 		  Dim xgroups, newGroup As XmlNode
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  
-		  Where = lst_set_items.ListIndex
 		  
 		  f = SongPickerWindow.Popup
 		  If f <> Nil Then
@@ -2058,11 +2065,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  While f <> Nil
 		    If lst_set_items.ListIndex >= 0 Then
-		      Where = lst_set_items.ListIndex + 1
+		      newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
+		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, f.Name + " (song)"
+		      lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		    Else
-		      Where = lst_set_items.ListCount
+		      newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
+		      lst_set_items.AddRow f.Name + " (song)"
+		      lst_set_items.ListIndex = lst_set_items.ListCount - 1
 		    End If
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
 		    SmartML.SetValue newGroup, "@name", f.Name
 		    SmartML.SetValue newGroup, "@type", "song"
 		    //++
@@ -2078,16 +2088,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    SongPath = ReplaceAll(SongPath, "\", "/") // Canonical path for a FolderDB item
 		    SmartML.SetValue newGroup, "@path", SongPath
 		    //--
-		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow Where, f.Name + " "  + App.T.Translate("sets_mode/items/song/@caption")
-		    Else
-		      lst_set_items.AddRow f.Name + " " + App.T.Translate("sets_mode/items/song/@caption")
-		    End If
-		    
-		    lst_set_items.ListIndex = Where
 		    f = SongPickerWindow.Popup
 		  Wend
-		  lst_set_items.ListIndex = Where
 		End Sub
    )
   HIns/g: 
@@ -2146,10 +2148,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  ' No need to EnableMenuItems, since the following selection change will call it
 		  
 		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/custom/@caption")
+		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
 		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/custom/@caption")
+		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
 		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
 		  End If
 		End Sub
@@ -2211,10 +2213,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    ' No need to EnableMenuItems, since the following selection change will call it
 		    
 		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
+		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
 		      lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		    Else
-		      lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
+		      lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
 		      lst_set_items.ListIndex = lst_set_items.ListCount - 1
 		    End If
 		    
@@ -2274,16 +2276,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  Dim xgroups, newGroup As XmlNode
-		  Dim Where As Integer
+		  
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If lst_set_items.ListIndex >= 0 Then
-		    Where = lst_set_items.ListIndex + 1
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
 		  Else
-		    Where = lst_set_items.ListCount
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
 		  End If
-		  newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
 		  
-		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/items/revert")
+		  SmartML.SetValue newGroup, "@name", "-- Style Change --"
 		  SmartML.SetValue newGroup, "@type", "style"
 		  SmartML.SetValue newGroup, "@action", "revert"
 		  
@@ -2291,12 +2292,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  ' No need to EnableMenuItems, since the following selection change will call it
 		  
 		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow Where, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
+		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
+		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
 		  End If
-		  
-		  lst_set_items.ListIndex = Where
 		End Sub
    )
   HIns/g: 
@@ -3047,8 +3048,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  Status_SongChanged = True
-		  EnableMenuItems
+		  If InputBox.Ask(App.T.Translate("questions/save/@caption", lst_songs_songs.Text)) Then
+		    ActionSongSave
+		  Else
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
    )
   HIns/g: 
@@ -3505,8 +3510,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_InSetEditable Then
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "revert"
-		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/revert")
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
+		    SmartML.SetValue slide_group, "@name", "-- Revert Style --"
+		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " (" + SmartML.GetValue(slide_group, "@type", True) + ")"
 		    SmartML.RemoveChildren slide_group
 		    
 		    can_style_style.ClearStyleNode
@@ -3552,8 +3557,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_InSetEditable Then
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "new"
-		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/style")
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/style/@caption")
+		    SmartML.SetValue slide_group, "@name", "-- Change Style --"
+		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " (" + SmartML.GetValue(slide_group, "@type", True) + ")"
 		    SmartML.SafeImport SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), SmartML.GetNode(slide_group, "style", True)
 		    can_style_style.SetStyleNode SmartML.GetNode(slide_group, "style")
 		    Status_SetChanged = True
@@ -10025,6 +10030,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_InSetChanged Then ActionInSetAskSave
 		  If Status_SetChanged Then ActionSetAskSave
 		  
+		  '++JRC Save Globals
+		  If App.MyGlobals <> Nil Then
+		    If Not SmartML.XDocToFile(App.MyGlobals, App.AppFolder.Child("OpenSong Settings").Child("Globals")) Then SmartML.DisplayError
+		  End If
+		  '--
 		  If App.MyPrintSettings <> Nil Then
 		    If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child("Settings").Child("PrintSettings")) Then SmartML.DisplayError
 		  End If
@@ -10940,8 +10950,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  App.MouseCursor = WatchCursor
 		  
 		  rpt = New LeadSheetReport
-		  If Not rpt.Setup Then Return // User cancelled
-		  
+		  If Not rpt.Setup Then 
+		    '++JRC Reset Mouse Cursor
+		    App.MouseCursor = Nil
+		    Return // User cancelled
+		  End If
+		  '--
 		  xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).FirstChild
 		  While xgroup <> Nil
 		    If SmartML.GetValue(xgroup, "@type") = "song" Then
@@ -11291,7 +11305,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  'PrintWindow.PrintLeadSheets
 		  
 		  rpt = New LeadSheetReport
-		  If Not rpt.Setup Then Return // User cancelled
+		  If Not rpt.Setup Then
+		    '++JRC Reset Mouse Cursor
+		    App.MouseCursor = Nil
+		    Return // User cancelled
+		  End If
+		  '--
+		  
 		  rpt.AddSong lst_songs_songs.Text
 		  If rpt.Generate Then
 		    PrintWindow.SetReport(rpt)
@@ -11328,7 +11348,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_SongChanged Then Return 'Don't print if user cancelled the save
 		  App.MouseCursor = WatchCursor
 		  rpt = New LeadSheetReport
-		  If Not rpt.Setup Then Return // User cancelled
+		  If Not rpt.Setup Then'++JRC Reset Mouse Cursor
+		    App.MouseCursor = Nil
+		    Return // User cancelled
+		  End If
+		  '--
+		  
 		  For i = 0 To lst_songs_songs.ListCount - 1
 		    rpt.AddSong lst_songs_songs.list(i)
 		  Next i
@@ -11587,6 +11612,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      found = edt_song_user2
 		    ElseIf find.FindUser3 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 16 Or (FindFocus = 16 And (edt_song_user3.SelStart+edt_song_user3.SelLength = 0 Or InStr(edt_song_user3.SelStart+edt_song_user3.SelLength+1, Lowercase(edt_song_user3.Text), t) > 0))) Then
 		      found = edt_song_user3
+		      '++JRC
+		    ElseIf find.FindHymnNumber And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 17 Or (FindFocus = 17 And (edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength = 0 Or InStr(edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength+1, Lowercase(edt_song_hymn_number.Text), t) > 0))) Then
+		      found = edt_song_hymn_number
+		      '--
 		    End If
 		    
 		    If found <> Nil Then
@@ -11601,7 +11630,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		        End If
 		        edtFound.SelLength = find.FindString.Len
 		      End If
-		      If found = edt_song_title Or found = edt_song_author Or found = edt_song_copyright Or found = edt_song_ccli Or found = edt_song_presentation Or found = edf_song_lyrics Then
+		      '++JRC
+		      If found = edt_song_title Or found = edt_song_author Or found = edt_song_copyright Or found = edt_song_ccli _
+		          Or found = edt_song_presentation Or found = edf_song_lyrics Or  found = edt_song_hymn_number Then
+		        '--
 		        If pge_contents.Value <> 0 Then pge_contents.Value = 0
 		      Else
 		        If pge_contents.Value <> 1 Then pge_contents.Value = 1
@@ -11927,100 +11959,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub Open()
-		  
-		  Profiler.BeginProfilerEntry "MainWindow::Open"
-		  Dim output As TextOutputStream
-		  Dim MainFolder As FolderItem
-		  Dim s As String
-		  
-		  App.MyBible = New Bible
-		  
-		  Splash.SetStatus App.T.Translate("load_data/bible") + "..."
-		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version")
-		  If Len(s) > 0 And App.AppFolder.Child("OpenSong Scripture").Child(s).Exists Then
-		    If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
-		    End If
-		  End If
-		  
-		  Splash.SetStatus App.T.Translate("load_data/songs_cache") + "..."
-		  Songs = New FolderDB(App.DocsFolder.Child("Songs"))
-		  Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
-		      "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
-		  
-		  Splash.SetStatus App.T.Translate("load_data/folders") + "..."
-		  If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
-		  End If
-		  
-		  Splash.SetStatus App.T.Translate("load_data/songs") + "..."
-		  pop_songs_song_folders.ListIndex = 0
-		  
-		  LoadSets App.DocsFolder.Child("Sets")
-		  SongChangesMade = False
-		  SetMode 0
-		  
-		  Dim controlScreen As Integer
-		  controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
-		  If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
-		  
-		  LastSongPane = 0
-		  LastSetPane = 2
-		  
-		  Find = New FindClass
-		  
-		  HSizer = New HalfSizer(Me)
-		  
-		  HSizer.AddWidth lbl_song_title
-		  HSizer.AddWidth edt_song_title
-		  HSizer.AddWidth lbl_song_author
-		  HSizer.AddWidth edt_song_author
-		  HSizer.AddLeftWidth lbl_song_copyright
-		  HSizer.AddLeftWidth edt_song_copyright
-		  HSizer.AddLeftWidth lbl_song_ccli, .5, .25
-		  HSizer.AddLeftWidth edt_song_ccli, .5, .25
-		  HSizer.AddLeftWidth lbl_song_hymn_number, .75, .25
-		  HSizer.AddLeftWidth edt_song_hymn_number, .75, .25
-		  HSizer.AddLeftWidth lbl_song_presentation, .75, .25
-		  HSizer.AddLeftWidth edt_song_presentation, .75, .25
-		  
-		  HSizer.AddLeftTopWidthHeight can_song_style, .6, 0, .4, .4
-		  HSizer.AddLeftTop chk_song_style, .6, .4
-		  
-		  HSizer.AddTop lbl_song_capo, .4
-		  HSizer.AddTop pop_song_capo, .4
-		  HSizer.AddTop chk_song_capo_print, .4
-		  HSizer.AddTop lbl_song_time_sig, .4
-		  HSizer.AddTop pop_song_time_sig, .4
-		  HSizer.AddTop lbl_song_tempo, .4
-		  HSizer.AddTop pop_song_tempo, .4
-		  HSizer.AddTop lbl_song_key, .4
-		  HSizer.AddTop edt_song_key, .4
-		  HSizer.AddTop lbl_song_aka, .4
-		  HSizer.AddTop edt_song_aka, .4
-		  HSizer.AddTop lbl_song_key_line, .4
-		  HSizer.AddTop edt_song_key_line, .4
-		  HSizer.AddTopHeight lbl_song_user1_1, .4, 0
-		  HSizer.AddTopHeight edt_song_user1, .4, .2
-		  HSizer.AddTopHeight lbl_song_user2, .6, 0
-		  HSizer.AddTopHeight edt_song_user2, .6, .2
-		  HSizer.AddTopHeight lbl_song_user3, .8, 0
-		  HSizer.AddTopHeight edt_song_user3, .8, .2
-		  
-		  HSizer.AddLeftWidth lbl_slide_title, 0, .4
-		  HSizer.AddLeftWidth edt_slide_title, 0, .4
-		  HSizer.AddLeftWidth lbl_slide_subtitle, .4, .3
-		  HSizer.AddLeftWidth edt_slide_subtitle, .4, .3
-		  HSizer.AddLeftWidth lbl_slide_name, .7, .3
-		  HSizer.AddLeftWidth edt_slide_name, .7, .3
-		  
-		  HSizer.AddLeftTop can_style_style, .5, .5
-		  
-		  TranslateMe
-		  
-		  App.MaximizeInControlScreen Me
-		  
-		  Profiler.EndProfilerEntry
-		  Splash.SetStatus App.T.Translate("welcome")
-		  Splash.SlowClose
+		  '++JRC This Method is unused (moved to Notes)
 		End Sub
    )
   Meth/g: 
@@ -12632,6 +12571,122 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		End Function
    )
   MnuH/g: 
+  Note/G: 
+   Enco/N: 134217984
+   name/S: Open Method
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: Open Method
+    ntln/S: 
+    ntln/S:   'Try
+    ntln/S:   'PPT = New PowerPointApplication
+    ntln/S:   'PPT.Visible = 1
+    ntln/S:   'PPT.Presentations.Open "C:\Documents and Settings\slickfold\My Documents\Youth Group\10Commandments_forkids.ppt", True, True, True
+    ntln/S:   'PPT.ActivePresentation.SlideShowSettings.Run
+    ntln/S:   'Catch e as RuntimeException
+    ntln/S:   'MsgBox e.Message
+    ntln/S:   'PPT = Nil
+    ntln/S:   'End Try
+    ntln/S:   
+    ntln/S:   'Why is this here? Is it used?
+    ntln/S:   
+    ntln/S:   Profiler.BeginProfilerEntry "MainWindow::Open"
+    ntln/S:   Dim output As TextOutputStream
+    ntln/S:   Dim MainFolder As FolderItem
+    ntln/S:   Dim s As String
+    ntln/S:   
+    ntln/S:   App.MyBible = New Bible
+    ntln/S:   
+    ntln/S:   Splash.SetStatus App.T.Translate("load_data/bible") + "..."
+    ntln/S:   s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version")
+    ntln/S:   If Len(s) > 0 And App.AppFolder.Child("OpenSong Scripture").Child(s).Exists Then
+    ntln/S:     If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
+    ntln/S:     End If
+    ntln/S:   End If
+    ntln/S:   
+    ntln/S:   Splash.SetStatus App.T.Translate("load_data/songs_cache") + "..."
+    ntln/S:   Songs = New FolderDB(App.DocsFolder.Child("Songs"))
+    ntln/S:   Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
+    ntln/S:       "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
+    ntln/S:   
+    ntln/S:   Splash.SetStatus App.T.Translate("load_data/folders") + "..."
+    ntln/S:   If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
+    ntln/S:   End If
+    ntln/S:   
+    ntln/S:   Splash.SetStatus App.T.Translate("load_data/songs") + "..."
+    ntln/S:   pop_songs_song_folders.ListIndex = 0
+    ntln/S:   
+    ntln/S:   LoadSets App.DocsFolder.Child("Sets")
+    ntln/S:   SongChangesMade = False
+    ntln/S:   SetMode 0
+    ntln/S:   
+    ntln/S:   Dim controlScreen As Integer
+    ntln/S:   controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+    ntln/S:   If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
+    ntln/S:   
+    ntln/S:   LastSongPane = 0
+    ntln/S:   LastSetPane = 2
+    ntln/S:   
+    ntln/S:   Find = New FindClass
+    ntln/S:   
+    ntln/S:   HSizer = New HalfSizer(Me)
+    ntln/S:   
+    ntln/S:   HSizer.AddWidth lbl_song_title
+    ntln/S:   HSizer.AddWidth edt_song_title
+    ntln/S:   HSizer.AddWidth lbl_song_author
+    ntln/S:   HSizer.AddWidth edt_song_author
+    ntln/S:   HSizer.AddLeftWidth lbl_song_copyright
+    ntln/S:   HSizer.AddLeftWidth edt_song_copyright
+    ntln/S:   HSizer.AddLeftWidth lbl_song_ccli, .5, .25
+    ntln/S:   HSizer.AddLeftWidth edt_song_ccli, .5, .25
+    ntln/S:   HSizer.AddLeftWidth lbl_song_hymn_number, .75, .25
+    ntln/S:   HSizer.AddLeftWidth edt_song_hymn_number, .75, .25
+    ntln/S:   HSizer.AddLeftWidth lbl_song_presentation, .75, .25
+    ntln/S:   HSizer.AddLeftWidth edt_song_presentation, .75, .25
+    ntln/S:   
+    ntln/S:   HSizer.AddLeftTopWidthHeight can_song_style, .6, 0, .4, .4
+    ntln/S:   HSizer.AddLeftTop chk_song_style, .6, .4
+    ntln/S:   
+    ntln/S:   HSizer.AddTop lbl_song_capo, .4
+    ntln/S:   HSizer.AddTop pop_song_capo, .4
+    ntln/S:   HSizer.AddTop chk_song_capo_print, .4
+    ntln/S:   HSizer.AddTop lbl_song_time_sig, .4
+    ntln/S:   HSizer.AddTop pop_song_time_sig, .4
+    ntln/S:   HSizer.AddTop lbl_song_tempo, .4
+    ntln/S:   HSizer.AddTop pop_song_tempo, .4
+    ntln/S:   HSizer.AddTop lbl_song_key, .4
+    ntln/S:   HSizer.AddTop edt_song_key, .4
+    ntln/S:   HSizer.AddTop lbl_song_aka, .4
+    ntln/S:   HSizer.AddTop edt_song_aka, .4
+    ntln/S:   HSizer.AddTop lbl_song_key_line, .4
+    ntln/S:   HSizer.AddTop edt_song_key_line, .4
+    ntln/S:   HSizer.AddTopHeight lbl_song_user1_1, .4, 0
+    ntln/S:   HSizer.AddTopHeight edt_song_user1, .4, .2
+    ntln/S:   HSizer.AddTopHeight lbl_song_user2, .6, 0
+    ntln/S:   HSizer.AddTopHeight edt_song_user2, .6, .2
+    ntln/S:   HSizer.AddTopHeight lbl_song_user3, .8, 0
+    ntln/S:   HSizer.AddTopHeight edt_song_user3, .8, .2
+    ntln/S:   
+    ntln/S:   HSizer.AddLeftWidth lbl_slide_title, 0, .4
+    ntln/S:   HSizer.AddLeftWidth edt_slide_title, 0, .4
+    ntln/S:   HSizer.AddLeftWidth lbl_slide_subtitle, .4, .3
+    ntln/S:   HSizer.AddLeftWidth edt_slide_subtitle, .4, .3
+    ntln/S:   HSizer.AddLeftWidth lbl_slide_name, .7, .3
+    ntln/S:   HSizer.AddLeftWidth edt_slide_name, .7, .3
+    ntln/S:   
+    ntln/S:   HSizer.AddLeftTop can_style_style, .5, .5
+    ntln/S:   
+    ntln/S:   TranslateMe
+    ntln/S:   
+    ntln/S:   App.MaximizeInControlScreen Me
+    ntln/S:   
+    ntln/S:   Profiler.EndProfilerEntry
+    ntln/S:   Splash.SetStatus App.T.Translate("welcome")
+    ntln/S:   Splash.SlowClose
+    ntln/S: 
+   sorc/g: 
+  Note/g: 
   Note/G: 
    Enco/N: 1280
    name/S: Status Hierarchy

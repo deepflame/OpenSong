@@ -76,6 +76,16 @@ pObj/B: 426C6F6B704F626ABD63392A0000000000000000000000000000000000000000
  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
+  decl/S: FindHymnNumber As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindHymnNumber As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
   decl/S: FindKey As Boolean
   sorc/G: 
    Enco/N: 134217984

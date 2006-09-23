@@ -20,7 +20,17 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  
+		End Sub
+   )
+  HIns/g: 
  CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  Ctrl/G: 
   ccls/S: ProgressBar
   name/S: ProgressBar
@@ -68,7 +78,7 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: MultiLine, PVal/S: False)
-  PDef/D: (name/S: Name, PVal/S: StatusLine, Enco/N: 134217984)
+  PDef/D: (name/S: Name, PVal/S: txt_StatusLine, Enco/N: 134217984)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: Text, PVal/S: )
   PDef/D: (name/S: TextAlign, PVal/S: 0)
@@ -79,6 +89,40 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 280)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 2
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 12)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_status, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 3)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 276)
  Ctrl/g: 
  FDef/G: 
   Name/S: ProgressWindow
@@ -100,6 +144,15 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
 		End Function
    )
   HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  App.T.TranslateWindow Self, "progress_window", App.TranslationFonts, False, True
+		End Sub
+   )
+  HIns/g: 
   Meth/G: 
    Enco/N: 134217984
    name/S: AlignStatusCenter
@@ -108,7 +161,7 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub AlignStatusCenter()
-		  StatusLine.TextAlign = 1
+		  txt_StatusLine.TextAlign = 1
 		End Sub
    )
   Meth/g: 
@@ -120,7 +173,7 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub AlignStatusLeft()
-		  StatusLine.TextAlign = 0
+		  txt_StatusLine.TextAlign = 0
 		End Sub
    )
   Meth/g: 
@@ -151,7 +204,7 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
 		  Super.Window()
 		  bar.Maximum = 100
 		  Bar.Value = 0
-		  StatusLine.Text = ""
+		  txt_StatusLine.Text = ""
 		  AllowEscape = False
 		  CancelRequested = False
 		End Sub
@@ -238,7 +291,7 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub SetStatus(StatusText As String)
-		  StatusLine.Text = StatusText
+		  txt_StatusLine.Text = StatusText
 		  If Visible Then Refresh False
 		End Sub
    )

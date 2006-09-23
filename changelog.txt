@@ -1,4 +1,8 @@
 -= 1.0 Beta 2 JRC =-
+* Fixed Several Presentation Window problems
+
+* Added Option to overwrite debug log files
+
 * Bring PresentWindow to front in Singe Screen Mode
     
 * Added Ability to search songs by Hymn Number

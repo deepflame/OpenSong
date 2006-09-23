@@ -1041,6 +1041,17 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
   bNtr/N: 0
   HIns/G: 
    Enco/N: 1536
+   name/S: Activate
+   sorc/d: (Enco/N: 134217984
+		Sub Activate()
+		  App.DebugWriter.Write "Begin PresentHelperWindow.Activate:"
+		  App.ShowWin(PresentWindow)
+		  App.DebugWriter.Write "End PresentHelperWindow.Activate:"
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
    name/S: CancelClose
    sorc/d: (Enco/N: 134217984
 		Function CancelClose(appQuitting as Boolean) As Boolean

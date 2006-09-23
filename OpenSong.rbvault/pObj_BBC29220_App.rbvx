@@ -14,11 +14,47 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  bApO/N: 1
  Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_CM, type/N: 2, defn/S: 0.035277778, flag/N: 0)
  HIns/G: 
+  Enco/N: 1536
+  name/S: Activate
+  sorc/d: (Enco/N: 134217984
+		Sub Activate()
+		  '++JRC
+		  DebugWriter.Write "Begin App.Activate"
+		  
+		  If Globals.Status_Presentation Then
+		    App.MinimizeWindow(MainWindow)
+		    
+		    If PresentWindow.HelperActive Then
+		      App.RestoreWindow(PresentHelperWindow)
+		      App.SetForeground(PresentHelperWindow)
+		    Else
+		      App.RestoreWindow(PresentWindow)
+		      App.SetForeground(PresentWindow)
+		    End If
+		  End If
+		  
+		  DebugWriter.Write "End App.Activate"
+		  '--
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
   Enco/N: 1280
   name/S: Close
   sorc/d: (Enco/N: 134217984
 		Sub Close()
 		  DebugWriter.Done
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1536
+  name/S: Deactivate
+  sorc/d: (Enco/N: 134217984
+		Sub Deactivate()
+		  DebugWriter.Write "Begin App.Deactivate"
+		  
+		  DebugWriter.Write "End App.Deactivate"
 		End Sub
   )
  HIns/g: 
@@ -34,7 +70,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  HIns/G: 
   Enco/N: 1280
   name/S: Open
-  sorc/d: (Enco/N: 134217984, srbp/N: 110
+  sorc/d: (Enco/N: 134217984, srbp/N: 114
 		Sub Open()
 		  Dim OK As Boolean
 		  'Profiler.EnableProfiler
@@ -42,7 +78,11 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		  
 		  DebugWriter = New DebugOutput
 		  If System.EnvironmentVariable("OPENSONGDEBUG") = "" Then
-		    DebugWriter.Enabled = False
+		    '++JRC
+		    DebugWriter.Enabled = True
+		    DebugWriter.Level = 3
+		    DebugWriter.AppendLog = False
+		    '--
 		  Else
 		    DebugWriter.Enabled = (System.EnvironmentVariable("OPENSONGDEBUG") = "True")
 		  End If
@@ -678,6 +718,30 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Declare Sub SetForegroundWindow Lib "user32" (ByVal hwnd as Integer)
    srcl/S: 
    srcl/S: SetForegroundWindow(wnd.WinHWND)
+   srcl/S: #Endif
+   srcl/S: '--
+   srcl/S: End Sub
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ShowWin
+  parm/S: Wnd As Window
+  rslt/S: 
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub ShowWin(Wnd As Window)
+   srcl/S: '++JRC
+   srcl/S: Const SW_SHOWNOACTIVATE = 4
+   srcl/S: Const SW_SHOWMINNOACTIVE = 7
+   srcl/S: Const SW_SHOWNA = 8
+   srcl/S: 
+   srcl/S: #If TargetWin32 Then
+   srcl/S: 
+   srcl/S: Declare Sub ShowWindow Lib "user32" (ByVal hwnd as Integer, ByVal nCmdShow as Integer)
+   srcl/S: 
+   srcl/S: ShowWindow(wnd.WinHWND, SW_SHOWNA)
    srcl/S: #Endif
    srcl/S: '--
    srcl/S: End Sub

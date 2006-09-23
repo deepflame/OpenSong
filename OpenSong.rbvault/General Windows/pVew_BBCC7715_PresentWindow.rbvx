@@ -190,7 +190,9 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: Activate
    sorc/d: (Enco/N: 134217984
 		Sub Activate()
+		  App.DebugWriter.Write("PresentWindow.Activate: Enter")
 		  
+		  App.DebugWriter.Write("PresentWindow.Activate: Exit")
 		End Sub
    )
   HIns/g: 
@@ -200,6 +202,9 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Function CancelClose(appQuitting as Boolean) As Boolean
 		  MainWindow.Status_Presentation = False
+		  '++JRC
+		  Globals.Status_Presentation = False
+		  '--
 		  If HelperActive Then PresentHelperWindow.Close
 		  timerAdvance.Enabled = False
 		  MainWindow.Show
@@ -215,8 +220,22 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Close()
 		  MainWindow.Status_Presentation = False
+		  '++JRC
+		  Globals.Status_Presentation = False
+		  '--
 		  MainWindow.Show
 		  MainWindow.SetFocus
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Deactivate
+   sorc/d: (Enco/N: 134217984
+		Sub Deactivate()
+		  App.DebugWriter.Write("PresentWindow.Deactivate: Enter")
+		  
+		  App.DebugWriter.Write("PresentWindow.Deactivate: Enter")
 		End Sub
    )
   HIns/g: 

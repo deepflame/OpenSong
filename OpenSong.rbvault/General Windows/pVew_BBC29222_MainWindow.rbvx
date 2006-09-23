@@ -10004,8 +10004,25 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Activate
    sorc/d: (Enco/N: 134217984
 		Sub Activate()
-		  If Status_Presentation Then PresentWindow.SetFocus
+		  '++JRC
+		  App.DebugWriter.Write "Begin MainWindow.Activate:"
+		  
+		  'If Status_Presentation Then PresentWindow.SetFocus
+		  If Globals.Status_Presentation Then
+		    App.MinimizeWindow(MainWindow)
+		    
+		    If PresentWindow.HelperActive Then
+		      App.RestoreWindow(PresentHelperWindow)
+		      App.SetForeground(PresentHelperWindow)
+		    Else
+		      App.RestoreWindow(PresentWindow)
+		      App.SetForeground(PresentWindow)
+		    End If
+		  End If
+		  '--
 		  If App.SplashShowing Then Splash.Show
+		  
+		  App.DebugWriter.Write "End MainWindow.Activate:"
 		End Sub
    )
   HIns/g: 
@@ -11269,6 +11286,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     srcl/S: Sub ActionSongPresent(mode As Integer)
+    srcl/S: App.DebugWriter.Write("Begin ActionSongPresent:")
     srcl/S: 
     srcl/S: ActionSongAskSave
     srcl/S: If Status_SongChanged Then Return 'Don't present if user cancelled the save
@@ -11288,11 +11306,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S:  
     srcl/S: Status_Presentation = True
     srcl/S: 
+    srcl/S: Globals.Status_Presentation = True
+    srcl/S: '--
     srcl/S: PresentWindow.Present setDoc, Mode
     srcl/S: 
     srcl/S: 'Self.Hide
     srcl/S: 
     srcl/S: App.MouseCursor = Nil
+    srcl/S: App.DebugWriter.Write("End ActionSongPresent:")
     srcl/S: End Sub
    sorc/g: 
   Meth/g: 

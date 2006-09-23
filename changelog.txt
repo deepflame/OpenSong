@@ -1,5 +1,19 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Added translation support for startup messages and errors.
+
+* Save Global Settings on exit (SVN Rev. 42)
+
+* Prevent OutOfBounds Exception in InputBox when translator isn't loaded
+
+* Prevent NilObject Exception in SButton Class if MainSettings is Nil
+
+* Prevent MainSettingsWindow Using Invalid Language files
+
+* Prevent NilObject Exception in XDocFromFile if file could not be opened
+
+* Return Nil translator Object if file passed is Nil or Non-existent
+
 * Corrected issue wrapping slide when the line doesn't have a space (particularly troublesome in Chinese). [Feature Request 1530629]
 
 * Added translation support for set item identifiers (custom, song, style, etc.). [Bug 1500189]

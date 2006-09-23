@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -70,7 +70,13 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
 		  Enabled = True
 		  //++EMP, 12/05
 		  // Select which visual to use (Paint event handler)
-		  NewPaint = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "paint/@new", True, False)
+		  '++JRC Prevent NilObject Exception if MainSettings is Nil
+		  If App.MyMainSettings <> Nil Then
+		    NewPaint = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "paint/@new", True, False)
+		  Else
+		    NewPaint = False
+		  End If
+		  '--
 		  //--
 		  Open
 		End Sub

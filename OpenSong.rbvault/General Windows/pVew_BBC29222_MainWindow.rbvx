@@ -936,8 +936,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      CurrentSong = SmartML.XDocFromFile(f)
 		      
 		      // Open as Object...
-		      CurrentSongObj = New Song
-		      Call CurrentSongObj.Load(f) // We'll ignore error handling for the moment.  Not a good thing.
+		      'CurrentSongObj = New Song
+		      'Call CurrentSongObj.Load(f) // We'll ignore error handling for the moment.  Not a good thing.
 		      
 		      'Changed save current song filename
 		      Globals.OldSongFileName = fullpath
@@ -7097,87 +7097,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 63
-  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
-  PDef/D: (name/S: BalloonHelp, PVal/S: )
-  PDef/D: (name/S: Bold, PVal/S: False)
-  PDef/D: (name/S: DataField, PVal/S: )
-  PDef/D: (name/S: DataSource, PVal/S: )
-  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
-  PDef/D: (name/S: Enabled, PVal/S: True)
-  PDef/D: (name/S: Height, PVal/S: 15)
-  PDef/D: (name/S: HelpTag, PVal/S: )
-  PDef/D: (name/S: Index, PVal/S: -2147483648)
-  PDef/D: (name/S: InitialParent, PVal/S: can_editor_general_song_editor, Enco/N: 134217984)
-  PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 270)
-  PDef/D: (name/S: LockBottom, PVal/S: False)
-  PDef/D: (name/S: LockLeft, PVal/S: False)
-  PDef/D: (name/S: LockRight, PVal/S: False)
-  PDef/D: (name/S: LockTop, PVal/S: False)
-  PDef/D: (name/S: MultiLine, PVal/S: False)
-  PDef/D: (name/S: Name, PVal/S: lbl_song_author, Enco/N: 134217984)
-  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
-  PDef/D: (name/S: Text, PVal/S: Author:, Enco/N: 134217984)
-  PDef/D: (name/S: TextAlign, PVal/S: 0)
-  PDef/D: (name/S: TextColor, PVal/S: 0)
-  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
-  PDef/D: (name/S: TextSize, PVal/S: 10)
-  PDef/D: (name/S: Top, PVal/S: 126)
-  PDef/D: (name/S: Underline, PVal/S: False)
-  PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 220)
- Ctrl/g: 
- Ctrl/G: 
-  ccls/S: SEditField
-  name/S: EditField
-  CBix/N: 129
-  PDef/D: (name/S: AcceptTabs, PVal/S: False)
-  PDef/D: (name/S: Alignment, PVal/S: 0)
-  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
-  PDef/D: (name/S: BackColor, PVal/S: 16777215)
-  PDef/D: (name/S: BalloonHelp, PVal/S: )
-  PDef/D: (name/S: Bold, PVal/S: False)
-  PDef/D: (name/S: Border, PVal/S: True)
-  PDef/D: (name/S: DataField, PVal/S: )
-  PDef/D: (name/S: DataSource, PVal/S: )
-  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
-  PDef/D: (name/S: Enabled, PVal/S: True)
-  PDef/D: (name/S: Format, PVal/S: )
-  PDef/D: (name/S: Height, PVal/S: 20)
-  PDef/D: (name/S: HelpTag, PVal/S: )
-  PDef/D: (name/S: Index, PVal/S: -2147483648)
-  PDef/D: (name/S: InitialParent, PVal/S: can_editor_general_song_editor, Enco/N: 134217984)
-  PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 271)
-  PDef/D: (name/S: LimitText, PVal/S: 0)
-  PDef/D: (name/S: LockBottom, PVal/S: False)
-  PDef/D: (name/S: LockLeft, PVal/S: True)
-  PDef/D: (name/S: LockRight, PVal/S: False)
-  PDef/D: (name/S: LockTop, PVal/S: True)
-  PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: MultiLine, PVal/S: False)
-  PDef/D: (name/S: Name, PVal/S: edt_song_author, Enco/N: 134217984)
-  PDef/D: (name/S: Password, PVal/S: False)
-  PDef/D: (name/S: ReadOnly, PVal/S: False)
-  PDef/D: (name/S: ScrollBar, PVal/S: True)
-  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
-  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
-  PDef/D: (name/S: Styled, PVal/S: False)
-  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
-  PDef/D: (name/S: Text, PVal/S: )
-  PDef/D: (name/S: TextColor, PVal/S: 0)
-  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
-  PDef/D: (name/S: TextSize, PVal/S: 10)
-  PDef/D: (name/S: Top, PVal/S: 140)
-  PDef/D: (name/S: Underline, PVal/S: False)
-  PDef/D: (name/S: UseFocusRing, PVal/S: True)
-  PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 220)
- Ctrl/g: 
- Ctrl/G: 
-  ccls/S: StaticText
-  name/S: StaticText
   CBix/N: 112
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
@@ -7255,6 +7174,87 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: UseFocusRing, PVal/S: True)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 225)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 63
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 15)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: can_editor_general_song_editor, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 270)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_song_author, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: Author:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 126)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 220)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SEditField
+  name/S: EditField
+  CBix/N: 129
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: can_editor_general_song_editor, Enco/N: 134217984)
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 271)
+  PDef/D: (name/S: LimitText, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: edt_song_author, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: False)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 140)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 220)
  Ctrl/g: 
  Ctrl/G: 
   ccls/S: StaticText
@@ -11832,43 +11832,43 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  // Load from the object
 		  
-		  edt_song_title.Text = CurrentSongObj.Title
-		  edt_song_author.Text = CurrentSongObj.Author
-		  edt_song_copyright.Text = CurrentSongObj.Copyright
-		  edt_song_hymn_number.Text = CurrentSongObj.HymnNumber
-		  edt_song_presentation.Text = CurrentSongObj.Presentation
-		  edt_song_ccli.Text = CurrentSongObj.CCLISongNumber
-		  chk_song_capo_print.Value = CurrentSongObj.PrintCapoChords
-		  edt_song_key.Text = CurrentSongObj.Key
-		  edt_song_aka.Text = CurrentSongObj.AKA
-		  edt_song_key_line.Text = CurrentSongObj.KeyLine
-		  edt_song_user1.Text = CurrentSongObj.User1
-		  edt_song_user2.Text = CurrentSongObj.User2
-		  edt_song_user3.Text = CurrentSongObj.User3
+		  'edt_song_title.Text = CurrentSongObj.Title
+		  'edt_song_author.Text = CurrentSongObj.Author
+		  'edt_song_copyright.Text = CurrentSongObj.Copyright
+		  'edt_song_hymn_number.Text = CurrentSongObj.HymnNumber
+		  'edt_song_presentation.Text = CurrentSongObj.Presentation
+		  'edt_song_ccli.Text = CurrentSongObj.CCLISongNumber
+		  'chk_song_capo_print.Value = CurrentSongObj.PrintCapoChords
+		  'edt_song_key.Text = CurrentSongObj.Key
+		  'edt_song_aka.Text = CurrentSongObj.AKA
+		  'edt_song_key_line.Text = CurrentSongObj.KeyLine
+		  'edt_song_user1.Text = CurrentSongObj.User1
+		  'edt_song_user2.Text = CurrentSongObj.User2
+		  'edt_song_user3.Text = CurrentSongObj.User3
 		  
-		  'edt_song_title.Text = SmartML.GetValue(CurrentSong.DocumentElement, "title", True)
-		  'edt_song_author.Text = SmartML.GetValue(CurrentSong.DocumentElement, "author", True)
-		  'edt_song_copyright.Text = SmartML.GetValue(CurrentSong.DocumentElement, "copyright", True)
-		  'edt_song_hymn_number.Text = SmartML.GetValue(CurrentSong.DocumentElement, "hymn_number", True)
-		  '' Josh
-		  'edt_song_presentation.Text = SmartML.GetValue(CurrentSong.DocumentElement, "presentation", True)
-		  'edt_song_ccli.Text = SmartML.GetValue(CurrentSong.DocumentElement, "ccli", True)
-		  'chk_song_capo_print.Value = SmartML.GetValueB(CurrentSong.DocumentElement, "capo/@print", True)
-		  'edt_song_key.Text = SmartML.GetValue(CurrentSong.DocumentElement, "key", True)
-		  'edt_song_aka.Text = SmartML.GetValue(CurrentSong.DocumentElement, "aka", True)
-		  'edt_song_key_line.Text = SmartML.GetValue(CurrentSong.DocumentElement, "key_line", True)
-		  'edt_song_user1.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user1", True)
-		  'edt_song_user2.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user2", True)
-		  'edt_song_user3.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user3", True)
-		  '
+		  edt_song_title.Text = SmartML.GetValue(CurrentSong.DocumentElement, "title", True)
+		  edt_song_author.Text = SmartML.GetValue(CurrentSong.DocumentElement, "author", True)
+		  edt_song_copyright.Text = SmartML.GetValue(CurrentSong.DocumentElement, "copyright", True)
+		  edt_song_hymn_number.Text = SmartML.GetValue(CurrentSong.DocumentElement, "hymn_number", True)
+		  ' Josh
+		  edt_song_presentation.Text = SmartML.GetValue(CurrentSong.DocumentElement, "presentation", True)
+		  edt_song_ccli.Text = SmartML.GetValue(CurrentSong.DocumentElement, "ccli", True)
+		  chk_song_capo_print.Value = SmartML.GetValueB(CurrentSong.DocumentElement, "capo/@print", True)
+		  edt_song_key.Text = SmartML.GetValue(CurrentSong.DocumentElement, "key", True)
+		  edt_song_aka.Text = SmartML.GetValue(CurrentSong.DocumentElement, "aka", True)
+		  edt_song_key_line.Text = SmartML.GetValue(CurrentSong.DocumentElement, "key_line", True)
+		  edt_song_user1.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user1", True)
+		  edt_song_user2.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user2", True)
+		  edt_song_user3.Text = SmartML.GetValue(CurrentSong.DocumentElement, "user3", True)
+		  
 		  Dim found, foundAlt, i As Integer
 		  found = 0
 		  
 		  Dim theme, alttheme As String
-		  'theme = SmartML.GetValue(CurrentSong.DocumentElement, "theme", True)
-		  'alttheme = SmartML.GetValue(CurrentSong.DocumentElement, "alttheme", False)
-		  'If Len(alttheme) > 0 Then theme = theme + "; "+ alttheme
-		  theme = ";" + CurrentSongObj.ThemeList + ";"
+		  theme = SmartML.GetValue(CurrentSong.DocumentElement, "theme", True)
+		  alttheme = SmartML.GetValue(CurrentSong.DocumentElement, "alttheme", False)
+		  If Len(alttheme) > 0 Then theme = theme + "; "+ alttheme
+		  'theme = ";" + CurrentSongObj.ThemeList + ";"
 		  ' Build the dictionary
 		  Dim themeDict As new Dictionary
 		  For i = 1 To CountFields(theme, ";")
@@ -11895,8 +11895,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Next i
 		  
 		  Dim capo As Integer
-		  'capo = SmartML.GetValueN(CurrentSong.DocumentElement, "capo", True)
-		  capo = CurrentSongObj.Capo
+		  capo = SmartML.GetValueN(CurrentSong.DocumentElement, "capo", True)
+		  'capo = CurrentSongObj.Capo
 		  found = 0
 		  pop_song_capo.DeleteAllRows
 		  pop_song_capo.AddRow ""
@@ -11908,8 +11908,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  pop_song_capo.ListIndex = found
 		  
 		  Dim tempo As String
-		  'tempo = SmartML.GetValue(CurrentSong.DocumentElement, "tempo", True)
-		  tempo = CurrentSongObj.Tempo
+		  tempo = SmartML.GetValue(CurrentSong.DocumentElement, "tempo", True)
+		  'tempo = CurrentSongObj.Tempo
 		  found = 0
 		  pop_song_tempo.DeleteAllRows
 		  pop_song_tempo.AddRow ""
@@ -11921,8 +11921,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  pop_song_tempo.ListIndex = found
 		  
 		  Dim timesig As String
-		  'timesig = SmartML.GetValue(CurrentSong.DocumentElement, "time_sig", True)
-		  timesig = CurrentSongObj.TimeSignature
+		  timesig = SmartML.GetValue(CurrentSong.DocumentElement, "time_sig", True)
+		  'timesig = CurrentSongObj.TimeSignature
 		  found = 0
 		  pop_song_time_sig.DeleteAllRows
 		  pop_song_time_sig.AddRow ""
@@ -11938,15 +11938,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  edf_song_lyrics.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
 		  edf_song_lyrics.ScrollBarVertical = True
 		  
-		  'If SmartML.GetNode(CurrentSong.DocumentElement, "style", False) = Nil Then
-		  If CurrentSongObj.SongStyle = Nil Then
+		  If SmartML.GetNode(CurrentSong.DocumentElement, "style", False) = Nil Then
+		    'If CurrentSongObj.SongStyle = Nil Then
 		    chk_song_style.Value = False
 		    can_song_style.SetEnabled False
 		  Else
 		    chk_song_style.Value = True
 		    can_song_style.Enabled = True
 		    can_song_style.SetStyleNode SmartML.GetNode(CurrentSong.DocumentElement, "style")
-		    can_song_style.SetStyleNode CurrentSongObj.SongStyle.ToXML.DocumentElement
+		    'can_song_style.SetStyleNode CurrentSongObj.SongStyle.ToXML.DocumentElement
 		  End If
 		End Sub
    )

@@ -1,8 +1,28 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Bring PresentWindow to front in Single Screen Mode
+    
+* Added Ability to search songs by Hymn Number
+
+* Added/modified ProgressWindow for the following events:
+ Song Caching
+ Heap Sorting
+ CategoryTOC Song Processing
+ CategoryTOC Theme Processing
+ Export All Songs
+ Lead Sheet Report Generation
+
+* Added Status Message Text to ProgressWindow
+
+* Reset Mouse Cursor when canceling print
+
+* Delete Extra save prompt creating a new song when you have unsaved changes
+
+* Fixed Song Style bug #1559301
+
 * Added translation support for startup messages and errors.
 
-* Save Global Settings on exit (SVN Rev. 42)
+* Save Global Settings on exit
 
 * Prevent OutOfBounds Exception in InputBox when translator isn't loaded
 

@@ -357,7 +357,8 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
 		Sub Activate()
 		  Me.SetFocus
 		  BringToFront
-		  
+		  If edt_the_input.Visible Then edt_the_input.SetFocus
+		  if pop_the_input.Visible Then pop_the_input.SetFocus
 		End Sub
    )
   HIns/g: 
@@ -485,7 +486,6 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
 		  lbl_the_question.Height = 40
 		  btn_ok.Left = 145
 		  btn_cancel.Visible = True
-		  
 		  ShowModal
 		  Return Output
 		End Function

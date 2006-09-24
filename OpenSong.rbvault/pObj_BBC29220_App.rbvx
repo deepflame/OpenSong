@@ -299,6 +299,9 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		              SmartML.DisplayError
 		              Quit
 		            End If
+		            // Update PritntSettings to use points instead of inches
+		            UpdatePrintSettings
+		            
 		            Splash.SetStatus T.Translate("load_settings/presentation") + "..."
 		            MyPresentSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PresentSettings"))
 		            If MyPresentSettings = Nil Then
@@ -802,6 +805,52 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		    xnode = xnode.NextSibling
 		  Wend
 		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: UpdatePrintSettings
+  parm/S: 
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub UpdatePrintSettings()
+		  //++
+		  // Convert the PrintSettings XML file
+		  // Update inches (from versions below 1.0 Beta 2 BL10)
+		  // to points.
+		  //--
+		  Dim value As Double, newvalue As Double
+		  Dim attributes() As String
+		  Dim attribute As String
+		  Dim inches As Boolean
+		  Dim points As Boolean
+		  Dim settings As XmlNode
+		  
+		  settings = MyPrintSettings.DocumentElement
+		  points = SmartML.GetValueB(settings, "page/@points", True, False) 
+		  If points Then Return
+		  
+		  inches = SmartML.GetValueB(settings, "page/@inches", True, True)
+		  
+		  attributes = Split("top,bottom,left,right,height,width", ",")
+		  
+		  For Each attribute in attributes
+		    value = CDbl(SmartML.GetValue(settings, "page/@" + attribute))
+		    If inches Then
+		      newvalue = InchesToPoints(value)
+		    Else
+		      newvalue = CMtoPoints(value)
+		    End If
+		    SmartML.SetValueN(settings, "page/@" + attribute, Round(newvalue))
+		  Next
+		  
+		  SmartML.SetValueB(settings, "page/@points", True)
+		  SmartML.SetValueB(settings, "page/@inches", inches)
+		  
+		  // Write out the converted file
+		  MyPrintSettings.SaveXml DocsFolder.Child("Settings").Child("PrintSettings")
 		End Sub
   )
  Meth/g: 

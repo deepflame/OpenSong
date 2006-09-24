@@ -1,4 +1,9 @@
 -= 1.0 Beta 2 Baselevel 13 =-
+* Update PrintSettings XML at program start to use points as units of measurement.
+
+* Set focus to edit field when InputBox opens.
+
+* Started work on SImageCanvas to allow more flexibility in setting the picture.
 
 * Fix NilObjectException when creating a new song [Bug 1563081]
 

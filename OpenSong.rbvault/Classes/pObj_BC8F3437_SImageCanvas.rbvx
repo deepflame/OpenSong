@@ -12,12 +12,51 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
  bNtr/N: 0
  Intr/S: 
  HIns/G: 
+  Enco/N: 1536
+  name/S: DropObject
+  sorc/d: (Enco/N: 134217984
+		Sub DropObject(obj As DragItem)
+		  Dim p As Picture
+		  Dim f As FolderItem
+		  if obj.PictureAvailable Then
+		    Image = Nil
+		    p = obj.Picture
+		    f = GetTemporaryFolderItem()
+		    If f <> Nil Then
+		      f.SaveAsJPEG p
+		      SetImageAsFile f
+		      f.Delete
+		    End If
+		    Refresh
+		  End If
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1536
+  name/S: KeyDown
+  sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  
+		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1536
+  name/S: LostFocus
+  sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
   Enco/N: 1280
   name/S: MouseDown
   sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  Dim f As FolderItem
-		  
+		  Dim c As New Clipboard
 		  If Enabled Then
 		    If IsCMMClick Then
 		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
@@ -31,20 +70,33 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
 		        Return False
 		      End If
 		    Else
-		      f = ImageChooserWindow.Lookup 'GetOpenFolderItem("image/jpeg")
-		      If f <> Nil Then
-		        SetImageAsFile f
-		        Action
+		      If Keyboard.ShiftKey Then
+		        PastePicture c
 		      Else
-		        Repaint
+		        f = ImageChooserWindow.Lookup 'GetOpenFolderItem("image/jpeg")
+		        If f <> Nil Then
+		          SetImageAsFile f
+		          Action
+		        Else
+		          Repaint
+		        End If
+		        Return True
 		      End If
-		      Return True
 		    End If
 		  Else
 		    Return False
 		  End If
 		  
 		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1536
+  name/S: Open
+  sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  AcceptPictureDrop
+		End Sub
   )
  HIns/g: 
  HIns/G: 
@@ -151,6 +203,30 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
 		Function GetImageAsString() As String
 		  Return Base64
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PastePicture
+  parm/S: c As Clipboard
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub PastePicture(c As Clipboard)
+		  Dim p As Picture
+		  Dim f As FolderItem
+		  if c.PictureAvailable Then
+		    Image = Nil
+		    p = c.Picture
+		    f = GetTemporaryFolderItem()
+		    If f <> Nil Then
+		      f.SaveAsJPEG p
+		      SetImageAsFile f
+		      f.Delete
+		    End If
+		    Refresh
+		  End If
+		End Sub
   )
  Meth/g: 
  Meth/G: 

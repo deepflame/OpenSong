@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: Bible
- Size/N: 84
+ Size/N: 88
  bNtr/N: 0
  Intr/S: 
  Cnst/D: (Enco/N: 134217984, name/S: NT_PROTESTANT, type/N: 1, defn/S: 27, flag/N: 1)
@@ -33,10 +33,25 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  Dim out as TextOutputStream
 		  
 		  'load bnames.xml
-		  file= GetFolderItem("OpenSong Settings\bnames.xml")
+		  file= App.AppFolder.Child("OpenSong Settings").Child("bnames.xml")
 		  if file.Exists=false then
-		    msgBox("Cannot find file 'OpenSong Settings\bnames.xml'")
-		    
+		    InputBox.Message App.T.Translate("bible/errors/load2", bibleFile.Name, _
+		        App.T.Translate("bible/errors/missing_bnames"))
+		    //
+		    // Let's be a little sneaky and set the bnames to the book numbers.
+		    // Why not?  The user will find out quickly enough that there is an issue,
+		    // and the error message has already been displayed.
+		    //
+		    Try
+		      list= Scripture.xql("/XMLBIBLE/BIBLEBOOK")
+		      For x = 0 To List.Length - 1
+		        SmartML.SetValue list.Item(x), "@bname", SmartML.GetValue(list.Item(x), "@bnumber")
+		      Next x
+		      ShouldGenerateIndex = False
+		      Return True // OK to use, but return now to skip writing the file
+		    Catch
+		      Scripture = Nil
+		    End Try
 		    return false
 		  end if
 		  
@@ -54,7 +69,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  next x
 		  
 		  'let user pick language
-		  choice= InputBox.Pick("Please select desired language for this bible's book names:", options)
+		  choice= InputBox.Pick(App.T.Translate("bible/messages/bnames"), options)
 		  
 		  'if they canceled
 		  if (choice="") then return false
@@ -69,11 +84,13 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  next x
 		  
 		  'save the changes
-		  out= bibleFile.createTextFile
-		  
-		  out.Write(Scripture.toString)
-		  out.close
-		  
+		  If InputBox.AskYN(App.T.Translate("bible/messages/save")) Then
+		    out= bibleFile.createTextFile
+		    Scripture.PreserveWhitespace = True
+		    out.Write(Scripture.toString)
+		    out.close
+		    ShouldGenerateIndex = True
+		  End If
 		  return true
 		End Function
   )
@@ -86,6 +103,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   flag/N: 0
   sorc/d: (Enco/N: 134217984
 		Sub Bible()
+		  CanSearch = False
+		  ShouldGenerateIndex = False
 		  
 		  StdBooks.Append "Genesis"
 		  WebBooks.Append "GEN"
@@ -483,7 +502,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    reMatch = myRegex.Search(strRoman)
 		    if reMatch = Nil then return -1
 		  exception GrepErr as RegExException
-		    i = msgBox("Error converting '" + strRoman + "': " + GrepErr.Message, 48, "FromRoman")
+		    InputBox.Message App.T.Translate("bible/errors/roman", strRoman, GrepErr.Message)
 		    return -1
 		  end try
 		  
@@ -577,6 +596,9 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  Dim root, wordNode as TreeNode
 		  Dim Progress As Double
 		  Dim BookName As String
+		  
+		  // Only do this if allowed
+		  If Not ShouldGenerateIndex Then Return
 		  
 		  'clear index
 		  reDim index(-1)
@@ -780,7 +802,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  'reDim index as IndexEntry(-1)
 		  'reDim notIndexed as String(-1)
 		  
-		  MsgBox ("Error generating Bible index. Search will be disabled.")
+		  InputBox.Message App.T.Translate("bible/errors/index_generation")
 		  CanSearch = False
 		  If IndexProgress.Visible Then
 		    IndexProgress.Close
@@ -1030,19 +1052,20 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  ' EMP, 2005
 		  '
 		  dim xn as xmlNodeList
+		  Dim BookCount As Integer
 		  
 		  Select Case XMLTYPE
 		    
 		  Case XML_ORIGINAL
-		    Return NT_PROTESTANT
+		    BookCount = NT_PROTESTANT
 		    
 		  Case XML_NAB
-		    xn = Scripture.Xql("/bible/NT/book")
-		    if xn.length > 0 then
-		      Return xn.length
-		    else
-		      Return NT_PROTESTANT
-		    end if
+		    Try
+		      xn = Scripture.Xql("/bible/NT/book")
+		      BookCount = xn.length
+		    Catch
+		      BookCount = 0
+		    End Try
 		    
 		  Case XML_ZEFANIA
 		    //
@@ -1052,10 +1075,13 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    // Have to do a lookup because Zefania permits a file to only have one
 		    // testament, or it may not even be a Christian Bible (i.e., Koran, Book of Mormon)
 		    //
-		    Return Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]").Length
-		    
+		    Try
+		      BookCount = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]").Length
+		    Catch
+		      BookCount = 0
+		    End Try
 		  End Select
-		  
+		  Return BookCount
 		End Function
   )
  Meth/g: 
@@ -1131,13 +1157,18 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  //
 		  dim i as integer
 		  dim xn as xmlNodeList
+		  Dim BookCount As Integer
 		  
 		  Select Case XMLTYPE
 		  Case XML_ORIGINAL
-		    Return OT_PROTESTANT
+		    BookCount = OT_PROTESTANT
 		    
 		  Case XML_NAB
-		    Return Scripture.Xql("/bible/OT/book").Length
+		    Try
+		      BookCount = Scripture.Xql("/bible/OT/book").Length
+		    Catch
+		      BookCount = 0
+		    End Try
 		    
 		  Case XML_ZEFANIA
 		    //
@@ -1145,9 +1176,14 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    //
 		    // Book 40 is Matthew, book 66 is Revelation
 		    //
-		    Return Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber < 40 or @bnumber > 66]").Length
+		    Try
+		      BookCount = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber < 40 or @bnumber > 66]").Length
+		    Catch
+		      BookCount = 0
+		    End Try
 		    
 		  End Select
+		  Return BookCount
 		End Function
   )
  Meth/g: 
@@ -1165,15 +1201,13 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  // This version uses distinct parameters.
 		  // Ed Palmer
 		  
-		  If Val(toVerse) < Val(fromVerse) Then toVerse = fromVerse
-		  
 		  Dim list As New XmlNodeList
 		  Dim query As String
 		  Dim i As Integer
 		  Dim ret(0), verse As String
 		  Dim reg as RegEx
 		  
-		  
+		  If Val(toVerse) < Val(fromVerse) Then toVerse = fromVerse
 		  
 		  Select Case XMLTYPE
 		    
@@ -1182,10 +1216,16 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		      'query = "/bible/b[@n='" + book + "')]/c[" + chapter + "]/v[(@n>='" + fromVerse + "' or @t>='" + toVerse + "') and @n<='" + toVerse + "']"
 		      query = "/bible/b[@n='" + book + "']/c[@n=" + chapter + "]/v[(@n>=" + fromVerse + " or @t>=" + toVerse + ") and @n<=" + toVerse + "]"
 		      list = Scripture.Xql(query)
-		    Catch ex As XmlException
-		      ErrorCode = ex.ErrorNumber
-		      ErrorString = ex.Message + chr(10) + "At " + ex.Node + ", Token: " + ex.Token
-		      return ret
+		    Catch ex 
+		      If ex IsA XmlException Then
+		        ErrorCode = ex.ErrorNumber
+		        ErrorString = ex.Message + chr(10) + "At " + XmlException(ex).Node + ", Token: " + XmlException(ex).Token
+		        ex.Message = ErrorString
+		      Else
+		        ErrorString = "Bible.GetPassage exception in query"
+		        ex.Message = ErrorString
+		      End If
+		      Return ret
 		    End Try
 		    
 		    For i = 0 To list.Length - 1
@@ -1214,9 +1254,16 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		        + "']/VERS[@vnumber >= '" + fromVerse + "' and @vnumber <= '" + toVerse + "']"
 		    Try
 		      list = Scripture.Xql(query)
-		    Catch ex2 As XmlException
-		      ErrorCode = ex2.ErrorNumber
-		      ErrorString = ex2.Message + chr(10) + "At " + ex2.Node + ", Token: " + ex2.Token
+		    Catch ex2 
+		      If ex2 IsA XmlException Then
+		        ErrorCode = ex2.ErrorNumber
+		        ErrorString = ex2.Message + chr(10) + "At " + XmlException(ex2).Node + ", Token: " + XmlException(ex2).Token
+		        ex2.Message = ErrorString
+		      Else
+		        ErrorString = "Bible.GetPassage exception in query"
+		        ex2.Message = ErrorString
+		      End If
+		      Return ret
 		    End Try
 		    
 		    For i = 0 To list.Length - 1
@@ -1465,8 +1512,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: // Future TO DO: I18N support for error messages.
    srcl/S: //
    srcl/S: 
-   srcl/S: Scripture = New XmlDocument
-   srcl/S: 
    srcl/S: Dim input As TextInputStream
    srcl/S: Dim s As String
    srcl/S: Dim i As Integer
@@ -1476,7 +1521,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: Dim StdName As String
    srcl/S: Dim names() as String
    srcl/S: 
-   srcl/S: // Why wasn't Scripture = New XmlDocument(file) used?
+   srcl/S: Scripture = New XmlDocument
+   srcl/S: ShouldGenerateIndex = False
    srcl/S: 
    srcl/S: If file = Nil Then
    srcl/S: ErrorCode = 1
@@ -1494,12 +1540,13 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: Dim list As New XmlNodeList
    srcl/S: 
    srcl/S: Try
-   srcl/S: If Len(s) > 5 Then // Why?...
+   srcl/S: If Len(s) > 5 Then
    srcl/S: Scripture.LoadXml(s)
    srcl/S: 
    srcl/S: If Scripture = Nil Then
    srcl/S: ErrorCode = 7
-   srcl/S: ErrorString = "Error parsing XML: " + file.AbsolutePath
+   srcl/S: ErrorString = App.T.Translate("bible/errors/load1", file.name)
+   srcl/S: InputBox.Message ErrorString
    srcl/S: Return False
    srcl/S: End If
    srcl/S: Else
@@ -1508,16 +1555,19 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: Catch LoadErr
    srcl/S: If LoadErr IsA XmlException Then
    srcl/S: ErrorCode = 7
-   srcl/S: ErrorString = "Error parsing Bible " + file.Name + chr(10) +_
-   srcl/S: "Node: " + XmlException(LoadErr).Node +_
-   srcl/S:  " at line: " + XmlException(LoadErr).Line
-   srcl/S: MsgBox(ErrorString)
+   srcl/S: ErrorString = App.T.Translate("bible/errors/loadxml", file.name, _
+   srcl/S: XmlException(LoadErr).Node, XmlException(LoadErr).Line)
+   srcl/S: LoadErr.Message = ErrorString
+   srcl/S: LoadErr.ErrorNumber = ErrorCode
+   srcl/S: InputBox.Message ErrorString
    srcl/S: Scripture = Nil
    srcl/S: Return False
    srcl/S: Else
    srcl/S: ErrorCode = 3
-   srcl/S: ErrorString = RuntimeException(LoadErr).Message
-   srcl/S: MsgBox(ErrorString)
+   srcl/S: ErrorString = App.T.Translate("bible/errors/load1", file.name)
+   srcl/S: LoadErr.ErrorNumber = ErrorCode
+   srcl/S: LoadErr.Message = ErrorString
+   srcl/S: InputBox.Message ErrorString
    srcl/S: Scripture = Nil
    srcl/S: Return False
    srcl/S: End If
@@ -1563,7 +1613,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: LoadedBible = Scripture.FirstChild.GetAttribute("n")
    srcl/S: End If
    srcl/S: LoadedBibleFilename = LoadedBible
-   srcl/S: 
+   srcl/S: ShouldGenerateIndex = True
    srcl/S: Else
    srcl/S: ErrorCode = 7
    srcl/S: ErrorString = "Invalid Bible: " + file.AbsolutePath + " (No books found)"
@@ -1588,17 +1638,18 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: try
    srcl/S:  if addBNames(file)=false then
    srcl/S: ErrorCode=111
-   srcl/S: ErrorString="Bible does not have required bname attributes and they could not be added"
+   srcl/S: ErrorString=App.T.Translate("bible/errors/load2", file.Name, App.T.Translate("bible/errors/nobnames"))
    srcl/S: Scripture=nil
    srcl/S: return false
    srcl/S: end if
    srcl/S: catch e
    srcl/S: ErrorCode=111
-   srcl/S: ErrorString="Bible does not have required bname attributes and they could not be added"
+   srcl/S: ErrorString=App.T.Translate("bible/errors/load2", file.Name, App.T.Translate("bible/errors/nobnames"))
    srcl/S: Scripture=nil
    srcl/S: return false
    srcl/S: end try
-   srcl/S: 
+   srcl/S: Else // bname attribute found
+   srcl/S: ShouldGenerateIndex = True
    srcl/S: end if
    srcl/S: 
    srcl/S: If list.Length > 0 Then
@@ -1894,8 +1945,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  
 		  'make sure an index is loaded
 		  if (UBound(index)<0) then
-		    MsgBox("No index loaded. Please restart OpenSong or select a different version.")
-		    
+		    InputBox.Message App.T.Translate("bible/errors/noindex")
 		    return  returnVal
 		  end if
 		  
@@ -2071,6 +2121,23 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   sorc/G: 
    Enco/N: 134217984
    ntln/S: Scripture As XmlDocument
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ShouldGenerateIndex As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ShouldGenerateIndex As Boolean
+   ntln/S: If a bible is loaded and the accompanying index
+   ntln/S: file shouldn't be created, set this False
+   ntln/S: 
+   ntln/S: Example: If loading a Zefania bible that doesn't have booknames (bname attribute),
+   ntln/S: should the user elect not to save the version with the bnames, this will prevent
+   ntln/S: the index for what is essentially a temporary bible from being created.
    ntln/S: 
    ntln/S: 
   sorc/g: 

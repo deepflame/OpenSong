@@ -3,11 +3,15 @@
 
 * Added Option to overwrite debug log files
 
-* Bring PresentWindow to front in Singe Screen Mode
+-= 1.0 Beta 2 Baselevel 13 =-
+
+* Fix NilObjectException when creating a new song [Bug 1563081]
+
+* Bring PresentWindow to front in Single Screen Mode
     
 * Added Ability to search songs by Hymn Number
 
-* Added/modified ProgressWindow for the folowing events:
+* Added/modified ProgressWindow for the following events:
  Song Caching
  Heap Sorting
  CategoryTOC Song Processing
@@ -23,33 +27,19 @@
 
 * Fixed Song Style bug #1559301
 
-* Moved Unused Open Method of MainWindow to Notes
+* Added translation support for startup messages and errors.
 
-* Made several init Error Msgs translatable (see language changelog)
-
-* Just Exit if language file cannot be loaded on startup
-
-* Prevent NilObject Exception in XDocFromFile if file could not be opened
+* Save Global Settings on exit
 
 * Prevent OutOfBounds Exception in InputBox when translator isn't loaded
 
 * Prevent NilObject Exception in SButton Class if MainSettings is Nil
 
-* Return Nil translator Object if file passed is Nil or Non-existant
+* Prevent MainSettingsWindow Using Invalid Language files
 
-* Made a couple of Splash Msgs translatable (see language changelog)
+* Prevent NilObject Exception in XDocFromFile if file could not be opened
 
-* Prevent MainSettingsWindow Saving Invalid Language files
-
-* Moved Language selection to Global Settings
-
-* Save Global Settings on exit
-
-* Moved translation init to beginning of App.Open so we can translate init error & status Msgs 
-
-* Check if Scriptures Folder Exists and exit if not found (I believe this was causing error #1555433)
-
--= 1.0 Beta 2 Baselevel 13 =-
+* Return Nil translator Object if file passed is Nil or Non-existent
 
 * Corrected issue wrapping slide when the line doesn't have a space (particularly troublesome in Chinese). [Feature Request 1530629]
 

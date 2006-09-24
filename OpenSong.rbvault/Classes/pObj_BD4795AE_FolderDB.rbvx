@@ -116,22 +116,25 @@ pObj/B: 426C6F6B704F626ABD4795AE0000000000000000000000000000000000000000
 		  Dim x As Integer
 		  Dim s As String
 		  Dim f As FolderItem
+		  Dim count As Integer
 		  
-		  '++JRC
 		  Dim j As integer
+		  Dim fname As String
+		  
+		  count = Folder.Count
+		  fname = Folder.Name
 		  
 		  j = 0
-		  ProgressWindow.SetMaximum(folder.count) 
+		  ProgressWindow.SetMaximum(count) 
 		  ProgressWindow.SetProgress(j)
 		  ProgressWindow.Show
-		  ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/folder", folder.Name) + "..."
-		  '--
+		  ProgressWindow.SetStatus  App.T.Translate("progress_status/folder", fName) + "..."
 		  
-		  For x = 1 to folder.count
+		  For x = 1 to count
 		    '++JRC
 		    j = j + 1
-		    ProgressWindow.SetMaximum(folder.count) 
-		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/folder", folder.Name) + "..."
+		    ProgressWindow.SetMaximum(count) 
+		    ProgressWindow.SetStatus App.T.Translate("progress_status/folder", fName) + "..."
 		    ProgressWindow.SetProgress(j)
 		    '--
 		    
@@ -141,14 +144,14 @@ pObj/B: 426C6F6B704F626ABD4795AE0000000000000000000000000000000000000000
 		      If f.Directory Then
 		        Cache.Append path + s + "/"
 		        NumFiles = NumFiles + 1
-		        AddFolderToCache f, path + f.Name + "/"
+		        AddFolderToCache f, path + s + "/"
 		      Else
 		        Cache.Append s + path
 		        NumFiles = NumFiles + 1
 		      End If
 		    End If
 		  Next x
-		  
+		  ProgressWindow.Close
 		End Sub
   )
  Meth/g: 

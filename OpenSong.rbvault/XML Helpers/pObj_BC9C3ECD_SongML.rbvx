@@ -396,6 +396,118 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Draw_ChordLyricLine
+  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, section As String, ByRef slices() As String, lineCount As Integer
+  rslt/S: Integer
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function Draw_ChordLyricLine(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, section As String, ByRef slices() As String, lineCount As Integer) As Integer
+		  Dim sliceCount As Integer
+		  sliceCount = UBound(slices) / lineCount
+		  
+		  Dim lineWidths(0), dashStarts(0), lineTop, lineLeft, nextLeft, dashWidth As Integer
+		  Dim i, j, oldY As Integer
+		  ReDim lineWidths(linecount+1) ' We put in an extra in case of capo chords
+		  ReDim dashStarts(linecount) ' We don't need dashstarts(1) b/c it is the chords line; oh well
+		  Dim capoChord As String
+		  
+		  Dim tempFont As FontFace
+		  
+		  oldY = y
+		  
+		  If lineCount > 2 Then
+		    x = x + Draw_LinePrefixes(songDoc, g, x, y, zoom, slices, lineCount)
+		  End If ' End of writing of verse numbers
+		  
+		  nextLeft = x
+		  
+		  For i = 0 To sliceCount - 1 ' Loop through each slice
+		    lineTop = y
+		    lineLeft = nextLeft
+		    For j = 1 To lineCount ' Loop through the lines and print
+		      If i = 0 Then slices(i*lineCount+j) = Mid(slices(i*lineCount+j), 2)
+		      If j = 1 Then ' Chord line
+		        tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
+		        g.TextFont = tempFont.Name
+		        g.TextSize = tempFont.Size * zoom
+		        g.Bold = tempFont.Bold
+		        g.Italic = tempFont.Italic
+		        g.Underline = tempFont.Underline
+		        g.ForeColor = tempFont.ForeColor
+		        slices(i*lineCount+j) = RTrim(slices(i*lineCount+j))
+		        lineWidths(j) = g.StringWidth(slices(i*lineCount+j)) + (g.TextAscent/2)
+		        
+		        If lineLeft + lineWidths(j) > nextLeft Then nextLeft = lineLeft + lineWidths(j)
+		        lineTop = lineTop + g.TextHeight
+		        g.DrawString slices(i*lineCount+j), lineLeft, lineTop + g.TextHeight - g.TextAscent
+		        
+		        ' Place Capo Chord
+		        If SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print") Then
+		          If MainWindow.pop_song_accidentals.ListIndex = 0 Then
+		            capoChord = SingleTranspose(slices(i*lineCount+j), 12-SmartML.GetValueN(songDoc.DocumentElement, "capo"), True)
+		          Else
+		            capoChord = SingleTranspose(slices(i*lineCount+j), 12-SmartML.GetValueN(songDoc.DocumentElement, "capo"), False)
+		          End If
+		          tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
+		          g.TextFont = tempFont.Name
+		          g.TextSize = tempFont.Size * zoom
+		          g.Bold = tempFont.Bold
+		          g.Italic = tempFont.Italic
+		          g.Underline = tempFont.Underline
+		          g.ForeColor = tempFont.ForeColor
+		          lineWidths(lineCount+1) = g.StringWidth(capoChord) + (g.TextAscent/2)
+		          
+		          If lineLeft + lineWidths(lineCount+1) > nextLeft Then nextLeft = lineLeft + lineWidths(lineCount+1)
+		          lineTop = lineTop + g.TextHeight
+		          g.DrawString capoChord, lineLeft, lineTop + g.TextHeight - g.TextAscent
+		          
+		        End If
+		      Else ' Lyric line
+		        tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
+		        g.TextFont = tempFont.Name
+		        g.TextSize = tempFont.Size * zoom
+		        g.Bold = tempFont.Bold
+		        g.Italic = tempFont.Italic
+		        g.Underline = tempFont.Underline
+		        g.ForeColor = tempFont.ForeColor
+		        If Left(section,1) = "C" Then
+		          g.Bold = True
+		        Else
+		          g.Bold = tempFont.Bold
+		        End If
+		        slices(i*lineCount+j) = ReplaceAll(slices(i*lineCount+j), "_", "")
+		        slices(i*lineCount+j) = slices(i*lineCount+j).CleanSpaces
+		        lineWidths(j) = g.StringWidth(slices(i*lineCount+j))
+		        If lineLeft + lineWidths(j) > nextLeft Then nextLeft = lineLeft + lineWidths(j)
+		        lineTop = lineTop + g.TextHeight
+		        g.DrawString slices(i*lineCount+j), lineLeft, lineTop
+		        
+		        ' Check for dashes - this chord starts with a non-space
+		        dashWidth = g.StringWidth("-")
+		        If i > 0 And Len(slices(i*lineCount+j)) > 0 And Left(slices(i*lineCount+j), 1) <> " " Then
+		          If dashStarts(j) < lineLeft - dashWidth Then g.DrawString "-", dashStarts(j) + ((lineLeft-dashStarts(j))/2) - (dashWidth/2), lineTop
+		        End If
+		        
+		        If Len(slices(i*lineCount+j)) = 0 Then
+		          ' Leave dashstarts(j) alone if this slice is empty
+		        ElseIf Right(slices(i*lineCount+j), 1) <> " " Then
+		          ' If this line ends with a character, we may need to dash this slice
+		          dashStarts(j) = lineLeft + lineWidths(j)
+		        Else
+		          ' It ends with a space. No chance of dashing.
+		          dashStarts(j) = g.Width
+		        End If
+		        
+		      End If
+		    Next j
+		  Next i
+		  
+		  Return lineTop - oldY
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Draw_ChordLyricLine
   parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width as Integer, zoom As Double, section As String, ByRef slices() As String, lineCount As Integer, ByRef Page As Group2D
   rslt/S: Integer
   flag/N: 33
@@ -552,118 +664,6 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: Draw_ChordLyricLine
-  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, section As String, ByRef slices() As String, lineCount As Integer
-  rslt/S: Integer
-  flag/N: 33
-  sorc/d: (Enco/N: 134217984
-		Function Draw_ChordLyricLine(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, section As String, ByRef slices() As String, lineCount As Integer) As Integer
-		  Dim sliceCount As Integer
-		  sliceCount = UBound(slices) / lineCount
-		  
-		  Dim lineWidths(0), dashStarts(0), lineTop, lineLeft, nextLeft, dashWidth As Integer
-		  Dim i, j, oldY As Integer
-		  ReDim lineWidths(linecount+1) ' We put in an extra in case of capo chords
-		  ReDim dashStarts(linecount) ' We don't need dashstarts(1) b/c it is the chords line; oh well
-		  Dim capoChord As String
-		  
-		  Dim tempFont As FontFace
-		  
-		  oldY = y
-		  
-		  If lineCount > 2 Then
-		    x = x + Draw_LinePrefixes(songDoc, g, x, y, zoom, slices, lineCount)
-		  End If ' End of writing of verse numbers
-		  
-		  nextLeft = x
-		  
-		  For i = 0 To sliceCount - 1 ' Loop through each slice
-		    lineTop = y
-		    lineLeft = nextLeft
-		    For j = 1 To lineCount ' Loop through the lines and print
-		      If i = 0 Then slices(i*lineCount+j) = Mid(slices(i*lineCount+j), 2)
-		      If j = 1 Then ' Chord line
-		        tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
-		        g.TextFont = tempFont.Name
-		        g.TextSize = tempFont.Size * zoom
-		        g.Bold = tempFont.Bold
-		        g.Italic = tempFont.Italic
-		        g.Underline = tempFont.Underline
-		        g.ForeColor = tempFont.ForeColor
-		        slices(i*lineCount+j) = RTrim(slices(i*lineCount+j))
-		        lineWidths(j) = g.StringWidth(slices(i*lineCount+j)) + (g.TextAscent/2)
-		        
-		        If lineLeft + lineWidths(j) > nextLeft Then nextLeft = lineLeft + lineWidths(j)
-		        lineTop = lineTop + g.TextHeight
-		        g.DrawString slices(i*lineCount+j), lineLeft, lineTop + g.TextHeight - g.TextAscent
-		        
-		        ' Place Capo Chord
-		        If SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print") Then
-		          If MainWindow.pop_song_accidentals.ListIndex = 0 Then
-		            capoChord = SingleTranspose(slices(i*lineCount+j), 12-SmartML.GetValueN(songDoc.DocumentElement, "capo"), True)
-		          Else
-		            capoChord = SingleTranspose(slices(i*lineCount+j), 12-SmartML.GetValueN(songDoc.DocumentElement, "capo"), False)
-		          End If
-		          tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
-		          g.TextFont = tempFont.Name
-		          g.TextSize = tempFont.Size * zoom
-		          g.Bold = tempFont.Bold
-		          g.Italic = tempFont.Italic
-		          g.Underline = tempFont.Underline
-		          g.ForeColor = tempFont.ForeColor
-		          lineWidths(lineCount+1) = g.StringWidth(capoChord) + (g.TextAscent/2)
-		          
-		          If lineLeft + lineWidths(lineCount+1) > nextLeft Then nextLeft = lineLeft + lineWidths(lineCount+1)
-		          lineTop = lineTop + g.TextHeight
-		          g.DrawString capoChord, lineLeft, lineTop + g.TextHeight - g.TextAscent
-		          
-		        End If
-		      Else ' Lyric line
-		        tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
-		        g.TextFont = tempFont.Name
-		        g.TextSize = tempFont.Size * zoom
-		        g.Bold = tempFont.Bold
-		        g.Italic = tempFont.Italic
-		        g.Underline = tempFont.Underline
-		        g.ForeColor = tempFont.ForeColor
-		        If Left(section,1) = "C" Then
-		          g.Bold = True
-		        Else
-		          g.Bold = tempFont.Bold
-		        End If
-		        slices(i*lineCount+j) = ReplaceAll(slices(i*lineCount+j), "_", "")
-		        slices(i*lineCount+j) = slices(i*lineCount+j).CleanSpaces
-		        lineWidths(j) = g.StringWidth(slices(i*lineCount+j))
-		        If lineLeft + lineWidths(j) > nextLeft Then nextLeft = lineLeft + lineWidths(j)
-		        lineTop = lineTop + g.TextHeight
-		        g.DrawString slices(i*lineCount+j), lineLeft, lineTop
-		        
-		        ' Check for dashes - this chord starts with a non-space
-		        dashWidth = g.StringWidth("-")
-		        If i > 0 And Len(slices(i*lineCount+j)) > 0 And Left(slices(i*lineCount+j), 1) <> " " Then
-		          If dashStarts(j) < lineLeft - dashWidth Then g.DrawString "-", dashStarts(j) + ((lineLeft-dashStarts(j))/2) - (dashWidth/2), lineTop
-		        End If
-		        
-		        If Len(slices(i*lineCount+j)) = 0 Then
-		          ' Leave dashstarts(j) alone if this slice is empty
-		        ElseIf Right(slices(i*lineCount+j), 1) <> " " Then
-		          ' If this line ends with a character, we may need to dash this slice
-		          dashStarts(j) = lineLeft + lineWidths(j)
-		        Else
-		          ' It ends with a space. No chance of dashing.
-		          dashStarts(j) = g.Width
-		        End If
-		        
-		      End If
-		    Next j
-		  Next i
-		  
-		  Return lineTop - oldY
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
   name/S: Draw_CommentLine
   parm/S: g As Graphics, x As Integer, y As Integer, Width as Integer,  zoom As Double, ByRef line As String, ByRef Page As Group2D
   rslt/S: Integer
@@ -718,67 +718,6 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  g.DrawString Mid(line, 2), x, y + g.TextHeight
 		  
 		  Return g.TextHeight
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Draw_Footer
-  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width As Integer, zoom As Double
-  rslt/S: Integer
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Function Draw_Footer(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width As Integer, zoom As Double) As Integer
-		  ' Pass x, y based on lower-left corner
-		  ' Returns height
-		  Dim ext As String
-		  Dim ccli_num As String
-		  Dim ccli_song As String
-		  Dim height As Integer
-		  Dim tempFont As FontFace
-		  Dim Copyright As String
-		  Dim Symbol As String
-		  
-		  ' TODO: This function needs to be internationalized
-		  '
-		  ' Copyright stuff
-		  g.PenWidth = 1
-		  g.PenHeight = 1
-		  height = 0
-		  
-		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "copyright")
-		  g.TextFont = tempFont.Name
-		  g.TextSize = tempFont.Size * zoom
-		  tempFont.Size = tempFont.Size * zoom
-		  g.Bold = tempFont.Bold
-		  g.Italic = tempFont.Italic
-		  g.Underline = tempFont.Underline
-		  g.ForeColor = tempFont.ForeColor
-		  
-		  ext = SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")
-		  If Len(ext) > 0 Then
-		    ext = App.T.Translate("songml/ccli_license/@caption") + " " + ext
-		    height = height + GraphicsX.DrawFontString(g, ext, x, y-height, tempFont, width, "center", 0, "bottom")
-		  End If
-		  ext = SmartML.GetValue(songDoc.DocumentElement, "ccli", True)
-		  If Len(ext) > 0 Then
-		    ext = App.T.Translate("songml/ccli_number/@caption") + " " + ext
-		    height = height + GraphicsX.DrawFontString(g, ext, x, y-height, tempFont, width, "center", 0, "bottom")
-		  End If
-		  ext = SmartML.GetValue(songDoc.DocumentElement, "copyright", True)
-		  App.DebugWriter.Write "In SongML::Draw_Footer, copyright is '" + ext + "'"
-		  Dim enc As TextEncoding
-		  enc = Encoding(ext)
-		  App.DebugWriter.Write Chr(9) + "Encoding is " + enc.internetName
-		  If Len(ext) > 0 Then
-		    ext = App.T.Translate("songml/copyright/@caption") + " " +_
-		        App.T.Translate("songml/symbol/@caption") + " " + ext
-		    height = height + GraphicsX.DrawFontString(g, ext, x, y-height, tempFont, width, "center", 0, "bottom")
-		  End If
-		  g.ForeColor = Rgb(0,0,0)
-		  g.DrawLine x, y - height, x + width, y - height
-		  height = height + g.TextHeight
-		  Return height
 		End Function
   )
  Meth/g: 
@@ -866,6 +805,67 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  Footer.Append GraphicsX.DrawLineV(x, y - height, x + width, y - height, RGB(0, 0, 0), g.PenWidth)
 		  height = height + g.TextHeight 'One line margin above horizontal line
 		  Page.Append Footer
+		  Return height
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Draw_Footer
+  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width As Integer, zoom As Double
+  rslt/S: Integer
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function Draw_Footer(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width As Integer, zoom As Double) As Integer
+		  ' Pass x, y based on lower-left corner
+		  ' Returns height
+		  Dim ext As String
+		  Dim ccli_num As String
+		  Dim ccli_song As String
+		  Dim height As Integer
+		  Dim tempFont As FontFace
+		  Dim Copyright As String
+		  Dim Symbol As String
+		  
+		  ' TODO: This function needs to be internationalized
+		  '
+		  ' Copyright stuff
+		  g.PenWidth = 1
+		  g.PenHeight = 1
+		  height = 0
+		  
+		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "copyright")
+		  g.TextFont = tempFont.Name
+		  g.TextSize = tempFont.Size * zoom
+		  tempFont.Size = tempFont.Size * zoom
+		  g.Bold = tempFont.Bold
+		  g.Italic = tempFont.Italic
+		  g.Underline = tempFont.Underline
+		  g.ForeColor = tempFont.ForeColor
+		  
+		  ext = SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")
+		  If Len(ext) > 0 Then
+		    ext = App.T.Translate("songml/ccli_license/@caption") + " " + ext
+		    height = height + GraphicsX.DrawFontString(g, ext, x, y-height, tempFont, width, "center", 0, "bottom")
+		  End If
+		  ext = SmartML.GetValue(songDoc.DocumentElement, "ccli", True)
+		  If Len(ext) > 0 Then
+		    ext = App.T.Translate("songml/ccli_number/@caption") + " " + ext
+		    height = height + GraphicsX.DrawFontString(g, ext, x, y-height, tempFont, width, "center", 0, "bottom")
+		  End If
+		  ext = SmartML.GetValue(songDoc.DocumentElement, "copyright", True)
+		  App.DebugWriter.Write "In SongML::Draw_Footer, copyright is '" + ext + "'"
+		  Dim enc As TextEncoding
+		  enc = Encoding(ext)
+		  App.DebugWriter.Write Chr(9) + "Encoding is " + enc.internetName
+		  If Len(ext) > 0 Then
+		    ext = App.T.Translate("songml/copyright/@caption") + " " +_
+		        App.T.Translate("songml/symbol/@caption") + " " + ext
+		    height = height + GraphicsX.DrawFontString(g, ext, x, y-height, tempFont, width, "center", 0, "bottom")
+		  End If
+		  g.ForeColor = Rgb(0,0,0)
+		  g.DrawLine x, y - height, x + width, y - height
+		  height = height + g.TextHeight
 		  Return height
 		End Function
   )
@@ -1151,131 +1151,6 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Draw_HeadingLine
-  parm/S: g As Graphics, x As Integer, y As Integer, zoom As Double, heading As String
-  rslt/S: Integer
-  flag/N: 33
-  sorc/d: (Enco/N: 134217984
-		Function Draw_HeadingLine(g As Graphics, x As Integer, y As Integer, zoom As Double, heading As String) As Integer
-		  Dim tempFont As FontFace
-		  Dim j, oddOffSet, oldY, oldWidth, oldHeight As Integer
-		  Dim prefix As String
-		  //++
-		  Dim rr As New RoundRectShape
-		  Dim rrx, rry As Integer
-		  Dim PreChorus As String
-		  Dim Chorus As String
-		  Dim Bridge As String
-		  Dim Tag As String
-		  
-		  PreChorus = App.T.Translate("songml/prechorus/@caption")
-		  If PreChorus = "" Then PreChorus = "PreChorus"
-		  Chorus = App.T.Translate("songml/chorus/@caption")
-		  If Chorus = "" Then Chorus = "Chorus"
-		  Bridge = App.T.Translate("songml/bridge/@caption")
-		  If Bridge = "" Then Bridge = "Bridge"
-		  Tag = App.T.Translate("songml/tag/@caption")
-		  If Tag = "" Then Tag = "Tag"
-		  //--
-		  
-		  oldY = y
-		  
-		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "heading")
-		  
-		  oldWidth = g.PenWidth
-		  oldHeight = g.PenHeight
-		  g.PenWidth = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "style/@border_thickness")
-		  g.PenHeight = g.PenWidth
-		  
-		  g.TextFont = tempFont.Name
-		  g.TextSize = tempFont.Size * zoom
-		  g.Bold = tempFont.Bold
-		  g.Italic = tempFont.Italic
-		  g.Underline = tempFont.Underline
-		  g.ForeColor = tempFont.ForeColor
-		  y = y + g.TextHeight
-		  
-		  oddOffSet = 1
-		  If (g.PenWidth+2) Mod 2 = 0 Then oddOffSet = 0
-		  
-		  If Uppercase(Left(heading, 1)) = "V" Then   ' -- VERSE --
-		    heading = " " + Mid(heading, 2) + " "
-		    If Len(heading) = 2 Then heading = " Verse "
-		    g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth+oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  ElseIf Uppercase(Left(heading, 1)) = "P" Then   ' -- PRE-CHORUS --
-		    If Len(heading) > 1 Then
-		      heading = " Pre-chorus " + Mid(heading, 2)
-		    Else
-		      heading = " Pre-chorus "
-		    End If
-		    
-		    j = y - g.TextAscent - (g.PenWidth/2)
-		    If (g.PenWidth+3) Mod 2 = 0 Then j = j + 1
-		    g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
-		    j = j + g.TextHeight + 1
-		    g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  ElseIf Uppercase(Left(heading, 1)) = "C" Then   ' -- CHORUS --
-		    prefix = " Chorus"
-		    If Len(heading) > 1 Then prefix = " Chorus "
-		    heading = prefix + Mid(heading, 2) + " "
-		    g.DrawRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading)+g.PenWidth + oddOffset, g.TextHeight+1
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
-		    prefix = " Bridge"
-		    If Len(heading) > 1 Then prefix = " Bridge "
-		    heading = prefix + Mid(heading, 2) + " "    
-		    
-		    //++EMP
-		    //This stuff is here to test an alternative way of drawing,
-		    // but probably isn't any better than the original
-		    //
-		    rr.Width = g.StringWidth(heading) + g.PenWidth + oddOffSet
-		    rr.Height = g.TextHeight + 1
-		    rr.BorderWidth = g.PenWidth
-		    rr.Border = 100 'Temp
-		    rr.CornerHeight = rr.Height / 2
-		    rr.CornerWidth = rr.CornerHeight
-		    rrx = x + g.PenWidth/2+1
-		    rry = y - g.TextAscent
-		    rr.Y = rry + (rr.Height / 2)
-		    rr.X = rrx + (rr.Width / 2)
-		    rr.Fill = 0
-		    rr.BorderColor = g.ForeColor
-		    g.DrawObject rr
-		    'g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
-		    'g.DrawRoundRect rrx, rry, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
-		    //--
-		    
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  ElseIf Uppercase(Left(heading, 1)) = "T" Then   ' -- TAG --
-		    prefix = " Tag"
-		    If Len(heading) > 1 Then prefix = " Tag "
-		    heading = prefix + Mid(heading, 2) + " "
-		    ' Side
-		    g.DrawLine x + g.PenWidth/2, y - g.TextAscent, x + g.PenWidth/2, y+3
-		    ' Bottom
-		    g.DrawLine x + g.PenWidth/2, y+3, x + g.StringWidth(heading) + oddOffset + 2, y+3
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  Else
-		    g.DrawString heading, x, y
-		  End If
-		  
-		  g.PenWidth = oldWidth
-		  g.PenHeight = oldHeight
-		  
-		  Return y - oldY
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Draw_HeadingLine
   parm/S: g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, heading As String, Page As Group2D
   rslt/S: Integer
   flag/N: 33
@@ -1456,6 +1331,207 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: Draw_HeadingLine
+  parm/S: g As Graphics, x As Integer, y As Integer, zoom As Double, heading As String
+  rslt/S: Integer
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function Draw_HeadingLine(g As Graphics, x As Integer, y As Integer, zoom As Double, heading As String) As Integer
+		  Dim tempFont As FontFace
+		  Dim j, oddOffSet, oldY, oldWidth, oldHeight As Integer
+		  Dim prefix As String
+		  //++
+		  Dim rr As New RoundRectShape
+		  Dim rrx, rry As Integer
+		  Dim PreChorus As String
+		  Dim Chorus As String
+		  Dim Bridge As String
+		  Dim Tag As String
+		  
+		  PreChorus = App.T.Translate("songml/prechorus/@caption")
+		  If PreChorus = "" Then PreChorus = "PreChorus"
+		  Chorus = App.T.Translate("songml/chorus/@caption")
+		  If Chorus = "" Then Chorus = "Chorus"
+		  Bridge = App.T.Translate("songml/bridge/@caption")
+		  If Bridge = "" Then Bridge = "Bridge"
+		  Tag = App.T.Translate("songml/tag/@caption")
+		  If Tag = "" Then Tag = "Tag"
+		  //--
+		  
+		  oldY = y
+		  
+		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "heading")
+		  
+		  oldWidth = g.PenWidth
+		  oldHeight = g.PenHeight
+		  g.PenWidth = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "style/@border_thickness")
+		  g.PenHeight = g.PenWidth
+		  
+		  g.TextFont = tempFont.Name
+		  g.TextSize = tempFont.Size * zoom
+		  g.Bold = tempFont.Bold
+		  g.Italic = tempFont.Italic
+		  g.Underline = tempFont.Underline
+		  g.ForeColor = tempFont.ForeColor
+		  y = y + g.TextHeight
+		  
+		  oddOffSet = 1
+		  If (g.PenWidth+2) Mod 2 = 0 Then oddOffSet = 0
+		  
+		  If Uppercase(Left(heading, 1)) = "V" Then   ' -- VERSE --
+		    heading = " " + Mid(heading, 2) + " "
+		    If Len(heading) = 2 Then heading = " Verse "
+		    g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth+oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  ElseIf Uppercase(Left(heading, 1)) = "P" Then   ' -- PRE-CHORUS --
+		    If Len(heading) > 1 Then
+		      heading = " Pre-chorus " + Mid(heading, 2)
+		    Else
+		      heading = " Pre-chorus "
+		    End If
+		    
+		    j = y - g.TextAscent - (g.PenWidth/2)
+		    If (g.PenWidth+3) Mod 2 = 0 Then j = j + 1
+		    g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
+		    j = j + g.TextHeight + 1
+		    g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  ElseIf Uppercase(Left(heading, 1)) = "C" Then   ' -- CHORUS --
+		    prefix = " Chorus"
+		    If Len(heading) > 1 Then prefix = " Chorus "
+		    heading = prefix + Mid(heading, 2) + " "
+		    g.DrawRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading)+g.PenWidth + oddOffset, g.TextHeight+1
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
+		    prefix = " Bridge"
+		    If Len(heading) > 1 Then prefix = " Bridge "
+		    heading = prefix + Mid(heading, 2) + " "    
+		    
+		    //++EMP
+		    //This stuff is here to test an alternative way of drawing,
+		    // but probably isn't any better than the original
+		    //
+		    rr.Width = g.StringWidth(heading) + g.PenWidth + oddOffSet
+		    rr.Height = g.TextHeight + 1
+		    rr.BorderWidth = g.PenWidth
+		    rr.Border = 100 'Temp
+		    rr.CornerHeight = rr.Height / 2
+		    rr.CornerWidth = rr.CornerHeight
+		    rrx = x + g.PenWidth/2+1
+		    rry = y - g.TextAscent
+		    rr.Y = rry + (rr.Height / 2)
+		    rr.X = rrx + (rr.Width / 2)
+		    rr.Fill = 0
+		    rr.BorderColor = g.ForeColor
+		    g.DrawObject rr
+		    'g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
+		    'g.DrawRoundRect rrx, rry, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
+		    //--
+		    
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  ElseIf Uppercase(Left(heading, 1)) = "T" Then   ' -- TAG --
+		    prefix = " Tag"
+		    If Len(heading) > 1 Then prefix = " Tag "
+		    heading = prefix + Mid(heading, 2) + " "
+		    ' Side
+		    g.DrawLine x + g.PenWidth/2, y - g.TextAscent, x + g.PenWidth/2, y+3
+		    ' Bottom
+		    g.DrawLine x + g.PenWidth/2, y+3, x + g.StringWidth(heading) + oddOffset + 2, y+3
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  Else
+		    g.DrawString heading, x, y
+		  End If
+		  
+		  g.PenWidth = oldWidth
+		  g.PenHeight = oldHeight
+		  
+		  Return y - oldY
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Draw_LinePrefixes
+  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef slices() As String, lineCount As Integer, ByRef Page As Group2D
+  rslt/S: Integer
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function Draw_LinePrefixes(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef slices() As String, lineCount As Integer, ByRef Page As Group2D) As Integer
+		  Dim tempFont As FontFace
+		  Dim j, lineTop, sliceCount As Integer
+		  Dim prefix As String
+		  Dim ts As StringShape 'EMP 09/05
+		  Dim cs As New CurveShape
+		  
+		  sliceCount = UBound(slices) / lineCount
+		  lineTop = y
+		  
+		  ' Skip the chord line
+		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
+		  tempFont.OntoGraphics g
+		  g.TextSize = Round(g.TextSize * zoom)
+		  y = y + g.TextHeight ' Skip past the chord line
+		  
+		  ' Skip the capo line if needed
+		  If SmartML.GetValueB(songDoc.DocumentElement, "capo/@print") Then
+		    tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
+		    tempFont.OntoGraphics g
+		    g.TextSize = Round(g.TextSize * zoom)
+		    y = y + g.TextHeight ' Skip past the chord line
+		  End If
+		  
+		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
+		  tempfont.Size = Round(tempfont.Size * zoom)
+		  tempFont.OntoGraphics g
+		  
+		  Dim lineLeft, nextLeft As Integer
+		  
+		  lineTop = y
+		  For j = 2 To lineCount ' Loop through the lines and print
+		    prefix = Left(slices(j),1)
+		    lineLeft = x + g.StringWidth(prefix)
+		    ts = New StringShape
+		    tempFont.OntoStringShape ts
+		    g.Bold = Not tempFont.Bold ' Inverse
+		    ts.Bold = Not tempFont.Bold 'EMP 09/05
+		    ts.Text = prefix
+		    ts.x = x + (g.StringWidth(prefix) / 2)
+		    ts.y = linetop + g.TextAscent
+		    Page.Append ts
+		    'g.DrawString prefix, x, lineTop
+		    g.Bold = tempFont.Bold
+		    ts.Bold = tempFont.Bold
+		    If lineLeft > nextLeft Then nextLeft = lineLeft
+		    lineTop = lineTop + g.TextHeight
+		  Next j
+		  
+		  ' Draw the line
+		  'nextLeft = nextLeft + (g.TextAscent/4)
+		  nextLeft = nextLeft + g.StringWidth("N") ' one-EN separation
+		  g.PenWidth = 0
+		  g.PenHeight = 0
+		  'g.DrawLine nextLeft, y+(g.TextAscent/4), nextLeft, lineTop+(g.TextAscent/4)
+		  cs.x = nextLeft
+		  cs.y = y + (g.TextAscent / 4)
+		  cs.x2 = nextleft
+		  cs.y2 = linetop + (g.TextAscent / 4)
+		  cs.BorderColor = g.ForeColor
+		  cs.BorderWidth = 1
+		  Page.Append cs
+		  'nextLeft = nextLeft + (g.TextAscent/2)
+		  nextLeft = nextLeft + g.StringWidth("M")
+		  
+		  Return nextLeft - x
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: Draw_LinePrefixes
   parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, ByRef slices() As String, lineCount As Integer
   rslt/S: Integer
@@ -1534,82 +1610,6 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  g.PenHeight = 0
 		  g.DrawLine nextLeft, y+(g.TextAscent/4), nextLeft, lineTop+(g.TextAscent/4)
 		  nextLeft = nextLeft + (g.TextAscent/2)
-		  
-		  Return nextLeft - x
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Draw_LinePrefixes
-  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef slices() As String, lineCount As Integer, ByRef Page As Group2D
-  rslt/S: Integer
-  flag/N: 33
-  sorc/d: (Enco/N: 134217984
-		Function Draw_LinePrefixes(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef slices() As String, lineCount As Integer, ByRef Page As Group2D) As Integer
-		  Dim tempFont As FontFace
-		  Dim j, lineTop, sliceCount As Integer
-		  Dim prefix As String
-		  Dim ts As StringShape 'EMP 09/05
-		  Dim cs As New CurveShape
-		  
-		  sliceCount = UBound(slices) / lineCount
-		  lineTop = y
-		  
-		  ' Skip the chord line
-		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
-		  tempFont.OntoGraphics g
-		  g.TextSize = Round(g.TextSize * zoom)
-		  y = y + g.TextHeight ' Skip past the chord line
-		  
-		  ' Skip the capo line if needed
-		  If SmartML.GetValueB(songDoc.DocumentElement, "capo/@print") Then
-		    tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
-		    tempFont.OntoGraphics g
-		    g.TextSize = Round(g.TextSize * zoom)
-		    y = y + g.TextHeight ' Skip past the chord line
-		  End If
-		  
-		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
-		  tempfont.Size = Round(tempfont.Size * zoom)
-		  tempFont.OntoGraphics g
-		  
-		  Dim lineLeft, nextLeft As Integer
-		  
-		  lineTop = y
-		  For j = 2 To lineCount ' Loop through the lines and print
-		    prefix = Left(slices(j),1)
-		    lineLeft = x + g.StringWidth(prefix)
-		    ts = New StringShape
-		    tempFont.OntoStringShape ts
-		    g.Bold = Not tempFont.Bold ' Inverse
-		    ts.Bold = Not tempFont.Bold 'EMP 09/05
-		    ts.Text = prefix
-		    ts.x = x + (g.StringWidth(prefix) / 2)
-		    ts.y = linetop + g.TextAscent
-		    Page.Append ts
-		    'g.DrawString prefix, x, lineTop
-		    g.Bold = tempFont.Bold
-		    ts.Bold = tempFont.Bold
-		    If lineLeft > nextLeft Then nextLeft = lineLeft
-		    lineTop = lineTop + g.TextHeight
-		  Next j
-		  
-		  ' Draw the line
-		  'nextLeft = nextLeft + (g.TextAscent/4)
-		  nextLeft = nextLeft + g.StringWidth("N") ' one-EN separation
-		  g.PenWidth = 0
-		  g.PenHeight = 0
-		  'g.DrawLine nextLeft, y+(g.TextAscent/4), nextLeft, lineTop+(g.TextAscent/4)
-		  cs.x = nextLeft
-		  cs.y = y + (g.TextAscent / 4)
-		  cs.x2 = nextleft
-		  cs.y2 = linetop + (g.TextAscent / 4)
-		  cs.BorderColor = g.ForeColor
-		  cs.BorderWidth = 1
-		  Page.Append cs
-		  'nextLeft = nextLeft + (g.TextAscent/2)
-		  nextLeft = nextLeft + g.StringWidth("M")
 		  
 		  Return nextLeft - x
 		End Function

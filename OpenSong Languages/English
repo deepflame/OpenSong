@@ -505,10 +505,11 @@ T: Tag</keys>
      <ccli_license caption="CCLI License #"/>
      <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
      <separator caption="|NL|"/>
-     <sharpchords>C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
-     <altsharpchords>B#,C#,D,D#,E,E#,F,F#,G,G#,A,A#,B</altsharpchords>
-     <flatchords>C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
-     <altflatchords>C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+     <!--The leading comma is needed for internal data structure reasons.-->
+     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
+     <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
+     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
+     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
   </songml>
   
  

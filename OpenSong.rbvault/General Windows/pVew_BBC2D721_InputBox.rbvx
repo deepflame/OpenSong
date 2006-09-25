@@ -450,6 +450,11 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
     srcl/S: styleFlags = SetWindowPos( self.Handle, HWND_TOP, 0, 0, 0, 0, _
     srcl/S: SWP_NOSIZE + SWP_NOMOVE + SWP_NOOWNERZORDER)
     srcl/S: 
+    srcl/S: #ElseIf TargetCarbon Then
+    srcl/S: Dim Status As Integer
+    srcl/S: Declare Function SelectWindow Lib "CarbonLib" (window As Integer) As Integer
+    srcl/S: 
+    srcl/S: Status = SelectWindow(wnd.Handle)
     srcl/S: #EndIf
     srcl/S: End Sub
    sorc/g: 

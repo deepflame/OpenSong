@@ -460,23 +460,6 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: ChangeWindowState
-  parm/S: wnd As Window, style As Integer
-  rslt/S: 
-  flag/N: 0
-  sorc/G: 
-   Enco/N: 134217984
-   srcl/S: Sub ChangeWindowState(wnd As Window, style As Integer)
-   srcl/S: #if TargetWin32
-   srcl/S: Declare Sub ShowWindow Lib "User32" (wnd As Integer, nCmdShow As Integer)
-   srcl/S: 
-   srcl/S: ShowWindow( wnd.WinHWND, style )
-   srcl/S: #endif
-   srcl/S: End Sub
-  sorc/g: 
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
   name/S: FriendlyXMLException
   parm/S: e As XMLException
   rslt/S: String
@@ -659,7 +642,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    Enco/N: 134217984
    srcl/S: Sub MinimizeWindow(Wnd As Window)
    srcl/S: //++
-   srcl/S: // Provides functionality to minimize a window to the taskbar on Windows, or Hide the window on Mac
+   srcl/S: // Provides functionality to minimize a window to the taskbar on Windows or Mac
    srcl/S: // No functionality yet on Linux (due to testing constraints)
    srcl/S: //
    srcl/S: // This routine can be replaced for all platforms by the Window.Minimize method when OpenSong moves
@@ -668,13 +651,14 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: // Ed Palmer, May 2006
    srcl/S: //--
    srcl/S: 
-   srcl/S: Dim hwnd As Integer
    srcl/S: Dim status As Integer
+   srcl/S: 
+   srcl/S: #If TargetWin32 Then
    srcl/S: Dim lparam As New MemoryBlock(4)
+   srcl/S: Dim hwnd As Integer
    srcl/S: Const WM_SYSCOMMAND = 274
    srcl/S: Const SC_MINIMIZE = 61472
    srcl/S: 
-   srcl/S: #If TargetWin32 Then
    srcl/S: Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
    srcl/S: 
    srcl/S: hwnd = Wnd.WinHWND
@@ -683,9 +667,13 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: 
    srcl/S: Return
    srcl/S: 
-   srcl/S: #ElseIf TargetMacOS
-   srcl/S: Wnd.Hide
-   srcl/S: #Endif
+   srcl/S: #ElseIf TargetCarbon
+   srcl/S: Const COLLAPSE = 1
+   srcl/S: Const RESTORE = 0
+   srcl/S: Declare Function CollapseWindow Lib "CarbonLib" (window As Integer, collapse As Integer) As Integer
+   srcl/S: 
+   srcl/S: status = CollapseWindow(Wnd.Handle, COLLAPSE)
+   srcl/S: #EndIf
    srcl/S: End Sub
   sorc/g: 
  Meth/g: 
@@ -715,9 +703,13 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: 
    srcl/S: Return
    srcl/S: 
-   srcl/S: #ElseIf TargetMacOS
-   srcl/S: Wnd.Show
-   srcl/S: #Endif
+   srcl/S: #ElseIf TargetCarbon
+   srcl/S: Const COLLAPSE = 1
+   srcl/S: Const RESTORE = 0
+   srcl/S: Declare Function CollapseWindow Lib "CarbonLib" (window As Integer, collapse As Integer) As Integer
+   srcl/S: 
+   srcl/S: status = CollapseWindow(Wnd.Handle, RESTORE)
+   srcl/S: #EndIf
    srcl/S: End Sub
   sorc/g: 
  Meth/g: 
@@ -736,6 +728,11 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Declare Sub SetForegroundWindow Lib "user32" (ByVal hwnd as Integer)
    srcl/S: 
    srcl/S: SetForegroundWindow(wnd.WinHWND)
+   srcl/S: #ElseIf TargetCarbon Then
+   srcl/S: Dim Status As Integer
+   srcl/S: Declare Function SelectWindow Lib "CarbonLib" (window As Integer) As Integer
+   srcl/S: 
+   srcl/S: Status = SelectWindow(wnd.Handle)
    srcl/S: #Endif
    srcl/S: '--
    srcl/S: End Sub

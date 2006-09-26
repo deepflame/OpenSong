@@ -114,3 +114,4 @@ Deleted load_settings/load_plugins
 load_settings/checking_folders
 load_settings/main
 song_search/hymn_number
+folderdb_errors/error@code=13

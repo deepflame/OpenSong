@@ -11139,24 +11139,40 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		Sub ActionSongMove()
 		  Dim f As FolderItem
 		  Dim folder, folders(0) As String
-		  
+		  Dim oldfolder As String
+		  Dim listindex As Integer
+		  Dim status As Boolean
 		  ActionSongAskSave
+		  listindex = lst_songs_songs.ListIndex
+		  oldfolder = lst_songs_songs.CellTag(listindex, 0)
 		  folders = Songs.GetFolders
 		  folders.Remove 1 ' drop the ( All )
 		  folder = InputBox.Pick(App.T.Translate("songs_mode/selected_song/move/where/@caption", lst_songs_songs.Text), folders, "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )")
 		  
 		  If folder.Len = 0 Then Return
-		  If folder = pop_songs_song_folders.Text Then Return
+		  If folder + "/" = oldfolder Then Return
 		  
-		  If Not Songs.MoveFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text, folder) Then
-		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
+		  App.MouseCursor = WatchCursor // Wait...
+		  status = Songs.MoveFile(oldfolder + lst_songs_songs.Text, folder)
+		  App.MouseCursor = Nil // Don't wait...
+		  
+		  If Not status Then
+		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text, folder)
 		  Else
 		    If pop_songs_song_folders.Text <> "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Then
 		      lst_songs_songs.RemoveRow lst_songs_songs.ListIndex
-		      Status_SongOpen = False
-		      Status_SongChanged = False
-		      EnableMenuItems
+		      // Open the song at the same index if possible
+		      If listindex < lst_songs_songs.ListCount Then
+		        lst_songs_songs.ListIndex = listindex
+		      Else
+		        Status_SongOpen = False
+		        Status_SongChanged = False
+		      End If
+		    Else  // Fix the folder info on this file
+		      lst_songs_songs.CellTag(listindex, 0) = folder + "/"
+		      lst_songs_songs.ListIndex = listindex // Force a reopen...this will fix all the status items and fields
 		    End If
+		    EnableMenuItems
 		  End If
 		  
 		End Sub
@@ -11233,22 +11249,23 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      i = i + 1
 		    Wend
 		    lst_songs_songs.InsertRow i, t
+		    Loc = lst_songs_songs.LastIndex
+		    lst_songs_songs.CellTag(Loc, 0) = pop_songs_song_folders.Text + "/"
 		    Globals.OldSongFileName = ""
 		    Globals.OldSongSel = -1 // This flags lst_songs_songs.Changed not to do anything yet
 		    Status_SongOpen = False //Hold off on unnecessary refreshes
 		    LoadSongFields 'f
 		    Status_SongOpen = True
 		    Status_SongChanged = False
-		    lst_songs_songs.ListIndex = lst_songs_songs.LastIndex
-		    lst_songs_songs.selected(lst_songs_songs.LastIndex) = True
+		    lst_songs_songs.ListIndex = Loc
+		    lst_songs_songs.selected(Loc) = True
 		    Globals.OldSongFileName = GetSongFolderPath(pop_songs_song_folders.Text) + "/" + t
-		    Globals.OldSongSel = lst_songs_songs.LastIndex
+		    Globals.OldSongSel = Loc
 		  End If
 		  UpdateMenuItems
 		  If pge_contents.Value = 0 Then //General panel, go to author field
 		    edt_song_author.SetFocus
 		  End If
-		  edt_song_author.SetFocus
 		End Sub
    )
   Meth/g: 
@@ -11382,13 +11399,17 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub ActionSongRemove()
+		  DIm listindex As Integer
+		  listindex = lst_songs_songs.ListIndex
+		  
 		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", lst_songs_songs.Text)) Then
-		    If Not Songs.DeleteFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text) Then
+		    If Not Songs.DeleteFile(lst_songs_songs.CellTag(ListIndex, 0) + lst_songs_songs.Text) Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
 		    Else
-		      lst_songs_songs.RemoveRow lst_songs_songs.ListIndex
-		      Status_SongOpen = False
-		      Status_SongChanged = False
+		      lst_songs_songs.RemoveRow listindex
+		      If listindex < lst_songs_songs.listcount Then
+		        lst_songs_songs.ListIndex = listindex ' Open the next song in the list
+		      End If
 		      EnableMenuItems
 		    End If
 		  End If
@@ -11403,26 +11424,34 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub ActionSongRevert()
-		  Dim f As FolderItem
+		  'Dim f As FolderItem
+		  Dim listindex As Integer
 		  //++
 		  // Feature request 1528693: require confirmation
 		  //--
 		  If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
-		  
-		  f = Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text)
-		  
-		  If f <> Nil And f.Exists Then
-		    App.MouseCursor = WatchCursor
-		    CurrentSong = SmartML.XDocFromFile(f)
-		    App.MouseCursor = Nil
-		    Status_SongOpen = False ' suppress updates
-		    LoadSongFields
-		    Status_SongOpen = True
-		    Status_SongChanged = False
-		    EnableMenuItems
-		  Else
-		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
-		  End If
+		  //++
+		  // EMP, September 2006
+		  // Found easier way to do this that won't require as much maintenance.
+		  // Left old code as comments in case there's an unexpected side effect.
+		  //--
+		  listindex = lst_songs_songs.ListIndex
+		  lst_songs_songs.ListIndex = -1
+		  lst_songs_songs.ListIndex = ListIndex
+		  'f = Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text)
+		  '
+		  'If f <> Nil And f.Exists Then
+		  'App.MouseCursor = WatchCursor
+		  'CurrentSong = SmartML.XDocFromFile(f)
+		  'App.MouseCursor = Nil
+		  'Status_SongOpen = False ' suppress updates
+		  'LoadSongFields
+		  'Status_SongOpen = True
+		  'Status_SongChanged = False
+		  'EnableMenuItems
+		  'Else
+		  'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
+		  'End If
 		End Sub
    )
   Meth/g: 

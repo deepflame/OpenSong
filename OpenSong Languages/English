@@ -770,6 +770,7 @@ Click on this slide to edit its style.</body>
     <error code="10">Could not rename file '%2'.</error>
     <error code="11">Folder '%1' is not empty.</error>
     <error code="12">Could not move file '%1' to '%2'.</error>
+    <error code="13">File '%1' already exists in folder '%2'.</error>
   </folderdb_errors>
 
   <errors>

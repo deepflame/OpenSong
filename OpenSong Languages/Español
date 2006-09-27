@@ -54,6 +54,8 @@
 
     <songs caption="Canciones">Seleccione una canción de la lista para cargarla al editor de canciones.</songs>
 
+    <curr_folder caption="Containing Folder">Shows the folder containing this song (relative to the Active folder)</curr_folder>
+
     <song_folders caption="Directorios">Seleccione un directorio de la lista para filtrar la lista de canciones actual.
       <new>Crea una nueva carpeta para almacenar canciones.</new>
       <delete>Elimina la carpeta de canciones actual. La carpeta debe estar vacía.</delete>
@@ -70,6 +72,8 @@
     <author caption="Autor">Ajusta el autor de la canción actual.</author>
     <copyright caption="Copyright">Ajusta el copyright de la canción actual.</copyright>
     <ccli caption="# CCLI">Ajusta el número CCLI de la canción actual.</ccli>
+     <!--Translate Me!!-->
+    <hymn_number caption="Hymn #">Sets the Hymn number of the selected song.</hymn_number>
     <presentation caption="Presentación">Ajusta el orden de presentación de la canción actual. Las secciones deben estar separadas con espacios. (ej. "V1 C V2 C")</presentation>
     <lyrics caption="Acordes/Líricas">Edite la canción actual usando lineas de sección, comentarios, acordes y líricas.</lyrics>
     <insert caption="Insertar"/>
@@ -85,6 +89,8 @@
       </ins_multi_verse>
       <ins_comment caption="Comentario">Los comentarios son impresos en las lead sheets, pero no se muestran en las presentaciones.</ins_comment>
       <ins_column caption="Columna">Las lead sheets pueden contener dos columnas para ayudar a que canciones largas se ajusten en una sola página.</ins_column>
+       <!--Translate Me!!-->
+      <ins_page caption="New Page">Indicates the location a page break should be placed in the lead sheet when printing longer songs.</ins_page>
     <transpose caption="Transporte">Utilice esta opción para transportar la canción a cualquier tecla. La cantidad es medida en pasos medios.
       <using caption="Usar">Al transportar, el tipo seleccionado de accidental será utilizado donde quiera que sea necesario.
         <sharps caption="Agudo"/>
@@ -119,6 +125,8 @@
       <save caption="Guardar">Almacena la coordinación actual al disco. (Incluyendo todos los items)</save>
       <rename caption="Renombrar">Renombra la coordinación actual.</rename>
       <delete caption="Eliminar">Elimina la coordinación actual. (Las canciones incluidas en la coordinación no serán eliminadas del editor)</delete>
+       <!--Translate Me!!-->
+      <saveas caption="Save As">Save the current set under a new name.</saveas>
       <present caption="Presentar">Presenta la coordinación actual a la pantalla. Ud. tiene la opción de presentarla en el monitor actual, monitor secundario o utilizando el monitor actual previsualizando como seria con 2 monitores.
         <single_screen caption="Pantalla Simple"/>
         <dual_screen caption="Pantalla Doble"/>
@@ -154,6 +162,9 @@
     <subtitle caption="Subtítulo">Ajusta el subtítulo de la diapositiva actual.</subtitle>
     <name caption="Nombre">Ajusta el título de la diapositiva presentada en la ventana de ayuda. Este no se muestra en la diapositiva presentada.</name>
     <slides caption="Diapositivas">Ajusta el texto principal de la diapositiva actual.</slides>
+     <!--Translate Me!!-->
+    <presentation caption="Custom presentation order">Overrides the presentation order in the song file</presentation>
+    <origorder caption="Original presentation order">Presentation order in the song file</origorder>       
     <notes caption="Notas">Estas notas son mostradas en la ventana de ayuda de la presentación mientras se presenta la coordinación utilizando el modo de Pantalla Doble.</notes>
     <insert caption="Insertar"/>
       <ins_slide caption="Diapositiva">Permite la creación de múltiples diapositivas que comparten un título, subtítulo, estilo, y/ó auto-avance. Las diapositivas creadas de esta forma pueden también ser ajustadas para que se repitan automaticamente.</ins_slide>
@@ -180,6 +191,8 @@
       <ccli caption="link(general_song_editor/ccli/@caption)"/>
       <presentation caption="link(general_song_editor/presentation/@caption)"/>
       <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+       <!--Translate Me!!-->
+      <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
 
       <themes caption="link(advanced_song_editor/themes/@caption)"/>
       <capo caption="link(advanced_song_editor/capo/@caption)"/>
@@ -195,6 +208,21 @@
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
     </fields>
   </song_search>
+   <!--Translate Me!!-->
+  <scripture_search title="Search">
+    <match caption="Match">
+      <exact caption="Exact"/>
+      <begin caption="Begins with"/>
+    </match>
+    <words caption="Verse must have">
+      <all caption="All words"/>
+      <any caption="Any word"/>
+    </words>
+    <search caption="Search"/>
+    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
+    <ok caption="link(shared/ok/@caption)"/>
+    <cancel caption="link(shared/cancel/@caption)"/>
+  </scripture_search>
 
   <main_menu>
     <file caption="_Archivo">
@@ -205,10 +233,12 @@
         <dual_screen caption="Pantalla Doble"/>
         <preview_dual_screen caption="Previsualizar Pantalla Doble"/>
       </present>
+       <!--Translate Me!!-->
+      <pagesetup caption="Pa_ge Setup"/>
       <print caption="_Imprimir"/>
       <print_alphabetical_toc caption="Imprimir la Tabla de Contenidos _Alfabeticamente"/>
       <print_categorical_toc caption="Imprimir la Tabla de Contenidos por _Categorias"/>
-      <exit caption="_Salir"/>
+      <quit caption="_Salir"/>
     </file>
     <edit caption="_Editar">
       <undo caption="_Deshacer"/>
@@ -228,6 +258,8 @@
       <print caption="Configuración de _Impresión"/>
       <general caption="Configuración _General"/>
       <refresh_songs caption="Recargar la Carpeta de las Canciones"/>
+       <!--Translate Me!!-->
+      <refresh_sets caption="R_efresh Sets Folder"/>
       <install_module caption="Instalar un Módulo"/>
     </settings>
     <help caption="A_yuda">
@@ -242,6 +274,11 @@
       <ccli caption="# Licencia CCLI"/>
       <version_check caption="Comprobar una versión más reciente en el inicio"/>
       <language caption="Idioma"/>
+       <!--Translate Me!!-->
+      <startmode caption="Initial Window">
+	<song caption="Songs"/>
+	<set  caption="Sets"/>
+      </startmode>
     </general>
     <proxy caption="Proxy">
       <host caption="Host"/>
@@ -268,6 +305,8 @@
       <message>Finalizando OpenSong. Por favor haga click en OK y luego inicie OpenSong otra vez. Ud. puede preferir copiar su directorio antiguo a la nueva dirección primero.</message>
       <change caption="Cambiar"/>
     </documents_folder>
+     <!--Translate Me!!-->
+    <newpaint caption="Use new visual style"/>
   </general_settings>
 
   <print_settings title="Configuración de Impresión">
@@ -293,13 +332,29 @@
       <heading_border_thickness caption="Grosor del Borde de la Cabecera"/>
       <title_in_caps caption="Título en toda la capitalización"/>
     </layout>
+     <!--Translate Me!!-->
+    <units caption="Units">
+      <inches caption="Inches"/>
+      <cm caption="Centimeters"/>
+    </units>
   </print_settings>
 
   <presentation_settings title="Configuración de Presentación">
+     <!--Translate Me!!-->
+    <settings head1="Style" head2="Options">
+        <default_slides caption="Default Slide Style"/>
+        <scripture_slides caption="Default Scripture Style"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
+    </settings>
+
     <style caption="Estilo">
       <use_transitions caption="Usar Transiciones"/>
+      <transition_note caption="Las transiciones son afectadas de gran manera por la resolución de la pantalla. Si Ud. está experimentando transiciones lentas, considere disminuir la resolución del monitor en el cual se está mostrando la presentación. Además, si Ud. nota que las transiciones no es están presentando, puede ser porque su configuración de colores del monitor es muy baja para la presentación."/>
       <border_thickness caption="Grueso del Borde"/>
-      <initial_mode caption="Modo Inicial"/>
+       <!--Translate Me!!-->
+      <subtitles caption="Subtitles"/>
       <modes>
         <normal caption="Normal"/>
         <black caption="Negro"/>
@@ -308,14 +363,36 @@
         <hidden caption="Oculto"/>
         <frozen caption="Estático"/>
       </modes>
+
+       <!--Translate Me!!-->
+      <mouse_cursor caption="Mouse Cursor">
+         <!--These will be phased out in favor of user editable cursors-->
+        <arrow caption="Arrow"/> 
+        <cross caption="Cross"/>
+        <hidden caption="Hidden"/>
+        <hourglass caption="Hourglass"/> 
+        <ibeam caption="IBeam"/> 
+      </mouse_cursor>
+
       <song_subtitles caption="Subtítulos de las Canciones">
         <author caption="Autor"/>
         <copyright caption="Copyright"/>
+        <hymn_number caption=""/> 
+        <ccli_number caption=""/> 
       </song_subtitles>
       <blanks caption="Insertar Espacios Automáticamente"/>
       <blanks_between caption="Entre Items de la Coordinación"/>
+       <!--Translate Me!!-->
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
+      <blank_style caption="Blank slides take style of"/>
+      <blank_prev caption="Previous slide"/>
+      <blank_next caption="Next slide"/>
+      
+      <highlight_chorus caption="Highlight chorus text"/>
+      <initial_mode caption="Modo Inicial"/>
     </style>
-    <transition_note caption="Las transiciones son afectadas de gran manera por la resolución de la pantalla. Si Ud. está experimentando transiciones lentas, considere disminuir la resolución del monitor en el cual se está mostrando la presentación. Además, si Ud. nota que las transiciones no es están presentando, puede ser porque su configuración de colores del monitor es muy baja para la presentación."/>
+
     <alerts caption="Alarmas">
       <font caption="Fuente"/>
       <align caption="Alinear"/>
@@ -326,12 +403,20 @@
       <control caption="Monitor de Configuración"/>
       <presentation caption="Monitor de Presentación"/>
       <detected caption="%1 monitor(es) detectado(s)."/>
+       <!--Translate Me!!-->
+      <default_mode caption="Default Monitor Mode"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Máscara"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </logo>
-    <click_to_change caption="link(shared/click_to_change/@caption)"/>
-    <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+     <!--Translate Me!!-->
+    <misc caption="Misc">
+      <exit_prompt caption="Prompt when exiting"/>
+      <descriptive_subtitle_info caption="Descriptive subtitle info"/>
+    </misc>
+
   </presentation_settings>
 
   <presentation_helper title="Ayudante de la Presentación">
@@ -366,7 +451,8 @@ T: Tag</keys>
   </presentation_helper>
 
   <help_topics title="Temas de Ayuda">
-    <tabs head1="Formato de Acordes/Líricas" head2="Campo de la Presentación" head3="Cerrar"/>
+     <!--Translate Me!!-->
+    <tabs head1="Presentation Keys" head2="Formato de Acordes/Líricas" head3="Campo de la Presentación" head4="Cerrar"/>
     <print caption="Imprimir"/>
   </help_topics>
 
@@ -394,16 +480,67 @@ T: Tag</keys>
     <print caption="Imprimir"/>
   </print_preview>
 
+   <!--Translate Me!!-->
+  <print>
+     <continued caption="(continued)"/>
+     <toc caption="Table of Contents"/>
+     <categorized caption="Categorized"/>
+     <alphabetical caption="Alphabetical"/>
+     <copyright caption="Copyright"/>
+     <page caption="Page %1"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+     <create_list caption="Creating list of %1..."/>
+
+     <setlist caption="Order of Service">
+
+      <date caption="Printed "/>
+
+     </setlist>
+  </print>
+ 
+  <songml>
+     <page caption="Page"/>
+     <capo caption="Capo"/>
+     <copyright caption="Copyright"/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Pre-chorus"/>
+     <chorus caption="Chorus"/>
+     <bridge caption="Bridge"/>
+     <tag caption="Tag"/>
+     <verse caption="Verse"/>
+     <author caption=""/>
+     <hymn_number caption="Hymn Number"/>
+     <ccli_number caption="CCLI Song #"/>
+     <ccli_license caption="CCLI License #"/>
+     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
+     <separator caption="|NL|"/>
+     <!--The leading comma is needed for internal data structure reasons.-->
+     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
+     <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
+     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
+     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+  </songml>
+   <!--Translate Me!!-->
+
   <style_editor title="Editor de Estilo">
     <fonts_and_alignment caption="Fuentes y Alineación">
       <title caption="Título"/>
       <subtitle caption="Subtítulo"/>
       <body caption="Cuerpo"/>
       <align caption="Alinear"/>
+       <!--Translate Me!!-->
+      <subtitles caption="Song Subtitles"/>
     </fonts_and_alignment>
     <background caption="Fondo">
       <color caption="Color"/>
       <image caption="Imagen"/>
+       <!--Translate Me!!-->
+      <position caption="Position">
+          <row0 caption="Stretch"/>
+          <row1 caption="Center"/>
+          <!-- <row2 caption="Tile"/> -->
+      </position>
       <trim_bottom caption="Ajustar el Fondo"/>
       <pixels caption="px"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
@@ -415,6 +552,8 @@ T: Tag</keys>
   <song_lookup title="Buscar Canciones">
     <header caption="Para agregar una canción, haga un click en el título de la canción y luego un click en el botón 'Agregar' o tipeando el título de la canción y luego la tecla 'Enter'."/>
     <no_selection>Ud. no ha seleccionado ninguna canción.</no_selection>
+     <!--Translate Me!!-->
+    <folder caption="Select Folder"/>
   </song_lookup>
 
   <scripture_lookup title="Buscar Versículos">
@@ -443,6 +582,9 @@ T: Tag</keys>
     </bad_reference>
     <colon caption=":"/>
     <dash caption="-"/>
+     <!--Translate Me!!-->
+    <search caption="link(shared/search/@caption)"/>
+    <insert caption="link(shared/insert/@caption)"/>
   </scripture_lookup>
   
   <module>
@@ -575,16 +717,38 @@ Haga click aquí para editar este estilo.</body>
     </slide_groups>
   </style_preview>
 
+   <!--Translate Me!!-->
+  <subtitles caption="Subtitles" head1="Sort" head2="Enabled" head3="Description">
+    <row0 caption="Copyright|copyright"/>
+    <row1 caption="Author|author"/>
+    <row2 caption="Hymn Number|hymn_number"/> 
+    <row3 caption="CCLI Song Number|ccli_number"/> 
+    <row4 caption="CCLI License Number|ccli_license"/>
+  </subtitles>
+
   <shared>
     <ok caption="Ok"/>
     <cancel caption="Cancelar"/>
     <yes caption="Sí"/>
     <no caption="No"/>
     <browse caption="Explorar"/>
+     <!--Translate Me!!-->
+    <browse_for caption="Browse for Folder"/>
     <add caption="Agregar"/>
     <done caption="Terminar"/>
+     <!--Translate Me!!-->
+    <untitled caption="Untitled"/>
     <click_to_change caption="Click para cambiar"/>
+     <!--Translate Me!!-->
+    <insert caption="Insert"/>
+    <close caption="Close"/>
+    <search caption="Search"/>
     <right_click_to_clear caption="Botón derecho para limpiar"/>
+     <!--Translate Me!!-->
+    <nosave caption="Don't Save"/>
+    <cut caption="Cut"/>
+    <copy caption="Copy"/>
+    <paste caption="Paste"/>
   </shared>
 
   <questions>
@@ -593,6 +757,10 @@ Haga click aquí para editar este estilo.</body>
     <save caption="¿Desea guardar los cambios para '%1'?"/>
     <delete caption="¿Está seguro que desea eliminar '%1'?"/>
     <clear caption="¿Está seguro que desea limpiar esto?"/>
+     <!--Translate Me!!-->
+    <changed caption="Current Song has been changed, do you want to save?"/>
+    <revert caption="All changes will be lost. Continue?"/>
+    <long_operation caption="This may take a long time to complete. Continue?"/>
   </questions>
 
   <about>
@@ -628,6 +796,66 @@ Haga click aquí para editar este estilo.</body>
     <no_multi_screen>No se encontraron multiples monitores.</no_multi_screen>
     <bad_file_name>Nombre de archivo inválido '%1'.</bad_file_name>
     <internal>Error interno. Contácte al soporte técnico de OpenSong.</internal>
+     <!--Translate Me!!-->
+    <no_such_song>Cannot find song.</no_such_song>
+    <number_please>Please enter a valid number.</number_please>
+    <number_range>Please enter a number between %1 and %2.</number_range>
+    <no_path_allowed>File name may not include a path.</no_path_allowed>
+    <rename_error>Unable to rename file.</rename_error>
+    <folder_error>Internal folder error. Contact technical support.</folder_error>
+    <create_backgrounds_folder>Could not create Backgrounds folder: %1</create_backgrounds_folder>
+    <create_sets_folder>Could not create/edit Sets folder %1</create_sets_folder>
+    <create_settings_folder>Could not create Settings folder: %1</create_settings_folder>
+    <create_songs_folder>Could not create songs folder: %1</create_songs_folder>
+    <no_backgrounds_folder>Can't find default Backgrounds folder: %1</no_backgrounds_folder>
+    <no_defaults_folder>Can't find Defaults folder: %1</no_defaults_folder>
+    <no_scripture_folder>Can't find Scriptures folder: %1</no_scripture_folder>
+    <no_sets_folder>Can't find default Sets folder: %1</no_sets_folder>
+    <no_settings_folder>Can't find default Settings folder: %1</no_settings_folder>
+    <no_songs_folder>Can't find default Songs folder: %1</no_songs_folder>
+    <no_docs_folder>Could not create/find Documents folder: %1</no_docs_folder>
+    <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
+Temporarily changing to: %1
+Please modify your preferences.</docs_folder>
   </errors>
+
+   <!--Translate Me!!-->
+  <open_titles>
+    <audio>Select Audio File to Open</audio>
+  </open_titles>  
+  
+  <hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Go to first slide in section</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Go to next slide in the set</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Go to previous slide in the set</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Go to the first slide in the set</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Go to the last slide in the set</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Go to the next section in the set</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Go to the start of the current or previous set</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Go to the next verse</ACTION_VERSE> 	
+ 	<ACTION_BRIDGE>Go to the bridge</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Go to the chorus</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Go to the pre-chorus</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Go to the tag</ACTION_TAG>
+ 	<ACTION_NORMAL>Display current slide</ACTION_NORMAL>
+ 	<ACTION_BLACK>Display black screen	</ACTION_BLACK>
+ 	<ACTION_WHITE>Display white screen</ACTION_WHITE>
+ 	<ACTION_FREEZE>Freeze display on current slide</ACTION_FREEZE>
+ 	<ACTION_LOGO>Display the logo</ACTION_LOGO>
+ 	<ACTION_HIDE>Hide current slide (background is still displayed)</ACTION_HIDE>
+ 	<ACTION_EXIT>Exit presenter mode</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>Exit presenter mode, require confirmation	</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>Exit presenter mode immediately</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
+
+  <progress_status>
+    <folder>Caching Folder %1</folder>
+    <lead_sheets>Generating Lead Sheets</lead_sheets>
+    <process_themes>Processing Themes</process_themes>
+    <process_songs>Processing Songs</process_songs>
+    <export>Exporting Song(s)</export>
+    <pass1>Sorting, 1st Pass</pass1>
+    <pass2>Sorting, 2nd Pass</pass2>
+  </progress_status>
 
 </language>

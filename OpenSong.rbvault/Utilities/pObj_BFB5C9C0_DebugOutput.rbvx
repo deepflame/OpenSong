@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
  Cont/N: -1119363046
  bCls/N: 1
  Name/S: DebugOutput
- Size/N: 38
+ Size/N: 41
  bNtr/N: 0
  Intr/S: 
  Cnst/D: (Enco/N: 134217984, name/S: MAXDEBUGLEVEL, type/N: 1, defn/S: 10, flag/N: 0)
@@ -71,6 +71,8 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
 		        DebugFile.Delete
 		        DebugTOS = DebugFile.CreateTextFile
 		      end if
+		    Else
+		      DebugTOS = DebugFile.CreateTextFile
 		      '--
 		    End If
 		    Return DebugTOS <> Nil

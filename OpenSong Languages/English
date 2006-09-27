@@ -225,6 +225,21 @@
     </fields>
   </song_search>
 
+  <scripture_search title="Search">
+    <match caption="Match">
+      <exact caption="Exact"/>
+      <begin caption="Begins with"/>
+    </match>
+    <words caption="Verse must have">
+      <all caption="All words"/>
+      <any caption="Any word"/>
+    </words>
+    <search caption="Search"/>
+    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
+    <ok caption="link(shared/ok/@caption)"/>
+    <cancel caption="link(shared/cancel/@caption)"/>
+  </scripture_search>
+
   <main_menu>
     <file caption="_File">
       <new caption="_New"/>
@@ -359,6 +374,7 @@
       </modes>
      
       <mouse_cursor caption="Mouse Cursor">
+         <!--These will be phased out in favor of user editable cursors-->
         <arrow caption="Arrow"/> 
         <cross caption="Cross"/>
         <hidden caption="Hidden"/>
@@ -373,9 +389,8 @@
       <blank_prev caption="Previous slide"/>
       <blank_next caption="Next slide"/>
       
-<highlight_chorus caption="Highlight chorus text"/>
-      
-<initial_mode caption="Initial Presentation Mode"/>
+      <highlight_chorus caption="Highlight chorus text"/>
+      <initial_mode caption="Initial Presentation Mode"/>
     </style>
     <alerts caption="Alerts">
       <font caption="Font"/>
@@ -404,7 +419,7 @@
     <misc caption="Misc">
       <exit_prompt caption="Prompt when exiting"/>
       <descriptive_subtitle_info caption="Descriptive subtitle info"/>
-   </misc>
+    </misc>
     
   </presentation_settings>
 
@@ -528,7 +543,7 @@ T: Tag</keys>
           <row0 caption="Stretch"/>
           <row1 caption="Center"/>
           <!-- <row2 caption="Tile"/> -->
-     </position>
+      </position>
       <trim_bottom caption="*Trim Bottom"/>
       <pixels caption="px"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
@@ -705,13 +720,13 @@ Click on this slide to edit its style.</body>
   </style_preview>
   
 
- <subtitles caption="Subtitles" head1="Sort" head2="Enabled" head3="Description">
-        <row0 caption="Copyright|copyright"/>
-        <row1 caption="Author|author"/>
-        <row2 caption="Hymn Number|hymn_number"/> 
-        <row3 caption="CCLI Song Number|ccli_number"/> 
-        <row4 caption="CCLI License Number|ccli_license"/>
-</subtitles>
+  <subtitles caption="Subtitles" head1="Sort" head2="Enabled" head3="Description">
+    <row0 caption="Copyright|copyright"/>
+    <row1 caption="Author|author"/>
+    <row2 caption="Hymn Number|hymn_number"/> 
+    <row3 caption="CCLI Song Number|ccli_number"/> 
+    <row4 caption="CCLI License Number|ccli_license"/>
+  </subtitles>
       
   <shared>
     <ok caption="OK"/>
@@ -719,6 +734,7 @@ Click on this slide to edit its style.</body>
     <yes caption="Yes"/>
     <no caption="No"/>
     <browse caption="Browse"/>
+    <browse_for caption="Browse for Folder"/>
     <add caption="Add"/>
     <done caption="Done"/>
     <untitled caption="Untitled"/>
@@ -766,6 +782,7 @@ Click on this slide to edit its style.</body>
     <error code="10">Could not rename file '%2'.</error>
     <error code="11">Folder '%1' is not empty.</error>
     <error code="12">Could not move file '%1' to '%2'.</error>
+    <error code="13">File '%1' already exists in folder '%2'.</error>
   </folderdb_errors>
 
   <errors>

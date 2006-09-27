@@ -545,16 +545,20 @@ pObj/B: 426C6F6B704F626ABD4795AE0000000000000000000000000000000000000000
 		  f.MoveFileTo fo
 		  
 		  If f.LastErrorCode <> 0 Then
-		    ErrorCode = 12
-		    ErrorString = "Could not move file."
+		    If f.Exists And fo.Exists Then // File with that name already in destination folder
+		      ErrorCode = 13
+		      ErrorString = "Destination file exists."
+		    Else
+		      ErrorCode = 12
+		      ErrorString = "Could not move file."
+		    End If
 		    Return False
-		  Else
-		    If destFolder.Len > 0 Then destFolder = destFolder + "/"
-		    Cache(cacheSlots(i)) = f.Name + "/" + destFolder
-		    Heapsort cache
-		    If Not Save Then Return False
-		    Return True
 		  End If
+		  If destFolder.Len > 0 Then destFolder = destFolder + "/"
+		  Cache(cacheSlots(i)) = f.Name + "/" + destFolder
+		  Heapsort cache
+		  If Not Save Then Return False
+		  Return True
 		  
 		End Function
   )

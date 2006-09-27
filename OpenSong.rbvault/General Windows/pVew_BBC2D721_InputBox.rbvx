@@ -351,6 +351,18 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
+   Enco/N: 1536
+   name/S: Activate
+   sorc/d: (Enco/N: 134217984
+		Sub Activate()
+		  Me.SetFocus
+		  BringToFront
+		  If edt_the_input.Visible Then edt_the_input.SetFocus
+		  if pop_the_input.Visible Then pop_the_input.SetFocus
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: Open
    sorc/d: (Enco/N: 134217984
@@ -414,6 +426,41 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
+   name/S: BringToFront
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub BringToFront()
+    srcl/S: Const SWP_NOSIZE = &H1
+    srcl/S: Const SWP_NOMOVE = &H2
+    srcl/S: Const SWP_FRAMECHANGED = &H20
+    srcl/S: Const SWP_NOOWNERZORDER = &H200
+    srcl/S: Const HWND_TOP = 0
+    srcl/S: Const GWL_STYLE = -16
+    srcl/S: Const WS_POPUPWINDOW = &H80880000
+    srcl/S: 
+    srcl/S: Dim styleFlags As Integer
+    srcl/S: 
+    srcl/S: #If TargetWin32 Then
+    srcl/S: 
+    srcl/S: Declare Function SetWindowPos Lib "user32" (hwnd as Integer, hWndInsertAfter as Integer, x as Integer, y as Integer, cx as Integer, cy as Integer, flags as Integer) as Integer
+    srcl/S: 
+    srcl/S: styleFlags = SetWindowPos( self.Handle, HWND_TOP, 0, 0, 0, 0, _
+    srcl/S: SWP_NOSIZE + SWP_NOMOVE + SWP_NOOWNERZORDER)
+    srcl/S: 
+    srcl/S: #ElseIf TargetCarbon Then
+    srcl/S: Dim Status As Integer
+    srcl/S: Declare Function SelectWindow Lib "CarbonLib" (window As Integer) As Integer
+    srcl/S: 
+    srcl/S: Status = SelectWindow(wnd.Handle)
+    srcl/S: #EndIf
+    srcl/S: End Sub
+   sorc/g: 
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
    name/S: Cancel
    parm/S: 
    rslt/S: 
@@ -444,7 +491,6 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
 		  lbl_the_question.Height = 40
 		  btn_ok.Left = 145
 		  btn_cancel.Visible = True
-		  
 		  ShowModal
 		  Return Output
 		End Function
@@ -458,6 +504,7 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Sub Message(message As String)
+		  lbl_the_question.MultiLine = True
 		  lbl_the_question.Text = message
 		  edt_the_input.Visible = False
 		  '++JRC: Increased height

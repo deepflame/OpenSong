@@ -93,6 +93,7 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		  Dim Subtitles() As String
 		  Dim i As Integer
 		  Dim isWrapped As Boolean
+		  Dim d2 As String
 		  
 		  If Style <> Nil Then 'TODO: What if it's NIL????  Ain't gonna be pretty....
 		    bodyStyle = Style.BodyFont
@@ -324,6 +325,21 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		                  lines.Insert i+1, Mid(line, z+1)
 		                  isWrapped = True
 		                  Exit
+		                End If
+		                //++
+		                // For CJK characters, it is perfectly ok to wrap before or after
+		                // a CJK character (Unicode codepoint between 4E00 and 9FBF)
+		                // (Additional fix for 1530629 added after section outside "For z" loop was inserted)
+		                //--
+		                If (z <> y) Then
+		                  d2 = Mid(line, z-1, 1)
+		                  If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
+		                      (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
+		                    lines(i) = Mid(line, x, z-x)
+		                    lines.Insert i+1, Mid(line, z)
+		                    isWrapped = True
+		                    Exit
+		                  End If
 		                End If
 		              Next z
 		              

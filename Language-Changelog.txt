@@ -1,30 +1,3 @@
-song_search/hymn_number
-progress_status/folder
-progress_status/lead_sheets
-progress_status/process_themes
-progress_status/process_song
-progress_status/pass1
-progress_status/pass2
-progress_status/export
-progress_status
-errors/folder_error
-errors/create_backgrounds_folder
-errors/no_backgrounds_folder
-errors/create_sets_folder
-errors/no_sets_folder
-errors/create_songs_folder
-errors/no_songs_folder
-errors/create_settings_folder
-errors/no_settings_folder
-errors/no_defaults_folder
-errors/no_scripture_folder
-errors/no_docs_folder
-errors_docs_folder
-load_settings/main
-load_settings/checking_folders
-load_settings/init_audio (Deleted)
-load_settings/load_plugins (Deleted)
-
 songs_mode/curr_folder
 sets_mode/current_set/saveas
 slide_editor/presentation
@@ -103,6 +76,19 @@ bible/errors/nobnames
 bible/errors/noindex
 errors/general1
 errors/general2
+errors/folder_error
+errors/create_backgrounds_folder
+errors/create_sets_folder
+errors/create_settings_folder
+errors/create_songs_folder
+errors/no_backgrounds_folder
+errors/no_defaults_folder
+errors/no_scripture_folder
+errors/no_sets_folder
+errors/no_settings_folder
+errors/no_songs_folder
+errors/no_docs_folder
+errors/docs_folder
 song
 song/errors
 song/errors/unknown_element
@@ -123,3 +109,18 @@ songml/sharpchords
 songml/flatchords
 songml/altsharpchords
 songml/altflatchords
+Deleted load_settings/init_audio
+Deleted load_settings/load_plugins
+load_settings/checking_folders
+load_settings/main
+song_search/hymn_number
+folderdb_errors/error@code=13
+
+progress_status/folder
+progress_status/lead_sheets
+progress_status/process_themes
+progress_status/process_song
+progress_status/pass1
+progress_status/pass2
+progress_status/export
+progress_status

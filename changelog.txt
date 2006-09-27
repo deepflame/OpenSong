@@ -1,9 +1,33 @@
 -= 1.0 Beta 2 JRC =-
+* Translated Browse for Folder Title
+
+* Prevent OutOfBounds Exception when removing set item
+
+* Translated Scripture Search Window
+
+* Adjusted PresentHelper to fit spanish translation
+
+* Resized txt_style_transition_note to fit spanish translation
+
+* Fixed Help text for Containing Folder, Transpose, Print Capo, custom order, original order, slide style, & setitem list
+
 * Fixed Several Presentation Window problems
 
 * Added Option to overwrite debug log files
 
 -= 1.0 Beta 2 Baselevel 13 =-
+
+* Fix "create song" to add folder info to the song listbox.
+
+* Fix "move song" to properly update the folder info stored in the song listbox. Also, a more informative error message is given if the song already exists in the destination folder. [Bug 1565098]
+
+* Support selecting all monitors when system has more than two monitors. [Bug 1554999]
+
+* Update PrintSettings XML at program start to use points as units of measurement.
+
+* Set focus to edit field when InputBox opens.
+
+* Started work on SImageCanvas to allow more flexibility in setting the picture.
 
 * Fix NilObjectException when creating a new song [Bug 1563081]
 

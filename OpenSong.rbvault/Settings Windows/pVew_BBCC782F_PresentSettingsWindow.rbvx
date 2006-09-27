@@ -2637,6 +2637,16 @@ pVew/B: 426C6F6B70566577BBCC782F0000000000000000000000000000000000000000
 		  
 		  IsAudioPlaying = false
 		  '--
+		  //++
+		  // Bug 1554999: Update list of monitors to accomodate systems with more than two monitors
+		  //--
+		  pop_monitor_control.DeleteAllRows
+		  pop_monitor_presentation.DeleteAllRows
+		  For n = 1 To Max(2, ScreenCount) // Permit dual-monitor configuration even if on single-monitor system.
+		    pop_monitor_control.AddRow CStr(n)
+		    pop_monitor_presentation.AddRow CStr(n)
+		  Next
+		  
 		  pop_monitor_control.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
 		  If pop_monitor_control.ListIndex < 0 Then pop_monitor_control.ListIndex = 0
 		  pop_monitor_presentation.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1

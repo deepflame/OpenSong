@@ -1,5 +1,7 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Corrected issue with invalid song path in set on Macintosh.  Would've also affected Linux song files with spaces in the name. [Bug 1567295]
+
 * Fix "create song" to add folder info to the song listbox.
 
 * Fix "move song" to properly update the folder info stored in the song listbox. Also, a more informative error message is given if the song already exists in the destination folder. [Bug 1565098]

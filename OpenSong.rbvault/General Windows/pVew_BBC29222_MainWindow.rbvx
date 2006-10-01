@@ -2047,51 +2047,66 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Action
-   sorc/d: (Enco/N: 134217984
-		Sub Action()
-		  Dim f As FolderItem
-		  Dim SongPath As String
-		  Dim FolderPath As String
-		  
-		  Dim xgroups, newGroup As XmlNode
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  
-		  f = SongPickerWindow.Popup
-		  If f <> Nil Then
-		    Status_SetChanged = True
-		    Status_InSetChanged = False
-		    ' No need to EnableMenuItems, since the following selection change will call it
-		  End If
-		  
-		  While f <> Nil
-		    If lst_set_items.ListIndex >= 0 Then
-		      newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
-		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, f.Name + " (song)"
-		      lst_set_items.ListIndex = lst_set_items.ListIndex + 1
-		    Else
-		      newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
-		      lst_set_items.AddRow f.Name + " (song)"
-		      lst_set_items.ListIndex = lst_set_items.ListCount - 1
-		    End If
-		    SmartML.SetValue newGroup, "@name", f.Name
-		    SmartML.SetValue newGroup, "@type", "song"
-		    //++
-		    // EMP, May 2006
-		    //
-		    // Add a path attribute relative to the base songs directory.  Otherwise, two instances
-		    // of the same song name in a parent/child folder relationship will never find the song
-		    // in the child folder.
-		    //
-		    SongPath = f.Parent.AbsolutePath
-		    FolderPath = MainWindow.Songs.GetRootFolder.AbsolutePath
-		    SongPath = Mid(SongPath, Len(FolderPath) + 1) //Take off the leading path separator
-		    SongPath = ReplaceAll(SongPath, "\", "/") // Canonical path for a FolderDB item
-		    SmartML.SetValue newGroup, "@path", SongPath
-		    //--
-		    f = SongPickerWindow.Popup
-		  Wend
-		End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub Action()
+    srcl/S: Dim f As FolderItem
+    srcl/S: Dim SongPath As String
+    srcl/S: Dim FolderPath As String
+    srcl/S: Dim Where As Integer
+    srcl/S: 
+    srcl/S: Dim xgroups, newGroup As XmlNode
+    srcl/S: xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+    srcl/S: 
+    srcl/S: Where = lst_set_items.ListIndex
+    srcl/S: 
+    srcl/S: f = SongPickerWindow.Popup
+    srcl/S: If f <> Nil Then
+    srcl/S: Status_SetChanged = True
+    srcl/S: Status_InSetChanged = False
+    srcl/S: ' No need to EnableMenuItems, since the following selection change will call it
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: While f <> Nil
+    srcl/S: If lst_set_items.ListIndex >= 0 Then
+    srcl/S: Where = lst_set_items.ListIndex + 1
+    srcl/S: Else
+    srcl/S: Where = lst_set_items.ListCount
+    srcl/S: End If
+    srcl/S: newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
+    srcl/S: SmartML.SetValue newGroup, "@name", f.Name
+    srcl/S: SmartML.SetValue newGroup, "@type", "song"
+    srcl/S: //++
+    srcl/S: // EMP, May 2006
+    srcl/S: //
+    srcl/S: // Add a path attribute relative to the base songs directory.  Otherwise, two instances
+    srcl/S: // of the same song name in a parent/child folder relationship will never find the song
+    srcl/S: // in the child folder.
+    srcl/S: //
+    srcl/S: SongPath = f.Parent.AbsolutePath
+    srcl/S: FolderPath = MainWindow.Songs.GetRootFolder.AbsolutePath
+    srcl/S: SongPath = Mid(SongPath, Len(FolderPath) + 1) //Take off the leading path separator
+    srcl/S: // Change path separator to forward slant "/" to match separator in FolderDB
+    srcl/S: // This is platform specific
+    srcl/S: #If TargetWin32
+    srcl/S: SongPath = ReplaceAll(SongPath, "\", "/")
+    srcl/S: #ElseIf TargetMacOS
+    srcl/S: SongPath = ReplaceAll(SongPath, ":", "/")
+    srcl/S: #EndIf
+    srcl/S: SmartML.SetValue newGroup, "@path", SongPath
+    srcl/S: //--
+    srcl/S: If lst_set_items.ListIndex >= 0 Then
+    srcl/S: lst_set_items.InsertRow Where, f.Name + " "  + App.T.Translate("sets_mode/items/song/@caption")
+    srcl/S: Else
+    srcl/S: lst_set_items.AddRow f.Name + " " + App.T.Translate("sets_mode/items/song/@caption")
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: lst_set_items.ListIndex = Where
+    srcl/S: f = SongPickerWindow.Popup
+    srcl/S: Wend
+    srcl/S: lst_set_items.ListIndex = Where
+    srcl/S: End Sub
+   sorc/g: 
   HIns/g: 
   HIns/G: 
    Enco/N: 1280
@@ -2148,10 +2163,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  ' No need to EnableMenuItems, since the following selection change will call it
 		  
 		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/custom/@caption")
 		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/custom/@caption")
 		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
 		  End If
 		End Sub
@@ -2213,10 +2228,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    ' No need to EnableMenuItems, since the following selection change will call it
 		    
 		    If lst_set_items.ListIndex >= 0 Then
-		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		      lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
 		      lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		    Else
-		      lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
+		      lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
 		      lst_set_items.ListIndex = lst_set_items.ListCount - 1
 		    End If
 		    
@@ -2276,15 +2291,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  Dim xgroups, newGroup As XmlNode
-		  
+		  Dim Where As Integer
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If lst_set_items.ListIndex >= 0 Then
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
+		    Where = lst_set_items.ListIndex + 1
 		  Else
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
+		    Where = lst_set_items.ListCount
 		  End If
 		  
-		  SmartML.SetValue newGroup, "@name", "-- Style Change --"
+		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/items/revert")
 		  SmartML.SetValue newGroup, "@type", "style"
 		  SmartML.SetValue newGroup, "@action", "revert"
 		  
@@ -2292,12 +2307,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  ' No need to EnableMenuItems, since the following selection change will call it
 		  
 		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
-		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
+		    lst_set_items.InsertRow Where, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
 		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " (" + SmartML.GetValue(newGroup, "@type", True) + ")"
-		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
+		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
 		  End If
+		  
+		  lst_set_items.ListIndex = Where
 		End Sub
    )
   HIns/g: 
@@ -3048,12 +3063,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  If InputBox.Ask(App.T.Translate("questions/save/@caption", lst_songs_songs.Text)) Then
-		    ActionSongSave
-		  Else
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
+		  Status_SongChanged = True
+		  EnableMenuItems
 		End Sub
    )
   HIns/g: 
@@ -3510,8 +3521,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_InSetEditable Then
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "revert"
-		    SmartML.SetValue slide_group, "@name", "-- Revert Style --"
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " (" + SmartML.GetValue(slide_group, "@type", True) + ")"
+		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/revert")
+		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/revert/@caption")
 		    SmartML.RemoveChildren slide_group
 		    
 		    can_style_style.ClearStyleNode
@@ -3557,8 +3568,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If Status_InSetEditable Then
 		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
 		    SmartML.SetValue slide_group, "@action", "new"
-		    SmartML.SetValue slide_group, "@name", "-- Change Style --"
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " (" + SmartML.GetValue(slide_group, "@type", True) + ")"
+		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/style")
+		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/style/@caption")
 		    SmartML.SafeImport SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), SmartML.GetNode(slide_group, "style", True)
 		    can_style_style.SetStyleNode SmartML.GetNode(slide_group, "style")
 		    Status_SetChanged = True
@@ -10744,12 +10755,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub ActionInSetRemove()
 		  Dim xslides As XmlNodeList
-		  
 		  Dim slide_groups As XmlNode
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  slide_groups.RemoveChild slide_groups.Child(lst_set_items.ListIndex)
+		  Dim listindex As Integer
 		  
-		  lst_set_items.RemoveRow lst_set_items.ListIndex
+		  listindex = lst_set_items.ListIndex
+		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  slide_groups.RemoveChild slide_groups.Child(ListIndex)
+		  
+		  lst_set_items.RemoveRow ListIndex
+		  If listindex < lst_set_items.ListCount Then 
+		    lst_set_items.ListIndex = listindex
+		  ElseIf listindex = lst_set_items.ListCount Then
+		    lst_set_items.ListIndex = listindex - 1
+		  End If
 		  
 		  Status_SetChanged = True
 		  Status_InSetChanged = False
@@ -11409,6 +11427,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      lst_songs_songs.RemoveRow listindex
 		      If listindex < lst_songs_songs.listcount Then
 		        lst_songs_songs.ListIndex = listindex ' Open the next song in the list
+		      ElseIf listindex = lst_songs_songs.ListCount Then
+		        lst_songs_songs.ListIndex = listindex - 1 'Deleted the bottom of the list, stay there
 		      End If
 		      EnableMenuItems
 		    End If

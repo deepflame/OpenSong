@@ -2155,9 +2155,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
 		  End If
 		  
-		  SmartML.SetValue newGroup, "@name", "Untitled"
+		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/untitled/@caption")
 		  SmartML.SetValue newGroup, "@type", "custom"
-		  SmartML.SetValue newGroup, "title", "Untitled"
 		  
 		  Status_SetChanged = True
 		  ' No need to EnableMenuItems, since the following selection change will call it

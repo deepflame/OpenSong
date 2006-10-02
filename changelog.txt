@@ -1,5 +1,7 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* In set mode, name of new custom slide is now a translatable item instead of "Untitled."
+
 * Corrected issue with invalid song path in set on Macintosh.  Would've also affected Linux song files with spaces in the name. [Bug 1567295]
 
 * Fix "create song" to add folder info to the song listbox.

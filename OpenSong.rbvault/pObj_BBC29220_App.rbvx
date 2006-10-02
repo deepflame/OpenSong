@@ -13,6 +13,12 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Intr/S: 
  bApO/N: 1
  Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_CM, type/N: 2, defn/S: 0.035277778, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: SW_NORMAL, type/N: 1, defn/S: 1, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: SW_SHOW, type/N: 1, defn/S: 5, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: SW_SHOWMINNOACTIVE, type/N: 1, defn/S: 7, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: SW_SHOWNA, type/N: 1, defn/S: 8, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: SW_SHOWNOACTIVATE, type/N: 1, defn/S: 4, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: SW_SHOWNORMAL, type/N: 1, defn/S: 1, flag/N: 0)
  HIns/G: 
   Enco/N: 1536
   name/S: Activate
@@ -770,22 +776,17 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: ShowWin
-  parm/S: Wnd As Window
+  parm/S: Wnd As Window, Cmd As Integer
   rslt/S: 
   flag/N: 0
   sorc/G: 
    Enco/N: 134217984
-   srcl/S: Sub ShowWin(Wnd As Window)
+   srcl/S: Sub ShowWin(Wnd As Window, Cmd As Integer)
    srcl/S: '++JRC
-   srcl/S: Const SW_SHOWNOACTIVATE = 4
-   srcl/S: Const SW_SHOWMINNOACTIVE = 7
-   srcl/S: Const SW_SHOWNA = 8
-   srcl/S: 
    srcl/S: #If TargetWin32 Then
-   srcl/S: 
    srcl/S: Declare Sub ShowWindow Lib "user32" (ByVal hwnd as Integer, ByVal nCmdShow as Integer)
    srcl/S: 
-   srcl/S: ShowWindow(wnd.WinHWND, SW_SHOWNA)
+   srcl/S: ShowWindow(wnd.WinHWND, Cmd)
    srcl/S: #Endif
    srcl/S: '--
    srcl/S: End Sub

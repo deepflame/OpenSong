@@ -454,6 +454,124 @@ T: Tag</keys>
      <!--Translate Me!!-->
     <tabs head1="Presentation Keys" head2="Formato de Acordes/Líricas" head3="Campo de la Presentación" head4="Cerrar"/>
     <print caption="Imprimir"/>
+     <!--Translate Me!!-->
+    <keys>
+&lt;h1&gt;Presentation Keys&lt;/h1&gt;
+
+The Presentation is controlled with the following keys:
+
+Esc Key: End the presentation.
+Up Arrow, 8 on Numpad, Backspace: Go to Previous Slide.
+Down Arrow, 2 on Numpad, Space Key: Go to Next Slide.
+Left Arrow, 4 on Numpad: Go to Previous item in set.
+Right Arrow, 6 on Numpad: Go to Next item in set.
+Q Key: Insert a new song into the presentation.
+A Key: Insert a new Alert.
+S Key: Insert a new scripture into the presentation.
+W Key: Fade to White screen.
+K Key: Fade to Black screen.
+L Key: Display OpenSong Logo.
+H Key: Hide Text, Show Background image only.
+F Key: Freezes Presentation(i.e. prevents displaying new slide, allowing you to change current slide
+without affecting the presentation, press N to unfreeze).
+N Key: Normal mode(get out of black screen, etc.)
+B Key: Go to Bridge(as denoted by a [B#] in song
+editor). If there is more than one Bridge,
+then pressing the B key will move to the next Bridge.
+C Key: Go to Chorus(as denoted by a [C#] in song editor). If there is more than one chorus,
+then pressing the C key will move to the next chorus.
+T Key: Go to Tag(as denoted by a [T#] in song editor). If there is more than one Tag,
+then pressing the T key will move to the next Tag.
+P Key: Go to Pre-Chorus(as denoted by a [P#] in song editor). If there is more than one Pre-Chorus,
+then pressing the P key will move to the next Pre-Chorus.
+1-9 Key: Go to Verse#(as denoted by a [V#] in song editor).
+
+Note the Numpad keys function depends on the state of the NumLock key.
+</keys>
+
+    <format>
+&lt;h1&gt;OpenSong Lyrics / Chords Format&lt;/h1&gt;
+
+Songs are broken down into the following line types: Section lines, Chord lines, Lyric lines, and Comment lines. A simple song might look something like this:
+&lt;pre&gt;&lt;b&gt;
+;Remember to sing the verse twice.
+[V]
+.G                C
+ This is a verse, this is a verse.
+.D          G
+ That is so cool.
+
+[C]
+.G               C/D  D     C
+ Sing the chorus now, yeah, yeah,
+.G           C       D/F# G
+ This is the dumbest song ever.&lt;/b&gt;&lt;/pre&gt;
+
+Lets look at each line type...
+
+&lt;h2&gt;Section Lines&lt;/h2&gt;
+
+Section lines are delimited by braces: [ and ]. A "section" includes any lines following this section line until the next section line or the end of the song. Sections are not displayed in the Presenter, but they are used to determine the order of the slides. Any text inside the braces is acceptable, but the following have special effects:
+
+&lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Verses. Lead sheets will automatically remove the "V" and print the remaining number with a circle around it. Examples: [V1], [V2], [V3].
+
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Chorus. Lead sheets will automatically display "Chorus" followed by any extra text (see examples). "Chorus" will be printed with a square around it. Examples: [C], [C2], [CModulation].
+
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Pre-chorus. Lead sheets will automatically display "Pre-chorus" followed by any extra text (see examples). "Pre-chorus" will be printed with horizontal lines above it and below it. Examples: [P], [P2].
+
+&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Bridge. Lead sheets will automatically display "Bridge" followed by any extra text (see examples). "Bridge" will be printed with a rounded square around it. Examples: [B], [B2].
+
+&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Tag. Lead sheets will automatically display "Tag" followed by any extra text (see examples). "Tag" will be printed with a rounded square around it. Examples: [T], [T2].
+
+&lt;h2&gt;Chord Lines&lt;/h2&gt;
+
+Chord lines start with a period: ".". The first letter of each chord should line up with the lyrics under it. Chord lines don't display on the Presenter, only on lead sheets.
+
+&lt;h2&gt;Lyric Lines&lt;/h2&gt;
+
+Lyric lines start with a space: " ". Lyrics generally line up with a previous chord line, but not necessarily.
+
+&lt;b&gt;&lt;i&gt;"__"&lt;/i&gt;&lt;/b&gt; If a word needs to be stretched to fit the chords, use underscores: "_". For example:
+&lt;b&gt;&lt;pre&gt;
+.Gsus7 C    G
+ Wel___come home.&lt;/pre&gt;&lt;/b&gt;
+
+Underscores are replaced by an appropriate "-" centered between the word parts. 
+
+&lt;b&gt;"  "&lt;/b&gt; Multiple spaces between words are just fine. Underscores and multiple spaces are automatically removed in the Presenter. When printing lead sheets, both are dropped and dynamically adjusted to fit.
+
+&lt;b&gt;"|"&lt;/b&gt; Vertical bars are replaced with spaces on lead sheets, and new lines in the Presenter.
+
+&lt;b&gt;"||"&lt;/b&gt; Double vertical bars are replaced by "new slide" in the Presenter and ignored when printing lead sheets. Double vertical bars must be at the end of the line.
+
+&lt;h3&gt;Multiple Lyric Lines for One Chord Line!?&lt;/h3&gt;
+
+Many songs have multiple verses which all share the same chords. Rather than repeat the chords in each verse section, we can group them by verse line rather than by verse number (like a hymnal). In this case, rather than start each lyric line with a space, start each lyric line with the verse number. Note that aligning multiple lyric lines with one chord line is a little trickier. It should look something like this:
+
+&lt;b&gt;&lt;i&gt;(Don't try to sing it; the timing is terrible. *grin*)&lt;/i&gt;&lt;pre&gt;
+[V]
+.G     C               G
+1This  is verse        one;
+2This  is not verse    two;
+3Where did verse three go;
+4Ever__lasting is not  verse four;
+
+.G     D    C                D            G
+1Hear  my   song as I sing,  "Mon_________key."
+2Open  your ears to my       wonderful    song.
+3Why   are  we still         singing this song?
+4This  is   not the way that songs should sound.&lt;/pre&gt;
+&lt;/b&gt;
+As far as the Presenter is concerned, the first character of each lyric line (i.e. 1, 2, 3, etc.) is appended to the section it is in. In other words, a section line of [V] with following lyric lines starting with 1, 2, 3, etc. would look like V1, V2, V3, etc.
+
+&lt;h2&gt;Comment Lines&lt;/h2&gt;
+
+There isn't much to a comment line. Comment lines are any lines that start with a semi-colon: ";". Comment lines are skipped in the Presenter, and displayed using the Comment font in Lead Sheets.
+
+&lt;h2&gt;Column Breaks&lt;/h2&gt;
+
+If a line contains only three dashes ("---"), lyrics sheets will print with a second column starting at the column break.
+</format>
   </help_topics>
 
   <font_selection title="Selección de la Fuente">
@@ -498,7 +616,8 @@ T: Tag</keys>
 
      </setlist>
   </print>
- 
+
+   <!--Translate Me!!-->
   <songml>
      <page caption="Page"/>
      <capo caption="Capo"/>
@@ -521,7 +640,17 @@ T: Tag</keys>
      <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
      <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
   </songml>
+
    <!--Translate Me!!-->
+  <smartml>
+    <attrib_except>SmartML.GetAttribute: Exception looking for attribute '%1' in '%2'</attrib_except>
+    <no_path>Path not found.</no_path>
+    <no_File>File not found: %1</no_File>
+    <cant_open>Error Opening File: %1</cant_open>
+    <cant_create>File could not be created: %1</cant_create>
+    <xml_error>Error parsing XML: %1</xml_error>
+    <xml_exterror>Error parsing XML: %1: %2: %3</xml_exterror>
+  </smartml> 
 
   <style_editor title="Editor de Estilo">
     <fonts_and_alignment caption="Fuentes y Alineación">
@@ -764,6 +893,8 @@ Haga click aquí para editar este estilo.</body>
   </questions>
 
   <about>
+     <!--Translate Me!!-->
+    <additional>Additional development by:</additional>
     <copyright>Copyright</copyright>
     <gpl>Esta aplicación se encuentra bajo los términos de la GPL.</gpl>
     <web>Visite http://www.opensong.org/ para más información.</web>

@@ -58,7 +58,9 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		  Try
 		    attribute = xnode.GetAttributeNode(attribName)
 		  Catch err
-		    MsgBox("SmartML.GetAttribute: Exception looking for attribute '" + attribName + "' in '" + xnode.ToString  + "'")
+		    '++JRC Translated
+		    If App.T.Isloaded Then MsgBox(App.T.Translate("smartml/attrib_except", attribName, xnode.ToString))
+		    '--
 		    Return ""
 		  End Try
 		  
@@ -660,22 +662,26 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		  Dim d As New XmlDocument
 		  d.PreserveWhitespace = False
 		  
-		  'TODO Translate these error strings
-		  
 		  If f = Nil Then
 		    ErrorCode = 1
-		    ErrorString = "Path not found."
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_path")
+		    '--
 		    Return Nil
 		  ElseIf Not f.Exists Then
 		    ErrorCode = 2
-		    ErrorString = "File not found: " + f.AbsolutePath
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_file",  f.AbsolutePath)
+		    '--
 		    Return Nil
 		  End If
 		  input = f.OpenAsTextFile
 		  '++JRC Prevent NilObject Exception if file could not be opened
 		  If input = Nil Then 
 		    ErrorCode = 4
-		    ErrorString = "Error Opening File: " + f.AbsolutePath
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/cant_open",  f.AbsolutePath)
+		    '--
 		    return nil
 		  End If
 		  '--
@@ -688,12 +694,16 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		      Return d
 		    Else
 		      ErrorCode = 5
-		      ErrorString = "Error parsing XML: " + f.AbsolutePath
+		      '++JRC Translated
+		      If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_error",  f.AbsolutePath)
+		      '--
 		      Return Nil
 		    End If
 		  Catch err As XmlException
 		    ErrorCode = 3
-		    ErrorString = "Error parsing XML: " + f.AbsolutePath + ": " + err.Line + ": " + err.Node
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_exterror",  f.AbsolutePath, err.Line, err.Node)
+		    '--
 		    Return Nil
 		  End Try
 		End Function
@@ -719,7 +729,9 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		    End If
 		  Catch err As XmlException
 		    ErrorCode = 3
-		    ErrorString = "Error parsing XML: " + Left(s, 30)
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_error",  Left(s, 30))
+		    '--
 		    If Len(s) > 30 Then ErrorString = ErrorString
 		    Return Nil
 		  End Try
@@ -737,7 +749,9 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		Function XDocToFile(xdoc As XmlDocument, f As FolderItem) As Boolean
 		  If f = Nil Then
 		    ErrorCode = 11
-		    ErrorString = "Path not found."
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_path")
+		    '--
 		    Return False
 		  End If
 		  
@@ -750,7 +764,9 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		    Return True
 		  Else
 		    ErrorCode = 12
-		    ErrorString = "File could not be created: " + f.AbsolutePath
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/cant_create", f.AbsolutePath)
+		    '--
 		    Return False
 		  End If
 		  

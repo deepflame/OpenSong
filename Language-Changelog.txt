@@ -115,6 +115,7 @@ load_settings/checking_folders
 load_settings/main
 song_search/hymn_number
 folderdb_errors/error@code=13
+sets_mode/untitled
 
 progress_status/folder
 progress_status/lead_sheets
@@ -124,3 +125,23 @@ progress_status/pass1
 progress_status/pass2
 progress_status/export
 progress_status
+shared/browse_for
+scripture_search/ok
+scripture_search/cancel
+scripture_search/example
+scripture_search/search
+scripture_search/words/all
+scripture_search/words/any
+scripture_search/words
+scripture_search/match/begins
+scripture_search/match/exact
+scripture_search/match
+scripture_search
+about/additional
+smartml/attrib_except
+smartml/no_path
+smartml/no_file
+smartml/cant_open
+smartml/cant_create
+smartml/xml_error
+smartml/xml_exterror

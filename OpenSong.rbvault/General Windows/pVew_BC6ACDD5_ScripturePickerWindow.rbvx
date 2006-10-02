@@ -1351,6 +1351,15 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   bNtr/N: 0
   HIns/G: 
    Enco/N: 1536
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  Globals.Status_ScripturePickerOpen = False
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
    name/S: Maximize
    sorc/d: (Enco/N: 134217984
 		Sub Maximize()
@@ -1846,7 +1855,10 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    btn_done.Caption = App.T.Translate("shared/close/@caption") 'MG: Close just makes more sense to me here
 		  End If
 		  btn_search.Caption = App.T.Translate("shared/search/@caption") ' MG: Without this the Search button was blank!
-		  ShowModalWithin MainWindow
+		  '++JRC
+		  Globals.Status_ScripturePickerOpen = True
+		  '--
+		  ShowModalWithin(MainWindow)
 		  
 		  If ReturnValue And book >= 0 Then
 		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book", book)

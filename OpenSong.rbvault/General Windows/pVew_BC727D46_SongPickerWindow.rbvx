@@ -396,6 +396,24 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
+   Enco/N: 1536
+   name/S: Activate
+   sorc/d: (Enco/N: 134217984
+		Sub Activate()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  Globals.Status_SongPickerOpen = False
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: Open
    sorc/d: (Enco/N: 134217984
@@ -424,6 +442,9 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Function Popup() As FolderItem
+		  '++JRC
+		  Globals.Status_SongPickerOpen = True
+		  '--
 		  ShowModalWithin(MainWindow)
 		  Return f
 		End Function

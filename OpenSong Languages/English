@@ -159,6 +159,7 @@
       <style caption="(style)">-- Change Style --</style>
       <revert caption="(style)">-- Revert Style --</revert>
     </items>
+    <untitled caption="Untitled"/>
   </sets_mode>
 
   <slide_editor>

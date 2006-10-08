@@ -1,8 +1,28 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Integrates Revision 84 changes to trunk.
+
+* Translated Browse for Folder Title
+
 * In set mode, name of new custom slide is now a translatable item instead of "Untitled."
 
+* Prevent OutOfBounds Exception when removing set item
+
 * Corrected issue with invalid song path in set on Macintosh.  Would've also affected Linux song files with spaces in the name. [Bug 1567295]
+
+* Translated Scripture Search Window
+
+* Adjusted PresentHelper to fit spanish translation
+
+* Resized txt_style_transition_note to fit spanish translation
+
+* Fixed Help text for Containing Folder, Transpose, Print Capo, custom order, original order, slide style, & setitem list
+
+* Fixed Several Presentation Window problems
+
+* Added Option to overwrite debug log files
+
+-= 1.0 Beta 2 Baselevel 13 =-
 
 * Fix "create song" to add folder info to the song listbox.
 

@@ -390,6 +390,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
 		  dlg.InitialDirectory = DocumentsFolder
 		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
+		  '++JRC
+		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
+		  '--
 		  
 		  f = dlg.ShowModal()
 		  If f <> Nil Then 
@@ -2943,7 +2946,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: MouseEnter
    sorc/d: (Enco/N: 134217984
 		Sub MouseEnter()
-		  SetHelp "advanced_song_editor/print_capo"
+		  '++JRC lol
+		  SetHelp "advanced_song_editor/capo_print"
+		  '--
 		End Sub
    )
   HIns/g: 
@@ -3274,7 +3279,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: MouseEnter
    sorc/d: (Enco/N: 134217984
 		Sub MouseEnter()
-		  SetHelp "slide_editor/custom_style"
+		  '++JRC
+		  SetHelp "slide_editor/style"
+		  '--
 		End Sub
    )
   HIns/g: 
@@ -3440,7 +3447,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: MouseEnter
    sorc/d: (Enco/N: 134217984
 		Sub MouseEnter()
-		  SetHelp "slide_editor/custom_style"
+		  '++JRC
+		  SetHelp "slide_editor/style"
+		  '--
 		End Sub
    )
   HIns/g: 
@@ -3730,7 +3739,30 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/g: 
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 188, Supr/S: EditField, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: EditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: MouseEnter
+   sorc/d: (Enco/N: 134217984
+		Sub MouseEnter()
+		  SetHelp "songs_mode/curr_folder"
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: MouseExit
+   sorc/d: (Enco/N: 134217984
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
@@ -3838,7 +3870,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: MouseEnter
    sorc/d: (Enco/N: 134217984
 		Sub MouseEnter()
-		  SetHelp "slide_editor/order"
+		  '++JRC
+		  SetHelp "slide_editor/presentation"
+		  '--
 		End Sub
    )
   HIns/g: 
@@ -3889,7 +3923,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: MouseEnter
    sorc/d: (Enco/N: 134217984
 		Sub MouseEnter()
-		  SetHelp "slide_editor/order"
+		  '++JRC
+		  SetHelp "slide_editor/origorder"
+		  '--
 		End Sub
    )
   HIns/g: 
@@ -7741,14 +7777,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: Height, PVal/S: 20)
   PDef/D: (name/S: HelpTag, PVal/S: )
   PDef/D: (name/S: Index, PVal/S: -2147483648)
-  PDef/D: (name/S: InitialParent, PVal/S: grp_song_transpose, Enco/N: 134217984)
+  PDef/D: (name/S: InitialParent, PVal/S: can_editor_general_song_editor, Enco/N: 134217984)
   PDef/D: (name/S: InitialValue, PVal/h: 2D360D2D350D2D340D2D330D2D320D2D310D300D2B310D2B320D2B330D2B340D2B350D2B36, Enco/N: 134217984)
   PDef/D: (name/S: Italic, PVal/S: False)
   PDef/D: (name/S: Left, PVal/S: 657)
   PDef/D: (name/S: ListIndex, PVal/S: 6)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: False)
-  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: pop_song_transpose, Enco/N: 134217984)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 1)
@@ -10006,8 +10042,25 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Activate
    sorc/d: (Enco/N: 134217984
 		Sub Activate()
-		  If Status_Presentation Then PresentWindow.SetFocus
+		  '++JRC
+		  App.DebugWriter.Write "Begin MainWindow.Activate:"
+		  
+		  'If Status_Presentation Then PresentWindow.SetFocus
+		  If Globals.Status_Presentation Then
+		    App.MinimizeWindow(MainWindow)
+		    
+		    If PresentWindow.HelperActive Then
+		      App.RestoreWindow(PresentHelperWindow)
+		      App.SetForeground(PresentHelperWindow)
+		    Else
+		      App.RestoreWindow(PresentWindow)
+		      App.SetForeground(PresentWindow)
+		    End If
+		  End If
+		  '--
 		  If App.SplashShowing Then Splash.Show
+		  
+		  App.DebugWriter.Write "End MainWindow.Activate:"
 		End Sub
    )
   HIns/g: 
@@ -10695,6 +10748,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 1
    sorc/d: (Enco/N: 134217984
 		Sub ActionInSetAskSave()
+		  '++JRC Make sure that CurrentInSetItem is still valid
+		  if CurrentInSetItem > lst_set_items.ListCount then return
+		  '--
+		  
 		  // Check for unsaved edits
 		  // EMP 10/9/04
 		  Dim Msg as MessageDialog
@@ -10757,6 +10814,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim slide_groups As XmlNode
 		  Dim listindex As Integer
 		  
+		  Status_SetChanged = True
+		  Status_InSetChanged = False
 		  listindex = lst_set_items.ListIndex
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  slide_groups.RemoveChild slide_groups.Child(ListIndex)
@@ -10768,8 +10827,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    lst_set_items.ListIndex = listindex - 1
 		  End If
 		  
-		  Status_SetChanged = True
-		  Status_InSetChanged = False
 		  EnableMenuItems
 		End Sub
    )
@@ -11295,6 +11352,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     srcl/S: Sub ActionSongPresent(mode As Integer)
+    srcl/S: App.DebugWriter.Write("Begin ActionSongPresent:")
     srcl/S: 
     srcl/S: ActionSongAskSave
     srcl/S: If Status_SongChanged Then Return 'Don't present if user cancelled the save
@@ -11314,11 +11372,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S:  
     srcl/S: Status_Presentation = True
     srcl/S: 
+    srcl/S: Globals.Status_Presentation = True
+    srcl/S: '--
     srcl/S: PresentWindow.Present setDoc, Mode
     srcl/S: 
     srcl/S: 'Self.Hide
     srcl/S: 
     srcl/S: App.MouseCursor = Nil
+    srcl/S: App.DebugWriter.Write("End ActionSongPresent:")
     srcl/S: End Sub
    sorc/g: 
   Meth/g: 

@@ -116,3 +116,11 @@ load_settings/main
 song_search/hymn_number
 folderdb_errors/error@code=13
 sets_mode/untitled
+progress_status/folder
+progress_status/lead_sheets
+progress_status/process_themes
+progress_status/process_song
+progress_status/pass1
+progress_status/pass2
+progress_status/export
+progress_status

@@ -804,6 +804,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
 		  dlg.InitialDirectory = DocumentsFolder
 		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
+		  '++JRC
+		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
+		  '--
 		  
 		  //++
 		  // Feature request 1528693: require confirmation
@@ -1469,7 +1472,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: MouseEnter
    sorc/d: (Enco/N: 134217984
 		Sub MouseEnter()
-		  SetHelp "sets_mode/set_items"
+		  '++JRC
+		  SetHelp "sets_mode/items"
+		  '--
 		End Sub
    )
   HIns/g: 
@@ -10814,8 +10819,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim slide_groups As XmlNode
 		  Dim listindex As Integer
 		  
-		  Status_SetChanged = True
-		  Status_InSetChanged = False
 		  listindex = lst_set_items.ListIndex
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  slide_groups.RemoveChild slide_groups.Child(ListIndex)
@@ -10827,6 +10830,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    lst_set_items.ListIndex = listindex - 1
 		  End If
 		  
+		  Status_SetChanged = True
+		  Status_InSetChanged = False
 		  EnableMenuItems
 		End Sub
    )
@@ -11352,7 +11357,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     srcl/S: Sub ActionSongPresent(mode As Integer)
-    srcl/S: App.DebugWriter.Write("Begin ActionSongPresent:")
     srcl/S: 
     srcl/S: ActionSongAskSave
     srcl/S: If Status_SongChanged Then Return 'Don't present if user cancelled the save
@@ -11379,7 +11383,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: 'Self.Hide
     srcl/S: 
     srcl/S: App.MouseCursor = Nil
-    srcl/S: App.DebugWriter.Write("End ActionSongPresent:")
     srcl/S: End Sub
    sorc/g: 
   Meth/g: 
@@ -12262,7 +12265,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S:  "2003, 2004, 2005 Sean Lickfold. "
     srcl/S: str = str + EndOfLine + App.T.Translate("about/gpl")
     srcl/S: str = str + EndOfLine + App.T.Translate("about/web")
-    srcl/S: str = str + EndOfLine + "Additional development by:" + EndOfLine + "Joshua R. Coley, Gareth Evans and Ed Palmer"
+    srcl/S: '++JRC translated
+    srcl/S: str = str + EndOfLine + App.T.Translate("about/additional") + EndOfLine + "Joshua R. Coley, Gareth Evans and Ed Palmer"
+    srcl/S: '--
     srcl/S: str = str + EndOfLine + EndOfLine + App.T.Translate("general_settings/general/language/@caption") + ": "
     srcl/S: str = str + App.T.Translate("@name") + " - " + App.T.Translate("@author")
     srcl/S: 

@@ -18,19 +18,12 @@ pObj/B: 426C6F6B704F626ABD4C2F010000000000000000000000000000000000000000
   flag/N: 0
   sorc/d: (Enco/N: 134217984
 		Sub Constructor(f As FolderItem)
-		  '++JRC 
-		  If f = Nil Then 
-		    Document = Nil
-		    Return
+		  If f <> Nil And f.Exists Then
+		    File = f
+		    Document = SmartML.XDocFromFile(f)
 		  End If
 		  
-		  If NOT f.Exists Then
-		    Document = Nil
-		    Return
-		  End If
-		  '--
-		  File = f
-		  Document = SmartML.XDocFromFile(f)
+		  'Else leave File and Document as Nil
 		End Sub
   )
  Meth/g: 

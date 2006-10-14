@@ -1,14 +1,17 @@
--= 1.0 Beta 2 Baselevel 13 =-
+-= 1.0 Beta 2 JRC =-
+* Translated several SmartML error Messages
 
-* Integrates Revision 84 changes to trunk.
+* Bring SongPicker, ScripturePicker & InputBox to front when OpenSong is Re-activated in Preview Dual Screen Mode
+
+* Translated Additional Dev About string
+
+* Return Nil translator Object if file passed is Nil or Non-existent(switched to cozmics method)
+
+* Translated help
 
 * Translated Browse for Folder Title
 
-* In set mode, name of new custom slide is now a translatable item instead of "Untitled."
-
 * Prevent OutOfBounds Exception when removing set item
-
-* Corrected issue with invalid song path in set on Macintosh.  Would've also affected Linux song files with spaces in the name. [Bug 1567295]
 
 * Translated Scripture Search Window
 
@@ -23,6 +26,10 @@
 * Added Option to overwrite debug log files
 
 -= 1.0 Beta 2 Baselevel 13 =-
+
+* In set mode, name of new custom slide is now a translatable item instead of "Untitled."
+
+* Corrected issue with invalid song path in set on Macintosh.  Would've also affected Linux song files with spaces in the name. [Bug 1567295]
 
 * Fix "create song" to add folder info to the song listbox.
 

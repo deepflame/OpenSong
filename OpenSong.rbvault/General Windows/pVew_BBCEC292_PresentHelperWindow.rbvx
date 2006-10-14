@@ -1045,7 +1045,10 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Activate()
 		  App.DebugWriter.Write "Begin PresentHelperWindow.Activate:"
-		  App.ShowWin(PresentWindow)
+		  If Globals.Status_ScripturePickerOpen Then App.SetForeground(ScripturePickerWindow)
+		  If Globals.Status_SongPickerOpen Then App.SetForeground(SongPickerWindow)
+		  If Globals.Status_InputBoxOpen Then App.SetForeground(InputBox)
+		  App.ShowWin(PresentWindow, App.SW_SHOWNA)
 		  App.DebugWriter.Write "End PresentHelperWindow.Activate:"
 		End Sub
    )

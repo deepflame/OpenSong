@@ -220,11 +220,11 @@ pObj/B: 426C6F6B704F626ABFB0E25A0000000000000000000000000000000000000000
  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
-  decl/S: WhitespaceChars() as string
+  decl/S: Status_InputBoxOpen As Boolean
   flag/N: 1
   sorc/G: 
    Enco/N: 134217984
-   ntln/S: WhitespaceChars() as string
+   ntln/S: Status_InputBoxOpen As Boolean
    ntln/S: 
    ntln/S: 
   sorc/g: 
@@ -236,6 +236,39 @@ pObj/B: 426C6F6B704F626ABFB0E25A0000000000000000000000000000000000000000
   sorc/G: 
    Enco/N: 134217984
    ntln/S: Status_Presentation As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Status_ScripturePickerOpen As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Status_ScripturePickerOpen As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Status_SongPickerOpen As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Status_SongPickerOpen As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: WhitespaceChars() as string
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: WhitespaceChars() as string
    ntln/S: 
    ntln/S: 
   sorc/g: 

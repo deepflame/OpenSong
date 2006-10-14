@@ -363,6 +363,15 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
+   Enco/N: 1536
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  Globals.Status_InputBoxOpen = False
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: Open
    sorc/d: (Enco/N: 134217984
@@ -371,6 +380,7 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
 		  If App.T.IsLoaded Then
 		    App.T.TranslateWindow Me, "input_box", App.TranslationFonts
 		  End If
+		  Globals.Status_InputBoxOpen = True
 		  '--
 		  App.CenterInControlScreen Me
 		End Sub

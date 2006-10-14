@@ -95,7 +95,15 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		  '#if DebugBuild Then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Exit")
 		  '#endif
-		  
+		  //++
+		  // EMP: handle any exceptions by ignoring them.
+		  // This corrects an issue seen when changing the SButton style
+		  // after a presentation and for some reason this window is still open
+		  //--
+		Catch ex
+		  App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
+		      RuntimeException(ex).Message, 1)
+		  Return
 		End Sub
    )
   HIns/g: 
@@ -153,7 +161,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentWindow
-  Size/N: 192
+  Size/N: 200
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: ACTION_BLACK, type/N: 1, defn/S: 1013, flag/N: 0)
@@ -199,13 +207,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: CancelClose
    sorc/d: (Enco/N: 134217984
 		Function CancelClose(appQuitting as Boolean) As Boolean
-		  MainWindow.Status_Presentation = False
-		  If HelperActive Then PresentHelperWindow.Close
-		  timerAdvance.Enabled = False
-		  MainWindow.Show
-		  MainWindow.SetFocus
 		  
-		  'ShowCursorMBS
 		End Function
    )
   HIns/g: 
@@ -214,9 +216,17 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: Close
    sorc/d: (Enco/N: 134217984
 		Sub Close()
+		  'MainWindow.Status_Presentation = False
+		  'MainWindow.Show
+		  'MainWindow.SetFocus
 		  MainWindow.Status_Presentation = False
+		  Globals.Status_Presentation = False
+		  If HelperActive Then PresentHelperWindow.Close
+		  timerAdvance.Enabled = False
 		  MainWindow.Show
 		  MainWindow.SetFocus
+		  
+		  'ShowCursorMBS
 		End Sub
    )
   HIns/g: 

@@ -15,22 +15,6 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: CMtoPoints
-  parm/S: Points As String
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function CMtoPoints(Points As String) As String
-		  //++
-		  // Polymorphic version of CMtoPoints
-		  //--
-		  
-		  Return CStr(CMtoPoints(CDbl(Points)))
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: CMtoPoints
   parm/S: CM As Double
   rslt/S: Double
   flag/N: 0
@@ -49,6 +33,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  //++
 		  
 		  Return CM / POINT_TO_CM
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CMtoPoints
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function CMtoPoints(Points As String) As String
+		  //++
+		  // Polymorphic version of CMtoPoints
+		  //--
+		  
+		  Return CStr(CMtoPoints(CDbl(Points)))
 		End Function
   )
  Meth/g: 
@@ -93,17 +93,17 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: PointsToCM
-  parm/S: Points As String
-  rslt/S: String
+  name/S: IsWindowVisible
+  parm/S: Title As String
+  rslt/S: Boolean
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function PointsToCM(Points As String) As String
-		  //++
-		  // Polymorphic version of PointsToCM
-		  //--
-		  
-		  Return CStr(PointsToCM(CDbl(Points)))
+		Function IsWindowVisible(Title As String) As Boolean
+		  Dim i As Integer
+		  For i = 0 To WindowCount - 1
+		    If Window(i).Title = Title Then Return True
+		  Next
+		  Return False
 		End Function
   )
  Meth/g: 
@@ -128,6 +128,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  //++
 		  
 		  Return Points * POINT_TO_CM
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToCM
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToCM(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToCM
+		  //--
+		  
+		  Return CStr(PointsToCM(CDbl(Points)))
 		End Function
   )
  Meth/g: 

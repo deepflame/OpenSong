@@ -347,7 +347,7 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: InputBox
-  Size/N: 145
+  Size/N: 153
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -443,6 +443,7 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     srcl/S: Sub BringToFront()
+    srcl/S: #If TargetWin32 Then
     srcl/S: Const SWP_NOSIZE = &H1
     srcl/S: Const SWP_NOMOVE = &H2
     srcl/S: Const SWP_FRAMECHANGED = &H20
@@ -453,18 +454,17 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
     srcl/S: 
     srcl/S: Dim styleFlags As Integer
     srcl/S: 
-    srcl/S: #If TargetWin32 Then
-    srcl/S: 
     srcl/S: Declare Function SetWindowPos Lib "user32" (hwnd as Integer, hWndInsertAfter as Integer, x as Integer, y as Integer, cx as Integer, cy as Integer, flags as Integer) as Integer
     srcl/S: 
     srcl/S: styleFlags = SetWindowPos( self.Handle, HWND_TOP, 0, 0, 0, 0, _
     srcl/S: SWP_NOSIZE + SWP_NOMOVE + SWP_NOOWNERZORDER)
     srcl/S: 
     srcl/S: #ElseIf TargetCarbon Then
+    srcl/S: 
     srcl/S: Dim Status As Integer
     srcl/S: Declare Function SelectWindow Lib "CarbonLib" (window As Integer) As Integer
     srcl/S: 
-    srcl/S: Status = SelectWindow(wnd.Handle)
+    srcl/S: Status = SelectWindow(Self.Handle)
     srcl/S: #EndIf
     srcl/S: End Sub
    sorc/g: 

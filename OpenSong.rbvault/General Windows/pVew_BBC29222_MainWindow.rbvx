@@ -6042,9 +6042,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -6907,9 +6907,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: True)
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -8118,9 +8118,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
-  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: EnableDrag, PVal/S: False)
   PDef/D: (name/S: EnableDragReorder, PVal/S: False)
+  PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
@@ -10039,7 +10039,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainWindow
-  Size/N: 234
+  Size/N: 242
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -10050,8 +10050,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  '++JRC
 		  App.DebugWriter.Write "Begin MainWindow.Activate:"
 		  
-		  'If Status_Presentation Then PresentWindow.SetFocus
-		  If Globals.Status_Presentation Then
+		  If Globals.Status_Presentation Or Status_Presentation Then
 		    App.MinimizeWindow(MainWindow)
 		    
 		    If PresentWindow.HelperActive Then
@@ -10999,6 +10998,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  
 		  Status_Presentation = True
+		  Globals.Status_Presentation = True
 		  'Self.Hide
 		  
 		  'App.MinimizeWindow(Self)

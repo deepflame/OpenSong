@@ -227,145 +227,145 @@ End
 #tag EndWindow
 
 #tag WindowCode
-#tag Event
-	Sub Open()
-	  Dim x As Integer
-	  
-	  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
-	  End If
-	  pop_select_folder.ListIndex = 0
-	  
-	  'If UBound(MainWindow.Songs.GetFiles("", lst_all_songs)) = 0 Then
-	  'End If
-	  
-	  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
-	  App.CenterInControlScreen Me
-	  lst_all_songs.ListIndex = 0
-	  lst_all_songs.SetFocus
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Dim x As Integer
+		  
+		  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
+		  End If
+		  pop_select_folder.ListIndex = 0
+		  
+		  'If UBound(MainWindow.Songs.GetFiles("", lst_all_songs)) = 0 Then
+		  'End If
+		  
+		  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
+		  App.CenterInControlScreen Me
+		  lst_all_songs.ListIndex = 0
+		  lst_all_songs.SetFocus
+		End Sub
+	#tag EndEvent
 
 
-#tag Method, Flags = &h0
-	Function Popup() As FolderItem
-	  ShowModalWithin(MainWindow)
-	  Return f
-	End Function
-#tag EndMethod
+	#tag Method, Flags = &h0
+		Function Popup() As FolderItem
+		  ShowModalWithin(MainWindow)
+		  Return f
+		End Function
+	#tag EndMethod
 
 
-#tag Property, Flags = &h1
-	Protected f As FolderItem
-#tag EndProperty
+	#tag Property, Flags = &h1
+		Protected f As FolderItem
+	#tag EndProperty
 
-#tag Property, Flags = &h1
-	Protected KeyedSearch As String
-#tag EndProperty
+	#tag Property, Flags = &h1
+		Protected KeyedSearch As String
+	#tag EndProperty
 
 
 #tag EndWindowCode
 
 #tag Events lst_all_songs
-#tag Event
-	Sub Change()
-	  If Me.ListIndex >= 0 Then
-	    App.DebugWriter.Write("SongPickerWindow.lst_all_songs.Change: New selection is '" +_
-	    Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
-	    f = MainWindow.Songs.GetFile(Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
-	    btn_add.Enabled = True
-	  End If
-	End Sub
-#tag EndEvent
-#tag Event
-	Sub DoubleClick()
-	  If lst_all_songs.ListIndex >= 0 Then
-	    Close
-	  Else
-	    InputBox.Message App.T.Translate("song_lookup/no_selection")
-	  End If
-	End Sub
-#tag EndEvent
-#tag Event
-	Function KeyDown(key As String) As Boolean
-	  If Asc(Key) = 13 Or Asc(Key) = 10 Then
-	    Close
-	    Return True
-	  ElseIf Asc(Key) = 31 Then ' Down
-	    KeyedSearch = ""
-	    Return False
-	  ElseIf Asc(Key) = 30 Then ' Up
-	    KeyedSearch = ""
-	    Return False
-	  ElseIf Asc(Key) = 27 Then 'Escape
-	    KeyedSearch = ""
-	    Return True 'Keep dialog box from closing
-	  End If
-	  
-	  Dim i, l As Integer
-	  Dim NewKey As String
-	  Dim SearchedEntry As String
-	  
-	  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
-	  
-	  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: key = '" + key + "'"
-	  Key = ConvertEncoding(key, Encodings.UTF8)
-	  NewKey = ConvertEncoding(KeyedSearch + key, Encodings.UTF8)
-	  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: NewKey = " + NewKey
-	  l = Len(NewKey)
-	  
-	  timerLookup.Reset
-	  For i = 0 To Me.ListCount - 1
-	    SearchedEntry = ConvertEncoding(Left(Me.List(i), l), Encodings.UTF8)
-	    If SearchedEntry = NewKey Then
-	      Me.ListIndex = i
-	      App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: Found match index, value: " + str(i) + " " + Me.List(i)
-	      KeyedSearch = NewKey
-	      Return True
-	    End If
-	  Next i
-	  Return False
-	End Function
-#tag EndEvent
-#tag Event
-	Sub MouseEnter()
-	  Me.SetFocus
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Change()
+		  If Me.ListIndex >= 0 Then
+		    App.DebugWriter.Write("SongPickerWindow.lst_all_songs.Change: New selection is '" +_
+		    Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
+		    f = MainWindow.Songs.GetFile(Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
+		    btn_add.Enabled = True
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub DoubleClick()
+		  If lst_all_songs.ListIndex >= 0 Then
+		    Close
+		  Else
+		    InputBox.Message App.T.Translate("song_lookup/no_selection")
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function KeyDown(key As String) As Boolean
+		  If Asc(Key) = 13 Or Asc(Key) = 10 Then
+		    Close
+		    Return True
+		  ElseIf Asc(Key) = 31 Then ' Down
+		    KeyedSearch = ""
+		    Return False
+		  ElseIf Asc(Key) = 30 Then ' Up
+		    KeyedSearch = ""
+		    Return False
+		  ElseIf Asc(Key) = 27 Then 'Escape
+		    KeyedSearch = ""
+		    Return True 'Keep dialog box from closing
+		  End If
+		  
+		  Dim i, l As Integer
+		  Dim NewKey As String
+		  Dim SearchedEntry As String
+		  
+		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
+		  
+		  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: key = '" + key + "'"
+		  Key = ConvertEncoding(key, Encodings.UTF8)
+		  NewKey = ConvertEncoding(KeyedSearch + key, Encodings.UTF8)
+		  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: NewKey = " + NewKey
+		  l = Len(NewKey)
+		  
+		  timerLookup.Reset
+		  For i = 0 To Me.ListCount - 1
+		    SearchedEntry = ConvertEncoding(Left(Me.List(i), l), Encodings.UTF8)
+		    If SearchedEntry = NewKey Then
+		      Me.ListIndex = i
+		      App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: Found match index, value: " + str(i) + " " + Me.List(i)
+		      KeyedSearch = NewKey
+		      Return True
+		    End If
+		  Next i
+		  Return False
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  Me.SetFocus
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_add
-#tag Event
-	Sub Action()
-	  'BuildScripture
-	  
-	  If lst_all_songs.ListIndex >= 0 Then
-	    Close
-	  Else
-	    InputBox.Message App.T.Translate("song_lookup/no_selection")
-	  End If
-	  
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  'BuildScripture
+		  
+		  If lst_all_songs.ListIndex >= 0 Then
+		    Close
+		  Else
+		    InputBox.Message App.T.Translate("song_lookup/no_selection")
+		  End If
+		  
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_done
-#tag Event
-	Sub Action()
-	  f = Nil
-	  Close
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  f = Nil
+		  Close
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events timerLookup
-#tag Event
-	Sub Action()
-	  KeyedSearch = ""
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  KeyedSearch = ""
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events pop_select_folder
-#tag Event
-	Sub Change()
-	  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
-	  End If
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Change()
+		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
+		  End If
+		End Sub
+	#tag EndEvent
 #tag EndEvents

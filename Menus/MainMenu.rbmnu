@@ -27,6 +27,7 @@ Begin Menu MainMenu
          ShortcutKey = "S"
          Shortcut = "Cmd+S"
          MenuModifier = True
+         AutoEnable = True
       End
       Begin MenuItem UntitledMenu7
          SpecialMenu = 0
@@ -47,6 +48,7 @@ Begin Menu MainMenu
             ShortcutKey = "1"
             Shortcut = "Cmd+1"
             MenuModifier = True
+            AutoEnable = True
          End
          Begin MenuItem mnu_file_dual_screen
             SpecialMenu = 0
@@ -55,6 +57,7 @@ Begin Menu MainMenu
             ShortcutKey = "2"
             Shortcut = "Cmd+2"
             MenuModifier = True
+            AutoEnable = True
          End
          Begin MenuItem UntitledMenu6
             SpecialMenu = 0
@@ -69,6 +72,7 @@ Begin Menu MainMenu
             ShortcutKey = "3"
             Shortcut = "Cmd+3"
             MenuModifier = True
+            AutoEnable = True
          End
          Begin MenuItem 
             SpecialMenu = 2
@@ -90,6 +94,7 @@ Begin Menu MainMenu
          ShortcutKey = "P"
          Shortcut = "Cmd+P"
          MenuModifier = True
+         AutoEnable = True
       End
       Begin MenuItem UntitledMenu5
          SpecialMenu = 0

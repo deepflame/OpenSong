@@ -383,7 +383,10 @@ Begin Window PresentSettingsWindow
             BehaviorIndex   =   12
          End
          Begin SFontCanvas can_alerts_font
+            Index           =   -2147483648
             ControlOrder    =   13
+            Left            =   140
+            Top             =   272
             Width           =   250
             Height          =   80
             LockLeft        =   "False"
@@ -401,9 +404,6 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "grp_settings_alerts"
-            Index           =   -2147483648
-            Left            =   140
-            Top             =   272
             AdvancedOptions =   "True"
             BehaviorIndex   =   13
          End
@@ -433,7 +433,10 @@ Begin Window PresentSettingsWindow
          InitialParent   =   "tab_present_settings"
          BehaviorIndex   =   14
          Begin SImageCanvas can_logo
+            Index           =   -2147483648
             ControlOrder    =   15
+            Left            =   475
+            Top             =   95
             Width           =   80
             Height          =   60
             LockLeft        =   "False"
@@ -451,9 +454,6 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "grp_option_logo"
-            Index           =   -2147483648
-            Left            =   475
-            Top             =   95
             BehaviorIndex   =   15
          End
          Begin StaticText nte_logo_click_to_change_1
@@ -547,7 +547,10 @@ Begin Window PresentSettingsWindow
             BehaviorIndex   =   18
          End
          Begin SImageCanvas can_logo_mask
+            Index           =   -2147483648
             ControlOrder    =   19
+            Left            =   475
+            Top             =   238
             Width           =   80
             Height          =   60
             LockLeft        =   "False"
@@ -565,9 +568,6 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "grp_option_logo"
-            Index           =   -2147483648
-            Left            =   475
-            Top             =   238
             BehaviorIndex   =   19
          End
          Begin StaticText nte_logo_click_to_change_2
@@ -1826,551 +1826,551 @@ End
 #tag EndWindow
 
 #tag WindowCode
-#tag Event
-	Function KeyDown(Key As String) As Boolean
-	  If Keyboard.AsyncKeyDown(&h35) Or Asc(Key) = 27 Then ' Escape
-	    Close
-	  End If
-	End Function
-#tag EndEvent
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  If Keyboard.AsyncKeyDown(&h35) Or Asc(Key) = 27 Then ' Escape
+		    Close
+		  End If
+		End Function
+	#tag EndEvent
 
-#tag Event
-	Sub Open()
-	  dim s as string
-	  Dim n As Integer 'EMP 09/05
-	  Dim subtitles() As String 'EMP 12/05
-	  App.MouseCursor = WatchCursor
-	  App.DebugWriter.Write("Opening PresentSettingsWindow")
-	  Me.BackColor = FillColor
-	  
-	  edt_style_border_thickness.Text = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@thickness")
-	  chk_style_use_transitions.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
-	  chk_style_blanks.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
-	  
-	  chk_style_exit_prompt.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt")
-	  '++JRC
-	  chk_style_descriptive_subtitle_info.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info")
-	  Dim file As String
-	  file = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@default_audio")
-	  CurrAudioFile = GetFolderItem(file)
-	  If CurrAudioFile <> Nil Then
-	    CurrAudio = CurrAudioFile.OpenAsSound
-	  end if
-	  if CurrAudio = Nil then
-	    CurrAudioFile = Nil
-	    btn_audio_play.Enabled = false
-	    btn_audio_stop.Enabled = false
-	  else
-	    btn_audio_play.Enabled = true
-	    'btn_audio_stop.Enabled = true
-	  end if
-	  
-	  IsAudioPlaying = false
-	  '--
-	  pop_monitor_control.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
-	  If pop_monitor_control.ListIndex < 0 Then pop_monitor_control.ListIndex = 0
-	  pop_monitor_presentation.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-	  If pop_monitor_presentation.ListIndex < 0 Then pop_monitor_presentation.ListIndex = 1
-	  
-	  can_style_default.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
-	  can_style_scripture.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
-	  
-	  sal_alerts.SetVAlign SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@valign")
-	  sal_alerts.SetHAlign SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@align")
-	  can_alerts_font.SetFont SmartML.GetValueF(App.MyPresentSettings.DocumentElement, "alert")
-	  
-	  can_logo.SetImageAsString SmartML.GetValue(App.MyPresentSettings.DocumentElement, "logo")
-	  can_logo_mask.SetImageAsString SmartML.GetValue(App.MyPresentSettings.DocumentElement, "logo_mask")
-	  
-	  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/normal/@caption")
-	  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/black/@caption")
-	  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/white/@caption")
-	  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/logo/@caption")
-	  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/hidden/@caption")
-	  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/frozen/@caption")
-	  
-	  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/arrow/@caption")
-	  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/cross/@caption")
-	  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/hidden/@caption")
-	  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/hourglass/@caption")
-	  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/ibeam/@caption")
-	  
-	  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
-	  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
-	  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
-	  
-	  pop_monitor_mode.Listindex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code", True) - 1
-	  
-	  Dim temp As String
-	  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@initial_mode")
-	  Select Case temp
-	  Case "B"
-	    pop_style_initial_mode.ListIndex = 1
-	  Case "W"
-	    pop_style_initial_mode.ListIndex = 2
-	  Case "L"
-	    pop_style_initial_mode.ListIndex = 3
-	  Case "H"
-	    pop_style_initial_mode.ListIndex = 4
-	  Case "F"
-	    pop_style_initial_mode.ListIndex = 5
-	  Else
-	    pop_style_initial_mode.ListIndex = 0
-	  End Select
-	  
-	  'Josh
-	  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@mouse_cursor")
-	  Select Case temp
-	  Case "arrow"
-	    pop_style_mouse_cursor.ListIndex = 0
-	  Case "cross"
-	    pop_style_mouse_cursor.ListIndex = 1
-	  Case "hidden"
-	    pop_style_mouse_cursor.ListIndex = 2
-	  Case "hourglass"
-	    pop_style_mouse_cursor.ListIndex = 3
-	  Case "ibeam"
-	    pop_style_mouse_cursor.ListIndex = 4
-	  Else
-	    pop_style_mouse_cursor.ListIndex = 0
-	  End Select
-	  
-	  App.MouseCursor = Nil
-	  
-	  App.T.TranslateWindow Me, "presentation_settings", App.TranslationFonts
-	  s = App.T.Translate("presentation_settings/style/initial_mode/@caption")
-	  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(ScreenCount))
-	  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(ScreenCount))
-	  
-	  //++EMP 09/05
-	  // Code for user-selectable transitions
-	  
-	  n = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_frames", False)
-	  If n = 0 Then n = 5
-	  sld_style_frames.Value = n
-	  edt_style_frames.Text = Str(n)
-	  
-	  n = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
-	  If n = 0 Then n = 100
-	  sld_style_time.Value = n
-	  edt_style_time.Text = Str(n)
-	  
-	  sld_style_frames.Enabled = chk_style_use_transitions.Value
-	  sld_style_time.Enabled = chk_style_use_transitions.Value
-	  edt_style_frames.Enabled = chk_style_use_transitions.Value
-	  edt_style_time.Enabled = chk_style_use_transitions.Value
-	  lbl_style_time.Enabled = chk_style_use_transitions.Value
-	  lbl_style_frames.Enabled = chk_style_use_transitions.Value
-	  //--
-	  
-	  //++EMP, 11/05
-	  // Selectable highlight of choruses
-	  chk_style_highlight_chorus.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, _
-	  "style/@highlight_chorus", True, True)
-	  
-	  // Determine if blanks use the previous or next slide's style
-	  
-	  rad_style_blank_next.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, _
-	  "style/@blank_uses_next", True, True)
-	  rad_style_blank_prev.Value = Not rad_style_blank_next.Value
-	  //--
-	  
-	  lst_style_subtitles.SetSelected(SmartML.GetValue(App.MyPresentSettings.DocumentElement, _
-	  "style/@song_subtitles"))
-	  App.CenterInControlScreen Me
-	End Sub
-#tag EndEvent
-
-
-#tag Method, Flags = &h1
-	Protected Sub PopTo(str As String, pop As PopupMenu)
-	  Dim i As Integer
-	  For i = 0 To pop.ListCount - 1
-	    If Lowercase(str) = Lowercase(pop.List(i)) Then
-	      pop.ListIndex = i
-	      Return
-	    End If
-	  Next i
-	End Sub
-#tag EndMethod
+	#tag Event
+		Sub Open()
+		  dim s as string
+		  Dim n As Integer 'EMP 09/05
+		  Dim subtitles() As String 'EMP 12/05
+		  App.MouseCursor = WatchCursor
+		  App.DebugWriter.Write("Opening PresentSettingsWindow")
+		  Me.BackColor = FillColor
+		  
+		  edt_style_border_thickness.Text = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@thickness")
+		  chk_style_use_transitions.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
+		  chk_style_blanks.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
+		  
+		  chk_style_exit_prompt.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt")
+		  '++JRC
+		  chk_style_descriptive_subtitle_info.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info")
+		  Dim file As String
+		  file = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@default_audio")
+		  CurrAudioFile = GetFolderItem(file)
+		  If CurrAudioFile <> Nil Then
+		    CurrAudio = CurrAudioFile.OpenAsSound
+		  end if
+		  if CurrAudio = Nil then
+		    CurrAudioFile = Nil
+		    btn_audio_play.Enabled = false
+		    btn_audio_stop.Enabled = false
+		  else
+		    btn_audio_play.Enabled = true
+		    'btn_audio_stop.Enabled = true
+		  end if
+		  
+		  IsAudioPlaying = false
+		  '--
+		  pop_monitor_control.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+		  If pop_monitor_control.ListIndex < 0 Then pop_monitor_control.ListIndex = 0
+		  pop_monitor_presentation.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		  If pop_monitor_presentation.ListIndex < 0 Then pop_monitor_presentation.ListIndex = 1
+		  
+		  can_style_default.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
+		  can_style_scripture.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
+		  
+		  sal_alerts.SetVAlign SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@valign")
+		  sal_alerts.SetHAlign SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@align")
+		  can_alerts_font.SetFont SmartML.GetValueF(App.MyPresentSettings.DocumentElement, "alert")
+		  
+		  can_logo.SetImageAsString SmartML.GetValue(App.MyPresentSettings.DocumentElement, "logo")
+		  can_logo_mask.SetImageAsString SmartML.GetValue(App.MyPresentSettings.DocumentElement, "logo_mask")
+		  
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/normal/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/black/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/white/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/logo/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/hidden/@caption")
+		  pop_style_initial_mode.AddRow App.T.Translate("presentation_settings/style/modes/frozen/@caption")
+		  
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/arrow/@caption")
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/cross/@caption")
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/hidden/@caption")
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/hourglass/@caption")
+		  pop_style_mouse_cursor.AddRow App.T.Translate("presentation_settings/style/mouse_cursor/ibeam/@caption")
+		  
+		  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
+		  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
+		  pop_monitor_mode.AddRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
+		  
+		  pop_monitor_mode.Listindex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code", True) - 1
+		  
+		  Dim temp As String
+		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@initial_mode")
+		  Select Case temp
+		  Case "B"
+		    pop_style_initial_mode.ListIndex = 1
+		  Case "W"
+		    pop_style_initial_mode.ListIndex = 2
+		  Case "L"
+		    pop_style_initial_mode.ListIndex = 3
+		  Case "H"
+		    pop_style_initial_mode.ListIndex = 4
+		  Case "F"
+		    pop_style_initial_mode.ListIndex = 5
+		  Else
+		    pop_style_initial_mode.ListIndex = 0
+		  End Select
+		  
+		  'Josh
+		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@mouse_cursor")
+		  Select Case temp
+		  Case "arrow"
+		    pop_style_mouse_cursor.ListIndex = 0
+		  Case "cross"
+		    pop_style_mouse_cursor.ListIndex = 1
+		  Case "hidden"
+		    pop_style_mouse_cursor.ListIndex = 2
+		  Case "hourglass"
+		    pop_style_mouse_cursor.ListIndex = 3
+		  Case "ibeam"
+		    pop_style_mouse_cursor.ListIndex = 4
+		  Else
+		    pop_style_mouse_cursor.ListIndex = 0
+		  End Select
+		  
+		  App.MouseCursor = Nil
+		  
+		  App.T.TranslateWindow Me, "presentation_settings", App.TranslationFonts
+		  s = App.T.Translate("presentation_settings/style/initial_mode/@caption")
+		  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(ScreenCount))
+		  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(ScreenCount))
+		  
+		  //++EMP 09/05
+		  // Code for user-selectable transitions
+		  
+		  n = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_frames", False)
+		  If n = 0 Then n = 5
+		  sld_style_frames.Value = n
+		  edt_style_frames.Text = Str(n)
+		  
+		  n = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
+		  If n = 0 Then n = 100
+		  sld_style_time.Value = n
+		  edt_style_time.Text = Str(n)
+		  
+		  sld_style_frames.Enabled = chk_style_use_transitions.Value
+		  sld_style_time.Enabled = chk_style_use_transitions.Value
+		  edt_style_frames.Enabled = chk_style_use_transitions.Value
+		  edt_style_time.Enabled = chk_style_use_transitions.Value
+		  lbl_style_time.Enabled = chk_style_use_transitions.Value
+		  lbl_style_frames.Enabled = chk_style_use_transitions.Value
+		  //--
+		  
+		  //++EMP, 11/05
+		  // Selectable highlight of choruses
+		  chk_style_highlight_chorus.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, _
+		  "style/@highlight_chorus", True, True)
+		  
+		  // Determine if blanks use the previous or next slide's style
+		  
+		  rad_style_blank_next.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, _
+		  "style/@blank_uses_next", True, True)
+		  rad_style_blank_prev.Value = Not rad_style_blank_next.Value
+		  //--
+		  
+		  lst_style_subtitles.SetSelected(SmartML.GetValue(App.MyPresentSettings.DocumentElement, _
+		  "style/@song_subtitles"))
+		  App.CenterInControlScreen Me
+		End Sub
+	#tag EndEvent
 
 
-#tag Property, Flags = &h0
-	BGImage As Picture
-#tag EndProperty
-
-#tag Property, Flags = &h0
-	BGImageFile As FolderItem
-#tag EndProperty
-
-#tag Property, Flags = &h1
-	Protected CurrAudio As Sound
-#tag EndProperty
-
-#tag Property, Flags = &h1
-	Protected CurrAudioFile As FolderItem
-#tag EndProperty
-
-#tag Property, Flags = &h1
-	Protected FilterString As string
-#tag EndProperty
-
-#tag Property, Flags = &h1
-	Protected IsAudioPlaying As Boolean
-#tag EndProperty
+	#tag Method, Flags = &h1
+		Protected Sub PopTo(str As String, pop As PopupMenu)
+		  Dim i As Integer
+		  For i = 0 To pop.ListCount - 1
+		    If Lowercase(str) = Lowercase(pop.List(i)) Then
+		      pop.ListIndex = i
+		      Return
+		    End If
+		  Next i
+		End Sub
+	#tag EndMethod
 
 
-#tag Constant, Name = ROW_AUTHOR, Type = Integer, Dynamic = False, Default = \"1", Scope = Protected
-#tag EndConstant
+	#tag Property, Flags = &h0
+		BGImage As Picture
+	#tag EndProperty
 
-#tag Constant, Name = ROW_CCLI_LICENSE, Type = Integer, Dynamic = False, Default = \"4", Scope = Protected
-#tag EndConstant
+	#tag Property, Flags = &h0
+		BGImageFile As FolderItem
+	#tag EndProperty
 
-#tag Constant, Name = ROW_CCLI_NUMBER, Type = Integer, Dynamic = False, Default = \"3", Scope = Protected
-#tag EndConstant
+	#tag Property, Flags = &h1
+		Protected CurrAudio As Sound
+	#tag EndProperty
 
-#tag Constant, Name = ROW_COPYRIGHT, Type = Integer, Dynamic = False, Default = \"0", Scope = Protected
-#tag EndConstant
+	#tag Property, Flags = &h1
+		Protected CurrAudioFile As FolderItem
+	#tag EndProperty
 
-#tag Constant, Name = ROW_HYMN_NUMBER, Type = Integer, Dynamic = False, Default = \"2", Scope = Protected
-#tag EndConstant
+	#tag Property, Flags = &h1
+		Protected FilterString As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected IsAudioPlaying As Boolean
+	#tag EndProperty
+
+
+	#tag Constant, Name = ROW_AUTHOR, Type = Integer, Dynamic = False, Default = \"1", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = ROW_CCLI_LICENSE, Type = Integer, Dynamic = False, Default = \"4", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = ROW_CCLI_NUMBER, Type = Integer, Dynamic = False, Default = \"3", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = ROW_COPYRIGHT, Type = Integer, Dynamic = False, Default = \"0", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = ROW_HYMN_NUMBER, Type = Integer, Dynamic = False, Default = \"2", Scope = Protected
+	#tag EndConstant
 
 
 #tag EndWindowCode
 
 #tag Events btn_ok
-#tag Event
-	Sub Action()
-	  Dim Settings As XmlElement
-	  
-	  Settings = App.MyPresentSettings.DocumentElement
-	  
-	  SmartML.SetValue Settings, "alert/@valign", sal_alerts.GetVAlign
-	  SmartML.SetValue Settings, "alert/@align", sal_alerts.GetHAlign
-	  SmartML.SetValueF Settings, "alert", can_alerts_font.GetFont
-	  
-	  SmartML.SetValue(Settings, "logo", can_logo.GetImageAsString)
-	  SmartML.SetValue(Settings, "logo_mask", can_logo_mask.GetImageAsString)
-	  
-	  //++EMP 09/05
-	  SmartML.SetValueN(Settings, "style/@transition_frames", sld_style_frames.Value)
-	  SmartML.SetValueN(Settings, "style/@transition_time", sld_style_time.Value)
-	  //--
-	  
-	  //++EMP 11/05
-	  // Moved from Action routines for individual controls so cancelling this form will truly cancel.
-	  
-	  SmartML.SetValueB Settings, "style/@blanks", chk_style_blanks.Value
-	  SmartML.SetValueB Settings, "style/@transition", chk_style_use_transitions.Value
-	  SmartML.SetValueB Settings, "style/@highlight_chorus", chk_style_highlight_chorus.Value
-	  
-	  SmartML.SetValueB Settings, "style/@exit_prompt", chk_style_exit_prompt.Value
-	  '++JRC 12/05
-	  SmartML.SetValueB Settings, "style/@descriptive_subtitle_info", chk_style_descriptive_subtitle_info.Value
-	  if CurrAudioFile <> Nil then
-	    SmartML.SetValue(Settings, "style/@default_audio", CurrAudioFile.AbsolutePath) 'save filename
-	  end if
-	  '--
-	  
-	  SmartML.SetValueN Settings, "monitors/@control", pop_monitor_control.ListIndex+1
-	  SmartML.SetValueN Settings, "monitors/@present", pop_monitor_presentation.ListIndex+1
-	  
-	  ' pop_pres_mode added EMP, 2005
-	  ' Allows user to specify default presentation mode (single screen, dual, preview)
-	  ' Eventual goal is to support a hotkey to go to presenter mode
-	  '
-	  SmartML.SetValueN(Settings, "presentation_mode/@code", pop_monitor_mode.ListIndex + 1)
-	  
-	  // Initial presentation mode
-	  Dim temp As String
-	  Select Case pop_style_initial_mode.ListIndex
-	  Case 0
-	    temp = "N"
-	  Case 1
-	    temp = "B"
-	  Case 2
-	    temp = "W"
-	  Case 3
-	    temp = "L"
-	  Case 4
-	    temp = "H"
-	  Case 5
-	    temp = "F"
-	  End Select
-	  SmartML.SetValue Settings, "style/@initial_mode", temp
-	  
-	  Select Case pop_style_mouse_cursor.ListIndex
-	  Case 0
-	    temp = "arrow"
-	  Case 1
-	    temp = "cross"
-	  Case 2
-	    temp = "hidden"
-	  Case 3
-	    temp = "hourglass"
-	  Case 4
-	    temp = "ibeam"
-	  End Select
-	  SmartML.SetValue Settings, "style/@mouse_cursor", temp
-	  
-	  SmartML.SetValue Settings, "style/@song_subtitles", lst_style_subtitles.GetSelectedOptions
-	  
-	  SmartML.SetValueB Settings, "style/@blank_uses_next", rad_style_blank_next.Value
-	  
-	  '++JRC: Stop Audio if its playing
-	  if IsAudioPlaying = true then
-	    //++EMP, 17 Feb 2006
-	    //call Globals.SXMSAudio.SXMSWinampStop()
-	    //--
-	  end if
-	  '--
-	  //++
-	  // Bug 1462055: Save settings on dialog close
-	  //
-	  If Not SmartML.XDocToFile(App.MyPresentSettings, App.DocsFolder.Child("Settings").Child("PresentSettings")) Then SmartML.DisplayError
-	  //--
-	  Close
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim Settings As XmlElement
+		  
+		  Settings = App.MyPresentSettings.DocumentElement
+		  
+		  SmartML.SetValue Settings, "alert/@valign", sal_alerts.GetVAlign
+		  SmartML.SetValue Settings, "alert/@align", sal_alerts.GetHAlign
+		  SmartML.SetValueF Settings, "alert", can_alerts_font.GetFont
+		  
+		  SmartML.SetValue(Settings, "logo", can_logo.GetImageAsString)
+		  SmartML.SetValue(Settings, "logo_mask", can_logo_mask.GetImageAsString)
+		  
+		  //++EMP 09/05
+		  SmartML.SetValueN(Settings, "style/@transition_frames", sld_style_frames.Value)
+		  SmartML.SetValueN(Settings, "style/@transition_time", sld_style_time.Value)
+		  //--
+		  
+		  //++EMP 11/05
+		  // Moved from Action routines for individual controls so cancelling this form will truly cancel.
+		  
+		  SmartML.SetValueB Settings, "style/@blanks", chk_style_blanks.Value
+		  SmartML.SetValueB Settings, "style/@transition", chk_style_use_transitions.Value
+		  SmartML.SetValueB Settings, "style/@highlight_chorus", chk_style_highlight_chorus.Value
+		  
+		  SmartML.SetValueB Settings, "style/@exit_prompt", chk_style_exit_prompt.Value
+		  '++JRC 12/05
+		  SmartML.SetValueB Settings, "style/@descriptive_subtitle_info", chk_style_descriptive_subtitle_info.Value
+		  if CurrAudioFile <> Nil then
+		    SmartML.SetValue(Settings, "style/@default_audio", CurrAudioFile.AbsolutePath) 'save filename
+		  end if
+		  '--
+		  
+		  SmartML.SetValueN Settings, "monitors/@control", pop_monitor_control.ListIndex+1
+		  SmartML.SetValueN Settings, "monitors/@present", pop_monitor_presentation.ListIndex+1
+		  
+		  ' pop_pres_mode added EMP, 2005
+		  ' Allows user to specify default presentation mode (single screen, dual, preview)
+		  ' Eventual goal is to support a hotkey to go to presenter mode
+		  '
+		  SmartML.SetValueN(Settings, "presentation_mode/@code", pop_monitor_mode.ListIndex + 1)
+		  
+		  // Initial presentation mode
+		  Dim temp As String
+		  Select Case pop_style_initial_mode.ListIndex
+		  Case 0
+		    temp = "N"
+		  Case 1
+		    temp = "B"
+		  Case 2
+		    temp = "W"
+		  Case 3
+		    temp = "L"
+		  Case 4
+		    temp = "H"
+		  Case 5
+		    temp = "F"
+		  End Select
+		  SmartML.SetValue Settings, "style/@initial_mode", temp
+		  
+		  Select Case pop_style_mouse_cursor.ListIndex
+		  Case 0
+		    temp = "arrow"
+		  Case 1
+		    temp = "cross"
+		  Case 2
+		    temp = "hidden"
+		  Case 3
+		    temp = "hourglass"
+		  Case 4
+		    temp = "ibeam"
+		  End Select
+		  SmartML.SetValue Settings, "style/@mouse_cursor", temp
+		  
+		  SmartML.SetValue Settings, "style/@song_subtitles", lst_style_subtitles.GetSelectedOptions
+		  
+		  SmartML.SetValueB Settings, "style/@blank_uses_next", rad_style_blank_next.Value
+		  
+		  '++JRC: Stop Audio if its playing
+		  if IsAudioPlaying = true then
+		    //++EMP, 17 Feb 2006
+		    //call Globals.SXMSAudio.SXMSWinampStop()
+		    //--
+		  end if
+		  '--
+		  //++
+		  // Bug 1462055: Save settings on dialog close
+		  //
+		  If Not SmartML.XDocToFile(App.MyPresentSettings, App.DocsFolder.Child("Settings").Child("PresentSettings")) Then SmartML.DisplayError
+		  //--
+		  Close
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_cancel
-#tag Event
-	Sub Action()
-	  '++JRC: Stop Audio if its playing
-	  //++EMP 17 Feb 2006
-	  //if IsAudioPlaying = true then
-	  //call Globals.SXMSAudio.SXMSWinampStop()
-	  //end if
-	  '--
-	  Close
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  '++JRC: Stop Audio if its playing
+		  //++EMP 17 Feb 2006
+		  //if IsAudioPlaying = true then
+		  //call Globals.SXMSAudio.SXMSWinampStop()
+		  //end if
+		  '--
+		  Close
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events sal_alerts
-#tag Event
-	Sub Open()
-	  Me.SetValid "YYYNNNYYY"
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetValid "YYYNNNYYY"
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events chk_style_use_transitions
-#tag Event
-	Sub Action()
-	  
-	  sld_style_frames.Enabled = Me.Value
-	  sld_style_time.Enabled = Me.Value
-	  edt_style_frames.Enabled = Me.Value
-	  edt_style_time.Enabled = Me.Value
-	  lbl_style_time.Enabled = Me.Value
-	  lbl_style_frames.Enabled = Me.Value
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  
+		  sld_style_frames.Enabled = Me.Value
+		  sld_style_time.Enabled = Me.Value
+		  edt_style_frames.Enabled = Me.Value
+		  edt_style_time.Enabled = Me.Value
+		  lbl_style_time.Enabled = Me.Value
+		  lbl_style_frames.Enabled = Me.Value
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events sld_style_frames
-#tag Event
-	Sub ValueChanged()
-	  edt_style_frames.Text = Str(Me.Value)
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub ValueChanged()
+		  edt_style_frames.Text = Str(Me.Value)
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events edt_style_frames
-#tag Event
-	Sub LostFocus()
-	  Dim n As Integer
-	  n = CDbl(Me.Text)
-	  if n < sld_style_frames.Minimum Then
-	    Me.Text = Str(sld_style_frames.Minimum)
-	  ElseIf n > sld_style_frames.Maximum Then
-	    Me.Text = Str(sld_style_frames.Maximum)
-	  Else
-	    sld_style_frames.Value = n
-	  End If
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub LostFocus()
+		  Dim n As Integer
+		  n = CDbl(Me.Text)
+		  if n < sld_style_frames.Minimum Then
+		    Me.Text = Str(sld_style_frames.Minimum)
+		  ElseIf n > sld_style_frames.Maximum Then
+		    Me.Text = Str(sld_style_frames.Maximum)
+		  Else
+		    sld_style_frames.Value = n
+		  End If
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events sld_style_time
-#tag Event
-	Sub ValueChanged()
-	  edt_style_time.Text = Str(Me.Value)
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub ValueChanged()
+		  edt_style_time.Text = Str(Me.Value)
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events edt_style_time
-#tag Event
-	Sub LostFocus()
-	  Dim n As Integer
-	  n = CDbl(Me.Text)
-	  if n < sld_style_time.Minimum Then
-	    Me.Text = Str(sld_style_time.Minimum)
-	  ElseIf n > sld_style_time.Maximum Then
-	    Me.Text = Str(sld_style_time.Maximum)
-	  Else
-	    sld_style_time.Value = n
-	  End If
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub LostFocus()
+		  Dim n As Integer
+		  n = CDbl(Me.Text)
+		  if n < sld_style_time.Minimum Then
+		    Me.Text = Str(sld_style_time.Minimum)
+		  ElseIf n > sld_style_time.Maximum Then
+		    Me.Text = Str(sld_style_time.Maximum)
+		  Else
+		    sld_style_time.Value = n
+		  End If
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events edt_style_border_thickness
-#tag Event
-	Function KeyDown(Key As String) As Boolean
-	  dim c As New Clipboard
-	  
-	  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-	    
-	    if c.TextAvailable then
-	      edt_style_border_thickness.Text  = Left(c.Text, 4)
-	      return true
-	    end if
-	    
-	  end if
-	  c.close
-	End Function
-#tag EndEvent
-#tag Event
-	Sub TextChange()
-	  SmartML.SetValueN App.MyPresentSettings.DocumentElement, "style/@thickness", Val(edt_style_border_thickness.Text)
-	  GraphicsX.ThicknessFactor = Val(edt_style_border_thickness.Text)
-	  Refresh False
-	End Sub
-#tag EndEvent
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_style_border_thickness.Text  = Left(c.Text, 4)
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  SmartML.SetValueN App.MyPresentSettings.DocumentElement, "style/@thickness", Val(edt_style_border_thickness.Text)
+		  GraphicsX.ThicknessFactor = Val(edt_style_border_thickness.Text)
+		  Refresh False
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events lbl_monitor_default_mode
-#tag Event
-	Sub Open()
-	  Dim s as String
-	  s = App.T.Translate("presentation_settings/style/initial_mode/@caption")
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Dim s as String
+		  s = App.T.Translate("presentation_settings/style/initial_mode/@caption")
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_audio_browse
-#tag Event
-	Sub Action()
-	  //++EMP, 17 Feb 2006
-	  // Joshua's audio module isn't cross-platform ready,
-	  // so it is commented out for the mainstream release
-	  //--
-	  //
-	  ''++JRC
-	  'Dim FileName As MemoryBlock
-	  'Dim FilterIndex As MemoryBlock
-	  'Dim Pos As integer
-	  'Dim error As integer
-	  'Declare Function OpenFileDialog lib "UTILITY.DLL" (Handle as integer, Title as Cstring, FileTypes as Ptr, FilterIndex as Ptr) as Ptr
-	  '
-	  'FilterIndex = NewMemoryBlock(4)
-	  'FileName = OpenFileDialog(Me.Handle, App.T.Translate("open_titles/audio"), Globals.Filters, FilterIndex)
-	  'CurrAudioFile = GetFolderItem(FileName.CString(0))
-	  'If CurrAudioFile = Nil Then
-	  'CurrAudio = Nil
-	  'Return
-	  'end if
-	  'FilterString  = Globals.GetFilterString(FilterIndex.Long(0))
-	  'Pos = Instr(FilterString, " (*.")
-	  'FilterString = App.AppFolder.Child("Plugins").AbsolutePath + Mid(FilterString, 0, Pos)
-	  '
-	  'if IsAudioPlaying = true then
-	  'call Globals.SXMSAudio.SXMSWinampStop()
-	  'IsAudioPlaying = false
-	  'btn_audio_play.Enabled = false
-	  'btn_audio_stop.Enabled = false
-	  'end if
-	  '
-	  'error = Globals.SXMSAudio.SXMSWinampLoadPlugIn(FilterString)
-	  '
-	  'if error = 0 then
-	  'InputBox.Message App.T.Translate("errors\plugin_load_failed", FilterString)
-	  'return
-	  'end if
-	  ''CurrAudio = Nil
-	  ''CurrAudio = CurrAudioFile.OpenAsSound
-	  ''if CurrAudio = Nil then
-	  ''CurrAudioFile = Nil
-	  ''btn_audio_play.Enabled = false
-	  ''btn_audio_stop.Enabled = false
-	  ''else
-	  'btn_audio_play.Enabled = true
-	  ''btn_audio_stop.Enabled = true
-	  ''end if
-	  '
-	  'IsAudioPlaying = false
-	  ''--
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  //++EMP, 17 Feb 2006
+		  // Joshua's audio module isn't cross-platform ready,
+		  // so it is commented out for the mainstream release
+		  //--
+		  //
+		  ''++JRC
+		  'Dim FileName As MemoryBlock
+		  'Dim FilterIndex As MemoryBlock
+		  'Dim Pos As integer
+		  'Dim error As integer
+		  'Declare Function OpenFileDialog lib "UTILITY.DLL" (Handle as integer, Title as Cstring, FileTypes as Ptr, FilterIndex as Ptr) as Ptr
+		  '
+		  'FilterIndex = NewMemoryBlock(4)
+		  'FileName = OpenFileDialog(Me.Handle, App.T.Translate("open_titles/audio"), Globals.Filters, FilterIndex)
+		  'CurrAudioFile = GetFolderItem(FileName.CString(0))
+		  'If CurrAudioFile = Nil Then
+		  'CurrAudio = Nil
+		  'Return
+		  'end if
+		  'FilterString  = Globals.GetFilterString(FilterIndex.Long(0))
+		  'Pos = Instr(FilterString, " (*.")
+		  'FilterString = App.AppFolder.Child("Plugins").AbsolutePath + Mid(FilterString, 0, Pos)
+		  '
+		  'if IsAudioPlaying = true then
+		  'call Globals.SXMSAudio.SXMSWinampStop()
+		  'IsAudioPlaying = false
+		  'btn_audio_play.Enabled = false
+		  'btn_audio_stop.Enabled = false
+		  'end if
+		  '
+		  'error = Globals.SXMSAudio.SXMSWinampLoadPlugIn(FilterString)
+		  '
+		  'if error = 0 then
+		  'InputBox.Message App.T.Translate("errors\plugin_load_failed", FilterString)
+		  'return
+		  'end if
+		  ''CurrAudio = Nil
+		  ''CurrAudio = CurrAudioFile.OpenAsSound
+		  ''if CurrAudio = Nil then
+		  ''CurrAudioFile = Nil
+		  ''btn_audio_play.Enabled = false
+		  ''btn_audio_stop.Enabled = false
+		  ''else
+		  'btn_audio_play.Enabled = true
+		  ''btn_audio_stop.Enabled = true
+		  ''end if
+		  '
+		  'IsAudioPlaying = false
+		  ''--
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_audio_stop
-#tag Event
-	Sub Action()
-	  '++JRC
-	  //++EMP, 17 Feb 2006
-	  //call Globals.SXMSAudio.SXMSWinampStop()
-	  //btn_audio_play.Enabled = true
-	  //btn_audio_stop.Enabled = false
-	  //IsAudioPlaying = false
-	  //--
-	  '--
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  '++JRC
+		  //++EMP, 17 Feb 2006
+		  //call Globals.SXMSAudio.SXMSWinampStop()
+		  //btn_audio_play.Enabled = true
+		  //btn_audio_stop.Enabled = false
+		  //IsAudioPlaying = false
+		  //--
+		  '--
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_audio_play
-#tag Event
-	Sub Action()
-	  //++EMP, 17 Feb 2006
-	  // Joshua's audio add-on isn't cross-platform ready,
-	  // so it is commented out for the mainstream release
-	  //--
-	  ''++JRC
-	  'Dim error As integer
-	  'Declare Sub delay lib "UTILITY.DLL" (Seconds as integer)
-	  '
-	  'if IsAudioPlaying = false then
-	  'error = Globals.SXMSAudio.SXMSWinampPlay(CurrAudioFile.AbsolutePath)
-	  'if error = 1 and Globals.SXMSAudio.SXMSWinampIsPlaying  = 1 then
-	  ''btn_audio_play.Enabled = false
-	  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/pause/@caption")
-	  'btn_audio_stop.Enabled = true
-	  'IsAudioPlaying = true
-	  'end if
-	  'else
-	  'error = 0
-	  'error = Globals.SXMSAudio.SXMSWinampGetPaused()
-	  'if error = 0 then
-	  'Call Globals.SXMSAudio.SXMSWinampSetPause(1)
-	  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/play/@caption")
-	  ''MsgBox "Paused"
-	  ''delay(5)
-	  'else
-	  'Call Globals.SXMSAudio.SXMSWinampSetPause(0)
-	  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/pause/@caption")
-	  ''MsgBox "UnPaused"
-	  ''delay(5)
-	  'end if
-	  'end if
-	  ''--
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  //++EMP, 17 Feb 2006
+		  // Joshua's audio add-on isn't cross-platform ready,
+		  // so it is commented out for the mainstream release
+		  //--
+		  ''++JRC
+		  'Dim error As integer
+		  'Declare Sub delay lib "UTILITY.DLL" (Seconds as integer)
+		  '
+		  'if IsAudioPlaying = false then
+		  'error = Globals.SXMSAudio.SXMSWinampPlay(CurrAudioFile.AbsolutePath)
+		  'if error = 1 and Globals.SXMSAudio.SXMSWinampIsPlaying  = 1 then
+		  ''btn_audio_play.Enabled = false
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/pause/@caption")
+		  'btn_audio_stop.Enabled = true
+		  'IsAudioPlaying = true
+		  'end if
+		  'else
+		  'error = 0
+		  'error = Globals.SXMSAudio.SXMSWinampGetPaused()
+		  'if error = 0 then
+		  'Call Globals.SXMSAudio.SXMSWinampSetPause(1)
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/play/@caption")
+		  ''MsgBox "Paused"
+		  ''delay(5)
+		  'else
+		  'Call Globals.SXMSAudio.SXMSWinampSetPause(0)
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/pause/@caption")
+		  ''MsgBox "UnPaused"
+		  ''delay(5)
+		  'end if
+		  'end if
+		  ''--
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events AudioTimer
-#tag Event
-	Sub Action()
-	  '++JRC
-	  //++EMP 17 Feb 2006
-	  // Commented out for mainstream version
-	  //--
-	  'Just check every few seconds if CurrAudio has finished playing
-	  'Dim error As integer
-	  '
-	  'if IsAudioPlaying = true then
-	  'error = 0
-	  'error = Globals.SXMSAudio.SXMSWinampIsPlaying
-	  'if error  = 0 then
-	  'btn_audio_play.Enabled = true
-	  'btn_audio_stop.Enabled = false
-	  'IsAudioPlaying = false
-	  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/play/@caption")
-	  '
-	  'end if
-	  'end if
-	  '--
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  '++JRC
+		  //++EMP 17 Feb 2006
+		  // Commented out for mainstream version
+		  //--
+		  'Just check every few seconds if CurrAudio has finished playing
+		  'Dim error As integer
+		  '
+		  'if IsAudioPlaying = true then
+		  'error = 0
+		  'error = Globals.SXMSAudio.SXMSWinampIsPlaying
+		  'if error  = 0 then
+		  'btn_audio_play.Enabled = true
+		  'btn_audio_stop.Enabled = false
+		  'IsAudioPlaying = false
+		  'btn_audio_play.Caption = App.T.Translate("presentation_settings/audio/play/@caption")
+		  '
+		  'end if
+		  'end if
+		  '--
+		End Sub
+	#tag EndEvent
 #tag EndEvents

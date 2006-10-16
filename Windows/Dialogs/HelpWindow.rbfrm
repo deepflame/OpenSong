@@ -210,122 +210,122 @@ End
 #tag EndWindow
 
 #tag WindowCode
-#tag Event
-	Sub Open()
-	  nil_help_tabs.Value = 0
-	  App.T.TranslateWindow Me, "help_topics", App.TranslationFonts
-	  
-	  HTMLFormatField edt_help_lyrics
-	  HTMLFormatField edt_help_presentation
-	  HTMLFormatField edt_help_keys
-	  
-	  App.MaximizeInControlScreen Me
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Open()
+		  nil_help_tabs.Value = 0
+		  App.T.TranslateWindow Me, "help_topics", App.TranslationFonts
+		  
+		  HTMLFormatField edt_help_lyrics
+		  HTMLFormatField edt_help_presentation
+		  HTMLFormatField edt_help_keys
+		  
+		  App.MaximizeInControlScreen Me
+		End Sub
+	#tag EndEvent
 
 
-#tag Method, Flags = &h0
-	Sub HTMLFormatField(field As EditField)
-	  Dim i,j,k As Integer
-	  Dim tag As String
-	  
-	  field.SelStart = 1
-	  field.SelLength = Len(field.Text)
-	  field.SelTextFont = "Arial"
-	  
-	  i = InStr(field.Text, "<")
-	  While i >= 1
-	    j = InStr(i, field.Text, ">")
-	    If j >= 1 Then
-	      tag = Lowercase(Mid(field.Text, i+1, j-i-1))
-	      field.SelStart = i - 1
-	      field.SelLength = j - i + 1
-	      field.SelText = ""
-	      
-	      k = InStr(i, field.Text, "</" + tag + ">")
-	      If k >= 1 Then
-	        field.SelStart = k - 1
-	        field.SelLength = Len(tag) + 3
-	        field.SelText = ""
-	        
-	        field.SelStart = i - 1
-	        field.SelLength = k - i
-	        If tag = "b" Then
-	          field.SelBold = True
-	        ElseIf tag = "i" Then
-	          field.SelItalic = True
-	        ElseIf tag = "u" Then
-	          field.SelUnderline = True
-	        ElseIf tag = "l" Then
-	          field.SelAlignment = 1
-	        ElseIf tag = "c" Then
-	          field.SelAlignment = 2
-	        ElseIf tag = "r" Then
-	          field.SelAlignment = 3
-	        ElseIf tag = "h1" Then
-	          field.SelBold = True
-	          field.SelItalic = False
-	          field.SelAlignment = 2
-	          field.SelTextSize = field.TextSize * 2.5
-	        ElseIf tag = "h2" Then
-	          field.SelBold = True
-	          field.SelItalic = True
-	          field.SelAlignment = 2
-	          field.SelTextSize = field.TextSize * 2
-	        ElseIf tag = "h3" Then
-	          field.SelBold = True
-	          field.SelTextSize = field.TextSize * 1.5
-	        ElseIf tag = "pre" Then
-	          field.SelTextFont = "Courier New"
-	        End If
-	        
-	        field.SelStart = 0
-	        field.SelLength = 0
-	        i = InStr(i, field.Text, "<")
-	      Else
-	        i = 0
-	      End If
-	    Else
-	      i = 0
-	    End If
-	  Wend
-	  
-	End Sub
-#tag EndMethod
+	#tag Method, Flags = &h0
+		Sub HTMLFormatField(field As EditField)
+		  Dim i,j,k As Integer
+		  Dim tag As String
+		  
+		  field.SelStart = 1
+		  field.SelLength = Len(field.Text)
+		  field.SelTextFont = "Arial"
+		  
+		  i = InStr(field.Text, "<")
+		  While i >= 1
+		    j = InStr(i, field.Text, ">")
+		    If j >= 1 Then
+		      tag = Lowercase(Mid(field.Text, i+1, j-i-1))
+		      field.SelStart = i - 1
+		      field.SelLength = j - i + 1
+		      field.SelText = ""
+		      
+		      k = InStr(i, field.Text, "</" + tag + ">")
+		      If k >= 1 Then
+		        field.SelStart = k - 1
+		        field.SelLength = Len(tag) + 3
+		        field.SelText = ""
+		        
+		        field.SelStart = i - 1
+		        field.SelLength = k - i
+		        If tag = "b" Then
+		          field.SelBold = True
+		        ElseIf tag = "i" Then
+		          field.SelItalic = True
+		        ElseIf tag = "u" Then
+		          field.SelUnderline = True
+		        ElseIf tag = "l" Then
+		          field.SelAlignment = 1
+		        ElseIf tag = "c" Then
+		          field.SelAlignment = 2
+		        ElseIf tag = "r" Then
+		          field.SelAlignment = 3
+		        ElseIf tag = "h1" Then
+		          field.SelBold = True
+		          field.SelItalic = False
+		          field.SelAlignment = 2
+		          field.SelTextSize = field.TextSize * 2.5
+		        ElseIf tag = "h2" Then
+		          field.SelBold = True
+		          field.SelItalic = True
+		          field.SelAlignment = 2
+		          field.SelTextSize = field.TextSize * 2
+		        ElseIf tag = "h3" Then
+		          field.SelBold = True
+		          field.SelTextSize = field.TextSize * 1.5
+		        ElseIf tag = "pre" Then
+		          field.SelTextFont = "Courier New"
+		        End If
+		        
+		        field.SelStart = 0
+		        field.SelLength = 0
+		        i = InStr(i, field.Text, "<")
+		      Else
+		        i = 0
+		      End If
+		    Else
+		      i = 0
+		    End If
+		  Wend
+		  
+		End Sub
+	#tag EndMethod
 
 
 #tag EndWindowCode
 
 #tag Events nil_help_tabs
-#tag Event
-	Sub Change()
-	  If Me.Value = 3 Then
-	    Close
-	  End If
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Change()
+		  If Me.Value = 3 Then
+		    Close
+		  End If
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_help_print
-#tag Event
-	Sub Action()
-	  Dim g As Graphics
-	  Dim stp As StyledTextPrinter
-	  
-	  g = OpenPrinterDialog
-	  If g <> Nil Then
-	    If nil_help_tabs.Value = 0 Then
-	      stp = edt_help_lyrics.StyledTextPrinter(g, 7 * 72)
-	    ElseIf nil_help_tabs.Value = 1 Then
-	      stp = edt_help_presentation.StyledTextPrinter(g, 7 * 72)
-	    Else
-	      Return
-	    End If
-	    stp.Width = 7 * 72
-	    Do Until stp.EOF
-	      stp.DrawBlock .75 * 72, .75 * 72, 9.5 * 72
-	      If Not stp.EOF Then g.NextPage
-	    Loop
-	  End If
-	End Sub
-#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim g As Graphics
+		  Dim stp As StyledTextPrinter
+		  
+		  g = OpenPrinterDialog
+		  If g <> Nil Then
+		    If nil_help_tabs.Value = 0 Then
+		      stp = edt_help_lyrics.StyledTextPrinter(g, 7 * 72)
+		    ElseIf nil_help_tabs.Value = 1 Then
+		      stp = edt_help_presentation.StyledTextPrinter(g, 7 * 72)
+		    Else
+		      Return
+		    End If
+		    stp.Width = 7 * 72
+		    Do Until stp.EOF
+		      stp.DrawBlock .75 * 72, .75 * 72, 9.5 * 72
+		      If Not stp.EOF Then g.NextPage
+		    Loop
+		  End If
+		End Sub
+	#tag EndEvent
 #tag EndEvents

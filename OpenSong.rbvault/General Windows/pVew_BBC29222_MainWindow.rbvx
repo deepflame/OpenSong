@@ -10050,8 +10050,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  '++JRC
 		  App.DebugWriter.Write "Begin MainWindow.Activate:"
 		  
-		  'If Status_Presentation Then PresentWindow.SetFocus
-		  If Globals.Status_Presentation Then
+		  If Globals.Status_Presentation Or Status_Presentation Then
 		    App.MinimizeWindow(MainWindow)
 		    
 		    If PresentWindow.HelperActive Then
@@ -10999,6 +10998,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  
 		  Status_Presentation = True
+		  Globals.Status_Presentation = True
 		  'Self.Hide
 		  
 		  'App.MinimizeWindow(Self)

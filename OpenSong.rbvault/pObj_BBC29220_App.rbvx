@@ -703,11 +703,11 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Return
    srcl/S: 
    srcl/S: #ElseIf TargetCarbon
-   srcl/S: Const COLLAPSE = 1
-   srcl/S: Const RESTORE = 0
+   srcl/S: Const COLLAPSEWIN = 1
+   srcl/S: Const RESTOREWIN = 0
    srcl/S: Declare Function CollapseWindow Lib "CarbonLib" (window As Integer, collapse As Integer) As Integer
    srcl/S: 
-   srcl/S: status = CollapseWindow(Wnd.Handle, COLLAPSE)
+   srcl/S: status = CollapseWindow(Wnd.Handle, COLLAPSEWIN)
    srcl/S: #EndIf
    srcl/S: End Sub
   sorc/g: 
@@ -739,11 +739,11 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Return
    srcl/S: 
    srcl/S: #ElseIf TargetCarbon
-   srcl/S: Const COLLAPSE = 1
-   srcl/S: Const RESTORE = 0
+   srcl/S: Const COLLAPSEWIN = 1
+   srcl/S: Const RESTOREWIN = 0
    srcl/S: Declare Function CollapseWindow Lib "CarbonLib" (window As Integer, collapse As Integer) As Integer
    srcl/S: 
-   srcl/S: status = CollapseWindow(Wnd.Handle, RESTORE)
+   srcl/S: status = CollapseWindow(Wnd.Handle, RESTOREWIN)
    srcl/S: #EndIf
    srcl/S: End Sub
   sorc/g: 

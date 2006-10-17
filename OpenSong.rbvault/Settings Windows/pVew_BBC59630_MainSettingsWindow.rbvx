@@ -261,11 +261,6 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		    SmartML.SetValue App.MyGlobals.DocumentElement, "documents/@folder", DocsFolder.AbsolutePath
 		  End If
 		  
-		  If Not SmartML.XDocToFile(App.MyGlobals, App.AppFolder.Child("OpenSong Settings").Child("Globals")) Then
-		    SmartML.DisplayError
-		    Return
-		  End If
-		  
 		  InputBox.Message App.T.Translate("general_settings/documents_folder/message")
 		  
 		  Quit
@@ -337,7 +332,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  if rad_start_songs.Value Then
 		    SmartML.SetValueN Settings, "startmode/@sets", 0
 		  Else
-		    SmartML.SetValueN Settings, "startmode.@sets", 1
+		    SmartML.SetValueN Settings, "startmode/@sets", 1
 		  End If
 		  
 		  // Drawing style...this affects which SButton.Paint routine is used
@@ -349,6 +344,8 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  // Bug 1462055: Save changes on dialog exit instead of program exit
 		  //
 		  If Not SmartML.XDocToFile(App.MyMainSettings, App.DocsFolder.Child("Settings").Child("MainSettings")) Then SmartML.DisplayError
+		  If Not SmartML.XDocToFile(App.MyGlobals, App.AppFolder.Child("OpenSong Settings").Child("Globals")) Then SmartML.DisplayError
+		  
 		  //--
 		  Close
 		End Sub
@@ -1890,16 +1887,28 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  '--
 		  Dim f As FolderItem
 		  f = App.AppFolder.Child("OpenSong Languages")
+		  //++EMP add a couple of variables for troubleshooting and correct
+		  // error that would set the ListIndex to the wrong value
 		  Dim i As Integer
+		  Dim currlang As Integer = -1
+		  Dim langfile As FolderItem
 		  pop_general_language.DeleteAllRows
-		  For i = 1 To f.Count
-		    If Not f.Item(i).Directory Then 
-		      pop_general_language.AddRow f.Item(i).Name
-		      If f.Item(i).Name = s Then pop_general_language.ListIndex = i - 1
-		    End If
-		  Next i
-		  If pop_general_language.ListIndex < 0 Then pop_general_language.ListIndex = 0
+		  Try
+		    For i = 1 To f.Count
+		      langfile = f.Item(i)
+		      If Not langfile.Directory Then 
+		        pop_general_language.AddRow langfile.Name
+		        If langfile.Name = s Then currlang = pop_general_language.ListCount - 1
+		      End If
+		    Next i
+		  Catch
+		    // Unlikely, but it's possible that the directory is empty, in which case
+		    // the For loop will raise an exception.
+		    InputBox.Message "No languages available; please check the directory " + f.AbsolutePath
+		  End Try
 		  
+		  pop_general_language.ListIndex = currlang
+		  //--
 		  chk_general_version_check.Caption = App.T.Translate("general_settings/general/version_check/@caption")
 		  
 		  rad_documents_default.Caption = App.T.Translate("general_settings/documents_folder/default/@caption")

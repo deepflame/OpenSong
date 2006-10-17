@@ -346,12 +346,11 @@
         <scripture_slides caption="Default Scripture Style"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
+      <transition_note caption="*Las transiciones son afectadas de gran manera por la resolución de la pantalla. Si Ud. está experimentando transiciones lentas, considere disminuir la resolución del monitor en el cual se está mostrando la presentación. Además, si Ud. nota que las transiciones no es están presentando, puede ser porque su configuración de colores del monitor es muy baja para la presentación."/>
     </settings>
 
     <style caption="Estilo">
       <use_transitions caption="Usar Transiciones"/>
-      <transition_note caption="Las transiciones son afectadas de gran manera por la resolución de la pantalla. Si Ud. está experimentando transiciones lentas, considere disminuir la resolución del monitor en el cual se está mostrando la presentación. Además, si Ud. nota que las transiciones no es están presentando, puede ser porque su configuración de colores del monitor es muy baja para la presentación."/>
       <border_thickness caption="Grueso del Borde"/>
        <!--Translate Me!!-->
       <subtitles caption="Subtitles"/>

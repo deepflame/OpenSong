@@ -1,4 +1,9 @@
--= 1.0 Beta 2 JRC =-
+-= 1.0 Beta 2 Baselevel 13 =-
+
+* Corrected logic error selecting language translation on General Settings/OpenSong Preferences dialog box.
+
+* Corrected some window manipulation issues entering and leaving Presenter.
+
 * Translated several SmartML error Messages
 
 * Bring SongPicker, ScripturePicker & InputBox to front when OpenSong is Re-activated in Preview Dual Screen Mode
@@ -25,7 +30,6 @@
 
 * Added Option to overwrite debug log files
 
--= 1.0 Beta 2 Baselevel 13 =-
 
 * In set mode, name of new custom slide is now a translatable item instead of "Untitled."
 

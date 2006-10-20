@@ -1,3 +1,6 @@
+-= 1.0 Beta 2 JRC =-
+* Fixed bug where two blank set items would be added to the beginning of a set when the set's first item is a style change
+
 -= 1.0 Beta 2 Baselevel 13 =-
 
 * Corrected logic error selecting language translation on General Settings/OpenSong Preferences dialog box.

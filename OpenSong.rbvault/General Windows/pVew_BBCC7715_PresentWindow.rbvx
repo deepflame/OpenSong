@@ -475,44 +475,46 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    parm/S: ByRef Set As XmlDocument
    rslt/S: 
    flag/N: 1
-   sorc/d: (Enco/N: 134217984
-		Sub InsertBlanksIntoSet(ByRef Set As XmlDocument)
-		  Dim slide_group As XmlNode
-		  Dim slide_groups As XmlNode
-		  
-		  slide_groups = SmartML.GetNode(Set.DocumentElement, "slide_groups")
-		  If slide_groups <> Nil Then 
-		    slide_group = slide_groups.FirstChild
-		  Else
-		    Return
-		  End If
-		  
-		  While slide_group <> Nil
-		    If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
-		        SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
-		        slide_group.PreviousSibling = Nil Then
-		        
-		        slide_group = SmartML.InsertBefore(slide_group, "slide_group")
-		        //++EMP, 15 Jan 2006
-		        // Change the type of a blank slide from "song" to "blank"
-		        // Makes moving to a blank much easier in PerformAction
-		        //
-		        'SmartML.SetValue slide_group, "@type", "song"
-		        SmartML.SetValue slide_group, "@type", "blank"
-		        SmartML.SetValue slide_group, "slides/slide/body", ""
-		        slide_group = slide_group.NextSibling
-		        If slide_group.NextSibling = Nil Then ' if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
-		          slide_group = SmartML.InsertAfter(slide_group, "slide_group")
-		          'SmartML.SetValue slide_group, "@type", "song"
-		          SmartML.SetValue slide_group, "@type", "blank"
-		          SmartML.SetValue slide_group, "slides/slide/body", ""
-		        End If
-		        //--
-		      End If ' for inserting blanks
-		      slide_group = slide_group.NextSibling
-		    Wend
-		  End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub InsertBlanksIntoSet(ByRef Set As XmlDocument)
+    srcl/S: Dim slide_group As XmlNode
+    srcl/S: Dim slide_groups As XmlNode
+    srcl/S: 
+    srcl/S: slide_groups = SmartML.GetNode(Set.DocumentElement, "slide_groups")
+    srcl/S: If slide_groups <> Nil Then 
+    srcl/S: slide_group = slide_groups.FirstChild
+    srcl/S: Else
+    srcl/S: Return
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: While slide_group <> Nil
+    srcl/S: If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
+    srcl/S: SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
+    srcl/S: '++JRC Fix corner case where the first item in a set is a style type, which causes two blank items at the beginning of a set
+    srcl/S:     slide_group.PreviousSibling = Nil And SmartML.GetValue(slide_group, "@type") <> "style" Then
+    srcl/S: '--
+    srcl/S: slide_group = SmartML.InsertBefore(slide_group, "slide_group")
+    srcl/S: //++EMP, 15 Jan 2006
+    srcl/S: // Change the type of a blank slide from "song" to "blank"
+    srcl/S: // Makes moving to a blank much easier in PerformAction
+    srcl/S: //
+    srcl/S: 'SmartML.SetValue slide_group, "@type", "song"
+    srcl/S: SmartML.SetValue slide_group, "@type", "blank"
+    srcl/S: SmartML.SetValue slide_group, "slides/slide/body", ""
+    srcl/S: slide_group = slide_group.NextSibling
+    srcl/S: If slide_group.NextSibling = Nil Then ' if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
+    srcl/S: slide_group = SmartML.InsertAfter(slide_group, "slide_group")
+    srcl/S: 'SmartML.SetValue slide_group, "@type", "song"
+    srcl/S: SmartML.SetValue slide_group, "@type", "blank"
+    srcl/S: SmartML.SetValue slide_group, "slides/slide/body", ""
+    srcl/S: End If
+    srcl/S: //--
+    srcl/S: End If ' for inserting blanks
+    srcl/S: slide_group = slide_group.NextSibling
+    srcl/S: Wend
+    srcl/S: End Sub
+   sorc/g: 
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984

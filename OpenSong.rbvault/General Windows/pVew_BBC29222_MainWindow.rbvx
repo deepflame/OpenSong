@@ -10812,7 +10812,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    parm/S: 
    rslt/S: 
    flag/N: 0
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 5
 		Sub ActionInSetRemove()
 		  Dim xslides As XmlNodeList
 		  Dim slide_groups As XmlNode
@@ -10821,7 +10821,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  listindex = lst_set_items.ListIndex
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  slide_groups.RemoveChild slide_groups.Child(ListIndex)
-		  
+		  '++JRC Prevent OutofBounds Exception
+		  Status_InSetChanged = False
+		  '--
 		  lst_set_items.RemoveRow ListIndex
 		  If listindex < lst_set_items.ListCount Then 
 		    lst_set_items.ListIndex = listindex
@@ -10830,7 +10832,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  
 		  Status_SetChanged = True
-		  Status_InSetChanged = False
+		  'Status_InSetChanged = False
 		  EnableMenuItems
 		End Sub
    )

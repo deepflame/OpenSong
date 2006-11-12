@@ -145,3 +145,5 @@ smartml/cant_open
 smartml/cant_create
 smartml/xml_error
 smartml/xml_exterror
+presentation_settings/misc/descriptive_subtitle_info moved to style_editor/fonts_and_alignment
+presentation_settings/style/highlight_chorus moved to style_editor/fonts_and_alignment

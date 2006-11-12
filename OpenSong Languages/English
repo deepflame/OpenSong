@@ -389,8 +389,6 @@
       <blank_style caption="Blank slides take style of"/>
       <blank_prev caption="Previous slide"/>
       <blank_next caption="Next slide"/>
-      
-      <highlight_chorus caption="Highlight chorus text"/>
       <initial_mode caption="Initial Presentation Mode"/>
     </style>
     <alerts caption="Alerts">
@@ -419,7 +417,6 @@
 
     <misc caption="Misc">
       <exit_prompt caption="Prompt when exiting"/>
-      <descriptive_subtitle_info caption="Descriptive subtitle info"/>
     </misc>
     
   </presentation_settings>
@@ -678,6 +675,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <body caption="Body"/>
       <align caption="Align"/>
       <subtitles caption="Song Subtitles"/>
+      <highlight_chorus caption="Highlight chorus text"/>
+      <descriptive_subtitle_info caption="Descriptive subtitle info"/>
    </fonts_and_alignment>
       <background caption="Background">
       <color caption="Color"/>

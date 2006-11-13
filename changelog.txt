@@ -1,5 +1,9 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Presenter will now run for a set with picture slides only (custom slides with a style but no body).  Correcting this error also corrected an unreported error where OpenSong would treat the string "---" as a slide separator regardless of it's position on the line.  It now must be on a line of its own with no leading or trailing spaces. [Bug 1560097]
+
+* Fixed NilObjectException error when slide style is added to a set.  Somehow this got totally broken.
+
 * Corrected issue with fields not properly updating when a song is created. [Bug 1590566]
 
 * Moved subtitle selection from Presentation Settings to the style editor.  Corrected issue where a song with a custom style would use the subtitles from the default style instead of the custom style.

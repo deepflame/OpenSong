@@ -228,8 +228,7 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		          
 		          bodyStyle.OntoGraphics g
 		          
-		          If SmartML.GetValueB(xslide, "@emphasize", False) And _
-		              SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		          If SmartML.GetValueB(xslide, "@emphasize", False) And Style.HighlightChorus Then
 		            bodyStyle.Italic = Not bodyStyle.Italic
 		          End If
 		          

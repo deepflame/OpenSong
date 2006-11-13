@@ -188,6 +188,65 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: SplitRE
+  parm/S: source As String, delim As String
+  rslt/S: String()
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function SplitRE(source As String, delim As String) As String()
+		  //++
+		  // Split a string delimited by a regular expression.
+		  // Will always return at least one element (empty string)
+		  //
+		  // Treats line endings as a part of the string to allow for
+		  // multi-line strings.
+		  //
+		  // Use standard regular expression syntax for the delimiter
+		  //
+		  // Implicitly assumes single-character line endings (i.e., Unix-style)
+		  //
+		  // Ed Palmer, November 2006
+		  //--
+		  
+		  Dim result(-1) As String
+		  
+		  Dim re As New RegEx
+		  Dim reopts As New RegExOptions
+		  Dim match As RegExMatch
+		  
+		  Dim rest As Integer
+		  
+		  re.SearchPattern = "(.*)" + delim
+		  reopts.DotMatchAll = True
+		  reopts.Greedy = False
+		  reopts.StringBeginIsLineBegin = True
+		  reopts.StringEndIsLineEnd = True
+		  reopts.MatchEmpty = True
+		  
+		  re.Options = reopts
+		  
+		  match = re.Search(source)
+		  
+		  While match <> Nil
+		    If match.SubExpressionCount > 0 Then
+		      result.Append Trim(match.SubExpressionString(1))
+		    Else
+		      result.Append match.SubExpressionString(0)
+		    End If
+		    re.SearchStartPosition = re.SearchStartPosition + 1 // Get past the trailing \n
+		    match = re.Search
+		  Wend
+		  
+		  rest = re.SearchStartPosition
+		  If rest > 0 Then Rest = Rest + 1
+		  result.Append Mid(source, rest)
+		  
+		  Return result
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: Xor
   parm/S: Bool1 As Boolean, Bool2 As Boolean
   rslt/S: Boolean

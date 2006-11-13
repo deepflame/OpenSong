@@ -2306,6 +2306,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Where = lst_set_items.ListCount
 		  End If
 		  
+		  newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
 		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/items/revert")
 		  SmartML.SetValue newGroup, "@type", "style"
 		  SmartML.SetValue newGroup, "@action", "revert"
@@ -10858,6 +10859,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim i, j As Integer
 		  Dim line, str As String
 		  Dim xgroup, xslides, xslide As XmlNode
+		  Dim bodies() As String
 		  
 		  If Not Status_InSetChanged then return
 		  
@@ -10872,7 +10874,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    
 		  Case Else
 		    str = LTrim(edt_slide_slides.Text.FormatUnixEndOfLine)
-		    
+		    bodies = OpenSongUtils.SplitRE(str, "^---$")
 		    ' Set the title and sub-title
 		    SmartML.SetValue xgroup, "@name", edt_slide_name.Text
 		    SmartML.SetValue xgroup, "title", edt_slide_title.Text
@@ -10889,9 +10891,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    ' Create the new slides
 		    xslides = xgroup.AppendChild(CurrentSet.CreateElement("slides"))
 		    str = edt_slide_slides.Text
-		    For i = 1 To CountFields(str, "---")
+		    For i = 0 To UBound(bodies)
 		      xslide = xslides.AppendChild(CurrentSet.CreateElement("slide"))
-		      SmartML.SetValue xslide, "body", Trim(NthField(str, "---", i))
+		      SmartML.SetValue xslide, "body", Trim(bodies(i))
 		    Next i
 		    
 		    lst_set_items.List(CurrentInSetItem) = edt_slide_name.Text + " (" + SmartML.GetValue(xgroup, "@type", True) + ")"

@@ -1036,7 +1036,7 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentHelperWindow
-  Size/N: 144
+  Size/N: 152
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -1133,7 +1133,8 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
 		  lst_all_slides.CellTag(index, 0) = SmartML.GetValue(slide.Parent.Parent, "@type", True)  //++EMP 15 Jan 06
 		  
 		  lst_all_slides.CellBold(index,1) = SmartML.GetValueB(slide, "@emphasize", False) _
-		      And SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@highlight_chorus", True, True) 'EMP 12/05
+		      And SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "default_style/body/@highlight_chorus", True, True) 'EMP 12/05
+		  
 		  lst_all_slides.Cell(index,1) = SmartML.GetValue(slide, "@id", False)
 		  lst_all_slides.CellAlignment(index, 1) = 2
 		  lst_all_slides.Cell(index,2) = ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " ").CleanSpaces

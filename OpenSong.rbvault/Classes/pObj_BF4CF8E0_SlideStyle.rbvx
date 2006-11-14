@@ -7,12 +7,24 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SlideStyle
- Size/N: 76
+ Size/N: 82
  bNtr/N: 0
  Intr/S: 
  Cnst/D: (Enco/N: 134217984, name/S: POS_CENTER, type/N: 1, defn/S: 2, flag/N: 0)
  Cnst/D: (Enco/N: 134217984, name/S: POS_STRETCH, type/N: 1, defn/S: 1, flag/N: 0)
  Cnst/D: (Enco/N: 134217984, name/S: POS_TILE, type/N: 1, defn/S: 3, flag/N: 0)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Background
+  parm/S: 
+  rslt/S: Picture
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Background() As Picture
+		  Return Background
+		End Function
+  )
+ Meth/g: 
  Meth/G: 
   Enco/N: 134217984
   name/S: Background
@@ -27,14 +39,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: Background
-  parm/S: 
-  rslt/S: Picture
+  name/S: BGColor
+  parm/S: Assigns bg As Color
+  rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function Background() As Picture
-		  Return Background
-		End Function
+		Sub BGColor(Assigns bg As Color)
+		  BGColor = bg
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -53,14 +65,16 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: BGColor
-  parm/S: Assigns bg As Color
-  rslt/S: 
+  name/S: BodyAlign
+  parm/S: 
+  rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub BGColor(Assigns bg As Color)
-		  BGColor = bg
-		End Sub
+		Function BodyAlign() As String
+		  Dim A As String
+		  A = Lowercase(BodyAlign)
+		  Return A
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -73,20 +87,6 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		Sub BodyAlign(Assigns Align As String)
 		  BodyAlign = Align
 		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: BodyAlign
-  parm/S: 
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function BodyAlign() As String
-		  Dim A As String
-		  A = Lowercase(BodyAlign)
-		  Return A
-		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -152,6 +152,7 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  BodyFont = SmartML.GetValueF(xStyle, "body")
 		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
 		  BodyVAlign = SmartML.GetValue(xStyle, "body/@valign")
+		  Highlight = SmartML.GetValueB(xStyle, "body/@highlight_chorus")
 		  
 		  TitleFont = SmartML.GetValueF(xStyle, "title")
 		  TitleAlign = SmartML.GetValue(xStyle, "title/@align")
@@ -160,6 +161,8 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  SubtitleFont = SmartML.GetValueF(xStyle, "subtitle")
 		  SubtitleAlign = SmartML.GetValue(xStyle, "subtitle/@align")
 		  SubtitleVAlign = SmartML.GetValue(xStyle, "subtitle/@valign")
+		  Subtitles = SmartML.GetValue(xStyle, "song_subtitle")
+		  SubtitleDescriptiveText = SmartML.GetValueB(xStyle, "subtitle/@descriptive", True, False)
 		  
 		  Background = SmartML.GetValueP(xstyle, "background", False)
 		  foo = SmartML.GetValueC(xstyle, "background/@color", BGColor, False)
@@ -170,6 +173,54 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		    Position = POS_STRETCH
 		  End If
 		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DescriptiveSubtitles
+  parm/S: Value As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub DescriptiveSubtitles(Value As Boolean)
+		  SubtitleDescriptiveText = Value
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DescriptiveSubtitles
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function DescriptiveSubtitles() As Boolean
+		  Return SubtitleDescriptiveText
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: HighlightChorus
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function HighlightChorus() As Boolean
+		  Return Highlight
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: HighlightChorus
+  parm/S: Value As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub HighlightChorus(Value As Boolean)
+		  Highlight = Value
 		End Sub
   )
  Meth/g: 
@@ -227,6 +278,18 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: SubtitleAlign
+  parm/S: Assigns Align As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SubtitleAlign(Assigns Align As String)
+		  SubtitleAlign = Align
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleAlign
   parm/S: 
   rslt/S: String
   flag/N: 0
@@ -236,18 +299,6 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  A = Lowercase(SubtitleAlign)
 		  Return A
 		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: SubtitleAlign
-  parm/S: Assigns Align As String
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub SubtitleAlign(Assigns Align As String)
-		  SubtitleAlign = Align
-		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -276,15 +327,38 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: SubtitleVAlign
+  name/S: SubtitleList
+  parm/S: SubList As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SubtitleList(SubList As String)
+		  //++
+		  // Set the list of subtitles.
+		  // This needs to be reworked at some point
+		  // It's too dependent on a non-opaque set of
+		  // options and there's no easy way to validate this
+		  // list.
+		  //--
+		  
+		  Subtitles = SubList
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleList
   parm/S: 
   rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function SubtitleVAlign() As String
-		  Dim VA As String
-		  VA = Lowercase(SubtitleVAlign)
-		  Return VA
+		Function SubtitleList() As String
+		  //++
+		  // Returns the list of subtitles.
+		  // See comments under the Setter subroutine
+		  //--
+		  
+		  Return Subtitles
 		End Function
   )
  Meth/g: 
@@ -302,14 +376,16 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: TitleAlign
-  parm/S: Assigns Align As String
-  rslt/S: 
+  name/S: SubtitleVAlign
+  parm/S: 
+  rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub TitleAlign(Assigns Align As String)
-		  TitleAlign = Align
-		End Sub
+		Function SubtitleVAlign() As String
+		  Dim VA As String
+		  VA = Lowercase(SubtitleVAlign)
+		  Return VA
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -328,14 +404,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: TitleFont
-  parm/S: 
-  rslt/S: FontFace
+  name/S: TitleAlign
+  parm/S: Assigns Align As String
+  rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function TitleFont() As FontFace
-		  Return TitleFont.Clone
-		End Function
+		Sub TitleAlign(Assigns Align As String)
+		  TitleAlign = Align
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -352,14 +428,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: TitleVAlign
-  parm/S: Assigns VAlign As String
-  rslt/S: 
+  name/S: TitleFont
+  parm/S: 
+  rslt/S: FontFace
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub TitleVAlign(Assigns VAlign As String)
-		  TitleVAlign = VAlign
-		End Sub
+		Function TitleFont() As FontFace
+		  Return TitleFont.Clone
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -374,6 +450,18 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  VA = Lowercase(TitleVAlign)
 		  Return VA
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TitleVAlign
+  parm/S: Assigns VAlign As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub TitleVAlign(Assigns VAlign As String)
+		  TitleVAlign = VAlign
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -419,11 +507,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		  CurrChild.SetAttribute "valign", SubtitleVAlign
 		  CurrChild.SetAttribute "align", SubtitleAlign
 		  SmartML.SetValueF(CurrChild, "", SubtitleFont)
+		  SmartML.SetValue(root, "song_subtitle", Subtitles)
+		  SmartML.SetValueB(CurrChild, "/@descriptive", SubtitleDescriptiveText)
 		  
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement("body"))
 		  CurrChild.SetAttribute "valign", BodyVAlign
 		  CurrChild.SetAttribute "align", BodyAlign
 		  SmartML.SetValueF(CurrChild, "", BodyFont)
+		  SmartML.SetValueB(CurrChild, "/@highlight_chorus", Highlight)
 		  
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement("background"))
 		  CurrChild.SetAttribute "strip_footer", str(StripFooter)
@@ -531,6 +622,17 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
+  decl/S: Highlight As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Highlight As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
   decl/S: Position As Integer
   flag/N: 1
   sorc/G: 
@@ -565,11 +667,33 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
+  decl/S: SubtitleDescriptiveText As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SubtitleDescriptiveText As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
   decl/S: SubtitleFont As FontFace
   flag/N: 33
   sorc/G: 
    Enco/N: 134217984
    ntln/S: SubtitleFont As FontFace
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Subtitles As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Subtitles As String
    ntln/S: 
    ntln/S: 
   sorc/g: 

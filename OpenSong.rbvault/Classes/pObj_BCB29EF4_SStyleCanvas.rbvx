@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SStyleCanvas
- Size/N: 124
+ Size/N: 125
  Supr/S: SBufferedCanvas
  bNtr/N: 0
  Intr/S: 
@@ -19,7 +19,7 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
 		  Dim f As FolderItem
 		  
 		  If Enabled Then
-		    If StyleWindow.Edit(StyleNode) Then
+		    If StyleWindow.Edit(StyleNode, SongStyle) Then
 		      Action
 		      Repaint
 		    End If
@@ -42,7 +42,6 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
 		  //
 		  Dim Style As SlideStyle
 		  //--EMP
-		  App.MouseCursor = WatchCursor
 		  If Enabled Then
 		    If StyleNode <> Nil Then
 		      Style = New SlideStyle(StyleNode) 'EMP 09/05
@@ -67,7 +66,6 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
 		        g.ForeColor = DarkBevelColor
 		        g.DrawRect 0, 0, g.Width, g.Height
 		      End If
-		      App.MouseCursor = Nil
 		    End Sub
   )
  HIns/g: 
@@ -110,6 +108,17 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
 		End Sub
   )
  Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SongStyle As Boolean
+  flag/N: 4
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SongStyle As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
  Prop/G: 
   Enco/N: 134217984
   decl/S: StyleNode As XmlNode

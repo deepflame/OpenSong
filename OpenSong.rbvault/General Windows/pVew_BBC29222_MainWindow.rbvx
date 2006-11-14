@@ -2306,6 +2306,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Where = lst_set_items.ListCount
 		  End If
 		  
+		  newGroup = SmartML.InsertChild(xgroups, "slide_group", Where)
 		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/items/revert")
 		  SmartML.SetValue newGroup, "@type", "style"
 		  SmartML.SetValue newGroup, "@action", "revert"
@@ -3064,7 +3065,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/G: 
   Name/S: 
-  Size/N: 124
+  Size/N: 125
   Supr/S: SStyleCanvas
   bNtr/N: 0
   HIns/G: 
@@ -3122,6 +3123,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Status_SongChanged = True
 		    EnableMenuItems
 		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  
 		End Sub
    )
   HIns/g: 
@@ -3434,7 +3444,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/G: 
   Name/S: 
-  Size/N: 124
+  Size/N: 125
   Supr/S: SStyleCanvas
   bNtr/N: 0
   HIns/G: 
@@ -3614,7 +3624,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/G: 
   Name/S: 
-  Size/N: 124
+  Size/N: 125
   Supr/S: SStyleCanvas
   bNtr/N: 0
   HIns/G: 
@@ -5155,7 +5165,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: PanelCount, PVal/S: 4)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: Top, PVal/S: 34)
-  PDef/D: (name/S: Value, PVal/S: 1)
+  PDef/D: (name/S: Value, PVal/S: 3)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 495)
  Ctrl/g: 
@@ -8173,6 +8183,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: True)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: can_song_style, Enco/N: 134217984)
+  PDef/D: (name/S: SongStyle, PVal/S: True)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 2)
   PDef/D: (name/S: Top, PVal/S: 104)
   PDef/D: (name/S: UseFocusRing, PVal/S: True)
@@ -9852,6 +9863,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: True)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: can_slide_style, Enco/N: 134217984)
+  PDef/D: (name/S: SongStyle, PVal/S: False)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 3)
   PDef/D: (name/S: Top, PVal/S: 334)
   PDef/D: (name/S: UseFocusRing, PVal/S: True)
@@ -10000,6 +10012,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: can_style_style, Enco/N: 134217984)
+  PDef/D: (name/S: SongStyle, PVal/S: False)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 4)
   PDef/D: (name/S: Top, PVal/S: 179)
   PDef/D: (name/S: UseFocusRing, PVal/S: True)
@@ -10039,7 +10052,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainWindow
-  Size/N: 234
+  Size/N: 242
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -10848,6 +10861,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim i, j As Integer
 		  Dim line, str As String
 		  Dim xgroup, xslides, xslide As XmlNode
+		  Dim bodies() As String
 		  
 		  If Not Status_InSetChanged then return
 		  
@@ -10862,7 +10876,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    
 		  Case Else
 		    str = LTrim(edt_slide_slides.Text.FormatUnixEndOfLine)
-		    
+		    bodies = OpenSongUtils.SplitRE(str, "^---$")
 		    ' Set the title and sub-title
 		    SmartML.SetValue xgroup, "@name", edt_slide_name.Text
 		    SmartML.SetValue xgroup, "title", edt_slide_title.Text
@@ -10879,9 +10893,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    ' Create the new slides
 		    xslides = xgroup.AppendChild(CurrentSet.CreateElement("slides"))
 		    str = edt_slide_slides.Text
-		    For i = 1 To CountFields(str, "---")
+		    For i = 0 To UBound(bodies)
 		      xslide = xslides.AppendChild(CurrentSet.CreateElement("slide"))
-		      SmartML.SetValue xslide, "body", Trim(NthField(str, "---", i))
+		      SmartML.SetValue xslide, "body", Trim(bodies(i))
 		    Next i
 		    
 		    lst_set_items.List(CurrentInSetItem) = edt_slide_name.Text + " (" + SmartML.GetValue(xgroup, "@type", True) + ")"
@@ -11303,27 +11317,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      Return
 		    End If
 		    
-		    'lst_songs_songs.InsertRow lst_songs_songs.ListCount + 1, t
-		    'i = 0
-		    'While i < lst_songs_songs.ListCount 
-		    's.Append lst_songs_songs.List(i)
-		    'i = i + 1
-		    'Wend
-		    '
-		    'Sort(s, i)
-		    'lst_songs_songs.DeleteAllRows
-		    '
-		    'j = 1
-		    'while j <= i
-		    'if StringUtils.StrCompT(s(j), t) = "=" then
-		    'Loc = j - 1
-		    'end if
-		    'lst_songs_songs.InsertRow j - 1, s(j)
-		    'j = j + 1
-		    'wend
-		    '
-		    'lst_songs_songs.ListIndex = Loc
-		    '
 		    i = 0
 		    // Look for the place to insert the new song
 		    While i < lst_songs_songs.ListCount And CompareHymnBookOrder(Lowercase(t), Lowercase(lst_songs_songs.List(i))) = 1
@@ -11333,7 +11326,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Loc = lst_songs_songs.LastIndex
 		    lst_songs_songs.CellTag(Loc, 0) = pop_songs_song_folders.Text + "/"
 		    Globals.OldSongFileName = ""
-		    Globals.OldSongSel = -1 // This flags lst_songs_songs.Changed not to do anything yet
 		    Status_SongOpen = False //Hold off on unnecessary refreshes
 		    LoadSongFields 'f
 		    Status_SongOpen = True
@@ -12062,6 +12054,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    can_song_style.SetStyleNode SmartML.GetNode(CurrentSong.DocumentElement, "style")
 		    'can_song_style.SetStyleNode CurrentSongObj.SongStyle.ToXML.DocumentElement
 		  End If
+		  
 		End Sub
    )
   Meth/g: 

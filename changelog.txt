@@ -1,5 +1,11 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Fixed the window for selecting scripture to allow for resizing on Macintosh and disallow minimize on Windows.  Since this is a modal dialogue box, the latter could make OpenSong appear to not be responding and an inexperienced user may not realize the dialogue needs to be restored from the task bar.
+
+* When printing a line with chords and no lyrics, print capo chords in the correct font.
+
+* Changed FolderDB and Open event of ScripturePickerWindow to only look at files where the Visible attribute is True.  FolderDB was already ignoring files that start with an underscore or period, but this corrects potential issues with hidden files in a more general way.
+
 * Presenter will now run for a set with picture slides only (custom slides with a style but no body).  Correcting this error also corrected an unreported error where OpenSong would treat the string "---" as a slide separator regardless of it's position on the line.  It now must be on a line of its own with no leading or trailing spaces. [Bug 1560097]
 
 * Fixed NilObjectException error when slide style is added to a set.  Somehow this got totally broken.

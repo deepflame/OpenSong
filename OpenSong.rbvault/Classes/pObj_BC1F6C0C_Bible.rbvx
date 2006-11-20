@@ -21,7 +21,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   parm/S: bibleFile as FolderItem
   rslt/S: Boolean
   flag/N: 1
-  sorc/d: (Enco/N: 134217984
+  sorc/d: (Enco/N: 134217984, srbp/N: 11
 		Function addBNames(bibleFile as FolderItem) As Boolean
 		  Dim list As New XmlNodeList
 		  Dim x as Integer

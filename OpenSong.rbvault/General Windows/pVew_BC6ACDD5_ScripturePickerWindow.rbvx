@@ -128,6 +128,15 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  
+		End Sub
+   )
+  HIns/g: 
  CBhv/g: 
  CBhv/G: 
   Name/S: 
@@ -1346,7 +1355,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 176
+  Size/N: 184
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -1614,7 +1623,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  i = 0
 		  '******************************
 		  For x = 1 to cnt
-		    If f.Item(x).Directory=false Then 'bhenny- don't display directories in list
+		    If f.Item(x).Directory=false and f.item(x).Visible Then 'bhenny- don't display directories in list (or hidden files...EMP)
 		      pop_scr_version.AddRow f.Item(x).Name
 		      If f.Item(x).Name = default Then pop_scr_version.ListIndex = i ' MG: sets the list index correctly in case there are subfolders
 		      i = i + 1
@@ -2254,7 +2263,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  PDef/D: (name/S: HasBackColor, PVal/S: False)
  PDef/D: (name/S: Height, PVal/S: 570)
  PDef/D: (name/S: LiveResize, PVal/S: True)
- PDef/D: (name/S: MacProcID, PVal/S: 0)
+ PDef/D: (name/S: MacProcID, PVal/S: 1046)
  PDef/D: (name/S: MaxHeight, PVal/S: 32000)
  PDef/D: (name/S: MaxWidth, PVal/S: 32000)
  PDef/D: (name/S: MenuBar, PVal/S: 0)
@@ -2266,6 +2275,6 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  PDef/D: (name/S: Title, PVal/S: Scripture Lookup, Enco/N: 134217984)
  PDef/D: (name/S: Visible, PVal/S: True)
  PDef/D: (name/S: Width, PVal/S: 570)
- PDef/D: (name/S: ZoomIcon, PVal/S: True)
+ PDef/D: (name/S: ZoomIcon, PVal/S: False)
 pVew/b: 
 ##RBvx-End#

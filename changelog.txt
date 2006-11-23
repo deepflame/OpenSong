@@ -1,8 +1,12 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* The Present Helper window will be restored when the Presenter is activated if Present Helper was minimized.  [Bug 1479332]
+
+* When modifying a style, the visualization of the selected image uses the style's background color to fill areas not covered by the image (for example, when Center Image is selected and the image aspect ratio isn't the same as the display's aspect ratio.
+
 * Fixed the window for selecting scripture to allow for resizing on Macintosh and disallow minimize on Windows.  Since this is a modal dialogue box, the latter could make OpenSong appear to not be responding and an inexperienced user may not realize the dialogue needs to be restored from the task bar.
 
-* When printing a line with chords and no lyrics, print capo chords in the correct font.
+* When printing a line with chords and no lyrics, print capo chords in the correct font. [Bug 1483807]
 
 * Changed FolderDB and Open event of ScripturePickerWindow to only look at files where the Visible attribute is True.  FolderDB was already ignoring files that start with an underscore or period, but this corrects potential issues with hidden files in a more general way.
 

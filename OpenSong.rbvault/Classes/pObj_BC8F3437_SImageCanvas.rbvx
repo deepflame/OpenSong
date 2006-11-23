@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SImageCanvas
- Size/N: 132
+ Size/N: 136
  Supr/S: SBufferedCanvas
  bNtr/N: 0
  Intr/S: 
@@ -118,6 +118,9 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
 		    Return
 		  End If
 		  
+		  g.ForeColor = bgColor
+		  g.FillRect 0, 0, Width, Height
+		  
 		  If Image <> Nil Then
 		    bgDrawH = Image.Height 
 		    bgDrawW = Image.Width
@@ -143,8 +146,6 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
 		              g.DrawPicture Image, 0, 0, g.Width, g.Height, 0, 0, Image.Width, Image.Height
 		            End Select
 		          Else
-		            g.ForeColor = LightBevelColor
-		            g.FillRect 0, 0, Width, Height
 		            
 		            g.ForeColor = DarkBevelColor
 		            g.DrawRect 0, 0, Width, Height
@@ -178,6 +179,7 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
   sorc/d: (Enco/N: 134217984
 		Sub Constructor()
 		  PictureAspect = SlideStyle.POS_STRETCH // Default handling of background picture
+		  bgColor = FillColor
 		End Sub
   )
  Meth/g: 
@@ -315,6 +317,16 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
   sorc/G: 
    Enco/N: 134217984
    ntln/S: Base64 As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: bgColor As Color
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: bgColor As Color
    ntln/S: 
    ntln/S: 
   sorc/g: 

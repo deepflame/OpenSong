@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##Project Items:	
 #	Proj	00000000
@@ -156,6 +156,7 @@
 #Song	pObj	C0C3650C
 #SlideStyle	pObj	BF4CF8E0
 #SearchResult	pObj	456597FF
+#bindSColorCanvasAndSImageCanvas	pObj	C18856CB
 ##External Files:	
 ##VaultHdrEnd#
 ##RBvx-End#

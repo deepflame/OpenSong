@@ -1,5 +1,17 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Changed superclass of the About menu to AppleMenuItem to relocate it to the application menu per Apple's interface guidelines.  Does not affect Windows or Linux.
+
+* A bible with an empty chapter or book won't cause the indexing process to error out.
+
+* Indexing process subtly altered to be more "friendly" to documents with non-ASCII characters.  This relies on the RealBasic regular expression library definition of "word characters," which understands UTF-8 characters but may not be 100% accurate.  Users should report errors in an index that are caused by characters in the user's alphabet that are not included in the index.
+
+* Fixed typo in English translation (does not affect any tags).
+
+* Default scripture search options to "contains" and "all words."
+
+* Printing a long line no longer drops a letter at the wrap point if the maximum width line included part of a word rather than white space at the end.
+
 * The Present Helper window will be restored when the Presenter is activated if Present Helper was minimized.  [Bug 1479332]
 
 * When modifying a style, the visualization of the selected image uses the style's background color to fill areas not covered by the image (for example, when Center Image is selected and the image aspect ratio isn't the same as the display's aspect ratio.

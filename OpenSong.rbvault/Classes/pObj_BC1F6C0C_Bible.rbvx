@@ -21,7 +21,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   parm/S: bibleFile as FolderItem
   rslt/S: Boolean
   flag/N: 1
-  sorc/d: (Enco/N: 134217984, srbp/N: 11
+  sorc/d: (Enco/N: 134217984
 		Function addBNames(bibleFile as FolderItem) As Boolean
 		  Dim list As New XmlNodeList
 		  Dim x as Integer
@@ -587,9 +587,16 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   sorc/d: (Enco/N: 134217984
 		Sub genIndex(file As FolderItem)
 		  'bhenny- create index of words to use for searches
+		  //++
+		  // Bug 1449454: Index generation dies if there is a chapter
+		  // with no content.  Added individual XmlNode variables for
+		  // book, chapter and verse since the use of a single variable
+		  // would die if a book or chapter had no children.
+		  //--
 		  Dim newFile as FolderItem
 		  Dim out as TextOutputStream
-		  Dim node as XMLNode
+		  'Dim node as XMLNode
+		  Dim BookNode, ChapNode, VerseNode As XmlNode
 		  Dim split(), verse, location, fileName, sBook, sChap, sVer as String
 		  Dim reg as RegEx
 		  Dim x,y,  book, chap, ver, bound as Integer
@@ -645,16 +652,18 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  'end if
 		  Select Case XMLTYPE
 		  Case XML_ZEFANIA
-		    node = Scripture.xql("/XMLBIBLE/BIBLEBOOK[1]").Item(0)
+		    booknode = Scripture.xql("/XMLBIBLE/BIBLEBOOK[1]").Item(0)
 		  Case XML_NAB
-		    node = Scripture.xql("/bible/b[1]").Item(0)
+		    booknode = Scripture.xql("/bible/b[1]").Item(0)
 		  Case XML_ORIGINAL
-		    node = Scripture.Child(0).Child(0)
+		    booknode = Scripture.Child(0).Child(0)
 		  End Select
 		  
 		  'used to remove puncuation and xml tags
 		  reg= New RegEx
-		  reg.SearchPattern= "[^a-zA-Z0-9\s]+" 
+		  'reg.SearchPattern= "[^a-zA-Z0-9\s]+" 
+		  // Try a different search pattern that is more UTF-8 friendly.
+		  reg.SearchPattern = "[^\w\s]+" ' Non-word, non-space
 		  reg.ReplacementPattern=""
 		  reg.Options.ReplaceAllMatches=true
 		  
@@ -664,8 +673,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  'books
 		  book=1
 		  sBook= "1"
-		  while node <> nil
-		    node=node.Child(0)
+		  while booknode <> nil
+		    chapnode=booknode.Child(0)
 		    
 		    'update progress window
 		    Progress = book/GetBookCount() * 100
@@ -677,8 +686,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    'chapters
 		    chap=1
 		    sChap="1"
-		    while node <> nil
-		      node=node.Child(0)
+		    while chapnode <> nil
+		      versenode=chapnode.Child(0)
 		      
 		      'see if the user canceled creating the index
 		      if (IndexProgress.cancel=true) then
@@ -694,12 +703,12 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		      'verses
 		      ver=1
 		      sVer="1"
-		      while node <> nil
-		        if node.Child(0)<> nil then
+		      while versenode <> nil
+		        if versenode.Child(0)<> nil then
 		          location=sBook + " " + sChap + " " + sVer
 		          
 		          'remove puncuation
-		          verse= reg.Replace( getVerse(node.child(0)), 0)
+		          verse= reg.Replace( getVerse(versenode.child(0)), 0)
 		          
 		          'split verse into individual words
 		          split= verse.Split()
@@ -734,12 +743,13 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		          next x
 		        end if
 		        
-		        if node.NextSibling=nil then
-		          node=node.Parent
-		          exit
-		        else
-		          node=node.NextSibling
-		        end if
+		        'if node.NextSibling=nil then
+		        'node=node.Parent
+		        'exit
+		        'else
+		        'node=node.NextSibling
+		        'end if
+		        VerseNode = VerseNode.NextSibling
 		        
 		        ver=ver+1
 		        sVer= Str(ver)
@@ -749,22 +759,24 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		        'App.DoEvents 0 'Windows needs this to update the progress window
 		      wend
 		      
-		      if node.NextSibling=nil then
-		        node=node.Parent
-		        exit
-		      else
-		        node=node.NextSibling
-		      end if
+		      'if node.NextSibling=nil then
+		      'node=node.Parent
+		      'exit
+		      'else
+		      'node=node.NextSibling
+		      'end if
+		      ChapNode = ChapNode.NextSibling
 		      
 		      chap=chap+1
 		      sChap= Str(chap)
 		    wend
 		    
-		    if node.NextSibling=nil then
-		      exit
-		    else
-		      node=node.NextSibling
-		    end if
+		    'if node.NextSibling=nil then
+		    'exit
+		    'else
+		    'node=node.NextSibling
+		    'end if
+		    BookNode = BookNode.NextSibling
 		    
 		    book=book+1
 		    sBook= Str(book)

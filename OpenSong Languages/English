@@ -139,7 +139,7 @@
     </current_set>
     <new_item caption="New Item">
       <add_song caption="Song">Adds a song to the current set. This will present the list of songs available from the song editor for you to choose from.</add_song>
-      <add_scripture caption="Scripture">Adds a scripture slide or slides to the surrent set. This will display a window that will let you choose the particular passage that you wish to display.</add_scripture>
+      <add_scripture caption="Scripture">Adds a scripture slide or slides to the current set. This will display a window that will let you choose the particular passage that you wish to display.</add_scripture>
       <add_slides caption="Slides">Adds a custom slide to the current set. Custom slides allow you to specify your own title, subtitle, body text, and even style. A custom slide item can actually contain a series of slides.</add_slides>
       <add_style caption="Style">Changes the current set's default style at any place in the set. Styles changes can define a new style or revert to the previous style.</add_style>
       <add_video caption="Video">Adds a video file to the current set. Use this to present a video from within OpenSong.</add_video>

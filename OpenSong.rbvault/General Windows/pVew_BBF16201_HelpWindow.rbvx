@@ -264,7 +264,7 @@ pVew/B: 426C6F6B70566577BBF162010000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: HelpWindow
-  Size/N: 148
+  Size/N: 140
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -275,9 +275,12 @@ pVew/B: 426C6F6B70566577BBF162010000000000000000000000000000000000000000
 		  nil_help_tabs.Value = 0
 		  App.T.TranslateWindow Me, "help_topics", App.TranslationFonts
 		  
-		  HTMLFormatField edt_help_lyrics
-		  HTMLFormatField edt_help_presentation
+		  edt_help_keys.Text = App.T.Translate("help_topics/keys")
 		  HTMLFormatField edt_help_keys
+		  edt_help_lyrics.Text = App.T.Translate("help_topics/format")
+		  HTMLFormatField edt_help_lyrics
+		  edt_help_presentation.Text = App.T.Translate("help_topics/presentation")
+		  HTMLFormatField edt_help_presentation
 		  
 		  App.MaximizeInControlScreen Me
 		End Sub

@@ -1,3 +1,9 @@
+-= 1.0 Beta 2 JRC =-
+
+* Prevent Resizing MainWindow when closing presentation.
+
+* Fixed bug where two blank set items would be added to the beginning of a set when the set's first item is a style change
+
 -= 1.0 Beta 2 Baselevel 13 =-
 
 * Changed superclass of the About menu to AppleMenuItem to relocate it to the application menu per Apple's interface guidelines.  Does not affect Windows or Linux.

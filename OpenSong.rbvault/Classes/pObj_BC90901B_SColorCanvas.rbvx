@@ -10,7 +10,7 @@ pObj/B: 426C6F6B704F626ABC90901B0000000000000000000000000000000000000000
  Size/N: 124
  Supr/S: Canvas
  bNtr/N: 0
- Intr/S: 
+ Intr/S: actionSource
  HIns/G: 
   Enco/N: 1280
   name/S: MouseDown
@@ -57,14 +57,31 @@ pObj/B: 426C6F6B704F626ABC90901B0000000000000000000000000000000000000000
  Hook/D: (Enco/N: 134217984, name/S: Action, parm/S: , rslt/S: , flag/N: 33)
  Meth/G: 
   Enco/N: 134217984
+  name/S: addActionNotificationReceiver
+  parm/S: Receiver As ActionnotificationReceiver
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub addActionNotificationReceiver(Receiver As ActionnotificationReceiver)
+		  receivers.Append Receiver
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: ClearColor
   parm/S: 
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
 		Sub ClearColor()
+		  Dim i As Integer
 		  IsColorSet = False
 		  Repaint
+		  
+		  For i = 0 To UBound(Receivers)
+		    Receivers(i).PerformAction
+		  Next
 		End Sub
   )
  Meth/g: 
@@ -83,6 +100,24 @@ pObj/B: 426C6F6B704F626ABC90901B0000000000000000000000000000000000000000
 		    Return False
 		  End If
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveActionNotificationReceiver
+  parm/S: receiver As actionnotificationReceiver
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveActionNotificationReceiver(receiver As actionnotificationReceiver)
+		  Dim i As Integer
+		  
+		  For i = 0 To UBound(receivers)
+		    if receivers(i) = receiver Then
+		      receivers.Remove i
+		    End If
+		  Next
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -123,9 +158,13 @@ pObj/B: 426C6F6B704F626ABC90901B0000000000000000000000000000000000000000
   flag/N: 0
   sorc/d: (Enco/N: 134217984
 		Sub SetColor(c As Color)
+		  Dim i As Integer
 		  IsColorSet = True
 		  MyColor = c
 		  Repaint
+		  For i = 0 To UBound(Receivers)
+		    Receivers(i).PerformAction
+		  Next
 		End Sub
   )
  Meth/g: 
@@ -145,6 +184,17 @@ pObj/B: 426C6F6B704F626ABC90901B0000000000000000000000000000000000000000
   sorc/G: 
    Enco/N: 134217984
    ntln/S: MyColor As Color
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Receivers() As actionnotificationReceiver
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Receivers() As actionnotificationReceiver
    ntln/S: 
    ntln/S: 
   sorc/g: 

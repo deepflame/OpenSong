@@ -55,6 +55,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: InchesToPoints
+  parm/S: Inches As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function InchesToPoints(Inches As String) As String
+		  //++
+		  // Polymorphic version of InchesToPoints
+		  //--
+		  
+		  Return CStr(InchesToPoints(CDbl(Inches)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InchesToPoints
   parm/S: Inches As Double
   rslt/S: Double
   flag/N: 0
@@ -77,19 +93,48 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: InchesToPoints
-  parm/S: Inches As String
-  rslt/S: String
+  name/S: IsCollapsed
+  parm/S: Extends w As Window
+  rslt/S: Boolean
   flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function InchesToPoints(Inches As String) As String
-		  //++
-		  // Polymorphic version of InchesToPoints
-		  //--
-		  
-		  Return CStr(InchesToPoints(CDbl(Inches)))
-		End Function
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function IsCollapsed(Extends w As Window) As Boolean
+   srcl/S: #if TargetMacOS 
+   srcl/S: Declare Function IsWindowCollapsed Lib "CarbonLib" (window as WindowPtr) as Boolean
+   srcl/S: Return IsWindowCollapsed(w) 
+   srcl/S: #endif
+   srcl/S: // gets the rect and show state of the window in winHWND
+   srcl/S: // http://msdn.microsoft.com/library/psdk/winui/windows_79bo.htm
+   srcl/S: #if targetWin32
+   srcl/S: dim mb as memoryBlock
+   srcl/S: dim result as integer
+   srcl/S: Const SW_MINIMIZE = 6
+   srcl/S: 
+   srcl/S: Declare Function GetWindowPlacement Lib "user32" (ByVal hwnd As integer, lpwndpl As ptr) As integer
+   srcl/S: 
+   srcl/S: if w.Handle = 0 then
+   srcl/S: return False
+   srcl/S: end if
+   srcl/S: 
+   srcl/S: mb = newMemoryBlock(44)
+   srcl/S: 
+   srcl/S: mb.long(0) = 44
+   srcl/S: 
+   srcl/S: result = GetWindowPlacement(w.Handle, mb)
+   srcl/S: 
+   srcl/S: if result = 0 then
+   srcl/S: // failed
+   srcl/S: return False
+   srcl/S: end if
+   srcl/S: 
+   srcl/S: Return (mb.long(8) = SW_MINIMIZE)
+   srcl/S: 
+   srcl/S: return false
+   srcl/S: 
+   srcl/S: #endif
+   srcl/S: End Function
+  sorc/g: 
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
@@ -104,6 +149,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		    If Window(i).Title = Title Then Return True
 		  Next
 		  Return False
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToCM
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToCM(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToCM
+		  //--
+		  
+		  Return CStr(PointsToCM(CDbl(Points)))
 		End Function
   )
  Meth/g: 
@@ -133,38 +194,6 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: PointsToCM
-  parm/S: Points As String
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function PointsToCM(Points As String) As String
-		  //++
-		  // Polymorphic version of PointsToCM
-		  //--
-		  
-		  Return CStr(PointsToCM(CDbl(Points)))
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: PointsToInches
-  parm/S: Points As String
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function PointsToInches(Points As String) As String
-		  //++
-		  // Polymorphic version of PointsToInches
-		  //--
-		  
-		  Return CStr(PointsToInches(CDbl(Points)))
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
   name/S: PointsToInches
   parm/S: Points As Double
   rslt/S: Double
@@ -183,6 +212,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  //--
 		  
 		  Return Points * POINT_TO_INCH
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToInches
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToInches(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToInches
+		  //--
+		  
+		  Return CStr(PointsToInches(CDbl(Points)))
 		End Function
   )
  Meth/g: 

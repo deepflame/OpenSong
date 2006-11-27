@@ -78,6 +78,56 @@ pObj/B: 426C6F6B704F626ABD4790700000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: IsFileVisible
+  parm/S: Extends f As FolderItem
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function IsFileVisible(Extends f As FolderItem) As Boolean
+   srcl/S: //++
+   srcl/S: // Most of this is borrowed from a posting on the RB NUG mailing list
+   srcl/S: // at http://support.realsoftware.com/listarchives/realbasic-nug/2004-12/msg00244.html
+   srcl/S: //
+   srcl/S: // Apparently there are multiple ways on OS X to define visibility and RB
+   srcl/S: // doesn't check them all.
+   srcl/S: //
+   srcl/S: // Ed Palmer, November 2006
+   srcl/S: //--
+   srcl/S: 
+   srcl/S: #if TargetCarbon
+   srcl/S: Dim sysx As Integer
+   srcl/S: Dim fp as FolderItem
+   srcl/S: Dim ts as TextInputStream
+   srcl/S: Dim HideFiles As String
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: If f.Visible Then
+   srcl/S: 
+   srcl/S: #if TargetCarbon
+   srcl/S: If System.Gestalt("sysv", sysx) And sysx > &h1000 Then
+   srcl/S: If Left(f.Name, 1) = "." Then Return False
+   srcl/S: fp = f.Parent
+   srcl/S: If fp = Nil Then Return True
+   srcl/S: fp = fp.Child(".hidden")
+   srcl/S: If fp <> Nil And fp.Exists And fp.IsReadable Then
+   srcl/S: ts = fp.OpenAsTextFile
+   srcl/S: HideFiles = Chr(10) + ts.ReadAll + Chr(10)
+   srcl/S: If InStr(HideFiles, Chr(10) + f.Name + Chr(10)) > 0 Then Return False
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: #endif
+   srcl/S: // Non-Carbon apps (Windows, Linux, Classic) just fall to here
+   srcl/S: Return True
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: Return False
+   srcl/S: 
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: IsSafeFileName
   parm/S: name As String
   rslt/S: Boolean

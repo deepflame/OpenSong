@@ -5,6 +5,7 @@
 pVew/B: 426C6F6B70566577BCB298D40000000000000000000000000000000000000000
  Name/S: StyleWindow
  Cont/N: -1131477727
+ Bind/D: (desc/S: Update can_background_image with background color from can_background_color, type/S: bindSColorCanvasAndSImageCanvas, BnSr/N: 17, BnSd/S: , BbSd/S: , BnDs/N: 19, BnDd/S: , BbDd/S: )
  CBhv/G: 
   Name/S: 
   Size/N: 116
@@ -118,7 +119,21 @@ pVew/B: 426C6F6B70566577BCB298D40000000000000000000000000000000000000000
   HIns/g: 
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 24, Supr/S: SColorCanvas, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 24
+  Supr/S: SColorCanvas
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 134217984
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 24, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 24, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 24, Supr/S: SImageCanvas, bNtr/N: 0)

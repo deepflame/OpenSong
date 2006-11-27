@@ -115,7 +115,7 @@ pObj/B: 426C6F6B704F626ABCC6D4550000000000000000000000000000000000000000
 		      ElseIf thisWidth > width Then ' if we get longer than the width...
 		        i = yy ' remember yy in case we can't find a space
 		        While yy > 1 And thiswidth > width  ' we need to backup
-		          'thisChar = Mid(str, yy, 1)
+		          thisChar = Mid(str, yy, 1)
 		          tempstring = Mid(str, xx, yy - xx + 1)
 		          thisWidth = g.StringWidth(tempstring)
 		          yy = yy - 1
@@ -125,7 +125,7 @@ pObj/B: 426C6F6B704F626ABCC6D4550000000000000000000000000000000000000000
 		          thisChar = Mid(str, yy, 1)
 		        Wend
 		        If yy <= 1 Then yy = i ' we didn't find a space; go back where we were and split there; ugly, but we have to.
-		        str = Left(str, yy-1) + Chr(10) + Mid(str, yy+1)
+		        str = RTrim(Left(str, yy)) + Chr(10) + Mid(str, yy+1)
 		        App.DebugWriter.Write "GraphicsX.DrawFontString: Line after split = '" + Mid(str, xx, yy - xx) + "'"
 		        xx = yy + 1
 		        yy = yy + 1

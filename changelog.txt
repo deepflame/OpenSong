@@ -6,6 +6,12 @@
 
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Fixed numerous issues with freeform scripture lookup.  The list of verses in a chapter may have gaps in the numbering if the text of the scripture merges verses.  Subverses are now properly handled in Zefania-format scripture. [Bug 1468053]
+
+* Fixed race condition where the main window, presentation window and presentation helper window would activate each other when exiting presenter mode. (Windows only)
+
+* Changed method for retrieving verses included in a selected scripture to better handle conditions where the verses are not sequentially numbered. [Bug 1468053]
+
 * Changed superclass of the About menu to AppleMenuItem to relocate it to the application menu per Apple's interface guidelines.  Does not affect Windows or Linux.
 
 * A bible with an empty chapter or book won't cause the indexing process to error out.

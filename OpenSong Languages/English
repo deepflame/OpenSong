@@ -649,6 +649,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <hymn_number caption="Hymn Number"/>
      <ccli_number caption="CCLI Song #"/>
      <ccli_license caption="CCLI License #"/>
+     <presentation caption="Presentation Order"/>
      <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
      <separator caption="|NL|"/>
      <!--The leading comma is needed for internal data structure reasons.-->

@@ -1,10 +1,22 @@
--= 1.0 Beta 2 JRC =-
+-= 1.0 Beta 2 Baselevel 13 =-
+
+* Find now will correctly locate a string within a theme. [Bug 1584929]
+
+* The selection of current song folders in both the song editor and song selection for sets are now "sticky," in other words, they retain their settings when the windows are reopened. [Feature Request 1543453]
+
+* Printing a lead sheet with a hymn number no longer garbles the title. [Bug 1477629]
+
+* Lead sheets include the presentation order as part of the header. Added language tag songml/presentation.
+
+* HTML files created by the Export to HTML function are tagged as using the UTF-8 character set. [Bug 1477964]
+
+* Fix issue in ImageChooserWindow where non-picture, non-folder files would cause a NilObjectException. [Bug 1604503]
+
+* Browsing out of ImageChooserWindow for a picture now permits Mac users to actually select something. [Bug 1495745]
 
 * Prevent Resizing MainWindow when closing presentation.
 
 * Fixed bug where two blank set items would be added to the beginning of a set when the set's first item is a style change
-
--= 1.0 Beta 2 Baselevel 13 =-
 
 * Fixed numerous issues with freeform scripture lookup.  The list of verses in a chapter may have gaps in the numbering if the text of the scripture merges verses.  Subverses are now properly handled in Zefania-format scripture. [Bug 1468053]
 

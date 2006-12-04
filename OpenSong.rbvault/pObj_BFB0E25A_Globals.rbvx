@@ -175,7 +175,28 @@ pObj/B: 426C6F6B704F626ABFB0E25A0000000000000000000000000000000000000000
   sorc/g: 
  Prop/g: 
  Prop/G: 
-  Enco/N: 134217984
+  Enco/N: 131072
+  decl/S: CurrentSongFolder As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: CurrentSongFolder As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 131072
+  decl/S: CurrentSongPickerFolder As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: CurrentSongPickerFolder As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 131072
   decl/S: Filters As MemoryBlock
   flag/N: 1
   sorc/G: 

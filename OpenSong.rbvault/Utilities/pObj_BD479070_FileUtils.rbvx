@@ -118,7 +118,11 @@ pObj/B: 426C6F6B704F626ABD4790700000000000000000000000000000000000000000
    srcl/S: End If
    srcl/S: #endif
    srcl/S: // Non-Carbon apps (Windows, Linux, Classic) just fall to here
-   srcl/S: Return True
+   srcl/S: //
+   srcl/S: // OpenSong uses files that start with an underscore for
+   srcl/S: // internal functions.  We define these as not being visible.
+   srcl/S: //
+   srcl/S: If Left(f.Name, 1) <> "_" Then Return True
    srcl/S: End If
    srcl/S: 
    srcl/S: Return False

@@ -159,6 +159,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		Sub Change()
 		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
 		  End If
+		  Globals.CurrentSongPickerFolder = Me.Text
 		End Sub
    )
   HIns/g: 
@@ -392,7 +393,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: SongPickerWindow
-  Size/N: 148
+  Size/N: 156
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -422,10 +423,16 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		  
 		  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
 		  End If
-		  pop_select_folder.ListIndex = 0
-		  
-		  'If UBound(MainWindow.Songs.GetFiles("", lst_all_songs)) = 0 Then
-		  'End If
+		  If Globals.CurrentSongPickerFolder = "" Then
+		    pop_select_folder.ListIndex = 0
+		  Else
+		    For x = 0 to pop_select_folder.ListCount - 1
+		      If Globals.CurrentSongPickerFolder = pop_select_folder.List(x) Then
+		        pop_select_folder.ListIndex = x
+		        Exit
+		      End If
+		    Next
+		  End If
 		  
 		  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
@@ -434,6 +441,25 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Constructor
+   parm/S: 
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  // Set this before calling the Window constructor
+		  // because the Open event will fire then
+		  If Globals.CurrentSongPickerFolder = "" Then
+		    Globals.CurrentSongPickerFolder = Globals.CurrentSongFolder
+		  End If
+		  // call the Window constructor, or Open events will not fire
+		  Super.Window()
+		  
+		End Sub
+   )
+  Meth/g: 
   Meth/G: 
    Enco/N: 134217984
    name/S: Popup

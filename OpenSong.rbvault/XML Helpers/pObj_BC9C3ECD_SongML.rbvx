@@ -2285,21 +2285,26 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  //++
 		  // 3 December 2006, EMP
 		  // Tag HTML with UTF-8 encoding [Bug 1477964]
+		  // Properly encode text in HTML.  Utilizes the HTMLEntityEncode method
+		  // in OpenSongUtils [Bug 1607916]
 		  //--
 		  CleanLyrics songElement.OwnerDocument
 		  
 		  Dim s As String
 		  s = "<html><head>" + EndOfLine
 		  s = s + "  <meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />" + EndOfLine
-		  s = s + "  <title>" + SmartML.GetValue(songElement, "title") + "</title>" + EndOfLine
+		  s = s + "  <title>" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</title>" + EndOfLine
 		  s = s + "  <link rel=""stylesheet"" href=""style.css"" type=""text/css""/>" + EndOfLine
 		  s = s + "</head>" + EndOfLine + "<body>" + EndOfLine
 		  
-		  s = s + "  <div id=""title"">" + SmartML.GetValue(songElement, "title") + "</div>" + EndOfLine
-		  s = s + "  <div id=""author"">" + SmartML.GetValue(songElement, "author") + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "time_sig").Len > 0 Then s = s + "  <div id=""time_sig"">" + App.T.Translate("advanced_song_editor/time_sig/@caption") + ": " + SmartML.GetValue(songElement, "time_sig") + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "tempo").Len > 0 Then s = s + "  <div id=""tempo"">" + App.T.Translate("advanced_song_editor/tempo/@caption") + ": " + SmartML.GetValue(songElement, "tempo") + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "capo").Len > 0 Then s = s + "  <div id=""capo"">" + App.T.Translate("advanced_song_editor/capo/@caption") + " " + SmartML.GetValue(songElement, "capo") + "</div>" + EndOfLine
+		  s = s + "  <div id=""title"">" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</div>" + EndOfLine
+		  s = s + "  <div id=""author"">" + SmartML.GetValue(songElement, "author").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "time_sig").Len > 0 Then _
+		      s = s + "  <div id=""time_sig"">" + App.T.Translate("advanced_song_editor/time_sig/@caption").HTMLEntityEncode + ": " + SmartML.GetValue(songElement, "time_sig").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "tempo").Len > 0 Then _
+		      s = s + "  <div id=""tempo"">" + App.T.Translate("advanced_song_editor/tempo/@caption").HTMLEntityEncode + ": " + SmartML.GetValue(songElement, "tempo").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "capo").Len > 0 Then _
+		      s = s + "  <div id=""capo"">" + App.T.Translate("advanced_song_editor/capo/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "capo").HTMLEntityEncode + "</div>" + EndOfLine
 		  
 		  Dim slices(0), lines(0) As String
 		  LyricsToLines songElement.OwnerDocument, lines
@@ -2318,19 +2323,19 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		      For i = 0 To sliceCount - 1 ' Loop through each chord slice
 		        If i = 0 Then
 		          s = s + "      <td class=""capochords"">" + Trim(Mid(SingleTranspose(slices(i*lineCount+1),_
-		              12-SmartML.GetValueN(songElement, "capo"), True), 2)) + "&nbsp;</td>" + EndOfLine
+		              12-SmartML.GetValueN(songElement, "capo"), True), 2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
 		        Else
 		          s = s + "      <td class=""capochords"">" + Trim(SingleTranspose(slices(i*lineCount+1),_
-		              12-SmartML.GetValueN(songElement, "capo"), False)) + "&nbsp;</td>" + EndOfLine
+		              12-SmartML.GetValueN(songElement, "capo"), False)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
 		        End If
 		      Next i
 		      s = s + "    </tr>" + EndOfLine
 		      
 		      For i = 0 To sliceCount - 1 ' Loop through each chord slice
 		        If i = 0 Then
-		          s = s + "      <td class=""chords"">" + Trim(Mid(slices(i*lineCount+1),2)) + "&nbsp;</td>" + EndOfLine
+		          s = s + "      <td class=""chords"">" + Trim(Mid(slices(i*lineCount+1),2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
 		        Else
-		          s = s + "      <td class=""chords"">" + Trim(slices(i*lineCount+1)) + "&nbsp;</td>" + EndOfLine
+		          s = s + "      <td class=""chords"">" + Trim(slices(i*lineCount+1)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
 		        End If
 		      Next i
 		      s = s + "    </tr>" + EndOfLine
@@ -2338,24 +2343,28 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		      For j = 2 To lineCount ' Loop through the lines and print
 		        s = s + "    <tr>" + EndOfLine
 		        For i = 0 To sliceCount - 1 ' Loop through each slice
-		          If slices(i*lineCount+j).Len = 0 Then slices(i*lineCount+j) = "&nbsp;"
-		          If Right(slices(i*lineCount+j),1) = " " Then
-		            If i = 0 Then
-		              If Left(slices(i*lineCount+j),2) = "  " Then slices(i*lineCount+j) = " &nbsp;" + Mid(slices(i*lineCount+j),2)
-		              s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(i*lineCount+j),2)) + "&nbsp;</td>" + EndOfLine
-		            Else
-		              If Left(slices(i*lineCount+j),1) = " " Then slices(i*lineCount+j) = "&nbsp;" + Mid(slices(i*lineCount+j),2)
-		              s = s + "      <td class=""lyrics"">" + Trim(slices(i*lineCount+j)) + "&nbsp;</td>" + EndOfLine
-		            End If
+		          If slices(i*lineCount+j).Len = 0 Then 
+		            slices(i*lineCount+j) = "&nbsp;"
 		          Else
-		            slices(i*lineCount+j) = StringUtils.Squeeze(slices(i*lineCount+j), "_")
-		            slices(i*lineCount+j) = ReplaceAll(slices(i*lineCount+j), "_", " -&nbsp;")
-		            If i = 0 Then
-		              If Left(slices(i*lineCount+j),2) = "  " Then slices(i*lineCount+j) = " &nbsp;" + Mid(slices(i*lineCount+j),2)
-		              s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(i*lineCount+j),2)) + "</td>" + EndOfLine
+		            slices(i*linecount+j) = slices(i*linecount+j).HTMLEntityEncode
+		            If Right(slices(i*lineCount+j),1) = " " Then
+		              If i = 0 Then
+		                If Left(slices(i*lineCount+j),2) = "  " Then slices(i*lineCount+j) = " &nbsp;" + Mid(slices(i*lineCount+j),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(i*lineCount+j),2)) + "&nbsp;</td>" + EndOfLine
+		              Else
+		                If Left(slices(i*lineCount+j),1) = " " Then slices(i*lineCount+j) = "&nbsp;" + Mid(slices(i*lineCount+j),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(slices(i*lineCount+j)) + "&nbsp;</td>" + EndOfLine
+		              End If
 		            Else
-		              If Left(slices(i*lineCount+j),1) = " " Then slices(i*lineCount+j) = "&nbsp;" + Mid(slices(i*lineCount+j),2)
-		              s = s + "      <td class=""lyrics"">" + Trim(slices(i*lineCount+j)) + "</td>" + EndOfLine
+		              slices(i*lineCount+j) = StringUtils.Squeeze(slices(i*lineCount+j), "_")
+		              slices(i*lineCount+j) = ReplaceAll(slices(i*lineCount+j), "_", " -&nbsp;")
+		              If i = 0 Then
+		                If Left(slices(i*lineCount+j),2) = "  " Then slices(i*lineCount+j) = " &nbsp;" + Mid(slices(i*lineCount+j),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(i*lineCount+j),2)) + "</td>" + EndOfLine
+		              Else
+		                If Left(slices(i*lineCount+j),1) = " " Then slices(i*lineCount+j) = "&nbsp;" + Mid(slices(i*lineCount+j),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(slices(i*lineCount+j)) + "</td>" + EndOfLine
+		              End If
 		            End If
 		          End If
 		        Next i
@@ -2365,40 +2374,57 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		      s = s + "</table>" + EndOfLine
 		      l = l + lineCount - 1 ' l will increment again b/c of the For loop
 		      
-		    ElseIf Left(lines(l), 3) = "---" Then
-		      
+		    ElseIf Left(lines(l), 1) = "-" Then // A variety of printing directives
+		      If Mid(lines(l), 2, 2) = "__" Then _ // Horizontal line
+		          s = s + "<hr />" + EndOfLine
 		    ElseIf Left(lines(l), 1) = "." Then
-		      s = s + "  <div class=""chords"">" + Mid(lines(l), 2) + "</div>" + EndOfLine
+		      s = s + "  <div class=""chords"">" + Mid(lines(l), 2).HTMLEntityEncode + "</div>" + EndOfLine
 		      
 		    ElseIf Left(lines(l), 1) = ";" Then
-		      s = s + "  <div class=""comment"">" + Mid(lines(l), 2) + "</div>" + EndOfLine
+		      s = s + "  <div class=""comment"">" + Mid(lines(l), 2).HTMLEntityEncode + "</div>" + EndOfLine
 		      
 		    ElseIf Left(lines(l), 1) = "[" Then
-		      s = s + "  <p/><div class=""heading"">" + FullHeading(Mid(lines(l), 2, lines(l).Len-2), True) + "</div>" + EndOfLine
+		      s = s + "  <p/><div class=""heading"">" + FullHeading(Mid(lines(l), 2, lines(l).Len-2), True).HTMLEntityEncode + "</div>" + EndOfLine
 		      
 		    Else
-		      s = s + "  <div class=""lyrics"">" + Mid(lines(l), 2, lines(l).Len-1) + "</div>" + EndOfLine
+		      s = s + "  <div class=""lyrics"">" + Mid(lines(l), 2, lines(l).Len-1).HTMLEntityEncode + "</div>" + EndOfLine
 		      
 		    End If
 		  Next l
 		  s = s + "<br/>" + EndOfLine
 		  
-		  If SmartML.GetValue(songElement, "aka").Len > 0 Then s = s + "  <div id=""aka"">" + App.T.Translate("advanced_song_editor/aka/@caption") + " " + SmartML.GetValue(songElement, "aka") + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "copyright").Len > 0 Then s = s + "  <div id=""copyright"">" + App.T.Translate("general_song_editor/copyright/@caption") + " " + SmartML.GetValue(songElement, "copyright") + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "ccli").Len > 0 Then s = s + "  <div id=""ccli"">" + App.T.Translate("general_song_editor/ccli/@caption") + " " + SmartML.GetValue(songElement, "ccli") + "</div>" + EndOfLine
-		  If ColonTrim(SmartML.GetValue(songElement, "theme")).Len > 0 Then s = s + "  <div id=""themes"">" + App.T.Translate("advanced_song_editor/themes/@caption") + ": " + ColonTrim(SmartML.GetValue(songElement, "theme")) + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "key_line").Len > 0 Then s = s + "  <div id=""key_line"">" + App.T.Translate("advanced_song_editor/key_line/@caption") + ": " + SmartML.GetValue(songElement, "key_line") + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "key").Len > 0 Then s = s + "  <div id=""key"">" + App.T.Translate("advanced_song_editor/key/@caption") + " " + SmartML.GetValue(songElement, "key") + "</div>" + EndOfLine
-		  
-		  If SmartML.GetValue(songElement, "user1").Len > 0 Then s = s + "  <div id=""user1"">" + MainWindow.lbl_song_user1_1.Text + " " + SmartML.GetValue(songElement, "user1") + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "user2").Len > 0 Then s = s + "  <div id=""user2"">" + MainWindow.lbl_song_user2.Text + " " + SmartML.GetValue(songElement, "user2") + "</div>" + EndOfLine
-		  If SmartML.GetValue(songElement, "user3").Len > 0 Then s = s + "  <div id=""user3"">" + MainWindow.lbl_song_user3.Text + " " + SmartML.GetValue(songElement, "user3") + "</div>" + EndOfLine
-		  
-		  s = s + "<p><a class=""opensong"" href=""http://www.opensong.org/"">" + App.T.Translate("about/created_with_opensong") + "</a></p>" + EndOfLine
-		  s = s + "</body></html>"
-		  
-		  Return s
-		End Function
+		  If SmartML.GetValue(songElement, "aka").Len > 0 Then _
+		      s = s + "  <div id=""aka"">" + App.T.Translate("advanced_song_editor/aka/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "aka").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "copyright").Len > 0 Then _
+		      s = s + "  <div id=""copyright"">" + App.T.Translate("general_song_editor/copyright/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "copyright").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "ccli").Len > 0 Then _
+		      s = s + "  <div id=""ccli"">" + App.T.Translate("general_song_editor/ccli/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "ccli").HTMLEntityEncode + "</div>" + EndOfLine
+		  If ColonTrim(SmartML.GetValue(songElement, "theme")).Len > 0 Then _
+		      s = s + "  <div id=""themes"">" + App.T.Translate("advanced_song_editor/themes/@caption").HTMLEntityEncode + ": " + _
+		      ColonTrim(SmartML.GetValue(songElement, "theme")).HTMLEntityEncode + "</div>" + EndOfLine
+		      If SmartML.GetValue(songElement, "key_line").Len > 0 Then _
+		          s = s + "  <div id=""key_line"">" + App.T.Translate("advanced_song_editor/key_line/@caption").HTMLEntityEncode + ": " + _
+		          SmartML.GetValue(songElement, "key_line").HTMLEntityEncode + "</div>" + EndOfLine
+		          If SmartML.GetValue(songElement, "key").Len > 0 Then _
+		              s = s + "  <div id=""key"">" + App.T.Translate("advanced_song_editor/key/@caption").HTMLEntityEncode + " " + _
+		              SmartML.GetValue(songElement, "key").HTMLEntityEncode + "</div>" + EndOfLine
+		              
+		              If SmartML.GetValue(songElement, "user1").Len > 0 Then _
+		                  s = s + "  <div id=""user1"">" + MainWindow.lbl_song_user1_1.Text.HTMLEntityEncode + " " + _
+		                  SmartML.GetValue(songElement, "user1").HTMLEntityEncode + "</div>" + EndOfLine
+		                  If SmartML.GetValue(songElement, "user2").Len > 0 Then _
+		                      s = s + "  <div id=""user2"">" + MainWindow.lbl_song_user2.Text.HTMLEntityEncode + " " + _
+		                      SmartML.GetValue(songElement, "user2").HTMLEntityEncode + "</div>" + EndOfLine
+		                      If SmartML.GetValue(songElement, "user3").Len > 0 Then _
+		                          s = s + "  <div id=""user3"">" + MainWindow.lbl_song_user3.Text.HTMLEntityEncode + " " + _
+		                          SmartML.GetValue(songElement, "user3").HTMLEntityEncode + "</div>" + EndOfLine
+		                          
+		                          s = s + "<p><a class=""opensong"" href=""http://www.opensong.org/"">" + _
+		                              App.T.Translate("about/created_with_opensong").HTMLEntityEncode + "</a></p>" + EndOfLine
+		                          s = s + "</body></html>"
+		                          
+		                          Return s
+		                        End Function
   )
  Meth/g: 
  Meth/G: 

@@ -1,5 +1,7 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Export to HTML (SongML.ToHTML) properly encodes characters such as the ampersand (&), greater/less-than (<>), etc.  Added a method to the OpenSongUtils module to extend the String class so this can be used elsewhere. Thanks to the Multi-byte String Utilities project (http://sourceforge.jp/project/php-i18n/) for the table to match UTF-8 code points to the proper HTML encoding. [Bug 1607916]
+
 * Find now will correctly locate a string within a theme. [Bug 1584929]
 
 * The selection of current song folders in both the song editor and song selection for sets are now "sticky," in other words, they retain their settings when the windows are reopened. [Feature Request 1543453]

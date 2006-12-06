@@ -91,6 +91,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: Paint
    sorc/d: (Enco/N: 134217984
 		Sub Paint(g As Graphics)
+		  If Not Globals.Status_Presentation Then Return
 		  '#if DebugBuild then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
@@ -176,7 +177,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentWindow
-  Size/N: 192
+  Size/N: 200
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: ACTION_BLACK, type/N: 1, defn/S: 1013, flag/N: 0)
@@ -213,7 +214,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: Activate
    sorc/d: (Enco/N: 134217984
 		Sub Activate()
-		  If HelperActive Then
+		  If HelperActive And Globals.Status_Presentation Then
 		    If PresentHelperWindow.IsCollapsed Then
 		      App.RestoreWindow(PresentHelperWindow)
 		    End If
@@ -1272,7 +1273,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    parm/S: setDoc As XmlDocument, PresentMode As Integer
    rslt/S: 
    flag/N: 0
-   sorc/d: (Enco/N: 134217984, srbp/N: 90
+   sorc/d: (Enco/N: 134217984
 		Sub Present(setDoc As XmlDocument, PresentMode As Integer)
 		  Dim i, j As Integer
 		  Dim slide_groups, slide_group, slide As XmlNode

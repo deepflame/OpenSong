@@ -67,12 +67,15 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Paint
-   sorc/d: (Enco/N: 134217984
-		Sub Paint(g As Graphics)
-		  g.ForeColor = FillColor
-		  g.FillRect 0, 0, Width, Height
-		End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub Paint(g As Graphics)
+    srcl/S: #if Not TargetMacOS
+    srcl/S: g.ForeColor = FillColor
+    srcl/S: g.FillRect 0, 0, Me.Width, Me.Height
+    srcl/S: #endif
+    srcl/S: End Sub
+   sorc/g: 
   HIns/g: 
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 108, Supr/S: Separator, bNtr/N: 0)
@@ -558,7 +561,7 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: nil_header, Enco/N: 134217984)
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 40)
+  PDef/D: (name/S: Left, PVal/S: 42)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: False)
@@ -620,7 +623,7 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: nil_header, Enco/N: 134217984)
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 180)
+  PDef/D: (name/S: Left, PVal/S: 182)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: False)
@@ -841,7 +844,7 @@ pVew/B: 426C6F6B70566577BBC741F60000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PrintWindow
-  Size/N: 208
+  Size/N: 216
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

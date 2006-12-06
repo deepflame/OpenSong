@@ -99,6 +99,7 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
    name/S: Paint
    sorc/d: (Enco/N: 134217984
 		Sub Paint(g As Graphics)
+		  If Not Globals.Status_Presentation Then Return
 		  edt_slide_notes.Text = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "notes", True)
 		  If edt_slide_notes.Text = "" Then
 		    // Load the text of the slide into the notes field for easy reference.

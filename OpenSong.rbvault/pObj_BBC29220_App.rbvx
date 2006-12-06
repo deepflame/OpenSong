@@ -49,6 +49,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   name/S: Close
   sorc/d: (Enco/N: 134217984
 		Sub Close()
+		  Globals.Status_Presentation = False
 		  DebugWriter.Done
 		End Sub
   )
@@ -405,6 +406,11 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		Function UnhandledException(error As RuntimeException) As Boolean
 		  Dim s As String
 		  Dim msg As String
+		  
+		  Globals.Status_Presentation = False
+		  If MainWindow <> Nil Then
+		    MainWindow.Status_Presentation = False
+		  End If
 		  
 		  s = "Fatal OpenSong Error: "
 		  

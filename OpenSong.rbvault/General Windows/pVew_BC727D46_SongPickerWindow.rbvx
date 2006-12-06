@@ -103,7 +103,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  'BuildScripture
+		  Globals.LastSongFolder = pop_select_folder.Text
 		  
 		  If lst_all_songs.ListIndex >= 0 Then
 		    Close
@@ -416,13 +416,20 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Open
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 8
 		Sub Open()
 		  Dim x As Integer
+		  Dim i As Integer
 		  
 		  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
 		  End If
-		  pop_select_folder.ListIndex = 0
+		  
+		  'try to use the last folder the user selected
+		  For i = 0 To pop_select_folder.ListCount - 1
+		    If Globals.LastSongFolder = pop_select_folder.List(i) Then pop_select_folder.ListIndex = i
+		  Next i
+		  'last folder not found, use default
+		  If pop_select_folder.ListIndex = -1 Then pop_select_folder.ListIndex = 0
 		  
 		  'If UBound(MainWindow.Songs.GetFiles("", lst_all_songs)) = 0 Then
 		  'End If

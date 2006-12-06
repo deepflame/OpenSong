@@ -31,10 +31,15 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  Dim f As FolderItem
-		  f = GetOpenFolderItem("images")
-		  If f <> Nil Then
-		    Self.f = f
+		  // 2 December 2006 EMP
+		  // Changed local variable f to fi to prevent future confusion
+		  // Added a list of picture file types to the GetOpenFolderItem call
+		  // to clear up an issue with Mac in particular not allowing the browse to work
+		  // [Bug 1495745]
+		  Dim fi As FolderItem
+		  fi = GetOpenFolderItem("JPG Files;BMP Files;GIF Files;PNG Files;TIFF Files")
+		  If fi <> Nil Then
+		    Self.f = fi
 		    Close
 		  End If
 		End Sub
@@ -96,6 +101,8 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Replaced (and modified) hard coded argument with variable.
 		  // JDL 2/01/2006  Replaced pic.Depth with variable picDepth
+		  // EMP 2 December 2006 Fixed attempt to access pic before validating as non-Nil
+		  // EMP 2 December 2006 Added code to ignore non-picture files
 		  Dim pic, thumb As Picture
 		  Dim name As String
 		  Dim c As Color
@@ -135,16 +142,23 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
 		          End If
 		        Else '  read from the file
 		          pic = ImageFiles(ImgNdx).OpenAsPicture                         // JDL 2/01/2006
-		          picDepth = pic.Depth                                                       // JDL 2/01/2006
-		          If picDepth = 0 then                                                         // JDL 2/01/2006
-		            picDepth = 32                                                               // JDL 2/01/2006
-		          End If                                                                                // JDL 2/01/2006
-		          If pic <> Nil And cache <> Nil Then ' create the cache
-		            If Not cache.Exists Then cache.CreateAsFolder
-		            thumb = NewPicture(80, 60, picDepth)                          // JDL 2/01/2006
-		            thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
-		            cache.Child(name).SaveAsPicture thumb
-		          End If
+		          If pic <> Nil Then
+		            picDepth = pic.Depth                                                       // JDL 2/01/2006
+		            If picDepth = 0 then                                                         // JDL 2/01/2006
+		              picDepth = 32                                                               // JDL 2/01/2006
+		            End If                                                                                // JDL 2/01/2006
+		            If cache <> Nil Then ' create the cache
+		              If Not cache.Exists Then cache.CreateAsFolder
+		              thumb = NewPicture(80, 60, picDepth)                          // JDL 2/01/2006
+		              thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
+		              cache.Child(name).SaveAsPicture thumb
+		            End If // cache <> Nil
+		          Else
+		            // Let's not display anything that isn't a picture or a folder.
+		            ImageFiles.Remove ImgNdx
+		            Can(Index).Refresh
+		            Return
+		          End If // pic <> Nil
 		        End If
 		        If thumb <> Nil Then
 		          g.DrawPicture thumb, 0, 0
@@ -275,7 +289,7 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 160)
+  PDef/D: (name/S: Left, PVal/S: 156)
   PDef/D: (name/S: LockBottom, PVal/S: True)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: False)
@@ -306,7 +320,7 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 239)
+  PDef/D: (name/S: Left, PVal/S: 241)
   PDef/D: (name/S: LockBottom, PVal/S: True)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: False)
@@ -1542,7 +1556,7 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ImageChooserWindow
-  Size/N: 152
+  Size/N: 160
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: COLS, type/N: 1, defn/S: 5, flag/N: 1)
@@ -1619,7 +1633,7 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
     srcl/S: App.MouseCursor = WatchCursor
     srcl/S: For i = 1 To BackgroundFolder.Count
     srcl/S: If BackgroundFolder.Item(i).Name <> "thumbs.db" _
-    srcl/S: And InStr("._", Left(BackgroundFolder.Item(i).Name, 1)) = 0 Then
+    srcl/S: And BackgroundFolder.Item(i).IsFileVisible Then
     srcl/S: If BackgroundFolder.Item(i).Directory Then
     srcl/S: folderIndex = folderIndex + 1
     srcl/S: ImageFiles.Insert folderIndex, BackgroundFolder.Item(i)

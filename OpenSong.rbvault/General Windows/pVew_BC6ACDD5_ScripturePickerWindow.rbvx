@@ -17,12 +17,29 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
+		  //
+		  // Updated November 2006 to put the book number in the CellTag of the listbox
+		  //
 		  Dim i As Integer
 		  dim ot as integer
 		  dim nt as integer
 		  Dim x as Integer
-		  Dim BookNames(0), oldBible As String
+		  Dim BookNames(), oldBible As String
 		  Dim OldCursor As MouseCursor
+		  Dim newSelection As Integer
+		  Dim BookNumbers() As Integer
+		  Dim OldBook, NewBook As Integer
+		  Dim OldBookName As String
+		  Dim OldNumOTBooks, OldNumNTBooks As Integer
+		  Dim OldChapter, OldVerse, OldThru As integer
+		  
+		  OldBookName = CurrentBook
+		  OldBook = book
+		  OldNumOTBooks = NumOTBooks
+		  OldNumNTBooks = NumNTBooks
+		  OldChapter = chapter
+		  OldVerse = verse
+		  OldThru = thru
 		  
 		  if me.ListIndex=-1 then 'bhenny- it was throwing an exception when ListIndex was -1
 		    return
@@ -31,12 +48,15 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  OldCursor = App.MouseCursor
 		  App.MouseCursor = WatchCursor
 		  
+		  newSelection = Me.ListIndex
+		  
 		  oldBible= App.MyBible.GetBibleFilename
 		  If App.MyBible.GetBibleFileName <> Me.List(Me.ListIndex) Then 
 		    If Not App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(Me.List(Me.ListIndex))) Then
 		      InputBox.Message Str(App.MyBible.ErrorCode) + ": " + App.MyBible.ErrorString
 		      App.MouseCursor = OldCursor
-		      
+		      // Delete the bad one from the list
+		      Me.RemoveRow newSelection
 		      'bhenny- if there is an error load the old bible
 		      for x=0 to Me.ListCount-1
 		        if Me.List(0)=oldBible then
@@ -53,9 +73,11 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  End If
 		  
 		  If App.MyBible <> Nil Then
-		    ot = App.MyBible.GetOTCount
-		    nt = App.MyBible.GetNTCount
+		    'ot = App.MyBible.GetOTCount
+		    'nt = App.MyBible.GetNTCount
 		    try
+		      ot = App.MyBible.GetOTBooks(BookNames, BookNumbers)
+		      
 		      If ot < lst_scr_ot.ListCount Then
 		        For x = lst_scr_ot.ListCount - 1 DownTo ot
 		          lst_scr_ot.RemoveRow x
@@ -65,21 +87,15 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		          lst_scr_ot.AddRow Str(x+1)
 		        Next x
 		      End If
-		      
-		      BookNames = App.MyBible.GetOTBooks
-		      
-		      For i = 1 to ot
-		        lst_scr_ot.List(i - 1) = BookNames(i)
+		      ot = ot - 1
+		      For i = 0 to ot
+		        lst_scr_ot.List(i) = BookNames(i)
+		        'If this book name is the same as the previously selected one
+		        'flag it, of course this won't work if this Bible has different book names
+		        If OldBookName = BookNames(i) Then NewBook = i + 1
+		        lst_scr_ot.CellTag(i, 0) = BookNumbers(i)
 		      Next
 		      lst_scr_ot.ListIndex = 0
-		      'For i = 1 To ot
-		      'lst_scr_ot.List(i-1) = App.MyBible.GetBookName(i)
-		      'Next i
-		      ''if lst_scr_ot.Listindex > ot - 1 then
-		      'lst_scr_ot.ListIndex = 0
-		      ''end if
-		      ''ScrollOT
-		      '
 		    catch err
 		      if err isa OutOfBoundsException then
 		        msgbox "Loading OT List: "+str(i)+ " is out of bounds"
@@ -87,6 +103,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    end try
 		    
 		    try
+		      nt = App.MyBible.GetNTBooks(BookNames, BookNumbers)
+		      
 		      If nt < lst_scr_nt.ListCount Then
 		        For x = lst_scr_nt.ListCount - 1 DownTo nt
 		          lst_scr_nt.RemoveRow x
@@ -99,30 +117,48 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		      if lst_scr_nt.ListIndex > nt - 1 then
 		        lst_scr_nt.Listindex = 0
 		      end if
-		      ScrollNT
+		      'ScrollNT
 		      
-		      Redim BookNames(0) ' Clear out the Old Testament names
-		      BookNames = App.MyBible.GetNTBooks
+		      nt = nt - 1
 		      
-		      For i = 1 to nt
-		        lst_scr_nt.List(i - 1) = BookNames(i)
+		      For i = 0 to nt
+		        lst_scr_nt.List(i) = BookNames(i)
+		        'If this book name is the same as the previously selected one
+		        'flag it, of course this won't work if this Bible has different book names
+		        If OldBookName = BookNames(i) Then NewBook = ot + i + 1
+		        lst_scr_nt.CellTag(i, 0) = BookNumbers(i)
 		      Next
-		      'For i = ot + 1 To ot + nt
-		      'lst_scr_nt.List(i-ot-1) = App.MyBible.GetBookName(i)
-		      'Next i
+		      
 		    catch err2
 		      if err2 isa OutOfBoundsException then
 		        msgbox "Loading NT List: "+str(i)+ " is out of bounds"
 		      end if
 		    end try
-		    if lst_scr_ot.ListCount>0 then 'bhenny- have it select Matthew if bible is just nt
-		      lst_scr_nt.ListIndex = -1
-		      lst_scr_ot.Listindex = 0
-		    else
-		      lst_scr_nt.ListIndex = 0
-		      lst_scr_ot.Listindex = -1
-		    end if
-		    ScrollOT
+		    
+		    If NewBook > 0 Then 
+		      If NewBook > ot Then 'New Testament
+		        lst_scr_nt.ListIndex = NewBook - ot - 1
+		        lst_scr_ot.Listindex = -1
+		      Else 'Old Testament
+		        lst_scr_nt.ListIndex = -1
+		        lst_scr_ot.Listindex = NewBook - 1
+		      End If
+		      
+		      If OldChapter <= App.MyBible.GetChapterCount(lst_scr_ot.ListIndex+1) Then lst_scr_chapter.ListIndex = OldChapter - 1
+		      If OldVerse <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_from_verse.ListIndex+1)Then lst_scr_from_verse.ListIndex = OldVerse - 1
+		      If OldThru <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_to_verse.ListIndex+1) Then lst_scr_to_verse.ListIndex = OldThru - 1
+		      
+		    Else 'Old Bible book not found, use default
+		      if lst_scr_ot.ListCount>0 then 'have it select Matthew (assuming there is a Matthew) if bible is just nt
+		        lst_scr_nt.ListIndex = -1
+		        lst_scr_ot.Listindex = 0
+		      else
+		        lst_scr_nt.ListIndex = 0
+		        lst_scr_ot.Listindex = -1
+		      end if
+		    End If
+		    
+		    'ScrollOT
 		    App.MouseCursor = OldCursor
 		  End If
 		End Sub
@@ -274,6 +310,15 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: MouseExit
+   sorc/d: (Enco/N: 134217984
+		Sub MouseExit()
+		  
+		End Sub
+   )
+  HIns/g: 
  CBhv/g: 
  CBhv/G: 
   Name/S: 
@@ -285,8 +330,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
-		  'If Me.ListIndex > lst_scr_to_verse.ListIndex Then lst_scr_to_verse.ListIndex = Me.ListIndex
-		  lst_scr_to_verse.ListIndex = Me.ListIndex
+		  If Me.ListIndex > lst_scr_to_verse.ListIndex Then lst_scr_to_verse.ListIndex = Me.ListIndex
+		  'lst_scr_to_verse.ListIndex = Me.ListIndex
 		  btn_add.Enabled = True
 		  btn_Insert.Enabled = True
 		  
@@ -367,8 +412,36 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 132
+  Supr/S: RadioButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  setPreview
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 132
+  Supr/S: RadioButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  setPreview
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 188, Supr/S: EditField, bNtr/N: 0)
  CBhv/G: 
@@ -1500,6 +1573,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Dim x, advance As Integer
 		  Dim vStart, vStop, cntVerses as Integer
 		  Dim slides, slide As XmlNode
+		  Dim vFrom, vTo As String
 		  advance = 0
 		  
 		  Node.Name = "slide_group"
@@ -1512,24 +1586,48 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    cntVerses = 3
 		  End If
 		  
+		  //++
+		  // Original code here would use the ListIndex as the verse reference.  With Bibles that combine verses or
+		  // have sub-verses (The Portugese Bible is an example of the former, the New American Bible the latter),
+		  // the references don't exactly correspond to the ListIndex.  Retrieve this directly from the Bible object.
+		  //--
+		  
 		  If Insert And (lst_scr_to_verse.listindex - lst_scr_from_verse.listindex + 1 > cntVerses) Then
-		    passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_from_verse.ListIndex+cntVerses)
-		    verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+cntVerses))
+		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_from_verse.ListIndex+cntVerses)
+		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+cntVerses))
+		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
+		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + 1, vFrom, vTo)
+		    passage = passage + vFrom
+		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + cntVerses, vFrom, vTo)
+		    If vTo = "" Then
+		      passage = passage + "-" + vFrom
+		    Else
+		      passage = passage + "-" + vTo
+		    End If
+		    verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_from_verse.ListIndex + cntVerses)
 		  ElseIf lst_scr_to_verse.ListIndex > lst_scr_from_verse.ListIndex Then
-		    passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_to_verse.ListIndex+1)
-		    verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_to_verse.ListIndex + 1))
+		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_to_verse.ListIndex+1)
+		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_to_verse.ListIndex + 1))
+		    verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_to_verse.ListIndex + 1)
+		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
+		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + 1, vFrom, vTo)
+		    passage = passage + vFrom
+		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_to_verse.ListIndex + 1, vFrom, vTo)
+		    If vTo = "" Then
+		      passage = passage + "-" + vFrom
+		    Else
+		      passage = passage + "-" + vTo
+		    End If
 		  Else
-		    passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1)
-		    verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+1))
+		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1)
+		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+1))
+		    verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_from_verse.ListIndex + 1)
+		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
+		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_to_verse.ListIndex + 1, vFrom, vTo)
+		    passage = passage + vFrom
+		    If vTo <> "" Then passage = passage + "-" + vTo
 		  End If
 		  '*******************************
-		  'If lst_scr_to_verse.ListIndex > lst_scr_from_verse.ListIndex Then
-		  'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_to_verse.ListIndex+1)
-		  'Else
-		  'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1)
-		  'End If
-		  'verses = App.MyBible.GetPassage(passage)
-		  'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_to_verse.ListIndex + 1))
 		  
 		  ' ----- SET TITLE -----
 		  SmartML.SetValue Node, "@name", passage
@@ -1615,6 +1713,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Dim f As FolderItem
 		  Dim default As String
 		  
+		  Initializing = True
+		  
 		  f = App.AppFolder.Child("OpenSong Scripture")
 		  cnt = f.Count
 		  
@@ -1632,8 +1732,67 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  
 		  If f.Count > 0 And pop_scr_version.ListIndex < 0 Then pop_scr_version.ListIndex = 0
 		  
-		  
+		  Initializing = False
 		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: CurrentBookNumber
+   parm/S: 
+   rslt/S: Integer
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Function CurrentBookNumber() As Integer
+		  If lst_scr_ot.ListIndex >= 0 Then Return lst_scr_ot.CellTag(lst_scr_ot.ListIndex, 0).IntegerValue
+		  If lst_scr_nt.ListIndex >= 0 Then Return lst_scr_nt.CellTag(lst_scr_nt.ListIndex, 0).IntegerValue
+		  Return 0
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: FindVerseIndex
+   parm/S: List As ListBox, Verse As Integer, aix As String
+   rslt/S: Integer
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Function FindVerseIndex(List As ListBox, Verse As Integer, aix As String) As Integer
+		  //+
+		  // Look at the contents of a listbox and find the item that contains the given verse reference.
+		  //
+		  // Ed Palmer, November 2006
+		  //--
+		  
+		  Dim listVerse As Integer
+		  Dim listAix As String
+		  Dim i As Integer
+		  Dim lc As Integer
+		  Dim searching As Boolean = True
+		  
+		  lc = List.ListCount
+		  
+		  i = -1
+		  While searching And (i < lc - 1)
+		    i = i + 1
+		    If Not SplitVerseNumber(List.Cell(i, 0), listVerse, listAix) Then Return -1 // Error in verse format; treat as "verse not found"
+		    If listVerse = Verse Then 
+		      If listaix = aix Then
+		        Searching = False
+		      ElseIf listaix > aix Then // Went one too far
+		        i = i - 1
+		        Searching = False
+		      End If
+		    ElseIf listVerse > Verse Then // Moved past the correct verse
+		      i = i - 1
+		      Searching = False
+		    End If
+		  Wend
+		  
+		  If Searching Then Return -1 // Nothing found
+		  
+		  Return i
+		End Function
    )
   Meth/g: 
   Meth/G: 
@@ -1657,6 +1816,10 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Dim open_paren_loc, close_paren_loc As Integer
 		  Dim i, first_space_loc, colon_loc, dash_loc, second_space_loc As Integer
 		  Dim BookName As String
+		  Dim re As RegEx
+		  Dim reresult As RegExMatch
+		  Dim verse As Integer
+		  Dim aix As String
 		  
 		  If Len(lookup) = 0 Then
 		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/empty")
@@ -1759,14 +1922,14 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    ' Looks like it ended with a chapter.
 		    temp = Mid(lookup, first_space_loc + 1, colon_loc - first_space_loc)
 		    i = Val(temp)
-		    If i <= 0 Then
+		    If i < 0 Then
 		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
 		      Return
 		    ElseIf i > lst_scr_chapter.ListCount Then
 		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp))
 		      Return
 		    End If
-		    lst_scr_chapter.ListIndex = i - 1
+		    lst_scr_chapter.ListIndex = i - 1 // We can assume that the chapters are numbered sequentially from 1
 		    lst_scr_to_verse.ListIndex = lst_scr_to_verse.ListCount - 1
 		    BuildScripture
 		    Close
@@ -1792,15 +1955,18 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    End If
 		  End If
 		  temp = Mid(lookup, colon_loc + 1, dash_loc - colon_loc)
-		  i = Val(temp)
-		  If i <= 0 Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", "")
-		    Return
-		  ElseIf i > lst_scr_from_verse.ListCount Then
+		  If SplitVerseNumber(temp, Verse, aix) Then
+		    i = FindVerseIndex(lst_scr_from_verse, verse, aix)
+		    If i < 0 Then
+		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", "")
+		      Return
+		    End If
+		  Else
 		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp))
 		    Return
 		  End If
-		  lst_scr_from_verse.ListIndex = i - 1
+		  
+		  lst_scr_from_verse.ListIndex = i
 		  
 		  ' Look for to verse
 		  second_space_loc = InStr(dash_loc + 1, lookup, " ")
@@ -1808,15 +1974,21 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    second_space_loc = Len(lookup) + 1
 		  End If
 		  temp = Mid(lookup, dash_loc + 1, second_space_loc - dash_loc)
-		  i = Val(temp)
-		  If i = 0 Then
+		  If Trim(temp) = "" Then
 		    ' There was probably no verse specified
-		  ElseIf i < lst_scr_from_verse.ListIndex+1 Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range")
-		    Return
 		  Else
-		    If i > lst_scr_to_verse.ListCount Then i = lst_scr_to_verse.ListCount
-		    lst_scr_to_verse.ListIndex = i - 1
+		    If SplitVerseNumber(temp, verse, aix) Then
+		      i = FindVerseIndex(lst_scr_to_verse, verse, aix)
+		      If i < 0 Then
+		        InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range")
+		        Return
+		      Else
+		        lst_scr_to_verse.ListIndex = i
+		      End If
+		    Else
+		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp))
+		      Return
+		    End If
 		  End If
 		  
 		  BuildScripture
@@ -1866,6 +2038,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  btn_search.Caption = App.T.Translate("shared/search/@caption") ' MG: Without this the Search button was blank!
 		  '++JRC
 		  Globals.Status_ScripturePickerOpen = True
+		  setPreview
 		  '--
 		  ShowModalWithin(MainWindow)
 		  
@@ -1955,21 +2128,21 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub setPreview()
 		  'bhenny- added to set the text in the preview box to the scripture
-		  
+		  //
+		  // November 2006, Ed Palmer
+		  // Change to use a revised GetPassage that clears up some issues
+		  // with multiple verse verses.
+		  //
 		  Dim verses(0), toVerse As String
 		  Dim x As Integer
+		  Dim BookNum As Integer
 		  
 		  'clear box
 		  edt_preview.text=""
 		  
-		  'get verses
-		  If lst_scr_to_verse.ListIndex > lst_scr_from_verse.ListIndex Then
-		    toVerse= Str(lst_scr_to_verse.ListIndex+1)
-		  Else
-		    toVerse= Str(lst_scr_from_verse.ListIndex+1)
-		  End If
+		  If Initializing Then Return
 		  
-		  verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex+1), Str(lst_scr_from_verse.ListIndex+1), toVerse)
+		  verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_to_verse.ListIndex + 1)
 		  
 		  'add them to the box
 		  for x=1 To UBound(verses)
@@ -2024,6 +2197,40 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  lst_scr_to_verse.ListIndex=ver
 		  lst_scr_from_verse.ListIndex=ver
 		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SplitVerseNumber
+   parm/S: reference As String, ByRef verse As Integer, ByRef aix As String
+   rslt/S: Boolean
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Function SplitVerseNumber(reference As String, ByRef verse As Integer, ByRef aix As String) As Boolean
+		  //+
+		  // Split a verse reference into numeric and alphabetic components
+		  //
+		  // Ed Palmer, November 2006
+		  //--
+		  
+		  Dim re As New RegEx
+		  Dim result As RegExMatch
+		  Dim vnum As Integer
+		  Dim valpha As String
+		  
+		  re.SearchPattern = "([0-9]+)([A-Za-z]*)[^A-Za-z0-9]*"
+		  
+		  result = re.Search(reference)
+		  
+		  If result = Nil Then Return False // Not in proper format
+		  
+		  verse = CDbl(result.SubExpressionString(1)) // Numeric portion
+		  aix = result.SubExpressionString(2) // Alpha portion (may be empty string)
+		  
+		  Return True
+		Catch ex
+		  Return False // likely result is Nil or something messed up in the Search
+		End Function
    )
   Meth/g: 
   Meth/G: 
@@ -2188,6 +2395,17 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Prop/g: 
   Prop/G: 
    Enco/N: 134217984
+   decl/S: Initializing As Boolean
+   flag/N: 33
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: Initializing As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
    decl/S: Live As Boolean
    sorc/G: 
     Enco/N: 134217984
@@ -2203,6 +2421,28 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     ntln/S: Node As XmlNode
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: NumNTBooks As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: NumNTBooks As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: NumOTBooks As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: NumOTBooks As Integer
     ntln/S: 
     ntln/S: 
    sorc/g: 

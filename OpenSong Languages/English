@@ -239,6 +239,7 @@
     <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
+    <lst_result head1="Reference" head2="Text" />
   </scripture_search>
 
   <main_menu>

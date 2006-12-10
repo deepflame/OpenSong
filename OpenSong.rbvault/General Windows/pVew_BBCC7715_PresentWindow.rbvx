@@ -1226,7 +1226,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		        Else
 		          ' must have cancelled the picker window
 		          newGroup.Parent.RemoveChild newGroup
-		          Return False
+		          Return True
 		        End If
 		        
 		      ElseIf Lowercase(Key) = "m" Then

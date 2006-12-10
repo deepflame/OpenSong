@@ -42,20 +42,51 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(key As String) As Boolean
-		  If Asc(Key) = 13 Or Asc(Key) = 10 Then
+		  Const ASC_KEY_PGDN=12
+		  Const ASC_KEY_PGUP =11
+		  Const ASC_KEY_HOME=1
+		  Const ASC_KEY_END=4
+		  Const ASC_KEY_DOWN = 31
+		  Const ASC_KEY_UP = 30
+		  Const ASC_KEY_ESCAPE = 27
+		  
+		  Select Case Asc(key)
+		  Case 13, 10 'Enter, Return
 		    Close
 		    Return True
-		  ElseIf Asc(Key) = 31 Then ' Down
+		  Case ASC_KEY_DOWN ' Down
 		    KeyedSearch = ""
 		    Return False
-		  ElseIf Asc(Key) = 30 Then ' Up
+		  Case ASC_KEY_UP ' Up
 		    KeyedSearch = ""
 		    Return False
-		  ElseIf Asc(Key) = 27 Then 'Escape
+		  Case ASC_KEY_ESCAPE 'Escape
 		    If KeyedSearch = "" Then Return False 'Close dialog, no search in progress
 		    KeyedSearch = ""
 		    Return True 'Keep dialog box from closing
-		  End If
+		  Case ASC_KEY_PGDN
+		    Me.PageDown
+		    Return True
+		  Case ASC_KEY_PGUP
+		    Me.PageUp
+		    Return True
+		  Case ASC_KEY_HOME
+		    If Me.ListCount > 0 Then
+		      Me.ScrollPosition = 0
+		      Me.ListIndex = 0
+		      Return True
+		    Else
+		      Return False
+		    End If
+		  Case ASC_KEY_END
+		    If Me.ListCount > 0 Then
+		      Me.ScrollPosition = Me.ListCount - 1
+		      Me.ListIndex = Me.ListCount - 1
+		      Return True
+		    Else
+		      Return False
+		    End If
+		  End Select
 		  
 		  Dim i, l As Integer
 		  Dim NewKey As String

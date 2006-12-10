@@ -1,5 +1,13 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Corrected resizing issues with Scripture Search and added scripture_search/lst_result tag to English translation file to translate the listbox headers. [Bug 1495537]
+
+* Corrected UI oddities in Scripture Search (default and enabled buttons for given dialog states).
+
+* Corrected numerous UI oddities in Scripture Picker: Lookup button enables only with text in the lookup box; dialog default button changes to Done after a lookup; clicking on the current Bible book name won't reset the chapter and verse sliders.
+
+* Maximize/restore button in Windows will correctly update the Full/Normal screen selection in the Presentation Helper window, and vice-versa.  On Macintosh and Linux, Maximize will not use the full client area on the control window to work around an issue with the top of the window hiding behind the menu bar on the Mac. [Bug 1559271]
+
 * Song selection window only opens once if activated immediately after entering presenter mode and no song is inserted.
 
 * Song selection window ("Q" shortcut in presenter) list of songs changes the highlighted song name with Page Up/Page Down/Home/End keys in keeping with commonly accepted UI practices. [Bug 1559333]

@@ -148,3 +148,4 @@ smartml/xml_exterror
 presentation_settings/misc/descriptive_subtitle_info moved to style_editor/fonts_and_alignment
 presentation_settings/style/highlight_chorus moved to style_editor/fonts_and_alignment
 songml/presentation
+scripture_search/lst_result

@@ -196,7 +196,17 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
-		  ScrollOT
+		  //++
+		  // Save where we are on each change.
+		  // That way, if the control loses focus and then
+		  // gets clicked (generating a change), the chapter
+		  // and verse don't reset if the book doesn't change.
+		  If Me.ListCount > 0 Then 
+		    If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
+		      Me.CellTag(0, 0) = Me.ListIndex
+		      ScrollOT
+		    End If
+		  End If
 		End Sub
    )
   HIns/g: 
@@ -207,13 +217,30 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: Listbox
   bNtr/N: 0
   HIns/G: 
+   Enco/N: 1536
+   name/S: CellClick
+   sorc/d: (Enco/N: 134217984
+		Function CellClick(row as Integer, column as Integer, x as Integer, y as Integer) As Boolean
+		  
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
-		  ScrollNT
-		  
-		  
+		  //++
+		  // Save where we are on each change.
+		  // That way, if the control loses focus and then
+		  // gets clicked (generating a change), the chapter
+		  // and verse don't reset if the book doesn't change.
+		  If Me.ListCount > 0 Then 
+		    If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
+		      Me.CellTag(0, 0) = Me.ListIndex
+		      ScrollNT
+		    End If
+		  End If
 		End Sub
    )
   HIns/g: 
@@ -336,16 +363,27 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: EditField
   bNtr/N: 0
   HIns/G: 
+   Enco/N: 1536
+   name/S: GotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  btn_quick_lookup.Enabled = Me.Text <> ""
+		  btn_quick_lookup.Default = Me.Text <> ""
+		  btn_add.Default = Not btn_quick_lookup.Default
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(Key As String) As Boolean
 		  dim c As New Clipboard
 		  
-		  If Asc(Key) = 13 Or Asc(Key) = 10 Then
-		    Lookup edt_quick_lookup.Text
-		    Return True
-		  End If
+		  'If Asc(Key) = 13 Or Asc(Key) = 10 Then
+		  'Lookup edt_quick_lookup.Text
+		  'Return True
+		  'End If
 		  
 		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
 		    if c.TextAvailable then
@@ -355,6 +393,36 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  
 		  c.close
 		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  btn_quick_lookup.Default = False
+		  btn_add.Default = True
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  btn_quick_lookup.Enabled = False
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: TextChange
+   sorc/d: (Enco/N: 134217984
+		Sub TextChange()
+		  btn_quick_lookup.Enabled = Me.Text <> ""
+		  btn_add.Default = Me.Text = ""
+		  btn_quick_lookup.Default = Not btn_add.Default
+		End Sub
    )
   HIns/g: 
  CBhv/g: 
@@ -369,6 +437,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  Lookup edt_quick_lookup.Text
+		  btn_add.SetFocus
+		  btn_add.Default = True
+		  Me.Default = False
 		End Sub
    )
   HIns/g: 
@@ -1365,7 +1436,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 185
+  Size/N: 184
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

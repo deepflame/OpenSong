@@ -1,5 +1,11 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Song selection window only opens once if activated immediately after entering presenter mode and no song is inserted.
+
+* Song selection window ("Q" shortcut in presenter) list of songs changes the highlighted song name with Page Up/Page Down/Home/End keys in keeping with commonly accepted UI practices. [Bug 1559333]
+
+* ActionSongPrint and ActionSongPrintAll now pass the song file's path to LeadSheet.AddSong.  This clears up an issue where the highest file in the folder hierarchy would be used regardless of the one selected if there are duplicate filenames in different folders.
+
 * Export to HTML (SongML.ToHTML) properly encodes characters such as the ampersand (&), greater/less-than (<>), etc.  Added a method to the OpenSongUtils module to extend the String class so this can be used elsewhere. Thanks to the Multi-byte String Utilities project (http://sourceforge.jp/project/php-i18n/) for the table to match UTF-8 code points to the proper HTML encoding. [Bug 1607916]
 
 * Find now will correctly locate a string within a theme. [Bug 1584929]

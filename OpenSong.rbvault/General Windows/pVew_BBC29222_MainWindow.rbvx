@@ -11426,7 +11426,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  '--
 		  
-		  rpt.AddSong lst_songs_songs.Text
+		  rpt.AddSong lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0)  + lst_songs_songs.Text //FolderDB path
 		  If rpt.Generate Then
 		    PrintWindow.SetReport(rpt)
 		    PrintWindow.Top = Self.Top + 40
@@ -11469,7 +11469,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  '--
 		  
 		  For i = 0 To lst_songs_songs.ListCount - 1
-		    rpt.AddSong lst_songs_songs.list(i)
+		    rpt.AddSong lst_songs_songs.CellTag(i, 0) + lst_songs_songs.list(i)
 		  Next i
 		  If rpt.Generate Then
 		    PrintWindow.SetReport(rpt)

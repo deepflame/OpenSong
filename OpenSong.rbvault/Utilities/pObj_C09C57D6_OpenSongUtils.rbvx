@@ -971,6 +971,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: StringValue
+  parm/S: Extends B As Boolean
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function StringValue(Extends B As Boolean) As String
+		  //++
+		  // Provide a convenient (but non-I18N) way
+		  // to get the value of a boolean for output
+		  //--
+		  If B Then Return "True" Else Return "False"
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: Xor
   parm/S: Bool1 As Boolean, Bool2 As Boolean
   rslt/S: Boolean

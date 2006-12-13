@@ -33,9 +33,11 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		    If PresentWindow.HelperActive Then
 		      App.RestoreWindow(PresentHelperWindow)
 		      App.SetForeground(PresentHelperWindow)
+		      PresentHelperWindow.SetFocus
 		    Else
 		      App.RestoreWindow(PresentWindow)
 		      App.SetForeground(PresentWindow)
+		      PresentWindow.SetFocus
 		    End If
 		  End If
 		  

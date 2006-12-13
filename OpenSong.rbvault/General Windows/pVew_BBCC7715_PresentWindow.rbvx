@@ -75,14 +75,10 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(Key As String) As Boolean
-		  
-		  Dim I As Integer
-		  Dim Codes(0) As Integer
-		  For i = 0 to 127
-		    if Keyboard.AsyncKeyDown(i) Then codes.append(i)
-		  Next i
-		  
-		  Return KeyDownX(Key)
+		  Dim status As Boolean
+		  status = KeyDownX(Key)
+		  App.DebugWriter.Write "PresentWindow.cnvSlide.KeyDown: For key '" + Key + "' KeyDownX returned " + status.StringValue
+		  Return Status
 		End Function
    )
   HIns/g: 
@@ -177,7 +173,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentWindow
-  Size/N: 200
+  Size/N: 208
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: ACTION_BLACK, type/N: 1, defn/S: 1013, flag/N: 0)
@@ -214,11 +210,25 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: Activate
    sorc/d: (Enco/N: 134217984
 		Sub Activate()
-		  If HelperActive And Globals.Status_Presentation Then
-		    If PresentHelperWindow.IsCollapsed Then
-		      App.RestoreWindow(PresentHelperWindow)
+		  App.DebugWriter.Write "PresentWindow.Activate: Enter"
+		  If Globals.Status_Presentation Then
+		    If HelperActive Then 
+		      If PresentHelperWindow.IsCollapsed Then
+		        App.RestoreWindow(PresentHelperWindow)
+		      Else
+		        PresentHelperWindow.SetFocus
+		      End If
+		    Else
+		      If PresentWindow.IsCollapsed Then 
+		        App.RestoreWindow(PresentWindow)
+		      End If
+		      App.SetForeground(PresentWindow)
+		      PresentWindow.SetFocus
 		    End If
+		    Me.MenuBarVisible = (Not Me.FullScreen) And (PresentScreen = 0) // Make assumption that screen 0 has the menu; not always true
+		    Me.SetFocus
 		  End If
+		  App.DebugWriter.Write "PresentWindow.Activate: Exit"
 		End Sub
    )
   HIns/g: 
@@ -246,6 +256,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		  '++JRC Prevent resizing MainWindow
 		  'MainWindow.Show
 		  App.RestoreWindow(MainWindow)
+		  App.SetForeground(MainWindow)
 		  '--
 		  MainWindow.SetFocus
 		End Sub
@@ -267,7 +278,12 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(Key As String) As Boolean
-		  Return KeyDownX(Key)
+		  Dim status As Boolean
+		  
+		  status = KeyDownX(Key) 
+		  
+		  App.DebugWriter.Write "PresentWindow.KeyDown: For Key '" + Key + "' KeyDownX returned " + status.StringValue
+		  Return status
 		End Function
    )
   HIns/g: 
@@ -1290,7 +1306,6 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		  
 		  'CurrentSet = setDoc
 		  //--EMP
-		  Dim presentScreen, controlScreen As Integer
 		  Dim insertBlanks As Boolean
 		  
 		  //++EMP
@@ -1714,6 +1729,16 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
   Prop/g: 
   Prop/G: 
    Enco/N: 134217984
+   decl/S: ControlScreen As Integer
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: ControlScreen As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
    decl/S: CurrentPicture As Picture
    sorc/G: 
     Enco/N: 134217984
@@ -1795,6 +1820,16 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
   Prop/g: 
   Prop/G: 
    Enco/N: 134217984
+   decl/S: PresentScreen As Integer
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: PresentScreen As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
    decl/S: PreviewPicture As Picture
    sorc/G: 
     Enco/N: 134217984
@@ -1851,7 +1886,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  PDef/D: (name/S: BalloonHelp, PVal/S: )
  PDef/D: (name/S: CloseBox, PVal/S: False)
  PDef/D: (name/S: Composite, PVal/S: False)
- PDef/D: (name/S: Frame, PVal/S: 3)
+ PDef/D: (name/S: Frame, PVal/S: 0)
  PDef/D: (name/S: FullScreen, PVal/S: False)
  PDef/D: (name/S: GrowIcon, PVal/S: False)
  PDef/D: (name/S: HasBackColor, PVal/S: True)

@@ -1,5 +1,7 @@
 -= 1.0 Beta 2 Baselevel 13 =-
 
+* Reworked application and window Activate and KeyDown events to better detect when the wrong window has keyboard focus in presentation mode.  This clears up issues on the Mac with OpenSong appearing to hang in single-screen mode. [Bug 1575609]
+
 * Corrected resizing issues with Scripture Search and added scripture_search/lst_result tag to English translation file to translate the listbox headers. [Bug 1495537]
 
 * Corrected UI oddities in Scripture Search (default and enabled buttons for given dialog states).

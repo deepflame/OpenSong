@@ -778,7 +778,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
     </errors>
   </import_from_ccli>
 
-  <find_image title="Find Image"/>
+  <find_image title="Find Image">
+    <parent caption="(Parent)"/>
+  </find_image>
   <input_box title="OpenSong"/>
 
   <theme_list>

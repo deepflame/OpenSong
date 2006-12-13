@@ -10516,6 +10516,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  dim Mode as Integer
 		  
+		  If Globals.Status_Presentation Then
+		    App.DebugWriter.Write "MainWindow.KeyDown: Got a '" + Key + "' in Presentation Mode"
+		    PresentWindow.SetFocus
+		    Return False
+		  End If
+		  
 		  if asc(key) = 204 Then 'F5
 		    mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
 		    if Status_SongOpen Then

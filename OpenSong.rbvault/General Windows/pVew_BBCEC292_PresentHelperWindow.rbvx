@@ -1037,7 +1037,7 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentHelperWindow
-  Size/N: 152
+  Size/N: 172
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -1082,6 +1082,30 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
+   Enco/N: 1536
+   name/S: Maximize
+   sorc/d: (Enco/N: 134217984
+		Sub Maximize()
+		  //++
+		  // OSX triggers this on Zoom, which may not be to the full screen if in
+		  // preview mode.
+		  //--
+		  SavePos
+		  IsMaximized = True
+		  SetFullScreen
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Minimize
+   sorc/d: (Enco/N: 134217984
+		Sub Minimize()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: Open
    sorc/d: (Enco/N: 134217984
@@ -1109,6 +1133,16 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Resizing()
 		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Restore
+   sorc/d: (Enco/N: 134217984
+		Sub Restore()
+		  IsMaximized = False
+		  SetNormalScreen
 		End Sub
    )
   HIns/g: 
@@ -1202,6 +1236,21 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
+   name/S: SavePos
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SavePos()
+		  SavedTop = Self.Top
+		  SavedLeft = Self.Left
+		  SavedWidth = Self.Width
+		  SavedHeight = Self.Height
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
    name/S: ScrollTo
    parm/S: index As Integer
    rslt/S: 
@@ -1209,6 +1258,47 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub ScrollTo(index As Integer)
 		  lst_all_slides.ListIndex = index - 1
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetFullScreen
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetFullScreen()
+		  btn_action_full_screen.SetIcon windownofullscreenpic, windownofullscreenmask
+		  btn_action_full_screen.SetLabel App.T.Translate("presentation_helper/actions/normal_screen/@caption")
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetMaxClientArea
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetMaxClientArea()
+		  Dim ControlScreen As Integer
+		  Dim de As XmlElement
+		  
+		  // having issues with Available... so for the time being use the version that makes estimates
+		  // of the dimensions in the App class.  Not exact, but keeps the window from sliding up under
+		  // the menu on OSX.
+		  
+		  App.MaximizeInControlScreen(Self)
+		  Return
+		  
+		  de = App.MyPresentSettings.DocumentElement
+		  ControlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
+		  If ControlScreen > ScreenCount Then ControlScreen = 0
+		  Self.Top = Screen(ControlScreen).AvailableTop
+		  Self.Left = Screen(ControlScreen).AvailableLeft
+		  Self.Height = Screen(ControlScreen).AvailableHeight
+		  Self.Width = Screen(ControlScreen).AvailableWidth
 		End Sub
    )
   Meth/g: 
@@ -1265,23 +1355,77 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
+   name/S: SetNormalClientArea
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetNormalClientArea()
+		  Self.Top = SavedTop
+		  Self.Left = SavedLeft
+		  Self.Height = SavedHeight
+		  Self.Width = SavedWidth
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetNormalScreen
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetNormalScreen()
+		  btn_action_full_screen.SetIcon windowfullscreenpic, windowfullscreenmask
+		  btn_action_full_screen.SetLabel App.T.Translate("presentation_helper/actions/full_screen/@caption")
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
    name/S: SwapFullScreen
    parm/S: 
    rslt/S: 
    flag/N: 0
-   sorc/d: (Enco/N: 134217984
-		Sub SwapFullScreen()
-		  If Not FullScreen Then
-		    FullScreen = True
-		    btn_action_full_screen.SetIcon windownofullscreenpic, windownofullscreenmask
-		    btn_action_full_screen.SetLabel App.T.Translate("presentation_helper/actions/normal_screen/@caption")
-		  Else
-		    FullScreen = False
-		    btn_action_full_screen.SetIcon windowfullscreenpic, windowfullscreenmask
-		    btn_action_full_screen.SetLabel App.T.Translate("presentation_helper/actions/full_screen/@caption")
-		  End If
-		End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub SwapFullScreen()
+    srcl/S: 
+    srcl/S: #If TargetWin32
+    srcl/S: Dim lparam As New MemoryBlock(4)
+    srcl/S: Dim hwnd As Integer
+    srcl/S: Dim status As Integer
+    srcl/S: Const WM_SYSCOMMAND = 274
+    srcl/S: Const SC_MAXIMIZE = &HF030
+    srcl/S: Const SC_RESTORE = &HF120
+    srcl/S: 
+    srcl/S: Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
+    srcl/S: 
+    srcl/S: hwnd = Self.Handle
+    srcl/S: #EndIf
+    srcl/S: 
+    srcl/S: If Not IsMaximized Then
+    srcl/S: SavePos
+    srcl/S: SetFullScreen
+    srcl/S: IsMaximized = True
+    srcl/S: 
+    srcl/S: #If TargetWin32
+    srcl/S: status = SendMessageA(hwnd, WM_SYSCOMMAND, SC_MAXIMIZE, lparam)
+    srcl/S: #Else
+    srcl/S: SetMaxClientArea
+    srcl/S: #EndIf
+    srcl/S: Else
+    srcl/S: SetNormalScreen
+    srcl/S: IsMaximized = False
+    srcl/S: 
+    srcl/S: #If TargetWin32
+    srcl/S: status = SendMessageA(hwnd, WM_SYSCOMMAND, SC_RESTORE, lparam)
+    srcl/S: #Else
+    srcl/S: SetNormalClientArea
+    srcl/S: #EndIf
+    srcl/S: End If
+    srcl/S: End Sub
+   sorc/g: 
   Meth/g: 
   Prop/G: 
    Enco/N: 134217984
@@ -1290,6 +1434,61 @@ pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     ntln/S: InitialColumnWidths As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: IsMaximized As Boolean
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: IsMaximized As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SavedHeight As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SavedHeight As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SavedLeft As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SavedLeft As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SavedTop As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SavedTop As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SavedWidth As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SavedWidth As Integer
     ntln/S: 
     ntln/S: 
    sorc/g: 

@@ -15,7 +15,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Change
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 106, srbp/N: 119
 		Sub Change()
 		  //
 		  // Updated November 2006 to put the book number in the CellTag of the listbox
@@ -143,8 +143,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		        lst_scr_nt.ListIndex = -1
 		        lst_scr_ot.Listindex = NewBook - 1
 		      End If
-		      
-		      If OldChapter <= App.MyBible.GetChapterCount(lst_scr_ot.ListIndex+1) Then lst_scr_chapter.ListIndex = OldChapter - 1
+		      If OldChapter <= App.MyBible.GetChapterCount(NewBook + 1) Then lst_scr_chapter.ListIndex = OldChapter - 1
 		      If OldVerse <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_from_verse.ListIndex+1)Then lst_scr_from_verse.ListIndex = OldVerse - 1
 		      If OldThru <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_to_verse.ListIndex+1) Then lst_scr_to_verse.ListIndex = OldThru - 1
 		      
@@ -152,10 +151,13 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		      if lst_scr_ot.ListCount>0 then 'have it select Matthew (assuming there is a Matthew) if bible is just nt
 		        lst_scr_nt.ListIndex = -1
 		        lst_scr_ot.Listindex = 0
+		        NewBook = 1
 		      else
 		        lst_scr_nt.ListIndex = 0
 		        lst_scr_ot.Listindex = -1
+		        NewBook = ot + 1
 		      end if
+		      OldBook = NewBook
 		    End If
 		    
 		    'ScrollOT
@@ -231,7 +233,20 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
-		  ScrollOT
+		  If lst_scr_nt.ListIndex <> -1 Then OldSel = -1
+		  //++
+		  // Save where we are on each change.
+		  // That way, if the control loses focus and then
+		  // gets clicked (generating a change), the chapter
+		  // and verse don't reset if the book doesn't change.
+		  If Me.ListCount > 0 Then 
+		    'If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
+		    If Me.ListIndex <> OldSel Then
+		      'Me.CellTag(0, 0) = Me.ListIndex
+		      OldSel = Me.ListIndex
+		      ScrollOT
+		    End If
+		  End If
 		End Sub
    )
   HIns/g: 
@@ -242,13 +257,33 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: Listbox
   bNtr/N: 0
   HIns/G: 
+   Enco/N: 1536
+   name/S: CellClick
+   sorc/d: (Enco/N: 134217984
+		Function CellClick(row as Integer, column as Integer, x as Integer, y as Integer) As Boolean
+		  
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
-		  ScrollNT
-		  
-		  
+		  If lst_scr_ot.ListIndex <> -1 Then OldSel = -1
+		  //++
+		  // Save where we are on each change.
+		  // That way, if the control loses focus and then
+		  // gets clicked (generating a change), the chapter
+		  // and verse don't reset if the book doesn't change.
+		  If Me.ListCount > 0 Then 
+		    'If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
+		    If Me.ListIndex <> OldSel Then
+		      'Me.CellTag(0, 0) = Me.ListIndex
+		      OldSel = Me.ListIndex
+		      ScrollNT
+		    End If
+		  End If
 		End Sub
    )
   HIns/g: 
@@ -371,16 +406,27 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: EditField
   bNtr/N: 0
   HIns/G: 
+   Enco/N: 1536
+   name/S: GotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  btn_quick_lookup.Enabled = Me.Text <> ""
+		  btn_quick_lookup.Default = Me.Text <> ""
+		  btn_add.Default = Not btn_quick_lookup.Default
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
    Enco/N: 1280
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(Key As String) As Boolean
 		  dim c As New Clipboard
 		  
-		  If Asc(Key) = 13 Or Asc(Key) = 10 Then
-		    Lookup edt_quick_lookup.Text
-		    Return True
-		  End If
+		  'If Asc(Key) = 13 Or Asc(Key) = 10 Then
+		  'Lookup edt_quick_lookup.Text
+		  'Return True
+		  'End If
 		  
 		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
 		    if c.TextAvailable then
@@ -390,6 +436,36 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  
 		  c.close
 		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  btn_quick_lookup.Default = False
+		  btn_add.Default = True
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  btn_quick_lookup.Enabled = False
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: TextChange
+   sorc/d: (Enco/N: 134217984
+		Sub TextChange()
+		  btn_quick_lookup.Enabled = Me.Text <> ""
+		  btn_add.Default = Me.Text = ""
+		  btn_quick_lookup.Default = Not btn_add.Default
+		End Sub
    )
   HIns/g: 
  CBhv/g: 
@@ -404,6 +480,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  Lookup edt_quick_lookup.Text
+		  btn_add.SetFocus
+		  btn_add.Default = True
+		  Me.Default = False
 		End Sub
    )
   HIns/g: 
@@ -474,6 +553,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
  CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  Ctrl/G: 
   ccls/S: GroupBox
   name/S: GroupBox
@@ -1426,9 +1507,77 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 530)
  Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 27
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: -818)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: StaticText1, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: Label:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 150)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 100)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 28
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 6)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_bible_book, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: Bible Book, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 78)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 100)
+ Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 184
+  Size/N: 188
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -2002,11 +2151,12 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    parm/S: node As XmlNode, live As Boolean = False
    rslt/S: Boolean
    flag/N: 0
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 4
 		Function Popup(node As XmlNode, live As Boolean = False) As Boolean
 		  Me.Node = node
 		  Me.Live = live
 		  edt_quick_lookup.Text = ""
+		  OldSel = -1
 		  'Dim book As Integer
 		  ReturnValue = False
 		  book = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book")
@@ -2018,16 +2168,26 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    lst_scr_ot.ListIndex = -1
 		    lst_scr_nt.ListIndex = book - 1 - App.MyBible.GetOTCount
 		    'lst_scr_nt.SetFocus
+		  Else 'No previously selected book
+		    book = 1 'Assume Genesis
+		    lst_scr_nt.ListIndex = -1
+		    lst_scr_ot.ListIndex = book - 1
 		  End If
 		  
 		  If book > 0 Then
-		    lst_scr_chapter.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") - 1
-		    lst_scr_from_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse") - 1
-		    lst_scr_to_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru") - 1
+		    If SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") > 0 Then
+		      lst_scr_chapter.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") - 1
+		      lst_scr_from_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse") - 1
+		      lst_scr_to_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru") - 1
+		    Else 'No Previously selected chapter
+		      lst_scr_chapter.ListIndex = 0 'Assume chapter 1
+		      'From & To verses will be set automatically by the chapter change
+		    End If
+		    
 		  End If
 		  
 		  If Live Then
-		    ' MG: The Insert button will add slies on the fly directly to the presentation
+		    ' MG: The Insert button will add slides on the fly directly to the presentation
 		    btn_Insert.Visible = True
 		    btn_Insert.Caption = App.T.Translate("shared/insert/@caption")
 		    PresentMode = PresentWindow.Mode
@@ -2443,6 +2603,17 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     ntln/S: NumOTBooks As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: OldSel As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: OldSel As Integer
     ntln/S: 
     ntln/S: 
    sorc/g: 

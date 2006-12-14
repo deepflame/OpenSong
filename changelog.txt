@@ -1,5 +1,11 @@
 -= 1.0 Beta 2 JRC =-
 
+*Added Bible Book label to ScripturePicker
+
+*Fixed presenting song subtitles that somehow got broken
+
+*Fixed ScripturePicker can now select Genesis & Matthew (Silly Ed :)
+
 *Remember previously selected folder in SongPicker
 
 *Partial Support for remembering previously selected Book, Chapter & Verse when changing Bibles in ScripturePicker
@@ -19,6 +25,22 @@
 *Prevent OutOfBounds Exception when Removing unsaved set item
 
 -= 1.0 Beta 2 Baselevel 13 =-
+
+* Reworked application and window Activate and KeyDown events to better detect when the wrong window has keyboard focus in presentation mode.  This clears up issues on the Mac with OpenSong appearing to hang in single-screen mode. [Bug 1575609]
+
+* Corrected resizing issues with Scripture Search and added scripture_search/lst_result tag to English translation file to translate the listbox headers. [Bug 1495537]
+
+* Corrected UI oddities in Scripture Search (default and enabled buttons for given dialog states).
+
+* Corrected numerous UI oddities in Scripture Picker: Lookup button enables only with text in the lookup box; dialog default button changes to Done after a lookup; clicking on the current Bible book name won't reset the chapter and verse sliders.
+
+* Maximize/restore button in Windows will correctly update the Full/Normal screen selection in the Presentation Helper window, and vice-versa.  On Macintosh and Linux, Maximize will not use the full client area on the control window to work around an issue with the top of the window hiding behind the menu bar on the Mac. [Bug 1559271]
+
+* Song selection window only opens once if activated immediately after entering presenter mode and no song is inserted.
+
+* Song selection window ("Q" shortcut in presenter) list of songs changes the highlighted song name with Page Up/Page Down/Home/End keys in keeping with commonly accepted UI practices. [Bug 1559333]
+
+* ActionSongPrint and ActionSongPrintAll now pass the song file's path to LeadSheet.AddSong.  This clears up an issue where the highest file in the folder hierarchy would be used regardless of the one selected if there are duplicate filenames in different folders.
 
 * Export to HTML (SongML.ToHTML) properly encodes characters such as the ampersand (&), greater/less-than (<>), etc.  Added a method to the OpenSongUtils module to extend the String class so this can be used elsewhere. Thanks to the Multi-byte String Utilities project (http://sourceforge.jp/project/php-i18n/) for the table to match UTF-8 code points to the proper HTML encoding. [Bug 1607916]
 

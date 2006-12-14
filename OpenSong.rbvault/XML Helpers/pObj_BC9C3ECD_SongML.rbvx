@@ -2466,7 +2466,7 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  end if
 		  '--
 		  If Len(SubtitleOptions) = 0 Then
-		    SubtitleOptions = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@song_subtitles")
+		    SubtitleOptions = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "default_style/song_subtitle")
 		  End If
 		  Subtitles = Split(SubtitleOptions, "|")
 		  Separator = App.T.Translate("songml/separator/@caption")

@@ -42,20 +42,51 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(key As String) As Boolean
-		  If Asc(Key) = 13 Or Asc(Key) = 10 Then
+		  Const ASC_KEY_PGDN=12
+		  Const ASC_KEY_PGUP =11
+		  Const ASC_KEY_HOME=1
+		  Const ASC_KEY_END=4
+		  Const ASC_KEY_DOWN = 31
+		  Const ASC_KEY_UP = 30
+		  Const ASC_KEY_ESCAPE = 27
+		  
+		  Select Case Asc(key)
+		  Case 13, 10 'Enter, Return
 		    Close
 		    Return True
-		  ElseIf Asc(Key) = 31 Then ' Down
+		  Case ASC_KEY_DOWN ' Down
 		    KeyedSearch = ""
 		    Return False
-		  ElseIf Asc(Key) = 30 Then ' Up
+		  Case ASC_KEY_UP ' Up
 		    KeyedSearch = ""
 		    Return False
-		  ElseIf Asc(Key) = 27 Then 'Escape
+		  Case ASC_KEY_ESCAPE 'Escape
 		    If KeyedSearch = "" Then Return False 'Close dialog, no search in progress
 		    KeyedSearch = ""
 		    Return True 'Keep dialog box from closing
-		  End If
+		  Case ASC_KEY_PGDN
+		    Me.PageDown
+		    Return True
+		  Case ASC_KEY_PGUP
+		    Me.PageUp
+		    Return True
+		  Case ASC_KEY_HOME
+		    If Me.ListCount > 0 Then
+		      Me.ScrollPosition = 0
+		      Me.ListIndex = 0
+		      Return True
+		    Else
+		      Return False
+		    End If
+		  Case ASC_KEY_END
+		    If Me.ListCount > 0 Then
+		      Me.ScrollPosition = Me.ListCount - 1
+		      Me.ListIndex = Me.ListCount - 1
+		      Return True
+		    Else
+		      Return False
+		    End If
+		  End Select
 		  
 		  Dim i, l As Integer
 		  Dim NewKey As String
@@ -103,7 +134,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  Globals.LastSongFolder = pop_select_folder.Text
+		  'BuildScripture
 		  
 		  If lst_all_songs.ListIndex >= 0 Then
 		    Close
@@ -159,6 +190,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		Sub Change()
 		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
 		  End If
+		  Globals.CurrentSongPickerFolder = Me.Text
 		End Sub
    )
   HIns/g: 
@@ -392,7 +424,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: SongPickerWindow
-  Size/N: 148
+  Size/N: 156
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -416,23 +448,22 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Open
-   sorc/d: (Enco/N: 134217984, srbp/N: 8
+   sorc/d: (Enco/N: 134217984
 		Sub Open()
 		  Dim x As Integer
-		  Dim i As Integer
 		  
 		  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
 		  End If
-		  
-		  'try to use the last folder the user selected
-		  For i = 0 To pop_select_folder.ListCount - 1
-		    If Globals.LastSongFolder = pop_select_folder.List(i) Then pop_select_folder.ListIndex = i
-		  Next i
-		  'last folder not found, use default
-		  If pop_select_folder.ListIndex = -1 Then pop_select_folder.ListIndex = 0
-		  
-		  'If UBound(MainWindow.Songs.GetFiles("", lst_all_songs)) = 0 Then
-		  'End If
+		  If Globals.CurrentSongPickerFolder = "" Then
+		    pop_select_folder.ListIndex = 0
+		  Else
+		    For x = 0 to pop_select_folder.ListCount - 1
+		      If Globals.CurrentSongPickerFolder = pop_select_folder.List(x) Then
+		        pop_select_folder.ListIndex = x
+		        Exit
+		      End If
+		    Next
+		  End If
 		  
 		  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
@@ -441,6 +472,25 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Constructor
+   parm/S: 
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  // Set this before calling the Window constructor
+		  // because the Open event will fire then
+		  If Globals.CurrentSongPickerFolder = "" Then
+		    Globals.CurrentSongPickerFolder = Globals.CurrentSongFolder
+		  End If
+		  // call the Window constructor, or Open events will not fire
+		  Super.Window()
+		  
+		End Sub
+   )
+  Meth/g: 
   Meth/G: 
    Enco/N: 134217984
    name/S: Popup

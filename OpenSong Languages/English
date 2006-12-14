@@ -239,6 +239,7 @@
     <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
+    <lst_result head1="Reference" head2="Text" />
   </scripture_search>
 
   <main_menu>
@@ -649,6 +650,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <hymn_number caption="Hymn Number"/>
      <ccli_number caption="CCLI Song #"/>
      <ccli_license caption="CCLI License #"/>
+     <presentation caption="Presentation Order"/>
      <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
      <separator caption="|NL|"/>
      <!--The leading comma is needed for internal data structure reasons.-->
@@ -701,6 +703,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </song_lookup>
 
   <scripture_lookup title="Scripture Lookup">
+    <book caption="Bible Book"/>
     <lookup caption="Quick Lookup">
       <reference caption="Reference"/>
       <lookup caption="Lookup"/>
@@ -776,7 +779,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
     </errors>
   </import_from_ccli>
 
-  <find_image title="Find Image"/>
+  <find_image title="Find Image">
+    <parent caption="(Parent)"/>
+  </find_image>
   <input_box title="OpenSong"/>
 
   <theme_list>

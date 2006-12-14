@@ -640,6 +640,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: InchesToPoints
+  parm/S: Inches As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function InchesToPoints(Inches As String) As String
+		  //++
+		  // Polymorphic version of InchesToPoints
+		  //--
+		  
+		  Return CStr(InchesToPoints(CDbl(Inches)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InchesToPoints
   parm/S: Inches As Double
   rslt/S: Double
   flag/N: 0
@@ -657,22 +673,6 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  //--
 		  
 		  Return Inches / POINT_TO_INCH
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: InchesToPoints
-  parm/S: Inches As String
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function InchesToPoints(Inches As String) As String
-		  //++
-		  // Polymorphic version of InchesToPoints
-		  //--
-		  
-		  Return CStr(InchesToPoints(CDbl(Inches)))
 		End Function
   )
  Meth/g: 
@@ -739,6 +739,90 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: PageDown
+  parm/S: Extends L As ListBox
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub PageDown(Extends L As ListBox)
+		  //++
+		  // Perform a page down operation on a list box
+		  // Assumes:
+		  //    1. ListBox is single selection pointed to by ListIndex
+		  //    2. Rows are of equal height
+		  // Tries to keep the selected row in the same relative position
+		  //
+		  // Added because the page up/page down keys don't move the
+		  // selection in a listbox.
+		  //--
+		  Dim SelectedRow As Integer
+		  Dim TopRow As Integer
+		  Dim VisibleRowCount As Integer
+		  Dim NewTopRow As Integer
+		  
+		  If L.ListCount = 0 Then Return
+		  
+		  VisibleRowCount = L.Height \ L.RowHeight
+		  SelectedRow = Min(L.ListCount - 1, L.ListIndex + VisibleRowCount)
+		  TopRow = Min(L.ListCount - 1, L.ScrollPosition + VisibleRowCount)
+		  L.ScrollPosition = TopRow
+		  L.ListIndex = SelectedRow
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PageUp
+  parm/S: Extends L As ListBox
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub PageUp(Extends L As ListBox)
+		  //++
+		  // Perform a page up operation on a list box
+		  // Assumes:
+		  //    1. ListBox is single selection pointed to by ListIndex
+		  //    2. Rows are of equal height
+		  // Tries to keep the selected row in the same relative position
+		  //
+		  // Added because the page up/page down keys don't move the
+		  // selection in a listbox.
+		  //--
+		  Dim SelectedRow As Integer
+		  Dim TopRow As Integer
+		  Dim VisibleRowCount As Integer
+		  Dim NewTopRow As Integer
+		  
+		  If L.ListCount = 0 Then Return
+		  
+		  VisibleRowCount = L.Height \ L.RowHeight
+		  SelectedRow = Max(0, L.ListIndex - VisibleRowCount)
+		  TopRow = Max(0, L.ScrollPosition - VisibleRowCount)
+		  L.ScrollPosition = TopRow
+		  L.ListIndex = SelectedRow
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToCM
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToCM(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToCM
+		  //--
+		  
+		  Return CStr(PointsToCM(CDbl(Points)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: PointsToCM
   parm/S: Points As Double
   rslt/S: Double
@@ -763,17 +847,17 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: PointsToCM
+  name/S: PointsToInches
   parm/S: Points As String
   rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function PointsToCM(Points As String) As String
+		Function PointsToInches(Points As String) As String
 		  //++
-		  // Polymorphic version of PointsToCM
+		  // Polymorphic version of PointsToInches
 		  //--
 		  
-		  Return CStr(PointsToCM(CDbl(Points)))
+		  Return CStr(PointsToInches(CDbl(Points)))
 		End Function
   )
  Meth/g: 
@@ -802,19 +886,29 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: PointsToInches
-  parm/S: Points As String
-  rslt/S: String
+  name/S: RowHeight
+  parm/S: Extends L As ListBox
+  rslt/S: Integer
   flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function PointsToInches(Points As String) As String
-		  //++
-		  // Polymorphic version of PointsToInches
-		  //--
-		  
-		  Return CStr(PointsToInches(CDbl(Points)))
-		End Function
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function RowHeight(Extends L As ListBox) As Integer
+   srcl/S: //++
+   srcl/S: // Thanks to http://www.declaresub.com/Articles/HowDoI.html#listboxRowHeight
+   srcl/S: // for this code.
+   srcl/S: //--
+   srcl/S: 
+   srcl/S: Dim p As Picture = New Picture(1, 1, 32) 
+   srcl/S: 
+   srcl/S: If L.DefaultRowHeight > -1 Then
+   srcl/S:  Return L.DefaultRowHeight
+   srcl/S:  Else 
+   srcl/S: p.Graphics.TextFont = L.TextFont
+   srcl/S: p.Graphics.TextSize = L.TextSize 
+   srcl/S: Return p.Graphics.TextHeight 
+   srcl/S: End If
+   srcl/S: End Function
+  sorc/g: 
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
@@ -872,6 +966,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  result.Append Mid(source, rest)
 		  
 		  Return result
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: StringValue
+  parm/S: Extends B As Boolean
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function StringValue(Extends B As Boolean) As String
+		  //++
+		  // Provide a convenient (but non-I18N) way
+		  // to get the value of a boolean for output
+		  //--
+		  If B Then Return "True" Else Return "False"
 		End Function
   )
  Meth/g: 

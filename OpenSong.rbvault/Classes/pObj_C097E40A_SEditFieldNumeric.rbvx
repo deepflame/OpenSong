@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626AC097E40A0000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SEditFieldNumeric
- Size/N: 232
+ Size/N: 233
  Supr/S: SEditField
  bNtr/N: 0
  Intr/S: 
@@ -32,14 +32,24 @@ pObj/B: 426C6F6B704F626AC097E40A0000000000000000000000000000000000000000
 		  //
 		  // Validate the field is a number
 		  //
-		  
+		  Dim IsError As Boolean = False
 		  If Not IsNumeric(Text) Then
 		    InputBox.Message(App.T.Translate("errors/number_please"))
 		    SetValue InitialValue
 		    SetFocus
-		  ElseIf (CurrentValue > Maximum Or CurrentValue < Minimum) And EnforceRange Then
-		    InputBox.Message(App.T.Translate("errors/number_range", CStr(Minimum), CStr(Maximum)))
-		    SetFocus
+		  ElseIf EnforceRange Then
+		    If Value < Minimum Then
+		      IsError = True
+		      CurrentValue = Minimum
+		      ValueToText
+		    ElseIf Value > Maximum Then 
+		      IsError = True
+		      CurrentValue = Maximum
+		      ValueToText
+		    Else
+		      CurrentValue = CDbl(Text)
+		      ValueToText
+		    End If
 		  Else
 		    CurrentValue = CDbl(Text)
 		    ValueToText
@@ -58,6 +68,20 @@ pObj/B: 426C6F6B704F626AC097E40A0000000000000000000000000000000000000000
  HIns/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: Constructor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  SignalRangeErrors = True
+		  Minimum = -2.25073858507201e-308
+		  Maximum = 1.79769313486231e308
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: SetValue
   parm/S: NewValue As Double
   rslt/S: 
@@ -69,12 +93,16 @@ pObj/B: 426C6F6B704F626AC097E40A0000000000000000000000000000000000000000
 		  // Store in CurrentValue and
 		  // then set the text appropriately
 		  //
-		  Dim ex As New RuntimeException
-		  If EnforceRange And (NewValue < Minimum Or NewValue > Maximum) Then
-		    ex.Message = App.T.Translate("errors/range_error", CStr(NewValue))
-		    Raise ex
+		  Dim ex As New OutOfBoundsException
+		  If EnforceRange Then
+		    If SignalRangeErrors And (NewValue < Minimum Or NewValue > Maximum) Then
+		      ex.Message = App.T.Translate("errors/range_error", CStr(NewValue))
+		      Raise ex
+		    End If
+		  Else
+		    If NewValue < Minimum Then NewValue = Minimum
+		    If NewValue > Maximum Then NewValue = Maximum
 		  End If
-		  
 		  CurrentValue = NewValue
 		  ValueToText
 		End Sub
@@ -191,6 +219,17 @@ pObj/B: 426C6F6B704F626AC097E40A0000000000000000000000000000000000000000
    Enco/N: 134217984
    ntln/S: Minimum As Double
    ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SignalRangeErrors As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SignalRangeErrors As Boolean
+   ntln/S: If True, Raise a exception if the set value violates the min/max for the control
+   ntln/S: If False, just set to the min or max as appropriate
    ntln/S: 
   sorc/g: 
  Prop/g: 

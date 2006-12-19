@@ -462,7 +462,11 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
     srcl/S: #ElseIf TargetCarbon Then
     srcl/S: 
     srcl/S: Dim Status As Integer
+    srcl/S: #if TargetMachO
+    srcl/S: Declare Function SelectWindow Lib "Carbon" (window As Integer) As Integer
+    srcl/S: #else
     srcl/S: Declare Function SelectWindow Lib "CarbonLib" (window As Integer) As Integer
+    srcl/S: #endif
     srcl/S: 
     srcl/S: Status = SelectWindow(Self.Handle)
     srcl/S: #EndIf

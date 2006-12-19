@@ -157,6 +157,8 @@
 #SlideStyle	pObj	BF4CF8E0
 #SearchResult	pObj	456597FF
 #bindSColorCanvasAndSImageCanvas	pObj	C18856CB
+#AboutWindow	pVew	C1AB62C3
+#ProgramIcon1288	pPic	C1AB716D
 ##External Files:	
 ##VaultHdrEnd#
 ##RBvx-End#

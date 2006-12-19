@@ -914,6 +914,7 @@ Click on this slide to edit its style.</body>
     <web>Visit http://www.opensong.org/ for more information.</web>
     <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to translator@opensong.org and we'll include it in the official release.</translating>
     <created_with_opensong>Created with OpenSong</created_with_opensong>
+    <sources>OpenSong includes source code from</sources>
   </about>
 
   <folderdb_errors>

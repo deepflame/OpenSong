@@ -12288,27 +12288,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   MnuH/G: 
    Enco/N: 1280
    name/S: mnu_help_about
-   sorc/G: 
-    Enco/N: 134217984
-    srcl/S: Function mnu_help_about() As Boolean
-    srcl/S: Dim str As String
-    srcl/S: 
-    srcl/S: str = "OpenSong " + App.SmartVersion
-    srcl/S: 
-    srcl/S: str = str + EndOfLine + App.T.Translate("about/copyright") + " " + Encodings.UTF8.Chr(169) + _
-    srcl/S:  "2003, 2004, 2005 Sean Lickfold. "
-    srcl/S: str = str + EndOfLine + App.T.Translate("about/gpl")
-    srcl/S: str = str + EndOfLine + App.T.Translate("about/web")
-    srcl/S: '++JRC translated
-    srcl/S: str = str + EndOfLine + App.T.Translate("about/additional") + EndOfLine + "Joshua R. Coley, Gareth Evans and Ed Palmer"
-    srcl/S: '--
-    srcl/S: str = str + EndOfLine + EndOfLine + App.T.Translate("general_settings/general/language/@caption") + ": "
-    srcl/S: str = str + App.T.Translate("@name") + " - " + App.T.Translate("@author")
-    srcl/S: 
-    srcl/S: InputBox.Message str
-    srcl/S: Return True
-    srcl/S: End Function
-   sorc/g: 
+   sorc/d: (Enco/N: 134217984
+		Function mnu_help_about() As Boolean
+		  AboutWindow.ShowModalWithin Self
+		End Function
+   )
   MnuH/g: 
   MnuH/G: 
    Enco/N: 1280

@@ -1,3 +1,11 @@
+-= 1.0 RC 1 Baselevel 14 =-
+
+* Set conditional compiles to support building Mach-O targets on Mac (OS X-only binary).  Source now compiles for Mac without change on RB2006 r4.  Mac binaries will now be distributed in bundle format (OpenSong.app vs. single file).
+
+* New "About" dialog.  Updated contributors list.
+
+* Added more error traps to the Image Chooser Window (used for selecting background images) in an effort to resolve bug 1604503.
+
 -= 1.0 Beta 2 Baselevel 13 =-
 
 * Reworked application and window Activate and KeyDown events to better detect when the wrong window has keyboard focus in presentation mode.  This clears up issues on the Mac with OpenSong appearing to hang in single-screen mode. [Bug 1575609]

@@ -77,7 +77,6 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		Function KeyDown(Key As String) As Boolean
 		  Dim status As Boolean
 		  status = KeyDownX(Key)
-		  App.DebugWriter.Write "PresentWindow.cnvSlide.KeyDown: For key '" + Key + "' KeyDownX returned " + status.StringValue
 		  Return Status
 		End Function
    )
@@ -282,7 +281,6 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		  
 		  status = KeyDownX(Key) 
 		  
-		  App.DebugWriter.Write "PresentWindow.KeyDown: For Key '" + Key + "' KeyDownX returned " + status.StringValue
 		  Return status
 		End Function
    )

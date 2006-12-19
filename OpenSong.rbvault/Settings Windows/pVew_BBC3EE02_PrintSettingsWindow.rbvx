@@ -186,7 +186,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/G: 
   Name/S: 
-  Size/N: 232
+  Size/N: 233
   Supr/S: SEditFieldNumeric
   bNtr/N: 0
   HIns/G: 
@@ -211,7 +211,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/G: 
   Name/S: 
-  Size/N: 232
+  Size/N: 233
   Supr/S: SEditFieldNumeric
   bNtr/N: 0
   HIns/G: 
@@ -236,7 +236,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/G: 
   Name/S: 
-  Size/N: 232
+  Size/N: 233
   Supr/S: SEditFieldNumeric
   bNtr/N: 0
   HIns/G: 
@@ -261,7 +261,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/G: 
   Name/S: 
-  Size/N: 232
+  Size/N: 233
   Supr/S: SEditFieldNumeric
   bNtr/N: 0
   HIns/G: 
@@ -295,7 +295,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/G: 
   Name/S: 
-  Size/N: 232
+  Size/N: 233
   Supr/S: SEditFieldNumeric
   bNtr/N: 0
   HIns/G: 
@@ -320,7 +320,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/G: 
   Name/S: 
-  Size/N: 232
+  Size/N: 233
   Supr/S: SEditFieldNumeric
   bNtr/N: 0
   HIns/G: 
@@ -538,8 +538,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: -nan)
-  PDef/D: (name/S: Minimum, PVal/S: -nan)
+  PDef/D: (name/S: Maximum, PVal/S: 431)
+  PDef/D: (name/S: Minimum, PVal/S: 4.310000e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_top, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -623,8 +623,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: -nan)
-  PDef/D: (name/S: Minimum, PVal/S: -nan)
+  PDef/D: (name/S: Maximum, PVal/S: 4.310000e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 4.310000e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_left, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -708,8 +708,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: -nan)
-  PDef/D: (name/S: Minimum, PVal/S: -nan)
+  PDef/D: (name/S: Maximum, PVal/S: 4.310000e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 4.310000e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_bottom, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -793,8 +793,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: -nan)
-  PDef/D: (name/S: Minimum, PVal/S: -nan)
+  PDef/D: (name/S: Maximum, PVal/S: 4.310000e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 4.310000e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_right, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -905,8 +905,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: -nan)
-  PDef/D: (name/S: Minimum, PVal/S: -nan)
+  PDef/D: (name/S: Maximum, PVal/S: 4.310000e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 4.310000e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_width, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -990,8 +990,8 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
-  PDef/D: (name/S: Maximum, PVal/S: -nan)
-  PDef/D: (name/S: Minimum, PVal/S: -nan)
+  PDef/D: (name/S: Maximum, PVal/S: 4.310000e+6)
+  PDef/D: (name/S: Minimum, PVal/S: 4.310000e+6)
   PDef/D: (name/S: MultiLine, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: edt_page_height, Enco/N: 134217984)
   PDef/D: (name/S: Password, PVal/S: False)
@@ -1703,7 +1703,7 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PrintSettingsWindow
-  Size/N: 142
+  Size/N: 150
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -1714,54 +1714,74 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
     srcl/S: Sub Open()
     srcl/S: 
     srcl/S: Dim PS As XmlElement
+    srcl/S: Dim Setup As PrinterSetup
     srcl/S: 
     srcl/S: PS = App.MyPrintSettings.DocumentElement
+    srcl/S: Setup = App.GetPrinterSetup(False, Nil)
     srcl/S: 
     srcl/S: ValuesInPoints = SmartML.GetValueB(PS, "page/@points", False)
     srcl/S: 
     srcl/S: rad_page_inches.Value = SmartML.GetValueB(PS, "page/@inches", True, True)
     srcl/S: rad_page_cm.Value = Not rad_page_inches.Value
+    srcl/S: SetupMarginMinimums(Setup, rad_page_inches.Value)
     srcl/S: 
     srcl/S: If ValuesInPoints Then
     srcl/S: If rad_page_inches.Value Then
-    srcl/S: edt_page_top.SetValue  PointsToInches(SmartML.GetValueN(PS, "page/@top"))
-    srcl/S: edt_page_bottom.SetValue  PointsToInches(SmartML.GetValueN(PS, "page/@bottom"))
-    srcl/S: edt_page_left.SetValue  PointsToInches(SmartML.GetValueN(PS, "page/@left"))
-    srcl/S: edt_page_right.SetValue  PointsToInches(SmartML.GetValueN(PS, "page/@right"))
+    srcl/S: edt_page_top.SetValue  Max(PointsToInches(SmartML.GetValueN(PS, "page/@top")), edt_page_top.Minimum)
+    srcl/S: edt_page_bottom.SetValue  Max(PointsToInches(SmartML.GetValueN(PS, "page/@bottom")), edt_page_bottom.Minimum)
+    srcl/S: edt_page_left.SetValue  Max(PointsToInches(SmartML.GetValueN(PS, "page/@left")), edt_page_left.Minimum)
+    srcl/S: edt_page_right.SetValue  Max(PointsToInches(SmartML.GetValueN(PS, "page/@right")), edt_page_right.Minimum)
     srcl/S: 
+    srcl/S: If Setup <> Nil Then
+    srcl/S: edt_page_width.SetValue Setup.PageWidth / Setup.HorizontalResolution
+    srcl/S: edt_page_height.SetValue Setup.PageHeight / Setup.VerticalResolution
+    srcl/S: Else
     srcl/S: edt_page_width.SetValue PointsToInches(SmartML.GetValueN(PS, "page/@width"))
     srcl/S: edt_page_height.SetValue PointsToInches(SmartML.GetValueN(PS, "page/@height"))
+    srcl/S: End If
     srcl/S: 
     srcl/S: Else
-    srcl/S: edt_page_top.SetValue  PointsToCM(SmartML.GetValueN(PS, "page/@top"))
-    srcl/S: edt_page_bottom.SetValue  PointsToCM(SmartML.GetValueN(PS, "page/@bottom"))
-    srcl/S: edt_page_left.SetValue  PointsToCM(SmartML.GetValueN(PS, "page/@left"))
-    srcl/S: edt_page_right.SetValue  PointsToCM(SmartML.GetValueN(PS, "page/@right"))
+    srcl/S: edt_page_top.SetValue  Max(PointsToCM(SmartML.GetValueN(PS, "page/@top")), edt_page_top.Minimum)
+    srcl/S: edt_page_bottom.SetValue  Max(PointsToCM(SmartML.GetValueN(PS, "page/@bottom")), edt_page_bottom.Minimum)
+    srcl/S: edt_page_left.SetValue  Max(PointsToCM(SmartML.GetValueN(PS, "page/@left")), edt_page_left.Minimum)
+    srcl/S: edt_page_right.SetValue  Max(PointsToCM(SmartML.GetValueN(PS, "page/@right")), edt_page_right.Minimum)
     srcl/S: 
+    srcl/S: If Setup <> Nil Then
+    srcl/S: edt_page_width.SetValue PointsToCM(InchesToPoints(Setup.PageWidth / Setup.HorizontalResolution))
+    srcl/S: edt_page_height.SetValue PointsToCM(InchesToPoints(Setup.PageHeight / Setup.VerticalResolution))
+    srcl/S: Else
     srcl/S: edt_page_width.SetValue PointsToCM(SmartML.GetValueN(PS, "page/@width"))
     srcl/S: edt_page_height.SetValue PointsToCM(SmartML.GetValueN(PS, "page/@height"))
+    srcl/S: End If
     srcl/S: End If
     srcl/S: Else
     srcl/S: edt_page_top.SetValue  SmartML.GetValueN(PS, "page/@top")
     srcl/S: edt_page_bottom.SetValue  SmartML.GetValueN(PS, "page/@bottom")
     srcl/S: edt_page_left.SetValue  SmartML.GetValueN(PS, "page/@left")
     srcl/S: edt_page_right.SetValue  SmartML.GetValueN(PS, "page/@right")
-    srcl/S: 
+    srcl/S: If Setup <> Nil Then
+    srcl/S: edt_page_width.SetValue Setup.PageWidth / Setup.HorizontalResolution
+    srcl/S: edt_page_height.SetValue Setup.PageHeight / Setup.VerticalResolution
+    srcl/S: Else
     srcl/S: edt_page_width.SetValue SmartML.GetValueN(PS, "page/@width")
     srcl/S: edt_page_height.SetValue SmartML.GetValueN(PS, "page/@height")
-    srcl/S: 
     srcl/S: End If
+    srcl/S: rad_page_inches.Value = True
+    srcl/S: End If
+    srcl/S: edt_page_top.EnforceRange = True
+    srcl/S: edt_page_left.EnforceRange = True
+    srcl/S: edt_page_right.EnforceRange = True
+    srcl/S: edt_page_bottom.EnforceRange = True
     srcl/S: Initializing = False
     srcl/S: 
     srcl/S: // Mac and Windows use PrinterSetup for page size.
-    srcl/S: #If TargetMacOS
-    srcl/S: edt_page_width.Enabled = False
-    srcl/S: edt_page_height.Enabled = False
-    srcl/S: #ElseIf TargetWin32
-    srcl/S: edt_page_width.Enabled = False
-    srcl/S: edt_page_height.Enabled = False
-    srcl/S: #Endif  
-    srcl/S: 
+    srcl/S: #If TargetMacOS Or TargetWin32
+    srcl/S: edt_page_width.ReadOnly = True
+    srcl/S: edt_page_height.ReadOnly = True
+    srcl/S: #Else
+    srcl/S: edt_page_width.ReadOnly = False
+    srcl/S: edt_page_height.ReadOnly = False
+    srcl/S: #Endif
     srcl/S: 
     srcl/S: can_font_title.SetFont SmartML.GetValueF(PS, "title")
     srcl/S: can_font_author.SetFont SmartML.GetValueF(PS, "author")
@@ -1790,6 +1810,58 @@ pVew/B: 426C6F6B70566577BBC3EE020000000000000000000000000000000000000000
 		  Initializing = True // This needs to happen before the Open event EMP 06 Feb 06
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
+		  
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetupMarginMinimums
+   parm/S: Setup As PrinterSetup, UseInches As Boolean
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetupMarginMinimums(Setup As PrinterSetup, UseInches As Boolean)
+		  
+		  If Setup <> Nil Then
+		    If UseInches Then
+		      edt_page_top.Minimum = Abs(Setup.PageTop) / Setup.VerticalResolution
+		      edt_page_bottom.Minimum = (Setup.PageHeight - Setup.Height - Abs(Setup.PageTop)) / Setup.VerticalResolution
+		      edt_page_left.Minimum = Abs(Setup.PageLeft) / Setup.HorizontalResolution
+		      edt_page_right.Minimum = (Setup.PageWidth - Setup.Width - Abs(Setup.PageLeft)) / Setup.HorizontalResolution
+		      
+		      edt_page_top.Maximum = (Setup.Height + Abs(Setup.PageTop)) / Setup.VerticalResolution
+		      edt_page_bottom.Maximum = (Setup.PageHeight - Abs(Setup.PageTop)) / Setup.VerticalResolution
+		      edt_page_left.Maximum = (Setup.Width + Abs(Setup.PageLeft)) / Setup.HorizontalResolution
+		      edt_page_right.Maximum = (Setup.Width - Abs(Setup.PageLeft)) / Setup.HorizontalResolution
+		    Else
+		      edt_page_top.Minimum = PointsToCM(InchesToPoints(Abs(Setup.PageTop) / Setup.VerticalResolution))
+		      edt_page_bottom.Minimum = PointsToCM(InchesToPoints((Setup.PageHeight - Setup.Height - Abs(Setup.PageTop)) / Setup.VerticalResolution))
+		      edt_page_left.Minimum = PointsToCM(InchesToPoints(Abs(Setup.PageLeft) / Setup.HorizontalResolution))
+		      edt_page_right.Minimum = PointsToCM(InchesToPoints((Setup.PageWidth - Setup.Width - Abs(Setup.PageLeft)) / Setup.HorizontalResolution))
+		      
+		      edt_page_top.Maximum = PointsToCM(InchesToPoints((Setup.Height + Abs(Setup.PageTop)) / Setup.VerticalResolution))
+		      edt_page_bottom.Maximum = PointsToCM(InchesToPoints((Setup.PageHeight - Abs(Setup.PageTop)) / Setup.VerticalResolution))
+		      edt_page_left.Maximum = PointsToCM(InchesToPoints((Setup.Width + Abs(Setup.PageLeft)) / Setup.HorizontalResolution))
+		      edt_page_right.Maximum = PointsToCM(InchesToPoints((Setup.Width - Abs(Setup.PageLeft)) / Setup.HorizontalResolution))
+		      
+		    End If
+		  Else // Setup = Nil
+		    edt_page_top.Minimum = 0
+		    edt_page_bottom.Minimum = 0
+		    edt_page_left.Minimum = 0
+		    edt_page_right.Minimum = 0
+		    
+		    edt_page_top.Maximum = 1.0e100
+		    edt_page_left.Maximum = 1.0e100
+		    edt_page_bottom.Maximum = 1.0e100
+		    edt_page_right.Maximum = 1.0e100
+		  End If // Setup <> Nil
+		  
+		  edt_page_top.EnforceRange = True
+		  edt_page_right.EnforceRange = True
+		  edt_page_bottom.EnforceRange = True
+		  edt_page_left.EnforceRange = True
 		  
 		End Sub
    )

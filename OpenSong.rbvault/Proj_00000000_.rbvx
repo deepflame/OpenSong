@@ -12,18 +12,18 @@ Proj/B: 426C6F6B50726F6A000000000000000000000000000000000000000000000000
  Ver2/S: 0
  Ver3/S: 0
  Rels/S: 2
- NnRl/S: 13
+ NnRl/S: 14
  Regn/S: 0
- SVer/S: 1.0.0 Beta 2
- LVer/S: 
- IVer/S: OpenSong 1.0.0 Beta 2 BL13
+ SVer/S: 1.0.0 RC 1-14
+ LVer/S: OpenSong 1.0.0 RC 1 BL14
+ IVer/S: OpenSong 1.0.0 RC 1 BL14
  DVew/N: 0
  prTp/N: 0
  DLan/N: 1
  CLan/N: 0
  DEnc/N: 134217984
  Bflg/N: 272
- BCXF/N: 0
+ BCXF/N: 1
  MacC/S: OSng
  BMac/S: OpenSongOS8
  BCar/S: OpenSongOSX
@@ -31,7 +31,7 @@ Proj/B: 426C6F6B50726F6A000000000000000000000000000000000000000000000000
  BMSz/N: 2097152
  BSzS/S: 4096
  BMSS/S: 2048
- MDIc/S: My Application
+ MDIc/S: OpenSong
  BWin/S: OpenSong.exe
  BMDI/N: 0
  BL86/S: opensong

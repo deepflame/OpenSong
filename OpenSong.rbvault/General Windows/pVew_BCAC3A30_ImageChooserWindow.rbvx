@@ -90,6 +90,10 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
 		      Close
 		    End If
 		  End If
+		Catch ex
+		  ex.message = ex.message + " Index = " + CStr(Index) + ", ImgNdx = " + CStr(ImgNdx)
+		  App.DebugWriter.Write("ImageChooserWindow.MouseDown: caught " + ex.ToString, 1)
+		  Return False
 		End Function
    )
   HIns/g: 
@@ -179,7 +183,9 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
 		    End If
 		    
 		    App.MouseCursor = Nil
-		    
+		  Catch ex
+		    ex.Message = ex.Message + " Index = " + CStr(Index) + ", ImgNdx = " + CStr(ImgNdx)
+		    App.DebugWriter.Write("ImageChooserWindow.can().Paint: caught " + ex.ToString, 1)
 		  End Sub
    )
   HIns/g: 
@@ -1653,7 +1659,8 @@ pVew/B: 426C6F6B70566577BCAC3A300000000000000000000000000000000000000000
     srcl/S: Else                                                                                               // JDL 2/01/2006
     srcl/S: scr_vertical.Maximum = 0                                                          // JDL 2/01/2006
     srcl/S: End If                                                                                            // JDL 2/01/2006
-    srcl/S: 
+    srcl/S: Catch ex
+    srcl/S: App.DebugWriter.Write("ImageChooserWindow.ReloadDirectory: caught " + ex.ToString)
     srcl/S: End Sub
    sorc/g: 
   Meth/g: 

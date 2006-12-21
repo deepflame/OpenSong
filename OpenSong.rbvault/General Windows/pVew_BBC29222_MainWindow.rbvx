@@ -235,7 +235,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  ActionSongRevert
+		  ActionSongRevert True
 		End Sub
    )
   HIns/g: 
@@ -386,15 +386,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim output, goutput As TextOutputStream
 		  Dim song As XmlDocument
 		  
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  'reload current song
+		  ActionSongRevert False
+		  
+		  'build dialog
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
 		  dlg.InitialDirectory = DocumentsFolder
 		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
-		  '++JRC
 		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
-		  '--
 		  
-		  f = dlg.ShowModal()
+		  f = dlg.ShowModal() 'show dialog
 		  If f <> Nil Then 
 		    App.MouseCursor = WatchCursor
 		    output = f.Child(MakeSafeURLName(lst_songs_songs.Text) + ".html").CreateTextFile
@@ -457,12 +461,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim xdoc As XmlDocument
 		  Dim i As Integer
 		  
-		  'Changed Added Prompt
-		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		    If InputBox.Ask(App.T.Translate("questions/changed/@caption")) Then
-		      ActionSongSave false, true
-		    End if
-		  End if
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  'reload current song
+		  ActionSongRevert False
 		  
 		  old = lst_songs_songs.Text
 		  
@@ -568,14 +570,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  
-		  'Changed Added Prompt
-		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		    If InputBox.Ask(App.T.Translate("questions/changed/@caption")) Then
-		      ActionSongSave false, true
-		    End if
-		  End if
-		  
+		  '++JRC Removed the second prompt
 		  ActionSongMove
 		End Sub
    )
@@ -668,6 +663,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  'reload current song
+		  ActionSongRevert False
+		  
 		  CCLIWindow.ShowModalWithin MainWindow
 		End Sub
    )
@@ -803,27 +803,25 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim output, goutput As TextOutputStream
 		  Dim song As XmlDocument
 		  
-		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
-		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = DocumentsFolder
-		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
-		  '++JRC
-		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
-		  '--
-		  
+		  'First get confirmation
 		  //++
 		  // Feature request 1528693: require confirmation
 		  //--
 		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
 		  
-		  'Changed Added Prompt
-		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		    If InputBox.Ask(App.T.Translate("questions/changed/@caption")) Then
-		      ActionSongSave false, true
-		    End if
-		  End if
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  'reload current song
+		  ActionSongRevert False
 		  
-		  f = dlg.ShowModal()
+		  'build dialog
+		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.InitialDirectory = DocumentsFolder
+		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
+		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
+		  
+		  f = dlg.ShowModal() 'show dialog
 		  If f <> Nil Then
 		    App.DoEvents
 		    g = f.Child("index.html")
@@ -909,22 +907,30 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim path_to_songs As String
 		  Dim path_to_song As String
 		  Dim fullpath As String
-		  'Changed
+		  '++JRC
+		  Dim Msg as MessageDialog
+		  Dim Res As MessageDialogButton
+		  '--
 		  
 		  //++EMP 18 Feb 2006
 		  // If Globals.OldSongSel < 0, then immediately return.
 		  // This is a flag that some manipulation of items is going on
 		  // (See ActionSongNew, for example)
-		  
 		  If Globals.OldSongSel < 0 Then Return
 		  
 		  If lst_songs_songs.ListIndex >= 0 Then
-		    'Changed
 		    if lst_songs_songs.ListIndex <> Globals.OldSongSel Or lst_songs_songs.CellTag(Me.ListIndex, 0) + lst_songs_songs.Text <> Globals.OldSongFileName then
 		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		        If InputBox.Ask(App.T.Translate("questions/changed/@caption")) Then
-		          ActionSongSave false, true
+		        '++JRC
+		        'Ask if user wants to save
+		        If NOT ActionSongAskSave Then 
+		          'user canceled, go back to old selection
+		          'this works except the FocusRing doesn't change back
+		          'along with the selection box grrr
+		          lst_songs_songs.ListIndex = Globals.OldSongSel
+		          return
 		        End if
+		        '--
 		      End if
 		    Else 
 		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
@@ -1113,7 +1119,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  Globals.OldFolderSel = Me.ListIndex
 		  '--
-		  ActionSongAskSave
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
 		  
 		  If UBound(Songs.GetFiles(Me.Text, lst_songs_songs)) > 0 Then
 		    lst_songs_songs.SortedColumn = 0
@@ -10092,6 +10100,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: CancelClose
    sorc/d: (Enco/N: 134217984
 		Function CancelClose(appQuitting as Boolean) As Boolean
+		  If Status_SongChanged Then 
+		    'Ask if user wants to save
+		    If NOT ActionSongAskSave Then  Return True 'User Canceled, Cancel the Close
+		  End If
+		  
 		  // Cancel the close if we're presenting.
 		  If Status_Presentation Then Return True
 		  
@@ -10113,7 +10126,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Close
    sorc/d: (Enco/N: 134217984
 		Sub Close()
-		  If Status_SongChanged Then ActionSongAskSave
 		  If Status_InSetChanged Then ActionInSetAskSave
 		  If Status_SetChanged Then ActionSetAskSave
 		  
@@ -10525,7 +10537,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  if asc(key) = 204 Then 'F5
 		    mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
 		    if Status_SongOpen Then
-		      ActionSongAskSave
+		      'Ask if user wants to save
+		      If NOT ActionSongAskSave Then Return True 'User Canceled
+		      
 		      ActionSongPresent mode
 		    elseif Status_SetOpen then
 		      ActionSetAskSave
@@ -10864,7 +10878,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  listindex = lst_set_items.ListIndex
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  slide_groups.RemoveChild slide_groups.Child(ListIndex)
-		  
+		  '++JRC Prevent OutofBounds Exception
+		  Status_InSetChanged = False
+		  '--
 		  lst_set_items.RemoveRow ListIndex
 		  If listindex < lst_set_items.ListCount Then 
 		    lst_set_items.ListIndex = listindex
@@ -10873,7 +10889,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  
 		  Status_SetChanged = True
-		  Status_InSetChanged = False
+		  'Status_InSetChanged = False
 		  EnableMenuItems
 		End Sub
    )
@@ -11231,25 +11247,44 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    Enco/N: 134217984
    name/S: ActionSongAskSave
    parm/S: 
-   rslt/S: 
+   rslt/S: Boolean
    flag/N: 1
    sorc/d: (Enco/N: 134217984
-		Sub ActionSongAskSave()
+		Function ActionSongAskSave() As Boolean
 		  //
 		  // Check to see if the current song has been changed
 		  // if so, give the user a chance to save it before continuing
 		  // with an action that will throw away the changes
 		  //
 		  // EMP 10/09/2004
-		  // Complete rewrite JC 12/05
-		  '
-		  'Changed Added Prompt
+		  // Complete rewrite JC 12/06
+		  'Changed to return whether the user canceled or not
+		  ' EMP 12/06: Move guts of doing the message dialog to a utility method
+		  ' so it can be reused by sets mode and other areas.
+		  
 		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		    If InputBox.Ask(App.T.Translate("questions/changed/@caption")) Then
+		    '++JRC
+		    Select Case SaveDialog(App.T.Translate("questions/changed/@caption"))
+		    Case 1
+		      'User pressed Yes, so save
 		      ActionSongSave false, true
-		    End if
+		    Case 0
+		      //++EMP:
+		      // Don't reset the modified flag, otherwise the user could select not to save,
+		      // change his mind, and then have no way to save changes (Save doesn't enable
+		      // unless the SongChanged flag is True).  Set Status_MadUser = True
+		      //
+		      ''Bye-bye changes
+		      'Status_SongChanged = false
+		    Case -1 
+		      'user pressed Cancel, go back
+		      Return False
+		    End Select
+		    '--
 		  End if
-		End Sub
+		  'Return True, meaning user wants to continue with/without saving
+		  Return True
+		End Function
    )
   Meth/g: 
   Meth/G: 
@@ -11265,7 +11300,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim oldfolder As String
 		  Dim listindex As Integer
 		  Dim status As Boolean
-		  ActionSongAskSave
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  'reload current song
+		  ActionSongRevert False
+		  
 		  listindex = lst_songs_songs.ListIndex
 		  oldfolder = lst_songs_songs.CellTag(listindex, 0)
 		  folders = Songs.GetFolders
@@ -11317,7 +11357,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim xnode As XmlNode
 		  dim s(0) As string
 		  
-		  ActionSongAskSave
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
 		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
 		  If Len(t) > 0 Then
 		    If Not FileUtils.IsSafeFileName(t) Then
@@ -11380,11 +11422,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     Enco/N: 134217984
     srcl/S: Sub ActionSongPresent(mode As Integer)
     srcl/S: 
-    srcl/S: ActionSongAskSave
-    srcl/S: If Status_SongChanged Then Return 'Don't present if user cancelled the save
-    srcl/S: 
+    srcl/S: 'Ask if user wants to save
+    srcl/S: If NOT ActionSongAskSave Then Return 'User Canceled, Don't Present
+    srcl/S: ActionSongRevert False
     srcl/S: Dim setDoc As XmlDocument
     srcl/S: Dim song As XmlNode
+    srcl/S: Dim StyleNode As XmlNode
     srcl/S: 
     srcl/S: App.MouseCursor = WatchCursor
     srcl/S: setDoc = New XmlDocument
@@ -11392,14 +11435,21 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: song = song.AppendChild(setDoc.CreateElement("slide_groups"))
     srcl/S: song = song.AppendChild(setDoc.CreateElement("TEMP"))
     srcl/S: song = SmartML.ReplaceWithImportNode(song, CurrentSong.DocumentElement)
-    srcl/S: SongML.ToSetML song
+    srcl/S: StyleNode = SmartML.GetNode(song, "style")
+    srcl/S: //++
+    srcl/S: // If this looks weird, it's because I don't want to go chase down the other
+    srcl/S: // places ToSetML is called and fix the style nodes that get passed in to start
+    srcl/S: // at //style instead of the node above...Ed 19 Dec 2006
+    srcl/S: //--
+    srcl/S: If StyleNode <> Nil Then StyleNode = StyleNode.Parent
+    srcl/S: SongML.ToSetML song, StyleNode
     srcl/S: 
     srcl/S: App.MouseCursor = Nil
     srcl/S:  
     srcl/S: Status_Presentation = True
     srcl/S: 
     srcl/S: Globals.Status_Presentation = True
-    srcl/S: '--
+    srcl/S: 
     srcl/S: PresentWindow.Present setDoc, Mode
     srcl/S: 
     srcl/S: 'Self.Hide
@@ -11417,7 +11467,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub ActionSongPrint()
 		  Dim rpt As LeadSheetReport
-		  ActionSongAskSave
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  'reload current song
+		  ActionSongRevert False
+		  
 		  If Status_SongChanged Then Return 'Don't print if user cancelled the save
 		  
 		  'PrintWindow.ClearSongs
@@ -11464,8 +11518,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  //--
 		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
 		  
-		  ActionSongAskSave
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  'reload current song
+		  ActionSongRevert False
+		  
 		  If Status_SongChanged Then Return 'Don't print if user cancelled the save
+		  
 		  App.MouseCursor = WatchCursor
 		  rpt = New LeadSheetReport
 		  If Not rpt.Setup Then'++JRC Reset Mouse Cursor
@@ -11524,17 +11583,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   Meth/G: 
    Enco/N: 134217984
    name/S: ActionSongRevert
-   parm/S: 
+   parm/S: Ask As Boolean
    rslt/S: 
    flag/N: 0
    sorc/d: (Enco/N: 134217984
-		Sub ActionSongRevert()
+		Sub ActionSongRevert(Ask As Boolean)
 		  'Dim f As FolderItem
 		  Dim listindex As Integer
 		  //++
 		  // Feature request 1528693: require confirmation
 		  //--
-		  If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
+		  If Ask Then
+		    If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
+		  End If
 		  //++
 		  // EMP, September 2006
 		  // Found easier way to do this that won't require as much maintenance.
@@ -12152,8 +12213,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    mnu_mode_sets.Checked = False
 		  Else
 		    ' Change to Set mode
-		    ActionSongAskSave
-		    If Status_SongChanged Then ActionSongRevert //Easier to do here; we've already got a method defined
+		    'Ask if user wants to save
+		    If NOT ActionSongAskSave Then 
+		      Return 'User Canceled
+		    End If
+		    
+		    'If Status_SongChanged Then 
+		    ActionSongRevert false //Easier to do here; we've already got a method defined
 		    btn_mode_songs_mode.SetStuck False
 		    btn_mode_sets_mode.SetStuck True
 		    pge_controls.Value = 1
@@ -12596,7 +12662,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Function mnu_settings_refresh_songs() As Boolean
 		  
-		  ActionSongAskSave
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return True 'User Canceled
 		  
 		  App.MouseCursor = WatchCursor
 		  Status_SongOpen = False

@@ -208,6 +208,17 @@ pObj/B: 426C6F6B704F626ABFB0E25A0000000000000000000000000000000000000000
  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
+  decl/S: LastSongFolder As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: LastSongFolder As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
   decl/S: OldFolderSel As Integer
   flag/N: 1
   sorc/G: 

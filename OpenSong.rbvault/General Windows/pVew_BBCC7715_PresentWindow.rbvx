@@ -1506,10 +1506,6 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		    ResetPaint XCurrentSlide
 		  End If
 		  
-		  
-		  'TODO: Allow the user to use a custom image for the cursor, the trick will be in
-		  'drawing the image without destroying the background
-		  
 		  Dim temp As String
 		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@mouse_cursor")
 		  Select Case temp

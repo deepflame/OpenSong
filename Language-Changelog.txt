@@ -151,3 +151,6 @@ songml/presentation
 scripture_search/lst_result
 find_image/parent
 about/sources
+scripture_lookup/book
+questions/generic_save
+questions/generic_save_explanation

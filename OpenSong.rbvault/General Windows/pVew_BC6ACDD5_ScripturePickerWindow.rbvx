@@ -28,6 +28,18 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Dim OldCursor As MouseCursor
 		  Dim newSelection As Integer
 		  Dim BookNumbers() As Integer
+		  Dim OldBook, NewBook As Integer
+		  Dim OldBookName As String
+		  Dim OldNumOTBooks, OldNumNTBooks As Integer
+		  Dim OldChapter, OldVerse, OldThru As integer
+		  
+		  OldBookName = CurrentBook
+		  OldBook = book
+		  OldNumOTBooks = NumOTBooks
+		  OldNumNTBooks = NumNTBooks
+		  OldChapter = chapter
+		  OldVerse = verse
+		  OldThru = thru
 		  
 		  if me.ListIndex=-1 then 'bhenny- it was throwing an exception when ListIndex was -1
 		    return
@@ -78,6 +90,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		      ot = ot - 1
 		      For i = 0 to ot
 		        lst_scr_ot.List(i) = BookNames(i)
+		        'If this book name is the same as the previously selected one
+		        'flag it, of course this won't work if this Bible has different book names
+		        If OldBookName = BookNames(i) Then NewBook = i + 1
 		        lst_scr_ot.CellTag(i, 0) = BookNumbers(i)
 		      Next
 		      lst_scr_ot.ListIndex = 0
@@ -102,12 +117,15 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		      if lst_scr_nt.ListIndex > nt - 1 then
 		        lst_scr_nt.Listindex = 0
 		      end if
-		      ScrollNT
+		      'ScrollNT
 		      
 		      nt = nt - 1
 		      
 		      For i = 0 to nt
 		        lst_scr_nt.List(i) = BookNames(i)
+		        'If this book name is the same as the previously selected one
+		        'flag it, of course this won't work if this Bible has different book names
+		        If OldBookName = BookNames(i) Then NewBook = ot + i + 1
 		        lst_scr_nt.CellTag(i, 0) = BookNumbers(i)
 		      Next
 		      
@@ -116,14 +134,33 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		        msgbox "Loading NT List: "+str(i)+ " is out of bounds"
 		      end if
 		    end try
-		    if lst_scr_ot.ListCount>0 then 'bhenny- have it select Matthew if bible is just nt
-		      lst_scr_nt.ListIndex = -1
-		      lst_scr_ot.Listindex = 0
-		    else
-		      lst_scr_nt.ListIndex = 0
-		      lst_scr_ot.Listindex = -1
-		    end if
-		    ScrollOT
+		    
+		    If NewBook > 0 Then 
+		      If NewBook > ot Then 'New Testament
+		        lst_scr_nt.ListIndex = NewBook - ot - 1
+		        lst_scr_ot.Listindex = -1
+		      Else 'Old Testament
+		        lst_scr_nt.ListIndex = -1
+		        lst_scr_ot.Listindex = NewBook - 1
+		      End If
+		      If OldChapter <= App.MyBible.GetChapterCount(NewBook + 1) Then lst_scr_chapter.ListIndex = OldChapter - 1
+		      If OldVerse <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_from_verse.ListIndex+1)Then lst_scr_from_verse.ListIndex = OldVerse - 1
+		      If OldThru <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_to_verse.ListIndex+1) Then lst_scr_to_verse.ListIndex = OldThru - 1
+		      
+		    Else 'Old Bible book not found, use default
+		      if lst_scr_ot.ListCount>0 then 'have it select Matthew (assuming there is a Matthew) if bible is just nt
+		        lst_scr_nt.ListIndex = -1
+		        lst_scr_ot.Listindex = 0
+		        NewBook = 1
+		      else
+		        lst_scr_nt.ListIndex = 0
+		        lst_scr_ot.Listindex = -1
+		        NewBook = ot + 1
+		      end if
+		      OldBook = NewBook
+		    End If
+		    
+		    'ScrollOT
 		    App.MouseCursor = OldCursor
 		  End If
 		End Sub
@@ -196,14 +233,17 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
+		  If lst_scr_nt.ListIndex <> -1 Then OldSel = -1
 		  //++
 		  // Save where we are on each change.
 		  // That way, if the control loses focus and then
 		  // gets clicked (generating a change), the chapter
 		  // and verse don't reset if the book doesn't change.
 		  If Me.ListCount > 0 Then 
-		    If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
-		      Me.CellTag(0, 0) = Me.ListIndex
+		    'If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
+		    If Me.ListIndex <> OldSel Then
+		      'Me.CellTag(0, 0) = Me.ListIndex
+		      OldSel = Me.ListIndex
 		      ScrollOT
 		    End If
 		  End If
@@ -230,14 +270,17 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
+		  If lst_scr_ot.ListIndex <> -1 Then OldSel = -1
 		  //++
 		  // Save where we are on each change.
 		  // That way, if the control loses focus and then
 		  // gets clicked (generating a change), the chapter
 		  // and verse don't reset if the book doesn't change.
 		  If Me.ListCount > 0 Then 
-		    If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
-		      Me.CellTag(0, 0) = Me.ListIndex
+		    'If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
+		    If Me.ListIndex <> OldSel Then
+		      'Me.CellTag(0, 0) = Me.ListIndex
+		      OldSel = Me.ListIndex
 		      ScrollNT
 		    End If
 		  End If
@@ -448,8 +491,36 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 132
+  Supr/S: RadioButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  setPreview
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 132
+  Supr/S: RadioButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  setPreview
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 188, Supr/S: EditField, bNtr/N: 0)
  CBhv/G: 
@@ -482,6 +553,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
  CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  Ctrl/G: 
   ccls/S: GroupBox
   name/S: GroupBox
@@ -1434,9 +1507,77 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 530)
  Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 27
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: -818)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: StaticText1, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: Label:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 150)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 100)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 28
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 6)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_bible_book, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: Bible Book, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 78)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 100)
+ Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 184
+  Size/N: 196
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -2015,6 +2156,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Me.Node = node
 		  Me.Live = live
 		  edt_quick_lookup.Text = ""
+		  OldSel = -1
 		  'Dim book As Integer
 		  ReturnValue = False
 		  book = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book")
@@ -2026,16 +2168,26 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    lst_scr_ot.ListIndex = -1
 		    lst_scr_nt.ListIndex = book - 1 - App.MyBible.GetOTCount
 		    'lst_scr_nt.SetFocus
+		  Else 'No previously selected book
+		    book = 1 'Assume Genesis
+		    lst_scr_nt.ListIndex = -1
+		    lst_scr_ot.ListIndex = book - 1
 		  End If
 		  
 		  If book > 0 Then
-		    lst_scr_chapter.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") - 1
-		    lst_scr_from_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse") - 1
-		    lst_scr_to_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru") - 1
+		    If SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") > 0 Then
+		      lst_scr_chapter.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") - 1
+		      lst_scr_from_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse") - 1
+		      lst_scr_to_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru") - 1
+		    Else 'No Previously selected chapter
+		      lst_scr_chapter.ListIndex = 0 'Assume chapter 1
+		      'From & To verses will be set automatically by the chapter change
+		    End If
+		    
 		  End If
 		  
 		  If Live Then
-		    ' MG: The Insert button will add slies on the fly directly to the presentation
+		    ' MG: The Insert button will add slides on the fly directly to the presentation
 		    btn_Insert.Visible = True
 		    btn_Insert.Caption = App.T.Translate("shared/insert/@caption")
 		    PresentMode = PresentWindow.Mode
@@ -2046,6 +2198,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  btn_search.Caption = App.T.Translate("shared/search/@caption") ' MG: Without this the Search button was blank!
 		  '++JRC
 		  Globals.Status_ScripturePickerOpen = True
+		  setPreview
 		  '--
 		  ShowModalWithin(MainWindow)
 		  
@@ -2428,6 +2581,39 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     ntln/S: Node As XmlNode
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: NumNTBooks As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: NumNTBooks As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: NumOTBooks As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: NumOTBooks As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: OldSel As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: OldSel As Integer
     ntln/S: 
     ntln/S: 
    sorc/g: 

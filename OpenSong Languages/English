@@ -703,6 +703,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </song_lookup>
 
   <scripture_lookup title="Scripture Lookup">
+    <book caption="Bible Book"/>
     <lookup caption="Quick Lookup">
       <reference caption="Reference"/>
       <lookup caption="Lookup"/>
@@ -905,6 +906,8 @@ Click on this slide to edit its style.</body>
     <changed caption="Current Song has been changed, do you want to save?"/>
     <revert caption="All changes will be lost. Continue?"/>
     <long_operation caption="This may take a long time to complete. Continue?"/>
+    <generic_save caption="Save changes?"/>
+    <generic_save_explanation caption="If you do not save, your changes will be lost"/>
   </questions>
 
   <about>

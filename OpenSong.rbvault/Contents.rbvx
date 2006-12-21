@@ -150,7 +150,6 @@
 #SearchWindow	pVew	79910FFF
 #TOCReport	pObj	C00A2982
 #FindClass	pObj	BD63392A
-#SaveDialog	pObj	C091CF68
 #SEditFieldNumeric	pObj	C097E40A
 #OpenSongUtils	pObj	C09C57D6
 #Song	pObj	C0C3650C

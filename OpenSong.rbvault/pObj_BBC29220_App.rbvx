@@ -423,11 +423,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		    MainWindow.Status_Presentation = False
 		  End If
 		  
-		  s = "Fatal OpenSong Error: "
-		  
-		  s = s + error.ToString
-		  
-		  InputBox.Message s
+		  MsgBox(error.ToString)
 		  'Quit
 		End Function
   )

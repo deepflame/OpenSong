@@ -1,0 +1,67 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABD5D55290000000000000000000000000000000000000000
+ Name/S: SBufferedCanvas
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SBufferedCanvas
+ Size/N: 120
+ Supr/S: Canvas
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Paint
+  sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  If Buffer = Nil Or Buffer.Width <> Width Or Buffer.Height <> Height Then
+		    Buffer = NewPicture(Width, Height, 32)
+		    Paint Buffer.Graphics
+		  End If
+		  
+		  g.DrawPicture Buffer, 0, 0
+		End Sub
+  )
+ HIns/g: 
+ Hook/D: (Enco/N: 134217984, name/S: Paint, parm/S: g As Graphics, rslt/S: , flag/N: 33)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Repaint
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Repaint()
+		  Buffer = Nil
+		  Refresh False
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetEnabled
+  parm/S: value As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetEnabled(value As Boolean)
+		  Enabled = value
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Buffer As Picture
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Buffer As Picture
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

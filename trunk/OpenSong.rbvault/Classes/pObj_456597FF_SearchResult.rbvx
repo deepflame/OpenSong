@@ -1,0 +1,105 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626A456597FF0000000000000000000000000000000000000000
+ Name/S: SearchResult
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SearchResult
+ Size/N: 40
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: compareTo
+  parm/S: sr as SearchResult
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function compareTo(sr as SearchResult) As Integer
+		  'returns <0 if Me<sr, 0 if Me==sr, >0 if Me>sr
+		  
+		  Dim one, two as Integer
+		  
+		  one= book*1000000 + chapter*1000 + verse
+		  two= sr.book*1000000 + sr.chapter*1000 + sr.verse
+		  
+		  return one-two
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SearchResult
+  parm/S: tbook as Integer, tchap as Integer, tver as Integer
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SearchResult(tbook as Integer, tchap as Integer, tver as Integer)
+		  book= tbook
+		  chapter= tchap
+		  verse= tver
+		  value=10 '10 is base value
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SearchResult
+  parm/S: verse as String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SearchResult(verse as String)
+		  'format for incoming string must be three integers with a space inbetween them
+		  
+		  Me.book= Val(Nthfield(verse, " ", 1))
+		  Me.chapter= Val(Nthfield(verse, " ", 2))
+		  Me.verse= Val(Nthfield(verse, " ", 3))
+		  Me.value=10
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: book As Integer
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: book As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: chapter As Integer
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: chapter As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: value As Integer
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: value As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: verse As Integer
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: verse As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

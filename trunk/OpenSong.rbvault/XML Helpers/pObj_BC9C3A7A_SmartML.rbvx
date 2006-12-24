@@ -1,0 +1,845 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
+ Name/S: SmartML
+ Cont/N: -1130612565
+ bCls/N: 0
+ Name/S: SmartML
+ Size/N: 40
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CloneChildren
+  parm/S: fromNode As XmlNode, toNode As XmlNode
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub CloneChildren(fromNode As XmlNode, toNode As XmlNode)
+		  Dim xchild As XmlNode
+		  xchild = fromNode.FirstChild
+		  While xchild <> Nil
+		    toNode.AppendChild toNode.OwnerDocument.ImportNode(xchild, True)
+		    xchild = xchild.NextSibling
+		  Wend
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DisplayError
+  parm/S: 
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub DisplayError()
+		  InputBox.Message ErrorString + " (" + Str(ErrorCode) + ")"
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetAttribute
+  parm/S: xnode As XmlNode, attribName As String
+  rslt/S: String
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function GetAttribute(xnode As XmlNode, attribName As String) As String
+		  Dim attribute As XmlNode
+		  Dim s As String
+		  Dim i As Integer
+		  if xnode = Nil Then Return "" 'EMP 09/05
+		  s = attribName
+		  i = 0
+		  //++EMP
+		  // Add Try block
+		  Try
+		    attribute = xnode.GetAttributeNode(attribName)
+		  Catch err
+		    '++JRC Translated
+		    If App.T.Isloaded Then MsgBox(App.T.Translate("smartml/attrib_except", attribName, xnode.ToString))
+		    '--
+		    Return ""
+		  End Try
+		  
+		  //--
+		  If attribute <> Nil Then Return attribute.Value
+		  
+		  ' For some reason, the following seems necessary sometimes. At least it did in RB 5.2.1
+		  'For i = 1 To xnode.AttributeCount + 1 ' 5.2.1
+		  For i = 0 To xnode.AttributeCount - 1 ' 5.2.2
+		    attribute = xnode.GetAttributeNode(i)
+		    If attribute <> Nil Then
+		      If attribute.Name = s Then Return attribute.Value
+		    End If
+		  Next i
+		  
+		  Return ""
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetChildNode
+  parm/S: xnode As XmlNode, childName As String, create As Boolean = True
+  rslt/S: XmlNode
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function GetChildNode(xnode As XmlNode, childName As String, create As Boolean = True) As XmlNode
+		  If xnode = Nil Then Return Nil
+		  
+		  Dim child As XmlNode
+		  
+		  child = xnode.FirstChild
+		  While child <> Nil
+		    If child.Name = childName Then Return child
+		    child = child.NextSibling
+		  Wend
+		  
+		  If create Then Return xnode.AppendChild(xnode.OwnerDocument.CreateElement(childName))
+		  
+		  Return Nil
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetNode
+  parm/S: xnode As XmlNode, nodePath As String, create As Boolean = False
+  rslt/S: XmlNode
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetNode(xnode As XmlNode, nodePath As String, create As Boolean = False) As XmlNode
+		  Dim parent As XmlNode
+		  
+		  Dim i, j As Integer
+		  
+		  parent = xnode
+		  
+		  nodePath = nodePath + "/"
+		  i = 1
+		  j = InStr(i, nodePath, "/")
+		  While j > 0
+		    parent = GetChildNode(parent, Mid(nodePath, i, j-i), create) ' GetNode will create a node if asked
+		    If parent = Nil Then Return Nil
+		    
+		    i = j + 1
+		    j = InStr(i, nodePath, "/")
+		  Wend
+		  
+		  Return parent
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValue
+  parm/S: xnode As XmlNode, childPath As String, create As Boolean = True
+  rslt/S: String
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetValue(xnode As XmlNode, childPath As String, create As Boolean = True) As String
+		  If xnode = Nil Then Return ""
+		  
+		  Dim atPos As Integer
+		  atPos = InStr(childPath, "@")
+		  If atPos > 0 Then
+		    If atPos > 1 Then xnode = GetNode(xnode, Left(childPath, atPos-2), create)
+		    Return GetAttribute(xnode, Mid(childPath, atPos+1))
+		  End If
+		  
+		  xnode = GetNode(xnode, childPath, create)
+		  If xnode <> Nil Then
+		    If xnode.ChildCount > 0 Then
+		      Return xnode.Child(0).Value
+		    Else
+		      Return ""
+		    End If
+		  Else
+		    Return ""
+		  End If
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueB
+  parm/S: xnode As XmlNode, childPath As String, create As Boolean = True, default As Boolean = False
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetValueB(xnode As XmlNode, childPath As String, create As Boolean = True, default As Boolean = False) As Boolean
+		  Dim s As String
+		  s = GetValue(xnode, childPath, create)
+		  If create And Len(s) = 0 Then Return default
+		  If Lowercase(s) = "true" Then Return True
+		  Return False
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueC
+  parm/S: xnode As XmlNode, childPath As String, ByRef c As Color, create As Boolean = True
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetValueC(xnode As XmlNode, childPath As String, ByRef c As Color, create As Boolean = True) As Boolean
+		  Dim s As String
+		  s = GetValue(xnode, childPath, create)
+		  If Left(s, 1) <> "#" Or Len(s) <> 7 Then Return False
+		  
+		  c = RGB( _
+		      Val("&H" + (Mid(s, 2, 2))), _
+		      Val("&H" + (Mid(s, 4, 2))), _
+		          Val("&H" + (Mid(s, 6, 2))))
+		      
+		      Return True
+		    End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueF
+  parm/S: xnode As XmlNode, childPath As String, create As Boolean = True
+  rslt/S: FontFace
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetValueF(xnode As XmlNode, childPath As String, create As Boolean = True) As FontFace
+		  Dim f As New FontFace
+		  Dim c As Color
+		  
+		  f.Name = GetValue(xnode, childPath + "/@font")
+		  f.Size = GetValueN(xnode, childPath  + "/@size")
+		  f.Bold = GetValueB(xnode, childPath  + "/@bold")
+		  f.Italic = GetValueB(xnode, childPath  + "/@italic")
+		  f.Underline = GetValueB(xnode, childPath  + "/@underline")
+		  
+		  f.Border = GetValueB(xnode, childPath  + "/@border")
+		  If GetValueC(xnode, childPath  + "/@border_color", c) Then
+		    f.BorderColor = c
+		  End If
+		  f.Shadow = GetValueB(xnode, childPath  + "/@shadow")
+		  If GetValueC(xnode, childPath  + "/@shadow_color", c) Then
+		    f.ShadowColor = c
+		  End If
+		  f.Fill = GetValueB(xnode, childPath  + "/@fill")
+		  If GetValueC(xnode, childPath  + "/@fill_color", c) Then
+		    f.FillColor = c
+		  End If
+		  
+		  If GetValueC(xnode, childPath  + "/@color", c) Then
+		    f.ForeColor = c
+		  End If
+		  
+		  Return f
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueN
+  parm/S: xnode As XmlNode, childPath As String, create As Boolean = True
+  rslt/S: Double
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetValueN(xnode As XmlNode, childPath As String, create As Boolean = True) As Double
+		  Return Val(GetValue(xnode, childPath, create))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueP
+  parm/S: xnode As XmlNode, childPath As String, create As Boolean = True
+  rslt/S: Picture
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetValueP(xnode As XmlNode, childPath As String, create As Boolean = True) As Picture
+		  Dim s As String
+		  Dim p As Picture
+		  s = GetValue(xnode, childPath, create)
+		  If Len(s) = 0 Then Return Nil
+		  
+		  Dim r As New Random
+		  Dim f As FolderItem
+		  Dim outputStream As BinaryStream
+		  
+		  f = PreferencesFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
+		  If f <> Nil Then
+		    outputStream = f.CreateBinaryFile("image/jpeg")
+		    outputStream.Write DecodeBase64(s)
+		    outputStream.Close
+		    p = f.OpenAsPicture
+		    f.Delete
+		  End If
+		  
+		  Return p
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Init
+  parm/S: 
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub Init()
+		  If TargetMacOS Or TargetPPC Then
+		    PathSeparator = ":"
+		    Newline = Chr(13)
+		  ElseIf TargetWin32 Then
+		    PathSeparator = "\"
+		    Newline = Chr(13) + Chr(10)
+		  ElseIf TargetCarbon Then
+		    PathSeparator = "/"
+		    Newline = Chr(10)
+		  Else
+		    PathSeparator = "/"
+		    Newline = Chr(10)
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InsertAfter
+  parm/S: xnode As XmlNode, newNode As String
+  rslt/S: XmlNode
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function InsertAfter(xnode As XmlNode, newNode As String) As XmlNode
+		  If xnode.NextSibling = Nil Then
+		    Return xnode.Parent.AppendChild(xnode.OwnerDocument.CreateElement(newNode))
+		  Else
+		    Return xnode.Parent.Insert(xnode.OwnerDocument.CreateElement(newNode), xnode.NextSibling)
+		  End If
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InsertBefore
+  parm/S: xnode As XmlNode, newNode As String
+  rslt/S: XmlNode
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function InsertBefore(xnode As XmlNode, newNode As String) As XmlNode
+		  Return xnode.Parent.Insert(xnode.OwnerDocument.CreateElement(newNode), xnode)
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InsertChild
+  parm/S: xnode As XmlNode, childName As String, index As Integer
+  rslt/S: XmlNode
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function InsertChild(xnode As XmlNode, childName As String, index As Integer) As XmlNode
+		  If index < xnode.ChildCount Then
+		    Return xnode.Insert(xnode.OwnerDocument.CreateElement(childName), xnode.Child(index))
+		  Else
+		    Return xnode.AppendChild(xnode.OwnerDocument.CreateElement(childName))
+		  End If
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InsertChildNode
+  parm/S: xnode As XmlNode, child As XmlNode, index As Integer
+  rslt/S: XmlNode
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function InsertChildNode(xnode As XmlNode, child As XmlNode, index As Integer) As XmlNode
+		  If index < xnode.ChildCount Then
+		    Return xnode.Insert(xnode.OwnerDocument.ImportNode(child, True), xnode.Child(index))
+		  Else
+		    Return xnode.AppendChild(xnode.OwnerDocument.ImportNode(child, True))
+		  End If
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MoveChild
+  parm/S: xnode As XmlNode, fromIndex As Integer, toIndex As Integer
+  rslt/S: XmlNode
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function MoveChild(xnode As XmlNode, fromIndex As Integer, toIndex As Integer) As XmlNode
+		  If toIndex >= xnode.ChildCount Then
+		    Return xnode.AppendChild(xnode.Child(fromIndex))
+		  Else
+		    Return xnode.Insert(xnode.Child(fromIndex), xnode.Child(toIndex))
+		  End If
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveChild
+  parm/S: xnode As XmlNode, child As XmlNode
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveChild(xnode As XmlNode, child As XmlNode)
+		  xnode.RemoveChild child
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveChild
+  parm/S: xnode As XmlNode, index As Integer
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveChild(xnode As XmlNode, index As Integer)
+		  xnode.RemoveChild xnode.Child(index)
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveChildren
+  parm/S: xnode As XmlNode
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveChildren(xnode As XmlNode)
+		  Dim xchild As XmlNode
+		  
+		  xchild = xnode.FirstChild
+		  While xchild <> Nil
+		    xnode.RemoveChild xchild
+		    xchild = xnode.FirstChild
+		  Wend
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveSelf
+  parm/S: xnode As XmlNode
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveSelf(xnode As XmlNode)
+		  If xnode = Nil Then Return
+		  If xnode.Parent <> Nil Then
+		    xnode.Parent.RemoveChild xnode
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ReplaceWithImportNode
+  parm/S: oldNode As XmlNode, newNode As XmlNode
+  rslt/S: XmlNode
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function ReplaceWithImportNode(oldNode As XmlNode, newNode As XmlNode) As XmlNode
+		  Dim parent, previous As XmlNode
+		  
+		  parent = oldNode.Parent
+		  previous = oldNode.PreviousSibling
+		  
+		  parent.ReplaceChild oldNode.OwnerDocument.ImportNode(newNode, True), oldNode
+		  If previous = Nil Then
+		    Return parent.FirstChild
+		  Else
+		    Return previous.NextSibling
+		  End If
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SafeImport
+  parm/S: fromNode As XmlNode, toNode As XmlNode
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SafeImport(fromNode As XmlNode, toNode As XmlNode)
+		  ' Using this rather than the builtin ImportNode seems to stop weird problems with changes not being made until a set or whatever is reloaded
+		  
+		  'toNode.Name = fromNode.Name
+		  
+		  Dim i As Integer
+		  Dim child As XmlNode
+		  Dim attribute As XmlAttribute
+		  
+		  For i = 0 To fromNode.AttributeCount - 1
+		    attribute = fromNode.GetAttributeNode(i)
+		    SmartML.SetValue toNode, "@" + attribute.Name, attribute.Value
+		  Next i
+		  
+		  For i = 0 To fromNode.ChildCount - 1
+		    child = fromNode.Child(i)
+		    If child.Type = XmlNodeType.ELEMENT_NODE Then
+		      SafeImport child, toNode.AppendChild(toNode.OwnerDocument.CreateElement(child.Name))
+		    ElseIf child.Type = XmlNodeType.TEXT_NODE Then
+		      toNode.AppendChild toNode.OwnerDocument.CreateTextNode(child.Value)
+		    End If
+		  Next i
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetAttribute
+  parm/S: xnode As XmlNode, attribName As String, value As String
+  rslt/S: 
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Sub SetAttribute(xnode As XmlNode, attribName As String, value As String)
+		  xnode.SetAttribute attribName, value
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValue
+  parm/S: xnode As XmlNode, childPath As String, value As String
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SetValue(xnode As XmlNode, childPath As String, value As String)
+		  Dim atPos As Integer
+		  atPos = InStr(childPath, "@")
+		  If atPos > 0 Then
+		    If atPos > 1 Then xnode = GetNode(xnode, Left(childPath, atPos-2), True)
+		    If xnode <> Nil Then SetAttribute(xnode, Mid(childPath , atPos+1), value)
+		    Return
+		  End If
+		  
+		  xnode = GetNode(xnode, childPath, True)
+		  If xnode <> Nil Then
+		    If xnode.ChildCount > 0 Then
+		      xnode.Child(0).Value = value
+		      Return
+		    Else
+		      xnode = xnode.AppendChild(xnode.OwnerDocument.CreateTextNode(value))
+		      Return
+		    End If
+		  Else
+		    Return
+		  End If
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueB
+  parm/S: xnode As XmlNode, childPath As String, value As Boolean
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueB(xnode As XmlNode, childPath As String, value As Boolean)
+		  If value Then
+		    SetValue xnode, childPath, "true"
+		  Else
+		    SetValue xnode, childPath, "false"
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueC
+  parm/S: xnode As XmlNode, childPath As String, c As Color
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueC(xnode As XmlNode, childPath As String, c As Color)
+		  Dim r, g, b As String
+		  
+		  r = Hex(c.red)
+		  If c.red < 16 Then r = "0" + r
+		  g = Hex(c.green)
+		  If c.green < 16 Then g = "0" + g
+		  b = Hex(c.blue)
+		  If c.blue < 16 Then b = "0" + b
+		  
+		  SetValue xnode, childPath, "#" + r + g + b
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueF
+  parm/S: xnode As XmlNode, childPath As String, f As FontFace
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueF(xnode As XmlNode, childPath As String, f As FontFace)
+		  SetValue xnode, childPath + "/@font", f.Name
+		  SetValueN xnode, childPath + "/@size", f.Size
+		  SetValueB xnode, childPath + "/@bold", f.Bold
+		  SetValueB xnode, childPath + "/@italic", f.Italic
+		  SetValueB xnode, childPath + "/@underline", f.Underline
+		  SetValueC xnode, childPath + "/@color", f.ForeColor
+		  
+		  SetValueB xnode, childPath  + "/@border", f.Border
+		  SetValueC xnode, childPath  + "/@border_color", f.BorderColor
+		  SetValueB xnode, childPath  + "/@shadow", f.Shadow
+		  SetValueC xnode, childPath  + "/@shadow_color", f.ShadowColor
+		  SetValueB xnode, childPath  + "/@fill", f.Fill
+		  SetValueC xnode, childPath  + "/@fill_color", f.FillColor
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueN
+  parm/S: xnode As XmlNode, childPath As String, value As Double
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueN(xnode As XmlNode, childPath As String, value As Double)
+		  SetValue xnode, childPath, Str(value)
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueP
+  parm/S: xnode As XmlNode, childPath As String, f As FolderItem
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueP(xnode As XmlNode, childPath As String, f As FolderItem)
+		  Dim inputStream As BinaryStream
+		  
+		  If f <> Nil Then
+		    inputStream = f.OpenAsBinaryFile(False)
+		    If inputStream <> Nil Then
+		      SetValue xnode, childPath, EncodeBase64(inputStream.Read(f.Length))
+		      inputStream.Close
+		    End If
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SwapChildren
+  parm/S: xnode As XmlNode, index1 As Integer, index2 As Integer
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SwapChildren(xnode As XmlNode, index1 As Integer, index2 As Integer)
+		  Dim temp As XmlNode
+		  
+		  temp = MoveChild(xnode, index1, index2)
+		  temp = MoveChild(xnode, index2, index1)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: XDocFromFile
+  parm/S: f As FolderItem
+  rslt/S: XmlDocument
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function XDocFromFile(f As FolderItem) As XmlDocument
+		  Dim input As TextInputStream
+		  Dim s As String
+		  Dim d As New XmlDocument
+		  d.PreserveWhitespace = False
+		  
+		  If f = Nil Then
+		    ErrorCode = 1
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_path")
+		    '--
+		    Return Nil
+		  ElseIf Not f.Exists Then
+		    ErrorCode = 2
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_file",  f.AbsolutePath)
+		    '--
+		    Return Nil
+		  End If
+		  input = f.OpenAsTextFile
+		  '++JRC Prevent NilObject Exception if file could not be opened
+		  If input = Nil Then 
+		    ErrorCode = 4
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/cant_open",  f.AbsolutePath)
+		    '--
+		    return nil
+		  End If
+		  '--
+		  s = input.ReadAll.FormatUnixEndOfLine
+		  input.Close
+		  Try
+		    If Len(s) > 5 Then
+		      's = ConvertEncoding(s, Encodings.ISOLatin1)
+		      d.LoadXml(s)
+		      Return d
+		    Else
+		      ErrorCode = 5
+		      '++JRC Translated
+		      If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_error",  f.AbsolutePath)
+		      '--
+		      Return Nil
+		    End If
+		  Catch err As XmlException
+		    ErrorCode = 3
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_exterror",  f.AbsolutePath, err.Line, err.Node)
+		    '--
+		    Return Nil
+		  End Try
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: XDocFromString
+  parm/S: s As String
+  rslt/S: XmlDocument
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function XDocFromString(s As String) As XmlDocument
+		  Dim d As New XmlDocument
+		  d.PreserveWhitespace = False
+		  
+		  Try
+		    If Len(s) > 5 Then
+		      d.LoadXml(s)
+		      Return d
+		    Else
+		      Return Nil
+		    End If
+		  Catch err As XmlException
+		    ErrorCode = 3
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_error",  Left(s, 30))
+		    '--
+		    If Len(s) > 30 Then ErrorString = ErrorString
+		    Return Nil
+		  End Try
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: XDocToFile
+  parm/S: xdoc As XmlDocument, f As FolderItem
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function XDocToFile(xdoc As XmlDocument, f As FolderItem) As Boolean
+		  If f = Nil Then
+		    ErrorCode = 11
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_path")
+		    '--
+		    Return False
+		  End If
+		  
+		  Dim output As TextOutputStream
+		  'xdoc.Encoding = "ISO-8859-1"
+		  output = f.CreateTextFile
+		  If output <> Nil Then
+		    output.Write XDocToString(xdoc).FormatLocalEndOfLine
+		    output.Close
+		    Return True
+		  Else
+		    ErrorCode = 12
+		    '++JRC Translated
+		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/cant_create", f.AbsolutePath)
+		    '--
+		    Return False
+		  End If
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: XDocToString
+  parm/S: xdoc As XmlDocument
+  rslt/S: String
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function XDocToString(xdoc As XmlDocument) As String
+		  Dim s As String
+		  
+		  s = xdoc.ToString
+		  s = ReplaceAll(s, "/></", "/>" + Newline + "</")
+		  s = ReplaceAll(s, "?><", "?>" + Newline + "<")
+		  s = ReplaceAll(s, "></", "&aardvark;")
+		  s = ReplaceAll(s, "><", ">" + Newline + "  <")
+		  s = ReplaceAll(s, "&aardvark;", "></")
+		  s = ReplaceAll(s, "<option>", "  <option>")
+		  's = ReplaceAll(s, "UTF-8", "ISO-8859-1")
+		  's = ConvertEncoding(s, Encodings.ISOLatin1) ' ISO-8859-1
+		  
+		  Return s
+		End Function
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ErrorCode As Integer
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ErrorCode As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ErrorString As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ErrorString As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Newline As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Newline As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: PathSeparator As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: PathSeparator As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

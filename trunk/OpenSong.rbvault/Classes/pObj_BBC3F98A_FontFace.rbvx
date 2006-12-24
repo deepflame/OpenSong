@@ -1,0 +1,219 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABBC3F98A0000000000000000000000000000000000000000
+ Name/S: FontFace
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: FontFace
+ Size/N: 65
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Clone
+  parm/S: 
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Clone() As FontFace
+		  Dim f As New FontFace
+		  f.Bold = Bold
+		  f.ForeColor = ForeColor
+		  f.Italic = Italic
+		  f.Name = Name
+		  f.Size = Size
+		  f.Underline = Underline
+		  f.Shadow = Shadow
+		  f.ShadowColor = ShadowColor
+		  f.Border = Border
+		  f.BorderColor = BorderColor
+		  f.Fill = Fill
+		  f.FillColor = FillColor
+		  Return f
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Constructor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  Name = "Arial"
+		  Size = 10
+		  ForeColor = &c000000
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: OntoGraphics
+  parm/S: g As Graphics
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub OntoGraphics(g As Graphics)
+		  g.ForeColor = ForeColor
+		  g.TextFont = Name
+		  g.TextSize = Size
+		  g.Bold = Bold
+		  g.Italic = Italic
+		  g.Underline = Underline
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: OntoStringShape
+  parm/S: byRef s As StringShape, Zoom As Double = 1.0
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub OntoStringShape(byRef s As StringShape, Zoom As Double = 1.0)
+		  //++
+		  // updates the properties of a StringShape to reflect the FontFace
+		  //
+		  // Ed Palmer, 12/05
+		  //--
+		  
+		  s.TextFont = Name
+		  s.TextSize = Round(Size * Zoom)
+		  s.Bold = Bold
+		  s.FillColor = ForeColor
+		  s.Italic = Italic
+		  s.Underline = Underline
+		  
+		  if Border Then
+		    s.Border = 0
+		    s.BorderWidth = 1
+		    s.BorderColor = BorderColor
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Bold As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Bold As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Border As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Border As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: BorderColor As Color
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: BorderColor As Color
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Fill As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Fill As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FillColor As Color
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FillColor As Color
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ForeColor As Color
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ForeColor As Color
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Italic As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Italic As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Name As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Name As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Shadow As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Shadow As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ShadowColor As Color
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ShadowColor As Color
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Size As Integer
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Size As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Underline As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Underline As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

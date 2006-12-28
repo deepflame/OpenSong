@@ -10066,7 +10066,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainWindow
-  Size/N: 234
+  Size/N: 242
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -10869,7 +10869,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    parm/S: 
    rslt/S: 
    flag/N: 0
-   sorc/d: (Enco/N: 134217984, srbp/N: 5
+   sorc/d: (Enco/N: 134217984
 		Sub ActionInSetRemove()
 		  Dim xslides As XmlNodeList
 		  Dim slide_groups As XmlNode
@@ -11259,34 +11259,27 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  // EMP 10/09/2004
 		  // Complete rewrite JC 12/06
 		  'Changed to return whether the user canceled or not
-		  
-		  Dim Msg as MessageDialog
-		  Dim Res As MessageDialogButton
-		  
+		  ' EMP 12/06: Move guts of doing the message dialog to a utility method
+		  ' so it can be reused by sets mode and other areas.
 		  
 		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
 		    '++JRC
-		    msg = new MessageDialog
-		    msg.Message = App.T.Translate("questions/changed/@caption")
-		    msg.Title = App.T.Translate("sets_mode/current_set/save/@caption")
-		    msg.Icon = 3 'question
-		    msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
-		    msg.AlternateActionButton.Caption = App.T.Translate("shared/no/@caption")
-		    msg.AlternateActionButton.Visible = true
-		    msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
-		    Msg.CancelButton.Visible = true
-		    
-		    Res = msg.ShowModal
-		    If Res  = msg.ActionButton then 
+		    Select Case SaveDialog(App.T.Translate("questions/changed/@caption"))
+		    Case 1
 		      'User pressed Yes, so save
 		      ActionSongSave false, true
-		    ElseIf Res = msg.AlternateActionButton Then
-		      'Bye-bye changes
-		      Status_SongChanged = false
-		    Else 
+		    Case 0
+		      //++EMP:
+		      // Don't reset the modified flag, otherwise the user could select not to save,
+		      // change his mind, and then have no way to save changes (Save doesn't enable
+		      // unless the SongChanged flag is True).  Set Status_MadUser = True
+		      //
+		      ''Bye-bye changes
+		      'Status_SongChanged = false
+		    Case -1 
 		      'user pressed Cancel, go back
 		      Return False
-		    End If
+		    End Select
 		    '--
 		  End if
 		  'Return True, meaning user wants to continue with/without saving
@@ -11433,9 +11426,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: If NOT ActionSongAskSave Then Return 'User Canceled, Don't Present
     srcl/S: 'reload current song
     srcl/S: ActionSongRevert False
-    srcl/S: 
     srcl/S: Dim setDoc As XmlDocument
     srcl/S: Dim song As XmlNode
+    srcl/S: Dim StyleNode As XmlNode
     srcl/S: 
     srcl/S: App.MouseCursor = WatchCursor
     srcl/S: setDoc = New XmlDocument
@@ -11443,7 +11436,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: song = song.AppendChild(setDoc.CreateElement("slide_groups"))
     srcl/S: song = song.AppendChild(setDoc.CreateElement("TEMP"))
     srcl/S: song = SmartML.ReplaceWithImportNode(song, CurrentSong.DocumentElement)
-    srcl/S: SongML.ToSetML song
+    srcl/S: StyleNode = SmartML.GetNode(song, "style")
+    srcl/S: //++
+    srcl/S: // If this looks weird, it's because I don't want to go chase down the other
+    srcl/S: // places ToSetML is called and fix the style nodes that get passed in to start
+    srcl/S: // at //style instead of the node above...Ed 19 Dec 2006
+    srcl/S: //--
+    srcl/S: If StyleNode <> Nil Then StyleNode = StyleNode.Parent
+    srcl/S: SongML.ToSetML song, StyleNode
     srcl/S: 
     srcl/S: App.MouseCursor = Nil
     srcl/S:  
@@ -12355,27 +12355,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   MnuH/G: 
    Enco/N: 1280
    name/S: mnu_help_about
-   sorc/G: 
-    Enco/N: 134217984
-    srcl/S: Function mnu_help_about() As Boolean
-    srcl/S: Dim str As String
-    srcl/S: 
-    srcl/S: str = "OpenSong " + App.SmartVersion
-    srcl/S: 
-    srcl/S: str = str + EndOfLine + App.T.Translate("about/copyright") + " " + Encodings.UTF8.Chr(169) + _
-    srcl/S:  "2003, 2004, 2005 Sean Lickfold. "
-    srcl/S: str = str + EndOfLine + App.T.Translate("about/gpl")
-    srcl/S: str = str + EndOfLine + App.T.Translate("about/web")
-    srcl/S: '++JRC translated
-    srcl/S: str = str + EndOfLine + App.T.Translate("about/additional") + EndOfLine + "Joshua R. Coley, Gareth Evans and Ed Palmer"
-    srcl/S: '--
-    srcl/S: str = str + EndOfLine + EndOfLine + App.T.Translate("general_settings/general/language/@caption") + ": "
-    srcl/S: str = str + App.T.Translate("@name") + " - " + App.T.Translate("@author")
-    srcl/S: 
-    srcl/S: InputBox.Message str
-    srcl/S: Return True
-    srcl/S: End Function
-   sorc/g: 
+   sorc/d: (Enco/N: 134217984
+		Function mnu_help_about() As Boolean
+		  AboutWindow.ShowModalWithin Self
+		End Function
+   )
   MnuH/g: 
   MnuH/G: 
    Enco/N: 1280

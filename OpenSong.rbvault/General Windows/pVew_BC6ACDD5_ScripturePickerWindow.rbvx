@@ -15,7 +15,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Change
-   sorc/d: (Enco/N: 134217984, srbp/N: 106, srbp/N: 119
+   sorc/d: (Enco/N: 134217984
 		Sub Change()
 		  //
 		  // Updated November 2006 to put the book number in the CellTag of the listbox
@@ -1577,7 +1577,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 188
+  Size/N: 196
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -2151,7 +2151,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    parm/S: node As XmlNode, live As Boolean = False
    rslt/S: Boolean
    flag/N: 0
-   sorc/d: (Enco/N: 134217984, srbp/N: 4
+   sorc/d: (Enco/N: 134217984
 		Function Popup(node As XmlNode, live As Boolean = False) As Boolean
 		  Me.Node = node
 		  Me.Live = live

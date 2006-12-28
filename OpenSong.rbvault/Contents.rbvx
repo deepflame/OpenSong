@@ -150,13 +150,14 @@
 #SearchWindow	pVew	79910FFF
 #TOCReport	pObj	C00A2982
 #FindClass	pObj	BD63392A
-#SaveDialog	pObj	C091CF68
 #SEditFieldNumeric	pObj	C097E40A
 #OpenSongUtils	pObj	C09C57D6
 #Song	pObj	C0C3650C
 #SlideStyle	pObj	BF4CF8E0
 #SearchResult	pObj	456597FF
 #bindSColorCanvasAndSImageCanvas	pObj	C18856CB
+#AboutWindow	pVew	C1AB62C3
+#ProgramIcon1288	pPic	C1AB716D
 ##External Files:	
 ##VaultHdrEnd#
 ##RBvx-End#

@@ -906,6 +906,8 @@ Click on this slide to edit its style.</body>
     <changed caption="Current Song has been changed, do you want to save?"/>
     <revert caption="All changes will be lost. Continue?"/>
     <long_operation caption="This may take a long time to complete. Continue?"/>
+    <generic_save caption="Save changes?"/>
+    <generic_save_explanation caption="If you do not save, your changes will be lost"/>
   </questions>
 
   <about>
@@ -915,6 +917,7 @@ Click on this slide to edit its style.</body>
     <web>Visit http://www.opensong.org/ for more information.</web>
     <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to translator@opensong.org and we'll include it in the official release.</translating>
     <created_with_opensong>Created with OpenSong</created_with_opensong>
+    <sources>OpenSong includes source code from</sources>
   </about>
 
   <folderdb_errors>

@@ -150,4 +150,7 @@ presentation_settings/style/highlight_chorus moved to style_editor/fonts_and_ali
 songml/presentation
 scripture_search/lst_result
 find_image/parent
+about/sources
 scripture_lookup/book
+questions/generic_save
+questions/generic_save_explanation

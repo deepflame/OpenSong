@@ -14,6 +14,18 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_INCH, type/N: 2, defn/S: 0.013888889, flag/N: 0)
  Meth/G: 
   Enco/N: 134217984
+  name/S: Append
+  parm/S: ByRef Extends s As String, text As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Append(ByRef Extends s As String, text As String)
+		  s = s + text
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: CMtoPoints
   parm/S: CM As Double
   rslt/S: Double
@@ -686,7 +698,11 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
    Enco/N: 134217984
    srcl/S: Function IsCollapsed(Extends w As Window) As Boolean
    srcl/S: #if TargetMacOS 
+   srcl/S: #if TargetMachO
+   srcl/S: Declare Function IsWindowCollapsed Lib "Carbon" (window as WindowPtr) as Boolean
+   srcl/S: #else
    srcl/S: Declare Function IsWindowCollapsed Lib "CarbonLib" (window as WindowPtr) as Boolean
+   srcl/S: #endif
    srcl/S: Return IsWindowCollapsed(w) 
    srcl/S: #endif
    srcl/S: // gets the rect and show state of the window in winHWND
@@ -848,22 +864,6 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: PointsToInches
-  parm/S: Points As String
-  rslt/S: String
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function PointsToInches(Points As String) As String
-		  //++
-		  // Polymorphic version of PointsToInches
-		  //--
-		  
-		  Return CStr(PointsToInches(CDbl(Points)))
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: PointsToInches
   parm/S: Points As Double
   rslt/S: Double
   flag/N: 0
@@ -881,6 +881,22 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  //--
 		  
 		  Return Points * POINT_TO_INCH
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToInches
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToInches(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToInches
+		  //--
+		  
+		  Return CStr(PointsToInches(CDbl(Points)))
 		End Function
   )
  Meth/g: 
@@ -907,6 +923,72 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
    srcl/S: p.Graphics.TextSize = L.TextSize 
    srcl/S: Return p.Graphics.TextHeight 
    srcl/S: End If
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SaveDialog
+  parm/S: Message As String = "", Explanation As String = ""
+  rslt/S: Integer
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function SaveDialog(Message As String = "", Explanation As String = "") As Integer
+   srcl/S: //++
+   srcl/S: // Provide a standardized dialog for prompting the user
+   srcl/S: // to save something.
+   srcl/S: //
+   srcl/S: // Return: -1 for Cancel, 0 for Don't Save, 1 for Save
+   srcl/S: //--
+   srcl/S: Dim Msg as MessageDialog
+   srcl/S: Dim Res As MessageDialogButton
+   srcl/S: Dim Ret As Integer
+   srcl/S: 
+   srcl/S: '++JRC
+   srcl/S: msg = new MessageDialog
+   srcl/S: If Message <> "" Then
+   srcl/S: msg.Message = Message
+   srcl/S: Else
+   srcl/S: msg.Message = App.T.Translate("questions/generic_save/@caption")
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: msg.Title = App.T.Translate("shared/save/@caption")
+   srcl/S: msg.Icon = 3 'question
+   srcl/S: 
+   srcl/S: If Explanation <> "" Then
+   srcl/S: msg.Explanation = Explanation
+   srcl/S: Else
+   srcl/S: #If TargetMacOS
+   srcl/S: msg.Explanation = App.T.Translate("questions/generic_save_explanation/@caption")
+   srcl/S: #endif
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: // Set buttons based on operating system preferences.
+   srcl/S: 
+   srcl/S: #if Not TargetMacOS
+   srcl/S: msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
+   srcl/S: msg.AlternateActionButton.Caption = App.T.Translate("shared/no/@caption")
+   srcl/S: msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
+   srcl/S: #else
+   srcl/S: msg.ActionButton.Caption = App.T.Translate("shared/save/@caption")
+   srcl/S: msg.AlternateActionButton.Caption = App.T.Translate("shared/nosave/@caption")
+   srcl/S: msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: msg.AlternateActionButton.Visible = true
+   srcl/S: Msg.CancelButton.Visible = true
+   srcl/S: 
+   srcl/S: Res = msg.ShowModal
+   srcl/S: If Res  = msg.ActionButton then 
+   srcl/S: Ret = 1
+   srcl/S: ElseIf Res = msg.AlternateActionButton Then
+   srcl/S: Ret = 0
+   srcl/S: Else 
+   srcl/S: Ret = -1
+   srcl/S: End If
+   srcl/S: '--
+   srcl/S: Return Ret
    srcl/S: End Function
   sorc/g: 
  Meth/g: 
@@ -971,17 +1053,62 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: StringValue
-  parm/S: Extends B As Boolean
+  name/S: ToString
+  parm/S: Extends error As RuntimeException
   rslt/S: String
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function StringValue(Extends B As Boolean) As String
-		  //++
-		  // Provide a convenient (but non-I18N) way
-		  // to get the value of a boolean for output
-		  //--
-		  If B Then Return "True" Else Return "False"
+		Function ToString(Extends error As RuntimeException) As String
+		  Dim msg As String
+		  If error isA IllegalCastException Then
+		    msg = "IllegalCastException"
+		  ElseIf error isA KeyNotFoundException Then
+		    msg = "KeyNotFoundException"
+		  ElseIf error isA NilObjectException Then
+		    msg = "NilObjectException"
+		  ElseIf error isA OutOfBoundsException Then
+		    msg = "OutOfBoundsException"
+		  ElseIf error isA OutOfMemoryException Then
+		    msg = "OutOfMemoryException"
+		  ElseIf error isA RegExException Then
+		    msg = "RegExException"
+		  ElseIf error isA RegExSearchPatternException Then
+		    msg = "RegExSearchPatternException"
+		  ElseIf error isA ShellNotAvailableException Then
+		    msg = "ShellNotAvailableException"
+		  ElseIf error isA ShellNotRunningException Then
+		    msg = "ShellNotRunningException"
+		  ElseIf error isA stackOverflowException Then
+		    msg = "stackOverflowException"
+		  ElseIf error isA EndException Then
+		    msg = "EndException"
+		  ElseIf error isA InvalidParentException Then
+		    msg = "InvalidParentException"
+		  ElseIf error isA KeyChainException Then
+		    msg = "KeyChainException"
+		  ElseIf error isA NoOpenTransportException Then
+		    msg = "NoOpenTransportException"
+		  ElseIf error isA typeMismatchException Then
+		    msg = "typeMismatchException"
+		  ElseIf error isA UnsupportedFormatException Then
+		    msg = "UnsupportedFormatException"
+		  ElseIf error isA XmlDomException Then
+		    msg = "XmlDomException"
+		  ElseIf error isA XmlException Then
+		    msg = "XmlException"
+		  ElseIf error isA XmlReaderException Then
+		    msg = "XmlReaderException"
+		  Else
+		    msg = "Unknown exception"
+		  End If
+		  
+		  If error.Message <> "" Then
+		    msg = msg + ", error is '" + error.Message + "'"
+		    If error.ErrorNumber <> 0 Then
+		      msg = msg + ", number = " + CStr(error.ErrorNumber)
+		    End If
+		  End If
+		  Return msg
 		End Function
   )
  Meth/g: 

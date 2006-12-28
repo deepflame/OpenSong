@@ -45,6 +45,104 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: BuildSubtitle
+  parm/S: songElement As XmlNode, style As XmlNode = Nil
+  rslt/S: String
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function BuildSubtitle(songElement As XmlNode, style As XmlNode = Nil) As String
+		  //++
+		  // Create a string with the appropriate subtitles and return.
+		  //
+		  // This was originally part of ToSetML, but the method was getting unwieldy so it was time
+		  // to split it out
+		  //--
+		  
+		  //++EMP, 12/05
+		  // Converted to support multiple subtitles
+		  Dim Subtitles(-1) As String
+		  Dim SubtitleOptions As String
+		  Dim SubtitleText As String
+		  Dim Separator As String
+		  Dim CurrSubtitle As Integer
+		  Dim AddDescriptions As Boolean
+		  Dim ThisSubtitle As String
+		  Dim Caption As String
+		  Dim CopyrightSymbol As String
+		  Dim DesiredSubtitles(-1) As String
+		  
+		  CopyrightSymbol = ConvertEncoding(App.T.Translate("songml/symbol/@caption"), Encodings.UTF8)
+		  
+		  //Check for a direct override on subtitles in the style for the slide
+		  '++JRC: Fixed, style is not passed in songElement so use second parameter instead
+		  //++EMP: Descriptions weren't being added properly because of incorrect XML paths.  Cleaned up and fixed.
+		  If style <> Nil Then
+		    SubtitleOptions = SmartML.GetValue(style, "style/song_subtitle", False)
+		    AddDescriptions = SmartML.GetValueB(style, "style/subtitle/@descriptive", False)
+		  Else // Use the default style
+		    SubtitleOptions = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "default_style/song_subtitle", False)
+		    AddDescriptions = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "default_style/subtitle/@descriptive", False)
+		  End If
+		  '--
+		  //--
+		  DesiredSubtitles = Split(SubtitleOptions, "|")
+		  Separator = App.T.Translate("songml/separator/@caption")
+		  If Separator = "|NL|" Then Separator = Chr(10)
+		  
+		  For CurrSubtitle = 0 To UBound(DesiredSubtitles)
+		    
+		    Select Case DesiredSubtitles(CurrSubtitle)
+		      
+		    Case "copyright"
+		      Caption = ""
+		      ThisSubtitle = SmartML.GetValue(songElement, "copyright")
+		      'Don't add the caption if the copyright symbol is already in the subtitle text
+		      'Assuming that the presence of the copyright symbol means the field is
+		      'complete within the text.
+		      '(Had to force UTF-8 for this string, otherwise the symbol wasn't handled properly on display)
+		      ThisSubtitle = ConvertEncoding(ThisSubtitle, Encodings.UTF8)
+		      If InStr(ThisSubtitle, CopyrightSymbol) = 0 Then
+		        Caption = App.T.Translate("songml/copyright/@caption")
+		        Caption.Append ConvertEncoding(" "+ CopyrightSymbol, Encodings.UTF8)
+		      End If
+		      
+		    Case "hymn_number"
+		      ThisSubtitle = SmartML.GetValue(songElement, "hymn_number")
+		      Caption = App.T.Translate("songml/hymn_number/@caption")
+		      
+		    Case "author"
+		      ThisSubtitle = SmartML.GetValue(songElement, "author")
+		      Caption = App.T.Translate("songml/author/@caption")
+		      
+		    Case "ccli_number" //The song's CCLI number, not the church license
+		      ThisSubtitle = SmartML.GetValue(songElement, "ccli")
+		      Caption = App.T.Translate("songml/ccli_number/@caption") 
+		      
+		    Case "ccli_license" //The church license
+		      ThisSubtitle = SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")
+		      Caption =  App.T.Translate("songml/ccli_license/@caption")
+		      
+		    Case Else
+		      App.DebugWriter.Write Chr(9)  + "Unexpected subtitle requested: " + Subtitles(CurrSubtitle)
+		      GoTo DontAddToSubtitles
+		      
+		    End Select
+		    
+		    If AddDescriptions And Caption <> "" Then
+		      ThisSubtitle = Caption + " " + ThisSubtitle
+		    End If
+		    
+		    Subtitles.Append ThisSubtitle
+		    
+		    DontAddToSubtitles:
+		  Next CurrSubtitle
+		  
+		  Return Join(Subtitles, Separator)
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: CleanLyrics
   parm/S: songDoc As XmlDocument
   rslt/S: 
@@ -108,88 +206,6 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		Function DeflateString(lyrics As String) As String
 		  Return ReplaceAll(ReplaceAll(lyrics, "_", ""), "|", Chr(10)).CleanSpaces
 		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Draw
-  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width As Integer, height As Integer, zoom As Double
-  rslt/S: 
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Sub Draw(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width As Integer, height As Integer, zoom As Double)
-		  Dim section, slices(0), lines(0), temp As String
-		  
-		  Dim l, firstBase, runningBase, bottom, lineCount, leftEdge As Integer
-		  
-		  CleanLyrics songDoc
-		  
-		  firstBase = y + Draw_Header(songDoc, g, x, y, width, zoom)
-		  bottom = y + height - Draw_Footer(songDoc, g, x, y + height, width, zoom)
-		  runningbase = firstBase
-		  
-		  LyricsToLines songDoc, lines
-		  
-		  For l = 1 To UBound(lines)
-		    '
-		    ' New page?
-		    '
-		    If runningBase + firstBase > bottom then
-		      //if PrintWindow.IsOutputToPrinter then g.NextPage else g = PrintWindow.NewPage
-		      firstBase = y + Draw_Header(songDoc, g, x, y, width, zoom)
-		      bottom = y + height - Draw_Footer(songDoc, g, x, y + height, width, zoom)
-		      runningbase = firstBase
-		    End If
-		    If Left(lines(l), 1) = "." And l < UBound(lines) And InStr("123456789 ", Left(lines(l+1), 1)) > 0 Then
-		      
-		      ' --------------- CHORDS W/ LYRICS ---------------
-		      lineCount = LinesToSlices(lines, l, slices, False)
-		      runningBase = runningBase + Draw_ChordLyricLine(songDoc, g, x+leftEdge, runningBase, zoom, section, slices, lineCount)
-		      l = l + lineCount - 1 ' l will increment again b/c of the For loop
-		      
-		    ElseIf Left(lines(l), 3) = "---" Then
-		      
-		      ' ------------------- NEW COLUMN -------------------
-		      '++JRC: If leftEdge is greater than 0 then we already have two columns
-		      'so lets move to the next page
-		      if leftEdge > 0 then
-		        leftEdge = 0
-		        //if PrintWindow.IsOutputToPrinter then g.NextPage else g = PrintWindow.NewPage
-		        firstBase = y + Draw_Header(songDoc, g, x, y, width, zoom)
-		        bottom = y + height - Draw_Footer(songDoc, g, x, y + height, width, zoom)
-		        runningbase = firstBase
-		      else
-		        runningBase = firstBase
-		        leftEdge = width / 2
-		      end if
-		      '--
-		    ElseIf Left(lines(l), 1) = "." Then
-		      
-		      ' -------------- CHORDS W/O LYRICS --------------
-		      lineCount = LinesToSlices(lines, l, slices, True)
-		      runningBase = runningBase + Draw_SoloChordLine(songDoc, g, x+leftEdge, runningBase, zoom, slices)
-		      
-		    ElseIf Left(lines(l), 1) = ";" Then
-		      
-		      ' ---------------------- COMMENT ----------------------
-		      temp = lines(l)
-		      runningBase = runningBase + Draw_CommentLine(g, x+leftEdge, runningBase, zoom, temp)
-		      
-		    ElseIf Left(lines(l), 1) = "[" Then
-		      
-		      ' ----------------------- HEADING -----------------------
-		      section = Trim(Mid(lines(l), 2, Len(lines(l))-2))
-		      runningBase = runningBase + Draw_HeadingLine(g, x+leftEdge, runningBase, zoom, section)
-		      
-		    Else
-		      
-		      ' -------------- LYRICS W/O CHORDS --------------
-		      temp = lines(l)
-		      runningBase = runningBase + Draw_SoloLyricLine(g, x+leftEdge, runningBase, zoom, section, temp, width)
-		      
-		    End If
-		  Next l
-		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -391,6 +407,88 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  End If
 		  Return Pages
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Draw
+  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width As Integer, height As Integer, zoom As Double
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub Draw(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, width As Integer, height As Integer, zoom As Double)
+		  Dim section, slices(0), lines(0), temp As String
+		  
+		  Dim l, firstBase, runningBase, bottom, lineCount, leftEdge As Integer
+		  
+		  CleanLyrics songDoc
+		  
+		  firstBase = y + Draw_Header(songDoc, g, x, y, width, zoom)
+		  bottom = y + height - Draw_Footer(songDoc, g, x, y + height, width, zoom)
+		  runningbase = firstBase
+		  
+		  LyricsToLines songDoc, lines
+		  
+		  For l = 1 To UBound(lines)
+		    '
+		    ' New page?
+		    '
+		    If runningBase + firstBase > bottom then
+		      //if PrintWindow.IsOutputToPrinter then g.NextPage else g = PrintWindow.NewPage
+		      firstBase = y + Draw_Header(songDoc, g, x, y, width, zoom)
+		      bottom = y + height - Draw_Footer(songDoc, g, x, y + height, width, zoom)
+		      runningbase = firstBase
+		    End If
+		    If Left(lines(l), 1) = "." And l < UBound(lines) And InStr("123456789 ", Left(lines(l+1), 1)) > 0 Then
+		      
+		      ' --------------- CHORDS W/ LYRICS ---------------
+		      lineCount = LinesToSlices(lines, l, slices, False)
+		      runningBase = runningBase + Draw_ChordLyricLine(songDoc, g, x+leftEdge, runningBase, zoom, section, slices, lineCount)
+		      l = l + lineCount - 1 ' l will increment again b/c of the For loop
+		      
+		    ElseIf Left(lines(l), 3) = "---" Then
+		      
+		      ' ------------------- NEW COLUMN -------------------
+		      '++JRC: If leftEdge is greater than 0 then we already have two columns
+		      'so lets move to the next page
+		      if leftEdge > 0 then
+		        leftEdge = 0
+		        //if PrintWindow.IsOutputToPrinter then g.NextPage else g = PrintWindow.NewPage
+		        firstBase = y + Draw_Header(songDoc, g, x, y, width, zoom)
+		        bottom = y + height - Draw_Footer(songDoc, g, x, y + height, width, zoom)
+		        runningbase = firstBase
+		      else
+		        runningBase = firstBase
+		        leftEdge = width / 2
+		      end if
+		      '--
+		    ElseIf Left(lines(l), 1) = "." Then
+		      
+		      ' -------------- CHORDS W/O LYRICS --------------
+		      lineCount = LinesToSlices(lines, l, slices, True)
+		      runningBase = runningBase + Draw_SoloChordLine(songDoc, g, x+leftEdge, runningBase, zoom, slices)
+		      
+		    ElseIf Left(lines(l), 1) = ";" Then
+		      
+		      ' ---------------------- COMMENT ----------------------
+		      temp = lines(l)
+		      runningBase = runningBase + Draw_CommentLine(g, x+leftEdge, runningBase, zoom, temp)
+		      
+		    ElseIf Left(lines(l), 1) = "[" Then
+		      
+		      ' ----------------------- HEADING -----------------------
+		      section = Trim(Mid(lines(l), 2, Len(lines(l))-2))
+		      runningBase = runningBase + Draw_HeadingLine(g, x+leftEdge, runningBase, zoom, section)
+		      
+		    Else
+		      
+		      ' -------------- LYRICS W/O CHORDS --------------
+		      temp = lines(l)
+		      runningBase = runningBase + Draw_SoloLyricLine(g, x+leftEdge, runningBase, zoom, section, temp, width)
+		      
+		    End If
+		  Next l
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -1174,6 +1272,131 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Draw_HeadingLine
+  parm/S: g As Graphics, x As Integer, y As Integer, zoom As Double, heading As String
+  rslt/S: Integer
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function Draw_HeadingLine(g As Graphics, x As Integer, y As Integer, zoom As Double, heading As String) As Integer
+		  Dim tempFont As FontFace
+		  Dim j, oddOffSet, oldY, oldWidth, oldHeight As Integer
+		  Dim prefix As String
+		  //++
+		  Dim rr As New RoundRectShape
+		  Dim rrx, rry As Integer
+		  Dim PreChorus As String
+		  Dim Chorus As String
+		  Dim Bridge As String
+		  Dim Tag As String
+		  
+		  PreChorus = App.T.Translate("songml/prechorus/@caption")
+		  If PreChorus = "" Then PreChorus = "PreChorus"
+		  Chorus = App.T.Translate("songml/chorus/@caption")
+		  If Chorus = "" Then Chorus = "Chorus"
+		  Bridge = App.T.Translate("songml/bridge/@caption")
+		  If Bridge = "" Then Bridge = "Bridge"
+		  Tag = App.T.Translate("songml/tag/@caption")
+		  If Tag = "" Then Tag = "Tag"
+		  //--
+		  
+		  oldY = y
+		  
+		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "heading")
+		  
+		  oldWidth = g.PenWidth
+		  oldHeight = g.PenHeight
+		  g.PenWidth = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "style/@border_thickness")
+		  g.PenHeight = g.PenWidth
+		  
+		  g.TextFont = tempFont.Name
+		  g.TextSize = tempFont.Size * zoom
+		  g.Bold = tempFont.Bold
+		  g.Italic = tempFont.Italic
+		  g.Underline = tempFont.Underline
+		  g.ForeColor = tempFont.ForeColor
+		  y = y + g.TextHeight
+		  
+		  oddOffSet = 1
+		  If (g.PenWidth+2) Mod 2 = 0 Then oddOffSet = 0
+		  
+		  If Uppercase(Left(heading, 1)) = "V" Then   ' -- VERSE --
+		    heading = " " + Mid(heading, 2) + " "
+		    If Len(heading) = 2 Then heading = " Verse "
+		    g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth+oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  ElseIf Uppercase(Left(heading, 1)) = "P" Then   ' -- PRE-CHORUS --
+		    If Len(heading) > 1 Then
+		      heading = " Pre-chorus " + Mid(heading, 2)
+		    Else
+		      heading = " Pre-chorus "
+		    End If
+		    
+		    j = y - g.TextAscent - (g.PenWidth/2)
+		    If (g.PenWidth+3) Mod 2 = 0 Then j = j + 1
+		    g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
+		    j = j + g.TextHeight + 1
+		    g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  ElseIf Uppercase(Left(heading, 1)) = "C" Then   ' -- CHORUS --
+		    prefix = " Chorus"
+		    If Len(heading) > 1 Then prefix = " Chorus "
+		    heading = prefix + Mid(heading, 2) + " "
+		    g.DrawRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading)+g.PenWidth + oddOffset, g.TextHeight+1
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
+		    prefix = " Bridge"
+		    If Len(heading) > 1 Then prefix = " Bridge "
+		    heading = prefix + Mid(heading, 2) + " "    
+		    
+		    //++EMP
+		    //This stuff is here to test an alternative way of drawing,
+		    // but probably isn't any better than the original
+		    //
+		    rr.Width = g.StringWidth(heading) + g.PenWidth + oddOffSet
+		    rr.Height = g.TextHeight + 1
+		    rr.BorderWidth = g.PenWidth
+		    rr.Border = 100 'Temp
+		    rr.CornerHeight = rr.Height / 2
+		    rr.CornerWidth = rr.CornerHeight
+		    rrx = x + g.PenWidth/2+1
+		    rry = y - g.TextAscent
+		    rr.Y = rry + (rr.Height / 2)
+		    rr.X = rrx + (rr.Width / 2)
+		    rr.Fill = 0
+		    rr.BorderColor = g.ForeColor
+		    g.DrawObject rr
+		    'g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
+		    'g.DrawRoundRect rrx, rry, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
+		    //--
+		    
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  ElseIf Uppercase(Left(heading, 1)) = "T" Then   ' -- TAG --
+		    prefix = " Tag"
+		    If Len(heading) > 1 Then prefix = " Tag "
+		    heading = prefix + Mid(heading, 2) + " "
+		    ' Side
+		    g.DrawLine x + g.PenWidth/2, y - g.TextAscent, x + g.PenWidth/2, y+3
+		    ' Bottom
+		    g.DrawLine x + g.PenWidth/2, y+3, x + g.StringWidth(heading) + oddOffset + 2, y+3
+		    g.DrawString heading, x + g.PenWidth+1, y
+		    y = y + g.PenWidth+1
+		  Else
+		    g.DrawString heading, x, y
+		  End If
+		  
+		  g.PenWidth = oldWidth
+		  g.PenHeight = oldHeight
+		  
+		  Return y - oldY
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Draw_HeadingLine
   parm/S: g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, heading As String, Page As Group2D
   rslt/S: Integer
   flag/N: 33
@@ -1350,131 +1573,6 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		      
 		      Return y - oldY
 		    End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Draw_HeadingLine
-  parm/S: g As Graphics, x As Integer, y As Integer, zoom As Double, heading As String
-  rslt/S: Integer
-  flag/N: 33
-  sorc/d: (Enco/N: 134217984
-		Function Draw_HeadingLine(g As Graphics, x As Integer, y As Integer, zoom As Double, heading As String) As Integer
-		  Dim tempFont As FontFace
-		  Dim j, oddOffSet, oldY, oldWidth, oldHeight As Integer
-		  Dim prefix As String
-		  //++
-		  Dim rr As New RoundRectShape
-		  Dim rrx, rry As Integer
-		  Dim PreChorus As String
-		  Dim Chorus As String
-		  Dim Bridge As String
-		  Dim Tag As String
-		  
-		  PreChorus = App.T.Translate("songml/prechorus/@caption")
-		  If PreChorus = "" Then PreChorus = "PreChorus"
-		  Chorus = App.T.Translate("songml/chorus/@caption")
-		  If Chorus = "" Then Chorus = "Chorus"
-		  Bridge = App.T.Translate("songml/bridge/@caption")
-		  If Bridge = "" Then Bridge = "Bridge"
-		  Tag = App.T.Translate("songml/tag/@caption")
-		  If Tag = "" Then Tag = "Tag"
-		  //--
-		  
-		  oldY = y
-		  
-		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "heading")
-		  
-		  oldWidth = g.PenWidth
-		  oldHeight = g.PenHeight
-		  g.PenWidth = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "style/@border_thickness")
-		  g.PenHeight = g.PenWidth
-		  
-		  g.TextFont = tempFont.Name
-		  g.TextSize = tempFont.Size * zoom
-		  g.Bold = tempFont.Bold
-		  g.Italic = tempFont.Italic
-		  g.Underline = tempFont.Underline
-		  g.ForeColor = tempFont.ForeColor
-		  y = y + g.TextHeight
-		  
-		  oddOffSet = 1
-		  If (g.PenWidth+2) Mod 2 = 0 Then oddOffSet = 0
-		  
-		  If Uppercase(Left(heading, 1)) = "V" Then   ' -- VERSE --
-		    heading = " " + Mid(heading, 2) + " "
-		    If Len(heading) = 2 Then heading = " Verse "
-		    g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth+oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  ElseIf Uppercase(Left(heading, 1)) = "P" Then   ' -- PRE-CHORUS --
-		    If Len(heading) > 1 Then
-		      heading = " Pre-chorus " + Mid(heading, 2)
-		    Else
-		      heading = " Pre-chorus "
-		    End If
-		    
-		    j = y - g.TextAscent - (g.PenWidth/2)
-		    If (g.PenWidth+3) Mod 2 = 0 Then j = j + 1
-		    g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
-		    j = j + g.TextHeight + 1
-		    g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  ElseIf Uppercase(Left(heading, 1)) = "C" Then   ' -- CHORUS --
-		    prefix = " Chorus"
-		    If Len(heading) > 1 Then prefix = " Chorus "
-		    heading = prefix + Mid(heading, 2) + " "
-		    g.DrawRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading)+g.PenWidth + oddOffset, g.TextHeight+1
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
-		    prefix = " Bridge"
-		    If Len(heading) > 1 Then prefix = " Bridge "
-		    heading = prefix + Mid(heading, 2) + " "    
-		    
-		    //++EMP
-		    //This stuff is here to test an alternative way of drawing,
-		    // but probably isn't any better than the original
-		    //
-		    rr.Width = g.StringWidth(heading) + g.PenWidth + oddOffSet
-		    rr.Height = g.TextHeight + 1
-		    rr.BorderWidth = g.PenWidth
-		    rr.Border = 100 'Temp
-		    rr.CornerHeight = rr.Height / 2
-		    rr.CornerWidth = rr.CornerHeight
-		    rrx = x + g.PenWidth/2+1
-		    rry = y - g.TextAscent
-		    rr.Y = rry + (rr.Height / 2)
-		    rr.X = rrx + (rr.Width / 2)
-		    rr.Fill = 0
-		    rr.BorderColor = g.ForeColor
-		    g.DrawObject rr
-		    'g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
-		    'g.DrawRoundRect rrx, rry, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
-		    //--
-		    
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  ElseIf Uppercase(Left(heading, 1)) = "T" Then   ' -- TAG --
-		    prefix = " Tag"
-		    If Len(heading) > 1 Then prefix = " Tag "
-		    heading = prefix + Mid(heading, 2) + " "
-		    ' Side
-		    g.DrawLine x + g.PenWidth/2, y - g.TextAscent, x + g.PenWidth/2, y+3
-		    ' Bottom
-		    g.DrawLine x + g.PenWidth/2, y+3, x + g.StringWidth(heading) + oddOffset + 2, y+3
-		    g.DrawString heading, x + g.PenWidth+1, y
-		    y = y + g.PenWidth+1
-		  Else
-		    g.DrawString heading, x, y
-		  End If
-		  
-		  g.PenWidth = oldWidth
-		  g.PenHeight = oldHeight
-		  
-		  Return y - oldY
-		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -1658,6 +1756,77 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Draw_SoloChordLine
+  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, ByRef chords() As String
+  rslt/S: Integer
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function Draw_SoloChordLine(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, ByRef chords() As String) As Integer
+		  Dim oldY, chordHeight, chordWidth, capoChordHeight, capoChordWidth As Integer
+		  Dim tempFont As FontFace
+		  Dim capoChord As String
+		  oldY = y
+		  
+		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
+		  g.TextFont = tempFont.Name
+		  g.TextSize = tempFont.Size * zoom
+		  g.Bold = tempFont.Bold
+		  g.Italic = tempFont.Italic
+		  g.Underline = tempFont.Underline
+		  g.ForeColor = tempFont.ForeColor
+		  chordHeight = g.TextHeight
+		  y = y + g.TextHeight
+		  
+		  Dim i As Integer
+		  
+		  For i = 1 To UBound(chords)
+		    
+		    ' Place Chord
+		    tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
+		    g.TextFont = tempFont.Name
+		    g.TextSize = tempFont.Size * zoom
+		    g.Bold = tempFont.Bold
+		    g.Italic = tempFont.Italic
+		    g.Underline = tempFont.Underline
+		    g.ForeColor = tempFont.ForeColor
+		    chordHeight = g.TextHeight
+		    chordWidth = g.StringWidth(chords(i)) + (g.TextAscent/2) ' Don't get the chords too close together, add a little gap
+		    g.DrawString chords(i), x, y + g.TextHeight - g.TextAscent
+		    
+		    ' Place Capo Chord
+		    If SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print") Then
+		      If MainWindow.pop_song_accidentals.ListIndex = 0 Then
+		        capoChord = SingleTranspose(chords(i), -SmartML.GetValueN(songDoc.DocumentElement, "capo"), True)
+		      Else
+		        capoChord = SingleTranspose(chords(i), -SmartML.GetValueN(songDoc.DocumentElement, "capo"), False)
+		      End If
+		      
+		      tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
+		      g.TextFont = tempFont.Name
+		      g.TextSize = tempFont.Size * zoom
+		      g.Bold = tempFont.Bold
+		      g.Italic = tempFont.Italic
+		      g.Underline = tempFont.Underline
+		      g.ForeColor = tempFont.ForeColor
+		      capoChordHeight = g.TextAscent
+		      capoChordWidth = g.StringWidth(capoChord) + (g.TextAscent/2) 'Don't get the chords too close together, add a little gap
+		      g.DrawString capoChord, x, y + capoChordHeight + g.TextHeight - g.TextAscent
+		      If capoChordWidth > chordWidth Then chordWidth = capoChordWidth
+		    Else
+		      capoChordHeight = 0
+		    End If
+		    
+		    x = x + chordWidth
+		    
+		  Next i
+		  
+		  y = y + capoChordHeight
+		  Return y - oldY
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Draw_SoloChordLine
   parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef chords() As String, ByRef Page As Group2D
   rslt/S: Integer
   flag/N: 33
@@ -1734,77 +1903,6 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  Next i
 		  
 		  y = y + capoChordHeight + chordHeight
-		  Return y - oldY
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Draw_SoloChordLine
-  parm/S: songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, ByRef chords() As String
-  rslt/S: Integer
-  flag/N: 33
-  sorc/d: (Enco/N: 134217984
-		Function Draw_SoloChordLine(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, zoom As Double, ByRef chords() As String) As Integer
-		  Dim oldY, chordHeight, chordWidth, capoChordHeight, capoChordWidth As Integer
-		  Dim tempFont As FontFace
-		  Dim capoChord As String
-		  oldY = y
-		  
-		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
-		  g.TextFont = tempFont.Name
-		  g.TextSize = tempFont.Size * zoom
-		  g.Bold = tempFont.Bold
-		  g.Italic = tempFont.Italic
-		  g.Underline = tempFont.Underline
-		  g.ForeColor = tempFont.ForeColor
-		  chordHeight = g.TextHeight
-		  y = y + g.TextHeight
-		  
-		  Dim i As Integer
-		  
-		  For i = 1 To UBound(chords)
-		    
-		    ' Place Chord
-		    tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
-		    g.TextFont = tempFont.Name
-		    g.TextSize = tempFont.Size * zoom
-		    g.Bold = tempFont.Bold
-		    g.Italic = tempFont.Italic
-		    g.Underline = tempFont.Underline
-		    g.ForeColor = tempFont.ForeColor
-		    chordHeight = g.TextHeight
-		    chordWidth = g.StringWidth(chords(i)) + (g.TextAscent/2) ' Don't get the chords too close together, add a little gap
-		    g.DrawString chords(i), x, y + g.TextHeight - g.TextAscent
-		    
-		    ' Place Capo Chord
-		    If SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print") Then
-		      If MainWindow.pop_song_accidentals.ListIndex = 0 Then
-		        capoChord = SingleTranspose(chords(i), -SmartML.GetValueN(songDoc.DocumentElement, "capo"), True)
-		      Else
-		        capoChord = SingleTranspose(chords(i), -SmartML.GetValueN(songDoc.DocumentElement, "capo"), False)
-		      End If
-		      
-		      tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
-		      g.TextFont = tempFont.Name
-		      g.TextSize = tempFont.Size * zoom
-		      g.Bold = tempFont.Bold
-		      g.Italic = tempFont.Italic
-		      g.Underline = tempFont.Underline
-		      g.ForeColor = tempFont.ForeColor
-		      capoChordHeight = g.TextAscent
-		      capoChordWidth = g.StringWidth(capoChord) + (g.TextAscent/2) 'Don't get the chords too close together, add a little gap
-		      g.DrawString capoChord, x, y + capoChordHeight + g.TextHeight - g.TextAscent
-		      If capoChordWidth > chordWidth Then chordWidth = capoChordWidth
-		    Else
-		      capoChordHeight = 0
-		    End If
-		    
-		    x = x + chordWidth
-		    
-		  Next i
-		  
-		  y = y + capoChordHeight
 		  Return y - oldY
 		End Function
   )
@@ -2439,6 +2537,7 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  '--
 		  Dim slides, slide As XmlNode
 		  Dim order As String
+		  Dim SubtitleText As String
 		  
 		  ' This routine makes an in-place change of a song XML encoding to slides for use in a set.  The
 		  'XML node that we are passed is modified in-place instead of creating a new one.  That way,
@@ -2449,151 +2548,49 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  SmartML.SetValue songElement, "@name", SmartML.GetValue(songElement, "title", True)
 		  SmartML.SetValue songElement, "@type", "song"
 		  
-		  //++EMP, 12/05
-		  // Converted to support multiple subtitles
-		  Dim Subtitles(-1) As String
-		  Dim SubtitleOptions As String
-		  Dim SubtitleText As String
-		  Dim Separator As String
-		  Dim CurrSubtitle As Integer
-		  
 		  Call SmartML.InsertChild(songElement, "subtitle", 0) 
-		  //Check for a direct override on subtitles in the style for the slide
-		  '++JRC: Fixed, style is not passed in songElement so use second parameter instead
-		  'SubtitleOptions = SmartML.GetValue(songElement, "style/song_subtitle", False)
-		  if style <> Nil then
-		    SubtitleOptions = SmartML.GetValue(style, "style/song_subtitle", False)
-		  end if
-		  '--
-		  If Len(SubtitleOptions) = 0 Then
-		    SubtitleOptions = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "default_style/song_subtitle")
-		  End If
-		  Subtitles = Split(SubtitleOptions, "|")
-		  Separator = App.T.Translate("songml/separator/@caption")
-		  If Separator = "|NL|" Then Separator = Chr(10)
 		  
-		  For CurrSubtitle = 0 To UBound(Subtitles)
-		    Select Case Subtitles(CurrSubtitle)
-		      
-		    Case "copyright"
-		      
-		      If Len(SmartML.GetValue(songElement, "copyright")) > 0 Then
-		        If Len(SubtitleText)  > 0 Then SubtitleText = SubtitleText + Separator
-		        '++JRC 12/05
-		        'Made the extra text optional
-		        If InStr(ConvertEncoding(SmartML.GetValue(songElement, "copyright"), Encodings.UTF8), Encodings.UTF8.Chr(169)) = 0 And _'Copyright symbol?
-		            SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info") = true Then 
-		          '--
-		          SubtitleText = SubtitleText + App.T.Translate("songml/copyright/@caption") + " " + _
-		              App.T.Translate("songml/symbol/@caption") + " "
-		        End If
-		        SubtitleText = SubtitleText + SmartML.GetValue(songElement, "copyright")
+		  SubtitleText = BuildSubtitle(songElement, style)
+		  
+		  App.DebugWriter.Write(Chr(9) + "Subtitle Text: '" + SubtitleText + "'")
+		  
+		  'Update subtitle
+		  SmartML.SetValue(songElement, "subtitle", SubtitleText)
+		  //--
+		  slides = SmartML.GetNode(songElement, "slides", True)
+		  
+		  Dim dict As New Dictionary
+		  Dim sub_section, sub_sections(), section, sections() As String
+		  
+		  LyricsToSections songElement, dict, order
+		  
+		  Dim presentation As string
+		  
+		  presentation = SmartML.GetValue(songElement, "presentation", True)
+		  'sections = Split(Trim(SmartML.GetValue(songElement, "presentation", True)), " ")
+		  sections = Split(Trim(presentation), " ")
+		  
+		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
+		  
+		  For Each section In sections
+		    If dict.HasKey(section) Then
+		      sub_sections = Split(dict.Value(section), "||")
+		        For Each sub_section In sub_sections
+		          slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
+		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section)))
+		          If section = "default" Then
+		            SmartML.SetValue(slide, "@id", "")
+		          Else
+		            SmartML.SetValue(slide, "@id", section)
+		          End If
+		          If Lowercase(Left(section, 1)) = "c" Then
+		            SmartML.SetValueB(slide, "@emphasize", True)
+		          End If
+		        Next
 		      End If
-		      
-		    Case "hymn_number"
-		      
-		      If Len(SmartML.GetValue(songElement, "hymn_number")) > 0Then
-		      If Len(SubtitleText)  > 0 Then SubtitleText = SubtitleText + Separator
-		      '++JRC 12/05
-		      'Made the extra text optional
-		      if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info") = true then
-		        SubtitleText = SubtitleText + App.T.Translate("songml/hymn_number/@caption") + " " + _
-		            SmartML.GetValue(songElement, "hymn_number")
-		      else
-		        SubtitleText = SubtitleText + SmartML.GetValue(songElement, "hymn_number")
-		      end if
-		      '--
-		    End If
+		    Next
 		    
-		  Case "author"
-		    
-		    If Len(SmartML.GetValue(songElement, "author")) > 0 Then
-		      If Len(SubtitleText)  > 0 Then SubtitleText = SubtitleText + Separator
-		      '++JRC 12/05
-		      'Made the extra text optional
-		      if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info") = true then
-		        SubtitleText = SubtitleText + App.T.Translate("songml/author/@caption") + " " + _
-		            SmartML.GetValue(songElement, "author")
-		      else
-		        SubtitleText = SubtitleText + SmartML.GetValue(songElement, "author")
-		      end if
-		      '--
-		    End If
-		    
-		  Case "ccli_number"
-		    
-		    If Len(SmartML.GetValue(songElement, "ccli")) > 0 Then
-		      If Len(SubtitleText)  > 0 Then SubtitleText = SubtitleText + Separator
-		      '++JRC 12/05
-		      'Made the extra text optional
-		      if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info") = true then
-		        SubtitleText = SubtitleText + App.T.Translate("songml/ccli_number/@caption") + " " + _
-		            SmartML.GetValue(songElement, "ccli")
-		      else
-		        SubtitleText = SubtitleText + SmartML.GetValue(songElement, "ccli")
-		      end if
-		      '--
-		    End If
-		    
-		  Case "ccli_license"
-		    
-		    If Len(SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")) > 0 Then
-		      If Len(SubtitleText)  > 0 Then SubtitleText = SubtitleText + Separator
-		      '++JRC 12/05
-		      'Made the extra text optional
-		      if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@descriptive_subtitle_info") = true then
-		        SubtitleText = SubtitleText + App.T.Translate("songml/ccli_license/@caption") + " " + _
-		            SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")
-		      else
-		        SubtitleText = SubtitleText + SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")
-		      end if
-		      '--
-		    End If
-		    
-		  Case Else
-		    App.DebugWriter.Write Chr(9)  + "Unexpected subtitle requested: " + Subtitles(CurrSubtitle)
-		  End Select
-		Next CurrSubtitle
-		
-		App.DebugWriter.Write(Chr(9) + "Subtitle Text: '" + SubtitleText + "'")
-		
-		'Update subtitle
-		SmartML.SetValue(songElement, "subtitle", SubtitleText)
-		//--
-		slides = SmartML.GetNode(songElement, "slides", True)
-		
-		Dim dict As New Dictionary
-		Dim sub_section, sub_sections(), section, sections() As String
-		
-		LyricsToSections songElement, dict, order
-		
-		Dim presentation As string
-		
-		presentation = SmartML.GetValue(songElement, "presentation", True)
-		'sections = Split(Trim(SmartML.GetValue(songElement, "presentation", True)), " ")
-		sections = Split(Trim(presentation), " ")
-		
-		If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
-		
-		For Each section In sections
-		  If dict.HasKey(section) Then
-		    sub_sections = Split(dict.Value(section), "||")
-		      For Each sub_section In sub_sections
-		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section)))
-		        If section = "default" Then
-		          SmartML.SetValue(slide, "@id", "")
-		        Else
-		          SmartML.SetValue(slide, "@id", section)
-		        End If
-		        If Lowercase(Left(section, 1)) = "c" Then
-		          SmartML.SetValueB(slide, "@emphasize", True)
-		        End If
-		      Next
-		    End If
-		  Next
-		  
-		End Sub
+		  End Sub
   )
  Meth/g: 
  Meth/G: 

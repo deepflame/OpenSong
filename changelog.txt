@@ -1,8 +1,16 @@
 -= 1.0 Beta 2 JRC =-
 
+-= 1.0 Baselevel 15 =-
+
+* Moved subtitle creation from SongML.ToSetML to new method SongML.BuildSubtitles to enhance readability and maintainability.
+
+-= 1.0 RC 1 Baselevel 14 =-
+
+* Running Presenter from Song mode will now display using the song's specific style rather than the default style.
+
 *Added Bible Book label to ScripturePicker
 
-*Fixed presenting song subtitles that somehow got broken
+*Fixed presenting song subtitles that somehow got broken -- badly. Descriptive Subtitles had no chance of working.
 
 *Fixed ScripturePicker can now select Genesis & Matthew (Silly Ed :)
 
@@ -14,7 +22,7 @@
 
 *Add text the Scripture preview when starting ScripturePicker
 
-*Changed the way we prompt for unsaved changes to a song, to Yes,No,Cancel [Bug 1468060]
+*Changed the way we prompt for unsaved changes to a song, to Yes,No,Cancel [Bug 1468060]. Still on the "to do" list is to fix this all throughout OpenSong, so additional bug reports aren't necessary...we want this as much as you do.  Deleted SaveDialog class previously added to code but not used (a utility routine is sufficient).
 
 *Prompt for unsaved changes before importing song
 
@@ -23,6 +31,12 @@
 *Removed second save prompt when moving song
 
 *Prevent OutOfBounds Exception when Removing unsaved set item
+
+* Set conditional compiles to support building Mach-O targets on Mac (OS X-only binary).  Source now compiles for Mac without change on RB2006 r4.  Mac binaries will now be distributed in bundle format (OpenSong.app vs. single file).
+
+* New "About" dialog.  Updated contributors list.
+
+* Added more error traps to the Image Chooser Window (used for selecting background images) in an effort to resolve bug 1604503.
 
 -= 1.0 Beta 2 Baselevel 13 =-
 

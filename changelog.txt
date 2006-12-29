@@ -1,5 +1,7 @@
 -= 1.0 Beta 2 JRC =-
 
+*Fixed remembering previously selected From & To Verses when changing Bibles in ScripturePicker (Silly Josh :)
+
 -= 1.0 Baselevel 15 =-
 
 * Moved subtitle creation from SongML.ToSetML to new method SongML.BuildSubtitles to enhance readability and maintainability.

@@ -1,5 +1,9 @@
 -= 1.0 Beta 2 JRC =-
 
+*Prevent bizzar second Prompt for unsaved changes to a Song when exiting
+
+*Fixed Style Change set item to allow Subtitle Options
+
 *Fixed remembering previously selected From & To Verses when changing Bibles in ScripturePicker (Silly Josh :)
 
 -= 1.0 Baselevel 15 =-

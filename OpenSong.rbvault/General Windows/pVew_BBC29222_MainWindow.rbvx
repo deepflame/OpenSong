@@ -1396,7 +1396,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      rad_style_revert.Value = True
 		    End If
 		    can_style_style.SetStyleNode SmartML.GetNode(xgroup, "style")
-		    
+		    '++JRC Hack: Not really a SongStyle, but this will allow the use of Subtitle Options
+		    can_style_style.SongStyle = True
+		    '--
 		    Status_InSetOpen = True
 		    Status_InSetEditable = True
 		    Status_InSetChanged = False
@@ -1453,6 +1455,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  'EnableMenuItems
 		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: ExpandRow
+   sorc/d: (Enco/N: 134217984
+		Sub ExpandRow(row As Integer)
+		  
+		End Sub
    )
   HIns/g: 
   HIns/G: 
@@ -10066,7 +10077,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainWindow
-  Size/N: 242
+  Size/N: 234
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -10098,12 +10109,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: CancelClose
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 1
 		Function CancelClose(appQuitting as Boolean) As Boolean
 		  If Status_SongChanged Then 
 		    'Ask if user wants to save
-		    If NOT ActionSongAskSave Then  Return True 'User Canceled, Cancel the Close
-		  End If
+		    If NOT ActionSongAskSave Then Return True 'User Canceled, Cancel the Close
+		    'This will prevent a bizzar second save prompt
+		    Status_SongChanged = false
+		  End if
 		  
 		  // Cancel the close if we're presenting.
 		  If Status_Presentation Then Return True

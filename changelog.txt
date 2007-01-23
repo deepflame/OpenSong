@@ -1,5 +1,11 @@
 -= 1.0 Baselevel 15 =-
 
+* Prevent bizarre second prompt for unsaved changes to a Song when exiting
+
+* Fixed Style Change set item to allow Subtitle Options
+
+* Fixed remembering previously selected From & To Verses when changing Bibles in ScripturePicker
+
 * Moved subtitle creation from SongML.ToSetML to new method SongML.BuildSubtitles to enhance readability and maintainability.
 
 -= 1.0 RC 1 Baselevel 14 =-

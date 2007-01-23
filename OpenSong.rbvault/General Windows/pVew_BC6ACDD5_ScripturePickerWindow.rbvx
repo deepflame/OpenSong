@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -144,8 +144,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		        lst_scr_ot.Listindex = NewBook - 1
 		      End If
 		      If OldChapter <= App.MyBible.GetChapterCount(NewBook + 1) Then lst_scr_chapter.ListIndex = OldChapter - 1
-		      If OldVerse <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_from_verse.ListIndex+1)Then lst_scr_from_verse.ListIndex = OldVerse - 1
-		      If OldThru <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_to_verse.ListIndex+1) Then lst_scr_to_verse.ListIndex = OldThru - 1
+		      If OldVerse <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_chapter.ListIndex+1)Then lst_scr_from_verse.ListIndex = OldVerse - 1
+		      If OldThru <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_chapter.ListIndex+1) Then lst_scr_to_verse.ListIndex = OldThru - 1
 		      
 		    Else 'Old Bible book not found, use default
 		      if lst_scr_ot.ListCount>0 then 'have it select Matthew (assuming there is a Matthew) if bible is just nt
@@ -1577,7 +1577,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 196
+  Size/N: 188
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

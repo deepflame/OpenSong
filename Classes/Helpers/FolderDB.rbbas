@@ -445,7 +445,7 @@ Class FolderDB
 		  Dim s As String
 		  
 		  NumFiles = 0
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  AddFolderToCache Folder
 		  

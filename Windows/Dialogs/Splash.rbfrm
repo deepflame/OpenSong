@@ -31,6 +31,10 @@ Begin Window Splash
       Top             =   256
       Mode            =   2
       Period          =   1000
+      Height          =   32
+      Width           =   32
+      TextFont        =   "System"
+      TextSize        =   0
       InitialParent   =   ""
       TabPanelIndex   =   0
       BehaviorIndex   =   0
@@ -50,7 +54,7 @@ End
 	#tag Event
 		Sub Open()
 		  App.SplashShowing = True
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  secondsOpen = 0
 		  closeTimer.Reset
 		  closeTimer.Enabled = True

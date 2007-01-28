@@ -26,7 +26,7 @@ Inherits SBufferedCanvas
 		  //
 		  Dim Style As SlideStyle
 		  //--EMP
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  If Enabled Then
 		    If StyleNode <> Nil Then
 		      Style = New SlideStyle(StyleNode) 'EMP 09/05

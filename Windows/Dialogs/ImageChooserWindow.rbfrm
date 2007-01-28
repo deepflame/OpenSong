@@ -35,7 +35,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "True"
       LockRight       =   "True"
       LockBottom      =   "True"
-      TabPanelIndex   =   0
       Enabled         =   True
       Visible         =   True
       HelpTag         =   ""
@@ -48,6 +47,9 @@ Begin Window ImageChooserWindow
       LiveScroll      =   "False"
       AcceptFocus     =   "true"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   0
    End
    Begin Separator sep_1
@@ -61,12 +63,14 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "True"
       LockBottom      =   "True"
-      TabPanelIndex   =   0
       InitialParent   =   ""
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
       Enabled         =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   1
    End
    Begin StaticText txt_path
@@ -80,7 +84,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   1
       TextColor       =   0
@@ -97,6 +100,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   2
    End
    Begin PushButton btn_browse
@@ -110,7 +114,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "True"
-      TabPanelIndex   =   0
       Caption         =   "Browse..."
       Default         =   "False"
       Cancel          =   "False"
@@ -124,6 +127,7 @@ Begin Window ImageChooserWindow
       Italic          =   "False"
       Underline       =   "False"
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   3
    End
    Begin PushButton btn_cancel
@@ -137,7 +141,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "True"
-      TabPanelIndex   =   0
       Caption         =   "Cancel"
       Default         =   "False"
       Cancel          =   "True"
@@ -151,6 +154,7 @@ Begin Window ImageChooserWindow
       Italic          =   "False"
       Underline       =   "False"
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   4
    End
    Begin Canvas can
@@ -164,7 +168,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -175,6 +178,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -188,7 +194,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -199,6 +204,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -212,7 +220,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -223,6 +230,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -236,7 +246,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -247,6 +256,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -260,7 +272,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -271,6 +282,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -284,7 +298,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -295,6 +308,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -308,7 +324,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -319,6 +334,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -332,7 +350,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -343,6 +360,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -356,7 +376,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -367,6 +386,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -380,7 +402,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -391,6 +412,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -404,7 +428,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -415,6 +438,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -428,7 +454,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -439,6 +464,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -452,7 +480,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -463,6 +490,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -476,7 +506,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -487,6 +516,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -500,7 +532,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -511,6 +542,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -524,7 +558,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -535,6 +568,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -548,7 +584,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -559,6 +594,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -572,7 +610,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -583,6 +620,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -596,7 +636,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -607,6 +646,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin Canvas can
@@ -620,7 +662,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -631,6 +672,9 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   5
    End
    Begin StaticText nte_name
@@ -644,7 +688,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -661,6 +704,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -674,7 +718,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -691,6 +734,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -704,7 +748,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -721,6 +764,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -734,7 +778,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -751,6 +794,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -764,7 +808,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -781,6 +824,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -794,7 +838,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -811,6 +854,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -824,7 +868,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -841,6 +884,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -854,7 +898,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -871,6 +914,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -884,7 +928,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -901,6 +944,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -914,7 +958,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -931,6 +974,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -944,7 +988,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -961,6 +1004,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -974,7 +1018,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -991,6 +1034,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -1004,7 +1048,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -1021,6 +1064,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -1034,7 +1078,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -1051,6 +1094,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -1064,7 +1108,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -1081,6 +1124,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -1094,7 +1138,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -1111,6 +1154,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -1124,7 +1168,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -1141,6 +1184,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -1154,7 +1198,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -1171,6 +1214,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -1184,7 +1228,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -1201,6 +1244,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
    Begin StaticText nte_name
@@ -1214,7 +1258,6 @@ Begin Window ImageChooserWindow
       LockTop         =   "False"
       LockRight       =   "False"
       LockBottom      =   "False"
-      TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
@@ -1231,6 +1274,7 @@ Begin Window ImageChooserWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
+      TabPanelIndex   =   0
       BehaviorIndex   =   6
    End
 End
@@ -1288,7 +1332,7 @@ End
 		    folderIndex = 1
 		  End If
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  For i = 1 To BackgroundFolder.Count
 		    If BackgroundFolder.Item(i).Name <> "thumbs.db" _
 		      And InStr("._", Left(BackgroundFolder.Item(i).Name, 1)) = 0 Then
@@ -1366,7 +1410,7 @@ End
 #tag EndEvents
 #tag Events can
 	#tag Event
-		Function MouseDown(index as Integer, X As Integer, Y As Integer) As Boolean
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Also replaced (and modified) hard coded argument with variable.
 		  Dim ImgNdx as Integer
@@ -1389,7 +1433,7 @@ End
 		End Function
 	#tag EndEvent
 	#tag Event
-		Sub Paint(index as Integer, g As Graphics)
+		Sub Paint(g As Graphics)
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Replaced (and modified) hard coded argument with variable.
 		  // JDL 2/01/2006  Replaced pic.Depth with variable picDepth
@@ -1400,7 +1444,7 @@ End
 		  Dim ImgNdx, picDepth as Integer                                            // JDL 2/01/2006
 		  ImgNdx = scr_vertical.Value * COLS + Index + 1                    // JDL 2/01/2006
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  If ImgNdx <= UBound(ImageFiles) Then                                  // JDL 2/01/2006
 		    g.TextSize = 8

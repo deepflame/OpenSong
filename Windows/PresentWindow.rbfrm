@@ -35,7 +35,6 @@ Begin Window PresentWindow
       LockTop         =   "True"
       LockRight       =   "True"
       LockBottom      =   "True"
-      TabPanelIndex   =   0
       Visible         =   True
       HelpTag         =   ""
       AutoDeactivate  =   "True"
@@ -46,27 +45,38 @@ Begin Window PresentWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
+      TextFont        =   "System"
+      TextSize        =   0
+      TabPanelIndex   =   0
       BehaviorIndex   =   0
-      Begin Timer timerAdvance
-         Index           =   -2147483648
-         ControlOrder    =   1
-         Left            =   248
-         Top             =   248
-         Mode            =   0
-         Period          =   10000
-         InitialParent   =   "cnvSlide"
-         TabPanelIndex   =   0
-         BehaviorIndex   =   1
-      End
-      Begin Timer timerTransition
-         Index           =   -2147483648
-         ControlOrder    =   2
-         Left            =   204
-         Top             =   248
-         Mode            =   0
-         Period          =   125
-         BehaviorIndex   =   2
-      End
+   End
+   Begin Timer timerAdvance
+      Index           =   -2147483648
+      ControlOrder    =   1
+      Left            =   248
+      Top             =   248
+      Mode            =   0
+      Period          =   10000
+      Height          =   32
+      Width           =   32
+      TextFont        =   "System"
+      TextSize        =   0
+      InitialParent   =   "cnvSlide"
+      TabPanelIndex   =   0
+      BehaviorIndex   =   1
+   End
+   Begin Timer timerTransition
+      Index           =   -2147483648
+      ControlOrder    =   2
+      Left            =   204
+      Top             =   248
+      Mode            =   0
+      Period          =   125
+      Height          =   32
+      Width           =   32
+      TextFont        =   "System"
+      TextSize        =   0
+      BehaviorIndex   =   2
    End
 End
 #tag EndWindow
@@ -797,7 +807,7 @@ End
 		    newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
 		    temp = Mode
 		    If ScripturePickerWindow.Popup(newGroup, True) Then
-		      App.MouseCursor = WatchCursor
+		      App.MouseCursor = System.Cursors.Wait
 		      
 		      ' --- Move to where we need to be ---
 		      temp = SmartML.GetValue(newGroup, "@name")
@@ -879,7 +889,7 @@ End
 		    newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
 		    f = SongPickerWindow.Popup
 		    If f <> Nil Then
-		      App.MouseCursor = WatchCursor
+		      App.MouseCursor = System.Cursors.Wait
 		      
 		      s = SmartML.XDocFromFile(f)
 		      SongML.ToSetML s.DocumentElement
@@ -966,26 +976,26 @@ End
 		  // Add a generic exception handler in an attempt to keep from bailing out
 		  // TODO: This needs to log somewhere and notify the operator after the presentation is done.
 		  //
-		Exception ex
-		  // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		  // return to the caller.
-		  //
-		  If XCurrentSlide = Nil Then
-		    // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		    // how do you keep XCurrentSlide and CurrentSlide in sync?
-		    // (perhaps look at xNewSlide to get close to the original location?)
-		    CurrentSlide = 1
-		    XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		  End If
-		  // Put up wherever we're at now (and pray!)
-		  If HelperActive Then
-		    PresentHelperWindow.SetMode Mode
-		  Else
-		    ResetPaint XCurrentSlide
-		  End If
-		  
-		  Return False // Show that it failed
-		  //--EMP 15 Jan 06
+		  Exception ex
+		    // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		    // return to the caller.
+		    //
+		    If XCurrentSlide = Nil Then
+		      // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		      // how do you keep XCurrentSlide and CurrentSlide in sync?
+		      // (perhaps look at xNewSlide to get close to the original location?)
+		      CurrentSlide = 1
+		      XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		    End If
+		    // Put up wherever we're at now (and pray!)
+		    If HelperActive Then
+		      PresentHelperWindow.SetMode Mode
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
+		    
+		    Return False // Show that it failed
+		    //--EMP 15 Jan 06
 		End Function
 	#tag EndMethod
 
@@ -1005,7 +1015,7 @@ End
 		  Dim presentScreen, controlScreen As Integer
 		  Dim insertBlanks As Boolean
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  //++EMP
 		  Dim tempSet As XmlNode
 		  Dim StyleNodes As XmlNodeList
@@ -1205,7 +1215,7 @@ End
 		  Case "hidden"
 		    Self.MouseCursor = hidden
 		  Case "hourglass"
-		    Self.MouseCursor = WatchCursor
+		    Self.MouseCursor = System.Cursors.Wait
 		  Case "ibeam"
 		    Self.MouseCursor = IBeamCursor
 		  Else

@@ -37,112 +37,7 @@ Inherits Application
 		  End If
 		  
 		  Splash.SetStatus "Creating/Checking documents folders..."
-		  
-		  Dim docsPath As String
-		  ' --- CREATE DOCUMENTS FOLDER ---
-		  docsPath = SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder", False)
-		  If Len(docsPath) > 0 Then
-		    DocsFolder = FileUtils.AbsolutePathToFolderItem(docsPath)
-		  Else
-		    DocsFolder = DocumentsFolder.Child("OpenSong")
-		  End If
-		  If DocsFolder = Nil Then DocsFolder = DocumentsFolder.Child("OpenSong")
-		  
-		  ' Create whatever sub-folders are needed
-		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Exists Then
-		    App.MouseCursor = Nil
-		    MsgBox "Can't find Defaults folder: " + AppFolder.Child("OpenSong Defaults").AbsolutePath
-		    Quit
-		  End If
-		  //--
-		  If Not DocsFolder.Exists Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults"), DocsFolder) Then
-		      App.MouseCursor = Nil
-		      MsgBox "Could not find Documents folder (" + DocsFolder.AbsolutePath + ") or could not create OpenSong folder."
-		      Quit
-		    End If
-		  End If
-		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists Then
-		    App.MouseCursor = Nil
-		    MsgBox "Can't find default Settings folder: " + AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath
-		    Quit
-		  End If
-		  //--
-		  If Not DocsFolder.Child("Settings").Exists Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
-		      App.MouseCursor = Nil
-		      MsgBox "Could not create/edit Settings folder."
-		      Quit
-		    End If
-		  End If
-		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Songs").Exists Then
-		    App.MouseCursor = Nil
-		    MsgBox "Can't find default Songs folder: " + AppFolder.Child("OpenSong Defaults").Child("Songs").AbsolutePath
-		    Quit
-		  End If
-		  //--
-		  If Not DocsFolder.Child("Songs").Exists Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Songs"), DocsFolder.Child("Songs")) Then
-		      App.MouseCursor = Nil
-		      MsgBox "Could not create/edit Songs folder."
-		      Quit
-		    End If
-		  End If
-		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Sets").Exists Then
-		    App.MouseCursor = Nil
-		    MsgBox "Can't find default Sets folder: " + AppFolder.Child("OpenSong Defaults").Child("Sets").AbsolutePath
-		    Quit
-		  End If
-		  //--
-		  If Not DocsFolder.Child("Sets").Exists Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Sets"), DocsFolder.Child("Sets")) Then
-		      App.MouseCursor = Nil
-		      MsgBox "Could not create/edit Sets folder."
-		      Quit
-		    End If
-		  End If
-		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists Then
-		    App.MouseCursor = Nil
-		    MsgBox "Can't find default Settings folder: " + AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath
-		    Quit
-		  End If
-		  //--
-		  If Not DocsFolder.Child("Settings").Exists Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
-		      App.MouseCursor = Nil
-		      MsgBox "Could not create/edit Settings folder."
-		      Quit
-		    End If
-		  End If
-		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Exists Then
-		    App.MouseCursor = Nil
-		    MsgBox "Can't find default Backgrounds folder: " + AppFolder.Child("OpenSong Defaults").Child("Backgrounds").AbsolutePath
-		    Quit
-		  End If
-		  //--
-		  If Not DocsFolder.Child("Backgrounds").Exists Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Backgrounds"), DocsFolder.Child("Backgrounds")) Then
-		      App.MouseCursor = Nil
-		      MsgBox "Could not create/edit Backgrounds folder."
-		      Quit
-		    End If
-		  End If
-		  
-		  If (Not DocsFolder.Exists) Or _
-		    (Not DocsFolder.Child("Songs").Exists) Or _
-		    (Not DocsFolder.Child("Sets").Exists) Or _
-		    (Not DocsFolder.Child("Settings").Exists) Or _
-		    (Not DocsFolder.Child("Backgrounds").Exists) Then
-		    App.MouseCursor = Nil
-		    MsgBox "Internal folder error. Contact technical support."
-		    Quit
-		  End If
+		  CheckCreateFolders()
 		  
 		  Dim xml As XmlDocument
 		  Dim xnode As XmlNode
@@ -237,62 +132,85 @@ Inherits Application
 		    checkVer.Run
 		  End If
 		  
-		  //++ EMP, 17 Feb 06
-		  // Joshua's audio add-on isn't cross-platform ready, so it's commented out
-		  // for the mainstream release
-		  //--
-		  ''++JRC:
-		  'dim error As integer
-		  'dim ToFind As  MemoryBlock
-		  'dim found As  MemoryBlock
-		  'dim s As string
-		  'dim plugin As string
-		  'Declare Function FindFiles lib "Utility.dll" (ToFind as Ptr, Found as Ptr, NewSearch as boolean) as integer
-		  '
-		  'Splash.SetStatus T.Translate("load_settings/init_audio") + "..."
-		  'Globals.SXMSAudio = New SXMS
-		  'Globals.SXMSAudio.SXMSWinampInit
-		  'error = Globals.SXMSAudio.SXMSWinampLoadPlugOut("out_wave.dll")
-		  '
-		  'Splash.SetStatus T.Translate("load_settings/load_plugins") + "..."
-		  '
-		  'ToFind = NewMemoryBlock(255)
-		  'ToFind.CString(0) = AppFolder.Child("Plugins").AbsolutePath + "*.dll"
-		  'found = NewMemoryBlock(128)
-		  'error = FindFiles(ToFind, found, true)
-		  '
-		  'while error <> -1
-		  'if found.CString(0) <> "" then
-		  'plugin = AppFolder.Child("Plugins").AbsolutePath + found.CString(0)
-		  'call Globals.SXMSAudio.SXMSWinampLoadPlugIn(plugin)
-		  's = Globals.SXMSAudio.SXMSWinampGetExt
-		  '
-		  'if s <> "" then
-		  'Globals.AudioPluginFormats = Globals.AudioPluginFormats + found.CString(0) + "|" + s + "|"
-		  'end if
-		  'end if
-		  '
-		  'error = FindFiles(ToFind, found, false)
-		  '
-		  'wend
-		  '
-		  'Globals.MakeFilterArray
-		  ''MsgBox Globals.AudioPluginFormats
-		  ''--
-		  '
-		  '++JRC
+		  ' Initialize whitespaces
 		  Globals.WhitespaceChars.Append " "
 		  Globals.WhitespaceChars.Append Chr(ENTER)
-		  '--
+		  
+		  ' Translate the Menus
 		  T.TranslateMenu("main_menu", MainMenu)
 		  
+		  ' Start the show ...
 		  MainWindow.Show
 		End Sub
 	#tag EndEvent
 
 	#tag Event
 		Function UnhandledException(error As RuntimeException) As Boolean
-		  Call MsgBox("Top level exception handler, error is " + error.Message, 16, "Last Chance")
+		  Dim Popup As New ErrorPopup
+		  Dim i As Integer
+		  Dim StackTrace() As String
+		  
+		  'workaround, RB starts whining when I refer to error.Stack(i) directly
+		  StackTrace = error.Stack
+		  
+		  'The exception's type is not part of the error message :(
+		  If error IsA FunctionNotFoundException Then
+		    Popup.ErrorDescription.Text = "FunctionNotFoundException"
+		  ElseIf error IsA IllegalCastException Then
+		    Popup.ErrorDescription.Text = "IllegalCastException"
+		  ElseIf error IsA InvalidParentException Then
+		    Popup.ErrorDescription.Text = "InvalidParentException"
+		  ElseIf error IsA KeyChainException Then
+		    Popup.ErrorDescription.Text = "KeyChainException"
+		  ElseIf error IsA KeyNotFoundException Then
+		    Popup.ErrorDescription.Text = "KeyNotFoundException"
+		  ElseIf error IsA NilObjectException Then
+		    Popup.ErrorDescription.Text = "NilObjectException"
+		  ElseIf error IsA OLEException Then
+		    Popup.ErrorDescription.Text = "OLEException"
+		  ElseIf error IsA OutOfBoundsException Then
+		    Popup.ErrorDescription.Text = "OutOfBoundsException"
+		  ElseIf error IsA OutOfMemoryException Then
+		    Popup.ErrorDescription.Text = "OutOfMemoryException"
+		  ElseIf error IsA RbScriptAlreadyRunningException Then
+		    Popup.ErrorDescription.Text = "RbScriptAlreadyRunningException"
+		  ElseIf error IsA RegExException Then
+		    Popup.ErrorDescription.Text = "RegExException"
+		  ElseIf error IsA RegistryAccessErrorException Then
+		    Popup.ErrorDescription.Text = "RegistryAccessErrorException"
+		  ElseIf error IsA ShellNotRunningException Then
+		    Popup.ErrorDescription.Text = "ShellNotRunningException"
+		  ElseIf error IsA SOAPException Then
+		    Popup.ErrorDescription.Text = "SOAPException"
+		  ElseIf error IsA SpotlightException Then
+		    Popup.ErrorDescription.Text = "SpotlightException"
+		  ElseIf error IsA StackOverflowException Then
+		    Popup.ErrorDescription.Text = "StackOverflowException"
+		  ElseIf error IsA ThreadAlreadyRunningException Then
+		    Popup.ErrorDescription.Text = "ThreadAlreadyRunningException"
+		  ElseIf error IsA TypeMismatchException Then
+		    Popup.ErrorDescription.Text = "TypeMismatchException"
+		  ElseIf error IsA UnsupportedFormatException Then
+		    Popup.ErrorDescription.Text = "UnsupportedFormatException"
+		  ElseIf error IsA XMLDOMException Then
+		    Popup.ErrorDescription.Text = "XMLDOMException"
+		  ElseIf error IsA XMLException Then
+		    Popup.ErrorDescription.Text = "XMLException"
+		  ElseIf error IsA XMLReaderException Then
+		    Popup.ErrorDescription.Text = "XMLReaderException"
+		  End If
+		  
+		  If error.Message.Len > 0 Then
+		    Popup.ErrorDescription.AppendText(":" + EndOfLine + error.Message)
+		  End If
+		  
+		  'print stacktrace below error description
+		  Popup.ErrorDescription.AppendText(EndOfLine + EndOfLine + "Stacktrace:")
+		  For i = 0 To Ubound(error.Stack)
+		    Popup.ErrorDescription.AppendText(EndOfLine + StackTrace(i))
+		  Next
+		  
+		  Popup.ShowModal
 		End Function
 	#tag EndEvent
 
@@ -556,6 +474,85 @@ Inherits Application
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Sub CheckCreateFolders()
+		  ' Check if document folders exist and create when necessary
+		  Dim docsPath As String
+		  Dim defaultsFolder As FolderItem
+		  Dim failedFolderName As String
+		  App.DocsFolder = Nil
+		  
+		  docsPath = SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder", False)
+		  If Len(docsPath) > 0 Then
+		    DocsFolder = FileUtils.AbsolutePathToFolderItem(docsPath)
+		  End If
+		  If DocsFolder = Nil Then DocsFolder = DocumentsFolder.Child("OpenSong")
+		  
+		  ' All folders are created from the OpenSong Defaults template folder, check if it is complete
+		  If Not AppFolder.Child("OpenSong Defaults").Exists Then
+		    failedFolderName = AppFolder.Child("OpenSong Defaults").AbsolutePath
+		  Else
+		    defaultsFolder = AppFolder.Child("OpenSong Defaults")
+		  End If
+		  
+		  If Not defaultsFolder.Child("Settings").Exists Then
+		    failedFolderName = defaultsFolder.Child("Settings").AbsolutePath
+		  ElseIf Not defaultsFolder.Child("Songs").Exists Then
+		    failedFolderName = defaultsFolder.Child("Songs").AbsolutePath
+		  ElseIf Not defaultsFolder.Child("Sets").Exists Then
+		    failedFolderName = defaultsFolder.Child("Sets").AbsolutePath
+		  ElseIf Not defaultsFolder.Child("Backgrounds").Exists Then
+		    failedFolderName = defaultsFolder.Child("Backgrounds").AbsolutePath
+		  End If
+		  
+		  If failedFolderName.Len > 0 Then
+		    App.MouseCursor = Nil
+		    MsgBox "Can't find Defaults folder: " + failedFolderName + " You should try to reinstall the application."
+		    Quit
+		  End If
+		  
+		  ' Create whatever sub-folders are needed
+		  If Not DocsFolder.Exists Then
+		    If Not FileUtils.CopyPath(defaultsFolder, DocsFolder) Then
+		      App.MouseCursor = Nil
+		      MsgBox "Could not find Documents folder (" + DocsFolder.AbsolutePath + ") and could not create it."
+		      Quit
+		    End If
+		  End If
+		  
+		  If Not DocsFolder.Child("Settings").Exists Then
+		    If Not FileUtils.CopyPath(defaultsFolder.Child("Settings"), DocsFolder.Child("Settings")) Then
+		      failedFolderName = DocsFolder.Child("Settings").AbsolutePath
+		    End If
+		  End If
+		  
+		  If Not DocsFolder.Child("Songs").Exists Then
+		    If Not FileUtils.CopyPath(defaultsFolder.Child("Songs"), DocsFolder.Child("Songs")) Then
+		      failedFolderName = DocsFolder.Child("Songs").AbsolutePath
+		    End If
+		  End If
+		  
+		  If Not DocsFolder.Child("Sets").Exists Then
+		    If Not FileUtils.CopyPath(defaultsFolder.Child("Sets"), DocsFolder.Child("Sets")) Then
+		      failedFolderName = DocsFolder.Child("Sets").AbsolutePath
+		    End If
+		  End If
+		  
+		  If Not DocsFolder.Child("Backgrounds").Exists Then
+		    If Not FileUtils.CopyPath(defaultsFolder.Child("Backgrounds"), DocsFolder.Child("Backgrounds")) Then
+		      failedFolderName = DocsFolder.Child("Backgrounds").AbsolutePath
+		    End If
+		  End If
+		  
+		  If failedFolderName.Len > 0 Then
+		    App.MouseCursor = System.Cursors.StandardPointer
+		    MsgBox "Could not find " + failedFolderName + " and was not able to create it."
+		    Quit
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		AppFolder As FolderItem
@@ -640,10 +637,7 @@ Inherits Application
 	#tag Constant, Name = DEBUG, Type = Boolean, Dynamic = False, Default = \"False", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = DEBUGLEVEL, Type = Integer, Dynamic = False, Default = \"3", Scope = Private
-	#tag EndConstant
-
-	#tag Constant, Name = POINT_TO_CM, Type = Double, Dynamic = False, Default = \"0.035277778", Scope = Public
+	#tag Constant, Name = DEBUGLEVEL, Type = Double, Dynamic = False, Default = \"3", Scope = Private
 	#tag EndConstant
 
 

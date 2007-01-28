@@ -107,7 +107,7 @@ Class DebugOutput
 	#tag EndProperty
 
 
-	#tag Constant, Name = MAXDEBUGLEVEL, Type = Integer, Dynamic = False, Default = \"10", Scope = Public
+	#tag Constant, Name = MAXDEBUGLEVEL, Type = Double, Dynamic = False, Default = \"10", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = MINDEBUGLEVEL, Type = Integer, Dynamic = False, Default = \"1", Scope = Public

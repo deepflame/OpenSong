@@ -67,7 +67,7 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "pge_contents"
-         BehaviorIndex   =   1
+         BehaviorIndex   =   9
          Begin StaticText hdr_song_header
             Index           =   -2147483648
             ControlOrder    =   10
@@ -96,7 +96,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   2
+            BehaviorIndex   =   10
          End
          Begin SButton btn_song_show_general_editor
             Index           =   -2147483648
@@ -120,7 +120,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   3
+            BehaviorIndex   =   11
          End
          Begin SButton btn_song_show_advanced_editor
             Index           =   -2147483648
@@ -144,7 +144,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   4
+            BehaviorIndex   =   12
          End
          Begin StaticText lbl_song_title
             Index           =   -2147483648
@@ -174,7 +174,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   5
+            BehaviorIndex   =   13
          End
          Begin SEditField edt_song_title
             Index           =   -2147483648
@@ -216,7 +216,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   6
+            BehaviorIndex   =   14
          End
          Begin StaticText lbl_song_author
             Index           =   -2147483648
@@ -246,7 +246,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   7
+            BehaviorIndex   =   15
          End
          Begin SEditField edt_song_author
             Index           =   -2147483648
@@ -288,7 +288,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   8
+            BehaviorIndex   =   16
          End
          Begin StaticText lbl_song_copyright
             Index           =   -2147483648
@@ -318,7 +318,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   9
+            BehaviorIndex   =   17
          End
          Begin SEditField edt_song_copyright
             Index           =   -2147483648
@@ -360,7 +360,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   10
+            BehaviorIndex   =   18
          End
          Begin StaticText lbl_song_ccli
             Index           =   -2147483648
@@ -390,7 +390,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   11
+            BehaviorIndex   =   19
          End
          Begin SEditField edt_song_ccli
             Index           =   -2147483648
@@ -432,7 +432,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   12
+            BehaviorIndex   =   20
          End
          Begin StaticText lbl_song_presentation
             Index           =   -2147483648
@@ -462,7 +462,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   13
+            BehaviorIndex   =   21
          End
          Begin SEditField edt_song_presentation
             Index           =   -2147483648
@@ -504,7 +504,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   14
+            BehaviorIndex   =   22
          End
          Begin StaticText lbl_song_hymn_number
             Index           =   -2147483648
@@ -534,7 +534,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   15
+            BehaviorIndex   =   23
          End
          Begin SEditField edt_song_hymn_number
             Index           =   -2147483648
@@ -576,7 +576,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   16
+            BehaviorIndex   =   24
          End
          Begin StaticText lbl_song_insert
             Index           =   -2147483648
@@ -606,7 +606,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   17
+            BehaviorIndex   =   25
          End
          Begin SButton btn_song_ins_section
             Index           =   -2147483648
@@ -630,7 +630,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   18
+            BehaviorIndex   =   26
          End
          Begin SButton btn_song_ins_lyrics
             Index           =   -2147483648
@@ -654,7 +654,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   19
+            BehaviorIndex   =   27
          End
          Begin SButton btn_song_ins_multi_verse
             Index           =   -2147483648
@@ -678,7 +678,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   20
+            BehaviorIndex   =   28
          End
          Begin SButton btn_song_ins_comment
             Index           =   -2147483648
@@ -702,7 +702,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   21
+            BehaviorIndex   =   29
          End
          Begin SButton btn_song_ins_column
             Index           =   -2147483648
@@ -726,7 +726,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   22
+            BehaviorIndex   =   30
          End
          Begin GroupBox grp_song_transpose
             Index           =   -2147483648
@@ -751,7 +751,7 @@ Begin Window MainWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   23
+            BehaviorIndex   =   31
             Begin PopupMenu pop_song_transpose
                Index           =   -2147483648
                ControlOrder    =   32
@@ -778,7 +778,7 @@ Begin Window MainWindow
                DataSource      =   ""
                DataField       =   ""
                InitialParent   =   "grp_song_transpose"
-               BehaviorIndex   =   24
+               BehaviorIndex   =   32
             End
             Begin StaticText lbl_song_using
                Index           =   -2147483648
@@ -808,7 +808,7 @@ Begin Window MainWindow
                DataSource      =   ""
                DataField       =   ""
                InitialParent   =   "grp_song_transpose"
-               BehaviorIndex   =   25
+               BehaviorIndex   =   33
             End
             Begin PopupMenu pop_song_accidentals
                Index           =   -2147483648
@@ -836,7 +836,7 @@ Begin Window MainWindow
                DataSource      =   ""
                DataField       =   ""
                InitialParent   =   "grp_song_transpose"
-               BehaviorIndex   =   26
+               BehaviorIndex   =   34
             End
          End
          Begin SEditField edf_song_lyrics
@@ -879,7 +879,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   27
+            BehaviorIndex   =   35
          End
          Begin StaticText lbl_song_lyrics
             Index           =   -2147483648
@@ -909,7 +909,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   28
+            BehaviorIndex   =   36
          End
          Begin SButton btn_song_ins_page
             Index           =   -2147483648
@@ -933,7 +933,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_general_song_editor"
-            BehaviorIndex   =   29
+            BehaviorIndex   =   37
          End
       End
       Begin Canvas can_editor_advanced_song_editor
@@ -958,7 +958,7 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "pge_contents"
-         BehaviorIndex   =   30
+         BehaviorIndex   =   38
          Begin StaticText hdr_song_header_2
             Index           =   -2147483648
             ControlOrder    =   39
@@ -987,7 +987,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   31
+            BehaviorIndex   =   39
          End
          Begin SButton btn_song_show_general_editor_2
             Index           =   -2147483648
@@ -1011,7 +1011,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   32
+            BehaviorIndex   =   40
          End
          Begin SButton btn_song_show_advanced_editor_2
             Index           =   -2147483648
@@ -1035,7 +1035,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   33
+            BehaviorIndex   =   41
          End
          Begin StaticText lbl_song_themes
             Index           =   -2147483648
@@ -1065,7 +1065,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   34
+            BehaviorIndex   =   42
          End
          Begin ListBox lst_song_themes
             Index           =   -2147483648
@@ -1111,7 +1111,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   35
+            BehaviorIndex   =   43
          End
          Begin SStyleCanvas can_song_style
             Index           =   -2147483648
@@ -1135,7 +1135,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   36
+            BehaviorIndex   =   44
          End
          Begin CheckBox chk_song_style
             Index           =   -2147483648
@@ -1163,7 +1163,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   37
+            BehaviorIndex   =   45
          End
          Begin StaticText lbl_song_capo
             Index           =   -2147483648
@@ -1193,7 +1193,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   38
+            BehaviorIndex   =   46
          End
          Begin PopupMenu pop_song_capo
             Index           =   -2147483648
@@ -1221,7 +1221,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   39
+            BehaviorIndex   =   47
          End
          Begin CheckBox chk_song_capo_print
             Index           =   -2147483648
@@ -1249,7 +1249,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   40
+            BehaviorIndex   =   48
          End
          Begin StaticText lbl_song_key
             Index           =   -2147483648
@@ -1279,7 +1279,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   41
+            BehaviorIndex   =   49
          End
          Begin SEditField edt_song_key
             Index           =   -2147483648
@@ -1321,7 +1321,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   42
+            BehaviorIndex   =   50
          End
          Begin StaticText lbl_song_time_sig
             Index           =   -2147483648
@@ -1351,7 +1351,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   43
+            BehaviorIndex   =   51
          End
          Begin PopupMenu pop_song_time_sig
             Index           =   -2147483648
@@ -1379,7 +1379,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   44
+            BehaviorIndex   =   52
          End
          Begin StaticText lbl_song_tempo
             Index           =   -2147483648
@@ -1409,7 +1409,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   45
+            BehaviorIndex   =   53
          End
          Begin PopupMenu pop_song_tempo
             Index           =   -2147483648
@@ -1437,7 +1437,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   46
+            BehaviorIndex   =   54
          End
          Begin StaticText lbl_song_aka
             Index           =   -2147483648
@@ -1467,7 +1467,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   47
+            BehaviorIndex   =   55
          End
          Begin SEditField edt_song_aka
             Index           =   -2147483648
@@ -1509,7 +1509,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   48
+            BehaviorIndex   =   56
          End
          Begin StaticText lbl_song_key_line
             Index           =   -2147483648
@@ -1539,7 +1539,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   49
+            BehaviorIndex   =   57
          End
          Begin SEditField edt_song_key_line
             Index           =   -2147483648
@@ -1581,7 +1581,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   50
+            BehaviorIndex   =   58
          End
          Begin StaticText lbl_song_user1_1
             Index           =   -2147483648
@@ -1611,7 +1611,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   51
+            BehaviorIndex   =   59
          End
          Begin SEditField edt_song_user1
             Index           =   -2147483648
@@ -1653,7 +1653,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   52
+            BehaviorIndex   =   60
          End
          Begin StaticText lbl_song_user2
             Index           =   -2147483648
@@ -1683,7 +1683,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   53
+            BehaviorIndex   =   61
          End
          Begin SEditField edt_song_user2
             Index           =   -2147483648
@@ -1725,7 +1725,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   54
+            BehaviorIndex   =   62
          End
          Begin StaticText lbl_song_user3
             Index           =   -2147483648
@@ -1755,7 +1755,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   55
+            BehaviorIndex   =   63
          End
          Begin SEditField edt_song_user3
             Index           =   -2147483648
@@ -1797,7 +1797,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_advanced_song_editor"
-            BehaviorIndex   =   56
+            BehaviorIndex   =   64
          End
       End
       Begin Canvas can_editor_slide_editor
@@ -1822,7 +1822,7 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "pge_contents"
-         BehaviorIndex   =   57
+         BehaviorIndex   =   65
          Begin StaticText hdr_slide_header
             Index           =   -2147483648
             ControlOrder    =   66
@@ -1851,7 +1851,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   58
+            BehaviorIndex   =   66
          End
          Begin StaticText lbl_slide_title
             Index           =   -2147483648
@@ -1881,7 +1881,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   59
+            BehaviorIndex   =   67
          End
          Begin SEditField edt_slide_title
             Index           =   -2147483648
@@ -1923,7 +1923,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   60
+            BehaviorIndex   =   68
          End
          Begin StaticText lbl_slide_subtitle
             Index           =   -2147483648
@@ -1953,7 +1953,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   61
+            BehaviorIndex   =   69
          End
          Begin SEditField edt_slide_subtitle
             Index           =   -2147483648
@@ -1995,7 +1995,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   62
+            BehaviorIndex   =   70
          End
          Begin StaticText lbl_slide_name
             Index           =   -2147483648
@@ -2025,11 +2025,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   63
+            BehaviorIndex   =   71
          End
          Begin SEditField edt_slide_name
             Index           =   -2147483648
-            ControlOrder    =   122
+            ControlOrder    =   72
             Left            =   590
             Top             =   104
             Width           =   140
@@ -2067,11 +2067,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   64
+            BehaviorIndex   =   72
          End
          Begin StaticText lbl_slide_slides
             Index           =   -2147483648
-            ControlOrder    =   123
+            ControlOrder    =   73
             Left            =   270
             Top             =   125
             Width           =   340
@@ -2097,11 +2097,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   65
+            BehaviorIndex   =   73
          End
          Begin SEditField edt_slide_slides
             Index           =   -2147483648
-            ControlOrder    =   124
+            ControlOrder    =   74
             Left            =   270
             Top             =   139
             Width           =   340
@@ -2139,11 +2139,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   66
+            BehaviorIndex   =   74
          End
          Begin StaticText lbl_slide_presentation
             Index           =   -2147483648
-            ControlOrder    =   125
+            ControlOrder    =   75
             Left            =   271
             Top             =   403
             Width           =   170
@@ -2169,11 +2169,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   67
+            BehaviorIndex   =   75
          End
          Begin EditField edt_slide_order
             Index           =   -2147483648
-            ControlOrder    =   126
+            ControlOrder    =   76
             Left            =   270
             Top             =   417
             Width           =   170
@@ -2211,11 +2211,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   68
+            BehaviorIndex   =   76
          End
          Begin StaticText lbl_slide_origorder
             Index           =   -2147483648
-            ControlOrder    =   127
+            ControlOrder    =   77
             Left            =   453
             Top             =   403
             Width           =   160
@@ -2241,11 +2241,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   69
+            BehaviorIndex   =   77
          End
          Begin EditField edt_slide_origorder
             Index           =   -2147483648
-            ControlOrder    =   128
+            ControlOrder    =   78
             Left            =   453
             Top             =   417
             Width           =   160
@@ -2283,7 +2283,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   70
+            BehaviorIndex   =   78
          End
          Begin StaticText lbl_slide_notes
             Index           =   -2147483648
@@ -2313,7 +2313,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   71
+            BehaviorIndex   =   129
          End
          Begin SEditField edt_slide_notes
             Index           =   -2147483648
@@ -2355,7 +2355,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   72
+            BehaviorIndex   =   130
          End
          Begin StaticText lbl_slide_insert
             Index           =   -2147483648
@@ -2385,7 +2385,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   73
+            BehaviorIndex   =   131
          End
          Begin SButton btn_slide_ins_slide
             Index           =   -2147483648
@@ -2409,7 +2409,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   74
+            BehaviorIndex   =   132
          End
          Begin CheckBox chk_slide_loop
             Index           =   -2147483648
@@ -2437,7 +2437,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   75
+            BehaviorIndex   =   133
          End
          Begin CheckBox chk_slide_print
             Index           =   -2147483648
@@ -2465,7 +2465,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   76
+            BehaviorIndex   =   134
          End
          Begin StaticText lbl_slide_auto_advance
             Index           =   -2147483648
@@ -2495,7 +2495,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   77
+            BehaviorIndex   =   135
          End
          Begin EditField edt_slide_auto_advance
             Index           =   -2147483648
@@ -2537,7 +2537,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   78
+            BehaviorIndex   =   136
          End
          Begin StaticText txt_slide_seconds
             Index           =   -2147483648
@@ -2567,7 +2567,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   79
+            BehaviorIndex   =   137
          End
          Begin CheckBox chk_slide_style
             Index           =   -2147483648
@@ -2595,7 +2595,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   80
+            BehaviorIndex   =   138
          End
          Begin SStyleCanvas can_slide_style
             Index           =   -2147483648
@@ -2619,7 +2619,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_editor_slide_editor"
-            BehaviorIndex   =   81
+            BehaviorIndex   =   139
          End
       End
       Begin Canvas cnv_editor_style_change
@@ -2644,7 +2644,7 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "pge_contents"
-         BehaviorIndex   =   82
+         BehaviorIndex   =   140
          Begin StaticText hdr_style_header
             Index           =   -2147483648
             ControlOrder    =   141
@@ -2673,7 +2673,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "cnv_editor_style_change"
-            BehaviorIndex   =   83
+            BehaviorIndex   =   141
          End
          Begin RadioButton rad_style_revert
             Index           =   -2147483648
@@ -2699,7 +2699,7 @@ Begin Window MainWindow
             Underline       =   "False"
             Value           =   "True"
             InitialParent   =   "cnv_editor_style_change"
-            BehaviorIndex   =   84
+            BehaviorIndex   =   142
          End
          Begin RadioButton rad_style_change
             Index           =   -2147483648
@@ -2725,7 +2725,7 @@ Begin Window MainWindow
             Underline       =   "False"
             Value           =   "False"
             InitialParent   =   "cnv_editor_style_change"
-            BehaviorIndex   =   85
+            BehaviorIndex   =   143
          End
          Begin SStyleCanvas can_style_style
             Index           =   -2147483648
@@ -2749,7 +2749,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "cnv_editor_style_change"
-            BehaviorIndex   =   86
+            BehaviorIndex   =   144
          End
       End
    End
@@ -2773,10 +2773,10 @@ Begin Window MainWindow
       AutoDeactivate  =   "True"
       Enabled         =   True
       InitialParent   =   ""
-      BehaviorIndex   =   87
+      BehaviorIndex   =   1
       Begin Canvas can_controls_songs_mode
          Index           =   -2147483648
-         ControlOrder    =   72
+         ControlOrder    =   79
          Left            =   5
          Top             =   40
          Width           =   240
@@ -2796,10 +2796,10 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "pge_controls"
-         BehaviorIndex   =   88
+         BehaviorIndex   =   79
          Begin GroupBox grp_songs_all_songs
             Index           =   -2147483648
-            ControlOrder    =   73
+            ControlOrder    =   80
             Left            =   10
             Top             =   40
             Width           =   110
@@ -2820,10 +2820,10 @@ Begin Window MainWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   89
+            BehaviorIndex   =   80
             Begin SButton btn_songs_print
                Index           =   -2147483648
-               ControlOrder    =   74
+               ControlOrder    =   81
                Left            =   21
                Top             =   60
                Width           =   87
@@ -2843,11 +2843,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_all_songs"
-               BehaviorIndex   =   90
+               BehaviorIndex   =   81
             End
             Begin SButton btn_songs_export
                Index           =   -2147483648
-               ControlOrder    =   75
+               ControlOrder    =   82
                Left            =   21
                Top             =   85
                Width           =   87
@@ -2867,11 +2867,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_all_songs"
-               BehaviorIndex   =   91
+               BehaviorIndex   =   82
             End
             Begin SButton btn_songs_find
                Index           =   -2147483648
-               ControlOrder    =   76
+               ControlOrder    =   83
                Left            =   21
                Top             =   110
                Width           =   87
@@ -2891,12 +2891,12 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_all_songs"
-               BehaviorIndex   =   92
+               BehaviorIndex   =   83
             End
          End
          Begin GroupBox grp_songs_new_song
             Index           =   -2147483648
-            ControlOrder    =   77
+            ControlOrder    =   84
             Left            =   10
             Top             =   145
             Width           =   110
@@ -2917,10 +2917,10 @@ Begin Window MainWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   93
+            BehaviorIndex   =   84
             Begin SButton btn_song_create
                Index           =   -2147483648
-               ControlOrder    =   78
+               ControlOrder    =   85
                Left            =   21
                Top             =   165
                Width           =   87
@@ -2940,11 +2940,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_new_song"
-               BehaviorIndex   =   94
+               BehaviorIndex   =   85
             End
             Begin SButton btn_song_import
                Index           =   -2147483648
-               ControlOrder    =   79
+               ControlOrder    =   86
                Left            =   21
                Top             =   190
                Width           =   87
@@ -2964,12 +2964,12 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_new_song"
-               BehaviorIndex   =   95
+               BehaviorIndex   =   86
             End
          End
          Begin GroupBox grp_songs_selected_song
             Index           =   -2147483648
-            ControlOrder    =   80
+            ControlOrder    =   87
             Left            =   130
             Top             =   40
             Width           =   110
@@ -2990,10 +2990,10 @@ Begin Window MainWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   96
+            BehaviorIndex   =   87
             Begin SButton btn_song_save
                Index           =   -2147483648
-               ControlOrder    =   81
+               ControlOrder    =   88
                Left            =   141
                Top             =   60
                Width           =   87
@@ -3013,11 +3013,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_selected_song"
-               BehaviorIndex   =   97
+               BehaviorIndex   =   88
             End
             Begin SButton btn_song_revert
                Index           =   -2147483648
-               ControlOrder    =   82
+               ControlOrder    =   89
                Left            =   141
                Top             =   85
                Width           =   87
@@ -3037,11 +3037,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_selected_song"
-               BehaviorIndex   =   98
+               BehaviorIndex   =   89
             End
             Begin SButton btn_song_print
                Index           =   -2147483648
-               ControlOrder    =   83
+               ControlOrder    =   90
                Left            =   141
                Top             =   110
                Width           =   87
@@ -3061,11 +3061,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_selected_song"
-               BehaviorIndex   =   99
+               BehaviorIndex   =   90
             End
             Begin SButton btn_song_present
                Index           =   -2147483648
-               ControlOrder    =   84
+               ControlOrder    =   91
                Left            =   141
                Top             =   135
                Width           =   87
@@ -3085,11 +3085,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_selected_song"
-               BehaviorIndex   =   100
+               BehaviorIndex   =   91
             End
             Begin SButton btn_song_export
                Index           =   -2147483648
-               ControlOrder    =   85
+               ControlOrder    =   92
                Left            =   141
                Top             =   160
                Width           =   87
@@ -3109,11 +3109,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_selected_song"
-               BehaviorIndex   =   101
+               BehaviorIndex   =   92
             End
             Begin SButton btn_song_rename
                Index           =   -2147483648
-               ControlOrder    =   86
+               ControlOrder    =   93
                Left            =   141
                Top             =   185
                Width           =   87
@@ -3133,11 +3133,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_selected_song"
-               BehaviorIndex   =   102
+               BehaviorIndex   =   93
             End
             Begin SButton btn_song_move
                Index           =   -2147483648
-               ControlOrder    =   87
+               ControlOrder    =   94
                Left            =   141
                Top             =   210
                Width           =   87
@@ -3157,11 +3157,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_selected_song"
-               BehaviorIndex   =   103
+               BehaviorIndex   =   94
             End
             Begin SButton btn_song_delete
                Index           =   -2147483648
-               ControlOrder    =   88
+               ControlOrder    =   95
                Left            =   141
                Top             =   235
                Width           =   87
@@ -3181,12 +3181,12 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_songs_selected_song"
-               BehaviorIndex   =   104
+               BehaviorIndex   =   95
             End
          End
          Begin StaticText lbl_songs_song_folders
             Index           =   -2147483648
-            ControlOrder    =   89
+            ControlOrder    =   96
             Left            =   10
             Top             =   256
             Width           =   230
@@ -3212,11 +3212,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   105
+            BehaviorIndex   =   96
          End
          Begin PopupMenu pop_songs_song_folders
             Index           =   -2147483648
-            ControlOrder    =   90
+            ControlOrder    =   97
             Left            =   10
             Top             =   271
             Width           =   190
@@ -3240,11 +3240,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   106
+            BehaviorIndex   =   97
          End
          Begin SButton btn_songs_song_folders_add
             Index           =   -2147483648
-            ControlOrder    =   91
+            ControlOrder    =   98
             Left            =   203
             Top             =   273
             Width           =   18
@@ -3264,11 +3264,11 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   107
+            BehaviorIndex   =   98
          End
          Begin SButton btn_songs_song_folders_delete
             Index           =   -2147483648
-            ControlOrder    =   92
+            ControlOrder    =   99
             Left            =   222
             Top             =   273
             Width           =   18
@@ -3288,11 +3288,11 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             EraseBackground =   "True"
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   108
+            BehaviorIndex   =   99
          End
          Begin StaticText lbl_songs_songs
             Index           =   -2147483648
-            ControlOrder    =   93
+            ControlOrder    =   100
             Left            =   10
             Top             =   296
             Width           =   230
@@ -3318,11 +3318,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   109
+            BehaviorIndex   =   100
          End
          Begin ListBox lst_songs_songs
             Index           =   -2147483648
-            ControlOrder    =   94
+            ControlOrder    =   101
             Left            =   10
             Top             =   314
             Width           =   230
@@ -3364,11 +3364,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   110
+            BehaviorIndex   =   101
          End
          Begin StaticText lbl_songs_curr_folder
             Index           =   -2147483648
-            ControlOrder    =   95
+            ControlOrder    =   102
             Left            =   10
             Top             =   509
             Width           =   230
@@ -3394,11 +3394,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   111
+            BehaviorIndex   =   102
          End
          Begin EditField edt_songs_curr_folder
             Index           =   -2147483648
-            ControlOrder    =   96
+            ControlOrder    =   103
             Left            =   10
             Top             =   528
             Width           =   227
@@ -3436,12 +3436,12 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_controls_songs_mode"
-            BehaviorIndex   =   112
+            BehaviorIndex   =   103
          End
       End
       Begin Canvas can_controls_sets_mode
          Index           =   -2147483648
-         ControlOrder    =   97
+         ControlOrder    =   104
          Left            =   5
          Top             =   40
          Width           =   240
@@ -3461,10 +3461,10 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          EraseBackground =   "True"
          InitialParent   =   "pge_controls"
-         BehaviorIndex   =   113
+         BehaviorIndex   =   104
          Begin GroupBox grp_sets_sets
             Index           =   -2147483648
-            ControlOrder    =   98
+            ControlOrder    =   105
             Left            =   10
             Top             =   40
             Width           =   230
@@ -3485,10 +3485,10 @@ Begin Window MainWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_controls_sets_mode"
-            BehaviorIndex   =   114
+            BehaviorIndex   =   105
             Begin PopupMenu pop_sets_sets
                Index           =   -2147483648
-               ControlOrder    =   99
+               ControlOrder    =   106
                Left            =   21
                Top             =   58
                Width           =   185
@@ -3512,11 +3512,11 @@ Begin Window MainWindow
                DataSource      =   ""
                DataField       =   ""
                InitialParent   =   "grp_sets_sets"
-               BehaviorIndex   =   115
+               BehaviorIndex   =   106
             End
             Begin SButton btn_sets_add
                Index           =   -2147483648
-               ControlOrder    =   100
+               ControlOrder    =   107
                Left            =   209
                Top             =   60
                Width           =   18
@@ -3536,12 +3536,12 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_sets_sets"
-               BehaviorIndex   =   116
+               BehaviorIndex   =   107
             End
          End
          Begin GroupBox grp_set_current_set
             Index           =   -2147483648
-            ControlOrder    =   101
+            ControlOrder    =   108
             Left            =   10
             Top             =   89
             Width           =   230
@@ -3562,10 +3562,10 @@ Begin Window MainWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_controls_sets_mode"
-            BehaviorIndex   =   117
+            BehaviorIndex   =   108
             Begin SButton btn_set_save
                Index           =   -2147483648
-               ControlOrder    =   102
+               ControlOrder    =   109
                Left            =   21
                Top             =   107
                Width           =   87
@@ -3585,11 +3585,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_set"
-               BehaviorIndex   =   118
+               BehaviorIndex   =   109
             End
             Begin SButton btn_set_rename
                Index           =   -2147483648
-               ControlOrder    =   103
+               ControlOrder    =   110
                Left            =   21
                Top             =   132
                Width           =   87
@@ -3609,11 +3609,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_set"
-               BehaviorIndex   =   119
+               BehaviorIndex   =   110
             End
             Begin SButton btn_set_delete
                Index           =   -2147483648
-               ControlOrder    =   104
+               ControlOrder    =   111
                Left            =   21
                Top             =   157
                Width           =   87
@@ -3633,11 +3633,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_set"
-               BehaviorIndex   =   120
+               BehaviorIndex   =   111
             End
             Begin SButton btn_set_saveas
                Index           =   -2147483648
-               ControlOrder    =   105
+               ControlOrder    =   112
                Left            =   21
                Top             =   182
                Width           =   87
@@ -3657,11 +3657,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_set"
-               BehaviorIndex   =   121
+               BehaviorIndex   =   112
             End
             Begin SButton btn_set_present
                Index           =   -2147483648
-               ControlOrder    =   106
+               ControlOrder    =   113
                Left            =   141
                Top             =   107
                Width           =   87
@@ -3681,11 +3681,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_set"
-               BehaviorIndex   =   122
+               BehaviorIndex   =   113
             End
             Begin SButton btn_set_print_songs
                Index           =   -2147483648
-               ControlOrder    =   107
+               ControlOrder    =   114
                Left            =   141
                Top             =   132
                Width           =   87
@@ -3705,11 +3705,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_set"
-               BehaviorIndex   =   123
+               BehaviorIndex   =   114
             End
             Begin SButton btn_set_print_order
                Index           =   -2147483648
-               ControlOrder    =   108
+               ControlOrder    =   115
                Left            =   141
                Top             =   157
                Width           =   87
@@ -3729,12 +3729,12 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_set"
-               BehaviorIndex   =   124
+               BehaviorIndex   =   115
             End
          End
          Begin GroupBox grp_set_new_item
             Index           =   -2147483648
-            ControlOrder    =   109
+            ControlOrder    =   116
             Left            =   10
             Top             =   209
             Width           =   110
@@ -3755,10 +3755,10 @@ Begin Window MainWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_controls_sets_mode"
-            BehaviorIndex   =   125
+            BehaviorIndex   =   116
             Begin SButton btn_set_add_song
                Index           =   -2147483648
-               ControlOrder    =   110
+               ControlOrder    =   117
                Left            =   21
                Top             =   229
                Width           =   87
@@ -3778,11 +3778,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_new_item"
-               BehaviorIndex   =   126
+               BehaviorIndex   =   117
             End
             Begin SButton btn_set_add_scripture
                Index           =   -2147483648
-               ControlOrder    =   111
+               ControlOrder    =   118
                Left            =   21
                Top             =   254
                Width           =   87
@@ -3802,11 +3802,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_new_item"
-               BehaviorIndex   =   127
+               BehaviorIndex   =   118
             End
             Begin SButton btn_set_add_slides
                Index           =   -2147483648
-               ControlOrder    =   112
+               ControlOrder    =   119
                Left            =   21
                Top             =   279
                Width           =   87
@@ -3826,11 +3826,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_new_item"
-               BehaviorIndex   =   128
+               BehaviorIndex   =   119
             End
             Begin SButton btn_set_add_style
                Index           =   -2147483648
-               ControlOrder    =   113
+               ControlOrder    =   120
                Left            =   21
                Top             =   304
                Width           =   87
@@ -3850,12 +3850,12 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_new_item"
-               BehaviorIndex   =   129
+               BehaviorIndex   =   120
             End
          End
          Begin GroupBox grp_set_current_item
             Index           =   -2147483648
-            ControlOrder    =   114
+            ControlOrder    =   121
             Left            =   127
             Top             =   209
             Width           =   110
@@ -3876,10 +3876,10 @@ Begin Window MainWindow
             Italic          =   "False"
             Underline       =   "False"
             InitialParent   =   "can_controls_sets_mode"
-            BehaviorIndex   =   130
+            BehaviorIndex   =   121
             Begin SButton btn_set_move_up
                Index           =   -2147483648
-               ControlOrder    =   115
+               ControlOrder    =   122
                Left            =   138
                Top             =   229
                Width           =   87
@@ -3899,11 +3899,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_item"
-               BehaviorIndex   =   131
+               BehaviorIndex   =   122
             End
             Begin SButton btn_set_move_down
                Index           =   -2147483648
-               ControlOrder    =   116
+               ControlOrder    =   123
                Left            =   138
                Top             =   254
                Width           =   87
@@ -3923,11 +3923,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_item"
-               BehaviorIndex   =   132
+               BehaviorIndex   =   123
             End
             Begin SButton btn_set_remove
                Index           =   -2147483648
-               ControlOrder    =   117
+               ControlOrder    =   124
                Left            =   138
                Top             =   279
                Width           =   87
@@ -3947,11 +3947,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_item"
-               BehaviorIndex   =   133
+               BehaviorIndex   =   124
             End
             Begin SButton btn_set_copy
                Index           =   -2147483648
-               ControlOrder    =   118
+               ControlOrder    =   125
                Left            =   138
                Top             =   304
                Width           =   87
@@ -3971,11 +3971,11 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_item"
-               BehaviorIndex   =   134
+               BehaviorIndex   =   125
             End
             Begin SButton btn_set_store
                Index           =   -2147483648
-               ControlOrder    =   119
+               ControlOrder    =   126
                Left            =   138
                Top             =   329
                Width           =   87
@@ -3995,12 +3995,12 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                EraseBackground =   "True"
                InitialParent   =   "grp_set_current_item"
-               BehaviorIndex   =   135
+               BehaviorIndex   =   126
             End
          End
          Begin StaticText lbl_set_items
             Index           =   -2147483648
-            ControlOrder    =   120
+            ControlOrder    =   127
             Left            =   10
             Top             =   350
             Width           =   115
@@ -4026,11 +4026,11 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_controls_sets_mode"
-            BehaviorIndex   =   136
+            BehaviorIndex   =   127
          End
          Begin ListBox lst_set_items
             Index           =   -2147483648
-            ControlOrder    =   121
+            ControlOrder    =   128
             Left            =   10
             Top             =   365
             Width           =   230
@@ -4072,7 +4072,7 @@ Begin Window MainWindow
             DataSource      =   ""
             DataField       =   ""
             InitialParent   =   "can_controls_sets_mode"
-            BehaviorIndex   =   137
+            BehaviorIndex   =   128
          End
       End
    End
@@ -4098,7 +4098,7 @@ Begin Window MainWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
-      BehaviorIndex   =   138
+      BehaviorIndex   =   2
    End
    Begin SButton btn_mode_sets_mode
       Index           =   -2147483648
@@ -4122,7 +4122,7 @@ Begin Window MainWindow
       AcceptTabs      =   "False"
       EraseBackground =   "True"
       InitialParent   =   ""
-      BehaviorIndex   =   139
+      BehaviorIndex   =   3
    End
    Begin StaticText txt_context_help
       Index           =   -2147483648
@@ -4152,7 +4152,7 @@ Begin Window MainWindow
       DataSource      =   ""
       DataField       =   ""
       InitialParent   =   ""
-      BehaviorIndex   =   140
+      BehaviorIndex   =   4
    End
    Begin Timer tmr_lookup
       Index           =   -2147483648
@@ -4163,7 +4163,7 @@ Begin Window MainWindow
       Period          =   1500
       InitialParent   =   ""
       TabPanelIndex   =   0
-      BehaviorIndex   =   141
+      BehaviorIndex   =   5
    End
    Begin ContextualMenu mnu_clipboard
       Index           =   -2147483648
@@ -4173,7 +4173,7 @@ Begin Window MainWindow
       UseMacCMM       =   ""
       InitialParent   =   ""
       TabPanelIndex   =   0
-      BehaviorIndex   =   142
+      BehaviorIndex   =   6
    End
    Begin Separator sep_vertical
       Index           =   -2147483648
@@ -4192,7 +4192,7 @@ Begin Window MainWindow
       HelpTag         =   ""
       AutoDeactivate  =   "True"
       Enabled         =   ""
-      BehaviorIndex   =   143
+      BehaviorIndex   =   7
    End
    Begin Separator sep_horizontal
       Index           =   -2147483648
@@ -4211,7 +4211,7 @@ Begin Window MainWindow
       HelpTag         =   ""
       AutoDeactivate  =   "True"
       Enabled         =   ""
-      BehaviorIndex   =   144
+      BehaviorIndex   =   8
    End
 End
 #tag EndWindow
@@ -4229,7 +4229,7 @@ End
 		  // Cancel the close if we're presenting.
 		  If Status_Presentation Then Return True
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@y", CStr(Top)
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@x", CStr(Left)
@@ -5098,7 +5098,7 @@ End
 			Dim toChild As String
 			
 			Dim xfile As XmlDocument
-			App.MouseCursor = WatchCursor
+			App.MouseCursor = System.Cursors.Wait
 			xfile = SmartML.XDocFromFile(file)
 			App.MouseCursor = Nil
 			If xfile = Nil Then
@@ -5142,7 +5142,7 @@ End
 			
 			ActionSongAskSave
 			
-			App.MouseCursor = WatchCursor
+			App.MouseCursor = System.Cursors.Wait
 			Status_SongOpen = False
 			Status_SongChanged = False
 			Globals.OldFolderSel = -1 // If this isn't invalidated, the list box doesn't get rebuilt unless we are on a child folder
@@ -5426,7 +5426,7 @@ End
 		  Dim i As Integer
 		  Dim lastType As String
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  Dim setDoc As New XmlDocument
 		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  ImportSongs setDoc
@@ -5458,7 +5458,7 @@ End
 		  Dim xgroup As XmlNode
 		  
 		  App.DebugWriter.Write "MainWindow.ActionSetPrint: Enter"
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  rpt = New LeadSheetReport
 		  If Not rpt.Setup Then Return // User cancelled
@@ -5476,7 +5476,7 @@ End
 		        App.MouseCursor = Nil
 		        PrintWindow.Hide
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", SmartML.GetValue(xgroup, "@name"))
-		        App.MouseCursor = WatchCursor
+		        App.MouseCursor = System.Cursors.Wait
 		      End If
 		    End If
 		    xgroup = xgroup.NextSibling
@@ -5572,7 +5572,7 @@ End
 		  If Not Status_SetChanged Then Return
 		  If Status_InSetChanged Then ActionInSetSave
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  dim att as XMLattribute
 		  try
@@ -5707,7 +5707,7 @@ End
 		  Dim setDoc As XmlDocument
 		  Dim song As XmlNode
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  setDoc = New XmlDocument
 		  song = setDoc.AppendChild(setDoc.CreateElement("set"))
 		  song = song.AppendChild(setDoc.CreateElement("slide_groups"))
@@ -5767,7 +5767,7 @@ End
 		  
 		  ActionSongAskSave
 		  If Status_SongChanged Then Return 'Don't print if user cancelled the save
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  rpt = New LeadSheetReport
 		  If Not rpt.Setup Then Return // User cancelled
 		  For i = 0 To lst_songs_songs.ListCount - 1
@@ -5816,7 +5816,7 @@ End
 		  f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text)
 		  
 		  If f <> Nil And f.Exists Then
-		    App.MouseCursor = WatchCursor
+		    App.MouseCursor = System.Cursors.Wait
 		    CurrentSong = SmartML.XDocFromFile(f)
 		    App.MouseCursor = Nil
 		    Status_SongOpen = False ' suppress updates
@@ -5928,7 +5928,7 @@ End
 		  Dim found As RectControl
 		  Dim edtFound As EditField
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  If Status_SongChanged Then ActionSongSave True ' updates CurrentSong but doesn't write it to file
 		  If pge_controls.Value <> 0 Then SetMode 0
@@ -6028,7 +6028,7 @@ End
 		            App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.list(i), 1)
 		            App.MouseCursor = Nil
 		            InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
-		            App.MouseCursor = WatchCursor
+		            App.MouseCursor = System.Cursors.Wait
 		          End If
 		        End If
 		      Loop Until s <> Nil
@@ -6123,7 +6123,7 @@ End
 		  '--
 		  Dim SongPath As String
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
 		  slide_group = slide_groups.FirstChild
 		  While slide_group <> Nil
@@ -7819,6 +7819,118 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events edt_slide_name
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/name"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_slides
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/slides"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_order
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/order"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_origorder
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/order"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events btn_songs_print
 	#tag Event
 		Sub Action()
@@ -7871,7 +7983,7 @@ End
 		      goutput.WriteLine "<html><head><title>" + App.T.Translate("songs_mode/songs/@caption") + "</title><link rel=""stylesheet"" href=""style.css"" type=""text/css""/></head><body>"
 		      goutput.WriteLine "<div id=""title"">" + App.T.Translate("songs_mode/songs/@caption") + "</div><ul id=""song_list"">"
 		    End If
-		    App.MouseCursor = WatchCursor
+		    App.MouseCursor = System.Cursors.Wait
 		    For i = 0 To lst_songs_songs.ListCount - 1
 		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i)) + ".html").CreateTextFile
 		      song = SmartML.XDocFromFile(Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.List(i)))
@@ -8108,7 +8220,7 @@ End
 		  
 		  f = dlg.ShowModal()
 		  If f <> Nil Then
-		    App.MouseCursor = WatchCursor
+		    App.MouseCursor = System.Cursors.Wait
 		    output = f.Child(MakeSafeURLName(lst_songs_songs.Text) + ".html").CreateTextFile
 		    song = SmartML.XDocFromFile(Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text))
 		    If output <> Nil And song <> Nil Then
@@ -8387,7 +8499,7 @@ End
 		    f = Songs.GetFile(fullpath)
 		    
 		    If f <> Nil And f.Exists Then
-		      App.MouseCursor = WatchCursor
+		      App.MouseCursor = System.Cursors.Wait
 		      CurrentSong = SmartML.XDocFromFile(f)
 		      
 		      // Open as Object...
@@ -8492,7 +8604,7 @@ End
 		Sub Change()
 		  ActionSetAskSave
 		  //
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  lst_set_items.DeleteAllRows
 		  If pop_sets_sets.ListIndex < 0 Or Len(pop_sets_sets.Text) <= 0 Then
 		    App.MouseCursor = Nil
@@ -8719,7 +8831,7 @@ End
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", oldf.AbsolutePath) ' could not find file
 		      Exit
 		    End If
-		    MainWindow.MouseCursor = WatchCursor
+		    MainWindow.MouseCursor = System.Cursors.Wait
 		    
 		    CurrentSet.DocumentElement.SetAttribute("name", t)
 		    
@@ -9387,118 +9499,6 @@ End
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "sets_mode/set_items"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_name
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/name"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_slides
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/slides"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_order
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/order"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_origorder
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/order"
 		End Sub
 	#tag EndEvent
 	#tag Event

@@ -903,7 +903,8 @@ Click on this slide to edit its style.</body>
     <save caption="Do you want to save changes to '%1'?"/>
     <delete caption="Are you sure you want to delete '%1'?"/>
     <clear caption="Are you sure you want to clear this?"/>
-    <changed caption="Current Song has been changed, do you want to save?"/>
+    <song_changed caption="Current Song has been changed, do you want to save?"/>
+    <set_changed caption="Current Set has been changed, do you want to save?"/>
     <revert caption="All changes will be lost. Continue?"/>
     <long_operation caption="This may take a long time to complete. Continue?"/>
     <generic_save caption="Save changes?"/>

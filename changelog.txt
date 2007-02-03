@@ -1,12 +1,22 @@
--= 1.0 Beta 2 JRC =-
+-= 1.0 Beta *JRC* =-
 
-*Prevent bizzar second Prompt for unsaved changes to a Song when exiting
+* Prompt for unsaved changes to Current in-set item when adding  Song or Scripture
 
-*Fixed Style Change set item to allow Subtitle Options
+* If action affects entire set, prompt to save the set not just the current item
 
-*Fixed remembering previously selected From & To Verses when changing Bibles in ScripturePicker (Silly Josh :)
+* Changed the way we prompt for unsaved changes to a set(and set items), to Yes,No,Cancel
+
+* Prompt user to save unsaved changes before Presenting or renaming the current set [Bug 1634769]
+
+* Display Documents folder in GeneralSettings Window
 
 -= 1.0 Baselevel 15 =-
+
+* Prevent bizarre second prompt for unsaved changes to a Song when exiting
+
+* Fixed Style Change set item to allow Subtitle Options
+
+* Fixed remembering previously selected From & To Verses when changing Bibles in ScripturePicker
 
 * Moved subtitle creation from SongML.ToSetML to new method SongML.BuildSubtitles to enhance readability and maintainability.
 

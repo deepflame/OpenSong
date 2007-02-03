@@ -1,3 +1,7 @@
+questions/song_changed
+questions/set_changed
+questions/changed(Deleted)
+
 songs_mode/curr_folder
 sets_mode/current_set/saveas
 slide_editor/presentation

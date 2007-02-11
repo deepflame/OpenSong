@@ -1,5 +1,13 @@
 -= 1.0 Baselevel 15 =-
 
+* Scripture lookup will no longer crash if the reference returns no verses.
+
+* Scripture lookup will no longer crash if a reference is typed into the edit field and the Lookup button or Return is pressed. (Thanks, JS, for all the testing help!)
+
+* Fixed error with copyright subtitle text displayed on slides.
+
+* Changed prompts the user sees to save a set (not an item within a set, though).  User now has three options like the previous change to Songs.  In both cases, the default action for "No" or "Don't Save" is to revert to the last saved version.
+
 * Prevent bizarre second prompt for unsaved changes to a Song when exiting
 
 * Fixed Style Change set item to allow Subtitle Options

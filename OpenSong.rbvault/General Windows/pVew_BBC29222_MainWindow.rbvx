@@ -388,8 +388,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  'reload current song
-		  ActionSongRevert False
 		  
 		  'build dialog
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
@@ -463,8 +461,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  'reload current song
-		  ActionSongRevert False
 		  
 		  old = lst_songs_songs.Text
 		  
@@ -613,15 +609,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  
-		  '++JRC Oops lets delete the extra save prompt
-		  'if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
-		  'If InputBox.Ask(App.T.Translate("questions/changed/@caption")) Then
-		  'ActionSongSave false, true
-		  'End if
-		  'End if
-		  '--
-		  ActionSongNew
+		 ActionSongNew
 		End Sub
    )
   HIns/g: 
@@ -665,8 +653,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		Sub Action()
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  'reload current song
-		  ActionSongRevert False
 		  
 		  CCLIWindow.ShowModalWithin MainWindow
 		End Sub
@@ -811,8 +797,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  'reload current song
-		  ActionSongRevert False
 		  
 		  'build dialog
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
@@ -1455,15 +1439,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  'EnableMenuItems
 		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: ExpandRow
-   sorc/d: (Enco/N: 134217984
-		Sub ExpandRow(row As Integer)
-		  
-		End Sub
    )
   HIns/g: 
   HIns/G: 
@@ -3191,65 +3166,26 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
-		  ActionSetAskSave
-		  //
-		  App.MouseCursor = WatchCursor
-		  lst_set_items.DeleteAllRows
-		  If pop_sets_sets.ListIndex < 0 Or Len(pop_sets_sets.Text) <= 0 Then
-		    App.MouseCursor = Nil
+		  Dim f As FolderItem
+		  If pop_sets_sets.ListIndex < 0 Or pop_sets_sets.Text = "" Then
+		    SetCurrentListIndex = -1
 		    Return
 		  End If
 		  
-		  Dim f, song As FolderItem
-		  Dim input As TextInputStream
-		  Dim line As String
-		  Dim xnode As XmlNode
-		  
-		  lst_set_items.DeleteAllRows
-		  
-		  f = App.DocsFolder.Child("Sets").Child(pop_sets_sets.Text)
-		  CurrentSet = SmartML.XDocFromFile(f)
-		  If CurrentSet = Nil Then
+		  If ActionSetAskSave Then
+		    App.MouseCursor = WatchCursor
+		    SetCurrentListIndex = Me.ListIndex
+		    
+		    f = App.DocsFolder.Child("Sets").Child(Me.Text)
+		    If Not SetLoadSet(f) Then // Load Failed
+		      lst_set_items.DeleteAllRows
+		      Status_SetOpen = False
+		      me.ListIndex = -1
+		    End If
 		    App.MouseCursor = Nil
-		    CurrentSet = New XmlDocument
-		    xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
-		    SmartML.DisplayError
+		  Else // User cancelled change; stay on same item with current contents
+		    Me.ListIndex = SetCurrentListIndex
 		  End If
-		  // This section gets the /set/@name value from the current document
-		  // Since this is a non-existent attribute in the released version, add it if
-		  // it's not already there.
-		  //EMP 10/9/04
-		  dim nameAtt as xmlattribute
-		  
-		  dim strName as String
-		  
-		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
-		  
-		  if nameatt = Nil then 
-		    CurrentSet.DocumentElement.SetAttribute("name", me.text)
-		  end if
-		  
-		  CurrentSetName = me.text
-		  //--
-		  Dim slide_groups, xchild As XmlNode
-		  Dim i As Integer
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  If slide_groups = Nil Then Return
-		  
-		  xchild = slide_groups.FirstChild
-		  While xchild <> Nil
-		    lst_set_items.AddRow xchild.GetAttribute("name") + " (" + xchild.GetAttribute("type") + ")"
-		    xchild = xchild.NextSibling
-		  Wend
-		  
-		  Status_SetOpen = True
-		  Status_SetChanged = False
-		  Status_InSetOpen = False
-		  Status_InSetChanged = False
-		  EnableMenuItems
-		  
-		  App.MouseCursor = Nil
 		End Sub
    )
   HIns/g: 
@@ -3268,6 +3204,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub MouseExit()
 		  SetHelp ""
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  SetCurrentListIndex = -1
 		End Sub
    )
   HIns/g: 
@@ -10077,7 +10022,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainWindow
-  Size/N: 234
+  Size/N: 248
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -10118,6 +10063,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Status_SongChanged = false
 		  End if
 		  
+		  If Status_InSetChanged Then ActionInSetAskSave
+		  If Status_SetChanged Then 
+		    If Not ActionSetAskSave Then Return True
+		  End If
+		  
+		  
 		  // Cancel the close if we're presenting.
 		  If Status_Presentation Then Return True
 		  
@@ -10139,8 +10090,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Close
    sorc/d: (Enco/N: 134217984
 		Sub Close()
-		  If Status_InSetChanged Then ActionInSetAskSave
-		  If Status_SetChanged Then ActionSetAskSave
 		  
 		  '++JRC Save Globals
 		  If App.MyGlobals <> Nil Then
@@ -10555,7 +10504,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      
 		      ActionSongPresent mode
 		    elseif Status_SetOpen then
-		      ActionSetAskSave
+		      If Not ActionSetAskSave Then Return True
 		      ActionSetPresent mode
 		    end if
 		  end if
@@ -10822,8 +10771,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 1
    sorc/d: (Enco/N: 134217984
 		Sub ActionInSetAskSave()
+		  //TODO: Make set items revertable so the SaveDialog can be used.
+		  
 		  '++JRC Make sure that CurrentInSetItem is still valid
-		  if CurrentInSetItem > lst_set_items.ListCount then return
+		  if CurrentInSetItem >= lst_set_items.ListCount then return
 		  '--
 		  
 		  // Check for unsaved edits
@@ -10966,29 +10917,36 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    Enco/N: 134217984
    name/S: ActionSetAskSave
    parm/S: 
-   rslt/S: 
+   rslt/S: Boolean
    flag/N: 1
    sorc/d: (Enco/N: 134217984
-		Sub ActionSetAskSave()
+		Function ActionSetAskSave() As Boolean
 		  // Check for unsaved edits
-		  // EMP 10/9/04
-		  Dim Msg as MessageDialog
+		  Dim f As FolderItem
+		  Dim status As Integer
+		  If Not Status_SetOpen Then Return True
+		  If Not Status_SetChanged Then Return True
 		  
-		  if Status_SetChanged then
-		    msg = new MessageDialog
-		    msg.Message = App.T.Translate("questions/save/@caption", CurrentSetName)
-		    msg.Title = App.T.Translate("sets_mode/current_set/save/@caption")
-		    msg.Icon = 3'question
-		    msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
-		    msg.CancelButton.Caption = App.T.Translate("shared/no/@caption")
-		    Msg.CancelButton.Visible = true
-		    if msg.ShowModal = msg.ActionButton then 
-		      ActionInSetSave
-		      ActionSetSave
-		    end if
-		  end if
-		  
-		End Sub
+		  status = SaveDialog(App.T.Translate("questions/save/@caption", CurrentSetName))
+		  If Status = 1 Then
+		    ActionInSetSave
+		    ActionSetSave
+		  ElseIf status = -1 Then // Cancel
+		    // Action depends on setting of the set_revert_on_dont_save flag
+		    If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "set_revert_on_dont_save", True, True) Then
+		      f = App.DocsFolder.Child("Sets").Child(CurrentSetName)
+		      If Not SetLoadSet(f) Then
+		        InputBox.Message(App.T.Translate("set_mode/error/revert/@caption", CurrentSetName))
+		        Status_SetOpen = False
+		        Status_SetChanged = False
+		        Status_InSetChanged = False
+		        pop_sets_sets.ListIndex = -1
+		        Return False
+		      End If  //Not SetLoad
+		    End If // set_revert_on_dont_save
+		  End If
+		  Return status > -1 // True if Save/Don't Save, False if Cancel
+		End Function
    )
   Meth/g: 
   Meth/G: 
@@ -11004,7 +10962,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim f as FolderItem
 		  Dim i As Integer
 		  
-		  ActionSetAskSave
+		  If Not ActionSetAskSave Then Return
 		  
 		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
 		  If Len(t) > 0 Then
@@ -11168,7 +11126,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  App.DebugWriter.Write "MainWindow.ActionSetPrintList: Enter"
 		  
 		  ActionInSetAskSave
-		  ActionSetAskSave
+		  If Not ActionSetAskSave Then Return
 		  
 		  MySetListReport = New SetListReport
 		  If MySetListReport = Nil Then
@@ -11282,13 +11240,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      'User pressed Yes, so save
 		      ActionSongSave false, true
 		    Case 0
-		      //++EMP:
-		      // Don't reset the modified flag, otherwise the user could select not to save,
-		      // change his mind, and then have no way to save changes (Save doesn't enable
-		      // unless the SongChanged flag is True).  Set Status_MadUser = True
-		      //
-		      ''Bye-bye changes
-		      'Status_SongChanged = false
+		      'Don't save. Two options: if App.MyMainSettings option song_revert_on_dont_save is True (default),
+		      'then revert to the last saved version.
+		      'If False, just update the in-memory song from the form.
+		      If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "song_revert_on_dont_save", True, True) Then
+		        ActionSongRevert False
+		      Else
+		        StoreSongFields
+		      End If
+		      
 		    Case -1 
 		      'user pressed Cancel, go back
 		      Return False
@@ -11316,8 +11276,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  'reload current song
-		  ActionSongRevert False
 		  
 		  listindex = lst_songs_songs.ListIndex
 		  oldfolder = lst_songs_songs.CellTag(listindex, 0)
@@ -11437,8 +11395,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: 
     srcl/S: 'Ask if user wants to save
     srcl/S: If NOT ActionSongAskSave Then Return 'User Canceled, Don't Present
-    srcl/S: 'reload current song
-    srcl/S: ActionSongRevert False
+    srcl/S: 
     srcl/S: Dim setDoc As XmlDocument
     srcl/S: Dim song As XmlNode
     srcl/S: Dim StyleNode As XmlNode
@@ -11481,16 +11438,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub ActionSongPrint()
 		  Dim rpt As LeadSheetReport
+		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  'reload current song
-		  ActionSongRevert False
-		  
-		  If Status_SongChanged Then Return 'Don't print if user cancelled the save
-		  
-		  'PrintWindow.ClearSongs
-		  'PrintWindow.AddSong lst_songs_songs.Text
-		  'PrintWindow.PrintLeadSheets
 		  
 		  rpt = New LeadSheetReport
 		  If Not rpt.Setup Then
@@ -11534,8 +11484,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  'reload current song
-		  ActionSongRevert False
 		  
 		  If Status_SongChanged Then Return 'Don't print if user cancelled the save
 		  
@@ -11644,6 +11592,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub ActionSongSave(noWrite As Boolean = False, SaveOldSong As Boolean = False)
 		  'Changed function now has two parameters
+		  '
+		  'noWrite = True is the equivalent of just calling StoreSongFields
+		  'Calling parameters not changed to avoid introducing unwanted side effects
+		  'prior to release of V1.0 (EMP, February 2007)
 		  
 		  Dim f As FolderItem
 		  Dim theme As String
@@ -11666,37 +11618,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    End if
 		  End If
 		  
-		  SmartML.SetValue CurrentSong.DocumentElement, "title", edt_song_title.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "author", edt_song_author.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "copyright", edt_song_copyright.Text
-		  'Josh
-		  SmartML.SetValue CurrentSong.DocumentElement, "hymn_number", edt_song_hymn_number.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "presentation", edt_song_presentation.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "ccli", edt_song_ccli.Text
-		  
-		  For i = 0 To lst_song_themes.ListCount - 1
-		    If lst_song_themes.CellCheck(i, 0) Then theme = theme + lst_song_themes.Cell(i, 0) + "; "
-		  Next i
-		  SmartML.SetValue CurrentSong.DocumentElement, "theme", theme
-		  SmartML.RemoveSelf SmartML.GetNode(CurrentSong.DocumentElement, "alttheme")
-		  
-		  SmartML.SetValue CurrentSong.DocumentElement, "capo", pop_song_capo.List(pop_song_capo.ListIndex)
-		  SmartML.SetValueB CurrentSong.DocumentElement, "capo/@print", chk_song_capo_print.State
-		  
-		  If pop_song_tempo.ListIndex >= 0 Then _
-		      SmartML.SetValue CurrentSong.DocumentElement, "tempo", pop_song_tempo.Text
-		  If pop_song_time_sig.ListIndex >= 0 Then _
-		      SmartML.SetValue CurrentSong.DocumentElement, "time_sig", pop_song_time_sig.Text
-		  SmartML.RemoveSelf SmartML.GetNode(CurrentSong.DocumentElement, "timesig")
-		  
-		  SmartML.SetValue CurrentSong.DocumentElement, "key", edt_song_key.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "aka", edt_song_aka.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "key_line", edt_song_key_line.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "user1", edt_song_user1.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "user2", edt_song_user2.Text
-		  SmartML.SetValue CurrentSong.DocumentElement, "user3", edt_song_user3.Text
-		  
-		  SmartML.SetValue CurrentSong.DocumentElement, "lyrics", edf_song_lyrics.Text.FormatUnixEndOfLine
+		  StoreSongFields
 		  
 		  If Not noWrite Then
 		    If Not SmartML.XDocToFile(CurrentSong, f) Then
@@ -11947,6 +11869,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  '++JRC
 		  Dim CurStyle As XmlNode
 		  '--
+		  Dim SongStyle As XmlNode
 		  Dim SongPath As String
 		  
 		  App.MouseCursor = WatchCursor
@@ -11974,7 +11897,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		          SmartML.SetValue(slide_group, "presentation", presentation)
 		        End If
 		        '++JRC: Pass CurStyle
-		        SongML.ToSetML slide_group, CurStyle
+		        ' But check for an override first!
+		        SongStyle = SmartML.GetNode(slide_group, "style")
+		        If SongStyle = Nil Then SongStyle = CurStyle
+		        SongML.ToSetML slide_group, SongStyle
 		        '--
 		        slide_group  = slide_group.NextSibling
 		      Else
@@ -12202,6 +12128,70 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
+   name/S: SetLoadSet
+   parm/S: f As FolderItem
+   rslt/S: Boolean
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Function SetLoadSet(f As FolderItem) As Boolean
+		  
+		  Dim song As FolderItem
+		  Dim input As TextInputStream
+		  Dim line As String
+		  Dim xnode As XmlNode
+		  
+		  // Simple sanity checks
+		  If f = Nil Then Return False
+		  If Not f.Exists Then Return False
+		  
+		  lst_set_items.DeleteAllRows
+		  
+		  CurrentSet = SmartML.XDocFromFile(f)
+		  If CurrentSet = Nil Then
+		    CurrentSet = New XmlDocument
+		    xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
+		    SmartML.DisplayError
+		    Return False
+		  End If
+		  // This section gets the /set/@name value from the current document
+		  // Since this is a non-existent attribute in the 0.9.9 version, add it if
+		  // it's not already there.
+		  //EMP 10/9/04
+		  dim nameAtt as xmlattribute
+		  
+		  dim strName as String
+		  
+		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
+		  
+		  if nameatt = Nil then 
+		    CurrentSet.DocumentElement.SetAttribute("name", pop_sets_sets.text)
+		  end if
+		  
+		  CurrentSetName = pop_sets_sets.text
+		  //--
+		  Dim slide_groups, xchild As XmlNode
+		  Dim i As Integer
+		  
+		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  If slide_groups = Nil Then Return True
+		  
+		  xchild = slide_groups.FirstChild
+		  While xchild <> Nil
+		    lst_set_items.AddRow xchild.GetAttribute("name") + " (" + xchild.GetAttribute("type") + ")"
+		    xchild = xchild.NextSibling
+		  Wend
+		  
+		  Status_SetOpen = True
+		  Status_SetChanged = False
+		  Status_InSetOpen = False
+		  Status_InSetChanged = False
+		  EnableMenuItems
+		  Return True
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
    name/S: SetMode
    parm/S: i As Integer
    rslt/S: 
@@ -12211,7 +12201,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim idx As Integer
 		  If i = 0 Then
 		    ' Change to Song mode
-		    ActionSetAskSave
+		    If Not ActionSetAskSave Then Return
 		    If Status_SetChanged Then //User cancelled from AskSave, revert the set since we are changing modes
 		      Status_InSetChanged = False // These two lines keep pop_sets_sets.Change calls to ActionSetAskSave from firing
 		      Status_SetChanged = False
@@ -12266,6 +12256,58 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    st = x + Len(char)
 		    x = InStr(st, str, char)
 		  Wend
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: StoreSongFields
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub StoreSongFields()
+		  'Changed function now has two parameters
+		  
+		  Dim f As FolderItem
+		  Dim theme As String
+		  Dim i As Integer
+		  Dim FullName As String
+		  
+		  If CurrentSong = Nil Then Return
+		  
+		  SmartML.SetValue CurrentSong.DocumentElement, "title", edt_song_title.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "author", edt_song_author.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "copyright", edt_song_copyright.Text
+		  'Josh
+		  SmartML.SetValue CurrentSong.DocumentElement, "hymn_number", edt_song_hymn_number.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "presentation", edt_song_presentation.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "ccli", edt_song_ccli.Text
+		  
+		  For i = 0 To lst_song_themes.ListCount - 1
+		    If lst_song_themes.CellCheck(i, 0) Then theme = theme + lst_song_themes.Cell(i, 0) + "; "
+		  Next i
+		  SmartML.SetValue CurrentSong.DocumentElement, "theme", theme
+		  SmartML.RemoveSelf SmartML.GetNode(CurrentSong.DocumentElement, "alttheme")
+		  
+		  SmartML.SetValue CurrentSong.DocumentElement, "capo", pop_song_capo.List(pop_song_capo.ListIndex)
+		  SmartML.SetValueB CurrentSong.DocumentElement, "capo/@print", chk_song_capo_print.State
+		  
+		  If pop_song_tempo.ListIndex >= 0 Then _
+		      SmartML.SetValue CurrentSong.DocumentElement, "tempo", pop_song_tempo.Text
+		  If pop_song_time_sig.ListIndex >= 0 Then _
+		      SmartML.SetValue CurrentSong.DocumentElement, "time_sig", pop_song_time_sig.Text
+		  SmartML.RemoveSelf SmartML.GetNode(CurrentSong.DocumentElement, "timesig")
+		  
+		  SmartML.SetValue CurrentSong.DocumentElement, "key", edt_song_key.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "aka", edt_song_aka.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "key_line", edt_song_key_line.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "user1", edt_song_user1.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "user2", edt_song_user2.Text
+		  SmartML.SetValue CurrentSong.DocumentElement, "user3", edt_song_user3.Text
+		  
+		  SmartML.SetValue CurrentSong.DocumentElement, "lyrics", edf_song_lyrics.Text.FormatUnixEndOfLine
+		  
 		End Sub
    )
   Meth/g: 
@@ -12727,13 +12769,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: mnu_settings_refresh_sets
    sorc/d: (Enco/N: 134217984
 		Function mnu_settings_refresh_sets() As Boolean
-		  ActionSetAskSave
+		  If Not ActionSetAskSave Then Return True
 		  
 		  LoadSets App.DocsFolder.Child("Sets")
 		  
 		  lst_set_items.DeleteAllRows
 		  pop_sets_sets.ListIndex = 0
 		  EnableMenuItems
+		  Return True
 		End Function
    )
   MnuH/g: 
@@ -13105,6 +13148,17 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     Enco/N: 134217984
     ntln/S: PPT As Integer
     ntln/S: PowerPointApplication
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SetCurrentListIndex As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SetCurrentListIndex As Integer
+    ntln/S: 
     ntln/S: 
    sorc/g: 
   Prop/g: 

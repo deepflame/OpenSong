@@ -154,3 +154,5 @@ about/sources
 scripture_lookup/book
 questions/generic_save
 questions/generic_save_explanation
+questions/set_changed
+set_mode/errors/revert

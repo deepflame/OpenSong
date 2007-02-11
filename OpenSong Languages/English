@@ -160,6 +160,9 @@
       <revert caption="(style)">-- Revert Style --</revert>
     </items>
     <untitled caption="Untitled"/>
+    <errors>
+      <revert caption="Error reloading set &quot;%1&quot; from file."/>
+    </errors>
   </sets_mode>
 
   <slide_editor>
@@ -908,6 +911,7 @@ Click on this slide to edit its style.</body>
     <long_operation caption="This may take a long time to complete. Continue?"/>
     <generic_save caption="Save changes?"/>
     <generic_save_explanation caption="If you do not save, your changes will be lost"/>
+    <set_changed caption="Current set has been changed, do you want to save?"/>
   </questions>
 
   <about>

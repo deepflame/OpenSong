@@ -998,58 +998,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: GetNTBooks
-  parm/S: 
-  rslt/S: String()
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetNTBooks() As String()
-		  //
-		  // Returns a string array with the names of the books
-		  // of the New Testament from the currently-loaded Bible.
-		  //
-		  // Must use this routine to allow for both I18N issues
-		  // and to handle Zefania files with incomplete
-		  // books.
-		  //
-		  // Ed Palmer, September 2005
-		  //
-		  Dim BookNames(0) As String
-		  Dim xn As XmlNodeList
-		  Dim i As Integer
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL
-		    For i = 1 to NT_PROTESTANT
-		      BookNames.Append GetBookName(i + OT_PROTESTANT)
-		    Next
-		    
-		  Case XML_NAB
-		    xn = Scripture.Xql("/bible/NT/book")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("n")
-		    Next
-		    
-		  Case XML_ZEFANIA
-		    //
-		    // Look at books in the book number range 40-66
-		    // 40 = Matthew, 66 = Revelation
-		    //
-		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("bname")
-		    Next
-		    
-		  End Select
-		  
-		  Return BookNames
-		  
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetNTBooks
   parm/S: ByRef BookNames() As String, ByRef BookNumbers() As Integer
   rslt/S: Integer
   flag/N: 0
@@ -1105,6 +1053,58 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  End Select
 		  
 		  Return UBound(BookNames) + 1
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetNTBooks
+  parm/S: 
+  rslt/S: String()
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetNTBooks() As String()
+		  //
+		  // Returns a string array with the names of the books
+		  // of the New Testament from the currently-loaded Bible.
+		  //
+		  // Must use this routine to allow for both I18N issues
+		  // and to handle Zefania files with incomplete
+		  // books.
+		  //
+		  // Ed Palmer, September 2005
+		  //
+		  Dim BookNames(0) As String
+		  Dim xn As XmlNodeList
+		  Dim i As Integer
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL
+		    For i = 1 to NT_PROTESTANT
+		      BookNames.Append GetBookName(i + OT_PROTESTANT)
+		    Next
+		    
+		  Case XML_NAB
+		    xn = Scripture.Xql("/bible/NT/book")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("n")
+		    Next
+		    
+		  Case XML_ZEFANIA
+		    //
+		    // Look at books in the book number range 40-66
+		    // 40 = Matthew, 66 = Revelation
+		    //
+		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("bname")
+		    Next
+		    
+		  End Select
+		  
+		  Return BookNames
 		  
 		End Function
   )
@@ -1457,14 +1457,19 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		      Return ret
 		    End Try
 		    
-		    For i = 0 To list.Length - 1
-		      Verse = list.Item(i).GetAttribute("n")
-		      If list.Item(i).GetAttribute("t") <> "" Then
-		        Verse = verse + "-" + list.Item(i).GetAttribute("t")
-		      End If
-		      ret.Append Verse + " " + list.Item(i).FirstChild.Value
-		    Next
-		    
+		    If list = Nil Then
+		      App.DebugWriter.Write "In Bible.GetVerse, using " + LoadedBibleFilename + ", got an empty list."
+		      App.DebugWriter.Write Chr(9) + "Asking for Book/Chap/From/To = " + _
+		          Join(Array(CStr(BookNum), CStr(ChapNum), CStr(fromVerse), CStr(toVerse)), "/")
+		    Else
+		      For i = 0 To list.Length - 1
+		        Verse = list.Item(i).GetAttribute("n")
+		        If list.Item(i).GetAttribute("t") <> "" Then
+		          Verse = verse + "-" + list.Item(i).GetAttribute("t")
+		        End If
+		        ret.Append Verse + " " + list.Item(i).FirstChild.Value
+		      Next
+		    End If //list = Nil
 		  Case XML_ZEFANIA
 		    // The bsname attribute doesn't have spaces between the number and name
 		    // ("3John" instead of "3 John")
@@ -1493,15 +1498,20 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		      Return ret
 		    End Try
 		    
-		    For i = 0 To list.Length - 1
-		      Verse = list.Item(i).GetAttribute("vnumber") + list.Item(i).GetAttribute("aix")
-		      If list.Item(i).GetAttribute("enumber") <> "" Then
-		        verse = verse + "-" + list.Item(i).GetAttribute("enumber")
-		      End If
-		      verse = verse + " " + getVerseText(list.Item(i))
-		      ret.Append verse
-		    Next
-		    
+		    If list = Nil Then
+		      App.DebugWriter.Write "In Bible.GetVerse, using " + LoadedBibleFilename + ", got an empty list."
+		      App.DebugWriter.Write Chr(9) + "Asking for Book/Chap/From/To = " + _
+		          Join(Array(CStr(BookNum), CStr(ChapNum), CStr(fromVerse), CStr(toVerse)), "/")
+		    Else
+		      For i = 0 To list.Length - 1
+		        Verse = list.Item(i).GetAttribute("vnumber") + list.Item(i).GetAttribute("aix")
+		        If list.Item(i).GetAttribute("enumber") <> "" Then
+		          verse = verse + "-" + list.Item(i).GetAttribute("enumber")
+		        End If
+		        verse = verse + " " + getVerseText(list.Item(i))
+		        ret.Append verse
+		      Next
+		    End If
 		  End Select
 		  
 		  Return ret

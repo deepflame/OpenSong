@@ -345,15 +345,6 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: MouseExit
-   sorc/d: (Enco/N: 134217984
-		Sub MouseExit()
-		  
-		End Sub
-   )
-  HIns/g: 
  CBhv/g: 
  CBhv/G: 
   Name/S: 
@@ -2081,7 +2072,6 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    lst_scr_chapter.ListIndex = i - 1 // We can assume that the chapters are numbered sequentially from 1
 		    lst_scr_to_verse.ListIndex = lst_scr_to_verse.ListCount - 1
 		    BuildScripture
-		    Close
 		    Return
 		  End If
 		  temp = Mid(lookup, first_space_loc + 1, colon_loc - first_space_loc)
@@ -2141,7 +2131,6 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  End If
 		  
 		  BuildScripture
-		  If Not Live Then Close
 		End Sub
    )
   Meth/g: 

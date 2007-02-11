@@ -1,5 +1,7 @@
 -= 1.0 Baselevel 15 =-
 
+* Program preferences window rearranged; documents folder path displays on main page; browse for new documents documents folder starts at current documents folder.
+
 * Scripture lookup will no longer crash if the reference returns no verses.
 
 * Scripture lookup will no longer crash if a reference is typed into the edit field and the Lookup button or Return is pressed. (Thanks, JS, for all the testing help!)

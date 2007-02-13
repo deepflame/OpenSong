@@ -13,7 +13,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: PopupMenu
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
@@ -166,15 +166,6 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: Open
-   sorc/d: (Enco/N: 134217984
-		Sub Open()
-		  
-		End Sub
-   )
-  HIns/g: 
  CBhv/g: 
  CBhv/G: 
   Name/S: 
@@ -182,7 +173,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: PushButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -213,7 +204,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: PushButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -229,7 +220,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: Listbox
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
@@ -257,16 +248,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: Listbox
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
-   name/S: CellClick
-   sorc/d: (Enco/N: 134217984
-		Function CellClick(row as Integer, column as Integer, x as Integer, y as Integer) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
@@ -294,7 +276,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: Listbox
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
@@ -352,7 +334,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: Listbox
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
@@ -374,7 +356,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: Listbox
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
@@ -397,7 +379,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: EditField
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: GotFocus
    sorc/d: (Enco/N: 134217984
 		Sub GotFocus()
@@ -408,7 +390,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(Key As String) As Boolean
@@ -430,7 +412,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: LostFocus
    sorc/d: (Enco/N: 134217984
 		Sub LostFocus()
@@ -440,7 +422,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
@@ -449,7 +431,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: TextChange
    sorc/d: (Enco/N: 134217984
 		Sub TextChange()
@@ -466,7 +448,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: PushButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -488,7 +470,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: RadioButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -503,7 +485,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: RadioButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -520,7 +502,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: PushButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -535,7 +517,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   Supr/S: PushButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -673,7 +655,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: grp_quick_lookup, Enco/N: 134217984)
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 385)
+  PDef/D: (name/S: Left, PVal/S: 389)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: True)
@@ -1568,11 +1550,11 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 188
+  Size/N: 196
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Close
    sorc/d: (Enco/N: 134217984
 		Sub Close()
@@ -1581,25 +1563,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
-   name/S: Maximize
-   sorc/d: (Enco/N: 134217984
-		Sub Maximize()
-		  
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: Minimize
-   sorc/d: (Enco/N: 134217984
-		Sub Minimize()
-		  
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
@@ -1630,7 +1594,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Resized
    sorc/d: (Enco/N: 134217984
 		Sub Resized()
@@ -1652,7 +1616,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Resizing
    sorc/d: (Enco/N: 134217984
 		Sub Resizing()
@@ -2675,6 +2639,6 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  PDef/D: (name/S: Title, PVal/S: Scripture Lookup, Enco/N: 134217984)
  PDef/D: (name/S: Visible, PVal/S: True)
  PDef/D: (name/S: Width, PVal/S: 570)
- PDef/D: (name/S: ZoomIcon, PVal/S: False)
+ PDef/D: (name/S: ZoomIcon, PVal/S: True)
 pVew/b: 
 ##RBvx-End#

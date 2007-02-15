@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##Project Items:	
 #	Proj	00000000
@@ -20,6 +20,7 @@
 #SImageCanvas	pObj	BC8F3437
 #SFontCanvas	pObj	BC8FABB4
 #SColorCanvas	pObj	BC90901B
+#HeapSortDict	pObj	C1EF3CD9
 #Settings Windows	pFol	BC8F04EC
 #ImageChooserWindow	pVew	BCAC3A30
 #SStyleCanvas	pObj	BCB29EF4

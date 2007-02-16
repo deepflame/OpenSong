@@ -1,5 +1,7 @@
 -= 1.0 Baselevel 15 =-
 
+* Provide method to globally configure that a set style change overrides the style defined for a song (configured by editing the setting of "song_style_preferred" in the PresentSettings file).  Default is true, the current behavior.  This is a temporary workaround, not a permanent fix.
+
 * Fixed scripture indexing to avoid dropping words from the index completely. [Bug 1651524]
 
 * Corrected cosmetic issue with text entry field for scripture lookup direct entry.

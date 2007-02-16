@@ -616,17 +616,29 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		Function GetStyle(xSlide As XmlNode) As XmlNode
 		  //++EMP 09/05
 		  
-		  // Because I coded this in a different version I was working on, it'll
-		  // just be a wholesale copy & paste.
-		  
 		  Dim prev_group, neighbor_slide, style As XmlNode
 		  Dim GetNext As Boolean
+		  Dim SlideType As String
+		  Dim SlideGroup As XmlNode
 		  
 		  GetNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True)
+		  SlideGroup = xSlide.Parent.Parent
+		  SlideType = SmartML.GetValue(SlideGroup, "@type", False)
 		  
 		  ' Check for a directly defined override style
-		  style = SmartML.GetNode(xSlide.Parent.Parent, "style", False)
-		  If style <> Nil Then Return style
+		  style = SmartML.GetNode(SlideGroup, "style", False)
+		  //++
+		  // February 2007: Songs can either take on the style defined by the song
+		  // or by a style change.  The behavior prior to BL14 was that the song style
+		  // prevailed always.  In BL15, introduce a "hidden" control for this, allowing a style
+		  // change to control the song's appearance (which seems to me to be the
+		  // "path of least astonishment" after spending hours to chase down what I thought
+		  // was a bug -- EMP)
+		  //--
+		  If style <> Nil Then 
+		    If SlideType <> "song" Then Return style
+		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "song_style_preferred", True, True) Then Return style
+		  End If
 		  
 		  ' If we are on a blank, and there is another slide after, we'll search for it's style instead.
 		  ' Or, if we're at the end and we're blank (name), then we'll use the previous
@@ -635,35 +647,34 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		  'Changed (Joshua)
 		  ' Or custom slide that the user forgot to name(Yes I've done this)
 		  ' Incorporated into Ed's version by adding a condition to the outer If
+		  //++
+		  // February 2007: take advantage of the addition of a "blank" type.
+		  //--
 		  
-		  Dim type As String
-		  type = SmartML.GetValue(xSlide.Parent.Parent, "@type", True)
-		  
-		  If SmartML.GetValue(xSlide.Parent.Parent, "@name") = "" _
-		      And type <> "custom" Then
+		  If SlideType = "blank" Then
 		    If GetNext Then
 		      neighbor_slide = GetNextSlide(xSlide)
 		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		      'neighbor_slide = GetPrevSlide(xSlide)
-		      'If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
 		    Else
 		      neighbor_slide = GetPrevSlide(xSlide)
 		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		      'neighbor_slide = GetNextSlide(xSlide)
-		      'If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
 		    End If
 		  End If
+		  
+		  //++
+		  // Chase back to find possible style changes
+		  //--
 		  Dim reverting As Boolean
 		  reverting = False
 		  
-		  prev_group = xSlide.Parent.Parent.PreviousSibling
+		  prev_group = SlideGroup.PreviousSibling
 		  While prev_group <> Nil
 		    If SmartML.GetValue(prev_group, "@type") = "style" Then
 		      If SmartML.GetValue(prev_group, "@action") = "new" Then
 		        If reverting Then
 		          reverting = False
 		          prev_group = prev_group.PreviousSibling
-		        Else
+		        Else 
 		          Return SmartML.GetNode(prev_group, "style", False)
 		        End If
 		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
@@ -678,62 +689,11 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		  Wend
 		  
 		  ' No directly connected styles, and no overrides, so...
-		  type = SmartML.GetValue(xSlide.Parent.Parent, "@type", True)
-		  If type = "scripture" Then
+		  If SlideType = "scripture" Then
 		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
 		  Else
 		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
 		  End If
-		  //--EMP
-		  // Original method below...
-		  'Dim prev_group, neighbor_slide, style As XmlNode
-		  '
-		  '' Check for a directly defined override style
-		  'style = SmartML.GetNode(xSlide.Parent.Parent, "style", False)
-		  'If style <> Nil Then Return style
-		  '
-		  '' If we are on a blank, and there is another slide after, we'll search for it's style instead.
-		  '' Or, if we're at the end and we're blank (name), then we'll use the previous
-		  'If SmartML.GetValue(xSlide.Parent.Parent, "@name") = "" Then
-		  'neighbor_slide = GetNextSlide(xSlide)
-		  'If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		  'neighbor_slide = GetPrevSlide(xSlide)
-		  'If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		  'End If
-		  '
-		  'Dim reverting As Boolean
-		  'reverting = False
-		  '
-		  'prev_group = xSlide.Parent.Parent.PreviousSibling
-		  'While prev_group <> Nil
-		  'If SmartML.GetValue(prev_group, "@type") = "style" Then
-		  'If SmartML.GetValue(prev_group, "@action") = "new" Then
-		  'If reverting Then
-		  'reverting = False
-		  'prev_group = prev_group.PreviousSibling
-		  'Else
-		  'Return SmartML.GetNode(prev_group, "style", False)
-		  'End If
-		  'ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
-		  'reverting = True
-		  'prev_group = prev_group.PreviousSibling
-		  'Else ' unknown action type
-		  'prev_group = prev_group.PreviousSibling
-		  'End If
-		  'Else ' not a style group
-		  'prev_group = prev_group.PreviousSibling
-		  'End If
-		  'Wend
-		  '
-		  '' No directly connected styles, and no overrides, so...
-		  'Dim type As String
-		  'type = SmartML.GetValue(xSlide.Parent.Parent, "@type", True)
-		  'If type = "scripture" Then
-		  'Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
-		  'Else
-		  'Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
-		  'End If
-		  '
 		End Function
   )
  Meth/g: 

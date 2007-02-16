@@ -355,6 +355,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: SmartML.DisplayError
    srcl/S: Quit
    srcl/S: End If
+   srcl/S: 
    srcl/S: // Move some XML around in MyPresentSettings to align with V1.0 BL13 changes.
    srcl/S: UpdateDefaultStyle
    srcl/S: ' --- BUILD CAPO LIST ---
@@ -949,6 +950,8 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		  End If
 		  
 		  SmartML.SetValueN(settings, "@version", 1.0)
+		  
+		  SmartML.SetValueB(MyPresentSettings.DocumentElement, "song_style_preferred", True)
 		  
 		  If Not SmartML.XDocToFile(App.MyPresentSettings, App.DocsFolder.Child("Settings").Child("PresentSettings")) Then SmartML.DisplayError
 		  

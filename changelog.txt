@@ -1,5 +1,7 @@
 -= 1.0 Baselevel 15 =-
 
+* SmartML.GetValueB wasn't setting the default in the XML if the path had to be created.  This meant that GetValueB would create a path with no value (interpreted as False) even if the default was set to True, so the next call to GetValueB on that path would return False always on subsequent calls until SetValueB was called.
+
 * Provide method to globally configure that a set style change overrides the style defined for a song (configured by editing the setting of "song_style_preferred" in the PresentSettings file).  Default is true, the current behavior.  This is a temporary workaround, not a permanent fix.
 
 * Fixed scripture indexing to avoid dropping words from the index completely. [Bug 1651524]
@@ -14,7 +16,7 @@
 
 * Fixed error with copyright subtitle text displayed on slides.
 
-* Changed prompts the user sees to save a set (not an item within a set, though).  User now has three options like the previous change to Songs.  In both cases, the default action for "No" or "Don't Save" is to revert to the last saved version.
+* Changed prompts the user sees to save a set (not an item within a set, though).  User now has three options like the previous change to Songs.  If the user selects "Don't Save," there are two possible actions: revert to the last saved version, or continue with the unsaved copy.  The behavior is controlled by two options in the MainSettings file: set_revert_on_dont_save and song_revert_on_dont_save.  At this time, these must be manually edited to change the default value.
 
 * Prevent bizarre second prompt for unsaved changes to a Song when exiting
 

@@ -51,22 +51,29 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   name/S: Close
   sorc/d: (Enco/N: 134217984
 		Sub Close()
+		  
+		  '++JRC Save Globals
+		  If App.MyGlobals <> Nil Then
+		    If Not SmartML.XDocToFile(App.MyGlobals, App.AppFolder.Child("OpenSong Settings").Child("Globals")) Then SmartML.DisplayError
+		  End If
+		  '--
+		  If App.MyPrintSettings <> Nil Then
+		    If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child("Settings").Child("PrintSettings")) Then SmartML.DisplayError
+		  End If
+		  If App.MyMainSettings <> Nil Then
+		    If Not SmartML.XDocToFile(App.MyMainSettings, App.DocsFolder.Child("Settings").Child("MainSettings")) Then SmartML.DisplayError
+		  End If
+		  If App.MyPresentSettings <> Nil Then
+		    If Not SmartML.XDocToFile(App.MyPresentSettings, App.DocsFolder.Child("Settings").Child("PresentSettings")) Then SmartML.DisplayError
+		  End If
+		  
 		  Globals.Status_Presentation = False
 		  DebugWriter.Done
 		End Sub
   )
  HIns/g: 
  HIns/G: 
-  Enco/N: 1536
-  name/S: NewDocument
-  sorc/d: (Enco/N: 134217984
-		Sub NewDocument()
-		  
-		End Sub
-  )
- HIns/g: 
- HIns/G: 
-  Enco/N: 1280
+  Enco/N: 131072
   name/S: Open
   sorc/G: 
    Enco/N: 134217984

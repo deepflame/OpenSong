@@ -1,4 +1,4 @@
-##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -1006,16 +1006,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
-   name/S: HeaderPressed
-   sorc/d: (Enco/N: 134217984
-		Function HeaderPressed(column as Integer) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: KeyDown
    sorc/d: (Enco/N: 134217984
 		Function KeyDown(key As String) As Boolean
@@ -1074,15 +1065,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		Sub MouseExit()
 		  SetHelp ""
 		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: SortColumn
-   sorc/d: (Enco/N: 134217984
-		Function SortColumn(column As Integer) As Boolean
-		  
-		End Function
    )
   HIns/g: 
  CBhv/g: 
@@ -1278,7 +1260,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim s As String
 		  Dim i, j As Integer
 		  
-		  ActionInSetAskSave
+		  'Ask if user wants to save
+		  If NOT ActionInSetAskSave Then 
+		    If CurrentInSetItem >= 0 Then
+		      lst_set_items.ListIndex = CurrentInSetItem
+		    End If
+		    Return 'User Canceled
+		  End If
 		  
 		  If Me.ListIndex < 0 Then
 		    Status_InSetOpen = False
@@ -1790,8 +1778,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim old as String
 		  Dim f as FolderItem
 		  Dim i As Integer
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
+		  
 		  old = pop_sets_sets.Text
-		  ActionSetSave
 		  
 		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
 		  If Len(t) > 0 Then
@@ -2071,7 +2062,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: f = SongPickerWindow.Popup
     srcl/S: If f <> Nil Then
     srcl/S: Status_SetChanged = True
-    srcl/S: Status_InSetChanged = False
+    srcl/S: 'Status_InSetChanged = False
     srcl/S: ' No need to EnableMenuItems, since the following selection change will call it
     srcl/S: End If
     srcl/S: 
@@ -2231,7 +2222,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  While ScripturePickerWindow.Popup(newGroup)
 		    Status_SetChanged = True
-		    Status_InSetChanged = False
+		    'Status_InSetChanged = False
 		    ' No need to EnableMenuItems, since the following selection change will call it
 		    
 		    If lst_set_items.ListIndex >= 0 Then
@@ -3166,26 +3157,79 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Change
    sorc/d: (Enco/N: 134217984
 		Sub Change()
-		  Dim f As FolderItem
-		  If pop_sets_sets.ListIndex < 0 Or pop_sets_sets.Text = "" Then
-		    SetCurrentListIndex = -1
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then 
+		    If CurrentSetIndex >= 0 Then
+		      pop_sets_sets.ListIndex = CurrentSetIndex
+		    End If
+		    Return 'User Canceled
+		  End If
+		  
+		  CurrentSetIndex = pop_sets_sets.ListIndex
+		  
+		  //
+		  App.MouseCursor = WatchCursor
+		  lst_set_items.DeleteAllRows
+		  If pop_sets_sets.ListIndex < 0 Or Len(pop_sets_sets.Text) <= 0 Then
+		    App.MouseCursor = Nil
 		    Return
 		  End If
 		  
-		  If ActionSetAskSave Then
-		    App.MouseCursor = WatchCursor
-		    SetCurrentListIndex = Me.ListIndex
-		    
-		    f = App.DocsFolder.Child("Sets").Child(Me.Text)
-		    If Not SetLoadSet(f) Then // Load Failed
-		      lst_set_items.DeleteAllRows
-		      Status_SetOpen = False
-		      me.ListIndex = -1
-		    End If
+		  Dim f, song As FolderItem
+		  'Dim input As TextInputStream
+		  Dim line As String
+		  Dim xnode As XmlNode
+		  
+		  lst_set_items.DeleteAllRows
+		  
+		  f = App.DocsFolder.Child("Sets").Child(pop_sets_sets.Text)
+		  CurrentSet = SmartML.XDocFromFile(f)
+		  If CurrentSet = Nil Then
 		    App.MouseCursor = Nil
-		  Else // User cancelled change; stay on same item with current contents
-		    Me.ListIndex = SetCurrentListIndex
+		    CurrentSet = New XmlDocument
+		    xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
+		    SmartML.DisplayError
 		  End If
+		  // This section gets the /set/@name value from the current document
+		  // Since this is a non-existent attribute in the released version, add it if
+		  // it's not already there.
+		  //EMP 10/9/04
+		  dim nameAtt as xmlattribute
+		  
+		  dim strName as String
+		  
+		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
+		  
+		  if nameatt = Nil then 
+		    CurrentSet.DocumentElement.SetAttribute("name", me.text)
+		  end if
+		  
+		  CurrentSetName = me.text
+		  //--
+		  Dim slide_groups, xchild As XmlNode
+		  Dim i As Integer
+		  
+		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  If slide_groups = Nil Then Return
+		  
+		  xchild = slide_groups.FirstChild
+		  While xchild <> Nil
+		    lst_set_items.AddRow xchild.GetAttribute("name") + " (" + xchild.GetAttribute("type") + ")"
+		    xchild = xchild.NextSibling
+		  Wend
+		  
+		  '++JRC Save backup copy
+		  TempSet = New XmlDocument
+		  TempSet.AppendChild TempSet.ImportNode(CurrentSet.DocumentElement, True)
+		  '--
+		  
+		  Status_SetOpen = True
+		  Status_SetChanged = False
+		  Status_InSetOpen = False
+		  Status_InSetChanged = False
+		  EnableMenuItems
+		  
+		  App.MouseCursor = Nil
 		End Sub
    )
   HIns/g: 
@@ -3204,15 +3248,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub MouseExit()
 		  SetHelp ""
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: Open
-   sorc/d: (Enco/N: 134217984
-		Sub Open()
-		  SetCurrentListIndex = -1
 		End Sub
    )
   HIns/g: 
@@ -4054,16 +4089,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: MouseDown
    sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -4122,16 +4148,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: MouseDown
    sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -4190,16 +4207,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: MouseDown
    sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -4258,16 +4266,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: MouseDown
    sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -4326,16 +4325,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: MouseDown
    sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -4394,16 +4384,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: MouseDown
    sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -4462,16 +4443,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: MouseDown
    sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -4530,16 +4502,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: MouseDown
    sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -10063,11 +10026,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Status_SongChanged = false
 		  End if
 		  
-		  If Status_InSetChanged Then ActionInSetAskSave
 		  If Status_SetChanged Then 
-		    If Not ActionSetAskSave Then Return True
+		    'Ask if user wants to save
+		    If NOT ActionSetAskSave Then Return True 'User Canceled
+		    'This will prevent a bizzar second save prompt
+		    Status_SetChanged = false
 		  End If
-		  
 		  
 		  // Cancel the close if we're presenting.
 		  If Status_Presentation Then Return True
@@ -10086,31 +10050,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
-   name/S: Close
-   sorc/d: (Enco/N: 134217984
-		Sub Close()
-		  
-		  '++JRC Save Globals
-		  If App.MyGlobals <> Nil Then
-		    If Not SmartML.XDocToFile(App.MyGlobals, App.AppFolder.Child("OpenSong Settings").Child("Globals")) Then SmartML.DisplayError
-		  End If
-		  '--
-		  If App.MyPrintSettings <> Nil Then
-		    If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child("Settings").Child("PrintSettings")) Then SmartML.DisplayError
-		  End If
-		  If App.MyMainSettings <> Nil Then
-		    If Not SmartML.XDocToFile(App.MyMainSettings, App.DocsFolder.Child("Settings").Child("MainSettings")) Then SmartML.DisplayError
-		  End If
-		  If App.MyPresentSettings <> Nil Then
-		    If Not SmartML.XDocToFile(App.MyPresentSettings, App.DocsFolder.Child("Settings").Child("PresentSettings")) Then SmartML.DisplayError
-		  End If
-		  Quit
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: EnableMenuItems
    sorc/d: (Enco/N: 134217984
 		Sub EnableMenuItems()
@@ -10504,7 +10444,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      
 		      ActionSongPresent mode
 		    elseif Status_SetOpen then
-		      If Not ActionSetAskSave Then Return True
+		      'Ask if user wants to save
+		      If NOT ActionSetAskSave Then Return True  'User Canceled
+		      
 		      ActionSetPresent mode
 		    end if
 		  end if
@@ -10576,6 +10518,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  '++JRC 
 		  Globals.OldFolderSel = -1
+		  CurrentSetIndex = -1
 		  '--
 		  
 		  App.MyBible = New Bible
@@ -10754,49 +10697,67 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		End Sub
    )
   HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: Restore
-   sorc/d: (Enco/N: 134217984
-		Sub Restore()
-		  
-		End Sub
-   )
-  HIns/g: 
   Meth/G: 
    Enco/N: 134217984
    name/S: ActionInSetAskSave
    parm/S: 
-   rslt/S: 
+   rslt/S: Boolean
    flag/N: 1
    sorc/d: (Enco/N: 134217984
-		Sub ActionInSetAskSave()
-		  //TODO: Make set items revertable so the SaveDialog can be used.
+		Function ActionInSetAskSave() As Boolean
+		  //
+		  // Check to see if the current set has been changed
+		  // if so, give the user a chance to save it before continuing
+		  // with an action that will throw away the changes
+		  //
+		  // JRC 1/27/2007
+		  'Changed to return whether the user canceled or not
+		  ' EMP 12/06: Move guts of doing the message dialog to a utility method
+		  ' so it can be reused by sets mode and other areas.
 		  
-		  '++JRC Make sure that CurrentInSetItem is still valid
-		  if CurrentInSetItem >= lst_set_items.ListCount then return
-		  '--
+		  If Status_InSetChanged then
+		    '++JRC
+		    Select Case SaveDialog( App.T.Translate("questions/save/@caption", lst_set_items.Cell(CurrentInSetItem, 0)))
+		    Case 1
+		      'User pressed Yes, so save
+		      ActionInSetSave
+		    Case 0
+		      //++EMP:
+		      // Don't reset the modified flag, otherwise the user could select not to save,
+		      // change his mind, and then have no way to save changes (Save doesn't enable
+		      // unless the SongChanged flag is True).  Set Status_MadUser = True
+		      //
+		    Case -1 
+		      'user pressed Cancel, go back
+		      Return False
+		    End Select
+		    '--
+		  End If
 		  
+		  'Return True, meaning user wants to continue with/without saving
+		  Return True
+		  
+		  'Old Function
 		  // Check for unsaved edits
 		  // EMP 10/9/04
-		  Dim Msg as MessageDialog
+		  'Dim Msg as MessageDialog
 		  
-		  if Status_InSetChanged then
-		    msg = new MessageDialog
-		    msg.Message = App.T.Translate("questions/save/@caption", lst_set_items.Cell(CurrentInSetItem, 0))
-		    msg.Title = App.T.Translate("sets_mode/current_set/save/@caption")
-		    msg.Icon = 3'question
-		    msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
-		    msg.CancelButton.Caption = App.T.Translate("shared/no/@caption")
-		    Msg.CancelButton.Visible = true
-		    if msg.ShowModal = msg.ActionButton then 
-		      ActionInSetSave
-		    end if
-		    Status_InSetChanged = False
-		    EnableMenuItems
-		  end if
+		  'if Status_InSetChanged then
+		  'msg = new MessageDialog
+		  'msg.Message = App.T.Translate("questions/save/@caption", lst_set_items.Cell(CurrentInSetItem, 0))
+		  'msg.Title = App.T.Translate("sets_mode/current_set/save/@caption")
+		  'msg.Icon = 3'question
+		  'msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
+		  'msg.CancelButton.Caption = App.T.Translate("shared/no/@caption")
+		  'Msg.CancelButton.Visible = true
+		  'if msg.ShowModal = msg.ActionButton then 
+		  'ActionInSetSave
+		  'end if
+		  'Status_InSetChanged = False
+		  'EnableMenuItems
+		  'end if
 		  
-		End Sub
+		End Function
    )
   Meth/g: 
   Meth/G: 
@@ -10808,7 +10769,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub ActionInSetCopy()
 		  Dim xgroups, oldGroup, newGroup As XmlNode
-		  ActionInSetAskSave
+		  'Ask if user wants to save
+		  If NOT ActionInSetAskSave Then Return 'User Canceled
 		  
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  oldGroup = xgroups.Child(lst_set_items.ListIndex)
@@ -10921,31 +10883,62 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    flag/N: 1
    sorc/d: (Enco/N: 134217984
 		Function ActionSetAskSave() As Boolean
-		  // Check for unsaved edits
-		  Dim f As FolderItem
-		  Dim status As Integer
-		  If Not Status_SetOpen Then Return True
-		  If Not Status_SetChanged Then Return True
+		  //
+		  // Check to see if the current set has been changed
+		  // if so, give the user a chance to save it before continuing
+		  // with an action that will throw away the changes
+		  //
+		  // JRC 1/27/2007
+		  'Changed to return whether the user canceled or not
+		  ' EMP 12/06: Move guts of doing the message dialog to a utility method
+		  ' so it can be reused by sets mode and other areas.
 		  
-		  status = SaveDialog(App.T.Translate("questions/save/@caption", CurrentSetName))
-		  If Status = 1 Then
-		    ActionInSetSave
-		    ActionSetSave
-		  ElseIf status = -1 Then // Cancel
-		    // Action depends on setting of the set_revert_on_dont_save flag
-		    If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "set_revert_on_dont_save", True, True) Then
-		      f = App.DocsFolder.Child("Sets").Child(CurrentSetName)
-		      If Not SetLoadSet(f) Then
-		        InputBox.Message(App.T.Translate("set_mode/error/revert/@caption", CurrentSetName))
-		        Status_SetOpen = False
+		  If Status_SetChanged then
+		    '++JRC
+		    Select Case SaveDialog(App.T.Translate("questions/set_changed/@caption"))
+		    Case 1
+		      'User pressed Yes, so save
+		      ActionInSetSave
+		      ActionSetSave
+		    Case 0
+		      If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "set_revert_on_dont_save", False, True) Then
+		        //++
+		        // Revert the entire set to the last saved version
+		        //--
+		        CurrentSet = Nil
+		        CurrentSet = New XmlDocument
+		        CurrentSet.AppendChild CurrentSet.ImportNode(TempSet.DocumentElement, True)
 		        Status_SetChanged = False
 		        Status_InSetChanged = False
-		        pop_sets_sets.ListIndex = -1
-		        Return False
-		      End If  //Not SetLoad
-		    End If // set_revert_on_dont_save
+		        lst_set_items.ListIndex = lst_set_items.ListIndex // Reload the active item
+		      End If
+		    Case -1 
+		      'user pressed Cancel, go back
+		      Return False
+		    End Select
+		    '--
 		  End If
-		  Return status > -1 // True if Save/Don't Save, False if Cancel
+		  
+		  'Return True, meaning user wants to continue with/without saving
+		  Return True
+		  
+		  'Old Function
+		  'Dim Msg as MessageDialog
+		  
+		  'if Status_SetChanged then
+		  'msg = new MessageDialog
+		  'msg.Message = App.T.Translate("questions/save/@caption", CurrentSetName)
+		  'msg.Title = App.T.Translate("sets_mode/current_set/save/@caption")
+		  'msg.Icon = 3'question
+		  'msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
+		  'msg.CancelButton.Caption = App.T.Translate("shared/no/@caption")
+		  'Msg.CancelButton.Visible = true
+		  'if msg.ShowModal = msg.ActionButton then 
+		  'ActionInSetSave
+		  'ActionSetSave
+		  'end if
+		  'end if
+		  
 		End Function
    )
   Meth/g: 
@@ -10962,7 +10955,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim f as FolderItem
 		  Dim i As Integer
 		  
-		  If Not ActionSetAskSave Then Return
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
 		  
 		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
 		  If Len(t) > 0 Then
@@ -10981,6 +10975,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    CurrentSet.AppendChild CurrentSet.CreateElement("set")
 		    
 		    CurrentSet.DocumentElement.SetAttribute("name",t)
+		    '++JRC Save backup copy
+		    TempSet = New XmlDocument
+		    TempSet.AppendChild TempSet.ImportNode(CurrentSet.DocumentElement, True)
+		    '--
 		    CurrentSetName = t
 		    
 		    If Not SmartML.XDocToFile(CurrentSet, f) Then
@@ -11017,10 +11015,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		Sub ActionSetPresent(mode As Integer)
 		  Dim i As Integer
 		  Dim lastType As String
+		  'this is our working copy of the set's XML Doc
+		  'not to be confused with any of our other copies
+		  'hope the user has losts of RAM eh!
 		  Dim setDoc As New XmlDocument
+		  Dim slide_groups As XmlNode
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
+		  
+		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  
 		  App.MouseCursor = WatchCursor
-		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
+		  
 		  ImportSongs setDoc
 		  
 		  If SetML.GetSlide(setDoc, 1) = Nil Then
@@ -11055,8 +11062,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim rpt As LeadSheetReport
 		  Dim song As FolderItem
 		  Dim xgroup As XmlNode
+		  'working copy
+		  Dim setDoc As New XmlDocument
 		  
 		  App.DebugWriter.Write "MainWindow.ActionSetPrint: Enter"
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
+		  
 		  App.MouseCursor = WatchCursor
 		  
 		  rpt = New LeadSheetReport
@@ -11066,7 +11079,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Return // User cancelled
 		  End If
 		  '--
-		  xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).FirstChild
+		  'use our working copy
+		  xgroup = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True).FirstChild
 		  While xgroup <> Nil
 		    If SmartML.GetValue(xgroup, "@type") = "song" Then
 		      song = Songs.GetFile(SmartML.GetValue(xgroup, "@name"))
@@ -11122,11 +11136,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  //
 		  Dim status As Boolean
 		  Dim MySetListReport As SetListReport
+		  'working copy
+		  Dim setDoc As New XmlDocument
 		  
 		  App.DebugWriter.Write "MainWindow.ActionSetPrintList: Enter"
 		  
-		  ActionInSetAskSave
-		  If Not ActionSetAskSave Then Return
+		  'if action affects the entire set, ask the user if he/she wants to save the entire set
+		  '
+		  'ActionInSetAskSave
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
 		  
 		  MySetListReport = New SetListReport
 		  If MySetListReport = Nil Then
@@ -11144,7 +11163,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    Return
 		  End If
 		  
-		  status = MySetListReport.AddSet(CurrentSetName, CurrentSet)
+		  'use working copy
+		  status = MySetListReport.AddSet(CurrentSetName, setDoc)
 		  If Not status Then
 		    InputBox.Message App.T.Translate("errors/internal") + _
 		        EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.AddSet failed"
@@ -11208,6 +11228,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  Status_InSetChanged = False
 		  Status_SetChanged = False
+		  //++
+		  // This becomes the new base for a revert.  Update TempSet to reflect this.
+		  //--
+		  TempSet = Nil
+		  TempSet = New XmlDocument
+		  TempSet.AppendChild TempSet.ImportNode(CurrentSet.DocumentElement, True)
 		  EnableMenuItems
 		  
 		  App.MouseCursor = Nil
@@ -11235,7 +11261,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
 		    '++JRC
-		    Select Case SaveDialog(App.T.Translate("questions/changed/@caption"))
+		    Select Case SaveDialog(App.T.Translate("questions/song_changed/@caption"))
 		    Case 1
 		      'User pressed Yes, so save
 		      ActionSongSave false, true
@@ -12144,15 +12170,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  If f = Nil Then Return False
 		  If Not f.Exists Then Return False
 		  
-		  lst_set_items.DeleteAllRows
-		  
 		  CurrentSet = SmartML.XDocFromFile(f)
+		  Status_InSetChanged = False
+		  Status_SetChanged = False
+		  Status_InSetOpen = False
+		  lst_set_items.DeleteAllRows
 		  If CurrentSet = Nil Then
+		    Status_SetOpen = False
 		    CurrentSet = New XmlDocument
 		    xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
 		    SmartML.DisplayError
 		    Return False
 		  End If
+		  Status_SetOpen = True
 		  // This section gets the /set/@name value from the current document
 		  // Since this is a non-existent attribute in the 0.9.9 version, add it if
 		  // it's not already there.
@@ -12181,10 +12211,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    xchild = xchild.NextSibling
 		  Wend
 		  
-		  Status_SetOpen = True
-		  Status_SetChanged = False
-		  Status_InSetOpen = False
-		  Status_InSetChanged = False
 		  EnableMenuItems
 		  Return True
 		End Function
@@ -12201,7 +12227,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim idx As Integer
 		  If i = 0 Then
 		    ' Change to Song mode
-		    If Not ActionSetAskSave Then Return
+		    
+		    'Ask if user wants to save
+		    If NOT ActionSetAskSave Then Return 'User Canceled
+		    
 		    If Status_SetChanged Then //User cancelled from AskSave, revert the set since we are changing modes
 		      Status_InSetChanged = False // These two lines keep pop_sets_sets.Change calls to ActionSetAskSave from firing
 		      Status_SetChanged = False
@@ -12217,6 +12246,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    mnu_mode_sets.Checked = False
 		  Else
 		    ' Change to Set mode
+		    
 		    'Ask if user wants to save
 		    If NOT ActionSongAskSave Then 
 		      Return 'User Canceled
@@ -12991,6 +13021,17 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   Prop/g: 
   Prop/G: 
    Enco/N: 134217984
+   decl/S: CurrentSetIndex As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CurrentSetIndex As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
    decl/S: CurrentSetName As String
    flag/N: 1
    sorc/G: 
@@ -13153,17 +13194,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   Prop/g: 
   Prop/G: 
    Enco/N: 134217984
-   decl/S: SetCurrentListIndex As Integer
-   flag/N: 1
-   sorc/G: 
-    Enco/N: 134217984
-    ntln/S: SetCurrentListIndex As Integer
-    ntln/S: 
-    ntln/S: 
-   sorc/g: 
-  Prop/g: 
-  Prop/G: 
-   Enco/N: 134217984
    decl/S: SongCache(0) As String
    sorc/G: 
     Enco/N: 134217984
@@ -13295,6 +13325,17 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     ntln/S: Status_SongOpen As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: TempSet As XmlDocument
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: TempSet As XmlDocument
     ntln/S: 
     ntln/S: 
    sorc/g: 

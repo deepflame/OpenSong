@@ -1,5 +1,9 @@
 -= 1.0 Baselevel 15 =-
 
+* Main preferences dialog updated to show the folder in use for songs and sets.  Some controls in this dialog are resized to accommodate the Slavic and Germanic languages.  Settings are stored in the new preferences file (see next item).
+
+* The Globals file, while contained within the application's directory tree, is written to by any user on the computer.  This created an issue for security-conscious users who desired to have non-Admin accounts run OpenSong.  It also created an issue where multiple users on the same computer wanted to use non-standard directories to hold OpenSong song and set files.  The Globals file now will be used for just that: global defaults set by the system administrator.  The user-level defaults derived from Globals now go into a proper user-specific preferences file, stored in ~/Library/Preferences on Mac, \Documents and Settings\{user}\Application Data\OpenSong on Windows, and ~/.OpenSong on Linux.  This is still an XML file, but it uses the PLIST DTD rather than OpenSong's old format.
+
 * SmartML.GetValueB wasn't setting the default in the XML if the path had to be created.  This meant that GetValueB would create a path with no value (interpreted as False) even if the default was set to True, so the next call to GetValueB on that path would return False always on subsequent calls until SetValueB was called.
 
 * Provide method to globally configure that a set style change overrides the style defined for a song (configured by editing the setting of "song_style_preferred" in the PresentSettings file).  Default is true, the current behavior.  This is a temporary workaround, not a permanent fix.

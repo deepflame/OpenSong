@@ -7,12 +7,13 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Cont/N: 0
  bCls/N: 1
  Name/S: App
- Size/N: 128
+ Size/N: 132
  Supr/S: Application
  bNtr/N: 0
  Intr/S: 
  bApO/N: 1
  Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_CM, type/N: 2, defn/S: 0.035277778, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: PREFERENCESVERSION, type/N: 2, defn/S: 1.0, flag/N: 0)
  Cnst/D: (Enco/N: 134217984, name/S: SW_NORMAL, type/N: 1, defn/S: 1, flag/N: 0)
  Cnst/D: (Enco/N: 134217984, name/S: SW_SHOW, type/N: 1, defn/S: 5, flag/N: 0)
  Cnst/D: (Enco/N: 134217984, name/S: SW_SHOWMINNOACTIVE, type/N: 1, defn/S: 7, flag/N: 0)
@@ -52,11 +53,6 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   sorc/d: (Enco/N: 134217984
 		Sub Close()
 		  
-		  '++JRC Save Globals
-		  If App.MyGlobals <> Nil Then
-		    If Not SmartML.XDocToFile(App.MyGlobals, App.AppFolder.Child("OpenSong Settings").Child("Globals")) Then SmartML.DisplayError
-		  End If
-		  '--
 		  If App.MyPrintSettings <> Nil Then
 		    If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child("Settings").Child("PrintSettings")) Then SmartML.DisplayError
 		  End If
@@ -68,6 +64,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		  End If
 		  
 		  Globals.Status_Presentation = False
+		  If MainPreferences <> Nil Then Call MainPreferences.Save
 		  DebugWriter.Done
 		End Sub
   )
@@ -98,6 +95,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Splash.Show
    srcl/S: 
    srcl/S: SmartML.Init
+   srcl/S: LoadPreferences
    srcl/S: 
    srcl/S: AppFolder = App.ExecutableFile
    srcl/S: If Not AppFolder.Directory Then AppFolder = AppFolder.Parent ' Linux points to the parent folder; the other OSes seem to point to the executable file.
@@ -126,40 +124,30 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: 
    srcl/S: 'Can't translate this until we've loaded the translator
    srcl/S: 'Splash.SetStatus "Loading translation text..."
-   srcl/S: 
+   srcl/S: temp = MainPreferences.GetValue(Prefs.kLanguage, "")
+   srcl/S: if temp  = "" Then
    srcl/S: temp = SmartML.GetValue(MyGlobals.DocumentElement, "language/@file")
-   srcl/S: If Len(temp) = 0 Then
+   srcl/S: If temp = "" Then
    srcl/S: temp = "English"
+   srcl/S: End If
+   srcl/S: MainPreferences.SetValue(Prefs.kLanguage, temp)
    srcl/S: End If
    srcl/S: 
    srcl/S: T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
    srcl/S: If Not T.IsLoaded Then
-   srcl/S: //++EMP 12/05
-   srcl/S: // I think we should alert the user, shouldn't we?
-   srcl/S: //
    srcl/S: '++JRC
    srcl/S: App.MouseCursor = Nil
-   srcl/S: '--
-   srcl/S: 
    srcl/S: SmartML.DisplayError
-   srcl/S: //--
    srcl/S: '++JRC I don't think trying to load another language here would be useful, 
    srcl/S: 'it would either be the same file we just tried, or a language
    srcl/S: 'that the user can't read and doesn't want
    srcl/S: '
    srcl/S: Quit
-   srcl/S: 'T = New Translator(AppFolder.Child("OpenSong Languages").Item(1))
-   srcl/S: 'If Not T.IsLoaded Then
-   srcl/S: 'SmartML.DisplayError
-   srcl/S: 'Quit
-   srcl/S: 'Else
-   srcl/S: 'moved to globals
-   srcl/S: 'SmartML.SetValue MyGlobals.DocumentElement, "language/@file", AppFolder.Child("OpenSong Languages").Item(1).Name
-   srcl/S: 'End If
    srcl/S: '--
    srcl/S: Else
    srcl/S: 'moved to globals
-   srcl/S: SmartML.SetValue MyGlobals.DocumentElement, "language/@file", temp
+   srcl/S: 'SmartML.SetValue MyGlobals.DocumentElement, "language/@file", temp
+   srcl/S: MainPreferences.SetValue(Prefs.kLanguage, temp)
    srcl/S: End If
    srcl/S: 
    srcl/S: TranslateMe True
@@ -173,40 +161,17 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Dim tmp As New FolderItem
    srcl/S: 
    srcl/S: ' --- CREATE DOCUMENTS FOLDER ---
+   srcl/S: DocsFolder = MainPreferences.GetValueFI(prefs.kDocumentsFolder, Nil, False)
+   srcl/S: If DocsFolder = Nil Then
    srcl/S: docsPath = SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder", False)
-   srcl/S: //++
-   srcl/S: // Bug 1204048: DocsPath needs to be somewhere other than under OpenSong Defaults.
-   srcl/S: // As a temporary fix, just see if that's part of the docspath.  If so, post an error and
-   srcl/S: // reset to the default.
-   srcl/S: //--
-   srcl/S: If InStr(docsPath, "OpenSong Defaults") > 0 Then 
-   srcl/S: '++JRC
-   srcl/S: If NOT AppFolder.Child("Documents").Exists Then 
-   srcl/S: tmp.FolderItem AppFolder.AbsolutePath + "Documents"
-   srcl/S: tmp.CreateAsFolder
-   srcl/S: If NOT tmp.Exists Then 
-   srcl/S: App.MouseCursor = Nil
-   srcl/S: MsgBox T.Translate("errors/no_docs_folder", tmp.AbsolutePath)
-   srcl/S: Quit
-   srcl/S: End If
-   srcl/S: docsPath = tmp.AbsolutePath
+   srcl/S: If docsPath = "" Then
+   srcl/S: DocsFolder = QueryDocsFolder(DocumentsFolder.Child("OpenSong"))
    srcl/S: Else
-   srcl/S: docsPath = ""
-   srcl/S: End If
-   srcl/S: 'Translated
-   srcl/S: MsgBox T.Translate("errors/docs_folder", docsPath)
-   srcl/S: '--
-   srcl/S: 
-   srcl/S: End If
-   srcl/S: 
-   srcl/S: If Len(docsPath) > 0 Then
    srcl/S: DocsFolder = FileUtils.AbsolutePathToFolderItem(docsPath)
-   srcl/S: Else
-   srcl/S: DocsFolder = DocumentsFolder.Child("OpenSong")
+   srcl/S: DocsFolder = QueryDocsFolder(DocsFolder)
    srcl/S: End If
-   srcl/S: If DocsFolder = Nil Then DocsFolder = DocumentsFolder.Child("OpenSong")
-   srcl/S: 
-   srcl/S: If DocsFolder.Exists Then SmartML.SetValue(MyGlobals.DocumentElement, "documents/@folder", DocsFolder.AbsolutePath)
+   srcl/S: MainPreferences.SetValueFI prefs.kDocumentsFolder, DocsFolder
+   srcl/S: End If
    srcl/S: 
    srcl/S: ' Create whatever sub-folders are needed
    srcl/S: '++JRC
@@ -362,7 +327,6 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: SmartML.DisplayError
    srcl/S: Quit
    srcl/S: End If
-   srcl/S: 
    srcl/S: // Move some XML around in MyPresentSettings to align with V1.0 BL13 changes.
    srcl/S: UpdateDefaultStyle
    srcl/S: ' --- BUILD CAPO LIST ---
@@ -484,6 +448,67 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: GetDocsFolder
+  parm/S: 
+  rslt/S: FolderItem
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetDocsFolder() As FolderItem
+		  //++
+		  // Determine the proper folder for storing the documents (Songs, sets, etc.)
+		  // The documents folder is determined as follows:
+		  // 1. If there is a folder set in the user's preferences, use that if it exists.
+		  // 2. If there is nothing in the user's preferences, check the OpenSong Globals
+		  //     file.
+		  //     a. If there is a relative path specified here, use the built-in DocumentsFolder
+		  //         as the top folder.  Store the resultant folder in the user prefs.
+		  //     b. If there is an absolute path, use it.  Do not store in the user prefs.
+		  // 3. If the folder determined by #1 and #2 doesn't exist, or if the folder is the
+		  //     empty string, prompt the user for the folder to use and store this in user prefs.
+		  //--
+		  
+		  Dim f As FolderItem
+		  Dim FolderName As String
+		  Dim e As RuntimeException
+		  Const DocFolderPrefItem = "DocumentsFolder"
+		  Dim mb As SelectFolderDialog
+		  Dim Folder As String
+		  
+		  f = MainPreferences.GetValueFI("documents/@folder", Nil, False)
+		  If f = Nil Then
+		    FolderName = SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder")
+		    
+		    If FolderName <> "" Then
+		      f = GetFolderItem(FolderName, FolderItem.PathTypeAbsolute)
+		      If f = Nil Then
+		        // Relative path
+		        For Each Folder in Split(FolderName, FileUtils.AbsolutePathSeparator)
+		          If Not FileUtils.CreateFolder(f.Child(Folder)) Then
+		            e = New RuntimeException
+		            e.Message = "GetDocsFolder: " + FileUtils.LastError
+		            DebugWriter.Write "GetDocsFolder: Trying to create " + f.Child(Folder).AbsolutePath + " got " + FileUtils.LastError, 1
+		            Raise e
+		          End If
+		          f = f.Child(Folder)
+		        Next
+		        MainPreferences.SetValueFI(DocFolderPrefItem, f)
+		      Else // If f = Nil; If FolderName <> ""
+		        // Nil folderitem in personal prefs, no path in Globals; prompt user
+		        f = QueryDocsFolder(Nil)
+		        If FileUtils.IsChild(f, AppFolder.Child("OpenSong Defaults")) Then
+		          MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(DocumentsFolder.Child("OpenSong"))))
+		          f = DocumentsFolder.Child("OpenSong")
+		        End If
+		        MainPreferences.SetValueFI(DocFolderPrefItem, f)
+		      End If //If f = Nil
+		    End If //If FolderName <> ""
+		  End If //If f = Nil
+		  Return f
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: GetFrontControlScreenWindow
   parm/S: 
   rslt/S: Window
@@ -515,6 +540,41 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		        Return Nil // Fell through, no one is on the control screen 
 		      End Function
   )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetPrefsFolder
+  parm/S: 
+  rslt/S: FolderItem
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function GetPrefsFolder() As FolderItem
+   srcl/S: //++
+   srcl/S: // Return the appropriate folder for the platform.
+   srcl/S: // Necessary in order to create folder if needed
+   srcl/S: // Also necessary because the folder will have a different
+   srcl/S: // name on certain platforms.
+   srcl/S: //--
+   srcl/S: Dim f As FolderItem
+   srcl/S: Dim folder As String
+   srcl/S: 
+   srcl/S: #if TargetLinux
+   srcl/S: f = PreferencesFolder.Child(".OpenSong")
+   srcl/S: #elseif TargetMacOS
+   srcl/S: f = PreferencesFolder
+   srcl/S: #elseif TargetWin32
+   srcl/S: f = PreferencesFolder.Child("OpenSong")
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: If FileUtils.CreateFolder(f) Then
+   srcl/S: Return f
+   srcl/S: Else
+   srcl/S: App.DebugWriter.Write("GetPrefsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
+   srcl/S: Return Nil
+   srcl/S: End If
+   srcl/S: End Function
+  sorc/g: 
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
@@ -609,6 +669,45 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: LoadPreferences
+  parm/S: 
+  rslt/S: 
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub LoadPreferences()
+   srcl/S: //++
+   srcl/S: // Set up the preferences object to use for reference.
+   srcl/S: //--
+   srcl/S: Dim PrefFile As String
+   srcl/S: Dim v As String
+   srcl/S: 
+   srcl/S: Dim e As RuntimeException
+   srcl/S: #if TargetMacOS
+   srcl/S: PrefFile = "org.opensong.plist"
+   srcl/S: #else
+   srcl/S: PrefFile = "preferences"
+   srcl/S: #endif
+   srcl/S: If MainPreferences <> Nil Then Return
+   srcl/S: 
+   srcl/S: MainPreferences = New prefsPlist
+   srcl/S: 
+   srcl/S: If Not MainPreferences.Load(GetPrefsFolder().Child(PrefFile)) Then
+   srcl/S: e = New RuntimeException
+   srcl/S: e.Message = MainPreferences.ErrorString
+   srcl/S: Raise e
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: //++
+   srcl/S: // Set the version of the file if it doesn't exist.  This will give us a way to
+   srcl/S: // determine if new content needs to be added as this list gets used more
+   srcl/S: //--
+   srcl/S: v = MainPreferences.GetValue("/@version", CStr(PREFERENCESVERSION), True)
+   srcl/S: End Sub
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: MaximizeInControlScreen
   parm/S: win As Window
   rslt/S: 
@@ -692,6 +791,65 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: #EndIf
    srcl/S: End Sub
   sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: QueryDocsFolder
+  parm/S: path As FolderItem, suggested As String = "OpenSong"
+  rslt/S: FolderItem
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function QueryDocsFolder(path As FolderItem, suggested As String = "OpenSong") As FolderItem
+		  Dim mb as SelectFolderDialog
+		  Dim f, f1, defaultsFolder As FolderItem
+		  Dim e As RuntimeException
+		  Dim ask As Boolean = True
+		  
+		  defaultsFolder = AppFolder.Child("OpenSong Defaults")
+		  If path = Nil Then path = DocumentsFolder
+		  If Not path.Exists Then path = DocumentsFolder
+		  mb = New SelectFolderDialog
+		  mb.InitialDirectory = path
+		  mb.SuggestedFileName = suggested
+		  While ask
+		    If T <> Nil Then// Can we translate?
+		      mb.ActionButtonCaption = T.Translate("shared/select/@caption")
+		      mb.CancelButtonCaption = T.Translate("shared/exit_program/@caption")
+		      mb.Title = T.Translate("questions/select_docs_folder/@caption")
+		      mb.PromptText = T.Translate("questions/select_docs_folder")
+		    Else
+		      mb.ActionButtonCaption = "Select"
+		      mb.CancelButtonCaption = "Exit Program"
+		      mb.Title = "Select an OpenSong documents folder"
+		      mb.PromptText = "Please choose a location to store OpenSong songs and sets"
+		    End If
+		    f = mb.ShowModal
+		    If f = Nil Then
+		      e = New RuntimeException
+		      If T <> Nil Then
+		        e.Message = T.Translate("errors/no_docs_folder", "User canceled selection in GetDocsFolder")
+		      Else
+		        e.Message = "A folder to store OpenSong documents must be selected.  OpenSong must shut down."
+		      End If
+		      Raise e
+		    End If
+		    //++
+		    // Bug 1204048: DocsPath needs to be somewhere other than under OpenSong Defaults.
+		    //--
+		    f1 = f
+		    ask = False
+		    While f1 <> Nil
+		      If f1.AbsolutePath = defaultsFolder.AbsolutePath Then
+		        MsgBox T.Translate("errors/docs_folder", f.AbsolutePath)
+		        ask = True
+		        Exit
+		      End If
+		      f1 = f1.Parent
+		    Wend
+		  Wend
+		  Return f
+		End Function
+  )
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
@@ -1081,6 +1239,22 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    Enco/N: 134217984
    ntln/S: FontList(0) As String
    ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MainPreferences As IPreferences
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MainPreferences As IPreferences
+   ntln/S: Holds the main preferences for the application.
+   ntln/S: This is the target for all future preferences instead
+   ntln/S: of the My...Settings XML documents.
+   ntln/S: 
+   ntln/S: MainPreferences should go in the appropriate location
+   ntln/S: for the operating system instead of in the application directory.
+   ntln/S: This will typically be in a directory or file under PreferencesFolder
    ntln/S: 
   sorc/g: 
  Prop/g: 

@@ -7,66 +7,22 @@ pObj/B: 426C6F6B704F626A74426FFF0000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: TreeNode
- Size/N: 36
+ Size/N: 40
  bNtr/N: 0
  Intr/S: 
  Meth/G: 
   Enco/N: 134217984
   name/S: delete
-  parm/S: word as String, parent as TreeNode=nil
+  parm/S: word as String
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub delete(word as String, parent as TreeNode=nil)
-		  dim node as TreeNode
+		Sub delete(word as String)
 		  
-		  if (entry.word=word) then 'found word
-		    if (left=nil AND right=nil) then
-		      if (parent <> nil) then
-		        if (parent.left= Me) then
-		          parent.left=nil
-		        else
-		          parent.right=nil
-		        end if
-		      end if
-		      
-		    elseif (left=nil) then
-		      entry=right.entry
-		      left=right.left
-		      right=right.right
-		      
-		    elseif left.right=nil then
-		      entry=left.entry
-		      right=left.right
-		      left=left.left
-		      
-		    else
-		      node=left
-		      
-		      while node.right.right <> nil
-		        node= node.right
-		      wend
-		      
-		      entry=node.right.entry
-		      
-		      node.right=nil
-		    end if
-		    
-		    
-		  elseif (word<entry.word) then
-		    if (left=nil) then
-		      return'word not found
-		    end if
-		    
-		    left.delete(word, Me)
-		  else
-		    if (right=nil) then
-		      return'word not found
-		    end if
-		    
-		    right.delete(word, Me)
-		  end if
-		  
+		  If MyDictionary.HasKey(word) Then
+		    MyDictionary.Remove word
+		  End If
+		  Return
 		  
 		End Sub
   )
@@ -79,96 +35,93 @@ pObj/B: 426C6F6B704F626A74426FFF0000000000000000000000000000000000000000
   flag/N: 0
   sorc/d: (Enco/N: 134217984
 		Function find(word as String) As TreeNode
-		  'method recusively searches the tree for the word.  If the word isn't in the tree then it is added
-		  
-		  if (entry.word=word) then
-		    return Me
-		  elseif (word<entry.word) then
-		    if (left=nil) then
-		      left= new TreeNode(new IndexEntry(word))
-		      return left
-		    end if
-		    
-		    return left.find(word)
-		  else
-		    if (right=nil) then
-		      right= new TreeNode(new IndexEntry(word))
-		      return right
-		    end if
-		    
-		    return right.find(word)
-		  end if
-		  
+		  If MyDictionary.HasKey(word) Then
+		    Return TreeNode(MyDictionary.Value(word).ObjectValue)
+		  Else
+		    Return New TreeNode(word, MyDictionary)
+		  End If
 		End Function
   )
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
   name/S: inorderTraverse
-  parm/S: list() as IndexEntry
+  parm/S: list() as TreeNode
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub inorderTraverse(list() as IndexEntry)
-		  dim rlist() as IndexEntry
-		  dim x as Integer
+		Sub inorderTraverse(list() as TreeNode)
+		  //++
+		  // Build a list of index entries in alphabetical order.
+		  // Since we can't pass the Keys() arrays of a Dict directly to a sort,
+		  // sort the dict into a new array.  To save on string copies, the sort
+		  // routine returns the sorted list as an array of indices to the Dict
+		  // (in other words, the "i"'s of Dict.Key(i))
+		  //
+		  // Original version with binary tree instead of Dict by
+		  // Ben.  Rewrite by Ed to use Dict.
+		  //--
+		  Dim x as Integer
+		  Dim keys() As Integer
+		  Dim sortobj As New HeapSortDict
 		  
-		  if (left<> nil) then
-		    left.inorderTraverse(list)
-		  end if
+		  sortobj.Sort MyDictionary, keys
 		  
-		  list.Append(entry)
+		  Redim list(UBound(keys))
 		  
-		  if (right<> nil) then
-		    right.inorderTraverse(rlist)
-		  end if
-		  
-		  for x=0 to UBound(rlist)
-		    list.Append(rlist(x))
-		  next x
+		  For x = 0 to UBound(keys)
+		    //++
+		    // The next line is a long way of saying that the next TreeNode to get
+		    // is the value of the Nth entry in MyDictionary, where N is the
+		    // value of the Xth entry in our Keys array.  Double indirection.
+		    //--
+		    list(x) = TreeNode(MyDictionary.Value(MyDictionary.Key(Keys(x))).ObjectValue)
+		  Next
+		  Return
 		End Sub
   )
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
   name/S: TreeNode
-  parm/S: tentry As IndexEntry, tleft As TreeNode=nil, tright As TreeNode=nil
+  parm/S: tentry As String, parentDictionary As Dictionary
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub TreeNode(tentry As IndexEntry, tleft As TreeNode=nil, tright As TreeNode=nil)
-		  entry=tentry
-		  left=tleft
-		  right= tright
+		Sub TreeNode(tentry As String, parentDictionary As Dictionary)
+		  MyDictionary = parentDictionary
+		  If MyDictionary.HasKey(tentry) Then Return
+		  MyDictionary.Value(tentry) = Me
+		  entry = tentry
 		End Sub
   )
  Meth/g: 
  Prop/G: 
   Enco/N: 134217984
-  decl/S: entry As IndexEntry
+  decl/S: entry As String
   sorc/G: 
    Enco/N: 134217984
-   ntln/S: entry As IndexEntry
+   ntln/S: entry As String
    ntln/S: 
    ntln/S: 
   sorc/g: 
  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
-  decl/S: left As TreeNode
+  decl/S: MyDictionary As Dictionary
   sorc/G: 
    Enco/N: 134217984
-   ntln/S: left As TreeNode
+   ntln/S: MyDictionary As Dictionary
    ntln/S: 
    ntln/S: 
   sorc/g: 
  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
-  decl/S: right As TreeNode
+  decl/S: passages() As String
   sorc/G: 
    Enco/N: 134217984
-   ntln/S: right As TreeNode
+   ntln/S: passages() As String
    ntln/S: 
    ntln/S: 
   sorc/g: 

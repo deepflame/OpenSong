@@ -7,14 +7,14 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SStyleCanvas
- Size/N: 125
+ Size/N: 128
  Supr/S: SBufferedCanvas
  bNtr/N: 0
  Intr/S: 
  HIns/G: 
   Enco/N: 1280
   name/S: MouseDown
-  sorc/d: (Enco/N: 134217984
+  sorc/d: (Enco/N: 134217984, srbp/N: 4
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  Dim f As FolderItem
 		  

@@ -20,6 +20,7 @@
 #SImageCanvas	pObj	BC8F3437
 #SFontCanvas	pObj	BC8FABB4
 #SColorCanvas	pObj	BC90901B
+#HeapSortDict	pObj	C1EF3CD9
 #Settings Windows	pFol	BC8F04EC
 #ImageChooserWindow	pVew	BCAC3A30
 #SStyleCanvas	pObj	BCB29EF4
@@ -158,6 +159,13 @@
 #bindSColorCanvasAndSImageCanvas	pObj	C18856CB
 #AboutWindow	pVew	C1AB62C3
 #ProgramIcon1288	pPic	C1AB716D
+#Preferences	pFol	C1D635E0
+#plist	pObj	BBF2A741
+#plistDict	pObj	BBF2A750
+#prefsPlist	pObj	C1D6476A
+#IPreferences	pObj	C2004E05
+#IpreferencesReceiver	pObj	C2005131
+#prefs	pObj	C200EC49
 ##External Files:	
 ##VaultHdrEnd#
 ##RBvx-End#

@@ -160,6 +160,9 @@
       <revert caption="(style)">-- Revert Style --</revert>
     </items>
     <untitled caption="Untitled"/>
+    <errors>
+      <revert caption="Error reloading set &quot;%1&quot; from file."/>
+    </errors>
   </sets_mode>
 
   <slide_editor>
@@ -318,6 +321,7 @@
       <default caption="Default"/>
       <custom caption="Custom"/>
       <message>Shutting down OpenSong. Please click OK and then start OpenSong again. You may want to copy your old OpenSong documents over to the new location first.</message>
+      <changed>You selected to use a custom Documents Folder, but didn't click the change button. Do you want to use the new Folder?</changed>
       <change caption="Change"/>
     </documents_folder>
     <newpaint caption="Use new visual style"/>
@@ -903,12 +907,12 @@ Click on this slide to edit its style.</body>
     <save caption="Do you want to save changes to '%1'?"/>
     <delete caption="Are you sure you want to delete '%1'?"/>
     <clear caption="Are you sure you want to clear this?"/>
-    <song_changed caption="Current Song has been changed, do you want to save?"/>
-    <set_changed caption="Current Set has been changed, do you want to save?"/>
+    <changed caption="Current Song has been changed, do you want to save?"/>
     <revert caption="All changes will be lost. Continue?"/>
     <long_operation caption="This may take a long time to complete. Continue?"/>
     <generic_save caption="Save changes?"/>
     <generic_save_explanation caption="If you do not save, your changes will be lost"/>
+    <set_changed caption="Current set has been changed, do you want to save?"/>
   </questions>
 
   <about>

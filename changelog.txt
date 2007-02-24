@@ -1,16 +1,40 @@
--= 1.0 Beta *JRC* =-
+-= JRC =-
 
-* Prompt for unsaved changes to Current in-set item when adding  Song or Scripture
+* Prompt if user selected to use custom DocFolder, and clicks Ok before clicking the change button
 
-* If action affects entire set, prompt to save the set not just the current item
+* Fixed Custom DocsFolder wasn't being saved
 
-* Changed the way we prompt for unsaved changes to a set(and set items), to Yes,No,Cancel
+* Fixed Selecting custom DocsFolder wasn't enabling change button
 
-* Prompt user to save unsaved changes before Presenting or renaming the current set [Bug 1634769]
+* Try to generate prefrences file stub instead of fatal exception
 
-* Display Documents folder in GeneralSettings Window
+* Prevent forever loop of NilObjectExceptions when there is an exception loading prefrences file
+
+* Exit OpenSong if we couldn't create/open preferences file
 
 -= 1.0 Baselevel 15 =-
+
+* Main preferences dialog updated to show the folder in use for songs and sets.  Some controls in this dialog are resized to accommodate the Slavic and Germanic languages.  Settings are stored in the new preferences file (see next item).
+
+* The Globals file, while contained within the application's directory tree, is written to by any user on the computer.  This created an issue for security-conscious users who desired to have non-Admin accounts run OpenSong.  It also created an issue where multiple users on the same computer wanted to use non-standard directories to hold OpenSong song and set files.  The Globals file now will be used for just that: global defaults set by the system administrator.  The user-level defaults derived from Globals now go into a proper user-specific preferences file, stored in ~/Library/Preferences on Mac, \Documents and Settings\{user}\Application Data\OpenSong on Windows, and ~/.OpenSong on Linux.  This is still an XML file, but it uses the PLIST DTD rather than OpenSong's old format.
+
+* SmartML.GetValueB wasn't setting the default in the XML if the path had to be created.  This meant that GetValueB would create a path with no value (interpreted as False) even if the default was set to True, so the next call to GetValueB on that path would return False always on subsequent calls until SetValueB was called.
+
+* Provide method to globally configure that a set style change overrides the style defined for a song (configured by editing the setting of "song_style_preferred" in the PresentSettings file).  Default is true, the current behavior.  This is a temporary workaround, not a permanent fix.
+
+* Fixed scripture indexing to avoid dropping words from the index completely. [Bug 1651524]
+
+* Corrected cosmetic issue with text entry field for scripture lookup direct entry.
+
+* Program preferences window rearranged; documents folder path displays on main page; browse for new documents documents folder starts at current documents folder.
+
+* Scripture lookup will no longer crash if the reference returns no verses.
+
+* Scripture lookup will no longer crash if a reference is typed into the edit field and the Lookup button or Return is pressed. (Thanks, JS, for all the testing help!)
+
+* Fixed error with copyright subtitle text displayed on slides.
+
+* Changed prompts the user sees to save a set (not an item within a set, though).  User now has three options like the previous change to Songs.  If the user selects "Don't Save," there are two possible actions: revert to the last saved version, or continue with the unsaved copy.  The behavior is controlled by two options in the MainSettings file: set_revert_on_dont_save and song_revert_on_dont_save.  At this time, these must be manually edited to change the default value.
 
 * Prevent bizarre second prompt for unsaved changes to a Song when exiting
 
@@ -94,7 +118,7 @@
 
 * Fixed numerous issues with freeform scripture lookup.  The list of verses in a chapter may have gaps in the numbering if the text of the scripture merges verses.  Subverses are now properly handled in Zefania-format scripture. [Bug 1468053]
 
-* Fixed rare condition where the main window, presentation window and presentation helper window would activate each other when exiting presenter mode. (Windows only)
+* Fixed race condition where the main window, presentation window and presentation helper window would activate each other when exiting presenter mode. (Windows only)
 
 * Changed method for retrieving verses included in a selected scripture to better handle conditions where the verses are not sequentially numbered. [Bug 1468053]
 

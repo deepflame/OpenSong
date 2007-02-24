@@ -174,7 +174,10 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		Function GetValueB(xnode As XmlNode, childPath As String, create As Boolean = True, default As Boolean = False) As Boolean
 		  Dim s As String
 		  s = GetValue(xnode, childPath, create)
-		  If create And Len(s) = 0 Then Return default
+		  If create And Len(s) = 0 Then 
+		    SetValueB(xnode, childPath, default)
+		    Return default
+		  End If
 		  If Lowercase(s) = "true" Then Return True
 		  Return False
 		End Function
@@ -268,7 +271,7 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		  Dim f As FolderItem
 		  Dim outputStream As BinaryStream
 		  
-		  f = PreferencesFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
+		  f = GetTemporaryFolderItem()
 		  If f <> Nil Then
 		    outputStream = f.CreateBinaryFile("image/jpeg")
 		    outputStream.Write DecodeBase64(s)

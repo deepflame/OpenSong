@@ -172,8 +172,8 @@ pVew/B: 426C6F6B70566577BBCC782F0000000000000000000000000000000000000000
    )
   HIns/g: 
  CBhv/g: 
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SStyleCanvas, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 125, Supr/S: SStyleCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SStyleCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 128, Supr/S: SStyleCanvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
  CBhv/G: 
   Name/S: 
@@ -340,11 +340,11 @@ pVew/B: 426C6F6B70566577BBCC782F0000000000000000000000000000000000000000
   HIns/g: 
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 132, Supr/S: SImageCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: SImageCanvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
- CBhv/D: (Name/S: , Size/N: 132, Supr/S: SImageCanvas, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: SImageCanvas, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 116, Supr/S: Canvas, bNtr/N: 0)
@@ -2437,7 +2437,7 @@ pVew/B: 426C6F6B70566577BBCC782F0000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentSettingsWindow
-  Size/N: 180
+  Size/N: 172
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: ROW_AUTHOR, type/N: 1, defn/S: 1, flag/N: 1)

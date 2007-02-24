@@ -1,0 +1,29 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC200EC490000000000000000000000000000000000000000
+ Name/S: prefs
+ Cont/N: -1042926112
+ bCls/N: 0
+ Name/S: prefs
+ Size/N: 24
+ bNtr/N: 0
+ Intr/S: 
+ Cnst/D: (Enco/N: 134217984, name/S: kDocumentsFolder, type/N: 0, defn/S: documents_folder, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: kLanguage, type/N: 0, defn/S: language, flag/N: 0)
+ Note/G: 
+  Enco/N: 134217984
+  name/S: Overview
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Overview
+   ntln/S: For the moment, this module is just to provide a
+   ntln/S: place to hold the path constants for the different
+   ntln/S: preferences. 
+   ntln/S: 
+  sorc/g: 
+ Note/g: 
+pObj/b: 
+##RBvx-End#

@@ -5,13 +5,14 @@
 pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  Name/S: SearchWindow
  Cont/N: -1131477727
+ Bind/D: (desc/S: Enable btn_search_ok when lst_result has a selection, type/S: enablingBinder, BnSr/N: 2, BnSd/S: 1, BbSd/S: getSelectionProvider, BnDs/N: 3, BnDd/S: , BbDd/S: )
  CBhv/G: 
   Name/S: 
   Size/N: 128
   Supr/S: PushButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -26,25 +27,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
   Supr/S: Listbox
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
-   name/S: CellGotFocus
-   sorc/d: (Enco/N: 134217984
-		Sub CellGotFocus(row as Integer, column as Integer)
-		  
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: CellKeyDown
-   sorc/d: (Enco/N: 134217984
-		Function CellKeyDown(row as Integer, column as Integer, key as String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: DoubleClick
    sorc/d: (Enco/N: 134217984
 		Sub DoubleClick()
@@ -61,7 +44,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: GotFocus
    sorc/d: (Enco/N: 134217984
 		Sub GotFocus()
@@ -71,26 +54,16 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(key As String) As Boolean
-		  
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: LostFocus
    sorc/d: (Enco/N: 134217984
 		Sub LostFocus()
-		  btn_search_search.default=true
-		  btn_search_ok.Default=false
+		  
 		End Sub
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
@@ -105,7 +78,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
   Supr/S: PushButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -128,7 +101,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
   Supr/S: PushButton
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1280
+   Enco/N: 131072
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
@@ -144,7 +117,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
   Supr/S: GroupBox
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
@@ -155,62 +128,6 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
- CBhv/G: 
-  Name/S: 
-  Size/N: 188
-  Supr/S: EditField
-  bNtr/N: 0
-  HIns/G: 
-   Enco/N: 1536
-   name/S: Close
-   sorc/d: (Enco/N: 134217984
-		Sub Close()
-		  
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: GotFocus
-   sorc/d: (Enco/N: 134217984
-		Sub GotFocus()
-		  btn_search_search.Default = Me.Text <> ""
-		  btn_search_search.Enabled = Me.Text <> ""
-		  btn_search_ok.Default = Not btn_search_search.Default
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1280
-   name/S: KeyDown
-   sorc/d: (Enco/N: 134217984
-		Function KeyDown(Key As String) As Boolean
-		  If Asc(Key) = 13 Or Asc(Key) = 10 Then
-		    search
-		    Return True
-		  End If
-		End Function
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: Open
-   sorc/d: (Enco/N: 134217984
-		Sub Open()
-		  btn_search_search.Enabled = False
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: TextChange
-   sorc/d: (Enco/N: 134217984
-		Sub TextChange()
-		  btn_search_search.Enabled = Me.Text <> ""
-		End Sub
-   )
-  HIns/g: 
- CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/G: 
   Name/S: 
@@ -218,7 +135,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
   Supr/S: GroupBox
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
@@ -229,10 +146,64 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 132, Supr/S: RadioButton, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: SEditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 131072
+   name/S: GotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  btn_search_search.Default = Me.Text <> ""
+		  btn_search_search.Enabled = Me.Text <> ""
+		  btn_search_ok.Default = Not btn_search_search.Default
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 131072
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: LostFocus
+   sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 131072
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  btn_search_search.Enabled = False
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 131072
+   name/S: TextChange
+   sorc/d: (Enco/N: 134217984
+		Sub TextChange()
+		  btn_search_search.Enabled = Me.Text <> ""
+		  btn_search_search.Default = Me.Text <> ""
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
  Ctrl/G: 
-  ccls/S: EditField
+  ccls/S: SEditField
   name/S: EditField
-  CBix/N: 7
+  CBix/N: 11
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: Alignment, PVal/S: 0)
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
@@ -293,7 +264,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 370)
+  PDef/D: (name/S: Left, PVal/S: 373)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: True)
@@ -513,7 +484,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 8
+  CBix/N: 7
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -551,7 +522,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: GroupBox
   name/S: GroupBox
-  CBix/N: 9
+  CBix/N: 8
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -580,7 +551,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: RadioButton
   name/S: RadioButton
-  CBix/N: 10
+  CBix/N: 9
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -610,7 +581,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: RadioButton
   name/S: RadioButton
-  CBix/N: 11
+  CBix/N: 10
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -637,14 +608,13 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 105)
  Ctrl/g: 
- Bind/D: (desc/S: Enable btn_search_ok when lst_result has a selection, type/S: enablingBinder, BnSr/N: 2, BnSd/S: 1, BbSd/S: getSelectionProvider, BnDs/N: 3, BnDd/S: , BbDd/S: )
  FDef/G: 
   Name/S: SearchWindow
-  Size/N: 152
+  Size/N: 144
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
@@ -659,7 +629,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
    )
   HIns/g: 
   HIns/G: 
-   Enco/N: 1536
+   Enco/N: 131072
    name/S: Resized
    sorc/d: (Enco/N: 134217984
 		Sub Resized()

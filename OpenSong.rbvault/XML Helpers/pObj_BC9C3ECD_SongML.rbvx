@@ -101,7 +101,7 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		      'complete within the text.
 		      '(Had to force UTF-8 for this string, otherwise the symbol wasn't handled properly on display)
 		      ThisSubtitle = ConvertEncoding(ThisSubtitle, Encodings.UTF8)
-		      If InStr(ThisSubtitle, CopyrightSymbol) = 0 Then
+		      If ThisSubtitle <> "" And InStr(ThisSubtitle, CopyrightSymbol) = 0 Then
 		        Caption = App.T.Translate("songml/copyright/@caption")
 		        Caption.Append ConvertEncoding(" "+ CopyrightSymbol, Encodings.UTF8)
 		      End If

@@ -1,3 +1,5 @@
+songs_mode/(Modified)
+Sets_mode/(Modified)
 general_settings/documents_folder/changed
 questions/song_changed
 questions/set_changed

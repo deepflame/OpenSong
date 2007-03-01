@@ -25,7 +25,7 @@
 
   <welcome>Welcome!</welcome>
 
-  <songs_mode caption="Song Mode">Use this mode to enter and edit your songs. Songs can be printed as lead sheets, or presented as slides.
+  <songs_mode caption="Song Mode">Use this mode to enter and edit your songs. Songs can be printed as lead sheets, or presented as slides. If currently in set mode and you have unsaved changes, you will be prompted to save. 
     <all_songs caption="All Songs">
       <print caption="Print">Prints all of the songs available. This feature is great for printing song books.</print>
       <export caption="Export">Exports all songs.</export>
@@ -117,7 +117,7 @@
     <user3 caption="User Defined 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
-  <sets_mode caption="Set Mode">Use this mode to enter and edit your sets. Sets are used to project a series of songs, slides, or whatever.
+  <sets_mode caption="Set Mode">Use this mode to enter and edit your sets. Sets are used to project a series of songs, slides, or whatever. If currently in song mode and you have unsaved changes, you will be prompted to save.
     <sets caption="Sets">Select a set from the list to load it into the set editor.
       <add>Adds a new set to OpenSong.</add>
     </sets>

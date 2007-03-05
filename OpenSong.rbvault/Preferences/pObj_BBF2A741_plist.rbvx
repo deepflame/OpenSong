@@ -1,4 +1,4 @@
-##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
  Cont/N: -1042926112
  bCls/N: 1
  Name/S: plist
- Size/N: 84
+ Size/N: 80
  bNtr/N: 0
  Intr/S: 
  Meth/G: 
@@ -167,8 +167,8 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
 		    end
 		    t.close
 		  else
-		    error=true
-		    errorMessage=f.AbsolutePath+" does not exist"
+		    'error=true
+		    'errorMessage=f.AbsolutePath+" does not exist"
 		    headers.append "<?xml version="+chr(34)+"1.0"+chr(34)+" encoding="+chr(34)+"UTF-8"+chr(34)+"?>"
 		    headers.append  "<!DOCTYPE plist PUBLIC "+chr(34)+"-//Apple Computer//DTD PLIST 1.0//EN"+chr(34)+" "+chr(34)+"http://www.apple.com/DTDs/PropertyList-1.0.dtd"+chr(34)+">"
 		    headers.append "<plist version="+chr(34)+"1.0"+chr(34)+">"
@@ -247,6 +247,18 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Save
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Save()
+		  Save(false)
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Save
   parm/S: clean as boolean
   rslt/S: 
   flag/N: 0
@@ -280,18 +292,6 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
 		  if clean then
 		    Cleanup
 		  end
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Save
-  parm/S: 
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub Save()
-		  Save(false)
 		End Sub
   )
  Meth/g: 

@@ -1,4 +1,4 @@
-##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -390,6 +390,22 @@ pObj/B: 426C6F6B704F626AC1D6476A0000000000000000000000000000000000000000
 		  
 		  Return Not error
 		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: NotifyReceivers
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub NotifyReceivers()
+		  Dim i As Integer
+		  
+		  For i = UBound(Receivers) DownTo 0
+		    Receivers(i).PreferencesChanged Me
+		  Next
+		End Sub
   )
  Meth/g: 
  Meth/G: 

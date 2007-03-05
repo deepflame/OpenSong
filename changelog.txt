@@ -1,5 +1,25 @@
 -= 1.0 Baselevel 15 =-
 
+* Fixed a couple of bugs introduced with the preferences file that caused a crash if the file did not exist.
+
+* Change help shortcut key on OSX to Command-? to more closely conform to the Apple UI standards. Command-H is most commonly used for Hide.
+
+* Clean up error handling if the main preferences file didn't load properly. (JRC r141)
+
+* Removed OpenSongUtils.Xor (not used and incompatible with RB2007r1)
+
+* Moved FormatFolderName from MainSettingsWindow to FileUtils.  That's probably a more appropriate place for a utility function that may come in handy elsewhere.
+
+* In a previous change, MainWindowSettings was modified to only change the location of the documents folder in the preferences, not the running program.  This means that OpenSong may continue to safely run against the old folder.  The forced exit was removed and the prompts changed.
+
+* Added NotifyReceivers method to the IPreferences interface.  No sense being able to register callbacks without a way to make them, eh?
+
+* On Macintosh, Presenter mode will not minimize the main window to the dock, nor restore it when leaving Presenter. 
+
+* Trap NilObjectException in SmartML.XDocFromFile. An error before the translator is loaded, or in loading the translator, could cause OpenSong to chase its tail trying to display the error.
+
+* Added Tagalog books to bnames.xml (book names for Zefania).
+
 * Main preferences dialog updated to show the folder in use for songs and sets.  Some controls in this dialog are resized to accommodate the Slavic and Germanic languages.  Settings are stored in the new preferences file (see next item).
 
 * The Globals file, while contained within the application's directory tree, is written to by any user on the computer.  This created an issue for security-conscious users who desired to have non-Admin accounts run OpenSong.  It also created an issue where multiple users on the same computer wanted to use non-standard directories to hold OpenSong song and set files.  The Globals file now will be used for just that: global defaults set by the system administrator.  The user-level defaults derived from Globals now go into a proper user-specific preferences file, stored in ~/Library/Preferences on Mac, \Documents and Settings\{user}\Application Data\OpenSong on Windows, and ~/.OpenSong on Linux.  This is still an XML file, but it uses the PLIST DTD rather than OpenSong's old format.

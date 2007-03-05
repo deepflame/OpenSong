@@ -1,4 +1,4 @@
-##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -13,11 +13,11 @@ pObj/B: 426C6F6B704F626AC20051310000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: PreferencesChanged
-  parm/S: 
+  parm/S: NewPreferences As IPreferences
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub PreferencesChanged()
+		Sub PreferencesChanged(NewPreferences As IPreferences)
 		  
 		End Sub
   )

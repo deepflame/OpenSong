@@ -25,7 +25,7 @@
 
   <welcome>Welcome!</welcome>
 
-  <songs_mode caption="Song Mode">Use this mode to enter and edit your songs. Songs can be printed as lead sheets, or presented as slides.
+  <songs_mode caption="Song Mode">Use this mode to enter and edit your songs. Songs can be printed as lead sheets, or presented as slides. When changing from songs mode to sets mode, you will be prompted to save any changes.
     <all_songs caption="All Songs">
       <print caption="Print">Prints all of the songs available. This feature is great for printing song books.</print>
       <export caption="Export">Exports all songs.</export>
@@ -117,7 +117,7 @@
     <user3 caption="User Defined 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
-  <sets_mode caption="Set Mode">Use this mode to enter and edit your sets. Sets are used to project a series of songs, slides, or whatever.
+  <sets_mode caption="Set Mode">Use this mode to enter and edit your sets. Sets are used to project a series of songs, slides, or whatever.  If currently in song mode and you have unsaved changes, you will be prompted to save.
     <sets caption="Sets">Select a set from the list to load it into the set editor.
       <add>Adds a new set to OpenSong.</add>
     </sets>
@@ -317,10 +317,11 @@
       <large_headings caption="Large Headings"/>
     </fonts>
     <documents_folder caption="Documents Folder">
-      <warning caption="Use with caution; forces restart"/>
+      <warning caption="Change will not be applied until OpenSong restarts."/>
       <default caption="Default"/>
       <custom caption="Custom"/>
-      <message>Shutting down OpenSong. Please click OK and then start OpenSong again. You may want to copy your old OpenSong documents over to the new location first.</message>
+      <message>The new location for OpenSong documents will not take effect until OpenSong is restarted. You may want to copy your old OpenSong documents over to the new location first.</message>
+      <changed>You selected to use a custom Documents Folder, but didn't click the change button.  Do you want to use the new folder?</changed>
       <change caption="Change"/>
     </documents_folder>
     <newpaint caption="Use new visual style"/>
@@ -898,6 +899,8 @@ Click on this slide to edit its style.</body>
     <cut caption="Cut"/>
     <copy caption="Copy"/>
     <paste caption="Paste"/>
+    <select caption="Select"/>
+    <exit_program caption="Exit Program"/>
   </shared>
 
   <questions>
@@ -912,6 +915,7 @@ Click on this slide to edit its style.</body>
     <generic_save caption="Save changes?"/>
     <generic_save_explanation caption="If you do not save, your changes will be lost"/>
     <set_changed caption="Current set has been changed, do you want to save?"/>
+    <select_docs_folder caption="Select the OpenSong Documents folder">Where should the OpenSong files (songs and sets) be stored?</select_docs_folder>
   </questions>
 
   <about>

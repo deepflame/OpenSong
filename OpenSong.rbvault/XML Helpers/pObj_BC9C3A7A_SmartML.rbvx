@@ -387,24 +387,24 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: RemoveChild
-  parm/S: xnode As XmlNode, index As Integer
-  rslt/S: 
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Sub RemoveChild(xnode As XmlNode, index As Integer)
-		  xnode.RemoveChild xnode.Child(index)
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: RemoveChild
   parm/S: xnode As XmlNode, child As XmlNode
   rslt/S: 
   flag/N: 1
   sorc/d: (Enco/N: 134217984
 		Sub RemoveChild(xnode As XmlNode, child As XmlNode)
 		  xnode.RemoveChild child
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveChild
+  parm/S: xnode As XmlNode, index As Integer
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveChild(xnode As XmlNode, index As Integer)
+		  xnode.RemoveChild xnode.Child(index)
 		End Sub
   )
  Meth/g: 
@@ -709,6 +709,22 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
 		    '--
 		    Return Nil
 		  End Try
+		Catch ex 
+		  If ex IsA NilObjectException Then
+		    //++
+		    // Most likely the Nil object is App.T and we're trying to open
+		    // one of the XML documents that should be in a subdirectory of
+		    // the application.  Without trapping this, the program abruptly
+		    // blows up.  With this, at least a basic error message is output
+		    // to give someone an idea of what is happening.
+		    //--
+		    ErrorString = "Error in SmartML.XDocFromFile and translator is not loaded"
+		  Else
+		    ErrorString = "Unexpected exception in SmartML.XDocFromFile"
+		    If ErrorCode = 0 Then ErrorCode = -1
+		  End If
+		  If f <> Nil Then ErrorString = ErrorString + ", file is " + f.AbsolutePath
+		  Return Nil
 		End Function
   )
  Meth/g: 

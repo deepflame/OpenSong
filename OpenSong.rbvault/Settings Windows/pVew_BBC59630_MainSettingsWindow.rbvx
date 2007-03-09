@@ -1512,7 +1512,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
   PDef/D: (name/S: Enabled, PVal/S: True)
-  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: Height, PVal/S: 27)
   PDef/D: (name/S: HelpTag, PVal/S: )
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: grp_settings_documents_folder, Enco/N: 134217984)
@@ -1872,7 +1872,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainSettingsWindow
-  Size/N: 160
+  Size/N: 152
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

@@ -1,4 +1,14 @@
--= 1.0 Baselevel 15 =-
+-= 1.0 Baselevel 16 =-
+
+* Added update to MainSettingsWindow from r146, resizing nte_documents_warning.
+
+* Updated version to baselevel 16 (was getting harder to keep track of when certain changes in BL15 were made).
+
+* Changed PresentWindow to remain invisible after creation until late in the Present method to minimize visible changes to the window as it is configured.
+
+* Additional changes to PresentWindow to address issues with inconsistent window updates at start of a presentation. (Bugs 1559351 and 1658099)
+
+-= 1.0 Baselevel 15 =- Revision 145
 
 * Fixed a couple of bugs introduced with the preferences file that caused a crash if the file did not exist.
 

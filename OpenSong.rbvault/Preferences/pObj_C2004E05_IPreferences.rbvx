@@ -129,6 +129,18 @@ pObj/B: 426C6F6B704F626AC2004E050000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: NotifyReceivers
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub NotifyReceivers()
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: registerPreferencesReceiver
   parm/S: receiver As IpreferencesReceiver
   rslt/S: 

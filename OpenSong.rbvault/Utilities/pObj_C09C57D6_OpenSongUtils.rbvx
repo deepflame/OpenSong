@@ -1112,28 +1112,6 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		End Function
   )
  Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Xor
-  parm/S: Bool1 As Boolean, Bool2 As Boolean
-  rslt/S: Boolean
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Function Xor(Bool1 As Boolean, Bool2 As Boolean) As Boolean
-		  // XOR: True if one argument is true
-		  Dim result As Boolean
-		  
-		  If Bool1 And Bool2 Then
-		    result = False
-		  ElseIf (Not Bool1) And (Not Bool2) Then
-		    result = False
-		  Else
-		    result = True
-		  End If
-		  Return result
-		End Function
-  )
- Meth/g: 
  Note/G: 
   Enco/N: 134217984
   name/S: Overview

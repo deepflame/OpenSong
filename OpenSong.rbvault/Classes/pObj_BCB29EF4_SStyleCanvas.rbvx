@@ -14,7 +14,7 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
  HIns/G: 
   Enco/N: 1280
   name/S: MouseDown
-  sorc/d: (Enco/N: 134217984, srbp/N: 4
+  sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  Dim f As FolderItem
 		  

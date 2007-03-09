@@ -785,52 +785,16 @@ pObj/B: 426C6F6B704F626ABD1845730000000000000000000000000000000000000000
 		Sub Heapsort(a() As String)
 		  dim i,u as integer
 		  dim temp as variant
-		  
-		  '++JRC
-		  'Add progressWindow to sorting
-		  'probably shouldn't do this here
-		  'but don't know were else to put it
-		  Dim j As Integer
-		  
-		  j = 0
-		  ProgressWindow.SetMaximum(u) 
-		  ProgressWindow.SetProgress(j)
-		  ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/pass1") + "..."
-		  ProgressWindow.Show
-		  '--
-		  
 		  u = ubound(a)
 		  for i = u downto 0
-		    '++JRC
-		    j = j + 1
-		    ProgressWindow.SetProgress(j)
-		    '--
-		    
 		    heapify(a, i, u)
 		  next
-		  
-		  '++JRC
-		  j =  0
-		  ProgressWindow.SetMaximum(u) 
-		  ProgressWindow.SetProgress(j)
-		  ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/pass2") + "..."
-		  '--
-		  
 		  for i = u downto 1
-		    '++JRC
-		    j = j + 1
-		    ProgressWindow.SetProgress(j)
-		    '--
-		    
 		    temp = a(i)
 		    a(i) = a(0)
 		    a(0) = temp
 		    heapify(a, 0, i-1)
 		  next
-		  '++JRC
-		  ProgressWindow.Close
-		  '--
-		  
 		End Sub
   )
  Meth/g: 
@@ -1125,7 +1089,7 @@ pObj/B: 426C6F6B704F626ABD1845730000000000000000000000000000000000000000
 		        current = current + 1
 		      end if
 		      
-		    case "!"
+		    case "Ç"
 		      out1 = out1 + "S"  
 		      out2 = out2 + "S"
 		      current = current +  1
@@ -1519,7 +1483,7 @@ pObj/B: 426C6F6B704F626ABD1845730000000000000000000000000000000000000000
 		                                                  current = current +  1
 		                                                end if
 		                                                
-		                                              case ""
+		                                              case "Ñ"
 		                                                out1 = out1 + "N"  
 		                                                out2 = out2 + "N"
 		                                                current = current +  1

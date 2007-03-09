@@ -23,29 +23,32 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  HIns/G: 
   Enco/N: 1536
   name/S: Activate
-  sorc/d: (Enco/N: 134217984
-		Sub Activate()
-		  '++JRC
-		  DebugWriter.Write "Begin App.Activate"
-		  
-		  If Globals.Status_Presentation Then
-		    App.MinimizeWindow(MainWindow)
-		    
-		    If PresentWindow.HelperActive Then
-		      App.RestoreWindow(PresentHelperWindow)
-		      App.SetForeground(PresentHelperWindow)
-		      PresentHelperWindow.SetFocus
-		    Else
-		      App.RestoreWindow(PresentWindow)
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
-		    End If
-		  End If
-		  
-		  DebugWriter.Write "End App.Activate"
-		  '--
-		End Sub
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub Activate()
+   srcl/S: '++JRC
+   srcl/S: DebugWriter.Write "Begin App.Activate"
+   srcl/S: 
+   srcl/S: If Globals.Status_Presentation Then
+   srcl/S: #if Not TargetMacOS
+   srcl/S: App.MinimizeWindow(MainWindow)
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: If PresentWindow.HelperActive Then
+   srcl/S: App.RestoreWindow(PresentHelperWindow)
+   srcl/S: App.SetForeground(PresentHelperWindow)
+   srcl/S: PresentHelperWindow.SetFocus
+   srcl/S: Else
+   srcl/S: App.RestoreWindow(PresentWindow)
+   srcl/S: App.SetForeground(PresentWindow)
+   srcl/S: PresentWindow.SetFocus
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: DebugWriter.Write "End App.Activate"
+   srcl/S: '--
+   srcl/S: End Sub
+  sorc/g: 
  HIns/g: 
  HIns/G: 
   Enco/N: 1280
@@ -71,9 +74,9 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  HIns/g: 
  HIns/G: 
   Enco/N: 1536
-  name/S: EnableMenuItems
+  name/S: Deactivate
   sorc/d: (Enco/N: 134217984
-		Sub EnableMenuItems()
+		Sub Deactivate()
 		  
 		End Sub
   )
@@ -170,17 +173,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Dim tmp As New FolderItem
    srcl/S: 
    srcl/S: ' --- CREATE DOCUMENTS FOLDER ---
-   srcl/S: DocsFolder = MainPreferences.GetValueFI(prefs.kDocumentsFolder, Nil, False)
-   srcl/S: If DocsFolder = Nil Then
-   srcl/S: docsPath = SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder", False)
-   srcl/S: If docsPath = "" Then
-   srcl/S: DocsFolder = QueryDocsFolder(DocumentsFolder.Child("OpenSong"))
-   srcl/S: Else
-   srcl/S: DocsFolder = FileUtils.AbsolutePathToFolderItem(docsPath)
-   srcl/S: DocsFolder = QueryDocsFolder(DocsFolder)
-   srcl/S: End If
-   srcl/S: MainPreferences.SetValueFI prefs.kDocumentsFolder, DocsFolder
-   srcl/S: End If
+   srcl/S: DocsFolder = GetDocsFolder
    srcl/S: 
    srcl/S: ' Create whatever sub-folders are needed
    srcl/S: '++JRC
@@ -386,10 +379,9 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Globals.WhitespaceChars.Append Chr(ENTER)
    srcl/S: '--
    srcl/S: T.TranslateMenu("main_menu", MainMenu)
-   srcl/S: 
+   srcl/S: PlatformSpecific
    srcl/S: MainWindow.Show
    srcl/S: End Sub
-   srbp/N: 5
   sorc/g: 
  HIns/g: 
  HIns/G: 
@@ -401,6 +393,9 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		  Dim msg As String
 		  
 		  Globals.Status_Presentation = False
+		  If MainWindow <> Nil Then
+		    MainWindow.Status_Presentation = False
+		  End If
 		  
 		  MsgBox(error.ToString)
 		  
@@ -417,8 +412,6 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		      MainWindow.Status_Presentation = False
 		    End If
 		  End If
-		  
-		  'Quit
 		End Function
   )
  HIns/g: 
@@ -492,13 +485,12 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		  Dim f As FolderItem
 		  Dim FolderName As String
 		  Dim e As RuntimeException
-		  Const DocFolderPrefItem = "DocumentsFolder"
 		  Dim mb As SelectFolderDialog
 		  Dim Folder As String
 		  
-		  f = MainPreferences.GetValueFI("documents/@folder", Nil, False)
+		  f = MainPreferences.GetValueFI(kDocumentsFolder, Nil, False)
 		  If f = Nil Then
-		    FolderName = SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder")
+		    FolderName = Trim(SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder"))
 		    
 		    If FolderName <> "" Then
 		      f = GetFolderItem(FolderName, FolderItem.PathTypeAbsolute)
@@ -513,18 +505,18 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		          End If
 		          f = f.Child(Folder)
 		        Next
-		        MainPreferences.SetValueFI(DocFolderPrefItem, f)
-		      Else // If f = Nil; If FolderName <> ""
-		        // Nil folderitem in personal prefs, no path in Globals; prompt user
-		        f = QueryDocsFolder(Nil)
-		        If FileUtils.IsChild(f, AppFolder.Child("OpenSong Defaults")) Then
-		          MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(DocumentsFolder.Child("OpenSong"))))
-		          f = DocumentsFolder.Child("OpenSong")
-		        End If
-		        MainPreferences.SetValueFI(DocFolderPrefItem, f)
-		      End If //If f = Nil
+		        MainPreferences.SetValueFI(prefs.kDocumentsFolder, f)
+		      End If
+		    Else // FolderItem in MainPreferences is Nil, FolderName = ""
+		      // Nil folderitem in personal prefs, no path in Globals; prompt user
+		      f = QueryDocsFolder(Nil)
+		      If FileUtils.IsChild(f, AppFolder.Child("OpenSong Defaults")) Then
+		        MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(DocumentsFolder.Child("OpenSong"))))
+		        f = DocumentsFolder.Child("OpenSong")
+		      End If
+		      MainPreferences.SetValueFI(kDocumentsFolder, f)
 		    End If //If FolderName <> ""
-		  End If //If f = Nil
+		  End If //If MainPreferences.kDocumentsFolder = Nil
 		  Return f
 		End Function
   )
@@ -817,11 +809,35 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: PlatformSpecific
+  parm/S: 
+  rslt/S: 
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub PlatformSpecific()
+   srcl/S: //++
+   srcl/S: // PlatformSpecific is used to do anything that might be specific to
+   srcl/S: // the operating system OpenSong is running under.
+   srcl/S: //--
+   srcl/S: #If TargetWin32
+   srcl/S: // Windows items go here
+   srcl/S: #elseif TargetMacOS
+   srcl/S: // Macintosh items go here
+   srcl/S: mnu_help_help_topics.CommandKey = "?"
+   srcl/S: #elseif TargetLinux
+   srcl/S: // Linux items go here
+   srcl/S: #endif
+   srcl/S: End Sub
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: QueryDocsFolder
   parm/S: path As FolderItem, suggested As String = "OpenSong"
   rslt/S: FolderItem
   flag/N: 1
-  sorc/d: (Enco/N: 134217984
+  sorc/d: (Enco/N: 134217984, srbp/N: 11
 		Function QueryDocsFolder(path As FolderItem, suggested As String = "OpenSong") As FolderItem
 		  Dim mb as SelectFolderDialog
 		  Dim f, f1, defaultsFolder As FolderItem
@@ -832,8 +848,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		  If path = Nil Then path = DocumentsFolder
 		  If Not path.Exists Then path = DocumentsFolder
 		  mb = New SelectFolderDialog
-		  mb.InitialDirectory = path
-		  mb.SuggestedFileName = suggested
+		  mb.InitialDirectory = path.Child(suggested)
 		  While ask
 		    If T <> Nil Then// Can we translate?
 		      mb.ActionButtonCaption = T.Translate("shared/select/@caption")

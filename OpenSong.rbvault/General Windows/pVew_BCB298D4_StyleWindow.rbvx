@@ -5,6 +5,7 @@
 pVew/B: 426C6F6B70566577BCB298D40000000000000000000000000000000000000000
  Name/S: StyleWindow
  Cont/N: -1131477727
+ Bind/D: (desc/S: Update can_background_image with background color from can_background_color, type/S: bindSColorCanvasAndSImageCanvas, BnSr/N: 17, BnSd/S: , BbSd/S: , BnDs/N: 19, BnDd/S: , BbDd/S: )
  CBhv/G: 
   Name/S: 
   Size/N: 116
@@ -1196,7 +1197,6 @@ pVew/B: 426C6F6B70566577BCB298D40000000000000000000000000000000000000000
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 300)
  Ctrl/g: 
- Bind/D: (desc/S: Update can_background_image with background color from can_background_color, type/S: bindSColorCanvasAndSImageCanvas, BnSr/N: 17, BnSd/S: , BbSd/S: , BnDs/N: 19, BnDd/S: , BbDd/S: )
  FDef/G: 
   Name/S: StyleWindow
   Size/N: 24

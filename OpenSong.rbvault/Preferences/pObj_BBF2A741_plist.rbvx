@@ -125,14 +125,12 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
 		  dim s,path,command As string
 		  dim copyTo As FolderItem
 		  dim sh As shell
-		  dim o As TextOutputStream
-		  dim i As integer
 		  
 		  root=new plistDict
 		  
 		  savePath=f
 		  if not f.exists then
-		    f=template 'already the same
+		    f=template
 		  end
 		  if f.exists then
 		    t=f.OpenAsTextFile
@@ -171,28 +169,11 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
 		  else
 		    'error=true
 		    'errorMessage=f.AbsolutePath+" does not exist"
-		    
 		    headers.append "<?xml version="+chr(34)+"1.0"+chr(34)+" encoding="+chr(34)+"UTF-8"+chr(34)+"?>"
 		    headers.append  "<!DOCTYPE plist PUBLIC "+chr(34)+"-//Apple Computer//DTD PLIST 1.0//EN"+chr(34)+" "+chr(34)+"http://www.apple.com/DTDs/PropertyList-1.0.dtd"+chr(34)+">"
 		    headers.append "<plist version="+chr(34)+"1.0"+chr(34)+">"
 		    headers.append "<dict>"
-		    'try to generate prefrences file stub
-		    o = f.CreateTextFile
-		    if not f.exists then
-		      error=true
-		      errorMessage=f.AbsolutePath+" does not exist and could not be created"
-		    End If
-		    
-		    i = 0
-		    while i <= Ubound(headers)
-		      o.WriteLine headers(i)
-		      i = i + 1
-		    Wend
-		    o.Close
-		    
-		    t = f.OpenAsTextFile
 		    root.load(t,"root",false,nil,me,false)
-		    t.close
 		  end
 		End Sub
   )
@@ -205,7 +186,7 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
   flag/N: 0
   sorc/d: (Enco/N: 134217984
 		Sub plist(f As FolderItem)
-		  plist f,f 'why are we using the same var?
+		  plist f,f
 		End Sub
   )
  Meth/g: 
@@ -266,18 +247,6 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Save
-  parm/S: 
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub Save()
-		  Save(false)
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Save
   parm/S: clean as boolean
   rslt/S: 
   flag/N: 0
@@ -311,6 +280,18 @@ pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
 		  if clean then
 		    Cleanup
 		  end
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Save
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Save()
+		  Save(false)
 		End Sub
   )
  Meth/g: 

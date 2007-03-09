@@ -1,18 +1,28 @@
 -= JRC =-
 
-* Prompt if user selected to use custom DocFolder, and clicks Ok before clicking the change button
-
-* Fixed Custom DocsFolder wasn't being saved
-
-* Fixed Selecting custom DocsFolder wasn't enabling change button
-
-* Try to generate prefrences file stub instead of fatal exception
-
-* Prevent forever loop of NilObjectExceptions when there is an exception loading prefrences file
-
-* Exit OpenSong if we couldn't create/open preferences file
+*Resized nte_documents_warning in MainSettings to fit the text
 
 -= 1.0 Baselevel 15 =-
+
+* Fixed a couple of bugs introduced with the preferences file that caused a crash if the file did not exist.
+
+* Change help shortcut key on OSX to Command-? to more closely conform to the Apple UI standards. Command-H is most commonly used for Hide.
+
+* Clean up error handling if the main preferences file didn't load properly. (JRC r141)
+
+* Removed OpenSongUtils.Xor (not used and incompatible with RB2007r1)
+
+* Moved FormatFolderName from MainSettingsWindow to FileUtils.  That's probably a more appropriate place for a utility function that may come in handy elsewhere.
+
+* In a previous change, MainWindowSettings was modified to only change the location of the documents folder in the preferences, not the running program.  This means that OpenSong may continue to safely run against the old folder.  The forced exit was removed and the prompts changed.
+
+* Added NotifyReceivers method to the IPreferences interface.  No sense being able to register callbacks without a way to make them, eh?
+
+* On Macintosh, Presenter mode will not minimize the main window to the dock, nor restore it when leaving Presenter. 
+
+* Trap NilObjectException in SmartML.XDocFromFile. An error before the translator is loaded, or in loading the translator, could cause OpenSong to chase its tail trying to display the error.
+
+* Added Tagalog books to bnames.xml (book names for Zefania).
 
 * Main preferences dialog updated to show the folder in use for songs and sets.  Some controls in this dialog are resized to accommodate the Slavic and Germanic languages.  Settings are stored in the new preferences file (see next item).
 

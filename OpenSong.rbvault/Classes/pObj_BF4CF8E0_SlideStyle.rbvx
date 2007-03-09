@@ -16,18 +16,6 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Background
-  parm/S: 
-  rslt/S: Picture
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function Background() As Picture
-		  Return Background
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Background
   parm/S: Assigns bg As Picture
   rslt/S: 
   flag/N: 0
@@ -39,14 +27,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: BGColor
-  parm/S: Assigns bg As Color
-  rslt/S: 
+  name/S: Background
+  parm/S: 
+  rslt/S: Picture
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub BGColor(Assigns bg As Color)
-		  BGColor = bg
-		End Sub
+		Function Background() As Picture
+		  Return Background
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -65,16 +53,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: BodyAlign
-  parm/S: 
-  rslt/S: String
+  name/S: BGColor
+  parm/S: Assigns bg As Color
+  rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function BodyAlign() As String
-		  Dim A As String
-		  A = Lowercase(BodyAlign)
-		  Return A
-		End Function
+		Sub BGColor(Assigns bg As Color)
+		  BGColor = bg
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -87,6 +73,20 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		Sub BodyAlign(Assigns Align As String)
 		  BodyAlign = Align
 		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BodyAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function BodyAlign() As String
+		  Dim A As String
+		  A = Lowercase(BodyAlign)
+		  Return A
+		End Function
   )
  Meth/g: 
  Meth/G: 
@@ -227,19 +227,6 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: Position
-  parm/S: Assigns pos As Integer
-  rslt/S: 
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Sub Position(Assigns pos As Integer)
-		  If pos < 0 or pos > 2 Then pos = POS_STRETCH ' Defaults to Stretch if invalid
-		  Position = pos
-		End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: Position
   parm/S: 
   rslt/S: Integer
   flag/N: 0
@@ -251,13 +238,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: StripFooter
-  parm/S: Assigns Strip As Integer
+  name/S: Position
+  parm/S: Assigns pos As Integer
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub StripFooter(Assigns Strip As Integer)
-		  StripFooter = Strip
+		Sub Position(Assigns pos As Integer)
+		  If pos < 0 or pos > 2 Then pos = POS_STRETCH ' Defaults to Stretch if invalid
+		  Position = pos
 		End Sub
   )
  Meth/g: 
@@ -277,13 +265,13 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: SubtitleAlign
-  parm/S: Assigns Align As String
+  name/S: StripFooter
+  parm/S: Assigns Strip As Integer
   rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Sub SubtitleAlign(Assigns Align As String)
-		  SubtitleAlign = Align
+		Sub StripFooter(Assigns Strip As Integer)
+		  StripFooter = Strip
 		End Sub
   )
  Meth/g: 
@@ -303,14 +291,14 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
-  name/S: SubtitleFont
-  parm/S: 
-  rslt/S: FontFace
+  name/S: SubtitleAlign
+  parm/S: Assigns Align As String
+  rslt/S: 
   flag/N: 0
   sorc/d: (Enco/N: 134217984
-		Function SubtitleFont() As FontFace
-		  Return SubtitleFont.Clone
-		End Function
+		Sub SubtitleAlign(Assigns Align As String)
+		  SubtitleAlign = Align
+		End Sub
   )
  Meth/g: 
  Meth/G: 
@@ -323,6 +311,18 @@ pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
 		Sub SubtitleFont(Assigns NewFont As FontFace)
 		  SubtitleFont = NewFont
 		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleFont
+  parm/S: 
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function SubtitleFont() As FontFace
+		  Return SubtitleFont.Clone
+		End Function
   )
  Meth/g: 
  Meth/G: 

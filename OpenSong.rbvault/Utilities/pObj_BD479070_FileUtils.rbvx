@@ -126,6 +126,61 @@ pObj/B: 426C6F6B704F626ABD4790700000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: FormatFolderName
+  parm/S: Extends f As Folderitem, maxLen As Integer = 60
+  rslt/S: String
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function FormatFolderName(Extends f As Folderitem, maxLen As Integer = 60) As String
+   srcl/S: //++
+   srcl/S: // Format a foldername for display
+   srcl/S: // If longer than maxLen, eliminate elements of the path with
+   srcl/S: // an ellipsis until shorter.  Always show f's name unless it is longer than 60
+   srcl/S: //--
+   srcl/S: Dim path As String
+   srcl/S: Dim name As String
+   srcl/S: Dim nameLen As Integer
+   srcl/S: #if TargetMacOS
+   srcl/S: Const SEP = ":"
+   srcl/S: #elseif TargetWin32
+   srcl/S: Const SEP = "\"
+   srcl/S: #elseif TargetLinux
+   srcl/S: Const SEP = "/"
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: If f = Nil Then Return ""
+   srcl/S: 
+   srcl/S: path = f.AbsolutePath
+   srcl/S: name = f.DisplayName
+   srcl/S: nameLen = Len(name) + 3 // 3 for the ...
+   srcl/S: 
+   srcl/S: If Len(path) <= maxLen Then Return path
+   srcl/S: 
+   srcl/S: Dim parentPath As String
+   srcl/S: Dim p As FolderItem
+   srcl/S: Dim temp As String
+   srcl/S: 
+   srcl/S: p = f.Parent
+   srcl/S: 
+   srcl/S: If p = Nil Then Return Left(name, maxLen - 3) + "..."
+   srcl/S: 
+   srcl/S: parentPath = p.AbsolutePath
+   srcl/S: 
+   srcl/S: If Right(parentPath, 1) = SEP Then
+   srcl/S: parentPath = Left(parentPath, len(parentPath) - 1)
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: parentPath = Left(parentPath, maxLen - nameLen)
+   srcl/S: 
+   srcl/S: parentPath = Left(parentPath, StringUtils.InStrReverse(parentPath, SEP)) + "..." + SEP
+   srcl/S: 
+   srcl/S: Return parentPath + name
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: GetDisplayFullPath
   parm/S: f As Folderitem
   rslt/S: String

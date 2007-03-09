@@ -243,23 +243,26 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Close
-   sorc/d: (Enco/N: 134217984
-		Sub Close()
-		  'MainWindow.Status_Presentation = False
-		  'MainWindow.Show
-		  'MainWindow.SetFocus
-		  MainWindow.Status_Presentation = False
-		  Globals.Status_Presentation = False
-		  If HelperActive Then PresentHelperWindow.Close
-		  timerAdvance.Enabled = False
-		  '++JRC Prevent resizing MainWindow
-		  'MainWindow.Show
-		  App.RestoreWindow(MainWindow)
-		  App.SetForeground(MainWindow)
-		  '--
-		  MainWindow.SetFocus
-		End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub Close()
+    srcl/S: 'MainWindow.Status_Presentation = False
+    srcl/S: 'MainWindow.Show
+    srcl/S: 'MainWindow.SetFocus
+    srcl/S: MainWindow.Status_Presentation = False
+    srcl/S: Globals.Status_Presentation = False
+    srcl/S: If HelperActive Then PresentHelperWindow.Close
+    srcl/S: timerAdvance.Enabled = False
+    srcl/S: '++JRC Prevent resizing MainWindow
+    srcl/S: 'MainWindow.Show
+    srcl/S: #If Not TargetMacOS
+    srcl/S: App.RestoreWindow(MainWindow)
+    srcl/S: #endif
+    srcl/S: App.SetForeground(MainWindow)
+    srcl/S: '--
+    srcl/S: MainWindow.SetFocus
+    srcl/S: End Sub
+   sorc/g: 
   HIns/g: 
   HIns/G: 
    Enco/N: 1536
@@ -1287,246 +1290,249 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    parm/S: setDoc As XmlDocument, PresentMode As Integer
    rslt/S: 
    flag/N: 0
-   sorc/d: (Enco/N: 134217984
-		Sub Present(setDoc As XmlDocument, PresentMode As Integer)
-		  Dim i, j As Integer
-		  Dim slide_groups, slide_group, slide As XmlNode
-		  Dim s As String
-		  Dim msg As String // Error message in exception block
-		  Dim de As XmlNode // Holds PresentationSettings Document Element
-		  Dim f1 As FolderItem
-		  Dim tmpPic As Picture
-		  //++EMP
-		  // September 2005
-		  // Since the changes to pull the style information out of the XML
-		  // will modify it, make a local copy now instead of just assigning
-		  // the property...see below for the copy routine
-		  
-		  'CurrentSet = setDoc
-		  //--EMP
-		  Dim insertBlanks As Boolean
-		  
-		  //++EMP
-		  Dim tempSet As XmlNode
-		  Dim StyleNodes As XmlNodeList
-		  Dim StyleNode As XmlNode
-		  Dim NewStyleNode As XmlNode
-		  Dim tempSlideStyle As SlideStyle
-		  
-		  App.MouseCursor = WatchCursor
-		  // Copy the set to a working copy we can change
-		  CurrentSet = New XmlDocument
-		  CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
-		  '#if DebugBuild
-		  'Dim f As FolderItem
-		  'f = GetFolderItem("SetDoc.xml")
-		  'setDoc.SaveXml f
-		  '#endif
-		  StyleDict = New Dictionary
-		  //--EMP
-		  insertBlanks = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  slide_group = slide_groups.FirstChild
-		  'System.DebugLog "Starting While..."
-		  While slide_group <> Nil
-		    
-		    //++EMP
-		    // If the current group has a style, add it to the style objects dictionary
-		    // N.B.: This WILL break if slide-level styles are ever implemented
-		    // Under RB 5.5.5 I tried to do this outside this While with
-		    // StyleNodes = CurrentSet.Xql("//style") to get them all regardless of depth
-		    // but RB kept throwing an "assertion failed" error both with the debug
-		    // and production builds.
-		    // With the current (V1.0) design, this is a little more efficient anyway
-		    // since we don't keep reparsing the set's XML.
-		    
-		    StyleNode = SmartML.GetNode(slide_group, "style", False)
-		    If StyleNode <> Nil Then
-		      tempSlideStyle = New SlideStyle(StyleNode)
-		      // We'll just use the dictionary index as the key; this makes it unique if unimaginative
-		      StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
-		      StyleNode.SetAttribute "index", Str(StyleDict.Count - 1) 
-		      // Going for broke here: Replace the style node with a new one that just has the index...
-		      NewStyleNode = CurrentSet.CreateElement("style")
-		      NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
-		      StyleNode = SmartML.ReplaceWithImportNode(StyleNode, NewStyleNode)
-		    End If
-		    //--EMP
-		    slide_group = slide_group.NextSibling
-		    'System.DebugLog "Next Slide Group"
-		    If slide_group <> Nil Then
-		      'System.DebugLog "Slide Group is " + smartml.GetValue(slide_group, "@name") + ", a " + SmartML.GetValue(slide_group, "@type")
-		    End If
-		  Wend
-		  
-		  'System.DebugLog "Ending While"
-		  
-		  //++EMP
-		  // Now handle  the default styles...
-		  'System.DebugLog "Acquire Defaults"
-		  de = App.MyPresentSettings.DocumentElement
-		  StyleNode = SmartML.GetNode(de, "scripture_style")
-		  tempSlideStyle = New SlideStyle(StyleNode)
-		  StyleDict.Value("scripture_style") = tempSlideStyle
-		  SmartML.SetValue de, "scripture_style/@index", "scripture_style"
-		  'System.DebugLog "Completed scripture_style"
-		  StyleNode = SmartML.GetNode(de, "default_style")
-		  tempSlideStyle = New SlideStyle(StyleNode)
-		  StyleDict.Value("default_style") = tempSlideStyle
-		  SmartML.SetValue de, "default_style/@index", "default_style"
-		  'System.DebugLog "Completed default_style"
-		  //--
-		  If insertBlanks Then InsertBlanksIntoSet(CurrentSet)
-		  VerifySlideBodies(CurrentSet)
-		  'System.DebugLog "Add blanks and confirm bodies exist"
-		  
-		  '#if DebugBuild
-		  'f1 = GetFolderItem("CurrentSet.xml")
-		  'CurrentSet.SaveXml f1
-		  '#endif
-		  'System.DebugLog "Dumped CurrentSet"
-		  
-		  CurrentSlide = 1
-		  XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		  'System.DebugLog "Setup monitors"
-		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
-		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
-		  If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		  If controlScreen < 0 Or controlScreen > ScreenCount -1 Then controlScreen = 0
-		  
-		  'System.DebugLog "PresentWindow.Present: presentScreen, controlScreen = " + str(presentScreen) + ", " + str(controlScreen)
-		  'System.DebugLog Chr(9) + "ScreenCount = " + str(ScreenCount)
-		  For i = 0 to ScreenCount - 1
-		    'System.DebugLog Chr(9) + "Screen(" + str(i) + "): Top, Left, Height, Width = " + _
-		    'StringUtils.Sprintf("%d, %d, %d, %d", Screen(i).Top, Screen(i).Left, Screen(i).Height, Screen(i).Width)
-		  Next i
-		  
-		  'System.DebugLog "Determine correct PresentMode"
-		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
-		    presentScreen = controlScreen
-		    HelperActive = False
-		    MenuBarVisible = False
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left
-		    Width = Screen(presentScreen).Width
-		    Height = Screen(presentScreen).Height
-		    FullScreen = True
-		    
-		  ElseIf PresentMode = MODE_PREVIEW Then ' Split Screen
-		    HelperActive = True
-		    MenuBarVisible = True
-		    presentScreen = controlScreen
-		    Top = Screen(presentScreen).AvailableTop + 10
-		    Left = Screen(presentScreen).AvailableLeft + 10
-		    Width = Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 30
-		    Height = Width * Screen(presentScreen).AvailableHeight / Screen(presentScreen).Width ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
-		    
-		    PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).Width - PresentHelperWindow.Width - 10
-		    PresentHelperWindow.Top = Screen(presentScreen).AvailableTop + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
-		    
-		  ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens
-		    HelperActive = True
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left
-		    Width = Screen(presentScreen).Width
-		    Height = Screen(presentScreen).Height
-		    FullScreen = True
-		    MenuBarVisible = (presentScreen > 0) // Only show the menu bar if we're presenting on a secondary screen
-		    PresentHelperWindow.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - PresentHelperWindow.Width) / 2
-		    PresentHelperWindow.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height - PresentHelperWindow.Height) / 2
-		    
-		  ElseIf PresentMode = MODE_LINUX_DUAL_SCREEN Then ' Linux Xinerama Screen
-		    HelperActive = True
-		    presentScreen = controlScreen
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left + (Screen(presentScreen).Width / 2)
-		    Width = Screen(presentScreen).Width / 2
-		    Height = Screen(presentScreen).Height
-		    PresentHelperWindow.Left = Screen(presentScreen).Left + (Screen(presentScreen).Width /2)  - PresentHelperWindow.Width - 10
-		    PresentHelperWindow.Top = Screen(presentScreen).Top + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
-		  End If
-		  
-		  //++
-		  // EMP, September 2006
-		  // Move the allocation of pictures before doing anything with
-		  // the Helper window.  Depending on how events fired,
-		  // Helper could get a Repaint event before everything was
-		  // initialized.
-		  //--
-		  'System.DebugLog "Allocate Picture space"
-		  If HelperActive And Width < 320 Then
-		    CurrentPicture = NewPicture(320, 240, 32)
-		    LastPicture = NewPicture(320, 240, 32)
-		    PreviewPicture = NewPicture(320, 240, 32)
-		  Else
-		    CurrentPicture = NewPicture(Width, Height, 32)
-		    LastPicture = NewPicture(Width, Height, 32)
-		    PreviewPicture = NewPicture(Width, Height, 32)
-		  End If
-		  CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
-		  CurrentPicture.Graphics.FillRect(0, 0, CurrentPicture.Width, CurrentPicture.Height)
-		  
-		  'System.DebugLog "Get Logo Picture"
-		  tmpPic = SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo")
-		  
-		  If tmpPic <> Nil Then
-		    LogoCache = NewPicture(tmpPic.Width, tmpPic.Height, 32)
-		    LogoCache.Graphics.DrawPicture tmpPic, 0, 0
-		    LogoCache.Mask.Graphics.DrawPicture SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo_mask"), 0, 0
-		  End If
-		  
-		  If HelperActive Then
-		    PresentHelperWindow.Show
-		    i = 1
-		    slide = SetML.GetSlide(CurrentSet, i)
-		    'System.DebugLog "PresentWindow.Present: GetSlide 1 returned a " + SmartML.GetValue(slide.Parent.Parent, "@type") +_
-		    '" with name '" + SmartML.GetValue(slide.Parent.Parent, "@name") + "'"
-		    While slide <> Nil
-		      PresentHelperWindow.InsertItem slide, i
-		      i = i + 1
-		      slide = SetML.GetNextSlide(slide)
-		      'If slide <> Nil Then _
-		      'System.DebugLog "PresentWindow.Present: GetNextSlide for i = " + cstr(i) + " returned a " + SmartML.GetValue(slide.Parent.Parent, "@type") +_
-		      '" with name '" + SmartML.GetValue(slide.Parent.Parent, "@name") + "'"
-		    Wend
-		    PresentHelperWindow.lst_all_slides.ListIndex = 0
-		  End If
-		  
-		  'Show
-		  App.MinimizeWindow(MainWindow)
-		  If HelperActive Then
-		    PresentHelperWindow.SetMode Me.Mode, False
-		    App.RestoreWindow(PresentHelperWindow)
-		    PresentHelperWindow.lst_all_slides.SetFocus
-		  Else
-		    '++JRC Bring PresentWindow to front in Singe Screen Mode
-		    App.SetForeground(PresentWindow)
-		    '--
-		    ResetPaint XCurrentSlide
-		  End If
-		  
-		  Dim temp As String
-		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@mouse_cursor")
-		  Select Case temp
-		  Case "arrow"
-		    Self.MouseCursor = ArrowCursor
-		  Case "cross"
-		    Self.MouseCursor = cross
-		  Case "hidden"
-		    Self.MouseCursor = hidden
-		  Case "hourglass"
-		    Self.MouseCursor = WatchCursor
-		  Case "ibeam"
-		    Self.MouseCursor = IBeamCursor
-		  Else
-		    Self.MouseCursor = hidden
-		  End Select
-		Catch e
-		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
-		  Raise e
-		End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub Present(setDoc As XmlDocument, PresentMode As Integer)
+    srcl/S: Dim i, j As Integer
+    srcl/S: Dim slide_groups, slide_group, slide As XmlNode
+    srcl/S: Dim s As String
+    srcl/S: Dim msg As String // Error message in exception block
+    srcl/S: Dim de As XmlNode // Holds PresentationSettings Document Element
+    srcl/S: Dim f1 As FolderItem
+    srcl/S: Dim tmpPic As Picture
+    srcl/S: //++EMP
+    srcl/S: // September 2005
+    srcl/S: // Since the changes to pull the style information out of the XML
+    srcl/S: // will modify it, make a local copy now instead of just assigning
+    srcl/S: // the property...see below for the copy routine
+    srcl/S: 
+    srcl/S: 'CurrentSet = setDoc
+    srcl/S: //--EMP
+    srcl/S: Dim insertBlanks As Boolean
+    srcl/S: 
+    srcl/S: //++EMP
+    srcl/S: Dim tempSet As XmlNode
+    srcl/S: Dim StyleNodes As XmlNodeList
+    srcl/S: Dim StyleNode As XmlNode
+    srcl/S: Dim NewStyleNode As XmlNode
+    srcl/S: Dim tempSlideStyle As SlideStyle
+    srcl/S: 
+    srcl/S: App.MouseCursor = WatchCursor
+    srcl/S: // Copy the set to a working copy we can change
+    srcl/S: CurrentSet = New XmlDocument
+    srcl/S: CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
+    srcl/S: '#if DebugBuild
+    srcl/S: 'Dim f As FolderItem
+    srcl/S: 'f = GetFolderItem("SetDoc.xml")
+    srcl/S: 'setDoc.SaveXml f
+    srcl/S: '#endif
+    srcl/S: StyleDict = New Dictionary
+    srcl/S: //--EMP
+    srcl/S: insertBlanks = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
+    srcl/S: 
+    srcl/S: slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+    srcl/S: slide_group = slide_groups.FirstChild
+    srcl/S: 'System.DebugLog "Starting While..."
+    srcl/S: While slide_group <> Nil
+    srcl/S: 
+    srcl/S: //++EMP
+    srcl/S: // If the current group has a style, add it to the style objects dictionary
+    srcl/S: // N.B.: This WILL break if slide-level styles are ever implemented
+    srcl/S: // Under RB 5.5.5 I tried to do this outside this While with
+    srcl/S: // StyleNodes = CurrentSet.Xql("//style") to get them all regardless of depth
+    srcl/S: // but RB kept throwing an "assertion failed" error both with the debug
+    srcl/S: // and production builds.
+    srcl/S: // With the current (V1.0) design, this is a little more efficient anyway
+    srcl/S: // since we don't keep reparsing the set's XML.
+    srcl/S: 
+    srcl/S: StyleNode = SmartML.GetNode(slide_group, "style", False)
+    srcl/S: If StyleNode <> Nil Then
+    srcl/S: tempSlideStyle = New SlideStyle(StyleNode)
+    srcl/S: // We'll just use the dictionary index as the key; this makes it unique if unimaginative
+    srcl/S: StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
+    srcl/S: StyleNode.SetAttribute "index", Str(StyleDict.Count - 1) 
+    srcl/S: // Going for broke here: Replace the style node with a new one that just has the index...
+    srcl/S: NewStyleNode = CurrentSet.CreateElement("style")
+    srcl/S: NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
+    srcl/S: StyleNode = SmartML.ReplaceWithImportNode(StyleNode, NewStyleNode)
+    srcl/S: End If
+    srcl/S: //--EMP
+    srcl/S: slide_group = slide_group.NextSibling
+    srcl/S: 'System.DebugLog "Next Slide Group"
+    srcl/S: If slide_group <> Nil Then
+    srcl/S: 'System.DebugLog "Slide Group is " + smartml.GetValue(slide_group, "@name") + ", a " + SmartML.GetValue(slide_group, "@type")
+    srcl/S: End If
+    srcl/S: Wend
+    srcl/S: 
+    srcl/S: 'System.DebugLog "Ending While"
+    srcl/S: 
+    srcl/S: //++EMP
+    srcl/S: // Now handle  the default styles...
+    srcl/S: 'System.DebugLog "Acquire Defaults"
+    srcl/S: de = App.MyPresentSettings.DocumentElement
+    srcl/S: StyleNode = SmartML.GetNode(de, "scripture_style")
+    srcl/S: tempSlideStyle = New SlideStyle(StyleNode)
+    srcl/S: StyleDict.Value("scripture_style") = tempSlideStyle
+    srcl/S: SmartML.SetValue de, "scripture_style/@index", "scripture_style"
+    srcl/S: 'System.DebugLog "Completed scripture_style"
+    srcl/S: StyleNode = SmartML.GetNode(de, "default_style")
+    srcl/S: tempSlideStyle = New SlideStyle(StyleNode)
+    srcl/S: StyleDict.Value("default_style") = tempSlideStyle
+    srcl/S: SmartML.SetValue de, "default_style/@index", "default_style"
+    srcl/S: 'System.DebugLog "Completed default_style"
+    srcl/S: //--
+    srcl/S: If insertBlanks Then InsertBlanksIntoSet(CurrentSet)
+    srcl/S: VerifySlideBodies(CurrentSet)
+    srcl/S: 'System.DebugLog "Add blanks and confirm bodies exist"
+    srcl/S: 
+    srcl/S: '#if DebugBuild
+    srcl/S: 'f1 = GetFolderItem("CurrentSet.xml")
+    srcl/S: 'CurrentSet.SaveXml f1
+    srcl/S: '#endif
+    srcl/S: 'System.DebugLog "Dumped CurrentSet"
+    srcl/S: 
+    srcl/S: CurrentSlide = 1
+    srcl/S: XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+    srcl/S: 'System.DebugLog "Setup monitors"
+    srcl/S: presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
+    srcl/S: controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
+    srcl/S: If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
+    srcl/S: If controlScreen < 0 Or controlScreen > ScreenCount -1 Then controlScreen = 0
+    srcl/S: 
+    srcl/S: 'System.DebugLog "PresentWindow.Present: presentScreen, controlScreen = " + str(presentScreen) + ", " + str(controlScreen)
+    srcl/S: 'System.DebugLog Chr(9) + "ScreenCount = " + str(ScreenCount)
+    srcl/S: For i = 0 to ScreenCount - 1
+    srcl/S: 'System.DebugLog Chr(9) + "Screen(" + str(i) + "): Top, Left, Height, Width = " + _
+    srcl/S: 'StringUtils.Sprintf("%d, %d, %d, %d", Screen(i).Top, Screen(i).Left, Screen(i).Height, Screen(i).Width)
+    srcl/S: Next i
+    srcl/S: 
+    srcl/S: 'System.DebugLog "Determine correct PresentMode"
+    srcl/S: If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
+    srcl/S: presentScreen = controlScreen
+    srcl/S: HelperActive = False
+    srcl/S: MenuBarVisible = False
+    srcl/S: Top = Screen(presentScreen).Top
+    srcl/S: Left = Screen(presentScreen).Left
+    srcl/S: Width = Screen(presentScreen).Width
+    srcl/S: Height = Screen(presentScreen).Height
+    srcl/S: FullScreen = True
+    srcl/S: 
+    srcl/S: ElseIf PresentMode = MODE_PREVIEW Then ' Split Screen
+    srcl/S: HelperActive = True
+    srcl/S: MenuBarVisible = True
+    srcl/S: presentScreen = controlScreen
+    srcl/S: Top = Screen(presentScreen).AvailableTop + 10
+    srcl/S: Left = Screen(presentScreen).AvailableLeft + 10
+    srcl/S: Width = Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 30
+    srcl/S: Height = Width * Screen(presentScreen).AvailableHeight / Screen(presentScreen).Width ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
+    srcl/S: 
+    srcl/S: PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).Width - PresentHelperWindow.Width - 10
+    srcl/S: PresentHelperWindow.Top = Screen(presentScreen).AvailableTop + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
+    srcl/S: 
+    srcl/S: ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens
+    srcl/S: HelperActive = True
+    srcl/S: Top = Screen(presentScreen).Top
+    srcl/S: Left = Screen(presentScreen).Left
+    srcl/S: Width = Screen(presentScreen).Width
+    srcl/S: Height = Screen(presentScreen).Height
+    srcl/S: FullScreen = True
+    srcl/S: MenuBarVisible = (presentScreen > 0) // Only show the menu bar if we're presenting on a secondary screen
+    srcl/S: PresentHelperWindow.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - PresentHelperWindow.Width) / 2
+    srcl/S: PresentHelperWindow.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height - PresentHelperWindow.Height) / 2
+    srcl/S: 
+    srcl/S: ElseIf PresentMode = MODE_LINUX_DUAL_SCREEN Then ' Linux Xinerama Screen
+    srcl/S: HelperActive = True
+    srcl/S: presentScreen = controlScreen
+    srcl/S: Top = Screen(presentScreen).Top
+    srcl/S: Left = Screen(presentScreen).Left + (Screen(presentScreen).Width / 2)
+    srcl/S: Width = Screen(presentScreen).Width / 2
+    srcl/S: Height = Screen(presentScreen).Height
+    srcl/S: PresentHelperWindow.Left = Screen(presentScreen).Left + (Screen(presentScreen).Width /2)  - PresentHelperWindow.Width - 10
+    srcl/S: PresentHelperWindow.Top = Screen(presentScreen).Top + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: //++
+    srcl/S: // EMP, September 2006
+    srcl/S: // Move the allocation of pictures before doing anything with
+    srcl/S: // the Helper window.  Depending on how events fired,
+    srcl/S: // Helper could get a Repaint event before everything was
+    srcl/S: // initialized.
+    srcl/S: //--
+    srcl/S: 'System.DebugLog "Allocate Picture space"
+    srcl/S: If HelperActive And Width < 320 Then
+    srcl/S: CurrentPicture = NewPicture(320, 240, 32)
+    srcl/S: LastPicture = NewPicture(320, 240, 32)
+    srcl/S: PreviewPicture = NewPicture(320, 240, 32)
+    srcl/S: Else
+    srcl/S: CurrentPicture = NewPicture(Width, Height, 32)
+    srcl/S: LastPicture = NewPicture(Width, Height, 32)
+    srcl/S: PreviewPicture = NewPicture(Width, Height, 32)
+    srcl/S: End If
+    srcl/S: CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+    srcl/S: CurrentPicture.Graphics.FillRect(0, 0, CurrentPicture.Width, CurrentPicture.Height)
+    srcl/S: 
+    srcl/S: 'System.DebugLog "Get Logo Picture"
+    srcl/S: tmpPic = SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo")
+    srcl/S: 
+    srcl/S: If tmpPic <> Nil Then
+    srcl/S: LogoCache = NewPicture(tmpPic.Width, tmpPic.Height, 32)
+    srcl/S: LogoCache.Graphics.DrawPicture tmpPic, 0, 0
+    srcl/S: LogoCache.Mask.Graphics.DrawPicture SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo_mask"), 0, 0
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: If HelperActive Then
+    srcl/S: PresentHelperWindow.Show
+    srcl/S: i = 1
+    srcl/S: slide = SetML.GetSlide(CurrentSet, i)
+    srcl/S: 'System.DebugLog "PresentWindow.Present: GetSlide 1 returned a " + SmartML.GetValue(slide.Parent.Parent, "@type") +_
+    srcl/S: '" with name '" + SmartML.GetValue(slide.Parent.Parent, "@name") + "'"
+    srcl/S: While slide <> Nil
+    srcl/S: PresentHelperWindow.InsertItem slide, i
+    srcl/S: i = i + 1
+    srcl/S: slide = SetML.GetNextSlide(slide)
+    srcl/S: 'If slide <> Nil Then _
+    srcl/S: 'System.DebugLog "PresentWindow.Present: GetNextSlide for i = " + cstr(i) + " returned a " + SmartML.GetValue(slide.Parent.Parent, "@type") +_
+    srcl/S: '" with name '" + SmartML.GetValue(slide.Parent.Parent, "@name") + "'"
+    srcl/S: Wend
+    srcl/S: PresentHelperWindow.lst_all_slides.ListIndex = 0
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: 'Show
+    srcl/S: #if Not TargetMacOS
+    srcl/S: App.MinimizeWindow(MainWindow)
+    srcl/S: #endif
+    srcl/S: If HelperActive Then
+    srcl/S: PresentHelperWindow.SetMode Me.Mode, False
+    srcl/S: App.RestoreWindow(PresentHelperWindow)
+    srcl/S: PresentHelperWindow.lst_all_slides.SetFocus
+    srcl/S: Else
+    srcl/S: '++JRC Bring PresentWindow to front in Singe Screen Mode
+    srcl/S: App.SetForeground(PresentWindow)
+    srcl/S: '--
+    srcl/S: ResetPaint XCurrentSlide
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: Dim temp As String
+    srcl/S: temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@mouse_cursor")
+    srcl/S: Select Case temp
+    srcl/S: Case "arrow"
+    srcl/S: Self.MouseCursor = ArrowCursor
+    srcl/S: Case "cross"
+    srcl/S: Self.MouseCursor = cross
+    srcl/S: Case "hidden"
+    srcl/S: Self.MouseCursor = hidden
+    srcl/S: Case "hourglass"
+    srcl/S: Self.MouseCursor = WatchCursor
+    srcl/S: Case "ibeam"
+    srcl/S: Self.MouseCursor = IBeamCursor
+    srcl/S: Else
+    srcl/S: Self.MouseCursor = hidden
+    srcl/S: End Select
+    srcl/S: Catch e
+    srcl/S: RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
+    srcl/S: Raise e
+    srcl/S: End Sub
+   sorc/g: 
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984

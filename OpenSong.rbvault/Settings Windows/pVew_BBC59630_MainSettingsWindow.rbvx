@@ -214,11 +214,11 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  If NewDocsFolder = Nil Then
 		    If DocsFolder.AbsolutePath <> DefaultDocsFolder.AbsolutePath Then
 		      NewDocsFolder = DefaultDocsFolder
-		      docs_folder.Text = FormatFolderName(NewDocsFolder)
+		      docs_folder.Text = NewDocsFolder.FormatFolderName
 		    End If
 		  Else
 		    NewDocsFolder = DefaultDocsFolder
-		    docs_folder.Text = FormatFolderName(NewDocsFolder)
+		    docs_folder.Text = NewDocsFolder.FormatFolderName
 		  End If
 		End Sub
    )
@@ -248,63 +248,26 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Action
-   sorc/d: (Enco/N: 134217984, srbp/N: 4
+   sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  'DocsFolder = SelectFolder()
+		  
 		  Dim dlg As New SelectFolderDialog
 		  
 		  dlg.InitialDirectory = App.DocsFolder
 		  
 		  NewDocsFolder = dlg.ShowModal
 		  
-		  If NewDocsFolder <> Nil Then
-		    If NewDocsFolder.AbsolutePath <> DocsFolder.AbsolutePath Then
-		      docs_folder.Text = FormatFolderName(NewDocsFolder)
-		      // Is this the default?
-		      If NewDocsFolder.AbsolutePath = DefaultDocsFolder.AbsolutePath Then
-		        rad_documents_default.Value = True
-		      Else
-		        DocsFolderChanged = True
-		        rad_documents_custom.Value = True
-		        DocsFolder = NewDocsFolder
-		      End If
-		    Else
-		      // New folder is the same as old...no change necessary
-		      NewDocsFolder = Nil
-		      If DocsFolder.AbsolutePath = DefaultDocsFolder.AbsolutePath Then
-		        rad_documents_default.Value = True
-		      End If
-		    End If
-		  Else
-		    If DocsFolder.AbsolutePath = DefaultDocsFolder.AbsolutePath Then
-		      rad_documents_default.Value = True
-		    End If
+		  If NewDocsFolder = Nil Then Return // User cancelled
+		  
+		  // Is the selected folder the same as previous?
+		  If NewDocsFolder.AbsolutePath = DocsFolder.AbsolutePath Then
+		    NewDocsFolder = Nil
+		    Return
 		  End If
-		End Sub
-   )
-  HIns/g: 
- CBhv/g: 
- CBhv/G: 
-  Name/S: 
-  Size/N: 128
-  Supr/S: PushButton
-  bNtr/N: 0
-  HIns/G: 
-   Enco/N: 1280
-   name/S: Action
-   sorc/d: (Enco/N: 134217984
-		Sub Action()
-		  'Moved to Function
-		  SaveDocsFolder
-		End Sub
-   )
-  HIns/g: 
-  HIns/G: 
-   Enco/N: 1536
-   name/S: Open
-   sorc/d: (Enco/N: 134217984
-		Sub Open()
-		  Me.Enabled = False
+		  
+		  docs_folder.Text = NewDocsFolder.FormatFolderName
+		  // Is this the default?
+		  rad_documents_default.Value = (NewDocsFolder.AbsolutePath = DefaultDocsFolder.AbsolutePath)
 		End Sub
    )
   HIns/g: 
@@ -321,11 +284,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Action()
 		  '++JRC User selected custom DocsFolder, but didn't click change button
-		  If DocsFolderChanged Then
-		    If  InputBox.AskYN(App.T.Translate("general_settings/documents_folder/changed")) Then
-		      SaveDocsFolder
-		    End If
-		  End If
+		  If NewDocsFolder <> Nil Then SaveDocsFolder
 		  
 		  '++JRC Try to read language file, if we can't return to MainSettingsWindow without saving
 		  Dim T As Translator
@@ -440,7 +399,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: PushButton
   name/S: PushButton
-  CBix/N: 25
+  CBix/N: 24
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -471,7 +430,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: PushButton
   name/S: PushButton
-  CBix/N: 26
+  CBix/N: 25
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -710,7 +669,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: GroupBox
   name/S: GroupBox
-  CBix/N: 40
+  CBix/N: 39
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -739,7 +698,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: RadioButton
   name/S: RadioButton
-  CBix/N: 41
+  CBix/N: 40
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -769,7 +728,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: RadioButton
   name/S: RadioButton
-  CBix/N: 42
+  CBix/N: 41
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -888,7 +847,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 44
+  CBix/N: 43
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -945,37 +904,6 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
   PDef/D: (name/S: TextSize, PVal/S: 10)
-  PDef/D: (name/S: Top, PVal/S: 335)
-  PDef/D: (name/S: Underline, PVal/S: False)
-  PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 120)
- Ctrl/g: 
- Ctrl/G: 
-  ccls/S: PushButton
-  name/S: PushButton
-  CBix/N: 23
-  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
-  PDef/D: (name/S: BalloonHelp, PVal/S: )
-  PDef/D: (name/S: Bold, PVal/S: False)
-  PDef/D: (name/S: Cancel, PVal/S: False)
-  PDef/D: (name/S: Caption, PVal/S: Change, Enco/N: 134217984)
-  PDef/D: (name/S: Default, PVal/S: False)
-  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
-  PDef/D: (name/S: Enabled, PVal/S: True)
-  PDef/D: (name/S: Height, PVal/S: 22)
-  PDef/D: (name/S: HelpTag, PVal/S: )
-  PDef/D: (name/S: Index, PVal/S: -2147483648)
-  PDef/D: (name/S: InitialParent, PVal/S: grp_settings_documents_folder, Enco/N: 134217984)
-  PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 65)
-  PDef/D: (name/S: LockBottom, PVal/S: False)
-  PDef/D: (name/S: LockLeft, PVal/S: False)
-  PDef/D: (name/S: LockRight, PVal/S: False)
-  PDef/D: (name/S: LockTop, PVal/S: False)
-  PDef/D: (name/S: Name, PVal/S: btn_documents_change, Enco/N: 134217984)
-  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
-  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
-  PDef/D: (name/S: TextSize, PVal/S: 10)
   PDef/D: (name/S: Top, PVal/S: 362)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
@@ -984,7 +912,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: GroupBox
   name/S: GroupBox
-  CBix/N: 27
+  CBix/N: 26
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1013,7 +941,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 28
+  CBix/N: 27
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1047,7 +975,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 33
+  CBix/N: 32
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1075,7 +1003,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 29
+  CBix/N: 28
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1109,7 +1037,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 34
+  CBix/N: 33
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1137,7 +1065,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 30
+  CBix/N: 29
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1171,7 +1099,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 35
+  CBix/N: 34
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1199,7 +1127,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 31
+  CBix/N: 30
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1233,7 +1161,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 36
+  CBix/N: 35
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1261,7 +1189,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 38
+  CBix/N: 37
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1295,7 +1223,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 39
+  CBix/N: 38
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1323,7 +1251,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 32
+  CBix/N: 31
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1357,7 +1285,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: SFontCanvas
   name/S: Canvas
-  CBix/N: 37
+  CBix/N: 36
   PDef/D: (name/S: AcceptFocus, PVal/S: False)
   PDef/D: (name/S: AcceptTabs, PVal/S: False)
   PDef/D: (name/S: AdvancedOptions, PVal/S: False)
@@ -1576,7 +1504,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
-  CBix/N: 24
+  CBix/N: 23
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1584,7 +1512,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
   PDef/D: (name/S: DataSource, PVal/S: )
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
   PDef/D: (name/S: Enabled, PVal/S: True)
-  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: Height, PVal/S: 27)
   PDef/D: (name/S: HelpTag, PVal/S: )
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: grp_settings_documents_folder, Enco/N: 134217984)
@@ -1610,7 +1538,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
  Ctrl/G: 
   ccls/S: CheckBox
   name/S: CheckBox
-  CBix/N: 43
+  CBix/N: 42
   PDef/D: (name/S: AutoDeactivate, PVal/S: True)
   PDef/D: (name/S: BalloonHelp, PVal/S: )
   PDef/D: (name/S: Bold, PVal/S: False)
@@ -1952,7 +1880,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
    name/S: EnableMenuItems
    sorc/d: (Enco/N: 134217984
 		Sub EnableMenuItems()
-		  btn_documents_change.Enabled = NewDocsFolder <> Nil And NewDocsFolder.AbsolutePath <> DocsFolder.AbsolutePath
+		  //btn_documents_change.Enabled = NewDocsFolder <> Nil
 		End Sub
    )
   HIns/g: 
@@ -2006,7 +1934,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  Try
 		    For i = 1 To f.Count
 		      langfile = f.Item(i)
-		      If Not langfile.Directory And langfile.Visible Then 
+		      If Not langfile.Directory And langfile.IsFileVisible Then 
 		        pop_general_language.AddRow langfile.Name
 		        If langfile.Name = s Then currlang = pop_general_language.ListCount - 1
 		      End If
@@ -2058,7 +1986,7 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  
 		  '++JRC Display DocsFolder Location
 		  If DocsFolder.AbsolutePath = DefaultDocsFolder.AbsolutePath Then rad_documents_default.Value = True
-		  docs_folder.Text = FormatFolderName(DocsFolder)
+		  docs_folder.Text = DocsFolder.FormatFolderName
 		  '--
 		End Sub
    )
@@ -2080,78 +2008,29 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
-   name/S: FormatFolderName
-   parm/S: f As Folderitem, maxLen As Integer = 60
-   rslt/S: String
-   flag/N: 1
-   sorc/G: 
-    Enco/N: 134217984
-    srcl/S: Function FormatFolderName(f As Folderitem, maxLen As Integer = 60) As String
-    srcl/S: //++
-    srcl/S: // Format a foldername for display
-    srcl/S: // If longer than maxLen, eliminate elements of the path with
-    srcl/S: // an ellipsis until shorter.  Always show f's name unless it is longer than 60
-    srcl/S: //--
-    srcl/S: Dim path As String
-    srcl/S: Dim name As String
-    srcl/S: Dim nameLen As Integer
-    srcl/S: #if TargetMacOS
-    srcl/S: Const SEP = ":"
-    srcl/S: #elseif TargetWin32
-    srcl/S: Const SEP = "\"
-    srcl/S: #elseif TargetLinux
-    srcl/S: Const SEP = "/"
-    srcl/S: #endif
-    srcl/S: 
-    srcl/S: If f = Nil Then Return ""
-    srcl/S: 
-    srcl/S: path = f.AbsolutePath
-    srcl/S: name = f.DisplayName
-    srcl/S: nameLen = Len(name) + 3 // 3 for the ...
-    srcl/S: 
-    srcl/S: If Len(path) <= maxLen Then Return path
-    srcl/S: 
-    srcl/S: Dim parentPath As String
-    srcl/S: Dim p As FolderItem
-    srcl/S: Dim temp As String
-    srcl/S: 
-    srcl/S: p = f.Parent
-    srcl/S: 
-    srcl/S: If p = Nil Then Return Left(name, maxLen - 3) + "..."
-    srcl/S: 
-    srcl/S: parentPath = p.AbsolutePath
-    srcl/S: 
-    srcl/S: If Right(parentPath, 1) = SEP Then
-    srcl/S: parentPath = Left(parentPath, len(parentPath) - 1)
-    srcl/S: End If
-    srcl/S: 
-    srcl/S: parentPath = Left(parentPath, maxLen - nameLen)
-    srcl/S: 
-    srcl/S: parentPath = Left(parentPath, StringUtils.InStrReverse(parentPath, SEP)) + "..." + SEP
-    srcl/S: 
-    srcl/S: Return parentPath + name
-    srcl/S: End Function
-   sorc/g: 
-  Meth/g: 
-  Meth/G: 
-   Enco/N: 134217984
    name/S: SaveDocsFolder
    parm/S: 
    rslt/S: 
    flag/N: 1
    sorc/d: (Enco/N: 134217984
 		Sub SaveDocsFolder()
-		  If DocsFolder = Nil Then
-		    'SmartML.SetValue App.MyGlobals.DocumentElement, "documents/@folder", ""
-		    App.MainPreferences.SetValueFI(Prefs.kDocumentsFolder, DocumentsFolder.Child("OpenSong"))
-		  Else
-		    'SmartML.SetValue App.MyGlobals.DocumentElement, "documents/@folder", DocsFolder.AbsolutePath
-		    App.MainPreferences.SetValueFI(Prefs.kDocumentsFolder, DocsFolder)
-		  End If
+		  //++
+		  // Since this only modifies the preferences file and not App.DocsFolder,
+		  // a forced restart is no longer necessary.  Still need to warn the user
+		  // that a restart is needed to apply the changes.
+		  //
+		  // TODO: With a little cleaning up in App and MainWindow, it should be
+		  // possible to update the location of the documents folder without
+		  // a restart.  Have the appropriate objects/windows register for notifications.
+		  //--
+		  
+		  If NewDocsFolder = Nil Then Return // No changes
+		  
+		  App.MainPreferences.SetValueFI(Prefs.kDocumentsFolder, NewDocsFolder)
 		  
 		  InputBox.Message App.T.Translate("general_settings/documents_folder/message")
 		  
-		  Quit
+		  App.MainPreferences.NotifyReceivers
 		End Sub
    )
   Meth/g: 
@@ -2173,17 +2052,6 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     ntln/S: DocsFolder As FolderItem
-    ntln/S: 
-    ntln/S: 
-   sorc/g: 
-  Prop/g: 
-  Prop/G: 
-   Enco/N: 134217984
-   decl/S: DocsFolderChanged As Boolean
-   flag/N: 1
-   sorc/G: 
-    Enco/N: 134217984
-    ntln/S: DocsFolderChanged As Boolean
     ntln/S: 
     ntln/S: 
    sorc/g: 

@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: Bible
- Size/N: 88
+ Size/N: 92
  bNtr/N: 0
  Intr/S: 
  Cnst/D: (Enco/N: 134217984, name/S: NT_PROTESTANT, type/N: 1, defn/S: 27, flag/N: 1)
@@ -597,12 +597,13 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  Dim out as TextOutputStream
 		  'Dim node as XMLNode
 		  Dim BookNode, ChapNode, VerseNode As XmlNode
-		  Dim split(), verse, location, fileName, sBook, sChap, sVer as String
+		  Dim sSplit(), verse, location, fileName, sBook, sChap, sVer as String
 		  Dim reg as RegEx
 		  Dim x,y,  book, chap, ver, bound as Integer
 		  Dim root, wordNode as TreeNode
 		  Dim Progress As Double
 		  Dim BookName As String
+		  Dim Passage As String
 		  
 		  // Only do this if allowed
 		  If Not ShouldGenerateIndex Then Return
@@ -610,6 +611,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  'clear index
 		  reDim index(-1)
 		  reDim notIndexed(-1)
+		  
+		  IndexDict = New Dictionary
 		  
 		  'create folder if necessary
 		  newFile= New FolderItem(file.Parent.child("indexes"))
@@ -637,7 +640,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    return
 		  end if
 		  
-		  out= newFile.CreateTextFile
+		  
 		  
 		  'go to first book
 		  //++EMP 18 Feb 2006
@@ -711,35 +714,35 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		          verse= reg.Replace( getVerse(versenode.child(0)), 0)
 		          
 		          'split verse into individual words
-		          split= verse.Split()
+		          sSplit= verse.Split()
 		          
 		          'add to index
-		          for x=0 to UBound(split)
+		          for x=0 to UBound(sSplit)
 		            'if string is empty or in the list of words not to index then skip
 		            
-		            if (Len(split(x))>=1 AND notIndexed.IndexOf(split(x)) <0) then
+		            if (Len(sSplit(x))>=1 AND notIndexed.IndexOf(sSplit(x)) <0) then
 		              
 		              if (root=nil) then 'first entry 
-		                root= new TreeNode(new IndexEntry(split(x)))
+		                root= new TreeNode(sSplit(x), IndexDict)
 		              else
-		                wordNode=root.find(split(x))
+		                wordNode=root.find(sSplit(x))
 		                
-		                bound=UBound(wordNode.entry.passages)
+		                bound=UBound(wordNode.passages)
 		                
 		                if (bound >= 5000) then
 		                  ''add to not indexed list and remove from index
-		                  notIndexed.Append(split(x))
+		                  notIndexed.Append(sSplit(x))
 		                  
-		                  root.delete(split(x))
+		                  root.delete(sSplit(x))
 		                else
 		                  
 		                  ''make sure not to include the same verse twice
-		                  if (bound < 0 OR location <> wordNode.entry.passages(bound)) then
-		                    wordNode.entry.passages.Append(location)
+		                  if (bound < 0 OR location <> wordNode.passages(bound)) then
+		                    wordNode.passages.Append(location)
 		                  end if '(bound < 0 Or location...
 		                end if '(bound >= 5000)
 		              end if '(root = Nil)
-		            end if '(Len(split(x)) >= 1)...
+		            end if '(Len(sSplit(x)) >= 1)...
 		          next x
 		        end if
 		        
@@ -753,10 +756,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		        
 		        ver=ver+1
 		        sVer= Str(ver)
-		        // Since this is a s..l..o..w operation on OSX, update each verse (EMP)
-		        'IndexProgress.setProgress(Progress, _
-		        'stringutils.Sprintf("%s %d:%d",  BookName, chap, ver))
-		        'App.DoEvents 0 'Windows needs this to update the progress window
 		      wend
 		      
 		      'if node.NextSibling=nil then
@@ -786,13 +785,12 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  root.inorderTraverse(index)
 		  
 		  'write to file
+		  out= newFile.CreateTextFile
 		  for x=0 to UBound(index)
-		    out.write(index(x).word)
+		    out.write(index(x).entry)
 		    
-		    for y=0 to UBound(index(x).passages)
-		      out.write("|"+index(x).passages(y))
-		    next y
-		    out.WriteLine("")
+		    Passage = Join(index(x).passages, "|")
+		    out.WriteLine("|"+Left(Passage, Len(Passage) - 1))
 		  next x
 		  
 		  out.WriteLine("---")
@@ -1457,14 +1455,19 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		      Return ret
 		    End Try
 		    
-		    For i = 0 To list.Length - 1
-		      Verse = list.Item(i).GetAttribute("n")
-		      If list.Item(i).GetAttribute("t") <> "" Then
-		        Verse = verse + "-" + list.Item(i).GetAttribute("t")
-		      End If
-		      ret.Append Verse + " " + list.Item(i).FirstChild.Value
-		    Next
-		    
+		    If list = Nil Then
+		      App.DebugWriter.Write "In Bible.GetVerse, using " + LoadedBibleFilename + ", got an empty list."
+		      App.DebugWriter.Write Chr(9) + "Asking for Book/Chap/From/To = " + _
+		          Join(Array(CStr(BookNum), CStr(ChapNum), CStr(fromVerse), CStr(toVerse)), "/")
+		    Else
+		      For i = 0 To list.Length - 1
+		        Verse = list.Item(i).GetAttribute("n")
+		        If list.Item(i).GetAttribute("t") <> "" Then
+		          Verse = verse + "-" + list.Item(i).GetAttribute("t")
+		        End If
+		        ret.Append Verse + " " + list.Item(i).FirstChild.Value
+		      Next
+		    End If //list = Nil
 		  Case XML_ZEFANIA
 		    // The bsname attribute doesn't have spaces between the number and name
 		    // ("3John" instead of "3 John")
@@ -1493,15 +1496,20 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		      Return ret
 		    End Try
 		    
-		    For i = 0 To list.Length - 1
-		      Verse = list.Item(i).GetAttribute("vnumber") + list.Item(i).GetAttribute("aix")
-		      If list.Item(i).GetAttribute("enumber") <> "" Then
-		        verse = verse + "-" + list.Item(i).GetAttribute("enumber")
-		      End If
-		      verse = verse + " " + getVerseText(list.Item(i))
-		      ret.Append verse
-		    Next
-		    
+		    If list = Nil Then
+		      App.DebugWriter.Write "In Bible.GetVerse, using " + LoadedBibleFilename + ", got an empty list."
+		      App.DebugWriter.Write Chr(9) + "Asking for Book/Chap/From/To = " + _
+		          Join(Array(CStr(BookNum), CStr(ChapNum), CStr(fromVerse), CStr(toVerse)), "/")
+		    Else
+		      For i = 0 To list.Length - 1
+		        Verse = list.Item(i).GetAttribute("vnumber") + list.Item(i).GetAttribute("aix")
+		        If list.Item(i).GetAttribute("enumber") <> "" Then
+		          verse = verse + "-" + list.Item(i).GetAttribute("enumber")
+		        End If
+		        verse = verse + " " + getVerseText(list.Item(i))
+		        ret.Append verse
+		      Next
+		    End If
 		  End Select
 		  
 		  Return ret
@@ -1750,9 +1758,9 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  
 		  While child <> Nil
 		    If child.Type = XmlNodeType.TEXT_NODE Then 
-		      s = s + child.Value
+		      s = s + " " + child.Value
 		    ElseIf child.type = XmlNodeType.ELEMENT_NODE Then
-		      s = s + getVerseText(child)
+		      s = s + " " + getVerseText(child)
 		    End If
 		    child = child.NextSibling
 		  Wend
@@ -2041,9 +2049,10 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		Sub loadIndex(file As FolderItem)
 		  Dim fileIn as TextInputStream
 		  Dim line() as String
-		  Dim entry as IndexEntry
+		  Dim entry as TreeNode
 		  Dim x as Integer
 		  
+		  If IndexDict = Nil Then IndexDict = New Dictionary
 		  
 		  fileIn= file.OpenAsTextFile
 		  
@@ -2051,7 +2060,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  
 		  'read indexed words
 		  while line(0) <> "---"
-		    entry= new IndexEntry(line(0))
+		    If FileIn.EOF Then Exit
+		    entry= new TreeNode(line(0), IndexDict)
 		    
 		    for x=1 to UBound(line)
 		      entry.passages.Append(line(x))
@@ -2066,7 +2076,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  'read words that aren't indexed
 		  line(0)= fileIn.ReadLine()
 		  
-		  while (line(0) <> "")
+		  while (Not fileIn.EOF)
 		    notIndexed.Append(line(0))
 		    
 		    line(0)= fileIn.ReadLine()
@@ -2301,24 +2311,24 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    mid= (max-min)/2+ min
 		    
 		    if partialMatch=false then 'look for exact word
-		      if (index(mid).word= word) then
+		      if (index(mid).entry= word) then
 		        for x=0 to UBound(index(mid).passages)
 		          returnVal.Append(index(mid).passages(x))
 		        next x
 		        exit
-		      elseif (word<index(mid).word)  then
+		      elseif (word<index(mid).entry)  then
 		        max=mid-1
 		      else
 		        min=mid+1
 		      end if
 		    else 'look for partial word
-		      if (InStr(index(mid).word, word)) >0 then 'partial match
+		      if (InStr(index(mid).entry, word)) >0 then 'partial match
 		        
 		        returnVal= combineLists(returnVal, index(mid).passages)
 		        
 		      end if
 		      
-		      if (word<index(mid).word)  then
+		      if (word<index(mid).entry)  then
 		        max=mid-1
 		      else
 		        min=mid+1
@@ -2406,11 +2416,21 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
-  decl/S: index(-1) As IndexEntry
+  decl/S: index(-1) As TreeNode
   flag/N: 1
   sorc/G: 
    Enco/N: 134217984
-   ntln/S: index(-1) As IndexEntry
+   ntln/S: index(-1) As TreeNode
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: IndexDict As Dictionary
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: IndexDict As Dictionary
    ntln/S: 
    ntln/S: 
   sorc/g: 

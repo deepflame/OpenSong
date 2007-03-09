@@ -65,7 +65,7 @@ pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
 		    End If
 		    If DebugFile.Exists Then 
 		      '++JRC
-		      if AppendLog = true then
+		      if AppendLog then
 		        DebugTOS = DebugFile.AppendToTextFile
 		      else
 		        DebugFile.Delete

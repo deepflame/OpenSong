@@ -142,7 +142,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
   PDef/D: (name/S: Name, PVal/S: cnvSlide, Enco/N: 134217984)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: Top, PVal/S: -1)
-  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: UseFocusRing, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 302)
  Ctrl/g: 
@@ -1470,6 +1470,8 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
     srcl/S: End If
     srcl/S: CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
     srcl/S: CurrentPicture.Graphics.FillRect(0, 0, CurrentPicture.Width, CurrentPicture.Height)
+    srcl/S: LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
+    srcl/S: PreviewPicture.Graphics.DrawPicture CurrentPicture, 0, 0
     srcl/S: 
     srcl/S: 'System.DebugLog "Get Logo Picture"
     srcl/S: tmpPic = SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo")
@@ -1528,6 +1530,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
     srcl/S: Else
     srcl/S: Self.MouseCursor = hidden
     srcl/S: End Select
+    srcl/S: Self.Visible = True
     srcl/S: Catch e
     srcl/S: RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
     srcl/S: Raise e
@@ -1902,7 +1905,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  PDef/D: (name/S: Name, PVal/S: PresentWindow, Enco/N: 134217984)
  PDef/D: (name/S: Placement, PVal/S: 0)
  PDef/D: (name/S: Title, PVal/S: Presentation, Enco/N: 134217984)
- PDef/D: (name/S: Visible, PVal/S: True)
+ PDef/D: (name/S: Visible, PVal/S: False)
  PDef/D: (name/S: Width, PVal/S: 300)
  PDef/D: (name/S: ZoomIcon, PVal/S: False)
 pVew/b: 

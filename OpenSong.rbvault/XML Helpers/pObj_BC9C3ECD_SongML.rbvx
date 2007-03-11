@@ -2386,6 +2386,7 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  // Properly encode text in HTML.  Utilizes the HTMLEntityEncode method
 		  // in OpenSongUtils [Bug 1607916]
 		  //--
+		  'TODO: Configurable Export Options?
 		  CleanLyrics songElement.OwnerDocument
 		  
 		  Dim s As String
@@ -2397,13 +2398,20 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		  
 		  s = s + "  <div id=""title"">" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</div>" + EndOfLine
 		  s = s + "  <div id=""author"">" + SmartML.GetValue(songElement, "author").HTMLEntityEncode + "</div>" + EndOfLine
+		  '++JRC inlucde hymn number in export
+		  If SmartML.GetValue(songElement, "hymn_number").Len > 0 Then _
+		      s = s + "  <div id=""hymn_number"">" + App.T.Translate("general_song_editor/hymn_number/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "hymn_number").HTMLEntityEncode + "</div>" + EndOfLine
+		  '--
 		  If SmartML.GetValue(songElement, "time_sig").Len > 0 Then _
 		      s = s + "  <div id=""time_sig"">" + App.T.Translate("advanced_song_editor/time_sig/@caption").HTMLEntityEncode + ": " + SmartML.GetValue(songElement, "time_sig").HTMLEntityEncode + "</div>" + EndOfLine
 		  If SmartML.GetValue(songElement, "tempo").Len > 0 Then _
 		      s = s + "  <div id=""tempo"">" + App.T.Translate("advanced_song_editor/tempo/@caption").HTMLEntityEncode + ": " + SmartML.GetValue(songElement, "tempo").HTMLEntityEncode + "</div>" + EndOfLine
 		  If SmartML.GetValue(songElement, "capo").Len > 0 Then _
 		      s = s + "  <div id=""capo"">" + App.T.Translate("advanced_song_editor/capo/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "capo").HTMLEntityEncode + "</div>" + EndOfLine
-		  
+		  '++JRC inlucde presentation order in export
+		  If SmartML.GetValue(songElement, "presentation").Len > 0 Then _
+		      s = s + "  <div id=""presentation"">" + App.T.Translate("general_song_editor/presentation/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "presentation").HTMLEntityEncode + "</div>" + EndOfLine
+		  '--
 		  Dim slices(0), lines(0) As String
 		  LyricsToLines songElement.OwnerDocument, lines
 		  Dim i, j, lineCount, sliceCount As Integer

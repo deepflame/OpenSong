@@ -1,5 +1,9 @@
 -= JRC =-
 
+*Update style.css to include hymn number & presentation order
+
+*Include hymn numaber & presenation order in HTML export
+
 *Resized nte_documents_warning in MainSettings to fit the text
 
 -= 1.0 Baselevel 15 =-

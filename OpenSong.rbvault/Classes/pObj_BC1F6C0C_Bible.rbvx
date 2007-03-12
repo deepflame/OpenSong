@@ -711,7 +711,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		          location=sBook + " " + sChap + " " + sVer
 		          
 		          'remove puncuation
-		          verse= reg.Replace( getVerse(versenode.child(0)), 0)
+		          verse= reg.Replace( getVerseText(versenode), 0)
 		          
 		          'split verse into individual words
 		          sSplit= verse.Split()
@@ -996,6 +996,58 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: GetNTBooks
+  parm/S: 
+  rslt/S: String()
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetNTBooks() As String()
+		  //
+		  // Returns a string array with the names of the books
+		  // of the New Testament from the currently-loaded Bible.
+		  //
+		  // Must use this routine to allow for both I18N issues
+		  // and to handle Zefania files with incomplete
+		  // books.
+		  //
+		  // Ed Palmer, September 2005
+		  //
+		  Dim BookNames(0) As String
+		  Dim xn As XmlNodeList
+		  Dim i As Integer
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL
+		    For i = 1 to NT_PROTESTANT
+		      BookNames.Append GetBookName(i + OT_PROTESTANT)
+		    Next
+		    
+		  Case XML_NAB
+		    xn = Scripture.Xql("/bible/NT/book")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("n")
+		    Next
+		    
+		  Case XML_ZEFANIA
+		    //
+		    // Look at books in the book number range 40-66
+		    // 40 = Matthew, 66 = Revelation
+		    //
+		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("bname")
+		    Next
+		    
+		  End Select
+		  
+		  Return BookNames
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetNTBooks
   parm/S: ByRef BookNames() As String, ByRef BookNumbers() As Integer
   rslt/S: Integer
   flag/N: 0
@@ -1051,58 +1103,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  End Select
 		  
 		  Return UBound(BookNames) + 1
-		  
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetNTBooks
-  parm/S: 
-  rslt/S: String()
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetNTBooks() As String()
-		  //
-		  // Returns a string array with the names of the books
-		  // of the New Testament from the currently-loaded Bible.
-		  //
-		  // Must use this routine to allow for both I18N issues
-		  // and to handle Zefania files with incomplete
-		  // books.
-		  //
-		  // Ed Palmer, September 2005
-		  //
-		  Dim BookNames(0) As String
-		  Dim xn As XmlNodeList
-		  Dim i As Integer
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL
-		    For i = 1 to NT_PROTESTANT
-		      BookNames.Append GetBookName(i + OT_PROTESTANT)
-		    Next
-		    
-		  Case XML_NAB
-		    xn = Scripture.Xql("/bible/NT/book")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("n")
-		    Next
-		    
-		  Case XML_ZEFANIA
-		    //
-		    // Look at books in the book number range 40-66
-		    // 40 = Matthew, 66 = Revelation
-		    //
-		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("bname")
-		    Next
-		    
-		  End Select
-		  
-		  Return BookNames
 		  
 		End Function
   )
@@ -1323,6 +1323,98 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: GetPassage
+  parm/S: book As String, chapter As String, fromVerse As String, toVerse As String
+  rslt/S: String()
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetPassage(book As String, chapter As String, fromVerse As String, toVerse As String) As String()
+		  // Updated 8 October 2004 to fix "3John issue" in book parsing algorithm and NAB format
+		  // 29 August 2005: Add support for Zefania format
+		  // Original version parsed a text string to determine the reference
+		  // This version uses distinct parameters.
+		  // Ed Palmer
+		  
+		  Dim list As New XmlNodeList
+		  Dim query As String
+		  Dim i As Integer
+		  Dim ret(0), verse As String
+		  Dim reg as RegEx
+		  
+		  If Val(toVerse) < Val(fromVerse) Then toVerse = fromVerse
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL, XML_NAB
+		    Try
+		      'query = "/bible/b[@n='" + book + "')]/c[" + chapter + "]/v[(@n>='" + fromVerse + "' or @t>='" + toVerse + "') and @n<='" + toVerse + "']"
+		      query = "/bible/b[@n='" + book + "']/c[@n=" + chapter + "]/v[(@n>=" + fromVerse + " or @t>=" + toVerse + ") and @n<=" + toVerse + "]"
+		      list = Scripture.Xql(query)
+		    Catch ex 
+		      If ex IsA XmlException Then
+		        ErrorCode = ex.ErrorNumber
+		        ErrorString = ex.Message + chr(10) + "At " + XmlException(ex).Node + ", Token: " + XmlException(ex).Token
+		        ex.Message = ErrorString
+		      Else
+		        ErrorString = "Bible.GetPassage exception in query"
+		        ex.Message = ErrorString
+		      End If
+		      Return ret
+		    End Try
+		    
+		    For i = 0 To list.Length - 1
+		      fromVerse = list.Item(i).GetAttribute("n")
+		      toVerse = list.Item(i).GetAttribute("t")
+		      If toVerse > fromVerse Then
+		        ret.Append fromVerse + "-" + toVerse + " " + GetVerseText(list.Item(i))
+		      Else
+		        ret.Append fromVerse + " " + GetVerseText(list.Item(i))
+		      End If
+		    Next
+		    
+		  Case XML_ZEFANIA
+		    // The bsname attribute doesn't have spaces between the number and name
+		    // ("3John" instead of "3 John")
+		    //
+		    'book = Replace(book, " ", "")
+		    
+		    'bhenny- some Zefania bibles are red-letter, so we need to remove the tags for the red since OS doesn't currently support red letters
+		    reg= New RegEx
+		    reg.SearchPattern= "[<][^>]*[>]"
+		    reg.ReplacementPattern=""
+		    reg.Options.ReplaceAllMatches=true
+		    
+		    query = "/XMLBIBLE/BIBLEBOOK[@bname = '" + book + "']/CHAPTER[@cnumber='" + chapter _
+		        + "']/VERS[@vnumber >= '" + fromVerse + "' and @vnumber <= '" + toVerse + "']"
+		    Try
+		      list = Scripture.Xql(query)
+		    Catch ex2 
+		      If ex2 IsA XmlException Then
+		        ErrorCode = ex2.ErrorNumber
+		        ErrorString = ex2.Message + chr(10) + "At " + XmlException(ex2).Node + ", Token: " + XmlException(ex2).Token
+		        ex2.Message = ErrorString
+		      Else
+		        ErrorString = "Bible.GetPassage exception in query"
+		        ex2.Message = ErrorString
+		      End If
+		      Return ret
+		    End Try
+		    
+		    For i = 0 To list.Length - 1
+		      fromVerse = list.Item(i).GetAttribute("vnumber")
+		      verse= GetVerseText(list.Item(i))
+		      ret.Append fromVerse + " " + reg.Replace(verse)
+		    Next
+		    
+		  End Select
+		  
+		  Return ret
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetPassage
   parm/S: BookNum As Integer, ChapNum As Integer, fromVerse As Integer, toVerse As Integer
   rslt/S: String()
   flag/N: 0
@@ -1373,7 +1465,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		        If list.Item(i).GetAttribute("t") <> "" Then
 		          Verse = verse + "-" + list.Item(i).GetAttribute("t")
 		        End If
-		        ret.Append Verse + " " + list.Item(i).FirstChild.Value
+		        ret.Append Verse + " " + getVerseText(list.Item(i))
 		      Next
 		    End If //list = Nil
 		  Case XML_ZEFANIA
@@ -1418,98 +1510,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		        ret.Append verse
 		      Next
 		    End If
-		  End Select
-		  
-		  Return ret
-		  
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetPassage
-  parm/S: book As String, chapter As String, fromVerse As String, toVerse As String
-  rslt/S: String()
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetPassage(book As String, chapter As String, fromVerse As String, toVerse As String) As String()
-		  // Updated 8 October 2004 to fix "3John issue" in book parsing algorithm and NAB format
-		  // 29 August 2005: Add support for Zefania format
-		  // Original version parsed a text string to determine the reference
-		  // This version uses distinct parameters.
-		  // Ed Palmer
-		  
-		  Dim list As New XmlNodeList
-		  Dim query As String
-		  Dim i As Integer
-		  Dim ret(0), verse As String
-		  Dim reg as RegEx
-		  
-		  If Val(toVerse) < Val(fromVerse) Then toVerse = fromVerse
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL, XML_NAB
-		    Try
-		      'query = "/bible/b[@n='" + book + "')]/c[" + chapter + "]/v[(@n>='" + fromVerse + "' or @t>='" + toVerse + "') and @n<='" + toVerse + "']"
-		      query = "/bible/b[@n='" + book + "']/c[@n=" + chapter + "]/v[(@n>=" + fromVerse + " or @t>=" + toVerse + ") and @n<=" + toVerse + "]"
-		      list = Scripture.Xql(query)
-		    Catch ex 
-		      If ex IsA XmlException Then
-		        ErrorCode = ex.ErrorNumber
-		        ErrorString = ex.Message + chr(10) + "At " + XmlException(ex).Node + ", Token: " + XmlException(ex).Token
-		        ex.Message = ErrorString
-		      Else
-		        ErrorString = "Bible.GetPassage exception in query"
-		        ex.Message = ErrorString
-		      End If
-		      Return ret
-		    End Try
-		    
-		    For i = 0 To list.Length - 1
-		      fromVerse = list.Item(i).GetAttribute("n")
-		      toVerse = list.Item(i).GetAttribute("t")
-		      If toVerse > fromVerse Then
-		        ret.Append fromVerse + "-" + toVerse + " " + list.Item(i).FirstChild.Value
-		      Else
-		        ret.Append fromVerse + " " + list.Item(i).FirstChild.Value
-		      End If
-		    Next
-		    
-		  Case XML_ZEFANIA
-		    // The bsname attribute doesn't have spaces between the number and name
-		    // ("3John" instead of "3 John")
-		    //
-		    'book = Replace(book, " ", "")
-		    
-		    'bhenny- some Zefania bibles are red-letter, so we need to remove the tags for the red since OS doesn't currently support red letters
-		    reg= New RegEx
-		    reg.SearchPattern= "[<][^>]*[>]"
-		    reg.ReplacementPattern=""
-		    reg.Options.ReplaceAllMatches=true
-		    
-		    query = "/XMLBIBLE/BIBLEBOOK[@bname = '" + book + "']/CHAPTER[@cnumber='" + chapter _
-		        + "']/VERS[@vnumber >= '" + fromVerse + "' and @vnumber <= '" + toVerse + "']"
-		    Try
-		      list = Scripture.Xql(query)
-		    Catch ex2 
-		      If ex2 IsA XmlException Then
-		        ErrorCode = ex2.ErrorNumber
-		        ErrorString = ex2.Message + chr(10) + "At " + XmlException(ex2).Node + ", Token: " + XmlException(ex2).Token
-		        ex2.Message = ErrorString
-		      Else
-		        ErrorString = "Bible.GetPassage exception in query"
-		        ex2.Message = ErrorString
-		      End If
-		      Return ret
-		    End Try
-		    
-		    For i = 0 To list.Length - 1
-		      fromVerse = list.Item(i).GetAttribute("vnumber")
-		      verse= list.Item(i).toString
-		      ret.Append fromVerse + " " + reg.Replace(verse)
-		    Next
-		    
 		  End Select
 		  
 		  Return ret
@@ -1640,6 +1640,10 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  Dim i as Integer
 		  Dim xn As XmlNodeList
 		  
+		  // Apparently Xql doesn't encode the parameters prior to parsing them.
+		  // HTMLEntityEncode will get most of them, but the apostrophe is problematic.
+		  BookName = ReplaceAll(BookName.HTMLEntityEncode, "'", "&apos;")
+		  
 		  Select Case XMLTYPE
 		  Case XML_ORIGINAL, XML_NAB
 		    xn = Scripture.Xql("/bible/b[@n='" + BookName + "']/c[@n=" + Str(ChapterNum) + "]/v")
@@ -1751,8 +1755,18 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   flag/N: 1
   sorc/d: (Enco/N: 134217984
 		Function getVerseText(VerseNode As XmlNode) As String
+		  //++
+		  // Bug 1658650: Tabs in scripture create issues with
+		  // both indexing and presentation.
+		  // Alter returned text to change all whitespace to ASCII space.
+		  //--
 		  Dim s As String
 		  Dim child As XmlNode
+		  Dim re As New RegEx
+		  
+		  re.SearchPattern = "\s+"
+		  re.ReplacementPattern = " "
+		  re.Options.ReplaceAllMatches = True
 		  
 		  child = VerseNode.FirstChild
 		  
@@ -1765,6 +1779,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    child = child.NextSibling
 		  Wend
 		  
+		  s = re.Replace(s)
 		  Return s
 		End Function
   )

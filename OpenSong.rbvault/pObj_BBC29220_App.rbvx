@@ -21,7 +21,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
  Cnst/D: (Enco/N: 134217984, name/S: SW_SHOWNOACTIVATE, type/N: 1, defn/S: 4, flag/N: 0)
  Cnst/D: (Enco/N: 134217984, name/S: SW_SHOWNORMAL, type/N: 1, defn/S: 1, flag/N: 0)
  HIns/G: 
-  Enco/N: 1536
+  Enco/N: 131072
   name/S: Activate
   sorc/G: 
    Enco/N: 134217984
@@ -51,7 +51,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   sorc/g: 
  HIns/g: 
  HIns/G: 
-  Enco/N: 1280
+  Enco/N: 131072
   name/S: Close
   sorc/d: (Enco/N: 134217984
 		Sub Close()
@@ -69,15 +69,6 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		  Globals.Status_Presentation = False
 		  If MainPreferences <> Nil Then Call MainPreferences.Save
 		  DebugWriter.Done
-		End Sub
-  )
- HIns/g: 
- HIns/G: 
-  Enco/N: 1536
-  name/S: Deactivate
-  sorc/d: (Enco/N: 134217984
-		Sub Deactivate()
-		  
 		End Sub
   )
  HIns/g: 
@@ -136,31 +127,36 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: 
    srcl/S: 'Can't translate this until we've loaded the translator
    srcl/S: 'Splash.SetStatus "Loading translation text..."
-   srcl/S: temp = MainPreferences.GetValue(Prefs.kLanguage, "")
+   srcl/S: //++
+   srcl/S: // Updated March 2007: Try to prompt the user before giving up.
+   srcl/S: // Possibly avoids user having to manually update Globals or the preferences file.
+   srcl/S: //--
+   srcl/S: temp = MainPreferences.GetValue(Prefs.kLanguage, "") // Check the new location
    srcl/S: if temp  = "" Then
-   srcl/S: temp = SmartML.GetValue(MyGlobals.DocumentElement, "language/@file")
-   srcl/S: If temp = "" Then
-   srcl/S: temp = "English"
+   srcl/S: temp = SmartML.GetValue(MyGlobals.DocumentElement, "language/@file") //Check the old location
+   srcl/S: If temp = "" Then // Prompt the user
+   srcl/S: temp = SelectLanguage
+   srcl/S: If temp = "" Then Quit // User cancelled
    srcl/S: End If
-   srcl/S: MainPreferences.SetValue(Prefs.kLanguage, temp)
    srcl/S: End If
    srcl/S: 
    srcl/S: T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
    srcl/S: If Not T.IsLoaded Then
    srcl/S: '++JRC
    srcl/S: App.MouseCursor = Nil
-   srcl/S: SmartML.DisplayError
-   srcl/S: '++JRC I don't think trying to load another language here would be useful, 
-   srcl/S: 'it would either be the same file we just tried, or a language
-   srcl/S: 'that the user can't read and doesn't want
-   srcl/S: '
+   srcl/S: temp = SelectLanguage // Prompt for new selection
+   srcl/S: If temp = "" Then Quit
+   srcl/S: T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
+   srcl/S: If Not T.IsLoaded Then //Bail out...something's wrong
+   srcl/S: 'SmartML.DisplayError
+   srcl/S: InputBox.Message "Language file '" + AppFolder.Child("OpenSong Languages").Child(temp).AbsolutePath +_
+   srcl/S: "' was not found.  OpenSong must exit."
    srcl/S: Quit
-   srcl/S: '--
-   srcl/S: Else
+   srcl/S: End If
+   srcl/S: End If
    srcl/S: 'moved to globals
    srcl/S: 'SmartML.SetValue MyGlobals.DocumentElement, "language/@file", temp
    srcl/S: MainPreferences.SetValue(Prefs.kLanguage, temp)
-   srcl/S: End If
    srcl/S: 
    srcl/S: TranslateMe True
    srcl/S: '--
@@ -385,7 +381,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   sorc/g: 
  HIns/g: 
  HIns/G: 
-  Enco/N: 1280
+  Enco/N: 131072
   name/S: UnhandledException
   sorc/d: (Enco/N: 134217984
 		Function UnhandledException(error As RuntimeException) As Boolean
@@ -698,7 +694,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: 
    srcl/S: Dim e As RuntimeException
    srcl/S: #if TargetMacOS
-   srcl/S: PrefFile = "org.opensong.plist"
+   srcl/S: PrefFile = "org.opensong.opensong.plist"
    srcl/S: #else
    srcl/S: PrefFile = "preferences"
    srcl/S: #endif
@@ -837,7 +833,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
   parm/S: path As FolderItem, suggested As String = "OpenSong"
   rslt/S: FolderItem
   flag/N: 1
-  sorc/d: (Enco/N: 134217984, srbp/N: 11
+  sorc/d: (Enco/N: 134217984
 		Function QueryDocsFolder(path As FolderItem, suggested As String = "OpenSong") As FolderItem
 		  Dim mb as SelectFolderDialog
 		  Dim f, f1, defaultsFolder As FolderItem
@@ -974,6 +970,39 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: #EndIf
    srcl/S: End Sub
   sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SelectLanguage
+  parm/S: 
+  rslt/S: String
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function SelectLanguage() As String
+		  //++
+		  // Allow the user to select a language file from the available translations
+		  //--
+		  Dim options() As String
+		  Dim i As Integer
+		  Dim d As FolderItem
+		  Dim f As FolderItem
+		  
+		  d = AppFolder.Child("OpenSong Languages")
+		  If Not d.Exists Then Return "" //Bad installation
+		  If Not d.Directory Then Return ""
+		  
+		  options.Append "" // Open dialog with nothing selected
+		  
+		  For i = 1 To d.Count
+		    f = d.Item(i)
+		    If f.IsFileVisible And Not f.Directory Then
+		      options.Append f.Name
+		    End If
+		  Next
+		  
+		  Return InputBox.Pick("Select a language", options)
+		End Function
+  )
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984

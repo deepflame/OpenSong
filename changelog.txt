@@ -1,5 +1,18 @@
 -= 1.0 Baselevel 16 =-
 
+*Update style.css to include hymn number & presentation order
+
+*Include hymn numaber & presenation order in HTML export
+
+* A meaningful error message is displayed if the language file is missing. The user is given the option of selecting a new language.
+
+* Added main_menu/edit/selall to English translation file. (Bug 1651194)
+
+* Fix single screen mode on Mac to properly remove the menu bar when OpenSong regains focus from another program. (Related to Bug 1512764).
+
+* Eliminate indexing or presentation of non-space whitespace characters in scriptures. (Bug 1658650)
+
+(r147)
 * Added update to MainSettingsWindow from r146, resizing nte_documents_warning.
 
 * Updated version to baselevel 16 (was getting harder to keep track of when certain changes in BL15 were made).

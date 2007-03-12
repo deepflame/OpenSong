@@ -14,7 +14,7 @@ body {
 	background-color: #FFFFFF;
 }
 
-#time_sig, #tempo, #key, #aka, #copyright, #ccli, #themes, #key_line, #user1, #user2, #user3, #capo {
+#presentation, #hymn_number, #time_sig, #tempo, #key, #aka, #copyright, #ccli, #themes, #key_line, #user1, #user2, #user3, #capo {
 	font-size: xx-small;
 	font-weight: normal;
 	font-style: italic;

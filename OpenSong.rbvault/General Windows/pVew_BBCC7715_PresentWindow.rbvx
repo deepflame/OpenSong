@@ -224,7 +224,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		      App.SetForeground(PresentWindow)
 		      PresentWindow.SetFocus
 		    End If
-		    Me.MenuBarVisible = (Not Me.FullScreen) And (PresentScreen = 0) // Make assumption that screen 0 has the menu; not always true
+		    Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
 		    Me.SetFocus
 		  End If
 		  App.DebugWriter.Write "PresentWindow.Activate: Exit"

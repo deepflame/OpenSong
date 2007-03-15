@@ -267,7 +267,8 @@
       <paste caption="_Paste"/>
       <clear caption="C_lear"/>
       <find caption="_Find"/>
-      <find_next caption="Find _Again"/>
+      <find_next caption="Find A_gain"/>
+      <selall caption="Select _All"/>
     </edit>
     <mode caption="_Mode">
       <songs caption="_Song Mode"/>

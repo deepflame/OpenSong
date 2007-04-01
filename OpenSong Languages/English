@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.0 Beta 2 BL 13">
+<language name="English" author="Sean Lickfold" version="1.0 RC1 BL16">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -73,7 +73,7 @@
     <title caption="Title">Sets the title of the selected song.</title>
     <author caption="Author">Sets the author of the selected song.</author>
     <copyright caption="Copyright">Sets the copyright of the selected song.</copyright>
-    <ccli caption="CCLI #">Sets the CCLI number of the selected song.</ccli>
+    <ccli caption="CCLI Song #">Sets the CCLI number of the selected song.</ccli>
     <hymn_number caption="Hymn #">Sets the Hymn number of the selected song.</hymn_number>
     <presentation caption="Presentation">Sets the presentation order of the selected song. Sections should be separated with spaces. (i.e. "V1 C V2 C")</presentation>
     <lyrics caption="Chords/Lyrics">Edit songs here using Section lines, Comment lines, Chord lines, and Lyric lines.</lyrics>
@@ -291,7 +291,7 @@
 
   <general_settings title="General Configuration">
     <general caption="General">
-      <ccli caption="CCLI License #"/>
+      <ccli caption="Church CCLI License #"/>
       <version_check caption="Check for latest version at startup"/>
       <language caption="Language"/>
       <startmode caption="Initial Window">

@@ -637,7 +637,11 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		  //--
 		  If style <> Nil Then 
 		    If SlideType <> "song" Then Return style
-		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "song_style_preferred", True, True) Then Return style
+		    //++
+		    // Only need to determine if the song style or the set style has precedence if there
+		    // is a style change affecting the song.
+		    //--
+		    If (Not StyleChangeActive(SlideGroup)) Or (SongStylePreferred(SlideGroup)) Then Return Style
 		  End If
 		  
 		  ' If we are on a blank, and there is another slide after, we'll search for it's style instead.
@@ -770,6 +774,26 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: SongStylePreferred
+  parm/S: SlideGroup As XmlNode
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function SongStylePreferred(SlideGroup As XmlNode) As Boolean
+		  //++
+		  // Determine if a song-specific style should be used even
+		  // if a style change is active.
+		  // Current implementation does not use the song's
+		  // slide group passed as argument (looks at PresentationSettings).
+		  // Coded this way to allow for this to be handled on a song-by-song basis
+		  // in  the future.
+		  //--
+		  Return SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "song_style_preferred", True, True)
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: SplitToArray
   parm/S: str As String, ByRef arr() As String, char As String
   rslt/S: 
@@ -794,6 +818,35 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		    x = InStr(st, str, char)
 		  Wend
 		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: StyleChangeActive
+  parm/S: SlideGroup As XmlNode
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function StyleChangeActive(SlideGroup As XmlNode) As Boolean
+		  //++
+		  // Determine if the passed slide group is affected by an active style change
+		  //--
+		  
+		  Dim prev_group As XmlNode
+		  
+		  prev_group = SlideGroup.PreviousSibling
+		  While prev_group <> Nil
+		    If SmartML.GetValue(prev_group, "@type") = "style" Then
+		      If SmartML.GetValue(prev_group, "@action") = "new" Then
+		        Return True
+		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
+		        Return False
+		      End If
+		    End If ' not a style group
+		    prev_group = prev_group.PreviousSibling
+		  Wend
+		  
+		End Function
   )
  Meth/g: 
 pObj/b: 

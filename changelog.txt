@@ -1,5 +1,18 @@
 -= 1.0 Baselevel 16 =-
 
+* Updated English translation to make a better distinction between the two CCLI numbers: the church license number and the song CCLI ID number.
+
+* Correct issue introduced in BL15 where the default style would be used instead of the song style if song_style_preferred is False and a style change is not active.
+
+* Fix mouse getting stuck on the hourglass after presentation.
+
+* Fix PresentWindow on Mac so the resize box does not appear. As a temporary side effect, the window cannot be sized or moved when using dual-screen preview mode.
+
+* Mouse cursor properly changes when over PresentWindow even if the window does not have focus.
+
+* Corrected error in saving custom slides where the starting characters of the final slide would be dropped if the slides contained multi-byte characters. (OpenSongUtils.SplitRE) (Bug 1668194)
+
+(r149)
 *Update style.css to include hymn number & presentation order
 
 *Include hymn numaber & presenation order in HTML export

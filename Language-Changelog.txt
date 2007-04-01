@@ -166,4 +166,5 @@ questions/set_changed
 questions/changed (Deleted)
 shared/select
 questions/select_docs_folder
-main_menu/edit/selall
+general_song_editor/ccli (Modified)
+general_settings/ccli (Modified)

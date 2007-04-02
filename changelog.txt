@@ -1,5 +1,9 @@
 -= JRC =-
 
+*Ensure the New Testament scrollbar is enabled if necessary
+
+*Fixed off-by-one errors in scripture picker
+
 -= 1.0 Baselevel 16 =-
 
 *Update style.css to include hymn number & presentation order

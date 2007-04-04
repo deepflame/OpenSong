@@ -715,6 +715,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
     <version caption="Version"/>
+    <select_file caption="Please select a scripture file"/>
     <verses_per_slide caption="Verses Per Slide">
       <one caption="1"/>
       <two caption="2"/>

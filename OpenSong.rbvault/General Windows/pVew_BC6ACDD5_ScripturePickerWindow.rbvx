@@ -1,4 +1,4 @@
-##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -125,7 +125,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		        lst_scr_nt.List(i) = BookNames(i)
 		        'If this book name is the same as the previously selected one
 		        'flag it, of course this won't work if this Bible has different book names
-		        If OldBookName = BookNames(i) Then NewBook = ot + i + 1
+		        If OldBookName = BookNames(i) Then NewBook = ot + i + 2
 		        lst_scr_nt.CellTag(i, 0) = BookNumbers(i)
 		      Next
 		      
@@ -137,13 +137,13 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    
 		    If NewBook > 0 Then 
 		      If NewBook > ot Then 'New Testament
-		        lst_scr_nt.ListIndex = NewBook - ot - 1
+		        lst_scr_nt.ListIndex = NewBook - ot - 2
 		        lst_scr_ot.Listindex = -1
 		      Else 'Old Testament
 		        lst_scr_nt.ListIndex = -1
 		        lst_scr_ot.Listindex = NewBook - 1
 		      End If
-		      If OldChapter <= App.MyBible.GetChapterCount(NewBook + 1) Then lst_scr_chapter.ListIndex = OldChapter - 1
+		      If OldChapter <= App.MyBible.GetChapterCount(NewBook ) Then lst_scr_chapter.ListIndex = OldChapter - 1
 		      If OldVerse <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_chapter.ListIndex+1)Then lst_scr_from_verse.ListIndex = OldVerse - 1
 		      If OldThru <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_chapter.ListIndex+1) Then lst_scr_to_verse.ListIndex = OldThru - 1
 		      
@@ -1550,7 +1550,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 196
+  Size/N: 188
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -1590,6 +1590,13 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  App.CenterInControlScreen Me
 		  
 		  btn_search.Enabled = App.MyBible.IsSearchable
+		  
+		  '++JRC Ensure the scrollbars are enabled if necessary
+		  lst_scr_nt.ScrollPosition = 1
+		  lst_scr_nt.ScrollPosition = 0
+		  lst_scr_ot.ScrollPosition = 1
+		  lst_scr_ot.ScrollPosition = 0
+		  '--
 		End Sub
    )
   HIns/g: 

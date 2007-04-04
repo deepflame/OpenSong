@@ -168,3 +168,4 @@ shared/select
 questions/select_docs_folder
 general_song_editor/ccli (Modified)
 general_settings/ccli (Modified)
+scripture_lookup/select_file

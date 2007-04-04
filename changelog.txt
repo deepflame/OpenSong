@@ -1,5 +1,14 @@
 -= 1.0 Baselevel 16 =-
 
+* Corrected internal logic bug in the scripture picker.
+
+* Closing a presentation by focusing on the presentation display while a dialog box is open no longer causes problems and a crash later. [Bug 1693567]
+
+* If scripture file is not found at program start, prompt for the file to use.  Added scripture_lookup/select_file to English translation.
+
+(r154)
+* Exit dialog for PresentWindow changed from InputBox to an operating system message box to correct issue where the dock and menu bar would not hide after prompting for exit and the user selecting Cancel to return to the presentation. (added in r154 but not documented in commit message)
+
 * Updated English translation to make a better distinction between the two CCLI numbers: the church license number and the song CCLI ID number.
 
 * Correct issue introduced in BL15 where the default style would be used instead of the song style if song_style_preferred is False and a style change is not active.

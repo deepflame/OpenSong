@@ -952,9 +952,30 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		        ' Close Presentation
 		        '
 		      ElseIf Keyboard.AsyncKeyDown(&h35) Or Action = 27 Then ' Escape
+		        //++
+		        // Check for an open dialog box and ignore if one is found (Bug 1693567)
+		        // Only windows that can remain open when a presentation closes are the MainWindow
+		        // or the two Present windows.  Assume anything else is a dialog that should block closing.
+		        //--
+		        bFound = False
+		        For i = 0 To WindowCount - 1
+		          If Not (Window(i) IsA MainWindow Or _
+		              Window(i) IsA PresentWindow Or _
+		              Window(i) IsA PresentHelperWindow) Then
+		              bFound = True
+		            End If
+		          Next
+		        If bFound Then Return True
 		        '++JRC: made the prompt optional 
 		        if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
-		          If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then 
+		          'If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then 
+		          messagebox.Message = App.T.Translate("presentation_helper/exit/@caption")
+		          messagebox.Title = "OpenSong"
+		          messagebox.ActionButton.Default = True
+		          messagebox.CancelButton.Visible = True
+		          messagebox.CancelButton.Cancel = True
+		          msgboxbutton = messagebox.ShowModal
+		          If msgboxbutton = messagebox.ActionButton Then
 		            Close
 		          End If
 		        else

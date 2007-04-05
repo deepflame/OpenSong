@@ -1065,7 +1065,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: 
    srcl/S: t = "v" +  Str(App.MajorVersion) + "." + Str(App.MinorVersion)
    srcl/S: If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion) 
-   srcl/S: t = t + " RC 1"
+   srcl/S: t = t + " RC 2"
    srcl/S: If App.NonReleaseVersion > 0 Then t = t + "-" + Str(App.NonReleaseVersion)
    srcl/S: //++
    srcl/S: // If compiled with rb2006r4 or higher, this is likely a Universal Binary.

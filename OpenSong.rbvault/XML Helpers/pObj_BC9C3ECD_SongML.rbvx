@@ -1370,7 +1370,7 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		    'g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
 		    'g.DrawRoundRect rrx, rry, g.StringWidth(heading) + g.PenWidth + oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
 		    //--
-		    
+		  
 		    g.DrawString heading, x + g.PenWidth+1, y
 		    y = y + g.PenWidth+1
 		  ElseIf Uppercase(Left(heading, 1)) = "T" Then   ' -- TAG --
@@ -2425,17 +2425,22 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		      sliceCount = UBound(slices) / lineCount
 		      s = s + "  <table border=""0"" cellpadding=""0"" cellspacing=""0"">" + EndOfLine
 		      
-		      s = s + "    <tr>" + EndOfLine
-		      For i = 0 To sliceCount - 1 ' Loop through each chord slice
-		        If i = 0 Then
-		          s = s + "      <td class=""capochords"">" + Trim(Mid(SingleTranspose(slices(i*lineCount+1),_
-		              12-SmartML.GetValueN(songElement, "capo"), True), 2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
-		        Else
-		          s = s + "      <td class=""capochords"">" + Trim(SingleTranspose(slices(i*lineCount+1),_
-		              12-SmartML.GetValueN(songElement, "capo"), False)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
-		        End If
-		      Next i
-		      s = s + "    </tr>" + EndOfLine
+		      //++
+		      // Don't print capo chords if we wouldn't on regular hardcopy [Bug 1691058]
+		      //--
+		      If SmartML.GetValueB(songElement, "capo/@print", True, False) Then
+		        s = s + "    <tr>" + EndOfLine
+		        For i = 0 To sliceCount - 1 ' Loop through each chord slice
+		          If i = 0 Then
+		            s = s + "      <td class=""capochords"">" + Trim(Mid(SingleTranspose(slices(i*lineCount+1),_
+		                12-SmartML.GetValueN(songElement, "capo"), True), 2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		          Else
+		            s = s + "      <td class=""capochords"">" + Trim(SingleTranspose(slices(i*lineCount+1),_
+		                12-SmartML.GetValueN(songElement, "capo"), False)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		          End If
+		        Next i
+		        s = s + "    </tr>" + EndOfLine
+		      End If
 		      
 		      For i = 0 To sliceCount - 1 ' Loop through each chord slice
 		        If i = 0 Then

@@ -1,5 +1,7 @@
 -= 1.0 Baselevel 16 =-
 
+* Export Song to HTML will not include capo chords if the "print capo chords" flag is not set. [Bug 1695098]
+
 * Corrected internal logic bug in the scripture picker.
 
 * Closing a presentation by focusing on the presentation display while a dialog box is open no longer causes problems and a crash later. [Bug 1693567]

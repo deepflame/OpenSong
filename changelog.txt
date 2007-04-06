@@ -1,4 +1,6 @@
--= 1.0 Baselevel 16 =-
+-= 1.0 Release Candidate 2, Baselevel 16 =-
+
+* Reworked change from revision 154 for PresentWindow exit dialog. Program now will use the operating system message box ONLY if in single screen mode. This avoids the message box appearing on the presentation screen if the last window with the focus was the presentation window.
 
 * Export Song to HTML will not include capo chords if the "print capo chords" flag is not set. [Bug 1695098]
 

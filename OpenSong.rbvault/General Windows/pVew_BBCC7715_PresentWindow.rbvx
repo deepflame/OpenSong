@@ -172,7 +172,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentWindow
-  Size/N: 216
+  Size/N: 220
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: ACTION_BLACK, type/N: 1, defn/S: 1013, flag/N: 0)
@@ -965,346 +965,351 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		              bFound = True
 		            End If
 		          Next
-		        If bFound Then Return True
-		        '++JRC: made the prompt optional 
-		        if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
-		          'If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then 
-		          messagebox.Message = App.T.Translate("presentation_helper/exit/@caption")
-		          messagebox.Title = "OpenSong"
-		          messagebox.ActionButton.Default = True
-		          messagebox.CancelButton.Visible = True
-		          messagebox.CancelButton.Cancel = True
-		          msgboxbutton = messagebox.ShowModal
-		          If msgboxbutton = messagebox.ActionButton Then
+		          If bFound Then Return True
+		          '++JRC: made the prompt optional 
+		          if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
+		            If PresentationMode = MODE_SINGLE_SCREEN Then // Use operating system message box
+		              messagebox.Message = App.T.Translate("presentation_helper/exit/@caption")
+		              messagebox.Title = "OpenSong"
+		              messagebox.ActionButton.Default = True
+		              messagebox.CancelButton.Visible = True
+		              messagebox.CancelButton.Cancel = True
+		              msgboxbutton = messagebox.ShowModal
+		              If msgboxbutton = messagebox.ActionButton Then
+		                Close
+		              End If
+		            Else // Use the OpenSong one so it ends up on the right screen
+		              If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then 
+		                Close
+		              End If
+		            End If
+		          else // No prompt before exit
 		            Close
-		          End If
-		        else
-		          Close
-		        end if
-		        
-		        return true
-		        '--End
-		        '
-		        ' Black screen (can't be "B" since that's the hotkey for "Bridge" :-(
-		        '
-		      ElseIf Lowercase(Key) = "k"  Then
-		        'Great idea :) 
-		        ' Now it's a toggle EMP 9/28
-		        if Mode <> "B" then
-		          Mode = "B"
-		        else
-		          Mode = "N"
-		        end if
-		        'End of toggle EMP 9/28
-		        'Mode = "B"
-		        If HelperActive Then
-		          PresentHelperWindow.SetMode Mode
-		        Else
-		          ResetPaint XCurrentSlide
-		        End If
-		        Return True
-		        
-		        '
-		        ' White Screen
-		        '
-		      ElseIf Lowercase(Key) = "w" Then
-		        'Great idea :)
-		        ' Now it's a toggle EMP 9/28
-		        if Mode <> "W" then
-		          Mode = "W"
-		        else
-		          Mode = "N"
-		        end if
-		        'End of toggle EMP 9/28
-		        'Mode = "W"
-		        If HelperActive Then
-		          PresentHelperWindow.SetMode Mode
-		        Else
-		          ResetPaint XCurrentSlide
-		        End If
-		        Return True
-		        
-		        '
-		        ' Hide Slide (leaves background up)
-		        '
-		      ElseIf Lowercase(Key) = "h" Then
-		        'Great idea :)
-		        ' Now it's a toggle EMP 9/28
-		        if Mode <> "H" then
-		          Mode = "H"
-		        else
-		          Mode = "N"
-		        end if
-		        'End of toggle EMP 9/28
-		        'Mode = "H"
-		        If HelperActive Then
-		          PresentHelperWindow.SetMode Mode
-		        Else
-		          ResetPaint XCurrentSlide
-		        End If
-		        Return True
-		        
-		        '
-		        ' Put up the LOGO
-		        '
-		      ElseIf Lowercase(Key) = "l" Then
-		        if Mode <> "L" Then
-		          Mode = "L"
-		        else
-		          Mode = "N"
-		        end if
-		        'End of toggle EMP 9/28
-		        'Mode = "L"
-		        If HelperActive Then
-		          PresentHelperWindow.SetMode Mode
-		        Else
-		          ResetPaint XCurrentSlide
-		        End If
-		        Return True
-		        
-		        '
-		        ' Freeze display screen
-		        '
-		      ElseIf Lowercase(Key) = "f" Then
-		        ' Now it's a toggle EMP 9/28
-		        if Mode <> "F" then
-		          Mode = "F"
-		        else
-		          Mode = "N"
-		        end if
-		        'End of toggle EMP 9/28
-		        'Mode = "F"  'Old Code EMP 9/28
-		        If HelperActive Then
-		          PresentHelperWindow.SetMode Mode
-		        Else
-		          ResetPaint XCurrentSlide
-		        End If
-		        Return True
-		        
-		        '
-		        '  Normal Screen (less important now that the modes are toggles)
-		        '  It's a trump -- disables any other mode
-		        '
-		      ElseIf Lowercase(Key) = "n" Then
-		        Mode = "N"
-		        If HelperActive Then
-		          PresentHelperWindow.SetMode Mode
-		        Else
-		          ResetPaint XCurrentSlide
-		        End If
-		        Return True
-		        
-		        '
-		        ' Put up an ALERT
-		        '
-		      ElseIf Lowercase(Key) = "a" Then
-		        AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
-		        If HelperActive Then
-		          ResetPaint XCurrentSlide
-		          PresentHelperWindow.Refresh False
-		        Else
-		          ResetPaint XCurrentSlide
-		        End If
-		        Return True
-		        
-		        '
-		        ' SCRIPTURE
-		        ' 
-		      ElseIf Lowercase(Key) = "s" Then
-		        ' Get a reference
-		        newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		        temp = Mode
-		        If ScripturePickerWindow.Popup(newGroup, True) Then
-		          App.MouseCursor = WatchCursor
+		          end if
 		          
-		          ' --- Move to where we need to be ---
-		          temp = SmartML.GetValue(newGroup, "@name")
-		          Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
-		            currentSlide = currentSlide + 1
-		            XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
-		          Loop
-		          
-		          If HelperActive Then
-		            xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
-		            i = 0
-		            While xNewSlide <> Nil
-		              PresentHelperWindow.InsertItem xNewSlide, currentSlide + i - 1
-		              xNewSlide = xNewSlide.NextSibling
-		              i = i + 1
-		            Wend
-		          End If
-		          
-		          ' Insert blank slides if needed
-		          If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
-		            newSlide = CurrentSlide
-		            xNewSlide = XCurrentSlide
-		            If XCurrentSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.NextSibling, "@name") <> "" Then
-		              xNewSlide = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		              xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		              SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
-		              SmartML.SetValue xNewSlide, "body", ""
-		              If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
-		            End If
-		            If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
-		              xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
-		              xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		              SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
-		              SmartML.SetValue xNewSlide, "body", ""
-		              If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide - 1
-		              CurrentSlide = CurrentSlide + 1
-		              XCurrentSlide = xNewSlide
-		            End If
-		          End If
-		          
-		          If HelperActive Then
-		            App.MouseCursor = Nil
-		            PresentHelperWindow.ScrollTo currentSlide
-		          Else
-		            App.MouseCursor = Nil
-		            ResetPaint XCurrentSlide
-		          End If
-		          Return True
-		        Else
-		          ' user closed the window; the first part of this if will never happen when the scripture chooser is running live; maybe we'll find a way to enable it again.
-		          newGroup.Parent.RemoveChild newGroup
-		          Mode = temp
+		          return true
+		          '--End
+		          '
+		          ' Black screen (can't be "B" since that's the hotkey for "Bridge" :-(
+		          '
+		        ElseIf Lowercase(Key) = "k"  Then
+		          'Great idea :) 
+		          ' Now it's a toggle EMP 9/28
+		          if Mode <> "B" then
+		            Mode = "B"
+		          else
+		            Mode = "N"
+		          end if
+		          'End of toggle EMP 9/28
+		          'Mode = "B"
 		          If HelperActive Then
 		            PresentHelperWindow.SetMode Mode
 		          Else
 		            ResetPaint XCurrentSlide
 		          End If
 		          Return True
-		        End If
-		        
-		        '
-		        ' Add SONG
-		        '
-		      ElseIf Lowercase(Key) = "q" Then
-		        '
-		        ' Added code to remember current position so song can be inserted without changing
-		        ' what's up on the screen (allows operator to cue next song in a highly dynamic,
-		        ' Spirit-lead P&W service before the previous song is finished).
-		        '
-		        ' TODO: Parameterize this behavior -- add checkbox or radiobuttons to the
-		        ' add song dialog box.
-		        '
-		        ' EMP 6/20/05
-		        '
-		        xOldSlide = XCurrentSlide
-		        OldSlide = CurrentSlide
-		        
-		        ' Get a reference
-		        newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		        f = SongPickerWindow.Popup
-		        If f <> Nil Then
-		          App.MouseCursor = WatchCursor
 		          
-		          s = SmartML.XDocFromFile(f)
-		          SongML.ToSetML s.DocumentElement
-		          If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
-		            App.MouseCursor = Nil
-		            InputBox.Message App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True))
-		            newGroup.Parent.RemoveChild newGroup
-		            Return False
-		          End If
-		          
-		          newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
-		          
-		          ' --- Move to where we need to be ---
-		          temp = SmartML.GetValue(newGroup, "@name")
-		          Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
-		            currentSlide = currentSlide + 1
-		            XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
-		          Loop
-		          
+		          '
+		          ' White Screen
+		          '
+		        ElseIf Lowercase(Key) = "w" Then
+		          'Great idea :)
+		          ' Now it's a toggle EMP 9/28
+		          if Mode <> "W" then
+		            Mode = "W"
+		          else
+		            Mode = "N"
+		          end if
+		          'End of toggle EMP 9/28
+		          'Mode = "W"
 		          If HelperActive Then
-		            xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
-		            i = 0
-		            While xNewSlide <> Nil
-		              PresentHelperWindow.InsertItem xNewSlide, currentSlide + i - 1
-		              xNewSlide = xNewSlide.NextSibling
-		              i = i + 1
-		            Wend
-		          End If
-		          
-		          ' Insert blank slides if needed
-		          If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
-		            newSlide = CurrentSlide
-		            xNewSlide = XCurrentSlide
-		            If XCurrentSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.NextSibling, "@name") <> "" Then
-		              xNewSlide = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		              xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		              SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
-		              SmartML.SetValue xNewSlide, "body", ""
-		              If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
-		            End If
-		            If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
-		              xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
-		              xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		              SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
-		              SmartML.SetValue xNewSlide, "body", ""
-		              If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide - 1
-		              CurrentSlide = CurrentSlide + 1
-		              XCurrentSlide = xNewSlide
-		            End If
-		          End If
-		          
-		          ' Added to move back to original position (see EMP 6/20/05 comments above).
-		          '
-		          XCurrentSlide = xOldSlide
-		          CurrentSlide  = OldSlide
-		          
-		          '
-		          If HelperActive Then 
-		            App.MouseCursor = Nil
-		            PresentHelperWindow.ScrollTo currentSlide
+		            PresentHelperWindow.SetMode Mode
 		          Else
-		            App.MouseCursor = Nil
 		            ResetPaint XCurrentSlide
 		          End If
 		          Return True
-		        Else
-		          ' must have cancelled the picker window
-		          newGroup.Parent.RemoveChild newGroup
+		          
+		          '
+		          ' Hide Slide (leaves background up)
+		          '
+		        ElseIf Lowercase(Key) = "h" Then
+		          'Great idea :)
+		          ' Now it's a toggle EMP 9/28
+		          if Mode <> "H" then
+		            Mode = "H"
+		          else
+		            Mode = "N"
+		          end if
+		          'End of toggle EMP 9/28
+		          'Mode = "H"
+		          If HelperActive Then
+		            PresentHelperWindow.SetMode Mode
+		          Else
+		            ResetPaint XCurrentSlide
+		          End If
 		          Return True
-		        End If
-		        
-		      ElseIf Lowercase(Key) = "m" Then
-		        If HelperActive Then
-		          PresentHelperWindow.SwapFullScreen
+		          
+		          '
+		          ' Put up the LOGO
+		          '
+		        ElseIf Lowercase(Key) = "l" Then
+		          if Mode <> "L" Then
+		            Mode = "L"
+		          else
+		            Mode = "N"
+		          end if
+		          'End of toggle EMP 9/28
+		          'Mode = "L"
+		          If HelperActive Then
+		            PresentHelperWindow.SetMode Mode
+		          Else
+		            ResetPaint XCurrentSlide
+		          End If
 		          Return True
+		          
+		          '
+		          ' Freeze display screen
+		          '
+		        ElseIf Lowercase(Key) = "f" Then
+		          ' Now it's a toggle EMP 9/28
+		          if Mode <> "F" then
+		            Mode = "F"
+		          else
+		            Mode = "N"
+		          end if
+		          'End of toggle EMP 9/28
+		          'Mode = "F"  'Old Code EMP 9/28
+		          If HelperActive Then
+		            PresentHelperWindow.SetMode Mode
+		          Else
+		            ResetPaint XCurrentSlide
+		          End If
+		          Return True
+		          
+		          '
+		          '  Normal Screen (less important now that the modes are toggles)
+		          '  It's a trump -- disables any other mode
+		          '
+		        ElseIf Lowercase(Key) = "n" Then
+		          Mode = "N"
+		          If HelperActive Then
+		            PresentHelperWindow.SetMode Mode
+		          Else
+		            ResetPaint XCurrentSlide
+		          End If
+		          Return True
+		          
+		          '
+		          ' Put up an ALERT
+		          '
+		        ElseIf Lowercase(Key) = "a" Then
+		          AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		          If HelperActive Then
+		            ResetPaint XCurrentSlide
+		            PresentHelperWindow.Refresh False
+		          Else
+		            ResetPaint XCurrentSlide
+		          End If
+		          Return True
+		          
+		          '
+		          ' SCRIPTURE
+		          ' 
+		        ElseIf Lowercase(Key) = "s" Then
+		          ' Get a reference
+		          newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
+		          temp = Mode
+		          If ScripturePickerWindow.Popup(newGroup, True) Then
+		            App.MouseCursor = WatchCursor
+		            
+		            ' --- Move to where we need to be ---
+		            temp = SmartML.GetValue(newGroup, "@name")
+		            Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
+		              currentSlide = currentSlide + 1
+		              XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
+		            Loop
+		            
+		            If HelperActive Then
+		              xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
+		              i = 0
+		              While xNewSlide <> Nil
+		                PresentHelperWindow.InsertItem xNewSlide, currentSlide + i - 1
+		                xNewSlide = xNewSlide.NextSibling
+		                i = i + 1
+		              Wend
+		            End If
+		            
+		            ' Insert blank slides if needed
+		            If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
+		              newSlide = CurrentSlide
+		              xNewSlide = XCurrentSlide
+		              If XCurrentSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.NextSibling, "@name") <> "" Then
+		                xNewSlide = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
+		                xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
+		                SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
+		                SmartML.SetValue xNewSlide, "body", ""
+		                If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
+		              End If
+		              If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
+		                xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
+		                xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
+		                SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
+		                SmartML.SetValue xNewSlide, "body", ""
+		                If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide - 1
+		                CurrentSlide = CurrentSlide + 1
+		                XCurrentSlide = xNewSlide
+		              End If
+		            End If
+		            
+		            If HelperActive Then
+		              App.MouseCursor = Nil
+		              PresentHelperWindow.ScrollTo currentSlide
+		            Else
+		              App.MouseCursor = Nil
+		              ResetPaint XCurrentSlide
+		            End If
+		            Return True
+		          Else
+		            ' user closed the window; the first part of this if will never happen when the scripture chooser is running live; maybe we'll find a way to enable it again.
+		            newGroup.Parent.RemoveChild newGroup
+		            Mode = temp
+		            If HelperActive Then
+		              PresentHelperWindow.SetMode Mode
+		            Else
+		              ResetPaint XCurrentSlide
+		            End If
+		            Return True
+		          End If
+		          
+		          '
+		          ' Add SONG
+		          '
+		        ElseIf Lowercase(Key) = "q" Then
+		          '
+		          ' Added code to remember current position so song can be inserted without changing
+		          ' what's up on the screen (allows operator to cue next song in a highly dynamic,
+		          ' Spirit-lead P&W service before the previous song is finished).
+		          '
+		          ' TODO: Parameterize this behavior -- add checkbox or radiobuttons to the
+		          ' add song dialog box.
+		          '
+		          ' EMP 6/20/05
+		          '
+		          xOldSlide = XCurrentSlide
+		          OldSlide = CurrentSlide
+		          
+		          ' Get a reference
+		          newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
+		          f = SongPickerWindow.Popup
+		          If f <> Nil Then
+		            App.MouseCursor = WatchCursor
+		            
+		            s = SmartML.XDocFromFile(f)
+		            SongML.ToSetML s.DocumentElement
+		            If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
+		              App.MouseCursor = Nil
+		              InputBox.Message App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True))
+		              newGroup.Parent.RemoveChild newGroup
+		              Return False
+		            End If
+		            
+		            newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
+		            
+		            ' --- Move to where we need to be ---
+		            temp = SmartML.GetValue(newGroup, "@name")
+		            Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
+		              currentSlide = currentSlide + 1
+		              XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
+		            Loop
+		            
+		            If HelperActive Then
+		              xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
+		              i = 0
+		              While xNewSlide <> Nil
+		                PresentHelperWindow.InsertItem xNewSlide, currentSlide + i - 1
+		                xNewSlide = xNewSlide.NextSibling
+		                i = i + 1
+		              Wend
+		            End If
+		            
+		            ' Insert blank slides if needed
+		            If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
+		              newSlide = CurrentSlide
+		              xNewSlide = XCurrentSlide
+		              If XCurrentSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.NextSibling, "@name") <> "" Then
+		                xNewSlide = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
+		                xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
+		                SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
+		                SmartML.SetValue xNewSlide, "body", ""
+		                If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
+		              End If
+		              If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
+		                xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
+		                xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
+		                SmartML.SetValue xNewSlide.Parent.Parent, "@type", "blank"
+		                SmartML.SetValue xNewSlide, "body", ""
+		                If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide - 1
+		                CurrentSlide = CurrentSlide + 1
+		                XCurrentSlide = xNewSlide
+		              End If
+		            End If
+		            
+		            ' Added to move back to original position (see EMP 6/20/05 comments above).
+		            '
+		            XCurrentSlide = xOldSlide
+		            CurrentSlide  = OldSlide
+		            
+		            '
+		            If HelperActive Then 
+		              App.MouseCursor = Nil
+		              PresentHelperWindow.ScrollTo currentSlide
+		            Else
+		              App.MouseCursor = Nil
+		              ResetPaint XCurrentSlide
+		            End If
+		            Return True
+		          Else
+		            ' must have cancelled the picker window
+		            newGroup.Parent.RemoveChild newGroup
+		            Return True
+		          End If
+		          
+		        ElseIf Lowercase(Key) = "m" Then
+		          If HelperActive Then
+		            PresentHelperWindow.SwapFullScreen
+		            Return True
+		          Else
+		            Return False
+		          End If
 		        Else
 		          Return False
 		        End If
-		      Else
-		        Return False
-		      End If
-		      
-		      //++EMP 15 Jan 2006
-		      // Add a generic exception handler in an attempt to keep from bailing out
-		      // TODO: This needs to log somewhere and notify the operator after the presentation is done.
-		      //
-		    Exception ex
-		      // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		      // return to the caller.
-		      //
-		      If XCurrentSlide = Nil Then
-		        // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		        // how do you keep XCurrentSlide and CurrentSlide in sync?
-		        // (perhaps look at xNewSlide to get close to the original location?)
-		        CurrentSlide = 1
-		        XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		      End If
-		      // Put up wherever we're at now (and pray!)
-		      If HelperActive Then
-		        PresentHelperWindow.SetMode Mode
-		      Else
-		        ResetPaint XCurrentSlide
-		      End If
-		      
-		      Return False // Show that it failed
-		      //--EMP 15 Jan 06
-		    End Function
+		        
+		        //++EMP 15 Jan 2006
+		        // Add a generic exception handler in an attempt to keep from bailing out
+		        // TODO: This needs to log somewhere and notify the operator after the presentation is done.
+		        //
+		      Exception ex
+		        // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		        // return to the caller.
+		        //
+		        If XCurrentSlide = Nil Then
+		          // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		          // how do you keep XCurrentSlide and CurrentSlide in sync?
+		          // (perhaps look at xNewSlide to get close to the original location?)
+		          CurrentSlide = 1
+		          XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		        End If
+		        // Put up wherever we're at now (and pray!)
+		        If HelperActive Then
+		          PresentHelperWindow.SetMode Mode
+		        Else
+		          ResetPaint XCurrentSlide
+		        End If
+		        
+		        Return False // Show that it failed
+		        //--EMP 15 Jan 06
+		      End Function
    )
   Meth/g: 
   Meth/G: 
@@ -1341,6 +1346,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
     srcl/S: Dim tempSlideStyle As SlideStyle
     srcl/S: 
     srcl/S: App.MouseCursor = WatchCursor
+    srcl/S: PresentationMode = PresentMode
     srcl/S: // Copy the set to a working copy we can change
     srcl/S: CurrentSet = New XmlDocument
     srcl/S: CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
@@ -1854,6 +1860,17 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     ntln/S: Mode As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: PresentationMode As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: PresentationMode As Integer
     ntln/S: 
     ntln/S: 
    sorc/g: 

@@ -11085,6 +11085,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  '--
 		  'use our working copy
+          setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  xgroup = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True).FirstChild
 		  While xgroup <> Nil
 		    If SmartML.GetValue(xgroup, "@type") = "song" Then
@@ -11169,6 +11170,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  
 		  'use working copy
+          setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  status = MySetListReport.AddSet(CurrentSetName, setDoc)
 		  If Not status Then
 		    InputBox.Message App.T.Translate("errors/internal") + _

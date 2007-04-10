@@ -1022,7 +1022,9 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  
 		  Dim rest As Integer
 		  
-		  re.SearchPattern = "(.*)" + delim
+		  Dim i  As Integer
+		  
+		  re.SearchPattern = "(.*)(" + delim + "|\Z)" // "\Z" matches the end of the search string or prior to final newline
 		  reopts.DotMatchAll = True
 		  reopts.Greedy = False
 		  reopts.StringBeginIsLineBegin = True
@@ -1036,16 +1038,19 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  While match <> Nil
 		    If match.SubExpressionCount > 0 Then
 		      result.Append Trim(match.SubExpressionString(1))
+		      Try
+		        If Len(match.SubExpressionString(2)) = 0 Then Exit
+		      Catch ex As NilObjectException
+		        Exit
+		      End Try
 		    Else
-		      result.Append match.SubExpressionString(0)
+		      result.Append Trim(match.SubExpressionString(0))
+		      Exit
 		    End If
-		    re.SearchStartPosition = re.SearchStartPosition + 1 // Get past the trailing \n
+		    're.SearchStartPosition = re.SearchStartPosition + 1 // Get past the trailing \n
+		    System.DebugLog "SplitRE: Starting at " + CStr(re.SearchStartPosition) + " with character  " + Cstr(Asc(Mid(source, re.SearchStartPosition, 1)))
 		    match = re.Search
 		  Wend
-		  
-		  rest = re.SearchStartPosition
-		  If rest > 0 Then Rest = Rest + 1
-		  result.Append Mid(source, rest)
 		  
 		  Return result
 		End Function

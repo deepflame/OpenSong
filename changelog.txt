@@ -1,11 +1,37 @@
 -= JRC =-
 
-*Ensure the New Testament scrollbar is enabled if necessary
+-= 1.0 BL17 =-
 
-*Fixed off-by-one errors in scripture picker
+* Correct NilObjectExceptions when printing a set list or songs in a set.
 
--= 1.0 Baselevel 16 =-
+-= 1.0 Release Candidate 2, Baselevel 16 =-
 
+* Reworked change from revision 154 for PresentWindow exit dialog. Program now will use the operating system message box ONLY if in single screen mode. This avoids the message box appearing on the presentation screen if the last window with the focus was the presentation window.
+
+* Export Song to HTML will not include capo chords if the "print capo chords" flag is not set. [Bug 1695098]
+
+* Corrected internal logic bug in the scripture picker.
+
+* Closing a presentation by focusing on the presentation display while a dialog box is open no longer causes problems and a crash later. [Bug 1693567]
+
+* If scripture file is not found at program start, prompt for the file to use.  Added scripture_lookup/select_file to English translation.
+
+(r154)
+* Exit dialog for PresentWindow changed from InputBox to an operating system message box to correct issue where the dock and menu bar would not hide after prompting for exit and the user selecting Cancel to return to the presentation. (added in r154 but not documented in commit message)
+
+* Updated English translation to make a better distinction between the two CCLI numbers: the church license number and the song CCLI ID number.
+
+* Correct issue introduced in BL15 where the default style would be used instead of the song style if song_style_preferred is False and a style change is not active.
+
+* Fix mouse getting stuck on the hourglass after presentation.
+
+* Fix PresentWindow on Mac so the resize box does not appear. As a temporary side effect, the window cannot be sized or moved when using dual-screen preview mode.
+
+* Mouse cursor properly changes when over PresentWindow even if the window does not have focus.
+
+* Corrected error in saving custom slides where the starting characters of the final slide would be dropped if the slides contained multi-byte characters. (OpenSongUtils.SplitRE) (Bug 1668194)
+
+(r149)
 *Update style.css to include hymn number & presentation order
 
 *Include hymn numaber & presenation order in HTML export

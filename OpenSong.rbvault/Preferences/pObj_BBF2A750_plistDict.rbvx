@@ -1,4 +1,4 @@
-﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
 ##OrigFileName:OpenSong.rb
 ##VaultHdrEnd#
 ##Format:2#
@@ -628,6 +628,18 @@ pObj/B: 426C6F6B704F626ABBF2A7500000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: GetColor
+  parm/S: key As string
+  rslt/S: color
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetColor(key As string) As color
+		  return GetColor(key,RGB(0,0,0))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetColor
   parm/S: key As string,default As color
   rslt/S: color
   flag/N: 0
@@ -646,18 +658,6 @@ pObj/B: 426C6F6B704F626ABBF2A7500000000000000000000000000000000000000000
 		    c=RGB(cdbl("&h"+left(value,2)),cdbl("&h"+mid(value,3,2)),cdbl("&h"+right(value,2)))
 		    return c
 		  end
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetColor
-  parm/S: key As string
-  rslt/S: color
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetColor(key As string) As color
-		  return GetColor(key,RGB(0,0,0))
 		End Function
   )
  Meth/g: 
@@ -682,21 +682,6 @@ pObj/B: 426C6F6B704F626ABBF2A7500000000000000000000000000000000000000000
   sorc/d: (Enco/N: 134217984
 		Function GetData(key As string,default As string) As string
 		  return GetValue(key,default)
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetDate
-  parm/S: key As string
-  rslt/S: date
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetDate(key As string) As date
-		  dim dt As date
-		  
-		  dt=new date
-		  return GetDate(key,dt)
 		End Function
   )
  Meth/g: 
@@ -743,6 +728,21 @@ pObj/B: 426C6F6B704F626ABBF2A7500000000000000000000000000000000000000000
 		    end
 		  end
 		  return dt
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetDate
+  parm/S: key As string
+  rslt/S: date
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetDate(key As string) As date
+		  dim dt As date
+		  
+		  dt=new date
+		  return GetDate(key,dt)
 		End Function
   )
  Meth/g: 
@@ -798,18 +798,6 @@ pObj/B: 426C6F6B704F626ABBF2A7500000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: GetInteger
-  parm/S: key As string
-  rslt/S: integer
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetInteger(key As string) As integer
-		  return GetInteger(key,0)
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetInteger
   parm/S: key As string,default As integer
   rslt/S: integer
   flag/N: 0
@@ -829,6 +817,18 @@ pObj/B: 426C6F6B704F626ABBF2A7500000000000000000000000000000000000000000
 		    end
 		  end
 		  return value
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetInteger
+  parm/S: key As string
+  rslt/S: integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetInteger(key As string) As integer
+		  return GetInteger(key,0)
 		End Function
   )
  Meth/g: 
@@ -1023,18 +1023,6 @@ pObj/B: 426C6F6B704F626ABBF2A7500000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: GetValue
-  parm/S: key As string
-  rslt/S: string
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetValue(key As string) As string
-		  return GetValue(key,"")
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetValue
   parm/S: key As string,default As string
   rslt/S: string
   flag/N: 0
@@ -1059,6 +1047,18 @@ pObj/B: 426C6F6B704F626ABBF2A7500000000000000000000000000000000000000000
    srcl/S: return result
    srcl/S: End Function
   sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValue
+  parm/S: key As string
+  rslt/S: string
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValue(key As string) As string
+		  return GetValue(key,"")
+		End Function
+  )
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984

@@ -9985,7 +9985,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: MainWindow
-  Size/N: 244
+  Size/N: 252
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -10518,6 +10518,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim s As String
 		  Dim StartMode As Integer
 		  Dim i As Integer
+		  Dim bibleFiles() As String
+		  Dim f As FolderItem
 		  
 		  '++JRC 
 		  Globals.OldFolderSel = -1
@@ -10530,6 +10532,27 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version")
 		  If Len(s) > 0 And App.AppFolder.Child("OpenSong Scripture").Child(s).Exists Then
 		    If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
+		    Else
+		      App.MyBible = Nil
+		    End If
+		  Else
+		    //++
+		    // N.B. InputBox.Pick assumes a 1-based array, so Redim (0) to put an unused empty string in
+		    // element 0.  Otherwise, the first valid file isn't shown.
+		    //--
+		    Redim bibleFiles(0)
+		    For i = 1 to App.AppFolder.Child("OpenSong Scripture").Count
+		      f = App.AppFolder.Child("OpenSong Scripture").item(i)
+		      If f.IsFileVisible And Not f.Directory Then
+		        bibleFiles.Append f.Name
+		      End If
+		    Next
+		    s = InputBox.Pick(App.T.Translate("scripture_lookup/select_file/@caption"), bibleFiles)
+		    If s = "" Then App.MyBible = Nil
+		    If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
+		      SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", s)
+		    Else
+		      App.MyBible = Nil
 		    End If
 		  End If
 		  
@@ -11062,6 +11085,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  '--
 		  'use our working copy
+          setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  xgroup = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True).FirstChild
 		  While xgroup <> Nil
 		    If SmartML.GetValue(xgroup, "@type") = "song" Then
@@ -11146,6 +11170,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  End If
 		  
 		  'use working copy
+          setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  status = MySetListReport.AddSet(CurrentSetName, setDoc)
 		  If Not status Then
 		    InputBox.Message App.T.Translate("errors/internal") + _

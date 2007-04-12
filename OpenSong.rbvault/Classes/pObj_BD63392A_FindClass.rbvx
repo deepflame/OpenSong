@@ -1,0 +1,208 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABD63392A0000000000000000000000000000000000000000
+ Name/S: FindClass
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: FindClass
+ Size/N: 47
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Constructor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  FindTitle = True
+		  FindAuthor = True
+		  FindLyrics = True
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindAKA As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindAKA As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindAuthor As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindAuthor As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindCapo As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindCapo As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindCCLI As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindCCLI As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindCopyright As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindCopyright As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindHymnNumber As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindHymnNumber As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindKey As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindKey As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindKeyLine As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindKeyLine As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindLyrics As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindLyrics As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindPresentation As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindPresentation As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindString As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindString As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindTempo As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindTempo As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindThemes As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindThemes As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindTimeSig As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindTimeSig As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindTitle As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindTitle As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindUser1 As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindUser1 As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindUser2 As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindUser2 As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: FindUser3 As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: FindUser3 As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

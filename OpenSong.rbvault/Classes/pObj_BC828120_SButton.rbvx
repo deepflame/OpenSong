@@ -1,0 +1,659 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
+ Name/S: SButton
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SButton
+ Size/N: 153
+ Supr/S: Canvas
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseDown
+  sorc/d: (Enco/N: 134217984
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If IsStuck Then Return False
+		  IsMouseDown = True
+		  MenuItem = ""
+		  If Enabled Then
+		    Refresh ' False
+		    If Popup <> Nil Then Popup.Open
+		    Return True
+		  End If
+		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseEnter
+  sorc/d: (Enco/N: 134217984
+		Sub MouseEnter()
+		  IsMouseOver = True
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		  MouseEnter
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseExit
+  sorc/d: (Enco/N: 134217984
+		Sub MouseExit()
+		  IsMouseOver = False
+		  IsMouseDown = False
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		  MouseExit
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseUp
+  sorc/d: (Enco/N: 134217984
+		Sub MouseUp(X As Integer, Y As Integer)
+		  IsMouseDown = False
+		  Action
+		  Refresh ' False Graphics
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Open
+  sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Font = New FontFace
+		  Enabled = True
+		  //++EMP, 12/05
+		  // Select which visual to use (Paint event handler)
+		  '++JRC Prevent NilObject Exception if MainSettings is Nil
+		  If App.MyMainSettings <> Nil Then
+		    NewPaint = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "paint/@new", True, False)
+		  Else
+		    NewPaint = False
+		  End If
+		  '--
+		  //--
+		  Open
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Paint
+  sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  Dim i, j, offset, tri(6) As Integer
+		  
+		  If NewPaint Then 
+		    PaintNew(g)
+		    Return
+		  End If
+		  
+		  If g = Nil Then g = Graphics
+		  
+		  If Not Enabled Then
+		    IsMouseDown = False
+		    IsMouseOver = False
+		  End If
+		  
+		  If Len(Font.Name) > 0 Then
+		    Font.OntoGraphics g
+		  Else
+		    g.TextFont = "Arial"
+		  End If
+		  
+		  If IsMouseDown Or IsStuck Then
+		    offset = 0
+		    g.ForeColor = DarkBevelColor
+		    g.FillRect 0, 0, Width, Height
+		  ElseIf IsMouseOver Then
+		    g.ForeColor = LightBevelColor
+		    g.FillRect 0, 0, Width, Height
+		  Else
+		    ' Looks better on Mac OS X without, but doesn't work on Windows with False clear refreshes
+		    'g.ForeColor = FillColor
+		    'g.FillRect 0, 0, Width, Height
+		  End If
+		  
+		  If Icon <> Nil Then
+		    i = (Height - Icon.Height)/2
+		    g.DrawPicture Icon, i+offset, i+offset
+		    i = i + Icon.Width
+		  End If
+		  
+		  If LabelAlign = 1 Then
+		    i = i + (Width - i)/2 - g.StringWidth(Label)/2
+		  Else
+		    i = i + (Height - g.TextHeight) / 2 + 1
+		  End If
+		  
+		  If Not Enabled Then
+		    g.ForeColor = LightBevelColor
+		    g.DrawString Label, i+1, Ceil((Height + g.TextAscent) / 2) - 2 + offset+1
+		    g.ForeColor = DarkBevelColor
+		    g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
+		  Else
+		    g.ForeColor = Font.ForeColor
+		    g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
+		  End If
+		  
+		  If Popup <> Nil Then
+		    i = g.TextAscent/4
+		    tri(1) = Width - i*3
+		    tri(2) = Height/2 - i
+		    tri(3) = Width - i*2
+		    tri(4) = Height/2
+		    tri(5) = Width - i*3
+		    tri(6) = Height/2 + i
+		    g.FillPolygon tri
+		  End If
+		  
+		  If IsMouseDown Or IsStuck Then
+		    g.ForeColor = TextColor
+		    g.DrawRect 0, 0, Width, Height
+		  ElseIf IsMouseOver Or StickyBevel Then
+		    g.ForeColor = DarkBevelColor
+		    g.DrawRect 0, 0, Width, Height
+		  End If
+		End Sub
+  )
+ HIns/g: 
+ Hook/D: (Enco/N: 134217984, name/S: Action, parm/S: , rslt/S: , flag/N: 33)
+ Hook/D: (Enco/N: 134217984, name/S: MouseEnter, parm/S: , rslt/S: , flag/N: 33)
+ Hook/D: (Enco/N: 134217984, name/S: MouseExit, parm/S: , rslt/S: , flag/N: 33)
+ Hook/D: (Enco/N: 134217984, name/S: Open, parm/S: , rslt/S: , flag/N: 33)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: AddPopupRow
+  parm/S: str As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub AddPopupRow(str As String)
+		  If Popup = Nil Then
+		    Popup = New SButtonPopup
+		    Popup.Parent = Me
+		  End If
+		  
+		  Popup.AddRow str
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: AddPopupSeparator
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub AddPopupSeparator()
+		  If Popup = Nil Then
+		    Popup = New SButtonPopup
+		    Popup.Parent = Me
+		  End If
+		  
+		  Popup.AddSeparator
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DeletePopup
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub DeletePopup()
+		  Popup = Nil
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetLabel
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetLabel() As String
+		  Return Label
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetStuck
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetStuck() As Boolean
+		  Return IsStuck
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PaintNew
+  parm/S: g As Graphics
+  rslt/S: 
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub PaintNew(g As Graphics)
+   srcl/S: 
+   srcl/S: '
+   srcl/S: ' Significant changes made here to give the application a completely different look.
+   srcl/S: '
+   srcl/S: ' EMP, sometime in early 2005
+   srcl/S: '
+   srcl/S: Dim i, j, offset, tri(6) As Integer
+   srcl/S: Const ShadowWidth = 2
+   srcl/S: Dim ShadowOffset as Integer
+   srcl/S: 
+   srcl/S: ShadowOffset = Ceil(ShadowWidth / 2)
+   srcl/S: If g = Nil Then g = Graphics
+   srcl/S: 
+   srcl/S: If Not Enabled Then
+   srcl/S: IsMouseDown = False
+   srcl/S: IsMouseOver = False
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: If Len(Font.Name) > 0 Then
+   srcl/S: Font.OntoGraphics g
+   srcl/S: Else
+   srcl/S: #if TargetWin32
+   srcl/S: g.TextFont = "Tahoma"
+   srcl/S: #else
+   srcl/S: g.TextFont = "Arial"
+   srcl/S: #endif
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: If IsMouseDown Or IsStuck Then
+   srcl/S: offset = 0
+   srcl/S: 'g.ForeColor = DarkBevelColor
+   srcl/S: 'g.FillRect 0, 0, Width, Height
+   srcl/S: 'Fill the background
+   srcl/S: g.ForeColor = DarkTingeColor
+   srcl/S: g.FillRect 0, 0, Width, Height
+   srcl/S: 
+   srcl/S: ' Left and Top Bevels
+   srcl/S: g.ForeColor = DarkBevelColor
+   srcl/S: g.PenWidth = ShadowWidth
+   srcl/S: g.DrawLine 0, 0, 0, Height - ShadowWidth
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = ShadowWidth
+   srcl/S: g.drawline 0, 0, Width - ShadowWidth, 0
+   srcl/S: g.PenHeight = 1
+   srcl/S: '
+   srcl/S: ' Right and bottom bevels
+   srcl/S: g.ForeColor = LightBevelColor
+   srcl/S: g.PenWidth = ShadowWidth
+   srcl/S: g.DrawLine 0, height - ShadowOffset-1, Width, height  - ShadowOffset-1
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = ShadowWidth
+   srcl/S: g.DrawLine Width - ShadowOffset -1, 0, Width - ShadowOffset-1, Height
+   srcl/S: g.PenHeight = 1
+   srcl/S: ' Outline
+   srcl/S: g.ForeColor = FrameColor
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = 1
+   srcl/S: g.DrawRect 0, 0, Width, Height
+   srcl/S: 
+   srcl/S: 'Just for grins, let's make the text different than the other buttons
+   srcl/S: g.Bold = not g.Bold
+   srcl/S: g.TextSize = g.TextSize + 1
+   srcl/S: 
+   srcl/S: ElseIf IsMouseOver Then
+   srcl/S: 'g.ForeColor = DarkTingeColor
+   srcl/S: 'g.FillRect 0, 0, Width, Height
+   srcl/S: 'Fill the background
+   srcl/S: g.ForeColor = LightTingeColor
+   srcl/S: g.FillRect 0, 0, Width, Height
+   srcl/S: ' Left and Top Bevels
+   srcl/S: g.ForeColor = DarkBevelColor
+   srcl/S: g.PenWidth = ShadowWidth
+   srcl/S: g.DrawLine 0, 0, 0, Height 
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = ShadowWidth
+   srcl/S: g.drawline 0, 0, Width, 0
+   srcl/S: g.PenHeight = 1
+   srcl/S: '
+   srcl/S: ' Right and bottom bevels
+   srcl/S: g.ForeColor = LightBevelColor
+   srcl/S: g.PenWidth = ShadowWidth
+   srcl/S: g.PenHeight = ShadowWidth
+   srcl/S: g.DrawLine 0, height - ShadowOffset - 1, Width, height  - ShadowOffset - 1
+   srcl/S: 
+   srcl/S: 
+   srcl/S: g.DrawLine Width - ShadowOffset - 1, 0, Width - ShadowOffset -1, Height
+   srcl/S: 
+   srcl/S: ' Outline
+   srcl/S: g.ForeColor = FrameColor
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = 1
+   srcl/S: g.DrawRect 0, 0, Width, Height
+   srcl/S: 
+   srcl/S: g.Bold = not g.Bold
+   srcl/S: g.TextSize = g.TextSize + 1
+   srcl/S: 
+   srcl/S: Else
+   srcl/S: ' Looks better on Mac OS X without, but doesn't work on Windows with False clear refreshes
+   srcl/S: 'g.ForeColor = FillColor
+   srcl/S: 'g.FillRect 0, 0, Width, Height
+   srcl/S: '
+   srcl/S: ' This code path is for unselected controls that the mouse is not over.  Draw like a 
+   srcl/S: ' button ready to be pressed (appears to be poking out), but don't highlight it inside
+   srcl/S: ' the bevels like a MouseOver
+   srcl/S: '
+   srcl/S: 'Fill the background similar to the desktop
+   srcl/S: g.ForeColor = FillColor
+   srcl/S: 
+   srcl/S: g.FillRect 0, 0, Width, Height
+   srcl/S: 
+   srcl/S: ' Left and Top Bevels
+   srcl/S: g.ForeColor = LightBevelColor
+   srcl/S: g.PenWidth = ShadowWidth
+   srcl/S: g.DrawLine 0, 0, 0, Height
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = ShadowWidth
+   srcl/S: g.drawline 0, 0, Width, 0
+   srcl/S: g.PenHeight = 1
+   srcl/S: '
+   srcl/S: ' Right and bottom bevels
+   srcl/S: g.ForeColor = DarkBevelColor
+   srcl/S: g.PenWidth = ShadowWidth
+   srcl/S: g.DrawLine 0, height - ShadowOffset - 1, Width, height  - ShadowOffset - 1
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = ShadowWidth
+   srcl/S: g.DrawLine Width - ShadowOffset - 1, ShadowOffset, Width - ShadowOffset - 1, Height - ShadowOffset -1
+   srcl/S: g.PenHeight = 1
+   srcl/S: ' Outline
+   srcl/S: g.ForeColor = FrameColor
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = 1
+   srcl/S: g.DrawRect 0, 0, Width, Height
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: If Icon <> Nil Then
+   srcl/S: i = (Height - Icon.Height)/2
+   srcl/S: g.DrawPicture Icon, i+offset, i+offset
+   srcl/S: i = i + Icon.Width
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: If LabelAlign = 1 Then
+   srcl/S: i = i + (Width - i)/2 - g.StringWidth(Label)/2
+   srcl/S: Else
+   srcl/S: i = i + (Height - g.TextHeight) / 2 + 1
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: If Not Enabled Then
+   srcl/S: '
+   srcl/S: ' Make the button look like it's pressed, but we'll emboss the text to
+   srcl/S: ' indicate it's disabled
+   srcl/S: 
+   srcl/S: ' Left and Top Bevels
+   srcl/S: g.ForeColor = FillColor
+   srcl/S: g.fillrect 0, 0, width, height
+   srcl/S: 
+   srcl/S: g.ForeColor = DarkBevelColor
+   srcl/S: g.PenWidth = ShadowOffset
+   srcl/S: g.PenHeight  = ShadowOffset
+   srcl/S: g.DrawRect 0, 0, Width, height
+   srcl/S: 
+   srcl/S: '
+   srcl/S: ' Right and bottom bevels
+   srcl/S: g.ForeColor = LightBevelColor
+   srcl/S: g.DrawLine 0, height - ShadowOffset, Width, height  - ShadowOffset 
+   srcl/S: g.DrawLine Width - ShadowOffset, 0, Width - ShadowOffset, Height
+   srcl/S: ' Outline
+   srcl/S: g.ForeColor = FrameColor
+   srcl/S: g.PenWidth = 1
+   srcl/S: g.PenHeight = 1
+   srcl/S: g.DrawRect 0, 0, Width, Height
+   srcl/S: 
+   srcl/S: ' Now, draw the embossed text
+   srcl/S: g.ForeColor = LightBevelColor
+   srcl/S: g.DrawString Label, i+1, Ceil((Height + g.TextAscent) / 2) - 2 + offset+1
+   srcl/S: g.ForeColor = DarkBevelColor
+   srcl/S: g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
+   srcl/S: 
+   srcl/S: 'g.ForeColor = FrameColor'
+   srcl/S: 'g.PenHeight = 1
+   srcl/S: 'g.PenWidth = 1
+   srcl/S: g.DrawRect 0, 0, Width, Height
+   srcl/S: If GrayIcon <> Nil Then
+   srcl/S: i = (Height - GrayIcon.Height)/2
+   srcl/S: g.DrawPicture GrayIcon, i+offset, i+offset
+   srcl/S: i = i + GrayIcon.Width
+   srcl/S: End If
+   srcl/S: Else
+   srcl/S: g.ForeColor = Font.ForeColor
+   srcl/S: g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
+   srcl/S: 
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: If Popup <> Nil Then
+   srcl/S: i = g.TextAscent/4
+   srcl/S: tri(1) = Width - i*3
+   srcl/S: tri(2) = Height/2 - i
+   srcl/S: tri(3) = Width - i*2
+   srcl/S: tri(4) = Height/2
+   srcl/S: tri(5) = Width - i*3
+   srcl/S: tri(6) = Height/2 + i
+   srcl/S: g.FillPolygon tri
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: 'If IsMouseDown Or IsStuck Then
+   srcl/S: 'g.ForeColor = TextColor
+   srcl/S: g.DrawRect 0, 0, Width, Height
+   srcl/S: 'ElseIf IsMouseOver Or StickyBevel Then
+   srcl/S: 'g.ForeColor = DarkBevelColor
+   srcl/S: 'g.DrawRect 0, 0, Width, Height
+   srcl/S: 'End If
+   srcl/S: End Sub
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetEnabled
+  parm/S: state As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetEnabled(state As Boolean)
+		  Enabled = state
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetFont
+  parm/S: font As FontFace
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetFont(font As FontFace)
+		  Me.Font = font
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetIcon
+  parm/S: pic As Picture, mask As Picture
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetIcon(pic As Picture, mask As Picture)
+		  Icon = pic
+		  Icon.Mask.Graphics.DrawPicture mask, 0, 0
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetLabel
+  parm/S: label As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetLabel(label As String)
+		  Me.Label = label
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetStuck
+  parm/S: stuck As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetStuck(stuck As Boolean)
+		  IsStuck = stuck
+		  Refresh
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Font As FontFace
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Font As FontFace
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: GrayIcon As Picture
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: GrayIcon As Picture
+   ntln/S: 'EMP, added to support PaintNew method 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Icon As Picture
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Icon As Picture
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: IsMouseDown As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: IsMouseDown As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: IsMouseOver As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: IsMouseOver As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: IsStuck As Boolean
+  flag/N: 5
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: IsStuck As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Label As String
+  flag/N: 5
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Label As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: LabelAlign As Integer
+  flag/N: 5
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: LabelAlign As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MenuItem As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MenuItem As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: NewPaint As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: NewPaint As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Popup As SButtonPopup
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Popup As SButtonPopup
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: StickyBevel As Boolean
+  flag/N: 5
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: StickyBevel As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

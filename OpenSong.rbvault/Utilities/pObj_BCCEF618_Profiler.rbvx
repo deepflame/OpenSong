@@ -1,0 +1,155 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABCCEF6180000000000000000000000000000000000000000
+ Name/S: Profiler
+ Cont/N: -1119363046
+ bCls/N: 0
+ Name/S: Profiler
+ Size/N: 44
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BeginProfilerEntry
+  parm/S: desc As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub BeginProfilerEntry(desc As String)
+		  If Not ProfileEnabled Then Return
+		  
+		  If ProfileFile = Nil Then
+		    ProfileFile = GetFolderItem("profile.txt")
+		    If ProfileFile.Exists Then ProfileFile.Delete
+		    ProfileStream = ProfileFile.CreateTextFile
+		  End If
+		  
+		  If ProfileFile <> Nil Then
+		    ProfileStream.WriteLine MakeSpaces(UBound(LastDateStack)) + desc
+		    LastDateStack.Append New Date
+		    LastEntryStack.Append desc
+		  End If
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: EnableProfiler
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub EnableProfiler()
+		  ProfileEnabled = True
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: EndProfilerEntry
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub EndProfilerEntry()
+		  If Not ProfileEnabled Then Return
+		  
+		  If ProfileFile = Nil Then
+		    ProfileFile = GetFolderItem("profile.txt")
+		    If ProfileFile.Exists Then ProfileFile.Delete
+		    ProfileStream = ProfileFile.CreateTextFile
+		  End If
+		  
+		  Dim d As New Date
+		  Dim diff As Double
+		  
+		  If ProfileFile <> Nil Then
+		    diff = d.TotalSeconds - LastDateStack(UBound(LastDateStack)).TotalSeconds
+		    ProfileStream.WriteLine MakeSpaces(UBound(LastDateStack)-1) + Str(diff) + " seconds (" + LastEntryStack(UBound(LastEntryStack)) + ")"
+		    ProfileStream.WriteLine ""
+		    LastDateStack.Remove UBound(LastDateStack)
+		    LastEntryStack.Remove UBound(LastEntryStack)
+		  End If
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MakeSpaces
+  parm/S: count As Integer
+  rslt/S: String
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function MakeSpaces(count As Integer) As String
+		  Dim i As Integer
+		  Dim s As String
+		  
+		  For i = 1 To count
+		    s = s + " "
+		  Next i
+		  
+		  Return s
+		End Function
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: LastDateStack(0) As Date
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: LastDateStack(0) As Date
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: LastEntryStack(0) As String
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: LastEntryStack(0) As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ProfileEnabled As Boolean
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ProfileEnabled As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ProfileFile As FolderItem
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ProfileFile As FolderItem
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ProfileStream As TextOutputStream
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ProfileStream As TextOutputStream
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

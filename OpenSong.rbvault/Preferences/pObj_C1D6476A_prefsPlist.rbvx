@@ -1,0 +1,689 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC1D6476A0000000000000000000000000000000000000000
+ Name/S: prefsPlist
+ Cont/N: -1042926112
+ bCls/N: 1
+ Name/S: prefsPlist
+ Size/N: 24
+ bNtr/N: 0
+ Intr/S: IPreferences
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CreatePath
+  parm/S: path As String
+  rslt/S: plistdict
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function CreatePath(path As String) As plistdict
+		  //++
+		  // Create a path based on the string
+		  // Separated by slashes
+		  // If final element starts with "@", don't do anything to it
+		  //--
+		  Dim elements() As String
+		  Dim child As String
+		  Dim dict As plistDict
+		  
+		  Error = False
+		  
+		  If plistobj = Nil Then
+		    error = True
+		    ErrorString = "CreatePath: plistobj is Nil"
+		    Return Nil
+		  End If
+		  
+		  If Left(path, 1) = "/" Then path = Mid(path, 2)
+		  
+		  elements = Split(path, "/")
+		  
+		  If UBound(elements) = -1 Then
+		    error = True
+		    ErrorString = "CreatePath was passed a Nil path"
+		    Return Nil
+		  End If
+		  
+		  If Left(elements(UBound(elements)), 1) = "@" Then
+		    elements.Remove UBound(elements)
+		  End If
+		  
+		  dict = plistobj.root
+		  
+		  For Each child in elements
+		    If dict.Exists(child) Then
+		      If dict.GetType(child) <> "Dict" Then
+		        error = True
+		        ErrorString = "CreatePath: non-Dict in path " + dict.child(child).AbsolutePath
+		        Return Nil
+		      End If
+		    Else
+		      dict.AddChild(child)
+		      dict = dict.child(child)
+		    End If
+		  Next
+		  
+		  Return dict
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: error
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function error() As Boolean
+		  Return error
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ErrorString
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function ErrorString() As String
+		  Return ErrorString
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetChild
+  parm/S: path As String, byRef dict As plistDict, byRef element As String
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function GetChild(path As String, byRef dict As plistDict, byRef element As String) As Boolean
+		  //++
+		  // Given a path, return the plistDict for that path
+		  // Path leafs are separated by a slash
+		  // If the final element has a "@" at the start, it's
+		  // a key.  If not, it's the final leaf.
+		  // Return true if it exists, false otherwise
+		  //--
+		  Dim elements() As String
+		  Dim i As Integer
+		  Dim attribute As Boolean = False
+		  Dim attributeName As String = "value"
+		  
+		  If plistobj = Nil Then
+		    error = True
+		    ErrorString = "plist is not initialized"
+		    dict = Nil
+		    element = ""
+		    Return False
+		  End If
+		  // Trap out any leading "/"
+		  
+		  If Left(path, 1) = "/" Then path = Mid(path, 2)
+		  
+		  elements = Split(path, "/")
+		  
+		  If UBound(elements) = -1 Then // Pointing at root
+		    error = False
+		    element = ""
+		    Return True
+		  End If
+		  
+		  dict = plistobj.root
+		  
+		  If Left(elements(UBound(elements)), 1) = "@" Then
+		    attribute = True
+		    attributeName = elements(UBound(elements))
+		    elements.Remove UBound(elements)
+		  End If
+		  
+		  For i = 0 To UBound(elements)
+		    If dict.Exists(elements(i)) Then
+		      If dict.GetType(elements(i)) <> "Dict" Then
+		        error = True
+		        ErrorString = "Leaf node is not a Dict"
+		        dict = Nil
+		        element = ""
+		        Return False
+		      End If
+		      dict = dict.child(elements(i))
+		    Else
+		      // Allow for non-existent final leaf
+		      If i <> UBound(elements) Then
+		        error = True
+		        ErrorString = "Missing leaf node"
+		        // Leave dict pointing where we are
+		        element = ""
+		        Return False
+		      End If
+		    End If
+		  Next
+		  
+		  element = attributeName
+		  error = False
+		  Return dict.Exists(element)
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValue
+  parm/S: path As String, default As String = "", create As Boolean = True
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValue(path As String, default As String = "", create As Boolean = True) As String
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If GetChild(path, pl, child) Then
+		    Return pl.GetString(child, default)
+		  End If
+		  If error Then Return default
+		  If Not create Then Return default
+		  
+		  pl = CreatePath(path)
+		  If error Then Return default
+		  elements = Split(path, "/")
+		  child = elements(UBound(elements))
+		  If Left(child, 1) = "@" Then
+		    child = Mid(child, 2)
+		  Else
+		    child = "value"
+		  End If
+		  pl.SetString(child, default)
+		  Return default
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueB
+  parm/S: path As String, default As Boolean = False, create As Boolean = True
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueB(path As String, default As Boolean = False, create As Boolean = True) As Boolean
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If GetChild(path, pl, child) Then
+		    Return pl.GetBoolean(child, default)
+		  End If
+		  If error Then Return default
+		  If Not create Then Return default
+		  
+		  pl = CreatePath(path)
+		  If error Then Return default
+		  elements = Split(path, "/")
+		  child = elements(UBound(elements))
+		  If Left(child, 1) = "@" Then
+		    child = Mid(child, 2)
+		  Else
+		    child = "value"
+		  End If
+		  pl.SetBoolean(child, default)
+		  Return default
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueC
+  parm/S: path As String, default As Color = &C000000, create As Boolean = True
+  rslt/S: Color
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueC(path As String, default As Color = &C000000, create As Boolean = True) As Color
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If GetChild(path, pl, child) Then
+		    Return pl.GetColor(child, default)
+		  End If
+		  If error Then Return default
+		  If Not create Then Return default
+		  
+		  pl = CreatePath(path)
+		  If error Then Return default
+		  elements = Split(path, "/")
+		  child = elements(UBound(elements))
+		  If Left(child, 1) = "@" Then
+		    child = Mid(child, 2)
+		  Else
+		    child = "value"
+		  End If
+		  pl.SetColor(child, default)
+		  Return default
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueF
+  parm/S: path As String, default As FontFace = Nil, create As Boolean = True
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueF(path As String, default As FontFace = Nil, create As Boolean = True) As FontFace
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If GetChild(path, pl, child) Then
+		    //Return pl.GetString(child, default)
+		  End If
+		  If error Then Return default
+		  If Not create Then Return default
+		  
+		  pl = CreatePath(path)
+		  If error Then Return default
+		  elements = Split(path, "/")
+		  child = elements(UBound(elements))
+		  If Left(child, 1) = "@" Then
+		    child = Mid(child, 2)
+		  Else
+		    child = "value"
+		  End If
+		  //pl.SetString(child, default)
+		  Return default
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueFI
+  parm/S: path As String, default As FolderItem = Nil, create As Boolean = False
+  rslt/S: FolderItem
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueFI(path As String, default As FolderItem = Nil, create As Boolean = False) As FolderItem
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  Dim SaveInfo As String
+		  
+		  If GetChild(path, pl, child) Then
+		    Return TemporaryFolder.GetRelative(DecodeBase64(pl.GetString(child)))
+		  End If
+		  If error Then Return default
+		  If Not create Then Return default
+		  
+		  pl = CreatePath(path)
+		  If error Then Return default
+		  elements = Split(path, "/")
+		  child = elements(UBound(elements))
+		  If Left(child, 1) = "@" Then
+		    child = Mid(child, 2)
+		  Else
+		    child = "value"
+		  End If
+		  If default = Nil Then
+		    pl.SetString(child, "")
+		  Else
+		    pl.SetString(child, EncodeBase64(default.GetSaveInfo(Nil)))
+		  End If
+		  Return default
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueN
+  parm/S: path As String, default As Double = 0.0, create As Boolean = True
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueN(path As String, default As Double = 0.0, create As Boolean = True) As Double
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If GetChild(path, pl, child) Then
+		    Return pl.GetReal(child, default)
+		  End If
+		  If error Then Return default
+		  If Not create Then Return default
+		  
+		  pl = CreatePath(path)
+		  If error Then Return default
+		  elements = Split(path, "/")
+		  child = elements(UBound(elements))
+		  If Left(child, 1) = "@" Then
+		    child = Mid(child, 2)
+		  Else
+		    child = "value"
+		  End If
+		  pl.SetReal(child, default)
+		  Return default
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Load
+  parm/S: path As FolderItem = Nil
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Load(path As FolderItem = Nil) As Boolean
+		  If path = Nil Then
+		    error = True
+		    ErrorString = "No path to preferences specified"
+		    Return True
+		  End If
+		  
+		  If plistobj = Nil Then plistobj = New plist(path)
+		  
+		  If plistobj.error Then
+		    error = True
+		    ErrorString = plistobj.errorMessage
+		  Else
+		    error = False
+		    ErrorString = ""
+		  End If
+		  
+		  Return Not error
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: NotifyReceivers
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub NotifyReceivers()
+		  Dim i As Integer
+		  
+		  For i = UBound(Receivers) DownTo 0
+		    Receivers(i).PreferencesChanged Me
+		  Next
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: registerPreferencesReceiver
+  parm/S: receiver As IpreferencesReceiver
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub registerPreferencesReceiver(receiver As IpreferencesReceiver)
+		  Receivers.Append receiver
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Save
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Save() As Boolean
+		  plistobj.Save
+		  Return True
+		Catch e
+		  Return False
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValue
+  parm/S: path As String, value As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValue(path As String, value As String)
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If Not GetChild(path, pl, child) Then
+		    If error Then Return
+		    pl = CreatePath(path)
+		    If error Then Return
+		    elements = Split(path, "/")
+		    child = elements(UBound(elements))
+		    If Left(child, 1) = "@" Then
+		      child = Mid(child, 2)
+		    Else
+		      child = "value"
+		    End If
+		  End If
+		  
+		  pl.SetString(child, value)
+		  error = plistobj.error
+		  ErrorString = plistobj.errorMessage
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueB
+  parm/S: path As String, value As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueB(path As String, value As Boolean)
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If Not GetChild(path, pl, child) Then
+		    If error Then Return
+		    pl = CreatePath(path)
+		    If error Then Return
+		    elements = Split(path, "/")
+		    child = elements(UBound(elements))
+		    If Left(child, 1) = "@" Then
+		      child = Mid(child, 2)
+		    Else
+		      child = "value"
+		    End If
+		  End If
+		  
+		  pl.SetBoolean(child, value)
+		  error = plistobj.error
+		  ErrorString = plistobj.errorMessage
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueC
+  parm/S: path As String, value As Color
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueC(path As String, value As Color)
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If Not GetChild(path, pl, child) Then
+		    If error Then Return
+		    pl = CreatePath(path)
+		    If error Then Return
+		    elements = Split(path, "/")
+		    child = elements(UBound(elements))
+		    If Left(child, 1) = "@" Then
+		      child = Mid(child, 2)
+		    Else
+		      child = "value"
+		    End If
+		  End If
+		  
+		  pl.SetColor(child, value)
+		  error = plistobj.error
+		  ErrorString = plistobj.errorMessage
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueF
+  parm/S: path As String, value As FontFace
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueF(path As String, value As FontFace)
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If Not GetChild(path, pl, child) Then
+		    If error Then Return
+		    pl = CreatePath(path)
+		    If error Then Return
+		    elements = Split(path, "/")
+		    child = elements(UBound(elements))
+		    If Left(child, 1) = "@" Then
+		      child = Mid(child, 2)
+		    Else
+		      child = "value"
+		    End If
+		  End If
+		  
+		  //pl.SetString(child, value)
+		  error = plistobj.error
+		  ErrorString = plistobj.errorMessage
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueFI
+  parm/S: path As String, value As FolderItem
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueFI(path As String, value As FolderItem)
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If Not GetChild(path, pl, child) Then
+		    If error Then Return
+		    pl = CreatePath(path)
+		    If error Then Return
+		    elements = Split(path, "/")
+		    child = elements(UBound(elements))
+		    If Left(child, 1) = "@" Then
+		      child = Mid(child, 2)
+		    Else
+		      child = "value"
+		    End If
+		  End If
+		  
+		  If value <> Nil Then
+		    pl.SetString(child, EncodeBase64(value.GetSaveInfo(Nil)))
+		  Else
+		    pl.SetString(child, "")
+		  End If
+		  error = plistobj.error
+		  ErrorString = plistobj.errorMessage
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueN
+  parm/S: path As String, value As Double
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueN(path As String, value As Double)
+		  Dim pl As plistDict
+		  Dim child As String
+		  Dim elements() As String
+		  
+		  If Not GetChild(path, pl, child) Then
+		    If error Then Return
+		    pl = CreatePath(path)
+		    If error Then Return
+		    elements = Split(path, "/")
+		    child = elements(UBound(elements))
+		    If Left(child, 1) = "@" Then
+		      child = Mid(child, 2)
+		    Else
+		      child = "value"
+		    End If
+		  End If
+		  
+		  pl.SetReal(child, value)
+		  error = plistobj.error
+		  ErrorString = plistobj.errorMessage
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: unregisterPreferencesReceiver
+  parm/S: receiver As IpreferencesReceiver
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub unregisterPreferencesReceiver(receiver As IpreferencesReceiver)
+		  Dim i As Integer
+		  
+		  For i = UBound(Receivers) DownTo 0
+		    If Receivers(i) = receiver Then Receivers.Remove i
+		  Next
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: error As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: error As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ErrorString As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ErrorString As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: plistobj As plist
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: plistobj As plist
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Receivers() As ipreferencesReceiver
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Receivers() As ipreferencesReceiver
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

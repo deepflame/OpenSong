@@ -1,0 +1,458 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABD4790700000000000000000000000000000000000000000
+ Name/S: FileUtils
+ Cont/N: -1119363046
+ bCls/N: 0
+ Name/S: FileUtils
+ Size/N: 28
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: AbsolutePathSeparator
+  parm/S: 
+  rslt/S: String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function AbsolutePathSeparator() As String
+   srcl/S: #If TargetMacOS
+   srcl/S: Return ":"
+   srcl/S: #elseif TargetWin32
+   srcl/S: Return "\"
+   srcl/S: #elseif TargetLinux
+   srcl/S: Return "/"
+   srcl/S: #Endif
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: AbsolutePathToFolderItem
+  parm/S: path As String
+  rslt/S: FolderItem
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function AbsolutePathToFolderItem(path As String) As FolderItem
+		  Dim i, l As Integer
+		  Dim f As FolderItem
+		  path = ReplaceAll(path, "\", "/")
+		  l = CountFields(path, "/")
+		  f = GetFolderItem(NthField(path, "/", 1))
+		  For i = 2 To l
+		    If f <> Nil Then f = f.Child(NthField(path, "/", i))
+		  Next i
+		  Return f
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CopyPath
+  parm/S: fromFolder As FolderItem, toFolder As FolderItem, overwrite As String = "NEVER"
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function CopyPath(fromFolder As FolderItem, toFolder As FolderItem, overwrite As String = "NEVER") As Boolean
+		  Dim i As Integer
+		  Dim fromItem, toItem As FolderItem
+		  
+		  If toFolder = Nil Then Return False
+		  
+		  If Not toFolder.Exists Then toFolder.CreateAsFolder
+		  
+		  If Not toFolder.Exists Then Return False
+		  
+		  For i = 1 To fromFolder.Count
+		    fromItem = fromFolder.Item(i)
+		    toItem = toFolder.Child(fromItem.Name)
+		    
+		    If fromItem.Directory Then
+		      If Left(fromItem.Name, 1) <> "." Then
+		        If Not toItem.Exists Then toItem.CreateAsFolder
+		        If Not toItem.Exists Then Return False
+		        If Not CopyPath(fromItem, toItem) Then Return False
+		      End If
+		    Else ' not a directory
+		      If Left(fromItem.Name, 1) <> "." Then
+		        If _
+		            (overwrite = "ALWAYS") Or _
+		            (overwrite = "NEVER" And Not toItem.Exists) Or _
+		                (overwrite = "NEWER" And ((Not toItem.Exists) Or toItem.ModificationDate.TotalSeconds < fromItem.ModificationDate.TotalSeconds)) Then
+		              If toItem.Exists Then toItem.Delete
+		              If toItem.Exists Then Return False
+		              fromItem.CopyFileTo toFolder
+		              If Not toItem.Exists Then Return False
+		            End If
+		          End If
+		        End If
+		      Next i
+		      
+		      Return True
+		    End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CreateFolder
+  parm/S: f As FolderItem
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function CreateFolder(f As FolderItem) As Boolean
+		  If f = Nil Then
+		    SetLastError(f)
+		    Return False
+		  End If
+		  
+		  If f.Exists Then
+		    If f.Directory Then
+		      SetLastError(f)
+		      Return True
+		    Else
+		      LastError = App.T.Translate("fileutils/errors/notdirectory", GetDisplayFullPath(f))
+		      Return False
+		    End If
+		  Else
+		    f.CreateAsFolder
+		    SetLastError(f)
+		    Return f.LastErrorCode = 0
+		  End If
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: FormatFolderName
+  parm/S: Extends f As Folderitem, maxLen As Integer = 60
+  rslt/S: String
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function FormatFolderName(Extends f As Folderitem, maxLen As Integer = 60) As String
+   srcl/S: //++
+   srcl/S: // Format a foldername for display
+   srcl/S: // If longer than maxLen, eliminate elements of the path with
+   srcl/S: // an ellipsis until shorter.  Always show f's name unless it is longer than 60
+   srcl/S: //--
+   srcl/S: Dim path As String
+   srcl/S: Dim name As String
+   srcl/S: Dim nameLen As Integer
+   srcl/S: #if TargetMacOS
+   srcl/S: Const SEP = ":"
+   srcl/S: #elseif TargetWin32
+   srcl/S: Const SEP = "\"
+   srcl/S: #elseif TargetLinux
+   srcl/S: Const SEP = "/"
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: If f = Nil Then Return ""
+   srcl/S: 
+   srcl/S: path = f.AbsolutePath
+   srcl/S: name = f.DisplayName
+   srcl/S: nameLen = Len(name) + 3 // 3 for the ...
+   srcl/S: 
+   srcl/S: If Len(path) <= maxLen Then Return path
+   srcl/S: 
+   srcl/S: Dim parentPath As String
+   srcl/S: Dim p As FolderItem
+   srcl/S: Dim temp As String
+   srcl/S: 
+   srcl/S: p = f.Parent
+   srcl/S: 
+   srcl/S: If p = Nil Then Return Left(name, maxLen - 3) + "..."
+   srcl/S: 
+   srcl/S: parentPath = p.AbsolutePath
+   srcl/S: 
+   srcl/S: If Right(parentPath, 1) = SEP Then
+   srcl/S: parentPath = Left(parentPath, len(parentPath) - 1)
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: parentPath = Left(parentPath, maxLen - nameLen)
+   srcl/S: 
+   srcl/S: parentPath = Left(parentPath, StringUtils.InStrReverse(parentPath, SEP)) + "..." + SEP
+   srcl/S: 
+   srcl/S: Return parentPath + name
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetDisplayFullPath
+  parm/S: f As Folderitem
+  rslt/S: String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function GetDisplayFullPath(f As Folderitem) As String
+   srcl/S: //++
+   srcl/S: // AbsolutePath and ShellPath may not be pretty
+   srcl/S: // This uses the display name to build something more
+   srcl/S: // user-friendly.
+   srcl/S: //--
+   srcl/S: Dim Path As String
+   srcl/S: Dim Separator As String
+   srcl/S: Dim LeadingSeparator As Boolean
+   srcl/S: Dim p As FolderItem
+   srcl/S: 
+   srcl/S: #if TargetWin32
+   srcl/S: Separator = "\"
+   srcl/S: LeadingSeparator = False
+   srcl/S: #Elseif TargetLinux
+   srcl/S: Separator = "/"
+   srcl/S: LeadingSeparator = True
+   srcl/S: #Elseif TargetCarbon
+   srcl/S: Separator = ":"
+   srcl/S: LeadingSeparator = True
+   srcl/S: #ElseIf TargetMacOS
+   srcl/S: Separator = ":"
+   srcl/S: LeadingSeparator = True
+   srcl/S: #Endif
+   srcl/S: 
+   srcl/S: If f = Nil Then Return ""
+   srcl/S: 
+   srcl/S: p = f
+   srcl/S: While p <> Nil
+   srcl/S: path = p.DisplayName + Separator + Path
+   srcl/S: p = p.Parent
+   srcl/S: Wend
+   srcl/S: 
+   srcl/S: Path = Left(Path, Len(Path) - 1) // Kill trailing separator
+   srcl/S: If LeadingSeparator Then Path = Separator + Path
+   srcl/S: 
+   srcl/S: Return Path
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IsChild
+  parm/S: child As FolderItem, parent As FolderItem
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function IsChild(child As FolderItem, parent As FolderItem) As Boolean
+		  If child = Nil Then Return False
+		  If parent = Nil Then Return False
+		  
+		  While child <> Nil
+		    If child.Parent = parent Then Return True
+		    child = child.Parent
+		  Wend
+		  
+		  Return False
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IsFileVisible
+  parm/S: Extends f As FolderItem
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function IsFileVisible(Extends f As FolderItem) As Boolean
+   srcl/S: //++
+   srcl/S: // Most of this is borrowed from a posting on the RB NUG mailing list
+   srcl/S: // at http://support.realsoftware.com/listarchives/realbasic-nug/2004-12/msg00244.html
+   srcl/S: //
+   srcl/S: // Apparently there are multiple ways on OS X to define visibility and RB
+   srcl/S: // doesn't check them all.
+   srcl/S: //
+   srcl/S: // Ed Palmer, November 2006
+   srcl/S: //--
+   srcl/S: 
+   srcl/S: #if TargetCarbon
+   srcl/S: Dim sysx As Integer
+   srcl/S: Dim fp as FolderItem
+   srcl/S: Dim ts as TextInputStream
+   srcl/S: Dim HideFiles As String
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: If f.Visible Then
+   srcl/S: 
+   srcl/S: #if TargetCarbon
+   srcl/S: If System.Gestalt("sysv", sysx) And sysx > &h1000 Then
+   srcl/S: If Left(f.Name, 1) = "." Then Return False
+   srcl/S: fp = f.Parent
+   srcl/S: If fp = Nil Then Return True
+   srcl/S: fp = fp.Child(".hidden")
+   srcl/S: If fp <> Nil And fp.Exists And fp.IsReadable Then
+   srcl/S: ts = fp.OpenAsTextFile
+   srcl/S: HideFiles = Chr(10) + ts.ReadAll + Chr(10)
+   srcl/S: If InStr(HideFiles, Chr(10) + f.Name + Chr(10)) > 0 Then Return False
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: #endif
+   srcl/S: // Non-Carbon apps (Windows, Linux, Classic) just fall to here
+   srcl/S: //
+   srcl/S: // OpenSong uses files that start with an underscore for
+   srcl/S: // internal functions.  We define these as not being visible.
+   srcl/S: //
+   srcl/S: If Left(f.Name, 1) <> "_" Then Return True
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: Return False
+   srcl/S: 
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IsPathAbsolute
+  parm/S: Path As String
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function IsPathAbsolute(Path As String) As Boolean
+		  //++
+		  // Take advantage of the fact that GetFolderItem will
+		  // successfully handle a full path in absolute format,
+		  // but doesn't handle a relative path.
+		  //--
+		  Dim f As FolderItem
+		  
+		  If Path = "" Then Return False
+		  
+		  f = GetFolderItem(Path, FolderItem.PathTypeAbsolute)
+		  
+		  Return True
+		  
+		Catch e
+		  Return False
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IsSafeFileName
+  parm/S: name As String
+  rslt/S: Boolean
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function IsSafeFileName(name As String) As Boolean
+		  Dim c As String
+		  Dim i, leng As Integer
+		  leng = Len(name)
+		  For i = 1 To leng
+		    c = Mid(name, i, 1)
+		    If InStr("\/:*?""<>|", c) <> 0 Then Return False
+		  Next
+		  Return True
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MakeSafeFileName
+  parm/S: name As String
+  rslt/S: String
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function MakeSafeFileName(name As String) As String
+		  Dim c, ret As String
+		  Dim i, leng As Integer
+		  leng = Len(name)
+		  
+		  For i = 1 To leng
+		    c = Mid(name, i, 1)
+		    If c = "\" Or c = "/" Or c = ":" Or c = "*" Or c = "?" Or c = """" Or c = "<" Or c = ">" Or c = "|" Then
+		    Else
+		      ret = ret + c
+		    End If
+		  Next
+		  
+		  Return Trim(ret)
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MakeSafeURLName
+  parm/S: name As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function MakeSafeURLName(name As String) As String
+		  Return Lowercase(ReplaceAll(name, " ", "_"))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RelativePathToFolderItem
+  parm/S: parent As FolderItem, path As String
+  rslt/S: FolderItem
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function RelativePathToFolderItem(parent As FolderItem, path As String) As FolderItem
+		  Dim i, count As Integer
+		  Dim folder As String
+		  
+		  path = ReplaceAll(path, "\", "/")
+		  count = CountFields(path, "/")
+		  
+		  For i = 1 To count
+		    folder = NthField(path, "/", i)
+		    If folder.Len > 0 Then
+		      parent = parent.Child(folder)
+		      If parent = Nil Then Return Nil
+		    End If
+		  Next i
+		  
+		  Return parent
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetLastError
+  parm/S: f As FolderItem
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub SetLastError(f As FolderItem)
+		  
+		  If f = Nil Then
+		    LastError = App.T.Translate("fileutils/errors/nilobjecterror")
+		    Return
+		  End If
+		  
+		  Select Case f.LastErrorCode
+		  Case 0 // Success
+		    LastError = ""
+		  Case FolderItem.AccessDenied
+		    LastError = App.T.Translate("fileutils/errors/accessdenied", GetDisplayFullPath(f))
+		  Case FolderItem.DestDoesNotExistError
+		    LastError = App.T.Translate("fileutils/errors/destdoesnotexisterror", GetDisplayFullPath(f))
+		  Case FolderItem.FileInUse
+		    LastError = App.T.Translate("fileutils/errors/fileinuse", GetDisplayFullPath(f))
+		  Case FolderItem.FileNotFound
+		    LastError = App.T.Translate("fileutils/errors/filenotfound", GetDisplayFullPath(f))
+		  Case FolderItem.InvalidName
+		    LastError = App.T.Translate("fileutils/errors/invalidname", f.AbsolutePath)
+		  Case FolderItem.NotEnoughMemory
+		    LastError = App.T.Translate("fileutils/errors/notenoughmemory", GetDisplayFullPath(f))
+		  Case Else
+		    LastError = App.T.Translate("fileutils/errors/unknownerror", GetDisplayFullPath(f))
+		  End Select
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: LastError As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: LastError As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

@@ -2669,10 +2669,11 @@ pObj/B: 426C6F6B704F626ABC9C3ECD0000000000000000000000000000000000000000
 		            Slides(SlideCount).Shapes.Item(4).ZOrder(Office.msoSendToBack)
 		          End If
 		          
+		          SlideCount = SlideCount + 1
 		        Next
 		        
 		      End If
-		      SlideCount = SlideCount + 1
+		      
 		    Next
 		    
 		    return PPPres

@@ -378,7 +378,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Action
-   sorc/d: (Enco/N: 134217984, srbp/N: 56
+   sorc/d: (Enco/N: 134217984, srbp/N: 57
 		Sub Action()
 		  Dim i As Integer
 		  Dim dlg as New SelectFolderDialog
@@ -434,6 +434,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      song = SmartML.XDocFromFile(Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text))
 		      StyleNode = SmartML.GetNode(song, "style")
 		      PPT = New PowerPointApplication
+		      'PPT.Visible = 1
 		      PPT.WindowState = Office.ppWindowMinimized
 		      PPPres = SongML.ToPPT(song.DocumentElement, StyleNode, PPT)
 		      PPPres.SaveAs(f.AbsolutePath + lst_songs_songs.Text + ".ppt")

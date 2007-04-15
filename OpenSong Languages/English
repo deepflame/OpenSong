@@ -747,6 +747,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <rename_error>Error renaming module file. Please verify that you have write access to '%1'.</rename_error>
     <success>Module successfully loaded.</success>
     <file_type>OpenSong Modules (*.xmm)</file_type>
+    <generate_index>Generate index for scripture file?</generate_index>
+    <generate_error>Error generating index; do you have write access to %1?</generate_error>
   </module>
 
   <import_from_ccli title="Import from CCLI">

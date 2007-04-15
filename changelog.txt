@@ -1,5 +1,13 @@
 -= 1.0 BL17 =-
 
+* On Mac OSX, corrected module installation menu item to correctly allow selection of the module file.
+
+* Changed scripture indexing progress window to a global floating window to address issue with window stacking order.  To cancel index creation now, close the window with the close box.
+
+* When installing a scripture module, ask to build the index during installation. [Feature Request 1695997]
+
+* Scripture index creation won't crash the program if the user doesn't have the appropriate privileges to write the index. [Bug 1695995]
+
 * Correct NilObjectExceptions when printing a set list or songs in a set.
 
 -= 1.0 Release Candidate 2, Baselevel 16 =-

@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: Bible
- Size/N: 92
+ Size/N: 96
  bNtr/N: 0
  Intr/S: 
  Cnst/D: (Enco/N: 134217984, name/S: NT_PROTESTANT, type/N: 1, defn/S: 27, flag/N: 1)
@@ -584,7 +584,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   parm/S: file As FolderItem
   rslt/S: 
   flag/N: 1
-  sorc/d: (Enco/N: 134217984
+  sorc/d: (Enco/N: 134217984, srbp/N: 21
 		Sub genIndex(file As FolderItem)
 		  'bhenny- create index of words to use for searches
 		  //++
@@ -608,6 +608,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  // Only do this if allowed
 		  If Not ShouldGenerateIndex Then Return
 		  
+		  App.DebugWriter.Write "Bible.genindex: Enter"
+		  
 		  'clear index
 		  reDim index(-1)
 		  reDim notIndexed(-1)
@@ -616,8 +618,13 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  
 		  'create folder if necessary
 		  newFile= New FolderItem(file.Parent.child("indexes"))
-		  if newFile.Exists=false then
+		  if Not newFile.Exists then
 		    newFile.CreateAsFolder
+		    If Not newFile.Exists Then
+		      ShouldGenerateIndex = False
+		      App.DebugWriter.Write "Bible.genindex: Exit (can't create index folder), error code is " + CStr(newFile.LastErrorCode)
+		      Return
+		    End If
 		  end if
 		  
 		  //strip file extension from file name
@@ -632,15 +639,23 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  if newFile.Exists=true then
 		    try
 		      loadIndex(newFile) 'if index exists then just load it
+		      App.DebugWriter.Write "Bible.genindex: Exit (load existing index)"
 		    catch err
 		      newFile.delete
 		      genIndex(file)
+		      App.DebugWriter.Write "Bible.genindex: Exit (rebuild index after error loading)"
 		    end try
-		    
-		    return
+		    Return
+		  Else
+		    out = newFile.CreateTextFile
+		    If Not newFile.Exists Then
+		      ShouldGenerateIndex = False
+		      App.DebugWriter.Write "Bible.genindex: Exit (can't create index file), errorcode is " + CStr(newFile.LastErrorCode)
+		      Return
+		    End If
+		    out.Close
+		    newFile.Delete
 		  end if
-		  
-		  
 		  
 		  'go to first book
 		  //++EMP 18 Feb 2006
@@ -671,8 +686,9 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  reg.Options.ReplaceAllMatches=true
 		  
 		  'open progress window
-		  IndexProgress.ShowWithin App.GetFrontControlScreenWindow
-		  
+		  wProgress = New IndexProgress
+		  wProgress.setProgress(0, "")
+		  wProgress.ShowWithin App.GetFrontControlScreenWindow
 		  'books
 		  book=1
 		  sBook= "1"
@@ -682,9 +698,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    'update progress window
 		    Progress = book/GetBookCount() * 100
 		    BookName = GetBookName(book)
-		    
-		    IndexProgress.setProgress(Progress, BookName)
-		    
+		    wProgress.setProgress(Progress, BookName)
 		    
 		    'chapters
 		    chap=1
@@ -693,11 +707,13 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		      versenode=chapnode.Child(0)
 		      
 		      'see if the user canceled creating the index
-		      if (IndexProgress.cancel=true) then
+		      if (wProgress.cancel=true) then
 		        out.close
 		        newFile.Delete
-		        IndexProgress.close
+		        wProgress.close
+		        wProgress = Nil
 		        CanSearch = False
+		        App.DebugWriter.Write "Bible.genindex: Exit (user cancel)"
 		        return
 		      end if
 		      
@@ -802,9 +818,10 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  out.Close
 		  
 		  'close progress window
-		  IndexProgress.close
+		  wProgress.close
+		  wProgress = Nil
 		  CanSearch = True
-		  
+		  App.DebugWriter.Write "Bible.genindex: Exit"
 		Exception excep
 		  out.Close
 		  newFile.delete
@@ -814,9 +831,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  
 		  InputBox.Message App.T.Translate("bible/errors/index_generation")
 		  CanSearch = False
-		  If IndexProgress.Visible Then
-		    IndexProgress.Close
-		  End If
+		  If wProgress <> Nil Then wProgress = Nil
+		  App.DebugWriter.Write "Bible.genindex: Exit (exception)"
 		End Sub
   )
  Meth/g: 
@@ -996,58 +1012,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: GetNTBooks
-  parm/S: 
-  rslt/S: String()
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetNTBooks() As String()
-		  //
-		  // Returns a string array with the names of the books
-		  // of the New Testament from the currently-loaded Bible.
-		  //
-		  // Must use this routine to allow for both I18N issues
-		  // and to handle Zefania files with incomplete
-		  // books.
-		  //
-		  // Ed Palmer, September 2005
-		  //
-		  Dim BookNames(0) As String
-		  Dim xn As XmlNodeList
-		  Dim i As Integer
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL
-		    For i = 1 to NT_PROTESTANT
-		      BookNames.Append GetBookName(i + OT_PROTESTANT)
-		    Next
-		    
-		  Case XML_NAB
-		    xn = Scripture.Xql("/bible/NT/book")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("n")
-		    Next
-		    
-		  Case XML_ZEFANIA
-		    //
-		    // Look at books in the book number range 40-66
-		    // 40 = Matthew, 66 = Revelation
-		    //
-		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("bname")
-		    Next
-		    
-		  End Select
-		  
-		  Return BookNames
-		  
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetNTBooks
   parm/S: ByRef BookNames() As String, ByRef BookNumbers() As Integer
   rslt/S: Integer
   flag/N: 0
@@ -1103,6 +1067,58 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  End Select
 		  
 		  Return UBound(BookNames) + 1
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetNTBooks
+  parm/S: 
+  rslt/S: String()
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetNTBooks() As String()
+		  //
+		  // Returns a string array with the names of the books
+		  // of the New Testament from the currently-loaded Bible.
+		  //
+		  // Must use this routine to allow for both I18N issues
+		  // and to handle Zefania files with incomplete
+		  // books.
+		  //
+		  // Ed Palmer, September 2005
+		  //
+		  Dim BookNames(0) As String
+		  Dim xn As XmlNodeList
+		  Dim i As Integer
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL
+		    For i = 1 to NT_PROTESTANT
+		      BookNames.Append GetBookName(i + OT_PROTESTANT)
+		    Next
+		    
+		  Case XML_NAB
+		    xn = Scripture.Xql("/bible/NT/book")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("n")
+		    Next
+		    
+		  Case XML_ZEFANIA
+		    //
+		    // Look at books in the book number range 40-66
+		    // 40 = Matthew, 66 = Revelation
+		    //
+		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("bname")
+		    Next
+		    
+		  End Select
+		  
+		  Return BookNames
 		  
 		End Function
   )
@@ -1878,6 +1894,9 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: Dim BookName As String
    srcl/S: Dim StdName As String
    srcl/S: Dim names() as String
+   srcl/S: Dim splashHidden As Boolean = False
+   srcl/S: Dim w As Window
+   srcl/S: Dim wSplash As Splash
    srcl/S: 
    srcl/S: Scripture = New XmlDocument
    srcl/S: ShouldGenerateIndex = False
@@ -1931,6 +1950,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: End If
    srcl/S: End Try
    srcl/S: 
+   srcl/S: App.DebugWriter.Write "Bible.LoadBible: XML read, load book names"
    srcl/S: 
    srcl/S: ' Pre-load book names and book abbreviations
    srcl/S: ReDim Books(0)
@@ -1945,11 +1965,15 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: //
    srcl/S: // Original or NAB, check if the first book has a CHAPTERS attribute to decide
    srcl/S: //
+   srcl/S: App.DebugWriter.Write "Bible.LoadBible: Opened an OpenSong format"
    srcl/S: list = Scripture.Xql("/bible/b")
    srcl/S: If list.Length > 0 Then
    srcl/S: XMLTYPE = XML_ORIGINAL
    srcl/S: s = list.Item(0).GetAttribute("CHAPTERS")
-   srcl/S: If Len(s) > 0 Then XMLTYPE = XML_NAB
+   srcl/S: If Len(s) > 0 Then 
+   srcl/S: XMLTYPE = XML_NAB
+   srcl/S: App.DebugWriter.Write Chr(9) + "...with NAB extensions"
+   srcl/S: End If
    srcl/S: 
    srcl/S: For i = 0 To list.Length - 1
    srcl/S: BookName = list.Item(i).GetAttribute("n")
@@ -1979,14 +2003,22 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: End If
    srcl/S: 
    srcl/S: 'bhenny- either load or create index
+   srcl/S: For i = 0 To WindowCount - 1
+   srcl/S: If Window(i) IsA Splash Then
+   srcl/S: wSplash = Splash(Window(i))
+   srcl/S: End If
+   srcl/S: Next
+   srcl/S: If wSplash <> Nil Then wSplash.Hide
    srcl/S: genIndex(file) 
-   srcl/S: 
+   srcl/S: If wSplash <> Nil Then wSplash.Show
+   srcl/S: App.DebugWriter.Write "Bible.LoadBible: Exit successfully"
    srcl/S: Return True
    srcl/S: 
    srcl/S: Case "XMLBIBLE"
    srcl/S: //
    srcl/S: // ZefaniaXML format
    srcl/S: //
+   srcl/S: App.DebugWriter.Write "Bible.LoadBible: Loaded a Zefania format XML"
    srcl/S: XMLTYPE = XML_ZEFANIA
    srcl/S: 
    srcl/S: list = Scripture.Xql("/XMLBIBLE/BIBLEBOOK")
@@ -2029,8 +2061,21 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: LoadedBibleFilename = File.Name
    srcl/S: 
    srcl/S: 'bhenny- either load or create index
+   srcl/S: Try
+   srcl/S: For i = 0 To WindowCount - 1
+   srcl/S: If Window(i) IsA Splash Then
+   srcl/S: wSplash = Splash(Window(i))
+   srcl/S: End If
+   srcl/S: Next
+   srcl/S: If wSplash <> Nil Then wSplash.Hide
    srcl/S: genIndex(file) 
+   srcl/S: Catch genErr
+   srcl/S: App.DebugWriter.Write "Bible.LoadBible: Caught " + s + " when calling genIndex"
+   srcl/S: ShouldGenerateIndex = False
+   srcl/S: End Try
+   srcl/S: If wSplash <> Nil Then wSplash.Show
    srcl/S: 
+   srcl/S: App.DebugWriter.Write "Bible.LoadBible: Exit successfully"
    srcl/S: Return True
    srcl/S: 
    srcl/S: Case Else
@@ -2042,13 +2087,16 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: End Select
    srcl/S: 
    srcl/S: Exception err
+   srcl/S: If wSplash <> Nil Then wSplash.Show
    srcl/S: If err IsA XmlException Then
    srcl/S: ErrorCode = 3
    srcl/S: ErrorString = "Error parsing XML: " + file.AbsolutePath + ": Line " + XmlException(err).Line + ": " + XmlException(err).Node
+   srcl/S: App.DebugWriter.Write "Bible.LoadBible: Caught an XML exception"
    srcl/S: Return False
    srcl/S: Else
    srcl/S: ErrorCode  = err.ErrorNumber
    srcl/S: ErrorString = err.Message
+   srcl/S: App.DebugWriter.Write "Bible.LoadBible: Caught a " + err.ToString
    srcl/S: Return False
    srcl/S: End If
    srcl/S: End Function
@@ -2083,7 +2131,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    next x
 		    
 		    index.Append(entry)
-		    
 		    
 		    line= fileIn.ReadLine().split("|")
 		  wend
@@ -2551,6 +2598,17 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   sorc/G: 
    Enco/N: 134217984
    ntln/S: WebBooks(0) As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: wProgress As IndexProgress
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: wProgress As IndexProgress
    ntln/S: 
    ntln/S: 
   sorc/g: 

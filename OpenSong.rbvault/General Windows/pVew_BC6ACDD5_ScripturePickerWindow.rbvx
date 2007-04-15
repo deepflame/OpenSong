@@ -1550,7 +1550,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 188
+  Size/N: 196
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -2113,6 +2113,13 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    flag/N: 0
    sorc/d: (Enco/N: 134217984
 		Function Popup(node As XmlNode, live As Boolean = False) As Boolean
+		  App.DebugWriter.Write "ScripturePickerWindow.Popup: Enter"
+		  
+		  If App.MyBible = Nil Then
+		    App.DebugWriter.Write "ScripturePickerWindow.Popup: Exit (no Bible loaded)"
+		    Return True
+		  End If
+		  
 		  Me.Node = node
 		  Me.Live = live
 		  edt_quick_lookup.Text = ""
@@ -2169,6 +2176,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru", thru)
 		  End If
 		  
+		  App.DebugWriter.Write "ScripturePickerWindow.Popup: Exit"
 		  Return ReturnValue
 		  
 		End Function
@@ -2257,12 +2265,25 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Dim x As Integer
 		  Dim BookNum As Integer
 		  
+		  App.DebugWriter.Write "ScripturePickerWindow.setPreview: Enter"
 		  'clear box
 		  edt_preview.text=""
 		  
-		  If Initializing Then Return
+		  If Initializing Then 
+		    App.DebugWriter.Write "ScripturePickerWindow.setPreview: Exit (Initializing)"
+		    Return
+		  End If
 		  
-		  verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_to_verse.ListIndex + 1)
+		  Try
+		    verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_to_verse.ListIndex + 1)
+		  Catch ex As NilObjectException
+		    App.DebugWriter.Write "ScripturePickerWindow.setPreview: NOE calling GetPassage"
+		    If App.MyBible = Nil Then
+		      App.DebugWriter.Write chr(9) + "MyBible is Nil"
+		    End If
+		    App.DebugWriter.Write "ScripturePickerWindow.setPreview: Exit"
+		    Return
+		  End Try
 		  
 		  'add them to the box
 		  for x=1 To UBound(verses)
@@ -2276,6 +2297,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		      end if
 		    End If
 		  Next x
+		  App.DebugWriter.Write "ScripturePickerWindow.setPreview: Exit"
 		End Sub
    )
   Meth/g: 

@@ -10,15 +10,6 @@ pObj/B: 426C6F6B704F626AC2004E050000000000000000000000000000000000000000
  Size/N: 24
  bNtr/N: 1
  Intr/S: 
- Cnst/G: 
-  Enco/N: 134217984
-  name/S: kDocsFolder
-  type/N: 0
-  defn/S: documents_folder
-  flag/N: 0
-  CIns/D: (pltf/N: 0, lang/N: 0, defn/S: documents_folder)
- Cnst/g: 
- Cnst/D: (Enco/N: 134217984, name/S: kDocumentsFolder, type/N: 0, defn/S: documents_folder, flag/N: 0)
  Meth/G: 
   Enco/N: 134217984
   name/S: error

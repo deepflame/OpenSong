@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.0 Beta 2 BL 13">
+<language name="English" author="Sean Lickfold" version="1.0 RC1 BL16">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -715,6 +715,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
     <version caption="Version"/>
+    <select_file caption="Please select a scripture file"/>
     <verses_per_slide caption="Verses Per Slide">
       <one caption="1"/>
       <two caption="2"/>
@@ -746,6 +747,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <rename_error>Error renaming module file. Please verify that you have write access to '%1'.</rename_error>
     <success>Module successfully loaded.</success>
     <file_type>OpenSong Modules (*.xmm)</file_type>
+    <generate_index>Generate index for scripture file?</generate_index>
+    <generate_error>Error generating index; do you have write access to %1?</generate_error>
   </module>
 
   <import_from_ccli title="Import from CCLI">

@@ -501,17 +501,41 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		          End If
 		          f = f.Child(Folder)
 		        Next
+		      End If
+		      If Not f.Exists Then
+		        Try
+		          f = QueryDocsFolder(f)
+		        Catch
+		          System.DebugLog "OpenSong: user cancelled document folder selection"
+		          Return Nil
+		        End Try
 		        MainPreferences.SetValueFI(prefs.kDocumentsFolder, f)
 		      End If
 		    Else // FolderItem in MainPreferences is Nil, FolderName = ""
 		      // Nil folderitem in personal prefs, no path in Globals; prompt user
-		      f = QueryDocsFolder(Nil)
+		      Try
+		        f = QueryDocsFolder(Nil)
+		      Catch
+		        System.DebugLog "OpenSong: user cancelled document folder selection"
+		        Return Nil
+		      End Try
+		      
 		      If FileUtils.IsChild(f, AppFolder.Child("OpenSong Defaults")) Then
 		        MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(DocumentsFolder.Child("OpenSong"))))
 		        f = DocumentsFolder.Child("OpenSong")
 		      End If
 		      MainPreferences.SetValueFI(kDocumentsFolder, f)
 		    End If //If FolderName <> ""
+		  Else // folder found in MainPreferences, make sure it exists.
+		    If Not f.exists Then 
+		      Try
+		        f = QueryDocsFolder(Nil)
+		      Catch
+		        System.DebugLog "OpenSong: user cancelled document folder selection"
+		        Return Nil
+		      End Try
+		      MainPreferences.SetValueFI(kDocumentsFolder, f)
+		    End If
 		  End If //If MainPreferences.kDocumentsFolder = Nil
 		  Return f
 		End Function
@@ -688,21 +712,38 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: Sub LoadPreferences()
    srcl/S: //++
    srcl/S: // Set up the preferences object to use for reference.
+   srcl/S: //
+   srcl/S: // Edit 21 Apr 2007
+   srcl/S: //    Change filename on non-Mac platforms to have .plist extension
+   srcl/S: //    If MainPreferences is non-Nil, treat this as a reload operation (was NOOP in RC2-16)
    srcl/S: //--
    srcl/S: Dim PrefFile As String
    srcl/S: Dim v As String
-   srcl/S: 
+   srcl/S: Dim f As FolderItem
    srcl/S: Dim e As RuntimeException
+   srcl/S: 
    srcl/S: #if TargetMacOS
-   srcl/S: PrefFile = "org.opensong.opensong.plist"
+   srcl/S: f = GetPrefsFolder().Child("org.opensong.opensong.plist")
    srcl/S: #else
-   srcl/S: PrefFile = "preferences"
+   srcl/S: //++
+   srcl/S: // Kluge alert! Fix V1.0 RC2-16 issue where the file doesn't have an extension
+   srcl/S: //--
+   srcl/S: PrefFile = "preferences.plist"
+   srcl/S: f = GetPrefsFolder().Child("preferences")
+   srcl/S: If f.exists Then 
+   srcl/S: f.name = PrefFile
+   srcl/S: End If
+   srcl/S: f = GetPrefsFolder().Child(PrefFile)
    srcl/S: #endif
-   srcl/S: If MainPreferences <> Nil Then Return
+   srcl/S: 
+   srcl/S: If MainPreferences <> Nil Then // Reloading
+   srcl/S: If Not prefsPlist(MainPreferences).Save Then Return
+   srcl/S: MainPreferences = Nil
+   srcl/S: End If
    srcl/S: 
    srcl/S: MainPreferences = New prefsPlist
    srcl/S: 
-   srcl/S: If Not MainPreferences.Load(GetPrefsFolder().Child(PrefFile)) Then
+   srcl/S: If Not MainPreferences.Load(f) Then
    srcl/S: e = New RuntimeException
    srcl/S: e.Message = MainPreferences.ErrorString
    srcl/S: MainPreferences = Nil
@@ -818,6 +859,7 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: //--
    srcl/S: #If TargetWin32
    srcl/S: // Windows items go here
+   srcl/S: mnu_file_quit.CommandKey = ""
    srcl/S: #elseif TargetMacOS
    srcl/S: // Macintosh items go here
    srcl/S: mnu_help_help_topics.CommandKey = "?"
@@ -1065,13 +1107,14 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: 
    srcl/S: t = "v" +  Str(App.MajorVersion) + "." + Str(App.MinorVersion)
    srcl/S: If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion) 
-   srcl/S: t = t + " RC 2"
-   srcl/S: If App.NonReleaseVersion > 0 Then t = t + "-" + Str(App.NonReleaseVersion)
+   srcl/S: 't = t + " RC 2"
+   srcl/S: If App.NonReleaseVersion > 0 Then t = t + " (BL" +  CStr(App.NonReleaseVersion) + ")"
    srcl/S: //++
    srcl/S: // If compiled with rb2006r4 or higher, this is likely a Universal Binary.
    srcl/S: // Identify the target.
    srcl/S: // There's probably a gestalt that would be a better way to do this so we can
-   srcl/S: // identify a true UB vs. a target-specific binary.  This at least gets us in the ballpark.
+   srcl/S: // identify a true UB vs. a target-specific binary or an Intel Mac running the UB under Rosetta.  
+   srcl/S: // This at least gets us in the ballpark.
    srcl/S: //--
    srcl/S: #If TargetMacOS
    srcl/S: If RBVersion >= 2006.04 Then

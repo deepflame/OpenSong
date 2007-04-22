@@ -1,5 +1,20 @@
--= 1.0 BL17 =-
+-= 1.0.0 BL17 =-
 
+* Rebuilding the song folder cache will complete one folder before beginning its subfolders to reduce the number of times the status window blinks.
+
+* Fix issue where OpenSong would quit if the documents folder saved in the preferences did not exist, leaving users with no easy way to repair the problem since the folder is a Base 64 encoded string holding the value of FolderItem.GetSaveInfo.
+
+* Add AbsolutePath to the info saved with a FolderItem in a preferences file.  OpenSong ignores this value when reloading the FolderItem, but it is useful for debugging.
+
+* When new scripture version is selected, don't reload the scripture if the new version is the same as the currently loaded version.
+
+* Release Bible object before loading new version.  Improves, but does not fully correct, a memory leak when changing bibles. [Bug 1703561]
+
+* Correct an issue introduced in r166 on IndexProgress where it wouldn't close properly after the scripture index is written. Also set IndexProgress window properties to prevent resizing.
+
+* Made printing the presentation order on the leadsheet optional.  The default is to not print it and produce the same output as RC1-BL14. Add <leadsheet presentation="true"/> to your PrintSettings file to enable.  Post-V1 will address this a different way; for now it provides a workaround for those who don't need or want the presentation order printed.
+
+(r166)
 * On Mac OSX, corrected module installation menu item to correctly allow selection of the module file.
 
 * Changed scripture indexing progress window to a global floating window to address issue with window stacking order.  To cancel index creation now, close the window with the close box.

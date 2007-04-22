@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.0 RC1 BL16">
+<language name="English" author="Sean Lickfold" version="1.0.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -49,7 +49,7 @@
       </export>
       <rename caption="Rename">Renames the current song.</rename>
       <move caption="Move">Moves the current song into another folder.
-        <where caption="Move '%1' to which folder:"/>
+        <where caption="Move '%1' to folder:"/>
       </move>
       <delete caption="Delete">Deletes the current song.</delete>
     </selected_song>

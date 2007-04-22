@@ -32,6 +32,19 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Dim OldBookName As String
 		  Dim OldNumOTBooks, OldNumNTBooks As Integer
 		  Dim OldChapter, OldVerse, OldThru As integer
+		  Dim f As FolderItem
+		  
+		  if me.ListIndex=-1 then 'bhenny- it was throwing an exception when ListIndex was -1
+		    return
+		  end if
+		  
+		  //++
+		  // Is this really a change, or just the control getting set?
+		  //--
+		  If App.MyBible <> Nil Then
+		    oldBible = App.MyBible.GetBibleFilename
+		    If oldBible = Me.Text Then Return // No real change, don't do anything
+		  End If
 		  
 		  OldBookName = CurrentBook
 		  OldBook = book
@@ -40,11 +53,6 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  OldChapter = chapter
 		  OldVerse = verse
 		  OldThru = thru
-		  
-		  if me.ListIndex=-1 then 'bhenny- it was throwing an exception when ListIndex was -1
-		    return
-		  end if
-		  
 		  OldCursor = App.MouseCursor
 		  App.MouseCursor = WatchCursor
 		  
@@ -52,6 +60,12 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  
 		  oldBible= App.MyBible.GetBibleFilename
 		  If App.MyBible.GetBibleFileName <> Me.List(Me.ListIndex) Then 
+		    //++
+		    // Unload the old Bible from memory
+		    //--
+		    App.MyBible = Nil
+		    App.MyBible = New Bible
+		    
 		    If Not App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(Me.List(Me.ListIndex))) Then
 		      InputBox.Message Str(App.MyBible.ErrorCode) + ": " + App.MyBible.ErrorString
 		      App.MouseCursor = OldCursor
@@ -59,8 +73,10 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		      Me.RemoveRow newSelection
 		      'bhenny- if there is an error load the old bible
 		      for x=0 to Me.ListCount-1
-		        if Me.List(0)=oldBible then
+		        if Me.List(x)=oldBible then
 		          Me.ListIndex=x
+		          App.MyBible = Nil
+		          App.MyBible = New Bible
 		          if App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(Me.List(Me.ListIndex)))=false then return
 		          exit
 		        end if
@@ -163,6 +179,15 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    'ScrollOT
 		    App.MouseCursor = OldCursor
 		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  
 		End Sub
    )
   HIns/g: 

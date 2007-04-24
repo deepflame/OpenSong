@@ -4,25 +4,25 @@
 ##Format:2#
 Proj/B: 426C6F6B50726F6A000000000000000000000000000000000000000000000000
  PSIV/S: 5.5
- OPSp/S: OpenSong
+ OPSp/S: OpenSong.rb
  ACnm/S: 
  AChp/S: 
  ACsv/S: localhost:7325
  Ver1/S: 1
  Ver2/S: 0
  Ver3/S: 0
- Rels/S: 2
+ Rels/S: 3
  NnRl/S: 17
  Regn/S: 0
- SVer/S: 1.0.0 RC 2-17
- LVer/S: OpenSong 1.0.0 RC 2 BL17
- IVer/S: OpenSong 1.0.0 RC 2 BL17
+ SVer/S: 1.0.0-17
+ LVer/S: OpenSong 1.0.0 BL17
+ IVer/S: OpenSong 1.0.0 BL17
  DVew/N: 0
  prTp/N: 0
  DLan/N: 1
  CLan/N: 0
  DEnc/N: 134217984
- Bflg/N: 280
+ Bflg/N: 264
  BCXF/N: 1
  MacC/S: OSng
  BMac/S: OpenSongOS8

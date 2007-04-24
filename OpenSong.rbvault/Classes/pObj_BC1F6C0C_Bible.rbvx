@@ -584,7 +584,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
   parm/S: file As FolderItem
   rslt/S: 
   flag/N: 1
-  sorc/d: (Enco/N: 134217984, srbp/N: 21
+  sorc/d: (Enco/N: 134217984
 		Sub genIndex(file As FolderItem)
 		  'bhenny- create index of words to use for searches
 		  //++
@@ -818,7 +818,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  out.Close
 		  
 		  'close progress window
-		  wProgress.close
+		  wProgress.doClose
 		  wProgress = Nil
 		  CanSearch = True
 		  App.DebugWriter.Write "Bible.genindex: Exit"
@@ -1012,6 +1012,58 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: GetNTBooks
+  parm/S: 
+  rslt/S: String()
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetNTBooks() As String()
+		  //
+		  // Returns a string array with the names of the books
+		  // of the New Testament from the currently-loaded Bible.
+		  //
+		  // Must use this routine to allow for both I18N issues
+		  // and to handle Zefania files with incomplete
+		  // books.
+		  //
+		  // Ed Palmer, September 2005
+		  //
+		  Dim BookNames(0) As String
+		  Dim xn As XmlNodeList
+		  Dim i As Integer
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL
+		    For i = 1 to NT_PROTESTANT
+		      BookNames.Append GetBookName(i + OT_PROTESTANT)
+		    Next
+		    
+		  Case XML_NAB
+		    xn = Scripture.Xql("/bible/NT/book")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("n")
+		    Next
+		    
+		  Case XML_ZEFANIA
+		    //
+		    // Look at books in the book number range 40-66
+		    // 40 = Matthew, 66 = Revelation
+		    //
+		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("bname")
+		    Next
+		    
+		  End Select
+		  
+		  Return BookNames
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetNTBooks
   parm/S: ByRef BookNames() As String, ByRef BookNumbers() As Integer
   rslt/S: Integer
   flag/N: 0
@@ -1067,58 +1119,6 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  End Select
 		  
 		  Return UBound(BookNames) + 1
-		  
-		End Function
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: GetNTBooks
-  parm/S: 
-  rslt/S: String()
-  flag/N: 0
-  sorc/d: (Enco/N: 134217984
-		Function GetNTBooks() As String()
-		  //
-		  // Returns a string array with the names of the books
-		  // of the New Testament from the currently-loaded Bible.
-		  //
-		  // Must use this routine to allow for both I18N issues
-		  // and to handle Zefania files with incomplete
-		  // books.
-		  //
-		  // Ed Palmer, September 2005
-		  //
-		  Dim BookNames(0) As String
-		  Dim xn As XmlNodeList
-		  Dim i As Integer
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL
-		    For i = 1 to NT_PROTESTANT
-		      BookNames.Append GetBookName(i + OT_PROTESTANT)
-		    Next
-		    
-		  Case XML_NAB
-		    xn = Scripture.Xql("/bible/NT/book")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("n")
-		    Next
-		    
-		  Case XML_ZEFANIA
-		    //
-		    // Look at books in the book number range 40-66
-		    // 40 = Matthew, 66 = Revelation
-		    //
-		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("bname")
-		    Next
-		    
-		  End Select
-		  
-		  Return BookNames
 		  
 		End Function
   )
@@ -1994,7 +1994,7 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: Else
    srcl/S: LoadedBible = Scripture.FirstChild.GetAttribute("n")
    srcl/S: End If
-   srcl/S: LoadedBibleFilename = LoadedBible
+   srcl/S: LoadedBibleFilename = file.name
    srcl/S: ShouldGenerateIndex = True
    srcl/S: Else
    srcl/S: ErrorCode = 7

@@ -218,6 +218,27 @@ pVew/B: 426C6F6B70566577495057FF0000000000000000000000000000000000000000
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
+   name/S: doClose
+   parm/S: 
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub doClose()
+		  //++
+		  // This is necessary because just calling Close
+		  // isn't going to work.  The flags have to allow
+		  // the close before it'll work.  This sets those
+		  // flags and makes the close happen.
+		  //--
+		  
+		  cancelRequested = True
+		  cancelDelivered = True
+		  Close
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
    name/S: setProgress
    parm/S: percent as Integer, book as String
    rslt/S: 
@@ -261,7 +282,7 @@ pVew/B: 426C6F6B70566577495057FF0000000000000000000000000000000000000000
  PDef/D: (name/S: Composite, PVal/S: False)
  PDef/D: (name/S: Frame, PVal/S: 7)
  PDef/D: (name/S: FullScreen, PVal/S: False)
- PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: GrowIcon, PVal/S: False)
  PDef/D: (name/S: HasBackColor, PVal/S: False)
  PDef/D: (name/S: Height, PVal/S: 140)
  PDef/D: (name/S: LiveResize, PVal/S: False)
@@ -277,6 +298,6 @@ pVew/B: 426C6F6B70566577495057FF0000000000000000000000000000000000000000
  PDef/D: (name/S: Title, PVal/S: Please Wait, Enco/N: 134217984)
  PDef/D: (name/S: Visible, PVal/S: True)
  PDef/D: (name/S: Width, PVal/S: 308)
- PDef/D: (name/S: ZoomIcon, PVal/S: True)
+ PDef/D: (name/S: ZoomIcon, PVal/S: False)
 pVew/b: 
 ##RBvx-End#

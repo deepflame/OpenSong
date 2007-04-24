@@ -883,7 +883,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Change
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 16
 		Sub Change()
 		  Dim f As FolderItem
 		  Dim xnode As XmlNode
@@ -891,10 +891,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim path_to_songs As String
 		  Dim path_to_song As String
 		  Dim fullpath As String
-		  '++JRC
-		  Dim Msg as MessageDialog
-		  Dim Res As MessageDialogButton
-		  '--
 		  
 		  //++EMP 18 Feb 2006
 		  // If Globals.OldSongSel < 0, then immediately return.
@@ -902,7 +898,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  // (See ActionSongNew, for example)
 		  If Globals.OldSongSel < 0 Then Return
 		  
-		  If lst_songs_songs.ListIndex >= 0 Then
+		  If lst_songs_songs.ListIndex >= -1 Then '++JRC Fix corner case where user would click in an empty row of the list
+		    'and has unsaved changes,those changes would be lost
 		    if lst_songs_songs.ListIndex <> Globals.OldSongSel Or lst_songs_songs.CellTag(Me.ListIndex, 0) + lst_songs_songs.Text <> Globals.OldSongFileName then
 		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
 		        '++JRC
@@ -920,11 +917,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
 		        return 
 		      End if
-		      
 		    End if
-		    Globals.OldSongSel = lst_songs_songs.ListIndex
 		    
-		    
+		    If lst_songs_songs.ListIndex >= 0 Then
+		      Globals.OldSongSel = lst_songs_songs.ListIndex
+		    End If
+		    '--
 		  End if
 		  
 		  If lst_songs_songs.ListIndex >= 0 Then

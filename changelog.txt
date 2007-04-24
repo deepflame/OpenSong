@@ -1,5 +1,7 @@
 -= 1.0.0 BL17 =-
 
+* Fix issue where the list of verses for a book wouldn't be displayed if the book has non-ASCII characters. [Bug 1706973]
+
 * Rebuilding the song folder cache will complete one folder before beginning its subfolders to reduce the number of times the status window blinks.
 
 * Fix issue where OpenSong would quit if the documents folder saved in the preferences did not exist, leaving users with no easy way to repair the problem since the folder is a Base 64 encoded string holding the value of FolderItem.GetSaveInfo.

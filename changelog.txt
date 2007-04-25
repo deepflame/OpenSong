@@ -1,3 +1,7 @@
+-= 1.0.1 BL17 =-
+
+* Correct issue where subfolder entries in a FolderDB cache would be corrupted, rendering them inaccessible.  See the JRC source tree for editorial comments.  :-)
+
 -= 1.0.0 BL17 =-
 
 * Removed unused vars in lst_songs_songs.changed

@@ -157,6 +157,9 @@ pObj/B: 426C6F6B704F626ABD4795AE0000000000000000000000000000000000000000
 		  // Handle the directories
 		  For x = 0 To UBound(subfolders)
 		    f = subfolders(x)
+		    '++JRC Need to update value of var s (Ooh, Ed ;)
+		    s = f.Name
+		    '--
 		    Cache.Append path + s + "/"
 		    NumFiles = NumFiles + 1
 		    AddFolderToCache f, path + s + "/"
@@ -579,7 +582,7 @@ pObj/B: 426C6F6B704F626ABD4795AE0000000000000000000000000000000000000000
   parm/S: 
   rslt/S: Boolean
   flag/N: 0
-  sorc/d: (Enco/N: 134217984
+  sorc/d: (Enco/N: 134217984, srbp/N: 4
 		Function RefreshCache() As Boolean
 		  ReDim Cache(0)
 		  Dim s As String

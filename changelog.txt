@@ -1,10 +1,6 @@
 -= JRC =-
 
-* Removed unused vars in lst_songs_songs.changed
-
-* Fix corner case in SongEditor where user would click in an empty row of the song list and has unsaved changes,those changes would be lost
-
-* Prevent Second Save prompt when renaming set(Bug 1700769)
+*Update value of var s in FolderDB.AddFoldertoCache or all sorts(pun intended) of sillyness ensues(I think Ed needs a nap ;)
 
 -= 1.0.0 BL17 =-
 

@@ -1,0 +1,173 @@
+songs_mode/curr_folder
+sets_mode/current_set/saveas
+slide_editor/presentation
+slide_editor/origorder
+video_slides
+powerpoint_slides
+main_menu/settings/refresh_sets
+main_menu/file/quit
+main_menu/file/exit (Deleted)
+general_settings/general/startmode/song
+general_settings/general/startmode/set
+general_settings/newpaint
+presentation_helper/exit
+presentation_settings/click_to_change (Deleted)
+presentation_settings/right_click_to_clear (Deleted)
+presentation_settings/style/time
+presentation_settings/style/frames
+presentation_settings/style/initial_mode
+presentation_settings/default_slides -> presentation_settings/settings/default_slides
+presentation_settings/scripture_slides -> presentation_settings/settings/scripture_slides
+presentation_settings/transition_note -> presentation_settings/settings/transition_note
+presentation_settings/monitor/initial_mode
+*presentation_settings/style/song_subtitles/hymn_number
+*presentation_settings/style/song_subtitles/ccli_number
+*presentation_settings/style/song_subtitles/copyright
+*presentation_settings/style/song_subtitles/author
+presentation_settings/style/subtitles
+presentation_settings/style/subtitles/row0
+presentation_settings/style/subtitles/row1
+presentation_settings/style/subtitles/row2
+presentation_settings/style/subtitles/row3
+presentation_settings/style/subtitles/row4
+presentation_settings/style/highlight_chorus
+presentation_settings/style/initial_mode
+presentation_settings/style/blank_style
+presentation_settings/style/blank_prev
+presentation_settings/style/blank_next
+presentation_settings/logo/click_to_change
+presentation_settings/logo/right_click_to_clear
+presentation_settings/mouse_cursor
+presentation_settings/settings
+presentation_settings/settings/click_to_change
+presentation_settings/settings/right_click_to_clear
+print_preview/ccli_license
+print_preview/ccli_number
+print/*
+songml/*
+shared/untitled
+general_song_editor/hymn_number
+questions/changed
+
+help_topics
+style_editor/fonts_and_alignment/subtitles
+style_editor/fonts_and_alignment/song_subtitles
+song_lookup/folder
+print_settings/units
+print_settings/units/inches
+print_settings/units/cm
+main_menu/edit/selall
+questions/revert
+questions/long_operation
+
+-= Baselevel 13 =-
+xml_errors
+xml_errors/noattribute
+scripture_loookup/errors
+scripture_lookup/errors/ot_bounds
+scripture_lookup/errors/nt_bounds
+bible
+bible/errors
+bible/errors/index_generation
+bible/errors/loadxml
+bible/errors/load1
+bible/errors/load2
+bible/errors/nobnames
+bible/errors/noindex
+errors/general1
+errors/general2
+errors/folder_error
+errors/create_backgrounds_folder
+errors/create_sets_folder
+errors/create_settings_folder
+errors/create_songs_folder
+errors/no_backgrounds_folder
+errors/no_defaults_folder
+errors/no_scripture_folder
+errors/no_sets_folder
+errors/no_settings_folder
+errors/no_songs_folder
+errors/no_docs_folder
+errors/docs_folder
+song
+song/errors
+song/errors/unknown_element
+bible/errors/missing_bnames
+bible/errors/roman
+bible/errors/save
+bible/messages
+bible/messages/bnames
+bible/messages/save
+sets_mode/items/custom
+sets_mode/items/song
+sets_mode/items/scripture
+sets_mode/items/style
+sets_mode/items/revert
+print/setlist
+print/setlist/date
+songml/sharpchords
+songml/flatchords
+songml/altsharpchords
+songml/altflatchords
+Deleted load_settings/init_audio
+Deleted load_settings/load_plugins
+load_settings/checking_folders
+load_settings/main
+song_search/hymn_number
+folderdb_errors/error@code=13
+sets_mode/untitled
+
+progress_status/folder
+progress_status/lead_sheets
+progress_status/process_themes
+progress_status/process_song
+progress_status/pass1
+progress_status/pass2
+progress_status/export
+progress_status
+shared/browse_for
+scripture_search/ok
+scripture_search/cancel
+scripture_search/example
+scripture_search/search
+scripture_search/words/all
+scripture_search/words/any
+scripture_search/words
+scripture_search/match/begins
+scripture_search/match/exact
+scripture_search/match
+scripture_search
+about/additional
+smartml/attrib_except
+smartml/no_path
+smartml/no_file
+smartml/cant_open
+smartml/cant_create
+smartml/xml_error
+smartml/xml_exterror
+presentation_settings/misc/descriptive_subtitle_info moved to style_editor/fonts_and_alignment
+presentation_settings/style/highlight_chorus moved to style_editor/fonts_and_alignment
+songml/presentation
+scripture_search/lst_result
+find_image/parent
+about/sources
+scripture_lookup/book
+questions/generic_save
+questions/generic_save_explanation
+questions/set_changed
+set_mode/errors/revert
+general_settings/documents_folder/warning
+general_settings/documents_folder/message
+songs_mode/ (Modified)
+sets_mode/ (Modified)
+general_settings/documents_folder/changed
+questions/song_changed
+questions/set_changed
+questions/changed (Deleted)
+shared/select
+questions/select_docs_folder
+general_song_editor/ccli (Modified)
+general_settings/ccli (Modified)
+scripture_lookup/select_file
+module/generate_index
+module/generate_error

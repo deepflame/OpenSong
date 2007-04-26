@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<language name="Francais" author="Karel Leorier / adorateur.com" version="1.0 Beta2-10 Français">
+
+  <load_settings>
+    <print>Chargement des paramètres d'impression</print>
+    <presentation>Chargement des paramètres de présentation</presentation>
+    <tempos>Chargement de la liste des tempos</tempos>
+    <themes>Chargement de la liste des thèmes</themes>
+    <time_signatures>Chargement de la liste des signatures</time_signatures>
+    <fonts>Chargement de la liste des polices de caractères</fonts>
+    <latest_version>Recherche de la dernière version
+      <newer_available>Une nouvelle version (%1) est dispo.</newer_available>
+    </latest_version>
+      <init_audio>Chargement de SXMS Audio</init_audio>
+    <load_plugins>Vérification des formats de fichiers pris en charge par les plugins Winamp</load_plugins>
+  </load_settings>
+
+  <load_data>
+      <bible>Chargement de la Bible par défaut</bible>
+      <songs_cache>Mise en cache des chants</songs_cache>
+      <folders>Chargement des répoertoires de chants</folders>
+      <songs>Chargement des chants</songs>
+      <sets>Chargement des listes</sets>
+  </load_data>
+
+  <welcome>Bienvenue !</welcome>
+
+  <songs_mode caption="Mode chant">Utilisez ce mode pour saisir et modifier les chants. Les chants peuvent être imprimés sur partition ou projetés sur des diapositives.
+    <all_songs caption="Tous les chants">
+      <print caption="Imprimer">Imprime tous les chants disponibles. Cette fonctionnalité permet d'imprimer des carnets de chants.</print>
+      <export caption="Exporter">Exporte tous les chants.</export>
+      <find caption="Rechercher">Recherche un mot ou une phrase dans le texte de tous les chants.</find>
+    </all_songs>
+    <new_song caption="Nouveau chant">
+      <create caption="Créer">Ajoute un chant à OpenSong.</create>
+      <import caption="Importer">Importe un nouveau chant dans OpenSong à partir de CCLI SongSelect.</import>
+    </new_song>
+    <selected_song caption="Chant en cours">
+      <save caption="Sauvegarder">Enregistre le chant en cours sur le disque.</save>
+      <revert caption="Restaurer">Récupère le chant en cours à partir de la version enregistrée sur le disque.</revert>
+      <print caption="Imprimer">Imprime le chant en cours.</print>
+      <present caption="Diaporama">Affiche le chant en cours à l'écran.
+        <single_screen caption="Simple ecran"/>
+        <dual_screen caption="Double ecran"/>
+        <preview_dual_screen caption="Previsualiser en double ecran"/>
+      </present>
+      <export caption="Exporter">Exproter le chant en cours.
+        <to caption="Choisir le répertoire de destination."/>
+      </export>
+      <rename caption="Renommer">Renommer le chant en cours.</rename>
+      <move caption="Déplacer">Déplace le chant en cours dans un autre répertoire.
+        <where caption="Deplacer '%1' vers le répertoire suivant :"/>
+      </move>
+      <delete caption="Supprimer">Supprime le chant en cours.</delete>
+    </selected_song>
+
+    <songs caption="Chants">Choisir un chant de la liste à charger dans l'éditeur.</songs>
+
+    <curr_folder caption="Répertoire">Montre le répertoire qui contient ce chant (par rapport au répertoire courant)</curr_folder>
+
+    <song_folders caption="Répertoires">Choisir un répertoire de la liste pour filter la liste des chants en cours.
+      <new>Créée un nouveau répertoire pour stocker des chants.</new>
+      <delete>Supprime le répertoire sélectionné. Celui-ci doit être vide.</delete>
+      <filter_all caption="Tous"/>
+      <filter_main caption="Principal"/>
+    </song_folders>
+  </songs_mode>
+
+  <general_song_editor caption="Général">Affiche le titre, le sous-titre, l'auteur, les diapositives et les paroles du chant en cours.
+    <header caption="Editeur de chants"/>
+    <show_general_editor caption="Général"/>
+    <show_advanced_editor caption="Avancé"/>
+    <title caption="Titre">Définit le titre du chant sélectionné.</title>
+    <author caption="Auteur">Définit l'auteur du chant sélectionné.</author>
+    <copyright caption="Copyright">Définit le copyright du chant sélectionné.</copyright>
+    <ccli caption="n°CCLI">Définit n°CCLI du chant sélectionné.</ccli>
+    <hymn_number caption="Numéro">Définit le numéro de chant (dans un carnet, une liste...)</hymn_number>
+
+    <presentation caption="Ordre des sections">Définit l'ordre de présentation du chant sélectionné. Les sections doivent êtr séparées par des espaces (ex. "V1 C V2 C")</presentation>
+    <lyrics caption="Accords/Paroles">Modifier le chant en utilisant des lignes de section, de commentaires, d'accords et de paroles.</lyrics>
+    <insert caption="Insérer"/>
+      <ins_section caption="Section">Les sections sont utilisées pour séparer les différentes parties du chant.
+        <section_name caption="Nom de la section"/>
+      </ins_section>
+      <ins_lyrics caption="Accords/Paroles">Insère automatiquement une ligne préfixée pour accords et paroles.
+        <number_of_lines caption="Nombre de lignes"/>
+      </ins_lyrics>
+      <ins_multi_verse caption="Couplets multiples">Insère automatiquement une ligne préfixée pour accords et paroles à utiliser lorsque qu'il y a des couplets multiples.
+        <number_of_verses caption="Nombre de couplets"/>
+        <number_of_lines caption="Nombre de lignes"/>
+      </ins_multi_verse>
+      <ins_comment caption="Commentaire">Les commentaires s'impriment sur les partitions mais ne sont pas présentés sur les diapositives.</ins_comment>
+      <ins_column caption="Nouvelle colonne">Les partitions peuvent contenir deux colonnes pour aider à faire une seule page avec les chants longs.</ins_column>
+      <ins_page caption="Nouvelle page">Indique qu'à cet endroit doit être placé un saut de page lors de l'impression de chants plus longs.</ins_page>
+
+    <transpose caption="Transposer">Utiliser cette option pour transoposer automatiquement votre chant en n'importe quelle tonalité. Le nombre est celui du nombre de demi-tons.
+      <using caption="Sens">Choisir le sens de la transposition.
+        <sharps caption="Dièses"/>
+        <flats caption="Bémols"/>
+      </using>
+    </transpose>
+  </general_song_editor>
+
+  <advanced_song_editor caption="Avancé">Affiche le thème, le capo, le temp, le style... du chant en cours.
+    <header caption="Editeur de chants"/>
+    <show_general_editor caption="Général"/>
+    <show_advanced_editor caption="Avancé"/>
+    <themes caption="Thèmes">Définit les thèmes du chant sélectionné.</themes>
+    <capo caption="Capo">Définit la position du capo pour le chant en cours.</capo>
+    <capo_print caption="Imprimer"> Si cette option est cochée, OpenSong imprimera les accords capo en plus des accords normaux pour ce chant.</capo_print>
+    <time_sig caption="Signature">Définit la signaturedu chant sélectionné.</time_sig>
+    <tempo caption="Tempo">Définit le tempo du chant sélectionné.</tempo>
+    <key caption="Tonalité">Définit la tonalité du chant sélectionné.</key>
+    <aka caption="Autre titre">Définit un autre titre couramment emplyé pour ce chant.</aka>
+    <key_line caption="Ligne principale">Définit la ligne du chant qui permet de le reconnaître facilement.</key_line>
+    <style caption="Style particulier">Cliquer ici pour définir un style particulier pour ce chant. Ce style surcharge le style par défaut.</style>
+    <user1 caption="Autre info 1">Mettre une autre information de votre choix ici.</user1>
+    <user2 caption="Autre info 2">Mettre une autre information de votre choix ici.</user2>
+    <user3 caption="Autre info 3">Mettre une autre information de votre choix ici.</user3>
+  </advanced_song_editor>
+
+  <sets_mode caption="Mode Listes">Utiliser ce mode pour ajouter et modifier vos listes. Les listes servent à projeter un ensemble de chants, d'annonces, de versets, etc.
+    <sets caption="Listes">Choisir une liste pour la charger dans l'éditeur.
+      <add>Ajoute une liste dans OpenSong.</add>
+    </sets>
+    <current_set caption="Liste en cours">
+      <save caption="Sauvegarder">Enregistrer la liste en cours sur le disque.</save>
+      <rename caption="Renommer">Renommer la liste en cours.</rename>
+      <delete caption="Supprimer">Supprime la liste en cours. (Les chants se trouvant dans cette liste ne seront pas supprimés de l'éditeur)</delete>
+       <saveas caption="Sauveg. sous">Enregistre la liste en cours sous un autre nom.</saveas>
+      <present caption="Diaporama">Projeter la liste à l'écran. Vous avez l'option de projeter sur l'écran en cours, sur un autre écran, ou d'utiliser un seul écran pour prévisualiser la projection.
+        <single_screen caption="Simple ecran"/>
+        <dual_screen caption="Double ecran"/>
+        <preview_dual_screen caption="Previsualiser double ecran"/>
+        <no_slides>Vous devez avoir au moins une dipositive dans la liste en cours pour afficher le diaporama.</no_slides>
+      </present>
+      <print_songs caption="Chants">Imprime les chants de la liste en cours.
+        <no_songs>Aucun chant dans la liste.</no_songs>
+      </print_songs>
+      <print_order caption="Liste">Imprime une représentation de la liste.</print_order>
+    </current_set>
+    <new_item caption="Nouvel élement">
+      <add_song caption="Chant">Ajoute un chant à la liste en cours. Vous pourrez alors choisir parmi les chants disponibles dans l'éditeur.</add_song>
+      <add_scripture caption="Vertse(s)">Ajoute une ou plusieurs diapos de versets pour la liste en cours. Une fenêtre vous permettra de choisir le passage que vous souhaitez afficher.</add_scripture>
+      <add_slides caption="Texte">Ajoute une diapo personnalisée à la liste en cours. Vous pourrez y personnaliser votre propre titre, sous-titre, texte et style. Une diapo texte peut en réalité contenir plusieurs diapos.</add_slides>
+      <add_style caption="Style">Change le style par défaut de la liste à n'importe quel endroit de celle-ci. Les changement de style peuvent en définir un nouveau ou revenir au précédant.</add_style>
+      <add_video caption="Vidéo">Ajoute un fichier vidéao à la liste en cours. A utiliser pour projeter une vidéo dans OpenSong.</add_video>
+      <add_powerpoint caption="PowerPoint">Ajoute une présentation PowerPoint à la liste en cours. A utiliser pour controler une présentation PowerPoint directement dans OpenSong.</add_powerpoint>
+    </new_item>
+    <current_item caption="Elément en cours">
+      <move_up caption="Vers le haut">Déplace l'élément sélectionné vers le haut de la liste.</move_up>
+      <move_down caption="Vers le bas">Déplace l'élément sélectionné vers le bas de la liste.</move_down>
+      <remove caption="Supprimer">Supprimer l'élément de la liste.</remove>
+      <copy caption="Copier">Créer une copie de l'élement sélectionné.</copy>
+      <store caption="Enregistrer">Enregistrer l'élement sélectionné dans la liste.</store>
+    </current_item>
+    <items caption="Eléments de la liste">Affiche les élements de la liste en cours.Cliquer sur un élement pour le modifier dans l'éditeur correspondant.</items>
+  </sets_mode>
+
+  <slide_editor>
+    <header caption="Editeur de diapositives"/>
+    <title caption="Titre">Définit le titre affiché sur la diapositive.</title>
+    <subtitle caption="Sous-titre">Définit le titre affiché sur la diapositive.</subtitle>
+    <name caption="Nom">Définit le nom affiché dans la fenêtre d'aide à la présentation. Ce nom ne s'affiche pas sur la diapositive elle-même.</name>
+    <slides caption="Diapositives">Contient le corps de texte de la (des) diapositive(s) en cours.</slides>
+    <presentation caption="Ordre personnalisé">Modifier l'ordre pour cette présentation</presentation>
+    <origorder caption="Ordre de présentation d'origine">Ordre de présentation du chant</origorder>       
+    <notes caption="Notes">Ces notes s'affichent dans la fenêtre d'aide à la présentation lors de la projection sur double-écran.</notes>
+    <insert caption="Insérer"/>
+      <ins_slide caption="Diapositive">Permet la création de diapositives multiples qui partagent, le même titre, le même sous-titre, le même style, et/ou le mode même paramètre d'avance automatique. Les diapositives crées de cette façon peuvent aussi passer automatiquement en boucle.</ins_slide>
+    <loop caption="En boucle">Cocher cette case pour que OpenSong revienne automatiquement en boucle à la première diapositive de cet élément.</loop>
+    <print caption="Imprimer">Décocher cette case pour que ce groupe de diapositives n'apparaisse pas dans l'ensemble des listes lors de l'impression.</print>
+    <auto_advance caption="Faire avancer automatique les diapos toutes les">Entrer le nombre de secondes de délai entre chaque diapositive avant que OpenSong n'affiche la suivante dans cet élement.</auto_advance>
+    <seconds caption="secondes"/>
+    <style caption="Style particulier">Cocher cette case permet à cette diapositive d'avoir un style particulier. Dans ce cas, cliquer sur la zone de prévisualisation au-dessus pour modifier le style de l'élement.</style>
+  </slide_editor>
+
+  <style_change>
+    <header caption="Changement de style"/>
+    <revert caption="Revenir au style précédent">Cette option permet de revenir au style précédent à partir de ce point.</revert>
+    <change caption="Changer le style en">Cette option permet de changer le style des listes à n'importe quel endroit de la liste. Un changement de style affecte toutes les diapositives qui suivent jusqu'au prochain changement de style.</change>
+    <style>Cliquer ici pour modifier le nouveau style.</style>
+  </style_change>
+
+  <video_chooser>
+    <header caption="Editeur de diapositive vidéo"/>
+    <name caption="Nom de la Vidéo"/>
+    <file caption="Fichier Vidéo">Définit le nom du fichier de cette diapositive vidéo.</file>
+  </video_chooser>
+
+  <powerpoint_slides>
+    <header caption="Editeur de diapositives PowerPoint"/>
+    <name caption="Nom des diapositives">Nom utilisé par OpenSong pour identifier ce groupe de diapositives.</name>
+    <file caption="Fichier PowerPoint">Définit le fichier PowerPoint pour cette diapositive.</file>
+  </powerpoint_slides>
+  <song_search title="Recherche un chant">
+    <search caption="Saisie une chaîne de caractères :"/>
+    <fields caption="SChamps de recherche">
+      <title caption="link(general_song_editor/title/@caption)"/>
+      <author caption="link(general_song_editor/author/@caption)"/>
+      <copyright caption="link(general_song_editor/copyright/@caption)"/>
+      <ccli caption="link(general_song_editor/ccli/@caption)"/>
+      <presentation caption="link(general_song_editor/presentation/@caption)"/>
+      <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+
+      <themes caption="link(advanced_song_editor/themes/@caption)"/>
+      <capo caption="link(advanced_song_editor/capo/@caption)"/>
+      <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
+      <time_sig caption="link(advanced_song_editor/time_sig/@caption)"/>
+      <tempo caption="link(advanced_song_editor/tempo/@caption)"/>
+      <key caption="link(advanced_song_editor/key/@caption)"/>
+      <aka caption="link(advanced_song_editor/aka/@caption)"/>
+      <key_line caption="link(advanced_song_editor/key_line/@caption)"/>
+      <style caption="link(advanced_song_editor/style/@caption)"/>
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+    </fields>
+  </song_search>
+
+  <main_menu>
+    <file caption="_Fichier">
+      <new caption="_Nouveau"/>
+      <save caption="_Enregistrer"/>
+      <present caption="_Diaporama">
+        <single_screen caption="_Simple Ecran"/>
+        <dual_screen caption="Dou_ble Ecran"/>
+        <preview_dual_screen caption="_Prévisualiser Double Ecran"/>
+      </present>
+      <pagesetup caption="Mise en pa_ge"/>
+      <print caption="_Imprimer"/>
+      <print_alphabetical_toc caption="Imprimer _Table des matières _alphabétique"/>
+      <print_categorical_toc caption="Imprimer Table des matières par _catégories"/>
+      <exit caption="_Quitter"/>
+    </file>
+    <edit caption="_Modifier">
+      <undo caption="_Annuler"/>
+      <cut caption="_Couper"/>
+      <copy caption="C_opier"/>
+      <paste caption="Co_ller"/>
+      <clear caption="_Effacer"/>
+      <find caption="_Recherche"/>
+      <find_next caption="Continuer Rec_herche"/>
+    </edit>
+    <mode caption="_Mode">
+      <songs caption="Mode _Chant"/>
+      <sets caption="Mode _Liste"/>
+    </mode>
+    <settings caption="_Paramètres">
+      <presentation caption="Paramètres de P_résentation"/>
+      <print caption="Paramètres d'_Impression"/>
+      <general caption="Paramètres _Généraux"/>
+      <refresh_songs caption="_Actualiser le répertoire des chants"/>
+      <refresh_songs caption="Actualiser le répertoire des _listes"/>
+      <install_module caption="_Installer un module"/>
+    </settings>
+    <help caption="_Aide">
+      <help_topics caption="_Sommaire l'aide"/>
+      <translating caption="_Traduire OpenSong"/>
+      <about caption="A _Propos d'OpenSong"/>
+    </help>
+  </main_menu>
+
+  <general_settings title="Configuration générale">
+    <general caption="General">
+      <ccli caption="N° de licence CCLI"/>
+      <version_check caption="Vérifier si une nouvelle version est disponible au démarrage"/>
+      <language caption="Langue"/>
+      <startmode caption="Fenêtre initiale">
+	<song caption="Chants"/>
+	<set  caption="Listes"/>
+      </startmode>
+    </general>
+    <proxy caption="Proxy">
+      <host caption="Host"/>
+      <port caption="Port"/>
+    </proxy>
+    <user_defined caption="Champs personnalisé">
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <load caption="Chargement des paramètres par défaut"/>
+    </user_defined>
+    <fonts caption="Polices">
+      <headings caption="Titres"/>
+      <labels caption="Etiquettes de champs"/>
+      <text_fields caption="Champs de texte"/>
+      <fixed_width caption="Champs de texte à taille fixe"/>
+      <buttons caption="Boutons"/>
+      <large_headings caption="Grands titres"/>
+    </fonts>
+    <documents_folder caption="Répertoire des documents">
+      <warning caption="Ne pas utiliser sans précaution. Redémarrage nécessaire."/>
+      <default caption="Par défaut"/>
+      <custom caption="Personnalisé"/>
+      <message>Fermeture d'OpenSong. Cliquez sur OK et redémarrez OpenSong SVP. Vous pouvez copier vos anciens documents OpenSong vers leur nouvel emplacement avant le redémarrage.</message>
+      <change caption="Modifier"/>
+    </documents_folder>
+    <newpaint caption="Utiliser un nouveau style visuel"/>
+  </general_settings>
+
+  <print_settings title="Paramètres d'impression">
+    <tabs head1="Marges" head2="Polices" head3="Affichage"/>
+    <margins>
+      <left caption="Gauche"/>
+      <top caption="Haut"/>
+      <right caption="Droite"/>
+      <bottom caption="Bas"/>
+      <width caption="Largeur"/>
+      <height caption="Hauteur"/>
+      <message caption="Consulter les paramètres de la page pour définir les marges"/>
+    </margins>
+    <fonts>
+      <title caption="Titre"/>
+      <author caption="Ateur"/>
+      <sections caption="Sections"/>
+      <lyrics caption="Paroles"/>
+      <chords caption="Accords"/>
+      <capo caption="Transp."/>
+      <copyright caption="Copyright"/>
+    </fonts>
+    <layout>
+      <heading_border_thickness caption="Epaisseur de la bordure de titre"/>
+      <title_in_caps caption="Titre en MAJ."/>
+    </layout>
+    <units caption="Unités">
+      <inches caption="Pouces"/>
+      <cm caption="Centimètres"/>
+    </units>
+  </print_settings>
+
+  <presentation_settings title="Paramètres du diaporama">
+    <settings head1="Style" head2="Options">
+        <default_slides caption="Style de diapo par défaut"/>
+        <scripture_slides caption="Style par défaut pour les versets"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        <transition_note caption="*Les transitions dépendent beaucoup de la résolution de l'écran. Si vos transitions sont lentes, baissez la resolution de l'écran de projection. De plus, si les transitions n'ont pas lieu, il est possible que le nombre de couleurs de l'acran de projection ne soit trop faible."/>
+    </settings>
+    <style caption="Style">
+      <use_transitions caption="Utiliser des Transitions"/>
+      <transition_note caption="*Les transitions dépendent beaucoup de la résolution de l'écran. Si vos transitions sont lentes, baissez la resolution de l'écran de projection. De plus, si les transitions n'ont pas lieu, il est possible que le nombre de couleurs de l'acran de projection ne soit trop faible."/>
+      <border_thickness caption="Epaisseur de bordure"/>
+      <initial_mode caption="Mode initial"/>
+      <modes>
+        <normal caption="Normal"/>
+        <black caption="Noir"/>
+        <white caption="Blanc"/>
+        <logo caption="Logo"/>
+        <hidden caption="Caché"/>
+        <frozen caption="Figé"/>
+      </modes>
+      <mouse_cursor caption="Curseur">
+        <arrow caption="Flèche"/> 
+        <cross caption="Croix"/>
+        <hidden caption="Invisible"/>
+        <hourglass caption="Hourglass"/> 
+        <ibeam caption="IBeam"/> 
+      </mouse_cursor>
+      <blanks caption="Insérer des diapos vierges"/>
+      <blanks_between caption="Esp. entre éléments"/>
+      <time caption="Durée" helptag="Durée de transition (plus long sur les systèmes lents)"/>
+      <frames caption="Etapes" helptag="Nombre d'étapes de transition entre chaque diapositive"/>
+      <blank_style caption="Les diapos viergent prennent le style de"/>
+      <blank_prev caption="Diapo précédente"/>
+      <blank_next caption="Diapo suivante"/>
+      
+<highlight_chorus caption="Mettre en valeur le texte du refrain"/>
+      
+<initial_mode caption="Mode de présentation par défaut"/>
+    </style>
+    <alerts caption="Messages">
+      <font caption="Police"/>
+      <align caption="Alignement"/>
+    </alerts>
+    <monitor caption="Ecrans">
+      <control caption="Ecran de configuration"/>
+      <presentation caption="Ecran de présentation"/>
+      <detected caption="%1 écran(s) détecté."/>
+    </monitor>
+    <logo caption="Logo">
+      <mask caption="Masque"/>
+    <click_to_change caption="link(shared/click_to_change/@caption)"/>
+    <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </logo>
+    <audio caption="Audio">
+      <file_to_play caption="Fichier à lire"/>
+      <browse caption="Naviguer"/>
+      <stop caption="Stop"/>
+      <play caption="Lecture"/>
+    </audio>
+
+    <misc caption="Divers">
+      <exit_prompt caption="Confirmer avant de quitter"/>
+      <descriptive_subtitle_info caption="Info de sous-titre"/>
+   </misc>
+  </presentation_settings>
+
+  <presentation_helper title="Aide à la présentation">
+    <slides head1="Titre" head2="ID" head3="Texte"/>
+    <modes caption="Mode">
+      <normal caption="[N] Normal"/>
+      <black caption="[K] Ecran noir"/>
+      <white caption="[W] Ecran blanc"/>
+      <logo caption="[L] Logo"/>
+      <hidden caption="[H] Caché"/>
+      <frozen caption="[F] Figé"/>
+    </modes>
+    <actions caption="Actions">
+      <alert caption="[A] Message">Nouveau message (laisser vide pour effacer)</alert>
+      <quick_song caption="[Q] Ajouter un chant"/>
+      <scripture caption="[S] Passage"/>
+      <full_screen caption="[M] Plein écran"/>
+      <normal_screen caption="[M] Ecran normal"/>
+      <return caption="[Esc] Sortir"/>
+    </actions>
+    <exit caption="Quitter la présentation ?"/>
+    <loop caption="Boucle"/>
+    <keys>- Touches -
+Haut: Diapo suiv
+Bas: Diapo préc
+Droite: Section suiv
+Gauche: Section préc
+1-9: Couplet
+C: Refrain
+P: Pré-refrain
+B: Bridge
+T: Tag</keys>
+  </presentation_helper>
+
+  <help_topics title="Ribriques d'aide">
+    <tabs head1="Format des accords et paroles" head2="Champ de présentation" head3="Fermer"/>
+    <print caption="Imprimer"/>
+  </help_topics>
+
+  <font_selection title="Choix de police">
+    <face caption="police"/>
+    <size caption="Taille"/>
+    <color caption="Couleur"/>
+    <bold caption="Gras"/>
+    <italic caption="Italique"/>
+    <underline caption="Souligné"/>
+    <border caption="Encadré"/>
+    <shadow caption="Ombré"/>
+    <fill caption="Remplis."/>
+  </font_selection>
+
+  <print_preview title="Aperçu avant impression">
+    <first caption="&lt;&lt;"/>
+    <previous caption="&lt;"/>
+    <next caption="&gt;"/>
+    <last caption="&gt;&gt;"/>
+    <zoom_in caption="-"/>
+    <zoom_out caption="+"/>
+    <pages caption="%1 sur %2"/>
+    <print_setup caption="Param. d'impression"/>
+    <print caption="Imprimer"/>
+    <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+    <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+  </print_preview>
+<print>
+     <continued caption="(suite)"/>
+     <toc caption="Table des matières"/>
+     <categorized caption="Par catégorie"/>
+     <alphabetical caption="Par ordre alpha"/>
+     <copyright caption="Copyright"/>
+     <page caption="Page %1"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+     <create_list caption="Creation de la liste de %1..."/>
+
+  </print>
+ 
+<songml>
+     <page caption="Page"/>
+     <capo caption="Transposition"/>
+     <copyright caption="Copyright"/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Pre-refrain"/>
+     <chorus caption="Refrain"/>
+     <bridge caption="Pont"/>
+     <tag caption="Libellé"/>
+     <verse caption="Verset"/>
+     <author caption=""/>
+     <hymn_number caption="N°"/>
+     <ccli_number caption="N° CCLI"/>
+     <ccli_license caption="N° de licence CCLI"/>
+     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
+     <separator caption="|NL|"/>
+  </songml>
+  <style_editor title="Editeur de style">
+    <fonts_and_alignment caption="Polices et alignements">
+      <title caption="Titre"/>
+      <subtitle caption="Sous-titre"/>
+      <body caption="Corps"/>
+      <align caption="Alignement"/>
+      <subtitles caption="Sous-titres du chant"/>
+    </fonts_and_alignment>
+    <background caption="Arrière-plan">
+      <color caption="Couleur"/>
+      <image caption="Image"/>
+      <position caption="Position">
+          <row0 caption="Elargir"/>
+          <row1 caption="Centrer"/>
+          <!-- <row2 caption="Tile"/> -->
+     </position>
+      <trim_bottom caption="Rogne le pied"/>
+      <pixels caption="px"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </background>
+    <trim_note caption="Coupe le bas de l'arrière plan pour cacher les maruqes de copyright, les URL de sites webs, etc. Pour éviter les distortions, cela rogne aussi les côtés pour compenser."/>
+  </style_editor>
+
+  <song_lookup title="Consultation de chant">
+    <header caption="Pour ajouter un chant, cliquer sur le titre en dessous et cliquer sur le bouton 'Ajouter', ou commencer à saisir le titre du chant et appuyer sur Entrée."/>
+    <no_selection>Veuillez choisir un chant.</no_selection>
+  </song_lookup>
+
+  <scripture_lookup title="Consultation de passage biblique">
+    <lookup caption="Consultation rapide">
+      <reference caption="Référnce"/>
+      <lookup caption="Consultation"/>
+      <example caption="Ex: '2Pet 1:1-2' ou '2Pet 1:1-2 (KJV)'"/>
+    </lookup>
+    <version caption="Version"/>
+    <verses_per_slide caption="Versets par diapo">
+      <one caption="1"/>
+      <two caption="2"/>
+      <three caption="3"/>
+    </verses_per_slide>
+    <format caption="Format">
+      <paragraph caption="Paragraphe"/>
+      <verse caption="Verset"/>
+    </format>
+    <bad_reference>
+      <empty>Référence erronée : la référence est vide.</empty>
+      <book>Référence erronée : livre introuvable.</book>
+      <version>Référence erronée : version '%1' introuvable.</version>
+      <chapter>Référence erronée : Chapître '%1' introuvable.</chapter>
+      <verse>Référence erronée : Verset '%1' introuvable.</verse>
+      <verse_range>Référence erronée : le verset de droite de la référence doit être plus grand que celui de gauche.</verse_range>
+    </bad_reference>
+    <colon caption=":"/>
+    <dash caption="-"/>
+    <search caption="link(shared/search/@caption)"/>
+    <insert caption="link(shared/insert/@caption)"/>
+  </scripture_lookup>
+
+  <module>
+    <read_error>Impossible de lire le fichier ou format de fichier invalide.</read_error>
+    <format_error>Format de module invalide.</format_error>
+    <move_error>Erreur lors du déplacement du fichier. Veuillez vérifier vos droits d'accès à '%1'.</move_error>
+    <rename_error>Erreur lors du renommage du fichier. Veuillez vérifier vos droits d'écriture pour '%1'.</rename_error>
+    <success>Module chargé avec succès.</success>
+    <file_type>Modules OpenSong (*.xmm)</file_type>
+  </module>
+
+  <import_from_ccli title="Importer depuis CCLI">
+    <user_id caption="ID utilisateur"/>
+    <password caption="Mot de passe"/>
+    <for caption="Chercher"/>
+    <songs head1="Pa" head2="Ch" head3="Le" head4="Titre" head5="Auteur"
+      head6="Catalogue" head7="autre titre" head8="Ligne princ." head9="tonamité" head10="n°CCLI"/>
+    <by caption="De">
+      <title_and_aka caption="Titre et autre titre"/>
+      <title caption="Titre"/>
+      <lyrics caption="Paroles"/>
+      <author caption="Auteur"/>
+      <catalog caption="Catalogue"/>
+      <theme caption="Thème"/>
+      <ccli caption="n°CCLI"/>
+    </by>
+    <filter caption="Filtre">
+      <all caption="Tous"/>
+      <lead_sheets caption="Partitions"/>
+      <sound_samples caption="Extraits sonores"/>
+    </filter>
+    <find caption="Rechercher"/>
+    <previous_page caption="Page précédente"/>
+    <next_page caption="Page suivante"/>
+    <page caption="Page"/>
+    <of_pages caption="sur %1"/>
+    <import caption="Importer"/>
+    <errors>
+      <no_data>Aucune donnée trouvée. Veuillez vérifier votre saisie ou vos informations CCLI.</no_data>
+      <bad_html>Erreur HTML. Veuillez contacter le support technique d'OpenSong.</bad_html>
+      <no_results>Aucun résultat.</no_results>
+      <no_headers>Aucune information d'entête trouvée. Veuillez vérifier votre saisie ou vos informations CCLI.</no_headers>
+      <no_connect>Impossible de se connecter à CCLI. Veuillez ré-essayer ultérieurement.</no_connect>
+      <already_exists>Ce chant existe déjà.</already_exists>
+    </errors>
+  </import_from_ccli>
+
+  <find_image title="Chercher une image"/>
+  <input_box title="OpenSong"/>
+
+  <theme_list>
+    <option name="Christ: Attributs"/>
+    <option name="Christ: Naissance"/>
+    <option name="Christ: Mort"/>
+    <option name="Christ: Puissance/Majesté"/>
+    <option name="Christ: Amour/Grâce"/>
+    <option name="Christ: Résurrection"/>
+    <option name="Christ: Revient"/>
+    <option name="Christ: Victoire"/>
+    <option name="Eglise: Soumission/Obéissance"/>
+    <option name="Eglise: Pays/Nation"/>
+    <option name="Eglise: Vie éternelle/Paradis"/>
+    <option name="Eglise: Evangélisation"/>
+    <option name="Eglise: Famille/Communauté"/>
+    <option name="Eglise: Relation avec Dieu"/>
+    <option name="Eglise: Pureté/Sainteté"/>
+    <option name="Eglise: Repentance/Salut"/>
+    <option name="Eglise: Renouvellement"/>
+    <option name="Eglise: Service/Ministère"/>
+    <option name="Eglise: Soif spirituelle"/>
+    <option name="Fruit: Foi/Espoir"/>
+    <option name="Fruit: Amour"/>
+    <option name="Fruit: Joie"/>
+    <option name="Fruit: Paix"/>
+    <option name="Fruit: Patience/Bonté"/>
+    <option name="Fruit: Humilité"/>
+    <option name="Dieu: Attributs"/>
+    <option name="Dieu: Créateur/Création"/>
+    <option name="Dieu: Père"/>
+    <option name="Dieu: Guide/Protecteur"/>
+    <option name="Dieu: Saint Esprit"/>
+    <option name="Dieu: Sainteté"/>
+    <option name="Dieu: Amour/Grâce"/>
+    <option name="Dieu: Puissance/Majesté"/>
+    <option name="Dieu: Promesses"/>
+    <option name="Dieu: Victoire"/>
+    <option name="Dieu: Parole"/>
+    <option name="Louange: Confiance/Assurance"/>
+    <option name="Louange: Appel/Entrée"/>
+    <option name="Louange: Célébration"/>
+    <option name="Louange: Proclamation"/>
+    <option name="Louange: Intimité"/>
+    <option name="Louange: Invitation"/>
+    <option name="Louange: Adoration/Contemplation"/>
+    <option name="Louange: Prière"/>
+    <option name="Louange: Ressourcement/Délivrance"/>
+    <option name="Louange: Remerciement"/>
+  </theme_list>
+
+  <tempo_list>
+    <option name="Très rapide"/>
+    <option name="Rapide"/>
+    <option name="Moyen"/>
+    <option name="Lent"/>
+    <option name="Très lent"/>
+  </tempo_list>
+
+  <time_sig_list>
+    <option name="2/4"/>
+    <option name="3/4"/>
+    <option name="4/4"/>
+    <option name="3/8"/>
+    <option name="6/8"/>
+  </time_sig_list>
+
+  <style_preview>
+    <slide_groups>
+      <slide_group name="Exemple de titre" type="custom" seconds="0" loop="false">
+        <title>Exemple de titre</title>
+        <subtitle>Exemple de sous-titre</subtitle>
+        <notes>Exemple de notes</notes>
+        <slides>
+          <slide>
+            <body>Voici une diapositive exemple.
+Voici le corps de texte.
+Cliquer sur cette diapo pour en modifier le style.</body>
+          </slide>
+        </slides>
+      </slide_group>
+    </slide_groups>
+  </style_preview>
+
+ <subtitles caption="Sous-titres" head1="Tri" head2="Actif" head3="Description">
+        <row0 caption="Copyright|copyright"/>
+        <row1 caption="Auteur|author"/>
+        <row2 caption="Numéro|hymn_number"/> 
+        <row3 caption="N° CCLI|ccli_number"/> 
+        <row4 caption="N° de licence CCLI|ccli_license"/>
+</subtitles>
+  <shared>
+    <ok caption="OK"/>
+    <cancel caption="Annuler"/>
+    <yes caption="Oui"/>
+    <no caption="Non"/>
+    <browse caption="Parcourir"/>
+    <add caption="Ajouter"/>
+    <done caption="Terminé"/>
+    <untitled caption="Sans titre"/>
+    <click_to_change caption="Cliquer pour modifier"/>
+    <right_click_to_clear caption="Clic-droit pour effacer"/>
+    <insert caption="Insérer"/>
+    <close caption="Fermer"/>
+    <search caption="rechercher"/>
+  </shared>
+
+  <questions>
+    <new_name caption="Veuillez entrer un nom :"/>
+    <rename caption="Veuillez entrer un nom pour '%1':"/>
+    <save caption="Voulez-vous enregistrer vos modifications pour '%1'?"/>
+    <delete caption="Êtes-vous sûr(e) de vouloir supprimer '%1'?"/>
+    <clear caption="Êtes-vous sûr(e) de vouloir effacer cela ?"/>
+    <changed caption="Le chant a changé, voulez-vous le sauvegarder ?"/>
+  </questions>
+
+  <about>
+    <copyright>Copyright</copyright>
+    <gpl>Ce logiciel est distribué sous licence GPL.</gpl>
+    <web>Visitez http://www.opensong.org/ pour plus d'informations.</web>
+    <translating>Pour traduire OpenSong, copier le fichier 'English' dans le répertoire 'OpenSong Languages' et renommez-le avec la nouvelle langue. Traduire tout sauf les attributs et les balises. Ensuite envoyer le fichier à translator@opensong.org et nous l'incluerons dans la version officielle.</translating>
+    <created_with_opensong>Créé avec OpenSong</created_with_opensong>
+  </about>
+
+  <folderdb_errors>
+    <error code="1">Le répertoire '%1' existe déjà.</error>
+    <error code="2">Impossible de créer le répertoire '%1'.</error>
+    <error code="3">Le fichier '%1' existe déjà.</error>
+    <error code="4">Impossible de trouver le chmein du fichier '%1'.</error>
+    <error code="5">Impossible d'écrire dans le répertoire '%1'.</error>
+    <error code="6">Impossible de trouver le répertoire '%1'.</error>
+    <error code="7">Impossible de supprimer le répertoire '%1'.</error>
+    <error code="8">Impossible de trouver le fichier '%1'.</error>
+    <error code="9">Impossible de supprimer le fichier '%1'.</error>
+    <error code="10">Impossible de renommer le fichier '%2'.</error>
+    <error code="11">Le répertoire '%1' n'est pas vide. Veuillez d'abord le vider.</error>
+    <error code="12">Impossible de déplacer '%1' vers '%2'.</error>
+  </folderdb_errors>
+
+  <errors>
+    <empty_group>Le groupe '%1' doit contenir au moins une diapositive.</empty_group>
+    <unreadable_image>Impossible de lire le fichier image '%1'.</unreadable_image>
+    <end_of_songs>Fin des chants.</end_of_songs>
+    <already_exists>'%1' existe déjà.</already_exists>
+    <bad_format>'%1' contient un mauvais formatage.</bad_format>
+    <no_songs>Aucun chant dans la liste.</no_songs>
+    <no_multi_screen>Ecrans multiples non trouvés.</no_multi_screen>
+    <bad_file_name>Nom de fichier invalide '%1'.</bad_file_name>
+    <internal>Erreur interne. Contacter le support technique.</internal>
+    <no_such_song>Impossible de trouver le chant.</no_such_song>
+  </errors>
+
+  <open_titles>
+    <audio>Choisir un fichier audio à ouvri</audio>
+  </open_titles>  
+</language>

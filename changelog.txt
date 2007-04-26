@@ -1,0 +1,729 @@
+-= 1.0.1 BL17 =-
+
+* Correct issue where subfolder entries in a FolderDB cache would be corrupted, rendering them inaccessible.  See the JRC source tree for editorial comments.  :-)
+
+-= 1.0.0 BL17 =-
+
+* Removed unused vars in lst_songs_songs.changed
+
+* Fix corner case in SongEditor where user would click in an empty row of the song list and has unsaved changes,those changes would be lost
+
+* Prevent Second Save prompt when renaming set(Bug 1700769)
+
+* Fix issue where the list of verses for a book wouldn't be displayed if the book has non-ASCII characters. [Bug 1706973]
+
+* Rebuilding the song folder cache will complete one folder before beginning its subfolders to reduce the number of times the status window blinks.
+
+* Fix issue where OpenSong would quit if the documents folder saved in the preferences did not exist, leaving users with no easy way to repair the problem since the folder is a Base 64 encoded string holding the value of FolderItem.GetSaveInfo.
+
+* Add AbsolutePath to the info saved with a FolderItem in a preferences file.  OpenSong ignores this value when reloading the FolderItem, but it is useful for debugging.
+
+* When new scripture version is selected, don't reload the scripture if the new version is the same as the currently loaded version.
+
+* Release Bible object before loading new version.  Improves, but does not fully correct, a memory leak when changing bibles. [Bug 1703561]
+
+* Correct an issue introduced in r166 on IndexProgress where it wouldn't close properly after the scripture index is written. Also set IndexProgress window properties to prevent resizing.
+
+* Made printing the presentation order on the leadsheet optional.  The default is to not print it and produce the same output as RC1-BL14. Add <leadsheet presentation="true"/> to your PrintSettings file to enable.  Post-V1 will address this a different way; for now it provides a workaround for those who don't need or want the presentation order printed.
+
+(r166)
+* On Mac OSX, corrected module installation menu item to correctly allow selection of the module file.
+
+* Changed scripture indexing progress window to a global floating window to address issue with window stacking order.  To cancel index creation now, close the window with the close box.
+
+* When installing a scripture module, ask to build the index during installation. [Feature Request 1695997]
+
+* Scripture index creation won't crash the program if the user doesn't have the appropriate privileges to write the index. [Bug 1695995]
+
+* Correct NilObjectExceptions when printing a set list or songs in a set.
+
+-= 1.0 Release Candidate 2, Baselevel 16 =-
+
+* Reworked change from revision 154 for PresentWindow exit dialog. Program now will use the operating system message box ONLY if in single screen mode. This avoids the message box appearing on the presentation screen if the last window with the focus was the presentation window.
+
+* Export Song to HTML will not include capo chords if the "print capo chords" flag is not set. [Bug 1695098]
+
+* Corrected internal logic bug in the scripture picker.
+
+* Closing a presentation by focusing on the presentation display while a dialog box is open no longer causes problems and a crash later. [Bug 1693567]
+
+* If scripture file is not found at program start, prompt for the file to use.  Added scripture_lookup/select_file to English translation.
+
+(r154)
+* Exit dialog for PresentWindow changed from InputBox to an operating system message box to correct issue where the dock and menu bar would not hide after prompting for exit and the user selecting Cancel to return to the presentation. (added in r154 but not documented in commit message)
+
+* Updated English translation to make a better distinction between the two CCLI numbers: the church license number and the song CCLI ID number.
+
+* Correct issue introduced in BL15 where the default style would be used instead of the song style if song_style_preferred is False and a style change is not active.
+
+* Fix mouse getting stuck on the hourglass after presentation.
+
+* Fix PresentWindow on Mac so the resize box does not appear. As a temporary side effect, the window cannot be sized or moved when using dual-screen preview mode.
+
+* Mouse cursor properly changes when over PresentWindow even if the window does not have focus.
+
+* Corrected error in saving custom slides where the starting characters of the final slide would be dropped if the slides contained multi-byte characters. (OpenSongUtils.SplitRE) (Bug 1668194)
+
+(r149)
+*Update style.css to include hymn number & presentation order
+
+*Include hymn numaber & presenation order in HTML export
+
+* A meaningful error message is displayed if the language file is missing. The user is given the option of selecting a new language.
+
+* Added main_menu/edit/selall to English translation file. (Bug 1651194)
+
+* Fix single screen mode on Mac to properly remove the menu bar when OpenSong regains focus from another program. (Related to Bug 1512764).
+
+* Eliminate indexing or presentation of non-space whitespace characters in scriptures. (Bug 1658650)
+
+(r147)
+* Added update to MainSettingsWindow from r146, resizing nte_documents_warning.
+
+* Updated version to baselevel 16 (was getting harder to keep track of when certain changes in BL15 were made).
+
+* Changed PresentWindow to remain invisible after creation until late in the Present method to minimize visible changes to the window as it is configured.
+
+* Additional changes to PresentWindow to address issues with inconsistent window updates at start of a presentation. (Bugs 1559351 and 1658099)
+
+-= 1.0 Baselevel 15 =- Revision 145
+
+* Fixed a couple of bugs introduced with the preferences file that caused a crash if the file did not exist.
+
+* Change help shortcut key on OSX to Command-? to more closely conform to the Apple UI standards. Command-H is most commonly used for Hide.
+
+* Clean up error handling if the main preferences file didn't load properly. (JRC r141)
+
+* Removed OpenSongUtils.Xor (not used and incompatible with RB2007r1)
+
+* Moved FormatFolderName from MainSettingsWindow to FileUtils.  That's probably a more appropriate place for a utility function that may come in handy elsewhere.
+
+* In a previous change, MainWindowSettings was modified to only change the location of the documents folder in the preferences, not the running program.  This means that OpenSong may continue to safely run against the old folder.  The forced exit was removed and the prompts changed.
+
+* Added NotifyReceivers method to the IPreferences interface.  No sense being able to register callbacks without a way to make them, eh?
+
+* On Macintosh, Presenter mode will not minimize the main window to the dock, nor restore it when leaving Presenter. 
+
+* Trap NilObjectException in SmartML.XDocFromFile. An error before the translator is loaded, or in loading the translator, could cause OpenSong to chase its tail trying to display the error.
+
+* Added Tagalog books to bnames.xml (book names for Zefania).
+
+* Main preferences dialog updated to show the folder in use for songs and sets.  Some controls in this dialog are resized to accommodate the Slavic and Germanic languages.  Settings are stored in the new preferences file (see next item).
+
+* The Globals file, while contained within the application's directory tree, is written to by any user on the computer.  This created an issue for security-conscious users who desired to have non-Admin accounts run OpenSong.  It also created an issue where multiple users on the same computer wanted to use non-standard directories to hold OpenSong song and set files.  The Globals file now will be used for just that: global defaults set by the system administrator.  The user-level defaults derived from Globals now go into a proper user-specific preferences file, stored in ~/Library/Preferences on Mac, \Documents and Settings\{user}\Application Data\OpenSong on Windows, and ~/.OpenSong on Linux.  This is still an XML file, but it uses the PLIST DTD rather than OpenSong's old format.
+
+* SmartML.GetValueB wasn't setting the default in the XML if the path had to be created.  This meant that GetValueB would create a path with no value (interpreted as False) even if the default was set to True, so the next call to GetValueB on that path would return False always on subsequent calls until SetValueB was called.
+
+* Provide method to globally configure that a set style change overrides the style defined for a song (configured by editing the setting of "song_style_preferred" in the PresentSettings file).  Default is true, the current behavior.  This is a temporary workaround, not a permanent fix.
+
+* Fixed scripture indexing to avoid dropping words from the index completely. [Bug 1651524]
+
+* Corrected cosmetic issue with text entry field for scripture lookup direct entry.
+
+* Program preferences window rearranged; documents folder path displays on main page; browse for new documents documents folder starts at current documents folder.
+
+* Scripture lookup will no longer crash if the reference returns no verses.
+
+* Scripture lookup will no longer crash if a reference is typed into the edit field and the Lookup button or Return is pressed. (Thanks, JS, for all the testing help!)
+
+* Fixed error with copyright subtitle text displayed on slides.
+
+* Changed prompts the user sees to save a set (not an item within a set, though).  User now has three options like the previous change to Songs.  If the user selects "Don't Save," there are two possible actions: revert to the last saved version, or continue with the unsaved copy.  The behavior is controlled by two options in the MainSettings file: set_revert_on_dont_save and song_revert_on_dont_save.  At this time, these must be manually edited to change the default value.
+
+* Prevent bizarre second prompt for unsaved changes to a Song when exiting
+
+* Fixed Style Change set item to allow Subtitle Options
+
+* Fixed remembering previously selected From & To Verses when changing Bibles in ScripturePicker
+
+* Moved subtitle creation from SongML.ToSetML to new method SongML.BuildSubtitles to enhance readability and maintainability.
+
+-= 1.0 RC 1 Baselevel 14 =-
+
+* Running Presenter from Song mode will now display using the song's specific style rather than the default style.
+
+*Added Bible Book label to ScripturePicker
+
+*Fixed presenting song subtitles that somehow got broken -- badly. Descriptive Subtitles had no chance of working.
+
+*Fixed ScripturePicker can now select Genesis & Matthew (Silly Ed :)
+
+*Remember previously selected folder in SongPicker
+
+*Partial Support for remembering previously selected Book, Chapter & Verse when changing Bibles in ScripturePicker
+
+*Verse & Paragraph rad buttons in ScripturePicker now update preview
+
+*Add text the Scripture preview when starting ScripturePicker
+
+*Changed the way we prompt for unsaved changes to a song, to Yes,No,Cancel [Bug 1468060]. Still on the "to do" list is to fix this all throughout OpenSong, so additional bug reports aren't necessary...we want this as much as you do.  Deleted SaveDialog class previously added to code but not used (a utility routine is sufficient).
+
+*Prompt for unsaved changes before importing song
+
+*Prompt for unsaved changes before exporting single song
+
+*Removed second save prompt when moving song
+
+*Prevent OutOfBounds Exception when Removing unsaved set item
+
+* Set conditional compiles to support building Mach-O targets on Mac (OS X-only binary).  Source now compiles for Mac without change on RB2006 r4.  Mac binaries will now be distributed in bundle format (OpenSong.app vs. single file).
+
+* New "About" dialog.  Updated contributors list.
+
+* Added more error traps to the Image Chooser Window (used for selecting background images) in an effort to resolve bug 1604503.
+
+-= 1.0 Beta 2 Baselevel 13 =-
+
+* Reworked application and window Activate and KeyDown events to better detect when the wrong window has keyboard focus in presentation mode.  This clears up issues on the Mac with OpenSong appearing to hang in single-screen mode. [Bug 1575609]
+
+* Corrected resizing issues with Scripture Search and added scripture_search/lst_result tag to English translation file to translate the listbox headers. [Bug 1495537]
+
+* Corrected UI oddities in Scripture Search (default and enabled buttons for given dialog states).
+
+* Corrected numerous UI oddities in Scripture Picker: Lookup button enables only with text in the lookup box; dialog default button changes to Done after a lookup; clicking on the current Bible book name won't reset the chapter and verse sliders.
+
+* Maximize/restore button in Windows will correctly update the Full/Normal screen selection in the Presentation Helper window, and vice-versa.  On Macintosh and Linux, Maximize will not use the full client area on the control window to work around an issue with the top of the window hiding behind the menu bar on the Mac. [Bug 1559271]
+
+* Song selection window only opens once if activated immediately after entering presenter mode and no song is inserted.
+
+* Song selection window ("Q" shortcut in presenter) list of songs changes the highlighted song name with Page Up/Page Down/Home/End keys in keeping with commonly accepted UI practices. [Bug 1559333]
+
+* ActionSongPrint and ActionSongPrintAll now pass the song file's path to LeadSheet.AddSong.  This clears up an issue where the highest file in the folder hierarchy would be used regardless of the one selected if there are duplicate filenames in different folders.
+
+* Export to HTML (SongML.ToHTML) properly encodes characters such as the ampersand (&), greater/less-than (<>), etc.  Added a method to the OpenSongUtils module to extend the String class so this can be used elsewhere. Thanks to the Multi-byte String Utilities project (http://sourceforge.jp/project/php-i18n/) for the table to match UTF-8 code points to the proper HTML encoding. [Bug 1607916]
+
+* Find now will correctly locate a string within a theme. [Bug 1584929]
+
+* The selection of current song folders in both the song editor and song selection for sets are now "sticky," in other words, they retain their settings when the windows are reopened. [Feature Request 1543453]
+
+* Printing a lead sheet with a hymn number no longer garbles the title. [Bug 1477629]
+
+* Lead sheets include the presentation order as part of the header. Added language tag songml/presentation.
+
+* HTML files created by the Export to HTML function are tagged as using the UTF-8 character set. [Bug 1477964]
+
+* Fix issue in ImageChooserWindow where non-picture, non-folder files would cause a NilObjectException. [Bug 1604503]
+
+* Browsing out of ImageChooserWindow for a picture now permits Mac users to actually select something. [Bug 1495745]
+
+* Prevent Resizing MainWindow when closing presentation.
+
+* Fixed bug where two blank set items would be added to the beginning of a set when the set's first item is a style change
+
+* Fixed numerous issues with freeform scripture lookup.  The list of verses in a chapter may have gaps in the numbering if the text of the scripture merges verses.  Subverses are now properly handled in Zefania-format scripture. [Bug 1468053]
+
+* Fixed race condition where the main window, presentation window and presentation helper window would activate each other when exiting presenter mode. (Windows only)
+
+* Changed method for retrieving verses included in a selected scripture to better handle conditions where the verses are not sequentially numbered. [Bug 1468053]
+
+* Changed superclass of the About menu to AppleMenuItem to relocate it to the application menu per Apple's interface guidelines.  Does not affect Windows or Linux.
+
+* A bible with an empty chapter or book won't cause the indexing process to error out.
+
+* Indexing process subtly altered to be more "friendly" to documents with non-ASCII characters.  This relies on the RealBasic regular expression library definition of "word characters," which understands UTF-8 characters but may not be 100% accurate.  Users should report errors in an index that are caused by characters in the user's alphabet that are not included in the index.
+
+* Fixed typo in English translation (does not affect any tags).
+
+* Default scripture search options to "contains" and "all words."
+
+* Printing a long line no longer drops a letter at the wrap point if the maximum width line included part of a word rather than white space at the end.
+
+* The Present Helper window will be restored when the Presenter is activated if Present Helper was minimized.  [Bug 1479332]
+
+* When modifying a style, the visualization of the selected image uses the style's background color to fill areas not covered by the image (for example, when Center Image is selected and the image aspect ratio isn't the same as the display's aspect ratio.
+
+* Fixed the window for selecting scripture to allow for resizing on Macintosh and disallow minimize on Windows.  Since this is a modal dialogue box, the latter could make OpenSong appear to not be responding and an inexperienced user may not realize the dialogue needs to be restored from the task bar.
+
+* When printing a line with chords and no lyrics, print capo chords in the correct font. [Bug 1483807]
+
+* Changed FolderDB and Open event of ScripturePickerWindow to only look at files where the Visible attribute is True.  FolderDB was already ignoring files that start with an underscore or period, but this corrects potential issues with hidden files in a more general way.
+
+* Presenter will now run for a set with picture slides only (custom slides with a style but no body).  Correcting this error also corrected an unreported error where OpenSong would treat the string "---" as a slide separator regardless of it's position on the line.  It now must be on a line of its own with no leading or trailing spaces. [Bug 1560097]
+
+* Fixed NilObjectException error when slide style is added to a set.  Somehow this got totally broken.
+
+* Corrected issue with fields not properly updating when a song is created. [Bug 1590566]
+
+* Moved subtitle selection from Presentation Settings to the style editor.  Corrected issue where a song with a custom style would use the subtitles from the default style instead of the custom style.
+
+* Corrected logic error selecting language translation on General Settings/OpenSong Preferences dialog box.
+
+* Corrected some window manipulation issues entering and leaving Presenter.
+
+* Translated several SmartML error Messages
+
+* Bring SongPicker, ScripturePicker & InputBox to front when OpenSong is Re-activated in Preview Dual Screen Mode
+
+* Translated Additional Dev About string
+
+* Return Nil translator Object if file passed is Nil or Non-existent(switched to cozmics method)
+
+* Translated help
+
+* Translated Browse for Folder Title
+
+* Prevent OutOfBounds Exception when removing set item
+
+* Translated Scripture Search Window
+
+* Adjusted PresentHelper to fit spanish translation
+
+* Resized txt_style_transition_note to fit spanish translation
+
+* Fixed Help text for Containing Folder, Transpose, Print Capo, custom order, original order, slide style, & setitem list
+
+* Fixed Several Presentation Window problems
+
+* Added Option to overwrite debug log files
+
+
+* In set mode, name of new custom slide is now a translatable item instead of "Untitled."
+
+* Corrected issue with invalid song path in set on Macintosh.  Would've also affected Linux song files with spaces in the name. [Bug 1567295]
+
+* Fix "create song" to add folder info to the song listbox.
+
+* Fix "move song" to properly update the folder info stored in the song listbox. Also, a more informative error message is given if the song already exists in the destination folder. [Bug 1565098]
+
+* Support selecting all monitors when system has more than two monitors. [Bug 1554999]
+
+* Update PrintSettings XML at program start to use points as units of measurement.
+
+* Set focus to edit field when InputBox opens.
+
+* Started work on SImageCanvas to allow more flexibility in setting the picture.
+
+* Fix NilObjectException when creating a new song [Bug 1563081]
+
+* Bring PresentWindow to front in Single Screen Mode
+    
+* Added Ability to search songs by Hymn Number
+
+* Added/modified ProgressWindow for the following events:
+ Song Caching
+ Heap Sorting
+ CategoryTOC Song Processing
+ CategoryTOC Theme Processing
+ Export All Songs
+ Lead Sheet Report Generation
+
+* Added Status Message Text to ProgressWindow
+
+* Reset Mouse Cursor when canceling print
+
+* Delete Extra save prompt creating a new song when you have unsaved changes
+
+* Fixed Song Style bug #1559301
+
+* Added translation support for startup messages and errors.
+
+* Save Global Settings on exit
+
+* Prevent OutOfBounds Exception in InputBox when translator isn't loaded
+
+* Prevent NilObject Exception in SButton Class if MainSettings is Nil
+
+* Prevent MainSettingsWindow Using Invalid Language files
+
+* Prevent NilObject Exception in XDocFromFile if file could not be opened
+
+* Return Nil translator Object if file passed is Nil or Non-existent
+
+* Corrected issue wrapping slide when the line doesn't have a space (particularly troublesome in Chinese). [Feature Request 1530629]
+
+* Added translation support for set item identifiers (custom, song, style, etc.). [Bug 1500189]
+
+* Completed translation support for all reports.
+
+* Changed set list report to indicate the type of item in the item title.
+
+* New feature: custom slides will show a separator line at slide breaks when printing a set list.
+
+* If a Zefania format bible is loaded and the "bname" attribute is added from bnames.xml, prompt the user before writing the changed file.  If the user chooses not to save, supress generating the index file. [Bug 1467699]
+
+* InputBox on Windows forces itself to the top of the window stack so it doesn't get hidden behind the splash window or other floating windows. [Bug 1467699]
+
+* Added code to the "last chance" exception handler to recognize what kind of error was raised.  This isn't particularly useful now, but will be when the handler can produce a stack dump after OS moves to RB2006 or later.
+
+* Changing the style of a song marks the song as changed but does not ask the user immediately if it should be saved. [Bug 1512827]
+
+* Added translation support in Bible for previously hard-coded English messages.  Also changed use of MsgBox to InputBox for UI consistency. [Bugs 1500189, 1467699]
+
+* Corrected potential platform-specific file path in Bible.AddBNames method.
+
+-= 1.0 Beta 2 Baselevel 12 =-
+
+* Scripture quick lookup fixes: Better handling of translations, book name parser modified to check all characters of the name input by the user. Added scripture_lookup/bad_reference/ambiguous to language file. [Bug 1467887]
+
+* Fixed I18N issues on right-click menu in edit fields.  Added to language file: shared/cut, shared/copy, shared/paste.
+
+* In presentation preferences, the "blanks before/after" radio buttons disable if "add blanks" isn't selected.
+
+* Adding songs on-the-fly doesn't add unwanted blanks.
+
+* When adding songs on-the-fly and using the "type to search" feature, pressing Escape before the search times out (1.5 seconds) will reset the search.  Pressing Escape when a search is not in progress will close the window.
+
+* Program will display an error and not hang if the documents folder is mis-configured in Global Preferences [Bug 1204048]
+
+* Multiple fixes in Song/Find to prevent crashes due to invalid song files. [Bug 1089442]
+
+* Corrected "fencepost" error in preparing the set for presentation.  Error only became apparent if a custom slide with a slide style was the last slide in a set and the presentation preferences were set to insert blanks between set elements.
+
+* Program won't silently crash when presenting a single item that has no title and no unique style.  Similar to Bug report 1077772.
+
+* Slide transition starts at step 1 instead of step 2. [Bug 1484043]
+
+* Print preview window closes when "Print" button is selected.  Will reappear if the printer dialog box is cancelled. This applies to all platforms even though the report was filed as Mac-specific. [Bug 1511623]
+
+* Page break doesn't show as slide in presentation mode. [Bug 1515605]
+
+* Moved parameters for controlling debug output to environment variables.  OPENSONGDEBUG controls whether debug output is enabled ("True" = Enabled); OPENSONGDEBUGFILE is the filename, relative to the application's folder ("Debug.txt" is default); OPENSONGDEBUGLEVEL is the maximum level to log (default = 1).
+
+* Tried to fix (again) the issues with getting Windows to print multiple times during program execution.
+
+* Fixed page metric calculations that resulted in a program hang if the printer settings file used points instead of inches (new format).
+
+* Added attempted fix for randomly disappearing vertical scroll bar in song editor.  This is an "attempted fix" because there is no apparent reason for it disappearing other than a bug in RealBasic.
+
+* HTML parsing for CCLI Import changed to delete any text outside the <html></html> tags.
+
+* Corrected multiple errors in song rename.  Would incorrectly error if new name matched a song in another folder.  Would allow path characters in target filename.  Wouldn't sort the song list to reflect the proper position for the renamed song.
+
+* I18N error messages for rename errors added or used.  Added errors/path_not_allowed and errors/rename_error to language file.
+
+-= 1.0 Beta 2 Baselevel 11 -=
+
+* Print copy count calculated accurately on Mac OS X. [Bug 1467395]
+
+* Current Folder edit field clears on folder change (lst_songs_songs.Change will update it to match the selected song).
+
+* Find will now start at the currently-selected song (or the first song if none is selected) and wrap the search from the beginning. [Bug 1458961]
+
+* Find will not crash OpenSong if an invalid XML file is encountered.  An informational dialog box is posted showing the name of the offending file.
+
+* Corrected issues related to the proper handling of songs and sets when switching modes and not saving unsaved edits. [Bug 14588972]
+
+* Preferences dialogs (main program, print, presentation) save settings when dialog is accepted instead of waiting for a normal program exit. [Bug 1462055]
+
+* Resize box removed from PresentWindow on Macintosh. [Bug 1467726]
+
+* Directories in the OpenSong Languages folder are ignored in the General Settings/OpenSong Preferences window. [Bug 1467834]
+
+* [Win/Linux] General Settings menu item moved to top of list.
+
+* To make window management on Windows platforms more consistent when moving between programs while in Presenter mode, the main window will hide for the duration of the presentation. [Bug 1467746]
+
+* Quick find (typing in the first few characters) in the Songs pane and Add Songs dialogs accepts non-ASCII input such as accented letters. [Bug 1460927]
+
+* Add Songs in Set Mode now distinguishes between songs with the same name in two different folders.
+
+* Vertical scaling of main slide text is now applied in all conditions.  A previous optimization to skip re-wrapping and horizontal scaling also skipped vertical scaling. [Bug 1468106]
+
+* Set>Save As no longer saves the modifications to the original set as well. [Bug 1488275]
+
+* When the Song Lookup window opens (hotkey "Q" in presenter mode), the list of songs will get focus immediately, so the operator will not have to click on the song list before starting to type.
+
+* In Song Lookup window, the Escape key will reset the incremental search.
+
+* In the song editor, the Escape key will reset the incremental search of the list of songs when focus is on the list.
+
+* Song>Save now saves to the correct file when a file with the same name is in a higher folder in the folder hierarchy.
+
+* Print Preview shows margin at the correct scale when the magnification factor is not 100%. [Bug 1473521]
+
+* Print Settings dialog handles regional settings for decimal point and thousands separator for both input and output. [Bug 1473521]
+
+* Window management when presenting is more consistent.  Presentation Helper window is now a document window, which means it has an icon in the taskbar on Windows.  It will resist being closed while a presentation is in progress.  Additionally, the main window will minimize on Windows (and hide on Mac) while the presentation is in progress. [Bug 1479332]
+
+* Linux systems with dual screens set up as one X-Windows display (i.e., nVidia TwinView) will act more reasonably WRT window management.
+
+* Starting a presentation will not hide the taskbar on Windows or the menubar on Macintosh unless in single screen mode or dual screen mode with the lowest numbered screen selected as the presentation screen.
+
+* The taskbar (Windows) or menubar (Macintosh) will be hidden during a presentation only if the presentation window is the primary monitor. [Bug 1521079]
+
+* The presentation helper window (control window) will show the slide text in the notes field if there are no slide notes.  In some cases this can be easier for the user to read than the slide preview.
+
+* Require confirmation for revert and print all songs. [Request 1528693]
+
+-= 1.0 Beta 2 Baselevel 10 -=
+
+* Corrected issue with presentation window not appearing on the proper screen when the user selects to display it on the first screen defined by the OS in a multi-screen environment.  [Bug 1463669]
+
+* Printer margin setup now retains setting of inches/centimeters option. [Bug 1458492]
+
+* OpenSong won't crash on Windows when trying to print for the second time.
+
+-= 1.0 Beta 2 Baselevel 9 -=
+
+* When focus is on the songs list in the song editor, ALT/Command + keystroke now correctly invokes the menu or other action tied to that accelerator [Bug 1456869]
+
+* Rearranged Song Advanced Edit page to put the song key field immediately below the Capo fields.
+
+* Maximized caption width for all captions/radio buttons/select boxes on the main window to reduce clipping in non-English versions.
+
+* Corrected inconsistent presentation behavior when there are additional characters after the closing bracket on a section header [Bug 1460921].
+
+* Fixed presentation hotkeys for movement within a song so that starting on the blank before and pressing V or 1 to get to the first verse now moves to the correct slide.  Made all movement hotkeys consistent so that if a section occurs more than once (for example, V1, C, V2, C), pressing that key ("C" in this example) will always move to the next occurrence of that section/slide. [Bug 1464590]
+
+* Fixed a UI issue to properly clear unused fields in set mode when switching from editing a song to editing a custom slide. [Bug 1462707]
+
+* Fixed a UI issue where clicking the Save button for the current item in Set mode wouldn't disable the button.
+
+* Moved Song Folder selection dropdown and related create/delete buttons above the song list.  Not only does this prevent confusion with this and the Containing Folder field, it also is more consistent with the Sets UI.
+
+-= 1.0 Beta 2 Baselevel 8 -=
+
+
+* Edit menu commands don't ever enable.  Created new EditField subclass SEditField that changes the Enabled state on Cut/Paste/Clear/Copy in its EnableMenus event.  Added menu handlers.  Added Edit>Select All menu item.  Changed superclass on all EditFields in MainWindow to SEditField. [Bug 1453562]
+
+* Corrected issue printing chord lines without lyrics where preview is accurate but the printed output isn't. [Bug 1456327]  Also corrected same issue for comments.
+
+* Blank slides within a song show the song's header and footer [Bug 1453812]
+
+* Added status bar to ProgressWindow to allow the program to provide feedback to the user when a long activity is executing.
+
+* Added an optional ability to cancel an operation when the ProgressWindow has focus.
+
+* Corrected issue where printing all songs would display the progress window, but never update it.
+
+* Added print/create_list to language file.
+
+* Added errors/no_such_song to language file.
+
+* Fixed program hang when printing a song where the width of the title and author exceeded the printable page width [Bugs 1455146, 1454788]
+
+* Printing a song with multi-verse formatting (verse numbers at the beginning of the line) now prints the verse numbers in the proper font size.
+
+* Songs list box in main window now properly tracks which folder contains a given entry, correcting an issue where two songs with the same name in different folders would display, but only one could be edited.
+
+-= 0.9.9 =-
+* Fixed version check bug. (bug #999077)
+* Fixed logo oversize bug. (bug #999163)
+* Fixed subtle scrolling bug in presentation helper window.
+* Added Set List printing. Click the "Set List..." button in the set editor to print a listing of the current set. Custom slides and scripture slides will be printed with their contents, where song slides will only print the song titles.
+* Added checkbox in custom slide editor to allow exclusion from Set List printing.
+* Adjusted field tab order in song and set editors.
+* Fixed Full Screen button typo.
+* Added support for proxy servers in checking for latest version and importing from CCLI.
+* Added proxy and proxy port settings to OpenSong Settings.
+* Added Settings > Load Module menu item to load downloaded modules into OpenSong without having to know where to put them manually.
+* Image chooser window now displays the path to the user's OpenSong\Backgrounds folder.
+* Fixed the scrollbar in Image Chooser to work better.
+* Fixed the scrollbars in Print Preview to work better.
+* Added OpenSong Setting for Documents Folder; useful for setting the documents path to something other than the standard location, such as a network share.
+* Image Chooser (for selecting backgrounds, logos, etc.) now supports folders.
+* Image Chooser now caches thumbnails, greatly speeding up browsing.
+* Sped up background-image-less slide rendering. (Faster detection of Nil images)
+* Print Preview window is now double-buffered. (less flickery)
+* Fixed error printing songs in a set that doesn't have any songs in it.
+* Fixed custom slide style refresh bug. (Didn't refresh when differing custom styles were back-to-back.)
+* Changed the theme tag to support multiple (>2) themes per song.
+* Theme selection uses a listbox of checkboxes rather than a popup list due to OpenSong's new ability for songs to contain an unlimited number of themes.
+* Moved around song editor fields to better use screen real estate.
+* User defined fields now use multiline editors making larger values easier to edit.
+* Songs can now be stored in folders.
+* The Songs folder is now cached to improve performance with large song databases.
+* Fixed a bug in custom styles that forgets the alignments of subtitles.
+* Default Bible now loads at boot to speed up quick referencing during presentations.
+* Fixed button text anti-aliasing bug.
+* Adjusted font buttons a bit to fit other languages a little better.
+* Adjusted all sorts of window components to make more room for longer translations.
+* Added new button to move the selected song into a different folder.
+* Added new Main Settings option to change the language.
+* Added song fields key, aka, and key line.
+* CCLI import now also imports theme(s), key, aka, and key line data.
+* Softpraise Convertor now converts tempo, aka, and key.
+* Scripture Chooser now remembers last setting for verses per page.
+* Style canvases, image canvasas, and font canvases and now double-buffered.
+* Alert font is now configurable using Presentation Settings.
+* User defined field names can now be set in general settings.
+* Fixed scripture bug when adding a range of verses: occasionally returned only the first verse.
+* Changed auto-insert blanks to a checkbox. To keep OpenSong from inserting a blank slide between custom slides, give your custom slides the same name. This should make more sense and work fine for the few people who need it that way.
+* The live "Quick Scripture" feature now presents verses live from the scripture chooser rather than statically adding the scripture to the set. (feature request #1007482)
+* Songs can now be exported to HTML.
+* Image chooser is now bigger and cooler.
+* Added progress bar for status during categorized toc printing and exporting all songs.
+* This release is a major update from 0.9.8. Handle with care. Let me know.
+
+-= 0.9.8 =-
+* Added option to horizontally and vertically align the location of alerts
+* Added new "Logo" presentation mode and corresponding presentation settings. Use this mode to fade to a church/concert/whatever logo.
+* Scripture set items now play by the same rules regarding inline style changes.
+* Removed "(F5)"s from File>Present
+* Fixed display of slide notes in Present Helper
+* Improved window display on Windows 98.
+* Adjusted font sizes of window components.
+* You can now jump to songs/items in the song list or set list by type the first part of the desired title. (feature request #962465)
+* Fixed inability to shut off borders and shadows in slides. (bug #962786)
+* Added option for song slides to present copyright info rather than author. (feature request #962800)
+* You can now adjust slide title and subtitle alignments independently.
+* Rewrote Scripture module; now supports paraphrase versions; Added NLT & MSG; Scripture format is now XML; fixed several bugs with it; should be more robust now.
+* Splash screen now identifies each step of startup
+* Fixed set rename function (bug #990904)
+* Shows both "Show Details" and "Show Chords/Lyrics" buttons in both screens
+* Added a new alignment control for slide styles and alert alignment. It looks nifty.
+* Adjusted left/right arrow keys to act more sensible in presentations.
+* Fixed style preview refresh bug (feature request #990967)
+* Fixed split-screen preview image resize bug. (thanks Ima)
+* Blank in-between slides now take on the style of the following slide. This makes those in-between slides MUCH more useful. (feature request #972348)
+* Added a full-screen option in the Present Helper.
+* Revamped the song lookup window. It works cleaner now.
+* Added Right-Click (Control-Click) Cut/Copy/Paste menu for all text fields.
+* Added SONG IMPORT from CCLI SongSelect. Just click the Import... button in the Song editor.
+* Clear mode is now Hidden mode ('C' key is now used for jumping to the chorus)
+  Thanks to the 10,000 people who suggested the following two features...
+* Pressing the 'c' key (or the '`' key (the one just to the left of the '1' key)) during presentations will jump right to the current chorus (if there is one)
+* Pressing the '1' thru '9' keys during presentations will jump right to that verse (if there is one)
+* Added a new mode 'Freeze' which displays the last slide shown; you can jump to any other slide, and the frozen slide still displays. (feature request #967729)
+* Key 'k' now switches to Black mode rather than 'b'; I needed 'b' to jump to the Bridge
+* Many bug fixes!
+
+-= 0.9.7 =-
+* Added "Copy" button to set items. (feature request #959279)
+* Added a new "Style Change" set item type for changing (or reverting) a set's style mid-way through a presentation. This is a very cool feature once you figure out how to use it. (Thanks Brad)
+* Added option to not auto-insert blank slides between back-to-back custom set items. (feature request #959582)
+* Updated licensing to the GPL, including Help/About menu, installer license, and source code release.
+* Fixed mouse cursors in edit fields (caused by imbedded PagePanels limitation on Windows)
+* Rearranged song editor fields (looks nicer now)
+* Added context sensitive help
+* Fixed bug #957238: Could not find configuration files
+* Fixed bug #956071: verse addition bug
+* "Through" is now spelled "thru" on the scripture picker. It is an official spelling, and it makes more sense. Go English!!
+* Fixed slide stretching bug on Mac OS X. (Thanks Scott)
+* Fixed rare font bug with buttons.
+* Changed adding scriptures to sets to work just like adding songs to sets. (feature request #959583)
+* Internal: Changed button events method (now uses action) and fixed focus/extra click bug.
+* Changed text fields to use white rather than yellow.
+* Made several user interface "tweaks".
+* Print Preview window is now double buffered.
+* OpenSong now takes care of installing/replacing files into the Documents/My Documents folder, rather than the installer. This works MUCH better.
+
+-= 0.9.6 =-
+* Added option to check for newer versions of OpenSong at startup.
+* Added option for blank slides between each item in a set.
+* Adjusted main window geometry
+* Added option to select which screen/monitor is for controller/helper windows and which is for the actual presentation.
+* Cleaner drawing when transitions are turned off.
+* Speedups here and there.
+* Fixed crash on empty custom slides/songs.
+* Dropped F5 from File/Present menu. Didn't work right on Mac.
+* Improved GUI elements on Mac: buttons are transparent and components now fit better.
+* Double-clicking on a song in a set automatically brings up the song in the Song Editor.
+* Items in a set can be dragged with the mouse to reorder the set.
+* Added option for default/initial mode (Normal,Clear,Black,White) when presenting.
+* OK/Cancel buttons in Song Lookup window (for addings songs) are now named Add/Done.
+* Improved Scripture picker for mouse users.
+* Adjusted OpenSong's file hierarchy:
+     Program Files/OpenSong/OpenSong.exe
+     Program Files/OpenSong/OpenSong Settings/*.*
+     Program Files/OpenSong/OpenSong Scriptures/*.*
+     My Documents/OpenSong/Settings/*.*
+     My Documents/OpenSong/Songs/*.*
+     My Documents/OpenSong/Sets/*.*
+     My Documents/OpenSong/Backgrounds/*.*
+* Added Cancel button to Print Preview window.
+* Changed component font from plain "System" to nicer "Arial".
+* Changed delimeter for custom slides from "||" to "---". (It makes more sense, and looks better.)
+* Added splash screen during startup. (Something pretty to look at while settings/songs/sets are loading.)
+* Modified window types and focus profiles.
+* Switched from Inno Setup Installer to NSIS Installer.
+* Scripture window remembers last scripture selected.
+* Font styles now include border, border color, shadow, and shadow color.
+* Added an option to set a slide's title in Present Helper independent from the actual displayed title.
+* Many bug fixes!
+
+-= 0.9.5 =-
+* Presentation body can be aligned left, center, or right and vertically aligned top, middle, or bottom.
+* Presentation title/subtitle can be aligned left, center, or right and vertically aligned top or bottom.
+* Songs, slides, and scripture slides can have their own slide styles with background settings, font styles, and font alignments imbedded.
+* Added a new component to edit styles and a style preview box.
+* Updated user interface components for Fonts, Images, and Colors. They are much more user-friendly.
+* New Picture Chooser window: when changing the background of a set, slide, etc. OpenSong now displays thumbnail images of the OpenSong/Backgrounds folder. (A Browse button is also available for selecting images outside of the Backgrounds folder.)
+* Major rewrite of data engine; more standards compliant.
+* Update of Song, Set, and "list configurations" format to XML.
+* All configurations, songs, sets, etc. are 100% XML.
+* Scripture Chooser Bible version defaults to the last version used.
+* Your organization's CCLI number (if defined) now appears on Song slides when a song being displayed has a CCLI # defined. (legally required)
+* Updated PresentHelper: bold style for choruses, dividing lines between sections. There are no longer blank slides between each group of slides.
+* Added "Auto-advance slide(s) every ___ seconds" option for custom slides and scripture slides. The [seconds] syntax is no longer used.
+* Changed the icons on the buttons. They're so pretty now. :-)
+* Minor updates and user interface enhancements.
+* Slide editor fields now "gray out" when no editable slide is selected.
+* Song editor fields now "gray out" when no song is selected.
+* Added option to transpose using sharps or flats. Previously, OpenSong would decide which based on the direction of transposing.
+* Fixed keyboard shortcuts for Mac OS. I think. Testers?
+* Added shortcuts for Delete, Ctrl+H, Ctrl+-, and Ctrl+=.
+* Rearranged Presentation Settings window to account for new the style system.
+* When saving a set (by clicking the Save button or using Ctrl+S), the current set item is also saved. (no more needing to double save)
+* Added a button bar in the Song Editor for quick entry of chords/lyrics/sections/etc.
+* Added a column in Present Helper Window to indicate each slide's section for Song slides. (i.e. V1, C, V2, C, etc.)
+
+-= 0.9.4 =-
+* The Presenter Helper is way more helpful. It now has full mouse support to jump to any slide; switch to black, white, clear, or normal mode; and insert scriptures and songs on the fly: all with the mouse. (Thanks Steven & Jim for your great ideas in the forum.)
+* Buttons should now look the same on all platforms. (They weren't as "cool" looking on pre-XP windows.)
+* Songs are saved in XML format
+* Settings are all saved in XML format
+* Fixed a bug in the transposer causing it to not work properly on Windows 98. (Thanks Eugene)
+* The help is now printable (Thanks Eugene)
+* When adding songs to sets, the song lookup window will continue to display until the Cancel button is pressed. This way, several songs can be double-clicked in a row for faster addition of multiple songs. (Thanks Bradley)
+* Added a new option to align the lyrics on the projector to the top of the screen. (Thanks Brad)
+* Added Ctrl+N for New Song or Set (depending on which mode you're in), Ctrl+S for Save, Ctrl+P for Print, Ctrl+1 for Single Screen Present, Ctrl+2 for Multiple Screens Present, and Ctrl+3 for Preview Multiple Screens. (Thanks Brad)
+* Updated the help file to include column breaks.
+* Fixed tab order for tabbing between controls
+* Moved heading border thickness setting into print settings rather than general settings.
+* Added print settings for page width and height.
+* cleaned printing code.
+* Shortened Lead Sheet Print Settings to Print Settings. Updated Menu bar.
+* Cleaned up the code here and there; fixed random bugs.
+
+-= 0.9.3 =-
+* Added a scripture lookup window, rather than having it in a tab. You can also access the lookup window during live presentations to add scripture slides live.
+* Added a quick song lookup function. You can access the lookup window during live presentations to add songs live.
+* Added find button/menu item. Now you can search all the songs for a word or phrase.
+* Added fading transition. (This is turned off by default; go to the Present Settings dialog to turn it on.)
+* Revamped/rearranged the interface again. I think it is more user-friendly now. I could use some feedback on alternate ideas if anyone has any.
+* Creating, renaming, and deleting songs is now faster. When creating a new song, it is automatically selected. When renaming a song, it remains selected.
+* Creating, renaming, and deleting sets is now faster. When creating a new set, it is automatically selected. When renaming a set, it remains selected.
+* Aesthetic updates: added Presentation mode as a popup menu of the Present buttons rather than as a seperate drop-down list. Also added an "Esc = Exit Presentation" label in PresentHelper. Rearranged the Present Settings dialog box.
+* When in black, white, or clear mode during presentations, the preview window now still shows the slide content but with a border and slash through it so you can still see what would be presented in normal mode.
+* Dropped the Focus field. It really didn't have much of a point anyway.
+* Upgraded to the latest development tools, reducing the executable size by around a megabyte.
+* Improved calculation of page margins when printing.
+* Fixed a couple random, tiny, "unnoticeable" bugs.
+
+-= 0.9.2 =-
+* Improved support for multiple operating systems and their new line schemes (special thanks to Tex.) In other words, if you were seeing all of the lyrics on only a couple lines with weird characters in-between (especially in the Song Pack songs), this release fixes that.
+* OpenSong now only includes the KJV by default. You can download the NKJV and NIV (more to come) from http://opensong.bluecup.net/.
+
+-= 0.9.1 =-
+* Fixed bug that caused OpenSong to misdetect multiple monitors
+
+-= 0.9.0 =-
+* Drastically changed program layout
+* Left-clicking on the presentation window advances the slides
+* Revamped the whole slide/timed loops system; now it is much more customizable (Note that old scripture entries and timed loops are no longer compatible. You'll have to recreate those entries in old sets. Sorry. You know beta versions.)
+* Updated the Slide helper window to display the new slide custom notes.
+
+-= 0.8.1 =-
+* Pressing "A" during presentations now pops up the alert window. Entering an alert displays it in the bottom right-hand corner of the presentation. Entering an empty alert clears the alert. This can be used for nursery announcements (i.e. "12" would mean whoever brought child 12 come and get them!) or whatever.
+* Default backgrounds folder when changing background is now OpenSong\Backgrounds, not My Documents.
+* OpenSong now includes a default background image
+* Updated various default settings
+
+-= 0.8.0 =-
+* Individual songs can remember their own backgrounds (background override) Simply place a .jpg, .gif, or .bmp file in My Documents\OpenSong\Backgrounds with the same name as the song (except for the added extension of course). Also, name a file Scripture.jpg and it will display with the scripture slides.
+* Added "Strip Footer" settings for stripping watermarks, urls, etc. from the bottom of presentation backgrounds
+* Changed adding Songs, Scripture, and Loops in Sets to now insert after the selected list item rather than always appending to the end
+
+-= 0.7.6 =-
+* Added Timed Loops
+
+-= 0.7.5 =-
+* Added Scripture Support
+
+-= 0.7.4 =-
+* Added Presenter Preview in Helper Window
+
+-= 0.7.3 =-
+* Added Print Categorized Table of Contents
+* Added Print Alphabetical Table of Contents

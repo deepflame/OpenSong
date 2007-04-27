@@ -1,14 +1,22 @@
 #tag Class
-Protected Class SButton
+Class SButton
 Inherits Canvas
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  System.DebugLog "SButton.MouseDown"
 		  If IsStuck Then Return False
 		  IsMouseDown = True
 		  MenuItem = ""
 		  If Enabled Then
 		    Refresh ' False
-		    If Popup <> Nil Then Popup.Open
+		    // Mac OSX will open the popup on MouseDown,
+		    // Windows & Linux open in MouseUp
+		    #If TargetMacOS
+		      If Popup <> Nil Then
+		        System.DebugLog "SButton.MouseDown: Call Popup.Open"
+		        Popup.Open
+		      End If
+		    #Endif
 		    Return True
 		  End If
 		End Function
@@ -16,6 +24,7 @@ Inherits Canvas
 
 	#tag Event
 		Sub MouseEnter()
+		  System.DebugLog "SButton.MouseEnter"
 		  IsMouseOver = True
 		  If Enabled And Not IsStuck Then Refresh ' False Graphics
 		  MouseEnter
@@ -33,6 +42,15 @@ Inherits Canvas
 
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
+		  System.DebugLog "SButton.MouseUp"
+		  // The Linux & Windows systems expect to open
+		  // a contextual dialog on mouse up, but OS X
+		  // does it on mouse down.
+		  #if Not TargetMacOS
+		    If Popup <> Nil Then
+		      Popup.Open
+		    End If
+		  #endif
 		  IsMouseDown = False
 		  Action
 		  Refresh ' False Graphics
@@ -41,6 +59,7 @@ Inherits Canvas
 
 	#tag Event
 		Sub Open()
+		  System.DebugLog "SButton.Open"
 		  Font = New FontFace
 		  Enabled = True
 		  //++EMP, 12/05
@@ -61,7 +80,7 @@ Inherits Canvas
 		Sub Paint(g As Graphics)
 		  Dim i, j, offset, tri(6) As Integer
 		  
-		  If NewPaint Then 
+		  If NewPaint Then
 		    PaintNew(g)
 		    Return
 		  End If
@@ -250,7 +269,7 @@ Inherits Canvas
 		    ' Left and Top Bevels
 		    g.ForeColor = DarkBevelColor
 		    g.PenWidth = ShadowWidth
-		    g.DrawLine 0, 0, 0, Height 
+		    g.DrawLine 0, 0, 0, Height
 		    g.PenWidth = 1
 		    g.PenHeight = ShadowWidth
 		    g.drawline 0, 0, Width, 0
@@ -279,7 +298,7 @@ Inherits Canvas
 		    'g.ForeColor = FillColor
 		    'g.FillRect 0, 0, Width, Height
 		    '
-		    ' This code path is for unselected controls that the mouse is not over.  Draw like a 
+		    ' This code path is for unselected controls that the mouse is not over.  Draw like a
 		    ' button ready to be pressed (appears to be poking out), but don't highlight it inside
 		    ' the bevels like a MouseOver
 		    '
@@ -341,7 +360,7 @@ Inherits Canvas
 		    '
 		    ' Right and bottom bevels
 		    g.ForeColor = LightBevelColor
-		    g.DrawLine 0, height - ShadowOffset, Width, height  - ShadowOffset 
+		    g.DrawLine 0, height - ShadowOffset, Width, height  - ShadowOffset
 		    g.DrawLine Width - ShadowOffset, 0, Width - ShadowOffset, Height
 		    ' Outline
 		    g.ForeColor = FrameColor
@@ -451,8 +470,7 @@ Inherits Canvas
 
 	#tag Property, Flags = &h1
 		#tag Note
-			'EMP, added to support PaintNew method 
-			
+			'EMP, added to support PaintNew method
 		#tag EndNote
 		Protected GrayIcon As Picture
 	#tag EndProperty
@@ -469,15 +487,15 @@ Inherits Canvas
 		Protected IsMouseOver As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected IsStuck As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected Label As String
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected LabelAlign As Integer
 	#tag EndProperty
 
@@ -493,10 +511,159 @@ Inherits Canvas
 		Protected Popup As SButtonPopup
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected StickyBevel As Boolean
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			Type="String"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Picture"
+			EditorType="Picture"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

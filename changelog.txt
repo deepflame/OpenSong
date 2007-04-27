@@ -1,3 +1,14 @@
+-= BL18 =-
+
+* Change folder layout to match the one established by the RB2006 branch.
+
+* Update all the new platform-specific App properties.
+
+* SButtonPopup wouldn't properly dismiss on Windows & Linux.  Under RB5.5, the platform differences in mouse click handling were handled automatically.  In the later versions of REALbasic, the platform differences are exposed.  Handle opening the SButtonPopup in MouseDown for
+OSX and MouseUp for the other platforms.  Action event is still called in MouseUp for all platforms.
+
+* Incorporate Rüdiger's ErrorPopup window to the App.UnhandledExceptionEvent.  Add new exception types to the massive If/ElseIf in OpenSongUtils.ToString extension to the RuntimeException class.
+
 -= 1.0.1 BL17 =-
 
 * Correct issue where subfolder entries in a FolderDB cache would be corrupted, rendering them inaccessible.  See the JRC source tree for editorial comments.  :-)

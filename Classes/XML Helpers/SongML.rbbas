@@ -1,5 +1,5 @@
 #tag Module
-Protected Module SongML
+Module SongML
 	#tag Method, Flags = &h21
 		Private Function BuildHeading(Tag As String, Heading As String) As String
 		  //++
@@ -94,7 +94,7 @@ Protected Module SongML
 		      
 		    Case "ccli_number" //The song's CCLI number, not the church license
 		      ThisSubtitle = SmartML.GetValue(songElement, "ccli")
-		      Caption = App.T.Translate("songml/ccli_number/@caption") 
+		      Caption = App.T.Translate("songml/ccli_number/@caption")
 		      
 		    Case "ccli_license" //The church license
 		      ThisSubtitle = SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")
@@ -658,7 +658,7 @@ Protected Module SongML
 		        ' Check for dashes - this chord starts with a non-space
 		        dashWidth = g.StringWidth("-")
 		        If i > 0 And Len(slices(i*lineCount+j)) > 0 And Left(slices(i*lineCount+j), 1) <> " " Then
-		          If dashStarts(j) < lineLeft - dashWidth Then 
+		          If dashStarts(j) < lineLeft - dashWidth Then
 		            //g.DrawString "-", dashStarts(j) + ((lineLeft-dashStarts(j))/2) - (dashWidth/2), lineTop
 		            s = New StringShape
 		            tempFont.OntoStringShape s, zoom
@@ -691,7 +691,7 @@ Protected Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function Draw_CommentLine(g As Graphics, x As Integer, y As Integer, Width as Integer,  zoom As Double, ByRef line As String, ByRef Page As Group2D) As Integer
+		Private Function Draw_CommentLine(g As Graphics, x As Integer, y As Integer, Width as Integer, zoom As Double, ByRef line As String, ByRef Page As Group2D) As Integer
 		  Dim tempFont As FontFace
 		  Dim s As New StringShape
 		  Dim Comment As String
@@ -945,7 +945,7 @@ Protected Module SongML
 		  //
 		  If titleWidth + authorWidth + songnoWidth >  width Then  //Put author on a new line
 		    //
-		    // Song number and Title may still overlap.  
+		    // Song number and Title may still overlap.
 		    // Balance the header
 		    //
 		    If songnoWidth + titleWidth > width Then
@@ -1266,7 +1266,7 @@ Protected Module SongML
 		    y = j + (g.PenWidth / 2) + (3 * zoom) // Add whitespace at bottom
 		    
 		  ElseIf Uppercase(Left(heading, 1)) = "C" Then   ' -- CHORUS --
-		    prefix = " " + Chorus 
+		    prefix = " " + Chorus
 		    If Len(heading) > 1 Then prefix = " " + Chorus + " "
 		    heading = prefix + Mid(heading, 2) + " "
 		    
@@ -1287,7 +1287,7 @@ Protected Module SongML
 		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
 		    prefix = " " + Bridge
 		    If Len(heading) > 1 Then prefix = " " + Bridge + " "
-		    heading = prefix + Mid(heading, 2) + " "    
+		    heading = prefix + Mid(heading, 2) + " "
 		    
 		    rr = New RoundRectShape
 		    rr.Width = g.StringWidth(heading) + g.PenWidth + oddOffSet
@@ -1414,7 +1414,7 @@ Protected Module SongML
 		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
 		    prefix = " Bridge"
 		    If Len(heading) > 1 Then prefix = " Bridge "
-		    heading = prefix + Mid(heading, 2) + " "    
+		    heading = prefix + Mid(heading, 2) + " "
 		    
 		    //++EMP
 		    //This stuff is here to test an alternative way of drawing,
@@ -1688,7 +1688,7 @@ Protected Module SongML
 	#tag Method, Flags = &h21
 		Private Function Draw_SoloChordLine(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef chords() As String, ByRef Page As Group2D) As Integer
 		  //++
-		  // EMP, 23 March 2006 
+		  // EMP, 23 March 2006
 		  //  Fix bug where scaling doesn't get applied to font [Bug 1456327]
 		  //  Streamline to quit making calls to GetValueF all the time
 		  //--
@@ -2255,7 +2255,7 @@ Protected Module SongML
 		      For j = 2 To lineCount ' Loop through the lines and print
 		        s = s + "    <tr>" + EndOfLine
 		        For i = 0 To sliceCount - 1 ' Loop through each slice
-		          If slices(i*lineCount+j).Len = 0 Then 
+		          If slices(i*lineCount+j).Len = 0 Then
 		            slices(i*lineCount+j) = "&nbsp;"
 		          Else
 		            slices(i*linecount+j) = slices(i*linecount+j).HTMLEntityEncode
@@ -2356,7 +2356,7 @@ Protected Module SongML
 		  SmartML.SetValue songElement, "@name", SmartML.GetValue(songElement, "title", True)
 		  SmartML.SetValue songElement, "@type", "song"
 		  
-		  Call SmartML.InsertChild(songElement, "subtitle", 0) 
+		  Call SmartML.InsertChild(songElement, "subtitle", 0)
 		  
 		  SubtitleText = BuildSubtitle(songElement, style)
 		  

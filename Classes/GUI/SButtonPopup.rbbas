@@ -1,8 +1,9 @@
 #tag Class
-Protected Class SButtonPopup
+Class SButtonPopup
 Inherits ContextualMenu
 	#tag Event
 		Sub Action(item As String)
+		  System.DebugLog "SButtonPopup.Action"
 		  Parent.MenuItem = item
 		End Sub
 	#tag EndEvent

@@ -636,13 +636,13 @@ Protected Module OpenSongUtils
 
 	#tag Method, Flags = &h0
 		Function IsCollapsed(Extends w As Window) As Boolean
-		  #if TargetMacOS 
+		  #if TargetMacOS
 		    #if TargetMachO
 		      Declare Function IsWindowCollapsed Lib "Carbon" (window as WindowPtr) as Boolean
 		    #else
 		      Declare Function IsWindowCollapsed Lib "CarbonLib" (window as WindowPtr) as Boolean
 		    #endif
-		    Return IsWindowCollapsed(w) 
+		    Return IsWindowCollapsed(w)
 		  #endif
 		  // gets the rect and show state of the window in winHWND
 		  // http://msdn.microsoft.com/library/psdk/winui/windows_79bo.htm
@@ -804,14 +804,14 @@ Protected Module OpenSongUtils
 		  // for this code.
 		  //--
 		  
-		  Dim p As Picture = New Picture(1, 1, 32) 
+		  Dim p As Picture = New Picture(1, 1, 32)
 		  
 		  If L.DefaultRowHeight > -1 Then
-		     Return L.DefaultRowHeight
-		   Else 
+		    Return L.DefaultRowHeight
+		  Else
 		    p.Graphics.TextFont = L.TextFont
-		    p.Graphics.TextSize = L.TextSize 
-		    Return p.Graphics.TextHeight 
+		    p.Graphics.TextSize = L.TextSize
+		    Return p.Graphics.TextHeight
 		  End If
 		End Function
 	#tag EndMethod
@@ -863,11 +863,11 @@ Protected Module OpenSongUtils
 		  Msg.CancelButton.Visible = true
 		  
 		  Res = msg.ShowModal
-		  If Res  = msg.ActionButton then 
+		  If Res  = msg.ActionButton then
 		    Ret = 1
 		  ElseIf Res = msg.AlternateActionButton Then
 		    Ret = 0
-		  Else 
+		  Else
 		    Ret = -1
 		  End If
 		  '--
@@ -974,6 +974,30 @@ Protected Module OpenSongUtils
 		    msg = "XmlException"
 		  ElseIf error isA XmlReaderException Then
 		    msg = "XmlReaderException"
+		  ElseIf error isA FunctionNotFoundException Then
+		    msg = "FunctionNotFoundException'
+		  ElseIf error isA InvalidParentException Then
+		    msg = "InvalidParentException"
+		  ElseIf error isA OLEException Then
+		    msg = "OLEException"
+		  ElseIf error isA RbScriptAlreadyRunningException Then
+		    msg = "RbScriptAlreadyRunningException"
+		  ElseIf error isA RbScriptException Then
+		    msg = "RbScriptException"
+		  ElseIf error isA RegistryAccessErrorException Then
+		    msg = "RegistryAccessErrorException"
+		  ElseIf error isA ShellNotAvailableException Then
+		    msg = "ShellNotAvailableException"
+		  ElseIf error isA ShellNotRunningException Then
+		    msg = "ShellNotRunningException"
+		  ElseIf error isA SOAPException Then
+		    msg = "SOAPException"
+		  ElseIf error isA ThreadAlreadyRunningException Then
+		    msg = "ThreadAlreadyRunningException"
+		  ElseIf error isA SpotlightException Then
+		    msg = "SpotlightException"
+		  ElseIf error isA UnsupportedFormatException Then
+		    msg = "UnsupportedFormatException"
 		  Else
 		    msg = "Unknown exception"
 		  End If
@@ -994,7 +1018,6 @@ Protected Module OpenSongUtils
 		This module holds OpenSong specific methods that
 		provide general functions for the program but cannot
 		be classified in one of the other utility modules.
-		
 	#tag EndNote
 
 
@@ -1005,8 +1028,6 @@ Protected Module OpenSongUtils
 			A UTF-8 character with the code point in this array
 			translates to the string in HTMLEntity preceded by
 			an ampersand (&) and terminated with a semicolon (;).
-			
-			
 		#tag EndNote
 		Private HTMLCodePoint() As Integer
 	#tag EndProperty
@@ -1014,7 +1035,6 @@ Protected Module OpenSongUtils
 	#tag Property, Flags = &h21
 		#tag Note
 			See discussion under HTMLCodePoint
-			
 		#tag EndNote
 		Private HTMLEntity() As String
 	#tag EndProperty

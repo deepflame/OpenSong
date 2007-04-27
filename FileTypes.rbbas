@@ -31,7 +31,7 @@
 
 	#tag FileType
 		CodeName=GIFFiles
-		DocIcon=OpenSong.rbres;&h19814
+		DocIcon=OpenSong.rbres;&h24
 		Extension=.gif
 		Flags=&h0
 		MacCreator=
@@ -41,7 +41,7 @@
 
 	#tag FileType
 		CodeName=JPGFiles
-		DocIcon=OpenSong.rbres;&h33010
+		DocIcon=OpenSong.rbres;&h30
 		Extension=.jfif;.jpe;.jpeg;.jpg
 		Flags=&h0
 		MacCreator=
@@ -51,7 +51,7 @@
 
 	#tag FileType
 		CodeName=MIDIFilesMidMidiRmi
-		DocIcon=OpenSong.rbres;&h4C80C
+		DocIcon=OpenSong.rbres;&h1982C
 		Extension=.mid; .midi; .rmi
 		Flags=&h0
 		MacCreator=
@@ -61,7 +61,7 @@
 
 	#tag FileType
 		CodeName=MP3sMp3
-		DocIcon=OpenSong.rbres;&h4C818
+		DocIcon=OpenSong.rbres;&h19838
 		Extension=.mp3
 		Flags=&h0
 		MacCreator=
@@ -71,17 +71,17 @@
 
 	#tag FileType
 		CodeName=OpenSongModuleXmm
-		DocIcon=OpenSong.rbres;&h4C824
+		DocIcon=OpenSong.rbres;&h19844
 		Extension=.xmm
 		Flags=&h0
 		MacCreator=
-		MacType=    
+		MacType=
 		Name=OpenSong Module (*.xmm)
 	#tag EndFileType
 
 	#tag FileType
 		CodeName=PICTFiles
-		DocIcon=OpenSong.rbres;&h66020
+		DocIcon=OpenSong.rbres;&h33040
 		Extension=.pict;.pic;.pct
 		Flags=&h0
 		MacCreator=
@@ -91,7 +91,7 @@
 
 	#tag FileType
 		CodeName=PNGFiles
-		DocIcon=OpenSong.rbres;&h7F81C
+		DocIcon=OpenSong.rbres;&h4C83C
 		Extension=.png
 		Flags=&h0
 		MacCreator=
@@ -101,7 +101,7 @@
 
 	#tag FileType
 		CodeName=TIFFFiles
-		DocIcon=OpenSong.rbres;&h99018
+		DocIcon=OpenSong.rbres;&h66038
 		Extension=.jfx;.tif;.tiff
 		Flags=&h0
 		MacCreator=????
@@ -111,7 +111,7 @@
 
 	#tag FileType
 		CodeName=WAVFilesWav
-		DocIcon=OpenSong.rbres;&hB2814
+		DocIcon=OpenSong.rbres;&h7F834
 		Extension=.wav
 		Flags=&h0
 		MacCreator=

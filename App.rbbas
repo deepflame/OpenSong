@@ -1,5 +1,5 @@
 #tag Class
-Protected Class App
+Class App
 Inherits Application
 	#tag Event
 		Sub Activate()
@@ -352,29 +352,31 @@ Inherits Application
 
 	#tag Event
 		Function UnhandledException(error As RuntimeException) As Boolean
-		  Dim s As String
-		  Dim msg As String
+		  Dim Popup As New ErrorPopup
+		  Dim i As Integer
+		  Dim StackTrace() As String
+		  Dim errorType As String
 		  
-		  Globals.Status_Presentation = False
-		  If MainWindow <> Nil Then
-		    MainWindow.Status_Presentation = False
+		  'workaround, RB starts whining when I refer to error.Stack(i) directly
+		  StackTrace = error.Stack
+		  
+		  
+		  'The exception's type is not part of the error message :(
+		  errorType = error.ToString
+		  
+		  If errorType.Len > 0 Then
+		    Popup.ErrorDescription.AppendText(errorType + ":")
 		  End If
 		  
-		  MsgBox(error.ToString)
+		  'print stacktrace below error description
+		  Popup.ErrorDescription.AppendText(EndOfLine + EndOfLine + "Stacktrace:")
+		  For i = 0 To Ubound(error.Stack)
+		    Popup.ErrorDescription.AppendText(EndOfLine + StackTrace(i))
+		  Next
 		  
-		  If MainPreferences = Nil Then 'could not create/open preferences bail
-		    Quit
-		  Else
-		    'Don't check  MainWindow vars if MainPreferences has an exception
-		    'otherwise we'll get an onslaught of NilObjectExceptions
-		    'don't ask me why?
-		    
-		    'If MainWindow <> Nil Then
-		    'MainWindow is always Non-Null until we close it
-		    If MainWindow.Visible Then
-		      MainWindow.Status_Presentation = False
-		    End If
-		  End If
+		  Popup.ShowModal
+		  
+		  Quit
 		End Function
 	#tag EndEvent
 
@@ -599,7 +601,7 @@ Inherits Application
 		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@width", _
 		        TempPS.PageWidth / TempPS.HorizontalResolution)
 		      End If
-		    Else 
+		    Else
 		      Return Nil // User cancelled dialog. 
 		    End If
 		  Else // Don't show dialog

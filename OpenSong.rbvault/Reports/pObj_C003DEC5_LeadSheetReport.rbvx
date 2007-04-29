@@ -1,0 +1,324 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC003DEC50000000000000000000000000000000000000000
+ Name/S: LeadSheetReport
+ Cont/N: -1072340153
+ bCls/N: 1
+ Name/S: LeadSheetReport
+ Size/N: 24
+ Supr/S: Report
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: AddSong
+  parm/S: SongName As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub AddSong(SongName As String)
+		  Songs.Append SongName
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Clear
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Clear()
+		  //
+		  // Clear out all the songs
+		  //
+		  // Ed Palmer, January 2006
+		  Dim i As Integer
+		  App.DebugWriter.Write "LeadSheetReport.Clear: Enter"
+		  For i = 0 To UBound(Songs)
+		    Songs.Remove 0
+		  Next i
+		  App.DebugWriter.Write "LeadSheetReport.Clear: Exit"
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Generate
+  parm/S: Zoom As Double = 1.0, MyPages As Group2D = Nil
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Generate(Zoom As Double = 1.0, MyPages As Group2D = Nil) As Boolean
+		  //
+		  // This method is mostly taken from PrintWindow's souce code
+		  // for PrintLeadSheets.  It's moved here so we don't
+		  // open the PrintWindow before everything is ready
+		  // to preview.
+		  //
+		  // Ed Palmer, January 2006
+		  //
+		  App.DebugWriter.Write "LeadSheetReport.Generate: Enter, Zoom = " + str(Zoom)
+		  Dim i as Integer
+		  Dim j As Integer
+		  Dim f As FolderItem
+		  Dim s As XmlDocument
+		  Dim Song As Group2D
+		  Dim pic As Picture
+		  Dim ProgressWindowVisible As Boolean = False
+		  Dim SongsWithErrors As New XmlDocument
+		  Dim SongWithErrors As XmlNode
+		  Dim ErrorChild As XmlNode
+		  
+		  Dim RunningPage As Integer = 1
+		  
+		  SongsWithErrors.AppendChild SongsWithErrors.CreateElement("errorlist")
+		  
+		  //
+		  // If MyPages is Nil, then use the Pages object from the superclass
+		  //
+		  
+		  If MyPages = Nil Then MyPages = Pages
+		  
+		  pic = NewPicture(Round(PrintableWidth * 72 * Zoom), Round(PrintableHeight * 72 * Zoom), 32)
+		  
+		  //Clear out the arrays
+		  
+		  i = MyPages.Count - 1
+		  while i > -1
+		    MyPages.Remove i
+		    i = i - 1
+		  wend 
+		  
+		  // Build the pages for the songs
+		  // Show progress window if we have a few
+		  If UBound(Songs) > 10 Then
+		    '++JRC Add status message
+		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/lead_sheets") + "..."
+		    '--
+		    
+		    ProgressWindow.SetMaximum(UBound(Songs))
+		    ProgressWindow.SetProgress 0
+		    ProgressWindow.ShowWithin MainWindow
+		    ProgressWindowVisible = True
+		    ProgressWindow.CanCancel True
+		    App.MouseCursor = WatchCursor
+		  End If
+		  
+		  For i = 0 to UBound(Songs)
+		    If ProgressWindowVisible Then 
+		      If Not ProgressWindow.SetProgress(i) Then
+		        ProgressWindow.Close
+		        Return False
+		      End If
+		    End If
+		    f = MainWindow.Songs.GetFile(Songs(i))
+		    If f <> Nil Then
+		      s = SmartML.XDocFromFile(f)
+		      If ProgressWindowVisible Then ProgressWindow.SetStatus f.DisplayName
+		      If s <> Nil Then
+		        Try
+		          Song = SongML.Draw(s, pic.Graphics, Zoom, RunningPage)
+		          // Unroll the returned Group2D into individual pages
+		          For j = 0 to Song.Count - 1
+		            MyPages.Append Song.Item(j)
+		          Next
+		          If Sequential Then RunningPage = RunningPage + Song.Count
+		        Catch DrawException As RuntimeException
+		          // Add this song to the list of songs that had problems
+		          SongWithErrors = SongsWithErrors.CreateElement("song")
+		          ErrorChild =  SongsWithErrors.CreateElement("path")
+		          ErrorChild.AppendChild SongsWithErrors.CreateTextNode(f.AbsolutePath)
+		          SongWithErrors.AppendChild ErrorChild
+		          ErrorChild = SongsWithErrors.CreateElement("error")
+		          ErrorChild.AppendChild _
+		              SongsWithErrors.CreateTextNode(Str(DrawException.ErrorNumber) + ": " + DrawException.Message)
+		          SongWithErrors.AppendChild ErrorChild
+		          SongsWithErrors.DocumentElement.AppendChild SongWithErrors
+		        End Try
+		      End If
+		    Else // f = Nil...no file
+		      SongWithErrors = SongsWithErrors.CreateElement("song")
+		      ErrorChild = SongsWithErrors.CreateElement("path")
+		      ErrorChild.AppendChild SongsWithErrors.CreateTextNode(Songs(i))
+		      SongWithErrors.AppendChild ErrorChild
+		      ErrorChild = SongsWithErrors.CreateElement("error")
+		      ErrorChild.AppendChild SongsWithErrors.CreateTextNode(App.T.Translate("errors/no_such_song"))
+		      SongWithErrors.AppendChild ErrorChild
+		      SongsWithErrors.DocumentElement.AppendChild SongWithErrors
+		    End If
+		  Next
+		  
+		  Scale = Zoom
+		  
+		  If ProgressWindowVisible Then
+		    ProgressWindow.close
+		    App.MouseCursor = Nil
+		  End If
+		  App.DebugWriter.Write "LeadSheetReport.Generate: Pages.Count = " + str(MyPages.Count)
+		  App.DebugWriter.Write "LeadSheetReport.Generate: Exit"
+		  Return True
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetPage
+  parm/S: PageNumber As Integer, Zoom As Double
+  rslt/S: Object2D
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetPage(PageNumber As Integer, Zoom As Double) As Object2D
+		  //
+		  // Returns a Object2D corresponding to a particular page, or Nil if out of bounds
+		  //
+		  // Ed Palmer, January 2006
+		  App.DebugWriter.Write "LeadSheetReport.GetPage: Enter/Exit, Page, Zoom = " + str(PageNumber) + ", " + str(zoom)
+		  If PageNumber < 1 Or PageNumber > Pages.Count + 1 Then
+		    Return Nil
+		  Else 
+		    Pages.Item(PageNumber - 1).Scale = Zoom
+		    Return Pages.Item(PageNumber - 1)
+		  End If
+		  //++
+		  // 2-1-06...this was what it started out as.  Unfortunately, the PrintWindow
+		  // kept crashing.  Hypothesis: Generate was pulling an object right out from
+		  // underneath a variable that had a pointer to it in PrintWindow (it wasn't PageObj,
+		  // because when I removed the references to it in PrintWindow the problem was
+		  // still there.
+		  //
+		  // The other issue that cropped up was changing pagination, apparently due to
+		  // rounding in the scaling calculations courtesy of RB's string handling.  To calculate
+		  // string height and width, the graphics object is used, which only supports Integer
+		  // font sizes.  However, the StringShape has Double font sizes.  What fun.
+		  //
+		  // For now, just set the scale property to the zoom and accept some scaling
+		  // errors.  Thus, the "Else" clause in the above If.
+		  // EMP :-(
+		  //--
+		  
+		  'If Scale = Zoom Then // This is easy
+		  'App.DebugWriter.Write "LeadSheetReport.GetPage: Exit with Scale = Zoom"
+		  'Return Pages.Item(PageNumber - 1)
+		  'Else // It's not so easy
+		  'If Generate(Zoom) Then
+		  'App.DebugWriter.Write "LeadSheetReport.GetPage: Exit after Generate"
+		  'Return Pages.Item(PageNumber - 1)
+		  'Else // Something went wrong, assume Pages isn't valid anymore
+		  'Return Nil
+		  'End If
+		  'End If
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetSong
+  parm/S: Index As Integer = 1
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetSong(Index As Integer = 1) As String
+		  //
+		  // Returns the song at a specific index in the Songs
+		  //
+		  // NOTE: Using 1-based here, but array is 0-based
+		  //
+		  // Ed Palmer, January 2006
+		  //
+		  If Index < 1 Or Index > UBound(Songs) Then Return ""
+		  
+		  Return Songs(Index - 1)
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetSongCount
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetSongCount() As Integer
+		  //
+		  // Return the number of songs currently in the object
+		  //
+		  // Ed Palmer, January 2006
+		  //
+		  
+		  Return UBound(Songs) + 1
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RemoveSong
+  parm/S: Index As Integer = 1
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub RemoveSong(Index As Integer = 1)
+		  //
+		  // Removes the song at the specified index
+		  // from Songs array.
+		  //
+		  // NOTE: Index is 1-based
+		  //
+		  // Ed Palmer, January 2006
+		  //
+		  If Index < 1 Or Index > UBound(Songs) + 1 Then Return
+		  Songs.Remove Index - 1
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Setup
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Setup() As Boolean
+		  App.DebugWriter.Write "LeadSheetReport.Setup: Enter"
+		  ps = App.GetPrinterSetup
+		  If ps = Nil Then
+		    ps = App.GetPrinterSetup(True, Window(0))
+		    If ps = Nil Then Return False // User doesn't want to print
+		  End If
+		  Sequential = False
+		  Scale = 1.0
+		  Clear
+		  Pages = New Group2D
+		  PrintableWidth = CalcPrintableWidth
+		  PrintableHeight = CalcPrintableHeight
+		  App.DebugWriter.Write "LeadSheetReport.Setup: Exit"
+		  Return True
+		End Function
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Sequential As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Sequential As Boolean
+   ntln/S: Specifies if the songs should be numbered sequentially.
+   ntln/S: If False, page numbers restart at 1 with each song.
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Songs() As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Songs() As String
+   ntln/S: The list of songs to print
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

@@ -1,0 +1,461 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABBF2A7410000000000000000000000000000000000000000
+ Name/S: plist
+ Cont/N: -1042926112
+ bCls/N: 1
+ Name/S: plist
+ Size/N: 80
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Cleanup
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Cleanup()
+		  if isBinary then
+		    savePath.Delete
+		  end
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ClearSearch
+  parm/S: dict as plistDict
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub ClearSearch(dict as plistDict)
+		  Dim key,type,value as string
+		  dim ok As Boolean
+		  
+		  dict.MoveFirst
+		  While not dict.eof
+		    key=dict.CurrentKey
+		    type=dict.GetType(key)
+		    If type="dict" or type="array" then
+		      ClearSearch(dict.child(key))
+		    else
+		      dict.searched.Value(key)=false
+		    end
+		    dict.MoveNext
+		  Wend
+		  
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Dump
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Dump()
+		  dim c As clipboard
+		  dim count As integer
+		  dim s As string
+		  
+		  c=new clipboard
+		  c.Text=""
+		  
+		  for count=1 to ubound(headers)
+		    s=s+headers(count)+chr(13)
+		  next
+		  c.text=s
+		  c.close
+		  root.Dump(1)
+		  c=new clipboard
+		  s=s+"</dict>"+chr(13)
+		  s=s+"</plist>"+chr(13)
+		  c.text=c.text+s
+		  c.close
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Find
+  parm/S: searchText as string
+  rslt/S: boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Find(searchText as string) As boolean
+		  foundDict=nil
+		  foundKey=""
+		  foundValue=""
+		  foundType=""
+		  ClearSearch(root)
+		  lastSearch=searchText
+		  Return ReadStructure(root,searchText,"valueSearch")
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: FindNext
+  parm/S: searchText as string
+  rslt/S: boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function FindNext(searchText as string) As boolean
+		  if searchText<>lastSearch then
+		    ClearSearch(root)
+		  end
+		  Return ReadStructure(root,searchText,"valueSearch")
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Load
+  parm/S: f As folderItem,template As folderItem
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Load(f As folderItem,template As folderItem)
+		  dim t As textInputStream
+		  dim s,path,command As string
+		  dim copyTo As FolderItem
+		  dim sh As shell
+		  
+		  root=new plistDict
+		  
+		  savePath=f
+		  if not f.exists then
+		    f=template
+		  end
+		  if f.exists then
+		    t=f.OpenAsTextFile
+		    s=t.ReadLine
+		    if left(s,6)="bplist" then
+		      isBinary=true
+		      t.Close
+		      copyTo=f.Parent.Child(f.Name+" temp")
+		      if copyTo.Exists then
+		        copyTo.Delete
+		      end
+		      f.CopyFileTo copyTo
+		      path=copyTo.ShellPath
+		      sh=new shell
+		      command="plutil -convert xml1 "+path
+		      sh.Execute command
+		      org=f
+		      f=copyTo
+		      t=f.OpenAsTextFile
+		      savePath=f
+		    else
+		      t.Close
+		      t=f.OpenAsTextFile
+		    end
+		    while not t.eof and s<>"<dict>"
+		      s=t.ReadLine
+		      headers.append s
+		    wend
+		    if s<>"<dict>" then
+		      error=true
+		      errorMessage="Not a plist file"
+		    else
+		      root.Load(t,"root",false,nil,me,true)
+		    end
+		    t.close
+		  else
+		    'error=true
+		    'errorMessage=f.AbsolutePath+" does not exist"
+		    headers.append "<?xml version="+chr(34)+"1.0"+chr(34)+" encoding="+chr(34)+"UTF-8"+chr(34)+"?>"
+		    headers.append  "<!DOCTYPE plist PUBLIC "+chr(34)+"-//Apple Computer//DTD PLIST 1.0//EN"+chr(34)+" "+chr(34)+"http://www.apple.com/DTDs/PropertyList-1.0.dtd"+chr(34)+">"
+		    headers.append "<plist version="+chr(34)+"1.0"+chr(34)+">"
+		    headers.append "<dict>"
+		    root.load(t,"root",false,nil,me,false)
+		  end
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: plist
+  parm/S: f As FolderItem
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub plist(f As FolderItem)
+		  plist f,f
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: plist
+  parm/S: f As folderItem,template As FolderItem
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub plist(f As folderItem,template As FolderItem)
+		  Load(f,template)
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ReadStructure
+  parm/S: dict as plistDict,searchText as string,searchType as string
+  rslt/S: boolean
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Function ReadStructure(dict as plistDict,searchText as string,searchType as string) As boolean
+		  Dim key,type,value as string
+		  dim ok As Boolean
+		  
+		  dict.MoveFirst
+		  While not dict.eof
+		    key=dict.CurrentKey
+		    type=dict.GetType(key)
+		    If type="dict" or type="array" then
+		      if ReadStructure(dict.child(key),searchText,searchType) then
+		        return true
+		      end
+		    else
+		      value=dict.GetValue(key)
+		      if (instr(value,searchText)>0 and searchType="valueSearch") or (instr(key,searchText)>0 and searchType="keySearch") then
+		        if not dict.searched.HasKey(key) then
+		          dict.searched.Value(key)=false
+		        end
+		        if not dict.searched.Value(key) then
+		          foundDict=dict
+		          foundKey=key
+		          foundType=type
+		          foundValue=value
+		          dict.searched.Value(key)=true
+		          Return true
+		        end
+		      end
+		    end
+		    dict.MoveNext
+		  Wend
+		  return false
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Save
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Save()
+		  Save(false)
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Save
+  parm/S: clean as boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Save(clean as boolean)
+		  dim o As TextOutputStream
+		  dim count As integer
+		  dim path As string
+		  dim sh As shell
+		  
+		  o=savePath.CreateTextFile
+		  if o<>nil then
+		    for count=1 to ubound(headers)
+		      o.WriteLine headers(count)
+		    next
+		    root.Write(o,1)
+		    o.WriteLine "</dict>"
+		    o.WriteLine "</plist>"
+		    o.close
+		  else
+		    error=true
+		    errorMessage="Could not open file for saving"
+		  end
+		  if isBinary then
+		    path=savePath.ShellPath
+		    sh=new shell
+		    sh.Execute "plutil -convert binary1 "+path
+		    org.Delete
+		    savePath.CopyFileTo org
+		  end
+		  if clean then
+		    Cleanup
+		  end
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: brk As boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: brk As boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: debug As boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: debug As boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: error As boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: error As boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: errorMessage As string
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: errorMessage As string
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: findingNext As boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: findingNext As boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: foundDict As plistDict
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: foundDict As plistDict
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: foundKey As string
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: foundKey As string
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: foundType As string
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: foundType As string
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: foundValue As string
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: foundValue As string
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: headers(0) As string
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: headers(0) As string
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: isBinary As boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: isBinary As boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: lastSearch As string
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: lastSearch As string
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: org As folderItem
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: org As folderItem
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: root As plistDict
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: root As plistDict
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: savePath As FolderItem
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: savePath As FolderItem
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: untitled As Integer
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: untitled As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

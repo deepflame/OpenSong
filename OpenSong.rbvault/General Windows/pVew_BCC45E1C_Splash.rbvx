@@ -1,0 +1,179 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pVew/B: 426C6F6B70566577BCC45E1C0000000000000000000000000000000000000000
+ Name/S: Splash
+ Cont/N: -1131477727
+ CBhv/G: 
+  Name/S: 
+  Size/N: 56
+  Supr/S: Timer
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  secondsOpen = secondsOpen + 1
+		  
+		  If slowClosing And secondsOpen >= 3 Then
+		    Me.Enabled = False
+		    Close
+		    App.SplashShowing = False
+		    App.MouseCursor = Nil
+		  End If
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ Ctrl/G: 
+  ccls/S: Timer
+  name/S: Timer
+  CBix/N: 0
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: Left, PVal/S: 20)
+  PDef/D: (name/S: Mode, PVal/S: 2)
+  PDef/D: (name/S: Name, PVal/S: closeTimer, Enco/N: 134217984)
+  PDef/D: (name/S: Period, PVal/S: 1000)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 256)
+ Ctrl/g: 
+ FDef/G: 
+  Name/S: Splash
+  Size/N: 152
+  Supr/S: Window
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  App.SplashShowing = False
+		  App.MouseCursor = Nil
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  App.SplashShowing = True
+		  App.MouseCursor = WatchCursor
+		  secondsOpen = 0
+		  closeTimer.Reset
+		  closeTimer.Enabled = True
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Paint
+   sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  Dim f As New FontFace
+		  f.Name = "Arial"
+		  f.Size = 9
+		  f.Bold = True
+		  f.Border = True
+		  f.ForeColor = RGB(255,255,255)
+		  f.BorderColor = RGB(0,0,0)
+		  
+		  g.DrawPicture splashbg, 0, 0
+		  
+		  Dim t As String
+		  t = App.SmartVersion
+		  
+		  GraphicsX.DrawFontString g, t, 3, 0, f, g.Width-6, "right", g.Height-3, "bottom"
+		  GraphicsX.DrawFontString g, Status, 3, 0, f, g.Width-6, "left", g.Height-3, "bottom"
+		End Sub
+   )
+  HIns/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetStatus
+   parm/S: status As String
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub SetStatus(status As String)
+		  Me.Status = status
+		  RefreshRect 0, Height-15, 3*Width/4, 15, False
+		  'Refresh False
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SlowClose
+   parm/S: 
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub SlowClose()
+		  slowClosing = True
+		End Sub
+   )
+  Meth/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SecondsOpen As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SecondsOpen As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SlowClosing As Boolean
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SlowClosing As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: Status As String
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: Status As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+ FDef/g: 
+ PDef/D: (name/S: BackColor, PVal/S: 16777215)
+ PDef/D: (name/S: Backdrop, PVal/S: 0)
+ PDef/D: (name/S: BalloonHelp, PVal/S: )
+ PDef/D: (name/S: CloseBox, PVal/S: True)
+ PDef/D: (name/S: Composite, PVal/S: False)
+ PDef/D: (name/S: Frame, PVal/S: 4)
+ PDef/D: (name/S: FullScreen, PVal/S: False)
+ PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: HasBackColor, PVal/S: False)
+ PDef/D: (name/S: Height, PVal/S: 300)
+ PDef/D: (name/S: LiveResize, PVal/S: False)
+ PDef/D: (name/S: MacProcID, PVal/S: 0)
+ PDef/D: (name/S: MaxHeight, PVal/S: 32000)
+ PDef/D: (name/S: MaxWidth, PVal/S: 32000)
+ PDef/D: (name/S: MenuBar, PVal/S: 0)
+ PDef/D: (name/S: MenuBarVisible, PVal/S: True)
+ PDef/D: (name/S: MinHeight, PVal/S: 300)
+ PDef/D: (name/S: MinWidth, PVal/S: 400)
+ PDef/D: (name/S: Name, PVal/S: Splash, Enco/N: 134217984)
+ PDef/D: (name/S: Placement, PVal/S: 2)
+ PDef/D: (name/S: Title, PVal/S: OpenSong, Enco/N: 134217984)
+ PDef/D: (name/S: Visible, PVal/S: True)
+ PDef/D: (name/S: Width, PVal/S: 400)
+ PDef/D: (name/S: ZoomIcon, PVal/S: True)
+pVew/b: 
+##RBvx-End#

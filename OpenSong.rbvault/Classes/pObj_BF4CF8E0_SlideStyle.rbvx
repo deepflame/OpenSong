@@ -1,0 +1,747 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABF4CF8E00000000000000000000000000000000000000000
+ Name/S: SlideStyle
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SlideStyle
+ Size/N: 82
+ bNtr/N: 0
+ Intr/S: 
+ Cnst/D: (Enco/N: 134217984, name/S: POS_CENTER, type/N: 1, defn/S: 2, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: POS_STRETCH, type/N: 1, defn/S: 1, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: POS_TILE, type/N: 1, defn/S: 3, flag/N: 0)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Background
+  parm/S: 
+  rslt/S: Picture
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Background() As Picture
+		  Return Background
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Background
+  parm/S: Assigns bg As Picture
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Background(Assigns bg As Picture)
+		  Background = bg
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BGColor
+  parm/S: Assigns bg As Color
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub BGColor(Assigns bg As Color)
+		  BGColor = bg
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BGColor
+  parm/S: 
+  rslt/S: Color
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function BGColor() As Color
+		  Dim C As Color
+		  C = BGColor
+		  Return C
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BodyAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function BodyAlign() As String
+		  Dim A As String
+		  A = Lowercase(BodyAlign)
+		  Return A
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BodyAlign
+  parm/S: Assigns Align As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub BodyAlign(Assigns Align As String)
+		  BodyAlign = Align
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BodyFont
+  parm/S: 
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function BodyFont() As FontFace
+		  Return BodyFont.Clone
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BodyFont
+  parm/S: Assigns NewFont As FontFace
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub BodyFont(Assigns NewFont As FontFace)
+		  BodyFont = NewFont
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BodyVAlign
+  parm/S: Assigns VAlign As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub BodyVAlign(Assigns VAlign As String)
+		  BodyVAlign = VAlign
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: BodyVAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function BodyVAlign() As String
+		  Dim VA As String
+		  VA = Lowercase(BodyVAlign)
+		  Return VA
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Constructor
+  parm/S: xStyle As XmlNode
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Constructor(xStyle As XmlNode)
+		  Dim foo As Boolean
+		  
+		  BodyFont = SmartML.GetValueF(xStyle, "body")
+		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
+		  BodyVAlign = SmartML.GetValue(xStyle, "body/@valign")
+		  Highlight = SmartML.GetValueB(xStyle, "body/@highlight_chorus")
+		  
+		  TitleFont = SmartML.GetValueF(xStyle, "title")
+		  TitleAlign = SmartML.GetValue(xStyle, "title/@align")
+		  TitleVAlign = SmartML.GetValue(xStyle, "title/@valign")
+		  
+		  SubtitleFont = SmartML.GetValueF(xStyle, "subtitle")
+		  SubtitleAlign = SmartML.GetValue(xStyle, "subtitle/@align")
+		  SubtitleVAlign = SmartML.GetValue(xStyle, "subtitle/@valign")
+		  Subtitles = SmartML.GetValue(xStyle, "song_subtitle")
+		  SubtitleDescriptiveText = SmartML.GetValueB(xStyle, "subtitle/@descriptive", True, False)
+		  
+		  Background = SmartML.GetValueP(xstyle, "background", False)
+		  foo = SmartML.GetValueC(xstyle, "background/@color", BGColor, False)
+		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
+		  
+		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
+		  If Position < POS_STRETCH Or Position > POS_CENTER Then
+		    Position = POS_STRETCH
+		  End If
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DescriptiveSubtitles
+  parm/S: Value As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub DescriptiveSubtitles(Value As Boolean)
+		  SubtitleDescriptiveText = Value
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DescriptiveSubtitles
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function DescriptiveSubtitles() As Boolean
+		  Return SubtitleDescriptiveText
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: HighlightChorus
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function HighlightChorus() As Boolean
+		  Return Highlight
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: HighlightChorus
+  parm/S: Value As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub HighlightChorus(Value As Boolean)
+		  Highlight = Value
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Position
+  parm/S: Assigns pos As Integer
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Position(Assigns pos As Integer)
+		  If pos < 0 or pos > 2 Then pos = POS_STRETCH ' Defaults to Stretch if invalid
+		  Position = pos
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Position
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Position() As Integer
+		  Return Position
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: StripFooter
+  parm/S: Assigns Strip As Integer
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub StripFooter(Assigns Strip As Integer)
+		  StripFooter = Strip
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: StripFooter
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function StripFooter() As Integer
+		  Dim I As Integer
+		  I = StripFooter
+		  Return I
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleAlign
+  parm/S: Assigns Align As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SubtitleAlign(Assigns Align As String)
+		  SubtitleAlign = Align
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function SubtitleAlign() As String
+		  Dim A As String
+		  A = Lowercase(SubtitleAlign)
+		  Return A
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleFont
+  parm/S: 
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function SubtitleFont() As FontFace
+		  Return SubtitleFont.Clone
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleFont
+  parm/S: Assigns NewFont As FontFace
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SubtitleFont(Assigns NewFont As FontFace)
+		  SubtitleFont = NewFont
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleList
+  parm/S: SubList As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SubtitleList(SubList As String)
+		  //++
+		  // Set the list of subtitles.
+		  // This needs to be reworked at some point
+		  // It's too dependent on a non-opaque set of
+		  // options and there's no easy way to validate this
+		  // list.
+		  //--
+		  
+		  Subtitles = SubList
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleList
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function SubtitleList() As String
+		  //++
+		  // Returns the list of subtitles.
+		  // See comments under the Setter subroutine
+		  //--
+		  
+		  Return Subtitles
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleVAlign
+  parm/S: Assigns VAlign As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SubtitleVAlign(Assigns VAlign As String)
+		  SubtitleVAlign = VAlign
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SubtitleVAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function SubtitleVAlign() As String
+		  Dim VA As String
+		  VA = Lowercase(SubtitleVAlign)
+		  Return VA
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TitleAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function TitleAlign() As String
+		  Dim A As String
+		  A = Lowercase(TitleAlign)
+		  Return A
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TitleAlign
+  parm/S: Assigns Align As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub TitleAlign(Assigns Align As String)
+		  TitleAlign = Align
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TitleFont
+  parm/S: Assigns NewFont As FontFace
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub TitleFont(Assigns NewFont As FontFace)
+		  TitleFont = NewFont
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TitleFont
+  parm/S: 
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function TitleFont() As FontFace
+		  Return TitleFont.Clone
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TitleVAlign
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function TitleVAlign() As String
+		  Dim VA As String
+		  VA = Lowercase(TitleVAlign)
+		  Return VA
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TitleVAlign
+  parm/S: Assigns VAlign As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub TitleVAlign(Assigns VAlign As String)
+		  TitleVAlign = VAlign
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ToString
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function ToString() As String
+		  Dim XmlDoc As XmlDocument
+		  Dim root As XmlNode
+		  
+		  XmlDoc = ToXML
+		  root = XmlDoc.DocumentElement
+		  
+		  Return root.ToString
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ToXML
+  parm/S: 
+  rslt/S: XmlDocument
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function ToXML() As XmlDocument
+		  Dim XmlDoc As XmlDocument
+		  Dim root As XmlNode
+		  Dim CurrChild As XmlNode
+		  
+		  XmlDoc = New XmlDocument
+		  
+		  root = XmlDoc.AppendChild(XmlDoc.CreateElement("style"))
+		  
+		  CurrChild = root.AppendChild(XmlDoc.CreateElement("title"))
+		  CurrChild.SetAttribute "valign", TitleVAlign
+		  CurrChild.SetAttribute "align", TitleAlign
+		  SmartML.SetValueF(CurrChild, "", TitleFont)
+		  
+		  CurrChild = root.AppendChild(XmlDoc.CreateElement("subtitle"))
+		  CurrChild.SetAttribute "valign", SubtitleVAlign
+		  CurrChild.SetAttribute "align", SubtitleAlign
+		  SmartML.SetValueF(CurrChild, "", SubtitleFont)
+		  SmartML.SetValue(root, "song_subtitle", Subtitles)
+		  SmartML.SetValueB(CurrChild, "/@descriptive", SubtitleDescriptiveText)
+		  
+		  CurrChild = root.AppendChild(XmlDoc.CreateElement("body"))
+		  CurrChild.SetAttribute "valign", BodyVAlign
+		  CurrChild.SetAttribute "align", BodyAlign
+		  SmartML.SetValueF(CurrChild, "", BodyFont)
+		  SmartML.SetValueB(CurrChild, "/@highlight_chorus", Highlight)
+		  
+		  CurrChild = root.AppendChild(XmlDoc.CreateElement("background"))
+		  CurrChild.SetAttribute "strip_footer", str(StripFooter)
+		  SmartML.SetValueC(CurrChild, "/@color", BGColor)
+		  SmartML.SetValueN(CurrChild, "/@position", Position)
+		  
+		  Dim r As New Random
+		  Dim f As FolderItem
+		  
+		  If Background <> Nil Then
+		    f = PreferencesFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
+		    If f <> Nil Then
+		      f.SaveAsPicture Background
+		      SmartML.SetValueP(CurrChild, "", f)
+		      f.Delete
+		    End If
+		  End If
+		  Return XmlDoc
+		End Function
+  )
+ Meth/g: 
+ Note/G: 
+  Enco/N: 1280
+  name/S: Overview
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Overview
+   ntln/S: September 2005
+   ntln/S: Ed Palmer (swampcat@users.sourceforge.net)
+   ntln/S: 
+   ntln/S: This is a new class, post V0.9.9.
+   ntln/S: 
+   ntln/S: One of the biggest complaints about 0.9.9 was the time required to draw a slide.  In investigating the issue,
+   ntln/S: I discovered that since there was no pre-processing being done, a new Picture object was being generated
+   ntln/S: for the Background each time the slide changed.  Because the easiest way in RB to change a string-encoded JPG
+   ntln/S: into a Picture is through the use of an intermediate file, a new temporary file was being created, written, read and
+   ntln/S: destroyed with each slide change.  If the background was exceptionally big, that's a lot of data that moves around
+   ntln/S: in a short space of time.
+   ntln/S: 
+   ntln/S: This class is to help that problem.  My general idea as of this writing is to pre-process the XML for the Set and
+   ntln/S: change the XML for the style into one of these objects.  The object will be named the same as the slide group,
+   ntln/S: and a small collection class will manage the SlideStyle objects.  Still TBD is how to handle certain things like
+   ntln/S: blank slides and the concept of a "reverting" style -- changing a temporary style back into its predecessor.
+   ntln/S: 
+   ntln/S: 09/16/05: Here's an interesting revelation that is probably an RTFM: Returning an object (i.e., the Get method)
+   ntln/S: returns the pointer, not a copy of the object.  Created an "interesting" display the first time I debugged this.
+   ntln/S: 
+  sorc/g: 
+ Note/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Background As Picture
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Background As Picture
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: BGColor As Color
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: BGColor As Color
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: BodyAlign As String
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: BodyAlign As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: BodyFont As FontFace
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: BodyFont As FontFace
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: BodyVAlign As String
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: BodyVAlign As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Highlight As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Highlight As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Position As Integer
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Position As Integer
+   ntln/S: Defines the treatment of the background image. Valid values are the
+   ntln/S: constants that start with POS_
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: StripFooter As Integer
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: StripFooter As Integer
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SubtitleAlign As String
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SubtitleAlign As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SubtitleDescriptiveText As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SubtitleDescriptiveText As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SubtitleFont As FontFace
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SubtitleFont As FontFace
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Subtitles As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Subtitles As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SubtitleVAlign As String
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SubtitleVAlign As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: TitleAlign As String
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: TitleAlign As String
+   ntln/S: Horizontal alignment
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: TitleFont As Fontface
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: TitleFont As Fontface
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: TitleVAlign As String
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: TitleVAlign As String
+   ntln/S: Vertical alignment of the title
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

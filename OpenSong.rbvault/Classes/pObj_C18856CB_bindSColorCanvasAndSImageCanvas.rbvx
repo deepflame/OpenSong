@@ -1,0 +1,75 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC18856CB0000000000000000000000000000000000000000
+ Name/S: bindSColorCanvasAndSImageCanvas
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: bindSColorCanvasAndSImageCanvas
+ Size/N: 32
+ bNtr/N: 0
+ Intr/S: BindingInterface,ActionNotificationReceiver
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Bind
+  parm/S: Source As Object, Target As Object
+  rslt/S: 
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub Bind(Source As Object, Target As Object)
+   srcl/S: #pragma BindingSpecification sColorCanvas, SImageCanvas, "Update %2 with background color from %1"
+   srcl/S: 
+   srcl/S: SourceControl = SColorCanvas(Source)
+   srcl/S: TargetControl = SImageCanvas(Target)
+   srcl/S: 
+   srcl/S: SourceControl.AddActionNotificationReceiver self
+   srcl/S: End Sub
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PerformAction
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub PerformAction()
+		  // Update the SStyleCanvas with the color
+		  // selected by SColorCanvas
+		  Dim c As Color
+		  If SourceControl.GetColor(c) Then
+		    TargetControl.bgColor = c
+		  Else
+		    TargetControl.bgColor = FillColor
+		  End If
+		  
+		  TargetControl.Repaint
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SourceControl As sColorCanvas
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SourceControl As sColorCanvas
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: TargetControl As sImageCanvas
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: TargetControl As sImageCanvas
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

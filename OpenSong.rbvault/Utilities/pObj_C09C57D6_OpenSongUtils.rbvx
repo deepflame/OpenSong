@@ -1,0 +1,1162 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
+ Name/S: OpenSongUtils
+ Cont/N: -1119363046
+ bCls/N: 0
+ Name/S: OpenSongUtils
+ Size/N: 24
+ bNtr/N: 0
+ Intr/S: 
+ Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_CM, type/N: 2, defn/S: 0.035277778, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: POINT_TO_INCH, type/N: 2, defn/S: 0.013888889, flag/N: 0)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Append
+  parm/S: ByRef Extends s As String, text As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Append(ByRef Extends s As String, text As String)
+		  s = s + text
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CMtoPoints
+  parm/S: CM As Double
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function CMtoPoints(CM As Double) As Double
+		  //++
+		  //
+		  // Convert centimeters to points.
+		  // Uses the conversion value defined by Adobe
+		  // This converts 72 points to precisely 2.54 cm
+		  // Therefore, 72 pt = 2.54 cm = 1 in
+		  //
+		  // Value obtained from www.onlineconversion.com
+		  //
+		  // Ed Palmer, May 2006
+		  //++
+		  
+		  Return CM / POINT_TO_CM
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: CMtoPoints
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function CMtoPoints(Points As String) As String
+		  //++
+		  // Polymorphic version of CMtoPoints
+		  //--
+		  
+		  Return CStr(CMtoPoints(CDbl(Points)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: HTMLEntityEncode
+  parm/S: Extends s As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function HTMLEntityEncode(Extends s As String) As String
+		  //++
+		  // December 2006, Ed Palmer
+		  // Takes a passed string and examines it for
+		  // characters that must be encoded for HTML use.
+		  // Uses HTMLCodePoint and HTMLEntity arrays,
+		  // which are initialized by the HTMLEntityInitialize
+		  // method.
+		  //
+		  // UTF-8 code point to entity definitions are copied
+		  // from the multibyte string character utilities used
+		  // in PHP and sourced from http://sourceforge.jp/project/php-i18n/
+		  // That project's code is licensed under LGPL 2.1
+		  //--
+		  
+		  Dim sUTF8 As String // Input string converted to UTF-8
+		  Dim result As String // Output string (UTF-8 encoding)
+		  Dim i, j As Integer
+		  Dim CharIndex As Integer
+		  Dim CurrChar As String
+		  Dim Entity As String
+		  
+		  // Verify the library has been initialized
+		  
+		  If UBound(HTMLCodePoint) <= 0 Then
+		    HTMLEntityInitialize
+		  End If
+		  
+		  sUTF8 = s.ConvertEncoding(Encodings.UTF8)
+		  
+		  j = Len(sUTF8)
+		  
+		  For i = 1 To j
+		    CurrChar = Mid(sUTF8, i, 1)
+		    CharIndex = HTMLCodePoint.IndexOf(CurrChar.Asc)
+		    If CharIndex < 0 Then
+		      result = result + CurrChar
+		    Else
+		      result = result + "&" + HTMLEntity(CharIndex) + ";"
+		    End If
+		  Next
+		  
+		  Return result
+		  
+		Catch ex
+		  System.DebugLog "HTMLEntityEncode caught an error converting  '" + s + "'"
+		  Return ""
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: HTMLEntityInitialize
+  parm/S: 
+  rslt/S: 
+  flag/N: 33
+  sorc/d: (Enco/N: 134217984
+		Sub HTMLEntityInitialize()
+		  //++
+		  // December 2006, Ed Palmer
+		  //
+		  // Support routine for HTMLEntityEncode
+		  // See comments and credits there
+		  // This is necessary since there isn't a way
+		  // to do a compile-time initialization of an array
+		  //--
+		  If UBound(HTMLCodePoint) > 0 Then Return // Already done
+		  
+		  HTMLCodePoint = Array(_
+		      34,_
+		      38,_
+		          60,_
+		          62,_
+		              160,_
+		              161,_
+		                  162,_
+		                  163,_
+		                      164,_
+		                      165,_
+		                          166,_
+		                          167,_
+		                              168,_
+		                              169,_
+		                                  170,_
+		                                  171,_
+		                                      172,_
+		                                      173,_
+		                                          174,_
+		                                          175,_
+		                                              176,_
+		                                              177,_
+		                                                  178,_
+		                                                  179,_
+		                                                      180,_
+		                                                      181,_
+		                                                          182,_
+		                                                          183,_
+		                                                              184,_
+		                                                              185,_
+		                                                                  186,_
+		                                                                  187,_
+		                                                                      188,_
+		                                                                      189,_
+		                                                                          190,_
+		                                                                          191,_
+		                                                                              192,_
+		                                                                              193,_
+		                                                                                  194,_
+		                                                                                  195,_
+		                                                                                      196,_
+		                                                                                      197,_
+		                                                                                          198,_
+		                                                                                          199,_
+		                                                                                              200,_
+		                                                                                              201,_
+		                                                                                                  202,_
+		                                                                                                  203,_
+		                                                                                                      204,_
+		                                                                                                      205,_
+		                                                                                                       206,_
+		                                                                                                       207,_
+		                                                                                                       208,_
+		                                                                                                       209,_
+		                                                                                                       210,_
+		                                                                                                       211,_
+		                                                                                                       212,_
+		                                                                                                       213,_
+		                                                                                                       214,_
+		                                                                                                       215,_
+		                                                                                                       216,_
+		                                                                                                       217,_
+		                                                                                                       218,_
+		                                                                                                       219,_
+		                                                                                                       220,_
+		                                                                                                       221,_
+		                                                                                                       222,_
+		                                                                                                       223,_
+		                                                                                                       224,_
+		                                                                                                       225,_
+		                                                                                                       226,_
+		                                                                                                       227,_
+		                                                                                                       228,_
+		                                                                                                       229,_
+		                                                                                                       230,_
+		                                                                                                       231,_
+		                                                                                                       232,_
+		                                                                                                       233,_
+		                                                                                                       234,_
+		                                                                                                       235,_
+		                                                                                                       236,_
+		                                                                                                       237,_
+		                                                                                                       238,_
+		                                                                                                       239,_
+		                                                                                                       240,_
+		                                                                                                       241,_
+		                                                                                                       242,_
+		                                                                                                       243,_
+		                                                                                                       244,_
+		                                                                                                       245,_
+		                                                                                                       246,_
+		                                                                                                       247,_
+		                                                                                                       248,_
+		                                                                                                       249,_
+		                                                                                                       250,_
+		                                                                                                       251,_
+		                                                                                                       252,_
+		                                                                                                       253,_
+		                                                                                                       254,_
+		                                                                                                       255,_
+		                                                                                                       338,_
+		                                                                                                       339,_
+		                                                                                                       352,_
+		                                                                                                       353,_
+		                                                                                                       376,_
+		                                                                                                       402,_
+		                                                                                                       710,_
+		                                                                                                       732,_
+		                                                                                                       913,_
+		                                                                                                       914,_
+		                                                                                                       915,_
+		                                                                                                       916,_
+		                                                                                                       917,_
+		                                                                                                       918,_
+		                                                                                                       919,_
+		                                                                                                       920,_
+		                                                                                                       921,_
+		                                                                                                       922,_
+		                                                                                                       923,_
+		                                                                                                       924,_
+		                                                                                                       925,_
+		                                                                                                       926,_
+		                                                                                                       927,_
+		                                                                                                       928,_
+		                                                                                                       929,_
+		                                                                                                       931,_
+		                                                                                                       932,_
+		                                                                                                       933,_
+		                                                                                                       934,_
+		                                                                                                       935,_
+		                                                                                                       936,_
+		                                                                                                       937,_
+		                                                                                                       945,_
+		                                                                                                       946,_
+		                                                                                                       947,_
+		                                                                                                       948,_
+		                                                                                                       949,_
+		                                                                                                       950,_
+		                                                                                                       951,_
+		                                                                                                       952,_
+		                                                                                                       953,_
+		                                                                                                       954,_
+		                                                                                                       955,_
+		                                                                                                       956,_
+		                                                                                                       957,_
+		                                                                                                       958,_
+		                                                                                                       959,_
+		                                                                                                       960,_
+		                                                                                                       961,_
+		                                                                                                       962,_
+		                                                                                                       963,_
+		                                                                                                       964,_
+		                                                                                                       965,_
+		                                                                                                       966,_
+		                                                                                                       967,_
+		                                                                                                       968,_
+		                                                                                                       969,_
+		                                                                                                       977,_
+		                                                                                                       978,_
+		                                                                                                       982,_
+		                                                                                                       8194,_
+		                                                                                                       8195,_
+		                                                                                                       8201,_
+		                                                                                                       8204,_
+		                                                                                                       8205,_
+		                                                                                                       8206,_
+		                                                                                                       8207,_
+		                                                                                                       8211,_
+		                                                                                                       8212,_
+		                                                                                                       8216,_
+		                                                                                                       8217,_
+		                                                                                                       8218,_
+		                                                                                                       8220,_
+		                                                                                                       8221,_
+		                                                                                                       8222,_
+		                                                                                                       8224,_
+		                                                                                                       8225,_
+		                                                                                                       8226,_
+		                                                                                                       8230,_
+		                                                                                                       8240,_
+		                                                                                                       8242,_
+		                                                                                                       8243,_
+		                                                                                                       8249,_
+		                                                                                                       8250,_
+		                                                                                                       8254,_
+		                                                                                                       8260,_
+		                                                                                                       8364,_
+		                                                                                                       8472,_
+		                                                                                                       8465,_
+		                                                                                                       8476,_
+		                                                                                                       8482,_
+		                                                                                                       8501,_
+		                                                                                                       8592,_
+		                                                                                                       8593,_
+		                                                                                                       8594,_
+		                                                                                                       8595,_
+		                                                                                                       8596,_
+		                                                                                                       8629,_
+		                                                                                                       8656,_
+		                                                                                                       8657,_
+		                                                                                                       8658,_
+		                                                                                                       8659,_
+		                                                                                                       8660,_
+		                                                                                                       8704,_
+		                                                                                                       8706,_
+		                                                                                                       8707,_
+		                                                                                                       8709,_
+		                                                                                                       8711,_
+		                                                                                                       8712,_
+		                                                                                                       8713,_
+		                                                                                                       8715,_
+		                                                                                                       8719,_
+		                                                                                                       8721,_
+		                                                                                                       8722,_
+		                                                                                                       8727,_
+		                                                                                                       8730,_
+		                                                                                                       8733,_
+		                                                                                                       8734,_
+		                                                                                                       8736,_
+		                                                                                                       8743,_
+		                                                                                                       8744,_
+		                                                                                                       8745,_
+		                                                                                                       8746,_
+		                                                                                                       8747,_
+		                                                                                                       8756,_
+		                                                                                                       8764,_
+		                                                                                                       8773,_
+		                                                                                                       8776,_
+		                                                                                                       8800,_
+		                                                                                                       8801,_
+		                                                                                                       8804,_
+		                                                                                                       8805,_
+		                                                                                                       8834,_
+		                                                                                                       8835,_
+		                                                                                                       8836,_
+		                                                                                                       8838,_
+		                                                                                                       8839,_
+		                                                                                                       8853,_
+		                                                                                                       8855,_
+		                                                                                                       8869,_
+		                                                                                                       8901,_
+		                                                                                                       8968,_
+		                                                                                                       8969,_
+		                                                                                                       8970,_
+		                                                                                                       8971,_
+		                                                                                                       9001,_
+		                                                                                                       9002,_
+		                                                                                                       9674,_
+		                                                                                                       9824,_
+		                                                                                                       9827,_
+		                                                                                                       9829,_
+		                                                                                                       9830)
+		                                                                                                       
+		                                                                                                       HTMLEntity = Array(_
+		                                                                                                       "quot",_
+		                                                                                                       "amp",_
+		                                                                                                       "lt",_
+		                                                                                                       "gt",_
+		                                                                                                       "nbsp",_
+		                                                                                                       "iexcl",_
+		                                                                                                       "cent",_
+		                                                                                                       "pound",_
+		                                                                                                       "curren",_
+		                                                                                                       "yen",_
+		                                                                                                       "brvbar",_
+		                                                                                                       "sect",_
+		                                                                                                       "uml",_
+		                                                                                                       "copy",_
+		                                                                                                       "ordf",_
+		                                                                                                       "laquo",_
+		                                                                                                       "not",_
+		                                                                                                       "shy",_
+		                                                                                                       "reg",_
+		                                                                                                       "macr",_
+		                                                                                                       "deg",_
+		                                                                                                       "plusmn",_
+		                                                                                                       "sup2",_
+		                                                                                                       "sup3",_
+		                                                                                                       "acute",_
+		                                                                                                       "micro",_
+		                                                                                                       "para",_
+		                                                                                                       "middot",_
+		                                                                                                       "cedil",_
+		                                                                                                       "sup1",_
+		                                                                                                       "ordm",_
+		                                                                                                       "raquo",_
+		                                                                                                       "frac14",_
+		                                                                                                       "frac12",_
+		                                                                                                       "frac34",_
+		                                                                                                       "iquest",_
+		                                                                                                       "Agrave",_
+		                                                                                                       "Aacute",_
+		                                                                                                       "Acirc",_
+		                                                                                                       "Atilde",_
+		                                                                                                       "Auml",_
+		                                                                                                       "Aring",_
+		                                                                                                       "AElig",_
+		                                                                                                       "Ccedil",_
+		                                                                                                       "Egrave",_
+		                                                                                                       "Eacute",_
+		                                                                                                       "Ecirc",_
+		                                                                                                       "Euml",_
+		                                                                                                       "Igrave",_
+		                                                                                                       "Iacute",_
+		                                                                                                       "Icirc",_
+		                                                                                                       "Iuml",_
+		                                                                                                       "ETH",_
+		                                                                                                       "Ntilde",_
+		                                                                                                       "Ograve",_
+		                                                                                                       "Oacute",_
+		                                                                                                       "Ocirc",_
+		                                                                                                       "Otilde",_
+		                                                                                                       "Ouml",_
+		                                                                                                       "times",_
+		                                                                                                       "Oslash",_
+		                                                                                                       "Ugrave",_
+		                                                                                                       "Uacute",_
+		                                                                                                       "Ucirc",_
+		                                                                                                       "Uuml",_
+		                                                                                                       "Yacute",_
+		                                                                                                       "THORN",_
+		                                                                                                       "szlig",_
+		                                                                                                       "agrave",_
+		                                                                                                       "aacute",_
+		                                                                                                       "acirc",_
+		                                                                                                       "atilde",_
+		                                                                                                       "auml",_
+		                                                                                                       "aring",_
+		                                                                                                       "aelig",_
+		                                                                                                       "ccedil",_
+		                                                                                                       "egrave",_
+		                                                                                                       "eacute",_
+		                                                                                                       "ecirc",_
+		                                                                                                       "euml",_
+		                                                                                                       "igrave",_
+		                                                                                                       "iacute",_
+		                                                                                                       "icirc",_
+		                                                                                                       "iuml",_
+		                                                                                                       "eth",_
+		                                                                                                       "ntilde",_
+		                                                                                                       "ograve",_
+		                                                                                                       "oacute",_
+		                                                                                                       "ocirc",_
+		                                                                                                       "otilde",_
+		                                                                                                       "ouml",_
+		                                                                                                       "divide",_
+		                                                                                                       "oslash",_
+		                                                                                                       "ugrave",_
+		                                                                                                       "uacute",_
+		                                                                                                       "ucirc",_
+		                                                                                                       "uuml",_
+		                                                                                                       "yacute",_
+		                                                                                                       "thorn",_
+		                                                                                                       "yuml",_
+		                                                                                                       "OElig",_
+		                                                                                                       "oelig",_
+		                                                                                                       "Scaron",_
+		                                                                                                       "scaron",_
+		                                                                                                       "Yuml",_
+		                                                                                                       "fnof",_
+		                                                                                                       "circ",_
+		                                                                                                       "tilde",_
+		                                                                                                       "Alpha",_
+		                                                                                                       "Beta",_
+		                                                                                                       "Gamma",_
+		                                                                                                       "Delta",_
+		                                                                                                       "Epsilon",_
+		                                                                                                       "Zeta",_
+		                                                                                                       "Eta",_
+		                                                                                                       "Theta",_
+		                                                                                                       "Iota",_
+		                                                                                                       "Kappa",_
+		                                                                                                       "Lambda",_
+		                                                                                                       "Mu",_
+		                                                                                                       "Nu",_
+		                                                                                                       "Xi",_
+		                                                                                                       "Omicron",_
+		                                                                                                       "Pi",_
+		                                                                                                       "Rho",_
+		                                                                                                       "Sigma",_
+		                                                                                                       "Tau",_
+		                                                                                                       "Upsilon",_
+		                                                                                                       "Phi",_
+		                                                                                                       "Chi",_
+		                                                                                                       "Psi",_
+		                                                                                                       "Omega",_
+		                                                                                                       "alpha",_
+		                                                                                                       "beta",_
+		                                                                                                       "gamma",_
+		                                                                                                       "delta",_
+		                                                                                                       "epsilon",_
+		                                                                                                       "zeta",_
+		                                                                                                       "eta",_
+		                                                                                                       "theta",_
+		                                                                                                       "iota",_
+		                                                                                                       "kappa",_
+		                                                                                                       "lambda",_
+		                                                                                                       "mu",_
+		                                                                                                       "nu",_
+		                                                                                                       "xi",_
+		                                                                                                       "omicron",_
+		                                                                                                       "pi",_
+		                                                                                                       "rho",_
+		                                                                                                       "sigmaf",_
+		                                                                                                       "sigma",_
+		                                                                                                       "tau",_
+		                                                                                                       "upsilon",_
+		                                                                                                       "phi",_
+		                                                                                                       "chi",_
+		                                                                                                       "psi",_
+		                                                                                                       "omega",_
+		                                                                                                       "thetasym",_
+		                                                                                                       "upsih",_
+		                                                                                                       "piv",_
+		                                                                                                       "ensp",_
+		                                                                                                       "emsp",_
+		                                                                                                       "thinsp",_
+		                                                                                                       "zwnj",_
+		                                                                                                       "zwj",_
+		                                                                                                       "lrm",_
+		                                                                                                       "rlm",_
+		                                                                                                       "ndash",_
+		                                                                                                       "mdash",_
+		                                                                                                       "lsquo",_
+		                                                                                                       "rsquo",_
+		                                                                                                       "sbquo",_
+		                                                                                                       "ldquo",_
+		                                                                                                       "rdquo",_
+		                                                                                                       "bdquo",_
+		                                                                                                       "dagger",_
+		                                                                                                       "Dagger",_
+		                                                                                                       "bull",_
+		                                                                                                       "hellip",_
+		                                                                                                       "permil",_
+		                                                                                                       "prime",_
+		                                                                                                       "Prime",_
+		                                                                                                       "lsaquo",_
+		                                                                                                       "rsaquo",_
+		                                                                                                       "oline",_
+		                                                                                                       "frasl",_
+		                                                                                                       "euro",_
+		                                                                                                       "weierp",_
+		                                                                                                       "image",_
+		                                                                                                       "real",_
+		                                                                                                       "trade",_
+		                                                                                                       "alefsym",_
+		                                                                                                       "larr",_
+		                                                                                                       "uarr",_
+		                                                                                                       "rarr",_
+		                                                                                                       "darr",_
+		                                                                                                       "harr",_
+		                                                                                                       "crarr",_
+		                                                                                                       "lArr",_
+		                                                                                                       "uArr",_
+		                                                                                                       "rArr",_
+		                                                                                                       "dArr",_
+		                                                                                                       "hArr",_
+		                                                                                                       "forall",_
+		                                                                                                       "part",_
+		                                                                                                       "exist",_
+		                                                                                                       "empty",_
+		                                                                                                       "nabla",_
+		                                                                                                       "isin",_
+		                                                                                                       "notin",_
+		                                                                                                       "ni",_
+		                                                                                                       "prod",_
+		                                                                                                       "sum",_
+		                                                                                                       "minus",_
+		                                                                                                       "lowast",_
+		                                                                                                       "radic",_
+		                                                                                                       "prop",_
+		                                                                                                       "infin",_
+		                                                                                                       "ang",_
+		                                                                                                       "and",_
+		                                                                                                       "or",_
+		                                                                                                       "cap",_
+		                                                                                                       "cup",_
+		                                                                                                       "int",_
+		                                                                                                       "there4",_
+		                                                                                                       "sim",_
+		                                                                                                       "cong",_
+		                                                                                                       "asymp",_
+		                                                                                                       "ne",_
+		                                                                                                       "equiv",_
+		                                                                                                       "le",_
+		                                                                                                       "ge",_
+		                                                                                                       "sub",_
+		                                                                                                       "sup",_
+		                                                                                                       "nsub",_
+		                                                                                                       "sube",_
+		                                                                                                       "supe",_
+		                                                                                                       "oplus",_
+		                                                                                                       "otimes",_
+		                                                                                                       "perp",_
+		                                                                                                       "sdot",_
+		                                                                                                       "lceil",_
+		                                                                                                       "rceil",_
+		                                                                                                       "lfloor",_
+		                                                                                                       "rfloor",_
+		                                                                                                       "lang",_
+		                                                                                                       "rang",_
+		                                                                                                       "loz",_
+		                                                                                                       "spades",_
+		                                                                                                       "clubs",_
+		                                                                                                       "hearts",_
+		                                                                                                       "diams")
+		                                                                                                       End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InchesToPoints
+  parm/S: Inches As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function InchesToPoints(Inches As String) As String
+		  //++
+		  // Polymorphic version of InchesToPoints
+		  //--
+		  
+		  Return CStr(InchesToPoints(CDbl(Inches)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: InchesToPoints
+  parm/S: Inches As Double
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function InchesToPoints(Inches As Double) As Double
+		  //++
+		  // Convert Inches to points
+		  //
+		  // Uses the value for point defined by Adobe
+		  // This precisely converts 72 points to one inch
+		  //
+		  // Value obtained from www.onlineconversion.com
+		  //
+		  // Ed Palmer, May 2006
+		  //--
+		  
+		  Return Inches / POINT_TO_INCH
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IsCollapsed
+  parm/S: Extends w As Window
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function IsCollapsed(Extends w As Window) As Boolean
+   srcl/S: #if TargetMacOS 
+   srcl/S: #if TargetMachO
+   srcl/S: Declare Function IsWindowCollapsed Lib "Carbon" (window as WindowPtr) as Boolean
+   srcl/S: #else
+   srcl/S: Declare Function IsWindowCollapsed Lib "CarbonLib" (window as WindowPtr) as Boolean
+   srcl/S: #endif
+   srcl/S: Return IsWindowCollapsed(w) 
+   srcl/S: #endif
+   srcl/S: // gets the rect and show state of the window in winHWND
+   srcl/S: // http://msdn.microsoft.com/library/psdk/winui/windows_79bo.htm
+   srcl/S: #if targetWin32
+   srcl/S: dim mb as memoryBlock
+   srcl/S: dim result as integer
+   srcl/S: Const SW_MINIMIZE = 6
+   srcl/S: 
+   srcl/S: Declare Function GetWindowPlacement Lib "user32" (ByVal hwnd As integer, lpwndpl As ptr) As integer
+   srcl/S: 
+   srcl/S: if w.Handle = 0 then
+   srcl/S: return False
+   srcl/S: end if
+   srcl/S: 
+   srcl/S: mb = newMemoryBlock(44)
+   srcl/S: 
+   srcl/S: mb.long(0) = 44
+   srcl/S: 
+   srcl/S: result = GetWindowPlacement(w.Handle, mb)
+   srcl/S: 
+   srcl/S: if result = 0 then
+   srcl/S: // failed
+   srcl/S: return False
+   srcl/S: end if
+   srcl/S: 
+   srcl/S: Return (mb.long(8) = SW_MINIMIZE)
+   srcl/S: 
+   srcl/S: return false
+   srcl/S: 
+   srcl/S: #endif
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IsWindowVisible
+  parm/S: Title As String
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function IsWindowVisible(Title As String) As Boolean
+		  Dim i As Integer
+		  For i = 0 To WindowCount - 1
+		    If Window(i).Title = Title Then Return True
+		  Next
+		  Return False
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PageDown
+  parm/S: Extends L As ListBox
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub PageDown(Extends L As ListBox)
+		  //++
+		  // Perform a page down operation on a list box
+		  // Assumes:
+		  //    1. ListBox is single selection pointed to by ListIndex
+		  //    2. Rows are of equal height
+		  // Tries to keep the selected row in the same relative position
+		  //
+		  // Added because the page up/page down keys don't move the
+		  // selection in a listbox.
+		  //--
+		  Dim SelectedRow As Integer
+		  Dim TopRow As Integer
+		  Dim VisibleRowCount As Integer
+		  Dim NewTopRow As Integer
+		  
+		  If L.ListCount = 0 Then Return
+		  
+		  VisibleRowCount = L.Height \ L.RowHeight
+		  SelectedRow = Min(L.ListCount - 1, L.ListIndex + VisibleRowCount)
+		  TopRow = Min(L.ListCount - 1, L.ScrollPosition + VisibleRowCount)
+		  L.ScrollPosition = TopRow
+		  L.ListIndex = SelectedRow
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PageUp
+  parm/S: Extends L As ListBox
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub PageUp(Extends L As ListBox)
+		  //++
+		  // Perform a page up operation on a list box
+		  // Assumes:
+		  //    1. ListBox is single selection pointed to by ListIndex
+		  //    2. Rows are of equal height
+		  // Tries to keep the selected row in the same relative position
+		  //
+		  // Added because the page up/page down keys don't move the
+		  // selection in a listbox.
+		  //--
+		  Dim SelectedRow As Integer
+		  Dim TopRow As Integer
+		  Dim VisibleRowCount As Integer
+		  Dim NewTopRow As Integer
+		  
+		  If L.ListCount = 0 Then Return
+		  
+		  VisibleRowCount = L.Height \ L.RowHeight
+		  SelectedRow = Max(0, L.ListIndex - VisibleRowCount)
+		  TopRow = Max(0, L.ScrollPosition - VisibleRowCount)
+		  L.ScrollPosition = TopRow
+		  L.ListIndex = SelectedRow
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToCM
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToCM(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToCM
+		  //--
+		  
+		  Return CStr(PointsToCM(CDbl(Points)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToCM
+  parm/S: Points As Double
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToCM(Points As Double) As Double
+		  //++
+		  //
+		  // Convert points to centimeters.
+		  // Uses the conversion value defined by Adobe
+		  // This converts 72 points to precisely 2.54 cm
+		  // Therefore, 72 pt = 2.54 cm = 1 in
+		  //
+		  // Value obtained from www.onlineconversion.com
+		  //
+		  // Ed Palmer, May 2006
+		  //++
+		  
+		  Return Points * POINT_TO_CM
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToInches
+  parm/S: Points As Double
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToInches(Points As Double) As Double
+		  //++
+		  // Convert points to inches
+		  //
+		  // Uses the value for point defined by Adobe
+		  // This precisely converts 72 points to one inch
+		  //
+		  // Value obtained from www.onlineconversion.com
+		  //
+		  // Ed Palmer, May 2006
+		  //--
+		  
+		  Return Points * POINT_TO_INCH
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PointsToInches
+  parm/S: Points As String
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PointsToInches(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToInches
+		  //--
+		  
+		  Return CStr(PointsToInches(CDbl(Points)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: RowHeight
+  parm/S: Extends L As ListBox
+  rslt/S: Integer
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function RowHeight(Extends L As ListBox) As Integer
+   srcl/S: //++
+   srcl/S: // Thanks to http://www.declaresub.com/Articles/HowDoI.html#listboxRowHeight
+   srcl/S: // for this code.
+   srcl/S: //--
+   srcl/S: 
+   srcl/S: Dim p As Picture = New Picture(1, 1, 32) 
+   srcl/S: 
+   srcl/S: If L.DefaultRowHeight > -1 Then
+   srcl/S:  Return L.DefaultRowHeight
+   srcl/S:  Else 
+   srcl/S: p.Graphics.TextFont = L.TextFont
+   srcl/S: p.Graphics.TextSize = L.TextSize 
+   srcl/S: Return p.Graphics.TextHeight 
+   srcl/S: End If
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SaveDialog
+  parm/S: Message As String = "", Explanation As String = ""
+  rslt/S: Integer
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function SaveDialog(Message As String = "", Explanation As String = "") As Integer
+   srcl/S: //++
+   srcl/S: // Provide a standardized dialog for prompting the user
+   srcl/S: // to save something.
+   srcl/S: //
+   srcl/S: // Return: -1 for Cancel, 0 for Don't Save, 1 for Save
+   srcl/S: //--
+   srcl/S: Dim Msg as MessageDialog
+   srcl/S: Dim Res As MessageDialogButton
+   srcl/S: Dim Ret As Integer
+   srcl/S: 
+   srcl/S: '++JRC
+   srcl/S: msg = new MessageDialog
+   srcl/S: If Message <> "" Then
+   srcl/S: msg.Message = Message
+   srcl/S: Else
+   srcl/S: msg.Message = App.T.Translate("questions/generic_save/@caption")
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: msg.Title = App.T.Translate("shared/save/@caption")
+   srcl/S: msg.Icon = 3 'question
+   srcl/S: 
+   srcl/S: If Explanation <> "" Then
+   srcl/S: msg.Explanation = Explanation
+   srcl/S: Else
+   srcl/S: #If TargetMacOS
+   srcl/S: msg.Explanation = App.T.Translate("questions/generic_save_explanation/@caption")
+   srcl/S: #endif
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: // Set buttons based on operating system preferences.
+   srcl/S: 
+   srcl/S: #if Not TargetMacOS
+   srcl/S: msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
+   srcl/S: msg.AlternateActionButton.Caption = App.T.Translate("shared/no/@caption")
+   srcl/S: msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
+   srcl/S: #else
+   srcl/S: msg.ActionButton.Caption = App.T.Translate("shared/save/@caption")
+   srcl/S: msg.AlternateActionButton.Caption = App.T.Translate("shared/nosave/@caption")
+   srcl/S: msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: msg.AlternateActionButton.Visible = true
+   srcl/S: Msg.CancelButton.Visible = true
+   srcl/S: 
+   srcl/S: Res = msg.ShowModal
+   srcl/S: If Res  = msg.ActionButton then 
+   srcl/S: Ret = 1
+   srcl/S: ElseIf Res = msg.AlternateActionButton Then
+   srcl/S: Ret = 0
+   srcl/S: Else 
+   srcl/S: Ret = -1
+   srcl/S: End If
+   srcl/S: '--
+   srcl/S: Return Ret
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SplitRE
+  parm/S: source As String, delim As String
+  rslt/S: String()
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Function SplitRE(source As String, delim As String) As String()
+		  //++
+		  // Split a string delimited by a regular expression.
+		  // Will always return at least one element (empty string)
+		  //
+		  // Treats line endings as a part of the string to allow for
+		  // multi-line strings.
+		  //
+		  // Use standard regular expression syntax for the delimiter
+		  //
+		  // Implicitly assumes single-character line endings (i.e., Unix-style)
+		  //
+		  // Ed Palmer, November 2006
+		  //--
+		  
+		  Dim result(-1) As String
+		  
+		  Dim re As New RegEx
+		  Dim reopts As New RegExOptions
+		  Dim match As RegExMatch
+		  
+		  Dim rest As Integer
+		  
+		  Dim i  As Integer
+		  
+		  re.SearchPattern = "(.*)(" + delim + "|\Z)" // "\Z" matches the end of the search string or prior to final newline
+		  reopts.DotMatchAll = True
+		  reopts.Greedy = False
+		  reopts.StringBeginIsLineBegin = True
+		  reopts.StringEndIsLineEnd = True
+		  reopts.MatchEmpty = True
+		  
+		  re.Options = reopts
+		  
+		  match = re.Search(source)
+		  
+		  While match <> Nil
+		    If match.SubExpressionCount > 0 Then
+		      result.Append Trim(match.SubExpressionString(1))
+		      Try
+		        If Len(match.SubExpressionString(2)) = 0 Then Exit
+		      Catch ex As NilObjectException
+		        Exit
+		      End Try
+		    Else
+		      result.Append Trim(match.SubExpressionString(0))
+		      Exit
+		    End If
+		    're.SearchStartPosition = re.SearchStartPosition + 1 // Get past the trailing \n
+		    System.DebugLog "SplitRE: Starting at " + CStr(re.SearchStartPosition) + " with character  " + Cstr(Asc(Mid(source, re.SearchStartPosition, 1)))
+		    match = re.Search
+		  Wend
+		  
+		  Return result
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ToString
+  parm/S: Extends error As RuntimeException
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function ToString(Extends error As RuntimeException) As String
+		  Dim msg As String
+		  If error isA IllegalCastException Then
+		    msg = "IllegalCastException"
+		  ElseIf error isA KeyNotFoundException Then
+		    msg = "KeyNotFoundException"
+		  ElseIf error isA NilObjectException Then
+		    msg = "NilObjectException"
+		  ElseIf error isA OutOfBoundsException Then
+		    msg = "OutOfBoundsException"
+		  ElseIf error isA OutOfMemoryException Then
+		    msg = "OutOfMemoryException"
+		  ElseIf error isA RegExException Then
+		    msg = "RegExException"
+		  ElseIf error isA RegExSearchPatternException Then
+		    msg = "RegExSearchPatternException"
+		  ElseIf error isA ShellNotAvailableException Then
+		    msg = "ShellNotAvailableException"
+		  ElseIf error isA ShellNotRunningException Then
+		    msg = "ShellNotRunningException"
+		  ElseIf error isA stackOverflowException Then
+		    msg = "stackOverflowException"
+		  ElseIf error isA EndException Then
+		    msg = "EndException"
+		  ElseIf error isA InvalidParentException Then
+		    msg = "InvalidParentException"
+		  ElseIf error isA KeyChainException Then
+		    msg = "KeyChainException"
+		  ElseIf error isA NoOpenTransportException Then
+		    msg = "NoOpenTransportException"
+		  ElseIf error isA typeMismatchException Then
+		    msg = "typeMismatchException"
+		  ElseIf error isA UnsupportedFormatException Then
+		    msg = "UnsupportedFormatException"
+		  ElseIf error isA XmlDomException Then
+		    msg = "XmlDomException"
+		  ElseIf error isA XmlException Then
+		    msg = "XmlException"
+		  ElseIf error isA XmlReaderException Then
+		    msg = "XmlReaderException"
+		  Else
+		    msg = "Unknown exception"
+		  End If
+		  
+		  If error.Message <> "" Then
+		    msg = msg + ", error is '" + error.Message + "'"
+		    If error.ErrorNumber <> 0 Then
+		      msg = msg + ", number = " + CStr(error.ErrorNumber)
+		    End If
+		  End If
+		  Return msg
+		End Function
+  )
+ Meth/g: 
+ Note/G: 
+  Enco/N: 134217984
+  name/S: Overview
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Overview
+   ntln/S: 
+   ntln/S: This module holds OpenSong specific methods that
+   ntln/S: provide general functions for the program but cannot
+   ntln/S: be classified in one of the other utility modules.
+   ntln/S: 
+  sorc/g: 
+ Note/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: HTMLCodePoint() As Integer
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: HTMLCodePoint() As Integer
+   ntln/S: This array and the HTMLEntity array are complementary.
+   ntln/S: The same element of one corresponds to the other.
+   ntln/S: A UTF-8 character with the code point in this array
+   ntln/S: translates to the string in HTMLEntity preceded by
+   ntln/S: an ampersand (&) and terminated with a semicolon (;).
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: HTMLEntity() As String
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: HTMLEntity() As String
+   ntln/S: See discussion under HTMLCodePoint
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

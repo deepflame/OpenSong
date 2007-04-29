@@ -1,0 +1,239 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC0082CD60000000000000000000000000000000000000000
+ Name/S: AlphaTOCReport
+ Cont/N: -1072340153
+ bCls/N: 1
+ Name/S: AlphaTOCReport
+ Size/N: 24
+ Supr/S: TOCReport
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: AddItem
+  parm/S: Item As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub AddItem(Item As String)
+		  ContentsArray.Append Item
+		  IsSorted = False
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Clear
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Clear()
+		  ClearArray(ContentsArray)
+		  ClearArray(SortedArray)
+		  ClearArray(CategorizedArray)
+		  IsSorted = False
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Constructor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  IsSorted = False
+		  IsCategorized = False
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Generate
+  parm/S: Zoom As Double = 1.0, MyPages As Group2D = Nil
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function Generate(Zoom As Double = 1.0, MyPages As Group2D = Nil) As Boolean
+   srcl/S:   Dim Status As Boolean
+   srcl/S: 
+   srcl/S: App.DebugWriter.Write "AlphaTOCReport.Generate: Enter"
+   srcl/S: 
+   srcl/S: If MyPages = Nil Then MyPages = Pages
+   srcl/S: 
+   srcl/S: If Not IsCategorized Then
+   srcl/S: Status = Prepare
+   srcl/S: If Not Status Then
+   srcl/S: App.DebugWriter.Write "AlphaTOCReport.Generate: Exit (Prepare failed)"
+   srcl/S: Return Status
+   srcl/S: End If
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: Indent = 0
+   srcl/S: CategoryAlign = "center"
+   srcl/S: ReportName = App.T.Translate("print/alphabetical/@caption")
+   srcl/S: 
+   srcl/S: Status = PrintTOCPages(CategorizedArray, MyPages, Zoom)
+   srcl/S: 
+   srcl/S: If Not Status Then
+   srcl/S: App.DebugWriter.Write "AlphaTOCReport.Generate: PrintTOCPages failed", 1
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: App.DebugWriter.Write "AlphaTOCReport.Generate: Exit"
+   srcl/S: 
+   srcl/S: Return Status
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Prepare
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Prepare() As Boolean
+		  //
+		  // Prepare is used to process the report contents from
+		  // the raw items in ContentsArray to a Sorted form and
+		  // then with the categories inserted.
+		  // From here, Generate can be called to create the pages
+		  // 
+		  // Ed Palmer, February 2006
+		  //
+		  
+		  Dim i As Integer
+		  Dim CurrentCategory As String = ""
+		  Dim DigitsSeen As Boolean
+		  
+		  App.DebugWriter.Write "AlphaTOCReport.Prepare: Enter"
+		  
+		  If IsCategorized Then // We've already done this step
+		    App.DebugWriter.Write "AlphaTOCReport.Prepare: Exit (previously done)"
+		    Return IsCategorized
+		  End If
+		  App.MouseCursor = WatchCursor
+		  // Determine if a sort is necessary
+		  
+		  If Not IsSorted Then
+		    App.DebugWriter.Write StringUtils.Sprintf("AlphaTOCReport.Prepare: Sorting %d songs...", UBound(ContentsArray))
+		    CopyArray(ContentsArray, SortedArray)
+		    HeapSort SortedArray
+		    IsSorted = True
+		  End If
+		  
+		  ClearArray(CategorizedArray)
+		  
+		  i = 0
+		  DigitsSeen = False // Special flag for songs starting with numbers
+		  While i <= UBound(SortedArray)
+		    If CurrentCategory <> Uppercase(Left(SortedArray(i), 1)) Then
+		      If Left(SortedArray(i), 1) >= "0" And Left(SortedArray(i), 1) <= "9" Then
+		        If Not DigitsSeen Then
+		          CategorizedArray.Append "-- 0 - 9 -"
+		          DigitsSeen = True
+		        End If
+		      Else // Regular alpha character
+		        CurrentCategory = Uppercase(Left(SortedArray(i), 1))
+		        CategorizedArray.Append  "-- " + CurrentCategory + " -" //First hyphen gets stripped by print routine
+		      End If
+		    End If
+		    CategorizedArray.Append SortedArray(i)
+		    i = i + 1
+		  Wend
+		  App.MouseCursor = Nil
+		  App.DebugWriter.Write "AlphaTOCReport.Prepare: Exit"
+		  IsCategorized = True
+		  Return IsCategorized
+		  
+		Catch
+		  App.DebugWriter.Write "AlphaTOCReport.Prepare: Exit (Exception)"
+		  IsCategorized = False
+		  Return IsCategorized
+		End Function
+  )
+ Meth/g: 
+ Note/G: 
+  Enco/N: 1280
+  name/S: Overview
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Overview
+   ntln/S: 
+   ntln/S: Subclassed from Report, this supports the printing of
+   ntln/S: "Table Of Contents" reports.  The contents are held in an array,
+   ntln/S: with special characters used to define grouping breaks.
+   ntln/S: 
+   ntln/S: Most of the hard work is done by the routines that were in
+   ntln/S: various PrintWindow methods in V0.9.9 and moved here (mostly in
+   ntln/S: method Generate) with the split of PrintWindow and the different 
+   ntln/S: reports, and the creation of the Report classes.
+   ntln/S: 
+   ntln/S: Ed Palmer, February 2006
+   ntln/S: 
+  sorc/g: 
+ Note/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: CategorizedArray() As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: CategorizedArray() As String
+   ntln/S: Final contents for report.  Sorted, with category headers inserted.
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: ContentsArray() As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: ContentsArray() As String
+   ntln/S: Raw contents, unsorted, in the order added by the caller
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: IsCategorized As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: IsCategorized As Boolean
+   ntln/S: Flags whether or not Prepare is complete
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: IsSorted As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: IsSorted As Boolean
+   ntln/S: Flags if ContentsArray has been sorted into SortedArray
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SortedArray() As String
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SortedArray() As String
+   ntln/S: Contents of report, sorted but without categories
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

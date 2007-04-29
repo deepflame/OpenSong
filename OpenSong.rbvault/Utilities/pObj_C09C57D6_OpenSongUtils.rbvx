@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
@@ -61,6 +61,45 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
 		  //--
 		  
 		  Return CStr(CMtoPoints(CDbl(Points)))
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: EditDialog
+  parm/S: Message As String = "", default As String = ""
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function EditDialog(Message As String = "", default As String = "") As String
+		  //++JRC
+		  // Provide a standardized dialog for prompting the user
+		  // to enter a string of text.
+		  //
+		  // Return: String containing the text the user entered
+		  //
+		  //--
+		  Dim Ret As String
+		  
+		  If Message <> "" Then
+		    InputBox.MessageStr = Message
+		    'msg.Message = Message
+		  Else
+		    'msg.Message = App.T.Translate("questions/generic_save/@caption")
+		  End If
+		  
+		  InputBox.Caption = "OpenSong"
+		  
+		  InputBox.ActionButtonText = App.T.Translate("shared/ok/@caption")
+		  InputBox.CancelButtonText = App.T.Translate("shared/cancel/@caption")
+		  InputBox.EditFieldText = default
+		  
+		  InputBox.ActionButtonVisible = true
+		  InputBox.AltActionButtonVisible = false
+		  InputBox.CancelButtonVisible = true
+		  
+		  Ret = InputBox.EditBox
+		  return Ret
 		End Function
   )
  Meth/g: 
@@ -755,6 +794,43 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: MsgDialog
+  parm/S: Message As String = ""
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub MsgDialog(Message As String = "")
+		  //++JRC
+		  // Provide a standardized dialog for prompting the user
+		  // with a general Message.
+		  //
+		  // Return: none
+		  //
+		  //--
+		  Dim Ret As String
+		  
+		  If Message <> "" Then
+		    InputBox.MessageStr = Message
+		    'msg.Message = Message
+		  Else
+		    'msg.Message = App.T.Translate("questions/generic_save/@caption")
+		  End If
+		  
+		  InputBox.Caption = "OpenSong"
+		  
+		  InputBox.ActionButtonText = App.T.Translate("shared/ok/@caption")
+		  
+		  InputBox.ActionButtonVisible = true
+		  InputBox.AltActionButtonVisible = false
+		  InputBox.CancelButtonVisible = false
+		  
+		  Call InputBox.MessageBox
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: PageDown
   parm/S: Extends L As ListBox
   rslt/S: 
@@ -902,6 +978,95 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
+  name/S: PopMenuDialog
+  parm/S: Message As String = "", choices() As String, default As String = ""
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function PopMenuDialog(Message As String = "", choices() As String, default As String = "") As String
+		  //++JRC
+		  // Provide a standardized dialog for prompting the user
+		  // to select an option from a drop-down menu.
+		  //
+		  // Return: String containing the text of the selected item
+		  //
+		  //--
+		  Dim Ret As String
+		  
+		  If Message <> "" Then
+		    InputBox.MessageStr = Message
+		    'msg.Message = Message
+		  Else
+		    'msg.Message = App.T.Translate("questions/generic_save/@caption")
+		  End If
+		  
+		  InputBox.Caption = "OpenSong"
+		  
+		  InputBox.ActionButtonText = App.T.Translate("shared/ok/@caption")
+		  InputBox.CancelButtonText = App.T.Translate("shared/cancel/@caption")
+		  InputBox.PopMenuText = default
+		  InputBox.PopMenuChoices = choices
+		  
+		  InputBox.ActionButtonVisible = true
+		  InputBox.AltActionButtonVisible = false
+		  InputBox.CancelButtonVisible = true
+		  
+		  Ret = InputBox.PopMenuBox
+		  return Ret
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: QuestionDialog
+  parm/S: Question As String = "", Cancel As Boolean = false
+  rslt/S: Integer
+  flag/N: 0
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function QuestionDialog(Question As String = "", Cancel As Boolean = false) As Integer
+   srcl/S: //++
+   srcl/S: // Provide a standardized dialog for prompting the user
+   srcl/S: // with a yes or no question
+   srcl/S: //
+   srcl/S: // Return: -1 for Cancel, 0 for No, 1 for Yes
+   srcl/S: //
+   srcl/S: //--
+   srcl/S: 
+   srcl/S: Dim Ret As Integer
+   srcl/S: 
+   srcl/S: If Question <> "" Then
+   srcl/S: InputBox.MessageStr = Question
+   srcl/S: Else
+   srcl/S: 'InputBox.MessageStr = App.T.Translate("questions/generic_save/@caption")
+   srcl/S: End If
+   srcl/S: 
+   srcl/S: InputBox.Caption =  "OpenSong"
+   srcl/S: 
+   srcl/S: // Set buttons based on operating system preferences.
+   srcl/S: 
+   srcl/S: #if Not TargetMacOS
+   srcl/S: InputBox.ActionButtonText = App.T.Translate("shared/yes/@caption")
+   srcl/S: InputBox.AltActionButtonText = App.T.Translate("shared/no/@caption")
+   srcl/S: InputBox.CancelButtonText = App.T.Translate("shared/cancel/@caption")
+   srcl/S: #else
+   srcl/S: InputBox.ActionButtonText = App.T.Translate("shared/yes/@caption")
+   srcl/S: InputBox.AltActionButtonText = App.T.Translate("shared/no/@caption")
+   srcl/S: InputBox.CancelButtonText = App.T.Translate("shared/cancel/@caption")
+   srcl/S: #endif
+   srcl/S: 
+   srcl/S: InputBox.ActionButtonVisible = true
+   srcl/S: InputBox.AltActionButtonVisible = true
+   srcl/S: InputBox.CancelButtonVisible = Cancel
+   srcl/S: 
+   srcl/S: Ret = InputBox.MessageBox
+   srcl/S: 
+   srcl/S: Return Ret
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
   name/S: RowHeight
   parm/S: Extends L As ListBox
   rslt/S: Integer
@@ -940,56 +1105,78 @@ pObj/B: 426C6F6B704F626AC09C57D60000000000000000000000000000000000000000
    srcl/S: // to save something.
    srcl/S: //
    srcl/S: // Return: -1 for Cancel, 0 for Don't Save, 1 for Save
+   srcl/S: //++JRC Use InputBox instead of MessageDialog
    srcl/S: //--
-   srcl/S: Dim Msg as MessageDialog
-   srcl/S: Dim Res As MessageDialogButton
+   srcl/S: 'Dim Msg as MessageDialog
+   srcl/S: 'Dim Res As MessageDialogButton
    srcl/S: Dim Ret As Integer
    srcl/S: 
    srcl/S: '++JRC
-   srcl/S: msg = new MessageDialog
+   srcl/S: 'Set Status flag
+   srcl/S: Globals.Status_SavePrompt = true
+   srcl/S: 
+   srcl/S: 'msg = new MessageDialog
    srcl/S: If Message <> "" Then
-   srcl/S: msg.Message = Message
+   srcl/S: InputBox.MessageStr = Message
+   srcl/S: 'msg.Message = Message
    srcl/S: Else
-   srcl/S: msg.Message = App.T.Translate("questions/generic_save/@caption")
+   srcl/S: InputBox.MessageStr = App.T.Translate("questions/generic_save/@caption")
+   srcl/S: 'msg.Message = App.T.Translate("questions/generic_save/@caption")
    srcl/S: End If
    srcl/S: 
-   srcl/S: msg.Title = App.T.Translate("shared/save/@caption")
-   srcl/S: msg.Icon = 3 'question
+   srcl/S: InputBox.Caption =  App.T.Translate("shared/save/@caption")
+   srcl/S: 'msg.Title = App.T.Translate("shared/save/@caption")
+   srcl/S: 'msg.Icon = 3 'question
    srcl/S: 
    srcl/S: If Explanation <> "" Then
-   srcl/S: msg.Explanation = Explanation
+   srcl/S: 'msg.Explanation = Explanation
    srcl/S: Else
-   srcl/S: #If TargetMacOS
-   srcl/S: msg.Explanation = App.T.Translate("questions/generic_save_explanation/@caption")
-   srcl/S: #endif
+   srcl/S: '#If TargetMacOS
+   srcl/S: 'msg.Explanation = App.T.Translate("questions/generic_save_explanation/@caption")
+   srcl/S: '#endif
    srcl/S: End If
    srcl/S: 
    srcl/S: // Set buttons based on operating system preferences.
    srcl/S: 
    srcl/S: #if Not TargetMacOS
-   srcl/S: msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
-   srcl/S: msg.AlternateActionButton.Caption = App.T.Translate("shared/no/@caption")
-   srcl/S: msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
+   srcl/S: InputBox.ActionButtonText = App.T.Translate("shared/yes/@caption")
+   srcl/S: InputBox.AltActionButtonText = App.T.Translate("shared/no/@caption")
+   srcl/S: InputBox.CancelButtonText = App.T.Translate("shared/cancel/@caption")
+   srcl/S: 'msg.ActionButton.Caption = App.T.Translate("shared/yes/@caption")
+   srcl/S: 'msg.AlternateActionButton.Caption = App.T.Translate("shared/no/@caption")
+   srcl/S: 'msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
    srcl/S: #else
-   srcl/S: msg.ActionButton.Caption = App.T.Translate("shared/save/@caption")
-   srcl/S: msg.AlternateActionButton.Caption = App.T.Translate("shared/nosave/@caption")
-   srcl/S: msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
+   srcl/S: InputBox.ActionButtonText = App.T.Translate("shared/save/@caption")
+   srcl/S: InputBox.AltActionButtonText = App.T.Translate("shared/nosave/@caption")
+   srcl/S: InputBox.CancelButtonText = App.T.Translate("shared/cancel/@caption")
+   srcl/S: 'msg.ActionButton.Caption = App.T.Translate("shared/save/@caption")
+   srcl/S: 'msg.AlternateActionButton.Caption = App.T.Translate("shared/nosave/@caption")
+   srcl/S: 'msg.CancelButton.Caption = App.T.Translate("shared/cancel/@caption")
    srcl/S: #endif
    srcl/S: 
-   srcl/S: msg.AlternateActionButton.Visible = true
-   srcl/S: Msg.CancelButton.Visible = true
+   srcl/S: InputBox.ActionButtonVisible = true
+   srcl/S: InputBox.AltActionButtonVisible = true
+   srcl/S: InputBox.CancelButtonVisible = true
+   srcl/S: 'msg.AlternateActionButton.Visible = true
+   srcl/S: 'Msg.CancelButton.Visible = true
    srcl/S: 
-   srcl/S: Res = msg.ShowModal
-   srcl/S: If Res  = msg.ActionButton then 
-   srcl/S: Ret = 1
-   srcl/S: ElseIf Res = msg.AlternateActionButton Then
-   srcl/S: Ret = 0
-   srcl/S: Else 
-   srcl/S: Ret = -1
-   srcl/S: End If
+   srcl/S: Ret = InputBox.MessageBox
+   srcl/S: 'Res = msg.ShowModal
+   srcl/S: 
+   srcl/S: 'If Res  = msg.ActionButton then 
+   srcl/S: 'Ret = 1
+   srcl/S: 'ElseIf Res = msg.AlternateActionButton Then
+   srcl/S: 'Ret = 0
+   srcl/S: 'Else 
+   srcl/S: 'Ret = -1
+   srcl/S: 'End If
+   srcl/S: 
+   srcl/S: 'Clear Status flag
+   srcl/S: Globals.Status_SavePrompt = false
    srcl/S: '--
    srcl/S: Return Ret
    srcl/S: End Function
+   srbp/N: 17
   sorc/g: 
  Meth/g: 
  Meth/G: 

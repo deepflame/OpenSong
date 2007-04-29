@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
@@ -329,13 +329,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: If (Screen(0).Width /2) > Screen(0).Height Then
     srcl/S: ActionSongPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
     srcl/S: Else
-    srcl/S: InputBox.Message App.T.Translate("errors/no_multi_screen")
+    srcl/S: MsgDialog(App.T.Translate("errors/no_multi_screen"))
+    srcl/S: 'InputBox.Message App.T.Translate("errors/no_multi_screen")
     srcl/S: End If
     srcl/S: #Else
     srcl/S: If ScreenCount > 1 Then
     srcl/S: ActionSongPresent PresentWindow.MODE_DUAL_SCREEN
     srcl/S: Else
-    srcl/S: InputBox.Message App.T.Translate("errors/no_multi_screen")
+    srcl/S: MsgDialog(App.T.Translate("errors/no_multi_screen"))
+    srcl/S: 'InputBox.Message App.T.Translate("errors/no_multi_screen")
     srcl/S: End If
     srcl/S: #EndIF
     srcl/S: End If
@@ -410,7 +412,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    g = App.AppFolder.Child("OpenSong Settings").Child("style.css")
 		    If g <> Nil Then g.CopyFileTo f
 		    
-		    InputBox.Message App.T.Translate("shared/done/@caption")
+		    MsgDialog(App.T.Translate("shared/done/@caption"))
+		    'InputBox.Message App.T.Translate("shared/done/@caption")
 		  End If  
 		End Sub
    )
@@ -464,13 +467,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  old = lst_songs_songs.Text
 		  
-		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
+		  t =EditDialog(App.T.Translate("questions/rename/@caption", old), old)
+		  't = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
 		  If Len(t) > 0 Then
 		    //++
 		    // Check for path characters
 		    //--
 		    If Instr(t, "/") > 0 Or Instr(t, ":") > 0 Or Instr(t, "\") > 0 Then
-		      InputBox.Message(App.T.Translate("errors/no_path_allowed"))
+		      MsgDialog(App.T.Translate("errors/no_path_allowed"))
+		      'InputBox.Message(App.T.Translate("errors/no_path_allowed"))
 		      Return
 		    End If
 		    
@@ -480,7 +485,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      lst_songs_songs.SortedColumn = 0
 		      lst_songs_songs.Sort
 		    Else
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t, old)
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t, old))
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t, old)
 		    End If
 		  End If
 		End Sub
@@ -793,7 +799,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  //++
 		  // Feature request 1528693: require confirmation
 		  //--
-		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
+		  If QuestionDialog(App.T.Translate("questions/long_operation/@caption"), false) <> YES Then Return
+		  'If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
@@ -963,7 +970,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		        SmartML.DisplayError
 		      End If
 		    Else
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text))
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
 		      Status_SongOpen = False
 		      Status_SongChanged = False
 		      EnableMenuItems
@@ -1130,10 +1138,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim t As String
 		  Dim i As Integer
 		  
-		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
+		  t = EditDialog(App.T.Translate("questions/new_name/@caption"), "")
+		  't = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
 		  If Len(t) > 0 Then
 		    If Not FileUtils.IsSafeFileName(t) Then
-		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
+		      MsgDialog(App.T.Translate("errors/bad_file_name", t))
+		      'InputBox.Message App.T.Translate("errors/bad_file_name", t)
 		      Return
 		    End If
 		    
@@ -1141,7 +1151,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    f = Songs.AddFolder(t)
 		    
 		    If f = Nil Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t)
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t))
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t)
 		      Return
 		    End If
 		    
@@ -1196,9 +1207,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		Sub Action()
 		  If pop_songs_song_folders.ListIndex <= 1 Then Return
 		  
-		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_songs_song_folders.Text)) Then
+		  'If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_songs_song_folders.Text)) Then
+		  If QuestionDialog(App.T.Translate("questions/delete/@caption", pop_songs_song_folders.Text), false) = YES Then
 		    If Not Songs.DeleteFolder(pop_songs_song_folders.Text) Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", pop_songs_song_folders.Text)
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", pop_songs_song_folders.Text))
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", pop_songs_song_folders.Text)
 		    Else
 		      pop_songs_song_folders.RemoveRow pop_songs_song_folders.ListIndex
 		      pop_songs_song_folders.ListIndex = 0
@@ -1331,7 +1344,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    '
 		    songf = Songs.GetFile(SmartML.GetValue(xgroup, "@name"))
 		    If songf = Nil Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_set_items.text)
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_set_items.text))
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_set_items.text)
 		      sDoc = Nil
 		    Else
 		      sDoc = SmartML.XDocFromFile(songf)
@@ -1782,22 +1796,26 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  old = pop_sets_sets.Text
 		  
-		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
+		  t = EditDialog(App.T.Translate("questions/rename/@caption", old), old)
+		  't = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
 		  If Len(t) > 0 Then
 		    If Not FileUtils.IsSafeFileName(t) Then
-		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
+		      MsgDialog(App.T.Translate("errors/bad_file_name", t))
+		      'InputBox.Message App.T.Translate("errors/bad_file_name", t)
 		      Return
 		    End If
 		    
 		    f = App.DocsFolder.Child("Sets").Child(t)
 		    If f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath)) ' already exists
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
 		      Exit
 		    End If
 		    
 		    f = App.DocsFolder.Child("Sets").Child(old)
 		    If Not f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", f.AbsolutePath) ' could not find file
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code=8]", f.AbsolutePath)) ' could not find file
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", f.AbsolutePath) ' could not find file
 		      Exit
 		    End If
 		    f.Name = t
@@ -1856,7 +1874,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_sets_sets.Text)) Then
+		  'If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_sets_sets.Text)) Then
+		  If QuestionDialog(App.T.Translate("questions/delete/@caption", pop_sets_sets.Text), false) = YES Then
 		    App.DocsFolder.Child("Sets").Child(pop_sets_sets.Text).Delete
 		    
 		    pop_sets_sets.RemoveRow pop_sets_sets.ListIndex
@@ -1920,13 +1939,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: If (Screen(0).Width /2) > Screen(0).Height Then
     srcl/S: ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
     srcl/S: Else
-    srcl/S: InputBox.Message App.T.Translate("errors/no_multi_screen")
+    srcl/S: MsgDialog(App.T.Translate("errors/no_multi_screen"))
+    srcl/S: 'InputBox.Message App.T.Translate("errors/no_multi_screen")
     srcl/S: End If
     srcl/S: #Else
     srcl/S: If ScreenCount > 1 Then
     srcl/S: ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
     srcl/S: Else
-    srcl/S: InputBox.Message App.T.Translate("errors/no_multi_screen")
+    srcl/S: MsgDialog(App.T.Translate("errors/no_multi_screen"))
+    srcl/S: 'InputBox.Message App.T.Translate("errors/no_multi_screen")
     srcl/S: End If
     srcl/S: #EndIF
     srcl/S: End If
@@ -2407,7 +2428,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		Sub Action()
 		  Dim s As String
 		  If edf_song_lyrics.Enabled Then
-		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_section/section_name/@caption") + ":", "V1")
+		    s = EditDialog(App.T.Translate("general_song_editor/ins_section/section_name/@caption") + ":", "V1")
+		    's = InputBox.Input(App.T.Translate("general_song_editor/ins_section/section_name/@caption") + ":", "V1")
 		    If Len(s) > 0 Then
 		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then edf_song_lyrics.SelText = SmartML.Newline
 		      edf_song_lyrics.SelText = "[" + s + "]" + SmartML.Newline
@@ -2457,7 +2479,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim s, t As String
 		  Dim i As Integer
 		  If edf_song_lyrics.Enabled Then
-		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_lyrics/number_of_lines/@caption") + ":", "1")
+		    s = EditDialog(App.T.Translate("general_song_editor/ins_lyrics/number_of_lines/@caption") + ":", "1")
+		    's = InputBox.Input(App.T.Translate("general_song_editor/ins_lyrics/number_of_lines/@caption") + ":", "1")
 		    If Len(s) > 0 And Val(s) > 0 Then
 		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
 		      For i = 1 To Val(s)
@@ -2510,9 +2533,11 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim s, t, u As String
 		  Dim i, j As Integer
 		  If edf_song_lyrics.Enabled Then
-		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_verses/@caption") + ":", "4")
+		    s = EditDialog(App.T.Translate("general_song_editor/ins_multi_verse/number_of_verses/@caption") + ":", "4")
+		    's = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_verses/@caption") + ":", "4")
 		    If Len(s) > 0 And Val(s) > 0 Then
-		      t = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_lines/@caption") + ":", "4")
+		      t = EditDialog(App.T.Translate("general_song_editor/ins_multi_verse/number_of_lines/@caption") + ":", "4")
+		      't = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_lines/@caption") + ":", "4")
 		      If Len(t) > 0 And Val(t) > 0 Then
 		        If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then u = SmartML.Newline
 		        u = u + "[V]" + SmartML.Newline
@@ -2569,7 +2594,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		Sub Action()
 		  Dim s, t As String
 		  If edf_song_lyrics.Enabled Then
-		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_comment/@caption") + ":", "")
+		    s = EditDialog(App.T.Translate("general_song_editor/ins_comment/@caption") + ":", "")
+		    's = InputBox.Input(App.T.Translate("general_song_editor/ins_comment/@caption") + ":", "")
 		    If Len(s) > 0 Then
 		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
 		      t = t + ";" + s + SmartML.Newline
@@ -3689,22 +3715,26 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim i As Integer
 		  old = pop_sets_sets.Text
 		  
-		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
+		  t = EditDialog(App.T.Translate("questions/rename/@caption", old), old)
+		  't = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
 		  If Len(t) > 0 Then
 		    If Not FileUtils.IsSafeFileName(t) Then
-		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
+		      MsgDialog(App.T.Translate("errors/bad_file_name", t))
+		      'InputBox.Message App.T.Translate("errors/bad_file_name", t)
 		      Return
 		    End If
 		    
 		    f = App.DocsFolder.Child("Sets").Child(t)
 		    If f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath)) ' already exists
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
 		      Exit
 		    End If
 		    
 		    oldf = App.DocsFolder.Child("Sets").Child(old)
 		    If Not oldf.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", oldf.AbsolutePath) ' could not find file
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code=8]", oldf.AbsolutePath)) ' could not find file
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", oldf.AbsolutePath) ' could not find file
 		      Exit
 		    End If
 		    MainWindow.MouseCursor = WatchCursor
@@ -10561,7 +10591,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		        bibleFiles.Append f.Name
 		      End If
 		    Next
-		    s = InputBox.Pick(App.T.Translate("scripture_lookup/select_file/@caption"), bibleFiles)
+		    s = PopMenuDialog(App.T.Translate("scripture_lookup/select_file/@caption"), bibleFiles)
+		    's = InputBox.Pick(App.T.Translate("scripture_lookup/select_file/@caption"), bibleFiles)
 		    If s = "" Then App.MyBible = Nil
 		    If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
 		      SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", s)
@@ -10982,16 +11013,19 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then Return 'User Canceled
 		  
-		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
+		  t = EditDialog(App.T.Translate("questions/new_name/@caption"), "")
+		  't = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
 		  If Len(t) > 0 Then
 		    If Not FileUtils.IsSafeFileName(t) Then
-		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
+		      MsgDialog(App.T.Translate("errors/bad_file_name", t))
+		      'InputBox.Message App.T.Translate("errors/bad_file_name", t)
 		      Return
 		    End If
 		    
 		    f = App.DocsFolder.Child("Sets").Child(t)
 		    If f.Exists Then
-		      InputBox.Message App.T.Translate("errors/already_exists", f.AbsolutePath)
+		      MsgDialog(App.T.Translate("errors/already_exists", f.AbsolutePath))
+		      'InputBox.Message App.T.Translate("errors/already_exists", f.AbsolutePath)
 		      Return
 		    End If
 		    
@@ -11055,7 +11089,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  ImportSongs setDoc
 		  
 		  If SetML.GetSlide(setDoc, 1) = Nil Then
-		    InputBox.Message App.T.Translate("sets_mode/current_set/present/no_slides")
+		    MsgDialog( App.T.Translate("sets_mode/current_set/present/no_slides"))
+		    'InputBox.Message App.T.Translate("sets_mode/current_set/present/no_slides")
 		    Return
 		  End If
 		  
@@ -11117,7 +11152,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      Else
 		        App.MouseCursor = Nil
 		        PrintWindow.Hide
-		        InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", SmartML.GetValue(xgroup, "@name"))
+		        MsgDialog(App.T.Translate("folderdb_errors/error[@code=8]", SmartML.GetValue(xgroup, "@name")))
+		        'InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", SmartML.GetValue(xgroup, "@name"))
 		        App.MouseCursor = WatchCursor
 		      End If
 		    End If
@@ -11126,7 +11162,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  App.MouseCursor = Nil
 		  
 		  If Not foundSong Then
-		    InputBox.Message App.T.Translate("sets_mode/current_set/print_songs/no_songs")
+		    MsgDialog(App.T.Translate("sets_mode/current_set/print_songs/no_songs"))
+		    'InputBox.Message App.T.Translate("sets_mode/current_set/print_songs/no_songs")
 		    Return
 		  End If
 		  
@@ -11174,16 +11211,18 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  
 		  MySetListReport = New SetListReport
 		  If MySetListReport = Nil Then
-		    InputBox.Message App.T.Translate("errors/internal") + _
-		        EndOfLine + "MainWindow.ActionSetPrintList: New SetListReport returned Nil"
+		    MsgDialog(App.T.Translate("errors/internal") + EndOfLine + "MainWindow.ActionSetPrintList: New SetListReport returned Nil")
+		    'InputBox.Message App.T.Translate("errors/internal") + _
+		    'EndOfLine + "MainWindow.ActionSetPrintList: New SetListReport returned Nil"
 		    App.DebugWriter.Write "MainWindow.ActionSetPrintList: Exit: New SetListReport returned Nil", 1
 		    Return
 		  End If
 		  
 		  status = MySetListReport.Setup
 		  If Not status Then
-		    InputBox.Message App.T.Translate("errors/internal") + _
-		        EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.Setup failed"
+		    MsgDialog(App.T.Translate("errors/internal") + EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.Setup failed")
+		    'InputBox.Message App.T.Translate("errors/internal") + _
+		    'EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.Setup failed"
 		    App.DebugWriter.Write "MainWindow.ActionSetPrintList: Exit: SetListReport.Setup failed", 1
 		    Return
 		  End If
@@ -11192,16 +11231,18 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  status = MySetListReport.AddSet(CurrentSetName, setDoc)
 		  If Not status Then
-		    InputBox.Message App.T.Translate("errors/internal") + _
-		        EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.AddSet failed"
+		    MsgDialog(App.T.Translate("errors/internal") + EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.AddSet failed")
+		    'InputBox.Message App.T.Translate("errors/internal") + _
+		    'EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.AddSet failed"
 		    App.DebugWriter.Write "MainWindow.ActionSetPrintList: Exit: SetListReport.AddSet failed", 1
 		    Return
 		  End If
 		  
 		  status = MySetListReport.Generate
 		  If Not status Then
-		    InputBox.Message App.T.Translate("errors/internal") + _
-		        EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.Generate failed"
+		    MsgDialog(App.T.Translate("errors/internal") + EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.Generate failed")
+		    'InputBox.Message App.T.Translate("errors/internal") + _
+		    'EndOfLine + "MainWindow.ActionSetPrintList: SetListReport.Generate failed"
 		    App.DebugWriter.Write "MainWindow.ActionSetPrintList: Exit: SetListReport.Generate failed", 1
 		    Return
 		  End If
@@ -11333,7 +11374,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  oldfolder = lst_songs_songs.CellTag(listindex, 0)
 		  folders = Songs.GetFolders
 		  folders.Remove 1 ' drop the ( All )
-		  folder = InputBox.Pick(App.T.Translate("songs_mode/selected_song/move/where/@caption", lst_songs_songs.Text), folders, "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )")
+		  folder = PopMenuDialog(App.T.Translate("songs_mode/selected_song/move/where/@caption", lst_songs_songs.Text), folders, "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )")
+		  'folder = InputBox.Pick(App.T.Translate("songs_mode/selected_song/move/where/@caption", lst_songs_songs.Text), folders, "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )")
 		  
 		  If folder.Len = 0 Then Return
 		  If folder + "/" = oldfolder Then Return
@@ -11343,7 +11385,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  App.MouseCursor = Nil // Don't wait...
 		  
 		  If Not status Then
-		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text, folder)
+		    MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text, folder))
+		    'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text, folder)
 		  Else
 		    If pop_songs_song_folders.Text <> "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Then
 		      lst_songs_songs.RemoveRow lst_songs_songs.ListIndex
@@ -11383,10 +11426,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
 		  
-		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
+		  t = EditDialog(App.T.Translate("questions/new_name/@caption"), "")
+		  't = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
 		  If Len(t) > 0 Then
 		    If Not FileUtils.IsSafeFileName(t) Then
-		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
+		      MsgDialog(App.T.Translate("errors/bad_file_name", t))
+		      'InputBox.Message App.T.Translate("errors/bad_file_name", t)
 		      Return
 		    End If
 		    
@@ -11397,7 +11442,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    End If
 		    
 		    If f = Nil Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t)
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t))
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t)
 		      Return
 		    End If
 		    
@@ -11532,7 +11578,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  //++
 		  // Feature request 1528693: require confirmation
 		  //--
-		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
+		  If QuestionDialog(App.T.Translate("questions/long_operation/@caption"), false) <> YES Then Return
+		  'If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
@@ -11573,14 +11620,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    parm/S: 
    rslt/S: 
    flag/N: 0
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 5
 		Sub ActionSongRemove()
 		  DIm listindex As Integer
 		  listindex = lst_songs_songs.ListIndex
 		  
-		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", lst_songs_songs.Text)) Then
+		  'If InputBox.Ask(App.T.Translate("questions/delete/@caption", lst_songs_songs.Text)) Then
+		  If QuestionDialog(App.T.Translate("questions/delete/@caption", lst_songs_songs.Text)) = YES Then
 		    If Not Songs.DeleteFile(lst_songs_songs.CellTag(ListIndex, 0) + lst_songs_songs.Text) Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
+		      MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text))
+		      'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
 		    Else
 		      lst_songs_songs.RemoveRow listindex
 		      If listindex < lst_songs_songs.listcount Then
@@ -11608,7 +11657,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  // Feature request 1528693: require confirmation
 		  //--
 		  If Ask Then
-		    If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
+		    If QuestionDialog(App.T.Translate("questions/revert/@caption"), false) <> YES Then Return
+		    'If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
 		  End If
 		  //++
 		  // EMP, September 2006
@@ -11659,13 +11709,15 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    if SaveOldSong = true then
 		      f = Songs.GetFile(Globals.OldSongFileName)
 		      If f = Nil Then
-		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", Globals.OldSongFileName)
+		        MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", Globals.OldSongFileName))
+		        'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", Globals.OldSongFileName)
 		      End If
 		    Else
 		      FullName = lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0).StringValue + lst_songs_songs.Text
 		      f = Songs.GetFile(FullName)
 		      If f = Nil Then
-		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", FullName)
+		        MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", FullName))
+		        'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", FullName)
 		      End If
 		    End if
 		  End If
@@ -11742,7 +11794,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
     srcl/S: If f = Nil Or Not f.Exists Then
     srcl/S: App.MouseCursor = Nil
-    srcl/S: InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+    srcl/S: MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i)))
+    srcl/S: 'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
     srcl/S: Return
     srcl/S: End If
     srcl/S: s = SmartML.XDocFromFile(f)
@@ -11758,7 +11811,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: //--
     srcl/S: If s = Nil Then
     srcl/S: App.MouseCursor = Nil
-    srcl/S: InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+    srcl/S: MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i)))
+    srcl/S: 'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
     srcl/S: Return
     srcl/S: End If
     srcl/S: 
@@ -11847,14 +11901,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
     srcl/S: If f = Nil Or Not f.Exists Then
     srcl/S: App.MouseCursor = Nil
-    srcl/S: InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+    srcl/S: MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i)))
+    srcl/S: 'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
     srcl/S: Return
     srcl/S: End If
     srcl/S: s = SmartML.XDocFromFile(f)
     srcl/S: If s = Nil Then
     srcl/S: App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.list(i), 1)
     srcl/S: App.MouseCursor = Nil
-    srcl/S: InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
+    srcl/S: MsgDialog(App.T.Translate("errors/bad_format", lst_songs_songs.List(i)))
+    srcl/S: 'InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
     srcl/S: App.MouseCursor = WatchCursor
     srcl/S: End If
     srcl/S: End If
@@ -11870,7 +11926,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: 
     srcl/S: If found = Nil Then
     srcl/S: App.MouseCursor = Nil
-    srcl/S: InputBox.Message App.T.Translate("errors/end_of_songs")
+    srcl/S: MsgDialog(App.T.Translate("errors/end_of_songs"))
+    srcl/S: 'InputBox.Message App.T.Translate("errors/end_of_songs")
     srcl/S: End If
     srcl/S: 
     srcl/S: App.MouseCursor = Nil
@@ -11938,7 +11995,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      End If
 		      f = Songs.GetFile(SongPath)
 		      If f = Nil Then
-		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
+		        MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True)))
+		        'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
 		        songDoc = Nil
 		      Else
 		        songDoc = SmartML.XDocFromFile(f)
@@ -11956,7 +12014,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		        '--
 		        slide_group  = slide_group.NextSibling
 		      Else
-		        If f <> Nil Then InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slide_group, "@name", False))
+		        'If f <> Nil Then InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slide_group, "@name", False))
+		        If f <> Nil Then MsgDialog(App.T.Translate("errors/bad_format", SmartML.GetValue(slide_group, "@name", False)))
+		        
 		        If slide_group.NextSibling <> Nil Then
 		          slide_group = slide_group.NextSibling
 		          slide_group.Parent.RemoveChild slide_group.PreviousSibling
@@ -12498,14 +12558,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  App.DebugWriter.Write "MainWindow.mnu_file_print_alphabetical_toc.Action: Enter"
 		  
 		  If lst_songs_songs.ListCount = 0 Then
-		    InputBox.Message App.T.Translate("errors/no_songs")
+		    MsgDialog(App.T.Translate("errors/no_songs"))
+		    'InputBox.Message App.T.Translate("errors/no_songs")
 		    Return False
 		  End If
 		  
 		  //++
 		  // Feature request 1528693: require confirmation
 		  //--
-		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return False
+		  If QuestionDialog(App.T.Translate("questions/long_operation/@caption"), false) <> YES Then Return False
+		  'If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return False
 		  
 		  If Not AlphaTOC.Setup Then Return False
 		  
@@ -12514,16 +12576,18 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Next i
 		  
 		  If Not AlphaTOC.Prepare Then
-		    InputBox.Message App.T.Translate("errors/internal") + EndOfLine +_
-		        "MainWindow, Print Alphabetical TOC, Prepare failed"
+		    MsgDialog(App.T.Translate("errors/internal") + EndOfLine +  "MainWindow, Print Alphabetical TOC, Prepare failed")
+		    'InputBox.Message App.T.Translate("errors/internal") + EndOfLine +_
+		    '"MainWindow, Print Alphabetical TOC, Prepare failed"
 		    App.DebugWriter.Write "MainWindow.mnu_file_print_alphabetical_toc.Action: " +_
 		        "AlphaTOCReport.PrepareReport returned False", 1
 		    Return True
 		  End If
 		  
 		  If Not AlphaTOC.Generate Then
-		    InputBox.Message App.T.Translate("errors/internal") + EndOfLine +_
-		        "MainWindow, Print Alphabetical TOC, Generate failed"
+		    MsgDialog(App.T.Translate("errors/internal") + EndOfLine + "MainWindow, Print Alphabetical TOC, Generate failed")
+		    'InputBox.Message App.T.Translate("errors/internal") + EndOfLine +_
+		    '"MainWindow, Print Alphabetical TOC, Generate failed"
 		    App.DebugWriter.Write "MainWindow.mnu_file_print_alphabetical_toc.Action: " +_
 		        "AlphaTOCReport.Generate returned False", 1
 		    Return True
@@ -12556,14 +12620,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  App.DebugWriter.Write "MainWindow.mnu_file_print_categorical_toc.Action: Enter"
 		  
 		  If lst_songs_songs.ListCount = 0 Then
-		    InputBox.Message App.T.Translate("errors/no_songs")
+		    MsgDialog(App.T.Translate("errors/no_songs"))
+		    'InputBox.Message App.T.Translate("errors/no_songs")
 		    Return False
 		  End If
 		  
 		  //++
 		  // Feature request 1528693: require confirmation
 		  //--
-		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return False
+		  If QuestionDialog(App.T.Translate("questions/long_operation/@caption"), false) <> YES Then Return False
+		  'If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return False
 		  
 		  If Not CatTOC.Setup Then Return False
 		  
@@ -12572,16 +12638,18 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Next i
 		  
 		  If Not CatTOC.Prepare Then
-		    InputBox.Message App.T.Translate("errors/internal") + EndOfLine +_
-		        "MainWindow, Print Categorical TOC, Prepare failed"
+		    MsgDialog(App.T.Translate("errors/internal") + EndOfLine + "MainWindow, Print Categorical TOC, Prepare failed")
+		    'InputBox.Message App.T.Translate("errors/internal") + EndOfLine +_
+		    '"MainWindow, Print Categorical TOC, Prepare failed"
 		    App.DebugWriter.Write "MainWindow.mnu_file_print_categorical_toc.Action: " +_
 		        "CategoryTOCReport.Prepare returned False", 1
 		    Return True
 		  End If
 		  
 		  If Not CatTOC.Generate Then
-		    InputBox.Message App.T.Translate("errors/internal") + EndOfLine +_
-		        "MainWindow, Print Categorical TOC, Generate failed"
+		    MsgDialog(App.T.Translate("errors/internal") + EndOfLine + "MainWindow, Print Categorical TOC, Generate failed")
+		    'InputBox.Message App.T.Translate("errors/internal") + EndOfLine +_
+		    '"MainWindow, Print Categorical TOC, Generate failed"
 		    App.DebugWriter.Write "MainWindow.mnu_file_print_categorical_toc.Action: " +_
 		        "CategoryTOCReport.Generate returned False", 1
 		    Return True
@@ -12739,7 +12807,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: xfile = SmartML.XDocFromFile(file)
     srcl/S: App.MouseCursor = Nil
     srcl/S: If xfile = Nil Then
-    srcl/S: InputBox.Message App.T.Translate("module/read_error")
+    srcl/S: MsgDialog(App.T.Translate("module/read_error"))
+    srcl/S: 'InputBox.Message App.T.Translate("module/read_error")
     srcl/S: Return False
     srcl/S: End If
     srcl/S: 
@@ -12748,24 +12817,28 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: ElseIf xfile.DocumentElement.Name = "language" Then
     srcl/S: toChild = "OpenSong Languages"
     srcl/S: Else
-    srcl/S: InputBox.Message App.T.Translate("module/format_error")
+    srcl/S: MsgDialog(App.T.Translate("module/format_error"))
+    srcl/S: 'InputBox.Message App.T.Translate("module/format_error")
     srcl/S: Return False
     srcl/S: End If
     srcl/S: 
     srcl/S: file.MoveFileTo App.AppFolder.Child(toChild)
     srcl/S: If file.LastErrorCode <> 0 Then
-    srcl/S: InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (" + Str(file.LastErrorCode) + ")"
+    srcl/S: MsgDialog(App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (" + Str(file.LastErrorCode) + ")")
+    srcl/S: 'InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (" + Str(file.LastErrorCode) + ")"
     srcl/S: Return False
     srcl/S: End If
     srcl/S: file = App.AppFolder.Child(toChild).Child(file.Name)
     srcl/S: If file = Nil Then
-    srcl/S: InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (0)"
+    srcl/S: MsgDialog(App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (0)")
+    srcl/S: 'InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (0)"
     srcl/S: Return False
     srcl/S: End If
     srcl/S: 
     srcl/S: If InStr(file.Name, ".") > 0 Then file.Name = Left(file.Name, StringUtils.InStrReverse(file.Name, ".") - 1)
     srcl/S: If file.LastErrorCode <> 0 Then
-    srcl/S: InputBox.Message App.T.Translate("module/rename_error", App.AppFolder.Child(toChild).AbsolutePath)
+    srcl/S: MsgDialog(App.T.Translate("module/rename_error", App.AppFolder.Child(toChild).AbsolutePath))
+    srcl/S: 'InputBox.Message App.T.Translate("module/rename_error", App.AppFolder.Child(toChild).AbsolutePath)
     srcl/S: Return False
     srcl/S: End If
     srcl/S: 
@@ -12773,18 +12846,21 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
     srcl/S: // If a Bible, offer to generate the index now.
     srcl/S: //--
     srcl/S: If xfile.DocumentElement.Name = "bible" Then
-    srcl/S: If InputBox.AskYN(App.T.Translate("module/generate_index")) Then
+    srcl/S: 'If InputBox.AskYN(App.T.Translate("module/generate_index")) Then
+    srcl/S: If QuestionDialog(App.T.Translate("module/generate_index")) = YES Then
     srcl/S: newBible = New Bible
     srcl/S: App.MouseCursor = WatchCursor
     srcl/S: If Not newBible.LoadBible(file) Then
     srcl/S: App.MouseCursor = Nil
-    srcl/S: InputBox.Message(App.T.Translate("module/generate_error", file.AbsolutePath))
+    srcl/S: MsgDialog(App.T.Translate("module/generate_error", file.AbsolutePath))
+    srcl/S: 'InputBox.Message(App.T.Translate("module/generate_error", file.AbsolutePath))
     srcl/S: Return True
     srcl/S: End If
     srcl/S: End If
     srcl/S: End If
     srcl/S: App.MouseCursor = Nil
-    srcl/S: InputBox.Message App.T.Translate("module/success")
+    srcl/S: MsgDialog(App.T.Translate("module/success"))
+    srcl/S: 'InputBox.Message App.T.Translate("module/success")
     srcl/S: Return True
     srcl/S: End Function
    sorc/g: 
@@ -12803,7 +12879,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Status_SongChanged = False
 		  Globals.OldFolderSel = -1 // If this isn't invalidated, the list box doesn't get rebuilt unless we are on a child folder
 		  If Not Songs.RefreshCache Then
-		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", App.DocsFolder.Child("Songs").AbsolutePath)
+		    MsgDialog(App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", App.DocsFolder.Child("Songs").AbsolutePath))
+		    'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", App.DocsFolder.Child("Songs").AbsolutePath)
 		  End If
 		  If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
 		  End If
@@ -12819,7 +12896,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Function mnu_file_dual_screen() As Boolean
 		  If ScreenCount = 1 Then 
-		    InputBox.Message App.T.Translate("errors/no_multi_screen")
+		    MsgDialog(App.T.Translate("errors/no_multi_screen"))
+		    'InputBox.Message App.T.Translate("errors/no_multi_screen")
 		    Return True
 		  End If
 		  
@@ -12837,7 +12915,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
    name/S: mnu_help_translating
    sorc/d: (Enco/N: 134217984
 		Function mnu_help_translating() As Boolean
-		  InputBox.Message App.T.Translate("about/translating")
+		  MsgDialog(App.T.Translate("about/translating"))
+		  'InputBox.Message App.T.Translate("about/translating")
 		End Function
    )
   MnuH/g: 

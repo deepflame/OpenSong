@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
@@ -35,7 +35,8 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
   flag/N: 1
   sorc/d: (Enco/N: 134217984
 		Sub DisplayError()
-		  InputBox.Message ErrorString + " (" + Str(ErrorCode) + ")"
+		  MsgDialog(ErrorString + " (" + Str(ErrorCode) + ")")
+		  'InputBox.Message ErrorString + " (" + Str(ErrorCode) + ")"
 		End Sub
   )
  Meth/g: 

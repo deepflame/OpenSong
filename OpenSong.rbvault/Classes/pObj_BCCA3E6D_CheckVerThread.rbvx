@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626ABCCA3E6D0000000000000000000000000000000000000000
@@ -41,7 +41,8 @@ pObj/B: 426C6F6B704F626ABCCA3E6D0000000000000000000000000000000000000000
 		    If major > App.MajorVersion Or _
 		        (major = App.MajorVersion And minor > App.MinorVersion) Or _
 		        (major = App.MajorVersion And minor = App.MinorVersion And bug > App.BugVersion) Then
-		        InputBox.Message App.T.Translate("load_settings/latest_version/newer_available", Str(major) + "." + Str(minor) + "." + Str(bug))
+		        MsgDialog(App.T.Translate("load_settings/latest_version/newer_available", Str(major) + "." + Str(minor) + "." + Str(bug)))
+		        'InputBox.Message App.T.Translate("load_settings/latest_version/newer_available", Str(major) + "." + Str(minor) + "." + Str(bug))
 		      End If
 		    End If
 		    

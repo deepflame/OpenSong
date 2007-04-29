@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
@@ -35,8 +35,9 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  'load bnames.xml
 		  file= App.AppFolder.Child("OpenSong Settings").Child("bnames.xml")
 		  if file.Exists=false then
-		    InputBox.Message App.T.Translate("bible/errors/load2", bibleFile.Name, _
-		        App.T.Translate("bible/errors/missing_bnames"))
+		    MsgDialog(App.T.Translate("bible/errors/load2", bibleFile.Name, App.T.Translate("bible/errors/missing_bnames")))
+		    'InputBox.Message App.T.Translate("bible/errors/load2", bibleFile.Name, _
+		    'App.T.Translate("bible/errors/missing_bnames"))
 		    //
 		    // Let's be a little sneaky and set the bnames to the book numbers.
 		    // Why not?  The user will find out quickly enough that there is an issue,
@@ -69,7 +70,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  next x
 		  
 		  'let user pick language
-		  choice= InputBox.Pick(App.T.Translate("bible/messages/bnames"), options)
+		  choice = PopMenuDialog(App.T.Translate("bible/messages/bnames"), options)
+		  'choice= InputBox.Pick(App.T.Translate("bible/messages/bnames"), options)
 		  
 		  'if they canceled
 		  if (choice="") then return false
@@ -84,7 +86,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  next x
 		  
 		  'save the changes
-		  If InputBox.AskYN(App.T.Translate("bible/messages/save")) Then
+		  If QuestionDialog(App.T.Translate("bible/messages/save"), false) = YES Then
+		    'If InputBox.AskYN(App.T.Translate("bible/messages/save")) Then
 		    out= bibleFile.createTextFile
 		    Scripture.PreserveWhitespace = True
 		    out.Write(Scripture.toString)
@@ -502,7 +505,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		    reMatch = myRegex.Search(strRoman)
 		    if reMatch = Nil then return -1
 		  exception GrepErr as RegExException
-		    InputBox.Message App.T.Translate("bible/errors/roman", strRoman, GrepErr.Message)
+		    MsgDialog(App.T.Translate("bible/errors/roman", strRoman, GrepErr.Message))
+		    'InputBox.Message App.T.Translate("bible/errors/roman", strRoman, GrepErr.Message)
 		    return -1
 		  end try
 		  
@@ -829,7 +833,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  'reDim index as IndexEntry(-1)
 		  'reDim notIndexed as String(-1)
 		  
-		  InputBox.Message App.T.Translate("bible/errors/index_generation")
+		  MsgDialog(App.T.Translate("bible/errors/index_generation"))
+		  'InputBox.Message App.T.Translate("bible/errors/index_generation")
 		  CanSearch = False
 		  If wProgress <> Nil Then wProgress = Nil
 		  App.DebugWriter.Write "Bible.genindex: Exit (exception)"
@@ -1923,7 +1928,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: If Scripture = Nil Then
    srcl/S: ErrorCode = 7
    srcl/S: ErrorString = App.T.Translate("bible/errors/load1", file.name)
-   srcl/S: InputBox.Message ErrorString
+   srcl/S: MsgDialog(ErrorString)
+   srcl/S: 'InputBox.Message ErrorString
    srcl/S: Return False
    srcl/S: End If
    srcl/S: Else
@@ -1936,7 +1942,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: XmlException(LoadErr).Node, XmlException(LoadErr).Line)
    srcl/S: LoadErr.Message = ErrorString
    srcl/S: LoadErr.ErrorNumber = ErrorCode
-   srcl/S: InputBox.Message ErrorString
+   srcl/S: MsgDialog(ErrorString)
+   srcl/S: 'InputBox.Message ErrorString
    srcl/S: Scripture = Nil
    srcl/S: Return False
    srcl/S: Else
@@ -1944,7 +1951,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
    srcl/S: ErrorString = App.T.Translate("bible/errors/load1", file.name)
    srcl/S: LoadErr.ErrorNumber = ErrorCode
    srcl/S: LoadErr.Message = ErrorString
-   srcl/S: InputBox.Message ErrorString
+   srcl/S: MsgDialog(ErrorString)
+   srcl/S: 'InputBox.Message ErrorString
    srcl/S: Scripture = Nil
    srcl/S: Return False
    srcl/S: End If
@@ -2362,7 +2370,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  
 		  'make sure an index is loaded
 		  if (UBound(index)<0) then
-		    InputBox.Message App.T.Translate("bible/errors/noindex")
+		    MsgDialog(App.T.Translate("bible/errors/noindex"))
+		    'InputBox.Message App.T.Translate("bible/errors/noindex")
 		    return  returnVal
 		  end if
 		  

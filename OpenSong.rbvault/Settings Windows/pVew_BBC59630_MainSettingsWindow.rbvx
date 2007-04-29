@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
@@ -298,7 +298,8 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		    MainWindow.TranslateMe
 		    App.TranslateMe
 		  Else
-		    InputBox.Message "Error in translation."
+		    MsgDialog("Error in translation.")
+		    'InputBox.Message "Error in translation."
 		    Return
 		  End If
 		  
@@ -1940,7 +1941,8 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		      End If
 		    Next i
 		  Catch
-		    InputBox.Message "No languages available; please check the directory " + f.AbsolutePath
+		    MsgDialog("No languages available; please check the directory " + f.AbsolutePath)
+		    'InputBox.Message "No languages available; please check the directory " + f.AbsolutePath
 		  End Try
 		  
 		  pop_general_language.ListIndex = currlang
@@ -2028,7 +2030,8 @@ pVew/B: 426C6F6B70566577BBC596300000000000000000000000000000000000000000
 		  
 		  App.MainPreferences.SetValueFI(Prefs.kDocumentsFolder, NewDocsFolder)
 		  
-		  InputBox.Message App.T.Translate("general_settings/documents_folder/message")
+		  MsgDialog(App.T.Translate("general_settings/documents_folder/message"))
+		  'InputBox.Message App.T.Translate("general_settings/documents_folder/message")
 		  
 		  App.MainPreferences.NotifyReceivers
 		End Sub

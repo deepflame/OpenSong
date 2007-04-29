@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
@@ -69,7 +69,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    App.MyBible = New Bible
 		    
 		    If Not App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(Me.List(Me.ListIndex))) Then
-		      InputBox.Message Str(App.MyBible.ErrorCode) + ": " + App.MyBible.ErrorString
+		      MsgDialog(Str(App.MyBible.ErrorCode) + ": " + App.MyBible.ErrorString)
+		      'InputBox.Message Str(App.MyBible.ErrorCode) + ": " + App.MyBible.ErrorString
 		      App.MouseCursor = OldCursor
 		      // Delete the bad one from the list
 		      Me.RemoveRow newSelection
@@ -1960,7 +1961,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  Dim aix As String
 		  
 		  If Len(lookup) = 0 Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/empty")
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/empty"))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/empty")
 		    Return
 		  End If
 		  
@@ -1994,7 +1996,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    End If
 		    
 		    If i = pop_scr_version.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp))
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp)))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp))
 		      Return
 		    End If
 		  End If
@@ -2004,7 +2007,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  
 		  Select Case first_space_loc
 		  Case 0
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", "")
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/book", ""))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", "")
 		    Return
 		  Case 2
 		    lookup = Left(lookup, 1) + Right(lookup, len(lookup) - 2)
@@ -2017,10 +2021,12 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  
 		  If BookName = "" Then
 		    If App.MyBible.ErrorString = "" Then // Nothing found
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book")
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/book"))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book")
 		    Else // Multiples found
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/ambiguous", _
-		          temp, App.MyBible.ErrorString)
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/ambiguous",  temp, App.MyBible.ErrorString))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/ambiguous", _
+		      'temp, App.MyBible.ErrorString)
 		    End If
 		    Return
 		  End If
@@ -2045,7 +2051,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		      i = i + 1
 		    Wend
 		    If i = lst_scr_nt.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp))
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp)))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp))
 		      Return
 		    End If
 		  End If
@@ -2061,10 +2068,12 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    temp = Mid(lookup, first_space_loc + 1, colon_loc - first_space_loc)
 		    i = Val(temp)
 		    If i < 0 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/chapter", ""))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
 		      Return
 		    ElseIf i > lst_scr_chapter.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp))
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp)))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp))
 		      Return
 		    End If
 		    lst_scr_chapter.ListIndex = i - 1 // We can assume that the chapters are numbered sequentially from 1
@@ -2075,10 +2084,12 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  temp = Mid(lookup, first_space_loc + 1, colon_loc - first_space_loc)
 		  i = Val(temp)
 		  If i <= 0 Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/chapter", ""))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
 		    Return
 		  ElseIf i > lst_scr_chapter.ListCount Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp))
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp)))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp))
 		    Return
 		  End If
 		  lst_scr_chapter.ListIndex = i - 1
@@ -2095,11 +2106,13 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  If SplitVerseNumber(temp, Verse, aix) Then
 		    i = FindVerseIndex(lst_scr_from_verse, verse, aix)
 		    If i < 0 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", "")
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse", ""))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", "")
 		      Return
 		    End If
 		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp))
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp)))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp))
 		    Return
 		  End If
 		  
@@ -2117,13 +2130,15 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    If SplitVerseNumber(temp, verse, aix) Then
 		      i = FindVerseIndex(lst_scr_to_verse, verse, aix)
 		      If i < 0 Then
-		        InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range")
+		        MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse_range"))
+		        'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range")
 		        Return
 		      Else
 		        lst_scr_to_verse.ListIndex = i
 		      End If
 		    Else
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp))
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp)))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp))
 		      Return
 		    End If
 		  End If
@@ -2418,7 +2433,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  ref = ReplaceAll(ref, "-", " ")
 		  
 		  If Len(ref) = 0 Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/empty")
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/empty"))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/empty")
 		    Return
 		  End If
 		  
@@ -2435,7 +2451,8 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		      i = i + 1
 		    Wend
 		    If i = pop_scr_version.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", s)
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/version", s))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", s)
 		      Return
 		    End If
 		  End If
@@ -2461,12 +2478,14 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		        i = i + 1
 		      Wend
 		      If i = lst_scr_nt.ListCount Then
-		        InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", s)
+		        MsgDialog(App.T.Translate("scripture_lookup/bad_reference/book", s))
+		        'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", s)
 		        Return
 		      End If
 		    End If
 		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", "")
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/book", ""))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", "")
 		    Return
 		  End If
 		  
@@ -2475,16 +2494,19 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  If s.Len > 0 Then
 		    i = s.Val
 		    If i <= 0 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", s)
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/chapter", s))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", s)
 		      Return
 		    ElseIf i > lst_scr_chapter.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", s)
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/chapter", s))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", s)
 		      Return
 		    End If
 		    lst_scr_chapter.ListIndex = i - 1
 		    lst_scr_to_verse.ListIndex = lst_scr_to_verse.ListCount - 1
 		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/chapter", ""))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
 		    Return
 		  End If
 		  
@@ -2493,15 +2515,18 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  If s.Len > 0 Then
 		    i = Val(s)
 		    If i <= 0 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", s)
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse", s))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", s)
 		      Return
 		    ElseIf i > lst_scr_from_verse.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", s)
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse", s))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", s)
 		      Return
 		    End If
 		    lst_scr_from_verse.ListIndex = i - 1
 		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", "")
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse", ""))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", "")
 		    Return
 		  End If
 		  
@@ -2512,14 +2537,16 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    If i = 0 Then
 		      ' There was probably no verse specified
 		    ElseIf i < lst_scr_from_verse.ListIndex+1 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range", s)
+		      MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse_range", s))
+		      'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range", s)
 		      Return
 		    Else
 		      If i > lst_scr_to_verse.ListCount Then i = lst_scr_to_verse.ListCount
 		      lst_scr_to_verse.ListIndex = i - 1
 		    End If
 		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range", "")
+		    MsgDialog(App.T.Translate("scripture_lookup/bad_reference/verse_range", ""))
+		    'InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range", "")
 		    Return
 		  End If
 		  

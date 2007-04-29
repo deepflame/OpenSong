@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626AC00762590000000000000000000000000000000000000000
@@ -84,7 +84,8 @@ pObj/B: 426C6F6B704F626AC00762590000000000000000000000000000000000000000
 		  Wend
 		  
 		  If Not SmartML.XDocToFile(LeadSheetDoc, LeadSheetFile) Then
-		    InputBox.Message App.T.Translate("errors/internal")
+		    MsgDialog(App.T.Translate("errors/internal"))
+		    'InputBox.Message App.T.Translate("errors/internal")
 		    App.DebugWriter.Write "SetListReport.AddSet: XDocToFile failed on " + TempFileName, 1
 		    App.DebugWriter.Write "SetListReport.AddSet: Exit"
 		    Return False

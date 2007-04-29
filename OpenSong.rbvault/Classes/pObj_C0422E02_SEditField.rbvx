@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626AC0422E020000000000000000000000000000000000000000
@@ -11,6 +11,15 @@ pObj/B: 426C6F6B704F626AC0422E020000000000000000000000000000000000000000
  Supr/S: EditField
  bNtr/N: 0
  Intr/S: 
+ HIns/G: 
+  Enco/N: 1536
+  name/S: Close
+  sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  
+		End Sub
+  )
+ HIns/g: 
  HIns/G: 
   Enco/N: 1280
   name/S: EnableMenuItems

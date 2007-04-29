@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626AC00ACE960000000000000000000000000000000000000000
@@ -203,7 +203,8 @@ pObj/B: 426C6F6B704F626AC00ACE960000000000000000000000000000000000000000
 		        Next j
 		      Else
 		        App.DebugWriter.Write "CategoryTOCReport.ProcessSongs: Error loading " + f.AbsolutePath
-		        InputBox.Message App.T.Translate("errors/bad_format", f.AbsolutePath)
+		        MsgDialog(App.T.Translate("errors/bad_format", f.AbsolutePath))
+		        'InputBox.Message App.T.Translate("errors/bad_format", f.AbsolutePath)
 		      End If
 		    End if
 		    

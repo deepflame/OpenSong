@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626AC003E5AF0000000000000000000000000000000000000000
@@ -144,8 +144,9 @@ pObj/B: 426C6F6B704F626AC003E5AF0000000000000000000000000000000000000000
 		  // Implement this in the subclass
 		  //
 		  App.DebugWriter.Write "Report.Generate: Enter/Exit"
-		  InputBox.Message "Entered function Report.Generate:" + EndOfLine +_
-		      "This should be implemented in the subclass."
+		  MsgDialog("Entered function Report.Generate:" + EndOfLine + "This should be implemented in the subclass.")
+		  'InputBox.Message "Entered function Report.Generate:" + EndOfLine +_
+		  '"This should be implemented in the subclass."
 		  Return True
 		End Function
   )
@@ -162,8 +163,9 @@ pObj/B: 426C6F6B704F626AC003E5AF0000000000000000000000000000000000000000
 		  // The source for this method should be in the subclass
 		  //
 		  App.DebugWriter.Write "Report.GetPage: Enter/Exit"
-		  InputBox.Message "Entered function Report.GetPage:" + EndOfLine +_
-		      "This should be implemented in the subclass."
+		  MsgDialog("Entered function Report.GetPage:" + EndOfLine + "This should be implemented in the subclass.")
+		  'InputBox.Message "Entered function Report.GetPage:" + EndOfLine +_
+		  '"This should be implemented in the subclass."
 		  Return Nil
 		End Function
   )

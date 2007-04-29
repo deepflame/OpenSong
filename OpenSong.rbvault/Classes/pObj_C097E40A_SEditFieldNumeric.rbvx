@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626AC097E40A0000000000000000000000000000000000000000
@@ -34,7 +34,8 @@ pObj/B: 426C6F6B704F626AC097E40A0000000000000000000000000000000000000000
 		  //
 		  Dim IsError As Boolean = False
 		  If Not IsNumeric(Text) Then
-		    InputBox.Message(App.T.Translate("errors/number_please"))
+		    MsgDialog(App.T.Translate("errors/number_please"))
+		    'InputBox.Message(App.T.Translate("errors/number_please"))
 		    SetValue InitialValue
 		    SetFocus
 		  ElseIf EnforceRange Then

@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SStyleCanvas
- Size/N: 125
+ Size/N: 128
  Supr/S: SBufferedCanvas
  bNtr/N: 0
  Intr/S: 

@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
@@ -32,7 +32,8 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		  If lst_all_songs.ListIndex >= 0 Then
 		    Close
 		  Else
-		    InputBox.Message App.T.Translate("song_lookup/no_selection")
+		    MsgDialog(App.T.Translate("song_lookup/no_selection"))
+		    'InputBox.Message App.T.Translate("song_lookup/no_selection")
 		  End If
 		End Sub
    )
@@ -139,7 +140,8 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		  If lst_all_songs.ListIndex >= 0 Then
 		    Close
 		  Else
-		    InputBox.Message App.T.Translate("song_lookup/no_selection")
+		    MsgDialog(App.T.Translate("song_lookup/no_selection"))
+		    'InputBox.Message App.T.Translate("song_lookup/no_selection")
 		  End If
 		  
 		End Sub
@@ -424,7 +426,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: SongPickerWindow
-  Size/N: 156
+  Size/N: 148
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

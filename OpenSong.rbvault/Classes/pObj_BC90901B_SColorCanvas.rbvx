@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626ABC90901B0000000000000000000000000000000000000000
@@ -20,7 +20,8 @@ pObj/B: 426C6F6B704F626ABC90901B0000000000000000000000000000000000000000
 		  
 		  If Enabled Then
 		    If IsCMMClick Then
-		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
+		      If QuestionDialog(App.T.Translate("questions/clear/@caption"), false) = YES Then
+		        'If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
 		        IsColorSet = False
 		        Action
 		        Repaint

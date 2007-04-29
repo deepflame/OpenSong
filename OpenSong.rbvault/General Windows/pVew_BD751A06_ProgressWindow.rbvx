@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
@@ -126,7 +126,7 @@ pVew/B: 426C6F6B70566577BD751A060000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ProgressWindow
-  Size/N: 150
+  Size/N: 142
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

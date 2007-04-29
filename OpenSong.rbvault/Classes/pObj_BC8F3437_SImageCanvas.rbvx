@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
@@ -59,7 +59,8 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
 		  Dim c As New Clipboard
 		  If Enabled Then
 		    If IsCMMClick Then
-		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
+		      If QuestionDialog(App.T.Translate("questions/clear/@caption"), false) = YES Then
+		        'If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
 		        Image = Nil
 		        Base64 = ""
 		        Repaint
@@ -248,7 +249,8 @@ pObj/B: 426C6F6B704F626ABC8F34370000000000000000000000000000000000000000
 		      inputStream.Close
 		      Image = f.OpenAsPicture
 		    Else
-		      InputBox.Message App.T.Translate("errors/unreadable_image", f.AbsolutePath)
+		      MsgDialog(App.T.Translate("errors/unreadable_image", f.AbsolutePath))
+		      'InputBox.Message App.T.Translate("errors/unreadable_image", f.AbsolutePath)
 		    End If
 		  End If
 		  

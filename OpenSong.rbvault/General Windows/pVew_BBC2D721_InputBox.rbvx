@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
@@ -39,7 +39,7 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  Okay
+		  AltAction
 		End Sub
    )
   HIns/g: 
@@ -48,7 +48,7 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
-		  Me.SetIcon buttonokpic, buttonokmask
+		  Me.SetIcon nopic, nomask
 		End Sub
    )
   HIns/g: 
@@ -87,7 +87,9 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
-		  Okay
+		  'This is needed to make the Enter and Tab keyboard keys
+		  'function properly(they don't work with SButton Class)
+		  Action
 		End Sub
    )
   HIns/g: 
@@ -102,12 +104,38 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
+		  'This is needed to make the Enter and Tab keyboard keys
+		  'function properly(they don't work with SButton Class)
 		  Cancel
 		End Sub
    )
   HIns/g: 
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  Action
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon buttonokpic, buttonokmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
  Ctrl/G: 
   ccls/S: StaticText
   name/S: StaticText
@@ -205,14 +233,14 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: GroupBox4, Enco/N: 134217984)
   PDef/D: (name/S: IsStuck, PVal/S: False)
-  PDef/D: (name/S: Label, PVal/S: OK, Enco/N: 134217984)
+  PDef/D: (name/S: Label, PVal/S: No, Enco/N: 134217984)
   PDef/D: (name/S: LabelAlign, PVal/S: 0)
   PDef/D: (name/S: Left, PVal/S: 145)
   PDef/D: (name/S: LockBottom, PVal/S: True)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: True)
   PDef/D: (name/S: LockTop, PVal/S: False)
-  PDef/D: (name/S: Name, PVal/S: btn_ok, Enco/N: 134217984)
+  PDef/D: (name/S: Name, PVal/S: btn_altaction, Enco/N: 134217984)
   PDef/D: (name/S: StickyBevel, PVal/S: False)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: Top, PVal/S: 93)
@@ -345,9 +373,40 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 300)
  Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 7
+  PDef/D: (name/S: AcceptFocus, PVal/S: True)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: GroupBox4, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Yes, Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 60)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_action, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 93)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 75)
+ Ctrl/g: 
  FDef/G: 
   Name/S: InputBox
-  Size/N: 153
+  Size/N: 184
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -376,10 +435,10 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    name/S: Open
    sorc/d: (Enco/N: 134217984
 		Sub Open()
-		  '++JRC Prevent OutOfBounds Exception when translator isn't loaded
-		  If App.T.IsLoaded Then
-		    App.T.TranslateWindow Me, "input_box", App.TranslationFonts
-		  End If
+		  '++JRC don't translate here
+		  'If App.T.IsLoaded Then
+		  'App.T.TranslateWindow Me, "input_box", App.TranslationFonts
+		  'End If
 		  Globals.Status_InputBoxOpen = True
 		  '--
 		  App.CenterInControlScreen Me
@@ -388,50 +447,34 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
   HIns/g: 
   Meth/G: 
    Enco/N: 134217984
-   name/S: Ask
-   parm/S: question As String
-   rslt/S: Boolean
-   flag/N: 0
+   name/S: Action
+   parm/S: 
+   rslt/S: 
+   flag/N: 33
    sorc/d: (Enco/N: 134217984
-		Function Ask(question As String) As Boolean
-		  lbl_the_question.Text = question
-		  edt_the_input.Visible = False
-		  lbl_the_question.Height = 80
-		  pop_the_input.Visible = False
-		  
-		  btn_ok.Left = 145
-		  btn_cancel.Visible = True
-		  
-		  ShowModal
-		  Return OutputB
-		End Function
+		Sub Action()
+		  If edt_the_input.Visible Then
+		    Output = edt_the_input.Text
+		  ElseIf pop_the_input.Visible Then
+		    Output = pop_the_input.Text
+		  End If
+		  Ret = 1
+		  OutputB = True
+		  Close
+		End Sub
    )
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
-   name/S: AskYN
-   parm/S: question As String
-   rslt/S: Boolean
-   flag/N: 0
+   name/S: AltAction
+   parm/S: 
+   rslt/S: 
+   flag/N: 33
    sorc/d: (Enco/N: 134217984
-		Function AskYN(question As String) As Boolean
-		  //++
-		  // Ask a yes/no question
-		  // EMP, July 2006
-		  //--
-		  Dim status As Boolean
-		  Dim ok, cancel As String
-		  
-		  ok = btn_ok.GetLabel
-		  cancel = btn_cancel.GetLabel
-		  
-		  btn_ok.SetLabel(App.T.Translate("shared/yes/@caption"))
-		  btn_cancel.SetLabel(App.T.Translate("shared/no/@caption"))
-		  
-		  status = Ask(question)
-		  
-		  Return status
-		End Function
+		Sub AltAction()
+		  Ret = 0
+		  Close
+		End Sub
    )
   Meth/g: 
   Meth/G: 
@@ -482,6 +525,7 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Cancel()
 		  Output = ""
+		  Ret = -1
 		  OutputB = False
 		  Close
 		End Sub
@@ -489,98 +533,329 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
-   name/S: Input
-   parm/S: question As String, default As String
+   name/S: EditBox
+   parm/S: 
    rslt/S: String
    flag/N: 0
    sorc/d: (Enco/N: 134217984
-		Function Input(question As String, default As String) As String
-		  lbl_the_question.Text = question
-		  edt_the_input.Text = default
-		  edt_the_input.Visible = True
-		  edt_the_input.SelStart = 0
-		  edt_the_input.SelLength = Len(default)
-		  pop_the_input.Visible = False
+		Function EditBox() As String
+		  'lbl_the_question.Height = 40
 		  
-		  lbl_the_question.Height = 40
-		  btn_ok.Left = 145
-		  btn_cancel.Visible = True
+		  EditFieldVisible = True
+		  PopMenuVisible = False
+		  
+		  SetupControls
+		  
 		  ShowModal
+		  
 		  Return Output
 		End Function
    )
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
-   name/S: Message
-   parm/S: message As String
-   rslt/S: 
+   name/S: MessageBox
+   parm/S: 
+   rslt/S: Integer
    flag/N: 0
    sorc/d: (Enco/N: 134217984
-		Sub Message(message As String)
-		  lbl_the_question.MultiLine = True
-		  lbl_the_question.Text = message
-		  edt_the_input.Visible = False
-		  '++JRC: Increased height
-		  lbl_the_question.Height = 150
-		  '--
-		  pop_the_input.Visible = False
+		Function MessageBox() As Integer
+		  'lbl_the_question.Height = 80
 		  
-		  btn_ok.Left = 230
-		  btn_cancel.Visible = False
+		  SetupControls
 		  
 		  ShowModal
 		  
-		End Sub
+		  Return Ret
+		End Function
    )
   Meth/g: 
   Meth/G: 
    Enco/N: 134217984
-   name/S: Okay
+   name/S: PopMenuBox
+   parm/S: 
+   rslt/S: String
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function PopMenuBox() As String
+		  
+		  pop_the_input.DeleteAllRows
+		  Dim i As Integer
+		  For i = 1 To UBound(PopMenuChoices)
+		    pop_the_input.AddRow PopMenuChoices(i)
+		    If PopMenuChoices(i) = PopMenuText Then pop_the_input.ListIndex = i - 1
+		  Next i
+		  'pop_the_input.ListIndex = 0
+		  
+		  PopMenuVisible = True
+		  EditFieldVisible = False
+		  
+		  SetupControls
+		  
+		  ShowModal
+		  
+		  Return Output
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetupControls
    parm/S: 
    rslt/S: 
    flag/N: 33
    sorc/d: (Enco/N: 134217984
-		Sub Okay()
-		  If edt_the_input.Visible Then
-		    Output = edt_the_input.Text
-		  ElseIf pop_the_input.Visible Then
-		    Output = pop_the_input.Text
+		Sub SetupControls()
+		  Self.Title = Caption
+		  
+		  btn_action.Visible = ActionButtonVisible
+		  btn_action.SetLabel(ActionButtonText)
+		  btn_altaction.Visible = AltActionButtonVisible
+		  btn_altaction.SetLabel(AltActionButtonText)
+		  btn_cancel.Visible = CancelButtonVisible
+		  btn_cancel.SetLabel(CancelButtonText)
+		  
+		  edt_the_input.Visible = EditFieldVisible
+		  edt_the_input.Text = EditFieldText
+		  If EditFieldVisible Then
+		    edt_the_input.SelStart = 0
+		    edt_the_input.SelLength = Len(EditFieldText)
 		  End If
-		  OutputB = True
-		  Close
+		  
+		  pop_the_input.Visible = PopMenuVisible
+		  
+		  lbl_the_question.Text = MessageStr
+		  
+		  'figure out Action button position
+		  If AltActionButtonVisible Then
+		    If NOT CancelButtonVisible Then
+		      btn_action.Left = 145
+		      btn_altaction.Left = 230
+		    End If
+		  Else
+		    If CancelButtonVisible Then
+		      btn_action.Left = 145
+		    Else
+		      btn_action.Left = 230
+		    End If
+		  End If
+		  
+		  'already translated, just need to load the fonts
+		  If App.T.IsLoaded Then
+		    App.T.TranslateWindow(Me, "input_box", App.TranslationFonts, false, true)
+		  End If
+		  
 		End Sub
    )
   Meth/g: 
-  Meth/G: 
+  Note/G: 
    Enco/N: 134217984
-   name/S: Pick
-   parm/S: question As String, choices() As String, default As String = ""
-   rslt/S: String
-   flag/N: 0
-   sorc/d: (Enco/N: 134217984
-		Function Pick(question As String, choices() As String, default As String = "") As String
-		  lbl_the_question.Text = question
-		  edt_the_input.Visible = False
-		  
-		  pop_the_input.DeleteAllRows
-		  Dim i As Integer
-		  For i = 1 To UBound(choices)
-		    pop_the_input.AddRow choices(i)
-		    If choices(i) = default Then pop_the_input.ListIndex = i - 1
-		  Next i
-		  pop_the_input.Visible = True
-		  pop_the_input.ListIndex = 0
-		  
-		  lbl_the_question.Height = 40
-		  btn_ok.Left = 145
-		  btn_cancel.Visible = True
-		  
-		  ShowModal
-		  Return Output
-		End Function
-   )
-  Meth/g: 
+   name/S: OldFunctions
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: OldFunctions
+    ntln/S: 
+    ntln/S: Input(question As String, default As String) as String
+    ntln/S: Function
+    ntln/S:   lbl_the_question.Text = question
+    ntln/S:   edt_the_input.Text = default
+    ntln/S:   edt_the_input.Visible = True
+    ntln/S:   edt_the_input.SelStart = 0
+    ntln/S:   edt_the_input.SelLength = Len(default)
+    ntln/S:   pop_the_input.Visible = False
+    ntln/S:   
+    ntln/S:   lbl_the_question.Height = 40
+    ntln/S:   btn_action.Left = 145
+    ntln/S:   btn_cancel.Visible = True
+    ntln/S:   ShowModal
+    ntln/S:   Return Output
+    ntln/S:   
+    ntln/S: End Function
+    ntln/S: 
+    ntln/S: Ask(question as String) as Boolean
+    ntln/S: Function
+    ntln/S:   'lbl_the_question.Text =question
+    ntln/S:   
+    ntln/S:   'edt_the_input.Visible = False
+    ntln/S:   'pop_the_input.Visible = False
+    ntln/S:   
+    ntln/S:   lbl_the_question.Height = 80
+    ntln/S:   btn_action.Left = 145
+    ntln/S:   'btn_yes.Left = 145
+    ntln/S:   'btn_cancel.Visible = True
+    ntln/S:   
+    ntln/S:   SetupControls
+    ntln/S:   
+    ntln/S:   ShowModal
+    ntln/S:   
+    ntln/S:   Return OutputB
+    ntln/S:   
+    ntln/S: End Function
+    ntln/S: 
+    ntln/S: AskYN(question) as Boolean
+    ntln/S: Function
+    ntln/S:   //++
+    ntln/S:   // Ask a yes/no question
+    ntln/S:   // EMP, July 2006
+    ntln/S:   //--
+    ntln/S:   Dim status As Boolean
+    ntln/S:   'Dim ok, cancel As String
+    ntln/S:   
+    ntln/S:   'ok = btn_action.GetLabel
+    ntln/S:   'cancel = btn_cancel.GetLabel
+    ntln/S:   
+    ntln/S:   'btn_action.SetLabel(App.T.Translate("shared/yes/@caption"))
+    ntln/S:   'btn_cancel.SetLabel(App.T.Translate("shared/no/@caption"))
+    ntln/S:   
+    ntln/S:   'status = Ask(question)
+    ntln/S:   
+    ntln/S:   Return status
+    ntln/S:   
+    ntln/S:   End Function
+    ntln/S:   
+    ntln/S: Message(message as String)
+    ntln/S: Function 
+    ntln/S:    lbl_the_question.MultiLine = True
+    ntln/S:   lbl_the_question.Text = MessageStr
+    ntln/S:   edt_the_input.Visible = False
+    ntln/S:   '++JRC: Increased height
+    ntln/S:   lbl_the_question.Height = 150
+    ntln/S:   '--
+    ntln/S:   pop_the_input.Visible = False
+    ntln/S:   
+    ntln/S:   btn_action.Left = 230
+    ntln/S:   btn_cancel.Visible = False
+    ntln/S:   
+    ntln/S:   ShowModal
+    ntln/S:   
+    ntln/S: End Function
+    ntln/S: 
+    ntln/S: Pick(question As String, choices() As String, default As String = "") as String
+    ntln/S: Function
+    ntln/S:   lbl_the_question.Text = question
+    ntln/S:   edt_the_input.Visible = False
+    ntln/S:   
+    ntln/S:   pop_the_input.DeleteAllRows
+    ntln/S:   Dim i As Integer
+    ntln/S:   For i = 1 To UBound(choices)
+    ntln/S:     pop_the_input.AddRow choices(i)
+    ntln/S:     If choices(i) = default Then pop_the_input.ListIndex = i - 1
+    ntln/S:   Next i
+    ntln/S:   pop_the_input.Visible = True
+    ntln/S:   pop_the_input.ListIndex = 0
+    ntln/S:   
+    ntln/S:   lbl_the_question.Height = 40
+    ntln/S:   btn_action.Left = 145
+    ntln/S:   btn_cancel.Visible = True
+    ntln/S:   
+    ntln/S:   ShowModal
+    ntln/S:   Return Output
+    ntln/S: End Function
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Note/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: ActionButtonText As String
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: ActionButtonText As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: ActionButtonVisible As Boolean
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: ActionButtonVisible As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: AltActionButtonText As String
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: AltActionButtonText As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: AltActionButtonVisible As Boolean
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: AltActionButtonVisible As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: CancelButtonText As String
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CancelButtonText As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: CancelButtonVisible As Boolean
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CancelButtonVisible As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: Caption As String
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: Caption As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: EditFieldText As String
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: EditFieldText As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: EditFieldVisible As Boolean
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: EditFieldVisible As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: MessageStr As String
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: MessageStr As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
   Prop/G: 
    Enco/N: 134217984
    decl/S: Output As String
@@ -598,6 +873,46 @@ pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
    sorc/G: 
     Enco/N: 134217984
     ntln/S: OutputB As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: PopMenuChoices() As String
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: PopMenuChoices() As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: PopMenuText As String
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: PopMenuText As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: PopMenuVisible As Boolean
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: PopMenuVisible As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: Ret As Integer
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: Ret As Integer
     ntln/S: 
     ntln/S: 
    sorc/g: 

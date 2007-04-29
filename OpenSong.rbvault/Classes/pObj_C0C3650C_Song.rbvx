@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
@@ -364,7 +364,8 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
 		      // Need to come up with a way to put this in a style object if a style doesn't exist for this song.
 		      
 		    Case Else
-		      InputBox.Message App.T.Translate("song/errors/unknown_element", node.Name)
+		      MsgDialog(App.T.Translate("song/errors/unknown_element", node.Name))
+		      'InputBox.Message App.T.Translate("song/errors/unknown_element", node.Name)
 		    End Select
 		    
 		    node = node.NextSibling
@@ -1169,7 +1170,7 @@ pObj/B: 426C6F6B704F626AC0C3650C0000000000000000000000000000000000000000
   sorc/G: 
    Enco/N: 134217984
    ntln/S: SongCopyright As String
-   ntln/S: Copyright information for the song.É
+   ntln/S: Copyright information for the song.0
    ntln/S: 
   sorc/g: 
  Prop/g: 

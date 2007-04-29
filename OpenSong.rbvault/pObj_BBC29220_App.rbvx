@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
@@ -149,8 +149,9 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
    srcl/S: T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
    srcl/S: If Not T.IsLoaded Then //Bail out...something's wrong
    srcl/S: 'SmartML.DisplayError
-   srcl/S: InputBox.Message "Language file '" + AppFolder.Child("OpenSong Languages").Child(temp).AbsolutePath +_
-   srcl/S: "' was not found.  OpenSong must exit."
+   srcl/S: MsgDialog("Language file '" + AppFolder.Child("OpenSong Languages").Child(temp).AbsolutePath + "' was not found.  OpenSong must exit.")
+   srcl/S: 'InputBox.Message "Language file '" + AppFolder.Child("OpenSong Languages").Child(temp).AbsolutePath +_
+   srcl/S: '"' was not found.  OpenSong must exit."
    srcl/S: Quit
    srcl/S: End If
    srcl/S: End If
@@ -1042,7 +1043,8 @@ pObj/B: 426C6F6B704F626ABBC292200000000000000000000000000000000000000000
 		    End If
 		  Next
 		  
-		  Return InputBox.Pick("Select a language", options)
+		  Return PopMenuDialog("Select a language", options)
+		  'Return InputBox.Pick("Select a language", options)
 		End Function
   )
  Meth/g: 

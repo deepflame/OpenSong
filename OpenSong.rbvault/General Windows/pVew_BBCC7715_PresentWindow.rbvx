@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
@@ -172,7 +172,7 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: PresentWindow
-  Size/N: 220
+  Size/N: 212
   Supr/S: Window
   bNtr/N: 0
   Cnst/D: (Enco/N: 134217984, name/S: ACTION_BLACK, type/N: 1, defn/S: 1013, flag/N: 0)
@@ -979,7 +979,8 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		                Close
 		              End If
 		            Else // Use the OpenSong one so it ends up on the right screen
-		              If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then 
+		              If QuestionDialog(App.T.Translate("presentation_helper/exit/@caption"), false) = YES Then
+		                'If InputBox.Ask(App.T.Translate("presentation_helper/exit/@caption")) Then 
 		                Close
 		              End If
 		            End If
@@ -1103,7 +1104,8 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		          ' Put up an ALERT
 		          '
 		        ElseIf Lowercase(Key) = "a" Then
-		          AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		          AlertText = EditDialog(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		          'AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
 		          If HelperActive Then
 		            ResetPaint XCurrentSlide
 		            PresentHelperWindow.Refresh False
@@ -1208,7 +1210,8 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
 		            SongML.ToSetML s.DocumentElement
 		            If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
 		              App.MouseCursor = Nil
-		              InputBox.Message App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True))
+		              MsgDialog(App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True)))
+		              'InputBox.Message App.T.Translate("errors/empty_group", SmartML.GetValue(s.DocumentElement, "@name", True))
 		              newGroup.Parent.RemoveChild newGroup
 		              Return False
 		            End If

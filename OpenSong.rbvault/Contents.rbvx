@@ -1,5 +1,5 @@
-##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong_Inpubox.rb
 ##Project Items:	
 #	Proj	00000000
 #App	pObj	BBC29220
@@ -166,6 +166,8 @@
 #IPreferences	pObj	C2004E05
 #IpreferencesReceiver	pObj	C2005131
 #prefs	pObj	C200EC49
+#nopic	pPic	C24C5973
+#nomask	pPic	C24C5972
 ##External Files:	
 ##VaultHdrEnd#
 ##RBvx-End#

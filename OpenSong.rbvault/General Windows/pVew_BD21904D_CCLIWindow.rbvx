@@ -1,5 +1,5 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
@@ -220,7 +220,8 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
 		  page = socket.Get("http://www.ccli.com/CCLI_Services/SongSelect/dsp_SongDetail.cfm?song_id=" + ccli, 20)
 		  
 		  If Len(page) <= 0 Then
-		    InputBox.Message App.T.Translate("import_from_ccli/errors/no_connect")
+		    MsgDialog(App.T.Translate("import_from_ccli/errors/no_connect"))
+		    'InputBox.Message App.T.Translate("import_from_ccli/errors/no_connect")
 		    App.MouseCursor = Nil
 		    Return
 		  End If
@@ -244,7 +245,8 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
 		    xdoc.LoadXml page
 		  Catch e As XMLException
 		    App.MouseCursor = Nil
-		    InputBox.Message App.T.Translate("import_from_ccli/errors/bad_html") + EndOfLine + App.FriendlyXMLException(e)
+		    MsgDialog(App.T.Translate("import_from_ccli/errors/bad_html") + EndOfLine + App.FriendlyXMLException(e))
+		    'InputBox.Message App.T.Translate("import_from_ccli/errors/bad_html") + EndOfLine + App.FriendlyXMLException(e)
 		    Return
 		  End Try
 		  
@@ -349,14 +351,16 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
 		  
 		  If Len(temp) < 1 Then
 		    App.MouseCursor = Nil
-		    InputBox.Message App.T.Translate("import_from_ccli/errors/bad_html")
+		    MsgDialog(App.T.Translate("import_from_ccli/errors/bad_html"))
+		    'InputBox.Message App.T.Translate("import_from_ccli/errors/bad_html")
 		    Return
 		  End If
 		  
 		  f = MainWindow.Songs.AddFile(MainWindow.pop_songs_song_folders.Text + "/" + temp)
 		  
 		  If f <> Nil And f.Exists Then
-		    InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' file already exists
+		    MsgDialog(App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath)) ' file already exists
+		    'InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' file already exists
 		    App.MouseCursor = Nil
 		    Return
 		  End If
@@ -1282,7 +1286,8 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
 		  
 		  page = socket.Post("http://www.ccli.com/CCLI_Services/SongSelect/SearchResults.cfm", 20)
 		  If Len(page) <= 0 Then
-		    InputBox.Message App.T.Translate("import_from_ccli/errors/no_data")
+		    MsgDialog(App.T.Translate("import_from_ccli/errors/no_data"))
+		    'InputBox.Message App.T.Translate("import_from_ccli/errors/no_data")
 		    App.MouseCursor = Nil
 		    Return
 		  End If
@@ -1301,7 +1306,8 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
 		  Try
 		    xdoc.LoadXml page
 		  Catch e As XMLException
-		    InputBox.Message App.T.Translate("import_from_ccli/errors/bad_html") + EndOfLine + App.FriendlyXMLException(e)
+		    MsgDialog(App.T.Translate("import_from_ccli/errors/bad_html") + EndOfLine + App.FriendlyXMLException(e))
+		    'InputBox.Message App.T.Translate("import_from_ccli/errors/bad_html") + EndOfLine + App.FriendlyXMLException(e)
 		    App.MouseCursor = Nil
 		    Return
 		  End Try
@@ -1331,7 +1337,8 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
 		  Next x
 		  
 		  If Node = Nil Then
-		    InputBox.Message App.T.Translate("import_from_ccli/errors/no_results")
+		    MsgDialog(App.T.Translate("import_from_ccli/errors/no_results"))
+		    'InputBox.Message App.T.Translate("import_from_ccli/errors/no_results")
 		    App.MouseCursor = Nil
 		    Return
 		  End If
@@ -1495,7 +1502,8 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
 		  
 		  headers = socket.GetHeaders("http://www.ccli.com/ccli_services/accounts/login.cfm", 20)
 		  If headers = Nil Or headers.Count <= 0 Then
-		    InputBox.Message App.T.Translate("import_from_ccli/errors/no_headers")
+		    MsgDialog(App.T.Translate("import_from_ccli/errors/no_headers"))
+		    'InputBox.Message App.T.Translate("import_from_ccli/errors/no_headers")
 		    App.MouseCursor = Nil
 		    Return Nil
 		  Else
@@ -1511,7 +1519,8 @@ pVew/B: 426C6F6B70566577BD21904D0000000000000000000000000000000000000000
 		  socket.SetRequestHeader "Cookie", requestHeader
 		  page = socket.Post("http://www.ccli.com/ccli_services/accounts/login.cfm", 20)
 		  If Len(page) <= 0 Then
-		    InputBox.Message App.T.Translate("import_from_ccli/errors/no_connect")
+		    MsgDialog(App.T.Translate("import_from_ccli/errors/no_connect"))
+		    'InputBox.Message App.T.Translate("import_from_ccli/errors/no_connect")
 		    App.MouseCursor = Nil
 		    Return Nil
 		  End If

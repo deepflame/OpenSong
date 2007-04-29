@@ -2,11 +2,11 @@
 ##OrigFileName:OpenSong_Inpubox.rb
 ##VaultHdrEnd#
 ##Format:2#
-pPic/B: 426C6F6B70506963BCCC58C90000000000000000000000000000000000000000
- Name/S: blackbackgroundpic
+pPic/B: 426C6F6B70506963C24C59720000000000000000000000000000000000000000
+ Name/S: nomask
  Cont/N: -1127458618
  tran/N: 0
- text/S: blackbackgroundpic
- ppth/S: Images\black_background_pic.jpg\
+ text/S: 
+ ppth/S: Images\no_mask.jpg\
 pPic/b: 
 ##RBvx-End#

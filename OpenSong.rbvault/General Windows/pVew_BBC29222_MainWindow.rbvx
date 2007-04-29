@@ -917,7 +917,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Change
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 16
 		Sub Change()
 		  Dim f As FolderItem
 		  Dim xnode As XmlNode
@@ -925,10 +925,6 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim path_to_songs As String
 		  Dim path_to_song As String
 		  Dim fullpath As String
-		  '++JRC
-		  Dim Msg as MessageDialog
-		  Dim Res As MessageDialogButton
-		  '--
 		  
 		  //++EMP 18 Feb 2006
 		  // If Globals.OldSongSel < 0, then immediately return.
@@ -936,7 +932,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  // (See ActionSongNew, for example)
 		  If Globals.OldSongSel < 0 Then Return
 		  
-		  If lst_songs_songs.ListIndex >= 0 Then
+		  If lst_songs_songs.ListIndex >= -1 Then '++JRC Fix corner case where user would click in an empty row of the list
+		    'and has unsaved changes,those changes would be lost
 		    if lst_songs_songs.ListIndex <> Globals.OldSongSel Or lst_songs_songs.CellTag(Me.ListIndex, 0) + lst_songs_songs.Text <> Globals.OldSongFileName then
 		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
 		        '++JRC
@@ -954,11 +951,12 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      if CurrentSong <> Nil And Status_SongChanged = True And Globals.OldSongFileName <> "" Then
 		        return 
 		      End if
-		      
 		    End if
-		    Globals.OldSongSel = lst_songs_songs.ListIndex
 		    
-		    
+		    If lst_songs_songs.ListIndex >= 0 Then
+		      Globals.OldSongSel = lst_songs_songs.ListIndex
+		    End If
+		    '--
 		  End if
 		  
 		  If lst_songs_songs.ListIndex >= 0 Then
@@ -1806,7 +1804,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 1280
    name/S: Action
-   sorc/d: (Enco/N: 134217984
+   sorc/d: (Enco/N: 134217984, srbp/N: 7
 		Sub Action()
 		  Dim t as String
 		  Dim old as String
@@ -1840,7 +1838,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    i = pop_sets_sets.ListIndex
 		    pop_sets_sets.RemoveRow i
 		    pop_sets_sets.InsertRow i, t
-		    pop_sets_sets.ListIndex = i
+		    '++JRC Prevent Second save prompt
+		    If Status_SetChanged Then
+		      Status_SetChanged = false
+		      pop_sets_sets.ListIndex = i
+		      Status_SetChanged = true
+		      EnableMenuItems
+		    else
+		      pop_sets_sets.ListIndex = i
+		    End If
+		    '--
 		  End If
 		End Sub
    )
@@ -2247,6 +2254,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Dim advance As Integer
 		  Dim xgroups, newGroup As XmlNode
 		  
+		  App.DebugWriter.Write "MainWindow.btn_set_add_scripture.Action: Enter"
+		  
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If lst_set_items.ListIndex >= 0 Then
 		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
@@ -2280,7 +2289,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Else
 		    SmartML.RemoveChild xgroups, lst_set_items.ListCount
 		  End If
-		  
+		  App.DebugWriter.Write "MainWindow.btn_set_add_scripture.Action: Exit"
 		End Sub
    )
   HIns/g: 
@@ -10547,6 +10556,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  'End Try
 		  
 		  Profiler.BeginProfilerEntry "MainWindow::Open"
+		  App.DebugWriter.Write "MainWindow.Open: Enter"
 		  Dim output As TextOutputStream
 		  Dim MainFolder As FolderItem
 		  Dim s As String
@@ -10566,7 +10576,10 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version")
 		  If Len(s) > 0 And App.AppFolder.Child("OpenSong Scripture").Child(s).Exists Then
 		    If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
+		      App.DebugWriter.Write "MainWindow.Open: Successfully loaded saved Bible translation " + s
 		    Else
+		      App.DebugWriter.Write "MainWindow.Open: Unable to load saved Bible translation " + s + ", App.MyBible = Nil"
+		      App.DebugWriter.Write Chr(9) + App.MyBible.ErrorString
 		      App.MyBible = Nil
 		    End If
 		  Else
@@ -10574,6 +10587,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    // N.B. InputBox.Pick assumes a 1-based array, so Redim (0) to put an unused empty string in
 		    // element 0.  Otherwise, the first valid file isn't shown.
 		    //--
+		    Splash.Hide
 		    Redim bibleFiles(0)
 		    For i = 1 to App.AppFolder.Child("OpenSong Scripture").Count
 		      f = App.AppFolder.Child("OpenSong Scripture").item(i)
@@ -10585,9 +10599,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		    If s = "" Then App.MyBible = Nil
 		    If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
 		      SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", s)
+		      App.DebugWriter.Write "MainWindow.Open: Successfully opened newly selected Bible " + s
 		    Else
+		      App.DebugWriter.Write "MainWindow.Open: Unable to load newly selected Bible " + s + ", App.MyBible = Nil"
+		      App.DebugWriter.Write Chr(9) + App.MyBible.ErrorString
 		      App.MyBible = Nil
 		    End If
+		    Splash.Show
 		  End If
 		  
 		  Splash.SetStatus App.T.Translate("load_data/songs_cache") + "..."
@@ -10695,13 +10713,14 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Profiler.EndProfilerEntry
 		  Splash.SetStatus App.T.Translate("welcome")
 		  Splash.SlowClose
-		  
+		  Me.Visible = True
 		  Select Case StartMode
 		  Case 0 // Songs
 		    lst_songs_songs.SetFocus
 		  Case 1 // Sets
 		    pop_sets_sets.SetFocus
 		  End Select
+		  App.DebugWriter.Write "MainWindow.Open: Exit"
 		End Sub
    )
   HIns/g: 
@@ -12737,54 +12756,75 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   MnuH/G: 
    Enco/N: 1280
    name/S: mnu_settings_install_module
-   sorc/d: (Enco/N: 134217984
-		Function mnu_settings_install_module() As Boolean
-		  
-		  Dim file As FolderItem
-		  file = GetOpenFolderItem(App.T.Translate("module/file_type"))
-		  If file = Nil Then Return False
-		  
-		  Dim toChild As String
-		  
-		  Dim xfile As XmlDocument
-		  App.MouseCursor = WatchCursor
-		  xfile = SmartML.XDocFromFile(file)
-		  App.MouseCursor = Nil
-		  If xfile = Nil Then
-		    InputBox.Message App.T.Translate("module/read_error")
-		    Return False
-		  End If
-		  
-		  If xfile.DocumentElement.Name = "bible" Then
-		    toChild = "OpenSong Scripture"
-		  ElseIf xfile.DocumentElement.Name = "language" Then
-		    toChild = "OpenSong Languages"
-		  Else
-		    InputBox.Message App.T.Translate("module/format_error")
-		    Return False
-		  End If
-		  
-		  file.MoveFileTo App.AppFolder.Child(toChild)
-		  If file.LastErrorCode > 0 Then
-		    InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (" + Str(file.LastErrorCode) + ")"
-		    Return False
-		  End If
-		  file = App.AppFolder.Child(toChild).Child(file.Name)
-		  If file = Nil Then
-		    InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (0)"
-		    Return False
-		  End If
-		  
-		  If InStr(file.Name, ".") > 0 Then file.Name = Left(file.Name, StringUtils.InStrReverse(file.Name, ".") - 1)
-		  If file.LastErrorCode > 0 Then
-		    InputBox.Message App.T.Translate("module/rename_error", App.AppFolder.Child(toChild).AbsolutePath)
-		    Return False
-		  End If
-		  
-		  InputBox.Message App.T.Translate("module/success")
-		  Return True
-		End Function
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Function mnu_settings_install_module() As Boolean
+    srcl/S: 
+    srcl/S: Dim file As FolderItem
+    srcl/S: Dim newBible As Bible
+    srcl/S: #if TargetMacOS
+    srcl/S: file = GetOpenFolderItem("OpenSong Module (*.xmm)")
+    srcl/S: #else
+    srcl/S: file = GetOpenFolderItem(App.T.Translate("module/file_type"))
+    srcl/S: #endif
+    srcl/S: If file = Nil Then Return False
+    srcl/S: 
+    srcl/S: Dim toChild As String
+    srcl/S: 
+    srcl/S: Dim xfile As XmlDocument
+    srcl/S: App.MouseCursor = WatchCursor
+    srcl/S: xfile = SmartML.XDocFromFile(file)
+    srcl/S: App.MouseCursor = Nil
+    srcl/S: If xfile = Nil Then
+    srcl/S: InputBox.Message App.T.Translate("module/read_error")
+    srcl/S: Return False
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: If xfile.DocumentElement.Name = "bible" Then
+    srcl/S: toChild = "OpenSong Scripture"
+    srcl/S: ElseIf xfile.DocumentElement.Name = "language" Then
+    srcl/S: toChild = "OpenSong Languages"
+    srcl/S: Else
+    srcl/S: InputBox.Message App.T.Translate("module/format_error")
+    srcl/S: Return False
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: file.MoveFileTo App.AppFolder.Child(toChild)
+    srcl/S: If file.LastErrorCode <> 0 Then
+    srcl/S: InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (" + Str(file.LastErrorCode) + ")"
+    srcl/S: Return False
+    srcl/S: End If
+    srcl/S: file = App.AppFolder.Child(toChild).Child(file.Name)
+    srcl/S: If file = Nil Then
+    srcl/S: InputBox.Message App.T.Translate("module/move_error", App.AppFolder.Child(toChild).AbsolutePath) + " (0)"
+    srcl/S: Return False
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: If InStr(file.Name, ".") > 0 Then file.Name = Left(file.Name, StringUtils.InStrReverse(file.Name, ".") - 1)
+    srcl/S: If file.LastErrorCode <> 0 Then
+    srcl/S: InputBox.Message App.T.Translate("module/rename_error", App.AppFolder.Child(toChild).AbsolutePath)
+    srcl/S: Return False
+    srcl/S: End If
+    srcl/S: 
+    srcl/S: //++
+    srcl/S: // If a Bible, offer to generate the index now.
+    srcl/S: //--
+    srcl/S: If xfile.DocumentElement.Name = "bible" Then
+    srcl/S: If InputBox.AskYN(App.T.Translate("module/generate_index")) Then
+    srcl/S: newBible = New Bible
+    srcl/S: App.MouseCursor = WatchCursor
+    srcl/S: If Not newBible.LoadBible(file) Then
+    srcl/S: App.MouseCursor = Nil
+    srcl/S: InputBox.Message(App.T.Translate("module/generate_error", file.AbsolutePath))
+    srcl/S: Return True
+    srcl/S: End If
+    srcl/S: End If
+    srcl/S: End If
+    srcl/S: App.MouseCursor = Nil
+    srcl/S: InputBox.Message App.T.Translate("module/success")
+    srcl/S: Return True
+    srcl/S: End Function
+   sorc/g: 
   MnuH/g: 
   MnuH/G: 
    Enco/N: 1280
@@ -13406,7 +13446,7 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
  PDef/D: (name/S: Name, PVal/S: MainWindow, Enco/N: 134217984)
  PDef/D: (name/S: Placement, PVal/S: 2)
  PDef/D: (name/S: Title, PVal/S: OpenSong, Enco/N: 134217984)
- PDef/D: (name/S: Visible, PVal/S: True)
+ PDef/D: (name/S: Visible, PVal/S: False)
  PDef/D: (name/S: Width, PVal/S: 750)
  PDef/D: (name/S: ZoomIcon, PVal/S: True)
 pVew/b: 

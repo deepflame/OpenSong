@@ -210,7 +210,7 @@ pObj/B: 426C6F6B704F626ABC9C3A7A0000000000000000000000000000000000000000
   parm/S: xnode As XmlNode, childPath As String, ByRef c As Integer, create As Boolean = True
   rslt/S: Boolean
   flag/N: 1
-  sorc/d: (Enco/N: 134217984, srbp/N: 5
+  sorc/d: (Enco/N: 134217984
 		Function GetValueC_Decimal(xnode As XmlNode, childPath As String, ByRef c As Integer, create As Boolean = True) As Boolean
 		  '++JRC Same as GetValueC except returns an integer
 		  Dim s As String

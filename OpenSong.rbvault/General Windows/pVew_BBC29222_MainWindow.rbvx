@@ -1292,6 +1292,13 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		  Status_InSetSongEdit = False
 		  CurrentInSetItem = lst_set_items.ListIndex
 		  xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).Child(Me.ListIndex)
+		  '++JRC Prevent Nil object exception
+		  If xgroup = Nil Then 
+		    lst_set_items.ListIndex = -1
+		    Return
+		  End If
+		  '--
+		  
 		  InSetNameCache = SmartML.GetValue(xgroup, "@name")
 		  If xgroup.GetAttribute("type") = "custom" Or xgroup.GetAttribute("type") = "scripture" Then
 		    If pge_contents.Value <> 2 Then

@@ -1,4 +1,6 @@
 
+* Prevent NilObjectExcption in lst_set_items.change
+
 * Add conditional check to pop_scr_version.change to see if we are initializing (fixes preview text not showing)
 
 -= 1.0.1 BL17 =-

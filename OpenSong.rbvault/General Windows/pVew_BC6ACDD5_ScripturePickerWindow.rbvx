@@ -43,7 +43,9 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  //--
 		  If App.MyBible <> Nil Then
 		    oldBible = App.MyBible.GetBibleFilename
-		    If oldBible = Me.Text Then Return // No real change, don't do anything
+		    '++JRC We need to excute the code following this return while were initializing,
+		    'otherwise the preview text will never show
+		    If oldBible = Me.Text And NOT Initializing Then Return // No real change, don't do anything
 		  End If
 		  
 		  OldBookName = CurrentBook

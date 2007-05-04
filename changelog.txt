@@ -1,3 +1,6 @@
+
+* Add conditional check to pop_scr_version.change to see if we are initializing (fixes preview text not showing)
+
 -= 1.0.1 BL17 =-
 
 * Correct issue where subfolder entries in a FolderDB cache would be corrupted, rendering them inaccessible.  See the JRC source tree for editorial comments.  :-)

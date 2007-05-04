@@ -318,7 +318,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		  
 		  if me.listindex >= 0 then
 		    
-		    VerseList = App.MyBible.GetVerseNumbers(CurrentBook,  Val(Me.Text))
+		    VerseList = App.MyBible.GetVerseNumbers(ActiveBookNum,  Val(Me.Text))
 		    versenum = App.MyBible.GetVerseCount(ActiveBookNum, Me.ListIndex+1)
 		    
 		    'If versenum < lst_scr_from_verse.ListCount Then
@@ -332,11 +332,13 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
 		    'lst_scr_to_verse.AddRow Str(x+1)
 		    'Next x
 		    'End If
+		    lst_scr_from_verse.DeleteAllRows
+		    lst_scr_to_verse.DeleteAllRows
 		    
-		    For x = lst_scr_from_verse.ListCount - 1 DownTo 0
-		      lst_scr_from_verse.RemoveRow x
-		      lst_scr_to_verse.RemoveRow x
-		    Next
+		    'For x = lst_scr_from_verse.ListCount - 1 DownTo 0
+		    'lst_scr_from_verse.RemoveRow x
+		    'lst_scr_to_verse.RemoveRow x
+		    'Next
 		    
 		    For x = 1 to UBound(VerseList)
 		      lst_scr_from_verse.AddRow VerseList(x)
@@ -1577,7 +1579,7 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: ScripturePickerWindow
-  Size/N: 188
+  Size/N: 196
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 

@@ -1,3 +1,7 @@
+-= 1.0.2 BL18 =-
+
+* In ScripturePicker, change the default button to Insert after first Insert (live display from ScripturePicker without adding to set). The
+operator only has to press Enter to move forward after that point.
 
 * Prevent NilObjectExcption in lst_set_items.change
 

@@ -1,0 +1,174 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pMnu/B: 426C6F6B704D6E75BBC292210000000000000000000000000000000000000000
+ Name/S: MainMenu
+ Cont/N: -1078491255
+ MItm/G: 
+  spmu/N: 1
+  name/S: UntitledMenu8
+  text/S: 
+  indx/N: -2147483648
+  scut/S: 
+  bhlp/S: 
+  dhlp/S: 
+  styl/N: 0
+  Enco/N: 131072
+  flag/N: 0
+  maEn/N: 1
+  Name/S: UntitledMenu8
+  Size/N: 76
+  Supr/S: MenuItem
+  bNtr/N: 0
+  MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+ MItm/g: 
+ MItm/G: 
+  spmu/N: 0
+  name/S: mnu_bar_file
+  text/S: &File
+  indx/N: -2147483648
+  scut/S: 
+  bhlp/S: 
+  dhlp/S: 
+  styl/N: 0
+  Enco/N: 134217984
+  flag/N: 0
+  maEn/N: 1
+  Name/S: mnu_bar_file
+  Size/N: 76
+  Supr/S: MenuItem
+  bNtr/N: 0
+  MItm/D: (spmu/N: 0, name/S: mnu_file_new, text/S: New..., indx/N: -2147483648, scut/S: Cmd+N, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_file_new, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_file_save, text/S: Save, indx/N: -2147483648, scut/S: Cmd+S, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 0, Name/S: mnu_file_save, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: UntitledMenu7, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu7, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/G: 
+   spmu/N: 0
+   name/S: mnu_file_present
+   text/S: Present
+   indx/N: -2147483648
+   scut/S: 
+   bhlp/S: 
+   dhlp/S: 
+   styl/N: 0
+   Enco/N: 134217984
+   flag/N: 1
+   maEn/N: 1
+   Name/S: mnu_file_present
+   Size/N: 76
+   Supr/S: MenuItem
+   bNtr/N: 0
+   MItm/D: (spmu/N: 0, name/S: mnu_file_single_screen, text/S: Single Screen, indx/N: -2147483648, scut/S: Cmd+1, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 0, Name/S: mnu_file_single_screen, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+   MItm/D: (spmu/N: 0, name/S: mnu_file_dual_screen, text/S: Dual Screen, indx/N: -2147483648, scut/S: Cmd+2, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 0, Name/S: mnu_file_dual_screen, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+   MItm/D: (spmu/N: 0, name/S: UntitledMenu6, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu6, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+   MItm/D: (spmu/N: 0, name/S: mnu_file_preview_dual_screen, text/S: Preview Dual Screen, indx/N: -2147483648, scut/S: Cmd+3, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 0, Name/S: mnu_file_preview_dual_screen, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+   MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/g: 
+  MItm/D: (spmu/N: 0, name/S: mnu_file_pagesetup, text/S: Page Setup..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_file_pagesetup, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_file_print, text/S: Print..., indx/N: -2147483648, scut/S: Cmd+P, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 0, Name/S: mnu_file_print, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: UntitledMenu5, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu5, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_file_print_alphabetical_toc, text/S: Print Alphabetical TOC..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_file_print_alphabetical_toc, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_file_print_categorical_toc, text/S: Print Categorized TOC..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_file_print_categorical_toc, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: UntitledMenu4, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu4, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_file_quit, text/S: E&xit, indx/N: -2147483648, scut/S: Cmd+Q, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_file_quit, Size/N: 76, Supr/S: QuitMenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+ MItm/g: 
+ MItm/G: 
+  spmu/N: 0
+  name/S: mnu_bar_edit
+  text/S: &Edit
+  indx/N: -2147483648
+  scut/S: 
+  bhlp/S: 
+  dhlp/S: 
+  styl/N: 0
+  Enco/N: 134217984
+  flag/N: 0
+  maEn/N: 1
+  Name/S: mnu_bar_edit
+  Size/N: 76
+  Supr/S: MenuItem
+  bNtr/N: 0
+  MItm/D: (spmu/N: 0, name/S: mnu_edit_undo, text/S: &Undo, indx/N: -2147483648, scut/S: Cmd+Z, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_edit_undo, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: UntitledMenu3, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu3, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_edit_selall, text/S: Select All, indx/N: -2147483648, scut/S: Cmd+A, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_edit_selall, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_edit_cut, text/S: Cu&t, indx/N: -2147483648, scut/S: Cmd+X, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_edit_cut, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_edit_copy, text/S: &Copy, indx/N: -2147483648, scut/S: Cmd+C, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_edit_copy, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_copy_paste, text/S: &Paste, indx/N: -2147483648, scut/S: Cmd+V, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_copy_paste, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_edit_clear, text/S: C&lear, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_edit_clear, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: UntitledMenu2, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu2, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_edit_find, text/S: Find..., indx/N: -2147483648, scut/S: Cmd+F, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_edit_find, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_edit_find_next, text/S: Find Next, indx/N: -2147483648, scut/S: Cmd+G, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_edit_find_next, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+ MItm/g: 
+ MItm/G: 
+  spmu/N: 0
+  name/S: mnu_bar_mode
+  text/S: Mode
+  indx/N: -2147483648
+  scut/S: 
+  bhlp/S: 
+  dhlp/S: 
+  styl/N: 0
+  Enco/N: 134217984
+  flag/N: 0
+  maEn/N: 1
+  Name/S: mnu_bar_mode
+  Size/N: 76
+  Supr/S: MenuItem
+  bNtr/N: 0
+  MItm/D: (spmu/N: 0, name/S: mnu_mode_songs, text/S: Songs Mode, indx/N: -2147483648, scut/S: Cmd+, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_mode_songs, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_mode_sets, text/S: Sets Mode, indx/N: -2147483648, scut/S: Cmd+=, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_mode_sets, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+ MItm/g: 
+ MItm/G: 
+  spmu/N: 0
+  name/S: mnu_bar_settings
+  text/S: Sett&ings
+  indx/N: -2147483648
+  scut/S: 
+  bhlp/S: 
+  dhlp/S: 
+  styl/N: 0
+  Enco/N: 134217984
+  flag/N: 0
+  maEn/N: 1
+  Name/S: mnu_bar_settings
+  Size/N: 76
+  Supr/S: MenuItem
+  bNtr/N: 0
+  MItm/D: (spmu/N: 0, name/S: mnu_settings_general, text/S: &General Settings..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_general, Size/N: 76, Supr/S: PrefsMenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_settings_presentation, text/S: P&resentation Settings..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_presentation, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_settings_print, text/S: &Print Settings..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_print, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: UntitledMenu1, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu1, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_settings_refresh_songs, text/S: &Refresh Songs Folder, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_refresh_songs, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_settings_refresh_sets, text/S: R&efresh Sets Folder, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_refresh_sets, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_settings_install_module, text/S: Install &Module..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_settings_install_module, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+ MItm/g: 
+ MItm/G: 
+  spmu/N: 0
+  name/S: mnu_bar_help
+  text/S: &Help
+  indx/N: -2147483648
+  scut/S: 
+  bhlp/S: 
+  dhlp/S: 
+  styl/N: 0
+  Enco/N: 134217984
+  flag/N: 0
+  maEn/N: 1
+  Name/S: mnu_bar_help
+  Size/N: 76
+  Supr/S: MenuItem
+  bNtr/N: 0
+  MItm/D: (spmu/N: 0, name/S: mnu_help_help_topics, text/S: Help Topics..., indx/N: -2147483648, scut/S: Cmd+H, bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_help_help_topics, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_help_translating, text/S: Translating OpenSong..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_help_translating, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: UntitledMenu0, text/S: -, indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: UntitledMenu0, Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 0, name/S: mnu_help_about, text/S: &About OpenSong..., indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 134217984, flag/N: 0, maEn/N: 1, Name/S: mnu_help_about, Size/N: 76, Supr/S: AppleMenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+  MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: AppleMenuItem, bNtr/N: 0)
+ MItm/g: 
+ MItm/D: (spmu/N: 2, name/S: , text/S: , indx/N: -2147483648, scut/S: , bhlp/S: , dhlp/S: , styl/N: 0, Enco/N: 131072, flag/N: 0, maEn/N: 1, Name/S: , Size/N: 76, Supr/S: MenuItem, bNtr/N: 0)
+pMnu/b: 
+##RBvx-End#

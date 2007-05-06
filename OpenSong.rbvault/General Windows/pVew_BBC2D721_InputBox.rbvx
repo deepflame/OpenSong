@@ -1,0 +1,631 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pVew/B: 426C6F6B70566577BBC2D7210000000000000000000000000000000000000000
+ Name/S: InputBox
+ Cont/N: -1131477727
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: EditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    if c.TextAvailable then
+		      edt_the_input.Text  = Left(c.Text, 255)
+		    end if
+		  end if
+		  
+		  c.close
+		End Function
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  Okay
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon buttonokpic, buttonokmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  Cancel
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon buttoncancepic, buttoncancemask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  Okay
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 128
+  Supr/S: PushButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  Cancel
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 144, Supr/S: PopupMenu, bNtr/N: 0)
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 0
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 79)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 8)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: lbl_the_question, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: Label, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 7)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 299)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: EditField
+  name/S: EditField
+  CBix/N: 1
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 21)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 8)
+  PDef/D: (name/S: LimitText, PVal/S: 255)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: edt_the_input, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: False)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 65)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 300)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 2
+  PDef/D: (name/S: AcceptFocus, PVal/S: True)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: GroupBox4, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: OK, Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 145)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_ok, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 93)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 75)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 3
+  PDef/D: (name/S: AcceptFocus, PVal/S: True)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: GroupBox4, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Cancel, Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 230)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_cancel, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 93)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 75)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 4
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: OK, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: True)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 145)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_hidden_ok, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 135)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 22)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PushButton
+  name/S: PushButton
+  CBix/N: 5
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Cancel, PVal/S: True)
+  PDef/D: (name/S: Caption, PVal/S: Cancel, Enco/N: 134217984)
+  PDef/D: (name/S: Default, PVal/S: False)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 230)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_hidden_cancel, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 135)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 22)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: PopupMenu
+  name/S: PopupMenu
+  CBix/N: 6
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: InitialValue, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 8)
+  PDef/D: (name/S: ListIndex, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: pop_the_input, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 70)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 300)
+ Ctrl/g: 
+ FDef/G: 
+  Name/S: InputBox
+  Size/N: 153
+  Supr/S: Window
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Activate
+   sorc/d: (Enco/N: 134217984
+		Sub Activate()
+		  Me.SetFocus
+		  BringToFront
+		  If edt_the_input.Visible Then edt_the_input.SetFocus
+		  if pop_the_input.Visible Then pop_the_input.SetFocus
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  Globals.Status_InputBoxOpen = False
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  '++JRC Prevent OutOfBounds Exception when translator isn't loaded
+		  If App.T.IsLoaded Then
+		    App.T.TranslateWindow Me, "input_box", App.TranslationFonts
+		  End If
+		  Globals.Status_InputBoxOpen = True
+		  '--
+		  App.CenterInControlScreen Me
+		End Sub
+   )
+  HIns/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Ask
+   parm/S: question As String
+   rslt/S: Boolean
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function Ask(question As String) As Boolean
+		  lbl_the_question.Text = question
+		  edt_the_input.Visible = False
+		  lbl_the_question.Height = 80
+		  pop_the_input.Visible = False
+		  
+		  btn_ok.Left = 145
+		  btn_cancel.Visible = True
+		  
+		  ShowModal
+		  Return OutputB
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: AskYN
+   parm/S: question As String
+   rslt/S: Boolean
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function AskYN(question As String) As Boolean
+		  //++
+		  // Ask a yes/no question
+		  // EMP, July 2006
+		  //--
+		  Dim status As Boolean
+		  Dim ok, cancel As String
+		  
+		  ok = btn_ok.GetLabel
+		  cancel = btn_cancel.GetLabel
+		  
+		  btn_ok.SetLabel(App.T.Translate("shared/yes/@caption"))
+		  btn_cancel.SetLabel(App.T.Translate("shared/no/@caption"))
+		  
+		  status = Ask(question)
+		  
+		  Return status
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: BringToFront
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub BringToFront()
+    srcl/S: #If TargetWin32 Then
+    srcl/S: Const SWP_NOSIZE = &H1
+    srcl/S: Const SWP_NOMOVE = &H2
+    srcl/S: Const SWP_FRAMECHANGED = &H20
+    srcl/S: Const SWP_NOOWNERZORDER = &H200
+    srcl/S: Const HWND_TOP = 0
+    srcl/S: Const GWL_STYLE = -16
+    srcl/S: Const WS_POPUPWINDOW = &H80880000
+    srcl/S: 
+    srcl/S: Dim styleFlags As Integer
+    srcl/S: 
+    srcl/S: Declare Function SetWindowPos Lib "user32" (hwnd as Integer, hWndInsertAfter as Integer, x as Integer, y as Integer, cx as Integer, cy as Integer, flags as Integer) as Integer
+    srcl/S: 
+    srcl/S: styleFlags = SetWindowPos( self.Handle, HWND_TOP, 0, 0, 0, 0, _
+    srcl/S: SWP_NOSIZE + SWP_NOMOVE + SWP_NOOWNERZORDER)
+    srcl/S: 
+    srcl/S: #ElseIf TargetCarbon Then
+    srcl/S: 
+    srcl/S: Dim Status As Integer
+    srcl/S: #if TargetMachO
+    srcl/S: Declare Function SelectWindow Lib "Carbon" (window As Integer) As Integer
+    srcl/S: #else
+    srcl/S: Declare Function SelectWindow Lib "CarbonLib" (window As Integer) As Integer
+    srcl/S: #endif
+    srcl/S: 
+    srcl/S: Status = SelectWindow(Self.Handle)
+    srcl/S: #EndIf
+    srcl/S: End Sub
+   sorc/g: 
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Cancel
+   parm/S: 
+   rslt/S: 
+   flag/N: 33
+   sorc/d: (Enco/N: 134217984
+		Sub Cancel()
+		  Output = ""
+		  OutputB = False
+		  Close
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Input
+   parm/S: question As String, default As String
+   rslt/S: String
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function Input(question As String, default As String) As String
+		  lbl_the_question.Text = question
+		  edt_the_input.Text = default
+		  edt_the_input.Visible = True
+		  edt_the_input.SelStart = 0
+		  edt_the_input.SelLength = Len(default)
+		  pop_the_input.Visible = False
+		  
+		  lbl_the_question.Height = 40
+		  btn_ok.Left = 145
+		  btn_cancel.Visible = True
+		  ShowModal
+		  Return Output
+		End Function
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Message
+   parm/S: message As String
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub Message(message As String)
+		  lbl_the_question.MultiLine = True
+		  lbl_the_question.Text = message
+		  edt_the_input.Visible = False
+		  '++JRC: Increased height
+		  lbl_the_question.Height = 150
+		  '--
+		  pop_the_input.Visible = False
+		  
+		  btn_ok.Left = 230
+		  btn_cancel.Visible = False
+		  
+		  ShowModal
+		  
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Okay
+   parm/S: 
+   rslt/S: 
+   flag/N: 33
+   sorc/d: (Enco/N: 134217984
+		Sub Okay()
+		  If edt_the_input.Visible Then
+		    Output = edt_the_input.Text
+		  ElseIf pop_the_input.Visible Then
+		    Output = pop_the_input.Text
+		  End If
+		  OutputB = True
+		  Close
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: Pick
+   parm/S: question As String, choices() As String, default As String = ""
+   rslt/S: String
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Function Pick(question As String, choices() As String, default As String = "") As String
+		  lbl_the_question.Text = question
+		  edt_the_input.Visible = False
+		  
+		  pop_the_input.DeleteAllRows
+		  Dim i As Integer
+		  For i = 1 To UBound(choices)
+		    pop_the_input.AddRow choices(i)
+		    If choices(i) = default Then pop_the_input.ListIndex = i - 1
+		  Next i
+		  pop_the_input.Visible = True
+		  pop_the_input.ListIndex = 0
+		  
+		  lbl_the_question.Height = 40
+		  btn_ok.Left = 145
+		  btn_cancel.Visible = True
+		  
+		  ShowModal
+		  Return Output
+		End Function
+   )
+  Meth/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: Output As String
+   flag/N: 5
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: Output As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: OutputB As Boolean
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: OutputB As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+ FDef/g: 
+ PDef/D: (name/S: BackColor, PVal/S: 16777215)
+ PDef/D: (name/S: Backdrop, PVal/S: 0)
+ PDef/D: (name/S: BalloonHelp, PVal/S: )
+ PDef/D: (name/S: CloseBox, PVal/S: True)
+ PDef/D: (name/S: Composite, PVal/S: False)
+ PDef/D: (name/S: Frame, PVal/S: 1)
+ PDef/D: (name/S: FullScreen, PVal/S: False)
+ PDef/D: (name/S: GrowIcon, PVal/S: False)
+ PDef/D: (name/S: HasBackColor, PVal/S: False)
+ PDef/D: (name/S: Height, PVal/S: 125)
+ PDef/D: (name/S: LiveResize, PVal/S: False)
+ PDef/D: (name/S: MacProcID, PVal/S: 0)
+ PDef/D: (name/S: MaxHeight, PVal/S: 32000)
+ PDef/D: (name/S: MaxWidth, PVal/S: 32000)
+ PDef/D: (name/S: MenuBar, PVal/S: 0)
+ PDef/D: (name/S: MenuBarVisible, PVal/S: True)
+ PDef/D: (name/S: MinHeight, PVal/S: 64)
+ PDef/D: (name/S: MinWidth, PVal/S: 64)
+ PDef/D: (name/S: Name, PVal/S: InputBox, Enco/N: 134217984)
+ PDef/D: (name/S: Placement, PVal/S: 0)
+ PDef/D: (name/S: Title, PVal/S: OpenSong, Enco/N: 134217984)
+ PDef/D: (name/S: Visible, PVal/S: True)
+ PDef/D: (name/S: Width, PVal/S: 315)
+ PDef/D: (name/S: ZoomIcon, PVal/S: True)
+pVew/b: 
+##RBvx-End#

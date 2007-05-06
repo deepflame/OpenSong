@@ -1,0 +1,134 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
+ Name/S: SStyleCanvas
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SStyleCanvas
+ Size/N: 125
+ Supr/S: SBufferedCanvas
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: MouseDown
+  sorc/d: (Enco/N: 134217984
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  Dim f As FolderItem
+		  
+		  If Enabled Then
+		    If StyleWindow.Edit(StyleNode, SongStyle) Then
+		      Action
+		      Repaint
+		    End If
+		    Return False
+		  Else
+		    Return False
+		  End If
+		  
+		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Paint
+  sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  //++EMP
+		  // September 2005
+		  // Updated to use a SlideStyle object for DrawSlide
+		  //
+		  Dim Style As SlideStyle
+		  //--EMP
+		  If Enabled Then
+		    If StyleNode <> Nil Then
+		      Style = New SlideStyle(StyleNode) 'EMP 09/05
+		      'SetML.DrawSlide g, _
+		      'SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide"), _
+		      'StyleNode
+		      SetML.DrawSlide g, _
+		          SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide"), _
+		          Style 'EMP 09/05
+		          g.ForeColor = DarkBevelColor
+		          g.DrawRect 0, 0, g.Width, g.Height
+		        Else
+		          g.ForeColor = FillColor
+		          g.FillRect 0, 0, g.Width, g.Height
+		          g.ForeColor = DarkBevelColor
+		          g.DrawRect 0, 0, g.Width, g.Height
+		          g.DrawLine 0, 0, g.Width, g.Height
+		        End
+		      Else
+		        g.ForeColor = FillColor
+		        g.FillRect 0, 0, g.Width, g.Height
+		        g.ForeColor = DarkBevelColor
+		        g.DrawRect 0, 0, g.Width, g.Height
+		      End If
+		    End Sub
+  )
+ HIns/g: 
+ Hook/D: (Enco/N: 134217984, name/S: Action, parm/S: , rslt/S: , flag/N: 33)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ClearStyleNode
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub ClearStyleNode()
+		  StyleNode = Nil
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetStyleNode
+  parm/S: 
+  rslt/S: XmlNode
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetStyleNode() As XmlNode
+		  Return StyleNode
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetStyleNode
+  parm/S: node As XmlNode
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetStyleNode(node As XmlNode)
+		  StyleNode = node
+		  Repaint
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: SongStyle As Boolean
+  flag/N: 4
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: SongStyle As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: StyleNode As XmlNode
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: StyleNode As XmlNode
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

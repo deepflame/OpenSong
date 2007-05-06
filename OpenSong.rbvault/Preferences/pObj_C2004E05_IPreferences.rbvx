@@ -1,0 +1,264 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC2004E050000000000000000000000000000000000000000
+ Name/S: IPreferences
+ Cont/N: -1042926112
+ bCls/N: 1
+ Name/S: IPreferences
+ Size/N: 24
+ bNtr/N: 1
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: error
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function error() As Boolean
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: ErrorString
+  parm/S: 
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function ErrorString() As String
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValue
+  parm/S: path As String, default As String = "", create As Boolean = True
+  rslt/S: String
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValue(path As String, default As String = "", create As Boolean = True) As String
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueB
+  parm/S: path As String, default As Boolean = False, create As Boolean = True
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueB(path As String, default As Boolean = False, create As Boolean = True) As Boolean
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueC
+  parm/S: path As String, default As Color = &C000000, create As Boolean = True
+  rslt/S: Color
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueC(path As String, default As Color = &C000000, create As Boolean = True) As Color
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueF
+  parm/S: path As String, default As FontFace = Nil, create As Boolean = True
+  rslt/S: FontFace
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueF(path As String, default As FontFace = Nil, create As Boolean = True) As FontFace
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueFI
+  parm/S: path As String, default As FolderItem = Nil, create As Boolean = True
+  rslt/S: FolderItem
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueFI(path As String, default As FolderItem = Nil, create As Boolean = True) As FolderItem
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: GetValueN
+  parm/S: path As String, default As Double = 0.0, create As Boolean = True
+  rslt/S: Double
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function GetValueN(path As String, default As Double = 0.0, create As Boolean = True) As Double
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Load
+  parm/S: path As FolderItem = Nil
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Load(path As FolderItem = Nil) As Boolean
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: NotifyReceivers
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub NotifyReceivers()
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: registerPreferencesReceiver
+  parm/S: receiver As IpreferencesReceiver
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub registerPreferencesReceiver(receiver As IpreferencesReceiver)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Save
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Save() As Boolean
+		  
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValue
+  parm/S: path As String, value As String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValue(path As String, value As String)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueB
+  parm/S: path As String, value As Boolean
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueB(path As String, value As Boolean)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueC
+  parm/S: path As String, value As Color
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueC(path As String, value As Color)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueF
+  parm/S: path As String, value As FontFace
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueF(path As String, value As FontFace)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueFI
+  parm/S: path As String, value As FolderItem
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueFI(path As String, value As FolderItem)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: SetValueN
+  parm/S: path As String, value As Double
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub SetValueN(path As String, value As Double)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: unregisterPreferencesReceiver
+  parm/S: receiver As IpreferencesReceiver
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub unregisterPreferencesReceiver(receiver As IpreferencesReceiver)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Note/G: 
+  Enco/N: 134217984
+  name/S: Overview
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Overview
+   ntln/S: Class interface for preferences.
+   ntln/S: 
+   ntln/S: As OpenSong moves away from the Settings folder
+   ntln/S: with three XML files holding configuration data, this
+   ntln/S: interface is designed to help ease that transition
+   ntln/S: by abstracting the access to preferences, allowing
+   ntln/S: for the current method, a pList, registry, or other options.
+   ntln/S: 
+   ntln/S: The preferences will be accessed using the path method
+   ntln/S: defined by OpenSong V0.9.9: an XML path string, with the
+   ntln/S: last element of the path optionally starting with "@"
+   ntln/S: (used by SmartML to designate an attribute node).
+   ntln/S: 
+  sorc/g: 
+ Note/g: 
+pObj/b: 
+##RBvx-End#

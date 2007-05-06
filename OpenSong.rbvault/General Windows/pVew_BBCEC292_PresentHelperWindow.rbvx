@@ -1,0 +1,1522 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pVew/B: 426C6F6B70566577BBCEC2920000000000000000000000000000000000000000
+ Name/S: PresentHelperWindow
+ Cont/N: -1131477727
+ CBhv/G: 
+  Name/S: 
+  Size/N: 448
+  Supr/S: Listbox
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Change
+   sorc/d: (Enco/N: 134217984
+		Sub Change()
+		  If Me.ListIndex >= 0 Then
+		    PresentWindow.CurrentSlide = Me.ListIndex + 1
+		    PresentWindow.XCurrentSlide = SetML.GetSlide(PresentWindow.CurrentSet, Me.ListIndex + 1)
+		    PresentWindow.ResetPaint PresentWindow.XCurrentSlide
+		    If Abs(Me.ListIndex - Me.ScrollPosition) < 3 Then
+		      Me.ScrollPosition = Me.ListIndex - 3
+		    ElseIf Abs(Me.ListIndex - Me.ScrollPosition) > (Me.Height / (Me.TextSize+3)) - 5 Then
+		      Me.ScrollPosition = Me.ListIndex - (Me.Height / (Me.TextSize+3)) + 5
+		    End If
+		    Me.Refresh False
+		    cnv_preview.Refresh False
+		  End If
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: HeaderPressed
+   sorc/d: (Enco/N: 134217984
+		Function HeaderPressed(column as Integer) As Boolean
+		  Me.SetFocus //Take focus off the header to allow keystrokes to properly process
+		  Return True
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(key As String) As Boolean
+		  Const ASC_KEY_SPACE = 32
+		  Const ASC_KEY_LEFT = 28
+		  Const ASC_KEY_RIGHT = 29
+		  Const ASC_KEY_UP = 30
+		  Const ASC_KEY_DOWN = 31
+		  Const ASC_KEY_PGDN=12
+		  Const ASC_KEY_PGUP =11
+		  Const ASC_KEY_HOME=1
+		  Const ASC_KEY_END=4
+		  Const ASC_KEY_INSERT = 5
+		  Const ASC_KEY_DELETE = 127
+		  //++
+		  // Pass editing keys to PresentWindow, otherwise lst_all_slides
+		  // "swallows" them to move the view of the list.
+		  //--
+		  If Asc(key) = ASC_KEY_PGDN Or Asc(Key) = ASC_KEY_PGUP _
+		      Or Asc(key) = ASC_KEY_HOME Or Asc(Key) = ASC_KEY_END _
+		      Or Asc(key) = ASC_KEY_INSERT Or Asc(Key) = ASC_KEY_DELETE Then
+		      Return PresentWindow.KeyDownX(key)
+		    End If
+		  End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: SortColumn
+   sorc/d: (Enco/N: 134217984
+		Function SortColumn(column As Integer) As Boolean
+		  Me.setFocus 'EMP: If we don't do this, focus stays on the header and keystrokes won't go to the command handler
+		  Return True
+		End Function
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 116
+  Supr/S: Canvas
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: GotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  lst_all_slides.SetFocus 'EMP: Don't allow this control to get focus
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Paint
+   sorc/d: (Enco/N: 134217984
+		Sub Paint(g As Graphics)
+		  If Not Globals.Status_Presentation Then Return
+		  edt_slide_notes.Text = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "notes", True)
+		  If edt_slide_notes.Text = "" Then
+		    // Load the text of the slide into the notes field for easy reference.
+		    If lst_all_slides.ListIndex > -1 Then
+		      edt_slide_notes.Text = lst_all_slides.Cell(lst_all_slides.ListIndex, 2)
+		    End If
+		  End If
+		  // Catch a race condition between this Paint event and PresentWindow still initializing
+		  Try
+		    g.DrawPicture PresentWindow.PreviewPicture, 0, 0, g.Width, g.Height, 0, 0, PresentWindow.PreviewPicture.Width, PresentWindow.PreviewPicture.Height
+		  Catch e As NilObjectException
+		    // Just make it black for the moment
+		    g.ForeColor = RGB(0,0,0)
+		    g.FillRect 0, 0, g.Width, g.Height
+		    Return
+		  End Try
+		  
+		  Dim RealBorder, w, h As Integer
+		  RealBorder = 5
+		  
+		  If btn_mode_black.GetStuck Then
+		    g.ForeColor = Rgb(0,0,0)
+		    g.fillRect 0, 0, RealBorder, g.Height ' left
+		    g.fillRect 0, 0, g.Width, RealBorder ' top
+		    g.fillRect g.Width-RealBorder, 0, RealBorder, g.Height ' right
+		    g.fillRect 0, g.Height-RealBorder, g.Width, RealBorder ' bottom
+		    g.PenHeight = RealBorder
+		    g.PenWidth = RealBorder
+		    g.DrawLine 0, 0, g.Width, g.Height
+		  ElseIf btn_mode_white.GetStuck Then
+		    g.ForeColor = Rgb(255,255,255)
+		    g.fillRect 0, 0, RealBorder, g.Height ' left
+		    g.fillRect 0, 0, g.Width, RealBorder ' top
+		    g.fillRect g.Width-RealBorder, 0, RealBorder, g.Height ' right
+		    g.fillRect 0, g.Height-RealBorder, g.Width, RealBorder ' bottom
+		    g.PenHeight = RealBorder
+		    g.PenWidth = RealBorder
+		    g.DrawLine 0, 0, g.Width, g.Height
+		  ElseIf btn_mode_hidden.GetStuck Then
+		    g.ForeColor = Rgb(128, 128, 255)
+		    g.fillRect 0, 0, RealBorder, g.Height ' left
+		    g.fillRect 0, 0, g.Width, RealBorder ' top
+		    g.fillRect g.Width-RealBorder, 0, RealBorder, g.Height ' right
+		    g.fillRect 0, g.Height-RealBorder, g.Width, RealBorder ' bottom
+		    g.PenHeight = RealBorder
+		    g.PenWidth = RealBorder
+		    g.DrawLine 0, 0, g.Width, g.Height
+		  ElseIf btn_mode_logo.GetStuck Then
+		    g.ForeColor = Rgb(128, 255, 128)
+		    g.fillRect 0, 0, RealBorder, g.Height ' left
+		    g.fillRect 0, 0, g.Width, RealBorder ' top
+		    g.fillRect g.Width-RealBorder, 0, RealBorder, g.Height ' right
+		    g.fillRect 0, g.Height-RealBorder, g.Width, RealBorder ' bottom
+		    g.PenHeight = RealBorder
+		    g.PenWidth = RealBorder
+		    g.DrawLine 0, 0, g.Width, g.Height
+		    If PresentWindow.LogoCache <> Nil Then
+		      h = PresentWindow.LogoCache.Height
+		      w = PresentWindow.LogoCache.Width
+		      While h > g.Height / 2 And w > g.Width / 2
+		        h = h * .95
+		        w = w * .95
+		      Wend
+		      g.DrawPicture PresentWindow.LogoCache, g.Width-w, g.Height-h, w, h, _
+		          0, 0, PresentWindow.LogoCache.Width, PresentWindow.LogoCache.Height
+		    End If
+		  ElseIf btn_mode_frozen.GetStuck Then
+		    g.ForeColor = Rgb(255, 128, 128)
+		    g.fillRect 0, 0, RealBorder, g.Height ' left
+		    g.fillRect 0, 0, g.Width, RealBorder ' top
+		    g.fillRect g.Width-RealBorder, 0, RealBorder, g.Height ' right
+		    g.fillRect 0, g.Height-RealBorder, g.Width, RealBorder ' bottom
+		    g.PenHeight = RealBorder
+		    g.PenWidth = RealBorder
+		    g.DrawLine 0, 0, g.Width, g.Height
+		  End If
+		  g.ForeColor = DarkBevelColor
+		  g.PenHeight = 1
+		  g.PenWidth = 1
+		  g.DrawRect 0, 0, g.Width, g.Height
+		  
+		Catch ex
+		  System.DebugLog "PresentHelperWindow.cnv_preview.Paint: Exception caught"
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: EditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: GotFocus
+   sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  lst_all_slides.setFocus 'EMP: Don't allow this control to get focus
+		  
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("k") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon blackbackgroundpic, blackbackgroundmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("w") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon whitebackgroundpic, whitebackgroundmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("h") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon backgroundpic, backgroundmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("n") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon textbackgroundpic, textbackgroundmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 116, Supr/S: GroupBox, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("q") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon midipic, midimask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("s") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon emptypic, emptymask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX(Chr(27)) Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon exitpic, exitmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("a") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon bellpic, bellmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("l") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon logobackgroundpic, logobackgroundmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  SwapFullScreen
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon windowfullscreenpic, windowfullscreenmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/G: 
+  Name/S: 
+  Size/N: 153
+  Supr/S: SButton
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Action
+   sorc/d: (Enco/N: 134217984
+		Sub Action()
+		  If PresentWindow.KeyDownX("f") Then
+		  End If
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  Me.SetIcon pausebackgroundpic, pausebackgroundmask
+		End Sub
+   )
+  HIns/g: 
+ CBhv/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 8
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Mode, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 180)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 514)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: grp_presentation_modes, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 5)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 150)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: ListBox
+  name/S: ListBox
+  CBix/N: 0
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: ColumnCount, PVal/S: 3)
+  PDef/D: (name/S: ColumnsResizable, PVal/S: True)
+  PDef/D: (name/S: ColumnWidths, PVal/S: 27%,8%,65%, Enco/N: 134217984)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DefaultRowHeight, PVal/S: -1)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: EnableDrag, PVal/S: False)
+  PDef/D: (name/S: EnableDragReorder, PVal/S: False)
+  PDef/D: (name/S: GridLinesHorizontal, PVal/S: 0)
+  PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
+  PDef/D: (name/S: HasHeading, PVal/S: True)
+  PDef/D: (name/S: HeadingIndex, PVal/S: -1)
+  PDef/D: (name/S: Height, PVal/S: 200)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Hierarchical, PVal/S: False)
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: InitialValue, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: lst_all_slides, Enco/N: 134217984)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: ScrollPosition, PVal/S: 0)
+  PDef/D: (name/S: ScrollPositionX, PVal/S: 0)
+  PDef/D: (name/S: SelectionType, PVal/S: 0)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 10)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 460)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: Canvas
+  name/S: Canvas
+  CBix/N: 1
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 249)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: cnv_preview, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 224)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 346)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 2
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 138)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 373)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: txt_shortcut_keys, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/h: 2D204172726F77733A202D0D0A446F776E3A204E65787420536C6964650D0A55703A2050726576696F757320536C6964650D0A52696768743A204E6578742053656374696F6E0D0A4C6566743A2050726576696F75732053656374696F6E0D0A2D204A756D7020546F3A202D0D0A312D393A2056657273650D0A433A2043686F7275730D0A503A205072652D63686F7275730D0A423A204272696467650D0A543A20546167, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 9)
+  PDef/D: (name/S: Top, PVal/S: 215)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 135)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: EditField
+  name/S: EditField
+  CBix/N: 3
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: True)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 116)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 368)
+  PDef/D: (name/S: LimitText, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: edt_slide_notes, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: True)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 16)
+  PDef/D: (name/S: Top, PVal/S: 358)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 300)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 4
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_modes, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Black (K), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_mode_black, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 50)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 5
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_modes, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: White (W), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_mode_white, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 75)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 6
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_modes, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Hidden (H), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_mode_hidden, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 100)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 7
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_modes, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Normal (N), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_mode_normal, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 25)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: GroupBox
+  name/S: GroupBox
+  CBix/N: 9
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Caption, PVal/S: Actions, Enco/N: 134217984)
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 155)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 514)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: grp_presentation_actions, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 11)
+  PDef/D: (name/S: Top, PVal/S: 190)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 150)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 10
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_actions, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Add Song (Q), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_action_quick_song, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 235)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 11
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_actions, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Scripture (S), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_action_scripture, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 260)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 12
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_actions, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Return (Esc), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_action_return, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 310)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 13
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_actions, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Alert (A), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_action_alert, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 210)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 14
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_modes, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Logo (L), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_mode_logo, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 125)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 15
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_actions, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Full Screen (M), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_action_full_screen, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 285)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: SButton
+  name/S: Canvas
+  CBix/N: 16
+  PDef/D: (name/S: AcceptFocus, PVal/S: False)
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: Backdrop, PVal/S: 0)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 24)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: grp_presentation_modes, Enco/N: 134217984)
+  PDef/D: (name/S: IsStuck, PVal/S: False)
+  PDef/D: (name/S: Label, PVal/S: Frozen (F), Enco/N: 134217984)
+  PDef/D: (name/S: LabelAlign, PVal/S: 0)
+  PDef/D: (name/S: Left, PVal/S: 524)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: btn_mode_frozen, Enco/N: 134217984)
+  PDef/D: (name/S: StickyBevel, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Top, PVal/S: 150)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 130)
+ Ctrl/g: 
+ FDef/G: 
+  Name/S: PresentHelperWindow
+  Size/N: 172
+  Supr/S: Window
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Activate
+   sorc/d: (Enco/N: 134217984
+		Sub Activate()
+		  App.DebugWriter.Write "Begin PresentHelperWindow.Activate:"
+		  If Globals.Status_ScripturePickerOpen Then App.SetForeground(ScripturePickerWindow)
+		  If Globals.Status_SongPickerOpen Then App.SetForeground(SongPickerWindow)
+		  If Globals.Status_InputBoxOpen Then App.SetForeground(InputBox)
+		  App.ShowWin(PresentWindow, App.SW_SHOWNA)
+		  App.DebugWriter.Write "End PresentHelperWindow.Activate:"
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: CancelClose
+   sorc/d: (Enco/N: 134217984
+		Function CancelClose(appQuitting as Boolean) As Boolean
+		  If MainWindow.Status_Presentation And Not appQuitting Then Return True
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Close
+   sorc/d: (Enco/N: 134217984
+		Sub Close()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  Return PresentWindow.KeyDownX(Key)
+		End Function
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Maximize
+   sorc/d: (Enco/N: 134217984
+		Sub Maximize()
+		  //++
+		  // OSX triggers this on Zoom, which may not be to the full screen if in
+		  // preview mode.
+		  //--
+		  SavePos
+		  IsMaximized = True
+		  SetFullScreen
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Minimize
+   sorc/d: (Enco/N: 134217984
+		Sub Minimize()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Open
+   sorc/d: (Enco/N: 134217984
+		Sub Open()
+		  App.T.TranslateWindow Me, "presentation_helper", App.TranslationFonts
+		  txt_shortcut_keys.Caption = App.T.Translate("presentation_helper/keys")
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1280
+   name/S: Resized
+   sorc/d: (Enco/N: 134217984
+		Sub Resized()
+		  '++JRC: Recalc whenever window is resized
+		  RecalcLstAllSlidesColumnWidths
+		  Refresh
+		  '--
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Resizing
+   sorc/d: (Enco/N: 134217984
+		Sub Resizing()
+		  
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Restore
+   sorc/d: (Enco/N: 134217984
+		Sub Restore()
+		  IsMaximized = False
+		  SetNormalScreen
+		End Sub
+   )
+  HIns/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: InsertItem
+   parm/S: slide As XmlNode, index As Integer
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub InsertItem(slide As XmlNode, index As Integer)
+		  Dim NamesEqual As Boolean = True
+		  Dim TagsEqual As Boolean = True //++EMP 15 Jan 06
+		  
+		  If index >= lst_all_slides.ListCount Then
+		    lst_all_slides.AddRow SmartML.GetValue(slide.Parent.Parent, "@name", True)
+		    index = lst_all_slides.ListCount - 1
+		    'index = index - 1
+		  Else
+		    lst_all_slides.InsertRow index, SmartML.GetValue(slide.Parent.Parent, "@name", True)
+		  End If
+		  
+		  lst_all_slides.CellTag(index, 0) = SmartML.GetValue(slide.Parent.Parent, "@type", True)  //++EMP 15 Jan 06
+		  
+		  lst_all_slides.CellBold(index,1) = SmartML.GetValueB(slide, "@emphasize", False) _
+		      And SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "default_style/body/@highlight_chorus", True, True) 'EMP 12/05
+		  
+		  lst_all_slides.Cell(index,1) = SmartML.GetValue(slide, "@id", False)
+		  lst_all_slides.CellAlignment(index, 1) = 2
+		  lst_all_slides.Cell(index,2) = ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " ").CleanSpaces
+		  //++EMP 15 Jan 06
+		  // Put in separator lines if either the name and celltags differ 
+		  If Index > 0 Then
+		    NamesEqual = lst_all_slides.Cell(index, 0) = lst_all_slides.Cell(index - 1, 0)
+		    TagsEqual = lst_all_slides.CellTag(index, 0) = lst_all_slides.CellTag(index - 1, 0)
+		  End If
+		  //--
+		  If index = 0 Or _
+		      (index > 0 And Not (TagsEqual And NamesEqual)) Then
+		    lst_all_slides.CellBorderTop(index, 0) = 4
+		    lst_all_slides.CellBorderTop(index, 1) = 4
+		    lst_all_slides.CellBorderTop(index, 2) = 4
+		  End If
+		  
+		  If slide.NextSibling = Nil And SmartML.GetValueB(slide.Parent.Parent, "@loop") Then
+		    lst_all_slides.Cell(index, 2) = "(" + App.T.Translate("presentation_helper/loop/@caption") + ") " + lst_all_slides.Cell(index, 2)
+		  End If
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: RecalcLstAllSlidesColumnWidths
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub RecalcLstAllSlidesColumnWidths()
+		  '
+		  ' After a resize event on the screen (i.e., the FullScreen button was pressed),
+		  'rework the column widths to keep the Verse column from growing too big.
+		  ' EMP 01/31/05
+		  '
+		  Dim ControlWidth As Integer
+		  Dim g As Graphics
+		  Dim WidthString As String
+		  Dim tempWidth As double
+		  dim maxlen As Integer
+		  Dim ems as String
+		  Dim i As Integer
+		  
+		  g = cnv_preview.Graphics
+		  g.TextSize = lst_all_slides.TextSize
+		  g.TextFont = lst_all_slides.TextFont
+		  
+		  maxlen = 0
+		  if lst_all_slides.ListCount < 1 then return
+		  for i = 0 to lst_all_slides.ListCount - 1
+		    if len(lst_all_slides.cell(i,0)) > len(lst_all_slides.cell(maxlen,0)) then maxlen = i
+		  next i
+		  tempWidth = g.StringWidth(lst_all_slides.cell(maxlen,0))
+		  ControlWidth = ceil((tempwidth / lst_all_slides.Width)*100) + 2 'Fudge Factor
+		  ControlWidth = Min(ControlWidth, 20)
+		  WidthString = str(ControlWidth) + "%, "
+		  tempWidth = g.StringWidth("MMMM")' four-em width should be good
+		  ControlWidth = ceil((tempWidth / lst_all_slides.Width)*100)
+		  WidthString = WidthString + str(ControlWidth) + " %, *"
+		  lst_all_slides.ColumnWidths = WidthString
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SavePos
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SavePos()
+		  SavedTop = Self.Top
+		  SavedLeft = Self.Left
+		  SavedWidth = Self.Width
+		  SavedHeight = Self.Height
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: ScrollTo
+   parm/S: index As Integer
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub ScrollTo(index As Integer)
+		  lst_all_slides.ListIndex = index - 1
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetFullScreen
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetFullScreen()
+		  btn_action_full_screen.SetIcon windownofullscreenpic, windownofullscreenmask
+		  btn_action_full_screen.SetLabel App.T.Translate("presentation_helper/actions/normal_screen/@caption")
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetMaxClientArea
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetMaxClientArea()
+		  Dim ControlScreen As Integer
+		  Dim de As XmlElement
+		  
+		  // having issues with Available... so for the time being use the version that makes estimates
+		  // of the dimensions in the App class.  Not exact, but keeps the window from sliding up under
+		  // the menu on OSX.
+		  
+		  App.MaximizeInControlScreen(Self)
+		  Return
+		  
+		  de = App.MyPresentSettings.DocumentElement
+		  ControlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
+		  If ControlScreen > ScreenCount Then ControlScreen = 0
+		  Self.Top = Screen(ControlScreen).AvailableTop
+		  Self.Left = Screen(ControlScreen).AvailableLeft
+		  Self.Height = Screen(ControlScreen).AvailableHeight
+		  Self.Width = Screen(ControlScreen).AvailableWidth
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetMode
+   parm/S: mode As String, refresh As Boolean = True
+   rslt/S: 
+   flag/N: 0
+   sorc/d: (Enco/N: 134217984
+		Sub SetMode(mode As String, refresh As Boolean = True)
+		  If mode = "B" Then
+		    btn_mode_black.SetStuck True
+		  Else
+		    btn_mode_black.SetStuck False
+		  End If
+		  
+		  If mode = "W" Then
+		    btn_mode_white.SetStuck True
+		  Else
+		    btn_mode_white.SetStuck False
+		  End If
+		  
+		  If mode = "H" Then
+		    btn_mode_hidden.SetStuck True
+		  Else
+		    btn_mode_hidden.SetStuck False
+		  End If
+		  
+		  If mode = "L" Then
+		    btn_mode_logo.SetStuck True
+		  Else
+		    btn_mode_logo.SetStuck False
+		  End If
+		  
+		  If mode = "F" Then
+		    btn_mode_frozen.SetStuck True
+		  Else
+		    btn_mode_frozen.SetStuck False
+		  End If
+		  
+		  If mode = "N" Then
+		    btn_mode_normal.SetStuck True
+		  Else
+		    btn_mode_normal.SetStuck False
+		  End If
+		  
+		  If refresh Then PresentWindow.ResetPaint PresentWindow.XCurrentSlide
+		  
+		  cnv_preview.Refresh False
+		  
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetNormalClientArea
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetNormalClientArea()
+		  Self.Top = SavedTop
+		  Self.Left = SavedLeft
+		  Self.Height = SavedHeight
+		  Self.Width = SavedWidth
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SetNormalScreen
+   parm/S: 
+   rslt/S: 
+   flag/N: 1
+   sorc/d: (Enco/N: 134217984
+		Sub SetNormalScreen()
+		  btn_action_full_screen.SetIcon windowfullscreenpic, windowfullscreenmask
+		  btn_action_full_screen.SetLabel App.T.Translate("presentation_helper/actions/full_screen/@caption")
+		End Sub
+   )
+  Meth/g: 
+  Meth/G: 
+   Enco/N: 134217984
+   name/S: SwapFullScreen
+   parm/S: 
+   rslt/S: 
+   flag/N: 0
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub SwapFullScreen()
+    srcl/S: 
+    srcl/S: #If TargetWin32
+    srcl/S: Dim lparam As New MemoryBlock(4)
+    srcl/S: Dim hwnd As Integer
+    srcl/S: Dim status As Integer
+    srcl/S: Const WM_SYSCOMMAND = 274
+    srcl/S: Const SC_MAXIMIZE = &HF030
+    srcl/S: Const SC_RESTORE = &HF120
+    srcl/S: 
+    srcl/S: Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
+    srcl/S: 
+    srcl/S: hwnd = Self.Handle
+    srcl/S: #EndIf
+    srcl/S: 
+    srcl/S: If Not IsMaximized Then
+    srcl/S: SavePos
+    srcl/S: SetFullScreen
+    srcl/S: IsMaximized = True
+    srcl/S: 
+    srcl/S: #If TargetWin32
+    srcl/S: status = SendMessageA(hwnd, WM_SYSCOMMAND, SC_MAXIMIZE, lparam)
+    srcl/S: #Else
+    srcl/S: SetMaxClientArea
+    srcl/S: #EndIf
+    srcl/S: Else
+    srcl/S: SetNormalScreen
+    srcl/S: IsMaximized = False
+    srcl/S: 
+    srcl/S: #If TargetWin32
+    srcl/S: status = SendMessageA(hwnd, WM_SYSCOMMAND, SC_RESTORE, lparam)
+    srcl/S: #Else
+    srcl/S: SetNormalClientArea
+    srcl/S: #EndIf
+    srcl/S: End If
+    srcl/S: End Sub
+   sorc/g: 
+  Meth/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: InitialColumnWidths As String
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: InitialColumnWidths As String
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: IsMaximized As Boolean
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: IsMaximized As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SavedHeight As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SavedHeight As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SavedLeft As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SavedLeft As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SavedTop As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SavedTop As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: SavedWidth As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: SavedWidth As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+ FDef/g: 
+ PDef/D: (name/S: BackColor, PVal/S: 16777215)
+ PDef/D: (name/S: Backdrop, PVal/S: 0)
+ PDef/D: (name/S: BalloonHelp, PVal/S: )
+ PDef/D: (name/S: CloseBox, PVal/S: False)
+ PDef/D: (name/S: Composite, PVal/S: False)
+ PDef/D: (name/S: Frame, PVal/S: 0)
+ PDef/D: (name/S: FullScreen, PVal/S: False)
+ PDef/D: (name/S: GrowIcon, PVal/S: True)
+ PDef/D: (name/S: HasBackColor, PVal/S: False)
+ PDef/D: (name/S: Height, PVal/S: 480)
+ PDef/D: (name/S: LiveResize, PVal/S: False)
+ PDef/D: (name/S: MacProcID, PVal/S: 0)
+ PDef/D: (name/S: MaxHeight, PVal/S: 32000)
+ PDef/D: (name/S: MaxWidth, PVal/S: 32000)
+ PDef/D: (name/S: MenuBar, PVal/S: 0)
+ PDef/D: (name/S: MenuBarVisible, PVal/S: True)
+ PDef/D: (name/S: MinHeight, PVal/S: 480)
+ PDef/D: (name/S: MinWidth, PVal/S: 640)
+ PDef/D: (name/S: Name, PVal/S: PresentHelperWindow, Enco/N: 134217984)
+ PDef/D: (name/S: Placement, PVal/S: 0)
+ PDef/D: (name/S: Title, PVal/S: Presentation Helper, Enco/N: 134217984)
+ PDef/D: (name/S: Visible, PVal/S: True)
+ PDef/D: (name/S: Width, PVal/S: 675)
+ PDef/D: (name/S: ZoomIcon, PVal/S: True)
+pVew/b: 
+##RBvx-End#

@@ -1,0 +1,221 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABFB5C9C00000000000000000000000000000000000000000
+ Name/S: DebugOutput
+ Cont/N: -1119363046
+ bCls/N: 1
+ Name/S: DebugOutput
+ Size/N: 41
+ bNtr/N: 0
+ Intr/S: 
+ Cnst/D: (Enco/N: 134217984, name/S: MAXDEBUGLEVEL, type/N: 1, defn/S: 10, flag/N: 0)
+ Cnst/D: (Enco/N: 134217984, name/S: MINDEBUGLEVEL, type/N: 1, defn/S: 1, flag/N: 0)
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Constructor
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Constructor()
+		  DebugTOS = Nil
+		  DebugFile = Nil
+		  Enabled = False
+		  If System.EnvironmentVariable("OPENSONGDEBUGLEVEL") = "" Then
+		    DebugLevel = 1
+		  Else
+		    DebugLevel = CDbl(System.EnvironmentVariable("OPENSONGDEBUGLEVEL"))
+		  End If
+		  '++JRC
+		  AppendLog = True
+		  '--
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Done
+  parm/S: 
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Done()
+		  If DebugTOS <> Nil Then DebugTOS.Close
+		  DebugTOS = Nil
+		  DebugFile = Nil
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Init
+  parm/S: 
+  rslt/S: Boolean
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Init() As Boolean
+		  If DebugTOS <> Nil Then Return True
+		  If Enabled Then
+		    If System.EnvironmentVariable("OPENSONGDEBUGFILE") = "" Then
+		      DebugFile = New FolderItem("Debug.txt")
+		    Else
+		      DebugFile = New FolderItem(System.EnvironmentVariable("OPENSONGDEBUGFILE"))
+		    End If
+		    If DebugFile.Exists Then 
+		      '++JRC
+		      if AppendLog then
+		        DebugTOS = DebugFile.AppendToTextFile
+		      else
+		        DebugFile.Delete
+		        DebugTOS = DebugFile.CreateTextFile
+		      end if
+		    Else
+		      DebugTOS = DebugFile.CreateTextFile
+		      '--
+		    End If
+		    Return DebugTOS <> Nil
+		  End If
+		  Return True
+		Catch ex
+		  MsgBox("DebugOutput couldn't Init: " + ex.message)
+		  Return False
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: LessDetail
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function LessDetail() As Integer
+		  If DebugLevel > MINDEBUGLEVEL Then DebugLevel = DebugLevel - 1
+		  Return DebugLevel
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Level
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function Level() As Integer
+		  Return DebugLevel
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Level
+  parm/S: Assigns NewLevel As Integer
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Level(Assigns NewLevel As Integer)
+		  Dim ex As New OutOfBoundsException
+		  
+		  If NewLevel >= MINDEBUGLEVEL And NewLevel <= MAXDEBUGLEVEL Then
+		    DebugLevel = NewLevel
+		  Else
+		    ex.Message = "DebugLevel must be between " + Str(MINDEBUGLEVEL) + " and " + Str(MAXDEBUGLEVEL) +_
+		        ", requested level was " + Str(NewLevel)
+		    Raise ex
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: MoreDetail
+  parm/S: 
+  rslt/S: Integer
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function MoreDetail() As Integer
+		  If DebugLevel < MAXDEBUGLEVEL Then DebugLevel = DebugLevel + 1
+		  Return DebugLevel
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: Write
+  parm/S: text As String, Level As Integer = 3
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub Write(text As String, Level As Integer = 3)
+		  If Not Enabled Then Return
+		  
+		  If DebugTOS = Nil Then 
+		    If Not Init Then Return
+		  End  If
+		  
+		  If Level <= DebugLevel Then
+		    DebugTOS.WriteLine(text)
+		    DebugTOS.Flush
+		  End If
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: AppendLog As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: AppendLog As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: DebugFile As FolderItem
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: DebugFile As FolderItem
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: DebugLevel As Integer
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: DebugLevel As Integer
+   ntln/S: Indicates the lowest level we should print
+   ntln/S: debug messages for (0 is effectively disabled)
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: DebugTOS As TextOutputStream
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: DebugTOS As TextOutputStream
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Enabled As Boolean
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Enabled As Boolean
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

@@ -1,0 +1,47 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626A01D62FFF0000000000000000000000000000000000000000
+ Name/S: IndexEntry
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: IndexEntry
+ Size/N: 32
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: IndexEntry
+  parm/S: tword as String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub IndexEntry(tword as String)
+		  word=tword
+		  
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: passages(-1) As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: passages(-1) As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: word As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: word As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

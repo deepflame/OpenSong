@@ -1,0 +1,34 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626ABC872C7E0000000000000000000000000000000000000000
+ Name/S: SButtonPopup
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: SButtonPopup
+ Size/N: 112
+ Supr/S: ContextualMenu
+ bNtr/N: 0
+ Intr/S: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: Action
+  sorc/d: (Enco/N: 134217984
+		Sub Action(item As String)
+		  Parent.MenuItem = item
+		End Sub
+  )
+ HIns/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: Parent As SButton
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Parent As SButton
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

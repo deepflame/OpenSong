@@ -1,0 +1,41 @@
+﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626AC20051310000000000000000000000000000000000000000
+ Name/S: IpreferencesReceiver
+ Cont/N: -1042926112
+ bCls/N: 1
+ Name/S: IpreferencesReceiver
+ Size/N: 24
+ bNtr/N: 1
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: PreferencesChanged
+  parm/S: NewPreferences As IPreferences
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub PreferencesChanged(NewPreferences As IPreferences)
+		  
+		End Sub
+  )
+ Meth/g: 
+ Note/G: 
+  Enco/N: 134217984
+  name/S: Overview
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: Overview
+   ntln/S: Complementary interface to IPreferences.
+   ntln/S: 
+   ntln/S: Allows a class to register a callback routine to be called
+   ntln/S: when a preference changes in the IPreferences
+   ntln/S: object the class is registered with.
+   ntln/S: 
+  sorc/g: 
+ Note/g: 
+pObj/b: 
+##RBvx-End#

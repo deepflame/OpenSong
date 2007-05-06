@@ -1,0 +1,130 @@
+##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
+##OrigFileName:OpenSong.rb
+##VaultHdrEnd#
+##Format:2#
+pObj/B: 426C6F6B704F626A74426FFF0000000000000000000000000000000000000000
+ Name/S: TreeNode
+ Cont/N: -1131477696
+ bCls/N: 1
+ Name/S: TreeNode
+ Size/N: 40
+ bNtr/N: 0
+ Intr/S: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: delete
+  parm/S: word as String
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub delete(word as String)
+		  
+		  If MyDictionary.HasKey(word) Then
+		    MyDictionary.Remove word
+		  End If
+		  Return
+		  
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: find
+  parm/S: word as String
+  rslt/S: TreeNode
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Function find(word as String) As TreeNode
+		  If MyDictionary.HasKey(word) Then
+		    Return TreeNode(MyDictionary.Value(word).ObjectValue)
+		  Else
+		    Return New TreeNode(word, MyDictionary)
+		  End If
+		End Function
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: inorderTraverse
+  parm/S: list() as TreeNode
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub inorderTraverse(list() as TreeNode)
+		  //++
+		  // Build a list of index entries in alphabetical order.
+		  // Since we can't pass the Keys() arrays of a Dict directly to a sort,
+		  // sort the dict into a new array.  To save on string copies, the sort
+		  // routine returns the sorted list as an array of indices to the Dict
+		  // (in other words, the "i"'s of Dict.Key(i))
+		  //
+		  // Original version with binary tree instead of Dict by
+		  // Ben.  Rewrite by Ed to use Dict.
+		  //--
+		  Dim x as Integer
+		  Dim keys() As Integer
+		  Dim sortobj As New HeapSortDict
+		  
+		  sortobj.Sort MyDictionary, keys
+		  
+		  Redim list(UBound(keys))
+		  
+		  For x = 0 to UBound(keys)
+		    //++
+		    // The next line is a long way of saying that the next TreeNode to get
+		    // is the value of the Nth entry in MyDictionary, where N is the
+		    // value of the Xth entry in our Keys array.  Double indirection.
+		    //--
+		    list(x) = TreeNode(MyDictionary.Value(MyDictionary.Key(Keys(x))).ObjectValue)
+		  Next
+		  Return
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: TreeNode
+  parm/S: tentry As String, parentDictionary As Dictionary
+  rslt/S: 
+  flag/N: 0
+  sorc/d: (Enco/N: 134217984
+		Sub TreeNode(tentry As String, parentDictionary As Dictionary)
+		  MyDictionary = parentDictionary
+		  If MyDictionary.HasKey(tentry) Then Return
+		  MyDictionary.Value(tentry) = Me
+		  entry = tentry
+		End Sub
+  )
+ Meth/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: entry As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: entry As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: MyDictionary As Dictionary
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: MyDictionary As Dictionary
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: passages() As String
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: passages() As String
+   ntln/S: 
+   ntln/S: 
+  sorc/g: 
+ Prop/g: 
+pObj/b: 
+##RBvx-End#

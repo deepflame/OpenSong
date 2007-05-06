@@ -549,6 +549,10 @@ pVew/B: 426C6F6B70566577BC6ACDD50000000000000000000000000000000000000000
    name/S: Action
    sorc/d: (Enco/N: 134217984
 		Sub Action()
+		  // Change the Insert button to default
+		  // so the operator only has to press the Enter
+		  // key to advance.
+		  Me.Default = True
 		  BuildScripture(True)
 		End Sub
    )

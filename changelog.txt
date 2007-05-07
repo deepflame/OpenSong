@@ -1,9 +1,13 @@
 -= 1.0.2 BL18 =-
 
+* Include minor changes to help correct presenter issues in versions compiled with RB200x.
+
+* Fix issue with margins display in Print Settings.  In Mac UB, correct stacking order for labels in the Print Settings dialog.
+
 * In ScripturePicker, change the default button to Insert after first Insert (live display from ScripturePicker without adding to set). The
 operator only has to press Enter to move forward after that point.
 
-* Prevent NilObjectExcption in lst_set_items.change
+* Prevent NilObjectException in lst_set_items.change
 
 * Add conditional check to pop_scr_version.change to see if we are initializing (fixes preview text not showing)
 

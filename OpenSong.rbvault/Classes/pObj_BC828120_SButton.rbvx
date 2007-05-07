@@ -14,18 +14,21 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
  HIns/G: 
   Enco/N: 1280
   name/S: MouseDown
-  sorc/d: (Enco/N: 134217984
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If IsStuck Then Return False
-		  IsMouseDown = True
-		  MenuItem = ""
-		  If Enabled Then
-		    Refresh ' False
-		    If Popup <> Nil Then Popup.Open
-		    Return True
-		  End If
-		End Function
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function MouseDown(X As Integer, Y As Integer) As Boolean
+   srcl/S: If IsStuck Then Return False
+   srcl/S: IsMouseDown = True
+   srcl/S: MenuItem = ""
+   srcl/S: If Enabled Then
+   srcl/S: Refresh ' False
+   srcl/S: #if TargetMacOS
+   srcl/S: If Popup <> Nil Then Popup.Open
+   srcl/S: #endif
+   srcl/S: Return True
+   srcl/S: End If
+   srcl/S: End Function
+  sorc/g: 
  HIns/g: 
  HIns/G: 
   Enco/N: 1280
@@ -53,13 +56,17 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
  HIns/G: 
   Enco/N: 1280
   name/S: MouseUp
-  sorc/d: (Enco/N: 134217984
-		Sub MouseUp(X As Integer, Y As Integer)
-		  IsMouseDown = False
-		  Action
-		  Refresh ' False Graphics
-		End Sub
-  )
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Sub MouseUp(X As Integer, Y As Integer)
+   srcl/S: IsMouseDown = False
+   srcl/S: #if Not TargetMacOS
+   srcl/S: If Popup <> Nil Then Popup.Open
+   srcl/S: #endif
+   srcl/S: Action
+   srcl/S: Refresh ' False Graphics
+   srcl/S: End Sub
+  sorc/g: 
  HIns/g: 
  HIns/G: 
   Enco/N: 1280

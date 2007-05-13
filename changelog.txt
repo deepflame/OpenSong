@@ -1,3 +1,6 @@
+-= BL18 =-
+* Correct the output of the bible index to avoid truncating the last character of each entry. [Bug 1718177]
+
 -= 1.0.2 BL18 =-
 
 * Include minor changes to help correct presenter issues in versions compiled with RB200x.

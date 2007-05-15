@@ -1,1 +1,5 @@
 -= JRC =-
+
+* Added Preview text to SongPicker
+
+* Added Preview label to ScripturePicker

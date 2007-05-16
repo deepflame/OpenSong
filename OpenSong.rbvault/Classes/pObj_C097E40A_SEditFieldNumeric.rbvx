@@ -98,10 +98,10 @@ pObj/B: 426C6F6B704F626AC097E40A0000000000000000000000000000000000000000
 		    If SignalRangeErrors And (NewValue < Minimum Or NewValue > Maximum) Then
 		      ex.Message = App.T.Translate("errors/range_error", CStr(NewValue))
 		      Raise ex
+		    Else
+		      If NewValue < Minimum Then NewValue = Minimum
+		      If NewValue > Maximum Then NewValue = Maximum
 		    End If
-		  Else
-		    If NewValue < Minimum Then NewValue = Minimum
-		    If NewValue > Maximum Then NewValue = Maximum
 		  End If
 		  CurrentValue = NewValue
 		  ValueToText

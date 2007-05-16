@@ -805,8 +805,8 @@ pObj/B: 426C6F6B704F626ABC1F6C0C0000000000000000000000000000000000000000
 		  for x=0 to UBound(index)
 		    out.write(index(x).entry)
 		    
-		    Passage = Join(index(x).passages, "|")
-		    out.WriteLine("|"+Left(Passage, Len(Passage) - 1))
+		    Passage = "|" + Join(index(x).passages, "|")
+		    out.WriteLine(Passage)
 		  next x
 		  
 		  out.WriteLine("---")

@@ -7,7 +7,7 @@ pObj/B: 426C6F6B704F626ABCB29EF40000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SStyleCanvas
- Size/N: 128
+ Size/N: 125
  Supr/S: SBufferedCanvas
  bNtr/N: 0
  Intr/S: 

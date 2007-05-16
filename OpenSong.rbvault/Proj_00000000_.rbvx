@@ -10,19 +10,19 @@ Proj/B: 426C6F6B50726F6A000000000000000000000000000000000000000000000000
  ACsv/S: localhost:7325
  Ver1/S: 1
  Ver2/S: 0
- Ver3/S: 0
+ Ver3/S: 2
  Rels/S: 3
- NnRl/S: 17
+ NnRl/S: 18
  Regn/S: 0
- SVer/S: 1.0.0-17
- LVer/S: OpenSong 1.0.0 BL17
- IVer/S: OpenSong 1.0.0 BL17
+ SVer/S: 1.0.1-18
+ LVer/S: OpenSong 1.0.2 BL18
+ IVer/S: OpenSong 1.0.2 BL18
  DVew/N: 0
  prTp/N: 0
  DLan/N: 1
  CLan/N: 0
  DEnc/N: 134217984
- Bflg/N: 272
+ Bflg/N: 264
  BCXF/N: 1
  MacC/S: OSng
  BMac/S: OpenSongOS8

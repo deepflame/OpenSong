@@ -16,9 +16,18 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub Change()
 		  If Me.ListIndex >= 0 Then
+		    '++JRC
+		    If Me.ListIndex  = CurrentSel Then Return
+		    '--
 		    App.DebugWriter.Write("SongPickerWindow.lst_all_songs.Change: New selection is '" +_
 		        Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
 		    f = MainWindow.Songs.GetFile(Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
+		    '++JRC Add Song Preview text
+		    CurrentSong = SmartML.XDocFromFile(f)
+		    edt_preview.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		    edt_preview.ScrollPosition = 0
+		    edt_preview.ScrollPositionX = 0
+		    '--
 		    btn_add.Enabled = True
 		  End If
 		End Sub
@@ -196,6 +205,8 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   HIns/g: 
  CBhv/g: 
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 188, Supr/S: EditField, bNtr/N: 0)
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  Ctrl/G: 
   ccls/S: ListBox
   name/S: ListBox
@@ -217,15 +228,15 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: GridLinesVertical, PVal/S: 0)
   PDef/D: (name/S: HasHeading, PVal/S: False)
   PDef/D: (name/S: HeadingIndex, PVal/S: -1)
-  PDef/D: (name/S: Height, PVal/S: 202)
+  PDef/D: (name/S: Height, PVal/S: 222)
   PDef/D: (name/S: HelpTag, PVal/S: )
   PDef/D: (name/S: Hierarchical, PVal/S: False)
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: InitialValue, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 10)
-  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 5)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: True)
   PDef/D: (name/S: LockRight, PVal/S: True)
   PDef/D: (name/S: LockTop, PVal/S: True)
@@ -238,11 +249,11 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
   PDef/D: (name/S: TextSize, PVal/S: 11)
-  PDef/D: (name/S: Top, PVal/S: 63)
+  PDef/D: (name/S: Top, PVal/S: 55)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: UseFocusRing, PVal/S: True)
   PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 295)
+  PDef/D: (name/S: Width, PVal/S: 330)
  Ctrl/g: 
  Ctrl/G: 
   ccls/S: PushButton
@@ -261,7 +272,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 155)
+  PDef/D: (name/S: Left, PVal/S: 166)
   PDef/D: (name/S: LockBottom, PVal/S: True)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: True)
@@ -270,7 +281,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
   PDef/D: (name/S: TextSize, PVal/S: 10)
-  PDef/D: (name/S: Top, PVal/S: 333)
+  PDef/D: (name/S: Top, PVal/S: 452)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 69)
@@ -292,7 +303,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 236)
+  PDef/D: (name/S: Left, PVal/S: 247)
   PDef/D: (name/S: LockBottom, PVal/S: True)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: True)
@@ -301,7 +312,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
   PDef/D: (name/S: TextSize, PVal/S: 10)
-  PDef/D: (name/S: Top, PVal/S: 332)
+  PDef/D: (name/S: Top, PVal/S: 451)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 69)
@@ -373,9 +384,9 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: InitialValue, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: Left, PVal/S: 5)
   PDef/D: (name/S: ListIndex, PVal/S: 0)
-  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: True)
   PDef/D: (name/S: LockRight, PVal/S: True)
   PDef/D: (name/S: LockTop, PVal/S: False)
@@ -383,10 +394,10 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
   PDef/D: (name/S: TextSize, PVal/S: 12)
-  PDef/D: (name/S: Top, PVal/S: 301)
+  PDef/D: (name/S: Top, PVal/S: 302)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 215)
+  PDef/D: (name/S: Width, PVal/S: 226)
  Ctrl/g: 
  Ctrl/G: 
   ccls/S: StaticText
@@ -404,8 +415,8 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 11)
-  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: True)
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
@@ -417,14 +428,95 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: TextColor, PVal/S: 0)
   PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
   PDef/D: (name/S: TextSize, PVal/S: 12)
-  PDef/D: (name/S: Top, PVal/S: 276)
+  PDef/D: (name/S: Top, PVal/S: 283)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 100)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: EditField
+  name/S: EditField
+  CBix/N: 7
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 90)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 5)
+  PDef/D: (name/S: LimitText, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: MultiLine, PVal/S: True)
+  PDef/D: (name/S: Name, PVal/S: edt_preview, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: True)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: True)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 350)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 330)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 8
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: LockBottom, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_song_preview, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: Preview:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 329)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 100)
  Ctrl/g: 
  FDef/G: 
   Name/S: SongPickerWindow
-  Size/N: 148
+  Size/N: 156
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -452,6 +544,9 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		Sub Open()
 		  Dim x As Integer
 		  
+		  '++JRC
+		  CurrentSel = -1
+		  '--
 		  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
 		  End If
 		  If Globals.CurrentSongPickerFolder = "" Then
@@ -509,6 +604,28 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   Meth/g: 
   Prop/G: 
    Enco/N: 134217984
+   decl/S: CurrentSel As Integer
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CurrentSel As Integer
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: CurrentSong As XMLDocument
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: CurrentSong As XMLDocument
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
    decl/S: f As FolderItem
    flag/N: 1
    sorc/G: 
@@ -539,7 +656,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  PDef/D: (name/S: FullScreen, PVal/S: False)
  PDef/D: (name/S: GrowIcon, PVal/S: True)
  PDef/D: (name/S: HasBackColor, PVal/S: False)
- PDef/D: (name/S: Height, PVal/S: 367)
+ PDef/D: (name/S: Height, PVal/S: 486)
  PDef/D: (name/S: LiveResize, PVal/S: False)
  PDef/D: (name/S: MacProcID, PVal/S: 0)
  PDef/D: (name/S: MaxHeight, PVal/S: 32000)
@@ -552,7 +669,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  PDef/D: (name/S: Placement, PVal/S: 0)
  PDef/D: (name/S: Title, PVal/S: Song Lookup, Enco/N: 134217984)
  PDef/D: (name/S: Visible, PVal/S: True)
- PDef/D: (name/S: Width, PVal/S: 315)
+ PDef/D: (name/S: Width, PVal/S: 350)
  PDef/D: (name/S: ZoomIcon, PVal/S: True)
 pVew/b: 
 ##RBvx-End#

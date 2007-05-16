@@ -1,11 +1,10 @@
 ﻿##RBvx-PrjVaultItem#2# - <http://www.tempel.org/rb/#prjtool>
-##OrigFileName:OpenSong.rb
+##OrigFileName:OpenSongObed-object model in progress.rb
 ##VaultHdrEnd#
 ##Format:2#
 pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  Name/S: SearchWindow
  Cont/N: -1131477727
- Bind/D: (desc/S: Enable btn_search_ok when lst_result has a selection, type/S: enablingBinder, BnSr/N: 2, BnSd/S: 1, BbSd/S: getSelectionProvider, BnDs/N: 3, BnDd/S: , BbDd/S: )
  CBhv/G: 
   Name/S: 
   Size/N: 128
@@ -610,7 +609,7 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: SearchWindow
-  Size/N: 144
+  Size/N: 152
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -953,5 +952,6 @@ pVew/B: 426C6F6B7056657779910FFF0000000000000000000000000000000000000000
  PDef/D: (name/S: Visible, PVal/S: True)
  PDef/D: (name/S: Width, PVal/S: 477)
  PDef/D: (name/S: ZoomIcon, PVal/S: True)
+ Bind/D: (desc/S: Enable btn_search_ok when lst_result has a selection, type/S: enablingBinder, BnSr/N: 2, BnSd/S: 1, BbSd/S: getSelectionProvider, BnDs/N: 3, BnDd/S: , BbDd/S: )
 pVew/b: 
 ##RBvx-End#

@@ -51,7 +51,7 @@
       </export>
       <rename caption="Rename">Renames the current song.</rename>
       <move caption="Move">Moves the current song into another folder.
-        <where caption="Move '%1' to which folder:"/>
+        <where caption="Move '%1' to folder:"/>
       </move>
       <delete caption="Delete">Deletes the current song.</delete>
     </selected_song>
@@ -707,6 +707,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <header caption="To add a song, click the song title below and click the 'Add' button or begin typing the song title and hit the enter key."/>
     <no_selection>You have not selected a song.</no_selection>
     <folder caption="Select Folder"/>
+    <preview caption="Song Preview"/>
   </song_lookup>
 
   <scripture_lookup title="Scripture Lookup">
@@ -717,6 +718,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
     <version caption="Version"/>
+    <select_file caption="Please select a scripture file"/>
     <verses_per_slide caption="Verses Per Slide">
       <one caption="1"/>
       <two caption="2"/>
@@ -739,6 +741,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <dash caption="-"/>
     <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <preview caption="Scripture Preview"/>
   </scripture_lookup>
 
   <module>
@@ -748,6 +751,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <rename_error>Error renaming module file. Please verify that you have write access to '%1'.</rename_error>
     <success>Module successfully loaded.</success>
     <file_type>OpenSong Modules (*.xmm)</file_type>
+    <generate_index>Generate index for scripture file?</generate_index>
+    <generate_error>Error generating index; do you have write access to %1?</generate_error>
   </module>
 
   <import_from_ccli title="Import from CCLI">

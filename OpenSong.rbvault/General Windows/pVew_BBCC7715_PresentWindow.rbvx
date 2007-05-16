@@ -207,29 +207,32 @@ pVew/B: 426C6F6B70566577BBCC77150000000000000000000000000000000000000000
   HIns/G: 
    Enco/N: 131072
    name/S: Activate
-   sorc/d: (Enco/N: 134217984
-		Sub Activate()
-		  App.DebugWriter.Write "PresentWindow.Activate: Enter"
-		  If Globals.Status_Presentation Then
-		    If HelperActive Then 
-		      If PresentHelperWindow.IsCollapsed Then
-		        App.RestoreWindow(PresentHelperWindow)
-		      Else
-		        PresentHelperWindow.SetFocus
-		      End If
-		    Else
-		      If PresentWindow.IsCollapsed Then 
-		        App.RestoreWindow(PresentWindow)
-		      End If
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
-		    End If
-		    Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
-		    Me.SetFocus
-		  End If
-		  App.DebugWriter.Write "PresentWindow.Activate: Exit"
-		End Sub
-   )
+   sorc/G: 
+    Enco/N: 134217984
+    srcl/S: Sub Activate()
+    srcl/S: App.DebugWriter.Write "PresentWindow.Activate: Enter"
+    srcl/S: If Globals.Status_Presentation Then
+    srcl/S: If HelperActive Then 
+    srcl/S: If PresentHelperWindow.IsCollapsed Then
+    srcl/S: App.RestoreWindow(PresentHelperWindow)
+    srcl/S: Else
+    srcl/S: #If RBVersion < 2005
+    srcl/S: PresentHelperWindow.SetFocus
+    srcl/S: #endif
+    srcl/S: End If
+    srcl/S: Else
+    srcl/S: If PresentWindow.IsCollapsed Then 
+    srcl/S: App.RestoreWindow(PresentWindow)
+    srcl/S: End If
+    srcl/S: App.SetForeground(PresentWindow)
+    srcl/S: PresentWindow.SetFocus
+    srcl/S: End If
+    srcl/S: Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
+    srcl/S: Me.SetFocus
+    srcl/S: End If
+    srcl/S: App.DebugWriter.Write "PresentWindow.Activate: Exit"
+    srcl/S: End Sub
+   sorc/g: 
   HIns/g: 
   HIns/G: 
    Enco/N: 131072

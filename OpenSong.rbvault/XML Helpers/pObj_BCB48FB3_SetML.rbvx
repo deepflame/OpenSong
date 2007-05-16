@@ -13,6 +13,50 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
  Meth/G: 
   Enco/N: 134217984
   name/S: DrawSlide
+  parm/S: g As Graphics, xslide As XmlNode, xstyle As XmlNode
+  rslt/S: 
+  flag/N: 1
+  sorc/d: (Enco/N: 134217984
+		Sub DrawSlide(g As Graphics, xslide As XmlNode, xstyle As XmlNode)
+		  //++EMP
+		  // September 2005
+		  // Lots of changes here to support the separation of the slide style from the XML
+		  // to speed up slide changes.
+		  //
+		  // This method is mostly gutted and moved to the other DrawSlide method
+		  // (the one that takes a SlideStyle object as its third argument).
+		  // This just sets up the object from xstyle and calls down to the other one.
+		  // Easier maintenance: the bulk of the code isn't repeated.
+		  //
+		  // This routine also assumes that it is called from PresentWindow since
+		  // it makes a callback to get the style from the dictionary held there.
+		  // I debated whether that dictionary should be moved to App level, and
+		  // decided I couldn't state unequivocably that only one Style dictionary
+		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
+		  
+		  Dim Style As SlideStyle 
+		  Dim StyleIndex As String 
+		  
+		  StyleIndex = SmartML.GetValue(xstyle, "@index") 
+		  If StyleIndex = "" Then 'is the XML a complete style?
+		    Style = New SlideStyle(xstyle)
+		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
+		      Style = PresentWindow.GetStyle("default_style")
+		    End If
+		  Else
+		    Style = PresentWindow.GetStyle(StyleIndex)
+		  End If
+		  
+		  // Forwarding...anyone at the new address??
+		  
+		  DrawSlide(g, xslide, Style)
+		  //--EMP
+		End Sub
+  )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DrawSlide
   parm/S: g As Graphics, xslide As XmlNode, Style as SlideStyle
   rslt/S: 
   flag/N: 1
@@ -353,50 +397,6 @@ pObj/B: 426C6F6B704F626ABCB48FB30000000000000000000000000000000000000000
 		          Profiler.EndProfilerEntry
 		          
 		        End Sub
-  )
- Meth/g: 
- Meth/G: 
-  Enco/N: 134217984
-  name/S: DrawSlide
-  parm/S: g As Graphics, xslide As XmlNode, xstyle As XmlNode
-  rslt/S: 
-  flag/N: 1
-  sorc/d: (Enco/N: 134217984
-		Sub DrawSlide(g As Graphics, xslide As XmlNode, xstyle As XmlNode)
-		  //++EMP
-		  // September 2005
-		  // Lots of changes here to support the separation of the slide style from the XML
-		  // to speed up slide changes.
-		  //
-		  // This method is mostly gutted and moved to the other DrawSlide method
-		  // (the one that takes a SlideStyle object as its third argument).
-		  // This just sets up the object from xstyle and calls down to the other one.
-		  // Easier maintenance: the bulk of the code isn't repeated.
-		  //
-		  // This routine also assumes that it is called from PresentWindow since
-		  // it makes a callback to get the style from the dictionary held there.
-		  // I debated whether that dictionary should be moved to App level, and
-		  // decided I couldn't state unequivocably that only one Style dictionary
-		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
-		  
-		  Dim Style As SlideStyle 
-		  Dim StyleIndex As String 
-		  
-		  StyleIndex = SmartML.GetValue(xstyle, "@index") 
-		  If StyleIndex = "" Then 'is the XML a complete style?
-		    Style = New SlideStyle(xstyle)
-		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
-		      Style = PresentWindow.GetStyle("default_style")
-		    End If
-		  Else
-		    Style = PresentWindow.GetStyle(StyleIndex)
-		  End If
-		  
-		  // Forwarding...anyone at the new address??
-		  
-		  DrawSlide(g, xslide, Style)
-		  //--EMP
-		End Sub
   )
  Meth/g: 
  Meth/G: 

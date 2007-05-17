@@ -2080,6 +2080,7 @@ Module SongML
 		  Dim s As String
 		  s = "<html><head>" + EndOfLine
 		  s = s + "  <title>" + SmartML.GetValue(songElement, "title") + "</title>" + EndOfLine
+		  s = s + "  <meta http-equiv=""content-type"" content=""text/html; charset=utf-8"">" + EndOfLine
 		  s = s + "  <link rel=""stylesheet"" href=""style.css"" type=""text/css""/>" + EndOfLine
 		  s = s + "</head>" + EndOfLine + "<body>" + EndOfLine
 		  

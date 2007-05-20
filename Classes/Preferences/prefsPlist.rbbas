@@ -444,8 +444,17 @@ Implements IPreferences
 
 	#tag Method, Flags = &h0
 		Sub SetValueFI(path As String, value As FolderItem)
+		  //++
+		  // The absolutepath (pre-RB2007) is to provide a human-readable
+		  // description of the file pointed to by GetSaveInfo.  The
+		  // application doesn't use this value.
+		  // TODO: Consider using URLpath as the only
+		  // stored value when OpenSong officially moves to RB2007.
+		  //--
+		  
 		  Dim pl As plistDict
 		  Dim child As String
+		  Dim pathchild As String
 		  Dim elements() As String
 		  
 		  If Not GetChild(path, pl, child) Then
@@ -456,16 +465,25 @@ Implements IPreferences
 		    child = elements(UBound(elements))
 		    If Left(child, 1) = "@" Then
 		      child = Mid(child, 2)
+		      pathchild = child + "-path"
 		    Else
 		      child = "value"
+		      pathchild = "path"
 		    End If
 		  End If
 		  
-		  If value <> Nil Then
+		  If Not (Value Is Nil) Then
 		    pl.SetString(child, EncodeBase64(value.GetSaveInfo(Nil)))
+		    #If RBVersion > 2006
+		      pl.SetString(pathchild, value.URLPath)
+		    #else
+		      pl.SetString(pathchild, value.AbsolutePath)
+		    #endif
 		  Else
 		    pl.SetString(child, "")
+		    pl.SetString(pathchild, "")
 		  End If
+		  
 		  error = plistobj.error
 		  ErrorString = plistobj.errorMessage
 		End Sub

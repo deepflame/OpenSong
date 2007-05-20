@@ -26,7 +26,7 @@ Inherits SEditField
 		      IsError = True
 		      CurrentValue = Minimum
 		      ValueToText
-		    ElseIf Value > Maximum Then 
+		    ElseIf Value > Maximum Then
 		      IsError = True
 		      CurrentValue = Maximum
 		      ValueToText
@@ -62,10 +62,10 @@ Inherits SEditField
 		    If SignalRangeErrors And (NewValue < Minimum Or NewValue > Maximum) Then
 		      ex.Message = App.T.Translate("errors/range_error", CStr(NewValue))
 		      Raise ex
+		    Else
+		      If NewValue < Minimum Then NewValue = Minimum
+		      If NewValue > Maximum Then NewValue = Maximum
 		    End If
-		  Else
-		    If NewValue < Minimum Then NewValue = Minimum
-		    If NewValue > Maximum Then NewValue = Maximum
 		  End If
 		  CurrentValue = NewValue
 		  ValueToText
@@ -97,7 +97,6 @@ Inherits SEditField
 		Subclasses the SEditField to limit input to valid numbers
 		This can be used when the format for the number isn't fixed.
 		Validation takes place when the field loses focus, not during input.
-		
 	#tag EndNote
 
 
@@ -105,13 +104,12 @@ Inherits SEditField
 		Protected CurrentValue As Double
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		#tag Note
 			DisplayFormat contains the format to be used in displaying
 			the value of the control.  This is used instead of the base class's
 			Format property in order to keep OpenSong from trying to
 			re-format the string on input.
-			
 		#tag EndNote
 		Protected DisplayFormat As String
 	#tag EndProperty
@@ -123,7 +121,6 @@ Inherits SEditField
 	#tag Property, Flags = &h1
 		#tag Note
 			This is the value of the control when the control gets focus.
-			
 		#tag EndNote
 		Protected InitialValue As Double
 	#tag EndProperty
@@ -140,7 +137,6 @@ Inherits SEditField
 		#tag Note
 			If True, Raise a exception if the set value violates the min/max for the control
 			If False, just set to the min or max as appropriate
-			
 		#tag EndNote
 		SignalRangeErrors As Boolean
 	#tag EndProperty

@@ -1,4 +1,10 @@
--= BL19 =-
+-= BL20 =-
+
+* Fix typo that prevented compilation under Windows (changed ' to ")
+
+* Improved URL encoding for exported HTML files
+
+-= 1.0.3 BL19 =-
 
 * Fix issue in SEditFieldNumeric where the limits would be enforced even if enforcement was turned off.
 

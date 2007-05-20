@@ -291,8 +291,24 @@ Protected Module FileUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function MakeSafeURLName(name As String) As String
-		  Return Lowercase(ReplaceAll(name, " ", "_"))
+		Function MakeSafeURLName(name As String, urlencode As Boolean) As String
+		  Dim c As TextConverter
+		  
+		  'Replace spaces in the file name
+		  name = ReplaceAll(name, " ", "_")
+		  
+		  'Convert UTF8 to ISOLatin1 to get rid of UTF's 2-Byte sequences
+		  'This workaround is at least required for Internet Explorer that's not able to find
+		  'files with special characters when the filename has been decoded from URL to UTF8.
+		  c = GetTextConverter(Encodings.UTF8, Encodings.SystemDefault)
+		  name = c.convert(name)
+		  
+		  If urlencode Then
+		    'Create the URL for the HTML document
+		    name = EncodeURLComponent(name)
+		  End If
+		  
+		  Return name
 		End Function
 	#tag EndMethod
 

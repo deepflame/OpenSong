@@ -1,0 +1,26 @@
+
+<!ELEMENT keycommands  ( commands | keys | bindings )*>
+
+<!ELEMENT commands  ( command )>
+
+<!ELEMENT command  EMPTY>
+<!ATTLIST command
+code CDATA #REQUIRED
+value CDATA #REQUIRED
+>
+
+<!ELEMENT keys  ( key )>
+
+<!ELEMENT key  EMPTY>
+<!ATTLIST key
+name CDATA #REQUIRED
+ascvalue CDATA #REQUIRED
+>
+
+<!ELEMENT bindings  ( binding )>
+
+<!ELEMENT binding  EMPTY>
+<!ATTLIST binding
+command CDATA #REQUIRED
+key CDATA #REQUIRED
+>

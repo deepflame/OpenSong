@@ -1,4 +1,7 @@
 -= BL18 =-
+
+* FIXED Closing SongPicker would actually insert the currently selected song [Bug 1720935]
+
 * Correct the output of the bible index to avoid truncating the last character of each entry. [Bug 1718177]
 
 -= 1.0.2 BL18 =-

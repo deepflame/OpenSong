@@ -137,6 +137,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		  'BuildScripture
 		  
 		  If lst_all_songs.ListIndex >= 0 Then
+		    AddSong = True
 		    Close
 		  Else
 		    InputBox.Message App.T.Translate("song_lookup/no_selection")
@@ -424,7 +425,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  Ctrl/g: 
  FDef/G: 
   Name/S: SongPickerWindow
-  Size/N: 156
+  Size/N: 157
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -441,6 +442,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    name/S: Close
    sorc/d: (Enco/N: 134217984
 		Sub Close()
+		  If NOT AddSong Then f = Nil
 		  Globals.Status_SongPickerOpen = False
 		End Sub
    )
@@ -507,6 +509,17 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		End Function
    )
   Meth/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: AddSong As Boolean
+   flag/N: 1
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: AddSong As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
   Prop/G: 
    Enco/N: 134217984
    decl/S: f As FolderItem

@@ -81,7 +81,7 @@ Inherits Application
 		    AppFolder = AppFolder.Parent.Parent.Parent
 		  #Endif
 		  
-		  '++JRC Moved translation init to beginning so we can translate error & status Msgs 
+		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
 		  Dim temp As String
 		  
 		  'Can't translate this until we've loaded the translator
@@ -335,7 +335,7 @@ Inherits Application
 		  Dim checkVer As CheckVerThread
 		  If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "version/@check") Then
 		    Splash.SetStatus T.Translate("load_settings/latest_version") + "..."
-		    checkVer = new CheckVerThread 
+		    checkVer = new CheckVerThread
 		    checkVer.Run
 		  End If
 		  
@@ -394,7 +394,7 @@ Inherits Application
 		  // Do something reasonable for TwinView screens.
 		  // Thanks, Jon!  EMP, June 2006
 		  
-		  #If TargetLinux                                                          
+		  #If TargetLinux
 		    If (Screen(controlScreen).Width /2) > Screen(controlScreen).Height Then
 		      win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 4
 		    Else
@@ -478,7 +478,7 @@ Inherits Application
 		      MainPreferences.SetValueFI(kDocumentsFolder, f)
 		    End If //If FolderName <> ""
 		  Else // folder found in MainPreferences, make sure it exists.
-		    If Not f.exists Then 
+		    If Not f.exists Then
 		      Try
 		        f = QueryDocsFolder(Nil)
 		      Catch
@@ -516,7 +516,7 @@ Inherits Application
 		      End If
 		    End If
 		  Next i
-		  Return Nil // Fell through, no one is on the control screen 
+		  Return Nil // Fell through, no one is on the control screen
 		End Function
 	#tag EndMethod
 
@@ -602,7 +602,7 @@ Inherits Application
 		        TempPS.PageWidth / TempPS.HorizontalResolution)
 		      End If
 		    Else
-		      Return Nil // User cancelled dialog. 
+		      Return Nil // User cancelled dialog.
 		    End If
 		  Else // Don't show dialog
 		    
@@ -655,7 +655,7 @@ Inherits Application
 		    //--
 		    PrefFile = "preferences.plist"
 		    f = GetPrefsFolder().Child("preferences")
-		    If f.exists Then 
+		    If f.exists Then
 		      f.name = PrefFile
 		    End If
 		    f = GetPrefsFolder().Child(PrefFile)
@@ -733,7 +733,7 @@ Inherits Application
 		    Const WM_SYSCOMMAND = 274
 		    Const SC_MINIMIZE = 61472
 		    
-		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
+		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
 		    hwnd = Wnd.WinHWND
 		    
@@ -876,7 +876,7 @@ Inherits Application
 		  Const SC_RESTORE = &HF120
 		  
 		  #If TargetWin32 Then
-		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer 
+		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
 		    hwnd = Wnd.WinHWND
 		    
@@ -964,14 +964,14 @@ Inherits Application
 		  Dim t As String
 		  
 		  t = "v" +  Str(App.MajorVersion) + "." + Str(App.MinorVersion)
-		  If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion) 
+		  If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion)
 		  't = t + " RC 2"
 		  If App.NonReleaseVersion > 0 Then t = t + " (BL" +  CStr(App.NonReleaseVersion) + ")"
 		  //++
 		  // If compiled with rb2006r4 or higher, this is likely a Universal Binary.
 		  // Identify the target.
 		  // There's probably a gestalt that would be a better way to do this so we can
-		  // identify a true UB vs. a target-specific binary or an Intel Mac running the UB under Rosetta.  
+		  // identify a true UB vs. a target-specific binary or an Intel Mac running the UB under Rosetta.
 		  // This at least gets us in the ballpark.
 		  //--
 		  #If TargetMacOS
@@ -1095,7 +1095,7 @@ Inherits Application
 		  Dim settings As XmlNode
 		  
 		  settings = MyPrintSettings.DocumentElement
-		  points = SmartML.GetValueB(settings, "page/@points", True, False) 
+		  points = SmartML.GetValueB(settings, "page/@points", True, False)
 		  If points Then Return
 		  
 		  inches = SmartML.GetValueB(settings, "page/@inches", True, True)
@@ -1165,7 +1165,6 @@ Inherits Application
 			MainPreferences should go in the appropriate location
 			for the operating system instead of in the application directory.
 			This will typically be in a directory or file under PreferencesFolder
-			
 		#tag EndNote
 		MainPreferences As IPreferences
 	#tag EndProperty
@@ -1193,7 +1192,6 @@ Inherits Application
 	#tag Property, Flags = &h0
 		#tag Note
 			Global printer settings.
-			
 		#tag EndNote
 		MyPrinterSetup As PrinterSetup
 	#tag EndProperty

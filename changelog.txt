@@ -1,4 +1,23 @@
--= BL18 =-
+-= BL19 =-
+
+* Fix issue in SEditFieldNumeric where the limits would be enforced even if enforcement was turned off.
+
+* Correct the output of the bible index to avoid truncating the last character of each entry. [Bug 1718177]
+
+-= 1.0.2 =-
+
+* Include minor changes to help correct presenter issues in versions compiled with RB200x.
+
+* Fix issue with margins display in Print Settings.  In Mac UB, correct stacking order for labels in the Print Settings dialog.
+
+* In ScripturePicker, change the default button to Insert after first Insert (live display from ScripturePicker without adding to set). The
+operator only has to press Enter to move forward after that point.
+
+* Prevent NilObjectException in lst_set_items.change
+
+* Add conditional check to pop_scr_version.change to see if we are initializing (fixes preview text not showing)
+
+* Correct issue with not prompting prior to deleting a set.
 
 * Change folder layout to match the one established by the RB2006 branch.
 
@@ -7,7 +26,7 @@
 * SButtonPopup wouldn't properly dismiss on Windows & Linux.  Under RB5.5, the platform differences in mouse click handling were handled automatically.  In the later versions of REALbasic, the platform differences are exposed.  Handle opening the SButtonPopup in MouseDown for
 OSX and MouseUp for the other platforms.  Action event is still called in MouseUp for all platforms.
 
-* Incorporate Rüdiger's ErrorPopup window to the App.UnhandledExceptionEvent.  Add new exception types to the massive If/ElseIf in OpenSongUtils.ToString extension to the RuntimeException class.
+* Incorporate RŸdiger's ErrorPopup window to the App.UnhandledExceptionEvent.  Add new exception types to the massive If/ElseIf in OpenSongUtils.ToString extension to the RuntimeException class.
 
 -= 1.0.1 BL17 =-
 

@@ -628,7 +628,7 @@ Protected Class Bible
 		  
 		  'used to remove puncuation and xml tags
 		  reg= New RegEx
-		  'reg.SearchPattern= "[^a-zA-Z0-9\s]+" 
+		  'reg.SearchPattern= "[^a-zA-Z0-9\s]+"
 		  // Try a different search pattern that is more UTF-8 friendly.
 		  reg.SearchPattern = "[^\w\s]+" ' Non-word, non-space
 		  reg.ReplacementPattern=""
@@ -687,7 +687,7 @@ Protected Class Bible
 		            
 		            if (Len(sSplit(x))>=1 AND notIndexed.IndexOf(sSplit(x)) <0) then
 		              
-		              if (root=nil) then 'first entry 
+		              if (root=nil) then 'first entry
 		                root= new TreeNode(sSplit(x), IndexDict)
 		              else
 		                wordNode=root.find(sSplit(x))
@@ -754,8 +754,8 @@ Protected Class Bible
 		  for x=0 to UBound(index)
 		    out.write(index(x).entry)
 		    
-		    Passage = Join(index(x).passages, "|")
-		    out.WriteLine("|"+Left(Passage, Len(Passage) - 1))
+		    Passage = "|" + Join(index(x).passages, "|")
+		    out.WriteLine(Passage)
 		  next x
 		  
 		  out.WriteLine("---")
@@ -1041,7 +1041,7 @@ Protected Class Bible
 		    
 		  Case XML_ZEFANIA
 		    //
-		    // Zefania books have an attribute with the book number.  
+		    // Zefania books have an attribute with the book number.
 		    // Book 40 is Matthew, Book 66 is Revelation.
 		    //
 		    // Have to do a lookup because Zefania permits a file to only have one
@@ -1226,7 +1226,7 @@ Protected Class Bible
 		      query = "/bible/b[" + CStr(BookNum) + "]/c[" + CStr(ChapNum) + "]/v[position() >= " + CStr(fromVerse) +_
 		      " and position() <= " + CStr(toVerse) + "]"
 		      list = Scripture.Xql(query)
-		    Catch ex 
+		    Catch ex
 		      If ex IsA XmlException Then
 		        ErrorCode = ex.ErrorNumber
 		        ErrorString = ex.Message + chr(10) + "At " + XmlException(ex).Node + ", Token: " + XmlException(ex).Token
@@ -1267,7 +1267,7 @@ Protected Class Bible
 		    + "']/VERS[position() >= " + CStr(fromVerse) + " and position() <= " + CStr(toVerse) + "]"
 		    Try
 		      list = Scripture.Xql(query)
-		    Catch ex2 
+		    Catch ex2
 		      If ex2 IsA XmlException Then
 		        ErrorCode = ex2.ErrorNumber
 		        ErrorString = ex2.Message + chr(10) + "At " + XmlException(ex2).Node + ", Token: " + XmlException(ex2).Token
@@ -1323,7 +1323,7 @@ Protected Class Bible
 		      'query = "/bible/b[@n='" + book + "')]/c[" + chapter + "]/v[(@n>='" + fromVerse + "' or @t>='" + toVerse + "') and @n<='" + toVerse + "']"
 		      query = "/bible/b[@n='" + book + "']/c[@n=" + chapter + "]/v[(@n>=" + fromVerse + " or @t>=" + toVerse + ") and @n<=" + toVerse + "]"
 		      list = Scripture.Xql(query)
-		    Catch ex 
+		    Catch ex
 		      If ex IsA XmlException Then
 		        ErrorCode = ex.ErrorNumber
 		        ErrorString = ex.Message + chr(10) + "At " + XmlException(ex).Node + ", Token: " + XmlException(ex).Token
@@ -1361,7 +1361,7 @@ Protected Class Bible
 		    + "']/VERS[@vnumber >= '" + fromVerse + "' and @vnumber <= '" + toVerse + "']"
 		    Try
 		      list = Scripture.Xql(query)
-		    Catch ex2 
+		    Catch ex2
 		      If ex2 IsA XmlException Then
 		        ErrorCode = ex2.ErrorNumber
 		        ErrorString = ex2.Message + chr(10) + "At " + XmlException(ex2).Node + ", Token: " + XmlException(ex2).Token
@@ -1421,7 +1421,7 @@ Protected Class Bible
 		Protected Function getVerse(node as XMLNode) As String
 		  if node=nil then
 		    return ""
-		  elseif node.Type=XmlNodeType.TEXT_NODE then 'text_node 
+		  elseif node.Type=XmlNodeType.TEXT_NODE then 'text_node
 		    return node.value
 		  else
 		    return getVerse(node.child(0)) + getVerse(node.nextSibling)
@@ -1611,7 +1611,7 @@ Protected Class Bible
 		    + "']/VERS[" + CStr(VerseIndex) + "]"
 		    Try
 		      xn = Scripture.Xql(query)
-		    Catch ex2 
+		    Catch ex2
 		      If ex2 IsA XmlException Then
 		        ErrorCode = ex2.ErrorNumber
 		        ErrorString = ex2.Message + chr(10) + "At " + XmlException(ex2).Node + ", Token: " + XmlException(ex2).Token
@@ -1654,7 +1654,7 @@ Protected Class Bible
 		  child = VerseNode.FirstChild
 		  
 		  While child <> Nil
-		    If child.Type = XmlNodeType.TEXT_NODE Then 
+		    If child.Type = XmlNodeType.TEXT_NODE Then
 		      s = s + " " + child.Value
 		    ElseIf child.type = XmlNodeType.ELEMENT_NODE Then
 		      s = s + " " + getVerseText(child)
@@ -1720,7 +1720,7 @@ Protected Class Bible
 		  //
 		  // Updated version by Ed Palmer based on original code by Sean Lickfold
 		  //
-		  // Future TO DO: Change the way this object is set up to do the load as 
+		  // Future TO DO: Change the way this object is set up to do the load as
 		  // part of the constructor.  This will lay the foundation for having multiple
 		  // translations in play in case support for comparison or side-by-side
 		  // presentation (i.e., multi-lingual services).
@@ -1812,7 +1812,7 @@ Protected Class Bible
 		    If list.Length > 0 Then
 		      XMLTYPE = XML_ORIGINAL
 		      s = list.Item(0).GetAttribute("CHAPTERS")
-		      If Len(s) > 0 Then 
+		      If Len(s) > 0 Then
 		        XMLTYPE = XML_NAB
 		        App.DebugWriter.Write Chr(9) + "...with NAB extensions"
 		      End If
@@ -1851,7 +1851,7 @@ Protected Class Bible
 		      End If
 		    Next
 		    If wSplash <> Nil Then wSplash.Hide
-		    genIndex(file) 
+		    genIndex(file)
 		    If wSplash <> Nil Then wSplash.Show
 		    App.DebugWriter.Write "Bible.LoadBible: Exit successfully"
 		    Return True
@@ -1868,7 +1868,7 @@ Protected Class Bible
 		    'bhenny- if the bible doesn't have the required bname attributes add them in from the file bnames.xml
 		    If list.Item(0).GetAttribute("bname")="" then
 		      try
-		         if addBNames(file)=false then
+		        if addBNames(file)=false then
 		          ErrorCode=111
 		          ErrorString=App.T.Translate("bible/errors/load2", file.Name, App.T.Translate("bible/errors/nobnames"))
 		          Scripture=nil
@@ -1910,7 +1910,7 @@ Protected Class Bible
 		        End If
 		      Next
 		      If wSplash <> Nil Then wSplash.Hide
-		      genIndex(file) 
+		      genIndex(file)
 		    Catch genErr
 		      App.DebugWriter.Write "Bible.LoadBible: Caught " + s + " when calling genIndex"
 		      ShouldGenerateIndex = False
@@ -2042,7 +2042,7 @@ Protected Class Bible
 		        For j = 0 To xn.Length - 1
 		          FoundBooks.Append xn.Item(j).GetAttribute("bname")
 		        Next
-		         ErrorString = Join(FoundBooks, ", ")
+		        ErrorString = Join(FoundBooks, ", ")
 		        Return ""
 		      End If
 		    End Select
@@ -2121,7 +2121,7 @@ Protected Class Bible
 		  // Validate the book.
 		  //
 		  // "Valid" book abbreviations are held in the BookAbbrev XmlDocument
-		  // 
+		  //
 		  BookList = BookAbbrev.Xql("/abbrev/" + book)
 		  
 		  Select Case BookList.Length
@@ -2227,11 +2227,10 @@ Protected Class Bible
 	#tag EndMethod
 
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		#tag Note
 			Holds the list of valid abbreviations for book names
 			The abbreviation is the tag, the bname attribute holds the full book name
-			
 		#tag EndNote
 		Protected BookAbbrev As XmlDocument
 	#tag EndProperty
@@ -2244,7 +2243,6 @@ Protected Class Bible
 		#tag Note
 			This flags if a search function is available (will be false if indexing failed or the
 			index file isn't available)
-			
 		#tag EndNote
 		Protected CanSearch As Boolean
 	#tag EndProperty
@@ -2269,7 +2267,7 @@ Protected Class Bible
 		Protected LoadedBible As String
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected LoadedBibleFilename As String
 	#tag EndProperty
 
@@ -2293,8 +2291,6 @@ Protected Class Bible
 			Example: If loading a Zefania bible that doesn't have booknames (bname attribute),
 			should the user elect not to save the version with the bnames, this will prevent
 			the index for what is essentially a temporary bible from being created.
-			
-			
 		#tag EndNote
 		Protected ShouldGenerateIndex As Boolean
 	#tag EndProperty
@@ -2315,7 +2311,7 @@ Protected Class Bible
 		Protected wProgress As IndexProgress
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		#tag Note
 			Defines the type of XML used to encode the Bible in this object.
 			See the XML_ constants for valid values
@@ -2323,7 +2319,6 @@ Protected Class Bible
 			XML_ORIGINAL: Original OpenSong XML format
 			XML_NAB: Expanded format with self-describing books and chapters
 			XML_ZEFANIA: ZEFANIA XML format (http://www.zefania.de)
-			
 		#tag EndNote
 		Protected XMLTYPE As Integer
 	#tag EndProperty

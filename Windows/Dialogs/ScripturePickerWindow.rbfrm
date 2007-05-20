@@ -26,12 +26,10 @@ Begin Window ScripturePickerWindow
    Width           =   570
    Begin GroupBox grp_quick_lookup
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Quick Lookup"
       ControlOrder    =   0
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   75
       HelpTag         =   ""
       Index           =   -2147483648
@@ -47,18 +45,16 @@ Begin Window ScripturePickerWindow
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   360
-      BehaviorIndex   =   14
+      BehaviorIndex   =   0
       Begin StaticText lbl_quick_reference
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   1
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -69,7 +65,7 @@ Begin Window ScripturePickerWindow
          LockLeft        =   "True"
          LockRight       =   "False"
          LockTop         =   "True"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "Reference:"
          TextAlign       =   2
@@ -78,23 +74,21 @@ Begin Window ScripturePickerWindow
          TextSize        =   10
          Top             =   36
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   65
-         BehaviorIndex   =   18
+         BehaviorIndex   =   1
       End
       Begin EditField edt_quick_lookup
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
          BackColor       =   16777215
-         BalloonHelp     =   ""
          Bold            =   "False"
          Border          =   "True"
          ControlOrder    =   2
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Format          =   ""
          Height          =   22
          HelpTag         =   ""
@@ -108,12 +102,11 @@ Begin Window ScripturePickerWindow
          LockRight       =   "True"
          LockTop         =   "True"
          Mask            =   ""
-         MultiLine       =   "False"
+         Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
-         ScrollBar       =   "True"
-         ScrollBarHorizontal=   "False"
-         ScrollBarVertical=   "True"
+         ScrollbarHorizontal=   "False"
+         ScrollbarVertical=   "True"
          Styled          =   "False"
          TabPanelIndex   =   0
          Text            =   ""
@@ -123,20 +116,18 @@ Begin Window ScripturePickerWindow
          Top             =   35
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   200
-         BehaviorIndex   =   15
+         BehaviorIndex   =   2
       End
       Begin PushButton btn_quick_lookup
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Cancel          =   "False"
          Caption         =   "Lookup"
          ControlOrder    =   3
          Default         =   "False"
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
@@ -152,19 +143,17 @@ Begin Window ScripturePickerWindow
          TextSize        =   10
          Top             =   35
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   69
-         BehaviorIndex   =   16
+         BehaviorIndex   =   3
       End
       Begin StaticText nte_quick_example
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   21
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   12
          HelpTag         =   ""
          Index           =   -2147483648
@@ -175,7 +164,7 @@ Begin Window ScripturePickerWindow
          LockLeft        =   "True"
          LockRight       =   "True"
          LockTop         =   "True"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "Ex: ""2Pet 1:1-2"" or ""2Pet 1:1-2 (KJV)"""
          TextAlign       =   1
@@ -184,19 +173,17 @@ Begin Window ScripturePickerWindow
          TextSize        =   9
          Top             =   60
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   210
-         BehaviorIndex   =   17
+         BehaviorIndex   =   4
       End
    End
    Begin GroupBox grp_Books
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   ""
       ControlOrder    =   4
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   375
       HelpTag         =   ""
       Index           =   -2147483648
@@ -212,12 +199,12 @@ Begin Window ScripturePickerWindow
       TextSize        =   12
       Top             =   90
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   220
-      BehaviorIndex   =   23
+      BehaviorIndex   =   5
       Begin ListBox lst_scr_ot
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
+         AutoHideScrollbars=   "True"
          Bold            =   "False"
          ColumnCount     =   1
          ColumnsResizable=   "False"
@@ -226,8 +213,7 @@ Begin Window ScripturePickerWindow
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          EnableDrag      =   "False"
          EnableDragReorder=   "False"
          GridLinesHorizontal=   0
@@ -246,10 +232,9 @@ Begin Window ScripturePickerWindow
          LockLeft        =   "True"
          LockRight       =   "False"
          LockTop         =   "True"
-         ScrollBarHorizontal=   "False"
+         RequiresSelection=   ""
+         ScrollbarHorizontal=   "False"
          ScrollBarVertical=   "True"
-         ScrollPosition  =   0
-         ScrollPositionX =   0
          SelectionType   =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
@@ -257,13 +242,15 @@ Begin Window ScripturePickerWindow
          Top             =   100
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   100
-         BehaviorIndex   =   5
+         _ScrollOffset   =   0
+         _ScrollWidth    =   -1
+         BehaviorIndex   =   6
       End
       Begin ListBox lst_scr_nt
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
+         AutoHideScrollbars=   "True"
          Bold            =   "False"
          ColumnCount     =   1
          ColumnsResizable=   "False"
@@ -272,8 +259,7 @@ Begin Window ScripturePickerWindow
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          EnableDrag      =   "False"
          EnableDragReorder=   "False"
          GridLinesHorizontal=   0
@@ -292,10 +278,9 @@ Begin Window ScripturePickerWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "True"
-         ScrollBarHorizontal=   "False"
+         RequiresSelection=   ""
+         ScrollbarHorizontal=   "False"
          ScrollBarVertical=   "True"
-         ScrollPosition  =   0
-         ScrollPositionX =   0
          SelectionType   =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
@@ -303,14 +288,16 @@ Begin Window ScripturePickerWindow
          Top             =   100
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   100
-         BehaviorIndex   =   6
+         _ScrollOffset   =   0
+         _ScrollWidth    =   -1
+         BehaviorIndex   =   7
       End
    End
    Begin ListBox lst_scr_chapter
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
+      AutoHideScrollbars=   "True"
       Bold            =   "False"
       ColumnCount     =   1
       ColumnsResizable=   "False"
@@ -319,8 +306,7 @@ Begin Window ScripturePickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -339,10 +325,9 @@ Begin Window ScripturePickerWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
-      ScrollBarHorizontal=   "False"
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
-      ScrollPosition  =   0
-      ScrollPositionX =   0
       SelectionType   =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
@@ -350,13 +335,15 @@ Begin Window ScripturePickerWindow
       Top             =   100
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   50
-      BehaviorIndex   =   7
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
+      BehaviorIndex   =   8
    End
    Begin ListBox lst_scr_from_verse
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
+      AutoHideScrollbars=   "True"
       Bold            =   "False"
       ColumnCount     =   1
       ColumnsResizable=   "False"
@@ -365,8 +352,7 @@ Begin Window ScripturePickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -385,10 +371,9 @@ Begin Window ScripturePickerWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
-      ScrollBarHorizontal=   "False"
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
-      ScrollPosition  =   0
-      ScrollPositionX =   0
       SelectionType   =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
@@ -396,13 +381,15 @@ Begin Window ScripturePickerWindow
       Top             =   100
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   50
-      BehaviorIndex   =   8
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
+      BehaviorIndex   =   9
    End
    Begin ListBox lst_scr_to_verse
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
+      AutoHideScrollbars=   "True"
       Bold            =   "False"
       ColumnCount     =   1
       ColumnsResizable=   "False"
@@ -411,8 +398,7 @@ Begin Window ScripturePickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -431,10 +417,9 @@ Begin Window ScripturePickerWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
-      ScrollBarHorizontal=   "False"
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
-      ScrollPosition  =   0
-      ScrollPositionX =   0
       SelectionType   =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
@@ -442,18 +427,18 @@ Begin Window ScripturePickerWindow
       Top             =   100
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   50
-      BehaviorIndex   =   9
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
+      BehaviorIndex   =   10
    End
    Begin GroupBox grp_options_version
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Version"
       ControlOrder    =   8
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   55
       HelpTag         =   ""
       Index           =   -2147483648
@@ -469,18 +454,16 @@ Begin Window ScripturePickerWindow
       TextSize        =   11
       Top             =   255
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   145
-      BehaviorIndex   =   19
+      BehaviorIndex   =   11
       Begin PopupMenu pop_scr_version
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   9
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -498,19 +481,17 @@ Begin Window ScripturePickerWindow
          TextSize        =   12
          Top             =   275
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   95
-         BehaviorIndex   =   2
+         BehaviorIndex   =   12
       End
    End
    Begin GroupBox grp_options_verses_per_slide
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Verses Per Slide"
       ControlOrder    =   10
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   50
       HelpTag         =   ""
       Index           =   -2147483648
@@ -526,17 +507,15 @@ Begin Window ScripturePickerWindow
       TextSize        =   11
       Top             =   320
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   145
-      BehaviorIndex   =   10
+      BehaviorIndex   =   13
       Begin RadioButton rad_verses_one
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   1
          ControlOrder    =   11
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -553,18 +532,16 @@ Begin Window ScripturePickerWindow
          Top             =   340
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   35
-         BehaviorIndex   =   11
+         BehaviorIndex   =   14
       End
       Begin RadioButton rad_verses_two
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   2
          ControlOrder    =   12
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -581,18 +558,16 @@ Begin Window ScripturePickerWindow
          Top             =   340
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   35
-         BehaviorIndex   =   12
+         BehaviorIndex   =   15
       End
       Begin RadioButton rad_verses_three
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   3
          ControlOrder    =   13
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -609,19 +584,17 @@ Begin Window ScripturePickerWindow
          Top             =   340
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   35
-         BehaviorIndex   =   13
+         BehaviorIndex   =   16
       End
    End
    Begin GroupBox grp_options_format
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Format"
       ControlOrder    =   14
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   70
       HelpTag         =   ""
       Index           =   -2147483648
@@ -637,17 +610,15 @@ Begin Window ScripturePickerWindow
       TextSize        =   11
       Top             =   380
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   145
-      BehaviorIndex   =   20
+      BehaviorIndex   =   17
       Begin RadioButton rad_format_paragraph
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Paragraph"
          ControlOrder    =   15
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -664,18 +635,16 @@ Begin Window ScripturePickerWindow
          Top             =   400
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   21
+         BehaviorIndex   =   18
       End
       Begin RadioButton rad_format_verse
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Verse"
          ControlOrder    =   16
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -692,20 +661,18 @@ Begin Window ScripturePickerWindow
          Top             =   420
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   22
+         BehaviorIndex   =   19
       End
    End
    Begin PushButton btn_Insert
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Insert"
       ControlOrder    =   17
       Default         =   "False"
-      DisabledBalloonHelp=   ""
       Enabled         =   "False"
       Height          =   22
       HelpTag         =   ""
@@ -724,17 +691,15 @@ Begin Window ScripturePickerWindow
       Underline       =   "False"
       Visible         =   "False"
       Width           =   69
-      BehaviorIndex   =   26
+      BehaviorIndex   =   20
    End
    Begin PushButton btn_add
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Add"
       ControlOrder    =   18
       Default         =   "True"
-      DisabledBalloonHelp=   ""
       Enabled         =   "False"
       Height          =   22
       HelpTag         =   ""
@@ -751,20 +716,18 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   3
+      BehaviorIndex   =   21
    End
    Begin PushButton btn_done
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "True"
       Caption         =   "Done"
       ControlOrder    =   19
       Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -780,20 +743,18 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   185
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   4
+      BehaviorIndex   =   22
    End
    Begin PushButton btn_search
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Search"
       ControlOrder    =   20
       Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -809,19 +770,17 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   35
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   25
+      BehaviorIndex   =   23
    End
    Begin StaticText txt_verse_dash
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   22
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -832,7 +791,7 @@ Begin Window ScripturePickerWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "-"
       TextAlign       =   1
@@ -841,19 +800,17 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   260
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   10
-      BehaviorIndex   =   1
+      BehaviorIndex   =   24
    End
    Begin StaticText txt_verse_colon
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   23
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -864,7 +821,7 @@ Begin Window ScripturePickerWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   ":"
       TextAlign       =   1
@@ -873,23 +830,21 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   260
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   10
-      BehaviorIndex   =   0
+      BehaviorIndex   =   25
    End
    Begin EditField edt_preview
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
       BackColor       =   16777215
-      BalloonHelp     =   ""
       Bold            =   "False"
       Border          =   "True"
       ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   90
       HelpTag         =   ""
@@ -903,12 +858,11 @@ Begin Window ScripturePickerWindow
       LockRight       =   "True"
       LockTop         =   "False"
       Mask            =   ""
-      MultiLine       =   "True"
+      Multiline       =   "True"
       Password        =   "False"
       ReadOnly        =   "True"
-      ScrollBar       =   "True"
-      ScrollBarHorizontal=   "False"
-      ScrollBarVertical=   "True"
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
       Styled          =   "False"
       TabPanelIndex   =   0
       Text            =   ""
@@ -918,19 +872,17 @@ Begin Window ScripturePickerWindow
       Top             =   472
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   530
-      BehaviorIndex   =   24
+      BehaviorIndex   =   26
    End
    Begin StaticText StaticText1
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   27
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -941,7 +893,7 @@ Begin Window ScripturePickerWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Label:"
       TextAlign       =   0
@@ -950,19 +902,17 @@ Begin Window ScripturePickerWindow
       TextSize        =   12
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   27
    End
    Begin StaticText lbl_bible_book
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   28
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -973,7 +923,7 @@ Begin Window ScripturePickerWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Bible Book"
       TextAlign       =   0
@@ -982,7 +932,7 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   78
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   28
    End
@@ -1277,7 +1227,7 @@ End
 		  While searching And (i < lc - 1)
 		    i = i + 1
 		    If Not SplitVerseNumber(List.Cell(i, 0), listVerse, listAix) Then Return -1 // Error in verse format; treat as "verse not found"
-		    If listVerse = Verse Then 
+		    If listVerse = Verse Then
 		      If listaix = aix Then
 		        Searching = False
 		      ElseIf listaix > aix Then // Went one too far
@@ -1329,7 +1279,7 @@ End
 		    temp = Mid(lookup, open_paren_loc + 1, close_paren_loc - open_paren_loc - 1)
 		    i = 0
 		    
-		    //++ 
+		    //++
 		    // Bug 1467887: If xlations such as SCH and SCH51 exist, entering SCH may
 		    // return SCH51.  Test for exact match first, then substring.
 		    //--
@@ -1396,7 +1346,7 @@ End
 		    i = 0
 		    While i < lst_scr_nt.ListCount
 		      If lst_scr_nt.List(i) = BookName Then
-		        lst_scr_nt.ListIndex = i 
+		        lst_scr_nt.ListIndex = i
 		        i = lst_scr_nt.ListCount
 		      End If
 		      i = i + 1
@@ -1629,7 +1579,7 @@ End
 		  'clear box
 		  edt_preview.text=""
 		  
-		  If Initializing Then 
+		  If Initializing Then
 		    App.DebugWriter.Write "ScripturePickerWindow.setPreview: Exit (Initializing)"
 		    Return
 		  End If
@@ -1684,7 +1634,7 @@ End
 		  if (book<lst_scr_ot.ListCount) then
 		    lst_scr_ot.ListIndex= book
 		    lst_scr_nt.ListIndex=-1
-		  else 
+		  else
 		    lst_scr_nt.ListIndex= book- lst_scr_ot.ListCount
 		    lst_scr_ot.ListIndex=-1
 		  end if
@@ -1856,7 +1806,6 @@ End
 		#tag Note
 			This holds the full name of the currently selected book to make it easier
 			than having to chase the ListIndex of both lst_scr_nt & lst_scr_nt
-			
 		#tag EndNote
 		Protected CurrentBook As String
 	#tag EndProperty
@@ -1998,7 +1947,7 @@ End
 		    For x = 1 to UBound(VerseList)
 		      lst_scr_from_verse.AddRow VerseList(x)
 		      lst_scr_to_verse.AddRow VerseList(x)
-		    Next 
+		    Next
 		    
 		    lst_scr_from_verse.ListIndex = 0
 		    lst_scr_to_verse.ListIndex = 0
@@ -2064,7 +2013,9 @@ End
 		  //--
 		  If App.MyBible <> Nil Then
 		    oldBible = App.MyBible.GetBibleFilename
-		    If oldBible = Me.Text Then Return // No real change, don't do anything
+		    '++JRC We need to execute the code following this return while we're Initializing,
+		    'otherwise the preview text will never show
+		    If oldBible = Me.Text And NOT Initializing Then Return // No real change, don't do anything
 		  End If
 		  
 		  OldBookName = CurrentBook
@@ -2080,7 +2031,7 @@ End
 		  newSelection = Me.ListIndex
 		  
 		  oldBible= App.MyBible.GetBibleFilename
-		  If App.MyBible.GetBibleFileName <> Me.List(Me.ListIndex) Then 
+		  If App.MyBible.GetBibleFileName <> Me.List(Me.ListIndex) Then
 		    //++
 		    // Unload the old Bible from memory
 		    //--
@@ -2172,7 +2123,7 @@ End
 		      end if
 		    end try
 		    
-		    If NewBook > 0 Then 
+		    If NewBook > 0 Then
 		      If NewBook > ot Then 'New Testament
 		        lst_scr_nt.ListIndex = NewBook - ot - 2
 		        lst_scr_ot.Listindex = -1
@@ -2220,6 +2171,10 @@ End
 #tag Events btn_Insert
 	#tag Event
 		Sub Action()
+		  // Change the Insert button to default
+		  // so the operator only has to press the Enter
+		  // key to advance.
+		  Me.Default = True
 		  BuildScripture(True)
 		End Sub
 	#tag EndEvent
@@ -2271,7 +2226,7 @@ End
 		  // That way, if the control loses focus and then
 		  // gets clicked (generating a change), the chapter
 		  // and verse don't reset if the book doesn't change.
-		  If Me.ListCount > 0 Then 
+		  If Me.ListCount > 0 Then
 		    'If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
 		    If Me.ListIndex <> OldSel Then
 		      'Me.CellTag(0, 0) = Me.ListIndex
@@ -2291,7 +2246,7 @@ End
 		  // That way, if the control loses focus and then
 		  // gets clicked (generating a change), the chapter
 		  // and verse don't reset if the book doesn't change.
-		  If Me.ListCount > 0 Then 
+		  If Me.ListCount > 0 Then
 		    'If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
 		    If Me.ListIndex <> OldSel Then
 		      'Me.CellTag(0, 0) = Me.ListIndex

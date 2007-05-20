@@ -975,7 +975,7 @@ Protected Module OpenSongUtils
 		  ElseIf error isA XmlReaderException Then
 		    msg = "XmlReaderException"
 		  ElseIf error isA FunctionNotFoundException Then
-		    msg = "FunctionNotFoundException'
+		    msg = "FunctionNotFoundException"
 		  ElseIf error isA InvalidParentException Then
 		    msg = "InvalidParentException"
 		  ElseIf error isA OLEException Then

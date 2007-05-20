@@ -1,5 +1,9 @@
 -= BL20 =-
 
+* Changed the set list in PresentHelperWindow to keep the current slide in the center of the listbox as much as possible.
+
+* Improve PresentHelperWindow handling of keystrokes when focus is on the listbox.
+
 * Fix typo that prevented compilation under Windows (changed ' to ")
 
 * Improved URL encoding for exported HTML files

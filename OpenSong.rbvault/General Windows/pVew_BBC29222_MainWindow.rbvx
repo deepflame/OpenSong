@@ -10326,23 +10326,28 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
   Vsbl/N: 1
   sorc/d: (Enco/N: 134217984
 		Function CancelClose(appQuitting as Boolean) As Boolean
+		  Status_Closing = True
 		  If Status_SongChanged Then 
 		    'Ask if user wants to save
-		    If NOT ActionSongAskSave Then Return True 'User Canceled, Cancel the Close
-		    'This will prevent a bizzar second save prompt
-		    Status_SongChanged = false
+		    If NOT ActionSongAskSave Then 
+		      Status_Closing = False
+		      Return True 'User Canceled, Cancel the Close
+		    End If
 		  End if
 		  
 		  If Status_SetChanged Then 
 		    'Ask if user wants to save
-		    If NOT ActionSetAskSave Then Return True 'User Canceled
-		    'This will prevent a bizzar second save prompt
-		    Status_SetChanged = false
+		    If NOT ActionSetAskSave Then 
+		      Status_Closing = False
+		      Return True 'User Canceled
+		    End If
 		  End If
 		  
 		  // Cancel the close if we're presenting.
-		  If Status_Presentation Then Return True
-		  
+		  If Status_Presentation Then 
+		    Status_Closing = False
+		    Return True
+		  End If
 		  App.MouseCursor = WatchCursor
 		  
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@y", CStr(Top)
@@ -11247,6 +11252,9 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      ActionInSetSave
 		      ActionSetSave
 		    Case 0
+		      '++JRC Check if the App is Closing, if it is we don't need to reload
+		      If Status_Closing Then Return True 'Continue closing
+		      
 		      If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "set_revert_on_dont_save", False, True) Then
 		        //++
 		        // Revert the entire set to the last saved version
@@ -11641,6 +11649,8 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		      'Don't save. Two options: if App.MyMainSettings option song_revert_on_dont_save is True (default),
 		      'then revert to the last saved version.
 		      'If False, just update the in-memory song from the form.
+		      '++JRC Check if the App is Closing, if it is we don't need to reload
+		      If Status_Closing Then Return True 'Continue closing
 		      If SmartML.GetValueB(App.MyMainSettings.DocumentElement, "song_revert_on_dont_save", True, True) Then
 		        ActionSongRevert False
 		      Else
@@ -13781,6 +13791,16 @@ pVew/B: 426C6F6B70566577BBC292220000000000000000000000000000000000000000
 		
   )
  Prop/g: 
+  Prop/G: 
+   Enco/N: 134217984
+   decl/S: Status_Closing As Boolean
+   sorc/G: 
+    Enco/N: 134217984
+    ntln/S: Status_Closing As Boolean
+    ntln/S: 
+    ntln/S: 
+   sorc/g: 
+  Prop/g: 
  Prop/G: 
   Enco/N: 134217984
   decl/S: Status_InSetChanged As Boolean

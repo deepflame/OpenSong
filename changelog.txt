@@ -1,5 +1,7 @@
 -= JRC =-
 
+* Don't revert/update Unsaved Song or Set when Closing
+
 * FIXED Closing SongPicker would actually insert the currently selected song(bug #1720935)
 
 * Added Preview text to SongPicker

@@ -1,0 +1,7 @@
+-= OSInputBox =-
+
+* Added Focus Rectangle to SButton
+
+* Incorporated Ed's modifications to SButton
+
+* Remove Hidden buttons from InputBox

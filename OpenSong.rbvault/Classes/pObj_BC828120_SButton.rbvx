@@ -7,23 +7,52 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
  Cont/N: -1131477696
  bCls/N: 1
  Name/S: SButton
- Size/N: 153
+ Size/N: 154
  Supr/S: Canvas
  bNtr/N: 0
  Intr/S: 
+ HIns/G: 
+  Enco/N: 1536
+  name/S: GotFocus
+  sorc/d: (Enco/N: 134217984
+		Sub GotFocus()
+		  HasFocus = True
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		End Sub
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1280
+  name/S: KeyDown
+  sorc/d: (Enco/N: 134217984
+		Function KeyDown(Key As String) As Boolean
+		  //++
+		  // Treat Return & Spacebar the same as
+		  // a click
+		  //--
+		  If Key = " " Or Asc(Key) = 13 Or Asc(Key) = 3 Then
+		    Call DoMouseDown
+		    Return DoMouseUp
+		  End If
+		End Function
+  )
+ HIns/g: 
+ HIns/G: 
+  Enco/N: 1536
+  name/S: LostFocus
+  sorc/d: (Enco/N: 134217984
+		Sub LostFocus()
+		  HasFocus = False
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		End Sub
+  )
+ HIns/g: 
  HIns/G: 
   Enco/N: 1280
   name/S: MouseDown
   sorc/d: (Enco/N: 134217984
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If IsStuck Then Return False
-		  IsMouseDown = True
-		  MenuItem = ""
-		  If Enabled Then
-		    Refresh ' False
-		    If Popup <> Nil Then Popup.Open
-		    Return True
-		  End If
+		  Return DoMouseDown(X, Y)
 		End Function
   )
  HIns/g: 
@@ -55,9 +84,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
   name/S: MouseUp
   sorc/d: (Enco/N: 134217984
 		Sub MouseUp(X As Integer, Y As Integer)
-		  IsMouseDown = False
-		  Action
-		  Refresh ' False Graphics
+		  Call DoMouseUp(X, Y)
 		End Sub
   )
  HIns/g: 
@@ -88,8 +115,9 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
   sorc/d: (Enco/N: 134217984
 		Sub Paint(g As Graphics)
 		  Dim i, j, offset, tri(6) As Integer
+		  Dim r As New RectShape
 		  
-		  If NewPaint Then 
+		  If NewPaint Then
 		    PaintNew(g)
 		    Return
 		  End If
@@ -101,6 +129,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
 		    IsMouseOver = False
 		  End If
 		  
+		  'Set Font
 		  If Len(Font.Name) > 0 Then
 		    Font.OntoGraphics g
 		  Else
@@ -120,12 +149,14 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
 		    'g.FillRect 0, 0, Width, Height
 		  End If
 		  
+		  'Draw Icon
 		  If Icon <> Nil Then
 		    i = (Height - Icon.Height)/2
 		    g.DrawPicture Icon, i+offset, i+offset
 		    i = i + Icon.Width
 		  End If
 		  
+		  'Set Label Alignment
 		  If LabelAlign = 1 Then
 		    i = i + (Width - i)/2 - g.StringWidth(Label)/2
 		  Else
@@ -140,6 +171,14 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
 		  Else
 		    g.ForeColor = Font.ForeColor
 		    g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
+		    If HasFocus Then
+		      'Draw Focus Rectangle
+		      g.ForeColor = DarkTingeColor
+		      g.DrawRect i-3, (Ceil((Height + g.TextAscent) / 2) - g.TextAscent) - 2 + offset, g.StringWidth(Label) + 5, g.TextHeight + 2
+		    Else
+		      
+		    End If
+		    
 		  End If
 		  
 		  If Popup <> Nil Then
@@ -160,6 +199,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
 		    g.ForeColor = DarkBevelColor
 		    g.DrawRect 0, 0, Width, Height
 		  End If
+		  
 		End Sub
   )
  HIns/g: 
@@ -212,6 +252,55 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
 		  Popup = Nil
 		End Sub
   )
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DoMouseDown
+  parm/S: x As Integer = 0, y As Integer = 0
+  rslt/S: Boolean
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function DoMouseDown(x As Integer = 0, y As Integer = 0) As Boolean
+   srcl/S: If IsStuck Then Return False
+   srcl/S: IsMouseDown = True
+   srcl/S: MenuItem = ""
+   srcl/S: If Enabled Then
+   srcl/S: Refresh ' False
+   srcl/S: // Mac OSX will open the popup on MouseDown,
+   srcl/S: // Windows & Linux open in MouseUp
+   srcl/S: #If TargetMacOS
+   srcl/S: If Popup <> Nil Then
+   srcl/S: Popup.Open
+   srcl/S: End If
+   srcl/S: #Endif
+   srcl/S: Return True
+   srcl/S: End If
+   srcl/S: End Function
+  sorc/g: 
+ Meth/g: 
+ Meth/G: 
+  Enco/N: 134217984
+  name/S: DoMouseUp
+  parm/S: x As Integer = 0, y As Integer = 0
+  rslt/S: Boolean
+  flag/N: 33
+  sorc/G: 
+   Enco/N: 134217984
+   srcl/S: Function DoMouseUp(x As Integer = 0, y As Integer = 0) As Boolean
+   srcl/S: // The Linux & Windows systems expect to open
+   srcl/S: // a contextual dialog on mouse up, but OS X
+   srcl/S: // does it on mouse down.
+   srcl/S: #if Not TargetMacOS
+   srcl/S: If Popup <> Nil Then
+   srcl/S: Popup.Open
+   srcl/S: End If
+   srcl/S: #endif
+   srcl/S: IsMouseDown = False
+   srcl/S: Action
+   srcl/S: 'Refresh ' False Graphics
+   srcl/S: End Function
+  sorc/g: 
  Meth/g: 
  Meth/G: 
   Enco/N: 134217984
@@ -318,7 +407,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
    srcl/S: ' Left and Top Bevels
    srcl/S: g.ForeColor = DarkBevelColor
    srcl/S: g.PenWidth = ShadowWidth
-   srcl/S: g.DrawLine 0, 0, 0, Height 
+   srcl/S: g.DrawLine 0, 0, 0, Height
    srcl/S: g.PenWidth = 1
    srcl/S: g.PenHeight = ShadowWidth
    srcl/S: g.drawline 0, 0, Width, 0
@@ -347,7 +436,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
    srcl/S: 'g.ForeColor = FillColor
    srcl/S: 'g.FillRect 0, 0, Width, Height
    srcl/S: '
-   srcl/S: ' This code path is for unselected controls that the mouse is not over.  Draw like a 
+   srcl/S: ' This code path is for unselected controls that the mouse is not over.  Draw like a
    srcl/S: ' button ready to be pressed (appears to be poking out), but don't highlight it inside
    srcl/S: ' the bevels like a MouseOver
    srcl/S: '
@@ -409,7 +498,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
    srcl/S: '
    srcl/S: ' Right and bottom bevels
    srcl/S: g.ForeColor = LightBevelColor
-   srcl/S: g.DrawLine 0, height - ShadowOffset, Width, height  - ShadowOffset 
+   srcl/S: g.DrawLine 0, height - ShadowOffset, Width, height  - ShadowOffset
    srcl/S: g.DrawLine Width - ShadowOffset, 0, Width - ShadowOffset, Height
    srcl/S: ' Outline
    srcl/S: g.ForeColor = FrameColor
@@ -542,7 +631,17 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
   sorc/G: 
    Enco/N: 134217984
    ntln/S: GrayIcon As Picture
-   ntln/S: 'EMP, added to support PaintNew method 
+   ntln/S: 'EMP, added to support PaintNew method
+  sorc/g: 
+ Prop/g: 
+ Prop/G: 
+  Enco/N: 134217984
+  decl/S: HasFocus As Boolean
+  flag/N: 1
+  sorc/G: 
+   Enco/N: 134217984
+   ntln/S: HasFocus As Boolean
+   ntln/S: 
    ntln/S: 
   sorc/g: 
  Prop/g: 
@@ -582,7 +681,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
  Prop/G: 
   Enco/N: 134217984
   decl/S: IsStuck As Boolean
-  flag/N: 5
+  flag/N: 1
   sorc/G: 
    Enco/N: 134217984
    ntln/S: IsStuck As Boolean
@@ -593,7 +692,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
  Prop/G: 
   Enco/N: 134217984
   decl/S: Label As String
-  flag/N: 5
+  flag/N: 1
   sorc/G: 
    Enco/N: 134217984
    ntln/S: Label As String
@@ -604,7 +703,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
  Prop/G: 
   Enco/N: 134217984
   decl/S: LabelAlign As Integer
-  flag/N: 5
+  flag/N: 1
   sorc/G: 
    Enco/N: 134217984
    ntln/S: LabelAlign As Integer
@@ -647,7 +746,7 @@ pObj/B: 426C6F6B704F626ABC8281200000000000000000000000000000000000000000
  Prop/G: 
   Enco/N: 134217984
   decl/S: StickyBevel As Boolean
-  flag/N: 5
+  flag/N: 1
   sorc/G: 
    Enco/N: 134217984
    ntln/S: StickyBevel As Boolean

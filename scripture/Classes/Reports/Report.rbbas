@@ -193,7 +193,7 @@ Protected Class Report
 		  #If Not TargetMacOS
 		    For CopyCount = 1 To g.Copies
 		  #endif
-		  For i = 1 To PrinterPages.Count 
+		  For i = 1 To PrinterPages.Count
 		    If i >= g.FirstPage And i <= g.LastPage Then
 		      App.DebugWriter.Write "Report.Print: Printing page "+ str(i)
 		      If PagesPrinted > 0 Then g.NextPage
@@ -225,7 +225,6 @@ Protected Class Report
 	#tag Property, Flags = &h1
 		#tag Note
 			Holds the generated pages of the report
-			
 		#tag EndNote
 		Protected Pages As Group2D
 	#tag EndProperty
@@ -234,7 +233,6 @@ Protected Class Report
 		#tag Note
 			Size (in inches) of the printable area of a page.
 			This is calculated from the PrinterSetup object.
-			
 		#tag EndNote
 		PrintableHeight As Double
 	#tag EndProperty
@@ -243,7 +241,6 @@ Protected Class Report
 		#tag Note
 			This is the width in inches of the printable area of the page.
 			It is calculated from the PrinterSetup object.
-			
 		#tag EndNote
 		PrintableWidth As Double
 	#tag EndProperty
@@ -251,7 +248,6 @@ Protected Class Report
 	#tag Property, Flags = &h0
 		#tag Note
 			PrinterSetup object associated with this report
-			
 		#tag EndNote
 		ps As PrinterSetup
 	#tag EndProperty
@@ -259,7 +255,6 @@ Protected Class Report
 	#tag Property, Flags = &h1
 		#tag Note
 			Current scale setting for Pages
-			
 		#tag EndNote
 		Protected Scale As Double
 	#tag EndProperty
@@ -269,5 +264,55 @@ Protected Class Report
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

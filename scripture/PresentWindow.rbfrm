@@ -82,9 +82,7 @@ End
 		      If PresentHelperWindow.IsCollapsed Then
 		        App.RestoreWindow(PresentHelperWindow)
 		      Else
-		        #If RBVersion < 2005
-		          PresentHelperWindow.SetFocus
-		        #endif
+		        PresentHelperWindow.SetFocus
 		      End If
 		    Else
 		      If PresentWindow.IsCollapsed Then
@@ -1775,6 +1773,7 @@ End
 #tag Events timerTransition
 	#tag Event
 		Sub Action()
+		  
 		  If TransitionFrame = TransitionFrames Then
 		    Me.Enabled = False
 		    Me.Reset

@@ -1,39 +1,31 @@
 #tag Class
-Protected Class bindSColorCanvasAndSImageCanvas
-Implements BindingInterface,ActionNotificationReceiver
+Protected Class bindEditFieldAndPushButton
+Implements BindingInterface,actionNotificationReceiver
 	#tag Method, Flags = &h0
-		Sub Bind(Source As Object, Target As Object)
-		  #pragma BindingSpecification sColorCanvas, SImageCanvas, "Update %2 with background color from %1"
+		Sub bind(source As Object, dest As Object)
+		  // Part of the BindingInterface interface.
+		  #pragma BindingSpecification sEditField, PushButton, "Enable %2 when text is in %1"
 		  
-		  SourceControl = SColorCanvas(Source)
-		  TargetControl = SImageCanvas(Target)
-		  
-		  SourceControl.AddActionNotificationReceiver self
+		  BoundEditField = SEditField(source)
+		  BoundPushButton = PushButton(dest)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub PerformAction()
-		  // Update the SStyleCanvas with the color
-		  // selected by SColorCanvas
-		  Dim c As Color
-		  If SourceControl.GetColor(c) Then
-		    TargetControl.bgColor = c
-		  Else
-		    TargetControl.bgColor = FillColor
-		  End If
+		  // Part of the actionNotificationReceiver interface.
 		  
-		  TargetControl.Repaint
+		  BoundPushButton.Enabled = BoundEditField.Text.Len > 0
 		End Sub
 	#tag EndMethod
 
 
-	#tag Property, Flags = &h1
-		Protected SourceControl As sColorCanvas
+	#tag Property, Flags = &h21
+		Private BoundEditField As SEditfield
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected TargetControl As sImageCanvas
+	#tag Property, Flags = &h21
+		Private BoundPushButton As PushButton
 	#tag EndProperty
 
 

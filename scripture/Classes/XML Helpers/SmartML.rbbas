@@ -122,7 +122,7 @@ Protected Module SmartML
 		Protected Function GetValueB(xnode As XmlNode, childPath As String, create As Boolean = True, default As Boolean = False) As Boolean
 		  Dim s As String
 		  s = GetValue(xnode, childPath, create)
-		  If create And Len(s) = 0 Then 
+		  If create And Len(s) = 0 Then
 		    SetValueB(xnode, childPath, default)
 		    Return default
 		  End If
@@ -478,7 +478,7 @@ Protected Module SmartML
 		  End If
 		  input = f.OpenAsTextFile
 		  '++JRC Prevent NilObject Exception if file could not be opened
-		  If input = Nil Then 
+		  If input = Nil Then
 		    ErrorCode = 4
 		    '++JRC Translated
 		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/cant_open",  f.AbsolutePath)
@@ -507,7 +507,7 @@ Protected Module SmartML
 		    '--
 		    Return Nil
 		  End Try
-		Catch ex 
+		Catch ex
 		  If ex IsA NilObjectException Then
 		    //++
 		    // Most likely the Nil object is App.T and we're trying to open
@@ -614,5 +614,35 @@ Protected Module SmartML
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Module
 #tag EndModule

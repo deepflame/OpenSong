@@ -72,15 +72,287 @@ Inherits EditField
 #tag EndMenuHandler
 
 
+	#tag Hook, Flags = &h0
+		Event Untitled()
+	#tag EndHook
+
+
 	#tag Note, Name = Overview
 		Subclassed from EditField, SEditField has additional code to support
 		Cut, Paste, Clear and Copy menu items and accelerators.
 		
 		Assumes that a control with a name starting "edt" is a standard
 		EditField, but one starting "edf" is a fixed-font EditField.
-		
 	#tag EndNote
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			Type="String"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="80"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="22"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="&h000000"
+			Type="Color"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="&hFFFFFF"
+			Type="Color"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			InitialValue="System"
+			Type="String"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Initial State"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="String"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+			EditorType="Enum"
+			InheritedFrom="EditField"
+			#tag EnumValues
+				"0 - Default"
+				"1 - Left"
+				"2 - Center"
+				"3 - Right"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Database Binding"
+			Type="String"
+			EditorType="DataSource"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Database Binding"
+			Type="String"
+			EditorType="DataField"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

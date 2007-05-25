@@ -36,5 +36,51 @@ Inherits Thread
 	#tag EndEvent
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="5"
+			Type="Integer"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Thread"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

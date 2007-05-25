@@ -52,7 +52,7 @@ Protected Class Translator
 		  
 		  Dim temp As String
 		  
-		  If list = Nil Or list.Length = 0 Then 
+		  If list = Nil Or list.Length = 0 Then
 		    App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from)
 		    Return ""
 		  End If
@@ -131,8 +131,9 @@ Protected Class Translator
 		  
 		  For i = 0 To win.ControlCount - 1
 		    cont = win.Control(i)
-		    name = Lowercase(Left(cont.Name, 4) + Mid(cont.Name, InStr(5, cont.Name, "_")+1)) ' drop out the second word (the second words is used for organizing controls and avoiding duplicate control names.)
-		    If Left(Right(name, 2), 1) = "_" And Val(Right(name, 1)) > 0 Then name = Left(name, name.Len-2) ' truncate the _1, _2, _3, etc. in multiple fields
+		    name = ParseName(cont)
+		    'name = Lowercase(Left(cont.Name, 4) + Mid(cont.Name, InStr(5, cont.Name, "_")+1)) ' drop out the second word (the second words is used for organizing controls and avoiding duplicate control names.)
+		    'If Left(Right(name, 2), 1) = "_" And Val(Right(name, 1)) > 0 Then name = Left(name, name.Len-2) ' truncate the _1, _2, _3, etc. in multiple fields
 		    
 		    
 		    
@@ -413,6 +414,34 @@ Protected Class Translator
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function ParseName(c As Control) As String
+		  Dim name As String
+		  Dim parts() As String
+		  
+		  name = c.Name
+		  parts = Split(name, "_")
+		  
+		  //
+		  // First element is control type, should be three characters
+		  //
+		  // If the last element is numeric, drop it (control "array")
+		  //
+		  // If there are more than two elements after dropping the numeric,
+		  // delete the second one (will be replaced by the parent control name)
+		  //
+		  If UBound(parts) < 1 Then Return name // Can't do anything with a non-conforming name
+		  
+		  If parts(0).Len <> 3 Then Return name // Leading element is not in correct format
+		  
+		  If Val(parts(UBound(parts))) > 0 Then parts.Remove(UBound(parts))
+		  
+		  If UBound(parts) > 1 Then parts.Remove(1)
+		  
+		  Return Join(parts, "_")
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h1
 		Protected Document As XmlDocument
@@ -423,5 +452,35 @@ Protected Class Translator
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

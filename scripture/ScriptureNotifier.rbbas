@@ -1,19 +1,16 @@
 #tag Interface
-Protected Interface IpreferencesReceiver
+Protected Interface ScriptureNotifier
 	#tag Method, Flags = &h0
-		Sub PreferencesChanged(NewPreferences As IPreferences)
+		Sub registerScriptureReceiver(receiver As ScriptureReceiver)
 		  
 		End Sub
 	#tag EndMethod
 
-
-	#tag Note, Name = Overview
-		Complementary interface to IPreferences.
-		
-		Allows a class to register a callback routine to be called
-		when a preference changes in the IPreferences
-		object the class is registered with.
-	#tag EndNote
+	#tag Method, Flags = &h0
+		Sub unregisterScriptureReceiver(receiver As ScriptureReceiver)
+		  
+		End Sub
+	#tag EndMethod
 
 
 	#tag ViewBehavior

@@ -102,7 +102,7 @@ Protected Class FolderDB
 		  fname = Folder.Name
 		  
 		  j = 0
-		  ProgressWindow.SetMaximum(count) 
+		  ProgressWindow.SetMaximum(count)
 		  ProgressWindow.SetProgress(j)
 		  ProgressWindow.Show
 		  ProgressWindow.SetStatus  App.T.Translate("progress_status/folder", fName) + "..."
@@ -110,7 +110,7 @@ Protected Class FolderDB
 		  For x = 1 to count
 		    '++JRC
 		    j = j + 1
-		    ProgressWindow.SetMaximum(count) 
+		    ProgressWindow.SetMaximum(count)
 		    ProgressWindow.SetStatus App.T.Translate("progress_status/folder", fName) + "..."
 		    ProgressWindow.SetProgress(j)
 		    '--
@@ -587,7 +587,6 @@ Protected Class FolderDB
 	#tag Note, Name = Description
 		Accesses the songs folder as a go-between
 		Implements folder caching to speed up load times dramatically
-		
 	#tag EndNote
 
 
@@ -620,5 +619,49 @@ Protected Class FolderDB
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

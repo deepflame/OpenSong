@@ -25,6 +25,25 @@ Begin Window SearchWindow
    Visible         =   "True"
    Width           =   477
    Begin SEditField edt_search
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   80
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   "True"
+                      =   ""
+                      =   &h000000
+                      =   "True"
+                      =   "True"
+                      =   "True"
+                      =   0
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   ""
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
@@ -50,12 +69,12 @@ Begin Window SearchWindow
       LockRight       =   "True"
       LockTop         =   "True"
       Mask            =   ""
-      MultiLine       =   "False"
+      Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
       ScrollBar       =   "True"
-      ScrollBarHorizontal=   "False"
-      ScrollBarVertical=   "True"
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
       Styled          =   "False"
       TabPanelIndex   =   0
       Text            =   ""
@@ -67,7 +86,7 @@ Begin Window SearchWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   284
-      BehaviorIndex   =   11
+      BehaviorIndex   =   0
    End
    Begin PushButton btn_search_search
       AutoDeactivate  =   "True"
@@ -78,7 +97,7 @@ Begin Window SearchWindow
       ControlOrder    =   1
       Default         =   "True"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -94,12 +113,13 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   114
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   66
-      BehaviorIndex   =   0
+      BehaviorIndex   =   1
    End
    Begin ListBox lst_result
       AutoDeactivate  =   "True"
+      AutoHideScrollbars=   "True"
       BalloonHelp     =   ""
       Bold            =   "False"
       ColumnCount     =   2
@@ -110,7 +130,7 @@ Begin Window SearchWindow
       DataSource      =   ""
       DefaultRowHeight=   -1
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -129,7 +149,8 @@ Begin Window SearchWindow
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      ScrollBarHorizontal=   "True"
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   "True"
       ScrollBarVertical=   "True"
       ScrollPosition  =   0
       ScrollPositionX =   0
@@ -140,9 +161,11 @@ Begin Window SearchWindow
       Top             =   165
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   449
-      BehaviorIndex   =   1
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
+      BehaviorIndex   =   2
    End
    Begin PushButton btn_search_ok
       AutoDeactivate  =   "True"
@@ -153,7 +176,7 @@ Begin Window SearchWindow
       ControlOrder    =   3
       Default         =   "False"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -169,9 +192,9 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   367
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   67
-      BehaviorIndex   =   2
+      BehaviorIndex   =   3
    End
    Begin PushButton btn_search_cancel
       AutoDeactivate  =   "True"
@@ -182,7 +205,7 @@ Begin Window SearchWindow
       ControlOrder    =   4
       Default         =   "False"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -198,9 +221,9 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   367
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   67
-      BehaviorIndex   =   3
+      BehaviorIndex   =   4
    End
    Begin GroupBox grp_search_match
       AutoDeactivate  =   "True"
@@ -209,7 +232,7 @@ Begin Window SearchWindow
       Caption         =   "Match:"
       ControlOrder    =   5
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   83
       HelpTag         =   ""
       Index           =   -2147483648
@@ -225,65 +248,65 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   14
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   166
-      BehaviorIndex   =   4
-      Begin RadioButton rad_match_exact
-         AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
-         Bold            =   "False"
-         Caption         =   "Exact word"
-         ControlOrder    =   6
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_search_match"
-         Italic          =   "False"
-         Left            =   85
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "True"
-         TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   36
-         Underline       =   "False"
-         Value           =   "True"
-         Visible         =   "True"
-         Width           =   139
-         BehaviorIndex   =   5
-      End
-      Begin RadioButton rad_match_begin
-         AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
-         Bold            =   "False"
-         Caption         =   "Begins with"
-         ControlOrder    =   7
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_search_match"
-         Italic          =   "False"
-         Left            =   85
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "True"
-         TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   63
-         Underline       =   "False"
-         Value           =   "False"
-         Visible         =   "True"
-         Width           =   139
-         BehaviorIndex   =   6
-      End
+      BehaviorIndex   =   5
+   End
+   Begin RadioButton rad_match_exact
+      AutoDeactivate  =   "True"
+      BalloonHelp     =   ""
+      Bold            =   "False"
+      Caption         =   "Exact word"
+      ControlOrder    =   6
+      DisabledBalloonHelp=   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   "grp_search_match"
+      Italic          =   "False"
+      Left            =   85
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "False"
+      LockTop         =   "True"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   36
+      Underline       =   "False"
+      Value           =   "True"
+      Visible         =   True
+      Width           =   139
+      BehaviorIndex   =   6
+   End
+   Begin RadioButton rad_match_begin
+      AutoDeactivate  =   "True"
+      BalloonHelp     =   ""
+      Bold            =   "False"
+      Caption         =   "Begins with"
+      ControlOrder    =   7
+      DisabledBalloonHelp=   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   "grp_search_match"
+      Italic          =   "False"
+      Left            =   85
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "False"
+      LockTop         =   "True"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   63
+      Underline       =   "False"
+      Value           =   "False"
+      Visible         =   True
+      Width           =   139
+      BehaviorIndex   =   7
    End
    Begin StaticText lbl_search_example
       AutoDeactivate  =   "True"
@@ -293,7 +316,7 @@ Begin Window SearchWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -304,7 +327,7 @@ Begin Window SearchWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "To search for an exact phrase enclose it in double quotes, like ""Simon Peter"""
       TextAlign       =   0
@@ -313,9 +336,9 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   144
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   373
-      BehaviorIndex   =   7
+      BehaviorIndex   =   8
    End
    Begin GroupBox grp_search_words
       AutoDeactivate  =   "True"
@@ -324,7 +347,7 @@ Begin Window SearchWindow
       Caption         =   "Verse must have:"
       ControlOrder    =   9
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   83
       HelpTag         =   ""
       Index           =   -2147483648
@@ -340,65 +363,65 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   14
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   176
-      BehaviorIndex   =   8
-      Begin RadioButton rad_words_any
-         AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
-         Bold            =   "False"
-         Caption         =   "Any word"
-         ControlOrder    =   10
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_search_words"
-         Italic          =   "False"
-         Left            =   276
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   36
-         Underline       =   "False"
-         Value           =   "False"
-         Visible         =   "True"
-         Width           =   105
-         BehaviorIndex   =   9
-      End
-      Begin RadioButton rad_words_all
-         AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
-         Bold            =   "False"
-         Caption         =   "All words"
-         ControlOrder    =   11
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
-         Height          =   19
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_search_words"
-         Italic          =   "False"
-         Left            =   276
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   64
-         Underline       =   "False"
-         Value           =   "False"
-         Visible         =   "True"
-         Width           =   105
-         BehaviorIndex   =   10
-      End
+      BehaviorIndex   =   9
+   End
+   Begin RadioButton rad_words_any
+      AutoDeactivate  =   "True"
+      BalloonHelp     =   ""
+      Bold            =   "False"
+      Caption         =   "Any word"
+      ControlOrder    =   10
+      DisabledBalloonHelp=   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   "grp_search_words"
+      Italic          =   "False"
+      Left            =   276
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "False"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   36
+      Underline       =   "False"
+      Value           =   "False"
+      Visible         =   True
+      Width           =   105
+      BehaviorIndex   =   10
+   End
+   Begin RadioButton rad_words_all
+      AutoDeactivate  =   "True"
+      BalloonHelp     =   ""
+      Bold            =   "False"
+      Caption         =   "All words"
+      ControlOrder    =   11
+      DisabledBalloonHelp=   ""
+      Enabled         =   True
+      Height          =   19
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   "grp_search_words"
+      Italic          =   "False"
+      Left            =   276
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "False"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   64
+      Underline       =   "False"
+      Value           =   "False"
+      Visible         =   True
+      Width           =   105
+      BehaviorIndex   =   11
    End
 End
 #tag EndWindow
@@ -536,7 +559,7 @@ End
 		  while y<= UBound(right)
 		    returnVal.Append(right(y))
 		    y=y+1
-		  wend 
+		  wend
 		  
 		  
 		  return returnVal
@@ -576,20 +599,20 @@ End
 		    
 		    'search for first word in phrase that is in index
 		    y=1
-		    do until y> CountFields(phrase, " ") Or App.MyBible.validSearch(NthField(phrase, " ", y))=true
+		    do until y> CountFields(phrase, " ") Or Bible(App.MyBible).validSearch(NthField(phrase, " ", y))=true
 		      y=y+1
 		      
-		    loop 
+		    loop
 		    
 		    if (y<=CountFields(phrase, " ")) then
 		      
 		      
-		      results=App.MyBible.search(NthField(phrase, " ", y), false)
+		      results= Bible(App.MyBible).search(NthField(phrase, " ", y), false)
 		      
 		      'remove results that don't contain the entire phrase
 		      for y=0 to UBound(results)
 		        temp= new SearchResult(results(y))
-		        verse= App.MyBible.GetPassage(App.MyBible.GetStdBookName(temp.book), Str(temp.chapter), Str(temp.verse), Str(temp.verse))
+		        verse= Bible(App.MyBible).GetPassage(Bible(App.MyBible).GetBookName(temp.book), Str(temp.chapter), Str(temp.verse), Str(temp.verse))
 		        
 		        'remove puncuation
 		        verse(1)= reg.Replace(verse(1))
@@ -626,7 +649,7 @@ End
 		  
 		  'remove words that aren't indexed
 		  for x=0 to UBound(words)
-		    if App.MyBible.validSearch(words(x))=false OR Len(words(x))<1 then
+		    if Bible(App.MyBible).validSearch(words(x))=false OR Len(words(x))<1 then
 		      words.Remove(x)
 		      x=x-1
 		    end if
@@ -636,7 +659,7 @@ End
 		  if UBound(words) >= 0 then
 		    
 		    'find the word
-		    results= App.MyBible.search(words(0), rad_match_begin.value)
+		    results= Bible(App.MyBible).search(words(0), rad_match_begin.value)
 		    
 		    if (found=false) then
 		      for x=0 to UBound(results)
@@ -650,7 +673,7 @@ End
 		    for x=1 to UBound(words)
 		      
 		      'find the word
-		      results= App.MyBible.search(words(x), rad_match_begin.value)
+		      results= Bible(App.MyBible).search(words(x), rad_match_begin.value)
 		      
 		      list= combineResults(list, results)
 		      
@@ -664,9 +687,9 @@ End
 		  'add results to list
 		  for x=0 to UBound(list)
 		    
-		    verse= App.MyBible.GetPassage(App.MyBible.GetBookName(list(x).book), Str(list(x).chapter), Str(list(x).verse), Str(list(x).verse))
+		    verse= Bible(App.MyBible).GetPassage(Bible(App.MyBible).GetBookName(list(x).book), Str(list(x).chapter), Str(list(x).verse), Str(list(x).verse))
 		    
-		    lst_result.AddRow(App.MyBible.GetBookName(list(x).book) + " "+ Str(list(x).chapter)+ ":" + Str(list(x).verse))
+		    lst_result.AddRow(Bible(App.MyBible).GetBookName(list(x).book) + " "+ Str(list(x).chapter)+ ":" + Str(list(x).verse))
 		    lst_result.Cell(x, 1)= verse(1)
 		  next x
 		  If x > 0 Then

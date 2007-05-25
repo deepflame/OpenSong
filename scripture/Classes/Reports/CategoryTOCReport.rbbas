@@ -203,7 +203,7 @@ Inherits TOCReport
 		  ProgressWindow.SetProgress(0) 'EMP 09/05
 		  ProgressWindow.Show
 		  
-		  '++JRC Heapsort now has it's own ProgressWindow 
+		  '++JRC Heapsort now has it's own ProgressWindow
 		  'lets just show the status of the Theme Processing in this function
 		  // Sort the themes
 		  
@@ -250,7 +250,6 @@ Inherits TOCReport
 		#tag Note
 			The final categorized list, created by processing Themes().  This array is
 			in the form needed for TOCReport.PrintTOCPages
-			
 		#tag EndNote
 		Protected Categorized() As String
 	#tag EndProperty
@@ -258,7 +257,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			List of songs to examine for the report
-			
 		#tag EndNote
 		Protected Songs() As String
 	#tag EndProperty
@@ -266,7 +264,6 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Indicates if the Songs array has been transformed into the Themes array
-			
 		#tag EndNote
 		Protected SongsProcessed As Boolean
 	#tag EndProperty
@@ -275,7 +272,6 @@ Inherits TOCReport
 		#tag Note
 			The Songs array, but manipulated so each entry is
 			THEME|||SONG
-			
 		#tag EndNote
 		Protected ThemesList() As String
 	#tag EndProperty
@@ -283,11 +279,40 @@ Inherits TOCReport
 	#tag Property, Flags = &h1
 		#tag Note
 			Indicates if the Themes array has been processed  into the Categorized array
-			
 		#tag EndNote
 		Protected ThemesProcessed As Boolean
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

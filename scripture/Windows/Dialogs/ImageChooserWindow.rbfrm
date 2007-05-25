@@ -25,11 +25,12 @@ Begin Window ImageChooserWindow
    Visible         =   "True"
    Width           =   475
    Begin ScrollBar scr_vertical
+      AcceptFocus     =   "true"
       AutoDeactivate  =   "True"
       BalloonHelp     =   ""
       ControlOrder    =   0
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   328
       HelpTag         =   ""
       Index           =   -2147483648
@@ -45,9 +46,11 @@ Begin Window ImageChooserWindow
       Minimum         =   0
       PageStep        =   3
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   1
       Value           =   0
-      Visible         =   "True"
+      Visible         =   True
       Width           =   16
       BehaviorIndex   =   0
    End
@@ -56,7 +59,7 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   1
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   4
       HelpTag         =   ""
       Index           =   -2147483648
@@ -67,8 +70,10 @@ Begin Window ImageChooserWindow
       LockRight       =   "True"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   328
-      Visible         =   "True"
+      Visible         =   True
       Width           =   475
       BehaviorIndex   =   1
    End
@@ -80,7 +85,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -91,7 +96,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   1
@@ -100,9 +105,9 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   365
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   455
-      BehaviorIndex   =   5
+      BehaviorIndex   =   2
    End
    Begin PushButton btn_browse
       AutoDeactivate  =   "True"
@@ -113,7 +118,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   3
       Default         =   "False"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -129,9 +134,9 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   340
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   75
-      BehaviorIndex   =   2
+      BehaviorIndex   =   3
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -142,7 +147,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   4
       Default         =   "False"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -158,9 +163,9 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   340
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   75
-      BehaviorIndex   =   3
+      BehaviorIndex   =   4
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -170,7 +175,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   5
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   0
@@ -181,11 +187,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -195,7 +203,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   6
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   1
@@ -206,11 +215,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -220,7 +231,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   7
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   2
@@ -231,11 +243,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -245,7 +259,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   8
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   3
@@ -256,11 +271,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -270,7 +287,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   9
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   4
@@ -281,11 +299,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -295,7 +315,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   10
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   5
@@ -306,11 +327,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -320,7 +343,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   11
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   6
@@ -331,11 +355,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -345,7 +371,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   12
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   7
@@ -356,11 +383,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -370,7 +399,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   13
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   8
@@ -381,11 +411,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -395,7 +427,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   14
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   9
@@ -406,11 +439,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -420,7 +455,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   15
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   10
@@ -431,11 +467,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -445,7 +483,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   16
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   11
@@ -456,11 +495,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -470,7 +511,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   17
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   12
@@ -481,11 +523,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -495,7 +539,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   18
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   13
@@ -506,11 +551,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -520,7 +567,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   19
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   14
@@ -531,11 +579,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -545,7 +595,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   20
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   15
@@ -556,11 +607,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -570,7 +623,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   21
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   16
@@ -581,11 +635,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -595,7 +651,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   22
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   17
@@ -606,11 +663,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -620,7 +679,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   23
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   18
@@ -631,11 +691,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -645,7 +707,8 @@ Begin Window ImageChooserWindow
       BalloonHelp     =   ""
       ControlOrder    =   24
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   19
@@ -656,11 +719,13 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -670,7 +735,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   0
@@ -681,7 +746,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -690,7 +755,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -702,7 +767,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   1
@@ -713,7 +778,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -722,7 +787,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -734,7 +799,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   2
@@ -745,7 +810,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -754,7 +819,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -766,7 +831,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   3
@@ -777,7 +842,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -786,7 +851,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -798,7 +863,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   4
@@ -809,7 +874,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -818,7 +883,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -830,7 +895,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   5
@@ -841,7 +906,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -850,7 +915,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -862,7 +927,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   6
@@ -873,7 +938,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -882,7 +947,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -894,7 +959,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   7
@@ -905,7 +970,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -914,7 +979,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -926,7 +991,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   8
@@ -937,7 +1002,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -946,7 +1011,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -958,7 +1023,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   9
@@ -969,7 +1034,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -978,7 +1043,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -990,7 +1055,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   10
@@ -1001,7 +1066,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1010,7 +1075,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1022,7 +1087,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   11
@@ -1033,7 +1098,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1042,7 +1107,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1054,7 +1119,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   12
@@ -1065,7 +1130,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1074,7 +1139,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1086,7 +1151,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   13
@@ -1097,7 +1162,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1106,7 +1171,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1118,7 +1183,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   14
@@ -1129,7 +1194,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1138,7 +1203,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1150,7 +1215,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   15
@@ -1161,7 +1226,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1170,7 +1235,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1182,7 +1247,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   16
@@ -1193,7 +1258,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1202,7 +1267,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1214,7 +1279,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   17
@@ -1225,7 +1290,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1234,7 +1299,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1246,7 +1311,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   18
@@ -1257,7 +1322,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1266,7 +1331,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1278,7 +1343,7 @@ Begin Window ImageChooserWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   19
@@ -1289,7 +1354,7 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1298,7 +1363,7 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
       BehaviorIndex   =   6
    End
@@ -1446,8 +1511,8 @@ End
 		  // JDL 2/01/2006  Also replaced (and modified) hard coded argument with variable.
 		  Dim ImgNdx as Integer
 		  ImgNdx = scr_vertical.Value * COLS + Index + 1
-		  ' If scr_vertical.Value + Index + 1 <= UBound(ImageFiles) Then     // JDL 2/01/2006 
-		  If ImgNdx <= UBound(ImageFiles) Then                 // JDL 2/01/2006 
+		  ' If scr_vertical.Value + Index + 1 <= UBound(ImageFiles) Then     // JDL 2/01/2006
+		  If ImgNdx <= UBound(ImageFiles) Then                 // JDL 2/01/2006
 		    If ImageFiles(ImgNdx).Name = "(parent)" Then    // JDL 2/01/2006
 		      If BackgroundFolder.Parent <> Nil Then BackgroundFolder = BackgroundFolder.Parent
 		      ReloadDirectory

@@ -726,6 +726,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <verse caption="Verse"/>
     </format>
     <bad_reference>
+      <format>Please check the format of the query and try again.</format>
       <empty>Bad reference: the reference was empty.</empty>
       <book>Bad reference: could not find book.</book>
       <ambiguous>Bad reference: Multiple books match '%1': %2</ambiguous>
@@ -738,6 +739,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <dash caption="-"/>
     <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <shownumbers caption="Display verse numbers"/>
   </scripture_lookup>
 
   <module>

@@ -2,29 +2,7 @@
 Class SButton
 Inherits Canvas
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  System.DebugLog "SButton.MouseDown"
-		  If IsStuck Then Return False
-		  IsMouseDown = True
-		  MenuItem = ""
-		  If Enabled Then
-		    Refresh ' False
-		    // Mac OSX will open the popup on MouseDown,
-		    // Windows & Linux open in MouseUp
-		    #If TargetMacOS
-		      If Popup <> Nil Then
-		        System.DebugLog "SButton.MouseDown: Call Popup.Open"
-		        Popup.Open
-		      End If
-		    #Endif
-		    Return True
-		  End If
-		End Function
-	#tag EndEvent
-
-	#tag Event
 		Sub MouseEnter()
-		  System.DebugLog "SButton.MouseEnter"
 		  IsMouseOver = True
 		  If Enabled And Not IsStuck Then Refresh ' False Graphics
 		  MouseEnter
@@ -41,25 +19,7 @@ Inherits Canvas
 	#tag EndEvent
 
 	#tag Event
-		Sub MouseUp(X As Integer, Y As Integer)
-		  System.DebugLog "SButton.MouseUp"
-		  // The Linux & Windows systems expect to open
-		  // a contextual dialog on mouse up, but OS X
-		  // does it on mouse down.
-		  #if Not TargetMacOS
-		    If Popup <> Nil Then
-		      Popup.Open
-		    End If
-		  #endif
-		  IsMouseDown = False
-		  Action
-		  Refresh ' False Graphics
-		End Sub
-	#tag EndEvent
-
-	#tag Event
 		Sub Open()
-		  System.DebugLog "SButton.Open"
 		  Font = New FontFace
 		  Enabled = True
 		  //++EMP, 12/05
@@ -151,6 +111,31 @@ Inherits Canvas
 		    g.ForeColor = DarkBevelColor
 		    g.DrawRect 0, 0, Width, Height
 		  End If
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  //++
+		  // Treat Return & Spacebar the same as
+		  // a click
+		  //--
+		  If Key = " " Or Asc(Key) = 13 Or Asc(Key) = 3 Then
+		    Call DoMouseDown
+		    Return DoMouseUp
+		  End If
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  Return DoMouseDown(X, Y)
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Sub MouseUp(X As Integer, Y As Integer)
+		  Call DoMouseUp(X, Y)
 		End Sub
 	#tag EndEvent
 
@@ -446,6 +431,41 @@ Inherits Canvas
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function DoMouseDown(x As Integer = 0, y As Integer = 0) As Boolean
+		  If IsStuck Then Return False
+		  IsMouseDown = True
+		  MenuItem = ""
+		  If Enabled Then
+		    Refresh ' False
+		    // Mac OSX will open the popup on MouseDown,
+		    // Windows & Linux open in MouseUp
+		    #If TargetMacOS
+		      If Popup <> Nil Then
+		        Popup.Open
+		      End If
+		    #Endif
+		    Return True
+		  End If
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function DoMouseUp(x As Integer = 0, y As Integer = 0) As Boolean
+		  // The Linux & Windows systems expect to open
+		  // a contextual dialog on mouse up, but OS X
+		  // does it on mouse down.
+		  #if Not TargetMacOS
+		    If Popup <> Nil Then
+		      Popup.Open
+		    End If
+		  #endif
+		  IsMouseDown = False
+		  Action
+		  Refresh ' False Graphics
+		End Function
+	#tag EndMethod
+
 
 	#tag Hook, Flags = &h0
 		Event Action()
@@ -662,7 +682,6 @@ Inherits Canvas
 		#tag ViewProperty
 			Group="Behavior"
 			Type="String"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

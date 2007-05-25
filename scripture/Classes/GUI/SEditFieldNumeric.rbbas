@@ -62,10 +62,10 @@ Inherits SEditField
 		    If SignalRangeErrors And (NewValue < Minimum Or NewValue > Maximum) Then
 		      ex.Message = App.T.Translate("errors/range_error", CStr(NewValue))
 		      Raise ex
-		    Else
-		      If NewValue < Minimum Then NewValue = Minimum
-		      If NewValue > Maximum Then NewValue = Maximum
 		    End If
+		  Else
+		    If NewValue < Minimum Then NewValue = Minimum
+		    If NewValue > Maximum Then NewValue = Maximum
 		  End If
 		  CurrentValue = NewValue
 		  ValueToText
@@ -142,5 +142,296 @@ Inherits SEditField
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			Type="String"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="80"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="22"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="&h000000"
+			Type="Color"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="&hFFFFFF"
+			Type="Color"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			InitialValue="System"
+			Type="String"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Initial State"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="String"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+			EditorType="Enum"
+			InheritedFrom="EditField"
+			#tag EnumValues
+				"0 - Default"
+				"1 - Left"
+				"2 - Center"
+				"3 - Right"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Database Binding"
+			Type="String"
+			EditorType="DataSource"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Database Binding"
+			Type="String"
+			EditorType="DataField"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

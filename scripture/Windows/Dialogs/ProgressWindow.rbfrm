@@ -29,7 +29,7 @@ Begin Window ProgressWindow
       BalloonHelp     =   ""
       ControlOrder    =   0
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   12
       HelpTag         =   ""
       Index           =   -2147483648
@@ -41,9 +41,11 @@ Begin Window ProgressWindow
       LockTop         =   "False"
       Maximum         =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   25
       Value           =   0
-      Visible         =   "True"
+      Visible         =   True
       Width           =   280
       BehaviorIndex   =   0
    End
@@ -55,7 +57,7 @@ Begin Window ProgressWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -66,7 +68,7 @@ Begin Window ProgressWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -75,7 +77,7 @@ Begin Window ProgressWindow
       TextSize        =   11
       Top             =   40
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   280
       BehaviorIndex   =   1
    End
@@ -87,7 +89,7 @@ Begin Window ProgressWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -98,7 +100,7 @@ Begin Window ProgressWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -107,7 +109,7 @@ Begin Window ProgressWindow
       TextSize        =   10
       Top             =   3
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   276
       BehaviorIndex   =   2
    End
@@ -223,7 +225,6 @@ End
 			Flag to indicate if user is allowed to press the Escape
 			key to signal a request to cancel the operation in progress.
 			See KeyDown event.  Default False (from Constructor)
-			
 		#tag EndNote
 		Private AllowEscape As Boolean
 	#tag EndProperty
@@ -231,8 +232,6 @@ End
 	#tag Property, Flags = &h1
 		#tag Note
 			Indicates if the user has requested to cancel.  Default False.
-			
-			
 		#tag EndNote
 		Protected CancelRequested As Boolean
 	#tag EndProperty

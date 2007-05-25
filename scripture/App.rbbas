@@ -64,12 +64,6 @@ Inherits Application
 		  End If
 		  OK = DebugWriter.Init
 		  DebugWriter.Write "-------------------- Begin Run ----------------------"
-		  
-		  Splash.Show
-		  
-		  SmartML.Init
-		  LoadPreferences
-		  
 		  AppFolder = App.ExecutableFile
 		  If Not AppFolder.Directory Then AppFolder = AppFolder.Parent ' Linux points to the parent folder; the other OSes seem to point to the executable file.
 		  //++
@@ -80,6 +74,16 @@ Inherits Application
 		  #If TargetMachO
 		    AppFolder = AppFolder.Parent.Parent.Parent
 		  #Endif
+		  //++
+		  // Initialize Factory objects
+		  //--
+		  BibleFactory.Folder = AppFolder.Child("OpenSong Scripture")
+		  '
+		  Splash.Show
+		  
+		  SmartML.Init
+		  LoadPreferences
+		  
 		  
 		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
 		  Dim temp As String
@@ -339,7 +343,6 @@ Inherits Application
 		    checkVer.Run
 		  End If
 		  
-		  '
 		  '++JRC
 		  Globals.WhitespaceChars.Append " "
 		  Globals.WhitespaceChars.Append Chr(ENTER)
@@ -1170,7 +1173,7 @@ Inherits Application
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		MyBible As Bible
+		MyBible As iBible
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -1254,5 +1257,12 @@ Inherits Application
 	#tag EndConstant
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

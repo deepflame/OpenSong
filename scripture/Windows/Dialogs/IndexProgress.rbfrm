@@ -29,7 +29,7 @@ Begin Window IndexProgress
       BalloonHelp     =   ""
       ControlOrder    =   0
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -41,9 +41,11 @@ Begin Window IndexProgress
       LockTop         =   "False"
       Maximum         =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   60
       Value           =   0
-      Visible         =   "True"
+      Visible         =   True
       Width           =   260
       BehaviorIndex   =   0
    End
@@ -55,7 +57,7 @@ Begin Window IndexProgress
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   12
       HelpTag         =   ""
       Index           =   -2147483648
@@ -66,7 +68,7 @@ Begin Window IndexProgress
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Building index:"
       TextAlign       =   0
@@ -75,7 +77,7 @@ Begin Window IndexProgress
       TextSize        =   10
       Top             =   16
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   1
    End
@@ -87,7 +89,7 @@ Begin Window IndexProgress
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -98,7 +100,7 @@ Begin Window IndexProgress
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -107,7 +109,7 @@ Begin Window IndexProgress
       TextSize        =   10
       Top             =   36
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   256
       BehaviorIndex   =   2
    End
@@ -119,7 +121,7 @@ Begin Window IndexProgress
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -130,7 +132,7 @@ Begin Window IndexProgress
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Press 'esc' to cancel"
       TextAlign       =   0

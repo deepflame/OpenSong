@@ -1,21 +1,6 @@
-#tag Interface
-Protected Interface IpreferencesReceiver
-	#tag Method, Flags = &h0
-		Sub PreferencesChanged(NewPreferences As IPreferences)
-		  
-		End Sub
-	#tag EndMethod
-
-
-	#tag Note, Name = Overview
-		Complementary interface to IPreferences.
-		
-		Allows a class to register a callback routine to be called
-		when a preference changes in the IPreferences
-		object the class is registered with.
-	#tag EndNote
-
-
+#tag Class
+Protected Class BibleRefException
+Inherits RuntimeException
 	#tag ViewBehavior
 		#tag ViewProperty
 			Visible=true
@@ -45,6 +30,18 @@ Protected Interface IpreferencesReceiver
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="RuntimeException"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="RuntimeException"
+		#tag EndViewProperty
 	#tag EndViewBehavior
-End Interface
-#tag EndInterface
+End Class
+#tag EndClass

@@ -32,7 +32,8 @@ Begin Window CCLIWindow
       BalloonHelp     =   ""
       ControlOrder    =   0
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
+      EraseBackground =   "True"
       Height          =   51
       HelpTag         =   ""
       Index           =   -2147483648
@@ -43,9 +44,11 @@ Begin Window CCLIWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   5
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   151
       BehaviorIndex   =   0
    End
@@ -57,7 +60,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -68,7 +71,7 @@ Begin Window CCLIWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "CCLI User ID:"
       TextAlign       =   2
@@ -77,7 +80,7 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   7
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   130
       BehaviorIndex   =   1
    End
@@ -89,7 +92,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -100,7 +103,7 @@ Begin Window CCLIWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "CCLI Password:"
       TextAlign       =   2
@@ -109,7 +112,7 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   32
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   130
       BehaviorIndex   =   2
    End
@@ -121,7 +124,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -132,7 +135,7 @@ Begin Window CCLIWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Search for:"
       TextAlign       =   0
@@ -141,9 +144,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   76
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   65
-      BehaviorIndex   =   5
+      BehaviorIndex   =   3
    End
    Begin EditField edt_search
       AcceptTabs      =   "False"
@@ -157,7 +160,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
@@ -171,12 +174,12 @@ Begin Window CCLIWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Mask            =   ""
-      MultiLine       =   "False"
+      Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
       ScrollBar       =   "True"
-      ScrollBarHorizontal=   "False"
-      ScrollBarVertical=   "True"
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
       Styled          =   "False"
       TabPanelIndex   =   0
       Text            =   ""
@@ -186,9 +189,9 @@ Begin Window CCLIWindow
       Top             =   75
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   150
-      BehaviorIndex   =   6
+      BehaviorIndex   =   4
    End
    Begin StaticText txt_search_by
       AutoDeactivate  =   "True"
@@ -198,7 +201,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -209,7 +212,7 @@ Begin Window CCLIWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "by"
       TextAlign       =   1
@@ -218,9 +221,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   75
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   25
-      BehaviorIndex   =   7
+      BehaviorIndex   =   5
    End
    Begin PopupMenu pop_by
       AutoDeactivate  =   "True"
@@ -230,7 +233,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -248,9 +251,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   75
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
-      BehaviorIndex   =   8
+      BehaviorIndex   =   6
    End
    Begin StaticText txt_search_filter
       AutoDeactivate  =   "True"
@@ -260,7 +263,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -271,7 +274,7 @@ Begin Window CCLIWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "filter"
       TextAlign       =   1
@@ -280,9 +283,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   76
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   35
-      BehaviorIndex   =   9
+      BehaviorIndex   =   7
    End
    Begin PopupMenu pop_filter
       AutoDeactivate  =   "True"
@@ -292,7 +295,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -310,9 +313,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   75
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
-      BehaviorIndex   =   10
+      BehaviorIndex   =   8
    End
    Begin PushButton btn_song_find
       AutoDeactivate  =   "True"
@@ -339,12 +342,13 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   75
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   55
-      BehaviorIndex   =   11
+      BehaviorIndex   =   9
    End
    Begin ListBox lst_found_songs
       AutoDeactivate  =   "True"
+      AutoHideScrollbars=   "True"
       BalloonHelp     =   ""
       Bold            =   "False"
       ColumnCount     =   10
@@ -355,7 +359,7 @@ Begin Window CCLIWindow
       DataSource      =   ""
       DefaultRowHeight=   -1
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -374,7 +378,8 @@ Begin Window CCLIWindow
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      ScrollBarHorizontal=   "True"
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   "True"
       ScrollBarVertical=   "True"
       ScrollPosition  =   0
       ScrollPositionX =   0
@@ -385,9 +390,11 @@ Begin Window CCLIWindow
       Top             =   105
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   540
-      BehaviorIndex   =   12
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
+      BehaviorIndex   =   10
    End
    Begin PushButton btn_page_previous_page
       AutoDeactivate  =   "True"
@@ -414,9 +421,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   324
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   110
-      BehaviorIndex   =   13
+      BehaviorIndex   =   11
    End
    Begin PushButton btn_page_next_page
       AutoDeactivate  =   "True"
@@ -443,9 +450,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   324
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   110
-      BehaviorIndex   =   14
+      BehaviorIndex   =   12
    End
    Begin StaticText txt_number_of_pages
       AutoDeactivate  =   "True"
@@ -455,7 +462,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -466,7 +473,7 @@ Begin Window CCLIWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "of 0"
       TextAlign       =   0
@@ -475,9 +482,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   325
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   30
-      BehaviorIndex   =   15
+      BehaviorIndex   =   13
    End
    Begin PushButton btn_song_import
       AutoDeactivate  =   "True"
@@ -504,9 +511,9 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   324
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   16
+      BehaviorIndex   =   14
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -517,7 +524,7 @@ Begin Window CCLIWindow
       ControlOrder    =   15
       Default         =   "False"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -533,16 +540,16 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   324
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
-      BehaviorIndex   =   17
+      BehaviorIndex   =   15
    End
    Begin Separator sep_1
       AutoDeactivate  =   "True"
       BalloonHelp     =   ""
       ControlOrder    =   16
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   4
       HelpTag         =   ""
       Index           =   -2147483648
@@ -553,10 +560,12 @@ Begin Window CCLIWindow
       LockRight       =   "True"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   60
-      Visible         =   "True"
+      Visible         =   True
       Width           =   540
-      BehaviorIndex   =   18
+      BehaviorIndex   =   16
    End
    Begin EditField edt_ccli_user_id
       AcceptTabs      =   "False"
@@ -570,7 +579,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
@@ -584,12 +593,12 @@ Begin Window CCLIWindow
       LockRight       =   "True"
       LockTop         =   "True"
       Mask            =   ""
-      MultiLine       =   "False"
+      Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
       ScrollBar       =   "True"
-      ScrollBarHorizontal=   "False"
-      ScrollBarVertical=   "True"
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
       Styled          =   "False"
       TabPanelIndex   =   0
       Text            =   ""
@@ -599,9 +608,9 @@ Begin Window CCLIWindow
       Top             =   5
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   150
-      BehaviorIndex   =   3
+      BehaviorIndex   =   17
    End
    Begin EditField edt_ccli_password
       AcceptTabs      =   "False"
@@ -615,7 +624,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
@@ -629,12 +638,12 @@ Begin Window CCLIWindow
       LockRight       =   "True"
       LockTop         =   "True"
       Mask            =   ""
-      MultiLine       =   "False"
+      Multiline       =   "False"
       Password        =   "True"
       ReadOnly        =   "False"
       ScrollBar       =   "True"
-      ScrollBarHorizontal=   "False"
-      ScrollBarVertical=   "True"
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
       Styled          =   "False"
       TabPanelIndex   =   0
       Text            =   ""
@@ -644,9 +653,9 @@ Begin Window CCLIWindow
       Top             =   30
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   150
-      BehaviorIndex   =   4
+      BehaviorIndex   =   18
    End
    Begin PopupMenu pop_current_page
       AutoDeactivate  =   "True"
@@ -656,7 +665,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -674,7 +683,7 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   324
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   50
       BehaviorIndex   =   19
    End
@@ -686,7 +695,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -697,7 +706,7 @@ Begin Window CCLIWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Page"
       TextAlign       =   2
@@ -706,7 +715,7 @@ Begin Window CCLIWindow
       TextSize        =   10
       Top             =   325
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   50
       BehaviorIndex   =   20
    End
@@ -718,7 +727,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -748,7 +757,7 @@ Begin Window CCLIWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -1230,7 +1239,7 @@ End
 		  End Try
 		  
 		  ' Create the song
-		  Dim song As New XmlDocument 
+		  Dim song As New XmlDocument
 		  Dim xnode As XmlNode
 		  Dim temp, temp2, temp3 As String
 		  xnode = song.AppendChild(song.CreateElement("song"))

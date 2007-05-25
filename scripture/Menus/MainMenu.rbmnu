@@ -5,12 +5,6 @@ Begin Menu MainMenu
       Text = ""
       Index = -2147483648
       AutoEnable = True
-      Begin MenuItem 
-         SpecialMenu = 2
-         Text = ""
-         Index = -2147483648
-         AutoEnable = True
-      End
    End
    Begin MenuItem mnu_bar_file
       SpecialMenu = 0
@@ -350,6 +344,12 @@ Begin Menu MainMenu
          AutoEnable = True
       End
       Begin MenuItem 
+         SpecialMenu = 2
+         Text = ""
+         Index = -2147483648
+         AutoEnable = True
+      End
+      Begin AppleMenuItem 
          SpecialMenu = 2
          Text = ""
          Index = -2147483648

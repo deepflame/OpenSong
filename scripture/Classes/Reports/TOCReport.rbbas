@@ -208,7 +208,6 @@ Inherits Report
 			Defines how the category header should be aligned on the page.
 			Must be set prior to calling PrintTOCPages
 			Valid values are "left", "center" and "right" (NOTE: NO VALIDATION IS DONE)
-			
 		#tag EndNote
 		Protected CategoryAlign As String
 	#tag EndProperty
@@ -217,7 +216,6 @@ Inherits Report
 		#tag Note
 			Defines how far to indent an item.  Must be set prior to calling PrintTOCPages.
 			Unit of measure is points (i.e., will be multiplied by scale/zoom)
-			
 		#tag EndNote
 		Protected Indent As Integer
 	#tag EndProperty
@@ -226,11 +224,64 @@ Inherits Report
 		#tag Note
 			Name of the report (placed in the author field of the header).
 			Must be set prior to calling PrintTOCPages
-			
 		#tag EndNote
 		Protected ReportName As String
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

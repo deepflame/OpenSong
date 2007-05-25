@@ -29,7 +29,7 @@ Begin Window AboutWindow
       BalloonHelp     =   ""
       ControlOrder    =   0
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   128
       HelpTag         =   ""
       Image           =   -1045728915
@@ -41,8 +41,10 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   14
-      Visible         =   "True"
+      Visible         =   True
       Width           =   128
       BehaviorIndex   =   0
    End
@@ -54,7 +56,7 @@ Begin Window AboutWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   29
       HelpTag         =   ""
       Index           =   -2147483648
@@ -65,7 +67,7 @@ Begin Window AboutWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "OpenSong V1.0"
       TextAlign       =   0
@@ -74,7 +76,7 @@ Begin Window AboutWindow
       TextSize        =   24
       Top             =   14
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   328
       BehaviorIndex   =   1
    End
@@ -86,7 +88,7 @@ Begin Window AboutWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -97,7 +99,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Copyright (c) 2003, 2004, 2005, 2006 Sean Lickfold"
       TextAlign       =   0
@@ -106,7 +108,7 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   55
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   328
       BehaviorIndex   =   2
    End
@@ -118,7 +120,7 @@ Begin Window AboutWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -129,7 +131,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Licensed under the GNU Public License V2.1"
       TextAlign       =   0
@@ -138,7 +140,7 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   75
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   322
       BehaviorIndex   =   3
    End
@@ -150,7 +152,7 @@ Begin Window AboutWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -161,7 +163,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "English: Sean Lickfold"
       TextAlign       =   0
@@ -170,9 +172,9 @@ Begin Window AboutWindow
       TextSize        =   10
       Top             =   313
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
-      BehaviorIndex   =   7
+      BehaviorIndex   =   4
    End
    Begin StaticText txt_about_programmers
       AutoDeactivate  =   "True"
@@ -182,7 +184,7 @@ Begin Window AboutWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   75
       HelpTag         =   ""
       Index           =   -2147483648
@@ -193,7 +195,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "True"
+      Multiline       =   "True"
       TabPanelIndex   =   0
       Text            =   "Ed Palmer, Joshua Coley, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant."
       TextAlign       =   0
@@ -202,9 +204,9 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   135
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin StaticText txt_about_libraries
       AutoDeactivate  =   "True"
@@ -214,7 +216,7 @@ Begin Window AboutWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   85
       HelpTag         =   ""
       Index           =   -2147483648
@@ -225,7 +227,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "True"
+      Multiline       =   "True"
       TabPanelIndex   =   0
       Text            =   "StringUtils (http://www.strout.net/info/coding/rb/)\rHTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)\rREALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)"
       TextAlign       =   0
@@ -234,9 +236,9 @@ Begin Window AboutWindow
       TextSize        =   10
       Top             =   208
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
-      BehaviorIndex   =   5
+      BehaviorIndex   =   6
    End
    Begin PushButton btn_about_close
       AutoDeactivate  =   "True"
@@ -247,7 +249,7 @@ Begin Window AboutWindow
       ControlOrder    =   7
       Default         =   "True"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -263,9 +265,9 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   310
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   6
+      BehaviorIndex   =   7
    End
    Begin StaticText txt_about_web
       AutoDeactivate  =   "True"
@@ -275,7 +277,7 @@ Begin Window AboutWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -286,7 +288,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "http://www.opensong.org"
       TextAlign       =   0
@@ -295,7 +297,7 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   95
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
       BehaviorIndex   =   8
    End

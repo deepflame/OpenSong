@@ -26,7 +26,7 @@ Begin Window SongPickerWindow
    Width           =   315
    Begin ListBox lst_all_songs
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
+      AutoHideScrollbars=   "True"
       Bold            =   "False"
       ColumnCount     =   1
       ColumnsResizable=   "False"
@@ -35,8 +35,7 @@ Begin Window SongPickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -55,10 +54,9 @@ Begin Window SongPickerWindow
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      ScrollBarHorizontal=   "False"
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
-      ScrollPosition  =   0
-      ScrollPositionX =   0
       SelectionType   =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
@@ -66,19 +64,19 @@ Begin Window SongPickerWindow
       Top             =   63
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   295
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
       BehaviorIndex   =   0
    End
    Begin PushButton btn_add
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Add"
       ControlOrder    =   1
       Default         =   "False"
-      DisabledBalloonHelp=   ""
       Enabled         =   "False"
       Height          =   22
       HelpTag         =   ""
@@ -95,20 +93,18 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   333
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   1
    End
    Begin PushButton btn_done
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "True"
       Caption         =   "Done"
       ControlOrder    =   2
       Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -124,13 +120,14 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   332
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   2
    End
    Begin Timer timerLookup
       ControlOrder    =   3
       Index           =   -2147483648
+      InitialParent   =   ""
       Left            =   228
       Mode            =   2
       Period          =   1500
@@ -140,13 +137,11 @@ Begin Window SongPickerWindow
    End
    Begin StaticText txt_explanation_header
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   45
       HelpTag         =   ""
       Index           =   -2147483648
@@ -157,7 +152,7 @@ Begin Window SongPickerWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "True"
+      Multiline       =   "True"
       TabPanelIndex   =   0
       Text            =   "To add a song, click the song title below and click the ""Add"" button or begin typing the song title and hit the enter key."
       TextAlign       =   0
@@ -166,19 +161,17 @@ Begin Window SongPickerWindow
       TextSize        =   9
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   270
       BehaviorIndex   =   4
    End
    Begin PopupMenu pop_select_folder
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -196,19 +189,17 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   301
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   215
       BehaviorIndex   =   5
    End
    Begin StaticText lbl_select_folder
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   14
       HelpTag         =   ""
       Index           =   -2147483648
@@ -219,7 +210,7 @@ Begin Window SongPickerWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Select Folder:"
       TextAlign       =   0
@@ -228,7 +219,7 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   276
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   6
    End

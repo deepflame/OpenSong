@@ -1,5 +1,5 @@
 #tag Window
-Begin Window ScripturePickerWindow
+Begin Window ScripturePickerWindow Implements iScripturePicker
    BackColor       =   16777215
    Backdrop        =   0
    BalloonHelp     =   ""
@@ -22,13 +22,40 @@ Begin Window ScripturePickerWindow
    Placement       =   0
    Resizeable      =   "True"
    Title           =   "Scripture Lookup"
-   Visible         =   "True"
+   Visible         =   "False"
    Width           =   570
+   Begin PushButton btn_done
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "True"
+      Caption         =   "Done"
+      ControlOrder    =   0
+      Default         =   "False"
+      Enabled         =   True
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   455
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   10
+      Top             =   185
+      Underline       =   "False"
+      Visible         =   True
+      Width           =   69
+      BehaviorIndex   =   0
+   End
    Begin GroupBox grp_quick_lookup
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Quick Lookup"
-      ControlOrder    =   0
+      ControlOrder    =   1
       Enabled         =   True
       Height          =   75
       HelpTag         =   ""
@@ -41,17 +68,17 @@ Begin Window ScripturePickerWindow
       LockRight       =   "True"
       LockTop         =   "True"
       TabPanelIndex   =   0
-      TextFont        =   "Arial"
+      TextFont        =   "System"
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
       Visible         =   True
       Width           =   360
-      BehaviorIndex   =   0
+      BehaviorIndex   =   1
       Begin StaticText lbl_quick_reference
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   1
+         ControlOrder    =   2
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -70,25 +97,55 @@ Begin Window ScripturePickerWindow
          Text            =   "Reference:"
          TextAlign       =   2
          TextColor       =   0
-         TextFont        =   "Arial"
+         TextFont        =   "System"
          TextSize        =   10
          Top             =   36
          Underline       =   "False"
          Visible         =   True
          Width           =   65
-         BehaviorIndex   =   1
+         BehaviorIndex   =   2
       End
-      Begin EditField edt_quick_lookup
+      Begin StaticText nte_quick_example
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   3
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   12
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_quick_lookup"
+         Italic          =   "True"
+         Left            =   175
+         LockBottom      =   "False"
+         LockLeft        =   "True"
+         LockRight       =   "True"
+         LockTop         =   "True"
+         Multiline       =   "False"
+         TabPanelIndex   =   0
+         Text            =   "Ex: ""2Pet 1:1-2"" or ""2Pet 1:1-2 (KJV)"""
+         TextAlign       =   1
+         TextColor       =   0
+         TextFont        =   "System"
+         TextSize        =   9
+         Top             =   60
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   210
+         BehaviorIndex   =   3
+      End
+      Begin SEditField edt_quick_lookup
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
          BackColor       =   16777215
          Bold            =   "False"
          Border          =   "True"
-         ControlOrder    =   2
+         ControlOrder    =   5
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          Format          =   ""
          Height          =   22
          HelpTag         =   ""
@@ -116,16 +173,16 @@ Begin Window ScripturePickerWindow
          Top             =   35
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   200
-         BehaviorIndex   =   2
+         BehaviorIndex   =   4
       End
       Begin PushButton btn_quick_lookup
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Cancel          =   "False"
          Caption         =   "Lookup"
-         ControlOrder    =   3
+         ControlOrder    =   24
          Default         =   "False"
          Enabled         =   True
          Height          =   22
@@ -139,57 +196,54 @@ Begin Window ScripturePickerWindow
          LockRight       =   "True"
          LockTop         =   "True"
          TabPanelIndex   =   0
-         TextFont        =   "Arial"
+         TextFont        =   "System"
          TextSize        =   10
          Top             =   35
          Underline       =   "False"
          Visible         =   True
          Width           =   69
-         BehaviorIndex   =   3
+         BehaviorIndex   =   5
       End
-      Begin StaticText nte_quick_example
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   21
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   12
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_quick_lookup"
-         Italic          =   "True"
-         Left            =   175
-         LockBottom      =   "False"
-         LockLeft        =   "True"
-         LockRight       =   "True"
-         LockTop         =   "True"
-         Multiline       =   "False"
-         TabPanelIndex   =   0
-         Text            =   "Ex: ""2Pet 1:1-2"" or ""2Pet 1:1-2 (KJV)"""
-         TextAlign       =   1
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   9
-         Top             =   60
-         Underline       =   "False"
-         Visible         =   True
-         Width           =   210
-         BehaviorIndex   =   4
-      End
+   End
+   Begin PushButton btn_search
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "False"
+      Caption         =   "Search"
+      ControlOrder    =   4
+      Default         =   "False"
+      Enabled         =   "False"
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   486
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   10
+      Top             =   34
+      Underline       =   "False"
+      Visible         =   True
+      Width           =   69
+      BehaviorIndex   =   6
    End
    Begin GroupBox grp_Books
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   ""
-      ControlOrder    =   4
+      ControlOrder    =   6
       Enabled         =   True
-      Height          =   375
+      Height          =   388
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   3
+      Left            =   20
       LockBottom      =   "True"
       LockLeft        =   "True"
       LockRight       =   "True"
@@ -197,102 +251,102 @@ Begin Window ScripturePickerWindow
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   90
+      Top             =   91
       Underline       =   "False"
       Visible         =   True
-      Width           =   220
-      BehaviorIndex   =   5
+      Width           =   200
+      BehaviorIndex   =   7
       Begin ListBox lst_scr_ot
          AutoDeactivate  =   "True"
          AutoHideScrollbars=   "True"
-         Bold            =   "False"
+         Bold            =   ""
          ColumnCount     =   1
-         ColumnsResizable=   "False"
+         ColumnsResizable=   ""
          ColumnWidths    =   ""
-         ControlOrder    =   24
+         ControlOrder    =   7
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
          Enabled         =   True
-         EnableDrag      =   "False"
-         EnableDragReorder=   "False"
+         EnableDrag      =   ""
+         EnableDragReorder=   ""
          GridLinesHorizontal=   0
          GridLinesVertical=   0
-         HasHeading      =   "False"
+         HasHeading      =   ""
          HeadingIndex    =   -1
          Height          =   360
          HelpTag         =   ""
-         Hierarchical    =   "False"
+         Hierarchical    =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_Books"
-         InitialValue    =   "Genesis\r\nExodus\r\nLeviticus\r\nNumbers\r\nDeuteronomy\r\nJoshua\r\nJudges\r\nRuth\r\n1 Samuel\r\n2 Samuel\r\n1 Kings\r\n2 Kings\r\n1 Chronicles\r\n2 Chronicles\r\nEzra\r\nNehemiah\r\nEsther\r\nJob\r\nPsalms\r\nProverbs\r\nEcclesiastes\r\nSong of Solomon\r\nIsaiah\r\nJeremiah\r\nLamentations\r\nEzekiel\r\nDaniel\r\nHosea\r\nJoel\r\nAmos\r\nObadiah\r\nJonah\r\nMicah\r\nNahum\r\nHabakkuk\r\nZephaniah\r\nHaggai\r\nZechariah\r\nMalachi"
-         Italic          =   "False"
-         Left            =   10
+         InitialValue    =   ""
+         Italic          =   ""
+         Left            =   30
          LockBottom      =   "True"
          LockLeft        =   "True"
          LockRight       =   "False"
          LockTop         =   "True"
          RequiresSelection=   ""
-         ScrollbarHorizontal=   "False"
+         ScrollbarHorizontal=   ""
          ScrollBarVertical=   "True"
          SelectionType   =   0
          TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   100
-         Underline       =   "False"
+         Underline       =   ""
          UseFocusRing    =   "True"
          Visible         =   True
-         Width           =   100
+         Width           =   80
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
-         BehaviorIndex   =   6
+         BehaviorIndex   =   8
       End
       Begin ListBox lst_scr_nt
          AutoDeactivate  =   "True"
          AutoHideScrollbars=   "True"
-         Bold            =   "False"
+         Bold            =   ""
          ColumnCount     =   1
-         ColumnsResizable=   "False"
+         ColumnsResizable=   ""
          ColumnWidths    =   ""
-         ControlOrder    =   25
+         ControlOrder    =   8
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
          Enabled         =   True
-         EnableDrag      =   "False"
-         EnableDragReorder=   "False"
+         EnableDrag      =   ""
+         EnableDragReorder=   ""
          GridLinesHorizontal=   0
          GridLinesVertical=   0
-         HasHeading      =   "False"
+         HasHeading      =   ""
          HeadingIndex    =   -1
          Height          =   360
          HelpTag         =   ""
-         Hierarchical    =   "False"
+         Hierarchical    =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_Books"
-         InitialValue    =   "Matthew\r\nMark\r\nLuke\r\nJohn\r\nActs\r\nRomans\r\n1 Corinthians\r\n2 Corinthians\r\nGalatians\r\nEphesians\r\nPhilippians\r\nColossians\r\n1 Thessalonians\r\n2 Thessalonians\r\n1 Timothy\r\n2 Timothy\r\nTitus\r\nPhilemon\r\nHebrews\r\nJames\r\n1 Peter\r\n2 Peter\r\n1 John\r\n2 John\r\n3 John\r\nJude\r\nRevelation"
-         Italic          =   "False"
-         Left            =   115
+         InitialValue    =   ""
+         Italic          =   ""
+         Left            =   122
          LockBottom      =   "True"
-         LockLeft        =   "False"
+         LockLeft        =   ""
          LockRight       =   "True"
          LockTop         =   "True"
          RequiresSelection=   ""
-         ScrollbarHorizontal=   "False"
+         ScrollbarHorizontal=   ""
          ScrollBarVertical=   "True"
          SelectionType   =   0
          TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   100
-         Underline       =   "False"
+         Underline       =   ""
          UseFocusRing    =   "True"
          Visible         =   True
-         Width           =   100
+         Width           =   85
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
-         BehaviorIndex   =   7
+         BehaviorIndex   =   9
       End
    End
    Begin ListBox lst_scr_chapter
@@ -302,7 +356,7 @@ Begin Window ScripturePickerWindow
       ColumnCount     =   1
       ColumnsResizable=   "False"
       ColumnWidths    =   ""
-      ControlOrder    =   5
+      ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -339,7 +393,7 @@ Begin Window ScripturePickerWindow
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   8
+      BehaviorIndex   =   10
    End
    Begin ListBox lst_scr_from_verse
       AutoDeactivate  =   "True"
@@ -348,7 +402,7 @@ Begin Window ScripturePickerWindow
       ColumnCount     =   1
       ColumnsResizable=   "False"
       ColumnWidths    =   ""
-      ControlOrder    =   6
+      ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -385,7 +439,7 @@ Begin Window ScripturePickerWindow
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   9
+      BehaviorIndex   =   11
    End
    Begin ListBox lst_scr_to_verse
       AutoDeactivate  =   "True"
@@ -394,7 +448,7 @@ Begin Window ScripturePickerWindow
       ColumnCount     =   1
       ColumnsResizable=   "False"
       ColumnWidths    =   ""
-      ControlOrder    =   7
+      ControlOrder    =   11
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -431,13 +485,13 @@ Begin Window ScripturePickerWindow
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   10
+      BehaviorIndex   =   12
    End
    Begin GroupBox grp_options_version
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Version"
-      ControlOrder    =   8
+      ControlOrder    =   12
       Enabled         =   True
       Height          =   55
       HelpTag         =   ""
@@ -452,15 +506,15 @@ Begin Window ScripturePickerWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
-      Top             =   255
+      Top             =   218
       Underline       =   "False"
       Visible         =   True
       Width           =   145
-      BehaviorIndex   =   11
+      BehaviorIndex   =   13
       Begin PopupMenu pop_scr_version
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   9
+         ControlOrder    =   13
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -479,18 +533,18 @@ Begin Window ScripturePickerWindow
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   12
-         Top             =   275
+         Top             =   238
          Underline       =   "False"
          Visible         =   True
          Width           =   95
-         BehaviorIndex   =   12
+         BehaviorIndex   =   14
       End
    End
    Begin GroupBox grp_options_verses_per_slide
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Verses Per Slide"
-      ControlOrder    =   10
+      ControlOrder    =   14
       Enabled         =   True
       Height          =   50
       HelpTag         =   ""
@@ -505,16 +559,16 @@ Begin Window ScripturePickerWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
-      Top             =   320
+      Top             =   283
       Underline       =   "False"
       Visible         =   True
       Width           =   145
-      BehaviorIndex   =   13
+      BehaviorIndex   =   15
       Begin RadioButton rad_verses_one
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   1
-         ControlOrder    =   11
+         ControlOrder    =   15
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
@@ -529,18 +583,18 @@ Begin Window ScripturePickerWindow
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   340
+         Top             =   303
          Underline       =   "False"
          Value           =   "False"
          Visible         =   True
          Width           =   35
-         BehaviorIndex   =   14
+         BehaviorIndex   =   16
       End
       Begin RadioButton rad_verses_two
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   2
-         ControlOrder    =   12
+         ControlOrder    =   16
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
@@ -555,18 +609,18 @@ Begin Window ScripturePickerWindow
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   340
+         Top             =   303
          Underline       =   "False"
          Value           =   "True"
          Visible         =   True
          Width           =   35
-         BehaviorIndex   =   15
+         BehaviorIndex   =   17
       End
       Begin RadioButton rad_verses_three
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   3
-         ControlOrder    =   13
+         ControlOrder    =   17
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
@@ -581,19 +635,19 @@ Begin Window ScripturePickerWindow
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   340
+         Top             =   303
          Underline       =   "False"
          Value           =   "False"
          Visible         =   True
          Width           =   35
-         BehaviorIndex   =   16
+         BehaviorIndex   =   18
       End
    End
    Begin GroupBox grp_options_format
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Format"
-      ControlOrder    =   14
+      ControlOrder    =   18
       Enabled         =   True
       Height          =   70
       HelpTag         =   ""
@@ -608,16 +662,16 @@ Begin Window ScripturePickerWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
-      Top             =   380
+      Top             =   343
       Underline       =   "False"
       Visible         =   True
       Width           =   145
-      BehaviorIndex   =   17
+      BehaviorIndex   =   19
       Begin RadioButton rad_format_paragraph
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   "Paragraph"
-         ControlOrder    =   15
+         ControlOrder    =   19
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
@@ -632,18 +686,18 @@ Begin Window ScripturePickerWindow
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   400
+         Top             =   363
          Underline       =   "False"
          Value           =   "True"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   18
+         BehaviorIndex   =   20
       End
       Begin RadioButton rad_format_verse
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   "Verse"
-         ControlOrder    =   16
+         ControlOrder    =   20
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
@@ -658,20 +712,48 @@ Begin Window ScripturePickerWindow
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   420
+         Top             =   383
          Underline       =   "False"
          Value           =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   19
+         BehaviorIndex   =   21
       End
    End
-   Begin PushButton btn_Insert
+   Begin Checkbox chk_shownumbers
+      AutoDeactivate  =   "True"
+      Bold            =   ""
+      Caption         =   "Number Verses"
+      ControlOrder    =   21
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   415
+      LockBottom      =   ""
+      LockLeft        =   ""
+      LockRight       =   "True"
+      LockTop         =   "True"
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   10
+      Top             =   426
+      Underline       =   ""
+      Value           =   "True"
+      Visible         =   True
+      Width           =   145
+      BehaviorIndex   =   22
+   End
+   Begin PushButton btn_insert
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Insert"
-      ControlOrder    =   17
+      ControlOrder    =   22
       Default         =   "False"
       Enabled         =   "False"
       Height          =   22
@@ -685,22 +767,22 @@ Begin Window ScripturePickerWindow
       LockRight       =   "True"
       LockTop         =   "True"
       TabPanelIndex   =   0
-      TextFont        =   "Arial"
+      TextFont        =   "System"
       TextSize        =   10
       Top             =   116
       Underline       =   "False"
       Visible         =   "False"
       Width           =   69
-      BehaviorIndex   =   20
+      BehaviorIndex   =   23
    End
    Begin PushButton btn_add
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Add"
-      ControlOrder    =   18
+      ControlOrder    =   23
       Default         =   "True"
-      Enabled         =   "False"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -712,72 +794,60 @@ Begin Window ScripturePickerWindow
       LockRight       =   "True"
       LockTop         =   "True"
       TabPanelIndex   =   0
-      TextFont        =   "Arial"
+      TextFont        =   "System"
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
       Visible         =   True
       Width           =   69
-      BehaviorIndex   =   21
+      BehaviorIndex   =   24
    End
-   Begin PushButton btn_done
+   Begin EditField edt_preview
+      AcceptTabs      =   "False"
+      Alignment       =   0
       AutoDeactivate  =   "True"
+      BackColor       =   16777215
       Bold            =   "False"
-      Cancel          =   "True"
-      Caption         =   "Done"
-      ControlOrder    =   19
-      Default         =   "False"
+      Border          =   "True"
+      ControlOrder    =   25
+      DataField       =   ""
+      DataSource      =   ""
       Enabled         =   True
-      Height          =   22
+      Format          =   ""
+      Height          =   71
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   455
-      LockBottom      =   "False"
-      LockLeft        =   "False"
+      Left            =   20
+      LimitText       =   0
+      LockBottom      =   "True"
+      LockLeft        =   "True"
       LockRight       =   "True"
-      LockTop         =   "True"
+      LockTop         =   "False"
+      Mask            =   ""
+      Multiline       =   "True"
+      Password        =   "False"
+      ReadOnly        =   "True"
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
+      Styled          =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   185
+      Text            =   ""
+      TextColor       =   0
+      TextFont        =   "System"
+      TextSize        =   12
+      Top             =   491
       Underline       =   "False"
+      UseFocusRing    =   "True"
       Visible         =   True
-      Width           =   69
-      BehaviorIndex   =   22
-   End
-   Begin PushButton btn_search
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "Search"
-      ControlOrder    =   20
-      Default         =   "False"
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   484
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "True"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   35
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   69
-      BehaviorIndex   =   23
+      Width           =   530
+      BehaviorIndex   =   25
    End
    Begin StaticText txt_verse_dash
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   22
+      ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -802,12 +872,12 @@ Begin Window ScripturePickerWindow
       Underline       =   "False"
       Visible         =   True
       Width           =   10
-      BehaviorIndex   =   24
+      BehaviorIndex   =   26
    End
    Begin StaticText txt_verse_colon
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   23
+      ControlOrder    =   27
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -832,54 +902,12 @@ Begin Window ScripturePickerWindow
       Underline       =   "False"
       Visible         =   True
       Width           =   10
-      BehaviorIndex   =   25
-   End
-   Begin EditField edt_preview
-      AcceptTabs      =   "False"
-      Alignment       =   0
-      AutoDeactivate  =   "True"
-      BackColor       =   16777215
-      Bold            =   "False"
-      Border          =   "True"
-      ControlOrder    =   26
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   90
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   20
-      LimitText       =   0
-      LockBottom      =   "True"
-      LockLeft        =   "True"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      Mask            =   ""
-      Multiline       =   "True"
-      Password        =   "False"
-      ReadOnly        =   "True"
-      ScrollbarHorizontal=   "False"
-      ScrollbarVertical=   "True"
-      Styled          =   "False"
-      TabPanelIndex   =   0
-      Text            =   ""
-      TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
-      Top             =   472
-      Underline       =   "False"
-      UseFocusRing    =   "True"
-      Visible         =   True
-      Width           =   530
-      BehaviorIndex   =   26
+      BehaviorIndex   =   27
    End
    Begin StaticText StaticText1
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   27
+      ControlOrder    =   28
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -904,12 +932,12 @@ Begin Window ScripturePickerWindow
       Underline       =   "False"
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   27
+      BehaviorIndex   =   28
    End
    Begin StaticText lbl_bible_book
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   28
+      ControlOrder    =   29
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -918,7 +946,7 @@ Begin Window ScripturePickerWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   6
+      Left            =   20
       LockBottom      =   "False"
       LockLeft        =   "False"
       LockRight       =   "False"
@@ -930,11 +958,11 @@ Begin Window ScripturePickerWindow
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   78
+      Top             =   69
       Underline       =   "False"
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   28
+      BehaviorIndex   =   29
    End
 End
 #tag EndWindow
@@ -942,35 +970,15 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Close()
+		  SPController = Nil
 		  Globals.Status_ScripturePickerOpen = False
 		End Sub
 	#tag EndEvent
 
 	#tag Event
 		Sub Open()
-		  Dim n As Integer
-		  n = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@per_slide")
-		  If n = 0 Then n = 2
-		  If n = 1 Then
-		    rad_verses_one.Value = True
-		  ElseIf n = 2 Then
-		    rad_verses_two.Value = True
-		  Else
-		    rad_verses_three.Value = True
-		  End If
-		  
-		  Dim s As String
-		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@format")
-		  If s = "verse" Then
-		    rad_format_verse.Value = True
-		  Else
-		    rad_format_paragraph.Value = True
-		  End If
-		  
 		  App.T.TranslateWindow Me, "scripture_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
-		  
-		  btn_search.Enabled = App.MyBible.IsSearchable
 		  
 		  '++JRC Ensure the scrollbars are enabled if necessary
 		  lst_scr_nt.ScrollPosition = 1
@@ -983,39 +991,13 @@ End
 
 	#tag Event
 		Sub Resized()
-		  //
-		  // Add code to balance book lists
-		  // The Lock... attributes for controls don't seem
-		  // to be able to deal with two adjacent controls that need to resize equally
-		  // when the window size changes
-		  //
-		  // Ed Palmer, October 2005
-		  //
-		  Dim listwidth As Integer
-		  
-		  listwidth = (grp_Books.Width / 2) - 11
-		  lst_scr_nt.Left = lst_scr_ot.Left + listwidth + 5
-		  lst_scr_ot.Width = listwidth
-		  lst_scr_nt.Width = listwidth
+		  ResizeBookLists
 		End Sub
 	#tag EndEvent
 
 	#tag Event
 		Sub Resizing()
-		  //
-		  // Add code to balance book lists
-		  // The Lock... attributes for controls don't seem
-		  // to be able to deal with two adjacent controls that need to resize equally
-		  // when the window size changes
-		  //
-		  // Ed Palmer, October 2005
-		  //
-		  Dim listwidth As Integer
-		  
-		  listwidth = (grp_Books.Width / 2) - 11
-		  lst_scr_nt.Left = lst_scr_ot.Left + listwidth + 5
-		  lst_scr_ot.Width = listwidth
-		  lst_scr_nt.Width = listwidth
+		  ResizeBookLists
 		End Sub
 	#tag EndEvent
 
@@ -1025,14 +1007,6 @@ End
 		  If lst_scr_ot.ListIndex >= 0 Then Return lst_scr_ot.List(lst_scr_ot.ListIndex)
 		  If lst_scr_nt.ListIndex >= 0 Then Return lst_scr_nt.List(lst_scr_nt.ListIndex)
 		  Return ""
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function ActiveBookNum() As Integer
-		  If lst_scr_ot.ListIndex >= 0 Then Return lst_scr_ot.ListIndex + 1
-		  If lst_scr_nt.ListIndex >= 0 Then Return lst_scr_nt.ListIndex + 1 + App.MyBible.GetOTCount
-		  Return 0
 		End Function
 	#tag EndMethod
 
@@ -1065,23 +1039,23 @@ End
 		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_from_verse.ListIndex+cntVerses)
 		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+cntVerses))
 		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
-		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + 1, vFrom, vTo)
+		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + 1, vFrom, vTo)
 		    passage = passage + vFrom
-		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + cntVerses, vFrom, vTo)
+		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + cntVerses, vFrom, vTo)
 		    If vTo = "" Then
 		      passage = passage + "-" + vFrom
 		    Else
 		      passage = passage + "-" + vTo
 		    End If
-		    verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_from_verse.ListIndex + cntVerses)
+		    verses = App.MyBible.GetPassage(ActiveBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_from_verse.ListIndex + cntVerses)
 		  ElseIf lst_scr_to_verse.ListIndex > lst_scr_from_verse.ListIndex Then
 		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_to_verse.ListIndex+1)
 		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_to_verse.ListIndex + 1))
-		    verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_to_verse.ListIndex + 1)
+		    verses = App.MyBible.GetPassage(ActiveBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_to_verse.ListIndex + 1)
 		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
-		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + 1, vFrom, vTo)
+		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + 1, vFrom, vTo)
 		    passage = passage + vFrom
-		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_to_verse.ListIndex + 1, vFrom, vTo)
+		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_to_verse.ListIndex + 1, vFrom, vTo)
 		    If vTo = "" Then
 		      passage = passage + "-" + vFrom
 		    Else
@@ -1090,9 +1064,9 @@ End
 		  Else
 		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1)
 		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+1))
-		    verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_from_verse.ListIndex + 1)
+		    verses = App.MyBible.GetPassage(ActiveBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_from_verse.ListIndex + 1)
 		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
-		    App.MyBible.GetVerseRange(CurrentBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_to_verse.ListIndex + 1, vFrom, vTo)
+		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_to_verse.ListIndex + 1, vFrom, vTo)
 		    passage = passage + vFrom
 		    If vTo <> "" Then passage = passage + "-" + vTo
 		  End If
@@ -1102,7 +1076,7 @@ End
 		  SmartML.SetValue Node, "@name", passage
 		  SmartML.SetValue Node, "@type", "scripture"
 		  SmartML.SetValue Node, "title", passage
-		  SmartML.SetValue Node, "subtitle", App.MyBible.GetBibleName
+		  SmartML.SetValue Node, "subtitle", App.MyBible.name
 		  
 		  ' MG: Have to clear the slide cache in case Insert is used before Add
 		  slides = SmartML.GetNode(Node, "slides", False)
@@ -1168,41 +1142,30 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor()
+		Sub Constructor(controller As ScripturePickerController)
+		  
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		  
-		  Dim x, i, cnt As Integer
-		  Dim f As FolderItem
-		  Dim default As String
+		  Try
+		    SPController = controller
+		    SPController.registerObserver self
+		  Catch e As NilObjectException
+		    // If controller is Nil, then there's a logic error higher up in the program
+		    App.DebugWriter.Write "ScripturePickerWindow.Constructor: Controller is Nil!?", 1
+		    App.DebugWriter.Write "Stack dump: "
+		    App.DebugWriter.Write Join(RuntimeException(e).Stack, EndOfLine)
+		  End Try
 		  
-		  Initializing = True
-		  
-		  f = App.AppFolder.Child("OpenSong Scripture")
-		  cnt = f.Count
-		  
-		  default = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version")
-		  ' MG: In order to properly increment the list and set the listindex I had to add this
-		  i = 0
-		  '******************************
-		  For x = 1 to cnt
-		    If f.Item(x).Directory=false and f.item(x).Visible Then 'bhenny- don't display directories in list (or hidden files...EMP)
-		      pop_scr_version.AddRow f.Item(x).Name
-		      If f.Item(x).Name = default Then pop_scr_version.ListIndex = i ' MG: sets the list index correctly in case there are subfolders
-		      i = i + 1
-		    End if
-		  Next x
-		  
-		  If f.Count > 0 And pop_scr_version.ListIndex < 0 Then pop_scr_version.ListIndex = 0
-		  
-		  Initializing = False
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function CurrentBookNumber() As Integer
+		Protected Function SelectedBookNumber() As Integer
 		  If lst_scr_ot.ListIndex >= 0 Then Return lst_scr_ot.CellTag(lst_scr_ot.ListIndex, 0).IntegerValue
 		  If lst_scr_nt.ListIndex >= 0 Then Return lst_scr_nt.CellTag(lst_scr_nt.ListIndex, 0).IntegerValue
+		  
+		  System.DebugLog "ScripturePickerWindow.CurrentBookNumber: both OT & NT lists have no selection."
 		  Return 0
 		End Function
 	#tag EndMethod
@@ -1320,7 +1283,7 @@ End
 		  
 		  temp = Left(lookup, first_space_loc - 1)
 		  
-		  BookName = App.MyBible.LookupBookName(temp)
+		  BookName = Bible(App.MyBible).LookupBookName(temp)
 		  
 		  If BookName = "" Then
 		    If App.MyBible.ErrorString = "" Then // Nothing found
@@ -1441,174 +1404,73 @@ End
 
 	#tag Method, Flags = &h0
 		Function Popup(node As XmlNode, live As Boolean = False) As Boolean
-		  App.DebugWriter.Write "ScripturePickerWindow.Popup: Enter"
-		  
-		  If App.MyBible = Nil Then
-		    App.DebugWriter.Write "ScripturePickerWindow.Popup: Exit (no Bible loaded)"
-		    Return True
-		  End If
-		  
-		  Me.Node = node
-		  Me.Live = live
-		  edt_quick_lookup.Text = ""
-		  OldSel = -1
-		  'Dim book As Integer
-		  ReturnValue = False
-		  book = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book")
-		  If book > 0 And book <= App.MyBible.GetOTCount Then
-		    lst_scr_nt.ListIndex = -1
-		    lst_scr_ot.ListIndex = book - 1
-		    'lst_scr_ot.SetFocus
-		  ElseIf book > 0 Then
-		    lst_scr_ot.ListIndex = -1
-		    lst_scr_nt.ListIndex = book - 1 - App.MyBible.GetOTCount
-		    'lst_scr_nt.SetFocus
-		  Else 'No previously selected book
-		    book = 1 'Assume Genesis
-		    lst_scr_nt.ListIndex = -1
-		    lst_scr_ot.ListIndex = book - 1
-		  End If
-		  
-		  If book > 0 Then
-		    If SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") > 0 Then
-		      lst_scr_chapter.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") - 1
-		      lst_scr_from_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse") - 1
-		      lst_scr_to_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru") - 1
-		    Else 'No Previously selected chapter
-		      lst_scr_chapter.ListIndex = 0 'Assume chapter 1
-		      'From & To verses will be set automatically by the chapter change
-		    End If
-		    
-		  End If
-		  
-		  If Live Then
-		    ' MG: The Insert button will add slides on the fly directly to the presentation
-		    btn_Insert.Visible = True
-		    btn_Insert.Caption = App.T.Translate("shared/insert/@caption")
-		    PresentMode = PresentWindow.Mode
-		    '**************************
-		    btn_add.Caption = App.T.Translate("shared/add/@caption")
-		    btn_done.Caption = App.T.Translate("shared/close/@caption") 'MG: Close just makes more sense to me here
-		  End If
-		  btn_search.Caption = App.T.Translate("shared/search/@caption") ' MG: Without this the Search button was blank!
-		  '++JRC
-		  Globals.Status_ScripturePickerOpen = True
-		  setPreview
-		  '--
-		  ShowModalWithin(MainWindow)
-		  
-		  If ReturnValue And book >= 0 Then
-		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book", book)
-		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter", chapter)
-		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse", verse)
-		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru", thru)
-		  End If
-		  
-		  App.DebugWriter.Write "ScripturePickerWindow.Popup: Exit"
-		  Return ReturnValue
+		  'App.DebugWriter.Write "ScripturePickerWindow.Popup: Enter"
+		  '
+		  'If App.MyBible = Nil Then
+		  'App.DebugWriter.Write "ScripturePickerWindow.Popup: Exit (no Bible loaded)"
+		  'Return True
+		  'End If
+		  '
+		  'Me.Node = node
+		  'Me.Live = live
+		  'edt_quick_lookup.Text = ""
+		  'OldSel = -1
+		  ''Dim book As Integer
+		  'ReturnValue = False
+		  'book = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book")
+		  'If book > 0 And book <= App.MyBible.GetOTCount Then
+		  'lst_scr_nt.ListIndex = -1
+		  'lst_scr_ot.ListIndex = book - 1
+		  ''lst_scr_ot.SetFocus
+		  'ElseIf book > 0 Then
+		  'lst_scr_ot.ListIndex = -1
+		  'lst_scr_nt.ListIndex = book - 1 - App.MyBible.GetOTCount
+		  ''lst_scr_nt.SetFocus
+		  'Else 'No previously selected book
+		  'book = 1 'Assume Genesis
+		  'lst_scr_nt.ListIndex = -1
+		  'lst_scr_ot.ListIndex = book - 1
+		  'End If
+		  '
+		  'If book > 0 Then
+		  'If SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") > 0 Then
+		  'lst_scr_chapter.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") - 1
+		  'lst_scr_from_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse") - 1
+		  'lst_scr_to_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru") - 1
+		  'Else 'No Previously selected chapter
+		  'lst_scr_chapter.ListIndex = 0 'Assume chapter 1
+		  ''From & To verses will be set automatically by the chapter change
+		  'End If
+		  '
+		  'End If
+		  '
+		  'If Live Then
+		  '' MG: The Insert button will add slides on the fly directly to the presentation
+		  'btn_Insert.Visible = True
+		  'btn_Insert.Caption = App.T.Translate("shared/insert/@caption")
+		  'PresentMode = PresentWindow.Mode
+		  ''**************************
+		  'btn_add.Caption = App.T.Translate("shared/add/@caption")
+		  'btn_done.Caption = App.T.Translate("shared/close/@caption") 'MG: Close just makes more sense to me here
+		  'End If
+		  'btn_search.Caption = App.T.Translate("shared/search/@caption") ' MG: Without this the Search button was blank!
+		  ''++JRC
+		  'Globals.Status_ScripturePickerOpen = True
+		  'setPreview
+		  ''--
+		  'ShowModalWithin(MainWindow)
+		  '
+		  'If ReturnValue And book >= 0 Then
+		  'SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book", book)
+		  'SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter", chapter)
+		  'SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse", verse)
+		  'SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru", thru)
+		  'End If
+		  '
+		  'App.DebugWriter.Write "ScripturePickerWindow.Popup: Exit"
+		  'Return ReturnValue
 		  
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub ScrollNT()
-		  dim ot as integer
-		  ot = app.mybible.GetOTCount
-		  
-		  If lst_scr_nt.ListIndex = -1 Then Return
-		  
-		  lst_scr_ot.ListIndex = -1
-		  book = lst_scr_nt.ListIndex + ot + 1
-		  CurrentBook = lst_scr_nt.Text
-		  
-		  Dim chapternum, x As Integer
-		  chapternum = App.MyBible.GetChapterCount(lst_scr_nt.ListIndex+1+ ot)
-		  If chapternum < lst_scr_chapter.ListCount Then
-		    For x = lst_scr_chapter.ListCount - 1 DownTo chapternum
-		      lst_scr_chapter.RemoveRow x
-		    Next x
-		  ElseIf chapternum > lst_scr_chapter.ListCount Then
-		    For x = lst_scr_chapter.ListCount To chapternum - 1
-		      lst_scr_chapter.AddRow Str(x+1)
-		    Next x
-		  End If
-		  lst_scr_chapter.ListIndex = 0
-		  
-		  setPreview 'bhenny added
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub ScrollOT()
-		  If lst_scr_ot.ListIndex = -1 Then Return
-		  
-		  lst_scr_nt.ListIndex = -1
-		  book = lst_scr_ot.ListIndex + 1
-		  CurrentBook = lst_scr_ot.Text
-		  
-		  Dim chapternum, x As Integer
-		  chapternum = App.MyBible.GetChapterCount(lst_scr_ot.ListIndex+1)
-		  If chapternum < lst_scr_chapter.ListCount Then
-		    For x = lst_scr_chapter.ListCount - 1 DownTo chapternum
-		      lst_scr_chapter.RemoveRow x
-		    Next x
-		  ElseIf chapternum > lst_scr_chapter.ListCount Then
-		    For x = lst_scr_chapter.ListCount To chapternum - 1
-		      lst_scr_chapter.AddRow Str(x+1)
-		    Next x
-		  End If
-		  lst_scr_chapter.ListIndex = 0
-		  
-		  setPreview 'bhenny added
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub setPreview()
-		  'bhenny- added to set the text in the preview box to the scripture
-		  //
-		  // November 2006, Ed Palmer
-		  // Change to use a revised GetPassage that clears up some issues
-		  // with multiple verse verses.
-		  //
-		  Dim verses(0), toVerse As String
-		  Dim x As Integer
-		  Dim BookNum As Integer
-		  
-		  App.DebugWriter.Write "ScripturePickerWindow.setPreview: Enter"
-		  'clear box
-		  edt_preview.text=""
-		  
-		  If Initializing Then
-		    App.DebugWriter.Write "ScripturePickerWindow.setPreview: Exit (Initializing)"
-		    Return
-		  End If
-		  
-		  Try
-		    verses = App.MyBible.GetPassage(CurrentBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_to_verse.ListIndex + 1)
-		  Catch ex As NilObjectException
-		    App.DebugWriter.Write "ScripturePickerWindow.setPreview: NOE calling GetPassage"
-		    If App.MyBible = Nil Then
-		      App.DebugWriter.Write chr(9) + "MyBible is Nil"
-		    End If
-		    App.DebugWriter.Write "ScripturePickerWindow.setPreview: Exit"
-		    Return
-		  End Try
-		  
-		  'add them to the box
-		  for x=1 To UBound(verses)
-		    If rad_format_verse.Value Then
-		      edt_preview.text= edt_preview.text + Chr(10) + verses(x)
-		    Else
-		      if x=1 then
-		        edt_preview.text= verses(x)
-		      else
-		        edt_preview.text= edt_preview.text + " " + verses(x)
-		      end if
-		    End If
-		  Next x
-		  App.DebugWriter.Write "ScripturePickerWindow.setPreview: Exit"
-		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -1625,7 +1487,7 @@ End
 		    bookName= bookName+" "+parts(x)
 		  next x
 		  
-		  book= App.MyBible.GetBookNum(bookName)-1
+		  book= Bible(App.MyBible).GetBookNum(bookName)-1
 		  
 		  parts= parts(UBound(parts)).split(":")
 		  chap=Val(parts(0))-1
@@ -1793,29 +1655,451 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub ChangeBible(newBible As iBible)
+		  App.DebugWriter.Write "ScripturePickerWindow.ChangeBible", 4
+		  //
+		  // Store the new bible
+		  //
+		  If newBible = Nil Then Return
+		  MyBible = newBible
+		  
+		  //
+		  // Build the version popup
+		  //
+		  Dim bibles() As String
+		  bibles = BibleFactory.BibleList
+		  pop_scr_version.DeleteAllRows
+		  pop_scr_version.AddRows(bibles)
+		  pop_scr_version.ListIndex = bibles.IndexOf(newBible.Name)
+		  
+		  //
+		  // Load the lists from the new bible
+		  //
+		  RebuildBooklistListBoxes
+		  
+		  ActiveBible = newBible.Name
+		  
+		  ActiveBookNumber = -1
+		  lst_scr_ot.ListIndex = -1
+		  lst_scr_nt.ListIndex = -1
+		End Sub
+	#tag EndMethod
 
-	#tag Property, Flags = &h1
-		Protected book As Integer
-	#tag EndProperty
+	#tag Method, Flags = &h1
+		Protected Sub RebuildBooklistListboxes()
+		  //
+		  // Rebuild the OT & NT listboxes from the current bible
+		  //
+		  
+		  //
+		  // Clear old values
+		  //
+		  lst_scr_ot.DeleteAllRows
+		  lst_scr_nt.DeleteAllRows
+		  lst_scr_chapter.DeleteAllRows
+		  lst_scr_from_verse.DeleteAllRows
+		  lst_scr_to_verse.DeleteAllRows
+		  
+		  Dim s() As String
+		  Dim n() As Integer
+		  
+		  Dim i As Integer
+		  Dim cnt As Integer
+		  
+		  cnt = MyBible.GetOTBooks(s, n) - 1
+		  
+		  For i = 0 To cnt
+		    lst_scr_ot.AddRow s(i)
+		    lst_scr_ot.CellTag(i, 0) = n(i)
+		  Next
+		  
+		  ReDim s(-1)
+		  ReDim n(-1)
+		  
+		  cnt = MyBible.GetNTBooks(s, n) - 1
+		  
+		  For i = 0 To cnt
+		    lst_scr_nt.AddRow s(i)
+		    lst_scr_nt.CellTag(i, 0) = n(i)
+		  Next
+		  
+		  lst_scr_ot.ListIndex = -1
+		  lst_scr_nt.ListIndex = -1
+		  OldSel = -1
+		End Sub
+	#tag EndMethod
 
-	#tag Property, Flags = &h1
-		Protected chapter As Integer
-	#tag EndProperty
+	#tag Method, Flags = &h1
+		Protected Sub SendCommand(command As String, parameter As Variant = Nil)
+		  'System.DebugLog "ScripturePickerWindow.SendCommand: Sending " + command
+		  
+		  SPController.CommandNotification(command, Self, parameter)
+		  
+		End Sub
+	#tag EndMethod
 
-	#tag Property, Flags = &h1
-		#tag Note
-			This holds the full name of the currently selected book to make it easier
-			than having to chase the ListIndex of both lst_scr_nt & lst_scr_nt
-		#tag EndNote
-		Protected CurrentBook As String
-	#tag EndProperty
+	#tag Method, Flags = &h1
+		Protected Sub SetSelection(bookNumber As Integer, chapterNumber As Integer, fromVerse As Integer, toVerse As Integer)
+		  Dim i As Integer
+		  Dim bookIndex As Integer = -1
+		  Dim bookControl As Listbox = Nil
+		  Dim notBookControl As Listbox = Nil
+		  Dim chapterCount As Integer
+		  Dim verseList() As String
+		  
+		  bookIndex = FindBookInListbox(bookNumber, lst_scr_ot)
+		  If bookIndex >= 0 Then
+		    bookControl = lst_scr_ot
+		    notBookControl = lst_scr_nt
+		  Else
+		    bookIndex = FindBookInListbox(bookNumber, lst_scr_nt)
+		    If bookIndex >= 0 Then bookControl = lst_scr_nt
+		    notBookControl = lst_scr_ot
+		  End If
+		  
+		  If bookControl = Nil Then
+		    System.DebugLog "ScripturePickerWindow.SetSelection: couldn't find book " + CStr(bookNumber)
+		    Return
+		  End If
+		  
+		  //
+		  // Was this a change? If so, rebuild chapter and verse listboxes
+		  //
+		  
+		  If bookControl.CellTag(bookIndex, 0) <> ActiveBookNumber Then
+		    RebuildChapterListbox(bookNumber, chapterNumber)
+		    RebuildVerseListboxes(bookNumber, chapterNumber)
+		  End If
+		  
+		  ActiveBookNumber = bookNumber
+		  bookControl.ListIndex = bookIndex
+		  notBookControl.ListIndex = -1
+		  
+		  //
+		  // The bible object deals with one-based offsets, but for
+		  // simplicity translate that now into zero-based for the
+		  // listboxes.
+		  // Check for chapter change in case a new chapter
+		  // was selected within the same book.
+		  //
+		  If ActiveChapterNumber <> chapterNumber - 1 Then
+		    RebuildVerseListboxes(bookNumber, chapterNumber)
+		  End If
+		  ActiveChapterNumber = chapterNumber - 1
+		  ActiveFromVerse = fromVerse - 1
+		  ActiveThruVerse = toVerse - 1
+		  
+		  lst_scr_chapter.ListIndex = ActiveChapterNumber
+		  lst_scr_from_verse.ListIndex = ActiveFromVerse
+		  lst_scr_to_verse.ListIndex = ActiveThruVerse
+		  
+		  UpdatePreview
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function FindBookInListbox(bookNumber As Integer, bookControl As ListBox) As Integer
+		  //
+		  // Look through the listbox to find a matching book number in the CellTag
+		  //
+		  // Brute force, but simple
+		  //
+		  
+		  Dim i, j As Integer
+		  
+		  If bookControl = Nil Then Return -1
+		  
+		  j = bookControl.ListCount - 1
+		  For i = 0 To j
+		    If bookControl.CellTag(i, 0) = bookNumber Then
+		      Return i
+		    End If
+		  Next
+		  
+		  Return -1
+		  
+		Catch ex
+		  System.DebugLog "ScripturePicker.FindBookInListbox: caught a " + ex.ToString
+		  Return -1
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub RebuildChapterListbox(bookNumber As Integer, chapterNumber As Integer)
+		  Dim chapterCount As Integer
+		  
+		  lst_scr_chapter.DeleteAllRows
+		  chapterCount = MyBible.GetChapterCount(bookNumber)
+		  For i As Integer = 1 To chapterCount
+		    lst_scr_chapter.AddRow CStr(i)
+		  Next
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub BookSelected(newBook As Integer)
+		  SendCommand ScripturePickerController.cmdSelectBook, newbook
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub PassageChanged()
+		  Dim newPassage() As String
+		  
+		  //
+		  // Pack the current selections into the string
+		  //
+		  // Really should be an object
+		  //
+		  newPassage.Append CStr(CurrentBookNumber)
+		  newPassage.Append CStr(CurrentChapter)
+		  newPassage.Append CStr(CurrentFromVerseIndex)
+		  newPassage.Append CStr(CurrentThruVerseIndex)
+		  
+		  SendCommand ScripturePickerController.cmdSelectionChanged, Join(newPassage, Chr(0))
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub UpdatePreview()
+		  Dim verses() As String
+		  Dim sep As String
+		  
+		  If MyBible Is Nil Then Return
+		  
+		  verses = MyBible.GetPassage(CurrentBookNumber, CurrentChapter, CurrentFromVerseIndex, CurrentThruVerseIndex, chk_shownumbers.Value)
+		  
+		  If rad_format_paragraph.Value Then
+		    sep = " "
+		  ElseIf rad_format_verse.Value Then
+		    sep = EndOfLine
+		  End If
+		  
+		  edt_preview.Text = Join(verses, sep)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub DisableUI()
+		  App.DebugWriter.Write "ScripturePickerWindow.DisableUI", 4
+		  //
+		  // Disable all the controls on the window
+		  //
+		  
+		  Dim count As Integer
+		  Dim c As RectControl
+		  count = Self.ControlCount - 1
+		  
+		  Self.MouseCursor = WatchCursor
+		  
+		  For i As Integer = 0 To count
+		    If Not (Self.Control(i) IsA RectControl) Then Continue
+		    c = RectControl(Self.Control(i))
+		    If c.Enabled Then
+		      EnabledControls.Append c
+		      c.Enabled = False
+		    End If
+		  Next
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub EnableUI()
+		  App.DebugWriter.Write "ScripturePickerWindow.EnableUI", 4
+		  Dim max As Integer
+		  
+		  max = UBound(EnabledControls)
+		  
+		  For i As Integer = max DownTo 0
+		    EnabledControls(i).Enabled = True
+		    EnabledControls.Remove i
+		  Next
+		  Self.MouseCursor = Nil
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Destructor()
+		  App.DebugWriter.Write "ScripturePickerWindow.Destructor"
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub ResizeBookLists()
+		  //
+		  // Add code to balance book lists
+		  // The Lock... attributes for controls don't seem
+		  // to be able to deal with two adjacent controls that need to resize equally
+		  // when the window size changes
+		  //
+		  // Ed Palmer, October 2005
+		  //
+		  Dim listwidth As Integer
+		  
+		  listwidth = (grp_Books.Width / 2) - 11
+		  lst_scr_nt.Left = lst_scr_ot.Left + listwidth + 5
+		  lst_scr_ot.Width = listwidth
+		  lst_scr_nt.Width = listwidth
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CurrentBookNumber() As Integer
+		  If lst_scr_ot.ListIndex > -1 Then
+		    Return lst_scr_ot.CellTag(lst_scr_ot.ListIndex, 0)
+		  Else
+		    Return lst_scr_nt.CellTag(lst_scr_nt.ListIndex, 0)
+		  End If
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CurrentChapter() As Integer
+		  Return lst_scr_chapter.ListIndex + 1
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CurrentFromVerseIndex() As Integer
+		  Return lst_scr_from_verse.ListIndex + 1
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CurrentThruVerseIndex() As Integer
+		  Return lst_scr_to_verse.ListIndex + 1
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub FormatAsParagraph(useParagraphFormat As Boolean)
+		  PropertiesUpdating = True
+		  rad_format_paragraph.Value = useParagraphFormat
+		  rad_format_verse.Value = Not useParagraphFormat
+		  
+		  UpdatePreview
+		  PropertiesUpdating = False
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ShowVerseNumbers(show As Boolean)
+		  PropertiesUpdating = True
+		  chk_shownumbers.Value = show
+		  
+		  UpdatePreview
+		  PropertiesUpdating = False
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub VersesPerSlide(verseCount As Integer)
+		  If verseCount < 1 Or verseCount > 3 Then Return
+		  PropertiesUpdating = True
+		  
+		  Select Case verseCount
+		  Case 1
+		    rad_verses_one.Value = True
+		  Case 2
+		    rad_verses_two.Value = True
+		  Case 3
+		    rad_verses_three.Value = True
+		  End Select
+		  
+		  UpdatePreview
+		  PropertiesUpdating = False
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CurrentChapterNumber() As Integer
+		  // Part of the iScripturePicker interface.
+		  
+		  Return lst_scr_chapter.ListIndex + 1
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ChangePassage(bookNumber As Integer, chapterNumber As Integer, fromVerse As Integer, thruVerse As Integer)
+		  // Part of the iScripturePicker interface.
+		  //
+		  // Callback indicating the selected passage has changed.
+		  // Update controls accordingly
+		  //
+		  
+		  //
+		  // Validate before changing
+		  //
+		  
+		  If MyBible = Nil Then Return
+		  If MyBible.ValidateCitation(bookNumber, chapterNumber, fromVerse, thruVerse) Then
+		    SetSelection(bookNumber, chapterNumber, fromVerse, thruVerse)
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub CloseScripturePicker()
+		  // Part of the iScripturePicker interface.
+		  
+		  Self.Close
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function VersesPerSlide() As Integer
+		  // Part of the iScripturePicker interface.
+		  If rad_verses_one.Value Then
+		    Return 1
+		  ElseIf rad_verses_two.Value Then
+		    Return 2
+		  ElseIf rad_verses_three.Value Then
+		    Return 3
+		  End If
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function FormatAsParagraph() As Boolean
+		  // Part of the iScripturePicker interface.
+		  
+		  Return rad_format_paragraph.Value
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ShowVerseNumbers() As Boolean
+		  // Part of the iScripturePicker interface.
+		  Return chk_shownumbers.Value
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub RebuildVerseListboxes(bookNumber As Integer, chapterNumber As Integer)
+		  Dim verseList() As String
+		  lst_scr_from_verse.DeleteAllRows
+		  lst_scr_to_verse.DeleteAllRows
+		  verseList = MyBible.GetVerseNumbers(bookNumber, chapterNumber)
+		  For i As Integer = 0 To UBound(verseList)
+		    lst_scr_from_verse.AddRow verseList(i)
+		    lst_scr_to_verse.AddRow verseList(i)
+		  Next
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h21
 		Private Initializing As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		Live As Boolean
+	#tag Property, Flags = &h21
+		Private PresentationIsRunning As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -1843,22 +2127,115 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected thru As Integer
+		Protected MyBible As iBible
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected verse As Integer
+		Protected SPController As ScripturePickerController
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		#tag Note
+			Used by lst_scr_from_verse to determine if a value change has occurred
+		#tag EndNote
+		Private ActiveFromVerse As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		#tag Note
+			Used by lst_scr_to_verse to determine if a value change has occurred
+		#tag EndNote
+		Private ActiveThruVerse As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		#tag Note
+			Used by lst_scr_chapter.Change to determine if a change has occurred.
+		#tag EndNote
+		Private ActiveChapterNumber As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		#tag Note
+			Used by Change events of lst_scr_ot and lst_scr_nt to determine if a change has occurred.
+		#tag EndNote
+		Private ActiveBookNumber As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		#tag Note
+			Used by pop_scr_version.Change to determine if a change has occurred.
+		#tag EndNote
+		Private ActiveBible As String
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Note
+			If True, indicates the window is opened from a presentation.
+			If False, indicates the window is opened from an editor.
+		#tag EndNote
+		#tag Getter
+			Get
+			Return PresentationIsRunning
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			btn_insert.Visible = value
+			PresentationIsRunning = value
+			End Set
+		#tag EndSetter
+		Live As Boolean
+	#tag EndComputedProperty
+
+	#tag Property, Flags = &h1
+		Protected EnabledControls() As RectControl
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected PropertiesUpdating As Boolean
 	#tag EndProperty
 
 
 #tag EndWindowCode
 
+#tag Bindings
+	#tag BeginBinding
+		SourceItem = 8
+		DestinationItem = 7
+		ItemType = bindListBoxes
+		ItemDescription = Notify lst_scr_ot when lst_scr_nt has a selection
+	#tag EndBinding
+	#tag BeginBinding
+		SourceItem = 7
+		DestinationItem = 8
+		ItemType = bindListBoxes
+		ItemDescription = Notify lst_scr_nt when lst_scr_ot has a selection
+	#tag EndBinding
+#tag EndBindings
+#tag Events btn_done
+	#tag Event
+		Sub Action()
+		  SendCommand(ScripturePickerController.cmdDone)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_search
+	#tag Event
+		Sub Action()
+		  SendCommand(ScripturePickerController.cmdSearch)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events edt_quick_lookup
 	#tag Event
 		Sub GotFocus()
-		  btn_quick_lookup.Enabled = Me.Text <> ""
-		  btn_quick_lookup.Default = Me.Text <> ""
-		  btn_add.Default = Not btn_quick_lookup.Default
+		  btn_quick_lookup.Enabled = (Me.Text.Len > 0)
+		  If Me.Text.Len > 0 Then
+		    btn_quick_lookup.Default = True
+		  Else
+		    btn_add.Default = True
+		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -1892,289 +2269,141 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub TextChange()
-		  btn_quick_lookup.Enabled = Me.Text <> ""
-		  btn_add.Default = Me.Text = ""
-		  btn_quick_lookup.Default = Not btn_add.Default
+		  btn_quick_lookup.Enabled = (Me.Text.Len > 0)
+		  If Me.Text.Len > 0 Then
+		    btn_quick_lookup.Default = True
+		  Else
+		    btn_add.Default = True
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_quick_lookup
+#tag Events lst_scr_ot
 	#tag Event
-		Sub Action()
-		  Lookup edt_quick_lookup.Text
-		  btn_add.SetFocus
-		  btn_add.Default = True
-		  Me.Default = False
+		Sub Change()
+		  If Me.ListIndex = -1 Then Return
+		  If Me.CellTag(Me.ListIndex, 0) = ActiveBookNumber Then Return
+		  
+		  BookSelected (Me.CellTag(Me.ListIndex, 0))
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events lst_scr_nt
+	#tag Event
+		Sub Change()
+		  If Me.ListIndex = -1 Then Return
+		  If Me.CellTag(Me.ListIndex, 0) = ActiveBookNumber Then Return
+		  
+		  BookSelected(Me.CellTag(Me.ListIndex, 0))
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events lst_scr_chapter
 	#tag Event
 		Sub Change()
-		  //
-		  // Chapter changed.  Update the verse lists (from and to)
-		  // Updated September 2005 to get a list of verses instead of just
-		  // a count.
-		  //
-		  // Ed Palmer
-		  Dim versenum, x As Integer
-		  Dim VerseList(0) As String
+		  If Me.ListIndex = -1 Then Return
+		  If Me.ListIndex = ActiveChapterNumber Then Return
 		  
-		  if me.listindex >= 0 then
-		    
-		    VerseList = App.MyBible.GetVerseNumbers(ActiveBookNum,  Val(Me.Text))
-		    versenum = App.MyBible.GetVerseCount(ActiveBookNum, Me.ListIndex+1)
-		    
-		    'If versenum < lst_scr_from_verse.ListCount Then
-		    'For x = lst_scr_from_verse.ListCount - 1 DownTo versenum
-		    'lst_scr_from_verse.RemoveRow x
-		    'lst_scr_to_verse.RemoveRow x
-		    'Next x
-		    'ElseIf versenum > lst_scr_from_verse.ListCount Then
-		    'For x = lst_scr_from_verse.ListCount To versenum - 1
-		    'lst_scr_from_verse.AddRow Str(x+1)
-		    'lst_scr_to_verse.AddRow Str(x+1)
-		    'Next x
-		    'End If
-		    lst_scr_from_verse.DeleteAllRows
-		    lst_scr_to_verse.DeleteAllRows
-		    
-		    'For x = lst_scr_from_verse.ListCount - 1 DownTo 0
-		    'lst_scr_from_verse.RemoveRow x
-		    'lst_scr_to_verse.RemoveRow x
-		    'Next
-		    
-		    For x = 1 to UBound(VerseList)
-		      lst_scr_from_verse.AddRow VerseList(x)
-		      lst_scr_to_verse.AddRow VerseList(x)
-		    Next
-		    
-		    lst_scr_from_verse.ListIndex = 0
-		    lst_scr_to_verse.ListIndex = 0
-		    chapter = Val(Me.Text)
-		  else
-		    'me.listindex = 0
-		  end if
-		  
-		  setPreview 'bhenny added
+		  PassageChanged
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events lst_scr_from_verse
 	#tag Event
 		Sub Change()
-		  If Me.ListIndex > lst_scr_to_verse.ListIndex Then lst_scr_to_verse.ListIndex = Me.ListIndex
-		  'lst_scr_to_verse.ListIndex = Me.ListIndex
-		  btn_add.Enabled = True
-		  btn_Insert.Enabled = True
+		  Dim newSel As Integer
+		  newSel = Me.ListIndex
 		  
-		  verse = Me.ListIndex + 1
+		  If newSel = -1 Then Return
+		  If newSel = ActiveFromVerse Then Return
 		  
-		  setPreview 'bhenny added
+		  If newSel > ActiveThruVerse Then
+		    ActiveThruVerse = newSel
+		    lst_scr_to_verse.ListIndex = newSel
+		  End If
+		  
+		  PassageChanged
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events lst_scr_to_verse
 	#tag Event
 		Sub Change()
-		  If Me.ListIndex < lst_scr_from_verse.ListIndex Then lst_scr_from_verse.ListIndex = Me.ListIndex
-		  thru = Me.ListIndex + 1
+		  Dim NewSel As Integer
+		  NewSel = Me.ListIndex
 		  
-		  setPreview 'bhenny added
+		  If NewSel = -1 Then Return // List maintenance in progress
+		  If NewSel = ActiveThruVerse Then Return
+		  
+		  // If a value less than ActiveFromVerse is selected, move it also
+		  If NewSel < ActiveFromVerse Then
+		    ActiveFromVerse = NewSel // Set first to keep Change from firing
+		    lst_scr_from_verse.ListIndex = NewSel
+		  End If
+		  PassageChanged
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events pop_scr_version
 	#tag Event
 		Sub Change()
-		  //
-		  // Updated November 2006 to put the book number in the CellTag of the listbox
-		  //
-		  Dim i As Integer
-		  dim ot as integer
-		  dim nt as integer
-		  Dim x as Integer
-		  Dim BookNames(), oldBible As String
-		  Dim OldCursor As MouseCursor
-		  Dim newSelection As Integer
-		  Dim BookNumbers() As Integer
-		  Dim OldBook, NewBook As Integer
-		  Dim OldBookName As String
-		  Dim OldNumOTBooks, OldNumNTBooks As Integer
-		  Dim OldChapter, OldVerse, OldThru As integer
-		  Dim f As FolderItem
-		  
-		  if me.ListIndex=-1 then 'bhenny- it was throwing an exception when ListIndex was -1
-		    return
-		  end if
-		  
-		  //++
-		  // Is this really a change, or just the control getting set?
-		  //--
-		  If App.MyBible <> Nil Then
-		    oldBible = App.MyBible.GetBibleFilename
-		    '++JRC We need to execute the code following this return while we're Initializing,
-		    'otherwise the preview text will never show
-		    If oldBible = Me.Text And NOT Initializing Then Return // No real change, don't do anything
-		  End If
-		  
-		  OldBookName = CurrentBook
-		  OldBook = book
-		  OldNumOTBooks = NumOTBooks
-		  OldNumNTBooks = NumNTBooks
-		  OldChapter = chapter
-		  OldVerse = verse
-		  OldThru = thru
-		  OldCursor = App.MouseCursor
-		  App.MouseCursor = WatchCursor
-		  
-		  newSelection = Me.ListIndex
-		  
-		  oldBible= App.MyBible.GetBibleFilename
-		  If App.MyBible.GetBibleFileName <> Me.List(Me.ListIndex) Then
-		    //++
-		    // Unload the old Bible from memory
-		    //--
-		    App.MyBible = Nil
-		    App.MyBible = New Bible
-		    
-		    If Not App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(Me.List(Me.ListIndex))) Then
-		      InputBox.Message Str(App.MyBible.ErrorCode) + ": " + App.MyBible.ErrorString
-		      App.MouseCursor = OldCursor
-		      // Delete the bad one from the list
-		      Me.RemoveRow newSelection
-		      'bhenny- if there is an error load the old bible
-		      for x=0 to Me.ListCount-1
-		        if Me.List(x)=oldBible then
-		          Me.ListIndex=x
-		          App.MyBible = Nil
-		          App.MyBible = New Bible
-		          if App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(Me.List(Me.ListIndex)))=false then return
-		          exit
-		        end if
-		      next x
-		      
-		    End If
-		    // Save which version we are using now...
-		    SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", Me.List(Me.ListIndex))
-		    btn_search.Enabled = App.MyBible.IsSearchable
-		  End If
-		  
-		  If App.MyBible <> Nil Then
-		    'ot = App.MyBible.GetOTCount
-		    'nt = App.MyBible.GetNTCount
-		    try
-		      ot = App.MyBible.GetOTBooks(BookNames, BookNumbers)
-		      
-		      If ot < lst_scr_ot.ListCount Then
-		        For x = lst_scr_ot.ListCount - 1 DownTo ot
-		          lst_scr_ot.RemoveRow x
-		        Next x
-		      ElseIf ot > lst_scr_ot.ListCount Then
-		        For x = lst_scr_ot.ListCount To ot - 1
-		          lst_scr_ot.AddRow Str(x+1)
-		        Next x
-		      End If
-		      ot = ot - 1
-		      For i = 0 to ot
-		        lst_scr_ot.List(i) = BookNames(i)
-		        'If this book name is the same as the previously selected one
-		        'flag it, of course this won't work if this Bible has different book names
-		        If OldBookName = BookNames(i) Then NewBook = i + 1
-		        lst_scr_ot.CellTag(i, 0) = BookNumbers(i)
-		      Next
-		      lst_scr_ot.ListIndex = 0
-		    catch err
-		      if err isa OutOfBoundsException then
-		        msgbox "Loading OT List: "+str(i)+ " is out of bounds"
-		      end if
-		    end try
-		    
-		    try
-		      nt = App.MyBible.GetNTBooks(BookNames, BookNumbers)
-		      
-		      If nt < lst_scr_nt.ListCount Then
-		        For x = lst_scr_nt.ListCount - 1 DownTo nt
-		          lst_scr_nt.RemoveRow x
-		        Next x
-		      ElseIf ot > lst_scr_nt.ListCount Then
-		        For x = lst_scr_nt.ListCount To nt - 1
-		          lst_scr_nt.AddRow Str(x+1)
-		        Next x
-		      End If
-		      if lst_scr_nt.ListIndex > nt - 1 then
-		        lst_scr_nt.Listindex = 0
-		      end if
-		      'ScrollNT
-		      
-		      nt = nt - 1
-		      
-		      For i = 0 to nt
-		        lst_scr_nt.List(i) = BookNames(i)
-		        'If this book name is the same as the previously selected one
-		        'flag it, of course this won't work if this Bible has different book names
-		        If OldBookName = BookNames(i) Then NewBook = ot + i + 2
-		        lst_scr_nt.CellTag(i, 0) = BookNumbers(i)
-		      Next
-		      
-		    catch err2
-		      if err2 isa OutOfBoundsException then
-		        msgbox "Loading NT List: "+str(i)+ " is out of bounds"
-		      end if
-		    end try
-		    
-		    If NewBook > 0 Then
-		      If NewBook > ot Then 'New Testament
-		        lst_scr_nt.ListIndex = NewBook - ot - 2
-		        lst_scr_ot.Listindex = -1
-		      Else 'Old Testament
-		        lst_scr_nt.ListIndex = -1
-		        lst_scr_ot.Listindex = NewBook - 1
-		      End If
-		      If OldChapter <= App.MyBible.GetChapterCount(NewBook ) Then lst_scr_chapter.ListIndex = OldChapter - 1
-		      If OldVerse <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_chapter.ListIndex+1)Then lst_scr_from_verse.ListIndex = OldVerse - 1
-		      If OldThru <= App.MyBible.GetVerseCount(ActiveBookNum, lst_scr_chapter.ListIndex+1) Then lst_scr_to_verse.ListIndex = OldThru - 1
-		      
-		    Else 'Old Bible book not found, use default
-		      if lst_scr_ot.ListCount>0 then 'have it select Matthew (assuming there is a Matthew) if bible is just nt
-		        lst_scr_nt.ListIndex = -1
-		        lst_scr_ot.Listindex = 0
-		        NewBook = 1
-		      else
-		        lst_scr_nt.ListIndex = 0
-		        lst_scr_ot.Listindex = -1
-		        NewBook = ot + 1
-		      end if
-		      OldBook = NewBook
-		    End If
-		    
-		    'ScrollOT
-		    App.MouseCursor = OldCursor
-		  End If
+		  If pop_scr_version.Text = ActiveBible Then Return
+		  SendCommand "selectbible", pop_scr_version.Text
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_verses_one
+	#tag Event
+		Sub Action()
+		  If PropertiesUpdating Then Return
+		  SendCommand ScripturePickerController.cmdFormatChanged
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_verses_two
+	#tag Event
+		Sub Action()
+		  If PropertiesUpdating Then Return
+		  SendCommand ScripturePickerController.cmdFormatChanged
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_verses_three
+	#tag Event
+		Sub Action()
+		  If PropertiesUpdating Then Return
+		  SendCommand ScripturePickerController.cmdFormatChanged
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events rad_format_paragraph
 	#tag Event
 		Sub Action()
-		  setPreview
+		  If PropertiesUpdating Then Return
+		  SendCommand ScripturePickerController.cmdFormatChanged
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events rad_format_verse
 	#tag Event
 		Sub Action()
-		  setPreview
+		  If PropertiesUpdating Then Return
+		  SendCommand ScripturePickerController.cmdFormatChanged
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_Insert
+#tag Events chk_shownumbers
 	#tag Event
 		Sub Action()
-		  // Change the Insert button to default
-		  // so the operator only has to press the Enter
-		  // key to advance.
-		  Me.Default = True
+		  If PropertiesUpdating Then Return
+		  SendCommand ScripturePickerController.cmdFormatChanged
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_insert
+	#tag Event
+		Sub Action()
 		  BuildScripture(True)
 		End Sub
 	#tag EndEvent
@@ -2182,78 +2411,18 @@ End
 #tag Events btn_add
 	#tag Event
 		Sub Action()
-		  BuildScripture
-		  // This change fixes the situation where only the last two verses are shown
-		  // when the ScripturePickerWindow is invoked during a set.
-		  // There are two side effects:
-		  //    1. The window will close and reopen when a set is being designed.
-		  //     2. This alters the set being presented (the old way backs out the XML changes
-		  //          to the set when it closes).
-		  // I don't see an easy remedy to #2, and #1 is a by-product that I believe acceptable.
-		  //
-		  // For total accuracy, SetChanged should be set to True and a check for changes
-		  // should be added to Presenter mode.  Personally, I see these on-the-fly additions
-		  // as throw-aways.
-		  // EMP, 8/23/05
-		  //
-		  
-		  'If Not Live Then Close  //EMP 8/23/05: Fixes presenter bug at the expense of changing the set
-		  Close //EMP 8/23/05
+		  SendCommand(ScripturePickerController.cmdAddToSet)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_done
+#tag Events btn_quick_lookup
 	#tag Event
 		Sub Action()
-		  ReturnValue = False
-		  Close
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_search
-	#tag Event
-		Sub Action()
-		  SearchWindow.Show
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events lst_scr_ot
-	#tag Event
-		Sub Change()
-		  If lst_scr_nt.ListIndex <> -1 Then OldSel = -1
-		  //++
-		  // Save where we are on each change.
-		  // That way, if the control loses focus and then
-		  // gets clicked (generating a change), the chapter
-		  // and verse don't reset if the book doesn't change.
-		  If Me.ListCount > 0 Then
-		    'If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
-		    If Me.ListIndex <> OldSel Then
-		      'Me.CellTag(0, 0) = Me.ListIndex
-		      OldSel = Me.ListIndex
-		      ScrollOT
-		    End If
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events lst_scr_nt
-	#tag Event
-		Sub Change()
-		  If lst_scr_ot.ListIndex <> -1 Then OldSel = -1
-		  //++
-		  // Save where we are on each change.
-		  // That way, if the control loses focus and then
-		  // gets clicked (generating a change), the chapter
-		  // and verse don't reset if the book doesn't change.
-		  If Me.ListCount > 0 Then
-		    'If Me.ListIndex <> Me.CellTag(0, 0).IntegerValue Then
-		    If Me.ListIndex <> OldSel Then
-		      'Me.CellTag(0, 0) = Me.ListIndex
-		      OldSel = Me.ListIndex
-		      ScrollNT
-		    End If
-		  End If
+		  Try
+		    SendCommand(ScripturePickerController.cmdQuickLookup, edt_quick_lookup.Text)
+		  Catch e As BibleRefException
+		    InputBox.Message e.Message
+		  End Try
 		End Sub
 	#tag EndEvent
 #tag EndEvents

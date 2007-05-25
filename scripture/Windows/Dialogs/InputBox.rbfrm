@@ -32,7 +32,7 @@ Begin Window InputBox
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   79
       HelpTag         =   ""
       Index           =   -2147483648
@@ -43,7 +43,7 @@ Begin Window InputBox
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      MultiLine       =   "True"
+      Multiline       =   "True"
       TabPanelIndex   =   0
       Text            =   "Label"
       TextAlign       =   0
@@ -52,7 +52,7 @@ Begin Window InputBox
       TextSize        =   11
       Top             =   7
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   299
       BehaviorIndex   =   0
    End
@@ -68,7 +68,7 @@ Begin Window InputBox
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   21
       HelpTag         =   ""
@@ -82,12 +82,12 @@ Begin Window InputBox
       LockRight       =   "True"
       LockTop         =   "False"
       Mask            =   ""
-      MultiLine       =   "False"
+      Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
       ScrollBar       =   "True"
-      ScrollBarHorizontal=   "False"
-      ScrollBarVertical=   "True"
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
       Styled          =   "False"
       TabPanelIndex   =   0
       Text            =   ""
@@ -97,11 +97,21 @@ Begin Window InputBox
       Top             =   65
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   300
       BehaviorIndex   =   1
    End
    Begin SButton btn_ok
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   100
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   "True"
+                      =   ""
+                      =   ""
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
@@ -124,6 +134,8 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -131,6 +143,16 @@ Begin Window InputBox
       BehaviorIndex   =   2
    End
    Begin SButton btn_cancel
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   100
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   "True"
+                      =   ""
+                      =   ""
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
@@ -153,6 +175,8 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -168,7 +192,7 @@ Begin Window InputBox
       ControlOrder    =   4
       Default         =   "True"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -184,7 +208,7 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   135
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   22
       BehaviorIndex   =   4
    End
@@ -197,7 +221,7 @@ Begin Window InputBox
       ControlOrder    =   5
       Default         =   "False"
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -213,7 +237,7 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   135
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   22
       BehaviorIndex   =   5
    End
@@ -225,7 +249,7 @@ Begin Window InputBox
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -243,7 +267,7 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   70
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   300
       BehaviorIndex   =   6
    End
@@ -426,7 +450,7 @@ End
 	#tag EndMethod
 
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected Output As String
 	#tag EndProperty
 

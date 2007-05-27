@@ -1,5 +1,9 @@
 -= BL20 =-
 
+* Altered PuffyClouds.jpg (default song background) to remove need for Trim Bottom to be used.  Changed default Trim in PresentSettings to 0.
+
+* Add song preview as part of the Song Picker. (Adds song_lookup/preview to language file)
+
 * Changed the set list in PresentHelperWindow to keep the current slide in the center of the listbox as much as possible.
 
 * Improve PresentHelperWindow handling of keystrokes when focus is on the listbox.

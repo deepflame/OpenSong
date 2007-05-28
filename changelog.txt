@@ -1,5 +1,7 @@
 -= BL20 =-
 
+* Subtitle descriptions won't appear if the requested subtitle field isn't set. [Help Forum message 4332769]
+
 * Altered PuffyClouds.jpg (default song background) to remove need for Trim Bottom to be used.  Changed default Trim in PresentSettings to 0.
 
 * Add song preview as part of the Song Picker. (Adds song_lookup/preview to language file)

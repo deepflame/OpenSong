@@ -1,3 +1,4 @@
+song_lookup/lookup
 songs_mode/curr_folder
 sets_mode/current_set/saveas
 slide_editor/presentation

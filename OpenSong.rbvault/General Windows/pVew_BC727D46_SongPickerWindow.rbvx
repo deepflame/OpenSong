@@ -39,6 +39,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
    sorc/d: (Enco/N: 134217984
 		Sub DoubleClick()
 		  If lst_all_songs.ListIndex >= 0 Then
+		    AddSong = True
 		    Close
 		  Else
 		    InputBox.Message App.T.Translate("song_lookup/no_selection")
@@ -61,6 +62,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		  
 		  Select Case Asc(key)
 		  Case 13, 10 'Enter, Return
+		    AddSong = True
 		    Close
 		    Return True
 		  Case ASC_KEY_DOWN ' Down
@@ -208,6 +210,98 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 188, Supr/S: EditField, bNtr/N: 0)
  CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
+ CBhv/G: 
+  Name/S: 
+  Size/N: 188
+  Supr/S: EditField
+  bNtr/N: 0
+  HIns/G: 
+   Enco/N: 1536
+   name/S: KeyDown
+   sorc/d: (Enco/N: 134217984, srbp/N: 20
+		Function KeyDown(Key As String) As Boolean
+		  Const ASC_KEY_PGDN=12
+		  Const ASC_KEY_PGUP =11
+		  Const ASC_KEY_HOME=1
+		  Const ASC_KEY_END=4
+		  Const ASC_KEY_DOWN = 31
+		  Const ASC_KEY_UP = 30
+		  Const ASC_KEY_ESCAPE = 27
+		  Const ASC_KEY_BACKSPACE = 8
+		  Const ASC_KEY_LEFT  = 28
+		  Const ASC_KEY_RIGHT = 29
+		  Const ASC_KEY_TAB = 9
+		  Const ASC_KEY_INSERT = 5
+		  Const ASC_KEY_DEL = 127
+		  
+		  Dim i As Integer
+		  Dim SearchedEntry As String
+		  
+		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
+		  
+		  Select Case Asc(key)
+		  Case ASC_KEY_INSERT
+		    Return True
+		  Case ASC_KEY_BACKSPACE
+		    If Me.SelLength = 0 And Me.SelStart = 0 Then
+		      Return True
+		    End If
+		    
+		    If Me.SelLength = 0 Then
+		      Me.SelStart = Me.SelStart - 1
+		      Me.SelLength = 1
+		      Me.SelText = ""
+		    Else 
+		      Me.SelText = ""
+		    End If
+		  Case ASC_KEY_TAB
+		    Return False
+		  Case 13, 10 'Enter, Return
+		    AddSong = True
+		    Close
+		    Return True
+		  Case ASC_KEY_ESCAPE 'Escape
+		    Return False 'Close dialog, no search in progress
+		  Case ASC_KEY_UP 
+		    Return False
+		  Case ASC_KEY_DOWN
+		    Return False
+		  Case ASC_KEY_LEFT
+		    Return False
+		  Case ASC_KEY_RIGHT
+		    Return False
+		  Case ASC_KEY_HOME
+		    Return False
+		  Case ASC_KEY_END
+		    Return False
+		  Case ASC_KEY_DEL
+		    If Me.SelLength = 0 Then
+		      Me.SelLength = 1
+		      Me.SelText = ""
+		    Else 
+		      Me.SelText = ""
+		    End If
+		    'TODO Handle the F1 - F12 Keys in RB 2007
+		    '(in RB 5.5 they don't even trigger the KeyDown event)
+		  Else
+		    Me.SelText = "" + Key
+		  End Select
+		  
+		  For i = 0 To lst_all_songs.ListCount - 1
+		    SearchedEntry = ConvertEncoding(Left(lst_all_songs.List(i), Len(Me.Text)), Encodings.UTF8)
+		    If SearchedEntry = Me.Text Then
+		      lst_all_songs.ListIndex = i
+		      Return True
+		    End If
+		  Next i
+		  
+		  lst_all_songs.ListIndex = -1
+		  Return True
+		End Function
+   )
+  HIns/g: 
+ CBhv/g: 
+ CBhv/D: (Name/S: , Size/N: 136, Supr/S: StaticText, bNtr/N: 0)
  Ctrl/G: 
   ccls/S: ListBox
   name/S: ListBox
@@ -236,7 +330,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: InitialValue, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 5)
+  PDef/D: (name/S: Left, PVal/S: 12)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: True)
   PDef/D: (name/S: LockRight, PVal/S: True)
@@ -254,7 +348,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: UseFocusRing, PVal/S: True)
   PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 330)
+  PDef/D: (name/S: Width, PVal/S: 395)
  Ctrl/g: 
  Ctrl/G: 
   ccls/S: PushButton
@@ -273,7 +367,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 166)
+  PDef/D: (name/S: Left, PVal/S: 238)
   PDef/D: (name/S: LockBottom, PVal/S: True)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: True)
@@ -304,7 +398,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 247)
+  PDef/D: (name/S: Left, PVal/S: 319)
   PDef/D: (name/S: LockBottom, PVal/S: True)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: True)
@@ -346,9 +440,9 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: Left, PVal/S: 20)
   PDef/D: (name/S: LockBottom, PVal/S: False)
-  PDef/D: (name/S: LockLeft, PVal/S: True)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: True)
   PDef/D: (name/S: MultiLine, PVal/S: True)
@@ -356,17 +450,17 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
   PDef/G: 
    name/S: Text
-   PVal/S: To add a song, click the song title below and click the "Add" button or begin typing the song title and hit the enter key.
+   PVal/S: To add a song, click the song title below and click the "Add" button. If you know the name of the song you can type it into the Quick Lookup field, and click "Add" or press Enter. You can also double-click on the song name to add it.
    Enco/N: 134217984
   PDef/g: 
-  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextAlign, PVal/S: 1)
   PDef/D: (name/S: TextColor, PVal/S: 0)
   PDef/D: (name/S: TextFont, PVal/S: Arial, Enco/N: 134217984)
-  PDef/D: (name/S: TextSize, PVal/S: 9)
-  PDef/D: (name/S: Top, PVal/S: 10)
+  PDef/D: (name/S: TextSize, PVal/S: 10)
+  PDef/D: (name/S: Top, PVal/S: 5)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 270)
+  PDef/D: (name/S: Width, PVal/S: 378)
  Ctrl/g: 
  Ctrl/G: 
   ccls/S: PopupMenu
@@ -385,11 +479,11 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: InitialValue, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 5)
+  PDef/D: (name/S: Left, PVal/S: 10)
   PDef/D: (name/S: ListIndex, PVal/S: 0)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: True)
-  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Name, PVal/S: pop_select_folder, Enco/N: 134217984)
   PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
@@ -398,7 +492,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Top, PVal/S: 302)
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 226)
+  PDef/D: (name/S: Width, PVal/S: 221)
  Ctrl/g: 
  Ctrl/G: 
   ccls/S: StaticText
@@ -416,7 +510,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: Left, PVal/S: 14)
   PDef/D: (name/S: LockBottom, PVal/S: False)
   PDef/D: (name/S: LockLeft, PVal/S: True)
   PDef/D: (name/S: LockRight, PVal/S: False)
@@ -450,15 +544,15 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
   PDef/D: (name/S: Enabled, PVal/S: True)
   PDef/D: (name/S: Format, PVal/S: )
-  PDef/D: (name/S: Height, PVal/S: 90)
+  PDef/D: (name/S: Height, PVal/S: 89)
   PDef/D: (name/S: HelpTag, PVal/S: )
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 5)
+  PDef/D: (name/S: Left, PVal/S: 10)
   PDef/D: (name/S: LimitText, PVal/S: 0)
   PDef/D: (name/S: LockBottom, PVal/S: True)
-  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: True)
   PDef/D: (name/S: LockRight, PVal/S: False)
   PDef/D: (name/S: LockTop, PVal/S: False)
   PDef/D: (name/S: Mask, PVal/S: )
@@ -479,7 +573,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Underline, PVal/S: False)
   PDef/D: (name/S: UseFocusRing, PVal/S: True)
   PDef/D: (name/S: Visible, PVal/S: True)
-  PDef/D: (name/S: Width, PVal/S: 330)
+  PDef/D: (name/S: Width, PVal/S: 397)
  Ctrl/g: 
  Ctrl/G: 
   ccls/S: StaticText
@@ -497,7 +591,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Index, PVal/S: -2147483648)
   PDef/D: (name/S: InitialParent, PVal/S: )
   PDef/D: (name/S: Italic, PVal/S: False)
-  PDef/D: (name/S: Left, PVal/S: 10)
+  PDef/D: (name/S: Left, PVal/S: 16)
   PDef/D: (name/S: LockBottom, PVal/S: True)
   PDef/D: (name/S: LockLeft, PVal/S: False)
   PDef/D: (name/S: LockRight, PVal/S: False)
@@ -515,9 +609,90 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
   PDef/D: (name/S: Visible, PVal/S: True)
   PDef/D: (name/S: Width, PVal/S: 100)
  Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: EditField
+  name/S: EditField
+  CBix/N: 9
+  PDef/D: (name/S: AcceptTabs, PVal/S: False)
+  PDef/D: (name/S: Alignment, PVal/S: 0)
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BackColor, PVal/S: 16777215)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: Border, PVal/S: True)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Format, PVal/S: )
+  PDef/D: (name/S: Height, PVal/S: 22)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 243)
+  PDef/D: (name/S: LimitText, PVal/S: 0)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: True)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: Mask, PVal/S: )
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: edt_quick_lookup, Enco/N: 134217984)
+  PDef/D: (name/S: Password, PVal/S: False)
+  PDef/D: (name/S: ReadOnly, PVal/S: False)
+  PDef/D: (name/S: ScrollBar, PVal/S: True)
+  PDef/D: (name/S: ScrollBarHorizontal, PVal/S: False)
+  PDef/D: (name/S: ScrollBarVertical, PVal/S: True)
+  PDef/D: (name/S: Styled, PVal/S: False)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: )
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 302)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: UseFocusRing, PVal/S: True)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 164)
+ Ctrl/g: 
+ Ctrl/G: 
+  ccls/S: StaticText
+  name/S: StaticText
+  CBix/N: 10
+  PDef/D: (name/S: AutoDeactivate, PVal/S: True)
+  PDef/D: (name/S: BalloonHelp, PVal/S: )
+  PDef/D: (name/S: Bold, PVal/S: False)
+  PDef/D: (name/S: DataField, PVal/S: )
+  PDef/D: (name/S: DataSource, PVal/S: )
+  PDef/D: (name/S: DisabledBalloonHelp, PVal/S: )
+  PDef/D: (name/S: Enabled, PVal/S: True)
+  PDef/D: (name/S: Height, PVal/S: 20)
+  PDef/D: (name/S: HelpTag, PVal/S: )
+  PDef/D: (name/S: Index, PVal/S: -2147483648)
+  PDef/D: (name/S: InitialParent, PVal/S: )
+  PDef/D: (name/S: Italic, PVal/S: False)
+  PDef/D: (name/S: Left, PVal/S: 247)
+  PDef/D: (name/S: LockBottom, PVal/S: False)
+  PDef/D: (name/S: LockLeft, PVal/S: False)
+  PDef/D: (name/S: LockRight, PVal/S: False)
+  PDef/D: (name/S: LockTop, PVal/S: False)
+  PDef/D: (name/S: MultiLine, PVal/S: False)
+  PDef/D: (name/S: Name, PVal/S: lbl_quick_lookup, Enco/N: 134217984)
+  PDef/D: (name/S: TabPanelIndex, PVal/S: 0)
+  PDef/D: (name/S: Text, PVal/S: Quick Lookup:, Enco/N: 134217984)
+  PDef/D: (name/S: TextAlign, PVal/S: 0)
+  PDef/D: (name/S: TextColor, PVal/S: 0)
+  PDef/D: (name/S: TextFont, PVal/S: System, Enco/N: 134217984)
+  PDef/D: (name/S: TextSize, PVal/S: 12)
+  PDef/D: (name/S: Top, PVal/S: 280)
+  PDef/D: (name/S: Underline, PVal/S: False)
+  PDef/D: (name/S: Visible, PVal/S: True)
+  PDef/D: (name/S: Width, PVal/S: 100)
+ Ctrl/g: 
  FDef/G: 
   Name/S: SongPickerWindow
-  Size/N: 157
+  Size/N: 160
   Supr/S: Window
   bNtr/N: 0
   HIns/G: 
@@ -536,6 +711,15 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
 		Sub Close()
 		  If NOT AddSong Then f = Nil
 		  Globals.Status_SongPickerOpen = False
+		End Sub
+   )
+  HIns/g: 
+  HIns/G: 
+   Enco/N: 1536
+   name/S: Moved
+   sorc/d: (Enco/N: 134217984
+		Sub Moved()
+		  
 		End Sub
    )
   HIns/g: 
@@ -682,7 +866,7 @@ pVew/B: 426C6F6B70566577BC727D460000000000000000000000000000000000000000
  PDef/D: (name/S: Placement, PVal/S: 0)
  PDef/D: (name/S: Title, PVal/S: Song Lookup, Enco/N: 134217984)
  PDef/D: (name/S: Visible, PVal/S: True)
- PDef/D: (name/S: Width, PVal/S: 350)
+ PDef/D: (name/S: Width, PVal/S: 425)
  PDef/D: (name/S: ZoomIcon, PVal/S: True)
 pVew/b: 
 ##RBvx-End#

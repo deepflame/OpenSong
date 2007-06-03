@@ -102,17 +102,18 @@ Module SongML
 		      
 		    Case Else
 		      App.DebugWriter.Write Chr(9)  + "Unexpected subtitle requested: " + Subtitles(CurrSubtitle)
-		      GoTo DontAddToSubtitles
+		      Continue
 		      
 		    End Select
 		    
-		    If AddDescriptions And Caption <> "" Then
-		      ThisSubtitle = Caption + " " + ThisSubtitle
+		    If Trim(ThisSubtitle).Len > 0 Then
+		      If AddDescriptions And Caption <> ""  Then
+		        ThisSubtitle = Caption + " " + ThisSubtitle
+		      End If
+		      
+		      Subtitles.Append ThisSubtitle
 		    End If
 		    
-		    Subtitles.Append ThisSubtitle
-		    
-		    DontAddToSubtitles:
 		  Next CurrSubtitle
 		  
 		  Return Join(Subtitles, Separator)

@@ -1,5 +1,5 @@
 #tag Class
-Protected Class plistDict
+Class plistDict
 	#tag Method, Flags = &h0
 		Function AbsolutePath() As string
 		  path=":"+name
@@ -163,7 +163,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AppendList(items() as string,startIndex as integer,endIndex as integer)
+		Sub AppendList(items() as string, startIndex as integer, endIndex as integer)
 		  dim count,si,ei,idx as Integer
 		  
 		  if CheckArray then
@@ -240,7 +240,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub BuildPath(parent as plistDict,p as string)
+		Private Sub BuildPath(parent as plistDict, p as string)
 		  if parent.name<>"root" then
 		    path=":"+parent.name+path
 		    BuildPath(parent.parent,path)
@@ -262,7 +262,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function CheckType(key As string,type As string) As integer
+		Protected Function CheckType(key As string, type As string) As integer
 		  dim result As integer
 		  
 		  SetError(false,"")
@@ -308,7 +308,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Copy(key as string,dest as plistDict)
+		Sub Copy(key as string, dest as plistDict)
 		  Move(key,dest,false,"")
 		End Sub
 	#tag EndMethod
@@ -407,7 +407,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetBoolean(key As string,default As boolean) As boolean
+		Function GetBoolean(key As string, default As boolean) As boolean
 		  dim value As boolean
 		  
 		  if not Exists(key) then
@@ -430,7 +430,7 @@ Protected Class plistDict
 
 	#tag Method, Flags = &h0
 		Sub GetCheckbox(box as Checkbox)
-		   box.value=GetBoolean(box.name,box.Value)
+		  box.value=GetBoolean(box.name,box.Value)
 		End Sub
 	#tag EndMethod
 
@@ -441,7 +441,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetColor(key As string,default As color) As color
+		Function GetColor(key As string, default As color) As color
 		  dim c As color
 		  dim value As string
 		  
@@ -465,13 +465,13 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetData(key As string,default As string) As string
+		Function GetData(key As string, default As string) As string
 		  return GetValue(key,default)
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetDate(key As string,default As date) As date
+		Function GetDate(key As string, default As date) As date
 		  dim dt As Date
 		  dim value,datePart,timePart,month,day,year As string
 		  dim f As integer
@@ -520,7 +520,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetDouble(key As string,default As double) As double
+		Function GetDouble(key As string, default As double) As double
 		  dim value As double
 		  
 		  if not Exists(key) then
@@ -551,7 +551,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetInteger(key As string,default As integer) As integer
+		Function GetInteger(key As string, default As integer) As integer
 		  dim value As integer
 		  
 		  if not Exists(key) then
@@ -576,7 +576,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetList(key as string,byref items() as string,indexStart as integer)
+		Sub GetList(key as string, byref items() as string, indexStart as integer)
 		  dim count As integer
 		  dim newArray(0) as string
 		  
@@ -591,7 +591,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetListbox(list as ListBox,setDefault as boolean)
+		Sub GetListbox(list as ListBox, setDefault as boolean)
 		  dim row,column as integer
 		  dim key,value,default,idx As string
 		  
@@ -624,7 +624,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetPopup(list as popupmenu,setDefault as boolean)
+		Sub GetPopup(list as popupmenu, setDefault as boolean)
 		  dim count as integer
 		  dim key,value,default,idx As string
 		  
@@ -649,7 +649,7 @@ Protected Class plistDict
 
 	#tag Method, Flags = &h0
 		Sub GetRadio(radio as RadioButton)
-		   radio.value=GetBoolean(radio.name,radio.Value)
+		  radio.value=GetBoolean(radio.name,radio.Value)
 		End Sub
 	#tag EndMethod
 
@@ -660,7 +660,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetReal(key As string,default As double) As double
+		Function GetReal(key As string, default As double) As double
 		  dim value As double
 		  
 		  if not Exists(key) then
@@ -685,7 +685,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetString(key As string,default As string) As string
+		Function GetString(key As string, default As string) As string
 		  return GetValue(key,default)
 		End Function
 	#tag EndMethod
@@ -703,7 +703,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetValue(key As string,default As string) As string
+		Function GetValue(key As string, default As string) As string
 		  dim result As string
 		  
 		  if not Exists(key) then
@@ -714,7 +714,7 @@ Protected Class plistDict
 		  end
 		  if values.HasKey(key) then
 		    if TypeOK(key) then
-		       result=values.value(key)
+		      result=values.value(key)
 		    end
 		  else
 		    SetError(true,"Key "+key+" does not exist")
@@ -756,7 +756,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Load(t As TextInputStream,n As string,ia As boolean,pr As plistDict,rt As plist,loadDict As boolean)
+		Sub Load(t As TextInputStream, n As string, ia As boolean, pr As plistDict, rt As plist, loadDict As boolean)
 		  dim s,key,type,value,tag,endTag,tagValue,line As string
 		  dim f,count,i As integer
 		  dim inTag,placeHolder As boolean
@@ -887,7 +887,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Move(key as string,dest as plistDict,deleteSrc as boolean,newName as string)
+		Sub Move(key as string, dest as plistDict, deleteSrc as boolean, newName as string)
 		  dim value as Variant
 		  dim type,nm,ck,targetName As string
 		  dim dst as plistDict
@@ -998,7 +998,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Move(key as string,dest as plistDict)
+		Sub Move(key as string, dest as plistDict)
 		  Move(key,dest,true,"")
 		End Sub
 	#tag EndMethod
@@ -1099,7 +1099,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Rename(key as string,newName as string)
+		Sub Rename(key as string, newName as string)
 		  SetError(false,"")
 		  if Exists(newName) then
 		    SetError(true,"Key "+newName+" already exists.")
@@ -1110,7 +1110,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetBoolean(key As string,v As boolean)
+		Sub SetBoolean(key As string, v As boolean)
 		  dim result As integer
 		  dim value As string
 		  
@@ -1136,7 +1136,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetColor(key as string,v as color)
+		Sub SetColor(key as string, v as color)
 		  dim result As integer
 		  dim value As string
 		  
@@ -1152,7 +1152,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetData(key As string,v As string)
+		Sub SetData(key As string, v As string)
 		  values.value(key)=v
 		  types.value(key)="data"
 		  searched.Value(key)=false
@@ -1160,7 +1160,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetDate(key As string,dt As date)
+		Sub SetDate(key As string, dt As date)
 		  dim result As integer
 		  dim value As string
 		  
@@ -1180,7 +1180,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetDouble(key As string,v As double)
+		Sub SetDouble(key As string, v As double)
 		  dim result As integer
 		  dim value As string
 		  
@@ -1200,7 +1200,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetError(value As boolean,msg As string)
+		Sub SetError(value As boolean, msg As string)
 		  if rootClass<>nil then
 		    rootClass.error=value
 		    rootClass.errorMessage=msg
@@ -1212,7 +1212,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetInteger(key As string,v As double)
+		Sub SetInteger(key As string, v As double)
 		  dim result As integer
 		  dim value As string
 		  
@@ -1226,7 +1226,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetList(key as string,items() as string,startIndex as integer,endIndex as integer)
+		Sub SetList(key as string, items() as string, startIndex as integer, endIndex as integer)
 		  dim count,si,ei as Integer
 		  
 		  if exists(key) then
@@ -1313,7 +1313,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetReal(key As string,v As double)
+		Sub SetReal(key As string, v As double)
 		  dim result As integer
 		  dim value As string
 		  
@@ -1333,7 +1333,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetString(key As string,v As string)
+		Sub SetString(key As string, v As string)
 		  dim result As integer
 		  
 		  result=CheckType(key,"string")
@@ -1346,7 +1346,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetWindow(key as string,win As window)
+		Sub SetWindow(key as string, win As window)
 		  if not Exists(key) then
 		    AddChild(key)
 		  end
@@ -1393,7 +1393,7 @@ Protected Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Write(o As TextOutputStream,level As integer)
+		Sub Write(o As TextOutputStream, level As integer)
 		  dim count,count2 As integer
 		  dim key,type,value,tabs As string
 		  

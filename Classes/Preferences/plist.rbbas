@@ -1,5 +1,5 @@
 #tag Class
-Protected Class plist
+Class plist
 	#tag Method, Flags = &h0
 		Sub Cleanup()
 		  if isBinary then
@@ -74,7 +74,7 @@ Protected Class plist
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Load(f As folderItem,template As folderItem)
+		Sub Load(f As folderItem, template As folderItem)
 		  dim t As textInputStream
 		  dim s,path,command As string
 		  dim copyTo As FolderItem
@@ -139,13 +139,13 @@ Protected Class plist
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub plist(f As folderItem,template As FolderItem)
+		Sub plist(f As folderItem, template As FolderItem)
 		  Load(f,template)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function ReadStructure(dict as plistDict,searchText as string,searchType as string) As boolean
+		Private Function ReadStructure(dict as plistDict, searchText as string, searchType as string) As boolean
 		  Dim key,type,value as string
 		  dim ok As Boolean
 		  

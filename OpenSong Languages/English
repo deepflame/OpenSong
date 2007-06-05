@@ -136,6 +136,7 @@
         <no_songs>There are no songs in the set.</no_songs>
       </print_songs>
       <print_order caption="List">Prints an outline of this set.</print_order>
+      <export caption="Export">Export this set to another folder.</export>
     </current_set>
     <new_item caption="New Item">
       <add_song caption="Song">Adds a song to the current set. This will present the list of songs available from the song editor for you to choose from.</add_song>

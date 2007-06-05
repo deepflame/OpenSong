@@ -3734,6 +3734,30 @@ Begin Window MainWindow
                InitialParent   =   "grp_set_current_set"
                BehaviorIndex   =   124
             End
+            Begin SButton btn_set_export
+               Index           =   -2147483648
+               ControlOrder    =   145
+               Left            =   141
+               Top             =   182
+               Width           =   87
+               Height          =   24
+               LockLeft        =   "False"
+               LockTop         =   "False"
+               LockRight       =   "False"
+               LockBottom      =   "False"
+               TabPanelIndex   =   2
+               Visible         =   True
+               HelpTag         =   ""
+               AutoDeactivate  =   "True"
+               Enabled         =   "False"
+               UseFocusRing    =   "True"
+               Backdrop        =   0
+               AcceptFocus     =   "False"
+               AcceptTabs      =   "False"
+               EraseBackground =   "True"
+               InitialParent   =   "grp_set_current_set"
+               BehaviorIndex   =   145
+            End
          End
          Begin GroupBox grp_set_new_item
             Index           =   -2147483648
@@ -4439,6 +4463,7 @@ End
 		      btn_set_present.Enabled = True And (Not Status_Presentation)
 		      btn_set_print_songs.Enabled = True
 		      btn_set_print_order.Enabled = True
+		      btn_set_export.Enabled = True
 		      btn_set_rename.Enabled = True
 		      btn_set_delete.Enabled = True
 		      btn_set_saveas.Enabled = True
@@ -4454,6 +4479,7 @@ End
 		      btn_set_present.Enabled = False
 		      btn_set_print_songs.Enabled = False
 		      btn_set_print_order.Enabled = False
+		      btn_set_export.Enabled = False
 		      btn_set_rename.Enabled = False
 		      btn_set_delete.Enabled = False
 		      btn_set_saveas.Enabled = False
@@ -4675,14 +4701,11 @@ End
 		  
 		  //Temporary solution until functionality works then we can add the button
 		  if asc(key) = 120 Then 'x
-		    mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
+		    
 		    if Status_SongOpen Then
 		      //ActionSongExport mode
 		    elseif Status_SetOpen then
-		      if not ActionSetExport(mode) then
-		        //throw Error
-		      end if
-		      
+		      ActionSetExport
 		    end if
 		  end if
 		  
@@ -6850,10 +6873,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function ActionSetExport(mode as Integer) As boolean
+		Sub ActionSetExport()
 		  'Ask if user wants to save
-		  //If NOT ActionSetAskSave Then Return 'User Canceled
+		  If NOT ActionSetAskSave Then Return 'User Canceled
 		  
+		  dim Mode as Integer
+		  
+		  Mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
 		  Dim setDoc As New XmlDocument
 		  Dim slide_group, slide_groups, temp As XmlNode
 		  Dim songDoc As XmlDocument
@@ -6876,7 +6902,7 @@ End
 		    att = CurrentSet.documentElement.GetAttributeNode("name")
 		  catch err as XMLexception
 		    i = msgbox(err.Message, 48, "ActionSetExport")
-		    return false
+		    return
 		  end try
 		  if att = Nil then
 		    CurrentSet.documentElement.SetAttribute("name",CurrentSetName)
@@ -6936,23 +6962,19 @@ End
 		  
 		  targetFolder = dlg.ShowModal
 		  
-		  If targetFolder = Nil Then Return false// User cancelled
+		  If targetFolder = Nil Then Return// User cancelled
 		  
 		  targetFolderPath = targetFolder.FormatFolderName
 		  //Todo store this
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "last_export/@path", targetFolderPath
 		  
-		  App.DebugWriter.Write("targetFolder At " + targetFolder.AbsolutePath, 1)
+		  //App.DebugWriter.Write("targetFolder At " + targetFolder.AbsolutePath, 1)
 		  if not targetFolder.Exists then
-		    return false
+		    return
 		  end if
+		  //App.DebugWriter.Write("targetFolder Exists " + targetFolder.AbsolutePath, 1)
 		  
-		  App.DebugWriter.Write("targetFolder Exists " + targetFolder.AbsolutePath, 1)
-		  
-		  
-		  //may be this section should be a seperate helper function
-		  
-		  If UBound(AbsFiles) <= 0 Then Return False // Nothing to do
+		  If UBound(AbsFiles) <= 0 Then Return // Nothing to do
 		  dim fileCount As Integer
 		  fileCount = UBound(AbsFiles)
 		  
@@ -6966,8 +6988,6 @@ End
 		  For i = 1 To fileCount
 		    relativePath = AbsFiles(i).AbsolutePath.replace(App.DocsFolder.AbsolutePath, "")
 		    //App.DebugWriter.Write("relativePath At " + relativePath, 1)
-		    
-		    
 		    sourcePathParts = Split( relativePath, folderDelimiter )
 		    sourcePathPartCount = UBound(sourcePathParts)
 		    //App.DebugWriter.Write("sourcePathPartCount " + str(sourcePathPartCount), 1)
@@ -6998,13 +7018,8 @@ End
 		    end if
 		  Next i
 		  
-		  return true
-		  
-		  
-		  
-		  
-		  
-		End Function
+		  return
+		End Sub
 	#tag EndMethod
 
 
@@ -10443,6 +10458,28 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon backgroundpic, backgroundmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_set_export
+	#tag Event
+		Sub Action()
+		  ActionSetExport
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/current_set/export"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon filesavepic, filesavemask
 		End Sub
 	#tag EndEvent
 #tag EndEvents

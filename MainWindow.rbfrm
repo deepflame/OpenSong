@@ -1015,7 +1015,7 @@ Begin Window MainWindow
          End
          Begin SButton btn_song_show_advanced_editor_2
             Index           =   -2147483648
-            ControlOrder    =   41
+            ControlOrder    =   39
             Left            =   605
             Top             =   49
             Width           =   125
@@ -1039,7 +1039,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_themes
             Index           =   -2147483648
-            ControlOrder    =   42
+            ControlOrder    =   40
             Left            =   270
             Top             =   90
             Width           =   175
@@ -1069,7 +1069,7 @@ Begin Window MainWindow
          End
          Begin ListBox lst_song_themes
             Index           =   -2147483648
-            ControlOrder    =   43
+            ControlOrder    =   41
             Left            =   270
             Top             =   104
             Width           =   175
@@ -1115,7 +1115,7 @@ Begin Window MainWindow
          End
          Begin SStyleCanvas can_song_style
             Index           =   -2147483648
-            ControlOrder    =   45
+            ControlOrder    =   42
             Left            =   628
             Top             =   104
             Width           =   102
@@ -1140,7 +1140,7 @@ Begin Window MainWindow
          End
          Begin CheckBox chk_song_style
             Index           =   -2147483648
-            ControlOrder    =   46
+            ControlOrder    =   43
             Left            =   628
             Top             =   184
             Width           =   102
@@ -1168,7 +1168,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_capo
             Index           =   -2147483648
-            ControlOrder    =   48
+            ControlOrder    =   44
             Left            =   460
             Top             =   125
             Width           =   125
@@ -1198,7 +1198,7 @@ Begin Window MainWindow
          End
          Begin PopupMenu pop_song_capo
             Index           =   -2147483648
-            ControlOrder    =   49
+            ControlOrder    =   45
             Left            =   460
             Top             =   139
             Width           =   55
@@ -1226,7 +1226,7 @@ Begin Window MainWindow
          End
          Begin CheckBox chk_song_capo_print
             Index           =   -2147483648
-            ControlOrder    =   50
+            ControlOrder    =   46
             Left            =   525
             Top             =   139
             Width           =   100
@@ -1254,7 +1254,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_key
             Index           =   -2147483648
-            ControlOrder    =   51
+            ControlOrder    =   47
             Left            =   460
             Top             =   160
             Width           =   125
@@ -1284,7 +1284,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_song_key
             Index           =   -2147483648
-            ControlOrder    =   52
+            ControlOrder    =   48
             Left            =   460
             Top             =   174
             Width           =   125
@@ -1326,7 +1326,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_time_sig
             Index           =   -2147483648
-            ControlOrder    =   53
+            ControlOrder    =   51
             Left            =   460
             Top             =   195
             Width           =   125
@@ -1356,7 +1356,7 @@ Begin Window MainWindow
          End
          Begin PopupMenu pop_song_time_sig
             Index           =   -2147483648
-            ControlOrder    =   54
+            ControlOrder    =   52
             Left            =   460
             Top             =   210
             Width           =   125
@@ -1384,7 +1384,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_tempo
             Index           =   -2147483648
-            ControlOrder    =   55
+            ControlOrder    =   53
             Left            =   460
             Top             =   230
             Width           =   125
@@ -1414,7 +1414,7 @@ Begin Window MainWindow
          End
          Begin PopupMenu pop_song_tempo
             Index           =   -2147483648
-            ControlOrder    =   58
+            ControlOrder    =   55
             Left            =   460
             Top             =   244
             Width           =   125
@@ -1442,7 +1442,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_aka
             Index           =   -2147483648
-            ControlOrder    =   59
+            ControlOrder    =   56
             Left            =   600
             Top             =   230
             Width           =   130
@@ -1472,7 +1472,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_song_aka
             Index           =   -2147483648
-            ControlOrder    =   67
+            ControlOrder    =   58
             Left            =   600
             Top             =   244
             Width           =   130
@@ -1514,7 +1514,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_key_line
             Index           =   -2147483648
-            ControlOrder    =   69
+            ControlOrder    =   59
             Left            =   460
             Top             =   265
             Width           =   270
@@ -1544,7 +1544,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_song_key_line
             Index           =   -2147483648
-            ControlOrder    =   70
+            ControlOrder    =   60
             Left            =   460
             Top             =   279
             Width           =   270
@@ -1586,7 +1586,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_user1_1
             Index           =   -2147483648
-            ControlOrder    =   71
+            ControlOrder    =   61
             Left            =   460
             Top             =   311
             Width           =   270
@@ -1616,7 +1616,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_song_user1
             Index           =   -2147483648
-            ControlOrder    =   72
+            ControlOrder    =   62
             Left            =   460
             Top             =   325
             Width           =   270
@@ -1658,7 +1658,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_user2
             Index           =   -2147483648
-            ControlOrder    =   73
+            ControlOrder    =   63
             Left            =   460
             Top             =   359
             Width           =   270
@@ -1688,7 +1688,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_song_user2
             Index           =   -2147483648
-            ControlOrder    =   74
+            ControlOrder    =   64
             Left            =   460
             Top             =   373
             Width           =   270
@@ -1730,7 +1730,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_song_user3
             Index           =   -2147483648
-            ControlOrder    =   75
+            ControlOrder    =   65
             Left            =   460
             Top             =   404
             Width           =   270
@@ -1760,7 +1760,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_song_user3
             Index           =   -2147483648
-            ControlOrder    =   77
+            ControlOrder    =   68
             Left            =   460
             Top             =   418
             Width           =   270
@@ -1803,7 +1803,7 @@ Begin Window MainWindow
       End
       Begin Canvas can_editor_slide_editor
          Index           =   -2147483648
-         ControlOrder    =   78
+         ControlOrder    =   69
          Left            =   260
          Top             =   39
          Width           =   485
@@ -1826,7 +1826,7 @@ Begin Window MainWindow
          BehaviorIndex   =   57
          Begin StaticText hdr_slide_header
             Index           =   -2147483648
-            ControlOrder    =   79
+            ControlOrder    =   77
             Left            =   270
             Top             =   49
             Width           =   460
@@ -1856,7 +1856,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_slide_title
             Index           =   -2147483648
-            ControlOrder    =   80
+            ControlOrder    =   79
             Left            =   270
             Top             =   90
             Width           =   145
@@ -1886,7 +1886,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_slide_title
             Index           =   -2147483648
-            ControlOrder    =   82
+            ControlOrder    =   80
             Left            =   270
             Top             =   104
             Width           =   145
@@ -1928,7 +1928,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_slide_subtitle
             Index           =   -2147483648
-            ControlOrder    =   83
+            ControlOrder    =   81
             Left            =   430
             Top             =   90
             Width           =   145
@@ -1958,7 +1958,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_slide_subtitle
             Index           =   -2147483648
-            ControlOrder    =   84
+            ControlOrder    =   82
             Left            =   430
             Top             =   104
             Width           =   145
@@ -2000,7 +2000,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_slide_name
             Index           =   -2147483648
-            ControlOrder    =   85
+            ControlOrder    =   83
             Left            =   590
             Top             =   90
             Width           =   140
@@ -2030,7 +2030,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_slide_name
             Index           =   -2147483648
-            ControlOrder    =   86
+            ControlOrder    =   84
             Left            =   590
             Top             =   104
             Width           =   140
@@ -2072,7 +2072,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_slide_slides
             Index           =   -2147483648
-            ControlOrder    =   89
+            ControlOrder    =   85
             Left            =   270
             Top             =   125
             Width           =   340
@@ -2102,7 +2102,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_slide_slides
             Index           =   -2147483648
-            ControlOrder    =   90
+            ControlOrder    =   87
             Left            =   270
             Top             =   139
             Width           =   340
@@ -2144,7 +2144,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_slide_presentation
             Index           =   -2147483648
-            ControlOrder    =   91
+            ControlOrder    =   88
             Left            =   271
             Top             =   403
             Width           =   170
@@ -2174,7 +2174,7 @@ Begin Window MainWindow
          End
          Begin EditField edt_slide_order
             Index           =   -2147483648
-            ControlOrder    =   92
+            ControlOrder    =   89
             Left            =   270
             Top             =   417
             Width           =   170
@@ -2216,7 +2216,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_slide_origorder
             Index           =   -2147483648
-            ControlOrder    =   93
+            ControlOrder    =   90
             Left            =   453
             Top             =   403
             Width           =   160
@@ -2246,7 +2246,7 @@ Begin Window MainWindow
          End
          Begin EditField edt_slide_origorder
             Index           =   -2147483648
-            ControlOrder    =   94
+            ControlOrder    =   92
             Left            =   453
             Top             =   417
             Width           =   160
@@ -2288,7 +2288,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_slide_notes
             Index           =   -2147483648
-            ControlOrder    =   95
+            ControlOrder    =   93
             Left            =   270
             Top             =   435
             Width           =   340
@@ -2318,7 +2318,7 @@ Begin Window MainWindow
          End
          Begin SEditField edt_slide_notes
             Index           =   -2147483648
-            ControlOrder    =   96
+            ControlOrder    =   94
             Left            =   270
             Top             =   449
             Width           =   340
@@ -2360,7 +2360,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_slide_insert
             Index           =   -2147483648
-            ControlOrder    =   97
+            ControlOrder    =   95
             Left            =   615
             Top             =   139
             Width           =   115
@@ -2390,7 +2390,7 @@ Begin Window MainWindow
          End
          Begin SButton btn_slide_ins_slide
             Index           =   -2147483648
-            ControlOrder    =   98
+            ControlOrder    =   96
             Left            =   615
             Top             =   154
             Width           =   115
@@ -2779,7 +2779,7 @@ Begin Window MainWindow
       BehaviorIndex   =   87
       Begin Canvas can_controls_songs_mode
          Index           =   -2147483648
-         ControlOrder    =   39
+         ControlOrder    =   49
          Left            =   5
          Top             =   40
          Width           =   240
@@ -2802,7 +2802,7 @@ Begin Window MainWindow
          BehaviorIndex   =   88
          Begin GroupBox grp_songs_all_songs
             Index           =   -2147483648
-            ControlOrder    =   40
+            ControlOrder    =   50
             Left            =   10
             Top             =   40
             Width           =   110
@@ -2899,7 +2899,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_songs_new_song
             Index           =   -2147483648
-            ControlOrder    =   44
+            ControlOrder    =   54
             Left            =   10
             Top             =   145
             Width           =   110
@@ -2972,7 +2972,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_songs_selected_song
             Index           =   -2147483648
-            ControlOrder    =   47
+            ControlOrder    =   57
             Left            =   130
             Top             =   40
             Width           =   110
@@ -3189,7 +3189,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_songs_song_folders
             Index           =   -2147483648
-            ControlOrder    =   56
+            ControlOrder    =   66
             Left            =   10
             Top             =   256
             Width           =   230
@@ -3219,7 +3219,7 @@ Begin Window MainWindow
          End
          Begin PopupMenu pop_songs_song_folders
             Index           =   -2147483648
-            ControlOrder    =   57
+            ControlOrder    =   67
             Left            =   10
             Top             =   271
             Width           =   190
@@ -3247,7 +3247,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_songs_songs
             Index           =   -2147483648
-            ControlOrder    =   60
+            ControlOrder    =   70
             Left            =   10
             Top             =   296
             Width           =   230
@@ -3277,7 +3277,7 @@ Begin Window MainWindow
          End
          Begin ListBox lst_songs_songs
             Index           =   -2147483648
-            ControlOrder    =   61
+            ControlOrder    =   71
             Left            =   10
             Top             =   314
             Width           =   230
@@ -3323,7 +3323,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_songs_curr_folder
             Index           =   -2147483648
-            ControlOrder    =   62
+            ControlOrder    =   72
             Left            =   10
             Top             =   509
             Width           =   230
@@ -3353,7 +3353,7 @@ Begin Window MainWindow
          End
          Begin EditField edt_songs_curr_folder
             Index           =   -2147483648
-            ControlOrder    =   63
+            ControlOrder    =   73
             Left            =   10
             Top             =   528
             Width           =   227
@@ -3444,7 +3444,7 @@ Begin Window MainWindow
       End
       Begin Canvas can_controls_sets_mode
          Index           =   -2147483648
-         ControlOrder    =   64
+         ControlOrder    =   74
          Left            =   5
          Top             =   40
          Width           =   240
@@ -3467,7 +3467,7 @@ Begin Window MainWindow
          BehaviorIndex   =   113
          Begin GroupBox grp_sets_sets
             Index           =   -2147483648
-            ControlOrder    =   65
+            ControlOrder    =   75
             Left            =   10
             Top             =   40
             Width           =   230
@@ -3491,7 +3491,7 @@ Begin Window MainWindow
             BehaviorIndex   =   114
             Begin PopupMenu pop_sets_sets
                Index           =   -2147483648
-               ControlOrder    =   66
+               ControlOrder    =   76
                Left            =   21
                Top             =   58
                Width           =   185
@@ -3544,7 +3544,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_set_current_set
             Index           =   -2147483648
-            ControlOrder    =   68
+            ControlOrder    =   78
             Left            =   10
             Top             =   89
             Width           =   230
@@ -3737,7 +3737,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_set_new_item
             Index           =   -2147483648
-            ControlOrder    =   76
+            ControlOrder    =   86
             Left            =   10
             Top             =   209
             Width           =   110
@@ -3858,7 +3858,7 @@ Begin Window MainWindow
          End
          Begin GroupBox grp_set_current_item
             Index           =   -2147483648
-            ControlOrder    =   81
+            ControlOrder    =   91
             Left            =   127
             Top             =   209
             Width           =   110
@@ -4003,7 +4003,7 @@ Begin Window MainWindow
          End
          Begin StaticText lbl_set_items
             Index           =   -2147483648
-            ControlOrder    =   87
+            ControlOrder    =   97
             Left            =   10
             Top             =   350
             Width           =   115
@@ -4033,7 +4033,7 @@ Begin Window MainWindow
          End
          Begin ListBox lst_set_items
             Index           =   -2147483648
-            ControlOrder    =   88
+            ControlOrder    =   98
             Left            =   10
             Top             =   365
             Width           =   230
@@ -4657,8 +4657,7 @@ End
 		    PresentWindow.SetFocus
 		    Return False
 		  End If
-		  dim test as Integer
-		  test = asc(key)
+		  
 		  if asc(key) = 204 Then 'F5
 		    mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
 		    if Status_SongOpen Then
@@ -6868,11 +6867,7 @@ End
 		  Dim AbsFiles(0) As FolderItem
 		  Dim i As Integer
 		  
-		  //to do
-		  // get folder item for documents folder
-		  
-		  
-		  App.DebugWriter.Write("Song At " + App.DocsFolder.AbsolutePath, 1)
+		  //App.DebugWriter.Write("Docs Folder At " + App.DocsFolder.AbsolutePath, 1)
 		  // get path for current set
 		  
 		  
@@ -6888,11 +6883,8 @@ End
 		  end if
 		  
 		  setFile = App.DocsFolder.Child("Sets").Child(CurrentSetName)
-		  App.DebugWriter.Write("Set At " + setFile.AbsolutePath, 1)
+		  //App.DebugWriter.Write("Set At " + setFile.AbsolutePath, 1)
 		  AbsFiles.append(setFile)
-		  // result = FolderItem.GetSaveInfo( RelativeTo, Mode)
-		  // get the folder item for where are are going to copy
-		  
 		  
 		  //I think this should be a call to the currentset
 		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
@@ -6916,7 +6908,7 @@ End
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
 		      Else
 		        f =f
-		        App.DebugWriter.Write("Song At " + f.AbsolutePath, 1)
+		        //App.DebugWriter.Write("Song At " + f.AbsolutePath, 1)
 		        AbsFiles.append(f)
 		        //
 		      End If
@@ -6927,9 +6919,28 @@ End
 		  //get any other set wide files
 		  
 		  dim targetFolderPath as String
-		  targetFolderPath = "C:\\temp\"
 		  dim targetFolder, targetFile As FolderItem
-		  targetFolder = GetFolderItem(targetFolderPath)
+		  
+		  //Getting the targetFolderPath from user
+		  Dim dlg As New SelectFolderDialog
+		  
+		  dlg.InitialDirectory = App.DocsFolder
+		  
+		  targetFolderPath = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_export/@path")
+		  if not IsNull(targetFolderPath) then 
+		    targetFolder = GetFolderItem(targetFolderPath)
+		    if not IsNull(targetFolder) then
+		      dlg.InitialDirectory = targetFolder
+		    end if
+		  end if
+		  
+		  targetFolder = dlg.ShowModal
+		  
+		  If targetFolder = Nil Then Return false// User cancelled
+		  
+		  targetFolderPath = targetFolder.FormatFolderName
+		  //Todo store this
+		  SmartML.SetValue App.MyMainSettings.DocumentElement, "last_export/@path", targetFolderPath
 		  
 		  App.DebugWriter.Write("targetFolder At " + targetFolder.AbsolutePath, 1)
 		  if not targetFolder.Exists then
@@ -6954,21 +6965,21 @@ End
 		  
 		  For i = 1 To fileCount
 		    relativePath = AbsFiles(i).AbsolutePath.replace(App.DocsFolder.AbsolutePath, "")
-		    App.DebugWriter.Write("relativePath At " + relativePath, 1)
+		    //App.DebugWriter.Write("relativePath At " + relativePath, 1)
 		    
 		    
 		    sourcePathParts = Split( relativePath, folderDelimiter )
 		    sourcePathPartCount = UBound(sourcePathParts)
-		    App.DebugWriter.Write("sourcePathPartCount " + str(sourcePathPartCount), 1)
+		    //App.DebugWriter.Write("sourcePathPartCount " + str(sourcePathPartCount), 1)
 		    currentPath = targetFolder.AbsolutePath
 		    If sourcePathPartCount <= 0 Then continue
 		    For j = 0 To sourcePathPartCount - 1
-		      App.DebugWriter.Write("j= " +str( j), 1)
+		      //App.DebugWriter.Write("j= " +str( j), 1)
 		      currentPath = currentPath + folderDelimiter + sourcePathParts(j)
-		      App.DebugWriter.Write("currentPath At " + currentPath, 1)
+		      //App.DebugWriter.Write("currentPath At " + currentPath, 1)
 		      currentFolderItem = GetFolderItem(currentPath)
 		      if not IsNull(currentFolderItem) then
-		        App.DebugWriter.Write("currentFolderItem AbsPath " + currentFolderItem.AbsolutePath, 1)
+		        //App.DebugWriter.Write("currentFolderItem AbsPath " + currentFolderItem.AbsolutePath, 1)
 		        if not currentFolderItem.Exists Then
 		          currentFolderItem.CreateAsFolder
 		        end if
@@ -6987,7 +6998,7 @@ End
 		    end if
 		  Next i
 		  
-		  
+		  return true
 		  
 		  
 		  
@@ -8062,6 +8073,171 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events pop_song_tempo
+	#tag Event
+		Sub Change()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 10
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/tempo"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_aka
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 12
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/aka"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_key_line
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 13
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/key_line"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_user1
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 14
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/user1"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_user2
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 15
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/user2"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events pop_songs_song_folders
 	#tag Event
 		Sub Change()
@@ -8095,28 +8271,38 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events pop_song_tempo
+#tag Events edt_song_user3
 	#tag Event
-		Sub Change()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
+		Sub GotFocus()
+		  FindFocus = 16
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub GotFocus()
-		  FindFocus = 10
-		End Sub
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
-		  SetHelp "advanced_song_editor/tempo"
+		  SetHelp "advanced_song_editor/user3"
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub MouseExit()
 		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -8380,181 +8566,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events edt_song_aka
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 12
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "advanced_song_editor/aka"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_key_line
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 13
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "advanced_song_editor/key_line"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_user1
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 14
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "advanced_song_editor/user1"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_user2
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 15
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "advanced_song_editor/user2"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_user3
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 16
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "advanced_song_editor/user3"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events edt_slide_title
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
@@ -8642,6 +8653,149 @@ End
 		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_slides
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/slides"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_order
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  '++JRC
+		  SetHelp "slide_editor/presentation"
+		  '--
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_origorder
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  '++JRC
+		  SetHelp "slide_editor/origorder"
+		  '--
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_notes
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/notes"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_slide_ins_slide
+	#tag Event
+		Sub Action()
+		  Dim s As String
+		  If edt_slide_slides.Enabled Then
+		    If edt_slide_slides.SelStart > 0 And Asc(Mid(edt_slide_slides.Text, edt_slide_slides.SelStart, 1)) <> 10 And Asc(Mid(edt_slide_slides.Text, edt_slide_slides.SelStart, 1)) <> 13 Then s = SmartML.Newline
+		    s = s + "---" + SmartML.Newline
+		    edt_slide_slides.SelText = s
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/ins_slide"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewbottompic, viewbottommask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -8858,149 +9012,6 @@ End
 	#tag Event
 		Sub MouseExit()
 		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_slides
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/slides"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_order
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  '++JRC
-		  SetHelp "slide_editor/presentation"
-		  '--
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_origorder
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  '++JRC
-		  SetHelp "slide_editor/origorder"
-		  '--
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_notes
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/notes"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_slide_ins_slide
-	#tag Event
-		Sub Action()
-		  Dim s As String
-		  If edt_slide_slides.Enabled Then
-		    If edt_slide_slides.SelStart > 0 And Asc(Mid(edt_slide_slides.Text, edt_slide_slides.SelStart, 1)) <> 10 And Asc(Mid(edt_slide_slides.Text, edt_slide_slides.SelStart, 1)) <> 13 Then s = SmartML.Newline
-		    s = s + "---" + SmartML.Newline
-		    edt_slide_slides.SelText = s
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/ins_slide"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewbottompic, viewbottommask
 		End Sub
 	#tag EndEvent
 #tag EndEvents

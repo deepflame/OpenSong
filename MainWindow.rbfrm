@@ -6877,83 +6877,14 @@ End
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then Return 'User Canceled
 		  
-		  dim Mode as Integer
-		  
-		  Mode = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "presentation_mode/@code")
-		  Dim setDoc As New XmlDocument
-		  Dim slide_group, slide_groups, temp As XmlNode
-		  Dim songDoc As XmlDocument
-		  Dim f, songFile, setFile As FolderItem
-		  Dim Presentation As String
-		  '++JRC
-		  Dim CurStyle As XmlNode
-		  '--
-		  Dim SongStyle As XmlNode
-		  Dim SongPath As String
-		  Dim AbsFiles(0) As FolderItem
-		  Dim i As Integer
-		  
-		  //App.DebugWriter.Write("Docs Folder At " + App.DocsFolder.AbsolutePath, 1)
-		  // get path for current set
-		  
-		  
-		  dim att as XMLattribute
-		  try
-		    att = CurrentSet.documentElement.GetAttributeNode("name")
-		  catch err as XMLexception
-		    i = msgbox(err.Message, 48, "ActionSetExport")
-		    return
-		  end try
-		  if att = Nil then
-		    CurrentSet.documentElement.SetAttribute("name",CurrentSetName)
-		  end if
-		  
-		  setFile = App.DocsFolder.Child("Sets").Child(CurrentSetName)
-		  //App.DebugWriter.Write("Set At " + setFile.AbsolutePath, 1)
-		  AbsFiles.append(setFile)
-		  
-		  //I think this should be a call to the currentset
-		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
-		  
-		  App.MouseCursor = WatchCursor
-		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
-		  slide_group = slide_groups.FirstChild
-		  While slide_group <> Nil
-		    songFile = Nil
-		    // get paths for the individual slide groups possibly bt adding a method when we OO
-		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
-		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
-		      SongPath = SmartML.GetValue(slide_group, "@path", False)
-		      If SongPath <> "" Then
-		        SongPath = SongPath + SmartML.GetValue(slide_group, "@name")
-		      Else
-		        SongPath = SmartML.GetValue(slide_group, "@name")
-		      End If
-		      f = Songs.GetFile(SongPath)
-		      If f = Nil Then
-		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
-		      Else
-		        f =f
-		        //App.DebugWriter.Write("Song At " + f.AbsolutePath, 1)
-		        AbsFiles.append(f)
-		        //
-		      End If
-		    End If
-		    slide_group  = slide_group.NextSibling
-		  Wend
-		  
-		  //get any other set wide files
-		  
+		  //Getting the targetFolderPath from user
 		  dim targetFolderPath as String
 		  dim targetFolder, targetFile As FolderItem
-		  
-		  //Getting the targetFolderPath from user
 		  Dim dlg As New SelectFolderDialog
 		  
 		  dlg.InitialDirectory = App.DocsFolder
-		  
 		  targetFolderPath = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_export/@path")
-		  if not IsNull(targetFolderPath) then 
+		  if not IsNull(targetFolderPath) then
 		    targetFolder = GetFolderItem(targetFolderPath)
 		    if not IsNull(targetFolder) then
 		      dlg.InitialDirectory = targetFolder
@@ -6965,15 +6896,73 @@ End
 		  If targetFolder = Nil Then Return// User cancelled
 		  
 		  targetFolderPath = targetFolder.FormatFolderName
-		  //Todo store this
+		  //Should there be a settings object that handles this?
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "last_export/@path", targetFolderPath
 		  
-		  //App.DebugWriter.Write("targetFolder At " + targetFolder.AbsolutePath, 1)
 		  if not targetFolder.Exists then
 		    return
 		  end if
-		  //App.DebugWriter.Write("targetFolder Exists " + targetFolder.AbsolutePath, 1)
 		  
+		  
+		  
+		  //Start of the calculation and copying bit
+		  App.MouseCursor = WatchCursor
+		  Dim f, songFile, setFile As FolderItem
+		  Dim SongPath As String
+		  Dim AbsFiles(0) As FolderItem
+		  Dim i As Integer
+		  
+		  // Get path for current set
+		  // Should be setFile = CurrentSet.GetFolderItem
+		  dim att as XMLattribute
+		  try
+		    att = CurrentSet.documentElement.GetAttributeNode("name")
+		  catch err as XMLexception
+		    i = msgbox(err.Message, 48, "ActionSetExport Could not find set name")
+		    return
+		  end try
+		  if att = Nil then
+		    CurrentSet.documentElement.SetAttribute("name",CurrentSetName)
+		  end if
+		  
+		  setFile = App.DocsFolder.Child("Sets").Child(CurrentSetName)
+		  AbsFiles.append(setFile)
+		  
+		  //Append the FolderItem used in each SlideGroup to AbsFiles
+		  //Should be a call to CurrentSet.GetChildFolderItems
+		  Dim setDoc As New XmlDocument
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  
+		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
+		  
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    songFile = Nil
+		    // get paths for the individual slide groups
+		    //Should be a call to SlideGroup.GetChildFolderItems
+		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
+		      SongPath = SmartML.GetValue(slide_group, "@path", False)
+		      If SongPath <> "" Then
+		        SongPath = SongPath + SmartML.GetValue(slide_group, "@name")
+		      Else
+		        SongPath = SmartML.GetValue(slide_group, "@name")
+		      End If
+		      f = Songs.GetFile(SongPath)
+		      If f = Nil Then
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
+		      Else
+		        AbsFiles.append(f)
+		      End If
+		    End If
+		    slide_group  = slide_group.NextSibling
+		  Wend
+		  
+		  //TODO: get any other set wide files
+		  
+		  
+		  
+		  //Copy the files to the target
 		  If UBound(AbsFiles) <= 0 Then Return // Nothing to do
 		  dim fileCount As Integer
 		  fileCount = UBound(AbsFiles)
@@ -6987,26 +6976,22 @@ End
 		  
 		  For i = 1 To fileCount
 		    relativePath = AbsFiles(i).AbsolutePath.replace(App.DocsFolder.AbsolutePath, "")
-		    //App.DebugWriter.Write("relativePath At " + relativePath, 1)
+		    //Split the path up and create each folder if needed
 		    sourcePathParts = Split( relativePath, folderDelimiter )
 		    sourcePathPartCount = UBound(sourcePathParts)
-		    //App.DebugWriter.Write("sourcePathPartCount " + str(sourcePathPartCount), 1)
 		    currentPath = targetFolder.AbsolutePath
 		    If sourcePathPartCount <= 0 Then continue
 		    For j = 0 To sourcePathPartCount - 1
-		      //App.DebugWriter.Write("j= " +str( j), 1)
 		      currentPath = currentPath + folderDelimiter + sourcePathParts(j)
-		      //App.DebugWriter.Write("currentPath At " + currentPath, 1)
 		      currentFolderItem = GetFolderItem(currentPath)
 		      if not IsNull(currentFolderItem) then
-		        //App.DebugWriter.Write("currentFolderItem AbsPath " + currentFolderItem.AbsolutePath, 1)
 		        if not currentFolderItem.Exists Then
 		          currentFolderItem.CreateAsFolder
 		        end if
 		      end if
 		    next j
 		    
-		    
+		    //Create or delete the actual file.
 		    targetPath =  currentFolderItem.AbsolutePath + folderDelimiter + AbsFiles(i).Name
 		    targetFile = GetFolderItem(targetPath)
 		    if not IsNull(targetFile) then
@@ -7018,6 +7003,8 @@ End
 		    end if
 		  Next i
 		  
+		  
+		  App.MouseCursor = nil
 		  return
 		End Sub
 	#tag EndMethod

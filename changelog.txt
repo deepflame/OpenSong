@@ -1,5 +1,7 @@
 -= V1.1.0 BL20 =-
 
+* The initial space on a lyrics line is no longer required when typing in lyrics IF the first character on the line is alphabetic.  Numbers or special characters are treated as coding characters.  The spaces are automatically added to the lyrics lines when the song is saved.
+
 * Add quick lookup to song selection dialog box.  Updated English file with revised song_lookup/header and new song_lookup/lookup. (Integrates changes from JRC through r218.)
 
 * Refactored command parser in PresentWindow for better readability and in preparation for more changes.

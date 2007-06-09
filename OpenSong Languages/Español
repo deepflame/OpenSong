@@ -391,7 +391,7 @@
       <highlight_chorus caption="Highlight chorus text"/>
       <initial_mode caption="Modo Inicial"/>
     </style>
-
+    <transition_note caption="Las transiciones son afectadas de gran manera por la resolución de la pantalla. Si Ud. está experimentando transiciones lentas, considere disminuir la resolución del monitor en el cual se está mostrando la presentación. Además, si Ud. nota que las transiciones no es están presentando, puede ser porque su configuración de colores del monitor es muy baja para la presentación."/>
     <alerts caption="Alarmas">
       <font caption="Fuente"/>
       <align caption="Alinear"/>

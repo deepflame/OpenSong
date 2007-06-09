@@ -213,7 +213,6 @@
       <presentation caption="link(general_song_editor/presentation/@caption)"/>
       <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
       <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
-
       <themes caption="link(advanced_song_editor/themes/@caption)"/>
       <capo caption="link(advanced_song_editor/capo/@caption)"/>
       <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
@@ -424,7 +423,6 @@
     <misc caption="Misc">
       <exit_prompt caption="Prompt when exiting"/>
     </misc>
-    
   </presentation_settings>
 
   <presentation_helper title="Presentation Helper">
@@ -635,9 +633,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <create_list caption="Creating list of %1..."/>
      <uncategorized caption="Other"/>
      <setlist caption="Order of Service">
-
-      <date caption="Printed "/>
-
+     <date caption="Printed "/>
      </setlist>
 </print>
  
@@ -702,7 +698,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </style_editor>
 
   <song_lookup title="Song Lookup">
-    <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it into the Quick Lookup field, and click 'Add'. You can also double-click on the song name or press Enter to add the song."/>
+    <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. You can also double-click on the song name or press ENTER to add the song."/>
     <no_selection>You have not selected a song.</no_selection>
     <folder caption="Select Folder"/>
     <preview caption="Song Preview"/>
@@ -985,15 +981,11 @@ Temporarily changing to: %1
 Please modify your preferences.</docs_folder>
   </errors>
 
-
   <xml_errors>
-
     <noattribute>Unable to find XML attribute '%1' in '%2'.</noattribute>
   </xml_errors>
 
-
   <bible>
-
     <errors>
       <index_generation>Error generating index for '%1.' Bible search will be disabled.</index_generation>
 
@@ -1011,11 +1003,9 @@ Please modify your preferences.</docs_folder>
       <roman>Error converting Roman numeral '%1': %2</roman>
 
       <save>Error saving updated file '%1.'</save>
-
     </errors>
 
     <messages>
-
       <bnames>Book names must be added to this translation.
 &#10;Please indicate the appropriate language for the names.</bnames>
       <save>Save updated file?</save>

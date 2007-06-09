@@ -1,4 +1,3 @@
-song_lookup/lookup
 songs_mode/curr_folder
 sets_mode/current_set/saveas
 slide_editor/presentation
@@ -172,3 +171,5 @@ general_settings/ccli (Modified)
 scripture_lookup/select_file
 module/generate_index
 module/generate_error
+song_lookup/preview
+song_lookup/header (Modified)

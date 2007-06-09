@@ -1,4 +1,10 @@
--= BL20 =-
+-= V1.1.0 BL20 =-
+
+* Add quick lookup to song selection dialog box.  Updated English file with revised song_lookup/header and new song_lookup/lookup. (Integrates changes from JRC through r218.)
+
+* Refactored command parser in PresentWindow for better readability and in preparation for more changes.
+
+-r214-
 
 * Subtitle descriptions won't appear if the requested subtitle field isn't set. [Help Forum message 4332769]
 

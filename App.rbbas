@@ -1254,5 +1254,12 @@ Inherits Application
 	#tag EndConstant
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

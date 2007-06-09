@@ -698,10 +698,11 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </style_editor>
 
   <song_lookup title="Song Lookup">
-    <header caption="To add a song, click the song title below and click the 'Add' button or begin typing the song title and hit the enter key."/>
+    <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. You can also double-click on the song name or press ENTER to add the song."/>
     <no_selection>You have not selected a song.</no_selection>
     <folder caption="Select Folder"/>
-    <preview caption="Preview"/>
+    <preview caption="Song Preview"/>
+    <lookup caption="Quick Lookup"/>
   </song_lookup>
 
   <scripture_lookup title="Scripture Lookup">

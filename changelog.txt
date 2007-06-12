@@ -1,4 +1,6 @@
 -= JRC =-
 
+* Fix issue where two files with the same name but different Extensions would get the same thumbnail image. Adds an extra Extension for the thumbnail's filename
+
 * Don't revert/update Unsaved Song or Set when Closing
 

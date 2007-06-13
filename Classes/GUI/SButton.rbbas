@@ -506,8 +506,8 @@ Inherits Canvas
 		Protected Popup As SButtonPopup
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected StickyBevel As Boolean
+	#tag Property, Flags = &h0
+		StickyBevel As Boolean
 	#tag EndProperty
 
 
@@ -652,11 +652,19 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Group="Behavior"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

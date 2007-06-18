@@ -31,7 +31,7 @@ Protected Module SmartML
 		    attribute = xnode.GetAttributeNode(attribName)
 		  Catch err
 		    '++JRC Translated
-		    If App.T.Isloaded Then MsgBox(App.T.Translate("smartml/attrib_except", attribName, xnode.ToString))
+		    MsgBox(TranslateMessage("smartml/attrib_except", "Exception with attribute %s, %s", attribName, xnode.ToString))
 		    '--
 		    Return ""
 		  End Try
@@ -122,7 +122,7 @@ Protected Module SmartML
 		Protected Function GetValueB(xnode As XmlNode, childPath As String, create As Boolean = True, default As Boolean = False) As Boolean
 		  Dim s As String
 		  s = GetValue(xnode, childPath, create)
-		  If create And Len(s) = 0 Then 
+		  If create And Len(s) = 0 Then
 		    SetValueB(xnode, childPath, default)
 		    Return default
 		  End If
@@ -466,22 +466,22 @@ Protected Module SmartML
 		  If f = Nil Then
 		    ErrorCode = 1
 		    '++JRC Translated
-		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_path")
+		     ErrorString = TranslateMessage("smartml/no_path", "The FolderItem object is Nil in XDocFromFile")
 		    '--
 		    Return Nil
 		  ElseIf Not f.Exists Then
 		    ErrorCode = 2
 		    '++JRC Translated
-		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_file",  f.AbsolutePath)
+		     ErrorString = TranslateMessage("smartml/no_file",  "File does not exist in XDocFromFile: %s", f.AbsolutePath)
 		    '--
 		    Return Nil
 		  End If
 		  input = f.OpenAsTextFile
 		  '++JRC Prevent NilObject Exception if file could not be opened
-		  If input = Nil Then 
+		  If input = Nil Then
 		    ErrorCode = 4
 		    '++JRC Translated
-		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/cant_open",  f.AbsolutePath)
+		     ErrorString = TranslateMessage("smartml/cant_open",  "Could not open %s in XDocFromFile: %s", f.AbsolutePath, CStr(f.LastErrorCode))
 		    '--
 		    return nil
 		  End If
@@ -496,18 +496,18 @@ Protected Module SmartML
 		    Else
 		      ErrorCode = 5
 		      '++JRC Translated
-		      If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_error",  f.AbsolutePath)
+		       ErrorString = TranslateMessage("smartml/xml_error",  "LoadXML Error from file %s", f.AbsolutePath)
 		      '--
 		      Return Nil
 		    End If
 		  Catch err As XmlException
 		    ErrorCode = 3
 		    '++JRC Translated
-		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_exterror",  f.AbsolutePath, err.Line, err.Node)
+		     ErrorString = TranslateMessage("smartml/xml_exterror",  "XmlException from LoadXML on file %s, %s, %s", f.AbsolutePath, err.Line, err.Node)
 		    '--
 		    Return Nil
 		  End Try
-		Catch ex 
+		Catch ex
 		  If ex IsA NilObjectException Then
 		    //++
 		    // Most likely the Nil object is App.T and we're trying to open
@@ -541,7 +541,7 @@ Protected Module SmartML
 		  Catch err As XmlException
 		    ErrorCode = 3
 		    '++JRC Translated
-		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/xml_error",  Left(s, 30))
+		    ErrorString = TranslateMessage("smartml/xml_error",  "XML Error in XDocFromString: %s", Left(s, 30))
 		    '--
 		    If Len(s) > 30 Then ErrorString = ErrorString
 		    Return Nil
@@ -555,7 +555,7 @@ Protected Module SmartML
 		  If f = Nil Then
 		    ErrorCode = 11
 		    '++JRC Translated
-		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/no_path")
+		    ErrorString = TranslateMessage("smartml/no_path", "XDocToFile: FolderItem argument is Nil")
 		    '--
 		    Return False
 		  End If
@@ -570,7 +570,7 @@ Protected Module SmartML
 		  Else
 		    ErrorCode = 12
 		    '++JRC Translated
-		    If App.T.Isloaded Then ErrorString = App.T.Translate("smartml/cant_create", f.AbsolutePath)
+		    ErrorString = TranslateMessage("smartml/cant_create", "XDocToFile: Unable to create file: %s", f.AbsolutePath)
 		    '--
 		    Return False
 		  End If
@@ -596,6 +596,27 @@ Protected Module SmartML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function TranslateMessage(id As String, altText As String = "", param1 As String = "", param2 As String = "", param3 As String = "") As String
+		  //++
+		  // Even though Translator.Translate is defined with a paramarray argument, there's no way
+		  // to use one as input here and pass it along.  Therefore, only handle the most basic cases
+		  // (0, 1, 2 or 3)
+		  // 
+		  // This routine helps eliminate excessive If...Then coding in error traps by providing a 
+		  // means to generate a meaningful error message if the translator object is not loaded.
+		  //
+		  // Ed Palmer, June 2007
+		  //--
+		  
+		  If App.T Is Nil Then
+		    Return StringUtils.Sprintf(altText, param1, param2, param3)
+		  Else
+		    Return App.T.Translate(id, param1, param2, param3)
+		  End If
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h1
 		Protected ErrorCode As Integer
@@ -614,5 +635,35 @@ Protected Module SmartML
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Module
 #tag EndModule

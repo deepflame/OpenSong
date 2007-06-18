@@ -1,3 +1,19 @@
+-= BL21 =-
+
+* Fixed issue with lyrics autoformat (BL20) on Windows due to line ending differences.
+
+* Double-clicking a song in a set list will correctly find the item even if the song is not in the folder tree of the active folder in the Song Editor.
+
+* Special folders (Main) and (All) now correctly translate.
+
+* Fix issue where two files with the same name but different Extensions would get the same thumbnail image. Adds an extra Extension for the thumbnail's filename
+
+* SButton controls now treat spacebar and Return/Enter keys as equivalent to a keypress.  Changed all instances of SButton buttons on MainWindow to accept focus so they are included in the controls activated by a Tab.
+
+* Fixed issues with SButton painting: (1) RB2007 requires design-time parameters to be Public (affects StickyBevel, LabelAlign); (2) grayscale version of icon wasn't being created so there was no icon on a disabled button when using "new visual style"; (3) changed default visual style to use the grayscale icon on disabled controls.
+
+* Put better error message handling in SmartML to help report errors at program initialization, especially when the Globals file or language file is missing.
+
 -= V1.1.0 BL20 =-
 
 * The initial space on a lyrics line is no longer required when typing in lyrics IF the first character on the line is alphabetic.  Numbers or special characters are treated as coding characters.  The spaces are automatically added to the lyrics lines when the song is saved.

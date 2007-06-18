@@ -25,10 +25,9 @@ Begin Window ImageChooserWindow
    Visible         =   "True"
    Width           =   475
    Begin ScrollBar scr_vertical
+      AcceptFocus     =   "true"
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       ControlOrder    =   0
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   328
       HelpTag         =   ""
@@ -53,9 +52,7 @@ Begin Window ImageChooserWindow
    End
    Begin Separator sep_1
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       ControlOrder    =   1
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   4
       HelpTag         =   ""
@@ -74,12 +71,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText txt_path
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
@@ -102,17 +97,15 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   455
-      BehaviorIndex   =   5
+      BehaviorIndex   =   2
    End
    Begin PushButton btn_browse
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Browse..."
       ControlOrder    =   3
       Default         =   "False"
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
@@ -131,17 +124,15 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   75
-      BehaviorIndex   =   2
+      BehaviorIndex   =   3
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "True"
       Caption         =   "Cancel"
       ControlOrder    =   4
       Default         =   "False"
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
@@ -160,17 +151,16 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   75
-      BehaviorIndex   =   3
+      BehaviorIndex   =   4
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   5
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   0
@@ -185,17 +175,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   6
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   1
@@ -210,17 +199,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   7
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   2
@@ -235,17 +223,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   8
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   3
@@ -260,17 +247,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   9
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   4
@@ -285,17 +271,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   10
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   5
@@ -310,17 +295,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   11
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   6
@@ -335,17 +319,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   12
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   7
@@ -360,17 +343,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   13
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   8
@@ -385,17 +367,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   14
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   9
@@ -410,17 +391,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   15
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   10
@@ -435,17 +415,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   16
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   11
@@ -460,17 +439,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   17
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   12
@@ -485,17 +463,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   18
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   13
@@ -510,17 +487,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   19
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   14
@@ -535,17 +511,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   20
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   15
@@ -560,17 +535,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   21
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   16
@@ -585,17 +559,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   22
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   17
@@ -610,17 +583,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   23
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   18
@@ -635,17 +607,16 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   24
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
       Index           =   19
@@ -660,16 +631,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   25
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -696,12 +665,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -728,12 +695,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   27
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -760,12 +725,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   28
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -792,12 +755,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   29
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -824,12 +785,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   30
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -856,12 +815,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   31
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -888,12 +845,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   32
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -920,12 +875,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   33
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -952,12 +905,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   34
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -984,12 +935,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   35
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1016,12 +965,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   36
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1048,12 +995,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   37
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1080,12 +1025,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   38
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1112,12 +1055,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   39
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1144,12 +1085,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   40
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1176,12 +1115,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   41
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1208,12 +1145,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   42
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1240,12 +1175,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   43
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1272,12 +1205,10 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   44
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -1441,13 +1372,13 @@ End
 #tag EndEvents
 #tag Events can
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		Function MouseDown(index as Integer, X As Integer, Y As Integer) As Boolean
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Also replaced (and modified) hard coded argument with variable.
 		  Dim ImgNdx as Integer
 		  ImgNdx = scr_vertical.Value * COLS + Index + 1
-		  ' If scr_vertical.Value + Index + 1 <= UBound(ImageFiles) Then     // JDL 2/01/2006 
-		  If ImgNdx <= UBound(ImageFiles) Then                 // JDL 2/01/2006 
+		  ' If scr_vertical.Value + Index + 1 <= UBound(ImageFiles) Then     // JDL 2/01/2006
+		  If ImgNdx <= UBound(ImageFiles) Then                 // JDL 2/01/2006
 		    If ImageFiles(ImgNdx).Name = "(parent)" Then    // JDL 2/01/2006
 		      If BackgroundFolder.Parent <> Nil Then BackgroundFolder = BackgroundFolder.Parent
 		      ReloadDirectory
@@ -1468,7 +1399,7 @@ End
 		End Function
 	#tag EndEvent
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(index as Integer, g As Graphics)
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Replaced (and modified) hard coded argument with variable.
 		  // JDL 2/01/2006  Replaced pic.Depth with variable picDepth
@@ -1504,11 +1435,21 @@ End
 		          thumb = NewPicture(80, 60, picDepth)                          // JDL 2/01/2006
 		          thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
 		        End If
-		      ElseIf cache <> Nil And cache.Exists And cache.Child(Left(name, InStr(name, "."))+"bmp").Exists And _
-		        ImageFiles(ImgNdx).ModificationDate <= cache.Child(Left(name, InStr(name, "."))+"bmp").ModificationDate Then ' read from the cache   // JDL 2/01/2006
-		        pic = cache.Child(Left(name, InStr(name, "."))+"bmp").OpenAsPicture
+		        '++JRC Fix issue where two files with the same name but different Extensions would get
+		        'the same thumbnail image. We'll add an extra Extension for the thumbnail's filename
+		        'e.g. 1.jpg.bmp .
+		      ElseIf cache <> Nil And cache.Exists And cache.Child(name +".bmp").Exists And _
+		        ImageFiles(ImgNdx).ModificationDate <= cache.Child(name + ".bmp").ModificationDate Then ' read from the cache   // JDL 2/01/2006
+		        'ElseIf cache <> Nil And cache.Exists And cache.Child(Left(name, InStr(name, "."))+"bmp").Exists And _
+		        'ImageFiles(ImgNdx).ModificationDate <= cache.Child(Left(name, InStr(name, "."))+"bmp").ModificationDate Then ' read from the cache   // JDL 2/01/2006
+		        
+		        pic = cache.Child(name +".bmp").OpenAsPicture
+		        'pic = cache.Child(Left(name, InStr(name, "."))+"bmp").OpenAsPicture
+		        '
 		        If pic <> Nil Then
-		          thumb = NewPicture(80, 60, pic.Depth)
+		          picDepth = pic.Depth
+		          If picDepth = 0 Then picDepth = 32
+		          thumb = NewPicture(80, 60, picDepth)
 		          thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
 		        End If
 		      Else '  read from the file
@@ -1522,7 +1463,9 @@ End
 		            If Not cache.Exists Then cache.CreateAsFolder
 		            thumb = NewPicture(80, 60, picDepth)                          // JDL 2/01/2006
 		            thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
-		            cache.Child(name).SaveAsPicture thumb
+		            '++JRC
+		            cache.Child(name + ".bmp").SaveAsPicture thumb
+		            '
 		          End If // cache <> Nil
 		        Else
 		          // Let's not display anything that isn't a picture or a folder.

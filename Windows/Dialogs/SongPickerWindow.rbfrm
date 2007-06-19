@@ -35,7 +35,7 @@ Begin Window SongPickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -64,7 +64,7 @@ Begin Window SongPickerWindow
       Top             =   55
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   395
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
@@ -80,7 +80,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   20
       HelpTag         =   ""
@@ -108,9 +108,9 @@ Begin Window SongPickerWindow
       Top             =   302
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   179
-      BehaviorIndex   =   1
+      BehaviorIndex   =   9
    End
    Begin PushButton btn_add
       AutoDeactivate  =   "True"
@@ -135,9 +135,9 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   452
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   2
+      BehaviorIndex   =   1
    End
    Begin PushButton btn_done
       AutoDeactivate  =   "True"
@@ -146,7 +146,7 @@ Begin Window SongPickerWindow
       Caption         =   "Done"
       ControlOrder    =   3
       Default         =   "False"
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -162,9 +162,9 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   451
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   3
+      BehaviorIndex   =   2
    End
    Begin StaticText lbl_select_folder
       AutoDeactivate  =   "True"
@@ -172,7 +172,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   14
       HelpTag         =   ""
       Index           =   -2147483648
@@ -192,9 +192,9 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   283
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   4
+      BehaviorIndex   =   6
    End
    Begin PopupMenu pop_select_folder
       AutoDeactivate  =   "True"
@@ -202,7 +202,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -220,19 +220,20 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   302
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   206
       BehaviorIndex   =   5
    End
    Begin Timer timerLookup
       ControlOrder    =   6
       Index           =   -2147483648
+      InitialParent   =   ""
       Left            =   228
       Mode            =   2
       Period          =   1500
       TabPanelIndex   =   0
       Top             =   23
-      BehaviorIndex   =   6
+      BehaviorIndex   =   3
    End
    Begin StaticText txt_explanation_header
       AutoDeactivate  =   "True"
@@ -240,7 +241,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   45
       HelpTag         =   ""
       Index           =   -2147483648
@@ -260,9 +261,9 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   5
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   378
-      BehaviorIndex   =   7
+      BehaviorIndex   =   4
    End
    Begin StaticText lbl_song_preview
       AutoDeactivate  =   "True"
@@ -270,7 +271,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -290,7 +291,7 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   329
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   100
       BehaviorIndex   =   8
    End
@@ -304,7 +305,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   89
       HelpTag         =   ""
@@ -332,9 +333,9 @@ Begin Window SongPickerWindow
       Top             =   350
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   397
-      BehaviorIndex   =   9
+      BehaviorIndex   =   7
    End
    Begin StaticText lbl_quick_lookup
       AutoDeactivate  =   "True"
@@ -342,7 +343,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -362,7 +363,7 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   280
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   100
       BehaviorIndex   =   10
    End
@@ -625,7 +626,7 @@ End
 		      Me.SelStart = Me.SelStart - 1
 		      Me.SelLength = 1
 		      Me.SelText = ""
-		    Else
+		    Else 
 		      Me.SelText = ""
 		    End If
 		  Case ASC_KEY_TAB
@@ -636,7 +637,7 @@ End
 		    Return True
 		  Case ASC_KEY_ESCAPE 'Escape
 		    Return False 'Close dialog, no search in progress
-		  Case ASC_KEY_UP
+		  Case ASC_KEY_UP 
 		    Return False
 		  Case ASC_KEY_DOWN
 		    Return False
@@ -652,7 +653,7 @@ End
 		    If Me.SelLength = 0 Then
 		      Me.SelLength = 1
 		      Me.SelText = ""
-		    Else
+		    Else 
 		      Me.SelText = ""
 		    End If
 		    'TODO Handle the F1 - F12 Keys in RB 2007

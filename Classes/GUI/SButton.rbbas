@@ -97,7 +97,7 @@ Inherits Canvas
 		    offset = 0
 		    g.ForeColor = DarkBevelColor
 		    g.FillRect 0, 0, Width, Height
-		  ElseIf IsMouseOver Then
+		  ElseIf IsMouseOver Or HasFocus Then
 		    g.ForeColor = LightBevelColor
 		    g.FillRect 0, 0, Width, Height
 		  Else
@@ -108,7 +108,11 @@ Inherits Canvas
 		  
 		  If Icon <> Nil Then
 		    i = (Height - Icon.Height)/2
-		    g.DrawPicture Icon, i+offset, i+offset
+		    If Enabled Or GrayIcon Is Nil Then
+		      g.DrawPicture Icon, i+offset, i+offset
+		    Else
+		      g.DrawPicture GrayIcon, i+offset, i+offset
+		    End If
 		    i = i + Icon.Width
 		  End If
 		  
@@ -142,10 +146,38 @@ Inherits Canvas
 		  If IsMouseDown Or IsStuck Then
 		    g.ForeColor = TextColor
 		    g.DrawRect 0, 0, Width, Height
-		  ElseIf IsMouseOver Or StickyBevel Then
+		  ElseIf IsMouseOver Or StickyBevel Or HasFocus Then
 		    g.ForeColor = DarkBevelColor
 		    g.DrawRect 0, 0, Width, Height
 		  End If
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  Const KEY_RETURN = 13
+		  Const KEY_ENTER = 3
+		  If Key = " " Or Key = Chr(KEY_RETURN) Or Key = Chr(KEY_ENTER) Then
+		    Action
+		    Return True
+		  End If
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Sub GotFocus()
+		  IsMouseOver = True
+		  HasFocus = True
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub LostFocus()
+		  IsMouseOver = False
+		  HasFocus = False
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
 		End Sub
 	#tag EndEvent
 
@@ -255,7 +287,7 @@ Inherits Canvas
 		    g.Bold = not g.Bold
 		    g.TextSize = g.TextSize + 1
 		    
-		  ElseIf IsMouseOver Then
+		  ElseIf IsMouseOver Or HasFocus Then
 		    'g.ForeColor = DarkTingeColor
 		    'g.FillRect 0, 0, Width, Height
 		    'Fill the background
@@ -381,7 +413,6 @@ Inherits Canvas
 		  Else
 		    g.ForeColor = Font.ForeColor
 		    g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
-		    
 		  End If
 		  
 		  If Popup <> Nil Then
@@ -423,6 +454,7 @@ Inherits Canvas
 		Sub SetIcon(pic As Picture, mask As Picture)
 		  Icon = pic
 		  Icon.Mask.Graphics.DrawPicture mask, 0, 0
+		  SetGrayIcon pic, mask
 		  Refresh
 		End Sub
 	#tag EndMethod
@@ -438,6 +470,25 @@ Inherits Canvas
 		Sub SetStuck(stuck As Boolean)
 		  IsStuck = stuck
 		  Refresh
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetGrayIcon(pic As Picture, mask As Picture)
+		  GrayIcon = NewPicture(pic.Width, pic.Height, 32)
+		  If GrayIcon Is Nil Then Return
+		  
+		  GrayIcon.Graphics.DrawPicture(pic, 0, 0)
+		  Dim surf As RGBSurface
+		  Dim newC As Double
+		  surf = GrayIcon.RGBSurface
+		  For y As Integer = 0 To GrayIcon.Height
+		    For x As Integer = 0 To GrayIcon.Width
+		      newC = (Surf.Pixel(x, y).Red * 0.299) + (Surf.Pixel(x, y).Green * 0.587) + (Surf.Pixel(x, y).Blue * 0.114)
+		      surf.Pixel(x, y) = RGB(Floor(newC), Floor(newC), Floor(newC))
+		    Next
+		  Next
+		  GrayIcon.Mask.Graphics.DrawPicture(mask, 0, 0)
 		End Sub
 	#tag EndMethod
 
@@ -490,8 +541,8 @@ Inherits Canvas
 		Protected Label As String
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected LabelAlign As Integer
+	#tag Property, Flags = &h0
+		LabelAlign As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -508,6 +559,10 @@ Inherits Canvas
 
 	#tag Property, Flags = &h0
 		StickyBevel As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		HasFocus As Boolean
 	#tag EndProperty
 
 
@@ -652,16 +707,23 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Group="Behavior"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"
-			Type="String"
-			EditorType="MultiLineEditor"
+			InitialValue="0"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Visible=true
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

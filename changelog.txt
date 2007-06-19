@@ -1,8 +1,6 @@
 -= JRC =-
 
-* Make StickyButton in Sbutton class public(again), fixes issue where Sbuttons in MainWindow did not get their frames
-
-* Fix issue where two files with the same name but different Extensions would get the same thumbnail image. Adds an extra Extension for the thumbnail's filename
+* Highlight SButton if it has focus
 
 * Don't revert/update Unsaved Song or Set when Closing
 

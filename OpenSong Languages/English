@@ -159,6 +159,7 @@
       <scripture caption="(scripture)"/>
       <style caption="(style)">-- Change Style --</style>
       <revert caption="(style)">-- Revert Style --</revert>
+			<defaultstyle caption="(style)">-- Exported Style --</defaultstyle>
     </items>
     <untitled caption="Untitled"/>
     <errors>

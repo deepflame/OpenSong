@@ -1,5 +1,11 @@
 -= JRC =-
 
+* Typing text in ScripturePicker edt_quick_lookup now updates preview text
+
+* Pressing Enter in ScripturePicker edt_quick_lookup now activates btn_quick_lookup
+
+* FIX: Ctrl-V paste in ScripturePicker edt_quick_lookup no longer erases the old text
+
 * Highlight SButton if it has focus
 
 * Don't revert/update Unsaved Song or Set when Closing

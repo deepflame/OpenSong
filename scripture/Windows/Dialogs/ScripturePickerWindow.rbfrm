@@ -31,7 +31,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Caption         =   "Done"
       ControlOrder    =   0
       Default         =   "False"
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -47,7 +47,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   185
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   69
       BehaviorIndex   =   0
    End
@@ -56,7 +56,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   "Quick Lookup"
       ControlOrder    =   1
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   75
       HelpTag         =   ""
       Index           =   -2147483648
@@ -72,7 +72,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   360
       BehaviorIndex   =   1
       Begin StaticText lbl_quick_reference
@@ -81,7 +81,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          ControlOrder    =   2
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -101,7 +101,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   10
          Top             =   36
          Underline       =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   65
          BehaviorIndex   =   2
       End
@@ -111,7 +111,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          ControlOrder    =   3
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   12
          HelpTag         =   ""
          Index           =   -2147483648
@@ -131,7 +131,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   9
          Top             =   60
          Underline       =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   210
          BehaviorIndex   =   3
       End
@@ -182,9 +182,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Bold            =   "False"
          Cancel          =   "False"
          Caption         =   "Lookup"
-         ControlOrder    =   24
+         ControlOrder    =   7
          Default         =   "False"
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
@@ -200,7 +200,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   10
          Top             =   35
          Underline       =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   69
          BehaviorIndex   =   5
       End
@@ -228,7 +228,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   34
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   69
       BehaviorIndex   =   6
    End
@@ -237,7 +237,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   ""
       ControlOrder    =   6
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   388
       HelpTag         =   ""
       Index           =   -2147483648
@@ -253,21 +253,21 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   12
       Top             =   91
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   200
       BehaviorIndex   =   7
-      Begin ListBox lst_scr_ot
+      Begin HighlightList lst_scr_ot
          AutoDeactivate  =   "True"
          AutoHideScrollbars=   "True"
          Bold            =   ""
          ColumnCount     =   1
          ColumnsResizable=   ""
          ColumnWidths    =   ""
-         ControlOrder    =   7
+         ControlOrder    =   8
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
-         Enabled         =   True
+         Enabled         =   "True"
          EnableDrag      =   ""
          EnableDragReorder=   ""
          GridLinesHorizontal=   0
@@ -296,24 +296,24 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   100
          Underline       =   ""
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   80
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
          BehaviorIndex   =   8
       End
-      Begin ListBox lst_scr_nt
+      Begin HighlightList lst_scr_nt
          AutoDeactivate  =   "True"
          AutoHideScrollbars=   "True"
          Bold            =   ""
          ColumnCount     =   1
          ColumnsResizable=   ""
          ColumnWidths    =   ""
-         ControlOrder    =   8
+         ControlOrder    =   9
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
-         Enabled         =   True
+         Enabled         =   "True"
          EnableDrag      =   ""
          EnableDragReorder=   ""
          GridLinesHorizontal=   0
@@ -342,25 +342,25 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   100
          Underline       =   ""
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   85
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
          BehaviorIndex   =   9
       End
    End
-   Begin ListBox lst_scr_chapter
+   Begin HighlightList lst_scr_chapter
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
       Bold            =   "False"
       ColumnCount     =   1
       ColumnsResizable=   "False"
       ColumnWidths    =   ""
-      ControlOrder    =   9
+      ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -389,24 +389,24 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Top             =   100
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
       BehaviorIndex   =   10
    End
-   Begin ListBox lst_scr_from_verse
+   Begin HighlightList lst_scr_from_verse
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
       Bold            =   "False"
       ColumnCount     =   1
       ColumnsResizable=   "False"
       ColumnWidths    =   ""
-      ControlOrder    =   10
+      ControlOrder    =   11
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -435,64 +435,18 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Top             =   100
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
       BehaviorIndex   =   11
-   End
-   Begin ListBox lst_scr_to_verse
-      AutoDeactivate  =   "True"
-      AutoHideScrollbars=   "True"
-      Bold            =   "False"
-      ColumnCount     =   1
-      ColumnsResizable=   "False"
-      ColumnWidths    =   ""
-      ControlOrder    =   11
-      DataField       =   ""
-      DataSource      =   ""
-      DefaultRowHeight=   -1
-      Enabled         =   True
-      EnableDrag      =   "False"
-      EnableDragReorder=   "False"
-      GridLinesHorizontal=   0
-      GridLinesVertical=   0
-      HasHeading      =   "False"
-      HeadingIndex    =   -1
-      Height          =   360
-      HelpTag         =   ""
-      Hierarchical    =   "False"
-      Index           =   -2147483648
-      InitialParent   =   ""
-      InitialValue    =   ""
-      Italic          =   "False"
-      Left            =   355
-      LockBottom      =   "True"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "True"
-      RequiresSelection=   ""
-      ScrollbarHorizontal=   "False"
-      ScrollBarVertical=   "True"
-      SelectionType   =   0
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   100
-      Underline       =   "False"
-      UseFocusRing    =   "True"
-      Visible         =   True
-      Width           =   50
-      _ScrollOffset   =   0
-      _ScrollWidth    =   -1
-      BehaviorIndex   =   12
    End
    Begin GroupBox grp_options_version
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Version"
       ControlOrder    =   12
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   55
       HelpTag         =   ""
       Index           =   -2147483648
@@ -508,7 +462,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   11
       Top             =   218
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   145
       BehaviorIndex   =   13
       Begin PopupMenu pop_scr_version
@@ -517,7 +471,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          ControlOrder    =   13
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -535,7 +489,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   12
          Top             =   238
          Underline       =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   95
          BehaviorIndex   =   14
       End
@@ -545,7 +499,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   "Verses Per Slide"
       ControlOrder    =   14
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   50
       HelpTag         =   ""
       Index           =   -2147483648
@@ -561,7 +515,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   11
       Top             =   283
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   145
       BehaviorIndex   =   15
       Begin RadioButton rad_verses_one
@@ -569,7 +523,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Bold            =   "False"
          Caption         =   1
          ControlOrder    =   15
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -586,7 +540,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   303
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   35
          BehaviorIndex   =   16
       End
@@ -595,7 +549,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Bold            =   "False"
          Caption         =   2
          ControlOrder    =   16
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -612,7 +566,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   303
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   35
          BehaviorIndex   =   17
       End
@@ -621,7 +575,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Bold            =   "False"
          Caption         =   3
          ControlOrder    =   17
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -638,7 +592,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   303
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   35
          BehaviorIndex   =   18
       End
@@ -648,7 +602,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   "Format"
       ControlOrder    =   18
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   70
       HelpTag         =   ""
       Index           =   -2147483648
@@ -664,7 +618,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   11
       Top             =   343
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   145
       BehaviorIndex   =   19
       Begin RadioButton rad_format_paragraph
@@ -672,7 +626,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Bold            =   "False"
          Caption         =   "Paragraph"
          ControlOrder    =   19
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -689,7 +643,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   363
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   120
          BehaviorIndex   =   20
       End
@@ -698,7 +652,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Bold            =   "False"
          Caption         =   "Verse"
          ControlOrder    =   20
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -715,7 +669,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   383
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   120
          BehaviorIndex   =   21
       End
@@ -727,7 +681,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   21
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -744,7 +698,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Top             =   426
       Underline       =   ""
       Value           =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   145
       BehaviorIndex   =   22
    End
@@ -782,7 +736,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Caption         =   "Add"
       ControlOrder    =   23
       Default         =   "True"
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -798,9 +752,55 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   69
       BehaviorIndex   =   24
+   End
+   Begin HighlightList lst_scr_to_verse
+      AutoDeactivate  =   "True"
+      AutoHideScrollbars=   "True"
+      Bold            =   "False"
+      ColumnCount     =   1
+      ColumnsResizable=   "False"
+      ColumnWidths    =   ""
+      ControlOrder    =   24
+      DataField       =   ""
+      DataSource      =   ""
+      DefaultRowHeight=   -1
+      Enabled         =   "True"
+      EnableDrag      =   "False"
+      EnableDragReorder=   "False"
+      GridLinesHorizontal=   0
+      GridLinesVertical=   0
+      HasHeading      =   "False"
+      HeadingIndex    =   -1
+      Height          =   360
+      HelpTag         =   ""
+      Hierarchical    =   "False"
+      Index           =   -2147483648
+      InitialParent   =   ""
+      InitialValue    =   ""
+      Italic          =   "False"
+      Left            =   355
+      LockBottom      =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   "False"
+      ScrollBarVertical=   "True"
+      SelectionType   =   0
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   100
+      Underline       =   "False"
+      UseFocusRing    =   "True"
+      Visible         =   "True"
+      Width           =   50
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
+      BehaviorIndex   =   12
    End
    Begin EditField edt_preview
       AcceptTabs      =   "False"
@@ -812,7 +812,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   25
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   71
       HelpTag         =   ""
@@ -840,7 +840,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Top             =   491
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   530
       BehaviorIndex   =   25
    End
@@ -850,7 +850,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -870,7 +870,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   260
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   10
       BehaviorIndex   =   26
    End
@@ -880,7 +880,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   27
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -900,7 +900,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   260
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   10
       BehaviorIndex   =   27
    End
@@ -910,7 +910,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   28
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -930,7 +930,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   12
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   100
       BehaviorIndex   =   28
    End
@@ -940,7 +940,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   29
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -960,7 +960,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   69
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   100
       BehaviorIndex   =   29
    End
@@ -970,6 +970,7 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Close()
+		  'System.DebugLog "ScripturePickerWindow.Close"
 		  SPController = Nil
 		  Globals.Status_ScripturePickerOpen = False
 		End Sub
@@ -1002,145 +1003,6 @@ End
 	#tag EndEvent
 
 
-	#tag Method, Flags = &h1
-		Protected Function ActiveBookName() As String
-		  If lst_scr_ot.ListIndex >= 0 Then Return lst_scr_ot.List(lst_scr_ot.ListIndex)
-		  If lst_scr_nt.ListIndex >= 0 Then Return lst_scr_nt.List(lst_scr_nt.ListIndex)
-		  Return ""
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub BuildScripture(Optional Insert as boolean = false)
-		  Dim verses(0), passage As String
-		  Dim x, advance As Integer
-		  Dim vStart, vStop, cntVerses as Integer
-		  Dim slides, slide As XmlNode
-		  Dim vFrom, vTo As String
-		  advance = 0
-		  
-		  Node.Name = "slide_group"
-		  '  MG:  This is primarily for Insert.  Make sure that the reference doesn't have more than can be displayed in a live slide
-		  If rad_verses_one.Value then
-		    cntVerses = 1
-		  ElseIf rad_verses_two.Value then
-		    cntVerses = 2
-		  Else
-		    cntVerses = 3
-		  End If
-		  
-		  //++
-		  // Original code here would use the ListIndex as the verse reference.  With Bibles that combine verses or
-		  // have sub-verses (The Portugese Bible is an example of the former, the New American Bible the latter),
-		  // the references don't exactly correspond to the ListIndex.  Retrieve this directly from the Bible object.
-		  //--
-		  
-		  If Insert And (lst_scr_to_verse.listindex - lst_scr_from_verse.listindex + 1 > cntVerses) Then
-		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_from_verse.ListIndex+cntVerses)
-		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+cntVerses))
-		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
-		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + 1, vFrom, vTo)
-		    passage = passage + vFrom
-		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + cntVerses, vFrom, vTo)
-		    If vTo = "" Then
-		      passage = passage + "-" + vFrom
-		    Else
-		      passage = passage + "-" + vTo
-		    End If
-		    verses = App.MyBible.GetPassage(ActiveBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_from_verse.ListIndex + cntVerses)
-		  ElseIf lst_scr_to_verse.ListIndex > lst_scr_from_verse.ListIndex Then
-		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1) + "-" + Str(lst_scr_to_verse.ListIndex+1)
-		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_to_verse.ListIndex + 1))
-		    verses = App.MyBible.GetPassage(ActiveBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_to_verse.ListIndex + 1)
-		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
-		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_from_verse.ListIndex + 1, vFrom, vTo)
-		    passage = passage + vFrom
-		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_to_verse.ListIndex + 1, vFrom, vTo)
-		    If vTo = "" Then
-		      passage = passage + "-" + vFrom
-		    Else
-		      passage = passage + "-" + vTo
-		    End If
-		  Else
-		    'passage = ActiveBookName + " " + Str(lst_scr_chapter.ListIndex+1) + ":" + Str(lst_scr_from_verse.ListIndex+1)
-		    'verses = App.MyBible.GetPassage(ActiveBookName, Str(lst_scr_chapter.ListIndex + 1), Str(lst_scr_from_verse.ListIndex+1), Str(lst_scr_from_verse.ListIndex+1))
-		    verses = App.MyBible.GetPassage(ActiveBookNumber, lst_scr_chapter.ListIndex + 1, lst_scr_from_verse.ListIndex + 1, lst_scr_from_verse.ListIndex + 1)
-		    passage = ActiveBookName + " " + lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0) + ":"
-		    Bible(App.MyBible).GetVerseRange(ActiveBookNumber, CDbl(lst_scr_chapter.Cell(lst_scr_chapter.ListIndex, 0)), lst_scr_to_verse.ListIndex + 1, vFrom, vTo)
-		    passage = passage + vFrom
-		    If vTo <> "" Then passage = passage + "-" + vTo
-		  End If
-		  '*******************************
-		  
-		  ' ----- SET TITLE -----
-		  SmartML.SetValue Node, "@name", passage
-		  SmartML.SetValue Node, "@type", "scripture"
-		  SmartML.SetValue Node, "title", passage
-		  SmartML.SetValue Node, "subtitle", App.MyBible.name
-		  
-		  ' MG: Have to clear the slide cache in case Insert is used before Add
-		  slides = SmartML.GetNode(Node, "slides", False)
-		  If slides <> Nil Then Node.RemoveChild slides
-		  '*******************************
-		  slides = SmartML.GetNode(Node, "slides", True)
-		  
-		  ' ----- SET VERSES -----
-		  For x = 1 To UBound(verses)
-		    If rad_verses_one.Value Or (rad_verses_two.Value And advance = 2) Or (rad_verses_three.Value And advance = 3) Then
-		      advance = 0
-		    End If
-		    If advance = 0 Then
-		      slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		      SmartML.SetValue slide, "body", verses(x)
-		    Else
-		      If rad_format_verse.Value Then
-		        SmartML.SetValue slide, "body", SmartML.GetValue(slide, "body", True) + Chr(10) + verses(x)
-		      Else
-		        SmartML.SetValue slide, "body", SmartML.GetValue(slide, "body", True) + " " + verses(x)
-		      End If
-		    End If
-		    advance = advance + 1
-		  Next x
-		  
-		  ' MG: When inserting, redraw the presentation window, but get the focus back here so the escape key doesn't kill the wrong thing!
-		  '         Also, if more verses are selected than can be displayed, reset the lst_scr_FROM_verse to the next available.
-		  'If Live Then
-		  If Insert Then
-		    PresentWindow.Mode = "N"
-		    PresentWindow.ResetPaint slide
-		    ScripturePickerWindow.SetFocus
-		    
-		    If lst_scr_to_verse.listindex - lst_scr_from_verse.listindex + 1 > cntVerses Then
-		      vStart = lst_scr_from_verse.listIndex
-		      vStop = lst_scr_to_verse.listIndex
-		      lst_scr_from_verse.listIndex = vStart + cntVerses
-		      lst_scr_to_verse.listIndex = vStop
-		    End If
-		  ElseIf Live and PresentWindow.Mode <> PresentMode Then 'If not inserting, ensure the show remains in the mode it was before
-		    PresentWindow.Mode = PresentMode
-		  End If
-		  '*******************************
-		  ReturnValue = True
-		  
-		  SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", pop_scr_version.List(pop_scr_version.ListIndex))
-		  
-		  If rad_verses_one.Value Then
-		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@per_slide", 1)
-		  ElseIf rad_verses_two.Value Then
-		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@per_slide", 2)
-		  Else
-		    SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@per_slide", 3)
-		  End If
-		  
-		  If rad_format_verse.Value Then
-		    SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@format", "verse")
-		  Else
-		    SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@format", "paragraph")
-		  End If
-		  
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Sub Constructor(controller As ScripturePickerController)
 		  
@@ -1158,319 +1020,6 @@ End
 		  End Try
 		  
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function SelectedBookNumber() As Integer
-		  If lst_scr_ot.ListIndex >= 0 Then Return lst_scr_ot.CellTag(lst_scr_ot.ListIndex, 0).IntegerValue
-		  If lst_scr_nt.ListIndex >= 0 Then Return lst_scr_nt.CellTag(lst_scr_nt.ListIndex, 0).IntegerValue
-		  
-		  System.DebugLog "ScripturePickerWindow.CurrentBookNumber: both OT & NT lists have no selection."
-		  Return 0
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function FindVerseIndex(List As ListBox, Verse As Integer, aix As String) As Integer
-		  //+
-		  // Look at the contents of a listbox and find the item that contains the given verse reference.
-		  //
-		  // Ed Palmer, November 2006
-		  //--
-		  
-		  Dim listVerse As Integer
-		  Dim listAix As String
-		  Dim i As Integer
-		  Dim lc As Integer
-		  Dim searching As Boolean = True
-		  
-		  lc = List.ListCount
-		  
-		  i = -1
-		  While searching And (i < lc - 1)
-		    i = i + 1
-		    If Not SplitVerseNumber(List.Cell(i, 0), listVerse, listAix) Then Return -1 // Error in verse format; treat as "verse not found"
-		    If listVerse = Verse Then
-		      If listaix = aix Then
-		        Searching = False
-		      ElseIf listaix > aix Then // Went one too far
-		        i = i - 1
-		        Searching = False
-		      End If
-		    ElseIf listVerse > Verse Then // Moved past the correct verse
-		      i = i - 1
-		      Searching = False
-		    End If
-		  Wend
-		  
-		  If Searching Then Return -1 // Nothing found
-		  
-		  Return i
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub Lookup(lookup As String)
-		  //
-		  // Updated to pass the book to the Bible object for decoding
-		  // Allows the use of abbreviations that aren't necessarily the
-		  // first few characters of the book name
-		  //
-		  // Ed Palmer, September 2005
-		  //
-		  Dim s(0) As String
-		  
-		  Dim temp As String
-		  Dim open_paren_loc, close_paren_loc As Integer
-		  Dim i, first_space_loc, colon_loc, dash_loc, second_space_loc As Integer
-		  Dim BookName As String
-		  Dim re As RegEx
-		  Dim reresult As RegExMatch
-		  Dim verse As Integer
-		  Dim aix As String
-		  
-		  If Len(lookup) = 0 Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/empty")
-		    Return
-		  End If
-		  
-		  ' Look for version
-		  open_paren_loc = InStr(lookup, "(")
-		  close_paren_loc = InStr(lookup, ")")
-		  If open_paren_loc > 0 And close_paren_loc > 0 And _
-		    (close_paren_loc > open_paren_loc) Then
-		    temp = Mid(lookup, open_paren_loc + 1, close_paren_loc - open_paren_loc - 1)
-		    i = 0
-		    
-		    //++
-		    // Bug 1467887: If xlations such as SCH and SCH51 exist, entering SCH may
-		    // return SCH51.  Test for exact match first, then substring.
-		    //--
-		    While i < pop_scr_version.ListCount
-		      If Lowercase(pop_scr_version.List(i)) = Lowercase(temp) Then
-		        pop_scr_version.ListIndex = i
-		        i = pop_scr_version.ListCount
-		      End If
-		      i = i + 1
-		    Wend
-		    If i = pop_scr_version.ListCount Then // No exact match, try substring
-		      While i < pop_scr_version.ListCount
-		        If InStr(Lowercase(pop_scr_version.List(i)),  Lowercase(temp)) > 0 Then
-		          pop_scr_version.ListIndex = i
-		          i = pop_scr_version.ListCount
-		        End If
-		        i = i + 1
-		      Wend
-		    End If
-		    
-		    If i = pop_scr_version.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp))
-		      Return
-		    End If
-		  End If
-		  
-		  ' Look for book
-		  first_space_loc = InStr(lookup, " ")
-		  
-		  Select Case first_space_loc
-		  Case 0
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", "")
-		    Return
-		  Case 2
-		    lookup = Left(lookup, 1) + Right(lookup, len(lookup) - 2)
-		  Case else
-		  End Select
-		  
-		  temp = Left(lookup, first_space_loc - 1)
-		  
-		  BookName = Bible(App.MyBible).LookupBookName(temp)
-		  
-		  If BookName = "" Then
-		    If App.MyBible.ErrorString = "" Then // Nothing found
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book")
-		    Else // Multiples found
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/ambiguous", _
-		      temp, App.MyBible.ErrorString)
-		    End If
-		    Return
-		  End If
-		  
-		  ' This was the original code to do the lookup.  Modified to just
-		  ' set the selection in the list boxes now
-		  i = 0
-		  While i < lst_scr_ot.ListCount
-		    If lst_scr_ot.List(i) = BookName Then
-		      lst_scr_ot.ListIndex = i
-		      i = lst_scr_ot.ListCount 'This breaks the While and skips the next while
-		    End If
-		    i = i + 1
-		  Wend
-		  If i = lst_scr_ot.ListCount Then
-		    i = 0
-		    While i < lst_scr_nt.ListCount
-		      If lst_scr_nt.List(i) = BookName Then
-		        lst_scr_nt.ListIndex = i
-		        i = lst_scr_nt.ListCount
-		      End If
-		      i = i + 1
-		    Wend
-		    If i = lst_scr_nt.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", Lowercase(temp))
-		      Return
-		    End If
-		  End If
-		  
-		  ' Look for chapter
-		  colon_loc = InStr(first_space_loc + 1, lookup, ":")
-		  If colon_loc = 0 Then
-		    colon_loc = InStr(first_space_loc + 1, lookup, " ")
-		    If colon_loc = 0 Then
-		      colon_loc = Len(lookup)
-		    End If
-		    ' Looks like it ended with a chapter.
-		    temp = Mid(lookup, first_space_loc + 1, colon_loc - first_space_loc)
-		    i = Val(temp)
-		    If i < 0 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
-		      Return
-		    ElseIf i > lst_scr_chapter.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp))
-		      Return
-		    End If
-		    lst_scr_chapter.ListIndex = i - 1 // We can assume that the chapters are numbered sequentially from 1
-		    lst_scr_to_verse.ListIndex = lst_scr_to_verse.ListCount - 1
-		    BuildScripture
-		    Return
-		  End If
-		  temp = Mid(lookup, first_space_loc + 1, colon_loc - first_space_loc)
-		  i = Val(temp)
-		  If i <= 0 Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
-		    Return
-		  ElseIf i > lst_scr_chapter.ListCount Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", Lowercase(temp))
-		    Return
-		  End If
-		  lst_scr_chapter.ListIndex = i - 1
-		  
-		  ' Look for from verse
-		  dash_loc = InStr(colon_loc + 1, lookup, "-")
-		  If dash_loc = 0 Then
-		    dash_loc = InStr(colon_loc + 1, lookup, " ")
-		    If dash_loc = 0 Then
-		      dash_loc = Len(lookup) + 1
-		    End If
-		  End If
-		  temp = Mid(lookup, colon_loc + 1, dash_loc - colon_loc)
-		  If SplitVerseNumber(temp, Verse, aix) Then
-		    i = FindVerseIndex(lst_scr_from_verse, verse, aix)
-		    If i < 0 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", "")
-		      Return
-		    End If
-		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp))
-		    Return
-		  End If
-		  
-		  lst_scr_from_verse.ListIndex = i
-		  
-		  ' Look for to verse
-		  second_space_loc = InStr(dash_loc + 1, lookup, " ")
-		  If second_space_loc = 0 Then
-		    second_space_loc = Len(lookup) + 1
-		  End If
-		  temp = Mid(lookup, dash_loc + 1, second_space_loc - dash_loc)
-		  If Trim(temp) = "" Then
-		    ' There was probably no verse specified
-		  Else
-		    If SplitVerseNumber(temp, verse, aix) Then
-		      i = FindVerseIndex(lst_scr_to_verse, verse, aix)
-		      If i < 0 Then
-		        InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range")
-		        Return
-		      Else
-		        lst_scr_to_verse.ListIndex = i
-		      End If
-		    Else
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", Lowercase(temp))
-		      Return
-		    End If
-		  End If
-		  
-		  BuildScripture
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Popup(node As XmlNode, live As Boolean = False) As Boolean
-		  'App.DebugWriter.Write "ScripturePickerWindow.Popup: Enter"
-		  '
-		  'If App.MyBible = Nil Then
-		  'App.DebugWriter.Write "ScripturePickerWindow.Popup: Exit (no Bible loaded)"
-		  'Return True
-		  'End If
-		  '
-		  'Me.Node = node
-		  'Me.Live = live
-		  'edt_quick_lookup.Text = ""
-		  'OldSel = -1
-		  ''Dim book As Integer
-		  'ReturnValue = False
-		  'book = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book")
-		  'If book > 0 And book <= App.MyBible.GetOTCount Then
-		  'lst_scr_nt.ListIndex = -1
-		  'lst_scr_ot.ListIndex = book - 1
-		  ''lst_scr_ot.SetFocus
-		  'ElseIf book > 0 Then
-		  'lst_scr_ot.ListIndex = -1
-		  'lst_scr_nt.ListIndex = book - 1 - App.MyBible.GetOTCount
-		  ''lst_scr_nt.SetFocus
-		  'Else 'No previously selected book
-		  'book = 1 'Assume Genesis
-		  'lst_scr_nt.ListIndex = -1
-		  'lst_scr_ot.ListIndex = book - 1
-		  'End If
-		  '
-		  'If book > 0 Then
-		  'If SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") > 0 Then
-		  'lst_scr_chapter.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter") - 1
-		  'lst_scr_from_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse") - 1
-		  'lst_scr_to_verse.ListIndex = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru") - 1
-		  'Else 'No Previously selected chapter
-		  'lst_scr_chapter.ListIndex = 0 'Assume chapter 1
-		  ''From & To verses will be set automatically by the chapter change
-		  'End If
-		  '
-		  'End If
-		  '
-		  'If Live Then
-		  '' MG: The Insert button will add slides on the fly directly to the presentation
-		  'btn_Insert.Visible = True
-		  'btn_Insert.Caption = App.T.Translate("shared/insert/@caption")
-		  'PresentMode = PresentWindow.Mode
-		  ''**************************
-		  'btn_add.Caption = App.T.Translate("shared/add/@caption")
-		  'btn_done.Caption = App.T.Translate("shared/close/@caption") 'MG: Close just makes more sense to me here
-		  'End If
-		  'btn_search.Caption = App.T.Translate("shared/search/@caption") ' MG: Without this the Search button was blank!
-		  ''++JRC
-		  'Globals.Status_ScripturePickerOpen = True
-		  'setPreview
-		  ''--
-		  'ShowModalWithin(MainWindow)
-		  '
-		  'If ReturnValue And book >= 0 Then
-		  'SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@book", book)
-		  'SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@chapter", chapter)
-		  'SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@verse", verse)
-		  'SmartML.SetValueN(App.MyMainSettings.DocumentElement, "last_scripture/@thru", thru)
-		  'End If
-		  '
-		  'App.DebugWriter.Write "ScripturePickerWindow.Popup: Exit"
-		  'Return ReturnValue
-		  
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -1507,157 +1056,11 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function SplitVerseNumber(reference As String, ByRef verse As Integer, ByRef aix As String) As Boolean
-		  //+
-		  // Split a verse reference into numeric and alphabetic components
-		  //
-		  // Ed Palmer, November 2006
-		  //--
-		  
-		  Dim re As New RegEx
-		  Dim result As RegExMatch
-		  Dim vnum As Integer
-		  Dim valpha As String
-		  
-		  re.SearchPattern = "([0-9]+)([A-Za-z]*)[^A-Za-z0-9]*"
-		  
-		  result = re.Search(reference)
-		  
-		  If result = Nil Then Return False // Not in proper format
-		  
-		  verse = CDbl(result.SubExpressionString(1)) // Numeric portion
-		  aix = result.SubExpressionString(2) // Alpha portion (may be empty string)
-		  
-		  Return True
-		Catch ex
-		  Return False // likely result is Nil or something messed up in the Search
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub TestLookup(ref As String)
-		  Dim s As String
-		  Dim i As Integer
-		  
-		  If Mid(ref, 2, 1) = " " Then ref = Left(ref, 1) + Mid(ref, 3)
-		  ref = ReplaceAll(ref, ":", " ")
-		  ref = ReplaceAll(ref, "-", " ")
-		  
-		  If Len(ref) = 0 Then
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/empty")
-		    Return
-		  End If
-		  
-		  ' --- Find version ---
-		  s = NthField(ref, " ", CountFields(ref, " "))
-		  If Left(s, 1) = "(" Then
-		    s = Lowercase(Mid(s, 2, s.Len-2))
-		    i = 0
-		    While i < pop_scr_version.ListCount
-		      If InStr(Lowercase(pop_scr_version.List(i)), s) > 0 Then
-		        pop_scr_version.ListIndex = i
-		        i = pop_scr_version.ListCount
-		      End If
-		      i = i + 1
-		    Wend
-		    If i = pop_scr_version.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/version", s)
-		      Return
-		    End If
-		  End If
-		  
-		  ' --- Find book ---
-		  s = NthField(ref, " ", 1)
-		  If s.Len > 0 Then
-		    i = 0
-		    While i < lst_scr_ot.ListCount
-		      If InStr(Lowercase(ReplaceAll(lst_scr_ot.List(i), " ", "")), Lowercase(s)) = 1 Then
-		        lst_scr_ot.ListIndex = i
-		        i = lst_scr_ot.ListCount
-		      End If
-		      i = i + 1
-		    Wend
-		    If i = lst_scr_ot.ListCount Then
-		      i = 0
-		      While i < lst_scr_nt.ListCount
-		        If InStr(Lowercase(ReplaceAll(lst_scr_nt.List(i), " ", "")), Lowercase(s)) = 1 Then
-		          lst_scr_nt.ListIndex = i
-		          i = lst_scr_nt.ListCount
-		        End If
-		        i = i + 1
-		      Wend
-		      If i = lst_scr_nt.ListCount Then
-		        InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", s)
-		        Return
-		      End If
-		    End If
-		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/book", "")
-		    Return
-		  End If
-		  
-		  ' --- Find chapter ---
-		  s = NthField(ref, " ", 2)
-		  If s.Len > 0 Then
-		    i = s.Val
-		    If i <= 0 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", s)
-		      Return
-		    ElseIf i > lst_scr_chapter.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", s)
-		      Return
-		    End If
-		    lst_scr_chapter.ListIndex = i - 1
-		    lst_scr_to_verse.ListIndex = lst_scr_to_verse.ListCount - 1
-		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/chapter", "")
-		    Return
-		  End If
-		  
-		  ' --- Find from verse
-		  s = NthField(ref, " ", 3)
-		  If s.Len > 0 Then
-		    i = Val(s)
-		    If i <= 0 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", s)
-		      Return
-		    ElseIf i > lst_scr_from_verse.ListCount Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", s)
-		      Return
-		    End If
-		    lst_scr_from_verse.ListIndex = i - 1
-		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse", "")
-		    Return
-		  End If
-		  
-		  ' --- Find to verse
-		  s = NthField(ref, " ", 4)
-		  If s.Len > 0 Then
-		    i = Val(s)
-		    If i = 0 Then
-		      ' There was probably no verse specified
-		    ElseIf i < lst_scr_from_verse.ListIndex+1 Then
-		      InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range", s)
-		      Return
-		    Else
-		      If i > lst_scr_to_verse.ListCount Then i = lst_scr_to_verse.ListCount
-		      lst_scr_to_verse.ListIndex = i - 1
-		    End If
-		  Else
-		    InputBox.Message App.T.Translate("scripture_lookup/bad_reference/verse_range", "")
-		    Return
-		  End If
-		  
-		  BuildScripture
-		  Close
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Sub ChangeBible(newBible As iBible)
-		  App.DebugWriter.Write "ScripturePickerWindow.ChangeBible", 4
+		  //++
+		  // Part of iScripturePicker Interface
+		  //--
 		  //
 		  // Store the new bible
 		  //
@@ -1976,6 +1379,8 @@ End
 
 	#tag Method, Flags = &h0
 		Sub FormatAsParagraph(useParagraphFormat As Boolean)
+		  // Part of the iScripturePicker interface.
+		  
 		  PropertiesUpdating = True
 		  rad_format_paragraph.Value = useParagraphFormat
 		  rad_format_verse.Value = Not useParagraphFormat
@@ -2095,23 +1500,7 @@ End
 
 
 	#tag Property, Flags = &h21
-		Private Initializing As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
 		Private PresentationIsRunning As Boolean = False
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Node As XmlNode
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected NumNTBooks As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected NumOTBooks As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -2120,10 +1509,6 @@ End
 
 	#tag Property, Flags = &h1
 		Protected PresentMode As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected ReturnValue As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -2182,6 +1567,7 @@ End
 		#tag Setter
 			Set
 			btn_insert.Visible = value
+			btn_insert.Enabled = value
 			PresentationIsRunning = value
 			End Set
 		#tag EndSetter
@@ -2189,10 +1575,17 @@ End
 	#tag EndComputedProperty
 
 	#tag Property, Flags = &h1
+		#tag Note
+			Used by EnableUI/DisableUI to store the controls affected
+		#tag EndNote
 		Protected EnabledControls() As RectControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
+		#tag Note
+			Flag to controls that a programmatic update is in progress,
+			not one triggered by direct user interaction
+		#tag EndNote
 		Protected PropertiesUpdating As Boolean
 	#tag EndProperty
 
@@ -2201,14 +1594,14 @@ End
 
 #tag Bindings
 	#tag BeginBinding
-		SourceItem = 8
-		DestinationItem = 7
+		SourceItem = 9
+		DestinationItem = 8
 		ItemType = bindListBoxes
 		ItemDescription = Notify lst_scr_ot when lst_scr_nt has a selection
 	#tag EndBinding
 	#tag BeginBinding
-		SourceItem = 7
-		DestinationItem = 8
+		SourceItem = 8
+		DestinationItem = 9
 		ItemType = bindListBoxes
 		ItemDescription = Notify lst_scr_nt when lst_scr_ot has a selection
 	#tag EndBinding
@@ -2216,6 +1609,7 @@ End
 #tag Events btn_done
 	#tag Event
 		Sub Action()
+		  App.DebugWriter.Write "ScripturePickerWindow.btn_done.Action"
 		  SendCommand(ScripturePickerController.cmdDone)
 		End Sub
 	#tag EndEvent
@@ -2278,13 +1672,24 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events btn_quick_lookup
+	#tag Event
+		Sub Action()
+		  Try
+		    SendCommand(ScripturePickerController.cmdQuickLookup, edt_quick_lookup.Text)
+		  Catch e As BibleRefException
+		    InputBox.Message e.Message
+		  End Try
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events lst_scr_ot
 	#tag Event
 		Sub Change()
 		  If Me.ListIndex = -1 Then Return
 		  If Me.CellTag(Me.ListIndex, 0) = ActiveBookNumber Then Return
 		  
-		  BookSelected (Me.CellTag(Me.ListIndex, 0))
+		  BookSelected(Me.CellTag(Me.ListIndex, 0))
 		  
 		End Sub
 	#tag EndEvent
@@ -2323,24 +1728,6 @@ End
 		    lst_scr_to_verse.ListIndex = newSel
 		  End If
 		  
-		  PassageChanged
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events lst_scr_to_verse
-	#tag Event
-		Sub Change()
-		  Dim NewSel As Integer
-		  NewSel = Me.ListIndex
-		  
-		  If NewSel = -1 Then Return // List maintenance in progress
-		  If NewSel = ActiveThruVerse Then Return
-		  
-		  // If a value less than ActiveFromVerse is selected, move it also
-		  If NewSel < ActiveFromVerse Then
-		    ActiveFromVerse = NewSel // Set first to keep Change from firing
-		    lst_scr_from_verse.ListIndex = NewSel
-		  End If
 		  PassageChanged
 		End Sub
 	#tag EndEvent
@@ -2404,7 +1791,9 @@ End
 #tag Events btn_insert
 	#tag Event
 		Sub Action()
-		  BuildScripture(True)
+		  // Insert Button becomes default
+		  SendCommand(ScripturePickerController.cmdLiveDisplay)
+		  Me.Default = True
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -2412,17 +1801,25 @@ End
 	#tag Event
 		Sub Action()
 		  SendCommand(ScripturePickerController.cmdAddToSet)
+		  Me.Default = True
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_quick_lookup
+#tag Events lst_scr_to_verse
 	#tag Event
-		Sub Action()
-		  Try
-		    SendCommand(ScripturePickerController.cmdQuickLookup, edt_quick_lookup.Text)
-		  Catch e As BibleRefException
-		    InputBox.Message e.Message
-		  End Try
+		Sub Change()
+		  Dim NewSel As Integer
+		  NewSel = Me.ListIndex
+		  
+		  If NewSel = -1 Then Return // List maintenance in progress
+		  If NewSel = ActiveThruVerse Then Return
+		  
+		  // If a value less than ActiveFromVerse is selected, move it also
+		  If NewSel < ActiveFromVerse Then
+		    ActiveFromVerse = NewSel // Set first to keep Change from firing
+		    lst_scr_from_verse.ListIndex = NewSel
+		  End If
+		  PassageChanged
 		End Sub
 	#tag EndEvent
 #tag EndEvents

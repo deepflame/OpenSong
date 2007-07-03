@@ -25,8 +25,8 @@ Implements bindingInterface,listSelectionNotificationReceiver
 	#tag Method, Flags = &h0
 		Sub selectionChanged()
 		  // Part of the listSelectionNotificationReceiver interface.
-		  System.DebugLog "bindListBoxes.selectionChanged: Source is " + SourceListbox.Name + ":" + CStr(SourceListbox.ListIndex)
-		  System.DebugLog "bindListBoxes.selectionChanged: Destination is " + DestListBox.Name + ": " + CStr(DestListbox.ListIndex)
+		  'System.DebugLog "bindListBoxes.selectionChanged: Source is " + SourceListbox.Name + ":" + CStr(SourceListbox.ListIndex)
+		  'System.DebugLog "bindListBoxes.selectionChanged: Destination is " + DestListBox.Name + ": " + CStr(DestListbox.ListIndex)
 		  If SourceListbox.ListIndex = -1 Then Return
 		  DestListBox.ListIndex = -1
 		End Sub

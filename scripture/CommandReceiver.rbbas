@@ -1,13 +1,7 @@
 #tag Interface
-Protected Interface ScriptureReceiver
+Protected Interface CommandReceiver
 	#tag Method, Flags = &h0
-		Sub ScriptureSelected(scripture As XmlNode)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub LiveDisplay(slide As XmlNode)
+		Sub CommandNotification(command As String, notifier As CommandNotifier, parameter As Variant)
 		  
 		End Sub
 	#tag EndMethod

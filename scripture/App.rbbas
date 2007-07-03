@@ -57,7 +57,7 @@ Inherits Application
 		    '++JRC
 		    DebugWriter.Enabled = True
 		    DebugWriter.AppendLog = False
-		    DebugWriter.Level = 3
+		    DebugWriter.Level = 4
 		    '--
 		  Else
 		    DebugWriter.Enabled = (System.EnvironmentVariable("OPENSONGDEBUG") = "True")

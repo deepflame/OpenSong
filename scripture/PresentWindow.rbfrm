@@ -1,5 +1,5 @@
 #tag Window
-Begin Window PresentWindow
+Begin Window PresentWindow Implements ScriptureReceiver
    BackColor       =   0
    Backdrop        =   0
    BalloonHelp     =   ""
@@ -30,7 +30,7 @@ Begin Window PresentWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   0
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   302
       HelpTag         =   ""
@@ -42,29 +42,41 @@ Begin Window PresentWindow
       LockRight       =   "True"
       LockTop         =   "True"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   302
       BehaviorIndex   =   0
       Begin Timer timerAdvance
          ControlOrder    =   1
+         Height          =   32
          Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
          Left            =   248
          Mode            =   0
          Period          =   10000
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   248
+         Width           =   32
          BehaviorIndex   =   1
       End
       Begin Timer timerTransition
          ControlOrder    =   2
+         Height          =   32
          Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
          Left            =   204
          Mode            =   0
          Period          =   125
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   248
+         Width           =   32
          BehaviorIndex   =   2
       End
    End
@@ -206,6 +218,7 @@ End
 		  Border = CalcBorderSize(g)
 		  GraphicsX.DrawFontString g, alert, Border*3, Border, _
 		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign
+		  Return
 		End Sub
 	#tag EndMethod
 
@@ -439,7 +452,7 @@ End
 		  Const KEY_DOWN=&h7d
 		  Const KEY_ESCAPE = 27
 		  '
-		  'Temporary hack until the command arguments are fixed 
+		  'Temporary hack until the command arguments are fixed
 		  '
 		  Dim Key As String
 		  Key = ChrB(Action)
@@ -1421,78 +1434,26 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Function DoPickScripture() As Boolean
-		  Dim newGroup As XmlNode
-		  Dim tempMode As String
-		  Dim temp As String
-		  Dim xNewSlide As XmlNode
-		  Dim newSlide As Integer
-		  Dim i As Integer
+		  App.DebugWriter.Write "PresentWindow.DoPickScripture: Enter", 4
 		  
-		  ' Get a reference
-		  newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		  tempMode = Mode
-		  If ScripturePickerWindow.Popup(newGroup, True) Then
-		    App.MouseCursor = WatchCursor
-		    
-		    ' --- Move to where we need to be ---
-		    temp = SmartML.GetValue(newGroup, "@name")
-		    Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
-		      currentSlide = currentSlide + 1
-		      XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
-		    Loop
-		    
-		    If HelperActive Then
-		      xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
-		      i = 0
-		      While xNewSlide <> Nil
-		        PresentHelperWindow.InsertItem xNewSlide, currentSlide + i - 1
-		        xNewSlide = xNewSlide.NextSibling
-		        i = i + 1
-		      Wend
-		    End If
-		    
-		    ' Insert blank slides if needed
-		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
-		      newSlide = CurrentSlide
-		      xNewSlide = XCurrentSlide
-		      If XCurrentSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.NextSibling, "@name") <> "" Then
-		        xNewSlide = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		        xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		        SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
-		        SmartML.SetValue xNewSlide, "body", ""
-		        If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
-		      End If
-		      If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
-		        xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
-		        xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
-		        SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
-		        SmartML.SetValue xNewSlide, "body", ""
-		        If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide - 1
-		        CurrentSlide = CurrentSlide + 1
-		        XCurrentSlide = xNewSlide
-		      End If
-		    End If
-		    
-		    If HelperActive Then
-		      App.MouseCursor = Nil
-		      PresentHelperWindow.ScrollTo currentSlide
-		    Else
-		      App.MouseCursor = Nil
-		      ResetPaint XCurrentSlide
-		    End If
-		    Return True
-		  Else
-		    ' user closed the window; the first part of this if will never happen when the scripture chooser is running live; maybe we'll find a way to enable it again.
-		    newGroup.Parent.RemoveChild newGroup
-		    Mode = tempMode
-		    If HelperActive Then
-		      PresentHelperWindow.SetMode Mode
-		    Else
-		      ResetPaint XCurrentSlide
-		    End If
-		    Return True
-		  End If
+		  Dim w As ScripturePickerWindow
 		  
+		  Dim c As ScripturePickerController
+		  
+		  c = New ScripturePickerController
+		  c.registerScriptureReceiver Self
+		  
+		  w = New ScripturePickerWindow(c)
+		  savedMode = Mode
+		  w.Live = True
+		  w.ShowModal
+		  w = Nil
+		  c.unregisterScriptureReceiver Self
+		  c = Nil
+		  Mode = savedMode
+		  ResetPaint XCurrentSlide
+		  App.DebugWriter.Write "PresentWindow.DoPickScripture: Exit", 4
+		  Return True
 		End Function
 	#tag EndMethod
 
@@ -1589,12 +1550,12 @@ End
 		      App.MouseCursor = Nil
 		      ResetPaint XCurrentSlide
 		    End If
-		    Return True
+		    
 		  Else
 		    ' must have cancelled the picker window
 		    newGroup.Parent.RemoveChild newGroup
-		    Return True
 		  End If
+		  Return True
 		End Function
 	#tag EndMethod
 
@@ -1608,6 +1569,85 @@ End
 		  End If
 		  
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ScriptureSelected(scripture As XmlNode)
+		  // Part of the ScriptureReceiver interface.
+		  Dim newGroup As XmlNode
+		  Dim newSetItem As XmlNode
+		  Dim tempMode As String
+		  Dim temp As String
+		  Dim xNewSlide As XmlNode
+		  Dim newSlide As Integer
+		  Dim i As Integer
+		  
+		  ' Get a reference
+		  newSetItem = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
+		  tempMode = Mode
+		  App.MouseCursor = WatchCursor
+		  newGroup = SmartML.ReplaceWithImportNode(newSetItem, scripture)
+		  
+		  ' --- Move to where we need to be ---
+		  temp = SmartML.GetValue(newGroup, "@name")
+		  Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
+		    currentSlide = currentSlide + 1
+		    XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
+		  Loop
+		  
+		  If HelperActive Then
+		    xNewSlide = SmartML.GetNode(newGroup, "slides").FirstChild
+		    i = 0
+		    While xNewSlide <> Nil
+		      PresentHelperWindow.InsertItem xNewSlide, currentSlide + i - 1
+		      xNewSlide = xNewSlide.NextSibling
+		      i = i + 1
+		    Wend
+		  End If
+		  
+		  ' Insert blank slides if needed
+		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks") Then
+		    newSlide = CurrentSlide
+		    xNewSlide = XCurrentSlide
+		    If XCurrentSlide.Parent.Parent.NextSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.NextSibling, "@name") <> "" Then
+		      xNewSlide = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
+		      xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
+		      SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
+		      SmartML.SetValue xNewSlide, "body", ""
+		      If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
+		    End If
+		    If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
+		      xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
+		      xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
+		      SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
+		      SmartML.SetValue xNewSlide, "body", ""
+		      If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide - 1
+		      CurrentSlide = CurrentSlide + 1
+		      XCurrentSlide = xNewSlide
+		    End If
+		  End If
+		  
+		  If HelperActive Then
+		    App.MouseCursor = Nil
+		    PresentHelperWindow.ScrollTo currentSlide
+		  Else
+		    App.MouseCursor = Nil
+		    ResetPaint XCurrentSlide
+		  End If
+		  Return
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub LiveDisplay(slide As XmlNode)
+		  //++
+		  // Part of ScriptureReceiver interface
+		  // Called to display a verse slide without adding it
+		  // to the active set
+		  //--
+		  Mode = "N"
+		  ResetPaint(slide)
+		End Sub
 	#tag EndMethod
 
 
@@ -1745,6 +1785,10 @@ End
 
 	#tag Property, Flags = &h0
 		XCurrentSlide As XmlNode
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected savedMode As String
 	#tag EndProperty
 
 

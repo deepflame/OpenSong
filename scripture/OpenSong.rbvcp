@@ -13,6 +13,7 @@ Window=PresentWindow;PresentWindow.rbfrm;&hBBCC7715;&h0;false
 Window=PrintWindow;PrintWindow.rbfrm;&hBBC741F6;&h0;false
 Module=Globals;Classes/Globals.rbbas;&hBFB0E25A;&hBC8F0540;false
 Folder=GUI;Classes/GUI;&h2F379AB5;&hBC8F0540;false
+Class=HighlightList;Classes/GUI/HighlightList.rbbas;&h450119B6;&h2F379AB5;false
 Class=SButton;Classes/GUI/SButton.rbbas;&hBC828120;&h2F379AB5;false
 Class=SButtonPopup;Classes/GUI/SButtonPopup.rbbas;&hBC872C7E;&h2F379AB5;false
 Class=SColorCanvas;Classes/GUI/SColorCanvas.rbbas;&hBC90901B;&h2F379AB5;false

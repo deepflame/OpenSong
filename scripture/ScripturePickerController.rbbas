@@ -23,6 +23,9 @@ Implements ScriptureNotifier
 		  Case cmdAddToSet
 		    CompileScriptureAndNotify
 		    
+		  Case cmdLiveDisplay
+		    CompileScriptureAndDisplay
+		    
 		  Case cmdFormatChanged
 		    UpdateFormat sender
 		    
@@ -224,57 +227,11 @@ Implements ScriptureNotifier
 
 	#tag Method, Flags = &h1
 		Protected Sub CompileScriptureAndNotify()
-		  //
-		  // Take the current settings and build a scripture slide group to pass
-		  //
-		  Dim xDoc As New XmlDocument
-		  Dim newGroup As XmlElement
-		  Dim xSlide As XmlElement
-		  Dim slides As XmlNode
-		  Dim ref As String
-		  Dim verses() As String
-		  Dim slideBody As String
-		  Dim startVerse As String
-		  Dim endVerse As String
-		  Dim sep As String
-		  Dim currVerse As Integer
-		  Dim cite As String
+		  Dim newGroup As XmlNode
 		  
 		  NotifyDisableUI
-		  xDoc.AppendChild(xDoc.CreateElement("slide_group"))
-		  newGroup = xdoc.DocumentElement
 		  
-		  newGroup.SetAttribute("type", "scripture")
-		  
-		  cite = BuildCitation
-		  newGroup.SetAttribute("name", cite)
-		  SmartML.SetValue(newGroup, "title", cite)
-		  SmartML.SetValue(newGroup, "subtitle", CurrentBible.Name)
-		  
-		  verses = CurrentBible.GetPassage(CurrentBook, CurrentChapter, CurrentFromVerse, _
-		  CurrentThruVerse, ShowVerseNumbers)
-		  
-		  currVerse = 0
-		  
-		  If FormatParagraph Then
-		    sep = EndOfLine
-		  Else
-		    sep = " "
-		  End If
-		  
-		  slides = SmartML.InsertChild(newGroup, "slides", 1)
-		  While currVerse <= UBound(verses)
-		    xSlide = xDoc.CreateElement("slide")
-		    slideBody = ""
-		    For i As Integer = 1 To VersesPerSlide
-		      If currVerse > UBound(verses) Then Exit For
-		      If slideBody.Len > 0 Then slideBody = slideBody + sep
-		      slideBody = slideBody + verses(currVerse)
-		      currVerse = currVerse + 1
-		    Next
-		    SmartML.SetValue(xSlide, "body", slideBody)
-		    slides.AppendChild xSlide
-		  Wend
+		  newGroup = CompileSlideGroup
 		  
 		  NotifyScriptureReceivers(newGroup)
 		  
@@ -469,6 +426,90 @@ Implements ScriptureNotifier
 		  SaveState
 		  sender.CloseScripturePicker
 		  unregisterObserver sender
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function CompileSlideGroup() As XmlNode
+		  //
+		  // Take the current settings and build a scripture slide group to pass
+		  //
+		  Dim xDoc As New XmlDocument
+		  Dim newGroup As XmlElement
+		  Dim xSlide As XmlElement
+		  Dim slides As XmlNode
+		  Dim ref As String
+		  Dim verses() As String
+		  Dim slideBody As String
+		  Dim startVerse As String
+		  Dim endVerse As String
+		  Dim sep As String
+		  Dim currVerse As Integer
+		  Dim cite As String
+		  
+		  xDoc.AppendChild(xDoc.CreateElement("slide_group"))
+		  newGroup = xdoc.DocumentElement
+		  
+		  newGroup.SetAttribute("type", "scripture")
+		  
+		  cite = BuildCitation
+		  newGroup.SetAttribute("name", cite)
+		  SmartML.SetValue(newGroup, "title", cite)
+		  SmartML.SetValue(newGroup, "subtitle", CurrentBible.Name)
+		  
+		  verses = CurrentBible.GetPassage(CurrentBook, CurrentChapter, CurrentFromVerse, _
+		  CurrentThruVerse, ShowVerseNumbers)
+		  
+		  currVerse = 0
+		  
+		  If FormatParagraph Then
+		    sep = EndOfLine
+		  Else
+		    sep = " "
+		  End If
+		  
+		  slides = SmartML.InsertChild(newGroup, "slides", 1)
+		  While currVerse <= UBound(verses)
+		    xSlide = xDoc.CreateElement("slide")
+		    slideBody = ""
+		    For i As Integer = 1 To VersesPerSlide
+		      If currVerse > UBound(verses) Then Exit For
+		      If slideBody.Len > 0 Then slideBody = slideBody + sep
+		      slideBody = slideBody + verses(currVerse)
+		      currVerse = currVerse + 1
+		    Next
+		    SmartML.SetValue(xSlide, "body", slideBody)
+		    slides.AppendChild xSlide
+		  Wend
+		  
+		  Return newGroup
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub CompileScriptureAndDisplay()
+		  Dim newGroup As XmlNode
+		  Dim firstSlide As XmlNode
+		  
+		  NotifyDisableUI
+		  newGroup = CompileSlideGroup
+		  If newGroup <> Nil Then
+		    firstSlide = SmartML.GetNode(newGroup, "slides/slide")
+		    If firstSlide <> Nil Then
+		      NotifyLiveDisplay(firstSlide)
+		    End If
+		  End If
+		  CurrentFromVerse = CurrentFromVerse + Min(VersesPerSlide, CurrentThruVerse - CurrentFromVerse)
+		  NotifyPassageChanged
+		  NotifyEnableUI
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub NotifyLiveDisplay(slide As XmlNode)
+		  For Each r As ScriptureReceiver in Receivers
+		    r.LiveDisplay(slide)
+		  Next
 		End Sub
 	#tag EndMethod
 

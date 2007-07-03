@@ -25,25 +25,6 @@ Begin Window SearchWindow
    Visible         =   "True"
    Width           =   477
    Begin SEditField edt_search
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   80
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   &h000000
-                      =   "True"
-                      =   "True"
-                      =   "True"
-                      =   0
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   ""
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
@@ -97,7 +78,7 @@ Begin Window SearchWindow
       ControlOrder    =   1
       Default         =   "True"
       DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -113,7 +94,7 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   114
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   66
       BehaviorIndex   =   1
    End
@@ -130,7 +111,7 @@ Begin Window SearchWindow
       DataSource      =   ""
       DefaultRowHeight=   -1
       DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -161,7 +142,7 @@ Begin Window SearchWindow
       Top             =   165
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   449
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
@@ -176,7 +157,7 @@ Begin Window SearchWindow
       ControlOrder    =   3
       Default         =   "False"
       DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -192,7 +173,7 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   367
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   67
       BehaviorIndex   =   3
    End
@@ -205,7 +186,7 @@ Begin Window SearchWindow
       ControlOrder    =   4
       Default         =   "False"
       DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -221,7 +202,7 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   367
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   67
       BehaviorIndex   =   4
    End
@@ -232,7 +213,7 @@ Begin Window SearchWindow
       Caption         =   "Match:"
       ControlOrder    =   5
       DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   83
       HelpTag         =   ""
       Index           =   -2147483648
@@ -248,65 +229,65 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   14
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   166
       BehaviorIndex   =   5
-   End
-   Begin RadioButton rad_match_exact
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Caption         =   "Exact word"
-      ControlOrder    =   6
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_match"
-      Italic          =   "False"
-      Left            =   85
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "True"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   36
-      Underline       =   "False"
-      Value           =   "True"
-      Visible         =   True
-      Width           =   139
-      BehaviorIndex   =   6
-   End
-   Begin RadioButton rad_match_begin
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Caption         =   "Begins with"
-      ControlOrder    =   7
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_match"
-      Italic          =   "False"
-      Left            =   85
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "True"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   63
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   139
-      BehaviorIndex   =   7
+      Begin RadioButton rad_match_exact
+         AutoDeactivate  =   "True"
+         BalloonHelp     =   ""
+         Bold            =   "False"
+         Caption         =   "Exact word"
+         ControlOrder    =   6
+         DisabledBalloonHelp=   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_match"
+         Italic          =   "False"
+         Left            =   85
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "True"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   36
+         Underline       =   "False"
+         Value           =   "True"
+         Visible         =   "True"
+         Width           =   139
+         BehaviorIndex   =   6
+      End
+      Begin RadioButton rad_match_begin
+         AutoDeactivate  =   "True"
+         BalloonHelp     =   ""
+         Bold            =   "False"
+         Caption         =   "Begins with"
+         ControlOrder    =   7
+         DisabledBalloonHelp=   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_match"
+         Italic          =   "False"
+         Left            =   85
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "True"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   63
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   139
+         BehaviorIndex   =   7
+      End
    End
    Begin StaticText lbl_search_example
       AutoDeactivate  =   "True"
@@ -316,7 +297,7 @@ Begin Window SearchWindow
       DataField       =   ""
       DataSource      =   ""
       DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -336,7 +317,7 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   144
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   373
       BehaviorIndex   =   8
    End
@@ -347,7 +328,7 @@ Begin Window SearchWindow
       Caption         =   "Verse must have:"
       ControlOrder    =   9
       DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   83
       HelpTag         =   ""
       Index           =   -2147483648
@@ -363,65 +344,65 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   14
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   176
       BehaviorIndex   =   9
-   End
-   Begin RadioButton rad_words_any
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Caption         =   "Any word"
-      ControlOrder    =   10
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_words"
-      Italic          =   "False"
-      Left            =   276
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   36
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   105
-      BehaviorIndex   =   10
-   End
-   Begin RadioButton rad_words_all
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Caption         =   "All words"
-      ControlOrder    =   11
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   19
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_words"
-      Italic          =   "False"
-      Left            =   276
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   64
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   105
-      BehaviorIndex   =   11
+      Begin RadioButton rad_words_any
+         AutoDeactivate  =   "True"
+         BalloonHelp     =   ""
+         Bold            =   "False"
+         Caption         =   "Any word"
+         ControlOrder    =   10
+         DisabledBalloonHelp=   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_words"
+         Italic          =   "False"
+         Left            =   276
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   36
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   105
+         BehaviorIndex   =   10
+      End
+      Begin RadioButton rad_words_all
+         AutoDeactivate  =   "True"
+         BalloonHelp     =   ""
+         Bold            =   "False"
+         Caption         =   "All words"
+         ControlOrder    =   11
+         DisabledBalloonHelp=   ""
+         Enabled         =   "True"
+         Height          =   19
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_words"
+         Italic          =   "False"
+         Left            =   276
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   64
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   105
+         BehaviorIndex   =   11
+      End
    End
 End
 #tag EndWindow

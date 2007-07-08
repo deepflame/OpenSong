@@ -31,7 +31,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Caption         =   "Done"
       ControlOrder    =   0
       Default         =   "False"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -47,7 +47,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   185
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   0
    End
@@ -56,7 +56,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   "Quick Lookup"
       ControlOrder    =   1
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   75
       HelpTag         =   ""
       Index           =   -2147483648
@@ -72,7 +72,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   360
       BehaviorIndex   =   1
       Begin StaticText lbl_quick_reference
@@ -81,7 +81,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          ControlOrder    =   2
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -101,7 +101,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   10
          Top             =   36
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   65
          BehaviorIndex   =   2
       End
@@ -111,7 +111,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          ControlOrder    =   3
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   12
          HelpTag         =   ""
          Index           =   -2147483648
@@ -131,7 +131,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   9
          Top             =   60
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   210
          BehaviorIndex   =   3
       End
@@ -184,7 +184,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Caption         =   "Lookup"
          ControlOrder    =   7
          Default         =   "False"
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
@@ -200,7 +200,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   10
          Top             =   35
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   69
          BehaviorIndex   =   5
       End
@@ -212,7 +212,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Caption         =   "Search"
       ControlOrder    =   4
       Default         =   "False"
-      Enabled         =   "False"
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -228,7 +228,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   34
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   6
    End
@@ -237,7 +237,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   ""
       ControlOrder    =   6
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   388
       HelpTag         =   ""
       Index           =   -2147483648
@@ -253,7 +253,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   12
       Top             =   91
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   200
       BehaviorIndex   =   7
       Begin HighlightList lst_scr_ot
@@ -446,7 +446,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   "Version"
       ControlOrder    =   12
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   55
       HelpTag         =   ""
       Index           =   -2147483648
@@ -462,16 +462,16 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   11
       Top             =   218
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   145
-      BehaviorIndex   =   13
+      BehaviorIndex   =   12
       Begin PopupMenu pop_scr_version
          AutoDeactivate  =   "True"
          Bold            =   "False"
          ControlOrder    =   13
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -489,9 +489,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   12
          Top             =   238
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   95
-         BehaviorIndex   =   14
+         BehaviorIndex   =   13
       End
    End
    Begin GroupBox grp_options_verses_per_slide
@@ -499,7 +499,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   "Verses Per Slide"
       ControlOrder    =   14
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   50
       HelpTag         =   ""
       Index           =   -2147483648
@@ -515,15 +515,15 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   11
       Top             =   283
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   145
-      BehaviorIndex   =   15
+      BehaviorIndex   =   14
       Begin RadioButton rad_verses_one
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   1
          ControlOrder    =   15
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -540,16 +540,16 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   303
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   35
-         BehaviorIndex   =   16
+         BehaviorIndex   =   15
       End
       Begin RadioButton rad_verses_two
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   2
          ControlOrder    =   16
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -566,16 +566,16 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   303
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   35
-         BehaviorIndex   =   17
+         BehaviorIndex   =   16
       End
       Begin RadioButton rad_verses_three
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   3
          ControlOrder    =   17
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -592,9 +592,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   303
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   35
-         BehaviorIndex   =   18
+         BehaviorIndex   =   17
       End
    End
    Begin GroupBox grp_options_format
@@ -602,7 +602,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Bold            =   "False"
       Caption         =   "Format"
       ControlOrder    =   18
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   70
       HelpTag         =   ""
       Index           =   -2147483648
@@ -618,15 +618,15 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   11
       Top             =   343
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   145
-      BehaviorIndex   =   19
+      BehaviorIndex   =   18
       Begin RadioButton rad_format_paragraph
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   "Paragraph"
          ControlOrder    =   19
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -643,16 +643,16 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   363
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   20
+         BehaviorIndex   =   19
       End
       Begin RadioButton rad_format_verse
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   "Verse"
          ControlOrder    =   20
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -669,9 +669,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Top             =   383
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   21
+         BehaviorIndex   =   20
       End
    End
    Begin Checkbox chk_shownumbers
@@ -681,7 +681,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   21
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -698,9 +698,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Top             =   426
       Underline       =   ""
       Value           =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   145
-      BehaviorIndex   =   22
+      BehaviorIndex   =   21
    End
    Begin PushButton btn_insert
       AutoDeactivate  =   "True"
@@ -727,7 +727,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "False"
       Width           =   69
-      BehaviorIndex   =   23
+      BehaviorIndex   =   22
    End
    Begin PushButton btn_add
       AutoDeactivate  =   "True"
@@ -736,7 +736,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Caption         =   "Add"
       ControlOrder    =   23
       Default         =   "True"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -752,9 +752,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   24
+      BehaviorIndex   =   23
    End
    Begin HighlightList lst_scr_to_verse
       AutoDeactivate  =   "True"
@@ -800,7 +800,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   12
+      BehaviorIndex   =   24
    End
    Begin EditField edt_preview
       AcceptTabs      =   "False"
@@ -812,7 +812,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   25
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   71
       HelpTag         =   ""
@@ -840,7 +840,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Top             =   491
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   530
       BehaviorIndex   =   25
    End
@@ -850,7 +850,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -870,7 +870,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   260
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   10
       BehaviorIndex   =   26
    End
@@ -880,7 +880,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   27
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -900,7 +900,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   260
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   10
       BehaviorIndex   =   27
    End
@@ -910,7 +910,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   28
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -930,7 +930,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   12
       Top             =   150
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   28
    End
@@ -940,7 +940,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       ControlOrder    =   29
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -960,7 +960,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       Top             =   69
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   29
    End

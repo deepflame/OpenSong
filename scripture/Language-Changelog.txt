@@ -171,3 +171,4 @@ general_settings/ccli (Modified)
 scripture_lookup/select_file
 module/generate_index
 module/generate_error
+scripture_search/lst_result renamed to scripture_search/result

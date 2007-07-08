@@ -545,7 +545,6 @@ Implements iBible
 		  //--
 		  Dim newFile as FolderItem
 		  Dim out as TextOutputStream
-		  'Dim node as XMLNode
 		  Dim BookNode, ChapNode, VerseNode As XmlNode
 		  Dim sSplit(), verse, location, fileName, sBook, sChap, sVer as String
 		  Dim reg as RegEx
@@ -613,11 +612,6 @@ Implements iBible
 		  // The structure for XML_NAB isn't quite the same
 		  // as the original, and the first two children define the OT and NT books
 		  //--
-		  'if XMLTYPE= XML_ZEFANIA then
-		  'node= Scripture.xql("/XMLBIBLE/BIBLEBOOK[1]").Item(0)
-		  'else
-		  'node= Scripture.Child(0).Child(0)
-		  'end if
 		  Select Case XMLTYPE
 		  Case XML_ZEFANIA
 		    booknode = Scripture.xql("/XMLBIBLE/BIBLEBOOK[1]").Item(0)
@@ -629,8 +623,6 @@ Implements iBible
 		  
 		  'used to remove puncuation and xml tags
 		  reg= New RegEx
-		  'reg.SearchPattern= "[^a-zA-Z0-9\s]+"
-		  // Try a different search pattern that is more UTF-8 friendly.
 		  reg.SearchPattern = "[^\w\s]+" ' Non-word, non-space
 		  reg.ReplacementPattern=""
 		  reg.Options.ReplaceAllMatches=true
@@ -712,37 +704,18 @@ Implements iBible
 		          next x
 		        end if
 		        
-		        'if node.NextSibling=nil then
-		        'node=node.Parent
-		        'exit
-		        'else
-		        'node=node.NextSibling
-		        'end if
 		        VerseNode = VerseNode.NextSibling
 		        
 		        ver=ver+1
 		        sVer= Str(ver)
 		      wend
 		      
-		      'if node.NextSibling=nil then
-		      'node=node.Parent
-		      'exit
-		      'else
-		      'node=node.NextSibling
-		      'end if
 		      ChapNode = ChapNode.NextSibling
-		      
 		      chap=chap+1
 		      sChap= Str(chap)
 		    wend
 		    
-		    'if node.NextSibling=nil then
-		    'exit
-		    'else
-		    'node=node.NextSibling
-		    'end if
 		    BookNode = BookNode.NextSibling
-		    
 		    book=book+1
 		    sBook= Str(book)
 		  wend
@@ -775,9 +748,6 @@ Implements iBible
 		Exception excep
 		  out.Close
 		  newFile.delete
-		  
-		  'reDim index as IndexEntry(-1)
-		  'reDim notIndexed as String(-1)
 		  
 		  InputBox.Message App.T.Translate("bible/errors/index_generation")
 		  CanSearch = False
@@ -2297,6 +2267,50 @@ Implements iBible
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetCitation(bookNumber As Integer, chapterNumber As Integer, startVerse As Integer, endVerse As Integer = -1) As String
+		  // Part of the iBible interface
+		  
+		  //++
+		  // Given a specific Bible reference in relative references, return
+		  // a textual citation for that reference.
+		  // For example, GetCitation(1, 1, 1, 2) would return
+		  // "Genesis 1:1-2" for KJV
+		  // If endVerse is omitted or < 1, assume the same as startVerse
+		  //
+		  // Ed Palmer, July 2007
+		  //--
+		  
+		  Dim sVerseStart As String
+		  Dim sVerseEnd As String
+		  Dim cite As String
+		  
+		  If endVerse < 1 Then endVerse = startVerse
+		  If Not ValidateCitation(bookNumber, chapterNumber, startVerse, endVerse) Then
+		    Return ""
+		  End If
+		  
+		  cite = GetBookNameFromStdBookNumber(bookNumber)
+		  cite = cite + " " + CStr(chapterNumber) + ":"
+		  GetVerseRange(bookNumber, chapterNumber, startVerse, sVerseStart, sVerseEnd)
+		  cite = cite + sVerseStart
+		  If endVerse = startVerse Then
+		    If sVerseEnd <> "" Then
+		      cite = cite + "-" + sVerseEnd
+		    End If
+		  Else
+		    GetVerseRange(bookNumber, chapterNumber, endVerse, sVerseStart, sVerseEnd)
+		    If sVerseEnd = "" Then
+		      cite = cite + ":" + sVerseStart
+		    Else
+		      cite = cite + ":" + sVerseEnd
+		    End If
+		  End If
+		  
+		  Return cite
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h1
 		#tag Note
@@ -2413,34 +2427,40 @@ Implements iBible
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ErrorCode"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

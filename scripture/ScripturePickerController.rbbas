@@ -30,7 +30,7 @@ Implements ScriptureNotifier
 		    UpdateFormat sender
 		    
 		  Case cmdSearch
-		    SearchBible sender
+		    DoSearchBible sender
 		    
 		  Case cmdDone
 		    ScripturePickerDone sender
@@ -61,7 +61,7 @@ Implements ScriptureNotifier
 		      App.DebugWriter.Write "ScripturePickerController: Got Nil loading bible " + newBible, 1
 		      Return
 		    End If
-		    CurrentBible = newiBible
+		    mCurrentBible = newiBible
 		    If Not CurrentBible.ValidateCitation(CurrentBook, CurrentChapter, CurrentFromVerse, CurrentThruVerse) Then
 		      SetDefaultPassage
 		    End If
@@ -319,12 +319,16 @@ Implements ScriptureNotifier
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub SearchBible(sender As iScripturePicker)
+		Protected Sub DoSearchBible(sender As iScripturePicker)
 		  //++
 		  // Offer the user a search window for
 		  // the currently-selected Bible
 		  //--
-		  MsgBox "Not Yet Implemented"
+		  If ActiveSearchWindow = Nil Then
+		    ActiveSearchWindow = New SearchWindow
+		  End If
+		  ActiveSearchWindow.Visible = False
+		  ActiveSearchWindow.DoSearch(self)
 		End Sub
 	#tag EndMethod
 
@@ -372,10 +376,10 @@ Implements ScriptureNotifier
 		  ShowVerseNumbers = SmartML.GetValueB(params, "last_scripture/@show_numbers", True, True)
 		  FormatParagraph = ("paragraph" = SmartML.GetValue(params, "last_scripture/@format"))
 		  
-		  CurrentBible = BibleFactory.GetBible(CurrentBibleName)
+		  mCurrentBible = BibleFactory.GetBible(CurrentBibleName)
 		  
 		  If CurrentBible Is Nil Then
-		    CurrentBible = BibleFactory.GetBible(BibleFactory.BibleList.Pop)
+		    mCurrentBible = BibleFactory.GetBible(BibleFactory.BibleList.Pop)
 		  End If
 		  
 		  Try
@@ -513,6 +517,17 @@ Implements ScriptureNotifier
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub SearchComplete(wnd As SearchWindow, result As SearchResult)
+		  CurrentBook = result.book
+		  CurrentChapter = result.chapter
+		  CurrentFromVerse = result.verse
+		  CurrentThruVerse = CurrentFromVerse
+		  NotifyPassageChanged
+		  wnd.Visible = False
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h1
 		Protected Observers() As iScripturePicker
@@ -522,8 +537,8 @@ Implements ScriptureNotifier
 		Protected Receivers() As ScriptureReceiver
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected CurrentBible As iBible
+	#tag Property, Flags = &h21
+		Private mCurrentBible As iBible
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -552,6 +567,19 @@ Implements ScriptureNotifier
 
 	#tag Property, Flags = &h1
 		Protected FormatParagraph As Boolean
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			return mCurrentBible
+			End Get
+		#tag EndGetter
+		CurrentBible As iBible
+	#tag EndComputedProperty
+
+	#tag Property, Flags = &h1
+		Protected ActiveSearchWindow As SearchWindow
 	#tag EndProperty
 
 
@@ -585,28 +613,33 @@ Implements ScriptureNotifier
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

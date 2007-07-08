@@ -231,18 +231,18 @@
 
   <scripture_search title="Search">
     <match caption="Match">
-      <exact caption="Exact"/>
-      <begin caption="Begins with"/>
+      <exact caption="E&amp;xact"/>
+      <begin caption="&amp;Begins with"/>
     </match>
     <words caption="Verse must have">
-      <all caption="All words"/>
-      <any caption="Any word"/>
+      <all caption="A&amp;ll words"/>
+      <any caption="An&amp;y word"/>
     </words>
-    <search caption="Search"/>
+    <search caption="&amp;Search"/>
     <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
-    <lst_result head1="Reference" head2="Text" />
+    <result head1="Reference" head2="Text" />
   </scripture_search>
 
   <main_menu>

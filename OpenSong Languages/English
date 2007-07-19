@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.0.0">
+<language name="English" author="Sean Lickfold" version="1.1.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -323,6 +323,7 @@
       <message>The new location for OpenSong documents will not take effect until OpenSong is restarted. You may want to copy your old OpenSong documents over to the new location first.</message>
       <changed>You selected to use a custom Documents Folder, but didn't click the change button.  Do you want to use the new folder?</changed>
       <change caption="Change"/>
+      <oldfolderdb caption="Use pre-V1.1 file cache"/>
     </documents_folder>
     <newpaint caption="Use new visual style"/>
   </general_settings>

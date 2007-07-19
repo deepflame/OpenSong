@@ -965,14 +965,12 @@ Inherits Application
 		  
 		  t = "v" +  Str(App.MajorVersion) + "." + Str(App.MinorVersion)
 		  If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion)
-		  't = t + " RC 2"
-		  If App.NonReleaseVersion > 0 Then t = t + " (BL" +  CStr(App.NonReleaseVersion) + ")"
 		  //++
 		  // If compiled with rb2006r4 or higher, this is likely a Universal Binary.
 		  // Identify the target.
 		  // There's probably a gestalt that would be a better way to do this so we can
 		  // identify a true UB vs. a target-specific binary or an Intel Mac running the UB under Rosetta.
-		  // This at least gets us in the ballpark.
+		  // This identifies the processor architecture the executable was built for, which is still useful.
 		  //--
 		  #If TargetMacOS
 		    If RBVersion >= 2006.04 Then

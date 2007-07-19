@@ -29,7 +29,7 @@ Begin Window ScripturePickerWindow
       Bold            =   "False"
       Caption         =   "Quick Lookup"
       ControlOrder    =   0
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   75
       HelpTag         =   ""
       Index           =   -2147483648
@@ -45,7 +45,7 @@ Begin Window ScripturePickerWindow
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   360
       BehaviorIndex   =   0
       Begin StaticText lbl_quick_reference
@@ -54,7 +54,7 @@ Begin Window ScripturePickerWindow
          ControlOrder    =   1
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -74,11 +74,11 @@ Begin Window ScripturePickerWindow
          TextSize        =   10
          Top             =   36
          Underline       =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   65
          BehaviorIndex   =   1
       End
-      Begin EditField edt_quick_lookup
+      Begin SEditField edt_quick_lookup
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
@@ -88,7 +88,7 @@ Begin Window ScripturePickerWindow
          ControlOrder    =   2
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          Format          =   ""
          Height          =   22
          HelpTag         =   ""
@@ -116,9 +116,9 @@ Begin Window ScripturePickerWindow
          Top             =   35
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   200
-         BehaviorIndex   =   2
+         BehaviorIndex   =   28
       End
       Begin PushButton btn_quick_lookup
          AutoDeactivate  =   "True"
@@ -127,7 +127,7 @@ Begin Window ScripturePickerWindow
          Caption         =   "Lookup"
          ControlOrder    =   3
          Default         =   "False"
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
@@ -143,9 +143,9 @@ Begin Window ScripturePickerWindow
          TextSize        =   10
          Top             =   35
          Underline       =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   69
-         BehaviorIndex   =   3
+         BehaviorIndex   =   2
       End
       Begin StaticText nte_quick_example
          AutoDeactivate  =   "True"
@@ -153,7 +153,7 @@ Begin Window ScripturePickerWindow
          ControlOrder    =   21
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   12
          HelpTag         =   ""
          Index           =   -2147483648
@@ -173,9 +173,9 @@ Begin Window ScripturePickerWindow
          TextSize        =   9
          Top             =   60
          Underline       =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   210
-         BehaviorIndex   =   4
+         BehaviorIndex   =   3
       End
    End
    Begin GroupBox grp_Books
@@ -183,7 +183,7 @@ Begin Window ScripturePickerWindow
       Bold            =   "False"
       Caption         =   ""
       ControlOrder    =   4
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   375
       HelpTag         =   ""
       Index           =   -2147483648
@@ -199,9 +199,9 @@ Begin Window ScripturePickerWindow
       TextSize        =   12
       Top             =   90
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   220
-      BehaviorIndex   =   5
+      BehaviorIndex   =   4
       Begin ListBox lst_scr_ot
          AutoDeactivate  =   "True"
          AutoHideScrollbars=   "True"
@@ -213,7 +213,7 @@ Begin Window ScripturePickerWindow
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
-         Enabled         =   True
+         Enabled         =   "True"
          EnableDrag      =   "False"
          EnableDragReorder=   "False"
          GridLinesHorizontal=   0
@@ -242,11 +242,11 @@ Begin Window ScripturePickerWindow
          Top             =   100
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   100
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
-         BehaviorIndex   =   6
+         BehaviorIndex   =   5
       End
       Begin ListBox lst_scr_nt
          AutoDeactivate  =   "True"
@@ -259,7 +259,7 @@ Begin Window ScripturePickerWindow
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
-         Enabled         =   True
+         Enabled         =   "True"
          EnableDrag      =   "False"
          EnableDragReorder=   "False"
          GridLinesHorizontal=   0
@@ -288,11 +288,11 @@ Begin Window ScripturePickerWindow
          Top             =   100
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   100
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
-         BehaviorIndex   =   7
+         BehaviorIndex   =   6
       End
    End
    Begin ListBox lst_scr_chapter
@@ -306,7 +306,7 @@ Begin Window ScripturePickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -335,11 +335,11 @@ Begin Window ScripturePickerWindow
       Top             =   100
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   8
+      BehaviorIndex   =   7
    End
    Begin ListBox lst_scr_from_verse
       AutoDeactivate  =   "True"
@@ -352,7 +352,7 @@ Begin Window ScripturePickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -381,11 +381,11 @@ Begin Window ScripturePickerWindow
       Top             =   100
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   9
+      BehaviorIndex   =   8
    End
    Begin ListBox lst_scr_to_verse
       AutoDeactivate  =   "True"
@@ -398,7 +398,7 @@ Begin Window ScripturePickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -427,18 +427,18 @@ Begin Window ScripturePickerWindow
       Top             =   100
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   10
+      BehaviorIndex   =   9
    End
    Begin GroupBox grp_options_version
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Version"
       ControlOrder    =   8
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   55
       HelpTag         =   ""
       Index           =   -2147483648
@@ -454,16 +454,16 @@ Begin Window ScripturePickerWindow
       TextSize        =   11
       Top             =   255
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   145
-      BehaviorIndex   =   11
+      BehaviorIndex   =   10
       Begin PopupMenu pop_scr_version
          AutoDeactivate  =   "True"
          Bold            =   "False"
          ControlOrder    =   9
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -481,9 +481,9 @@ Begin Window ScripturePickerWindow
          TextSize        =   12
          Top             =   275
          Underline       =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   95
-         BehaviorIndex   =   12
+         BehaviorIndex   =   11
       End
    End
    Begin GroupBox grp_options_verses_per_slide
@@ -491,7 +491,7 @@ Begin Window ScripturePickerWindow
       Bold            =   "False"
       Caption         =   "Verses Per Slide"
       ControlOrder    =   10
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   50
       HelpTag         =   ""
       Index           =   -2147483648
@@ -507,15 +507,15 @@ Begin Window ScripturePickerWindow
       TextSize        =   11
       Top             =   320
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   145
-      BehaviorIndex   =   13
+      BehaviorIndex   =   12
       Begin RadioButton rad_verses_one
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   1
          ControlOrder    =   11
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -532,16 +532,16 @@ Begin Window ScripturePickerWindow
          Top             =   340
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   35
-         BehaviorIndex   =   14
+         BehaviorIndex   =   13
       End
       Begin RadioButton rad_verses_two
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   2
          ControlOrder    =   12
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -558,16 +558,16 @@ Begin Window ScripturePickerWindow
          Top             =   340
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   35
-         BehaviorIndex   =   15
+         BehaviorIndex   =   14
       End
       Begin RadioButton rad_verses_three
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   3
          ControlOrder    =   13
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -584,9 +584,9 @@ Begin Window ScripturePickerWindow
          Top             =   340
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   35
-         BehaviorIndex   =   16
+         BehaviorIndex   =   15
       End
    End
    Begin GroupBox grp_options_format
@@ -594,7 +594,7 @@ Begin Window ScripturePickerWindow
       Bold            =   "False"
       Caption         =   "Format"
       ControlOrder    =   14
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   70
       HelpTag         =   ""
       Index           =   -2147483648
@@ -610,15 +610,15 @@ Begin Window ScripturePickerWindow
       TextSize        =   11
       Top             =   380
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   145
-      BehaviorIndex   =   17
+      BehaviorIndex   =   16
       Begin RadioButton rad_format_paragraph
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   "Paragraph"
          ControlOrder    =   15
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -635,16 +635,16 @@ Begin Window ScripturePickerWindow
          Top             =   400
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   18
+         BehaviorIndex   =   17
       End
       Begin RadioButton rad_format_verse
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   "Verse"
          ControlOrder    =   16
-         Enabled         =   True
+         Enabled         =   "True"
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -661,9 +661,9 @@ Begin Window ScripturePickerWindow
          Top             =   420
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   19
+         BehaviorIndex   =   18
       End
    End
    Begin PushButton btn_Insert
@@ -691,7 +691,7 @@ Begin Window ScripturePickerWindow
       Underline       =   "False"
       Visible         =   "False"
       Width           =   69
-      BehaviorIndex   =   20
+      BehaviorIndex   =   19
    End
    Begin PushButton btn_add
       AutoDeactivate  =   "True"
@@ -716,9 +716,9 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   21
+      BehaviorIndex   =   20
    End
    Begin PushButton btn_done
       AutoDeactivate  =   "True"
@@ -727,7 +727,7 @@ Begin Window ScripturePickerWindow
       Caption         =   "Done"
       ControlOrder    =   19
       Default         =   "False"
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -743,9 +743,9 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   185
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   22
+      BehaviorIndex   =   21
    End
    Begin PushButton btn_search
       AutoDeactivate  =   "True"
@@ -754,7 +754,7 @@ Begin Window ScripturePickerWindow
       Caption         =   "Search"
       ControlOrder    =   20
       Default         =   "False"
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -770,9 +770,9 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   35
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   23
+      BehaviorIndex   =   22
    End
    Begin StaticText txt_verse_dash
       AutoDeactivate  =   "True"
@@ -780,7 +780,7 @@ Begin Window ScripturePickerWindow
       ControlOrder    =   22
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -800,9 +800,9 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   260
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   10
-      BehaviorIndex   =   24
+      BehaviorIndex   =   23
    End
    Begin StaticText txt_verse_colon
       AutoDeactivate  =   "True"
@@ -810,7 +810,7 @@ Begin Window ScripturePickerWindow
       ControlOrder    =   23
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -830,11 +830,11 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   260
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   10
-      BehaviorIndex   =   25
+      BehaviorIndex   =   24
    End
-   Begin EditField edt_preview
+   Begin SEditField edt_preview
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
@@ -844,7 +844,7 @@ Begin Window ScripturePickerWindow
       ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   90
       HelpTag         =   ""
@@ -872,9 +872,9 @@ Begin Window ScripturePickerWindow
       Top             =   472
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   530
-      BehaviorIndex   =   26
+      BehaviorIndex   =   27
    End
    Begin StaticText StaticText1
       AutoDeactivate  =   "True"
@@ -882,7 +882,7 @@ Begin Window ScripturePickerWindow
       ControlOrder    =   27
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -902,9 +902,9 @@ Begin Window ScripturePickerWindow
       TextSize        =   12
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   27
+      BehaviorIndex   =   25
    End
    Begin StaticText lbl_bible_book
       AutoDeactivate  =   "True"
@@ -912,7 +912,7 @@ Begin Window ScripturePickerWindow
       ControlOrder    =   28
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -932,9 +932,9 @@ Begin Window ScripturePickerWindow
       TextSize        =   10
       Top             =   78
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   28
+      BehaviorIndex   =   26
    End
 End
 #tag EndWindow
@@ -1018,6 +1018,13 @@ End
 		  lst_scr_nt.Width = listwidth
 		End Sub
 	#tag EndEvent
+
+
+#tag MenuHandler
+		Function mnu_copy_paste() As Boolean Handles mnu_copy_paste.Action
+			
+		End Function
+#tag EndMenuHandler
 
 
 	#tag Method, Flags = &h1
@@ -1862,24 +1869,6 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  'If Asc(Key) = 13 Or Asc(Key) = 10 Then
-		  'Lookup edt_quick_lookup.Text
-		  'Return True
-		  'End If
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    if c.TextAvailable then
-		      edt_quick_lookup.Text  = c.Text
-		    end if
-		  end if
-		  
-		  c.close
-		End Function
-	#tag EndEvent
-	#tag Event
 		Sub LostFocus()
 		  btn_quick_lookup.Default = False
 		  btn_add.Default = True
@@ -1896,6 +1885,24 @@ End
 		  btn_add.Default = Me.Text = ""
 		  btn_quick_lookup.Default = Not btn_add.Default
 		End Sub
+	#tag EndEvent
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  'dim c As New Clipboard
+		  '
+		  ''If Asc(Key) = 13 Or Asc(Key) = 10 Then
+		  ''Lookup edt_quick_lookup.Text
+		  ''Return True
+		  ''End If
+		  '
+		  'if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		  'if c.TextAvailable then
+		  'edt_quick_lookup.Text  = c.Text
+		  'end if
+		  'end if
+		  '
+		  'c.close
+		End Function
 	#tag EndEvent
 #tag EndEvents
 #tag Events btn_quick_lookup

@@ -1,4 +1,11 @@
--= BL21 =-
+
+* Deleted the Baselevel (BL) version designation.  New versions use major.minor.bugfix numbering strategy.
+
+* New implementation of FolderDB.  This version does not use a cache, but rather reads the Songs and Sets folder when the program starts up.  On Windows and Macintosh, this is implemented using operating system-specific routines; for Linux in this version it relies on the RB FolderItem object (slower).  To disable this and use the old FolderDB cache, edit the parameters.plist and change documents_folder/UseOldFolderDB/value from False to True. This setting can also be changed on the General Settings property page.  The default is to use the new version.  When using the new version, Tools/Refresh will re-read the Songs or Sets folder but will not put up a status dialog or write a _cache file.  The latter means your cache may be out-of-sync if you change from the new FolderDB to the old one.
+
+* Added general_settings/documents_folder/oldfolderdb to the English language file.
+
+* If two folders with a parent-child relationship contained a song with the same name, selecting the parent folder's song for deletion would actually delete the song in the child folder.  This is now fixed when using the new FolderDB implementation.
 
 * Fixed issue with lyrics autoformat (BL20) on Windows due to line ending differences.
 

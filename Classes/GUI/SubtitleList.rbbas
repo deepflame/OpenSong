@@ -26,7 +26,7 @@ Inherits Listbox
 		  Dim subtitles As String = ""
 		  Dim i As Integer
 		  For i = 0 to ListCount - 1
-		    If CellCheck(i, 1) Then 
+		    If CellCheck(i, 1) Then
 		      If Len(subtitles) > 0 then subtitles = subtitles + "|"
 		      subtitles = subtitles + CellTag(i, 2)
 		    End If
@@ -52,7 +52,7 @@ Inherits Listbox
 		  Next row
 		  
 		  For row = 0 to ListCount - 1
-		    If me.Cell(row, 0) = "" Then 
+		    If me.Cell(row, 0) = "" Then
 		      me.Cell(row, 0) = "99" 'Sort at end of list
 		      me.CellCheck(row, 1) = False 'Not selected
 		    End If
@@ -98,5 +98,318 @@ Inherits Listbox
 	#tag EndHook
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			Type="String"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="1"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="-1"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="0"
+			Type="Integer"
+			EditorType="Enum"
+			InheritedFrom="Listbox"
+			#tag EnumValues
+				"0 - Default"
+				"1 - None"
+				"2 - ThinDotted"
+				"3 - ThinSolid"
+				"4 - ThickSolid"
+				"5 - DoubleThinSolid"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="0"
+			Type="Integer"
+			EditorType="Enum"
+			InheritedFrom="Listbox"
+			#tag EnumValues
+				"0 - Default"
+				"1 - None"
+				"2 - ThinDotted"
+				"3 - ThinSolid"
+				"4 - ThickSolid"
+				"5 - DoubleThinSolid"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="-1"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="-1"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Appearance"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			InitialValue="System"
+			Type="String"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+			EditorType="Enum"
+			InheritedFrom="Listbox"
+			#tag EnumValues
+				"0 - Single"
+				"1 - Multiple"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Database Binding"
+			Type="String"
+			EditorType="DataSource"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Database Binding"
+			Type="String"
+			EditorType="DataField"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

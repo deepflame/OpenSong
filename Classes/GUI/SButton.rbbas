@@ -97,7 +97,7 @@ Inherits Canvas
 		    offset = 0
 		    g.ForeColor = DarkBevelColor
 		    g.FillRect 0, 0, Width, Height
-		  ElseIf IsMouseOver Then
+		  ElseIf IsMouseOver Or HasFocus Then
 		    g.ForeColor = LightBevelColor
 		    g.FillRect 0, 0, Width, Height
 		  Else
@@ -146,10 +146,11 @@ Inherits Canvas
 		  If IsMouseDown Or IsStuck Then
 		    g.ForeColor = TextColor
 		    g.DrawRect 0, 0, Width, Height
-		  ElseIf IsMouseOver Or StickyBevel Then
+		  ElseIf IsMouseOver Or StickyBevel Or HasFocus Then
 		    g.ForeColor = DarkBevelColor
 		    g.DrawRect 0, 0, Width, Height
 		  End If
+		  
 		End Sub
 	#tag EndEvent
 
@@ -162,6 +163,22 @@ Inherits Canvas
 		    Return True
 		  End If
 		End Function
+	#tag EndEvent
+
+	#tag Event
+		Sub GotFocus()
+		  IsMouseOver = True
+		  HasFocus = True
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub LostFocus()
+		  IsMouseOver = False
+		  HasFocus = False
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		End Sub
 	#tag EndEvent
 
 
@@ -270,7 +287,7 @@ Inherits Canvas
 		    g.Bold = not g.Bold
 		    g.TextSize = g.TextSize + 1
 		    
-		  ElseIf IsMouseOver Then
+		  ElseIf IsMouseOver Or HasFocus Then
 		    'g.ForeColor = DarkTingeColor
 		    'g.FillRect 0, 0, Width, Height
 		    'Fill the background
@@ -396,7 +413,6 @@ Inherits Canvas
 		  Else
 		    g.ForeColor = Font.ForeColor
 		    g.DrawString Label, i, Ceil((Height + g.TextAscent) / 2) - 2 + offset
-		    
 		  End If
 		  
 		  If Popup <> Nil Then
@@ -545,50 +561,47 @@ Inherits Canvas
 		StickyBevel As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		HasFocus As Boolean
+	#tag EndProperty
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			Type="String"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ControlOrder"
 			Visible=true
 			Group="Position"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Width"
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Visible=true
 			Group="Position"
 			InitialValue="100"
@@ -596,7 +609,6 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Height"
 			Visible=true
 			Group="Position"
 			InitialValue="100"
@@ -604,42 +616,36 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LockLeft"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LockTop"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LockRight"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LockBottom"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="TabPanelIndex"
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Visible"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -647,7 +653,6 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="HelpTag"
 			Visible=true
 			Group="Appearance"
 			Type="String"
@@ -655,7 +660,6 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="AutoDeactivate"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -663,7 +667,6 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Enabled"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -671,7 +674,6 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="UseFocusRing"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -679,7 +681,6 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Backdrop"
 			Visible=true
 			Group="Appearance"
 			Type="Picture"
@@ -687,21 +688,18 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="AcceptFocus"
 			Visible=true
 			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="AcceptTabs"
 			Visible=true
 			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="EraseBackground"
 			Visible=true
 			Group="Behavior"
 			InitialValue="True"
@@ -709,27 +707,24 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="InitialParent"
-			Group="Behavior"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="MenuItem"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Group="Behavior"
 			Type="String"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LabelAlign"
-			Visible=true
 			Group="Behavior"
 			InitialValue="0"
-			Type="Integer"
-			EditorType="Enum"
+			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="StickyBevel"
-			Visible=true
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

@@ -173,3 +173,4 @@ module/generate_index
 module/generate_error
 song_lookup/preview
 song_lookup/header (Modified)
+general_settings/documents_folder/oldfolderdb

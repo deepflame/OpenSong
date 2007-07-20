@@ -7,13 +7,16 @@ Protected Module prefs
 	#tag EndNote
 
 
-	#tag Constant, Name = kDocumentsFolder, Type = String, Dynamic = False, Default = \"documents_folder", Scope = Public
+	#tag Constant, Name = kDocumentsFolder, Type = String, Dynamic = False, Default = \"documents_folder", Scope = Protected
 	#tag EndConstant
 
-	#tag Constant, Name = kLanguage, Type = String, Dynamic = False, Default = \"language", Scope = Public
+	#tag Constant, Name = kLanguage, Type = String, Dynamic = False, Default = \"language", Scope = Protected
 	#tag EndConstant
 
 	#tag Constant, Name = kUseOldFolderDB, Type = String, Dynamic = False, Default = \"documents_folder/UseOldFolderDB", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kSetsLastExportFolder, Type = String, Dynamic = False, Default = \"sets/last_export", Scope = Protected
 	#tag EndConstant
 
 

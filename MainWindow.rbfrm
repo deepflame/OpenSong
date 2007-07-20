@@ -3836,6 +3836,31 @@ Begin Window MainWindow
                Width           =   87
                BehaviorIndex   =   124
             End
+            Begin SButton btn_set_export
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   134
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               Left            =   141
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   182
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   134
+            End
          End
          Begin GroupBox grp_set_new_item
             AutoDeactivate  =   "True"
@@ -4574,6 +4599,7 @@ End
 		      btn_set_present.Enabled = True And (Not Status_Presentation)
 		      btn_set_print_songs.Enabled = True
 		      btn_set_print_order.Enabled = True
+		      btn_set_export.Enabled = True
 		      btn_set_rename.Enabled = True
 		      btn_set_delete.Enabled = True
 		      btn_set_saveas.Enabled = True
@@ -4589,6 +4615,7 @@ End
 		      btn_set_present.Enabled = False
 		      btn_set_print_songs.Enabled = False
 		      btn_set_print_order.Enabled = False
+		      btn_set_export.Enabled = False
 		      btn_set_rename.Enabled = False
 		      btn_set_delete.Enabled = False
 		      btn_set_saveas.Enabled = False
@@ -6943,6 +6970,177 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub ActionSetExport()
+		  //TODO:
+		  // Break the copying out in to another function that takes the base folder, array of folderitems and target folder as parameters for use in the import
+		  // Instead of using folderDelimiter use the parent fodler method to find the target directories that need to be built.
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
+		  
+		  //Getting the targetFolderPath from user
+		  dim targetFolderPath as String
+		  dim targetFolder, targetFile As FolderItem
+		  Dim dlg As New SelectFolderDialog
+		  
+		  dlg.InitialDirectory = App.DocsFolder
+		  targetFolder = App.MainPreferences.GetValueFI(Prefs.kSetsLastExportFolder)
+		  If Not IsNull(targetFolder) Then
+		    dlg.InitialDirectory = targetFolder
+		  end if
+		  
+		  targetFolder = dlg.ShowModal
+		  
+		  If targetFolder = Nil Then Return// User cancelled
+		  
+		  App.MainPreferences.SetValueFI(Prefs.kSetsLastExportFolder, targetFolder)
+		  
+		  targetFolderPath = targetFolder.AbsolutePath
+		  
+		  if not targetFolder.Exists then
+		    return
+		  end if
+		  
+		  //Start of the calculation and copying bit
+		  App.MouseCursor = WatchCursor
+		  Dim f, songFile, setFile As FolderItem
+		  Dim SongPath As String
+		  Dim AbsFiles(0) As FolderItem
+		  Dim RelFiles(0) As String
+		  Dim i As Integer
+		  
+		  // Get path for current set
+		  // Should be setFile = CurrentSet.GetFolderItem
+		  dim att as XMLattribute
+		  try
+		    att = CurrentSet.documentElement.GetAttributeNode("name")
+		  catch err as XMLexception
+		    i = msgbox(err.Message, 48, "ActionSetExport Could not find set name")
+		    return
+		  end try
+		  if att = Nil then
+		    CurrentSet.documentElement.SetAttribute("name",CurrentSetName)
+		  end if
+		  
+		  setFile = App.DocsFolder.Child("Sets").Child(CurrentSetName)
+		  AbsFiles.append(setFile)
+		  
+		  //Append the FolderItem used in each SlideGroup to AbsFiles
+		  //Should be a call to CurrentSet.GetChildFolderItems
+		  Dim setDoc As New XmlDocument
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  
+		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
+		  
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    songFile = Nil
+		    // get paths for the individual slide groups
+		    //Should be a call to SlideGroup.GetChildFolderItems
+		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
+		      SongPath = SmartML.GetValue(slide_group, "@path", False)
+		      If SongPath <> "" Then
+		        SongPath = SongPath + SmartML.GetValue(slide_group, "@name")
+		      Else
+		        SongPath = SmartML.GetValue(slide_group, "@name")
+		      End If
+		      f = Songs.GetFile(SongPath)
+		      If f = Nil Then
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
+		      Else
+		        RelFiles.Append(SongPath)
+		        AbsFiles.append(f)
+		      End If
+		    End If
+		    slide_group  = slide_group.NextSibling
+		  Wend
+		  
+		  //TODO: get any other set wide files
+		  
+		  //Copy the files to the target
+		  If UBound(AbsFiles) <= 0 Then Return // Nothing to do
+		  dim fileCount As Integer
+		  'fileCount = UBound(AbsFiles)
+		  fileCount = UBound(RelFiles)
+		  
+		  dim relativePath, targetPath, currentPath as String
+		  dim sourcePathPartCount, j As Integer
+		  dim currentFolderItem As FolderItem
+		  dim sourcePathParts() As String
+		  dim folderDelimiter As String
+		  
+		  folderDelimiter = FileUtils.AbsolutePathSeparator()
+		  For i = 1 To fileCount
+		    'relativePath = AbsFiles(i).AbsolutePath.replace(App.DocsFolder.AbsolutePath, "")
+		    //Split the path up and create each folder if needed
+		    targetPath = RelFiles(i)
+		    sourcePathParts = Split(RelFiles(i), "/")
+		    'sourcePathParts = Split( relativePath, folderDelimiter )
+		    sourcePathPartCount = UBound(sourcePathParts) - 1
+		    currentFolderItem = targetFolder
+		    'If sourcePathPartCount <= 0 Then continue
+		    For j = 0 To sourcePathPartCount
+		      If Not currentFolderItem.Child(sourcePathParts(j)).Exists Then
+		        If Not FileUtils.CreateFolder(currentFolderItem.Child(sourcePathParts(j))) Then
+		          InputBox.Message FileUtils.LastError
+		          Return
+		        End If
+		      End If
+		      currentFolderItem = currentFolderItem.Child(sourcePathParts(j))
+		    Next
+		    'currentPath = currentPath + folderDelimiter + sourcePathParts(j)
+		    'currentFolderItem = GetFolderItem(currentPath)
+		    
+		    targetFile = FileUtils.RelativePathToFolderItem(targetFolder, targetPath)
+		    'next j
+		    
+		    //Create or delete the actual file.
+		    currentFolderItem = Songs.GetFile(RelFiles(i))
+		    if not IsNull(targetFile) then
+		      App.DebugWriter.Write("targetFile At " + targetFile.AbsolutePath, 1)
+		      'if targetFile.Exists then
+		      'targetFile.Delete
+		      'end if
+		      'AbsFiles(i).CopyFileTo (targetFile)
+		      'end if
+		      If Not FileUtils.CopyFile(currentFolderItem, targetFile, FileUtils.kOverwriteNewer) Then
+		        InputBox.Message FileUtils.LastError
+		      End If
+		    End If
+		  Next
+		  
+		  //Add the default styles to the copied set
+		  'relativePath = setFile.AbsolutePath.replace(App.DocsFolder.AbsolutePath, "")
+		  'targetPath =  targetFolder.AbsolutePath + folderDelimiter + relativePath
+		  'targetFile = GetFolderItem(targetPath)
+		  Dim copyset As XmlDocument
+		  Dim xgroups, newGroup, xnode As XmlNode
+		  copyset = SmartML.XDocFromFile(AbsFiles(1))
+		  xgroups = SmartML.GetNode(copyset.DocumentElement, "slide_groups", True)
+		  
+		  //Insert the default style yeah i know this should be a method but it seems like a lot of effort.
+		  newGroup = SmartML.InsertChild(xgroups, "slide_group", 0)
+		  xnode = SmartML.GetNode(newGroup, "style", True)
+		  SongML.CloneStyle SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), xnode
+		  SmartML.SetValue newGroup, "@type", "style"
+		  SmartML.SetValue newGroup, "@action", "new"
+		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/items/defaultstyle")
+		  
+		  If Not SmartML.XDocToFile(copyset, targetFolder.Child(absfiles(1).Name)) Then
+		    App.MouseCursor = Nil
+		    SmartML.DisplayError
+		    Return
+		  End If
+		  
+		  App.MouseCursor = nil
+		  InputBox.Message(App.T.Translate("sets_mode/messages/export_complete", absfiles(1).Name, _
+		  targetFolder.FormatFolderName(50)))
+		  return
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function CheckLyricLines(source As String) As String
 		  //++
@@ -8997,7 +9195,7 @@ End
 		      End If
 		    End If
 		    songf = Songs.GetFile(songPath + SmartML.GetValue(xgroup, "@name"))
-		    If songf = Nil Then
+		    If songf = Nil Or (Not songf.Exists) Then
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_set_items.text)
 		      sDoc = Nil
 		    Else
@@ -9347,6 +9545,25 @@ End
 #tag Events btn_song_import
 	#tag Event
 		Sub Action()
+		   //++
+		   // Function temporarily unavailable
+		   //--
+		   Dim mb As New MessageDialog
+		   mb.ActionButton.Caption = App.T.Translate("shared/cancel/@caption")
+		   mb.ActionButton.Visible = True
+		   mb.ActionButton.Default = True
+		   mb.AlternateActionButton.Visible = False
+		   mb.CancelButton.Visible = False
+		   mb.Message = App.T.Translate("errors/cclinotavailable")
+		   Dim button As MessageDialogButton
+		   
+		   button = mb.ShowModalWithin(Self)
+		   Return
+  
+		   //++
+		   // Original Function Here
+		   //--
+  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
 		  
@@ -10001,6 +10218,28 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon fileprintpic, fileprintmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_set_export
+	#tag Event
+		Sub Action()
+		  ActionSetExport
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/current_set/export"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon filesaveaspic, filesaveasmask
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -1,3 +1,16 @@
+* Fixed issue with sets and missing songs not alerting the user. This was introduced because of changes to the underlying FolderDB in r235-236.
+
+* Disable the CCLI Import facility.  A message (errors/cclinotavailable) is shown instead.  Maybe this will reduce the number of bug reports for this issue.
+
+* Fixed a problem with plist-based preferences that caused a GetValue operation to fail when a parent node to the target didn't already exist.
+
+* Added errors/fileutils section to the English translation and corrected FileUtils to look for the right XML path.
+
+* Incorporated Martyn's (atuin2) work for exporting a Set and the associated Songs to a directory for transfer to another system.  No import capability (yet).
+
+* Cleaned up some problems with FileUtils and added FileUtils.CopyFile to support Set Export.
+
+* Updated text on the About window and added (unlabeled) fields to display memory and object usage.
 
 * Deleted the Baselevel (BL) version designation.  New versions use major.minor.bugfix numbering strategy.
 

@@ -51,7 +51,7 @@
 
 	#tag FileType
 		CodeName=MIDIFilesMidMidiRmi
-		DocIcon=OpenSong.rbres;&h1982C
+		DocIcon=OpenSong.rbres;&h3C
 		Extension=.mid; .midi; .rmi
 		Flags=&h0
 		MacCreator=
@@ -61,7 +61,7 @@
 
 	#tag FileType
 		CodeName=MP3sMp3
-		DocIcon=OpenSong.rbres;&h19838
+		DocIcon=OpenSong.rbres;&h48
 		Extension=.mp3
 		Flags=&h0
 		MacCreator=
@@ -71,7 +71,7 @@
 
 	#tag FileType
 		CodeName=OpenSongModuleXmm
-		DocIcon=OpenSong.rbres;&h19844
+		DocIcon=OpenSong.rbres;&h54
 		Extension=.xmm
 		Flags=&h0
 		MacCreator=
@@ -81,7 +81,7 @@
 
 	#tag FileType
 		CodeName=PICTFiles
-		DocIcon=OpenSong.rbres;&h33040
+		DocIcon=OpenSong.rbres;&h60
 		Extension=.pict;.pic;.pct
 		Flags=&h0
 		MacCreator=
@@ -91,7 +91,7 @@
 
 	#tag FileType
 		CodeName=PNGFiles
-		DocIcon=OpenSong.rbres;&h4C83C
+		DocIcon=OpenSong.rbres;&h6C
 		Extension=.png
 		Flags=&h0
 		MacCreator=
@@ -101,7 +101,7 @@
 
 	#tag FileType
 		CodeName=TIFFFiles
-		DocIcon=OpenSong.rbres;&h66038
+		DocIcon=OpenSong.rbres;&h78
 		Extension=.jfx;.tif;.tiff
 		Flags=&h0
 		MacCreator=????
@@ -111,7 +111,7 @@
 
 	#tag FileType
 		CodeName=WAVFilesWav
-		DocIcon=OpenSong.rbres;&h7F834
+		DocIcon=OpenSong.rbres;&h84
 		Extension=.wav
 		Flags=&h0
 		MacCreator=

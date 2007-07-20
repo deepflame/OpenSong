@@ -435,7 +435,7 @@ Inherits Application
 		  Dim mb As SelectFolderDialog
 		  Dim Folder As String
 		  
-		  f = MainPreferences.GetValueFI(kDocumentsFolder, Nil, False)
+		  f = MainPreferences.GetValueFI(Prefs.kDocumentsFolder, Nil, False)
 		  If f = Nil Then
 		    FolderName = Trim(SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder"))
 		    
@@ -475,7 +475,7 @@ Inherits Application
 		        MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(DocumentsFolder.Child("OpenSong"))))
 		        f = DocumentsFolder.Child("OpenSong")
 		      End If
-		      MainPreferences.SetValueFI(kDocumentsFolder, f)
+		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If //If FolderName <> ""
 		  Else // folder found in MainPreferences, make sure it exists.
 		    If Not f.exists Then
@@ -485,7 +485,7 @@ Inherits Application
 		        System.DebugLog "OpenSong: user cancelled document folder selection"
 		        Return Nil
 		      End Try
-		      MainPreferences.SetValueFI(kDocumentsFolder, f)
+		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If
 		  End If //If MainPreferences.kDocumentsFolder = Nil
 		  Return f

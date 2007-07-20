@@ -1,5 +1,5 @@
 #tag Module
-Protected Module StringUtils
+Module StringUtils
 	#tag Method, Flags = &h1
 		Protected Function Chop(s As String, charsToCut As Integer) As String
 		  // Return s with the rightmost 'charsToCut' chars removed.
@@ -59,10 +59,10 @@ Protected Module StringUtils
 		  i2  = 1
 		  r  =0
 		  
-		  if s1 = "" then 
+		  if s1 = "" then
 		    if s2 = "" then
 		      return 0
-		    else 
+		    else
 		      return -1
 		    end if
 		    
@@ -75,13 +75,13 @@ Protected Module StringUtils
 		    if isalnum(Asc(c2)) = false then
 		      return 1
 		    end if
-		  else 
+		  else
 		    if isalnum(Asc(c2)) = true then
 		      return -1
 		    end if
 		  end if
 		  
-		  while true 
+		  while true
 		    c1 = s1.Mid(i1, 1)
 		    c2 = s2.Mid(i2, 1)
 		    l1 = tolower(Asc(c1))
@@ -136,7 +136,7 @@ Protected Module StringUtils
 		    else 'c1 is a number
 		      if d2 = true then 'c2 is a number
 		        r = CompareNum(s1, i1, s2, i2)
-		        if r <> 0 then 
+		        if r <> 0 then
 		          return r
 		        end if
 		      else 'c2 is not a number
@@ -155,7 +155,7 @@ Protected Module StringUtils
 		    if i1 >= s1.Len then
 		      if i2 >= s2.Len then
 		        return 0
-		      else 
+		      else
 		        return -1
 		      end if
 		    end if
@@ -175,7 +175,7 @@ Protected Module StringUtils
 		  //
 		  // Here's a different take on a compare routine.
 		  // This puts items that have numbers after
-		  // letters in numerical order.  
+		  // letters in numerical order.
 		  // It also puts items with leading digits in numerical order as well.
 		  // Two strings with trailing digits that are otherwise equal get
 		  // sorted in numerical order (i.e., Song1, Song2, Song10, Song11)
@@ -234,7 +234,7 @@ Protected Module StringUtils
 		    // Leading numbers are smaller than alphabetic by definition
 		    If Left(result2a.SubExpressionString(2), 1) > "9" Then Return -1 Else Return 1
 		  End If
-		  If val1 = 0 And val2 > 0 Then 
+		  If val1 = 0 And val2 > 0 Then
 		    If Left(result1a.SubExpressionString(2), 1) > "9" Then Return 1 Else Return -1
 		  End If
 		  
@@ -264,10 +264,10 @@ Protected Module StringUtils
 		  If s1 > s2 Then Return 1
 		  Return 0
 		  
-		Catch ex as RegExException
-		  If s1 < s2 Then Return -1
-		  If s1 > s2 Then Return 1
-		  Return 0
+		  Catch ex as RegExException
+		    If s1 < s2 Then Return -1
+		    If s1 > s2 Then Return 1
+		    Return 0
 		End Function
 	#tag EndMethod
 
@@ -422,7 +422,7 @@ Protected Module StringUtils
 
 	#tag Method, Flags = &h1
 		Protected Function CountB(source As String, substr As String) As Integer
-		  // Return how many non-overlapping occurrences of 'substr' there 
+		  // Return how many non-overlapping occurrences of 'substr' there
 		  // are in 'source', doing binary comparison.
 		  
 		  dim theCount as Integer
@@ -446,7 +446,7 @@ Protected Module StringUtils
 	#tag Method, Flags = &h1
 		Protected Function CountFieldsQuoted(src as string, sep as string) As integer
 		  // Equivalent to RB's CountFields() function, but respects quoted values
-		  // Usage: 
+		  // Usage:
 		  //    s = """Hello, Kitty"", ""One"", ""Two, Three"""
 		  //    x = CountFieldsQuoted(s, ",")
 		  // result: x=3
@@ -536,7 +536,7 @@ Protected Module StringUtils
 		  Dim a, b, c As Integer
 		  for i = 1 to n
 		    s1char = Mid( s1, i, 1 )
-		    lastCost = i 
+		    lastCost = i
 		    for j = 1 to m
 		      if s1char = Mid( s2, j, 1 ) then cost = 0 else cost = 1
 		      
@@ -690,7 +690,7 @@ Protected Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function InStrReverse(startPos As Integer=-1, source As String, substr As String) As Integer
+		Protected Function InStrReverse(startPos As Integer = - 1, source As String, substr As String) As Integer
 		  // Similar to InStr, but searches backwards from the given position
 		  // (or if startPos = -1, then from the end of the string).
 		  // If substr can't be found, returns 0.
@@ -712,7 +712,7 @@ Protected Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function InStrReverseB(startPosB As Integer=-1, source As String, substr As String) As Integer
+		Protected Function InStrReverseB(startPosB As Integer = - 1, source As String, substr As String) As Integer
 		  // Similar to InStrB, but searches backwards from the given position
 		  // (or if startPosB = -1, then from the end of the string).
 		  // If substr can't be found, returns 0.
@@ -747,7 +747,7 @@ Protected Module StringUtils
 		    end if
 		  end if
 		  
-		  if c >= Asc("A") then 
+		  if c >= Asc("A") then
 		    if c <= Asc("Z") then
 		      return true
 		    end if
@@ -766,7 +766,7 @@ Protected Module StringUtils
 		    end if
 		  end if
 		  
-		  if c >= Asc("A") then 
+		  if c >= Asc("A") then
 		    if c <= Asc("Z") then
 		      return true
 		    end if
@@ -864,7 +864,7 @@ Protected Module StringUtils
 		  
 		  // initial 'X' is pronounced 'Z' e.g. 'Xavier'
 		  if charAt(1) = "X" then
-		    out1 = out1 + "S"  
+		    out1 = out1 + "S"
 		    out2 = out2 + "S"  // "Z" maps to "S"
 		    current = current + 1
 		  end if
@@ -877,14 +877,14 @@ Protected Module StringUtils
 		    case "A", "E", "I", "O", "U", "Y"
 		      if current = 1 then
 		        // all initial vowels map to "A"; elsewhere they're skipped
-		        out1 = out1 + "A"  
+		        out1 = out1 + "A"
 		        out2 = out2 + "A"
 		      end if
 		      current = current + 1
 		      
 		    case "B"
 		      //"-mb", e.g", "dumb", already skipped over...
-		      out1 = out1 + "P"  
+		      out1 = out1 + "P"
 		      out2 = out2 + "P"
 		      if charAt(current + 1) = "B" then
 		        current = current + 2
@@ -893,7 +893,7 @@ Protected Module StringUtils
 		      end if
 		      
 		    case "Ç"
-		      out1 = out1 + "S"  
+		      out1 = out1 + "S"
 		      out2 = out2 + "S"
 		      current = current +  1
 		      
@@ -901,29 +901,29 @@ Protected Module StringUtils
 		      // various germanic
 		      if current > 2 _
 		        and not MIsVowel(source, current - 2) _
-		        and MStringAt(source, (current - 1), 3, "ACH") _ 
+		        and MStringAt(source, (current - 1), 3, "ACH") _
 		        and (charAt(current + 2) <> "I" and (charAt(current + 2) <> "E"_
-		        or MStringAt(source, current - 2, 6, "BACHER", "MACHER")) ) then       
-		        out1 = out1 + "K"  
+		        or MStringAt(source, current - 2, 6, "BACHER", "MACHER")) ) then
+		        out1 = out1 + "K"
 		        out2 = out2 + "K"
 		        current = current + 2
 		        
 		      elseif current = 1 AND MStringAt(source, current, 6, "CAESAR") then
 		        // special case 'caesar' (why didn't this go at the top?)
-		        out1 = out1 + "S"  
+		        out1 = out1 + "S"
 		        out2 = out2 + "S"
 		        current = current + 2
 		        
 		      elseif MStringAt(source, current, 4, "CHIA") then
 		        // italian 'chianti'
-		        out1 = out1 + "K"  
+		        out1 = out1 + "K"
 		        out2 = out2 + "K"
 		        current = current + 2
 		        
-		      elseif MStringAt(source, current, 2, "CH") then       
+		      elseif MStringAt(source, current, 2, "CH") then
 		        // find 'michael'
 		        if current > 0 AND MStringAt(source, current, 4, "CHAE") then
-		          out1 = out1 + "K"  
+		          out1 = out1 + "K"
 		          out2 = out2 + "X"
 		          current = current + 2
 		          break
@@ -933,7 +933,7 @@ Protected Module StringUtils
 		          or MStringAt(source, current + 1, 3, "HOR", "HYM", "HIA", "HEM")) _
 		          and not MStringAt(source, 0, 5, "CHORE") then
 		          // greek roots e.g. 'chemistry', 'chorus'
-		          out1 = out1 + "K"  
+		          out1 = out1 + "K"
 		          out2 = out2 + "K"
 		          current = current + 2
 		          
@@ -946,20 +946,20 @@ Protected Module StringUtils
 		            or ((MStringAt(source, current - 1, 1, "A", "O", "U", "E") OR current = 1) _
 		            _ //e.g., 'wachtler', 'wechsler', but not 'tichner'
 		            and MStringAt(source, current + 2, 1, "L", "R", "N", "M", "B", "H", "F", "V", "W", " "))) then
-		            out1 = out1 + "K"  
+		            out1 = out1 + "K"
 		            out2 = out2 + "K"
-		          else  
+		          else
 		            if current > 1 then
 		              if MStringAt(source, 1, 2, "MC") then
 		                //e.g., "McHugh"
-		                out1 = out1 + "K"  
+		                out1 = out1 + "K"
 		                out2 = out2 + "K"
 		              else
-		                out1 = out1 + "X"  
+		                out1 = out1 + "X"
 		                out2 = out2 + "K"
 		              end if
 		            else
-		              out1 = out1 + "X"  
+		              out1 = out1 + "X"
 		              out2 = out2 + "X"
 		            end if
 		          end if
@@ -970,13 +970,13 @@ Protected Module StringUtils
 		        
 		      elseif MStringAt(source, current, 2, "CZ") and not MStringAt(source, current - 2, 4, "WICZ") then
 		        //e.g, 'czerny'
-		        out1 = out1 + "S"  
+		        out1 = out1 + "S"
 		        out2 = out2 + "X"
 		        current = current +  2
 		        
 		      elseif MStringAt(source, current + 1, 3, "CIA") then
 		        //e.g., 'focaccia'
-		        out1 = out1 + "X"  
+		        out1 = out1 + "X"
 		        out2 = out2 + "X"
 		        current = current +  3
 		        
@@ -987,39 +987,39 @@ Protected Module StringUtils
 		          //'accident', 'accede" "succeed'
 		          if((current = 2 AND charAt(current - 1) = "A") _
 		            OR MStringAt(source, current - 1, 5, "UCCEE", "UCCES")) then
-		            out1 = out1 + "KS"  
+		            out1 = out1 + "KS"
 		            out2 = out2 + "KS"
 		            //'bacci', 'bertucci', other italian
 		          else
-		            out1 = out1 + "X"  
+		            out1 = out1 + "X"
 		            out2 = out2 + "X"
 		          end if
 		          current = current +  3
 		        else // Pierce's rule
-		          out1 = out1 + "K"  
+		          out1 = out1 + "K"
 		          out2 = out2 + "K"
 		          current = current +  2
 		        end if
 		        
 		      elseif MStringAt(source, current, 2, "CK", "CG", "CQ") then
-		        out1 = out1 + "K"  
+		        out1 = out1 + "K"
 		        out2 = out2 + "K"
 		        current = current +  2
 		        
 		      elseif MStringAt(source, current, 2, "CI", "CE", "CY") then
 		        // italian vs. english
 		        if MStringAt(source, current, 3, "CIO", "CIE", "CIA") then
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "X"
 		        else
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "S"
 		        end if
 		        current = current +  2
 		        
 		      else
 		        // all other C cases are considered a K:
-		        out1 = out1 + "K"  
+		        out1 = out1 + "K"
 		        out2 = out2 + "K"
 		        
 		        // name sent in 'mac caffrey', 'mac gregor'
@@ -1039,28 +1039,28 @@ Protected Module StringUtils
 		      if MStringAt(source, current, 2, "DG") then
 		        if MStringAt(source, current + 2, 1, "I", "E", "Y") then
 		          //e.g. 'edge'
-		          out1 = out1 + "J"  
+		          out1 = out1 + "J"
 		          out2 = out2 + "J"
 		          current = current +  3
 		        else
 		          //e.g. 'edgar'
-		          out1 = out1 + "TK"  
+		          out1 = out1 + "TK"
 		          out2 = out2 + "TK"
 		          current = current +  2
 		        end if
 		        
 		      elseif MStringAt(source, current, 2, "DT", "DD") then
-		        out1 = out1 + "T"  
+		        out1 = out1 + "T"
 		        out2 = out2 + "T"
 		        current = current +  2
 		      else
-		        out1 = out1 + "T"  
+		        out1 = out1 + "T"
 		        out2 = out2 + "T"
 		        current = current +  1
 		      end if
 		      
 		    case "F"
-		      out1 = out1 + "F"  
+		      out1 = out1 + "F"
 		      out2 = out2 + "F"
 		      if charAt(current + 1) = "F" then
 		        current = current +  2
@@ -1072,17 +1072,17 @@ Protected Module StringUtils
 		      if charAt(current + 1) = "H"  then
 		        // GH...
 		        if current > 1 AND not MIsVowel(source, current - 1) then
-		          out1 = out1 + "K"  
+		          out1 = out1 + "K"
 		          out2 = out2 + "K"
 		          current = current +  2
 		          
 		        elseif current = 1 then
 		          //'ghislane', ghiradelli
 		          if charAt(current + 2) = "I" then
-		            out1 = out1 + "J"  
+		            out1 = out1 + "J"
 		            out2 = out2 + "J"
 		          else
-		            out1 = out1 + "K"  
+		            out1 = out1 + "K"
 		            out2 = out2 + "K"
 		          end if
 		          current = current +  2
@@ -1100,11 +1100,11 @@ Protected Module StringUtils
 		          if current > 3 _
 		            AND charAt(current - 1) = "U" _
 		            AND MStringAt(source, current - 3, 1, "C", "G", "L", "R", "T") then
-		            out1 = out1 + "F"  
+		            out1 = out1 + "F"
 		            out2 = out2 + "F"
 		          else
 		            if((current > 0) AND charAt(current - 1) <> "I") then
-		              out1 = out1 + "K"  
+		              out1 = out1 + "K"
 		              out2 = out2 + "K"
 		            end if
 		          end if
@@ -1114,16 +1114,16 @@ Protected Module StringUtils
 		      elseif charAt(current + 1) = "N" then
 		        // GN...
 		        if current = 1 AND MIsVowel(source, 0) AND not SlavoGermanic then
-		          out1 = out1 + "KN"  
+		          out1 = out1 + "KN"
 		          out2 = out2 + "N"
 		        else
 		          //not e.g. 'cagney'
 		          if not MStringAt(source, current + 2, 2, "EY") _
 		            AND charAt(current + 1) <> "Y" AND not SlavoGermanic then
-		            out1 = out1 + "N"  
+		            out1 = out1 + "N"
 		            out2 = out2 + "KN"
 		          else
-		            out1 = out1 + "KN"  
+		            out1 = out1 + "KN"
 		            out2 = out2 + "KN"
 		          end if
 		        end if
@@ -1132,7 +1132,7 @@ Protected Module StringUtils
 		        
 		      elseif MStringAt(source, current + 1, 2, "LI") AND not SlavoGermanic then
 		        //'tagliaro'
-		        out1 = out1 + "KL"  
+		        out1 = out1 + "KL"
 		        out2 = out2 + "L"
 		        current = current +  2
 		        
@@ -1141,7 +1141,7 @@ Protected Module StringUtils
 		        AND (charAt(current + 1) = "Y"  _
 		        OR MStringAt(source, current + 1, 2, "ES", "EP", "EB", "EL", "EY", "IB", "IL", "IN", "IE", "EI", "ER")) then
 		        //ges-,gep-,gel-, gie- at beginning
-		        out1 = out1 + "K"  
+		        out1 = out1 + "K"
 		        out2 = out2 + "J"
 		        current = current +  2
 		        
@@ -1150,7 +1150,7 @@ Protected Module StringUtils
 		        AND not MStringAt(source, current - 1, 1, "E", "I") _
 		        AND not MStringAt(source, current - 1, 3, "RGY", "OGY") then
 		        // -ger-,  -gy-
-		        out1 = out1 + "K"  
+		        out1 = out1 + "K"
 		        out2 = out2 + "J"
 		        current = current +  2
 		        
@@ -1159,15 +1159,15 @@ Protected Module StringUtils
 		        //obvious germanic
 		        if MStringAt(source, 1, 4, "VAN ", "VON ") OR MStringAt(source, 1, 3, "SCH") _
 		          OR MStringAt(source, current + 1, 2, "ET") then
-		          out1 = out1 + "K"  
+		          out1 = out1 + "K"
 		          out2 = out2 + "K"
 		        else
 		          //always soft if french ending
 		          if MStringAt(source, current + 1, 4, "IER ") then
-		            out1 = out1 + "J"  
+		            out1 = out1 + "J"
 		            out2 = out2 + "J"
 		          else
-		            out1 = out1 + "J"  
+		            out1 = out1 + "J"
 		            out2 = out2 + "K"
 		          end if
 		        end if
@@ -1175,7 +1175,7 @@ Protected Module StringUtils
 		        
 		      else
 		        // any other G
-		        out1 = out1 + "K"  
+		        out1 = out1 + "K"
 		        out2 = out2 + "K"
 		        if charAt(current + 1) = "G" then
 		          current = current +  2
@@ -1187,7 +1187,7 @@ Protected Module StringUtils
 		    case "H"
 		      //only keep if first & before vowel or btw. 2 vowels
 		      if (current = 1 OR MIsVowel(source, current - 1)) AND MIsVowel(source, current + 1) then
-		        out1 = out1 + "H"  
+		        out1 = out1 + "H"
 		        out2 = out2 + "H"
 		        current = current +  2
 		      else//also takes care of 'HH'
@@ -1198,38 +1198,38 @@ Protected Module StringUtils
 		      //obvious spanish, 'jose', 'san jacinto'
 		      if MStringAt(source, current, 4, "JOSE") OR MStringAt(source, 1, 4, "SAN ") then
 		        if (current = 0 AND charAt(current + 4) = " ") OR MStringAt(source, 1, 4, "SAN ") then
-		          out1 = out1 + "H"  
+		          out1 = out1 + "H"
 		          out2 = out2 + "H"
 		        else
-		          out1 = out1 + "J"  
+		          out1 = out1 + "J"
 		          out2 = out2 + "H"
 		        end if
 		        current = current + 1
 		        
 		      else
 		        if current = 0 AND not MStringAt(source, current, 4, "JOSE") then
-		          out1 = out1 + "J"  
+		          out1 = out1 + "J"
 		          out2 = out2 + "A"//Yankelovich/Jankelowicz
 		        else
 		          //spanish pron. of e.g. 'bajador'
 		          if MIsVowel(source, current - 1) _
 		            AND not SlavoGermanic _
 		            AND (charAt(current + 1) = "A" OR charAt(current + 1) = "O") then
-		            out1 = out1 + "J"  
+		            out1 = out1 + "J"
 		            out2 = out2 + "H"
 		          else
 		            if current = length then
-		              out1 = out1 + "J"  
+		              out1 = out1 + "J"
 		              out2 = out2 + ""
 		            elseif not MStringAt(source, current + 1, 1, "L", "T", "K", "S", "N", "M", "B", "Z") _
 		              AND not MStringAt(source, current - 1, 1, "S", "K", "L") then
-		              out1 = out1 + "J"  
+		              out1 = out1 + "J"
 		              out2 = out2 + "J"
 		            end if
 		          end if
 		        end if
 		        
-		        if charAt(current + 1) = "J" then //it could happen! 
+		        if charAt(current + 1) = "J" then //it could happen!
 		          current = current +  2
 		        else
 		          current = current +  1
@@ -1237,7 +1237,7 @@ Protected Module StringUtils
 		      end if
 		      
 		    case "K"
-		      out1 = out1 + "K"  
+		      out1 = out1 + "K"
 		      out2 = out2 + "K"
 		      if charAt(current + 1) = "K" then
 		        current = current +  2
@@ -1251,24 +1251,24 @@ Protected Module StringUtils
 		        if (current = length - 2 AND MStringAt(source, current - 1, 4, "ILLO", "ILLA", "ALLE")) _
 		          OR ((MStringAt(source, length - 1, 2, "AS", "OS") OR MStringAt(source, length, 1, "A", "O")) _
 		          AND MStringAt(source, current - 1, 4, "ALLE")) then
-		          out1 = out1 + "L"  
+		          out1 = out1 + "L"
 		          out2 = out2 + ""
 		          current = current +  2
 		        else
-		          out1 = out1 + "L"  
+		          out1 = out1 + "L"
 		          out2 = out2 + "L"
 		          current = current +  2
 		        end if
 		      else
-		        out1 = out1 + "L"  
+		        out1 = out1 + "L"
 		        out2 = out2 + "L"
 		        current = current +  1
 		      end if
 		      
 		    case "M"
-		      out1 = out1 + "M"  
+		      out1 = out1 + "M"
 		      out2 = out2 + "M"
-		      if (MStringAt(source, current - 1, 3, "UMB") _ 
+		      if (MStringAt(source, current - 1, 3, "UMB") _
 		        AND (current + 1 = length OR MStringAt(source, current + 2, 2, "ER"))) _
 		        _ //'dumb","thumb'
 		        OR charAt(current + 1) = "M" then
@@ -1278,7 +1278,7 @@ Protected Module StringUtils
 		      end if
 		      
 		    case "N"
-		      out1 = out1 + "N"  
+		      out1 = out1 + "N"
 		      out2 = out2 + "N"
 		      if charAt(current + 1) = "N" then
 		        current = current +  2
@@ -1287,18 +1287,18 @@ Protected Module StringUtils
 		      end if
 		      
 		    case "Ñ"
-		      out1 = out1 + "N"  
+		      out1 = out1 + "N"
 		      out2 = out2 + "N"
 		      current = current +  1
 		      
 		    case "P"
 		      if charAt(current + 1) = "H" then  // PH sounds like F
-		        out1 = out1 + "F"  
+		        out1 = out1 + "F"
 		        out2 = out2 + "F"
 		        current = current +  2
 		        
 		      else
-		        out1 = out1 + "P"  
+		        out1 = out1 + "P"
 		        out2 = out2 + "P"
 		        // (also account for "campbell", "raspberry")
 		        if MStringAt(source, current + 1, 1, "P", "B") then
@@ -1309,7 +1309,7 @@ Protected Module StringUtils
 		      end if
 		      
 		    case "Q"
-		      out1 = out1 + "K"  
+		      out1 = out1 + "K"
 		      out2 = out2 + "K"
 		      if charAt(current + 1) = "Q" then
 		        current = current +  2
@@ -1320,12 +1320,12 @@ Protected Module StringUtils
 		    case "R"
 		      //french e.g. 'rogier', but exclude 'hochmeier'
 		      if current = length AND not SlavoGermanic _
-		        AND MStringAt(source, current - 2, 2, "IE") _ 
+		        AND MStringAt(source, current - 2, 2, "IE") _
 		        AND not MStringAt(source, current - 4, 2, "ME", "MA") then
-		        out1 = out1 + ""  
+		        out1 = out1 + ""
 		        out2 = out2 + "R"
 		      else
-		        out1 = out1 + "R"  
+		        out1 = out1 + "R"
 		        out2 = out2 + "R"
 		      end if
 		      
@@ -1342,17 +1342,17 @@ Protected Module StringUtils
 		        
 		      elseif current = 1 AND MStringAt(source, current, 5, "SUGAR") then
 		        //special case 'sugar-'
-		        out1 = out1 + "X"  
+		        out1 = out1 + "X"
 		        out2 = out2 + "S"
 		        current = current +  1
 		        
 		      elseif MStringAt(source, current, 2, "SH") then
 		        //germanic
 		        if MStringAt(source, current + 1, 4, "HEIM", "HOEK", "HOLM", "HOLZ") then
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "S"
 		        else
-		          out1 = out1 + "X"  
+		          out1 = out1 + "X"
 		          out2 = out2 + "X"
 		        end if
 		        current = current +  2
@@ -1360,10 +1360,10 @@ Protected Module StringUtils
 		      elseif MStringAt(source, current, 3, "SIO", "SIA") OR MStringAt(source, current, 4, "SIAN") then
 		        //italian & armenian
 		        if not SlavoGermanic then
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "X"
 		        else
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "S"
 		        end if
 		        current = current +  3
@@ -1372,7 +1372,7 @@ Protected Module StringUtils
 		        OR MStringAt(source, current + 1, 1, "Z") then
 		        //german & anglicisations, e.g. 'smith' match 'schmidt', 'snider' match 'schneider'
 		        //also, -sz- in slavic language altho in hungarian it is pronounced "s"
-		        out1 = out1 + "S"  
+		        out1 = out1 + "S"
 		        out2 = out2 + "X"
 		        if MStringAt(source, current + 1, 1, "Z") then
 		          current = current +  2
@@ -1387,32 +1387,32 @@ Protected Module StringUtils
 		          if MStringAt(source, current + 3, 2, "OO", "ER", "EN", "UY", "ED", "EM") then
 		            //'schermerhorn', 'schenker'
 		            if MStringAt(source, current + 3, 2, "ER", "EN") then
-		              out1 = out1 + "X"  
+		              out1 = out1 + "X"
 		              out2 = out2 + "SK"
 		            else
-		              out1 = out1 + "SK"  
+		              out1 = out1 + "SK"
 		              out2 = out2 + "SK"
 		            end if
 		            current = current +  3
 		            
 		          else
 		            if current = 1 AND not MIsVowel(source, 4) AND charAt(4) <> "W" then
-		              out1 = out1 + "X"  
+		              out1 = out1 + "X"
 		              out2 = out2 + "S"
 		            else
-		              out1 = out1 + "X"  
+		              out1 = out1 + "X"
 		              out2 = out2 + "X"
 		            end if
 		            current = current +  3
 		          end if
 		          
 		        elseif MStringAt(source, current + 2, 1, "I", "E", "Y") then
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "S"
 		          current = current +  3
 		          
 		        else
-		          out1 = out1 + "SK"  
+		          out1 = out1 + "SK"
 		          out2 = out2 + "SK"
 		          current = current +  3
 		        end if
@@ -1420,10 +1420,10 @@ Protected Module StringUtils
 		      else
 		        //french e.g. 'resnais', 'artois'
 		        if current = length AND MStringAt(source, current - 2, 2, "AI", "OI") then
-		          out1 = out1 + ""  
+		          out1 = out1 + ""
 		          out2 = out2 + "S"
 		        else
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "S"
 		        end if
 		        if MStringAt(source, current + 1, 1, "S", "Z") then
@@ -1435,12 +1435,12 @@ Protected Module StringUtils
 		      
 		    case "T"
 		      if MStringAt(source, current, 4, "TION") then
-		        out1 = out1 + "X"  
+		        out1 = out1 + "X"
 		        out2 = out2 + "X"
 		        current = current +  3
 		        
 		      elseif MStringAt(source, current, 3, "TIA", "TCH") then
-		        out1 = out1 + "X"  
+		        out1 = out1 + "X"
 		        out2 = out2 + "X"
 		        current = current +  3
 		        
@@ -1448,7 +1448,7 @@ Protected Module StringUtils
 		        //special case 'thomas', 'thames' or germanic
 		        if MStringAt(source, current + 2, 2, "OM", "AM") _
 		          OR MStringAt(source, 1, 4, "VAN ", "VON ") OR MStringAt(source, 1, 3, "SCH") then
-		          out1 = out1 + "T"  
+		          out1 = out1 + "T"
 		          out2 = out2 + "T"
 		        else
 		          out1 = out1 + "0"     // 0 represents "TH" sound in Metaphone
@@ -1457,7 +1457,7 @@ Protected Module StringUtils
 		        current = current +  2
 		        
 		      else
-		        out1 = out1 + "T"  
+		        out1 = out1 + "T"
 		        out2 = out2 + "T"
 		        if MStringAt(source, current + 1, 1, "T", "D") then
 		          current = current +  2
@@ -1467,7 +1467,7 @@ Protected Module StringUtils
 		      end if
 		      
 		    case "V"
-		      out1 = out1 + "F"  
+		      out1 = out1 + "F"
 		      out2 = out2 + "F"
 		      if charAt(current + 1) = "V" then
 		        current = current +  2
@@ -1478,7 +1478,7 @@ Protected Module StringUtils
 		    case "W"
 		      //can also be in middle of word
 		      if MStringAt(source, current, 2, "WR") then
-		        out1 = out1 + "R"  
+		        out1 = out1 + "R"
 		        out2 = out2 + "R"
 		        current = current +  2
 		        
@@ -1486,11 +1486,11 @@ Protected Module StringUtils
 		        if current = 1 AND (MIsVowel(source, current + 1) OR MStringAt(source, current, 2, "WH")) then
 		          //Wasserman should match Vasserman
 		          if(MIsVowel(source, current + 1)) then
-		            out1 = out1 + "A"  
+		            out1 = out1 + "A"
 		            out2 = out2 + "F"
 		          else
 		            //need Uomo to match Womo
-		            out1 = out1 + "A"  
+		            out1 = out1 + "A"
 		            out2 = out2 + "A"
 		          end if
 		        end if
@@ -1499,13 +1499,13 @@ Protected Module StringUtils
 		          OR MStringAt(source, current - 1, 5, "EWSKI", "EWSKY", "OWSKI", "OWSKY") _
 		          OR MStringAt(source, 1, 3, "SCH") then
 		          //Arnow should match Arnoff
-		          out1 = out1 + ""  
+		          out1 = out1 + ""
 		          out2 = out2 + "F"
 		          current = current + 1
 		          
 		        elseif MStringAt(source, current, 4, "WICZ", "WITZ") then
 		          //polish e.g. 'filipowicz'
-		          out1 = out1 + "TS"  
+		          out1 = out1 + "TS"
 		          out2 = out2 + "FX"
 		          current = current + 4
 		          
@@ -1519,7 +1519,7 @@ Protected Module StringUtils
 		      //french e.g. breaux
 		      if not (current = length AND _
 		        (MStringAt(source, current - 3, 3, "IAU", "EAU") OR MStringAt(source, current - 2, 2, "AU", "OU"))) then
-		        out1 = out1 + "KS"  
+		        out1 = out1 + "KS"
 		        out2 = out2 + "KS"
 		      end if
 		      
@@ -1532,17 +1532,17 @@ Protected Module StringUtils
 		    case "Z"
 		      //chinese pinyin e.g. 'zhao'
 		      if charAt(current + 1) = "H" then
-		        out1 = out1 + "J"  
+		        out1 = out1 + "J"
 		        out2 = out2 + "J"
 		        current = current +  2
 		        
 		      else
 		        if MStringAt(source, current + 1, 2, "ZO", "ZI", "ZA") _
 		          OR (SlavoGermanic AND current > 1 AND charAt(current - 1) <> "T") then
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "TS"
 		        else
-		          out1 = out1 + "S"  
+		          out1 = out1 + "S"
 		          out2 = out2 + "S"
 		        end if
 		        
@@ -1576,7 +1576,7 @@ Protected Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function MStringAt(source As String, start As Integer, length As Integer,  paramArray args As String) As Boolean
+		Private Function MStringAt(source As String, start As Integer, length As Integer, paramArray args As String) As Boolean
 		  // This is a private helper function for the Metaphone method.
 		  
 		  if start < 1 then return false
@@ -1594,7 +1594,7 @@ Protected Module StringUtils
 	#tag Method, Flags = &h1
 		Protected Function NthFieldQuoted(src as string, sep as string, index as integer) As string
 		  // Equivalent to RB's nthField() function, but respects quoted values
-		  // Usage: 
+		  // Usage:
 		  //    s = """Hello, Kitty"", ""One"", ""Two, Three"""
 		  //    s1 = nthFieldQuoted(s, ",", 3)
 		  // result: s1 = "Two, Three" (including the quotes!)
@@ -1718,7 +1718,7 @@ Protected Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function Remove(s As String, charSet As String=" ") As String
+		Protected Function Remove(s As String, charSet As String = " ") As String
 		  // Delete all characters which are members of charSet. Example:
 		  // Delete("wooow maaan", "aeiou") = "ww mn".
 		  
@@ -1972,7 +1972,7 @@ Protected Module StringUtils
 		  //
 		  // The bubble sort is a simple sort to implement, but since it is O(n**2)
 		  // it's horribly inefficient, especially when the elements to be sorted are
-		  // effectively sorted already.  
+		  // effectively sorted already.
 		  //
 		  // "Num" is supposed to be the number of elements, but it's more accurate
 		  // to just use the array bounds.
@@ -2137,7 +2137,7 @@ Protected Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function SplitToCDbl(source As String, delimiter As String=" ") As Double()
+		Protected Function SplitToCDbl(source As String, delimiter As String = " ") As Double()
 		  // Split a string into fields, then convert each field into a Double
 		  // using the CDbl function.  This is appropriate for a set of numbers
 		  // entered or readable by the end-user.
@@ -2159,7 +2159,7 @@ Protected Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function SplitToInt(source As String, delimiter As String=" ") As Integer()
+		Protected Function SplitToInt(source As String, delimiter As String = " ") As Integer()
 		  // Split a string into fields, then convert each field into an Integer
 		  // using the Val function.
 		  
@@ -2180,7 +2180,7 @@ Protected Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function SplitToVal(source As String, delimiter As String=" ") As Double()
+		Protected Function SplitToVal(source As String, delimiter As String = " ") As Double()
 		  // Split a string into fields, then convert each field into a Double
 		  // using the Val function.  This is appropriate for a set of numbers
 		  // used only by the computer; for human-readable numbers, consider
@@ -2325,7 +2325,7 @@ Protected Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function Squeeze(s As String, charSet As String=" ") As String
+		Protected Function Squeeze(s As String, charSet As String = " ") As String
 		  // Find any repeating characters, where the character is a member of
 		  // charSet, and replace the run with a single character.  Example:
 		  // Squeeze("wooow maaan", "aeiou") = "wow man".
@@ -2346,7 +2346,7 @@ Protected Module StringUtils
 		  for spos = 1 to sLen
 		    char = Mid( s, spos, 1 )
 		    if char = lastChar then
-		      skip = InStrB( charSet, char ) > 0 
+		      skip = InStrB( charSet, char ) > 0
 		    else
 		      skip = false
 		      lastChar = char
@@ -2500,8 +2500,6 @@ Protected Module StringUtils
 		Charles Yeomans, yeomans@desuetude.com
 		
 		(*) To whom correspondence should be addressed.
-		
-		
 	#tag EndNote
 
 	#tag Note, Name = Home Page
@@ -2510,9 +2508,6 @@ Protected Module StringUtils
 		You should be able to find the latest version via this URL:
 		
 		    http://www.strout.net/info/coding/rb/
-		
-		
-		
 	#tag EndNote
 
 	#tag Note, Name = License
@@ -2522,8 +2517,6 @@ Protected Module StringUtils
 		fitness for any purpose.
 		
 		Share and enjoy!
-		
-		
 	#tag EndNote
 
 	#tag Note, Name = Version History
@@ -2541,9 +2534,6 @@ Protected Module StringUtils
 		- Added Trim, LTrim, and RTrim (with charsToTrim parameter).
 		- Improved the speed of CountFieldsQuoted substantially.
 		- Improved the speed of NthFieldQuoted and Squeeze slightly.
-		
-		
-		
 	#tag EndNote
 
 

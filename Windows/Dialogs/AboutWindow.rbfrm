@@ -195,7 +195,7 @@ Begin Window AboutWindow
       LockTop         =   "True"
       MultiLine       =   "True"
       TabPanelIndex   =   0
-      Text            =   "Ed Palmer, Joshua Coley, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant."
+      Text            =   "Ed Palmer, Joshua Coley, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant."
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "System"
@@ -227,7 +227,7 @@ Begin Window AboutWindow
       LockTop         =   "True"
       MultiLine       =   "True"
       TabPanelIndex   =   0
-      Text            =   "StringUtils (http://www.strout.net/info/coding/rb/)\rHTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)\rREALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)"
+      Text            =   "StringUtils (http://www.strout.net/info/coding/rb/)\rHTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)\rREALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)\riDeclare (http://www.declaresub.com/iDeclare"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "System"
@@ -299,6 +299,66 @@ Begin Window AboutWindow
       Width           =   376
       BehaviorIndex   =   8
    End
+   Begin StaticText txt_about_memory
+      AutoDeactivate  =   "True"
+      Bold            =   ""
+      ControlOrder    =   9
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   "True"
+      Height          =   15
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   160
+      LockBottom      =   ""
+      LockLeft        =   ""
+      LockRight       =   ""
+      LockTop         =   ""
+      MultiLine       =   ""
+      TabPanelIndex   =   0
+      Text            =   "Untitled"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "SmallSystem"
+      TextSize        =   0
+      Top             =   298
+      Underline       =   ""
+      Visible         =   "True"
+      Width           =   115
+      BehaviorIndex   =   9
+   End
+   Begin StaticText txt_about_objects
+      AutoDeactivate  =   "True"
+      Bold            =   ""
+      ControlOrder    =   10
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   "True"
+      Height          =   15
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   308
+      LockBottom      =   ""
+      LockLeft        =   ""
+      LockRight       =   ""
+      LockTop         =   ""
+      MultiLine       =   ""
+      TabPanelIndex   =   0
+      Text            =   "Untitled"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "SmallSystem"
+      TextSize        =   0
+      Top             =   298
+      Underline       =   ""
+      Visible         =   "True"
+      Width           =   115
+      BehaviorIndex   =   10
+   End
 End
 #tag EndWindow
 
@@ -326,6 +386,9 @@ End
 		  txt_about_libraries.Text = str
 		  
 		  btn_about_close.Caption = App.T.Translate("shared/close/@caption")
+		  
+		  txt_about_memory.Text = Format(REALbasic.Runtime.MemoryUsed, "#,##9")
+		  txt_about_objects.Text = Format(REALbasic.Runtime.ObjectCount, "#,##9")
 		End Sub
 	#tag EndEvent
 

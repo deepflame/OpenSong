@@ -1,5 +1,5 @@
 #tag Class
-Protected Class plistDict
+Class plistDict
 	#tag Method, Flags = &h0
 		Function AbsolutePath() As string
 		  path=":"+name

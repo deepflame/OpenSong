@@ -187,6 +187,7 @@ Protected Class FolderDB
 		  If f = Nil Or Not f.Exists Then
 		    ErrorCode = 8
 		    ErrorString = "Could not find file."
+		    f = Nil
 		  End If
 		  Return f
 		  
@@ -861,17 +862,23 @@ Protected Class FolderDB
 		  
 		  If list <> Nil Then
 		    list.DeleteAllRows
-		    For Each d As Dictionary in fileDict
-		      If Not d.Value("Folder").BooleanValue Then
-		        fileList.Append d.Value("Name").StringValue
+		  End If
+		  
+		  For Each d As Dictionary in fileDict
+		    If Not d.Value("Folder").BooleanValue Then
+		      fileList.Append d.Value("Name").StringValue
+		      If List <> Nil Then
 		        list.AddRow d.Value("Name").StringValue
 		        list.CellTag(list.LastIndex, 0) = d.Value("Path").StringValue
 		      End If
-		    Next
+		    End If
+		  Next
+		  
+		  If List <> Nil Then
 		    list.SortedColumn = 0
 		    list.Sort
 		  End If
-		  
+		  Heapsort fileList
 		  Return fileList
 		End Function
 	#tag EndMethod

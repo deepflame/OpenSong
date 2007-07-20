@@ -136,6 +136,7 @@
         <no_songs>There are no songs in the set.</no_songs>
       </print_songs>
       <print_order caption="List">Prints an outline of this set.</print_order>
+      <export caption="Export">Export this set to another folder.</export>
     </current_set>
     <new_item caption="New Item">
       <add_song caption="Song">Adds a song to the current set. This will present the list of songs available from the song editor for you to choose from.</add_song>
@@ -158,11 +159,17 @@
       <scripture caption="(scripture)"/>
       <style caption="(style)">-- Change Style --</style>
       <revert caption="(style)">-- Revert Style --</revert>
+      <defaultstyle caption="(style)">-- Exported Style --</defaultstyle>
     </items>
     <untitled caption="Untitled"/>
     <errors>
       <revert caption="Error reloading set &quot;%1&quot; from file."/>
     </errors>
+    <messages>
+      <export_complete>&quot;%1&quot; exported to
+%2
+      </export_complete>
+    </messages>
   </sets_mode>
 
   <slide_editor>
@@ -979,6 +986,24 @@ Click on this slide to edit its style.</body>
     <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
 Temporarily changing to: %1
 Please modify your preferences.</docs_folder>
+    <fileutils>
+       <destdoesnotexisterror>File does not exist: %1</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
+       <accessdenied>File protection error, access denied: %1</accessdenied>
+       <fileinuse>File in use error: %1
+(Is there a second copy of OpenSong running?)</fileinuse>
+       <filenotfound>File was not found: %1</filenotfound>
+       <invalidname>Invalid name for file: %1</invalidname>
+       <notenoughmemory>Memory exhausted accessing file %1
+Restart OpenSong and retry.</notenoughmemory>
+       <unknownerror>Unknown error accessing file %1</unknownerror>
+       <notaregularfile>Expected %1 to be a file, not a folder.</notaregularfile>
+    </fileutils>
+    <cclinotavailable>The CCLI website has changed significantly.
+This has broken Import function until a new interface can be used.
+In the meantime, please investigate the OpenSong Import utility as an option.
+The OpenSong development team members regret any inconvenience.
+    </cclinotavailable>
   </errors>
 
   <xml_errors>

@@ -1,5 +1,5 @@
 #tag Class
-Protected Class plist
+Class Plist
 	#tag Method, Flags = &h0
 		Sub Cleanup()
 		  if isBinary then

@@ -6,7 +6,11 @@ Protected Class DebugOutput
 		  DebugFile = Nil
 		  Enabled = False
 		  If System.EnvironmentVariable("OPENSONGDEBUGLEVEL") = "" Then
-		    DebugLevel = 1
+                    #if DebugBuild
+		      DebugLevel = 3
+                    #else
+		      DebugLevel = 1
+                    #endif
 		  Else
 		    DebugLevel = CDbl(System.EnvironmentVariable("OPENSONGDEBUGLEVEL"))
 		  End If
@@ -29,7 +33,11 @@ Protected Class DebugOutput
 		  If DebugTOS <> Nil Then Return True
 		  If Enabled Then
 		    If System.EnvironmentVariable("OPENSONGDEBUGFILE") = "" Then
-		      DebugFile = New FolderItem("Debug.txt")
+                      #If DebugBuild
+		        DebugFile = New FolderItem("Debug.txt")
+                      #Else
+                        DebugFile = New FolderItem(DocumentsFolder.Child("OpenSongDebug.txt"))
+                      #endif
 		    Else
 		      DebugFile = New FolderItem(System.EnvironmentVariable("OPENSONGDEBUGFILE"))
 		    End If

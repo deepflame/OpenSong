@@ -444,6 +444,33 @@ Begin Window MainSettingsWindow
          Width           =   205
          BehaviorIndex   =   14
       End
+      Begin PushButton btn_browse
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   "Browse..."
+         ControlOrder    =   15
+         Default         =   "False"
+         Enabled         =   "False"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_documents_folder"
+         Italic          =   "False"
+         Left            =   68
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   338
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   120
+         BehaviorIndex   =   15
+      End
       Begin StaticText nte_documents_warning
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -474,38 +501,11 @@ Begin Window MainSettingsWindow
          Width           =   205
          BehaviorIndex   =   16
       End
-      Begin PushButton btn_browse
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         Cancel          =   "False"
-         Caption         =   "Browse..."
-         ControlOrder    =   15
-         Default         =   "False"
-         Enabled         =   "False"
-         Height          =   22
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_settings_documents_folder"
-         Italic          =   "False"
-         Left            =   68
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   338
-         Underline       =   "False"
-         Visible         =   True
-         Width           =   120
-         BehaviorIndex   =   15
-      End
       Begin Checkbox chk_documents_oldfolderdb
          AutoDeactivate  =   "True"
          Bold            =   ""
          Caption         =   "Use Pre-V1.1 FolderDB cache"
-         ControlOrder    =   44
+         ControlOrder    =   20
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -527,7 +527,7 @@ Begin Window MainSettingsWindow
          Value           =   ""
          Visible         =   True
          Width           =   214
-         BehaviorIndex   =   44
+         BehaviorIndex   =   17
       End
    End
    Begin GroupBox grp_settings_fonts
@@ -553,7 +553,7 @@ Begin Window MainSettingsWindow
       Underline       =   "False"
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   17
+      BehaviorIndex   =   18
       Begin StaticText lbl_fonts_headings
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -582,7 +582,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   18
+         BehaviorIndex   =   19
       End
       Begin StaticText lbl_fonts_labels
          AutoDeactivate  =   "True"
@@ -614,31 +614,6 @@ Begin Window MainSettingsWindow
          Width           =   120
          BehaviorIndex   =   20
       End
-      Begin SFontCanvas can_fonts_headings
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AdvancedOptions =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   20
-         Enabled         =   "True"
-         EraseBackground =   "True"
-         Height          =   30
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_settings_fonts"
-         Left            =   281
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         TabPanelIndex   =   0
-         Top             =   50
-         UseFocusRing    =   "True"
-         Visible         =   "True"
-         Width           =   120
-         BehaviorIndex   =   19
-      End
       Begin StaticText lbl_fonts_text_fields
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -667,9 +642,9 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   22
+         BehaviorIndex   =   21
       End
-      Begin SFontCanvas can_fonts_labels
+      Begin SFontCanvas can_fonts_headings
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AdvancedOptions =   "False"
@@ -688,11 +663,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
-         Top             =   100
+         Top             =   50
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   21
+         BehaviorIndex   =   22
       End
       Begin StaticText lbl_fonts_fixed_width
          AutoDeactivate  =   "True"
@@ -722,9 +697,9 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   24
+         BehaviorIndex   =   23
       End
-      Begin SFontCanvas can_fonts_text_fields
+      Begin SFontCanvas can_fonts_labels
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AdvancedOptions =   "False"
@@ -743,11 +718,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
-         Top             =   150
+         Top             =   100
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   23
+         BehaviorIndex   =   24
       End
       Begin StaticText lbl_fonts_buttons
          AutoDeactivate  =   "True"
@@ -777,9 +752,9 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   26
+         BehaviorIndex   =   25
       End
-      Begin SFontCanvas can_fonts_fixed_width
+      Begin SFontCanvas can_fonts_text_fields
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AdvancedOptions =   "False"
@@ -798,11 +773,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
-         Top             =   200
+         Top             =   150
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   25
+         BehaviorIndex   =   26
       End
       Begin StaticText lbl_fonts_large_headings
          AutoDeactivate  =   "True"
@@ -832,9 +807,9 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   28
+         BehaviorIndex   =   27
       End
-      Begin SFontCanvas can_fonts_buttons
+      Begin SFontCanvas can_fonts_fixed_width
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AdvancedOptions =   "False"
@@ -853,11 +828,36 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
+         Top             =   200
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   120
+         BehaviorIndex   =   28
+      End
+      Begin SFontCanvas can_fonts_buttons
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AdvancedOptions =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   34
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         Height          =   30
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_fonts"
+         Left            =   281
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
          Top             =   250
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   27
+         BehaviorIndex   =   29
       End
       Begin SFontCanvas can_fonts_large_headings
          AcceptFocus     =   "False"
@@ -865,7 +865,7 @@ Begin Window MainSettingsWindow
          AdvancedOptions =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         ControlOrder    =   34
+         ControlOrder    =   44
          Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   45
@@ -882,7 +882,7 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   29
+         BehaviorIndex   =   30
       End
    End
    Begin GroupBox grp_settings_proxy
@@ -908,7 +908,7 @@ Begin Window MainSettingsWindow
       Underline       =   "False"
       Visible         =   True
       Width           =   174
-      BehaviorIndex   =   30
+      BehaviorIndex   =   31
       Begin StaticText lbl_proxy_host
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -937,7 +937,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   31
+         BehaviorIndex   =   32
       End
       Begin EditField edt_proxy_host
          AcceptTabs      =   "False"
@@ -979,7 +979,7 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   134
-         BehaviorIndex   =   32
+         BehaviorIndex   =   33
       End
       Begin StaticText lbl_proxy_port
          AutoDeactivate  =   "True"
@@ -1009,7 +1009,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   33
+         BehaviorIndex   =   34
       End
       Begin EditField edt_proxy_port
          AcceptTabs      =   "False"
@@ -1051,7 +1051,7 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   50
-         BehaviorIndex   =   34
+         BehaviorIndex   =   35
       End
    End
    Begin CheckBox chk_general_newpaint
@@ -1080,7 +1080,7 @@ Begin Window MainSettingsWindow
       Value           =   "False"
       Visible         =   True
       Width           =   134
-      BehaviorIndex   =   35
+      BehaviorIndex   =   36
    End
    Begin GroupBox grp_settings_user_defined
       AutoDeactivate  =   "True"
@@ -1105,7 +1105,7 @@ Begin Window MainSettingsWindow
       Underline       =   "False"
       Visible         =   True
       Width           =   173
-      BehaviorIndex   =   36
+      BehaviorIndex   =   37
       Begin StaticText lbl_define_user1
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -1134,7 +1134,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   143
-         BehaviorIndex   =   37
+         BehaviorIndex   =   38
       End
       Begin EditField edt_define_user1
          AcceptTabs      =   "False"
@@ -1176,7 +1176,7 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   143
-         BehaviorIndex   =   38
+         BehaviorIndex   =   39
       End
       Begin StaticText lbl_define_user2
          AutoDeactivate  =   "True"
@@ -1206,7 +1206,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   143
-         BehaviorIndex   =   39
+         BehaviorIndex   =   40
       End
       Begin EditField edt_define_user2
          AcceptTabs      =   "False"
@@ -1248,7 +1248,7 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   143
-         BehaviorIndex   =   40
+         BehaviorIndex   =   41
       End
       Begin StaticText lbl_define_user3
          AutoDeactivate  =   "True"
@@ -1278,7 +1278,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   143
-         BehaviorIndex   =   41
+         BehaviorIndex   =   42
       End
       Begin EditField edt_define_user3
          AcceptTabs      =   "False"
@@ -1320,7 +1320,7 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   143
-         BehaviorIndex   =   42
+         BehaviorIndex   =   43
       End
       Begin PushButton btn_define_load
          AutoDeactivate  =   "True"
@@ -1347,7 +1347,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   143
-         BehaviorIndex   =   43
+         BehaviorIndex   =   44
       End
    End
 End
@@ -1362,30 +1362,21 @@ End
 
 	#tag Event
 		Sub Open()
+		  Dim s As String
 		  edt_general_ccli.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")
 		  chk_general_version_check.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "version/@check", False)
 		  edt_proxy_host.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@host")
 		  edt_proxy_port.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@port")
 		  
-		  Dim s As String
-		  's = SmartML.GetValue(App.MyGlobals.DocumentElement, "documents/@folder")
-		  s = App.MainPreferences.GetValueFI(Prefs.kDocumentsFolder, DocumentsFolder.Child("OpenSong")).AbsolutePath
-		  If Len(s) > 0 Then
-		    rad_documents_custom.Value = True
-		    btn_browse.Enabled = True
-		    DocsFolder = FileUtils.AbsolutePathToFolderItem(s)
-		  Else
-		    rad_documents_default.Value = True
-		    btn_browse.Enabled = False
-		    DocsFolder = DefaultDocsFolder
-		  End If
-		  '++JRC moved to globals
-		  's = SmartML.GetValue(App.MyGlobals.DocumentElement, "language/@file")
-		  's = SmartML.GetValue(App.MyMainSettings.DocumentElement, "language/@file")
-		  '--
 		  //++
-		  // And now it's in the preferences.
+		  // EMP, July 2007
+		  // Simplified this logic a little since there is now a way to return FolderItem from preferences
 		  //--
+		  DocsFolder = App.MainPreferences.GetValueFI(Prefs.kDocumentsFolder, DefaultDocsFolder, True)
+		  rad_documents_default.Value = (DocsFolder = DefaultDocsFolder)
+		  rad_documents_custom.Value = Not rad_documents_default.Value
+		  btn_browse.Enabled = rad_documents_custom.Value
+		  
 		  s = App.MainPreferences.GetValue(Prefs.kLanguage, "English")
 		  Dim f As FolderItem
 		  f = App.AppFolder.Child("OpenSong Languages")
@@ -1449,7 +1440,6 @@ End
 		  App.CenterInControlScreen Me
 		  
 		  '++JRC Display DocsFolder Location
-		  If DocsFolder.AbsolutePath = DefaultDocsFolder.AbsolutePath Then rad_documents_default.Value = True
 		  docs_folder.Text = DocsFolder.FormatFolderName
 		  '--
 		  //++ EMP July 2007

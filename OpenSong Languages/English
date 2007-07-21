@@ -998,6 +998,7 @@ Please modify your preferences.</docs_folder>
 Restart OpenSong and retry.</notenoughmemory>
        <unknownerror>Unknown error accessing file %1</unknownerror>
        <notaregularfile>Expected %1 to be a file, not a folder.</notaregularfile>
+       <notafolder>Expected %1 to be a folder, not a file.</notafolder>
     </fileutils>
     <cclinotavailable>The CCLI website has changed significantly.
 This has broken Import function until a new interface can be used.

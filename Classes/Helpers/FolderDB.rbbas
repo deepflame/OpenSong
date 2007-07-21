@@ -922,7 +922,7 @@ Protected Class FolderDB
 		  
 		  If Not f.Directory Then Return fileList
 		  
-		  last = f.Count - 1
+		  last = f.Count
 		  For i As Integer = 1 To last
 		    fi = f.item(i)
 		    If Not fi.IsFileVisible Then Continue
@@ -998,43 +998,51 @@ Protected Class FolderDB
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ErrorCode"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ErrorString"
 			Group="Behavior"
 			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="NumFiles"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

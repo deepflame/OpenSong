@@ -1,3 +1,13 @@
+* Corrected issue in FolderDB.GetFilesGeneric (fencepost error)
+
+* Made the default output for the debugger the user's home directory if running a built application (correct file protection issue for non-priv users).
+
+* Fixed some odds and ends that prevented proper initialization on Linux.
+
+* Simplified logic for locating files in both App.Open and MainSettingsWindow.
+
+* Added error message for FileUtils.CopyPath and made CopyPath and CopyFile smart enough to call the other if needed.  Also made CopyFile smart enough to take a directory as the output target.
+
 * Fixed issue with sets and missing songs not alerting the user. This was introduced because of changes to the underlying FolderDB in r235-236.
 
 * Disable the CCLI Import facility.  A message (errors/cclinotavailable) is shown instead.  Maybe this will reduce the number of bug reports for this issue.

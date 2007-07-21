@@ -14,14 +14,24 @@ Protected Module FileUtils
 
 	#tag Method, Flags = &h1
 		Protected Function AbsolutePathToFolderItem(path As String) As FolderItem
-		  Dim i, l As Integer
+		  'Dim i, l As Integer
+		  'Dim f As FolderItem
+		  'path = ReplaceAll(path, "\", "/")
+		  'l = CountFields(path, "/")
+		  'f = GetFolderItem(NthField(path, "/", 1))
+		  'For i = 2 To l
+		  'If f <> Nil Then f = f.Child(NthField(path, "/", i))
+		  'Next i
+		  'Return f
+		  
 		  Dim f As FolderItem
-		  path = ReplaceAll(path, "\", "/")
-		  l = CountFields(path, "/")
-		  f = GetFolderItem(NthField(path, "/", 1))
-		  For i = 2 To l
-		    If f <> Nil Then f = f.Child(NthField(path, "/", i))
-		  Next i
+		  If IsPathAbsolute(path) Then
+		    f = GetFolderItem(Path, FolderItem.PathTypeAbsolute)
+		  Else
+		    App.DebugWriter.Write("FileUtils.AbsolutePathToFolderItem: IsPathAbsolute reported invalid path: '" + path + "'", 1)
+		    f = Nil
+		  End If
+		  
 		  Return f
 		End Function
 	#tag EndMethod
@@ -241,7 +251,7 @@ Protected Module FileUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function IsPathAbsolute(Path As String) As Boolean
+		Protected Function IsPathAbsolute(path As String) As Boolean
 		  //++
 		  // Take advantage of the fact that GetFolderItem will
 		  // successfully handle a full path in absolute format,
@@ -374,7 +384,7 @@ Protected Module FileUtils
 		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem.Parent))
 		    Return False
 		  End If
-		  If (Not toItem.Parent.Exists) Then 
+		  If (Not toItem.Parent.Exists) Then
 		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(toItem.Parent))
 		    Return False
 		  End If
@@ -388,7 +398,7 @@ Protected Module FileUtils
 		    Return False
 		  End If
 		  
-		  If Not fromItem.Exists Then 
+		  If Not fromItem.Exists Then
 		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem))
 		    Return False
 		  End If
@@ -432,28 +442,33 @@ Protected Module FileUtils
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

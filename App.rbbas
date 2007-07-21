@@ -70,16 +70,7 @@ Inherits Application
 		  SmartML.Init
 		  LoadPreferences
 		  
-		  AppFolder = App.ExecutableFile
-		  If Not AppFolder.Directory Then AppFolder = AppFolder.Parent ' Linux points to the parent folder; the other OSes seem to point to the executable file.
-		  //++
-		  // On MachO builds (Macintosh bundles), the executable file is in OpenSong.app/Contents/MacOS
-		  // So we don't have to put the OpenSong... directories in the bundle, move up three additional levels
-		  // to get to the same directory where the bundle lives.
-		  //--
-		  #If TargetMachO
-		    AppFolder = AppFolder.Parent.Parent.Parent
-		  #Endif
+		  AppFolder = GetFolderItem("")
 		  
 		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
 		  Dim temp As String
@@ -1254,6 +1245,7 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

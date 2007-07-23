@@ -59,7 +59,7 @@ Protected Module FileUtils
 		      End If
 		    Else ' not a directory
 		      If Left(fromItem.Name, 1) <> "." Then
-		        If Not CopyPath(fromItem, toItem, overwrite) Then Return False
+		        If Not CopyFile(fromItem, toItem, overwrite) Then Return False
 		      End If
 		    End If
 		  Next i
@@ -393,14 +393,14 @@ Protected Module FileUtils
 		    LastError = App.T.Translate("errors/fileutils/notaregularfile", GetDisplayFullPath(fromItem))
 		    Return False
 		  End If
-		  If toItem.Directory Then
-		    LastError = App.T.Translate("errors/fileutils/notaregularfile", GetDisplayFullPath(toItem))
-		    Return False
-		  End If
 		  
 		  If Not fromItem.Exists Then
 		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem))
 		    Return False
+		  End If
+		  
+		  If toItem.Directory Then
+		    toItem = toItem.Child(fromItem.Name)
 		  End If
 		  
 		  If _
@@ -442,33 +442,28 @@ Protected Module FileUtils
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

@@ -476,33 +476,39 @@ Protected Class FolderDB
 
 	#tag Method, Flags = &h21
 		Private Function GetFilesInFolderWin(path As String, list As ListBox = Nil, recurse As Boolean = False) As String()
-		  #If Not TargetWin32
-		    Return GetFilesInFolderGeneric(path, list, recurse)
-		  #endif
-		  
-		  Dim fileDict() As Dictionary
-		  
-		  win32GetFileList(fileDict, Folder.AbsolutePath, ReplaceAll(path, "/", "\"), "*.*", recurse)
-		  
-		  Dim fileList() As String
-		  Dim last As Integer
-		  last = UBound(fileDict)
-		  
-		  For i As Integer = 0 to last
-		    // Only add it if it isn't a folder or hidden
-		    If (Not fileDict(i).Value("Hidden").BooleanValue) And _
-		      (Not fileDict(i).Value("Folder").BooleanValue) And _
-		      Left(fileDict(i).Value("Name"), 1) <> "_" And _
-		      Left(fileDict(i).Value("Name"), 1) <> "." Then
-		      fileList.Append fileDict(i).Value("Name")
-		      If list <> Nil Then
-		        list.AddRow fileDict(i).Value("Name")
-		        list.CellTag(list.LastIndex, 0) = ReplaceAll(fileDict(i).Value("Path"), "\", "/")
-		      End If
-		    End If
-		  Next
-		  
-		  Return fileList
+          #If Not TargetWin32
+            Return GetFilesInFolderGeneric(path, list, recurse)
+          #endif
+  
+          Dim fileDict() As Dictionary
+          Dim startPath As String
+  
+          startPath = Folder.AbsolutePath
+          If Right(startPath, 1) <> "\" Then
+            startPath = startPath + "\"
+          End If
+          startPath = startPath + ReplaceAll(path, "/", "\")
+          win32GetFileList(fileDict, startPath, "", "*.*", recurse)
+  
+          Dim fileList() As String
+          Dim last As Integer
+          last = UBound(fileDict)
+  
+          For i As Integer = 0 to last
+            // Only add it if it isn't a folder or hidden
+            If (Not fileDict(i).Value("Hidden").BooleanValue) And _
+              (Not fileDict(i).Value("Folder").BooleanValue) And _
+              Left(fileDict(i).Value("Name"), 1) <> "_" And _
+              Left(fileDict(i).Value("Name"), 1) <> "." Then
+              fileList.Append fileDict(i).Value("Name")
+              If list <> Nil Then
+                list.AddRow fileDict(i).Value("Name")
+                list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
+              End If
+            End If
+          Next
+  
+          Return fileList
 		End Function
 	#tag EndMethod
 

@@ -250,7 +250,7 @@ Protected Class FolderDB
 		  Dim fullName, pathName, fileName As String
 		  
 		  If fileBox <> Nil Then fileBox.DeleteAllRows
-		  
+		  showAll = False
 		  If InStr(pathFilter, FilterAll) = 1 Or Len(pathFilter) = 0 Then
 		    showAll = True
 		    pathFilter = ""
@@ -482,7 +482,7 @@ Protected Class FolderDB
 		  
 		  Dim fileDict() As Dictionary
 		  
-		  win32GetFileList(fileDict, Folder.AbsolutePath, ReplaceAll(path, "/", "\"), "*.*", True)
+		  win32GetFileList(fileDict, Folder.AbsolutePath, ReplaceAll(path, "/", "\"), "*.*", recurse)
 		  
 		  Dim fileList() As String
 		  Dim last As Integer
@@ -845,7 +845,7 @@ Protected Class FolderDB
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function GetFilesInFolderMac(path As String, list As Listbox = Nil, recurse As Boolean = False) As String()
+		Private Function GetFilesInFolderMac(path As String, list As listbox = Nil, recurse As Boolean = False) As String()
 		  #If Not TargetMacOS
 		    Return GetFilesInFolderGeneric(path, list, recurse)
 		  #endif
@@ -858,7 +858,7 @@ Protected Class FolderDB
 		  
 		  ref = New FSRef(f)
 		  
-		  fileDict = ref.Iterate(True, path)
+		  fileDict = ref.Iterate(recurse, path)
 		  
 		  If list <> Nil Then
 		    list.DeleteAllRows
@@ -998,51 +998,43 @@ Protected Class FolderDB
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ErrorCode"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ErrorString"
 			Group="Behavior"
 			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="NumFiles"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

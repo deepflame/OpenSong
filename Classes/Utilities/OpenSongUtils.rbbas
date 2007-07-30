@@ -998,6 +998,10 @@ Protected Module OpenSongUtils
 		    msg = "SpotlightException"
 		  ElseIf error isA UnsupportedFormatException Then
 		    msg = "UnsupportedFormatException"
+		  ElseIf error isA MacOSException Then
+		    msg = "MacOSException"
+		  ElseIf error isA InvalidParameterException Then
+		    msg = "InvalidParameterException"
 		  Else
 		    msg = "Unknown exception"
 		  End If

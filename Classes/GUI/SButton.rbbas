@@ -717,6 +717,7 @@ Inherits Canvas
 		#tag ViewProperty
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"

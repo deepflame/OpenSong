@@ -13,10 +13,13 @@ Implements IPreferences
 		  Dim dict As plistDict
 		  
 		  Error = False
+		  ErrorString = kErrNoError
+		  ErrorNumber = kErrNoErrorNum
 		  
 		  If plistobj = Nil Then
 		    error = True
-		    ErrorString = "CreatePath: plistobj is Nil"
+		    ErrorString = kErrNilPlistObj
+		    ErrorNumber = kErrNilPlistObjNum
 		    Return Nil
 		  End If
 		  
@@ -26,7 +29,8 @@ Implements IPreferences
 		  
 		  If UBound(elements) = -1 Then
 		    error = True
-		    ErrorString = "CreatePath was passed a Nil path"
+		    ErrorString = kErrNilPath
+		    ErrorNumber = kErrNilPathNum
 		    Return Nil
 		  End If
 		  
@@ -40,7 +44,8 @@ Implements IPreferences
 		    If dict.Exists(child) Then
 		      If dict.GetType(child) <> "Dict" Then
 		        error = True
-		        ErrorString = "CreatePath: non-Dict in path " + dict.child(child).AbsolutePath
+		        ErrorString = kErrNonDict + ": " + dict.child(child).AbsolutePath
+		        ErrorNumber = kErrNonDictNum
 		        Return Nil
 		      End If
 		    Else
@@ -55,6 +60,7 @@ Implements IPreferences
 
 	#tag Method, Flags = &h0
 		Function error() As Boolean
+		  // Done this way because there's no way to put a computed property in an interface definition
 		  Return error
 		End Function
 	#tag EndMethod
@@ -81,7 +87,8 @@ Implements IPreferences
 		  
 		  If plistobj = Nil Then
 		    error = True
-		    ErrorString = "plist is not initialized"
+		    ErrorString = kErrPlistNotInit
+		    ErrorNumber = kErrPlistNotInitNum
 		    dict = Nil
 		    element = ""
 		    Return False
@@ -110,7 +117,8 @@ Implements IPreferences
 		    If dict.Exists(elements(i)) Then
 		      If dict.GetType(elements(i)) <> "Dict" Then
 		        error = True
-		        ErrorString = "Leaf node is not a Dict"
+		        ErrorString = kErrNonDict
+		        ErrorNumber = kErrNonDictNum
 		        dict = Nil
 		        element = ""
 		        Return False
@@ -120,7 +128,8 @@ Implements IPreferences
 		      // Allow for non-existent final leaf
 		      If i <> UBound(elements) Then
 		        error = True
-		        ErrorString = "Missing leaf node"
+		        ErrorString = kErrMissingLeaf
+		        ErrorNumber = kErrMissingLeafNum
 		        // Leave dict pointing where we are
 		        element = ""
 		        Return False
@@ -143,7 +152,7 @@ Implements IPreferences
 		  If GetChild(path, pl, child) Then
 		    Return pl.GetString(child, default)
 		  End If
-		  If error Then Return default
+		  If error And ErrorNumber <> kErrMissingLeafNum Then Return default
 		  If Not create Then Return default
 		  
 		  pl = CreatePath(path)
@@ -169,7 +178,7 @@ Implements IPreferences
 		  If GetChild(path, pl, child) Then
 		    Return pl.GetBoolean(child, default)
 		  End If
-		  If error Then Return default
+		  If error And ErrorNumber <> kErrMissingLeafNum Then Return default
 		  If Not create Then Return default
 		  
 		  pl = CreatePath(path)
@@ -195,7 +204,7 @@ Implements IPreferences
 		  If GetChild(path, pl, child) Then
 		    Return pl.GetColor(child, default)
 		  End If
-		  If error Then Return default
+		  If error And ErrorNumber <> kErrMissingLeafNum Then Return default
 		  If Not create Then Return default
 		  
 		  pl = CreatePath(path)
@@ -221,7 +230,7 @@ Implements IPreferences
 		  If GetChild(path, pl, child) Then
 		    //Return pl.GetString(child, default)
 		  End If
-		  If error Then Return default
+		  If error And ErrorNumber <> kErrMissingLeafNum Then Return default
 		  If Not create Then Return default
 		  
 		  pl = CreatePath(path)
@@ -244,27 +253,15 @@ Implements IPreferences
 		  Dim child As String
 		  Dim elements() As String
 		  Dim SaveInfo As String
+		  Const URLsuffix = "-url"
 		  
 		  If GetChild(path, pl, child) Then
 		    Return TemporaryFolder.GetRelative(DecodeBase64(pl.GetString(child)))
 		  End If
-		  If error Then Return default
+		  If error And ErrorNumber <> kErrMissingLeafNum Then Return Nil
 		  If Not create Then Return default
 		  
-		  pl = CreatePath(path)
-		  If error Then Return default
-		  elements = Split(path, "/")
-		  child = elements(UBound(elements))
-		  If Left(child, 1) = "@" Then
-		    child = Mid(child, 2)
-		  Else
-		    child = "value"
-		  End If
-		  If default = Nil Then
-		    pl.SetString(child, "")
-		  Else
-		    pl.SetString(child, EncodeBase64(default.GetSaveInfo(Nil)))
-		  End If
+		  SetValueFI(path, default)
 		  Return default
 		End Function
 	#tag EndMethod
@@ -278,7 +275,7 @@ Implements IPreferences
 		  If GetChild(path, pl, child) Then
 		    Return pl.GetReal(child, default)
 		  End If
-		  If error Then Return default
+		  If error And ErrorNumber <> kErrMissingLeafNum Then Return default
 		  If Not create Then Return default
 		  
 		  pl = CreatePath(path)
@@ -299,7 +296,8 @@ Implements IPreferences
 		Function Load(path As FolderItem = Nil) As Boolean
 		  If path = Nil Then
 		    error = True
-		    ErrorString = "No path to preferences specified"
+		    ErrorString = kErrNoPrefsPath
+		    ErrorNumber = kErrNoPrefsPathNum
 		    Return True
 		  End If
 		  
@@ -310,7 +308,8 @@ Implements IPreferences
 		    ErrorString = plistobj.errorMessage
 		  Else
 		    error = False
-		    ErrorString = ""
+		    ErrorString = kErrNoError
+		    ErrorNumber = kErrNoErrorNum
 		  End If
 		  
 		  Return Not error
@@ -349,7 +348,7 @@ Implements IPreferences
 		  Dim elements() As String
 		  
 		  If Not GetChild(path, pl, child) Then
-		    If error Then Return
+		    If error And ErrorNumber <> kErrMissingLeafNum Then Return
 		    pl = CreatePath(path)
 		    If error Then Return
 		    elements = Split(path, "/")
@@ -374,7 +373,7 @@ Implements IPreferences
 		  Dim elements() As String
 		  
 		  If Not GetChild(path, pl, child) Then
-		    If error Then Return
+		    If error And ErrorNumber <> kErrMissingLeafNum Then Return
 		    pl = CreatePath(path)
 		    If error Then Return
 		    elements = Split(path, "/")
@@ -399,7 +398,7 @@ Implements IPreferences
 		  Dim elements() As String
 		  
 		  If Not GetChild(path, pl, child) Then
-		    If error Then Return
+		    If error And ErrorNumber <> kErrMissingLeafNum Then Return
 		    pl = CreatePath(path)
 		    If error Then Return
 		    elements = Split(path, "/")
@@ -424,7 +423,7 @@ Implements IPreferences
 		  Dim elements() As String
 		  
 		  If Not GetChild(path, pl, child) Then
-		    If error Then Return
+		    If error And ErrorNumber <> kErrMissingLeafNum Then Return
 		    pl = CreatePath(path)
 		    If error Then Return
 		    elements = Split(path, "/")
@@ -458,7 +457,7 @@ Implements IPreferences
 		  Dim elements() As String
 		  
 		  If Not GetChild(path, pl, child) Then
-		    If error Then Return
+		    If error And ErrorNumber <> kErrMissingLeafNum Then Return
 		    pl = CreatePath(path)
 		    If error Then Return
 		    elements = Split(path, "/")
@@ -496,7 +495,7 @@ Implements IPreferences
 		  Dim elements() As String
 		  
 		  If Not GetChild(path, pl, child) Then
-		    If error Then Return
+		    If error And ErrorNumber <> kErrMissingLeafNum Then Return
 		    pl = CreatePath(path)
 		    If error Then Return
 		    elements = Split(path, "/")
@@ -541,6 +540,94 @@ Implements IPreferences
 		Protected Receivers() As ipreferencesReceiver
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected ErrorNumber As Integer
+	#tag EndProperty
 
+
+	#tag Constant, Name = kErrNilPlistObj, Type = String, Dynamic = True, Default = \"", Scope = Protected
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"CreatePath: plistobj is Nil"
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNilPlistObjNum, Type = Double, Dynamic = False, Default = \"2", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNilPathNum, Type = Double, Dynamic = False, Default = \"1", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNilPath, Type = String, Dynamic = True, Default = \"", Scope = Protected
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"Nil path passed as argument"
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNonDict, Type = String, Dynamic = True, Default = \"", Scope = Protected
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"Leaf node is not a Dict"
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNonDictNum, Type = Double, Dynamic = False, Default = \"3", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kErrPlistNotInit, Type = String, Dynamic = True, Default = \"", Scope = Protected
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"plist is not initialized"
+	#tag EndConstant
+
+	#tag Constant, Name = kErrPlistNotInitNum, Type = Double, Dynamic = False, Default = \"4", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kErrMissingLeaf, Type = String, Dynamic = True, Default = \"", Scope = Protected
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"Missing leaf node"
+	#tag EndConstant
+
+	#tag Constant, Name = kErrMissingLeafNum, Type = Double, Dynamic = False, Default = \"5", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNoPrefsPath, Type = String, Dynamic = True, Default = \"", Scope = Protected
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"No path to preferences specified"
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNoPrefsPathNum, Type = Double, Dynamic = False, Default = \"6", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNoError, Type = String, Dynamic = False, Default = \"", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kErrNoErrorNum, Type = Double, Dynamic = False, Default = \"0", Scope = Protected
+	#tag EndConstant
+
+
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

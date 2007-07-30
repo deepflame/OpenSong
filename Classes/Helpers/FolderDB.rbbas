@@ -7,37 +7,14 @@ Protected Class FolderDB
 		  Dim lastSlash As Integer
 		  
 		  path = CleanPath(path)
-		  lastSlash = StringUtils.InStrReverse(path, "/")
-		  
-		  'f = GetFile(Mid(path, lastSlash+1))
-		  f = GetFile(path)
-		  If f <> Nil And f.Exists Then
-		    ErrorCode = 3
-		    ErrorString = "File already exists."
-		    Return Nil
-		  End if
 		  
 		  f = FileUtils.RelativePathToFolderItem(Folder, path)
-		  If f = Nil Then
-		    ErrorCode = 4
-		    ErrorString = "Could not find path to new file."
-		    Return Nil
-		  ElseIf f.Exists Then
+		  
+		  If f.Exists Then
 		    ErrorCode = 3
 		    ErrorString = "File already exists."
 		    Return Nil
 		  End If
-		  
-		  //++
-		  // EMP, 4 Feb 06
-		  // Switched to use heapsort instead of bubblesort
-		  //--
-		  Cache.Append Mid(path, lastSlash + 1) + "/" + Left(path, lastSlash)
-		  'Cache.Sort
-		  NumFiles = NumFiles + 1
-		  Heapsort Cache
-		  
-		  If Not Save Then Return Nil
 		  
 		  Return f
 		  
@@ -47,39 +24,24 @@ Protected Class FolderDB
 	#tag Method, Flags = &h0
 		Function AddFolder(path As String) As FolderItem
 		  Dim f As FolderItem
+		  path = CleanPath(path)
 		  f = FileUtils.RelativePathToFolderItem(Folder, path)
-		  If f = Nil Or f.Exists Then
-		    ErrorCode = 1
-		    ErrorString = "Folder already exists."
-		    Return Nil
-		  End If
 		  
-		  Dim i, slashPos As Integer
-		  For i = 1 To UBound(Cache)
-		    slashPos = InStr(Cache(i), "/")
-		    If InStr(Cache(i), path) = slashPos Then
+		  If Not (f Is Nil) Then
+		    If f.Exists Then
 		      ErrorCode = 1
 		      ErrorString = "Folder already exists."
 		      Return Nil
 		    End If
-		  Next i
-		  
-		  f.CreateAsFolder
-		  If Not f.Exists Then
-		    ErrorCode = 2
-		    ErrorString = "Could not create folder."
-		    Return Nil
+		    
+		    f.CreateAsFolder
+		    If Not f.Exists Then
+		      ErrorCode = 2
+		      ErrorString = "Could not create folder."
+		      Return Nil
+		    End If
 		  End If
-		  
-		  Cache.Append "/" + path + "/"
-		  'Cache.Sort
-		  NumFiles = NumFiles + 1
-		  Heapsort cache
-		  
-		  If Not Save Then Return Nil
-		  
 		  Return f
-		  
 		End Function
 	#tag EndMethod
 
@@ -159,8 +121,8 @@ Protected Class FolderDB
 		    FilterAll = "( All )"
 		    FilterMain = "( Main )"
 		  Else
-		    FilterAll = "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )"
-		    FilterMain = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
+		    FilterAll = "( " + App.T.Translate("song_folders/filter_all/@caption") + " )"
+		    FilterMain = "( " + App.T.Translate("song_folders/filter_main/@caption") + " )"
 		  End If
 		  Load folder
 		End Sub
@@ -168,26 +130,20 @@ Protected Class FolderDB
 
 	#tag Method, Flags = &h0
 		Function DeleteFile(path As String) As Boolean
-		  Dim i, cacheSlots(0) As Integer
 		  Dim f As FolderItem
-		  Dim found As Boolean
+		  path = CleanPath(path)
 		  
-		  cacheSlots = GetFileEx(path)
-		  If UBound(cacheSlots) = 0 Then Return False
+		  f = FileUtils.RelativePathToFolderItem(Folder, path)
 		  
-		  For i = UBound(cacheSlots) DownTo 1
-		    f = FileUtils.RelativePathToFolderItem(Folder, CachePathToPath(Cache(cacheSlots(i))))
-		    f.Delete
-		    If f.Exists Then
-		      ErrorCode = 9
-		      ErrorString = "Could not delete file."
-		      Return False
-		    Else
-		      Cache.Remove cacheSlots(i)
-		      If Not Save Then Return False
-		      Return True
-		    End If
-		  Next i
+		  If f = Nil Then Return True
+		  If Not f.Exists Then Return True
+		  f.Delete
+		  If f.Exists Then
+		    ErrorCode = 9
+		    ErrorString = "Could not delete file."
+		    Return False
+		  End If
+		  Return True
 		  
 		End Function
 	#tag EndMethod
@@ -195,7 +151,7 @@ Protected Class FolderDB
 	#tag Method, Flags = &h0
 		Function DeleteFolder(path As String) As Boolean
 		  Dim f As FolderItem
-		  
+		  path = CleanPath(path)
 		  f = FileUtils.RelativePathToFolderItem(Folder, path)
 		  If f = Nil Or Not f.Exists Then
 		    ErrorCode = 6
@@ -216,49 +172,25 @@ Protected Class FolderDB
 		    Return False
 		  End If
 		  
-		  Dim found As Boolean
-		  
-		  Dim i, slashPos As Integer
-		  path = "/" + path + "/"
-		  
-		  For i = 1 To UBound(Cache)
-		    slashPos = InStr(Cache(i), "/")
-		    If StrComp(Mid(Cache(i), slashPos, path.Len), path, 1) = 0 Then
-		      found = True
-		      Cache.Remove i
-		      i = i - 1
-		    End If
-		  Next i
-		  
-		  If Not Save Then Return False
-		  
-		  If Not found Then
-		    ErrorCode = 6
-		    ErrorString = "Could not find folder."
-		    'Return False ' Actually, if we can't find it in the cache, it is a problem, but not a big one.
-		  End If
-		  
 		  Return True
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function GetFile(path As String) As FolderItem
+		  
 		  Dim cacheSlots(0) As Integer
 		  Dim f As FolderItem
+		  path = CleanPath(path)
+		  f = FileUtils.RelativePathToFolderItem(Folder, path)
 		  
-		  If Left(path, 1) = "_" Then ' must be a temp file or something
-		    f = Folder.Child(path)
-		    If f = Nil Or Not f.Exists Then
-		      ErrorCode = 8
-		      ErrorString = "Could not find file."
-		    End If
-		    Return f
+		  If f = Nil Or Not f.Exists Then
+		    ErrorCode = 8
+		    ErrorString = "Could not find file."
+		    f = Nil
 		  End If
+		  Return f
 		  
-		  cacheSlots = GetFileEx(path)
-		  If UBound(cacheSlots) = 0 Then Return Nil
-		  Return FileUtils.RelativePathToFolderItem(Folder, CachePathToPath(Cache(cacheSlots(1))))
 		End Function
 	#tag EndMethod
 
@@ -270,7 +202,6 @@ Protected Class FolderDB
 		  Dim name As String
 		  
 		  path = CleanPath(path)
-		  path = Lowercase(path)
 		  
 		  i = StringUtils.InStrReverse(path, "/")
 		  If i > 0 Then
@@ -280,15 +211,15 @@ Protected Class FolderDB
 		    name = path
 		    path = ""
 		  End If
-		  
+		  Dim NameAndPath As String
+		  NameAndPath = name + "/" + path
 		  //++EMP 19 Feb 2006
 		  // Changed loop to start at 0 to correct issue with MainWindow.ActionSongNew
 		  // and new entry landing in slot 0 of the cache.
+		  // July 2007: Remove calls to Lowercase since RB uses case-insensitive compares
 		  //--
 		  For i = 0 To UBound(Cache)
-		    If Lowercase(Cache(i)) = name + "/" + path Or _
-		      (path.Len = 0 And Left(Lowercase(Cache(i)), name.Len+1) = name + "/") Or _
-		      (path.Len = 1 And Lowercase(Cache(i)) = name + "/") Then
+		    If Cache(i) = NameAndPath Then
 		      f = FileUtils.RelativePathToFolderItem(Folder, CachePathToPath(Cache(i)))
 		      If f <> Nil And f.Exists Then
 		        matches.Append i
@@ -319,33 +250,22 @@ Protected Class FolderDB
 		  Dim fullName, pathName, fileName As String
 		  
 		  If fileBox <> Nil Then fileBox.DeleteAllRows
-		  
-		  If InStr(pathFilter, FilterAll) = 1 Or Len(pathFilter) = 0 Then showAll = True
-		  If InStr(pathFilter, FilterMain) = 1 Then
+		  showAll = False
+		  If InStr(pathFilter, FilterAll) = 1 Or Len(pathFilter) = 0 Then
+		    showAll = True
+		    pathFilter = ""
+		  ElseIf InStr(pathFilter, FilterMain) = 1 Or pathFilter = "." Then
 		    pathFilter = ""
 		  Else
 		    pathFilter = pathFilter + "/"
 		  End If
-		  
-		  For i = 1 To UBound(Cache)
-		    fullName = Cache(i)
-		    slashPos = InStr(fullName, "/")
-		    pathName = Mid(fullName, slashPos+1)
-		    If showAll Or InStr(pathName, pathFilter) = 1 Or (pathName.Len = 0 And pathFilter.Len = 0) Then
-		      fileName = Left(fullName, slashPos-1)
-		      If Len(fileName) > 0 Then
-		        If fileBox <> Nil Then
-		          fileBox.AddRow ConvertEncoding(fileName, Encodings.UTF8)
-		          fileBox.CellTag(fileBox.LastIndex, 0) = pathName
-		        Else
-		          songList.Append fileName
-		        End If
-		      End If
-		    End If
-		  Next i
-		  
-		  ' No sorting needed now as cache sorts by file name then path?
-		  If fileBox <> Nil Then fileBox.ScrollPosition = 0
+		  If filebox <> Nil Then filebox.DeleteAllRows
+		  songList = GetFilesInFolder(pathFilter, fileBox, showAll)
+		  Heapsort songList
+		  If fileBox <> Nil Then
+		    filebox.SortedColumn = 0
+		    filebox.Sort
+		  End If
 		  
 		  Return songList
 		  
@@ -354,46 +274,32 @@ Protected Class FolderDB
 
 	#tag Method, Flags = &h0
 		Function GetFolders(popup As PopupMenu = Nil) As String()
-		  Dim folders As New Dictionary
-		  Dim ret(0) As String
+		  Dim temp() As String
 		  
-		  Dim i As Integer
-		  Dim folderName As String
+		  #If TargetWin32
+		    temp = GetFoldersWin()
+		  #elseIf TargetMacOS
+		    temp = GetFoldersMac()
+		  #else
+		    temp = GetFoldersGeneric(Folder)
+		  #endif
 		  
-		  If popup <> Nil Then popup.DeleteAllRows
-		  
-		  For i = 1 To UBound(Cache)
-		    folderName = Cache(i)
-		    If Left(folderName, 1) = "/" Then
-		      folderName = Mid(folderName, 2, Len(FolderName)-2)
-		      If folders.HasKey(folderName) Then
-		        folders.Value(folderName) = folders.Value(folderName).IntegerValue + 1
-		      Else
-		        folders.Value(folderName) = 1
-		      End If
-		    End If
-		  Next i
-		  
-		  For i = 0 To folders.Count - 1
-		    ret.Append folders.Key(i)
-		  Next i
-		  ret.Sort
+		  temp.Sort
 		  
 		  If popup <> Nil Then
+		    popup.DeleteAllRows
+		    For Each s As String In Temp
+		      popup.AddRow s
+		    Next
 		    popup.InsertRow 0, FilterAll
 		    popup.InsertRow 1, FilterMain
 		  Else
-		    ret.Insert 1, FilterAll
-		    ret.Insert 2, FilterMain
+		    temp.Insert 0, ""
+		    temp.Insert 1, FilterAll
+		    temp.Insert 2, FilterMain
 		  End If
 		  
-		  If popup <> Nil Then
-		    For i = 1 To UBound(ret)
-		      popup.AddRow ret(i)
-		    Next i
-		  End If
-		  
-		  Return ret
+		  Return temp
 		End Function
 	#tag EndMethod
 
@@ -413,23 +319,6 @@ Protected Class FolderDB
 		Sub Load(folder As FolderItem)
 		  Me.Folder = folder
 		  
-		  Dim input As TextInputStream
-		  
-		  input = folder.Child("_cache").OpenAsTextFile
-		  If input = Nil Then
-		    If Not RefreshCache Then
-		      MsgBox ErrorString
-		    End If
-		  Else
-		    ReDim Cache(0)
-		    NumFiles = 0
-		    While Not input.EOF
-		      Cache.Append input.ReadLine
-		      NumFiles = NumFiles + 1
-		    Wend
-		    input.Close
-		  End If
-		  
 		End Sub
 	#tag EndMethod
 
@@ -439,9 +328,8 @@ Protected Class FolderDB
 		  Dim f, fo As FolderItem
 		  Dim found As Boolean
 		  
-		  cacheSlots = GetFileEx(path)
-		  If UBound(cacheSlots) = 0 Then Return False
 		  destFolder = CleanPath(destFolder)
+		  path = CleanPath(path)
 		  
 		  fo = FileUtils.RelativePathToFolderItem(Folder, destFolder)
 		  If fo = Nil Or Not fo.Exists Then
@@ -450,8 +338,13 @@ Protected Class FolderDB
 		    Return False
 		  End If
 		  
+		  If Not fo.Directory Then
+		    ErrorCode = 6
+		    ErrorString = "Destination folder is a regular file."
+		    Return False
+		  End If
 		  i = 1
-		  f = FileUtils.RelativePathToFolderItem(Folder, CachePathToPath(Cache(cacheSlots(i))))
+		  f = FileUtils.RelativePathToFolderItem(Folder, path)
 		  If f = Nil Or Not f.Exists Then
 		    ErrorCode = 8
 		    ErrorString = "Could not find file."
@@ -470,10 +363,6 @@ Protected Class FolderDB
 		    End If
 		    Return False
 		  End If
-		  If destFolder.Len > 0 Then destFolder = destFolder + "/"
-		  Cache(cacheSlots(i)) = f.Name + "/" + destFolder
-		  Heapsort cache
-		  If Not Save Then Return False
 		  Return True
 		  
 		End Function
@@ -481,24 +370,6 @@ Protected Class FolderDB
 
 	#tag Method, Flags = &h0
 		Function RefreshCache() As Boolean
-		  ReDim Cache(0)
-		  Dim s As String
-		  
-		  NumFiles = 0
-		  App.MouseCursor = WatchCursor
-		  
-		  AddFolderToCache Folder
-		  
-		  'Cache.Sort
-		  Heapsort Cache
-		  
-		  If Not Save Then
-		    ErrorCode = 5
-		    ErrorString = "Could not write to main folder."
-		    Return False
-		  End If
-		  
-		  App.MouseCursor = Nil
 		  
 		  Return True
 		End Function
@@ -506,12 +377,10 @@ Protected Class FolderDB
 
 	#tag Method, Flags = &h0
 		Function RenameFile(path As String, newName As String) As Boolean
-		  Dim i, cacheSlots(0) As Integer
 		  Dim f As FolderItem
-		  Dim found As Boolean
-		  Dim oldPath As String
-		  Dim tmpPath As String
+		  Dim g As FolderItem
 		  
+		  path = CleanPath(path)
 		  // Check for a path character in the new string.
 		  If Instr(newName, "/") > 0 Or Instr(newName, ":") > 0 Or Instr(newName, "\") > 0 Then
 		    ErrorCode = 0
@@ -519,63 +388,33 @@ Protected Class FolderDB
 		    Return False
 		  End If
 		  
-		  // Take the path from the "from" file, otherwise it's possible to get a false 'file exists'
-		  tmpPath = ""
-		  i = StringUtils.InStrReverse(path, "/")
-		  If i > 0 Then tmpPath = Left(path,  i)
+		  f = FileUtils.RelativePathToFolderItem(Folder, path)
+		  If f = Nil Or Not f.Exists Then
+		    ErrorCode = 10
+		    ErrorString = "Source for rename does not exist"
+		    Return False
+		  End If
 		  
-		  f = GetFile(tmpPath + newName)
-		  If f <> Nil And f.Exists And Lowercase(Mid(path, StringUtils.InStrReverse(path, "/")+1)) <> Lowercase(newName) Then
+		  g = f.Parent.Child(newName)
+		  
+		  If g.Exists Then
 		    ErrorCode = 3
 		    ErrorString = App.T.Translate("errors/already_exists", newName)
 		    Return False
 		  End If
 		  
-		  cacheSlots = GetFileEx(path)
-		  If UBound(cacheSlots) = 0 Then Return False
-		  
-		  For i = UBound(cacheSlots) DownTo 1
-		    oldPath = Mid(Cache(cacheSlots(i)), InStr(Cache(cacheSlots(i)), "/"))
-		    f = FileUtils.RelativePathToFolderItem(Folder, oldPath + newName)
-		    If f <> Nil And f.Exists And Lowercase(Mid(path, StringUtils.InStrReverse(path, "/")+1)) <> Lowercase(newName) Then
-		      ErrorCode = 3
-		      ErrorString = App.T.Translate("errors/already_exists", newName)
-		      Return False
-		    End If
-		    f = FileUtils.RelativePathToFolderItem(Folder, CachePathToPath(Cache(cacheSlots(i))))
-		    f.Name = newName
-		    If f.Name <> newName Then
-		      ErrorCode = 10
-		      ErrorString = App.T.Translate("errors/rename_error")
-		      Return False
-		    Else
-		      Cache(cacheSlots(i)) = newName + oldPath
-		      Heapsort cache
-		      If Not Save Then Return False
-		      Return True
-		    End If
-		  Next i
-		  
+		  f.Name = newName
+		  If f.Name <> newName Then
+		    ErrorCode = 10
+		    ErrorString = App.T.Translate("errors/rename_error")
+		    Return False
+		  End If
+		  Return True
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function Save() As Boolean
-		  Dim output As TextOutputStream
-		  output = Folder.Child("_cache").CreateTextFile
-		  
-		  If output = Nil Then
-		    ErrorCode = 5
-		    ErrorString = "Could not write to main folder."
-		    Return False
-		  End If
-		  
-		  Dim x As Integer
-		  For x = 1 To UBound(Cache)
-		    output.WriteLine Cache(x)
-		  Next x
-		  
-		  output.Close
 		  
 		  Return True
 		End Function
@@ -586,6 +425,536 @@ Protected Class FolderDB
 		  Me.FilterAll = filterAll
 		  Me.FilterMain = filterMain
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GetFilesInFolder(path As String, list As listbox = Nil, recurse As Boolean = False) As String()
+		  #If TargetWin32
+		    Return GetFilesInFolderWin(path, list, recurse)
+		  #elseif TargetMacOS
+		    Return GetFilesInFolderMac(path, list, recurse)
+		  #else
+		    Return GetFilesInFolderGeneric(path, list, recurse)
+		  #endif
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function GetFoldersGeneric(f As FolderItem, toplevel As Boolean = True) As String()
+		  Dim childNames() As String
+		  Dim temp() As String
+		  Dim i As Integer
+		  Dim last As Integer
+		  Dim fi As FolderItem
+		  
+		  last = f.Count
+		  For i = 1 To last
+		    fi = f.Item(i)
+		    If fi.Directory Then
+		      If toplevel Then
+		        childNames.Append fi.Name
+		      Else
+		        childNames.Append f.Name + "/" + fi.Name
+		      End If
+		      
+		      ReDim temp(-1)
+		      temp = GetFoldersGeneric(fi, False)
+		      
+		      For Each s As String in temp
+		        If toplevel Then
+		          childNames.Append s
+		        Else
+		          childNames.Append f.Name + "/" + s
+		        End If
+		      Next
+		    End If
+		  Next
+		  
+		  Return childNames
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function GetFilesInFolderWin(path As String, list As ListBox = Nil, recurse As Boolean = False) As String()
+          #If Not TargetWin32
+            Return GetFilesInFolderGeneric(path, list, recurse)
+          #endif
+  
+          Dim fileDict() As Dictionary
+          Dim startPath As String
+  
+          startPath = Folder.AbsolutePath
+          If Right(startPath, 1) <> "\" Then
+            startPath = startPath + "\"
+          End If
+          startPath = startPath + ReplaceAll(path, "/", "\")
+          win32GetFileList(fileDict, startPath, "", "*.*", recurse)
+  
+          Dim fileList() As String
+          Dim last As Integer
+          last = UBound(fileDict)
+  
+          For i As Integer = 0 to last
+            // Only add it if it isn't a folder or hidden
+            If (Not fileDict(i).Value("Hidden").BooleanValue) And _
+              (Not fileDict(i).Value("Folder").BooleanValue) And _
+              Left(fileDict(i).Value("Name"), 1) <> "_" And _
+              Left(fileDict(i).Value("Name"), 1) <> "." Then
+              fileList.Append fileDict(i).Value("Name")
+              If list <> Nil Then
+                list.AddRow fileDict(i).Value("Name")
+                list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
+              End If
+            End If
+          Next
+  
+          Return fileList
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub win32GetFileList(ByRef FileList() as dictionary, path as String, relativepath as String, filter as String, recursive as boolean = false)
+		  #If TargetWin32
+		    // This function is based on a function by Aaron Ballman ...
+		    //      http://forums.realbasic.com/viewtopic.php?t=13692
+		    
+		    // Parameters: FileList() is an array that gets passed in
+		    //                      path is the path to search
+		    //                      relativepath is the subfolder path  (used internally for recursion)
+		    //                      filter is the file filter e.g. *.*
+		    //                      recursive (true / false)
+		    
+		    // Returns: dictionary array with the following values:
+		    //                        Path (Relative), Name, Size (bytes),
+		    //                        ModifiedDate, CreatedDate, AccessedDate,
+		    //                        Hidden, System, Folder, ReadOnly
+		    
+		    Soft Declare Function FindFirstFileW Lib "Kernel32" ( path as WString, data as Ptr ) as Integer
+		    Soft Declare Function FindNextFileW Lib "Kernel32" ( handle as Integer, data as Ptr ) as Boolean
+		    Soft Declare Function FileTimeToLocalFileTime Lib "Kernel32" ( filetime as Ptr,localfiletime as Ptr) as Integer
+		    Soft Declare Function FileTimeToSystemTime Lib "Kernel32" ( filetime as Ptr,systemtime as Ptr) as Integer
+		    
+		    Declare Sub FindClose Lib "Kernel32" ( handle as Integer )
+		    
+		    dim temp as Dictionary
+		    dim handle, result, x as Integer
+		    dim tempdate as Date
+		    
+		    dim data,tempft,templt,tempst as MemoryBlock
+		    
+		    data = new MemoryBlock( 592 )
+		    tempft = new MemoryBlock(8)  // FileTime Holder
+		    templt = new MemoryBlock(8) // FileLocalTime Holder
+		    tempst = new MemoryBlock(16) // SystemTime Holder
+		    
+		    dim maxdword,tempattr as Uint64
+		    maxdword = 4294967296
+		    
+		    if right(path,1) <> "\" then
+		      path = path + "\"
+		    end if
+		    
+		    handle = FindFirstFileW( path + filter, data )
+		    
+		    if handle <> -1 then
+		      // Loop over all of the items in using the handle and the find data
+		      dim done as Boolean
+		      
+		      do
+		        // Add the current item
+		        temp = new Dictionary
+		        temp.value("Name") = data.WString(44)
+		        
+		        if temp.value("Name") <> "." AND temp.value("Name") <> ".." then
+		          
+		          temp.value("Path") = relativepath
+		          
+		          temp.value("Size") = (data.Long(28) * maxdword) + data.Long(32)
+		          
+		          tempft = data.MidB(4,8)
+		          
+		          result = FileTimeToLocalFileTime(tempft,templt)
+		          result = FileTimeToSystemTime(templt,tempst)
+		          
+		          tempdate = new Date
+		          tempdate.Year = tempst.short(0)
+		          tempdate.Month = tempst.short(2)
+		          tempdate.Day = tempst.short(6)
+		          tempdate.Hour = tempst.short(8)
+		          tempdate.Minute = tempst.short(10)
+		          tempdate.Second = tempst.short(12)
+		          
+		          temp.value("CreatedDate") = tempdate
+		          
+		          tempft = data.MidB(12,8)
+		          
+		          result = FileTimeToLocalFileTime(tempft,templt)
+		          result = FileTimeToSystemTime(templt,tempst)
+		          
+		          tempdate = new Date
+		          tempdate.Year = tempst.short(0)
+		          tempdate.Month = tempst.short(2)
+		          tempdate.Day = tempst.short(6)
+		          tempdate.Hour = tempst.short(8)
+		          tempdate.Minute = tempst.short(10)
+		          tempdate.Second = tempst.short(12)
+		          
+		          temp.value("AccessedDate") = tempdate
+		          
+		          tempft = data.MidB(20,8)
+		          
+		          result = FileTimeToLocalFileTime(tempft,templt)
+		          result = FileTimeToSystemTime(templt,tempst)
+		          
+		          tempdate = new Date
+		          tempdate.Year = tempst.short(0)
+		          tempdate.Month = tempst.short(2)
+		          tempdate.Day = tempst.short(6)
+		          tempdate.Hour = tempst.short(8)
+		          tempdate.Minute = tempst.short(10)
+		          tempdate.Second = tempst.short(12)
+		          
+		          temp.value("ModifiedDate") = tempdate
+		          
+		          tempattr = data.Long(0)
+		          
+		          if BitCheck(tempattr,1) then
+		            temp.value("ReadOnly") = true
+		          else
+		            temp.value("ReadOnly") = false
+		          end if
+		          
+		          if BitCheck(tempattr,2) then
+		            temp.value("Hidden") = true
+		          else
+		            temp.value("Hidden") = false
+		          end if
+		          
+		          if BitCheck(tempattr,3) then
+		            temp.value("System") = true
+		          else
+		            temp.value("System") = false
+		          end if
+		          
+		          if BitCheck(tempattr,5) then
+		            temp.value("Folder") = true
+		          else
+		            temp.value("Folder") = false
+		          end if
+		          
+		          // Add the current item to our list
+		          If (Not temp.Value("Hidden").BooleanValue) And Left(temp.Value("Name"), 1) <> "_" And Left(temp.Value("Name"), 1) <> "." Then
+		            FileList.Append( temp )
+		            
+		            if recursive and temp.value("Folder").BooleanValue then
+		              win32GetFileList(FileList, path+temp.value("Name")+"\",relativepath+temp.value("Name")+"\",filter,recursive)
+		            end if
+		          End If
+		        end if
+		        
+		        // Loop to the next item
+		        done = FindNextFileW( handle, data )
+		        
+		      loop until not done
+		      
+		      FindClose( handle )
+		    end if
+		  #endif
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function BitCheck(number as uint64, offset as integer) As Boolean
+		  
+		  // by Mike Bailey ... http://forums.realbasic.com/viewtopic.php?t=4637
+		  
+		  dim bit as integer
+		  bit = bitwise.shiftLeft( 1, offset-1 )
+		  return (bitwise.bitAnd( number, bit ) > 0)
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub win32GetFolderList(ByRef FileList() as dictionary, path as String, relativepath as String, filter as String, recursive as boolean = false)
+		  #If TargetWin32
+		    // This function is based on a function by Aaron Ballman ...
+		    //      http://forums.realbasic.com/viewtopic.php?t=13692
+		    
+		    // Parameters: FileList() is an array that gets passed in
+		    //                      path is the path to search
+		    //                      relativepath is the subfolder path  (used internally for recursion)
+		    //                      filter is the file filter e.g. *.*
+		    //                      recursive (true / false)
+		    
+		    // Returns: dictionary array with the following values:
+		    //                        Path (Relative), Name, Size (bytes),
+		    //                        ModifiedDate, CreatedDate, AccessedDate,
+		    //                        Hidden, System, Folder, ReadOnly
+		    
+		    Soft Declare Function FindFirstFileW Lib "Kernel32" ( path as WString, data as Ptr ) as Integer
+		    Soft Declare Function FindNextFileW Lib "Kernel32" ( handle as Integer, data as Ptr ) as Boolean
+		    Soft Declare Function FileTimeToLocalFileTime Lib "Kernel32" ( filetime as Ptr,localfiletime as Ptr) as Integer
+		    Soft Declare Function FileTimeToSystemTime Lib "Kernel32" ( filetime as Ptr,systemtime as Ptr) as Integer
+		    
+		    Declare Sub FindClose Lib "Kernel32" ( handle as Integer )
+		    
+		    dim temp as Dictionary
+		    dim handle, result, x as Integer
+		    dim tempdate as Date
+		    
+		    dim data,tempft,templt,tempst as MemoryBlock
+		    
+		    data = new MemoryBlock( 592 )
+		    tempft = new MemoryBlock(8)  // FileTime Holder
+		    templt = new MemoryBlock(8) // FileLocalTime Holder
+		    tempst = new MemoryBlock(16) // SystemTime Holder
+		    
+		    dim maxdword,tempattr as Uint64
+		    maxdword = 4294967296
+		    
+		    if right(path,1) <> "\" then
+		      path = path + "\"
+		    end if
+		    
+		    handle = FindFirstFileW( path + filter, data )
+		    
+		    if handle <> -1 then
+		      // Loop over all of the items in using the handle and the find data
+		      dim done as Boolean
+		      
+		      do
+		        // Add the current item
+		        temp = new Dictionary
+		        temp.value("Name") = data.WString(44)
+		        
+		        if temp.value("Name") <> "." AND temp.value("Name") <> ".." then
+		          
+		          temp.value("Path") = relativepath
+		          
+		          temp.value("Size") = (data.Long(28) * maxdword) + data.Long(32)
+		          
+		          tempft = data.MidB(4,8)
+		          
+		          result = FileTimeToLocalFileTime(tempft,templt)
+		          result = FileTimeToSystemTime(templt,tempst)
+		          
+		          tempdate = new Date
+		          tempdate.Year = tempst.short(0)
+		          tempdate.Month = tempst.short(2)
+		          tempdate.Day = tempst.short(6)
+		          tempdate.Hour = tempst.short(8)
+		          tempdate.Minute = tempst.short(10)
+		          tempdate.Second = tempst.short(12)
+		          
+		          temp.value("CreatedDate") = tempdate
+		          
+		          tempft = data.MidB(12,8)
+		          
+		          result = FileTimeToLocalFileTime(tempft,templt)
+		          result = FileTimeToSystemTime(templt,tempst)
+		          
+		          tempdate = new Date
+		          tempdate.Year = tempst.short(0)
+		          tempdate.Month = tempst.short(2)
+		          tempdate.Day = tempst.short(6)
+		          tempdate.Hour = tempst.short(8)
+		          tempdate.Minute = tempst.short(10)
+		          tempdate.Second = tempst.short(12)
+		          
+		          temp.value("AccessedDate") = tempdate
+		          
+		          tempft = data.MidB(20,8)
+		          
+		          result = FileTimeToLocalFileTime(tempft,templt)
+		          result = FileTimeToSystemTime(templt,tempst)
+		          
+		          tempdate = new Date
+		          tempdate.Year = tempst.short(0)
+		          tempdate.Month = tempst.short(2)
+		          tempdate.Day = tempst.short(6)
+		          tempdate.Hour = tempst.short(8)
+		          tempdate.Minute = tempst.short(10)
+		          tempdate.Second = tempst.short(12)
+		          
+		          temp.value("ModifiedDate") = tempdate
+		          
+		          tempattr = data.Long(0)
+		          
+		          if BitCheck(tempattr,1) then
+		            temp.value("ReadOnly") = true
+		          else
+		            temp.value("ReadOnly") = false
+		          end if
+		          
+		          if BitCheck(tempattr,2) then
+		            temp.value("Hidden") = true
+		          else
+		            temp.value("Hidden") = false
+		          end if
+		          
+		          if BitCheck(tempattr,3) then
+		            temp.value("System") = true
+		          else
+		            temp.value("System") = false
+		          end if
+		          
+		          if BitCheck(tempattr,5) then
+		            temp.value("Folder") = true
+		          else
+		            temp.value("Folder") = false
+		          end if
+		          
+		          If temp.Value("Folder").BooleanValue Then
+		            // Add the current item to our list
+		            FileList.Append( temp )
+		            
+		            If recursive Then
+		              win32GetFolderList(FileList, path+temp.value("Name")+"\",relativepath+temp.value("Name")+"\",filter,recursive)
+		            End If
+		          End If
+		          
+		        end if
+		        
+		        // Loop to the next item
+		        done = FindNextFileW( handle, data )
+		        
+		      loop until not done
+		      
+		      FindClose( handle )
+		    end if
+		  #endif
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function GetFoldersWin() As String()
+		  #if Not TargetWin32
+		    Return GetFoldersGeneric(Folder)
+		  #endif
+		  
+		  Dim ret() As String
+		  Dim s As String
+		  Dim folderName As String
+		  
+		  Dim fileDict() As Dictionary
+		  win32GetFolderList(fileDict, Folder.AbsolutePath, "", "*.*", True)
+		  
+		  For Each d As Dictionary in fileDict
+		    s = d.Value("Name").StringValue
+		    If Left(s, 1) = "." Or Left(s, 1) = "_" Then Continue
+		    ret.Append ReplaceAll(d.Value("Path") + d.Value("Name"), "\", "/")
+		  Next
+		  
+		  Return ret
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function GetFilesInFolderMac(path As String, list As listbox = Nil, recurse As Boolean = False) As String()
+		  #If Not TargetMacOS
+		    Return GetFilesInFolderGeneric(path, list, recurse)
+		  #endif
+		  Dim f As FolderItem
+		  Dim fileDict() As Dictionary
+		  Dim fileList() As String
+		  Dim ref As FSRef
+		  
+		  f = FileUtils.RelativePathToFolderItem(Folder, path)
+		  
+		  ref = New FSRef(f)
+		  
+		  fileDict = ref.Iterate(recurse, path)
+		  
+		  If list <> Nil Then
+		    list.DeleteAllRows
+		  End If
+		  
+		  For Each d As Dictionary in fileDict
+		    If Not d.Value("Folder").BooleanValue Then
+		      fileList.Append d.Value("Name").StringValue
+		      If List <> Nil Then
+		        list.AddRow d.Value("Name").StringValue
+		        list.CellTag(list.LastIndex, 0) = d.Value("Path").StringValue
+		      End If
+		    End If
+		  Next
+		  
+		  If List <> Nil Then
+		    list.SortedColumn = 0
+		    list.Sort
+		  End If
+		  Heapsort fileList
+		  Return fileList
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function GetFoldersMac() As String()
+		  #if Not TargetMacOS
+		    Return GetFoldersGeneric(Folder)
+		  #endif
+		  
+		  Dim fileDict() As Dictionary
+		  Dim folderList() As String
+		  Dim ref As FSRef
+		  Dim s As String
+		  
+		  ref = New FSRef(Folder)
+		  
+		  fileDict = ref.Iterate(True)
+		  
+		  For Each d As Dictionary In fileDict
+		    If d.Value("Folder").BooleanValue Then
+		      s = d.Value("Path").StringValue + d.Value("Name")
+		      folderList.Append s
+		    End If
+		  Next
+		  
+		  Return folderList
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function GetFilesInFolderGeneric(path As String, list As listbox = Nil, recurse As Boolean = False) As String()
+		  
+		  Dim fileList() As String
+		  Dim f As FolderItem
+		  Dim fi As FolderItem
+		  Dim last As Integer
+		  Dim childFolders() As FolderItem
+		  
+		  f = FileUtils.RelativePathToFolderItem(Folder, path)
+		  
+		  If Not f.Directory Then Return fileList
+		  
+		  last = f.Count
+		  For i As Integer = 1 To last
+		    fi = f.item(i)
+		    If Not fi.IsFileVisible Then Continue
+		    If fi.Directory Then
+		      childFolders.Append fi
+		      Continue
+		    End If
+		    fileList.Append fi.Name
+		    If list <> Nil Then
+		      list.AddRow fi.Name
+		      list.CellTag(list.LastIndex, 0) = path
+		    End If
+		  Next
+		  
+		  If recurse Then
+		    For i As Integer = 0 To UBound(childFolders)
+		      Dim temp() As String
+		      temp = GetFilesInFolder(path + childFolders(i).Name + "/", list, recurse)
+		      For j As Integer = 0 To UBound(temp)
+		        fileList.Append temp(j)
+		      Next
+		    Next
+		  End If
+		  
+		  Return fileList
+		End Function
 	#tag EndMethod
 
 
@@ -622,6 +991,15 @@ Protected Class FolderDB
 	#tag Property, Flags = &h0
 		NumFiles As Integer
 	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h1
+		#tag Getter
+			Get
+			Return App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB)
+			End Get
+		#tag EndGetter
+		Protected UsingOldFolderDB As Boolean
+	#tag EndComputedProperty
 
 
 	#tag ViewBehavior

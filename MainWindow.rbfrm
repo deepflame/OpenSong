@@ -106,6 +106,7 @@ Begin Window MainWindow
             ControlOrder    =   9
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   26
             HelpTag         =   ""
             Index           =   -2147483648
@@ -132,6 +133,7 @@ Begin Window MainWindow
             ControlOrder    =   10
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   26
             HelpTag         =   ""
             Index           =   -2147483648
@@ -620,6 +622,7 @@ Begin Window MainWindow
             ControlOrder    =   24
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -646,6 +649,7 @@ Begin Window MainWindow
             ControlOrder    =   25
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -672,6 +676,7 @@ Begin Window MainWindow
             ControlOrder    =   26
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -698,6 +703,7 @@ Begin Window MainWindow
             ControlOrder    =   27
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -724,6 +730,7 @@ Begin Window MainWindow
             ControlOrder    =   28
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -933,6 +940,7 @@ Begin Window MainWindow
             ControlOrder    =   35
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1196,7 +1204,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Print"
-            ControlOrder    =   46
+            ControlOrder    =   44
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1223,7 +1231,7 @@ Begin Window MainWindow
          Begin StaticText lbl_song_key
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   47
+            ControlOrder    =   45
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1257,7 +1265,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   48
+            ControlOrder    =   46
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -1295,7 +1303,7 @@ Begin Window MainWindow
          Begin StaticText lbl_song_time_sig
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   50
+            ControlOrder    =   47
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1325,7 +1333,7 @@ Begin Window MainWindow
          Begin PopupMenu pop_song_time_sig
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   51
+            ControlOrder    =   48
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1353,7 +1361,7 @@ Begin Window MainWindow
          Begin StaticText lbl_song_tempo
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   53
+            ControlOrder    =   49
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1383,7 +1391,7 @@ Begin Window MainWindow
          Begin PopupMenu pop_song_tempo
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   54
+            ControlOrder    =   50
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1411,7 +1419,7 @@ Begin Window MainWindow
          Begin StaticText lbl_song_aka
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   55
+            ControlOrder    =   51
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1445,7 +1453,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   56
+            ControlOrder    =   52
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -1483,7 +1491,7 @@ Begin Window MainWindow
          Begin StaticText lbl_song_key_line
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   57
+            ControlOrder    =   53
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1517,7 +1525,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   58
+            ControlOrder    =   54
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -1555,7 +1563,7 @@ Begin Window MainWindow
          Begin StaticText lbl_song_user1_1
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   59
+            ControlOrder    =   55
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1589,7 +1597,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   60
+            ControlOrder    =   56
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -1627,7 +1635,7 @@ Begin Window MainWindow
          Begin StaticText lbl_song_user2
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   63
+            ControlOrder    =   57
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1661,7 +1669,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   64
+            ControlOrder    =   58
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -1699,7 +1707,7 @@ Begin Window MainWindow
          Begin StaticText lbl_song_user3
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   72
+            ControlOrder    =   59
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1733,7 +1741,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   74
+            ControlOrder    =   60
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -1773,9 +1781,10 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            ControlOrder    =   75
+            ControlOrder    =   61
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   26
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1799,9 +1808,10 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            ControlOrder    =   76
+            ControlOrder    =   62
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   26
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1826,7 +1836,7 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         ControlOrder    =   77
+         ControlOrder    =   63
          Enabled         =   True
          EraseBackground =   "True"
          Height          =   520
@@ -1847,7 +1857,7 @@ Begin Window MainWindow
          Begin StaticText hdr_slide_header
             AutoDeactivate  =   "True"
             Bold            =   "True"
-            ControlOrder    =   78
+            ControlOrder    =   66
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1877,7 +1887,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_title
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   79
+            ControlOrder    =   67
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1911,7 +1921,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   80
+            ControlOrder    =   68
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -1949,7 +1959,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_subtitle
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   82
+            ControlOrder    =   70
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1983,7 +1993,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   83
+            ControlOrder    =   71
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -2021,7 +2031,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_name
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   84
+            ControlOrder    =   73
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2055,7 +2065,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   85
+            ControlOrder    =   74
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -2093,7 +2103,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_slides
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   87
+            ControlOrder    =   75
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2127,7 +2137,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   88
+            ControlOrder    =   76
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -2165,7 +2175,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_presentation
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   89
+            ControlOrder    =   77
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2199,7 +2209,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   90
+            ControlOrder    =   78
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2237,7 +2247,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_origorder
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   91
+            ControlOrder    =   79
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2271,7 +2281,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   94
+            ControlOrder    =   80
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2309,7 +2319,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_notes
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   95
+            ControlOrder    =   83
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2343,7 +2353,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   96
+            ControlOrder    =   84
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -2381,7 +2391,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_insert
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   97
+            ControlOrder    =   92
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2413,9 +2423,10 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            ControlOrder    =   98
+            ControlOrder    =   94
             Enabled         =   "True"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2438,7 +2449,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Loop Slides"
-            ControlOrder    =   99
+            ControlOrder    =   95
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2466,7 +2477,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Print in Set List"
-            ControlOrder    =   100
+            ControlOrder    =   96
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2493,7 +2504,7 @@ Begin Window MainWindow
          Begin StaticText lbl_slide_auto_advance
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   101
+            ControlOrder    =   97
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2527,7 +2538,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   102
+            ControlOrder    =   98
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2565,7 +2576,7 @@ Begin Window MainWindow
          Begin StaticText txt_slide_seconds
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   103
+            ControlOrder    =   99
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2596,7 +2607,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Override Style"
-            ControlOrder    =   104
+            ControlOrder    =   100
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "False"
@@ -2625,7 +2636,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            ControlOrder    =   105
+            ControlOrder    =   102
             Enabled         =   "True"
             EraseBackground =   "True"
             Height          =   77
@@ -2651,7 +2662,7 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         ControlOrder    =   106
+         ControlOrder    =   103
          Enabled         =   True
          EraseBackground =   "True"
          Height          =   519
@@ -2672,7 +2683,7 @@ Begin Window MainWindow
          Begin StaticText hdr_style_header
             AutoDeactivate  =   "True"
             Bold            =   "True"
-            ControlOrder    =   107
+            ControlOrder    =   104
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -2703,7 +2714,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Revert to Previous Style"
-            ControlOrder    =   108
+            ControlOrder    =   105
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
@@ -2729,7 +2740,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Change Style to the Following:"
-            ControlOrder    =   109
+            ControlOrder    =   107
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
@@ -2756,7 +2767,7 @@ Begin Window MainWindow
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            ControlOrder    =   110
+            ControlOrder    =   108
             Enabled         =   "True"
             EraseBackground =   "True"
             Height          =   240
@@ -2804,7 +2815,7 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         ControlOrder    =   44
+         ControlOrder    =   64
          Enabled         =   True
          EraseBackground =   "True"
          Height          =   520
@@ -2826,7 +2837,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "All Songs"
-            ControlOrder    =   45
+            ControlOrder    =   65
             Enabled         =   True
             Height          =   100
             HelpTag         =   ""
@@ -2851,9 +2862,10 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   111
+               ControlOrder    =   109
                Enabled         =   "True"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -2867,7 +2879,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   61
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   90
@@ -2877,9 +2889,10 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   112
+               ControlOrder    =   110
                Enabled         =   "True"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -2893,7 +2906,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   86
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   91
@@ -2903,9 +2916,10 @@ Begin Window MainWindow
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   113
+               ControlOrder    =   111
                Enabled         =   "True"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -2919,7 +2933,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   111
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   92
@@ -2929,7 +2943,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "New Song"
-            ControlOrder    =   49
+            ControlOrder    =   69
             Enabled         =   True
             Height          =   75
             HelpTag         =   ""
@@ -2957,6 +2971,7 @@ Begin Window MainWindow
                ControlOrder    =   114
                Enabled         =   "True"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -2970,7 +2985,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   166
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   94
@@ -2983,6 +2998,7 @@ Begin Window MainWindow
                ControlOrder    =   115
                Enabled         =   "True"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -2996,7 +3012,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   191
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   95
@@ -3006,7 +3022,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Selected Song"
-            ControlOrder    =   52
+            ControlOrder    =   72
             Enabled         =   True
             Height          =   225
             HelpTag         =   ""
@@ -3034,6 +3050,7 @@ Begin Window MainWindow
                ControlOrder    =   116
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3047,7 +3064,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   60
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   97
@@ -3060,6 +3077,7 @@ Begin Window MainWindow
                ControlOrder    =   117
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3073,7 +3091,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   85
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   98
@@ -3086,6 +3104,7 @@ Begin Window MainWindow
                ControlOrder    =   118
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3099,7 +3118,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   110
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   99
@@ -3112,6 +3131,7 @@ Begin Window MainWindow
                ControlOrder    =   119
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3125,7 +3145,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   135
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   100
@@ -3138,6 +3158,7 @@ Begin Window MainWindow
                ControlOrder    =   120
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3151,7 +3172,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   160
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   101
@@ -3164,6 +3185,7 @@ Begin Window MainWindow
                ControlOrder    =   121
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3177,7 +3199,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   185
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   102
@@ -3190,6 +3212,7 @@ Begin Window MainWindow
                ControlOrder    =   122
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3203,7 +3226,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   210
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   103
@@ -3216,6 +3239,7 @@ Begin Window MainWindow
                ControlOrder    =   123
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3229,7 +3253,7 @@ Begin Window MainWindow
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   236
-               UseFocusRing    =   "True"
+               UseFocusRing    =   "False"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   104
@@ -3238,7 +3262,7 @@ Begin Window MainWindow
          Begin StaticText lbl_songs_song_folders
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   61
+            ControlOrder    =   81
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3268,7 +3292,7 @@ Begin Window MainWindow
          Begin PopupMenu pop_songs_song_folders
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   62
+            ControlOrder    =   82
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3296,7 +3320,7 @@ Begin Window MainWindow
          Begin StaticText lbl_songs_songs
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   65
+            ControlOrder    =   85
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3330,7 +3354,7 @@ Begin Window MainWindow
             ColumnCount     =   1
             ColumnsResizable=   "False"
             ColumnWidths    =   ""
-            ControlOrder    =   66
+            ControlOrder    =   86
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   -1
@@ -3372,7 +3396,7 @@ Begin Window MainWindow
          Begin StaticText lbl_songs_curr_folder
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   67
+            ControlOrder    =   87
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3406,7 +3430,7 @@ Begin Window MainWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   68
+            ControlOrder    =   88
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3449,6 +3473,7 @@ Begin Window MainWindow
             ControlOrder    =   124
             Enabled         =   "False"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   18
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3475,6 +3500,7 @@ Begin Window MainWindow
             ControlOrder    =   125
             Enabled         =   "False"
             EraseBackground =   "True"
+            HasFocus        =   0
             Height          =   18
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3499,7 +3525,7 @@ Begin Window MainWindow
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         ControlOrder    =   69
+         ControlOrder    =   89
          Enabled         =   True
          EraseBackground =   "True"
          Height          =   519
@@ -3521,7 +3547,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Sets"
-            ControlOrder    =   70
+            ControlOrder    =   90
             Enabled         =   True
             Height          =   50
             HelpTag         =   ""
@@ -3544,7 +3570,7 @@ Begin Window MainWindow
             Begin PopupMenu pop_sets_sets
                AutoDeactivate  =   "True"
                Bold            =   "False"
-               ControlOrder    =   71
+               ControlOrder    =   91
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
@@ -3577,6 +3603,7 @@ Begin Window MainWindow
                ControlOrder    =   126
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   18
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3600,7 +3627,7 @@ Begin Window MainWindow
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Current Set"
-            ControlOrder    =   73
+            ControlOrder    =   93
             Enabled         =   True
             Height          =   121
             HelpTag         =   ""
@@ -3628,6 +3655,7 @@ Begin Window MainWindow
                ControlOrder    =   127
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3654,6 +3682,7 @@ Begin Window MainWindow
                ControlOrder    =   128
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3680,6 +3709,7 @@ Begin Window MainWindow
                ControlOrder    =   129
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3706,6 +3736,7 @@ Begin Window MainWindow
                ControlOrder    =   130
                Enabled         =   "True"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3732,6 +3763,7 @@ Begin Window MainWindow
                ControlOrder    =   131
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3758,6 +3790,7 @@ Begin Window MainWindow
                ControlOrder    =   132
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3784,6 +3817,7 @@ Begin Window MainWindow
                ControlOrder    =   133
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3802,12 +3836,38 @@ Begin Window MainWindow
                Width           =   87
                BehaviorIndex   =   124
             End
+            Begin SButton btn_set_export
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   134
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               Left            =   141
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   182
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   125
+            End
          End
          Begin GroupBox grp_set_new_item
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "New Item"
-            ControlOrder    =   81
+            ControlOrder    =   101
             Enabled         =   True
             Height          =   125
             HelpTag         =   ""
@@ -3826,15 +3886,16 @@ Begin Window MainWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   125
+            BehaviorIndex   =   126
             Begin SButton btn_set_add_scripture
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   134
+               ControlOrder    =   135
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3851,16 +3912,17 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   126
+               BehaviorIndex   =   127
             End
             Begin SButton btn_set_add_slides
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   135
+               ControlOrder    =   136
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3877,16 +3939,17 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   127
+               BehaviorIndex   =   128
             End
             Begin SButton btn_set_add_style
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   136
+               ControlOrder    =   137
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3903,16 +3966,17 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   128
+               BehaviorIndex   =   129
             End
             Begin SButton btn_set_add_song
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   137
+               ControlOrder    =   138
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3929,14 +3993,14 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   129
+               BehaviorIndex   =   130
             End
          End
          Begin GroupBox grp_set_current_item
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Current Item"
-            ControlOrder    =   86
+            ControlOrder    =   106
             Enabled         =   True
             Height          =   150
             HelpTag         =   ""
@@ -3955,15 +4019,16 @@ Begin Window MainWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   130
+            BehaviorIndex   =   131
             Begin SButton btn_set_move_up
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   138
+               ControlOrder    =   139
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3980,16 +4045,17 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   131
+               BehaviorIndex   =   132
             End
             Begin SButton btn_set_move_down
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   139
+               ControlOrder    =   140
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -4006,16 +4072,17 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   132
+               BehaviorIndex   =   133
             End
             Begin SButton btn_set_remove
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   140
+               ControlOrder    =   141
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -4032,16 +4099,17 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   133
+               BehaviorIndex   =   134
             End
             Begin SButton btn_set_copy
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   141
+               ControlOrder    =   142
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -4058,16 +4126,17 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   134
+               BehaviorIndex   =   135
             End
             Begin SButton btn_set_store
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   142
+               ControlOrder    =   143
                Enabled         =   "False"
                EraseBackground =   "True"
+               HasFocus        =   0
                Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
@@ -4084,13 +4153,13 @@ Begin Window MainWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   135
+               BehaviorIndex   =   136
             End
          End
          Begin StaticText lbl_set_items
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   92
+            ControlOrder    =   112
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4115,7 +4184,7 @@ Begin Window MainWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   115
-            BehaviorIndex   =   136
+            BehaviorIndex   =   137
          End
          Begin ListBox lst_set_items
             AutoDeactivate  =   "True"
@@ -4124,7 +4193,7 @@ Begin Window MainWindow
             ColumnCount     =   1
             ColumnsResizable=   "False"
             ColumnWidths    =   ""
-            ControlOrder    =   93
+            ControlOrder    =   113
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   -1
@@ -4161,7 +4230,7 @@ Begin Window MainWindow
             Width           =   230
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
-            BehaviorIndex   =   137
+            BehaviorIndex   =   138
          End
       End
    End
@@ -4193,7 +4262,7 @@ Begin Window MainWindow
       Underline       =   "False"
       Visible         =   True
       Width           =   320
-      BehaviorIndex   =   138
+      BehaviorIndex   =   139
    End
    Begin Timer tmr_lookup
       ControlOrder    =   5
@@ -4204,7 +4273,7 @@ Begin Window MainWindow
       Period          =   1500
       TabPanelIndex   =   0
       Top             =   1
-      BehaviorIndex   =   139
+      BehaviorIndex   =   140
    End
    Begin ContextualMenu mnu_clipboard
       ControlOrder    =   6
@@ -4214,7 +4283,7 @@ Begin Window MainWindow
       TabPanelIndex   =   0
       Top             =   0
       UseMacCMM       =   ""
-      BehaviorIndex   =   140
+      BehaviorIndex   =   141
    End
    Begin Separator sep_vertical
       AutoDeactivate  =   "True"
@@ -4233,7 +4302,7 @@ Begin Window MainWindow
       Top             =   35
       Visible         =   True
       Width           =   4
-      BehaviorIndex   =   141
+      BehaviorIndex   =   142
    End
    Begin Separator sep_horizontal
       AutoDeactivate  =   "True"
@@ -4252,16 +4321,17 @@ Begin Window MainWindow
       Top             =   32
       Visible         =   True
       Width           =   750
-      BehaviorIndex   =   142
+      BehaviorIndex   =   143
    End
    Begin SButton btn_mode_songs_mode
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      ControlOrder    =   143
+      ControlOrder    =   144
       Enabled         =   "True"
       EraseBackground =   "True"
+      HasFocus        =   0
       Height          =   28
       HelpTag         =   ""
       Index           =   -2147483648
@@ -4275,19 +4345,20 @@ Begin Window MainWindow
       StickyBevel     =   "True"
       TabPanelIndex   =   0
       Top             =   3
-      UseFocusRing    =   "True"
+      UseFocusRing    =   "False"
       Visible         =   "True"
       Width           =   200
-      BehaviorIndex   =   143
+      BehaviorIndex   =   144
    End
    Begin SButton btn_mode_sets_mode
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      ControlOrder    =   144
+      ControlOrder    =   145
       Enabled         =   "True"
       EraseBackground =   "True"
+      HasFocus        =   0
       Height          =   28
       HelpTag         =   ""
       Index           =   -2147483648
@@ -4301,10 +4372,10 @@ Begin Window MainWindow
       StickyBevel     =   "True"
       TabPanelIndex   =   0
       Top             =   3
-      UseFocusRing    =   "True"
+      UseFocusRing    =   "False"
       Visible         =   "True"
       Width           =   200
-      BehaviorIndex   =   144
+      BehaviorIndex   =   145
    End
 End
 #tag EndWindow
@@ -4532,6 +4603,7 @@ End
 		      btn_set_present.Enabled = True And (Not Status_Presentation)
 		      btn_set_print_songs.Enabled = True
 		      btn_set_print_order.Enabled = True
+		      btn_set_export.Enabled = True
 		      btn_set_rename.Enabled = True
 		      btn_set_delete.Enabled = True
 		      btn_set_saveas.Enabled = True
@@ -4547,6 +4619,7 @@ End
 		      btn_set_present.Enabled = False
 		      btn_set_print_songs.Enabled = False
 		      btn_set_print_order.Enabled = False
+		      btn_set_export.Enabled = False
 		      btn_set_rename.Enabled = False
 		      btn_set_delete.Enabled = False
 		      btn_set_saveas.Enabled = False
@@ -4872,7 +4945,11 @@ End
 		  End If
 		  
 		  Splash.SetStatus App.T.Translate("load_data/songs_cache") + "..."
-		  Songs = New FolderDB(App.DocsFolder.Child("Songs"))
+		  If App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB) Then
+		    Songs = New FolderDBOld(App.DocsFolder.Child("Songs"))
+		  Else
+		    Songs = New FolderDB(App.DocsFolder.Child("Songs"))
+		  End If
 		  Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
 		  "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
 		  
@@ -5327,7 +5404,6 @@ End
 
 #tag MenuHandler
 		Function mnu_settings_refresh_songs() As Boolean Handles mnu_settings_refresh_songs.Action
-			
 			'Ask if user wants to save
 			If NOT ActionSongAskSave Then Return True 'User Canceled
 			
@@ -6535,29 +6611,6 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub LoadSets(folder as FolderItem)
-		  Dim x As Integer
-		  Dim s(0) As String
-		  
-		  pop_sets_sets.DeleteAllRows
-		  If App.SplashShowing Then Splash.SetStatus App.T.Translate("load_data/sets") + "..."
-		  For x = 1 to folder.count
-		    If (folder.item(x).Directory = False) _
-		      And (InStr("._", Left(folder.Item(x).Name, 1)) = 0) Then
-		      s.Append folder.Item(x).Name
-		    End If
-		  Next x
-		  heapsort s
-		  
-		  For x = 1 To UBound(s) 'DownTo 1
-		    pop_sets_sets.AddRow s(x)
-		  Next x
-		  
-		  lst_set_items.DeleteAllRows
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub LoadSongFields()
 		  
 		  btn_song_move.SetEnabled True
@@ -6686,12 +6739,6 @@ End
 		    'can_song_style.SetStyleNode CurrentSongObj.SongStyle.ToXML.DocumentElement
 		  End If
 		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Open()
-		  '++JRC This Method is unused (moved to Notes)
 		End Sub
 	#tag EndMethod
 
@@ -6912,7 +6959,6 @@ End
 		  '++JRC: Fixed now translates (All) and (Main) folder items
 		  Dim OldIndex As Integer = pop_songs_song_folders.ListIndex
 		  
-		  Songs = New FolderDB(App.DocsFolder.Child("Songs"))
 		  Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
 		  "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
 		  
@@ -6932,6 +6978,177 @@ End
 	#tag Method, Flags = &h0
 		Sub UpdateMenuItems()
 		  EnableMenuItems
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ActionSetExport()
+		  //TODO:
+		  // Break the copying out in to another function that takes the base folder, array of folderitems and target folder as parameters for use in the import
+		  // Instead of using folderDelimiter use the parent fodler method to find the target directories that need to be built.
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
+		  
+		  //Getting the targetFolderPath from user
+		  dim targetFolderPath as String
+		  dim targetFolder, targetFile As FolderItem
+		  Dim dlg As New SelectFolderDialog
+		  
+		  dlg.InitialDirectory = App.DocsFolder
+		  targetFolder = App.MainPreferences.GetValueFI(Prefs.kSetsLastExportFolder)
+		  If Not IsNull(targetFolder) Then
+		    dlg.InitialDirectory = targetFolder
+		  end if
+		  
+		  targetFolder = dlg.ShowModal
+		  
+		  If targetFolder = Nil Then Return// User cancelled
+		  
+		  App.MainPreferences.SetValueFI(Prefs.kSetsLastExportFolder, targetFolder)
+		  
+		  targetFolderPath = targetFolder.AbsolutePath
+		  
+		  if not targetFolder.Exists then
+		    return
+		  end if
+		  
+		  //Start of the calculation and copying bit
+		  App.MouseCursor = WatchCursor
+		  Dim f, songFile, setFile As FolderItem
+		  Dim SongPath As String
+		  Dim AbsFiles(0) As FolderItem
+		  Dim RelFiles(0) As String
+		  Dim i As Integer
+		  
+		  // Get path for current set
+		  // Should be setFile = CurrentSet.GetFolderItem
+		  dim att as XMLattribute
+		  try
+		    att = CurrentSet.documentElement.GetAttributeNode("name")
+		  catch err as XMLexception
+		    i = msgbox(err.Message, 48, "ActionSetExport Could not find set name")
+		    return
+		  end try
+		  if att = Nil then
+		    CurrentSet.documentElement.SetAttribute("name",CurrentSetName)
+		  end if
+		  
+		  setFile = App.DocsFolder.Child("Sets").Child(CurrentSetName)
+		  AbsFiles.append(setFile)
+		  
+		  //Append the FolderItem used in each SlideGroup to AbsFiles
+		  //Should be a call to CurrentSet.GetChildFolderItems
+		  Dim setDoc As New XmlDocument
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  
+		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
+		  
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    songFile = Nil
+		    // get paths for the individual slide groups
+		    //Should be a call to SlideGroup.GetChildFolderItems
+		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
+		      SongPath = SmartML.GetValue(slide_group, "@path", False)
+		      If SongPath <> "" Then
+		        SongPath = SongPath + SmartML.GetValue(slide_group, "@name")
+		      Else
+		        SongPath = SmartML.GetValue(slide_group, "@name")
+		      End If
+		      f = Songs.GetFile(SongPath)
+		      If f = Nil Then
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", SmartML.GetValue(slide_group, "@name", True))
+		      Else
+		        RelFiles.Append(SongPath)
+		        AbsFiles.append(f)
+		      End If
+		    End If
+		    slide_group  = slide_group.NextSibling
+		  Wend
+		  
+		  //TODO: get any other set wide files
+		  
+		  //Copy the files to the target
+		  If UBound(AbsFiles) <= 0 Then Return // Nothing to do
+		  dim fileCount As Integer
+		  'fileCount = UBound(AbsFiles)
+		  fileCount = UBound(RelFiles)
+		  
+		  dim relativePath, targetPath, currentPath as String
+		  dim sourcePathPartCount, j As Integer
+		  dim currentFolderItem As FolderItem
+		  dim sourcePathParts() As String
+		  dim folderDelimiter As String
+		  
+		  folderDelimiter = FileUtils.AbsolutePathSeparator()
+		  For i = 1 To fileCount
+		    'relativePath = AbsFiles(i).AbsolutePath.replace(App.DocsFolder.AbsolutePath, "")
+		    //Split the path up and create each folder if needed
+		    targetPath = RelFiles(i)
+		    sourcePathParts = Split(RelFiles(i), "/")
+		    'sourcePathParts = Split( relativePath, folderDelimiter )
+		    sourcePathPartCount = UBound(sourcePathParts) - 1
+		    currentFolderItem = targetFolder
+		    'If sourcePathPartCount <= 0 Then continue
+		    For j = 0 To sourcePathPartCount
+		      If Not currentFolderItem.Child(sourcePathParts(j)).Exists Then
+		        If Not FileUtils.CreateFolder(currentFolderItem.Child(sourcePathParts(j))) Then
+		          InputBox.Message FileUtils.LastError
+		          Return
+		        End If
+		      End If
+		      currentFolderItem = currentFolderItem.Child(sourcePathParts(j))
+		    Next
+		    'currentPath = currentPath + folderDelimiter + sourcePathParts(j)
+		    'currentFolderItem = GetFolderItem(currentPath)
+		    
+		    targetFile = FileUtils.RelativePathToFolderItem(targetFolder, targetPath)
+		    'next j
+		    
+		    //Create or delete the actual file.
+		    currentFolderItem = Songs.GetFile(RelFiles(i))
+		    if not IsNull(targetFile) then
+		      App.DebugWriter.Write("targetFile At " + targetFile.AbsolutePath, 1)
+		      'if targetFile.Exists then
+		      'targetFile.Delete
+		      'end if
+		      'AbsFiles(i).CopyFileTo (targetFile)
+		      'end if
+		      If Not FileUtils.CopyFile(currentFolderItem, targetFile, FileUtils.kOverwriteNewer) Then
+		        InputBox.Message FileUtils.LastError
+		      End If
+		    End If
+		  Next
+		  
+		  //Add the default styles to the copied set
+		  'relativePath = setFile.AbsolutePath.replace(App.DocsFolder.AbsolutePath, "")
+		  'targetPath =  targetFolder.AbsolutePath + folderDelimiter + relativePath
+		  'targetFile = GetFolderItem(targetPath)
+		  Dim copyset As XmlDocument
+		  Dim xgroups, newGroup, xnode As XmlNode
+		  copyset = SmartML.XDocFromFile(AbsFiles(1))
+		  xgroups = SmartML.GetNode(copyset.DocumentElement, "slide_groups", True)
+		  
+		  //Insert the default style yeah i know this should be a method but it seems like a lot of effort.
+		  newGroup = SmartML.InsertChild(xgroups, "slide_group", 0)
+		  xnode = SmartML.GetNode(newGroup, "style", True)
+		  SongML.CloneStyle SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), xnode
+		  SmartML.SetValue newGroup, "@type", "style"
+		  SmartML.SetValue newGroup, "@action", "new"
+		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/items/defaultstyle")
+		  
+		  If Not SmartML.XDocToFile(copyset, targetFolder.Child(absfiles(1).Name)) Then
+		    App.MouseCursor = Nil
+		    SmartML.DisplayError
+		    Return
+		  End If
+		  
+		  App.MouseCursor = nil
+		  InputBox.Message(App.T.Translate("sets_mode/messages/export_complete", absfiles(1).Name, _
+		  targetFolder.FormatFolderName(50)))
+		  return
 		End Sub
 	#tag EndMethod
 
@@ -6999,115 +7216,39 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub LoadSets(folder As FolderItem)
+		  Dim x As Integer
+		  Dim s(0) As String
+		  Dim SetDB As FolderDB
+		  App.MouseCursor = WatchCursor
+		  pop_sets_sets.DeleteAllRows
+		  If App.SplashShowing Then Splash.SetStatus App.T.Translate("load_data/sets") + "..."
+		  If App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB) Then
+		    For x = 1 to folder.count
+		      If (folder.item(x).Directory = False) _
+		        And folder.item(x).IsFileVisible Then
+		        s.Append folder.Item(x).Name
+		      End If
+		    Next x
+		    heapsort s
+		    
+		    For x = 1 To UBound(s) 'DownTo 1
+		      pop_sets_sets.AddRow s(x)
+		    Next x
+		  Else
+		    Redim s(-1)
+		    SetDB = New FolderDB(folder)
+		    s = SetDB.GetFiles(".") // Current folder only
+		    For x = 0 to UBound(s)
+		      pop_sets_sets.AddRow s(x)
+		    Next
+		  End If
+		  lst_set_items.DeleteAllRows
+		  App.MouseCursor = Nil
+		End Sub
+	#tag EndMethod
 
-	#tag Note, Name = Open Method
-		
-		  'Try
-		  'PPT = New PowerPointApplication
-		  'PPT.Visible = 1
-		  'PPT.Presentations.Open "C:\Documents and Settings\slickfold\My Documents\Youth Group\10Commandments_forkids.ppt", True, True, True
-		  'PPT.ActivePresentation.SlideShowSettings.Run
-		  'Catch e as RuntimeException
-		  'MsgBox e.Message
-		  'PPT = Nil
-		  'End Try
-		  
-		  'Why is this here? Is it used?
-		  
-		  Profiler.BeginProfilerEntry "MainWindow::Open"
-		  Dim output As TextOutputStream
-		  Dim MainFolder As FolderItem
-		  Dim s As String
-		  
-		  App.MyBible = New Bible
-		  
-		  Splash.SetStatus App.T.Translate("load_data/bible") + "..."
-		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version")
-		  If Len(s) > 0 And App.AppFolder.Child("OpenSong Scripture").Child(s).Exists Then
-		    If App.MyBible.LoadBible(App.AppFolder.Child("OpenSong Scripture").Child(s)) Then
-		    End If
-		  End If
-		  
-		  Splash.SetStatus App.T.Translate("load_data/songs_cache") + "..."
-		  Songs = New FolderDB(App.DocsFolder.Child("Songs"))
-		  Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
-		      "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
-		  
-		  Splash.SetStatus App.T.Translate("load_data/folders") + "..."
-		  If UBound(Songs.GetFolders(pop_songs_song_folders)) = 0 Then
-		  End If
-		  
-		  Splash.SetStatus App.T.Translate("load_data/songs") + "..."
-		  pop_songs_song_folders.ListIndex = 0
-		  
-		  LoadSets App.DocsFolder.Child("Sets")
-		  SongChangesMade = False
-		  SetMode 0
-		  
-		  Dim controlScreen As Integer
-		  controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
-		  If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
-		  
-		  LastSongPane = 0
-		  LastSetPane = 2
-		  
-		  Find = New FindClass
-		  
-		  HSizer = New HalfSizer(Me)
-		  
-		  HSizer.AddWidth lbl_song_title
-		  HSizer.AddWidth edt_song_title
-		  HSizer.AddWidth lbl_song_author
-		  HSizer.AddWidth edt_song_author
-		  HSizer.AddLeftWidth lbl_song_copyright
-		  HSizer.AddLeftWidth edt_song_copyright
-		  HSizer.AddLeftWidth lbl_song_ccli, .5, .25
-		  HSizer.AddLeftWidth edt_song_ccli, .5, .25
-		  HSizer.AddLeftWidth lbl_song_hymn_number, .75, .25
-		  HSizer.AddLeftWidth edt_song_hymn_number, .75, .25
-		  HSizer.AddLeftWidth lbl_song_presentation, .75, .25
-		  HSizer.AddLeftWidth edt_song_presentation, .75, .25
-		  
-		  HSizer.AddLeftTopWidthHeight can_song_style, .6, 0, .4, .4
-		  HSizer.AddLeftTop chk_song_style, .6, .4
-		  
-		  HSizer.AddTop lbl_song_capo, .4
-		  HSizer.AddTop pop_song_capo, .4
-		  HSizer.AddTop chk_song_capo_print, .4
-		  HSizer.AddTop lbl_song_time_sig, .4
-		  HSizer.AddTop pop_song_time_sig, .4
-		  HSizer.AddTop lbl_song_tempo, .4
-		  HSizer.AddTop pop_song_tempo, .4
-		  HSizer.AddTop lbl_song_key, .4
-		  HSizer.AddTop edt_song_key, .4
-		  HSizer.AddTop lbl_song_aka, .4
-		  HSizer.AddTop edt_song_aka, .4
-		  HSizer.AddTop lbl_song_key_line, .4
-		  HSizer.AddTop edt_song_key_line, .4
-		  HSizer.AddTopHeight lbl_song_user1_1, .4, 0
-		  HSizer.AddTopHeight edt_song_user1, .4, .2
-		  HSizer.AddTopHeight lbl_song_user2, .6, 0
-		  HSizer.AddTopHeight edt_song_user2, .6, .2
-		  HSizer.AddTopHeight lbl_song_user3, .8, 0
-		  HSizer.AddTopHeight edt_song_user3, .8, .2
-		  
-		  HSizer.AddLeftWidth lbl_slide_title, 0, .4
-		  HSizer.AddLeftWidth edt_slide_title, 0, .4
-		  HSizer.AddLeftWidth lbl_slide_subtitle, .4, .3
-		  HSizer.AddLeftWidth edt_slide_subtitle, .4, .3
-		  HSizer.AddLeftWidth lbl_slide_name, .7, .3
-		  HSizer.AddLeftWidth edt_slide_name, .7, .3
-		  
-		  HSizer.AddLeftTop can_style_style, .5, .5
-		  
-		  TranslateMe
-		  
-		  App.MaximizeInControlScreen Me
-		  
-		  Profiler.EndProfilerEntry
-		  Splash.SetStatus App.T.Translate("welcome")
-		  Splash.SlowClose
-	#tag EndNote
 
 	#tag Note, Name = Status Hierarchy
 		SetOpen
@@ -7259,6 +7400,7 @@ End
 	#tag Property, Flags = &h1
 		Protected Status_Closing As Boolean
 	#tag EndProperty
+
 
 #tag EndWindowCode
 
@@ -8150,39 +8292,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events pop_songs_song_folders
-	#tag Event
-		Sub Change()
-		  '++JRC
-		  if Globals.OldFolderSel = Me.ListIndex then
-		    return
-		  end if
-		  
-		  Globals.OldFolderSel = Me.ListIndex
-		  '--
-		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  
-		  
-		  If UBound(Songs.GetFiles(Me.Text, lst_songs_songs)) > 0 Then
-		    lst_songs_songs.SortedColumn = 0
-		    lst_songs_songs.Sort
-		  End If
-		  edt_songs_curr_folder.Text = ""
-		  Globals.CurrentSongFolder = Me.Text
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "songs_mode/song_folders"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events edt_song_user2
 	#tag Event
 		Sub GotFocus()
@@ -8213,6 +8322,330 @@ End
 		Sub TextChange()
 		  If Status_SongOpen Then
 		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_user3
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 16
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor/user3"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_show_general_editor_2
+	#tag Event
+		Sub Action()
+		  pge_contents.Value = 0
+		  LastSongPane = 0
+		  Me.Refresh True ' False
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewtext2pic, viewtext2mask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_show_advanced_editor_2
+	#tag Event
+		Sub Action()
+		  pge_contents.Value = 1
+		  LastSongPane = 1
+		  Me.Refresh True ' False
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewdetailed2pic, viewdetailed2mask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_title
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/title"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_subtitle
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/subtitle"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_name
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/name"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_slides
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/slides"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_order
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  '++JRC
+		  SetHelp "slide_editor/presentation"
+		  '--
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_origorder
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  '++JRC
+		  SetHelp "slide_editor/origorder"
+		  '--
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_songs_song_folders
+	#tag Event
+		Sub Change()
+		  '++JRC
+		  if Globals.OldFolderSel = Me.ListIndex then
+		    return
+		  end if
+		  
+		  Globals.OldFolderSel = Me.ListIndex
+		  '--
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  App.MouseCursor = WatchCursor
+		  Call Songs.GetFiles(Me.Text, lst_songs_songs)
+		  'If UBound(Songs.GetFiles(Me.Text, lst_songs_songs)) > 0 Then
+		  'lst_songs_songs.SortedColumn = 0
+		  'lst_songs_songs.Sort
+		  'End If
+		  edt_songs_curr_folder.Text = ""
+		  Globals.CurrentSongFolder = Me.Text
+		  App.MouseCursor = Nil
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "songs_mode/song_folders"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_slide_notes
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsCMMClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/notes"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
 		End Sub
@@ -8475,536 +8908,6 @@ End
 	#tag Event
 		Sub MouseExit()
 		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_user3
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 16
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "advanced_song_editor/user3"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_show_general_editor_2
-	#tag Event
-		Sub Action()
-		  pge_contents.Value = 0
-		  LastSongPane = 0
-		  Me.Refresh True ' False
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewtext2pic, viewtext2mask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_show_advanced_editor_2
-	#tag Event
-		Sub Action()
-		  pge_contents.Value = 1
-		  LastSongPane = 1
-		  Me.Refresh True ' False
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "advanced_song_editor"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewdetailed2pic, viewdetailed2mask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_title
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/title"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_subtitle
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/subtitle"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_name
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/name"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_slides
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/slides"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_order
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  '++JRC
-		  SetHelp "slide_editor/presentation"
-		  '--
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events lst_set_items
-	#tag Event
-		Sub Change()
-		  Dim songDoc As XmlDocument
-		  Dim songF as FolderItem
-		  Dim xnode as  XmlNode
-		  Dim songTemp as String
-		  Dim songResult As Integer
-		  Dim sDoc As XmlDocument
-		  
-		  Dim xgroup As XmlNode
-		  Dim xslides As XmlNode
-		  Dim s As String
-		  Dim i, j As Integer
-		  
-		  'Ask if user wants to save
-		  If NOT ActionInSetAskSave Then
-		    If CurrentInSetItem >= 0 Then
-		      lst_set_items.ListIndex = CurrentInSetItem
-		    End If
-		    Return 'User Canceled
-		  End If
-		  
-		  If Me.ListIndex < 0 Then
-		    Status_InSetOpen = False
-		    Status_InSetEditable = False
-		    Status_InSetChanged = False
-		    EnableMenuItems
-		    Return
-		  End If
-		  
-		  Status_InSetEditable = False
-		  Status_InSetSongEdit = False
-		  CurrentInSetItem = lst_set_items.ListIndex
-		  xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).Child(Me.ListIndex)
-		  '++JRC Prevent Nil object exception
-		  If xgroup = Nil Then
-		    lst_set_items.ListIndex = -1
-		    Return
-		  End If
-		  '--
-		  InSetNameCache = SmartML.GetValue(xgroup, "@name")
-		  If xgroup.GetAttribute("type") = "custom" Or xgroup.GetAttribute("type") = "scripture" Then
-		    If pge_contents.Value <> 2 Then
-		      pge_contents.Value = 2
-		      LastSetPane = 2
-		    End If
-		    Status_InSetEditable = False ' keeps the status from Refresh Falseing for every change
-		    
-		    edt_slide_name.Text = SmartML.GetValue(xgroup, "@name")
-		    edt_slide_title.Text = SmartML.GetValue(xgroup, "title")
-		    edt_slide_subtitle.Text = SmartML.GetValue(xgroup, "subtitle")
-		    edt_slide_notes.Text = SmartML.GetValue(xgroup, "notes")
-		    chk_slide_loop.Value = SmartML.GetValueB(xgroup, "@loop", False)
-		    chk_slide_print.Value = SmartML.GetValueB(xgroup, "@print", True, True)
-		    edt_slide_auto_advance.Text = Str(SmartML.GetValueN(xgroup, "@seconds", False))
-		    edt_slide_order.Text = ""
-		    edt_slide_origorder.Text = ""
-		    
-		    If SmartML.GetNode(xgroup, "style", False) = Nil Then
-		      chk_slide_style.Value = False
-		      can_slide_style.ClearStyleNode
-		    Else
-		      chk_slide_style.Value = True
-		      can_slide_style.SetStyleNode SmartML.GetNode(xgroup, "style")
-		    End If
-		    ' can_slide_custom_style.Refresh False
-		    s = ""
-		    xslides = SmartML.GetNode(xgroup, "slides", True)
-		    For i = 0 To xslides.ChildCount - 1
-		      If i < xslides.ChildCount - 1 Then
-		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False)) + SmartML.Newline + "---" + SmartML.Newline
-		      Else
-		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False))
-		      End If
-		    Next i
-		    edt_slide_slides.Text  = s
-		    
-		    Status_InSetOpen = True
-		    Status_InSetEditable = True
-		    Status_InSetChanged = False
-		    EnableMenuItems
-		  ElseIf SmartML.GetValue(xgroup, "@type", True) = "song" Then
-		    
-		    ' New edits...load the text in the slide text box as readonly
-		    ' Can update the order to create a custom order.
-		    ' EMP 1/18/05
-		    
-		    If pge_contents.Value <> 2 Then pge_contents.Value = 2
-		    '
-		    'This part shamelessly stolen
-		    '
-		    songf = Songs.GetFile(SmartML.GetValue(xgroup, "@name"))
-		    If songf = Nil Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_set_items.text)
-		      sDoc = Nil
-		    Else
-		      sDoc = SmartML.XDocFromFile(songf)
-		    End If
-		    Status_InSetOpen = True
-		    Status_InSetEditable = False
-		    UpdateMenuItems ' Clear out previous values
-		    
-		    '++JRC Just disable Song Style seletion for v1.0
-		    'This fixes bug #1559301
-		    chk_slide_style.Value = False
-		    can_slide_style.ClearStyleNode
-		    '--
-		    
-		    if sDoc <> Nil then
-		      edt_slide_slides.Text = SmartML.GetValue(sDoc.DocumentElement, "lyrics", True).FormatLocalEndOfLine
-		      edt_slide_title.Text = SmartML.GetValue(sDoc.DocumentElement, "title", True)
-		      edt_slide_order.Text = SmartML.GetValue(xgroup, "@presentation",False)
-		      edt_slide_origorder.Text = SmartML.GetValue(sDoc.DocumentElement, "presentation", False)
-		      Status_InSetEditable = True 'EMP, changed 1/18/2005 for custom order
-		      Status_InSetChanged = False
-		      Status_InSetSongEdit = True
-		      EnableMenuItems
-		    End If
-		    
-		  ElseIf SmartML.GetValue(xgroup, "@type", True) = "style" Then
-		    Status_InSetEditable = False ' keeps the status from Refresh Falseing for every change
-		    
-		    If SmartML.GetValue(xgroup, "@action") = "new" Then
-		      rad_style_change.Value = True
-		    Else
-		      rad_style_revert.Value = True
-		    End If
-		    can_style_style.SetStyleNode SmartML.GetNode(xgroup, "style")
-		    '++JRC Hack: Not really a SongStyle, but this will allow the use of Subtitle Options
-		    can_style_style.SongStyle = True
-		    '--
-		    Status_InSetOpen = True
-		    Status_InSetEditable = True
-		    Status_InSetChanged = False
-		    If pge_contents.Value <> 3 Then
-		      LastSetPane = 3
-		      pge_contents.Value = 3
-		    End If
-		    
-		    EnableMenuItems
-		  Else
-		    Status_InSetOpen = True
-		    Status_InSetEditable = False
-		    Status_InSetChanged = False
-		    EnableMenuItems
-		  End If
-		  
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub DoubleClick()
-		  Dim i As Integer
-		  Dim path As String
-		  Dim songModePath As String
-		  Dim currentSetItem As XmlNode
-		  //++
-		  // June 2007, EMP
-		  // Check that (a) item is a song, and (b) current song editor folder is same as or above
-		  // the path to the song.
-		  //--
-		  currentSetItem = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups").Child(CurrentInSetItem)
-		  If SmartML.GetValue(currentSetItem, "@type") <> "song" Then Return
-		  path = SmartML.GetValue(currentSetItem, "@path")
-		  path = Left(path, path.Len - 1) // Chop trailing /
-		  songModePath = pop_songs_song_folders.Text
-		  If songModePath = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )" Then songModePath = ""
-		  Select Case songModePath
-		  Case "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )"
-		    // Nothing to do, but it's a special case so it has to be detected
-		  Case ""
-		    If path <> "" Then SetSongEditorPath(path)
-		  Case Else
-		    If Instr(songModePath, path) <> 1 Then
-		      SetSongEditorPath(path)
-		    End If
-		  End Select
-		  
-		  
-		  If pop_sets_sets.ListIndex >= 0 Then
-		    For i = 0 To lst_songs_songs.ListCount - 1
-		      If lst_songs_songs.List(i) = InSetNameCache Then
-		        lst_songs_songs.ListIndex = i
-		        SetMode 0
-		      End If
-		    Next i
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function DragReorderRows(newPosition as Integer, parentRow as Integer) As Boolean
-		  Dim xgroups As XmlNode
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  Status_SetChanged = True
-		  If newPosition > Me.ListIndex Then
-		    If newPosition = Me.ListCount - 1 Then
-		      xgroups.AppendChild xgroups.Child(Me.ListIndex)
-		    Else
-		      xgroups.Insert xgroups.Child(Me.ListIndex), xgroups.Child(newPosition+1)
-		    End If
-		  ElseIf newPosition < Me.ListIndex Then
-		    xgroups.Insert xgroups.Child(Me.ListIndex), xgroups.Child(newPosition)
-		  End If
-		  'EnableMenuItems
-		End Function
-	#tag EndEvent
-	#tag Event
-		Function KeyDown(Key As String) As Boolean
-		  Dim i, l As Integer
-		  If Asc(Key) = 27 Then 'Escape
-		    KeyedSearch = "" 'Reset search string
-		    Return True
-		  End If
-		  
-		  // If a modifier key is pressed, let RealBasic handle it so menus, etc. will work properly
-		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
-		  
-		  l = Len(KeyedSearch)
-		  tmr_lookup.Reset
-		  For i = 0 To Me.ListCount - 1
-		    If Left(Me.List(i), l+1) = KeyedSearch + key Then
-		      Me.ListIndex = i
-		      KeyedSearch = KeyedSearch + key
-		      Return True
-		    End If
-		  Next i
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  '++JRC
-		  SetHelp "sets_mode/items"
-		  '--
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_origorder
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  '++JRC
-		  SetHelp "slide_editor/origorder"
-		  '--
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_slide_notes
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsCMMClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "slide_editor/notes"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_InSetEditable Then
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -9373,6 +9276,261 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events lst_set_items
+	#tag Event
+		Sub Change()
+		  Dim songDoc As XmlDocument
+		  Dim songF as FolderItem
+		  Dim xnode as  XmlNode
+		  Dim songTemp as String
+		  Dim songResult As Integer
+		  Dim sDoc As XmlDocument
+		  
+		  Dim xgroup As XmlNode
+		  Dim xslides As XmlNode
+		  Dim s As String
+		  Dim i, j As Integer
+		  
+		  'Ask if user wants to save
+		  If NOT ActionInSetAskSave Then
+		    If CurrentInSetItem >= 0 Then
+		      lst_set_items.ListIndex = CurrentInSetItem
+		    End If
+		    Return 'User Canceled
+		  End If
+		  
+		  If Me.ListIndex < 0 Then
+		    Status_InSetOpen = False
+		    Status_InSetEditable = False
+		    Status_InSetChanged = False
+		    EnableMenuItems
+		    Return
+		  End If
+		  
+		  Status_InSetEditable = False
+		  Status_InSetSongEdit = False
+		  CurrentInSetItem = lst_set_items.ListIndex
+		  xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).Child(Me.ListIndex)
+		  '++JRC Prevent Nil object exception
+		  If xgroup = Nil Then
+		    lst_set_items.ListIndex = -1
+		    Return
+		  End If
+		  '--
+		  InSetNameCache = SmartML.GetValue(xgroup, "@name")
+		  If xgroup.GetAttribute("type") = "custom" Or xgroup.GetAttribute("type") = "scripture" Then
+		    If pge_contents.Value <> 2 Then
+		      pge_contents.Value = 2
+		      LastSetPane = 2
+		    End If
+		    Status_InSetEditable = False ' keeps the status from Refresh Falseing for every change
+		    
+		    edt_slide_name.Text = SmartML.GetValue(xgroup, "@name")
+		    edt_slide_title.Text = SmartML.GetValue(xgroup, "title")
+		    edt_slide_subtitle.Text = SmartML.GetValue(xgroup, "subtitle")
+		    edt_slide_notes.Text = SmartML.GetValue(xgroup, "notes")
+		    chk_slide_loop.Value = SmartML.GetValueB(xgroup, "@loop", False)
+		    chk_slide_print.Value = SmartML.GetValueB(xgroup, "@print", True, True)
+		    edt_slide_auto_advance.Text = Str(SmartML.GetValueN(xgroup, "@seconds", False))
+		    edt_slide_order.Text = ""
+		    edt_slide_origorder.Text = ""
+		    
+		    If SmartML.GetNode(xgroup, "style", False) = Nil Then
+		      chk_slide_style.Value = False
+		      can_slide_style.ClearStyleNode
+		    Else
+		      chk_slide_style.Value = True
+		      can_slide_style.SetStyleNode SmartML.GetNode(xgroup, "style")
+		    End If
+		    ' can_slide_custom_style.Refresh False
+		    s = ""
+		    xslides = SmartML.GetNode(xgroup, "slides", True)
+		    For i = 0 To xslides.ChildCount - 1
+		      If i < xslides.ChildCount - 1 Then
+		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False)) + SmartML.Newline + "---" + SmartML.Newline
+		      Else
+		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False))
+		      End If
+		    Next i
+		    edt_slide_slides.Text  = s
+		    
+		    Status_InSetOpen = True
+		    Status_InSetEditable = True
+		    Status_InSetChanged = False
+		    EnableMenuItems
+		  ElseIf SmartML.GetValue(xgroup, "@type", True) = "song" Then
+		    
+		    ' New edits...load the text in the slide text box as readonly
+		    ' Can update the order to create a custom order.
+		    ' EMP 1/18/05
+		    
+		    If pge_contents.Value <> 2 Then pge_contents.Value = 2
+		    '
+		    'This part shamelessly stolen
+		    '
+		    Dim xpath As XmlAttribute
+		    xpath = xgroup.GetAttributeNode("path")
+		    // Three possible cases here
+		    // xpath = Nil (no path) is a pre-V1 set format; look anywhere in the songs folder
+		    // xpath <> Nil, path = "": look only in top level folder (must anchor)
+		    // xpath <> Nil, path <> "": specific folder
+		    Dim songPath As String
+		    If xpath <> Nil Then
+		      If xpath.Value = "" Then
+		        songPath = "/"
+		      Else
+		        songPath = xpath.Value
+		      End If
+		    End If
+		    songf = Songs.GetFile(songPath + SmartML.GetValue(xgroup, "@name"))
+		    If songf = Nil Or (Not songf.Exists) Then
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_set_items.text)
+		      sDoc = Nil
+		    Else
+		      sDoc = SmartML.XDocFromFile(songf)
+		    End If
+		    Status_InSetOpen = True
+		    Status_InSetEditable = False
+		    UpdateMenuItems ' Clear out previous values
+		    
+		    '++JRC Just disable Song Style seletion for v1.0
+		    'This fixes bug #1559301
+		    chk_slide_style.Value = False
+		    can_slide_style.ClearStyleNode
+		    '--
+		    
+		    if sDoc <> Nil then
+		      edt_slide_slides.Text = SmartML.GetValue(sDoc.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		      edt_slide_title.Text = SmartML.GetValue(sDoc.DocumentElement, "title", True)
+		      edt_slide_order.Text = SmartML.GetValue(xgroup, "@presentation",False)
+		      edt_slide_origorder.Text = SmartML.GetValue(sDoc.DocumentElement, "presentation", False)
+		      Status_InSetEditable = True 'EMP, changed 1/18/2005 for custom order
+		      Status_InSetChanged = False
+		      Status_InSetSongEdit = True
+		      EnableMenuItems
+		    End If
+		    
+		  ElseIf SmartML.GetValue(xgroup, "@type", True) = "style" Then
+		    Status_InSetEditable = False ' keeps the status from Refresh Falseing for every change
+		    
+		    If SmartML.GetValue(xgroup, "@action") = "new" Then
+		      rad_style_change.Value = True
+		    Else
+		      rad_style_revert.Value = True
+		    End If
+		    can_style_style.SetStyleNode SmartML.GetNode(xgroup, "style")
+		    '++JRC Hack: Not really a SongStyle, but this will allow the use of Subtitle Options
+		    can_style_style.SongStyle = True
+		    '--
+		    Status_InSetOpen = True
+		    Status_InSetEditable = True
+		    Status_InSetChanged = False
+		    If pge_contents.Value <> 3 Then
+		      LastSetPane = 3
+		      pge_contents.Value = 3
+		    End If
+		    
+		    EnableMenuItems
+		  Else
+		    Status_InSetOpen = True
+		    Status_InSetEditable = False
+		    Status_InSetChanged = False
+		    EnableMenuItems
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub DoubleClick()
+		  Dim i As Integer
+		  Dim path As String
+		  Dim songModePath As String
+		  Dim currentSetItem As XmlNode
+		  //++
+		  // June 2007, EMP
+		  // Check that (a) item is a song, and (b) current song editor folder is same as or above
+		  // the path to the song.
+		  //--
+		  currentSetItem = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups").Child(CurrentInSetItem)
+		  If SmartML.GetValue(currentSetItem, "@type") <> "song" Then Return
+		  path = SmartML.GetValue(currentSetItem, "@path")
+		  path = Left(path, path.Len - 1) // Chop trailing /
+		  songModePath = pop_songs_song_folders.Text
+		  If songModePath = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )" Then songModePath = ""
+		  Select Case songModePath
+		  Case "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )"
+		    // Nothing to do, but it's a special case so it has to be detected
+		  Case ""
+		    If path <> "" Then SetSongEditorPath(path)
+		  Case Else
+		    If Instr(songModePath, path) <> 1 Then
+		      SetSongEditorPath(path)
+		    End If
+		  End Select
+		  
+		  
+		  If pop_sets_sets.ListIndex >= 0 Then
+		    For i = 0 To lst_songs_songs.ListCount - 1
+		      If lst_songs_songs.List(i) = InSetNameCache Then
+		        lst_songs_songs.ListIndex = i
+		        SetMode 0
+		      End If
+		    Next i
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function DragReorderRows(newPosition as Integer, parentRow as Integer) As Boolean
+		  Dim xgroups As XmlNode
+		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  Status_SetChanged = True
+		  If newPosition > Me.ListIndex Then
+		    If newPosition = Me.ListCount - 1 Then
+		      xgroups.AppendChild xgroups.Child(Me.ListIndex)
+		    Else
+		      xgroups.Insert xgroups.Child(Me.ListIndex), xgroups.Child(newPosition+1)
+		    End If
+		  ElseIf newPosition < Me.ListIndex Then
+		    xgroups.Insert xgroups.Child(Me.ListIndex), xgroups.Child(newPosition)
+		  End If
+		  'EnableMenuItems
+		End Function
+	#tag EndEvent
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  Dim i, l As Integer
+		  If Asc(Key) = 27 Then 'Escape
+		    KeyedSearch = "" 'Reset search string
+		    Return True
+		  End If
+		  
+		  // If a modifier key is pressed, let RealBasic handle it so menus, etc. will work properly
+		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
+		  
+		  l = Len(KeyedSearch)
+		  tmr_lookup.Reset
+		  For i = 0 To Me.ListCount - 1
+		    If Left(Me.List(i), l+1) = KeyedSearch + key Then
+		      Me.ListIndex = i
+		      KeyedSearch = KeyedSearch + key
+		      Return True
+		    End If
+		  Next i
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  '++JRC
+		  SetHelp "sets_mode/items"
+		  '--
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events btn_song_create
 	#tag Event
 		Sub Action()
@@ -9398,6 +9556,25 @@ End
 #tag Events btn_song_import
 	#tag Event
 		Sub Action()
+		  //++
+		  // Function temporarily unavailable
+		  //--
+		  Dim mb As New MessageDialog
+		  mb.ActionButton.Caption = App.T.Translate("shared/cancel/@caption")
+		  mb.ActionButton.Visible = True
+		  mb.ActionButton.Default = True
+		  mb.AlternateActionButton.Visible = False
+		  mb.CancelButton.Visible = False
+		  mb.Message = App.T.Translate("errors/cclinotavailable")
+		  Dim button As MessageDialogButton
+		  
+		  button = mb.ShowModalWithin(Self)
+		  Return
+		  
+		  //++
+		  // Original Function Here
+		  //--
+		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
 		  
@@ -10052,6 +10229,28 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon fileprintpic, fileprintmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_set_export
+	#tag Event
+		Sub Action()
+		  ActionSetExport
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/current_set/export"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon filesaveaspic, filesaveasmask
 		End Sub
 	#tag EndEvent
 #tag EndEvents

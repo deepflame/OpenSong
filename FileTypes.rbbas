@@ -81,7 +81,7 @@
 
 	#tag FileType
 		CodeName=PICTFiles
-		DocIcon=OpenSong.rbres;&h33040
+		DocIcon=OpenSong.rbres;&h19850
 		Extension=.pict;.pic;.pct
 		Flags=&h0
 		MacCreator=
@@ -91,7 +91,7 @@
 
 	#tag FileType
 		CodeName=PNGFiles
-		DocIcon=OpenSong.rbres;&h4C83C
+		DocIcon=OpenSong.rbres;&h1985C
 		Extension=.png
 		Flags=&h0
 		MacCreator=
@@ -101,7 +101,7 @@
 
 	#tag FileType
 		CodeName=TIFFFiles
-		DocIcon=OpenSong.rbres;&h66038
+		DocIcon=OpenSong.rbres;&h19868
 		Extension=.jfx;.tif;.tiff
 		Flags=&h0
 		MacCreator=????
@@ -111,7 +111,7 @@
 
 	#tag FileType
 		CodeName=WAVFilesWav
-		DocIcon=OpenSong.rbres;&h7F834
+		DocIcon=OpenSong.rbres;&h19874
 		Extension=.wav
 		Flags=&h0
 		MacCreator=

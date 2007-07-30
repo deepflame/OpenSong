@@ -70,16 +70,7 @@ Inherits Application
 		  SmartML.Init
 		  LoadPreferences
 		  
-		  AppFolder = App.ExecutableFile
-		  If Not AppFolder.Directory Then AppFolder = AppFolder.Parent ' Linux points to the parent folder; the other OSes seem to point to the executable file.
-		  //++
-		  // On MachO builds (Macintosh bundles), the executable file is in OpenSong.app/Contents/MacOS
-		  // So we don't have to put the OpenSong... directories in the bundle, move up three additional levels
-		  // to get to the same directory where the bundle lives.
-		  //--
-		  #If TargetMachO
-		    AppFolder = AppFolder.Parent.Parent.Parent
-		  #Endif
+		  AppFolder = GetFolderItem("")
 		  
 		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
 		  Dim temp As String
@@ -435,7 +426,7 @@ Inherits Application
 		  Dim mb As SelectFolderDialog
 		  Dim Folder As String
 		  
-		  f = MainPreferences.GetValueFI(kDocumentsFolder, Nil, False)
+		  f = MainPreferences.GetValueFI(Prefs.kDocumentsFolder, Nil, False)
 		  If f = Nil Then
 		    FolderName = Trim(SmartML.GetValue(MyGlobals.DocumentElement, "documents/@folder"))
 		    
@@ -475,7 +466,7 @@ Inherits Application
 		        MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(DocumentsFolder.Child("OpenSong"))))
 		        f = DocumentsFolder.Child("OpenSong")
 		      End If
-		      MainPreferences.SetValueFI(kDocumentsFolder, f)
+		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If //If FolderName <> ""
 		  Else // folder found in MainPreferences, make sure it exists.
 		    If Not f.exists Then
@@ -485,7 +476,7 @@ Inherits Application
 		        System.DebugLog "OpenSong: user cancelled document folder selection"
 		        Return Nil
 		      End Try
-		      MainPreferences.SetValueFI(kDocumentsFolder, f)
+		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If
 		  End If //If MainPreferences.kDocumentsFolder = Nil
 		  Return f
@@ -965,14 +956,12 @@ Inherits Application
 		  
 		  t = "v" +  Str(App.MajorVersion) + "." + Str(App.MinorVersion)
 		  If App.BugVersion > 0 Then t = t + "." + Str(App.BugVersion)
-		  't = t + " RC 2"
-		  If App.NonReleaseVersion > 0 Then t = t + " (BL" +  CStr(App.NonReleaseVersion) + ")"
 		  //++
 		  // If compiled with rb2006r4 or higher, this is likely a Universal Binary.
 		  // Identify the target.
 		  // There's probably a gestalt that would be a better way to do this so we can
 		  // identify a true UB vs. a target-specific binary or an Intel Mac running the UB under Rosetta.
-		  // This at least gets us in the ballpark.
+		  // This identifies the processor architecture the executable was built for, which is still useful.
 		  //--
 		  #If TargetMacOS
 		    If RBVersion >= 2006.04 Then
@@ -1256,6 +1245,7 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

@@ -110,7 +110,7 @@ Begin Window SongPickerWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   179
-      BehaviorIndex   =   9
+      BehaviorIndex   =   1
    End
    Begin PushButton btn_add
       AutoDeactivate  =   "True"
@@ -137,7 +137,7 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   1
+      BehaviorIndex   =   2
    End
    Begin PushButton btn_done
       AutoDeactivate  =   "True"
@@ -164,7 +164,7 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   2
+      BehaviorIndex   =   3
    End
    Begin StaticText lbl_select_folder
       AutoDeactivate  =   "True"
@@ -194,7 +194,7 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   6
+      BehaviorIndex   =   4
    End
    Begin PopupMenu pop_select_folder
       AutoDeactivate  =   "True"
@@ -233,7 +233,7 @@ Begin Window SongPickerWindow
       Period          =   1500
       TabPanelIndex   =   0
       Top             =   23
-      BehaviorIndex   =   3
+      BehaviorIndex   =   6
    End
    Begin StaticText txt_explanation_header
       AutoDeactivate  =   "True"
@@ -263,7 +263,7 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   378
-      BehaviorIndex   =   4
+      BehaviorIndex   =   7
    End
    Begin StaticText lbl_song_preview
       AutoDeactivate  =   "True"
@@ -335,7 +335,7 @@ Begin Window SongPickerWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   397
-      BehaviorIndex   =   7
+      BehaviorIndex   =   9
    End
    Begin StaticText lbl_quick_lookup
       AutoDeactivate  =   "True"
@@ -529,34 +529,43 @@ End
 		    Return True
 		  Case ASC_KEY_DOWN ' Down
 		    KeyedSearch = ""
+		    edt_quick_lookup.Text = ""
 		    Return False
 		  Case ASC_KEY_UP ' Up
 		    KeyedSearch = ""
+		    edt_quick_lookup.Text = ""
 		    Return False
 		  Case ASC_KEY_ESCAPE 'Escape
 		    If KeyedSearch = "" Then Return False 'Close dialog, no search in progress
 		    KeyedSearch = ""
+		    edt_quick_lookup.Text = ""
 		    Return True 'Keep dialog box from closing
 		  Case ASC_KEY_PGDN
 		    Me.PageDown
+		    edt_quick_lookup.Text = ""
 		    Return True
 		  Case ASC_KEY_PGUP
 		    Me.PageUp
+		    edt_quick_lookup.Text = ""
 		    Return True
 		  Case ASC_KEY_HOME
 		    If Me.ListCount > 0 Then
 		      Me.ScrollPosition = 0
 		      Me.ListIndex = 0
+		      edt_quick_lookup.Text = ""
 		      Return True
 		    Else
+		      edt_quick_lookup.Text = ""
 		      Return False
 		    End If
 		  Case ASC_KEY_END
 		    If Me.ListCount > 0 Then
 		      Me.ScrollPosition = Me.ListCount - 1
 		      Me.ListIndex = Me.ListCount - 1
+		      edt_quick_lookup.Text = ""
 		      Return True
 		    Else
+		      edt_quick_lookup.Text = ""
 		      Return False
 		    End If
 		  End Select
@@ -579,10 +588,12 @@ End
 		    If SearchedEntry = NewKey Then
 		      Me.ListIndex = i
 		      App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: Found match index, value: " + str(i) + " " + Me.List(i)
+		      edt_quick_lookup.Text = NewKey
 		      KeyedSearch = NewKey
 		      Return True
 		    End If
 		  Next i
+		  
 		  Return False
 		End Function
 	#tag EndEvent
@@ -626,7 +637,7 @@ End
 		      Me.SelStart = Me.SelStart - 1
 		      Me.SelLength = 1
 		      Me.SelText = ""
-		    Else 
+		    Else
 		      Me.SelText = ""
 		    End If
 		  Case ASC_KEY_TAB
@@ -637,7 +648,7 @@ End
 		    Return True
 		  Case ASC_KEY_ESCAPE 'Escape
 		    Return False 'Close dialog, no search in progress
-		  Case ASC_KEY_UP 
+		  Case ASC_KEY_UP
 		    Return False
 		  Case ASC_KEY_DOWN
 		    Return False
@@ -653,7 +664,7 @@ End
 		    If Me.SelLength = 0 Then
 		      Me.SelLength = 1
 		      Me.SelText = ""
-		    Else 
+		    Else
 		      Me.SelText = ""
 		    End If
 		    'TODO Handle the F1 - F12 Keys in RB 2007

@@ -26,14 +26,12 @@ Begin Window MainSettingsWindow
    Width           =   619
    Begin PushButton btn_ok
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "OK"
       ControlOrder    =   0
       Default         =   "True"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -49,20 +47,18 @@ Begin Window MainSettingsWindow
       TextSize        =   10
       Top             =   371
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   24
+      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "True"
       Caption         =   "Cancel"
       ControlOrder    =   1
       Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -78,18 +74,16 @@ Begin Window MainSettingsWindow
       TextSize        =   10
       Top             =   371
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   25
+      BehaviorIndex   =   1
    End
    Begin GroupBox grp_settings_general
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "General"
       ControlOrder    =   2
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   110
       HelpTag         =   ""
       Index           =   -2147483648
@@ -105,18 +99,16 @@ Begin Window MainSettingsWindow
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   235
-      BehaviorIndex   =   12
+      BehaviorIndex   =   2
       Begin StaticText lbl_general_ccli
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   3
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -127,7 +119,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "CCLI License #:"
          TextAlign       =   0
@@ -136,23 +128,21 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   24
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   215
-         BehaviorIndex   =   13
+         BehaviorIndex   =   3
       End
       Begin EditField edt_general_ccli
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
          BackColor       =   16777215
-         BalloonHelp     =   ""
          Bold            =   "False"
          Border          =   "True"
          ControlOrder    =   4
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Format          =   ""
          Height          =   20
          HelpTag         =   ""
@@ -166,12 +156,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Mask            =   ""
-         MultiLine       =   "False"
+         Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
-         ScrollBar       =   "True"
-         ScrollBarHorizontal=   "False"
-         ScrollBarVertical=   "True"
+         ScrollbarHorizontal=   "False"
+         ScrollbarVertical=   "True"
          Styled          =   "False"
          TabPanelIndex   =   0
          Text            =   ""
@@ -181,20 +170,18 @@ Begin Window MainSettingsWindow
          Top             =   39
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   14
+         BehaviorIndex   =   4
       End
       Begin CheckBox chk_general_version_check
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Check for newer versions on startup"
          ControlOrder    =   5
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -211,19 +198,17 @@ Begin Window MainSettingsWindow
          Top             =   63
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   215
-         BehaviorIndex   =   15
+         BehaviorIndex   =   5
       End
       Begin StaticText lbl_general_language
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   6
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -234,7 +219,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "Language:"
          TextAlign       =   0
@@ -243,19 +228,17 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   82
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   150
-         BehaviorIndex   =   16
+         BehaviorIndex   =   6
       End
       Begin PopupMenu pop_general_language
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   7
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -273,19 +256,17 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   97
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   200
-         BehaviorIndex   =   17
+         BehaviorIndex   =   7
       End
    End
    Begin GroupBox grp_settings_startmode
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Start Mode"
       ControlOrder    =   8
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   60
       HelpTag         =   ""
       Index           =   -2147483648
@@ -301,17 +282,15 @@ Begin Window MainSettingsWindow
       TextSize        =   11
       Top             =   126
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   235
-      BehaviorIndex   =   39
+      BehaviorIndex   =   8
       Begin RadioButton rad_start_songs
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Songs"
          ControlOrder    =   9
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -328,18 +307,16 @@ Begin Window MainSettingsWindow
          Top             =   142
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   205
-         BehaviorIndex   =   40
+         BehaviorIndex   =   9
       End
       Begin RadioButton rad_start_sets
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Sets"
          ControlOrder    =   10
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -356,19 +333,17 @@ Begin Window MainSettingsWindow
          Top             =   163
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   205
-         BehaviorIndex   =   41
+         BehaviorIndex   =   10
       End
    End
    Begin GroupBox grp_settings_documents_folder
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Documents Folder"
       ControlOrder    =   11
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   203
       HelpTag         =   ""
       Index           =   -2147483648
@@ -384,17 +359,15 @@ Begin Window MainSettingsWindow
       TextSize        =   11
       Top             =   190
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   235
-      BehaviorIndex   =   19
+      BehaviorIndex   =   11
       Begin RadioButton rad_documents_default
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Default"
          ControlOrder    =   12
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -411,18 +384,16 @@ Begin Window MainSettingsWindow
          Top             =   235
          Underline       =   "False"
          Value           =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   205
-         BehaviorIndex   =   20
+         BehaviorIndex   =   12
       End
       Begin RadioButton rad_documents_custom
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Custom:"
          ControlOrder    =   13
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -439,19 +410,17 @@ Begin Window MainSettingsWindow
          Top             =   255
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   205
-         BehaviorIndex   =   21
+         BehaviorIndex   =   13
       End
       Begin StaticText docs_folder
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   14
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   45
          HelpTag         =   ""
          Index           =   -2147483648
@@ -462,7 +431,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "True"
+         Multiline       =   "True"
          TabPanelIndex   =   0
          Text            =   "\\"
          TextAlign       =   0
@@ -471,26 +440,24 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   283
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   205
-         BehaviorIndex   =   43
+         BehaviorIndex   =   14
       End
       Begin PushButton btn_browse
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Cancel          =   "False"
          Caption         =   "Browse..."
          ControlOrder    =   15
          Default         =   "False"
-         DisabledBalloonHelp=   ""
          Enabled         =   "False"
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_settings_documents_folder"
          Italic          =   "False"
-         Left            =   65
+         Left            =   68
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
@@ -498,21 +465,19 @@ Begin Window MainSettingsWindow
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   362
+         Top             =   338
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   22
+         BehaviorIndex   =   15
       End
       Begin StaticText nte_documents_warning
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
-         ControlOrder    =   34
+         ControlOrder    =   18
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   27
          HelpTag         =   ""
          Index           =   -2147483648
@@ -523,7 +488,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "True"
+         Multiline       =   "True"
          TabPanelIndex   =   0
          Text            =   "(use with caution; forces restart)"
          TextAlign       =   0
@@ -532,19 +497,45 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   208
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   205
-         BehaviorIndex   =   23
+         BehaviorIndex   =   16
+      End
+      Begin Checkbox chk_documents_oldfolderdb
+         AutoDeactivate  =   "True"
+         Bold            =   ""
+         Caption         =   "Use Pre-V1.1 FolderDB cache"
+         ControlOrder    =   20
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_documents_folder"
+         Italic          =   ""
+         Left            =   31
+         LockBottom      =   ""
+         LockLeft        =   ""
+         LockRight       =   ""
+         LockTop         =   ""
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   10
+         Top             =   368
+         Underline       =   ""
+         Value           =   ""
+         Visible         =   True
+         Width           =   214
+         BehaviorIndex   =   17
       End
    End
    Begin GroupBox grp_settings_fonts
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Fonts"
       ControlOrder    =   16
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   350
       HelpTag         =   ""
       Index           =   -2147483648
@@ -560,18 +551,16 @@ Begin Window MainSettingsWindow
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   150
-      BehaviorIndex   =   26
+      BehaviorIndex   =   18
       Begin StaticText lbl_fonts_headings
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   17
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -582,7 +571,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "Headings:"
          TextAlign       =   0
@@ -591,9 +580,69 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   35
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   27
+         BehaviorIndex   =   19
+      End
+      Begin StaticText lbl_fonts_labels
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   19
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_fonts"
+         Italic          =   "False"
+         Left            =   281
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         TabPanelIndex   =   0
+         Text            =   "Labels:"
+         TextAlign       =   0
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   85
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   120
+         BehaviorIndex   =   20
+      End
+      Begin StaticText lbl_fonts_text_fields
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   21
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_settings_fonts"
+         Italic          =   "False"
+         Left            =   281
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         TabPanelIndex   =   0
+         Text            =   "Text Fields:"
+         TextAlign       =   0
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   135
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   120
+         BehaviorIndex   =   21
       End
       Begin SFontCanvas can_fonts_headings
          AcceptFocus     =   "False"
@@ -601,10 +650,9 @@ Begin Window MainSettingsWindow
          AdvancedOptions =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
-         ControlOrder    =   18
-         DisabledBalloonHelp=   ""
+         ControlOrder    =   22
          Enabled         =   "True"
+         EraseBackground =   "True"
          Height          =   30
          HelpTag         =   ""
          Index           =   -2147483648
@@ -619,17 +667,15 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   32
+         BehaviorIndex   =   22
       End
-      Begin StaticText lbl_fonts_labels
+      Begin StaticText lbl_fonts_fixed_width
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
-         ControlOrder    =   19
+         ControlOrder    =   23
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -640,18 +686,18 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
-         Text            =   "Labels:"
+         Text            =   "Fixed-width Text:"
          TextAlign       =   0
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   85
+         Top             =   185
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   28
+         BehaviorIndex   =   23
       End
       Begin SFontCanvas can_fonts_labels
          AcceptFocus     =   "False"
@@ -659,10 +705,9 @@ Begin Window MainSettingsWindow
          AdvancedOptions =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
-         ControlOrder    =   20
-         DisabledBalloonHelp=   ""
+         ControlOrder    =   24
          Enabled         =   "True"
+         EraseBackground =   "True"
          Height          =   30
          HelpTag         =   ""
          Index           =   -2147483648
@@ -677,17 +722,15 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   33
+         BehaviorIndex   =   24
       End
-      Begin StaticText lbl_fonts_text_fields
+      Begin StaticText lbl_fonts_buttons
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
-         ControlOrder    =   21
+         ControlOrder    =   25
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -698,18 +741,18 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
-         Text            =   "Text Fields:"
+         Text            =   "Buttons:"
          TextAlign       =   0
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   135
+         Top             =   235
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   29
+         BehaviorIndex   =   25
       End
       Begin SFontCanvas can_fonts_text_fields
          AcceptFocus     =   "False"
@@ -717,10 +760,9 @@ Begin Window MainSettingsWindow
          AdvancedOptions =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
-         ControlOrder    =   22
-         DisabledBalloonHelp=   ""
+         ControlOrder    =   26
          Enabled         =   "True"
+         EraseBackground =   "True"
          Height          =   30
          HelpTag         =   ""
          Index           =   -2147483648
@@ -735,17 +777,15 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   34
+         BehaviorIndex   =   26
       End
-      Begin StaticText lbl_fonts_fixed_width
+      Begin StaticText lbl_fonts_large_headings
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
-         ControlOrder    =   23
+         ControlOrder    =   27
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -756,18 +796,18 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
-         Text            =   "Fixed-width Text:"
+         Text            =   "Large Headings:"
          TextAlign       =   0
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   185
+         Top             =   285
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   30
+         BehaviorIndex   =   27
       End
       Begin SFontCanvas can_fonts_fixed_width
          AcceptFocus     =   "False"
@@ -775,10 +815,9 @@ Begin Window MainSettingsWindow
          AdvancedOptions =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
-         ControlOrder    =   24
-         DisabledBalloonHelp=   ""
+         ControlOrder    =   28
          Enabled         =   "True"
+         EraseBackground =   "True"
          Height          =   30
          HelpTag         =   ""
          Index           =   -2147483648
@@ -793,39 +832,7 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   35
-      End
-      Begin StaticText lbl_fonts_buttons
-         AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
-         Bold            =   "False"
-         ControlOrder    =   25
-         DataField       =   ""
-         DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_settings_fonts"
-         Italic          =   "False"
-         Left            =   281
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         MultiLine       =   "False"
-         TabPanelIndex   =   0
-         Text            =   "Buttons:"
-         TextAlign       =   0
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   235
-         Underline       =   "False"
-         Visible         =   "True"
-         Width           =   120
-         BehaviorIndex   =   37
+         BehaviorIndex   =   28
       End
       Begin SFontCanvas can_fonts_buttons
          AcceptFocus     =   "False"
@@ -833,10 +840,9 @@ Begin Window MainSettingsWindow
          AdvancedOptions =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
-         ControlOrder    =   26
-         DisabledBalloonHelp=   ""
+         ControlOrder    =   34
          Enabled         =   "True"
+         EraseBackground =   "True"
          Height          =   30
          HelpTag         =   ""
          Index           =   -2147483648
@@ -851,39 +857,7 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   38
-      End
-      Begin StaticText lbl_fonts_large_headings
-         AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
-         Bold            =   "False"
-         ControlOrder    =   27
-         DataField       =   ""
-         DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_settings_fonts"
-         Italic          =   "False"
-         Left            =   281
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         MultiLine       =   "False"
-         TabPanelIndex   =   0
-         Text            =   "Large Headings:"
-         TextAlign       =   0
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   285
-         Underline       =   "False"
-         Visible         =   "True"
-         Width           =   120
-         BehaviorIndex   =   31
+         BehaviorIndex   =   29
       End
       Begin SFontCanvas can_fonts_large_headings
          AcceptFocus     =   "False"
@@ -891,10 +865,9 @@ Begin Window MainSettingsWindow
          AdvancedOptions =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
-         ControlOrder    =   28
-         DisabledBalloonHelp=   ""
+         ControlOrder    =   44
          Enabled         =   "True"
+         EraseBackground =   "True"
          Height          =   45
          HelpTag         =   ""
          Index           =   -2147483648
@@ -909,17 +882,15 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   36
+         BehaviorIndex   =   30
       End
    End
    Begin GroupBox grp_settings_proxy
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "HTTP Proxy"
       ControlOrder    =   29
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   110
       HelpTag         =   ""
       Index           =   -2147483648
@@ -935,18 +906,16 @@ Begin Window MainSettingsWindow
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   174
-      BehaviorIndex   =   7
+      BehaviorIndex   =   31
       Begin StaticText lbl_proxy_host
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   30
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -957,7 +926,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "Server:"
          TextAlign       =   0
@@ -966,23 +935,21 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   30
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   8
+         BehaviorIndex   =   32
       End
       Begin EditField edt_proxy_host
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
          BackColor       =   16777215
-         BalloonHelp     =   ""
          Bold            =   "False"
          Border          =   "True"
          ControlOrder    =   31
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Format          =   ""
          Height          =   20
          HelpTag         =   ""
@@ -996,12 +963,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Mask            =   ""
-         MultiLine       =   "False"
+         Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
-         ScrollBar       =   "True"
-         ScrollBarHorizontal=   "False"
-         ScrollBarVertical=   "True"
+         ScrollbarHorizontal=   "False"
+         ScrollbarVertical=   "True"
          Styled          =   "False"
          TabPanelIndex   =   0
          Text            =   ""
@@ -1011,19 +977,17 @@ Begin Window MainSettingsWindow
          Top             =   45
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   134
-         BehaviorIndex   =   9
+         BehaviorIndex   =   33
       End
       Begin StaticText lbl_proxy_port
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   32
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -1034,7 +998,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "Port:"
          TextAlign       =   0
@@ -1043,23 +1007,21 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   70
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
-         BehaviorIndex   =   10
+         BehaviorIndex   =   34
       End
       Begin EditField edt_proxy_port
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
          BackColor       =   16777215
-         BalloonHelp     =   ""
          Bold            =   "False"
          Border          =   "True"
          ControlOrder    =   33
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Format          =   ""
          Height          =   20
          HelpTag         =   ""
@@ -1073,12 +1035,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Mask            =   ""
-         MultiLine       =   "False"
+         Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
-         ScrollBar       =   "True"
-         ScrollBarHorizontal=   "False"
-         ScrollBarVertical=   "True"
+         ScrollbarHorizontal=   "False"
+         ScrollbarVertical=   "True"
          Styled          =   "False"
          TabPanelIndex   =   0
          Text            =   ""
@@ -1088,21 +1049,19 @@ Begin Window MainSettingsWindow
          Top             =   85
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   50
-         BehaviorIndex   =   11
+         BehaviorIndex   =   35
       End
    End
    Begin CheckBox chk_general_newpaint
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Use new control design"
       ControlOrder    =   35
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -1119,18 +1078,16 @@ Begin Window MainSettingsWindow
       Top             =   129
       Underline       =   "False"
       Value           =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   134
-      BehaviorIndex   =   42
+      BehaviorIndex   =   36
    End
    Begin GroupBox grp_settings_user_defined
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "User Defined Field Names"
       ControlOrder    =   36
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   173
       HelpTag         =   ""
       Index           =   -2147483648
@@ -1146,18 +1103,16 @@ Begin Window MainSettingsWindow
       TextSize        =   11
       Top             =   160
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   173
-      BehaviorIndex   =   0
+      BehaviorIndex   =   37
       Begin StaticText lbl_define_user1
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   37
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -1168,7 +1123,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "User Defined 1:"
          TextAlign       =   0
@@ -1177,23 +1132,21 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   180
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   143
-         BehaviorIndex   =   1
+         BehaviorIndex   =   38
       End
       Begin EditField edt_define_user1
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
          BackColor       =   16777215
-         BalloonHelp     =   ""
          Bold            =   "False"
          Border          =   "True"
          ControlOrder    =   38
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Format          =   ""
          Height          =   20
          HelpTag         =   ""
@@ -1207,12 +1160,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Mask            =   ""
-         MultiLine       =   "False"
+         Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
-         ScrollBar       =   "True"
-         ScrollBarHorizontal=   "False"
-         ScrollBarVertical=   "True"
+         ScrollbarHorizontal=   "False"
+         ScrollbarVertical=   "True"
          Styled          =   "False"
          TabPanelIndex   =   0
          Text            =   ""
@@ -1222,19 +1174,17 @@ Begin Window MainSettingsWindow
          Top             =   195
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   143
-         BehaviorIndex   =   2
+         BehaviorIndex   =   39
       End
       Begin StaticText lbl_define_user2
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   39
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -1245,7 +1195,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "User Defined 2:"
          TextAlign       =   0
@@ -1254,23 +1204,21 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   220
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   143
-         BehaviorIndex   =   3
+         BehaviorIndex   =   40
       End
       Begin EditField edt_define_user2
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
          BackColor       =   16777215
-         BalloonHelp     =   ""
          Bold            =   "False"
          Border          =   "True"
          ControlOrder    =   40
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Format          =   ""
          Height          =   20
          HelpTag         =   ""
@@ -1284,12 +1232,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Mask            =   ""
-         MultiLine       =   "False"
+         Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
-         ScrollBar       =   "True"
-         ScrollBarHorizontal=   "False"
-         ScrollBarVertical=   "True"
+         ScrollbarHorizontal=   "False"
+         ScrollbarVertical=   "True"
          Styled          =   "False"
          TabPanelIndex   =   0
          Text            =   ""
@@ -1299,19 +1246,17 @@ Begin Window MainSettingsWindow
          Top             =   235
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   143
-         BehaviorIndex   =   4
+         BehaviorIndex   =   41
       End
       Begin StaticText lbl_define_user3
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   41
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -1322,7 +1267,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   0
          Text            =   "User Defined 3:"
          TextAlign       =   0
@@ -1331,23 +1276,21 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   260
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   143
-         BehaviorIndex   =   5
+         BehaviorIndex   =   42
       End
       Begin EditField edt_define_user3
          AcceptTabs      =   "False"
          Alignment       =   0
          AutoDeactivate  =   "True"
          BackColor       =   16777215
-         BalloonHelp     =   ""
          Bold            =   "False"
          Border          =   "True"
          ControlOrder    =   42
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Format          =   ""
          Height          =   20
          HelpTag         =   ""
@@ -1361,12 +1304,11 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Mask            =   ""
-         MultiLine       =   "False"
+         Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
-         ScrollBar       =   "True"
-         ScrollBarHorizontal=   "False"
-         ScrollBarVertical=   "True"
+         ScrollbarHorizontal=   "False"
+         ScrollbarVertical=   "True"
          Styled          =   "False"
          TabPanelIndex   =   0
          Text            =   ""
@@ -1376,20 +1318,18 @@ Begin Window MainSettingsWindow
          Top             =   275
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   143
-         BehaviorIndex   =   6
+         BehaviorIndex   =   43
       End
       Begin PushButton btn_define_load
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Cancel          =   "False"
          Caption         =   "Load Language Defaults"
          ControlOrder    =   43
          Default         =   "False"
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   22
          HelpTag         =   ""
          Index           =   -2147483648
@@ -1405,9 +1345,9 @@ Begin Window MainSettingsWindow
          TextSize        =   10
          Top             =   304
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   143
-         BehaviorIndex   =   18
+         BehaviorIndex   =   44
       End
    End
 End
@@ -1422,30 +1362,21 @@ End
 
 	#tag Event
 		Sub Open()
+		  Dim s As String
 		  edt_general_ccli.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "ccli/@number")
 		  chk_general_version_check.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "version/@check", False)
 		  edt_proxy_host.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@host")
 		  edt_proxy_port.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@port")
 		  
-		  Dim s As String
-		  's = SmartML.GetValue(App.MyGlobals.DocumentElement, "documents/@folder")
-		  s = App.MainPreferences.GetValueFI(Prefs.kDocumentsFolder, DocumentsFolder.Child("OpenSong")).AbsolutePath
-		  If Len(s) > 0 Then
-		    rad_documents_custom.Value = True
-		    btn_browse.Enabled = True
-		    DocsFolder = FileUtils.AbsolutePathToFolderItem(s)
-		  Else
-		    rad_documents_default.Value = True
-		    btn_browse.Enabled = False
-		    DocsFolder = DefaultDocsFolder 
-		  End If
-		  '++JRC moved to globals
-		  's = SmartML.GetValue(App.MyGlobals.DocumentElement, "language/@file")
-		  's = SmartML.GetValue(App.MyMainSettings.DocumentElement, "language/@file")
-		  '--
 		  //++
-		  // And now it's in the preferences.
+		  // EMP, July 2007
+		  // Simplified this logic a little since there is now a way to return FolderItem from preferences
 		  //--
+		  DocsFolder = App.MainPreferences.GetValueFI(Prefs.kDocumentsFolder, DefaultDocsFolder, True)
+		  rad_documents_default.Value = (DocsFolder = DefaultDocsFolder)
+		  rad_documents_custom.Value = Not rad_documents_default.Value
+		  btn_browse.Enabled = rad_documents_custom.Value
+		  
 		  s = App.MainPreferences.GetValue(Prefs.kLanguage, "English")
 		  Dim f As FolderItem
 		  f = App.AppFolder.Child("OpenSong Languages")
@@ -1458,7 +1389,7 @@ End
 		  Try
 		    For i = 1 To f.Count
 		      langfile = f.Item(i)
-		      If Not langfile.Directory And langfile.IsFileVisible Then 
+		      If Not langfile.Directory And langfile.IsFileVisible Then
 		        pop_general_language.AddRow langfile.Name
 		        If langfile.Name = s Then currlang = pop_general_language.ListCount - 1
 		      End If
@@ -1509,9 +1440,11 @@ End
 		  App.CenterInControlScreen Me
 		  
 		  '++JRC Display DocsFolder Location
-		  If DocsFolder.AbsolutePath = DefaultDocsFolder.AbsolutePath Then rad_documents_default.Value = True
 		  docs_folder.Text = DocsFolder.FormatFolderName
 		  '--
+		  //++ EMP July 2007
+		  // Add FolderDB flag
+		  chk_documents_oldfolderdb.Value = App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB)
 		End Sub
 	#tag EndEvent
 
@@ -1584,6 +1517,8 @@ End
 		    InputBox.Message "Error in translation."
 		    Return
 		  End If
+		  
+		  App.MainPreferences.SetValueB(Prefs.kUseOldFolderDB, chk_documents_oldfolderdb.Value)
 		  
 		  Dim Settings As XmlElement
 		  Settings = App.MyMainSettings.DocumentElement

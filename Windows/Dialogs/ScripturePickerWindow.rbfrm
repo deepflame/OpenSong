@@ -79,7 +79,7 @@ Begin Window ScripturePickerWindow
       Width           =   65
       BehaviorIndex   =   1
    End
-   Begin EditField edt_quick_lookup
+   Begin SEditField edt_quick_lookup
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
@@ -834,7 +834,7 @@ Begin Window ScripturePickerWindow
       _ScrollWidth    =   -1
       BehaviorIndex   =   7
    End
-   Begin EditField edt_preview
+   Begin SEditField edt_preview
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
@@ -1018,6 +1018,13 @@ End
 		  lst_scr_nt.Width = listwidth
 		End Sub
 	#tag EndEvent
+
+
+#tag MenuHandler
+		Function mnu_copy_paste() As Boolean Handles mnu_copy_paste.Action
+			
+		End Function
+#tag EndMenuHandler
 
 
 	#tag Method, Flags = &h1

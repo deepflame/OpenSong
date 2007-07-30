@@ -14,14 +14,24 @@ Protected Module FileUtils
 
 	#tag Method, Flags = &h1
 		Protected Function AbsolutePathToFolderItem(path As String) As FolderItem
-		  Dim i, l As Integer
+		  'Dim i, l As Integer
+		  'Dim f As FolderItem
+		  'path = ReplaceAll(path, "\", "/")
+		  'l = CountFields(path, "/")
+		  'f = GetFolderItem(NthField(path, "/", 1))
+		  'For i = 2 To l
+		  'If f <> Nil Then f = f.Child(NthField(path, "/", i))
+		  'Next i
+		  'Return f
+		  
 		  Dim f As FolderItem
-		  path = ReplaceAll(path, "\", "/")
-		  l = CountFields(path, "/")
-		  f = GetFolderItem(NthField(path, "/", 1))
-		  For i = 2 To l
-		    If f <> Nil Then f = f.Child(NthField(path, "/", i))
-		  Next i
+		  If IsPathAbsolute(path) Then
+		    f = GetFolderItem(Path, FolderItem.PathTypeAbsolute)
+		  Else
+		    App.DebugWriter.Write("FileUtils.AbsolutePathToFolderItem: IsPathAbsolute reported invalid path: '" + path + "'", 1)
+		    f = Nil
+		  End If
+		  
 		  Return f
 		End Function
 	#tag EndMethod
@@ -49,15 +59,7 @@ Protected Module FileUtils
 		      End If
 		    Else ' not a directory
 		      If Left(fromItem.Name, 1) <> "." Then
-		        If _
-		          (overwrite = "ALWAYS") Or _
-		          (overwrite = "NEVER" And Not toItem.Exists) Or _
-		          (overwrite = "NEWER" And ((Not toItem.Exists) Or toItem.ModificationDate.TotalSeconds < fromItem.ModificationDate.TotalSeconds)) Then
-		          If toItem.Exists Then toItem.Delete
-		          If toItem.Exists Then Return False
-		          fromItem.CopyFileTo toFolder
-		          If Not toItem.Exists Then Return False
-		        End If
+		        If Not CopyFile(fromItem, toItem, overwrite) Then Return False
 		      End If
 		    End If
 		  Next i
@@ -68,6 +70,7 @@ Protected Module FileUtils
 
 	#tag Method, Flags = &h1
 		Protected Function CreateFolder(f As FolderItem) As Boolean
+		  
 		  If f = Nil Then
 		    SetLastError(f)
 		    Return False
@@ -78,13 +81,18 @@ Protected Module FileUtils
 		      SetLastError(f)
 		      Return True
 		    Else
-		      LastError = App.T.Translate("fileutils/errors/notdirectory", GetDisplayFullPath(f))
+		      LastError = App.T.Translate("errors/fileutils/notdirectory", GetDisplayFullPath(f))
 		      Return False
 		    End If
 		  Else
-		    f.CreateAsFolder
-		    SetLastError(f)
-		    Return f.LastErrorCode = 0
+		    If f.Parent Is Nil Then
+		      SetLastError(Nil)
+		      Return False
+		    Else
+		      f.CreateAsFolder
+		      SetLastError(f)
+		      Return f.LastErrorCode = 0
+		    End If
 		  End If
 		End Function
 	#tag EndMethod
@@ -94,7 +102,7 @@ Protected Module FileUtils
 		  //++
 		  // Format a foldername for display
 		  // If longer than maxLen, eliminate elements of the path with
-		  // an ellipsis until shorter.  Always show f's name unless it is longer than 60
+		  // an ellipsis until shorter.  Always show f's name unless it is longer than maxlen
 		  //--
 		  Dim path As String
 		  Dim name As String
@@ -109,31 +117,34 @@ Protected Module FileUtils
 		  
 		  If f = Nil Then Return ""
 		  
-		  path = f.AbsolutePath
+		  path = GetDisplayFullPath(f)
 		  name = f.DisplayName
 		  nameLen = Len(name) + 3 // 3 for the ...
+		  Dim leaf As String
 		  
 		  If Len(path) <= maxLen Then Return path
 		  
-		  Dim parentPath As String
-		  Dim p As FolderItem
-		  Dim temp As String
+		  Dim elements() As String
+		  elements = Split(path, SEP)
+		  Select Case UBound(elements)
+		  Case -1 //This is strange...
+		    Return ""
+		  Case 0 // Unqualified filename
+		    path = Left(name, (maxlen / 2) - 2) + "..." + Right(name, (maxlen / 2) - 1)
+		  Case 1 // Root and filename
+		    path = Left(elements(0), maxlen - nameLen) + "..." + name
+		  Case Else // Multiple parent folders
+		    path = elements(0)  + "..."
+		    leaf = elements.Pop //take off the filename
+		    While UBound(elements) > 0
+		      leaf = elements.pop
+		      If path.len + leaf.len + name.len + 2 > maxlen Then Exit While
+		      name = leaf + SEP + name
+		    Wend
+		    path = path + SEP + name
+		  End Select
 		  
-		  p = f.Parent
-		  
-		  If p = Nil Then Return Left(name, maxLen - 3) + "..."
-		  
-		  parentPath = p.AbsolutePath
-		  
-		  If Right(parentPath, 1) = SEP Then
-		    parentPath = Left(parentPath, len(parentPath) - 1)
-		  End If
-		  
-		  parentPath = Left(parentPath, maxLen - nameLen)
-		  
-		  parentPath = Left(parentPath, StringUtils.InStrReverse(parentPath, SEP)) + "..." + SEP
-		  
-		  Return parentPath + name
+		  Return path
 		End Function
 	#tag EndMethod
 
@@ -240,7 +251,7 @@ Protected Module FileUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function IsPathAbsolute(Path As String) As Boolean
+		Protected Function IsPathAbsolute(path As String) As Boolean
 		  //++
 		  // Take advantage of the fact that GetFolderItem will
 		  // successfully handle a full path in absolute format,
@@ -336,7 +347,7 @@ Protected Module FileUtils
 		Protected Sub SetLastError(f As FolderItem)
 		  
 		  If f = Nil Then
-		    LastError = App.T.Translate("fileutils/errors/nilobjecterror")
+		    LastError = App.T.Translate("errors/fileutils/nilobjecterror")
 		    Return
 		  End If
 		  
@@ -344,21 +355,73 @@ Protected Module FileUtils
 		  Case 0 // Success
 		    LastError = ""
 		  Case FolderItem.AccessDenied
-		    LastError = App.T.Translate("fileutils/errors/accessdenied", GetDisplayFullPath(f))
+		    LastError = App.T.Translate("errors/fileutils/accessdenied", GetDisplayFullPath(f))
 		  Case FolderItem.DestDoesNotExistError
-		    LastError = App.T.Translate("fileutils/errors/destdoesnotexisterror", GetDisplayFullPath(f))
+		    LastError = App.T.Translate("errors/fileutils/destdoesnotexisterror", GetDisplayFullPath(f))
 		  Case FolderItem.FileInUse
-		    LastError = App.T.Translate("fileutils/errors/fileinuse", GetDisplayFullPath(f))
+		    LastError = App.T.Translate("errors/fileutils/fileinuse", GetDisplayFullPath(f))
 		  Case FolderItem.FileNotFound
-		    LastError = App.T.Translate("fileutils/errors/filenotfound", GetDisplayFullPath(f))
+		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(f))
 		  Case FolderItem.InvalidName
-		    LastError = App.T.Translate("fileutils/errors/invalidname", f.AbsolutePath)
+		    LastError = App.T.Translate("errors/fileutils/invalidname", f.AbsolutePath)
 		  Case FolderItem.NotEnoughMemory
-		    LastError = App.T.Translate("fileutils/errors/notenoughmemory", GetDisplayFullPath(f))
+		    LastError = App.T.Translate("errors/fileutils/notenoughmemory", GetDisplayFullPath(f))
 		  Case Else
-		    LastError = App.T.Translate("fileutils/errors/unknownerror", GetDisplayFullPath(f))
+		    LastError = App.T.Translate("errors/fileutils/unknownerror", GetDisplayFullPath(f))
 		  End Select
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function CopyFile(fromItem As FolderItem, toItem As FolderItem, overwrite As String = "NEVER") As Boolean
+		  Dim i As Integer
+		  If fromItem Is Nil or toItem Is Nil Then
+		    SetLastError(Nil)
+		    Return False
+		  End If
+		  
+		  If (Not fromItem.Parent.Exists) Then
+		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem.Parent))
+		    Return False
+		  End If
+		  If (Not toItem.Parent.Exists) Then
+		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(toItem.Parent))
+		    Return False
+		  End If
+		  
+		  If fromItem.Directory Then
+		    LastError = App.T.Translate("errors/fileutils/notaregularfile", GetDisplayFullPath(fromItem))
+		    Return False
+		  End If
+		  
+		  If Not fromItem.Exists Then
+		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem))
+		    Return False
+		  End If
+		  
+		  If toItem.Directory Then
+		    toItem = toItem.Child(fromItem.Name)
+		  End If
+		  
+		  If _
+		    (overwrite = kOverwriteAlways) Or _
+		    (overwrite = kOverwriteNever And Not toItem.Exists) Or _
+		    (overwrite = kOverwriteNewer And ((Not toItem.Exists) Or toItem.ModificationDate.TotalSeconds < fromItem.ModificationDate.TotalSeconds)) Then
+		    If toItem.Exists Then toItem.Delete
+		    If toItem.Exists Then
+		      SetLastError(toItem)
+		      Return False
+		    End If
+		    fromItem.CopyFileTo toItem.Parent
+		    If Not toItem.Exists Then
+		      SetLastError(toItem)
+		      Return False
+		    End If
+		  End If
+		  
+		  SetLastError(toItem)
+		  Return True
+		End Function
 	#tag EndMethod
 
 
@@ -367,5 +430,45 @@ Protected Module FileUtils
 	#tag EndProperty
 
 
+	#tag Constant, Name = kOverwriteNever, Type = String, Dynamic = False, Default = \"NEVER", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kOverwriteNewer, Type = String, Dynamic = False, Default = \"NEWER", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kOverwriteAlways, Type = String, Dynamic = False, Default = \"ALWAYS", Scope = Protected
+	#tag EndConstant
+
+
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Module
 #tag EndModule

@@ -171,3 +171,11 @@ general_settings/ccli (Modified)
 scripture_lookup/select_file
 module/generate_index
 module/generate_error
+song_lookup/preview
+song_lookup/header (Modified)
+general_settings/documents_folder/oldfolderdb
+sets_mode/current_set/export
+sets_mode/items/defaultstyle
+sets_mode/messages/export_complete
+errors/fileutils/*
+errors/cclinotavailable

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.0.0">
+<language name="English" author="Sean Lickfold" version="1.1.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -136,6 +136,7 @@
         <no_songs>There are no songs in the set.</no_songs>
       </print_songs>
       <print_order caption="List">Prints an outline of this set.</print_order>
+      <export caption="Export">Export this set to another folder.</export>
     </current_set>
     <new_item caption="New Item">
       <add_song caption="Song">Adds a song to the current set. This will present the list of songs available from the song editor for you to choose from.</add_song>
@@ -158,11 +159,17 @@
       <scripture caption="(scripture)"/>
       <style caption="(style)">-- Change Style --</style>
       <revert caption="(style)">-- Revert Style --</revert>
+      <defaultstyle caption="(style)">-- Exported Style --</defaultstyle>
     </items>
     <untitled caption="Untitled"/>
     <errors>
       <revert caption="Error reloading set &quot;%1&quot; from file."/>
     </errors>
+    <messages>
+      <export_complete>&quot;%1&quot; exported to
+%2
+      </export_complete>
+    </messages>
   </sets_mode>
 
   <slide_editor>
@@ -323,6 +330,7 @@
       <message>The new location for OpenSong documents will not take effect until OpenSong is restarted. You may want to copy your old OpenSong documents over to the new location first.</message>
       <changed>You selected to use a custom Documents Folder, but didn't click the change button.  Do you want to use the new folder?</changed>
       <change caption="Change"/>
+      <oldfolderdb caption="Use pre-V1.1 file cache"/>
     </documents_folder>
     <newpaint caption="Use new visual style"/>
   </general_settings>
@@ -698,9 +706,11 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </style_editor>
 
   <song_lookup title="Song Lookup">
-    <header caption="To add a song, click the song title below and click the 'Add' button or begin typing the song title and hit the enter key."/>
+    <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. You can also double-click on the song name or press ENTER to add the song."/>
     <no_selection>You have not selected a song.</no_selection>
     <folder caption="Select Folder"/>
+    <preview caption="Song Preview"/>
+    <lookup caption="Quick Lookup"/>
   </song_lookup>
 
   <scripture_lookup title="Scripture Lookup">
@@ -976,6 +986,25 @@ Click on this slide to edit its style.</body>
     <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
 Temporarily changing to: %1
 Please modify your preferences.</docs_folder>
+    <fileutils>
+       <destdoesnotexisterror>File does not exist: %1</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
+       <accessdenied>File protection error, access denied: %1</accessdenied>
+       <fileinuse>File in use error: %1
+(Is there a second copy of OpenSong running?)</fileinuse>
+       <filenotfound>File was not found: %1</filenotfound>
+       <invalidname>Invalid name for file: %1</invalidname>
+       <notenoughmemory>Memory exhausted accessing file %1
+Restart OpenSong and retry.</notenoughmemory>
+       <unknownerror>Unknown error accessing file %1</unknownerror>
+       <notaregularfile>Expected %1 to be a file, not a folder.</notaregularfile>
+       <notafolder>Expected %1 to be a folder, not a file.</notafolder>
+    </fileutils>
+    <cclinotavailable>The CCLI website has changed significantly.
+This has broken Import function until a new interface can be used.
+In the meantime, please investigate the OpenSong Import utility as an option.
+The OpenSong development team members regret any inconvenience.
+    </cclinotavailable>
   </errors>
 
   <xml_errors>

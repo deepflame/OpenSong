@@ -1,10 +1,84 @@
--= BL18 =-
+* Corrected another issue in the new FolderDB where folder scans were always recursive instead of honoring the "recurse" parameter.
 
-* FIXED Closing SongPicker would actually insert the currently selected song [Bug 1720935]
+* On the song selection dialog (SongPickerWindow), update the quick lookup field to reflect the search text typed into the listbox.
+
+* Corrected issue in FolderDB.GetFilesGeneric (fencepost error)
+
+* Made the default output for the debugger the user's home directory if running a built application (correct file protection issue for non-priv users).
+
+* Fixed some odds and ends that prevented proper initialization on Linux.
+
+* Simplified logic for locating files in both App.Open and MainSettingsWindow.
+
+* Added error message for FileUtils.CopyPath and made CopyPath and CopyFile smart enough to call the other if needed.  Also made CopyFile smart enough to take a directory as the output target.
+
+* Fixed issue with sets and missing songs not alerting the user. This was introduced because of changes to the underlying FolderDB in r235-236.
+
+* Disable the CCLI Import facility.  A message (errors/cclinotavailable) is shown instead.  Maybe this will reduce the number of bug reports for this issue.
+
+* Fixed a problem with plist-based preferences that caused a GetValue operation to fail when a parent node to the target didn't already exist.
+
+* Added errors/fileutils section to the English translation and corrected FileUtils to look for the right XML path.
+
+* Incorporated Martyn's (atuin2) work for exporting a Set and the associated Songs to a directory for transfer to another system.  No import capability (yet).
+
+* Cleaned up some problems with FileUtils and added FileUtils.CopyFile to support Set Export.
+
+* Updated text on the About window and added (unlabeled) fields to display memory and object usage.
+
+* Deleted the Baselevel (BL) version designation.  New versions use major.minor.bugfix numbering strategy.
+
+* New implementation of FolderDB.  This version does not use a cache, but rather reads the Songs and Sets folder when the program starts up.  On Windows and Macintosh, this is implemented using operating system-specific routines; for Linux in this version it relies on the RB FolderItem object (slower).  To disable this and use the old FolderDB cache, edit the parameters.plist and change documents_folder/UseOldFolderDB/value from False to True. This setting can also be changed on the General Settings property page.  The default is to use the new version.  When using the new version, Tools/Refresh will re-read the Songs or Sets folder but will not put up a status dialog or write a _cache file.  The latter means your cache may be out-of-sync if you change from the new FolderDB to the old one.
+
+* Added general_settings/documents_folder/oldfolderdb to the English language file.
+
+* If two folders with a parent-child relationship contained a song with the same name, selecting the parent folder's song for deletion would actually delete the song in the child folder.  This is now fixed when using the new FolderDB implementation.
+
+* Fixed issue with lyrics autoformat (BL20) on Windows due to line ending differences.
+
+* Double-clicking a song in a set list will correctly find the item even if the song is not in the folder tree of the active folder in the Song Editor.
+
+* Special folders (Main) and (All) now correctly translate.
+
+* Fix issue where two files with the same name but different Extensions would get the same thumbnail image. Adds an extra Extension for the thumbnail's filename
+
+* SButton controls now treat spacebar and Return/Enter keys as equivalent to a keypress.  Changed all instances of SButton buttons on MainWindow to accept focus so they are included in the controls activated by a Tab.
+
+* Fixed issues with SButton painting: (1) RB2007 requires design-time parameters to be Public (affects StickyBevel, LabelAlign); (2) grayscale version of icon wasn't being created so there was no icon on a disabled button when using "new visual style"; (3) changed default visual style to use the grayscale icon on disabled controls.
+
+* Put better error message handling in SmartML to help report errors at program initialization, especially when the Globals file or language file is missing.
+
+-= V1.1.0 BL20 =-
+
+* The initial space on a lyrics line is no longer required when typing in lyrics IF the first character on the line is alphabetic.  Numbers or special characters are treated as coding characters.  The spaces are automatically added to the lyrics lines when the song is saved.
+
+* Add quick lookup to song selection dialog box.  Updated English file with revised song_lookup/header and new song_lookup/lookup. (Integrates changes from JRC through r218.)
+
+* Refactored command parser in PresentWindow for better readability and in preparation for more changes.
+
+-r214-
+
+* Subtitle descriptions won't appear if the requested subtitle field isn't set. [Help Forum message 4332769]
+
+* Altered PuffyClouds.jpg (default song background) to remove need for Trim Bottom to be used.  Changed default Trim in PresentSettings to 0.
+
+* Add song preview as part of the Song Picker. (Adds song_lookup/preview to language file)
+
+* Changed the set list in PresentHelperWindow to keep the current slide in the center of the listbox as much as possible.
+
+* Improve PresentHelperWindow handling of keystrokes when focus is on the listbox.
+
+* Fix typo that prevented compilation under Windows (changed ' to ")
+
+* Improved URL encoding for exported HTML files
+
+-= 1.0.3 BL19 =-
+
+* Fix issue in SEditFieldNumeric where the limits would be enforced even if enforcement was turned off.
 
 * Correct the output of the bible index to avoid truncating the last character of each entry. [Bug 1718177]
 
--= 1.0.2 BL18 =-
+-= 1.0.2 =-
 
 * Include minor changes to help correct presenter issues in versions compiled with RB200x.
 
@@ -16,6 +90,17 @@ operator only has to press Enter to move forward after that point.
 * Prevent NilObjectException in lst_set_items.change
 
 * Add conditional check to pop_scr_version.change to see if we are initializing (fixes preview text not showing)
+
+* Correct issue with not prompting prior to deleting a set.
+
+* Change folder layout to match the one established by the RB2006 branch.
+
+* Update all the new platform-specific App properties.
+
+* SButtonPopup wouldn't properly dismiss on Windows & Linux.  Under RB5.5, the platform differences in mouse click handling were handled automatically.  In the later versions of REALbasic, the platform differences are exposed.  Handle opening the SButtonPopup in MouseDown for
+OSX and MouseUp for the other platforms.  Action event is still called in MouseUp for all platforms.
+
+* Incorporate RŸdiger's ErrorPopup window to the App.UnhandledExceptionEvent.  Add new exception types to the massive If/ElseIf in OpenSongUtils.ToString extension to the RuntimeException class.
 
 -= 1.0.1 BL17 =-
 

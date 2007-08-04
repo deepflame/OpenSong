@@ -35,7 +35,7 @@ Begin Window SongPickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -64,7 +64,7 @@ Begin Window SongPickerWindow
       Top             =   63
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   295
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
@@ -93,7 +93,7 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   333
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   1
    End
@@ -104,7 +104,7 @@ Begin Window SongPickerWindow
       Caption         =   "Done"
       ControlOrder    =   2
       Default         =   "False"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -120,23 +120,19 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   332
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   2
    End
    Begin Timer timerLookup
       ControlOrder    =   3
-      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   228
       Mode            =   2
       Period          =   1500
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   23
-      Width           =   32
       BehaviorIndex   =   3
    End
    Begin StaticText txt_explanation_header
@@ -145,7 +141,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   45
       HelpTag         =   ""
       Index           =   -2147483648
@@ -165,7 +161,7 @@ Begin Window SongPickerWindow
       TextSize        =   9
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   270
       BehaviorIndex   =   4
    End
@@ -175,7 +171,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -193,7 +189,7 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   301
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   215
       BehaviorIndex   =   5
    End
@@ -203,7 +199,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   14
       HelpTag         =   ""
       Index           =   -2147483648
@@ -223,7 +219,7 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   276
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   6
    End

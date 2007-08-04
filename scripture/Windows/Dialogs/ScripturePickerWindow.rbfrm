@@ -802,7 +802,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       _ScrollWidth    =   -1
       BehaviorIndex   =   24
    End
-   Begin EditField edt_preview
+   Begin SEditField edt_preview
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
@@ -842,7 +842,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       UseFocusRing    =   "True"
       Visible         =   True
       Width           =   530
-      BehaviorIndex   =   25
+      BehaviorIndex   =   29
    End
    Begin StaticText txt_verse_dash
       AutoDeactivate  =   "True"
@@ -872,7 +872,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   True
       Width           =   10
-      BehaviorIndex   =   26
+      BehaviorIndex   =   25
    End
    Begin StaticText txt_verse_colon
       AutoDeactivate  =   "True"
@@ -902,7 +902,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   True
       Width           =   10
-      BehaviorIndex   =   27
+      BehaviorIndex   =   26
    End
    Begin StaticText StaticText1
       AutoDeactivate  =   "True"
@@ -932,7 +932,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   28
+      BehaviorIndex   =   27
    End
    Begin StaticText lbl_bible_book
       AutoDeactivate  =   "True"
@@ -962,7 +962,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   29
+      BehaviorIndex   =   28
    End
 End
 #tag EndWindow

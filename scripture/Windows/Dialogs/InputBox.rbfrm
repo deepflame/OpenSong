@@ -26,12 +26,10 @@ Begin Window InputBox
    Width           =   315
    Begin StaticText lbl_the_question
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   79
       HelpTag         =   ""
@@ -56,18 +54,16 @@ Begin Window InputBox
       Width           =   299
       BehaviorIndex   =   0
    End
-   Begin EditField edt_the_input
+   Begin SEditField edt_the_input
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
       BackColor       =   16777215
-      BalloonHelp     =   ""
       Bold            =   "False"
       Border          =   "True"
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Format          =   ""
       Height          =   21
@@ -85,7 +81,6 @@ Begin Window InputBox
       Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
-      ScrollBar       =   "True"
       ScrollbarHorizontal=   "False"
       ScrollbarVertical=   "True"
       Styled          =   "False"
@@ -99,99 +94,63 @@ Begin Window InputBox
       UseFocusRing    =   "True"
       Visible         =   True
       Width           =   300
-      BehaviorIndex   =   1
+      BehaviorIndex   =   6
    End
    Begin SButton btn_ok
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   2
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
       Height          =   24
       HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   "GroupBox4"
-      IsStuck         =   "False"
-      Label           =   "OK"
-      LabelAlign      =   0
+      InitialParent   =   ""
       Left            =   145
       LockBottom      =   "True"
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "False"
-      StickyBevel     =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
+      Top             =   93
+      UseFocusRing    =   "True"
+      Visible         =   "True"
+      Width           =   75
+      BehaviorIndex   =   1
+   End
+   Begin SButton btn_cancel
+      AcceptFocus     =   "True"
+      AcceptTabs      =   "False"
+      AutoDeactivate  =   "True"
+      Backdrop        =   0
+      ControlOrder    =   3
+      Enabled         =   "True"
+      EraseBackground =   "True"
+      Height          =   24
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   230
+      LockBottom      =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   75
       BehaviorIndex   =   2
    End
-   Begin SButton btn_cancel
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
-      AcceptFocus     =   "True"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   3
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "GroupBox4"
-      IsStuck         =   "False"
-      Label           =   "Cancel"
-      LabelAlign      =   0
-      Left            =   230
-      LockBottom      =   "True"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   93
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   75
-      BehaviorIndex   =   3
-   End
    Begin PushButton btn_hidden_ok
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "OK"
       ControlOrder    =   4
       Default         =   "True"
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
@@ -199,6 +158,33 @@ Begin Window InputBox
       InitialParent   =   ""
       Italic          =   "False"
       Left            =   145
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "False"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   12
+      Top             =   135
+      Underline       =   "False"
+      Visible         =   True
+      Width           =   22
+      BehaviorIndex   =   3
+   End
+   Begin PushButton btn_hidden_cancel
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "True"
+      Caption         =   "Cancel"
+      ControlOrder    =   5
+      Default         =   "False"
+      Enabled         =   True
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   230
       LockBottom      =   "False"
       LockLeft        =   "False"
       LockRight       =   "False"
@@ -212,43 +198,12 @@ Begin Window InputBox
       Width           =   22
       BehaviorIndex   =   4
    End
-   Begin PushButton btn_hidden_cancel
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "True"
-      Caption         =   "Cancel"
-      ControlOrder    =   5
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   230
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   12
-      Top             =   135
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   22
-      BehaviorIndex   =   5
-   End
    Begin PopupMenu pop_the_input
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -269,7 +224,7 @@ Begin Window InputBox
       Underline       =   "False"
       Visible         =   True
       Width           =   300
-      BehaviorIndex   =   6
+      BehaviorIndex   =   5
    End
 End
 #tag EndWindow

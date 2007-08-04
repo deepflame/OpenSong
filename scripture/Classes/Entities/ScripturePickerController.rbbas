@@ -3,7 +3,6 @@ Protected Class ScripturePickerController
 Implements ScriptureNotifier
 	#tag Method, Flags = &h0
 		Sub CommandNotification(command As String, sender As iScripturePicker, parameter As Variant)
-		  // Part of the CommandReceiver interface.
 		  
 		  System.DebugLog "ScripturePickerController.CommandNotification: " + Command
 		  

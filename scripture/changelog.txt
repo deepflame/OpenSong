@@ -1,4 +1,7 @@
--= BL19 =-
+
+* New implementation of ScripturePickerWindow and SearchWindow.
+
+* Updated edit fields on dialogs to be instances of SEditField or SEditFieldNumeric subclasses.
 
 * Fix issue in SEditFieldNumeric where the limits would be enforced even if enforcement was turned off.
 

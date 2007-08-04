@@ -26,12 +26,10 @@ Begin Window FontChooser
    Width           =   320
    Begin StaticText lbl_font_face
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
@@ -56,18 +54,16 @@ Begin Window FontChooser
       Width           =   100
       BehaviorIndex   =   0
    End
-   Begin EditField edt_font_face
+   Begin SEditField edt_font_face
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
       BackColor       =   16777215
-      BalloonHelp     =   ""
       Bold            =   "False"
       Border          =   "True"
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Format          =   ""
       Height          =   20
@@ -85,7 +81,6 @@ Begin Window FontChooser
       Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
-      ScrollBar       =   "True"
       ScrollbarHorizontal=   "False"
       ScrollbarVertical=   "True"
       Styled          =   "False"
@@ -99,12 +94,11 @@ Begin Window FontChooser
       UseFocusRing    =   "True"
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   1
+      BehaviorIndex   =   18
    End
    Begin ListBox lst_font_faces
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ColumnCount     =   1
       ColumnsResizable=   "False"
@@ -113,7 +107,6 @@ Begin Window FontChooser
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
@@ -136,8 +129,6 @@ Begin Window FontChooser
       RequiresSelection=   ""
       ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
-      ScrollPosition  =   0
-      ScrollPositionX =   0
       SelectionType   =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
@@ -149,16 +140,14 @@ Begin Window FontChooser
       Width           =   150
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   2
+      BehaviorIndex   =   1
    End
    Begin StaticText lbl_font_size
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
@@ -181,21 +170,20 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   3
+      BehaviorIndex   =   2
    End
-   Begin EditField edt_font_size
+   Begin SEditFieldNumeric edt_font_size
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
       BackColor       =   16777215
-      BalloonHelp     =   ""
       Bold            =   "False"
       Border          =   "True"
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
+      EnforceRange    =   0
       Format          =   ""
       Height          =   20
       HelpTag         =   ""
@@ -209,12 +197,14 @@ Begin Window FontChooser
       LockRight       =   "False"
       LockTop         =   "False"
       Mask            =   "##9"
+      Maximum         =   0
+      Minimum         =   0
       Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
-      ScrollBar       =   "True"
       ScrollbarHorizontal=   "False"
       ScrollbarVertical=   "True"
+      SignalRangeErrors=   0
       Styled          =   "False"
       TabPanelIndex   =   0
       Text            =   12
@@ -226,12 +216,11 @@ Begin Window FontChooser
       UseFocusRing    =   "True"
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   4
+      BehaviorIndex   =   19
    End
    Begin ListBox lst_font_size
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ColumnCount     =   1
       ColumnsResizable=   "False"
@@ -240,7 +229,6 @@ Begin Window FontChooser
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
@@ -263,8 +251,6 @@ Begin Window FontChooser
       RequiresSelection=   ""
       ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
-      ScrollPosition  =   0
-      ScrollPositionX =   0
       SelectionType   =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
@@ -276,17 +262,15 @@ Begin Window FontChooser
       Width           =   60
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   5
+      BehaviorIndex   =   3
    End
    Begin CheckBox chk_font_bold
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Bold"
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -306,17 +290,15 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
+      BehaviorIndex   =   4
    End
    Begin CheckBox chk_font_italic
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Italic"
       ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -336,17 +318,15 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   7
+      BehaviorIndex   =   5
    End
    Begin CheckBox chk_font_underline
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Underline"
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -366,17 +346,15 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   8
+      BehaviorIndex   =   6
    End
    Begin PushButton btn_ok
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "OK"
       ControlOrder    =   9
       Default         =   "True"
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
@@ -395,17 +373,15 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   9
+      BehaviorIndex   =   7
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "True"
       Caption         =   "Cancel"
       ControlOrder    =   10
       Default         =   "False"
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
@@ -424,26 +400,14 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   10
+      BehaviorIndex   =   8
    End
    Begin SColorCanvas can_font_color
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   11
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   20
@@ -458,22 +422,18 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   30
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   60
-      BehaviorIndex   =   11
+      BehaviorIndex   =   9
    End
    Begin StaticText lbl_font_color
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   12
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
@@ -496,27 +456,15 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   12
+      BehaviorIndex   =   10
    End
    Begin SFontCanvas can_font_preview
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AdvancedOptions =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   13
-      DisabledBalloonHelp=   ""
       Enabled         =   "False"
       EraseBackground =   "True"
       Height          =   80
@@ -529,23 +477,19 @@ Begin Window FontChooser
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   165
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   220
-      BehaviorIndex   =   13
+      BehaviorIndex   =   11
    End
    Begin CheckBox chk_font_border
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Border"
       ControlOrder    =   14
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -565,26 +509,14 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   14
+      BehaviorIndex   =   12
    End
    Begin SColorCanvas can_font_border
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   15
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   20
@@ -599,23 +531,19 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   155
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   60
-      BehaviorIndex   =   15
+      BehaviorIndex   =   13
    End
    Begin CheckBox chk_font_shadow
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Shadow"
       ControlOrder    =   16
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -635,26 +563,14 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   16
+      BehaviorIndex   =   14
    End
    Begin SColorCanvas can_font_shadow
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   17
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   20
@@ -669,23 +585,19 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   200
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   60
-      BehaviorIndex   =   17
+      BehaviorIndex   =   15
    End
    Begin CheckBox chk_font_fill
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Caption         =   "Fill"
       ControlOrder    =   18
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -705,26 +617,14 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   18
+      BehaviorIndex   =   16
    End
    Begin SColorCanvas can_font_fill
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   19
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   20
@@ -739,13 +639,11 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   245
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   60
-      BehaviorIndex   =   19
+      BehaviorIndex   =   17
    End
 End
 #tag EndWindow

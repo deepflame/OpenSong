@@ -530,7 +530,7 @@ End
 		  
 		  'used to tell the difference between list being empty b/c we haven't searched for any words yet and we have searched for words, but haven't found any matches
 		  found=false
-		  
+		  Self.MouseCursor = WatchCursor
 		  'get user input
 		  searchString= edt_search.Text
 		  
@@ -651,8 +651,10 @@ End
 		    lst_result.ListIndex = 0
 		    lst_result.SetFocus
 		  End If
+		  Self.MouseCursor = Nil
 		Catch ex
 		  MsgBox "SearchWindow.Search: " + ex.message + ":" + str(ex.errornumber)
+		  Self.MouseCursor = Nil
 		  Return
 		End Sub
 	#tag EndMethod

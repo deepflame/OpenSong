@@ -5816,12 +5816,12 @@ End
 		  xgroup = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True).FirstChild
 		  While xgroup <> Nil
 		    If SmartML.GetValue(xgroup, "@type") = "song" Then
-		      song = Songs.GetFile(SmartML.GetValue(xgroup, "@name"))
+		      song = Songs.GetFile(SmartML.GetValue(xgroup, "@path") + SmartML.GetValue(xgroup, "@name"))
 		      If song <> Nil And song.Exists Then
 		        If Not foundSong Then
 		          foundSong = True
 		        End If
-		        rpt.AddSong SmartML.GetValue(xgroup, "@name")
+		        rpt.AddSong SmartML.GetValue(xgroup, "@path") + SmartML.GetValue(xgroup, "@name")
 		      Else
 		        App.MouseCursor = Nil
 		        PrintWindow.Hide

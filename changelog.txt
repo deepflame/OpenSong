@@ -1,3 +1,7 @@
+* Printing a set's songs now works for songs that aren't in the top songs folder.
+
+-= V1.1.0 =-
+
 * Corrected another issue in the new FolderDB where folder scans were always recursive instead of honoring the "recurse" parameter.
 
 * On the song selection dialog (SongPickerWindow), update the quick lookup field to reflect the search text typed into the listbox.

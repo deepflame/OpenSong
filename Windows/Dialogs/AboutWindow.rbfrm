@@ -26,9 +26,7 @@ Begin Window AboutWindow
    Width           =   562
    Begin ImageWell ImageWell1
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       ControlOrder    =   0
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   128
       HelpTag         =   ""
@@ -48,12 +46,10 @@ Begin Window AboutWindow
    End
    Begin StaticText txt_about_version
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   29
       HelpTag         =   ""
@@ -65,7 +61,7 @@ Begin Window AboutWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "OpenSong V1.0"
       TextAlign       =   0
@@ -80,12 +76,10 @@ Begin Window AboutWindow
    End
    Begin StaticText txt_about_copyright
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
@@ -97,7 +91,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Copyright (c) 2003, 2004, 2005, 2006 Sean Lickfold"
       TextAlign       =   0
@@ -112,12 +106,10 @@ Begin Window AboutWindow
    End
    Begin StaticText txt_about_gpl
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
@@ -129,7 +121,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Licensed under the GNU Public License V2.1"
       TextAlign       =   0
@@ -144,12 +136,10 @@ Begin Window AboutWindow
    End
    Begin StaticText txt_about_language
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -161,7 +151,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "English: Sean Lickfold"
       TextAlign       =   0
@@ -172,16 +162,14 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   376
-      BehaviorIndex   =   7
+      BehaviorIndex   =   4
    End
    Begin StaticText txt_about_programmers
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   75
       HelpTag         =   ""
@@ -193,7 +181,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "True"
+      Multiline       =   "True"
       TabPanelIndex   =   0
       Text            =   "Ed Palmer, Joshua Coley, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant."
       TextAlign       =   0
@@ -204,16 +192,14 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   376
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin StaticText txt_about_libraries
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   85
       HelpTag         =   ""
@@ -225,7 +211,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "True"
+      Multiline       =   "True"
       TabPanelIndex   =   0
       Text            =   "StringUtils (http://www.strout.net/info/coding/rb/)\rHTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)\rREALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)\riDeclare (http://www.declaresub.com/iDeclare"
       TextAlign       =   0
@@ -236,17 +222,15 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   376
-      BehaviorIndex   =   5
+      BehaviorIndex   =   6
    End
    Begin PushButton btn_about_close
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Close"
       ControlOrder    =   7
       Default         =   "True"
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
@@ -265,16 +249,14 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   6
+      BehaviorIndex   =   7
    End
    Begin StaticText txt_about_web
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
@@ -286,7 +268,7 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "http://www.opensong.org"
       TextAlign       =   0
@@ -311,22 +293,22 @@ Begin Window AboutWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   160
+      Left            =   20
       LockBottom      =   ""
       LockLeft        =   ""
       LockRight       =   ""
       LockTop         =   ""
-      MultiLine       =   ""
+      Multiline       =   ""
       TabPanelIndex   =   0
-      Text            =   "Untitled"
-      TextAlign       =   0
+      Text            =   "Memory"
+      TextAlign       =   2
       TextColor       =   0
       TextFont        =   "SmallSystem"
       TextSize        =   0
-      Top             =   298
+      Top             =   264
       Underline       =   ""
       Visible         =   "True"
-      Width           =   115
+      Width           =   102
       BehaviorIndex   =   9
    End
    Begin StaticText txt_about_objects
@@ -341,23 +323,53 @@ Begin Window AboutWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   308
+      Left            =   20
       LockBottom      =   ""
-      LockLeft        =   ""
+      LockLeft        =   "True"
       LockRight       =   ""
-      LockTop         =   ""
-      MultiLine       =   ""
+      LockTop         =   "True"
+      Multiline       =   ""
       TabPanelIndex   =   0
-      Text            =   "Untitled"
-      TextAlign       =   0
+      Text            =   "Object Count"
+      TextAlign       =   2
       TextColor       =   0
       TextFont        =   "SmallSystem"
       TextSize        =   0
-      Top             =   298
+      Top             =   277
       Underline       =   ""
       Visible         =   "True"
-      Width           =   115
+      Width           =   102
       BehaviorIndex   =   10
+   End
+   Begin StaticText txt_about_build
+      AutoDeactivate  =   "True"
+      Bold            =   ""
+      ControlOrder    =   11
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   "True"
+      Height          =   15
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   20
+      LockBottom      =   ""
+      LockLeft        =   "True"
+      LockRight       =   ""
+      LockTop         =   "True"
+      Multiline       =   ""
+      TabPanelIndex   =   0
+      Text            =   "Build"
+      TextAlign       =   2
+      TextColor       =   0
+      TextFont        =   "SmallSystem"
+      TextSize        =   0
+      Top             =   290
+      Underline       =   ""
+      Visible         =   "True"
+      Width           =   102
+      BehaviorIndex   =   11
    End
 End
 #tag EndWindow
@@ -389,6 +401,7 @@ End
 		  
 		  txt_about_memory.Text = Format(REALbasic.Runtime.MemoryUsed, "#,##9")
 		  txt_about_objects.Text = Format(REALbasic.Runtime.ObjectCount, "#,##9")
+		  txt_about_build.Text = Format(App.NonReleaseVersion, "#,##9")
 		End Sub
 	#tag EndEvent
 

@@ -1,3 +1,9 @@
+-= V1.1.1 =-
+
+* Moved entire text of the About box's acknowledgements to the translation file.
+
+* Added copyright acknowlegement for PuffyClouds1.jpg (c) FreeStockPhotos.com
+
 * Printing a set's songs now works for songs that aren't in the top songs folder.
 
 -= V1.1.0 =-

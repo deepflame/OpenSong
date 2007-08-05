@@ -935,7 +935,12 @@ Click on this slide to edit its style.</body>
     <web>Visit http://www.opensong.org/ for more information.</web>
     <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to translator@opensong.org and we'll include it in the official release.</translating>
     <created_with_opensong>Created with OpenSong</created_with_opensong>
-    <sources>OpenSong includes source code from</sources>
+    <sources>OpenSong includes source code from:
+StringUtils (http://www.strout.net/info/coding/rb/)
+HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
+REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
+iDeclare (http://www.declaresub.com/iDeclare
+The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
   </about>
 
   <folderdb_errors>

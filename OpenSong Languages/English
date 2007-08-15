@@ -584,6 +584,11 @@ There isn't much to a comment line. Comment lines are any lines that start with 
 &lt;h2&gt;Column Breaks&lt;/h2&gt;
 
 If a line contains only three dashes ("---"), lyrics sheets will print with a second column starting at the column break.
+
+&lt;h2&gt;Page Breaks&lt;/h2&gt;
+
+If a line contains ("-!!") this indicates the location where a page break should be placed in the lead sheet when printing longer songs.
+
 </format>
 
     <presentation>

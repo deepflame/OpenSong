@@ -1,5 +1,7 @@
 -= JRC =-
 
+* Added Page Breaks(-!!) info to help
+
 * Fixed cross mouse cursor(now it looks like a cross)
 
 * Fixed broken hidden mouse cursor(was a quite visible mess)

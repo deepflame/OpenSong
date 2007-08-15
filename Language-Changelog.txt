@@ -179,3 +179,4 @@ sets_mode/items/defaultstyle
 sets_mode/messages/export_complete
 errors/fileutils/*
 errors/cclinotavailable
+help_topics/format (Modified)

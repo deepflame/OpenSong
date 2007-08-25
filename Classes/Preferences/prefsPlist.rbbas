@@ -42,11 +42,13 @@ Implements IPreferences
 		  
 		  For Each child in elements
 		    If dict.Exists(child) Then
-		      If dict.GetType(child) <> "Dict" Then
+		      If dict.GetType(child) <> plistDict.kTypeDict Then
 		        error = True
 		        ErrorString = kErrNonDict + ": " + dict.child(child).AbsolutePath
 		        ErrorNumber = kErrNonDictNum
 		        Return Nil
+		      Else
+		        dict = dict.child(child)
 		      End If
 		    Else
 		      dict.AddChild(child)
@@ -83,7 +85,7 @@ Implements IPreferences
 		  Dim elements() As String
 		  Dim i As Integer
 		  Dim attribute As Boolean = False
-		  Dim attributeName As String = "value"
+		  Dim attributeName As String = kValue
 		  
 		  If plistobj = Nil Then
 		    error = True
@@ -115,7 +117,7 @@ Implements IPreferences
 		  
 		  For i = 0 To UBound(elements)
 		    If dict.Exists(elements(i)) Then
-		      If dict.GetType(elements(i)) <> "Dict" Then
+		      If dict.GetType(elements(i)) <> plistDict.kTypeDict Then
 		        error = True
 		        ErrorString = kErrNonDict
 		        ErrorNumber = kErrNonDictNum
@@ -126,14 +128,14 @@ Implements IPreferences
 		      dict = dict.child(elements(i))
 		    Else
 		      // Allow for non-existent final leaf
-		      If i <> UBound(elements) Then
-		        error = True
-		        ErrorString = kErrMissingLeaf
-		        ErrorNumber = kErrMissingLeafNum
-		        // Leave dict pointing where we are
-		        element = ""
-		        Return False
-		      End If
+		      'If i <> UBound(elements) Then
+		      error = True
+		      ErrorString = kErrMissingLeaf
+		      ErrorNumber = kErrMissingLeafNum
+		      // Leave dict pointing where we are
+		      element = ""
+		      Return False
+		      'End If
 		    End If
 		  Next
 		  
@@ -162,7 +164,7 @@ Implements IPreferences
 		  If Left(child, 1) = "@" Then
 		    child = Mid(child, 2)
 		  Else
-		    child = "value"
+		    child = kValue
 		  End If
 		  pl.SetString(child, default)
 		  Return default
@@ -188,7 +190,7 @@ Implements IPreferences
 		  If Left(child, 1) = "@" Then
 		    child = Mid(child, 2)
 		  Else
-		    child = "value"
+		    child = kValue
 		  End If
 		  pl.SetBoolean(child, default)
 		  Return default
@@ -214,7 +216,7 @@ Implements IPreferences
 		  If Left(child, 1) = "@" Then
 		    child = Mid(child, 2)
 		  Else
-		    child = "value"
+		    child = kValue
 		  End If
 		  pl.SetColor(child, default)
 		  Return default
@@ -240,7 +242,7 @@ Implements IPreferences
 		  If Left(child, 1) = "@" Then
 		    child = Mid(child, 2)
 		  Else
-		    child = "value"
+		    child = kValue
 		  End If
 		  //pl.SetString(child, default)
 		  Return default
@@ -285,7 +287,7 @@ Implements IPreferences
 		  If Left(child, 1) = "@" Then
 		    child = Mid(child, 2)
 		  Else
-		    child = "value"
+		    child = kValue
 		  End If
 		  pl.SetReal(child, default)
 		  Return default
@@ -356,7 +358,7 @@ Implements IPreferences
 		    If Left(child, 1) = "@" Then
 		      child = Mid(child, 2)
 		    Else
-		      child = "value"
+		      child = kValue
 		    End If
 		  End If
 		  
@@ -381,7 +383,7 @@ Implements IPreferences
 		    If Left(child, 1) = "@" Then
 		      child = Mid(child, 2)
 		    Else
-		      child = "value"
+		      child = kValue
 		    End If
 		  End If
 		  
@@ -406,7 +408,7 @@ Implements IPreferences
 		    If Left(child, 1) = "@" Then
 		      child = Mid(child, 2)
 		    Else
-		      child = "value"
+		      child = kValue
 		    End If
 		  End If
 		  
@@ -431,7 +433,7 @@ Implements IPreferences
 		    If Left(child, 1) = "@" Then
 		      child = Mid(child, 2)
 		    Else
-		      child = "value"
+		      child = kValue
 		    End If
 		  End If
 		  
@@ -466,7 +468,7 @@ Implements IPreferences
 		      child = Mid(child, 2)
 		      pathchild = child + "-path"
 		    Else
-		      child = "value"
+		      child = kValue
 		      pathchild = "path"
 		    End If
 		  End If
@@ -503,7 +505,7 @@ Implements IPreferences
 		    If Left(child, 1) = "@" Then
 		      child = Mid(child, 2)
 		    Else
-		      child = "value"
+		      child = kValue
 		    End If
 		  End If
 		  
@@ -593,36 +595,34 @@ Implements IPreferences
 	#tag Constant, Name = kErrNoErrorNum, Type = Double, Dynamic = False, Default = \"0", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = kValue, Type = String, Dynamic = False, Default = \"value", Scope = Protected
+	#tag EndConstant
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

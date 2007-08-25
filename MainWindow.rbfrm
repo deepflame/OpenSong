@@ -5796,6 +5796,7 @@ End
 		  Dim xgroup As XmlNode
 		  'working copy
 		  Dim setDoc As New XmlDocument
+		  Const DebugLevel = 5
 		  
 		  App.DebugWriter.Write "MainWindow.ActionSetPrint: Enter"
 		  
@@ -5814,15 +5815,41 @@ End
 		  'use our working copy
 		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  xgroup = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True).FirstChild
+		  //++EMP
+		  Dim oldDebugLevel As Integer
+		  oldDebugLevel = App.DebugWriter.Level
+		  App.DebugWriter.Level = DebugLevel
+		  //--EMP
 		  While xgroup <> Nil
+		    //++EMP
+		    App.DebugWriter.Write "ActionSetPrint: xgroup type is " + SmartML.GetValue(xgroup, "@type"), DebugLevel
+		    //--EMP
 		    If SmartML.GetValue(xgroup, "@type") = "song" Then
+		      //++EMP
+		      App.DebugWriter.Write "ActionSetPrint: xgroup is " + xgroup.ToString, DebugLevel
+		      App.DebugWriter.Write "ActionSetPrint: going to get song '" + SmartML.GetValue(xgroup, "@path") +_
+		      SmartML.GetValue(xgroup, "@name") + "'", DebugLevel
+		      //--EMP
 		      song = Songs.GetFile(SmartML.GetValue(xgroup, "@path") + SmartML.GetValue(xgroup, "@name"))
 		      If song <> Nil And song.Exists Then
-		        If Not foundSong Then
-		          foundSong = True
-		        End If
+		        //++EMP
+		        App.DebugWriter.Write "ActionSetPrint: Found the song", DebugLevel
+		        //--EMP
+		        foundSong = True
 		        rpt.AddSong SmartML.GetValue(xgroup, "@path") + SmartML.GetValue(xgroup, "@name")
 		      Else
+		        //++EMP
+		        App.DebugWriter.Write "ActionSetPrint: Didn't find the song", DebugLevel
+		        If song Is Nil Then
+		          App.DebugWriter.Write "ActionSetPrint: Song is Nil", DebugLevel
+		        Else
+		          If song.Exists Then
+		            App.DebugWriter.Write "ActionSetPrint: Song exists, but we're on the wrong IF branch???", DebugLevel
+		          Else
+		            App.DebugWriter.Write "ActionSetPrint: Song is not Nil, but Song.Exists = False", DebugLevel
+		          End If
+		        End If
+		        //--EMP
 		        App.MouseCursor = Nil
 		        PrintWindow.Hide
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", SmartML.GetValue(xgroup, "@name"))
@@ -5831,6 +5858,9 @@ End
 		    End If
 		    xgroup = xgroup.NextSibling
 		  Wend
+		  //++EMP
+		  App.DebugWriter.Level = oldDebugLevel
+		  //--EMP
 		  App.MouseCursor = Nil
 		  
 		  If Not foundSong Then

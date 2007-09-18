@@ -44,6 +44,10 @@ Protected Class Translator
 		  If Len(from) = 0 Then Return ""
 		  
 		  Dim list As XmlNodeList
+		  
+		  // Every so often, two /'s get in together
+		  from = ReplaceAll(from, "//", "/")
+		  
 		  Try
 		    list = Document.Xql("/language/"+from)
 		  Catch xml As XmlException
@@ -52,8 +56,11 @@ Protected Class Translator
 		  
 		  Dim temp As String
 		  
-		  If list = Nil Or list.Length = 0 Then 
-		    App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from)
+		  If list = Nil Or list.Length = 0 Then
+		    // Don't bother flagging the false lookups for '/shared/...'
+		    If from.InStr("shared") = 0 Then
+		      App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from)
+		    End If
 		    Return ""
 		  End If
 		  
@@ -116,6 +123,8 @@ Protected Class Translator
 		  Dim parent As RectControl
 		  Dim name, parentName, old As String
 		  Dim temp As String
+		  Dim controlUsage As String
+		  Dim parts() As String
 		  
 		  Dim staticCont As StaticText
 		  Dim groupCont As GroupBox
@@ -129,54 +138,51 @@ Protected Class Translator
 		  Dim popCont As PopupMenu
 		  Dim sldCont As Slider 'EMP 09/05
 		  
+		  tag = tag + "/"
+		  
 		  For i = 0 To win.ControlCount - 1
 		    cont = win.Control(i)
-		    name = Lowercase(Left(cont.Name, 4) + Mid(cont.Name, InStr(5, cont.Name, "_")+1)) ' drop out the second word (the second words is used for organizing controls and avoiding duplicate control names.)
-		    If Left(Right(name, 2), 1) = "_" And Val(Right(name, 1)) > 0 Then name = Left(name, name.Len-2) ' truncate the _1, _2, _3, etc. in multiple fields
-		    
-		    
+		    name = ParseControlName(cont)
+		    controlUsage = name.Left(3)
 		    
 		    If cont IsA StaticText Then
 		      staticCont = StaticText(cont)
 		      If doCaptions Then
-		        parent = RectControl(staticCont.Parent)
-		        If parent <> Nil And parent IsA RectControl And Left(parent.Name, 3) = "nil" Then parent = RectControl(parent.Parent)
-		        If parent <> Nil Then
-		          parentName = Lowercase(Left(parent.Name, 4) + Mid(parent.Name, InStr(5, parent.Name, "_") + 1))
-		          temp = tag + "/" + Mid(parentName, 5) + "/" + Mid(name, 5) + "/@caption"
-		          staticCont.Caption = Translate(temp)
+		        name = ParseHierarchicalName(tag, staticCont) + kAttributeCaption
+		        temp = Translate(name)
+		        If controlUsage = "lbl" Then
+		          staticCont.Caption = temp + ":"
+		        ElseIf controlUsage = "nte" Then
+		          staticCont.Caption = "(" + temp + ")"
 		        Else
-		          temp = tag + "/" + Mid(name, 5) + "/@caption"
-		          staticCont.Caption = Translate(temp)
+		          staticCont.Caption = temp
 		        End If
-		        If Left(name, 3) = "lbl" Then staticCont.Caption = staticCont.Caption + ":"
-		        If Left(name, 3) = "nte" Then staticCont.Caption = "(" + staticCont.Caption + ")"
-		      End If
-		      If doFonts And Left(name, 3) = "hdr" Then
-		        If fonts(4).Name.Len > 0 Then
-		          staticCont.TextFont = fonts(4).Name
-		          staticCont.TextSize = fonts(4).Size
-		          staticCont.Bold = fonts(4).Bold
-		          staticCont.Italic = fonts(4).Italic
-		          staticCont.Underline = fonts(4).Underline
-		        End If
-		      ElseIf doFonts Then
-		        If fonts(2).Name.Len > 0 Then
-		          staticCont.TextFont = fonts(2).Name
-		          staticCont.TextSize = fonts(2).Size
-		          staticCont.Bold = fonts(2).Bold
-		          staticCont.Italic = fonts(2).Italic
-		          staticCont.Underline = fonts(2).Underline
-		          If Left(name, 3) = "nte" Then staticCont.TextSize = fonts(2).Size - 1
+		        
+		        If doFonts And controlUsage = "hdr" Then
+		          If fonts(4).Name.Len > 0 Then
+		            staticCont.TextFont = fonts(4).Name
+		            staticCont.TextSize = fonts(4).Size
+		            staticCont.Bold = fonts(4).Bold
+		            staticCont.Italic = fonts(4).Italic
+		            staticCont.Underline = fonts(4).Underline
+		          End If
+		        ElseIf doFonts Then
+		          If fonts(2).Name.Len > 0 Then
+		            staticCont.TextFont = fonts(2).Name
+		            staticCont.TextSize = fonts(2).Size
+		            staticCont.Bold = fonts(2).Bold
+		            staticCont.Italic = fonts(2).Italic
+		            staticCont.Underline = fonts(2).Underline
+		            If controlUsage = "nte" Then staticCont.TextSize = fonts(2).Size - 1
+		          End If
 		        End If
 		      End If
-		      
 		      
 		      
 		    ElseIf cont IsA GroupBox Then
 		      groupCont = GroupBox(cont)
 		      If doCaptions Then
-		        temp = tag + "/" + Mid(name, 5) + "/@caption"
+		        temp = tag + Mid(name, 5) + kAttributeCaption
 		        groupCont.Caption = Translate(temp)
 		      End If
 		      If doFonts And fonts(1).Name.Len > 0 Then
@@ -187,22 +193,12 @@ Protected Class Translator
 		        groupCont.Underline = fonts(1).Underline
 		      End If
 		      
-		      
-		      
 		    ElseIf cont IsA CheckBox Then
 		      checkCont = CheckBox(cont)
 		      If doCaptions Then
-		        parent = RectControl(checkCont.Parent)
-		        If parent <> Nil And parent IsA RectControl And Left(parent.Name, 3) = "nil" Then parent = RectControl(parent.Parent)
-		        If parent <> Nil Then
-		          parentName = Lowercase(Left(parent.Name, 4) + Mid(parent.Name, InStr(5, parent.Name, "_") + 1))
-		          temp = tag + "/" + Mid(parentName, 5) + "/" + Mid(name, 5) + "/@caption"
-		          checkCont.Caption = Translate(temp)
-		        Else
-		          temp = tag + "/" + Mid(name, 5) + "/@caption"
-		          checkCont.Caption = Translate(temp)
-		        End If
+		        checkCont.Caption = Translate(ParseHierarchicalName(tag, checkCont) + kAttributeCaption)
 		      End If
+		      
 		      If doFonts And fonts(2).Name.Len > 0 Then
 		        checkCont.TextFont = fonts(2).Name
 		        checkCont.TextSize = fonts(2).Size
@@ -211,11 +207,9 @@ Protected Class Translator
 		        checkCont.Underline = fonts(2).Underline
 		      End If
 		      
-		      
-		      
 		    ElseIf cont IsA EditField Then
 		      editCont = EditField(cont)
-		      If doFonts And Left(name, 3) = "edf" Then
+		      If doFonts And controlUsage = "edf" Then
 		        If fonts(6).Name.Len > 0 Then
 		          editCont.TextFont = fonts(6).Name
 		          editCont.TextSize = fonts(6).Size
@@ -250,47 +244,26 @@ Protected Class Translator
 		      sbuttonCont = SButton(cont)
 		      If doCaptions Then
 		        old = sbuttonCont.GetLabel
-		        If sbuttonCont.Name = "btn_ok" Then
-		          sbuttonCont.SetLabel Translate("shared/ok/@caption")
-		        ElseIf sbuttonCont.Name = "btn_cancel" Then
-		          sbuttonCont.SetLabel Translate("shared/cancel/@caption")
-		        ElseIf sbuttonCont.Name = "btn_yes" Then
-		          sbuttonCont.SetLabel Translate("shared/yes/@caption")
-		        ElseIf sbuttonCont.Name = "btn_no" Then
-		          sbuttonCont.SetLabel Translate("shared/no/@caption")
-		        ElseIf sbuttonCont.Name = "btn_add" Then
-		          sbuttonCont.SetLabel Translate("shared/add/@caption")
-		        ElseIf sbuttonCont.Name = "btn_done" Then
-		          sbuttonCont.SetLabel Translate("shared/done/@caption")
-		        ElseIf sbuttonCont.Name = "btn_browse" Then
-		          sbuttonCont.SetLabel Translate("shared/browse/@caption")
-		        Else
-		          parent = RectControl(sbuttonCont.Parent)
-		          If parent <> Nil And parent IsA RectControl And Left(parent.Name, 3) = "nil" Then parent = RectControl(parent.Parent)
-		          If parent <> Nil Then
-		            parentName = Lowercase(Left(parent.Name, 4) + Mid(parent.Name, InStr(5, parent.Name, "_") + 1))
-		            sbuttonCont.SetLabel Translate(tag + "/" + Mid(parentName, 5) + "/" + Mid(name, 5) + "/@caption")
-		          Else
-		            sbuttonCont.SetLabel Translate(tag + "/" + Mid(name, 5) + "/@caption")
+		        // First, see if it is a shared control
+		        If controlUsage = "btn" Then
+		          parts = Split(sbuttonCont.Name, "_")
+		          parts.Remove 0
+		          temp = Translate(kTagShared + Join(parts, "_") + kAttributeCaption)
+		          If temp.Len > 0 Then
+		            sbuttonCont.SetLabel temp
+		          Else // Not shared, do it the regular way
+		            sbuttonCont.SetLabel Translate(ParseHierarchicalName(tag, sbuttonCont) + kAttributeCaption)
 		          End If
 		        End If
 		        If Right(old, 3) = "..." Then sbuttonCont.SetLabel sbuttonCont.GetLabel + "..."
 		      End If
+		      
 		      If doFonts And fonts(5).Name.Len > 0 Then sbuttonCont.SetFont fonts(5)
-		      
-		      
 		      
 		    ElseIf cont IsA RadioButton Then
 		      radioCont = RadioButton(cont)
 		      If doCaptions Then
-		        parent = RectControl(radioCont.Parent)
-		        If parent <> Nil And parent IsA RectControl And Left(parent.Name, 3) = "nil" Then parent = RectControl(parent.Parent)
-		        If parent <> Nil Then
-		          parentName = Lowercase(Left(parent.Name, 4) + Mid(parent.Name, InStr(5, parent.Name, "_") + 1))
-		          radioCont.Caption = Translate(tag + "/" + Mid(parentName, 5) + "/" + Mid(name, 5) + "/@caption")
-		        ElseIf doCaptions Then
-		          radioCont.Caption = Translate(tag + "/" + Mid(name, 5) + "/@caption")
-		        End If
+		        radioCont.Caption = Translate(ParseHierarchicalName(tag, radioCont) + kAttributeCaption)
 		      End If
 		      If doFonts And fonts(2).Name.Len > 0 Then
 		        radioCont.TextFont = fonts(2).Name
@@ -300,41 +273,31 @@ Protected Class Translator
 		        radioCont.Underline = fonts(2).Underline
 		      End If
 		      
-		      
-		      
 		    ElseIf cont IsA ListBox Then
 		      listCont = Listbox(cont)
 		      If doCaptions Then
-		        parent = RectControl(listCont.Parent)
-		        If parent <> Nil And parent IsA RectControl And Left(parent.Name, 3) = "nil" Then parent = RectControl(parent.Parent)
 		        If listCont.ColumnCount > 1 Then
-		          If parent <> Nil Then
-		            parentName = Lowercase(Left(parent.Name, 4) + Mid(parent.Name, InStr(5, parent.Name, "_") + 1))
-		            For j = 0 To listCont.ColumnCount - 1
-		              listCont.Heading(j) = Translate(tag + "/" + Mid(parentName, 5) + "/" + Mid(name, 5) + "/@head" + Str(j+1))
-		            Next j
-		          Else
-		            For j = 0 To listCont.ColumnCount - 1
-		              listCont.Heading(j) = Translate(tag + "/" + Mid(name, 5) + "/@head" + Str(j+1))
-		            Next j
-		          End If
+		          temp = ParseHierarchicalName(tag, listCont)
+		          For j = 0 To listCont.ColumnCount - 1
+		            listCont.Heading(j) = Translate(temp + kAttributeHead + Str(j+1))
+		          Next j
+		        End If
+		        
+		        If doFonts And fonts(3).Name.Len > 0 Then
+		          listCont.TextFont = fonts(3).Name
+		          listCont.TextSize = fonts(3).Size
+		          listCont.Bold = fonts(3).Bold
+		          listCont.Italic = fonts(3).Italic
+		          listCont.Underline = fonts(3).Underline
 		        End If
 		      End If
-		      If doFonts And fonts(3).Name.Len > 0 Then
-		        listCont.TextFont = fonts(3).Name
-		        listCont.TextSize = fonts(3).Size
-		        listCont.Bold = fonts(3).Bold
-		        listCont.Italic = fonts(3).Italic
-		        listCont.Underline = fonts(3).Underline
-		      End If
-		      
-		      
 		      
 		    ElseIf cont IsA TabPanel Then
 		      tabCont = TabPanel(cont)
 		      If doCaptions Then
+		        temp = ParseHierarchicalName(tag, tabCont)
 		        For j = 0 To tabCont.PanelCount - 1
-		          tabCont.Caption(j) = Translate(tag + "/" + Mid(name, 5)  + "/@head" + Str(j+1))
+		          tabCont.Caption(j) = Translate(temp + kAttributeHead + Str(j+1))
 		        Next j
 		      End If
 		      If doFonts And fonts(1).Name.Len > 0 Then
@@ -351,28 +314,15 @@ Protected Class Translator
 		      buttonCont = PushButton(cont)
 		      If doCaptions Then
 		        old = buttonCont.Caption
-		        If buttonCont.Name = "btn_ok" Then
-		          buttonCont.Caption = Translate("shared/ok/@caption")
-		        ElseIf buttonCont.Name = "btn_cancel" Then
-		          buttonCont.Caption = Translate("shared/cancel/@caption")
-		        ElseIf buttonCont.Name = "btn_yes" Then
-		          buttonCont.Caption = Translate("shared/yes/@caption")
-		        ElseIf buttonCont.Name = "btn_no" Then
-		          buttonCont.Caption = Translate("shared/no/@caption")
-		        ElseIf buttonCont.Name = "btn_add" Then
-		          buttonCont.Caption = Translate("shared/add/@caption")
-		        ElseIf buttonCont.Name = "btn_done" Then
-		          buttonCont.Caption = Translate("shared/done/@caption")
-		        ElseIf buttonCont.Name = "btn_browse" Then
-		          buttonCont.Caption = Translate("shared/browse/@caption")
-		        Else
-		          parent = RectControl(buttonCont.Parent)
-		          If parent <> Nil And parent IsA RectControl And Left(parent.Name, 3) = "nil" Then parent = RectControl(parent.Parent)
-		          If parent <> Nil Then
-		            parentName = Lowercase(Left(parent.Name, 4) + Mid(parent.Name, InStr(5, parent.Name, "_") + 1))
-		            buttonCont.Caption = Translate(tag + "/" + Mid(parentName, 5) + "/" + Mid(name, 5) + "/@caption")
-		          Else
-		            buttonCont.Caption = Translate(tag + "/" + Mid(name, 5) + "/@caption")
+		        // See if this is has a shared tag
+		        If controlUsage = "btn" Then
+		          parts = Split(buttonCont.Name, "_")
+		          parts.Remove 0
+		          temp = Translate(kTagShared + Join(parts, "_") + kAttributeCaption)
+		          If temp.Len > 0 Then
+		            buttonCont.Caption = temp
+		          Else // Not shared, do it the regular way
+		            buttonCont.Caption = Translate(ParseHierarchicalName(tag, buttonCont) + kAttributeCaption)
 		          End If
 		        End If
 		        If Right(old, 3) = "..." Then buttonCont.Caption = buttonCont.Caption + "..."
@@ -386,31 +336,97 @@ Protected Class Translator
 		      End If
 		      
 		      //++ EMP 09/05
-		    ElseIf Cont IsA Slider Then
+		    ElseIf cont IsA Slider Then
 		      sldCont = Slider(Cont)
 		      If doCaptions Then
-		        parent = RectControl(sldCont.Parent)
-		        If parent <> Nil And parent IsA RectControl And Left(parent.Name, 3) = "nil" Then parent = RectControl(parent.Parent)
-		        If parent <> Nil Then
-		          parentName = Lowercase(Left(parent.Name, 4) + Mid(parent.Name, InStr(5, parent.Name, "_") + 1))
-		          sldCont.HelpTag = Translate(tag + "/" + Mid(parentName, 5) + "/" + Mid(name, 5) + "/@helptag")
-		        Else
-		          sldCont.HelpTag = Translate(tag + "/" + Mid(name, 5) + "/@helptag")
-		        End If
-		        
+		        sldCont.HelpTag = Translate(ParseHierarchicalName(tag, sldCont) + "/@helptag")
 		      End If
 		      //--
 		    End If
-		    
-		    
 		    
 		  Next i
 		  
 		  If doCaptions Then
 		    If win.MenuBar <> Nil Then TranslateMenu "main_menu", win.MenuBar
-		    win.Title = Translate(tag + "/@title")
+		    win.Title = Translate(tag + kAttributeTitle)
 		  End If
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function ParseControlName(c As Control) As String
+		  Dim name As String
+		  Dim parts() As String
+		  
+		  name = c.Name
+		  if name.Left(1) = "/" Then name = name.mid(2)
+		  parts = Split(name, "_")
+		  
+		  //
+		  // First element is control type, should be three characters
+		  //
+		  // If the last element is numeric, drop it (control "array")
+		  //
+		  // If there are more than two elements after dropping the numeric,
+		  // delete the second one (will be replaced by the parent control's tag)
+		  //
+		  If UBound(parts) < 1 Then Return name // Can't do anything with a non-conforming name
+		  
+		  If parts(0).Len <> 3 Then Return name // Leading element is not in correct format
+		  
+		  If Val(parts(UBound(parts))) > 0 Then parts.Remove(UBound(parts))
+		  
+		  If UBound(parts) > 1 Then parts.Remove(1)
+		  
+		  name =  Join(parts, "_")
+		  Return name
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ParseHierarchicalName(tag As String, cont As RectControl) As String
+		  Dim ret As String
+		  Dim parent As RectControl
+		  Dim contName As String
+		  Dim parentParts() As String
+		  
+		  contName = ParseControlName(cont)
+		  ret = tag + contName.mid(5).Lowercase
+		  
+		  parent = cont.Parent
+		  
+		  // Validate the parent control
+		  If parent Is Nil Or (Not (parent IsA RectControl)) Then
+		    App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil parent, returning " + ret, 4
+		    Return ret
+		  End If
+		  
+		  // If the parent's name is "nil_something"  then look to its parent
+		  If parent.Name.Left(4) = "nil_" Then
+		    If parent.Parent Is Nil Or (Not (parent IsA RectControl)) Then
+		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil grandparent returning " + ret, 4
+		      Return ret
+		    Else
+		      parent = parent.Parent
+		    End If
+		  End If
+		  
+		  // Finally, take the tag (window prefix) and add the third part of the parent to the
+		  // second part of the control
+		  
+		  parentParts = Split(parent.Name, "_")
+		  If UBound(parentParts) < 2 Then
+		    App.DebugWriter.Write "Translator.ParseHierarchicalName: parent control has too few components: " + parent.Name, 1
+		    Return ret
+		  End If
+		  
+		  //Strip the first two parts of the parent name
+		  parentParts.Remove 0
+		  parentParts.Remove 0
+		  
+		  ret = Lowercase(Tag + Join(parentParts, "_") + "/" + contName.Mid(5))
+		  Return ret
+		End Function
 	#tag EndMethod
 
 
@@ -423,5 +439,48 @@ Protected Class Translator
 	#tag EndProperty
 
 
+	#tag Constant, Name = kAttributeCaption, Type = String, Dynamic = False, Default = \"/@caption", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kAttributeHead, Type = String, Dynamic = False, Default = \"/@head", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kAttributeTitle, Type = String, Dynamic = False, Default = \"@title", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTagShared, Type = String, Dynamic = False, Default = \"/shared/", Scope = Public
+	#tag EndConstant
+
+
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

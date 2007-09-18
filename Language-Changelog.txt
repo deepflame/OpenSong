@@ -179,3 +179,6 @@ sets_mode/items/defaultstyle
 sets_mode/messages/export_complete
 errors/fileutils/*
 errors/cclinotavailable
+scripture_search/lst_result renamed to scripture_search/result
+scripture_lookup/bad_reference/format
+scripture_lookup/shownumbers

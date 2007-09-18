@@ -1,6 +1,28 @@
+* Changing sets with a pending set item change no longer results in a NilObjectException error.
+
+* Corrected issue in prefsPlist class where attributes could potentially not be created correctly.
+
+* MainWindow.ActionSetExport: exported song files reflect the creation and modification dates of the original file, not the time the set was exported.
+
+* Changed edit fields in FontChooser to SEditField to support cut/paste.
+
+* Deleted unused pushbuttons in FindWindow.
+
+* Updated InputBox to properly move the OK/Cancel buttons for each operating system.
+
+* Corrected issue where InputBox would trigger an unhandled NOE if the translator hasn't been initialized.
+
+* Translator.TranslateWindow reworked for better legibility and maintenance.
+
+* Added support for using the Unicode Character "Lower Macron" (similar to an underscore) as an indication of elided syllables (http://dictionary.reference.com/browse/elide).  It will be shown on printouts but presentation mode will show it as a space.  The Lower Macron character is Unicode code (hex) 02CD.
+
+* New implementation of ScripturePickerWindow and SearchWindow.
+
+* Updated edit fields on dialogs to be instances of SEditField or SEditFieldNumeric subclasses.
+
 -= V1.1.2 =-
 
-* Added significant debugger output to ActionSetPrint to try to determine why some users are seeing errors.
+* Added significant debugger output to ActionSetPrint to try to determine why some users are seeing errors. (These were removed in SVN revision 261.)
 
 * Changed plistDict to use constants for datatypes instead of literals.
 

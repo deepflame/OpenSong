@@ -19,6 +19,9 @@ Protected Module prefs
 	#tag Constant, Name = kSetsLastExportFolder, Type = String, Dynamic = False, Default = \"sets/last_export", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = kLyricsReplaceWithSpace, Type = String, Dynamic = False, Default = \"songs/lyrics/whitespace", Scope = Protected
+	#tag EndConstant
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

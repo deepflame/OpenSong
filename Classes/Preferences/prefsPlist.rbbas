@@ -111,7 +111,7 @@ Implements IPreferences
 		  
 		  If Left(elements(UBound(elements)), 1) = "@" Then
 		    attribute = True
-		    attributeName = elements(UBound(elements))
+		    attributeName = Mid(elements(UBound(elements)), 2)
 		    elements.Remove UBound(elements)
 		  End If
 		  

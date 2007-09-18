@@ -180,6 +180,7 @@
     <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item.</slides>
     <presentation caption="Custom presentation order">Overrides the presentation order in the song file</presentation>
     <origorder caption="Original presentation order">Presentation order in the song file</origorder>       
+    <folder caption="Song folder">Folder containing the selected item</folder>
     <notes caption="Notes">These notes show up in the Presentation Helper window while giving a presentation using multiple monitors.</notes>
     <insert caption="Insert"/>
       <ins_slide caption="Slide">Allows for the creation of multiple slides that all share a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_slide>
@@ -237,18 +238,18 @@
 
   <scripture_search title="Search">
     <match caption="Match">
-      <exact caption="Exact"/>
-      <begin caption="Begins with"/>
+      <exact caption="E&amp;xact"/>
+      <begin caption="&amp;Begins with"/>
     </match>
     <words caption="Verse must have">
-      <all caption="All words"/>
-      <any caption="Any word"/>
+      <all caption="A&amp;ll words"/>
+      <any caption="An&amp;y word"/>
     </words>
-    <search caption="Search"/>
+    <search caption="&amp;Search"/>
     <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
-    <lst_result head1="Reference" head2="Text" />
+    <result head1="Reference" head2="Text" />
   </scripture_search>
 
   <main_menu>
@@ -732,6 +733,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <verse caption="Verse"/>
     </format>
     <bad_reference>
+      <format>Please check the format of the query and try again.</format>
       <empty>Bad reference: the reference was empty.</empty>
       <book>Bad reference: could not find book.</book>
       <ambiguous>Bad reference: Multiple books match '%1': %2</ambiguous>
@@ -744,6 +746,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <dash caption="-"/>
     <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <shownumbers caption="Display verse numbers"/>
   </scripture_lookup>
 
   <module>

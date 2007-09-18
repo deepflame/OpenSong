@@ -121,8 +121,8 @@ Protected Class FolderDB
 		    FilterAll = "( All )"
 		    FilterMain = "( Main )"
 		  Else
-		    FilterAll = "( " + App.T.Translate("song_folders/filter_all/@caption") + " )"
-		    FilterMain = "( " + App.T.Translate("song_folders/filter_main/@caption") + " )"
+		    FilterAll = "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )"
+		    FilterMain = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
 		  End If
 		  Load folder
 		End Sub

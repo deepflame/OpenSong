@@ -6,11 +6,11 @@ Protected Class DebugOutput
 		  DebugFile = Nil
 		  Enabled = False
 		  If System.EnvironmentVariable("OPENSONGDEBUGLEVEL") = "" Then
-                    #if DebugBuild
+		    #if DebugBuild
 		      DebugLevel = 3
-                    #else
+		    #else
 		      DebugLevel = 1
-                    #endif
+		    #endif
 		  Else
 		    DebugLevel = CDbl(System.EnvironmentVariable("OPENSONGDEBUGLEVEL"))
 		  End If
@@ -33,15 +33,15 @@ Protected Class DebugOutput
 		  If DebugTOS <> Nil Then Return True
 		  If Enabled Then
 		    If System.EnvironmentVariable("OPENSONGDEBUGFILE") = "" Then
-                      #If DebugBuild
+		      #If DebugBuild
 		        DebugFile = New FolderItem("Debug.txt")
-                      #Else
-                        DebugFile = New FolderItem(DocumentsFolder.Child("OpenSongDebug.txt"))
-                      #endif
+		      #Else
+		        DebugFile = New FolderItem(DocumentsFolder.Child("OpenSongDebug.txt"))
+		      #endif
 		    Else
 		      DebugFile = New FolderItem(System.EnvironmentVariable("OPENSONGDEBUGFILE"))
 		    End If
-		    If DebugFile.Exists Then 
+		    If DebugFile.Exists Then
 		      '++JRC
 		      if AppendLog then
 		        DebugTOS = DebugFile.AppendToTextFile
@@ -100,13 +100,17 @@ Protected Class DebugOutput
 		Sub Write(text As String, Level As Integer = 3)
 		  If Not Enabled Then Return
 		  
-		  If DebugTOS = Nil Then 
+		  If DebugTOS = Nil Then
 		    If Not Init Then Return
 		  End  If
 		  
 		  If Level <= DebugLevel Then
-		    DebugTOS.WriteLine(text)
-		    DebugTOS.Flush
+		    #if TargetMacOS
+		      System.DebugLog text
+		    #else
+		      DebugTOS.WriteLine(text)
+		      DebugTOS.Flush
+		    #endif
 		  End If
 		End Sub
 	#tag EndMethod
@@ -124,7 +128,6 @@ Protected Class DebugOutput
 		#tag Note
 			Indicates the lowest level we should print
 			debug messages for (0 is effectively disabled)
-			
 		#tag EndNote
 		Protected DebugLevel As Integer
 	#tag EndProperty
@@ -145,5 +148,45 @@ Protected Class DebugOutput
 	#tag EndConstant
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

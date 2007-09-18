@@ -57,20 +57,28 @@ Inherits Application
 		    '++JRC
 		    DebugWriter.Enabled = True
 		    DebugWriter.AppendLog = False
-		    DebugWriter.Level = 3
+		    #If DebugBuild
+		      DebugWriter.Level = 4
+		    #else
+		      DebugWriter.Level = 1
+		    #endif
 		    '--
 		  Else
 		    DebugWriter.Enabled = (System.EnvironmentVariable("OPENSONGDEBUG") = "True")
 		  End If
 		  OK = DebugWriter.Init
 		  DebugWriter.Write "-------------------- Begin Run ----------------------"
+		  AppFolder = GetFolderItem("")
+		  
+		  //++
+		  // Initialize Factory objects
+		  //--
+		  BibleFactory.Folder = AppFolder.Child("OpenSong Scripture")
 		  
 		  Splash.Show
 		  
 		  SmartML.Init
 		  LoadPreferences
-		  
-		  AppFolder = GetFolderItem("")
 		  
 		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
 		  Dim temp As String
@@ -961,8 +969,11 @@ Inherits Application
 		  // Identify the target.
 		  // There's probably a gestalt that would be a better way to do this so we can
 		  // identify a true UB vs. a target-specific binary or an Intel Mac running the UB under Rosetta.
-		  // This identifies the processor architecture the executable was built for, which is still useful.
+		  // This identifies the processor architecture the executable is running.
 		  //--
+		  If App.StageCode <> App.Final Then
+		    t = t + "-"
+		  End If
 		  #If TargetMacOS
 		    If RBVersion >= 2006.04 Then
 		      #If TargetPPC
@@ -1159,7 +1170,7 @@ Inherits Application
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		MyBible As Bible
+		MyBible As iBible
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -1245,7 +1256,6 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

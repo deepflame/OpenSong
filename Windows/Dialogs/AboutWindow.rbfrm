@@ -24,10 +24,52 @@ Begin Window AboutWindow
    Title           =   "About OpenSong"
    Visible         =   "True"
    Width           =   562
+   Begin EditField edt_about_libraries
+      AcceptTabs      =   ""
+      Alignment       =   0
+      AutoDeactivate  =   "True"
+      BackColor       =   &hFFFFFF
+      Bold            =   ""
+      Border          =   "True"
+      ControlOrder    =   0
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Format          =   ""
+      Height          =   82
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   160
+      LimitText       =   0
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      Mask            =   ""
+      Multiline       =   "True"
+      Password        =   ""
+      ReadOnly        =   "True"
+      ScrollbarHorizontal=   ""
+      ScrollbarVertical=   "True"
+      Styled          =   ""
+      TabPanelIndex   =   0
+      Text            =   ""
+      TextColor       =   &h000000
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   210
+      Underline       =   ""
+      UseFocusRing    =   "True"
+      Visible         =   True
+      Width           =   376
+      BehaviorIndex   =   0
+   End
    Begin ImageWell ImageWell1
       AutoDeactivate  =   "True"
-      ControlOrder    =   0
-      Enabled         =   "True"
+      ControlOrder    =   1
+      Enabled         =   True
       Height          =   128
       HelpTag         =   ""
       Image           =   -1045728915
@@ -39,18 +81,20 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   14
-      Visible         =   "True"
+      Visible         =   True
       Width           =   128
-      BehaviorIndex   =   0
+      BehaviorIndex   =   1
    End
    Begin StaticText txt_about_version
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   1
+      ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   29
       HelpTag         =   ""
       Index           =   -2147483648
@@ -70,17 +114,17 @@ Begin Window AboutWindow
       TextSize        =   24
       Top             =   14
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   328
-      BehaviorIndex   =   1
+      BehaviorIndex   =   2
    End
    Begin StaticText txt_about_copyright
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   2
+      ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -100,17 +144,17 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   55
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   328
-      BehaviorIndex   =   2
+      BehaviorIndex   =   3
    End
    Begin StaticText txt_about_gpl
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   3
+      ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -130,17 +174,17 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   75
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   322
-      BehaviorIndex   =   3
+      BehaviorIndex   =   4
    End
    Begin StaticText txt_about_language
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   4
+      ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -160,18 +204,18 @@ Begin Window AboutWindow
       TextSize        =   10
       Top             =   313
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin StaticText txt_about_programmers
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   5
+      ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
-      Height          =   75
+      Enabled         =   True
+      Height          =   71
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -179,7 +223,7 @@ Begin Window AboutWindow
       Left            =   160
       LockBottom      =   "False"
       LockLeft        =   "True"
-      LockRight       =   "False"
+      LockRight       =   "True"
       LockTop         =   "True"
       Multiline       =   "True"
       TabPanelIndex   =   0
@@ -188,39 +232,9 @@ Begin Window AboutWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   135
+      Top             =   127
       Underline       =   "False"
-      Visible         =   "True"
-      Width           =   376
-      BehaviorIndex   =   5
-   End
-   Begin StaticText txt_about_libraries
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      ControlOrder    =   6
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   "True"
-      Height          =   85
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   160
-      LockBottom      =   "False"
-      LockLeft        =   "True"
-      LockRight       =   "False"
-      LockTop         =   "True"
-      Multiline       =   "True"
-      TabPanelIndex   =   0
-      Text            =   "StringUtils (http://www.strout.net/info/coding/rb/)\rHTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)\rREALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)\riDeclare (http://www.declaresub.com/iDeclare"
-      TextAlign       =   0
-      TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   10
-      Top             =   208
-      Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
       BehaviorIndex   =   6
    End
@@ -231,7 +245,7 @@ Begin Window AboutWindow
       Caption         =   "Close"
       ControlOrder    =   7
       Default         =   "True"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -247,7 +261,7 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   310
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   7
    End
@@ -257,7 +271,7 @@ Begin Window AboutWindow
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -277,7 +291,7 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   95
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
       BehaviorIndex   =   8
    End
@@ -287,7 +301,7 @@ Begin Window AboutWindow
       ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -307,7 +321,7 @@ Begin Window AboutWindow
       TextSize        =   0
       Top             =   264
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   102
       BehaviorIndex   =   9
    End
@@ -317,7 +331,7 @@ Begin Window AboutWindow
       ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -337,7 +351,7 @@ Begin Window AboutWindow
       TextSize        =   0
       Top             =   277
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   102
       BehaviorIndex   =   10
    End
@@ -347,7 +361,7 @@ Begin Window AboutWindow
       ControlOrder    =   11
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -367,7 +381,7 @@ Begin Window AboutWindow
       TextSize        =   0
       Top             =   290
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   102
       BehaviorIndex   =   11
    End
@@ -394,8 +408,8 @@ End
 		  str = str + App.T.Translate("@name") + " - " + App.T.Translate("@author")
 		  txt_about_language.Text = str
 		  
-		  str = App.T.Translate("about/sources") + ":" + EndOfLine + txt_about_libraries.Text
-		  txt_about_libraries.Text = str
+		  str = App.T.Translate("about/sources")
+		  edt_about_libraries.Text = str
 		  
 		  btn_about_close.Caption = App.T.Translate("shared/close/@caption")
 		  

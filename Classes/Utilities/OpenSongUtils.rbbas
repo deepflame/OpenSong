@@ -1016,6 +1016,17 @@ Protected Module OpenSongUtils
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function DeleteWhiteSpace(s As String) As String
+		  Dim re As New RegEx
+		  
+		  re.SearchPattern = "\s+"
+		  re.ReplacementPattern = ""
+		  re.Options.ReplaceAllMatches = True
+		  Return re.Replace(s)
+		End Function
+	#tag EndMethod
+
 
 	#tag Note, Name = Overview
 		
@@ -1051,5 +1062,35 @@ Protected Module OpenSongUtils
 	#tag EndConstant
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Module
 #tag EndModule

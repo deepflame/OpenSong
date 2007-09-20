@@ -62,7 +62,7 @@ Inherits Report
 		  while i > -1
 		    MyPages.Remove i
 		    i = i - 1
-		  wend 
+		  wend
 		  
 		  // Build the pages for the songs
 		  // Show progress window if we have a few
@@ -79,8 +79,12 @@ Inherits Report
 		    App.MouseCursor = WatchCursor
 		  End If
 		  
+		  '++JRC
+		  Dim d As New Date
+		  '--
+		  
 		  For i = 0 to UBound(Songs)
-		    If ProgressWindowVisible Then 
+		    If ProgressWindowVisible Then
 		      If Not ProgressWindow.SetProgress(i) Then
 		        ProgressWindow.Close
 		        Return False
@@ -92,6 +96,19 @@ Inherits Report
 		      If ProgressWindowVisible Then ProgressWindow.SetStatus f.DisplayName
 		      If s <> Nil Then
 		        Try
+		          '++JRC get song info for logging
+		          If Globals.SongActivityLog <> Nil Then
+		            Log.Append( New LogEntry(Globals.SongActivityLog))
+		            Log(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
+		            Log(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
+		            Log(i).CCLISongNumber =  SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		            Log(i).SongFileName =   f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
+		            Log(i).DateAndTime = d
+		            Log(i).HasChords = Log(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		            Log(i).Printed = True
+		          End If
+		          '--
+		          
 		          Song = SongML.Draw(s, pic.Graphics, Zoom, RunningPage)
 		          // Unroll the returned Group2D into individual pages
 		          For j = 0 to Song.Count - 1
@@ -144,7 +161,7 @@ Inherits Report
 		  App.DebugWriter.Write "LeadSheetReport.GetPage: Enter/Exit, Page, Zoom = " + str(PageNumber) + ", " + str(zoom)
 		  If PageNumber < 1 Or PageNumber > Pages.Count + 1 Then
 		    Return Nil
-		  Else 
+		  Else
 		    Pages.Item(PageNumber - 1).Scale = Zoom
 		    Return Pages.Item(PageNumber - 1)
 		  End If
@@ -245,7 +262,6 @@ Inherits Report
 		#tag Note
 			Specifies if the songs should be numbered sequentially.
 			If False, page numbers restart at 1 with each song.
-			
 		#tag EndNote
 		Protected Sequential As Boolean
 	#tag EndProperty
@@ -253,11 +269,64 @@ Inherits Report
 	#tag Property, Flags = &h0
 		#tag Note
 			The list of songs to print
-			
 		#tag EndNote
 		Songs() As String
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

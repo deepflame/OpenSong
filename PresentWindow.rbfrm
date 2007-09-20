@@ -1,76 +1,84 @@
 #tag Window
 Begin Window PresentWindow
-   Placement       =   0
-   Width           =   300
-   Height          =   300
-   MinWidth        =   64
-   MinHeight       =   64
-   MaxWidth        =   32000
-   MaxHeight       =   32000
-   Frame           =   0
-   Composite       =   "False"
-   HasBackColor    =   "True"
    BackColor       =   0
    Backdrop        =   0
+   BalloonHelp     =   ""
+   CloseButton     =   "False"
+   Composite       =   "False"
+   Frame           =   0
+   FullScreen      =   "False"
+   HasBackColor    =   "True"
+   Height          =   300
+   LiveResize      =   "False"
+   MacProcID       =   1104
+   MaxHeight       =   32000
+   MaximizeButton  =   "False"
+   MaxWidth        =   32000
+   MenuBar         =   0
+   MenuBarVisible  =   "False"
+   MinHeight       =   64
+   MinimizeButton  =   "False"
+   MinWidth        =   64
+   Placement       =   0
+   Resizeable      =   "False"
    Title           =   "Presentation"
    Visible         =   "False"
-   FullScreen      =   "False"
-   MenuBarVisible  =   "False"
-   CloseButton     =   "False"
-   Resizeable      =   "False"
-   LiveResize      =   "False"
-   MaximizeButton  =   "False"
-   MinimizeButton  =   "False"
-   BalloonHelp     =   ""
-   MacProcID       =   1104
-   MenuBar         =   0
+   Width           =   300
    Begin Canvas cnvSlide
-      Index           =   -2147483648
-      ControlOrder    =   0
-      Left            =   -1
-      Top             =   -1
-      Width           =   302
-      Height          =   302
-      LockLeft        =   "True"
-      LockTop         =   "True"
-      LockRight       =   "True"
-      LockBottom      =   "True"
-      TabPanelIndex   =   0
-      Visible         =   True
-      HelpTag         =   ""
-      AutoDeactivate  =   "True"
-      Enabled         =   True
-      UseFocusRing    =   "False"
-      Backdrop        =   0
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
+      AutoDeactivate  =   "True"
+      Backdrop        =   0
+      ControlOrder    =   0
+      Enabled         =   True
       EraseBackground =   "True"
+      Height          =   302
+      HelpTag         =   ""
+      Index           =   -2147483648
       InitialParent   =   ""
+      Left            =   -1
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   -1
+      UseFocusRing    =   "False"
+      Visible         =   True
+      Width           =   302
       BehaviorIndex   =   0
-      Begin Timer timerAdvance
-         Index           =   -2147483648
-         ControlOrder    =   1
-         Index           =   -2147483648
-         Left            =   248
-         Top             =   248
-         Mode            =   0
-         Period          =   10000
-         InitialParent   =   "cnvSlide"
-         TabPanelIndex   =   0
-         BehaviorIndex   =   1
-      End
-      Begin Timer timerTransition
-         Index           =   -2147483648
-         ControlOrder    =   2
-         Index           =   -2147483648
-         Left            =   204
-         Top             =   248
-         Mode            =   0
-         Period          =   125
-         InitialParent   =   "cnvSlide"
-         TabPanelIndex   =   0
-         BehaviorIndex   =   2
-      End
+   End
+   Begin Timer timerAdvance
+      ControlOrder    =   1
+      Height          =   32
+      Index           =   -2147483648
+      InitialParent   =   "cnvSlide"
+      Left            =   248
+      Mode            =   0
+      Period          =   10000
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   248
+      Width           =   32
+      BehaviorIndex   =   1
+   End
+   Begin Timer timerTransition
+      ControlOrder    =   2
+      Height          =   32
+      Index           =   -2147483648
+      InitialParent   =   "cnvSlide"
+      Left            =   204
+      Mode            =   0
+      Period          =   125
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   248
+      Width           =   32
+      BehaviorIndex   =   2
    End
 End
 #tag EndWindow
@@ -443,7 +451,7 @@ End
 		  Const KEY_DOWN=&h7d
 		  Const KEY_ESCAPE = 27
 		  '
-		  'Temporary hack until the command arguments are fixed 
+		  'Temporary hack until the command arguments are fixed
 		  '
 		  Dim Key As String
 		  Key = ChrB(Action)
@@ -570,26 +578,26 @@ End
 		  // Add a generic exception handler in an attempt to keep from bailing out
 		  // TODO: This needs to log somewhere and notify the operator after the presentation is done.
 		  //
-		  Exception ex
-		    // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
-		    // return to the caller.
-		    //
-		    If XCurrentSlide = Nil Then
-		      // Sorry, the only possible valid action is to go back to the first slide, otherwise
-		      // how do you keep XCurrentSlide and CurrentSlide in sync?
-		      // (perhaps look at xNewSlide to get close to the original location?)
-		      CurrentSlide = 1
-		      XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
-		    End If
-		    // Put up wherever we're at now (and pray!)
-		    If HelperActive Then
-		      PresentHelperWindow.SetMode Mode
-		    Else
-		      ResetPaint XCurrentSlide
-		    End If
-		    
-		    Return False // Show that it failed
-		    //--EMP 15 Jan 06
+		Exception ex
+		  // Do something here later.  For now, validate that XCurrentSlide isn't Nil and
+		  // return to the caller.
+		  //
+		  If XCurrentSlide = Nil Then
+		    // Sorry, the only possible valid action is to go back to the first slide, otherwise
+		    // how do you keep XCurrentSlide and CurrentSlide in sync?
+		    // (perhaps look at xNewSlide to get close to the original location?)
+		    CurrentSlide = 1
+		    XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  End If
+		  // Put up wherever we're at now (and pray!)
+		  If HelperActive Then
+		    PresentHelperWindow.SetMode Mode
+		  Else
+		    ResetPaint XCurrentSlide
+		  End If
+		  
+		  Return False // Show that it failed
+		  //--EMP 15 Jan 06
 		End Function
 	#tag EndMethod
 
@@ -837,9 +845,9 @@ End
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor
 		  Self.Visible = True
-		  Catch e
-		    RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
-		    Raise e
+		Catch e
+		  RuntimeException(e).message = "In PresentWindow.Present: " + e.Message
+		  Raise e
 		End Sub
 	#tag EndMethod
 
@@ -1531,6 +1539,24 @@ End
 		    App.MouseCursor = WatchCursor
 		    
 		    s = SmartML.XDocFromFile(f)
+		    
+		    '++JRC get song info for logging
+		    Dim Log As LogEntry
+		    
+		    If Globals.SongActivityLog <> Nil Then
+		      Log = New LogEntry(Globals.SongActivityLog)
+		      Dim d As New Date
+		      
+		      Log.Title = SmartML.GetValue(s.DocumentElement, "title", True)
+		      Log.Author = SmartML.GetValue(s.DocumentElement, "author", True)
+		      Log.CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		      Log.SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
+		      Log.DateAndTime = d
+		      Log.HasChords = Log.CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		      Log.Presented = True
+		    End If
+		    '--
+		    
 		    SongML.ToSetML s.DocumentElement
 		    If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
 		      App.MouseCursor = Nil
@@ -1538,6 +1564,17 @@ End
 		      newGroup.Parent.RemoveChild newGroup
 		      Return False
 		    End If
+		    
+		    '++JRC Log Song Presentation
+		    'TODO determine if the user actually displays this song (uug)
+		    If Globals.SongActivityLog <> Nil Then
+		      If NOT Log.AddLogEntry Then
+		        MsgBox "Error Adding log entry!"
+		      Else
+		        Log.UpdateNumEntries(Globals.SongActivityLog)
+		      End If
+		    End If
+		    '--
 		    
 		    newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
 		    
@@ -1886,10 +1923,10 @@ End
 		  // This corrects an issue seen when changing the SButton style
 		  // after a presentation and for some reason this window is still open
 		  //--
-		  Catch ex
-		    App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
-		    RuntimeException(ex).Message, 1)
-		    Return
+		Catch ex
+		  App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Got an exception: " +_
+		  RuntimeException(ex).Message, 1)
+		  Return
 		End Sub
 	#tag EndEvent
 #tag EndEvents

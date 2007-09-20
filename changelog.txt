@@ -1,5 +1,11 @@
 -= JRC =-
 
+* Added Function CompareDates to OpenSongUtils
+
+* Added Song Activity Logging
+
+* Moved Song Rename code to ActionSongRename Method
+
 * Added Page Breaks(-!!) info to help
 
 * Fixed cross mouse cursor(now it looks like a cross)

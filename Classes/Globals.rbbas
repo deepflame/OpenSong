@@ -131,7 +131,6 @@ Protected Module Globals
 		(or an #ifdef) can be utilized
 		
 		EMP, 17 Feb 2006
-		
 	#tag EndNote
 
 
@@ -185,6 +184,10 @@ Protected Module Globals
 
 	#tag Property, Flags = &h1
 		Protected WhitespaceChars() As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		SongActivityLog As ActivityLog
 	#tag EndProperty
 
 

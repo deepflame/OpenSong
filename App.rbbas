@@ -334,6 +334,13 @@ Inherits Application
 		  '++JRC
 		  Globals.WhitespaceChars.Append " "
 		  Globals.WhitespaceChars.Append Chr(ENTER)
+		  'Load in the Song Activity Log
+		  Globals.SongActivityLog = New ActivityLog
+		  'TODO Decide where we want to store the log file
+		  If NOT Globals.SongActivityLog.Load(GetFolderItem(DocsFolder.AbsolutePath + "Settings\ActivityLog")) Then
+		    MsgBox "Could not load the Song Activity Log! Logging will be disabled for this session."
+		    Globals.SongActivityLog = Nil
+		  End If
 		  '--
 		  T.TranslateMenu("main_menu", MainMenu)
 		  PlatformSpecific
@@ -1245,7 +1252,6 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

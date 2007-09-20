@@ -193,7 +193,7 @@ Protected Class Report
 		  #If Not TargetMacOS
 		    For CopyCount = 1 To g.Copies
 		  #endif
-		  For i = 1 To PrinterPages.Count 
+		  For i = 1 To PrinterPages.Count
 		    If i >= g.FirstPage And i <= g.LastPage Then
 		      App.DebugWriter.Write "Report.Print: Printing page "+ str(i)
 		      If PagesPrinted > 0 Then g.NextPage
@@ -207,6 +207,12 @@ Protected Class Report
 		    Next CopyCount
 		  #endif
 		  
+		  '++JRC
+		  If NOT LogPrintedSongs Then
+		    'TODO Error
+		  End If
+		  '--
+		  
 		  //
 		  // For some reason, if this isn't done a second printing pass won't work
 		  //
@@ -214,6 +220,31 @@ Protected Class Report
 		  App.DebugWriter.Write "Report.Print: Printed " + str(PagesPrinted) + " pages"
 		  App.DebugWriter.Write "Report.Print: Exit"
 		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function LogPrintedSongs() As Boolean
+		  '++JRC
+		  If Globals.SongActivityLog <> Nil Then
+		    Dim i As Integer
+		    
+		    For i = 0 To Ubound(Log)
+		      If Log(i) <> Nil Then
+		        If NOT Log(i).AddLogEntry Then
+		          MsgBox "Error Adding log entry!"
+		          return false
+		        Else
+		          Log(i).UpdateNumEntries(Globals.SongActivityLog)
+		        End If
+		      End If
+		    Next i
+		    
+		    return true
+		  End If
+		  
+		  Return false
+		  '--
 		End Function
 	#tag EndMethod
 
@@ -225,7 +256,6 @@ Protected Class Report
 	#tag Property, Flags = &h1
 		#tag Note
 			Holds the generated pages of the report
-			
 		#tag EndNote
 		Protected Pages As Group2D
 	#tag EndProperty
@@ -234,7 +264,6 @@ Protected Class Report
 		#tag Note
 			Size (in inches) of the printable area of a page.
 			This is calculated from the PrinterSetup object.
-			
 		#tag EndNote
 		PrintableHeight As Double
 	#tag EndProperty
@@ -243,7 +272,6 @@ Protected Class Report
 		#tag Note
 			This is the width in inches of the printable area of the page.
 			It is calculated from the PrinterSetup object.
-			
 		#tag EndNote
 		PrintableWidth As Double
 	#tag EndProperty
@@ -251,7 +279,6 @@ Protected Class Report
 	#tag Property, Flags = &h0
 		#tag Note
 			PrinterSetup object associated with this report
-			
 		#tag EndNote
 		ps As PrinterSetup
 	#tag EndProperty
@@ -259,7 +286,6 @@ Protected Class Report
 	#tag Property, Flags = &h1
 		#tag Note
 			Current scale setting for Pages
-			
 		#tag EndNote
 		Protected Scale As Double
 	#tag EndProperty
@@ -268,6 +294,60 @@ Protected Class Report
 		TopMargin As Double
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		Log() As LogEntry
+	#tag EndProperty
 
+
+	#tag ViewBehavior
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

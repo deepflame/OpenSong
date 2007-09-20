@@ -114,6 +114,12 @@ Begin Menu MainMenu
          Index = -2147483648
          AutoEnable = True
       End
+      Begin MenuItem mnu_file_song_act
+         SpecialMenu = 0
+         Text = "View Song Activity Log"
+         Index = -2147483648
+         AutoEnable = True
+      End
       Begin MenuItem UntitledMenu4
          SpecialMenu = 0
          Text = "-"

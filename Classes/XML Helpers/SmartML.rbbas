@@ -466,13 +466,13 @@ Protected Module SmartML
 		  If f = Nil Then
 		    ErrorCode = 1
 		    '++JRC Translated
-		     ErrorString = TranslateMessage("smartml/no_path", "The FolderItem object is Nil in XDocFromFile")
+		    ErrorString = TranslateMessage("smartml/no_path", "The FolderItem object is Nil in XDocFromFile")
 		    '--
 		    Return Nil
 		  ElseIf Not f.Exists Then
 		    ErrorCode = 2
 		    '++JRC Translated
-		     ErrorString = TranslateMessage("smartml/no_file",  "File does not exist in XDocFromFile: %s", f.AbsolutePath)
+		    ErrorString = TranslateMessage("smartml/no_file",  "File does not exist in XDocFromFile: %s", f.AbsolutePath)
 		    '--
 		    Return Nil
 		  End If
@@ -481,7 +481,7 @@ Protected Module SmartML
 		  If input = Nil Then
 		    ErrorCode = 4
 		    '++JRC Translated
-		     ErrorString = TranslateMessage("smartml/cant_open",  "Could not open %s in XDocFromFile: %s", f.AbsolutePath, CStr(f.LastErrorCode))
+		    ErrorString = TranslateMessage("smartml/cant_open",  "Could not open %s in XDocFromFile: %s", f.AbsolutePath, CStr(f.LastErrorCode))
 		    '--
 		    return nil
 		  End If
@@ -496,14 +496,14 @@ Protected Module SmartML
 		    Else
 		      ErrorCode = 5
 		      '++JRC Translated
-		       ErrorString = TranslateMessage("smartml/xml_error",  "LoadXML Error from file %s", f.AbsolutePath)
+		      ErrorString = TranslateMessage("smartml/xml_error",  "LoadXML Error from file %s", f.AbsolutePath)
 		      '--
 		      Return Nil
 		    End If
 		  Catch err As XmlException
 		    ErrorCode = 3
 		    '++JRC Translated
-		     ErrorString = TranslateMessage("smartml/xml_exterror",  "XmlException from LoadXML on file %s, %s, %s", f.AbsolutePath, err.Line, err.Node)
+		    ErrorString = TranslateMessage("smartml/xml_exterror",  "XmlException from LoadXML on file %s, %s, %s", f.AbsolutePath, err.Line, err.Node)
 		    '--
 		    Return Nil
 		  End Try
@@ -602,8 +602,8 @@ Protected Module SmartML
 		  // Even though Translator.Translate is defined with a paramarray argument, there's no way
 		  // to use one as input here and pass it along.  Therefore, only handle the most basic cases
 		  // (0, 1, 2 or 3)
-		  // 
-		  // This routine helps eliminate excessive If...Then coding in error traps by providing a 
+		  //
+		  // This routine helps eliminate excessive If...Then coding in error traps by providing a
 		  // means to generate a meaningful error message if the translator object is not loaded.
 		  //
 		  // Ed Palmer, June 2007
@@ -614,6 +614,94 @@ Protected Module SmartML
 		  Else
 		    Return App.T.Translate(id, param1, param2, param3)
 		  End If
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetValueDate(xnode As XmlNode, childPath As String, D As Date)
+		  'TODO Internationalize & cross-platform
+		  If D = Nil Then Return
+		  Dim Month As String
+		  Dim Day As String
+		  Dim Year As String
+		  
+		  Month = Str(D.Month)
+		  If D.Month < 10 Then Month = "0" + Month 'Pad with zero
+		  Day = Str(D.Day)
+		  If D.Day < 10 Then Day = "0" + Day 'Pad with zero
+		  Year = Str(D.Year)
+		  
+		  '(MM/DD/YYYY)
+		  SetValue xnode, childPath, Month + "/" + Day + "/" + Year
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetValueTime(xnode As XmlNode, childPath As String, T As Date)
+		  'TODO Internationalize & cross-platform
+		  If T = Nil Then Return
+		  
+		  Dim Hour As String
+		  Dim Minute As String
+		  Dim Second As String
+		  Dim Meridian As String
+		  
+		  Hour = Str(T.Hour)
+		  If T.Hour < 10 Then Hour = "0" + Hour 'Pad with zero
+		  Minute = Str(T.Minute)
+		  If T.Minute < 10 Then Minute = "0" + Minute 'Pad with zero
+		  Second = Str(T.Second)
+		  If T.Second < 10 Then Second = "0" + Second 'Pad with zero
+		  
+		  '(HH:MM::SS) 24hr clock
+		  SetValue xnode, childPath, Hour + ":" + Minute + ":" + Second
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetValueDate(xnode As XmlNode, childPath As String, create As Boolean = True, default As Date = Nil) As Date
+		  'TODO Internationalize & cross-platform
+		  
+		  Dim s As String
+		  Dim d As New Date
+		  
+		  s = GetValue(xnode, childPath, create)
+		  If create And Len(s) = 0 Then
+		    SetValueDate(xnode, childPath, default)
+		    Return default
+		  End If
+		  
+		  '(MM/DD/YYYY)
+		  d.Month = Val(Left(s, 2))
+		  d.Day = Val(Mid(s, 4, 2))
+		  d.Year = Val(Right(s, 4))
+		  
+		  return d
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetValueTime(xnode As XmlNode, childPath As String, create As Boolean = True, default As Date = Nil) As Date
+		  'TODO Internationalize & cross-platform
+		  
+		  Dim s As String
+		  Dim d As New Date
+		  
+		  s = GetValue(xnode, childPath, create)
+		  If create And Len(s) = 0 Then
+		    SetValueTime(xnode, childPath, default)
+		    Return default
+		  End If
+		  
+		  '(HH:MM:SS)
+		  d.Hour = Val(Left(s, 2))
+		  d.Minute = Val(Mid(s, 4, 2))
+		  d.Second = Val(Right(s, 2))
+		  
+		  return d
+		  
 		End Function
 	#tag EndMethod
 

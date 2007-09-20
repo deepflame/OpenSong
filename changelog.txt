@@ -1,3 +1,30 @@
+* plistDict was incorrectly setting the type of numeric values to "double" (no longer valid) instead of "real"
+
+* Trashed some dead code in MainSettingsWindow.Open.
+
+* Changed some error messages in Translator.ParseHierarchicalName to be more descriptive.
+
+* (The following items identified by the "+" are all linked with the objective of removing the need for environment variables and to give the user more control over program error logging.)
+
++ Rewrote how DebugOutput object is setup and cleaned up some of the object model.
+
++ Modified App.Open to match changes to DebugOutput; added constants for debugger preferences.
+
++ Complete rebuild of the MainSettingsWindow form elements: added tab panel to support more items, fixed tab order.
+
++ Added debugger preferences to MainSettingsWindow.
+
++ Added to the English translation file:
+  general_settings/general/@head[12]
+  general_settings/logging/{append, console, level, dialog}
+
++ Moved the following in the English translation file:
+  general_settings/general/startmode/song -> general_settings/startmode/songs
+  general_settings/general/startmode/set -> general_settings/startmode/sets
+  general_settings/newpaint -> general_settings/fonts/newpaint
+  style_editor/fonts_and_alignment/descriptive_subtitle_info ->
+    style_editor/fonts_and_alignment/descriptive_subtitle
+
 * Changing sets with a pending set item change no longer results in a NilObjectException error.
 
 * Corrected issue in prefsPlist class where attributes could potentially not be created correctly.

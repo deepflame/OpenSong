@@ -51,7 +51,10 @@ Protected Class Translator
 		  Try
 		    list = Document.Xql("/language/"+from)
 		  Catch xml As XmlException
-		    MsgBox "Internal Error with XML: '" + from + "': " + xml.Line + ": " + xml.Node
+		    Dim msg As String
+		    msg = "In Translator.Translate, internal error with language file looking up '" + from + "': " + xml.Line + ": " + xml.Node
+		    App.DebugWriter.Write msg, 1
+		    MsgBox msg
 		  End Try
 		  
 		  Dim temp As String
@@ -59,7 +62,7 @@ Protected Class Translator
 		  If list = Nil Or list.Length = 0 Then
 		    // Don't bother flagging the false lookups for '/shared/...'
 		    If from.InStr("shared") = 0 Then
-		      App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from)
+		      App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from, 4)
 		    End If
 		    Return ""
 		  End If
@@ -67,7 +70,7 @@ Protected Class Translator
 		  If list.Item(0) IsA XmlAttribute Then
 		    temp = list.Item(0).Value
 		  ElseIf list.Item(0).ChildCount = 0 Then
-		    App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from)
+		    App.DebugWriter.Write(Chr(9) + "In Translate: Can't find " + from, 4)
 		    Return ""
 		  Else
 		    temp = list.Item(0).FirstChild.Value
@@ -397,14 +400,16 @@ Protected Class Translator
 		  
 		  // Validate the parent control
 		  If parent Is Nil Or (Not (parent IsA RectControl)) Then
-		    App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil parent, returning " + ret, 4
+		    App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil parent for '" +_
+		     cont.Name + "', returning " + ret, 4
 		    Return ret
 		  End If
 		  
 		  // If the parent's name is "nil_something"  then look to its parent
 		  If parent.Name.Left(4) = "nil_" Then
 		    If parent.Parent Is Nil Or (Not (parent IsA RectControl)) Then
-		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil grandparent returning " + ret, 4
+		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil grandparent for '" +_
+		       cont.Name + "', returning " + ret, 4
 		      Return ret
 		    Else
 		      parent = parent.Parent
@@ -416,7 +421,8 @@ Protected Class Translator
 		  
 		  parentParts = Split(parent.Name, "_")
 		  If UBound(parentParts) < 2 Then
-		    App.DebugWriter.Write "Translator.ParseHierarchicalName: parent control has too few components: " + parent.Name, 1
+		    App.DebugWriter.Write "Translator.ParseHierarchicalName: parent control for '" +_
+		     cont.Name + "' has too few components: " + parent.Name, 1
 		    Return ret
 		  End If
 		  

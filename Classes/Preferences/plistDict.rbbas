@@ -1317,10 +1317,10 @@ Class plistDict
 		  dim result As integer
 		  dim value As string
 		  
-		  result=CheckType(key,kTypeDouble)
+		  result=CheckType(key,kTypeReal)
 		  if result<>0 then
 		    values.value(key)=str(v)
-		    types.value(key)=kTypeDouble
+		    types.value(key)=kTypeReal
 		    searched.Value(key)=false
 		  end
 		End Sub

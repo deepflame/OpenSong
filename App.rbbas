@@ -53,21 +53,20 @@ Inherits Application
 		  Profiler.BeginProfilerEntry "App::Open"
 		  
 		  DebugWriter = New DebugOutput
-		  If System.EnvironmentVariable("OPENSONGDEBUG") = "" Then
-		    '++JRC
-		    DebugWriter.Enabled = True
-		    DebugWriter.AppendLog = False
-		    #If DebugBuild
-		      DebugWriter.Level = 4
-		    #else
-		      DebugWriter.Level = 1
-		    #endif
-		    '--
+		  LoadPreferences
+		  DebugWriter.Level = MainPreferences.GetValueN(kLogLevel, 3, True)
+		  If MainPreferences.GetValueB(kLogOutput + kLogConsole, True, True) Then
+		    DebugWriter.SetOutput(Nil)
 		  Else
-		    DebugWriter.Enabled = (System.EnvironmentVariable("OPENSONGDEBUG") = "True")
+		    DebugWriter.SetOutput(MainPreferences.GetValueFI(kLogOutput), _
+		    MainPreferences.GetValueB(kLogOutput + kLogAppend, False, True))
 		  End If
+		  
 		  OK = DebugWriter.Init
 		  DebugWriter.Write "-------------------- Begin Run ----------------------"
+		  Dim d As New Date
+		  DebugWriter.Write d.SQLDateTime
+		  d = Nil
 		  AppFolder = GetFolderItem("")
 		  
 		  //++
@@ -78,7 +77,7 @@ Inherits Application
 		  Splash.Show
 		  
 		  SmartML.Init
-		  LoadPreferences
+		  
 		  
 		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
 		  Dim temp As String
@@ -1251,6 +1250,18 @@ Inherits Application
 	#tag EndConstant
 
 	#tag Constant, Name = SW_SHOWNORMAL, Type = Integer, Dynamic = False, Default = \"1", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLogAppend, Type = String, Dynamic = False, Default = \"/@append", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLogConsole, Type = String, Dynamic = False, Default = \"/@console", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLogLevel, Type = String, Dynamic = False, Default = \"log/level", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLogOutput, Type = String, Dynamic = False, Default = \"log/file", Scope = Public
 	#tag EndConstant
 
 

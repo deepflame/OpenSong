@@ -2,59 +2,20 @@
 Protected Class DebugOutput
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  DebugTOS = Nil
-		  DebugFile = Nil
-		  Enabled = False
-		  If System.EnvironmentVariable("OPENSONGDEBUGLEVEL") = "" Then
-		    #if DebugBuild
-		      DebugLevel = 3
-		    #else
-		      DebugLevel = 1
-		    #endif
-		  Else
-		    DebugLevel = CDbl(System.EnvironmentVariable("OPENSONGDEBUGLEVEL"))
-		  End If
-		  '++JRC
-		  AppendLog = True
-		  '--
+		  SetDefaults
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Done()
-		  If DebugTOS <> Nil Then DebugTOS.Close
-		  DebugTOS = Nil
+		  CloseLog
 		  DebugFile = Nil
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function Init() As Boolean
-		  If DebugTOS <> Nil Then Return True
-		  If Enabled Then
-		    If System.EnvironmentVariable("OPENSONGDEBUGFILE") = "" Then
-		      #If DebugBuild
-		        DebugFile = New FolderItem("Debug.txt")
-		      #Else
-		        DebugFile = New FolderItem(DocumentsFolder.Child("OpenSongDebug.txt"))
-		      #endif
-		    Else
-		      DebugFile = New FolderItem(System.EnvironmentVariable("OPENSONGDEBUGFILE"))
-		    End If
-		    If DebugFile.Exists Then
-		      '++JRC
-		      if AppendLog then
-		        DebugTOS = DebugFile.AppendToTextFile
-		      else
-		        DebugFile.Delete
-		        DebugTOS = DebugFile.CreateTextFile
-		      end if
-		    Else
-		      DebugTOS = DebugFile.CreateTextFile
-		      '--
-		    End If
-		    Return DebugTOS <> Nil
-		  End If
+		  OpenLog
 		  Return True
 		Catch ex
 		  MsgBox("DebugOutput couldn't Init: " + ex.message)
@@ -71,6 +32,7 @@ Protected Class DebugOutput
 
 	#tag Method, Flags = &h0
 		Function Level() As Integer
+		  If Not Enabled Then Return MINDEBUGLEVEL - 1
 		  Return DebugLevel
 		End Function
 	#tag EndMethod
@@ -78,6 +40,10 @@ Protected Class DebugOutput
 	#tag Method, Flags = &h0
 		Sub Level(Assigns NewLevel As Integer)
 		  Dim ex As New OutOfBoundsException
+		  
+		  If NewLevel < MINDEBUGLEVEL Then
+		    Enabled = False
+		  End If
 		  
 		  If NewLevel >= MINDEBUGLEVEL And NewLevel <= MAXDEBUGLEVEL Then
 		    DebugLevel = NewLevel
@@ -100,18 +66,81 @@ Protected Class DebugOutput
 		Sub Write(text As String, Level As Integer = 3)
 		  If Not Enabled Then Return
 		  
-		  If DebugTOS = Nil Then
-		    If Not Init Then Return
-		  End  If
+		  If (Not (DebugFile Is Nil)) And (DebugTOS Is Nil) Then
+		    OpenLog
+		  End If
 		  
 		  If Level <= DebugLevel Then
-		    #if TargetMacOS
-		      System.DebugLog text
-		    #else
+		    If DebugFile Is Nil Then
+		      System.DebugLog "[OpenSong] " + text
+		    Else
 		      DebugTOS.WriteLine(text)
 		      DebugTOS.Flush
-		    #endif
+		    End If
 		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub SetDefaults()
+		  DebugTOS = Nil
+		  DebugFile = Nil
+		  Enabled = True
+		  '++JRC
+		  AppendLog = True
+		  '--
+		  DebugLevel = 0
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor(logFile As FolderItem)
+		  SetDefaults
+		  DebugFile = logFile
+		  OpenLog
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Destructor()
+		  Done
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetOutput(logFile As FolderItem, append As Boolean = False)
+		  AppendLog = append
+		  If Not (DebugFile Is Nil) Then
+		    CloseLog
+		  End If
+		  
+		  DebugFile = logFile
+		  OpenLog
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub CloseLog()
+		  If Not (DebugTOS Is Nil) Then 
+		    DebugTOS.Close
+		    DebugTOS = Nil
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub OpenLog()
+		  If Not (DebugFile Is Nil) And (DebugTOS Is Nil) Then
+		    If AppendLog Then
+		      DebugTOS = DebugFile.AppendToTextFile
+		    Else
+		      If DebugFile.Exists Then DebugFile.Delete
+		      DebugTOS = DebugFile.CreateTextFile
+		    End If
+		  End If
+		  
+		Catch
+		  System.DebugLog "DebugOutput.OpenLog: Unable to open file."
 		End Sub
 	#tag EndMethod
 

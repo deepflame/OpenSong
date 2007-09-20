@@ -182,3 +182,8 @@ errors/cclinotavailable
 scripture_search/lst_result renamed to scripture_search/result
 scripture_lookup/bad_reference/format
 scripture_lookup/shownumbers
+general_settings/general/startmode/song -> general_settings/startmode/songs
+general_settings/general/startmode/set -> general_settings/startmode/sets
+general_settings/newpaint -> general_settings/fonts/newpaint
+style_editor/fonts_and_alignment/descriptive_subtitle_info ->
+    style_editor/fonts_and_alignment/descriptive_subtitle

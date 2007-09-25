@@ -1,5 +1,7 @@
 -= JRC =-
 
+* general_settings/logging caption changed to "Debug Log Settings" (so as not to be confused with song activity log)
+
 * Added Function CompareDates to OpenSongUtils
 
 * Added Song Activity Logging
@@ -7,14 +9,6 @@
 * Moved Song Rename code to ActionSongRename Method
 
 * Added Page Breaks(-!!) info to help
-
-* Fixed cross mouse cursor(now it looks like a cross)
-
-* Fixed broken hidden mouse cursor(was a quite visible mess)
-
-* Typing text in ScripturePicker edt_quick_lookup now updates preview text
-
-* Pressing Enter in ScripturePicker edt_quick_lookup now activates btn_quick_lookup
 
 * Don't revert/update Unsaved Song or Set when Closing
 

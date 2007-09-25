@@ -121,8 +121,8 @@ Protected Class FolderDB
 		    FilterAll = "( All )"
 		    FilterMain = "( Main )"
 		  Else
-		    FilterAll = "( " + App.T.Translate("song_folders/filter_all/@caption") + " )"
-		    FilterMain = "( " + App.T.Translate("song_folders/filter_main/@caption") + " )"
+		    FilterAll = "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )"
+		    FilterMain = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
 		  End If
 		  Load folder
 		End Sub
@@ -181,9 +181,13 @@ Protected Class FolderDB
 		  
 		  Dim cacheSlots(0) As Integer
 		  Dim f As FolderItem
+		  App.DebugWriter.Write "FolderDB.GetFile: Looking for '" + path + "'", 5
 		  path = CleanPath(path)
+		  App.DebugWriter.Write "FolderDB.GetFile: Path after CleanPath is '" + path + "'", 5
 		  f = FileUtils.RelativePathToFolderItem(Folder, path)
-		  
+		  If f <> Nil Then
+		    If Not f.Exists Then App.DebugWriter.Write "FolderDB.GetFile: File does not exist: '" + f.URLPath + "'", 5
+		  End If
 		  If f = Nil Or Not f.Exists Then
 		    ErrorCode = 8
 		    ErrorString = "Could not find file."
@@ -191,52 +195,6 @@ Protected Class FolderDB
 		  End If
 		  Return f
 		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetFileEx(path As String) As Integer()
-		  Dim i as Integer
-		  Dim matches(0) As Integer
-		  Dim f As FolderItem
-		  Dim name As String
-		  
-		  path = CleanPath(path)
-		  
-		  i = StringUtils.InStrReverse(path, "/")
-		  If i > 0 Then
-		    name = Mid(path, i+1)
-		    path = Left(path, i)
-		  Else
-		    name = path
-		    path = ""
-		  End If
-		  Dim NameAndPath As String
-		  NameAndPath = name + "/" + path
-		  //++EMP 19 Feb 2006
-		  // Changed loop to start at 0 to correct issue with MainWindow.ActionSongNew
-		  // and new entry landing in slot 0 of the cache.
-		  // July 2007: Remove calls to Lowercase since RB uses case-insensitive compares
-		  //--
-		  For i = 0 To UBound(Cache)
-		    If Cache(i) = NameAndPath Then
-		      f = FileUtils.RelativePathToFolderItem(Folder, CachePathToPath(Cache(i)))
-		      If f <> Nil And f.Exists Then
-		        matches.Append i
-		      Else
-		        Cache.Remove i ' self-repair
-		        i = i - 1
-		      End If
-		    End If
-		  Next i
-		  
-		  If UBound(matches) = 0 Then
-		    ErrorCode = 8
-		    ErrorString = "Could not find file."
-		    Return matches
-		  End If
-		  
-		  Return matches
 		End Function
 	#tag EndMethod
 
@@ -476,39 +434,39 @@ Protected Class FolderDB
 
 	#tag Method, Flags = &h21
 		Private Function GetFilesInFolderWin(path As String, list As ListBox = Nil, recurse As Boolean = False) As String()
-          #If Not TargetWin32
-            Return GetFilesInFolderGeneric(path, list, recurse)
-          #endif
-  
-          Dim fileDict() As Dictionary
-          Dim startPath As String
-  
-          startPath = Folder.AbsolutePath
-          If Right(startPath, 1) <> "\" Then
-            startPath = startPath + "\"
-          End If
-          startPath = startPath + ReplaceAll(path, "/", "\")
-          win32GetFileList(fileDict, startPath, "", "*.*", recurse)
-  
-          Dim fileList() As String
-          Dim last As Integer
-          last = UBound(fileDict)
-  
-          For i As Integer = 0 to last
-            // Only add it if it isn't a folder or hidden
-            If (Not fileDict(i).Value("Hidden").BooleanValue) And _
-              (Not fileDict(i).Value("Folder").BooleanValue) And _
-              Left(fileDict(i).Value("Name"), 1) <> "_" And _
-              Left(fileDict(i).Value("Name"), 1) <> "." Then
-              fileList.Append fileDict(i).Value("Name")
-              If list <> Nil Then
-                list.AddRow fileDict(i).Value("Name")
-                list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
-              End If
-            End If
-          Next
-  
-          Return fileList
+		  #If Not TargetWin32
+		    Return GetFilesInFolderGeneric(path, list, recurse)
+		  #endif
+		  
+		  Dim fileDict() As Dictionary
+		  Dim startPath As String
+		  
+		  startPath = Folder.AbsolutePath
+		  If Right(startPath, 1) <> "\" Then
+		    startPath = startPath + "\"
+		  End If
+		  startPath = startPath + ReplaceAll(path, "/", "\")
+		  win32GetFileList(fileDict, startPath, "", "*.*", recurse)
+		  
+		  Dim fileList() As String
+		  Dim last As Integer
+		  last = UBound(fileDict)
+		  
+		  For i As Integer = 0 to last
+		    // Only add it if it isn't a folder or hidden
+		    If (Not fileDict(i).Value("Hidden").BooleanValue) And _
+		      (Not fileDict(i).Value("Folder").BooleanValue) And _
+		      Left(fileDict(i).Value("Name"), 1) <> "_" And _
+		      Left(fileDict(i).Value("Name"), 1) <> "." Then
+		      fileList.Append fileDict(i).Value("Name")
+		      If list <> Nil Then
+		        list.AddRow fileDict(i).Value("Name")
+		        list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
+		      End If
+		    End If
+		  Next
+		  
+		  Return fileList
 		End Function
 	#tag EndMethod
 

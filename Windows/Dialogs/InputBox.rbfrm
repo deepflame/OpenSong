@@ -26,13 +26,11 @@ Begin Window InputBox
    Width           =   315
    Begin StaticText lbl_the_question
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   79
       HelpTag         =   ""
       Index           =   -2147483648
@@ -43,7 +41,7 @@ Begin Window InputBox
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      MultiLine       =   "True"
+      Multiline       =   "True"
       TabPanelIndex   =   0
       Text            =   "Label"
       TextAlign       =   0
@@ -52,23 +50,21 @@ Begin Window InputBox
       TextSize        =   11
       Top             =   7
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   299
       BehaviorIndex   =   0
    End
-   Begin EditField edt_the_input
+   Begin SEditField edt_the_input
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
       BackColor       =   16777215
-      BalloonHelp     =   ""
       Bold            =   "False"
       Border          =   "True"
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   21
       HelpTag         =   ""
@@ -82,12 +78,11 @@ Begin Window InputBox
       LockRight       =   "True"
       LockTop         =   "False"
       Mask            =   ""
-      MultiLine       =   "False"
+      Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
-      ScrollBar       =   "True"
-      ScrollBarHorizontal=   "False"
-      ScrollBarVertical=   "True"
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
       Styled          =   "False"
       TabPanelIndex   =   0
       Text            =   ""
@@ -97,25 +92,33 @@ Begin Window InputBox
       Top             =   65
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   300
       BehaviorIndex   =   1
    End
    Begin SButton btn_ok
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   100
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   "True"
+                      =   ""
+                      =   ""
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   2
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
+      HasFocus        =   0
       Height          =   24
       HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   "GroupBox4"
-      IsStuck         =   "False"
-      Label           =   "OK"
+      InitialParent   =   ""
       LabelAlign      =   0
       Left            =   145
       LockBottom      =   "True"
@@ -124,6 +127,8 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -131,20 +136,28 @@ Begin Window InputBox
       BehaviorIndex   =   2
    End
    Begin SButton btn_cancel
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   100
+                      =   ""
+                      =   ""
+                      =   ""
+                      =   "True"
+                      =   ""
+                      =   ""
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   3
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
+      EraseBackground =   "True"
+      HasFocus        =   0
       Height          =   24
       HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   "GroupBox4"
-      IsStuck         =   "False"
-      Label           =   "Cancel"
+      InitialParent   =   ""
       LabelAlign      =   0
       Left            =   230
       LockBottom      =   "True"
@@ -153,22 +166,22 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   75
       BehaviorIndex   =   3
    End
-   Begin PushButton btn_hidden_ok
+   Begin PushButton btn_hidden_hidok
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "OK"
       ControlOrder    =   4
       Default         =   "True"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -184,20 +197,18 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   135
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   22
       BehaviorIndex   =   4
    End
-   Begin PushButton btn_hidden_cancel
+   Begin PushButton btn_hidden_hidcancel
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "True"
       Caption         =   "Cancel"
       ControlOrder    =   5
       Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -213,19 +224,17 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   135
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   22
       BehaviorIndex   =   5
    End
    Begin PopupMenu pop_the_input
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -243,7 +252,7 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   70
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   300
       BehaviorIndex   =   6
    End
@@ -268,8 +277,7 @@ End
 
 	#tag Event
 		Sub Open()
-		  '++JRC Prevent OutOfBounds Exception when translator isn't loaded
-		  If App.T.IsLoaded Then
+		  If App.T <> Nil And App.T.IsLoaded Then
 		    App.T.TranslateWindow Me, "input_box", App.TranslationFonts
 		  End If
 		  Globals.Status_InputBoxOpen = True
@@ -286,9 +294,8 @@ End
 		  lbl_the_question.Height = 80
 		  pop_the_input.Visible = False
 		  
-		  btn_ok.Left = 145
 		  btn_cancel.Visible = True
-		  
+		  PositionPushButtons
 		  ShowModal
 		  Return OutputB
 		End Function
@@ -365,8 +372,8 @@ End
 		  pop_the_input.Visible = False
 		  
 		  lbl_the_question.Height = 40
-		  btn_ok.Left = 145
 		  btn_cancel.Visible = True
+		  PositionPushButtons
 		  ShowModal
 		  Return Output
 		End Function
@@ -382,9 +389,8 @@ End
 		  '--
 		  pop_the_input.Visible = False
 		  
-		  btn_ok.Left = 230
 		  btn_cancel.Visible = False
-		  
+		  PositionPushButtons
 		  ShowModal
 		  
 		End Sub
@@ -417,16 +423,48 @@ End
 		  pop_the_input.ListIndex = 0
 		  
 		  lbl_the_question.Height = 40
-		  btn_ok.Left = 145
+		  
 		  btn_cancel.Visible = True
+		  PositionPushButtons
 		  
 		  ShowModal
 		  Return Output
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub PositionPushButtons()
+		  //++
+		  // Position the pushbutton controls taking into account
+		  // the OS UI guidelines and visibility
+		  //--
+		  Dim rightButton As RectControl
+		  Dim leftButton As RectControl
+		  
+		  If btn_cancel.Visible Then
+		    #if TargetMacOS Then
+		      rightButton = btn_ok
+		      leftButton = btn_cancel
+		    #else
+		      rightButton = btn_cancel
+		      leftButton = btn_ok
+		    #endif
+		  Else
+		    leftButton = Nil
+		    rightButton = btn_ok
+		  End If
+		  
+		  rightButton.Left = Self.Width - (rightButton.Width + 12)
+		  If leftButton <> Nil Then
+		    If leftButton.top = rightButton.top Then
+		      leftButton.Left = rightButton.Left - (leftButton.Width + 12)
+		    End If
+		  End If
+		End Sub
+	#tag EndMethod
 
-	#tag Property, Flags = &h5
+
+	#tag Property, Flags = &h1
 		Protected Output As String
 	#tag EndProperty
 
@@ -437,21 +475,6 @@ End
 
 #tag EndWindowCode
 
-#tag Events edt_the_input
-	#tag Event
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    if c.TextAvailable then
-		      edt_the_input.Text  = Left(c.Text, 255)
-		    end if
-		  end if
-		  
-		  c.close
-		End Function
-	#tag EndEvent
-#tag EndEvents
 #tag Events btn_ok
 	#tag Event
 		Sub Action()
@@ -476,14 +499,14 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_hidden_ok
+#tag Events btn_hidden_hidok
 	#tag Event
 		Sub Action()
 		  Okay
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_hidden_cancel
+#tag Events btn_hidden_hidcancel
 	#tag Event
 		Sub Action()
 		  Cancel

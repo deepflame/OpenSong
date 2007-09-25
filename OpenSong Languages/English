@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.1.0">
+<language name="English" author="Sean Lickfold" version="1.2.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -180,6 +180,7 @@
     <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item.</slides>
     <presentation caption="Custom presentation order">Overrides the presentation order in the song file</presentation>
     <origorder caption="Original presentation order">Presentation order in the song file</origorder>       
+    <folder caption="Song folder">Folder containing the selected item</folder>
     <notes caption="Notes">These notes show up in the Presentation Helper window while giving a presentation using multiple monitors.</notes>
     <insert caption="Insert"/>
       <ins_slide caption="Slide">Allows for the creation of multiple slides that all share a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_slide>
@@ -237,18 +238,18 @@
 
   <scripture_search title="Search">
     <match caption="Match">
-      <exact caption="Exact"/>
-      <begin caption="Begins with"/>
+      <exact caption="E&amp;xact"/>
+      <begin caption="&amp;Begins with"/>
     </match>
     <words caption="Verse must have">
-      <all caption="All words"/>
-      <any caption="Any word"/>
+      <all caption="A&amp;ll words"/>
+      <any caption="An&amp;y word"/>
     </words>
-    <search caption="Search"/>
+    <search caption="&amp;Search"/>
     <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
-    <lst_result head1="Reference" head2="Text" />
+    <result head1="Reference" head2="Text" />
   </scripture_search>
 
   <main_menu>
@@ -296,14 +297,10 @@
   </main_menu>
 
   <general_settings title="General Configuration">
-    <general caption="General">
+    <general caption="General" head1="Basic" head2="Special">
       <ccli caption="Church CCLI License #"/>
       <version_check caption="Check for latest version at startup"/>
       <language caption="Language"/>
-      <startmode caption="Initial Window">
-	<song caption="Songs"/>
-	<set  caption="Sets"/>
-      </startmode>
     </general>
     <proxy caption="Proxy">
       <host caption="Host"/>
@@ -322,6 +319,7 @@
       <fixed_width caption="Fixed-width Text"/>
       <buttons caption="Buttons"/>
       <large_headings caption="Large Headings"/>
+      <newpaint caption="Use new visual style"/>
     </fonts>
     <documents_folder caption="Documents Folder">
       <warning caption="Change will not be applied until OpenSong restarts."/>
@@ -332,7 +330,17 @@
       <change caption="Change"/>
       <oldfolderdb caption="Use pre-V1.1 file cache"/>
     </documents_folder>
-    <newpaint caption="Use new visual style"/>
+    <logging caption="Debug Log Settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
+    <startmode caption="Initial Window">
+      <songs caption="Songs"/>
+      <sets  caption="Sets"/>
+    </startmode>
   </general_settings>
 
   <print_settings title="Print Settings">
@@ -692,7 +700,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <align caption="Align"/>
       <subtitles caption="Song Subtitles"/>
       <highlight_chorus caption="Highlight chorus text"/>
-      <descriptive_subtitle_info caption="Descriptive subtitle info"/>
+      <descriptive_subtitle caption="Descriptive subtitle info"/>
    </fonts_and_alignment>
       <background caption="Background">
       <color caption="Color"/>
@@ -737,6 +745,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <verse caption="Verse"/>
     </format>
     <bad_reference>
+      <format>Please check the format of the query and try again.</format>
       <empty>Bad reference: the reference was empty.</empty>
       <book>Bad reference: could not find book.</book>
       <ambiguous>Bad reference: Multiple books match '%1': %2</ambiguous>
@@ -749,7 +758,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <dash caption="-"/>
     <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
-    <preview caption="Scripture Preview"/>
+    <shownumbers caption="Display verse numbers"/>
   </scripture_lookup>
 
   <module>
@@ -941,7 +950,12 @@ Click on this slide to edit its style.</body>
     <web>Visit http://www.opensong.org/ for more information.</web>
     <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to translator@opensong.org and we'll include it in the official release.</translating>
     <created_with_opensong>Created with OpenSong</created_with_opensong>
-    <sources>OpenSong includes source code from</sources>
+    <sources>OpenSong includes source code from:
+StringUtils (http://www.strout.net/info/coding/rb/)
+HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
+REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
+iDeclare (http://www.declaresub.com/iDeclare
+The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
   </about>
 
   <folderdb_errors>

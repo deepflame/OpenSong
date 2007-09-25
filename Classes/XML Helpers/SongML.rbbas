@@ -1970,6 +1970,7 @@ Module SongML
 		  
 		  lyrics = SmartML.GetValue(songElement, "lyrics", True)
 		  lyrics = lyrics + Chr(10)
+		  lyrics = RemoveSpecialChars(lyrics)
 		  strlen = Len(lyrics)
 		  If strlen <= 0 Then Exit
 		  
@@ -2465,6 +2466,27 @@ Module SongML
 		  newText = RTrim(newText)
 		  SmartML.SetValue(songDoc.DocumentElement, "lyrics", newText)
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function RemoveSpecialChars(lyrics As String) As String
+		  Dim replaceChars As String
+		  Dim i As Integer
+		  Dim cLen As Integer
+		  Dim charToReplace As String
+		  Const kLowerMacronUTF8 = &H02CD
+		  
+		  replaceChars = App.MainPreferences.GetValue(prefs.kLyricsReplaceWithSpace, _
+		  Encodings.UTF8.Chr(kLowerMacronUTF8))
+		  
+		  cLen = replaceChars.Len
+		  
+		  For i = 1 To cLen
+		    Lyrics = ReplaceAll(lyrics, replaceChars.Mid(i, 1), " ")
+		  Next
+		  
+		  Return lyrics
+		End Function
 	#tag EndMethod
 
 

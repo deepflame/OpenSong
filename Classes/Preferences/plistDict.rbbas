@@ -17,7 +17,7 @@ Class plistDict
 		    SetError(true,"Array exists: "+name+" already exists")
 		    return false
 		  end
-		  types.value(name)="array"
+		  types.value(name)=kTypeArray
 		  childrenNames.append name
 		  children.append new plistDict
 		  index=ubound(children)
@@ -38,7 +38,7 @@ Class plistDict
 		  if types.HasKey(name) then
 		    SetError(true,"Child exists: "+name+" already exists")
 		  else
-		    types.value(name)="dict"
+		    types.value(name)=kTypeDict
 		    childrenNames.append name
 		    children.append new plistDict
 		    index=ubound(children)
@@ -57,7 +57,7 @@ Class plistDict
 		  
 		  if CheckArray then
 		    indexOf=types.count
-		    types.value(str(indexOf))="array"
+		    types.value(str(indexOf))=kTypeArray
 		    childrenNames.append str(indexOf)
 		    children.append new plistDict
 		    index=ubound(children)
@@ -73,11 +73,11 @@ Class plistDict
 		Sub AppendBoolean(value As boolean)
 		  if CheckArray then
 		    indexOf=types.count
-		    types.value(str(indexOf))="boolean"
+		    types.value(str(indexOf))=kTypeBoolean
 		    if value then
-		      values.value(str(indexOf))="true"
+		      values.value(str(indexOf))=kValueTrue
 		    else
-		      values.value(str(indexOf))="false"
+		      values.value(str(indexOf))=kValueFalse
 		    end
 		  end
 		End Sub
@@ -90,7 +90,7 @@ Class plistDict
 		  if CheckArray then
 		    indexOf=types.count
 		    value=hex(v.red)+hex(v.green)+hex(v.blue)
-		    types.value(str(indexOf))="string"
+		    types.value(str(indexOf))=kTypeString
 		    values.value(str(indexOf))=value
 		  end
 		End Sub
@@ -100,7 +100,7 @@ Class plistDict
 		Sub AppendData(value As string)
 		  if CheckArray then
 		    indexOf=types.count
-		    types.value(str(indexOf))="data"
+		    types.value(str(indexOf))=kTypeData
 		    values.value(str(indexOf))=value
 		  end
 		End Sub
@@ -112,7 +112,7 @@ Class plistDict
 		  
 		  if CheckArray then
 		    indexOf=types.count
-		    types.value(str(indexOf))="date"
+		    types.value(str(indexOf))=kTypeDate
 		    
 		    value=str(dt.year)+"-"
 		    value=value+MakeTwo(dt.month)+"-"
@@ -131,7 +131,7 @@ Class plistDict
 		  
 		  if CheckArray then
 		    indexOf=types.count
-		    types.value(str(indexOf))="dict"
+		    types.value(str(indexOf))=kTypeDict
 		    childrenNames.append str(indexOf)
 		    children.append new plistDict
 		    index=ubound(children)
@@ -146,7 +146,7 @@ Class plistDict
 		Sub AppendDouble(value As double)
 		  if CheckArray then
 		    indexOf=types.count
-		    types.value(str(indexOf))="double"
+		    types.value(str(indexOf))=kTypeDouble
 		    values.value(str(indexOf))=str(value)
 		  end
 		End Sub
@@ -156,7 +156,7 @@ Class plistDict
 		Sub AppendInteger(value As integer)
 		  if CheckArray then
 		    indexOf=types.count
-		    types.value(str(indexOf))="integer"
+		    types.value(str(indexOf))=kTypeInteger
 		    values.value(str(indexOf))=str(value)
 		  end
 		End Sub
@@ -204,7 +204,7 @@ Class plistDict
 		Sub AppendString(value As string)
 		  if CheckArray then
 		    indexOf=types.count
-		    types.value(str(indexOf))="string"
+		    types.value(str(indexOf))=kTypeString
 		    values.value(str(indexOf))=value
 		  end
 		End Sub
@@ -413,9 +413,9 @@ Class plistDict
 		  if not Exists(key) then
 		    SetBoolean(key,default)
 		  end
-		  if types.value(key)<>"boolean" then
+		  if types.value(key)<>kTypeBoolean then
 		    SetError(true,"Type Mismatch: "+key+" is a "+types.value(key))
-		  elseif values.value(key)="true" then
+		  elseif values.value(key)=kValueTrue then
 		    value=true
 		  end
 		  return value
@@ -448,7 +448,7 @@ Class plistDict
 		  if not Exists(key) then
 		    SetColor(key,default)
 		  end
-		  if types.value(key)<>"string" then
+		  if types.value(key)<>kTypeString then
 		    SetError(true,"Type Mismatch: "+key+" is a "+types.value(key))
 		  else
 		    value=GetValue(key)
@@ -527,7 +527,7 @@ Class plistDict
 		    SetDouble(key,default)
 		  end
 		  if TypeOK(key) then
-		    if types.value(key)="date" then
+		    if types.value(key)=kTypeDate then
 		      SetError(true,"Type Mismatch: "+key+" is a date")
 		      value=-1
 		    else
@@ -558,7 +558,7 @@ Class plistDict
 		    SetInteger(key,default)
 		  end
 		  if TypeOK(key) then
-		    if types.value(key)="date" then
+		    if types.value(key)=kTypeDate then
 		      SetError(true,"Type Mismatch: "+key+" is a date")
 		      value=-1
 		    else
@@ -667,7 +667,7 @@ Class plistDict
 		    SetReal(key,default)
 		  end
 		  if TypeOK(key) then
-		    if types.value(key)="date" then
+		    if types.value(key)=kTypeDate then
 		      SetError(true,"Type Mismatch: "+key+" is a date")
 		      value=-1
 		    else
@@ -816,11 +816,11 @@ Class plistDict
 		              if tag="false/" then
 		                types.value(key)="boolean"
 		                values.value(key)="false"
-		                type="boolean"
+		                type=kTypeBoolean
 		              elseif tag="true/" then
 		                types.value(key)="boolean"
 		                values.value(key)="true"
-		                type="boolean"
+		                type=kTypeBoolean
 		              elseif tag="/"+type or tag="/key" then
 		                inTag=false
 		                values.value(key)=CodeToBrackets(value)
@@ -846,7 +846,7 @@ Class plistDict
 		                    if f=0 then
 		                      value=ReplaceAll(s,"&lt;","<")
 		                      value=ReplaceAll(value,"&gt;",">")
-		                      if type<>"data" then
+		                      if type<>kTypeData then
 		                        value=value+chr(13)
 		                      end
 		                    else
@@ -855,14 +855,14 @@ Class plistDict
 		                  end
 		                end
 		              end
-		              if type="dict"  then
+		              if type=kTypeDict  then
 		                children.append new plistDict
 		                childrenNames.append key
 		                children(ubound(children)).Load(t,key,false,me,rootClass,not placeHolder)
 		                if placeHolder then
 		                  s=""
 		                end
-		              elseif type="array" then
+		              elseif type=kTypeArray then
 		                children.append new plistDict
 		                childrenNames.append key
 		                children(ubound(children)).Load(t,key,true,me,rootClass,not placeHolder)
@@ -902,7 +902,7 @@ Class plistDict
 		        targetName=newName
 		      end
 		      select case type
-		      case "array"
+		      case kTypeArray
 		        if dest.isArray then
 		          dest.AppendDict
 		          nm=str(dest.count)
@@ -918,7 +918,7 @@ Class plistDict
 		          child(key).Move(ck,dst,false,"")
 		          child(key).MoveNext
 		        wend
-		      case "dict"
+		      case kTypeDict
 		        if dest.isArray then
 		          dest.AppendDict
 		          nm=str(dest.count)
@@ -935,7 +935,7 @@ Class plistDict
 		          child(key).MoveNext
 		        wend
 		        
-		      case "string"
+		      case kTypeString
 		        value=GetString(key)
 		        if dest.isArray then
 		          dest.AppendString value
@@ -943,7 +943,7 @@ Class plistDict
 		          dest.SetString(targetName,value)
 		        end
 		        
-		      case "boolean"
+		      case kTypeBoolean
 		        value=GetBoolean(key)
 		        if dest.isArray then
 		          dest.AppendBoolean value
@@ -951,7 +951,7 @@ Class plistDict
 		          dest.SetBoolean(targetName,value)
 		        end
 		        
-		      case "real"
+		      case kTypeReal
 		        value=GetDouble(key)
 		        if dest.isArray then
 		          dest.AppendDouble value
@@ -959,7 +959,7 @@ Class plistDict
 		          dest.SetDouble(targetName,value)
 		        end
 		        
-		      case "integer"
+		      case kTypeInteger
 		        value=GetInteger(key)
 		        if dest.isArray then
 		          dest.AppendInteger value
@@ -967,7 +967,7 @@ Class plistDict
 		          dest.SetInteger(targetName,value)
 		        end
 		        
-		      case "data"
+		      case kTypeData
 		        value=GetString(key)
 		        if dest.isArray then
 		          dest.AppendData value
@@ -975,7 +975,7 @@ Class plistDict
 		          dest.SetData(targetName,value)
 		        end
 		        
-		      case "date"
+		      case kTypeDate
 		        value=GetDate(key)
 		        if dest.isArray then
 		          dest.AppendDate value
@@ -1066,7 +1066,7 @@ Class plistDict
 		          end
 		          key=str(i-1)
 		          types.value(key)=type
-		          if type<>"dict" and type<>"array" then
+		          if type<>kTypeDict and type<>kTypeArray then
 		            values.value(key)=value
 		          end
 		        end
@@ -1114,15 +1114,15 @@ Class plistDict
 		  dim result As integer
 		  dim value As string
 		  
-		  result=CheckType(key,"boolean")
+		  result=CheckType(key,kTypeBoolean)
 		  if result<>0 then
 		    if v then
-		      value="true"
+		      value=kValueTrue
 		    else
-		      value="false"
+		      value=kValueFalse
 		    end
 		    values.value(key)=value
-		    types.value(key)="boolean"
+		    types.value(key)=kTypeBoolean
 		    searched.Value(key)=false
 		  end
 		  indexOf=-1
@@ -1140,11 +1140,11 @@ Class plistDict
 		  dim result As integer
 		  dim value As string
 		  
-		  result=CheckType(key,"string")
+		  result=CheckType(key,kTypeString)
 		  if result<>0 then
 		    value=hex(v.red)+hex(v.green)+hex(v.blue)
 		    values.value(key)=value
-		    types.value(key)="string"
+		    types.value(key)=kTypeString
 		    searched.Value(key)=false
 		    indexOf=-1
 		  end
@@ -1154,7 +1154,7 @@ Class plistDict
 	#tag Method, Flags = &h0
 		Sub SetData(key As string, v As string)
 		  values.value(key)=v
-		  types.value(key)="data"
+		  types.value(key)=kTypeData
 		  searched.Value(key)=false
 		End Sub
 	#tag EndMethod
@@ -1164,7 +1164,7 @@ Class plistDict
 		  dim result As integer
 		  dim value As string
 		  
-		  result=CheckType(key,"date")
+		  result=CheckType(key,kTypeDate)
 		  if result<>0 then
 		    value=str(dt.year)+"-"
 		    value=value+MakeTwo(dt.month)+"-"
@@ -1173,7 +1173,7 @@ Class plistDict
 		    value=value+MakeTwo(dt.minute)+":"
 		    value=value+MakeTwo(dt.second)+"Z"
 		    values.value(key)=value
-		    types.value(key)="date"
+		    types.value(key)=kTypeDate
 		    searched.Value(key)=false
 		  end
 		End Sub
@@ -1184,10 +1184,10 @@ Class plistDict
 		  dim result As integer
 		  dim value As string
 		  
-		  result=CheckType(key,"real")
+		  result=CheckType(key,kTypeDouble)
 		  if result<>0 then
 		    values.value(key)=str(v)
-		    types.value(key)="real"
+		    types.value(key)=kTypeDouble
 		    searched.Value(key)=false
 		  end
 		End Sub
@@ -1216,10 +1216,10 @@ Class plistDict
 		  dim result As integer
 		  dim value As string
 		  
-		  result=CheckType(key,"integer")
+		  result=CheckType(key,kTypeInteger)
 		  if result<>0 then
 		    values.value(key)=format(v,"-#")
-		    types.value(key)="integer"
+		    types.value(key)=kTypeInteger
 		    searched.Value(key)=false
 		  end
 		End Sub
@@ -1317,10 +1317,10 @@ Class plistDict
 		  dim result As integer
 		  dim value As string
 		  
-		  result=CheckType(key,"double")
+		  result=CheckType(key,kTypeReal)
 		  if result<>0 then
 		    values.value(key)=str(v)
-		    types.value(key)="real"
+		    types.value(key)=kTypeReal
 		    searched.Value(key)=false
 		  end
 		End Sub
@@ -1336,10 +1336,10 @@ Class plistDict
 		Sub SetString(key As string, v As string)
 		  dim result As integer
 		  
-		  result=CheckType(key,"string")
+		  result=CheckType(key,kTypeString)
 		  if result<>0 then
 		    values.value(key)=v
-		    types.value(key)="string"
+		    types.value(key)=kTypeString
 		    searched.Value(key)=false
 		  end
 		End Sub
@@ -1381,7 +1381,7 @@ Class plistDict
 		  dim type As string
 		  
 		  type=types.value(key)
-		  if type="dict" or type="array" then
+		  if type=kTypeDict or type=kTypeArray then
 		    if rootClass<>nil then
 		      SetError(true,"Illegal Type: "+key+" is a "+type)
 		    end
@@ -1403,17 +1403,17 @@ Class plistDict
 		  for count=0 to types.count-1
 		    key=types.key(count)
 		    type=types.value(key)
-		    if type<>"dict" and type<>"array" then
+		    if type<>kTypeDict and type<>kTypeArray then
 		      value=BracketsToCode(values.value(key))
 		    end
 		    if not isArray then
 		      o.WriteLine tabs+"<key>"+key+"</key>"
 		    end
-		    if type="data" then
+		    if type=kTypeData then
 		      o.WriteLine tabs+"<data>"
 		      o.WriteLine tabs+value
 		      o.WriteLine tabs+"</data>"
-		    elseif type="dict" then
+		    elseif type=kTypeDict then
 		      for count2=1 to ubound(childrenNames)
 		        if childrenNames(count2)=key then
 		          if children(count2).count>0 then
@@ -1425,7 +1425,7 @@ Class plistDict
 		          end
 		        end
 		      next
-		    elseif type="array" then
+		    elseif type=kTypeArray then
 		      for count2=1 to ubound(childrenNames)
 		        if childrenNames(count2)=key then
 		          if children(count2).count>0 then
@@ -1437,7 +1437,7 @@ Class plistDict
 		          end
 		        end
 		      next
-		    elseif type="boolean" then
+		    elseif type=kTypeBoolean then
 		      if value="true" then
 		        o.WriteLine tabs+"<true/>"
 		      else
@@ -1502,6 +1502,40 @@ Class plistDict
 	#tag Property, Flags = &h0
 		values As dictionary
 	#tag EndProperty
+
+
+	#tag Constant, Name = kTypeArray, Type = String, Dynamic = False, Default = \"array", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeBoolean, Type = String, Dynamic = False, Default = \"boolean", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeString, Type = String, Dynamic = False, Default = \"string", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeData, Type = String, Dynamic = False, Default = \"data", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeDate, Type = String, Dynamic = False, Default = \"date", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeDict, Type = String, Dynamic = False, Default = \"dict", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeDouble, Type = String, Dynamic = False, Default = \"double", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeInteger, Type = String, Dynamic = False, Default = \"integer", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kValueTrue, Type = String, Dynamic = False, Default = \"true", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = kValueFalse, Type = String, Dynamic = False, Default = \"false", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeReal, Type = String, Dynamic = False, Default = \"real", Scope = Public
+	#tag EndConstant
 
 
 	#tag ViewBehavior

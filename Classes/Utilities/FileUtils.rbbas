@@ -328,17 +328,22 @@ Protected Module FileUtils
 		  Dim i, count As Integer
 		  Dim folder As String
 		  
+		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: parent is '" + parent.URLPath + "'", 5
+		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: path is '" + path + "'", 5
 		  path = ReplaceAll(path, "\", "/")
+		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: path after ReplaceAll '" + path + "'", 5
 		  count = CountFields(path, "/")
+		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: count of leaf nodes is " + CStr(count), 5
 		  
 		  For i = 1 To count
 		    folder = NthField(path, "/", i)
+		    App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: On leaf number " + Cstr(i) + " looking for child '" + folder + "'", 5
 		    If folder.Len > 0 Then
 		      parent = parent.Child(folder)
 		      If parent = Nil Then Return Nil
 		    End If
 		  Next i
-		  
+		  App.DebugWriter.Write "FileUtils.RelativePathToFolderItem: Returning path '" + parent.URLPath + "'", 5
 		  Return parent
 		End Function
 	#tag EndMethod

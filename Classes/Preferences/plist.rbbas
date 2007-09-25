@@ -1,5 +1,5 @@
 #tag Class
-Class Plist
+Class plist
 	#tag Method, Flags = &h0
 		Sub Cleanup()
 		  if isBinary then
@@ -332,7 +332,6 @@ Class Plist
 		#tag ViewProperty
 			Group="Behavior"
 			Type="string"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"
@@ -342,17 +341,14 @@ Class Plist
 		#tag ViewProperty
 			Group="Behavior"
 			Type="string"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"
 			Type="string"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"
 			Type="string"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"

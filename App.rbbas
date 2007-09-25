@@ -53,24 +53,31 @@ Inherits Application
 		  Profiler.BeginProfilerEntry "App::Open"
 		  
 		  DebugWriter = New DebugOutput
-		  If System.EnvironmentVariable("OPENSONGDEBUG") = "" Then
-		    '++JRC
-		    DebugWriter.Enabled = True
-		    DebugWriter.AppendLog = False
-		    DebugWriter.Level = 3
-		    '--
+		  LoadPreferences
+		  DebugWriter.Level = MainPreferences.GetValueN(kLogLevel, 3, True)
+		  If MainPreferences.GetValueB(kLogOutput + kLogConsole, True, True) Then
+		    DebugWriter.SetOutput(Nil)
 		  Else
-		    DebugWriter.Enabled = (System.EnvironmentVariable("OPENSONGDEBUG") = "True")
+		    DebugWriter.SetOutput(MainPreferences.GetValueFI(kLogOutput), _
+		    MainPreferences.GetValueB(kLogOutput + kLogAppend, False, True))
 		  End If
+		  
 		  OK = DebugWriter.Init
 		  DebugWriter.Write "-------------------- Begin Run ----------------------"
+		  Dim d As New Date
+		  DebugWriter.Write d.SQLDateTime
+		  d = Nil
+		  AppFolder = GetFolderItem("")
+		  
+		  //++
+		  // Initialize Factory objects
+		  //--
+		  BibleFactory.Folder = AppFolder.Child("OpenSong Scripture")
 		  
 		  Splash.Show
 		  
 		  SmartML.Init
-		  LoadPreferences
 		  
-		  AppFolder = GetFolderItem("")
 		  
 		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
 		  Dim temp As String
@@ -968,8 +975,11 @@ Inherits Application
 		  // Identify the target.
 		  // There's probably a gestalt that would be a better way to do this so we can
 		  // identify a true UB vs. a target-specific binary or an Intel Mac running the UB under Rosetta.
-		  // This identifies the processor architecture the executable was built for, which is still useful.
+		  // This identifies the processor architecture the executable is running.
 		  //--
+		  If App.StageCode <> App.Final Then
+		    t = t + "-"
+		  End If
 		  #If TargetMacOS
 		    If RBVersion >= 2006.04 Then
 		      #If TargetPPC
@@ -1166,7 +1176,7 @@ Inherits Application
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		MyBible As Bible
+		MyBible As iBible
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -1247,6 +1257,18 @@ Inherits Application
 	#tag EndConstant
 
 	#tag Constant, Name = SW_SHOWNORMAL, Type = Integer, Dynamic = False, Default = \"1", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLogAppend, Type = String, Dynamic = False, Default = \"/@append", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLogConsole, Type = String, Dynamic = False, Default = \"/@console", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLogLevel, Type = String, Dynamic = False, Default = \"log/level", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kLogOutput, Type = String, Dynamic = False, Default = \"log/file", Scope = Public
 	#tag EndConstant
 
 

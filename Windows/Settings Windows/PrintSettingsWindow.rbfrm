@@ -26,14 +26,12 @@ Begin Window PrintSettingsWindow
    Width           =   525
    Begin PushButton btn_ok
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "OK"
       ControlOrder    =   0
       Default         =   "True"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -49,20 +47,18 @@ Begin Window PrintSettingsWindow
       TextSize        =   11
       Top             =   294
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   1
+      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "True"
       Caption         =   "&Cancel"
       ControlOrder    =   1
       Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -78,29 +74,26 @@ Begin Window PrintSettingsWindow
       TextSize        =   11
       Top             =   294
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
-      BehaviorIndex   =   2
+      BehaviorIndex   =   1
    End
    Begin TabPanel tab_main_tabs
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   2
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Facing          =   0
       Height          =   275
       HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   ""
       Italic          =   "False"
       Left            =   10
       LockBottom      =   "False"
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      PanelCount      =   3
+      Panels          =   ""
       SmallTabs       =   "False"
       TabDefinition   =   "Fonts\rLayout\rMargins"
       TabPanelIndex   =   0
@@ -108,19 +101,18 @@ Begin Window PrintSettingsWindow
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Value           =   3
-      Visible         =   "True"
+      Value           =   2
+      Visible         =   True
       Width           =   505
-      BehaviorIndex   =   0
+      BehaviorIndex   =   2
       Begin Canvas can_print_margins
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
          ControlOrder    =   3
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
+         EraseBackground =   "True"
          Height          =   245
          HelpTag         =   ""
          Index           =   -2147483648
@@ -133,18 +125,16 @@ Begin Window PrintSettingsWindow
          TabPanelIndex   =   3
          Top             =   35
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   495
          BehaviorIndex   =   3
          Begin StaticText lbl_page_top
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   4
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -155,7 +145,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   3
             Text            =   "Top:"
             TextAlign       =   1
@@ -164,7 +154,7 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   40
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   105
             BehaviorIndex   =   4
          End
@@ -173,14 +163,11 @@ Begin Window PrintSettingsWindow
             Alignment       =   0
             AutoDeactivate  =   "True"
             BackColor       =   16777215
-            BalloonHelp     =   ""
             Bold            =   "False"
             Border          =   "True"
             ControlOrder    =   5
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            DisplayFormat   =   "##0.00"
             Enabled         =   "True"
             EnforceRange    =   "False"
             Format          =   ""
@@ -198,12 +185,12 @@ Begin Window PrintSettingsWindow
             Mask            =   ""
             Maximum         =   431
             Minimum         =   4.310000e+6
-            MultiLine       =   "False"
+            Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
-            ScrollBar       =   "True"
-            ScrollBarHorizontal=   "False"
-            ScrollBarVertical=   "True"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            SignalRangeErrors=   0
             Styled          =   "False"
             TabPanelIndex   =   3
             Text            =   ""
@@ -215,17 +202,15 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   45
-            BehaviorIndex   =   33
+            BehaviorIndex   =   5
          End
          Begin StaticText lbl_page_left
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   6
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -236,7 +221,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   3
             Text            =   "Left:"
             TextAlign       =   1
@@ -245,23 +230,20 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   130
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   95
-            BehaviorIndex   =   5
+            BehaviorIndex   =   6
          End
          Begin SEditFieldNumeric edt_page_left
             AcceptTabs      =   "False"
             Alignment       =   0
             AutoDeactivate  =   "True"
             BackColor       =   16777215
-            BalloonHelp     =   ""
             Bold            =   "False"
             Border          =   "True"
             ControlOrder    =   7
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            DisplayFormat   =   "##0.00"
             Enabled         =   "True"
             EnforceRange    =   "False"
             Format          =   ""
@@ -279,12 +261,12 @@ Begin Window PrintSettingsWindow
             Mask            =   ""
             Maximum         =   4.310000e+6
             Minimum         =   4.310000e+6
-            MultiLine       =   "False"
+            Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
-            ScrollBar       =   "True"
-            ScrollBarHorizontal=   "False"
-            ScrollBarVertical=   "True"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            SignalRangeErrors=   0
             Styled          =   "False"
             TabPanelIndex   =   3
             Text            =   ""
@@ -296,17 +278,15 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   45
-            BehaviorIndex   =   35
+            BehaviorIndex   =   7
          End
          Begin StaticText lbl_page_bottom
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   8
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -317,7 +297,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   3
             Text            =   "Bottom:"
             TextAlign       =   1
@@ -326,23 +306,20 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   235
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   105
-            BehaviorIndex   =   6
+            BehaviorIndex   =   8
          End
          Begin SEditFieldNumeric edt_page_bottom
             AcceptTabs      =   "False"
             Alignment       =   0
             AutoDeactivate  =   "True"
             BackColor       =   16777215
-            BalloonHelp     =   ""
             Bold            =   "False"
             Border          =   "True"
             ControlOrder    =   9
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            DisplayFormat   =   "##0.00"
             Enabled         =   "True"
             EnforceRange    =   "False"
             Format          =   ""
@@ -360,12 +337,12 @@ Begin Window PrintSettingsWindow
             Mask            =   ""
             Maximum         =   4.310000e+6
             Minimum         =   4.310000e+6
-            MultiLine       =   "False"
+            Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
-            ScrollBar       =   "True"
-            ScrollBarHorizontal=   "False"
-            ScrollBarVertical=   "True"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            SignalRangeErrors=   0
             Styled          =   "False"
             TabPanelIndex   =   3
             Text            =   ""
@@ -377,17 +354,15 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   45
-            BehaviorIndex   =   36
+            BehaviorIndex   =   9
          End
          Begin StaticText lbl_page_right
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   10
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -398,7 +373,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   3
             Text            =   "Right:"
             TextAlign       =   1
@@ -407,23 +382,20 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   132
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   95
-            BehaviorIndex   =   7
+            BehaviorIndex   =   10
          End
          Begin SEditFieldNumeric edt_page_right
             AcceptTabs      =   "False"
             Alignment       =   0
             AutoDeactivate  =   "True"
             BackColor       =   16777215
-            BalloonHelp     =   ""
             Bold            =   "False"
             Border          =   "True"
             ControlOrder    =   11
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            DisplayFormat   =   "##0.00"
             Enabled         =   "True"
             EnforceRange    =   "False"
             Format          =   ""
@@ -441,12 +413,12 @@ Begin Window PrintSettingsWindow
             Mask            =   ""
             Maximum         =   4.310000e+6
             Minimum         =   4.310000e+6
-            MultiLine       =   "False"
+            Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
-            ScrollBar       =   "True"
-            ScrollBarHorizontal=   "False"
-            ScrollBarVertical=   "True"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            SignalRangeErrors=   0
             Styled          =   "False"
             TabPanelIndex   =   3
             Text            =   ""
@@ -458,16 +430,14 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   45
-            BehaviorIndex   =   34
+            BehaviorIndex   =   11
          End
          Begin Rectangle nil_page
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             BorderWidth     =   1
             BottomRightColor=   0
             ControlOrder    =   12
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             FillColor       =   16777215
             Height          =   150
             HelpTag         =   ""
@@ -481,18 +451,16 @@ Begin Window PrintSettingsWindow
             TabPanelIndex   =   3
             Top             =   80
             TopLeftColor    =   0
-            Visible         =   "True"
+            Visible         =   True
             Width           =   115
-            BehaviorIndex   =   8
+            BehaviorIndex   =   12
             Begin StaticText lbl_page_width
                AutoDeactivate  =   "True"
-               BalloonHelp     =   ""
                Bold            =   "False"
                ControlOrder    =   13
                DataField       =   ""
                DataSource      =   ""
-               DisabledBalloonHelp=   ""
-               Enabled         =   "True"
+               Enabled         =   True
                Height          =   15
                HelpTag         =   ""
                Index           =   -2147483648
@@ -503,7 +471,7 @@ Begin Window PrintSettingsWindow
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
-               MultiLine       =   "False"
+               Multiline       =   "False"
                TabPanelIndex   =   3
                Text            =   "Width:"
                TextAlign       =   1
@@ -512,23 +480,20 @@ Begin Window PrintSettingsWindow
                TextSize        =   10
                Top             =   115
                Underline       =   "False"
-               Visible         =   "True"
+               Visible         =   True
                Width           =   105
-               BehaviorIndex   =   9
+               BehaviorIndex   =   13
             End
             Begin SEditFieldNumeric edt_page_width
                AcceptTabs      =   "False"
                Alignment       =   0
                AutoDeactivate  =   "True"
                BackColor       =   16777215
-               BalloonHelp     =   ""
                Bold            =   "False"
                Border          =   "True"
                ControlOrder    =   14
                DataField       =   ""
                DataSource      =   ""
-               DisabledBalloonHelp=   ""
-               DisplayFormat   =   "##0.00"
                Enabled         =   "True"
                EnforceRange    =   "False"
                Format          =   ""
@@ -546,12 +511,12 @@ Begin Window PrintSettingsWindow
                Mask            =   ""
                Maximum         =   4.310000e+6
                Minimum         =   4.310000e+6
-               MultiLine       =   "False"
+               Multiline       =   "False"
                Password        =   "False"
                ReadOnly        =   "False"
-               ScrollBar       =   "True"
-               ScrollBarHorizontal=   "False"
-               ScrollBarVertical=   "True"
+               ScrollbarHorizontal=   "False"
+               ScrollbarVertical=   "True"
+               SignalRangeErrors=   0
                Styled          =   "False"
                TabPanelIndex   =   3
                Text            =   ""
@@ -563,17 +528,15 @@ Begin Window PrintSettingsWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   45
-               BehaviorIndex   =   37
+               BehaviorIndex   =   14
             End
             Begin StaticText lbl_page_height
                AutoDeactivate  =   "True"
-               BalloonHelp     =   ""
                Bold            =   "False"
                ControlOrder    =   15
                DataField       =   ""
                DataSource      =   ""
-               DisabledBalloonHelp=   ""
-               Enabled         =   "True"
+               Enabled         =   True
                Height          =   15
                HelpTag         =   ""
                Index           =   -2147483648
@@ -584,7 +547,7 @@ Begin Window PrintSettingsWindow
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
-               MultiLine       =   "False"
+               Multiline       =   "False"
                TabPanelIndex   =   3
                Text            =   "Height:"
                TextAlign       =   1
@@ -593,23 +556,20 @@ Begin Window PrintSettingsWindow
                TextSize        =   10
                Top             =   160
                Underline       =   "False"
-               Visible         =   "True"
+               Visible         =   True
                Width           =   105
-               BehaviorIndex   =   10
+               BehaviorIndex   =   15
             End
             Begin SEditFieldNumeric edt_page_height
                AcceptTabs      =   "False"
                Alignment       =   0
                AutoDeactivate  =   "True"
                BackColor       =   16777215
-               BalloonHelp     =   ""
                Bold            =   "False"
                Border          =   "True"
                ControlOrder    =   16
                DataField       =   ""
                DataSource      =   ""
-               DisabledBalloonHelp=   ""
-               DisplayFormat   =   "##0.00"
                Enabled         =   "True"
                EnforceRange    =   "False"
                Format          =   ""
@@ -627,12 +587,12 @@ Begin Window PrintSettingsWindow
                Mask            =   ""
                Maximum         =   4.310000e+6
                Minimum         =   4.310000e+6
-               MultiLine       =   "False"
+               Multiline       =   "False"
                Password        =   "False"
                ReadOnly        =   "False"
-               ScrollBar       =   "True"
-               ScrollBarHorizontal=   "False"
-               ScrollBarVertical=   "True"
+               ScrollbarHorizontal=   "False"
+               ScrollbarVertical=   "True"
+               SignalRangeErrors=   0
                Styled          =   "False"
                TabPanelIndex   =   3
                Text            =   ""
@@ -644,17 +604,15 @@ Begin Window PrintSettingsWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   45
-               BehaviorIndex   =   38
+               BehaviorIndex   =   16
             End
          End
          Begin GroupBox grp_page_units
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             Caption         =   "Units"
-            ControlOrder    =   36
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            ControlOrder    =   25
+            Enabled         =   True
             Height          =   78
             HelpTag         =   ""
             Index           =   -2147483648
@@ -670,17 +628,15 @@ Begin Window PrintSettingsWindow
             TextSize        =   12
             Top             =   46
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   150
-            BehaviorIndex   =   30
+            BehaviorIndex   =   25
             Begin RadioButton rad_page_inches
                AutoDeactivate  =   "True"
-               BalloonHelp     =   ""
                Bold            =   "False"
                Caption         =   "Inches"
-               ControlOrder    =   37
-               DisabledBalloonHelp=   ""
-               Enabled         =   "True"
+               ControlOrder    =   26
+               Enabled         =   True
                Height          =   20
                HelpTag         =   ""
                Index           =   -2147483648
@@ -697,18 +653,16 @@ Begin Window PrintSettingsWindow
                Top             =   70
                Underline       =   "False"
                Value           =   "False"
-               Visible         =   "True"
+               Visible         =   True
                Width           =   118
-               BehaviorIndex   =   31
+               BehaviorIndex   =   26
             End
             Begin RadioButton rad_page_cm
                AutoDeactivate  =   "True"
-               BalloonHelp     =   ""
                Bold            =   "False"
                Caption         =   "cm"
-               ControlOrder    =   38
-               DisabledBalloonHelp=   ""
-               Enabled         =   "True"
+               ControlOrder    =   27
+               Enabled         =   True
                Height          =   20
                HelpTag         =   ""
                Index           =   -2147483648
@@ -725,9 +679,9 @@ Begin Window PrintSettingsWindow
                Top             =   94
                Underline       =   "False"
                Value           =   "False"
-               Visible         =   "True"
+               Visible         =   True
                Width           =   118
-               BehaviorIndex   =   32
+               BehaviorIndex   =   27
             End
          End
       End
@@ -736,10 +690,9 @@ Begin Window PrintSettingsWindow
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
          ControlOrder    =   17
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
+         EraseBackground =   "True"
          Height          =   245
          HelpTag         =   ""
          Index           =   -2147483648
@@ -752,18 +705,16 @@ Begin Window PrintSettingsWindow
          TabPanelIndex   =   1
          Top             =   35
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   495
-         BehaviorIndex   =   11
+         BehaviorIndex   =   17
          Begin StaticText lbl_font_title
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   18
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -774,7 +725,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Title:"
             TextAlign       =   2
@@ -783,19 +734,17 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   65
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   60
-            BehaviorIndex   =   12
+            BehaviorIndex   =   18
          End
          Begin StaticText lbl_font_lyrics
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   19
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -806,7 +755,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Lyrics:"
             TextAlign       =   2
@@ -815,19 +764,17 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   230
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   60
-            BehaviorIndex   =   13
+            BehaviorIndex   =   19
          End
          Begin StaticText lbl_font_chords
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   20
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -838,7 +785,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Chords:"
             TextAlign       =   2
@@ -847,19 +794,17 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   65
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   80
-            BehaviorIndex   =   14
+            BehaviorIndex   =   20
          End
          Begin StaticText lbl_font_capo
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   21
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -870,7 +815,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Capo Chords:"
             TextAlign       =   2
@@ -879,19 +824,17 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   120
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   80
-            BehaviorIndex   =   15
+            BehaviorIndex   =   21
          End
          Begin StaticText lbl_font_author
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   22
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -902,7 +845,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Author:"
             TextAlign       =   2
@@ -911,19 +854,17 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   120
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   60
-            BehaviorIndex   =   16
+            BehaviorIndex   =   22
          End
          Begin StaticText lbl_font_copyright
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   23
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -934,7 +875,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Copyright:"
             TextAlign       =   2
@@ -943,19 +884,17 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   175
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   80
-            BehaviorIndex   =   17
+            BehaviorIndex   =   23
          End
          Begin StaticText lbl_font_sections
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   24
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -966,7 +905,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Sections:"
             TextAlign       =   2
@@ -975,9 +914,9 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   175
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   60
-            BehaviorIndex   =   18
+            BehaviorIndex   =   24
          End
          Begin SFontCanvas can_font_title
             AcceptFocus     =   "False"
@@ -985,10 +924,9 @@ Begin Window PrintSettingsWindow
             AdvancedOptions =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
-            ControlOrder    =   25
-            DisabledBalloonHelp=   ""
+            ControlOrder    =   28
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   50
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1003,7 +941,7 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   19
+            BehaviorIndex   =   28
          End
          Begin SFontCanvas can_font_author
             AcceptFocus     =   "False"
@@ -1011,10 +949,9 @@ Begin Window PrintSettingsWindow
             AdvancedOptions =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
-            ControlOrder    =   26
-            DisabledBalloonHelp=   ""
+            ControlOrder    =   29
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   50
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1029,7 +966,7 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   20
+            BehaviorIndex   =   29
          End
          Begin SFontCanvas can_font_sections
             AcceptFocus     =   "False"
@@ -1037,10 +974,9 @@ Begin Window PrintSettingsWindow
             AdvancedOptions =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
-            ControlOrder    =   27
-            DisabledBalloonHelp=   ""
+            ControlOrder    =   30
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   50
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1055,7 +991,7 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   21
+            BehaviorIndex   =   30
          End
          Begin SFontCanvas can_font_lyrics
             AcceptFocus     =   "False"
@@ -1063,10 +999,9 @@ Begin Window PrintSettingsWindow
             AdvancedOptions =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
-            ControlOrder    =   28
-            DisabledBalloonHelp=   ""
+            ControlOrder    =   31
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   50
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1081,7 +1016,7 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   22
+            BehaviorIndex   =   31
          End
          Begin SFontCanvas can_font_chords
             AcceptFocus     =   "False"
@@ -1089,10 +1024,9 @@ Begin Window PrintSettingsWindow
             AdvancedOptions =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
-            ControlOrder    =   29
-            DisabledBalloonHelp=   ""
+            ControlOrder    =   36
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   50
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1107,7 +1041,7 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   23
+            BehaviorIndex   =   36
          End
          Begin SFontCanvas can_font_capo
             AcceptFocus     =   "False"
@@ -1115,10 +1049,9 @@ Begin Window PrintSettingsWindow
             AdvancedOptions =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
-            ControlOrder    =   30
-            DisabledBalloonHelp=   ""
+            ControlOrder    =   37
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   50
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1133,7 +1066,7 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   24
+            BehaviorIndex   =   37
          End
          Begin SFontCanvas can_font_copyright
             AcceptFocus     =   "False"
@@ -1141,10 +1074,9 @@ Begin Window PrintSettingsWindow
             AdvancedOptions =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
-            ControlOrder    =   31
-            DisabledBalloonHelp=   ""
+            ControlOrder    =   38
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   50
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1159,7 +1091,7 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   25
+            BehaviorIndex   =   38
          End
       End
       Begin Canvas can_print_layout
@@ -1167,10 +1099,9 @@ Begin Window PrintSettingsWindow
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
          ControlOrder    =   32
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
+         Enabled         =   True
+         EraseBackground =   "True"
          Height          =   245
          HelpTag         =   ""
          Index           =   -2147483648
@@ -1183,18 +1114,16 @@ Begin Window PrintSettingsWindow
          TabPanelIndex   =   2
          Top             =   35
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   495
-         BehaviorIndex   =   26
+         BehaviorIndex   =   32
          Begin StaticText lbl_layout_heading_border_thickness
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   33
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1205,7 +1134,7 @@ Begin Window PrintSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Heading Border Thickness:"
             TextAlign       =   0
@@ -1214,23 +1143,21 @@ Begin Window PrintSettingsWindow
             TextSize        =   10
             Top             =   55
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   300
-            BehaviorIndex   =   27
+            BehaviorIndex   =   33
          End
          Begin EditField edt_layout_heading_border_thickness
             AcceptTabs      =   "False"
             Alignment       =   0
             AutoDeactivate  =   "True"
             BackColor       =   16777215
-            BalloonHelp     =   ""
             Bold            =   "False"
             Border          =   "True"
             ControlOrder    =   34
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -1244,12 +1171,11 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Mask            =   ""
-            MultiLine       =   "False"
+            Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
-            ScrollBar       =   "True"
-            ScrollBarHorizontal=   "False"
-            ScrollBarVertical=   "True"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
             Styled          =   "False"
             TabPanelIndex   =   2
             Text            =   ""
@@ -1259,20 +1185,18 @@ Begin Window PrintSettingsWindow
             Top             =   70
             Underline       =   "False"
             UseFocusRing    =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   50
-            BehaviorIndex   =   28
+            BehaviorIndex   =   34
          End
          Begin CheckBox chk_layout_title_in_caps
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             Caption         =   "Title in CAPS"
             ControlOrder    =   35
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1289,9 +1213,9 @@ Begin Window PrintSettingsWindow
             Top             =   100
             Underline       =   "False"
             Value           =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   300
-            BehaviorIndex   =   29
+            BehaviorIndex   =   35
          End
       End
    End
@@ -1463,7 +1387,6 @@ End
 
 	#tag Property, Flags = &h1
 		#tag Note
-			
 			This flag indicates if the margin values in the PrintSettings XML are in points.
 			
 			This allows for a smooth transition from storing in inches or cm to storing in
@@ -1472,7 +1395,6 @@ End
 			is a point.
 			
 			See documentation in the OpenSongUtils module for the conversion factors used.
-			
 		#tag EndNote
 		Protected ValuesInPoints As Boolean
 	#tag EndProperty
@@ -1642,23 +1564,6 @@ End
 		End Function
 	#tag EndEvent
 #tag EndEvents
-#tag Events edt_layout_heading_border_thickness
-	#tag Event
-		Function KeyDown(Key As String) As Boolean
-		  dim c As New Clipboard
-		  
-		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
-		    
-		    if c.TextAvailable then
-		      edt_layout_heading_border_thickness.Text  = Left(c.Text, 4)
-		      return true
-		    end if
-		    
-		  end if
-		  c.close
-		End Function
-	#tag EndEvent
-#tag EndEvents
 #tag Events rad_page_inches
 	#tag Event
 		Sub Action()
@@ -1691,5 +1596,22 @@ End
 		  ToCM(edt_page_height)
 		  ToCM(edt_page_width)
 		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_layout_heading_border_thickness
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_layout_heading_border_thickness.Text  = Left(c.Text, 4)
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
 	#tag EndEvent
 #tag EndEvents

@@ -655,16 +655,18 @@ Inherits FolderDB
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+			InheritedFrom="FolderDB"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"
 			Type="String"
-			EditorType="MultiLineEditor"
+			InheritedFrom="FolderDB"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+			InheritedFrom="FolderDB"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

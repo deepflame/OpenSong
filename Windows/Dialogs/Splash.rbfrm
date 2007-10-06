@@ -9,6 +9,7 @@ Begin Window Splash
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   300
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -26,12 +27,16 @@ Begin Window Splash
    Width           =   400
    Begin Timer closeTimer
       ControlOrder    =   0
+      Height          =   32
       Index           =   -2147483648
       Left            =   20
       Mode            =   2
       Period          =   1000
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   256
+      Width           =   32
       BehaviorIndex   =   0
    End
 End

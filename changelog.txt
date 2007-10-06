@@ -1,4 +1,16 @@
-* plistDict was incorrectly setting the type of numeric values to "double" (no longer valid) instead of "real"
+* Fixed issue where a folder could be successfully created, but an error is returned (Linux only).
+
+* Printer output should properly scale on all printers.  The printer resolution in dpi was changing when the printer was opened to print, but the setup didn't reflect the change in size (page width/height in dots).  This is a REALbasic/printer driver issue.  OpenSong detects the change and will scale the page appropriately.  This may not provide the full resolution available on the printer.
+
+* Set Export will now create a Songs folder for the songs and a Sets folder for the sets.  This should simplify moving an exported set from one system to another, but will break any automated processes built for V1.1.
+
+* Corrected several control order issues that are the result of a bug in REALbasic which causes custom controls (all of the action buttons on the editors, for example) to change order when the control is the child of a group control or other containing control.  Because of this, the XML version of the source will be maintained in the SVN source pool and the project control version should only be used as a reference for changes.  The XML version will reflect the "as-built" source.
+
+* The setting to use the pre-V1.1 folder cache will now be saved and loaded properly.  In V1.1.2, this setting would not be saved, so the program would always use the new folder access method.
+
+* plistDict was incorrectly setting the type of numeric values to "double" (no longer valid) instead of "real".
+
+* Corrected issue in prefsPlist class where attributes might not be created if a parent leaf did not exist.
 
 * Trashed some dead code in MainSettingsWindow.Open.
 
@@ -14,11 +26,11 @@
 
 + Added debugger preferences to MainSettingsWindow.
 
-+ Added to the English translation file:
++ Added to the translation files (must be translated in non-English):
   general_settings/general/@head[12]
   general_settings/logging/{append, console, level, dialog}
 
-+ Moved the following in the English translation file:
++ Moved the following in the translation files:
   general_settings/general/startmode/song -> general_settings/startmode/songs
   general_settings/general/startmode/set -> general_settings/startmode/sets
   general_settings/newpaint -> general_settings/fonts/newpaint
@@ -27,13 +39,11 @@
 
 * Changing sets with a pending set item change no longer results in a NilObjectException error.
 
-* Corrected issue in prefsPlist class where attributes could potentially not be created correctly.
-
 * MainWindow.ActionSetExport: exported song files reflect the creation and modification dates of the original file, not the time the set was exported.
 
-* Changed edit fields in FontChooser to SEditField to support cut/paste.
+* Changed edit fields in FontChooser and other dialog windows to SEditField to support cut/paste.
 
-* Deleted unused pushbuttons in FindWindow.
+* Deleted unused pushbuttons in FindWindow. These controls were not visible, so no change is apparent to the end user.
 
 * Updated InputBox to properly move the OK/Cancel buttons for each operating system.
 
@@ -167,7 +177,7 @@ operator only has to press Enter to move forward after that point.
 * SButtonPopup wouldn't properly dismiss on Windows & Linux.  Under RB5.5, the platform differences in mouse click handling were handled automatically.  In the later versions of REALbasic, the platform differences are exposed.  Handle opening the SButtonPopup in MouseDown for
 OSX and MouseUp for the other platforms.  Action event is still called in MouseUp for all platforms.
 
-* Incorporate RŸdiger's ErrorPopup window to the App.UnhandledExceptionEvent.  Add new exception types to the massive If/ElseIf in OpenSongUtils.ToString extension to the RuntimeException class.
+* Incorporate RÂŸdiger's ErrorPopup window to the App.UnhandledExceptionEvent.  Add new exception types to the massive If/ElseIf in OpenSongUtils.ToString extension to the RuntimeException class.
 
 -= 1.0.1 BL17 =-
 

@@ -9,6 +9,7 @@ Begin Window FindWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   293
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -30,7 +31,7 @@ Begin Window FindWindow
       ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -50,11 +51,11 @@ Begin Window FindWindow
       TextSize        =   10
       Top             =   10
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   200
       BehaviorIndex   =   0
    End
-   Begin EditField edt_input
+   Begin SEditField edt_input
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
@@ -64,7 +65,7 @@ Begin Window FindWindow
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
@@ -92,21 +93,11 @@ Begin Window FindWindow
       Top             =   25
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   195
-      BehaviorIndex   =   1
+      BehaviorIndex   =   21
    End
    Begin SButton btn_ok
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
@@ -127,25 +118,13 @@ Begin Window FindWindow
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   25
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   2
+      BehaviorIndex   =   1
    End
    Begin SButton btn_cancel
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   100
-                      =   ""
-                      =   ""
-                      =   ""
-                      =   "True"
-                      =   ""
-                      =   ""
       AcceptFocus     =   "True"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
@@ -166,20 +145,18 @@ Begin Window FindWindow
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   50
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   3
+      BehaviorIndex   =   2
    End
    Begin GroupBox grp_search_fields
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Search Fields"
       ControlOrder    =   4
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   205
       HelpTag         =   ""
       Index           =   -2147483648
@@ -195,485 +172,485 @@ Begin Window FindWindow
       TextSize        =   10
       Top             =   80
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   280
-      BehaviorIndex   =   4
-   End
-   Begin CheckBox chk_search_title
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Title"
-      ControlOrder    =   5
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   100
-      Underline       =   "False"
-      Value           =   "True"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   5
-   End
-   Begin CheckBox chk_search_author
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Author"
-      ControlOrder    =   6
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   120
-      Underline       =   "False"
-      Value           =   "True"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   6
-   End
-   Begin CheckBox chk_search_copyright
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Copyright"
-      ControlOrder    =   7
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   140
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   7
-   End
-   Begin CheckBox chk_search_ccli
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "CCLI #"
-      ControlOrder    =   8
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   160
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   8
-   End
-   Begin CheckBox chk_search_presentation
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Presentation"
-      ControlOrder    =   9
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   180
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   9
-   End
-   Begin CheckBox chk_search_lyrics
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Chords/Lyrics"
-      ControlOrder    =   10
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   200
-      Underline       =   "False"
-      Value           =   "True"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   10
-   End
-   Begin CheckBox chk_search_themes
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Themes"
-      ControlOrder    =   11
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   238
-      Underline       =   "False"
-      Value           =   "True"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   11
-   End
-   Begin CheckBox chk_search_capo
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Capo"
-      ControlOrder    =   12
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   258
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   12
-   End
-   Begin CheckBox chk_search_time_sig
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Time Signature"
-      ControlOrder    =   13
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   155
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   100
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   13
-   End
-   Begin CheckBox chk_search_tempo
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Tempo"
-      ControlOrder    =   14
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   155
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   120
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   14
-   End
-   Begin CheckBox chk_search_key
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Key"
-      ControlOrder    =   15
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   155
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   140
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   15
-   End
-   Begin CheckBox chk_search_aka
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "AKA"
-      ControlOrder    =   16
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   155
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   160
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   16
-   End
-   Begin CheckBox chk_search_key_line
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Key Line"
-      ControlOrder    =   17
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   155
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   180
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   17
-   End
-   Begin CheckBox chk_search_user1
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "User Defined 1"
-      ControlOrder    =   18
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   155
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   200
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   18
-   End
-   Begin CheckBox chk_search_user2
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "User Defined 2"
-      ControlOrder    =   19
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   155
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   220
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   19
-   End
-   Begin CheckBox chk_search_user3
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "User Defined 3"
-      ControlOrder    =   20
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   155
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   240
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   20
-   End
-   Begin CheckBox chk_search_hymn_number
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Hymn Number"
-      ControlOrder    =   21
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   19
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_fields"
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   219
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   123
-      BehaviorIndex   =   21
+      BehaviorIndex   =   3
+      Begin CheckBox chk_search_title
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Title"
+         ControlOrder    =   5
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   100
+         Underline       =   "False"
+         Value           =   "True"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   4
+      End
+      Begin CheckBox chk_search_author
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Author"
+         ControlOrder    =   6
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   120
+         Underline       =   "False"
+         Value           =   "True"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   5
+      End
+      Begin CheckBox chk_search_copyright
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Copyright"
+         ControlOrder    =   7
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   140
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   6
+      End
+      Begin CheckBox chk_search_ccli
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "CCLI #"
+         ControlOrder    =   8
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   160
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   7
+      End
+      Begin CheckBox chk_search_presentation
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Presentation"
+         ControlOrder    =   9
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   180
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   8
+      End
+      Begin CheckBox chk_search_lyrics
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Chords/Lyrics"
+         ControlOrder    =   10
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   200
+         Underline       =   "False"
+         Value           =   "True"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   9
+      End
+      Begin CheckBox chk_search_hymn_number
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Hymn Number"
+         ControlOrder    =   11
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   19
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   219
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   123
+         BehaviorIndex   =   20
+      End
+      Begin CheckBox chk_search_themes
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Themes"
+         ControlOrder    =   12
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   238
+         Underline       =   "False"
+         Value           =   "True"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   10
+      End
+      Begin CheckBox chk_search_capo
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Capo"
+         ControlOrder    =   13
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   20
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   258
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   11
+      End
+      Begin CheckBox chk_search_time_sig
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Time Signature"
+         ControlOrder    =   14
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   155
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   100
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   12
+      End
+      Begin CheckBox chk_search_tempo
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Tempo"
+         ControlOrder    =   15
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   155
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   120
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   13
+      End
+      Begin CheckBox chk_search_key
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Key"
+         ControlOrder    =   16
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   155
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   140
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   14
+      End
+      Begin CheckBox chk_search_aka
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "AKA"
+         ControlOrder    =   17
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   155
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   160
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   15
+      End
+      Begin CheckBox chk_search_key_line
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Key Line"
+         ControlOrder    =   18
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   155
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   180
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   16
+      End
+      Begin CheckBox chk_search_user1
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "User Defined 1"
+         ControlOrder    =   19
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   155
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   200
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   17
+      End
+      Begin CheckBox chk_search_user2
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "User Defined 2"
+         ControlOrder    =   20
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   155
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   220
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   18
+      End
+      Begin CheckBox chk_search_user3
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "User Defined 3"
+         ControlOrder    =   21
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_fields"
+         Italic          =   "False"
+         Left            =   155
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   240
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   125
+         BehaviorIndex   =   19
+      End
    End
 End
 #tag EndWindow
@@ -846,6 +823,13 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events chk_search_hymn_number
+	#tag Event
+		Sub Action()
+		  find.FindHymnNumber = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events chk_search_themes
 	#tag Event
 		Sub Action()
@@ -913,13 +897,6 @@ End
 	#tag Event
 		Sub Action()
 		  find.FindUser3 = Me.Value
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events chk_search_hymn_number
-	#tag Event
-		Sub Action()
-		  find.FindHymnNumber = Me.Value
 		End Sub
 	#tag EndEvent
 #tag EndEvents

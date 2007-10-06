@@ -9,6 +9,7 @@ Begin Window ErrorPopup
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   414
+   ImplicitInstance=   "True"
    LiveResize      =   "True"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -31,7 +32,7 @@ Begin Window ErrorPopup
       Caption         =   "#kErrorClose"
       ControlOrder    =   0
       Default         =   "True"
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -47,7 +48,7 @@ Begin Window ErrorPopup
       TextSize        =   0
       Top             =   366
       Underline       =   ""
-      Visible         =   True
+      Visible         =   "True"
       Width           =   100
       BehaviorIndex   =   0
    End
@@ -57,7 +58,7 @@ Begin Window ErrorPopup
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -77,7 +78,7 @@ Begin Window ErrorPopup
       TextSize        =   0
       Top             =   14
       Underline       =   ""
-      Visible         =   True
+      Visible         =   "True"
       Width           =   689
       BehaviorIndex   =   1
    End
@@ -91,7 +92,7 @@ Begin Window ErrorPopup
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   282
       HelpTag         =   ""
@@ -119,7 +120,7 @@ Begin Window ErrorPopup
       Top             =   41
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   689
       BehaviorIndex   =   2
    End
@@ -129,7 +130,7 @@ Begin Window ErrorPopup
       ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   28
       HelpTag         =   ""
       Index           =   -2147483648
@@ -149,7 +150,7 @@ Begin Window ErrorPopup
       TextSize        =   0
       Top             =   332
       Underline       =   ""
-      Visible         =   True
+      Visible         =   "True"
       Width           =   689
       BehaviorIndex   =   3
    End

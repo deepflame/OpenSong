@@ -9,6 +9,7 @@ Begin Window PresentSettingsWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   438
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -26,13 +27,11 @@ Begin Window PresentSettingsWindow
    Width           =   620
    Begin PushButton btn_ok
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "OK"
       ControlOrder    =   0
       Default         =   "True"
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
@@ -51,17 +50,15 @@ Begin Window PresentSettingsWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   70
-      BehaviorIndex   =   11
+      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       Cancel          =   "True"
       Caption         =   "Cancel"
       ControlOrder    =   1
       Default         =   "False"
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
@@ -80,27 +77,24 @@ Begin Window PresentSettingsWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   37
+      BehaviorIndex   =   1
    End
    Begin TabPanel tab_present_settings
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   2
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Facing          =   0
       Height          =   385
       HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   ""
       Italic          =   "False"
       Left            =   10
       LockBottom      =   "True"
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      PanelCount      =   2
+      Panels          =   ""
       SmallTabs       =   "False"
       TabDefinition   =   "Styles\rOptions"
       TabPanelIndex   =   0
@@ -111,15 +105,13 @@ Begin Window PresentSettingsWindow
       Value           =   1
       Visible         =   "True"
       Width           =   600
-      BehaviorIndex   =   10
+      BehaviorIndex   =   2
       Begin StaticText lbl_style_default_slides
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   3
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
          Height          =   15
          HelpTag         =   ""
@@ -131,7 +123,7 @@ Begin Window PresentSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   1
          Text            =   "Default Slide Style:"
          TextAlign       =   1
@@ -149,10 +141,9 @@ Begin Window PresentSettingsWindow
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
          ControlOrder    =   4
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
+         EraseBackground =   "True"
          Height          =   120
          HelpTag         =   ""
          Index           =   -2147483648
@@ -168,16 +159,14 @@ Begin Window PresentSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   20
+         BehaviorIndex   =   4
       End
       Begin StaticText nte_style_click_to_change_1
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   5
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
          Height          =   13
          HelpTag         =   ""
@@ -189,7 +178,7 @@ Begin Window PresentSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   1
          Text            =   "(click to change)"
          TextAlign       =   1
@@ -200,16 +189,14 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   2
+         BehaviorIndex   =   5
       End
       Begin StaticText lbl_style_scripture_slides
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   6
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
          Height          =   15
          HelpTag         =   ""
@@ -221,7 +208,7 @@ Begin Window PresentSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   1
          Text            =   "Scripture Slide Style:"
          TextAlign       =   1
@@ -232,17 +219,16 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   0
+         BehaviorIndex   =   6
       End
       Begin SStyleCanvas can_style_scripture
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         BalloonHelp     =   ""
          ControlOrder    =   7
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
+         EraseBackground =   "True"
          Height          =   120
          HelpTag         =   ""
          Index           =   -2147483648
@@ -258,16 +244,14 @@ Begin Window PresentSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   19
+         BehaviorIndex   =   7
       End
       Begin StaticText nte_style_click_to_change_2
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          ControlOrder    =   8
          DataField       =   ""
          DataSource      =   ""
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
          Height          =   15
          HelpTag         =   ""
@@ -279,7 +263,7 @@ Begin Window PresentSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         MultiLine       =   "False"
+         Multiline       =   "False"
          TabPanelIndex   =   1
          Text            =   "(click to change)"
          TextAlign       =   1
@@ -290,15 +274,13 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   1
+         BehaviorIndex   =   8
       End
       Begin GroupBox grp_settings_alerts
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Alerts"
          ControlOrder    =   9
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
          Height          =   130
          HelpTag         =   ""
@@ -317,15 +299,13 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   387
-         BehaviorIndex   =   12
+         BehaviorIndex   =   9
          Begin StaticText lbl_alerts_align
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   10
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -337,7 +317,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Align:"
             TextAlign       =   1
@@ -348,17 +328,16 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   90
-            BehaviorIndex   =   13
+            BehaviorIndex   =   10
          End
          Begin SAlignCanvas sal_alerts
             AcceptFocus     =   "False"
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
             ControlOrder    =   11
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   44
             HelpTag         =   ""
             Index           =   -2147483648
@@ -373,16 +352,14 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   44
-            BehaviorIndex   =   14
+            BehaviorIndex   =   11
          End
          Begin StaticText lbl_alerts_font
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   12
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -394,7 +371,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Font:"
             TextAlign       =   1
@@ -405,7 +382,7 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   250
-            BehaviorIndex   =   16
+            BehaviorIndex   =   12
          End
          Begin SFontCanvas can_alerts_font
             AcceptFocus     =   "False"
@@ -413,10 +390,9 @@ Begin Window PresentSettingsWindow
             AdvancedOptions =   "True"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
             ControlOrder    =   13
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   80
             HelpTag         =   ""
             Index           =   -2147483648
@@ -431,16 +407,14 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   250
-            BehaviorIndex   =   15
+            BehaviorIndex   =   13
          End
       End
       Begin GroupBox grp_option_logo
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Logo"
          ControlOrder    =   14
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
          Height          =   302
          HelpTag         =   ""
@@ -459,16 +433,16 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   142
-         BehaviorIndex   =   38
+         BehaviorIndex   =   14
          Begin SImageCanvas can_logo
             AcceptFocus     =   "False"
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
+            bgColor         =   0
             ControlOrder    =   15
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   60
             HelpTag         =   ""
             Index           =   -2147483648
@@ -483,16 +457,14 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   80
-            BehaviorIndex   =   39
+            BehaviorIndex   =   15
          End
          Begin StaticText nte_logo_click_to_change_1
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   16
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -504,7 +476,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "True"
+            Multiline       =   "True"
             TabPanelIndex   =   1
             Text            =   "(click to change)"
             TextAlign       =   1
@@ -515,16 +487,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   137
-            BehaviorIndex   =   40
+            BehaviorIndex   =   16
          End
          Begin StaticText nte_logo_right_click_to_clear_1
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   17
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -536,7 +506,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "True"
+            Multiline       =   "True"
             TabPanelIndex   =   1
             Text            =   "(right-click to clear)"
             TextAlign       =   1
@@ -547,16 +517,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   137
-            BehaviorIndex   =   41
+            BehaviorIndex   =   17
          End
          Begin StaticText lbl_logo_mask
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   18
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -568,7 +536,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   1
             Text            =   "Mask:"
             TextAlign       =   1
@@ -579,17 +547,17 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   42
+            BehaviorIndex   =   18
          End
          Begin SImageCanvas can_logo_mask
             AcceptFocus     =   "False"
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
+            bgColor         =   0
             ControlOrder    =   19
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   60
             HelpTag         =   ""
             Index           =   -2147483648
@@ -604,16 +572,14 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   80
-            BehaviorIndex   =   43
+            BehaviorIndex   =   19
          End
          Begin StaticText nte_logo_click_to_change_2
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   20
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -625,7 +591,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "True"
+            Multiline       =   "True"
             TabPanelIndex   =   1
             Text            =   "(click to change)"
             TextAlign       =   1
@@ -636,16 +602,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   44
+            BehaviorIndex   =   20
          End
          Begin StaticText nte_logo_right_click_to_clear_2
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   21
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -657,7 +621,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "True"
+            Multiline       =   "True"
             TabPanelIndex   =   1
             Text            =   "(right-click to clear)"
             TextAlign       =   1
@@ -668,16 +632,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   45
+            BehaviorIndex   =   21
          End
       End
       Begin GroupBox grp_settings_style
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Style"
          ControlOrder    =   22
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
          Height          =   345
          HelpTag         =   ""
@@ -696,16 +658,14 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   392
-         BehaviorIndex   =   21
+         BehaviorIndex   =   22
          Begin CheckBox chk_style_use_transitions
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             Caption         =   "Use Transitions*"
             ControlOrder    =   23
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -725,16 +685,14 @@ Begin Window PresentSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   22
+            BehaviorIndex   =   23
          End
          Begin StaticText lbl_style_frames
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   24
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -746,7 +704,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Frames"
             TextAlign       =   0
@@ -757,13 +715,11 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   151
-            BehaviorIndex   =   31
+            BehaviorIndex   =   24
          End
          Begin Slider sld_style_frames
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             ControlOrder    =   25
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   16
             HelpTag         =   ""
@@ -784,20 +740,18 @@ Begin Window PresentSettingsWindow
             Value           =   5
             Visible         =   "True"
             Width           =   112
-            BehaviorIndex   =   32
+            BehaviorIndex   =   25
          End
          Begin EditField edt_style_frames
             AcceptTabs      =   "False"
             Alignment       =   0
             AutoDeactivate  =   "True"
             BackColor       =   16777215
-            BalloonHelp     =   ""
             Bold            =   "False"
             Border          =   "True"
             ControlOrder    =   26
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Format          =   ""
             Height          =   20
@@ -812,12 +766,11 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Mask            =   "9#"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
-            ScrollBar       =   "True"
-            ScrollBarHorizontal=   "False"
-            ScrollBarVertical=   "True"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
             Styled          =   "False"
             TabPanelIndex   =   2
             Text            =   ""
@@ -829,16 +782,14 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   27
-            BehaviorIndex   =   35
+            BehaviorIndex   =   26
          End
          Begin StaticText lbl_style_time
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   27
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -850,7 +801,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Time:"
             TextAlign       =   0
@@ -861,13 +812,11 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   151
-            BehaviorIndex   =   33
+            BehaviorIndex   =   27
          End
          Begin Slider sld_style_time
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             ControlOrder    =   28
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   16
             HelpTag         =   ""
@@ -888,20 +837,18 @@ Begin Window PresentSettingsWindow
             Value           =   100
             Visible         =   "True"
             Width           =   112
-            BehaviorIndex   =   52
+            BehaviorIndex   =   28
          End
          Begin EditField edt_style_time
             AcceptTabs      =   "False"
             Alignment       =   0
             AutoDeactivate  =   "True"
             BackColor       =   16777215
-            BalloonHelp     =   ""
             Bold            =   "False"
             Border          =   "True"
             ControlOrder    =   29
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Format          =   ""
             Height          =   20
@@ -916,12 +863,11 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Mask            =   "99##"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
-            ScrollBar       =   "True"
-            ScrollBarHorizontal=   "False"
-            ScrollBarVertical=   "True"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
             Styled          =   "False"
             TabPanelIndex   =   2
             Text            =   ""
@@ -933,16 +879,14 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   38
-            BehaviorIndex   =   36
+            BehaviorIndex   =   29
          End
          Begin StaticText lbl_style_border_thickness
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   30
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -954,7 +898,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Border Thickness:"
             TextAlign       =   0
@@ -965,20 +909,18 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   23
+            BehaviorIndex   =   30
          End
          Begin EditField edt_style_border_thickness
             AcceptTabs      =   "False"
             Alignment       =   0
             AutoDeactivate  =   "True"
             BackColor       =   16777215
-            BalloonHelp     =   ""
             Bold            =   "False"
             Border          =   "True"
             ControlOrder    =   31
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Format          =   ""
             Height          =   20
@@ -993,12 +935,11 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Mask            =   "999#"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
-            ScrollBar       =   "True"
-            ScrollBarHorizontal=   "False"
-            ScrollBarVertical=   "True"
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
             Styled          =   "False"
             TabPanelIndex   =   2
             Text            =   ""
@@ -1010,16 +951,14 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   50
-            BehaviorIndex   =   24
+            BehaviorIndex   =   31
          End
          Begin StaticText lbl_style_initial_mode
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   32
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -1031,7 +970,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Initial Mode:"
             TextAlign       =   0
@@ -1042,16 +981,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   25
+            BehaviorIndex   =   32
          End
          Begin PopupMenu pop_style_initial_mode
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   33
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -1072,16 +1009,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   26
+            BehaviorIndex   =   33
          End
          Begin StaticText lbl_style_mouse_cursor
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   34
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -1093,7 +1028,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Mouse Cursor:"
             TextAlign       =   0
@@ -1104,16 +1039,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   136
-            BehaviorIndex   =   29
+            BehaviorIndex   =   34
          End
          Begin PopupMenu pop_style_mouse_cursor
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   35
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -1134,17 +1067,15 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   136
-            BehaviorIndex   =   30
+            BehaviorIndex   =   35
          End
          Begin CheckBox chk_style_blanks
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             Caption         =   "Insert Blank Slides"
             ControlOrder    =   36
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -1164,16 +1095,14 @@ Begin Window PresentSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   176
-            BehaviorIndex   =   28
+            BehaviorIndex   =   36
          End
          Begin StaticText txt_style_blanks_between
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   37
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -1185,7 +1114,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Between Set Items"
             TextAlign       =   0
@@ -1196,17 +1125,16 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   161
-            BehaviorIndex   =   27
+            BehaviorIndex   =   37
          End
          Begin Canvas nil_blanks
             AcceptFocus     =   "False"
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            BalloonHelp     =   ""
             ControlOrder    =   38
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
+            EraseBackground =   "True"
             Height          =   76
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1221,15 +1149,13 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "False"
             Visible         =   "True"
             Width           =   177
-            BehaviorIndex   =   46
+            BehaviorIndex   =   38
             Begin StaticText lbl_style_blank_style
                AutoDeactivate  =   "True"
-               BalloonHelp     =   ""
                Bold            =   "False"
                ControlOrder    =   39
                DataField       =   ""
                DataSource      =   ""
-               DisabledBalloonHelp=   ""
                Enabled         =   "True"
                Height          =   20
                HelpTag         =   ""
@@ -1241,7 +1167,7 @@ Begin Window PresentSettingsWindow
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
-               MultiLine       =   "False"
+               Multiline       =   "False"
                TabPanelIndex   =   2
                Text            =   "Blanks take style of:"
                TextAlign       =   0
@@ -1252,15 +1178,13 @@ Begin Window PresentSettingsWindow
                Underline       =   "False"
                Visible         =   "True"
                Width           =   145
-               BehaviorIndex   =   47
+               BehaviorIndex   =   39
             End
             Begin RadioButton rad_style_blank_prev
                AutoDeactivate  =   "True"
-               BalloonHelp     =   ""
                Bold            =   "False"
                Caption         =   "Previous slide"
                ControlOrder    =   40
-               DisabledBalloonHelp=   ""
                Enabled         =   "True"
                Height          =   20
                HelpTag         =   ""
@@ -1280,15 +1204,13 @@ Begin Window PresentSettingsWindow
                Value           =   "False"
                Visible         =   "True"
                Width           =   170
-               BehaviorIndex   =   48
+               BehaviorIndex   =   40
             End
             Begin RadioButton rad_style_blank_next
                AutoDeactivate  =   "True"
-               BalloonHelp     =   ""
                Bold            =   "False"
                Caption         =   "Next slide"
                ControlOrder    =   41
-               DisabledBalloonHelp=   ""
                Enabled         =   "True"
                Height          =   20
                HelpTag         =   ""
@@ -1308,17 +1230,15 @@ Begin Window PresentSettingsWindow
                Value           =   "False"
                Visible         =   "True"
                Width           =   170
-               BehaviorIndex   =   49
+               BehaviorIndex   =   41
             End
          End
          Begin StaticText txt_style_transition_note
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   42
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   123
             HelpTag         =   ""
@@ -1330,7 +1250,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "True"
+            Multiline       =   "True"
             TabPanelIndex   =   2
             Text            =   "*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."
             TextAlign       =   0
@@ -1341,16 +1261,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   204
-            BehaviorIndex   =   34
+            BehaviorIndex   =   42
          End
       End
       Begin GroupBox grp_settings_monitor
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Monitor Settings"
          ControlOrder    =   43
-         DisabledBalloonHelp=   ""
          Enabled         =   "True"
          Height          =   161
          HelpTag         =   ""
@@ -1369,15 +1287,13 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   150
-         BehaviorIndex   =   9
+         BehaviorIndex   =   43
          Begin StaticText lbl_monitor_control
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   44
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -1389,7 +1305,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Control Monitor:"
             TextAlign       =   0
@@ -1400,16 +1316,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   7
+            BehaviorIndex   =   44
          End
          Begin PopupMenu pop_monitor_control
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   45
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -1430,16 +1344,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   40
-            BehaviorIndex   =   5
+            BehaviorIndex   =   45
          End
          Begin StaticText lbl_monitor_presentation
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   46
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -1451,7 +1363,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Presentation Monitor:"
             TextAlign       =   0
@@ -1462,16 +1374,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   6
+            BehaviorIndex   =   46
          End
          Begin PopupMenu pop_monitor_presentation
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   47
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -1492,16 +1402,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   40
-            BehaviorIndex   =   4
+            BehaviorIndex   =   47
          End
          Begin StaticText nte_monitor_detected
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   48
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -1513,7 +1421,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "(1 monitor(s) detected.)"
             TextAlign       =   1
@@ -1524,16 +1432,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   8
+            BehaviorIndex   =   48
          End
          Begin StaticText lbl_monitor_default_mode
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   49
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   15
             HelpTag         =   ""
@@ -1545,7 +1451,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "Default Mode:"
             TextAlign       =   0
@@ -1556,16 +1462,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   18
+            BehaviorIndex   =   49
          End
          Begin PopupMenu pop_monitor_mode
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             ControlOrder    =   50
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -1586,73 +1490,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   127
-            BehaviorIndex   =   17
-         End
-      End
-      Begin GroupBox grp_settings_misc
-         AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
-         Bold            =   "False"
-         Caption         =   "Misc"
-         ControlOrder    =   51
-         DisabledBalloonHelp=   ""
-         Enabled         =   "True"
-         Height          =   63
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "tab_present_settings"
-         Italic          =   "False"
-         Left            =   432
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         TabPanelIndex   =   2
-         TextFont        =   "Arial"
-         TextSize        =   11
-         Top             =   323
-         Underline       =   "False"
-         Visible         =   "True"
-         Width           =   150
-         BehaviorIndex   =   50
-         Begin CheckBox chk_style_exit_prompt
-            AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
-            Bold            =   "False"
-            Caption         =   "Prompt when exiting"
-            ControlOrder    =   52
-            DataField       =   ""
-            DataSource      =   ""
-            DisabledBalloonHelp=   ""
-            Enabled         =   "True"
-            Height          =   26
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_misc"
-            Italic          =   "False"
-            Left            =   442
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            TabPanelIndex   =   2
-            TextFont        =   "Arial"
-            TextSize        =   11
-            Top             =   348
-            Underline       =   "False"
-            Value           =   "False"
-            Visible         =   "True"
-            Width           =   135
-            BehaviorIndex   =   51
+            BehaviorIndex   =   50
          End
       End
       Begin GroupBox grp_settings_audio
          AutoDeactivate  =   "True"
-         BalloonHelp     =   ""
          Bold            =   "False"
          Caption         =   "Audio"
-         ControlOrder    =   53
-         DisabledBalloonHelp=   ""
+         ControlOrder    =   51
          Enabled         =   "True"
          Height          =   75
          HelpTag         =   ""
@@ -1674,12 +1519,10 @@ Begin Window PresentSettingsWindow
          BehaviorIndex   =   53
          Begin StaticText lbl_audio_file_to_play
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
-            ControlOrder    =   54
+            ControlOrder    =   52
             DataField       =   ""
             DataSource      =   ""
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   20
             HelpTag         =   ""
@@ -1691,7 +1534,7 @@ Begin Window PresentSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
-            MultiLine       =   "False"
+            Multiline       =   "False"
             TabPanelIndex   =   2
             Text            =   "File to Play:"
             TextAlign       =   0
@@ -1706,13 +1549,11 @@ Begin Window PresentSettingsWindow
          End
          Begin PushButton btn_audio_browse
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             Cancel          =   "False"
             Caption         =   "Browse"
-            ControlOrder    =   55
+            ControlOrder    =   53
             Default         =   "False"
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   22
             HelpTag         =   ""
@@ -1735,13 +1576,11 @@ Begin Window PresentSettingsWindow
          End
          Begin PushButton btn_audio_stop
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             Cancel          =   "False"
             Caption         =   "Stop"
-            ControlOrder    =   56
+            ControlOrder    =   54
             Default         =   "False"
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   22
             HelpTag         =   ""
@@ -1764,13 +1603,11 @@ Begin Window PresentSettingsWindow
          End
          Begin PushButton btn_audio_play
             AutoDeactivate  =   "True"
-            BalloonHelp     =   ""
             Bold            =   "False"
             Cancel          =   "False"
             Caption         =   "Play"
-            ControlOrder    =   57
+            ControlOrder    =   56
             Default         =   "False"
-            DisabledBalloonHelp=   ""
             Enabled         =   "True"
             Height          =   22
             HelpTag         =   ""
@@ -1790,6 +1627,59 @@ Begin Window PresentSettingsWindow
             Visible         =   "True"
             Width           =   40
             BehaviorIndex   =   57
+         End
+      End
+      Begin GroupBox grp_settings_misc
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Misc"
+         ControlOrder    =   55
+         Enabled         =   "True"
+         Height          =   63
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   "False"
+         Left            =   432
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   2
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   323
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   150
+         BehaviorIndex   =   51
+         Begin CheckBox chk_style_exit_prompt
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            Caption         =   "Prompt when exiting"
+            ControlOrder    =   57
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   "True"
+            Height          =   26
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_misc"
+            Italic          =   "False"
+            Left            =   442
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            TabPanelIndex   =   2
+            TextFont        =   "Arial"
+            TextSize        =   11
+            Top             =   348
+            Underline       =   "False"
+            Value           =   "False"
+            Visible         =   "True"
+            Width           =   135
+            BehaviorIndex   =   52
          End
       End
    End
@@ -1834,7 +1724,7 @@ End
 		  Dim file As String
 		  file = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@default_audio")
 		  CurrAudioFile = GetFolderItem(file)
-		  If CurrAudioFile <> Nil Then 
+		  If CurrAudioFile <> Nil Then
 		    CurrAudio = CurrAudioFile.OpenAsSound
 		  end if
 		  if CurrAudio = Nil then
@@ -2266,7 +2156,7 @@ End
 		  'FilterIndex = NewMemoryBlock(4)
 		  'FileName = OpenFileDialog(Me.Handle, App.T.Translate("open_titles/audio"), Globals.Filters, FilterIndex)
 		  'CurrAudioFile = GetFolderItem(FileName.CString(0))
-		  'If CurrAudioFile = Nil Then 
+		  'If CurrAudioFile = Nil Then
 		  'CurrAudio = Nil
 		  'Return
 		  'end if

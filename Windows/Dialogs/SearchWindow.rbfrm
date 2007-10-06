@@ -9,6 +9,7 @@ Begin Window SearchWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   409
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1046
    MaxHeight       =   32000
@@ -24,6 +25,60 @@ Begin Window SearchWindow
    Title           =   "Search"
    Visible         =   "True"
    Width           =   477
+   Begin PushButton btn_search_ok
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "False"
+      Caption         =   "Ok"
+      ControlOrder    =   0
+      Default         =   "False"
+      Enabled         =   "True"
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   311
+      LockBottom      =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   367
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   67
+      BehaviorIndex   =   3
+   End
+   Begin PushButton btn_search_cancel
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "True"
+      Caption         =   "Cancel"
+      ControlOrder    =   1
+      Default         =   "False"
+      Enabled         =   "True"
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   390
+      LockBottom      =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   367
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   67
+      BehaviorIndex   =   4
+   End
    Begin SEditField edt_search
       AcceptTabs      =   "False"
       Alignment       =   0
@@ -31,10 +86,10 @@ Begin Window SearchWindow
       BackColor       =   16777215
       Bold            =   "False"
       Border          =   "True"
-      ControlOrder    =   0
+      ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
@@ -62,7 +117,7 @@ Begin Window SearchWindow
       Top             =   114
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   284
       BehaviorIndex   =   0
    End
@@ -71,9 +126,9 @@ Begin Window SearchWindow
       Bold            =   "False"
       Cancel          =   "False"
       Caption         =   "Search"
-      ControlOrder    =   1
+      ControlOrder    =   3
       Default         =   "True"
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -89,7 +144,7 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   114
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   66
       BehaviorIndex   =   1
    End
@@ -100,11 +155,11 @@ Begin Window SearchWindow
       ColumnCount     =   2
       ColumnsResizable=   "False"
       ColumnWidths    =   "100, 350%"
-      ControlOrder    =   2
+      ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -133,72 +188,18 @@ Begin Window SearchWindow
       Top             =   165
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   449
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
       BehaviorIndex   =   2
-   End
-   Begin PushButton btn_search_ok
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "Ok"
-      ControlOrder    =   3
-      Default         =   "False"
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   311
-      LockBottom      =   "True"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   367
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   67
-      BehaviorIndex   =   3
-   End
-   Begin PushButton btn_search_cancel
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Cancel          =   "True"
-      Caption         =   "Cancel"
-      ControlOrder    =   4
-      Default         =   "False"
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   390
-      LockBottom      =   "True"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   367
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   67
-      BehaviorIndex   =   4
    End
    Begin GroupBox grp_search_match
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Match:"
       ControlOrder    =   5
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   83
       HelpTag         =   ""
       Index           =   -2147483648
@@ -214,69 +215,146 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   14
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   166
       BehaviorIndex   =   5
+      Begin RadioButton rad_match_exact
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Exact word"
+         ControlOrder    =   6
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_match"
+         Italic          =   "False"
+         Left            =   85
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "True"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   36
+         Underline       =   "False"
+         Value           =   "True"
+         Visible         =   "True"
+         Width           =   139
+         BehaviorIndex   =   6
+      End
+      Begin RadioButton rad_match_begin
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Begins with"
+         ControlOrder    =   7
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_match"
+         Italic          =   "False"
+         Left            =   85
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "True"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   63
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   139
+         BehaviorIndex   =   7
+      End
    End
-   Begin RadioButton rad_match_exact
+   Begin GroupBox grp_search_words
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      Caption         =   "Exact word"
-      ControlOrder    =   6
-      Enabled         =   True
-      Height          =   20
+      Caption         =   "Verse must have:"
+      ControlOrder    =   8
+      Enabled         =   "True"
+      Height          =   83
       HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   "grp_search_match"
+      InitialParent   =   ""
       Italic          =   "False"
-      Left            =   85
+      Left            =   260
       LockBottom      =   "False"
-      LockLeft        =   "False"
+      LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   36
+      Top             =   14
       Underline       =   "False"
-      Value           =   "True"
-      Visible         =   True
-      Width           =   139
-      BehaviorIndex   =   6
-   End
-   Begin RadioButton rad_match_begin
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Begins with"
-      ControlOrder    =   7
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_match"
-      Italic          =   "False"
-      Left            =   85
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "True"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   63
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   139
-      BehaviorIndex   =   7
+      Visible         =   "True"
+      Width           =   176
+      BehaviorIndex   =   9
+      Begin RadioButton rad_words_any
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Any word"
+         ControlOrder    =   9
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_words"
+         Italic          =   "False"
+         Left            =   276
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   36
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   105
+         BehaviorIndex   =   10
+      End
+      Begin RadioButton rad_words_all
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "All words"
+         ControlOrder    =   10
+         Enabled         =   "True"
+         Height          =   19
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_search_words"
+         Italic          =   "False"
+         Left            =   276
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   64
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   105
+         BehaviorIndex   =   11
+      End
    End
    Begin StaticText lbl_search_example
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   8
+      ControlOrder    =   11
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -296,86 +374,9 @@ Begin Window SearchWindow
       TextSize        =   10
       Top             =   144
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   373
       BehaviorIndex   =   8
-   End
-   Begin GroupBox grp_search_words
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Verse must have:"
-      ControlOrder    =   9
-      Enabled         =   True
-      Height          =   83
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   260
-      LockBottom      =   "False"
-      LockLeft        =   "True"
-      LockRight       =   "False"
-      LockTop         =   "True"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   14
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   176
-      BehaviorIndex   =   9
-   End
-   Begin RadioButton rad_words_any
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "Any word"
-      ControlOrder    =   10
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_words"
-      Italic          =   "False"
-      Left            =   276
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   36
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   105
-      BehaviorIndex   =   10
-   End
-   Begin RadioButton rad_words_all
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Caption         =   "All words"
-      ControlOrder    =   11
-      Enabled         =   True
-      Height          =   19
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_search_words"
-      Italic          =   "False"
-      Left            =   276
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   64
-      Underline       =   "False"
-      Value           =   "False"
-      Visible         =   True
-      Width           =   105
-      BehaviorIndex   =   11
    End
 End
 #tag EndWindow
@@ -702,20 +703,35 @@ End
 
 #tag Bindings
 	#tag BeginBinding
-		SourceItem = 2
-		DestinationItem = 3
+		SourceItem = lst_result
+		DestinationItem = btn_search_ok
 		ItemType = enablingBinder
 		ItemDescription = Enable btn_search_ok when lst_result has a selection
 		SourceBindData = getSelectionProvider
 		SourceData = 1
 	#tag EndBinding
 	#tag BeginBinding
-		SourceItem = 0
-		DestinationItem = 1
+		SourceItem = edt_search
+		DestinationItem = btn_search_search
 		ItemType = bindEditFieldAndPushButton
 		ItemDescription = Enable btn_search_search when text is in edt_search
 	#tag EndBinding
 #tag EndBindings
+#tag Events btn_search_ok
+	#tag Event
+		Sub Action()
+		  SelectResult
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_search_cancel
+	#tag Event
+		Sub Action()
+		  
+		  close
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events edt_search
 	#tag Event
 		Sub GotFocus()
@@ -752,21 +768,6 @@ End
 	#tag Event
 		Sub DoubleClick()
 		  SelectResult
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_search_ok
-	#tag Event
-		Sub Action()
-		  SelectResult
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_search_cancel
-	#tag Event
-		Sub Action()
-		  
-		  close
 		End Sub
 	#tag EndEvent
 #tag EndEvents

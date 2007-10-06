@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <language name="Nederlands" author="Gert Vrieling" version="1.0">
 
   <load_settings>
@@ -19,7 +19,7 @@
       <bible>Ophalen van de standaard Bijbel</bible>
       <songs_cache>Caching liederen</songs_cache>
       <folders>Laden liederen mappen</folders>
-      <songs>Laden liedjes</songs>
+      <songs>Laden liederen</songs>
       <sets>Laden sets</sets>
   </load_data>
 
@@ -117,7 +117,7 @@
     <user3 caption="Door gebruiker gedefinieerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
-  <sets_mode caption="Projecten">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
+  <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
     <sets caption="Projecten">Selecteer een projectuit de lijst om te kunnen aanpassen.
       <add>Voegt een nieuw project toe aan OpenSong.</add>
     </sets>
@@ -136,6 +136,7 @@
         <no_songs>Er zitten geen liederen in het project.</no_songs>
       </print_songs>
       <print_order caption="Lijst">Afdrukken in lijst vorm van dit project.</print_order>
+    <export caption="Exporteren">Exporteren van dit project (dienst) naar een andere map.</export>
     </current_set>
     <new_item caption="Nieuw Item">
       <add_song caption="Lied">Voegt een lied toe aan het huidige project. De totale lijst liederen die beschikbaar zijn wordt hier weergegeven om te kiezen.</add_song>
@@ -149,7 +150,7 @@
       <move_up caption="Naar boven">Verplaatst het huidige item naar boven (voren) in het project.</move_up>
       <move_down caption="Naar beneden">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
       <remove caption="Verwijderen">Verwijdert het huidige item van het project.</remove>
-      <copy caption="Kopi�ren">Maakt een kopie van het huidige item.</copy>
+      <copy caption="Kopieren">Maakt een kopie van het huidige item.</copy>
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
     </current_item>
     <items caption="Project Items">Lijst met items in het huidige project. Klik op een aangepaste dia om die te kunnen wijzigen of dubbelklik een lied om te wijzigen.
@@ -160,6 +161,15 @@
       <revert caption="(stijl)">-- Terug naar vorige Stijl --</revert>
     </items>
     <untitled caption="Geen titel"/>
+
+    <errors>
+      <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
+    </errors>
+    <messages>
+      <export_complete>&quot;%1&quot; geëxporteerd naar
+%2
+      </export_complete>
+    </messages>
   </sets_mode>
 
 
@@ -288,13 +298,14 @@
   </main_menu>
 
   <general_settings title="Algemene instellingen">
-    <general caption="Algemeen">
+<!--  V1.2 Changes-->
+    <general caption="Algemeen" head1="Basic" head2="Special">
       <ccli caption="CCLI Licentie #"/>
       <version_check caption="Controleer voor nieuwere versies bij starten."/>
       <language caption="Taal"/>
       <startmode caption="Start Venster">
-	<song caption="Liederen"/>
-	<set  caption="Projecten"/>
+	      <songs caption="Liederen"/>
+	      <sets  caption="Projecten"/>
       </startmode>
     </general>
     <proxy caption="Proxy">
@@ -314,15 +325,25 @@
       <fixed_width caption="Vaste breedte tekst"/>
       <buttons caption="Knoppen"/>
       <large_headings caption="Grote koppen"/>
-    </fonts>
+      <newpaint caption="Gebruik nieuwe stijl"/>
+     </fonts>
     <documents_folder caption="Documenten map">
       <warning caption="Wees voorzichtig met het gebruik; forceert een herstart van het programma."/>
       <default caption="Standaard"/>
       <custom caption="Aangepast"/>
       <message>OpenSong wordt afgesloten. Klik OK en start OpenSong opnieuw. Indien nodig verplaats de OpenSong documenten eerst naar de nieuwe locatie.</message>
       <change caption="Wijzig"/>
-    <newpaint caption="Gebruik een nieuwe visuele stijl"/>
+      <oldfolderdb caption="gebruik oude (pre-V1.1) file cache"/>
     </documents_folder>
+<!--    V1.2 Changes-->
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
+
   </general_settings>
 
   <print_settings title="Afdruk instellingen">
@@ -467,7 +488,7 @@ T: Tag</keys>
 
 De presentaties worden bediend met de volgende toetsen:
 
-Esc Toets: 			Be�indigen presentatie
+Esc Toets: 			Beeindigen presentatie
 Pijltje naar boven of,
 8 op Nummerieke blok of, 
 Backspace: 			Ga naar de vorige dia.
@@ -479,7 +500,7 @@ Pijltje naar links of,
 Pijltje naar rechts of, 
 6 op Nummerieke blok: 	Ga naar volgende item in presentatie.
 Q toets: 			Voeg een nieuw lied in.
-A toets: 			Voeg een neiuwe mededeling in.
+A toets: 			Voeg een nieuwe mededeling in.
 S toets:			Voeg een nieuwe Bijbeltekst in.
 W toets: 			Verlopen / vervagen naar wit scherm.
 K toets: 			Verlopen / vervagen naar zwart scherm.
@@ -643,7 +664,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
      <create_list caption="Lijst %1... wordt gemaakt"/>
      <uncategorized caption="Anders"/>
-     <setlist caption="Volgorde van Service">
+     <setlist caption="Liturgie">
 
       <date caption="Geprint "/>
 
@@ -692,7 +713,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <align caption="Uitlijning"/>
       <subtitles caption="Subtitel van het lied"/>
       <highlight_chorus caption="Laten oplichten van de refreintekst"/>
-      <descriptive_subtitle_info caption="Beschrijving subtitel"/>
+      <descriptive_subtitle caption="Beschrijving subtitel"/>
     </fonts_and_alignment>
     <background caption="Achtergrond">
       <color caption="Kleur"/>
@@ -905,7 +926,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <save caption="Opslaan" message="%1 is niet opgeslagen."/>
     <nosave caption="Niet opslaan"/>
     <cut caption="Knippen"/>
-    <copy caption="Kopi�ren"/>
+    <copy caption="Kopieren"/>
     <paste caption="Plakken"/>
   </shared>
 

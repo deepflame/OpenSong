@@ -290,13 +290,14 @@
   </main_menu>
 
   <general_settings title="Allmänna inställningar">
-    <general caption="Allmänt">
+<!--  V1.2 Changes-->
+    <general caption="Allmänt" head1="Basic" head2="Special">
       <ccli caption="CCLI Licensnummer"/>
       <version_check caption="Sök efter uppdateringar vid uppstart"/>
       <language caption="Språk"/>
       <startmode caption="Visa vid start">
-	<song caption="Sånger"/>
-	<set  caption="Presentationer"/>
+	      <songs caption="Sånger"/>
+	      <sets  caption="Presentationer"/>
       </startmode>
     </general>
     <proxy caption="Proxy">
@@ -316,6 +317,7 @@
       <fixed_width caption="Samma-bredd-text"/>
       <buttons caption="Knappar"/>
       <large_headings caption="Stora Rubriker"/>
+      <newpaint caption="Använd nya utseendeinställningar"/>
     </fonts>
     <documents_folder caption="Dokumentmapp">
       <warning caption="Använd med försiktighet; 'Ändra' stänger ner OpenSong"/>
@@ -325,7 +327,14 @@
       <changed>Du har valt en egen dokumentmapp, men glömde att klicka på 'Ändra'. Vill du använda den nya mappen?</changed>
       <change caption="Ändra"/>
     </documents_folder>
-    <newpaint caption="Använd nya utseendeinställningar"/>
+<!--    V1.2 Changes-->
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
   </general_settings>
 
   <print_settings title="Utskriftsinställningar">
@@ -685,7 +694,7 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
       <align caption="Textposition"/>
       <subtitles caption="Visa sånginfo"/>
       <highlight_chorus caption="Markera text i refräng"/>
-      <descriptive_subtitle_info caption="Visa sånginfo med rubrik"/>
+      <descriptive_subtitle caption="Visa sånginfo med rubrik"/>
    </fonts_and_alignment>
       <background caption="Bakgrund">
       <color caption="Färg"/>

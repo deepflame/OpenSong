@@ -262,13 +262,14 @@
   </main_menu>
 
   <general_settings title="Configuration générale">
-    <general caption="General">
+<!--  V1.2 Changes-->
+    <general caption="General" head1="Basic" head2="Special">
       <ccli caption="N° de licence CCLI"/>
       <version_check caption="Vérifier si une nouvelle version est disponible au démarrage"/>
       <language caption="Langue"/>
       <startmode caption="Fenêtre initiale">
-	<song caption="Chants"/>
-	<set  caption="Listes"/>
+      	<songs caption="Chants"/>
+	      <sets  caption="Listes"/>
       </startmode>
     </general>
     <proxy caption="Proxy">
@@ -288,6 +289,7 @@
       <fixed_width caption="Champs de texte à taille fixe"/>
       <buttons caption="Boutons"/>
       <large_headings caption="Grands titres"/>
+      <newpaint caption="Utiliser un nouveau style visuel"/>
     </fonts>
     <documents_folder caption="Répertoire des documents">
       <warning caption="Ne pas utiliser sans précaution. Redémarrage nécessaire."/>
@@ -296,7 +298,15 @@
       <message>Fermeture d'OpenSong. Cliquez sur OK et redémarrez OpenSong SVP. Vous pouvez copier vos anciens documents OpenSong vers leur nouvel emplacement avant le redémarrage.</message>
       <change caption="Modifier"/>
     </documents_folder>
-    <newpaint caption="Utiliser un nouveau style visuel"/>
+<!--    V1.2 Changes-->
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
+
   </general_settings>
 
   <print_settings title="Paramètres d'impression">
@@ -392,7 +402,7 @@
 
     <misc caption="Divers">
       <exit_prompt caption="Confirmer avant de quitter"/>
-      <descriptive_subtitle_info caption="Info de sous-titre"/>
+      <descriptive_subtitle caption="Info de sous-titre"/>
    </misc>
   </presentation_settings>
 

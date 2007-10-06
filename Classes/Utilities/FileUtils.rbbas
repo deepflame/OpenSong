@@ -91,6 +91,19 @@ Protected Module FileUtils
 		    Else
 		      f.CreateAsFolder
 		      SetLastError(f)
+		      #if TargetLinux
+		        //
+		        // Linux has been found to return ENOENT even if CreateAsFolder
+		        // is successful. Trap this and do the right thing.
+		        //
+		        If (f.LastErrorCode <> 0) And f.Exists And f.Directory And f.IsWriteable Then
+		          App.DebugWriter.Write "FileUtils.CreateFolder: Got an error after successfully creating " +_
+		          f.URLPath + ", code was " + CStr(f.LastErrorCode), 1
+		          LastError = ""
+		          Return True
+		        End If
+		      #endif
+      
 		      Return f.LastErrorCode = 0
 		    End If
 		  End If

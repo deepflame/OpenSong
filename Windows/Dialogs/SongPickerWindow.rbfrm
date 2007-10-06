@@ -9,6 +9,7 @@ Begin Window SongPickerWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   486
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1046
    MaxHeight       =   32000
@@ -70,14 +71,156 @@ Begin Window SongPickerWindow
       _ScrollWidth    =   -1
       BehaviorIndex   =   0
    End
-   Begin EditField edt_quick_lookup
+   Begin PushButton btn_add
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "False"
+      Caption         =   "Add"
+      ControlOrder    =   1
+      Default         =   "False"
+      Enabled         =   "False"
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   238
+      LockBottom      =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   452
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   69
+      BehaviorIndex   =   1
+   End
+   Begin PushButton btn_done
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "True"
+      Caption         =   "Done"
+      ControlOrder    =   2
+      Default         =   "False"
+      Enabled         =   "True"
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   319
+      LockBottom      =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   451
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   69
+      BehaviorIndex   =   2
+   End
+   Begin StaticText lbl_select_folder
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      ControlOrder    =   3
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   "True"
+      Height          =   14
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   14
+      LockBottom      =   "False"
+      LockLeft        =   "True"
+      LockRight       =   "False"
+      LockTop         =   "False"
+      Multiline       =   "False"
+      TabPanelIndex   =   0
+      Text            =   "Select Folder:"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "System"
+      TextSize        =   12
+      Top             =   283
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   100
+      BehaviorIndex   =   3
+   End
+   Begin PopupMenu pop_select_folder
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      ControlOrder    =   4
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   "True"
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      InitialValue    =   ""
+      Italic          =   "False"
+      Left            =   10
+      ListIndex       =   0
+      LockBottom      =   "False"
+      LockLeft        =   "True"
+      LockRight       =   "False"
+      LockTop         =   "False"
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   12
+      Top             =   302
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   206
+      BehaviorIndex   =   4
+   End
+   Begin StaticText lbl_quick_lookup
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      ControlOrder    =   5
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   "True"
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   228
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "False"
+      LockTop         =   "False"
+      Multiline       =   "False"
+      TabPanelIndex   =   0
+      Text            =   "Quick Lookup:"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "System"
+      TextSize        =   12
+      Top             =   280
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   100
+      BehaviorIndex   =   9
+   End
+   Begin SEditField edt_quick_lookup
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
       BackColor       =   16777215
       Bold            =   "False"
       Border          =   "True"
-      ControlOrder    =   1
+      ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   "True"
@@ -110,165 +253,12 @@ Begin Window SongPickerWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   179
-      BehaviorIndex   =   1
-   End
-   Begin PushButton btn_add
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "Add"
-      ControlOrder    =   2
-      Default         =   "False"
-      Enabled         =   "False"
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   238
-      LockBottom      =   "True"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   452
-      Underline       =   "False"
-      Visible         =   "True"
-      Width           =   69
-      BehaviorIndex   =   2
-   End
-   Begin PushButton btn_done
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Cancel          =   "True"
-      Caption         =   "Done"
-      ControlOrder    =   3
-      Default         =   "False"
-      Enabled         =   "True"
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   319
-      LockBottom      =   "True"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   451
-      Underline       =   "False"
-      Visible         =   "True"
-      Width           =   69
-      BehaviorIndex   =   3
-   End
-   Begin StaticText lbl_select_folder
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      ControlOrder    =   4
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   "True"
-      Height          =   14
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   14
-      LockBottom      =   "False"
-      LockLeft        =   "True"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      Multiline       =   "False"
-      TabPanelIndex   =   0
-      Text            =   "Select Folder:"
-      TextAlign       =   0
-      TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
-      Top             =   283
-      Underline       =   "False"
-      Visible         =   "True"
-      Width           =   100
-      BehaviorIndex   =   4
-   End
-   Begin PopupMenu pop_select_folder
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      ControlOrder    =   5
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   "True"
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      InitialValue    =   ""
-      Italic          =   "False"
-      Left            =   10
-      ListIndex       =   0
-      LockBottom      =   "False"
-      LockLeft        =   "True"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   12
-      Top             =   302
-      Underline       =   "False"
-      Visible         =   "True"
-      Width           =   206
-      BehaviorIndex   =   5
-   End
-   Begin Timer timerLookup
-      ControlOrder    =   6
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Left            =   228
-      Mode            =   2
-      Period          =   1500
-      TabPanelIndex   =   0
-      Top             =   23
-      BehaviorIndex   =   6
-   End
-   Begin StaticText txt_explanation_header
-      AutoDeactivate  =   "True"
-      Bold            =   "False"
-      ControlOrder    =   7
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   "True"
-      Height          =   45
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   20
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "True"
-      Multiline       =   "True"
-      TabPanelIndex   =   0
-      Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. You can also double-click on the song name to add it."
-      TextAlign       =   1
-      TextColor       =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   5
-      Underline       =   "False"
-      Visible         =   "True"
-      Width           =   378
-      BehaviorIndex   =   7
+      BehaviorIndex   =   10
    End
    Begin StaticText lbl_song_preview
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   8
+      ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   "True"
@@ -293,7 +283,7 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   8
+      BehaviorIndex   =   7
    End
    Begin EditField edt_preview
       AcceptTabs      =   "False"
@@ -302,7 +292,7 @@ Begin Window SongPickerWindow
       BackColor       =   16777215
       Bold            =   "False"
       Border          =   "True"
-      ControlOrder    =   9
+      ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   "True"
@@ -335,37 +325,48 @@ Begin Window SongPickerWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   397
-      BehaviorIndex   =   9
+      BehaviorIndex   =   8
    End
-   Begin StaticText lbl_quick_lookup
+   Begin StaticText txt_explanation_header
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   10
+      ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   "True"
-      Height          =   20
+      Height          =   45
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   228
+      Left            =   20
       LockBottom      =   "False"
       LockLeft        =   "False"
       LockRight       =   "False"
-      LockTop         =   "False"
-      Multiline       =   "False"
+      LockTop         =   "True"
+      Multiline       =   "True"
       TabPanelIndex   =   0
-      Text            =   "Quick Lookup:"
-      TextAlign       =   0
+      Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. You can also double-click on the song name to add it."
+      TextAlign       =   1
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
-      Top             =   280
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   5
       Underline       =   "False"
       Visible         =   "True"
-      Width           =   100
-      BehaviorIndex   =   10
+      Width           =   378
+      BehaviorIndex   =   6
+   End
+   Begin Timer timerLookup
+      ControlOrder    =   10
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   228
+      Mode            =   2
+      Period          =   1500
+      TabPanelIndex   =   0
+      Top             =   23
+      BehaviorIndex   =   5
    End
 End
 #tag EndWindow
@@ -476,8 +477,8 @@ End
 
 #tag Bindings
 	#tag BeginBinding
-		SourceItem = 0
-		DestinationItem = 2
+		SourceItem = lst_all_songs
+		DestinationItem = btn_add
 		ItemType = enablingBinder
 		ItemDescription = Enable btn_add when lst_all_songs has a selection
 		SourceBindData = getSelectionProvider
@@ -603,6 +604,38 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events btn_add
+	#tag Event
+		Sub Action()
+		  'BuildScripture
+		  
+		  If lst_all_songs.ListIndex >= 0 Then
+		    AddSong = True
+		    Close
+		  Else
+		    InputBox.Message App.T.Translate("song_lookup/no_selection")
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_done
+	#tag Event
+		Sub Action()
+		  f = Nil
+		  Close
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_select_folder
+	#tag Event
+		Sub Change()
+		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
+		  End If
+		  Globals.CurrentSongPickerFolder = Me.Text
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events edt_quick_lookup
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
@@ -684,38 +717,6 @@ End
 		  lst_all_songs.ListIndex = -1
 		  Return True
 		End Function
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_add
-	#tag Event
-		Sub Action()
-		  'BuildScripture
-		  
-		  If lst_all_songs.ListIndex >= 0 Then
-		    AddSong = True
-		    Close
-		  Else
-		    InputBox.Message App.T.Translate("song_lookup/no_selection")
-		  End If
-		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_done
-	#tag Event
-		Sub Action()
-		  f = Nil
-		  Close
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events pop_select_folder
-	#tag Event
-		Sub Change()
-		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
-		  End If
-		  Globals.CurrentSongPickerFolder = Me.Text
-		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events timerLookup

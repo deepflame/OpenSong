@@ -209,17 +209,17 @@
     </fields>
   </song_search>
    <!--Translate Me!!-->
-  <scripture_search title="Search">
+  <scripture_search title="Buscar">
     <match caption="Match">
-      <exact caption="Exact"/>
-      <begin caption="Begins with"/>
+      <exact caption="Exija"/>
+      <begin caption="Comienzos con"/>
     </match>
-    <words caption="Verse must have">
-      <all caption="All words"/>
-      <any caption="Any word"/>
+    <words caption="Versos necesita">
+      <all caption="Todos palabras"/>
+      <any caption="Cualquier palabra"/>
     </words>
-    <search caption="Search"/>
-    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
+    <search caption="Buscar"/>
+    <example caption="Para buscar para una frase exacta, lo entra en citas dobles: &quot;Simon Peter&quot;"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
   </scripture_search>
@@ -258,8 +258,7 @@
       <print caption="Configuración de _Impresión"/>
       <general caption="Configuración _General"/>
       <refresh_songs caption="Recargar la Carpeta de las Canciones"/>
-       <!--Translate Me!!-->
-      <refresh_sets caption="R_efresh Sets Folder"/>
+      <refresh_sets caption="Recargar la Carpeta de las Coordinaciónes"/>
       <install_module caption="Instalar un Módulo"/>
     </settings>
     <help caption="A_yuda">
@@ -270,14 +269,15 @@
   </main_menu>
   
   <general_settings title="Configuración General">
-    <general caption="General">
+<!--Changed for V1.2-->
+    <general caption="General" head1="Básico" head2="Especial">
       <ccli caption="# Licencia CCLI"/>
       <version_check caption="Comprobar una versión más reciente en el inicio"/>
       <language caption="Idioma"/>
        <!--Translate Me!!-->
-      <startmode caption="Initial Window">
-	<song caption="Songs"/>
-	<set  caption="Sets"/>
+      <startmode caption="Pantala Inicial">
+	<song caption="Canciones"/>
+	<set  caption="Coordinatiónes"/>
       </startmode>
     </general>
     <proxy caption="Proxy">
@@ -297,6 +297,7 @@
       <fixed_width caption="Arreglar Ancho de Texto"/>
       <buttons caption="Botones"/>
       <large_headings caption="Cabeceras Grandes"/>
+      <newpaint caption="Utilice nuevos controles"/>
     </fonts>
     <documents_folder caption="Directorio de los Documentos">
       <warning caption="Use con precaución; requiere reiniciar"/>
@@ -306,7 +307,13 @@
       <change caption="Cambiar"/>
     </documents_folder>
      <!--Translate Me!!-->
-    <newpaint caption="Use new visual style"/>
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
   </general_settings>
 
   <print_settings title="Configuración de Impresión">

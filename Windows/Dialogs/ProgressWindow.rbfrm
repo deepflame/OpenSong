@@ -9,6 +9,7 @@ Begin Window ProgressWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   60
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -26,9 +27,7 @@ Begin Window ProgressWindow
    Width           =   300
    Begin ProgressBar bar
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       ControlOrder    =   0
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   12
       HelpTag         =   ""
@@ -49,12 +48,10 @@ Begin Window ProgressWindow
    End
    Begin StaticText txt_StatusLine
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -66,7 +63,7 @@ Begin Window ProgressWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -81,12 +78,10 @@ Begin Window ProgressWindow
    End
    Begin StaticText lbl_status
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
@@ -98,7 +93,7 @@ Begin Window ProgressWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -223,7 +218,6 @@ End
 			Flag to indicate if user is allowed to press the Escape
 			key to signal a request to cancel the operation in progress.
 			See KeyDown event.  Default False (from Constructor)
-			
 		#tag EndNote
 		Private AllowEscape As Boolean
 	#tag EndProperty
@@ -231,8 +225,6 @@ End
 	#tag Property, Flags = &h1
 		#tag Note
 			Indicates if the user has requested to cancel.  Default False.
-			
-			
 		#tag EndNote
 		Protected CancelRequested As Boolean
 	#tag EndProperty

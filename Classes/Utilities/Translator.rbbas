@@ -118,6 +118,7 @@ Protected Class Translator
 
 	#tag Method, Flags = &h0
 		Sub TranslateWindow(win As Window, tag As String, fonts() As FontFace, doCaptions As Boolean = True, doFonts As Boolean = True)
+		  
 		  ' If you're getting XML exceptions, chances are that the window title is not a valid XML tag. Fix it.
 		  ' fonts: 1 = groups; 2 = labels; 3 = text fields; 4 = headings; 5 = buttons; 6 = fixed-width
 		  
@@ -142,8 +143,10 @@ Protected Class Translator
 		  Dim sldCont As Slider 'EMP 09/05
 		  
 		  tag = tag + "/"
+		  App.DebugWriter.Write "Translator.TranslateWindow: Begin translating window " + win.Title + " with tag " + tag, 4
 		  
 		  For i = 0 To win.ControlCount - 1
+		    App.DebugWriter.Write "Translator.TranslateWindow: On control " + win.Control(i).Name, 5
 		    cont = win.Control(i)
 		    name = ParseControlName(cont)
 		    controlUsage = name.Left(3)
@@ -401,18 +404,20 @@ Protected Class Translator
 		  // Validate the parent control
 		  If parent Is Nil Or (Not (parent IsA RectControl)) Then
 		    App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil parent for '" +_
-		     cont.Name + "', returning " + ret, 4
+		    cont.Name + "', returning " + ret, 4
 		    Return ret
 		  End If
 		  
 		  // If the parent's name is "nil_something"  then look to its parent
 		  If parent.Name.Left(4) = "nil_" Then
-		    If parent.Parent Is Nil Or (Not (parent IsA RectControl)) Then
+		    If parent.Parent Is Nil Or (Not (parent.Parent IsA RectControl)) Then
 		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil grandparent for '" +_
-		       cont.Name + "', returning " + ret, 4
+		      cont.Name + "', returning " + ret, 4
 		      Return ret
 		    Else
 		      parent = parent.Parent
+		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Using grandparent for '" +_
+		      cont.Name + "', grandparent is '" + parent.Name + "'", 5
 		    End If
 		  End If
 		  
@@ -420,17 +425,21 @@ Protected Class Translator
 		  // second part of the control
 		  
 		  parentParts = Split(parent.Name, "_")
-		  If UBound(parentParts) < 2 Then
+		  Select Case UBound(parentParts)
+		  Case 0
 		    App.DebugWriter.Write "Translator.ParseHierarchicalName: parent control for '" +_
-		     cont.Name + "' has too few components: " + parent.Name, 1
-		    Return ret
-		  End If
+		    cont.Name + "' has too few components: " + parent.Name, 1
+		    
+		  Case 1
+		    parentParts.Remove 0
+		    ret = Lowercase(Tag + Join(parentParts, "_") + "/" + contName.Mid(5))
+		    
+		  Case Else
+		    parentParts.Remove 0
+		    parentParts.Remove 0
+		    ret = Lowercase(Tag + Join(parentParts, "_") + "/" + contName.Mid(5))
+		  End Select
 		  
-		  //Strip the first two parts of the parent name
-		  parentParts.Remove 0
-		  parentParts.Remove 0
-		  
-		  ret = Lowercase(Tag + Join(parentParts, "_") + "/" + contName.Mid(5))
 		  Return ret
 		End Function
 	#tag EndMethod
@@ -460,28 +469,33 @@ Protected Class Translator
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

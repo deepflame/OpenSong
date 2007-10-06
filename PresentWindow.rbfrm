@@ -30,7 +30,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   0
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   302
       HelpTag         =   ""
@@ -42,43 +42,33 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockRight       =   "True"
       LockTop         =   "True"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   302
       BehaviorIndex   =   0
-   End
-   Begin Timer timerAdvance
-      ControlOrder    =   1
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   248
-      Mode            =   0
-      Period          =   10000
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Width           =   32
-      BehaviorIndex   =   1
-   End
-   Begin Timer timerTransition
-      ControlOrder    =   2
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   204
-      Mode            =   0
-      Period          =   125
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Width           =   32
-      BehaviorIndex   =   2
+      Begin Timer timerAdvance
+         ControlOrder    =   1
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   248
+         Mode            =   0
+         Period          =   10000
+         TabPanelIndex   =   0
+         Top             =   248
+         BehaviorIndex   =   1
+      End
+      Begin Timer timerTransition
+         ControlOrder    =   2
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   204
+         Mode            =   0
+         Period          =   125
+         TabPanelIndex   =   0
+         Top             =   248
+         BehaviorIndex   =   2
+      End
    End
 End
 #tag EndWindow

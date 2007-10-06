@@ -244,7 +244,8 @@
   </main_menu>
 
   <general_settings title="Configuração Geral">
-    <general caption="Geral">
+<!--  V1.2 Changes-->
+    <general caption="Geral" head1="Basic" head2="Special">
       <ccli caption="No. Licença CCLI"/>
       <version_check caption="Verificar última versão na inicialização"/>
       <language caption="Língua"/>
@@ -274,6 +275,14 @@
       <message>Fechando OpenSong. Click OK e reinicie OpenSong. Talvez você queira copiar seus velhos documentos do OpenSong para um novo local antes.</message>
       <change caption="Mudar"/>
     </documents_folder>
+    <!--V1.2 Changes-->
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
   </general_settings>
 
   <print_settings title="Opções de Impressão">

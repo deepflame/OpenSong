@@ -1,3 +1,15 @@
+-= 1.2.1 =-
+
+* Copying a song entry in a set correctly copies the song's path instead of adding the attributes for a custom slide. (MainWindow.ActionInSongCopy, SmartML.CloneAttributes)
+
+* Removed redundant properties in FolderDBOld left after FolderDB was redesigned. The visible effect is that error messages related to the Songs folder are properly reported when using the pre-V1.1 folder cache setting. (FolderDBOld)
+
+* Set Export is functional again. (MainWindow.ActionSetExport)
+
+* Added the Mac Bundle Identifier to the XML source.  REALbasic failed to save this when the Version Control Format source was converted to XML source. Note: A bug in REALbasic through at least RB2007r4 requires this to be manually added in the built application's Info.plist even though it is in the XML source.
+
+-= 1.2.0 =-
+
 * Fixed issue where a folder could be successfully created, but an error is returned (Linux only).
 
 * Printer output should properly scale on all printers.  The printer resolution in dpi was changing when the printer was opened to print, but the setup didn't reflect the change in size (page width/height in dots).  This is a REALbasic/printer driver issue.  OpenSong detects the change and will scale the page appropriately.  This may not provide the full resolution available on the printer.

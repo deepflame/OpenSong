@@ -1,5 +1,9 @@
 -= JRC =-
 
+* Fix corner case in App.Open where the sub-Folders exist but are empty (bug #1803741)
+
+* Load default files if settings files in DocsFolder are corrupted (bug #1803741)
+
 * general_settings/logging caption changed to "Debug Log Settings" (so as not to be confused with song activity log)
 
 * Added Function CompareDates to OpenSongUtils

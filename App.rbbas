@@ -257,20 +257,28 @@ Inherits Application
 		  Dim xnode As XmlNode
 		  
 		  ' --- LOAD SETTINGS ---
+		  '++JRC: Load default files if settings files in DocsFolder are corrupted (bug #1803741)
+		  'The settings folder should be handled in the Installer/Uninstaller as well
 		  '++JRC translated
 		  Splash.SetStatus T.Translate("load_settings/main") + "..."
 		  '--
 		  MyMainSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("MainSettings"))
 		  If MyMainSettings = Nil Then
-		    SmartML.DisplayError
-		    Quit
+		    MyMainSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("MainSettings"))
+		    If MyMainSettings = Nil Then
+		      SmartML.DisplayError
+		      Quit
+		    End If
 		  End If
 		  
 		  Splash.SetStatus T.Translate("load_settings/print") + "..."
 		  MyPrintSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PrintSettings"))
 		  If MyPrintSettings = Nil Then
-		    SmartML.DisplayError
-		    Quit
+		    MyPrintSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("PrintSettings"))
+		    If MyPrintSettings = Nil Then
+		      SmartML.DisplayError
+		      Quit
+		    End If
 		  End If
 		  // Update PritntSettings to use points instead of inches
 		  UpdatePrintSettings
@@ -278,8 +286,11 @@ Inherits Application
 		  Splash.SetStatus T.Translate("load_settings/presentation") + "..."
 		  MyPresentSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PresentSettings"))
 		  If MyPresentSettings = Nil Then
-		    SmartML.DisplayError
-		    Quit
+		    MyPresentSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("PresentSettings"))
+		    If MyPresentSettings = Nil Then
+		      SmartML.DisplayError
+		      Quit
+		    End If
 		  End If
 		  // Move some XML around in MyPresentSettings to align with V1.0 BL13 changes.
 		  UpdateDefaultStyle

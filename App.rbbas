@@ -140,15 +140,17 @@ Inherits Application
 		  DocsFolder = GetDocsFolder
 		  
 		  ' Create whatever sub-folders are needed
+		  '++JRC: Fix corner case where the sub-Folders exist but are empty (bug #1803741)
+		  
 		  '++JRC
-		  If Not AppFolder.Child("OpenSong Scripture").Exists Then
+		  If Not AppFolder.Child("OpenSong Scripture").Exists OR AppFolder.Child("OpenSong Scripture").Count = 0 Then
 		    App.MouseCursor = Nil
 		    MsgBox T.Translate("errors/no_scripture_folder", AppFolder.Child("OpenSong Scripture").AbsolutePath)
 		    Quit
 		  End If
 		  '--
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Exists OR AppFolder.Child("OpenSong Defaults").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox T.Translate("errors/no_defaults_folder", AppFolder.Child("OpenSong Defaults").AbsolutePath)
@@ -156,7 +158,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Exists Then
+		  If Not DocsFolder.Exists OR DocsFolder.Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults"), DocsFolder) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -166,7 +168,7 @@ Inherits Application
 		    End If
 		  End If
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists OR AppFolder.Child("OpenSong Defaults").Child("Settings").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox  T.Translate("errors/no_settings_folder", AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath)
@@ -174,7 +176,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Settings").Exists Then
+		  If Not DocsFolder.Child("Settings").Exists OR DocsFolder.Child("Settings").Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -184,7 +186,7 @@ Inherits Application
 		    End If
 		  End If
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Songs").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Child("Songs").Exists OR AppFolder.Child("OpenSong Defaults").Child("Songs").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox   T.Translate("errors/no_songs_folder",  AppFolder.Child("OpenSong Defaults").Child("Songs").AbsolutePath)
@@ -192,7 +194,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Songs").Exists Then
+		  If Not DocsFolder.Child("Songs").Exists OR  DocsFolder.Child("Songs").Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Songs"), DocsFolder.Child("Songs")) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -202,7 +204,7 @@ Inherits Application
 		    End If
 		  End If
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Sets").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Child("Sets").Exists OR AppFolder.Child("OpenSong Defaults").Child("Sets").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox T.Translate("errors/no_sets_folder",  AppFolder.Child("OpenSong Defaults").Child("Sets").AbsolutePath)
@@ -210,7 +212,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Sets").Exists Then
+		  If Not DocsFolder.Child("Sets").Exists OR DocsFolder.Child("Sets").Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Sets"), DocsFolder.Child("Sets")) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -219,23 +221,9 @@ Inherits Application
 		      Quit
 		    End If
 		  End If
-		  '++JRC Checked these already
-		  'If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists Then
-		  'App.MouseCursor = Nil
-		  'MsgBox "Can't find default Settings folder: " + AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath
-		  'Quit
-		  'End If
-		  
-		  'If Not DocsFolder.Child("Settings").Exists Then
-		  'If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
-		  'App.MouseCursor = Nil
-		  'MsgBox "Could not create/edit Settings folder."
-		  'Quit
-		  'End If
-		  'End If
 		  
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Exists OR AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox  T.Translate("errors/no_backgrounds_folder",  AppFolder.Child("OpenSong Defaults").Child("Backgrounds").AbsolutePath)
@@ -243,7 +231,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Backgrounds").Exists Then
+		  If Not DocsFolder.Child("Backgrounds").Exists OR DocsFolder.Child("Backgrounds").Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Backgrounds"), DocsFolder.Child("Backgrounds")) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated

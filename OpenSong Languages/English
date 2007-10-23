@@ -996,12 +996,12 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <create_sets_folder>Could not create/edit Sets folder %1</create_sets_folder>
     <create_settings_folder>Could not create Settings folder: %1</create_settings_folder>
     <create_songs_folder>Could not create songs folder: %1</create_songs_folder>
-    <no_backgrounds_folder>Can't find default Backgrounds folder: %1</no_backgrounds_folder>
-    <no_defaults_folder>Can't find Defaults folder: %1</no_defaults_folder>
-    <no_scripture_folder>Can't find Scriptures folder: %1</no_scripture_folder>
-    <no_sets_folder>Can't find default Sets folder: %1</no_sets_folder>
-    <no_settings_folder>Can't find default Settings folder: %1</no_settings_folder>
-    <no_songs_folder>Can't find default Songs folder: %1</no_songs_folder>
+    <no_backgrounds_folder>Can't find default Backgrounds folder: %1, or folder is empty</no_backgrounds_folder>
+    <no_defaults_folder>Can't find Defaults folder: %1, or folder is empty</no_defaults_folder>
+    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty</no_scripture_folder>
+    <no_sets_folder>Can't find default Sets folder: %1, or folder is empty</no_sets_folder>
+    <no_settings_folder>Can't find default Settings folder: %1, or folder is empty</no_settings_folder>
+    <no_songs_folder>Can't find default Songs folder: %1, or folder is empty</no_songs_folder>
     <no_docs_folder>Could not create/find Documents folder: %1</no_docs_folder>
     <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
 Temporarily changing to: %1

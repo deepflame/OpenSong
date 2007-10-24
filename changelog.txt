@@ -1,5 +1,15 @@
 -= JRC =-
 
+* Disable the close button while generating scripture index, (bug #1642437)
+
+* Pressing Num-pad Enter in SongPicker now works again (bug #1803093)
+
+* Log error and exit if we couldn't load preferences file
+
+* Fixed issue in LoadPreferences: V1.0 RC2-16 preferences file never gets read (got eaten by the next call to GetPrefsFolder() )
+
+* Prevent NilObjectException in GetPrefsFolder (bug #1810528)
+
 * Fix corner case in App.Open where the sub-Folders exist but are empty (bug #1803741)
 
 * Load default files if settings files in DocsFolder are corrupted (bug #1803741)

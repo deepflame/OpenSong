@@ -161,7 +161,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   True
       Width           =   69
-      BehaviorIndex   =   6
+      BehaviorIndex   =   4
    End
    Begin SEditField edt_quick_lookup
       AcceptTabs      =   "False"
@@ -203,7 +203,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       UseFocusRing    =   "True"
       Visible         =   True
       Width           =   200
-      BehaviorIndex   =   4
+      BehaviorIndex   =   5
    End
    Begin GroupBox grp_Books
       AutoDeactivate  =   "True"
@@ -228,7 +228,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   True
       Width           =   200
-      BehaviorIndex   =   7
+      BehaviorIndex   =   6
    End
    Begin PushButton btn_quick_lookup
       AutoDeactivate  =   "True"
@@ -255,7 +255,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   True
       Width           =   69
-      BehaviorIndex   =   5
+      BehaviorIndex   =   7
    End
    Begin HighlightList lst_scr_ot
                       =   ""
@@ -279,6 +279,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
                       =   ""
                       =   ""
                       =   ""
+      =               =   1
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
       Bold            =   ""
@@ -346,6 +347,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
                       =   ""
                       =   ""
                       =   ""
+      =               =   1
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
       Bold            =   ""
@@ -413,6 +415,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
                       =   ""
                       =   ""
                       =   ""
+      =               =   1
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
       Bold            =   "False"
@@ -480,6 +483,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
                       =   ""
                       =   ""
                       =   ""
+      =               =   1
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
       Bold            =   "False"
@@ -862,6 +866,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
                       =   ""
                       =   ""
                       =   ""
+      =               =   1
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
       Bold            =   "False"
@@ -1086,6 +1091,8 @@ End
 		  App.T.TranslateWindow Me, "scripture_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
 		  
+		  CanClose = true
+		  
 		  '++JRC Ensure the scrollbars are enabled if necessary
 		  lst_scr_nt.ScrollPosition = 1
 		  lst_scr_nt.ScrollPosition = 0
@@ -1105,6 +1112,12 @@ End
 		Sub Resizing()
 		  ResizeBookLists
 		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Function CancelClose(appQuitting as Boolean) As Boolean
+		  If NOT CanClose Then Return True
+		End Function
 	#tag EndEvent
 
 
@@ -1402,6 +1415,8 @@ End
 		  count = Self.ControlCount - 1
 		  
 		  Self.MouseCursor = WatchCursor
+		  '++JRC Disable the close button while generating scripture index, (bug #1642437)
+		  CanClose = false
 		  
 		  For i As Integer = 0 To count
 		    If Not (Self.Control(i) IsA RectControl) Then Continue
@@ -1419,6 +1434,8 @@ End
 		  App.DebugWriter.Write "ScripturePickerWindow.EnableUI", 4
 		  Dim max As Integer
 		  
+		  '++JRC Index should now be generated, re-enanble close
+		  CanClose = True
 		  max = UBound(EnabledControls)
 		  
 		  For i As Integer = max DownTo 0
@@ -1692,6 +1709,10 @@ End
 			not one triggered by direct user interaction
 		#tag EndNote
 		Protected PropertiesUpdating As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		CanClose As Boolean
 	#tag EndProperty
 
 

@@ -54,6 +54,11 @@ Inherits Application
 		  
 		  DebugWriter = New DebugOutput
 		  LoadPreferences
+		  '++JRC Couldn't load Preferences, Log error and Bail
+		  If MainPreferences = Nil Then
+		    App.DebugWriter.Write("App.Open: Error Loading Preferences ", 1)
+		    Quit
+		  End If
 		  DebugWriter.Level = MainPreferences.GetValueN(kLogLevel, 3, True)
 		  If MainPreferences.GetValueB(kLogOutput + kLogConsole, True, True) Then
 		    DebugWriter.SetOutput(Nil)
@@ -546,7 +551,8 @@ Inherits Application
 		  If FileUtils.CreateFolder(f) Then
 		    Return f
 		  Else
-		    App.DebugWriter.Write("GetPrefsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
+		    '++JRC Prevent NilObjectException (bug #1810528)
+		    If f <> Nil Then App.DebugWriter.Write("GetPrefsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
 		    Return Nil
 		  End If
 		End Function
@@ -658,11 +664,19 @@ Inherits Application
 		    // Kluge alert! Fix V1.0 RC2-16 issue where the file doesn't have an extension
 		    //--
 		    PrefFile = "preferences.plist"
+		    '++JRC Fixed: f gets eaten by the next call to GetPrefsFolder()
 		    f = GetPrefsFolder().Child("preferences")
-		    If f.exists Then
-		      f.name = PrefFile
+		    If f = Nil Then
+		      'doesn't exist try loading new prefs file
+		      f = GetPrefsFolder().Child(PrefFile)
+		    Else
+		      If f.exists Then
+		        f.name = PrefFile 'Rename file
+		      Else
+		        'doesn't exist try loading new prefs file
+		        f = GetPrefsFolder().Child(PrefFile)
+		      End If
 		    End If
-		    f = GetPrefsFolder().Child(PrefFile)
 		  #endif
 		  
 		  If MainPreferences <> Nil Then // Reloading

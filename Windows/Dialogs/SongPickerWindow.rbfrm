@@ -35,7 +35,7 @@ Begin Window SongPickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -64,7 +64,7 @@ Begin Window SongPickerWindow
       Top             =   55
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   395
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
@@ -80,7 +80,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   20
       HelpTag         =   ""
@@ -108,7 +108,7 @@ Begin Window SongPickerWindow
       Top             =   302
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   179
       BehaviorIndex   =   1
    End
@@ -135,7 +135,7 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   452
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   2
    End
@@ -146,7 +146,7 @@ Begin Window SongPickerWindow
       Caption         =   "Done"
       ControlOrder    =   3
       Default         =   "False"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -162,7 +162,7 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   451
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   3
    End
@@ -172,7 +172,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   14
       HelpTag         =   ""
       Index           =   -2147483648
@@ -192,7 +192,7 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   283
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   4
    End
@@ -202,7 +202,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -220,19 +220,23 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   302
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   206
       BehaviorIndex   =   5
    End
    Begin Timer timerLookup
       ControlOrder    =   6
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   228
       Mode            =   2
       Period          =   1500
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   23
+      Width           =   32
       BehaviorIndex   =   6
    End
    Begin StaticText txt_explanation_header
@@ -241,7 +245,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   45
       HelpTag         =   ""
       Index           =   -2147483648
@@ -261,7 +265,7 @@ Begin Window SongPickerWindow
       TextSize        =   10
       Top             =   5
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   378
       BehaviorIndex   =   7
    End
@@ -271,7 +275,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -291,7 +295,7 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   329
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   8
    End
@@ -305,7 +309,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   89
       HelpTag         =   ""
@@ -333,7 +337,7 @@ Begin Window SongPickerWindow
       Top             =   350
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   397
       BehaviorIndex   =   9
    End
@@ -343,7 +347,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -363,7 +367,7 @@ Begin Window SongPickerWindow
       TextSize        =   12
       Top             =   280
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
       BehaviorIndex   =   10
    End
@@ -523,7 +527,8 @@ End
 		  Const ASC_KEY_ESCAPE = 27
 		  
 		  Select Case Asc(key)
-		  Case 13, 10 'Enter, Return
+		    '++JRC Make Num-pad Enter work again (bug #1803093)
+		  Case 3, 13, 10 'Enter, Return
 		    AddSong = True
 		    Close
 		    Return True

@@ -1,5 +1,9 @@
 -= JRC =-
 
+* FIXED New debug log level get saved now (Sleepy time Ed ;)
+
+* Prevent OOB Exception in App.Open when DebugLevel = 0 (Disabled)
+
 * Disable the close button while generating scripture index, (bug #1642437)
 
 * Pressing Num-pad Enter in SongPicker now works again (bug #1803093)

@@ -1,5 +1,7 @@
 -= JRC =-
 
+* Workaround for RB 2007 issue where UTF-8 strings are improperly encoded in ContextualMenus (bug #1829317)
+
 * FIXED New debug log level get saved now (Sleepy time Ed ;)
 
 * Prevent OOB Exception in App.Open when DebugLevel = 0 (Disabled)

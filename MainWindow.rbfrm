@@ -5617,10 +5617,7 @@ End
 		  lst_set_items.InsertRow lst_set_items.ListIndex + 1, lst_set_items.List(lst_set_items.ListIndex)
 		  
 		  SmartML.CloneChildren oldGroup, newGroup
-		  SmartML.SetValue newGroup, "@name", SmartML.GetValue(oldGroup, "@name")
-		  SmartML.SetValue newGroup, "@type", SmartML.GetValue(oldGroup, "@type")
-		  SmartML.SetValue newGroup, "@loop", SmartML.GetValue(oldGroup, "@loop")
-		  SmartML.SetValue newGroup, "@seconds", SmartML.GetValue(oldGroup, "@seconds")
+		  SmartML.CloneAttributes oldGroup, newGroup
 		  
 		  Status_SetChanged = True
 		  lst_set_items.ListIndex = lst_set_items.ListIndex + 1
@@ -5784,12 +5781,9 @@ End
 		    If targetFolder.Exists Then Exit
 		    targetFolder = targetFolder.Parent
 		  Wend
-  
-		  If targetFolder Is Nil Then dlg.InitialDirectory = DocumentsFolder
-  
-  
-		  targetFolder = dlg.ShowModal
 		  
+		  If targetFolder Is Nil Then dlg.InitialDirectory = DocumentsFolder
+		  targetFolder = dlg.ShowModal
 		  If targetFolder = Nil Then Return// User cancelled
 		  
 		  App.MainPreferences.SetValueFI(Prefs.kSetsLastExportFolder, targetFolder)

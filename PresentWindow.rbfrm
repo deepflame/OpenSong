@@ -9,6 +9,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000

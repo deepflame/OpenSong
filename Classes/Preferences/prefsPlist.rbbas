@@ -548,7 +548,7 @@ Implements IPreferences
 
 
 	#tag Constant, Name = kErrNilPlistObj, Type = String, Dynamic = True, Default = \"", Scope = Protected
-		#Tag Instance, Platform = Any, Language = Default, Definition  = \"CreatePath: plistobj is Nil"
+		#Tag Instance, Platform = Alle, Language = Default, Definition  = \"CreatePath: plistobj is Nil"
 	#tag EndConstant
 
 	#tag Constant, Name = kErrNilPlistObjNum, Type = Double, Dynamic = False, Default = \"2", Scope = Protected
@@ -558,32 +558,32 @@ Implements IPreferences
 	#tag EndConstant
 
 	#tag Constant, Name = kErrNilPath, Type = String, Dynamic = True, Default = \"", Scope = Protected
-		#Tag Instance, Platform = Any, Language = Default, Definition  = \"Nil path passed as argument"
+		#Tag Instance, Platform = Alle, Language = Default, Definition  = \"Nil path passed as argument"
 	#tag EndConstant
 
 	#tag Constant, Name = kErrNonDict, Type = String, Dynamic = True, Default = \"", Scope = Protected
-		#Tag Instance, Platform = Any, Language = Default, Definition  = \"Leaf node is not a Dict"
+		#Tag Instance, Platform = Alle, Language = Default, Definition  = \"Leaf node is not a Dict"
 	#tag EndConstant
 
 	#tag Constant, Name = kErrNonDictNum, Type = Double, Dynamic = False, Default = \"3", Scope = Protected
 	#tag EndConstant
 
 	#tag Constant, Name = kErrPlistNotInit, Type = String, Dynamic = True, Default = \"", Scope = Protected
-		#Tag Instance, Platform = Any, Language = Default, Definition  = \"plist is not initialized"
+		#Tag Instance, Platform = Alle, Language = Default, Definition  = \"plist is not initialized"
 	#tag EndConstant
 
 	#tag Constant, Name = kErrPlistNotInitNum, Type = Double, Dynamic = False, Default = \"4", Scope = Protected
 	#tag EndConstant
 
 	#tag Constant, Name = kErrMissingLeaf, Type = String, Dynamic = True, Default = \"", Scope = Protected
-		#Tag Instance, Platform = Any, Language = Default, Definition  = \"Missing leaf node"
+		#Tag Instance, Platform = Alle, Language = Default, Definition  = \"Missing leaf node"
 	#tag EndConstant
 
 	#tag Constant, Name = kErrMissingLeafNum, Type = Double, Dynamic = False, Default = \"5", Scope = Protected
 	#tag EndConstant
 
 	#tag Constant, Name = kErrNoPrefsPath, Type = String, Dynamic = True, Default = \"", Scope = Protected
-		#Tag Instance, Platform = Any, Language = Default, Definition  = \"No path to preferences specified"
+		#Tag Instance, Platform = Alle, Language = Default, Definition  = \"No path to preferences specified"
 	#tag EndConstant
 
 	#tag Constant, Name = kErrNoPrefsPathNum, Type = Double, Dynamic = False, Default = \"6", Scope = Protected
@@ -601,28 +601,33 @@ Implements IPreferences
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

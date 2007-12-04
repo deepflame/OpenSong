@@ -9,6 +9,7 @@ Begin Window PrintWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   410
+   ImplicitInstance=   "True"
    LiveResize      =   "True"
    MacProcID       =   0
    MaxHeight       =   32000

@@ -334,7 +334,6 @@ Protected Class SlideStyle
 		
 		09/16/05: Here's an interesting revelation that is probably an RTFM: Returning an object (i.e., the Get method)
 		returns the pointer, not a copy of the object.  Created an "interesting" display the first time I debugged this.
-		
 	#tag EndNote
 
 
@@ -366,7 +365,6 @@ Protected Class SlideStyle
 		#tag Note
 			Defines the treatment of the background image. Valid values are the
 			constants that start with POS_
-			
 		#tag EndNote
 		Protected Position As Integer
 	#tag EndProperty
@@ -398,7 +396,6 @@ Protected Class SlideStyle
 	#tag Property, Flags = &h21
 		#tag Note
 			Horizontal alignment
-			
 		#tag EndNote
 		Private TitleAlign As String
 	#tag EndProperty
@@ -410,8 +407,6 @@ Protected Class SlideStyle
 	#tag Property, Flags = &h21
 		#tag Note
 			Vertical alignment of the title
-			
-			
 		#tag EndNote
 		Private TitleVAlign As String
 	#tag EndProperty
@@ -427,5 +422,40 @@ Protected Class SlideStyle
 	#tag EndConstant
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

@@ -9,6 +9,7 @@ Begin Window PresentHelperWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   480
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000

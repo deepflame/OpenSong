@@ -103,7 +103,7 @@ Protected Module FileUtils
 		          Return True
 		        End If
 		      #endif
-      
+		      
 		      Return f.LastErrorCode = 0
 		    End If
 		  End If
@@ -460,28 +460,33 @@ Protected Module FileUtils
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

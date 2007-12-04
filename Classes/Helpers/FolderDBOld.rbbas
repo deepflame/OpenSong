@@ -593,76 +593,56 @@ Inherits FolderDB
 	#tag EndNote
 
 
-	#tag Property, Flags = &h1
-		Protected Cache(0) As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		ErrorCode As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		ErrorString As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected FilterAll As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected FilterMain As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Folder As FolderItem
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		NumFiles As Integer
-	#tag EndProperty
-
-
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ErrorCode"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 			InheritedFrom="FolderDB"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ErrorString"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 			InheritedFrom="FolderDB"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="NumFiles"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

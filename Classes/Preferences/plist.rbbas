@@ -287,75 +287,94 @@ Class plist
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="brk"
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="debug"
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="error"
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="errorMessage"
 			Group="Behavior"
 			Type="string"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="findingNext"
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="foundKey"
 			Group="Behavior"
 			Type="string"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="foundType"
 			Group="Behavior"
 			Type="string"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="foundValue"
 			Group="Behavior"
 			Type="string"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="isBinary"
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="untitled"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

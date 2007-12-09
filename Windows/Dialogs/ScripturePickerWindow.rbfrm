@@ -50,7 +50,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   23
    End
    Begin PushButton btn_done
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_insert
       AutoDeactivate  =   "True"
@@ -104,7 +102,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "False"
       Width           =   69
-      BehaviorIndex   =   22
    End
    Begin GroupBox grp_quick_lookup
       AutoDeactivate  =   "True"
@@ -129,7 +126,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   360
-      BehaviorIndex   =   1
       Begin StaticText lbl_quick_reference
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -158,7 +154,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   "False"
          Visible         =   "True"
          Width           =   65
-         BehaviorIndex   =   2
       End
       Begin SEditField edt_quick_lookup
          AcceptTabs      =   "False"
@@ -200,7 +195,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   200
-         BehaviorIndex   =   4
       End
       Begin StaticText nte_quick_example
          AutoDeactivate  =   "True"
@@ -230,7 +224,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   "False"
          Visible         =   "True"
          Width           =   210
-         BehaviorIndex   =   3
       End
       Begin PushButton btn_quick_lookup
          AutoDeactivate  =   "True"
@@ -257,7 +250,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   "False"
          Visible         =   "True"
          Width           =   69
-         BehaviorIndex   =   5
       End
    End
    Begin PushButton btn_search
@@ -285,7 +277,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   6
    End
    Begin GroupBox grp_Books
       AutoDeactivate  =   "True"
@@ -310,7 +301,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   200
-      BehaviorIndex   =   7
       Begin HighlightList lst_scr_ot
          AutoDeactivate  =   "True"
          AutoHideScrollbars=   "True"
@@ -355,7 +345,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Width           =   80
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
-         BehaviorIndex   =   8
       End
       Begin HighlightList lst_scr_nt
          AutoDeactivate  =   "True"
@@ -401,7 +390,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Width           =   85
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
-         BehaviorIndex   =   9
       End
    End
    Begin HighlightList lst_scr_chapter
@@ -448,7 +436,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   10
    End
    Begin HighlightList lst_scr_from_verse
       AutoDeactivate  =   "True"
@@ -494,7 +481,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   11
    End
    Begin HighlightList lst_scr_to_verse
       AutoDeactivate  =   "True"
@@ -540,7 +526,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   24
    End
    Begin GroupBox grp_options_version
       AutoDeactivate  =   "True"
@@ -565,7 +550,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   145
-      BehaviorIndex   =   12
       Begin PopupMenu pop_scr_version
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -592,7 +576,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   "False"
          Visible         =   "True"
          Width           =   95
-         BehaviorIndex   =   13
       End
    End
    Begin GroupBox grp_options_verses_per_slide
@@ -618,7 +601,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   145
-      BehaviorIndex   =   14
       Begin RadioButton rad_verses_one
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -643,7 +625,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Value           =   "False"
          Visible         =   "True"
          Width           =   35
-         BehaviorIndex   =   15
       End
       Begin RadioButton rad_verses_two
          AutoDeactivate  =   "True"
@@ -669,7 +650,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Value           =   "True"
          Visible         =   "True"
          Width           =   35
-         BehaviorIndex   =   16
       End
       Begin RadioButton rad_verses_three
          AutoDeactivate  =   "True"
@@ -695,7 +675,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Value           =   "False"
          Visible         =   "True"
          Width           =   35
-         BehaviorIndex   =   17
       End
    End
    Begin GroupBox grp_options_format
@@ -721,7 +700,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   145
-      BehaviorIndex   =   18
       Begin RadioButton rad_format_paragraph
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -746,7 +724,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Value           =   "True"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   19
       End
       Begin RadioButton rad_format_verse
          AutoDeactivate  =   "True"
@@ -772,7 +749,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Value           =   "False"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   20
       End
    End
    Begin Checkbox chk_shownumbers
@@ -801,7 +777,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Value           =   "True"
       Visible         =   "True"
       Width           =   145
-      BehaviorIndex   =   21
    End
    Begin SEditField edt_preview
       AcceptTabs      =   "False"
@@ -843,7 +818,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   530
-      BehaviorIndex   =   25
    End
    Begin StaticText txt_verse_dash
       AutoDeactivate  =   "True"
@@ -873,7 +847,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   10
-      BehaviorIndex   =   26
    End
    Begin StaticText txt_verse_colon
       AutoDeactivate  =   "True"
@@ -903,7 +876,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   10
-      BehaviorIndex   =   27
    End
    Begin StaticText StaticText1
       AutoDeactivate  =   "True"
@@ -933,7 +905,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   28
    End
    Begin StaticText lbl_bible_book
       AutoDeactivate  =   "True"
@@ -963,7 +934,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   29
    End
 End
 #tag EndWindow
@@ -1595,14 +1565,14 @@ End
 
 #tag Bindings
 	#tag BeginBinding
-		SourceItem = lst_scr_nt
-		DestinationItem = lst_scr_ot
+		SourceItem = 11
+		DestinationItem = 10
 		ItemType = bindListBoxes
 		ItemDescription = Notify lst_scr_ot when lst_scr_nt has a selection
 	#tag EndBinding
 	#tag BeginBinding
-		SourceItem = lst_scr_ot
-		DestinationItem = lst_scr_nt
+		SourceItem = 10
+		DestinationItem = 11
 		ItemType = bindListBoxes
 		ItemDescription = Notify lst_scr_nt when lst_scr_ot has a selection
 	#tag EndBinding

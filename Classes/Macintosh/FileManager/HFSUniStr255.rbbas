@@ -35,47 +35,52 @@ Inherits MemoryBlock
 		   UInt16 length;
 		   UniChar unicode[255];
 		};
-		
-		
 	#tag EndNote
 
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LittleEndian"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 			InheritedFrom="MemoryBlock"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Size"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

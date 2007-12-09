@@ -9,6 +9,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
@@ -46,7 +47,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       UseFocusRing    =   "False"
       Visible         =   "True"
       Width           =   302
-      BehaviorIndex   =   0
       Begin Timer timerAdvance
          ControlOrder    =   1
          Index           =   -2147483648
@@ -56,7 +56,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Period          =   10000
          TabPanelIndex   =   0
          Top             =   248
-         BehaviorIndex   =   1
       End
       Begin Timer timerTransition
          ControlOrder    =   2
@@ -67,7 +66,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Period          =   125
          TabPanelIndex   =   0
          Top             =   248
-         BehaviorIndex   =   2
       End
    End
 End

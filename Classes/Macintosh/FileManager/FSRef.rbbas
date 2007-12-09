@@ -72,7 +72,7 @@ Inherits MemoryBlock
 		  Const kFSCatInfoParentDirID = &h00000008
 		  
 		  
-		  //the block below is a workaround for a MacOS problem.  When the condition below is satisfied, FSGetCatalogInfo 
+		  //the block below is a workaround for a MacOS problem.  When the condition below is satisfied, FSGetCatalogInfo
 		  //returns a different value for the volumeID of the boot Volume than does an FSSpec.  FSSpec has the volumeID that
 		  //that agrees with the value returned by Volume(0).MacVRefNum, hence the workaround.
 		  dim OSVersion as Integer
@@ -242,40 +242,47 @@ Inherits MemoryBlock
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LittleEndian"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 			InheritedFrom="MemoryBlock"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Size"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

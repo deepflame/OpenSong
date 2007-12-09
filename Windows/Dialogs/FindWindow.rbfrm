@@ -53,7 +53,6 @@ Begin Window FindWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   200
-      BehaviorIndex   =   0
    End
    Begin SEditField edt_input
       AcceptTabs      =   "False"
@@ -95,7 +94,6 @@ Begin Window FindWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   195
-      BehaviorIndex   =   21
    End
    Begin SButton btn_ok
       AcceptFocus     =   "True"
@@ -122,7 +120,6 @@ Begin Window FindWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   1
    End
    Begin SButton btn_cancel
       AcceptFocus     =   "True"
@@ -149,7 +146,6 @@ Begin Window FindWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   2
    End
    Begin GroupBox grp_search_fields
       AutoDeactivate  =   "True"
@@ -174,7 +170,6 @@ Begin Window FindWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   280
-      BehaviorIndex   =   3
       Begin CheckBox chk_search_title
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -201,7 +196,6 @@ Begin Window FindWindow
          Value           =   "True"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   4
       End
       Begin CheckBox chk_search_author
          AutoDeactivate  =   "True"
@@ -229,7 +223,6 @@ Begin Window FindWindow
          Value           =   "True"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   5
       End
       Begin CheckBox chk_search_copyright
          AutoDeactivate  =   "True"
@@ -257,7 +250,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   6
       End
       Begin CheckBox chk_search_ccli
          AutoDeactivate  =   "True"
@@ -285,7 +277,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   7
       End
       Begin CheckBox chk_search_presentation
          AutoDeactivate  =   "True"
@@ -313,7 +304,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   8
       End
       Begin CheckBox chk_search_lyrics
          AutoDeactivate  =   "True"
@@ -341,7 +331,6 @@ Begin Window FindWindow
          Value           =   "True"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   9
       End
       Begin CheckBox chk_search_hymn_number
          AutoDeactivate  =   "True"
@@ -369,7 +358,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   123
-         BehaviorIndex   =   20
       End
       Begin CheckBox chk_search_themes
          AutoDeactivate  =   "True"
@@ -397,7 +385,6 @@ Begin Window FindWindow
          Value           =   "True"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   10
       End
       Begin CheckBox chk_search_capo
          AutoDeactivate  =   "True"
@@ -425,7 +412,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   11
       End
       Begin CheckBox chk_search_time_sig
          AutoDeactivate  =   "True"
@@ -453,7 +439,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   12
       End
       Begin CheckBox chk_search_tempo
          AutoDeactivate  =   "True"
@@ -481,7 +466,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   13
       End
       Begin CheckBox chk_search_key
          AutoDeactivate  =   "True"
@@ -509,7 +493,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   14
       End
       Begin CheckBox chk_search_aka
          AutoDeactivate  =   "True"
@@ -537,7 +520,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   15
       End
       Begin CheckBox chk_search_key_line
          AutoDeactivate  =   "True"
@@ -565,7 +547,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   16
       End
       Begin CheckBox chk_search_user1
          AutoDeactivate  =   "True"
@@ -593,7 +574,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   17
       End
       Begin CheckBox chk_search_user2
          AutoDeactivate  =   "True"
@@ -621,7 +601,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   18
       End
       Begin CheckBox chk_search_user3
          AutoDeactivate  =   "True"
@@ -649,7 +628,6 @@ Begin Window FindWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   125
-         BehaviorIndex   =   19
       End
    End
 End

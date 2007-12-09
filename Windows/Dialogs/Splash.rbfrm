@@ -37,7 +37,6 @@ Begin Window Splash
       TextSize        =   0
       Top             =   256
       Width           =   32
-      BehaviorIndex   =   0
    End
 End
 #tag EndWindow

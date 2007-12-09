@@ -50,7 +50,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   75
-      BehaviorIndex   =   3
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   75
-      BehaviorIndex   =   4
    End
    Begin StaticText txt_path
       AutoDeactivate  =   "True"
@@ -107,7 +105,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   455
-      BehaviorIndex   =   2
    End
    Begin Separator sep_1
       AutoDeactivate  =   "True"
@@ -126,7 +123,6 @@ Begin Window ImageChooserWindow
       Top             =   328
       Visible         =   "True"
       Width           =   475
-      BehaviorIndex   =   1
    End
    Begin ScrollBar scr_vertical
       AcceptFocus     =   "true"
@@ -152,7 +148,6 @@ Begin Window ImageChooserWindow
       Value           =   0
       Visible         =   "True"
       Width           =   16
-      BehaviorIndex   =   0
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -176,7 +171,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -200,7 +194,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -224,7 +217,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -248,7 +240,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -272,7 +263,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -296,7 +286,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -320,7 +309,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -344,7 +332,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -368,7 +355,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -392,7 +378,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -416,7 +401,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -440,7 +424,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -464,7 +447,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -488,7 +470,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -512,7 +493,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -536,7 +516,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -560,7 +539,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -584,7 +562,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -608,7 +585,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -632,7 +608,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -662,7 +637,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -692,7 +666,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -722,7 +695,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -752,7 +724,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -782,7 +753,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -812,7 +782,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -842,7 +811,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -872,7 +840,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -902,7 +869,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -932,7 +898,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -962,7 +927,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -992,7 +956,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1022,7 +985,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1052,7 +1014,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1082,7 +1043,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1112,7 +1072,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1142,7 +1101,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1172,7 +1130,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1202,7 +1159,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1232,7 +1188,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
 End
 #tag EndWindow

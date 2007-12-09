@@ -62,7 +62,7 @@ Inherits Report
 		  while i > -1
 		    MyPages.Remove i
 		    i = i - 1
-		  wend 
+		  wend
 		  
 		  // Build the pages for the songs
 		  // Show progress window if we have a few
@@ -80,7 +80,7 @@ Inherits Report
 		  End If
 		  
 		  For i = 0 to UBound(Songs)
-		    If ProgressWindowVisible Then 
+		    If ProgressWindowVisible Then
 		      If Not ProgressWindow.SetProgress(i) Then
 		        ProgressWindow.Close
 		        Return False
@@ -144,7 +144,7 @@ Inherits Report
 		  App.DebugWriter.Write "LeadSheetReport.GetPage: Enter/Exit, Page, Zoom = " + str(PageNumber) + ", " + str(zoom)
 		  If PageNumber < 1 Or PageNumber > Pages.Count + 1 Then
 		    Return Nil
-		  Else 
+		  Else
 		    Pages.Item(PageNumber - 1).Scale = Zoom
 		    Return Pages.Item(PageNumber - 1)
 		  End If
@@ -245,7 +245,6 @@ Inherits Report
 		#tag Note
 			Specifies if the songs should be numbered sequentially.
 			If False, page numbers restart at 1 with each song.
-			
 		#tag EndNote
 		Protected Sequential As Boolean
 	#tag EndProperty
@@ -253,11 +252,73 @@ Inherits Report
 	#tag Property, Flags = &h0
 		#tag Note
 			The list of songs to print
-			
 		#tag EndNote
 		Songs() As String
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LeftMargin"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PrintableHeight"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PrintableWidth"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TopMargin"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="Report"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

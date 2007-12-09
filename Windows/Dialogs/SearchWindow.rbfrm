@@ -50,7 +50,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   67
-      BehaviorIndex   =   3
    End
    Begin PushButton btn_search_cancel
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   67
-      BehaviorIndex   =   4
    End
    Begin SEditField edt_search
       AcceptTabs      =   "False"
@@ -119,7 +117,6 @@ Begin Window SearchWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   284
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_search_search
       AutoDeactivate  =   "True"
@@ -146,7 +143,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   66
-      BehaviorIndex   =   1
    End
    Begin ListBox lst_result
       AutoDeactivate  =   "True"
@@ -192,7 +188,6 @@ Begin Window SearchWindow
       Width           =   449
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   2
    End
    Begin GroupBox grp_search_match
       AutoDeactivate  =   "True"
@@ -217,7 +212,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   166
-      BehaviorIndex   =   5
       Begin RadioButton rad_match_exact
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -242,7 +236,6 @@ Begin Window SearchWindow
          Value           =   "True"
          Visible         =   "True"
          Width           =   139
-         BehaviorIndex   =   6
       End
       Begin RadioButton rad_match_begin
          AutoDeactivate  =   "True"
@@ -268,7 +261,6 @@ Begin Window SearchWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   139
-         BehaviorIndex   =   7
       End
    End
    Begin GroupBox grp_search_words
@@ -294,7 +286,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   176
-      BehaviorIndex   =   9
       Begin RadioButton rad_words_any
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -319,7 +310,6 @@ Begin Window SearchWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   105
-         BehaviorIndex   =   10
       End
       Begin RadioButton rad_words_all
          AutoDeactivate  =   "True"
@@ -345,7 +335,6 @@ Begin Window SearchWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   105
-         BehaviorIndex   =   11
       End
    End
    Begin StaticText lbl_search_example
@@ -376,7 +365,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   373
-      BehaviorIndex   =   8
    End
 End
 #tag EndWindow
@@ -703,16 +691,16 @@ End
 
 #tag Bindings
 	#tag BeginBinding
-		SourceItem = lst_result
-		DestinationItem = btn_search_ok
+		SourceItem = 4
+		DestinationItem = 0
 		ItemType = enablingBinder
 		ItemDescription = Enable btn_search_ok when lst_result has a selection
 		SourceBindData = getSelectionProvider
 		SourceData = 1
 	#tag EndBinding
 	#tag BeginBinding
-		SourceItem = edt_search
-		DestinationItem = btn_search_search
+		SourceItem = 2
+		DestinationItem = 3
 		ItemType = bindEditFieldAndPushButton
 		ItemDescription = Enable btn_search_search when text is in edt_search
 	#tag EndBinding

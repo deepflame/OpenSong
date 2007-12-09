@@ -47,7 +47,6 @@ Begin Window CCLIWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   151
-      BehaviorIndex   =   0
    End
    Begin StaticText lbl_ccli_user_id
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   130
-      BehaviorIndex   =   1
    End
    Begin SEditField edt_ccli_user_id
       AcceptTabs      =   "False"
@@ -119,7 +117,6 @@ Begin Window CCLIWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   150
-      BehaviorIndex   =   20
    End
    Begin StaticText lbl_ccli_password
       AutoDeactivate  =   "True"
@@ -149,7 +146,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   130
-      BehaviorIndex   =   2
    End
    Begin SEditField edt_ccli_password
       AcceptTabs      =   "False"
@@ -191,7 +187,6 @@ Begin Window CCLIWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   150
-      BehaviorIndex   =   21
    End
    Begin StaticText lbl_search_for
       AutoDeactivate  =   "True"
@@ -221,7 +216,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   65
-      BehaviorIndex   =   3
    End
    Begin SEditField edt_search
       AcceptTabs      =   "False"
@@ -263,7 +257,6 @@ Begin Window CCLIWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   150
-      BehaviorIndex   =   22
    End
    Begin StaticText txt_search_by
       AutoDeactivate  =   "True"
@@ -293,7 +286,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   25
-      BehaviorIndex   =   4
    End
    Begin PopupMenu pop_by
       AutoDeactivate  =   "True"
@@ -321,7 +313,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   5
    End
    Begin StaticText txt_search_filter
       AutoDeactivate  =   "True"
@@ -351,7 +342,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   35
-      BehaviorIndex   =   6
    End
    Begin PopupMenu pop_filter
       AutoDeactivate  =   "True"
@@ -379,7 +369,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   7
    End
    Begin PushButton btn_song_find
       AutoDeactivate  =   "True"
@@ -406,7 +395,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   55
-      BehaviorIndex   =   8
    End
    Begin ListBox lst_found_songs
       AutoDeactivate  =   "True"
@@ -452,7 +440,6 @@ Begin Window CCLIWindow
       Width           =   540
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   9
    End
    Begin PushButton btn_page_previous_page
       AutoDeactivate  =   "True"
@@ -479,7 +466,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   110
-      BehaviorIndex   =   10
    End
    Begin PushButton btn_page_next_page
       AutoDeactivate  =   "True"
@@ -506,7 +492,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   110
-      BehaviorIndex   =   11
    End
    Begin StaticText txt_prefix_page
       AutoDeactivate  =   "True"
@@ -536,7 +521,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   50
-      BehaviorIndex   =   17
    End
    Begin PopupMenu pop_current_page
       AutoDeactivate  =   "True"
@@ -564,7 +548,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   50
-      BehaviorIndex   =   16
    End
    Begin StaticText txt_number_of_pages
       AutoDeactivate  =   "True"
@@ -594,7 +577,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   30
-      BehaviorIndex   =   12
    End
    Begin PushButton btn_song_import
       AutoDeactivate  =   "True"
@@ -621,7 +603,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   13
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -648,7 +629,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   14
    End
    Begin Separator sep_1
       AutoDeactivate  =   "True"
@@ -667,7 +647,6 @@ Begin Window CCLIWindow
       Top             =   60
       Visible         =   "True"
       Width           =   540
-      BehaviorIndex   =   15
    End
    Begin PopupMenu pop_by_values
       AutoDeactivate  =   "True"
@@ -695,7 +674,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "False"
       Width           =   10
-      BehaviorIndex   =   18
    End
    Begin PopupMenu pop_filter_values
       AutoDeactivate  =   "True"
@@ -723,7 +701,6 @@ Begin Window CCLIWindow
       Underline       =   "False"
       Visible         =   "False"
       Width           =   10
-      BehaviorIndex   =   19
    End
 End
 #tag EndWindow

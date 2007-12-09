@@ -45,7 +45,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Value           =   0
       Visible         =   "True"
       Width           =   495
-      BehaviorIndex   =   0
       Begin Canvas can_editor_general_song_editor
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -68,7 +67,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   485
-         BehaviorIndex   =   1
          Begin StaticText hdr_song_header
             AutoDeactivate  =   "True"
             Bold            =   "True"
@@ -97,7 +95,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   200
-            BehaviorIndex   =   2
          End
          Begin StaticText lbl_song_title
             AutoDeactivate  =   "True"
@@ -127,7 +124,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   220
-            BehaviorIndex   =   3
          End
          Begin SEditField edt_song_title
             AcceptTabs      =   "False"
@@ -169,7 +165,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   220
-            BehaviorIndex   =   29
          End
          Begin StaticText lbl_song_author
             AutoDeactivate  =   "True"
@@ -199,7 +194,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   220
-            BehaviorIndex   =   5
          End
          Begin SEditField edt_song_author
             AcceptTabs      =   "False"
@@ -241,7 +235,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   220
-            BehaviorIndex   =   24
          End
          Begin StaticText lbl_song_copyright
             AutoDeactivate  =   "True"
@@ -271,7 +264,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   225
-            BehaviorIndex   =   4
          End
          Begin SEditField edt_song_copyright
             AcceptTabs      =   "False"
@@ -313,7 +305,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   225
-            BehaviorIndex   =   26
          End
          Begin StaticText lbl_song_ccli
             AutoDeactivate  =   "True"
@@ -343,7 +334,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   6
          End
          Begin SEditField edt_song_ccli
             AcceptTabs      =   "False"
@@ -385,7 +375,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   25
          End
          Begin StaticText lbl_song_presentation
             AutoDeactivate  =   "True"
@@ -415,7 +404,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   7
          End
          Begin SEditField edt_song_presentation
             AcceptTabs      =   "False"
@@ -457,7 +445,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   28
          End
          Begin StaticText lbl_song_hymn_number
             AutoDeactivate  =   "True"
@@ -487,7 +474,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   8
          End
          Begin SEditField edt_song_hymn_number
             AcceptTabs      =   "False"
@@ -529,7 +515,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   27
          End
          Begin StaticText lbl_song_lyrics
             AutoDeactivate  =   "True"
@@ -559,7 +544,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   350
-            BehaviorIndex   =   10
          End
          Begin SEditField edf_song_lyrics
             AcceptTabs      =   "False"
@@ -601,7 +585,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   23
          End
          Begin StaticText lbl_song_insert
             AutoDeactivate  =   "True"
@@ -631,7 +614,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   9
          End
          Begin SButton btn_song_ins_section
             AcceptFocus     =   "True"
@@ -658,7 +640,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   20
          End
          Begin SButton btn_song_ins_lyrics
             AcceptFocus     =   "True"
@@ -685,7 +666,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   17
          End
          Begin SButton btn_song_ins_multi_verse
             AcceptFocus     =   "True"
@@ -712,7 +692,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   18
          End
          Begin SButton btn_song_ins_comment
             AcceptFocus     =   "True"
@@ -739,7 +718,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   16
          End
          Begin SButton btn_song_ins_column
             AcceptFocus     =   "True"
@@ -766,7 +744,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   15
          End
          Begin SButton btn_song_ins_page
             AcceptFocus     =   "True"
@@ -793,7 +770,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   19
          End
          Begin GroupBox grp_song_transpose
             AutoDeactivate  =   "True"
@@ -818,7 +794,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   100
-            BehaviorIndex   =   11
             Begin PopupMenu pop_song_transpose
                AutoDeactivate  =   "True"
                Bold            =   "False"
@@ -845,7 +820,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Underline       =   "False"
                Visible         =   "True"
                Width           =   50
-               BehaviorIndex   =   12
             End
             Begin StaticText lbl_song_using
                AutoDeactivate  =   "True"
@@ -875,7 +849,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Underline       =   "False"
                Visible         =   "True"
                Width           =   80
-               BehaviorIndex   =   14
             End
             Begin PopupMenu pop_song_accidentals
                AutoDeactivate  =   "True"
@@ -903,7 +876,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Underline       =   "False"
                Visible         =   "True"
                Width           =   80
-               BehaviorIndex   =   13
             End
          End
          Begin SButton btn_song_show_advanced_editor
@@ -931,7 +903,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   21
          End
          Begin SButton btn_song_show_general_editor
             AcceptFocus     =   "True"
@@ -958,7 +929,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   22
          End
       End
       Begin Canvas can_editor_advanced_song_editor
@@ -983,7 +953,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   485
-         BehaviorIndex   =   30
          Begin StaticText hdr_song_header_2
             AutoDeactivate  =   "True"
             Bold            =   "True"
@@ -1012,7 +981,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   200
-            BehaviorIndex   =   31
          End
          Begin StaticText lbl_song_themes
             AutoDeactivate  =   "True"
@@ -1042,7 +1010,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   175
-            BehaviorIndex   =   34
          End
          Begin ListBox lst_song_themes
             AutoDeactivate  =   "True"
@@ -1088,7 +1055,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   175
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
-            BehaviorIndex   =   40
          End
          Begin StaticText lbl_song_capo
             AutoDeactivate  =   "True"
@@ -1118,7 +1084,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   36
          End
          Begin PopupMenu pop_song_capo
             AutoDeactivate  =   "True"
@@ -1146,7 +1111,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   55
-            BehaviorIndex   =   45
          End
          Begin CheckBox chk_song_capo_print
             AutoDeactivate  =   "True"
@@ -1174,7 +1138,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   "True"
             Width           =   100
-            BehaviorIndex   =   32
          End
          Begin CheckBox chk_song_style
             AutoDeactivate  =   "True"
@@ -1202,7 +1165,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   "True"
             Width           =   102
-            BehaviorIndex   =   33
          End
          Begin SStyleCanvas can_song_style
             AcceptFocus     =   "True"
@@ -1227,7 +1189,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   102
-            BehaviorIndex   =   51
          End
          Begin StaticText lbl_song_key
             AutoDeactivate  =   "True"
@@ -1257,7 +1218,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   37
          End
          Begin SEditField edt_song_key
             AcceptTabs      =   "False"
@@ -1299,7 +1259,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   46
          End
          Begin StaticText lbl_song_time_sig
             AutoDeactivate  =   "True"
@@ -1329,7 +1288,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   41
          End
          Begin PopupMenu pop_song_time_sig
             AutoDeactivate  =   "True"
@@ -1357,7 +1315,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   48
          End
          Begin StaticText lbl_song_tempo
             AutoDeactivate  =   "True"
@@ -1387,7 +1344,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   39
          End
          Begin PopupMenu pop_song_tempo
             AutoDeactivate  =   "True"
@@ -1415,7 +1371,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   47
          End
          Begin StaticText lbl_song_aka
             AutoDeactivate  =   "True"
@@ -1445,7 +1400,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   35
          End
          Begin SEditField edt_song_aka
             AcceptTabs      =   "False"
@@ -1487,7 +1441,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   52
          End
          Begin StaticText lbl_song_key_line
             AutoDeactivate  =   "True"
@@ -1517,7 +1470,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   38
          End
          Begin SEditField edt_song_key_line
             AcceptTabs      =   "False"
@@ -1559,7 +1511,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   53
          End
          Begin StaticText lbl_song_user1_1
             AutoDeactivate  =   "True"
@@ -1589,7 +1540,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   42
          End
          Begin SEditField edt_song_user1
             AcceptTabs      =   "False"
@@ -1631,7 +1581,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   54
          End
          Begin StaticText lbl_song_user2
             AutoDeactivate  =   "True"
@@ -1661,7 +1610,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   43
          End
          Begin SEditField edt_song_user2
             AcceptTabs      =   "False"
@@ -1703,7 +1651,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   55
          End
          Begin StaticText lbl_song_user3
             AutoDeactivate  =   "True"
@@ -1733,7 +1680,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   44
          End
          Begin SEditField edt_song_user3
             AcceptTabs      =   "False"
@@ -1775,7 +1721,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   56
          End
          Begin SButton btn_song_show_general_editor_2
             AcceptFocus     =   "True"
@@ -1802,7 +1747,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   50
          End
          Begin SButton btn_song_show_advanced_editor_2
             AcceptFocus     =   "True"
@@ -1829,7 +1773,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   49
          End
       End
       Begin Canvas can_editor_slide_editor
@@ -1854,7 +1797,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   485
-         BehaviorIndex   =   57
          Begin StaticText hdr_slide_header
             AutoDeactivate  =   "True"
             Bold            =   "True"
@@ -1883,7 +1825,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   460
-            BehaviorIndex   =   58
          End
          Begin StaticText lbl_slide_title
             AutoDeactivate  =   "True"
@@ -1913,7 +1854,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   145
-            BehaviorIndex   =   62
          End
          Begin SEditField edt_slide_title
             AcceptTabs      =   "False"
@@ -1955,7 +1895,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   145
-            BehaviorIndex   =   63
          End
          Begin StaticText lbl_slide_subtitle
             AutoDeactivate  =   "True"
@@ -1985,7 +1924,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   145
-            BehaviorIndex   =   65
          End
          Begin SEditField edt_slide_subtitle
             AcceptTabs      =   "False"
@@ -2027,7 +1965,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   145
-            BehaviorIndex   =   82
          End
          Begin StaticText lbl_slide_name
             AutoDeactivate  =   "True"
@@ -2057,7 +1994,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   69
          End
          Begin SEditField edt_slide_name
             AcceptTabs      =   "False"
@@ -2099,7 +2035,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   72
          End
          Begin StaticText lbl_slide_slides
             AutoDeactivate  =   "True"
@@ -2129,7 +2064,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   71
          End
          Begin SEditField edt_slide_slides
             AcceptTabs      =   "False"
@@ -2171,7 +2105,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   81
          End
          Begin StaticText lbl_slide_insert
             AutoDeactivate  =   "True"
@@ -2201,7 +2134,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   78
          End
          Begin SButton btn_slide_ins_slide
             AcceptFocus     =   "True"
@@ -2228,7 +2160,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   66
          End
          Begin CheckBox chk_slide_loop
             AutoDeactivate  =   "True"
@@ -2256,7 +2187,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   "True"
             Width           =   110
-            BehaviorIndex   =   59
          End
          Begin CheckBox chk_slide_print
             AutoDeactivate  =   "True"
@@ -2284,7 +2214,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   "True"
             Width           =   110
-            BehaviorIndex   =   60
          End
          Begin StaticText lbl_slide_auto_advance
             AutoDeactivate  =   "True"
@@ -2314,7 +2243,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   75
          End
          Begin EditField edt_slide_auto_advance
             AcceptTabs      =   "False"
@@ -2356,7 +2284,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   40
-            BehaviorIndex   =   64
          End
          Begin StaticText txt_slide_seconds
             AutoDeactivate  =   "True"
@@ -2386,7 +2313,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   100
-            BehaviorIndex   =   80
          End
          Begin StaticText lbl_slide_presentation
             AutoDeactivate  =   "True"
@@ -2416,7 +2342,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   170
-            BehaviorIndex   =   74
          End
          Begin EditField edt_slide_order
             AcceptTabs      =   "False"
@@ -2458,7 +2383,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   170
-            BehaviorIndex   =   67
          End
          Begin StaticText lbl_slide_origorder
             AutoDeactivate  =   "True"
@@ -2488,7 +2412,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   77
          End
          Begin EditField edt_slide_origorder
             AcceptTabs      =   "False"
@@ -2530,7 +2453,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   68
          End
          Begin StaticText lbl_slide_folder
             AutoDeactivate  =   "True"
@@ -2560,7 +2482,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   170
-            BehaviorIndex   =   76
          End
          Begin SEditField edt_slide_folder
             AcceptTabs      =   "False"
@@ -2602,7 +2523,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   170
-            BehaviorIndex   =   83
          End
          Begin CheckBox chk_slide_style
             AutoDeactivate  =   "True"
@@ -2630,7 +2550,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   "True"
             Width           =   100
-            BehaviorIndex   =   61
          End
          Begin SStyleCanvas can_slide_style
             AcceptFocus     =   "True"
@@ -2655,7 +2574,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   102
-            BehaviorIndex   =   70
          End
          Begin StaticText lbl_slide_notes
             AutoDeactivate  =   "True"
@@ -2685,7 +2603,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   79
          End
          Begin SEditField edt_slide_notes
             AcceptTabs      =   "False"
@@ -2727,7 +2644,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   73
          End
       End
       Begin Canvas cnv_editor_style_change
@@ -2752,7 +2668,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   485
-         BehaviorIndex   =   84
          Begin StaticText hdr_style_header
             AutoDeactivate  =   "True"
             Bold            =   "True"
@@ -2781,7 +2696,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   460
-            BehaviorIndex   =   88
          End
          Begin RadioButton rad_style_revert
             AutoDeactivate  =   "True"
@@ -2807,7 +2721,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "True"
             Visible         =   "True"
             Width           =   250
-            BehaviorIndex   =   85
          End
          Begin RadioButton rad_style_change
             AutoDeactivate  =   "True"
@@ -2833,7 +2746,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   "True"
             Width           =   250
-            BehaviorIndex   =   86
          End
          Begin SStyleCanvas can_style_style
             AcceptFocus     =   "True"
@@ -2858,7 +2770,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   320
-            BehaviorIndex   =   87
          End
       End
    End
@@ -2882,7 +2793,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Value           =   0
       Visible         =   "True"
       Width           =   250
-      BehaviorIndex   =   89
       Begin Canvas can_controls_songs_mode
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -2905,7 +2815,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   240
-         BehaviorIndex   =   90
          Begin GroupBox grp_songs_all_songs
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -2929,7 +2838,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   110
-            BehaviorIndex   =   91
             Begin SButton btn_songs_print
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -2955,7 +2863,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   94
             End
             Begin SButton btn_songs_export
                AcceptFocus     =   "True"
@@ -2982,7 +2889,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   92
             End
             Begin SButton btn_songs_find
                AcceptFocus     =   "True"
@@ -3009,7 +2915,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   93
             End
          End
          Begin GroupBox grp_songs_new_song
@@ -3035,7 +2940,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   110
-            BehaviorIndex   =   95
             Begin SButton btn_song_create
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -3061,7 +2965,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   96
             End
             Begin SButton btn_song_import
                AcceptFocus     =   "True"
@@ -3088,7 +2991,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   97
             End
          End
          Begin GroupBox grp_songs_selected_song
@@ -3114,7 +3016,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   110
-            BehaviorIndex   =   98
             Begin SButton btn_song_save
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -3140,7 +3041,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   106
             End
             Begin SButton btn_song_revert
                AcceptFocus     =   "True"
@@ -3167,7 +3067,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   105
             End
             Begin SButton btn_song_print
                AcceptFocus     =   "True"
@@ -3194,7 +3093,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   103
             End
             Begin SButton btn_song_present
                AcceptFocus     =   "True"
@@ -3221,7 +3119,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   102
             End
             Begin SButton btn_song_export
                AcceptFocus     =   "True"
@@ -3248,7 +3145,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   100
             End
             Begin SButton btn_song_rename
                AcceptFocus     =   "True"
@@ -3275,7 +3171,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   104
             End
             Begin SButton btn_song_move
                AcceptFocus     =   "True"
@@ -3302,7 +3197,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   101
             End
             Begin SButton btn_song_delete
                AcceptFocus     =   "True"
@@ -3329,7 +3223,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   99
             End
          End
          Begin StaticText lbl_songs_song_folders
@@ -3360,7 +3253,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   230
-            BehaviorIndex   =   107
          End
          Begin PopupMenu pop_songs_song_folders
             AutoDeactivate  =   "True"
@@ -3388,7 +3280,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   190
-            BehaviorIndex   =   108
          End
          Begin SButton btn_songs_song_folders_add
             AcceptFocus     =   "True"
@@ -3415,7 +3306,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   18
-            BehaviorIndex   =   114
          End
          Begin SButton btn_songs_song_folders_delete
             AcceptFocus     =   "True"
@@ -3442,7 +3332,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   18
-            BehaviorIndex   =   113
          End
          Begin StaticText lbl_songs_songs
             AutoDeactivate  =   "True"
@@ -3472,7 +3361,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   230
-            BehaviorIndex   =   110
          End
          Begin ListBox lst_songs_songs
             AutoDeactivate  =   "True"
@@ -3518,7 +3406,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   230
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
-            BehaviorIndex   =   109
          End
          Begin StaticText lbl_songs_curr_folder
             AutoDeactivate  =   "True"
@@ -3548,7 +3435,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   230
-            BehaviorIndex   =   111
          End
          Begin EditField edt_songs_curr_folder
             AcceptTabs      =   "False"
@@ -3590,7 +3476,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   227
-            BehaviorIndex   =   112
          End
       End
       Begin Canvas can_controls_sets_mode
@@ -3615,7 +3500,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   240
-         BehaviorIndex   =   115
          Begin GroupBox grp_sets_sets
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -3639,7 +3523,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   230
-            BehaviorIndex   =   127
             Begin PopupMenu pop_sets_sets
                AutoDeactivate  =   "True"
                Bold            =   "False"
@@ -3666,7 +3549,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Underline       =   "False"
                Visible         =   "True"
                Width           =   185
-               BehaviorIndex   =   128
             End
             Begin SButton btn_sets_add
                AcceptFocus     =   "False"
@@ -3693,7 +3575,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   18
-               BehaviorIndex   =   129
             End
          End
          Begin GroupBox grp_set_current_set
@@ -3719,7 +3600,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   230
-            BehaviorIndex   =   130
             Begin SButton btn_set_save
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -3745,7 +3625,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   131
             End
             Begin SButton btn_set_rename
                AcceptFocus     =   "True"
@@ -3772,7 +3651,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   137
             End
             Begin SButton btn_set_delete
                AcceptFocus     =   "True"
@@ -3799,7 +3677,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   132
             End
             Begin SButton btn_set_saveas
                AcceptFocus     =   "True"
@@ -3826,7 +3703,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   138
             End
             Begin SButton btn_set_present
                AcceptFocus     =   "True"
@@ -3853,7 +3729,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   134
             End
             Begin SButton btn_set_print_songs
                AcceptFocus     =   "True"
@@ -3880,7 +3755,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   136
             End
             Begin SButton btn_set_print_order
                AcceptFocus     =   "True"
@@ -3907,7 +3781,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   135
             End
             Begin SButton btn_set_export
                AcceptFocus     =   "True"
@@ -3933,7 +3806,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   133
             End
          End
          Begin GroupBox grp_set_new_item
@@ -3959,7 +3831,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   110
-            BehaviorIndex   =   116
             Begin SButton btn_set_add_song
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -3985,7 +3856,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   117
             End
             Begin SButton btn_set_add_scripture
                AcceptFocus     =   "True"
@@ -4012,7 +3882,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   118
             End
             Begin SButton btn_set_add_slides
                AcceptFocus     =   "True"
@@ -4039,7 +3908,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   119
             End
             Begin SButton btn_set_add_style
                AcceptFocus     =   "True"
@@ -4066,7 +3934,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   120
             End
          End
          Begin GroupBox grp_set_current_item
@@ -4092,7 +3959,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   110
-            BehaviorIndex   =   121
             Begin SButton btn_set_move_up
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -4118,7 +3984,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   124
             End
             Begin SButton btn_set_move_down
                AcceptFocus     =   "True"
@@ -4145,7 +4010,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   123
             End
             Begin SButton btn_set_remove
                AcceptFocus     =   "True"
@@ -4172,7 +4036,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   125
             End
             Begin SButton btn_set_copy
                AcceptFocus     =   "True"
@@ -4199,7 +4062,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   122
             End
             Begin SButton btn_set_store
                AcceptFocus     =   "True"
@@ -4226,7 +4088,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   126
             End
          End
          Begin StaticText lbl_set_items
@@ -4257,7 +4118,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   139
          End
          Begin ListBox lst_set_items
             AutoDeactivate  =   "True"
@@ -4303,7 +4163,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   230
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
-            BehaviorIndex   =   140
          End
       End
    End
@@ -4332,7 +4191,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   200
-      BehaviorIndex   =   141
    End
    Begin SButton btn_mode_sets_mode
       AcceptFocus     =   "True"
@@ -4359,7 +4217,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   200
-      BehaviorIndex   =   142
    End
    Begin StaticText txt_context_help
       AutoDeactivate  =   "True"
@@ -4389,7 +4246,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Underline       =   "False"
       Visible         =   "True"
       Width           =   320
-      BehaviorIndex   =   143
    End
    Begin Separator sep_vertical
       AutoDeactivate  =   "True"
@@ -4408,7 +4264,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Top             =   35
       Visible         =   "True"
       Width           =   4
-      BehaviorIndex   =   144
    End
    Begin Separator sep_horizontal
       AutoDeactivate  =   "True"
@@ -4427,7 +4282,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Top             =   32
       Visible         =   "True"
       Width           =   750
-      BehaviorIndex   =   145
    End
    Begin Timer tmr_lookup
       ControlOrder    =   146
@@ -4437,7 +4291,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Period          =   1500
       TabPanelIndex   =   0
       Top             =   -18
-      BehaviorIndex   =   146
    End
    Begin ContextualMenu mnu_clipboard
       ControlOrder    =   147
@@ -4446,7 +4299,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabPanelIndex   =   0
       Top             =   26
       UseMacCMM       =   ""
-      BehaviorIndex   =   147
    End
 End
 #tag EndWindow
@@ -5617,10 +5469,7 @@ End
 		  lst_set_items.InsertRow lst_set_items.ListIndex + 1, lst_set_items.List(lst_set_items.ListIndex)
 		  
 		  SmartML.CloneChildren oldGroup, newGroup
-		  SmartML.SetValue newGroup, "@name", SmartML.GetValue(oldGroup, "@name")
-		  SmartML.SetValue newGroup, "@type", SmartML.GetValue(oldGroup, "@type")
-		  SmartML.SetValue newGroup, "@loop", SmartML.GetValue(oldGroup, "@loop")
-		  SmartML.SetValue newGroup, "@seconds", SmartML.GetValue(oldGroup, "@seconds")
+		  SmartML.CloneAttributes oldGroup, newGroup
 		  
 		  Status_SetChanged = True
 		  lst_set_items.ListIndex = lst_set_items.ListIndex + 1
@@ -5784,12 +5633,9 @@ End
 		    If targetFolder.Exists Then Exit
 		    targetFolder = targetFolder.Parent
 		  Wend
-  
-		  If targetFolder Is Nil Then dlg.InitialDirectory = DocumentsFolder
-  
-  
-		  targetFolder = dlg.ShowModal
 		  
+		  If targetFolder Is Nil Then dlg.InitialDirectory = DocumentsFolder
+		  targetFolder = dlg.ShowModal
 		  If targetFolder = Nil Then Return// User cancelled
 		  
 		  App.MainPreferences.SetValueFI(Prefs.kSetsLastExportFolder, targetFolder)

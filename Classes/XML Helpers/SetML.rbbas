@@ -18,10 +18,10 @@ Protected Module SetML
 		  // decided I couldn't state unequivocably that only one Style dictionary
 		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
 		  
-		  Dim Style As SlideStyle 
-		  Dim StyleIndex As String 
+		  Dim Style As SlideStyle
+		  Dim StyleIndex As String
 		  
-		  StyleIndex = SmartML.GetValue(xstyle, "@index") 
+		  StyleIndex = SmartML.GetValue(xstyle, "@index")
 		  If StyleIndex = "" Then 'is the XML a complete style?
 		    Style = New SlideStyle(xstyle)
 		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
@@ -244,7 +244,7 @@ Protected Module SetML
 		  Next i
 		  
 		  // Within reasonable wrapping limits?
-		  If MaxLineLen = 0 Then 
+		  If MaxLineLen = 0 Then
 		    Profiler.EndProfilerEntry
 		    GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
 		  End If
@@ -571,7 +571,7 @@ Protected Module SetML
 		  // "path of least astonishment" after spending hours to chase down what I thought
 		  // was a bug -- EMP)
 		  //--
-		  If style <> Nil Then 
+		  If style <> Nil Then
 		    If SlideType <> "song" Then Return style
 		    //++
 		    // Only need to determine if the song style or the set style has precedence if there
@@ -614,7 +614,7 @@ Protected Module SetML
 		        If reverting Then
 		          reverting = False
 		          prev_group = prev_group.PreviousSibling
-		        Else 
+		        Else
 		          Return SmartML.GetNode(prev_group, "style", False)
 		        End If
 		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
@@ -680,7 +680,7 @@ Protected Module SetML
 		  //++EMP 09/05
 		  'Take care of a corner case with this....since the loop counts upward, it can miss
 		  ' the case where two or more punctuation marks immediately follow each other
-		  ' example is something like: Here I am ("Here I am"), 
+		  ' example is something like: Here I am ("Here I am"),
 		  ' this should wrap after the comma, not the quote mark
 		  '
 		  c = mid(str, breakpoint + 1, 1)
@@ -756,5 +756,40 @@ Protected Module SetML
 	#tag EndMethod
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Module
 #tag EndModule

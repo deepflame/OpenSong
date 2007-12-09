@@ -69,7 +69,6 @@ Begin Window SongPickerWindow
       Width           =   395
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_add
       AutoDeactivate  =   "True"
@@ -96,7 +95,6 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   1
    End
    Begin PushButton btn_done
       AutoDeactivate  =   "True"
@@ -123,7 +121,6 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   2
    End
    Begin StaticText lbl_select_folder
       AutoDeactivate  =   "True"
@@ -153,7 +150,6 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   3
    End
    Begin PopupMenu pop_select_folder
       AutoDeactivate  =   "True"
@@ -181,7 +177,6 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   206
-      BehaviorIndex   =   4
    End
    Begin StaticText lbl_quick_lookup
       AutoDeactivate  =   "True"
@@ -211,7 +206,6 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   9
    End
    Begin SEditField edt_quick_lookup
       AcceptTabs      =   "False"
@@ -253,7 +247,6 @@ Begin Window SongPickerWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   179
-      BehaviorIndex   =   10
    End
    Begin StaticText lbl_song_preview
       AutoDeactivate  =   "True"
@@ -283,7 +276,6 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   7
    End
    Begin EditField edt_preview
       AcceptTabs      =   "False"
@@ -325,7 +317,6 @@ Begin Window SongPickerWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   397
-      BehaviorIndex   =   8
    End
    Begin StaticText txt_explanation_header
       AutoDeactivate  =   "True"
@@ -355,7 +346,6 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   378
-      BehaviorIndex   =   6
    End
    Begin Timer timerLookup
       ControlOrder    =   10
@@ -366,7 +356,6 @@ Begin Window SongPickerWindow
       Period          =   1500
       TabPanelIndex   =   0
       Top             =   23
-      BehaviorIndex   =   5
    End
 End
 #tag EndWindow
@@ -477,8 +466,8 @@ End
 
 #tag Bindings
 	#tag BeginBinding
-		SourceItem = lst_all_songs
-		DestinationItem = btn_add
+		SourceItem = 0
+		DestinationItem = 1
 		ItemType = enablingBinder
 		ItemDescription = Enable btn_add when lst_all_songs has a selection
 		SourceBindData = getSelectionProvider

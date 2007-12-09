@@ -50,7 +50,6 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   7
    End
    Begin ImageWell ImageWell1
       AutoDeactivate  =   "True"
@@ -70,7 +69,6 @@ Begin Window AboutWindow
       Top             =   14
       Visible         =   "True"
       Width           =   128
-      BehaviorIndex   =   1
    End
    Begin StaticText txt_about_version
       AutoDeactivate  =   "True"
@@ -100,7 +98,6 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   328
-      BehaviorIndex   =   2
    End
    Begin StaticText txt_about_copyright
       AutoDeactivate  =   "True"
@@ -130,7 +127,6 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   328
-      BehaviorIndex   =   3
    End
    Begin StaticText txt_about_gpl
       AutoDeactivate  =   "True"
@@ -160,7 +156,6 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   322
-      BehaviorIndex   =   4
    End
    Begin StaticText txt_about_web
       AutoDeactivate  =   "True"
@@ -190,7 +185,6 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   376
-      BehaviorIndex   =   8
    End
    Begin StaticText txt_about_programmers
       AutoDeactivate  =   "True"
@@ -220,7 +214,6 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   376
-      BehaviorIndex   =   6
    End
    Begin EditField edt_about_libraries
       AcceptTabs      =   ""
@@ -262,7 +255,6 @@ Begin Window AboutWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   376
-      BehaviorIndex   =   0
    End
    Begin StaticText txt_about_compiler
       AutoDeactivate  =   "True"
@@ -292,7 +284,6 @@ Begin Window AboutWindow
       Underline       =   ""
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   12
    End
    Begin StaticText txt_about_memory
       AutoDeactivate  =   "True"
@@ -322,7 +313,6 @@ Begin Window AboutWindow
       Underline       =   ""
       Visible         =   "True"
       Width           =   102
-      BehaviorIndex   =   9
    End
    Begin StaticText txt_about_objects
       AutoDeactivate  =   "True"
@@ -352,7 +342,6 @@ Begin Window AboutWindow
       Underline       =   ""
       Visible         =   "True"
       Width           =   102
-      BehaviorIndex   =   10
    End
    Begin StaticText txt_about_build
       AutoDeactivate  =   "True"
@@ -382,7 +371,6 @@ Begin Window AboutWindow
       Underline       =   ""
       Visible         =   "True"
       Width           =   102
-      BehaviorIndex   =   11
    End
    Begin StaticText txt_about_language
       AutoDeactivate  =   "True"
@@ -412,7 +400,6 @@ Begin Window AboutWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   376
-      BehaviorIndex   =   5
    End
 End
 #tag EndWindow

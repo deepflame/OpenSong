@@ -231,7 +231,7 @@ Protected Class Song
 		      User3 = TextNode(node)
 		      
 		    Case E_BACKGROUND
-		      // Background is deprecated, use style instead.  Ignore for now.  
+		      // Background is deprecated, use style instead.  Ignore for now.
 		      // Need to come up with a way to put this in a style object if a style doesn't exist for this song.
 		      
 		    Case Else
@@ -337,7 +337,7 @@ Protected Class Song
 		  // If a FolderItem isn't passed, the object should have one.
 		  //--
 		  If File <> Nil Then
-		    If SongFolderItem = Nil Then 
+		    If SongFolderItem = Nil Then
 		      SongFolderItem = File
 		    Else
 		      Return False
@@ -774,7 +774,6 @@ Protected Class Song
 	#tag Property, Flags = &h1
 		#tag Note
 			The author(s) of the song
-			
 		#tag EndNote
 		Protected SongAuthor As String
 	#tag EndProperty
@@ -788,7 +787,6 @@ Protected Class Song
 			The number assigned by CCLI for this song.
 			
 			This is NOT the church's CCLI license number.
-			
 		#tag EndNote
 		Protected SongCCLISongNumber As String
 	#tag EndProperty
@@ -796,7 +794,6 @@ Protected Class Song
 	#tag Property, Flags = &h1
 		#tag Note
 			Flag indicating if a change has been made to this object
-			
 		#tag EndNote
 		Protected SongChanged As Boolean
 	#tag EndProperty
@@ -804,7 +801,6 @@ Protected Class Song
 	#tag Property, Flags = &h1
 		#tag Note
 			Copyright information for the song.É
-			
 		#tag EndNote
 		Protected SongCopyright As String
 	#tag EndProperty
@@ -814,7 +810,6 @@ Protected Class Song
 			This is the custom presentation to be used for a song.
 			It will be empty while songs are being edited.
 			It will be filled in at presentation time.
-			
 		#tag EndNote
 		Protected SongCustomPresentation As String
 	#tag EndProperty
@@ -824,7 +819,6 @@ Protected Class Song
 			The FolderItem that points to the file on disk.
 			
 			Can be Nil if the song is being built in memory and hasn't been saved.
-			
 		#tag EndNote
 		Protected SongFolderItem As FolderItem
 	#tag EndProperty
@@ -844,7 +838,6 @@ Protected Class Song
 	#tag Property, Flags = &h1
 		#tag Note
 			The lyrics as a big, multi-line text string.
-			
 		#tag EndNote
 		Protected SongLyrics As String
 	#tag EndProperty
@@ -853,7 +846,6 @@ Protected Class Song
 		#tag Note
 			OK, this may seem a little weird...
 			This will hold a copy of the original Song object when edits start.
-			
 		#tag EndNote
 		Protected SongOriginalObject As Song
 	#tag EndProperty
@@ -862,7 +854,6 @@ Protected Class Song
 		#tag Note
 			This is the value that shows how the song will be presented on-screen.
 			It can be overridden by SongCustomPresentation (used by sets).
-			
 		#tag EndNote
 		Protected SongPresentation As String
 	#tag EndProperty
@@ -874,7 +865,6 @@ Protected Class Song
 	#tag Property, Flags = &h1
 		#tag Note
 			Custom style for the song.  May be Nil.
-			
 		#tag EndNote
 		Protected SongStyle As SlideStyle
 	#tag EndProperty
@@ -886,7 +876,6 @@ Protected Class Song
 	#tag Property, Flags = &h1
 		#tag Note
 			A list of all the themes associated with this song
-			
 		#tag EndNote
 		Protected SongThemes() As String
 	#tag EndProperty
@@ -899,7 +888,6 @@ Protected Class Song
 		#tag Note
 			The title of the song.
 			This does not have to be the same as the filename.
-			
 		#tag EndNote
 		Protected SongTitle As String
 	#tag EndProperty
@@ -987,5 +975,40 @@ Protected Class Song
 	#tag EndConstant
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

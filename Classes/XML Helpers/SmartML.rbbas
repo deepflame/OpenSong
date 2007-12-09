@@ -466,13 +466,13 @@ Protected Module SmartML
 		  If f = Nil Then
 		    ErrorCode = 1
 		    '++JRC Translated
-		     ErrorString = TranslateMessage("smartml/no_path", "The FolderItem object is Nil in XDocFromFile")
+		    ErrorString = TranslateMessage("smartml/no_path", "The FolderItem object is Nil in XDocFromFile")
 		    '--
 		    Return Nil
 		  ElseIf Not f.Exists Then
 		    ErrorCode = 2
 		    '++JRC Translated
-		     ErrorString = TranslateMessage("smartml/no_file",  "File does not exist in XDocFromFile: %s", f.AbsolutePath)
+		    ErrorString = TranslateMessage("smartml/no_file",  "File does not exist in XDocFromFile: %s", f.AbsolutePath)
 		    '--
 		    Return Nil
 		  End If
@@ -481,7 +481,7 @@ Protected Module SmartML
 		  If input = Nil Then
 		    ErrorCode = 4
 		    '++JRC Translated
-		     ErrorString = TranslateMessage("smartml/cant_open",  "Could not open %s in XDocFromFile: %s", f.AbsolutePath, CStr(f.LastErrorCode))
+		    ErrorString = TranslateMessage("smartml/cant_open",  "Could not open %s in XDocFromFile: %s", f.AbsolutePath, CStr(f.LastErrorCode))
 		    '--
 		    return nil
 		  End If
@@ -496,14 +496,14 @@ Protected Module SmartML
 		    Else
 		      ErrorCode = 5
 		      '++JRC Translated
-		       ErrorString = TranslateMessage("smartml/xml_error",  "LoadXML Error from file %s", f.AbsolutePath)
+		      ErrorString = TranslateMessage("smartml/xml_error",  "LoadXML Error from file %s", f.AbsolutePath)
 		      '--
 		      Return Nil
 		    End If
 		  Catch err As XmlException
 		    ErrorCode = 3
 		    '++JRC Translated
-		     ErrorString = TranslateMessage("smartml/xml_exterror",  "XmlException from LoadXML on file %s, %s, %s", f.AbsolutePath, err.Line, err.Node)
+		    ErrorString = TranslateMessage("smartml/xml_exterror",  "XmlException from LoadXML on file %s, %s, %s", f.AbsolutePath, err.Line, err.Node)
 		    '--
 		    Return Nil
 		  End Try
@@ -602,8 +602,8 @@ Protected Module SmartML
 		  // Even though Translator.Translate is defined with a paramarray argument, there's no way
 		  // to use one as input here and pass it along.  Therefore, only handle the most basic cases
 		  // (0, 1, 2 or 3)
-		  // 
-		  // This routine helps eliminate excessive If...Then coding in error traps by providing a 
+		  //
+		  // This routine helps eliminate excessive If...Then coding in error traps by providing a
 		  // means to generate a meaningful error message if the translator object is not loaded.
 		  //
 		  // Ed Palmer, June 2007
@@ -615,6 +615,21 @@ Protected Module SmartML
 		    Return App.T.Translate(id, param1, param2, param3)
 		  End If
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub CloneAttributes(fromNode As XmlNode, toNode As XmlNode)
+		  Dim i As Integer
+		  Dim attCount As Integer
+		  Dim att As XmlAttribute
+		  
+		  attCount = fromNode.AttributeCount
+		  
+		  For i = 0 To attCount - 1
+		    att = fromNode.GetAttributeNode(i)
+		    toNode.SetAttribute(att.Name, att.Value)
+		  Next
+		End Sub
 	#tag EndMethod
 
 
@@ -637,28 +652,33 @@ Protected Module SmartML
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

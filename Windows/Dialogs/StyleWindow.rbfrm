@@ -50,7 +50,6 @@ Begin Window StyleWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   70
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window StyleWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   70
-      BehaviorIndex   =   1
    End
    Begin GroupBox grp_style_fonts_and_alignment
       AutoDeactivate  =   "True"
@@ -102,7 +100,6 @@ Begin Window StyleWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   380
-      BehaviorIndex   =   2
       Begin StaticText lbl_font_title
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -131,7 +128,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   250
-         BehaviorIndex   =   3
       End
       Begin SFontCanvas can_font_title
          AcceptFocus     =   "False"
@@ -156,7 +152,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   250
-         BehaviorIndex   =   4
       End
       Begin StaticText lbl_font_align
          AutoDeactivate  =   "True"
@@ -186,7 +181,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   73
-         BehaviorIndex   =   5
       End
       Begin SAlignCanvas sal_align_title
          AcceptFocus     =   "False"
@@ -210,7 +204,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   44
-         BehaviorIndex   =   6
       End
       Begin StaticText lbl_font_subtitle
          AutoDeactivate  =   "True"
@@ -240,7 +233,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   250
-         BehaviorIndex   =   7
       End
       Begin SFontCanvas can_font_subtitle
          AcceptFocus     =   "False"
@@ -265,7 +257,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   250
-         BehaviorIndex   =   8
       End
       Begin SAlignCanvas sal_align_subtitle
          AcceptFocus     =   "False"
@@ -289,7 +280,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   44
-         BehaviorIndex   =   9
       End
       Begin StaticText lbl_font_body
          AutoDeactivate  =   "True"
@@ -319,7 +309,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   250
-         BehaviorIndex   =   10
       End
       Begin SFontCanvas can_font_body
          AcceptFocus     =   "False"
@@ -344,7 +333,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   250
-         BehaviorIndex   =   11
       End
       Begin SAlignCanvas sal_align_body
          AcceptFocus     =   "False"
@@ -368,7 +356,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   44
-         BehaviorIndex   =   12
       End
       Begin StaticText lbl_font_subtitles
          AutoDeactivate  =   "True"
@@ -398,7 +385,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   77
-         BehaviorIndex   =   13
       End
       Begin SubtitleList lst_song_subtitles
          AutoDeactivate  =   "True"
@@ -444,7 +430,6 @@ Begin Window StyleWindow
          Width           =   140
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
-         BehaviorIndex   =   14
       End
       Begin CheckBox chk_font_descriptive_subtitle_info
          AutoDeactivate  =   "True"
@@ -472,7 +457,6 @@ Begin Window StyleWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   300
-         BehaviorIndex   =   15
       End
       Begin CheckBox chk_font_highlight_chorus
          AutoDeactivate  =   "True"
@@ -500,7 +484,6 @@ Begin Window StyleWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   300
-         BehaviorIndex   =   16
       End
    End
    Begin GroupBox grp_style_background
@@ -526,7 +509,6 @@ Begin Window StyleWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   140
-      BehaviorIndex   =   17
       Begin StaticText lbl_background_color
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -555,7 +537,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   55
-         BehaviorIndex   =   18
       End
       Begin SColorCanvas can_background_color
          AcceptFocus     =   "False"
@@ -581,7 +562,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   19
       End
       Begin StaticText lbl_background_image
          AutoDeactivate  =   "True"
@@ -611,7 +591,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   80
-         BehaviorIndex   =   20
       End
       Begin SImageCanvas can_background_image
          AcceptFocus     =   "False"
@@ -636,7 +615,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   80
-         BehaviorIndex   =   21
       End
       Begin StaticText nte_background_click_to_change
          AutoDeactivate  =   "True"
@@ -666,7 +644,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   140
-         BehaviorIndex   =   22
       End
       Begin StaticText nte_background_right_click_to_clear
          AutoDeactivate  =   "True"
@@ -696,7 +673,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   140
-         BehaviorIndex   =   23
       End
       Begin StaticText lbl_background_position
          AutoDeactivate  =   "True"
@@ -726,7 +702,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   108
-         BehaviorIndex   =   24
       End
       Begin PopupMenu pop_background_position
          AutoDeactivate  =   "True"
@@ -754,7 +729,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   80
-         BehaviorIndex   =   25
       End
       Begin StaticText lbl_background_trim_bottom
          AutoDeactivate  =   "True"
@@ -784,7 +758,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   26
       End
       Begin SEditFieldNumeric edt_background_trim_bottom
          AcceptTabs      =   "False"
@@ -830,7 +803,6 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   27
       End
       Begin StaticText txt_background_pixels
          AutoDeactivate  =   "True"
@@ -860,7 +832,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   20
-         BehaviorIndex   =   28
       End
    End
    Begin StaticText nte_style_trim_note
@@ -891,7 +862,6 @@ Begin Window StyleWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   140
-      BehaviorIndex   =   29
    End
 End
 #tag EndWindow
@@ -1011,8 +981,8 @@ End
 
 #tag Bindings
 	#tag BeginBinding
-		SourceItem = can_background_color
-		DestinationItem = can_background_image
+		SourceItem = 19
+		DestinationItem = 21
 		ItemType = bindSColorCanvasAndSImageCanvas
 		ItemDescription = Update can_background_image with background color from can_background_color
 	#tag EndBinding

@@ -148,6 +148,8 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   41
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -200,6 +202,8 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   56
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -253,6 +257,8 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   140
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -276,6 +282,8 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   155
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -329,6 +337,8 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   239
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -352,6 +362,8 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   254
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -558,6 +570,8 @@ Begin Window StyleWindow
          LockTop         =   "False"
          MyColor         =   0
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -611,6 +625,8 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   105
          UseFocusRing    =   "True"
          Visible         =   "True"

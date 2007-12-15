@@ -356,6 +356,8 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   30
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -489,6 +491,8 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   155
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -541,6 +545,8 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   200
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -593,6 +599,8 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   245
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -617,6 +625,8 @@ Begin Window FontChooser
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   180
       UseFocusRing    =   "True"
       Visible         =   "True"

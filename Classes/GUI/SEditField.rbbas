@@ -83,6 +83,12 @@ Inherits EditField
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="ControlOrder"
+			Visible=true
+			Group="Position"
+			InheritedFrom="EditField"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
@@ -100,12 +106,6 @@ Inherits EditField
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="EditField"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="EditField"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -362,12 +362,6 @@ Inherits EditField
 			Type="Integer"
 			EditorType="Enum"
 			InheritedFrom="EditField"
-			#tag EnumValues
-				"0 - Default"
-				"1 - Left"
-				"2 - Center"
-				"3 - Right"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="DataSource"

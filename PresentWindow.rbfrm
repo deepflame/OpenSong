@@ -43,29 +43,43 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockRight       =   "True"
       LockTop         =   "True"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
       Visible         =   "True"
       Width           =   302
       Begin Timer timerAdvance
          ControlOrder    =   1
+         Enabled         =   "True"
+         Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
          Left            =   248
          Mode            =   0
          Period          =   10000
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   248
+         Visible         =   "True"
+         Width           =   32
       End
       Begin Timer timerTransition
          ControlOrder    =   2
+         Enabled         =   "True"
+         Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
          Left            =   204
          Mode            =   0
          Period          =   125
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   248
+         Visible         =   "True"
+         Width           =   32
       End
    End
 End
@@ -137,7 +151,7 @@ End
 
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If IsCMMClick Then
+		  If IsContextualClick Then
 		    Return KeyDownX(Chr(30))
 		  Else
 		    Return KeyDownX(Chr(31))
@@ -1475,6 +1489,24 @@ End
 		    App.MouseCursor = WatchCursor
 		    
 		    s = SmartML.XDocFromFile(f)
+		    
+		    '++JRC get song info for logging
+		    Dim Log As LogEntry
+		    
+		    If Globals.SongActivityLog <> Nil Then
+		      Log = New LogEntry(Globals.SongActivityLog)
+		      Dim d As New Date
+		      
+		      Log.Title = SmartML.GetValue(s.DocumentElement, "title", True)
+		      Log.Author = SmartML.GetValue(s.DocumentElement, "author", True)
+		      Log.CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		      Log.SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
+		      Log.DateAndTime = d
+		      Log.HasChords = Log.CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		      Log.Presented = True
+		    End If
+		    '--
+		    
 		    SongML.ToSetML s.DocumentElement
 		    If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
 		      App.MouseCursor = Nil
@@ -1482,6 +1514,17 @@ End
 		      newGroup.Parent.RemoveChild newGroup
 		      Return False
 		    End If
+		    
+		    '++JRC Log Song Presentation
+		    'TODO determine if the user actually displays this song (uug)
+		    If Globals.SongActivityLog <> Nil Then
+		      If NOT Log.AddLogEntry Then
+		        MsgBox "Error Adding log entry!"
+		      Else
+		        Log.UpdateNumEntries(Globals.SongActivityLog)
+		      End If
+		    End If
+		    '--
 		    
 		    newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
 		    

@@ -100,6 +100,12 @@ Inherits Listbox
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="ControlOrder"
+			Visible=true
+			Group="Position"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
@@ -117,12 +123,6 @@ Inherits Listbox
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -292,14 +292,6 @@ Inherits Listbox
 			Type="Integer"
 			EditorType="Enum"
 			InheritedFrom="Listbox"
-			#tag EnumValues
-				"0 - Default"
-				"1 - None"
-				"2 - ThinDotted"
-				"3 - ThinSolid"
-				"4 - ThickSolid"
-				"5 - DoubleThinSolid"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="GridLinesVertical"
@@ -309,14 +301,6 @@ Inherits Listbox
 			Type="Integer"
 			EditorType="Enum"
 			InheritedFrom="Listbox"
-			#tag EnumValues
-				"0 - Default"
-				"1 - None"
-				"2 - ThinDotted"
-				"3 - ThinSolid"
-				"4 - ThickSolid"
-				"5 - DoubleThinSolid"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="DefaultRowHeight"
@@ -415,10 +399,6 @@ Inherits Listbox
 			Type="Integer"
 			EditorType="Enum"
 			InheritedFrom="Listbox"
-			#tag EnumValues
-				"0 - Single"
-				"1 - Multiple"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="ColumnsResizable"

@@ -40,6 +40,8 @@ Begin Window ProgressWindow
       LockTop         =   "False"
       Maximum         =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   25
       Value           =   0
       Visible         =   "True"

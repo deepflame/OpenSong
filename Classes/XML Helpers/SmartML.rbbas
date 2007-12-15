@@ -1,6 +1,21 @@
 #tag Module
 Protected Module SmartML
 	#tag Method, Flags = &h0
+		Sub CloneAttributes(fromNode As XmlNode, toNode As XmlNode)
+		  Dim i As Integer
+		  Dim attCount As Integer
+		  Dim att As XmlAttribute
+		  
+		  attCount = fromNode.AttributeCount
+		  
+		  For i = 0 To attCount - 1
+		    att = fromNode.GetAttributeNode(i)
+		    toNode.SetAttribute(att.Name, att.Value)
+		  Next
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub CloneChildren(fromNode As XmlNode, toNode As XmlNode)
 		  Dim xchild As XmlNode
 		  xchild = fromNode.FirstChild
@@ -618,18 +633,59 @@ Protected Module SmartML
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub CloneAttributes(fromNode As XmlNode, toNode As XmlNode)
-		  Dim i As Integer
-		  Dim attCount As Integer
-		  Dim att As XmlAttribute
+		Sub SetValueDate(xnode As XmlNode, childPath As String, D As Date)
+		  If D = Nil Then Return
 		  
-		  attCount = fromNode.AttributeCount
-		  
-		  For i = 0 To attCount - 1
-		    att = fromNode.GetAttributeNode(i)
-		    toNode.SetAttribute(att.Name, att.Value)
-		  Next
+		  SetValue xnode, childPath, D.SQLDate
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetValueTime(xnode As XmlNode, childPath As String, T As Date)
+		  'TODO Internationalize & cross-platform
+		  If T = Nil Then Return
+		  Dim timeString As String
+		  
+		  timeString = T.SQLDateTime
+		  timeString = Mid(timeString, Len(T.SQLDate) + 2)
+		  SetValue xnode, childPath, timeString
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetValueDate(xnode As XmlNode, childPath As String, create As Boolean = True, default As Date = Nil) As Date
+		  'TODO Internationalize & cross-platform
+		  
+		  Dim s As String
+		  Dim d As New Date
+		  
+		  s = GetValue(xnode, childPath, create)
+		  If create And Len(s) = 0 Then
+		    SetValueDate(xnode, childPath, default)
+		    Return default
+		  End If
+		  d.SQLDate = s
+		  return d
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetValueTime(xnode As XmlNode, childPath As String, create As Boolean = True, default As Date = Nil) As Date
+		  'TODO Internationalize & cross-platform
+		  
+		  Dim s As String
+		  Dim d As New Date
+		  
+		  s = GetValue(xnode, childPath, create)
+		  If create And Len(s) = 0 Then
+		    SetValueTime(xnode, childPath, default)
+		    Return default
+		  End If
+		  d.SQLDateTime = d.SQLDate + " " + s
+		  return d
+		  
+		End Function
 	#tag EndMethod
 
 

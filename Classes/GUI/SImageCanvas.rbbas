@@ -24,7 +24,7 @@ Inherits SBufferedCanvas
 		  Dim f As FolderItem
 		  Dim c As New Clipboard
 		  If Enabled Then
-		    If IsCMMClick Then
+		    If IsContextualClick Then
 		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
 		        Image = Nil
 		        Base64 = ""
@@ -248,6 +248,12 @@ Inherits SBufferedCanvas
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="ControlOrder"
+			Visible=true
+			Group="Position"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
@@ -265,12 +271,6 @@ Inherits SBufferedCanvas
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty

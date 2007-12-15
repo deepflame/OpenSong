@@ -66,6 +66,8 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   14
       Visible         =   "True"
       Width           =   128

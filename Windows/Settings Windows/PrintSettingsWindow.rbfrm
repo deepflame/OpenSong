@@ -86,6 +86,7 @@ Begin Window PrintSettingsWindow
       Height          =   275
       HelpTag         =   ""
       Index           =   -2147483648
+      InitialParent   =   ""
       Italic          =   "False"
       Left            =   10
       LockBottom      =   "False"
@@ -121,6 +122,8 @@ Begin Window PrintSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   35
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -173,6 +176,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   50
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -226,6 +231,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   105
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -279,6 +286,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   160
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -332,6 +341,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   215
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -385,6 +396,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   50
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -438,6 +451,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   105
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -491,6 +506,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   160
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -515,6 +532,8 @@ Begin Window PrintSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   2
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   35
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -635,6 +654,8 @@ Begin Window PrintSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   3
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   35
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -952,6 +973,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   3
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   80
             TopLeftColor    =   0
             Visible         =   "True"

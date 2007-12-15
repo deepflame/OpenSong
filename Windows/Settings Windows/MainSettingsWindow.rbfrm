@@ -86,6 +86,7 @@ Begin Window MainSettingsWindow
       Height          =   410
       HelpTag         =   ""
       Index           =   -2147483648
+      InitialParent   =   ""
       Italic          =   ""
       Left            =   20
       LockBottom      =   "True"
@@ -685,6 +686,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   77
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -738,6 +741,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   127
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -791,6 +796,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   177
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -844,6 +851,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   227
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -926,6 +935,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   327
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -978,6 +989,8 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   277
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -1655,6 +1668,9 @@ End
 		  Else
 		    logLevelNew = pop_logging_level.Text.CDbl
 		  End If
+		  
+		  '++JRC Lets save the new log level (Sleepy time Ed ;)
+		  App.MainPreferences.SetValueN(App.kLogLevel, logLevelNew)
 		  
 		  App.DebugWriter.Level = logLevelNew
 		End Sub

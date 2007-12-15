@@ -41,6 +41,8 @@ Begin Window PrintWindow
       PanelCount      =   2
       Panels          =   ""
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   43
       Value           =   0
       Visible         =   "True"
@@ -63,6 +65,8 @@ Begin Window PrintWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -89,6 +93,8 @@ Begin Window PrintWindow
       Minimum         =   0
       PageStep        =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   0
       Value           =   0
       Visible         =   "True"
@@ -114,6 +120,8 @@ Begin Window PrintWindow
       Minimum         =   0
       PageStep        =   20
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   394
       Value           =   0
       Visible         =   "True"
@@ -135,6 +143,8 @@ Begin Window PrintWindow
       PanelCount      =   1
       Panels          =   ""
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   0
       Value           =   0
       Visible         =   "True"

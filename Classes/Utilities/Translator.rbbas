@@ -444,6 +444,37 @@ Protected Class Translator
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub LoadPopup(path As String, popCont As PopupMenu)
+		  //++
+		  // Load the possible selections for a PopupMenu control
+		  //
+		  // Ed Palmer, November 2007
+		  //--
+		  Dim valueNodes As XmlNodeList
+		  Dim tagNode As XmlAttribute
+		  
+		  If Left(path, 1) <> "/" Then path = "/" + path
+		  path = "/language" + path + "/value"
+		  
+		  Try
+		    valueNodes = Document.Xql(path)
+		  Catch e As XmlException
+		    App.DebugWriter.Write "Translator.LoadPopup: XML error looking for '" + path + "'", 1
+		    App.DebugWriter.Write "Error is '" + RuntimeException(e).Message, 1
+		    Return
+		  End Try
+		  
+		  For i As Integer = 0 To valueNodes.Length - 1
+		    popCont.AddRow(valueNodes.Item(i).GetText)
+		    tagNode = valueNodes.Item(i).GetAttributeNode("tag")
+		    If Not (tagNode Is Nil) Then
+		      popCont.RowTag(i) = tagNode.Value
+		    End If
+		  Next
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h1
 		Protected Document As XmlDocument

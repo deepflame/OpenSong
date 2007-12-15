@@ -242,6 +242,12 @@ Protected Class Report
 		    Next CopyCount
 		  #endif
 		  
+		  '++JRC
+		  If NOT LogPrintedSongs Then
+		    'TODO Error
+		  End If
+		  '--
+		  
 		  //
 		  // For some reason, if this isn't done a second printing pass won't work
 		  //
@@ -249,6 +255,31 @@ Protected Class Report
 		  App.DebugWriter.Write "Report.Print: Printed " + str(PagesPrinted) + " pages"
 		  App.DebugWriter.Write "Report.Print: Exit"
 		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function LogPrintedSongs() As Boolean
+		  '++JRC
+		  If Globals.SongActivityLog <> Nil Then
+		    Dim i As Integer
+		    
+		    For i = 0 To Ubound(Log)
+		      If Log(i) <> Nil Then
+		        If NOT Log(i).AddLogEntry Then
+		          MsgBox "Error Adding log entry!"
+		          return false
+		        Else
+		          Log(i).UpdateNumEntries(Globals.SongActivityLog)
+		        End If
+		      End If
+		    Next i
+		    
+		    return true
+		  End If
+		  
+		  Return false
+		  '--
 		End Function
 	#tag EndMethod
 
@@ -296,6 +327,10 @@ Protected Class Report
 
 	#tag Property, Flags = &h0
 		TopMargin As Double
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Log() As LogEntry
 	#tag EndProperty
 
 

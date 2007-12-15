@@ -79,6 +79,10 @@ Inherits Report
 		    App.MouseCursor = WatchCursor
 		  End If
 		  
+		  '++JRC
+		  Dim d As New Date
+		  '--
+		  
 		  For i = 0 to UBound(Songs)
 		    If ProgressWindowVisible Then
 		      If Not ProgressWindow.SetProgress(i) Then
@@ -92,6 +96,19 @@ Inherits Report
 		      If ProgressWindowVisible Then ProgressWindow.SetStatus f.DisplayName
 		      If s <> Nil Then
 		        Try
+		          '++JRC get song info for logging
+		          If Globals.SongActivityLog <> Nil Then
+		            Log.Append( New LogEntry(Globals.SongActivityLog))
+		            Log(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
+		            Log(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
+		            Log(i).CCLISongNumber =  SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		            Log(i).SongFileName =   f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
+		            Log(i).DateAndTime = d
+		            Log(i).HasChords = Log(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		            Log(i).Printed = True
+		          End If
+		          '--
+		          
 		          Song = SongML.Draw(s, pic.Graphics, Zoom, RunningPage)
 		          // Unroll the returned Group2D into individual pages
 		          For j = 0 to Song.Count - 1

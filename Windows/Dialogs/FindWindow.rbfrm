@@ -116,6 +116,8 @@ Begin Window FindWindow
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   25
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -142,6 +144,8 @@ Begin Window FindWindow
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   50
       UseFocusRing    =   "True"
       Visible         =   "True"

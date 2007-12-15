@@ -436,7 +436,7 @@ Protected Class FolderDB
 		Private Function GetFilesInFolderWin(path As String, list As ListBox = Nil, recurse As Boolean = False) As String()
 		  #If Not TargetWin32
 		    Return GetFilesInFolderGeneric(path, list, recurse)
-		  #endif
+		  #EndIf
 		  
 		  Dim fileDict() As Dictionary
 		  Dim startPath As String
@@ -452,17 +452,11 @@ Protected Class FolderDB
 		  Dim last As Integer
 		  last = UBound(fileDict)
 		  
-		  For i As Integer = 0 to last
-		    // Only add it if it isn't a folder or hidden
-		    If (Not fileDict(i).Value("Hidden").BooleanValue) And _
-		      (Not fileDict(i).Value("Folder").BooleanValue) And _
-		      Left(fileDict(i).Value("Name"), 1) <> "_" And _
-		      Left(fileDict(i).Value("Name"), 1) <> "." Then
-		      fileList.Append fileDict(i).Value("Name")
-		      If list <> Nil Then
-		        list.AddRow fileDict(i).Value("Name")
-		        list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
-		      End If
+		  For i As Integer = 0 To last
+		    fileList.Append fileDict(i).Value("Name")
+		    If list <> Nil Then
+		      list.AddRow fileDict(i).Value("Name")
+		      list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
 		    End If
 		  Next
 		  
@@ -601,7 +595,10 @@ Protected Class FolderDB
 		          end if
 		          
 		          // Add the current item to our list
-		          If (Not temp.Value("Hidden").BooleanValue) And Left(temp.Value("Name"), 1) <> "_" And Left(temp.Value("Name"), 1) <> "." Then
+		          If (Not temp.Value("Hidden").BooleanValue) _
+		            And Left(temp.Value("Name"), 1) <> "_" _
+		            And Left(temp.Value("Name"), 1) <> "." _
+		            Then
 		            FileList.Append( temp )
 		            
 		            if recursive and temp.value("Folder").BooleanValue then
@@ -763,7 +760,11 @@ Protected Class FolderDB
 		            temp.value("Folder") = false
 		          end if
 		          
-		          If temp.Value("Folder").BooleanValue Then
+		          // only append visible folders
+		          If temp.Value("Folder").BooleanValue _
+		            And Not temp.Value("Hidden").BooleanValue _
+		            And Left(temp.Value("Name"), 1) <> "." _
+		            Then
 		            // Add the current item to our list
 		            FileList.Append( temp )
 		            
@@ -787,21 +788,17 @@ Protected Class FolderDB
 
 	#tag Method, Flags = &h21
 		Private Function GetFoldersWin() As String()
-		  #if Not TargetWin32
+		  #If Not TargetWin32
 		    Return GetFoldersGeneric(Folder)
-		  #endif
-		  
-		  Dim ret() As String
-		  Dim s As String
-		  Dim folderName As String
+		  #EndIf
 		  
 		  Dim fileDict() As Dictionary
 		  win32GetFolderList(fileDict, Folder.AbsolutePath, "", "*.*", True)
 		  
-		  For Each d As Dictionary in fileDict
-		    s = d.Value("Name").StringValue
-		    If Left(s, 1) = "." Or Left(s, 1) = "_" Then Continue
-		    ret.Append ReplaceAll(d.Value("Path") + d.Value("Name"), "\", "/")
+		  Dim ret() As String
+		  
+		  For Each d As Dictionary In fileDict
+		    ret.Append(ReplaceAll((d.Value("Path") + d.Value("Name")), "\", "/"))
 		  Next
 		  
 		  Return ret

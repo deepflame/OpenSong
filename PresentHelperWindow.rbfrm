@@ -114,6 +114,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   25
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -140,6 +142,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -166,6 +170,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   75
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -192,6 +198,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   100
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -218,6 +226,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   125
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -244,6 +254,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   150
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -268,6 +280,8 @@ Begin Window PresentHelperWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   224
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -346,6 +360,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   210
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -372,6 +388,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   235
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -398,6 +416,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   260
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -424,6 +444,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   285
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -450,6 +472,8 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   310
          UseFocusRing    =   "True"
          Visible         =   "True"

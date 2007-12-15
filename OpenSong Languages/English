@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.2.0">
+<language name="English" author="Sean Lickfold" version="1.3.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -265,6 +265,7 @@
       <print caption="_Print"/>
       <print_alphabetical_toc caption="Print _Alphabetical TOC"/>
       <print_categorical_toc caption="Print _Categorical TOC"/>
+      <song_act caption="View Song Activity _Log"/>
       <quit caption="E_xit"/>
     </file>
     <edit caption="_Edit">
@@ -330,7 +331,7 @@
       <change caption="Change"/>
       <oldfolderdb caption="Use pre-V1.1 file cache"/>
     </documents_folder>
-    <logging caption="Log settings">
+    <logging caption="Debug Log Settings">
       <append caption="Append to log file"/>
       <console caption="Log to system console"/>
       <level caption="Log level" disabled="Disabled"/>
@@ -592,6 +593,11 @@ There isn't much to a comment line. Comment lines are any lines that start with 
 &lt;h2&gt;Column Breaks&lt;/h2&gt;
 
 If a line contains only three dashes ("---"), lyrics sheets will print with a second column starting at the column break.
+
+&lt;h2&gt;Page Breaks&lt;/h2&gt;
+
+If a line contains ("-!!") this indicates the location where a page break should be placed in the lead sheet when printing longer songs.
+
 </format>
 
     <presentation>
@@ -721,6 +727,38 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <lookup caption="Quick Lookup"/>
   </song_lookup>
 
+  <song_activity title="Song Activity Log">
+    <range caption="Date range (mm/dd/yyyy)"></range>
+    <to caption="to"/>
+    <find caption="Find"></find>
+    <clear_log caption="Clear log"></clear_log>
+    <print caption="Print"></print>
+    <export caption="Export"/>
+    <done caption="Done"/>
+    <show caption="Show">
+      <!-- 
+        "tag" attribute corresponds to the value of the
+        constants found in the LogEntry class. The list order
+        can be changed as desired for localisation (note that it is
+        alphabetical in English) as long as the tags relate to the
+        correct item.  For example, the local language value of "Moved"
+        should always have tag="4"
+      -->
+      <value tag="0">All</value>
+      <value tag="1">Created</value>
+      <value tag="2">Deleted</value>
+      <value tag="3">Modified</value>
+      <value tag="4">Moved</value>
+      <value tag="5">Presented</value>
+      <value tag="6">Printed</value>
+      <value tag="7">Renamed</value>
+    </show>
+    <songs head7="Has Chords" head6="CCLI #" head5="Author" head4="Title" head3="Activity" head2="Time" head1="Date"/> 
+    <input_box>
+      <erase_all>This will erase all entries. Continue?</erase_all>
+    </input_box>
+    <description>Created|Deleted|Modified|Moved|Presented|Printed|Renamed</description>
+  </song_activity>
   <scripture_lookup title="Scripture Lookup">
     <book caption="Bible Book"/>
     <lookup caption="Quick Lookup">
@@ -991,12 +1029,12 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <create_sets_folder>Could not create/edit Sets folder %1</create_sets_folder>
     <create_settings_folder>Could not create Settings folder: %1</create_settings_folder>
     <create_songs_folder>Could not create songs folder: %1</create_songs_folder>
-    <no_backgrounds_folder>Can't find default Backgrounds folder: %1</no_backgrounds_folder>
-    <no_defaults_folder>Can't find Defaults folder: %1</no_defaults_folder>
-    <no_scripture_folder>Can't find Scriptures folder: %1</no_scripture_folder>
-    <no_sets_folder>Can't find default Sets folder: %1</no_sets_folder>
-    <no_settings_folder>Can't find default Settings folder: %1</no_settings_folder>
-    <no_songs_folder>Can't find default Songs folder: %1</no_songs_folder>
+    <no_backgrounds_folder>Can't find default Backgrounds folder: %1, or folder is empty</no_backgrounds_folder>
+    <no_defaults_folder>Can't find Defaults folder: %1, or folder is empty</no_defaults_folder>
+    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty</no_scripture_folder>
+    <no_sets_folder>Can't find default Sets folder: %1, or folder is empty</no_sets_folder>
+    <no_settings_folder>Can't find default Settings folder: %1, or folder is empty</no_settings_folder>
+    <no_songs_folder>Can't find default Songs folder: %1, or folder is empty</no_songs_folder>
     <no_docs_folder>Could not create/find Documents folder: %1</no_docs_folder>
     <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
 Temporarily changing to: %1

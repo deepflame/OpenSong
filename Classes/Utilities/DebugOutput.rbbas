@@ -43,6 +43,7 @@ Protected Class DebugOutput
 		  
 		  If NewLevel < MINDEBUGLEVEL Then
 		    Enabled = False
+		    Return '++JRC Prevent OOB Exception when NewLevel = 0 (Disabled)
 		  End If
 		  
 		  If NewLevel >= MINDEBUGLEVEL And NewLevel <= MAXDEBUGLEVEL Then

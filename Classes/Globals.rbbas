@@ -186,6 +186,10 @@ Protected Module Globals
 		Protected WhitespaceChars() As string
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		SongActivityLog As ActivityLog
+	#tag EndProperty
+
 
 	#tag Constant, Name = CTRL_V, Type = Integer, Dynamic = False, Default = \"22", Scope = Public
 	#tag EndConstant

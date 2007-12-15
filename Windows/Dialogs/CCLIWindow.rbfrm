@@ -43,6 +43,8 @@ Begin Window CCLIWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   5
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -644,6 +646,8 @@ Begin Window CCLIWindow
       LockRight       =   "True"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   60
       Visible         =   "True"
       Width           =   540

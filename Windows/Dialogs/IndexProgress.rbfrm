@@ -40,6 +40,8 @@ Begin Window IndexProgress
       LockTop         =   "False"
       Maximum         =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   60
       Value           =   0
       Visible         =   "True"

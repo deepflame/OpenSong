@@ -349,13 +349,19 @@ Begin Window SongPickerWindow
    End
    Begin Timer timerLookup
       ControlOrder    =   10
+      Enabled         =   "True"
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   228
       Mode            =   2
       Period          =   1500
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   23
+      Visible         =   "True"
+      Width           =   32
    End
 End
 #tag EndWindow
@@ -513,7 +519,8 @@ End
 		  Const ASC_KEY_ESCAPE = 27
 		  
 		  Select Case Asc(key)
-		  Case 13, 10 'Enter, Return
+		    '++JRC Make Num-pad Enter work again (bug #1803093)
+		  Case 3, 13, 10 'Enter, Return
 		    AddSong = True
 		    Close
 		    Return True
@@ -589,7 +596,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
-		  Me.SetFocus
+		  'Me.SetFocus
 		End Sub
 	#tag EndEvent
 #tag EndEvents

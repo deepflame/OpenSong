@@ -46,6 +46,8 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -72,6 +74,8 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"

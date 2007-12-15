@@ -120,6 +120,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "True"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   328
       Visible         =   "True"
       Width           =   475
@@ -144,6 +146,8 @@ Begin Window ImageChooserWindow
       Minimum         =   0
       PageStep        =   3
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   1
       Value           =   0
       Visible         =   "True"
@@ -167,6 +171,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -190,6 +196,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -213,6 +221,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -236,6 +246,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -259,6 +271,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -282,6 +296,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -305,6 +321,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -328,6 +346,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -351,6 +371,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -374,6 +396,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -397,6 +421,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -420,6 +446,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -443,6 +471,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -466,6 +496,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -489,6 +521,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -512,6 +546,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -535,6 +571,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -558,6 +596,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -581,6 +621,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -604,6 +646,8 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
       Visible         =   "True"

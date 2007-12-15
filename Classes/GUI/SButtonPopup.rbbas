@@ -15,6 +15,12 @@ Inherits ContextualMenu
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="ControlOrder"
+			Visible=true
+			Group="Position"
+			InheritedFrom="ContextualMenu"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
@@ -32,12 +38,6 @@ Inherits ContextualMenu
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="ContextualMenu"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="ContextualMenu"
 		#tag EndViewProperty
 		#tag ViewProperty

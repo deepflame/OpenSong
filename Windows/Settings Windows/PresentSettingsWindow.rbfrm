@@ -86,6 +86,7 @@ Begin Window PresentSettingsWindow
       Height          =   385
       HelpTag         =   ""
       Index           =   -2147483648
+      InitialParent   =   ""
       Italic          =   "False"
       Left            =   10
       LockBottom      =   "True"
@@ -151,6 +152,8 @@ Begin Window PresentSettingsWindow
          LockTop         =   "False"
          SongStyle       =   "True"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   80
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -233,6 +236,8 @@ Begin Window PresentSettingsWindow
          LockTop         =   "False"
          SongStyle       =   "False"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   80
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -337,6 +342,8 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   292
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -390,6 +397,8 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   272
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -438,6 +447,8 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   95
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -549,6 +560,8 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   238
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -711,6 +724,8 @@ Begin Window PresentSettingsWindow
             Minimum         =   0
             PageStep        =   1
             TabPanelIndex   =   2
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   99
             Value           =   5
             Visible         =   "True"
@@ -805,6 +820,8 @@ Begin Window PresentSettingsWindow
             Minimum         =   50
             PageStep        =   20
             TabPanelIndex   =   2
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   135
             Value           =   100
             Visible         =   "True"
@@ -1107,6 +1124,8 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   2
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   305
             UseFocusRing    =   "False"
             Visible         =   "True"
@@ -1627,12 +1646,19 @@ Begin Window PresentSettingsWindow
    End
    Begin Timer AudioTimer
       ControlOrder    =   58
+      Enabled         =   "True"
+      Height          =   32
       Index           =   -2147483648
+      InitialParent   =   ""
       Left            =   418
       Mode            =   2
       Period          =   500
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   400
+      Visible         =   "True"
+      Width           =   32
    End
 End
 #tag EndWindow

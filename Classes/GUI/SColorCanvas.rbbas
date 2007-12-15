@@ -7,7 +7,7 @@ Implements actionSource
 		  Dim c As Color
 		  
 		  If Enabled Then
-		    If IsCMMClick Then
+		    If IsContextualClick Then
 		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
 		        IsColorSet = False
 		        Action
@@ -138,6 +138,12 @@ Implements actionSource
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="ControlOrder"
+			Visible=true
+			Group="Position"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
@@ -155,12 +161,6 @@ Implements actionSource
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty

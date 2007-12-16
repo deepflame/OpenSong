@@ -72,7 +72,7 @@ Inherits MemoryBlock
 		    dim OSError as Integer = FSMakeFSSpec(0, 0, "", me)
 		    If OSError <> noError and OSError <> fileNotFound then
 		      Raise new MacOSException("FSMakeFSSpec", OSError)
-		    End if 
+		    End if
 		  Else
 		    dim OSError as Integer = FSGetCatalogInfo(theFSRef, kFSCatInfoNone, Nil, Nil, me, Nil)
 		    If OSError <> 0 then
@@ -107,8 +107,6 @@ Inherits MemoryBlock
 		   long parID;
 		   StrFileName name;
 		};
-		
-		
 	#tag EndNote
 
 
@@ -126,40 +124,47 @@ Inherits MemoryBlock
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LittleEndian"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 			InheritedFrom="MemoryBlock"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Size"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

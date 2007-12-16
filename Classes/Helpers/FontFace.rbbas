@@ -111,5 +111,107 @@ Protected Class FontFace
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Bold"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Border"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="BorderColor"
+			Group="Behavior"
+			InitialValue="&h000000"
+			Type="Color"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Fill"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="FillColor"
+			Group="Behavior"
+			InitialValue="&h000000"
+			Type="Color"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ForeColor"
+			Group="Behavior"
+			InitialValue="&h000000"
+			Type="Color"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Italic"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Shadow"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ShadowColor"
+			Group="Behavior"
+			InitialValue="&h000000"
+			Type="Color"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Size"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Underline"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

@@ -9,6 +9,7 @@ Begin Window PresentHelperWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   480
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -24,47 +25,18 @@ Begin Window PresentHelperWindow
    Title           =   "Presentation Helper"
    Visible         =   "True"
    Width           =   675
-   Begin GroupBox grp_presentation_modes
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Caption         =   "Mode"
-      ControlOrder    =   0
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   180
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   514
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "True"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   5
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   150
-      BehaviorIndex   =   0
-   End
    Begin ListBox lst_all_slides
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ColumnCount     =   3
       ColumnsResizable=   "True"
       ColumnWidths    =   "27%,8%,65%"
-      ControlOrder    =   1
+      ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -86,8 +58,6 @@ Begin Window PresentHelperWindow
       RequiresSelection=   ""
       ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
-      ScrollPosition  =   0
-      ScrollPositionX =   0
       SelectionType   =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
@@ -95,21 +65,210 @@ Begin Window PresentHelperWindow
       Top             =   10
       Underline       =   "False"
       UseFocusRing    =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   460
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   1
+   End
+   Begin GroupBox grp_presentation_modes
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Caption         =   "Mode"
+      ControlOrder    =   1
+      Enabled         =   "True"
+      Height          =   180
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   514
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      Top             =   5
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   150
+      Begin SButton btn_mode_normal
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   2
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_modes"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   25
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_mode_black
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   3
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_modes"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   50
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_mode_white
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   4
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_modes"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   75
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_mode_hidden
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   5
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_modes"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   100
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_mode_logo
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   6
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_modes"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   125
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_mode_frozen
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   7
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_modes"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   150
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
    End
    Begin Canvas cnv_preview
       AcceptFocus     =   "False"
       AcceptTabs      =   "False"
       AutoDeactivate  =   "True"
       Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   2
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
+      ControlOrder    =   8
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   249
       HelpTag         =   ""
@@ -125,19 +284,16 @@ Begin Window PresentHelperWindow
       TextSize        =   0
       Top             =   224
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   346
-      BehaviorIndex   =   2
    End
    Begin StaticText txt_shortcut_keys
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
-      ControlOrder    =   3
+      ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   138
       HelpTag         =   ""
       Index           =   -2147483648
@@ -157,23 +313,184 @@ Begin Window PresentHelperWindow
       TextSize        =   9
       Top             =   215
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   135
-      BehaviorIndex   =   3
+   End
+   Begin GroupBox grp_presentation_actions
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Caption         =   "Actions"
+      ControlOrder    =   10
+      Enabled         =   "True"
+      Height          =   155
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   514
+      LockBottom      =   "False"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      TabPanelIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      Top             =   190
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   150
+      Begin SButton btn_action_alert
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   11
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_actions"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   210
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_action_quick_song
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   12
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_actions"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   235
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_action_scripture
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   13
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_actions"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   260
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_action_full_screen
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   14
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_actions"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   285
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
+      Begin SButton btn_action_return
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   15
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_actions"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   310
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+      End
    End
    Begin EditField edt_slide_notes
       AcceptTabs      =   "False"
       Alignment       =   0
       AutoDeactivate  =   "True"
       BackColor       =   16777215
-      BalloonHelp     =   ""
       Bold            =   "True"
       Border          =   "True"
-      ControlOrder    =   4
+      ControlOrder    =   16
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   116
       HelpTag         =   ""
@@ -190,7 +507,6 @@ Begin Window PresentHelperWindow
       Multiline       =   "True"
       Password        =   "False"
       ReadOnly        =   "True"
-      ScrollBar       =   "True"
       ScrollbarHorizontal=   "False"
       ScrollbarVertical=   "True"
       Styled          =   "False"
@@ -202,377 +518,8 @@ Begin Window PresentHelperWindow
       Top             =   358
       Underline       =   "False"
       UseFocusRing    =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   300
-      BehaviorIndex   =   4
-   End
-   Begin SButton btn_mode_black
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   5
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_modes"
-      IsStuck         =   "False"
-      Label           =   "Black (K)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   50
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   5
-   End
-   Begin SButton btn_mode_white
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   6
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_modes"
-      IsStuck         =   "False"
-      Label           =   "White (W)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   75
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   6
-   End
-   Begin SButton btn_mode_hidden
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   7
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_modes"
-      IsStuck         =   "False"
-      Label           =   "Hidden (H)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   100
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   7
-   End
-   Begin SButton btn_mode_normal
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   8
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_modes"
-      IsStuck         =   "False"
-      Label           =   "Normal (N)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   25
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   8
-   End
-   Begin GroupBox grp_presentation_actions
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Caption         =   "Actions"
-      ControlOrder    =   9
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   155
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   514
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "True"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   190
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   150
-      BehaviorIndex   =   9
-   End
-   Begin SButton btn_mode_logo
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   10
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_modes"
-      IsStuck         =   "False"
-      Label           =   "Logo (L)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   125
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   10
-   End
-   Begin SButton btn_mode_frozen
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   11
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_modes"
-      IsStuck         =   "False"
-      Label           =   "Frozen (F)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   150
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   11
-   End
-   Begin SButton btn_action_quick_song
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   10
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_actions"
-      IsStuck         =   "False"
-      Label           =   "Add Song (Q)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   235
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   12
-   End
-   Begin SButton btn_action_scripture
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   11
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_actions"
-      IsStuck         =   "False"
-      Label           =   "Scripture (S)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   260
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   13
-   End
-   Begin SButton btn_action_return
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   12
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_actions"
-      IsStuck         =   "False"
-      Label           =   "Return (Esc)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   310
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   14
-   End
-   Begin SButton btn_action_alert
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   13
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_actions"
-      IsStuck         =   "False"
-      Label           =   "Alert (A)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   210
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   15
-   End
-   Begin SButton btn_action_full_screen
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
-      AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   15
-      DisabledBalloonHelp=   ""
-      Enabled         =   "True"
-      Height          =   24
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "grp_presentation_actions"
-      IsStuck         =   "False"
-      Label           =   "Full Screen (M)"
-      LabelAlign      =   0
-      Left            =   524
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      StickyBevel     =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   285
-      UseFocusRing    =   "True"
-      Visible         =   "True"
-      Width           =   130
-      BehaviorIndex   =   16
    End
 End
 #tag EndWindow
@@ -923,6 +870,84 @@ End
 		End Function
 	#tag EndEvent
 #tag EndEvents
+#tag Events btn_mode_normal
+	#tag Event
+		Sub Action()
+		  If PresentWindow.KeyDownX("n") Then
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon textbackgroundpic, textbackgroundmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_mode_black
+	#tag Event
+		Sub Action()
+		  If PresentWindow.KeyDownX("k") Then
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon blackbackgroundpic, blackbackgroundmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_mode_white
+	#tag Event
+		Sub Action()
+		  If PresentWindow.KeyDownX("w") Then
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon whitebackgroundpic, whitebackgroundmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_mode_hidden
+	#tag Event
+		Sub Action()
+		  If PresentWindow.KeyDownX("h") Then
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon backgroundpic, backgroundmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_mode_logo
+	#tag Event
+		Sub Action()
+		  If PresentWindow.KeyDownX("l") Then
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon logobackgroundpic, logobackgroundmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_mode_frozen
+	#tag Event
+		Sub Action()
+		  If PresentWindow.KeyDownX("f") Then
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon pausebackgroundpic, pausebackgroundmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events cnv_preview
 	#tag Event
 		Sub GotFocus()
@@ -1018,89 +1043,16 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events edt_slide_notes
-	#tag Event
-		Sub GotFocus()
-		  lst_all_slides.setFocus 'EMP: Don't allow this control to get focus
-		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_mode_black
+#tag Events btn_action_alert
 	#tag Event
 		Sub Action()
-		  If PresentWindow.KeyDownX("k") Then
+		  If PresentWindow.KeyDownX("a") Then
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub Open()
-		  Me.SetIcon blackbackgroundpic, blackbackgroundmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_mode_white
-	#tag Event
-		Sub Action()
-		  If PresentWindow.KeyDownX("w") Then
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon whitebackgroundpic, whitebackgroundmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_mode_hidden
-	#tag Event
-		Sub Action()
-		  If PresentWindow.KeyDownX("h") Then
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon backgroundpic, backgroundmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_mode_normal
-	#tag Event
-		Sub Action()
-		  If PresentWindow.KeyDownX("n") Then
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon textbackgroundpic, textbackgroundmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_mode_logo
-	#tag Event
-		Sub Action()
-		  If PresentWindow.KeyDownX("l") Then
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon logobackgroundpic, logobackgroundmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_mode_frozen
-	#tag Event
-		Sub Action()
-		  If PresentWindow.KeyDownX("f") Then
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon pausebackgroundpic, pausebackgroundmask
+		  Me.SetIcon bellpic, bellmask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1130,6 +1082,18 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events btn_action_full_screen
+	#tag Event
+		Sub Action()
+		  SwapFullScreen
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon windowfullscreenpic, windowfullscreenmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events btn_action_return
 	#tag Event
 		Sub Action()
@@ -1143,28 +1107,11 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_action_alert
+#tag Events edt_slide_notes
 	#tag Event
-		Sub Action()
-		  If PresentWindow.KeyDownX("a") Then
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon bellpic, bellmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_action_full_screen
-	#tag Event
-		Sub Action()
-		  SwapFullScreen
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon windowfullscreenpic, windowfullscreenmask
+		Sub GotFocus()
+		  lst_all_slides.setFocus 'EMP: Don't allow this control to get focus
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

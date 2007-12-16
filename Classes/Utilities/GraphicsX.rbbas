@@ -204,7 +204,7 @@ Protected Module GraphicsX
 		    End If
 		    
 		    '--- Draw string ---
-		    If f <> Nil Then 
+		    If f <> Nil Then
 		      f.OntoGraphics g
 		      Strings.Append DrawStringShapeV(thisLine, xx, yy, f, zoom)
 		    End If
@@ -469,5 +469,46 @@ Protected Module GraphicsX
 	#tag EndProperty
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ThicknessFactor"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Module
 #tag EndModule

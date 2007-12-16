@@ -5,10 +5,11 @@ Begin Window SongActivity
    BalloonHelp     =   ""
    CloseButton     =   "True"
    Composite       =   "False"
-   Frame           =   0
+   Frame           =   11
    FullScreen      =   "False"
    HasBackColor    =   "False"
-   Height          =   300
+   Height          =   400
+   ImplicitInstance=   "False"
    LiveResize      =   "True"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -22,7 +23,7 @@ Begin Window SongActivity
    Placement       =   0
    Resizeable      =   "True"
    Title           =   "Song Activity Log"
-   Visible         =   "True"
+   Visible         =   "False"
    Width           =   575
    Begin ListBox lst_act_songs
       AutoDeactivate  =   "True"
@@ -35,14 +36,14 @@ Begin Window SongActivity
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   True
+      Enabled         =   "True"
       EnableDrag      =   "False"
       EnableDragReorder=   ""
       GridLinesHorizontal=   0
       GridLinesVertical=   0
       HasHeading      =   "True"
       HeadingIndex    =   -1
-      Height          =   183
+      Height          =   234
       HelpTag         =   ""
       Hierarchical    =   ""
       Index           =   -2147483648
@@ -50,10 +51,10 @@ Begin Window SongActivity
       InitialValue    =   ""
       Italic          =   ""
       Left            =   20
-      LockBottom      =   ""
-      LockLeft        =   ""
-      LockRight       =   ""
-      LockTop         =   ""
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "True"
+      LockTop         =   "True"
       RequiresSelection=   ""
       ScrollbarHorizontal=   ""
       ScrollBarVertical=   "True"
@@ -61,41 +62,39 @@ Begin Window SongActivity
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   59
+      Top             =   79
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   535
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_act_done
       AutoDeactivate  =   "True"
       Bold            =   ""
-      Cancel          =   ""
+      Cancel          =   "True"
       Caption         =   "Done"
       ControlOrder    =   1
       Default         =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   464
-      LockBottom      =   ""
+      Left            =   463
+      LockBottom      =   "True"
       LockLeft        =   ""
-      LockRight       =   ""
+      LockRight       =   "True"
       LockTop         =   ""
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   256
+      Top             =   358
       Underline       =   ""
-      Visible         =   True
-      Width           =   80
-      BehaviorIndex   =   1
+      Visible         =   "True"
+      Width           =   86
    End
    Begin PushButton btn_act_print
       AutoDeactivate  =   "True"
@@ -110,19 +109,18 @@ Begin Window SongActivity
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   280
-      LockBottom      =   ""
-      LockLeft        =   ""
-      LockRight       =   ""
+      Left            =   147
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "False"
       LockTop         =   ""
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   256
+      Top             =   358
       Underline       =   ""
-      Visible         =   True
-      Width           =   80
-      BehaviorIndex   =   2
+      Visible         =   "True"
+      Width           =   101
    End
    Begin PushButton btn_act_find
       AutoDeactivate  =   "True"
@@ -131,25 +129,24 @@ Begin Window SongActivity
       Caption         =   "Find"
       ControlOrder    =   3
       Default         =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   500
+      Left            =   478
       LockBottom      =   ""
       LockLeft        =   ""
-      LockRight       =   ""
-      LockTop         =   ""
+      LockRight       =   "True"
+      LockTop         =   "True"
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   28
+      Top             =   37
       Underline       =   ""
-      Visible         =   True
-      Width           =   49
-      BehaviorIndex   =   3
+      Visible         =   "True"
+      Width           =   77
    End
    Begin EditField edt_search
       AcceptTabs      =   ""
@@ -161,19 +158,19 @@ Begin Window SongActivity
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   354
+      Left            =   307
       LimitText       =   0
       LockBottom      =   ""
       LockLeft        =   ""
-      LockRight       =   ""
-      LockTop         =   ""
+      LockRight       =   "True"
+      LockTop         =   "True"
       Mask            =   ""
       Multiline       =   ""
       Password        =   ""
@@ -186,12 +183,11 @@ Begin Window SongActivity
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   28
+      Top             =   37
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   True
-      Width           =   143
-      BehaviorIndex   =   4
+      Visible         =   "True"
+      Width           =   159
    End
    Begin StaticText lbl_show
       AutoDeactivate  =   "True"
@@ -199,29 +195,28 @@ Begin Window SongActivity
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   20
-      LockBottom      =   ""
-      LockLeft        =   ""
+      Left            =   76
+      LockBottom      =   "True"
+      LockLeft        =   "True"
       LockRight       =   ""
       LockTop         =   ""
       Multiline       =   ""
       TabPanelIndex   =   0
       Text            =   "Show:"
-      TextAlign       =   0
+      TextAlign       =   2
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   256
+      Top             =   326
       Underline       =   ""
-      Visible         =   True
-      Width           =   45
-      BehaviorIndex   =   5
+      Visible         =   "True"
+      Width           =   80
    End
    Begin PopupMenu pop_show
       AutoDeactivate  =   "True"
@@ -229,27 +224,26 @@ Begin Window SongActivity
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   ""
-      Left            =   60
+      Left            =   168
       ListIndex       =   0
-      LockBottom      =   ""
-      LockLeft        =   ""
+      LockBottom      =   "True"
+      LockLeft        =   "True"
       LockRight       =   ""
       LockTop         =   ""
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   256
+      Top             =   325
       Underline       =   ""
-      Visible         =   True
-      Width           =   125
-      BehaviorIndex   =   6
+      Visible         =   "True"
+      Width           =   202
    End
    Begin StaticText lbl_date_range
       AutoDeactivate  =   "True"
@@ -257,7 +251,7 @@ Begin Window SongActivity
       ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -265,9 +259,9 @@ Begin Window SongActivity
       Italic          =   ""
       Left            =   20
       LockBottom      =   ""
-      LockLeft        =   ""
+      LockLeft        =   "True"
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   "True"
       Multiline       =   ""
       TabPanelIndex   =   0
       Text            =   "Date Range (MM/DD/YYYY):"
@@ -275,11 +269,10 @@ Begin Window SongActivity
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   28
+      Top             =   14
       Underline       =   ""
-      Visible         =   True
-      Width           =   137
-      BehaviorIndex   =   7
+      Visible         =   "True"
+      Width           =   262
    End
    Begin EditField edt_from
       AcceptTabs      =   ""
@@ -291,19 +284,19 @@ Begin Window SongActivity
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   162
+      Left            =   20
       LimitText       =   0
       LockBottom      =   ""
-      LockLeft        =   ""
+      LockLeft        =   "True"
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   "True"
       Mask            =   ""
       Multiline       =   ""
       Password        =   ""
@@ -316,12 +309,11 @@ Begin Window SongActivity
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   28
+      Top             =   37
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   True
-      Width           =   65
-      BehaviorIndex   =   8
+      Visible         =   "True"
+      Width           =   120
    End
    Begin EditField edt_to
       AcceptTabs      =   ""
@@ -333,19 +325,19 @@ Begin Window SongActivity
       ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   249
+      Left            =   166
       LimitText       =   0
       LockBottom      =   ""
-      LockLeft        =   ""
+      LockLeft        =   "True"
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   "True"
       Mask            =   ""
       Multiline       =   ""
       Password        =   ""
@@ -358,30 +350,29 @@ Begin Window SongActivity
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   28
+      Top             =   37
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   True
-      Width           =   65
-      BehaviorIndex   =   9
+      Visible         =   "True"
+      Width           =   120
    End
-   Begin StaticText StaticText1
+   Begin StaticText txt_act_to
       AutoDeactivate  =   "True"
       Bold            =   ""
       ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   228
+      Left            =   143
       LockBottom      =   ""
-      LockLeft        =   ""
+      LockLeft        =   "True"
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   "True"
       Multiline       =   ""
       TabPanelIndex   =   0
       Text            =   "To"
@@ -389,13 +380,12 @@ Begin Window SongActivity
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   29
+      Top             =   37
       Underline       =   ""
-      Visible         =   True
+      Visible         =   "True"
       Width           =   20
-      BehaviorIndex   =   10
    End
-   Begin PushButton PushButton1
+   Begin PushButton btn_export
       AutoDeactivate  =   "True"
       Bold            =   ""
       Cancel          =   ""
@@ -408,46 +398,44 @@ Begin Window SongActivity
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   372
-      LockBottom      =   ""
-      LockLeft        =   ""
-      LockRight       =   ""
+      Left            =   260
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "False"
       LockTop         =   ""
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   256
+      Top             =   358
       Underline       =   ""
-      Visible         =   True
-      Width           =   80
-      BehaviorIndex   =   11
+      Visible         =   "True"
+      Width           =   110
    End
-   Begin PushButton btn_clear_log
+   Begin PushButton btn_act_clear_log
       AutoDeactivate  =   "True"
       Bold            =   ""
       Cancel          =   ""
       Caption         =   "Clear Log"
       ControlOrder    =   12
       Default         =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   195
-      LockBottom      =   ""
-      LockLeft        =   ""
-      LockRight       =   ""
+      Left            =   20
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "False"
       LockTop         =   ""
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   256
+      Top             =   358
       Underline       =   ""
-      Visible         =   True
-      Width           =   71
-      BehaviorIndex   =   12
+      Visible         =   "True"
+      Width           =   109
    End
 End
 #tag EndWindow
@@ -457,51 +445,54 @@ End
 		Sub Open()
 		  Dim d As New Date
 		  
-		  'App.T.TranslateWindow Me, "import_from_ccli", App.TranslationFonts
+		  App.T.TranslateWindow Me, "song_activity", App.TranslationFonts
+		  App.T.LoadPopup("song_activity/show", pop_show)
 		  App.CenterInControlScreen Me
 		  
 		  Initializing = True
-		  edt_from.Text = "1/1/" + Str(d.Year) 'Default to January 1st of the current year
-		  edt_to.Text = Str(d.Month) + "/" + Str(d.Day) + "/" + Str(d.Year) 'Default to current date
+		  edt_to.Text = d.ShortDate 'Default to current date
+		  d.SQLDate = Str(d.Year) + "-01-01"  'Default to January 1st of the current year
+		  edt_from.Text = d.ShortDate
 		  
-		  pop_show.AddRow "All"
-		  pop_show.AddRow "Created"
-		  pop_show.AddRow "Deleted"
-		  pop_show.AddRow "Modified"
-		  pop_show.AddRow "Moved"
-		  pop_show.AddRow "Presented"
-		  pop_show.AddRow "Printed"
-		  pop_show.AddRow "Renamed"
 		  Initializing = False
 		  
 		  OldIndex = -1
 		  pop_show.ListIndex = 0
-		  
+		  Self.Visible = True
 		End Sub
 	#tag EndEvent
 
 
 	#tag Method, Flags = &h0
 		Sub GetFromDate()
-		  Dim Month As Integer
-		  Dim Day As Integer
-		  Dim Year As Integer
+		  'Dim Month As Integer
+		  'Dim Day As Integer
+		  'Dim Year As Integer
+		  '
+		  ''(MM/DD/YYYY)
+		  'Month = Val(Left(edt_from.Text, 2))
+		  'Day = Val(Mid(edt_from.Text, 3, 2))
+		  'Year = Val(Right(edt_from.Text, 4))
+		  '
+		  'If Month <> 0 And Day <> 0 And Year <> 0 Then
+		  ''Sanity checks
+		  'If Month > 12 Then Return
+		  'If Day > 31 Then Return
+		  '
+		  'FromDate = New Date
+		  'FromDate.Month = Month
+		  'FromDate.Day = Day
+		  'FromDate.Year = Year
+		  'If NOT Initializing Then RefreshList
+		  'End If
 		  
-		  '(MM/DD/YYYY)
-		  Month = Val(Left(edt_from.Text, 2))
-		  Day = Val(Mid(edt_from.Text, 3, 2))
-		  Year = Val(Right(edt_from.Text, 4))
+		  Dim d As New Date
 		  
-		  If Month <> 0 And Day <> 0 And Year <> 0 Then
-		    'Sanity checks
-		    If Month > 12 Then Return
-		    If Day > 31 Then Return
-		    
-		    FromDate = New Date
-		    FromDate.Month = Month
-		    FromDate.Day = Day
-		    FromDate.Year = Year
-		    If NOT Initializing Then RefreshList
+		  If ParseDate(edt_from.Text, d) Then
+		    FromDate = d
+		    If Not Initializing Then
+		      RefreshList
+		    End If
 		  End If
 		  
 		End Sub
@@ -509,27 +500,34 @@ End
 
 	#tag Method, Flags = &h0
 		Sub GetToDate()
-		  Dim Month As Integer
-		  Dim Day As Integer
-		  Dim Year As Integer
+		  'Dim Month As Integer
+		  'Dim Day As Integer
+		  'Dim Year As Integer
+		  '
+		  ''(MM/DD/YYYY)
+		  'Month = Val(Left(edt_to.Text, 2))
+		  'Day = Val(Mid(edt_to.Text, 3, 2))
+		  'Year = Val(Right(edt_to.Text, 4))
+		  '
+		  'If Month <> 0 And Day <> 0 And Year <> 0 Then
+		  ''Sanity checks
+		  'If Month > 12 Then Return
+		  'If Day > 31 Then Return
+		  '
+		  'ToDate = New Date
+		  'ToDate.Month = Month
+		  'ToDate.Day = Day
+		  'ToDate.Year = Year
+		  'If NOT Initializing Then RefreshList
+		  'End If
+		  Dim d As New Date
 		  
-		  '(MM/DD/YYYY)
-		  Month = Val(Left(edt_to.Text, 2))
-		  Day = Val(Mid(edt_to.Text, 3, 2))
-		  Year = Val(Right(edt_to.Text, 4))
-		  
-		  If Month <> 0 And Day <> 0 And Year <> 0 Then
-		    'Sanity checks
-		    If Month > 12 Then Return
-		    If Day > 31 Then Return
-		    
-		    ToDate = New Date
-		    ToDate.Month = Month
-		    ToDate.Day = Day
-		    ToDate.Year = Year
-		    If NOT Initializing Then RefreshList
+		  If ParseDate(edt_to.Text, d) Then
+		    ToDate = d
+		    If Not Initializing Then
+		      RefreshList
+		    End If
 		  End If
-		  
 		End Sub
 	#tag EndMethod
 
@@ -538,12 +536,15 @@ End
 		  Dim i As Integer
 		  Dim j As Integer
 		  Dim Log() As LogEntry
+		  Dim recordType As Integer
 		  
 		  If FromDate = Nil Or ToDate = Nil Then
 		    Return
 		  End If
 		  
 		  lst_act_songs.DeleteAllRows
+		  
+		  recordType = pop_show.RowTag(pop_show.ListIndex).IntegerValue
 		  
 		  j = 0
 		  For i = 1 To Globals.SongActivityLog.NumEntries
@@ -560,46 +561,10 @@ End
 		            Search = False
 		          End If
 		          
-		          Select Case pop_show.ListIndex
-		          Case 1 'Created
-		            If NOT Log(j).Created Then
-		              Log.Remove(j)
-		              Continue
-		            End If
-		          Case 2 'Deleted
-		            If NOT Log(j).Deleted Then
-		              Log.Remove(j)
-		              Continue
-		            End If
-		          Case 3 'Modified
-		            If NOT Log(j).Modified Then
-		              Log.Remove(j)
-		              Continue
-		            End If
-		          Case 4 'Moved
-		            If NOT Log(j).Moved Then
-		              Log.Remove(j)
-		              Continue
-		            End If
-		          Case 5 'Presented
-		            If NOT Log(j).Presented Then
-		              Log.Remove(j)
-		              Continue
-		            End If
-		          Case 6 'Printed
-		            If NOT Log(j).Printed Then
-		              Log.Remove(j)
-		              Continue
-		            End If
-		          Case 7 'Renamed
-		            If NOT Log(j).Renamed Then
-		              Log.Remove(j)
-		              Continue
-		            End If
-		            
-		          Else 'All
-		            
-		          End Select
+		          If (recordType > 0) And (Log(j).Description <> recordType) Then
+		            Log.Remove(j)
+		            Continue
+		          End If
 		          
 		          AddEntryToList(Log(j))
 		          j = j + 1
@@ -626,24 +591,7 @@ End
 		  lst_act_songs.Cell(lst_act_songs.LastIndex, 1) = Log.DateAndTime.ShortTime 'We could use LongTime for accuracy to the second (for our vulcan users :)
 		  
 		  'Description
-		  // Do this alphabetically to make it easier for the programmer :-)
-		  If Log.Created Then 'Created
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = "Song Created"
-		  ElseIf Log.Deleted Then 'Deleted
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = "Song Deleted"
-		  ElseIf Log.Modified Then 'Modified
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = "Song Modified"
-		  ElseIf Log.Moved Then 'Moved
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = "Song Moved"
-		  ElseIf Log.Presented Then 'Presented
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = "Song Presented"
-		  ElseIf Log.Printed Then 'Printed
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = "Song Printed"
-		  ElseIf Log.Renamed Then 'Renamed
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = "Song Renamed"
-		  Else
-		    
-		  End If
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = NthField(App.T.Translate("song_activity/description"), "|", Log.Description)
 		  
 		  'Title
 		  lst_act_songs.Cell(lst_act_songs.LastIndex, 3) = Log.Title
@@ -653,9 +601,9 @@ End
 		  lst_act_songs.Cell(lst_act_songs.LastIndex, 5) = Log.CCLISongNumber
 		  'Chords
 		  If Log.HasChords Then
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = "Yes"
+		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/yes")
 		  Else
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = "No"
+		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/no")
 		  End If
 		  
 		End Sub
@@ -685,21 +633,6 @@ End
 
 #tag EndWindowCode
 
-#tag Events lst_act_songs
-	#tag Event
-		Sub Open()
-		  
-		  Me.Heading(0) = "Date"
-		  Me.Heading(1) = "Time"
-		  Me.Heading(2) = "Description"
-		  Me.Heading(3) = "Title"
-		  Me.Heading(4) = "Author"
-		  Me.Heading(5) = "CCLI #"
-		  Me.Heading(6) = "Has Chords"
-		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events btn_act_done
 	#tag Event
 		Sub Action()
@@ -721,7 +654,7 @@ End
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
 		  If edt_search.Text = "" Then Return True
-		  If Asc(Key) = 13 Or Asc(Key) = 10 Then
+		  If Asc(Key) = 13 Or Asc(Key) = 10 Or Asc(Key) = 3 Then
 		    Search = True
 		    RefreshList
 		  End If
@@ -745,6 +678,18 @@ End
 		  GetFromDate
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub LostFocus()
+		  //++
+		  // When we come off this field, it should either have a valid date that was input or get
+		  // set to the last valid date
+		  //
+		  
+		  If Not ParseDate(Me.Text, FromDate) Then
+		    Me.Text = FromDate.ShortDate
+		  End If
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events edt_to
 	#tag Event
@@ -752,11 +697,23 @@ End
 		  GetToDate
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub LostFocus()
+		  //++
+		  // When we come off this field, it should either have a valid date that was input or get
+		  // set to the last valid date
+		  //
+		  
+		  If Not ParseDate(Me.Text, ToDate) Then
+		    Me.Text = ToDate.ShortDate
+		  End If
+		End Sub
+	#tag EndEvent
 #tag EndEvents
-#tag Events btn_clear_log
+#tag Events btn_act_clear_log
 	#tag Event
 		Sub Action()
-		  If NOT InputBox.Ask("This will erase all the log entries. Are you sure?") Then Return
+		  If NOT InputBox.Ask(App.T.Translate("song_activity/input_box/erase_all")) Then Return
 		  
 		  If NOT Globals.SongActivityLog.ClearLog Then
 		    'TODO

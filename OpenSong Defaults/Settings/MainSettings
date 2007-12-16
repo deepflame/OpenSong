@@ -14,9 +14,4 @@
   <buttons font="Arial Narrow" size="11" bold="true" italic="false" underline="false" color="#000000" border="false" border_color="#000000" shadow="false" shadow_color="#000000" fill="false" fill_color="#000000"/>
 </fonts>
   <user_defined user1="User Defined 1" user2="User Defined 2" user3="User Defined 3"/>
-  <paint new="false"/>
-  <startmode sets="0"/>
-  <songfolder></songfolder>
-  <song_revert_on_dont_save>true</song_revert_on_dont_save>
-  <set_revert_on_dont_save>true</set_revert_on_dont_save>
 </main_settings>

@@ -1540,49 +1540,59 @@ Class plistDict
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			Type="string"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="currentIndex"
 			Group="Behavior"
 			InitialValue="0"
 			Type="integer"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="eof"
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="indexOf"
 			Group="Behavior"
 			InitialValue="0"
 			Type="integer"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="isArray"
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"

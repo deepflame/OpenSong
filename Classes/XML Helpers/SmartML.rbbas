@@ -1,6 +1,21 @@
 #tag Module
 Protected Module SmartML
 	#tag Method, Flags = &h0
+		Sub CloneAttributes(fromNode As XmlNode, toNode As XmlNode)
+		  Dim i As Integer
+		  Dim attCount As Integer
+		  Dim att As XmlAttribute
+		  
+		  attCount = fromNode.AttributeCount
+		  
+		  For i = 0 To attCount - 1
+		    att = fromNode.GetAttributeNode(i)
+		    toNode.SetAttribute(att.Name, att.Value)
+		  Next
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub CloneChildren(fromNode As XmlNode, toNode As XmlNode)
 		  Dim xchild As XmlNode
 		  xchild = fromNode.FirstChild
@@ -619,21 +634,9 @@ Protected Module SmartML
 
 	#tag Method, Flags = &h0
 		Sub SetValueDate(xnode As XmlNode, childPath As String, D As Date)
-		  'TODO Internationalize & cross-platform
 		  If D = Nil Then Return
-		  Dim Month As String
-		  Dim Day As String
-		  Dim Year As String
 		  
-		  Month = Str(D.Month)
-		  If D.Month < 10 Then Month = "0" + Month 'Pad with zero
-		  Day = Str(D.Day)
-		  If D.Day < 10 Then Day = "0" + Day 'Pad with zero
-		  Year = Str(D.Year)
-		  
-		  '(MM/DD/YYYY)
-		  SetValue xnode, childPath, Month + "/" + Day + "/" + Year
-		  
+		  SetValue xnode, childPath, D.SQLDate
 		End Sub
 	#tag EndMethod
 
@@ -641,21 +644,11 @@ Protected Module SmartML
 		Sub SetValueTime(xnode As XmlNode, childPath As String, T As Date)
 		  'TODO Internationalize & cross-platform
 		  If T = Nil Then Return
+		  Dim timeString As String
 		  
-		  Dim Hour As String
-		  Dim Minute As String
-		  Dim Second As String
-		  Dim Meridian As String
-		  
-		  Hour = Str(T.Hour)
-		  If T.Hour < 10 Then Hour = "0" + Hour 'Pad with zero
-		  Minute = Str(T.Minute)
-		  If T.Minute < 10 Then Minute = "0" + Minute 'Pad with zero
-		  Second = Str(T.Second)
-		  If T.Second < 10 Then Second = "0" + Second 'Pad with zero
-		  
-		  '(HH:MM::SS) 24hr clock
-		  SetValue xnode, childPath, Hour + ":" + Minute + ":" + Second
+		  timeString = T.SQLDateTime
+		  timeString = Mid(timeString, Len(T.SQLDate) + 2)
+		  SetValue xnode, childPath, timeString
 		End Sub
 	#tag EndMethod
 
@@ -671,12 +664,7 @@ Protected Module SmartML
 		    SetValueDate(xnode, childPath, default)
 		    Return default
 		  End If
-		  
-		  '(MM/DD/YYYY)
-		  d.Month = Val(Left(s, 2))
-		  d.Day = Val(Mid(s, 4, 2))
-		  d.Year = Val(Right(s, 4))
-		  
+		  d.SQLDate = s
 		  return d
 		  
 		End Function
@@ -694,12 +682,7 @@ Protected Module SmartML
 		    SetValueTime(xnode, childPath, default)
 		    Return default
 		  End If
-		  
-		  '(HH:MM:SS)
-		  d.Hour = Val(Left(s, 2))
-		  d.Minute = Val(Mid(s, 4, 2))
-		  d.Second = Val(Right(s, 2))
-		  
+		  d.SQLDateTime = d.SQLDate + " " + s
 		  return d
 		  
 		End Function
@@ -725,28 +708,33 @@ Protected Module SmartML
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

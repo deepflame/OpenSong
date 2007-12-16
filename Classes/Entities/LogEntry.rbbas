@@ -39,11 +39,11 @@ Protected Class LogEntry
 		          
 		          // Author
 		        Case E_AUTHOR
-		          Author = TextNode(entry)
+		          Author = entry.GetText
 		          
 		          //CCLI Song #
 		        Case E_CCLI
-		          CCLISongNumber = TextNode(entry)
+		          CCLISongNumber = entry.GetText
 		          
 		          //HasChords
 		        Case E_CHORDS
@@ -57,26 +57,9 @@ Protected Class LogEntry
 		        Case E_DESCRIPTION
 		          Description = SmartML.GetValueN(node, entry.Name, false)
 		          
-		          Select Case Description
-		          Case 1 'Created
-		            Created = True
-		          Case 2 'Deleted
-		            Deleted = True
-		          Case 3 'Modified
-		            Modified = True
-		          Case 4 'Moved
-		            Moved = True
-		          Case 5 'Presented
-		            Presented = True
-		          Case 6 'Printed
-		            Printed = True
-		          Case 7 'Renamed
-		            Renamed = True
-		          End Select
-		          
 		          // Filename
 		        Case E_FILENAME
-		          SongFileName = TextNode(entry)
+		          SongFileName = entry.GetText
 		          
 		          //Time
 		        Case E_TIME
@@ -84,7 +67,7 @@ Protected Class LogEntry
 		          
 		          // Title
 		        Case E_TITLE
-		          Title = TextNode(entry)
+		          Title = entry.GetText
 		          
 		        Case Else
 		          goto done
@@ -146,25 +129,7 @@ Protected Class LogEntry
 		  
 		  'The user should only be able to preform one of these actions in any given second (In Theory ;)
 		  
-		  // Do this alphabetically to make it easier for the programmer :-)
-		  If Created Then 'Created
-		    SmartML.SetValueN entry, E_DESCRIPTION, 1
-		  ElseIf Deleted Then 'Deleted
-		    SmartML.SetValueN entry, E_DESCRIPTION, 2
-		  ElseIf Modified Then 'Modifed
-		    SmartML.SetValueN entry, E_DESCRIPTION, 3
-		  ElseIf Moved Then 'Moved
-		    SmartML.SetValueN entry, E_DESCRIPTION, 4
-		  Elseif Presented Then 'Presented
-		    SmartML.SetValueN entry, E_DESCRIPTION, 5
-		  Elseif Printed Then 'Printed
-		    SmartML.SetValueN entry, E_DESCRIPTION, 6
-		  ElseIf Renamed Then 'Renamed
-		    SmartML.SetValueN entry, E_DESCRIPTION, 7
-		  Else
-		    
-		  End If
-		  
+		  SmartML.SetValueN entry, E_DESCRIPTION, Description
 		  
 		  'File Name
 		  SmartML.SetValue entry, E_FILENAME, SongFileName
@@ -182,7 +147,7 @@ Protected Class LogEntry
 		  SmartML.SetValueB(entry, E_CHORDS, HasChords)
 		  
 		  If LogFolderItem = Nil Then
-		    LogFolderItem = GetFolderItem(App.DocsFolder.AbsolutePath + "\Settings\ActivityLog")
+		    LogFolderItem = App.DocsFolder.Child("Settings").Child("ActivityLog")
 		  End If
 		  If Not SmartML.XDocToFile(xDoc, LogFolderItem) Then
 		    SmartML.DisplayError
@@ -207,30 +172,6 @@ Protected Class LogEntry
 		  End If
 		  
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function TextNode(node As XmlNode) As String
-		  //+
-		  // Return the contents of the text node child of a node.
-		  // Will return an empty string if there is no text node.
-		  //--
-		  
-		  Dim c As XmlNode
-		  Dim s As String
-		  
-		  c = node.FirstChild
-		  s = ""
-		  
-		  While c <> Nil
-		    If c IsA XmlTextNode Then
-		      s = s + c.Value
-		    End If
-		    c = c.NextSibling
-		  Wend
-		  
-		  Return s
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -303,40 +244,110 @@ Protected Class LogEntry
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		Presented As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Modified As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Printed As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Deleted As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Renamed As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Created As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
 		OldSongFileName As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		Moved As Boolean
+		Description As Integer
 	#tag EndProperty
 
-	#tag Property, Flags = &h21
-		Private Description As Integer
-	#tag EndProperty
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			return Description = kSongDeleted
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			If value Then Description = kSongDeleted
+			End Set
+		#tag EndSetter
+		Deleted As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			Return Description = kSongCreated
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			If value Then Description = kSongCreated
+			End Set
+		#tag EndSetter
+		Created As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			Return Description = kSongModified
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			If value Then Description = kSongModified
+			End Set
+		#tag EndSetter
+		Modified As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			Return Description = kSongMoved
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			If value Then Description = kSongMoved
+			End Set
+		#tag EndSetter
+		Moved As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			Return Description = kSongPresented
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			If value Then Description = kSongPresented
+			End Set
+		#tag EndSetter
+		Presented As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			Return Description = kSongPrinted
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			If value Then Description = kSongPrinted
+			End Set
+		#tag EndSetter
+		Printed As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			Return Description = kSongRenamed
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			If value Then Description = kSongRenamed
+			End Set
+		#tag EndSetter
+		Renamed As Boolean
+	#tag EndComputedProperty
 
 
 	#tag Constant, Name = E_LOG, Type = String, Dynamic = False, Default = \"log", Scope = Protected
@@ -369,100 +380,151 @@ Protected Class LogEntry
 	#tag Constant, Name = E_TIME, Type = String, Dynamic = False, Default = \"Time", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = kSongCreated, Type = Double, Dynamic = False, Default = \"1", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kSongDeleted, Type = Double, Dynamic = False, Default = \"2", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kSongModified, Type = Double, Dynamic = False, Default = \"3", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kSongMoved, Type = Double, Dynamic = False, Default = \"4", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kSongPresented, Type = Double, Dynamic = False, Default = \"5", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kSongPrinted, Type = Double, Dynamic = False, Default = \"6", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kSongRenamed, Type = Double, Dynamic = False, Default = \"7", Scope = Protected
+	#tag EndConstant
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Author"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="CCLISongNumber"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="HasChords"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Title"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="NumEntries"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="SongFileName"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Presented"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Modified"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Printed"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Deleted"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Renamed"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Created"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="OldSongFileName"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Moved"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Description"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

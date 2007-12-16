@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.2.0">
+<language name="English" author="Sean Lickfold" version="1.3.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -265,6 +265,7 @@
       <print caption="_Print"/>
       <print_alphabetical_toc caption="Print _Alphabetical TOC"/>
       <print_categorical_toc caption="Print _Categorical TOC"/>
+      <song_act caption="View Song Activity _Log"/>
       <quit caption="E_xit"/>
     </file>
     <edit caption="_Edit">
@@ -726,6 +727,38 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <lookup caption="Quick Lookup"/>
   </song_lookup>
 
+  <song_activity title="Song Activity Log">
+    <range caption="Date range (mm/dd/yyyy)"></range>
+    <to caption="to"/>
+    <find caption="Find"></find>
+    <clear_log caption="Clear log"></clear_log>
+    <print caption="Print"></print>
+    <export caption="Export"/>
+    <done caption="Done"/>
+    <show caption="Show">
+      <!-- 
+        "tag" attribute corresponds to the value of the
+        constants found in the LogEntry class. The list order
+        can be changed as desired for localisation (note that it is
+        alphabetical in English) as long as the tags relate to the
+        correct item.  For example, the local language value of "Moved"
+        should always have tag="4"
+      -->
+      <value tag="0">All</value>
+      <value tag="1">Created</value>
+      <value tag="2">Deleted</value>
+      <value tag="3">Modified</value>
+      <value tag="4">Moved</value>
+      <value tag="5">Presented</value>
+      <value tag="6">Printed</value>
+      <value tag="7">Renamed</value>
+    </show>
+    <songs head7="Has Chords" head6="CCLI #" head5="Author" head4="Title" head3="Activity" head2="Time" head1="Date"/> 
+    <input_box>
+      <erase_all>This will erase all entries. Continue?</erase_all>
+    </input_box>
+    <description>Created|Deleted|Modified|Moved|Presented|Printed|Renamed</description>
+  </song_activity>
   <scripture_lookup title="Scripture Lookup">
     <book caption="Bible Book"/>
     <lookup caption="Quick Lookup">

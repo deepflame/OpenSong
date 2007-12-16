@@ -4,11 +4,12 @@ Begin Window PrintWindow
    Backdrop        =   0
    BalloonHelp     =   ""
    CloseButton     =   "True"
-   Composite       =   "True"
+   Composite       =   "False"
    Frame           =   1
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   410
+   ImplicitInstance=   "True"
    LiveResize      =   "True"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -16,49 +17,67 @@ Begin Window PrintWindow
    MaxWidth        =   32000
    MenuBar         =   0
    MenuBarVisible  =   "True"
-   MinHeight       =   64
+   MinHeight       =   300
    MinimizeButton  =   "True"
-   MinWidth        =   64
+   MinWidth        =   610
    Placement       =   0
    Resizeable      =   "True"
    Title           =   "Print Preview"
    Visible         =   "True"
    Width           =   630
-   Begin Canvas cnv_page
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
+   Begin PagePanel nil_panel
       AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
       ControlOrder    =   0
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      EraseBackground =   "True"
-      Height          =   200
+      Enabled         =   "True"
+      Height          =   351
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   10
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
+      Left            =   0
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      PanelCount      =   2
+      Panels          =   ""
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
-      Top             =   50
-      UseFocusRing    =   "True"
-      Visible         =   True
-      Width           =   200
-      BehaviorIndex   =   0
+      Top             =   43
+      Value           =   0
+      Visible         =   "True"
+      Width           =   614
+      Begin Canvas cnv_page
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   1
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         Height          =   200
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_panel"
+         Left            =   10
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   50
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   200
+      End
    End
    Begin ScrollBar scr_vertical
       AcceptFocus     =   "true"
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      ControlOrder    =   1
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
+      ControlOrder    =   2
+      Enabled         =   "True"
       Height          =   394
       HelpTag         =   ""
       Index           =   -2147483648
@@ -78,17 +97,14 @@ Begin Window PrintWindow
       TextSize        =   0
       Top             =   0
       Value           =   0
-      Visible         =   True
+      Visible         =   "True"
       Width           =   16
-      BehaviorIndex   =   1
    End
    Begin ScrollBar scr_horizontal
       AcceptFocus     =   "true"
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      ControlOrder    =   2
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
+      ControlOrder    =   3
+      Enabled         =   "True"
       Height          =   16
       HelpTag         =   ""
       Index           =   -2147483648
@@ -108,398 +124,335 @@ Begin Window PrintWindow
       TextSize        =   0
       Top             =   394
       Value           =   0
-      Visible         =   True
+      Visible         =   "True"
       Width           =   614
-      BehaviorIndex   =   2
    End
-   Begin Canvas nil_header
-      AcceptFocus     =   "False"
-      AcceptTabs      =   "False"
+   Begin PagePanel nil_header
       AutoDeactivate  =   "True"
-      Backdrop        =   0
-      BalloonHelp     =   ""
-      ControlOrder    =   3
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      EraseBackground =   "True"
+      ControlOrder    =   4
+      Enabled         =   "True"
       Height          =   40
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   0
-      LockBottom      =   "False"
+      LockBottom      =   ""
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
+      PanelCount      =   1
+      Panels          =   ""
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
       Top             =   0
-      UseFocusRing    =   "True"
-      Visible         =   True
+      Value           =   0
+      Visible         =   "True"
       Width           =   614
-      BehaviorIndex   =   3
-   End
-   Begin PushButton btn_page_print
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "Print..."
-      ControlOrder    =   4
-      Default         =   "True"
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   470
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   65
-      BehaviorIndex   =   4
-   End
-   Begin Separator sep_header
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      ControlOrder    =   5
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   4
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Left            =   0
-      LockBottom      =   "False"
-      LockLeft        =   "True"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   36
-      Visible         =   True
-      Width           =   614
-      BehaviorIndex   =   5
-   End
-   Begin PushButton btn_page_first
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "<<"
-      ControlOrder    =   6
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "False"
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   5
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   30
-      BehaviorIndex   =   6
-   End
-   Begin PushButton btn_page_previous
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "<"
-      ControlOrder    =   7
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "False"
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   42
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   30
-      BehaviorIndex   =   7
-   End
-   Begin PushButton btn_page_next
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   ">"
-      ControlOrder    =   8
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "False"
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   145
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   30
-      BehaviorIndex   =   8
-   End
-   Begin PushButton btn_page_last
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   ">>"
-      ControlOrder    =   9
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   "False"
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   182
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   30
-      BehaviorIndex   =   9
-   End
-   Begin PushButton btn_page_zoom_in
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "-"
-      ControlOrder    =   10
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   232
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   30
-      BehaviorIndex   =   10
-   End
-   Begin PushButton btn_page_zoom_out
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "+"
-      ControlOrder    =   11
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   315
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   30
-      BehaviorIndex   =   11
-   End
-   Begin EditField edt_page_zoom
-      AcceptTabs      =   "False"
-      Alignment       =   3
-      AutoDeactivate  =   "True"
-      BackColor       =   16777215
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Border          =   "True"
-      ControlOrder    =   12
-      DataField       =   ""
-      DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   268
-      LimitText       =   3
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      Mask            =   999
-      Multiline       =   "False"
-      Password        =   "False"
-      ReadOnly        =   "False"
-      ScrollBar       =   "True"
-      ScrollbarHorizontal=   "False"
-      ScrollbarVertical=   "True"
-      Styled          =   "False"
-      TabPanelIndex   =   0
-      Text            =   "100%"
-      TextColor       =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      UseFocusRing    =   "True"
-      Visible         =   True
-      Width           =   43
-      BehaviorIndex   =   12
-   End
-   Begin StaticText txt_page_page
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      ControlOrder    =   13
-      DataField       =   ""
-      DataSource      =   ""
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   75
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      Multiline       =   "False"
-      TabPanelIndex   =   0
-      Text            =   "888 of 888"
-      TextAlign       =   1
-      TextColor       =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   65
-      BehaviorIndex   =   13
-   End
-   Begin PushButton btn_page_print_setup
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "Print Setup..."
-      ControlOrder    =   14
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   363
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   100
-      BehaviorIndex   =   14
-   End
-   Begin PushButton btn_cancel
-      AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "Cancel"
-      ControlOrder    =   15
-      Default         =   "False"
-      DisabledBalloonHelp=   ""
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   "nil_header"
-      Italic          =   "False"
-      Left            =   541
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "False"
-      TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   11
-      Top             =   8
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   65
-      BehaviorIndex   =   15
+      Begin PushButton btn_page_print
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   "Print..."
+         ControlOrder    =   5
+         Default         =   "True"
+         Enabled         =   "True"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   464
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "True"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   65
+      End
+      Begin PushButton btn_cancel
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "True"
+         Caption         =   "Cancel"
+         ControlOrder    =   6
+         Default         =   "False"
+         Enabled         =   "True"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   541
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "True"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   65
+      End
+      Begin PushButton btn_page_first
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   "<<"
+         ControlOrder    =   7
+         Default         =   "False"
+         Enabled         =   "False"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   10
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   30
+      End
+      Begin PushButton btn_page_previous
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   "<"
+         ControlOrder    =   8
+         Default         =   "False"
+         Enabled         =   "False"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   44
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   30
+      End
+      Begin StaticText txt_page_page
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   9
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   78
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         TabPanelIndex   =   1
+         Text            =   "888 of 888"
+         TextAlign       =   1
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   65
+      End
+      Begin PushButton btn_page_next
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   ">"
+         ControlOrder    =   10
+         Default         =   "False"
+         Enabled         =   "False"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   147
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   30
+      End
+      Begin PushButton btn_page_last
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   ">>"
+         ControlOrder    =   11
+         Default         =   "False"
+         Enabled         =   "False"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   181
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   30
+      End
+      Begin PushButton btn_page_zoom_in
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   "-"
+         ControlOrder    =   12
+         Default         =   "False"
+         Enabled         =   "True"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   223
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   30
+      End
+      Begin EditField edt_page_zoom
+         AcceptTabs      =   "False"
+         Alignment       =   3
+         AutoDeactivate  =   "True"
+         BackColor       =   16777215
+         Bold            =   "False"
+         Border          =   "True"
+         ControlOrder    =   13
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Format          =   ""
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   257
+         LimitText       =   3
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Mask            =   999
+         Multiline       =   "False"
+         Password        =   "False"
+         ReadOnly        =   "False"
+         ScrollbarHorizontal=   "False"
+         ScrollbarVertical=   "True"
+         Styled          =   "False"
+         TabPanelIndex   =   1
+         Text            =   "100%"
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   43
+      End
+      Begin PushButton btn_page_zoom_out
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   "+"
+         ControlOrder    =   14
+         Default         =   "False"
+         Enabled         =   "True"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   304
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   30
+      End
+      Begin PushButton btn_page_print_setup
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Cancel          =   "False"
+         Caption         =   "Print Setup..."
+         ControlOrder    =   15
+         Default         =   "False"
+         Enabled         =   "True"
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "nil_header"
+         Italic          =   "False"
+         Left            =   342
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   9
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   100
+      End
    End
 End
 #tag EndWindow
@@ -550,7 +503,6 @@ End
 		  HSizer.AddTop scr_horizontal, 1
 		  HSizer.AddWidth scr_horizontal, 1
 		  HSizer.AddWidth nil_header, 1
-		  HSizer.AddWidth sep_header, 1
 		  HSizer.AddLeft btn_cancel, 1
 		  
 		  App.T.TranslateWindow Me, "print_preview", App.TranslationFonts
@@ -786,7 +738,7 @@ End
 		    Return
 		  End If
 		  x = PrintReport.LeftMargin * 72 * Zoom
-		  y = PrintReport.TopMargin * 72 * Zoom
+		  y = PrintReport.TopMargin * 72 * Zoom -  (scr_vertical.Value - Me.Top)
 		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: calling DrawObject with x, y: " + str(x) + ", " + str(y)
 		  g.DrawObject pg, x, y
 		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: Exit"
@@ -802,7 +754,8 @@ End
 #tag Events scr_vertical
 	#tag Event
 		Sub ValueChanged()
-		  cnv_page.Top = 35 - scr_vertical.Value
+		  'cnv_page.Top = 35 - scr_vertical.Value
+		  cnv_page.Refresh
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -813,16 +766,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events nil_header
-	#tag Event
-		Sub Paint(g As Graphics)
-		  #if Not TargetMacOS
-		    g.ForeColor = FillColor
-		    g.FillRect 0, 0, Me.Width, Me.Height
-		  #endif
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events btn_page_print
 	#tag Event
 		Sub Action()
@@ -830,6 +773,13 @@ End
 		  Self.Hide
 		  If PrintReport.Print Then Close
 		  Self.Show
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_cancel
+	#tag Event
+		Sub Action()
+		  Close
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -919,21 +869,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_page_zoom_out
-	#tag Event
-		Sub Action()
-		  App.DebugWriter.Write "PrintWindow.btn_page_zoom_out: Enter"
-		  zoom = zoom + .2
-		  edt_page_zoom.Text = Str(zoom*100) + "%"
-		  App.DebugWriter.Write "PrintWindow.btn_page_zoom_out: Call ChangePage(" + str(CurrentPage) + ")"
-		  ChangePage(CurrentPage)
-		  'cnv_page.Refresh False 'EMP
-		  App.DebugWriter.Write "PrintWindow.btn_page_zoom_out: Exit"
-		Catch ExZoomOut
-		  App.DebugWriter.Write "PrintWindow.btn_page_zoom_out: Caught exception"
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events edt_page_zoom
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
@@ -966,6 +901,21 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events btn_page_zoom_out
+	#tag Event
+		Sub Action()
+		  App.DebugWriter.Write "PrintWindow.btn_page_zoom_out: Enter"
+		  zoom = zoom + .2
+		  edt_page_zoom.Text = Str(zoom*100) + "%"
+		  App.DebugWriter.Write "PrintWindow.btn_page_zoom_out: Call ChangePage(" + str(CurrentPage) + ")"
+		  ChangePage(CurrentPage)
+		  'cnv_page.Refresh False 'EMP
+		  App.DebugWriter.Write "PrintWindow.btn_page_zoom_out: Exit"
+		Catch ExZoomOut
+		  App.DebugWriter.Write "PrintWindow.btn_page_zoom_out: Caught exception"
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events btn_page_print_setup
 	#tag Event
 		Sub Action()
@@ -981,13 +931,6 @@ End
 		  End If
 		  
 		  SetupPage
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_cancel
-	#tag Event
-		Sub Action()
-		  Close
 		End Sub
 	#tag EndEvent
 #tag EndEvents

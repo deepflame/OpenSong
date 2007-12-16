@@ -9,6 +9,7 @@ Begin Window IndexProgress
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   140
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -26,9 +27,7 @@ Begin Window IndexProgress
    Width           =   308
    Begin ProgressBar ProgressBar1
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       ControlOrder    =   0
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
@@ -41,20 +40,19 @@ Begin Window IndexProgress
       LockTop         =   "False"
       Maximum         =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   60
       Value           =   0
       Visible         =   "True"
       Width           =   260
-      BehaviorIndex   =   0
    End
    Begin StaticText lbl_top
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   12
       HelpTag         =   ""
@@ -66,7 +64,7 @@ Begin Window IndexProgress
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Building index:"
       TextAlign       =   0
@@ -77,16 +75,13 @@ Begin Window IndexProgress
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   1
    End
    Begin StaticText lbl_book
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
@@ -98,7 +93,7 @@ Begin Window IndexProgress
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -109,16 +104,13 @@ Begin Window IndexProgress
       Underline       =   "False"
       Visible         =   "True"
       Width           =   256
-      BehaviorIndex   =   2
    End
    Begin StaticText lbl_bottom
       AutoDeactivate  =   "True"
-      BalloonHelp     =   ""
       Bold            =   "False"
       ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      DisabledBalloonHelp=   ""
       Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
@@ -130,7 +122,7 @@ Begin Window IndexProgress
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      MultiLine       =   "False"
+      Multiline       =   "False"
       TabPanelIndex   =   0
       Text            =   "Press 'esc' to cancel"
       TextAlign       =   0
@@ -141,7 +133,6 @@ Begin Window IndexProgress
       Underline       =   "False"
       Visible         =   "False"
       Width           =   100
-      BehaviorIndex   =   3
    End
 End
 #tag EndWindow

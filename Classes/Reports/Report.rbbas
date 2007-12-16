@@ -154,12 +154,30 @@ Protected Class Report
 		  //
 		  // Ed Palmer, January 2006
 		  //
+		  // October 2007
+		  //    Under certain circumstances, the Graphics object returned by
+		  // the OpenPrinterDialog will have different dimensions than the
+		  // page dimensions in the PrinterSetup object.  This has been
+		  // observed on the Macintosh with the Canon i9900 printer and
+		  // others.
+		  //    Therefore, for the time being, this routine will calculate any
+		  // change to the resolution between Generate and OpenPrinterDialog
+		  // and scale the Group2D accordingly.  This does mean a slight loss in
+		  // accuracy when scaling up, but is the minimal impact workaround until
+		  // printing can be reexamined to use new techniques.  It also assumes that
+		  // the ratios are equal both horizontally and vertically.
+		  //
+		  
 		  Dim i As Integer
 		  Dim CopyCount As Integer
 		  Dim PagesPrinted As Integer = 0
 		  Dim g As Graphics
 		  Dim PrinterPages As Group2D
 		  Dim xOffset, yOffset As Double
+		  Dim printerHRes, printerVRes As Integer
+		  Dim oldHRes, oldVRes As Integer
+		  Dim HRatio, VRatio As Double
+		  Dim printerScale As Double
 		  
 		  App.DebugWriter.Write "Report.Print: Enter"
 		  // Let's check out some things to get ready
@@ -169,6 +187,8 @@ Protected Class Report
 		  PrinterPages = New Group2D
 		  
 		  If Not Generate(ps.HorizontalResolution / 72, PrinterPages) Then Return False
+		  oldHRes = ps.HorizontalResolution
+		  oldVRes = ps.VerticalResolution
 		  
 		  If PrinterPages = Nil Then Return False // Nothing to print
 		  If PrinterPages.Count = 0 Then Return False // Ditto
@@ -180,11 +200,23 @@ Protected Class Report
 		  g =  OpenPrinterDialog(ps, Window(0))
 		  If g = Nil Then Return False // Error, or user cancelled
 		  
+		  printerHRes = ps.HorizontalResolution
+		  printerVRes = ps.VerticalResolution
+		  
+		  HRatio = printerHRes / oldHRes
+		  VRatio = printerVRes / oldVRes
+		  
+		  If HRatio <> VRatio Then
+		    App.DebugWriter.Write StringUtils.Sprintf("Calculated horizontal scaling and vertical scaling are different, H = %d, V = %d",_
+		    HRatio, VRatio), 1
+		  End If
+		  printerScale = Min(HRatio, VRatio)
+		  
 		  App.DebugWriter.Write StringUtils.Sprintf("Report.Print: copies %d, firstpage %d, lastpage %d, count %d",_
 		  g.Copies, g.FirstPage, g.LastPage, PrinterPages.Count)
 		  
-		  xOffset = (LeftMargin * ps.HorizontalResolution) + ps.PageLeft
-		  yOffset = (TopMargin * ps.VerticalResolution) + ps.PageTop
+		  xOffset = (LeftMargin * printerHRes) + ps.PageLeft
+		  yOffset = (TopMargin * printerVRes) + ps.PageTop
 		  
 		  //
 		  // Mac OSX will manage copy count through the printer driver,
@@ -197,6 +229,9 @@ Protected Class Report
 		    If i >= g.FirstPage And i <= g.LastPage Then
 		      App.DebugWriter.Write "Report.Print: Printing page "+ str(i)
 		      If PagesPrinted > 0 Then g.NextPage
+		      // Alter scale to match the calculated scale based on any change in resolution
+		      PrinterPages.Item(i - 1).Scale = PrinterPages.Item(i - 1).Scale * printerScale
+		      
 		      g.DrawObject PrinterPages.Item(i - 1), xOffset, yOffset
 		      PagesPrinted = PagesPrinted + 1
 		    End If
@@ -301,49 +336,58 @@ Protected Class Report
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LeftMargin"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="PrintableHeight"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="PrintableWidth"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="TopMargin"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"

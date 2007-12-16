@@ -262,13 +262,14 @@
   </main_menu>
 
   <general_settings title="Generelle instillinger">
-    <general caption="Generelt">
+<!--  V1.2 Changes-->
+    <general caption="Generelt" head1="Basic" head2="Special">
       <ccli caption="CCLI Lisens #"/>
       <version_check caption="se etter oppdateringer ved oppstart"/>
       <language caption="Språk"/>
       <startmode caption="Standard vindu">
-	<song caption="Sanger"/>
-	<set  caption="Lister"/>
+	      <songs caption="Sanger"/>
+	      <sets caption="Lister"/>
       </startmode>
     </general>
     <proxy caption="Proxy">
@@ -288,6 +289,7 @@
       <fixed_width caption="Fikset – med tekst"/>
       <buttons caption="Knapper"/>
       <large_headings caption="Store Overskrifter"/>
+      <newpaint caption="Bruk ny visuel stil"/>
     </fonts>
     <documents_folder caption="Dokument mappe">
       <warning caption="Bruk med varsomhet, krever restart av programmet"/>
@@ -296,7 +298,15 @@
       <message>Lukker OpenSong. Venlikst klikk OK og start OpenSong  igjenn. Du vil sikkert kopiere dine gamle dokumenter over til den nye adresen først.</message>
       <change caption="Endre"/>
     </documents_folder>
-    <newpaint caption="Bruk ny visuel stil"/>
+<!--    V1.2 Changes-->
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
+
   </general_settings>
 
   <print_settings title="Utskrifts instillinger">
@@ -396,7 +406,7 @@
 
     <misc caption="Diverse">
       <exit_prompt caption="Tilskynd under lukking"/>
-      <descriptive_subtitle_info caption="Beskrivende undertittel info"/>
+      <descriptive_subtitle caption="Beskrivende undertittel info"/>
    </misc>
     
   </presentation_settings>

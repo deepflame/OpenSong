@@ -557,16 +557,16 @@ Inherits Canvas
 		Protected NewPaint As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected Popup As SButtonPopup
+	#tag EndProperty
+
 	#tag Property, Flags = &h0
 		StickyBevel As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		HasFocus As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Popup As SButtonPopup
 	#tag EndProperty
 
 

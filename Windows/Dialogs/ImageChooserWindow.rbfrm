@@ -9,6 +9,7 @@ Begin Window ImageChooserWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   390
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -24,54 +25,57 @@ Begin Window ImageChooserWindow
    Title           =   "Find Image"
    Visible         =   "True"
    Width           =   475
-   Begin ScrollBar scr_vertical
-      AcceptFocus     =   "true"
+   Begin PushButton btn_browse
       AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "False"
+      Caption         =   "Browse..."
       ControlOrder    =   0
-      Enabled         =   True
-      Height          =   328
+      Default         =   "False"
+      Enabled         =   "True"
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   458
-      LineStep        =   1
-      LiveScroll      =   "False"
+      Italic          =   "False"
+      Left            =   156
       LockBottom      =   "True"
       LockLeft        =   "False"
-      LockRight       =   "True"
-      LockTop         =   "True"
-      Maximum         =   0
-      Minimum         =   0
-      PageStep        =   3
+      LockRight       =   "False"
+      LockTop         =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   1
-      Value           =   0
-      Visible         =   True
-      Width           =   16
-      BehaviorIndex   =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   340
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   75
    End
-   Begin Separator sep_1
+   Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
+      Bold            =   "False"
+      Cancel          =   "True"
+      Caption         =   "Cancel"
       ControlOrder    =   1
-      Enabled         =   True
-      Height          =   4
+      Default         =   "False"
+      Enabled         =   "True"
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   0
+      Italic          =   "False"
+      Left            =   241
       LockBottom      =   "True"
-      LockLeft        =   "True"
-      LockRight       =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   328
-      Visible         =   True
-      Width           =   475
-      BehaviorIndex   =   1
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   340
+      Underline       =   "False"
+      Visible         =   "True"
+      Width           =   75
    End
    Begin StaticText txt_path
       AutoDeactivate  =   "True"
@@ -79,7 +83,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -99,63 +103,55 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   365
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   455
-      BehaviorIndex   =   2
    End
-   Begin PushButton btn_browse
+   Begin Separator sep_1
       AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Cancel          =   "False"
-      Caption         =   "Browse..."
       ControlOrder    =   3
-      Default         =   "False"
-      Enabled         =   True
-      Height          =   22
+      Enabled         =   "True"
+      Height          =   4
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   156
+      Left            =   0
       LockBottom      =   "True"
-      LockLeft        =   "False"
-      LockRight       =   "False"
+      LockLeft        =   "True"
+      LockRight       =   "True"
       LockTop         =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   340
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   75
-      BehaviorIndex   =   3
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   328
+      Visible         =   "True"
+      Width           =   475
    End
-   Begin PushButton btn_cancel
+   Begin ScrollBar scr_vertical
+      AcceptFocus     =   "true"
       AutoDeactivate  =   "True"
-      Bold            =   "False"
-      Cancel          =   "True"
-      Caption         =   "Cancel"
       ControlOrder    =   4
-      Default         =   "False"
-      Enabled         =   True
-      Height          =   22
+      Enabled         =   "True"
+      Height          =   328
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   "False"
-      Left            =   241
+      Left            =   458
+      LineStep        =   1
+      LiveScroll      =   "False"
       LockBottom      =   "True"
       LockLeft        =   "False"
-      LockRight       =   "False"
-      LockTop         =   "False"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      Maximum         =   0
+      Minimum         =   0
+      PageStep        =   3
       TabPanelIndex   =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   340
-      Underline       =   "False"
-      Visible         =   True
-      Width           =   75
-      BehaviorIndex   =   4
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   1
+      Value           =   0
+      Visible         =   "True"
+      Width           =   16
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -163,7 +159,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   5
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -179,9 +175,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -189,7 +184,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   6
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -205,9 +200,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -215,7 +209,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   7
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -231,9 +225,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -241,7 +234,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   8
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -257,9 +250,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -267,7 +259,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   9
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -283,9 +275,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   10
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -293,7 +284,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   10
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -309,9 +300,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -319,7 +309,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   11
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -335,9 +325,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -345,7 +334,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   12
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -361,9 +350,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -371,7 +359,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   13
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -387,9 +375,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -397,7 +384,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   14
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -413,9 +400,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   90
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -423,7 +409,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   15
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -439,9 +425,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -449,7 +434,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   16
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -465,9 +450,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -475,7 +459,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   17
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -491,9 +475,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -501,7 +484,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   18
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -517,9 +500,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -527,7 +509,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   19
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -543,9 +525,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   170
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -553,7 +534,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   20
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -569,9 +550,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -579,7 +559,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   21
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -595,9 +575,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -605,7 +584,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   22
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -621,9 +600,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -631,7 +609,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   23
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -647,9 +625,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -657,7 +634,7 @@ Begin Window ImageChooserWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   24
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   60
       HelpTag         =   ""
@@ -673,9 +650,8 @@ Begin Window ImageChooserWindow
       TextSize        =   0
       Top             =   250
       UseFocusRing    =   "True"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -683,7 +659,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   25
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   0
@@ -703,9 +679,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -713,7 +688,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   1
@@ -733,9 +708,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -743,7 +717,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   27
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   2
@@ -763,9 +737,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -773,7 +746,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   28
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   3
@@ -793,9 +766,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -803,7 +775,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   29
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   4
@@ -823,9 +795,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   70
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -833,7 +804,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   30
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   5
@@ -853,9 +824,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -863,7 +833,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   31
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   6
@@ -883,9 +853,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -893,7 +862,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   32
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   7
@@ -913,9 +882,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -923,7 +891,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   33
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   8
@@ -943,9 +911,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -953,7 +920,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   34
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   9
@@ -973,9 +940,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   150
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -983,7 +949,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   35
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   10
@@ -1003,9 +969,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1013,7 +978,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   36
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   11
@@ -1033,9 +998,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1043,7 +1007,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   37
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   12
@@ -1063,9 +1027,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1073,7 +1036,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   38
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   13
@@ -1093,9 +1056,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1103,7 +1065,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   39
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   14
@@ -1123,9 +1085,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   230
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1133,7 +1094,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   40
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   15
@@ -1153,9 +1114,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1163,7 +1123,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   41
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   16
@@ -1183,9 +1143,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1193,7 +1152,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   42
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   17
@@ -1213,9 +1172,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1223,7 +1181,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   43
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   18
@@ -1243,9 +1201,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1253,7 +1210,7 @@ Begin Window ImageChooserWindow
       ControlOrder    =   44
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   True
+      Enabled         =   "True"
       Height          =   15
       HelpTag         =   ""
       Index           =   19
@@ -1273,9 +1230,8 @@ Begin Window ImageChooserWindow
       TextSize        =   10
       Top             =   310
       Underline       =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
 End
 #tag EndWindow
@@ -1383,13 +1339,6 @@ End
 
 #tag EndWindowCode
 
-#tag Events scr_vertical
-	#tag Event
-		Sub ValueChanged()
-		  Refresh
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events btn_browse
 	#tag Event
 		Sub Action()
@@ -1411,6 +1360,13 @@ End
 	#tag Event
 		Sub Action()
 		  Close
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events scr_vertical
+	#tag Event
+		Sub ValueChanged()
+		  Refresh
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -1052,6 +1052,30 @@ Protected Module OpenSongUtils
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetText(Extends xNode As XmlNode, sep As String = " ") As String
+		  Dim s() As String
+		  Dim c As XmlNode
+		  
+		  If xNode Is Nil Then
+		    App.DebugWriter.Write "OpenSongUtils.XmlNode.GetText: got a Nil input", 1
+		    Dim n As New NilObjectException
+		    n.Message = "XmlNode.GetText: Nil input"
+		    Raise n
+		  End If
+		  
+		  c = xNode.FirstChild
+		  
+		  While Not (c Is Nil)
+		    If c.Type = XmlNodeType.TEXT_NODE Then s.Append c.Value
+		    c = c.NextSibling
+		  Wend
+		  
+		  Return Join(s, sep)
+		End Function
+	#tag EndMethod
+
+
 	#tag Note, Name = Overview
 		
 		This module holds OpenSong specific methods that
@@ -1088,28 +1112,33 @@ Protected Module OpenSongUtils
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

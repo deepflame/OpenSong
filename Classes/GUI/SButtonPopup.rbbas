@@ -1,5 +1,5 @@
 #tag Class
-Protected Class SButtonPopup
+Class SButtonPopup
 Inherits ContextualMenu
 	#tag Event
 		Sub Action(item As String)
@@ -14,7 +14,7 @@ Inherits ContextualMenu
 		  Dim s As String
 		  Dim i As Integer
 		  
-		  For i = 0 To UBound(GoodStrings) 
+		  For i = 0 To UBound(GoodStrings)
 		    If GoodStrings(i) = Left(Item, Len(GoodStrings(i))) Then
 		      s = GoodStrings(i)
 		      exit
@@ -22,6 +22,7 @@ Inherits ContextualMenu
 		  Next i
 		  
 		  Parent.MenuItem = s
+		  
 		End Sub
 	#tag EndEvent
 

@@ -281,13 +281,14 @@
   </main_menu>
 
   <general_settings title="Allgemeine Einstellungen">
-    <general caption="Allgemein">
+  <!-- V1.2 Change -->
+    <general caption="Allgemein" head1="Primär" head2="Besonder">
       <ccli caption="CCLI Lizenz #"/>
       <version_check caption="Beim Start auf neue Version prüfen"/>
       <language caption="Sprache"/>
       <startmode caption="Startfenster">
-      <song caption="link(songs_mode/@caption)"/>
-      <set caption="link(sets_mode/@caption)"/>
+      <songs caption="link(songs_mode/@caption)"/>
+      <sets caption="link(sets_mode/@caption)"/>
       </startmode>
     </general>
     <proxy caption="Proxy">
@@ -307,6 +308,7 @@
       <fixed_width caption="Text mit fester Breite"/>
       <buttons caption="Buttons"/>
       <large_headings caption="Große Überschriften"/>
+      <newpaint caption="Neues Layout (3D Look)"/>
     </fonts>
     <documents_folder caption="Dokumentordner">
       <warning caption="Achtung: Erfordert Neustart von OpenSong"/>
@@ -316,7 +318,15 @@
       <changed>Sie haben "Eigener Ordner" ausgewählt, aber nicht bestätigt. Wollen Sie den neuen Ordner übernehmen?</changed>
       <change caption="Übernehmen"/>
     </documents_folder>
-    <newpaint caption="Neues Layout (3D Look)"/>
+<!--    V1.2 Changes-->
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
+
   </general_settings>
 
   <print_settings title="Druckeinstellungen">
@@ -671,7 +681,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
       <align caption="Ausrichtung"/>
       <subtitles caption="Lied Untertitel"/>
       <highlight_chorus caption="Refrain hervorheben"/>
-      <descriptive_subtitle_info caption="Untertitelbeschreibung anzeigen"/>
+      <descriptive_subtitle caption="Untertitelbeschreibung anzeigen"/>
     </fonts_and_alignment>
     <background caption="Hintergrund">
       <color caption="Einfarbig"/>

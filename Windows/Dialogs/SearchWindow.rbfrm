@@ -23,7 +23,7 @@ Begin Window SearchWindow
    Placement       =   0
    Resizeable      =   "True"
    Title           =   "Search"
-   Visible         =   "True"
+   Visible         =   "False"
    Width           =   477
    Begin PushButton btn_search_ok
       AutoDeactivate  =   "True"
@@ -32,7 +32,7 @@ Begin Window SearchWindow
       Caption         =   "Ok"
       ControlOrder    =   0
       Default         =   "False"
-      Enabled         =   "True"
+      Enabled         =   "False"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -43,6 +43,7 @@ Begin Window SearchWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -69,6 +70,7 @@ Begin Window SearchWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -104,6 +106,7 @@ Begin Window SearchWindow
       Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
+      Scope           =   0
       ScrollbarHorizontal=   "False"
       ScrollbarVertical=   "True"
       Styled          =   "False"
@@ -136,6 +139,7 @@ Begin Window SearchWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -175,6 +179,7 @@ Begin Window SearchWindow
       LockRight       =   "True"
       LockTop         =   "True"
       RequiresSelection=   ""
+      Scope           =   0
       ScrollbarHorizontal=   "True"
       ScrollBarVertical=   "True"
       SelectionType   =   0
@@ -205,6 +210,7 @@ Begin Window SearchWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -228,6 +234,7 @@ Begin Window SearchWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -253,6 +260,7 @@ Begin Window SearchWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -279,6 +287,7 @@ Begin Window SearchWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -302,6 +311,7 @@ Begin Window SearchWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -327,6 +337,7 @@ Begin Window SearchWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -355,6 +366,7 @@ Begin Window SearchWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "To search for an exact phrase enclose it in double quotes, like ""Simon Peter"""
       TextAlign       =   0
@@ -652,7 +664,8 @@ End
 		Sub DoSearch(controller As ScripturePickerController)
 		  controllerObject = controller
 		  bibleToSearch = controller.CurrentBible
-		  If edt_search.Text <> "" Then search // This updates everything to account for possible changes elsewhere
+		  //If edt_search.Text <> "" Then search // This updates everything to account for possible changes elsewhere
+		  Self.Visible = True
 		  Show
 		End Sub
 	#tag EndMethod
@@ -689,22 +702,6 @@ End
 
 #tag EndWindowCode
 
-#tag Bindings
-	#tag BeginBinding
-		SourceItem = 4
-		DestinationItem = 0
-		ItemType = enablingBinder
-		ItemDescription = Enable btn_search_ok when lst_result has a selection
-		SourceBindData = getSelectionProvider
-		SourceData = 1
-	#tag EndBinding
-	#tag BeginBinding
-		SourceItem = 2
-		DestinationItem = 3
-		ItemType = bindEditFieldAndPushButton
-		ItemDescription = Enable btn_search_search when text is in edt_search
-	#tag EndBinding
-#tag EndBindings
 #tag Events btn_search_ok
 	#tag Event
 		Sub Action()
@@ -715,8 +712,7 @@ End
 #tag Events btn_search_cancel
 	#tag Event
 		Sub Action()
-		  
-		  close
+		  Self.Visible = False
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -756,6 +752,12 @@ End
 	#tag Event
 		Sub DoubleClick()
 		  SelectResult
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Change()
+		  btn_search_ok.Enabled = (Me.ListIndex > -1)
+		  btn_search_ok.Default = (Me.ListIndex > -1)
 		End Sub
 	#tag EndEvent
 #tag EndEvents

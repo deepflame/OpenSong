@@ -420,9 +420,9 @@ Implements ScriptureNotifier
 		  SmartML.SetValueB(params, "last_scripture/@show_numbers", ShowVerseNumbers)
 		  
 		  If FormatParagraph Then
-		    SmartML.SetValue(params, "last_scripture/@format", "verse")
-		  Else
 		    SmartML.SetValue(params, "last_scripture/@format", "paragraph")
+		  Else
+		    SmartML.SetValue(params, "last_scripture/@format", "verse")
 		  End If
 		  
 		End Sub

@@ -177,7 +177,6 @@ Class=BibleRefException;Classes/Exceptions/BibleRefException.rbbas;&h14E0513A;&h
 Interface=ScriptureNotifier;Classes/Interfaces/ScriptureNotifier.rbbas;&h5EC9CD0D;&h227B4962;false
 Interface=ScriptureReceiver;Classes/Interfaces/ScriptureReceiver.rbbas;&h55D627B7;&h227B4962;false
 Interface=iScripturePicker;Classes/Interfaces/iScripturePicker.rbbas;&h345B6FDE;&h227B4962;false
-Class=bindListBoxes;Classes/GUI/bindListBoxes.rbbas;&hB309A4C;&h2F379AB5;false
 Class=ScripturePickerController;Classes/Controllers/ScripturePickerController.rbbas;&h448CFD72;&h6B93A7F1;false
 Module=BibleFactory;Classes/Helpers/BibleFactory.rbbas;&h482077FF;&h46BFDB60;false
 Folder=FileManager;Classes/Macintosh/FileManager;&h4646EB52;&h47B334AA;false

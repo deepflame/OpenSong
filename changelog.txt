@@ -1,5 +1,9 @@
 ﻿-= 1.3.0 Beta =-
 
+* Corrected where scripture verse/paragraph format would flip-flop every time the scripture picker opened due to an error in ScripturePickerController.SaveState (Bug #1818208)
+
+* Refactored ScripturePickerWindow to eliminate the control binding between lst_scr_nt and lst_scr_ot.
+
 * Refactored SearchWindow to eliminate use of control bindings.  SearchWindow dialog OK button now enables properly. (Bug #1836568)
 
 * SearchWindow doesn't crash with NOE if opened again after cancelling the previous search. Both ScripturePickerController.DoSearchBible and SearchWindow.btn_search_cancel.Action had to be modified to fix this. (Bug #1828757)

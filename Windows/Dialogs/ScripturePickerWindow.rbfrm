@@ -1579,20 +1579,6 @@ End
 
 #tag EndWindowCode
 
-#tag Bindings
-	#tag BeginBinding
-		SourceItem = 11
-		DestinationItem = 10
-		ItemType = bindListBoxes
-		ItemDescription = Notify lst_scr_ot when lst_scr_nt has a selection
-	#tag EndBinding
-	#tag BeginBinding
-		SourceItem = 10
-		DestinationItem = 11
-		ItemType = bindListBoxes
-		ItemDescription = Notify lst_scr_nt when lst_scr_ot has a selection
-	#tag EndBinding
-#tag EndBindings
 #tag Events btn_add
 	#tag Event
 		Sub Action()
@@ -1692,7 +1678,7 @@ End
 		Sub Change()
 		  If Me.ListIndex = -1 Then Return
 		  If Me.CellTag(Me.ListIndex, 0) = ActiveBookNumber Then Return
-		  
+		  lst_scr_nt.ListIndex = -1
 		  BookSelected(Me.CellTag(Me.ListIndex, 0))
 		  
 		End Sub
@@ -1703,7 +1689,7 @@ End
 		Sub Change()
 		  If Me.ListIndex = -1 Then Return
 		  If Me.CellTag(Me.ListIndex, 0) = ActiveBookNumber Then Return
-		  
+		  lst_scr_ot.ListIndex = -1
 		  BookSelected(Me.CellTag(Me.ListIndex, 0))
 		End Sub
 	#tag EndEvent

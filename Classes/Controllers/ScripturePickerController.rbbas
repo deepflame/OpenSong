@@ -64,6 +64,10 @@ Implements ScriptureNotifier
 		    If Not CurrentBible.ValidateCitation(CurrentBook, CurrentChapter, CurrentFromVerse, CurrentThruVerse) Then
 		      SetDefaultPassage
 		    End If
+		    //++
+		    // Invalidate the search window
+		    //--
+		    If Not (ActiveSearchWindow Is Nil) Then ActiveSearchWindow = Nil
 		    NotifyBibleChanged
 		    NotifyPassageChanged
 		    NotifyEnableUI
@@ -416,9 +420,9 @@ Implements ScriptureNotifier
 		  SmartML.SetValueB(params, "last_scripture/@show_numbers", ShowVerseNumbers)
 		  
 		  If FormatParagraph Then
-		    SmartML.SetValue(params, "last_scripture/@format", "verse")
-		  Else
 		    SmartML.SetValue(params, "last_scripture/@format", "paragraph")
+		  Else
+		    SmartML.SetValue(params, "last_scripture/@format", "verse")
 		  End If
 		  
 		End Sub
@@ -429,6 +433,7 @@ Implements ScriptureNotifier
 		  SaveState
 		  sender.CloseScripturePicker
 		  unregisterObserver sender
+		  If Not (ActiveSearchWindow Is Nil) Then ActiveSearchWindow = Nil
 		End Sub
 	#tag EndMethod
 
@@ -466,9 +471,9 @@ Implements ScriptureNotifier
 		  currVerse = 0
 		  
 		  If FormatParagraph Then
-		    sep = EndOfLine
-		  Else
 		    sep = " "
+		  Else
+		    sep = EndOfLine
 		  End If
 		  
 		  slides = SmartML.InsertChild(newGroup, "slides", 1)

@@ -207,7 +207,6 @@ Protected Class FolderDB
 		  Dim showAll As Boolean
 		  Dim fullName, pathName, fileName As String
 		  
-		  If fileBox <> Nil Then fileBox.DeleteAllRows
 		  showAll = False
 		  If InStr(pathFilter, FilterAll) = 1 Or Len(pathFilter) = 0 Then
 		    showAll = True
@@ -595,13 +594,13 @@ Protected Class FolderDB
 		          end if
 		          
 		          // Add the current item to our list
-		          If (Not temp.Value("Hidden").BooleanValue) _
+		          If Not temp.Value("Hidden").BooleanValue _
 		            And Left(temp.Value("Name"), 1) <> "_" _
 		            And Left(temp.Value("Name"), 1) <> "." _
 		            Then
-		            FileList.Append( temp )
-		            
-		            if recursive and temp.value("Folder").BooleanValue then
+		            If Not temp.Value("Folder").BooleanValue Then
+		              FileList.Append( temp )
+		            ElseIf recursive Then
 		              win32GetFileList(FileList, path+temp.value("Name")+"\",relativepath+temp.value("Name")+"\",filter,recursive)
 		            end if
 		          End If

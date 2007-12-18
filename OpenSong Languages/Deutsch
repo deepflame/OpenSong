@@ -1,5 +1,6 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<language version="1.0.3 BL20" author="Rüdiger Greeb nach Vorlage von Bernd Tubach und Dominic Tubach" name="Deutsch">
+<?xml version="1.0" encoding="UTF-8"?>
+<language author="Jakob Schmidt, Rüdiger Greeb, Bernd und Dominic Tubach" name="Deutsch">
+
   <load_settings>
     <checking_folders>Erstelle/Prüfe Ordner</checking_folders>
     <main>Lade Haupteinstellungen</main>
@@ -13,6 +14,7 @@
       <newer_available>Eine neuere Version (%1) ist verfügbar. Besuchen Sie http://www.opensong.org, um diese herunterzuladen.</newer_available>
     </latest_version>
   </load_settings>
+
   <load_data>
     <bible>Lade die Standardbibel</bible>
     <songs_cache>Erstelle Liedindex</songs_cache>
@@ -22,6 +24,7 @@
   </load_data>
 
   <welcome>Willkommen!</welcome>
+
   <songs_mode caption="Lieder">In der Liedverwaltung können Sie Lieder erstellen und bearbeiten. Die Texte können als Liederblätter gedruckt oder angezeigt werden.
     <all_songs caption="Alle Lieder">
       <print caption="Drucken">Druckt alle vorhandenen Liedtexte. Diese Funktion kann genutzt werden, um Liederbücher zu drucken.</print>
@@ -50,6 +53,7 @@
       </move>
       <delete caption="Löschen">Löscht das ausgewählte Lied.</delete>
     </selected_song>
+
     <songs caption="Lieder">Markieren Sie ein Lied in der Liste, um es in den Liededitor zu laden.</songs>
 
     <curr_folder caption="Enthalten in Ordner">Zeigt den Ordner der diesen Song enthält. (relativ zum aktiven Ordner)</curr_folder>
@@ -132,6 +136,7 @@
         <no_songs>Es befinden sich keine Lieder im ausgewählten Set.</no_songs>
       </print_songs>
       <print_order caption="Set-Liste">Druckt eine Liste mit den Namen der Set-Einträge.</print_order>
+      <export caption="Export">Exportiert dieses Set (inklusive Lieder) in einen anderen Ordner.</export>
     </current_set>
     <new_item caption="Neuer Eintrag">
       <add_song caption="Lied">Fügt dem ausgewählten Set ein oder mehrere Lieder hinzu. Zur Auswahl öffnet sich die Liederliste.</add_song>
@@ -154,13 +159,20 @@
       <scripture caption="(Bibeltext)"/>
       <style caption="(Layout)">-- Layout ändern --</style>
       <revert caption="(Layout)">-- Layout zurücksetzen --</revert>
+      <defaultstyle caption="(Layout)">-- Exportiertes Layout --</defaultstyle>
     </items>
     <untitled caption="Ohne Titel"/>
     <errors>
       <revert caption="Fehler beim aktualisieren von &quot;%1&quot; aus Datei."/>
     </errors>
+    <messages>
+      <export_complete>&quot;%1&quot; exportiert nach
+%2
+      </export_complete>
+    </messages>
   </sets_mode>
-<slide_editor>
+
+  <slide_editor>
     <header caption="Folien Editor"/>
     <title caption="Titel">Titel, der in der Präsentation angezeigt wird.</title>
     <subtitle caption="Untertitel">Untertitel, der in der Präsentation angezeigt wird.</subtitle>
@@ -168,6 +180,7 @@
     <slides caption="Text">Enthält den Text des ausgewählten Eintrags.</slides>
     <presentation caption="Eigene Reihenfolge">Überschreibt die originale Reihenfolge im Lied</presentation>
     <origorder caption="Originale Reihenfolge">Standardreihenfolge im Lied</origorder>
+    <folder caption="Ordner">Ordner, der das Lied enthält</folder>
     <notes caption="Notizen">Die Notizen werden in der "Präsentationssteuerung" angezeigt.</notes>
     <insert caption="link(shared/insert/@caption)"/>
     <ins_slide caption="Seitenumbruch">Fügt einen Seitenumbruch in den Text ein. Dadurch können mehrere Seiten erstellt werden.</ins_slide>
@@ -177,18 +190,21 @@
     <seconds caption="Sekunden"/>
     <style caption="Eigenes Layout">Wenn Sie diese Funktion aktivieren, können Sie das Layout des Eintrags ändern. Klicken Sie dazu auf die Vorschau-Box.</style>
   </slide_editor>
+
   <style_change>
     <header caption="Layout ändern"/>
     <revert caption="Zurück zum Standard">Mit dieser Option wird das Standardlayout des Sets für die folgenden Einträge gesetzt.</revert>
     <change caption="Layout ändern">Mit dieser Option kann das Layout der folgenden Einträge verändert werden. Die Änderung betrifft alle folgenden Einträge bis zur nächsten Layoutänderung.</change>
     <style>Klicken Sie hier, wenn "Layout ändern" aktiviert ist, um das neue Layout einzustellen.</style>
   </style_change>
+
   <video_slides>
     <header caption="Video Folien Editor"/>
     <name caption="Folienname">Bezeichnung der Folie für OpenSong.</name>
     <file caption="Video Datei">Dateiname des Videos.</file>
     <loop caption="Wiederhole Video">Markieren um das Video nach dem Ende neuzustarten.</loop>
   </video_slides>
+
   <powerpoint_slides>
     <header caption="PowerPoint Folien Editor"/>
     <name caption="Folienname">Bezeichnung der Folie(n) für OpenSong.</name>
@@ -281,15 +297,10 @@
   </main_menu>
 
   <general_settings title="Allgemeine Einstellungen">
-  <!-- V1.2 Change -->
     <general caption="Allgemein" head1="Primär" head2="Besonder">
       <ccli caption="CCLI Lizenz #"/>
       <version_check caption="Beim Start auf neue Version prüfen"/>
       <language caption="Sprache"/>
-      <startmode caption="Startfenster">
-      <songs caption="link(songs_mode/@caption)"/>
-      <sets caption="link(sets_mode/@caption)"/>
-      </startmode>
     </general>
     <proxy caption="Proxy">
       <host caption="Host"/>
@@ -317,16 +328,19 @@
       <message>OpenSong wird nun beendet. Bitte klicken Sie OK und starten Sie OpenSong anschließend neu. Sie können vorher die Daten aus dem alten Ordner in den neuen kopieren.</message>
       <changed>Sie haben "Eigener Ordner" ausgewählt, aber nicht bestätigt. Wollen Sie den neuen Ordner übernehmen?</changed>
       <change caption="Übernehmen"/>
+      <oldfolderdb caption="Alten Dateicache (< V1.1) verwenden"/>
     </documents_folder>
-<!--    V1.2 Changes-->
-    <logging caption="Log settings">
-      <append caption="Append to log file"/>
-      <console caption="Log to system console"/>
-      <level caption="Log level" disabled="Disabled"/>
-      <dialog caption="Please select a file to store the log"
-              title="Select log file"/>
+    <logging caption="Log Einstellungen">
+      <append caption="An Logfile anhängen"/>
+      <console caption="Auf Konsole loggen"/>
+      <level caption="Log Stufe" disabled="Aus"/>
+      <dialog caption="Bitte wählen Sie eine Logdatei aus"
+              title="Logfile auswählen"/>
     </logging>
-
+    <startmode caption="Startfenster">
+      <songs caption="link(songs_mode/@caption)"/>
+      <sets caption="link(sets_mode/@caption)"/>
+    </startmode>
   </general_settings>
 
   <print_settings title="Druckeinstellungen">
@@ -456,8 +470,7 @@ Links: Block zurück
 C: Refrain
 P: Pre-chorus
 B: Zwischenteil
-T: Markierung
-</keys>
+T: Markierung</keys>
   </presentation_helper>
 
   <help_topics title="Hilfethemen">
@@ -499,15 +512,15 @@ Lieder sind unterteilt in die Zeilentypen: Abschnitt, Akkord, Text und Kommentar
 ;Strophe muss zweimal gesungen werden!
 [V]
 .G                    C
- Dies ist eine Zeile, dies ist eine Zeile!
+Dies ist eine Zeile, dies ist eine Zeile!
 .D       G
- Das ist so toll.
+Das ist so toll.
 
 [C]
 .G                 C/D    D   C
- Singt den Refrain jetzt, ja, ja,
+Singt den Refrain jetzt, ja, ja,
 .G            C    D/F#      G
- Dies ist ein ganz dämliches Lied.&lt;/b&gt;&lt;/pre&gt;
+Dies ist ein ganz dämliches Lied.&lt;/b&gt;&lt;/pre&gt;
 
 Die Zeilentypen im Einzelnen:
 
@@ -536,7 +549,7 @@ Textzeilen beginnen mit einem Leerzeichen. Textzeilen sollte man generell an vor
 &lt;b&gt;&lt;i&gt;"__"&lt;/i&gt;&lt;/b&gt; Wenn ein Wort gedehnt werden muss um zum Akkord zu passen, benutzt man den Unterstrich ("_"). Beispiel:
 &lt;b&gt;&lt;pre&gt;
 .Gsus7 C      G
- Will__kommen zu Haus.&lt;/pre&gt;&lt;/b&gt;
+Will__kommen zu Haus.&lt;/pre&gt;&lt;/b&gt;
 
 Diese Unterstriche werden durch ein passendes "-" ersetzt, das zwischen den beiden Silben zentriert wird.
 
@@ -635,7 +648,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <create_list caption="Erstelle Liste %1..."/>
     <uncategorized caption="Andere"/>
     <setlist caption="Reihenfolge">
-      <date caption="Gedrucht am "/>
+      <date caption="Gedruckt am "/>
     </setlist>
   </print>
 
@@ -662,7 +675,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
   </songml>
-  
+
   <smartml>
     <attrib_except>SmartML.GetAttribute: Ausnahmefehler - Suche nach Attribut '%1' in '%2'</attrib_except>
     <no_path>Ordner nicht gefunden.</no_path>
@@ -671,7 +684,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <cant_create>Datei konnte nicht angelegt werden: %1</cant_create>
     <xml_error>XML Lesefehler: %1</xml_error>
     <xml_exterror>XML Lesefehler: %1: %2: %3</xml_exterror>
-  </smartml> 
+  </smartml>
 
   <style_editor title="Layout">
     <fonts_and_alignment caption="Schrift und Ausrichtung">
@@ -703,7 +716,42 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <header caption="Wählen Sie ein Lied und bestätigen Sie mit Einfügen, Doppelklick oder Enter. Es ist möglich, den Anfang des Titels einzutippen und so das gewünschte Lied auszuwählen."/>
     <no_selection>Sie haben kein Lied ausgewählt.</no_selection>
     <folder caption="Ordner auswählen"/>
+    <preview caption="Lied Vorschau"/>
+    <lookup caption="Schnellsuche"/>
   </song_lookup>
+
+  <song_activity title="Protokoll der Liedänderungen">
+    <range caption="Datumsbereich (mm/tt/jjjj)"></range>
+    <to caption="bis"/>
+    <find caption="Suchen"></find>
+    <clear_log caption="Protokoll löschen"></clear_log>
+    <print caption="Drucken"></print>
+    <export caption="Exportieren"/>
+    <done caption="Schließen"/>
+    <show caption="Zeige">
+      <!--
+        "tag" attribute corresponds to the value of the
+        constants found in the LogEntry class. The list order
+        can be changed as desired for localisation (note that it is
+        alphabetical in English) as long as the tags relate to the
+        correct item.  For example, the local language value of "Moved"
+        should always have tag="4"
+      -->
+      <value tag="0">Alle</value>
+      <value tag="1">Erstellt</value>
+      <value tag="2">Gelöscht</value>
+      <value tag="3">Geändert</value>
+      <value tag="4">Verschoben</value>
+      <value tag="5">Angezeigt</value>
+      <value tag="6">Gedruckt</value>
+      <value tag="7">Umbenannt</value>
+    </show>
+    <songs head7="Hat Akkorde" head6="CCLI #" head5="Autor" head4="Titel" head3="Änderung" head2="Zeit" head1="Datum"/>
+    <input_box>
+      <erase_all>Sollen wirklich alle Einträge gelöscht werden?</erase_all>
+    </input_box>
+    <description>Erstellt|Gelöscht|Geändert|Verschoben|Angezeigt|Gedruckt|Umbenannt</description>
+  </song_activity>
 
   <scripture_lookup title="Bibeltext einfügen">
     <book caption="Buch"/>
@@ -724,6 +772,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
       <verse caption="Fließend"/>
     </format>
     <bad_reference>
+      <format>Bitte prüfen Sie die Syntax der Abfrage und versuchen Sie's erneut.</format>
       <empty>Ungültige Bibelstelle: Sie haben keine Bibelstelle eingegben.</empty>
       <book>Ungültige Bibelstelle: Das Buch wurde nicht gefunden.</book>
       <ambiguous>Ungültige Bibelstelle: Mehrere Bücher passen auf '%1': %2</ambiguous>
@@ -736,6 +785,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <dash caption="-"/>
     <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <shownumbers caption="Strophennummern anzeigen"/>
   </scripture_lookup>
 
   <module>
@@ -830,12 +880,13 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <option name="Tageszeiten: Morgen/Mittag/Abend"/>
     <option name="Jubiläum: Geburtstag/Hochzeit"/>
   </theme_list>
+
   <tempo_list>
-    <option name="Sehr Schnell"/>
+    <option name="Sehr schnell"/>
     <option name="Schnell"/>
     <option name="Normal"/>
     <option name="Langsam"/>
-    <option name="Sehr Langsam"/>
+    <option name="Sehr langsam"/>
   </tempo_list>
 
   <time_sig_list>
@@ -895,6 +946,7 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <select caption="Markieren"/>
     <exit_program caption="Programm beenden"/>
   </shared>
+
   <questions>
     <new_name caption="Bitte geben Sie einen Namen ein:"/>
     <rename caption="Bitte geben Sie einen neuen Namen für '%1' ein:"/>
@@ -917,8 +969,14 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <web>Besuchen Sie http://www.opensong.org/ für weitere Informationen.</web>
     <translating>Um OpenSong zu übersetzen, kopieren Sie die Datei 'English' im Ordner 'OpenSong Languages' und geben der Kopie den Namen der neuen Sprache. Übersetzen Sie alles, außer den Tag- und Attributnamen. Anschließend senden Sie die Datei an translator@opensong.org und es wird in die offizielle Version eingefügt.</translating>
     <created_with_opensong>Erstellt mit OpenSong</created_with_opensong>
-    <sources>OpenSong enthält Quellcode von</sources>
+    <sources>OpenSong enthält Quellcode von
+StringUtils (http://www.strout.net/info/coding/rb/)
+HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
+REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
+iDeclare (http://www.declaresub.com/iDeclare
+The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
   </about>
+
   <folderdb_errors>
     <error code="1">Der Ordner '%1' ist bereits vorhanden.</error>
     <error code="2">Der Ordner '%1' konnte nicht erstellt werden.</error>
@@ -934,6 +992,7 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <error code="12">Die Datei '%1' konnte nicht nach '%2' verschoben werden.</error>
     <error code="13">Die Datei '%1' existiert bereits im Ordner '%2'.</error>
   </folderdb_errors>
+
   <errors>
     <empty_group>Der Eintrag '%1' muss mindestens eine Seite enthalten.</empty_group>
     <unreadable_image>Die Bilddatei '%1' konnte nicht gelesen werden.</unreadable_image>
@@ -966,6 +1025,25 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <docs_folder>Der OpenSong Dokumentordner darf nicht unter 'OpenSong Defaults' liegen
 Temporär wird %1 verwendet.
 Bitte ändern Sie diese Einstellung.</docs_folder>
+     <fileutils>
+        <destdoesnotexisterror>Datei %1 existiert nicht</destdoesnotexisterror>
+        <nilobjecterror>NilObjectException: FolderItem parameter ist Nil</nilobjecterror>
+        <accessdenied>Zugriff auf %1 wurde verweigert</accessdenied>
+        <fileinuse>Datei %1 wird bereits verwendet
+(Läuft eine zweite Instanz von OpenSong?)</fileinuse>
+        <filenotfound>%1 wurde nicht gefunden</filenotfound>
+        <invalidname>Ungültiger Dateiname: %1</invalidname>
+        <notenoughmemory>Zuwenig Speicher beim Öffnen von Datei %1
+Starten Sie OpenSong erneut und versuchen Sie es noch einmal.</notenoughmemory>
+        <unknownerror>Unbekannter Fehler beim Zugriff auf %1</unknownerror>
+        <notaregularfile>%1 sollte eine Datei sein, kein Ordner.</notaregularfile>
+        <notafolder>%1 sollte ein Ordner sein, keine Datei.</notafolder>
+     </fileutils>
+     <cclinotavailable>Die CCLI Homepage wurde stark verändert,
+deswegen funktioniert der CCLI Import bis auf weiteres nicht.
+Bitte verwenden Sie das Tool "OpenSong Import" als Alternative.
+Das OpenSong Entwicklerteam bedauert die Umstände, hat aber keinen Einfluss auf CCLI.
+     </cclinotavailable>
   </errors>
 
   <xml_errors>
@@ -978,12 +1056,17 @@ Bitte ändern Sie diese Einstellung.</docs_folder>
 
       <loadxml>XML Fehler beim Laden von %1
 .&#10; Fehler '%2' in Zeile %3</loadxml>
+
       <load1>Unbekannter Fehler beim Laden von %1</load1>
       <load2>Fehler beim Laden von %1: %2</load2>
+
       <noindex>Kein Suchindex verfügbar. Wählen Sie eine andere Übersetzung oder starten Sie OpenSong neu.</noindex>
+
       <missing_bnames>Kann Zefania Unterstützungsdatei 'bnames.xml' in 'OpenSong Settings'</missing_bnames>
+
       <nobnames>Die Übersetzung enthält keine bname Attribute und es konnten auch keine hinzugefügt werden.</nobnames>
       <roman>Fehler beim Konvertieren von römischer Zahl '%1': %2</roman>
+
       <save>Fehler beim Abspeichern der aktualisierten Datei '%1.'</save>
     </errors>
 
@@ -1003,7 +1086,7 @@ Bitte ändern Sie diese Einstellung.</docs_folder>
   <open_titles>
     <audio>Audiodatei zum Öffnen wählen</audio>
   </open_titles>
-  
+
   <hotkeys>
     <ACTION_FIRST_SLIDE_OF_SECTION>Gehe zur ersten Folie im Abschnitt</ACTION_FIRST_SLIDE_OF_SECTION>
     <ACTION_NEXT_SLIDE>Gehe zur nächsten Folie im Set</ACTION_NEXT_SLIDE>
@@ -1012,7 +1095,7 @@ Bitte ändern Sie diese Einstellung.</docs_folder>
     <ACTION_LAST_SLIDE>Gehe zur letzten Folie im Set</ACTION_LAST_SLIDE>
     <ACTION_NEXT_SECTION>Gehe zum nächsten Abschnitt im Set</ACTION_NEXT_SECTION>
     <ACTION_PREV_SECTION>Gehe zum Anfang des aktuellen oder vorherigen Abschnitts im Set</ACTION_PREV_SECTION>
-    <ACTION_VERSE>Gehe zur nächsten Strophe</ACTION_VERSE> 	
+    <ACTION_VERSE>Gehe zur nächsten Strophe</ACTION_VERSE>
     <ACTION_BRIDGE>Gehe zur nächsten Brücke (Zwischenspiel)</ACTION_BRIDGE>
     <ACTION_CHORUS>Gehe zum nächsten Refrain</ACTION_CHORUS>
     <ACTION_PRECHORUS>Gehe zum Vorspiel</ACTION_PRECHORUS>
@@ -1021,11 +1104,11 @@ Bitte ändern Sie diese Einstellung.</docs_folder>
     <ACTION_BLACK>Schwarzbild anzeigen</ACTION_BLACK>
     <ACTION_WHITE>Weißbild anzeigen</ACTION_WHITE>
     <ACTION_FREEZE>Aktuelles Bild einfrieren</ACTION_FREEZE>
- 	 	<ACTION_LOGO>Logo anzeigen</ACTION_LOGO>
- 	 	<ACTION_HIDE>Text ausblenden, nur Hintergrund anzeigen</ACTION_HIDE>
- 	 	<ACTION_EXIT>Präsentation beenden</ACTION_EXIT>
- 	 	<ACTION_EXIT_PROMPT>Präsentation beenden mit Bestätigung</ACTION_EXIT_PROMPT>
- 	 	<ACTION_EXIT_NOPROMPT>Präsentation ohne Nachfrage beenden</ACTION_EXIT_NOPROMPT>
+    <ACTION_LOGO>Logo anzeigen</ACTION_LOGO>
+    <ACTION_HIDE>Text ausblenden, nur Hintergrund anzeigen</ACTION_HIDE>
+    <ACTION_EXIT>Präsentation beenden</ACTION_EXIT>
+    <ACTION_EXIT_PROMPT>Präsentation beenden mit Bestätigung</ACTION_EXIT_PROMPT>
+    <ACTION_EXIT_NOPROMPT>Präsentation ohne Nachfrage beenden</ACTION_EXIT_NOPROMPT>
   </hotkeys>
 
   <progress_status>
@@ -1037,4 +1120,5 @@ Bitte ändern Sie diese Einstellung.</docs_folder>
     <pass1>Sortiere, Erster Durchgang</pass1>
     <pass2>Sortiere, Zweiter Durchgang</pass2>
   </progress_status>
+
 </language>

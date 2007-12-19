@@ -1,5 +1,13 @@
 ﻿-= 1.3.0 Beta =-
 
+* Replaced the conditional compilation in MainWindow for the pseudo-dualscreen presentation mode on Linux (not sure why it went missing).  This mode assumes that if the aspect ratio for screen 0 is extremely biased toward the horizontal the configuration is actually two monitors of equal resolution.
+
+* Deleted binding in StyleWindow that updated the image background color when a new color was selected.  The can_background_color.Action event now performs the update and notification previously handled by the binding.  This completes the deletion of all control bindings from the project.
+
+* Deleted binding in SongPickerWindow.
+
+* "Hidden" preference "songs/preview/showchords" in the preferences.plist (org.opensong.opensong on Mac) controls the display of chords in the song lyrics preview pane of the SongPicker.  Run program and open the SongPicker at least once to set this to the default, true, which reflects current behavior. Then edit the plist and manually change this to false to just show the lyrics.  This is in response to Feature Request 1767952. A future enhancement will make this a visible preference.
+
 * Corrected where scripture verse/paragraph format would flip-flop every time the scripture picker opened due to an error in ScripturePickerController.SaveState (Bug #1818208)
 
 * Refactored ScripturePickerWindow to eliminate the control binding between lst_scr_nt and lst_scr_ot.

@@ -628,6 +628,7 @@ Implements iBible
 		  reg.Options.ReplaceAllMatches=true
 		  
 		  'open progress window
+		  wSplash.Hide
 		  wProgress = New IndexProgress
 		  wProgress.setProgress(0, "")
 		  wProgress.ShowWithin App.GetFrontControlScreenWindow
@@ -656,6 +657,7 @@ Implements iBible
 		        wProgress = Nil
 		        CanSearch = False
 		        App.DebugWriter.Write "Bible.genindex: Exit (user cancel)"
+			If Not (wSplash Is Nil) Then wSplash.Show
 		        return
 		      end if
 		      
@@ -743,6 +745,7 @@ Implements iBible
 		  'close progress window
 		  wProgress.doClose
 		  wProgress = Nil
+		  If Not (wSplash Is Nil) Then wSplash.Show
 		  CanSearch = True
 		  App.DebugWriter.Write "Bible.genindex: Exit"
 		Exception excep
@@ -752,6 +755,7 @@ Implements iBible
 		  InputBox.Message App.T.Translate("bible/errors/index_generation")
 		  CanSearch = False
 		  If wProgress <> Nil Then wProgress = Nil
+		  If Not (wSplash Is Nil) Then wSplash.Show
 		  App.DebugWriter.Write "Bible.genindex: Exit (exception)"
 		End Sub
 	#tag EndMethod
@@ -1426,7 +1430,6 @@ Implements iBible
 		  Dim names() as String
 		  Dim splashHidden As Boolean = False
 		  Dim w As Window
-		  Dim wSplash As Splash
 		  
 		  Scripture = New XmlDocument
 		  ShouldGenerateIndex = False
@@ -1538,9 +1541,7 @@ Implements iBible
 		        wSplash = Splash(Window(i))
 		      End If
 		    Next
-		    If wSplash <> Nil Then wSplash.Hide
 		    genIndex(file)
-		    If wSplash <> Nil Then wSplash.Show
 		    App.DebugWriter.Write "Bible.LoadBible: Exit successfully"
 		    Return True
 		    
@@ -2394,6 +2395,10 @@ Implements iBible
 
 	#tag Property, Flags = &h1
 		Protected wProgress As IndexProgress
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected wSplash As Splash
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

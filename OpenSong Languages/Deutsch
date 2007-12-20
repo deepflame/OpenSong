@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <language author="Jakob Schmidt, Rüdiger Greeb, Bernd und Dominic Tubach" name="Deutsch">
 
   <load_settings>
@@ -328,7 +328,7 @@
       <message>OpenSong wird nun beendet. Bitte klicken Sie OK und starten Sie OpenSong anschließend neu. Sie können vorher die Daten aus dem alten Ordner in den neuen kopieren.</message>
       <changed>Sie haben "Eigener Ordner" ausgewählt, aber nicht bestätigt. Wollen Sie den neuen Ordner übernehmen?</changed>
       <change caption="Übernehmen"/>
-      <oldfolderdb caption="Alten Dateicache (< V1.1) verwenden"/>
+      <oldfolderdb caption="Alten Dateicache (vor V1.1) verwenden"/>
     </documents_folder>
     <logging caption="Log Einstellungen">
       <append caption="An Logfile anhängen"/>

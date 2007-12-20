@@ -40,11 +40,12 @@ Begin Window IndexProgress
       LockTop         =   "False"
       Maximum         =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   60
       Value           =   0
       Visible         =   "True"
       Width           =   260
-      BehaviorIndex   =   0
    End
    Begin StaticText lbl_top
       AutoDeactivate  =   "True"
@@ -74,7 +75,6 @@ Begin Window IndexProgress
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   1
    End
    Begin StaticText lbl_book
       AutoDeactivate  =   "True"
@@ -104,7 +104,6 @@ Begin Window IndexProgress
       Underline       =   "False"
       Visible         =   "True"
       Width           =   256
-      BehaviorIndex   =   2
    End
    Begin StaticText lbl_bottom
       AutoDeactivate  =   "True"
@@ -134,7 +133,6 @@ Begin Window IndexProgress
       Underline       =   "False"
       Visible         =   "False"
       Width           =   100
-      BehaviorIndex   =   3
    End
 End
 #tag EndWindow

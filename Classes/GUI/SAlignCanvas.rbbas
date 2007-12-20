@@ -104,6 +104,12 @@ Inherits Canvas
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="ControlOrder"
+			Visible=true
+			Group="Position"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
@@ -121,12 +127,6 @@ Inherits Canvas
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -23,7 +23,7 @@ Begin Window SearchWindow
    Placement       =   0
    Resizeable      =   "True"
    Title           =   "Search"
-   Visible         =   "True"
+   Visible         =   "False"
    Width           =   477
    Begin PushButton btn_search_ok
       AutoDeactivate  =   "True"
@@ -32,7 +32,7 @@ Begin Window SearchWindow
       Caption         =   "Ok"
       ControlOrder    =   0
       Default         =   "False"
-      Enabled         =   "True"
+      Enabled         =   "False"
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -43,6 +43,7 @@ Begin Window SearchWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -50,7 +51,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   67
-      BehaviorIndex   =   3
    End
    Begin PushButton btn_search_cancel
       AutoDeactivate  =   "True"
@@ -70,6 +70,7 @@ Begin Window SearchWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -77,7 +78,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   67
-      BehaviorIndex   =   4
    End
    Begin SEditField edt_search
       AcceptTabs      =   "False"
@@ -106,6 +106,7 @@ Begin Window SearchWindow
       Multiline       =   "False"
       Password        =   "False"
       ReadOnly        =   "False"
+      Scope           =   0
       ScrollbarHorizontal=   "False"
       ScrollbarVertical=   "True"
       Styled          =   "False"
@@ -119,7 +120,6 @@ Begin Window SearchWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   284
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_search_search
       AutoDeactivate  =   "True"
@@ -139,6 +139,7 @@ Begin Window SearchWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -146,7 +147,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   66
-      BehaviorIndex   =   1
    End
    Begin ListBox lst_result
       AutoDeactivate  =   "True"
@@ -179,6 +179,7 @@ Begin Window SearchWindow
       LockRight       =   "True"
       LockTop         =   "True"
       RequiresSelection=   ""
+      Scope           =   0
       ScrollbarHorizontal=   "True"
       ScrollBarVertical=   "True"
       SelectionType   =   0
@@ -192,7 +193,6 @@ Begin Window SearchWindow
       Width           =   449
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   2
    End
    Begin GroupBox grp_search_match
       AutoDeactivate  =   "True"
@@ -210,6 +210,7 @@ Begin Window SearchWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -217,7 +218,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   166
-      BehaviorIndex   =   5
       Begin RadioButton rad_match_exact
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -234,6 +234,7 @@ Begin Window SearchWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -242,7 +243,6 @@ Begin Window SearchWindow
          Value           =   "True"
          Visible         =   "True"
          Width           =   139
-         BehaviorIndex   =   6
       End
       Begin RadioButton rad_match_begin
          AutoDeactivate  =   "True"
@@ -260,6 +260,7 @@ Begin Window SearchWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -268,7 +269,6 @@ Begin Window SearchWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   139
-         BehaviorIndex   =   7
       End
    End
    Begin GroupBox grp_search_words
@@ -287,6 +287,7 @@ Begin Window SearchWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -294,7 +295,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   176
-      BehaviorIndex   =   9
       Begin RadioButton rad_words_any
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -311,6 +311,7 @@ Begin Window SearchWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -319,7 +320,6 @@ Begin Window SearchWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   105
-         BehaviorIndex   =   10
       End
       Begin RadioButton rad_words_all
          AutoDeactivate  =   "True"
@@ -337,6 +337,7 @@ Begin Window SearchWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -345,7 +346,6 @@ Begin Window SearchWindow
          Value           =   "False"
          Visible         =   "True"
          Width           =   105
-         BehaviorIndex   =   11
       End
    End
    Begin StaticText lbl_search_example
@@ -366,6 +366,7 @@ Begin Window SearchWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "To search for an exact phrase enclose it in double quotes, like ""Simon Peter"""
       TextAlign       =   0
@@ -376,7 +377,6 @@ Begin Window SearchWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   373
-      BehaviorIndex   =   8
    End
 End
 #tag EndWindow
@@ -664,7 +664,8 @@ End
 		Sub DoSearch(controller As ScripturePickerController)
 		  controllerObject = controller
 		  bibleToSearch = controller.CurrentBible
-		  If edt_search.Text <> "" Then search // This updates everything to account for possible changes elsewhere
+		  //If edt_search.Text <> "" Then search // This updates everything to account for possible changes elsewhere
+		  Self.Visible = True
 		  Show
 		End Sub
 	#tag EndMethod
@@ -701,22 +702,6 @@ End
 
 #tag EndWindowCode
 
-#tag Bindings
-	#tag BeginBinding
-		SourceItem = lst_result
-		DestinationItem = btn_search_ok
-		ItemType = enablingBinder
-		ItemDescription = Enable btn_search_ok when lst_result has a selection
-		SourceBindData = getSelectionProvider
-		SourceData = 1
-	#tag EndBinding
-	#tag BeginBinding
-		SourceItem = edt_search
-		DestinationItem = btn_search_search
-		ItemType = bindEditFieldAndPushButton
-		ItemDescription = Enable btn_search_search when text is in edt_search
-	#tag EndBinding
-#tag EndBindings
 #tag Events btn_search_ok
 	#tag Event
 		Sub Action()
@@ -727,8 +712,7 @@ End
 #tag Events btn_search_cancel
 	#tag Event
 		Sub Action()
-		  
-		  close
+		  Self.Visible = False
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -768,6 +752,12 @@ End
 	#tag Event
 		Sub DoubleClick()
 		  SelectResult
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Change()
+		  btn_search_ok.Enabled = (Me.ListIndex > -1)
+		  btn_search_ok.Default = (Me.ListIndex > -1)
 		End Sub
 	#tag EndEvent
 #tag EndEvents

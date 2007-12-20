@@ -54,6 +54,11 @@ Inherits Application
 		  
 		  DebugWriter = New DebugOutput
 		  LoadPreferences
+		  '++JRC Couldn't load Preferences, Log error and Bail
+		  If MainPreferences = Nil Then
+		    App.DebugWriter.Write("App.Open: Error Loading Preferences ", 1)
+		    Quit
+		  End If
 		  DebugWriter.Level = MainPreferences.GetValueN(kLogLevel, 3, True)
 		  If MainPreferences.GetValueB(kLogOutput + kLogConsole, True, True) Then
 		    DebugWriter.SetOutput(Nil)
@@ -140,15 +145,17 @@ Inherits Application
 		  DocsFolder = GetDocsFolder
 		  
 		  ' Create whatever sub-folders are needed
+		  '++JRC: Fix corner case where the sub-Folders exist but are empty (bug #1803741)
+		  
 		  '++JRC
-		  If Not AppFolder.Child("OpenSong Scripture").Exists Then
+		  If Not AppFolder.Child("OpenSong Scripture").Exists OR AppFolder.Child("OpenSong Scripture").Count = 0 Then
 		    App.MouseCursor = Nil
 		    MsgBox T.Translate("errors/no_scripture_folder", AppFolder.Child("OpenSong Scripture").AbsolutePath)
 		    Quit
 		  End If
 		  '--
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Exists OR AppFolder.Child("OpenSong Defaults").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox T.Translate("errors/no_defaults_folder", AppFolder.Child("OpenSong Defaults").AbsolutePath)
@@ -156,7 +163,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Exists Then
+		  If Not DocsFolder.Exists OR DocsFolder.Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults"), DocsFolder) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -166,7 +173,7 @@ Inherits Application
 		    End If
 		  End If
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists OR AppFolder.Child("OpenSong Defaults").Child("Settings").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox  T.Translate("errors/no_settings_folder", AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath)
@@ -174,7 +181,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Settings").Exists Then
+		  If Not DocsFolder.Child("Settings").Exists OR DocsFolder.Child("Settings").Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -184,7 +191,7 @@ Inherits Application
 		    End If
 		  End If
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Songs").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Child("Songs").Exists OR AppFolder.Child("OpenSong Defaults").Child("Songs").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox   T.Translate("errors/no_songs_folder",  AppFolder.Child("OpenSong Defaults").Child("Songs").AbsolutePath)
@@ -192,7 +199,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Songs").Exists Then
+		  If Not DocsFolder.Child("Songs").Exists OR  DocsFolder.Child("Songs").Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Songs"), DocsFolder.Child("Songs")) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -202,7 +209,7 @@ Inherits Application
 		    End If
 		  End If
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Sets").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Child("Sets").Exists OR AppFolder.Child("OpenSong Defaults").Child("Sets").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox T.Translate("errors/no_sets_folder",  AppFolder.Child("OpenSong Defaults").Child("Sets").AbsolutePath)
@@ -210,7 +217,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Sets").Exists Then
+		  If Not DocsFolder.Child("Sets").Exists OR DocsFolder.Child("Sets").Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Sets"), DocsFolder.Child("Sets")) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -219,23 +226,9 @@ Inherits Application
 		      Quit
 		    End If
 		  End If
-		  '++JRC Checked these already
-		  'If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists Then
-		  'App.MouseCursor = Nil
-		  'MsgBox "Can't find default Settings folder: " + AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath
-		  'Quit
-		  'End If
-		  
-		  'If Not DocsFolder.Child("Settings").Exists Then
-		  'If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
-		  'App.MouseCursor = Nil
-		  'MsgBox "Could not create/edit Settings folder."
-		  'Quit
-		  'End If
-		  'End If
 		  
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Exists Then
+		  If Not AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Exists OR AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Count = 0 Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox  T.Translate("errors/no_backgrounds_folder",  AppFolder.Child("OpenSong Defaults").Child("Backgrounds").AbsolutePath)
@@ -243,7 +236,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Backgrounds").Exists Then
+		  If Not DocsFolder.Child("Backgrounds").Exists OR DocsFolder.Child("Backgrounds").Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Backgrounds"), DocsFolder.Child("Backgrounds")) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
@@ -269,20 +262,28 @@ Inherits Application
 		  Dim xnode As XmlNode
 		  
 		  ' --- LOAD SETTINGS ---
+		  '++JRC: Load default files if settings files in DocsFolder are corrupted (bug #1803741)
+		  'The settings folder should be handled in the Installer/Uninstaller as well
 		  '++JRC translated
 		  Splash.SetStatus T.Translate("load_settings/main") + "..."
 		  '--
 		  MyMainSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("MainSettings"))
 		  If MyMainSettings = Nil Then
-		    SmartML.DisplayError
-		    Quit
+		    MyMainSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("MainSettings"))
+		    If MyMainSettings = Nil Then
+		      SmartML.DisplayError
+		      Quit
+		    End If
 		  End If
 		  
 		  Splash.SetStatus T.Translate("load_settings/print") + "..."
 		  MyPrintSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PrintSettings"))
 		  If MyPrintSettings = Nil Then
-		    SmartML.DisplayError
-		    Quit
+		    MyPrintSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("PrintSettings"))
+		    If MyPrintSettings = Nil Then
+		      SmartML.DisplayError
+		      Quit
+		    End If
 		  End If
 		  // Update PritntSettings to use points instead of inches
 		  UpdatePrintSettings
@@ -290,8 +291,11 @@ Inherits Application
 		  Splash.SetStatus T.Translate("load_settings/presentation") + "..."
 		  MyPresentSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PresentSettings"))
 		  If MyPresentSettings = Nil Then
-		    SmartML.DisplayError
-		    Quit
+		    MyPresentSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("PresentSettings"))
+		    If MyPresentSettings = Nil Then
+		      SmartML.DisplayError
+		      Quit
+		    End If
 		  End If
 		  // Move some XML around in MyPresentSettings to align with V1.0 BL13 changes.
 		  UpdateDefaultStyle
@@ -341,6 +345,14 @@ Inherits Application
 		  '++JRC
 		  Globals.WhitespaceChars.Append " "
 		  Globals.WhitespaceChars.Append Chr(ENTER)
+		  'Load in the Song Activity Log
+		  Globals.SongActivityLog = New ActivityLog
+		  'TODO Decide where we want to store the log file
+		  '+++EMP Use FolderItem and .Child instead of AbsolutePath
+		  If NOT Globals.SongActivityLog.Load(DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
+		    MsgBox "Could not load the Song Activity Log! Logging will be disabled for this session."
+		    Globals.SongActivityLog = Nil
+		  End If
 		  '--
 		  T.TranslateMenu("main_menu", MainMenu)
 		  PlatformSpecific
@@ -540,7 +552,8 @@ Inherits Application
 		  If FileUtils.CreateFolder(f) Then
 		    Return f
 		  Else
-		    App.DebugWriter.Write("GetPrefsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
+		    '++JRC Prevent NilObjectException (bug #1810528)
+		    If f <> Nil Then App.DebugWriter.Write("GetPrefsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
 		    Return Nil
 		  End If
 		End Function
@@ -652,11 +665,19 @@ Inherits Application
 		    // Kluge alert! Fix V1.0 RC2-16 issue where the file doesn't have an extension
 		    //--
 		    PrefFile = "preferences.plist"
+		    '++JRC Fixed: f gets eaten by the next call to GetPrefsFolder()
 		    f = GetPrefsFolder().Child("preferences")
-		    If f.exists Then
-		      f.name = PrefFile
+		    If f = Nil Then
+		      'doesn't exist try loading new prefs file
+		      f = GetPrefsFolder().Child(PrefFile)
+		    Else
+		      If f.exists Then
+		        f.name = PrefFile 'Rename file
+		      Else
+		        'doesn't exist try loading new prefs file
+		        f = GetPrefsFolder().Child(PrefFile)
+		      End If
 		    End If
-		    f = GetPrefsFolder().Child(PrefFile)
 		  #endif
 		  
 		  If MainPreferences <> Nil Then // Reloading

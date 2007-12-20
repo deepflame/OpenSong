@@ -41,11 +41,12 @@ Begin Window PrintWindow
       PanelCount      =   2
       Panels          =   ""
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   43
       Value           =   0
       Visible         =   "True"
       Width           =   614
-      BehaviorIndex   =   15
       Begin Canvas cnv_page
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -64,11 +65,12 @@ Begin Window PrintWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   200
-         BehaviorIndex   =   0
       End
    End
    Begin ScrollBar scr_vertical
@@ -91,11 +93,12 @@ Begin Window PrintWindow
       Minimum         =   0
       PageStep        =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   0
       Value           =   0
       Visible         =   "True"
       Width           =   16
-      BehaviorIndex   =   1
    End
    Begin ScrollBar scr_horizontal
       AcceptFocus     =   "true"
@@ -117,11 +120,12 @@ Begin Window PrintWindow
       Minimum         =   0
       PageStep        =   20
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   394
       Value           =   0
       Visible         =   "True"
       Width           =   614
-      BehaviorIndex   =   2
    End
    Begin PagePanel nil_header
       AutoDeactivate  =   "True"
@@ -139,11 +143,12 @@ Begin Window PrintWindow
       PanelCount      =   1
       Panels          =   ""
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   0
       Value           =   0
       Visible         =   "True"
       Width           =   614
-      BehaviorIndex   =   14
       Begin PushButton btn_page_print
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -169,7 +174,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   65
-         BehaviorIndex   =   3
       End
       Begin PushButton btn_cancel
          AutoDeactivate  =   "True"
@@ -196,7 +200,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   65
-         BehaviorIndex   =   13
       End
       Begin PushButton btn_page_first
          AutoDeactivate  =   "True"
@@ -223,7 +226,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   4
       End
       Begin PushButton btn_page_previous
          AutoDeactivate  =   "True"
@@ -250,7 +252,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   5
       End
       Begin StaticText txt_page_page
          AutoDeactivate  =   "True"
@@ -280,7 +281,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   65
-         BehaviorIndex   =   11
       End
       Begin PushButton btn_page_next
          AutoDeactivate  =   "True"
@@ -307,7 +307,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   6
       End
       Begin PushButton btn_page_last
          AutoDeactivate  =   "True"
@@ -334,7 +333,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   7
       End
       Begin PushButton btn_page_zoom_in
          AutoDeactivate  =   "True"
@@ -361,7 +359,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   8
       End
       Begin EditField edt_page_zoom
          AcceptTabs      =   "False"
@@ -403,7 +400,6 @@ Begin Window PrintWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   43
-         BehaviorIndex   =   10
       End
       Begin PushButton btn_page_zoom_out
          AutoDeactivate  =   "True"
@@ -430,7 +426,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   9
       End
       Begin PushButton btn_page_print_setup
          AutoDeactivate  =   "True"
@@ -457,7 +452,6 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   100
-         BehaviorIndex   =   12
       End
    End
 End

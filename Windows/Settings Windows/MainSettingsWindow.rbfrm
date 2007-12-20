@@ -50,7 +50,6 @@ Begin Window MainSettingsWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   90
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window MainSettingsWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   90
-      BehaviorIndex   =   1
    End
    Begin TabPanel tab_general_general
       AutoDeactivate  =   "True"
@@ -88,6 +86,7 @@ Begin Window MainSettingsWindow
       Height          =   410
       HelpTag         =   ""
       Index           =   -2147483648
+      InitialParent   =   ""
       Italic          =   ""
       Left            =   20
       LockBottom      =   "True"
@@ -105,7 +104,6 @@ Begin Window MainSettingsWindow
       Value           =   1
       Visible         =   "True"
       Width           =   579
-      BehaviorIndex   =   2
       Begin GroupBox grp_settings_general
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -129,7 +127,6 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   235
-         BehaviorIndex   =   3
          Begin StaticText lbl_general_ccli
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -158,7 +155,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   215
-            BehaviorIndex   =   4
          End
          Begin EditField edt_general_ccli
             AcceptTabs      =   "False"
@@ -200,7 +196,6 @@ Begin Window MainSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   5
          End
          Begin CheckBox chk_general_version_check
             AutoDeactivate  =   "True"
@@ -228,7 +223,6 @@ Begin Window MainSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   215
-            BehaviorIndex   =   6
          End
          Begin StaticText lbl_general_language
             AutoDeactivate  =   "True"
@@ -258,7 +252,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   150
-            BehaviorIndex   =   7
          End
          Begin PopupMenu pop_general_language
             AutoDeactivate  =   "True"
@@ -286,7 +279,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   200
-            BehaviorIndex   =   8
          End
       End
       Begin GroupBox grp_settings_startmode
@@ -312,7 +304,6 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   235
-         BehaviorIndex   =   9
          Begin RadioButton rad_start_songs
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -337,7 +328,6 @@ Begin Window MainSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   205
-            BehaviorIndex   =   10
          End
          Begin RadioButton rad_start_sets
             AutoDeactivate  =   "True"
@@ -363,7 +353,6 @@ Begin Window MainSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   205
-            BehaviorIndex   =   11
          End
       End
       Begin GroupBox grp_settings_user_defined
@@ -389,7 +378,6 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   235
-         BehaviorIndex   =   12
          Begin StaticText lbl_define_user1
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -418,7 +406,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   200
-            BehaviorIndex   =   13
          End
          Begin StaticText lbl_define_user2
             AutoDeactivate  =   "True"
@@ -448,7 +435,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   200
-            BehaviorIndex   =   14
          End
          Begin StaticText lbl_define_user3
             AutoDeactivate  =   "True"
@@ -478,7 +464,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   200
-            BehaviorIndex   =   15
          End
          Begin PushButton btn_define_load
             AutoDeactivate  =   "True"
@@ -505,7 +490,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   200
-            BehaviorIndex   =   16
          End
       End
       Begin SEditField edt_define_user1
@@ -548,7 +532,6 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   200
-         BehaviorIndex   =   46
       End
       Begin SEditField edt_define_user2
          AcceptTabs      =   "False"
@@ -590,7 +573,6 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   200
-         BehaviorIndex   =   47
       End
       Begin SEditField edt_define_user3
          AcceptTabs      =   "False"
@@ -632,7 +614,6 @@ Begin Window MainSettingsWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   200
-         BehaviorIndex   =   48
       End
       Begin GroupBox grp_settings_fonts
          AutoDeactivate  =   "True"
@@ -657,7 +638,6 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   221
-         BehaviorIndex   =   27
          Begin StaticText lbl_fonts_headings
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -686,7 +666,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   28
          End
          Begin SFontCanvas can_fonts_headings
             AcceptFocus     =   "False"
@@ -707,11 +686,12 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   77
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   195
-            BehaviorIndex   =   32
          End
          Begin StaticText lbl_fonts_labels
             AutoDeactivate  =   "True"
@@ -741,7 +721,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   29
          End
          Begin SFontCanvas can_fonts_labels
             AcceptFocus     =   "False"
@@ -762,11 +741,12 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   127
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   195
-            BehaviorIndex   =   34
          End
          Begin StaticText lbl_fonts_text_fields
             AutoDeactivate  =   "True"
@@ -796,7 +776,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   30
          End
          Begin SFontCanvas can_fonts_text_fields
             AcceptFocus     =   "False"
@@ -817,11 +796,12 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   177
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   195
-            BehaviorIndex   =   37
          End
          Begin StaticText lbl_fonts_fixed_width
             AutoDeactivate  =   "True"
@@ -851,7 +831,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   31
          End
          Begin SFontCanvas can_fonts_fixed_width
             AcceptFocus     =   "False"
@@ -872,11 +851,12 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   227
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   195
-            BehaviorIndex   =   38
          End
          Begin StaticText lbl_fonts_buttons
             AutoDeactivate  =   "True"
@@ -906,7 +886,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   33
          End
          Begin StaticText lbl_fonts_large_headings
             AutoDeactivate  =   "True"
@@ -936,7 +915,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   35
          End
          Begin SFontCanvas can_fonts_large_headings
             AcceptFocus     =   "False"
@@ -957,11 +935,12 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   327
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   195
-            BehaviorIndex   =   40
          End
          Begin CheckBox chk_general_newpaint
             AutoDeactivate  =   "True"
@@ -989,7 +968,6 @@ Begin Window MainSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   134
-            BehaviorIndex   =   36
          End
       End
       Begin SFontCanvas can_fonts_buttons
@@ -1011,11 +989,12 @@ Begin Window MainSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   277
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   195
-         BehaviorIndex   =   39
       End
       Begin GroupBox grp_settings_documents_folder
          AutoDeactivate  =   "True"
@@ -1040,7 +1019,6 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   255
-         BehaviorIndex   =   17
          Begin StaticText nte_documents_warning
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -1069,7 +1047,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   205
-            BehaviorIndex   =   18
          End
          Begin RadioButton rad_documents_default
             AutoDeactivate  =   "True"
@@ -1095,7 +1072,6 @@ Begin Window MainSettingsWindow
             Value           =   "True"
             Visible         =   "True"
             Width           =   205
-            BehaviorIndex   =   19
          End
          Begin RadioButton rad_documents_custom
             AutoDeactivate  =   "True"
@@ -1121,7 +1097,6 @@ Begin Window MainSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   205
-            BehaviorIndex   =   20
          End
          Begin StaticText nte_folder_folder
             AutoDeactivate  =   "True"
@@ -1151,7 +1126,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   240
-            BehaviorIndex   =   21
          End
          Begin PushButton btn_browse
             AutoDeactivate  =   "True"
@@ -1178,7 +1152,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   22
          End
          Begin Checkbox chk_documents_oldfolderdb
             AutoDeactivate  =   "True"
@@ -1206,7 +1179,6 @@ Begin Window MainSettingsWindow
             Value           =   ""
             Visible         =   "True"
             Width           =   214
-            BehaviorIndex   =   23
          End
       End
       Begin GroupBox grp_settings_logging
@@ -1232,7 +1204,6 @@ Begin Window MainSettingsWindow
          Underline       =   ""
          Visible         =   "True"
          Width           =   255
-         BehaviorIndex   =   41
          Begin StaticText lbl_logging_level
             AutoDeactivate  =   "True"
             Bold            =   ""
@@ -1261,7 +1232,6 @@ Begin Window MainSettingsWindow
             Underline       =   ""
             Visible         =   "True"
             Width           =   226
-            BehaviorIndex   =   42
          End
          Begin PopupMenu pop_logging_level
             AutoDeactivate  =   "True"
@@ -1289,7 +1259,6 @@ Begin Window MainSettingsWindow
             Underline       =   ""
             Visible         =   "True"
             Width           =   226
-            BehaviorIndex   =   43
          End
          Begin Checkbox chk_logging_console
             AutoDeactivate  =   "True"
@@ -1317,7 +1286,6 @@ Begin Window MainSettingsWindow
             Value           =   ""
             Visible         =   "True"
             Width           =   226
-            BehaviorIndex   =   45
          End
          Begin Checkbox chk_logging_append
             AutoDeactivate  =   "True"
@@ -1345,7 +1313,6 @@ Begin Window MainSettingsWindow
             Value           =   ""
             Visible         =   "True"
             Width           =   226
-            BehaviorIndex   =   44
          End
       End
       Begin GroupBox grp_settings_proxy
@@ -1371,7 +1338,6 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   174
-         BehaviorIndex   =   24
          Begin StaticText lbl_proxy_host
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -1400,7 +1366,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   25
          End
          Begin SEditField edt_proxy_host
             AcceptTabs      =   "False"
@@ -1442,7 +1407,6 @@ Begin Window MainSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   134
-            BehaviorIndex   =   49
          End
          Begin StaticText lbl_proxy_port
             AutoDeactivate  =   "True"
@@ -1472,7 +1436,6 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   120
-            BehaviorIndex   =   26
          End
          Begin SEditField edt_proxy_port
             AcceptTabs      =   "False"
@@ -1514,7 +1477,6 @@ Begin Window MainSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   50
-            BehaviorIndex   =   50
          End
       End
    End
@@ -1706,6 +1668,9 @@ End
 		  Else
 		    logLevelNew = pop_logging_level.Text.CDbl
 		  End If
+		  
+		  '++JRC Lets save the new log level (Sleepy time Ed ;)
+		  App.MainPreferences.SetValueN(App.kLogLevel, logLevelNew)
 		  
 		  App.DebugWriter.Level = logLevelNew
 		End Sub

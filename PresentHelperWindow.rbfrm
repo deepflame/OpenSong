@@ -69,7 +69,6 @@ Begin Window PresentHelperWindow
       Width           =   460
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   7
    End
    Begin GroupBox grp_presentation_modes
       AutoDeactivate  =   "True"
@@ -94,7 +93,6 @@ Begin Window PresentHelperWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   150
-      BehaviorIndex   =   0
       Begin SButton btn_mode_normal
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -116,11 +114,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   25
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   4
       End
       Begin SButton btn_mode_black
          AcceptFocus     =   "False"
@@ -143,11 +142,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   1
       End
       Begin SButton btn_mode_white
          AcceptFocus     =   "False"
@@ -170,11 +170,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   75
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   2
       End
       Begin SButton btn_mode_hidden
          AcceptFocus     =   "False"
@@ -197,11 +198,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   100
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   3
       End
       Begin SButton btn_mode_logo
          AcceptFocus     =   "False"
@@ -224,11 +226,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   125
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   5
       End
       Begin SButton btn_mode_frozen
          AcceptFocus     =   "False"
@@ -251,11 +254,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   150
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   6
       End
    End
    Begin Canvas cnv_preview
@@ -276,11 +280,12 @@ Begin Window PresentHelperWindow
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   224
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   346
-      BehaviorIndex   =   8
    End
    Begin StaticText txt_shortcut_keys
       AutoDeactivate  =   "True"
@@ -310,7 +315,6 @@ Begin Window PresentHelperWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   135
-      BehaviorIndex   =   9
    End
    Begin GroupBox grp_presentation_actions
       AutoDeactivate  =   "True"
@@ -335,7 +339,6 @@ Begin Window PresentHelperWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   150
-      BehaviorIndex   =   11
       Begin SButton btn_action_alert
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -357,11 +360,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   210
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   15
       End
       Begin SButton btn_action_quick_song
          AcceptFocus     =   "False"
@@ -384,11 +388,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   235
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   12
       End
       Begin SButton btn_action_scripture
          AcceptFocus     =   "False"
@@ -411,11 +416,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   260
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   13
       End
       Begin SButton btn_action_full_screen
          AcceptFocus     =   "False"
@@ -438,11 +444,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   285
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   16
       End
       Begin SButton btn_action_return
          AcceptFocus     =   "False"
@@ -465,11 +472,12 @@ Begin Window PresentHelperWindow
          LockTop         =   "False"
          StickyBevel     =   "False"
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   310
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
-         BehaviorIndex   =   14
       End
    End
    Begin EditField edt_slide_notes
@@ -512,7 +520,6 @@ Begin Window PresentHelperWindow
       UseFocusRing    =   "False"
       Visible         =   "True"
       Width           =   300
-      BehaviorIndex   =   10
    End
 End
 #tag EndWindow

@@ -50,7 +50,6 @@ Begin Window PrintSettingsWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window PrintSettingsWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   1
    End
    Begin TabPanel tab_main_tabs
       AutoDeactivate  =   "True"
@@ -88,6 +86,7 @@ Begin Window PrintSettingsWindow
       Height          =   275
       HelpTag         =   ""
       Index           =   -2147483648
+      InitialParent   =   ""
       Italic          =   "False"
       Left            =   10
       LockBottom      =   "False"
@@ -105,7 +104,6 @@ Begin Window PrintSettingsWindow
       Value           =   2
       Visible         =   "True"
       Width           =   505
-      BehaviorIndex   =   2
       Begin Canvas can_print_fonts
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -124,11 +122,12 @@ Begin Window PrintSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   35
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   495
-         BehaviorIndex   =   20
          Begin StaticText lbl_font_title
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -157,7 +156,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   60
-            BehaviorIndex   =   21
          End
          Begin SFontCanvas can_font_title
             AcceptFocus     =   "False"
@@ -178,11 +176,12 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   50
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   28
          End
          Begin StaticText lbl_font_author
             AutoDeactivate  =   "True"
@@ -212,7 +211,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   60
-            BehaviorIndex   =   25
          End
          Begin SFontCanvas can_font_author
             AcceptFocus     =   "False"
@@ -233,11 +231,12 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   105
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   29
          End
          Begin StaticText lbl_font_sections
             AutoDeactivate  =   "True"
@@ -267,7 +266,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   60
-            BehaviorIndex   =   27
          End
          Begin SFontCanvas can_font_sections
             AcceptFocus     =   "False"
@@ -288,11 +286,12 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   160
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   30
          End
          Begin StaticText lbl_font_lyrics
             AutoDeactivate  =   "True"
@@ -322,7 +321,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   60
-            BehaviorIndex   =   22
          End
          Begin SFontCanvas can_font_lyrics
             AcceptFocus     =   "False"
@@ -343,11 +341,12 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   215
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   31
          End
          Begin StaticText lbl_font_chords
             AutoDeactivate  =   "True"
@@ -377,7 +376,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   80
-            BehaviorIndex   =   23
          End
          Begin SFontCanvas can_font_chords
             AcceptFocus     =   "False"
@@ -398,11 +396,12 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   50
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   32
          End
          Begin StaticText lbl_font_capo
             AutoDeactivate  =   "True"
@@ -432,7 +431,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   80
-            BehaviorIndex   =   24
          End
          Begin SFontCanvas can_font_capo
             AcceptFocus     =   "False"
@@ -453,11 +451,12 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   105
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   33
          End
          Begin StaticText lbl_font_copyright
             AutoDeactivate  =   "True"
@@ -487,7 +486,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   80
-            BehaviorIndex   =   26
          End
          Begin SFontCanvas can_font_copyright
             AcceptFocus     =   "False"
@@ -508,11 +506,12 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   160
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   160
-            BehaviorIndex   =   34
          End
       End
       Begin Canvas can_print_layout
@@ -533,11 +532,12 @@ Begin Window PrintSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   2
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   35
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   495
-         BehaviorIndex   =   35
          Begin StaticText lbl_layout_heading_border_thickness
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -566,7 +566,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   300
-            BehaviorIndex   =   36
          End
          Begin EditField edt_layout_heading_border_thickness
             AcceptTabs      =   "False"
@@ -608,7 +607,6 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   50
-            BehaviorIndex   =   37
          End
          Begin CheckBox chk_layout_title_in_caps
             AutoDeactivate  =   "True"
@@ -636,7 +634,6 @@ Begin Window PrintSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   300
-            BehaviorIndex   =   38
          End
       End
       Begin Canvas can_print_margins
@@ -657,11 +654,12 @@ Begin Window PrintSettingsWindow
          LockRight       =   "False"
          LockTop         =   "False"
          TabPanelIndex   =   3
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   35
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   495
-         BehaviorIndex   =   3
          Begin StaticText lbl_page_top
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -690,7 +688,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   4
          End
          Begin SEditFieldNumeric edt_page_top
             AcceptTabs      =   "False"
@@ -736,7 +733,6 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   45
-            BehaviorIndex   =   5
          End
          Begin StaticText lbl_page_left
             AutoDeactivate  =   "True"
@@ -766,7 +762,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   95
-            BehaviorIndex   =   6
          End
          Begin SEditFieldNumeric edt_page_left
             AcceptTabs      =   "False"
@@ -812,7 +807,6 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   45
-            BehaviorIndex   =   7
          End
          Begin StaticText lbl_page_bottom
             AutoDeactivate  =   "True"
@@ -842,7 +836,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   8
          End
          Begin SEditFieldNumeric edt_page_bottom
             AcceptTabs      =   "False"
@@ -888,7 +881,6 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   45
-            BehaviorIndex   =   9
          End
          Begin StaticText lbl_page_right
             AutoDeactivate  =   "True"
@@ -918,7 +910,6 @@ Begin Window PrintSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   95
-            BehaviorIndex   =   10
          End
          Begin SEditFieldNumeric edt_page_right
             AcceptTabs      =   "False"
@@ -964,7 +955,6 @@ Begin Window PrintSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   45
-            BehaviorIndex   =   11
          End
          Begin Rectangle nil_page
             AutoDeactivate  =   "True"
@@ -983,11 +973,12 @@ Begin Window PrintSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   3
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   80
             TopLeftColor    =   0
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   12
             Begin StaticText lbl_page_width
                AutoDeactivate  =   "True"
                Bold            =   "False"
@@ -1016,7 +1007,6 @@ Begin Window PrintSettingsWindow
                Underline       =   "False"
                Visible         =   "True"
                Width           =   105
-               BehaviorIndex   =   13
             End
             Begin SEditFieldNumeric edt_page_width
                AcceptTabs      =   "False"
@@ -1062,7 +1052,6 @@ Begin Window PrintSettingsWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   45
-               BehaviorIndex   =   14
             End
             Begin StaticText lbl_page_height
                AutoDeactivate  =   "True"
@@ -1092,7 +1081,6 @@ Begin Window PrintSettingsWindow
                Underline       =   "False"
                Visible         =   "True"
                Width           =   105
-               BehaviorIndex   =   15
             End
             Begin SEditFieldNumeric edt_page_height
                AcceptTabs      =   "False"
@@ -1138,7 +1126,6 @@ Begin Window PrintSettingsWindow
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   45
-               BehaviorIndex   =   16
             End
          End
       End
@@ -1165,7 +1152,6 @@ Begin Window PrintSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   150
-         BehaviorIndex   =   17
          Begin RadioButton rad_page_inches
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -1190,7 +1176,6 @@ Begin Window PrintSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   118
-            BehaviorIndex   =   18
          End
          Begin RadioButton rad_page_cm
             AutoDeactivate  =   "True"
@@ -1216,7 +1201,6 @@ Begin Window PrintSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   118
-            BehaviorIndex   =   19
          End
       End
    End

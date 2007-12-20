@@ -40,11 +40,12 @@ Begin Window ProgressWindow
       LockTop         =   "False"
       Maximum         =   100
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   25
       Value           =   0
       Visible         =   "True"
       Width           =   280
-      BehaviorIndex   =   0
    End
    Begin StaticText txt_StatusLine
       AutoDeactivate  =   "True"
@@ -74,7 +75,6 @@ Begin Window ProgressWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   280
-      BehaviorIndex   =   1
    End
    Begin StaticText lbl_status
       AutoDeactivate  =   "True"
@@ -104,7 +104,6 @@ Begin Window ProgressWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   276
-      BehaviorIndex   =   2
    End
 End
 #tag EndWindow

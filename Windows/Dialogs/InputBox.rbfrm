@@ -46,11 +46,12 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   75
-      BehaviorIndex   =   2
    End
    Begin SButton btn_cancel
       AcceptFocus     =   "True"
@@ -73,11 +74,12 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   75
-      BehaviorIndex   =   3
    End
    Begin PushButton btn_hidden_hidok
       AutoDeactivate  =   "True"
@@ -104,7 +106,6 @@ Begin Window InputBox
       Underline       =   "False"
       Visible         =   "True"
       Width           =   22
-      BehaviorIndex   =   4
    End
    Begin PushButton btn_hidden_hidcancel
       AutoDeactivate  =   "True"
@@ -131,7 +132,6 @@ Begin Window InputBox
       Underline       =   "False"
       Visible         =   "True"
       Width           =   22
-      BehaviorIndex   =   5
    End
    Begin StaticText lbl_the_question
       AutoDeactivate  =   "True"
@@ -161,7 +161,6 @@ Begin Window InputBox
       Underline       =   "False"
       Visible         =   "True"
       Width           =   299
-      BehaviorIndex   =   0
    End
    Begin SEditField edt_the_input
       AcceptTabs      =   "False"
@@ -203,7 +202,6 @@ Begin Window InputBox
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   300
-      BehaviorIndex   =   1
    End
    Begin PopupMenu pop_the_input
       AutoDeactivate  =   "True"
@@ -231,7 +229,6 @@ Begin Window InputBox
       Underline       =   "False"
       Visible         =   "True"
       Width           =   300
-      BehaviorIndex   =   6
    End
 End
 #tag EndWindow

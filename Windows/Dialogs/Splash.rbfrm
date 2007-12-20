@@ -27,8 +27,10 @@ Begin Window Splash
    Width           =   400
    Begin Timer closeTimer
       ControlOrder    =   0
+      Enabled         =   "True"
       Height          =   32
       Index           =   -2147483648
+      InitialParent   =   ""
       Left            =   20
       Mode            =   2
       Period          =   1000
@@ -36,8 +38,8 @@ Begin Window Splash
       TextFont        =   "System"
       TextSize        =   0
       Top             =   256
+      Visible         =   "True"
       Width           =   32
-      BehaviorIndex   =   0
    End
 End
 #tag EndWindow

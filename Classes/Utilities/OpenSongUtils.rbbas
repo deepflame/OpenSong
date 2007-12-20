@@ -1027,6 +1027,54 @@ Protected Module OpenSongUtils
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function CompareDates(d1 As Date, d2 As Date) As Integer
+		  // ++JRC September 2007
+		  // This function Compares two dates
+		  //
+		  // Returns 0 if equal, -1 if d1 < d2, 1 if d1 > d2
+		  
+		  'Compare Years
+		  If d1.Year < d2.Year Then Return -1
+		  If d1.Year > d2.Year Then Return 1
+		  
+		  'Years are equal, now compare months
+		  If d1.Month < d2.Month Then Return -1
+		  If d1.Month > d2.Month Then Return 1
+		  
+		  'Both Years & Months are equal, compare Days
+		  If d1.Day < d2.Day Then Return -1
+		  If d1.Day > d2.Day Then Return 1
+		  
+		  'Dates are equal
+		  Return 0
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetText(Extends xNode As XmlNode, sep As String = " ") As String
+		  Dim s() As String
+		  Dim c As XmlNode
+		  
+		  If xNode Is Nil Then
+		    App.DebugWriter.Write "OpenSongUtils.XmlNode.GetText: got a Nil input", 1
+		    Dim n As New NilObjectException
+		    n.Message = "XmlNode.GetText: Nil input"
+		    Raise n
+		  End If
+		  
+		  c = xNode.FirstChild
+		  
+		  While Not (c Is Nil)
+		    If c.Type = XmlNodeType.TEXT_NODE Then s.Append c.Value
+		    c = c.NextSibling
+		  Wend
+		  
+		  Return Join(s, sep)
+		End Function
+	#tag EndMethod
+
 
 	#tag Note, Name = Overview
 		

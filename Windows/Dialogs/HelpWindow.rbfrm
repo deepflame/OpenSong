@@ -52,7 +52,6 @@ Begin Window HelpWindow
       Value           =   0
       Visible         =   "True"
       Width           =   677
-      BehaviorIndex   =   0
       Begin EditField edt_help_keys
          AcceptTabs      =   "False"
          Alignment       =   0
@@ -93,7 +92,6 @@ Begin Window HelpWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   657
-         BehaviorIndex   =   1
       End
       Begin EditField edt_help_presentation
          AcceptTabs      =   "False"
@@ -135,7 +133,6 @@ Begin Window HelpWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   657
-         BehaviorIndex   =   2
       End
       Begin EditField edt_help_lyrics
          AcceptTabs      =   "False"
@@ -177,7 +174,6 @@ Begin Window HelpWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   657
-         BehaviorIndex   =   3
       End
    End
    Begin PushButton btn_help_print
@@ -205,7 +201,6 @@ Begin Window HelpWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   70
-      BehaviorIndex   =   4
    End
 End
 #tag EndWindow

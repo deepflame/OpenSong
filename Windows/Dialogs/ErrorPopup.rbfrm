@@ -50,7 +50,6 @@ Begin Window ErrorPopup
       Underline       =   ""
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   0
    End
    Begin StaticText lbl_error_description
       AutoDeactivate  =   "True"
@@ -80,7 +79,6 @@ Begin Window ErrorPopup
       Underline       =   ""
       Visible         =   "True"
       Width           =   689
-      BehaviorIndex   =   1
    End
    Begin EditField ErrorDescription
       AcceptTabs      =   ""
@@ -122,7 +120,6 @@ Begin Window ErrorPopup
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   689
-      BehaviorIndex   =   2
    End
    Begin StaticText lbl_error_instructions
       AutoDeactivate  =   "True"
@@ -152,7 +149,6 @@ Begin Window ErrorPopup
       Underline       =   ""
       Visible         =   "True"
       Width           =   689
-      BehaviorIndex   =   3
    End
 End
 #tag EndWindow

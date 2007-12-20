@@ -187,3 +187,5 @@ general_settings/general/startmode/set -> general_settings/startmode/sets
 general_settings/newpaint -> general_settings/fonts/newpaint
 style_editor/fonts_and_alignment/descriptive_subtitle_info ->
     style_editor/fonts_and_alignment/descriptive_subtitle
+help_topics/format (Modified)
+general_settings/logging (Modified)

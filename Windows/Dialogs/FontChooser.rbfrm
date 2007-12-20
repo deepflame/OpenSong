@@ -50,7 +50,6 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   "True"
       Width           =   70
-      BehaviorIndex   =   9
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   "True"
       Width           =   70
-      BehaviorIndex   =   10
    End
    Begin StaticText lbl_font_face
       AutoDeactivate  =   "True"
@@ -107,7 +105,6 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   "True"
       Width           =   100
-      BehaviorIndex   =   0
    End
    Begin SEditField edt_font_face
       AcceptTabs      =   "False"
@@ -149,7 +146,6 @@ Begin Window FontChooser
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   150
-      BehaviorIndex   =   1
    End
    Begin ListBox lst_font_faces
       AutoDeactivate  =   "True"
@@ -195,7 +191,6 @@ Begin Window FontChooser
       Width           =   150
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   2
    End
    Begin StaticText lbl_font_size
       AutoDeactivate  =   "True"
@@ -225,7 +220,6 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   "True"
       Width           =   60
-      BehaviorIndex   =   3
    End
    Begin SEditField edt_font_size
       AcceptTabs      =   "False"
@@ -267,7 +261,6 @@ Begin Window FontChooser
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   60
-      BehaviorIndex   =   4
    End
    Begin ListBox lst_font_size
       AutoDeactivate  =   "True"
@@ -313,7 +306,6 @@ Begin Window FontChooser
       Width           =   60
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   5
    End
    Begin StaticText lbl_font_color
       AutoDeactivate  =   "True"
@@ -343,7 +335,6 @@ Begin Window FontChooser
       Underline       =   "False"
       Visible         =   "True"
       Width           =   60
-      BehaviorIndex   =   12
    End
    Begin SColorCanvas can_font_color
       AcceptFocus     =   "False"
@@ -365,11 +356,12 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   30
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   11
    End
    Begin CheckBox chk_font_bold
       AutoDeactivate  =   "True"
@@ -397,7 +389,6 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin CheckBox chk_font_italic
       AutoDeactivate  =   "True"
@@ -425,7 +416,6 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   7
    End
    Begin CheckBox chk_font_underline
       AutoDeactivate  =   "True"
@@ -453,7 +443,6 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   8
    End
    Begin CheckBox chk_font_border
       AutoDeactivate  =   "True"
@@ -481,7 +470,6 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   14
    End
    Begin SColorCanvas can_font_border
       AcceptFocus     =   "False"
@@ -503,11 +491,12 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   155
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   15
    End
    Begin CheckBox chk_font_shadow
       AutoDeactivate  =   "True"
@@ -535,7 +524,6 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   16
    End
    Begin SColorCanvas can_font_shadow
       AcceptFocus     =   "False"
@@ -557,11 +545,12 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   200
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   17
    End
    Begin CheckBox chk_font_fill
       AutoDeactivate  =   "True"
@@ -589,7 +578,6 @@ Begin Window FontChooser
       Value           =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   18
    End
    Begin SColorCanvas can_font_fill
       AcceptFocus     =   "False"
@@ -611,11 +599,12 @@ Begin Window FontChooser
       LockTop         =   "False"
       MyColor         =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   245
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   19
    End
    Begin SFontCanvas can_font_preview
       AcceptFocus     =   "False"
@@ -636,11 +625,12 @@ Begin Window FontChooser
       LockRight       =   "False"
       LockTop         =   "False"
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   180
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   220
-      BehaviorIndex   =   13
    End
 End
 #tag EndWindow

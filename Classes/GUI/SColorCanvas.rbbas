@@ -1,13 +1,12 @@
 #tag Class
 Protected Class SColorCanvas
 Inherits Canvas
-Implements actionSource
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  Dim c As Color
 		  
 		  If Enabled Then
-		    If IsCMMClick Then
+		    If IsContextualClick Then
 		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
 		        IsColorSet = False
 		        Action
@@ -41,20 +40,10 @@ Implements actionSource
 
 
 	#tag Method, Flags = &h0
-		Sub addActionNotificationReceiver(Receiver As ActionnotificationReceiver)
-		  receivers.Append Receiver
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub ClearColor()
 		  Dim i As Integer
 		  IsColorSet = False
 		  Repaint
-		  
-		  For i = 0 To UBound(Receivers)
-		    Receivers(i).PerformAction
-		  Next
 		End Sub
 	#tag EndMethod
 
@@ -67,18 +56,6 @@ Implements actionSource
 		    Return False
 		  End If
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub RemoveActionNotificationReceiver(receiver As actionnotificationReceiver)
-		  Dim i As Integer
-		  
-		  For i = 0 To UBound(receivers)
-		    if receivers(i) = receiver Then
-		      receivers.Remove i
-		    End If
-		  Next
-		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -111,9 +88,6 @@ Implements actionSource
 		  IsColorSet = True
 		  MyColor = c
 		  Repaint
-		  For i = 0 To UBound(Receivers)
-		    Receivers(i).PerformAction
-		  Next
 		End Sub
 	#tag EndMethod
 
@@ -131,12 +105,14 @@ Implements actionSource
 		MyColor As Color
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected Receivers() As actionnotificationReceiver
-	#tag EndProperty
-
 
 	#tag ViewBehavior
+		#tag ViewProperty
+			Name="ControlOrder"
+			Visible=true
+			Group="Position"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
@@ -155,12 +131,6 @@ Implements actionSource
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty

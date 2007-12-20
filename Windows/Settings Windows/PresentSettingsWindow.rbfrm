@@ -50,7 +50,6 @@ Begin Window PresentSettingsWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   70
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -77,7 +76,6 @@ Begin Window PresentSettingsWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
-      BehaviorIndex   =   1
    End
    Begin TabPanel tab_present_settings
       AutoDeactivate  =   "True"
@@ -88,6 +86,7 @@ Begin Window PresentSettingsWindow
       Height          =   385
       HelpTag         =   ""
       Index           =   -2147483648
+      InitialParent   =   ""
       Italic          =   "False"
       Left            =   10
       LockBottom      =   "True"
@@ -105,7 +104,6 @@ Begin Window PresentSettingsWindow
       Value           =   1
       Visible         =   "True"
       Width           =   600
-      BehaviorIndex   =   2
       Begin StaticText lbl_style_default_slides
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -134,7 +132,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   3
       End
       Begin SStyleCanvas can_style_default
          AcceptFocus     =   "False"
@@ -155,11 +152,12 @@ Begin Window PresentSettingsWindow
          LockTop         =   "False"
          SongStyle       =   "True"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   80
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   4
       End
       Begin StaticText nte_style_click_to_change_1
          AutoDeactivate  =   "True"
@@ -189,7 +187,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   5
       End
       Begin StaticText lbl_style_scripture_slides
          AutoDeactivate  =   "True"
@@ -219,7 +216,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   6
       End
       Begin SStyleCanvas can_style_scripture
          AcceptFocus     =   "False"
@@ -240,11 +236,12 @@ Begin Window PresentSettingsWindow
          LockTop         =   "False"
          SongStyle       =   "False"
          TabPanelIndex   =   1
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   80
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   7
       End
       Begin StaticText nte_style_click_to_change_2
          AutoDeactivate  =   "True"
@@ -274,7 +271,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   160
-         BehaviorIndex   =   8
       End
       Begin GroupBox grp_settings_alerts
          AutoDeactivate  =   "True"
@@ -299,7 +295,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   387
-         BehaviorIndex   =   9
          Begin StaticText lbl_alerts_align
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -328,7 +323,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   90
-            BehaviorIndex   =   10
          End
          Begin SAlignCanvas sal_alerts
             AcceptFocus     =   "False"
@@ -348,11 +342,12 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   292
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   44
-            BehaviorIndex   =   11
          End
          Begin StaticText lbl_alerts_font
             AutoDeactivate  =   "True"
@@ -382,7 +377,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   250
-            BehaviorIndex   =   12
          End
          Begin SFontCanvas can_alerts_font
             AcceptFocus     =   "False"
@@ -403,11 +397,12 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   272
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   250
-            BehaviorIndex   =   13
          End
       End
       Begin GroupBox grp_option_logo
@@ -433,7 +428,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   142
-         BehaviorIndex   =   14
          Begin SImageCanvas can_logo
             AcceptFocus     =   "False"
             AcceptTabs      =   "False"
@@ -453,11 +447,12 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   95
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   80
-            BehaviorIndex   =   15
          End
          Begin StaticText nte_logo_click_to_change_1
             AutoDeactivate  =   "True"
@@ -487,7 +482,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   137
-            BehaviorIndex   =   16
          End
          Begin StaticText nte_logo_right_click_to_clear_1
             AutoDeactivate  =   "True"
@@ -517,7 +511,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   137
-            BehaviorIndex   =   17
          End
          Begin StaticText lbl_logo_mask
             AutoDeactivate  =   "True"
@@ -547,7 +540,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   18
          End
          Begin SImageCanvas can_logo_mask
             AcceptFocus     =   "False"
@@ -568,11 +560,12 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   238
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   80
-            BehaviorIndex   =   19
          End
          Begin StaticText nte_logo_click_to_change_2
             AutoDeactivate  =   "True"
@@ -602,7 +595,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   20
          End
          Begin StaticText nte_logo_right_click_to_clear_2
             AutoDeactivate  =   "True"
@@ -632,7 +624,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   21
          End
       End
       Begin GroupBox grp_settings_style
@@ -658,7 +649,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   392
-         BehaviorIndex   =   22
          Begin CheckBox chk_style_use_transitions
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -685,7 +675,6 @@ Begin Window PresentSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   23
          End
          Begin StaticText lbl_style_frames
             AutoDeactivate  =   "True"
@@ -715,7 +704,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   151
-            BehaviorIndex   =   24
          End
          Begin Slider sld_style_frames
             AutoDeactivate  =   "True"
@@ -736,11 +724,12 @@ Begin Window PresentSettingsWindow
             Minimum         =   0
             PageStep        =   1
             TabPanelIndex   =   2
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   99
             Value           =   5
             Visible         =   "True"
             Width           =   112
-            BehaviorIndex   =   25
          End
          Begin EditField edt_style_frames
             AcceptTabs      =   "False"
@@ -782,7 +771,6 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   27
-            BehaviorIndex   =   26
          End
          Begin StaticText lbl_style_time
             AutoDeactivate  =   "True"
@@ -812,7 +800,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   151
-            BehaviorIndex   =   27
          End
          Begin Slider sld_style_time
             AutoDeactivate  =   "True"
@@ -833,11 +820,12 @@ Begin Window PresentSettingsWindow
             Minimum         =   50
             PageStep        =   20
             TabPanelIndex   =   2
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   135
             Value           =   100
             Visible         =   "True"
             Width           =   112
-            BehaviorIndex   =   28
          End
          Begin EditField edt_style_time
             AcceptTabs      =   "False"
@@ -879,7 +867,6 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   38
-            BehaviorIndex   =   29
          End
          Begin StaticText lbl_style_border_thickness
             AutoDeactivate  =   "True"
@@ -909,7 +896,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   30
          End
          Begin EditField edt_style_border_thickness
             AcceptTabs      =   "False"
@@ -951,7 +937,6 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   50
-            BehaviorIndex   =   31
          End
          Begin StaticText lbl_style_initial_mode
             AutoDeactivate  =   "True"
@@ -981,7 +966,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   32
          End
          Begin PopupMenu pop_style_initial_mode
             AutoDeactivate  =   "True"
@@ -1009,7 +993,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   33
          End
          Begin StaticText lbl_style_mouse_cursor
             AutoDeactivate  =   "True"
@@ -1039,7 +1022,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   136
-            BehaviorIndex   =   34
          End
          Begin PopupMenu pop_style_mouse_cursor
             AutoDeactivate  =   "True"
@@ -1067,7 +1049,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   136
-            BehaviorIndex   =   35
          End
          Begin CheckBox chk_style_blanks
             AutoDeactivate  =   "True"
@@ -1095,7 +1076,6 @@ Begin Window PresentSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   176
-            BehaviorIndex   =   36
          End
          Begin StaticText txt_style_blanks_between
             AutoDeactivate  =   "True"
@@ -1125,7 +1105,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   161
-            BehaviorIndex   =   37
          End
          Begin Canvas nil_blanks
             AcceptFocus     =   "False"
@@ -1145,11 +1124,12 @@ Begin Window PresentSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   2
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   305
             UseFocusRing    =   "False"
             Visible         =   "True"
             Width           =   177
-            BehaviorIndex   =   38
             Begin StaticText lbl_style_blank_style
                AutoDeactivate  =   "True"
                Bold            =   "False"
@@ -1178,7 +1158,6 @@ Begin Window PresentSettingsWindow
                Underline       =   "False"
                Visible         =   "True"
                Width           =   145
-               BehaviorIndex   =   39
             End
             Begin RadioButton rad_style_blank_prev
                AutoDeactivate  =   "True"
@@ -1204,7 +1183,6 @@ Begin Window PresentSettingsWindow
                Value           =   "False"
                Visible         =   "True"
                Width           =   170
-               BehaviorIndex   =   40
             End
             Begin RadioButton rad_style_blank_next
                AutoDeactivate  =   "True"
@@ -1230,7 +1208,6 @@ Begin Window PresentSettingsWindow
                Value           =   "False"
                Visible         =   "True"
                Width           =   170
-               BehaviorIndex   =   41
             End
          End
          Begin StaticText txt_style_transition_note
@@ -1261,7 +1238,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   204
-            BehaviorIndex   =   42
          End
       End
       Begin GroupBox grp_settings_monitor
@@ -1287,7 +1263,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   150
-         BehaviorIndex   =   43
          Begin StaticText lbl_monitor_control
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -1316,7 +1291,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   44
          End
          Begin PopupMenu pop_monitor_control
             AutoDeactivate  =   "True"
@@ -1344,7 +1318,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   40
-            BehaviorIndex   =   45
          End
          Begin StaticText lbl_monitor_presentation
             AutoDeactivate  =   "True"
@@ -1374,7 +1347,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   46
          End
          Begin PopupMenu pop_monitor_presentation
             AutoDeactivate  =   "True"
@@ -1402,7 +1374,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   40
-            BehaviorIndex   =   47
          End
          Begin StaticText nte_monitor_detected
             AutoDeactivate  =   "True"
@@ -1432,7 +1403,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   48
          End
          Begin StaticText lbl_monitor_default_mode
             AutoDeactivate  =   "True"
@@ -1462,7 +1432,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   49
          End
          Begin PopupMenu pop_monitor_mode
             AutoDeactivate  =   "True"
@@ -1490,7 +1459,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   127
-            BehaviorIndex   =   50
          End
       End
       Begin GroupBox grp_settings_audio
@@ -1516,7 +1484,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "False"
          Width           =   150
-         BehaviorIndex   =   53
          Begin StaticText lbl_audio_file_to_play
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -1545,7 +1512,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   100
-            BehaviorIndex   =   54
          End
          Begin PushButton btn_audio_browse
             AutoDeactivate  =   "True"
@@ -1572,7 +1538,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   69
-            BehaviorIndex   =   55
          End
          Begin PushButton btn_audio_stop
             AutoDeactivate  =   "True"
@@ -1599,7 +1564,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   40
-            BehaviorIndex   =   56
          End
          Begin PushButton btn_audio_play
             AutoDeactivate  =   "True"
@@ -1626,7 +1590,6 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   "True"
             Width           =   40
-            BehaviorIndex   =   57
          End
       End
       Begin GroupBox grp_settings_misc
@@ -1652,7 +1615,6 @@ Begin Window PresentSettingsWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   150
-         BehaviorIndex   =   51
          Begin CheckBox chk_style_exit_prompt
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -1679,19 +1641,24 @@ Begin Window PresentSettingsWindow
             Value           =   "False"
             Visible         =   "True"
             Width           =   135
-            BehaviorIndex   =   52
          End
       End
    End
    Begin Timer AudioTimer
       ControlOrder    =   58
+      Enabled         =   "True"
+      Height          =   32
       Index           =   -2147483648
+      InitialParent   =   ""
       Left            =   418
       Mode            =   2
       Period          =   500
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   400
-      BehaviorIndex   =   58
+      Visible         =   "True"
+      Width           =   32
    End
 End
 #tag EndWindow

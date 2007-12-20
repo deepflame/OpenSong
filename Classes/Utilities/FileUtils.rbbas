@@ -328,8 +328,14 @@ Protected Module FileUtils
 		  name = c.convert(name)
 		  
 		  If urlencode Then
-		    'Create the URL for the HTML document
-		    name = EncodeURLComponent(name)
+		    'Create the URL for the HTML document, leave "/" untouched
+		    Dim buffer() As String = Split(name, "/")
+		    
+		    // Start with the rightmost field, then prepend preceding pathnames if any
+		    name = EncodeURLComponent(buffer(UBound(buffer)))
+		    For i As Integer = UBound(buffer) - 1 DownTo 0
+		      name = EncodeURLComponent(buffer(i)) + "/" + name
+		    Next
 		  End If
 		  
 		  Return name

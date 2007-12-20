@@ -2182,7 +2182,7 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function ToHTML(songElement As XmlNode) As String
+		Function ToHTML(songElement As XmlNode, cssFile As String = "style.css") As String
 		  //++
 		  // 3 December 2006, EMP
 		  // Tag HTML with UTF-8 encoding [Bug 1477964]
@@ -2196,7 +2196,7 @@ Module SongML
 		  s = "<html><head>" + EndOfLine
 		  s = s + "  <meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />" + EndOfLine
 		  s = s + "  <title>" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</title>" + EndOfLine
-		  s = s + "  <link rel=""stylesheet"" href=""style.css"" type=""text/css""/>" + EndOfLine
+		  s = s + "  <link rel=""stylesheet"" href=""" + cssFile + """ type=""text/css""/>" + EndOfLine
 		  s = s + "</head>" + EndOfLine + "<body>" + EndOfLine
 		  
 		  s = s + "  <div id=""title"">" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</div>" + EndOfLine

@@ -28,7 +28,7 @@ Begin Window MainWindow Implements ScriptureReceiver
    Begin PagePanel pge_contents
       AutoDeactivate  =   "True"
       ControlOrder    =   0
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   529
       HelpTag         =   ""
       Index           =   -2147483648
@@ -40,10 +40,11 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockTop         =   "True"
       PanelCount      =   4
       Panels          =   ""
+      Scope           =   0
       TabPanelIndex   =   0
       Top             =   34
       Value           =   0
-      Visible         =   "True"
+      Visible         =   True
       Width           =   495
       BehaviorIndex   =   0
       Begin Canvas can_editor_general_song_editor
@@ -52,7 +53,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   2
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   520
          HelpTag         =   ""
@@ -63,10 +64,11 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockLeft        =   "True"
          LockRight       =   "True"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   1
          Top             =   40
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   485
          BehaviorIndex   =   1
          Begin StaticText hdr_song_header
@@ -75,7 +77,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   3
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   30
             HelpTag         =   ""
             Index           =   -2147483648
@@ -87,6 +89,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Song Editor"
             TextAlign       =   0
@@ -95,7 +98,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             Top             =   50
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   200
             BehaviorIndex   =   2
          End
@@ -105,7 +108,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   4
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -117,6 +120,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Title:"
             TextAlign       =   0
@@ -125,7 +129,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   91
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   220
             BehaviorIndex   =   3
          End
@@ -156,6 +160,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -169,7 +174,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   220
-            BehaviorIndex   =   29
+            BehaviorIndex   =   4
          End
          Begin StaticText lbl_song_author
             AutoDeactivate  =   "True"
@@ -177,7 +182,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   6
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -189,6 +194,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Author:"
             TextAlign       =   0
@@ -197,7 +203,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   126
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   220
             BehaviorIndex   =   5
          End
@@ -228,6 +234,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -241,7 +248,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   220
-            BehaviorIndex   =   24
+            BehaviorIndex   =   6
          End
          Begin StaticText lbl_song_copyright
             AutoDeactivate  =   "True"
@@ -249,7 +256,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   8
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -261,6 +268,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Copyright:"
             TextAlign       =   0
@@ -269,9 +277,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   91
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   225
-            BehaviorIndex   =   4
+            BehaviorIndex   =   7
          End
          Begin SEditField edt_song_copyright
             AcceptTabs      =   "False"
@@ -300,6 +308,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -313,7 +322,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   225
-            BehaviorIndex   =   26
+            BehaviorIndex   =   8
          End
          Begin StaticText lbl_song_ccli
             AutoDeactivate  =   "True"
@@ -321,7 +330,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   10
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -333,6 +342,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "True"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "CCLI #:"
             TextAlign       =   0
@@ -341,9 +351,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   126
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   105
-            BehaviorIndex   =   6
+            BehaviorIndex   =   9
          End
          Begin SEditField edt_song_ccli
             AcceptTabs      =   "False"
@@ -372,6 +382,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -385,7 +396,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   25
+            BehaviorIndex   =   10
          End
          Begin StaticText lbl_song_presentation
             AutoDeactivate  =   "True"
@@ -393,7 +404,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   12
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -405,6 +416,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "True"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Presentation:"
             TextAlign       =   0
@@ -413,9 +425,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   126
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   105
-            BehaviorIndex   =   7
+            BehaviorIndex   =   11
          End
          Begin SEditField edt_song_presentation
             AcceptTabs      =   "False"
@@ -444,6 +456,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -457,7 +470,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   28
+            BehaviorIndex   =   12
          End
          Begin StaticText lbl_song_hymn_number
             AutoDeactivate  =   "True"
@@ -465,7 +478,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   14
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   13
             HelpTag         =   ""
             Index           =   -2147483648
@@ -477,6 +490,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Hymn #:"
             TextAlign       =   0
@@ -485,9 +499,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   176
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   105
-            BehaviorIndex   =   8
+            BehaviorIndex   =   13
          End
          Begin SEditField edt_song_hymn_number
             AcceptTabs      =   "False"
@@ -516,6 +530,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -529,7 +544,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   105
-            BehaviorIndex   =   27
+            BehaviorIndex   =   14
          End
          Begin StaticText lbl_song_lyrics
             AutoDeactivate  =   "True"
@@ -537,7 +552,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   16
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -549,6 +564,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
@@ -557,9 +573,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   161
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   350
-            BehaviorIndex   =   10
+            BehaviorIndex   =   15
          End
          Begin SEditField edf_song_lyrics
             AcceptTabs      =   "False"
@@ -588,6 +604,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "True"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "True"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -601,7 +618,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   23
+            BehaviorIndex   =   16
          End
          Begin StaticText lbl_song_insert
             AutoDeactivate  =   "True"
@@ -609,7 +626,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   18
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -621,6 +638,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Insert:"
             TextAlign       =   0
@@ -629,9 +647,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   215
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   120
-            BehaviorIndex   =   9
+            BehaviorIndex   =   17
          End
          Begin SButton btn_song_ins_section
             AcceptFocus     =   "True"
@@ -652,13 +670,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   1
             Top             =   231
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   20
+            BehaviorIndex   =   18
          End
          Begin SButton btn_song_ins_lyrics
             AcceptFocus     =   "True"
@@ -679,13 +698,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   1
             Top             =   256
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   17
+            BehaviorIndex   =   19
          End
          Begin SButton btn_song_ins_multi_verse
             AcceptFocus     =   "True"
@@ -706,13 +726,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   1
             Top             =   281
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   18
+            BehaviorIndex   =   20
          End
          Begin SButton btn_song_ins_comment
             AcceptFocus     =   "True"
@@ -733,13 +754,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   1
             Top             =   306
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   16
+            BehaviorIndex   =   21
          End
          Begin SButton btn_song_ins_column
             AcceptFocus     =   "True"
@@ -760,13 +782,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   1
             Top             =   331
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   15
+            BehaviorIndex   =   22
          End
          Begin SButton btn_song_ins_page
             AcceptFocus     =   "True"
@@ -787,20 +810,21 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   1
             Top             =   356
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   19
+            BehaviorIndex   =   23
          End
          Begin GroupBox grp_song_transpose
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Transpose"
             ControlOrder    =   25
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   100
             HelpTag         =   ""
             Index           =   -2147483648
@@ -811,21 +835,22 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   391
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   100
-            BehaviorIndex   =   11
+            BehaviorIndex   =   24
             Begin PopupMenu pop_song_transpose
                AutoDeactivate  =   "True"
                Bold            =   "False"
                ControlOrder    =   26
                DataField       =   ""
                DataSource      =   ""
-               Enabled         =   "True"
+               Enabled         =   True
                Height          =   20
                HelpTag         =   ""
                Index           =   -2147483648
@@ -838,14 +863,15 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "True"
                LockTop         =   "False"
+               Scope           =   0
                TabPanelIndex   =   1
                TextFont        =   "Arial"
                TextSize        =   10
                Top             =   414
                Underline       =   "False"
-               Visible         =   "True"
+               Visible         =   True
                Width           =   50
-               BehaviorIndex   =   12
+               BehaviorIndex   =   25
             End
             Begin StaticText lbl_song_using
                AutoDeactivate  =   "True"
@@ -853,7 +879,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                ControlOrder    =   27
                DataField       =   ""
                DataSource      =   ""
-               Enabled         =   "True"
+               Enabled         =   True
                Height          =   15
                HelpTag         =   ""
                Index           =   -2147483648
@@ -865,6 +891,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockRight       =   "True"
                LockTop         =   "False"
                Multiline       =   "False"
+               Scope           =   0
                TabPanelIndex   =   1
                Text            =   "Using:"
                TextAlign       =   1
@@ -873,9 +900,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextSize        =   10
                Top             =   441
                Underline       =   "False"
-               Visible         =   "True"
+               Visible         =   True
                Width           =   80
-               BehaviorIndex   =   14
+               BehaviorIndex   =   26
             End
             Begin PopupMenu pop_song_accidentals
                AutoDeactivate  =   "True"
@@ -883,7 +910,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                ControlOrder    =   28
                DataField       =   ""
                DataSource      =   ""
-               Enabled         =   "True"
+               Enabled         =   True
                Height          =   20
                HelpTag         =   ""
                Index           =   -2147483648
@@ -896,14 +923,15 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "True"
                LockTop         =   "False"
+               Scope           =   0
                TabPanelIndex   =   1
                TextFont        =   "Arial"
                TextSize        =   10
                Top             =   455
                Underline       =   "False"
-               Visible         =   "True"
+               Visible         =   True
                Width           =   80
-               BehaviorIndex   =   13
+               BehaviorIndex   =   27
             End
          End
          Begin SButton btn_song_show_advanced_editor
@@ -925,13 +953,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   "True"
             TabPanelIndex   =   1
             Top             =   50
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   21
+            BehaviorIndex   =   28
          End
          Begin SButton btn_song_show_general_editor
             AcceptFocus     =   "True"
@@ -952,13 +981,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   "True"
             TabPanelIndex   =   1
             Top             =   50
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   22
+            BehaviorIndex   =   29
          End
       End
       Begin Canvas can_editor_advanced_song_editor
@@ -967,7 +997,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   31
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   521
          HelpTag         =   ""
@@ -978,10 +1008,11 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockLeft        =   "True"
          LockRight       =   "True"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   2
          Top             =   39
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   485
          BehaviorIndex   =   30
          Begin StaticText hdr_song_header_2
@@ -990,7 +1021,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   32
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   30
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1002,6 +1033,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Song Editor"
             TextAlign       =   0
@@ -1010,7 +1042,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             Top             =   50
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   200
             BehaviorIndex   =   31
          End
@@ -1020,7 +1052,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   33
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1032,6 +1064,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "True"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Themes:"
             TextAlign       =   0
@@ -1040,9 +1073,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   90
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   175
-            BehaviorIndex   =   34
+            BehaviorIndex   =   32
          End
          Begin ListBox lst_song_themes
             AutoDeactivate  =   "True"
@@ -1055,7 +1088,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   -1
-            Enabled         =   "True"
+            Enabled         =   True
             EnableDrag      =   "False"
             EnableDragReorder=   "False"
             GridLinesHorizontal=   0
@@ -1075,6 +1108,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "True"
             RequiresSelection=   ""
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollBarVertical=   "True"
             SelectionType   =   0
@@ -1084,11 +1118,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   104
             Underline       =   "False"
             UseFocusRing    =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   175
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
-            BehaviorIndex   =   40
+            BehaviorIndex   =   33
          End
          Begin StaticText lbl_song_capo
             AutoDeactivate  =   "True"
@@ -1096,7 +1130,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   35
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1108,6 +1142,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Capo:"
             TextAlign       =   0
@@ -1116,9 +1151,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   125
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   125
-            BehaviorIndex   =   36
+            BehaviorIndex   =   34
          End
          Begin PopupMenu pop_song_capo
             AutoDeactivate  =   "True"
@@ -1126,7 +1161,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   36
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1139,14 +1174,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   139
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   55
-            BehaviorIndex   =   45
+            BehaviorIndex   =   35
          End
          Begin CheckBox chk_song_capo_print
             AutoDeactivate  =   "True"
@@ -1155,7 +1191,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   37
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1166,15 +1202,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   139
             Underline       =   "False"
             Value           =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   100
-            BehaviorIndex   =   32
+            BehaviorIndex   =   36
          End
          Begin CheckBox chk_song_style
             AutoDeactivate  =   "True"
@@ -1194,15 +1231,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   184
             Underline       =   "False"
             Value           =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   102
-            BehaviorIndex   =   33
+            BehaviorIndex   =   37
          End
          Begin SStyleCanvas can_song_style
             AcceptFocus     =   "True"
@@ -1221,13 +1259,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             SongStyle       =   "True"
             TabPanelIndex   =   2
             Top             =   104
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   102
-            BehaviorIndex   =   51
+            BehaviorIndex   =   38
          End
          Begin StaticText lbl_song_key
             AutoDeactivate  =   "True"
@@ -1235,7 +1274,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   40
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1247,6 +1286,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Key:"
             TextAlign       =   0
@@ -1255,9 +1295,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   160
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   125
-            BehaviorIndex   =   37
+            BehaviorIndex   =   39
          End
          Begin SEditField edt_song_key
             AcceptTabs      =   "False"
@@ -1286,6 +1326,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -1299,7 +1340,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   46
+            BehaviorIndex   =   40
          End
          Begin StaticText lbl_song_time_sig
             AutoDeactivate  =   "True"
@@ -1307,7 +1348,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   42
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1319,6 +1360,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Time Signature:"
             TextAlign       =   0
@@ -1327,7 +1369,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   195
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   125
             BehaviorIndex   =   41
          End
@@ -1337,7 +1379,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   43
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1350,14 +1392,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   210
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   125
-            BehaviorIndex   =   48
+            BehaviorIndex   =   42
          End
          Begin StaticText lbl_song_tempo
             AutoDeactivate  =   "True"
@@ -1365,7 +1408,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   44
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1377,6 +1420,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Tempo:"
             TextAlign       =   0
@@ -1385,9 +1429,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   230
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   125
-            BehaviorIndex   =   39
+            BehaviorIndex   =   43
          End
          Begin PopupMenu pop_song_tempo
             AutoDeactivate  =   "True"
@@ -1395,7 +1439,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   45
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1408,14 +1452,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   244
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   125
-            BehaviorIndex   =   47
+            BehaviorIndex   =   44
          End
          Begin StaticText lbl_song_aka
             AutoDeactivate  =   "True"
@@ -1423,7 +1468,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   46
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1435,6 +1480,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "AKA:"
             TextAlign       =   0
@@ -1443,9 +1489,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   230
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   130
-            BehaviorIndex   =   35
+            BehaviorIndex   =   45
          End
          Begin SEditField edt_song_aka
             AcceptTabs      =   "False"
@@ -1474,6 +1520,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -1487,7 +1534,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   130
-            BehaviorIndex   =   52
+            BehaviorIndex   =   46
          End
          Begin StaticText lbl_song_key_line
             AutoDeactivate  =   "True"
@@ -1495,7 +1542,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   48
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1507,6 +1554,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Key Line:"
             TextAlign       =   0
@@ -1515,9 +1563,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   265
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   270
-            BehaviorIndex   =   38
+            BehaviorIndex   =   47
          End
          Begin SEditField edt_song_key_line
             AcceptTabs      =   "False"
@@ -1546,6 +1594,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -1559,7 +1608,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   53
+            BehaviorIndex   =   48
          End
          Begin StaticText lbl_song_user1_1
             AutoDeactivate  =   "True"
@@ -1567,7 +1616,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   50
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1579,6 +1628,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "User Defined 1:"
             TextAlign       =   0
@@ -1587,9 +1637,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   311
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   270
-            BehaviorIndex   =   42
+            BehaviorIndex   =   49
          End
          Begin SEditField edt_song_user1
             AcceptTabs      =   "False"
@@ -1618,6 +1668,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "True"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -1631,7 +1682,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   54
+            BehaviorIndex   =   50
          End
          Begin StaticText lbl_song_user2
             AutoDeactivate  =   "True"
@@ -1639,7 +1690,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   52
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1651,6 +1702,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "User Defined 2:"
             TextAlign       =   0
@@ -1659,9 +1711,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   359
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   270
-            BehaviorIndex   =   43
+            BehaviorIndex   =   51
          End
          Begin SEditField edt_song_user2
             AcceptTabs      =   "False"
@@ -1690,6 +1742,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "True"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -1703,7 +1756,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   55
+            BehaviorIndex   =   52
          End
          Begin StaticText lbl_song_user3
             AutoDeactivate  =   "True"
@@ -1711,7 +1764,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   54
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1723,6 +1776,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "User Defined 3:"
             TextAlign       =   0
@@ -1731,9 +1785,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   404
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   270
-            BehaviorIndex   =   44
+            BehaviorIndex   =   53
          End
          Begin SEditField edt_song_user3
             AcceptTabs      =   "False"
@@ -1762,6 +1816,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "True"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -1775,7 +1830,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   270
-            BehaviorIndex   =   56
+            BehaviorIndex   =   54
          End
          Begin SButton btn_song_show_general_editor_2
             AcceptFocus     =   "True"
@@ -1796,13 +1851,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   "True"
             TabPanelIndex   =   2
             Top             =   50
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   50
+            BehaviorIndex   =   55
          End
          Begin SButton btn_song_show_advanced_editor_2
             AcceptFocus     =   "True"
@@ -1823,13 +1879,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   "True"
             TabPanelIndex   =   2
             Top             =   50
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   125
-            BehaviorIndex   =   49
+            BehaviorIndex   =   56
          End
       End
       Begin Canvas can_editor_slide_editor
@@ -1838,7 +1895,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   58
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   520
          HelpTag         =   ""
@@ -1849,10 +1906,11 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockLeft        =   "True"
          LockRight       =   "True"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   3
          Top             =   39
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   485
          BehaviorIndex   =   57
          Begin StaticText hdr_slide_header
@@ -1861,7 +1919,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   59
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   30
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1873,6 +1931,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
@@ -1881,7 +1940,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             Top             =   49
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   460
             BehaviorIndex   =   58
          End
@@ -1891,7 +1950,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   60
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1903,6 +1962,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Title:"
             TextAlign       =   0
@@ -1911,9 +1971,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   90
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   145
-            BehaviorIndex   =   62
+            BehaviorIndex   =   59
          End
          Begin SEditField edt_slide_title
             AcceptTabs      =   "False"
@@ -1942,6 +2002,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -1955,7 +2016,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   145
-            BehaviorIndex   =   63
+            BehaviorIndex   =   60
          End
          Begin StaticText lbl_slide_subtitle
             AutoDeactivate  =   "True"
@@ -1963,7 +2024,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   62
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1975,6 +2036,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Subtitle:"
             TextAlign       =   0
@@ -1983,9 +2045,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   90
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   145
-            BehaviorIndex   =   65
+            BehaviorIndex   =   61
          End
          Begin SEditField edt_slide_subtitle
             AcceptTabs      =   "False"
@@ -2014,6 +2076,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -2027,7 +2090,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   145
-            BehaviorIndex   =   82
+            BehaviorIndex   =   62
          End
          Begin StaticText lbl_slide_name
             AutoDeactivate  =   "True"
@@ -2035,7 +2098,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   64
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2047,6 +2110,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Name:"
             TextAlign       =   0
@@ -2055,9 +2119,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   90
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   140
-            BehaviorIndex   =   69
+            BehaviorIndex   =   63
          End
          Begin SEditField edt_slide_name
             AcceptTabs      =   "False"
@@ -2086,6 +2150,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -2099,7 +2164,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   72
+            BehaviorIndex   =   64
          End
          Begin StaticText lbl_slide_slides
             AutoDeactivate  =   "True"
@@ -2107,7 +2172,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   66
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2119,6 +2184,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Slides:"
             TextAlign       =   0
@@ -2127,9 +2193,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   125
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   340
-            BehaviorIndex   =   71
+            BehaviorIndex   =   65
          End
          Begin SEditField edt_slide_slides
             AcceptTabs      =   "False"
@@ -2158,6 +2224,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "True"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "True"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -2171,7 +2238,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   81
+            BehaviorIndex   =   66
          End
          Begin StaticText lbl_slide_insert
             AutoDeactivate  =   "True"
@@ -2179,7 +2246,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   68
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2191,6 +2258,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Insert:"
             TextAlign       =   0
@@ -2199,9 +2267,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   139
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   115
-            BehaviorIndex   =   78
+            BehaviorIndex   =   67
          End
          Begin SButton btn_slide_ins_slide
             AcceptFocus     =   "True"
@@ -2222,13 +2290,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   3
             Top             =   154
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   66
+            BehaviorIndex   =   68
          End
          Begin CheckBox chk_slide_loop
             AutoDeactivate  =   "True"
@@ -2237,7 +2306,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   70
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2248,15 +2317,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   194
             Underline       =   "False"
             Value           =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   110
-            BehaviorIndex   =   59
+            BehaviorIndex   =   69
          End
          Begin CheckBox chk_slide_print
             AutoDeactivate  =   "True"
@@ -2265,7 +2335,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   71
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2276,15 +2346,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   214
             Underline       =   "False"
             Value           =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   110
-            BehaviorIndex   =   60
+            BehaviorIndex   =   70
          End
          Begin StaticText lbl_slide_auto_advance
             AutoDeactivate  =   "True"
@@ -2292,7 +2363,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   72
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   30
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2304,6 +2375,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "True"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
@@ -2312,9 +2384,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   254
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   130
-            BehaviorIndex   =   75
+            BehaviorIndex   =   71
          End
          Begin EditField edt_slide_auto_advance
             AcceptTabs      =   "False"
@@ -2326,7 +2398,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   73
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -2343,6 +2415,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -2354,9 +2427,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   284
             Underline       =   "False"
             UseFocusRing    =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   40
-            BehaviorIndex   =   64
+            BehaviorIndex   =   72
          End
          Begin StaticText txt_slide_seconds
             AutoDeactivate  =   "True"
@@ -2364,7 +2437,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   74
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2376,6 +2449,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "True"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "seconds"
             TextAlign       =   1
@@ -2384,9 +2458,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   304
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   100
-            BehaviorIndex   =   80
+            BehaviorIndex   =   73
          End
          Begin StaticText lbl_slide_presentation
             AutoDeactivate  =   "True"
@@ -2394,7 +2468,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   75
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   16
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2406,6 +2480,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
@@ -2414,7 +2489,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   364
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   170
             BehaviorIndex   =   74
          End
@@ -2428,7 +2503,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   76
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -2445,6 +2520,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -2456,9 +2532,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   378
             Underline       =   "False"
             UseFocusRing    =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   170
-            BehaviorIndex   =   67
+            BehaviorIndex   =   75
          End
          Begin StaticText lbl_slide_origorder
             AutoDeactivate  =   "True"
@@ -2466,7 +2542,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   77
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   16
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2478,6 +2554,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
@@ -2486,9 +2563,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   364
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   160
-            BehaviorIndex   =   77
+            BehaviorIndex   =   76
          End
          Begin EditField edt_slide_origorder
             AcceptTabs      =   "False"
@@ -2500,7 +2577,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   78
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -2517,6 +2594,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "True"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -2528,9 +2606,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   378
             Underline       =   "False"
             UseFocusRing    =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   160
-            BehaviorIndex   =   68
+            BehaviorIndex   =   77
          End
          Begin StaticText lbl_slide_folder
             AutoDeactivate  =   "True"
@@ -2538,7 +2616,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   79
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   16
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2550,6 +2628,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "File Folder"
             TextAlign       =   0
@@ -2558,9 +2637,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   400
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   170
-            BehaviorIndex   =   76
+            BehaviorIndex   =   78
          End
          Begin SEditField edt_slide_folder
             AcceptTabs      =   "False"
@@ -2589,6 +2668,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "True"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -2602,7 +2682,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   170
-            BehaviorIndex   =   83
+            BehaviorIndex   =   79
          End
          Begin CheckBox chk_slide_style
             AutoDeactivate  =   "True"
@@ -2622,15 +2702,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   414
             Underline       =   "False"
             Value           =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   100
-            BehaviorIndex   =   61
+            BehaviorIndex   =   80
          End
          Begin SStyleCanvas can_slide_style
             AcceptFocus     =   "True"
@@ -2649,13 +2730,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "True"
             LockTop         =   "False"
+            Scope           =   0
             SongStyle       =   "False"
             TabPanelIndex   =   3
             Top             =   334
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   102
-            BehaviorIndex   =   70
+            BehaviorIndex   =   81
          End
          Begin StaticText lbl_slide_notes
             AutoDeactivate  =   "True"
@@ -2663,7 +2745,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   83
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2675,6 +2757,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "True"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   3
             Text            =   "Notes:"
             TextAlign       =   0
@@ -2683,9 +2766,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   435
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   340
-            BehaviorIndex   =   79
+            BehaviorIndex   =   82
          End
          Begin SEditField edt_slide_notes
             AcceptTabs      =   "False"
@@ -2714,6 +2797,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "True"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "True"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -2727,7 +2811,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   73
+            BehaviorIndex   =   83
          End
       End
       Begin Canvas cnv_editor_style_change
@@ -2736,7 +2820,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   85
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   519
          HelpTag         =   ""
@@ -2747,10 +2831,11 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockLeft        =   "True"
          LockRight       =   "True"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   4
          Top             =   39
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   485
          BehaviorIndex   =   84
          Begin StaticText hdr_style_header
@@ -2759,7 +2844,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   86
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   30
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2771,6 +2856,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   4
             Text            =   "Style Change"
             TextAlign       =   0
@@ -2779,16 +2865,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             Top             =   49
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   460
-            BehaviorIndex   =   88
+            BehaviorIndex   =   85
          End
          Begin RadioButton rad_style_revert
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Revert to Previous Style"
             ControlOrder    =   87
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2799,22 +2885,23 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   4
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   104
             Underline       =   "False"
             Value           =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   250
-            BehaviorIndex   =   85
+            BehaviorIndex   =   86
          End
          Begin RadioButton rad_style_change
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Change Style to the Following:"
             ControlOrder    =   88
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2825,15 +2912,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   4
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   129
             Underline       =   "False"
             Value           =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   250
-            BehaviorIndex   =   86
+            BehaviorIndex   =   87
          End
          Begin SStyleCanvas can_style_style
             AcceptFocus     =   "True"
@@ -2852,20 +2940,21 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             SongStyle       =   "True"
             TabPanelIndex   =   4
             Top             =   183
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   320
-            BehaviorIndex   =   87
+            BehaviorIndex   =   88
          End
       End
    End
    Begin PagePanel pge_controls
       AutoDeactivate  =   "True"
       ControlOrder    =   1
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   529
       HelpTag         =   ""
       Index           =   -2147483648
@@ -2877,10 +2966,11 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockTop         =   "True"
       PanelCount      =   2
       Panels          =   ""
+      Scope           =   0
       TabPanelIndex   =   0
       Top             =   35
       Value           =   0
-      Visible         =   "True"
+      Visible         =   True
       Width           =   250
       BehaviorIndex   =   89
       Begin Canvas can_controls_songs_mode
@@ -2889,7 +2979,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   90
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   520
          HelpTag         =   ""
@@ -2900,10 +2990,11 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockLeft        =   "True"
          LockRight       =   "False"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   1
          Top             =   40
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   240
          BehaviorIndex   =   90
          Begin GroupBox grp_songs_all_songs
@@ -2911,7 +3002,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   "False"
             Caption         =   "All Songs"
             ControlOrder    =   91
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   100
             HelpTag         =   ""
             Index           =   -2147483648
@@ -2922,12 +3013,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   40
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   110
             BehaviorIndex   =   91
             Begin SButton btn_songs_print
@@ -2949,13 +3041,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   61
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   94
+               BehaviorIndex   =   92
             End
             Begin SButton btn_songs_export
                AcceptFocus     =   "True"
@@ -2976,13 +3069,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   86
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   92
+               BehaviorIndex   =   93
             End
             Begin SButton btn_songs_find
                AcceptFocus     =   "True"
@@ -3003,13 +3097,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   111
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   93
+               BehaviorIndex   =   94
             End
          End
          Begin GroupBox grp_songs_new_song
@@ -3017,7 +3112,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   "False"
             Caption         =   "New Song"
             ControlOrder    =   95
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   75
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3028,12 +3123,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   145
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   110
             BehaviorIndex   =   95
             Begin SButton btn_song_create
@@ -3055,6 +3151,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   166
@@ -3082,6 +3179,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   191
@@ -3096,7 +3194,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   "False"
             Caption         =   "Selected Song"
             ControlOrder    =   98
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   225
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3107,12 +3205,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   40
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   110
             BehaviorIndex   =   98
             Begin SButton btn_song_save
@@ -3134,13 +3233,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   60
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   106
+               BehaviorIndex   =   99
             End
             Begin SButton btn_song_revert
                AcceptFocus     =   "True"
@@ -3161,13 +3261,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   85
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   105
+               BehaviorIndex   =   100
             End
             Begin SButton btn_song_print
                AcceptFocus     =   "True"
@@ -3188,13 +3289,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   110
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   103
+               BehaviorIndex   =   101
             End
             Begin SButton btn_song_present
                AcceptFocus     =   "True"
@@ -3215,6 +3317,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   135
@@ -3242,13 +3345,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   160
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   100
+               BehaviorIndex   =   103
             End
             Begin SButton btn_song_rename
                AcceptFocus     =   "True"
@@ -3269,6 +3373,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   185
@@ -3296,13 +3401,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   210
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   101
+               BehaviorIndex   =   105
             End
             Begin SButton btn_song_delete
                AcceptFocus     =   "True"
@@ -3323,13 +3429,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
                Top             =   236
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   99
+               BehaviorIndex   =   106
             End
          End
          Begin StaticText lbl_songs_song_folders
@@ -3338,7 +3445,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   107
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3350,6 +3457,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "True"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Folders:"
             TextAlign       =   0
@@ -3358,7 +3466,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   256
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   230
             BehaviorIndex   =   107
          End
@@ -3368,7 +3476,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   108
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3381,12 +3489,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "True"
             LockRight       =   "False"
             LockTop         =   "True"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   271
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   190
             BehaviorIndex   =   108
          End
@@ -3409,13 +3518,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "True"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   1
             Top             =   273
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   18
-            BehaviorIndex   =   114
+            BehaviorIndex   =   109
          End
          Begin SButton btn_songs_song_folders_delete
             AcceptFocus     =   "True"
@@ -3436,13 +3546,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "True"
+            Scope           =   0
             StickyBevel     =   0
             TabPanelIndex   =   1
             Top             =   273
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   18
-            BehaviorIndex   =   113
+            BehaviorIndex   =   110
          End
          Begin StaticText lbl_songs_songs
             AutoDeactivate  =   "True"
@@ -3450,7 +3561,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   111
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3462,6 +3573,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "True"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Songs:"
             TextAlign       =   0
@@ -3470,9 +3582,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11
             Top             =   296
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   230
-            BehaviorIndex   =   110
+            BehaviorIndex   =   111
          End
          Begin ListBox lst_songs_songs
             AutoDeactivate  =   "True"
@@ -3485,7 +3597,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   -1
-            Enabled         =   "True"
+            Enabled         =   True
             EnableDrag      =   "False"
             EnableDragReorder=   "False"
             GridLinesHorizontal=   0
@@ -3505,6 +3617,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "True"
             RequiresSelection=   ""
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollBarVertical=   "True"
             SelectionType   =   0
@@ -3514,11 +3627,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   314
             Underline       =   "False"
             UseFocusRing    =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   230
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
-            BehaviorIndex   =   109
+            BehaviorIndex   =   112
          End
          Begin StaticText lbl_songs_curr_folder
             AutoDeactivate  =   "True"
@@ -3526,7 +3639,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   113
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3538,6 +3651,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Containing Folder:"
             TextAlign       =   0
@@ -3546,9 +3660,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   509
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   230
-            BehaviorIndex   =   111
+            BehaviorIndex   =   113
          End
          Begin EditField edt_songs_curr_folder
             AcceptTabs      =   "False"
@@ -3560,7 +3674,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   114
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
@@ -3577,6 +3691,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "True"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "False"
             Styled          =   "False"
@@ -3588,9 +3703,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   528
             Underline       =   "False"
             UseFocusRing    =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   227
-            BehaviorIndex   =   112
+            BehaviorIndex   =   114
          End
       End
       Begin Canvas can_controls_sets_mode
@@ -3599,7 +3714,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   115
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   519
          HelpTag         =   ""
@@ -3610,10 +3725,11 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockLeft        =   "True"
          LockRight       =   "False"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   2
          Top             =   40
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   240
          BehaviorIndex   =   115
          Begin GroupBox grp_sets_sets
@@ -3621,7 +3737,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   "False"
             Caption         =   "Sets"
             ControlOrder    =   116
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   50
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3632,21 +3748,22 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   40
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   230
-            BehaviorIndex   =   127
+            BehaviorIndex   =   116
             Begin PopupMenu pop_sets_sets
                AutoDeactivate  =   "True"
                Bold            =   "False"
                ControlOrder    =   117
                DataField       =   ""
                DataSource      =   ""
-               Enabled         =   "True"
+               Enabled         =   True
                Height          =   20
                HelpTag         =   ""
                Index           =   -2147483648
@@ -3659,14 +3776,15 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                TabPanelIndex   =   2
                TextFont        =   "Arial"
                TextSize        =   10
                Top             =   58
                Underline       =   "False"
-               Visible         =   "True"
+               Visible         =   True
                Width           =   185
-               BehaviorIndex   =   128
+               BehaviorIndex   =   117
             End
             Begin SButton btn_sets_add
                AcceptFocus     =   "False"
@@ -3687,13 +3805,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   60
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   18
-               BehaviorIndex   =   129
+               BehaviorIndex   =   118
             End
          End
          Begin GroupBox grp_set_current_set
@@ -3701,7 +3820,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   "False"
             Caption         =   "Current Set"
             ControlOrder    =   119
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   121
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3712,14 +3831,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   89
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   230
-            BehaviorIndex   =   130
+            BehaviorIndex   =   119
             Begin SButton btn_set_save
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -3739,13 +3859,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   107
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   131
+               BehaviorIndex   =   120
             End
             Begin SButton btn_set_rename
                AcceptFocus     =   "True"
@@ -3766,13 +3887,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   132
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   137
+               BehaviorIndex   =   121
             End
             Begin SButton btn_set_delete
                AcceptFocus     =   "True"
@@ -3793,13 +3915,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   157
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   132
+               BehaviorIndex   =   122
             End
             Begin SButton btn_set_saveas
                AcceptFocus     =   "True"
@@ -3820,13 +3943,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   182
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   138
+               BehaviorIndex   =   123
             End
             Begin SButton btn_set_present
                AcceptFocus     =   "True"
@@ -3847,13 +3971,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   107
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   134
+               BehaviorIndex   =   124
             End
             Begin SButton btn_set_print_songs
                AcceptFocus     =   "True"
@@ -3874,13 +3999,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   132
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   136
+               BehaviorIndex   =   125
             End
             Begin SButton btn_set_print_order
                AcceptFocus     =   "True"
@@ -3901,13 +4027,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   156
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   135
+               BehaviorIndex   =   126
             End
             Begin SButton btn_set_export
                AcceptFocus     =   "True"
@@ -3927,13 +4054,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   182
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   133
+               BehaviorIndex   =   127
             End
          End
          Begin GroupBox grp_set_new_item
@@ -3941,7 +4069,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   "False"
             Caption         =   "New Item"
             ControlOrder    =   128
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   125
             HelpTag         =   ""
             Index           =   -2147483648
@@ -3952,14 +4080,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   209
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   110
-            BehaviorIndex   =   116
+            BehaviorIndex   =   128
             Begin SButton btn_set_add_song
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -3979,13 +4108,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   228
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   117
+               BehaviorIndex   =   129
             End
             Begin SButton btn_set_add_scripture
                AcceptFocus     =   "True"
@@ -4006,13 +4136,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   254
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   118
+               BehaviorIndex   =   130
             End
             Begin SButton btn_set_add_slides
                AcceptFocus     =   "True"
@@ -4033,13 +4164,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   279
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   119
+               BehaviorIndex   =   131
             End
             Begin SButton btn_set_add_style
                AcceptFocus     =   "True"
@@ -4060,13 +4192,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   304
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   120
+               BehaviorIndex   =   132
             End
          End
          Begin GroupBox grp_set_current_item
@@ -4074,7 +4207,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   "False"
             Caption         =   "Current Item"
             ControlOrder    =   133
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   150
             HelpTag         =   ""
             Index           =   -2147483648
@@ -4085,14 +4218,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   209
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   110
-            BehaviorIndex   =   121
+            BehaviorIndex   =   133
             Begin SButton btn_set_move_up
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
@@ -4112,13 +4246,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   229
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   124
+               BehaviorIndex   =   134
             End
             Begin SButton btn_set_move_down
                AcceptFocus     =   "True"
@@ -4139,13 +4274,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   254
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   123
+               BehaviorIndex   =   135
             End
             Begin SButton btn_set_remove
                AcceptFocus     =   "True"
@@ -4166,13 +4302,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   279
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   125
+               BehaviorIndex   =   136
             End
             Begin SButton btn_set_copy
                AcceptFocus     =   "True"
@@ -4193,13 +4330,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   304
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   122
+               BehaviorIndex   =   137
             End
             Begin SButton btn_set_store
                AcceptFocus     =   "True"
@@ -4220,13 +4358,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockLeft        =   "False"
                LockRight       =   "False"
                LockTop         =   "False"
+               Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
                Top             =   329
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   126
+               BehaviorIndex   =   138
             End
          End
          Begin StaticText lbl_set_items
@@ -4235,7 +4374,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ControlOrder    =   139
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   "True"
+            Enabled         =   True
             Height          =   15
             HelpTag         =   ""
             Index           =   -2147483648
@@ -4247,6 +4386,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Items In Set:"
             TextAlign       =   0
@@ -4255,7 +4395,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             Top             =   350
             Underline       =   "False"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   115
             BehaviorIndex   =   139
          End
@@ -4270,7 +4410,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataField       =   ""
             DataSource      =   ""
             DefaultRowHeight=   -1
-            Enabled         =   "True"
+            Enabled         =   True
             EnableDrag      =   "False"
             EnableDragReorder=   "True"
             GridLinesHorizontal=   0
@@ -4290,6 +4430,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   "False"
             LockTop         =   "True"
             RequiresSelection=   ""
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollBarVertical=   "True"
             SelectionType   =   0
@@ -4299,7 +4440,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   365
             Underline       =   "False"
             UseFocusRing    =   "True"
-            Visible         =   "True"
+            Visible         =   True
             Width           =   230
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
@@ -4326,6 +4467,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       StickyBevel     =   "True"
       TabPanelIndex   =   0
       Top             =   3
@@ -4353,6 +4495,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       StickyBevel     =   "True"
       TabPanelIndex   =   0
       Top             =   3
@@ -4367,7 +4510,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       ControlOrder    =   143
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   25
       HelpTag         =   ""
       Index           =   -2147483648
@@ -4379,6 +4522,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockRight       =   "True"
       LockTop         =   "True"
       Multiline       =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -4387,14 +4531,14 @@ Begin Window MainWindow Implements ScriptureReceiver
       TextSize        =   10
       Top             =   4
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   320
       BehaviorIndex   =   143
    End
    Begin Separator sep_vertical
       AutoDeactivate  =   "True"
       ControlOrder    =   144
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   506
       HelpTag         =   ""
       Index           =   -2147483648
@@ -4404,16 +4548,17 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       Top             =   35
-      Visible         =   "True"
+      Visible         =   True
       Width           =   4
       BehaviorIndex   =   144
    End
    Begin Separator sep_horizontal
       AutoDeactivate  =   "True"
       ControlOrder    =   145
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   4
       HelpTag         =   ""
       Index           =   -2147483648
@@ -4423,18 +4568,21 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Top             =   32
-      Visible         =   "True"
+      Visible         =   True
       Width           =   750
       BehaviorIndex   =   145
    End
    Begin Timer tmr_lookup
       ControlOrder    =   146
       Index           =   -2147483648
+      InitialParent   =   ""
       Left            =   759
       Mode            =   2
       Period          =   1500
+      Scope           =   0
       TabPanelIndex   =   0
       Top             =   -18
       BehaviorIndex   =   146
@@ -4442,7 +4590,9 @@ Begin Window MainWindow Implements ScriptureReceiver
    Begin ContextualMenu mnu_clipboard
       ControlOrder    =   147
       Index           =   -2147483648
+      InitialParent   =   ""
       Left            =   759
+      Scope           =   0
       TabPanelIndex   =   0
       Top             =   26
       UseMacCMM       =   ""
@@ -8968,73 +9118,6 @@ End
 #tag EndEvents
 #tag Events btn_songs_export
 	#tag Event
-		Sub Action()
-		  //++
-		  // 3 December 2006, EMP
-		  // Change HTML file encoding to UTF-8 [Bug 1477964]
-		  Dim i As Integer
-		  Dim dlg as New SelectFolderDialog
-		  Dim f, g as FolderItem
-		  Dim output, goutput As TextOutputStream
-		  Dim song As XmlDocument
-		  
-		  'First get confirmation
-		  //++
-		  // Feature request 1528693: require confirmation
-		  //--
-		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
-		  
-		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  
-		  'build dialog
-		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
-		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = DocumentsFolder
-		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
-		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
-		  
-		  f = dlg.ShowModal() 'show dialog
-		  If f <> Nil Then
-		    App.DoEvents
-		    g = f.Child("index.html")
-		    goutput = g.CreateTextFile
-		    If goutput <> Nil Then
-		      goutput.WriteLine "<html><head>"
-		      goutput.WriteLine "<meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />"
-		      goutput.WriteLine "<title>" + App.T.Translate("songs_mode/songs/@caption") + "</title><link rel=""stylesheet"" href=""style.css"" type=""text/css""/></head><body>"
-		      goutput.WriteLine "<div id=""title"">" + App.T.Translate("songs_mode/songs/@caption") + "</div><ul id=""song_list"">"
-		    End If
-		    App.MouseCursor = WatchCursor
-		    ProgressWindow.Show
-		    For i = 0 To lst_songs_songs.ListCount - 1
-		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
-		      song = SmartML.XDocFromFile(Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.List(i)))
-		      If output <> Nil And song <> Nil Then
-		        output.Write SongML.ToHTML(song.DocumentElement)
-		        If goutput <> Nil Then goutput.WriteLine "<li><a href=""" + MakeSafeURLName(lst_songs_songs.List(i), True) + ".html"">" + lst_songs_songs.List(i) + "</a></li>"
-		        output.Close
-		      End If
-		      ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
-		      '++JRC
-		      ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/export") + "..."
-		      '--
-		      ProgressWindow.SetStatus lst_songs_songs.List(i)
-		    Next i
-		    If goutput <> Nil Then
-		      goutput.WriteLine "</ul><p><a class=""opensong"" href=""http://www.opensong.org/"">" + App.T.Translate("about/created_with_opensong") + "</a></p>"
-		      goutput.Write "</body></html>"
-		    End If
-		    goutput.Close
-		    App.MouseCursor = Nil
-		    g = App.AppFolder.Child("OpenSong Settings").Child("style.css")
-		    If g <> Nil Then g.CopyFileTo f
-		    
-		  End If
-		  ProgressWindow.Close
-		End Sub
-	#tag EndEvent
-	#tag Event
 		Sub MouseEnter()
 		  SetHelp "songs_mode/all_songs/export"
 		End Sub
@@ -9047,6 +9130,110 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon filesaveaspic, filesaveasmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  // shortcut
+		  If Export.CreateInstance Then
+		    Exit Sub
+		  End If
+		  
+		  //++
+		  // 3 December 2006, EMP
+		  // Change HTML file encoding to UTF-8 [Bug 1477964]
+		  Dim expFolderDlg as New SelectFolderDialog
+		  Dim expFolder, indexHtmlFile As FolderItem
+		  Dim styleCSSFile As FolderItem = App.AppFolder.Child("OpenSong Settings").Child("style.css")
+		  Dim songFileOutput, indexHTMLoutput As TextOutputStream
+		  Dim song As XmlDocument
+		  Dim i As Integer
+		  
+		  'First get confirmation
+		  //++
+		  // Feature request 1528693: require confirmation
+		  //--
+		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  'build dialog
+		  expFolderDlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
+		  expFolderDlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  expFolderDlg.InitialDirectory = DocumentsFolder
+		  expFolderDlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
+		  expFolderDlg.Title = App.T.Translate("shared/browse_for/@caption")
+		  expFolder = expFolderDlg.ShowModal() 'show dialog
+		  
+		  If Nil = expFolder Then Exit Sub
+		  
+		  App.DoEvents
+		  indexHtmlFile = expFolder.Child("index.html")
+		  indexHTMLoutput = indexHtmlFile.CreateTextFile
+		  If Nil = indexHTMLoutput Then Exit Sub
+		  
+		  indexHTMLoutput.WriteLine "<html><head>"
+		  indexHTMLoutput.WriteLine "<meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />"
+		  indexHTMLoutput.WriteLine "<title>" + App.T.Translate("songs_mode/songs/@caption") + "</title><link rel=""stylesheet"" href=""style.css"" type=""text/css""/></head><body>"
+		  indexHTMLoutput.WriteLine "<div id=""title"">" + App.T.Translate("songs_mode/songs/@caption") + "</div><ul id=""song_list"">"
+		  
+		  App.MouseCursor = WatchCursor
+		  ProgressWindow.Show
+		  
+		  For i = 0 To lst_songs_songs.ListCount - 1
+		    Dim foldername As String = lst_songs_songs.CellTag(i, 0).StringValue
+		    
+		    // Create folders if necessary
+		    Dim currentFolderPart As String = MakeSafeURLName(foldername, False)
+		    Dim separator As Integer
+		    Dim workingFolder As FolderItem = expFolder
+		    
+		    separator = InStr(separator, currentFolderPart, "/")
+		    while separator > 1
+		      If Not workingFolder.Child(Left(currentFolderPart, separator - 1)).Exists Then
+		        workingFolder.Child(Left(currentFolderPart, separator - 1)).CreateAsFolder
+		      End If
+		      
+		      If Not workingFolder.Child(Left(currentFolderPart, separator - 1)).Directory Then
+		        // a file is blocking the way for our folder
+		        workingFolder.Child(Left(currentFolderPart, separator - 1)).Delete
+		        workingFolder.Child(Left(currentFolderPart, separator - 1)).CreateAsFolder
+		      End If
+		      
+		      // go one deeper
+		      workingFolder = workingFolder.Child(Left(currentFolderPart, separator - 1))
+		      currentFolderPart = Right(foldername, Len(foldername) - separator)
+		      separator = InStr(separator, currentFolderPart, "/")
+		      
+		      // copy .css if needed
+		      If styleCSSFile <> Nil And Not workingFolder.Child(styleCSSFile.Name).Exists Then styleCSSFile.CopyFileTo workingFolder
+		    wend
+		    
+		    songFileOutput = workingFolder.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
+		    song = SmartML.XDocFromFile(Songs.GetFile(foldername + "/" + lst_songs_songs.List(i)))
+		    If songFileOutput <> Nil And song <> Nil Then
+		      //songFileOutput.Write SongML.ToHTML(song.DocumentElement)
+		      If indexHTMLoutput <> Nil Then indexHTMLoutput.WriteLine "<li><a href=""" + MakeSafeURLName(foldername, True) + MakeSafeURLName(lst_songs_songs.List(i), True) + ".html"">" + lst_songs_songs.List(i) + "</a></li>"
+		      songFileOutput.Close
+		    End If
+		    ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
+		    '++JRC
+		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/export") + "..."
+		    '--
+		    ProgressWindow.SetStatus lst_songs_songs.List(i)
+		  Next i
+		  If indexHTMLoutput <> Nil Then
+		    indexHTMLoutput.WriteLine "</ul><p><a class=""opensong"" href=""http://www.opensong.org/"">" + App.T.Translate("about/created_with_opensong") + "</a></p>"
+		    indexHTMLoutput.Write "</body></html>"
+		  End If
+		  indexHTMLoutput.Close
+		  App.MouseCursor = Nil
+		  styleCSSFile = App.AppFolder.Child("OpenSong Settings").Child("style.css")
+		  If styleCSSFile <> Nil Then styleCSSFile.CopyFileTo expFolder
+		  
+		  ProgressWindow.Close
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

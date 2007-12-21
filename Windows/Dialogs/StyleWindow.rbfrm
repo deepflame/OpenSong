@@ -32,7 +32,7 @@ Begin Window StyleWindow
       Caption         =   "OK"
       ControlOrder    =   0
       Default         =   "True"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -43,13 +43,15 @@ Begin Window StyleWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
       Top             =   441
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   70
+      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -58,7 +60,7 @@ Begin Window StyleWindow
       Caption         =   "Cancel"
       ControlOrder    =   1
       Default         =   "False"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -69,20 +71,22 @@ Begin Window StyleWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
       Top             =   441
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   70
+      BehaviorIndex   =   1
    End
    Begin GroupBox grp_style_fonts_and_alignment
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Style Editor"
       ControlOrder    =   2
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   456
       HelpTag         =   ""
       Index           =   -2147483648
@@ -93,20 +97,22 @@ Begin Window StyleWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   380
+      BehaviorIndex   =   2
       Begin StaticText lbl_font_title
          AutoDeactivate  =   "True"
          Bold            =   "False"
          ControlOrder    =   3
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -118,6 +124,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Title:"
          TextAlign       =   0
@@ -126,8 +133,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   26
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   250
+         BehaviorIndex   =   3
       End
       Begin SFontCanvas can_font_title
          AcceptFocus     =   "False"
@@ -136,7 +144,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   4
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   80
          HelpTag         =   ""
@@ -147,13 +155,13 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   41
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   250
+         BehaviorIndex   =   4
       End
       Begin StaticText lbl_font_align
          AutoDeactivate  =   "True"
@@ -161,7 +169,7 @@ Begin Window StyleWindow
          ControlOrder    =   5
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -173,6 +181,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Align:"
          TextAlign       =   1
@@ -181,8 +190,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   26
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   73
+         BehaviorIndex   =   5
       End
       Begin SAlignCanvas sal_align_title
          AcceptFocus     =   "False"
@@ -190,7 +200,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   6
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   44
          HelpTag         =   ""
@@ -201,13 +211,13 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   56
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   44
+         BehaviorIndex   =   6
       End
       Begin StaticText lbl_font_subtitle
          AutoDeactivate  =   "True"
@@ -215,7 +225,7 @@ Begin Window StyleWindow
          ControlOrder    =   7
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -227,6 +237,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Subtitle:"
          TextAlign       =   0
@@ -235,8 +246,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   125
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   250
+         BehaviorIndex   =   7
       End
       Begin SFontCanvas can_font_subtitle
          AcceptFocus     =   "False"
@@ -245,7 +257,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   8
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   80
          HelpTag         =   ""
@@ -256,13 +268,13 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   140
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   250
+         BehaviorIndex   =   8
       End
       Begin SAlignCanvas sal_align_subtitle
          AcceptFocus     =   "False"
@@ -270,7 +282,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   9
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   44
          HelpTag         =   ""
@@ -281,13 +293,13 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   155
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   44
+         BehaviorIndex   =   9
       End
       Begin StaticText lbl_font_body
          AutoDeactivate  =   "True"
@@ -295,7 +307,7 @@ Begin Window StyleWindow
          ControlOrder    =   10
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -307,6 +319,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Body:"
          TextAlign       =   0
@@ -315,8 +328,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   224
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   250
+         BehaviorIndex   =   10
       End
       Begin SFontCanvas can_font_body
          AcceptFocus     =   "False"
@@ -325,7 +339,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   11
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   80
          HelpTag         =   ""
@@ -336,13 +350,13 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   239
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   250
+         BehaviorIndex   =   11
       End
       Begin SAlignCanvas sal_align_body
          AcceptFocus     =   "False"
@@ -350,7 +364,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   12
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   44
          HelpTag         =   ""
@@ -361,13 +375,13 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   254
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   44
+         BehaviorIndex   =   12
       End
       Begin StaticText lbl_font_subtitles
          AutoDeactivate  =   "True"
@@ -375,7 +389,7 @@ Begin Window StyleWindow
          ControlOrder    =   13
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   14
          HelpTag         =   ""
          Index           =   -2147483648
@@ -387,6 +401,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Song Subtitles:"
          TextAlign       =   0
@@ -395,8 +410,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   323
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   77
+         BehaviorIndex   =   13
       End
       Begin SubtitleList lst_song_subtitles
          AutoDeactivate  =   "True"
@@ -409,7 +425,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
-         Enabled         =   "True"
+         Enabled         =   True
          EnableDrag      =   "False"
          EnableDragReorder=   "True"
          GridLinesHorizontal=   0
@@ -429,6 +445,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          RequiresSelection=   ""
+         Scope           =   0
          ScrollbarHorizontal=   "False"
          ScrollBarVertical=   "False"
          SelectionType   =   0
@@ -438,10 +455,11 @@ Begin Window StyleWindow
          Top             =   338
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   140
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
+         BehaviorIndex   =   14
       End
       Begin CheckBox chk_font_descriptive_subtitle_info
          AutoDeactivate  =   "True"
@@ -450,7 +468,7 @@ Begin Window StyleWindow
          ControlOrder    =   15
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -461,14 +479,16 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
          Top             =   413
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   300
+         BehaviorIndex   =   15
       End
       Begin CheckBox chk_font_highlight_chorus
          AutoDeactivate  =   "True"
@@ -477,7 +497,7 @@ Begin Window StyleWindow
          ControlOrder    =   16
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -488,14 +508,16 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
          Top             =   433
          Underline       =   "False"
          Value           =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   300
+         BehaviorIndex   =   16
       End
    End
    Begin GroupBox grp_style_background
@@ -503,7 +525,7 @@ Begin Window StyleWindow
       Bold            =   "False"
       Caption         =   "Background"
       ControlOrder    =   17
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   279
       HelpTag         =   ""
       Index           =   -2147483648
@@ -514,20 +536,22 @@ Begin Window StyleWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
       Top             =   10
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   140
+      BehaviorIndex   =   17
       Begin StaticText lbl_background_color
          AutoDeactivate  =   "True"
          Bold            =   "False"
          ControlOrder    =   18
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -539,6 +563,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Color:"
          TextAlign       =   2
@@ -547,8 +572,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   55
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   55
+         BehaviorIndex   =   18
       End
       Begin SColorCanvas can_background_color
          AcceptFocus     =   "False"
@@ -556,7 +582,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   19
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   30
          HelpTag         =   ""
@@ -569,13 +595,13 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          MyColor         =   0
+         Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   30
+         BehaviorIndex   =   19
       End
       Begin StaticText lbl_background_image
          AutoDeactivate  =   "True"
@@ -583,7 +609,7 @@ Begin Window StyleWindow
          ControlOrder    =   20
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -595,6 +621,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Image:"
          TextAlign       =   1
@@ -603,8 +630,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   90
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   80
+         BehaviorIndex   =   20
       End
       Begin SImageCanvas can_background_image
          AcceptFocus     =   "False"
@@ -613,7 +641,7 @@ Begin Window StyleWindow
          Backdrop        =   0
          bgColor         =   0
          ControlOrder    =   21
-         Enabled         =   "True"
+         Enabled         =   True
          EraseBackground =   "True"
          Height          =   60
          HelpTag         =   ""
@@ -624,13 +652,13 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   105
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   80
+         BehaviorIndex   =   21
       End
       Begin StaticText nte_background_click_to_change
          AutoDeactivate  =   "True"
@@ -638,7 +666,7 @@ Begin Window StyleWindow
          ControlOrder    =   22
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -650,6 +678,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "True"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "(left-click to change)"
          TextAlign       =   1
@@ -658,8 +687,9 @@ Begin Window StyleWindow
          TextSize        =   9
          Top             =   170
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   140
+         BehaviorIndex   =   22
       End
       Begin StaticText nte_background_right_click_to_clear
          AutoDeactivate  =   "True"
@@ -667,7 +697,7 @@ Begin Window StyleWindow
          ControlOrder    =   23
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -679,6 +709,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "True"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "(right-click to clear)"
          TextAlign       =   1
@@ -687,8 +718,9 @@ Begin Window StyleWindow
          TextSize        =   9
          Top             =   185
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   140
+         BehaviorIndex   =   23
       End
       Begin StaticText lbl_background_position
          AutoDeactivate  =   "True"
@@ -696,7 +728,7 @@ Begin Window StyleWindow
          ControlOrder    =   24
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -708,6 +740,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Position:"
          TextAlign       =   1
@@ -716,8 +749,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   206
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   108
+         BehaviorIndex   =   24
       End
       Begin PopupMenu pop_background_position
          AutoDeactivate  =   "True"
@@ -725,7 +759,7 @@ Begin Window StyleWindow
          ControlOrder    =   25
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -738,13 +772,15 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   12
          Top             =   221
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   80
+         BehaviorIndex   =   25
       End
       Begin StaticText lbl_background_trim_bottom
          AutoDeactivate  =   "True"
@@ -752,7 +788,7 @@ Begin Window StyleWindow
          ControlOrder    =   26
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648
@@ -764,6 +800,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Trim Bottom*:"
          TextAlign       =   1
@@ -772,8 +809,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   244
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   120
+         BehaviorIndex   =   26
       End
       Begin SEditFieldNumeric edt_background_trim_bottom
          AcceptTabs      =   "False"
@@ -785,7 +823,7 @@ Begin Window StyleWindow
          ControlOrder    =   27
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          EnforceRange    =   0
          Format          =   ""
          Height          =   20
@@ -805,6 +843,7 @@ Begin Window StyleWindow
          Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
+         Scope           =   0
          ScrollbarHorizontal=   "False"
          ScrollbarVertical=   "True"
          SignalRangeErrors=   0
@@ -817,8 +856,9 @@ Begin Window StyleWindow
          Top             =   259
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   30
+         BehaviorIndex   =   27
       End
       Begin StaticText txt_background_pixels
          AutoDeactivate  =   "True"
@@ -826,7 +866,7 @@ Begin Window StyleWindow
          ControlOrder    =   28
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   "True"
+         Enabled         =   True
          Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
@@ -838,6 +878,7 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "px"
          TextAlign       =   0
@@ -846,8 +887,9 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   259
          Underline       =   "False"
-         Visible         =   "True"
+         Visible         =   True
          Width           =   20
+         BehaviorIndex   =   28
       End
    End
    Begin StaticText nte_style_trim_note
@@ -856,7 +898,7 @@ Begin Window StyleWindow
       ControlOrder    =   29
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   80
       HelpTag         =   ""
       Index           =   -2147483648
@@ -868,6 +910,7 @@ Begin Window StyleWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "*Cuts the bottom of the background to hide watermarks, web site urls, etc. (To avoid distortion, this also trims from the sides to compensate.)"
       TextAlign       =   0
@@ -876,8 +919,9 @@ Begin Window StyleWindow
       TextSize        =   9
       Top             =   301
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   140
+      BehaviorIndex   =   29
    End
 End
 #tag EndWindow
@@ -995,14 +1039,6 @@ End
 
 #tag EndWindowCode
 
-#tag Bindings
-	#tag BeginBinding
-		SourceItem = 19
-		DestinationItem = 21
-		ItemType = bindSColorCanvasAndSImageCanvas
-		ItemDescription = Update can_background_image with background color from can_background_color
-	#tag EndBinding
-#tag EndBindings
 #tag Events btn_ok
 	#tag Event
 		Sub Action()
@@ -1068,6 +1104,22 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetValid "YYYNNNYYY"
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events can_background_color
+	#tag Event
+		Sub Action()
+		  // Update the SStyleCanvas with the color
+		  // selected by SColorCanvas
+		  Dim c As Color
+		  If Me.GetColor(c) Then
+		    can_background_image.bgColor = c
+		  Else
+		    can_background_image.bgColor = FillColor
+		  End If
+		  
+		  can_background_image.Repaint 
 		End Sub
 	#tag EndEvent
 #tag EndEvents

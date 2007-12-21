@@ -2474,10 +2474,11 @@ Module SongML
 		  Dim i As Integer
 		  Dim cLen As Integer
 		  Dim charToReplace As String
-		  Const kLowerMacronUTF8 = &H02CD
+		  Const kLowerMacron = &H02CD
+		  Const kUndertie = &H203F
 		  
 		  replaceChars = App.MainPreferences.GetValue(prefs.kLyricsReplaceWithSpace, _
-		  Encodings.UTF8.Chr(kLowerMacronUTF8))
+		  Encodings.UTF8.Chr(kLowerMacron) + Encodings.UTF8.Chr(kUndertie))
 		  
 		  cLen = replaceChars.Len
 		  
@@ -2486,6 +2487,32 @@ Module SongML
 		  Next
 		  
 		  Return lyrics
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function LyricText(songElement As XmlNode) As String
+		  //
+		  // Return only the text of the lyrics from a song,
+		  // deleting any chords and formatting, but retaining comments.
+		  //
+		  
+		  Dim rawLyrics As String
+		  Dim lyricArray() As String
+		  Const kLinesToDiscard = ".-" //No chord lines or print formatting lines
+		  
+		  rawLyrics = SmartML.GetValue(songElement, "lyrics", False).FormatUnixEndOfLine
+		  lyricArray = Split(rawLyrics, EndOfLine.UNIX)
+		  
+		  For i As Integer = 0 To UBound(lyricArray)
+		    If Instr(0, kLinesToDiscard, Left(lyricArray(i), 1)) > 0 Then
+		      lyricArray.Remove i
+		      Continue
+		    End If
+		    lyricArray(i) = DeflateString(lyricArray(i))
+		  Next
+		  
+		  Return Join(lyricArray, EndOfLine)
 		End Function
 	#tag EndMethod
 

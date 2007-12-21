@@ -22,6 +22,9 @@ Protected Module prefs
 	#tag Constant, Name = kLyricsReplaceWithSpace, Type = String, Dynamic = False, Default = \"songs/lyrics/whitespace", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = kSongsPreviewWithChords, Type = String, Dynamic = False, Default = \"songs/preview/showchords", Scope = Protected
+	#tag EndConstant
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

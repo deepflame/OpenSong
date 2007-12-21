@@ -4519,6 +4519,11 @@ End
 		      mnu_file_print.Enabled = True
 		      mnu_file_single_screen.Enabled = True
 		      mnu_file_dual_screen.Enabled = (ScreenCount > 1) 'EMP 12/05
+		      #If TargetLinux
+		        If (Screen(0).Width /2) > Screen(0).Height Then
+		          mnu_file_dual_screen.Enabled = True
+		        End If
+		      #EndIf
 		      mnu_file_preview_dual_screen.Enabled = True
 		      
 		      ' EDITOR FIELDS
@@ -4672,6 +4677,11 @@ End
 		      mnu_file_print.Enabled = True
 		      mnu_file_single_screen.Enabled = True
 		      mnu_file_dual_screen.Enabled = (ScreenCount > 1) 'EMP 12/05
+		      #If TargetLinux
+		        If (Screen(0).Width /2) > Screen(0).Height Then
+		          mnu_file_dual_screen.Enabled = True
+		        End If
+		      #endif
 		      mnu_file_preview_dual_screen.Enabled = True
 		    Else
 		      btn_set_add_song.Enabled = False
@@ -5182,6 +5192,16 @@ End
 
 #tag MenuHandler
 		Function mnu_file_dual_screen() As Boolean Handles mnu_file_dual_screen.Action
+			#If TargetLinux
+			If (Screen(0).Width /2) > Screen(0).Height Then
+			If pge_controls.Value = 0 Then
+			ActionSongPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
+			Else
+			ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
+			End If
+			End If
+			#endif
+			
 			If ScreenCount = 1 Then
 			InputBox.Message App.T.Translate("errors/no_multi_screen")
 			Return True
@@ -7405,14 +7425,34 @@ End
 		  if ScreenCount > 1 Then
 		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
 		  End If
+		  
+		  #If TargetLinux
+		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
+		      btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
+		    End If
+		  #EndIf
+		  
+		  if ScreenCount > 1 Then
+		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
+		  End If
+		  
 		  btn_song_present.AddPopupSeparator
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
 		  
 		  btn_set_present.DeletePopup
 		  btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
+		  
+		  #If TargetLinux
+		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
+		      btn_set_present.AddPopupRow
+		      App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
+		    End If
+		  #EndIF
+		  
 		  If ScreenCount > 1 Then
 		    btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
 		  End If
+		  
 		  btn_set_present.AddPopupSeparator
 		  btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
 		  
@@ -9256,7 +9296,7 @@ End
 		    ProgressWindow.Show
 		    For i = 0 To lst_songs_songs.ListCount - 1
 		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
-		      song = SmartML.XDocFromFile(Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.List(i)))
+		      song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(i,0) + lst_songs_songs.List(i)))
 		      If output <> Nil And song <> Nil Then
 		        output.Write SongML.ToHTML(song.DocumentElement)
 		        If goutput <> Nil Then goutput.WriteLine "<li><a href=""" + MakeSafeURLName(lst_songs_songs.List(i), True) + ".html"">" + lst_songs_songs.List(i) + "</a></li>"
@@ -9514,7 +9554,7 @@ End
 		  If f <> Nil Then
 		    App.MouseCursor = WatchCursor
 		    output = f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html").CreateTextFile
-		    song = SmartML.XDocFromFile(Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text))
+		    song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
 		    If output <> Nil And song <> Nil Then
 		      output.Write SongML.ToHTML(song.DocumentElement)
 		      If goutput <> Nil Then goutput.WriteLine "<li><a href=""" + MakeSafeURLName(lst_songs_songs.List(i), True) + ".html"">" + lst_songs_songs.List(i) + "</a></li>"
@@ -10367,6 +10407,7 @@ End
 		    f = SongPickerWindow.Popup
 		  Wend
 		  lst_set_items.ListIndex = Where
+		  lst_set_items.SetFocus
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -10420,6 +10461,7 @@ End
 		  c.unregisterScriptureReceiver Self
 		  w = Nil
 		  c = Nil
+		  lst_set_items.SetFocus
 		  App.DebugWriter.Write "MainWindow.btn_set_add_scripture.Action: Exit", 4
 		End Sub
 	#tag EndEvent

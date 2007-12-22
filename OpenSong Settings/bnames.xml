@@ -1,5 +1,77 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <BOOKNAMES version="1.0.0">
+	<ID descr="portuguese">
+		<AT>Antigo Testamento</AT>
+		<NT>Novo Testamento</NT>
+		<AP>Apócrifos</AP>
+		<CP>Capítulo</CP>
+		<BOOK bnumber="1" bshort="Gn">Gênese</BOOK>
+		<BOOK bnumber="2" bshort="Êx">Êxodo</BOOK>
+		<BOOK bnumber="3" bshort="Lv">Levíticos</BOOK>
+		<BOOK bnumber="4" bshort="Nm">Números</BOOK>
+		<BOOK bnumber="5" bshort="Dt">Deuteronômio</BOOK>
+		<BOOK bnumber="6" bshort="Js">Josué</BOOK>
+		<BOOK bnumber="7" bshort="Jz">Juízes</BOOK>
+		<BOOK bnumber="8" bshort="Rt">Rute</BOOK>
+		<BOOK bnumber="9" bshort="1Sm">1 Samuel</BOOK>
+		<BOOK bnumber="10" bshort="2Sm">2 Samuel</BOOK>
+		<BOOK bnumber="11" bshort="1Rs">1 Reis</BOOK>
+		<BOOK bnumber="12" bshort="2Rs">2 Reis</BOOK>
+		<BOOK bnumber="13" bshort="1Cr">1 Crônicas</BOOK>
+		<BOOK bnumber="14" bshort="1Cr">2 Crônicas</BOOK>
+		<BOOK bnumber="15" bshort="Ed">Esdras</BOOK>
+		<BOOK bnumber="16" bshort="Ne">Neemias</BOOK>
+		<BOOK bnumber="17" bshort="Et">Ester</BOOK>
+		<BOOK bnumber="18" bshort="Jó">Jó</BOOK>
+		<BOOK bnumber="19" bshort="Sl">Salmos</BOOK>
+		<BOOK bnumber="20" bshort="Pv">Provérbios</BOOK>
+		<BOOK bnumber="21" bshort="Ec">Eclesiastes</BOOK>
+		<BOOK bnumber="22" bshort="Ct">Cântico dos Cânticos</BOOK>
+		<BOOK bnumber="23" bshort="Is">Isaias</BOOK>
+		<BOOK bnumber="24" bshort="Jr">Jeremias</BOOK>
+		<BOOK bnumber="25" bshort="Lm">Lamentações</BOOK>
+		<BOOK bnumber="26" bshort="Ez">Ezequiel</BOOK>
+		<BOOK bnumber="27" bshort="Dn">Daniel</BOOK>
+		<BOOK bnumber="28" bshort="Os">Oséias</BOOK>
+		<BOOK bnumber="29" bshort="Jl">Joel</BOOK>
+		<BOOK bnumber="30" bshort="Am">Amós</BOOK>
+		<BOOK bnumber="31" bshort="Ob">Obadias</BOOK>
+		<BOOK bnumber="32" bshort="Jn">Jonas</BOOK>
+		<BOOK bnumber="33" bshort="Mq">Miquéias</BOOK>
+		<BOOK bnumber="34" bshort="Na">Naum</BOOK>
+		<BOOK bnumber="35" bshort="Hc">Habacuque</BOOK>
+		<BOOK bnumber="36" bshort="Sf">Sofonias</BOOK>
+		<BOOK bnumber="37" bshort="Ag">Ageu</BOOK>
+		<BOOK bnumber="38" bshort="Zc">Zacarias</BOOK>
+		<BOOK bnumber="39" bshort="Ml">Malaquias</BOOK>
+		<BOOK bnumber="40" bshort="Mt">Mateus</BOOK>
+		<BOOK bnumber="41" bshort="Mc">Marcos</BOOK>
+		<BOOK bnumber="42" bshort="Lc">Lucas</BOOK>
+		<BOOK bnumber="43" bshort="Jo">João</BOOK>
+		<BOOK bnumber="44" bshort="At">Atos</BOOK>
+		<BOOK bnumber="45" bshort="Rm">Romanos</BOOK>
+		<BOOK bnumber="46" bshort="1Co">1 Coríntios</BOOK>
+		<BOOK bnumber="47" bshort="2Co">2 Coríntios</BOOK>
+		<BOOK bnumber="48" bshort="Gl">Gálatas</BOOK>
+		<BOOK bnumber="49" bshort="Ef">Efésios</BOOK>
+		<BOOK bnumber="50" bshort="Fp">Filipenses</BOOK>
+		<BOOK bnumber="51" bshort="Cl">Colossenses</BOOK>
+		<BOOK bnumber="52" bshort="1Ts">1 Tessalonicenses</BOOK>
+		<BOOK bnumber="53" bshort="2Ts">2 Tessalonicenses</BOOK>
+		<BOOK bnumber="54" bshort="1Tm">1 Timóteo</BOOK>
+		<BOOK bnumber="55" bshort="2Tm">2 Timóteo</BOOK>
+		<BOOK bnumber="56" bshort="Tt">Tito</BOOK>
+		<BOOK bnumber="57" bshort="Fm">Filemom</BOOK>
+		<BOOK bnumber="58" bshort="Hb">Hebreus</BOOK>
+		<BOOK bnumber="59" bshort="Tg">Tiago</BOOK>
+		<BOOK bnumber="60" bshort="1Pe">1 Pedro</BOOK>
+		<BOOK bnumber="61" bshort="2Pe">2 Pedro</BOOK>
+		<BOOK bnumber="62" bshort="1Jo">1 João</BOOK>
+		<BOOK bnumber="63" bshort="2Jo">2 João</BOOK>
+		<BOOK bnumber="64" bshort="3Jo">3 João</BOOK>
+		<BOOK bnumber="65" bshort="Jd">Judas</BOOK>
+		<BOOK bnumber="66" bshort="Ap">Apocalipse</BOOK>
+	</ID>
 	<ID descr="german">
 		<AT>Altes Testament</AT>
 		<NT>Neues Testament</NT>

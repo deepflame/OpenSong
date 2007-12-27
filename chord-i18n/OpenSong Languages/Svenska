@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<language name="Svenska" author="Edvin Erdtman" version="1.0.2 BL18">
+
+  <load_settings>
+    <checking_folders>Skapar/Kontrollerar dokumentmappar</checking_folders>
+    <main>Laddar huvudinställningar</main>
+    <print>Laddar skrivarinställningar</print>
+    <presentation>Laddar presentationsinställningar</presentation>
+    <tempos>Laddar tempon</tempos>
+    <themes>Laddar teman</themes>
+    <time_signatures>Laddar takter</time_signatures>
+    <fonts>Laddar teckensnitt</fonts>
+    <latest_version>Letar efter uppdateringar
+      <newer_available>En ny version (%1) finns tillgänglig. Gå till www.opensong.org för att hämta.</newer_available>
+    </latest_version>
+ </load_settings>
+
+  <load_data>
+      <bible>Laddar bibel</bible>
+      <songs_cache>Cachar sånger</songs_cache>
+      <folders>Laddar sångmappar</folders>
+      <songs>Laddar sånger</songs>
+      <sets>Laddar presentationer</sets>
+  </load_data>
+
+  <welcome>Välkommen!</welcome>
+
+  <songs_mode caption="Sånger">Använd för att skriva in och redigera dina sånger. Sångerna kan skrivas ut som ackordblad, eller visas på skärmen.
+    <all_songs caption="Alla sånger">
+      <print caption="Skriv ut">Förhandsgranskar och skriver ut alla tillgängliga sånger. Bra för att skriva ut sångböcker.</print>
+      <export caption="Exportera">Exportera alla sånger.</export>
+      <find caption="Sök">Öppnar sökfönstret för sökning i alla sånger.</find>
+    </all_songs>
+    <new_song caption="Ny sång">
+      <create caption="Ny">Lägger till en ny sång till OpenSong.</create>
+      <import caption="Importera">OBS endast USA! (Importera nya sånger från CCLI SongSelect.)</import>
+    </new_song>
+    <selected_song caption="Aktuell sång">
+      <save caption="Spara">Sparar aktuell sång till hårddisken.</save>
+      <revert caption="Återställ">Återställer aktuell sång.</revert>
+      <print caption="Skriv ut">Skriver ut aktuell sång.</print>
+      <present caption="Visa">Visar aktuell sång. Har du gjort ändringar i sången kommer du bli tillfrågad om du spara dem.
+        <single_screen caption="på en skärm"/>
+        <dual_screen caption="på två skärmar"/>
+        <preview_dual_screen caption="Förhandsvisa två skärmar"/>
+      </present>
+      <export caption="Exportera">Exporterar aktuell sång.
+        <to caption="Välj en mapp att exportera till."/>
+      </export>
+      <rename caption="Byt namn">Byter namn på aktuell sång.</rename>
+      <move caption="Flytta">Flyttar aktuell sång till en annan sångmapp.
+        <where caption="Flytta '%1' till:"/>
+      </move>
+      <delete caption="Ta bort">Tar bort aktuell sång.</delete>
+    </selected_song>
+
+    <songs caption="Sånger">Markera en sång från listan för att visa den i sångredigeraren.</songs>
+
+    <curr_folder caption="Finns i mappen">Visar den mapp där sången finns lagrad (relativt till standardmapp)</curr_folder>
+
+    <song_folders caption="Sångmappar">Markera en mapp från listan för att begränsa antalet sånger.
+      <new>Skapar en ny mapp för sånger.</new>
+      <delete>Tar bort markerad mapp (mappen måste vara tom).</delete>
+      <filter_all caption="Alla"/>
+      <filter_main caption="Standardmapp"/>
+    </song_folders>
+  </songs_mode>
+
+  <general_song_editor caption="Allmänt">Visa och redigera aktuell sångs titel, sånginfo, författare, visningsbilder och text.
+    <header caption="Sångredigerare"/>
+    <show_general_editor caption="Allmänt"/>
+    <show_advanced_editor caption="Avancerat"/>
+    <title caption="Titel">Titeln på aktuell sång.</title>
+    <author caption="Författare">Textförfattaren och Musikkompositören till aktuell sång.</author>
+    <copyright caption="Copyright">Copyright-information för aktuell sång.</copyright>
+    <ccli caption="CCLI #">CCLI numret för aktuell sång.</ccli>
+    <hymn_number caption="Sångnummer">Ställer in sångnumret för aktuell sång (kan även innehålla bokstäver).</hymn_number>
+    <presentation caption="Visning">Ställer in versordningen för aktuell sång (Avgränsa med mellanslag). (tex. V1 C V2 C)</presentation>
+    <lyrics caption="Ackord/Text">Redigera sången här. Sången delas in i Sektionsrader, Kommentarrader, Ackordrader och Textrader.</lyrics>
+    <insert caption="Infoga"/>
+      <ins_section caption="Sektion">Infoga ny sektion för att dela in sången i tex. verser och refräng.
+        <section_name caption="Namn på sektion (tex. V1,V2,C,B)"/>
+      </ins_section>
+      <ins_lyrics caption="Ackord/Text">Infoga radprefix (punkt resp mellanslag) för ackord och text.
+        <number_of_lines caption="Antal rader:"/>
+      </ins_lyrics>
+      <ins_multi_verse caption="A/T (Flera Verser)">Infoga radprefix för ackord och text, med flera verser under varann.
+        <number_of_verses caption="Antal verser:"/>
+        <number_of_lines caption="Antal rader:"/>
+      </ins_multi_verse>
+      <ins_comment caption="Kommentar">Infoga kommentar, som visas på ackordblad men ej i presentationer.</ins_comment>
+      <ins_column caption="Ny spalt">Infoga ny spalt för utskrift på ackordblad för att få in en lång sång på ett papper.</ins_column>
+      <ins_page caption="Ny sida">Bestäm var sidbrytningen ska vara när sången skrivs ut.</ins_page>
+    <transpose caption="Transponera">Transponerar autmatiskt sången till en annan tonart (Halva tonsteg).
+      <using caption="Använd">Markera # för att OpenSong ska transponera ackord med höjning, och b för transponering med sänkning. (tex. om du vill visa tex C# istället för Db välj # och välj sedan antal tonsteg upp eller ner).
+        <sharps caption="#"/>
+        <flats caption="b"/>
+      </using>
+    </transpose>
+  </general_song_editor>
+
+  <advanced_song_editor caption="Avancerat">Visa och redigera aktuell sångs tema, capo, takt, utseende, etc.
+    <header caption="Sångredigerare"/>
+    <show_general_editor caption="Allmänt"/>
+    <show_advanced_editor caption="Avancerat"/>
+    <themes caption="Tema">Ställer in huvudtemat i aktuell sång.</themes>
+    <capo caption="Capo">Ställer in capo-positionen i aktuell sång. </capo>
+    <capo_print caption="Skriv ut capo">Om denna ruta är ikryssad, skrivs även capo-ackorden ut på ackordbladen.</capo_print>
+    <time_sig caption="Takt">Ställer in takten på aktuell sång.</time_sig>
+    <tempo caption="Tempo">Ställer in tempot på aktuell sång.</tempo>
+    <key caption="Tonart">Ställer in tonart för aktuell sång.</key>
+    <aka caption="Alternativ titel">Ger sången en alternativ titel.</aka>
+    <key_line caption="Nyckelord">Skriv in nyckelord för att lättare kunna söka reda på sången.</key_line>
+    <style caption="Annat utseende">Kryssa i denna ruta för att ställa in uteendet vid visning av sången. Denna inställning åsidosätter standardinställningarna för visning. Klicka sedan på bilden ovanför, för att göra inställningar.</style>
+    <user1 caption="Eget 1">Kan vara vad som helst, Kommentar, bibelhänvisning etc.</user1>
+    <user2 caption="Eget 2">Kan vara vad som helst, Kommentar, bibelhänvisning etc.</user2>
+    <user3 caption="Eget 3">Kan vara vad som helst, Kommentar, bibelhänvisning etc.</user3>
+  </advanced_song_editor>
+
+  <sets_mode caption="Presentationer">Använd för att lägga in och redigera presentationer, för projektion eller utskrift av sånger, bilder, mm.
+    <sets caption="Presentation">Välj en sparad presentation från listan att redigera.
+      <add>Lägger till en ny presentation i OpenSong.</add>
+    </sets>
+    <current_set caption="Aktuell presentation">
+      <save caption="Spara">Sparar aktuell presentation (inklusive allt innehåll).</save>
+      <rename caption="Byt namn">Byter namn på aktuell presentation.</rename>
+      <delete caption="Ta bort">Tar bort aktuell presentation. (Sångerna kommer inte att försvinna från sångredigeraren.)</delete>
+       <saveas caption="Spara som">Sparar aktuell presentation i ett nytt namn.</saveas>
+      <present caption="Visa">Visar aktuell presentation. Du kan visa presentationen på denna skärmen, på en sekundär skärm (med en administreringvisning på denna skärm), eller förhandsvisa på denna skärm vad som skulle visas i tvåskärmsläget.
+        <single_screen caption="på en skärm"/>
+        <dual_screen caption="på två skärmar"/>
+        <preview_dual_screen caption="Förhandsvisa två skärmar"/>
+        <no_slides>Det finns inget innehåll i presentationen! Lägg till en sång, bild e.dyl.</no_slides>
+      </present>
+      <print_songs caption="Skriv ut sånger">Skriver ut ackordblad på sånger i aktuell presentation.
+        <no_songs>Det finns inga sånger i presentationen.</no_songs>
+      </print_songs>
+      <print_order caption="Skriv ut lista">Skriver ut en lista med rubrikerna på allt innehåll i presentationen.</print_order>
+    </current_set>
+    <new_item caption="Ny">
+      <add_song caption="Sång">Lägger till en sång från sångredigeraren till presentationen.</add_song>
+      <add_scripture caption="Bibelord">Lägger till en slajd med bibelord till presentationen, En ruta kommer upp där du kan välja ut ett textsammanhang att visa.</add_scripture>
+      <add_slides caption="Text">Lägger till en sida med text som du skriver in i textrutan nedan.</add_slides>
+      <add_style caption="Utseende">Lägger till en post i listan som ändrar presentationens standardutseende var som helst i presentationen. Detta kan innebära ett helt nytt utseende, eller att gå tillbaka till ett tidigare använt utseende.</add_style>
+      <add_video caption="Video">Lägger till en videofil till listan.</add_video>
+      <add_powerpoint caption="PowerPoint">Lägger till en PowerPoint presentation till listan. Använd för att manövrera en ppt-fil i Opensong</add_powerpoint>
+    </new_item>
+    <current_item caption="Markerad">
+      <move_up caption="Flytta upp">Flyttar markerad post i listan uppåt.</move_up>
+      <move_down caption="Flytta ner">Flyttar markerad post i listan neråt.</move_down>
+      <remove caption="Ta bort">Tar bort markerd post från listan.</remove>
+      <copy caption="Kopiera">Kopierar markerad post i listan.</copy>
+      <store caption="Spara">Sparar markerad textsida.</store>
+    </current_item>
+    <items caption="Presentationslista">Listar innehållet i presentationen. Klicka på en textsida för att redigera den till höger. Dubbelklicka på en sång för att redigera den i sångredigeraren.
+      <song caption="(sång)"/>
+      <custom caption="(text)"/>
+      <scripture caption="(bibelord)"/>
+      <style caption="(utseende)">-- Change Style --</style>
+      <revert caption="(utseende)">-- Revert Style --</revert> 
+    </items>
+    <untitled caption="Namnlös"/>
+    <errors>
+      <revert caption="Fel vid öppning av presentation &quot;%1&quot; från fil."/>
+    </errors>
+  </sets_mode>
+
+  <slide_editor>
+    <header caption="Textredigerare"/>
+    <title caption="Titel">Titeln eller rubriken på sidan som visas i presentationen.</title>
+    <subtitle caption="Sånginfo/Undertitel">Undertitel eller sånginfo för sånger). Visas i presentationen.</subtitle>
+    <name caption="Namn">Namn på bilden(erna) som visas i listan och vid utskrift av lista (Visas ej i själva presentationen).</name>
+    <slides caption="Text">Texten som ska visas i presentationen.</slides>
+    <presentation caption="Egen visningsordning">Åsidosätter visningsordningen i sparad sång</presentation>
+    <origorder caption="Sparad visningsordning">Visningssordning utifrån sparad sång (fältet "Visning" i sångredigeraren)</origorder>       
+    <notes caption="Noteringar">Visas i administratör-fönstret vid visning på två skärmar (Visas ej i själva presentationen).</notes>
+    <insert caption="Infoga"/>
+      <ins_slide caption="Sidbrytning">Infogar en sidbrytning i texten, så att flera bilder kan visas med samma titel, undertitel och utseende. Frammatning av nästa sida kan göras automatiskt (se nedan).</ins_slide>
+    <loop caption="Loopa bilder">Kryssa i denna ruta för att automatiskt loopa sidorna, så att när sista sidan visats, visas automatiskt den första osv.</loop>
+    <print caption="Skriv ut med lista">Kryssa ur denna ruta för att inte ta med vid utskrift av lista.</print>
+    <auto_advance caption="Byt automatiskt sida efter">Skriv in antal sekunder varje sida ska visas.</auto_advance>
+    <seconds caption="sekunder"/>
+    <style caption="Annat utseende">Kryssa i denna ruta för att ställa in uteendet vid visning av texten. Denna inställning åsidosätter standardinställningarna för visning. Klicka sedan på bilden ovanför, för att göra inställningar.</style>
+  </slide_editor>
+
+  <style_change>
+    <header caption="Ändra utseende"/>
+    <revert caption="Gå tillbaka till det tidigare utseendet">Ställer tillbaka utseendeintsällningarna till tidigare intsällning.</revert>
+    <change caption="Ändra utseende till">Gör att du kan ändra utseendeintsällningarna var som helst i listan. Inställningarna påverkar alla följande bilder tills det kommer en ny inställning i listan.</change>
+    <style>Klicka här för att redigera utseendet.</style>
+  </style_change>
+
+  <video_slides>
+    <header caption="Redigera Video"/>
+    <name caption="Namn">Namn på bilderna i presentationslistan. (Visas ej i själva presentationen).</name>
+    <file caption="Filnamn">Namnet på videofilen.</file>
+    <loop caption="Loopa Videon">Kryssa i rutan om videon ska börja om från början när den tagit slut.</loop>
+  </video_slides>
+
+  <powerpoint_slides>
+    <header caption="Regigera PowerPointbilder"/>
+    <name caption="Namn">Namn på bilderna i presentationslistan. (Visas ej i själva presentationen).</name>
+    <file caption="Filnamn">Namnet på PowerPointfilen.</file>
+  </powerpoint_slides>
+
+  <song_search title="Sök sånger">
+    <search caption="Sök efter:"/>
+    <fields caption="Sökfält">
+      <title caption="link(general_song_editor/title/@caption)"/>
+      <author caption="link(general_song_editor/author/@caption)"/>
+      <copyright caption="link(general_song_editor/copyright/@caption)"/>
+      <ccli caption="link(general_song_editor/ccli/@caption)"/>
+      <presentation caption="link(general_song_editor/presentation/@caption)"/>
+      <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+      <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
+
+      <themes caption="link(advanced_song_editor/themes/@caption)"/>
+      <capo caption="link(advanced_song_editor/capo/@caption)"/>
+      <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
+      <time_sig caption="link(advanced_song_editor/time_sig/@caption)"/>
+      <tempo caption="link(advanced_song_editor/tempo/@caption)"/>
+      <key caption="link(advanced_song_editor/key/@caption)"/>
+      <aka caption="link(advanced_song_editor/aka/@caption)"/>
+      <key_line caption="link(advanced_song_editor/key_line/@caption)"/>
+      <style caption="link(advanced_song_editor/style/@caption)"/>
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+    </fields>
+  </song_search>
+
+  <scripture_search title="Sök">
+    <match caption="Matcha">
+      <exact caption="Exakt"/>
+      <begin caption="Börjar med"/>
+    </match>
+    <words caption="Versen måste innehålla">
+      <all caption="Alla orden"/>
+      <any caption="Något av orden"/>
+    </words>
+    <search caption="Sök"/>
+    <example caption="För att söka efter en exakt fras, använd citattecken, t.ex. &quot;Simon Petrus&quot;"/>
+    <ok caption="link(shared/ok/@caption)"/>
+    <cancel caption="link(shared/cancel/@caption)"/>
+    <lst_result head1="Referens" head2="Text" />
+  </scripture_search>
+
+  <main_menu>
+    <file caption="_Arkiv">
+      <new caption="_Ny"/>
+      <save caption="_Spara"/>
+      <present caption="_Visa">
+        <single_screen caption="på _En skärm"/>
+        <dual_screen caption="på _Två skärmar"/>
+        <preview_dual_screen caption="_Förhandsvisa Två skärmar"/>
+      </present>
+      <pagesetup caption="Utskriftsf_ormat"/>
+      <print caption="Skriv _ut"/>
+      <print_alphabetical_toc caption="Skriv ut Sånglista _ABC"/>
+      <print_categorical_toc caption="Skriv ut Sånglista _Kategori"/>
+      <quit caption="_Avsluta"/>
+    </file>
+    <edit caption="_Redigera">
+      <undo caption="_Ångra"/>
+      <cut caption="_Klipp ut"/>
+      <copy caption="K_opiera"/>
+      <paste caption="K_listra in"/>
+      <clear caption="_Ta bort"/>
+      <find caption="_Sök sånger"/>
+      <find_next caption="Sök _Nästa"/>
+      <selall caption="Markera _Allt"/>
+    </edit>
+    <mode caption="_Visa">
+      <songs caption="_Sångredigerare"/>
+      <sets caption="Redigera _Presentation"/>
+    </mode>
+    <settings caption="_Inställningar">
+      <presentation caption="_Presentationsinställningar"/>
+      <print caption="_Utskriftsinställningar"/>
+      <general caption="_Allmänna inställningar"/>
+      <refresh_songs caption="Uppdatera _Sångmapp"/>
+      <refresh_sets caption="Uppdatera P_resentationsmapp"/>
+      <install_module caption="Installera _Modul"/>
+    </settings>
+    <help caption="_Hjälp">
+      <help_topics caption="_Hjälpavsnitt"/>
+      <translating caption="_Översätta OpenSong"/>
+      <about caption="_Om OpenSong"/>
+    </help>
+  </main_menu>
+
+  <general_settings title="Allmänna inställningar">
+<!--  V1.2 Changes-->
+    <general caption="Allmänt" head1="Basic" head2="Special">
+      <ccli caption="CCLI Licensnummer"/>
+      <version_check caption="Sök efter uppdateringar vid uppstart"/>
+      <language caption="Språk"/>
+      <startmode caption="Visa vid start">
+	      <songs caption="Sånger"/>
+	      <sets  caption="Presentationer"/>
+      </startmode>
+    </general>
+    <proxy caption="Proxy">
+      <host caption="Adress"/>
+      <port caption="Port"/>
+    </proxy>
+    <user_defined caption="Egendefinierade">
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <load caption="Ladda standard för aktuellt språk"/>
+    </user_defined>
+    <fonts caption="Teckensnitt">
+      <headings caption="Rubriker"/>
+      <labels caption="Förklaringar"/>
+      <text_fields caption="Textrutor"/>
+      <fixed_width caption="Samma-bredd-text"/>
+      <buttons caption="Knappar"/>
+      <large_headings caption="Stora Rubriker"/>
+      <newpaint caption="Använd nya utseendeinställningar"/>
+    </fonts>
+    <documents_folder caption="Dokumentmapp">
+      <warning caption="Använd med försiktighet; 'Ändra' stänger ner OpenSong"/>
+      <default caption="Standard"/>
+      <custom caption="Annan"/>
+      <message>Stänger ner OpenSong. Klicka OK, och starta sedan om OpenSong igen (Kopiera över de gamla OpenSong-dokumenten till den nya mappen först). </message>
+      <changed>Du har valt en egen dokumentmapp, men glömde att klicka på 'Ändra'. Vill du använda den nya mappen?</changed>
+      <change caption="Ändra"/>
+    </documents_folder>
+<!--    V1.2 Changes-->
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
+  </general_settings>
+
+  <print_settings title="Utskriftsinställningar">
+    <tabs head3="Marginaler" head1="Teckensnitt" head2="Layout"/>
+    <margins>
+      <left caption="Vänster"/>
+      <top caption="Över"/>
+      <right caption="Höger"/>
+      <bottom caption="Under"/>
+      <width caption="Bredd"/>
+      <height caption="Höjd"/>
+      <message caption="Se Arkiv/Utskriftformat... för att ändra marginaler"/>
+    </margins>
+    <fonts>
+      <title caption="Titel"/>
+      <author caption="Författare"/>
+      <sections caption="Sektioner"/>
+      <lyrics caption="Text"/>
+      <chords caption="Ackord"/>
+      <capo caption="Capo"/>
+      <copyright caption="Copyright"/>
+    </fonts>
+    <layout>
+      <heading_border_thickness caption="Linjetjocklek runt sektionsrubriker (px)"/>
+      <title_in_caps caption="Titel med VERSALER"/>
+    </layout>
+    <units caption="Enhet">
+      <inches caption="Eng. Tum"/>
+      <cm caption="Centimeter"/>
+    </units>
+  </print_settings>
+
+  <presentation_settings title="Presentationsinställningar">
+    <settings head1="Utseende" head2="Inställningar">
+        <default_slides caption="Standard presentationsutseende"/>
+        <scripture_slides caption="Standard bibeltextutseende"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        <transition_note caption="*Övertoningar påverkas väldigt mycket av upplösningen. Om de går sakta, mminska upplösningen på visningsskärmen. Om övertoningarna inte syns alls kan det bero på för få färger på visningsskärmen."/>
+    </settings>
+    <style caption="Utseende">
+      <use_transitions caption="Använd övertoningar*"/>
+      <transition_note caption="*Övertoningar påverkas väldigt mycket av upplösningen. Om de går sakta, mminska upplösningen på visningsskärmen. Om övertoningarna inte syns alls kan det bero på för få färger på visningsskärmen."/>
+      <border_thickness caption="Textramtjocklek"/>
+      <subtitles caption="Sånginfo"/>
+      <modes>
+        <normal caption="Normal"/>
+        <black caption="Svart"/>
+        <white caption="Vit"/>
+        <logo caption="Logga"/>
+        <hidden caption="Gömd"/>
+        <frozen caption="Frys"/>
+      </modes>
+     
+      <mouse_cursor caption="Muspekare">
+         <!--These will be phased out in favor of user editable cursors-->
+        <arrow caption="Pil"/> 
+        <cross caption="Kors"/>
+        <hidden caption="Gömd"/>
+        <hourglass caption="Timglas"/> 
+        <ibeam caption="I-balk"/> 
+      </mouse_cursor>
+      <blanks caption="Sätt in blankbilder"/>
+      <blanks_between caption="mellan sektioner"/>
+      <time caption="Tid" helptag="Total tid för övertoning (kan i verkligheten ta längre tid på äldre system)"/>
+      <frames caption="Ramar" helptag="Antal ramar, eller steg mellan bilderna"/>
+      <blank_style caption="Blankbilder tar utseende från"/>
+      <blank_prev caption="Föregående"/>
+      <blank_next caption="Nästkommande"/>
+      <initial_mode caption="Startläge för presentation"/>
+    </style>
+    <alerts caption="Meddelanden">
+      <font caption="Teckensnitt"/>
+      <align caption="Textposition"/>
+    </alerts>
+
+    <monitor caption="Bildskärmar">
+      <control caption="AdministrarörSkärm"/>
+      <presentation caption="PresentationsSkärm"/>
+      <detected caption="%1 bildskärm(ar) funna."/>
+      <default_mode caption="Standardvisning"/>
+    </monitor>
+    <logo caption="Logga">
+      <mask caption="Mask"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </logo>
+
+    <audio caption="Ljud">
+      <file_to_play caption="Fil att spela upp"/>
+      <browse caption="Bläddra"/>
+      <stop caption="Stopp"/>
+      <play caption="Spela"/>
+    </audio>
+
+    <misc caption="Övrigt">
+      <exit_prompt caption="Fråga innan avslut"/>
+    </misc>
+    
+  </presentation_settings>
+
+  <presentation_helper title="Presentationsfönster">
+    <slides head1="Titel" head2="ID" head3="Text"/>
+    <modes caption="Lägen">
+      <normal caption="[N] Normal"/>
+      <black caption="[K] Svart"/>
+      <white caption="[W] Vit"/>
+      <logo caption="[L] Logga"/>
+      <hidden caption="[H] Gömd"/>
+      <frozen caption="[F] Frys"/>
+    </modes>
+    <actions caption="Verktyg">
+      <alert caption="[A] Meddelande">Nytt meddelande (Lämna tom för att ta bort)</alert>
+      <quick_song caption="[Q] Lägg till sång"/>
+      <scripture caption="[S] Lägg till Bibelord"/>
+      <full_screen caption="[M] Maximera"/>
+      <normal_screen caption="[M] Återställ"/>
+      <return caption="[Esc] Stäng"/>
+    </actions>
+    <exit caption="Ska presentationen avbrytas?"/>
+    <loop caption="Loopa"/>
+    <keys>- Kortkommandon -
+Ner: Nästa bild
+Upp: Föreg. bild
+Höger: Nästa sång
+Vänster: Föreg. sång
+1-9: Vers
+C: Refräng
+P: För-refräng
+B: Brygga
+T: Stick</keys>
+  </presentation_helper>
+
+  <help_topics title="Hjälpavsnitt">
+    <tabs head1="Kortkommandon" head2="Text-/Ackordformat" head3="Visningsfältet" head4="Stäng"/>
+    <print caption="Skriv ut"/>
+    <keys>
+&lt;h1&gt;Kortkommandon under presentationen&lt;/h1&gt;
+
+Presentationen styrs av följande kortkommandon:
+
+&lt;b&gt;Esc&lt;/b&gt;: Avsluta presentationen.
+&lt;b&gt;Uppil, 8 på det numeriska tangentbordet, Backsteg&lt;/b&gt;: Gå till föregående sida.
+&lt;b&gt;Uppil, 2 på det numeriska tangentbordet, Mellanslag&lt;/b&gt;: Gå till nästa sida.
+&lt;b&gt;Vänsterpil, 4 på det numeriska tangentbordet&lt;/b&gt;: Gå till föregående sång/post i presentationslistan.
+&lt;b&gt;Högerpil, 6 på det numeriska tangentbordet&lt;/b&gt;: Gå till nästa sång/post i presentationslistan.
+&lt;b&gt;Q&lt;/b&gt;: Infoga en ny sång till presentationen.
+&lt;b&gt;A&lt;/b&gt;: Infoga ett nytt meddelande.
+&lt;b&gt;S&lt;/b&gt;: Infoga ett nytt bibelavsnitt till presentationen.
+&lt;b&gt;W&lt;/b&gt;: Tona ut till vit färg.
+&lt;b&gt;K&lt;/b&gt;: Tona ut till Svart färg.
+&lt;b&gt;L&lt;/b&gt;: Visa OpenSong-logon.
+&lt;b&gt;H&lt;/b&gt;: Göm texten - endast bakgrundsbilden/-färgen visas.
+&lt;b&gt;F&lt;/b&gt;: Frys presentationen (dvs. Ny sida visas inte, så att man tex kan ändra på den sida som visas utan att det syns på presentationen). Tryck N för att gå tillbaka till normalt läge.
+&lt;b&gt;N&lt;/b&gt;: Normalt läge (återgår från Svart, Vit, Frys etc.)
+&lt;b&gt;B&lt;/b&gt;: Gå till "brygga" (eng. Bridge) ([B#] i sångredigeraren). Om det finns fler än en brygga så kommer man till nästa brygga när man trycker på B.
+&lt;b&gt;C&lt;/b&gt;: Gå till "refräng" (eng. Chorus) ([C#] i sångredigeraren). Om det finns fler än en refräng så kommer man till nästa refräng när man trycker på C.
+&lt;b&gt;T&lt;/b&gt;: Gå till "sticket" (eng. Tag) ([T#] i sångredigeraren). Om det finns fler än ett stick så kommer man till nästa stick när man trycker på T.
+&lt;b&gt;P&lt;/b&gt;: Gå till "förrefräng" (eng. Pre-chorus) ([P#] i sångredigeraren). Om det finns fler än en förrefräng så kommer man till nästa förrefräng när man trycker på P.
+&lt;b&gt;1-9&lt;/b&gt;: Gå till "Vers" nummer # (eng. Verse) ([V#] i sångredigeraren).
+
+Notera att NumLock kan påverka funktionerna hos tangenterna 1-9 på det numeriska tangentbordet. 
+</keys>
+
+    <format>
+&lt;h1&gt;OpenSong Text-/Ackordformat&lt;/h1&gt;
+
+Sånger delas upp i följande radtyper: Sektionsrader, Ackordrader, Textrader, och Kommentarrader. En enkel sång kan se ut som följer:
+&lt;pre&gt;&lt;b&gt;
+;Kom ihåg att sången sjungs två gånger.
+[V]
+.G                 C
+ Detta är versen,  Detta är versen
+.D           G
+ Den är jättebra.
+
+[C]
+.G               C/D D   C
+ Sjung refrängen nu, Oh, yeah,
+.G            C      D/F# G
+ Detta är den värsta sång_en.&lt;/b&gt;&lt;/pre&gt;
+
+Vi ska nu titta närmare på varje radtyp...
+
+&lt;h2&gt;Sektionsrader&lt;/h2&gt;
+
+Sektionsraderna börjar och slutar med hakparenteser: "[" och "]". En "sektion" av en sång (som tex. en vers) börjar med raden under sektionsraden tills nästa sektionsrad kommer eller när sången är slut. Sektionsraderna visas inte i presentationen, men de används för att bestäma vilka av sångens sektioner som ska visas och dess inbördes onsordning. Vilken text som helst kan användas inom hakparenteserna men följande är förprogrammerade med speciella inställningar:
+
+&lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Verser (eng. Verses). På ackordbladen kommer enbart numreringen att visas, med en ring runt. Tex: [V1], [V2], [V3].
+
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Refräng (eng. Chorus). På ackordbladen kommer ordet "Rerfräng" visas med en ram runt. Även det som följer efter C skrivs ut (se exemplen). Tex: [C], [C2], [CÄndrad]. 
+
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Förrefräng (eng. Pre-chorus). På ackordbladen kommer ordet "Förrerfräng" visas med en linje över och under. Även det som följer efter P skrivs ut (se exemplen). Tex: [P], [P2], [POBS ny text].
+
+&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Brygga (eng. Bridge). På ackordbladen kommer ordet "Brygga" visas med en rundad ram runt. Även det som följer efter B skrivs ut (se exemplen). Tex:  [B], [B2], [Bsista gången].
+
+&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Stick (eng. Tag). På ackordbladen kommer ordet "Stick" visas med en linje till vänster och under. Även det som följer efter T skrivs ut (se exemplen). Tex: [T], [T2], [Tspecial].
+
+&lt;h2&gt;Ackordrader&lt;/h2&gt;
+
+Ackordrader börjar &lt;b&gt;alltid&lt;/b&gt; med: "." (Punkt). Den första bokstaven i ackordet ska matcha där ackordet ska tas i textraden under. Ackorden visas inte i presentationer, utan bara vid utskrift. Ackordrader kan utelämnas då ackordföljden är okänd.
+
+&lt;h2&gt;Textrader&lt;/h2&gt;
+
+Textrader börjar &lt;b&gt;alltid&lt;/b&gt; med: " " (Mellanslag). Om ackordrader finns ska textraderna matchas med ackordraden.
+
+&lt;b&gt;&lt;i&gt;"__"&lt;/i&gt;&lt;/b&gt; Om ett ord behöver sträckas ut för att matcha ackorden kan man använda "_" Tex:
+&lt;b&gt;&lt;pre&gt;
+.Gsus7 C      G
+ Väl___kommen hem.&lt;/pre&gt;&lt;/b&gt;
+
+Understrecken byts ut mot "-" mellan stavelserna vid utskrift av ackordblad, och de tas bort i presentationen. 
+
+&lt;b&gt;"  "&lt;/b&gt; Flera mellanslag mellan ord kan man också använda för att matcha ackorden och texten. Även 'överflödiga' mellanslag tas bort i presentationen. Vid utskrift ställs avstånden mellan orden in automatiskt beroende på textstorlek och teckensnitt.
+
+&lt;b&gt;"|"&lt;/b&gt; Vertikala streck byts ut till mellanslag vid utskrift, men &lt;b&gt;ny rad&lt;/b&gt; i presentationer.
+
+&lt;b&gt;"||"&lt;/b&gt; Dubbla vertikala streck ignoreras vid utskrift, men &lt;b&gt;ny sida&lt;/b&gt; i presentationer. OBS Dubbla vertikala streck måste skrivas i slutet på en rad!
+
+&lt;h3&gt;Flera verser med samma ackordrad!?&lt;/h3&gt;
+
+Många sånger har fler än en vers som har samma ackordföljd. Istället för att upprepa ackorden i varje vers så kan man gruppera alla verser under samma ackordrad. Man skriver då enbart [V] i sektionsraden, varefter mellanslaget i början på varje versrad byts ut mot versnumret. Det kan bli lite krångligt att ordna orden med ackorden, men det går..! Såhär kan det se ut:
+
+&lt;b&gt;&lt;i&gt;(Försök inte att sjunga... )&lt;/i&gt;&lt;pre&gt;
+[V]
+.G     C               G
+1Detta är vers         ett;
+2Men   detta kan va    vers två;
+3Vers  tre börjar      så;
+4Fyran kommer          sist
+
+.G     D      C              D      G
+1Åh    vilken underbar       härlig sång
+2Nu på två____ans            andra  rad.
+3Nu    måste  det väl snarta vara   slut?
+4Detta är hur man sjunger en trudde_lutt.&lt;/pre&gt;
+&lt;/b&gt;
+Alltså anger den första siffran i varje textrad versnumret. För att ändra visningsordningen ska man därför använda V1, V2, V3, V4 i fältet "Visning".
+
+&lt;h2&gt;Kommentarrader&lt;/h2&gt;
+
+Kommentarrader börjar med ";" (semikolon). Kommentarrader ignoreras i presentationer, och visas med samma teckensnitt som Copyright-info vid utskrift. 
+
+&lt;h2&gt;Spaltbrytningar&lt;/h2&gt;
+
+Om en rad bara innehåller tre minustecken ("---") kommer en ny spalt påbörjas vid utrkift. (ignoreras i presentationer)
+
+&lt;h2&gt;Radbrytningar&lt;/h2&gt;
+
+Om en rad bara innehåller ett minustecken följt av två utropstecken ("-!!") kommer en ny sida påbörjas vid utrkift. (ignoreras i presentationer)
+
+
+</format>
+
+    <presentation>
+&lt;h1&gt;OpenSongs Visningsordning&lt;/h1&gt;
+
+Fältet "Visning" i sång-läget och "Egen visningsordning" i presentations-läget, bestämmer i vilken ordning sektionerna i sången ska visas. 
+Varje sektionsnamn avgränsas med ett mellanslag. Tex:
+&lt;b&gt;
+V1 C V2 C V3 C
+&lt;/b&gt;
+I detta fall skulle första versen visas som första sida i presentationen, sedan refrängen, vers 2, refräng igen, vers 3 och till sist refrängen igen. 
+
+Tänk på att om du har skivit in sången med flera verser under samma ackordrad, så ska man här skriva tex. V1 även om det enbart står "V" på sektionsraden. Se mer 
+
+&lt;h3&gt;Om "Visning"-fältet är tomt...&lt;/h3&gt;
+
+... så kommer sektionerna ordnas efter hur de skrevs in i Ackord/Text-fältet
+
+</presentation> 
+  </help_topics>
+
+  <font_selection title="Tecken">
+    <face caption="Teckensnitt"/>
+    <size caption="Storlek"/>
+    <color caption="Färg"/>
+    <bold caption="Fet"/>
+    <italic caption="Kursiv"/>
+    <underline caption="Understruken"/>
+    <border caption="Ram"/>
+    <shadow caption="Skugga"/>
+    <fill caption="Fyll"/>
+  </font_selection>
+
+  <print_preview title="Förhandsgranska">
+    <first caption="&lt;&lt;"/>
+    <previous caption="&lt;"/>
+    <next caption="&gt;"/>
+    <last caption="&gt;&gt;"/>
+    <zoom_in caption="-"/>
+    <zoom_out caption="+"/>
+    <pages caption="%1 av %2"/>
+    <print_setup caption="Utskriftsinst."/>
+    <print caption="Skriv ut"/>
+    <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+    <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+    </print_preview>
+    
+<print>
+     <continued caption="...forts"/>
+     <toc caption="innehåll"/>
+     <categorized caption="Kategorisk"/>
+     <alphabetical caption="Alfabetisk"/>
+     <copyright caption="Copyright"/>
+     <page caption="Sida %1"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+     <create_list caption="Skapar lista av %1..."/>
+     <uncategorized caption="Annat"/>
+     <setlist caption="Ordning">
+
+      <date caption="Utskriven "/>
+
+     </setlist>
+</print>
+
+<songml>
+     <page caption="Sida"/>
+     <capo caption="Capo"/>
+     <copyright caption=""/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Förrefräng"/>
+     <chorus caption="Refräng"/>
+     <bridge caption="Brygga"/>
+     <tag caption="Stick"/>
+     <verse caption="Vers"/>
+     <author caption="Författare:"/>
+     <hymn_number caption="Sångnummer:"/>
+     <ccli_number caption="CCLI Sångnr:"/>
+     <ccli_license caption="Visas med tillstånd: CCLI#"/>
+     <presentation caption="Visning:"/>
+     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
+     <separator caption="|NL|"/>
+     <!--The leading comma is needed for internal data structure reasons.-->
+     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
+     <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
+     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
+     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+  </songml>
+
+  <smartml>
+    <attrib_except>SmartML.GetAttribute: Exception looking for attribute '%1' in '%2'</attrib_except>
+    <no_path>Sökvägen finns inte..</no_path>
+    <no_File>Filen %1 finns inte.</no_File>
+    <cant_open>Ett fel uppstod när filen: %1 öpnnades</cant_open>
+    <cant_create>Filen %1 kunde inte skapas</cant_create>
+    <xml_error>Filen kunde inte läsas, XML-error: %1</xml_error>
+    <xml_exterror>Filen kunde inte läsas, XML-error: %1: %2: %3</xml_exterror>
+  </smartml> 
+
+  <style_editor title="Ändra utseende">
+    <fonts_and_alignment caption="Teckensnitt och textposition">
+      <title caption="Titel"/>
+      <subtitle caption="Sånginfo"/>
+      <body caption="Brödtext"/>
+      <align caption="Textposition"/>
+      <subtitles caption="Visa sånginfo"/>
+      <highlight_chorus caption="Markera text i refräng"/>
+      <descriptive_subtitle caption="Visa sånginfo med rubrik"/>
+   </fonts_and_alignment>
+      <background caption="Bakgrund">
+      <color caption="Färg"/>
+      <image caption="Bild"/>
+      <position caption="Position">
+          <row0 caption="Anpassad"/>
+          <row1 caption="Centrera"/>
+          <!-- <row2 caption="Tile"/> -->
+      </position>
+      <trim_bottom caption="*Beskär nerifrån"/>
+      <pixels caption="px"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </background>
+    <trim_note caption="*Beskär nederdelen på bakgrundsbilden för att dölja ev. text. För att undvika uttänjning sker beskärning även på sidorna."/>
+  </style_editor>
+
+  <song_lookup title="Sök sång">
+    <header caption="För att lägga till en sång, markera sångtiteln nedan och tryck på 'Lägg till'  e l l e r  börja att skriva sångtiteln och tryck på Enter."/>
+    <no_selection>Du har inte markerat någon sång.</no_selection>
+    <folder caption="Sångmappar"/>
+  </song_lookup>
+
+  <scripture_lookup title="Sök upp bibelord">
+    <book caption="Bibelbok"/>
+    <lookup caption="Snabbsökning">
+      <reference caption="Referens"/>
+      <lookup caption="Sök upp"/>
+      <example caption="Ex: '2Pet 1:1-2' el. '2Pet 1:1-2 (KJV)'"/>
+    </lookup>
+    <version caption="Version"/>
+    <select_file caption="Vänligen välj en bibelöversättning"/>    
+    <verses_per_slide caption="Verser per sida">
+      <one caption="1"/>
+      <two caption="2"/>
+      <three caption="3"/>
+    </verses_per_slide>
+    <format caption="Radbrytning?">
+      <paragraph caption="Nej, i ett stycke"/>
+      <verse caption="Ja, efter varje Vers"/>
+    </format>
+    <bad_reference>
+      <empty>Felaktig referens: Referensen var tom.</empty>
+      <book>Felaktig referens: Hittade inte bok.</book>
+      <ambiguous>Felaktig referens: Flera böcker funna: '%1' och %2</ambiguous>
+      <version>Felaktig referens: Översättningen '%1' hittades inte.</version>
+      <chapter>Felaktig referens: Hittade inte kapitel '%1'.</chapter>
+      <verse>Felaktig referens: Hittade inte versen '%1'.</verse>
+      <verse_range>Felaktig referens: 'till-versen' måste vara större än eller lika med 'från-versen'.</verse_range>
+    </bad_reference>
+    <colon caption=":"/>
+    <dash caption="-"/>
+    <search caption="link(shared/search/@caption)"/>
+    <insert caption="link(shared/insert/@caption)"/>
+  </scripture_lookup>
+
+  <module>
+    <read_error>Kunde inte läsa filen, eller så är det fel filformat.</read_error>
+    <format_error>Felaktigt modulformat.</format_error>
+    <move_error>Det gick inte att flytta modulen. Se till att du '%1' ej är skrivskyddad.</move_error>
+    <rename_error>Det gick inte att byta namn på modulen. Se till att '%1' ej är skrivskyddad.</rename_error>
+    <success>Modulen har laddats.</success>
+    <file_type>OpenSong Moduler (*.xmm)</file_type>
+    <generate_index>Vill du skapa indexfil för bibeln?</generate_index>
+    <generate_error>Ett fel uppstod vid skapande av index. Se till så att mappen %1 inte är skrivskyddad!</generate_error>
+  </module>
+
+  <import_from_ccli title="Importera från CCLI OBS Ej i Sverige">
+    <user_id caption="User ID"/>
+    <password caption="Password"/>
+    <for caption="Search For"/>
+    <songs head1="Ly" head2="So" head3="Le" head4="Title" head5="Author"
+      head6="Catalog" head7="AKA" head8="Key Line" head9="Key" head10="CCLI #"/>
+    <by caption="By">
+      <title_and_aka caption="Title and AKA"/>
+      <title caption="Title"/>
+      <lyrics caption="Lyrics"/>
+      <author caption="Author"/>
+      <catalog caption="Catalog"/>
+      <theme caption="Theme"/>
+      <ccli caption="CCLI #"/>
+    </by>
+    <filter caption="Filter">
+      <all caption="All"/>
+      <lead_sheets caption="Lead Sheets"/>
+      <sound_samples caption="Sound Samples"/>
+    </filter>
+    <find caption="Find"/>
+    <previous_page caption="Previous Page"/>
+    <next_page caption="Next Page"/>
+    <page caption="Page"/>
+    <of_pages caption="of %1"/>
+    <import caption="Import"/>
+    <errors>
+      <no_data>Ingen data togs emot. Denna tjänst fungerar inte i Sverige.</no_data>
+      <bad_html>Fel med HTML. Kontakta OpenSong teknisk support.</bad_html>
+      <no_results>Inga resultat.</no_results>
+      <no_headers>Ingen rubrikdata togs emot. Kontrollera söksträngen och/eller CCLI ID/lösenord.</no_headers>
+      <no_connect>Kunde inte ansluta till CCLI. OBS. Fungerar inte i Sverige!</no_connect>
+      <already_exists>Sången finns redan.</already_exists>
+    </errors>
+  </import_from_ccli>
+
+  <find_image title="Hitta bild">
+    <parent caption="(Upp)"/>
+  </find_image>
+  <input_box title="OpenSong"/>
+
+  <theme_list>
+    <option name="Jesus: Attributes"/>
+    <option name="Jesus: Födelsen"/>
+    <option name="Jesus: Döden/Atonement"/>
+    <option name="Jesus: Mäktighet/Majestät"/>
+    <option name="Jesus: Kärlek/Barmhärtighet"/>
+    <option name="Jesus: Uppståndelsen"/>
+    <option name="Jesus: Återkomsten"/>
+    <option name="Jesus: Seger"/>
+    <option name="Församling: Plikt/Lyda"/>
+    <option name="Församling: Land"/>
+    <option name="Församling: Evigt liv/Himlen"/>
+    <option name="Församling: Evangelism"/>
+    <option name="Församling: Familj/Kamratskap"/>
+    <option name="Församling: Vänskapen till Gud"/>
+    <option name="Församling: Renhet/Helighet"/>
+    <option name="Församling: Ånger/Frälsning"/>
+    <option name="Församling: Förnyelse"/>
+    <option name="Församling: Tjänst/Kallelse"/>
+    <option name="Församling: Andlig hunger"/>
+    <option name="Andens Frukt: Tro/Hopp"/>
+    <option name="Andens Frukt: Kärlek"/>
+    <option name="Andens Frukt: Glädje"/>
+    <option name="Andens Frukt: Fred"/>
+    <option name="Andens Frukt: Tålamod/Vänlighet"/>
+    <option name="Andens Frukt: Ödmjukhet/Självbehärskning"/>
+    <option name="Gud: Kännetecken"/>
+    <option name="Gud: Skaparen/Skapelse"/>
+    <option name="Gud: Fadern"/>
+    <option name="Gud: Ledning/Omtanke"/>
+    <option name="Gud: Helig Ande"/>
+    <option name="Gud: Helighet"/>
+    <option name="Gud: Kärlek/Barmhärtighet"/>
+    <option name="Gud: Mäktighet/Majestät"/>
+    <option name="Gud: Löften"/>
+    <option name="Gud: Seger"/>
+    <option name="Gud: Ordet"/>
+    <option name="Tillbedjan: Försäkran/Tillit"/>
+    <option name="Tillbedjan: Kalla på/Öppna sig"/>
+    <option name="Tillbedjan: Celebrera/Fest"/>
+    <option name="Tillbedjan: Proklamation"/>
+    <option name="Tillbedjan: Intimitet"/>
+    <option name="Tillbedjan: Inbjudan"/>
+    <option name="Tillbedjan: Prisa/Upphöja"/>
+    <option name="Tillbedjan: Bön/Hängivenhet"/>
+    <option name="Tillbedjan: Försörjning/Befrielse"/>
+    <option name="Tillbedjan: Tacksamhet"/>
+  </theme_list>
+
+  <tempo_list>
+    <option name="Mycket snabbt"/>
+    <option name="Snabbt"/>
+    <option name="Medelsnabbt"/>
+    <option name="Sakta"/>
+    <option name="Mycket sakta"/>
+  </tempo_list>
+
+  <time_sig_list>
+    <option name="2/4"/>
+    <option name="3/4"/>
+    <option name="4/4"/>
+    <option name="3/8"/>
+    <option name="6/8"/>
+  </time_sig_list>
+
+  <style_preview>
+    <slide_groups>
+      <slide_group name="Test Titel" type="egen" seconds="0" loop="false">
+        <title>Test Titel</title>
+        <subtitle>Test sånginfo</subtitle>
+        <notes>Test Noteringar</notes>
+        <slides>
+          <slide>
+            <body>Denna bild är ett test,
+som visar utseendet på sången då den visas.
+Klicka på den här bilden för att ändra utseendet.</body>
+          </slide>
+        </slides>
+      </slide_group>
+    </slide_groups>
+  </style_preview>
+  
+
+  <subtitles caption="Sånginfo" head1="Sortera" head2="På" head3="Beskrivning">
+    <row0 caption="Copyright|copyright"/>
+    <row1 caption="Författare|author"/>
+    <row2 caption="Sångnummer|hymn_number"/> 
+    <row3 caption="CCLI Sångnummer|ccli_number"/> 
+    <row4 caption="CCLI Licensnummer|ccli_license"/>
+  </subtitles>
+      
+  <shared>
+    <ok caption="OK"/>
+    <cancel caption="Avbryt"/>
+    <yes caption="Ja"/>
+    <no caption="Nej"/>
+    <browse caption="Bläddra"/>
+    <browse_for caption="Leta efter mapp"/>
+    <add caption="Lägg till"/>
+    <done caption="Klart!"/>
+    <untitled caption="Namnlös"/>
+    <click_to_change caption="Klicka för att ändra"/>
+    <right_click_to_clear caption="Högerklicka för att ta bort"/>
+    <insert caption="Visa"/>
+    <close caption="Stäng"/>
+    <search caption="Sök"/>
+    <save caption="Spara" message="%1 har inte sparats."/>
+    <nosave caption="Spara inte"/>
+    <cut caption="Klipp ut"/>
+    <copy caption="Kopiera"/>
+    <paste caption="Klistra in"/>
+    <select caption="Välj"/>
+    <exit_program caption="Stäng Programmet"/>
+  </shared>
+
+  <questions>
+    <new_name caption="Skriv in ett namn:"/>
+    <rename caption="Skriv in ett nytt namn på '%1':"/>
+    <save caption="Vill du spara ändringar för '%1'?"/>
+    <delete caption="Vill du verkligen ta bort '%1'?"/>
+    <clear caption="Vill du verkligen ta bort den?"/>
+    <changed caption="Aktuell sång har ändrats. Vill du spara?"/>
+    <revert caption="Alla ändringar kommer att försvinna. Vill du fortsätta?"/>
+    <long_operation caption="Detta kan ta ett tag... Vill du fortsätta?"/>
+    <generic_save caption="Spara ändringar?"/>
+    <generic_save_explanation caption="Om du inte sparar kommer ändringarna att försvinna!"/>
+    <set_changed caption="Aktuell presentation har ändrats, Vill du spara?"/>
+    <select_docs_folder caption="Välj dokumentmapp">Mapp där Opensong ska spara filer(sånger och presentationer)</select_docs_folder>
+  </questions>
+
+  <about>
+    <additional>Utvecklat av:</additional>
+    <copyright>Copyright</copyright>
+    <gpl>Denna programvara är baserat på GPL (General public license).</gpl>
+    <web>Besök http://www.opensong.org/ för mer information.</web>
+    <translating>För att översätta OpenSong, kopiera en redan existerande språkfil i mappen 'OpenSong Languages', och byt namn på den till det språk du vill överstätta till. Översätt sedan allt i filen utom taggar o.dyl. (Tips använd ett progra för att jämföra filer). Sänd sedan filen i ett mail till translator@opensong.org så kommer vi att ta med den i den officiella utgåvan.</translating>
+    <created_with_opensong>Skapad i OpenSong</created_with_opensong>
+    <sources>OpenSong innehåller källkod från</sources>
+  </about>
+
+  <folderdb_errors>
+    <error code="1">Mappen '%1' finns redan.</error>
+    <error code="2">Kunde inte skapa mappen: '%1'.</error>
+    <error code="3">Filen '%1' finns redan.</error>
+    <error code="4">Kunde inte hitta sökvägen till den nya filen '%1'.</error>
+    <error code="5">Kunde inte spara i standardmapp '%1'.</error>
+    <error code="6">Kunde inte hitta mappen '%1'.</error>
+    <error code="7">Kunde inte ta bort mappen '%1'.</error>
+    <error code="8">Kunde inte hitta filen '%1'.</error>
+    <error code="9">Kunde inte ta bort filen '%1'.</error>
+    <error code="10">Kunde inte byta namn på '%2'.</error>
+    <error code="11">Mappen '%1' är inte tom.</error>
+    <error code="12">Kunde inte flytta '%1' till '%2'.</error>
+    <error code="13">Filen: '%1' finns redan i mappen: '%2'.</error>
+  </folderdb_errors>
+
+  <errors>
+    <empty_group>Gruppen '%1' måste innehålla åtminsone en bild!</empty_group>
+    <unreadable_image>Kunde inte läsa bilden '%1'.</unreadable_image>
+    <end_of_songs>Slut på sånger.</end_of_songs>
+    <already_exists>'%1' finns redan.</already_exists>
+    <bad_format>'%1' innehåller felaktigt format. Hoppar över...</bad_format>
+    <no_songs>Det finns inga sånger i sånglistan!</no_songs>
+    <no_multi_screen>Kan inte hitta mer än en skärm.</no_multi_screen>
+    <bad_file_name>Felaktigt filnamn: '%1'.</bad_file_name>
+    <internal>Internt fel! Kontakta teknisk support.</internal>
+    <no_such_song>Kan inte hitta sången.</no_such_song>
+    <number_please>Skriv in en siffra tack.</number_please>
+    <number_range>Skriv in en siffra mellan %1 och %2.</number_range>
+    <no_path_allowed>Filnamnet får inte innehålla en hel sökväg.</no_path_allowed>
+    <rename_error>Kunde inte byta namn på filen.</rename_error>
+    <general1>I '%1': Okänt fel!</general1>
+    <general2>I '%1': '%2'</general2>
+    <folder_error>Internt mappfel. Kontakta teknisk support.</folder_error>
+    <create_backgrounds_folder>Kunde inte skapa bakgrund-mappen: %1</create_backgrounds_folder>
+    <create_sets_folder>Kunde inte skapa/redigera Presentationsmappen: %1</create_sets_folder>
+    <create_settings_folder>Kunde inte skapa mappen: %1 för inställningar.</create_settings_folder>
+    <create_songs_folder>Kunde inte skapa sångmappen: %1</create_songs_folder>
+    <no_backgrounds_folder>Kan inte hitta bakgrund-mappen: %1</no_backgrounds_folder>
+    <no_defaults_folder>Kan inte hitta standardmappen: %1</no_defaults_folder>
+    <no_scripture_folder>Kan inte hitta bibelmappen: %1</no_scripture_folder>
+    <no_sets_folder>Kan inte hitta presetationsmappen: %1</no_sets_folder>
+    <no_settings_folder>Kan inte hitta inställningsmappen: %1</no_settings_folder>
+    <no_songs_folder>Kan inte hitta sångmappen: %1</no_songs_folder>
+    <no_docs_folder>Kunde inte skapa/hitta dokumentmappen: %1</no_docs_folder>
+    <docs_folder>Dokumentmappen kan inte vara en undermapp till 'OpenSong Defaults'
+ändrar temporärt till: %1
+Var vänlig att ändra dina inställningar.</docs_folder>
+  </errors>
+
+
+  <xml_errors>
+
+    <noattribute>Kunde inte finna XML-attributet '%1' i '%2'.</noattribute>
+  </xml_errors>
+
+
+  <bible>
+
+    <errors>
+      <index_generation>Ett fel uppstod vid indexering av '%1.' Bibelsökningen är deaktiverad.</index_generation>
+
+      <loadxml>Fel vid läsning av XML %1
+.&#10; Felet är '%2' på rad %3</loadxml>
+
+      <load1>Okänt fel när %1 laddades</load1>
+      <load2>Fel när %1: %2 laddades</load2>
+
+      <noindex>Inga sökindex finns. Välj en annan bibelöversättning eller starta om OpenSong.</noindex>
+
+      <missing_bnames>Kunde inte hitta 'Zefania support'-filen 'bnames.xml' i 'OpenSong Settings'</missing_bnames>
+
+      <nobnames>Bibeln har inga 'bname attribut' som krävs, och de kunde tyvärr inte skapas heller.</nobnames>
+      <roman>Fel vid knvertering av Romerska tal. '%1': %2</roman>
+
+      <save>Fel när den updaterade filen '%1' skulle sparas</save>
+
+    </errors>
+
+    <messages>
+
+      <bnames>Boknamnen måste läggas till i den här bibelöversättningen.
+&#10;Vänligen, skriv in vilket språk som översättningen är på.</bnames>
+      <save>Spara uppdaterad fil?</save>
+    </messages>
+  </bible>
+
+  <song>
+    <errors>
+      <unknown_element>Okänt element när sången '%1' skulle laddas</unknown_element>
+    </errors>
+  </song>
+
+  <open_titles>
+    <audio>Välj Ljudfil att öppna</audio>
+  </open_titles>  
+  
+  <hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Gå till första sidan i denna sektion</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Gå till nästa sida i presentationen</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Gå till föregående sida i presentationen</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Gå till den första sidan i presentationen</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Gå till den sista sidan i presentationen</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Gå till nästa sektion i presentationen</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Gå till föregående sektion i presentationen</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Gå till nästa vers</ACTION_VERSE> 	
+ 	<ACTION_BRIDGE>Gå till brygga</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Gå till refräng</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Gå till för-refräng</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Gå till sticket</ACTION_TAG>
+ 	<ACTION_NORMAL>Visa aktuell sida</ACTION_NORMAL>
+ 	<ACTION_BLACK>Visa svart skärm</ACTION_BLACK>
+ 	<ACTION_WHITE>Visa vit skärm</ACTION_WHITE>
+ 	<ACTION_FREEZE>Frys visning på aktuell sida</ACTION_FREEZE>
+ 	<ACTION_LOGO>Visa logotype</ACTION_LOGO>
+ 	<ACTION_HIDE>Göm aktuell sida (Endast bakgrunden visas)</ACTION_HIDE>
+ 	<ACTION_EXIT>Avbryt presentation</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>Avbryt presentaion, kräv bekräftelse</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>Avbryt presentation omedelbart</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
+
+  <progress_status>
+    <folder>Indexerar mappen %1</folder>
+    <lead_sheets>Genererar Ackordblad</lead_sheets>
+    <process_themes>Hanterar teman</process_themes>
+    <process_songs>Hanterar sånger</process_songs>
+    <export>Exporterar sång(er)</export>
+    <pass1>Sorterar, 1a</pass1>
+    <pass2>Sorterar, 2a</pass2>
+  </progress_status>
+
+</language>

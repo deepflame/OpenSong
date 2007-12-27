@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<language name="Norwegian" author="Daniel Fahre" version="1.0">
+
+  <load_settings>
+   <print>Henter utskrifts instilinger</print>
+    <presentation>Henter presentasjons instilinger</presentation>
+    <tempos>Henter tempo liste</tempos>
+    <themes>Henter tema liste</themes>
+    <time_signatures>Henter tids signatur liste</time_signatures>
+    <fonts>Henter skrift type liste</fonts>
+    <latest_version>Ser etter nyere versjoner
+      <newer_available>En nyere versjon (%1) er tiljengelig. besøk www.opensong.org for å laste den ned.</newer_available>
+    </latest_version>
+      <init_audio>Instalerer SXMS Audio</init_audio>
+    <load_plugins>Sjekker fil formater støttet av Winamp Plugins</load_plugins>
+ </load_settings>
+
+  <load_data>
+      <bible>Henter standard bibelen</bible>
+      <songs_cache>Tar imot sanger</songs_cache>
+      <folders>henter sang mapper</folders>
+      <songs>Laster opp sanger</songs>
+      <sets>Henter lister</sets>
+  </load_data>
+
+  <welcome>Velkommen!</welcome>
+
+  <songs_mode caption="Sang modus">Bruk dette til å lage og redigere sangene. Sanger kan skrives ut og presenteres som lysbilder.
+    <all_songs caption="Alle sanger">
+      <print caption="Skriv ut">Skriv ut alle sangener. denne fungsjonen er flott for å lage sang hefter!.</print>
+      <export caption="Eksporter">Eksporterer alle sangene.</export>
+      <find caption="Søk">Søk eter et ord eller en setning i alle sangene.</find>
+    </all_songs>
+    <new_song caption="Ny sang">
+      <create caption="Lag">Legg til en ny sang til opensong.</create>
+      <import caption="Importer">Importer en ny sang til OpenSong fra CCLI sangvalg.</import>
+    </new_song>
+    <selected_song caption="Valgt sang">
+      <save caption="Lagre">Lagrer den valgte sangen.</save>
+      <revert caption="Tilbakestill">Tilbakestill sangen til sangen som er lagret.</revert>
+      <print caption="Print">Skriv ut denne sangen.</print>
+      <present caption="Presenter">Presenter denne sangen. Hvis du har gjort endringer i denne sangen vil de bli lagret.
+        <single_screen caption="En skjerm"/>
+        <dual_screen caption="to skjermer"/>
+        <preview_dual_screen caption="Se to skjermer på en"/>
+      </present>
+      <export caption="Eksporter">Eksporter denne sangen.
+        <to caption="Velg en mappe å eksportere til."/>
+      </export>
+      <rename caption="Gi nytt navn">Gi nytt navn til denne sangen.</rename>
+      <move caption="Flytt">Flytt denne sangen in til en annen mappe.
+        <where caption="flytt '%1' til hvilken mappe:"/>
+      </move>
+      <delete caption="Slett">Slett denne sangen.</delete>
+    </selected_song>
+
+    <songs caption="Sanger">Velg en sang for å redigere den.</songs>
+
+    <curr_folder caption="Inneholder mappe">Vis mappen som inneholder denne sangen</curr_folder>
+
+    <song_folders caption="Mapper">Velg en mappe for å bare vise sangene i den mappen.
+      <new>Lag en ny mappe til å ha sanger i.</new>
+      <delete>Slett den valgte mappen. Mappen må være tom.</delete>
+      <filter_all caption="Alt"/>
+      <filter_main caption="Standard mappe"/>
+    </song_folders>
+  </songs_mode>
+
+  <general_song_editor caption="Generelt">Rediger sangens tittel, undertittel, forfatter, lysbilder, og tekst.
+    <header caption="Sang redigering"/>
+    <show_general_editor caption="Generelt"/>
+    <show_advanced_editor caption="Avansert"/>
+    <title caption="Tittel">Rediger tittelen på den valgte sangen.</title>
+    <author caption="Forfatter">Sett forfateren av denne sangen.</author>
+    <copyright caption="Copyright">Sett copyrighten for den valgte sangen.</copyright>
+    <ccli caption="CCLI #">Sett CCLI nummeret på denne sangen.</ccli>
+    <hymn_number caption="Hymn #">Sett Hymn nummeret på den valgte sangen.</hymn_number>
+    <presentation caption="Presentasjon">Sett presentasjon rekkefølgen på denne sangen. seksjoner må skilles med mellomrom. (f.eks. "V1 C V2 C")</presentation>
+    <lyrics caption="Besifring\tekst">Her kan du redigere sanger ved å bruke  seksjons linjer, komentar linjer, besiftings linjer, og tekst linjer.</lyrics>
+    <insert caption="Sett inn"/>
+      <ins_section caption="Seksjoner">Seksjoner blir brukt til å dele opp sangens deler.
+        <section_name caption="Seksjons navn"/>
+      </ins_section>
+      <ins_lyrics caption="Besifring \ tekst">Setter automatisk inn ferdilagde maler for akorder og tekst
+        <number_of_lines caption="Antall linjer"/>
+      </ins_lyrics>
+      <ins_multi_verse caption="Flere vers">Setter automatisk inn ferdilagde maler for akorder og tekst hvis du vil bruke flere værs fungsjonen.
+        <number_of_verses caption="Antall vers"/>
+        <number_of_lines caption="Antal linjer"/>
+      </ins_multi_verse>
+      <ins_comment caption="Kommentar">komentarer synes når du printer ut, men ikke i presentasjoner.</ins_comment>
+      <ins_column caption="Ny kolonne">Sang ark kan inneholde to kolonner for å få en lang sang til å passe inn på et ark.</ins_column>
+      <ins_page caption="Ny side">Indiker hvor en ny side skal starte for lange sanger.</ins_page>
+    <transpose caption="Modeler">Bruk dette til å modelere sangen din opp eller ned
+      <using caption="Bruk">.
+        <sharps caption="Sharps"/>
+        <flats caption="Flats"/>
+      </using>
+    </transpose>
+  </general_song_editor>
+
+  <advanced_song_editor caption="Avansert">Bestem denne sangens tema, capo, takt, stil, etc.
+    <header caption="Sang redigering"/>
+    <show_general_editor caption="Generelt"/>
+    <show_advanced_editor caption="Avansert"/>
+    <themes caption="Temaer">Sett temaet for denne sangen.</themes>
+    <capo caption="Capo">Setter capo posisjonen på denne sangen</capo>
+    <capo_print caption="Skriv ut"> Hvis denne er valgt, vil OpenSong skrive ut capo akordenr i tileg til de vanlige akordene.</capo_print>
+    <time_sig caption="Takt art">Sett takt arten for den valgte sangen.</time_sig>
+    <tempo caption="Tempo">Velg tempoet for denne sangen.</tempo>
+    <key caption="Nøkkel">Sett nøkkelen for denne sangen.</key>
+    <aka caption="Alternativ tittel">Sett den vanlige alternative tittelen på sangen.</aka>
+    <key_line caption="nøkkel Linje">sett en nøkkel linje.</key_line>
+    <style caption="Unik stil">Klikk her for å lage en spesiel stil til kun denne sangen.</style>
+    <user1 caption="Bruker definert 1">Sett dette til va du vill. disse områdene kan bli brukt av 3rd party aplikasjoner, etc.</user1>
+    <user2 caption="Bruker definert 2">SSett dette til va du vill. disse områdene kan bli brukt av 3rd party aplikasjoner, etc.</user2>
+    <user3 caption="Bruker definert 3">Sett dette til hva du vill. disse områdene kan bli brukt av 3rd party aplikasjoner, etc.</user3>
+  </advanced_song_editor>
+
+  <sets_mode caption="Liste modus">bruk denne til å lage å redigere spille listene dine.
+    <sets caption="Lister">Velg en spille liste for å redigere den i liste redigering.
+      <add>lag ny spilleliste til OpenSong.</add>
+    </sets>
+    <current_set caption="Valgt Set">
+      <save caption="Lagre">Lagrer dette settet (inkludert alt innhold) til disk.</save>
+      <rename caption="Gi nytt navn">Gi nytt navn til denne spille listen.</rename>
+      <delete caption="Slett">Slett denne Listen. (Sangene i dette settet vil ikke bli borte fra sang listen)</delete>
+       <saveas caption="Lagre som">Lagre endringene i spillelisten med et nytt navn.</saveas>
+      <present caption="Presenter">Presenter denne spillelisten til skjerm. du har muligheten til å presentere til, denne skjermen en annen monitor,eller bruke en skjerm til å se hvordan det ville blitt på to.
+        <single_screen caption="En skjerm"/>
+        <dual_screen caption="To skjermer"/>
+        <preview_dual_screen caption="Forhådsvis to skjermer"/>
+        <no_slides>Du må ha minst en ting på listen for å presentere.</no_slides>
+      </present>
+      <print_songs caption="Sanger">Skriv ut sangene i denne listen.
+        <no_songs>Det er ingen sanger i denne listen .</no_songs>
+      </print_songs>
+      <print_order caption="Liste">Skriv ut en liste over innholde på denne spillelisten.</print_order>
+    </current_set>
+    <new_item caption="Nytt innhold">
+      <add_song caption="Sang">Legg til en sang inn i denne listen.</add_song>
+      <add_scripture caption="Bibeltekst">Legg til en bibeltekst eller et lysbilde til denne listen.</add_scripture>
+      <add_slides caption="Lysbilde">Legg til et egendefinert lysbilde til denne listen.</add_slides>
+      <add_style caption="Stil">Skift stil hvorsomhelst på listen.</add_style>
+      <add_video caption="Video">Legg til en video fil til listen.</add_video>
+      <add_powerpoint caption="PowerPoint">legg til en PowerPoint presentasjon til listen.</add_powerpoint>
+    </new_item>
+    <current_item caption="Valgt objekt">
+      <move_up caption="Flytt opp">Flytter det valgte objektet opp</move_up>
+      <move_down caption="Flytt ned">Flytter det valgte objektet ned</move_down>
+      <remove caption="Slett">Slett det valgte objektet fra denne listen.</remove>
+      <copy caption="Kopier">Lag en kopi av det valgte objektet.</copy>
+      <store caption="Lagre">Lagrer det valgte objektet til listen.</store>
+    </current_item>
+    <items caption="Liste innhold"></items>
+  </sets_mode>
+
+  <slide_editor>
+    <header caption="Lysbilde redigering"/>
+    <title caption="Tittel">Setter tillelen som blir vist på lysbildet.</title>
+    <subtitle caption="Undertittel"></subtitle>
+    <name caption="Navn">Set navn på lysbilde(ne)</name>
+    <slides caption="Lysbilder">Inneholder lysbilder.</slides>
+    <presentation caption="Egendefinert presentasjons rekkefølge">Overrides the presentation order in the song file</presentation>
+    <origorder caption="Original presentasjons rekkefølge"></origorder>        
+    <notes caption="Notater">Disse notatene kommer opp i presentasjons hjelperen når du bruker to skjermer..</notes>
+    <insert caption="Sett inn"/>
+      <ins_slide caption="Lysbilde">Tilater å lage flere lysbilder som deler samme stil og instillinger.</ins_slide>
+    <loop caption="Loop Lysbilder">Kryss av her for at OpenSong skal starte på første lysbilde når det siste er ferdig</loop>
+    <print caption="Skriv ut inn Listen">Kryss av denne boksen for å slippe å få med denne gruppen av lysbilder når du skriver ut spillelisten.</print>
+    <auto_advance caption="Skift automatisk lysbilde hvert">Skriv inn et nummer som OpenSong skal vise hvært lysbilde og så automatisk skifte til neste lysbilde.</auto_advance>
+    <seconds caption="Sekund"/>
+    <style caption="Unik Stil">Kryss av her for å få en egendefinert stil på disse lysbildene. Når den er krysset av klikker du på den lille forhåndsvisningen for å redigere stilen.</style>
+  </slide_editor>
+
+  <style_change>
+    <header caption="Stil endring"/>
+    <revert caption="Bruk forrige stil">Dette valget setter stilen tilbake til det forrige stil valget herifra</revert>
+    <change caption="Skift stil til dette">Dette valget har muligheten til å skifte stil hvorsom helst i spille listen. Stil endringen brukes på allt etter den.</change>
+    <style>Klikk her for å redigere den nye stilen.</style>
+  </style_change>
+
+  <video_slides>
+    <header caption="Video instilinger"/>
+    <name caption="Lysbilde navn">Navnet OpenSong bruker for å identifisere dette lysbildet.</name>
+    <file caption="Video Fil">Sett navnet på videofilen som skal brukes i dette lysbildet.</file> 
+    <loop caption="Loop Videoen">Velg dette for at videoen skal starte på nytt  hvær gang den er ferdig</loop>
+  </video_slides>
+
+  <powerpoint_slides>
+    <header caption="PowerPoint lysbilde instillinger"/>
+    <name caption="Lysbilders navn">Dette navnet blir brukt av OpenSong til å identifisere denne lysbilde gruppen.</name>
+    <file caption="PowerPoint Fil">Sett navnet på Power Point filen som skal brukes.</file>
+  </powerpoint_slides>
+
+  <song_search title="Sang søk">
+    <search caption="Skriv inn et søke ord:"/>
+    <fields caption="Søke områder">
+      <title caption="link(general_song_editor/title/@caption)"/>
+      <author caption="link(general_song_editor/author/@caption)"/>
+      <copyright caption="link(general_song_editor/copyright/@caption)"/>
+      <ccli caption="link(general_song_editor/ccli/@caption)"/>
+      <presentation caption="link(general_song_editor/presentation/@caption)"/>
+      <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+
+      <themes caption="link(advanced_song_editor/themes/@caption)"/>
+      <capo caption="link(advanced_song_editor/capo/@caption)"/>
+      <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
+      <time_sig caption="link(advanced_song_editor/time_sig/@caption)"/>
+      <tempo caption="link(advanced_song_editor/tempo/@caption)"/>
+      <key caption="link(advanced_song_editor/key/@caption)"/>
+      <aka caption="link(advanced_song_editor/aka/@caption)"/>
+      <key_line caption="link(advanced_song_editor/key_line/@caption)"/>
+      <style caption="link(advanced_song_editor/style/@caption)"/>
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+    </fields>
+  </song_search>
+
+  <main_menu>
+    <file caption="_Fil">
+      <new caption="_Ny"/>
+      <save caption="_Lagre"/>
+      <present caption="_Presenter">
+        <single_screen caption="_En skjerm"/>
+        <dual_screen caption="_To skjermer"/>
+        <preview_dual_screen caption="_Forhådsvis to skjermer"/>
+      </present>
+      <pagesetup caption="U_tskrifts format"/>
+      <print caption="_Skriv ut"/>
+      <print_alphabetical_toc caption="Skriv ut _Alfabetisk TOC"/>
+      <print_categorical_toc caption="Skriv ut _kategorisk TOC"/>
+      <quit caption="L_ukk"/>
+    </file>
+    <edit caption="_Rediger">
+      <undo caption="_Angre"/>
+      <cut caption="_Klipp ut"/>
+      <copy caption="K_opier"/>
+      <paste caption="_Lim inn"/>
+      <clear caption="T_øm"/>
+      <find caption="_Finn"/>
+      <find_next caption="Finn _Igjenn"/>
+    </edit>
+    <mode caption="_Modus">
+      <songs caption="_Sang modus"/>
+      <sets caption="L_iste Modus"/>
+    </mode>
+    <settings caption="_Instillinger">
+      <presentation caption="_Presentasjons instillinger"/>
+      <print caption="Utskrifts _instillinger"/>
+      <general caption="_Generele instillinger"/>
+      <refresh_songs caption="Oppdater sang _Mappen"/>
+      <refresh_sets caption="O_ppdater Liste instillinger"/>
+      <install_module caption="_Instalerings modul"/>
+    </settings>
+    <help caption="_Hjelp">
+      <help_topics caption="Hjelp _Emner"/>
+      <translating caption="_Oversett Opensong"/>
+      <about caption="_Om OpenSong"/>
+    </help>
+  </main_menu>
+
+  <general_settings title="Generelle instillinger">
+<!--  V1.2 Changes-->
+    <general caption="Generelt" head1="Basic" head2="Special">
+      <ccli caption="CCLI Lisens #"/>
+      <version_check caption="se etter oppdateringer ved oppstart"/>
+      <language caption="Språk"/>
+      <startmode caption="Standard vindu">
+	      <songs caption="Sanger"/>
+	      <sets caption="Lister"/>
+      </startmode>
+    </general>
+    <proxy caption="Proxy">
+      <host caption="Host"/>
+      <port caption="Port"/>
+    </proxy>
+    <user_defined caption="Bruker definert">
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <load caption="Hent språk standarer"/>
+    </user_defined>
+    <fonts caption="Skrift typer">
+      <headings caption="Overskrifter"/>
+      <labels caption="Merker"/>
+      <text_fields caption="Tekst områder"/>
+      <fixed_width caption="Fikset – med tekst"/>
+      <buttons caption="Knapper"/>
+      <large_headings caption="Store Overskrifter"/>
+      <newpaint caption="Bruk ny visuel stil"/>
+    </fonts>
+    <documents_folder caption="Dokument mappe">
+      <warning caption="Bruk med varsomhet, krever restart av programmet"/>
+      <default caption="Standard"/>
+      <custom caption="Egenskaper"/>
+      <message>Lukker OpenSong. Venlikst klikk OK og start OpenSong  igjenn. Du vil sikkert kopiere dine gamle dokumenter over til den nye adresen først.</message>
+      <change caption="Endre"/>
+    </documents_folder>
+<!--    V1.2 Changes-->
+    <logging caption="Log settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
+
+  </general_settings>
+
+  <print_settings title="Utskrifts instillinger">
+    <tabs head3="Marger" head1="Skrift typer" head2="Layout"/>
+    <margins>
+      <left caption="Venstre"/>
+      <top caption="Topp"/>
+      <right caption="Høyre"/>
+      <bottom caption="Bunn"/>
+      <width caption="Vidde"/>
+      <height caption="Høyde"/>
+      <message caption="Se fil /Utskriftsformat ... for å stille inn marger"/>
+    </margins>
+    <fonts>
+      <title caption="Tittel"/>
+      <author caption="Forfatter"/>
+      <sections caption="Seksjoner"/>
+      <lyrics caption="Tekst"/>
+      <chords caption="Akkorder"/>
+      <capo caption="Capo"/>
+      <copyright caption="Copyright"/>
+    </fonts>
+    <layout>
+      <heading_border_thickness caption="Overskrifts kant tykkelse"/>
+      <title_in_caps caption="Tittel i store bokstaver"/>
+    </layout>
+    <units caption="Units">
+      <inches caption="Inches"/>
+      <cm caption="Centimeter"/>
+    </units>
+  </print_settings>
+
+  <presentation_settings title="Presentasjons instillinger">
+    <settings head1="Stil" head2="Valg">
+        <default_slides caption="Standard lysbilde stil"/>
+        <scripture_slides caption="Standard Tekst stil"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        <transition_note caption="*Overganger berøres av skjermopløsning. Om Du opplever langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om du legger merke til at overganger ikke viser seg, det er fordi deres fargenivåer er lav også på fremvisningsmonitoen."/>
+    </settings>
+    <style caption="Stil">
+      <use_transitions caption="Bruk overganger*"/>
+      <transition_note caption="*Overganger berøres av skjermopløsning. Om Du opplever langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om Du legger merke til at overganger ikke viser seg, det er fordi Deres fargenivåer er også lav på fremvisningsmonitoen"/>
+      <border_thickness caption="Kant tykkelse"/>
+      <subtitles caption="Under tittler"/>
+      <modes>
+        <normal caption="Normal"/>
+        <black caption="Sort"/>
+        <white caption="Hvit"/>
+        <logo caption="Logo"/>
+        <hidden caption="Skjult"/>
+        <frozen caption="Fryst"/>
+      </modes>
+     
+      <mouse_cursor caption="Muse peker">
+        <arrow caption="Pil"/> 
+        <cross caption="Kryss"/>
+        <hidden caption="Skjult"/>
+        <hourglass caption="Timeglass"/> 
+        <ibeam caption="Tekstmerking"/> 
+      </mouse_cursor>
+      <blanks caption="Sett inn tomme lysbilder"/>
+      <blanks_between caption="mellom liste innhold"/>
+      <time caption="Tid" helptag="total tid for overgang (kan ta lenger tid på trege systemer)"/>
+      <frames caption="Bilder" helptag="Antal overgangs trinn på en overgang"/>
+      <blank_style caption="Blanke lysbilder tar stil"/>
+      <blank_prev caption="forrige lysbilde"/>
+      <blank_next caption="Neste lysbilde"/>
+      
+<highlight_chorus caption="Lys ut Refreng tekst"/>
+      
+<initial_mode caption="Standard presentasjons modus"/>
+    </style>
+    <alerts caption="Meldinger">
+      <font caption="Skrift typer"/>
+      <align caption="Justering"/>
+    </alerts>
+    
+    <monitor caption="Monitorer">
+      <control caption="Instilings monitor"/>
+      <presentation caption="Presentasjons monitor"/>
+      <detected caption="%1 monitor(er) er funnet."/>
+      <default_mode caption="Standard monitor modus"/>
+    </monitor>
+    <logo caption="Logo">
+      <mask caption="Maske"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </logo>
+
+    <audio caption="Lyd">
+      <file_to_play caption="Fil å spille av"/>
+      <browse caption="Bla gjennom"/>
+      <stop caption="Stopp"/>
+      <play caption="Spill"/>
+    </audio>
+
+    <misc caption="Diverse">
+      <exit_prompt caption="Tilskynd under lukking"/>
+      <descriptive_subtitle caption="Beskrivende undertittel info"/>
+   </misc>
+    
+  </presentation_settings>
+
+  <presentation_helper title="Presentasjons hjelper">
+    <slides head1="Tittel" head2="ID" head3="Tekst"/>
+    <modes caption="Modus">
+      <normal caption="[N] Normal"/>
+      <black caption="[K] Sort"/>
+      <white caption="[W] Hvit"/>
+      <logo caption="[L] Logo"/>
+      <hidden caption="[H] Skjult"/>
+      <frozen caption="[F] Fryst"/>
+    </modes>
+    <actions caption="Handlinger">
+      <alert caption="[A] Meldinger">Ny melding </alert>
+      <quick_song caption="[Q] Legg til sang"/>
+      <scripture caption="[S] Bibeltekst"/>
+      <full_screen caption="[M] Full Skjerm"/>
+      <normal_screen caption="[M] Normal Skjerm"/>
+      <return caption="[Esc] Lukk"/>
+    </actions>
+    <exit caption="Vil du lukke Presentasjonen?"/>
+    <loop caption="Loop"/>
+    <keys>- Knapper -
+Pil opp: Neste
+Pil ned: Forrige
+Pil Høyre: Neste seksjon
+Pil venstre: Forrige seksjon
+1-9: Vers
+C: Refreng
+P: Pre-refreng
+B: Bridge
+T: Tag</keys>
+  </presentation_helper>
+
+  <help_topics title="Hjelpe emner">
+    <tabs head1="Presentasjons Knapper" head2="Akkorder/Tekst Format" head3="Presentasjons område" head4="Lukk"/>
+    <print caption="Skriv ut"/>
+  </help_topics>
+
+  <font_selection title="Skrift type valg">
+    <face caption="Skrift type"/>
+    <size caption="Størrelse"/>
+    <color caption="Farge"/>
+    <bold caption="Fet"/>
+    <italic caption="Kursiv"/>
+    <underline caption="Undertittel"/>
+    <border caption="Kant"/>
+    <shadow caption="Skygge"/>
+    <fill caption="Fil"/>
+  </font_selection>
+
+  <print_preview title="Forhåndsvisning">
+    <first caption="&lt;&lt;"/>
+    <previous caption="&lt;"/>
+    <next caption="&gt;"/>
+    <last caption="&gt;&gt;"/>
+    <zoom_in caption="-"/>
+    <zoom_out caption="+"/>
+    <pages caption="%1 of %2"/>
+    <print_setup caption="Utskrifts innstillinger"/>
+    <print caption="Skriv ut"/>
+    <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+    <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+    </print_preview>
+    
+<print>
+     <continued caption="(fortsettelse)"/>
+     <toc caption="Innholdsfortegnelse"/>
+     <categorized caption="Kategorisert"/>
+     <alphabetical caption="Alfabetisk"/>
+     <copyright caption="Copyright"/>
+     <page caption="Side %1"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+  </print>
+ 
+<songml>
+     <page caption="Side"/>
+     <capo caption="Capo"/>
+     <copyright caption="Copyright"/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Pre-refreng"/>
+     <chorus caption="Refreng"/>
+     <bridge caption="Bridge"/>
+     <tag caption="Tag"/>
+     <verse caption="Vers"/>
+     <author caption=""/>
+     <hymn_number caption="Hymn Numer"/>
+     <ccli_number caption="CCLI Song #"/>
+     <ccli_license caption="CCLI Lisens #"/>
+     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
+     <separator caption="|NL|"/>
+  </songml>
+  
+ 
+  <style_editor title="Stil redigering">
+    <fonts_and_alignment caption="Skrift type og justering">
+      <title caption="Tittel"/>
+      <subtitle caption="Undertittel"/>
+      <body caption="Hoved tekst"/>
+      <align caption="Justering"/>
+      <subtitles caption="Sang undertittler"/>
+   </fonts_and_alignment>
+      <background caption="Bakgrunn">
+      <color caption="Farge"/>
+      <image caption="Bilde"/>
+      <position caption="Posisjon">
+          <row0 caption="Strekk"/>
+          <row1 caption="Senter"/>
+          <!-- <row2 caption="Tile"/> -->
+     </position>
+      <trim_bottom caption="*Trim Bunnen"/>
+      <pixels caption="px"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </background>
+    <trim_note caption="*Kutter av bunnen av en bakgrunn for å skjule vannmerker, web side adresser, etc. For å ungå forstyrrelse, dette trimmer også fra siden for å konpansere."/>
+  </style_editor>
+
+  <song_lookup title="Sang oppslag">
+    <header caption="Klikk på sangtittelen på listen under og klikk på 'Legg til' knappen for å legge til en sang. Du kan også  begynne å skrive inn sang tittelen og trykke på 'Legg til' knappen."/>
+    <no_selection>Du har ikke valgt en sang.</no_selection>
+    <folder caption="Velg mappe"/>
+  </song_lookup>
+
+  <scripture_lookup title="Slå opp bibelvers">
+    <lookup caption="Hurtig oppslag">
+      <reference caption="Referanse"/>
+      <lookup caption="Slå opp"/>
+      <example caption="Eks: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
+    </lookup>
+    <version caption="Versjon"/>
+    <verses_per_slide caption="Vers per lysbilde.">
+      <one caption="1"/>
+      <two caption="2"/>
+      <three caption="3"/>
+    </verses_per_slide>
+    <format caption="Format">
+      <paragraph caption="Avsnitt"/>
+      <verse caption="Vers"/>
+    </format>
+    <bad_reference>
+      <empty>Dårlig referanse: referansen var tom.</empty>
+      <book>Dårlig referanse: kunne ikke finne vers.</book>
+      <version>Dårlig referanse: '%1' Versjonen kunne ikke bli funnet</version>
+      <chapter>Dårlig referanse : Kunne ikke finne kapittel '%1'.</chapter>
+      <verse>Dårlig referanse: kunne ikke finne vers '%1'.</verse>
+      <verse_range>Dårlig referanse:  'til' verset må være høyere en 'fra' verset.</verse_range>
+    </bad_reference>
+    <colon caption=":"/>
+    <dash caption="-"/>
+    <search caption="link(shared/search/@caption)"/>
+    <insert caption="link(shared/insert/@caption)"/>
+  </scripture_lookup>
+
+  <module>
+    <read_error>Kunne ikke lese fil, eller ugyldig filnavn.</read_error>
+    <format_error>ugyldig modul format.</format_error>
+    <move_error>Error med å flytte modul fil. Venligst bekreft at adressen er '%1'.</move_error>
+    <rename_error>Error med å gi nytt navn til modul fil. Venligst bekreft at du skrev inn '%1'.</rename_error>
+    <success>Modul ble hentet suksesfult.</success>
+    <file_type>OpenSong Moduler(*.xmm)</file_type>
+  </module>
+
+  <import_from_ccli title="Importer fra CCLI">
+    <user_id caption="Bruker ID"/>
+    <password caption="Passord"/>
+    <for caption="Søk etter"/>
+    <songs head1="Te" head2="Sa" head3="Le" head4="Tittel" head5="Forfatter"
+      head6="Katalog" head7="AKA" head8="Nøkkel linje" head9="Nøkkel" head10="CCLI #"/>
+    <by caption="Av">
+      <title_and_aka caption="Tittel og AKA"/>
+      <title caption="Tittel"/>
+      <lyrics caption="Tekst"/>
+      <author caption="Forfatter"/>
+      <catalog caption="Katalog"/>
+      <theme caption="Tema"/>
+      <ccli caption="CCLI #"/>
+    </by>
+    <filter caption="Filter">
+      <all caption="Alt"/>
+      <lead_sheets caption="Sang ark"/>
+      <sound_samples caption="Lyd klipp"/>
+    </filter>
+    <find caption="Finn"/>
+    <previous_page caption="Forrige side"/>
+    <next_page caption="Neste side"/>
+    <page caption="Side"/>
+    <of_pages caption="av%1"/>
+    <import caption="Importer"/>
+    <errors>
+      <no_data>Ingen data ble funnet. Venligst sjekk søke ordene og ditt CCLI ID/passord .</no_data>
+      <bad_html>En feil har opstot i analysen av HTML. Kontakt OpenSong technical support.</bad_html>
+      <no_results>Ingen resultater.</no_results>
+      <no_headers>Ingen overskrifts data ble funnet. Venligst sjekk søke ordene og ditt CCLI ID/passord.</no_headers>
+      <no_connect>Kunne ikke kobles til CCLI. Venligst prøv igjenn senere.</no_connect>
+      <already_exists>Sangen eksisterer allerede.</already_exists>
+    </errors>
+  </import_from_ccli>
+
+  <find_image title="Finn bilde"/>
+  <input_box title="OpenSong"/>
+
+  <theme_list>
+    <option name="Kristus: Egenskaper"/>
+    <option name="Kristus:Fødsel"/>
+    <option name="Kristus: Død"/>
+    <option name="Kristus: Makt\ Ære"/>
+    <option name="Kristus: Kjærlighet \ nåde"/>
+    <option name="Kristus: Helbredelse"/>
+    <option name="Kristus: Gjennkomst"/>
+    <option name="Kristus: Seier"/>
+    <option name="Kirke: Trofasthet\lydighet"/>
+    <option name="Kirke: Land"/>
+    <option name="Kirke: Liv etter døden\ himmelen"/>
+    <option name="Kirke: Evangelisme"/>
+    <option name="Kirke: Familie\fellesskap"/>
+    <option name="Kirke Fellesskap m\ Gud"/>
+    <option name="Kirke: Renhet\ Hellighet"/>
+    <option name="Kirke: Frelse"/>
+    <option name="Kirke: fornyelse"/>
+    <option name="Kirke: Tjeneste"/>
+    <option name="Kirke: Åndelig sult"/>
+    <option name="Frukt: Tro \ Håp"/>
+    <option name="Frukt: Kjærlighet"/>
+    <option name="Frukt: Glede"/>
+    <option name="Frukt: Fred"/>
+    <option name="Frukt: Godhet"/>
+    <option name="Frukt: Ydmykhet"/>
+    <option name="Gud: Egenskaper"/>
+    <option name="Gud: Skapelse"/>
+    <option name="Gud: Far"/>
+    <option name="Gud: Omsorg"/>
+    <option name="Gud: Hellig ånd"/>
+    <option name="Gud: Hellighet"/>
+    <option name="Gud: Kjærlighet \ nåde"/>
+    <option name="Gud: Styrke"/>
+    <option name="Gud: Løfer"/>
+    <option name="Gud: Seier"/>
+    <option name="Gud: Ord"/>
+    <option name="Lovsang: Tilit"/>
+    <option name="Lovsang: Åpning"/>
+    <option name="Lovsang: Feiring"/>
+    <option name="Lovsang: Erklæring"/>
+    <option name="Lovsang: Fortrolighet"/>
+    <option name="Lovsang: Invitasjon"/>
+    <option name="Lovsang: Lovprisning"/>
+    <option name="Lovsang: Bønn"/>
+    <option name="Lovsang: motak"/>
+    <option name="Lovsang: Takk"/>
+  </theme_list>
+
+  <tempo_list>
+    <option name="Veldig fort"/>
+    <option name="Fort"/>
+    <option name="Normalt"/>
+    <option name="Sakte"/>
+    <option name="Veldig sakte"/>
+  </tempo_list>
+
+  <time_sig_list>
+    <option name="2/4"/>
+    <option name="3/4"/>
+    <option name="4/4"/>
+    <option name="3/8"/>
+    <option name="6/8"/>
+  </time_sig_list>
+
+  <style_preview>
+    <slide_groups>
+      <slide_group name="Eksempel tittel" type="Egendefinert" seconds="0" loop="false">
+        <title>Eksempel Tittel</title>
+        <subtitle>Eksempel undertittel</subtitle>
+        <notes>Eksempel noteter</notes>
+        <slides>
+          <slide>
+            <body>Dette er et eksempel lysbilde.
+Dette er hoved teksten.
+Klikk på dette lysbildet for å redigere stilen..</body>
+          </slide>
+        </slides>
+      </slide_group>
+    </slide_groups>
+  </style_preview>
+  
+
+ <subtitles caption="Undertittler" head1="Sorter" head2="Enabled" head3="Beskrivelse">
+        <row0 caption="Copyright|copyright"/>
+        <row1 caption="Forfatter|forfatter"/>
+        <row2 caption="Hymn Nummer|hymn_nummer"/> 
+        <row3 caption="CCLI Sang Nummer|ccli_number"/> 
+        <row4 caption="CCLI Lisens Number|ccli_lisens"/>
+</subtitles>
+      
+  <shared>
+    <ok caption="OK"/>
+    <cancel caption="Avbryt"/>
+    <yes caption="Ja"/>
+    <no caption="Nei"/>
+    <browse caption="Bla igjennom"/>
+    <add caption="Legg til"/>
+    <done caption="Ferdig"/>
+    <untitled caption="Uten navn"/>
+    <click_to_change caption="Klikk for å endre"/>
+    <right_click_to_clear caption="Høyre klikk for å tømme"/>
+    <insert caption="Sett inn"/>
+    <close caption="Lukk"/>
+    <search caption="Søk"/>
+  </shared>
+
+  <questions>
+    <new_name caption="Venligst skriv inn et navn:"/>
+    <rename caption="Venligst skriv inn et nytt navn for '%1':"/>
+    <save caption="Vil du lagre endringene i '%1'?"/>
+    <delete caption="Er du sikker på at du vil slette '%1'?"/>
+    <clear caption="Er du sikker på at du vil tømme dette??"/>
+    <changed caption="Denne sangen er endret, vil du lagre?"/>
+  </questions>
+
+  <about>
+    <copyright>Copyright</copyright>
+    <gpl>Dette programmet er utgitt under GPL.</gpl> 
+    <web>Besøk http://www.opensong.org/ for mer informasjon.</web>
+    <translating>for å oversette OpenSong,så må du kopiere   'English' filen i 'OpenSong Languages' mappen og gi den et nytt navn. Oversett alt i filen bortset fra tagene og atributer navnene. Så sender du den nye filen til translator@opensong.org  så vil vi inkludere den i den ofesielle publiseringen.</translating>
+    <created_with_opensong>Laget ved hjelp av OpenSong</created_with_opensong>
+  </about>
+
+  <folderdb_errors>
+    <error code="1">Mappen '%1' Eksisterer allerede.</error>
+    <error code="2">Kan ikke oprette mappe '%1'.</error>
+    <error code="3">Filen '%1' eksisterer allerede.</error>
+    <error code="4">Kunne ikke finne adressen til den nye filen  '%1'.</error>
+    <error code="5">Kunne ikke bli lagt i main mappen '%1'.</error>
+    <error code="6">Finner ikke mappe '%1'.</error>
+    <error code="7">Du kan ikke slette mappen'%1'.</error>
+    <error code="8">Fant ikke fil '%1'.</error>
+    <error code="9">kan ikke slette fil '%1'.</error>
+    <error code="10">Du kan ikke gi nytt navn til filen '%2'.</error>
+    <error code="11">Mappen '%1' er ikke tom.</error>
+    <error code="12">Kan ikke flytte filen '%1' til '%2'.</error>
+  </folderdb_errors>
+
+  <errors>
+    <empty_group>Group '%1' må inneholde minst et lysbilde.</empty_group>
+    <unreadable_image>Kunne ikke lese bildefilen '%1'.</unreadable_image>
+    <end_of_songs>Enden av sangen er nådd.</end_of_songs>
+    <already_exists>'%1' eksisterer allerede.</already_exists>
+    <bad_format>'%1' inneholder dårlig formatering. Hopper over...</bad_format>
+    <no_songs>Det er ingen sanger i sang listen.</no_songs>
+    <no_multi_screen>To skjermer ble ikke funnet.</no_multi_screen>
+    <bad_file_name>Ugyldig fil navn '%1'.</bad_file_name>
+    <internal>Internal error. Kontakt technical support.</internal>
+  </errors>
+  <open_titles>
+    <audio>Velg en lydfil som du vill åpne.</audio>
+  </open_titles>  
+
+</language>

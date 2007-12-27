@@ -2018,13 +2018,12 @@ Module SongML
 		  // 17 Sep 2006: I18N the chords by putting them in the translator.
 		  //-
 		  
-		  Dim chords(12) As String
+		  'Dim chords(12) As String
 		  Dim base, bass As String
 		  Dim i, strlen As Integer
 		  Dim hadPreDot As Boolean
-		  
-		  strlen = Len(chord)
-		  If strlen <= 0 Then Return ""
+		  Dim components() As String
+		  Dim newChord As String = ""
 		  
 		  If Len(SharpChords(1)) < 1 Then
 		    SharpChords = Split(App.T.Translate("songml/sharpchords"), ",")
@@ -2037,33 +2036,76 @@ Module SongML
 		    AltFlatChords = Split(App.T.Translate("songml/altflatchords"), ",")
 		  End If
 		  '--
+		  If Chords Is Nil Then
+		    Chords = LoadChordDict
+		  End If
 		  
 		  If Left(chord, 1) = "." Then
-		    hadPreDot = True
+		    newChord = "."
 		    chord = Mid(chord, 2)
 		  End If
 		  
-		  ' Calculate base chord
-		  If strlen >= 2 Then
-		    base = Mid(chord, 2, 1)
-		    If base = "#" Or base = "b" Then
-		      base = Left(chord, 1) + base
-		    Else
-		      base = Left(chord, 1)
-		    End If
-		  Else
-		    base = Left(chord, 1)
+		  strlen = Len(Trim(chord))
+		  If strlen <= 0 Then Return newChord
+		  
+		  components = split(chord, "/")
+		  If UBound(components) > 0 Then
+		     bass = components(UBound(components))
+		    components.Remove UBound(components)
 		  End If
-		  
-		  'If by > 0 Then
-		  'transposingUp = True
+		  base = Join(components, "/")
+		  ' Calculate base chord
+		  'If strlen >= 2 Then
+		  'base = Mid(chord, 2, 1)
+		  'If base = "#" Or base = "b" Then
+		  'base = Left(chord, 1) + base
 		  'Else
-		  'transposingUp = False
+		  'base = Left(chord, 1)
 		  'End If
-		  
+		  'Else
+		  'base = Left(chord, 1)
+		  'End If
+		  '
+		  ''If by > 0 Then
+		  ''transposingUp = True
+		  ''Else
+		  ''transposingUp = False
+		  ''End If
+		  '
 		  If by < 0 Then by = by + 12
 		  
 		  Dim which As Integer
+		  Dim suffix As String
+		  
+		  Try
+		    which = (ChordDegree(base, Chords, suffix) + by) Mod 12
+		    If which = 0 Then which = 12
+		  Catch OutOfBoundsException
+		    Return newChord + "!" + chord
+		  End Try
+		  
+		  If sharps Then
+		    newChord = newChord + SharpChords(which) + suffix
+		  Else
+		    newChord = newChord + FlatChords(which) + suffix
+		  End If
+		  
+		  If bass.Len > 0 Then
+		    Try
+		      which = ChordDegree(bass, Chords, suffix)
+		    Catch OutOfBoundsException
+		      Return newChord + "/!" + bass
+		    End Try
+		    If sharps Then
+		      newChord = newChord + "/" + SharpChords(which) + suffix
+		    Else
+		      newChord = newChord + "/" + FlatChords(which) + suffix
+		    End If
+		  End If
+		  
+		  Return newChord
+		  
+		  //---------------------------------------------
 		  
 		  ' Search for sharps
 		  which = 1
@@ -2516,6 +2558,93 @@ Module SongML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function MakeChordDict(map As XmlNode) As Dictionary
+		  //++
+		  // Given a mapping of chord names to scale degrees in XML,
+		  // return a Dictionary with the names as the key
+		  //--
+		  
+		  Dim d As New Dictionary
+		  Dim chordList As XmlNodeList
+		  Dim chord As XmlNode
+		  Dim i As Integer
+		  Dim cnt As Integer
+		  Dim chordName As String
+		  Dim chordDegree As Integer
+		  
+		  chordList = map.Xql("chord")
+		  
+		  cnt = chordlist.Length - 1
+		  
+		  For i = 0 To cnt
+		    chord = chordList.Item(i)
+		    chordName = chord.GetText
+		    chordDegree = Val(chord.GetAttribute("degree"))
+		    d.Value(chordName) = chordDegree
+		  Next
+		  
+		  Return d
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function ChordDegree(chordText As String, chordMap As Dictionary, ByRef remainder As String) As Integer
+		  //++
+		  // Determine the "degree" (1-12) of a chord
+		  // using the chordMap dictionary.
+		  // "remainder" is anything left over of the chord after
+		  // determining the degree.  (i.e., using English spellings,
+		  // C#7(b9) would return a value of 2 and "7(b9)" in remainder)
+		  //--
+		  
+		  Dim degree As Integer = 0
+		  
+		  For Each chordKey As String in chordMap.Keys
+		    If Left(chordText, chordKey.Len) = chordKey Then
+		      remainder = Mid(chordText, chordKey.Len + 1)
+		      degree = chordMap.Value(chordKey).IntegerValue
+		      If remainder.Len > 0 Then
+		        If Left(remainder, 1) = "b" Then
+		          degree = degree - 1
+		          remainder = Mid(remainder, 2)
+		        ElseIf Left(remainder, 1) = "#" Then
+		          degree = degree + 1
+		          remainder = Mid(remainder, 2)
+		        End If
+		      End If
+		      Exit For
+		    End If
+		  Next
+		  If degree <= 0 Then degree = degree + 12
+		  If degree > 12 Then degree = degree Mod 12
+		  
+		  If degree = 0 Then // Couldn't locate
+		    Dim e As New OutOfBoundsException
+		    e.Message = "Unable to find chord " + chordText + " in chord table"
+		    Raise e
+		  End If
+		  
+		  Return degree
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function LoadChordDict() As Dictionary
+		  //++
+		  // Hardwired for testing
+		  //--
+		  
+		  Dim xDoc As XmlDocument
+		  
+		  xDoc = New XmlDocument
+		  
+		  xDoc.LoadXml(App.AppFolder.Child("OpenSong Settings").Child("chord.xml"))
+		  
+		  Return MakeChordDict(xDoc.DocumentElement.FirstChild)
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h21
 		Private AltFlatChords(12) As string
@@ -2531,6 +2660,10 @@ Module SongML
 
 	#tag Property, Flags = &h21
 		Private SharpChords(12) As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Chords As Dictionary
 	#tag EndProperty
 
 

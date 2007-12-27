@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<music>
+    <chords style="English" flat="b" sharp="#" position="post">
+        <chord degree="1" cansharp="True" canflat="True">C</chord>
+        <chord degree="3" cansharp="True" canflat="True">D</chord>
+        <chord degree="5" cansharp="True" canflat="True">E</chord>
+        <chord degree="6" cansharp="True" canflat="True">F</chord>
+        <chord degree="8" cansharp="True" canflat="True">G</chord>
+        <chord degree="10" cansharp="True" canflat="True">A</chord>
+        <chord degree="12" cansharp="True" canflat="True">B</chord>
+    </chords>
+    <chords style="Spanish" flat="b" sharp="#" position="post">
+        <chord degree="1" cansharp="True" canflat="True">Do</chord>
+        <chord degree="3" cansharp="True" canflat="True">Re</chord>
+        <chord degree="5" cansharp="True" canflat="True">Mi</chord>
+        <chord degree="6" cansharp="True" canflat="True">Fa</chord>
+        <chord degree="8" cansharp="True" canflat="True">Sol</chord>
+        <chord degree="10" cansharp="True" canflat="True">La</chord>
+        <chord degree="12" cansharp="True" canflat="True">Si</chord>
+    </chords>
+    <chords style="German" flat="b" sharp="#" position="post">
+        <chord degree="1" cansharp="True" canflat="True">C</chord>
+        <chord degree="3" cansharp="True" canflat="True">D</chord>
+        <chord degree="5" cansharp="True" canflat="True">E</chord>
+        <chord degree="6" cansharp="True" canflat="True">F</chord>
+        <chord degree="8" cansharp="True" canflat="True">G</chord>
+        <chord degree="10" cansharp="True" canflat="True">A</chord>
+        <chord degree="12" cansharp="False" canflat="True">B</chord>
+        <chord degree="12" cansharp="True" canflat="False">H</chord>
+    </chords>
+</music>

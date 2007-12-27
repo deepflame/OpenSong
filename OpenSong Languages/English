@@ -677,10 +677,14 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
      <separator caption="|NL|"/>
      <!--The leading comma is needed for internal data structure reasons.-->
-     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
-     <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
-     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
-     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+     <sharpchords style="English" sharpsign="#" flatsign="b" position="post">,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
+     <altsharpchords style="English" sharpsign="#" flatsign="b" position="post">,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
+     <flatchords style="English" sharpsign="#" flatsign="b" position="post">,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
+     <altflatchords style="English" sharpsign="#" flatsign="b" position="post">,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+     <sharpchords style="Spanish" sharpsign="#" flatsign="b" position="post">,Do,Do#,Re,Re#,Mi,Fa,Fa#,Sol,Sol#,La,La#,Si</sharpchords>
+     <altsharpchords style="Spanish" sharpsign="#" flatsign="b" position="post">,Si#,Do#,Re,Re#,Mi,Mi#,Fa#,Sol,Sol#,La,La#,Si</altsharpchords>
+     <flatchords style="Spanish" sharpsign="#" flatsign="b" position="post">,Do,Reb,Re,Mib,Mi,Fa,Solb,Sol,Lab,La,Sib,Si</flatchords>
+     <altflatchords style="Spanish" sharpsign="#" flatsign="b" position="post">,Do,Reb,Re,Mib,Fab,Fa,Solb,Sol,Lab,La,Sib,Dob</altflatchords>
   </songml>
   
   <smartml>
@@ -725,6 +729,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <folder caption="Select Folder"/>
     <preview caption="Song Preview"/>
     <lookup caption="Quick Lookup"/>
+    <songs head1="Song Name" head2="Folder"/>
   </song_lookup>
 
   <song_activity title="Song Activity Log">
@@ -988,6 +993,7 @@ StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
 iDeclare (http://www.declaresub.com/iDeclare
+SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/)
 The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
   </about>
 

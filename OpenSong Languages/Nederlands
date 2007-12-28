@@ -1,5 +1,5 @@
-ï»¿<?xml version="1.0" encoding="UTF-8"?>
-<language name="Nederlands" author="Gert Vrieling" version="1.0">
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<language name="Nederlands" author="Gert Vrieling" version="1.2.0">
 
   <load_settings>
     <checking_folders>Maken / Controleren documenten mappen</checking_folders>
@@ -75,7 +75,7 @@
     <copyright caption="Copyright">Geef het copyright van het geselecteerde lied.</copyright>
     <ccli caption="CCLI #">Geef het CCLI nummer van het geselecteerde lied.</ccli>
     <hymn_number caption="Lied #">Geef het nummer van het geselecteerde lied.</hymn_number>
-    <presentation caption="Presentatie">Creï¿½er de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
+    <presentation caption="Presentatie">Creëer de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
     <lyrics caption="Noten/Muziek">Wijzigen liederen met sectie regels, commentaar regels, notenbalken etc.</lyrics>
     <insert caption="Invoegen"/>
       <ins_section caption="Sectie">Secties worden gebruikt om een lied in meerdere delen te verdelen.
@@ -112,9 +112,9 @@
     <aka caption="AKA">Geeft de algemene aangepaste titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
     <style caption="Aangepaste Stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
-    <user1 caption="Door gebruiker gedefinieerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
-    <user2 caption="Door gebruiker gedefinieerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
-    <user3 caption="Door gebruiker gedefinieerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+    <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
+    <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
+    <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
   <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
@@ -142,7 +142,7 @@
       <add_song caption="Lied">Voegt een lied toe aan het huidige project. De totale lijst liederen die beschikbaar zijn wordt hier weergegeven om te kiezen.</add_song>
       <add_scripture caption="Bijbeltekst">Voegt een Bijbeltekst toe aan het huidige project. Hier wordt de totale lijst met Bijbelteksten weer gegeven om te kiezen.</add_scripture>
       <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl. Een aangepaste dia kan een serie dia 's bevatten.</add_slides>
-      <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definiï¿½ren of terug keren naar een vorige stijl.</add_style>
+      <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
       <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Voegt een PowerPoint presentatie toe aan het huidige project. Dit is te gebruiken om een PowerPoint presentatie te tonen vanuit OpenSong.</add_powerpoint>
     </new_item>
@@ -159,19 +159,18 @@
       <scripture caption="(bijbelteksten)"/>
       <style caption="(stijl)">-- Wijzig Stijl --</style>
       <revert caption="(stijl)">-- Terug naar vorige Stijl --</revert>
+      <defaultstyle caption="(stijl)">-- Geexporteerde Stijl --</defaultstyle>
     </items>
     <untitled caption="Geen titel"/>
-
     <errors>
       <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
     </errors>
     <messages>
-      <export_complete>&quot;%1&quot; geÃ«xporteerd naar
+      <export_complete>&quot;%1&quot; geexporteerd naar
 %2
       </export_complete>
     </messages>
   </sets_mode>
-
 
   <slide_editor>
     <header caption="Wijzigen dia"/>
@@ -181,6 +180,7 @@
     <slides caption="Dia's">Bevat de bodies van de actuele dia's in de aangepaste dia.</slides>
     <presentation caption="Aangepaste presentatie volgorde">Overrules de presentatievolgorde in het liederen bestand</presentation>
     <origorder caption="Originele presentatie volgorde">Presentatievolgorde in het liederen bestand</origorder>       
+    <folder caption="te vinden in Liederenmap">Map waar het geselecteerde lied staat</folder>
     <notes caption="Opmerkingen">Deze opmerkingen verschijnen in het Presentatie Hulp schermgedurende het weergeven op meerdere schermen.</notes>
     <insert caption="Invoegen"/>
       <ins_slide caption="Dia">Staat toe bij het maken van meerdere dia's dat alle dia's een gelijkluidende titel, subtitel, stijl, en/of auto-uitgebreide setting krijgen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_slide>
@@ -221,7 +221,6 @@
       <presentation caption="link(general_song_editor/presentation/@caption)"/>
       <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
       <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
-
       <themes caption="link(advanced_song_editor/themes/@caption)"/>
       <capo caption="link(advanced_song_editor/capo/@caption)"/>
       <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
@@ -271,7 +270,7 @@
     <edit caption="_Wijzigen">
       <undo caption="_Ongedaan maken"/>
       <cut caption="_Knippen"/>
-      <copy caption="K_opiï¿½ren"/>
+      <copy caption="K_opieren"/>
       <paste caption="_Plakken"/>
       <clear caption="_Leegmaken"/>
       <find caption="_Zoeken"/>
@@ -298,21 +297,20 @@
   </main_menu>
 
   <general_settings title="Algemene instellingen">
-<!--  V1.2 Changes-->
-    <general caption="Algemeen" head1="Basic" head2="Special">
+    <general caption="Algemeen" head1="Basis" head2="Extra">
       <ccli caption="CCLI Licentie #"/>
       <version_check caption="Controleer voor nieuwere versies bij starten."/>
       <language caption="Taal"/>
       <startmode caption="Start Venster">
-	      <songs caption="Liederen"/>
-	      <sets  caption="Projecten"/>
+	<song caption="Liederen"/>
+	<set  caption="Projecten"/>
       </startmode>
     </general>
     <proxy caption="Proxy">
       <host caption="Host"/>
       <port caption="Poort"/>
     </proxy>
-    <user_defined caption="Gebruiker gedefinieerd">
+    <user_defined caption="Gebruiker gedefiniëerd">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -326,25 +324,29 @@
       <buttons caption="Knoppen"/>
       <large_headings caption="Grote koppen"/>
       <newpaint caption="Gebruik nieuwe stijl"/>
-     </fonts>
+    </fonts>
     <documents_folder caption="Documenten map">
       <warning caption="Wees voorzichtig met het gebruik; forceert een herstart van het programma."/>
       <default caption="Standaard"/>
       <custom caption="Aangepast"/>
       <message>OpenSong wordt afgesloten. Klik OK en start OpenSong opnieuw. Indien nodig verplaats de OpenSong documenten eerst naar de nieuwe locatie.</message>
+      <changed>U selecteerde een aangepaste locatie voor de Documents map, maar klikte niet op de Wijzig knop.  Wilt u de nieuwe locatie gebruiken?</changed>
       <change caption="Wijzig"/>
       <oldfolderdb caption="gebruik oude (pre-V1.1) file cache"/>
-    </documents_folder>
-<!--    V1.2 Changes-->
+      </documents_folder>
     <logging caption="Log settings">
-      <append caption="Append to log file"/>
-      <console caption="Log to system console"/>
-      <level caption="Log level" disabled="Disabled"/>
-      <dialog caption="Please select a file to store the log"
-              title="Select log file"/>
+      <append caption="toevoegen aan log file"/>
+      <console caption="Log naar  system console"/>
+      <level caption="Log niveau" disabled="Uitgeschakeld"/>
+      <dialog caption="Selecteer een log file"
+              title="Selecteer log file"/>
     </logging>
-
-  </general_settings>
+    <newpaint caption="Gebruik nieuwe stijl"/>
+    <startmode caption="Start scherm">
+      <songs caption="Liederen"/>
+      <sets  caption="Projecten (Diensten)"/>
+    </startmode>
+    </general_settings>
 
   <print_settings title="Afdruk instellingen">
     <tabs head3="Marges" head1="Lettertype" head2="Layout"/>
@@ -385,7 +387,7 @@
         <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
     </settings>
     <style caption="Stijl">
-      <use_transitions caption="Gebruik Transitions"/>
+      <use_transitions caption="Gebruik Overgangen"/>
       <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
       <border_thickness caption="Dikte randen"/>
       <subtitles caption="Subtitels"/>
@@ -443,9 +445,8 @@
     </audio>
 
     <misc caption="Diversen">
-      <exit_prompt caption="Geef aan bij beeindiging"/>
+      <exit_prompt caption="Geef aan bij beëindiging"/>
     </misc>
-
   </presentation_settings>
 
   <presentation_helper title="Presentatie Hulp">
@@ -466,7 +467,7 @@
       <normal_screen caption="[M] Normaal Scherm"/>
       <return caption="[Esc] Terug"/>
     </actions>
-    <exit caption="Beeindig Presentatie?"/>
+    <exit caption="Beëindig Presentatie?"/>
     <loop caption="Loop"/>
     <keys>- Toetsen -
 Down: Volgende dia
@@ -488,7 +489,7 @@ T: Tag</keys>
 
 De presentaties worden bediend met de volgende toetsen:
 
-Esc Toets: 			Beeindigen presentatie
+Esc Toets: 			Beëindigen presentatie
 Pijltje naar boven of,
 8 op Nummerieke blok of, 
 Backspace: 			Ga naar de vorige dia.
@@ -544,8 +545,8 @@ Laten we elk type even nader bekijken...&lt;/h3&gt;
 
 &lt;h2&gt;Sectie Regels&lt;/h2&gt;&lt;h3&gt;
 
-Sectie regels worden gescheiden met [ en ]. Een "sectie"bevat alle regels die na deze sectie regel komen tot de volgende sectieregel of het einde van het lied.
-Secties worden niet getoond in de Presentatie, maar worden gebruikt om te detecteren hoe de volgorde van de dia's is. Iedere tekst tussen de [] is mogelijk, behalve de volgende die speciale effecten hebben:
+Sectie regels worden gescheiden met [ en ]. Een "sectie" bevat alle regels die na deze sectie regel komen tot de volgende sectieregel of het einde van het lied.
+Secties worden niet getoond in de Presentatie, maar worden gebruikt om te detecteren hoe de volgorde van de dia's is. Iedere tekst tussen de [ ] is mogelijk, behalve de volgende die speciale effecten hebben:
 
 &lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Coupletten. Op uitgeprinte sheets wordt dit teken "V" automatisch weggehaald en wordt het overgebleven nummer met een cirkel erom heen geprint. Voorbeelden: [V1], [V2], [V3].
 
@@ -580,7 +581,7 @@ Underscores worden vervangen door een gewoon "-" gecentreerd tussen de woord del
 
 &lt;h2&gt;Meerdere tekst regels voor 1 akkoord regel!?&lt;/h2&gt;&lt;h3&gt;
 
-Veel liedjes hebben meerdere coupletten die dezelfde akkoorden gebruiken. Beter dan herhalen van de akkoorden bij elk couplet, kunnen we ze groeperen per couplet regel inplaats van elk couplet (zoals bij een psalm). In dit geval laten we de tekstregel in plaats van een spatie beginnen met het couplet nummer. Letop dat de uitlijning van de meerdere couplettenregels met 1 akkoordenregel is lastiger. Een voorbeeld zoals het eruit kan zien:
+Veel liedjes hebben meerdere coupletten die dezelfde akkoorden gebruiken. Beter dan herhalen van de akkoorden bij elk couplet, kunnen we ze groeperen per couplet regel inplaats van elk couplet (zoals bij een psalm). In dit geval laten we de tekstregel in plaats van een spatie beginnen met het couplet nummer. Let op dat de uitlijning van de meerdere couplettenregels met 1 akkoordenregel lastiger is. Een voorbeeld zoals het eruit kan zien:
 
 &lt;b&gt;&lt;i&gt;(Probeer dit niet te zingen; de timing is slecht.)&lt;/i&gt;&lt;pre&gt;
 [V]
@@ -596,7 +597,7 @@ Veel liedjes hebben meerdere coupletten die dezelfde akkoorden gebruiken. Beter 
 3Why   are  we still         singing this song?
 4This  is   not the way that songs should sound.&lt;/pre&gt;
 &lt;/b&gt;
-Voor wat betreft de Presentatie, het eerste karakter van iedere tekstregel (i.e. 1, 2, 3, etc.) wordt toegevoegd aan de sectie waarin dit zich bevindt. Met adnere woorden, een sectie regel [V] met volgende tekstregels beginnend met 1, 2, 3, etc. zullen er uitzien als V1, V2, V3, etc.&lt;/h3&gt;
+Voor wat betreft de Presentatie, het eerste karakter van iedere tekstregel (i.e. 1, 2, 3, etc.) wordt toegevoegd aan de sectie waarin dit zich bevindt. Met andere woorden, een sectie regel [V] met volgende tekstregels beginnend met 1, 2, 3, etc. zullen er uitzien als V1, V2, V3, etc.&lt;/h3&gt;
 
 &lt;h2&gt;Opmerking regels&lt;/h2&gt;&lt;h3&gt;
 
@@ -610,7 +611,7 @@ Als een regel alleen 3 streepjes ("---") bevat, word de tekst geprint in een 2e 
     <presentation>
 &lt;h1&gt;OpenSong Presentatie Veld&lt;/h1&gt;&lt;h3&gt;
 
-Het presentatie veld bevat de lijst met secties die in een lied staan. Elke sectie worde gescheiden door een spatie. Bij voorbeeld:
+Het presentatie veld bevat de lijst met secties die in een lied staan. Elke sectie worden gescheiden door een spatie. Bij voorbeeld:
 &lt;b&gt;
 V1 C V2 C V3 C
 &lt;/b&gt;
@@ -665,9 +666,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <create_list caption="Lijst %1... wordt gemaakt"/>
      <uncategorized caption="Anders"/>
      <setlist caption="Liturgie">
-
       <date caption="Geprint "/>
-
      </setlist>
 </print>
  
@@ -713,7 +712,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <align caption="Uitlijning"/>
       <subtitles caption="Subtitel van het lied"/>
       <highlight_chorus caption="Laten oplichten van de refreintekst"/>
-      <descriptive_subtitle caption="Beschrijving subtitel"/>
+      <descriptive_subtitle caption="Gedetailleerde beschrijving in subtitel"/>
     </fonts_and_alignment>
     <background caption="Achtergrond">
       <color caption="Kleur"/>
@@ -723,18 +722,20 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
           <row1 caption="Centreren"/>
           <!-- <row2 caption="Tegel"/> -->
       </position>
-      <trim_bottom caption="*Haal spaties weg aan het einde"/>
+      <trim_bottom caption="*Spaties weg aan rand"/>
       <pixels caption="px"/>
       <click_to_change caption="link(gedeeld/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </background>
-    <trim_note caption="Verwijderd de onderzijde van de achtergrond om watermerken te verbergen, website urls, etc. Om verdraaiing te voorkomen, wordt er ook van de zijkanten iets weggehaald ter compensatie."/>
+    <trim_note caption="*Verwijderd de onderzijde van de achtergrond om watermerken te verbergen, website urls, etc. Om verdraaiing te voorkomen, wordt er ook van de zijkanten iets weggehaald ter compensatie."/>
   </style_editor>
 
   <song_lookup title="Liederen zoeken">
     <header caption="Om een lied toe te voegen, klik hieronder op de titel van het lied en klik op de 'Toevoegen' knop of begin met typen van de titel en geef Enter."/>
     <no_selection>U heeft geen lied geselecteerd.</no_selection>
     <folder caption="Kies map"/>
+    <preview caption="Lied Voorbeeld"/>
+    <lookup caption="Snel zoeken"/>
   </song_lookup>
 
   <scripture_lookup title="Bijbelteksten zoeken">
@@ -745,6 +746,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
     <version caption="Versie"/>
+    <select_file caption="Selecteer de Bijbelvertaling"/>
     <verses_per_slide caption="Bijbelvers per dia">
       <one caption="1"/>
       <two caption="2"/>
@@ -755,6 +757,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <verse caption="Vers"/>
     </format>
     <bad_reference>
+      <format>Controleer het formaat van de query probeer opnieuw.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
       <book>Foute referentie: kan het boek niet vinden.</book>
       <ambiguous>Bad reference: Meerdere boeken komen overeen '%1': %2</ambiguous>
@@ -767,6 +770,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <dash caption="-"/>
     <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <shownumbers caption="Toon vers nummers"/>
   </scripture_lookup>
 
   <module>
@@ -776,6 +780,8 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <rename_error>Fout bij hernoemen van het module bestand. Controleer of u schrijfrechten heeft voor '%1'.</rename_error>
     <success>Module succesvol geladen.</success>
     <file_type>OpenSong Modules (*.xmm)</file_type>
+    <generate_index>Genereer index voor Bijbelvertaling?</generate_index>
+    <generate_error>Fout bij genereren index; kunt u schrijven naar %1?</generate_error>
   </module>
 
   <import_from_ccli title="Importeren van CCLI">
@@ -814,7 +820,9 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     </errors>
   </import_from_ccli>
 
-  <find_image title="Zoek Image"/>
+  <find_image title="Zoek Image">
+    <parent caption="(Parent)"/>
+  </find_image>
   <input_box title="OpenSong"/>
 
   <theme_list>
@@ -928,6 +936,8 @@ Klik op de dia om de stijl te wijzigen.</body>
     <cut caption="Knippen"/>
     <copy caption="Kopieren"/>
     <paste caption="Plakken"/>
+    <select caption="Selecteren"/>
+    <exit_program caption="Afsluiten Programma"/>
   </shared>
 
   <questions>
@@ -941,15 +951,23 @@ Klik op de dia om de stijl te wijzigen.</body>
     <long_operation caption="Dit kan lang duren voor het klaar is. Doorgaan?"/>
     <generic_save caption="Wijzigingen opslaan?"/>
     <generic_save_explanation caption="ALs je niet opslaat, zullen de wijzigingen verloren gaan"/>
+    <set_changed caption="Huidige set is gewijzigd, wilt u deze opslaan?"/>
+    <select_docs_folder caption="Selecteer de OpenSong Documents map">Waar moeten de OpenSong bestanden (liederen en diensten) worden opgeslagen?</select_docs_folder>
   </questions>
 
   <about>
+    <additional>Additional development by:</additional>
     <copyright>Copyright</copyright>
     <gpl>Deze software is vrijgegeven onder de voorwaarden van het GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
-    <translating>Om OpenSong te vertalen, kopieer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
+    <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
     <created_with_opensong>Gemaakt met OpenSong</created_with_opensong>
-    <sources>OpenSong includes source code from</sources>
+    <sources>OpenSong includes source code from:
+StringUtils (http://www.strout.net/info/coding/rb/)
+HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
+REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
+iDeclare (http://www.declaresub.com/iDeclare
+The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
   </about>
 
   <folderdb_errors>
@@ -1000,19 +1018,35 @@ Klik op de dia om de stijl te wijzigen.</body>
     <docs_folder>Documenten map kan geen submap zijn van 'OpenSong Defaults'
 Tijdelijk gewwijzigd in: %1
 Wijzig de instellingen.</docs_folder>
+    <fileutils>
+       <destdoesnotexisterror>Bestand: %1 bestaat niet</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
+       <accessdenied>File protection error, access denied: %1</accessdenied>
+       <fileinuse>Bestand is in gebruik, error: %1
+(Is er een tweede versie van OpenSong aktief?)</fileinuse>
+       <filenotfound>Bestand: %1 niet gevonden</filenotfound>
+       <invalidname>Naam voor bestand: %1 niet toegestaan</invalidname>
+       <notenoughmemory>Geheugen probleem bij openen bestand %1
+Herstart OpenSong en probeer opnieuw.</notenoughmemory>
+       <unknownerror>Niet bekende fout bij openen bestand %1</unknownerror>
+       <notaregularfile>Verwacht %1 als bestand, niet als map.</notaregularfile>
+       <notafolder>Verwacht %1 als map, niet als bestand.</notafolder>
+    </fileutils>
+    <cclinotavailable>The CCLI website has changed significantly.
+This has broken Import function until a new interface can be used.
+In the meantime, please investigate the OpenSong Import utility as an option.
+The OpenSong development team members regret any inconvenience.
+    </cclinotavailable>
   </errors>
 
   <xml_errors>
-
-    <noattribute>Unable to find XML attribute '%1' in '%2'.</noattribute>
+    <noattribute>Kan XML attribuut '%1' niet vinden in '%2'.</noattribute>
   </xml_errors>
 
 
   <bible>
-
     <errors>
       <index_generation>Error maken index voor '%1.' Zoeken in de Bijbel wordt uitgezet.</index_generation>
-
       <loadxml>XML error laden %1
 .&#10; Error is '%2' op regel %3</loadxml>
 
@@ -1027,11 +1061,9 @@ Wijzig de instellingen.</docs_folder>
       <roman>Error omzetting Romeinse cijfers '%1': %2</roman>
 
       <save>Error opslaan gewijzigd bestand '%1.'</save>
-
     </errors>
 
     <messages>
-
       <bnames>Boek namen moeten worden toegevoegd aan deze vertaling.
 &#10;Kies de juiste taal voor de namen.</bnames>
       <save>Gewijzigd bestand opslaan?</save>
@@ -1074,7 +1106,7 @@ Wijzig de instellingen.</docs_folder>
 
   <progress_status>
     <folder>Caching map %1</folder>
-    <lead_sheets>Creï¿½ren uitgeprinte Sheets</lead_sheets>
+    <lead_sheets>Creëren uitgeprinte Sheets</lead_sheets>
     <process_themes>Verwerken thema's</process_themes>
     <process_songs>Verwerken liederen</process_songs>
     <export>Exporteren lied(eren)</export>

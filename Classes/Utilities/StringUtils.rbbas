@@ -2488,6 +2488,22 @@ Module StringUtils
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function Chop(s As String, stringToCut As String) As String
+		  // Chops 'stringToCut' off of s, if stringToCut is found at the end.
+		  // Useful for removing file extensions, trailing punctuation, etc.
+		  
+		  Dim cutLen As Integer = stringToCut.Len
+		  if Right(s, cutLen) = stringToCut then
+		    return s.Left( s.Len - cutLen )
+		  else
+		    return s
+		  end if
+		  
+		  
+		End Function
+	#tag EndMethod
+
 
 	#tag Note, Name = Contributors
 		

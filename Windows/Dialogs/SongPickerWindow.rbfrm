@@ -8,7 +8,7 @@ Begin Window SongPickerWindow
    Frame           =   1
    FullScreen      =   "False"
    HasBackColor    =   "False"
-   Height          =   486
+   Height          =   520
    ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1046
@@ -24,14 +24,14 @@ Begin Window SongPickerWindow
    Resizeable      =   "True"
    Title           =   "Song Lookup"
    Visible         =   "True"
-   Width           =   425
+   Width           =   436
    Begin ListBox lst_all_songs
       AutoDeactivate  =   "True"
       AutoHideScrollbars=   "True"
       Bold            =   "False"
-      ColumnCount     =   1
+      ColumnCount     =   2
       ColumnsResizable=   "False"
-      ColumnWidths    =   ""
+      ColumnWidths    =   "66%,*"
       ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
@@ -41,14 +41,14 @@ Begin Window SongPickerWindow
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
       GridLinesVertical=   0
-      HasHeading      =   "False"
+      HasHeading      =   "True"
       HeadingIndex    =   -1
       Height          =   222
       HelpTag         =   ""
       Hierarchical    =   "False"
       Index           =   -2147483648
       InitialParent   =   ""
-      InitialValue    =   ""
+      InitialValue    =   "Song	Path"
       Italic          =   "False"
       Left            =   12
       LockBottom      =   "False"
@@ -67,7 +67,7 @@ Begin Window SongPickerWindow
       Underline       =   "False"
       UseFocusRing    =   "True"
       Visible         =   "True"
-      Width           =   395
+      Width           =   406
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
       BehaviorIndex   =   0
@@ -85,7 +85,7 @@ Begin Window SongPickerWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   238
+      Left            =   249
       LockBottom      =   "True"
       LockLeft        =   "False"
       LockRight       =   "True"
@@ -94,7 +94,7 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   452
+      Top             =   486
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
@@ -113,7 +113,7 @@ Begin Window SongPickerWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   319
+      Left            =   330
       LockBottom      =   "True"
       LockLeft        =   "False"
       LockRight       =   "True"
@@ -122,7 +122,7 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   451
+      Top             =   485
       Underline       =   "False"
       Visible         =   "True"
       Width           =   69
@@ -140,8 +140,8 @@ Begin Window SongPickerWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   14
-      LockBottom      =   "False"
+      Left            =   12
+      LockBottom      =   "True"
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "False"
@@ -153,10 +153,10 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   283
+      Top             =   425
       Underline       =   "False"
       Visible         =   "True"
-      Width           =   100
+      Width           =   197
       BehaviorIndex   =   3
    End
    Begin PopupMenu pop_select_folder
@@ -172,9 +172,9 @@ Begin Window SongPickerWindow
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   "False"
-      Left            =   10
+      Left            =   12
       ListIndex       =   0
-      LockBottom      =   "False"
+      LockBottom      =   "True"
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "False"
@@ -182,7 +182,7 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   302
+      Top             =   444
       Underline       =   "False"
       Visible         =   "True"
       Width           =   206
@@ -201,8 +201,8 @@ Begin Window SongPickerWindow
       InitialParent   =   ""
       Italic          =   "False"
       Left            =   228
-      LockBottom      =   "False"
-      LockLeft        =   "False"
+      LockBottom      =   "True"
+      LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
@@ -213,10 +213,10 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   280
+      Top             =   422
       Underline       =   "False"
       Visible         =   "True"
-      Width           =   100
+      Width           =   171
       BehaviorIndex   =   5
    End
    Begin SEditField edt_quick_lookup
@@ -238,9 +238,9 @@ Begin Window SongPickerWindow
       Italic          =   "False"
       Left            =   228
       LimitText       =   0
-      LockBottom      =   "False"
-      LockLeft        =   "False"
-      LockRight       =   "False"
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "True"
       LockTop         =   "False"
       Mask            =   ""
       Multiline       =   "False"
@@ -255,7 +255,7 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   302
+      Top             =   444
       Underline       =   "False"
       UseFocusRing    =   "True"
       Visible         =   "True"
@@ -274,11 +274,11 @@ Begin Window SongPickerWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   16
-      LockBottom      =   "True"
-      LockLeft        =   "False"
+      Left            =   12
+      LockBottom      =   "False"
+      LockLeft        =   "True"
       LockRight       =   "False"
-      LockTop         =   "False"
+      LockTop         =   "True"
       Multiline       =   "False"
       Scope           =   0
       TabPanelIndex   =   0
@@ -287,10 +287,10 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   329
+      Top             =   289
       Underline       =   "False"
       Visible         =   "True"
-      Width           =   100
+      Width           =   204
       BehaviorIndex   =   7
    End
    Begin EditField edt_preview
@@ -305,17 +305,17 @@ Begin Window SongPickerWindow
       DataSource      =   ""
       Enabled         =   "True"
       Format          =   ""
-      Height          =   89
+      Height          =   104
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   10
+      Left            =   12
       LimitText       =   0
-      LockBottom      =   "False"
+      LockBottom      =   "True"
       LockLeft        =   "True"
       LockRight       =   "True"
-      LockTop         =   "False"
+      LockTop         =   "True"
       Mask            =   ""
       Multiline       =   "True"
       Password        =   "False"
@@ -329,11 +329,11 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   350
+      Top             =   309
       Underline       =   "False"
       UseFocusRing    =   "True"
       Visible         =   "True"
-      Width           =   397
+      Width           =   408
       BehaviorIndex   =   8
    End
    Begin StaticText txt_explanation_header
@@ -370,13 +370,76 @@ Begin Window SongPickerWindow
    Begin Timer timerLookup
       ControlOrder    =   10
       Index           =   -2147483648
-      Left            =   228
+      Left            =   443
       Mode            =   2
       Period          =   1500
       Scope           =   0
       TabPanelIndex   =   0
-      Top             =   23
+      Top             =   0
       BehaviorIndex   =   10
+   End
+   Begin SmartSplitter SmartSplitter1
+      AcceptFocus     =   ""
+      AcceptTabs      =   ""
+      AutoDeactivate  =   "True"
+      Backdrop        =   ""
+      ControlOrder    =   11
+      DisableLiveDrag =   0
+      doNotAttachEmbeddedControls=   0
+      Enabled         =   "True"
+      EraseBackground =   "True"
+      handleDimple    =   0
+      handleLarge     =   0
+      Height          =   9
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   12
+      LockBottom      =   "False"
+      LockLeft        =   "True"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      MaxLimit        =   0
+      MaxLimitOffset  =   0
+      MinLimit        =   0
+      MinLimitOffset  =   0
+      Scope           =   0
+      showWarningsDialogs=   0
+      StayProportional=   0
+      StopAtMaxOffset =   0
+      StopAtMinOffset =   0
+      TabPanelIndex   =   0
+      Top             =   278
+      UseFocusRing    =   "True"
+      Visible         =   "True"
+      Width           =   406
+      BehaviorIndex   =   11
+   End
+   Begin CanvasSmartSplitterDebugger CanvasSmartSplitterDebugger1
+      AcceptFocus     =   ""
+      AcceptTabs      =   ""
+      AutoDeactivate  =   "True"
+      Backdrop        =   ""
+      ControlOrder    =   12
+      debug           =   0
+      Enabled         =   "True"
+      EraseBackground =   "True"
+      Height          =   100
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   -71
+      LockBottom      =   ""
+      LockLeft        =   ""
+      LockRight       =   ""
+      LockTop         =   ""
+      Scope           =   0
+      TabPanelIndex   =   0
+      Top             =   -24
+      UseFocusRing    =   "True"
+      Visible         =   "True"
+      Width           =   54
+      BehaviorIndex   =   12
    End
 End
 #tag EndWindow
@@ -418,7 +481,14 @@ End
 
 	#tag Event
 		Sub Resized()
-		  HSizer.Resize
+		  'HSizer.Resize
+		  SmartSplitter1.behave
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resizing()
+		  SmartSplitter1.behave
 		End Sub
 	#tag EndEvent
 
@@ -483,6 +553,13 @@ End
 	#tag EndProperty
 
 
+	#tag Constant, Name = kListColumnPath, Type = Double, Dynamic = False, Default = \"1", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kListColumnSong, Type = Double, Dynamic = False, Default = \"0", Scope = Public
+	#tag EndConstant
+
+
 #tag EndWindowCode
 
 #tag Events lst_all_songs
@@ -532,6 +609,7 @@ End
 		  Const ASC_KEY_DOWN = 31
 		  Const ASC_KEY_UP = 30
 		  Const ASC_KEY_ESCAPE = 27
+		  Const ASC_KEY_BACKSPACE = 8
 		  
 		  Select Case Asc(key)
 		    '++JRC Make Num-pad Enter work again (bug #1803093)
@@ -588,10 +666,19 @@ End
 		  
 		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
 		  
-		  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: key = '" + key + "'"
-		  Key = ConvertEncoding(key, Encodings.UTF8)
-		  NewKey = ConvertEncoding(KeyedSearch + key, Encodings.UTF8)
-		  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: NewKey = " + NewKey
+		  App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: key = '" + key + "'", 5
+		  If Asc(Key) = ASC_KEY_BACKSPACE Then
+		    NewKey = StringUtils.Chop(KeyedSearch, 1)
+		    If NewKey.Len = 0 Then // Do nothing if the string is now empty
+		      KeyedSearch = ""
+		      edt_quick_lookup.Text = ""
+		      Return True
+		    End If
+		  Else
+		    Key = ConvertEncoding(key, Encodings.UTF8)
+		    NewKey = ConvertEncoding(KeyedSearch + key, Encodings.UTF8)
+		    App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: NewKey = " + NewKey, 5
+		  End If
 		  l = Len(NewKey)
 		  
 		  timerLookup.Reset
@@ -599,7 +686,7 @@ End
 		    SearchedEntry = ConvertEncoding(Left(Me.List(i), l), Encodings.UTF8)
 		    If SearchedEntry = NewKey Then
 		      Me.ListIndex = i
-		      App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: Found match index, value: " + str(i) + " " + Me.List(i)
+		      App.DebugWriter.Write "SongPickerWindow.lst_all_songs.KeyDown: Found match index, value: " + str(i) + " " + Me.List(i), 5
 		      edt_quick_lookup.Text = NewKey
 		      KeyedSearch = NewKey
 		      Return True
@@ -641,7 +728,31 @@ End
 #tag Events pop_select_folder
 	#tag Event
 		Sub Change()
+		  //++
+		  // December 2007, EMP
+		  //
+		  // Updated to show a second column with the folder name
+		  // Won't show if there is only one folder in the list
+		  //--
+		  Dim multipleFolders As Boolean = False
+		  Dim lastFolder As String
 		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
+		  End If
+		  For i As Integer = 0 To lst_all_songs.ListCount - 1
+		    lst_all_songs.Cell(i, kListColumnPath) = _
+		    StringUtils.Chop(lst_all_songs.CellTag(i, kListColumnSong).StringValue, "/")
+		    If i <> 0 Then
+		      If lst_all_songs.Cell(i, kListColumnPath) <> lastFolder Then
+		        multipleFolders = True
+		      End If
+		    Else
+		      lastFolder = lst_all_songs.Cell(i, kListColumnPath)
+		    End If
+		  Next
+		  If multipleFolders Then
+		    lst_all_songs.ColumnWidths = "66%,*"
+		  Else
+		    lst_all_songs.ColumnWidths = "100%,0"
 		  End If
 		  Globals.CurrentSongPickerFolder = Me.Text
 		End Sub
@@ -734,6 +845,22 @@ End
 	#tag Event
 		Sub Action()
 		  KeyedSearch = ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events SmartSplitter1
+	#tag Event
+		Sub Open()
+		  Me.attach(lst_all_songs)
+		  Me.attach(lbl_song_preview)
+		  Me.attach(edt_preview)
+		  Me.setAttachedControlShouldMove(lbl_song_preview, True)
+		  Me.setAttachedControlShouldResize(lbl_song_preview, False)
+		  Me.setAttachedControlShouldResize(lst_all_songs, True)
+		  Me.setAttachedControlShouldResize(edt_preview, True)
+		  Me.MinLimitOffset = ((edt_preview.Top + edt_preview.Height) - lst_all_songs.Top) \ 5
+		  Me.StopAtMinOffset = True
+		  Me.StopAtMaxOffset = True
 		End Sub
 	#tag EndEvent
 #tag EndEvents

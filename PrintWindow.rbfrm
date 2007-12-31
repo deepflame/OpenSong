@@ -8,7 +8,7 @@ Begin Window PrintWindow
    Frame           =   1
    FullScreen      =   "False"
    HasBackColor    =   "False"
-   Height          =   410
+   Height          =   422
    ImplicitInstance=   "True"
    LiveResize      =   "True"
    MacProcID       =   0
@@ -19,17 +19,17 @@ Begin Window PrintWindow
    MenuBarVisible  =   "True"
    MinHeight       =   300
    MinimizeButton  =   "True"
-   MinWidth        =   610
+   MinWidth        =   650
    Placement       =   0
    Resizeable      =   "True"
    Title           =   "Print Preview"
    Visible         =   "True"
-   Width           =   630
+   Width           =   663
    Begin PagePanel nil_panel
       AutoDeactivate  =   "True"
       ControlOrder    =   0
       Enabled         =   "True"
-      Height          =   351
+      Height          =   363
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -40,13 +40,13 @@ Begin Window PrintWindow
       LockTop         =   "True"
       PanelCount      =   2
       Panels          =   ""
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   43
       Value           =   0
       Visible         =   "True"
-      Width           =   614
+      Width           =   647
+      BehaviorIndex   =   0
       Begin Canvas cnv_page
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -64,13 +64,13 @@ Begin Window PrintWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   200
+         BehaviorIndex   =   1
       End
    End
    Begin ScrollBar scr_vertical
@@ -78,13 +78,13 @@ Begin Window PrintWindow
       AutoDeactivate  =   "True"
       ControlOrder    =   2
       Enabled         =   "True"
-      Height          =   394
+      Height          =   406
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   614
+      Left            =   647
       LineStep        =   20
-      LiveScroll      =   "False"
+      LiveScroll      =   "True"
       LockBottom      =   "True"
       LockLeft        =   "False"
       LockRight       =   "True"
@@ -92,13 +92,13 @@ Begin Window PrintWindow
       Maximum         =   100
       Minimum         =   0
       PageStep        =   100
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   0
       Value           =   0
       Visible         =   "True"
       Width           =   16
+      BehaviorIndex   =   15
    End
    Begin ScrollBar scr_horizontal
       AcceptFocus     =   "true"
@@ -111,7 +111,7 @@ Begin Window PrintWindow
       InitialParent   =   ""
       Left            =   0
       LineStep        =   1
-      LiveScroll      =   "False"
+      LiveScroll      =   "True"
       LockBottom      =   "True"
       LockLeft        =   "True"
       LockRight       =   "True"
@@ -119,13 +119,13 @@ Begin Window PrintWindow
       Maximum         =   100
       Minimum         =   0
       PageStep        =   20
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   394
+      Top             =   406
       Value           =   0
       Visible         =   "True"
-      Width           =   614
+      Width           =   647
+      BehaviorIndex   =   2
    End
    Begin PagePanel nil_header
       AutoDeactivate  =   "True"
@@ -142,13 +142,13 @@ Begin Window PrintWindow
       LockTop         =   "True"
       PanelCount      =   1
       Panels          =   ""
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   0
       Value           =   0
       Visible         =   "True"
-      Width           =   614
+      Width           =   647
+      BehaviorIndex   =   3
       Begin PushButton btn_page_print
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -162,11 +162,12 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   464
+         Left            =   497
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -174,6 +175,7 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   65
+         BehaviorIndex   =   4
       End
       Begin PushButton btn_cancel
          AutoDeactivate  =   "True"
@@ -188,11 +190,12 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   541
+         Left            =   574
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "True"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -200,6 +203,7 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   65
+         BehaviorIndex   =   5
       End
       Begin PushButton btn_page_first
          AutoDeactivate  =   "True"
@@ -219,13 +223,15 @@ Begin Window PrintWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
          Top             =   9
          Underline       =   "False"
          Visible         =   "True"
-         Width           =   30
+         Width           =   34
+         BehaviorIndex   =   6
       End
       Begin PushButton btn_page_previous
          AutoDeactivate  =   "True"
@@ -240,11 +246,12 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   44
+         Left            =   52
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -252,6 +259,7 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
+         BehaviorIndex   =   7
       End
       Begin StaticText txt_page_page
          AutoDeactivate  =   "True"
@@ -265,12 +273,13 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   78
+         Left            =   86
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          Text            =   "888 of 888"
          TextAlign       =   1
@@ -281,6 +290,7 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   65
+         BehaviorIndex   =   8
       End
       Begin PushButton btn_page_next
          AutoDeactivate  =   "True"
@@ -295,11 +305,12 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   147
+         Left            =   155
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -307,6 +318,7 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
+         BehaviorIndex   =   9
       End
       Begin PushButton btn_page_last
          AutoDeactivate  =   "True"
@@ -321,18 +333,20 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   181
+         Left            =   193
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
          Top             =   9
          Underline       =   "False"
          Visible         =   "True"
-         Width           =   30
+         Width           =   34
+         BehaviorIndex   =   10
       End
       Begin PushButton btn_page_zoom_in
          AutoDeactivate  =   "True"
@@ -347,11 +361,12 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   223
+         Left            =   239
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -359,6 +374,7 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
+         BehaviorIndex   =   11
       End
       Begin EditField edt_page_zoom
          AcceptTabs      =   "False"
@@ -377,7 +393,7 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   257
+         Left            =   273
          LimitText       =   3
          LockBottom      =   "False"
          LockLeft        =   "False"
@@ -387,6 +403,7 @@ Begin Window PrintWindow
          Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
+         Scope           =   0
          ScrollbarHorizontal=   "False"
          ScrollbarVertical=   "True"
          Styled          =   "False"
@@ -400,6 +417,7 @@ Begin Window PrintWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   43
+         BehaviorIndex   =   12
       End
       Begin PushButton btn_page_zoom_out
          AutoDeactivate  =   "True"
@@ -414,11 +432,12 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   304
+         Left            =   324
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -426,6 +445,7 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   30
+         BehaviorIndex   =   13
       End
       Begin PushButton btn_page_print_setup
          AutoDeactivate  =   "True"
@@ -440,11 +460,12 @@ Begin Window PrintWindow
          Index           =   -2147483648
          InitialParent   =   "nil_header"
          Italic          =   "False"
-         Left            =   342
+         Left            =   362
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -452,6 +473,7 @@ Begin Window PrintWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   100
+         BehaviorIndex   =   14
       End
    End
 End
@@ -461,6 +483,11 @@ End
 	#tag Event
 		Sub Activate()
 		  HSizer.Resize ' linux fix
+		  If initialActivation Then // This is the first time the window is activated, size appropriately
+		    Self.Width = Min(Self.Width, (cnv_page.Left * 2) + cnv_page.Width + scr_vertical.Width)
+		    Self.Height = Min(Self.Height, cnv_page.Top + (cnv_page.Top - nil_header.Height) + cnv_page.Height + scr_horizontal.Height)
+		    initialActivation = False
+		  End If
 		  FixScrollBars
 		Catch ex // Don't die if this fires before HSizer exists
 		  Return
@@ -506,9 +533,21 @@ End
 		  HSizer.AddLeft btn_cancel, 1
 		  
 		  App.T.TranslateWindow Me, "print_preview", App.TranslationFonts
-		  'App.MaximizeInControlScreen Me
 		  
 		  App.DebugWriter.Write "PrintWindow.Open: Exit"
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resized()
+		  FixScrollBars
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resizing()
+		  nil_panel.Refresh
+		  FixScrollBars
 		End Sub
 	#tag EndEvent
 
@@ -530,28 +569,14 @@ End
 		  newpg = Group2D(PrintReport.GetPage(PageNum, Zoom))
 		  If newpg <> Nil Then
 		    App.DebugWriter.Write "PrintWindow.ChangePage: newpg.Count = " + str(newpg.Count) + ", PageObj.Count is " + str(PageObj.Count)
-		    '#pragma DisableBackgroundTasks
-		    'i = PageObj.Count - 1
-		    'While i >= 0
-		    'PageObj.Remove i
-		    'i = i - 1
-		    'Wend
-		    'For i = 0 to newpg.Count -1
-		    'PageObj.Append newpg.Item(i)
-		    'Next
-		    '#pragma BackgroundTasks
 		    App.DebugWriter.Write "PrintWindow.ChangePage: PageObj.Count is now " + str(PageObj.Count)
 		  Else
 		    App.DebugWriter.Write "PrintWindow.ChangePage: PrintReport.GetPage returned Nil"
 		  End If
 		  txt_page_page.Caption = App.T.Translate("print_preview/pages/@caption", Str(currentPage), Str(PrintReport.GetPageCount))
-		  'App.DebugWriter.Write "PrintWindow.ChangePage: Call SetupPage"
 		  SetupPage
-		  'App.DebugWriter.Write "PrintWindow.ChangePage: Call FixScrollBars"
 		  FixScrollBars
-		  'App.DebugWriter.Write "PrintWindow.ChangePage: Call UpdatePageNavigationControls"
 		  UpdatePageNavigationControls
-		  'App.DebugWriter.Write "PrintWindow.ChangePage: Call cnv_page.Refresh"
 		  cnv_page.Refresh
 		  App.DebugWriter.Write "PrintWindow.ChangePage: Exit"
 		Catch CPEx
@@ -577,7 +602,7 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub FixScrollBars()
-		  App.DebugWriter.Write "PrintWindow.FixScrollBars: Enter"
+		  App.DebugWriter.Write "PrintWindow.FixScrollBars: Enter", 9
 		  scr_vertical.Minimum = 0
 		  scr_vertical.Value = 0
 		  
@@ -593,7 +618,7 @@ End
 		    scr_vertical.Enabled = False
 		    scr_vertical.Maximum = 0
 		  End If
-		  If cnv_page.Left + cnv_page.Width + 2 > Me.Width - scr_vertical.Width Then
+		  If (cnv_page.Left + cnv_page.Width + 2) > (Self.Width - scr_vertical.Width) Then
 		    scr_horizontal.Enabled = True
 		    scr_horizontal.Maximum = cnv_page.Width - (Width - 10 - scr_vertical.Width - 10)
 		    scr_horizontal.PageStep = (Width - 10 - scr_vertical.Width - 10)
@@ -602,16 +627,7 @@ End
 		    scr_horizontal.Enabled = False
 		    scr_horizontal.Maximum = 0
 		  End If
-		  App.DebugWriter.Write "PrintWindow.FixScrollBars: Exit"
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Resized()
-		  'Me.Refresh False
-		  App.DebugWriter.Write "PrintWindow.Resized: Enter"
-		  FixScrollBars
-		  App.DebugWriter.Write "PrintWindow.Resized: Exit"
+		  App.DebugWriter.Write "PrintWindow.FixScrollBars: Exit", 9
 		End Sub
 	#tag EndMethod
 
@@ -638,13 +654,13 @@ End
 
 	#tag Method, Flags = &h0
 		Sub SetupPage()
-		  App.DebugWriter.Write "PrintWindow.SetupPage: Enter"
+		  App.DebugWriter.Write "PrintWindow.SetupPage: Enter", 9
 		  cnv_page.Width = PageWidth * 72 * zoom
 		  cnv_page.Height = PageHeight * 72 * zoom
 		  'MG: Changed this for handling a text field instead of a label
 		  edt_page_zoom.Text = Str(zoom*100) + "%"
 		  FixScrollBars
-		  App.DebugWriter.Write "PrintWindow.SetupPage: Exit"
+		  App.DebugWriter.Write "PrintWindow.SetupPage: Exit", 9
 		End Sub
 	#tag EndMethod
 
@@ -666,6 +682,39 @@ End
 		  btn_page_last.Enabled = CurrentPage < PageCount
 		  
 		  App.DebugWriter.Write "PrintWindow.UpdatePageNavigationControls: Exit"
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub ScrollPreview(X As Integer, Y As Integer, deltaX As Integer, deltaY As Integer)
+		  //++
+		  // Handle the scroll wheel events
+		  //--
+		  
+		  Dim newX As Integer
+		  Dim newY As Integer
+		  Dim changed As Boolean = False
+		  
+		  If deltaX <> 0 Then
+		    newX = scr_horizontal.Value + (deltaX * scr_horizontal.LineStep)
+		    newX = Min(newX, scr_horizontal.Maximum)
+		    newX = Max(newX, scr_horizontal.Minimum)
+		    scr_horizontal.Value = newX
+		    changed = True
+		  End If
+		  
+		  If deltaY <> 0 Then
+		    newY = scr_vertical.Value + (deltaY * scr_vertical.LineStep)
+		    newY = Min(newY, scr_vertical.Maximum)
+		    newY = Max(newY, scr_vertical.Minimum)
+		    scr_vertical.Value = newY
+		    changed = True
+		  End If
+		  
+		  If changed Then
+		    nil_panel.Invalidate
+		  End If
+		  
 		End Sub
 	#tag EndMethod
 
@@ -717,9 +766,21 @@ End
 		Zoom As Double
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected initialActivation As Boolean = True
+	#tag EndProperty
+
 
 #tag EndWindowCode
 
+#tag Events nil_panel
+	#tag Event
+		Function MouseWheel(X As Integer, Y As Integer, deltaX as Integer, deltaY as Integer) As Boolean
+		  ScrollPreview(X, Y, deltaX, deltaY)
+		  Return True
+		End Function
+	#tag EndEvent
+#tag EndEvents
 #tag Events cnv_page
 	#tag Event
 		Sub Paint(g As Graphics)
@@ -738,7 +799,7 @@ End
 		    Return
 		  End If
 		  x = PrintReport.LeftMargin * 72 * Zoom
-		  y = PrintReport.TopMargin * 72 * Zoom -  (scr_vertical.Value - Me.Top)
+		  y = PrintReport.TopMargin * 72 * Zoom -  (scr_vertical.Value)// - Me.Top)
 		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: calling DrawObject with x, y: " + str(x) + ", " + str(y)
 		  g.DrawObject pg, x, y
 		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: Exit"
@@ -754,7 +815,6 @@ End
 #tag Events scr_vertical
 	#tag Event
 		Sub ValueChanged()
-		  'cnv_page.Top = 35 - scr_vertical.Value
 		  cnv_page.Refresh
 		End Sub
 	#tag EndEvent

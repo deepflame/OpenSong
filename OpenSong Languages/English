@@ -725,6 +725,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <folder caption="Select Folder"/>
     <preview caption="Song Preview"/>
     <lookup caption="Quick Lookup"/>
+    <songs head1="Song Name" head2="Folder"/>
   </song_lookup>
 
   <song_activity title="Song Activity Log">
@@ -988,6 +989,7 @@ StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
 iDeclare (http://www.declaresub.com/iDeclare
+SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/)
 The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
   </about>
 

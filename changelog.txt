@@ -1,5 +1,7 @@
 ﻿-= 1.3.0 =-
 
+* Fixed bug where Bible.genindex would attempt to close the splash window even if it didn't exist.  Fixed bug in exception handler that caused the resulting NOE to cause a complete program crash.
+
 * Added Classes/GUI/StringSplitter and Classes/GUI/CanvasSmartSplitterDebugger to project.  Added credit for the source to the English translation ("StringSplitter by Harrie Hooie  (http://www.harryhooie.com/source/)")
 
 * Modified SongPickerWindow to use a splitter between the song list and the preview to give the user more control over the display.

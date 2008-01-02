@@ -628,7 +628,7 @@ Implements iBible
 		  reg.Options.ReplaceAllMatches=true
 		  
 		  'open progress window
-		  wSplash.Hide
+		  If Not (wSplash Is Nil) Then wSplash.Hide
 		  wProgress = New IndexProgress
 		  wProgress.setProgress(0, "")
 		  wProgress.ShowWithin App.GetFrontControlScreenWindow
@@ -749,8 +749,8 @@ Implements iBible
 		  CanSearch = True
 		  App.DebugWriter.Write "Bible.genindex: Exit"
 		Exception excep
-		  out.Close
-		  newFile.delete
+		  If Not (out Is Nil) Then out.Close
+		  If Not (newFile Is Nil) Then newFile.delete
 		  
 		  InputBox.Message App.T.Translate("bible/errors/index_generation")
 		  CanSearch = False

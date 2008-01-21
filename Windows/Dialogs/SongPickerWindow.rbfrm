@@ -370,6 +370,7 @@ Begin Window SongPickerWindow
    Begin Timer timerLookup
       ControlOrder    =   10
       Index           =   -2147483648
+      InitialParent   =   ""
       Left            =   443
       Mode            =   2
       Period          =   1500
@@ -574,16 +575,22 @@ End
 		    f = MainWindow.Songs.GetFile(Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
 		    '++JRC Add Song Preview text
 		    CurrentSong = SmartML.XDocFromFile(f)
-		    If App.MainPreferences.GetValueB(prefs.kSongsPreviewWithChords, True) Then
-		      edt_preview.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		    If Not (CurrentSong Is Nil) Then
+		      If App.MainPreferences.GetValueB(prefs.kSongsPreviewWithChords, True) Then
+		        edt_preview.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics", True).FormatLocalEndOfLine
+		      Else
+		        edt_preview.Text = SongML.LyricText(CurrentSong.DocumentElement).FormatLocalEndOfLine
+		      End If
+		      '--
+		      btn_add.Enabled = True
+		      btn_add.Default = True
 		    Else
-		      edt_preview.Text = SongML.LyricText(CurrentSong.DocumentElement).FormatLocalEndOfLine
+		      edt_preview.Text = App.T.Translate("errors/bad_format", Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
+		      btn_add.Enabled = False
 		    End If
 		    edt_preview.ScrollPosition = 0
 		    edt_preview.ScrollPositionX = 0
-		    '--
-		    btn_add.Enabled = True
-		    btn_add.Default = True
+		    
 		  Else
 		    btn_add.Enabled = False
 		    edt_preview.Text = ""

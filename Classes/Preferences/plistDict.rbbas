@@ -1181,15 +1181,18 @@ Class plistDict
 
 	#tag Method, Flags = &h0
 		Sub SetDouble(key As string, v As double)
-		  dim result As integer
-		  dim value As string
+		  Dim result As Integer
+		  Dim value As String
 		  
-		  result=CheckType(key,kTypeDouble)
-		  if result<>0 then
+		  If CheckType(key,kTypeDouble) <> 0 Then
 		    values.value(key)=str(v)
 		    types.value(key)=kTypeDouble
-		    searched.Value(key)=false
-		  end
+		    searched.Value(key)=False
+		  Elseif CheckType(key, kTypeReal) <> 0 Then
+		    SetReal(key, v)
+		  Elseif CheckType(key, kTypeInteger) <> 0 Then
+		    SetInteger(key, v)
+		  End
 		End Sub
 	#tag EndMethod
 
@@ -1216,12 +1219,15 @@ Class plistDict
 		  dim result As integer
 		  dim value As string
 		  
-		  result=CheckType(key,kTypeInteger)
-		  if result<>0 then
+		  If CheckType(key,kTypeInteger) <> 0 Then
 		    values.value(key)=format(v,"-#")
 		    types.value(key)=kTypeInteger
 		    searched.Value(key)=false
-		  end
+		  ElseIf CheckType(key, kTypeReal) <> 0 Then
+		    SetReal(key, v)
+		  ElseIf CheckType(key, kTypeDouble) <> 0 Then
+		    SetDouble(key, v)
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -1314,15 +1320,18 @@ Class plistDict
 
 	#tag Method, Flags = &h0
 		Sub SetReal(key As string, v As double)
-		  dim result As integer
-		  dim value As string
+		  Dim result As Integer
+		  Dim value As String
 		  
-		  result=CheckType(key,kTypeReal)
-		  if result<>0 then
+		  If CheckType(key, kTypeReal) <> 0 Then
 		    values.value(key)=str(v)
 		    types.value(key)=kTypeReal
-		    searched.Value(key)=false
-		  end
+		    searched.Value(key)=False
+		  Elseif CheckType(key, kTypeInteger) <> 0 Then
+		    SetInteger(key, v)
+		  Elseif CheckType(key, kTypeDouble) <> 0 Then
+		    SetDouble(key, v)
+		  End If
 		End Sub
 	#tag EndMethod
 

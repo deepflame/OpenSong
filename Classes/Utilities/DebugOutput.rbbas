@@ -48,9 +48,11 @@ Protected Class DebugOutput
 		  
 		  If NewLevel >= MINDEBUGLEVEL And NewLevel <= MAXDEBUGLEVEL Then
 		    DebugLevel = NewLevel
+		    Enabled = True
 		  Else
 		    ex.Message = "DebugLevel must be between " + Str(MINDEBUGLEVEL) + " and " + Str(MAXDEBUGLEVEL) +_
 		    ", requested level was " + Str(NewLevel)
+		    Enabled = False
 		    Raise ex
 		  End If
 		End Sub

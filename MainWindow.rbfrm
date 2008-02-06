@@ -7422,9 +7422,6 @@ End
 		  
 		  btn_song_present.DeletePopup
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
-		  if ScreenCount > 1 Then
-		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
-		  End If
 		  
 		  #If TargetLinux
 		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then

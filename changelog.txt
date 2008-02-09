@@ -1,5 +1,11 @@
 ﻿-= 1.3.0 =-
 
+* Fix Bible citations so a single verse shows up as "Genesis 1:1" and an entire chapter is "Genesis 1".
+
+* Add the Bible name to the slide group's name tag so the Set routines will treat two adjacent passages of the same range but different Bibles as two distinct entities instead of combining them.
+
+* Fix some filename comparison issues in StringUtils.CompareHymnBookOrder and in MainWindow.lst_songs_songs.CompareRows.  This will hopefully clear up some of the issues seen with items sorting the wrong way.  Definitely fixes an issue with "2008-02-09" being evaluated as less than "2008-02-08 Alternate".
+
 * Fix song preview in SongPickerWindow to avoid NOE if the file isn't valid XML.
 
 * PlistDict would silently fail to store an integer as a real (and vice-versa) even though get getter and setter for both convert to double.

@@ -72,11 +72,18 @@ Protected Module SetML
 		  Dim i As Integer
 		  Dim isWrapped As Boolean
 		  Dim d2 As String
+		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
+		  Dim bodyTabs() As StyleTabsType
 		  
 		  If Style <> Nil Then 'TODO: What if it's NIL????  Ain't gonna be pretty....
 		    bodyStyle = Style.BodyFont
 		    titleStyle = Style.TitleFont
 		    subtitleStyle = Style.SubtitleFont
+		    
+		    titleMargins = Style.TitleMargins
+		    subtitleMargins = Style.SubtitleMargins
+		    bodyMargins = Style.BodyMargins
+		    bodyTabs = Style.BodyTabItems()
 		  End If
 		  
 		  gWidth = g.Width
@@ -92,6 +99,10 @@ Protected Module SetML
 		  bodyStyle.Size = bodyStyle.Size * zoom
 		  titleStyle.Size = titleStyle.Size * zoom
 		  subtitleStyle.Size = subtitleStyle.Size * zoom
+		  ZoomMargins(titleMargins, zoom)
+		  ZoomMargins(subtitleMargins, zoom)
+		  ZoomMargins(bodyMargins, zoom)
+		  ZoomTabs(bodyTabs, zoom)
 		  
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Background" ' --------------------------------------------------
@@ -150,8 +161,8 @@ Protected Module SetML
 		  Dim multiwrap As Boolean
 		  
 		  RealBorder = g.Width / 50
-		  HeaderSize = RealBorder
-		  FooterSize = RealBorder
+		  HeaderSize = 0
+		  FooterSize = 0
 		  
 		  Profiler.EndProfilerEntry
 		  Profiler.BeginProfilerEntry "DrawSlide>Title/Subtitle" ' --------------------------------------------------
@@ -175,28 +186,28 @@ Protected Module SetML
 		  
 		  If Style.TitleVAlign = "top" Then
 		    HeaderSize = HeaderSize + DrawFontString(g, title, _
-		    RealBorder, HeaderSize, titleStyle, g.Width - RealBorder*2, Style.TitleAlign, g.Height - HeaderSize - FooterSize, Style.TitleVAlign)
+		    0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
 		    For i = 0 to UBound(Subtitles)
 		      If Style.SubtitleVAlign = "top" Then
 		        HeaderSize = HeaderSize + DrawFontString(g, subtitles(i), _
-		        RealBorder, HeaderSize, subtitleStyle, g.Width - RealBorder*2, Style.SubtitleAlign, g.Height - HeaderSize - FooterSize, Style.SubtitleVAlign)
+		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      Else
 		        FooterSize = FooterSize + DrawFontString(g, subtitles(Ubound(Subtitles) - i), _
-		        RealBorder, HeaderSize, subtitleStyle, g.Width - RealBorder*2, Style.SubtitleAlign, g.Height - HeaderSize - FooterSize, Style.SubtitleVAlign)
+		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      End If
 		    Next
 		  Else
 		    For i = 0 to UBound(Subtitles)
 		      If Style.SubtitleVAlign = "top" Then
 		        HeaderSize = HeaderSize + DrawFontString(g, subtitles(i), _
-		        RealBorder, HeaderSize, subtitleStyle, g.Width - RealBorder*2, Style.SubtitleAlign, g.Height - HeaderSize - FooterSize, Style.SubtitleVAlign)
+		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      Else
 		        FooterSize = FooterSize + DrawFontString(g, subtitles(Ubound(subtitles) - i), _
-		        RealBorder, HeaderSize, subtitleStyle, g.Width - RealBorder*2, Style.SubtitleAlign, g.Height - HeaderSize - FooterSize, Style.SubtitleVAlign)
+		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      End If
 		    Next i
 		    FooterSize = FooterSize + DrawFontString(g, title, _
-		    RealBorder, HeaderSize, titleStyle, g.Width - RealBorder*2, Style.TitleAlign, g.Height - HeaderSize - FooterSize, Style.TitleVAlign)
+		    0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -213,7 +224,7 @@ Protected Module SetML
 		  Dim st, linecount, x2 As Integer
 		  Dim line, line2, lines(0) As String
 		  Dim UsableWidth As Integer 'Max body width after margins are taken out (EMP 09/05)
-		  UsableWidth = g.Width - (2 * RealBorder) ' This just comes up again and again in the calcs & won't change (EMP 09/05)
+		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
 		  st = 1
 		  
 		  Profiler.EndProfilerEntry
@@ -370,7 +381,7 @@ Protected Module SetML
 		  Next i
 		  line = RTrim(line)
 		  
-		  DrawFontString g, line, RealBorder, HeaderSize, bodyStyle, UsableWidth, Style.BodyAlign, MainHeight, Style.BodyVAlign 'EMP 09/05
+		  Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs) 'EMP 09/05
 		  
 		  Profiler.EndProfilerEntry
 		  
@@ -409,7 +420,7 @@ Protected Module SetML
 		      End If
 		      If valign = "top" Then y = y + FontFaceHeight(g, subtitleStyle)
 		      
-		      DrawFontString g, subtitle, newX, y, subtitleStyle
+		      Call DrawFontString(g, subtitle, newX, y, subtitleStyle, 0, "left", 0, "bottom")
 		      
 		      If valign = "bottom" Then y = y - FontFaceHeight(g, subtitleStyle)
 		      If valign = "top" Then Return y - oldY
@@ -430,7 +441,7 @@ Protected Module SetML
 		        newX = x
 		      End If
 		      
-		      DrawFontString g, title, newX, y, titleStyle
+		      Call DrawFontString(g, title, newX, y, titleStyle, 0, "left", 0, "bottom")
 		      
 		      If valign = "bottom" Then
 		        y = y - FontFaceAscent(g, titleStyle)
@@ -753,6 +764,25 @@ Protected Module SetML
 		  Wend
 		  
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ZoomMargins(ByRef margins As StyleMarginType, zoom as Double)
+		  margins.Left = margins.Left * zoom
+		  margins.Right = margins.Right * zoom
+		  margins.Top = margins.Top * zoom
+		  margins.Bottom = margins.Bottom * zoom
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ZoomTabs(ByRef tabs() As StyleTabsType, zoom as Double)
+		  Dim i As Integer
+		  
+		  For i = 0 to UBound(tabs)
+		    tabs(i).Position = tabs(i).Position * zoom
+		  Next i
+		End Sub
 	#tag EndMethod
 
 

@@ -24,11 +24,11 @@ Begin Window IndexProgress
    Resizeable      =   "False"
    Title           =   "Please Wait"
    Visible         =   "True"
-   Width           =   308
+   Width           =   300
    Begin ProgressBar ProgressBar1
       AutoDeactivate  =   "True"
       ControlOrder    =   0
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -39,13 +39,13 @@ Begin Window IndexProgress
       LockRight       =   "False"
       LockTop         =   "False"
       Maximum         =   100
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   60
       Value           =   0
-      Visible         =   "True"
+      Visible         =   True
       Width           =   260
+      BehaviorIndex   =   0
    End
    Begin StaticText lbl_top
       AutoDeactivate  =   "True"
@@ -53,18 +53,19 @@ Begin Window IndexProgress
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   12
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   24
+      Left            =   20
       LockBottom      =   "False"
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Building index:"
       TextAlign       =   0
@@ -73,8 +74,9 @@ Begin Window IndexProgress
       TextSize        =   10
       Top             =   16
       Underline       =   "False"
-      Visible         =   "True"
-      Width           =   100
+      Visible         =   True
+      Width           =   260
+      BehaviorIndex   =   1
    End
    Begin StaticText lbl_book
       AutoDeactivate  =   "True"
@@ -82,7 +84,7 @@ Begin Window IndexProgress
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -94,6 +96,7 @@ Begin Window IndexProgress
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -102,8 +105,9 @@ Begin Window IndexProgress
       TextSize        =   10
       Top             =   36
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   256
+      BehaviorIndex   =   2
    End
    Begin StaticText lbl_bottom
       AutoDeactivate  =   "True"
@@ -111,28 +115,30 @@ Begin Window IndexProgress
       ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   192
+      Left            =   20
       LockBottom      =   "False"
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Press 'esc' to cancel"
-      TextAlign       =   0
+      TextAlign       =   2
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
       Top             =   102
       Underline       =   "False"
       Visible         =   "False"
-      Width           =   100
+      Width           =   260
+      BehaviorIndex   =   3
    End
 End
 #tag EndWindow
@@ -174,6 +180,7 @@ End
 	#tag Event
 		Sub Open()
 		  App.DebugWriter.Write "IndexProgress.Open"
+		  App.T.TranslateWindow Me, "index_progress", App.TranslationFonts
 		End Sub
 	#tag EndEvent
 

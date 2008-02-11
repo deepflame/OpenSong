@@ -198,7 +198,7 @@ Inherits SBufferedCanvas
 		    Return
 		  End If
 		  
-		  f = PreferencesFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
+		  f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
 		  If f <> Nil Then
 		    Base64 = str
 		    outputStream = f.CreateBinaryFile("image/jpeg")
@@ -216,6 +216,26 @@ Inherits SBufferedCanvas
 		Sub SetImagePosition(Pos As Integer)
 		  // Set Center/Stretch attribute
 		  PictureAspect = Pos
+		  Repaint
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetImage(img As Picture)
+		  Dim r As New Random
+		  Dim f As FolderItem
+		  Dim inputStream As BinaryStream
+		  
+		  f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
+		  If f <> Nil Then
+		    Image = img
+		    f.SaveAsPicture Image
+		    inputStream = f.OpenAsBinaryFile(False)
+		    Base64 = EncodeBase64(inputStream.Read(f.Length))
+		    inputStream.Close
+		    f.delete
+		  End If
+		  
 		  Repaint
 		End Sub
 	#tag EndMethod

@@ -2324,7 +2324,7 @@ Module SongML
 		  SmartML.GetValue(songElement, "key").HTMLEntityEncode + "</div>" + EndOfLine
 		  
 		  If SmartML.GetValue(songElement, "user1").Len > 0 Then _
-		  s = s + "  <div id=""user1"">" + MainWindow.lbl_song_user1_1.Text.HTMLEntityEncode + " " + _
+		  s = s + "  <div id=""user1"">" + MainWindow.lbl_song_user1.Text.HTMLEntityEncode + " " + _
 		  SmartML.GetValue(songElement, "user1").HTMLEntityEncode + "</div>" + EndOfLine
 		  If SmartML.GetValue(songElement, "user2").Len > 0 Then _
 		  s = s + "  <div id=""user2"">" + MainWindow.lbl_song_user2.Text.HTMLEntityEncode + " " + _

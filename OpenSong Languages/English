@@ -699,9 +699,11 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <subtitle caption="Subtitle"/>
       <body caption="Body"/>
       <align caption="Align"/>
+      <margin caption="Margins"/>
+      <tabs caption="Tabulators"/>
       <subtitles caption="Song Subtitles"/>
       <highlight_chorus caption="Highlight chorus text"/>
-      <descriptive_subtitle caption="Descriptive subtitle info"/>
+      <descriptive_subtitle_info caption="Descriptive subtitle info"/>
    </fonts_and_alignment>
       <background caption="Background">
       <color caption="Color"/>
@@ -719,6 +721,33 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <trim_note caption="*Cuts the bottom of the background to hide watermarks, web site urls, etc. To avoid distortion, this also trims from the sides to compensate."/>
   </style_editor>
 
+  <style_margins title="Margins Editor">
+      <left caption="Left"/>
+      <right caption="Right"/>
+      <top caption="Top"/>
+      <bottom caption="Bottom"/>
+      <pixels caption="px"/>
+    <preview caption="Preview"/>
+  </style_margins>
+  
+  <style_tabs title="Tabulators Editor">
+    <tabs caption="Tabulators">
+      <new caption="&amp;New"/>
+      <remove caption="&amp;Remove"/>
+      <removeall caption="Remove &amp;All"/>
+    </tabs>
+    <properties caption="Properties">
+      <position caption="Position"/>
+      <pixels caption="px"/>
+      <align caption="Alignment"/>
+      <left caption="Left"/>
+      <middle caption="Middle"/>
+      <right caption="Right"/>
+      <char caption="At character"/>
+    </properties>
+    <preview caption="Preview"/>
+  </style_tabs>
+  
   <song_lookup title="Song Lookup">
     <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. You can also double-click on the song name or press ENTER to add the song."/>
     <no_selection>You have not selected a song.</no_selection>
@@ -805,6 +834,11 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <generate_index>Generate index for scripture file?</generate_index>
     <generate_error>Error generating index; do you have write access to %1?</generate_error>
   </module>
+
+  <index_progress title="Please Wait">
+    <top caption="Building index:"/>
+    <bottom caption="Press 'esc' to cancel"/>
+  </index_progress>
 
   <import_from_ccli title="Import from CCLI">
     <user_id caption="User ID"/>

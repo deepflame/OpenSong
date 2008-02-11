@@ -220,13 +220,15 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top") As Integer
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil) As Integer
 		  Profiler.BeginProfilerEntry "DrawFontString (" + str + ")"
-		  Dim dx, dy, xx, yy, i As Integer
+		  Dim dx, dy, xx, yy, i, j As Integer
 		  Dim lineCount, lineHeight, lineAscent, thisWidth As Integer
 		  Dim thisLine, thisChar As String
 		  Dim shadowFace As FontFace
 		  Dim shadowSize, borderSize As Integer
+		  Dim hasTabs As Boolean
+		  Dim tabCount as Integer
 		  
 		  If ThicknessFactor <= 0 Then ThicknessFactor = 1
 		  
@@ -245,6 +247,15 @@ Protected Module GraphicsX
 		  
 		  lineHeight = FontFaceHeight(g, f) 'g.TextHeight
 		  lineAscent = FontFaceAscent(g, f) 'g.TextAscent
+		  
+		  hasTabs = False
+		  Try
+		    If UBound(tabs) > 0 And InStr(str, Chr(9)) > 0 Then
+		      hasTabs = True
+		    End If
+		  Catch err as NilObjectException
+		    'tabs is Nill as it is an optional parameter; that is ok
+		  End
 		  
 		  If width > 0 Then
 		    ' wrap
@@ -277,14 +288,6 @@ Protected Module GraphicsX
 		  lineCount = CountFields(str, Chr(10))
 		  For i = 1 To lineCount
 		    thisLine = NthField(str, Chr(10), i)
-		    ' --- Setup position ---
-		    If align = "center" Then
-		      xx = x + Round((width - FontFaceWidth(g, thisLine, f))/2)
-		    ElseIf align = "right" Then
-		      xx = x + width - FontFaceWidth(g, thisLine, f)
-		    Else ' left?
-		      xx = x
-		    End If
 		    
 		    If valign = "bottom" Then
 		      yy = y + height - lineHeight*(lineCount-i)
@@ -294,50 +297,88 @@ Protected Module GraphicsX
 		      yy = y + lineAscent + lineHeight * (i-1)
 		    End If
 		    
-		    ' --- Draw decoration ---
-		    
-		    If f <> Nil Then
+		    tabCount = CountFields(thisLine, Chr(9))
+		    If tabCount > 0 And hasTabs And align="left" Then
 		      
-		      If f.Fill Then
-		        g.ForeColor = f.FillColor
-		        g.FillRect xx-borderSize, yy-g.TextAscent, GraphicsX.FontFaceWidth(g, thisLine, f)+borderSize*2, g.TextHeight
-		      End If
+		      Dim k, l As Integer
+		      Dim tab As StyleTabsType
+		      Dim linePart, leftPart As String
+		      Dim spaceWidth As Integer
 		      
-		      If f.Shadow Then
-		        If f.Border Then
-		          DrawFontString g, thisLine, xx + shadowSize, yy + shadowSize, shadowFace
-		        Else
-		          g.ForeColor = f.ShadowColor
-		          g.DrawString thisLine, xx + shadowSize, yy + shadowSize
-		        End If
-		      End If
+		      spaceWidth = g.StringWidth(" ")
 		      
-		      If f.Border Then
-		        g.ForeColor = f.BorderColor
+		      For j = 1 to tabCount
 		        
-		        dy = -borderSize
-		        'Sides
-		        For dx = -borderSize/2 To borderSize/2
-		          g.DrawString thisLine, xx+Round(dx), yy-borderSize ' Top
-		          g.DrawString thisLine, xx+Round(dx), yy+borderSize ' Bottom
-		          g.DrawString thisLine, xx-borderSize, yy+Round(dx) ' Left
-		          g.DrawString thisLine, xx+borderSize, yy+Round(dx) ' Right
-		        Next
-		        'Corners
-		        dy = -borderSize
-		        For dx = borderSize/2 To borderSize
-		          g.DrawString thisLine, xx+Round(dx), yy+dy ' Top-Left
-		          g.DrawString thisLine, xx+Round(dx), yy-dy ' Bottom-Left
-		          g.DrawString thisLine, xx-Round(dx), yy+dy ' Top-Right
-		          g.DrawString thisLine, xx-Round(dx), yy-dy ' Bottom-Right
-		          dy = dy + 1
-		        Next
+		        linePart = NthField(thisLine, Chr(9), j)
+		        
+		        If j > 1 Then
+		          
+		          For k = 0 to UBound(tabs)
+		            tab = tabs(k)
+		            
+		            If tab.Align = StyleHAlignEnum.Left Then
+		              If (x + tab.Position) > xx Then
+		                xx = x + tab.Position
+		                Exit
+		              End If
+		            ElseIf tab.Align = StyleHAlignEnum.Middle Then
+		              l = FontFaceWidth(g, linePart, f)
+		              If (x + tab.Position - (l / 2)) > xx Then
+		                xx = x + tab.Position - (l / 2)
+		                Exit
+		              End If
+		            ElseIf tab.Align = StyleHAlignEnum.Right Then
+		              l = FontFaceWidth(g, linePart, f)
+		              If (x + tab.Position - l) > xx Then
+		                xx = x + tab.Position - l
+		                Exit
+		              End If
+		            ElseIf tab.Align = StyleHAlignEnum.Char Then
+		              If InStr(linePart, tab.AlignChar) > 0 Then
+		                leftPart = Left(linePart, InStr(linePart, tab.AlignChar)-1)
+		                l = FontFaceWidth(g, leftPart, f)
+		                If (x + tab.Position - l) > xx Then
+		                  xx = x + tab.Position - l
+		                  Exit
+		                End If
+		              Else
+		                l = FontFaceWidth(g, linePart, f)
+		                If (x + tab.Position - l) > xx Then
+		                  xx = x + tab.Position - l
+		                  Exit
+		                End If
+		              End If
+		            End If
+		          Next k
+		          
+		        Else
+		          xx = x
+		        End If
+		        
+		        DrawFontSingleLine(g, linePart, xx, yy, f, borderSize, shadowFace, shadowSize)
+		        
+		        For k = 1 to Len(linePart)
+		          xx = xx + g.StringWidth(Mid(linePart, k, 1))
+		        Next k
+		        xx = xx + spaceWidth
+		        
+		      Next j
+		    Else
+		      If tabCount > 0 Then
+		        thisLine = ReplaceAll(thisLine, Chr(9), " ")
 		      End If
+		      
+		      ' --- Setup position ---
+		      If align = "center" Then
+		        xx = x + Round((width - FontFaceWidth(g, thisLine, f))/2)
+		      ElseIf align = "right" Then
+		        xx = x + width - FontFaceWidth(g, thisLine, f)
+		      Else ' left?
+		        xx = x
+		      End If
+		      
+		      DrawFontSingleLine(g, thisLine, xx, yy, f, borderSize, shadowFace, shadowSize)
 		    End If
-		    
-		    '--- Draw string ---
-		    If f <> Nil Then g.ForeColor = f.ForeColor
-		    g.DrawString thisLine, xx, yy
 		    
 		  Next i
 		  Profiler.EndProfilerEntry
@@ -345,13 +386,6 @@ Protected Module GraphicsX
 		  If lineCount = 0 Then lineCount = 1
 		  Return FontFaceHeight(g, f) * lineCount
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "bottom")
-		  If DrawFontString(g, str, x, y, f, width, align, height, valign) > 0 Then
-		  End If
-		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -460,6 +494,96 @@ Protected Module GraphicsX
 		    g.Italic = f.Italic
 		    g.Underline = f.Underline
 		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil) As Integer
+		  Dim drawHeight as Integer
+		  
+		  If x < margins.Left Then
+		    x = margins.Left
+		  End If
+		  If y < margins.Top Then
+		    y = margins.Top
+		  End If
+		  If width > g.Width - margins.Left - margins.Right Then
+		    width = g.Width - margins.Left - margins.Right
+		  End If
+		  If height > g.Height - margins.Top - margins.Bottom Then
+		    height = g.Height - margins.Top - margins.Bottom
+		  End If
+		  
+		  drawHeight = DrawFontString(g, _
+		  str, _
+		  x + borderSize, _
+		  y + borderSize + headerSize, _
+		  f, _
+		  width - (borderSize * 2), _
+		  align, _
+		  height - (borderSize * 2) - headerSize - footerSize, _
+		  valign, _
+		  tabs)
+		  
+		  If valign = "top" Then
+		    drawHeight = drawHeight
+		  ElseIf valign = "bottom" Then
+		    drawHeight = drawHeight
+		  End If
+		  
+		  Return DrawHeight
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub DrawFontSingleLine(g As Graphics, thisLine As String, xx As Integer, yy As Integer, f As FontFace, borderSize As Integer, shadowFace As FontFace, shadowSize As Integer)
+		  Dim dx, dy As Integer
+		  
+		  ' --- Draw decoration ---
+		  
+		  If f <> Nil Then
+		    
+		    If f.Fill Then
+		      g.ForeColor = f.FillColor
+		      g.FillRect xx-borderSize, yy-g.TextAscent, GraphicsX.FontFaceWidth(g, thisLine, f)+borderSize*2, g.TextHeight
+		    End If
+		    
+		    If f.Shadow Then
+		      If f.Border Then
+		        Call DrawFontString(g, thisLine, xx + shadowSize, yy + shadowSize, shadowFace, 0, "left", 0, "bottom")
+		      Else
+		        g.ForeColor = f.ShadowColor
+		        g.DrawString thisLine, xx + shadowSize, yy + shadowSize
+		      End If
+		    End If
+		    
+		    If f.Border Then
+		      g.ForeColor = f.BorderColor
+		      
+		      dy = -borderSize
+		      'Sides
+		      For dx = -borderSize/2 To borderSize/2
+		        g.DrawString thisLine, xx+Round(dx), yy-borderSize ' Top
+		        g.DrawString thisLine, xx+Round(dx), yy+borderSize ' Bottom
+		        g.DrawString thisLine, xx-borderSize, yy+Round(dx) ' Left
+		        g.DrawString thisLine, xx+borderSize, yy+Round(dx) ' Right
+		      Next
+		      'Corners
+		      dy = -borderSize
+		      For dx = borderSize/2 To borderSize
+		        g.DrawString thisLine, xx+Round(dx), yy+dy ' Top-Left
+		        g.DrawString thisLine, xx+Round(dx), yy-dy ' Bottom-Left
+		        g.DrawString thisLine, xx-Round(dx), yy+dy ' Top-Right
+		        g.DrawString thisLine, xx-Round(dx), yy-dy ' Bottom-Right
+		        dy = dy + 1
+		      Next
+		    End If
+		  End If
+		  
+		  '--- Draw string ---
+		  If f <> Nil Then g.ForeColor = f.ForeColor
+		  g.DrawString thisLine, xx, yy
+		  
 		End Sub
 	#tag EndMethod
 

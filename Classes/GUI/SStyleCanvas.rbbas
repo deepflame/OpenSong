@@ -6,7 +6,7 @@ Inherits SBufferedCanvas
 		  Dim f As FolderItem
 		  
 		  If Enabled Then
-		    If StyleWindow.Edit(StyleNode, SongStyle) Then
+		    If StyleWindow.Edit(StyleNode, PreviewSlideNode, SongStyle) Then
 		      Action
 		      Repaint
 		    End If
@@ -33,7 +33,7 @@ Inherits SBufferedCanvas
 		      'SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide"), _
 		      'StyleNode
 		      SetML.DrawSlide g, _
-		      SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide"), _
+		      self.PreviewSlideNode, _
 		      Style 'EMP 09/05
 		      g.ForeColor = DarkBevelColor
 		      g.DrawRect 0, 0, g.Width, g.Height
@@ -74,6 +74,28 @@ Inherits SBufferedCanvas
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub PreviewSlide(Assigns slide As XmlNode)
+		  self.PreviewSlideNode = slide
+		  Repaint
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor()
+		  // Calling the overridden superclass constructor.
+		  Super.RectControl
+		  
+		  self.PreviewSlideNode = SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide")
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ClearPreviewSlide()
+		  self.PreviewSlideNode = SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide")
+		End Sub
+	#tag EndMethod
+
 
 	#tag Hook, Flags = &h0
 		Event Action()
@@ -86,6 +108,10 @@ Inherits SBufferedCanvas
 
 	#tag Property, Flags = &h1
 		Protected StyleNode As XmlNode
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private PreviewSlideNode As XmlNode
 	#tag EndProperty
 
 

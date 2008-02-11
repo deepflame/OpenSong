@@ -218,8 +218,8 @@ End
 		  valign = Lowercase(SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@valign"))
 		  align = Lowercase(SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@align"))
 		  Border = CalcBorderSize(g)
-		  GraphicsX.DrawFontString g, alert, Border*3, Border, _
-		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign
+		  Call GraphicsX.DrawFontString(g, alert, Border*3, Border, _
+		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign)
 		End Sub
 	#tag EndMethod
 

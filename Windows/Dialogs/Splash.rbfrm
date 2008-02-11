@@ -78,8 +78,8 @@ End
 		  Dim t As String
 		  t = App.SmartVersion
 		  
-		  GraphicsX.DrawFontString g, t, 3, 0, f, g.Width-6, "right", g.Height-3, "bottom"
-		  GraphicsX.DrawFontString g, Status, 3, 0, f, g.Width-6, "left", g.Height-3, "bottom"
+		  Call GraphicsX.DrawFontString(g, t, 3, 0, f, g.Width-6, "right", g.Height-3, "bottom")
+		  Call GraphicsX.DrawFontString(g, Status, 3, 0, f, g.Width-6, "left", g.Height-3, "bottom")
 		End Sub
 	#tag EndEvent
 

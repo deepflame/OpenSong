@@ -604,7 +604,7 @@ End
 		  
 		  lst_all_slides.Cell(index,1) = SmartML.GetValue(slide, "@id", False)
 		  lst_all_slides.CellAlignment(index, 1) = 2
-		  lst_all_slides.Cell(index,2) = ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " ").CleanSpaces
+		  lst_all_slides.Cell(index,2) = ReplaceAll(ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " "), Chr(9), " ").CleanSpaces
 		  //++EMP 15 Jan 06
 		  // Put in separator lines if either the name and celltags differ
 		  If Index > 0 Then

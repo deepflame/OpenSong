@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Nederlands" author="Gert Vrieling" version="1.2.0">
+<language name="Nederlands" author="Gert Vrieling en Vwout" version="1.3.0">
 
   <load_settings>
-    <checking_folders>Maken / Controleren documenten mappen</checking_folders>
+    <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
     <main>Laden hoofd instellingen</main>
     <print>Laden printer instellingen</print>
     <presentation>Laden presentatie instellingen</presentation>
@@ -73,9 +73,9 @@
     <title caption="Titel">Geef de titel van het lied.</title>
     <author caption="Auteur">Geef de auteur van het geselecteerde lied.</author>
     <copyright caption="Copyright">Geef het copyright van het geselecteerde lied.</copyright>
-    <ccli caption="CCLI #">Geef het CCLI nummer van het geselecteerde lied.</ccli>
-    <hymn_number caption="Lied #">Geef het nummer van het geselecteerde lied.</hymn_number>
-    <presentation caption="Presentatie">Creëer de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
+    <ccli caption="CCLI nummer">Geef het CCLI nummer van het geselecteerde lied.</ccli>
+    <hymn_number caption="Lied nummer">Geef het nummer van het geselecteerde lied.</hymn_number>
+    <presentation caption="Presentatie">Creër de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
     <lyrics caption="Noten/Muziek">Wijzigen liederen met sectie regels, commentaar regels, notenbalken etc.</lyrics>
     <insert caption="Invoegen"/>
       <ins_section caption="Sectie">Secties worden gebruikt om een lied in meerdere delen te verdelen.
@@ -89,8 +89,8 @@
         <number_of_lines caption="Aantal regels"/>
       </ins_multi_verse>
       <ins_comment caption="Opmerkingen">Opmerkingen worden geprint op de uitgeprinte sheets maar niet getoond in de Presentatie.</ins_comment>
-      <ins_column caption="Nieuwe Kolom">Uitgeprinte sheets kunnen over twee kolommen worden verdeeld als de liederen meer dan 1 pagina beslaan.</ins_column>
-      <ins_page caption="Nieuwe Pagina">Om aan te geven dat op deze plaats een nieuwe pagina wordt begonnen als langere liederen worden geprint.</ins_page>
+      <ins_column caption="Nieuwe kolom">Uitgeprinte sheets kunnen over twee kolommen worden verdeeld als de liederen meer dan 1 pagina beslaan.</ins_column>
+      <ins_page caption="Nieuwe pagina">Om aan te geven dat op deze plaats een nieuwe pagina wordt begonnen als langere liederen worden geprint.</ins_page>
     <transpose caption="Transponeren">Gebruik deze optie om het lied automatisch te transponeren naar een andere toonsoort. Dit gebeurt in halve tonen.
       <using caption="gebruik">Gebruik een kruis uit deze lijst om te transponeren naar hogere tonen. Gebruik mollen om naar een lagere toonsoort te transponeren.
         <sharps caption="Kruisen"/>
@@ -111,10 +111,10 @@
     <key caption="Key">Geeft de sleutel weer van het geselecteerde lied.</key>
     <aka caption="AKA">Geeft de algemene aangepaste titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
-    <style caption="Aangepaste Stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
-    <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
-    <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
-    <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+    <style caption="Aangepaste stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
+    <user1 caption="Door gebruiker gedefinieerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
+    <user2 caption="Door gebruiker gedefinieerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
+    <user3 caption="Door gebruiker gedefinieerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
   <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
@@ -166,7 +166,7 @@
       <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
     </errors>
     <messages>
-      <export_complete>&quot;%1&quot; geexporteerd naar
+      <export_complete>&quot;%1&quot; geëxporteerd naar
 %2
       </export_complete>
     </messages>
@@ -184,11 +184,11 @@
     <notes caption="Opmerkingen">Deze opmerkingen verschijnen in het Presentatie Hulp schermgedurende het weergeven op meerdere schermen.</notes>
     <insert caption="Invoegen"/>
       <ins_slide caption="Dia">Staat toe bij het maken van meerdere dia's dat alle dia's een gelijkluidende titel, subtitel, stijl, en/of auto-uitgebreide setting krijgen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_slide>
-    <loop caption="Loop Slides">Geef hier een vinkje om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
-    <print caption="Afdrukken in Lijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
+    <loop caption="Dia's herhalen">Geef hier een vinkje om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
+    <print caption="Afdrukken in ijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
     <auto_advance caption="Alle dia's automatisch na">Geef een aantal seconden op voor het item zodat OpenSong automatisch doorgaat naar de volgende dia in dit item.</auto_advance>
     <seconds caption="seconden afspelen"/>
-    <style caption="Override Style">Geef een vinkje om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
+    <style caption="Aangepaste stijl">Geef een vinkje om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
   </slide_editor>
 
   <style_change>
@@ -265,6 +265,7 @@
       <print caption="_Afdrukken"/>
       <print_alphabetical_toc caption="Afdrukken _Alfabetisch TOC"/>
       <print_categorical_toc caption="Afdrukken _Per Categorie TOC"/>
+      <song_act caption="Bekijk lied gebruik _logboek"/>
       <quit caption="Af_sluiten"/>
     </file>
     <edit caption="_Wijzigen">
@@ -285,8 +286,8 @@
       <presentation caption="_Presentatie instellingen"/>
       <print caption="Afdruk _instellingen"/>
       <general caption="_Algemene  instellingen"/>
-      <refresh_songs caption="Refresh _Liederen Map"/>
-      <refresh_sets caption="Refresh _Projekten Map"/>
+      <refresh_songs caption="_Liederen map verversen"/>
+      <refresh_sets caption="_Projekten map verversen"/>
       <install_module caption="_Installeer Module"/>
     </settings>
     <help caption="_Help">
@@ -301,16 +302,12 @@
       <ccli caption="CCLI Licentie #"/>
       <version_check caption="Controleer voor nieuwere versies bij starten."/>
       <language caption="Taal"/>
-      <startmode caption="Start Venster">
-	<song caption="Liederen"/>
-	<set  caption="Projecten"/>
-      </startmode>
     </general>
     <proxy caption="Proxy">
       <host caption="Host"/>
       <port caption="Poort"/>
     </proxy>
-    <user_defined caption="Gebruiker gedefiniëerd">
+    <user_defined caption="Door gebruiker gedefinieerd">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -329,7 +326,7 @@
       <warning caption="Wees voorzichtig met het gebruik; forceert een herstart van het programma."/>
       <default caption="Standaard"/>
       <custom caption="Aangepast"/>
-      <message>OpenSong wordt afgesloten. Klik OK en start OpenSong opnieuw. Indien nodig verplaats de OpenSong documenten eerst naar de nieuwe locatie.</message>
+      <message>Om het gebruikt van de nieuwe documenten map te voltooien moet OpenSong worden afgesloten. Verplaats indien gewenst de OpenSong documenten naar de nieuwe locatie voordat OpenSong wordt gestart.</message>
       <changed>U selecteerde een aangepaste locatie voor de Documents map, maar klikte niet op de Wijzig knop.  Wilt u de nieuwe locatie gebruiken?</changed>
       <change caption="Wijzig"/>
       <oldfolderdb caption="gebruik oude (pre-V1.1) file cache"/>
@@ -341,7 +338,6 @@
       <dialog caption="Selecteer een log file"
               title="Selecteer log file"/>
     </logging>
-    <newpaint caption="Gebruik nieuwe stijl"/>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
@@ -357,7 +353,7 @@
       <bottom caption="Onder"/>
       <width caption="Breedte"/>
       <height caption="Hoogte"/>
-      <message caption="Ga naar Bestand/Pagina Instellingen ... om marges in te stellen"/>
+      <message caption="Ga naar bestand/Pagina instellingen ... om marges in te stellen"/>
     </margins>
     <fonts>
       <title caption="Titel"/>
@@ -380,14 +376,14 @@
 
   <presentation_settings title="Presentatie Instellingen">
     <settings head1="Stijl" head2="Opties">
-        <default_slides caption="Standaard Dia Stijl"/>
-        <scripture_slides caption="Standaard Bijbelteksten Stijl"/>
+        <default_slides caption="Standaard dia stijl"/>
+        <scripture_slides caption="Standaard bijbelteksten stijl"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
     </settings>
     <style caption="Stijl">
-      <use_transitions caption="Gebruik Overgangen"/>
+      <use_transitions caption="Gebruik overgangen"/>
       <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
       <border_thickness caption="Dikte randen"/>
       <subtitles caption="Subtitels"/>
@@ -400,24 +396,22 @@
         <frozen caption="Vastzetten"/>
       </modes>
 
-      <mouse_cursor caption="Muis Cursor">
+      <mouse_cursor caption="Muis cursor">
          <!--These will be phased out in favor of user editable cursors-->
         <arrow caption="Pijl"/> 
         <cross caption="Kruis"/>
         <hidden caption="Verborgen"/>
         <hourglass caption="Zandloper"/> 
-        <ibeam caption="IBeam"/> 
+        <ibeam caption="Tekstselector"/> 
       </mouse_cursor>
-      <blanks caption="Invoegen nieuwe Dia's"/>
-      <blanks_between caption="Tussen Project Items"/>
+      <blanks caption="Een lege dia's invoegen"/>
+      <blanks_between caption="tussen project items"/>
       <time caption="Tijd" helptag="Totale tijd voor overgang (kan langer duren op langzamere systemen)"/>
       <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
       <blank_prev caption="Vorige dia"/>
       <blank_next caption="Volgende dia"/>
-      <initial_mode caption="Initiele Presentatie Modus"/>
-      <blanks caption="Voeg een blanco dia tussen"/>
-      <blanks_between caption="Tussen set Items"/>
+      <initial_mode caption="Initiele presentatie modus"/>
     </style>
     <transition_note caption="Overgangen worden erg beinvloed door scherm resolutie. Als het traag wordt, overweeg een lagere resolutie van het beeldscherm dat de presentatie moet weergeven. Evenzo, als u ontdekt dat de overgangen niet verschijnen, kan dit veroorzaakt worden door een te lage kleur instelling op het presentatie scherm."/>
     <alerts caption="Waarschuwingen">
@@ -426,10 +420,10 @@
     </alerts>
 
     <monitor caption="Beeldschermen">
-      <control caption="Configuratie Beeldscherm"/>
-      <presentation caption="Presentatie Scherm"/>
+      <control caption="Configuratie beeldscherm"/>
+      <presentation caption="Presentatie scherm"/>
       <detected caption="%1 scherm(en) gevonden."/>
-      <default_mode caption="Standaard Beeldscherm Modus"/>
+      <default_mode caption="Standaard scherm modus"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Masker"/>
@@ -445,7 +439,7 @@
     </audio>
 
     <misc caption="Diversen">
-      <exit_prompt caption="Geef aan bij beëindiging"/>
+      <exit_prompt caption="Waarschuwen bij afsluiten"/>
     </misc>
   </presentation_settings>
 
@@ -467,7 +461,7 @@
       <normal_screen caption="[M] Normaal Scherm"/>
       <return caption="[Esc] Terug"/>
     </actions>
-    <exit caption="Beëindig Presentatie?"/>
+    <exit caption="Beëindig presentatie?"/>
     <loop caption="Loop"/>
     <keys>- Toetsen -
 Down: Volgende dia
@@ -666,7 +660,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <create_list caption="Lijst %1... wordt gemaakt"/>
      <uncategorized caption="Anders"/>
      <setlist caption="Liturgie">
-      <date caption="Geprint "/>
+      <date caption="Afgedrukt "/>
      </setlist>
 </print>
  
@@ -710,9 +704,11 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <subtitle caption="Subtitel"/>
       <body caption="Body"/>
       <align caption="Uitlijning"/>
+      <margin caption="Marges"/>
+      <tabs caption="Tabulators"/>
       <subtitles caption="Subtitel van het lied"/>
       <highlight_chorus caption="Laten oplichten van de refreintekst"/>
-      <descriptive_subtitle caption="Gedetailleerde beschrijving in subtitel"/>
+      <descriptive_subtitle_info caption="Gedetailleerde beschrijving in subtitel"/>
     </fonts_and_alignment>
     <background caption="Achtergrond">
       <color caption="Kleur"/>
@@ -722,22 +718,82 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
           <row1 caption="Centreren"/>
           <!-- <row2 caption="Tegel"/> -->
       </position>
-      <trim_bottom caption="*Spaties weg aan rand"/>
+      <trim_bottom caption="*Onderkant bijsnijden"/>
       <pixels caption="px"/>
       <click_to_change caption="link(gedeeld/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </background>
     <trim_note caption="*Verwijderd de onderzijde van de achtergrond om watermerken te verbergen, website urls, etc. Om verdraaiing te voorkomen, wordt er ook van de zijkanten iets weggehaald ter compensatie."/>
   </style_editor>
+  
+  <style_margins title="Wijzigen Marges">
+      <left caption="Links"/>
+      <right caption="Rechts"/>
+      <top caption="Boven"/>
+      <bottom caption="Onder"/>
+      <pixels caption="px"/>
+    <preview caption="Voorbeeld"/>
+  </style_margins>
 
+  <style_tabs title="Wijzigen Tabstops">
+    <tabs caption="Tabstops">
+      <new caption="&amp;Nieuw"/>
+      <remove caption="Verwijde&amp;ren"/>
+      <removeall caption="&amp;Alle verwijderen"/>
+    </tabs>
+    <properties caption="Eigenschappen">
+      <position caption="Positie"/>
+      <pixels caption="px"/>
+      <align caption="Uitlijning"/>
+      <left caption="Links"/>
+      <middle caption="Midden"/>
+      <right caption="Rechts"/>
+      <char caption="Op karakter"/>
+    </properties>
+    <preview caption="Voorbeeld"/>
+  </style_tabs>
+  
   <song_lookup title="Liederen zoeken">
     <header caption="Om een lied toe te voegen, klik hieronder op de titel van het lied en klik op de 'Toevoegen' knop of begin met typen van de titel en geef Enter."/>
     <no_selection>U heeft geen lied geselecteerd.</no_selection>
     <folder caption="Kies map"/>
-    <preview caption="Lied Voorbeeld"/>
+    <preview caption="Lied voorbeeldweergave"/>
     <lookup caption="Snel zoeken"/>
+    <songs head1="Lied naam" head2="Map"/>
   </song_lookup>
 
+  <song_activity title="Lied gebruik logboek">
+    <range caption="Datum bereik (mm/dd/jjjj)"></range>
+    <to caption="tot"/>
+    <find caption="Zoeken"></find>
+    <clear_log caption="Logboek leegmaken"></clear_log>
+    <print caption="Afdrukken"></print>
+    <export caption="Exporteren"/>
+    <done caption="Klaar"/>
+    <show caption="Tonen">
+      <!-- 
+        "tag" attribute corresponds to the value of the
+        constants found in the LogEntry class. The list order
+        can be changed as desired for localisation (note that it is
+        alphabetical in English) as long as the tags relate to the
+        correct item.  For example, the local language value of "Moved"
+        should always have tag="4"
+      -->
+      <value tag="0">Alles</value>
+      <value tag="1">Gemaakt</value>
+      <value tag="2">Verwijderd</value>
+      <value tag="3">Gewijzigd</value>
+      <value tag="4">Verplaatst</value>
+      <value tag="5">Getoond</value>
+      <value tag="6">Afgedrukt</value>
+      <value tag="7">Hernoemd</value>
+    </show>
+    <songs head7="Heeft akkoorden" head6="CCLI #" head5="Auteur" head4="Titel" head3="Activiteit" head2="Tijdstip" head1="Datum"/> 
+    <input_box>
+      <erase_all>Alle items zullen worden verwijderd. Doorgaan?</erase_all>
+    </input_box>
+    <description>Gemaakt|Verwijderd|Gewijzigd|Verplaatst|Getoond|Afgedrukt|Hernoemd</description>
+  </song_activity>
   <scripture_lookup title="Bijbelteksten zoeken">
     <book caption="Bijbel Boek"/>
     <lookup caption="Snel zoeken">
@@ -746,7 +802,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
     <version caption="Versie"/>
-    <select_file caption="Selecteer de Bijbelvertaling"/>
+    <select_file caption="Selecteer een bijbel bestand."/>
     <verses_per_slide caption="Bijbelvers per dia">
       <one caption="1"/>
       <two caption="2"/>
@@ -757,7 +813,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <verse caption="Vers"/>
     </format>
     <bad_reference>
-      <format>Controleer het formaat van de query probeer opnieuw.</format>
+      <format>Controleer de samenstelling van de zoekopdracht en probeer het nogmaals.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
       <book>Foute referentie: kan het boek niet vinden.</book>
       <ambiguous>Bad reference: Meerdere boeken komen overeen '%1': %2</ambiguous>
@@ -780,9 +836,14 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <rename_error>Fout bij hernoemen van het module bestand. Controleer of u schrijfrechten heeft voor '%1'.</rename_error>
     <success>Module succesvol geladen.</success>
     <file_type>OpenSong Modules (*.xmm)</file_type>
-    <generate_index>Genereer index voor Bijbelvertaling?</generate_index>
-    <generate_error>Fout bij genereren index; kunt u schrijven naar %1?</generate_error>
+    <generate_index>Moet er een index worden opgebouwd voor het bijbel bestand?</generate_index>
+    <generate_error>Er is een fout opgetreden bij het opbouwen van de index; heeft u schrijftoegang voor '%1'?</generate_error>
   </module>
+
+  <index_progress title="Een moment geduld a.u.b.">
+    <top caption="Bezig met het genereren van de index:"/>
+    <bottom caption="Druk op 'esc' om te annuleren"/>
+  </index_progress>
 
   <import_from_ccli title="Importeren van CCLI">
     <user_id caption="Gebruikers ID"/>
@@ -826,9 +887,9 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   <input_box title="OpenSong"/>
 
   <theme_list>
-    <option name="Christus: Attributes"/>
+    <option name="Christus: Karakter/Eigenschappen"/>
     <option name="Christus: Geboorte"/>
-    <option name="Christus: Dood/Atonement"/>
+    <option name="Christus: Dood/Boetedoening"/>
     <option name="Christus: Kracht /Majesteit"/>
     <option name="Christus: Liefde/Genade"/>
     <option name="Christus: Opstanding"/>
@@ -837,7 +898,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <option name="Kerk: Overeenstemming/Gehoorzaamheid"/>
     <option name="Kerk: Land"/>
     <option name="Kerk: Eeuwig leven/Hemel"/>
-    <option name="Kerk: Evangelies"/>
+    <option name="Kerk: Evangelisatie"/>
     <option name="Kerk: Familie/Naaste"/>
     <option name="Kerk: Naaste met God"/>
     <option name="Kerk: Reinheid/Heiligheid"/>
@@ -851,28 +912,28 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <option name="Vrucht: Vrede"/>
     <option name="Vrucht: Geduld/Vriendelijk"/>
     <option name="Vrucht: Nederig/Zachtmoedig"/>
-    <option name="God: Attributes"/>
+    <option name="God: Karakter/Eigenschappen"/>
     <option name="God: Schepper/Schepping"/>
     <option name="God: Vader"/>
     <option name="God: Leiding/Zorg"/>
     <option name="God: Heilige Geest"/>
     <option name="God: Heiligheid"/>
     <option name="God: Liefde/Genade"/>
-    <option name="God: Kracht"/>
+    <option name="God: Kracht/Majesteit"/>
     <option name="God: Belofte"/>
     <option name="God: Overwinning"/>
     <option name="God: Bijbel"/>
-    <option name="Worship: Rust"/>
-    <option name="Worship: Opening"/>
-    <option name="Worship: Vieren"/>
-    <option name="Worship: Declaration"/>
-    <option name="Worship: Intimiteit"/>
-    <option name="Worship: Uitnodigen"/>
-    <option name="Worship: Aanbidding"/>
-    <option name="Worship: Gebed/Devotion"/>
-    <option name="Worship: Provision/Deliverance"/>
-    <option name="Worship: Dankbaarheid"/>
-    <option name="Worship: Vertrouwen"/>
+    <option name="Aanbidding: Vertrouwen"/>
+    <option name="Aanbidding: Opening"/>
+    <option name="Aanbidding: Vieren"/>
+    <option name="Aanbidding: Overtuiging"/>
+    <option name="Aanbidding: Intimiteit"/>
+    <option name="Aanbidding: Uitnodigen"/>
+    <option name="Aanbidding: Aanbidding"/>
+    <option name="Aanbidding: Gebed/Devotion"/>
+    <option name="Aanbidding: Toerusten"/>
+    <option name="Aanbidding: Dankbaarheid"/>
+    <option name="Aanbidding: Rust"/>
   </theme_list>
 
   <tempo_list>
@@ -910,8 +971,8 @@ Klik op de dia om de stijl te wijzigen.</body>
 
  <subtitles caption="Subtitels" head1="Sorteren" head2="Aanzetten" head3="Beschrijving">
     <row0 caption="Copyright|copyright"/>
-    <row1 caption="Autheur|autheurr"/>
-    <row2 caption="Lied nummer|lied nummer"/> 
+    <row1 caption="Auteur|author"/>
+    <row2 caption="Lied nummer|hymn_number"/> 
     <row3 caption="CCLI Lied Nummer|ccli_number"/> 
     <row4 caption="CCLI Licentie Nummer|ccli_license"/>
   </subtitles>
@@ -936,8 +997,8 @@ Klik op de dia om de stijl te wijzigen.</body>
     <cut caption="Knippen"/>
     <copy caption="Kopieren"/>
     <paste caption="Plakken"/>
-    <select caption="Selecteren"/>
-    <exit_program caption="Afsluiten Programma"/>
+    <select caption="Selecteer"/>
+    <exit_program caption="Programma afsluiten"/>
   </shared>
 
   <questions>
@@ -951,23 +1012,24 @@ Klik op de dia om de stijl te wijzigen.</body>
     <long_operation caption="Dit kan lang duren voor het klaar is. Doorgaan?"/>
     <generic_save caption="Wijzigingen opslaan?"/>
     <generic_save_explanation caption="ALs je niet opslaat, zullen de wijzigingen verloren gaan"/>
-    <set_changed caption="Huidige set is gewijzigd, wilt u deze opslaan?"/>
-    <select_docs_folder caption="Selecteer de OpenSong Documents map">Waar moeten de OpenSong bestanden (liederen en diensten) worden opgeslagen?</select_docs_folder>
+    <set_changed caption="Het huidige project is gewijzigd, met het opgeslagen worden?"/>
+    <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
   </questions>
 
   <about>
     <additional>Additional development by:</additional>
     <copyright>Copyright</copyright>
-    <gpl>Deze software is vrijgegeven onder de voorwaarden van het GPL.</gpl>
+    <gpl>Deze software is vrijgegeven onder de voorwaarden van de GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
-    <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
+    <translating>Om OpenSong te vertalen, Kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
     <created_with_opensong>Gemaakt met OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
 iDeclare (http://www.declaresub.com/iDeclare
-The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
+SmartSplitter door Harry Hooie (http://www.harryhooie.com/source/)
+Het afbeeldingsbestand PuffyClouds1.jpg wat opgenomen is in de map Backgrounds valt onder Copyright FreeStockPhotos.com</sources>
   </about>
 
   <folderdb_errors>
@@ -981,7 +1043,7 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <error code="8">Kan bestand '%1' niet vinden.</error>
     <error code="9">Kan bestand '%1' niet verwijderen.</error>
     <error code="10">Kan bestand '%2 niet hernoemen'.</error>
-    <error code="11">Folder '%1' is not empty.</error>
+    <error code="11">Map '%1' is niet leeg.</error>
     <error code="12">Kan bestand '%1' niet verplaatsen naar '%2'.</error>
     <error code="13">Bestand '%1' bestaat reeds in deze map '%2'.</error>
   </folderdb_errors>
@@ -1015,34 +1077,33 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <no_settings_folder>Kan de standaard instellingen map: %1 niet vinden</no_settings_folder>
     <no_songs_folder>Kan de standaard liedernmap: %1 niet vinden</no_songs_folder>
     <no_docs_folder>Kan de documenten map: %1 niet maken/wijzigen</no_docs_folder>
-    <docs_folder>Documenten map kan geen submap zijn van 'OpenSong Defaults'
+    <docs_folder>De Documenten map kan geen submap zijn van 'OpenSong Defaults'
 Tijdelijk gewwijzigd in: %1
 Wijzig de instellingen.</docs_folder>
     <fileutils>
-       <destdoesnotexisterror>Bestand: %1 bestaat niet</destdoesnotexisterror>
-       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
-       <accessdenied>File protection error, access denied: %1</accessdenied>
-       <fileinuse>Bestand is in gebruik, error: %1
-(Is er een tweede versie van OpenSong aktief?)</fileinuse>
-       <filenotfound>Bestand: %1 niet gevonden</filenotfound>
-       <invalidname>Naam voor bestand: %1 niet toegestaan</invalidname>
-       <notenoughmemory>Geheugen probleem bij openen bestand %1
-Herstart OpenSong en probeer opnieuw.</notenoughmemory>
-       <unknownerror>Niet bekende fout bij openen bestand %1</unknownerror>
-       <notaregularfile>Verwacht %1 als bestand, niet als map.</notaregularfile>
-       <notafolder>Verwacht %1 als map, niet als bestand.</notafolder>
+       <destdoesnotexisterror>Bestand bestaat niet: %1</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: FolderItem argument voor FileUtils is Nil</nilobjecterror>
+       <accessdenied>Bestands beveiligings fout, toegang gewijgerd: %1</accessdenied>
+       <fileinuse>Bestand is in gebruik: %1
+(Is er een tweede instantie van OpenSong actief?)</fileinuse>
+       <filenotfound>Bestand kan niet gevonden worden: %1</filenotfound>
+       <invalidname>Ongeldige naam voor bestand: %1</invalidname>
+       <notenoughmemory>De hoeveelheid geheugen is niet toerijkend voor bestand %1.
+Herstart OpenSong en probeer het nogmaals.</notenoughmemory>
+       <unknownerror>Onbekende fout bij de toegang tot bestand %1</unknownerror>
+       <notaregularfile>Er wordt verwacht dat %1 een bestand is en geen map.</notaregularfile>
+       <notafolder>Er wordt verwacht dat %1 een map is en geen bestand.</notafolder>
     </fileutils>
-    <cclinotavailable>The CCLI website has changed significantly.
-This has broken Import function until a new interface can be used.
-In the meantime, please investigate the OpenSong Import utility as an option.
-The OpenSong development team members regret any inconvenience.
+    <cclinotavailable>De CCLI website is ingrijpend veranderd.
+Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface is ontwikkeld.
+Mogelijk dat de OpenSOng Import utility uitkomst kan bieden in de tussentijd.
+Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
     </cclinotavailable>
   </errors>
 
   <xml_errors>
     <noattribute>Kan XML attribuut '%1' niet vinden in '%2'.</noattribute>
   </xml_errors>
-
 
   <bible>
     <errors>
@@ -1115,4 +1176,3 @@ The OpenSong development team members regret any inconvenience.
   </progress_status>
 
 </language>
- 	  	 

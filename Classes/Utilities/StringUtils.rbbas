@@ -189,8 +189,16 @@ Module StringUtils
 		  Dim result2a As RegExMatch
 		  Dim val1, val2 As Integer
 		  Dim t1, t2 As String
+		  Dim fn1, fn2 As String
 		  Dim CompareCode As Integer = 0
 		  Dim i As Integer
+		  
+		  //
+		  // Convert encoding to UTF-8
+		  //
+		  
+		  s1 = ConvertEncoding(s1, Encodings.UTF8)
+		  s2 = ConvertEncoding(s2, Encodings.UTF8)
 		  
 		  //
 		  // Add a trailing forward slant.  Otherwise, the first RegEx isn't right and
@@ -212,13 +220,13 @@ Module StringUtils
 		    Return 0
 		  End If
 		  
-		  t1 = result1.SubExpressionString(1) // Just the filename portion, please
-		  t2 = result2.SubExpressionString(1)
+		  fn1 = ExtractString(s1, result1, 1) // Just the filename portion, please
+		  fn2 = ExtractString(s2, result2, 1)
 		  
 		  re.SearchPattern = "^(\d*)(.*?)(\d*)$" // Start of string, zero or more characters, one or more digits, end of string
 		  
-		  result1a = re.Search(t1)
-		  result2a = re.Search(t2)
+		  result1a = re.Search(fn1)
+		  result2a = re.Search(fn2)
 		  If result1a = Nil or result2a = Nil Then  // Not in expected format; return standard compare
 		    if s1 < s2 Then Return -1
 		    If s1 > s2 Then Return 1
@@ -230,11 +238,10 @@ Module StringUtils
 		  
 		  // If the value is zero, then there wasn't anything there
 		  
-		  If val1 > 0 And val2 = 0 Then
+		  If (val1 > 0) And (val2 = 0) Then
 		    // Leading numbers are smaller than alphabetic by definition
 		    If Left(result2a.SubExpressionString(2), 1) > "9" Then Return -1 Else Return 1
-		  End If
-		  If val1 = 0 And val2 > 0 Then
+		  ElseIf (val1 = 0) And (val2 > 0) Then
 		    If Left(result1a.SubExpressionString(2), 1) > "9" Then Return 1 Else Return -1
 		  End If
 		  
@@ -242,9 +249,20 @@ Module StringUtils
 		  If val1 > val2 Then Return 1
 		  
 		  // Initial numbers (if any) are equal. Check the interior string.
+		  // 08-Feb-2008: Fix an issue with comparison of a string ending in number
+		  //     with a string ending in a non-number always returning that the
+		  //     one ending in a number is always less.
+		  //
+		  val1 = result1a.SubExpressionString(3).Len
+		  val2 = result2a.SubExpressionString(3).Len
 		  
-		  t1 = result1a.SubExpressionString(2)
-		  t2 = result2a.SubExpressionString(2)
+		  If (val1 = 0) Or (val2 = 0) Then
+		    t1 = ExtractString(fn1, result1a, 2) + ExtractString(fn1, result1a, 3)
+		    t2 = ExtractString(fn2, result2a, 2) + ExtractString(fn2, result2a, 3)
+		  Else
+		    t1 = ExtractString(fn1, result1a, 2)
+		    t2 = ExtractString(fn2, result2a, 2)
+		  End If
 		  
 		  If t1 < t2 Then Return -1
 		  If t1 > t2 Then Return 1
@@ -257,14 +275,11 @@ Module StringUtils
 		  If val1 < val2 Then Return -1
 		  If val1 > val2 Then Return 1
 		  
-		  // Everything is equal.  Just return the comparison of the original strings
-		  // This way, directory names should break the tie.
-		  
-		  If s1 < s2 Then Return -1
-		  If s1 > s2 Then Return 1
 		  Return 0
 		  
 		Catch ex as RegExException
+		  App.DebugWriter.Write "StringUtils.CompareHymnBookOrder: RegExException comparing '" + _
+		  s1 + "' with '" + s2 + "'", 1
 		  If s1 < s2 Then Return -1
 		  If s1 > s2 Then Return 1
 		  Return 0
@@ -2501,6 +2516,33 @@ Module StringUtils
 		  end if
 		  
 		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ExtractString(s As String, match As RegExMatch, num As Integer) As String
+		  //++
+		  // This is a workaround for i18n issues with RegEx.
+		  // Rather than using the returned string from RegEx,
+		  // extract the string from the original string
+		  // This isn't a verified problem, but since there are other
+		  // i18n issues this is a proactive workaround.
+		  //--
+		  
+		  Dim start As Integer
+		  Dim length As Integer
+		  Dim result As String
+		  #if DebugBuild
+		    Dim reString As String
+		    reString = match.SubExpressionString(num)
+		  #endif
+		  
+		  start = match.SubExpressionStartB(num) + 1 //RegEx is 0-based, Mid is 1-based
+		  length = match.SubExpressionString(num).Len
+		  
+		  result = Mid(s, start, length)
+		  
+		  Return result
 		End Function
 	#tag EndMethod
 

@@ -301,19 +301,22 @@ Implements ScriptureNotifier
 		  + " " + CStr(CurrentChapter)
 		  
 		  // Check to see if the reference is the entire chapter
+		  // If it is, don't add verse numbers
 		  
-		  If Not(CurrentFromVerse = 0 And CurrentThruVerse = UBound(verses)) Then
+		  If Not((CurrentFromVerse = 0) And (CurrentThruVerse = UBound(verses))) Then
+		    
+		    // Not the entire chapter.  Add the starting verse number
 		    CurrentBible.GetVerseRange(CurrentBook, CurrentChapter, CurrentFromVerse, startVerse, endVerse)
 		    ref = ref + ":" + startVerse
-		    If CurrentFromVerse = CurrentThruVerse And endVerse.Len > 0 Then
-		      ref = ref + "-" + endVerse
-		    Else
+		    
+		    // If only a single verse node in the Bible is selected, see if an endverse was returned (i.e., node is a range of verses)
+		    
+		    If CurrentFromVerse = CurrentThruVerse Then
+		      If endVerse.Len > 0 Then ref = ref + "-" + endVerse
+		    Else // Selection is a range of verse nodes.  Add the last verse number to the citation
 		      CurrentBible.GetVerseRange(CurrentBook, CurrentChapter, CurrentThruVerse, startVerse, endVerse)
-		      If endVerse.Len = 0 Then
-		        ref = ref + "-" + startVerse
-		      Else
-		        ref = ref + "-" + endVerse
-		      End If
+		      If endverse.Len > 0 Then startVerse = endVerse //Most likely case is this is false - node is a single verse
+		      ref = ref + "-" + startVerse
 		    End If
 		  End If
 		  
@@ -461,7 +464,7 @@ Implements ScriptureNotifier
 		  newGroup.SetAttribute("type", "scripture")
 		  
 		  cite = BuildCitation
-		  newGroup.SetAttribute("name", cite)
+		  newGroup.SetAttribute("name", cite + "|" + CurrentBible.Name)
 		  SmartML.SetValue(newGroup, "title", cite)
 		  SmartML.SetValue(newGroup, "subtitle", CurrentBible.Name)
 		  

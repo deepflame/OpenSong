@@ -6461,7 +6461,8 @@ End
 		  Globals.Status_Presentation = True
 		  
 		  '++JRC Log song presentation
-		  If Globals.SongActivityLog <> Nil Then
+		  'Don't log in preview mode
+		  If Globals.SongActivityLog <> Nil And Mode <> PresentWindow.MODE_PREVIEW Then
 		    Dim Log as New LogEntry(Globals.SongActivityLog)
 		    Dim d As New Date
 		    
@@ -7286,6 +7287,12 @@ End
 		      Return 'User Canceled
 		    End If
 		    
+		    '++JRC Reload Set when switching back to Set Mode, fixes bug #1851991
+		    idx = pop_sets_sets.ListIndex //cheats, forces a change event that will reload the set
+		    pop_sets_sets.ListIndex = -1
+		    pop_sets_sets.ListIndex = idx
+		    '--
+		    
 		    'If Status_SongChanged Then
 		    ActionSongRevert false //Easier to do here; we've already got a method defined
 		    btn_mode_songs_mode.SetStuck False
@@ -7595,6 +7602,56 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub ReorderSetItemList(CurrentPosition As Integer, newPosition As Integer)
+		  '++JRC Handle Set Item list reordering
+		  If  newPosition = CurrentPosition Then
+		    return
+		  End If
+		  
+		  Dim xgroups As XmlNode
+		  
+		  'Ask if user wants to save
+		  If NOT ActionInSetAskSave Then
+		    Return 'User Canceled, cancel the reorder
+		  End If
+		  
+		  If Status_InSetChanged Then 'User chose not to save, set DontUpdateSetItem flag
+		    DontUpdateSetItem = True 'reorder the list without changing any edit fields
+		  End If
+		  
+		  'Update set XML with the new order
+		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  Status_SetChanged = True
+		  If newPosition > CurrentPosition Then
+		    If newPosition = lst_set_items.ListCount - 1 Then
+		      xgroups.AppendChild xgroups.Child(CurrentPosition)
+		    Else
+		      xgroups.Insert xgroups.Child(CurrentPosition), xgroups.Child(newPosition+1)
+		    End If
+		    'reorder the list
+		    lst_set_items.InsertRow newPosition+1, lst_set_items.List(CurrentPosition)
+		    lst_set_items.RemoveRow(CurrentPosition)
+		    CurrentInSetItem = newPosition
+		    
+		  ElseIf newPosition < CurrentPosition Then
+		    xgroups.Insert xgroups.Child(CurrentPosition), xgroups.Child(newPosition)
+		    'reorder the list
+		    lst_set_items.InsertRow newPosition, lst_set_items.List(CurrentPosition)
+		    lst_set_items.RemoveRow(CurrentPosition+1)
+		    CurrentInSetItem = newPosition
+		  End If
+		  
+		  lst_set_items.ListIndex = CurrentInSetItem
+		  If NOT Status_InSetChanged Then
+		    CurrentInSetItem = -1
+		  End If
+		  DontUpdateSetItem = false
+		  'EnableMenuItems
+		  '--
+		End Sub
+	#tag EndMethod
+
 
 	#tag Note, Name = Status Hierarchy
 		SetOpen
@@ -7749,6 +7806,10 @@ End
 
 	#tag Property, Flags = &h1
 		Protected Status_Closing As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		DontUpdateSetItem As Boolean
 	#tag EndProperty
 
 
@@ -9858,7 +9919,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Function CompareRows(row1 as Integer, row2 as Integer, column as Integer, ByRef result as Integer) As Boolean
-				   
+		  
 		  If column <> 0 Then Return False // Protection for the future: don't use this except for the song name column
 		  
 		  result = CompareHymnBookOrder(Me.Cell(row1, column), Me.Cell(row2, column))
@@ -9880,8 +9941,8 @@ End
 		      Me.Cell(row2, column) + d2 + "'", 1
 		    End If
 		  End If
-  
-		  Return True 
+		  
+		  Return True
 		End Function
 	#tag EndEvent
 	#tag Event
@@ -10722,6 +10783,15 @@ End
 		  Dim i, j As Integer
 		  Dim groupType As String
 		  
+		  '++JRC Don't reload if same set item
+		  If Me.ListIndex = CurrentInSetItem Then Return
+		  
+		  '++JRC
+		  If DontUpdateSetItem Then
+		    Return
+		  End If
+		  '--
+		  
 		  'Ask if user wants to save
 		  If NOT ActionInSetAskSave Then
 		    If CurrentInSetItem >= 0 Then
@@ -10917,19 +10987,10 @@ End
 	#tag EndEvent
 	#tag Event
 		Function DragReorderRows(newPosition as Integer, parentRow as Integer) As Boolean
-		  Dim xgroups As XmlNode
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  Status_SetChanged = True
-		  If newPosition > Me.ListIndex Then
-		    If newPosition = Me.ListCount - 1 Then
-		      xgroups.AppendChild xgroups.Child(Me.ListIndex)
-		    Else
-		      xgroups.Insert xgroups.Child(Me.ListIndex), xgroups.Child(newPosition+1)
-		    End If
-		  ElseIf newPosition < Me.ListIndex Then
-		    xgroups.Insert xgroups.Child(Me.ListIndex), xgroups.Child(newPosition)
-		  End If
-		  'EnableMenuItems
+		  '++JRC
+		  ReorderSetItemList(lst_set_items.ListIndex, newPosition)
+		  return true 'We'll handle the reorder manually, workaround for bug #1827986
+		  '--
 		End Function
 	#tag EndEvent
 	#tag Event

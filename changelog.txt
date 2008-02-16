@@ -1,4 +1,6 @@
-﻿-= 1.3 Beta 2 =-
+﻿* Fix issue where changing chapters in ScripturePickerWindow wouldn't work correctly if moving from a chapter with more verses than the new chapter AND the From or Thru Verse selected was greater than the last verse of the new chapter.
+
+-= 1.3 Beta 2 =-
 
 * Fix Bible citations so a single verse shows up as "Genesis 1:1" and an entire chapter is "Genesis 1".
 

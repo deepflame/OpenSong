@@ -1,5 +1,7 @@
 ﻿-= JRC =-
 
+* Correct issue with the previous bugfix where the first and last item in a set inaccessable
+
 * Reload set when switching back to Set Mode fixes bug #1851991
 
 * Disabled activity logging in Song Preview Mode

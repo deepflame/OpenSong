@@ -10082,6 +10082,9 @@ End
 		  Status_SetChanged = False
 		  Status_InSetOpen = False
 		  Status_InSetChanged = False
+		  '++JRC Correct issue where the first and last item in a set weren't accessable
+		  CurrentInSetItem = -1
+		  '--
 		  EnableMenuItems
 		  
 		  App.MouseCursor = Nil

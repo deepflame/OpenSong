@@ -227,14 +227,19 @@ Inherits SBufferedCanvas
 		  Dim inputStream As BinaryStream
 		  
 		  f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
-		  If f <> Nil Then
-		    Image = img
-		    f.SaveAsPicture Image
-		    inputStream = f.OpenAsBinaryFile(False)
-		    Base64 = EncodeBase64(inputStream.Read(f.Length))
-		    inputStream.Close
-		    f.delete
-		  End If
+		  If Not (img Is Nil) Then
+		    If f <> Nil Then
+		      Image = img
+		      f.SaveAsPicture Image
+		      inputStream = f.OpenAsBinaryFile(False)
+		      Base64 = EncodeBase64(inputStream.Read(f.Length))
+		      inputStream.Close
+		      f.delete
+		    End If
+		  Else
+		    Image = Nil
+		    Base64 = ""
+  	  End If
 		  
 		  Repaint
 		End Sub

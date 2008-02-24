@@ -4,7 +4,7 @@ Implements ScriptureNotifier
 	#tag Method, Flags = &h0
 		Sub CommandNotification(command As String, sender As iScripturePicker, parameter As Variant)
 		  
-		  System.DebugLog "ScripturePickerController.CommandNotification: " + Command
+		  App.DebugWriter.Write "ScripturePickerController.CommandNotification: " + Command, 5
 		  
 		  Select Case command
 		  Case cmdSelectBible
@@ -35,7 +35,7 @@ Implements ScriptureNotifier
 		    ScripturePickerDone sender
 		    
 		  Case Else
-		    System.DebugLog "ScripturePickerController.CommandNotification: Unknown command " + command
+		    App.DebugWriter.Write "ScripturePickerController.CommandNotification: Unknown command " + command, 1
 		  End Select
 		  
 		End Sub
@@ -78,15 +78,29 @@ Implements ScriptureNotifier
 	#tag Method, Flags = &h1
 		Protected Sub ChangePassage(newPassage As String)
 		  Dim values() As String
+		  Dim newBook As Integer
+		  Dim newChapter As Integer
+		  Dim newFromVerse As Integer
+		  Dim newThruVerse As Integer
 		  
 		  values = Split(newPassage, Chr(0))
-		  If CurrentBible.ValidateCitation(Val(values(0)), Val(values(1)), Val(values(2)), Val(values(3))) Then
-		    CurrentBook = Val(values(0))
-		    CurrentChapter = Val(values(1))
-		    CurrentFromVerse = Val(values(2))
-		    CurrentThruVerse = Val(values(3))
-		    NotifyPassageChanged
+		  App.DebugWriter.Write "ScripturePickerController.ChangePassage: " + join(values, ", ")
+		  newBook = Val(values(0))
+		  newChapter = Val(values(1))
+		  newFromVerse = Val(values(2))
+		  newThruVerse = Val(values(3))
+		  
+		  // Compare... will determine what has changed and reset these as appropriate
+		  
+		  CompareToCurrentPassage(newBook, newChapter, newFromVerse, newThruVerse)
+		  If CurrentBible.ValidateCitation(newBook, newChapter, newFromVerse, newThruVerse) Then
+		    CurrentBook = newBook
+		    CurrentChapter = newChapter
+		    CurrentFromVerse = newFromVerse
+		    CurrentThruVerse = newThruVerse
 		  End If
+		  NotifyPassageChanged
+		  
 		End Sub
 	#tag EndMethod
 
@@ -301,19 +315,22 @@ Implements ScriptureNotifier
 		  + " " + CStr(CurrentChapter)
 		  
 		  // Check to see if the reference is the entire chapter
+		  // If it is, don't add verse numbers
 		  
-		  If Not(CurrentFromVerse = 0 And CurrentThruVerse = UBound(verses)) Then
+		  If Not((CurrentFromVerse = 0) And (CurrentThruVerse = UBound(verses))) Then
+		    
+		    // Not the entire chapter.  Add the starting verse number
 		    CurrentBible.GetVerseRange(CurrentBook, CurrentChapter, CurrentFromVerse, startVerse, endVerse)
 		    ref = ref + ":" + startVerse
-		    If CurrentFromVerse = CurrentThruVerse And endVerse.Len > 0 Then
-		      ref = ref + "-" + endVerse
-		    Else
+		    
+		    // If only a single verse node in the Bible is selected, see if an endverse was returned (i.e., node is a range of verses)
+		    
+		    If CurrentFromVerse = CurrentThruVerse Then
+		      If endVerse.Len > 0 Then ref = ref + "-" + endVerse
+		    Else // Selection is a range of verse nodes.  Add the last verse number to the citation
 		      CurrentBible.GetVerseRange(CurrentBook, CurrentChapter, CurrentThruVerse, startVerse, endVerse)
-		      If endVerse.Len = 0 Then
-		        ref = ref + "-" + startVerse
-		      Else
-		        ref = ref + "-" + endVerse
-		      End If
+		      If endverse.Len > 0 Then startVerse = endVerse //Most likely case is this is false - node is a single verse
+		      ref = ref + "-" + startVerse
 		    End If
 		  End If
 		  
@@ -461,7 +478,7 @@ Implements ScriptureNotifier
 		  newGroup.SetAttribute("type", "scripture")
 		  
 		  cite = BuildCitation
-		  newGroup.SetAttribute("name", cite)
+		  newGroup.SetAttribute("name", cite + "|" + CurrentBible.Name)
 		  SmartML.SetValue(newGroup, "title", cite)
 		  SmartML.SetValue(newGroup, "subtitle", CurrentBible.Name)
 		  
@@ -531,6 +548,42 @@ Implements ScriptureNotifier
 		  wnd.Visible = False
 		End Sub
 	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub CompareToCurrentPassage(ByRef newBook As Integer, ByRef newChapter As Integer, ByRef newFromVerse As Integer, ByRef newThruVerse As Integer)
+		  // Determine what has changed in the citation from what is currently selected, and update
+		  // the citation as necessary.
+		  
+		  If newBook <> CurrentBook Then
+		    newChapter = 1
+		    newFromVerse = 1
+		    newThruVerse = 1
+		  ElseIf newChapter <> CurrentChapter Then
+		    newFromVerse = 1
+		    newThruVerse = 1
+		  ElseIf (newFromVerse <> CurrentFromVerse) Then
+		    If (newFromVerse < 1) Or (newFromVerse > CurrentBible.GetVerseCount(newBook, newChapter)) Then
+		      newFromVerse = 1
+		    End If
+		  ElseIf (newThruVerse <> CurrentThruVerse) Then
+		    If (newThruVerse < 1) Or (newThruVerse > CurrentBible.GetVerseCount(newBook, newChapter)) Then
+		      newThruVerse = 1
+		    End If
+		  End If
+		  
+		  If newThruVerse < newFromVerse Then
+		    newThruVerse = newFromVerse
+		  End If
+		End Sub
+	#tag EndMethod
+
+
+	#tag Note, Name = Index Base
+		For this module, the base index for the Chapter and Verse references is 1
+		It is the responsibility of the Observers to convert as necessary to 0-based
+		(for example, to fill a listbox).
+		
+	#tag EndNote
 
 
 	#tag Property, Flags = &h1

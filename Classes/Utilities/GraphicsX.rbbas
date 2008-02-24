@@ -304,8 +304,10 @@ Protected Module GraphicsX
 		      Dim tab As StyleTabsType
 		      Dim linePart, leftPart As String
 		      Dim spaceWidth As Integer
+		      Dim lastTabIdx As Integer
 		      
 		      spaceWidth = g.StringWidth(" ")
+		      lastTabIdx = -1
 		      
 		      For j = 1 to tabCount
 		        
@@ -313,40 +315,62 @@ Protected Module GraphicsX
 		        
 		        If j > 1 Then
 		          
-		          For k = 0 to UBound(tabs)
+		          For k = lastTabIdx+1 to UBound(tabs)
 		            tab = tabs(k)
 		            
 		            If tab.Align = StyleHAlignEnum.Left Then
 		              If (x + tab.Position) > xx Then
 		                xx = x + tab.Position
+		                
+		                lastTabIdx = k
 		                Exit
 		              End If
 		            ElseIf tab.Align = StyleHAlignEnum.Middle Then
 		              l = FontFaceWidth(g, linePart, f)
 		              If (x + tab.Position - (l / 2)) > xx Then
 		                xx = x + tab.Position - (l / 2)
+		                
+		                lastTabIdx = k
+		                Exit
+		              ElseIf ((x + tab.Position) > (xx - spaceWidth)) And ((x + tab.Position) <= (xx + l)) Then
+		                'The position of the tab overlaps with the space taken by linePart,
+		                'but the linePart is too wide to be centered at the tab position,
+		                'so just leave the linePart position (xx) as is
+		                
+		                lastTabIdx = k
 		                Exit
 		              End If
-		            ElseIf tab.Align = StyleHAlignEnum.Right Then
+		            ElseIf tab.Align = StyleHAlignEnum.Right Or _
+		              (tab.Align = StyleHAlignEnum.Char And (InStr(linePart, tab.AlignChar) = 0)) Then
 		              l = FontFaceWidth(g, linePart, f)
 		              If (x + tab.Position - l) > xx Then
 		                xx = x + tab.Position - l
+		                
+		                lastTabIdx = k
+		                Exit
+		              ElseIf ((x + tab.Position) > (xx - spaceWidth)) And ((x + tab.Position) <= xx + l) Then
+		                'The position of the tab overlaps with the space taken by linePart,
+		                'but the linePart is too wide to be aligned right at the tab position,
+		                'so just leave the linePart position (xx) as is
+		                
+		                lastTabIdx = k
 		                Exit
 		              End If
-		            ElseIf tab.Align = StyleHAlignEnum.Char Then
-		              If InStr(linePart, tab.AlignChar) > 0 Then
-		                leftPart = Left(linePart, InStr(linePart, tab.AlignChar)-1)
-		                l = FontFaceWidth(g, leftPart, f)
-		                If (x + tab.Position - l) > xx Then
-		                  xx = x + tab.Position - l
-		                  Exit
-		                End If
-		              Else
-		                l = FontFaceWidth(g, linePart, f)
-		                If (x + tab.Position - l) > xx Then
-		                  xx = x + tab.Position - l
-		                  Exit
-		                End If
+		            ElseIf (tab.Align = StyleHAlignEnum.Char) And (InStr(linePart, tab.AlignChar) > 0) Then
+		              leftPart = Left(linePart, InStr(linePart, tab.AlignChar)-1)
+		              l = FontFaceWidth(g, leftPart, f)
+		              If (x + tab.Position - l) > xx Then
+		                xx = x + tab.Position - l
+		                
+		                lastTabIdx = k
+		                Exit
+		              ElseIf ((x + tab.Position) > (xx - spaceWidth)) And ((x + tab.Position) <= xx + l) Then
+		                'The position of the tab overlaps with the space taken by leftPart,
+		                'but the part left of the separator is too wide to be set at the tab position,
+		                'so just leave the linePart position (xx) as is
+		                
+		                lastTabIdx = k
+		                Exit
 		              End If
 		            End If
 		          Next k

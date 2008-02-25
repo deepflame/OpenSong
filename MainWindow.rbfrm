@@ -7205,6 +7205,7 @@ End
 		  Dim input As TextInputStream
 		  Dim line As String
 		  Dim xnode As XmlNode
+		  Dim slideType As String
 		  
 		  // Simple sanity checks
 		  If f = Nil Then Return False
@@ -7247,7 +7248,12 @@ End
 		  
 		  xchild = slide_groups.FirstChild
 		  While xchild <> Nil
-		    lst_set_items.AddRow xchild.GetAttribute("name") + " (" + xchild.GetAttribute("type") + ")"
+		    slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type"))
+		    If slideType = "" Then // unknown slide type
+		      App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "'", 1
+		      slideType = "*ERROR*"
+		    End If
+		    lst_set_items.AddRow xchild.GetAttribute("name") + " (" + slideType + ")"
 		    xchild = xchild.NextSibling
 		  Wend
 		  
@@ -7422,6 +7428,9 @@ End
 		  
 		  btn_song_present.DeletePopup
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
+		  if ScreenCount > 1 Then
+		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
+		  End If
 		  
 		  #If TargetLinux
 		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
@@ -9858,30 +9867,16 @@ End
 	#tag EndEvent
 	#tag Event
 		Function CompareRows(row1 as Integer, row2 as Integer, column as Integer, ByRef result as Integer) As Boolean
-				   
+		  
 		  If column <> 0 Then Return False // Protection for the future: don't use this except for the song name column
 		  
 		  result = CompareHymnBookOrder(Me.Cell(row1, column), Me.Cell(row2, column))
 		  
 		  If result = 0 Then //Names are equal, sort by folder
-		    
-		    Dim d1, d2 As String
-		    d1 = Me.CellTag(row1, column).StringValue
-		    d2 = Me.CellTag(row2, column).StringValue
-		    If d1 < d2 Then
-		      result = -1
-		    ElseIf d1 > d2 Then
-		      result = 1
-		    Else 'This should NEVER happen
-		      App.DebugWriter.Write "MainWindow.lst_songs_songs.CompareRows: Files and Folders equal?", 1
-		      App.DebugWriter.Write "MainWindow.lst_songs_songs.CompareRows: row1 = '" + _
-		      Me.Cell(row1, column) + d1 + "'", 1
-		      App.DebugWriter.Write "MainWindow.lst_songs_songs.CompareRows: row2 = '" + _
-		      Me.Cell(row2, column) + d2 + "'", 1
-		    End If
+		    result = Compare(Me.CellTag(row1, column).StringValue, Me.CellTag(row2, column).StringValue)
 		  End If
-  
-		  Return True 
+		  
+		  Return True
 		End Function
 	#tag EndEvent
 	#tag Event
@@ -9973,6 +9968,7 @@ End
 		  'Dim input As TextInputStream
 		  Dim line As String
 		  Dim xnode As XmlNode
+		  Dim slideType As String
 		  
 		  lst_set_items.DeleteAllRows
 		  
@@ -10008,7 +10004,12 @@ End
 		  
 		  xchild = slide_groups.FirstChild
 		  While xchild <> Nil
-		    lst_set_items.AddRow xchild.GetAttribute("name") + " (" + xchild.GetAttribute("type") + ")"
+		    slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type"))
+		    If slideType = "" Then // unknown slide type
+		      App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "'", 1
+		      slideType = "*ERROR*"
+		    End If
+		    lst_set_items.AddRow xchild.GetAttribute("name") + " (" + slideType + ")"
 		    xchild = xchild.NextSibling
 		  Wend
 		  

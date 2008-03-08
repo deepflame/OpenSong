@@ -157,11 +157,130 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   140
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   250
          BehaviorIndex   =   4
+      End
+      Begin StaticText lbl_font_title
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   6
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Italic          =   "False"
+         Left            =   25
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Text            =   "Title:"
+         TextAlign       =   0
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   26
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   250
+         BehaviorIndex   =   6
+      End
+      Begin SFontCanvas can_font_title
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AdvancedOptions =   "True"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   7
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   80
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Left            =   25
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   41
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   250
+         BehaviorIndex   =   7
+      End
+      Begin StaticText lbl_font_align
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   8
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Italic          =   "False"
+         Left            =   287
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Text            =   "Align:"
+         TextAlign       =   1
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   26
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   122
+         BehaviorIndex   =   8
+      End
+      Begin SAlignCanvas sal_align_title
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   9
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   44
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Left            =   287
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   56
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   44
+         BehaviorIndex   =   9
       End
       Begin PushButton btn_title_margin
          AutoDeactivate  =   "True"
@@ -191,150 +310,12 @@ Begin Window StyleWindow
          Width           =   66
          BehaviorIndex   =   5
       End
-      Begin StaticText lbl_font_title
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   7
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   "False"
-         Left            =   25
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Multiline       =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Text            =   "Title:"
-         TextAlign       =   0
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   26
-         Underline       =   "False"
-         Visible         =   True
-         Width           =   250
-         BehaviorIndex   =   7
-      End
-      Begin SFontCanvas can_font_title
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AdvancedOptions =   "True"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   8
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   80
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Left            =   25
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   41
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   250
-         BehaviorIndex   =   8
-      End
-      Begin StaticText lbl_font_align
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   9
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   "False"
-         Left            =   287
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Multiline       =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Text            =   "Align:"
-         TextAlign       =   1
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   26
-         Underline       =   "False"
-         Visible         =   True
-         Width           =   122
-         BehaviorIndex   =   9
-      End
-      Begin SAlignCanvas sal_align_title
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   6
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   44
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Left            =   287
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   56
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   44
-         BehaviorIndex   =   6
-      End
-      Begin SAlignCanvas sal_align_subtitle
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   11
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   44
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Left            =   287
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   155
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   44
-         BehaviorIndex   =   11
-      End
       Begin PushButton btn_subtitle_margin
          AutoDeactivate  =   "True"
          Bold            =   ""
          Cancel          =   ""
          Caption         =   "Margins"
-         ControlOrder    =   10
+         ControlOrder    =   11
          Default         =   ""
          Enabled         =   True
          Height          =   22
@@ -355,7 +336,89 @@ Begin Window StyleWindow
          Underline       =   ""
          Visible         =   True
          Width           =   66
+         BehaviorIndex   =   11
+      End
+      Begin SAlignCanvas sal_align_subtitle
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   10
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   44
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Left            =   287
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   155
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   44
          BehaviorIndex   =   10
+      End
+      Begin SFontCanvas can_font_body
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AdvancedOptions =   "True"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   13
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   80
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Left            =   25
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   239
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   250
+         BehaviorIndex   =   13
+      End
+      Begin SAlignCanvas sal_align_body
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   14
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   44
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Left            =   287
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   254
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   44
+         BehaviorIndex   =   14
       End
       Begin StaticText lbl_font_body
          AutoDeactivate  =   "True"
@@ -388,62 +451,11 @@ Begin Window StyleWindow
          Width           =   250
          BehaviorIndex   =   12
       End
-      Begin SFontCanvas can_font_body
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AdvancedOptions =   "True"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   14
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   80
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Left            =   25
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   239
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   250
-         BehaviorIndex   =   14
-      End
-      Begin SAlignCanvas sal_align_body
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   13
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   44
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Left            =   287
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   254
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   44
-         BehaviorIndex   =   13
-      End
-      Begin PushButton btn_body_margin
+      Begin PushButton btn_body_tabs
          AutoDeactivate  =   "True"
          Bold            =   ""
          Cancel          =   ""
-         Caption         =   "Margins"
+         Caption         =   "Tabulators"
          ControlOrder    =   16
          Default         =   ""
          Enabled         =   True
@@ -461,17 +473,17 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   10
-         Top             =   250
+         Top             =   285
          Underline       =   ""
          Visible         =   True
          Width           =   66
          BehaviorIndex   =   16
       End
-      Begin PushButton btn_body_tabs
+      Begin PushButton btn_body_margin
          AutoDeactivate  =   "True"
          Bold            =   ""
          Cancel          =   ""
-         Caption         =   "Tabulators"
+         Caption         =   "Margins"
          ControlOrder    =   15
          Default         =   ""
          Enabled         =   True
@@ -489,7 +501,7 @@ Begin Window StyleWindow
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   10
-         Top             =   285
+         Top             =   250
          Underline       =   ""
          Visible         =   True
          Width           =   66
@@ -678,6 +690,8 @@ Begin Window StyleWindow
          MyColor         =   0
          Scope           =   0
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
          Visible         =   True
@@ -735,6 +749,8 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   105
          UseFocusRing    =   "True"
          Visible         =   True
@@ -1061,8 +1077,11 @@ End
 		  LoadValues
 		  
 		  ShowModalWithin MainWindow
-		  SmartML.RemoveChildren(styleNode)
-		  SmartML.CloneChildren(workingStyle.ToXML.DocumentElement, styleNode)
+		  
+		  If ReturnValue Then
+		    SmartML.RemoveChildren(styleNode)
+		    SmartML.CloneChildren(workingStyle.ToXML.DocumentElement, styleNode)
+		  End If
 		  Return ReturnValue
 		End Function
 	#tag EndMethod
@@ -1211,6 +1230,14 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events can_font_title
+	#tag Event
+		Sub Action()
+		  workingStyle.TitleFont = Me.GetFont
+		  can_background_image.Repaint
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events sal_align_title
 	#tag Event
 		Sub Open()
@@ -1227,11 +1254,19 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events can_font_title
+#tag Events sal_align_subtitle
 	#tag Event
-		Sub Action()
-		  workingStyle.TitleFont = Me.GetFont
-		  can_background_image.Repaint
+		Sub Open()
+		  Me.SetValid "YYYNNNYYY"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub AlignChanged(HAlign As String, VAlign As String)
+		  If( workingStyle.SubtitleAlign <> HAlign) Or (workingStyle.SubtitleVAlign <> VAlign) Then
+		    workingStyle.SubtitleAlign = HAlign
+		    workingStyle.SubtitleVAlign = VAlign
+		    can_background_image.Repaint
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1251,19 +1286,11 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events sal_align_subtitle
+#tag Events can_font_body
 	#tag Event
-		Sub Open()
-		  Me.SetValid "YYYNNNYYY"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub AlignChanged(HAlign As String, VAlign As String)
-		  If( workingStyle.SubtitleAlign <> HAlign) Or (workingStyle.SubtitleVAlign <> VAlign) Then
-		    workingStyle.SubtitleAlign = HAlign
-		    workingStyle.SubtitleVAlign = VAlign
-		    can_background_image.Repaint
-		  End If
+		Sub Action()
+		  workingStyle.BodyFont = Me.GetFont
+		  can_background_image.Repaint
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1284,10 +1311,17 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events can_font_body
+#tag Events btn_body_margin
 	#tag Event
 		Sub Action()
-		  workingStyle.BodyFont = Me.GetFont
+		  dim result as Boolean
+		  Dim tempStyle As SlideStyle
+		  tempStyle = New SlideStyle(workingStyle)
+		  
+		  result = StyleMarginWindow.Edit(tempStyle, self.PreviewSlideNode, StyleSectionEnum.Body)
+		  
+		  If result Then workingStyle.BodyMargins(tempStyle.BodyMargins())
+		  
 		  can_background_image.Repaint
 		End Sub
 	#tag EndEvent
@@ -1308,21 +1342,6 @@ End
 		      workingStyle.BodyTabAdd(tempStyle.BodyTabGet(i))
 		    Next i
 		  End If
-		  
-		  can_background_image.Repaint
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_body_margin
-	#tag Event
-		Sub Action()
-		  dim result as Boolean
-		  Dim tempStyle As SlideStyle
-		  tempStyle = New SlideStyle(workingStyle)
-		  
-		  result = StyleMarginWindow.Edit(tempStyle, self.PreviewSlideNode, StyleSectionEnum.Body)
-		  
-		  If result Then workingStyle.BodyMargins(tempStyle.BodyMargins())
 		  
 		  can_background_image.Repaint
 		End Sub

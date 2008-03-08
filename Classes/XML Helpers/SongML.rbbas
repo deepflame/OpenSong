@@ -131,21 +131,9 @@ Module SongML
 
 	#tag Method, Flags = &h0
 		Sub CloneStyle(fromNode As XmlNode, toNode As XmlNode)
-		  SmartML.SetValueF toNode, "title", SmartML.GetValueF(fromNode, "title")
-		  SmartML.SetValueF toNode, "subtitle", SmartML.GetValueF(fromNode, "subtitle")
-		  SmartML.SetValueF toNode, "body", SmartML.GetValueF(fromNode, "body")
+		  SmartML.CloneAttributes fromNode, toNode
+		  SmartML.CloneChildren fromNode, toNode
 		  
-		  SmartML.SetValue toNode, "body/@align", SmartML.GetValue(fromNode, "body/@align")
-		  SmartML.SetValue toNode, "body/@valign", SmartML.GetValue(fromNode, "body/@valign")
-		  
-		  SmartML.SetValue toNode, "title/@align", SmartML.GetValue(fromNode, "title/@align")
-		  SmartML.SetValue toNode, "title/@valign", SmartML.GetValue(fromNode, "title/@valign")
-		  SmartML.SetValue toNode, "subtitle/@align", SmartML.GetValue(fromNode, "subtitle/@align")
-		  SmartML.SetValue toNode, "subtitle/@valign", SmartML.GetValue(fromNode, "subtitle/@valign")
-		  
-		  SmartML.SetValue toNode, "background", SmartML.GetValue(fromNode, "background")
-		  SmartML.SetValue toNode, "background/@strip_footer", SmartML.GetValue(fromNode, "background/@strip_footer")
-		  SmartML.SetValue toNode, "background/@color", SmartML.GetValue(fromNode, "background/@color")
 		End Sub
 	#tag EndMethod
 

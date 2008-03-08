@@ -102,6 +102,21 @@ Inherits Canvas
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub SetAlign(HorAlign As String, VertAlign As String)
+		  If HorAlign = "left" Then HAlign = 0
+		  If HorAlign = "center" Then HAlign = 1
+		  If HorAlign = "right" Then HAlign = 2
+		  
+		  If VertAlign = "top" Then VAlign = 0
+		  If VertAlign = "middle" Then VAlign = 1
+		  If VertAlign = "bottom" Then VAlign = 2
+		  
+		  AlignChanged(GetHAlign(), GetVAlign())
+		  self.Invalidate()
+		End Sub
+	#tag EndMethod
+
 
 	#tag Hook, Flags = &h0
 		Event AlignChanged(HAlign As String, VAlign As String)

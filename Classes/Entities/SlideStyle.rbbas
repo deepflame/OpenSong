@@ -68,6 +68,8 @@ Protected Class SlideStyle
 
 	#tag Method, Flags = &h0
 		Sub Constructor(xStyle As XmlNode)
+		  defaultBGColor = LightBevelColor
+		  
 		  FromXML(xStyle)
 		End Sub
 	#tag EndMethod
@@ -440,7 +442,6 @@ Protected Class SlideStyle
 
 	#tag Method, Flags = &h0
 		Sub FromXML(xStyle As XmlNode)
-		  Dim foo As Boolean
 		  Dim tabsNode As XmlNode
 		  Dim tabNode as XmlNode
 		  Dim i As Integer
@@ -504,7 +505,9 @@ Protected Class SlideStyle
 		  SubtitleDescriptiveText = SmartML.GetValueB(xStyle, "subtitle/@descriptive", True, False)
 		  
 		  Background = SmartML.GetValueP(xstyle, "background", False)
-		  foo = SmartML.GetValueC(xstyle, "background/@color", BGColor, False)
+		  If Not SmartML.GetValueC(xstyle, "background/@color", BGColor, False) Then
+		    BGColor = defaultBGColor
+		  End If
 		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
 		  
 		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
@@ -521,6 +524,7 @@ Protected Class SlideStyle
 		  // since we don't create and destroy these at a high
 		  // rate it should be sufficient.
 		  //--
+		  defaultBGColor = LightBevelColor
 		  
 		  If xStyle Is Nil Then
 		    Dim e As New NilObjectException
@@ -682,6 +686,10 @@ Protected Class SlideStyle
 
 	#tag Property, Flags = &h21
 		Private BodyTabs() As StyleTabsType
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private defaultBGColor As Color
 	#tag EndProperty
 
 

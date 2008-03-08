@@ -191,66 +191,10 @@ Begin Window StyleWindow
          Width           =   66
          BehaviorIndex   =   5
       End
-      Begin SAlignCanvas sal_align_title
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   6
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   44
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Left            =   287
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   56
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   44
-         BehaviorIndex   =   6
-      End
-      Begin StaticText lbl_font_align
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   7
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   "False"
-         Left            =   287
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Multiline       =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Text            =   "Align:"
-         TextAlign       =   1
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   26
-         Underline       =   "False"
-         Visible         =   True
-         Width           =   122
-         BehaviorIndex   =   7
-      End
       Begin StaticText lbl_font_title
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   9
+         ControlOrder    =   7
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -276,7 +220,7 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   250
-         BehaviorIndex   =   9
+         BehaviorIndex   =   7
       End
       Begin SFontCanvas can_font_title
          AcceptFocus     =   "False"
@@ -303,6 +247,62 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   250
          BehaviorIndex   =   8
+      End
+      Begin StaticText lbl_font_align
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   9
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Italic          =   "False"
+         Left            =   287
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Text            =   "Align:"
+         TextAlign       =   1
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   26
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   122
+         BehaviorIndex   =   9
+      End
+      Begin SAlignCanvas sal_align_title
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   6
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   44
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Left            =   287
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   56
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   44
+         BehaviorIndex   =   6
       End
       Begin SAlignCanvas sal_align_subtitle
          AcceptFocus     =   "False"
@@ -357,36 +357,10 @@ Begin Window StyleWindow
          Width           =   66
          BehaviorIndex   =   10
       End
-      Begin SFontCanvas can_font_body
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AdvancedOptions =   "True"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   12
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   80
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Left            =   25
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   239
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   250
-         BehaviorIndex   =   12
-      End
       Begin StaticText lbl_font_body
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   14
+         ControlOrder    =   12
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -410,6 +384,32 @@ Begin Window StyleWindow
          TextSize        =   10
          Top             =   224
          Underline       =   "False"
+         Visible         =   True
+         Width           =   250
+         BehaviorIndex   =   12
+      End
+      Begin SFontCanvas can_font_body
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AdvancedOptions =   "True"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   14
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   80
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_fonts_and_alignment"
+         Left            =   25
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   239
+         UseFocusRing    =   "True"
          Visible         =   True
          Width           =   250
          BehaviorIndex   =   14
@@ -1052,10 +1052,10 @@ End
 
 	#tag Method, Flags = &h0
 		Function Edit(styleNode As XmlNode, slideNode as XmlNode, SongStyle As Boolean = True) As Boolean
-		  self.styleNode = styleNode
-		  self.PreviewSlideNode = slideNode
-		  
 		  ReturnValue = False
+		  styleNode = styleNode
+		  PreviewSlideNode = slideNode
+		  
 		  workingStyle = New SlideStyle(styleNode)
 		  SongStyleShow SongStyle
 		  LoadValues
@@ -1075,80 +1075,42 @@ End
 		  
 		  edt_background_trim_bottom.Text = CStr(workingStyle.StripFooter)
 		  
-		  sal_align_body.SetHAlign workingStyle.BodyAlign
-		  sal_align_body.SetVAlign workingStyle.BodyVAlign
+		  sal_align_body.SetAlign workingStyle.BodyAlign, workingStyle.BodyVAlign
+		  If workingStyle.BodyAlign = "left" Then
+		    btn_body_tabs.Enabled = True
+		  Else
+		    btn_body_tabs.Enabled = False
+		  End If
 		  chk_font_highlight_chorus.Value = workingStyle.HighlightChorus
 		  
-		  sal_align_title.SetHAlign workingStyle.TitleAlign
-		  sal_align_title.SetVAlign workingStyle.TitleVAlign
+		  sal_align_title.SetAlign workingStyle.TitleAlign, workingStyle.TitleVAlign
 		  
-		  sal_align_subtitle.SetHAlign workingStyle.SubtitleAlign
-		  sal_align_subtitle.SetVAlign workingStyle.SubtitleVAlign
+		  sal_align_subtitle.SetAlign workingStyle.SubtitleAlign,workingStyle.SubtitleVAlign
 		  chk_font_descriptive_subtitle_info.Value = workingStyle.DescriptiveSubtitles
 		  
 		  can_font_title.SetFont workingStyle.TitleFont
 		  can_font_body.SetFont workingStyle.BodyFont
 		  can_font_subtitle.SetFont workingStyle.SubtitleFont
+		  
 		  pop_background_position.ListIndex = workingStyle.Position - 1
+		  If pop_background_position.ListIndex = -1 Then pop_background_position.ListIndex = SlideStyle.POS_STRETCH - 1
 		  
 		  If IsSong Then
 		    lst_song_subtitles.SetSelected(workingStyle.SubtitleList)
 		  End If
 		  
 		  Return
-		  
-		  //--------------------------------------------------//
-		  Dim c As Color
-		  dim temp As String
-		  dim TempNode As  XmlNode
-		  
-		  If SmartML.GetValueC(styleNode, "background/@color", c) Then
-		    can_background_color.SetColor c
-		  Else
-		    can_background_color.ClearColor
-		  End If
-		  
-		  can_background_image.SetImageAsString SmartML.GetValue(styleNode, "background")
-		  edt_background_trim_bottom.Text = Str(SmartML.GetValueN(styleNode, "background/@strip_footer"))
-		  
-		  sal_align_body.SetHAlign SmartML.GetValue(styleNode, "body/@align")
-		  sal_align_body.SetVAlign SmartML.GetValue(styleNode, "body/@valign")
-		  chk_font_highlight_chorus.Value = SmartML.GetValueB(styleNode, "body/@highlight_chorus")
-		  
-		  sal_align_title.SetHAlign SmartML.GetValue(styleNode, "title/@align")
-		  sal_align_title.SetVAlign SmartML.GetValue(styleNode, "title/@valign")
-		  
-		  sal_align_subtitle.SetHAlign SmartML.GetValue(styleNode, "subtitle/@align")
-		  sal_align_subtitle.SetVAlign SmartML.GetValue(styleNode, "subtitle/@valign")
-		  chk_font_descriptive_subtitle_info.Value = SmartML.GetValueB(styleNode, "subtitle/@descriptive")
-		  
-		  can_font_title.SetFont SmartML.GetValueF(styleNode, "title")
-		  can_font_body.SetFont SmartML.GetValueF(styleNode, "body")
-		  can_font_subtitle.SetFont SmartML.GetValueF(styleNode, "subtitle")
-		  
-		  pop_background_position.ListIndex = SmartML.GetValueN(styleNode, "background/@position") - 1
-		  If pop_background_position.ListIndex = -1 Then pop_background_position.ListIndex = SlideStyle.POS_STRETCH - 1
-		  
-		  if Not IsSong then
-		    lst_song_subtitles.Visible = False
-		    lbl_font_subtitles.Visible = False
-		  Else
-		    temp = SmartML.GetValue(styleNode, "song_subtitle")
-		    lst_song_subtitles.SetSelected(temp)
-		    lst_song_subtitles.Visible = True
-		    lbl_font_subtitles.Visible = True
-		  end if
-		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
 		Protected Sub SongStyleShow(IsSongStyle As Boolean)
 		  IsSong = IsSongStyle
+		  
 		  lst_song_subtitles.Visible = IsSongStyle
 		  chk_font_descriptive_subtitle_info.Visible = IsSongStyle
 		  chk_font_highlight_chorus.Visible = IsSongStyle
-		  lbl_font_subtitles.Visible = False
+		  lbl_font_subtitles.Visible = IsSongStyle
 		End Sub
 	#tag EndMethod
 
@@ -1257,9 +1219,11 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub AlignChanged(HAlign As String, VAlign As String)
-		  workingStyle.TitleAlign = Me.GetHAlign
-		  workingStyle.TitleVAlign = Me.GetVAlign
-		  can_background_image.Repaint
+		  If(workingStyle.TitleAlign <> HAlign) Or (workingStyle.TitleVAlign <> VAlign) Then
+		    workingStyle.TitleAlign = HAlign
+		    workingStyle.TitleVAlign = VAlign
+		    can_background_image.Repaint
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1295,9 +1259,28 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub AlignChanged(HAlign As String, VAlign As String)
-		  workingStyle.SubtitleAlign = Me.GetHAlign
-		  workingStyle.SubtitleVAlign = Me.GetVAlign
-		  can_background_image.Repaint
+		  If( workingStyle.SubtitleAlign <> HAlign) Or (workingStyle.SubtitleVAlign <> VAlign) Then
+		    workingStyle.SubtitleAlign = HAlign
+		    workingStyle.SubtitleVAlign = VAlign
+		    can_background_image.Repaint
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events sal_align_body
+	#tag Event
+		Sub AlignChanged(HAlign As String, VAlign As String)
+		  If (workingStyle.BodyAlign <> HAlign) Or (workingStyle.BodyVAlign <> VAlign) Then
+		    workingStyle.BodyAlign = HAlign
+		    workingStyle.BodyVAlign = VAlign
+		    
+		    If HAlign () = "left" Then
+		      btn_body_tabs.Enabled = true
+		    Else
+		      btn_body_tabs.Enabled = false
+		    End If
+		    can_background_image.Repaint
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1305,20 +1288,6 @@ End
 	#tag Event
 		Sub Action()
 		  workingStyle.BodyFont = Me.GetFont
-		  can_background_image.Repaint
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events sal_align_body
-	#tag Event
-		Sub AlignChanged(HAlign As String, VAlign As String)
-		  workingStyle.BodyAlign = Me.GetHAlign
-		  workingStyle.BodyVAlign = Me.GetVAlign
-		  If HAlign () = "left" Then
-		    btn_body_tabs.Enabled = true
-		  Else
-		    btn_body_tabs.Enabled = false
-		  End If
 		  can_background_image.Repaint
 		End Sub
 	#tag EndEvent

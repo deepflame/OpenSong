@@ -27,7 +27,7 @@ Inherits SBufferedCanvas
 		  Dim Style As SlideStyle
 		  //--EMP
 		  If Enabled Then
-		    If StyleNode <> Nil Then
+		    If Not (StyleNode Is Nil) Then
 		      Style = New SlideStyle(StyleNode) 'EMP 09/05
 		      'SetML.DrawSlide g, _
 		      'SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide"), _
@@ -107,7 +107,7 @@ Inherits SBufferedCanvas
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected StyleNode As XmlNode
+		Protected StyleNode As XmlNode = Nil
 	#tag EndProperty
 
 	#tag Property, Flags = &h21

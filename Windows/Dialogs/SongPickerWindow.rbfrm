@@ -708,6 +708,21 @@ End
 		  'Me.SetFocus
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Function CompareRows(row1 as Integer, row2 as Integer, column as Integer, ByRef result as Integer) As Boolean
+		  '++JRC Fix issue where songs were not listed in numerical order
+		  
+		  If column <> 0 Then Return False // Protection for the future: don't use this except for the song name column
+		  
+		  result = CompareHymnBookOrder(Me.Cell(row1, column), Me.Cell(row2, column))
+		  
+		  If result = 0 Then //Names are equal, sort by folder
+		    result = Compare(Me.CellTag(row1, column).StringValue, Me.CellTag(row2, column).StringValue)
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_add
 	#tag Event

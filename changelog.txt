@@ -1,5 +1,7 @@
 ﻿-= JRC =-
 
+* Implement patch from TrueJournals (patch #1927402)
+
 * Fix issue in SongPickerWindow where songs were not listed in numerical order
 
 * Correct issue with the previous bugfix where the first and last item in a set inaccessable

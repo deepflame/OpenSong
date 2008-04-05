@@ -267,7 +267,7 @@ Protected Class Report
 		    For i = 0 To Ubound(Log)
 		      If Log(i) <> Nil Then
 		        If NOT Log(i).AddLogEntry Then
-		          MsgBox "Error Adding log entry!"
+		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
 		          return false
 		        Else
 		          Log(i).UpdateNumEntries(Globals.SongActivityLog)
@@ -336,58 +336,49 @@ Protected Class Report
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LeftMargin"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="PrintableHeight"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="PrintableWidth"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="TopMargin"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"

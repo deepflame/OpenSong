@@ -9,7 +9,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
-   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
@@ -31,7 +30,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   0
-      Enabled         =   "True"
+      Enabled         =   True
       EraseBackground =   "True"
       Height          =   302
       HelpTag         =   ""
@@ -47,40 +46,43 @@ Begin Window PresentWindow Implements ScriptureReceiver
       TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   302
-      Begin Timer timerAdvance
-         ControlOrder    =   1
-         Enabled         =   "True"
-         Height          =   32
-         Index           =   -2147483648
-         InitialParent   =   "cnvSlide"
-         Left            =   248
-         Mode            =   0
-         Period          =   10000
-         TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
-         Top             =   248
-         Visible         =   "True"
-         Width           =   32
-      End
-      Begin Timer timerTransition
-         ControlOrder    =   2
-         Enabled         =   "True"
-         Height          =   32
-         Index           =   -2147483648
-         InitialParent   =   "cnvSlide"
-         Left            =   204
-         Mode            =   0
-         Period          =   125
-         TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
-         Top             =   248
-         Visible         =   "True"
-         Width           =   32
-      End
+      BehaviorIndex   =   0
+   End
+   Begin Timer timerAdvance
+      ControlOrder    =   1
+      Enabled         =   "True"
+      Height          =   32
+      Index           =   -2147483648
+      InitialParent   =   "cnvSlide"
+      Left            =   248
+      Mode            =   0
+      Period          =   10000
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   248
+      Visible         =   "True"
+      Width           =   32
+      BehaviorIndex   =   1
+   End
+   Begin Timer timerTransition
+      ControlOrder    =   2
+      Enabled         =   "True"
+      Height          =   32
+      Index           =   -2147483648
+      InitialParent   =   "cnvSlide"
+      Left            =   204
+      Mode            =   0
+      Period          =   125
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   248
+      Visible         =   "True"
+      Width           =   32
+      BehaviorIndex   =   2
    End
 End
 #tag EndWindow
@@ -1520,7 +1522,7 @@ End
 		    'TODO determine if the user actually displays this song (uug)
 		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW  Then
 		      If NOT Log.AddLogEntry Then
-		        MsgBox "Error Adding log entry!"
+		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
 		      Else
 		        Log.UpdateNumEntries(Globals.SongActivityLog)
 		      End If

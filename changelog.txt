@@ -1,5 +1,7 @@
 ﻿-= JRC =-
 
+* Traslate Song Activity error Messages
+
 * Implement patch from TrueJournals (patch #1927402)
 
 * Fix issue in SongPickerWindow where songs were not listed in numerical order

@@ -350,7 +350,7 @@ Inherits Application
 		  'TODO Decide where we want to store the log file
 		  '+++EMP Use FolderItem and .Child instead of AbsolutePath
 		  If NOT Globals.SongActivityLog.Load(DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
-		    MsgBox "Could not load the Song Activity Log! Logging will be disabled for this session."
+		    MsgBox  T.Translate("errors/activity_disabled")  '++JRC Translated
 		    Globals.SongActivityLog = Nil
 		  End If
 		  '--
@@ -1288,7 +1288,6 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

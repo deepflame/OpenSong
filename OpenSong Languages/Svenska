@@ -375,9 +375,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Övertoningar påverkas väldigt mycket av upplösningen. Om de går sakta, mminska upplösningen på visningsskärmen. Om övertoningarna inte syns alls kan det bero på för få färger på visningsskärmen."/>
     </settings>
-    <style caption="Utseende">
-      <use_transitions caption="Använd övertoningar*"/>
+    <transitions caption="Övertoningar">
+      <use_transitions caption="Använd övertoningar"/>
       <transition_note caption="*Övertoningar påverkas väldigt mycket av upplösningen. Om de går sakta, mminska upplösningen på visningsskärmen. Om övertoningarna inte syns alls kan det bero på för få färger på visningsskärmen."/>
+      <time caption="Tid" helptag="Total tid för övertoning (kan i verkligheten ta längre tid på äldre system)"/>
+      <frames caption="Ramar" helptag="Antal ramar, eller steg mellan bilderna"/>
+    </transitions>
+    <style caption="Utseende">
       <border_thickness caption="Textramtjocklek"/>
       <subtitles caption="Sånginfo"/>
       <modes>
@@ -399,8 +403,6 @@
       </mouse_cursor>
       <blanks caption="Sätt in blankbilder"/>
       <blanks_between caption="mellan sektioner"/>
-      <time caption="Tid" helptag="Total tid för övertoning (kan i verkligheten ta längre tid på äldre system)"/>
-      <frames caption="Ramar" helptag="Antal ramar, eller steg mellan bilderna"/>
       <blank_style caption="Blankbilder tar utseende från"/>
       <blank_prev caption="Föregående"/>
       <blank_next caption="Nästkommande"/>

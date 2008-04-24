@@ -104,7 +104,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub attachNearbyControls()
-		  ' Attaches controls with edges within 5 pixels of the edges of the splitter. 
+		  ' Attaches controls with edges within 5 pixels of the edges of the splitter.
 		  ' Embedded controls will be recursively added unless you set doNotAttachEmbeddedControls = True.
 		  dim i, edge as integer
 		  dim okToAttach as boolean
@@ -253,8 +253,8 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setMaxLimit(x as integer)
-		  ' Sets the maximum the splitter can be moved. This limit will adjust with 
-		  ' window resize. If wish it to stay fixed, set it in the IDE "Properties" window. 
+		  ' Sets the maximum the splitter can be moved. This limit will adjust with
+		  ' window resize. If wish it to stay fixed, set it in the IDE "Properties" window.
 		  
 		  initializeSmartSplitter
 		  maxLimit = x
@@ -290,7 +290,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setMinLimitOffset(x as integer)
-		  ' Sets the offset distance from the MinLimit that the splitter will stop 
+		  ' Sets the offset distance from the MinLimit that the splitter will stop
 		  ' at before snapping to the MinLimit. Send <= 0 for no offset snap.
 		  
 		  initializeSmartSplitter
@@ -364,7 +364,7 @@ Inherits Canvas
 		  p = top
 		  if isVertical then p = left
 		  
-		  'if liveDrag or not behave then 
+		  'if liveDrag or not behave then
 		  
 		  if fromBehave and stayProportional then d = proportionMin + (proportionMax - proportionMin)*proportionValue - p
 		  
@@ -526,7 +526,7 @@ Inherits Canvas
 		  
 		  ' now tell any attached smartSplitters with same orientation to behave so they will stay snapped
 		  for i = 0 to ubound(attachedControl)
-		    if attachedControl(i) isA smartSplitter and not fromBehave then 
+		    if attachedControl(i) isA smartSplitter and not fromBehave then
 		      if isVertical = smartSplitter(attachedControl(i)).isVertical then smartSplitter(attachedControl(i)).behave
 		    end if
 		  next
@@ -536,8 +536,8 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setMaxAttachedControl(c as rectControl, onlyIfBetterThanCurrent as boolean = false)
-		  ' Sets the maximum the splitter can be moved to always be just to the left or 
-		  ' above the passed control. As controls are attached, the MinAttachedControl 
+		  ' Sets the maximum the splitter can be moved to always be just to the left or
+		  ' above the passed control. As controls are attached, the MinAttachedControl
 		  ' and MaxAttachedControl furthest from the splitter is selected.
 		  ' (This control is not required to be an attached control, but it would be strange if it weren't)
 		  
@@ -564,8 +564,8 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setMinAttachedControl(c as rectControl, onlyIfBetterThanCurrent as boolean = false)
-		  ' Sets the maximum the splitter can be moved to always be just to the right or 
-		  ' below the passed control. As controls are attached, the MinAttachedControl 
+		  ' Sets the maximum the splitter can be moved to always be just to the right or
+		  ' below the passed control. As controls are attached, the MinAttachedControl
 		  ' and MaxAttachedControl furthest from the splitter is selected.
 		  ' (This control is not required to be an attached control, but it would be strange if it weren't)
 		  
@@ -610,8 +610,8 @@ Inherits Canvas
 
 	#tag Method, Flags = &h21
 		Private Function suggestMinSizeControlShouldBeVisible(c as rectControl) As Integer
-		  ' Sets minimum size that control should remain visible. 
-		  ' Setting to < 0 will have no effect since controls with a negative width 
+		  ' Sets minimum size that control should remain visible.
+		  ' Setting to < 0 will have no effect since controls with a negative width
 		  ' or height are hidden automatically anyway to avoid display glitches.
 		  
 		  if c isA ListBox then return 20
@@ -633,7 +633,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setAttachedControlShouldResize(c as rectControl, b as boolean)
-		  ' Sets if control should resize with the splitter. 
+		  ' Sets if control should resize with the splitter.
 		  ' Sets attachedControlShouldCenter to False
 		  dim i as integer
 		  
@@ -708,8 +708,8 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub behave()
-		  ' Call the behave method each time the parent window or control is resized. 
-		  ' The behave method keeps the SmartSplitter locked to its MinLimit and MaxLimit 
+		  ' Call the behave method each time the parent window or control is resized.
+		  ' The behave method keeps the SmartSplitter locked to its MinLimit and MaxLimit
 		  ' if it was previously there and adjusts its proportions if stayProportional is true.
 		  
 		  initializeSmartSplitter
@@ -838,7 +838,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setAttachedControlShouldCenter(c as rectControl, b as boolean)
-		  ' Sets if control should stay centered between min/max and splitter. 
+		  ' Sets if control should stay centered between min/max and splitter.
 		  ' Sets attachedControlShouldResize to False
 		  dim i as integer
 		  
@@ -1000,10 +1000,10 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setDebug(b as boolean)
-		  ' When set true, additional information about the splitter and attached controls will be 
-		  ' drawn to the CanvasSmartSplitterDebugger. (Requires that a canvas of 
-		  ' class CanvasSmartSplitterDebugger be somewhere in the window. It will 
-		  ' resize to the window. It should have top ControlOrder so as to not be 
+		  ' When set true, additional information about the splitter and attached controls will be
+		  ' drawn to the CanvasSmartSplitterDebugger. (Requires that a canvas of
+		  ' class CanvasSmartSplitterDebugger be somewhere in the window. It will
+		  ' resize to the window. It should have top ControlOrder so as to not be
 		  ' hidden by other controls)
 		  
 		  ' Note that debugCanvas is always nil unless b=True and a CanvasSmartSplitterDebugger
@@ -1055,7 +1055,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setConceal(b as boolean)
-		  ' When set true, the splitter will not show its handle or mouseCursor 
+		  ' When set true, the splitter will not show its handle or mouseCursor
 		  ' and will ignore mouseDowns. (Move methods still work)
 		  
 		  initializeSmartSplitter
@@ -1081,16 +1081,16 @@ Inherits Canvas
 		          mouseCursor = cursorHorizontalAdjust
 		        #endif
 		      #endif
-		      'For ERROR - cursor property does not exist: 
-		      '   To use with REALbasic 5.x, cursor files will need to be imported into this project.   
-		      '   One way to accomplish this in REALbasic 5.x is to drag the "SmartSplitter" folder 
-		      '   out of the example project "SmartSplitter_Tester.rb" project window.   Then drag 
+		      'For ERROR - cursor property does not exist:
+		      '   To use with REALbasic 5.x, cursor files will need to be imported into this project.
+		      '   One way to accomplish this in REALbasic 5.x is to drag the "SmartSplitter" folder
+		      '   out of the example project "SmartSplitter_Tester.rb" project window.   Then drag
 		      '   the folder onto the project window of this project.
 		      '
-		      '   Another way is to import the cursors contained in the compressed file, 
-		      '   "Cursors for REALbasic 5.x.sit", included in the original distribution folder.   
+		      '   Another way is to import the cursors contained in the compressed file,
+		      '   "Cursors for REALbasic 5.x.sit", included in the original distribution folder.
 		      '   Once the files are uncompressed, they can be dragged into this project.
-		      '   NOTE: These cursors are contained in the Macintosh resource fork of each file - 
+		      '   NOTE: These cursors are contained in the Macintosh resource fork of each file -
 		      '             so this might only be possible using Mac OS.
 		    else
 		      #if RBVersion > 6 then
@@ -1144,11 +1144,11 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub setHandleType(x as integer)
-		  ' Sets type of handle to be painted. 
-		  ' -1 = No Handle; 0 = Default Handle; 
-		  '  1 = Small Bar Handle; 
-		  '  2 = Large Bar Handle; 
-		  '  3 = Small Dimple Handle; 
+		  ' Sets type of handle to be painted.
+		  ' -1 = No Handle; 0 = Default Handle;
+		  '  1 = Small Bar Handle;
+		  '  2 = Large Bar Handle;
+		  '  3 = Small Dimple Handle;
 		  '  4 = Large Dimple Handle
 		  
 		  initializeSmartSplitter
@@ -1563,8 +1563,6 @@ Inherits Canvas
 		your work, you may feel compelled to offer compensation for the benefit it provided. Any monetary gift 
 		of thanks would be appreciated and would encourage continued development and support of 
 		SmartSplitter. To donate, go to http://www.harryhooie.com/donate/.
-		
-		
 	#tag EndNote
 
 	#tag Note, Name = Using SmartSplitter
@@ -1574,7 +1572,7 @@ Inherits Canvas
 		
 		To add a SmartSplitter to one of your project windows, add a canvas to the window and 
 		change the canvas's Super property from "Canvas" to "SmartSplitter". (or drag the 
-		SmartSplitter class from Project Controls onto the window)      Now resize it so that it 
+		SmartSplitter class from Project Controls onto the window)    Now resize it so that it 
 		covers the area between the controls you wish to be adjustable.
 		
 		If the splitter's height is greater than its width, it will act as a vertical splitter and look for 
@@ -1609,8 +1607,6 @@ Inherits Canvas
 		The behave method keeps the SmartSplitter locked to its MinLimit and MaxLimit if it was 
 		previously locked and adjusts its proportions if StayProportional is selected (see Setting 
 		SmartSplitter properties) was set to true.
-		
-		
 	#tag EndNote
 
 	#tag Note, Name = Revision History
@@ -1634,7 +1630,7 @@ Inherits Canvas
 		   (Use new subroutine setAttachedControlNormallyVisible to alert SmartSplitter if an attached control changes visibility)
 		    --- Thanks to Steve Roy for alerting me to this problem ---
 		• Using DisableLiveDrag looks MUCH better
-		• Fixed a Win32 "expanding" handle refresh problem  
+		• Fixed a Win32 "expanding" handle refresh problem
 		
 		Version 1.2.2
 		 • Changed main for-next loop in attachNearbyControls to loop to window.controlCount-1 - fixes a possible future OutOfBoundsException
@@ -1660,8 +1656,6 @@ Inherits Canvas
 		smartsplitter@harryhooie.com, and I will try to incorporate them in the next update so that everyone 
 		using SmartSplitter can benefit. I am particularly interested in a Win32 declare to draw a line/rect/region 
 		(but not a drag-region) to lessen the flickering - so if anyone has a declare routine coded up...
-		
-		
 	#tag EndNote
 
 
@@ -1829,11 +1823,11 @@ Inherits Canvas
 		Private conceal As boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h25
+	#tag Property, Flags = &h21
 		Private Debug As boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h5
+	#tag Property, Flags = &h1
 		Protected SwapOrientation As boolean
 	#tag EndProperty
 
@@ -1857,7 +1851,7 @@ Inherits Canvas
 		Protected minLimitPropSet As boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h25
+	#tag Property, Flags = &h21
 		Private HandleType As integer
 	#tag EndProperty
 
@@ -2156,4 +2150,3 @@ Inherits Canvas
 	#tag EndViewBehavior
 End Class
 #tag EndClass
-

@@ -347,9 +347,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Les transitions dépendent beaucoup de la résolution de l'écran. Si vos transitions sont lentes, baissez la resolution de l'écran de projection. De plus, si les transitions n'ont pas lieu, il est possible que le nombre de couleurs de l'acran de projection ne soit trop faible."/>
     </settings>
-    <style caption="Style">
+    <transitions caption="Transitions">
       <use_transitions caption="Utiliser des Transitions"/>
       <transition_note caption="*Les transitions dépendent beaucoup de la résolution de l'écran. Si vos transitions sont lentes, baissez la resolution de l'écran de projection. De plus, si les transitions n'ont pas lieu, il est possible que le nombre de couleurs de l'acran de projection ne soit trop faible."/>
+      <time caption="Durée" helptag="Durée de transition (plus long sur les systèmes lents)"/>
+      <frames caption="Etapes" helptag="Nombre d'étapes de transition entre chaque diapositive"/>
+    </transitions>
+    <style caption="Style">
       <border_thickness caption="Epaisseur de bordure"/>
       <initial_mode caption="Mode initial"/>
       <modes>
@@ -369,8 +373,6 @@
       </mouse_cursor>
       <blanks caption="Insérer des diapos vierges"/>
       <blanks_between caption="Esp. entre éléments"/>
-      <time caption="Durée" helptag="Durée de transition (plus long sur les systèmes lents)"/>
-      <frames caption="Etapes" helptag="Nombre d'étapes de transition entre chaque diapositive"/>
       <blank_style caption="Les diapos viergent prennent le style de"/>
       <blank_prev caption="Diapo précédente"/>
       <blank_next caption="Diapo suivante"/>

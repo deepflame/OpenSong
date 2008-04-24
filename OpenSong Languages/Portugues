@@ -311,9 +311,11 @@
   </print_settings>
 
   <presentation_settings title="Opções de Apresentação">
-    <style caption="Estilo">
+    <transitions caption="Transições">
       <use_transitions caption="Usar Transições"/>
       <border_thickness caption="Espessura da Borda"/>
+    </transitions>
+    <style caption="Estilo">
       <initial_mode caption="Modo Inicial"/>
       <modes>
         <normal caption="Normal"/>

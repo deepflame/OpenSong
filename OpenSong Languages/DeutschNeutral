@@ -346,9 +346,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Überblendeffekte sind abhängig von der Bildschirmauflösung. Um die Überblendgeschwindigkeit zu erhöhen, muss eventuell die Auflösung des Präsentationsmonitors heruntergesetzt werden. Bei zu geringer Farbtiefe funktioniert das Überblenden möglicherweise nicht."/>
     </settings>
-    <style caption="Stil">
-      <use_transitions caption="Überblendeffekte benutzen*"/>
+    <transitions caption="Überblendeffekte">
+      <use_transitions caption="Überblendeffekte benutzen"/>
       <transition_note caption="*Überblendeffekte sind abhängig von der Bildschirmauflösung. Um die Überblendgeschwindigkeit zu erhöhen, muss eventuell die Auflösung des Präsentationsmonitors heruntergesetzt werden. Bei zu geringer Farbtiefe funktioniert das Überblenden möglicherweise nicht."/>
+      <time caption="Time" helptag="Gesamtzeit für Überblendung (könnte auf langsamen Systemen aktuell länger sein)"/>
+      <frames caption="Rahmen" helptag="Anzahl von Rahmen oder Überblendschritten zwischen Folien"/>
+    </transitions>
+    <style caption="Stil">
       <border_thickness caption="Umrandungsbreite"/>
       <subtitles caption="Untertitel"/>
       <modes>
@@ -369,8 +373,6 @@
       </mouse_cursor>
       <blanks caption="Leere Folien einfügen"/>
       <blanks_between caption="zwischen Set-Einträgen"/>
-      <time caption="Time" helptag="Gesamtzeit für Überblendung (könnte auf langsamen Systemen aktuell länger sein)"/>
-      <frames caption="Rahmen" helptag="Anzahl von Rahmen oder Überblendschritten zwischen Folien"/>
       <blank_style caption="... übernehmen den Stil von"/>
       <blank_prev caption="voriger Folie"/>
       <blank_next caption="Nächster Folie"/>

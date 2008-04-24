@@ -6,6 +6,7 @@
     <main>Laden hoofd instellingen</main>
     <print>Laden printer instellingen</print>
     <presentation>Laden presentatie instellingen</presentation>
+    <transitions>Laden overgangen lijst</transitions>
     <tempos>Laden tempo lijst</tempos>
     <themes>Laden thema lijst</themes>
     <time_signatures>Laden time signature list</time_signatures>
@@ -112,9 +113,9 @@
     <aka caption="AKA">Geeft de algemene aangepaste titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
     <style caption="Aangepaste stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
-    <user1 caption="Door gebruiker gedefinieerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
-    <user2 caption="Door gebruiker gedefinieerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
-    <user3 caption="Door gebruiker gedefinieerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+    <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
+    <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
+    <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
   <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
@@ -185,9 +186,10 @@
     <insert caption="Invoegen"/>
       <ins_slide caption="Dia">Staat toe bij het maken van meerdere dia's dat alle dia's een gelijkluidende titel, subtitel, stijl, en/of auto-uitgebreide setting krijgen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_slide>
     <loop caption="Dia's herhalen">Geef hier een vinkje om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
-    <print caption="Afdrukken in ijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
-    <auto_advance caption="Alle dia's automatisch na">Geef een aantal seconden op voor het item zodat OpenSong automatisch doorgaat naar de volgende dia in dit item.</auto_advance>
-    <seconds caption="seconden afspelen"/>
+    <print caption="Afdrukken in lijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
+    <transition caption="Gebruik overgang">Selecteer deze optie om bij het tonen van deze dia een overgang te gebruiken.</transition>
+    <auto_advance caption="De volgende dia automatisch afspelen na">Geef een aantal seconden op voor het item zodat OpenSong automatisch doorgaat naar de volgende dia in dit item.</auto_advance>
+    <seconds caption="seconden."/>
     <style caption="Aangepaste stijl">Geef een vinkje om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
   </slide_editor>
 
@@ -353,7 +355,7 @@
       <bottom caption="Onder"/>
       <width caption="Breedte"/>
       <height caption="Hoogte"/>
-      <message caption="Ga naar bestand/Pagina instellingen ... om marges in te stellen"/>
+      <message caption="Ga naar Bestand/Pagina instellingen ... om marges in te stellen"/>
     </margins>
     <fonts>
       <title caption="Titel"/>
@@ -382,9 +384,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
     </settings>
-    <style caption="Stijl">
-      <use_transitions caption="Gebruik overgangen"/>
+    <transitions caption="Overgangen">
+      <use_transitions caption="Standaard ingeschakeld"/>
       <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
+      <time caption="Tijd" helptag="Totale tijd voor overgang (kan langer duren op langzamere systemen)"/>
+      <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
+    </transitions>
+    <style caption="Stijl">
       <border_thickness caption="Dikte randen"/>
       <subtitles caption="Subtitels"/>
       <modes>
@@ -406,8 +412,6 @@
       </mouse_cursor>
       <blanks caption="Een lege dia's invoegen"/>
       <blanks_between caption="tussen project items"/>
-      <time caption="Tijd" helptag="Totale tijd voor overgang (kan langer duren op langzamere systemen)"/>
-      <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
       <blank_prev caption="Vorige dia"/>
       <blank_next caption="Volgende dia"/>
@@ -802,7 +806,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
     <version caption="Versie"/>
-    <select_file caption="Selecteer een bijbel bestand."/>
+    <select_file caption="Selecteer een bijbelvertalingsbestand."/>
     <verses_per_slide caption="Bijbelvers per dia">
       <one caption="1"/>
       <two caption="2"/>
@@ -952,6 +956,12 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <option name="6/8"/>
   </time_sig_list>
 
+  <transition_list>
+    <option name="Standaard"/>
+    <option name="Ja"/>
+    <option name="Nee"/>
+  </transition_list>
+  
   <style_preview>
     <slide_groups>
       <slide_group name="Voorbeeld titel" type="aangepast" seconds="0" loop="false">
@@ -1021,7 +1031,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <copyright>Copyright</copyright>
     <gpl>Deze software is vrijgegeven onder de voorwaarden van de GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
-    <translating>Om OpenSong te vertalen, Kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
+    <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
     <created_with_opensong>Gemaakt met OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)

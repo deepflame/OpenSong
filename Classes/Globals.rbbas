@@ -225,6 +225,12 @@ Protected Module Globals
 		Char
 	#tag EndEnum
 
+	#tag Enum, Name = SlideTransitionEnum, Flags = &h0
+		ApplicationDefault
+		  UseTransition
+		NoTransition
+	#tag EndEnum
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

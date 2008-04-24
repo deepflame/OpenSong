@@ -381,9 +381,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*As transições são muito afetadas pela resolução de tela. Se você estiver experimentando transições lentas, considere diminuir a resolução do monitor em que a apresentação reside. Também, se você notar que estas transições não são exibidas, pode ser porque seus níveis de cor são muito baixos no monitor da apresentação."/>
     </settings>
-    <style caption="Estilo">
-      <use_transitions caption="Usar Transições*"/>
+    <transitions caption="Transições">
+      <use_transitions caption="Usar Transições"/>
       <transition_note caption="*As transições são muito afetadas pela resolução de tela. Se você estiver experimentando transições lentas, considere diminuir a resolução do monitor em que a apresentação reside. Também, se você notar que estas transições não são exibidas, pode ser porque seus níveis de cor são muito baixos no monitor da apresentação."/>
+      <time caption="Tempo" helptag="Tempo total para transição (pode ser demorado em sistemas mais lentos)"/>
+      <frames caption="Frames" helptag="Número de quadros ou passos de transição entre slides"/>
+    </transitions>
+    <style caption="Estilo">
       <border_thickness caption="Espessura da Borda"/>
       <subtitles caption="Subtítulos"/>
       <modes>
@@ -405,8 +409,6 @@
       </mouse_cursor>
       <blanks caption="Inserir Slides Brancos"/>
       <blanks_between caption="Entre Itens Configurados"/>
-      <time caption="Tempo" helptag="Tempo total para transição (pode ser demorado em sistemas mais lentos)"/>
-      <frames caption="Frames" helptag="Número de quadros ou passos de transição entre slides"/>
       <blank_style caption="Slides em brnco tem o estilo de"/>
       <blank_prev caption="Slide anterior"/>
       <blank_next caption="Próximo slide"/>

@@ -785,6 +785,33 @@ Protected Module SetML
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function GetSlideTransition(xSlide As XmlNode) As SlideTransitionEnum
+		  Dim transition As SlideTransitionEnum
+		  Dim slide_group As XmlNode
+		  Dim t As Integer
+		  
+		  transition = SlideTransitionEnum.ApplicationDefault
+		  
+		  If xslide <> Nil Then
+		    slide_group = xSlide.Parent.Parent
+		    If slide_group <> Nil Then
+		      t = SmartML.GetValueN(slide_group, "@transition", False)
+		      Select Case t
+		      Case 1
+		        transition = SlideTransitionEnum.UseTransition
+		      Case 2
+		        transition = SlideTransitionEnum.NoTransition
+		      Case Else
+		        transition = SlideTransitionEnum.ApplicationDefault
+		      End Select
+		    End If
+		  End If
+		  
+		  Return transition
+		End Function
+	#tag EndMethod
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

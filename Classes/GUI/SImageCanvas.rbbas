@@ -239,7 +239,7 @@ Inherits SBufferedCanvas
 		  Else
 		    Image = Nil
 		    Base64 = ""
-  	  End If
+		  End If
 		  
 		  Repaint
 		End Sub

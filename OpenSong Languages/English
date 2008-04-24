@@ -6,6 +6,7 @@
     <main>Loading main settings</main>
     <print>Loading print settings</print>
     <presentation>Loading presentation settings</presentation>
+    <transitions>Loading transitions list</transitions>
     <tempos>Loading tempo list</tempos>
     <themes>Loading theme list</themes>
     <time_signatures>Loading time signature list</time_signatures>
@@ -186,6 +187,7 @@
       <ins_slide caption="Slide">Allows for the creation of multiple slides that all share a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_slide>
     <loop caption="Loop Slides">Check this box to have OpenSong automatically  loop back to the first slide in this item after it finishes displaying the last slide in this item.</loop>
     <print caption="Print in List">Uncheck this box to have this custom slide group not appear when printing set lists.</print>
+    <transition caption="Use transition">Check this box to use a transition when this slide is shown.</transition>
     <auto_advance caption="Auto-advance slides every">Enter the number of seconds that OpenSong should display each slide in this item before automatically advancing to the next slide in this item.</auto_advance>
     <seconds caption="seconds"/>
     <style caption="Override Style">Checking this box enables this slide item to contain a custom style. When enabled, click the preview box above to edit this item's style.</style>
@@ -382,9 +384,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
     </settings>
-    <style caption="Style">
-      <use_transitions caption="Use Transitions*"/>
+    <transitions caption="Transitions">
+      <use_transitions caption="Enabled by default"/>
       <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
+    </transitions>
+    <style caption="Style">
       <border_thickness caption="Border Thickness"/>
       <subtitles caption="Subtitles"/>
       <modes>
@@ -406,8 +412,6 @@
       </mouse_cursor>
       <blanks caption="Insert Blank Slides"/>
       <blanks_between caption="Between Set Items"/>
-      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
-      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
       <blank_style caption="Blank slides take style of"/>
       <blank_prev caption="Previous slide"/>
       <blank_next caption="Next slide"/>
@@ -945,6 +949,12 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <option name="3/8"/>
     <option name="6/8"/>
   </time_sig_list>
+
+  <transition_list>
+    <option name="Default"/>
+    <option name="Yes"/>
+    <option name="No"/>
+  </transition_list>
 
   <style_preview>
     <slide_groups>

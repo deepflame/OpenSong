@@ -347,9 +347,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Overganger berøres av skjermopløsning. Om Du opplever langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om du legger merke til at overganger ikke viser seg, det er fordi deres fargenivåer er lav også på fremvisningsmonitoen."/>
     </settings>
-    <style caption="Stil">
-      <use_transitions caption="Bruk overganger*"/>
+    <transitions caption="Stil">
+      <use_transitions caption="Bruk overganger"/>
       <transition_note caption="*Overganger berøres av skjermopløsning. Om Du opplever langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om Du legger merke til at overganger ikke viser seg, det er fordi Deres fargenivåer er også lav på fremvisningsmonitoen"/>
+      <time caption="Tid" helptag="total tid for overgang (kan ta lenger tid på trege systemer)"/>
+      <frames caption="Bilder" helptag="Antal overgangs trinn på en overgang"/>
+    </transitions>
+    <style caption="Stil">
       <border_thickness caption="Kant tykkelse"/>
       <subtitles caption="Under tittler"/>
       <modes>
@@ -370,8 +374,6 @@
       </mouse_cursor>
       <blanks caption="Sett inn tomme lysbilder"/>
       <blanks_between caption="mellom liste innhold"/>
-      <time caption="Tid" helptag="total tid for overgang (kan ta lenger tid på trege systemer)"/>
-      <frames caption="Bilder" helptag="Antal overgangs trinn på en overgang"/>
       <blank_style caption="Blanke lysbilder tar stil"/>
       <blank_prev caption="forrige lysbilde"/>
       <blank_next caption="Neste lysbilde"/>

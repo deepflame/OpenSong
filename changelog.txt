@@ -1,4 +1,6 @@
-﻿* Fix issue where changing chapters in ScripturePickerWindow wouldn't work correctly if moving from a chapter with more verses than the new chapter AND the From or Thru Verse selected was greater than the last verse of the new chapter.
+﻿* Fix issue in SongPickerWindow where songs were not listed in numerical order
+
+* Fix issue where changing chapters in ScripturePickerWindow wouldn't work correctly if moving from a chapter with more verses than the new chapter AND the From or Thru Verse selected was greater than the last verse of the new chapter.
 
 -= 1.3 Beta 2 =-
 
@@ -1009,5 +1011,5 @@ OSX and MouseUp for the other platforms.  Action event is still called in MouseU
 * Added Print Categorized Table of Contents
 * Added Print Alphabetical Table of Contents
 
-$Date: 2008-02-16 15:42:31 +0100 (za, 16 feb 2008) $
-$Revision: 315 $
+$Date: 2008-04-02 19:27:56 +0200 (wo, 02 apr 2008) $
+$Revision: 323 $

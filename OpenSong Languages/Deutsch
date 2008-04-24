@@ -381,9 +381,13 @@
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
       <transition_note caption="link(presentation_settings/style/transition_note/@caption)"/>
     </settings>
-    <style caption="Stil">
+    <transitions caption="Überblendungen">
       <use_transitions caption="Benutze Überblendungen"/>
       <transition_note caption="Überblendeffekte sind abhängig von der Auflösung. Um die Überblendgeschwindigkeit zu erhöhen, muss eventuell die Auflösung des Präsentationsmonitors heruntergesetzt werden. Bei zu geringer Farbtiefe funktioniert das Überblenden nicht."/>
+      <time caption="Dauer [ms]" helptag="Zeit für Überblendung in Millisekunden (kann auf langsamen Systemen länger dauern)."/>
+      <frames caption="Schritte" helptag="Anzahl der Bilder für die Überblendung."/>
+    </transitions>
+    <style caption="Stil">
       <border_thickness caption="Kontur-/Schattendicke"/>
       <subtitles caption="Untertitel"/>
       <modes>
@@ -405,8 +409,6 @@
       </mouse_cursor>
       <blanks caption="Leere Folien zwischen"/>
       <blanks_between caption="Präsentationseinträgen einfügen"/>
-      <time caption="Dauer [ms]" helptag="Zeit für Überblendung in Millisekunden (kann auf langsamen Systemen länger dauern)."/>
-      <frames caption="Schritte" helptag="Anzahl der Bilder für die Überblendung."/>
       <blank_style caption="Leere Folien nutzen Layout"/>
       <blank_prev caption="der letzten Folie"/>
       <blank_next caption="der nächsten Folie"/>

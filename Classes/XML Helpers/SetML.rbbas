@@ -159,6 +159,7 @@ Protected Module SetML
 		  Dim x, y, z As Integer
 		  Dim d, ccli As String
 		  Dim multiwrap As Boolean
+		  Dim presentation, currentVerse as String
 		  
 		  RealBorder = g.Width / 50
 		  HeaderSize = 0
@@ -185,8 +186,7 @@ Protected Module SetML
 		  Subtitles = Split(subtitle, Chr(10))
 		  
 		  If Style.TitleVAlign = "top" Then
-		    HeaderSize = HeaderSize + DrawFontString(g, title, _
-		    0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
+		    HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    For i = 0 to UBound(Subtitles)
 		      If Style.SubtitleVAlign = "top" Then
 		        HeaderSize = HeaderSize + DrawFontString(g, subtitles(i), _
@@ -206,8 +206,7 @@ Protected Module SetML
 		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      End If
 		    Next i
-		    FooterSize = FooterSize + DrawFontString(g, title, _
-		    0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
+		    HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -809,6 +808,182 @@ Protected Module SetML
 		  End If
 		  
 		  Return transition
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function DrawSlideTitle(g As Graphics, xslide As XmlNode, Style as SlideStyle, x As Integer, y As Integer, f As FontFace, RealBorder as Integer, HeaderSize as Integer, FooterSize as Integer, titleMargins as StyleMarginType) As Integer
+		  Dim presentation, slideId, currentVerse, verse as String
+		  Dim parts() As String
+		  Dim title As String
+		  Dim titleHeight, drawHeight As Integer
+		  Dim p, slideIndex As Integer
+		  Dim main, curr, rest As String
+		  Dim fontHeight, titleWidth, mainWidth, currWidth, restWidth As Integer
+		  Dim fVerse, fCurrVerse As FontFace
+		  Dim align As String
+		  Dim currPart, section As String
+		  
+		  titleHeight = 0
+		  title = SmartML.GetValue(xslide.Parent.Parent, "title")
+		  title = ReplaceAll(title, "|", Chr(10))
+		  
+		  If Style.TitleIncludeVerse Then
+		    presentation = SmartML.GetValue(xslide.Parent.Parent, "presentation")
+		    slideId = Trim(SmartML.GetValue(xslide, "@id"))
+		    
+		    If presentation <> "" and slideId<>"" Then
+		      If Left(slideId, 1) = "V" Then
+		        currentVerse = Trim(Mid(slideId, 2))
+		      End If
+		      
+		      'slideIndex = -1
+		      'For p = 0 to xslide.Parent.ChildCount-1
+		      'If xslide.Parent.Child(p) = xslide Then
+		      'slideIndex = p
+		      'Exit
+		      'End If
+		      'Next
+		      
+		      parts = presentation.split(" ")
+		      For p = 0 to UBound(parts)
+		        currPart = parts(p)
+		        section = Left(currPart, 1)
+		        If Len(currPart) > 1 Then
+		          verse = Trim(Mid(currPart, 2))
+		        Else
+		          verse = ""
+		        End If
+		        
+		        'If p = slideIndex Then
+		        If currPart = slideId Then
+		          If section = "V" Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = currentVerse
+		          ElseIf section = "P" Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = App.T.Translate("songml/prechorus_abbreviation/@caption")
+		          ElseIf section = "C" Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = App.T.Translate("songml/chorus_abbreviation/@caption")
+		          ElseIf section = "B" Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = App.T.Translate("songml/bridge_abbreviation/@caption")
+		          ElseIf section = "T" Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = App.T.Translate("songml/tag_abbreviation/@caption")
+		          End If
+		        ElseIf verse <> "" And section = "V" Then
+		          If curr = "" Then
+		            If main <> "" Then
+		              main = main + ", "
+		            End If
+		            main = main + verse
+		          Else
+		            rest = rest + ", " + verse
+		          End If
+		        End If
+		        
+		      Next
+		      
+		      fVerse = f.Clone()
+		      fVerse.Bold = False
+		      fCurrVerse = f.Clone()
+		      If main <> "" or rest <> "" Then
+		        fCurrVerse.Bold=True
+		      End If
+		      
+		      If main <> "" Or curr <> "" Or rest <> "" Then
+		        main = ": " + main
+		      End If
+		      title = Trim(title)
+		      
+		      f.OntoGraphics(g)
+		      fontHeight = FontFaceHeight(g, f) + FontFaceAscent(g, f)
+		      titleHeight = CountFields(title, Chr(10)) * fontHeight
+		      titleWidth = FontFaceWidth(g, title, f)
+		      fVerse.OntoGraphics(g)
+		      If rest <> "" Then restWidth = FontFaceWidth(g, rest, fVerse)
+		      If main <> "" Then mainWidth = FontFaceWidth(g, main, fVerse)
+		      fCurrVerse.OntoGraphics(g)
+		      If curr <> "" Then currWidth = FontFaceWidth(g, curr, fCurrVerse)
+		      
+		      align = Style.TitleAlign
+		      If align = "center" Then
+		        'titleMargins.Left = titleMargins.Left + (g.Width / 2) - ((titleWidth + mainWidth + currWidth + restWidth) / 2)
+		        x = x + (g.Width / 2) - ((titleWidth + mainWidth + currWidth + restWidth) / 2)
+		        align = "left"
+		      End If
+		      
+		      If align = "left" Then
+		        drawHeight = DrawFontString(g, title, _
+		        x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		        If drawHeight > titleHeight Then titleHeight = drawHeight
+		        titleMargins.Left = titleMargins.Left + titleWidth
+		        
+		        'Adjust the starting y position to make sure the verses have the same vertical alignment as a multiline title
+		        If Style.TitleVAlign = "top" Then
+		          y = y + (titleHeight - fontHeight)
+		        End If
+		        
+		        If main <> "" then
+		          drawHeight = DrawFontString(g, main, _
+		          x+titleWidth, y, fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Left = titleMargins.Left + mainWidth
+		        End If
+		        If curr <> "" Then
+		          drawHeight = DrawFontString(g, curr, _
+		          x+titleWidth+mainWidth, y, fCurrVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Left = titleMargins.Left + currWidth
+		        End If
+		        If rest <> "" Then
+		          drawHeight = DrawFontString(g, rest, _
+		          x+titleWidth+mainWidth+currWidth, y, fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		        End If
+		        
+		      ElseIf align = "right" Then
+		        'Adjust the value for calculating the starting y position to make sure the verses have the same vertical alignment as a multiline title
+		        If Style.TitleVAlign = "bottom" Then
+		          fontHeight = titleHeight
+		        End If
+		        
+		        If rest <> "" Then
+		          drawHeight = DrawFontString(g, rest, _
+		          x, y + (titleHeight - fontHeight), fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Right = titleMargins.Right+restWidth
+		        End If
+		        If curr <> "" Then
+		          drawHeight = DrawFontString(g, curr, _
+		          x, y + (titleHeight - fontHeight), fCurrVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Right = titleMargins.Right+currWidth
+		        End If
+		        If main <> "" then
+		          drawHeight = DrawFontString(g, main, _
+		          x, y + (titleHeight - fontHeight), fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth-currWidth, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Right = titleMargins.Right+mainWidth
+		        End If
+		        drawHeight = DrawFontString(g, title, _
+		        x, y + (titleHeight - fontHeight), f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth-currWidth-mainWidth, align, g.Height, Style.TitleVAlign)
+		        If drawHeight > titleHeight Then titleHeight = drawHeight
+		      End If
+		      
+		    Else
+		      titleHeight = DrawFontString(g, title, _
+		      x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
+		    End If
+		    
+		  Else
+		    titleHeight = DrawFontString(g, title, _
+		    x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
+		  End If
+		  
+		  Return titleHeight
 		End Function
 	#tag EndMethod
 

@@ -665,6 +665,10 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
      <bridge caption="Ponte"/>
      <tag caption="Etiqueta"/>
      <verse caption="Verso"/>
+     <prechorus_abbreviation caption="coro"/>
+     <chorus_abbreviation caption="coro"/>
+     <bridge_abbreviation caption="ponte"/>
+     <tag_abbreviation caption="etiq"/>
      <author caption=""/>
      <hymn_number caption="Número do Hino"/>
      <ccli_number caption="Número CCLI da Canção"/>
@@ -721,6 +725,8 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
     <folder caption="Selecionar Pasta"/>
     <preview caption="Visualizar Canção"/>
     <lookup caption="Pesquisa Rápida"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Pesquisar Bíblia">

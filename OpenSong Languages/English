@@ -673,6 +673,10 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <bridge caption="Bridge"/>
      <tag caption="Tag"/>
      <verse caption="Verse"/>
+     <prechorus_abbreviation caption="chor"/>
+     <chorus_abbreviation caption="chor"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
      <author caption=""/>
      <hymn_number caption="Hymn Number"/>
      <ccli_number caption="CCLI Song #"/>
@@ -705,11 +709,14 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <align caption="Align"/>
       <margin caption="Margins"/>
       <tabs caption="Tabulators"/>
+    </fonts_and_alignment>
+    <options caption="Textual options">
       <subtitles caption="Song Subtitles"/>
       <highlight_chorus caption="Highlight chorus text"/>
       <descriptive_subtitle_info caption="Descriptive subtitle info"/>
-   </fonts_and_alignment>
-      <background caption="Background">
+      <verse_in_title caption="Include verse numbers in title"/>
+    </options>
+    <background caption="Background">
       <color caption="Color"/>
       <image caption="Image"/>
       <position caption="Position">
@@ -759,6 +766,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <preview caption="Song Preview"/>
     <lookup caption="Quick Lookup"/>
     <songs head1="Song Name" head2="Folder"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <song_activity title="Song Activity Log">

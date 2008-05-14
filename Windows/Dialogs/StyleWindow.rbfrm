@@ -87,7 +87,7 @@ Begin Window StyleWindow
       Caption         =   "Style Editor"
       ControlOrder    =   2
       Enabled         =   "True"
-      Height          =   456
+      Height          =   327
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -157,8 +157,6 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   140
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -216,8 +214,6 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   41
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -274,8 +270,6 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   56
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -357,8 +351,6 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   155
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -385,8 +377,6 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   239
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -412,8 +402,6 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   254
          UseFocusRing    =   "True"
          Visible         =   "True"
@@ -507,148 +495,12 @@ Begin Window StyleWindow
          Width           =   66
          BehaviorIndex   =   16
       End
-      Begin StaticText lbl_font_subtitles
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   17
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   "True"
-         Height          =   14
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   "False"
-         Left            =   25
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Multiline       =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Text            =   "Song Subtitles:"
-         TextAlign       =   0
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   323
-         Underline       =   "False"
-         Visible         =   "True"
-         Width           =   77
-         BehaviorIndex   =   18
-      End
-      Begin SubtitleList lst_song_subtitles
-         AutoDeactivate  =   "True"
-         AutoHideScrollbars=   "True"
-         Bold            =   "False"
-         ColumnCount     =   3
-         ColumnsResizable=   "False"
-         ColumnWidths    =   "0,15%,*"
-         ControlOrder    =   18
-         DataField       =   ""
-         DataSource      =   ""
-         DefaultRowHeight=   -1
-         Enabled         =   "True"
-         EnableDrag      =   "False"
-         EnableDragReorder=   "True"
-         GridLinesHorizontal=   0
-         GridLinesVertical=   0
-         HasHeading      =   "False"
-         HeadingIndex    =   -1
-         Height          =   72
-         HelpTag         =   ""
-         Hierarchical    =   "False"
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         InitialValue    =   "		1\r\n		2\r\n		3\r\n		4\r\n		5"
-         Italic          =   "False"
-         Left            =   26
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         RequiresSelection=   ""
-         Scope           =   0
-         ScrollbarHorizontal=   "False"
-         ScrollBarVertical=   "False"
-         SelectionType   =   0
-         TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   11
-         Top             =   338
-         Underline       =   "False"
-         UseFocusRing    =   "True"
-         Visible         =   "True"
-         Width           =   140
-         _ScrollOffset   =   0
-         _ScrollWidth    =   -1
-         BehaviorIndex   =   17
-      End
-      Begin CheckBox chk_font_descriptive_subtitle_info
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         Caption         =   "Include descriptive text on subtitles"
-         ControlOrder    =   19
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   "True"
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   "False"
-         Left            =   26
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   413
-         Underline       =   "False"
-         Value           =   "False"
-         Visible         =   "True"
-         Width           =   300
-         BehaviorIndex   =   19
-      End
-      Begin CheckBox chk_font_highlight_chorus
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         Caption         =   "Highlight choruses"
-         ControlOrder    =   20
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   "True"
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_fonts_and_alignment"
-         Italic          =   "False"
-         Left            =   26
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   433
-         Underline       =   "False"
-         Value           =   "False"
-         Visible         =   "True"
-         Width           =   300
-         BehaviorIndex   =   20
-      End
    End
    Begin GroupBox grp_style_background
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Background"
-      ControlOrder    =   21
+      ControlOrder    =   17
       Enabled         =   "True"
       Height          =   279
       HelpTag         =   ""
@@ -668,11 +520,11 @@ Begin Window StyleWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   140
-      BehaviorIndex   =   21
+      BehaviorIndex   =   17
       Begin StaticText lbl_background_color
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   22
+         ControlOrder    =   18
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   "True"
@@ -698,41 +550,12 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   55
-         BehaviorIndex   =   31
-      End
-      Begin SColorCanvas can_background_color
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   23
-         Enabled         =   "True"
-         EraseBackground =   "True"
-         Height          =   30
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_background"
-         IsColorSet      =   0
-         Left            =   500
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         MyColor         =   0
-         Scope           =   0
-         TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
-         Top             =   50
-         UseFocusRing    =   "True"
-         Visible         =   "True"
-         Width           =   30
-         BehaviorIndex   =   22
+         BehaviorIndex   =   18
       End
       Begin StaticText lbl_background_image
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   24
+         ControlOrder    =   19
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   "True"
@@ -758,7 +581,34 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   80
-         BehaviorIndex   =   23
+         BehaviorIndex   =   19
+      End
+      Begin SColorCanvas can_background_color
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   20
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         Height          =   30
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         IsColorSet      =   0
+         Left            =   500
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         MyColor         =   0
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   50
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   30
+         BehaviorIndex   =   20
       End
       Begin SImageCanvas can_background_image
          AcceptFocus     =   "False"
@@ -766,7 +616,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          bgColor         =   0
-         ControlOrder    =   25
+         ControlOrder    =   21
          Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   60
@@ -780,18 +630,16 @@ Begin Window StyleWindow
          LockTop         =   "False"
          Scope           =   0
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   105
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   80
-         BehaviorIndex   =   24
+         BehaviorIndex   =   21
       End
       Begin StaticText nte_background_click_to_change
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   26
+         ControlOrder    =   22
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   "True"
@@ -817,12 +665,12 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   140
-         BehaviorIndex   =   26
+         BehaviorIndex   =   22
       End
       Begin StaticText nte_background_right_click_to_clear
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   27
+         ControlOrder    =   23
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   "True"
@@ -848,12 +696,12 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   140
-         BehaviorIndex   =   25
+         BehaviorIndex   =   23
       End
       Begin StaticText lbl_background_position
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   28
+         ControlOrder    =   24
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   "True"
@@ -879,41 +727,12 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   108
-         BehaviorIndex   =   27
-      End
-      Begin PopupMenu pop_background_position
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   29
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   "True"
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_background"
-         InitialValue    =   ""
-         Italic          =   "False"
-         Left            =   460
-         ListIndex       =   0
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   12
-         Top             =   221
-         Underline       =   "False"
-         Visible         =   "True"
-         Width           =   80
-         BehaviorIndex   =   28
+         BehaviorIndex   =   24
       End
       Begin StaticText lbl_background_trim_bottom
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   30
+         ControlOrder    =   25
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   "True"
@@ -939,7 +758,36 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   120
-         BehaviorIndex   =   29
+         BehaviorIndex   =   25
+      End
+      Begin PopupMenu pop_background_position
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   26
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         InitialValue    =   ""
+         Italic          =   "False"
+         Left            =   460
+         ListIndex       =   0
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   12
+         Top             =   221
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   80
+         BehaviorIndex   =   26
       End
       Begin SEditFieldNumeric edt_background_trim_bottom
          AcceptTabs      =   "False"
@@ -948,7 +796,7 @@ Begin Window StyleWindow
          BackColor       =   16777215
          Bold            =   "False"
          Border          =   "True"
-         ControlOrder    =   31
+         ControlOrder    =   27
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   "True"
@@ -986,12 +834,12 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   30
-         BehaviorIndex   =   30
+         BehaviorIndex   =   27
       End
       Begin StaticText txt_background_pixels
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   32
+         ControlOrder    =   28
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   "True"
@@ -1017,13 +865,13 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   "True"
          Width           =   20
-         BehaviorIndex   =   32
+         BehaviorIndex   =   28
       End
    End
    Begin StaticText nte_style_trim_note
       AutoDeactivate  =   "True"
       Bold            =   "False"
-      ControlOrder    =   33
+      ControlOrder    =   29
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   "True"
@@ -1049,7 +897,198 @@ Begin Window StyleWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   140
-      BehaviorIndex   =   33
+      BehaviorIndex   =   29
+   End
+   Begin GroupBox grp_style_options
+      AutoDeactivate  =   "True"
+      Bold            =   ""
+      Caption         =   "Textual options"
+      ControlOrder    =   30
+      Enabled         =   "True"
+      Height          =   125
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   10
+      LockBottom      =   ""
+      LockLeft        =   ""
+      LockRight       =   ""
+      LockTop         =   ""
+      Scope           =   0
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   341
+      Underline       =   ""
+      Visible         =   "True"
+      Width           =   410
+      BehaviorIndex   =   30
+      Begin StaticText lbl_options_subtitles
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   31
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   14
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_options"
+         Italic          =   "False"
+         Left            =   25
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Text            =   "Song Subtitles:"
+         TextAlign       =   0
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   361
+         Underline       =   "False"
+         Visible         =   "True"
+         Width           =   155
+         BehaviorIndex   =   31
+      End
+      Begin SubtitleList lst_song_subtitles
+         AutoDeactivate  =   "True"
+         AutoHideScrollbars=   "True"
+         Bold            =   "False"
+         ColumnCount     =   3
+         ColumnsResizable=   "False"
+         ColumnWidths    =   "0,15%,*"
+         ControlOrder    =   32
+         DataField       =   ""
+         DataSource      =   ""
+         DefaultRowHeight=   -1
+         Enabled         =   "True"
+         EnableDrag      =   "False"
+         EnableDragReorder=   "True"
+         GridLinesHorizontal=   0
+         GridLinesVertical=   0
+         HasHeading      =   "False"
+         HeadingIndex    =   -1
+         Height          =   72
+         HelpTag         =   ""
+         Hierarchical    =   "False"
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_options"
+         InitialValue    =   "		1\r\n		2\r\n		3\r\n		4\r\n		5"
+         Italic          =   "False"
+         Left            =   26
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         RequiresSelection=   ""
+         Scope           =   0
+         ScrollbarHorizontal=   "False"
+         ScrollBarVertical=   "False"
+         SelectionType   =   0
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
+         Top             =   376
+         Underline       =   "False"
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   154
+         _ScrollOffset   =   0
+         _ScrollWidth    =   -1
+         BehaviorIndex   =   32
+      End
+      Begin CheckBox chk_options_descriptive_subtitle_info
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Include descriptive text on subtitles"
+         ControlOrder    =   33
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_options"
+         Italic          =   "False"
+         Left            =   200
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   376
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   195
+         BehaviorIndex   =   33
+      End
+      Begin CheckBox chk_options_highlight_chorus
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         Caption         =   "Highlight choruses"
+         ControlOrder    =   34
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_options"
+         Italic          =   "False"
+         Left            =   200
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   396
+         Underline       =   "False"
+         Value           =   "False"
+         Visible         =   "True"
+         Width           =   195
+         BehaviorIndex   =   34
+      End
+      Begin CheckBox chk_options_verse_in_title
+         AutoDeactivate  =   "True"
+         Bold            =   ""
+         Caption         =   "Include verse numbers in title"
+         ControlOrder    =   35
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   "True"
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_options"
+         Italic          =   ""
+         Left            =   200
+         LockBottom      =   ""
+         LockLeft        =   ""
+         LockRight       =   ""
+         LockTop         =   ""
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   416
+         Underline       =   ""
+         Value           =   ""
+         Visible         =   "True"
+         Width           =   195
+         BehaviorIndex   =   35
+      End
    End
 End
 #tag EndWindow
@@ -1100,12 +1139,13 @@ End
 		  Else
 		    btn_body_tabs.Enabled = False
 		  End If
-		  chk_font_highlight_chorus.Value = workingStyle.HighlightChorus
+		  chk_options_highlight_chorus.Value = workingStyle.HighlightChorus
 		  
 		  sal_align_title.SetAlign workingStyle.TitleAlign, workingStyle.TitleVAlign
+		  chk_options_verse_in_title.Value = workingStyle.TitleIncludeVerse
 		  
 		  sal_align_subtitle.SetAlign workingStyle.SubtitleAlign,workingStyle.SubtitleVAlign
-		  chk_font_descriptive_subtitle_info.Value = workingStyle.DescriptiveSubtitles
+		  chk_options_descriptive_subtitle_info.Value = workingStyle.DescriptiveSubtitles
 		  
 		  can_font_title.SetFont workingStyle.TitleFont
 		  can_font_body.SetFont workingStyle.BodyFont
@@ -1127,9 +1167,11 @@ End
 		  IsSong = IsSongStyle
 		  
 		  lst_song_subtitles.Visible = IsSongStyle
-		  chk_font_descriptive_subtitle_info.Visible = IsSongStyle
-		  chk_font_highlight_chorus.Visible = IsSongStyle
-		  lbl_font_subtitles.Visible = IsSongStyle
+		  chk_options_descriptive_subtitle_info.Visible = IsSongStyle
+		  chk_options_highlight_chorus.Visible = IsSongStyle
+		  lbl_options_subtitles.Visible = IsSongStyle
+		  chk_options_verse_in_title.Visible = IsSongStyle
+		  grp_style_options.Visible = IsSongStyle
 		End Sub
 	#tag EndMethod
 
@@ -1172,14 +1214,15 @@ End
 		  
 		  SmartML.SetValue styleNode, "body/@align", sal_align_body.GetHAlign
 		  SmartML.SetValue styleNode, "body/@valign", sal_align_body.GetVAlign
-		  SmartML.SetValueB styleNode, "body/@highlight_chorus", chk_font_highlight_chorus.Value
+		  SmartML.SetValueB styleNode, "body/@highlight_chorus", chk_options_highlight_chorus.Value
 		  
 		  SmartML.SetValue styleNode, "title/@align", sal_align_title.GetHAlign
 		  SmartML.SetValue styleNode, "title/@valign", sal_align_title.GetVAlign
+		  SmartML.SetValueB styleNode, "title/@include_verse", chk_options_verse_in_title.Value
 		  
 		  SmartML.SetValue styleNode, "subtitle/@align", sal_align_subtitle.GetHAlign
 		  SmartML.SetValue styleNode, "subtitle/@valign", sal_align_subtitle.GetVAlign
-		  SmartML.SetValueB styleNode, "subtitle/@descriptive", chk_font_descriptive_subtitle_info.Value
+		  SmartML.SetValueB styleNode, "subtitle/@descriptive", chk_options_descriptive_subtitle_info.Value
 		  
 		  SmartML.SetValueF(styleNode, "title", can_font_title.GetFont)
 		  SmartML.SetValueF(styleNode, "body", can_font_body.GetFont)
@@ -1347,27 +1390,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events lst_song_subtitles
-	#tag Event
-		Sub LostFocus()
-		  workingStyle.SubtitleList = Me.GetSelectedOptions
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events chk_font_descriptive_subtitle_info
-	#tag Event
-		Sub Action()
-		  workingStyle.DescriptiveSubtitles = Me.Value
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events chk_font_highlight_chorus
-	#tag Event
-		Sub Action()
-		  workingStyle.HighlightChorus = Me.Value
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events can_background_color
 	#tag Event
 		Sub Action()
@@ -1405,6 +1427,34 @@ End
 		Sub TextChange()
 		  workingStyle.StripFooter = Me.Value
 		  can_background_image.Repaint
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events lst_song_subtitles
+	#tag Event
+		Sub LostFocus()
+		  workingStyle.SubtitleList = Me.GetSelectedOptions
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_options_descriptive_subtitle_info
+	#tag Event
+		Sub Action()
+		  workingStyle.DescriptiveSubtitles = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_options_highlight_chorus
+	#tag Event
+		Sub Action()
+		  workingStyle.HighlightChorus = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_options_verse_in_title
+	#tag Event
+		Sub Action()
+		  workingStyle.TitleIncludeVerse = Me.Value
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Nederlands" author="Gert Vrieling en Vwout" version="1.3.0">
+<language name="Nederlands" author="Gert Vrieling en Ewout Voogt" version="1.3.0">
 
   <load_settings>
     <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
@@ -473,10 +473,10 @@ Up: Vorige dia
 Right: Volgende Sectie
 Left: Vorige Sectie
 1-9: Verzen
-C: Koor
-P: Pre-koor
+C: Refrein
+P: Voor-refrein
 B: Brug
-T: Tag</keys>
+T: Label</keys>
   </presentation_helper>
 
   <help_topics title="Help Onderwerpen">
@@ -678,7 +678,11 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <bridge caption="Bridge"/>
      <tag caption="Tag"/>
      <verse caption="Couplet"/>
-     <author caption=""/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="brug"/>
+     <tag_abbreviation caption="label"/>
+     <author caption="Schrijver/componist"/>
      <hymn_number caption="Lied nummer"/>
      <ccli_number caption="CCLI lied #"/>
      <ccli_license caption="CCLI Licentie #"/>
@@ -710,10 +714,13 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <align caption="Uitlijning"/>
       <margin caption="Marges"/>
       <tabs caption="Tabulators"/>
+    </fonts_and_alignment>
+    <options caption="Tekst opties">
       <subtitles caption="Subtitel van het lied"/>
       <highlight_chorus caption="Laten oplichten van de refreintekst"/>
       <descriptive_subtitle_info caption="Gedetailleerde beschrijving in subtitel"/>
-    </fonts_and_alignment>
+      <verse_in_title caption="Versnummers weergeven bij titel"/>
+    </options>
     <background caption="Achtergrond">
       <color caption="Kleur"/>
       <image caption="Image"/>
@@ -764,6 +771,8 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <preview caption="Lied voorbeeldweergave"/>
     <lookup caption="Snel zoeken"/>
     <songs head1="Lied naam" head2="Map"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <song_activity title="Lied gebruik logboek">
@@ -1027,7 +1036,7 @@ Klik op de dia om de stijl te wijzigen.</body>
   </questions>
 
   <about>
-    <additional>Additional development by:</additional>
+    <additional>Aanvullende ontwikkelwerkzaamheden door:</additional>
     <copyright>Copyright</copyright>
     <gpl>Deze software is vrijgegeven onder de voorwaarden van de GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>

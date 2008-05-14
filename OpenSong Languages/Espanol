@@ -638,6 +638,10 @@ If a line contains only three dashes ("---"), lyrics sheets will print with a se
      <bridge caption="Bridge"/>
      <tag caption="Tag"/>
      <verse caption="Verse"/>
+     <prechorus_abbreviation caption="chor"/>
+     <chorus_abbreviation caption="chor"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
      <author caption=""/>
      <hymn_number caption="Hymn Number"/>
      <ccli_number caption="CCLI Song #"/>
@@ -693,6 +697,8 @@ If a line contains only three dashes ("---"), lyrics sheets will print with a se
     <no_selection>Ud. no ha seleccionado ninguna canción.</no_selection>
      <!--Translate Me!!-->
     <folder caption="Select Folder"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Buscar Versículos">

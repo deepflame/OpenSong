@@ -493,6 +493,10 @@ T: Tag</keys>
      <bridge caption="Pont"/>
      <tag caption="Libellé"/>
      <verse caption="Verset"/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="pont"/>
+     <tag_abbreviation caption="lib"/>
      <author caption=""/>
      <hymn_number caption="N°"/>
      <ccli_number caption="N° CCLI"/>
@@ -527,6 +531,8 @@ T: Tag</keys>
   <song_lookup title="Consultation de chant">
     <header caption="Pour ajouter un chant, cliquer sur le titre en dessous et cliquer sur le bouton 'Ajouter', ou commencer à saisir le titre du chant et appuyer sur Entrée."/>
     <no_selection>Veuillez choisir un chant.</no_selection>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Consultation de passage biblique">

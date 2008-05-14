@@ -260,6 +260,7 @@ Protected Class SlideStyle
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
 		  SmartML.SetValue(CurrChild, "@valign", TitleVAlign)
 		  SmartML.SetValue(CurrChild, "@align", TitleAlign)
+		  SmartML.SetValueB(CurrChild, "@include_verse", TitleIncludeVerse)
 		  SmartML.SetValueN(CurrChild, "@margin-left", TitleMargins.Left)
 		  SmartML.SetValueN(CurrChild, "@margin-right", TitleMargins.Right)
 		  SmartML.SetValueN(CurrChild, "@margin-top", TitleMargins.Top)
@@ -493,6 +494,7 @@ Protected Class SlideStyle
 		  TitleMargins.Right = SmartML.GetValueN(xStyle, "title/@margin-right")
 		  TitleMargins.Top = SmartML.GetValueN(xStyle, "title/@margin-top")
 		  TitleMargins.Bottom = SmartML.GetValueN(xStyle, "title/@margin-bottom")
+		  TitleIncludeVerse = SmartML.GetValueB(xStyle, "title/@include_verse", True, False)
 		  
 		  SubtitleFont = SmartML.GetValueF(xStyle, "subtitle")
 		  SubtitleAlign = SmartML.GetValue(xStyle, "subtitle/@align")
@@ -572,6 +574,18 @@ Protected Class SlideStyle
 		  
 		  BodyTabsSort()
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub TitleIncludeVerse(Assigns value As Boolean)
+		  TitleIncludeVerse = value
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function TitleIncludeVerse() As Boolean
+		  Return TitleIncludeVerse
+		End Function
 	#tag EndMethod
 
 
@@ -690,6 +704,10 @@ Protected Class SlideStyle
 
 	#tag Property, Flags = &h21
 		Private defaultBGColor As Color
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected TitleIncludeVerse As Boolean = False
 	#tag EndProperty
 
 

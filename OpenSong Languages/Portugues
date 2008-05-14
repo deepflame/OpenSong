@@ -432,6 +432,8 @@ T: Topo</keys>
   <song_lookup title="Busca Canção">
     <header caption="Para adicionar uma canção, clique o título da canção abaixo e clique o botão 'Adicionar' ou digite o título da canção e tecle ENTER."/>
     <no_selection>Você não selecionou uma canção.</no_selection>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Buscar Leitura">

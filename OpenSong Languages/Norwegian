@@ -496,6 +496,10 @@ T: Tag</keys>
      <chorus caption="Refreng"/>
      <bridge caption="Bridge"/>
      <tag caption="Tag"/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
      <verse caption="Vers"/>
      <author caption=""/>
      <hymn_number caption="Hymn Numer"/>
@@ -534,6 +538,8 @@ T: Tag</keys>
     <header caption="Klikk på sangtittelen på listen under og klikk på 'Legg til' knappen for å legge til en sang. Du kan også  begynne å skrive inn sang tittelen og trykke på 'Legg til' knappen."/>
     <no_selection>Du har ikke valgt en sang.</no_selection>
     <folder caption="Velg mappe"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Slå opp bibelvers">

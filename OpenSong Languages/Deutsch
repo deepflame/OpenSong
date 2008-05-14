@@ -664,6 +664,10 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <bridge caption="Zwischenteil"/>
     <tag caption="Markierung"/>
     <verse caption="Strophe"/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="zwis"/>
+     <tag_abbreviation caption="mark"/>
     <author caption="Autor"/>
     <hymn_number caption="Liednummer"/>
     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
@@ -720,6 +724,8 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <folder caption="Ordner auswählen"/>
     <preview caption="Lied Vorschau"/>
     <lookup caption="Schnellsuche"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <song_activity title="Protokoll der Liedänderungen">

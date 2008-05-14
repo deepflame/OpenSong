@@ -53,7 +53,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       BehaviorIndex   =   0
       Begin Timer timerAdvance
          ControlOrder    =   1
-         Enabled         =   "True"
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -65,13 +64,11 @@ Begin Window PresentWindow Implements ScriptureReceiver
          TextFont        =   "System"
          TextSize        =   0
          Top             =   248
-         Visible         =   "True"
          Width           =   32
          BehaviorIndex   =   1
       End
       Begin Timer timerTransition
          ControlOrder    =   2
-         Enabled         =   "True"
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -83,7 +80,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
          TextFont        =   "System"
          TextSize        =   0
          Top             =   248
-         Visible         =   "True"
          Width           =   32
          BehaviorIndex   =   2
       End
@@ -1477,6 +1473,7 @@ End
 		  Dim oldSlide As Integer
 		  Dim newSlide As Integer
 		  Dim i As Integer
+		  Dim presentation As String
 		  
 		  ' Added code to remember current position so song can be inserted without changing
 		  ' what's up on the screen (allows operator to cue next song in a highly dynamic,
@@ -1492,7 +1489,7 @@ End
 		  
 		  ' Get a reference
 		  newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		  f = SongPickerWindow.Popup
+		  f = SongPickerWindow.Popup(presentation)
 		  If f <> Nil Then
 		    App.MouseCursor = WatchCursor
 		    
@@ -1514,6 +1511,10 @@ End
 		      Log.Presented = True
 		    End If
 		    '--
+		    
+		    If presentation <> "" Then 'Override the song's default presentation
+		      SmartML.SetValue(s.DocumentElement, "presentation", presentation)
+		    End If
 		    
 		    SongML.ToSetML s.DocumentElement
 		    If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then

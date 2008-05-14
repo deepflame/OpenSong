@@ -664,6 +664,10 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
      <bridge caption="Brygga"/>
      <tag caption="Stick"/>
      <verse caption="Vers"/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="bryg"/>
+     <tag_abbreviation caption="stick"/>
      <author caption="Författare:"/>
      <hymn_number caption="Sångnummer:"/>
      <ccli_number caption="CCLI Sångnr:"/>
@@ -718,6 +722,8 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
     <header caption="För att lägga till en sång, markera sångtiteln nedan och tryck på 'Lägg till'  e l l e r  börja att skriva sångtiteln och tryck på Enter."/>
     <no_selection>Du har inte markerat någon sång.</no_selection>
     <folder caption="Sångmappar"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Sök upp bibelord">

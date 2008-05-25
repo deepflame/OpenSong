@@ -1,5 +1,6 @@
 Type=Desktop
 FileTypeSet=FileTypes;FileTypes.rbbas;&h45B5FE02;&h0;false
+FileTypeSet=ImageFileTypes;ImageFileTypes.rbbas;&h37D50FFF;&h0;false
 Class=App;App.rbbas;&hBBC29220;&h0;false
 Window=PresentSettingsWindow;Windows/Settings Windows/PresentSettingsWindow.rbfrm;&hBBCC782F;&hBC8F04EC;false
 Window=PrintSettingsWindow;Windows/Settings Windows/PrintSettingsWindow.rbfrm;&hBBC3EE02;&hBC8F04EC;false

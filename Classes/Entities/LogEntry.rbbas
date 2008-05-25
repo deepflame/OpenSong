@@ -176,7 +176,9 @@ Protected Class LogEntry
 
 	#tag Method, Flags = &h0
 		Sub UpdateNumEntries(Log As ActivityLog)
-		  Log.NumEntries = NumEntries
+		  If Log <> Nil Then
+		    Log.NumEntries = NumEntries
+		  End If
 		End Sub
 	#tag EndMethod
 

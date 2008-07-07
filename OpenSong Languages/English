@@ -1060,6 +1060,8 @@ This has broken Import function until a new interface can be used.
 In the meantime, please investigate the OpenSong Import utility as an option.
 The OpenSong development team members regret any inconvenience.
     </cclinotavailable>
+    <activity_disabled>Could not load the Song Activity Log! Logging will be disabled for this session.</activity_disabled>
+    <adding_logentry>Error Adding log entry!</adding_logentry>
   </errors>
 
   <xml_errors>

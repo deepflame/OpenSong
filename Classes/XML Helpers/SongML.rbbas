@@ -146,6 +146,13 @@ Module SongML
 		  SmartML.SetValue toNode, "background", SmartML.GetValue(fromNode, "background")
 		  SmartML.SetValue toNode, "background/@strip_footer", SmartML.GetValue(fromNode, "background/@strip_footer")
 		  SmartML.SetValue toNode, "background/@color", SmartML.GetValue(fromNode, "background/@color")
+		  
+		  '++JRC Implement patch from TrueJournals (patch #1927402)
+		  SmartML.SetValue toNode, "body/@highlight_chorus", SmartML.GetValue(fromNode, "body/@highlight_chorus")
+		  SmartML.SetValue toNode, "subtitle/@descriptive", SmartML.GetValue(fromNode, "subtitle/@descriptive")
+		  SmartML.SetValue toNode, "song_subtitle", SmartML.GetValue(fromNode, "song_subtitle")
+		  '--
+		  
 		End Sub
 	#tag EndMethod
 

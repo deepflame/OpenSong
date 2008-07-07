@@ -1491,9 +1491,10 @@ End
 		    s = SmartML.XDocFromFile(f)
 		    
 		    '++JRC get song info for logging
+		    'Don't log in preview mode
 		    Dim Log As LogEntry
 		    
-		    If Globals.SongActivityLog <> Nil Then
+		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW Then
 		      Log = New LogEntry(Globals.SongActivityLog)
 		      Dim d As New Date
 		      
@@ -1517,9 +1518,9 @@ End
 		    
 		    '++JRC Log Song Presentation
 		    'TODO determine if the user actually displays this song (uug)
-		    If Globals.SongActivityLog <> Nil Then
+		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW  Then
 		      If NOT Log.AddLogEntry Then
-		        MsgBox "Error Adding log entry!"
+		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
 		      Else
 		        Log.UpdateNumEntries(Globals.SongActivityLog)
 		      End If

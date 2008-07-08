@@ -1,20 +1,46 @@
-﻿* Implement patch from TrueJournals (patch #1927402)
+﻿* It is now prossible to drag & drop images in the Style Window. (vwout)
 
-* Fix issue in SongPickerWindow where songs were not listed in numerical order
+* Prevent a program crash when logging is disabled (the ActivityLog.xml is corrupt). (thanks vwout ;)
 
-* Correct issue with the previous bugfix where the first and last item in a set inaccessable
+* Added a style option for song sheets to display the verse numbers (and the currently displayed verse highlighted)
+with the title. (vwout)
 
-* Reload set when switching back to Set Mode fixes bug #1851991
+* Enhanced the song picker window:
+  - searching now not only looks for a match at the start of a song title, but continues to check for inner title matches when looking at the start of the title does not result in hits
+  - add the ability to specify a custom presentation order in this dialog to ease the process of inserting songs
+in a (live) presentation
+  (vwout)
 
-* Disabled activity logging in Song Preview Mode
+* Added the option to use (or not use) transitions on a slide by slide basis. This works for both
+script and song slides. (vwout)
 
-* Don't reload the current set item if the user clicks the same item in the list
+* Fix in SongML.CloneStyle not copying all style settings. (vwout)
 
-* Reorder set item list manually(workaround for bug #1827986)
+* Fix in SAlignCanvas and StyleWindow to no lose the alignment settings for one dimension when setting the other in combination with the callback function. (vwout)
 
-* Fix issue in SOngPickerWindow where songs were not listed in numerical order
+* Handling of center-, right- and character-aligned text was made more intuitive (vwout)
 
-* Fix issue where changing chapters in ScripturePickerWindow wouldn't work correctly if moving from a chapter with more verses than the new chapter AND the From or Thru Verse selected was greater than the last verse of the new chapter.
+* Add reference implementation for margins and tabs (vwout)
+
+* Made IndexProgress dialog translatable (vwout)
+
+* Implement patch from TrueJournals (patch #1927402)
+
+* Fix issue in SongPickerWindow where songs were not listed in numerical order (JRC)
+
+* Correct issue with the previous bugfix where the first and last item in a set inaccessable (JRC)
+
+* Reload set when switching back to Set Mode (fixes bug #1851991) (JRC)
+
+* Disabled activity logging in Song Preview Mode (JRC)
+
+* Don't reload the current set item if the user clicks the same item in the list (JRC)
+
+* Reorder set item list manually(workaround for bug #1827986) (JRC)
+
+* Fix issue in SOngPickerWindow where songs were not listed in numerical order (JRC)
+
+* Fix issue where changing chapters in ScripturePickerWindow wouldn't work correctly if moving from a chapter with more verses than the new chapter AND the From or Thru Verse selected was greater than the last verse of the new chapter. (JRC)
 
 -= 1.3 Beta 2 =-
 

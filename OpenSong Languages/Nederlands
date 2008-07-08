@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Nederlands" author="Gert Vrieling en Vwout" version="1.3.0">
+<language name="Nederlands" author="Gert Vrieling en Ewout Voogt" version="1.3.0">
 
   <load_settings>
     <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
     <main>Laden hoofd instellingen</main>
     <print>Laden printer instellingen</print>
     <presentation>Laden presentatie instellingen</presentation>
+    <transitions>Laden overgangen lijst</transitions>
     <tempos>Laden tempo lijst</tempos>
     <themes>Laden thema lijst</themes>
     <time_signatures>Laden time signature list</time_signatures>
@@ -75,7 +76,7 @@
     <copyright caption="Copyright">Geef het copyright van het geselecteerde lied.</copyright>
     <ccli caption="CCLI nummer">Geef het CCLI nummer van het geselecteerde lied.</ccli>
     <hymn_number caption="Lied nummer">Geef het nummer van het geselecteerde lied.</hymn_number>
-    <presentation caption="Presentatie">Creëer de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
+    <presentation caption="Presentatie">Creër de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
     <lyrics caption="Noten/Muziek">Wijzigen liederen met sectie regels, commentaar regels, notenbalken etc.</lyrics>
     <insert caption="Invoegen"/>
       <ins_section caption="Sectie">Secties worden gebruikt om een lied in meerdere delen te verdelen.
@@ -186,6 +187,7 @@
       <ins_slide caption="Dia">Staat toe bij het maken van meerdere dia's dat alle dia's een gelijkluidende titel, subtitel, stijl, en/of auto-uitgebreide setting krijgen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_slide>
     <loop caption="Dia's herhalen">Geef hier een vinkje om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
     <print caption="Afdrukken in lijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
+    <transition caption="Gebruik overgang">Selecteer deze optie om bij het tonen van deze dia een overgang te gebruiken.</transition>
     <auto_advance caption="De volgende dia automatisch afspelen na">Geef een aantal seconden op voor het item zodat OpenSong automatisch doorgaat naar de volgende dia in dit item.</auto_advance>
     <seconds caption="seconden."/>
     <style caption="Aangepaste stijl">Geef een vinkje om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
@@ -302,10 +304,6 @@
       <ccli caption="CCLI Licentie #"/>
       <version_check caption="Controleer voor nieuwere versies bij starten."/>
       <language caption="Taal"/>
-      <startmode caption="Start Venster">
-	<song caption="Liederen"/>
-	<set  caption="Projecten"/>
-      </startmode>
     </general>
     <proxy caption="Proxy">
       <host caption="Host"/>
@@ -342,7 +340,6 @@
       <dialog caption="Selecteer een log file"
               title="Selecteer log file"/>
     </logging>
-    <newpaint caption="Gebruik nieuwe stijl"/>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
@@ -387,9 +384,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
     </settings>
-    <style caption="Stijl">
-      <use_transitions caption="Gebruik overgangen"/>
+    <transitions caption="Overgangen">
+      <use_transitions caption="Standaard ingeschakeld"/>
       <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
+      <time caption="Tijd" helptag="Totale tijd voor overgang (kan langer duren op langzamere systemen)"/>
+      <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
+    </transitions>
+    <style caption="Stijl">
       <border_thickness caption="Dikte randen"/>
       <subtitles caption="Subtitels"/>
       <modes>
@@ -411,14 +412,10 @@
       </mouse_cursor>
       <blanks caption="Een lege dia's invoegen"/>
       <blanks_between caption="tussen project items"/>
-      <time caption="Tijd" helptag="Totale tijd voor overgang (kan langer duren op langzamere systemen)"/>
-      <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
       <blank_prev caption="Vorige dia"/>
       <blank_next caption="Volgende dia"/>
       <initial_mode caption="Initiele presentatie modus"/>
-      <blanks caption="Voeg een blanco dia tussen"/>
-      <blanks_between caption="Tussen set Items"/>
     </style>
     <transition_note caption="Overgangen worden erg beinvloed door scherm resolutie. Als het traag wordt, overweeg een lagere resolutie van het beeldscherm dat de presentatie moet weergeven. Evenzo, als u ontdekt dat de overgangen niet verschijnen, kan dit veroorzaakt worden door een te lage kleur instelling op het presentatie scherm."/>
     <alerts caption="Waarschuwingen">
@@ -476,10 +473,10 @@ Up: Vorige dia
 Right: Volgende Sectie
 Left: Vorige Sectie
 1-9: Verzen
-C: Koor
-P: Pre-koor
+C: Refrein
+P: Voor-refrein
 B: Brug
-T: Tag</keys>
+T: Label</keys>
   </presentation_helper>
 
   <help_topics title="Help Onderwerpen">
@@ -681,7 +678,11 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <bridge caption="Bridge"/>
      <tag caption="Tag"/>
      <verse caption="Couplet"/>
-     <author caption=""/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="brug"/>
+     <tag_abbreviation caption="label"/>
+     <author caption="Schrijver/componist"/>
      <hymn_number caption="Lied nummer"/>
      <ccli_number caption="CCLI lied #"/>
      <ccli_license caption="CCLI Licentie #"/>
@@ -711,10 +712,15 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <subtitle caption="Subtitel"/>
       <body caption="Body"/>
       <align caption="Uitlijning"/>
+      <margin caption="Marges"/>
+      <tabs caption="Tabulators"/>
+    </fonts_and_alignment>
+    <options caption="Tekst opties">
       <subtitles caption="Subtitel van het lied"/>
       <highlight_chorus caption="Laten oplichten van de refreintekst"/>
       <descriptive_subtitle_info caption="Gedetailleerde beschrijving in subtitel"/>
-    </fonts_and_alignment>
+      <verse_in_title caption="Versnummers weergeven bij titel"/>
+    </options>
     <background caption="Achtergrond">
       <color caption="Kleur"/>
       <image caption="Image"/>
@@ -730,7 +736,34 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     </background>
     <trim_note caption="*Verwijderd de onderzijde van de achtergrond om watermerken te verbergen, website urls, etc. Om verdraaiing te voorkomen, wordt er ook van de zijkanten iets weggehaald ter compensatie."/>
   </style_editor>
+  
+  <style_margins title="Wijzigen Marges">
+      <left caption="Links"/>
+      <right caption="Rechts"/>
+      <top caption="Boven"/>
+      <bottom caption="Onder"/>
+      <pixels caption="px"/>
+    <preview caption="Voorbeeld"/>
+  </style_margins>
 
+  <style_tabs title="Wijzigen Tabstops">
+    <tabs caption="Tabstops">
+      <new caption="&amp;Nieuw"/>
+      <remove caption="Verwijde&amp;ren"/>
+      <removeall caption="&amp;Alle verwijderen"/>
+    </tabs>
+    <properties caption="Eigenschappen">
+      <position caption="Positie"/>
+      <pixels caption="px"/>
+      <align caption="Uitlijning"/>
+      <left caption="Links"/>
+      <middle caption="Midden"/>
+      <right caption="Rechts"/>
+      <char caption="Op karakter"/>
+    </properties>
+    <preview caption="Voorbeeld"/>
+  </style_tabs>
+  
   <song_lookup title="Liederen zoeken">
     <header caption="Om een lied toe te voegen, klik hieronder op de titel van het lied en klik op de 'Toevoegen' knop of begin met typen van de titel en geef Enter."/>
     <no_selection>U heeft geen lied geselecteerd.</no_selection>
@@ -738,6 +771,8 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <preview caption="Lied voorbeeldweergave"/>
     <lookup caption="Snel zoeken"/>
     <songs head1="Lied naam" head2="Map"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <song_activity title="Lied gebruik logboek">
@@ -930,6 +965,12 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <option name="6/8"/>
   </time_sig_list>
 
+  <transition_list>
+    <option name="Standaard"/>
+    <option name="Ja"/>
+    <option name="Nee"/>
+  </transition_list>
+  
   <style_preview>
     <slide_groups>
       <slide_group name="Voorbeeld titel" type="aangepast" seconds="0" loop="false">
@@ -995,7 +1036,7 @@ Klik op de dia om de stijl te wijzigen.</body>
   </questions>
 
   <about>
-    <additional>Additional development by:</additional>
+    <additional>Aanvullende ontwikkelwerkzaamheden door:</additional>
     <copyright>Copyright</copyright>
     <gpl>Deze software is vrijgegeven onder de voorwaarden van de GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
@@ -1077,12 +1118,13 @@ Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface
 Mogelijk dat de OpenSOng Import utility uitkomst kan bieden in de tussentijd.
 Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
     </cclinotavailable>
+    <activity_log>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
+De logging van lied gebruik is uitgeschakeld.</activity_log>
   </errors>
 
   <xml_errors>
     <noattribute>Kan XML attribuut '%1' niet vinden in '%2'.</noattribute>
   </xml_errors>
-
 
   <bible>
     <errors>
@@ -1155,4 +1197,3 @@ Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
   </progress_status>
 
 </language>
- 	  	 

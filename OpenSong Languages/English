@@ -6,6 +6,7 @@
     <main>Loading main settings</main>
     <print>Loading print settings</print>
     <presentation>Loading presentation settings</presentation>
+    <transitions>Loading transitions list</transitions>
     <tempos>Loading tempo list</tempos>
     <themes>Loading theme list</themes>
     <time_signatures>Loading time signature list</time_signatures>
@@ -186,6 +187,7 @@
       <ins_slide caption="Slide">Allows for the creation of multiple slides that all share a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_slide>
     <loop caption="Loop Slides">Check this box to have OpenSong automatically  loop back to the first slide in this item after it finishes displaying the last slide in this item.</loop>
     <print caption="Print in List">Uncheck this box to have this custom slide group not appear when printing set lists.</print>
+    <transition caption="Use transition">Check this box to use a transition when this slide is shown.</transition>
     <auto_advance caption="Auto-advance slides every">Enter the number of seconds that OpenSong should display each slide in this item before automatically advancing to the next slide in this item.</auto_advance>
     <seconds caption="seconds"/>
     <style caption="Override Style">Checking this box enables this slide item to contain a custom style. When enabled, click the preview box above to edit this item's style.</style>
@@ -382,9 +384,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
     </settings>
-    <style caption="Style">
-      <use_transitions caption="Use Transitions*"/>
+    <transitions caption="Transitions">
+      <use_transitions caption="Enabled by default"/>
       <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
+    </transitions>
+    <style caption="Style">
       <border_thickness caption="Border Thickness"/>
       <subtitles caption="Subtitles"/>
       <modes>
@@ -669,6 +675,10 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <bridge caption="Bridge"/>
      <tag caption="Tag"/>
      <verse caption="Verse"/>
+     <prechorus_abbreviation caption="chor"/>
+     <chorus_abbreviation caption="chor"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
      <author caption=""/>
      <hymn_number caption="Hymn Number"/>
      <ccli_number caption="CCLI Song #"/>
@@ -699,11 +709,16 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <subtitle caption="Subtitle"/>
       <body caption="Body"/>
       <align caption="Align"/>
+      <margin caption="Margins"/>
+      <tabs caption="Tabulators"/>
+    </fonts_and_alignment>
+    <options caption="Textual options">
       <subtitles caption="Song Subtitles"/>
       <highlight_chorus caption="Highlight chorus text"/>
       <descriptive_subtitle caption="Descriptive subtitle info"/>
-   </fonts_and_alignment>
-      <background caption="Background">
+      <verse_in_title caption="Include verse numbers in title"/>
+    </options>
+    <background caption="Background">
       <color caption="Color"/>
       <image caption="Image"/>
       <position caption="Position">
@@ -719,6 +734,33 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <trim_note caption="*Cuts the bottom of the background to hide watermarks, web site urls, etc. To avoid distortion, this also trims from the sides to compensate."/>
   </style_editor>
 
+  <style_margins title="Margins Editor">
+      <left caption="Left"/>
+      <right caption="Right"/>
+      <top caption="Top"/>
+      <bottom caption="Bottom"/>
+      <pixels caption="px"/>
+    <preview caption="Preview"/>
+  </style_margins>
+  
+  <style_tabs title="Tabulators Editor">
+    <tabs caption="Tabulators">
+      <new caption="&amp;New"/>
+      <remove caption="&amp;Remove"/>
+      <removeall caption="Remove &amp;All"/>
+    </tabs>
+    <properties caption="Properties">
+      <position caption="Position"/>
+      <pixels caption="px"/>
+      <align caption="Alignment"/>
+      <left caption="Left"/>
+      <middle caption="Middle"/>
+      <right caption="Right"/>
+      <char caption="At character"/>
+    </properties>
+    <preview caption="Preview"/>
+  </style_tabs>
+  
   <song_lookup title="Song Lookup">
     <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. You can also double-click on the song name or press ENTER to add the song."/>
     <no_selection>You have not selected a song.</no_selection>
@@ -726,6 +768,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <preview caption="Song Preview"/>
     <lookup caption="Quick Lookup"/>
     <songs head1="Song Name" head2="Folder"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <song_activity title="Song Activity Log">
@@ -805,6 +849,11 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <generate_index>Generate index for scripture file?</generate_index>
     <generate_error>Error generating index; do you have write access to %1?</generate_error>
   </module>
+
+  <index_progress title="Please Wait">
+    <top caption="Building index:"/>
+    <bottom caption="Press 'esc' to cancel"/>
+  </index_progress>
 
   <import_from_ccli title="Import from CCLI">
     <user_id caption="User ID"/>
@@ -911,6 +960,12 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <option name="3/8"/>
     <option name="6/8"/>
   </time_sig_list>
+
+  <transition_list>
+    <option name="Default"/>
+    <option name="Yes"/>
+    <option name="No"/>
+  </transition_list>
 
   <style_preview>
     <slide_groups>

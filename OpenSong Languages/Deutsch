@@ -381,9 +381,13 @@
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
       <transition_note caption="link(presentation_settings/style/transition_note/@caption)"/>
     </settings>
-    <style caption="Stil">
+    <transitions caption="Überblendungen">
       <use_transitions caption="Benutze Überblendungen"/>
       <transition_note caption="Überblendeffekte sind abhängig von der Auflösung. Um die Überblendgeschwindigkeit zu erhöhen, muss eventuell die Auflösung des Präsentationsmonitors heruntergesetzt werden. Bei zu geringer Farbtiefe funktioniert das Überblenden nicht."/>
+      <time caption="Dauer [ms]" helptag="Zeit für Überblendung in Millisekunden (kann auf langsamen Systemen länger dauern)."/>
+      <frames caption="Schritte" helptag="Anzahl der Bilder für die Überblendung."/>
+    </transitions>
+    <style caption="Stil">
       <border_thickness caption="Kontur-/Schattendicke"/>
       <subtitles caption="Untertitel"/>
       <modes>
@@ -405,8 +409,6 @@
       </mouse_cursor>
       <blanks caption="Leere Folien zwischen"/>
       <blanks_between caption="Präsentationseinträgen einfügen"/>
-      <time caption="Dauer [ms]" helptag="Zeit für Überblendung in Millisekunden (kann auf langsamen Systemen länger dauern)."/>
-      <frames caption="Schritte" helptag="Anzahl der Bilder für die Überblendung."/>
       <blank_style caption="Leere Folien nutzen Layout"/>
       <blank_prev caption="der letzten Folie"/>
       <blank_next caption="der nächsten Folie"/>
@@ -662,6 +664,10 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <bridge caption="Zwischenteil"/>
     <tag caption="Markierung"/>
     <verse caption="Strophe"/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="zwis"/>
+     <tag_abbreviation caption="mark"/>
     <author caption="Autor"/>
     <hymn_number caption="Liednummer"/>
     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
@@ -718,6 +724,8 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <folder caption="Ordner auswählen"/>
     <preview caption="Lied Vorschau"/>
     <lookup caption="Schnellsuche"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <song_activity title="Protokoll der Liedänderungen">

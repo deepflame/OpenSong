@@ -3,19 +3,16 @@ Protected Class SImageCanvas
 Inherits SBufferedCanvas
 	#tag Event
 		Sub DropObject(obj As DragItem, action As Integer)
-		  Dim p As Picture
-		  Dim f As FolderItem
-		  if obj.PictureAvailable Then
-		    Image = Nil
-		    p = obj.Picture
-		    f = GetTemporaryFolderItem()
-		    If f <> Nil Then
-		      f.SaveAsJPEG p
-		      SetImageAsFile f
-		      f.Delete
-		    End If
-		    Refresh
+		  If obj.PictureAvailable() Then
+		    SetImage obj.Picture()
+		    '++JRC Need to call Action so StyleWindow knows we've changed the image
+		    Action
+		  ElseIf obj.FolderItemAvailable() Then
+		    SetImageAsFile obj.FolderItem()
+		    Action
 		  End If
+		  
+		  
 		End Sub
 	#tag EndEvent
 
@@ -23,12 +20,11 @@ Inherits SBufferedCanvas
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  Dim f As FolderItem
 		  Dim c As New Clipboard
+		  
 		  If Enabled Then
 		    If IsContextualClick Then
 		      If InputBox.Ask(App.T.Translate("questions/clear/@caption")) Then
-		        Image = Nil
-		        Base64 = ""
-		        Repaint
+		        ClearImage()
 		        Action
 		        Return True
 		      Else
@@ -58,7 +54,8 @@ Inherits SBufferedCanvas
 
 	#tag Event
 		Sub Open()
-		  AcceptPictureDrop
+		  Me.AcceptPictureDrop()
+		  Me.AcceptFileDrop( ImageFileTypes.All() )
 		End Sub
 	#tag EndEvent
 
@@ -115,6 +112,22 @@ Inherits SBufferedCanvas
 		End Sub
 	#tag EndEvent
 
+	#tag Event
+		Function DragEnter(obj As DragItem, action As Integer) As Boolean
+		  Dim rejectdrop As Boolean
+		  
+		  If obj.PictureAvailable() Then
+		    rejectdrop = False
+		  ElseIf obj.FolderItemAvailable() Then
+		    rejectdrop = ( obj.FolderItem().OpenAsPicture() = Nil )
+		  Else
+		    rejectdrop = True
+		  End If
+		  
+		  Return rejectdrop
+		End Function
+	#tag EndEvent
+
 
 #tag MenuHandler
 		Function mnu_options() As Boolean Handles mnu_options.Action
@@ -125,45 +138,54 @@ Inherits SBufferedCanvas
 
 	#tag Method, Flags = &h0
 		Sub ClearImage()
-		  Base64 = ""
-		  Image = Nil
+		  Me.Image = Nil
+		  Me.Filename = ""
+		  
 		  Repaint
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  PictureAspect = SlideStyle.POS_STRETCH // Default handling of background picture
-		  bgColor = FillColor
+		  Me.PictureAspect = SlideStyle.POS_STRETCH // Default handling of background picture
+		  Me.bgColor = FillColor
+		  
+		  ClearImage
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function GetImageAsPicture() As Picture
-		  Return Image
+		  Return Me.Image
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function GetImageAsString() As String
+		  Dim Base64 As String
+		  Dim r As New Random
+		  Dim f As FolderItem
+		  Dim inputStream As BinaryStream
+		  
+		  If Me.Image <> Nil Then
+		    f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)))
+		    If f <> Nil Then
+		      f.SaveAsPicture Me.Image
+		      inputStream = f.OpenAsBinaryFile(False)
+		      Base64 = EncodeBase64(inputStream.Read(f.Length))
+		      inputStream.Close
+		      f.delete
+		    End If
+		  End If
+		  
 		  Return Base64
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
 		Protected Sub PastePicture(c As Clipboard)
-		  Dim p As Picture
-		  Dim f As FolderItem
-		  if c.PictureAvailable Then
-		    Image = Nil
-		    p = c.Picture
-		    f = GetTemporaryFolderItem()
-		    If f <> Nil Then
-		      f.SaveAsJPEG p
-		      SetImageAsFile f
-		      f.Delete
-		    End If
-		    Refresh
+		  if c.PictureAvailable() Then
+		    SetImage c.Picture()
 		  End If
 		End Sub
 	#tag EndMethod
@@ -175,15 +197,20 @@ Inherits SBufferedCanvas
 		  If f <> Nil Then
 		    inputStream = f.OpenAsBinaryFile(False)
 		    If inputStream <> Nil Then
-		      Base64 = EncodeBase64(inputStream.Read(f.Length))
-		      inputStream.Close
-		      Image = f.OpenAsPicture
+		      Me.Image = f.OpenAsPicture()
+		      
+		      If Image <> Nil Then
+		        Me.Filename = f.AbsolutePath
+		        Repaint
+		      Else
+		        ClearImage()
+		      End If
 		    Else
 		      InputBox.Message App.T.Translate("errors/unreadable_image", f.AbsolutePath)
 		    End If
+		  Else
+		    ClearImage()
 		  End If
-		  
-		  Repaint
 		End Sub
 	#tag EndMethod
 
@@ -195,20 +222,21 @@ Inherits SBufferedCanvas
 		  
 		  If Len(Trim(str)) = 0 Then
 		    ClearImage
-		    Return
+		  Else
+		    f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)))
+		    If f <> Nil Then
+		      outputStream = f.CreateBinaryFile("")
+		      outputStream.Write DecodeBase64(str)
+		      outputStream.Close
+		      Me.Image = f.OpenAsPicture()
+		      f.Delete
+		      Me.Filename = ""
+		    End If
+		    
+		    Repaint
 		  End If
 		  
-		  f = PreferencesFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
-		  If f <> Nil Then
-		    Base64 = str
-		    outputStream = f.CreateBinaryFile("image/jpeg")
-		    outputStream.Write DecodeBase64(Base64)
-		    outputStream.Close
-		    Image = f.OpenAsPicture
-		    f.Delete
-		  End If
 		  
-		  Repaint
 		End Sub
 	#tag EndMethod
 
@@ -220,6 +248,21 @@ Inherits SBufferedCanvas
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub SetImage(img As Picture)
+		  Me.Image = img
+		  Me.Filename = ""
+		  
+		  Repaint
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetImageFilename() As String
+		  Return Me.Filename
+		End Function
+	#tag EndMethod
+
 
 	#tag Hook, Flags = &h0
 		Event Action()
@@ -227,7 +270,7 @@ Inherits SBufferedCanvas
 
 
 	#tag Property, Flags = &h1
-		Protected Base64 As String
+		Protected Filename As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -248,47 +291,40 @@ Inherits SBufferedCanvas
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			Type="String"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Visible=true
+			Group="Position"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Visible=true
 			Group="Position"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Width"
 			Visible=true
 			Group="Position"
 			InitialValue="100"
@@ -296,7 +332,6 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Height"
 			Visible=true
 			Group="Position"
 			InitialValue="100"
@@ -304,42 +339,36 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LockLeft"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LockTop"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LockRight"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LockBottom"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="TabPanelIndex"
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Visible"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -347,7 +376,6 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="HelpTag"
 			Visible=true
 			Group="Appearance"
 			Type="String"
@@ -355,7 +383,6 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="AutoDeactivate"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -363,7 +390,6 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Enabled"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -371,7 +397,6 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="UseFocusRing"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -379,7 +404,6 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Backdrop"
 			Visible=true
 			Group="Appearance"
 			Type="Picture"
@@ -387,21 +411,18 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="AcceptFocus"
 			Visible=true
 			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="AcceptTabs"
 			Visible=true
 			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="EraseBackground"
 			Visible=true
 			Group="Behavior"
 			InitialValue="True"
@@ -409,11 +430,9 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="InitialParent"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="bgColor"
 			Group="Behavior"
 			InitialValue="&h000000"
 			Type="Color"

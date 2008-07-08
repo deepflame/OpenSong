@@ -131,27 +131,8 @@ Module SongML
 
 	#tag Method, Flags = &h0
 		Sub CloneStyle(fromNode As XmlNode, toNode As XmlNode)
-		  SmartML.SetValueF toNode, "title", SmartML.GetValueF(fromNode, "title")
-		  SmartML.SetValueF toNode, "subtitle", SmartML.GetValueF(fromNode, "subtitle")
-		  SmartML.SetValueF toNode, "body", SmartML.GetValueF(fromNode, "body")
-		  
-		  SmartML.SetValue toNode, "body/@align", SmartML.GetValue(fromNode, "body/@align")
-		  SmartML.SetValue toNode, "body/@valign", SmartML.GetValue(fromNode, "body/@valign")
-		  
-		  SmartML.SetValue toNode, "title/@align", SmartML.GetValue(fromNode, "title/@align")
-		  SmartML.SetValue toNode, "title/@valign", SmartML.GetValue(fromNode, "title/@valign")
-		  SmartML.SetValue toNode, "subtitle/@align", SmartML.GetValue(fromNode, "subtitle/@align")
-		  SmartML.SetValue toNode, "subtitle/@valign", SmartML.GetValue(fromNode, "subtitle/@valign")
-		  
-		  SmartML.SetValue toNode, "background", SmartML.GetValue(fromNode, "background")
-		  SmartML.SetValue toNode, "background/@strip_footer", SmartML.GetValue(fromNode, "background/@strip_footer")
-		  SmartML.SetValue toNode, "background/@color", SmartML.GetValue(fromNode, "background/@color")
-		  
-		  '++JRC Implement patch from TrueJournals (patch #1927402)
-		  SmartML.SetValue toNode, "body/@highlight_chorus", SmartML.GetValue(fromNode, "body/@highlight_chorus")
-		  SmartML.SetValue toNode, "subtitle/@descriptive", SmartML.GetValue(fromNode, "subtitle/@descriptive")
-		  SmartML.SetValue toNode, "song_subtitle", SmartML.GetValue(fromNode, "song_subtitle")
-		  '--
+		  SmartML.CloneAttributes fromNode, toNode
+		  SmartML.CloneChildren fromNode, toNode
 		  
 		End Sub
 	#tag EndMethod
@@ -2331,7 +2312,7 @@ Module SongML
 		  SmartML.GetValue(songElement, "key").HTMLEntityEncode + "</div>" + EndOfLine
 		  
 		  If SmartML.GetValue(songElement, "user1").Len > 0 Then _
-		  s = s + "  <div id=""user1"">" + MainWindow.lbl_song_user1_1.Text.HTMLEntityEncode + " " + _
+		  s = s + "  <div id=""user1"">" + MainWindow.lbl_song_user1.Text.HTMLEntityEncode + " " + _
 		  SmartML.GetValue(songElement, "user1").HTMLEntityEncode + "</div>" + EndOfLine
 		  If SmartML.GetValue(songElement, "user2").Len > 0 Then _
 		  s = s + "  <div id=""user2"">" + MainWindow.lbl_song_user2.Text.HTMLEntityEncode + " " + _
@@ -2543,28 +2524,33 @@ Module SongML
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

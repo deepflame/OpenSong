@@ -4,19 +4,29 @@ Inherits Canvas
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  Dim xx, yy, z As Integer
+		  Dim newHAlign, newVAlign As Integer
+		  
 		  For yy = 0 To 2
 		    For xx = 0 To 2
 		      z = yy * 3 + xx + 1
 		      If X > xx*(Width/3)+2 And X < xx*(Width/3)+2 + Width/3-4 And _
 		        Y > yy*(Height/3)+2 And Y < yy*(Height/3)+2 + Height/3-4 Then
 		        If Mid(Matrix, z, 1) <> "N" Then
-		          HAlign = xx
-		          VAlign = yy
+		          newHAlign = xx
+		          newVAlign = yy
 		          Refresh
 		        End If
 		      End If
 		    Next xx
 		  Next yy
+		  
+		  If newHAlign <> HAlign or newVAlign <> VAlign Then
+		    HAlign = newHAlign
+		    VAlign = newVAlign
+		    
+		    AlignChanged(GetHAlign(), GetVAlign())
+		    self.Invalidate()
+		  End If
 		End Function
 	#tag EndEvent
 
@@ -63,7 +73,9 @@ Inherits Canvas
 		  If align = "left" Then HAlign = 0
 		  If align = "center" Then HAlign = 1
 		  If align = "right" Then HAlign = 2
-		  Refresh
+		  
+		  AlignChanged(GetHAlign(), GetVAlign())
+		  self.Invalidate()
 		End Sub
 	#tag EndMethod
 
@@ -84,9 +96,31 @@ Inherits Canvas
 		  If align = "top" Then VAlign = 0
 		  If align = "middle" Then VAlign = 1
 		  If align = "bottom" Then VAlign = 2
-		  Refresh
+		  
+		  AlignChanged(GetHAlign(), GetVAlign())
+		  self.Invalidate()
 		End Sub
 	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetAlign(HorAlign As String, VertAlign As String)
+		  If HorAlign = "left" Then HAlign = 0
+		  If HorAlign = "center" Then HAlign = 1
+		  If HorAlign = "right" Then HAlign = 2
+		  
+		  If VertAlign = "top" Then VAlign = 0
+		  If VertAlign = "middle" Then VAlign = 1
+		  If VertAlign = "bottom" Then VAlign = 2
+		  
+		  AlignChanged(GetHAlign(), GetVAlign())
+		  self.Invalidate()
+		End Sub
+	#tag EndMethod
+
+
+	#tag Hook, Flags = &h0
+		Event AlignChanged(HAlign As String, VAlign As String)
+	#tag EndHook
 
 
 	#tag Property, Flags = &h1

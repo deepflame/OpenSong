@@ -1,3 +1,24 @@
+load_settings/transitions
+slide_editor/transition
+presentation_settings/transitions
+style/use_transitions
+style_transition_note
+songml/prechorus_abbreviation
+songml/chorus_abbreviation
+songml/bridge_abbreviation
+songml/tag_abbreviation
+style_editor/fonts_and_alignment/margin
+style_editor/fonts_and_alignment/tabs
+style_editor/options
+style_editor/options/verse_in_title
+style_margins/*
+style_tabs/*
+song_lookup/presentation
+song_lookup/origorder
+index_progress/*
+transition_list/*
+errors/activity_disabled
+error/adding_logentry
 songs_mode/curr_folder
 sets_mode/current_set/saveas
 slide_editor/presentation
@@ -189,3 +210,4 @@ style_editor/fonts_and_alignment/descriptive_subtitle_info ->
     style_editor/fonts_and_alignment/descriptive_subtitle
 help_topics/format (Modified)
 general_settings/logging (Modified)
+song_lookup/songs

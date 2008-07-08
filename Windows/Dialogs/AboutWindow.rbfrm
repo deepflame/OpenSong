@@ -32,7 +32,7 @@ Begin Window AboutWindow
       Caption         =   "Close"
       ControlOrder    =   0
       Default         =   "True"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -43,18 +43,20 @@ Begin Window AboutWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   12
       Top             =   310
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
+      BehaviorIndex   =   0
    End
    Begin ImageWell ImageWell1
       AutoDeactivate  =   "True"
       ControlOrder    =   1
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   128
       HelpTag         =   ""
       Image           =   -1045728915
@@ -65,12 +67,12 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   14
-      Visible         =   "True"
+      Visible         =   True
       Width           =   128
+      BehaviorIndex   =   1
    End
    Begin StaticText txt_about_version
       AutoDeactivate  =   "True"
@@ -78,7 +80,7 @@ Begin Window AboutWindow
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   29
       HelpTag         =   ""
       Index           =   -2147483648
@@ -90,6 +92,7 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "OpenSong V1.0"
       TextAlign       =   0
@@ -98,8 +101,9 @@ Begin Window AboutWindow
       TextSize        =   24
       Top             =   14
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   328
+      BehaviorIndex   =   2
    End
    Begin StaticText txt_about_copyright
       AutoDeactivate  =   "True"
@@ -107,7 +111,7 @@ Begin Window AboutWindow
       ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -119,6 +123,7 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Copyright (c) 2003, 2004, 2005, 2006 Sean Lickfold"
       TextAlign       =   0
@@ -127,8 +132,9 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   55
       Underline       =   "False"
-      Visible         =   "True"
-      Width           =   328
+      Visible         =   True
+      Width           =   376
+      BehaviorIndex   =   3
    End
    Begin StaticText txt_about_gpl
       AutoDeactivate  =   "True"
@@ -136,7 +142,7 @@ Begin Window AboutWindow
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -148,6 +154,7 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Licensed under the GNU Public License V2.1"
       TextAlign       =   0
@@ -156,8 +163,9 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   75
       Underline       =   "False"
-      Visible         =   "True"
-      Width           =   322
+      Visible         =   True
+      Width           =   376
+      BehaviorIndex   =   4
    End
    Begin StaticText txt_about_web
       AutoDeactivate  =   "True"
@@ -165,7 +173,7 @@ Begin Window AboutWindow
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -177,6 +185,7 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "http://www.opensong.org"
       TextAlign       =   0
@@ -185,8 +194,9 @@ Begin Window AboutWindow
       TextSize        =   12
       Top             =   95
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
+      BehaviorIndex   =   5
    End
    Begin StaticText txt_about_programmers
       AutoDeactivate  =   "True"
@@ -194,7 +204,7 @@ Begin Window AboutWindow
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   71
       HelpTag         =   ""
       Index           =   -2147483648
@@ -206,16 +216,18 @@ Begin Window AboutWindow
       LockRight       =   "True"
       LockTop         =   "True"
       Multiline       =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
-      Text            =   "Ed Palmer, Joshua Coley, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant."
+      Text            =   "Ed Palmer, Joshua Coley, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt."
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
       Top             =   127
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
+      BehaviorIndex   =   6
    End
    Begin EditField edt_about_libraries
       AcceptTabs      =   ""
@@ -227,7 +239,7 @@ Begin Window AboutWindow
       ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   82
       HelpTag         =   ""
@@ -244,6 +256,7 @@ Begin Window AboutWindow
       Multiline       =   "True"
       Password        =   ""
       ReadOnly        =   "True"
+      Scope           =   0
       ScrollbarHorizontal=   ""
       ScrollbarVertical=   "True"
       Styled          =   ""
@@ -255,8 +268,9 @@ Begin Window AboutWindow
       Top             =   210
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
+      BehaviorIndex   =   7
    End
    Begin StaticText txt_about_compiler
       AutoDeactivate  =   "True"
@@ -264,7 +278,7 @@ Begin Window AboutWindow
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -276,6 +290,7 @@ Begin Window AboutWindow
       LockRight       =   ""
       LockTop         =   ""
       Multiline       =   ""
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Compiler"
       TextAlign       =   2
@@ -284,8 +299,9 @@ Begin Window AboutWindow
       TextSize        =   0
       Top             =   251
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
+      BehaviorIndex   =   8
    End
    Begin StaticText txt_about_memory
       AutoDeactivate  =   "True"
@@ -293,7 +309,7 @@ Begin Window AboutWindow
       ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -305,6 +321,7 @@ Begin Window AboutWindow
       LockRight       =   ""
       LockTop         =   ""
       Multiline       =   ""
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Memory"
       TextAlign       =   2
@@ -313,8 +330,9 @@ Begin Window AboutWindow
       TextSize        =   0
       Top             =   264
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   102
+      BehaviorIndex   =   9
    End
    Begin StaticText txt_about_objects
       AutoDeactivate  =   "True"
@@ -322,7 +340,7 @@ Begin Window AboutWindow
       ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -334,6 +352,7 @@ Begin Window AboutWindow
       LockRight       =   ""
       LockTop         =   "True"
       Multiline       =   ""
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Object Count"
       TextAlign       =   2
@@ -342,8 +361,9 @@ Begin Window AboutWindow
       TextSize        =   0
       Top             =   277
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   102
+      BehaviorIndex   =   10
    End
    Begin StaticText txt_about_build
       AutoDeactivate  =   "True"
@@ -351,7 +371,7 @@ Begin Window AboutWindow
       ControlOrder    =   11
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -363,6 +383,7 @@ Begin Window AboutWindow
       LockRight       =   ""
       LockTop         =   "True"
       Multiline       =   ""
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Build"
       TextAlign       =   2
@@ -371,8 +392,9 @@ Begin Window AboutWindow
       TextSize        =   0
       Top             =   290
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   102
+      BehaviorIndex   =   11
    End
    Begin StaticText txt_about_language
       AutoDeactivate  =   "True"
@@ -380,7 +402,7 @@ Begin Window AboutWindow
       ControlOrder    =   12
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -392,6 +414,7 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "English: Sean Lickfold"
       TextAlign       =   0
@@ -400,8 +423,9 @@ Begin Window AboutWindow
       TextSize        =   10
       Top             =   313
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   376
+      BehaviorIndex   =   12
    End
 End
 #tag EndWindow

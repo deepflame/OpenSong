@@ -347,9 +347,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Overganger berøres av skjermopløsning. Om Du opplever langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om du legger merke til at overganger ikke viser seg, det er fordi deres fargenivåer er lav også på fremvisningsmonitoen."/>
     </settings>
-    <style caption="Stil">
-      <use_transitions caption="Bruk overganger*"/>
+    <transitions caption="Stil">
+      <use_transitions caption="Bruk overganger"/>
       <transition_note caption="*Overganger berøres av skjermopløsning. Om Du opplever langsome overganger,så må du vurdere å minske oppløsningen av monitoen som presentasjonen vises på. Også, om Du legger merke til at overganger ikke viser seg, det er fordi Deres fargenivåer er også lav på fremvisningsmonitoen"/>
+      <time caption="Tid" helptag="total tid for overgang (kan ta lenger tid på trege systemer)"/>
+      <frames caption="Bilder" helptag="Antal overgangs trinn på en overgang"/>
+    </transitions>
+    <style caption="Stil">
       <border_thickness caption="Kant tykkelse"/>
       <subtitles caption="Under tittler"/>
       <modes>
@@ -370,8 +374,6 @@
       </mouse_cursor>
       <blanks caption="Sett inn tomme lysbilder"/>
       <blanks_between caption="mellom liste innhold"/>
-      <time caption="Tid" helptag="total tid for overgang (kan ta lenger tid på trege systemer)"/>
-      <frames caption="Bilder" helptag="Antal overgangs trinn på en overgang"/>
       <blank_style caption="Blanke lysbilder tar stil"/>
       <blank_prev caption="forrige lysbilde"/>
       <blank_next caption="Neste lysbilde"/>
@@ -494,6 +496,10 @@ T: Tag</keys>
      <chorus caption="Refreng"/>
      <bridge caption="Bridge"/>
      <tag caption="Tag"/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
      <verse caption="Vers"/>
      <author caption=""/>
      <hymn_number caption="Hymn Numer"/>
@@ -532,6 +538,8 @@ T: Tag</keys>
     <header caption="Klikk på sangtittelen på listen under og klikk på 'Legg til' knappen for å legge til en sang. Du kan også  begynne å skrive inn sang tittelen og trykke på 'Legg til' knappen."/>
     <no_selection>Du har ikke valgt en sang.</no_selection>
     <folder caption="Velg mappe"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Slå opp bibelvers">

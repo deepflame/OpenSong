@@ -346,9 +346,13 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
         <transition_note caption="*Überblendeffekte sind abhängig von der Bildschirmauflösung. Um die Überblendgeschwindigkeit zu erhöhen, muss eventuell die Auflösung des Präsentationsmonitors heruntergesetzt werden. Bei zu geringer Farbtiefe funktioniert das Überblenden möglicherweise nicht."/>
     </settings>
-    <style caption="Stil">
-      <use_transitions caption="Überblendeffekte benutzen*"/>
+    <transitions caption="Überblendeffekte">
+      <use_transitions caption="Überblendeffekte benutzen"/>
       <transition_note caption="*Überblendeffekte sind abhängig von der Bildschirmauflösung. Um die Überblendgeschwindigkeit zu erhöhen, muss eventuell die Auflösung des Präsentationsmonitors heruntergesetzt werden. Bei zu geringer Farbtiefe funktioniert das Überblenden möglicherweise nicht."/>
+      <time caption="Time" helptag="Gesamtzeit für Überblendung (könnte auf langsamen Systemen aktuell länger sein)"/>
+      <frames caption="Rahmen" helptag="Anzahl von Rahmen oder Überblendschritten zwischen Folien"/>
+    </transitions>
+    <style caption="Stil">
       <border_thickness caption="Umrandungsbreite"/>
       <subtitles caption="Untertitel"/>
       <modes>
@@ -369,8 +373,6 @@
       </mouse_cursor>
       <blanks caption="Leere Folien einfügen"/>
       <blanks_between caption="zwischen Set-Einträgen"/>
-      <time caption="Time" helptag="Gesamtzeit für Überblendung (könnte auf langsamen Systemen aktuell länger sein)"/>
-      <frames caption="Rahmen" helptag="Anzahl von Rahmen oder Überblendschritten zwischen Folien"/>
       <blank_style caption="... übernehmen den Stil von"/>
       <blank_prev caption="voriger Folie"/>
       <blank_next caption="Nächster Folie"/>
@@ -496,6 +498,10 @@ T: Markierung</keys>
      <bridge caption="Bridge"/>
      <tag caption="Markierung"/>
      <verse caption="Strophen"/>
+     <prechorus_abbreviation caption="refr"/>
+     <chorus_abbreviation caption="refr"/>
+     <bridge_abbreviation caption="brid"/>
+     <tag_abbreviation caption="strop"/>
      <author caption="Autor"/>
      <hymn_number caption="Hymnus Nummer"/>
      <ccli_number caption="CCLI Lied #"/>
@@ -533,6 +539,8 @@ T: Markierung</keys>
     <header caption="Um ein Lied hinzuzufügen den Liedtitel unten anwählen und auf  'Hinzufügen' klicken, oder die ersten Zeichen des Titels eingeben und dann die Eingabetaste drücken."/>
     <no_selection>Kein Titel ausgewählt.</no_selection>
     <folder caption="Ordner wählen"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Bibeltextwahl">

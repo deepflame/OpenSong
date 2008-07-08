@@ -1,17 +1,2 @@
 ﻿-= JRC =-
 
-* Traslate Song Activity error Messages
-
-* Implement patch from TrueJournals (patch #1927402)
-
-* Fix issue in SongPickerWindow where songs were not listed in numerical order
-
-* Correct issue with the previous bugfix where the first and last item in a set inaccessable
-
-* Reload set when switching back to Set Mode fixes bug #1851991
-
-* Disabled activity logging in Song Preview Mode
-
-* Don't reload the current set item if the user clicks the current item in the list
-
-* Reorder set item list manually(workaround for bug #1827986)

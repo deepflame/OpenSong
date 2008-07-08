@@ -51,9 +51,7 @@ Inherits SBufferedCanvas
 		    g.Underline = MyFont.Underline
 		    g.ForeColor = MyFont.ForeColor
 		    
-		    DrawFontString g, MyFont.Name + " " + Str(MyFont.Size), _
-		    (Width-GraphicsX.FontFaceWidth(g, MyFont.Name + " " + Str(MyFont.Size), MyFont))/2, _
-		    (Height+g.TextAscent*.75)/2, MyFont
+		    Call DrawFontString(g, MyFont.Name + " " + Str(MyFont.Size), 0, 0, MyFont, g.Width, "center", g.Height, "middle")
 		    
 		    If (c.Red > 128 And c.Green > 128) Or _
 		      (c.Green > 128 And c.Blue > 128) Or _

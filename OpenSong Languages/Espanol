@@ -356,8 +356,12 @@
       <transition_note caption="*Las transiciones son afectadas de gran manera por la resolución de la pantalla. Si Ud. está experimentando transiciones lentas, considere disminuir la resolución del monitor en el cual se está mostrando la presentación. Además, si Ud. nota que las transiciones no es están presentando, puede ser porque su configuración de colores del monitor es muy baja para la presentación."/>
     </settings>
 
-    <style caption="Estilo">
+    <transitions caption="Transiciones">
       <use_transitions caption="Usar Transiciones"/>
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
+    </transitions>
+    <style caption="Estilo">
       <border_thickness caption="Grueso del Borde"/>
        <!--Translate Me!!-->
       <subtitles caption="Subtitles"/>
@@ -634,6 +638,10 @@ If a line contains only three dashes ("---"), lyrics sheets will print with a se
      <bridge caption="Bridge"/>
      <tag caption="Tag"/>
      <verse caption="Verse"/>
+     <prechorus_abbreviation caption="chor"/>
+     <chorus_abbreviation caption="chor"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
      <author caption=""/>
      <hymn_number caption="Hymn Number"/>
      <ccli_number caption="CCLI Song #"/>
@@ -689,6 +697,8 @@ If a line contains only three dashes ("---"), lyrics sheets will print with a se
     <no_selection>Ud. no ha seleccionado ninguna canción.</no_selection>
      <!--Translate Me!!-->
     <folder caption="Select Folder"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <scripture_lookup title="Buscar Versículos">

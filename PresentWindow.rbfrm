@@ -9,6 +9,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
@@ -30,7 +31,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   0
-      Enabled         =   True
+      Enabled         =   "True"
       EraseBackground =   "True"
       Height          =   302
       HelpTag         =   ""
@@ -46,43 +47,40 @@ Begin Window PresentWindow Implements ScriptureReceiver
       TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
-      Visible         =   True
+      Visible         =   "True"
       Width           =   302
-      BehaviorIndex   =   0
-   End
-   Begin Timer timerAdvance
-      ControlOrder    =   1
-      Enabled         =   "True"
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   248
-      Mode            =   0
-      Period          =   10000
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Visible         =   "True"
-      Width           =   32
-      BehaviorIndex   =   1
-   End
-   Begin Timer timerTransition
-      ControlOrder    =   2
-      Enabled         =   "True"
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   204
-      Mode            =   0
-      Period          =   125
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Visible         =   "True"
-      Width           =   32
-      BehaviorIndex   =   2
+      Begin Timer timerAdvance
+         ControlOrder    =   1
+         Enabled         =   "True"
+         Height          =   32
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   248
+         Mode            =   0
+         Period          =   10000
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   248
+         Visible         =   "True"
+         Width           =   32
+      End
+      Begin Timer timerTransition
+         ControlOrder    =   2
+         Enabled         =   "True"
+         Height          =   32
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   204
+         Mode            =   0
+         Period          =   125
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   248
+         Visible         =   "True"
+         Width           =   32
+      End
    End
 End
 #tag EndWindow
@@ -197,6 +195,7 @@ End
 		  Mode = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@initial_mode")
 		  If Len(Mode) <> 1 Then Mode = "N"
 		  doTransition = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
+		  curslideTransition = SlideTransitionEnum.ApplicationDefault
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
 	#tag EndEvent
@@ -220,8 +219,8 @@ End
 		  valign = Lowercase(SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@valign"))
 		  align = Lowercase(SmartML.GetValue(App.MyPresentSettings.DocumentElement, "alert/@align"))
 		  Border = CalcBorderSize(g)
-		  GraphicsX.DrawFontString g, alert, Border*3, Border, _
-		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign
+		  Call GraphicsX.DrawFontString(g, alert, Border*3, Border, _
+		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign)
 		End Sub
 	#tag EndMethod
 
@@ -874,6 +873,7 @@ End
 		  ' -- New way --
 		  xStyle = SetML.GetStyle(slide)
 		  SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+		  curslideTransition = SetML.GetSlideTransition(slide)
 		  
 		  Profiler.EndProfilerEntry'
 		  
@@ -925,7 +925,7 @@ End
 		  End If
 		  
 		  ' === Start the transition ===
-		  If doTransition Then
+		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
 		    TransitionFrame = 1
 		    timerTransition.Mode = 2
 		    timerTransition.Reset
@@ -1471,6 +1471,7 @@ End
 		  Dim oldSlide As Integer
 		  Dim newSlide As Integer
 		  Dim i As Integer
+		  Dim presentation As String
 		  
 		  ' Added code to remember current position so song can be inserted without changing
 		  ' what's up on the screen (allows operator to cue next song in a highly dynamic,
@@ -1486,7 +1487,7 @@ End
 		  
 		  ' Get a reference
 		  newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
-		  f = SongPickerWindow.Popup
+		  f = SongPickerWindow.Popup(presentation)
 		  If f <> Nil Then
 		    App.MouseCursor = WatchCursor
 		    
@@ -1509,6 +1510,10 @@ End
 		      Log.Presented = True
 		    End If
 		    '--
+		    
+		    If presentation <> "" Then 'Override the song's default presentation
+		      SmartML.SetValue(s.DocumentElement, "presentation", presentation)
+		    End If
 		    
 		    SongML.ToSetML s.DocumentElement
 		    If SmartML.GetNode(s.DocumentElement, "slides").ChildCount < 1 Then
@@ -1824,6 +1829,9 @@ End
 		Protected savedMode As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected curslideTransition As SlideTransitionEnum
+	#tag EndProperty
 
 	#tag Constant, Name = ACTION_BLACK, Type = Integer, Dynamic = False, Default = \"1013", Scope = Public
 	#tag EndConstant
@@ -1938,7 +1946,7 @@ End
 		  '#if DebugBuild then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
-		  If doTransition Then
+		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
 		    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
 		    CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
 		    CurrentPicture.Mask.Graphics.FillRect(0, 0, CurrentPicture.Mask.Graphics.Width, CurrentPicture.Mask.Graphics.Height)

@@ -198,6 +198,40 @@ Protected Module Globals
 	#tag EndConstant
 
 
+	#tag Structure, Name = StyleMarginType, Flags = &h0
+		Left as Integer
+		  Right as Integer
+		  Top as Integer
+		Bottom as Integer
+	#tag EndStructure
+
+	#tag Structure, Name = StyleTabsType, Flags = &h0
+		Position As Integer
+		  Align As StyleHAlignEnum
+		alignChar As String * 1
+	#tag EndStructure
+
+
+	#tag Enum, Name = StyleSectionEnum, Flags = &h0
+		Title
+		  Subtitle
+		Body
+	#tag EndEnum
+
+	#tag Enum, Name = StyleHAlignEnum, Flags = &h0
+		Left
+		  Middle
+		  Right
+		Char
+	#tag EndEnum
+
+	#tag Enum, Name = SlideTransitionEnum, Flags = &h0
+		ApplicationDefault
+		  UseTransition
+		NoTransition
+	#tag EndEnum
+
+
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Name"

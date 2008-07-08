@@ -8,7 +8,7 @@ Begin Window SongPickerWindow
    Frame           =   1
    FullScreen      =   "False"
    HasBackColor    =   "False"
-   Height          =   520
+   Height          =   533
    ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1046
@@ -36,14 +36,14 @@ Begin Window SongPickerWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
       GridLinesVertical=   0
       HasHeading      =   "True"
       HeadingIndex    =   -1
-      Height          =   222
+      Height          =   171
       HelpTag         =   ""
       Hierarchical    =   "False"
       Index           =   -2147483648
@@ -63,10 +63,10 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
-      Top             =   55
+      Top             =   106
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   406
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
@@ -85,7 +85,7 @@ Begin Window SongPickerWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   249
+      Left            =   248
       LockBottom      =   "True"
       LockLeft        =   "False"
       LockRight       =   "True"
@@ -94,9 +94,9 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   486
+      Top             =   491
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   1
    End
@@ -107,13 +107,13 @@ Begin Window SongPickerWindow
       Caption         =   "Done"
       ControlOrder    =   2
       Default         =   "False"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   330
+      Left            =   329
       LockBottom      =   "True"
       LockLeft        =   "False"
       LockRight       =   "True"
@@ -122,40 +122,40 @@ Begin Window SongPickerWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      Top             =   485
+      Top             =   490
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   69
       BehaviorIndex   =   2
    End
    Begin StaticText lbl_select_folder
       AutoDeactivate  =   "True"
-      Bold            =   "False"
+      Bold            =   "True"
       ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   14
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
       Left            =   12
-      LockBottom      =   "True"
+      LockBottom      =   "False"
       LockLeft        =   "True"
       LockRight       =   "False"
-      LockTop         =   "False"
+      LockTop         =   "True"
       Multiline       =   "False"
       Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Select Folder:"
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
-      Top             =   425
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   55
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   197
       BehaviorIndex   =   3
    End
@@ -165,7 +165,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -174,17 +174,17 @@ Begin Window SongPickerWindow
       Italic          =   "False"
       Left            =   12
       ListIndex       =   0
-      LockBottom      =   "True"
+      LockBottom      =   "False"
       LockLeft        =   "True"
       LockRight       =   "False"
-      LockTop         =   "False"
+      LockTop         =   "True"
       Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   444
+      Top             =   69
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   206
       BehaviorIndex   =   4
    End
@@ -194,28 +194,28 @@ Begin Window SongPickerWindow
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
       Left            =   228
-      LockBottom      =   "True"
+      LockBottom      =   "False"
       LockLeft        =   "True"
       LockRight       =   "False"
-      LockTop         =   "False"
+      LockTop         =   "True"
       Multiline       =   "False"
       Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Quick Lookup:"
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
-      Top             =   422
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   52
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   171
       BehaviorIndex   =   5
    End
@@ -229,7 +229,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   20
       HelpTag         =   ""
@@ -238,10 +238,10 @@ Begin Window SongPickerWindow
       Italic          =   "False"
       Left            =   228
       LimitText       =   0
-      LockBottom      =   "True"
+      LockBottom      =   "False"
       LockLeft        =   "True"
       LockRight       =   "True"
-      LockTop         =   "False"
+      LockTop         =   "True"
       Mask            =   ""
       Multiline       =   "False"
       Password        =   "False"
@@ -255,10 +255,10 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   444
+      Top             =   69
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   179
       BehaviorIndex   =   6
    End
@@ -268,7 +268,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -285,11 +285,11 @@ Begin Window SongPickerWindow
       Text            =   "Preview:"
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
+      TextFont        =   "Arial"
+      TextSize        =   10
       Top             =   289
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   204
       BehaviorIndex   =   7
    End
@@ -303,9 +303,9 @@ Begin Window SongPickerWindow
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
-      Height          =   104
+      Height          =   117
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -329,10 +329,10 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   12
-      Top             =   309
+      Top             =   304
       Underline       =   "False"
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   408
       BehaviorIndex   =   8
    End
@@ -342,7 +342,7 @@ Begin Window SongPickerWindow
       ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   45
       HelpTag         =   ""
       Index           =   -2147483648
@@ -357,13 +357,13 @@ Begin Window SongPickerWindow
       Scope           =   0
       TabPanelIndex   =   0
       Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. You can also double-click on the song name to add it."
-      TextAlign       =   1
+      TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
       Top             =   5
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   378
       BehaviorIndex   =   9
    End
@@ -442,13 +442,167 @@ Begin Window SongPickerWindow
       Width           =   54
       BehaviorIndex   =   12
    End
+   Begin StaticText lbl_presentation
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      ControlOrder    =   13
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   16
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   13
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      Multiline       =   "False"
+      Scope           =   0
+      TabPanelIndex   =   0
+      Text            =   "Custom Presentation Order:"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   433
+      Underline       =   "False"
+      Visible         =   True
+      Width           =   170
+      BehaviorIndex   =   13
+   End
+   Begin EditField edt_order
+      AcceptTabs      =   "False"
+      Alignment       =   0
+      AutoDeactivate  =   "True"
+      BackColor       =   16777215
+      Bold            =   "False"
+      Border          =   "True"
+      ControlOrder    =   14
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Format          =   ""
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   12
+      LimitText       =   0
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      Mask            =   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+      Multiline       =   "False"
+      Password        =   "False"
+      ReadOnly        =   "False"
+      Scope           =   0
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
+      Styled          =   "False"
+      TabPanelIndex   =   0
+      Text            =   ""
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   447
+      Underline       =   "False"
+      UseFocusRing    =   "True"
+      Visible         =   True
+      Width           =   197
+      BehaviorIndex   =   14
+   End
+   Begin StaticText lbl_origorder
+      AutoDeactivate  =   "True"
+      Bold            =   "False"
+      ControlOrder    =   15
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   16
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   221
+      LockBottom      =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      Multiline       =   "False"
+      Scope           =   0
+      TabPanelIndex   =   0
+      Text            =   "Original Presentation Order:"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   433
+      Underline       =   "False"
+      Visible         =   True
+      Width           =   160
+      BehaviorIndex   =   15
+   End
+   Begin EditField edt_origorder
+      AcceptTabs      =   "False"
+      Alignment       =   0
+      AutoDeactivate  =   "True"
+      BackColor       =   16777215
+      Bold            =   "False"
+      Border          =   "True"
+      ControlOrder    =   16
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   "False"
+      Format          =   ""
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   "False"
+      Left            =   221
+      LimitText       =   0
+      LockBottom      =   "True"
+      LockLeft        =   "False"
+      LockRight       =   "True"
+      LockTop         =   "False"
+      Mask            =   ""
+      Multiline       =   "False"
+      Password        =   "False"
+      ReadOnly        =   "True"
+      Scope           =   0
+      ScrollbarHorizontal=   "False"
+      ScrollbarVertical=   "True"
+      Styled          =   "False"
+      TabPanelIndex   =   0
+      Text            =   ""
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   447
+      Underline       =   "False"
+      UseFocusRing    =   "True"
+      Visible         =   True
+      Width           =   186
+      BehaviorIndex   =   16
+   End
 End
 #tag EndWindow
 
 #tag WindowCode
 	#tag Event
 		Sub Close()
-		  If NOT AddSong Then f = Nil
+		  If Not AddSong Then
+		    f = Nil
+		    PresentationOrder = ""
+		  Else
+		    PresentationOrder = edt_order.Text
+		  End If
+		  
 		  Globals.Status_SongPickerOpen = False
 		End Sub
 	#tag EndEvent
@@ -519,11 +673,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Popup() As FolderItem
+		Function Popup(ByRef presentation As String) As FolderItem
 		  '++JRC
 		  Globals.Status_SongPickerOpen = True
 		  '--
+		  PresentationOrder = ""
 		  ShowModalWithin(MainWindow)
+		  presentation = PresentationOrder
 		  Return f
 		End Function
 	#tag EndMethod
@@ -551,6 +707,10 @@ End
 
 	#tag Property, Flags = &h1
 		Protected HSizer As HalfSizer
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected PresentationOrder As String
 	#tag EndProperty
 
 
@@ -581,11 +741,15 @@ End
 		      Else
 		        edt_preview.Text = SongML.LyricText(CurrentSong.DocumentElement).FormatLocalEndOfLine
 		      End If
+		      edt_order.Text = ""
+		      edt_origorder.Text = SmartML.GetValue(CurrentSong.DocumentElement, "presentation", False)
 		      '--
+		      edt_order.Enabled = True
 		      btn_add.Enabled = True
 		      btn_add.Default = True
 		    Else
 		      edt_preview.Text = App.T.Translate("errors/bad_format", Me.CellTag(Me.ListIndex, 0).StringValue + Me.List(Me.ListIndex))
+		      edt_order.Enabled = False
 		      btn_add.Enabled = False
 		    End If
 		    edt_preview.ScrollPosition = 0
@@ -594,6 +758,8 @@ End
 		  Else
 		    btn_add.Enabled = False
 		    edt_preview.Text = ""
+		    edt_order.Text = ""
+		    edt_origorder.Text = ""
 		  End If
 		End Sub
 	#tag EndEvent
@@ -796,9 +962,12 @@ End
 		  Const ASC_KEY_TAB = 9
 		  Const ASC_KEY_INSERT = 5
 		  Const ASC_KEY_DEL = 127
+		  Const ASC_KEY_F1 = 200
+		  Const ASC_KEY_F12 = 211
 		  
 		  Dim i As Integer
 		  Dim SearchedEntry As String
+		  Dim found As Boolean
 		  
 		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
 		  
@@ -844,21 +1013,37 @@ End
 		    Else
 		      Me.SelText = ""
 		    End If
-		    'TODO Handle the F1 - F12 Keys in RB 2007
-		    '(in RB 5.5 they don't even trigger the KeyDown event)
+		  Case ASC_KEY_F1 To ASC_KEY_F12
+		    Return False
 		  Else
 		    Me.SelText = "" + Key
 		  End Select
 		  
+		  Found = False
+		  lst_all_songs.ListIndex = -1
 		  For i = 0 To lst_all_songs.ListCount - 1
 		    SearchedEntry = ConvertEncoding(Left(lst_all_songs.List(i), Len(Me.Text)), Encodings.UTF8)
 		    If SearchedEntry = Me.Text Then
 		      lst_all_songs.ListIndex = i
-		      Return True
+		      found = True
+		      Exit
 		    End If
 		  Next i
 		  
-		  lst_all_songs.ListIndex = -1
+		  If Not found Then
+		    For i = 0 To lst_all_songs.ListCount - 1
+		      SearchedEntry = ""
+		      If InStr(lst_all_songs.List(i), Me.Text) > 0 Then
+		        SearchedEntry = ConvertEncoding(Mid(lst_all_songs.List(i), InStr(lst_all_songs.List(i), Me.Text), Len(Me.Text)), Encodings.UTF8)
+		      End If
+		      If SearchedEntry = Me.Text Then
+		        lst_all_songs.ListIndex = i
+		        found = True
+		        Exit
+		      End If
+		    Next i
+		  End If
+		  
 		  Return True
 		End Function
 	#tag EndEvent

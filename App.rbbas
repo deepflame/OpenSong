@@ -1015,7 +1015,7 @@ Inherits Application
 		  StylePreview = T.GetNode("style_preview")
 		  
 		  ' --- BUILD TEMPO LIST ---
-		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/tempos") + "..."
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/tempos") + " ..."
 		  xnode = T.GetNode("tempo_list").FirstChild
 		  For i = UBound(TempoList) DownTo 1
 		    TempoList.Remove i
@@ -1026,7 +1026,7 @@ Inherits Application
 		  Wend
 		  
 		  ' --- BUILD THEME LIST ---
-		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/themes") + "..."
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/themes") + " ..."
 		  xnode = T.GetNode("theme_list").FirstChild
 		  For i = UBound(ThemeList) DownTo 1
 		    ThemeList.Remove i
@@ -1037,7 +1037,7 @@ Inherits Application
 		  Wend
 		  
 		  ' --- BUILD TIME SIG LIST ---
-		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/time_signatures") + "..."
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/time_signatures") + " ..."
 		  xnode = T.GetNode("time_sig_list").FirstChild
 		  For i = UBound(TimeSigList) DownTo 1
 		    TimeSigList.Remove i
@@ -1046,6 +1046,18 @@ Inherits Application
 		    TimeSigList.Append SmartML.GetValue(xnode, "@name")
 		    xnode = xnode.NextSibling
 		  Wend
+		  
+		  ' --- BUILD TRANSITIONS LIST ---
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/transitions") + " ..."
+		  xnode = T.GetNode("transition_list").FirstChild
+		  For i = UBound(TransitionList) DownTo 1
+		    TransitionList.Remove i
+		  Next i
+		  While xnode <> Nil
+		    TransitionList.Append SmartML.GetValue(xnode, "@name")
+		    xnode = xnode.NextSibling
+		  Wend
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -1246,6 +1258,10 @@ Inherits Application
 
 	#tag Property, Flags = &h0
 		TranslationFonts(0) As FontFace
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		TransitionList(0) As String
 	#tag EndProperty
 
 

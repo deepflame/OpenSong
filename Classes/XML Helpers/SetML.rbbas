@@ -172,21 +172,31 @@ Protected Module SetML
 		  //++EMP 09/05
 		  // Get the body a little earlier than originally done.
 		  //
-		  Dim title, subtitle As String 'EMP 09/05
-		  Dim BodyString As String 'EMP 09/05
-		  BodyString = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
-		  
-		  title = SmartML.GetValue(xslide.Parent.Parent, "title")
-		  subtitle = SmartML.GetValue(xslide.Parent.Parent, "subtitle")
-		  
-		  '++JRC: This will split the title unto a new line
-		  title = ReplaceAll(title, "|", Chr(10))
+		  Dim subtitle As String 'EMP 09/05
+		  '++JRC Don't appear to be used
+		  'Dim BodyString As String 'EMP 09/05
+		  'BodyString = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
+		  'title = SmartML.GetValue(xslide.Parent.Parent, "title")
 		  '--
+		  
+		  '++JRC
+		  If Style.SubtitleEnable Then
+		    subtitle = SmartML.GetValue(xslide.Parent.Parent, "subtitle")
+		  End If
+		  '--
+		  
+		  'title = ReplaceAll(title, "|", Chr(10))
+		  
 		  // Subtitles can now be over one line long.  Split the subtitle string on newlines and iterate
 		  Subtitles = Split(subtitle, Chr(10))
 		  
 		  If Style.TitleVAlign = "top" Then
-		    HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
+		    '++JRC
+		    If Style.TitleEnable Then
+		      HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
+		    End If
+		    '--
+		    'Draw subtitles
 		    For i = 0 to UBound(Subtitles)
 		      If Style.SubtitleVAlign = "top" Then
 		        HeaderSize = HeaderSize + DrawFontString(g, subtitles(i), _
@@ -197,6 +207,7 @@ Protected Module SetML
 		      End If
 		    Next
 		  Else
+		    'Draw Subtitles
 		    For i = 0 to UBound(Subtitles)
 		      If Style.SubtitleVAlign = "top" Then
 		        HeaderSize = HeaderSize + DrawFontString(g, subtitles(i), _
@@ -206,7 +217,11 @@ Protected Module SetML
 		        0, 0, subtitleStyle, RealBorder, HeaderSize, FooterSize, subtitleMargins, g.Width, Style.SubtitleAlign, g.Height, Style.SubtitleVAlign)
 		      End If
 		    Next i
-		    HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
+		    '++JRC
+		    If Style.TitleEnable Then
+		      HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
+		    End If
+		    '--
 		  End If
 		  
 		  Profiler.EndProfilerEntry
@@ -239,19 +254,21 @@ Protected Module SetML
 		  
 		  '++JRC:
 		  Dim s As string
-		  s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
-		  'SplitToArray(Trim(SmartML.GetValue(xslide, "body", True)).FormatUnixEndOfLine, lines, Chr(10))
-		  SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		  If Style.BodyEnable Then
+		    s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
+		    SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		    
+		    ' Find the longest line
+		    MaxLineIndex = UBound(lines)
+		    For i = 0 to UBound(lines)
+		      If g.StringWidth(lines(i)) > MaxLineLen Then
+		        MaxLineLen = g.StringWidth(lines(i))
+		        MaxLineIndex = i
+		      End If
+		    Next i
+		    
+		  End If
 		  '--
-		  
-		  ' Find the longest line
-		  MaxLineIndex = UBound(lines)
-		  For i = 0 to UBound(lines)
-		    If g.StringWidth(lines(i)) > MaxLineLen Then
-		      MaxLineLen = g.StringWidth(lines(i))
-		      MaxLineIndex = i
-		    End If
-		  Next i
 		  
 		  // Within reasonable wrapping limits?
 		  If MaxLineLen = 0 Then
@@ -990,33 +1007,28 @@ Protected Module SetML
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

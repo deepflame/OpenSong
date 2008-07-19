@@ -1,4 +1,15 @@
-﻿* It is now prossible to drag & drop images in the Style Window. (vwout)
+﻿
+*Tilte, Subtitle & Body of slides can now be enabled or disabled (JRC)
+
+*Commented out some "unused" code in SetML.DrawSlide (JRC)
+
+*Added AcceptMouseDown property to SFontCanvas (it's purpose should be pretty self-explanitory ;) (JRC)
+
+*Enable/Disable drawing of text in SFontCanvas depending on the enabled state (JRC)
+
+*Change the color of the outline on SAlignCanvas depending on the enabled state (JRC)
+
+* It is now prossible to drag & drop images in the Style Window. (vwout)
 
 * Prevent a program crash when logging is disabled (the ActivityLog.xml is corrupt). (thanks vwout ;)
 

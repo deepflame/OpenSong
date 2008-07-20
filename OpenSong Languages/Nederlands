@@ -1118,8 +1118,9 @@ Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface
 Mogelijk dat de OpenSOng Import utility uitkomst kan bieden in de tussentijd.
 Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
     </cclinotavailable>
-    <activity_log>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
-De logging van lied gebruik is uitgeschakeld.</activity_log>
+    <activity_disabled>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
+De logging van lied gebruik is uitgeschakeld.</activity_disabled>
+    <adding_logentry>Er is een fout opgetreden bij het toevoegen van een lied aan het logboek!</adding_logentry>
   </errors>
 
   <xml_errors>

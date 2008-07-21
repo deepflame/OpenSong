@@ -340,6 +340,9 @@
       <dialog caption="Please select a file to store the log"
               title="Select log file"/>
     </logging>
+    <log caption="Song Activity Log Settings">
+      <enable caption="Enable Logging"/>
+    </log>
     <startmode caption="Initial Window">
       <songs caption="Songs"/>
       <sets  caption="Sets"/>

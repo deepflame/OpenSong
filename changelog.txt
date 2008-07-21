@@ -1,11 +1,3 @@
 ﻿-= JRC =-
 
-Tilte, Subtitle & Body of slides can now be enabled or disabled
-
-Commented out some "unused" code in SetML.DrawSlide
-
-Added AcceptMouseDown property to SFontCanvas (it's purpose should be pretty self-explanitory ;)
-
-Enable/Disable drawing of text in SFontCanvas depending on the enabled state
-
-Change the color of the outline on SAlignCanvas depending on the enabled state
+* Added option to enable/disable the song activity log to MainSettingsWindow (JRC)

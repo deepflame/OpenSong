@@ -345,13 +345,16 @@ Inherits Application
 		  '++JRC
 		  Globals.WhitespaceChars.Append " "
 		  Globals.WhitespaceChars.Append Chr(ENTER)
-		  'Load in the Song Activity Log
-		  Globals.SongActivityLog = New ActivityLog
-		  'TODO Decide where we want to store the log file
-		  '+++EMP Use FolderItem and .Child instead of AbsolutePath
-		  If NOT Globals.SongActivityLog.Load(DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
-		    MsgBox  T.Translate("errors/activity_disabled")  '++JRC Translated
-		    Globals.SongActivityLog = Nil
+		  
+		  If MainPreferences.GetValueB(App.kActivityLog, True) Then
+		    'Load in the Song Activity Log
+		    Globals.SongActivityLog = New ActivityLog
+		    'TODO Decide where we want to store the log file
+		    '+++EMP Use FolderItem and .Child instead of AbsolutePath
+		    If NOT Globals.SongActivityLog.Load(DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
+		      MsgBox  T.Translate("errors/activity_disabled")  '++JRC Translated
+		      Globals.SongActivityLog = Nil
+		    End If
 		  End If
 		  '--
 		  T.TranslateMenu("main_menu", MainMenu)
@@ -1301,10 +1304,12 @@ Inherits Application
 	#tag Constant, Name = kLogOutput, Type = String, Dynamic = False, Default = \"log/file", Scope = Public
 	#tag EndConstant
 
+	#tag Constant, Name = kActivityLog, Type = String, Dynamic = False, Default = \"activitylog/level", Scope = Public
+	#tag EndConstant
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

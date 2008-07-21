@@ -1,4 +1,5 @@
-﻿
+﻿* Added option to enable/disable the song activity log to MainSettingsWindow (JRC)
+
 *Tilte, Subtitle & Body of slides can now be enabled or disabled (JRC)
 
 *Commented out some "unused" code in SetML.DrawSlide (JRC)

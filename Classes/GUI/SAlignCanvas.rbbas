@@ -39,7 +39,13 @@ Inherits Canvas
 		    For x = 0 To 2
 		      z = y * 3 + x + 1
 		      If Mid(Matrix, z, 1) <> "N" Then
-		        g.ForeColor = FrameColor
+		        '++JRC Change the color of the outline depending on the enabled state
+		        If Self.Enabled Then
+		          g.ForeColor = FrameColor
+		        Else
+		          g.ForeColor = DisabledTextColor
+		        End If
+		        '--
 		        g.DrawRect x*(g.Width/3)+2, y*(g.Height/3)+2, g.Width/3-4, g.Height/3-4
 		        If VAlign = y And HAlign = x Then
 		          g.ForeColor = HighlightColor

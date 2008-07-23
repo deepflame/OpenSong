@@ -10,6 +10,7 @@
     <tempos>Loading tempo list</tempos>
     <themes>Loading theme list</themes>
     <time_signatures>Loading time signature list</time_signatures>
+    <imagequality>Loading image quality list</imagequality>
     <fonts>Loading font list</fonts>
     <latest_version>Checking for the latest version
       <newer_available>A newer version (%1) is available. Visit www.opensong.org to download it.</newer_available>
@@ -333,6 +334,11 @@
       <change caption="Change"/>
       <oldfolderdb caption="Use pre-V1.1 file cache"/>
     </documents_folder>
+    <imagequality caption="Set Image Quality">
+      <note caption="OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."/>
+      <compression caption="Image compression" />
+      <extern caption="Do not include images from backgrounds." />
+    </imagequality>
     <logging caption="Debug Log Settings">
       <append caption="Append to log file"/>
       <console caption="Log to system console"/>
@@ -964,6 +970,15 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <option name="Yes"/>
     <option name="No"/>
   </transition_list>
+  
+  <imagequality_list>
+    <option name="Full, minimum quality, small set file"/>
+    <option name="High, low quality"/>
+    <option name="Medium, normal quality"/>
+    <option name="Little, high quality"/>
+    <option name="Low, maximum quality"/>
+    <option name="None, lossless, large set file"/>
+  </imagequality_list>
 
   <style_preview>
     <slide_groups>
@@ -1113,8 +1128,8 @@ This has broken Import function until a new interface can be used.
 In the meantime, please investigate the OpenSong Import utility as an option.
 The OpenSong development team members regret any inconvenience.
     </cclinotavailable>
-    <activity_log>Could not load the Song Activity Log!
-Logging will be disabled for this session.</activity_log>
+    <activity_disabled>Could not load the Song Activity Log! Logging will be disabled for this session.</activity_disabled>
+    <adding_logentry>Error Adding log entry!</adding_logentry>
   </errors>
 
   <xml_errors>

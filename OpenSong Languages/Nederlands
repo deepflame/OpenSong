@@ -9,7 +9,8 @@
     <transitions>Laden overgangen lijst</transitions>
     <tempos>Laden tempo lijst</tempos>
     <themes>Laden thema lijst</themes>
-    <time_signatures>Laden time signature list</time_signatures>
+    <time_signatures>Laden maatsoort lijst</time_signatures>
+    <imagequality>Laden afbeeldingskwaliteiten lijst</imagequality>
     <fonts>Laden lettertype lijst</fonts>
     <latest_version>Controle laatste versie
       <newer_available>Er is een nieuwere versie (%1) beschikbaar. Ga naar: www.opensong.org voor downloaden.</newer_available>
@@ -332,7 +333,7 @@
       <changed>U selecteerde een aangepaste locatie voor de Documents map, maar klikte niet op de Wijzig knop.  Wilt u de nieuwe locatie gebruiken?</changed>
       <change caption="Wijzig"/>
       <oldfolderdb caption="gebruik oude (pre-V1.1) file cache"/>
-      </documents_folder>
+    </documents_folder>
     <logging caption="Log settings">
       <append caption="toevoegen aan log file"/>
       <console caption="Log naar  system console"/>
@@ -340,6 +341,11 @@
       <dialog caption="Selecteer een log file"
               title="Selecteer log file"/>
     </logging>
+    <imagequality caption="Project afbeelding kwaliteit">
+      <note caption="OpenSong probeert de afbeeldingen die worden gebruikt in een project als JPEG te bewaren. De elementen hieronder bepalen de kwaliteit en opslagmethode van de afbeeldingen. De kwaliteitskeuze is niet beschikbaar als QuickTime niet is geinstalleerd. OpenSong is hiervoor afhankelijk van dit pakket."/>
+      <compression caption="Afbeelding compressie"/>
+      <extern caption="Afbeeldingen uit achtergrondmap niet in set."/>
+    </imagequality>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
@@ -971,6 +977,15 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <option name="Nee"/>
   </transition_list>
   
+  <imagequality_list>
+    <option name="Volledig, minimale kwaliteit, klein projectbestand"/>
+    <option name="Hoog, lage kwaliteit"/>
+    <option name="Midden, normale kwaliteit"/>
+    <option name="Beperkt, hoge kwaliteit"/>
+    <option name="Laag, maximale kwaliteit"/>
+    <option name="Geen, zonder verlies, groot projectbestand"/>
+  </imagequality_list>
+  
   <style_preview>
     <slide_groups>
       <slide_group name="Voorbeeld titel" type="aangepast" seconds="0" loop="false">
@@ -1118,8 +1133,9 @@ Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface
 Mogelijk dat de OpenSOng Import utility uitkomst kan bieden in de tussentijd.
 Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
     </cclinotavailable>
-    <activity_log>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
-De logging van lied gebruik is uitgeschakeld.</activity_log>
+    <activity_disabled>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
+De logging van lied gebruik is uitgeschakeld.</activity_disabled>
+    <adding_logentry>Er is een fout opgetreden bij het toevoegen van een lied aan het logboek!</adding_logentry>
   </errors>
 
   <xml_errors>

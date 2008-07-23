@@ -5,7 +5,7 @@ Inherits SBufferedCanvas
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  Dim newFont As FontFace
 		  
-		  If Enabled Then
+		  If Enabled And AcceptMouseDown Then
 		    If MyFont = Nil Then MyFont = New FontFace
 		    newFont = FontChooser.Ask(MyFont, AdvancedOptions)
 		    If newFont <> Nil Then
@@ -25,14 +25,21 @@ Inherits SBufferedCanvas
 		Sub Paint(g As Graphics)
 		  Dim c As Color
 		  
-		  g.ForeColor = LightBevelColor
+		  '++JRC Change the fill color depending on the enabled state
+		  If Self.Enabled Then
+		    g.ForeColor = LightBevelColor
+		  Else
+		    g.ForeColor =  DisabledTextColor
+		  End If
+		  '--
 		  g.FillRect 0, 0, Width, Height
 		  
 		  Dim bo, sh, thick As Integer
 		  
 		  thick = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@thickness")
 		  
-		  If MyFont <> Nil Then
+		  '++JRC Don't Draw Font if Disabled
+		  If MyFont <> Nil And Self.Enabled Then
 		    If MyFont.Border Then bo = 1
 		    If MyFont.Shadow Then sh = 1
 		    
@@ -89,12 +96,16 @@ Inherits SBufferedCanvas
 	#tag EndHook
 
 
-	#tag Property, Flags = &h4
-		AdvancedOptions As Boolean
-	#tag EndProperty
-
 	#tag Property, Flags = &h1
 		Protected MyFont As FontFace
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		AcceptMouseDown As Boolean = true
+	#tag EndProperty
+
+	#tag Property, Flags = &h4
+		AdvancedOptions As Boolean
 	#tag EndProperty
 
 

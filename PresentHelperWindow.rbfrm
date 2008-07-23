@@ -56,6 +56,7 @@ Begin Window PresentHelperWindow
       LockRight       =   "True"
       LockTop         =   "True"
       RequiresSelection=   ""
+      Scope           =   0
       ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
       SelectionType   =   0
@@ -69,6 +70,7 @@ Begin Window PresentHelperWindow
       Width           =   460
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
+      BehaviorIndex   =   0
    End
    Begin GroupBox grp_presentation_modes
       AutoDeactivate  =   "True"
@@ -86,6 +88,7 @@ Begin Window PresentHelperWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
@@ -93,6 +96,7 @@ Begin Window PresentHelperWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   150
+      BehaviorIndex   =   1
       Begin SButton btn_mode_normal
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -120,6 +124,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   2
       End
       Begin SButton btn_mode_black
          AcceptFocus     =   "False"
@@ -148,6 +153,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   3
       End
       Begin SButton btn_mode_white
          AcceptFocus     =   "False"
@@ -176,6 +182,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   4
       End
       Begin SButton btn_mode_hidden
          AcceptFocus     =   "False"
@@ -204,6 +211,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   5
       End
       Begin SButton btn_mode_logo
          AcceptFocus     =   "False"
@@ -232,6 +240,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   6
       End
       Begin SButton btn_mode_frozen
          AcceptFocus     =   "False"
@@ -260,6 +269,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   7
       End
    End
    Begin Canvas cnv_preview
@@ -279,6 +289,7 @@ Begin Window PresentHelperWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -286,6 +297,7 @@ Begin Window PresentHelperWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   346
+      BehaviorIndex   =   8
    End
    Begin StaticText txt_shortcut_keys
       AutoDeactivate  =   "True"
@@ -305,6 +317,7 @@ Begin Window PresentHelperWindow
       LockRight       =   "True"
       LockTop         =   "False"
       Multiline       =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
@@ -315,6 +328,7 @@ Begin Window PresentHelperWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   135
+      BehaviorIndex   =   9
    End
    Begin GroupBox grp_presentation_actions
       AutoDeactivate  =   "True"
@@ -332,6 +346,7 @@ Begin Window PresentHelperWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
@@ -339,6 +354,7 @@ Begin Window PresentHelperWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   150
+      BehaviorIndex   =   10
       Begin SButton btn_action_alert
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -366,6 +382,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   11
       End
       Begin SButton btn_action_quick_song
          AcceptFocus     =   "False"
@@ -394,6 +411,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   12
       End
       Begin SButton btn_action_scripture
          AcceptFocus     =   "False"
@@ -422,6 +440,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   13
       End
       Begin SButton btn_action_full_screen
          AcceptFocus     =   "False"
@@ -450,6 +469,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   14
       End
       Begin SButton btn_action_return
          AcceptFocus     =   "False"
@@ -478,6 +498,7 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   15
       End
    End
    Begin EditField edt_slide_notes
@@ -507,6 +528,7 @@ Begin Window PresentHelperWindow
       Multiline       =   "True"
       Password        =   "False"
       ReadOnly        =   "True"
+      Scope           =   0
       ScrollbarHorizontal=   "False"
       ScrollbarVertical=   "True"
       Styled          =   "False"
@@ -520,6 +542,7 @@ Begin Window PresentHelperWindow
       UseFocusRing    =   "False"
       Visible         =   "True"
       Width           =   300
+      BehaviorIndex   =   16
    End
 End
 #tag EndWindow

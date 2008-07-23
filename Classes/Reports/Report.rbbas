@@ -267,7 +267,7 @@ Protected Class Report
 		    For i = 0 To Ubound(Log)
 		      If Log(i) <> Nil Then
 		        If NOT Log(i).AddLogEntry Then
-		          MsgBox "Error Adding log entry!"
+		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
 		          return false
 		        Else
 		          Log(i).UpdateNumEntries(Globals.SongActivityLog)

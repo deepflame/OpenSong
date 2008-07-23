@@ -1,13 +1,13 @@
 #tag Class
 Protected Class SlideStyle
 	#tag Method, Flags = &h0
-		Function Background() As Picture
+		Function Background() As StyleImage
 		  Return Background
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Background(Assigns bg As Picture)
+		Sub Background(Assigns bg As StyleImage)
 		  Background = bg
 		End Sub
 	#tag EndMethod
@@ -68,7 +68,8 @@ Protected Class SlideStyle
 
 	#tag Method, Flags = &h0
 		Sub Constructor(xStyle As XmlNode)
-		  defaultBGColor = LightBevelColor
+		  Me.defaultBGColor = LightBevelColor
+		  Me.Background = new StyleImage()
 		  
 		  FromXML(xStyle)
 		End Sub
@@ -258,6 +259,9 @@ Protected Class SlideStyle
 		  
 		  thisNode = "title"
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
+		  '++JRC
+		  SmartML.SetValueB(CurrChild, "@enabled", TitleEnable)
+		  '--
 		  SmartML.SetValue(CurrChild, "@valign", TitleVAlign)
 		  SmartML.SetValue(CurrChild, "@align", TitleAlign)
 		  SmartML.SetValueB(CurrChild, "@include_verse", TitleIncludeVerse)
@@ -269,6 +273,9 @@ Protected Class SlideStyle
 		  
 		  thisNode = "subtitle"
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
+		  '++JRC
+		  SmartML.SetValueB(CurrChild, "@enabled", SubtitleEnable)
+		  '--
 		  SmartML.SetValue(CurrChild, "@valign", SubtitleVAlign)
 		  SmartML.SetValue(CurrChild, "@align", SubtitleAlign)
 		  SmartML.SetValueB(CurrChild, "@descriptive", SubtitleDescriptiveText)
@@ -283,6 +290,9 @@ Protected Class SlideStyle
 		  
 		  thisNode = "body"
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
+		  '++JRC
+		  SmartML.SetValueB(CurrChild, "@enabled", BodyEnable)
+		  '--
 		  SmartML.SetValue(CurrChild, "@valign", BodyVAlign)
 		  SmartML.SetValue(CurrChild, "@align", BodyAlign)
 		  SmartML.SetValueB(CurrChild, "@highlight_chorus", Highlight)
@@ -319,15 +329,11 @@ Protected Class SlideStyle
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
 		  SmartML.SetValueN(CurrChild, "@position", Position)
-		  
-		  If Background <> Nil Then
-		    f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
-		    If f <> Nil Then
-		      f.SaveAsPicture Background
-		      SmartML.SetValueP(root, thisNode, f)
-		      f.Delete
-		    End If
-		  End If
+		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And App.ExcludeBackgroundsImages() Then
+		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1))
+		  Else
+		    SmartML.SetValue(root, thisNode, Background.GetImageAsString())
+		  End If 
 		  
 		  Return XmlDoc
 		End Function
@@ -449,6 +455,7 @@ Protected Class SlideStyle
 		  Dim tmpVal as String
 		  Dim tab As StyleTabsType
 		  Dim tabs() As StyleTabsType
+		  Dim fileName As String
 		  
 		  BodyFont = SmartML.GetValueF(xStyle, "body")
 		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
@@ -458,6 +465,9 @@ Protected Class SlideStyle
 		  BodyMargins.Right = SmartML.GetValueN(xStyle, "body/@margin-right")
 		  BodyMargins.Top = SmartML.GetValueN(xStyle, "body/@margin-top")
 		  BodyMargins.Bottom = SmartML.GetValueN(xStyle, "body/@margin-bottom")
+		  '++JRC
+		  BodyEnable = SmartML.GetValueB(xStyle, "body/@enabled", true, true)
+		  '--
 		  
 		  tabsNode = SmartML.GetNode(xStyle, "body/tabs")
 		  If tabsNode <> Nil Then
@@ -495,6 +505,9 @@ Protected Class SlideStyle
 		  TitleMargins.Top = SmartML.GetValueN(xStyle, "title/@margin-top")
 		  TitleMargins.Bottom = SmartML.GetValueN(xStyle, "title/@margin-bottom")
 		  TitleIncludeVerse = SmartML.GetValueB(xStyle, "title/@include_verse", True, False)
+		  '++JRC
+		  TitleEnable = SmartML.GetValueB(xStyle, "title/@enabled", true, true)
+		  '--
 		  
 		  SubtitleFont = SmartML.GetValueF(xStyle, "subtitle")
 		  SubtitleAlign = SmartML.GetValue(xStyle, "subtitle/@align")
@@ -505,8 +518,18 @@ Protected Class SlideStyle
 		  SubtitleMargins.Bottom = SmartML.GetValueN(xStyle, "subtitle/@margin-bottom")
 		  Subtitles = SmartML.GetValue(xStyle, "song_subtitle")
 		  SubtitleDescriptiveText = SmartML.GetValueB(xStyle, "subtitle/@descriptive", True, False)
+		  '++JRC
+		  SubtitleEnable = SmartML.GetValueB(xStyle, "subtitle/@enabled", true, true)
+		  '--
 		  
-		  Background = SmartML.GetValueP(xstyle, "background", False)
+		  fileName = SmartML.GetValue(xstyle, "background/@filename", False)
+		  If fileName <> "" Then
+		    If Not Background.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + fileName ) Then
+		      Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
+		    End If
+		  Else
+		    Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
+		  End If
 		  If Not SmartML.GetValueC(xstyle, "background/@color", BGColor, False) Then
 		    BGColor = defaultBGColor
 		  End If
@@ -526,7 +549,8 @@ Protected Class SlideStyle
 		  // since we don't create and destroy these at a high
 		  // rate it should be sufficient.
 		  //--
-		  defaultBGColor = LightBevelColor
+		  Me.defaultBGColor = LightBevelColor
+		  Me.Background = new StyleImage()
 		  
 		  If xStyle Is Nil Then
 		    Dim e As New NilObjectException
@@ -613,7 +637,7 @@ Protected Class SlideStyle
 
 
 	#tag Property, Flags = &h21
-		Private Background As Picture
+		Private Background As StyleImage
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -710,6 +734,17 @@ Protected Class SlideStyle
 		Protected TitleIncludeVerse As Boolean = False
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		BodyEnable As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		TitleEnable As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		SubtitleEnable As Boolean
+	#tag EndProperty
 
 	#tag Constant, Name = POS_CENTER, Type = Integer, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant

@@ -4,7 +4,7 @@ Inherits SBufferedCanvas
 	#tag Event
 		Sub DropObject(obj As DragItem, action As Integer)
 		  If obj.PictureAvailable() Then
-		    SetImage obj.Picture()
+		    SetImageAsPicture(obj.Picture())
 		  ElseIf obj.FolderItemAvailable() Then
 		    SetImageAsFile obj.FolderItem()
 		  End If
@@ -56,7 +56,7 @@ Inherits SBufferedCanvas
 
 	#tag Event
 		Sub Paint(g As Graphics)
-		  
+		  Dim img As Picture
 		  Dim bgDrawH, bgDrawW As Integer
 		  Dim bgHeightRatio, bgWidthRatio As Double
 		  Dim display_height As Integer
@@ -73,9 +73,10 @@ Inherits SBufferedCanvas
 		  g.ForeColor = bgColor
 		  g.FillRect 0, 0, Width, Height
 		  
-		  If Image <> Nil Then
-		    bgDrawH = Image.Height
-		    bgDrawW = Image.Width
+		  img = Me.Image.GetImage()
+		  If img <> Nil Then
+		    bgDrawH = img.Height
+		    bgDrawW = img.Width
 		    bgHeightRatio = g.Height / bgDrawH
 		    bgWidthRatio = g.Width / bgDrawW
 		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
@@ -87,7 +88,7 @@ Inherits SBufferedCanvas
 		      
 		    Case SlideStyle.POS_CENTER
 		      
-		      g.DrawPicture Image, _
+		      g.DrawPicture img, _
 		      (g.Width / 2) - ((bgDrawW * aspect_ratio) / 2), _
 		      display_height, _
 		      bgDrawW * aspect_ratio, _
@@ -95,7 +96,7 @@ Inherits SBufferedCanvas
 		      0, 0, bgDrawW, bgDrawH
 		      
 		    Case SlideStyle.POS_STRETCH
-		      g.DrawPicture Image, 0, 0, g.Width, g.Height, 0, 0, Image.Width, Image.Height
+		      g.DrawPicture img, 0, 0, g.Width, g.Height, 0, 0, img.Width, img.Height
 		    End Select
 		  Else
 		    
@@ -133,15 +134,14 @@ Inherits SBufferedCanvas
 
 	#tag Method, Flags = &h0
 		Sub ClearImage()
-		  Me.Image = Nil
-		  Me.Filename = ""
-		  
+		  Me.Image.Clear()
 		  Repaint
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
+		  Me.Image = New StyleImage()
 		  Me.PictureAspect = SlideStyle.POS_STRETCH // Default handling of background picture
 		  Me.bgColor = FillColor
 		  
@@ -150,88 +150,33 @@ Inherits SBufferedCanvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetImageAsPicture() As Picture
-		  Return Me.Image
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function GetImageAsString() As String
-		  Dim Base64 As String
-		  Dim r As New Random
-		  Dim f As FolderItem
-		  Dim inputStream As BinaryStream
-		  
-		  If Me.Image <> Nil Then
-		    f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)))
-		    If f <> Nil Then
-		      f.SaveAsPicture Me.Image
-		      inputStream = f.OpenAsBinaryFile(False)
-		      Base64 = EncodeBase64(inputStream.Read(f.Length))
-		      inputStream.Close
-		      f.delete
-		    End If
-		  End If
-		  
-		  Return Base64
+		  Return Me.Image.GetImageAsString()
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
 		Protected Sub PastePicture(c As Clipboard)
 		  if c.PictureAvailable() Then
-		    SetImage c.Picture()
+		    Me.Image.SetImage(c.Picture())
+		    Repaint()
 		  End If
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub SetImageAsFile(f As FolderItem)
-		  Dim inputStream As BinaryStream
-		  
-		  If f <> Nil Then
-		    inputStream = f.OpenAsBinaryFile(False)
-		    If inputStream <> Nil Then
-		      Me.Image = f.OpenAsPicture()
-		      
-		      If Image <> Nil Then
-		        Me.Filename = f.AbsolutePath
-		        Repaint
-		      Else
-		        ClearImage()
-		      End If
-		    Else
-		      InputBox.Message App.T.Translate("errors/unreadable_image", f.AbsolutePath)
-		    End If
-		  Else
-		    ClearImage()
+		  If Me.Image.SetImageFromFile(f) Then
+		    Me.Repaint()
 		  End If
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub SetImageAsString(str As String)
-		  Dim r As New Random
-		  Dim f As FolderItem
-		  Dim outputStream As BinaryStream
-		  
-		  If Len(Trim(str)) = 0 Then
-		    ClearImage
-		  Else
-		    f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)))
-		    If f <> Nil Then
-		      outputStream = f.CreateBinaryFile("")
-		      outputStream.Write DecodeBase64(str)
-		      outputStream.Close
-		      Me.Image = f.OpenAsPicture()
-		      f.Delete
-		      Me.Filename = ""
-		    End If
-		    
-		    Repaint
+		  If Me.Image.SetImageAsString(str) Then
+		    Repaint()
 		  End If
-		  
-		  
 		End Sub
 	#tag EndMethod
 
@@ -239,23 +184,38 @@ Inherits SBufferedCanvas
 		Sub SetImagePosition(Pos As Integer)
 		  // Set Center/Stretch attribute
 		  PictureAspect = Pos
-		  Repaint
+		  Repaint()
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetImage(img As Picture)
-		  Me.Image = img
-		  Me.Filename = ""
-		  
-		  Repaint
+		Sub SetImage(img As StyleImage)
+		  If img = Nil Then
+		    Me.Image.Clear()
+		  Else
+		    Me.Image = New StyleImage(img)
+		  End If
+		  Repaint()
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function GetImageFilename() As String
-		  Return Me.Filename
+		  Return Me.Image.GetImageFilename()
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetImage() As StyleImage
+		  Return Me.Image
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub SetImageAsPicture(img As Picture)
+		  Me.Image.SetImage(img)
+		  Repaint()
+		End Sub
 	#tag EndMethod
 
 
@@ -264,16 +224,12 @@ Inherits SBufferedCanvas
 	#tag EndHook
 
 
-	#tag Property, Flags = &h1
-		Protected Filename As String
-	#tag EndProperty
-
 	#tag Property, Flags = &h0
 		bgColor As Color
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected Image As Picture
+		Protected Image As StyleImage
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

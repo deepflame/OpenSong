@@ -40,7 +40,7 @@
       <save caption="Opslaan">Opslaan van het geselecteerde lied op schijf.</save>
       <revert caption="Terugzetten">Terugzetten van het lied naar de vorige versie op schijf.</revert>
       <print caption="Afdrukken">Afdrukken van het huidige lied.</print>
-      <present caption="Presenteren">Presenteer het lied.
+      <present caption="Presenteren">Presenteer het lied. Als er wijzigingen zijn aangebracht in het huidige lied, worden die bewaard.
         <single_screen caption="Enkel scherm"/>
         <dual_screen caption="Twee schermen"/>
         <preview_dual_screen caption="Voorbeeld twee schermen"/>
@@ -340,6 +340,9 @@
       <dialog caption="Selecteer een log file"
               title="Selecteer log file"/>
     </logging>
+    <log caption="Lied gebruik logboek instellingen">
+      <enable caption="Log bijhouden inschakelen"/>
+    </log>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
@@ -412,6 +415,8 @@
       </mouse_cursor>
       <blanks caption="Een lege dia's invoegen"/>
       <blanks_between caption="tussen project items"/>
+      <time caption="Tijd" helptag="Totale tijd voor de overgang (kan in werkelijkheid langer duren op langzame systemen)"/>
+      <frames caption="Stappen" helptag="Aantal stappen of frames voor de overgang tussen dia's"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
       <blank_prev caption="Vorige dia"/>
       <blank_next caption="Volgende dia"/>
@@ -687,7 +692,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <ccli_number caption="CCLI lied #"/>
      <ccli_license caption="CCLI Licentie #"/>
      <presentation caption="Presentatie Volgorde"/>
-     <!--De code "|NL|" is een speciale code om aan te geven in OpenSong dat elke subtitel op een aparte reegel wordt geplaatst.-->
+     <!--De code "|NL|" is een speciale code om aan te geven in OpenSong dat elke subtitel op een aparte regel wordt geplaatst.-->
      <separator caption="|NL|"/>
      <!--De voorafgaande komma is nodig voor interne data structuur.-->
      <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
@@ -894,7 +899,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     </errors>
   </import_from_ccli>
 
-  <find_image title="Zoek Image">
+  <find_image title="Zoek afbeelding">
     <parent caption="(Parent)"/>
   </find_image>
   <input_box title="OpenSong"/>

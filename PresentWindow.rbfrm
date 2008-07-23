@@ -42,7 +42,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -50,38 +49,37 @@ Begin Window PresentWindow Implements ScriptureReceiver
       UseFocusRing    =   "False"
       Visible         =   "True"
       Width           =   302
-      BehaviorIndex   =   0
       Begin Timer timerAdvance
          ControlOrder    =   1
+         Enabled         =   "True"
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
          Left            =   248
          Mode            =   0
          Period          =   10000
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   0
          Top             =   248
+         Visible         =   "True"
          Width           =   32
-         BehaviorIndex   =   1
       End
       Begin Timer timerTransition
          ControlOrder    =   2
+         Enabled         =   "True"
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
          Left            =   204
          Mode            =   0
          Period          =   125
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   0
          Top             =   248
+         Visible         =   "True"
          Width           =   32
-         BehaviorIndex   =   2
       End
    End
 End
@@ -1496,9 +1494,10 @@ End
 		    s = SmartML.XDocFromFile(f)
 		    
 		    '++JRC get song info for logging
+		    'Don't log in preview mode
 		    Dim Log As LogEntry
 		    
-		    If Globals.SongActivityLog <> Nil Then
+		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW Then
 		      Log = New LogEntry(Globals.SongActivityLog)
 		      Dim d As New Date
 		      
@@ -1526,9 +1525,9 @@ End
 		    
 		    '++JRC Log Song Presentation
 		    'TODO determine if the user actually displays this song (uug)
-		    If Globals.SongActivityLog <> Nil Then
+		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW  Then
 		      If NOT Log.AddLogEntry Then
-		        MsgBox "Error Adding log entry!"
+		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
 		      Else
 		        Log.UpdateNumEntries(Globals.SongActivityLog)
 		      End If
@@ -1833,7 +1832,6 @@ End
 	#tag Property, Flags = &h1
 		Protected curslideTransition As SlideTransitionEnum
 	#tag EndProperty
-
 
 	#tag Constant, Name = ACTION_BLACK, Type = Integer, Dynamic = False, Default = \"1013", Scope = Public
 	#tag EndConstant

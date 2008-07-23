@@ -231,6 +231,16 @@ Protected Module Globals
 		NoTransition
 	#tag EndEnum
 
+	#tag Enum, Name = ImageQualityEnum, Flags = &h0
+		UninitialisedCompression
+		  FullCompression
+		  HighCompression
+		  MediumCompression
+		  LittleCompression
+		  LowCompression
+		NoCompression
+	#tag EndEnum
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

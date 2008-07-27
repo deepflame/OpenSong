@@ -345,7 +345,6 @@
         <scripture_slides caption="Style par défaut pour les versets"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*Les transitions dépendent beaucoup de la résolution de l'écran. Si vos transitions sont lentes, baissez la resolution de l'écran de projection. De plus, si les transitions n'ont pas lieu, il est possible que le nombre de couleurs de l'acran de projection ne soit trop faible."/>
     </settings>
     <transitions caption="Transitions">
       <use_transitions caption="Utiliser des Transitions"/>

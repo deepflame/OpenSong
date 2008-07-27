@@ -313,10 +313,10 @@
   <presentation_settings title="Opções de Apresentação">
     <transitions caption="Transições">
       <use_transitions caption="Usar Transições"/>
-      <border_thickness caption="Espessura da Borda"/>
+      <transition_note caption="A velocidade da transição é muito afetada pela resolução do monitor. Se estiver muito lenta, tente diminuir a resolução do monitor de apresentação. E se não houver transição, talvez o nível de cores esteja muito baixo no monitor de apresentação."/>
     </transitions>
     <style caption="Estilo">
-      <initial_mode caption="Modo Inicial"/>
+      <border_thickness caption="Espessura da Borda"/>
       <modes>
         <normal caption="Normal"/>
         <black caption="Preto"/>
@@ -331,8 +331,8 @@
       </song_subtitles>
       <blanks caption="Inserir Slides Vazios"/>
       <blanks_between caption="Entre Itens do Programa"/>
+      <initial_mode caption="Modo Inicial"/>
     </style>
-    <transition_note caption="A velocidade da transição é muito afetada pela resolução do monitor. Se estiver muito lenta, tente diminuir a resolução do monitor de apresentação. E se não houver transição, talvez o nível de cores esteja muito baixo no monitor de apresentação."/>
     <alerts caption="Alertas">
       <font caption="Fonte"/>
       <align caption="Alinhamento"/>

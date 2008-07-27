@@ -41,7 +41,7 @@
       <save caption="Opslaan">Opslaan van het geselecteerde lied op schijf.</save>
       <revert caption="Terugzetten">Terugzetten van het lied naar de vorige versie op schijf.</revert>
       <print caption="Afdrukken">Afdrukken van het huidige lied.</print>
-      <present caption="Presenteren">Presenteer het lied.
+      <present caption="Presenteren">Presenteer het lied. Als er wijzigingen zijn aangebracht in het huidige lied, worden die bewaard.
         <single_screen caption="Enkel scherm"/>
         <dual_screen caption="Twee schermen"/>
         <preview_dual_screen caption="Voorbeeld twee schermen"/>
@@ -341,6 +341,9 @@
       <dialog caption="Selecteer een log file"
               title="Selecteer log file"/>
     </logging>
+    <log caption="Lied gebruik logboek instellingen">
+      <enable caption="Log bijhouden inschakelen"/>
+    </log>
     <imagequality caption="Project afbeelding kwaliteit">
       <note caption="OpenSong probeert de afbeeldingen die worden gebruikt in een project als JPEG te bewaren. De elementen hieronder bepalen de kwaliteit en opslagmethode van de afbeeldingen. De kwaliteitskeuze is niet beschikbaar als QuickTime niet is geinstalleerd. OpenSong is hiervoor afhankelijk van dit pakket."/>
       <compression caption="Afbeelding compressie"/>
@@ -388,7 +391,6 @@
         <scripture_slides caption="Standaard bijbelteksten stijl"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
     </settings>
     <transitions caption="Overgangen">
       <use_transitions caption="Standaard ingeschakeld"/>
@@ -423,7 +425,6 @@
       <blank_next caption="Volgende dia"/>
       <initial_mode caption="Initiele presentatie modus"/>
     </style>
-    <transition_note caption="Overgangen worden erg beinvloed door scherm resolutie. Als het traag wordt, overweeg een lagere resolutie van het beeldscherm dat de presentatie moet weergeven. Evenzo, als u ontdekt dat de overgangen niet verschijnen, kan dit veroorzaakt worden door een te lage kleur instelling op het presentatie scherm."/>
     <alerts caption="Waarschuwingen">
       <font caption="Lettertype"/>
       <align caption="Uitlijning"/>
@@ -693,7 +694,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <ccli_number caption="CCLI lied #"/>
      <ccli_license caption="CCLI Licentie #"/>
      <presentation caption="Presentatie Volgorde"/>
-     <!--De code "|NL|" is een speciale code om aan te geven in OpenSong dat elke subtitel op een aparte reegel wordt geplaatst.-->
+     <!--De code "|NL|" is een speciale code om aan te geven in OpenSong dat elke subtitel op een aparte regel wordt geplaatst.-->
      <separator caption="|NL|"/>
      <!--De voorafgaande komma is nodig voor interne data structuur.-->
      <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
@@ -900,7 +901,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     </errors>
   </import_from_ccli>
 
-  <find_image title="Zoek Image">
+  <find_image title="Zoek afbeelding">
     <parent caption="(Parent)"/>
   </find_image>
   <input_box title="OpenSong"/>

@@ -2,6 +2,8 @@
 
 * Added user configurable quality settings of images that are stored in the set xml (vwout)
 
+* Added option to enable/disable the song activity log to MainSettingsWindow (JRC)
+
 * Title, Subtitle & Body of slides can now be enabled or disabled (JRC)
 
 * Commented out some "unused" code in SetML.DrawSlide (JRC)

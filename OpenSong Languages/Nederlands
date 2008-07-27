@@ -40,7 +40,7 @@
       <save caption="Opslaan">Opslaan van het geselecteerde lied op schijf.</save>
       <revert caption="Terugzetten">Terugzetten van het lied naar de vorige versie op schijf.</revert>
       <print caption="Afdrukken">Afdrukken van het huidige lied.</print>
-      <present caption="Presenteren">Presenteer het lied.
+      <present caption="Presenteren">Presenteer het lied. Als er wijzigingen zijn aangebracht in het huidige lied, worden die bewaard.
         <single_screen caption="Enkel scherm"/>
         <dual_screen caption="Twee schermen"/>
         <preview_dual_screen caption="Voorbeeld twee schermen"/>
@@ -340,6 +340,9 @@
       <dialog caption="Selecteer een log file"
               title="Selecteer log file"/>
     </logging>
+    <log caption="Lied gebruik logboek instellingen">
+      <enable caption="Log bijhouden inschakelen"/>
+    </log>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
@@ -382,13 +385,12 @@
         <scripture_slides caption="Standaard bijbelteksten stijl"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
     </settings>
     <transitions caption="Overgangen">
       <use_transitions caption="Standaard ingeschakeld"/>
       <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
-      <time caption="Tijd" helptag="Totale tijd voor overgang (kan langer duren op langzamere systemen)"/>
-      <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
+      <time caption="Tijd" helptag="Totale tijd voor de overgang (kan in werkelijkheid langer duren op langzame systemen)"/>
+      <frames caption="Stappen" helptag="Aantal stappen of frames voor de overgang tussen dia's"/>
     </transitions>
     <style caption="Stijl">
       <border_thickness caption="Dikte randen"/>
@@ -417,7 +419,6 @@
       <blank_next caption="Volgende dia"/>
       <initial_mode caption="Initiele presentatie modus"/>
     </style>
-    <transition_note caption="Overgangen worden erg beinvloed door scherm resolutie. Als het traag wordt, overweeg een lagere resolutie van het beeldscherm dat de presentatie moet weergeven. Evenzo, als u ontdekt dat de overgangen niet verschijnen, kan dit veroorzaakt worden door een te lage kleur instelling op het presentatie scherm."/>
     <alerts caption="Waarschuwingen">
       <font caption="Lettertype"/>
       <align caption="Uitlijning"/>
@@ -687,7 +688,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
      <ccli_number caption="CCLI lied #"/>
      <ccli_license caption="CCLI Licentie #"/>
      <presentation caption="Presentatie Volgorde"/>
-     <!--De code "|NL|" is een speciale code om aan te geven in OpenSong dat elke subtitel op een aparte reegel wordt geplaatst.-->
+     <!--De code "|NL|" is een speciale code om aan te geven in OpenSong dat elke subtitel op een aparte regel wordt geplaatst.-->
      <separator caption="|NL|"/>
      <!--De voorafgaande komma is nodig voor interne data structuur.-->
      <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
@@ -894,7 +895,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     </errors>
   </import_from_ccli>
 
-  <find_image title="Zoek Image">
+  <find_image title="Zoek afbeelding">
     <parent caption="(Parent)"/>
   </find_image>
   <input_box title="OpenSong"/>
@@ -1118,8 +1119,9 @@ Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface
 Mogelijk dat de OpenSOng Import utility uitkomst kan bieden in de tussentijd.
 Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
     </cclinotavailable>
-    <activity_log>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
-De logging van lied gebruik is uitgeschakeld.</activity_log>
+    <activity_disabled>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
+De logging van lied gebruik is uitgeschakeld.</activity_disabled>
+    <adding_logentry>Er is een fout opgetreden bij het toevoegen van een lied aan het logboek!</adding_logentry>
   </errors>
 
   <xml_errors>

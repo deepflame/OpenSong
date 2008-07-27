@@ -373,7 +373,6 @@
         <scripture_slides caption="Standard bibeltextutseende"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*Övertoningar påverkas väldigt mycket av upplösningen. Om de går sakta, mminska upplösningen på visningsskärmen. Om övertoningarna inte syns alls kan det bero på för få färger på visningsskärmen."/>
     </settings>
     <transitions caption="Övertoningar">
       <use_transitions caption="Använd övertoningar"/>

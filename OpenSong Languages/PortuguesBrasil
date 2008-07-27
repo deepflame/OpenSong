@@ -379,7 +379,6 @@
         <scripture_slides caption="Estilo Padrão da Bíblia"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*As transições são muito afetadas pela resolução de tela. Se você estiver experimentando transições lentas, considere diminuir a resolução do monitor em que a apresentação reside. Também, se você notar que estas transições não são exibidas, pode ser porque seus níveis de cor são muito baixos no monitor da apresentação."/>
     </settings>
     <transitions caption="Transições">
       <use_transitions caption="Usar Transições"/>

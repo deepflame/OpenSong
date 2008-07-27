@@ -1,3 +1,4 @@
+general_settings/log*
 imagequality_list/*
 general/imagequality
 load_settings/imagequality

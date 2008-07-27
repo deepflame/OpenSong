@@ -344,7 +344,6 @@
         <scripture_slides caption="Standard Schrift Stil"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*Überblendeffekte sind abhängig von der Bildschirmauflösung. Um die Überblendgeschwindigkeit zu erhöhen, muss eventuell die Auflösung des Präsentationsmonitors heruntergesetzt werden. Bei zu geringer Farbtiefe funktioniert das Überblenden möglicherweise nicht."/>
     </settings>
     <transitions caption="Überblendeffekte">
       <use_transitions caption="Überblendeffekte benutzen"/>

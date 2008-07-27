@@ -43,7 +43,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -51,7 +50,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   75
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   "True"
@@ -71,7 +69,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -79,7 +76,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   75
-      BehaviorIndex   =   1
    End
    Begin StaticText txt_path
       AutoDeactivate  =   "True"
@@ -99,7 +95,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   1
@@ -110,7 +105,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   455
-      BehaviorIndex   =   2
    End
    Begin Separator sep_1
       AutoDeactivate  =   "True"
@@ -125,14 +119,12 @@ Begin Window ImageChooserWindow
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
       Top             =   328
       Visible         =   "True"
       Width           =   475
-      BehaviorIndex   =   3
    End
    Begin ScrollBar scr_vertical
       AcceptFocus     =   "true"
@@ -153,7 +145,6 @@ Begin Window ImageChooserWindow
       Maximum         =   0
       Minimum         =   0
       PageStep        =   3
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -161,7 +152,6 @@ Begin Window ImageChooserWindow
       Value           =   0
       Visible         =   "True"
       Width           =   16
-      BehaviorIndex   =   4
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -180,7 +170,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -188,7 +177,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -207,7 +195,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -215,7 +202,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -234,7 +220,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -242,7 +227,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -261,7 +245,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -269,7 +252,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -288,7 +270,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -296,7 +277,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -315,7 +295,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -323,7 +302,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -342,7 +320,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -350,7 +327,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -369,7 +345,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -377,7 +352,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -396,7 +370,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -404,7 +377,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -423,7 +395,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -431,7 +402,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -450,7 +420,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -458,7 +427,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -477,7 +445,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -485,7 +452,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -504,7 +470,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -512,7 +477,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -531,7 +495,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -539,7 +502,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -558,7 +520,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -566,7 +527,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -585,7 +545,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -593,7 +552,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -612,7 +570,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -620,7 +577,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -639,7 +595,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -647,7 +602,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -666,7 +620,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -674,7 +627,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   "False"
@@ -693,7 +645,6 @@ Begin Window ImageChooserWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -701,7 +652,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -721,7 +671,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -732,7 +681,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -752,7 +700,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -763,7 +710,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -783,7 +729,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -794,7 +739,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -814,7 +758,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -825,7 +768,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -845,7 +787,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -856,7 +797,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -876,7 +816,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -887,7 +826,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -907,7 +845,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -918,7 +855,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -938,7 +874,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -949,7 +884,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -969,7 +903,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -980,7 +913,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1000,7 +932,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1011,7 +942,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1031,7 +961,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1042,7 +971,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1062,7 +990,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1073,7 +1000,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1093,7 +1019,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1104,7 +1029,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1124,7 +1048,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1135,7 +1058,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1155,7 +1077,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1166,7 +1087,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1186,7 +1106,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1197,7 +1116,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1217,7 +1135,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1228,7 +1145,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1248,7 +1164,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1259,7 +1174,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1279,7 +1193,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1290,7 +1203,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   "True"
@@ -1310,7 +1222,6 @@ Begin Window ImageChooserWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "file name"
       TextAlign       =   0
@@ -1321,7 +1232,6 @@ Begin Window ImageChooserWindow
       Underline       =   "False"
       Visible         =   "True"
       Width           =   80
-      BehaviorIndex   =   6
    End
 End
 #tag EndWindow
@@ -1462,7 +1372,7 @@ End
 #tag EndEvents
 #tag Events can
 	#tag Event
-		Function MouseDown(index as Integer, X As Integer, Y As Integer) As Boolean
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Also replaced (and modified) hard coded argument with variable.
 		  Dim ImgNdx as Integer
@@ -1489,7 +1399,7 @@ End
 		End Function
 	#tag EndEvent
 	#tag Event
-		Sub Paint(index as Integer, g As Graphics)
+		Sub Paint(g As Graphics)
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Replaced (and modified) hard coded argument with variable.
 		  // JDL 2/01/2006  Replaced pic.Depth with variable picDepth

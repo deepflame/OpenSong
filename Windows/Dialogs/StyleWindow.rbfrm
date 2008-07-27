@@ -9,7 +9,6 @@ Begin Window StyleWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   486
-   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -43,7 +42,6 @@ Begin Window StyleWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -71,7 +69,6 @@ Begin Window StyleWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -97,7 +94,6 @@ Begin Window StyleWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
@@ -114,7 +110,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   3
-         Enabled         =   True
+         Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   80
          HelpTag         =   ""
@@ -125,11 +121,10 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Top             =   144
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   250
          BehaviorIndex   =   3
       End
@@ -141,7 +136,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   4
-         Enabled         =   True
+         Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   80
          HelpTag         =   ""
@@ -152,11 +147,10 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Top             =   45
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   250
          BehaviorIndex   =   4
       End
@@ -178,7 +172,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Align:"
          TextAlign       =   1
@@ -197,7 +190,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   6
-         Enabled         =   True
+         Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   44
          HelpTag         =   ""
@@ -208,11 +201,10 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Top             =   60
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   44
          BehaviorIndex   =   6
       End
@@ -234,7 +226,6 @@ Begin Window StyleWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   10
@@ -262,7 +253,6 @@ Begin Window StyleWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   10
@@ -278,7 +268,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   9
-         Enabled         =   True
+         Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   44
          HelpTag         =   ""
@@ -289,11 +279,10 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Top             =   159
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   44
          BehaviorIndex   =   9
       End
@@ -315,7 +304,6 @@ Begin Window StyleWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   0
@@ -344,7 +332,6 @@ Begin Window StyleWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   0
@@ -373,7 +360,6 @@ Begin Window StyleWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   10
@@ -401,7 +387,6 @@ Begin Window StyleWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   10
@@ -429,7 +414,6 @@ Begin Window StyleWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   0
@@ -448,7 +432,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   18
-         Enabled         =   True
+         Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   80
          HelpTag         =   ""
@@ -459,11 +443,10 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Top             =   245
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   250
          BehaviorIndex   =   15
       End
@@ -473,7 +456,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   24
-         Enabled         =   True
+         Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   44
          HelpTag         =   ""
@@ -484,11 +467,10 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Top             =   260
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   44
          BehaviorIndex   =   16
       End
@@ -509,7 +491,6 @@ Begin Window StyleWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
@@ -536,7 +517,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Color:"
          TextAlign       =   2
@@ -567,7 +547,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Image:"
          TextAlign       =   1
@@ -598,7 +577,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "True"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "(left-click to change)"
          TextAlign       =   1
@@ -629,7 +607,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "True"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "(right-click to clear)"
          TextAlign       =   1
@@ -660,7 +637,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Position:"
          TextAlign       =   1
@@ -691,7 +667,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Trim Bottom*:"
          TextAlign       =   1
@@ -723,7 +698,6 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   12
@@ -751,7 +725,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "px"
          TextAlign       =   0
@@ -770,7 +743,7 @@ Begin Window StyleWindow
          AutoDeactivate  =   "True"
          Backdrop        =   0
          ControlOrder    =   29
-         Enabled         =   True
+         Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   30
          HelpTag         =   ""
@@ -783,11 +756,10 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          MyColor         =   0
-         Scope           =   0
          TabPanelIndex   =   0
          Top             =   50
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   30
          BehaviorIndex   =   26
       End
@@ -798,7 +770,7 @@ Begin Window StyleWindow
          Backdrop        =   0
          bgColor         =   0
          ControlOrder    =   33
-         Enabled         =   True
+         Enabled         =   "True"
          EraseBackground =   "True"
          Height          =   60
          HelpTag         =   ""
@@ -809,11 +781,10 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Top             =   105
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   80
          BehaviorIndex   =   27
       End
@@ -827,7 +798,7 @@ Begin Window StyleWindow
          ControlOrder    =   34
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   "True"
          EnforceRange    =   0
          Format          =   ""
          Height          =   20
@@ -847,7 +818,6 @@ Begin Window StyleWindow
          Multiline       =   "False"
          Password        =   "False"
          ReadOnly        =   "False"
-         Scope           =   0
          ScrollbarHorizontal=   "False"
          ScrollbarVertical=   "True"
          SignalRangeErrors=   0
@@ -860,7 +830,7 @@ Begin Window StyleWindow
          Top             =   259
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   30
          BehaviorIndex   =   28
       End
@@ -883,7 +853,6 @@ Begin Window StyleWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "True"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "*Cuts the bottom of the background to hide watermarks, web site urls, etc. (To avoid distortion, this also trims from the sides to compensate.)"
       TextAlign       =   0
@@ -912,7 +881,6 @@ Begin Window StyleWindow
       LockLeft        =   ""
       LockRight       =   ""
       LockTop         =   ""
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -939,7 +907,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          Multiline       =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          Text            =   "Song Subtitles:"
          TextAlign       =   0
@@ -970,7 +937,6 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -978,7 +944,7 @@ Begin Window StyleWindow
          Underline       =   "False"
          Value           =   "False"
          Visible         =   True
-         Width           =   195
+         Width           =   209
          BehaviorIndex   =   32
       End
       Begin CheckBox chk_options_highlight_chorus
@@ -999,7 +965,6 @@ Begin Window StyleWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -1007,7 +972,7 @@ Begin Window StyleWindow
          Underline       =   "False"
          Value           =   "False"
          Visible         =   True
-         Width           =   195
+         Width           =   209
          BehaviorIndex   =   33
       End
       Begin CheckBox chk_options_verse_in_title
@@ -1028,7 +993,6 @@ Begin Window StyleWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
-         Scope           =   0
          TabPanelIndex   =   0
          TextFont        =   "Arial"
          TextSize        =   10
@@ -1036,7 +1000,7 @@ Begin Window StyleWindow
          Underline       =   ""
          Value           =   ""
          Visible         =   True
-         Width           =   195
+         Width           =   209
          BehaviorIndex   =   34
       End
       Begin SubtitleList lst_song_subtitles
@@ -1050,7 +1014,7 @@ Begin Window StyleWindow
          DataField       =   ""
          DataSource      =   ""
          DefaultRowHeight=   -1
-         Enabled         =   True
+         Enabled         =   "True"
          EnableDrag      =   "False"
          EnableDragReorder=   "True"
          GridLinesHorizontal=   0
@@ -1070,7 +1034,6 @@ Begin Window StyleWindow
          LockRight       =   "False"
          LockTop         =   "False"
          RequiresSelection=   ""
-         Scope           =   0
          ScrollbarHorizontal=   "False"
          ScrollBarVertical=   "False"
          SelectionType   =   0
@@ -1080,7 +1043,7 @@ Begin Window StyleWindow
          Top             =   376
          Underline       =   "False"
          UseFocusRing    =   "True"
-         Visible         =   True
+         Visible         =   "True"
          Width           =   154
          _ScrollOffset   =   0
          _ScrollWidth    =   -1

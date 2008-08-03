@@ -467,7 +467,7 @@
     <actions caption="Acties">
       <alert caption="[A] Waarschuwing">New alert (leave blank to clear)</alert>
       <quick_song caption="[Q] Voeg lied toe"/>
-      <scripture caption="[S] Bijbelteskt"/>
+      <scripture caption="[S] Bijbeltekst"/>
       <full_screen caption="[M] Volledig scherm"/>
       <normal_screen caption="[M] Normaal Scherm"/>
       <return caption="[Esc] Terug"/>

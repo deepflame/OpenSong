@@ -1067,8 +1067,7 @@ End
 
 	#tag Method, Flags = &h0
 		Function Edit(styleNode As XmlNode, slideNode as XmlNode, SongStyle As Boolean = True) As Boolean
-		  ReturnValue = False
-		  styleNode = styleNode
+		  Me.ReturnValue = False
 		  PreviewSlideNode = slideNode
 		  
 		  workingStyle = New SlideStyle(styleNode)
@@ -1077,14 +1076,14 @@ End
 		  
 		  ShowModalWithin MainWindow
 		  
-		  If ReturnValue Then
+		  If Me.ReturnValue Then
 		    '++JRC This will eat all the changes we just saved in btn_ok.Action, is this the intent?
 		    'Since we're saving everything to workingStyle as we go, this may be NBD
 		    'will leave it for now
 		    SmartML.RemoveChildren(styleNode)
 		    SmartML.CloneChildren(workingStyle.ToXML.DocumentElement, styleNode)
 		  End If
-		  Return ReturnValue
+		  Return Me.ReturnValue
 		End Function
 	#tag EndMethod
 
@@ -1205,10 +1204,6 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected styleNode As XmlNode
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
 		Protected workingStyle As SlideStyle
 	#tag EndProperty
 
@@ -1222,47 +1217,7 @@ End
 #tag Events btn_ok
 	#tag Event
 		Sub Action()
-		  Dim c As Color
-		  
-		  If can_background_color.GetColor(c) Then
-		    SmartML.SetValueC(styleNode, "background/@color", c)
-		  Else
-		    SmartML.SetValue(styleNode, "background/@color", "")
-		  End If
-		  SmartML.SetValue(styleNode, "background", can_background_image.GetImageAsString)
-		  SmartML.SetValue(styleNode, "background/@strip_footer", edt_background_trim_bottom.Text)
-		  
-		  '++JRC
-		  SmartML.SetValueB styleNode, "body/@enabled", chk_font_body.Value
-		  SmartML.SetValueB styleNode, "title/@enabled", chk_font_title.Value
-		  SmartML.SetValueB styleNode, "subtitle/@enabled", chk_font_subtitle.Value
-		  '--
-		  SmartML.SetValue styleNode, "body/@align", sal_align_body.GetHAlign
-		  SmartML.SetValue styleNode, "body/@valign", sal_align_body.GetVAlign
-		  SmartML.SetValueB styleNode, "body/@highlight_chorus", chk_options_highlight_chorus.Value
-		  
-		  SmartML.SetValue styleNode, "title/@align", sal_align_title.GetHAlign
-		  SmartML.SetValue styleNode, "title/@valign", sal_align_title.GetVAlign
-		  SmartML.SetValueB styleNode, "title/@include_verse", chk_options_verse_in_title.Value
-		  
-		  SmartML.SetValue styleNode, "subtitle/@align", sal_align_subtitle.GetHAlign
-		  SmartML.SetValue styleNode, "subtitle/@valign", sal_align_subtitle.GetVAlign
-		  SmartML.SetValueB styleNode, "subtitle/@descriptive", chk_options_descriptive_subtitle_info.Value
-		  
-		  SmartML.SetValueF(styleNode, "title", can_font_title.GetFont)
-		  SmartML.SetValueF(styleNode, "body", can_font_body.GetFont)
-		  SmartML.SetValueF(styleNode, "subtitle", can_font_subtitle.GetFont)
-		  
-		  SmartML.SetValueN(styleNode, "background/@position", pop_background_position.ListIndex + 1)
-		  
-		  Dim temp As String
-		  
-		  If IsSong Then
-		    temp = lst_song_subtitles.GetSelectedOptions
-		    SmartML.SetValue styleNode, "song_subtitle",  temp
-		  End If
-		  
-		  ReturnValue = True
+		  StyleWindow.ReturnValue = True
 		  
 		  Close
 		End Sub
@@ -1271,6 +1226,7 @@ End
 #tag Events btn_cancel
 	#tag Event
 		Sub Action()
+		  StyleWindow.ReturnValue = False
 		  Close
 		End Sub
 	#tag EndEvent

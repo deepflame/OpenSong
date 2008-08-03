@@ -944,7 +944,7 @@ Begin Window StyleWindow
          Underline       =   "False"
          Value           =   "False"
          Visible         =   True
-         Width           =   195
+         Width           =   209
          BehaviorIndex   =   32
       End
       Begin CheckBox chk_options_highlight_chorus
@@ -972,7 +972,7 @@ Begin Window StyleWindow
          Underline       =   "False"
          Value           =   "False"
          Visible         =   True
-         Width           =   195
+         Width           =   209
          BehaviorIndex   =   33
       End
       Begin CheckBox chk_options_verse_in_title
@@ -1000,7 +1000,7 @@ Begin Window StyleWindow
          Underline       =   ""
          Value           =   ""
          Visible         =   True
-         Width           =   195
+         Width           =   209
          BehaviorIndex   =   34
       End
       Begin SubtitleList lst_song_subtitles
@@ -1091,7 +1091,7 @@ End
 	#tag Method, Flags = &h21
 		Private Sub LoadValues()
 		  can_background_color.SetColor workingStyle.BGColor
-		  can_background_image.SetImage workingStyle.Background
+		  can_background_image.SetImage( workingStyle.Background() )
 		  can_background_image.bgColor = workingStyle.BGColor
 		  
 		  edt_background_trim_bottom.Text = CStr(workingStyle.StripFooter)
@@ -1485,7 +1485,7 @@ End
 #tag Events can_background_image
 	#tag Event
 		Sub Action()
-		  workingStyle.Background = Me.GetImageAsPicture
+		  workingStyle.Background = Me.GetImage()
 		End Sub
 	#tag EndEvent
 #tag EndEvents

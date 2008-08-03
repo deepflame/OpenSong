@@ -1,4 +1,8 @@
-﻿* Added option to enable/disable the song activity log to MainSettingsWindow (JRC)
+﻿* Added the option to not include images from the OpenSong backgrounds folder in the set xml (vwout)
+
+* Added user configurable quality settings of images that are stored in the set xml (vwout)
+
+* Added option to enable/disable the song activity log to MainSettingsWindow (JRC)
 
 *Tilte, Subtitle & Body of slides can now be enabled or disabled (JRC)
 

@@ -109,7 +109,7 @@ Protected Module SetML
 		  
 		  aspect_ratio = gWidth / gHeight
 		  
-		  If Style <> Nil Then background = Style.Background 'EMP 9/05
+		  If Style <> Nil Then background = Style.Background().GetImage()
 		  
 		  //++EMP 09/05
 		  // Paint the background color first.  That way the borders from any trimming will

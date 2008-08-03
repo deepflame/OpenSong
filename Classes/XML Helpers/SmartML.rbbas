@@ -447,8 +447,8 @@ Protected Module SmartML
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Sub SetValueP(xnode As XmlNode, childPath As String, f As FolderItem)
+	#tag Method, Flags = &h21
+		Private Sub SetValueP(xnode As XmlNode, childPath As String, f As FolderItem)
 		  Dim inputStream As BinaryStream
 		  
 		  If f <> Nil Then

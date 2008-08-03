@@ -4,9 +4,13 @@ Inherits SBufferedCanvas
 	#tag Event
 		Sub DropObject(obj As DragItem, action As Integer)
 		  If obj.PictureAvailable() Then
-		    SetImageAsPicture(obj.Picture())
+		    If SetImageAsPicture( obj.Picture() ) Then
+		      Action
+		    End If
 		  ElseIf obj.FolderItemAvailable() Then
-		    SetImageAsFile obj.FolderItem()
+		    If SetImageAsFile( obj.FolderItem() ) Then
+		      Action
+		    End If
 		  End If
 		End Sub
 	#tag EndEvent
@@ -32,8 +36,9 @@ Inherits SBufferedCanvas
 		      Else
 		        f = ImageChooserWindow.Lookup 'GetOpenFolderItem("image/jpeg")
 		        If f <> Nil Then
-		          SetImageAsFile f
-		          Action
+		          If SetImageAsFile(f) Then
+		            Action
+		          End If
 		        Else
 		          Repaint
 		        End If
@@ -165,11 +170,16 @@ Inherits SBufferedCanvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetImageAsFile(f As FolderItem)
-		  If Me.Image.SetImageFromFile(f) Then
+		Function SetImageAsFile(f As FolderItem) As Boolean
+		  Dim bSuccess As Boolean
+		  
+		  bSuccess = Me.Image.SetImageFromFile(f)
+		  If bSuccess Then
 		    Me.Repaint()
 		  End If
-		End Sub
+		  
+		  Return bSuccess
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -212,10 +222,12 @@ Inherits SBufferedCanvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub SetImageAsPicture(img As Picture)
+		Protected Function SetImageAsPicture(img As Picture) As Boolean
 		  Me.Image.SetImage(img)
 		  Repaint()
-		End Sub
+		  
+		  Return True
+		End Function
 	#tag EndMethod
 
 

@@ -1,3 +1,2 @@
 ﻿-= JRC =-
 
-* Added option to enable/disable the song activity log to MainSettingsWindow (JRC)

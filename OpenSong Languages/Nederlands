@@ -9,7 +9,8 @@
     <transitions>Laden overgangen lijst</transitions>
     <tempos>Laden tempo lijst</tempos>
     <themes>Laden thema lijst</themes>
-    <time_signatures>Laden time signature list</time_signatures>
+    <time_signatures>Laden maatsoort lijst</time_signatures>
+    <imagequality>Laden afbeeldingskwaliteiten lijst</imagequality>
     <fonts>Laden lettertype lijst</fonts>
     <latest_version>Controle laatste versie
       <newer_available>Er is een nieuwere versie (%1) beschikbaar. Ga naar: www.opensong.org voor downloaden.</newer_available>
@@ -332,7 +333,7 @@
       <changed>U selecteerde een aangepaste locatie voor de Documents map, maar klikte niet op de Wijzig knop.  Wilt u de nieuwe locatie gebruiken?</changed>
       <change caption="Wijzig"/>
       <oldfolderdb caption="gebruik oude (pre-V1.1) file cache"/>
-      </documents_folder>
+    </documents_folder>
     <logging caption="Log settings">
       <append caption="toevoegen aan log file"/>
       <console caption="Log naar  system console"/>
@@ -343,6 +344,11 @@
     <log caption="Lied gebruik logboek instellingen">
       <enable caption="Log bijhouden inschakelen"/>
     </log>
+    <imagequality caption="Project afbeelding kwaliteit">
+      <note caption="OpenSong probeert de afbeeldingen die worden gebruikt in een project als JPEG te bewaren. De elementen hieronder bepalen de kwaliteit en opslagmethode van de afbeeldingen. De kwaliteitskeuze is niet beschikbaar als QuickTime niet is geinstalleerd. OpenSong is hiervoor afhankelijk van dit pakket."/>
+      <compression caption="Afbeelding compressie"/>
+      <extern caption="Afbeeldingen uit achtergrondmap niet in set."/>
+    </imagequality>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
@@ -389,8 +395,8 @@
     <transitions caption="Overgangen">
       <use_transitions caption="Standaard ingeschakeld"/>
       <transition_note caption="*Overgangen worden sterk beinvloed door de resolutie van het scherm. Als dit erg traag is, overweeg dan de resolutie van de monitor terug te brengen naar een lager niveau. Ook als je merkt dat de overgangen niet verschijnen, kan dat komen doordat de niveau's van de kleuren te laag staan op de presentatie monitor."/>
-      <time caption="Tijd" helptag="Totale tijd voor de overgang (kan in werkelijkheid langer duren op langzame systemen)"/>
-      <frames caption="Stappen" helptag="Aantal stappen of frames voor de overgang tussen dia's"/>
+      <time caption="Tijd" helptag="Totale tijd voor overgang (kan langer duren op langzamere systemen)"/>
+      <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
     </transitions>
     <style caption="Stijl">
       <border_thickness caption="Dikte randen"/>
@@ -971,6 +977,15 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <option name="Ja"/>
     <option name="Nee"/>
   </transition_list>
+  
+  <imagequality_list>
+    <option name="Volledig, minimale kwaliteit, klein projectbestand"/>
+    <option name="Hoog, lage kwaliteit"/>
+    <option name="Midden, normale kwaliteit"/>
+    <option name="Beperkt, hoge kwaliteit"/>
+    <option name="Laag, maximale kwaliteit"/>
+    <option name="Geen, zonder verlies, groot projectbestand"/>
+  </imagequality_list>
   
   <style_preview>
     <slide_groups>

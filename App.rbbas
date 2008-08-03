@@ -1061,6 +1061,16 @@ Inherits Application
 		    xnode = xnode.NextSibling
 		  Wend
 		  
+		  ' --- BUILD IMAGEQUALITY LIST ---
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/imagequality") + " ..."
+		  xnode = T.GetNode("imagequality_list").FirstChild
+		  For i = UBound(ImageQualityList) DownTo 0
+		    ImageQualityList.Remove i
+		  Next i
+		  While xnode <> Nil
+		    ImageQualityList.Append SmartML.GetValue(xnode, "@name")
+		    xnode = xnode.NextSibling
+		  Wend
 		  
 		End Sub
 	#tag EndMethod
@@ -1170,6 +1180,70 @@ Inherits Application
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetImageAsString(img As Picture) As String
+		  Dim strBase64 As String
+		  Dim r As New Random
+		  Dim f As FolderItem
+		  Dim inputStream As BinaryStream
+		  Dim QTExporter as QTGraphicsExporter
+		  Dim QualityValue As Integer
+		  Dim QualitySetting As ImageQualityEnum
+		  Dim saveSuccess As Boolean
+		  
+		  If img <> Nil Then
+		    f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)))
+		    If f <> Nil Then
+		      
+		      saveSuccess = False
+		      //First try to use the QuickTime exporter, that object allows quality variance
+		      QTExporter= GetQTGraphicsExporter("JPEG")
+		      If QTExporter <> Nil Then
+		        
+		        QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
+		        QualitySetting = ImageQualityEnum(QualityValue)
+		        
+		        Select Case QualitySetting
+		        Case ImageQualityEnum.FullCompression
+		          QTExporter.CompressionQuality = 0
+		        Case ImageQualityEnum.HighCompression
+		          QTExporter.CompressionQuality = 256
+		        Case ImageQualityEnum.LittleCompression
+		          QTExporter.CompressionQuality = 768
+		        Case ImageQualityEnum.LowCompression
+		          QTExporter.CompressionQuality = 1023
+		        Case ImageQualityEnum.NoCompression
+		          QTExporter.CompressionQuality = 1024
+		        Else
+		          QTExporter.CompressionQuality = 512
+		        End Select
+		        
+		        QTExporter.OutputFileType="JPEG"
+		        QTExporter.OutputFileCreator="ogle"
+		        saveSuccess = QTExporter.SavePicture(f,img)
+		      End If
+		      
+		      If (QTExporter = Nil) Or (saveSuccess = False) Then
+		        Try
+		          //If QuickTime is not available, try to use GDI+ (Windows) or Linux, MacOS native
+		          f.SaveAsJPEG img
+		        Catch
+		          //If all others fail, use the OS default (Windows: bmp, Linux: jpg, MacOS: pict
+		          f.SaveAsPicture img
+		        End Try
+		      End If
+		      
+		      inputStream = f.OpenAsBinaryFile(False)
+		      strBase64 = EncodeBase64(inputStream.Read(f.Length))
+		      inputStream.Close
+		      f.delete
+		    End If
+		  End If
+		  
+		  Return strBase64
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		AppFolder As FolderItem
@@ -1267,6 +1341,24 @@ Inherits Application
 		TransitionList(0) As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		ImageQualityList(0) As String
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
+			End Set
+		#tag EndSetter
+		ExcludeBackgroundsImages As Boolean
+	#tag EndComputedProperty
+
 
 	#tag Constant, Name = POINT_TO_CM, Type = Double, Dynamic = False, Default = \"0.035277778", Scope = Public
 	#tag EndConstant
@@ -1307,9 +1399,15 @@ Inherits Application
 	#tag Constant, Name = kActivityLog, Type = String, Dynamic = False, Default = \"activitylog/level", Scope = Public
 	#tag EndConstant
 
-
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="SplashShowing"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ExcludeBackgroundsImages"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

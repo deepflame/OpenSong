@@ -1,13 +1,13 @@
 #tag Class
 Protected Class SlideStyle
 	#tag Method, Flags = &h0
-		Function Background() As Picture
+		Function Background() As StyleImage
 		  Return Background
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Background(Assigns bg As Picture)
+		Sub Background(Assigns bg As StyleImage)
 		  Background = bg
 		End Sub
 	#tag EndMethod
@@ -68,7 +68,8 @@ Protected Class SlideStyle
 
 	#tag Method, Flags = &h0
 		Sub Constructor(xStyle As XmlNode)
-		  defaultBGColor = LightBevelColor
+		  Me.defaultBGColor = LightBevelColor
+		  Me.Background = new StyleImage()
 		  
 		  FromXML(xStyle)
 		End Sub
@@ -328,15 +329,11 @@ Protected Class SlideStyle
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
 		  SmartML.SetValueN(CurrChild, "@position", Position)
-		  
-		  If Background <> Nil Then
-		    f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)) + ".jpg")
-		    If f <> Nil Then
-		      f.SaveAsPicture Background
-		      SmartML.SetValueP(root, thisNode, f)
-		      f.Delete
-		    End If
-		  End If
+		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And App.ExcludeBackgroundsImages() Then
+		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1))
+		  Else
+		    SmartML.SetValue(root, thisNode, Background.GetImageAsString())
+		  End If 
 		  
 		  Return XmlDoc
 		End Function
@@ -458,6 +455,7 @@ Protected Class SlideStyle
 		  Dim tmpVal as String
 		  Dim tab As StyleTabsType
 		  Dim tabs() As StyleTabsType
+		  Dim fileName As String
 		  
 		  BodyFont = SmartML.GetValueF(xStyle, "body")
 		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
@@ -524,7 +522,14 @@ Protected Class SlideStyle
 		  SubtitleEnable = SmartML.GetValueB(xStyle, "subtitle/@enabled", true, true)
 		  '--
 		  
-		  Background = SmartML.GetValueP(xstyle, "background", False)
+		  fileName = SmartML.GetValue(xstyle, "background/@filename", False)
+		  If fileName <> "" Then
+		    If Not Background.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + fileName ) Then
+		      Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
+		    End If
+		  Else
+		    Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
+		  End If
 		  If Not SmartML.GetValueC(xstyle, "background/@color", BGColor, False) Then
 		    BGColor = defaultBGColor
 		  End If
@@ -544,7 +549,8 @@ Protected Class SlideStyle
 		  // since we don't create and destroy these at a high
 		  // rate it should be sufficient.
 		  //--
-		  defaultBGColor = LightBevelColor
+		  Me.defaultBGColor = LightBevelColor
+		  Me.Background = new StyleImage()
 		  
 		  If xStyle Is Nil Then
 		    Dim e As New NilObjectException
@@ -631,7 +637,7 @@ Protected Class SlideStyle
 
 
 	#tag Property, Flags = &h21
-		Private Background As Picture
+		Private Background As StyleImage
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -740,7 +746,6 @@ Protected Class SlideStyle
 		SubtitleEnable As Boolean
 	#tag EndProperty
 
-
 	#tag Constant, Name = POS_CENTER, Type = Integer, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant
 
@@ -753,28 +758,33 @@ Protected Class SlideStyle
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

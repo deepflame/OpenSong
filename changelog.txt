@@ -1,10 +1,14 @@
-﻿* Added the option to not include images from the OpenSong backgrounds folder in the set xml (vwout)
+﻿* Fixed a bug in StyleWindow, background was not updated on image drop (vwout)
+
+* Corrected startup behavior for screens with a toolbar on a different position than at the bottom of the screen (vwout)
+
+* Added the option to not include images from the OpenSong backgrounds folder in the set xml (vwout)
 
 * Added user configurable quality settings of images that are stored in the set xml (vwout)
 
 * Added option to enable/disable the song activity log to MainSettingsWindow (JRC)
 
-*Tilte, Subtitle & Body of slides can now be enabled or disabled (JRC)
+* Title, Subtitle & Body of slides can now be enabled or disabled (JRC)
 
 *Commented out some "unused" code in SetML.DrawSlide (JRC)
 

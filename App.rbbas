@@ -719,19 +719,19 @@ Inherits Application
 		  // Thanks, Jon!  EMP, June 2006
 		  
 		  #If TargetLinux
-		    If (Screen(controlScreen).Width /2) > Screen(controlScreen).Height Then
-		      win.Width = (Screen(controlScreen).Width /2) - 40
+		    If (Screen(controlScreen).AvailableWidth /2) > Screen(controlScreen).AvailableHeight Then
+		      win.Width = (Screen(controlScreen).AvailableWidth /2) - 40
 		    else
-		      win.Width = Screen(controlScreen).Width - 40
+		      win.Width = Screen(controlScreen).AvailableWidth - 40
 		    End If
 		  #Else
-		    win.Width = Screen(controlScreen).Width - 40
+		    win.Width = Screen(controlScreen).AvailableWidth - 40
 		  #EndIf
 		  
-		  win.Height = Screen(controlScreen).Height - 115
+		  win.Height = Screen(controlScreen).AvailableHeight - 115
 		  
-		  win.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height  - win.Height) / 2 + 10
-		  win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
+		  win.Top = Screen(controlScreen).AvailableTop + (Screen(controlScreen).AvailableHeight  - win.Height) / 2 + 10
+		  win.Left = Screen(controlScreen).AvailableLeft + (Screen(controlScreen).AvailableWidth - win.Width) / 2
 		End Sub
 	#tag EndMethod
 

@@ -1,4 +1,7 @@
 general_settings/log*
+imagequality_list/*
+general/imagequality
+load_settings/imagequality
 load_settings/transitions
 slide_editor/transition
 presentation_settings/transitions

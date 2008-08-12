@@ -1,2 +1,3 @@
 ﻿-= JRC =-
 
+Fix issue where Currently selected  Set Item was not updating after removing an item from set list

@@ -1,4 +1,6 @@
-﻿* Fixed a bug in StyleWindow, background was not updated on image drop (vwout)
+﻿* Fix issue where Currently selected  Set Item was not updating after removing an item from set list (JRC)
+
+* Fixed a bug in StyleWindow, background was not updated on image drop (vwout)
 
 * Corrected startup behavior for screens with a toolbar on a different position than at the bottom of the screen (vwout)
 

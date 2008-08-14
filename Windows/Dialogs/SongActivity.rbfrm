@@ -9,7 +9,6 @@ Begin Window SongActivity
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   400
-   ImplicitInstance=   "False"
    LiveResize      =   "True"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -36,7 +35,7 @@ Begin Window SongActivity
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   ""
       GridLinesHorizontal=   0
@@ -65,10 +64,11 @@ Begin Window SongActivity
       Top             =   79
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   535
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
+      BehaviorIndex   =   0
    End
    Begin PushButton btn_act_done
       AutoDeactivate  =   "True"
@@ -77,7 +77,7 @@ Begin Window SongActivity
       Caption         =   "Done"
       ControlOrder    =   1
       Default         =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -93,8 +93,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   358
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   86
+      BehaviorIndex   =   1
    End
    Begin PushButton btn_act_print
       AutoDeactivate  =   "True"
@@ -119,8 +120,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   358
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   101
+      BehaviorIndex   =   2
    End
    Begin PushButton btn_act_find
       AutoDeactivate  =   "True"
@@ -129,7 +131,7 @@ Begin Window SongActivity
       Caption         =   "Find"
       ControlOrder    =   3
       Default         =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -145,8 +147,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   37
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   77
+      BehaviorIndex   =   3
    End
    Begin EditField edt_search
       AcceptTabs      =   ""
@@ -158,7 +161,7 @@ Begin Window SongActivity
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
@@ -186,8 +189,9 @@ Begin Window SongActivity
       Top             =   37
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   159
+      BehaviorIndex   =   4
    End
    Begin StaticText lbl_show
       AutoDeactivate  =   "True"
@@ -195,7 +199,7 @@ Begin Window SongActivity
       ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -215,8 +219,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   326
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin PopupMenu pop_show
       AutoDeactivate  =   "True"
@@ -224,7 +229,7 @@ Begin Window SongActivity
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -242,8 +247,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   325
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   202
+      BehaviorIndex   =   6
    End
    Begin StaticText lbl_date_range
       AutoDeactivate  =   "True"
@@ -251,7 +257,7 @@ Begin Window SongActivity
       ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -271,8 +277,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   14
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   262
+      BehaviorIndex   =   7
    End
    Begin EditField edt_from
       AcceptTabs      =   ""
@@ -284,7 +291,7 @@ Begin Window SongActivity
       ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
@@ -312,8 +319,9 @@ Begin Window SongActivity
       Top             =   37
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   120
+      BehaviorIndex   =   8
    End
    Begin EditField edt_to
       AcceptTabs      =   ""
@@ -325,7 +333,7 @@ Begin Window SongActivity
       ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
@@ -353,8 +361,9 @@ Begin Window SongActivity
       Top             =   37
       Underline       =   ""
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   120
+      BehaviorIndex   =   9
    End
    Begin StaticText txt_act_to
       AutoDeactivate  =   "True"
@@ -362,7 +371,7 @@ Begin Window SongActivity
       ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -382,8 +391,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   37
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   20
+      BehaviorIndex   =   10
    End
    Begin PushButton btn_export
       AutoDeactivate  =   "True"
@@ -408,8 +418,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   358
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   110
+      BehaviorIndex   =   11
    End
    Begin PushButton btn_act_clear_log
       AutoDeactivate  =   "True"
@@ -418,7 +429,7 @@ Begin Window SongActivity
       Caption         =   "Clear Log"
       ControlOrder    =   12
       Default         =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -434,8 +445,9 @@ Begin Window SongActivity
       TextSize        =   0
       Top             =   358
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   109
+      BehaviorIndex   =   12
    End
 End
 #tag EndWindow

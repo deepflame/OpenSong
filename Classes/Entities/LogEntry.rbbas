@@ -351,6 +351,20 @@ Protected Class LogEntry
 		Renamed As Boolean
 	#tag EndComputedProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			return Description = kSongCopied
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			If value Then Description = kSongCopied
+			End Set
+		#tag EndSetter
+		Copied As Boolean
+	#tag EndComputedProperty
+
 
 	#tag Constant, Name = E_LOG, Type = String, Dynamic = False, Default = \"log", Scope = Protected
 	#tag EndConstant
@@ -401,6 +415,9 @@ Protected Class LogEntry
 	#tag EndConstant
 
 	#tag Constant, Name = kSongRenamed, Type = Double, Dynamic = False, Default = \"7", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kSongCopied, Type = Double, Dynamic = False, Default = \"8", Scope = Protected
 	#tag EndConstant
 
 

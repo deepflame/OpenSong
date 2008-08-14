@@ -1,3 +1,5 @@
 ﻿-= JRC =-
 
+Added option to copy a song from one folder to another
+
 Fix issue where Currently selected  Set Item was not updating after removing an item from set list

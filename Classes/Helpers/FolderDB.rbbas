@@ -912,6 +912,52 @@ Protected Class FolderDB
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function CopyFile(path As String, destFolder As String) As Boolean
+		  Dim i, cacheSlots(0) As Integer
+		  Dim f, fo As FolderItem
+		  Dim found As Boolean
+		  
+		  destFolder = CleanPath(destFolder)
+		  path = CleanPath(path)
+		  
+		  fo = FileUtils.RelativePathToFolderItem(Folder, destFolder)
+		  If fo = Nil Or Not fo.Exists Then
+		    ErrorCode = 6
+		    ErrorString = "Could not find folder."
+		    Return False
+		  End If
+		  
+		  If Not fo.Directory Then
+		    ErrorCode = 6
+		    ErrorString = "Destination folder is a regular file."
+		    Return False
+		  End If
+		  i = 1
+		  f = FileUtils.RelativePathToFolderItem(Folder, path)
+		  If f = Nil Or Not f.Exists Then
+		    ErrorCode = 8
+		    ErrorString = "Could not find file."
+		    Return False
+		  End If
+		  
+		  f.CopyFileTo fo
+		  
+		  If f.LastErrorCode <> 0 Then
+		    If f.Exists And fo.Exists Then // File with that name already in destination folder
+		      ErrorCode = 13
+		      ErrorString = "Destination file exists."
+		    Else
+		      ErrorCode = 12
+		      ErrorString = "Could not copy file."
+		    End If
+		    Return False
+		  End If
+		  Return True
+		  
+		End Function
+	#tag EndMethod
+
 
 	#tag Note, Name = Description
 		Accesses the songs folder as a go-between

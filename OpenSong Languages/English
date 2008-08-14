@@ -53,6 +53,9 @@
       <move caption="Move">Moves the current song into another folder.
         <where caption="Move '%1' to folder:"/>
       </move>
+      <copy caption="Copy">Copies the current song to another folder.
+        <where caption="Copy '%1' to folder:"/>
+      </copy>
       <delete caption="Delete">Deletes the current song.</delete>
     </selected_song>
 
@@ -391,6 +394,7 @@
         <scripture_slides caption="Default Scripture Style"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
     </settings>
     <transitions caption="Transitions">
       <use_transitions caption="Enabled by default"/>
@@ -420,6 +424,8 @@
       </mouse_cursor>
       <blanks caption="Insert Blank Slides"/>
       <blanks_between caption="Between Set Items"/>
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
       <blank_style caption="Blank slides take style of"/>
       <blank_prev caption="Previous slide"/>
       <blank_next caption="Next slide"/>
@@ -797,6 +803,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       -->
       <value tag="0">All</value>
       <value tag="1">Created</value>
+      <value tag="8">Copied</value>
       <value tag="2">Deleted</value>
       <value tag="3">Modified</value>
       <value tag="4">Moved</value>
@@ -808,7 +815,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <input_box>
       <erase_all>This will erase all entries. Continue?</erase_all>
     </input_box>
-    <description>Created|Deleted|Modified|Moved|Presented|Printed|Renamed</description>
+    <description>Created|Deleted|Modified|Moved|Presented|Printed|Renamed|Copied</description>
   </song_activity>
   <scripture_lookup title="Scripture Lookup">
     <book caption="Bible Book"/>

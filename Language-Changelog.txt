@@ -1,3 +1,5 @@
+questions/activity_log
+errors/activity_disabled (modified)
 song_activity/value
 songs_mode/selected_song/copy
 general_settings/log*

@@ -1,5 +1,7 @@
 ﻿-= JRC =-
 
-Added option to copy a song from one folder to another
+Added option to prompt before adding presented songs to the activity log
+
+Provide a (hopefully) more detailed error message for failed activity log loading
 
 Fix issue where Currently selected  Set Item was not updating after removing an item from set list

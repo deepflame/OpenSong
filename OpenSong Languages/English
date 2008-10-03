@@ -351,6 +351,7 @@
     </logging>
     <log caption="Song Activity Log Settings">
       <enable caption="Enable Logging"/>
+      <prompt caption="Prompt Before Presenting"/>
     </log>
     <startmode caption="Initial Window">
       <songs caption="Songs"/>
@@ -1052,6 +1053,7 @@ Click on this slide to edit its style.</body>
     <generic_save_explanation caption="If you do not save, your changes will be lost"/>
     <set_changed caption="Current set has been changed, do you want to save?"/>
     <select_docs_folder caption="Select the OpenSong Documents folder">Where should the OpenSong files (songs and sets) be stored?</select_docs_folder>
+    <activity_log caption="Would you like the song(s) in this presentation added to the activity log? Note that this applies to songs added on-the-fly as well!"/>
   </questions>
 
   <about>
@@ -1137,7 +1139,7 @@ This has broken Import function until a new interface can be used.
 In the meantime, please investigate the OpenSong Import utility as an option.
 The OpenSong development team members regret any inconvenience.
     </cclinotavailable>
-    <activity_disabled>Could not load the Song Activity Log! Logging will be disabled for this session.</activity_disabled>
+    <activity_disabled>Could not load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
     <adding_logentry>Error Adding log entry!</adding_logentry>
   </errors>
 

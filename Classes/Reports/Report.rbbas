@@ -261,7 +261,7 @@ Protected Class Report
 	#tag Method, Flags = &h0
 		Function LogPrintedSongs() As Boolean
 		  '++JRC
-		  If Globals.SongActivityLog <> Nil Then
+		  If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
 		    Dim i As Integer
 		    
 		    For i = 0 To Ubound(Log)

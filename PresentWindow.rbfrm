@@ -1499,7 +1499,7 @@ End
 		    'Don't log in preview mode
 		    Dim Log As LogEntry
 		    
-		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW Then
+		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
 		      Log = New LogEntry(Globals.SongActivityLog)
 		      Dim d As New Date
 		      

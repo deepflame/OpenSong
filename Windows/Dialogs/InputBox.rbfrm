@@ -9,7 +9,6 @@ Begin Window InputBox
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   125
-   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -46,12 +45,11 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   75
+      BehaviorIndex   =   0
    End
    Begin SButton btn_cancel
       AcceptFocus     =   "True"
@@ -74,12 +72,11 @@ Begin Window InputBox
       LockTop         =   "False"
       StickyBevel     =   "False"
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   93
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   75
+      BehaviorIndex   =   1
    End
    Begin PushButton btn_hidden_hidok
       AutoDeactivate  =   "True"
@@ -88,7 +85,7 @@ Begin Window InputBox
       Caption         =   "OK"
       ControlOrder    =   2
       Default         =   "True"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -104,8 +101,9 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   135
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   22
+      BehaviorIndex   =   2
    End
    Begin PushButton btn_hidden_hidcancel
       AutoDeactivate  =   "True"
@@ -114,7 +112,7 @@ Begin Window InputBox
       Caption         =   "Cancel"
       ControlOrder    =   3
       Default         =   "False"
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
@@ -130,8 +128,9 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   135
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   22
+      BehaviorIndex   =   3
    End
    Begin StaticText lbl_the_question
       AutoDeactivate  =   "True"
@@ -139,7 +138,7 @@ Begin Window InputBox
       ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   79
       HelpTag         =   ""
       Index           =   -2147483648
@@ -159,8 +158,9 @@ Begin Window InputBox
       TextSize        =   11
       Top             =   7
       Underline       =   "False"
-      Visible         =   "True"
-      Width           =   299
+      Visible         =   True
+      Width           =   297
+      BehaviorIndex   =   4
    End
    Begin SEditField edt_the_input
       AcceptTabs      =   "False"
@@ -202,6 +202,7 @@ Begin Window InputBox
       UseFocusRing    =   "True"
       Visible         =   "True"
       Width           =   300
+      BehaviorIndex   =   5
    End
    Begin PopupMenu pop_the_input
       AutoDeactivate  =   "True"
@@ -209,7 +210,7 @@ Begin Window InputBox
       ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -227,8 +228,9 @@ Begin Window InputBox
       TextSize        =   12
       Top             =   70
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   300
+      BehaviorIndex   =   6
    End
 End
 #tag EndWindow

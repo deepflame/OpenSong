@@ -1,7 +1,13 @@
 ﻿-= JRC =-
 
-Added option to prompt before adding presented songs to the activity log
+Added Polish translation (thanks myzzard)
 
-Provide a (hopefully) more detailed error message for failed activity log loading
+Added Slovenian translation (thanks leeloo3)
 
-Fix issue where Currently selected  Set Item was not updating after removing an item from set list
+Add ability to view/merge exported song activity logs
+
+Fixed GetOpenFolderItem in mnu_settings_install_module was not being called correctly
+
+Implemented Song Activity Log export
+
+Made Select Folder Dialog for Set Export translatible

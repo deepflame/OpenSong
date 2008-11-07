@@ -170,7 +170,7 @@ Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function CompareHymnBookOrder(s1 As String, s2 As String) As Integer
+		Function CompareHymnBookOrder(s1 As string, s2 As string) As Integer
 		  // EMP 4 Feb 06
 		  //
 		  // Here's a different take on a compare routine.
@@ -2610,33 +2610,28 @@ Module StringUtils
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

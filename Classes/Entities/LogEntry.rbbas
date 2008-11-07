@@ -208,6 +208,59 @@ Protected Class LogEntry
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function CompareLogEntry(Entry As LogEntry) As Boolean
+		  'Compares the passed Log Entry to this Log Entry
+		  'Returns true if entries are equal
+		  If Entry.Title = Title And Entry.Author = Author And Entry.Description = Description And _
+		    Entry.CCLISongNumber = CCLISongNumber And Entry.HasChords  = HasChords Then 
+		    If Entry.DateAndTime <> Nil And DateAndTime <> Nil Then
+		      If CompareDates(Entry.DateAndTime, DateAndTime) = 0 Then
+		        Return true
+		      End If
+		    End If
+		    If Entry.DateAndTime = Nil And DateAndTime = Nil Then Return true
+		    
+		  End If
+		  
+		  return False
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CreateLogEntry(Entry As LogEntry) As Boolean
+		  'Creates a Log Entry from the passed Log Entry
+		  If Entry = Nil Then Return False
+		  
+		  Title = Entry.Title
+		  Author = Entry.Author
+		  Description = Entry.Description
+		  DateAndTime = Entry.DateAndTime
+		  HasChords = Entry.HasChords
+		  CCLISongNumber = Entry.CCLISongNumber
+		  SongFileName = Entry.SongFileName
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CopyLogEntry(Byref Entry As LogEntry) As Boolean
+		  'Copies this Log Entry into the passed Entry
+		  If Entry = Nil Then Return False
+		  
+		  Entry.Title = Title
+		  Entry.Author = Author
+		  Entry.CCLISongNumber = CCLISongNumber
+		  Entry.DateAndTime = DateAndTime
+		  Entry.Description = Description
+		  Entry.HasChords = HasChords
+		  Entry.SongFileName = SongFileName
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		Author As String
@@ -484,6 +537,11 @@ Protected Class LogEntry
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"

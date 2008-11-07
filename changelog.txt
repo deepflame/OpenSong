@@ -1,10 +1,22 @@
-﻿*Added option to prompt before adding presented songs to the activity log
+﻿* Added Polish translation (thanks myzzard)
 
-*Provide a (hopefully) more detailed error message for failed activity log loading
+* Added Slovenian translation (leeloo3)
 
-*Fix issue where Currently selected  Set Item was not updating after removing an item from set list
+* Add ability to view/merge exported song activity logs (JRC)
 
-*Added option to copy a song from one folder to another
+* Fixed GetOpenFolderItem in mnu_settings_install_module was not being called correctly (JRC)
+
+* Implemented Song Activity Log export (JRC)
+
+* Made Select Folder Dialog for Set Export translatible (JRC)
+
+* Added option to prompt before adding presented songs to the activity log (JRC)
+
+* Provide a (hopefully) more detailed error message for failed activity log loading (JRC)
+
+* Fix issue where Currently selected  Set Item was not updating after removing an item from set list (JRC)
+
+* Added option to copy a song from one folder to another (JRC)
 
 * Fix issue where Currently selected  Set Item was not updating after removing an item from set list (JRC)
 
@@ -20,13 +32,13 @@
 
 * Title, Subtitle & Body of slides can now be enabled or disabled (JRC)
 
-*Commented out some "unused" code in SetML.DrawSlide (JRC)
+* Commented out some "unused" code in SetML.DrawSlide (JRC)
 
-*Added AcceptMouseDown property to SFontCanvas (it's purpose should be pretty self-explanitory ;) (JRC)
+* Added AcceptMouseDown property to SFontCanvas (it's purpose should be pretty self-explanitory ;) (JRC)
 
-*Enable/Disable drawing of text in SFontCanvas depending on the enabled state (JRC)
+* Enable/Disable drawing of text in SFontCanvas depending on the enabled state (JRC)
 
-*Change the color of the outline on SAlignCanvas depending on the enabled state (JRC)
+* Change the color of the outline on SAlignCanvas depending on the enabled state (JRC)
 
 * It is now prossible to drag & drop images in the Style Window. (vwout)
 

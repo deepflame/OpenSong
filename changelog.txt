@@ -1,5 +1,7 @@
 ﻿-= JRC =-
 
+Added <transition_list> and <imagequality_list> chunks to all language files (prevents a Nil object exception when loading) (these will need to be translated)
+
 Added Polish translation (thanks myzzard)
 
 Added Slovenian translation (thanks leeloo3)

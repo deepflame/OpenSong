@@ -46,13 +46,14 @@
         <dual_screen caption="Twee schermen"/>
         <preview_dual_screen caption="Voorbeeld twee schermen"/>
       </present>
-      <export caption="Exporteren">Exporteren van het huidige lied.
-        <to caption="Selecteer een map om te exporteren."/>
-      </export>
+      <export caption="Exporteren">Exporteren van het huidige lied.</export>
       <rename caption="Hernoemen">Hernoemen van het lied.</rename>
       <move caption="Verplaatsen">Verplaatsen naar een andere map.
         <where caption="Verplaats '%1' naar welke map:"/>
       </move>
+      <copy caption="Kopiëren">Kopiëer het huidige lied naar een andere map.
+        <where caption="Kopiëer '%1' naar map:"/>
+      </copy>
       <delete caption="Verwijderen">Verwijderen van het huidige lied.</delete>
     </selected_song>
 
@@ -152,7 +153,7 @@
       <move_up caption="Naar boven">Verplaatst het huidige item naar boven (voren) in het project.</move_up>
       <move_down caption="Naar beneden">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
       <remove caption="Verwijderen">Verwijdert het huidige item van het project.</remove>
-      <copy caption="Kopieren">Maakt een kopie van het huidige item.</copy>
+      <copy caption="Kopiëren">Maakt een kopie van het huidige item.</copy>
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
     </current_item>
     <items caption="Project Items">Lijst met items in het huidige project. Klik op een aangepaste dia om die te kunnen wijzigen of dubbelklik een lied om te wijzigen.
@@ -344,11 +345,6 @@
     <log caption="Lied gebruik logboek instellingen">
       <enable caption="Log bijhouden inschakelen"/>
     </log>
-    <imagequality caption="Project afbeelding kwaliteit">
-      <note caption="OpenSong probeert de afbeeldingen die worden gebruikt in een project als JPEG te bewaren. De elementen hieronder bepalen de kwaliteit en opslagmethode van de afbeeldingen. De kwaliteitskeuze is niet beschikbaar als QuickTime niet is geinstalleerd. OpenSong is hiervoor afhankelijk van dit pakket."/>
-      <compression caption="Afbeelding compressie"/>
-      <extern caption="Afbeeldingen uit achtergrondmap niet in set."/>
-    </imagequality>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
@@ -725,7 +721,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <options caption="Tekst opties">
       <subtitles caption="Subtitel van het lied"/>
       <highlight_chorus caption="Laten oplichten van de refreintekst"/>
-      <descriptive_subtitle_info caption="Gedetailleerde beschrijving in subtitel"/>
+      <descriptive_subtitle caption="Gedetailleerde beschrijving in subtitel"/>
       <verse_in_title caption="Versnummers weergeven bij titel"/>
     </options>
     <background caption="Achtergrond">
@@ -788,6 +784,8 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <find caption="Zoeken"></find>
     <clear_log caption="Logboek leegmaken"></clear_log>
     <print caption="Afdrukken"></print>
+    <view caption="Bekijk logbestand"/>
+    <merge caption="Samenvoegen"/>
     <export caption="Exporteren"/>
     <done caption="Klaar"/>
     <show caption="Tonen">
@@ -801,6 +799,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       -->
       <value tag="0">Alles</value>
       <value tag="1">Gemaakt</value>
+      <value tag="8">Gekopiëerd</value>
       <value tag="2">Verwijderd</value>
       <value tag="3">Gewijzigd</value>
       <value tag="4">Verplaatst</value>
@@ -813,6 +812,9 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <erase_all>Alle items zullen worden verwijderd. Doorgaan?</erase_all>
     </input_box>
     <description>Gemaakt|Verwijderd|Gewijzigd|Verplaatst|Getoond|Afgedrukt|Hernoemd</description>
+    <file_type>OpenSong Lied Gebruik Logboek</file_type>
+    <merged>Samenvoegen voltooid, %1 logregel(s) zijn toegevoegd aan het lied gebruik logboek.</merged>
+    <merged_dupes>%1 dubbele logregels zijn genegeerd.</merged_dupes>
   </song_activity>
   <scripture_lookup title="Bijbelteksten zoeken">
     <book caption="Bijbel Boek"/>
@@ -1030,10 +1032,11 @@ Klik op de dia om de stijl te wijzigen.</body>
     <save caption="Opslaan" message="%1 is niet opgeslagen."/>
     <nosave caption="Niet opslaan"/>
     <cut caption="Knippen"/>
-    <copy caption="Kopieren"/>
+    <copy caption="Kopiëren"/>
     <paste caption="Plakken"/>
     <select caption="Selecteer"/>
     <exit_program caption="Programma afsluiten"/>
+    <export_to caption="Selecteer de map waar de export van het logboek moet worden geplaatst."/>
   </shared>
 
   <questions>
@@ -1049,6 +1052,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <generic_save_explanation caption="ALs je niet opslaat, zullen de wijzigingen verloren gaan"/>
     <set_changed caption="Het huidige project is gewijzigd, met het opgeslagen worden?"/>
     <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
+    <activity_log caption="Moeten de liederen die in deze presentatie worden gebruikt aan het lied gebruik logboek worden toegevoegd? Dit heeft ook betrekking op liederen die tijdens het presenteren worden toegevoegd!"/>
   </questions>
 
   <about>
@@ -1134,7 +1138,7 @@ Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface
 Mogelijk dat de OpenSOng Import utility uitkomst kan bieden in de tussentijd.
 Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
     </cclinotavailable>
-    <activity_disabled>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
+    <activity_disabled>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden uit bestand %1! Controleer of dit bestand bestaat en niet corrupt is.
 De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <adding_logentry>Er is een fout opgetreden bij het toevoegen van een lied aan het logboek!</adding_logentry>
   </errors>

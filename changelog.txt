@@ -1,4 +1,6 @@
-﻿* Ignore punctuation in a search (feature request 2122181) (vwout)
+﻿* Added Czech translation (thanks matysek03 and others)
+
+* Ignore punctuation in a search (feature request 2122181) (vwout)
 
 * Added <transition_list> and <imagequality_list> chunks to all language files (prevents a Nil object exception when loading) (these will need to be translated)
 

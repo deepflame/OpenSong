@@ -1,4 +1,6 @@
-﻿* Added <transition_list> and <imagequality_list> chunks to all language files (prevents a Nil object exception when loading) (these will need to be translated)
+﻿* Ignore punctuation in a search (feature request 2122181) (vwout)
+
+* Added <transition_list> and <imagequality_list> chunks to all language files (prevents a Nil object exception when loading) (these will need to be translated)
 
 * Added Polish translation (thanks myzzard)
 

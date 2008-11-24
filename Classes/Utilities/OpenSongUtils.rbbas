@@ -1075,6 +1075,73 @@ Protected Module OpenSongUtils
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function CompareTimes(t1 As Date, t2 As Date) As Integer
+		  // ++JRC October 2008
+		  // This function Compares two times
+		  //
+		  // Returns 0 if equal, -1 if t1 < t2, 1 if t1 > t2
+		  
+		  'Compare hours
+		  If t1.Hour < t2.Hour Then Return -1
+		  If t1.Hour > t2.Hour Then Return 1
+		  
+		  'Compare minutes
+		  If t1.Minute < t2.Minute Then Return -1
+		  If t1.Minute > t2.Minute Then Return 1
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ParseTime(time As String, ByRef value As Date) As Boolean
+		  //++JRC October 2008
+		  //This function takes a time string and converts it to a Date structure
+		  //
+		  //Returns True if Successful
+		  
+		  Dim Pos As Integer
+		  Dim hour As Integer
+		  Dim s As String
+		  
+		  
+		  Pos = InStr(0, time, ":")
+		  If Pos = 0 Then Return False
+		  
+		  value = New Date
+		  
+		  'get hour
+		  hour = Val(Left(time, Pos-1))
+		  
+		  s = Mid(time, Pos+1)
+		  
+		  Pos = InStr(0, s, ":")
+		  If Pos = 0 Then
+		    Pos  = InStr(0, s, " ")
+		  End If
+		  
+		  'get minutes
+		  value.Minute = Val(Left(s, Pos-1))
+		  s = Mid(s, Pos+1)
+		  
+		  Pos = InStr(0, s, " ")
+		  If Pos <> 0 Then
+		    'get seconds
+		    value.Second = Val(Left(s, Pos-1))
+		    s = Mid(s, Pos+1)
+		  End If
+		  
+		  If Left(s, Pos-1) = "PM" Then
+		    hour = hour + 12
+		  End If
+		  
+		  value.Hour = hour
+		  
+		  Return True
+		  
+		End Function
+	#tag EndMethod
+
 
 	#tag Note, Name = Overview
 		
@@ -1112,33 +1179,28 @@ Protected Module OpenSongUtils
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

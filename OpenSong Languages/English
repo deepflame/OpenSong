@@ -46,13 +46,14 @@
         <dual_screen caption="Dual Screen"/>
         <preview_dual_screen caption="Preview Dual Screen"/>
       </present>
-      <export caption="Export">Exports the current song.
-        <to caption="Select a folder to export to."/>
-      </export>
+      <export caption="Export">Exports the current song.</export>
       <rename caption="Rename">Renames the current song.</rename>
       <move caption="Move">Moves the current song into another folder.
         <where caption="Move '%1' to folder:"/>
       </move>
+      <copy caption="Copy">Copies the current song to another folder.
+        <where caption="Copy '%1' to folder:"/>
+      </copy>
       <delete caption="Delete">Deletes the current song.</delete>
     </selected_song>
 
@@ -348,6 +349,7 @@
     </logging>
     <log caption="Song Activity Log Settings">
       <enable caption="Enable Logging"/>
+      <prompt caption="Prompt Before Presenting"/>
     </log>
     <startmode caption="Initial Window">
       <songs caption="Songs"/>
@@ -420,6 +422,8 @@
       </mouse_cursor>
       <blanks caption="Insert Blank Slides"/>
       <blanks_between caption="Between Set Items"/>
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
       <blank_style caption="Blank slides take style of"/>
       <blank_prev caption="Previous slide"/>
       <blank_next caption="Next slide"/>
@@ -784,6 +788,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <find caption="Find"></find>
     <clear_log caption="Clear log"></clear_log>
     <print caption="Print"></print>
+    <view caption="View LogFile"/>
+    <merge caption="Merge"/>
     <export caption="Export"/>
     <done caption="Done"/>
     <show caption="Show">
@@ -797,6 +803,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       -->
       <value tag="0">All</value>
       <value tag="1">Created</value>
+      <value tag="8">Copied</value>
       <value tag="2">Deleted</value>
       <value tag="3">Modified</value>
       <value tag="4">Moved</value>
@@ -808,8 +815,12 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <input_box>
       <erase_all>This will erase all entries. Continue?</erase_all>
     </input_box>
-    <description>Created|Deleted|Modified|Moved|Presented|Printed|Renamed</description>
+    <description>Created|Deleted|Modified|Moved|Presented|Printed|Renamed|Copied</description>
+    <file_type>OpenSong Activity Log File</file_type>
+    <merged>Merge complete %1 entries were added to the song activity log.</merged>
+    <merged_dupes>%1 duplicate entries were ignored.</merged_dupes>
   </song_activity>
+
   <scripture_lookup title="Scripture Lookup">
     <book caption="Bible Book"/>
     <lookup caption="Quick Lookup">
@@ -851,7 +862,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <move_error>Error moving module file. Please verify that you have write access to '%1'.</move_error>
     <rename_error>Error renaming module file. Please verify that you have write access to '%1'.</rename_error>
     <success>Module successfully loaded.</success>
-    <file_type>OpenSong Modules (*.xmm)</file_type>
+    <file_type>OpenSong Modules</file_type>
     <generate_index>Generate index for scripture file?</generate_index>
     <generate_error>Error generating index; do you have write access to %1?</generate_error>
   </module>
@@ -1030,6 +1041,7 @@ Click on this slide to edit its style.</body>
     <paste caption="Paste"/>
     <select caption="Select"/>
     <exit_program caption="Exit Program"/>
+    <export_to caption="Select a folder to export to."/>
   </shared>
 
   <questions>
@@ -1045,6 +1057,7 @@ Click on this slide to edit its style.</body>
     <generic_save_explanation caption="If you do not save, your changes will be lost"/>
     <set_changed caption="Current set has been changed, do you want to save?"/>
     <select_docs_folder caption="Select the OpenSong Documents folder">Where should the OpenSong files (songs and sets) be stored?</select_docs_folder>
+    <activity_log caption="Would you like the song(s) in this presentation added to the activity log? Note that this applies to songs added on-the-fly as well!"/>
   </questions>
 
   <about>
@@ -1130,7 +1143,7 @@ This has broken Import function until a new interface can be used.
 In the meantime, please investigate the OpenSong Import utility as an option.
 The OpenSong development team members regret any inconvenience.
     </cclinotavailable>
-    <activity_disabled>Could not load the Song Activity Log! Logging will be disabled for this session.</activity_disabled>
+    <activity_disabled>Could not load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
     <adding_logentry>Error Adding log entry!</adding_logentry>
   </errors>
 

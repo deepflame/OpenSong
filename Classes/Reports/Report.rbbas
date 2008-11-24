@@ -261,7 +261,7 @@ Protected Class Report
 	#tag Method, Flags = &h0
 		Function LogPrintedSongs() As Boolean
 		  '++JRC
-		  If Globals.SongActivityLog <> Nil Then
+		  If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
 		    Dim i As Integer
 		    
 		    For i = 0 To Ubound(Log)
@@ -336,58 +336,49 @@ Protected Class Report
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LeftMargin"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="PrintableHeight"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="PrintableWidth"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="TopMargin"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"

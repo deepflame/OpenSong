@@ -1,3 +1,15 @@
+song_activity/merged
+song_activity/merged_dupes
+song_activity/file_type
+module/file_type (Modified)
+song_activity/merge
+song_activity/view
+shared/export_to
+songs_mode/selected_song/export/to (Deleted)
+questions/activity_log
+errors/activity_disabled (modified)
+song_activity/value
+songs_mode/selected_song/copy
 general_settings/log*
 imagequality_list/*
 general/imagequality

@@ -146,6 +146,7 @@
       <add_scripture caption="Bijbeltekst">Voegt een Bijbeltekst toe aan het huidige project. Hier wordt de totale lijst met Bijbelteksten weer gegeven om te kiezen.</add_scripture>
       <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl. Een aangepaste dia kan een serie dia 's bevatten.</add_slides>
       <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
+      <add_image caption="Afbeelding">Voegt een afbeeldingsdia toe aan het huidige project. Hiermee wordt een afbeelding of een afbeeldingenserie getoond in plaats van een body tekst.</add_image>
       <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Voegt een PowerPoint presentatie toe aan het huidige project. Dit is te gebruiken om een PowerPoint presentatie te tonen vanuit OpenSong.</add_powerpoint>
     </new_item>
@@ -160,6 +161,7 @@
       <song caption="(lied)"/>
       <custom caption="(aangepast)"/>
       <scripture caption="(bijbelteksten)"/>
+      <image caption="(afbeelding)"/>
       <style caption="(stijl)">-- Wijzig Stijl --</style>
       <revert caption="(stijl)">-- Terug naar vorige Stijl --</revert>
       <defaultstyle caption="(stijl)">-- Geexporteerde Stijl --</defaultstyle>
@@ -194,6 +196,31 @@
     <seconds caption="seconden."/>
     <style caption="Aangepaste stijl">Geef een vinkje om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
   </slide_editor>
+
+  <image_slide>
+    <header caption="Wijzigen afbeeldingen dia"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Beschrijving van afbeelding in subtitel">Voeg de beschrijving van de getoonde afbeelding toe aan de subtitel.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Afbeeldingen" head1="Voorbeeldweergave" head2="Beschrijving">Bevat de afbeeldingen die worden getoond in deze dia. Tip: sleep voor het eenvoudig toevoegen een of meerdere afbeeldingen naar deze lijst.</images>
+    <fit_to_screen caption="Schaal afbeeldingen zodat ze op het scherm passen">Afbeeldingen die te groot zijn voor het projectie scherm worden geschaald zodat ze volledig getoond kunnen worden. Dit gebeurt ook voor afbeeldingen die kleiner zijn dan de schermresolutie.</fit_to_screen>
+    <fit_to_body caption="Schaal afbeeldingen zodat ze in het tekstgebied passen">Afbeeldingen worden geschaald zodat ze altijd in het tekstgebied passen dat is vastgelegd voor de body stijl. Dit geldt voor afbeeldingen die groter zijn dan de het body gebied zowel als voor afbeeldingen die kleiner zijn.</fit_to_body>
+    <keepaspect caption="Behoudt hoogte- en breedteverhoudingen bij het schalen">Als afbeeldingen worden geschaald bij een van bovenstaande, zal de horizontale en verticale verhouding behouden blijven.</keepaspect>
+    <store_as_link caption="Sla afbeeldingen niet op in het project, maar gebruik een link">Het opslaan van afbeeldingen in het project zorgt voor een snelle toename van de bestandsgroote en kan de afbeeldingskwaliteit nadeling beïnvloeden. Het gebruik van links voorkomt dit. Afbeeldingen uit de map 'Backgrounds' worden met een relatieve link opgeslagen, zodat het transporteren naar de presentatiecomputer eenvoudiger is. Gebruik deze optie met zorg als het project op een andere computer wordt samengesteld dan de presentatiecomputer!</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Activiteit" />
+      <ins_image caption="Toevoegen">Voegt een afbeelding toe aan het project. Hiermee kunnen dia-series worden gemaakt die dezelfde titel-, subtitel-, stijl-, en automatische overgangsinstellingen delen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_image>
+      <del_image caption="Verwijderen">Verwijder de geselecteerde afbeelding.</del_image>
+      <move_up caption="Naar boven">Verplaatst de geselecteerde afbeelding naar het begin van de dia.</move_up>
+      <move_down caption="Naar beneden">Verplaatst de geselecteerde afbeelding naar het einde van de dia.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
 
   <style_change>
     <header caption="Wijzigen stijl"/>

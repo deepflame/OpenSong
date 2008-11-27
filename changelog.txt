@@ -1,4 +1,6 @@
-﻿* Added Czech translation (thanks matysek03 and others)
+﻿* Added image slide to show one or more images instead of a (body) text (vwout)
+
+* Added Czech translation (thanks matysek03 and others)
 
 * Ignore punctuation in a search (feature request 2122181) (vwout)
 

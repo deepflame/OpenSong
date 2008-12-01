@@ -1097,6 +1097,45 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetSong(slidegroup As XmlNode, Songs As FolderDB, ByRef songFolder As String) As XmlDocument
+		  Dim songDoc As XmlDocument
+		  Dim xpath As XmlAttribute
+		  Dim songF as FolderItem
+		  
+		  If slidegroup <> Nil Then
+		    xpath = slidegroup.GetAttributeNode("path")
+		    
+		    // Three possible cases here
+		    // xpath = Nil (no path) is a pre-V1 set format; look anywhere in the songs folder
+		    // xpath <> Nil, path = "": look only in top level folder (must anchor)
+		    // xpath <> Nil, path <> "": specific folder
+		    If xpath <> Nil Then
+		      If xpath.Value = "" Then
+		        songFolder = "/"
+		      Else
+		        songFolder = xpath.Value
+		      End If
+		    End If
+		    songf = Songs.GetFile(songFolder + SmartML.GetValue(slidegroup, "@name", False))
+		    If songf = Nil Or (Not songf.Exists) Then
+		      songDoc = Nil
+		    Else
+		      songDoc = SmartML.XDocFromFile(songf)
+		      If songDoc = Nil Then
+		        InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
+		      End If
+		    End If
+		  End If
+		  
+		  If songDoc = Nil Then
+		    songFolder = ""
+		  End If
+		  
+		  Return songDoc
+		End Function
+	#tag EndMethod
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

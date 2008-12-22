@@ -1,4 +1,6 @@
-﻿* Added Czech translation (thanks matysek03 and others)
+﻿* Fix in MainWindow to prevent a crash when selecting an empty row in the songs-list after a song edit (vwout)
+
+* Added Czech translation (thanks matysek03 and others)
 
 * Ignore punctuation in a search (feature request 2122181) (vwout)
 

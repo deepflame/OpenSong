@@ -1,4 +1,10 @@
-﻿* (re)Enabled song style on a per slide basis (vwout)
+﻿* Fix in MainWindow to prevent a crash when selecting an empty row in the songs-list after a song edit (vwout)
+
+* Added option to specify maximum number of characters per slide when inserting scripture verses (gerritp)
+
+* Reworked interface of ScripturePickerWindow and SearchWindow (vwout)
+
+* (re)Enabled song style on a per slide basis (vwout)
 
 * Added image slide to show one or more images instead of a (body) text (vwout)
 

@@ -268,6 +268,8 @@
   </song_search>
 
   <scripture_search title="Search">
+    <caption caption="Search in bible using keyword"/>
+    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
     <match caption="Match">
       <exact caption="E&amp;xact"/>
       <begin caption="&amp;Begins with"/>
@@ -277,7 +279,7 @@
       <any caption="An&amp;y word"/>
     </words>
     <search caption="&amp;Search"/>
-    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
+    <result caption="%1 matches were found using the specified keyword(s)."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
     <result head1="Reference" head2="Text" />
@@ -849,23 +851,32 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </song_activity>
 
   <scripture_lookup title="Scripture Lookup">
-    <book caption="Bible Book"/>
     <lookup caption="Quick Lookup">
       <reference caption="Reference"/>
       <lookup caption="Lookup"/>
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
+    <search caption="Full text search"/>
+    <books caption="Bible Book">
+	  <ot caption="Old testament"/>
+	  <nt caption="New testament"/>
+    </books>
+    <paragraph caption="Paragraph"/>
+    <colon caption=":"/>
+    <from_verse caption="From verse"/>
+    <dash caption="-"/>
+    <to_verse caption="To verse"/>
     <version caption="Version"/>
     <select_file caption="Please select a scripture file"/>
-    <verses_per_slide caption="Verses Per Slide">
-      <one caption="1"/>
-      <two caption="2"/>
-      <three caption="3"/>
-    </verses_per_slide>
+    <verses_per_slide caption="Verses per slide" />
+    <chars_per_slide caption="Max. characters per slide" />
     <format caption="Format">
       <paragraph caption="Paragraph"/>
       <verse caption="Verse"/>
     </format>
+    <shownumbers caption="Display verse numbers"/>
+    <preview caption="Voorbeeldweergave van schrift gedeelte"/>
+    <insert caption="link(shared/insert/@caption)"/>
     <bad_reference>
       <format>Please check the format of the query and try again.</format>
       <empty>Bad reference: the reference was empty.</empty>
@@ -876,11 +887,6 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <verse>Bad reference: could not find verse '%1'.</verse>
       <verse_range>Bad reference: the 'to' verse must be greater than or equal to the 'from' verse.</verse_range>
     </bad_reference>
-    <colon caption=":"/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
-    <insert caption="link(shared/insert/@caption)"/>
-    <shownumbers caption="Display verse numbers"/>
   </scripture_lookup>
 
   <module>

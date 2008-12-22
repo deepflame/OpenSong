@@ -1,3 +1,13 @@
+scripture_search/caption
+scripture_search/result
+scripture_lookup/book (Deleted)
+scripture_lookup/books
+scripture_lookup/search (Modified)
+scripture_lookup/paragraph
+scripture_lookup/from_verse
+scripture_lookup/to_verse
+scripture_lookup/chars_per_slide
+scripture_lookup/verse_per_slide (Deleted child nodes)
 sets_mode/items/image
 image_slide/*
 sets_mode/new_item/add_image

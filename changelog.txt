@@ -1,4 +1,8 @@
-﻿* Fix in MainWindow to prevent a crash when selecting an empty row in the songs-list after a song edit (vwout)
+﻿-= 1.4.0 =-
+
+* Fix the OpenPrinterDialog call in Report to attach to the window returned by GetFrontControlScreenWindow instead of Window(0). Although Window(0) should be the top window for the app, for some reason on OS X 10.5 (Leopard) this will return a handle to a window that is not visible. This prevents the hidden window from ever unloading, blocking the application from exiting without doing a Force Quit. (swampcat)
+
+* Fix in MainWindow to prevent a crash when selecting an empty row in the songs-list after a song edit (vwout)
 
 * Added Czech translation (thanks matysek03 and others)
 

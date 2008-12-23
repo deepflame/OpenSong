@@ -11,6 +11,9 @@ errors/activity_disabled (modified)
 song_activity/value
 songs_mode/selected_song/copy
 general_settings/log*
+imagequality_list/*
+general/imagequality
+load_settings/imagequality
 load_settings/transitions
 slide_editor/transition
 presentation_settings/transitions

@@ -335,6 +335,11 @@
       <change caption="Wijzig"/>
       <oldfolderdb caption="gebruik oude (pre-V1.1) file cache"/>
     </documents_folder>
+    <imagequality caption="Project afbeelding kwaliteit">
+      <note caption="OpenSong probeert de afbeeldingen die worden gebruikt in een project als JPEG te bewaren. De elementen hieronder bepalen de kwaliteit en opslagmethode van de afbeeldingen. De kwaliteitskeuze is niet beschikbaar als QuickTime niet is geinstalleerd. OpenSong is hiervoor afhankelijk van dit pakket."/>
+      <compression caption="Afbeelding compressie"/>
+      <extern caption="Afbeeldingen uit achtergrondmap niet in set."/>
+    </imagequality>
     <logging caption="Log settings">
       <append caption="toevoegen aan log file"/>
       <console caption="Log naar  system console"/>
@@ -344,6 +349,7 @@
     </logging>
     <log caption="Lied gebruik logboek instellingen">
       <enable caption="Log bijhouden inschakelen"/>
+      <prompt caption="Vraag om gebruik voor iedere presentatie"/>
     </log>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>

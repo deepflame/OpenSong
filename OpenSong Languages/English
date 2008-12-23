@@ -393,7 +393,6 @@
         <scripture_slides caption="Default Scripture Style"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-        <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
     </settings>
     <transitions caption="Transitions">
       <use_transitions caption="Enabled by default"/>

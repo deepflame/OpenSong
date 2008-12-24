@@ -46,14 +46,13 @@
         <dual_screen caption="Twee schermen"/>
         <preview_dual_screen caption="Voorbeeld twee schermen"/>
       </present>
-      <export caption="Exporteren">Exporteren van het huidige lied.</export>
+      <export caption="Exporteren">Exporteren van het huidige lied.
+        <to caption="Selecteer een map om te exporteren."/>
+      </export>
       <rename caption="Hernoemen">Hernoemen van het lied.</rename>
       <move caption="Verplaatsen">Verplaatsen naar een andere map.
         <where caption="Verplaats '%1' naar welke map:"/>
       </move>
-      <copy caption="Kopiëren">Kopiëer het huidige lied naar een andere map.
-        <where caption="Kopiëer '%1' naar map:"/>
-      </copy>
       <delete caption="Verwijderen">Verwijderen van het huidige lied.</delete>
     </selected_song>
 
@@ -146,7 +145,6 @@
       <add_scripture caption="Bijbeltekst">Voegt een Bijbeltekst toe aan het huidige project. Hier wordt de totale lijst met Bijbelteksten weer gegeven om te kiezen.</add_scripture>
       <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl. Een aangepaste dia kan een serie dia 's bevatten.</add_slides>
       <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
-      <add_image caption="Afbeelding">Voegt een afbeeldingsdia toe aan het huidige project. Hiermee wordt een afbeelding of een afbeeldingenserie getoond in plaats van een body tekst.</add_image>
       <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Voegt een PowerPoint presentatie toe aan het huidige project. Dit is te gebruiken om een PowerPoint presentatie te tonen vanuit OpenSong.</add_powerpoint>
     </new_item>
@@ -154,14 +152,13 @@
       <move_up caption="Naar boven">Verplaatst het huidige item naar boven (voren) in het project.</move_up>
       <move_down caption="Naar beneden">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
       <remove caption="Verwijderen">Verwijdert het huidige item van het project.</remove>
-      <copy caption="Kopiëren">Maakt een kopie van het huidige item.</copy>
+      <copy caption="Kopieren">Maakt een kopie van het huidige item.</copy>
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
     </current_item>
     <items caption="Project Items">Lijst met items in het huidige project. Klik op een aangepaste dia om die te kunnen wijzigen of dubbelklik een lied om te wijzigen.
       <song caption="(lied)"/>
       <custom caption="(aangepast)"/>
       <scripture caption="(bijbelteksten)"/>
-      <image caption="(afbeelding)"/>
       <style caption="(stijl)">-- Wijzig Stijl --</style>
       <revert caption="(stijl)">-- Terug naar vorige Stijl --</revert>
       <defaultstyle caption="(stijl)">-- Geexporteerde Stijl --</defaultstyle>
@@ -196,31 +193,6 @@
     <seconds caption="seconden."/>
     <style caption="Aangepaste stijl">Geef een vinkje om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
   </slide_editor>
-
-  <image_slide>
-    <header caption="Wijzigen afbeeldingen dia"/>
-    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
-    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
-    <descriptions caption="Beschrijving van afbeelding in subtitel">Voeg de beschrijving van de getoonde afbeelding toe aan de subtitel.</descriptions>
-    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="Afbeeldingen" head1="Voorbeeldweergave" head2="Beschrijving">Bevat de afbeeldingen die worden getoond in deze dia. Tip: sleep voor het eenvoudig toevoegen een of meerdere afbeeldingen naar deze lijst.</images>
-    <fit_to_screen caption="Schaal afbeeldingen zodat ze op het scherm passen">Afbeeldingen die te groot zijn voor het projectie scherm worden geschaald zodat ze volledig getoond kunnen worden. Dit gebeurt ook voor afbeeldingen die kleiner zijn dan de schermresolutie.</fit_to_screen>
-    <fit_to_body caption="Schaal afbeeldingen zodat ze in het tekstgebied passen">Afbeeldingen worden geschaald zodat ze altijd in het tekstgebied passen dat is vastgelegd voor de body stijl. Dit geldt voor afbeeldingen die groter zijn dan de het body gebied zowel als voor afbeeldingen die kleiner zijn.</fit_to_body>
-    <keepaspect caption="Behoudt hoogte- en breedteverhoudingen bij het schalen">Als afbeeldingen worden geschaald bij een van bovenstaande, zal de horizontale en verticale verhouding behouden blijven.</keepaspect>
-    <store_as_link caption="Sla afbeeldingen niet op in het project, maar gebruik een link">Het opslaan van afbeeldingen in het project zorgt voor een snelle toename van de bestandsgroote en kan de afbeeldingskwaliteit nadeling beïnvloeden. Het gebruik van links voorkomt dit. Afbeeldingen uit de map 'Backgrounds' worden met een relatieve link opgeslagen, zodat het transporteren naar de presentatiecomputer eenvoudiger is. Gebruik deze optie met zorg als het project op een andere computer wordt samengesteld dan de presentatiecomputer!</store_as_link>
-    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
-    <action caption="Activiteit" />
-      <ins_image caption="Toevoegen">Voegt een afbeelding toe aan het project. Hiermee kunnen dia-series worden gemaakt die dezelfde titel-, subtitel-, stijl-, en automatische overgangsinstellingen delen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_image>
-      <del_image caption="Verwijderen">Verwijder de geselecteerde afbeelding.</del_image>
-      <move_up caption="Naar boven">Verplaatst de geselecteerde afbeelding naar het begin van de dia.</move_up>
-      <move_down caption="Naar beneden">Verplaatst de geselecteerde afbeelding naar het einde van de dia.</move_down>
-    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
-    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
-    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
-    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
-    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
-    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
-  </image_slide>
 
   <style_change>
     <header caption="Wijzigen stijl"/>
@@ -268,8 +240,6 @@
   </song_search>
 
   <scripture_search title="Zoeken">
-    <caption caption="Zoek in de bijbel met het volgende trefwoord"/>
-    <example caption="Om te zoeken naar een letterlijke zin, plaatst tekst tussen dubbele aanhalingstekens: zoals &quot;Simon Petrus&quot;"/>
     <match caption="Overeenkomst">
       <exact caption="Exact"/>
       <begin caption="Begint met"/>
@@ -279,10 +249,10 @@
       <any caption="Enkele woorden"/>
     </words>
     <search caption="Zoeken"/>
-    <result caption="Er zijn %1 resultaten gevonden met de opgegeven trefwoorden."/>
+    <example caption="Om te zoeken naar exacte tekst, plaatst tekst tussen dubbele aanhalingstekens: zoals &quot;Simon Petrus&quot;"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
-    <result head1="Referentie" head2="Tekst" />
+    <lst_result head1="Referentie" head2="Tekst" />
   </scripture_search>
 
   <main_menu>
@@ -364,11 +334,6 @@
       <change caption="Wijzig"/>
       <oldfolderdb caption="gebruik oude (pre-V1.1) file cache"/>
     </documents_folder>
-    <imagequality caption="Project afbeelding kwaliteit">
-      <note caption="OpenSong probeert de afbeeldingen die worden gebruikt in een project als JPEG te bewaren. De elementen hieronder bepalen de kwaliteit en opslagmethode van de afbeeldingen. De kwaliteitskeuze is niet beschikbaar als QuickTime niet is geinstalleerd. OpenSong is hiervoor afhankelijk van dit pakket."/>
-      <compression caption="Afbeelding compressie"/>
-      <extern caption="Afbeeldingen uit achtergrondmap niet in set."/>
-    </imagequality>
     <logging caption="Log settings">
       <append caption="toevoegen aan log file"/>
       <console caption="Log naar  system console"/>
@@ -378,8 +343,12 @@
     </logging>
     <log caption="Lied gebruik logboek instellingen">
       <enable caption="Log bijhouden inschakelen"/>
-      <prompt caption="Vraag om gebruik voor iedere presentatie"/>
     </log>
+    <imagequality caption="Project afbeelding kwaliteit">
+      <note caption="OpenSong probeert de afbeeldingen die worden gebruikt in een project als JPEG te bewaren. De elementen hieronder bepalen de kwaliteit en opslagmethode van de afbeeldingen. De kwaliteitskeuze is niet beschikbaar als QuickTime niet is geinstalleerd. OpenSong is hiervoor afhankelijk van dit pakket."/>
+      <compression caption="Afbeelding compressie"/>
+      <extern caption="Afbeeldingen uit achtergrondmap niet in set."/>
+    </imagequality>
     <startmode caption="Start scherm">
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
@@ -430,6 +399,8 @@
       <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
     </transitions>
     <style caption="Stijl">
+	<inspring_after_line_break caption = "inspringen na regel afbreken"/>
+	<max_grow caption = "max lettersize groei"/>
       <border_thickness caption="Dikte randen"/>
       <subtitles caption="Subtitels"/>
       <modes>
@@ -452,7 +423,9 @@
       <blanks caption="Een lege dia's invoegen"/>
       <blanks_between caption="tussen project items"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
+      <blank_default caption="standaard dia"/>
       <blank_prev caption="Vorige dia"/>
+
       <blank_next caption="Volgende dia"/>
       <initial_mode caption="Initiele presentatie modus"/>
     </style>
@@ -756,7 +729,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <options caption="Tekst opties">
       <subtitles caption="Subtitel van het lied"/>
       <highlight_chorus caption="Laten oplichten van de refreintekst"/>
-      <descriptive_subtitle caption="Gedetailleerde beschrijving in subtitel"/>
+      <descriptive_subtitle_info caption="Gedetailleerde beschrijving in subtitel"/>
       <verse_in_title caption="Versnummers weergeven bij titel"/>
     </options>
     <background caption="Achtergrond">
@@ -765,6 +738,9 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <position caption="Positie">
           <row0 caption="Uitvullen"/>
           <row1 caption="Centreren"/>
+          <row2 caption="top"/>
+          <row3 caption="onder"/>
+          <row4 caption="onder max helft"/>
           <!-- <row2 caption="Tegel"/> -->
       </position>
       <trim_bottom caption="*Onderkant bijsnijden"/>
@@ -819,8 +795,6 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <find caption="Zoeken"></find>
     <clear_log caption="Logboek leegmaken"></clear_log>
     <print caption="Afdrukken"></print>
-    <view caption="Bekijk logbestand"/>
-    <merge caption="Samenvoegen"/>
     <export caption="Exporteren"/>
     <done caption="Klaar"/>
     <show caption="Tonen">
@@ -834,7 +808,6 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       -->
       <value tag="0">Alles</value>
       <value tag="1">Gemaakt</value>
-      <value tag="8">Gekopiëerd</value>
       <value tag="2">Verwijderd</value>
       <value tag="3">Gewijzigd</value>
       <value tag="4">Verplaatst</value>
@@ -847,36 +820,25 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <erase_all>Alle items zullen worden verwijderd. Doorgaan?</erase_all>
     </input_box>
     <description>Gemaakt|Verwijderd|Gewijzigd|Verplaatst|Getoond|Afgedrukt|Hernoemd</description>
-    <file_type>OpenSong Lied Gebruik Logboek</file_type>
-    <merged>Samenvoegen voltooid, %1 logregel(s) zijn toegevoegd aan het lied gebruik logboek.</merged>
-    <merged_dupes>%1 dubbele logregels zijn genegeerd.</merged_dupes>
   </song_activity>
-  
   <scripture_lookup title="Bijbelteksten zoeken">
+    <book caption="Bijbel Boek"/>
     <lookup caption="Snel zoeken">
       <reference caption="Referentie"/>
-      <lookup caption="Zoeken"/>
+      <lookup caption="zoeken"/>
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
-    <search caption="Op bijbeltekst zoeken"/>
-    <books caption="Bijbel boek">
-	  <ot caption="Oude testament"/>
-	  <nt caption="Nieuw testament"/>
-    </books>
-    <paragraph caption="Hoofdstuk"/>
-    <colon caption=":"/>
-    <from_verse caption="Vanaf vers"/>
-    <dash caption="-"/>
-    <to_verse caption="Tot vers"/>
-    <version caption="Vertaling"/>
+    <version caption="Versie"/>
     <select_file caption="Selecteer een bijbelvertalingsbestand."/>
-    <verses_per_slide caption="Bijbelvers per dia" />
-    <chars_per_slide caption="Max. karakters per dia" />
+    <verses_per_slide caption="Bijbelvers per dia">
+      <one caption="1"/>
+      <two caption="2"/>
+      <three caption="3"/>
+    </verses_per_slide>
     <format caption="Formaat">
       <paragraph caption="Hoofdstuk"/>
       <verse caption="Vers"/>
     </format>
-    <preview caption="Preview of scripture passage"/>
     <bad_reference>
       <format>Controleer de samenstelling van de zoekopdracht en probeer het nogmaals.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
@@ -887,6 +849,9 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <verse>Foute referentie: kan vers '%1' niet vinden.</verse>
       <verse_range>Foute referentie: het 'tot' vers moet groter dan of gelijk zijn aan het 'van' vers.</verse_range>
     </bad_reference>
+    <colon caption=":"/>
+    <dash caption="-"/>
+    <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
     <shownumbers caption="Toon vers nummers"/>
   </scripture_lookup>
@@ -1072,11 +1037,10 @@ Klik op de dia om de stijl te wijzigen.</body>
     <save caption="Opslaan" message="%1 is niet opgeslagen."/>
     <nosave caption="Niet opslaan"/>
     <cut caption="Knippen"/>
-    <copy caption="Kopiëren"/>
+    <copy caption="Kopieren"/>
     <paste caption="Plakken"/>
     <select caption="Selecteer"/>
     <exit_program caption="Programma afsluiten"/>
-    <export_to caption="Selecteer de map waar de export van het logboek moet worden geplaatst."/>
   </shared>
 
   <questions>
@@ -1092,7 +1056,6 @@ Klik op de dia om de stijl te wijzigen.</body>
     <generic_save_explanation caption="ALs je niet opslaat, zullen de wijzigingen verloren gaan"/>
     <set_changed caption="Het huidige project is gewijzigd, met het opgeslagen worden?"/>
     <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
-    <activity_log caption="Moeten de liederen die in deze presentatie worden gebruikt aan het lied gebruik logboek worden toegevoegd? Dit heeft ook betrekking op liederen die tijdens het presenteren worden toegevoegd!"/>
   </questions>
 
   <about>
@@ -1178,7 +1141,7 @@ Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface
 Mogelijk dat de OpenSOng Import utility uitkomst kan bieden in de tussentijd.
 Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
     </cclinotavailable>
-    <activity_disabled>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden uit bestand %1! Controleer of dit bestand bestaat en niet corrupt is.
+    <activity_disabled>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden!
 De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <adding_logentry>Er is een fout opgetreden bij het toevoegen van een lied aan het logboek!</adding_logentry>
   </errors>

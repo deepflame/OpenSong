@@ -190,10 +190,6 @@ Protected Module Globals
 		SongActivityLog As ActivityLog
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected AddToLog As Boolean
-	#tag EndProperty
-
 
 	#tag Constant, Name = CTRL_V, Type = Integer, Dynamic = False, Default = \"22", Scope = Public
 	#tag EndConstant

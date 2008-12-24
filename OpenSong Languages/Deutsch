@@ -904,21 +904,6 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <option name="6/8"/>
   </time_sig_list>
 
-  <transition_list>
-    <option name="Default"/>
-    <option name="Yes"/>
-    <option name="No"/>
-  </transition_list>
-  
-  <imagequality_list>
-    <option name="Full, minimum quality, small set file"/>
-    <option name="High, low quality"/>
-    <option name="Medium, normal quality"/>
-    <option name="Little, high quality"/>
-    <option name="Low, maximum quality"/>
-    <option name="None, lossless, large set file"/>
-  </imagequality_list>
-
   <style_preview>
     <slide_groups>
       <slide_group loop="false" type="custom" name="Beispieltitel" seconds="0">

@@ -472,7 +472,7 @@ Begin Window StyleWindow
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         ControlOrder    =   24
+         ControlOrder    =   23
          Enabled         =   True
          EraseBackground =   "True"
          Height          =   44
@@ -673,6 +673,35 @@ Begin Window StyleWindow
          Width           =   108
          BehaviorIndex   =   22
       End
+      Begin PopupMenu pop_background_position
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   24
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         InitialValue    =   ""
+         Italic          =   "False"
+         Left            =   460
+         ListIndex       =   0
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   12
+         Top             =   223
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   80
+         BehaviorIndex   =   23
+      End
       Begin StaticText lbl_background_trim_bottom
          AutoDeactivate  =   "True"
          Bold            =   "False"
@@ -702,35 +731,6 @@ Begin Window StyleWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   120
-         BehaviorIndex   =   23
-      End
-      Begin PopupMenu pop_background_position
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   23
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_background"
-         InitialValue    =   ""
-         Italic          =   "False"
-         Left            =   460
-         ListIndex       =   0
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   12
-         Top             =   221
-         Underline       =   "False"
-         Visible         =   True
-         Width           =   80
          BehaviorIndex   =   24
       End
       Begin StaticText txt_background_pixels
@@ -791,32 +791,6 @@ Begin Window StyleWindow
          Width           =   30
          BehaviorIndex   =   26
       End
-      Begin SImageCanvas can_background_image
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         bgColor         =   0
-         ControlOrder    =   33
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   60
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_background"
-         Left            =   460
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   105
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   80
-         BehaviorIndex   =   27
-      End
       Begin SEditFieldNumeric edt_background_trim_bottom
          AcceptTabs      =   "False"
          Alignment       =   0
@@ -862,6 +836,32 @@ Begin Window StyleWindow
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   30
+         BehaviorIndex   =   27
+      End
+      Begin SImageCanvas can_background_image
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         bgColor         =   0
+         ControlOrder    =   33
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   60
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         Left            =   460
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   105
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   80
          BehaviorIndex   =   28
       End
    End
@@ -952,7 +952,7 @@ Begin Window StyleWindow
          Width           =   155
          BehaviorIndex   =   31
       End
-      Begin CheckBox chk_options_descriptive_subtitle
+      Begin CheckBox chk_options_descriptive_subtitle_info
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   "Include descriptive text on subtitles"
@@ -1096,6 +1096,9 @@ End
 		  App.T.TranslateWindow Me, "style_editor", App.TranslationFonts
 		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row0/@caption")
 		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row1/@caption")
+		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row2/@caption")
+		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row3/@caption")
+		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row4/@caption")
 		  
 		  App.CenterInControlScreen Me
 		End Sub
@@ -1150,14 +1153,14 @@ End
 		  chk_options_verse_in_title.Value = workingStyle.TitleIncludeVerse
 		  
 		  sal_align_subtitle.SetAlign workingStyle.SubtitleAlign,workingStyle.SubtitleVAlign
-		  chk_options_descriptive_subtitle.Value = workingStyle.DescriptiveSubtitles
+		  chk_options_descriptive_subtitle_info.Value = workingStyle.DescriptiveSubtitles
 		  
 		  can_font_title.SetFont workingStyle.TitleFont
 		  can_font_body.SetFont workingStyle.BodyFont
 		  can_font_subtitle.SetFont workingStyle.SubtitleFont
 		  
-		  pop_background_position.ListIndex = workingStyle.Position - 1
-		  If pop_background_position.ListIndex = -1 Then pop_background_position.ListIndex = SlideStyle.POS_STRETCH - 1
+		   pop_background_position.ListIndex = workingStyle.Position - 1
+		  If pop_background_position.ListIndex = -1 Then pop_background_position.ListIndex = SlideStyle.POS_CENTER - 1
 		  
 		  If IsSong Then
 		    lst_song_subtitles.SetSelected(workingStyle.SubtitleList)
@@ -1172,7 +1175,7 @@ End
 		  IsSong = IsSongStyle
 		  
 		  lst_song_subtitles.Visible = IsSongStyle
-		  chk_options_descriptive_subtitle.Visible = IsSongStyle
+		  chk_options_descriptive_subtitle_info.Visible = IsSongStyle
 		  chk_options_highlight_chorus.Visible = IsSongStyle
 		  lbl_options_subtitles.Visible = IsSongStyle
 		  chk_options_verse_in_title.Visible = IsSongStyle
@@ -1412,15 +1415,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events pop_background_position
-	#tag Event
-		Sub Change()
-		  can_background_image.SetImagePosition Me.ListIndex + 1
-		  workingStyle.Position = Me.ListIndex + 1
-		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events sal_align_body
 	#tag Event
 		Sub AlignChanged(HAlign As String, VAlign As String)
@@ -1435,6 +1429,15 @@ End
 		    End If
 		    can_background_image.Repaint
 		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_background_position
+	#tag Event
+		Sub Change()
+		  can_background_image.SetImagePosition Me.ListIndex + 1
+		  workingStyle.Position = Me.ListIndex + 1
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1454,7 +1457,7 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events chk_options_descriptive_subtitle
+#tag Events chk_options_descriptive_subtitle_info
 	#tag Event
 		Sub Action()
 		  workingStyle.DescriptiveSubtitles = Me.Value

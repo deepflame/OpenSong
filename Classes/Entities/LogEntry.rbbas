@@ -208,59 +208,6 @@ Protected Class LogEntry
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function CompareLogEntry(Entry As LogEntry) As Boolean
-		  'Compares the passed Log Entry to this Log Entry
-		  'Returns true if entries are equal
-		  If Entry.Title = Title And Entry.Author = Author And Entry.Description = Description And _
-		    Entry.CCLISongNumber = CCLISongNumber And Entry.HasChords  = HasChords Then 
-		    If Entry.DateAndTime <> Nil And DateAndTime <> Nil Then
-		      If CompareDates(Entry.DateAndTime, DateAndTime) = 0 Then
-		        Return true
-		      End If
-		    End If
-		    If Entry.DateAndTime = Nil And DateAndTime = Nil Then Return true
-		    
-		  End If
-		  
-		  return False
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CreateLogEntry(Entry As LogEntry) As Boolean
-		  'Creates a Log Entry from the passed Log Entry
-		  If Entry = Nil Then Return False
-		  
-		  Title = Entry.Title
-		  Author = Entry.Author
-		  Description = Entry.Description
-		  DateAndTime = Entry.DateAndTime
-		  HasChords = Entry.HasChords
-		  CCLISongNumber = Entry.CCLISongNumber
-		  SongFileName = Entry.SongFileName
-		  
-		  Return True
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CopyLogEntry(Byref Entry As LogEntry) As Boolean
-		  'Copies this Log Entry into the passed Entry
-		  If Entry = Nil Then Return False
-		  
-		  Entry.Title = Title
-		  Entry.Author = Author
-		  Entry.CCLISongNumber = CCLISongNumber
-		  Entry.DateAndTime = DateAndTime
-		  Entry.Description = Description
-		  Entry.HasChords = HasChords
-		  Entry.SongFileName = SongFileName
-		  
-		  Return True
-		End Function
-	#tag EndMethod
-
 
 	#tag Property, Flags = &h0
 		Author As String
@@ -404,20 +351,6 @@ Protected Class LogEntry
 		Renamed As Boolean
 	#tag EndComputedProperty
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			return Description = kSongCopied
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			If value Then Description = kSongCopied
-			End Set
-		#tag EndSetter
-		Copied As Boolean
-	#tag EndComputedProperty
-
 
 	#tag Constant, Name = E_LOG, Type = String, Dynamic = False, Default = \"log", Scope = Protected
 	#tag EndConstant
@@ -470,113 +403,130 @@ Protected Class LogEntry
 	#tag Constant, Name = kSongRenamed, Type = Double, Dynamic = False, Default = \"7", Scope = Protected
 	#tag EndConstant
 
-	#tag Constant, Name = kSongCopied, Type = Double, Dynamic = False, Default = \"8", Scope = Protected
-	#tag EndConstant
-
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Author"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="CCLISongNumber"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="HasChords"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Title"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="NumEntries"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="SongFileName"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Presented"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Modified"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Printed"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Deleted"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Renamed"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Created"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="OldSongFileName"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Moved"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Description"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

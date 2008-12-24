@@ -1,28 +1,3 @@
-scripture_search/caption
-scripture_search/result
-scripture_lookup/book (Deleted)
-scripture_lookup/books
-scripture_lookup/search (Modified)
-scripture_lookup/paragraph
-scripture_lookup/from_verse
-scripture_lookup/to_verse
-scripture_lookup/chars_per_slide
-scripture_lookup/verse_per_slide (Deleted child nodes)
-sets_mode/items/image
-image_slide/*
-sets_mode/new_item/add_image
-song_activity/merged
-song_activity/merged_dupes
-song_activity/file_type
-module/file_type (Modified)
-song_activity/merge
-song_activity/view
-shared/export_to
-songs_mode/selected_song/export/to (Deleted)
-questions/activity_log
-errors/activity_disabled (modified)
-song_activity/value
-songs_mode/selected_song/copy
 general_settings/log*
 imagequality_list/*
 general/imagequality

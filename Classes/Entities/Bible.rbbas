@@ -657,7 +657,7 @@ Implements iBible
 		        wProgress = Nil
 		        CanSearch = False
 		        App.DebugWriter.Write "Bible.genindex: Exit (user cancel)"
-		        If Not (wSplash Is Nil) Then wSplash.Show
+			If Not (wSplash Is Nil) Then wSplash.Show
 		        return
 		      end if
 		      

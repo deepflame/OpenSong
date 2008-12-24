@@ -16,8 +16,6 @@ Protected Class Translator
 		  If Document = Nil Then Return Nil
 		  If Len(path) = 0 Then Return Nil
 		  
-		  App.DebugWriter.Write "Translator.GetNode: " + "language/"+path
-		  
 		  Dim list As XmlNodeList
 		  list = Document.Xql("/language/"+path)
 		  
@@ -502,28 +500,33 @@ Protected Class Translator
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

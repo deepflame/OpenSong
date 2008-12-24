@@ -86,14 +86,13 @@ Inherits SBufferedCanvas
 		  // Calling the overridden superclass constructor.
 		  Super.RectControl
 		  
-		  ClearPreviewSlide
+		  self.PreviewSlideNode = SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide")
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub ClearPreviewSlide()
 		  self.PreviewSlideNode = SmartML.GetNode(App.StylePreview, "slide_groups/slide_group/slides/slide")
-		  Repaint
 		End Sub
 	#tag EndMethod
 

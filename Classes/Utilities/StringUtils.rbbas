@@ -170,7 +170,7 @@ Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function CompareHymnBookOrder(s1 As string, s2 As string) As Integer
+		Function CompareHymnBookOrder(s1 As String, s2 As String) As Integer
 		  // EMP 4 Feb 06
 		  //
 		  // Here's a different take on a compare routine.
@@ -2543,69 +2543,6 @@ Module StringUtils
 		  result = Mid(s, start, length)
 		  
 		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Translate(extends s As String, from_chars As String, to_chars As String) As String
-		  // Replaces all characters in from_chars to the corresponding character in to_chars
-		  // If from_chars contains more characters than to_chars then the characters that have no matching translation value, will be translated to the last character in to_chars
-		  // If to_chars is empty the behaviour is equal to Remove(s, from_chars)
-		  // Translate("test", "ts", "fz") = "fezd".
-		  
-		  
-		  Dim i As Integer
-		  Dim f, t As String
-		  Dim result As String
-		  
-		  from_chars = ConvertEncoding( from_chars, s.Encoding )
-		  to_chars = ConvertEncoding( to_chars, s.Encoding )
-		  result = s
-		  
-		  For i = 1 to Len(from_chars)
-		    f = Mid(from_chars, i, 1)
-		    If i <= Len(to_chars) Then
-		      t = Mid(to_chars, i, 1)
-		    ElseIf Len(to_chars) > 0 Then
-		      t = Right(to_chars, 1)
-		    Else
-		      t = ""
-		    End If
-		    
-		    result = ReplaceAllB(result, f, t)
-		  Next
-		  
-		  return Result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function RemoveNotIn(s As String, charSet As String = " ") As String
-		  // Delete all characters which not are members of charSet. Example:
-		  // Delete("wooow maaan", "aeiou") = "oooaaa".
-		  
-		  Dim sLenB As Integer = s.LenB
-		  if sLenB < 2 then return s
-		  
-		  Dim m As MemoryBlock
-		  m = NewMemoryBlock( sLenB )
-		  
-		  charSet = ConvertEncoding( charSet, s.Encoding )
-		  
-		  Dim sLen As Integer = s.Len
-		  
-		  Dim char As String
-		  Dim spos, mpos As Integer
-		  for spos = 1 to sLen
-		    char = Mid( s, spos, 1 )
-		    if InStrB( charSet, char ) > 0 then
-		      m.StringValue( mpos, char.LenB ) = char
-		      mpos = mpos + char.LenB
-		    end if
-		  next
-		  
-		  return DefineEncoding( m.StringValue(0, mpos), s.Encoding )
-		  
 		End Function
 	#tag EndMethod
 

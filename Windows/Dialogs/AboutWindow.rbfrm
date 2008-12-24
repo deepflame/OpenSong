@@ -218,7 +218,7 @@ Begin Window AboutWindow
       Multiline       =   "True"
       Scope           =   0
       TabPanelIndex   =   0
-      Text            =   "Ed Palmer, Joshua Coley, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt."
+      Text            =   "Ed Palmer, Joshua Coley, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt, Gerrit Prins."
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "System"

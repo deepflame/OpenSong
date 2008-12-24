@@ -63,9 +63,9 @@ Inherits SBufferedCanvas
 		Sub Paint(g As Graphics)
 		  Dim img As Picture
 		  Dim bgDrawH, bgDrawW As Integer
-		  Dim bgHeightRatio, bgWidthRatio As Double
+		  Dim bgHeightRatio, bgHeightRatio_half, bgWidthRatio As Double
 		  Dim display_height As Integer
-		  Dim aspect_ratio As Double
+		  Dim aspect_ratio, aspect_ratio_half As Double
 		  
 		  If Not Enabled Then
 		    g.ForeColor = FillColor
@@ -83,8 +83,10 @@ Inherits SBufferedCanvas
 		    bgDrawH = img.Height
 		    bgDrawW = img.Width
 		    bgHeightRatio = g.Height / bgDrawH
+		    bgHeightRatio_half = (g.Height/2) / bgDrawH
 		    bgWidthRatio = g.Width / bgDrawW
 		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
+		    aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio)
 		    display_height = bgDrawH * aspect_ratio
 		    display_height = g.Height - display_height
 		    display_height = display_height / 2
@@ -99,6 +101,34 @@ Inherits SBufferedCanvas
 		      bgDrawW * aspect_ratio, _
 		      bgDrawH * aspect_ratio, _
 		      0, 0, bgDrawW, bgDrawH
+		      
+		    Case SlideStyle.POS_TOP
+		      
+		      g.DrawPicture img, _
+		      (g.Width / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		      0, _ //gpgpgpgpg
+		      bgDrawW * aspect_ratio, _
+		      bgDrawH * aspect_ratio, _
+		      0, 0, bgDrawW, bgDrawH
+		      
+		    Case SlideStyle.POS_bottom
+		      
+		      g.DrawPicture img, _
+		      (g.Width / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		      g.height-(img.Height *bgHeightRatio), _ //gpgpgpgpgppgdisplay_height, _
+		      bgDrawW * aspect_ratio, _
+		      bgDrawH * aspect_ratio, _
+		      0, 0, bgDrawW, bgDrawH
+		      
+		    Case SlideStyle.POS_bottom_max_half_height
+		      
+		      g.DrawPicture img, _
+		      (g.Width / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		      max(g.height-(img.Height *bgHeightRatio_half),g.height/2) , _ //gpgpgpgpgppgdisplay_height, _
+		      bgDrawW * aspect_ratio, _
+		      bgDrawH * aspect_ratio_half, _
+		      0, 0, bgDrawW, bgDrawH
+		      
 		      
 		    Case SlideStyle.POS_STRETCH
 		      g.DrawPicture img, 0, 0, g.Width, g.Height, 0, 0, img.Width, img.Height
@@ -147,7 +177,7 @@ Inherits SBufferedCanvas
 	#tag Method, Flags = &h0
 		Sub Constructor()
 		  Me.Image = New StyleImage()
-		  Me.PictureAspect = SlideStyle.POS_STRETCH // Default handling of background picture
+		  Me.PictureAspect = SlideStyle.POS_CENTER // Default handling of background picture
 		  Me.bgColor = FillColor
 		  
 		  ClearImage
@@ -254,40 +284,47 @@ Inherits SBufferedCanvas
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="ControlOrder"
+			Visible=true
+			Group="Position"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			Type="String"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Visible=true
-			Group="Position"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Width"
 			Visible=true
 			Group="Position"
 			InitialValue="100"
@@ -295,6 +332,7 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Height"
 			Visible=true
 			Group="Position"
 			InitialValue="100"
@@ -302,36 +340,42 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LockLeft"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LockTop"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LockRight"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="LockBottom"
 			Visible=true
 			Group="Position"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="TabPanelIndex"
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Visible"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -339,6 +383,7 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="HelpTag"
 			Visible=true
 			Group="Appearance"
 			Type="String"
@@ -346,6 +391,7 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="AutoDeactivate"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -353,6 +399,7 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Enabled"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -360,6 +407,7 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="UseFocusRing"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -367,6 +415,7 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Backdrop"
 			Visible=true
 			Group="Appearance"
 			Type="Picture"
@@ -374,18 +423,21 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="AcceptFocus"
 			Visible=true
 			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="AcceptTabs"
 			Visible=true
 			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="EraseBackground"
 			Visible=true
 			Group="Behavior"
 			InitialValue="True"
@@ -393,9 +445,11 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="InitialParent"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="bgColor"
 			Group="Behavior"
 			InitialValue="&h000000"
 			Type="Color"

@@ -9,6 +9,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
@@ -41,48 +42,37 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
       Visible         =   True
       Width           =   302
       BehaviorIndex   =   0
-   End
-   Begin Timer timerAdvance
-      ControlOrder    =   1
-      Enabled         =   "True"
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   248
-      Mode            =   0
-      Period          =   10000
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Visible         =   "True"
-      Width           =   32
-      BehaviorIndex   =   1
-   End
-   Begin Timer timerTransition
-      ControlOrder    =   2
-      Enabled         =   "True"
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   204
-      Mode            =   0
-      Period          =   125
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Visible         =   "True"
-      Width           =   32
-      BehaviorIndex   =   2
+      Begin Timer timerAdvance
+         ControlOrder    =   1
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   248
+         Mode            =   0
+         Period          =   10000
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   248
+         BehaviorIndex   =   1
+      End
+      Begin Timer timerTransition
+         ControlOrder    =   2
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   204
+         Mode            =   0
+         Period          =   125
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   248
+         BehaviorIndex   =   2
+      End
    End
 End
 #tag EndWindow
@@ -186,6 +176,7 @@ End
 		  //++EMP 09/04
 		  // Rewritten to get transition speed characteristics from presentation preferences
 		  //
+		  doerefresh = false
 		  App.DebugWriter.Write("PresentWindow.Open: Enter")
 		  Dim time As Integer
 		  time = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
@@ -201,6 +192,15 @@ End
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
 	#tag EndEvent
+
+
+#tag MenuHandler
+		Function Untitled() As Boolean Handles Untitled.Action
+			
+			Return True
+			
+		End Function
+#tag EndMenuHandler
 
 
 	#tag Method, Flags = &h1
@@ -363,7 +363,8 @@ End
 		  
 		  While slide_group <> Nil
 		    '++JRC Fix corner case where the first item in a set is a style type, which causes two blank items at the beginning of a set
-		    If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
+		    'GPGPGP  als 2 dezelfde liederen achter elkaar, dan toch een blank ertussen, want dan wil je bijv eerst vers 1 en 2 zingen en later 4
+		    If (SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") or SmartML.GetValue(slide_group, "@type") = "song") And _
 		      SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
 		      slide_group.PreviousSibling = Nil And SmartML.GetValue(slide_group, "@type") <> "style" Then
 		      '--
@@ -420,6 +421,8 @@ End
 		  Dim DontCare As Boolean
 		  Dim Command As Integer
 		  
+		  ControlKeyisdown = ( keyboard.ControlKey)
+		  
 		  If Asc(Key) = ASC_KEY_PGDN Then Key = Chr(ASC_KEY_DOWN)
 		  If Asc(Key) = ASC_KEY_PGUP Then Key = Chr(ASC_KEY_UP)
 		  
@@ -460,6 +463,7 @@ End
 		  '
 		  Dim Key As String
 		  Key = ChrB(Action)
+		  
 		  
 		  '
 		  '  NEXT SLIDE
@@ -575,6 +579,9 @@ End
 		    
 		  ElseIf Lowercase(Key) = "m" Then
 		    Return DoSwapFullScreen
+		  Elseif Lowercase(Key) = "e" Then
+		    Exporttohtml(false,true)
+		    return true
 		  Else
 		    Return False
 		  End If
@@ -607,7 +614,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Present(setDoc As XmlDocument, PresentMode As Integer)
+		Sub Present(setDoc As XmlDocument, PresentMode As Integer, acurrentsetname as string)
 		  Dim i, j As Integer
 		  Dim slide_groups, slide_group, slide As XmlNode
 		  Dim s As String
@@ -631,11 +638,14 @@ End
 		  Dim StyleNode As XmlNode
 		  Dim NewStyleNode As XmlNode
 		  Dim tempSlideStyle As SlideStyle
+		  dim screenFactor as double
 		  
 		  App.MouseCursor = WatchCursor
 		  PresentationMode = PresentMode
 		  // Copy the set to a working copy we can change
 		  CurrentSet = New XmlDocument
+		  currentsetname = acurrentsetname
+		  ExportToHtml (true, false)
 		  CurrentSet.AppendChild CurrentSet.ImportNode(setDoc.FirstChild, CopyAllChildren)
 		  '#if DebugBuild
 		  'Dim f As FolderItem
@@ -708,6 +718,7 @@ End
 		  'System.DebugLog "Dumped CurrentSet"
 		  
 		  CurrentSlide = 1
+		  SetML.slidetype = ""
 		  XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
 		  'System.DebugLog "Setup monitors"
 		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
@@ -741,6 +752,13 @@ End
 		    Left = Screen(presentScreen).AvailableLeft + 10
 		    Width = Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 30
 		    Height = Width * Screen(presentScreen).AvailableHeight / Screen(presentScreen).Width ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
+		    'gpgpgpg poging om het voorbeeldscherm altijd 3 op 4 te laten zijn, omdat beamer dit ook is
+		    screenFactor = Screen(presentScreen).AvailableHeight / Screen(presentScreen).Width
+		    if screenfactor < 0.7 then
+		      width = height /3*4
+		    else
+		      width = height /100 *115
+		    end if
 		    
 		    PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).Width - PresentHelperWindow.Width - 10
 		    PresentHelperWindow.Top = Screen(presentScreen).AvailableTop + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
@@ -870,12 +888,19 @@ End
 		  
 		  Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::PreviewPicture"
 		  ' -- Old way -- (value not passed)
-		  'xStyle = SetML.GetStyle(XCurrentSlide)
+		  xStyle = SetML.GetStyle(XCurrentSlide)
 		  'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
 		  ' -- New way --
-		  xStyle = SetML.GetStyle(slide)
+		  doetrans_nextblank = false
+		  doetrans = lastSlideType <> "blank" ' (SlideType = "song") or (SlideType= "scripture")
+		  'xStyle = SetML.GetStyle (slide, currentset,CurrentSlide)
 		  SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
 		  curslideTransition = SetML.GetSlideTransition(slide)
+		  if doetrans then
+		    doetrans = SlideType <> "blank" ' (SlideType = "song") or (SlideType= "scripture")
+		    doetrans_nextblank = (SlideType = "blank")
+		  end if
+		  
 		  
 		  Profiler.EndProfilerEntry'
 		  
@@ -909,6 +934,10 @@ End
 		    CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
 		    'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
 		  End If
+		  try
+		    ExportToHtml(False, false)
+		  exception err
+		  end
 		  Profiler.EndProfilerEntry
 		  
 		  ' === Add the Alert ===
@@ -927,13 +956,15 @@ End
 		  End If
 		  
 		  ' === Start the transition ===
-		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
-		    TransitionFrame = 1
-		    timerTransition.Mode = 2
-		    timerTransition.Reset
-		    timerTransition.Enabled = True
-		  End If
+		  'If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
+		  'TransitionFrame = 1
+		  'timerTransition.Mode = 2
+		  'timerTransition.Reset
+		  'timerTransition.Enabled = True
+		  'End If
+		  doerefresh = true
 		  cnvSlide.Refresh False
+		  doerefresh = false
 		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Exit", 5)
 		End Sub
 	#tag EndMethod
@@ -1499,7 +1530,7 @@ End
 		    'Don't log in preview mode
 		    Dim Log As LogEntry
 		    
-		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
+		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW Then
 		      Log = New LogEntry(Globals.SongActivityLog)
 		      Dim d As New Date
 		      
@@ -1690,6 +1721,63 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Sub ExportToHtml(aBegin as boolean = false, aEinde as boolean = false)
+		  'gpgpgpgpgp
+		  Dim f As FolderItem
+		  Dim TempDir, TempDir2, TempFile As FolderItem
+		  Dim TStream As TextOutputStream
+		  Dim thisshell As Shell
+		  dim i as integer
+		  try
+		    TempDir = TemporaryFolder()
+		    tempdir = tempdir.Child("OpensongExport")
+		    tempdir.CreateAsFolder
+		    tempdir2 = tempdir.Child(currentsetname)
+		    tempdir2.CreateAsFolder
+		    if aBegin then
+		      for i =  tempdir2.Count downto 1
+		        tempdir2.TrueItem( i ).delete
+		      next
+		    else
+		      if aeinde then
+		        TempFile = TempDir.Child(currentsetname+".html")
+		        TStream=tempfile.CreateTextFile
+		        TStream.WriteLine "<html><head>"
+		        TStream.WriteLine "<title>"+currentsetname+"</title></head>"
+		        TStream.WriteLine "<body>"
+		        for i = 1 to currentSlide
+		          TStream.WriteLine "<img HEIGHT='225'  WIDTH='300' name='dia "+str(i)+ "'  src="+chr(34)+currentsetname +"\"  + right("000"+ str(i),3) + "opensong.jpg"+chr(34)+">"
+		        next
+		        TStream.WriteLine "</body></html>"
+		        TStream.Close
+		        TStream = nil
+		        thisshell =New Shell
+		        thisshell.TimeOut = 20000
+		        thisshell.mode = 1
+		        thisshell.Execute (TempFile.ShellPath)
+		        thisshell = nil
+		        thisshell =New Shell
+		        'msgbox(App.AppFolder.Child("ftpupload.bat").URLPath )
+		        if App.AppFolder.Child("ftpupload.bat").exists then
+		          thisshell.Execute ( "start "+App.AppFolder.Child("ftpupload.bat").URLPath+" "+ TempFile.Name + " "+currentsetname )
+		        end if
+		        
+		        thisshell = nil
+		      else
+		        TempFile = TempDir2.Child(right("000"+ str(currentSlide),3) + "opensong.jpg")
+		        TempFile.SaveAsPicture (currentpicture, FolderItem.SaveAsJPEG)
+		        TempFile = App.DocsFolder.Child("opensong.jpg")
+		        TempFile.SaveAsPicture (currentpicture, FolderItem.SaveAsJPEG)
+		      end if
+		    end if
+		  exception err
+		  end
+		  
+		  
+		End Sub
+	#tag EndMethod
+
 
 	#tag Note, Name = Key Codes
 		  Map(kTab) = New Key("TAB", &h30)
@@ -1835,6 +1923,26 @@ End
 		Protected curslideTransition As SlideTransitionEnum
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected currentsetname As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected doetrans As boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected doetrans_nextblank As boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		doerefresh As boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected ControlKeyisdown As boolean
+	#tag EndProperty
+
 
 	#tag Constant, Name = ACTION_BLACK, Type = Integer, Dynamic = False, Default = \"1013", Scope = Public
 	#tag EndConstant
@@ -1946,22 +2054,96 @@ End
 	#tag Event
 		Sub Paint(g As Graphics)
 		  If Not Globals.Status_Presentation Then Return
+		  Static  lastcurrentSlide as integer = -999
+		  static busy as boolean = false
+		  if busy then return
+		  busy = true
 		  '#if DebugBuild then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
-		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
+		  
+		  If (doTransition And doetrans and (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) and  lastcurrentSlide <> currentSlide Then
 		    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
-		    CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
-		    CurrentPicture.Mask.Graphics.FillRect(0, 0, CurrentPicture.Mask.Graphics.Width, CurrentPicture.Mask.Graphics.Height)
-		    LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
-		    g.DrawPicture LastPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
+		    'GP CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
+		    'GP CurrentPicture.Mask.Graphics.FillRect(0, 0, CurrentPicture.Mask.Graphics.Width, CurrentPicture.Mask.Graphics.Height)
+		    'GPLastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
+		    'GPg.DrawPicture LastPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
 		    'LastPicture = LastPicture.CXG_Composite(CurrentPicture, TransitionFrame/TransitionFrames, 0, 0)
 		    'g.DrawPicture LastPicture.CXG_Composite(CurrentPicture, TransitionFrame/TransitionFrames, 0, 0, True), 0, 0
 		    'g.DrawPicture LastPicture.CXG_Transition(CurrentPicture, LastPicture, TransitionFrame/TransitionFrames), 0, 0
+		    DIM I, ii AS INTEGER
+		    dim ltime,  lTimeMs, lFirstI, lLastI, LStepI as Integer
+		    
+		    
+		    lastcurrentSlide = currentSlide
+		    
+		    
+		    lTimeMs = 10 * SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
+		    
+		    
+		    ltime = ticks
+		    lFirstI = 300
+		    lLastI = 780
+		    LStepI = 20
+		    i = 0
+		    II = lFirstI
+		    g.DrawPicture CurrentPicture, 0, G.HEIGHT/1000*i, g.Width, g.Height/1000*(ii-i), 0, G.HEIGHT/1000*i, LastPicture.Width, lastpicture.Height/1000*(Ii -i)
+		    IF not keyboard.ControlKey THEN
+		      ProgressWindow.Left =   PresentHelperWindow.left + 10
+		      ProgressWindow.SetMaximum(lLastI - lFirstI)
+		      ProgressWindow.Show
+		    end if
+		    for i = lFirstI  to lLastI  step LStepI
+		      ii = I + 22
+		      'g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height/1000*i, 0, 0, LastPicture.Width, LastPicture.Height/1000*i
+		      '
+		      'ltime = ticks
+		      'while ticks - ltime <  time/2 and not ControlKeyisdown
+		      'ProgressWindow.SetProgress(ticks-ltime)
+		      'app.DoEvents(10)
+		      'wend
+		      'end if
+		      'if not ControlKeyisdown then
+		      'ii = 650
+		      g.DrawPicture CurrentPicture, 0, G.HEIGHT/1000*i, g.Width, g.Height/1000*(ii-i), 0, G.HEIGHT/1000*i, LastPicture.Width, lastpicture.Height/1000*(Ii -i)
+		      
+		      IF not keyboard.ControlKey THEN
+		        ProgressWindow.SetProgress(I -  lFirstI)
+		        app.DoEvents (lTimeMs / ((lLastI - lFirstI) /lstepI))
+		      END IF
+		    next i
+		    i = lLastI + LStepI
+		    II = 1000
+		    g.DrawPicture CurrentPicture, 0, G.HEIGHT/1000*i, g.Width, g.Height/1000*(ii-i), 0, G.HEIGHT/1000*i, LastPicture.Width, lastpicture.Height/1000*(Ii -i)
+		    
+		    
+		    'g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
+		    ProgressWindow.Close
+		    doetrans = false
 		    Profiler.EndProfilerEntry
 		  Else
+		    if doTransition and doetrans_nextblank and  lastcurrentSlide <> currentSlide and not keyboard.ControlKey then
+		      dim ltime, time as Integer
+		      lastcurrentSlide = currentSlide
+		      time = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
+		      ProgressWindow.Left = PresentHelperWindow.left + 10
+		      ProgressWindow.SetMaximum(time * .5)
+		      ProgressWindow.Show
+		      ltime = ticks
+		      while ticks - ltime <  time * .5  and not keyboard.ControlKey
+		        ProgressWindow.SetProgress(ticks-ltime)
+		        app.DoEvents(10)
+		      wend
+		      ProgressWindow.Close
+		      
+		    end if
 		    g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
+		    
 		  End If
+		  
+		  
+		  busy = false
+		  
 		  '#if DebugBuild Then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Exit")
 		  '#endif

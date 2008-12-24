@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008-09-13 01:35:00.968.pas,D:\Data\GP\Mijn documenten\Borland Studio Projects\Unit2.pas=D:\Data\GP\Bureaublad\Unit2.pas</Transaction>
+    <Transaction>2008-09-13 01:35:00.968.dfm,D:\Data\GP\Mijn documenten\Borland Studio Projects\Unit2.dfm=D:\Data\GP\Bureaublad\Unit2.dfm</Transaction>
+    <Transaction>2008-09-13 01:50:00.609.bdsproj,D:\Data\GP\Mijn documenten\Borland Studio Projects\Project2.bdsproj=D:\Data\GP\Bureaublad\Project2.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -250,9 +250,9 @@ Protected Module GraphicsX
 		  
 		  hasTabs = False
 		  Try
-		    If UBound(tabs) > 0 And InStr(str, Chr(9)) > 0 Then
-		    hasTabs = True
-		    End If
+		    'If UBound(tabs) > 0 And InStr(str, Chr(9)) > 0 Then
+		    'hasTabs = True
+		    'End If
 		  Catch err as NilObjectException
 		    'tabs is Nill as it is an optional parameter; that is ok
 		  End

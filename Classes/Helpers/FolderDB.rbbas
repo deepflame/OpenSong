@@ -219,6 +219,7 @@ Protected Class FolderDB
 		  If filebox <> Nil Then filebox.DeleteAllRows
 		  songList = GetFilesInFolder(pathFilter, fileBox, showAll)
 		  Heapsort songList
+		  
 		  If fileBox <> Nil Then
 		    filebox.SortedColumn = 0
 		    filebox.Sort
@@ -1004,52 +1005,43 @@ Protected Class FolderDB
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ErrorCode"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ErrorString"
 			Group="Behavior"
 			Type="String"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="NumFiles"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

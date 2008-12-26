@@ -36,7 +36,7 @@ Begin Window PresentHelperWindow
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
-      Enabled         =   "True"
+      Enabled         =   True
       EnableDrag      =   "False"
       EnableDragReorder=   "False"
       GridLinesHorizontal=   0
@@ -56,6 +56,7 @@ Begin Window PresentHelperWindow
       LockRight       =   "True"
       LockTop         =   "True"
       RequiresSelection=   ""
+      Scope           =   0
       ScrollbarHorizontal=   "False"
       ScrollBarVertical=   "True"
       SelectionType   =   0
@@ -65,17 +66,18 @@ Begin Window PresentHelperWindow
       Top             =   10
       Underline       =   "False"
       UseFocusRing    =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   460
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
+      BehaviorIndex   =   0
    End
    Begin GroupBox grp_presentation_modes
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Mode"
       ControlOrder    =   1
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   180
       HelpTag         =   ""
       Index           =   -2147483648
@@ -86,13 +88,15 @@ Begin Window PresentHelperWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
       Top             =   5
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   150
+      BehaviorIndex   =   1
       Begin SButton btn_mode_normal
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -112,14 +116,14 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   25
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   2
       End
       Begin SButton btn_mode_black
          AcceptFocus     =   "False"
@@ -140,14 +144,14 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   50
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   3
       End
       Begin SButton btn_mode_white
          AcceptFocus     =   "False"
@@ -168,14 +172,14 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   75
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   4
       End
       Begin SButton btn_mode_hidden
          AcceptFocus     =   "False"
@@ -196,14 +200,14 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   100
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   5
       End
       Begin SButton btn_mode_logo
          AcceptFocus     =   "False"
@@ -224,14 +228,14 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   125
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   6
       End
       Begin SButton btn_mode_frozen
          AcceptFocus     =   "False"
@@ -252,14 +256,14 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   150
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   7
       End
    End
    Begin Canvas cnv_preview
@@ -268,7 +272,7 @@ Begin Window PresentHelperWindow
       AutoDeactivate  =   "True"
       Backdrop        =   0
       ControlOrder    =   8
-      Enabled         =   "True"
+      Enabled         =   True
       EraseBackground =   "True"
       Height          =   249
       HelpTag         =   ""
@@ -279,13 +283,13 @@ Begin Window PresentHelperWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   494
       UseFocusRing    =   "True"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   346
+      BehaviorIndex   =   8
    End
    Begin StaticText txt_shortcut_keys
       AutoDeactivate  =   "True"
@@ -293,7 +297,7 @@ Begin Window PresentHelperWindow
       ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   138
       HelpTag         =   ""
       Index           =   -2147483648
@@ -305,6 +309,7 @@ Begin Window PresentHelperWindow
       LockRight       =   "True"
       LockTop         =   "False"
       Multiline       =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
@@ -313,15 +318,16 @@ Begin Window PresentHelperWindow
       TextSize        =   9
       Top             =   485
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   135
+      BehaviorIndex   =   9
    End
    Begin GroupBox grp_presentation_actions
       AutoDeactivate  =   "True"
       Bold            =   "False"
       Caption         =   "Actions"
       ControlOrder    =   10
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   193
       HelpTag         =   ""
       Index           =   -2147483648
@@ -332,13 +338,15 @@ Begin Window PresentHelperWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
       Top             =   192
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   150
+      BehaviorIndex   =   10
       Begin SButton btn_action_alert
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -358,14 +366,14 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   210
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   11
       End
       Begin SButton btn_action_quick_song
          AcceptFocus     =   "False"
@@ -386,14 +394,14 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   235
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   12
       End
       Begin SButton btn_action_export
          AcceptFocus     =   "False"
@@ -442,44 +450,16 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   260
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   14
       End
       Begin SButton btn_action_full_screen
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   14
-         Enabled         =   "True"
-         EraseBackground =   "True"
-         HasFocus        =   0
-         Height          =   24
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_presentation_actions"
-         LabelAlign      =   0
-         Left            =   524
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "True"
-         LockTop         =   "False"
-         StickyBevel     =   "False"
-         TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
-         Top             =   285
-         UseFocusRing    =   "True"
-         Visible         =   "True"
-         Width           =   130
-      End
-      Begin SButton btn_action_return
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
@@ -498,14 +478,42 @@ Begin Window PresentHelperWindow
          LockLeft        =   "False"
          LockRight       =   "True"
          LockTop         =   "False"
+         Scope           =   0
          StickyBevel     =   "False"
          TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
+         Top             =   285
+         UseFocusRing    =   "True"
+         Visible         =   "True"
+         Width           =   130
+         BehaviorIndex   =   15
+      End
+      Begin SButton btn_action_return
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   16
+         Enabled         =   "True"
+         EraseBackground =   "True"
+         HasFocus        =   0
+         Height          =   24
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_presentation_actions"
+         LabelAlign      =   0
+         Left            =   524
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "True"
+         LockTop         =   "False"
+         Scope           =   0
+         StickyBevel     =   "False"
+         TabPanelIndex   =   0
          Top             =   350
          UseFocusRing    =   "True"
          Visible         =   "True"
          Width           =   130
+         BehaviorIndex   =   16
       End
    End
    Begin EditField edt_slide_notes
@@ -515,10 +523,10 @@ Begin Window PresentHelperWindow
       BackColor       =   16777215
       Bold            =   "True"
       Border          =   "True"
-      ControlOrder    =   16
+      ControlOrder    =   17
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   116
       HelpTag         =   ""
@@ -535,6 +543,7 @@ Begin Window PresentHelperWindow
       Multiline       =   "True"
       Password        =   "False"
       ReadOnly        =   "True"
+      Scope           =   0
       ScrollbarHorizontal=   "False"
       ScrollbarVertical=   "True"
       Styled          =   "False"
@@ -546,8 +555,9 @@ Begin Window PresentHelperWindow
       Top             =   628
       Underline       =   "False"
       UseFocusRing    =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   300
+      BehaviorIndex   =   17
    End
    Begin StaticText StaticText1
       AutoDeactivate  =   "True"
@@ -665,7 +675,12 @@ End
 		  
 		  lst_all_slides.Cell(index,1) = SmartML.GetValue(slide, "@id", False)
 		  lst_all_slides.CellAlignment(index, 1) = 2
-		  lst_all_slides.Cell(index,2) = ReplaceAll(ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " "), Chr(9), " ").CleanSpaces
+		  Select Case SmartML.GetValue(slide.Parent.Parent, "@type", False)
+		  Case "image"
+		    lst_all_slides.Cell(index,2) = Trim(SmartML.GetValue(slide, "description", True)).CleanSpaces
+		  Else
+		    lst_all_slides.Cell(index,2) = ReplaceAll(ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " "), Chr(9), " ").CleanSpaces
+		  End Select
 		  //++EMP 15 Jan 06
 		  // Put in separator lines if either the name and celltags differ
 		  If Index > 0 Then

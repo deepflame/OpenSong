@@ -187,11 +187,15 @@ Protected Module SetML
 		  
 		  If xslide = Nil Then Return
 		  
+		  Dim slideType As String
 		  Dim RealSize, RealBorder, HeaderSize, FooterSize As Integer
 		  Dim x, y, z As Integer
 		  Dim d, ccli As String
 		  Dim multiwrap As Boolean
 		  Dim presentation, currentVerse as String
+		  Dim UsableWidth As Integer 'Max body width after margins are taken out (EMP 09/05)
+		  
+		  slideType = SmartML.GetValue(xslide.Parent.Parent, "@type")
 		  
 		  RealBorder = g.Width / 50
 		  HeaderSize = 0
@@ -211,11 +215,18 @@ Protected Module SetML
 		  'title = SmartML.GetValue(xslide.Parent.Parent, "title")
 		  '--
 		  
-		  '++JRC
 		  If Style.SubtitleEnable Then
 		    subtitle = SmartML.GetValue(xslide.Parent.Parent, "subtitle")
+		    
+		    If slideType = "image" Then
+		      If SmartML.GetValueB(xslide.Parent.Parent, "@descriptions_in_subtitle", False) = True And SmartML.GetValue(xslide, "description", False) <> "" Then
+		        If subtitle <> "" Then
+		          subtitle = subtitle + Chr(10)
+		        End If
+		        subtitle = subtitle + SmartML.GetValue(xslide, "description", False)
+		      End If
+		    End If
 		  End If
-		  '--
 		  
 		  'title = ReplaceAll(title, "|", Chr(10))
 		  
@@ -260,219 +271,259 @@ Protected Module SetML
 		  Profiler.BeginProfilerEntry "DrawSlide>Declare 3" ' --------------------------------------------------
 		  
 		  MainHeight = g.Height - HeaderSize - FooterSize
+		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
 		  
 		  bodyStyle.OntoGraphics g
 		  
-		  If SmartML.GetValueB(xslide, "@emphasize", False) And Style.HighlightChorus Then
-		    bodyStyle.Italic = Not bodyStyle.Italic
-		  End If
-		  
-		  Dim st, linecount, x2 As Integer
-		  Dim line, line2, lines(0) As String
-		  Dim UsableWidth As Integer 'Max body width after margins are taken out (EMP 09/05)
-		  UsableWidth = g.Width - (2 * RealBorder) - bodyMargins.Left - bodyMargins.Right ' This just comes up again and again in the calcs & won't change (EMP 09/05)
-		  st = 1
-		  
-		  Profiler.EndProfilerEntry
-		  //++EMP 09/05
-		  // Take a pass at the slide to see if the lines will fit reasonably as they are.
-		  // Hopefully in most cases this will be all we need
-		  Profiler.BeginProfilerEntry "DrawSlide -> BestCaseBodyWrap"
-		  Dim MaxLineIndex, MaxLineLen As Integer '
-		  Dim NHeight As Integer
-		  Dim WrapPercent, HWrapPercent, VWrapPercent As Double
-		  Dim LineLen As Integer
-		  MaxLineLen = 0
-		  
-		  '++JRC:
-		  Dim s As string
-		  If Style.BodyEnable Then
-		    s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
-		    SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		  Select Case slideType
+		  Case "image"
+		    Dim img As StyleImage
+		    Dim pic As Picture
+		    Dim resize, s As String
+		    Dim keepaspect As Boolean
+		    Dim scale as Double
+		    Dim Left, Top As Integer
 		    
-		    ' Find the longest line
-		    MaxLineIndex = UBound(lines)
-		    For i = 0 to UBound(lines)
-		      If g.StringWidth(lines(i)) > MaxLineLen Then
-		        MaxLineLen = g.StringWidth(lines(i))
-		        MaxLineIndex = i
-		      End If
-		    Next i
-		    
-		  End If
-		  '--
-		  
-		  // Within reasonable wrapping limits?
-		  If MaxLineLen = 0 Then
-		    Profiler.EndProfilerEntry
-		    GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
-		  End If
-		  HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
-		  VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
-		  WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
-		  If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
-		    g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
-		    Profiler.EndProfilerEntry
-		    GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
-		  End If
-		  Profiler.EndProfilerEntry
-		  //--EMP
-		  
-		  Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 1" ' --------------------------------------------------
-		  
-		  ' Round Pre-1: Pre-guess shrinkage based on perfect wrapping
-		  '++JRC:
-		  line = ReplaceAll(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), Chr(10), "")
-		  '--
-		  
-		  While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
-		    g.TextSize = Floor(g.TextSize * .95)
-		  Wend
-		  
-		  Profiler.EndProfilerEntry
-		  Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 2 / Wrap" ' --------------------------------------------------
-		  
-		  '++JRC:
-		  'SplitToArray(Trim(SmartML.GetValue(xslide, "body", True)).FormatUnixEndOfLine, lines, Chr(10))
-		  SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
-		  '--
-		  
-		  If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
-		  ' Round 1: Fit to size (pre-wrap)
-		  For i = 1 To UBound(lines)
-		    If (g.StringWidth(lines(i)) > UsableWidth * 2) Or (multiwrap And g.StringWidth(lines(i)) > UsableWidth) Then
-		      ' this line is more than twice as long: multiple-wrapping
-		      ' or this line is too long and this slide has already been multiwrapped
-		      multiwrap = True
-		      line = lines(i)
-		      x = 1
-		      y = 2
-		      ' add character by character until we are too long...
-		      While y <= Len(line) And g.StringWidth(Mid(line, x, y-x)) < UsableWidth 'EMP 09/05
-		        y = y + 1
-		      Wend
-		      y = y - 1
-		      ' back off until we fit...
-		      isWrapped = False
-		      For z = y DownTo x
-		        d = Mid(line, z, 1)
-		        If d = " " and z <> 2 Then ' wrap it here
-		          lines(i) = Mid(line, x, z-x)
-		          lines.Insert i+1,InsertAfterBreak+ Mid(line, z+1)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt
-		          isWrapped = True
-		          Exit
+		    img = new StyleImage()
+		    s = SmartML.GetValue(xslide, "filename")
+		    If SmartML.GetValueB(xslide.Parent.Parent, "@link", False) = True And s<>"" Then
+		      Call img.SetImageFromFileName( s )
+		    Else
+		      Call img.SetImageAsString( SmartML.GetValue(xslide, "image") )
+		    End If
+		    pic = img.GetImage()
+		    If pic IsA Picture Then
+		      
+		      resize = SmartML.GetValue(xslide.Parent.Parent, "@resize", False)
+		      keepaspect = SmartML.GetValueB(xslide.Parent.Parent, "@keep_aspect", False)
+		      If resize = "screen" Then
+		        
+		        If keepaspect Then
+		          If pic.Width / g.Width > pic.Height / g.Height Then
+		            scale = g.Width / pic.Width
+		          Else
+		            scale = g.Height / pic.Height
+		          End If
+		          
+		          g.DrawPicture( pic, (g.Width - (pic.Width * scale)) / 2, (g.Height - (pic.Height * scale)) / 2, pic.Width * scale, pic.Height * scale, 0, 0, pic.Width, pic.Height )
+		        Else
+		          g.DrawPicture( pic, 0, 0, g.Width, g.Height, 0, 0, pic.Width, pic.Height )
 		        End If
-		        //++
-		        // For CJK characters, it is perfectly ok to wrap before or after
-		        // a CJK character (Unicode codepoint between 4E00 and 9FBF)
-		        // (Additional fix for 1530629 added after section outside "For z" loop was inserted)
-		        //--
-		        If (z <> y) Then
-		          d2 = Mid(line, z-1, 1)
-		          If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
-		            (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
+		        
+		      ElseIf resize = "body" Then
+		        
+		        If HeaderSize < bodyMargins.Top Then
+		          HeaderSize = bodyMargins.Top
+		        End If
+		        If MainHeight > (g.Height - bodyMargins.Top - bodyMargins.Bottom) Then
+		          MainHeight = (g.Height - bodyMargins.Top - bodyMargins.Bottom)
+		        End If
+		        
+		        If keepaspect Then
+		          UsableWidth =  UsableWidth + (2 * RealBorder)
+		          
+		          If pic.Width / UsableWidth > pic.Height / MainHeight Then
+		            scale = UsableWidth / pic.Width
+		          Else
+		            scale = MainHeight / pic.Height
+		          End If
+		          
+		          Select Case Style.BodyAlign
+		          Case "right"
+		            Left = bodyMargins.Left + UsableWidth - (pic.Width * scale)
+		          Case "center"
+		            Left = bodyMargins.Left + ((UsableWidth - (pic.Width * scale)) / 2)
+		          Case Else
+		            Left = bodyMargins.Left
+		          End Select
+		          
+		          Select Case Style.BodyVAlign
+		          Case "bottom"
+		            Top = HeaderSize + MainHeight - pic.Height * scale
+		          Case "middle"
+		            Top = HeaderSize + ((MainHeight - (pic.Height * scale)) / 2)
+		          Case Else
+		            Top = HeaderSize
+		          End Select
+		          
+		          g.DrawPicture( pic, Left, Top, pic.Width * scale, pic.Height * scale, 0, 0, pic.Width, pic.Height )
+		        Else
+		          g.DrawPicture( pic, bodyMargins.Left, HeaderSize, UsableWidth + (2 * RealBorder), MainHeight, 0, 0, pic.Width, pic.Height )
+		        End If
+		        
+		      Else
+		        g.DrawPicture( pic, (g.Width / 2) - (pic.Width / 2), (g.Height / 2) - (pic.Height / 2), pic.Width, pic.Height, 0, 0, pic.Width, pic.Height )
+		      End If
+		      
+		    End If
+		  Else
+		    If SmartML.GetValueB(xslide, "@emphasize", False) And Style.HighlightChorus Then
+		      bodyStyle.Italic = Not bodyStyle.Italic
+		    End If
+		    
+		    Dim st, linecount, x2 As Integer
+		    Dim line, line2, lines(0) As String
+		    st = 1
+		    
+		    Profiler.EndProfilerEntry
+		    //++EMP 09/05
+		    // Take a pass at the slide to see if the lines will fit reasonably as they are.
+		    // Hopefully in most cases this will be all we need
+		    Profiler.BeginProfilerEntry "DrawSlide -> BestCaseBodyWrap"
+		    Dim MaxLineIndex, MaxLineLen As Integer '
+		    Dim NHeight As Integer
+		    Dim WrapPercent, HWrapPercent, VWrapPercent As Double
+		    Dim LineLen As Integer
+		    MaxLineLen = 0
+		    
+		    '++JRC:
+		    Dim s As string
+		    If Style.BodyEnable Then
+		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
+		      SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		      
+		      ' Find the longest line
+		      MaxLineIndex = UBound(lines)
+		      For i = 0 to UBound(lines)
+		        If g.StringWidth(lines(i)) > MaxLineLen Then
+		          MaxLineLen = g.StringWidth(lines(i))
+		          MaxLineIndex = i
+		        End If
+		      Next i
+		      
+		    End If
+		    '--
+		    
+		    // Within reasonable wrapping limits?
+		    If MaxLineLen = 0 Then
+		      Profiler.EndProfilerEntry
+		      GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
+		    End If
+		    HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
+		    VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
+		    WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
+		    If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
+		      g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
+		      Profiler.EndProfilerEntry
+		      GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
+		    End If
+		    Profiler.EndProfilerEntry
+		    //--EMP
+		    
+		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 1" ' --------------------------------------------------
+		    
+		    ' Round Pre-1: Pre-guess shrinkage based on perfect wrapping
+		    '++JRC:
+		    line = ReplaceAll(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), Chr(10), "")
+		    '--
+		    
+		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
+		      g.TextSize = Floor(g.TextSize * .95)
+		    Wend
+		    
+		    Profiler.EndProfilerEntry
+		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 2 / Wrap" ' --------------------------------------------------
+		    
+		    '++JRC:
+		    'SplitToArray(Trim(SmartML.GetValue(xslide, "body", True)).FormatUnixEndOfLine, lines, Chr(10))
+		    SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		    '--
+		    
+		    If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
+		    ' Round 1: Fit to size (pre-wrap)
+		    For i = 1 To UBound(lines)
+		      If (g.StringWidth(lines(i)) > UsableWidth * 2) Or (multiwrap And g.StringWidth(lines(i)) > UsableWidth) Then
+		        ' this line is more than twice as long: multiple-wrapping
+		        ' or this line is too long and this slide has already been multiwrapped
+		        multiwrap = True
+		        line = lines(i)
+		        x = 1
+		        y = 2
+		        ' add character by character until we are too long...
+		        While y <= Len(line) And g.StringWidth(Mid(line, x, y-x)) < UsableWidth 'EMP 09/05
+		          y = y + 1
+		        Wend
+		        y = y - 1
+		        ' back off until we fit...
+		        isWrapped = False
+		        For z = y DownTo x
+		          d = Mid(line, z, 1)
+		          If d = " " and z <> 2 Then ' wrap it here
 		            lines(i) = Mid(line, x, z-x)
-		            lines.Insert i+1,InsertAfterBreak+ Mid(line, z)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt
+		            lines.Insert i+1, Mid(line, z+1)
 		            isWrapped = True
 		            Exit
 		          End If
+		          //++
+		          // For CJK characters, it is perfectly ok to wrap before or after
+		          // a CJK character (Unicode codepoint between 4E00 and 9FBF)
+		          // (Additional fix for 1530629 added after section outside "For z" loop was inserted)
+		          //--
+		          If (z <> y) Then
+		            d2 = Mid(line, z-1, 1)
+		            If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
+		              (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
+		              lines(i) = Mid(line, x, z-x)
+		              lines.Insert i+1, Mid(line, z)
+		              isWrapped = True
+		              Exit
+		            End If
+		          End If
+		        Next z
+		        
+		        //++
+		        // Fix added for wrapping Chinese characters [1530629]
+		        // May also affect other multi-byte character sets
+		        // Corrects issue where the line is too long but there isn't
+		        // a space character anywhere to be found.  Just wrap the midpoint.
+		        //--
+		        If Not isWrapped Then
+		          lines(i) = Mid(line, x, y-x)
+		          lines.Insert i + 1, Mid(line, y)
 		        End If
-		      Next z
-		      
-		      //++
-		      // Fix added for wrapping Chinese characters [1530629]
-		      // May also affect other multi-byte character sets
-		      // Corrects issue where the line is too long but there isn't
-		      // a space character anywhere to be found.  Just wrap the midpoint.
-		      //--
-		      If Not isWrapped Then
-		        lines(i) = Mid(line, x, y-x)
-		        lines.Insert i + 1,InsertAfterBreak+  Mid(line, y)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt
+		      ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
+		        ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
+		        line = lines(i)
+		        lines.Insert i+1, SmartWrap(line)
+		        lines(i) = line
+		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
+		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
+		          g.TextSize = Floor(g.TextSize * .95)
+		        Wend
+		        'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
+		        While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
+		          g.TextSize = Floor(g.TextSize * .95)
+		        Wend
+		        i = i + 1 ' skip the extra
 		      End If
-		    ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
-		      ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
-		      line = lines(i)
-		      lines.Insert i+1,InsertAfterBreak+ SmartWrap(line)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt
-		      lines(i) = line
-		      'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
-		      While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
-		        g.TextSize = Floor(g.TextSize * .95)
-		      Wend
-		      'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
-		      While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
-		        g.TextSize = Floor(g.TextSize * .95)
-		      Wend
-		      i = i + 1 ' skip the extra
-		    End If
-		  Next i
+		    Next i
+		    
+		    Profiler.EndProfilerEntry
+		    Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
+		    
+		    DrawText: 'EMP 09/05
+		    
+		    ' Post-shrink - we did our best, this is just in case.
+		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
+		      ' FUTURE PROBLEM: When we size it down, we should rewrap it all
+		      g.TextSize = Floor(g.TextSize * .95)
+		    Wend
+		    
+		    Profiler.EndProfilerEntry
+		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
+		    
+		    
+		    
+		    bodyStyle.Size = g.TextSize
+		    line = ""
+		    For i = 1 To UBound(lines)
+		      line = line + lines(i) + Chr(10)
+		    Next i
+		    line = RTrim(line)
+		    
+		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs) 'EMP 09/05
+		  End Select
 		  
-		  Profiler.EndProfilerEntry
-		  Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
-		  
-		  DrawText: 'EMP 09/05
-		  
-		  ' Post-shrink - we did our best, this is just in case.
-		  While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
-		    ' FUTURE PROBLEM: When we size it down, we should rewrap it all
-		    g.TextSize = Floor(g.TextSize * .95)
-		  Wend
-		  
-		  'gpgpgpgpgpgpgp
-		  'todo als type song dan size is maximaal 10% groter dan vorige size in dezelfde set
-		  dim maxgrowFact as double
-		  maxgrowFact = 1+(SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@max_grow")/100)
-		  maxgrowFact = max(maxgrowFact,1)
-		  if lastbodysize > 16 then
-		    if lastslidetype = SlideType then
-		      g.textsize = min  (g.textsize, round(lastbodysize *  maxgrowFact))
-		      'MsgBox( "lastslidetype "+ str( lastslidetype)  + " "+str( lastbodysize))
-		    end if
-		  end if
-		  
-		  bodyStyle.Size = g.TextSize
-		  bodysize = bodystyle.size
-		  
-		  Profiler.EndProfilerEntry
-		  Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
-		  
-		  line = ""
-		  For i = 1 To UBound(lines)
-		    line = line + lines(i) + Chr(10)
-		  Next i
-		  line = RTrim(line)
-		  
-		  dim drawheight, drawheigthExtra, drawheigthExtraRuimte as integer
-		  'dim bodystyleExtreRegel as FontFace
-		  'dim s_nextslide as string
-		  'dim  lines_nextslide(0) As String
-		  drawheight =  DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
-		  'If (SlideType = "song") or (SlideType= "scripture") Then
-		  'drawheigthExtraRuimte = min(MainHeight - drawheight, 80)
-		  'if drawheigthExtraRuimte > 60 then
-		  'if GetNextSlide( xslide) <> nil then
-		  's_nextslide = SmartML.GetValue(GetNextSlide( xslide), "body", True).FormatUnixEndOfLine
-		  'SplitToArray(StringUtils.RemoveWhitespace(s_nextslide, Globals.WhitespaceChars, 2), lines_nextslide, Chr(10))
-		  's_nextslide = lines_nextslide(1)
-		  'if s_nextslide <> "" then
-		  'bodystyleExtreRegel = bodystyle
-		  'bodystyleExtreRegel.Size = round(bodystyleExtreRegel.Size *.8)
-		  ''bodystyleExtreRegel.shadow = false
-		  'drawheigthExtra = 0
-		  'For i = 1 To UBound(lines_nextslide)
-		  'if drawheigthExtraRuimte - drawheigthExtra > 0 then
-		  'if i = 1 then
-		  'lines_nextslide(i) = ">>>   "+ lines_nextslide(i)
-		  'end if
-		  '
-		  'drawheigthExtra = drawheigthExtra + DrawFontString(g, lines_nextslide(i), 0, HeaderSize, bodyStyle, RealBorder,  mainheight-drawheigthExtraRuimte + drawheigthExtra , 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
-		  'else
-		  'Exit for i
-		  'end if
-		  'next
-		  'end if
-		  'end if
-		  'end if
-		  'end if
 		  Profiler.EndProfilerEntry
 		  
 		End Sub
@@ -662,7 +713,6 @@ Protected Module SetML
 		  GetDefault = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_default", True, True)
 		  GetNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True)
 		  SlideGroup = xSlide.Parent.Parent
-		  'slidegroup = SetML.GetSlide(xSet,xcurrentslide ).parent.parent
 		  SlideType = SmartML.GetValue(SlideGroup, "@type", False)
 		  
 		  ' Check for a directly defined override style
@@ -1093,6 +1143,52 @@ Protected Module SetML
 		    end if
 		  end if
 		  return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetSong(slidegroup As XmlNode, Songs As FolderDB, ByRef songFolder As String) As XmlDocument
+		  Dim songDoc As XmlDocument
+		  Dim xpath As Xmlattribute
+		  
+		  Dim songF as FolderItem
+		  
+		  If slidegroup <> Nil Then
+		    if  SmartML.GetValue(slidegroup, "@path", False) <> "" then
+		      songFolder = SmartML.GetValue(slidegroup, "@path", False)'  slidegroup.GetAttributeNode("path")
+		    end if
+		    
+		    // Three possible cases here
+		    // xpath = Nil (no path) is a pre-V1 set format; look anywhere in the songs folder
+		    // xpath <> Nil, path = "": look only in top level folder (must anchor)
+		    // xpath <> Nil, path <> "": specific folder
+		    //If xpath <> Nil Then
+		    //If xpath.Value = "" Then
+		    //songFolder = "/"
+		    //Else
+		    //songFolder = xpath.Value
+		    //End If
+		    //End If
+		    if Songfolder = "" then
+		      songfolder = "/"
+		    end if
+		    
+		    songf = Songs.GetFile(songFolder + SmartML.GetValue(slidegroup, "@name", False))
+		    If songf = Nil Or (Not songf.Exists) Then
+		      songDoc = Nil
+		    Else
+		      songDoc = SmartML.XDocFromFile(songf)
+		      If songDoc = Nil Then
+		        InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
+		      End If
+		    End If
+		  End If
+		  
+		  If songDoc = Nil Then
+		    songFolder = ""
+		  End If
+		  
+		  Return songDoc
 		End Function
 	#tag EndMethod
 

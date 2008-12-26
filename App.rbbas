@@ -346,16 +346,18 @@ Inherits Application
 		  Globals.WhitespaceChars.Append " "
 		  Globals.WhitespaceChars.Append Chr(ENTER)
 		  
-		  If MainPreferences.GetValueB(App.kActivityLog, True) Then
-		    'Load in the Song Activity Log
-		    Globals.SongActivityLog = New ActivityLog
-		    'TODO Decide where we want to store the log file
-		    '+++EMP Use FolderItem and .Child instead of AbsolutePath
-		    If NOT Globals.SongActivityLog.Load(DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
-		      MsgBox  T.Translate("errors/activity_disabled")  '++JRC Translated
-		      Globals.SongActivityLog = Nil
-		    End If
+		  '++JRC Load Song Activity Log so the user can view the log
+		  'reguardless of whether logging is enabled or not
+		  'If MainPreferences.GetValueB(App.kActivityLog, True) Then
+		  'Load in the Song Activity Log
+		  Globals.SongActivityLog = New ActivityLog
+		  'TODO Decide where we want to store the log file
+		  '+++EMP Use FolderItem and .Child instead of AbsolutePath
+		  If NOT Globals.SongActivityLog.Load(DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
+		    MsgBox  T.Translate("errors/activity_disabled", DocsFolder.Child("Settings").Child("ActivityLog.xml").AbsolutePath)  '++JRC Translated
+		    Globals.SongActivityLog = Nil
 		  End If
+		  'End If
 		  '--
 		  T.TranslateMenu("main_menu", MainMenu)
 		  PlatformSpecific
@@ -1399,15 +1401,17 @@ Inherits Application
 	#tag Constant, Name = kActivityLog, Type = String, Dynamic = False, Default = \"activitylog/level", Scope = Public
 	#tag EndConstant
 
+	#tag Constant, Name = kPromptBeforePresenting, Type = String, Dynamic = False, Default = \"promptbeforepresenting", Scope = Public
+	#tag EndConstant
+
+
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ExcludeBackgroundsImages"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

@@ -1,4 +1,40 @@
-﻿* Added the option to not include images from the OpenSong backgrounds folder in the set xml (vwout)
+﻿* (re)Enabled song style on a per slide basis (vwout)
+
+* Added image slide to show one or more images instead of a (body) text (vwout)
+
+* Added Czech translation (thanks matysek03 and others)
+
+* Ignore punctuation in a search (feature request 2122181) (vwout)
+
+* Added <transition_list> and <imagequality_list> chunks to all language files (prevents a Nil object exception when loading) (these will need to be translated)
+
+* Added Polish translation (thanks myzzard)
+
+* Added Slovenian translation (leeloo3)
+
+* Add ability to view/merge exported song activity logs (JRC)
+
+* Fixed GetOpenFolderItem in mnu_settings_install_module was not being called correctly (JRC)
+
+* Implemented Song Activity Log export (JRC)
+
+* Made Select Folder Dialog for Set Export translatible (JRC)
+
+* Added option to prompt before adding presented songs to the activity log (JRC)
+
+* Provide a (hopefully) more detailed error message for failed activity log loading (JRC)
+
+* Fix issue where Currently selected  Set Item was not updating after removing an item from set list (JRC)
+
+* Added option to copy a song from one folder to another (JRC)
+
+* Fix issue where Currently selected  Set Item was not updating after removing an item from set list (JRC)
+
+* Fixed a bug in StyleWindow, background was not updated on image drop (vwout)
+
+* Corrected startup behavior for screens with a toolbar on a different position than at the bottom of the screen (vwout)
+
+* Added the option to not include images from the OpenSong backgrounds folder in the set xml (vwout)
 
 * Added user configurable quality settings of images that are stored in the set xml (vwout)
 
@@ -335,7 +371,7 @@ operator only has to press Enter to move forward after that point.
 * SButtonPopup wouldn't properly dismiss on Windows & Linux.  Under RB5.5, the platform differences in mouse click handling were handled automatically.  In the later versions of REALbasic, the platform differences are exposed.  Handle opening the SButtonPopup in MouseDown for
 OSX and MouseUp for the other platforms.  Action event is still called in MouseUp for all platforms.
 
-* Incorporate R?diger's ErrorPopup window to the App.UnhandledExceptionEvent.  Add new exception types to the massive If/ElseIf in OpenSongUtils.ToString extension to the RuntimeException class.
+* Incorporate Rdiger's ErrorPopup window to the App.UnhandledExceptionEvent.  Add new exception types to the massive If/ElseIf in OpenSongUtils.ToString extension to the RuntimeException class.
 
 -= 1.0.1 BL17 =-
 
@@ -1067,5 +1103,5 @@ OSX and MouseUp for the other platforms.  Action event is still called in MouseU
 * Added Print Categorized Table of Contents
 * Added Print Alphabetical Table of Contents
 
-$Date: 2008-07-20 00:30:22 +0200 (zo, 20 jul 2008) $
-$Revision: 340 $
+$Date: 2008-11-11 22:27:49 +0100 (di, 11 nov 2008) $
+$Revision: 366 $

@@ -16,6 +16,8 @@ Protected Class Translator
 		  If Document = Nil Then Return Nil
 		  If Len(path) = 0 Then Return Nil
 		  
+		  App.DebugWriter.Write "Translator.GetNode: " + "language/"+path
+		  
 		  Dim list As XmlNodeList
 		  list = Document.Xql("/language/"+path)
 		  

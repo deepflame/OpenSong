@@ -9,7 +9,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
-   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
@@ -42,37 +41,48 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      Scope           =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
       Visible         =   True
       Width           =   302
       BehaviorIndex   =   0
-      Begin Timer timerAdvance
-         ControlOrder    =   1
-         Index           =   -2147483648
-         InitialParent   =   "cnvSlide"
-         Left            =   248
-         Mode            =   0
-         Period          =   10000
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   248
-         BehaviorIndex   =   1
-      End
-      Begin Timer timerTransition
-         ControlOrder    =   2
-         Index           =   -2147483648
-         InitialParent   =   "cnvSlide"
-         Left            =   204
-         Mode            =   0
-         Period          =   125
-         Scope           =   0
-         TabPanelIndex   =   0
-         Top             =   248
-         BehaviorIndex   =   2
-      End
+   End
+   Begin Timer timerAdvance
+      ControlOrder    =   1
+      Enabled         =   "True"
+      Height          =   32
+      Index           =   -2147483648
+      InitialParent   =   "cnvSlide"
+      Left            =   248
+      Mode            =   0
+      Period          =   10000
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   248
+      Visible         =   "True"
+      Width           =   32
+      BehaviorIndex   =   1
+   End
+   Begin Timer timerTransition
+      ControlOrder    =   2
+      Enabled         =   "True"
+      Height          =   32
+      Index           =   -2147483648
+      InitialParent   =   "cnvSlide"
+      Left            =   204
+      Mode            =   0
+      Period          =   125
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   248
+      Visible         =   "True"
+      Width           =   32
+      BehaviorIndex   =   2
    End
 End
 #tag EndWindow
@@ -192,15 +202,6 @@ End
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
 	#tag EndEvent
-
-
-#tag MenuHandler
-		Function Untitled() As Boolean Handles Untitled.Action
-			
-			Return True
-			
-		End Function
-#tag EndMenuHandler
 
 
 	#tag Method, Flags = &h1
@@ -463,7 +464,6 @@ End
 		  '
 		  Dim Key As String
 		  Key = ChrB(Action)
-		  
 		  
 		  '
 		  '  NEXT SLIDE
@@ -888,19 +888,18 @@ End
 		  
 		  Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::PreviewPicture"
 		  ' -- Old way -- (value not passed)
-		  xStyle = SetML.GetStyle(XCurrentSlide)
+		  'xStyle = SetML.GetStyle(XCurrentSlide)
 		  'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
 		  ' -- New way --
+		  xStyle = SetML.GetStyle(slide)
 		  doetrans_nextblank = false
 		  doetrans = lastSlideType <> "blank" ' (SlideType = "song") or (SlideType= "scripture")
-		  'xStyle = SetML.GetStyle (slide, currentset,CurrentSlide)
 		  SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
 		  curslideTransition = SetML.GetSlideTransition(slide)
 		  if doetrans then
 		    doetrans = SlideType <> "blank" ' (SlideType = "song") or (SlideType= "scripture")
 		    doetrans_nextblank = (SlideType = "blank")
 		  end if
-		  
 		  
 		  Profiler.EndProfilerEntry'
 		  
@@ -956,15 +955,13 @@ End
 		  End If
 		  
 		  ' === Start the transition ===
-		  'If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
-		  'TransitionFrame = 1
-		  'timerTransition.Mode = 2
-		  'timerTransition.Reset
-		  'timerTransition.Enabled = True
-		  'End If
-		  doerefresh = true
+		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
+		    TransitionFrame = 1
+		    timerTransition.Mode = 2
+		    timerTransition.Reset
+		    timerTransition.Enabled = True
+		  End If
 		  cnvSlide.Refresh False
-		  doerefresh = false
 		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Exit", 5)
 		End Sub
 	#tag EndMethod
@@ -1530,7 +1527,7 @@ End
 		    'Don't log in preview mode
 		    Dim Log As LogEntry
 		    
-		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW Then
+		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
 		      Log = New LogEntry(Globals.SongActivityLog)
 		      Dim d As New Date
 		      
@@ -2061,8 +2058,8 @@ End
 		  '#if DebugBuild then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
-		  
 		  If (doTransition And doetrans and (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) and  lastcurrentSlide <> currentSlide Then
+
 		    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
 		    'GP CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
 		    'GP CurrentPicture.Mask.Graphics.FillRect(0, 0, CurrentPicture.Mask.Graphics.Width, CurrentPicture.Mask.Graphics.Height)
@@ -2144,6 +2141,7 @@ End
 		  
 		  busy = false
 		  
+
 		  '#if DebugBuild Then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Exit")
 		  '#endif

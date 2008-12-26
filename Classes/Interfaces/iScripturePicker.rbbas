@@ -91,15 +91,15 @@ Protected Interface iScripturePicker
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function maxsignsperSlide() As Integer
+		Sub CharsPerSlide(characterCount As Integer)
 		  
-		End Function
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub maxsignsperSlide(signs as integer)
+		Function CharsPerSlide() As Integer
 		  
-		End Sub
+		End Function
 	#tag EndMethod
 
 

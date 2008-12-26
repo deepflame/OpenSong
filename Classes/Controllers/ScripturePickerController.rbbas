@@ -273,9 +273,10 @@ Implements ScriptureNotifier
 		    changed = True
 		    VersesPerSlide = sender.VersesPerSlide
 		  End If
-		  If sender.maxsignsperSlide  <> maxsignsperSlide Then
+		  
+		  If sender.CharsPerSlide <> CharsPerSlide Then
 		    changed = True
-		    maxsignsperSlide = sender.maxsignsperSlide
+		    CharsPerSlide = sender.CharsPerSlide
 		  End If
 		  
 		  If sender.ShowVerseNumbers <> ShowVerseNumbers Then
@@ -297,8 +298,8 @@ Implements ScriptureNotifier
 		  For Each o As iScripturePicker in Observers
 		    o.FormatAsParagraph(FormatParagraph)
 		    o.VersesPerSlide(VersesPerSlide)
+		    o.CharsPerSlide(CharsPerSlide)
 		    o.ShowVerseNumbers(ShowVerseNumbers)
-		    o.maxsignsperSlide(maxsignsperSlide)
 		  Next
 		End Sub
 	#tag EndMethod
@@ -397,8 +398,8 @@ Implements ScriptureNotifier
 		  CurrentChapter = SmartML.GetValueN(params, "last_scripture/@chapter")
 		  CurrentFromVerse = SmartML.GetValueN(params, "last_scripture/@verse")
 		  CurrentThruVerse = SmartML.GetValueN(params, "last_scripture/@thru")
-		  VersesPerSlide = Max(1, SmartML.GetValueN(params, "last_scripture/@per_slide"))
-		  maxsignsperSlide = min(9999, SmartML.GetValueN(params, "last_scripture/@maxsignsper_slide"))
+		  VersesPerSlide = Max(1, Min(SmartML.GetValueN(params, "last_scripture/@verse_per_slide"), 5))
+		  CharsPerSlide = Max(1, Min(SmartML.GetValueN(params, "last_scripture/@chars_per_slide"), 1000))
 		  ShowVerseNumbers = SmartML.GetValueB(params, "last_scripture/@show_numbers", True, True)
 		  FormatParagraph = ("paragraph" = SmartML.GetValue(params, "last_scripture/@format"))
 		  
@@ -439,9 +440,8 @@ Implements ScriptureNotifier
 		  SmartML.SetValueN(params, "last_scripture/@chapter", CurrentChapter)
 		  SmartML.SetValueN(params, "last_scripture/@verse", CurrentFromVerse)
 		  SmartML.SetValueN(params, "last_scripture/@thru", CurrentThruVerse)
-		  SmartML.SetValueN(params, "last_scripture/@per_slide", VersesPerSlide)
-		  SmartML.SetValueN(params, "last_scripture/@maxsignsper_slide", maxsignsperSlide)
-		  
+		  SmartML.SetValueN(params, "last_scripture/@verse_per_slide", VersesPerSlide)
+		  SmartML.SetValueN(params, "last_scripture/@chars_per_slide", CharsPerSlide)
 		  SmartML.SetValueB(params, "last_scripture/@show_numbers", ShowVerseNumbers)
 		  
 		  If FormatParagraph Then
@@ -507,8 +507,8 @@ Implements ScriptureNotifier
 		    slideBody = ""
 		    For i As Integer = 1 To VersesPerSlide
 		      If currVerse > UBound(verses) Then Exit For
-		      'gpgpgpgpgp
-		      if I > 1 and( slideBody.Len + verses(currVerse).len) > maxsignsperSlide  then exit for
+		      If i > 1 and (slideBody.Len + verses(currVerse).len) > CharsPerSlide  Then Exit For
+		      
 		      If slideBody.Len > 0 Then slideBody = slideBody + sep
 		      slideBody = slideBody + verses(currVerse)
 		      currVerse = currVerse + 1
@@ -649,7 +649,7 @@ Implements ScriptureNotifier
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected maxsignsperSlide As Integer
+		Protected CharsPerSlide As Integer
 	#tag EndProperty
 
 

@@ -268,6 +268,8 @@
   </song_search>
 
   <scripture_search title="Zoeken">
+    <caption caption="Zoek in de bijbel met het volgende trefwoord"/>
+    <example caption="Om te zoeken naar een letterlijke zin, plaatst tekst tussen dubbele aanhalingstekens: zoals &quot;Simon Petrus&quot;"/>
     <match caption="Overeenkomst">
       <exact caption="Exact"/>
       <begin caption="Begint met"/>
@@ -277,10 +279,10 @@
       <any caption="Enkele woorden"/>
     </words>
     <search caption="Zoeken"/>
-    <example caption="Om te zoeken naar exacte tekst, plaatst tekst tussen dubbele aanhalingstekens: zoals &quot;Simon Petrus&quot;"/>
+    <result caption="Er zijn %1 resultaten gevonden met de opgegeven trefwoorden."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
-    <lst_result head1="Referentie" head2="Tekst" />
+    <result head1="Referentie" head2="Tekst" />
   </scripture_search>
 
   <main_menu>
@@ -856,24 +858,32 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <merged>Samenvoegen voltooid, %1 logregel(s) zijn toegevoegd aan het lied gebruik logboek.</merged>
     <merged_dupes>%1 dubbele logregels zijn genegeerd.</merged_dupes>
   </song_activity>
+  
   <scripture_lookup title="Bijbelteksten zoeken">
-    <book caption="Bijbel Boek"/>
     <lookup caption="Snel zoeken">
       <reference caption="Referentie"/>
-      <lookup caption="zoeken"/>
+      <lookup caption="Zoeken"/>
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
-    <version caption="Versie"/>
+    <search caption="Op bijbeltekst zoeken"/>
+    <books caption="Bijbel boek">
+	  <ot caption="Oude testament"/>
+	  <nt caption="Nieuw testament"/>
+    </books>
+    <paragraph caption="Hoofdstuk"/>
+    <colon caption=":"/>
+    <from_verse caption="Vanaf vers"/>
+    <dash caption="-"/>
+    <to_verse caption="Tot vers"/>
+    <version caption="Vertaling"/>
     <select_file caption="Selecteer een bijbelvertalingsbestand."/>
-    <verses_per_slide caption="Bijbelvers per dia">
-      <one caption="1"/>
-      <two caption="2"/>
-      <three caption="3"/>
-    </verses_per_slide>
+    <verses_per_slide caption="Bijbelvers per dia" />
+    <chars_per_slide caption="Max. karakters per dia" />
     <format caption="Formaat">
       <paragraph caption="Hoofdstuk"/>
       <verse caption="Vers"/>
     </format>
+    <preview caption="Preview of scripture passage"/>
     <bad_reference>
       <format>Controleer de samenstelling van de zoekopdracht en probeer het nogmaals.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
@@ -884,9 +894,6 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <verse>Foute referentie: kan vers '%1' niet vinden.</verse>
       <verse_range>Foute referentie: het 'tot' vers moet groter dan of gelijk zijn aan het 'van' vers.</verse_range>
     </bad_reference>
-    <colon caption=":"/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
     <insert caption="link(shared/insert/@caption)"/>
     <shownumbers caption="Toon vers nummers"/>
   </scripture_lookup>

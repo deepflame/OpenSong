@@ -8228,7 +8228,7 @@ End
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", Globals.OldSongFileName)
 		      End If
 		    Else
-		      FullName = lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0).StringValue + lst_songs_songs.Text
+		      FullName = lst_songs_songs.CellTag(Globals.OldSongSel, 0).StringValue + lst_songs_songs.Text
 		      f = Songs.GetFile(FullName)
 		      If f = Nil Then
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", FullName)
@@ -8251,7 +8251,7 @@ End
 		      Log.Title = edt_song_title.Text
 		      Log.Author = edt_song_author.Text
 		      Log.CCLISongNumber = edt_song_ccli.Text
-		      Log.SongFileName = lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text 'Should we use AbsolutePath?
+		      Log.SongFileName = lst_songs_songs.CellTag(Globals.OldSongSel, 0) + lst_songs_songs.Text 'Should we use AbsolutePath?
 		      Log.DateAndTime = f.ModificationDate
 		      Log.HasChords = Log.CheckLyricsForChords(edf_song_lyrics.Text)
 		      Log.Modified = True

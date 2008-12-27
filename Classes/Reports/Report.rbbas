@@ -197,7 +197,7 @@ Protected Class Report
 		  // Should be OK now.  Time to print
 		  //
 		  
-		  g =  OpenPrinterDialog(ps, Window(0))
+		  g =  OpenPrinterDialog(ps, App.GetFrontControlScreenWindow)
 		  If g = Nil Then Return False // Error, or user cancelled
 		  
 		  printerHRes = ps.HorizontalResolution

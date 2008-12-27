@@ -1096,9 +1096,9 @@ End
 		  App.T.TranslateWindow Me, "style_editor", App.TranslationFonts
 		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row0/@caption")
 		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row1/@caption")
-		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row2/@caption")
-		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row3/@caption")
-		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row4/@caption")
+		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row2/@caption") 'gp
+		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row3/@caption") 'gp
+		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row4/@caption") 'gp
 		  
 		  App.CenterInControlScreen Me
 		End Sub

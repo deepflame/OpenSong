@@ -8,7 +8,7 @@ Begin Window PresentHelperWindow
    Frame           =   0
    FullScreen      =   "False"
    HasBackColor    =   "False"
-   Height          =   750
+   Height          =   750 'gp
    ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
@@ -31,7 +31,7 @@ Begin Window PresentHelperWindow
       Bold            =   "False"
       ColumnCount     =   3
       ColumnsResizable=   "True"
-      ColumnWidths    =   "33%,8%,59%"
+      ColumnWidths    =   "33%,8%,59%" 'gp
       ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
@@ -43,7 +43,7 @@ Begin Window PresentHelperWindow
       GridLinesVertical=   0
       HasHeading      =   "True"
       HeadingIndex    =   -1
-      Height          =   470
+      Height          =   470 'gp
       HelpTag         =   ""
       Hierarchical    =   "False"
       Index           =   -2147483648
@@ -403,7 +403,7 @@ Begin Window PresentHelperWindow
          Width           =   130
          BehaviorIndex   =   12
       End
-      Begin SButton btn_action_export
+      Begin SButton btn_action_export 'gp
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
@@ -559,7 +559,7 @@ Begin Window PresentHelperWindow
       Width           =   300
       BehaviorIndex   =   17
    End
-   Begin StaticText StaticText1
+   Begin StaticText StaticText1 'gp
       AutoDeactivate  =   "True"
       Bold            =   ""
       ControlOrder    =   18
@@ -634,7 +634,7 @@ End
 		  App.T.TranslateWindow Me, "presentation_helper", App.TranslationFonts
 		  txt_shortcut_keys.Caption = App.T.Translate("presentation_helper/keys")
 		  
-		  btn_action_export.setlabel "      [E]Export html"
+		  btn_action_export.setlabel "      [E]Export html" 'gp
 		End Sub
 	#tag EndEvent
 
@@ -916,7 +916,7 @@ End
 		    PresentWindow.CurrentSlide = Me.ListIndex + 1
 		    PresentWindow.XCurrentSlide = SetML.GetSlide(PresentWindow.CurrentSet, Me.ListIndex + 1)
 		    PresentWindow.ResetPaint PresentWindow.XCurrentSlide
-		    StaticText1.text = str(SetMl.bodysize )
+		    StaticText1.text = str(SetMl.bodysize ) 'gp
 		    //++
 		    // Try to keep the active slide in the center of the visible items
 		    //--
@@ -1159,15 +1159,15 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_action_export
+#tag Events btn_action_export 'gp
 	#tag Event
-		Sub Action()
+		Sub Action() 'gp
 		  If PresentWindow.KeyDownX("e") Then
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub Open()
+		Sub Open() 'gp
 		  me.SetLabel "[E]Export html"
 		End Sub
 	#tag EndEvent

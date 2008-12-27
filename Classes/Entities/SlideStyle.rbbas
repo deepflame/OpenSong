@@ -101,7 +101,7 @@ Protected Class SlideStyle
 
 	#tag Method, Flags = &h0
 		Sub Position(Assigns pos As Integer)
-		  If pos < 0 or pos > 5 Then pos = POS_STRETCH ' Defaults to Stretch if invalid
+		  If pos < 0 or pos > 5 Then pos = POS_STRETCH ' Defaults to Stretch if invalid 'gp
 		  Position = pos
 		End Sub
 	#tag EndMethod
@@ -333,7 +333,7 @@ Protected Class SlideStyle
 		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1))
 		  Else
 		    SmartML.SetValue(root, thisNode, Background.GetImageAsString())
-		  End If
+		  End If 
 		  
 		  Return XmlDoc
 		End Function
@@ -536,7 +536,7 @@ Protected Class SlideStyle
 		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
 		  
 		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
-		  If Position < POS_STRETCH Or Position > POS_bottom_max_half_height Then
+		  If Position < POS_STRETCH Or Position > POS_bottom_max_half_height Then 'gp
 		    Position = POS_STRETCH
 		  End If
 		End Sub
@@ -746,7 +746,6 @@ Protected Class SlideStyle
 		SubtitleEnable As Boolean
 	#tag EndProperty
 
-
 	#tag Constant, Name = POS_CENTER, Type = Double, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant
 
@@ -756,13 +755,13 @@ Protected Class SlideStyle
 	#tag Constant, Name = POS_TILE, Type = Double, Dynamic = False, Default = \"6", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = POS_TOP, Type = Double, Dynamic = False, Default = \"3", Scope = Public
+	#tag Constant, Name = POS_TOP, Type = Double, Dynamic = False, Default = \"3", Scope = Public 'gp
 	#tag EndConstant
 
-	#tag Constant, Name = POS_BOTTOM, Type = Double, Dynamic = False, Default = \"4", Scope = Public
+	#tag Constant, Name = POS_BOTTOM, Type = Double, Dynamic = False, Default = \"4", Scope = Public 'gp
 	#tag EndConstant
 
-	#tag Constant, Name = POS_bottom_max_half_height, Type = Double, Dynamic = False, Default = \"5", Scope = Public
+	#tag Constant, Name = POS_bottom_max_half_height, Type = Double, Dynamic = False, Default = \"5", Scope = Public 'gp
 	#tag EndConstant
 
 

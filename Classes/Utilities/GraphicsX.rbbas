@@ -220,7 +220,7 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer 'gp
 		  Profiler.BeginProfilerEntry "DrawFontString (" + str + ")"
 		  Dim dx, dy, xx, yy, i, j As Integer
 		  Dim lineCount, lineHeight, lineAscent, thisWidth As Integer
@@ -276,7 +276,7 @@ Protected Module GraphicsX
 		          thisChar = Mid(str, yy, 1)
 		        Wend
 		        If yy <= 1 Then yy = i ' we didn't find a space; go back where we were and split there; ugly, but we have to.
-		        str = Left(str, yy-1) + Chr(10) + InsertAfterBreak+ Mid(str, yy+1)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt
+		        str = Left(str, yy-1) + Chr(10) + InsertAfterBreak+ Mid(str, yy+1)'gpgpgpgpgp als regel afbreekt, dan 3 spaties, zodat duidelker is dat regel doorloopt 'gp
 		        xx = yy + 1
 		        yy = yy + 1
 		        thisWidth = 0
@@ -522,7 +522,7 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer 'gp
 		  Dim drawHeight as Integer
 		  
 		  If x < margins.Left Then
@@ -547,7 +547,7 @@ Protected Module GraphicsX
 		  align, _
 		  height - (borderSize * 2) - headerSize - footerSize, _
 		  valign, _
-		  tabs, InsertAfterBreak)
+		  tabs, InsertAfterBreak) 'gp
 		  
 		  If valign = "top" Then
 		    drawHeight = drawHeight

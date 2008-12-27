@@ -210,10 +210,10 @@ Module SongML
 		      temp = lines(l)
 		      runningBase = runningBase + Draw_CommentLine(g, x+leftEdge, runningBase, zoom, temp)
 		      
-		    ElseIf Left(trim(lines(l)), 1) = "[" Then
+		    ElseIf Left(trim(lines(l)), 1) = "[" Then 'gp
 		      
 		      ' ----------------------- HEADING -----------------------
-		      section = Trim(Mid(trim(lines(l)), 2, Len(trim(lines(l)))-2))
+		      section = Trim(Mid(trim(lines(l)), 2, Len(trim(lines(l)))-2)) 'gp
 		      runningBase = runningBase + Draw_HeadingLine(g, x+leftEdge, runningBase, zoom, section)
 		      
 		    Else
@@ -369,10 +369,10 @@ Module SongML
 		      temp = lines(l)
 		      ElementHeight = Draw_CommentLine(g, x+leftEdge, runningBase, ColumnWidth, zoom, temp, Page)
 		      LastLine = l
-		    ElseIf Left(trim(lines(l)), 1) = "[" Then
+		    ElseIf Left(trim(lines(l)), 1) = "[" Then 'gp
 		      
 		      ' ----------------------- HEADING -----------------------
-		      section = Trim(Mid(trim(lines(l)), 2, Len(trim(lines(l)))-2))
+		      section = Trim(Mid(trim(lines(l)), 2, Len(trim(lines(l)))-2)) 'gp
 		      'App.DebugWriter.Write "SongML::Draw: Calling Heading Line for '" + section + "', runningBase is " + str(runningBase)
 		      ElementHeight = Draw_HeadingLine(g, x+leftEdge, runningBase, ColumnWidth, zoom, section, Page)
 		      LastHeadingIndex = Page.Count - 1 // Used for widow control on page change
@@ -1846,7 +1846,7 @@ Module SongML
 		  firstLineIndex = chordLineIndex
 		  i = chordLineIndex + 1
 		  While lastLineIndex = 0
-		    If i > UBound(lines) Or Len(lines(i)) = 0 Or Left(lines(i), 1) = ";" Or Left(trim(lines(i)), 1) = "[" Or Left(lines(i), 1) = "." Or Left(lines(i), 1) = "-" Then
+		    If i > UBound(lines) Or Len(lines(i)) = 0 Or Left(lines(i), 1) = ";" Or Left(trim(lines(i)), 1) = "[" Or Left(lines(i), 1) = "." Or Left(lines(i), 1) = "-" Then 'gp 
 		      lastLineIndex = i - 1
 		    End if
 		    i = i + 1
@@ -1969,8 +1969,8 @@ Module SongML
 		      'line = RTrim(Mid(lyrics, st, x-st))
 		      line = StringUtils.RemoveWhitespace(Mid(lyrics, st, x-st), Globals.WhitespaceChars, 1)
 		      '--
-		      If Left(trim(line), 1) = "[" Then
-		        section = Mid(trim(line), 2, Instr(2, trim(line), "]") - 2)
+		      If Left(trim(line), 1) = "[" Then 
+		        section = Mid(trim(line), 2, Instr(2, trim(line), "]") - 2) 'gp
 		      ElseIf Left(line, 1) = "." Then // Chord
 		      ElseIf Left(line, 1) = ";" Then // Comment
 		      ElseIf Left(line, 1) = "-" Then // Page layout command [Bug 1515605]
@@ -2285,8 +2285,8 @@ Module SongML
 		    ElseIf Left(lines(l), 1) = ";" Then
 		      s = s + "  <div class=""comment"">" + Mid(lines(l), 2).HTMLEntityEncode + "</div>" + EndOfLine
 		      
-		    ElseIf Left(trim(lines(l)), 1) = "[" Then
-		      s = s + "  <p/><div class=""heading"">" + FullHeading(Mid(trim(lines(l)), 2,trim( lines(l)).Len-2), True).HTMLEntityEncode + "</div>" + EndOfLine
+		    ElseIf Left(trim(lines(l)), 1) = "[" Then 'gp
+		      s = s + "  <p/><div class=""heading"">" + FullHeading(Mid(trim(lines(l)), 2,trim( lines(l)).Len-2), True).HTMLEntityEncode + "</div>" + EndOfLine 'gp
 		      
 		    Else
 		      s = s + "  <div class=""lyrics"">" + Mid(lines(l), 2, lines(l).Len-1).HTMLEntityEncode + "</div>" + EndOfLine
@@ -2369,16 +2369,16 @@ Module SongML
 		  sections = Split(Trim(presentation), " ")
 		  
 		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
-		  dim vlakvoorPipeTeken as boolean
+		  dim vlakvoorPipeTeken as boolean 'gp
 		  For Each section In sections
 		    If dict.HasKey(section) Then
 		      
 		      sub_sections = Split(dict.Value(section), "||")
-		      vlakvoorPipeTeken =  (sub_sections.Ubound  > 0)
+		      vlakvoorPipeTeken =  (sub_sections.Ubound  > 0) 'gp
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        if vlakvoorPipeTeken then
-		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section+"  ...")))  'gp:als diaovergang geforceerd wordt altijd ... tonen zodat makkelijker doorzingt
+		        if vlakvoorPipeTeken then 
+		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section+"  ...")))  'gp:als diaovergang geforceerd wordt altijd ... tonen zodat makkelijker doorzingt 'gp
 		        else
 		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section)))
 		        end if

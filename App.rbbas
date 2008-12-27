@@ -999,7 +999,7 @@ Inherits Application
 		  If App.StageCode <> App.Final Then
 		    t = t + "-"
 		  End If
-		  t = t + " gp"
+		  t = t + " gp" 'gp
 		  #If TargetMacOS
 		    If RBVersion >= 2006.04 Then
 		      #If TargetPPC

@@ -63,9 +63,9 @@ Inherits SBufferedCanvas
 		Sub Paint(g As Graphics)
 		  Dim img As Picture
 		  Dim bgDrawH, bgDrawW As Integer
-		  Dim bgHeightRatio, bgHeightRatio_half, bgWidthRatio As Double
+		  Dim bgHeightRatio, bgHeightRatio_half, bgWidthRatio As Double 'gp
 		  Dim display_height As Integer
-		  Dim aspect_ratio, aspect_ratio_half As Double
+		  Dim aspect_ratio, aspect_ratio_half As Double 'gp
 		  
 		  If Not Enabled Then
 		    g.ForeColor = FillColor
@@ -83,10 +83,10 @@ Inherits SBufferedCanvas
 		    bgDrawH = img.Height
 		    bgDrawW = img.Width
 		    bgHeightRatio = g.Height / bgDrawH
-		    bgHeightRatio_half = (g.Height/2) / bgDrawH
+		    bgHeightRatio_half = (g.Height/2) / bgDrawH 'gp
 		    bgWidthRatio = g.Width / bgDrawW
 		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
-		    aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio)
+		    aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio) 'gp
 		    display_height = bgDrawH * aspect_ratio
 		    display_height = g.Height - display_height
 		    display_height = display_height / 2
@@ -101,7 +101,7 @@ Inherits SBufferedCanvas
 		      bgDrawW * aspect_ratio, _
 		      bgDrawH * aspect_ratio, _
 		      0, 0, bgDrawW, bgDrawH
-		      
+		    'gp start  
 		    Case SlideStyle.POS_TOP
 		      
 		      g.DrawPicture img, _
@@ -129,7 +129,7 @@ Inherits SBufferedCanvas
 		      bgDrawH * aspect_ratio_half, _
 		      0, 0, bgDrawW, bgDrawH
 		      
-		      
+		    'gp end  
 		    Case SlideStyle.POS_STRETCH
 		      g.DrawPicture img, 0, 0, g.Width, g.Height, 0, 0, img.Width, img.Height
 		    End Select
@@ -177,7 +177,7 @@ Inherits SBufferedCanvas
 	#tag Method, Flags = &h0
 		Sub Constructor()
 		  Me.Image = New StyleImage()
-		  Me.PictureAspect = SlideStyle.POS_CENTER // Default handling of background picture
+		  Me.PictureAspect = SlideStyle.POS_CENTER // Default handling of background picture 'gp
 		  Me.bgColor = FillColor
 		  
 		  ClearImage

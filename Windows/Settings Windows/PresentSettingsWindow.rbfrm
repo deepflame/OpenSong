@@ -1247,7 +1247,7 @@ Begin Window PresentSettingsWindow
             ControlOrder    =   40
             Enabled         =   "True"
             EraseBackground =   "True"
-            Height          =   91
+            Height          =   91 'gp
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
@@ -1296,7 +1296,7 @@ Begin Window PresentSettingsWindow
                Width           =   164
                BehaviorIndex   =   41
             End
-            Begin RadioButton rad_style_blank_next
+            Begin RadioButton rad_style_blank_next 'gp
                AutoDeactivate  =   "True"
                Bold            =   "False"
                Caption         =   "Next slide"
@@ -1323,7 +1323,7 @@ Begin Window PresentSettingsWindow
                Width           =   164
                BehaviorIndex   =   42
             End
-            Begin RadioButton rad_style_blank_prev
+            Begin RadioButton rad_style_blank_prev 'gp
                AutoDeactivate  =   "True"
                Bold            =   "False"
                Caption         =   "Previous slide"
@@ -1350,7 +1350,7 @@ Begin Window PresentSettingsWindow
                Width           =   164
                BehaviorIndex   =   43
             End
-            Begin RadioButton rad_style_blank_default
+            Begin RadioButton rad_style_blank_default 'gp
                AutoDeactivate  =   "True"
                Bold            =   "False"
                Caption         =   "default slide"
@@ -2116,7 +2116,7 @@ End
 		  
 		  //++EMP, 11/05
 		  // Determine if blanks use the previous or next slide's style
-		  
+		  'gp start
 		  rad_style_blank_default.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, _
 		  "style/@blank_uses_default", True, True)
 		  if not(rad_style_blank_default.value) then
@@ -2131,7 +2131,7 @@ End
 		  "style/@insping_after_break", True, True)
 		  edt_style_max_grow.Text = SmartML.GetValue(App.MyPresentSettings.DocumentElement, _
 		  "style/@max_grow")
-		  
+		  'gp end
 		  
 		  App.CenterInControlScreen Me
 		End Sub
@@ -2282,11 +2282,11 @@ End
 		  ' Subtitle selection moves to the default style to help address an issue with subtitles not being properly
 		  ' overridden.
 		  '
-		  SmartML.SetValueB Settings, "style/@blank_uses_default", rad_style_blank_default.Value
+		  SmartML.SetValueB Settings, "style/@blank_uses_default", rad_style_blank_default.Value 'gp
 		  SmartML.SetValueB Settings, "style/@blank_uses_next", rad_style_blank_next.Value
 		  
-		  SmartML.SetValueB Settings, "style/@insping_after_break", txt_style_inspring_after_line_break.Value
-		  SmartML.SetValueN Settings, "style/@max_grow", val(edt_style_max_grow.Text)
+		  SmartML.SetValueB Settings, "style/@insping_after_break", txt_style_inspring_after_line_break.Value 'gp
+		  SmartML.SetValueN Settings, "style/@max_grow", val(edt_style_max_grow.Text) 'gp
 		  
 		  
 		  

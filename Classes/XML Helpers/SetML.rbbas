@@ -56,11 +56,11 @@ Protected Module SetML
 		  Dim c As Color
 		  
 		  Dim strip As Integer
-		  Dim aspect_ratio,aspect_ratio_half, zoom As Double
+		  Dim aspect_ratio,aspect_ratio_half, zoom As Double 'gp
 		  Dim background As Picture
 		  Dim bodyStyle, titleStyle, subtitleStyle As FontFace
 		  //++EMP 9/05
-		  Dim bgHeightRatio, bgHeightRatio_half, bgWidthRatio As Double
+		  Dim bgHeightRatio, bgHeightRatio_half, bgWidthRatio As Double 'gp
 		  Dim stripW, stripH As Integer
 		  Dim bgDrawH, bgDrawW As Double
 		  Dim gWidth, gHeight As  Integer
@@ -76,8 +76,8 @@ Protected Module SetML
 		  Dim bodyTabs() As StyleTabsType
 		  
 		  'gpgpgpgpgp evt uitbreiden bijv alleen als song en blanks groot maken enz
-		  lastbodysize = bodysize
-		  lastslidetype = SlideType
+		  lastbodysize = bodysize 'gp
+		  lastslidetype = SlideType 'gp
 		  If Style <> Nil Then 'TODO: What if it's NIL????  Ain't gonna be pretty....
 		    bodyStyle = Style.BodyFont
 		    titleStyle = Style.TitleFont
@@ -130,10 +130,10 @@ Protected Module SetML
 		    bgDrawH = background.Height - strip
 		    bgDrawW = background.Width - stripW
 		    bgHeightRatio = gHeight / bgDrawH
-		    bgHeightRatio_half =( gHeight/2) / bgDrawH
+		    bgHeightRatio_half =( gHeight/2) / bgDrawH 'gp
 		    bgWidthRatio = gWidth / bgDrawW
 		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
-		    aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio)
+		    aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio) 'gp
 		    display_height = bgDrawH * aspect_ratio //Scale pic to display
 		    display_height = gheight - display_height //If this is the "short" side, calculate the difference between the pic and screen
 		    display_height = display_height / 2 //Half of that is our y margin
@@ -148,7 +148,7 @@ Protected Module SetML
 		      bgDrawW * aspect_ratio, _
 		      bgDrawH * aspect_ratio, _
 		      stripw, 0, bgDrawW, bgDrawH
-		      
+		    'gp start  
 		    Case SlideStyle.POS_top
 		      
 		      g.DrawPicture background, _
@@ -175,7 +175,7 @@ Protected Module SetML
 		      bgDrawW * aspect_ratio, _
 		      bgDrawH * aspect_ratio_half, _
 		      stripw, 0, bgDrawW, bgDrawH
-		      
+		    'gp end  
 		    Case SlideStyle.POS_STRETCH
 		      g.DrawPicture background, -(strip*aspect_ratio)/2, 0, g.Width+(strip*aspect_ratio), g.Height+strip, 0, 0, background.Width, background.Height
 		    End Select
@@ -677,7 +677,7 @@ Protected Module SetML
 		  Dim slide_group, slides As XmlNode
 		  
 		  slide_group = SmartML.GetNode(xSet.DocumentElement, "slide_groups", True).FirstChild
-		  SetName = xset.GetAttribute("name")
+		  SetName = xset.GetAttribute("name") 'gp
 		  While count <= index
 		    If slide_group = Nil Then
 		      Return Nil ' Ran out of slides
@@ -706,11 +706,11 @@ Protected Module SetML
 		  
 		  Dim prev_group, neighbor_slide, style As XmlNode
 		  Dim GetNext As Boolean
-		  Dim GetDefault As Boolean
-		  'Dim SlideType As String property geworden
+		  Dim GetDefault As Boolean 'gp
+		  'Dim SlideType As String property geworden 'gp
 		  Dim SlideGroup As XmlNode
 		  
-		  GetDefault = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_default", True, True)
+		  GetDefault = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_default", True, True) 'gp
 		  GetNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True)
 		  SlideGroup = xSlide.Parent.Parent
 		  SlideType = SmartML.GetValue(SlideGroup, "@type", False)
@@ -744,7 +744,7 @@ Protected Module SetML
 		  //++
 		  // February 2007: take advantage of the addition of a "blank" type.
 		  //--
-		  
+		  'gp start
 		  If SlideType = "blank" Then
 		    if not(getDefault) then
 		      If GetNext Then
@@ -756,7 +756,7 @@ Protected Module SetML
 		      End If
 		    end if
 		  End If
-		  
+		  'gp end
 		  //++
 		  // Chase back to find possible style changes
 		  //--
@@ -1047,7 +1047,7 @@ Protected Module SetML
 		      
 		      f.OntoGraphics(g)
 		      fontHeight = FontFaceHeight(g, f) + FontFaceAscent(g, f)
-		      titleHeight = CountFields(title, Chr(10)) * fontHeight -  FontFaceAscent(g, f)
+		      titleHeight = CountFields(title, Chr(10)) * fontHeight'gp -  FontFaceAscent(g, f)
 		      titleWidth = FontFaceWidth(g, title, f)
 		      fVerse.OntoGraphics(g)
 		      If rest <> "" Then restWidth = FontFaceWidth(g, rest, fVerse)
@@ -1136,13 +1136,14 @@ Protected Module SetML
 
 	#tag Method, Flags = &h0
 		Function InsertAfterBreak() As string
-		  
+		  'gp start
 		  if slidetype = "song" then
 		    if  SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@insping_after_break", True, True) then
 		      Return "   "
 		    end if
 		  end if
 		  return ""
+'gp end
 		End Function
 	#tag EndMethod
 
@@ -1194,23 +1195,23 @@ Protected Module SetML
 
 
 	#tag Property, Flags = &h1
-		Protected bodysize As Integer
+		Protected bodysize As Integer 'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected SetName As string
+		Protected SetName As string 'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		SlideType As string
+		SlideType As string 'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected lastbodysize As Integer
+		Protected lastbodysize As Integer 'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		lastslidetype As string
+		lastslidetype As string 'gp
 	#tag EndProperty
 
 

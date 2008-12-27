@@ -9,6 +9,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
@@ -41,48 +42,37 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
       Visible         =   True
       Width           =   302
       BehaviorIndex   =   0
-   End
-   Begin Timer timerAdvance
-      ControlOrder    =   1
-      Enabled         =   "True"
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   248
-      Mode            =   0
-      Period          =   10000
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Visible         =   "True"
-      Width           =   32
-      BehaviorIndex   =   1
-   End
-   Begin Timer timerTransition
-      ControlOrder    =   2
-      Enabled         =   "True"
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   204
-      Mode            =   0
-      Period          =   125
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Visible         =   "True"
-      Width           =   32
-      BehaviorIndex   =   2
+      Begin Timer timerAdvance
+         ControlOrder    =   1
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   248
+         Mode            =   0
+         Period          =   10000
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   248
+         BehaviorIndex   =   1
+      End
+      Begin Timer timerTransition
+         ControlOrder    =   2
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   204
+         Mode            =   0
+         Period          =   125
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   248
+         BehaviorIndex   =   2
+      End
    End
 End
 #tag EndWindow
@@ -614,7 +604,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Present(setDoc As XmlDocument, PresentMode As Integer, acurrentsetname as string) 'gp
+		Sub Present(setDoc As XmlDocument, PresentMode As Integer, acurrentsetname as string)
 		  Dim i, j As Integer
 		  Dim slide_groups, slide_group, slide As XmlNode
 		  Dim s As String
@@ -1772,7 +1762,7 @@ End
 		  exception err
 		  end
 		  
-		 'gp end 
+		  'gp end
 		End Sub
 	#tag EndMethod
 
@@ -1922,23 +1912,23 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected currentsetname As string 'gp
+		Protected currentsetname As string'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected doetrans As boolean 'gp
+		Protected doetrans As boolean'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected doetrans_nextblank As boolean 'gp
+		Protected doetrans_nextblank As boolean'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		doerefresh As boolean 'gp
+		doerefresh As boolean'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected ControlKeyisdown As boolean 'gp
+		Protected ControlKeyisdown As boolean'gp
 	#tag EndProperty
 
 
@@ -2060,7 +2050,7 @@ End
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
 		  If (doTransition And doetrans and (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) and  lastcurrentSlide <> currentSlide Then 'gp
-
+		    
 		    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
 		    'GP CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
 		    'GP CurrentPicture.Mask.Graphics.FillRect(0, 0, CurrentPicture.Mask.Graphics.Width, CurrentPicture.Mask.Graphics.Height)
@@ -2118,12 +2108,12 @@ End
 		    'g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
 		    ProgressWindow.Close
 		    doetrans = false
-			'gp end
+		    'gp end
 		    Profiler.EndProfilerEntry
 		  Else
 		    if doTransition and doetrans_nextblank and  lastcurrentSlide <> currentSlide and not keyboard.ControlKey then
 		      'gp start
-				dim ltime, time as Integer
+		      dim ltime, time as Integer
 		      lastcurrentSlide = currentSlide
 		      time = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
 		      ProgressWindow.Left = PresentHelperWindow.left + 10
@@ -2144,7 +2134,7 @@ End
 		  
 		  busy = false 'gp
 		  
-
+		  
 		  '#if DebugBuild Then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Exit")
 		  '#endif

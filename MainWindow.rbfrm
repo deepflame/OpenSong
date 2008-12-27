@@ -6284,7 +6284,7 @@ End
 		  Globals.OldFolderSel = -1
 		  CurrentSetIndex = -1
 		  '--
-		  
+		  lst_set_items.EnableDragReorder = false 'gp  not dragen sets
 		  Splash.SetStatus App.T.Translate("load_data/bible") + "..."
 		  s = SmartML.GetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version")
 		  'If Len(s) > 0 And App.AppFolder.Child("OpenSong Scripture").Child(s).Exists Then

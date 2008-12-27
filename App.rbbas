@@ -1407,11 +1407,13 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ExcludeBackgroundsImages"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

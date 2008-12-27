@@ -219,7 +219,7 @@ Protected Module SetML
 		    Next i
 		    '++JRC
 		    If Style.TitleEnable Then
-		      HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
+		      FooterSize = FooterSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    End If
 		    '--
 		  End If
@@ -1007,28 +1007,33 @@ Protected Module SetML
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

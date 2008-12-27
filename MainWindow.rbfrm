@@ -8402,6 +8402,7 @@ End
 		        '--
 		        
 		        SlideSongStyle = SmartML.GetNode(slide_group, "style")
+		        SongStyle = SmartML.GetNode(slide_group, "style", False)'gp
 		        slide_group = SmartML.ReplaceWithImportNode(slide_group, songDoc.DocumentElement)
 		        If Presentation <> "" Then 'Override the song's default presentation
 		          SmartML.SetValue(slide_group, "presentation", presentation)
@@ -8410,10 +8411,10 @@ End
 		          SmartML.SetValueN(slide_group, "@transition", Transition)
 		        End If
 		        
-		        SongStyle = SmartML.GetNode(slide_group, "style", False)
+		        'gp 8 regels naar boven SongStyle = SmartML.GetNode(slide_group, "style", False)
 		        'Check if there is an overide for the song style in this slide
 		        If SlideSongStyle <> Nil Then
-		          If SongStyle <> Nil Then
+		          If SmartML.GetNode(slide_group, "style", False) <> Nil Then 'gp
 		            SmartML.RemoveChild(slide_group, SongStyle)
 		          End If
 		          SongML.ToSetML slide_group, SlideSongStyle
@@ -8423,6 +8424,7 @@ End
 		          If SongStyle = Nil Then SongStyle = CurStyle
 		          SongML.ToSetML slide_group, SongStyle
 		        End If
+		        slide_group.AppendChild(songstyle) 'gp
 		        
 		        slide_group  = slide_group.NextSibling
 		      Else

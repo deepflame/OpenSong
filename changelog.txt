@@ -1,4 +1,6 @@
-﻿-= 1.4.0 =-
+﻿* Fix for bug id 2465607: Presentation margins (title space is always subtracted from top)
+
+-= 1.4.0 =-
 
 * Fix the OpenPrinterDialog call in Report to attach to the window returned by GetFrontControlScreenWindow instead of Window(0). Although Window(0) should be the top window for the app, for some reason on OS X 10.5 (Leopard) this will return a handle to a window that is not visible. This prevents the hidden window from ever unloading, blocking the application from exiting without doing a Force Quit. (swampcat)
 

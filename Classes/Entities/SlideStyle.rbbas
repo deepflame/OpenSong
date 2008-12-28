@@ -295,6 +295,10 @@ Protected Class SlideStyle
 		  '--
 		  SmartML.SetValue(CurrChild, "@valign", BodyVAlign)
 		  SmartML.SetValue(CurrChild, "@align", BodyAlign)
+		  SmartML.SetValue(CurrChild, "@bgvalign", BackgroundVAlign)'gp
+		  SmartML.SetValue(CurrChild, "@bgalign", BackgroundAlign)'gp
+		  SmartML.SetValueN(CurrChild, "@bgmaxsize", bgMaxSize)'gp
+		  
 		  SmartML.SetValueB(CurrChild, "@highlight_chorus", Highlight)
 		  SmartML.SetValueN(CurrChild, "@margin-left", BodyMargins.Left)
 		  SmartML.SetValueN(CurrChild, "@margin-right", BodyMargins.Right)
@@ -333,7 +337,7 @@ Protected Class SlideStyle
 		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1))
 		  Else
 		    SmartML.SetValue(root, thisNode, Background.GetImageAsString())
-		  End If 
+		  End If
 		  
 		  Return XmlDoc
 		End Function
@@ -460,6 +464,10 @@ Protected Class SlideStyle
 		  BodyFont = SmartML.GetValueF(xStyle, "body")
 		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
 		  BodyVAlign = SmartML.GetValue(xStyle, "body/@valign")
+		  BackgroundAlign = SmartML.GetValue(xStyle, "body/@bgalign")'gp
+		  BackgroundVAlign = SmartML.GetValue(xStyle, "body/@bgvalign")'gp
+		  bgMaxSize = SmartML.GetValueN(xStyle, "body/@bgmaxsize")'gp
+		  
 		  Highlight = SmartML.GetValueB(xStyle, "body/@highlight_chorus")
 		  BodyMargins.Left = SmartML.GetValueN(xStyle, "body/@margin-left")
 		  BodyMargins.Right = SmartML.GetValueN(xStyle, "body/@margin-right")
@@ -612,6 +620,53 @@ Protected Class SlideStyle
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function BackgroundAlign() As string
+		  Dim A As String
+		  'gp
+		  A = Lowercase(BackgroundAlign)
+		  Return A
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function BackgroundVAlign() As string
+		  Dim A As String
+		  'gp
+		  A = Lowercase(BackgroundVAlign)
+		  Return A
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Backgroundalign(Assigns Align As String)
+		  'gp
+		  Backgroundalign = align
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BackgroundvAlign(Assigns VAlign As String)
+		  'gp
+		  BackgroundvAlign = valign
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function BGMaxSize() As Integer
+		  Dim I As Integer
+		  I = BGMaxSize
+		  Return I
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BGMaxSize(Assigns MaxSize As Integer)
+		  BGMaxSize = MaxSize
+		End Sub
+	#tag EndMethod
+
 
 	#tag Note, Name = Overview
 		September 2005
@@ -746,6 +801,22 @@ Protected Class SlideStyle
 		SubtitleEnable As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private BackgroundAlign As string'gp
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		#tag Note
+			'gp
+		#tag EndNote
+		Private BackgroundVAlign As string'gp
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		bgMaxSize As Integer
+	#tag EndProperty
+
+
 	#tag Constant, Name = POS_CENTER, Type = Double, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant
 
@@ -755,13 +826,13 @@ Protected Class SlideStyle
 	#tag Constant, Name = POS_TILE, Type = Double, Dynamic = False, Default = \"6", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = POS_TOP, Type = Double, Dynamic = False, Default = \"3", Scope = Public 'gp
+	#tag Constant, Name = POS_TOP, Type = Double, Dynamic = False, Default = \"3", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = POS_BOTTOM, Type = Double, Dynamic = False, Default = \"4", Scope = Public 'gp
+	#tag Constant, Name = POS_BOTTOM, Type = Double, Dynamic = False, Default = \"4", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = POS_bottom_max_half_height, Type = Double, Dynamic = False, Default = \"5", Scope = Public 'gp
+	#tag Constant, Name = POS_bottom_max_half_height, Type = Double, Dynamic = False, Default = \"5", Scope = Public
 	#tag EndConstant
 
 
@@ -816,6 +887,12 @@ Protected Class SlideStyle
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="bgMaxSize"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

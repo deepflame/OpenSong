@@ -1,4 +1,6 @@
-﻿* Fix Slovenian translation, made OpenSong more clear on translation xml error
+﻿* Update Swedish (Svenska) translation for v1.4 (thanks edvinerdtman)
+
+* Fix Slovenian translation, made OpenSong more clear on translation xml error
 
 * Fix for bug id 2465607: Presentation margins (title space is always subtracted from top)
 

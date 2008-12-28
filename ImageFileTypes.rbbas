@@ -31,7 +31,7 @@
 
 	#tag FileType
 		CodeName=PICTFiles
-		DocIcon=OpenSong.rbres;&h1985C
+		DocIcon=OpenSong.rbres;&h6C
 		Extension=.pict;.pic;.pct
 		Flags=&h0
 		MacCreator=
@@ -41,7 +41,7 @@
 
 	#tag FileType
 		CodeName=PNGFiles
-		DocIcon=OpenSong.rbres;&h19868
+		DocIcon=OpenSong.rbres;&h78
 		Extension=.png
 		Flags=&h0
 		MacCreator=
@@ -51,7 +51,7 @@
 
 	#tag FileType
 		CodeName=TIFFFiles
-		DocIcon=OpenSong.rbres;&h19874
+		DocIcon=OpenSong.rbres;&h84
 		Extension=.jfx;.tif;.tiff
 		Flags=&h0
 		MacCreator=????

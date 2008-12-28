@@ -262,7 +262,7 @@ Protected Module SetML
 		    Next i
 		    '++JRC
 		    If Style.TitleEnable Then
-		      HeaderSize = HeaderSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
+		      FooterSize = FooterSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    End If
 		    '--
 		  End If

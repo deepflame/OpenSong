@@ -642,68 +642,6 @@ Begin Window StyleWindow
          Width           =   140
          BehaviorIndex   =   21
       End
-      Begin StaticText lbl_background_position
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   21
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_background"
-         Italic          =   "False"
-         Left            =   450
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Multiline       =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Text            =   "Position:"
-         TextAlign       =   1
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   202
-         Underline       =   "False"
-         Visible         =   True
-         Width           =   108
-         BehaviorIndex   =   22
-      End
-      Begin StaticText lbl_background_trim_bottom
-         AutoDeactivate  =   "True"
-         Bold            =   "False"
-         ControlOrder    =   22
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   15
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_background"
-         Italic          =   "False"
-         Left            =   444
-         LockBottom      =   "False"
-         LockLeft        =   "False"
-         LockRight       =   "False"
-         LockTop         =   "False"
-         Multiline       =   "False"
-         Scope           =   0
-         TabPanelIndex   =   0
-         Text            =   "Trim Bottom*:"
-         TextAlign       =   1
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   240
-         Underline       =   "False"
-         Visible         =   True
-         Width           =   120
-         BehaviorIndex   =   23
-      End
       Begin SColorCanvas can_background_color
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
@@ -793,7 +731,7 @@ Begin Window StyleWindow
          BackColor       =   16777215
          Bold            =   "False"
          Border          =   "True"
-         ControlOrder    =   28
+         ControlOrder    =   27
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -804,7 +742,7 @@ Begin Window StyleWindow
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
          Italic          =   "False"
-         Left            =   484
+         Left            =   477
          LimitText       =   4
          LockBottom      =   "False"
          LockLeft        =   "False"
@@ -826,17 +764,17 @@ Begin Window StyleWindow
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   11
-         Top             =   255
+         Top             =   355
          Underline       =   "False"
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   30
-         BehaviorIndex   =   28
+         BehaviorIndex   =   27
       End
       Begin StaticText txt_background_pixels
          AutoDeactivate  =   "True"
          Bold            =   "False"
-         ControlOrder    =   27
+         ControlOrder    =   28
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
@@ -845,7 +783,7 @@ Begin Window StyleWindow
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
          Italic          =   "False"
-         Left            =   519
+         Left            =   514
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
@@ -858,11 +796,160 @@ Begin Window StyleWindow
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   255
+         Top             =   355
          Underline       =   "False"
          Visible         =   True
          Width           =   20
-         BehaviorIndex   =   27
+         BehaviorIndex   =   28
+      End
+      Begin StaticText lbl_background_trim_bottom
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   22
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         Italic          =   "False"
+         Left            =   444
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Text            =   "Trim Bottom*:"
+         TextAlign       =   1
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   341
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   120
+         BehaviorIndex   =   23
+      End
+      Begin StaticText lbl_background_position
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   21
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         Italic          =   "False"
+         Left            =   444
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Text            =   "Position:"
+         TextAlign       =   1
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   203
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   108
+         BehaviorIndex   =   22
+      End
+      Begin StaticText lbl_background_align
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   38
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         Italic          =   "False"
+         Left            =   441
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Text            =   "align:"
+         TextAlign       =   1
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   236
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   108
+         BehaviorIndex   =   38
+      End
+      Begin SAlignCanvas sal_align_picture
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   30
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   44
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         Left            =   483
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   252
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   44
+         BehaviorIndex   =   30
+      End
+      Begin StaticText lbl_background_maxsize
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   39
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   15
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "grp_style_background"
+         Italic          =   "False"
+         Left            =   451
+         LockBottom      =   "False"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   0
+         Text            =   "maxsize"
+         TextAlign       =   1
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   294
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   108
+         BehaviorIndex   =   39
       End
       Begin EditField edt_BGMaxSize
          AcceptTabs      =   "False"
@@ -881,7 +968,7 @@ Begin Window StyleWindow
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
          Italic          =   "False"
-         Left            =   475
+         Left            =   477
          LimitText       =   4
          LockBottom      =   "False"
          LockLeft        =   "False"
@@ -900,37 +987,43 @@ Begin Window StyleWindow
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         Top             =   330
+         Top             =   310
          Underline       =   "False"
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   50
          BehaviorIndex   =   29
       End
-      Begin SAlignCanvas sal_align_picture
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
+      Begin StaticText txt_background_prc
          AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   30
+         Bold            =   "False"
+         ControlOrder    =   37
+         DataField       =   ""
+         DataSource      =   ""
          Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   44
+         Height          =   20
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_style_background"
-         Left            =   475
+         Italic          =   "False"
+         Left            =   529
          LockBottom      =   "False"
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Multiline       =   "False"
          Scope           =   0
          TabPanelIndex   =   0
-         Top             =   285
-         UseFocusRing    =   "True"
+         Text            =   "%"
+         TextAlign       =   0
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   309
+         Underline       =   "False"
          Visible         =   True
-         Width           =   44
-         BehaviorIndex   =   30
+         Width           =   20
+         BehaviorIndex   =   37
       End
    End
    Begin GroupBox grp_style_options
@@ -1133,9 +1226,9 @@ End
 		  App.T.TranslateWindow Me, "style_editor", App.TranslationFonts
 		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row0/@caption")
 		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row1/@caption")
-		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row2/@caption") 'gp
-		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row3/@caption") 'gp
-		  pop_background_position.AddRow App.T.Translate("style_editor/background/position/row4/@caption") 'gp
+		  'pop_background_position.AddRow App.T.Translate("style_editor/background/position/row2/@caption") 'gp
+		  'pop_background_position.AddRow App.T.Translate("style_editor/background/position/row3/@caption") 'gp
+		  'pop_background_position.AddRow App.T.Translate("style_editor/background/position/row4/@caption") 'gp
 		  
 		  App.CenterInControlScreen Me
 		End Sub
@@ -1208,7 +1301,7 @@ End
 		  If IsSong Then
 		    lst_song_subtitles.SetSelected(workingStyle.SubtitleList)
 		  End If
-		  
+		  can_background_image.workingStyle = workingStyle 'gp
 		  Return
 		End Sub
 	#tag EndMethod
@@ -1522,6 +1615,7 @@ End
 		  if workingStyle.BGMaxSize < 1 then
 		    workingStyle.bgMaxSize = 100
 		  end if
+		  can_background_image.workingStyle = workingStyle
 		  can_background_image.Repaint
 		End Sub
 	#tag EndEvent
@@ -1529,11 +1623,13 @@ End
 #tag Events sal_align_picture
 	#tag Event
 		Sub AlignChanged(HAlign As String, VAlign As String)
-		  If (workingStyle.BodyAlign <> HAlign) Or (workingStyle.BodyVAlign <> VAlign) Then
+		  If (workingStyle.BackgroundAlign <> HAlign) Or (workingStyle.BackgroundVAlign <> VAlign) Then
 		    workingStyle.BackgroundAlign= HAlign
 		    workingStyle.BackgroundVAlign = VAlign
 		    
+		    can_background_image.workingStyle = workingStyle
 		    can_background_image.Repaint
+		    
 		  End If
 		  
 		End Sub

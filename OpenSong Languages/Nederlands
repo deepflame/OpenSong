@@ -768,14 +768,17 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <image caption="Image"/>
       <position caption="Positie">
           <row0 caption="Uitvullen"/>
-          <row1 caption="Centreren"/>
+          <row1 caption="niet Uitvullen"/>
           <row2 caption="top"/>
           <row3 caption="onder"/>
           <row4 caption="onder max helft"/>
           <!-- <row2 caption="Tegel"/> -->
       </position>
       <trim_bottom caption="*Onderkant bijsnijden"/>
-      <pixels caption="px"/>
+      <align caption="uitlijnen"/>
+      <maxsize caption="maximaal scherm %"/>
+      <prc caption="%"/>
+	  <pixels caption="px"/>
       <click_to_change caption="link(gedeeld/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </background>

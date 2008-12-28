@@ -74,7 +74,6 @@ Protected Module SetML
 		  Dim d2 As String
 		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
 		  Dim bodyTabs() As StyleTabsType
-		  
 		  'gpgpgpgpgp evt uitbreiden bijv alleen als song en blanks groot maken enz
 		  lastbodysize = bodysize 'gp
 		  lastslidetype = SlideType 'gp
@@ -129,56 +128,126 @@ Protected Module SetML
 		    stripW = strip*aspect_ratio
 		    bgDrawH = background.Height - strip
 		    bgDrawW = background.Width - stripW
-		    bgHeightRatio = gHeight / bgDrawH
-		    bgHeightRatio_half =( gHeight/2) / bgDrawH 'gp
-		    bgWidthRatio = gWidth / bgDrawW
-		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
-		    aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio) 'gp
+		    'bgHeightRatio = gHeight / bgDrawH
+		    'bgHeightRatio_half =( gHeight/2) / bgDrawH 'gp
+		    'bgWidthRatio = gWidth / bgDrawW
+		    'aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
+		    'aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio) 'gp
 		    display_height = bgDrawH * aspect_ratio //Scale pic to display
 		    display_height = gheight - display_height //If this is the "short" side, calculate the difference between the pic and screen
 		    display_height = display_height / 2 //Half of that is our y margin
 		    
-		    Select Case Style.Position
-		      
-		    Case SlideStyle.POS_CENTER
-		      
-		      g.DrawPicture background, _
-		      (gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		      display_height, _
-		      bgDrawW * aspect_ratio, _
-		      bgDrawH * aspect_ratio, _
-		      stripw, 0, bgDrawW, bgDrawH
-		    'gp start  
-		    Case SlideStyle.POS_top
-		      
-		      g.DrawPicture background, _
-		      (gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		      0, _ //display_height, _ gpgpgpgpgpgpg
-		      bgDrawW * aspect_ratio, _
-		      bgDrawH * aspect_ratio, _
-		      stripw, 0, bgDrawW, bgDrawH
-		      
-		    Case SlideStyle.POS_bottom
-		      
-		      g.DrawPicture background, _
-		      (gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		      g.height- bgDrawH * aspect_ratio, _ //display_height, _ gpgpgpgpgpgpg
-		      bgDrawW * aspect_ratio, _
-		      bgDrawH * aspect_ratio, _
-		      stripw, 0, bgDrawW, bgDrawH
-		      
-		    Case SlideStyle.POS_bottom_max_half_height
-		      
-		      g.DrawPicture background, _
-		      (gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		      max(g.height- bgDrawH * aspect_ratio_half,g.height/2) , _ //display_height, _ gpgpgpgpgpgpg
-		      bgDrawW * aspect_ratio, _
-		      bgDrawH * aspect_ratio_half, _
-		      stripw, 0, bgDrawW, bgDrawH
-		    'gp end  
-		    Case SlideStyle.POS_STRETCH
-		      g.DrawPicture background, -(strip*aspect_ratio)/2, 0, g.Width+(strip*aspect_ratio), g.Height+strip, 0, 0, background.Width, background.Height
-		    End Select
+		    
+		    dim TOP, BOTTOM, LEFT, RIGHT as double
+		    dim MaxSizeFact as double
+		    DIM  Stretch as boolean
+		    
+		    Stretch= (Style.Position = SlideStyle.POS_STRETCH)
+		    MaxSizeFact = min(1,max(0, style.BGMaxSize/100))
+		    gHeight = g.Height * MaxSizeFact
+		    gWidth = g.Width * MaxSizeFact
+		    aspect_ratio = Min(gHeight /bgDrawH, gWidth / bgDrawW)
+		    
+		    if style.BackgroundAlign = "left" Then
+		      LEFT =0
+		      if stretch then
+		        RIGHT = min(LEFT + bgDrawW,  gWidth)
+		      else
+		        RIGHT = min(LEFT + bgDrawW* aspect_ratio,  gWidth)
+		      end if
+		    else
+		      if  style.BackgroundAlign = "right" Then
+		        RIGHT = g.Width
+		        if stretch then
+		          LEFT = max(RIGHT- bgDrawW, g.width- gWidth)
+		        else
+		          LEFT = max(RIGHT- bgDrawW* aspect_ratio, g.width- gWidth)
+		        end if
+		      else
+		        if Stretch then
+		          LEFT = 0
+		          RIGHT =g.width
+		        else
+		          LEFT = (g.width- bgDrawW* aspect_ratio)/2
+		          RIGHT = LEFT +  bgDrawW* aspect_ratio
+		        end if
+		      end if
+		    end if
+		    if style.BackgroundVAlign = "bottom" Then
+		      BOTTOM = g.height
+		      if stretch then
+		        TOP = max(BOTTOM -bgDrawH,  g.height - gheight)
+		      else
+		        TOP = max(BOTTOM -bgDrawH* aspect_ratio,  g.height - gheight)
+		      end if
+		    else
+		      if  style.BackgroundVAlign = "top" Then
+		        TOP= 0
+		        if stretch then
+		          BOTTOM = min(TOP+bgDrawH,  gheight)
+		        else
+		          BOTTOM = min(TOP+bgDrawH* aspect_ratio,  gheight)
+		        end if
+		      else
+		        if stretch then
+		          TOP = 0
+		          BOTTOM = g.height
+		        else
+		          TOP = (g.height-bgDrawH* aspect_ratio)/2
+		          BOTTOM = TOP +bgDrawH* aspect_ratio
+		        end if
+		      end if
+		    end if
+		    g.DrawPicture background, _
+		    LEFT, _
+		    TOP, _
+		    RIGHT- LEFT, _
+		    BOTTOM - TOP, _
+		    stripw, 0, bgDrawW,bgDrawH
+		    
+		    
+		    
+		    'Select Case Style.Position
+		    '
+		    'Case SlideStyle.POS_CENTER
+		    '
+		    'g.DrawPicture background, _
+		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		    'display_height, _
+		    'bgDrawW * aspect_ratio, _
+		    'bgDrawH * aspect_ratio, _
+		    'stripw, 0, bgDrawW, bgDrawH
+		    ''gp start
+		    'Case SlideStyle.POS_top
+		    '
+		    'g.DrawPicture background, _
+		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		    '0, _ //display_height, _ gpgpgpgpgpgpg
+		    'bgDrawW * aspect_ratio, _
+		    'bgDrawH * aspect_ratio, _
+		    'stripw, 0, bgDrawW, bgDrawH
+		    '
+		    'Case SlideStyle.POS_bottom
+		    '
+		    'g.DrawPicture background, _
+		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		    'g.height- bgDrawH * aspect_ratio, _ //display_height, _ gpgpgpgpgpgpg
+		    'bgDrawW * aspect_ratio, _
+		    'bgDrawH * aspect_ratio, _
+		    'stripw, 0, bgDrawW, bgDrawH
+		    '
+		    'Case SlideStyle.POS_bottom_max_half_height
+		    '
+		    'g.DrawPicture background, _
+		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		    'max(g.height- bgDrawH * aspect_ratio_half,g.height/2) , _ //display_height, _ gpgpgpgpgpgpg
+		    'bgDrawW * aspect_ratio, _
+		    'bgDrawH * aspect_ratio_half, _
+		    'stripw, 0, bgDrawW, bgDrawH
+		    ''gp end
+		    'Case SlideStyle.POS_STRETCH
+		    'g.DrawPicture background, -(strip*aspect_ratio)/2, 0, g.Width+(strip*aspect_ratio), g.Height+strip, 0, 0, background.Width, background.Height
+		    'End Select
 		    //--EMP
 		  End If
 		  
@@ -1143,7 +1212,7 @@ Protected Module SetML
 		    end if
 		  end if
 		  return ""
-'gp end
+		  'gp end
 		End Function
 	#tag EndMethod
 
@@ -1195,23 +1264,23 @@ Protected Module SetML
 
 
 	#tag Property, Flags = &h1
-		Protected bodysize As Integer 'gp
+		Protected bodysize As Integer'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected SetName As string 'gp
+		Protected SetName As string'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		SlideType As string 'gp
+		SlideType As string'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected lastbodysize As Integer 'gp
+		Protected lastbodysize As Integer'gp
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		lastslidetype As string 'gp
+		lastslidetype As string'gp
 	#tag EndProperty
 
 
@@ -1248,18 +1317,6 @@ Protected Module SetML
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="SlideType"
-			Group="Behavior"
-			Type="string"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="lastslidetype"
-			Group="Behavior"
-			Type="string"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

@@ -274,6 +274,11 @@ Implements ScriptureNotifier
 		    VersesPerSlide = sender.VersesPerSlide
 		  End If
 		  
+		  If sender.CharsPerSlide <> CharsPerSlide Then
+		    changed = True
+		    CharsPerSlide = sender.CharsPerSlide
+		  End If
+		  
 		  If sender.ShowVerseNumbers <> ShowVerseNumbers Then
 		    changed = True
 		    ShowVerseNumbers = Not ShowVerseNumbers
@@ -293,6 +298,7 @@ Implements ScriptureNotifier
 		  For Each o As iScripturePicker in Observers
 		    o.FormatAsParagraph(FormatParagraph)
 		    o.VersesPerSlide(VersesPerSlide)
+		    o.CharsPerSlide(CharsPerSlide)
 		    o.ShowVerseNumbers(ShowVerseNumbers)
 		  Next
 		End Sub
@@ -392,7 +398,8 @@ Implements ScriptureNotifier
 		  CurrentChapter = SmartML.GetValueN(params, "last_scripture/@chapter")
 		  CurrentFromVerse = SmartML.GetValueN(params, "last_scripture/@verse")
 		  CurrentThruVerse = SmartML.GetValueN(params, "last_scripture/@thru")
-		  VersesPerSlide = Max(1, SmartML.GetValueN(params, "last_scripture/@per_slide"))
+		  VersesPerSlide = Max(1, Min(SmartML.GetValueN(params, "last_scripture/@verse_per_slide"), 5))
+		  CharsPerSlide = Max(1, Min(SmartML.GetValueN(params, "last_scripture/@chars_per_slide"), 1000))
 		  ShowVerseNumbers = SmartML.GetValueB(params, "last_scripture/@show_numbers", True, True)
 		  FormatParagraph = ("paragraph" = SmartML.GetValue(params, "last_scripture/@format"))
 		  
@@ -433,7 +440,8 @@ Implements ScriptureNotifier
 		  SmartML.SetValueN(params, "last_scripture/@chapter", CurrentChapter)
 		  SmartML.SetValueN(params, "last_scripture/@verse", CurrentFromVerse)
 		  SmartML.SetValueN(params, "last_scripture/@thru", CurrentThruVerse)
-		  SmartML.SetValueN(params, "last_scripture/@per_slide", VersesPerSlide)
+		  SmartML.SetValueN(params, "last_scripture/@verse_per_slide", VersesPerSlide)
+		  SmartML.SetValueN(params, "last_scripture/@chars_per_slide", CharsPerSlide)
 		  SmartML.SetValueB(params, "last_scripture/@show_numbers", ShowVerseNumbers)
 		  
 		  If FormatParagraph Then
@@ -499,6 +507,8 @@ Implements ScriptureNotifier
 		    slideBody = ""
 		    For i As Integer = 1 To VersesPerSlide
 		      If currVerse > UBound(verses) Then Exit For
+		      If i > 1 and (slideBody.Len + verses(currVerse).len) > CharsPerSlide  Then Exit For
+		      
 		      If slideBody.Len > 0 Then slideBody = slideBody + sep
 		      slideBody = slideBody + verses(currVerse)
 		      currVerse = currVerse + 1
@@ -582,7 +592,6 @@ Implements ScriptureNotifier
 		For this module, the base index for the Chapter and Verse references is 1
 		It is the responsibility of the Observers to convert as necessary to 0-based
 		(for example, to fill a listbox).
-		
 	#tag EndNote
 
 
@@ -637,6 +646,10 @@ Implements ScriptureNotifier
 
 	#tag Property, Flags = &h1
 		Protected ActiveSearchWindow As SearchWindow
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected CharsPerSlide As Integer
 	#tag EndProperty
 
 

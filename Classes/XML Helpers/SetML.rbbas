@@ -492,6 +492,7 @@ Protected Module SetML
 		    
 		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		      g.TextSize = Floor(g.TextSize * .95)
+		      if g.textsize <=0 then exit
 		    Wend
 		    
 		    Profiler.EndProfilerEntry
@@ -562,10 +563,12 @@ Protected Module SetML
 		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
+		          if g.textsize <=0 then exit 'gp
 		        Wend
 		        'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
+		          if g.textsize <=0 then exit 'gp
 		        Wend
 		        i = i + 1 ' skip the extra
 		      End If
@@ -580,14 +583,29 @@ Protected Module SetML
 		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
 		      ' FUTURE PROBLEM: When we size it down, we should rewrap it all
 		      g.TextSize = Floor(g.TextSize * .95)
+		      if g.textsize <=0 then exit 'gp
 		    Wend
 		    
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
-		    
-		    
+		    'gp start
+		    'todo als type song dan size is maximaal 10% groter dan vorige size in dezelfde set
+		    dim maxgrowFact as double
+		    maxgrowFact = 1+(SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@max_grow")/100)
+		    maxgrowFact = max(maxgrowFact,1)
+		    if lastbodysize > 16 then
+		      if lastslidetype = SlideType then
+		        g.textsize = min  (g.textsize, round(lastbodysize *  maxgrowFact))
+		        'MsgBox( "lastslidetype "+ str( lastslidetype)  + " "+str( lastbodysize))
+		      end if
+		    end if
 		    
 		    bodyStyle.Size = g.TextSize
+		    bodysize = bodystyle.size
+		    'gp end
+		    
+		    
+		    
 		    line = ""
 		    For i = 1 To UBound(lines)
 		      line = line + lines(i) + Chr(10)

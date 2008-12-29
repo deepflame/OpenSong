@@ -106,10 +106,10 @@ Inherits SBufferedCanvas
 		      if stretch then
 		        RIGHT = min(LEFT + img.Width,  gWidth)
 		      else
-		        RIGHT = min(LEFT + img.Width* aspect_ratio,  gWidth) 
+		        RIGHT = min(LEFT + img.Width* aspect_ratio,  gWidth)
 		      end if
 		    else
-		       if  workingStyle.BackgroundAlign = "right" Then
+		      if  workingStyle.BackgroundAlign = "right" Then
 		        RIGHT = g.Width
 		        if stretch then
 		          LEFT = max(RIGHT- img.Width, g.width- gWidth)
@@ -131,15 +131,15 @@ Inherits SBufferedCanvas
 		      if stretch then
 		        TOP = max(BOTTOM - img.height,  g.height - gheight)
 		      else
-		        TOP = max(BOTTOM - img.height* aspect_ratio,  g.height - gheight) 
+		        TOP = max(BOTTOM - img.height* aspect_ratio,  g.height - gheight)
 		      end if
 		    else
-		       if  workingStyle.BackgroundVAlign = "top" Then
+		      if  workingStyle.BackgroundVAlign = "top" Then
 		        TOP= 0
 		        if stretch then
 		          BOTTOM = min(TOP+ img.height,  gheight)
 		        else
-		          BOTTOM = min(TOP+ img.height* aspect_ratio,  gheight) 
+		          BOTTOM = min(TOP+ img.height* aspect_ratio,  gheight)
 		        end if
 		      else
 		        if stretch then

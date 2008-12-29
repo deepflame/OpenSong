@@ -144,6 +144,10 @@ Protected Module SetML
 		    
 		    Stretch= (Style.Position = SlideStyle.POS_STRETCH)
 		    MaxSizeFact = min(1,max(0, style.BGMaxSize/100))
+		    if maxsizefact < 0.01 then
+		      maxSizeFact = 1
+		    end if
+		    
 		    gHeight = g.Height * MaxSizeFact
 		    gWidth = g.Width * MaxSizeFact
 		    aspect_ratio = Min(gHeight /bgDrawH, gWidth / bgDrawW)

@@ -101,7 +101,7 @@ Protected Class SlideStyle
 
 	#tag Method, Flags = &h0
 		Sub Position(Assigns pos As Integer)
-		  If pos < 0 or pos > 5 Then pos = POS_STRETCH ' Defaults to Stretch if invalid 'gp
+		  If pos < 0 or pos > 5 Then pos = POS_CENTER ' Defaults to Stretch if invalid 'gp
 		  Position = pos
 		End Sub
 	#tag EndMethod
@@ -295,9 +295,6 @@ Protected Class SlideStyle
 		  '--
 		  SmartML.SetValue(CurrChild, "@valign", BodyVAlign)
 		  SmartML.SetValue(CurrChild, "@align", BodyAlign)
-		  SmartML.SetValue(CurrChild, "@bgvalign", BackgroundVAlign)'gp
-		  SmartML.SetValue(CurrChild, "@bgalign", BackgroundAlign)'gp
-		  SmartML.SetValueN(CurrChild, "@bgmaxsize", bgMaxSize)'gp
 		  
 		  SmartML.SetValueB(CurrChild, "@highlight_chorus", Highlight)
 		  SmartML.SetValueN(CurrChild, "@margin-left", BodyMargins.Left)
@@ -329,7 +326,9 @@ Protected Class SlideStyle
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
 		  Static r As New Random
 		  Dim f As FolderItem
-		  
+		  SmartML.SetValue(CurrChild, "@bgvalign", BackgroundVAlign)'gp
+		  SmartML.SetValue(CurrChild, "@bgalign", BackgroundAlign)'gp
+		  SmartML.SetValueN(CurrChild, "@bgmaxsize", bgMaxSize)'gp
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
 		  SmartML.SetValueN(CurrChild, "@position", Position)
@@ -464,10 +463,9 @@ Protected Class SlideStyle
 		  BodyFont = SmartML.GetValueF(xStyle, "body")
 		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
 		  BodyVAlign = SmartML.GetValue(xStyle, "body/@valign")
-		  BackgroundAlign = SmartML.GetValue(xStyle, "body/@bgalign")'gp
-		  BackgroundVAlign = SmartML.GetValue(xStyle, "body/@bgvalign")'gp
-		  bgMaxSize = SmartML.GetValueN(xStyle, "body/@bgmaxsize")'gp
-		  
+		  if bgMaxSize< 1 then
+		    bgMaxSize= 100
+		  end if
 		  Highlight = SmartML.GetValueB(xStyle, "body/@highlight_chorus")
 		  BodyMargins.Left = SmartML.GetValueN(xStyle, "body/@margin-left")
 		  BodyMargins.Right = SmartML.GetValueN(xStyle, "body/@margin-right")
@@ -541,11 +539,15 @@ Protected Class SlideStyle
 		  If Not SmartML.GetValueC(xstyle, "background/@color", BGColor, False) Then
 		    BGColor = defaultBGColor
 		  End If
+		  BackgroundAlign = SmartML.GetValue(xStyle, "background/@bgalign")'gp
+		  BackgroundVAlign = SmartML.GetValue(xStyle, "background/@bgvalign")'gp
+		  bgMaxSize = SmartML.GetValueN(xStyle, "background/@bgmaxsize")'gp
+		  
 		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
 		  
 		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
 		  If Position < POS_STRETCH Or Position > POS_bottom_max_half_height Then 'gp
-		    Position = POS_STRETCH
+		    Position = POS_CENTER
 		  End If
 		End Sub
 	#tag EndMethod

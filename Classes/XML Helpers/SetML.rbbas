@@ -1120,7 +1120,7 @@ Protected Module SetML
 		      
 		      f.OntoGraphics(g)
 		      fontHeight = FontFaceHeight(g, f) + FontFaceAscent(g, f)
-		      titleHeight = CountFields(title, Chr(10)) * fontHeight'gp -  FontFaceAscent(g, f)
+		      titleHeight = CountFields(title, Chr(10)) * fontHeight -  FontFaceAscent(g, f)'gp anders is ruimte tussen titel en body te groot
 		      titleWidth = FontFaceWidth(g, title, f)
 		      fVerse.OntoGraphics(g)
 		      If rest <> "" Then restWidth = FontFaceWidth(g, rest, fVerse)

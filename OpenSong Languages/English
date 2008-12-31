@@ -430,6 +430,9 @@
       <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
     </transitions>
     <style caption="Style">
+	<inspring_after_line_break caption = "indent after forced line break"/>
+	<max_grow caption = "max caractersize grow"/>
+
       <border_thickness caption="Border Thickness"/>
       <subtitles caption="Subtitles"/>
       <modes>
@@ -454,6 +457,7 @@
       <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
       <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
       <blank_style caption="Blank slides take style of"/>
+      <blank_default caption="standard slide"/>
       <blank_prev caption="Previous slide"/>
       <blank_next caption="Next slide"/>
       <initial_mode caption="Initial Presentation Mode"/>
@@ -767,6 +771,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
       </position>
       <trim_bottom caption="*Trim Bottom"/>
       <pixels caption="px"/>
+      <align caption="align"/>
+      <maxsize caption="max screen %"/>
+      <prc caption="%"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </background>

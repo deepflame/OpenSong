@@ -453,6 +453,8 @@
       </mouse_cursor>
       <blanks caption="Een lege dia's invoegen"/>
       <blanks_between caption="tussen project items"/>
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
       <blank_default caption="standaard dia"/>
       <blank_prev caption="Vorige dia"/>

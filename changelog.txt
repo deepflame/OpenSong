@@ -1,4 +1,14 @@
-﻿* Update Swedish (Svenska) translation for v1.4 (thanks edvinerdtman)
+﻿* Fix for bug id 2473781: Black screen with No Transition on initial item
+
+* Update Swedish (Svenska) translation for v1.4 (thanks edvinerdtman)
+
+* Added option to specify maximum number of characters per slide when inserting scripture verses (gerritp)
+
+* Reworked interface of ScripturePickerWindow and SearchWindow (vwout)
+
+* (re)Enabled song style on a per slide basis (vwout)
+
+* Added image slide to show one or more images instead of a (body) text (vwout)
 
 * Fix Slovenian translation, made OpenSong more clear on translation xml error
 

@@ -188,7 +188,7 @@ End
 		  Mode = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@initial_mode")
 		  If Len(Mode) <> 1 Then Mode = "N"
 		  doTransition = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
-		  curslideTransition = SlideTransitionEnum.ApplicationDefault
+		  curslideTransition = SlideTransitionEnum.NoTransition
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
 	#tag EndEvent
@@ -723,6 +723,7 @@ End
 		    'StringUtils.Sprintf("%d, %d, %d, %d", Screen(i).Top, Screen(i).Left, Screen(i).Height, Screen(i).Width)
 		  Next i
 		  
+		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
 		  'System.DebugLog "Determine correct PresentMode"
 		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
 		    presentScreen = controlScreen
@@ -774,6 +775,7 @@ End
 		    PresentHelperWindow.Left = Screen(presentScreen).Left + (Screen(presentScreen).Width /2)  - PresentHelperWindow.Width - 10
 		    PresentHelperWindow.Top = Screen(presentScreen).Top + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
 		  End If
+		  cnvSlide.Visible = True
 		  
 		  //++
 		  // EMP, September 2006

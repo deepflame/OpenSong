@@ -8949,8 +8949,7 @@ End
 		  
 		  #If TargetLinux
 		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
-		      btn_set_present.AddPopupRow
-		      App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
+		      btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
 		    End If
 		  #EndIF
 		  

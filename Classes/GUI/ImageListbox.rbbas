@@ -38,15 +38,18 @@ Inherits Listbox
 		        
 		        img  = CellTag( row, 0 )
 		        pic = img.GetImage()
-		        width = pic.Width / pic.Height * (Me.DefaultRowHeight - imageMargin)
-		        If (width > colwidth) And (width <> 0) Then
-		          scale = colwidth / width
-		          width = colwidth
+		        If Not IsNull( pic ) Then
+		          width = pic.Width / pic.Height * (Me.DefaultRowHeight - imageMargin)
+		          If (width > colwidth) And (width <> 0) Then
+		            scale = colwidth / width
+		            width = colwidth
+		          End If
+		          
+		          g.DrawPicture( pic, (imageMargin/2) + (colwidth - width) / 2, (imageMargin/2) + (Me.DefaultRowHeight - (Me.DefaultRowHeight * scale)) / 2, width, Me.DefaultRowHeight * scale, 0, 0, pic.Width, pic.Height )
+		          
+		          result = True
 		        End If
 		        
-		        g.DrawPicture( pic, (imageMargin/2) + (colwidth - width) / 2, (imageMargin/2) + (Me.DefaultRowHeight - (Me.DefaultRowHeight * scale)) / 2, width, Me.DefaultRowHeight * scale, 0, 0, pic.Width, pic.Height )
-		        
-		        result = True
 		      End If
 		    End If
 		    

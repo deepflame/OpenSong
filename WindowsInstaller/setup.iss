@@ -16,6 +16,9 @@ Name: Languages\Portugues; Description: Portugues
 Name: Languages\PortuguesBrasil; Description: PortuguesBrasil
 Name: Languages\Svenska; Description: Svenska
 Name: Languages\Nederlands; Description: Nederlands
+Name: Languages\Polski; Description: Polski
+Name: Languages\Czech; Description: Czech
+Name: Languages\Slovenian; Description: Slovenian
 [Dirs]
 Name: {app}\OpenSong Defaults; Components: 
 Name: {app}\OpenSong Scripture
@@ -29,14 +32,14 @@ Name: {app}\OpenSong Defaults\Songs; Components: Extras\Songs
 DefaultDirName={pf}\OpenSong
 VersionInfoCompany=OpenSong
 AppName=OpenSong
-AppVerName=OpenSong Version 1.3.0
+AppVerName=OpenSong Version 1.4.0
 LicenseFile="gpl-en.txt"
 SetupIconFile="OpenSongInstall.ICO"
 UninstallDisplayIcon={app}\OpenSongUninstall.ICO
-VersionInfoVersion=1.3.0
+VersionInfoVersion=1.4.0
 VersionInfoDescription=OpenSong is a free, open-source software application created to manage lyrics, chords, lead sheets, overheads, computer projection, and more.
-VersionInfoCopyright=2007
-AppCopyright=2007
+VersionInfoCopyright=2008
+AppCopyright=2003
 DefaultGroupName=OpenSong
 AllowNoIcons=true
 [Files]
@@ -59,6 +62,9 @@ Source: "..\OpenSong Languages\Francais"; DestDir: "{app}\OpenSong Languages"; C
 Source: "..\OpenSong Languages\Portugues"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Portugues"
 Source: "..\OpenSong Languages\PortuguesBrasil"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\PortuguesBrasil"
 Source: "..\OpenSong Languages\Norwegian"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Norwegian"
+Source: "..\OpenSong Languages\Polski"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Polski"
+Source: "..\OpenSong Languages\Czech"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Czech"
+Source: "..\OpenSong Languages\Slovenian"; DestDir: "{app}\OpenSong Languages"; Components: "Languages\Slovenian"
 Source: "OpenSongUninstall.ICO"; DestDir: "{app}"
 Source: "gpl-sv.txt"; DestDir: "{app}"; Components: "Languages\Svenska"
 Source: "gpl-pt.txt"; DestDir: "{app}"; Components: "Languages\Portugues"
@@ -67,6 +73,8 @@ Source: "gpl-fr.txt"; DestDir: "{app}"; Components: "Languages\Francais"
 Source: "gpl-pt_BR.txt"; DestDir: "{app}"; Components: "Languages\PortuguesBrasil"
 Source: "gpl-es.txt"; DestDir: "{app}"; Components: "Languages\Espanol"
 Source: "gpl-nl.txt"; DestDir: "{app}"; Components: "Languages\Nederlands"
+Source: "gpl-pl.pdf"; DestDir: "{app}"; Components: "Languages\Polski"
+Source: "gpl-cs.pdf"; DestDir: "{app}"; Components: "Languages\Czech"
 [Icons]
 Name: {group}\OpenSong; Filename: {app}\OpenSong.exe; WorkingDir: {app}; IconIndex: 0; Tasks:
 Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\OpenSong; Filename: {app}\OpenSong.exe; IconIndex: 0; Components: ; Tasks: quicklaunchicon
@@ -86,5 +94,8 @@ Name: Portugues; MessagesFile: compiler:Languages\Portuguese.isl; LicenseFile: g
 Name: Espanol; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: gpl-es.txt
 Name: Svenska; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: gpl-sv.txt
 Name: Nederlands; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: gpl-nl.txt
+Name: Czech; MessagesFile: compiler:Languages\Czech.isl; LicenseFile: gpl-cs.pdf
+Name: Polski; MessagesFile: compiler:Languages\Polish.isl; LicenseFile: gpl-pl.pdf
+Name: Slovenian; MessagesFile: compiler:Languages\Slovenian.isl; LicenseFile: gpl-en.txt
 [Run]
 Filename: {app}\OpenSong.exe; Components: ; Flags: postinstall nowait; Description: Start OpenSong

@@ -146,6 +146,7 @@
       <add_scripture caption="Scripture">Adds a scripture slide or slides to the current set. This will display a window that will let you choose the particular passage that you wish to display.</add_scripture>
       <add_slides caption="Slides">Adds a custom slide to the current set. Custom slides allow you to specify your own title, subtitle, body text, and even style. A custom slide item can actually contain a series of slides.</add_slides>
       <add_style caption="Style">Changes the current set's default style at any place in the set. Styles changes can define a new style or revert to the previous style.</add_style>
+      <add_image caption="Image">Adds an image slide to the current set. Image slides will allow you to display a single image or a slideshow of multiple images instead of a body text.</add_image>
       <add_video caption="Video">Adds a video file to the current set. Use this to present a video from within OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Adds a PowerPoint presentation to the current set. Use this to control a PowerPoint presentation from within OpenSong.</add_powerpoint>
     </new_item>
@@ -160,6 +161,7 @@
       <song caption="(song)"/>
       <custom caption="(custom)"/>
       <scripture caption="(scripture)"/>
+      <image caption="(image)"/>
       <style caption="(style)">-- Change Style --</style>
       <revert caption="(style)">-- Revert Style --</revert>
       <defaultstyle caption="(style)">-- Exported Style --</defaultstyle>
@@ -180,7 +182,7 @@
     <title caption="Title">Sets the title of the slide displayed on the slide itself.</title>
     <subtitle caption="Subtitle">Sets the subtitle of the slide displayed on the slide itself.</subtitle>
     <name caption="Name">Sets the title of the slide(s) displayed in the Presentation Helper window. It does not display on the actual slide(s).</name>
-    <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item.</slides>
+    <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item. Hint: Drag one or more images to this list for easy adding.</slides>
     <presentation caption="Custom presentation order">Overrides the presentation order in the song file</presentation>
     <origorder caption="Original presentation order">Presentation order in the song file</origorder>       
     <folder caption="Song folder">Folder containing the selected item</folder>
@@ -194,6 +196,31 @@
     <seconds caption="seconds"/>
     <style caption="Override Style">Checking this box enables this slide item to contain a custom style. When enabled, click the preview box above to edit this item's style.</style>
   </slide_editor>
+
+  <image_slide>
+    <header caption="Image Slide Editor"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Image description in subtitle">Add the description of the showing image to the subtitle.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Images" head1="Preview" head2="Description">Contains the images that are shown in this slide.</images>
+    <fit_to_screen caption="Resize images to fit the screen">Images that are too large for the projector screen are resized to show the entire image. This also happens for images that are smaller than the screen size.</fit_to_screen>
+    <fit_to_body caption="Resize images to fit the body area">Images are made to always fit in the area that is bounded by the body style settings. This goes for both images that are larger and smaller than the body area.</fit_to_body>
+    <keepaspect caption="Keep aspect ratio when resizing images">In case of a resizing activity for either one of the above, the horizontal and vertical aspect will be maintained.</keepaspect>
+    <store_as_link caption="Do not store the image in the set, use link to the image">Storing images in the set rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Action" />
+      <ins_image caption="Add image">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
+      <del_image caption="Remove image">Removes the currently selected image from the slide.</del_image>
+      <move_up caption="Move up">Moves the currently selected image in the slide closer to the beginning of the slide.</move_up>
+      <move_down caption="Move down">Moves the currently selected image in the slide closer to the end of the slide.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
 
   <style_change>
     <header caption="Style Change"/>
@@ -241,6 +268,8 @@
   </song_search>
 
   <scripture_search title="Search">
+    <caption caption="Search in bible using keyword"/>
+    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
     <match caption="Match">
       <exact caption="E&amp;xact"/>
       <begin caption="&amp;Begins with"/>
@@ -250,7 +279,7 @@
       <any caption="An&amp;y word"/>
     </words>
     <search caption="&amp;Search"/>
-    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
+    <result caption="%1 matches were found using the specified keyword(s)."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
     <result head1="Reference" head2="Text" />
@@ -822,23 +851,32 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </song_activity>
 
   <scripture_lookup title="Scripture Lookup">
-    <book caption="Bible Book"/>
     <lookup caption="Quick Lookup">
       <reference caption="Reference"/>
       <lookup caption="Lookup"/>
       <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
+    <search caption="Full text search"/>
+    <books caption="Bible Book">
+	  <ot caption="Old testament"/>
+	  <nt caption="New testament"/>
+    </books>
+    <paragraph caption="Paragraph"/>
+    <colon caption=":"/>
+    <from_verse caption="From verse"/>
+    <dash caption="-"/>
+    <to_verse caption="To verse"/>
     <version caption="Version"/>
     <select_file caption="Please select a scripture file"/>
-    <verses_per_slide caption="Verses Per Slide">
-      <one caption="1"/>
-      <two caption="2"/>
-      <three caption="3"/>
-    </verses_per_slide>
+    <verses_per_slide caption="Verses per slide" />
+    <chars_per_slide caption="Max. characters per slide" />
     <format caption="Format">
       <paragraph caption="Paragraph"/>
       <verse caption="Verse"/>
     </format>
+    <shownumbers caption="Display verse numbers"/>
+    <preview caption="Voorbeeldweergave van schrift gedeelte"/>
+    <insert caption="link(shared/insert/@caption)"/>
     <bad_reference>
       <format>Please check the format of the query and try again.</format>
       <empty>Bad reference: the reference was empty.</empty>
@@ -849,11 +887,6 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <verse>Bad reference: could not find verse '%1'.</verse>
       <verse_range>Bad reference: the 'to' verse must be greater than or equal to the 'from' verse.</verse_range>
     </bad_reference>
-    <colon caption=":"/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
-    <insert caption="link(shared/insert/@caption)"/>
-    <shownumbers caption="Display verse numbers"/>
   </scripture_lookup>
 
   <module>

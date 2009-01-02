@@ -9,6 +9,7 @@ Begin Window MainSettingsWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   482
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -42,6 +43,7 @@ Begin Window MainSettingsWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -69,6 +71,7 @@ Begin Window MainSettingsWindow
       LockLeft        =   "False"
       LockRight       =   "False"
       LockTop         =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   10
@@ -95,6 +98,7 @@ Begin Window MainSettingsWindow
       LockRight       =   "True"
       LockTop         =   "True"
       Panels          =   ""
+      Scope           =   0
       SmallTabs       =   ""
       TabDefinition   =   "Basic\rSpecial"
       TabPanelIndex   =   0
@@ -122,6 +126,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -148,6 +153,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Church CCLI License"
             TextAlign       =   0
@@ -187,6 +193,7 @@ Begin Window MainSettingsWindow
             Multiline       =   "False"
             Password        =   "False"
             ReadOnly        =   "False"
+            Scope           =   0
             ScrollbarHorizontal=   "False"
             ScrollbarVertical=   "True"
             Styled          =   "False"
@@ -220,6 +227,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "System"
             TextSize        =   0
@@ -248,6 +256,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Language:"
             TextAlign       =   0
@@ -279,6 +288,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   10
@@ -305,6 +315,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -331,6 +342,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "User Defined 1:"
             TextAlign       =   0
@@ -403,6 +415,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "User Defined 2:"
             TextAlign       =   0
@@ -457,36 +470,6 @@ Begin Window MainSettingsWindow
             Width           =   200
             BehaviorIndex   =   13
          End
-         Begin StaticText lbl_define_user3
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   14
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_user_defined"
-            Italic          =   "False"
-            Left            =   50
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            TabPanelIndex   =   1
-            Text            =   "User Defined 3:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   330
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   200
-            BehaviorIndex   =   14
-         End
          Begin SEditField edt_define_user3
             AcceptTabs      =   "False"
             Alignment       =   0
@@ -494,7 +477,7 @@ Begin Window MainSettingsWindow
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   18
+            ControlOrder    =   16
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -527,14 +510,45 @@ Begin Window MainSettingsWindow
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   200
-            BehaviorIndex   =   18
+            BehaviorIndex   =   15
+         End
+         Begin StaticText lbl_define_user3
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   14
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_user_defined"
+            Italic          =   "False"
+            Left            =   50
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "User Defined 3:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   330
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   200
+            BehaviorIndex   =   14
          End
          Begin PushButton btn_define_load
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Cancel          =   "False"
             Caption         =   "Load Language Defaults"
-            ControlOrder    =   19
+            ControlOrder    =   17
             Default         =   "False"
             Enabled         =   True
             Height          =   22
@@ -547,6 +561,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   10
@@ -554,7 +569,7 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   200
-            BehaviorIndex   =   19
+            BehaviorIndex   =   16
          End
       End
       Begin GroupBox grp_settings_startmode
@@ -573,6 +588,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -580,7 +596,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   250
-         BehaviorIndex   =   15
+         BehaviorIndex   =   17
          Begin RadioButton rad_start_songs
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -597,6 +613,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   10
@@ -605,7 +622,7 @@ Begin Window MainSettingsWindow
             Value           =   "False"
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   16
+            BehaviorIndex   =   18
          End
          Begin RadioButton rad_start_sets
             AutoDeactivate  =   "True"
@@ -623,6 +640,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   10
@@ -631,7 +649,7 @@ Begin Window MainSettingsWindow
             Value           =   "False"
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   17
+            BehaviorIndex   =   19
          End
       End
       Begin GroupBox grp_settings_documents_folder
@@ -650,6 +668,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   2
          TextFont        =   "Arial"
          TextSize        =   11
@@ -674,6 +693,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
@@ -700,6 +720,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
@@ -728,6 +749,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "True"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "\\"
             TextAlign       =   0
@@ -758,6 +780,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
@@ -785,6 +808,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "True"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "(use with caution; forces restart)"
             TextAlign       =   0
@@ -815,6 +839,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "System"
             TextSize        =   10
@@ -842,6 +867,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
+         Scope           =   0
          TabPanelIndex   =   2
          TextFont        =   "SmallSystem"
          TextSize        =   0
@@ -868,6 +894,7 @@ Begin Window MainSettingsWindow
             LockRight       =   ""
             LockTop         =   ""
             Multiline       =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Log level (0-10)"
             TextAlign       =   0
@@ -898,6 +925,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "SmallSystem"
             TextSize        =   0
@@ -906,7 +934,7 @@ Begin Window MainSettingsWindow
             Value           =   ""
             Visible         =   True
             Width           =   206
-            BehaviorIndex   =   31
+            BehaviorIndex   =   29
          End
          Begin PopupMenu pop_logging_level
             AutoDeactivate  =   "True"
@@ -927,6 +955,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "System"
             TextSize        =   0
@@ -934,7 +963,7 @@ Begin Window MainSettingsWindow
             Underline       =   ""
             Visible         =   True
             Width           =   206
-            BehaviorIndex   =   33
+            BehaviorIndex   =   30
          End
          Begin Checkbox chk_logging_append
             AutoDeactivate  =   "True"
@@ -954,6 +983,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "SmallSystem"
             TextSize        =   0
@@ -962,7 +992,7 @@ Begin Window MainSettingsWindow
             Value           =   ""
             Visible         =   True
             Width           =   206
-            BehaviorIndex   =   35
+            BehaviorIndex   =   31
          End
       End
       Begin GroupBox grp_settings_fonts
@@ -981,6 +1011,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   1
          TextFont        =   "Arial"
          TextSize        =   11
@@ -988,7 +1019,7 @@ Begin Window MainSettingsWindow
          Underline       =   "False"
          Visible         =   True
          Width           =   221
-         BehaviorIndex   =   29
+         BehaviorIndex   =   32
          Begin StaticText lbl_fonts_headings
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -1007,6 +1038,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Headings:"
             TextAlign       =   0
@@ -1017,7 +1049,7 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   120
-            BehaviorIndex   =   30
+            BehaviorIndex   =   33
          End
          Begin StaticText lbl_fonts_labels
             AutoDeactivate  =   "True"
@@ -1037,6 +1069,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Labels:"
             TextAlign       =   0
@@ -1047,7 +1080,7 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   120
-            BehaviorIndex   =   32
+            BehaviorIndex   =   34
          End
          Begin StaticText lbl_fonts_text_fields
             AutoDeactivate  =   "True"
@@ -1067,6 +1100,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Text Fields:"
             TextAlign       =   0
@@ -1077,7 +1111,7 @@ Begin Window MainSettingsWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   120
-            BehaviorIndex   =   34
+            BehaviorIndex   =   35
          End
          Begin StaticText lbl_fonts_fixed_width
             AutoDeactivate  =   "True"
@@ -1097,6 +1131,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Fixed-width Text:"
             TextAlign       =   0
@@ -1129,6 +1164,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   77
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -1153,6 +1190,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Buttons:"
             TextAlign       =   0
@@ -1185,6 +1223,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   127
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -1209,6 +1249,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             Text            =   "Large Headings:"
             TextAlign       =   0
@@ -1241,6 +1282,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   177
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -1265,6 +1308,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "False"
+            Scope           =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   10
@@ -1295,6 +1339,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   227
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -1321,6 +1367,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   277
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -1347,6 +1395,8 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             TabPanelIndex   =   1
+            TextFont        =   "System"
+            TextSize        =   0
             Top             =   327
             UseFocusRing    =   "True"
             Visible         =   "True"
@@ -1370,6 +1420,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
+         Scope           =   0
          TabPanelIndex   =   2
          TextFont        =   "System"
          TextSize        =   0
@@ -1397,6 +1448,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "System"
             TextSize        =   0
@@ -1424,6 +1476,7 @@ Begin Window MainSettingsWindow
             LockRight       =   ""
             LockTop         =   ""
             Multiline       =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Image compression:"
             TextAlign       =   0
@@ -1454,6 +1507,7 @@ Begin Window MainSettingsWindow
             LockRight       =   ""
             LockTop         =   ""
             Multiline       =   "True"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
             TextAlign       =   0
@@ -1484,6 +1538,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "System"
             TextSize        =   0
@@ -1511,6 +1566,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   "False"
          LockRight       =   "False"
          LockTop         =   "False"
+         Scope           =   0
          TabPanelIndex   =   2
          TextFont        =   "Arial"
          TextSize        =   11
@@ -1537,6 +1593,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Server:"
             TextAlign       =   0
@@ -1567,6 +1624,7 @@ Begin Window MainSettingsWindow
             LockRight       =   "False"
             LockTop         =   "False"
             Multiline       =   "False"
+            Scope           =   0
             TabPanelIndex   =   2
             Text            =   "Port:"
             TextAlign       =   0
@@ -1680,6 +1738,7 @@ Begin Window MainSettingsWindow
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
+         Scope           =   0
          TabPanelIndex   =   2
          TextFont        =   "Arial"
          TextSize        =   11
@@ -1706,6 +1765,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "System"
             TextSize        =   0
@@ -1734,6 +1794,7 @@ Begin Window MainSettingsWindow
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Scope           =   0
             TabPanelIndex   =   2
             TextFont        =   "System"
             TextSize        =   0
@@ -2065,6 +2126,9 @@ End
 		  Dim T As Translator
 		  
 		  T = New Translator(App.AppFolder.Child("OpenSong Languages").Child(pop_general_language.Text))
+		  If Not T.IsLoaded Then
+		    T = Nil
+		  End If
 		  If T <> Nil Then
 		    App.T = T
 		    'save language selection in globals
@@ -2073,7 +2137,7 @@ End
 		    MainWindow.TranslateMe
 		    App.TranslateMe
 		  Else
-		    InputBox.Message "Error in translation."
+		    InputBox.Message "Error in translation. " + SmartML.GetErrorMessage()
 		    Return
 		  End If
 		  

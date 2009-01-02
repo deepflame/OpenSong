@@ -1,7 +1,7 @@
 #tag FileTypeSet
 	#tag FileType
 		CodeName=BMPFiles
-		DocIcon=OpenSong.rbres;&h19880
+		DocIcon=OpenSong.rbres;&h48
 		Extension=.bmp;.dib
 		Flags=&h0
 		MacCreator=
@@ -11,7 +11,7 @@
 
 	#tag FileType
 		CodeName=GIFFiles
-		DocIcon=OpenSong.rbres;&h1988C
+		DocIcon=OpenSong.rbres;&h54
 		Extension=.gif
 		Flags=&h0
 		MacCreator=
@@ -21,7 +21,7 @@
 
 	#tag FileType
 		CodeName=JPGFiles
-		DocIcon=OpenSong.rbres;&h19898
+		DocIcon=OpenSong.rbres;&h60
 		Extension=.jfif;.jpe;.jpeg;.jpg
 		Flags=&h0
 		MacCreator=
@@ -31,7 +31,7 @@
 
 	#tag FileType
 		CodeName=PICTFiles
-		DocIcon=OpenSong.rbres;&h198A4
+		DocIcon=OpenSong.rbres;&h6C
 		Extension=.pict;.pic;.pct
 		Flags=&h0
 		MacCreator=
@@ -41,7 +41,7 @@
 
 	#tag FileType
 		CodeName=PNGFiles
-		DocIcon=OpenSong.rbres;&h198B0
+		DocIcon=OpenSong.rbres;&h78
 		Extension=.png
 		Flags=&h0
 		MacCreator=
@@ -51,7 +51,7 @@
 
 	#tag FileType
 		CodeName=TIFFFiles
-		DocIcon=OpenSong.rbres;&h198BC
+		DocIcon=OpenSong.rbres;&h84
 		Extension=.jfx;.tif;.tiff
 		Flags=&h0
 		MacCreator=????

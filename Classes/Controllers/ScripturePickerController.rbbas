@@ -4,7 +4,7 @@ Implements ScriptureNotifier
 	#tag Method, Flags = &h0
 		Sub CommandNotification(command As String, sender As iScripturePicker, parameter As Variant)
 		  
-		  System.DebugLog "ScripturePickerController.CommandNotification: " + Command
+		  App.DebugWriter.Write "ScripturePickerController.CommandNotification: " + Command, 5
 		  
 		  Select Case command
 		  Case cmdSelectBible
@@ -35,7 +35,7 @@ Implements ScriptureNotifier
 		    ScripturePickerDone sender
 		    
 		  Case Else
-		    System.DebugLog "ScripturePickerController.CommandNotification: Unknown command " + command
+		    App.DebugWriter.Write "ScripturePickerController.CommandNotification: Unknown command " + command, 1
 		  End Select
 		  
 		End Sub
@@ -78,15 +78,29 @@ Implements ScriptureNotifier
 	#tag Method, Flags = &h1
 		Protected Sub ChangePassage(newPassage As String)
 		  Dim values() As String
+		  Dim newBook As Integer
+		  Dim newChapter As Integer
+		  Dim newFromVerse As Integer
+		  Dim newThruVerse As Integer
 		  
 		  values = Split(newPassage, Chr(0))
-		  If CurrentBible.ValidateCitation(Val(values(0)), Val(values(1)), Val(values(2)), Val(values(3))) Then
-		    CurrentBook = Val(values(0))
-		    CurrentChapter = Val(values(1))
-		    CurrentFromVerse = Val(values(2))
-		    CurrentThruVerse = Val(values(3))
-		    NotifyPassageChanged
+		  App.DebugWriter.Write "ScripturePickerController.ChangePassage: " + join(values, ", ")
+		  newBook = Val(values(0))
+		  newChapter = Val(values(1))
+		  newFromVerse = Val(values(2))
+		  newThruVerse = Val(values(3))
+		  
+		  // Compare... will determine what has changed and reset these as appropriate
+		  
+		  CompareToCurrentPassage(newBook, newChapter, newFromVerse, newThruVerse)
+		  If CurrentBible.ValidateCitation(newBook, newChapter, newFromVerse, newThruVerse) Then
+		    CurrentBook = newBook
+		    CurrentChapter = newChapter
+		    CurrentFromVerse = newFromVerse
+		    CurrentThruVerse = newThruVerse
 		  End If
+		  NotifyPassageChanged
+		  
 		End Sub
 	#tag EndMethod
 
@@ -260,6 +274,11 @@ Implements ScriptureNotifier
 		    VersesPerSlide = sender.VersesPerSlide
 		  End If
 		  
+		  If sender.CharsPerSlide <> CharsPerSlide Then
+		    changed = True
+		    CharsPerSlide = sender.CharsPerSlide
+		  End If
+		  
 		  If sender.ShowVerseNumbers <> ShowVerseNumbers Then
 		    changed = True
 		    ShowVerseNumbers = Not ShowVerseNumbers
@@ -279,6 +298,7 @@ Implements ScriptureNotifier
 		  For Each o As iScripturePicker in Observers
 		    o.FormatAsParagraph(FormatParagraph)
 		    o.VersesPerSlide(VersesPerSlide)
+		    o.CharsPerSlide(CharsPerSlide)
 		    o.ShowVerseNumbers(ShowVerseNumbers)
 		  Next
 		End Sub
@@ -378,7 +398,8 @@ Implements ScriptureNotifier
 		  CurrentChapter = SmartML.GetValueN(params, "last_scripture/@chapter")
 		  CurrentFromVerse = SmartML.GetValueN(params, "last_scripture/@verse")
 		  CurrentThruVerse = SmartML.GetValueN(params, "last_scripture/@thru")
-		  VersesPerSlide = Max(1, SmartML.GetValueN(params, "last_scripture/@per_slide"))
+		  VersesPerSlide = Max(1, Min(SmartML.GetValueN(params, "last_scripture/@verse_per_slide"), 5))
+		  CharsPerSlide = Max(1, Min(SmartML.GetValueN(params, "last_scripture/@chars_per_slide"), 1000))
 		  ShowVerseNumbers = SmartML.GetValueB(params, "last_scripture/@show_numbers", True, True)
 		  FormatParagraph = ("paragraph" = SmartML.GetValue(params, "last_scripture/@format"))
 		  
@@ -419,7 +440,8 @@ Implements ScriptureNotifier
 		  SmartML.SetValueN(params, "last_scripture/@chapter", CurrentChapter)
 		  SmartML.SetValueN(params, "last_scripture/@verse", CurrentFromVerse)
 		  SmartML.SetValueN(params, "last_scripture/@thru", CurrentThruVerse)
-		  SmartML.SetValueN(params, "last_scripture/@per_slide", VersesPerSlide)
+		  SmartML.SetValueN(params, "last_scripture/@verse_per_slide", VersesPerSlide)
+		  SmartML.SetValueN(params, "last_scripture/@chars_per_slide", CharsPerSlide)
 		  SmartML.SetValueB(params, "last_scripture/@show_numbers", ShowVerseNumbers)
 		  
 		  If FormatParagraph Then
@@ -485,6 +507,8 @@ Implements ScriptureNotifier
 		    slideBody = ""
 		    For i As Integer = 1 To VersesPerSlide
 		      If currVerse > UBound(verses) Then Exit For
+		      If i > 1 and (slideBody.Len + verses(currVerse).len) > CharsPerSlide  Then Exit For
+		      
 		      If slideBody.Len > 0 Then slideBody = slideBody + sep
 		      slideBody = slideBody + verses(currVerse)
 		      currVerse = currVerse + 1
@@ -534,6 +558,41 @@ Implements ScriptureNotifier
 		  wnd.Visible = False
 		End Sub
 	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub CompareToCurrentPassage(ByRef newBook As Integer, ByRef newChapter As Integer, ByRef newFromVerse As Integer, ByRef newThruVerse As Integer)
+		  // Determine what has changed in the citation from what is currently selected, and update
+		  // the citation as necessary.
+		  
+		  If newBook <> CurrentBook Then
+		    newChapter = 1
+		    newFromVerse = 1
+		    newThruVerse = 1
+		  ElseIf newChapter <> CurrentChapter Then
+		    newFromVerse = 1
+		    newThruVerse = 1
+		  ElseIf (newFromVerse <> CurrentFromVerse) Then
+		    If (newFromVerse < 1) Or (newFromVerse > CurrentBible.GetVerseCount(newBook, newChapter)) Then
+		      newFromVerse = 1
+		    End If
+		  ElseIf (newThruVerse <> CurrentThruVerse) Then
+		    If (newThruVerse < 1) Or (newThruVerse > CurrentBible.GetVerseCount(newBook, newChapter)) Then
+		      newThruVerse = 1
+		    End If
+		  End If
+		  
+		  If newThruVerse < newFromVerse Then
+		    newThruVerse = newFromVerse
+		  End If
+		End Sub
+	#tag EndMethod
+
+
+	#tag Note, Name = Index Base
+		For this module, the base index for the Chapter and Verse references is 1
+		It is the responsibility of the Observers to convert as necessary to 0-based
+		(for example, to fill a listbox).
+	#tag EndNote
 
 
 	#tag Property, Flags = &h1
@@ -587,6 +646,10 @@ Implements ScriptureNotifier
 
 	#tag Property, Flags = &h1
 		Protected ActiveSearchWindow As SearchWindow
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected CharsPerSlide As Integer
 	#tag EndProperty
 
 

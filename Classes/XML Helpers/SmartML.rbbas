@@ -28,7 +28,7 @@ Protected Module SmartML
 
 	#tag Method, Flags = &h1
 		Protected Sub DisplayError()
-		  InputBox.Message ErrorString + " (" + Str(ErrorCode) + ")"
+		  InputBox.Message GetErrorMessage()
 		End Sub
 	#tag EndMethod
 
@@ -685,6 +685,12 @@ Protected Module SmartML
 		  d.SQLDateTime = d.SQLDate + " " + s
 		  return d
 		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetErrorMessage() As String
+		  Return ErrorString + " (" + Str(ErrorCode) + ")"
 		End Function
 	#tag EndMethod
 

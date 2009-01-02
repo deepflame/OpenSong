@@ -90,6 +90,18 @@ Protected Interface iScripturePicker
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub CharsPerSlide(characterCount As Integer)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CharsPerSlide() As Integer
+		  
+		End Function
+	#tag EndMethod
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

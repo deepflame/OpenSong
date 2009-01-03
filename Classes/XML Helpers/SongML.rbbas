@@ -2369,20 +2369,20 @@ Module SongML
 		  sections = Split(Trim(presentation), " ")
 		  
 		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
-		  dim vlakvoorPipeTeken as boolean 'gp
+		  dim BeforePipeSign as boolean 'gp
 		  For Each section In sections
 		    If dict.HasKey(section) Then
 		      
 		      sub_sections = Split(dict.Value(section), "||")
-		      vlakvoorPipeTeken =  (sub_sections.Ubound  > 0) 'gp
+		      BeforePipeSign =  (sub_sections.Ubound  > 0) 'gp
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        if vlakvoorPipeTeken then 
-		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section+"  ...")))  'gp:als diaovergang geforceerd wordt altijd ... tonen zodat makkelijker doorzingt 'gp
+		        if BeforePipeSign then 
+		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section+"  ...")))  'gp: if forced new slide then always show ...  so the public knows then verse is not finished 'gp
 		        else
 		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section)))
 		        end if
-		        vlakvoorPipeTeken = false
+		        BeforePipeSign = false
 		        If section = "default" Then
 		          SmartML.SetValue(slide, "@id", "")
 		        Else

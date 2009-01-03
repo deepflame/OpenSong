@@ -62,10 +62,8 @@ Inherits SBufferedCanvas
 	#tag Event
 		Sub Paint(g As Graphics)
 		  Dim img As Picture
-		  'Dim bgDrawH, bgDrawW As Integer
 		  Dim  gHeight, gWidth As Double 'gp
 		  dim TOP, BOTTOM, LEFT, RIGHT as double
-		  'Dim display_height As Integer
 		  Dim aspect_ratio As Double 'gp
 		  dim MaxSizeFact as double
 		  DIM  Stretch as boolean
@@ -85,22 +83,7 @@ Inherits SBufferedCanvas
 		    MaxSizeFact = min(1,max(0, workingstyle.BGMaxSize/100))
 		    gHeight = g.Height * MaxSizeFact
 		    gWidth = g.Width * MaxSizeFact
-		    'if workingStyle.BackgroundAlign = "center" Then
-		    'gWidth = g.Width
-		    'end if
-		    'if workingStyle.BackgroundVAlign = "center" then
-		    'gHeight = g.Height
-		    'end if
-		    'bgDrawH =min(img.Height, gheight)
-		    'bgDrawW = min(img.Width, gwidth)
-		    'bgHeightRatio = gHeight / img.Height
-		    'bgHeightRatio_half = (gHeight/2) / img.Width 'gp
-		    'bgWidthRatio = gWidth / img.Width
 		    aspect_ratio = Min(gHeight / img.Height, gWidth / img.Width)
-		    'aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio) 'gp
-		    'display_height = bgDrawH * aspect_ratio
-		    'display_height = gHeight - display_height
-		    'display_height = display_height / 2
 		    if workingStyle.BackgroundAlign = "left" Then
 		      LEFT =0
 		      if stretch then
@@ -157,48 +140,6 @@ Inherits SBufferedCanvas
 		    RIGHT- LEFT, _
 		    BOTTOM - TOP, _
 		    0, 0, img.width, img.height
-		    'Select Case PictureAspect
-		    '
-		    'Case SlideStyle.POS_CENTER
-		    '
-		    'g.DrawPicture img, _
-		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		    'display_height, _
-		    'bgDrawW * aspect_ratio, _
-		    'bgDrawH * aspect_ratio, _
-		    '0, 0, bgDrawW, bgDrawH
-		    ''gp start
-		    'Case SlideStyle.POS_TOP
-		    '
-		    'g.DrawPicture img, _
-		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		    '0, _ //gpgpgpgpg
-		    'bgDrawW * aspect_ratio, _
-		    'bgDrawH * aspect_ratio, _
-		    '0, 0, bgDrawW, bgDrawH
-		    '
-		    'Case SlideStyle.POS_bottom
-		    '
-		    'g.DrawPicture img, _
-		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		    'gheight-(img.Height *bgHeightRatio), _ //gpgpgpgpgppgdisplay_height, _
-		    'bgDrawW * aspect_ratio, _
-		    'bgDrawH * aspect_ratio, _
-		    '0, 0, bgDrawW, bgDrawH
-		    '
-		    'Case SlideStyle.POS_bottom_max_half_height
-		    '
-		    'g.DrawPicture img, _
-		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		    'max(gheight-(img.Height *bgHeightRatio_half),gheight/2) , _ //gpgpgpgpgppgdisplay_height, _
-		    'bgDrawW * aspect_ratio, _
-		    'bgDrawH * aspect_ratio_half, _
-		    '0, 0, bgDrawW, bgDrawH
-		    '
-		    ''gp end
-		    'Case SlideStyle.POS_STRETCH
-		    'g.DrawPicture img, 0, 0, gWidth, gHeight, 0, 0, img.Width, img.Height
-		    'End Select
 		  Else
 		    g.ForeColor = DarkBevelColor
 		    g.DrawRect 0, 0, Width, Height

@@ -128,11 +128,6 @@ Protected Module SetML
 		    stripW = strip*aspect_ratio
 		    bgDrawH = background.Height - strip
 		    bgDrawW = background.Width - stripW
-		    'bgHeightRatio = gHeight / bgDrawH
-		    'bgHeightRatio_half =( gHeight/2) / bgDrawH 'gp
-		    'bgWidthRatio = gWidth / bgDrawW
-		    'aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
-		    'aspect_ratio_half = Min(bgHeightRatio_half, bgWidthRatio) 'gp
 		    display_height = bgDrawH * aspect_ratio //Scale pic to display
 		    display_height = gheight - display_height //If this is the "short" side, calculate the difference between the pic and screen
 		    display_height = display_height / 2 //Half of that is our y margin
@@ -211,47 +206,6 @@ Protected Module SetML
 		    
 		    
 		    
-		    'Select Case Style.Position
-		    '
-		    'Case SlideStyle.POS_CENTER
-		    '
-		    'g.DrawPicture background, _
-		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		    'display_height, _
-		    'bgDrawW * aspect_ratio, _
-		    'bgDrawH * aspect_ratio, _
-		    'stripw, 0, bgDrawW, bgDrawH
-		    ''gp start
-		    'Case SlideStyle.POS_top
-		    '
-		    'g.DrawPicture background, _
-		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		    '0, _ //display_height, _ gpgpgpgpgpgpg
-		    'bgDrawW * aspect_ratio, _
-		    'bgDrawH * aspect_ratio, _
-		    'stripw, 0, bgDrawW, bgDrawH
-		    '
-		    'Case SlideStyle.POS_bottom
-		    '
-		    'g.DrawPicture background, _
-		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		    'g.height- bgDrawH * aspect_ratio, _ //display_height, _ gpgpgpgpgpgpg
-		    'bgDrawW * aspect_ratio, _
-		    'bgDrawH * aspect_ratio, _
-		    'stripw, 0, bgDrawW, bgDrawH
-		    '
-		    'Case SlideStyle.POS_bottom_max_half_height
-		    '
-		    'g.DrawPicture background, _
-		    '(gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
-		    'max(g.height- bgDrawH * aspect_ratio_half,g.height/2) , _ //display_height, _ gpgpgpgpgpgpg
-		    'bgDrawW * aspect_ratio, _
-		    'bgDrawH * aspect_ratio_half, _
-		    'stripw, 0, bgDrawW, bgDrawH
-		    ''gp end
-		    'Case SlideStyle.POS_STRETCH
-		    'g.DrawPicture background, -(strip*aspect_ratio)/2, 0, g.Width+(strip*aspect_ratio), g.Height+strip, 0, 0, background.Width, background.Height
-		    'End Select
 		    //--EMP
 		  End If
 		  
@@ -492,7 +446,7 @@ Protected Module SetML
 		    
 		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		      g.TextSize = Floor(g.TextSize * .95)
-		      if g.textsize <=0 then exit
+		      if g.textsize <=0 then exit 'gp break endless loop
 		    Wend
 		    
 		    Profiler.EndProfilerEntry
@@ -568,7 +522,7 @@ Protected Module SetML
 		        'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
-		          if g.textsize <=0 then exit 'gp
+		          if g.textsize <=0 then exit 'gp break endless loop
 		        Wend
 		        i = i + 1 ' skip the extra
 		      End If
@@ -589,14 +543,13 @@ Protected Module SetML
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
 		    'gp start
-		    'todo als type song dan size is maximaal 10% groter dan vorige size in dezelfde set
+		    'todo as type song thrn size is max 10% greater then last size  in same songgroup
 		    dim maxgrowFact as double
 		    maxgrowFact = 1+(SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@max_grow")/100)
 		    maxgrowFact = max(maxgrowFact,1)
 		    if lastbodysize > 16 then
 		      if lastslidetype = SlideType then
 		        g.textsize = min  (g.textsize, round(lastbodysize *  maxgrowFact))
-		        'MsgBox( "lastslidetype "+ str( lastslidetype)  + " "+str( lastbodysize))
 		      end if
 		    end if
 		    
@@ -798,7 +751,7 @@ Protected Module SetML
 		  Dim prev_group, neighbor_slide, style As XmlNode
 		  Dim GetNext As Boolean
 		  Dim GetDefault As Boolean 'gp
-		  'Dim SlideType As String property geworden 'gp
+		  'Dim SlideType As String became a property 'gp
 		  Dim SlideGroup As XmlNode
 		  
 		  GetDefault = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_default", True, True) 'gp
@@ -1138,7 +1091,7 @@ Protected Module SetML
 		      
 		      f.OntoGraphics(g)
 		      fontHeight = FontFaceHeight(g, f) + FontFaceAscent(g, f)
-		      titleHeight = CountFields(title, Chr(10)) * fontHeight -  FontFaceAscent(g, f)'gp anders is ruimte tussen titel en body te groot
+		      titleHeight = CountFields(title, Chr(10)) * fontHeight -  FontFaceAscent(g, f)'gp uses as mutch space as posible, litle margin between title and body
 		      titleWidth = FontFaceWidth(g, title, f)
 		      fVerse.OntoGraphics(g)
 		      If rest <> "" Then restWidth = FontFaceWidth(g, rest, fVerse)

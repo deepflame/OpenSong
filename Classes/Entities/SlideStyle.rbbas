@@ -101,7 +101,7 @@ Protected Class SlideStyle
 
 	#tag Method, Flags = &h0
 		Sub Position(Assigns pos As Integer)
-		  If pos < 0 or pos > 5 Then pos = POS_CENTER ' Defaults to Stretch if invalid 'gp
+		  If pos < 0 or pos > 2 Then pos = POS_STRETCH ' Defaults to Stretch if invalid
 		  Position = pos
 		End Sub
 	#tag EndMethod
@@ -295,7 +295,6 @@ Protected Class SlideStyle
 		  '--
 		  SmartML.SetValue(CurrChild, "@valign", BodyVAlign)
 		  SmartML.SetValue(CurrChild, "@align", BodyAlign)
-		  
 		  SmartML.SetValueB(CurrChild, "@highlight_chorus", Highlight)
 		  SmartML.SetValueN(CurrChild, "@margin-left", BodyMargins.Left)
 		  SmartML.SetValueN(CurrChild, "@margin-right", BodyMargins.Right)
@@ -546,7 +545,7 @@ Protected Class SlideStyle
 		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
 		  
 		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
-		  If Position < POS_STRETCH Or Position > POS_bottom_max_half_height Then 'gp
+		  If Position < POS_STRETCH Or Position > POS_CENTER Then 'gp
 		    Position = POS_CENTER
 		  End If
 		End Sub
@@ -826,15 +825,6 @@ Protected Class SlideStyle
 	#tag EndConstant
 
 	#tag Constant, Name = POS_TILE, Type = Double, Dynamic = False, Default = \"6", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = POS_TOP, Type = Double, Dynamic = False, Default = \"3", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = POS_BOTTOM, Type = Double, Dynamic = False, Default = \"4", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = POS_bottom_max_half_height, Type = Double, Dynamic = False, Default = \"5", Scope = Public
 	#tag EndConstant
 
 

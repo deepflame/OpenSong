@@ -1,4 +1,6 @@
-﻿* Fix for bug id 2473781: Black screen with No Transition on initial item
+﻿* Updated Slovenian translation (thanx leeloo3)
+
+* Fix for bug id 2473781: Black screen with No Transition on initial item
 
 * Update Swedish (Svenska) translation for v1.4 (thanks edvinerdtman)
 

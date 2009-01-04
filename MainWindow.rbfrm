@@ -8411,7 +8411,7 @@ End
 		          SmartML.SetValueN(slide_group, "@transition", Transition)
 		        End If
 		        
-		        'gp 8 regels naar boven SongStyle = SmartML.GetNode(slide_group, "style", False)
+		        'gp moved 8 lines to above SongStyle = SmartML.GetNode(slide_group, "style", False)
 		        'Check if there is an overide for the song style in this slide
 		        If SlideSongStyle <> Nil Then
 		          If SmartML.GetNode(slide_group, "style", False) <> Nil Then 'gp

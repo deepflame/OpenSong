@@ -1129,7 +1129,7 @@ Het afbeeldingsbestand PuffyClouds1.jpg wat opgenomen is in de map Backgrounds v
 
   <errors>
     <empty_group>Groep '%1' moet minimaal 1 dia bevatten.</empty_group>
-    <unreadable_image>Kan image bestand '%1' niet lezen.</unreadable_image>
+    <unreadable_image>Kan afbeeldingsbestand '%1' niet lezen.</unreadable_image>
     <end_of_songs>Einde liederen bereikt.</end_of_songs>
     <already_exists>'%1' bestaat reeds.</already_exists>
     <bad_format>'%1' bevat verkeerd formaat. Wordt overgeslagen...</bad_format>

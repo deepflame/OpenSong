@@ -76,8 +76,15 @@ Protected Class StyleImage
 		        Me.oImage = File.OpenAsPicture()
 		        
 		        If Me.oImage <> Nil Then
-		          Me.sBase64 = ""
-		          Me.sFilename = File.AbsolutePath()
+		          
+		          If File.AbsolutePath().StartsWith( TemporaryFolder().AbsolutePath() ) Then
+		            Me.sBase64 = EncodeBase64(inputStream.Read(File.Length))
+		            Me.sFilename = ""
+		          Else
+		            Me.sBase64 = ""
+		            Me.sFilename = File.AbsolutePath()
+		          End If
+		          
 		          bSuccess = True
 		        Else
 		          Clear()
@@ -89,8 +96,10 @@ Protected Class StyleImage
 		      
 		    End If
 		  Else
-		    If File.AbsolutePath() <> "" Then
-		      InputBox.Message App.T.Translate("errors/unreadable_image", File.AbsolutePath)
+		    If File<>Nil Then
+		      If File.AbsolutePath() <> "" Then
+		        InputBox.Message App.T.Translate("errors/unreadable_image", File.AbsolutePath)
+		      End If
 		    End If
 		    Clear()
 		  End If
@@ -122,10 +131,19 @@ Protected Class StyleImage
 
 	#tag Method, Flags = &h0
 		Function SetImageFromFileName(Filename As String) As Boolean
+		  Dim result As Boolean = False
 		  Dim f as FolderItem
 		  
 		  f=GetFolderItem(FileName)
-		  Return SetImageFromFile(f)
+		  If IsNull(f) Then
+		    If Filename <> "" Then
+		      InputBox.Message App.T.Translate("errors/unreadable_image", Filename)
+		    End If
+		  Else
+		    result = SetImageFromFile(f)
+		  End If
+		  
+		  Return result
 		End Function
 	#tag EndMethod
 

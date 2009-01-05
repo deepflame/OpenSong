@@ -1100,23 +1100,15 @@ Protected Module SetML
 	#tag Method, Flags = &h0
 		Function GetSong(slidegroup As XmlNode, Songs As FolderDB, ByRef songFolder As String) As XmlDocument
 		  Dim songDoc As XmlDocument
-		  Dim xpath As XmlAttribute
 		  Dim songF as FolderItem
 		  
 		  If slidegroup <> Nil Then
-		    xpath = slidegroup.GetAttributeNode("path")
 		    
-		    // Three possible cases here
-		    // xpath = Nil (no path) is a pre-V1 set format; look anywhere in the songs folder
-		    // xpath <> Nil, path = "": look only in top level folder (must anchor)
-		    // xpath <> Nil, path <> "": specific folder
-		    If xpath <> Nil Then
-		      If xpath.Value = "" Then
-		        songFolder = "/"
-		      Else
-		        songFolder = xpath.Value
-		      End If
+		    songFolder = SmartML.GetValue(slidegroup, "@path", False)
+		    If Songfolder = "" Then
+		      songfolder = "/"
 		    End If
+		    
 		    songf = Songs.GetFile(songFolder + SmartML.GetValue(slidegroup, "@name", False))
 		    If songf = Nil Or (Not songf.Exists) Then
 		      songDoc = Nil
@@ -1126,9 +1118,7 @@ Protected Module SetML
 		        InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
 		      End If
 		    End If
-		  End If
-		  
-		  If songDoc = Nil Then
+		  Else
 		    songFolder = ""
 		  End If
 		  

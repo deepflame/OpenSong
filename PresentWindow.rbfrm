@@ -9,6 +9,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
+   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
@@ -41,6 +42,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -49,40 +51,42 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   302
       BehaviorIndex   =   0
-   End
-   Begin Timer timerAdvance
-      ControlOrder    =   1
-      Enabled         =   "True"
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   248
-      Mode            =   0
-      Period          =   10000
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Visible         =   "True"
-      Width           =   32
-      BehaviorIndex   =   1
-   End
-   Begin Timer timerTransition
-      ControlOrder    =   2
-      Enabled         =   "True"
-      Height          =   32
-      Index           =   -2147483648
-      InitialParent   =   "cnvSlide"
-      Left            =   204
-      Mode            =   0
-      Period          =   125
-      TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      Top             =   248
-      Visible         =   "True"
-      Width           =   32
-      BehaviorIndex   =   2
+      Begin Timer timerAdvance
+         ControlOrder    =   1
+         Enabled         =   "True"
+         Height          =   32
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   248
+         Mode            =   0
+         Period          =   10000
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   248
+         Visible         =   "True"
+         Width           =   32
+         BehaviorIndex   =   1
+      End
+      Begin Timer timerTransition
+         ControlOrder    =   2
+         Enabled         =   "True"
+         Height          =   32
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   204
+         Mode            =   0
+         Period          =   125
+         Scope           =   0
+         TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   248
+         Visible         =   "True"
+         Width           =   32
+         BehaviorIndex   =   2
+      End
    End
 End
 #tag EndWindow
@@ -197,7 +201,7 @@ End
 		  Mode = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@initial_mode")
 		  If Len(Mode) <> 1 Then Mode = "N"
 		  doTransition = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
-		  curslideTransition = SlideTransitionEnum.ApplicationDefault
+		  curslideTransition = SlideTransitionEnum.NoTransition
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
 	#tag EndEvent
@@ -722,6 +726,7 @@ End
 		    'StringUtils.Sprintf("%d, %d, %d, %d", Screen(i).Top, Screen(i).Left, Screen(i).Height, Screen(i).Width)
 		  Next i
 		  
+		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
 		  'System.DebugLog "Determine correct PresentMode"
 		  If PresentMode = MODE_SINGLE_SCREEN Then ' Single Screen
 		    presentScreen = controlScreen
@@ -766,6 +771,7 @@ End
 		    PresentHelperWindow.Left = Screen(presentScreen).Left + (Screen(presentScreen).Width /2)  - PresentHelperWindow.Width - 10
 		    PresentHelperWindow.Top = Screen(presentScreen).Top + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
 		  End If
+		  cnvSlide.Visible = True
 		  
 		  //++
 		  // EMP, September 2006
@@ -1960,7 +1966,7 @@ End
 		    'g.DrawPicture LastPicture.CXG_Transition(CurrentPicture, LastPicture, TransitionFrame/TransitionFrames), 0, 0
 		    Profiler.EndProfilerEntry
 		  Else
-		    g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
+		    g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, CurrentPicture.Width, CurrentPicture.Height
 		  End If
 		  '#if DebugBuild Then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Exit")

@@ -1,4 +1,6 @@
-﻿* Updated Slovenian translation (thanx leeloo3)
+﻿* Fix broken set item type displaying in set list (JRC)
+
+* Updated Slovenian translation (thanx leeloo3)
 
 * Fix for bug id 2473781: Black screen with No Transition on initial item
 

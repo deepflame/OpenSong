@@ -8448,7 +8448,9 @@ End
 		          Log.Title = SmartML.GetValue(SongDoc.DocumentElement, "title", True)
 		          Log.Author = SmartML.GetValue(SongDoc.DocumentElement, "author", True)
 		          Log.CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli_number", True)  //The song's CCLI number
-		          Log.SongFileName =  f.Parent.Name + "/" +  f.Name
+				  if f <> nil then
+		            Log.SongFileName =  f.Parent.Name + "/" +  f.Name
+				  end if
 		          Log.DateAndTime = d
 		          Log.Presented = True
 		          

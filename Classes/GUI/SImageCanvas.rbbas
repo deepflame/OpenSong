@@ -80,7 +80,11 @@ Inherits SBufferedCanvas
 		  img = Me.Image.GetImage()
 		  If img <> Nil Then
 		    Stretch= (PictureAspect = SlideStyle.POS_STRETCH)
-		    MaxSizeFact = min(1,max(0, workingstyle.BGMaxSize/100))
+		    if workingstyle <> nil then
+		      MaxSizeFact = min(1,max(0, workingstyle.BGMaxSize/100))
+		    else
+		      MaxSizeFact = 1
+		    end if
 		    gHeight = g.Height * MaxSizeFact
 		    gWidth = g.Width * MaxSizeFact
 		    aspect_ratio = Min(gHeight / img.Height, gWidth / img.Width)

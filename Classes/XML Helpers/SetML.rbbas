@@ -138,7 +138,11 @@ Protected Module SetML
 		    DIM  Stretch as boolean
 		    
 		    Stretch= (Style.Position = SlideStyle.POS_STRETCH)
-		    MaxSizeFact = min(1,max(0, style.BGMaxSize/100))
+		    if style <> nil then
+		      MaxSizeFact = min(1,max(0, style.BGMaxSize/100))
+		    else
+		      MaxSizeFact = 1
+		    end if
 		    if maxsizefact < 0.01 then
 		      maxSizeFact = 1
 		    end if

@@ -1,4 +1,6 @@
-﻿* Fix broken set item type displaying in set list (JRC)
+﻿* Fix tabulator issues, bug # 2484150
+
+* Fix broken set item type displaying in set list (JRC)
 
 * Updated Slovenian translation (thanx leeloo3)
 

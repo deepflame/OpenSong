@@ -31,7 +31,7 @@ Begin Window StyleTabsWindow
       Caption         =   "Tabulators"
       ControlOrder    =   0
       Enabled         =   True
-      Height          =   217
+      Height          =   264
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -68,7 +68,7 @@ Begin Window StyleTabsWindow
          GridLinesVertical=   0
          HasHeading      =   ""
          HeadingIndex    =   -1
-         Height          =   146
+         Height          =   192
          HelpTag         =   ""
          Hierarchical    =   ""
          Index           =   -2147483648
@@ -103,7 +103,7 @@ Begin Window StyleTabsWindow
          Caption         =   "Properties"
          ControlOrder    =   2
          Enabled         =   True
-         Height          =   146
+         Height          =   192
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "grp_tabs"
@@ -147,7 +147,7 @@ Begin Window StyleTabsWindow
             TextColor       =   &h000000
             TextFont        =   "System"
             TextSize        =   0
-            Top             =   55
+            Top             =   58
             Underline       =   ""
             Visible         =   True
             Width           =   51
@@ -193,7 +193,7 @@ Begin Window StyleTabsWindow
             TextColor       =   &h000000
             TextFont        =   "System"
             TextSize        =   0
-            Top             =   53
+            Top             =   58
             Underline       =   ""
             UseFocusRing    =   "True"
             Visible         =   True
@@ -216,7 +216,7 @@ Begin Window StyleTabsWindow
             LockTop         =   ""
             Scope           =   0
             TabPanelIndex   =   0
-            Top             =   53
+            Top             =   58
             Visible         =   True
             Width           =   13
             BehaviorIndex   =   5
@@ -244,9 +244,9 @@ Begin Window StyleTabsWindow
             Text            =   "px"
             TextAlign       =   0
             TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   53
+            TextFont        =   "System"
+            TextSize        =   0
+            Top             =   58
             Underline       =   "False"
             Visible         =   True
             Width           =   20
@@ -277,7 +277,7 @@ Begin Window StyleTabsWindow
             TextColor       =   &h000000
             TextFont        =   "System"
             TextSize        =   0
-            Top             =   75
+            Top             =   78
             Underline       =   ""
             Visible         =   True
             Width           =   51
@@ -434,6 +434,34 @@ Begin Window StyleTabsWindow
             Width           =   25
             BehaviorIndex   =   12
          End
+         Begin PushButton btn_apply
+            AutoDeactivate  =   "True"
+            Bold            =   ""
+            Cancel          =   ""
+            Caption         =   "Appl&y"
+            ControlOrder    =   20
+            Default         =   ""
+            Enabled         =   True
+            Height          =   22
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_tabs_properties"
+            Italic          =   ""
+            Left            =   197
+            LockBottom      =   ""
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            TabPanelIndex   =   0
+            TextFont        =   "System"
+            TextSize        =   0
+            Top             =   197
+            Underline       =   ""
+            Visible         =   True
+            Width           =   80
+            BehaviorIndex   =   20
+         End
       End
       Begin PushButton btn_new
          AutoDeactivate  =   "True"
@@ -457,7 +485,7 @@ Begin Window StyleTabsWindow
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   0
-         Top             =   197
+         Top             =   243
          Underline       =   ""
          Visible         =   True
          Width           =   51
@@ -485,7 +513,7 @@ Begin Window StyleTabsWindow
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   0
-         Top             =   197
+         Top             =   243
          Underline       =   ""
          Visible         =   True
          Width           =   68
@@ -513,7 +541,7 @@ Begin Window StyleTabsWindow
          TabPanelIndex   =   0
          TextFont        =   "System"
          TextSize        =   0
-         Top             =   197
+         Top             =   243
          Underline       =   ""
          Visible         =   True
          Width           =   93
@@ -548,7 +576,7 @@ Begin Window StyleTabsWindow
       Top             =   4
       Underline       =   ""
       Visible         =   True
-      Width           =   102
+      Width           =   280
       BehaviorIndex   =   16
    End
    Begin SBufferedCanvas can_style_preview
@@ -589,7 +617,7 @@ Begin Window StyleTabsWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   232
+      Left            =   380
       LockBottom      =   "False"
       LockLeft        =   "False"
       LockRight       =   "False"
@@ -617,7 +645,7 @@ Begin Window StyleTabsWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   "False"
-      Left            =   312
+      Left            =   460
       LockBottom      =   "False"
       LockLeft        =   "False"
       LockRight       =   "False"
@@ -651,6 +679,7 @@ End
 		  
 		  lst_tabs.SortedColumn = 0
 		  lst_tabs.ColumnSortDirection(0) = ListBox.SortAscending
+		  DisableEditControls()
 		  
 		  self.isUpdatingUI = True
 		  self.isUpdatingPreview = True
@@ -658,6 +687,7 @@ End
 		  self.isUpdatingPreview = False
 		  self.isUpdatingUI = False
 		  UpdatePreview
+		  
 		  
 		  self.ReturnValue = False
 		  ShowModalWithin(MainWindow)
@@ -727,6 +757,18 @@ End
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Sub DisableEditControls()
+		  self.currentTab.Position = 0
+		  self.currentTab.align = StyleHAlignEnum.Left
+		  self.currentTab.alignChar = ""
+		  
+		  grp_tabs_properties.Enabled = False
+		  edt_position.setString("")
+		  edt_alignchar.Text = ""
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h21
 		Private isUpdatingPreview As Boolean
@@ -780,14 +822,9 @@ End
 		      edt_alignchar.Text = self.currentTab.alignChar
 		    End Select
 		  Else
-		    self.currentTab.Position = 0
-		    self.currentTab.align = StyleHAlignEnum.Left
-		    self.currentTab.alignChar = ""
-		    
-		    grp_tabs_properties.Enabled = False
-		    edt_position.setString("")
-		    edt_alignchar.Text = ""
+		    DisableEditControls()
 		  End If
+		  UpdatePreview()
 		  
 		  self.isUpdatingUI = False
 		End Sub
@@ -958,6 +995,7 @@ End
 		  lst_tabs.Cell(lst_tabs.LastIndex, 2) = tab.StringValue(true)
 		  
 		  lst_tabs.ListIndex = lst_tabs.LastIndex
+		  edt_position.SetFocus()
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -967,7 +1005,7 @@ End
 		  If lst_tabs.ListIndex > -1 Then
 		    lst_tabs.RemoveRow lst_tabs.ListIndex
 		    
-		    UpdatePreview
+		    UpdatePreview()
 		  End If
 		End Sub
 	#tag EndEvent
@@ -976,6 +1014,8 @@ End
 	#tag Event
 		Sub Action()
 		  lst_tabs.DeleteAllRows
+		  DisableEditControls()
+		  UpdatePreview()
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -1002,9 +1042,13 @@ End
 		  margins = self.editStyle.BodyMargins()
 		  
 		  'draw lines indicating the tabstops
-		  g.ForeColor = RGB(255, 0, 255) 'Magenta - a color that is not likely to be used in a background...
 		  For i = 0 to self.editStyle.BodyTabCount() - 1
 		    tab = self.editStyle.BodyTabGet(i)
+		    If tab.Position = self.currentTab.Position Then
+		      g.ForeColor = RGB(0, 255, 0) 'Bright Green - a color that is not likely to be used in a background...
+		    Else
+		      g.ForeColor = RGB(255, 0, 255) 'Magenta - a color that is not likely to be used in a background...
+		    End If
 		    
 		    g.DrawLine(((margins.Left + tab.Position) * zoom) + RealBorder, _
 		    (margins.Top * zoom) + RealBorder, _
@@ -1029,6 +1073,30 @@ End
 	#tag Event
 		Sub Action()
 		  Close
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_apply
+	#tag Event
+		Sub Action()
+		  If Not self.isUpdatingUI Then
+		    self.currentTab.Position = edt_position.Value
+		    If edt_left.Value Then
+		      self.currentTab.align = StyleHAlignEnum.Left
+		    ElseIf edt_middle.Value Then
+		      self.currentTab.align = StyleHAlignEnum.Middle
+		    ElseIf edt_right.Value Then
+		      self.currentTab.align = StyleHAlignEnum.Right
+		    ElseIf edt_char.Value Then
+		      self.currentTab.align = StyleHAlignEnum.Char
+		    End If
+		    self.currentTab.alignChar = edt_alignchar.Text
+		    
+		    lst_tabs.Cell(lst_tabs.ListIndex, 0) = cStr(self.currentTab.Position)
+		    lst_tabs.Cell(lst_tabs.ListIndex, 2) = self.currentTab.StringValue(true)
+		    
+		    UpdatePreview
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents

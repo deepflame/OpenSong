@@ -796,6 +796,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <middle caption="Middle"/>
       <right caption="Right"/>
       <char caption="At character"/>
+      <apply caption="link(shared/apply/@caption)n"/>
     </properties>
     <preview caption="Preview"/>
   </style_tabs>
@@ -1057,6 +1058,7 @@ Click on this slide to edit its style.</body>
     <cancel caption="Cancel"/>
     <yes caption="Yes"/>
     <no caption="No"/>
+    <apply caption="Appl&amp;y"/>
     <browse caption="Browse"/>
     <browse_for caption="Browse for Folder"/>
     <add caption="Add"/>

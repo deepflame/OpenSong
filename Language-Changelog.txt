@@ -1,3 +1,5 @@
+style_tabs/properties/apply
+shared/apply
 scripture_search/caption
 scripture_search/result
 scripture_lookup/book (Deleted)
@@ -11,6 +13,8 @@ scripture_lookup/verse_per_slide (Deleted child nodes)
 sets_mode/items/image
 image_slide/*
 sets_mode/new_item/add_image
+
+-= Version 1.4 =-
 song_activity/merged
 song_activity/merged_dupes
 song_activity/file_type

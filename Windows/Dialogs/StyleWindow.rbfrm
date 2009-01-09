@@ -1220,7 +1220,12 @@ End
 		    can_font_body.SetEnabled(true)
 		    sal_align_body.Enabled = true
 		    btn_body_margin.Enabled = true
-		    btn_body_tabs.Enabled = true
+		    
+		    If workingStyle.BodyAlign = "left" Then
+		      btn_body_tabs.Enabled = True
+		    Else
+		      btn_body_tabs.Enabled = False
+		    End If
 		  Else
 		    can_font_body.SetEnabled(false)
 		    sal_align_body.Enabled = false

@@ -798,6 +798,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <middle caption="Midden"/>
       <right caption="Rechts"/>
       <char caption="Op karakter"/>
+      <apply caption="link(shared/apply/@caption)"/>
     </properties>
     <preview caption="Voorbeeld"/>
   </style_tabs>
@@ -1059,6 +1060,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <cancel caption="Annuleren"/>
     <yes caption="Ja"/>
     <no caption="Nee"/>
+    <apply caption="Toepassen"/>
     <browse caption="Bladeren"/>
     <browse_for caption="Bladeren naar map"/>
     <add caption="Toevoegen"/>

@@ -1,4 +1,7 @@
-﻿* Fix tabulator issues, bug # 2484150
+﻿
+* Reload set when saving (temporary workaround for bug #2308669)
+
+* Fix tabulator issues, bug # 2484150
 
 * Fix broken set item type displaying in set list (JRC)
 

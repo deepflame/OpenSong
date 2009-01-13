@@ -387,6 +387,7 @@ Protected Module SetML
 		    
 		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		      g.TextSize = Floor(g.TextSize * .95)
+		      if g.textsize <=0 then exit
 		    Wend
 		    
 		    Profiler.EndProfilerEntry
@@ -457,10 +458,12 @@ Protected Module SetML
 		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
+		          if g.textsize <=0 then exit 'gp
 		        Wend
 		        'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
+		          if g.textsize <=0 then exit 'gp
 		        Wend
 		        i = i + 1 ' skip the extra
 		      End If
@@ -475,6 +478,7 @@ Protected Module SetML
 		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
 		      ' FUTURE PROBLEM: When we size it down, we should rewrap it all
 		      g.TextSize = Floor(g.TextSize * .95)
+		      if g.textsize <=0 then exit 'gp
 		    Wend
 		    
 		    Profiler.EndProfilerEntry
@@ -1126,36 +1130,50 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function InsertAfterBreak() As String
+		  'gp start
+		  if slidetype = "song" then
+		    if  SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@insping_after_break", True, True) then
+		      Return "   "
+		    end if
+		  end if
+		  return ""
+		  'gp end
+		  
+		End Function
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		SlideType As String
+	#tag EndProperty
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

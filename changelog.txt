@@ -1,4 +1,6 @@
-﻿* Indent song after forced line-break (gerritp)
+﻿* Prevent Endless loop in SetML.DrawSlide (gerritp)
+
+* Indent song after forced line-break (gerritp)
 
 * Reload set when saving (temporary workaround for bug #2308669)
 

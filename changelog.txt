@@ -1,4 +1,5 @@
-﻿
+﻿* Indent song after forced line-break (gerritp)
+
 * Reload set when saving (temporary workaround for bug #2308669)
 
 * Fix tabulator issues, bug # 2484150

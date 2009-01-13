@@ -418,7 +418,7 @@ Protected Module SetML
 		          d = Mid(line, z, 1)
 		          If d = " " and z <> 2 Then ' wrap it here
 		            lines(i) = Mid(line, x, z-x)
-		            lines.Insert i+1, Mid(line, z+1)
+		            lines.Insert i+1, InsertAfterBreak+ Mid(line, z+1)
 		            isWrapped = True
 		            Exit
 		          End If
@@ -432,7 +432,7 @@ Protected Module SetML
 		            If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
 		              (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
 		              lines(i) = Mid(line, x, z-x)
-		              lines.Insert i+1, Mid(line, z)
+		              lines.Insert i+1,insertafterbreak+ Mid(line, z)
 		              isWrapped = True
 		              Exit
 		            End If
@@ -447,12 +447,12 @@ Protected Module SetML
 		        //--
 		        If Not isWrapped Then
 		          lines(i) = Mid(line, x, y-x)
-		          lines.Insert i + 1, Mid(line, y)
+		          lines.Insert i + 1, insertafterbreak+Mid(line, y)
 		        End If
 		      ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
 		        ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
 		        line = lines(i)
-		        lines.Insert i+1, SmartWrap(line)
+		        lines.Insert i+1, insertafterbreak+SmartWrap(line)
 		        lines(i) = line
 		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
@@ -489,7 +489,7 @@ Protected Module SetML
 		    Next i
 		    line = RTrim(line)
 		    
-		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs) 'EMP 09/05
+		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
 		  End Select
 		  
 		  Profiler.EndProfilerEntry

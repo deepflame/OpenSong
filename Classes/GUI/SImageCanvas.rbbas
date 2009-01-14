@@ -88,56 +88,64 @@ Inherits SBufferedCanvas
 		    gHeight = g.Height * MaxSizeFact
 		    gWidth = g.Width * MaxSizeFact
 		    aspect_ratio = Min(gHeight / img.Height, gWidth / img.Width)
-		    if workingStyle.BackgroundAlign = "left" Then
-		      LEFT =0
-		      if stretch then
-		        RIGHT = min(LEFT + img.Width,  gWidth)
+		    if workingstyle <> nil then
+		      if workingStyle.BackgroundAlign = "left" Then
+		        LEFT =0
+		        if stretch then
+		          RIGHT = min(LEFT + img.Width,  gWidth)
+		        else
+		          RIGHT = min(LEFT + img.Width* aspect_ratio,  gWidth)
+		        end if
 		      else
-		        RIGHT = min(LEFT + img.Width* aspect_ratio,  gWidth)
+		        if  workingStyle.BackgroundAlign = "right" Then
+		          RIGHT = g.Width
+		          if stretch then
+		            LEFT = max(RIGHT- img.Width, g.width- gWidth)
+		          else
+		            LEFT = max(RIGHT- img.Width* aspect_ratio, g.width- gWidth)
+		          end if
+		        else
+		          if Stretch then
+		            LEFT = 0
+		            RIGHT =g.width
+		          else
+		            LEFT = (g.width- img.width* aspect_ratio)/2
+		            RIGHT = LEFT +  img.width* aspect_ratio
+		          end if
+		        end if
+		      end if
+		      if workingStyle.BackgroundVAlign = "bottom" Then
+		        BOTTOM = g.height
+		        if stretch then
+		          TOP = max(BOTTOM - img.height,  g.height - gheight)
+		        else
+		          TOP = max(BOTTOM - img.height* aspect_ratio,  g.height - gheight)
+		        end if
+		      else
+		        if  workingStyle.BackgroundVAlign = "top" Then
+		          TOP= 0
+		          if stretch then
+		            BOTTOM = min(TOP+ img.height,  gheight)
+		          else
+		            BOTTOM = min(TOP+ img.height* aspect_ratio,  gheight)
+		          end if
+		        else
+		          if stretch then
+		            TOP = 0
+		            BOTTOM = g.height
+		          else
+		            TOP = (g.height- img.height* aspect_ratio)/2
+		            BOTTOM = TOP + img.height* aspect_ratio
+		          end if
+		        end if
 		      end if
 		    else
-		      if  workingStyle.BackgroundAlign = "right" Then
-		        RIGHT = g.Width
-		        if stretch then
-		          LEFT = max(RIGHT- img.Width, g.width- gWidth)
-		        else
-		          LEFT = max(RIGHT- img.Width* aspect_ratio, g.width- gWidth)
-		        end if
-		      else
-		        if Stretch then
-		          LEFT = 0
-		          RIGHT =g.width
-		        else
-		          LEFT = (g.width- img.width* aspect_ratio)/2
-		          RIGHT = LEFT +  img.width* aspect_ratio
-		        end if
-		      end if
-		    end if
-		    if workingStyle.BackgroundVAlign = "bottom" Then
+		      TOP = 0
 		      BOTTOM = g.height
-		      if stretch then
-		        TOP = max(BOTTOM - img.height,  g.height - gheight)
-		      else
-		        TOP = max(BOTTOM - img.height* aspect_ratio,  g.height - gheight)
-		      end if
-		    else
-		      if  workingStyle.BackgroundVAlign = "top" Then
-		        TOP= 0
-		        if stretch then
-		          BOTTOM = min(TOP+ img.height,  gheight)
-		        else
-		          BOTTOM = min(TOP+ img.height* aspect_ratio,  gheight)
-		        end if
-		      else
-		        if stretch then
-		          TOP = 0
-		          BOTTOM = g.height
-		        else
-		          TOP = (g.height- img.height* aspect_ratio)/2
-		          BOTTOM = TOP + img.height* aspect_ratio
-		        end if
-		      end if
+		      LEFT = 0
+		      RIGHT =g.width
 		    end if
+		    
 		    g.DrawPicture img, _
 		    LEFT, _
 		    TOP, _

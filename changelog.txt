@@ -1,4 +1,8 @@
-﻿* Prevent Endless loop in SetML.DrawSlide (gerritp)
+﻿* Added Gerrit Prins to list of devs in About Window
+
+* Copy/Paste of Set Items is now supported (gerritp)
+
+* Prevent Endless loop in SetML.DrawSlide (gerritp)
 
 * Indent song after forced line-break (gerritp)
 

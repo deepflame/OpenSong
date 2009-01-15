@@ -387,6 +387,7 @@ Protected Module SetML
 		    
 		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		      g.TextSize = Floor(g.TextSize * .95)
+		      if g.textsize <=0 then exit
 		    Wend
 		    
 		    Profiler.EndProfilerEntry
@@ -418,7 +419,7 @@ Protected Module SetML
 		          d = Mid(line, z, 1)
 		          If d = " " and z <> 2 Then ' wrap it here
 		            lines(i) = Mid(line, x, z-x)
-		            lines.Insert i+1, Mid(line, z+1)
+		            lines.Insert i+1, InsertAfterBreak+ Mid(line, z+1)
 		            isWrapped = True
 		            Exit
 		          End If
@@ -432,7 +433,7 @@ Protected Module SetML
 		            If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
 		              (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
 		              lines(i) = Mid(line, x, z-x)
-		              lines.Insert i+1, Mid(line, z)
+		              lines.Insert i+1,insertafterbreak+ Mid(line, z)
 		              isWrapped = True
 		              Exit
 		            End If
@@ -447,20 +448,22 @@ Protected Module SetML
 		        //--
 		        If Not isWrapped Then
 		          lines(i) = Mid(line, x, y-x)
-		          lines.Insert i + 1, Mid(line, y)
+		          lines.Insert i + 1, insertafterbreak+Mid(line, y)
 		        End If
 		      ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
 		        ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
 		        line = lines(i)
-		        lines.Insert i+1, SmartWrap(line)
+		        lines.Insert i+1, insertafterbreak+SmartWrap(line)
 		        lines(i) = line
 		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
+		          if g.textsize <=0 then exit 'gp
 		        Wend
 		        'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
+		          if g.textsize <=0 then exit 'gp
 		        Wend
 		        i = i + 1 ' skip the extra
 		      End If
@@ -475,6 +478,7 @@ Protected Module SetML
 		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
 		      ' FUTURE PROBLEM: When we size it down, we should rewrap it all
 		      g.TextSize = Floor(g.TextSize * .95)
+		      if g.textsize <=0 then exit 'gp
 		    Wend
 		    
 		    Profiler.EndProfilerEntry
@@ -489,7 +493,7 @@ Protected Module SetML
 		    Next i
 		    line = RTrim(line)
 		    
-		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs) 'EMP 09/05
+		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
 		  End Select
 		  
 		  Profiler.EndProfilerEntry
@@ -1126,36 +1130,50 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function InsertAfterBreak() As String
+		  'gp start
+		  if slidetype = "song" then
+		    if  SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@insping_after_break", True, True) then
+		      Return "   "
+		    end if
+		  end if
+		  return ""
+		  'gp end
+		  
+		End Function
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		SlideType As String
+	#tag EndProperty
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"

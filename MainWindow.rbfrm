@@ -7018,21 +7018,29 @@ End
 		  Dim slide_groups As XmlNode
 		  Dim listindex As Integer
 		  
-		  listindex = lst_set_items.ListIndex
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  slide_groups.RemoveChild slide_groups.Child(ListIndex)
-		  '++JRC Prevent OutofBounds Exception
-		  Status_InSetChanged = False
-		  '--
-		  '++JRC Fix issue where Currently selected  Set Item was not updating after removing an item from set list
-		  CurrentInSetItem = -2
-		  '--
-		  lst_set_items.RemoveRow ListIndex
-		  If listindex < lst_set_items.ListCount Then
-		    lst_set_items.ListIndex = listindex
-		  ElseIf listindex = lst_set_items.ListCount Then
-		    lst_set_items.ListIndex = listindex - 1
-		  End If
+		  if pge_contents.value = 4 then
+		    If lst_image_images.ListIndex > -1 Then
+		      lst_image_images.RemoveRow( lst_image_images.ListIndex )
+		    end if
+		  else
+		    listindex = lst_set_items.ListIndex
+		    slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		    slide_groups.RemoveChild slide_groups.Child(ListIndex)
+		    '++JRC Prevent OutofBounds Exception
+		    Status_InSetChanged = False
+		    '--
+		    '++JRC Fix issue where Currently selected  Set Item was not updating after removing an item from set list
+		    CurrentInSetItem = -2
+		    '--
+		    lst_set_items.RemoveRow ListIndex
+		    If listindex < lst_set_items.ListCount Then
+		      lst_set_items.ListIndex = listindex
+		    ElseIf listindex = lst_set_items.ListCount Then
+		      lst_set_items.ListIndex = listindex - 1
+		    End If
+		    
+		  end if
+
 		  
 		  Status_SetChanged = True
 		  'Status_InSetChanged = False
@@ -13309,12 +13317,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Action()
-		  If lst_image_images.ListIndex > -1 Then
-		    lst_image_images.RemoveRow( lst_image_images.ListIndex )
-		    
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
+		  ActionInSetRemove
 		End Sub
 	#tag EndEvent
 #tag EndEvents

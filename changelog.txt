@@ -1,4 +1,6 @@
-﻿* Fix bug where if you press del in lst_image_images, it will delete the whole list, now it only deletes the selected picture (gerritp)
+﻿* Updated translations for Czech, Spanish and added Hungarian (thanx matysek03, brucio and gygellert)
+
+* Fix bug where if you press del in lst_image_images, it will delete the whole list, now it only deletes the selected picture (gerritp)
 
 * Added Gerrit Prins to list of devs in About Window
 

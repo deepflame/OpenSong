@@ -916,7 +916,7 @@ End
 		    PresentWindow.CurrentSlide = Me.ListIndex + 1
 		    PresentWindow.XCurrentSlide = SetML.GetSlide(PresentWindow.CurrentSet, Me.ListIndex + 1)
 		    PresentWindow.ResetPaint PresentWindow.XCurrentSlide
-		    StaticText1.text = str(SetMl.bodysize ) 'gp
+		    StaticText1.text = str(SetMl.bodysize ) + " "+SetMl.SchrinkReason 'gp
 		    //++
 		    // Try to keep the active slide in the center of the visible items
 		    //--

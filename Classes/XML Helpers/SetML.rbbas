@@ -74,6 +74,10 @@ Protected Module SetML
 		  Dim d2 As String
 		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
 		  Dim bodyTabs() As StyleTabsType
+		  dim maxgrowFact as double
+		  SchrinkReason = ""
+		  maxgrowFact = (SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@max_grow")/100)
+		  
 		  'gpgpgpgpgp evt uitbreiden bijv alleen als song en blanks groot maken enz
 		  lastbodysize = bodysize 'gp
 		  lastslidetype = SlideType 'gp
@@ -228,7 +232,7 @@ Protected Module SetML
 		  
 		  slideType = SmartML.GetValue(xslide.Parent.Parent, "@type")
 		  
-		  RealBorder = g.Width / 50
+		  RealBorder = g.Width / 100 ' 50
 		  HeaderSize = 0
 		  FooterSize = 0
 		  
@@ -433,8 +437,11 @@ Protected Module SetML
 		    HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
 		    VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
 		    WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
-		    If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
+		    If WrapPercent >  1- maxgrowFact Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
 		      g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
+		      if wrappercent < 1 then 
+		        SchrinkReason = SchrinkReason + "pre "+ str(wrappercent) + " "
+		      end if
 		      Profiler.EndProfilerEntry
 		      GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
 		    End If
@@ -450,6 +457,7 @@ Protected Module SetML
 		    
 		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		      g.TextSize = Floor(g.TextSize * .95)
+		      SchrinkReason = SchrinkReason + "H1 "
 		      if g.textsize <=0 then exit 'gp break endless loop
 		    Wend
 		    
@@ -521,11 +529,13 @@ Protected Module SetML
 		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
+		          SchrinkReason = SchrinkReason + "W1 "
 		          if g.textsize <=0 then exit 'gp
 		        Wend
 		        'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
 		        While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
 		          g.TextSize = Floor(g.TextSize * .95)
+		          SchrinkReason = SchrinkReason + "W2 "
 		          if g.textsize <=0 then exit 'gp break endless loop
 		        Wend
 		        i = i + 1 ' skip the extra
@@ -541,6 +551,7 @@ Protected Module SetML
 		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
 		      ' FUTURE PROBLEM: When we size it down, we should rewrap it all
 		      g.TextSize = Floor(g.TextSize * .95)
+		      SchrinkReason = SchrinkReason + "Hpost  "
 		      if g.textsize <=0 then exit 'gp
 		    Wend
 		    
@@ -548,12 +559,9 @@ Protected Module SetML
 		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
 		    'gp start
 		    'todo as type song thrn size is max 10% greater then last size  in same songgroup
-		    dim maxgrowFact as double
-		    maxgrowFact = 1+(SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@max_grow")/100)
-		    maxgrowFact = max(maxgrowFact,1)
 		    if lastbodysize > 16 then
 		      if lastslidetype = SlideType then
-		        g.textsize = min  (g.textsize, round(lastbodysize *  maxgrowFact))
+		        g.textsize = min  (g.textsize, round(lastbodysize * max( 1+ maxgrowFact,1)))
 		      end if
 		    end if
 		    
@@ -565,7 +573,16 @@ Protected Module SetML
 		    
 		    line = ""
 		    For i = 1 To UBound(lines)
-		      line = line + lines(i) + Chr(10)
+		      if i <>  UBound(lines) and left(lines(i+1),3) = "   " and mid(lines(i+1),4,1) <> " " then
+		        if g.StringWidth(lines(i)+ " "+trim(lines(i+1))) <= UsableWidth then
+		          lines(i) = lines(i) + " "+trim(lines(i+1))
+		          lines(i+1)= ""
+		        end if
+		      end if
+		      if lines(i) <> "" then
+		        line = line + lines(i) + Chr(10)
+		      end if
+		      
 		    Next i
 		    line = RTrim(line)
 		    
@@ -1183,7 +1200,7 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function InsertAfterBreak() As string
+		Function InsertAfterBreak() As String
 		  'gp start
 		  if slidetype = "song" then
 		    if  SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@insping_after_break", True, True) then
@@ -1260,6 +1277,10 @@ Protected Module SetML
 
 	#tag Property, Flags = &h0
 		lastslidetype As string'gp
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected SchrinkReason As string
 	#tag EndProperty
 
 

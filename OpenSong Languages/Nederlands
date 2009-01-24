@@ -155,6 +155,7 @@
       <move_down caption="Naar beneden">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
       <remove caption="Verwijderen">Verwijdert het huidige item van het project.</remove>
       <copy caption="Kopiëren">Maakt een kopie van het huidige item.</copy>
+      <paste caption="link(shared/insert/@caption)">Voeg het gekopieerde item toe na de huidige positie.</paste>      
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
     </current_item>
     <items caption="Project Items">Lijst met items in het huidige project. Klik op een aangepaste dia om die te kunnen wijzigen of dubbelklik een lied om te wijzigen.
@@ -798,6 +799,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <middle caption="Midden"/>
       <right caption="Rechts"/>
       <char caption="Op karakter"/>
+      <apply caption="link(shared/apply/@caption)"/>
     </properties>
     <preview caption="Voorbeeld"/>
   </style_tabs>
@@ -1059,6 +1061,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <cancel caption="Annuleren"/>
     <yes caption="Ja"/>
     <no caption="Nee"/>
+    <apply caption="Toepassen"/>
     <browse caption="Bladeren"/>
     <browse_for caption="Bladeren naar map"/>
     <add caption="Toevoegen"/>
@@ -1129,7 +1132,7 @@ Het afbeeldingsbestand PuffyClouds1.jpg wat opgenomen is in de map Backgrounds v
 
   <errors>
     <empty_group>Groep '%1' moet minimaal 1 dia bevatten.</empty_group>
-    <unreadable_image>Kan image bestand '%1' niet lezen.</unreadable_image>
+    <unreadable_image>Kan afbeeldingsbestand '%1' niet lezen.</unreadable_image>
     <end_of_songs>Einde liederen bereikt.</end_of_songs>
     <already_exists>'%1' bestaat reeds.</already_exists>
     <bad_format>'%1' bevat verkeerd formaat. Wordt overgeslagen...</bad_format>

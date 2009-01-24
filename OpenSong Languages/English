@@ -155,6 +155,7 @@
       <move_down caption="Move Dn">Moves the currently selected item in the set closer to the end of the set.</move_down>
       <remove caption="Remove">Removes the currently selected item from the set.</remove>
       <copy caption="Copy">Creates a copy of the currently selected set item.</copy>
+      <paste caption="link(shared/insert/@caption)">Insert copied item after current position.</paste>      
       <store caption="Save">Stores the currently selected item in the set.</store>
     </current_item>
     <items caption="Set Items">Lists the items in the current set. Click on a custom slide to load it into the custom slide editor or double-click a song to load it into the song editor.
@@ -796,6 +797,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <middle caption="Middle"/>
       <right caption="Right"/>
       <char caption="At character"/>
+      <apply caption="link(shared/apply/@caption)n"/>
     </properties>
     <preview caption="Preview"/>
   </style_tabs>
@@ -1057,6 +1059,7 @@ Click on this slide to edit its style.</body>
     <cancel caption="Cancel"/>
     <yes caption="Yes"/>
     <no caption="No"/>
+    <apply caption="Appl&amp;y"/>
     <browse caption="Browse"/>
     <browse_for caption="Browse for Folder"/>
     <add caption="Add"/>

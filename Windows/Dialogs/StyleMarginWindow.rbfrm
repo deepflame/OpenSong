@@ -175,6 +175,8 @@ Begin Window StyleMarginWindow
       LockTop         =   ""
       Scope           =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   146
       Visible         =   True
       Width           =   13
@@ -274,6 +276,8 @@ Begin Window StyleMarginWindow
       LockTop         =   ""
       Scope           =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   149
       Visible         =   True
       Width           =   13
@@ -373,6 +377,8 @@ Begin Window StyleMarginWindow
       LockTop         =   ""
       Scope           =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   14
       Visible         =   True
       Width           =   13
@@ -534,6 +540,8 @@ Begin Window StyleMarginWindow
       LockTop         =   ""
       Scope           =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   271
       Visible         =   True
       Width           =   13
@@ -589,6 +597,8 @@ Begin Window StyleMarginWindow
       LockTop         =   ""
       Scope           =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   55
       UseFocusRing    =   "True"
       Visible         =   True
@@ -984,7 +994,7 @@ End
 		  g.Height - (margins.Top + margins.Bottom) * zoom
 		  
 		  'draw a rectangle indicating the actual writing area
-		  g.ForeColor = RGB(0, 255, 0) 'Magenta - a color that is not likely to be used in a background...
+		  g.ForeColor = RGB(0, 255, 0) 'Bright Green - a color that is not likely to be used in a background...
 		  g.DrawRect (margins.Left * zoom) + RealBorder, _
 		  (margins.Top * zoom) + RealBorder, _
 		  g.Width - ((margins.Left + margins.Right) * zoom) - (RealBorder * 2), _

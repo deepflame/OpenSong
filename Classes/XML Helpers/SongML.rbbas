@@ -1846,7 +1846,7 @@ Module SongML
 		  firstLineIndex = chordLineIndex
 		  i = chordLineIndex + 1
 		  While lastLineIndex = 0
-		    If i > UBound(lines) Or Len(lines(i)) = 0 Or Left(lines(i), 1) = ";" Or Left(trim(lines(i)), 1) = "[" Or Left(lines(i), 1) = "." Or Left(lines(i), 1) = "-" Then 'gp 
+		    If i > UBound(lines) Or Len(lines(i)) = 0 Or Left(lines(i), 1) = ";" Or Left(trim(lines(i)), 1) = "[" Or Left(lines(i), 1) = "." Or Left(lines(i), 1) = "-" Then 'gp
 		      lastLineIndex = i - 1
 		    End if
 		    i = i + 1
@@ -1969,7 +1969,7 @@ Module SongML
 		      'line = RTrim(Mid(lyrics, st, x-st))
 		      line = StringUtils.RemoveWhitespace(Mid(lyrics, st, x-st), Globals.WhitespaceChars, 1)
 		      '--
-		      If Left(trim(line), 1) = "[" Then 
+		      If Left(trim(line), 1) = "[" Then
 		        section = Mid(trim(line), 2, Instr(2, trim(line), "]") - 2) 'gp
 		      ElseIf Left(line, 1) = "." Then // Chord
 		      ElseIf Left(line, 1) = ";" Then // Comment
@@ -2370,14 +2370,19 @@ Module SongML
 		  
 		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
 		  dim BeforePipeSign as boolean 'gp
+		  dim ChorusNr as integer 'GP
+		  ChorusNr = 0 'GP
 		  For Each section In sections
 		    If dict.HasKey(section) Then
+		      If Lowercase(Left(section, 1)) = "c" Then
+		        ChorusNr = ChorusNr+ 1 'GP
+		      end if
 		      
 		      sub_sections = Split(dict.Value(section), "||")
 		      BeforePipeSign =  (sub_sections.Ubound  > 0) 'gp
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        if BeforePipeSign then 
+		        if BeforePipeSign then
 		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section+"  ...")))  'gp: if forced new slide then always show ...  so the public knows then verse is not finished 'gp
 		        else
 		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section)))
@@ -2390,6 +2395,8 @@ Module SongML
 		        End If
 		        If Lowercase(Left(section, 1)) = "c" Then
 		          SmartML.SetValueB(slide, "@emphasize", True)
+		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
+		          
 		        End If
 		      Next
 		    End If

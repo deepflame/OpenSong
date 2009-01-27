@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Czech" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.3.0">
+<language name="Czech" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.4.0">
 
   <load_settings>
     <checking_folders>Vytvářím/Kontroluji složku s dokumenty</checking_folders>
     <main>Načítám hlavní nastavení</main>
     <print>Načítám nastavení pro tisk</print>
     <presentation>Načítám nastavení pro prezentaci</presentation>
+    <transitions>Načítám seznam přechodů</transitions>
     <tempos>Načítám seznam temp</tempos>
     <themes>Načítám seznam témat</themes>
     <time_signatures>Načítám seznam časových značek</time_signatures>
+    <imagequality>Načítám přehled kvality obrázků</imagequality>
     <fonts>Načítám seznam písem</fonts>
     <latest_version>Kontroluji dostupnost nové verze
       <newer_available>Je dostupná nová verze (%1). Pro stáhnutí navštivte www.opensong.org.</newer_available>
@@ -43,15 +45,16 @@
         <single_screen caption="Jedna obrazovka"/>
         <dual_screen caption="Na projektor"/>
         <preview_dual_screen caption="Náhled"/>
-      </present>
-      <export caption="Export">Exportuje aktuální píseň.
-        <to caption="Vyberte složku pro export."/>
-      </export>
-      <rename caption="Přejmenovat">Přejmenuje aktuální píseň.</rename>
-      <move caption="Přesunout">Přesune aktuální píseň do  jiné složky.
+      </present>  
+      <export caption="Export">Exportuje aktuální píseň.</export>
+      <rename caption="Přejmenovat">Přejmenuje aktuální píseň.</rename>   
+      <move caption="Přesunout">Přesune aktuální píseň do jiné složky.
         <where caption="Přesunout '%1' do složky:"/>
-      </move>
-      <delete caption="Smazat">Smaže aktuální píseň.</delete>
+      </move>  
+      <copy caption="Kopírovat">Zkopíruje aktuální píseň do jiné složky.
+        <where caption="Kopírovat '%1' do složky:"/>
+      </copy>
+      <delete caption="Smazat">Smaže aktuální píseň.</delete>      
     </selected_song>
 
     <songs caption="Písně">Vyberte píseň z nabídky pro načtení do editoru.</songs>
@@ -186,6 +189,7 @@
       <ins_slide caption="Snímek">Určeno k vytvoření souboru snímků, které mají společný název, podnadpis, styl a/nebo automatické prohlížení. Snímky vytvořené touto cestou mohou mít také nastaveno promítání ve smyčce.</ins_slide>
     <loop caption="Smyčka">Zaškrtněte, pokud chcete, aby se OpenSong automaticky vrátil na první snímek této položky, když dojde k poslednímu.</loop>
     <print caption="Tisknout v seznamu">Odškrtněte, pokud nechcete, aby se tato skupina snímků tiskla v seznamu playlistu.</print>
+    <transition caption="Použít přechody">Zaškrtněte pro použití přechodů při zobrazení snímku.</transition>
     <auto_advance caption="Automatický přechod po:">Zadejte počet sekund, po které má být zobrazen každý snímek v souboru, než dojde k automatickému přechodu na další. (0=neaktivní)</auto_advance>
     <seconds caption="sekund"/>
     <style caption="Přebít styl">Zaškrtnutí umožní snímku, aby obsahoval uživatelský styl. Klikněte na náhled pro editaci stylu.</style>
@@ -331,6 +335,11 @@
       <change caption="Aplikovat"/>
       <oldfolderdb caption="Použít pre-V1.1 souborovou cache"/>
     </documents_folder>
+    <imagequality caption="Nastavit kvalitu obrázku">
+      <note caption="OpenSong se pokusí uložit obrázky použité v playlistu do formátu JPEG. Vyberte si kvalitu obrázků. Posuvník pro výběr kvality nebude aktivní, pokud není nainstalován QuickTime. OpenSong vyžaduje QuickTime pro uložení JPEG obrázků v kvalitě volitelné uživatelem."/>
+      <compression caption="Komprese obrázku" />
+      <extern caption="Nezahrnovat obrázky z pozadí." />
+    </imagequality>
     <logging caption="Ladicí výpisy">
       <append caption="Zapisovat do logovacího souboru"/>
       <console caption="Výpisy do systémové konzole"/>
@@ -338,6 +347,10 @@
       <dialog caption="Vyberte prosím soubor pro uložení záznamu"
               title="Výběr logovacího souboru"/>
     </logging>
+    <log caption="Nastavení logování písní">
+      <enable caption="Zapnout ladění"/>
+      <prompt caption="Dotázat se před zobrazením"/>
+    </log>
     <startmode caption="Výchozí okno">
       <songs caption="Písně"/>
       <sets  caption="Playlisty"/>
@@ -380,11 +393,14 @@
       <scripture_slides caption="Výchozí styl Bible"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-      <transition_note caption="*Přechody jsou hodně závislé na rozlišení obrazovky. Pokud se vám zdají přechody pomalé, zkuste snížit rozlišení monitoru, na kterém prezentujete. Pokud zjistíte, že se přechody nezobrazují, může to být nastavením hloubky barev."/>
     </settings>
-    <style caption="Styl">
+    <transitions caption="Přechody">
       <use_transitions caption="Použít přechody*"/>
-      <transition_note caption="*Přechody jsou hodně závislé na rozlišení obrazovky. Pokud se vám zdají přechody pomalé, zkuste snížit rozlišení monitoru, na kterém prezentujete. Pokud zjistíte, že se přechody nezobrazují, může to být nastavením hloubky barev."/>
+      <transition_note caption="*Přechody velmi ovlivňuje rozlišení obrazovky. Pokud jsou přechody pomalé, zvažte možost snížení rozlišení projektoru. Pokud se přechody vůbec nezobrazují, možná máte nastavenou malou hloubku barev projektoru."/>
+      <time caption="Čas" helptag="Celkový čas pro přechod (může být delší na pomalejším počítači)"/>
+      <frames caption="Snímky" helptag="Počet snímků nebo počet kroků přechodu mezi snímky"/>
+    </transitions>
+    <style caption="Styl">
       <border_thickness caption="Tloušťka okraje"/>
       <subtitles caption="Podnadpisy"/>
       <modes>
@@ -617,7 +633,6 @@ Tento příklad by zobrazil první sloku ("V1") na prvním snímku, refrén ("C"
 Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí snímků takové, jaké je pořadí jednotlivých sekcí v poli Slova/Akordy.
 </presentation>
   </help_topics>
-
   <font_selection title="Výběr písma">
     <face caption="Písmo"/>
     <size caption="Velikost"/>
@@ -670,6 +685,10 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
      <bridge caption="Přechod"/>
      <tag caption="Tag"/>
      <verse caption="Sloka"/>
+     <prechorus_abbreviation caption="chor"/>
+     <chorus_abbreviation caption="chor"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
      <author caption=""/>
      <hymn_number caption="Píseň číslo"/>
      <ccli_number caption="CCLI Píseň č."/>
@@ -700,10 +719,15 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
       <subtitle caption="Podnadpis"/>
       <body caption="Text"/>
       <align caption="Zarovnání"/>
+      <margin caption="Okraje"/>
+      <tabs caption="Tabulátory"/>    
+    </fonts_and_alignment>
+    <options caption="Nastavení textu">  
       <subtitles caption="Podtitulky písně"/>
       <highlight_chorus caption="Zvýraznit refrén"/>
       <descriptive_subtitle caption="Popisné info podnadpisu"/>
-    </fonts_and_alignment>
+      <verse_in_title caption="Zahrnout číslo verše do nadpisu"/>
+    </options>
     <background caption="Pozadí">
       <color caption="Barva"/>
       <image caption="Obrázek"/>
@@ -719,6 +743,33 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     </background>
     <trim_note caption="*Odřízne spodek pozadí, aby skryl vodoznaky, webové adresy atd. Aby se předešlo deformaci, dojde také k oříznutí ze stran."/>
   </style_editor>
+  
+  <style_margins title="Editor okrajů">
+      <left caption="Vlevo"/>
+      <right caption="Vpravo"/>
+      <top caption="Nahoře"/>
+      <bottom caption="Dole"/>
+      <pixels caption="px"/>
+    <preview caption="Náhled"/>
+  </style_margins>
+  
+  <style_tabs title="Editor tabulátorů">
+    <tabs caption="Tabulátory">
+      <new caption="&amp;Nový"/>
+      <remove caption="&amp;Odstranit"/>
+      <removeall caption="Odstranit &amp;Vše"/>
+    </tabs>
+    <properties caption="Vlastnosti">
+      <position caption="Pozice"/>
+      <pixels caption="px"/>
+      <align caption="Zarovnání"/>
+      <left caption="Doleva"/>
+      <middle caption="Na střed"/>
+      <right caption="Doprava"/>
+      <char caption="Na znak"/>
+    </properties>
+    <preview caption="Náhled"/>
+  </style_tabs>
 
   <song_lookup title="Hledat písně">
     <header caption="Pro přidání písně vyberte její název a klikněte na 'Přidat' nebo začňete psát název písně a potvrďte klávesou Enter."/>
@@ -727,6 +778,8 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     <preview caption="Náhled písně"/>
     <lookup caption="Rychlé vyhledání"/>
     <songs head1="Jméno písně" head2="Složka"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
 
   <song_activity title="Záznam činností s písněmi">
@@ -735,7 +788,9 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     <find caption="Hledat"></find>
     <clear_log caption="Smazat vše"></clear_log>
     <print caption="Tisk"></print>
-    <export caption="Export"/>
+    <view caption="Zobrazit log"/>
+    <merge caption="Spojit"/>
+    <export caption="Exportovat"/>
     <done caption="Hotovo"/>
     <show caption="Zobrazit">
       <!-- 
@@ -748,6 +803,7 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
       -->
       <value tag="0">Vše</value>
       <value tag="1">Vytvořené</value>
+      <value tag="8">Zkopírované</value>
       <value tag="2">Smazané</value>
       <value tag="3">Změněné</value>
       <value tag="4">Přesunuté</value>
@@ -760,7 +816,11 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
       <erase_all>Všechny záznamy budou smazány. Pokračovat?</erase_all>
     </input_box>
     <description>Vytvořeno|Smazáno|Změněno|Přesunuto|Prezentováno|Vytištěno|Přejmenováno</description>
+    <file_type>OpenSong logovací soubor</file_type>
+    <merged>Sloučit kompletní %1 záznamy, které jsou přidány do logu písní.</merged>
+    <merged_dupes>%1 duplikovat záznamy pokud jsou ignorovány.</merged_dupes>
   </song_activity>
+  
   <scripture_lookup title="Vyhledávání v Bibli">
     <book caption="Biblické knihy"/>         
     <lookup caption="Rychlé vyhledávání">
@@ -806,7 +866,12 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     <generate_index>Vytvořit index Bible?</generate_index>
     <generate_error>Chyba při vytváření indexu; máte právo zapisovat do %1?</generate_error>
   </module>
-
+  
+  <index_progress title="Prosím čekejte">
+    <top caption="Vytvářím index:"/>
+    <bottom caption="Stiskněte 'esc' pro přerušení"/>
+  </index_progress>
+  
   <import_from_ccli title="Importovat z CCLI databáze">
     <user_id caption="Uživatelské ID"/>
     <password caption="Heslo"/>
@@ -914,9 +979,18 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
   </time_sig_list>
 
   <transition_list>
+    <option name="Výchozí"/>
+    <option name="Ano"/>
+    <option name="Ne"/>
   </transition_list>
   
   <imagequality_list>
+    <option name="Plná, minimální kvalita, malý soubor playlistu"/>
+    <option name="Vysoká, nízká kvalita"/>
+    <option name="Střední, normální kvalita"/>
+    <option name="Malá, vysoká kvalita"/>
+    <option name="Nízká, maximální kvalita"/>
+    <option name="Žádná, bezeztrátově, velký soubor playlistu"/>
   </imagequality_list>
 
   <style_preview>
@@ -967,6 +1041,7 @@ Klikněte na snímek pro změnu jeho stylu.</body>
     <paste caption="Vložit"/>
     <select caption="Vybrat"/>
     <exit_program caption="Ukončit program"/>
+    <export_to caption="Vyberte složku pro export."/>
   </shared>
 
   <questions>
@@ -982,6 +1057,7 @@ Klikněte na snímek pro změnu jeho stylu.</body>
     <generic_save_explanation caption="Pokud neuložíte, budou změny ztraceny"/>
     <set_changed caption="Aktuální playlist byl změněn. Chcete uložit změny?"/>
     <select_docs_folder caption="Vyberte složku s písněmi a pozadími.">Kam mají být ukládány soubory (písně a playlisty)?</select_docs_folder>
+    <activity_log caption="Chcete písně v prezentaci přidat do logu aktivit? Aplikuje se také na písně přidané za běhu!"/>
   </questions>
 
   <about>
@@ -1067,6 +1143,8 @@ To poškodilo Import, než budeme schopni se přizpůsobit.
 Mezitím využijte prosím Importovací utilitu ze stránek.
 OpenSong tým se omlouvá za problémy.
     </cclinotavailable>
+    <activity_disabled>Nemohu načíst log písní: %1! Zkontrolujte prosím, že soubor existuje a není poškozen. Prohlížení logů a logování bude po toto sezení vypnuto.</activity_disabled>
+    <adding_logentry>Chyba při přidávání do logu!</adding_logentry>
   </errors>
 
   <xml_errors>

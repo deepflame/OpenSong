@@ -1,3 +1,4 @@
+sets_mode/current_item/paste
 style_tabs/properties/apply
 shared/apply
 scripture_search/caption

@@ -155,6 +155,7 @@
       <move_down caption="Naar beneden">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
       <remove caption="Verwijderen">Verwijdert het huidige item van het project.</remove>
       <copy caption="Kopiëren">Maakt een kopie van het huidige item.</copy>
+      <paste caption="link(shared/insert/@caption)">Voeg het gekopieerde item toe na de huidige positie.</paste>      
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
     </current_item>
     <items caption="Project Items">Lijst met items in het huidige project. Klik op een aangepaste dia om die te kunnen wijzigen of dubbelklik een lied om te wijzigen.

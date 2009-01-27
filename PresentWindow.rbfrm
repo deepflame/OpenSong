@@ -9,7 +9,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
    FullScreen      =   "False"
    HasBackColor    =   "True"
    Height          =   300
-   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
@@ -42,7 +41,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   0
@@ -51,42 +49,36 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   302
       BehaviorIndex   =   0
-      Begin Timer timerAdvance
-         ControlOrder    =   1
-         Enabled         =   "True"
-         Height          =   32
-         Index           =   -2147483648
-         InitialParent   =   "cnvSlide"
-         Left            =   248
-         Mode            =   0
-         Period          =   10000
-         Scope           =   0
-         TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
-         Top             =   248
-         Visible         =   "True"
-         Width           =   32
-         BehaviorIndex   =   1
-      End
-      Begin Timer timerTransition
-         ControlOrder    =   2
-         Enabled         =   "True"
-         Height          =   32
-         Index           =   -2147483648
-         InitialParent   =   "cnvSlide"
-         Left            =   204
-         Mode            =   0
-         Period          =   125
-         Scope           =   0
-         TabPanelIndex   =   0
-         TextFont        =   "System"
-         TextSize        =   0
-         Top             =   248
-         Visible         =   "True"
-         Width           =   32
-         BehaviorIndex   =   2
-      End
+   End
+   Begin Timer timerAdvance
+      ControlOrder    =   1
+      Height          =   32
+      Index           =   -2147483648
+      InitialParent   =   "cnvSlide"
+      Left            =   248
+      Mode            =   0
+      Period          =   10000
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   248
+      Width           =   32
+      BehaviorIndex   =   1
+   End
+   Begin Timer timerTransition
+      ControlOrder    =   2
+      Height          =   32
+      Index           =   -2147483648
+      InitialParent   =   "cnvSlide"
+      Left            =   204
+      Mode            =   0
+      Period          =   125
+      TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   248
+      Width           =   32
+      BehaviorIndex   =   2
    End
 End
 #tag EndWindow
@@ -133,6 +125,9 @@ End
 		  #endif
 		  App.SetForeground(MainWindow)
 		  '--
+		  '++JRC
+		  MainWindow.AddPresentedSongsToLog
+		  
 		  MainWindow.SetFocus
 		End Sub
 	#tag EndEvent
@@ -670,7 +665,8 @@ End
 		      tempSlideStyle = New SlideStyle(StyleNode)
 		      // We'll just use the dictionary index as the key; this makes it unique if unimaginative
 		      StyleDict.Value(str(StyleDict.Count)) = tempSlideStyle
-		      StyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
+		      '++JRC unnecessary as we will overwrite StyleNode anyway
+		      'StyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
 		      // Going for broke here: Replace the style node with a new one that just has the index...
 		      NewStyleNode = CurrentSet.CreateElement("style")
 		      NewStyleNode.SetAttribute "index", Str(StyleDict.Count - 1)
@@ -713,6 +709,7 @@ End
 		  
 		  CurrentSlide = 1
 		  XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  
 		  'System.DebugLog "Setup monitors"
 		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
 		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
@@ -866,6 +863,9 @@ End
 		Sub ResetPaint(slide As XmlNode)
 		  Dim xStyle As XmlNode
 		  Dim w, h As Integer
+		  
+		  '++JRC
+		  SongSetDisplayed(slide)
 		  
 		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Enter", 5)
 		  ' Remember the current (old) slide for the transition
@@ -1506,16 +1506,20 @@ End
 		    Dim Log As LogEntry
 		    
 		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
-		      Log = New LogEntry(Globals.SongActivityLog)
+		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
 		      Dim d As New Date
 		      
-		      Log.Title = SmartML.GetValue(s.DocumentElement, "title", True)
-		      Log.Author = SmartML.GetValue(s.DocumentElement, "author", True)
-		      Log.CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
-		      Log.SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
-		      Log.DateAndTime = d
-		      Log.HasChords = Log.CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
-		      Log.Presented = True
+		      i = UBound(ActLog)
+		      ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
+		      ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
+		      ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		      ActLog(i).SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
+		      ActLog(i).DateAndTime = d
+		      ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		      ActLog(i).Presented = True
+		      ActLog(i).SetItemNumber = i  'Assign an index to this song
+		      ActLog(i).Displayed = false 'Set this to true if user displays this song
+		      
 		    End If
 		    '--
 		    
@@ -1533,16 +1537,18 @@ End
 		    
 		    '++JRC Log Song Presentation
 		    'TODO determine if the user actually displays this song (uug)
-		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW  Then
-		      If NOT Log.AddLogEntry Then
-		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		      Else
-		        Log.UpdateNumEntries(Globals.SongActivityLog)
-		      End If
-		    End If
+		    'If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW  Then
+		    'If NOT Log.AddLogEntry Then
+		    'InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		    'Else
+		    'Log.UpdateNumEntries(Globals.SongActivityLog)
+		    'End If
+		    'End If
 		    '--
 		    
 		    newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
+		    '++JRC
+		    SmartML.SetValueN(newgroup, "@ItemNumber", i)
 		    
 		    ' --- Move to where we need to be ---
 		    temp = SmartML.GetValue(newGroup, "@name")
@@ -1693,6 +1699,23 @@ End
 		  //--
 		  Mode = "N"
 		  ResetPaint(slide)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SongSetDisplayed(slide As XmlNode)
+		  Dim ItemNumber As Integer
+		  
+		  If slide = Nil Then Return 'sanity check
+		  If SmartML.GetValue(slide.Parent.Parent, "@type", false) <> "song" Then Return
+		  
+		  'get set item number
+		  ItemNumber = SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber", false)
+		  
+		  'find item in the song activity log array
+		  For i as Integer = 1 To UBound(ActLog)
+		    If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
+		  Next i
 		End Sub
 	#tag EndMethod
 

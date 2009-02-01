@@ -1,4 +1,6 @@
-﻿* OpenSong now only logs songs which the user actually displays (JRC)
+﻿* Replace DocumentsFolder and PreferencesFolder with their SpecialFolder counterparts for compatibily with RB 2008 (JRC)
+
+* OpenSong now only logs songs which the user actually displays (JRC)
 
 * Fix issue were PresentWindow wasn't getting focus when presenting single song (JRC0
 

@@ -487,8 +487,8 @@ Inherits Application
 		      End Try
 		      
 		      If FileUtils.IsChild(f, AppFolder.Child("OpenSong Defaults")) Then
-		        MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(DocumentsFolder.Child("OpenSong"))))
-		        f = DocumentsFolder.Child("OpenSong")
+		        MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(SpecialFolder.Documents.Child("OpenSong"))))
+		        f = SpecialFolder.Documents.Child("OpenSong")
 		      End If
 		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If //If FolderName <> ""
@@ -547,11 +547,11 @@ Inherits Application
 		  Dim folder As String
 		  
 		  #if TargetLinux
-		    f = PreferencesFolder.Child(".OpenSong")
+		    f = SpecialFolder.Preferences.Child(".OpenSong")
 		  #elseif TargetMacOS
-		    f = PreferencesFolder
+		    f = SpecialFolder.Preferences
 		  #elseif TargetWin32
-		    f = PreferencesFolder.Child("OpenSong")
+		    f = SpecialFolder.Preferences.Child("OpenSong")
 		  #endif
 		  
 		  If FileUtils.CreateFolder(f) Then
@@ -805,8 +805,8 @@ Inherits Application
 		  Dim ask As Boolean = True
 		  
 		  defaultsFolder = AppFolder.Child("OpenSong Defaults")
-		  If path = Nil Then path = DocumentsFolder
-		  If Not path.Exists Then path = DocumentsFolder
+		  If path = Nil Then path = SpecialFolder.Documents
+		  If Not path.Exists Then path = SpecialFolder.Documents
 		  mb = New SelectFolderDialog
 		  mb.InitialDirectory = path.Child(suggested)
 		  While ask

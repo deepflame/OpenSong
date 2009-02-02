@@ -1035,7 +1035,7 @@ Haga click aquí para editar este estilo.</body>
     <insert caption="Insertar"/>
     <close caption="Cerrar"/>
     <search caption="Buscar"/>
-    <save caption="Archivo" message="%1 no ha sido guardado."/>
+    <save caption="Guardar" message="%1 no ha sido guardado."/>
     <nosave caption="No Guardar"/>
     <cut caption="Cortar"/>
     <copy caption="Copiar"/>

@@ -54,7 +54,7 @@ Protected Class TreeNode
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub TreeNode(tentry As String, parentDictionary As Dictionary)
+		Sub Constructor(tentry As String, parentDictionary As Dictionary)
 		  MyDictionary = parentDictionary
 		  If MyDictionary.HasKey(tentry) Then Return
 		  MyDictionary.Value(tentry) = Me

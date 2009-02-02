@@ -194,6 +194,10 @@ Protected Module Globals
 		Protected AddToLog As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		ActLog(0) As LogEntry
+	#tag EndProperty
+
 
 	#tag Constant, Name = CTRL_V, Type = Integer, Dynamic = False, Default = \"22", Scope = Public
 	#tag EndConstant

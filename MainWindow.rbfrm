@@ -7990,7 +7990,7 @@ End
 		  dlg.PromptText = App.T.Translate("shared/export_to/@caption")
 		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
 		  '--
-		  If targetFolder Is Nil Then dlg.InitialDirectory = DocumentsFolder
+		  If targetFolder Is Nil Then dlg.InitialDirectory = SpecialFolder.Documents
 		  targetFolder = dlg.ShowModal
 		  If targetFolder = Nil Then Return// User cancelled
 		  
@@ -8671,6 +8671,9 @@ End
 		  If StyleNode <> Nil Then StyleNode = StyleNode.Parent
 		  SongML.ToSetML song, StyleNode
 		  
+		  '++JRC Assign an index for this set item
+		  SmartML.SetValueN(song, "@ItemNumber", 1)
+		  
 		  App.MouseCursor = Nil
 		  
 		  Status_Presentation = True
@@ -8690,26 +8693,31 @@ End
 		    End If
 		    
 		    if Answer Then
-		      Dim Log as New LogEntry(Globals.SongActivityLog)
 		      Dim d As New Date
 		      
-		      Log.Title = edt_song_title.Text
-		      Log.Author = edt_song_author.Text
-		      Log.CCLISongNumber = edt_song_ccli.Text
-		      Log.SongFileName =  lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0)  + lst_songs_songs.Text
-		      Log.DateAndTime = d
-		      Log.HasChords = Log.CheckLyricsForChords(edf_song_lyrics.Text)
-		      Log.Presented = True
+		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
+		      ActLog(1).Title = edt_song_title.Text
+		      ActLog(1).Author = edt_song_author.Text
+		      ActLog(1).CCLISongNumber = edt_song_ccli.Text
+		      ActLog(1).SongFileName =  lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0)  + lst_songs_songs.Text
+		      ActLog(1).DateAndTime = d
+		      ActLog(1).HasChords = ActLog(1).CheckLyricsForChords(edf_song_lyrics.Text)
+		      ActLog(1).Presented = True
+		      ActLog(1).SetItemNumber = 1 'Assign an  index to this song
+		      ActLog(1).Displayed = false 'Set this to true if user displays this song
 		      
-		      If NOT Log.AddLogEntry Then
-		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		      Else
-		        Log.UpdateNumEntries(Globals.SongActivityLog)
-		      End If
+		      'If NOT Log.AddLogEntry Then
+		      'InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		      'Else
+		      'Log.UpdateNumEntries(Globals.SongActivityLog)
+		      'End If
 		    End If
 		  End If
 		  '--
 		  Globals.AddToLog = Answer
+		  
+		  '++JRC Fix issue were PresentWindow wasn't getting focus
+		  MainWindow.SetFocus
 		  
 		  PresentWindow.Present setDoc, Mode
 		  
@@ -9168,6 +9176,8 @@ End
 		  Dim Presentation As String
 		  '++JRC
 		  Dim CurStyle As XmlNode
+		  Dim ItemNumber As Integer
+		  Dim i As Integer
 		  '--
 		  Dim Transition As Integer
 		  Dim SongStyle, SlideSongStyle As XmlNode
@@ -9176,6 +9186,9 @@ End
 		  App.MouseCursor = WatchCursor
 		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
 		  slide_group = slide_groups.FirstChild
+		  
+		  ItemNumber = 1
+		  i = 1
 		  While slide_group <> Nil
 		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
 		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
@@ -9185,28 +9198,37 @@ End
 		      If songDoc <> Nil Then
 		        '++JRC get song info for logging
 		        If AddToLog Then
-		          Dim Log As New LogEntry(Globals.SongActivityLog)
 		          Dim d As New Date
 		          
-		          Log.Title = SmartML.GetValue(SongDoc.DocumentElement, "title", True)
-		          Log.Author = SmartML.GetValue(SongDoc.DocumentElement, "author", True)
-		          Log.CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli_number", True)  //The song's CCLI number
-		          Log.SongFileName = songPath + SmartML.GetValue(slide_group, "@name", False)
-		          Log.DateAndTime = d
-		          Log.Presented = True
+		          ActLog.Append(New LogEntry(Globals.SongActivityLog))
 		          
+		          ActLog(i).Title = SmartML.GetValue(SongDoc.DocumentElement, "title", True)
+		          ActLog(i).Author = SmartML.GetValue(SongDoc.DocumentElement, "author", True)
+		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		          ActLog(i).SongFileName = songPath + SmartML.GetValue(slide_group, "@name", False)
+		          ActLog(i).DateAndTime = d
+		          ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(edf_song_lyrics.Text)
+		          ActLog(i).Presented = True
+		          ActLog(i).SetItemNumber = ItemNumber 'Assign an index to this song
+		          ActLog(i).Displayed = false 'Set this to true if user displays this song
+		          
+		          i = i + 1
 		          '++JRC Log Song Presentation
 		          'TODO determine if the user actually displays this song (uug)
-		          If NOT Log.AddLogEntry Then
-		            InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		          Else
-		            Log.UpdateNumEntries(Globals.SongActivityLog)
-		          End If
+		          'If NOT Log.AddLogEntry Then
+		          'InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		          'Else
+		          'Log.UpdateNumEntries(Globals.SongActivityLog)
+		          'End If
 		        End If
 		        '--
 		        
 		        SlideSongStyle = SmartML.GetNode(slide_group, "style")
 		        slide_group = SmartML.ReplaceWithImportNode(slide_group, songDoc.DocumentElement)
+		        '++JRC Assign an index for this set item
+		        SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
+		        ItemNumber = ItemNumber + 1
+		        
 		        If Presentation <> "" Then 'Override the song's default presentation
 		          SmartML.SetValue(slide_group, "presentation", presentation)
 		        End If
@@ -9253,6 +9275,7 @@ End
 		    Else
 		      slide_group  = slide_group.NextSibling
 		    End If
+		    
 		  Wend
 		  App.MouseCursor = Nil
 		End Sub
@@ -10034,6 +10057,39 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub AddPresentedSongsToLog()
+		  '++JRC This function as the name implies checks which songs were presented
+		  'and adds them to the activity log, then clears Globals.ActLog
+		  Dim i As Integer
+		  
+		  For  i = 1  To  UBound(ActLog)
+		    If ActLog(i) <> Nil Then
+		      If ActLog(i).Displayed Then
+		        'bit of a hack really, when AddLogEntry is called NumEntries  in the rest of the log entries
+		        'in the array become invalid. their's probably a more elegant way of fixing this
+		        'but this should do for now
+		        ActLog(i).SyncNumEntries(Globals.SongActivityLog)
+		        
+		        If NOT ActLog(i).AddLogEntry Then
+		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		        Else
+		          ActLog(i).UpdateNumEntries(Globals.SongActivityLog)
+		        End If
+		      End If
+		    End If
+		  Next i
+		  
+		  For i  = UBound(ActLog)  DownTo 1
+		    If ActLog(i) <> Nil Then
+		      ActLog.Remove(i)
+		    End If
+		  Next i
+		  
+		  
+		End Sub
+	#tag EndMethod
+
 
 	#tag Note, Name = Status Hierarchy
 		SetOpen
@@ -10296,7 +10352,7 @@ End
 		  'build dialog
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = DocumentsFolder
+		  dlg.InitialDirectory = SpecialFolder.Documents
 		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
 		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
 		  
@@ -10560,7 +10616,7 @@ End
 		  'build dialog
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = DocumentsFolder
+		  dlg.InitialDirectory = SpecialFolder.Documents
 		  dlg.PromptText = App.T.Translate("shared/export_to/@caption")
 		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
 		  

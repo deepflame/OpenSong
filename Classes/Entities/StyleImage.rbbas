@@ -28,7 +28,7 @@ Protected Class StyleImage
 		  Else
 		    If Base64 <> Me.sBase64 Then
 		      
-		      f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)))
+		      f = SpecialFolder.Temporary.Child(Str(r.InRange(100000, 999999)))
 		      If f <> Nil Then
 		        outputStream = f.CreateBinaryFile("")
 		        outputStream.Write DecodeBase64(Base64)
@@ -77,7 +77,7 @@ Protected Class StyleImage
 		        
 		        If Me.oImage <> Nil Then
 		          
-		          If File.AbsolutePath().StartsWith( TemporaryFolder().AbsolutePath() ) Then
+		          If File.AbsolutePath().StartsWith( SpecialFolder.Temporary.AbsolutePath() ) Then
 		            Me.sBase64 = EncodeBase64(inputStream.Read(File.Length))
 		            Me.sFilename = ""
 		          Else

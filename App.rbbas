@@ -1135,7 +1135,7 @@ Inherits Application
 		  // to points.
 		  //--
 		  Dim value As Double, newvalue As Double
-		  Dim attributes() As String
+		  Dim attributelist() As String
 		  Dim attribute As String
 		  Dim inches As Boolean
 		  Dim points As Boolean
@@ -1147,9 +1147,9 @@ Inherits Application
 		  
 		  inches = SmartML.GetValueB(settings, "page/@inches", True, True)
 		  
-		  attributes = Split("top,bottom,left,right,height,width", ",")
+		  attributelist = Split("top,bottom,left,right,height,width", ",")
 		  
-		  For Each attribute in attributes
+		  For Each attribute in attributelist
 		    value = CDbl(SmartML.GetValue(settings, "page/@" + attribute))
 		    If inches Then
 		      newvalue = InchesToPoints(value)
@@ -1194,7 +1194,7 @@ Inherits Application
 		  Dim saveSuccess As Boolean
 		  
 		  If img <> Nil Then
-		    f = TemporaryFolder.Child(Str(r.InRange(100000, 999999)))
+		    f = SpecialFolder.Temporary.Child(Str(r.InRange(100000, 999999)))
 		    If f <> Nil Then
 		      
 		      saveSuccess = False
@@ -1407,11 +1407,13 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ExcludeBackgroundsImages"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

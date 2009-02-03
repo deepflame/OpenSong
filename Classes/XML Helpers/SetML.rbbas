@@ -223,7 +223,7 @@ Protected Module SetML
 		  If xslide = Nil Then Return
 		  
 		  Dim slideType As String
-		  Dim RealSize, RealBorder, HeaderSize, FooterSize As Integer
+		  Dim RealSize, RealBorder, HeaderSize, FooterSize, titleFooterSize, titleHeaderSize  As Integer
 		  Dim x, y, z As Integer
 		  Dim d, ccli As String
 		  Dim multiwrap As Boolean
@@ -267,6 +267,8 @@ Protected Module SetML
 		  
 		  // Subtitles can now be over one line long.  Split the subtitle string on newlines and iterate
 		  Subtitles = Split(subtitle, Chr(10))
+		  titleFooterSize = FooterSize
+		  titleHeaderSize = HeaderSize
 		  
 		  If Style.TitleVAlign = "top" Then
 		    '++JRC
@@ -296,6 +298,7 @@ Protected Module SetML
 		      End If
 		    Next i
 		    '++JRC
+		    
 		    If Style.TitleEnable Then
 		      FooterSize = FooterSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    End If
@@ -344,7 +347,10 @@ Protected Module SetML
 		        Else
 		          g.DrawPicture( pic, 0, 0, g.Width, g.Height, 0, 0, pic.Width, pic.Height )
 		        End If
-		        
+		        If Style.TitleEnable Then
+		          dim dummy as integer
+		          dummy = DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, titleHeaderSize, titleFooterSize, titleMargins) 'repaint title over image
+		        end if
 		      ElseIf resize = "body" Then
 		        
 		        If HeaderSize < bodyMargins.Top Then

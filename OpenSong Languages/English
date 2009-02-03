@@ -147,6 +147,7 @@
       <add_slides caption="Slides">Adds a custom slide to the current set. Custom slides allow you to specify your own title, subtitle, body text, and even style. A custom slide item can actually contain a series of slides.</add_slides>
       <add_style caption="Style">Changes the current set's default style at any place in the set. Styles changes can define a new style or revert to the previous style.</add_style>
       <add_image caption="Image">Adds an image slide to the current set. Image slides will allow you to display a single image or a slideshow of multiple images instead of a body text.</add_image>
+      <add_external caption="External">Adds a new slide to the current set that enables activation of external sources such as a presentation or DVD playback software.</add_external>
       <add_video caption="Video">Adds a video file to the current set. Use this to present a video from within OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Adds a PowerPoint presentation to the current set. Use this to control a PowerPoint presentation from within OpenSong.</add_powerpoint>
     </new_item>
@@ -163,6 +164,7 @@
       <custom caption="(custom)"/>
       <scripture caption="(scripture)"/>
       <image caption="(image)"/>
+      <external caption="(external)"/>
       <style caption="(style)">-- Change Style --</style>
       <revert caption="(style)">-- Revert Style --</revert>
       <defaultstyle caption="(style)">-- Exported Style --</defaultstyle>
@@ -211,10 +213,10 @@
     <store_as_link caption="Do not store the image in the set, use link to the image">Storing images in the set rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Action" />
-      <ins_image caption="Add image">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
-      <del_image caption="Remove image">Removes the currently selected image from the slide.</del_image>
-      <move_up caption="Move up">Moves the currently selected image in the slide closer to the beginning of the slide.</move_up>
-      <move_down caption="Move down">Moves the currently selected image in the slide closer to the end of the slide.</move_down>
+    <ins_image caption="Add image">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
+    <del_image caption="Remove image">Removes the currently selected image from the slide.</del_image>
+    <move_up caption="Move up">Moves the currently selected image in the slide closer to the beginning of the slide.</move_up>
+    <move_down caption="Move down">Moves the currently selected image in the slide closer to the end of the slide.</move_down>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
     <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
     <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
@@ -222,6 +224,30 @@
     <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
+
+  <external_slide>
+    <header caption="External Slide Editor"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Application"/>
+    <powerpoint caption="PowerPoint">Use this slide to show a presentation using Microsoft PowerPoint.</powerpoint>
+    <impress caption="Impress">Use this slide to show a presentation using the free and open source OpenOffice.org Impress.</impress>
+    <videolan caption="Videolan">Use this slide to run a media file using the versatile and open source media player Videolan (VLC).</videolan>
+    <application caption="Application">Use this slide to run an external programm by using a command line.</application>
+    <presentation_settings caption="Presentation settings">
+      <presentation_host caption="Which application should be used to run the presentation?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <presentation_file caption="Presentation filename">Choose the presentation filename using a file selection dialog.</presentation_file>
+      <loop_presentation caption="Loop presentation"/>
+    </presentation_settings>
+    <videolan_settings caption="Videolan settings">
+    </videolan_settings>
+    <application_settings caption="Application launcher settings">
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
 
   <style_change>
     <header caption="Style Change"/>

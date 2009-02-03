@@ -147,6 +147,7 @@
       <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl. Een aangepaste dia kan een serie dia 's bevatten.</add_slides>
       <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
       <add_image caption="Afbeelding">Voegt een afbeeldingsdia toe aan het huidige project. Hiermee wordt een afbeelding of een afbeeldingenserie getoond in plaats van een body tekst.</add_image>
+      <add_external caption="Extern">Voegt een nieuwe dia toe aan het huidige project waarmee externe programma's kunnen worden gestart. Hiermee is het mogelijk om een presentatie of een DVD te vertonen.</add_external>
       <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Voegt een PowerPoint presentatie toe aan het huidige project. Dit is te gebruiken om een PowerPoint presentatie te tonen vanuit OpenSong.</add_powerpoint>
     </new_item>
@@ -163,6 +164,7 @@
       <custom caption="(aangepast)"/>
       <scripture caption="(bijbelteksten)"/>
       <image caption="(afbeelding)"/>
+      <external caption="(extern)"/>
       <style caption="(stijl)">-- Wijzig Stijl --</style>
       <revert caption="(stijl)">-- Terug naar vorige Stijl --</revert>
       <defaultstyle caption="(stijl)">-- Geexporteerde Stijl --</defaultstyle>
@@ -222,6 +224,30 @@
     <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
+
+  <external_slide>
+    <header caption="Wijzigen extern programma dia"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Toepassing"/>
+    <powerpoint caption="PowerPoint">Gebruik deze dia om een persentatie te tonen met behulp van Microsoft PowerPoint.</powerpoint>
+    <impress caption="Impress">Gebruik deze dia om een persentatie te tonen met behulp van het gratis en open source OpenOffice.org Impress.</impress>
+    <videolan caption="Videolan">Gebruik deze dia om een mediabestand af te spelen met de veelzijdige en open source media speler Videolan (VLC).</videolan>
+    <application caption="Toepassing">Gebruik deze dia om een extern programma te starten door middel van een commandoregel.</application>
+    <presentation_settings caption="Presentatie instellingen">
+      <presentation_host caption="Welk programma moet worden gebruikt voor het weergeven van de presentatie?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <presentation_file caption="Presentatie bestandsnaam">Kies de presentatie bestandsnaam met behulp van een bestandskeuze dialoog.</presentation_file>
+      <loop_presentation caption="Presentatie herhalen"/>
+    </presentation_settings>
+    <videolan_settings caption="Videolan instellingen">
+    </videolan_settings>
+    <application_settings caption="Programma opstart instellingen">
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
 
   <style_change>
     <header caption="Wijzigen stijl"/>

@@ -1,4 +1,6 @@
-﻿* Replace DocumentsFolder and PreferencesFolder with their SpecialFolder counterparts for compatibily with RB 2008 (JRC)
+﻿* Show chorus/bridge on the right spot between the verses in title (gerritp)
+
+* Replace DocumentsFolder and PreferencesFolder with their SpecialFolder counterparts for compatibily with RB 2008 (JRC)
 
 * OpenSong now only logs songs which the user actually displays (JRC)
 

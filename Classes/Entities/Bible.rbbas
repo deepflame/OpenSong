@@ -76,7 +76,7 @@ Implements iBible
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Bible()
+		Sub Constructor()
 		  CanSearch = False
 		  ShouldGenerateIndex = False
 		  

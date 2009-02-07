@@ -2370,8 +2370,13 @@ Module SongML
 		  
 		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
 		  
+		  dim ChorusNr as integer 'GP
+		  ChorusNr = 0 'GP
 		  For Each section In sections
 		    If dict.HasKey(section) Then
+		      If Lowercase(Left(section, 1)) = "c" Then
+		        ChorusNr = ChorusNr+ 1 'GP
+		      end if
 		      sub_sections = Split(dict.Value(section), "||")
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
@@ -2383,6 +2388,7 @@ Module SongML
 		        End If
 		        If Lowercase(Left(section, 1)) = "c" Then
 		          SmartML.SetValueB(slide, "@emphasize", True)
+		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
 		        End If
 		      Next
 		    End If

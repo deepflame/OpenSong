@@ -133,13 +133,13 @@ Class plist
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub plist(f As FolderItem)
-		  plist f,f
+		Sub Constructor(f As FolderItem)
+		  Load(f,f)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub plist(f As folderItem, template As FolderItem)
+		Sub Constructor(f As folderItem, template As FolderItem)
 		  Load(f,template)
 		End Sub
 	#tag EndMethod

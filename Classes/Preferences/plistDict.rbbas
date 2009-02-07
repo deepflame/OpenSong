@@ -1027,7 +1027,7 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub plistDict()
+		Sub Constructor()
 		  values=new dictionary
 		  types=new dictionary
 		  searched=new Dictionary

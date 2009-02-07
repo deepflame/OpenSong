@@ -14,7 +14,7 @@ Protected Class SearchResult
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SearchResult(tbook as Integer, tchap as Integer, tver as Integer)
+		Sub Constructor(tbook as Integer, tchap as Integer, tver as Integer)
 		  book= tbook
 		  chapter= tchap
 		  verse= tver
@@ -23,7 +23,7 @@ Protected Class SearchResult
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SearchResult(verse as String)
+		Sub Constructor(verse as String)
 		  'format for incoming string must be three integers with a space inbetween them
 		  
 		  Me.book= Val(Nthfield(verse, " ", 1))

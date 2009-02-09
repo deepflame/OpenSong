@@ -56,11 +56,11 @@ Protected Module SetML
 		  Dim c As Color
 		  
 		  Dim strip As Integer
-		  Dim aspect_ratio,aspect_ratio_half, zoom As Double 'gp
+		  Dim aspect_ratio, zoom As Double
 		  Dim background As Picture
 		  Dim bodyStyle, titleStyle, subtitleStyle As FontFace
 		  //++EMP 9/05
-		  Dim bgHeightRatio, bgHeightRatio_half, bgWidthRatio As Double 'gp
+		  Dim bgHeightRatio, bgWidthRatio As Double
 		  Dim stripW, stripH As Integer
 		  Dim bgDrawH, bgDrawW As Double
 		  Dim gWidth, gHeight As  Integer
@@ -132,105 +132,86 @@ Protected Module SetML
 		    stripW = strip*aspect_ratio
 		    bgDrawH = background.Height - strip
 		    bgDrawW = background.Width - stripW
+		    bgHeightRatio = gHeight / bgDrawH
+		    bgWidthRatio = gWidth / bgDrawW
+		    aspect_ratio = Min(bgHeightRatio, bgWidthRatio)
 		    display_height = bgDrawH * aspect_ratio //Scale pic to display
 		    display_height = gheight - display_height //If this is the "short" side, calculate the difference between the pic and screen
 		    display_height = display_height / 2 //Half of that is our y margin
 		    
-		    
-		    dim TOP, BOTTOM, LEFT, RIGHT as double
-		    dim MaxSizeFact as double
-		    DIM  Stretch as boolean
-		    
-		    Stretch= (Style.Position = SlideStyle.POS_STRETCH)
-		    if style <> nil then
-		      MaxSizeFact = min(1,max(0, style.BGMaxSize/100))
-		    else
-		      MaxSizeFact = 1
-		    end if
-		    if maxsizefact < 0.01 then
-		      maxSizeFact = 1
-		    end if
-		    
-		    gHeight = g.Height * MaxSizeFact
-		    gWidth = g.Width * MaxSizeFact
-		    aspect_ratio = Min(gHeight /bgDrawH, gWidth / bgDrawW)
-		    
-		    if style.BackgroundAlign = "left" Then
-		      LEFT =0
-		      if stretch then
-		        RIGHT = min(LEFT + bgDrawW,  gWidth)
-		      else
-		        RIGHT = min(LEFT + bgDrawW* aspect_ratio,  gWidth)
-		      end if
-		    else
-		      if  style.BackgroundAlign = "right" Then
-		        RIGHT = g.Width
-		        if stretch then
-		          LEFT = max(RIGHT- bgDrawW, g.width- gWidth)
-		        else
-		          LEFT = max(RIGHT- bgDrawW* aspect_ratio, g.width- gWidth)
-		        end if
-		      else
-		        if Stretch then
-		          LEFT = 0
-		          RIGHT =g.width
-		        else
-		          LEFT = (g.width- bgDrawW* aspect_ratio)/2
-		          RIGHT = LEFT +  bgDrawW* aspect_ratio
-		        end if
-		      end if
-		    end if
-		    if style.BackgroundVAlign = "bottom" Then
-		      BOTTOM = g.height
-		      if stretch then
-		        TOP = max(BOTTOM -bgDrawH,  g.height - gheight)
-		      else
-		        TOP = max(BOTTOM -bgDrawH* aspect_ratio,  g.height - gheight)
-		      end if
-		    else
-		      if  style.BackgroundVAlign = "top" Then
-		        TOP= 0
-		        if stretch then
-		          BOTTOM = min(TOP+bgDrawH,  gheight)
-		        else
-		          BOTTOM = min(TOP+bgDrawH* aspect_ratio,  gheight)
-		        end if
-		      else
-		        if stretch then
-		          TOP = 0
-		          BOTTOM = g.height
-		        else
-		          TOP = (g.height-bgDrawH* aspect_ratio)/2
-		          BOTTOM = TOP +bgDrawH* aspect_ratio
-		        end if
-		      end if
-		    end if
-		    g.DrawPicture background, _
-		    LEFT, _
-		    TOP, _
-		    RIGHT- LEFT, _
-		    BOTTOM - TOP, _
-		    stripw, 0, bgDrawW,bgDrawH
-		    
-		    
-		    
+		    Select Case Style.Position
+		      
+		    Case SlideStyle.POS_CENTER
+		      
+		      g.DrawPicture background, _
+		      (gWidth / 2) - ((bgDrawW * aspect_ratio) / 2), _
+		      display_height, _
+		      bgDrawW * aspect_ratio, _
+		      bgDrawH * aspect_ratio, _
+		      stripw, 0, bgDrawW, bgDrawH
+		      
+		    Case SlideStyle.POS_STRETCH
+		      g.DrawPicture background, -(strip*aspect_ratio)/2, 0, g.Width+(strip*aspect_ratio), g.Height+strip, 0, 0, background.Width, background.Height
+		    End Select
 		    //--EMP
 		  End If
-		  
 		  Profiler.EndProfilerEntry
-		  Profiler.BeginProfilerEntry "DrawSlide>Declare 2" ' --------------------------------------------------
 		  
 		  If xslide = Nil Then Return
 		  
+		  Profiler.BeginProfilerEntry "DrawSlide>ImageSlide-Fullscreen" ' --------------------------------------------------
 		  Dim slideType As String
-		  Dim RealSize, RealBorder, HeaderSize, FooterSize, titleFooterSize, titleHeaderSize  As Integer
+		  Dim pic As Picture = Nil
+		  Dim resize As String
+		  Dim keepaspect As Boolean
+		  
+		  slideType = SmartML.GetValue(xslide.Parent.Parent, "@type")
+		  
+		  Select Case slideType
+		  Case "image"
+		    Dim img As StyleImage
+		    Dim sImageFile As String
+		    Dim scale as Double
+		    Dim Left, Top As Integer
+		    
+		    img = new StyleImage()
+		    sImageFile = SmartML.GetValue(xslide, "filename")
+		    If SmartML.GetValueB(xslide.Parent.Parent, "@link", False) = True And sImageFile<>"" Then
+		      Call img.SetImageFromFileName( sImageFile )
+		    Else
+		      Call img.SetImageAsString( SmartML.GetValue(xslide, "image") )
+		    End If
+		    pic = img.GetImage()
+		    If pic IsA Picture Then
+		      resize = SmartML.GetValue(xslide.Parent.Parent, "@resize", False)
+		      keepaspect = SmartML.GetValueB(xslide.Parent.Parent, "@keep_aspect", False)
+		      
+		      If resize = "screen" Then
+		        If keepaspect Then
+		          If pic.Width / g.Width > pic.Height / g.Height Then
+		            scale = g.Width / pic.Width
+		          Else
+		            scale = g.Height / pic.Height
+		          End If
+		          
+		          g.DrawPicture( pic, (g.Width - (pic.Width * scale)) / 2, (g.Height - (pic.Height * scale)) / 2, pic.Width * scale, pic.Height * scale, 0, 0, pic.Width, pic.Height )
+		        Else
+		          g.DrawPicture( pic, 0, 0, g.Width, g.Height, 0, 0, pic.Width, pic.Height )
+		        End If
+		      Else
+		        'Other variants are drawn after the (sub)titles
+		      End If
+		    End If
+		  End Select
+		  Profiler.EndProfilerEntry
+		  
+		  Profiler.BeginProfilerEntry "DrawSlide>Declare 2" ' --------------------------------------------------
+		  Dim RealSize, RealBorder, HeaderSize, FooterSize As Integer
 		  Dim x, y, z As Integer
 		  Dim d, ccli As String
 		  Dim multiwrap As Boolean
 		  Dim presentation, currentVerse as String
 		  Dim UsableWidth As Integer 'Max body width after margins are taken out (EMP 09/05)
-		  
-		  slideType = SmartML.GetValue(xslide.Parent.Parent, "@type")
 		  
 		  RealBorder = g.Width / 100 ' 50
 		  HeaderSize = 0
@@ -267,8 +248,6 @@ Protected Module SetML
 		  
 		  // Subtitles can now be over one line long.  Split the subtitle string on newlines and iterate
 		  Subtitles = Split(subtitle, Chr(10))
-		  titleFooterSize = FooterSize
-		  titleHeaderSize = HeaderSize
 		  
 		  If Style.TitleVAlign = "top" Then
 		    '++JRC
@@ -298,7 +277,6 @@ Protected Module SetML
 		      End If
 		    Next i
 		    '++JRC
-		    
 		    If Style.TitleEnable Then
 		      FooterSize = FooterSize + DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, HeaderSize, FooterSize, titleMargins)
 		    End If
@@ -315,42 +293,13 @@ Protected Module SetML
 		  
 		  Select Case slideType
 		  Case "image"
-		    Dim img As StyleImage
-		    Dim pic As Picture
-		    Dim resize, s As String
-		    Dim keepaspect As Boolean
 		    Dim scale as Double
 		    Dim Left, Top As Integer
 		    
-		    img = new StyleImage()
-		    s = SmartML.GetValue(xslide, "filename")
-		    If SmartML.GetValueB(xslide.Parent.Parent, "@link", False) = True And s<>"" Then
-		      Call img.SetImageFromFileName( s )
-		    Else
-		      Call img.SetImageAsString( SmartML.GetValue(xslide, "image") )
-		    End If
-		    pic = img.GetImage()
+		    'The image was already prepared in the preparation before drawing (sub)title
 		    If pic IsA Picture Then
-		      
-		      resize = SmartML.GetValue(xslide.Parent.Parent, "@resize", False)
-		      keepaspect = SmartML.GetValueB(xslide.Parent.Parent, "@keep_aspect", False)
 		      If resize = "screen" Then
-		        
-		        If keepaspect Then
-		          If pic.Width / g.Width > pic.Height / g.Height Then
-		            scale = g.Width / pic.Width
-		          Else
-		            scale = g.Height / pic.Height
-		          End If
-		          
-		          g.DrawPicture( pic, (g.Width - (pic.Width * scale)) / 2, (g.Height - (pic.Height * scale)) / 2, pic.Width * scale, pic.Height * scale, 0, 0, pic.Width, pic.Height )
-		        Else
-		          g.DrawPicture( pic, 0, 0, g.Width, g.Height, 0, 0, pic.Width, pic.Height )
-		        End If
-		        If Style.TitleEnable Then
-		          dim dummy as integer
-		          dummy = DrawSlideTitle(g, xslide, Style, 0, 0, titleStyle, RealBorder, titleHeaderSize, titleFooterSize, titleMargins) 'repaint title over image
-		        end if
+		        'Image was drawn before the (sub)titles
 		      ElseIf resize = "body" Then
 		        
 		        If HeaderSize < bodyMargins.Top Then

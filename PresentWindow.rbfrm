@@ -119,6 +119,9 @@ End
 		  #endif
 		  App.SetForeground(MainWindow)
 		  '--
+		  '++JRC
+		  MainWindow.AddPresentedSongsToLog
+		  
 		  MainWindow.SetFocus
 		End Sub
 	#tag EndEvent
@@ -871,6 +874,9 @@ End
 		  Dim xStyle As XmlNode
 		  Dim w, h As Integer
 		  
+		  '++JRC
+		  SongSetDisplayed(slide)
+		  
 		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Enter", 5)
 		  ' Remember the current (old) slide for the transition
 		  LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
@@ -893,18 +899,23 @@ End
 		    doetrans = SlideType <> "blank" ' (SlideType = "song") or (SlideType= "scripture")
 		    doetrans_nextblank = (SlideType = "blank")
 		  end if
-		  'gp end
 		  Profiler.EndProfilerEntry'
 		  
 		  ' === Setup CurrentPicture based on Mode ===
 		  Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::CurrentPicture"
 		  If Mode = "B" Then
+		    doetrans_nextblank = false 'gp
+		    doetrans = False
 		    CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
 		    CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
 		  ElseIf Mode = "W" Then
+		    doetrans_nextblank = false 'gp
+		    doetrans = False
 		    CurrentPicture.Graphics.ForeColor = RGB(255,255,255)
 		    CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
 		  ElseIf Mode = "H" Or Mode = "L" Then
+		    doetrans_nextblank = false 'gp
+		    doetrans = False
 		    SetML.DrawSlide CurrentPicture.Graphics, Nil, xStyle
 		    
 		    If Mode = "L" Then
@@ -922,6 +933,8 @@ End
 		    End If
 		  ElseIf Mode = "F" Then
 		    ' Freeze: no changes to CurrentPicture
+		    doetrans_nextblank = false 'gp
+		    doetrans = False
 		  Else ' Probably normal mode
 		    CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
 		    'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
@@ -1521,16 +1534,20 @@ End
 		    Dim Log As LogEntry
 		    
 		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
-		      Log = New LogEntry(Globals.SongActivityLog)
+		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
 		      Dim d As New Date
 		      
-		      Log.Title = SmartML.GetValue(s.DocumentElement, "title", True)
-		      Log.Author = SmartML.GetValue(s.DocumentElement, "author", True)
-		      Log.CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
-		      Log.SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
-		      Log.DateAndTime = d
-		      Log.HasChords = Log.CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
-		      Log.Presented = True
+		      i = UBound(ActLog)
+		      ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
+		      ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
+		      ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		      ActLog(i).SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
+		      ActLog(i).DateAndTime = d
+		      ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
+		      ActLog(i).Presented = True
+		      ActLog(i).SetItemNumber = i  'Assign an index to this song
+		      ActLog(i).Displayed = false 'Set this to true if user displays this song
+		      
 		    End If
 		    '--
 		    
@@ -1548,16 +1565,18 @@ End
 		    
 		    '++JRC Log Song Presentation
 		    'TODO determine if the user actually displays this song (uug)
-		    If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW  Then
-		      If NOT Log.AddLogEntry Then
-		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		      Else
-		        Log.UpdateNumEntries(Globals.SongActivityLog)
-		      End If
-		    End If
+		    'If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW  Then
+		    'If NOT Log.AddLogEntry Then
+		    'InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		    'Else
+		    'Log.UpdateNumEntries(Globals.SongActivityLog)
+		    'End If
+		    'End If
 		    '--
 		    
 		    newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
+		    '++JRC
+		    SmartML.SetValueN(newgroup, "@ItemNumber", i)
 		    
 		    ' --- Move to where we need to be ---
 		    temp = SmartML.GetValue(newGroup, "@name")
@@ -1765,6 +1784,23 @@ End
 		  end
 		  
 		  'gp end
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SongSetDisplayed(slide As XmlNode)
+		  Dim ItemNumber As Integer
+		  
+		  If slide = Nil Then Return 'sanity check
+		  If SmartML.GetValue(slide.Parent.Parent, "@type", false) <> "song" Then Return
+		  
+		  'get set item number
+		  ItemNumber = SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber", false)
+		  
+		  'find item in the song activity log array
+		  For i as Integer = 1 To UBound(ActLog)
+		    If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
+		  Next i
 		End Sub
 	#tag EndMethod
 
@@ -2051,7 +2087,7 @@ End
 		  '#if DebugBuild then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
-		  If (doTransition And doetrans and (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) and  lastcurrentSlide <> currentSlide Then 'gp
+		  If doTransition And doetrans and ((curslideTransition = SlideTransitionEnum.ApplicationDefault) Or (curslideTransition = SlideTransitionEnum.UseTransition)) and ( lastcurrentSlide <> currentSlide) Then 'gp
 		    
 		    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
 		    'GP CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
@@ -2122,7 +2158,7 @@ End
 		      ProgressWindow.SetMaximum(time * .5)
 		      ProgressWindow.Show
 		      ltime = ticks
-		      while ticks - ltime <  time * .5  and not keyboard.ControlKey
+		      while ticks - ltime <  time * .3  and not keyboard.ControlKey
 		        ProgressWindow.SetProgress(ticks-ltime)
 		        app.DoEvents(10)
 		      wend
@@ -2132,7 +2168,7 @@ End
 		    g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, LastPicture.Width, LastPicture.Height
 		    
 		  End If
-		  
+		  lastcurrentSlide = currentSlide 'gp
 		  
 		  busy = false 'gp
 		  

@@ -1,7 +1,7 @@
 #tag Class
 Protected Class IndexEntry
 	#tag Method, Flags = &h0
-		Sub IndexEntry(tword as String)
+		Sub Constructor(tword as String)
 		  word=tword
 		  
 		End Sub

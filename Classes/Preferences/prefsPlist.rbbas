@@ -258,7 +258,7 @@ Implements IPreferences
 		  Const URLsuffix = "-url"
 		  
 		  If GetChild(path, pl, child) Then
-		    Return TemporaryFolder.GetRelative(DecodeBase64(pl.GetString(child)))
+		    Return SpecialFolder.Temporary.GetRelative(DecodeBase64(pl.GetString(child)))
 		  End If
 		  If error And ErrorNumber <> kErrMissingLeafNum Then Return Nil
 		  If Not create Then Return default

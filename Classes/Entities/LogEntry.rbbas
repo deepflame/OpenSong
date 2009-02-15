@@ -113,7 +113,10 @@ Protected Class LogEntry
 		  End If
 		  
 		  xDoc.PreserveWhitespace = True
+		  'NumEntries keeps track of the total number of entries in the ActivityLog
+		  'NumAdded keeps track of how many times this LogEntry is added to the ActivityLog
 		  NumEntries = NumEntries + 1
+		  NumAdded = NumAdded +1
 		  
 		  entry = head.AppendChild(xDoc.CreateElement(E_ENTRY + Str(NumEntries)))
 		  
@@ -177,7 +180,7 @@ Protected Class LogEntry
 	#tag Method, Flags = &h0
 		Sub UpdateNumEntries(Log As ActivityLog)
 		  If Log <> Nil Then
-		    Log.NumEntries = NumEntries
+		    Log.NumEntries = Log.NumEntries + NumAdded
 		  End If
 		End Sub
 	#tag EndMethod
@@ -213,7 +216,7 @@ Protected Class LogEntry
 		  'Compares the passed Log Entry to this Log Entry
 		  'Returns true if entries are equal
 		  If Entry.Title = Title And Entry.Author = Author And Entry.Description = Description And _
-		    Entry.CCLISongNumber = CCLISongNumber And Entry.HasChords  = HasChords Then 
+		    Entry.CCLISongNumber = CCLISongNumber And Entry.HasChords  = HasChords Then
 		    If Entry.DateAndTime <> Nil And DateAndTime <> Nil Then
 		      If CompareDates(Entry.DateAndTime, DateAndTime) = 0 Then
 		        Return true
@@ -261,6 +264,16 @@ Protected Class LogEntry
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub SyncNumEntries(Log As ActivityLog)
+		  'This function updates NumEntries with the total of entries in the ActivityLog
+		  'function should be called before calling AddLogEntry
+		  If Log <> Nil Then
+		    NumEntries = Log.NumEntries
+		  End If
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		Author As String
@@ -282,8 +295,8 @@ Protected Class LogEntry
 		Protected xDoc As XMLDocument
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		NumEntries As Integer
+	#tag Property, Flags = &h1
+		Protected NumEntries As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -417,6 +430,18 @@ Protected Class LogEntry
 		#tag EndSetter
 		Copied As Boolean
 	#tag EndComputedProperty
+
+	#tag Property, Flags = &h0
+		SetItemNumber As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Displayed As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected NumAdded As Integer
+	#tag EndProperty
 
 
 	#tag Constant, Name = E_LOG, Type = String, Dynamic = False, Default = \"log", Scope = Protected
@@ -572,6 +597,16 @@ Protected Class LogEntry
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Group="Behavior"

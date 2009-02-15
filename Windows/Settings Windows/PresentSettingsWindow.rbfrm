@@ -105,7 +105,7 @@ Begin Window PresentSettingsWindow
       TextSize        =   12
       Top             =   14
       Underline       =   "False"
-      Value           =   1
+      Value           =   0
       Visible         =   True
       Width           =   600
       BehaviorIndex   =   2
@@ -1223,41 +1223,12 @@ Begin Window PresentSettingsWindow
             Width           =   161
             BehaviorIndex   =   39
          End
-         Begin CheckBox txt_style_inspring_after_line_break'gp
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            Caption         =   "inspringen na regel afbreken"
-            ControlOrder    =   45
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_style"
-            Italic          =   "False"
-            Left            =   37
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Scope           =   0
-            TabPanelIndex   =   2
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   352
-            Underline       =   "False"
-            Value           =   "False"
-            Visible         =   True
-            Width           =   151
-            BehaviorIndex   =   45
-         End
          Begin Canvas nil_blanks
             AcceptFocus     =   "False"
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            ControlOrder    =   40
+            ControlOrder    =   41
             Enabled         =   True
             EraseBackground =   "True"
             Height          =   91
@@ -1275,11 +1246,11 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   "False"
             Visible         =   True
             Width           =   177
-            BehaviorIndex   =   40
+            BehaviorIndex   =   41
             Begin StaticText lbl_style_blank_style
                AutoDeactivate  =   "True"
                Bold            =   "False"
-               ControlOrder    =   41
+               ControlOrder    =   42
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
@@ -1305,13 +1276,13 @@ Begin Window PresentSettingsWindow
                Underline       =   "False"
                Visible         =   True
                Width           =   164
-               BehaviorIndex   =   41
+               BehaviorIndex   =   42
             End
-            Begin RadioButton rad_style_blank_next 'gp
+            Begin RadioButton rad_style_blank_next
                AutoDeactivate  =   "True"
                Bold            =   "False"
                Caption         =   "Next slide"
-               ControlOrder    =   42
+               ControlOrder    =   43
                Enabled         =   True
                Height          =   20
                HelpTag         =   ""
@@ -1332,13 +1303,13 @@ Begin Window PresentSettingsWindow
                Value           =   "False"
                Visible         =   True
                Width           =   164
-               BehaviorIndex   =   42
+               BehaviorIndex   =   43
             End
-            Begin RadioButton rad_style_blank_prev 'gp
+            Begin RadioButton rad_style_blank_prev
                AutoDeactivate  =   "True"
                Bold            =   "False"
                Caption         =   "Previous slide"
-               ControlOrder    =   43
+               ControlOrder    =   44
                Enabled         =   True
                Height          =   20
                HelpTag         =   ""
@@ -1359,13 +1330,13 @@ Begin Window PresentSettingsWindow
                Value           =   "False"
                Visible         =   True
                Width           =   164
-               BehaviorIndex   =   43
+               BehaviorIndex   =   44
             End
-            Begin RadioButton rad_style_blank_default 'gp
+            Begin RadioButton rad_style_blank_default
                AutoDeactivate  =   "True"
                Bold            =   "False"
                Caption         =   "default slide"
-               ControlOrder    =   44
+               ControlOrder    =   45
                Enabled         =   True
                Height          =   20
                HelpTag         =   ""
@@ -1386,23 +1357,23 @@ Begin Window PresentSettingsWindow
                Value           =   "False"
                Visible         =   True
                Width           =   164
-               BehaviorIndex   =   44
+               BehaviorIndex   =   45
             End
          End
-         Begin CheckBox chk_style_blanks 'gp
+         Begin CheckBox txt_style_inspring_after_line_break
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            Caption         =   "Insert blank slides"
-            ControlOrder    =   47
+            Caption         =   "inspringen na regel afbreken"
+            ControlOrder    =   40
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   15
+            Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   "False"
-            Left            =   213
+            Left            =   37
             LockBottom      =   "False"
             LockLeft        =   "False"
             LockRight       =   "False"
@@ -1411,17 +1382,17 @@ Begin Window PresentSettingsWindow
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   229
+            Top             =   352
             Underline       =   "False"
             Value           =   "False"
             Visible         =   True
-            Width           =   176
-            BehaviorIndex   =   37
+            Width           =   151
+            BehaviorIndex   =   40
          End
-         Begin StaticText lbl_style_max_grow 'gp
+         Begin StaticText lbl_style_max_grow
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   46
+            ControlOrder    =   47
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1449,7 +1420,36 @@ Begin Window PresentSettingsWindow
             Width           =   140
             BehaviorIndex   =   46
          End
-         Begin EditField edt_style_max_grow 'gp
+         Begin CheckBox chk_style_blanks
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            Caption         =   "Insert blank slides"
+            ControlOrder    =   46
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_style"
+            Italic          =   "False"
+            Left            =   213
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Scope           =   0
+            TabPanelIndex   =   2
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   229
+            Underline       =   "False"
+            Value           =   "False"
+            Visible         =   True
+            Width           =   176
+            BehaviorIndex   =   37
+         End
+         Begin EditField edt_style_max_grow
             AcceptTabs      =   "False"
             Alignment       =   0
             AutoDeactivate  =   "True"
@@ -1518,6 +1518,66 @@ Begin Window PresentSettingsWindow
          Visible         =   True
          Width           =   155
          BehaviorIndex   =   48
+         Begin PopupMenu pop_monitor_mode
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   51
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_monitor"
+            InitialValue    =   ""
+            Italic          =   "False"
+            Left            =   447
+            ListIndex       =   0
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Scope           =   0
+            TabPanelIndex   =   2
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   169
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   127
+            BehaviorIndex   =   50
+         End
+         Begin StaticText lbl_monitor_presentation
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   55
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_monitor"
+            Italic          =   "False"
+            Left            =   447
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   2
+            Text            =   "Presentation Monitor:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   95
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   130
+            BehaviorIndex   =   52
+         End
          Begin StaticText lbl_monitor_default_mode
             AutoDeactivate  =   "True"
             Bold            =   "False"
@@ -1549,99 +1609,10 @@ Begin Window PresentSettingsWindow
             Width           =   125
             BehaviorIndex   =   49
          End
-         Begin PopupMenu pop_monitor_mode
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   54
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_monitor"
-            InitialValue    =   ""
-            Italic          =   "False"
-            Left            =   447
-            ListIndex       =   0
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Scope           =   0
-            TabPanelIndex   =   2
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   169
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   127
-            BehaviorIndex   =   51
-         End
-         Begin PopupMenu pop_monitor_presentation
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   56
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_monitor"
-            InitialValue    =   "1\r\n2"
-            Italic          =   "False"
-            Left            =   447
-            ListIndex       =   1
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Scope           =   0
-            TabPanelIndex   =   2
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   110
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   40
-            BehaviorIndex   =   52
-         End
-         Begin StaticText lbl_monitor_presentation
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   51
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_monitor"
-            Italic          =   "False"
-            Left            =   447
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   2
-            Text            =   "Presentation Monitor:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   95
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   130
-            BehaviorIndex   =   50
-         End
          Begin StaticText nte_monitor_detected
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   58
+            ControlOrder    =   57
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1668,6 +1639,35 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   130
             BehaviorIndex   =   53
+         End
+         Begin PopupMenu pop_monitor_presentation
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   53
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_monitor"
+            InitialValue    =   "1\r\n2"
+            Italic          =   "False"
+            Left            =   447
+            ListIndex       =   1
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Scope           =   0
+            TabPanelIndex   =   2
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   110
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   40
+            BehaviorIndex   =   51
          End
          Begin PopupMenu pop_monitor_control
             AutoDeactivate  =   "True"
@@ -1701,7 +1701,7 @@ Begin Window PresentSettingsWindow
          Begin StaticText lbl_monitor_control
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   61
+            ControlOrder    =   60
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1760,7 +1760,7 @@ Begin Window PresentSettingsWindow
             Bold            =   "False"
             Cancel          =   "False"
             Caption         =   "Browse"
-            ControlOrder    =   55
+            ControlOrder    =   56
             Default         =   "False"
             Enabled         =   True
             Height          =   22
@@ -1781,14 +1781,14 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   69
-            BehaviorIndex   =   59
+            BehaviorIndex   =   57
          End
          Begin PushButton btn_audio_play
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Cancel          =   "False"
             Caption         =   "Play"
-            ControlOrder    =   57
+            ControlOrder    =   58
             Default         =   "False"
             Enabled         =   True
             Height          =   22
@@ -1814,7 +1814,7 @@ Begin Window PresentSettingsWindow
          Begin StaticText lbl_audio_file_to_play
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   53
+            ControlOrder    =   54
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1840,7 +1840,7 @@ Begin Window PresentSettingsWindow
             Underline       =   "False"
             Visible         =   True
             Width           =   100
-            BehaviorIndex   =   57
+            BehaviorIndex   =   59
          End
          Begin PushButton btn_audio_stop
             AutoDeactivate  =   "True"
@@ -1875,7 +1875,7 @@ Begin Window PresentSettingsWindow
          AutoDeactivate  =   "True"
          Bold            =   "False"
          Caption         =   "Misc"
-         ControlOrder    =   60
+         ControlOrder    =   61
          Enabled         =   True
          Height          =   63
          HelpTag         =   ""

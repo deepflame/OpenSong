@@ -1875,7 +1875,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  DefaultDocsFolder = DocumentsFolder.Child("OpenSong")
+		  DefaultDocsFolder = SpecialFolder.Documents.Child("OpenSong")
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		  
@@ -2065,6 +2065,9 @@ End
 		  Dim T As Translator
 		  
 		  T = New Translator(App.AppFolder.Child("OpenSong Languages").Child(pop_general_language.Text))
+		  If Not T.IsLoaded Then
+		    T = Nil
+		  End If
 		  If T <> Nil Then
 		    App.T = T
 		    'save language selection in globals
@@ -2073,7 +2076,7 @@ End
 		    MainWindow.TranslateMe
 		    App.TranslateMe
 		  Else
-		    InputBox.Message "Error in translation."
+		    InputBox.Message "Error in translation. " + SmartML.GetErrorMessage()
 		    Return
 		  End If
 		  
@@ -2291,7 +2294,7 @@ End
 		    dlg.InitialDirectory = logFileSaved.Parent
 		    dlg.SuggestedFileName = logFileSaved.Name
 		  Else
-		    dlg.InitialDirectory = DocumentsFolder
+		    dlg.InitialDirectory = SpecialFolder.Documents
 		    dlg.SuggestedFileName = "OpenSong.log"
 		  End If
 		  

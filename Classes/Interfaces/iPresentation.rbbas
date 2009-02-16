@@ -31,7 +31,7 @@ Protected Interface iPresentation
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Show() As Boolean
+		Function StartShow(loopShow As Boolean = False, startAt As Integer = -1, endAt As Integer = -1) As Boolean
 		  
 		End Function
 	#tag EndMethod
@@ -71,6 +71,45 @@ Protected Interface iPresentation
 		  
 		End Function
 	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function EndShow() As Boolean
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SlideName(slideIndex As Integer) As String
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function AnimationCount(slideIndex As Integer) As Integer
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CurrentAnimation() As Integer
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GotoAnimation(slideIndex As Integer, animationIndex As Integer) As Boolean
+		  
+		End Function
+	#tag EndMethod
+
+
+	#tag Note, Name = Interface description
+		General notes:
+		- all indexes are 1-based (the first in a list is 1, the second 2, ...)
+		- if a count is unknown, the functions is to return -1 (valid for e.g. AnimationCount, SlideCount, CurrentAnimation)
+		
+		
+	#tag EndNote
 
 
 	#tag ViewBehavior

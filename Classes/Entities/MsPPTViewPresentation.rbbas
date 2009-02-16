@@ -28,8 +28,7 @@ Implements iPresentation
 	#tag Method, Flags = &h0
 		Function PreviewSlide(slideIndex As Integer, width As Integer, height As Integer) As Picture
 		  // Part of the iPresentation interface.
-		  
-		  
+		  Return Nil
 		End Function
 	#tag EndMethod
 
@@ -37,12 +36,11 @@ Implements iPresentation
 		Function PreviousSlide() As Boolean
 		  // Part of the iPresentation interface.
 		  
-		  
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Show() As Boolean
+		Function StartShow(loopShow As Boolean = False, startAt As Integer = -1, endAt As Integer = -1) As Boolean
 		  // Part of the iPresentation interface.
 		  
 		  
@@ -52,8 +50,7 @@ Implements iPresentation
 	#tag Method, Flags = &h0
 		Function SlideCount() As Integer
 		  // Part of the iPresentation interface.
-		  
-		  
+		  Return 0
 		End Function
 	#tag EndMethod
 
@@ -106,6 +103,39 @@ Implements iPresentation
 		  // Part of the iPresentation interface.
 		  
 		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function EndShow() As Boolean
+		  // Part of the iPresentation interface.
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SlideName(slideIndex As Integer) As String
+		  // Part of the iPresentation interface.
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function AnimationCount(slideIndex As Integer) As Integer
+		  // Part of the iPresentation interface.
+		  Return -1
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CurrentAnimation() As Integer
+		  // Part of the iPresentation interface.
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GotoAnimation(slideIndex As Integer, animationIndex As Integer) As Boolean
+		  // Part of the iPresentation interface.
 		End Function
 	#tag EndMethod
 

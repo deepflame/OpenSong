@@ -81,34 +81,31 @@ Protected Module PresentationFactory
 		    
 		    m_OOoAvailable = Integer(HostAvailable.No)
 		    Try
-		      'Dim oServiceManager as New OLEObject("com.sun.star.ServiceManager")
-		      'If Not IsNull( oServiceManager ) Then
-		      
-		      'Dim oDesktop as OLEObject = oServiceManager.createInstance("com.sun.star.frame.Desktop")
-		      'If Not IsNull( oDesktop ) Then
-		      
-		      'Dim aNoArgs() as Variant
-		      
-		      'Dim param as new OLEParameter
-		      'param.Type = OLEParameter.ParamTypeString
-		      'param.ValueArray = aNoArgs
-		      
-		      'oImpressDoc = oDesktop.loadComponentFromURL("private:factory/simpress", "_blank", 0, param)
-		      
-		      'Dim oImpressDoc as OLEObject = oServiceManager.createInstance("com.sun.star.presentation.PresentationDocument")
-		      'If Not IsNull( oImpressDoc ) Then
-		      'OOoAvailable = Integer(HostAvailable.Yes)
-		      'End If
-		      
-		      'End If
-		      
-		      'End If
-		      
-		      Dim oXServiceInfo as New OLEObject("com.sun.star.lang.XServiceInfo")
-		      If Not IsNull( oXServiceInfo ) Then
+		      Dim oServiceManager as New OLEObject("com.sun.star.ServiceManager")
+		      If Not IsNull( oServiceManager ) Then
 		        
-		        If oXServiceInfo.supportsService("com.sun.star.presentation.PresentationDocument") Then
+		        Dim oDesktop as OLEObject = oServiceManager.createInstance("com.sun.star.frame.Desktop")
+		        If Not IsNull( oDesktop ) Then
+		          
+		          Dim aNoArgs() as Variant
+		          
+		          Dim param as new OLEParameter
+		          param.Type = OLEParameter.ParamTypeString
+		          param.ValueArray = aNoArgs
+		          
+		          Dim oImpressDoc as OLEObject =  oDesktop.loadComponentFromURL("private:factory/simpress", "", 0, param)
 		          m_OOoAvailable = Integer(HostAvailable.Yes)
+		          
+		          'If the creation of the object from the URL above does not throw an error, OOo Impress installed;
+		          'the actual document creation does not need too be checked (afaik).
+		          'If this is required, make sure the targetFrame parameter is not "" but "_blank" (or something like that)
+		          
+		          If Not IsNull( oImpressDoc ) Then
+		            'm_OOoAvailable = Integer(HostAvailable.Yes)
+		            
+		            oImpressDoc.close( False )
+		          End If
+		          
 		        End If
 		        
 		      End If
@@ -201,9 +198,14 @@ Protected Module PresentationFactory
 		  'The MsPowerPointHost object is used instead of PowerPointApplication to be able to redirect events to PresentationFactory
 		  'Use MsPowerPointHost for all MsPowerPointPresentation object creations to recieve callbacks!
 		  
-		  If IsNull( m_MsPowerPointHost ) Then
-		    m_MsPowerPointHost = New MsPowerPointHost()
-		  End If
+		  Try
+		    If IsNull( m_MsPowerPointHost ) Then
+		      m_MsPowerPointHost = New MsPowerPointHost()
+		    End If
+		  Catch
+		    'will raise an exeption if Microsoft PowerPoint (Office installation, not just the viewer) is not installed
+		    m_MsPowerPointHost = Nil
+		  End Try
 		  
 		  If Not IsNull( m_MsPowerPointHost ) Then
 		    oPpt = m_MsPowerPointHost.Presentations.Open( presentationFile.AbsolutePath(), false, false, false )
@@ -219,40 +221,44 @@ Protected Module PresentationFactory
 		  Dim oPres As OooImpressPresentation = Nil
 		  Dim oImpressDoc As OLEObject = Nil
 		  
-		  Dim oServiceManager As OLEObject = New OLEObject("com.sun.star.ServiceManager")
-		  If Not IsNull( oServiceManager ) Then
-		    
-		    Dim oDesktop as OLEObject = oServiceManager.createInstance("com.sun.star.frame.Desktop")
-		    If Not IsNull( oDesktop ) Then
+		  Try
+		    Dim oServiceManager As OLEObject = New OLEObject("com.sun.star.ServiceManager")
+		    If Not IsNull( oServiceManager ) Then
 		      
-		      Dim aNoArgs() as Variant
-		      Dim aArgs() As Variant
-		      
-		      'See http://api.openoffice.org/docs/common/ref/com/sun/star/frame/XComponentLoader.html
-		      
-		      Dim oleArg As OLEObject = oServiceManager.Bridge_GetStruct("com.sun.star.beans.PropertyValue")
-		      oleArg.Name = "Hidden"
-		      oleArg.Value = True
-		      aArgs.Append( oleArg )
-		      
-		      Dim param as new OLEParameter
-		      
-		      'This works
-		      param.Type = OLEParameter.ParamTypeString 'or something else?
-		      param.ValueArray = aNoArgs
-		      
-		      'This does not work
-		      'param.Type = 0 'Use the variant (sub)type
-		      'param.ValueArray = aArgs
-		      
-		      oImpressDoc = oDesktop.loadComponentFromURL("file:///" + presentationFile .AbsolutePath().ReplaceAll("\", "/"), "_blank", 0, param)
-		      If Not IsNull( oImpressDoc ) Then
-		        oPres = New OOoImpressPresentation( oImpressDoc )
+		      Dim oDesktop as OLEObject = oServiceManager.createInstance("com.sun.star.frame.Desktop")
+		      If Not IsNull( oDesktop ) Then
+		        
+		        Dim aNoArgs() as Variant
+		        Dim aArgs() As Variant
+		        
+		        'See http://api.openoffice.org/docs/common/ref/com/sun/star/frame/XComponentLoader.html
+		        
+		        Dim oleArg As OLEObject = oServiceManager.Bridge_GetStruct("com.sun.star.beans.PropertyValue")
+		        oleArg.Name = "Hidden"
+		        oleArg.Value = True
+		        aArgs.Append( oleArg )
+		        
+		        Dim param as new OLEParameter
+		        
+		        'This works
+		        param.Type = OLEParameter.ParamTypeString 'or something else?
+		        param.ValueArray = aNoArgs
+		        
+		        'This does not work
+		        'param.Type = 0 'Use the variant (sub)type
+		        'param.ValueArray = aArgs
+		        
+		        oImpressDoc = oDesktop.loadComponentFromURL("file:///" + presentationFile.AbsolutePath().ReplaceAll("\", "/").ReplaceAll(":", "|").ReplaceAll(" ", "%20"), "_blank", 0, param)
+		        If Not IsNull( oImpressDoc ) Then
+		          oPres = New OOoImpressPresentation( oImpressDoc )
+		        End If
+		        
 		      End If
 		      
 		    End If
-		    
-		  End If
+		  Catch e As RuntimeException
+		    'prevent an application crash, inspect e for debugging.
+		  End Try
 		  
 		  Return oPres
 		End Function

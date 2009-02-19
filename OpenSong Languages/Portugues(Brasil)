@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.2.0">
+<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.4.0">
 
   <load_settings>
     <checking_folders>Criando/Verificando pasta de documentos</checking_folders>
     <main>Carregando configurações principais</main>
     <print>Carregando configurações de impressão</print>
     <presentation>Carregando configurações de apresentação</presentation>
+    <transitions>Carregando lista de transições</transitions>
     <tempos>Carregando lista de tempo</tempos>
     <themes>Carregando lista de temas</themes>
     <time_signatures>Carregando lista de assinatura de tempo</time_signatures>
+    <imagequality>Carregando lista de qualidade de imagem</imagequality>
     <fonts>Carregando lista de fontes</fonts>
     <latest_version>Verificando versão mais recente
       <newer_available>Uma versão mais nova (%1) está disponível. Visite www.opensong.org para receber a nova versão.</newer_available>
@@ -44,13 +46,14 @@
         <dual_screen caption="No computador e telão"/>
         <preview_dual_screen caption="Visualizar as duas telas no computador"/>
       </present>
-      <export caption="Exportar">Exporta a canção atual.
-        <to caption="Selecionar uma pasta para exportar."/>
-      </export>
+      <export caption="Exportar">Exporta a canção atual.</export>
       <rename caption="Renomear">Renomeia a canção atual.</rename>
       <move caption="Mover">Moves the current song into another folder.
         <where caption="Mover '%1' para a pasta:"/>
       </move>
+      <copy caption="Copiar">Copia a canção atual para outra pasta.
+        <where caption="Copiar '%1' para a pasta:"/>
+      </copy>
       <delete caption="Excluir">Apaga a canção atual.</delete>
     </selected_song>
 
@@ -186,6 +189,7 @@
       <ins_slide caption="Slide">Permite a criação de múltiplos slides que compartilham um título, subtítulo, estilo, e/ou opção de auto-avançar. Os slides criados deste modo também podem ser repetidos em looping.</ins_slide>
     <loop caption="Repetir Slides">Marque esta opção para que o OpenSong volte automaticamente ao primeiro slide neste item depois que terminar o último slide deste item.</loop>
     <print caption="Imprimir Lista">Desmarque esta opção para que este grupo personalizado de slides não apareça ao imprimir a listagem de configurações.</print>
+    <transition caption="Usar transição">Marque esta opção para usar uma transição quando este slide for exibido.</transition>
     <auto_advance caption="Avançar slide a cada">Enter the number of seconds that OpenSong should display each slide in this item before automatically advancing to the next slide in this item.</auto_advance>
     <seconds caption="segundos"/>
     <style caption="Exibir Estilo">Marque esta opção para que este slide tenha um estilo personalizado. Quando habilitado, marque a caixa de exibição acima para editar o estilo deste item.</style>
@@ -265,6 +269,7 @@
       <print caption="Im_primir"/>
       <print_alphabetical_toc caption="Imprimir em ordem _Alfabética"/>
       <print_categorical_toc caption="Imprimir por _Categoria"/>
+      <song_act caption="Visua_lizar Registro das Atividades de Canção"/>
       <quit caption="Sa_ir"/>
     </file>
     <edit caption="_Editar">
@@ -330,6 +335,11 @@
       <change caption="Alterar"/>
       <oldfolderdb caption="Usar arquivo de cache V1.1"/>
     </documents_folder>
+    <imagequality caption="Configurar Qualidade da Imagem">
+      <note caption="O OpenSong tenta armazenar as imagens que são usadas em um formato JPEG. Os itens abaixo controlam a qualidade e comportamento de armazenamento da imagem. A qualidade mais baixa disponível abaixo será escolhida caso o QuickTime não esteja instalado já que o OpenSong depende dele para armazenar imagens JPEG em alta quilidade."/>
+      <compression caption="Compressão da imagem" />
+      <extern caption="Não incluir imagens de fundo." />
+    </imagequality>
     <logging caption="Configurações do Registro">
       <append caption="Anexar ao arquivo de registro"/>
       <console caption="Registrar para o console do sistema"/>
@@ -337,6 +347,10 @@
       <dialog caption="Selecionar arquivo para armazenar o registro"
               title="Selecionar arquivo de registro"/>
     </logging>
+    <log caption="Configurações do Registro de Canções">
+      <enable caption="Ativar Registro"/>
+      <prompt caption="Perguntar Antes da Apresentação"/>
+    </log>
     <startmode caption="Janela Inicial">
       <songs caption="Modo Canções"/>
       <sets  caption="Modo Configurações"/>
@@ -381,10 +395,10 @@
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </settings>
     <transitions caption="Transições">
-      <use_transitions caption="Usar Transições"/>
-      <transition_note caption="*As transições são muito afetadas pela resolução de tela. Se você estiver experimentando transições lentas, considere diminuir a resolução do monitor em que a apresentação reside. Também, se você notar que estas transições não são exibidas, pode ser porque seus níveis de cor são muito baixos no monitor da apresentação."/>
-      <time caption="Tempo" helptag="Tempo total para transição (pode ser demorado em sistemas mais lentos)"/>
-      <frames caption="Frames" helptag="Número de quadros ou passos de transição entre slides"/>
+      <use_transitions caption="Ativado por padrão"/>
+      <transition_note caption="*As transições são muito afetadas pela resolução de tela. Se você estiver experimentando transições lentas, considere diminuir a resolução do monitor onde a apresentação esteja armazenada. Também, se você notar que as transições não estão aparecendo, pode ser porque o nível de cores esteja muito baixo no monitor da apresentação."/>
+      <time caption="Tempo" helptag="Tempo total para transição (pode haver atraso em sistemas meis lentos)"/>
+      <frames caption="Quadros" helptag="Número de quadros ou passos da transição entre slides"/>
     </transitions>
     <style caption="Estilo">
       <border_thickness caption="Espessura da Borda"/>
@@ -408,6 +422,8 @@
       </mouse_cursor>
       <blanks caption="Inserir Slides Brancos"/>
       <blanks_between caption="Entre Itens Configurados"/>
+      <time caption="Tempo" helptag="Tempo total para transição (pode ser demorado em sistemas mais lentos)"/>
+      <frames caption="Frames" helptag="Número de quadros ou passos de transição entre slides"/>
       <blank_style caption="Slides em brnco tem o estilo de"/>
       <blank_prev caption="Slide anterior"/>
       <blank_next caption="Próximo slide"/>
@@ -593,6 +609,11 @@ Não existe muito para uma linha de comentário. As linhas de comentário são quais
 &lt;h2&gt;Quebras de Coluna&lt;/h2&gt;
 
 Se uma linha contém somente três traços ("---"), as folhas da letra imprimirão com uma segunda coluna que começa na quebra da coluna.
+
+&lt;h2&gt;Quebras de Página&lt;/h2&gt;
+
+Se a linha contém ("-!!") isto indica o local onde a quebra de linha deve ser colocada na folha principal ao imprimir canções mais longas.
+
 </format>
 
     <presentation>
@@ -667,7 +688,7 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
      <prechorus_abbreviation caption="coro"/>
      <chorus_abbreviation caption="coro"/>
      <bridge_abbreviation caption="ponte"/>
-     <tag_abbreviation caption="etiq"/>
+     <tag_abbreviation caption="tag"/>
      <author caption=""/>
      <hymn_number caption="Número do Hino"/>
      <ccli_number caption="Número CCLI da Canção"/>
@@ -698,11 +719,16 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
       <subtitle caption="Subtítulo"/>
       <body caption="Corpo"/>
       <align caption="Alinhamento"/>
+      <margin caption="Margens"/>
+      <tabs caption="Tabuladores"/>
+    </fonts_and_alignment>
+    <options caption="Opções textuais">
       <subtitles caption="Subtítulos da Canção"/>
       <highlight_chorus caption="Destacar texto do coro"/>
       <descriptive_subtitle caption="Informação descritiva do subtítulo"/>
-   </fonts_and_alignment>
-      <background caption="Fundo">
+      <verse_in_title caption="Include verse numbers in title"/>
+    </options>
+    <background caption="Fundo">
       <color caption="Cor"/>
       <image caption="Imagem"/>
       <position caption="Posição">
@@ -718,15 +744,82 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
     <trim_note caption="*Corta a base da imagem para esconder marcas-d'água, endereços da web, etc. Para evitar distorções e também apara as laterais para compensar."/>
   </style_editor>
 
+  <style_margins title="Editor de Margens">
+      <left caption="Esquerda"/>
+      <right caption="Direita"/>
+      <top caption="Superior"/>
+      <bottom caption="Inferior"/>
+      <pixels caption="px"/>
+    <preview caption="Prévia"/>
+  </style_margins>
+  
+  <style_tabs title="Editor de Tabuladores">
+    <tabs caption="Tabuladores">
+      <new caption="&amp;Novo"/>
+      <remove caption="&amp;Remover"/>
+      <removeall caption="Remover &amp;Tudo"/>
+    </tabs>
+    <properties caption="Propriedades">
+      <position caption="Posição"/>
+      <pixels caption="px"/>
+      <align caption="Alinhamento"/>
+      <left caption="Esquerda"/>
+      <middle caption="Centralizada"/>
+      <right caption="Direita"/>
+      <char caption="Pelo caractere"/>
+    </properties>
+    <preview caption="Prévia"/>
+  </style_tabs>
+  
   <song_lookup title="Pesquisar Canções">
     <header caption="Para adicionar uma canção, clique o título da canção abaixo e clique 'Adicionar'. Se você souber o nome da canção você pode digitá-lo no Campo de Pesquisa Rápida e clicar 'Adicionar'. Você pode também clicar duas vezes no nome da canção ou pressionar ENTER para adicionar a canção."/>
     <no_selection>Você não selecionou uma canção.</no_selection>
     <folder caption="Selecionar Pasta"/>
     <preview caption="Visualizar Canção"/>
     <lookup caption="Pesquisa Rápida"/>
+    <songs head1="Nome da Canção" head2="Pasta"/>
     <presentation caption="link(slide_editor/presentation/@caption)"/>
     <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
+
+  <song_activity title="Registro de Atividades da Canção">
+    <range caption="Data (mm/dd/yyyy)"></range>
+    <to caption="para"/>
+    <find caption="Localizar"></find>
+    <clear_log caption="Limpar"></clear_log>
+    <print caption="Imprimir"></print>
+    <view caption="Visualizar"/>
+    <merge caption="Mesclar"/>
+    <export caption="Exportar"/>
+    <done caption="Finalizar"/>
+    <show caption="Exibir">
+      <!-- 
+        "tag" attribute corresponds to the value of the
+        constants found in the LogEntry class. The list order
+        can be changed as desired for localisation (note that it is
+        alphabetical in English) as long as the tags relate to the
+        correct item.  For example, the local language value of "Moved"
+        should always have tag="4"
+      -->
+      <value tag="0">Tudo</value>
+      <value tag="1">Criado</value>
+      <value tag="8">Copiou</value>
+      <value tag="2">Exclu[ido</value>
+      <value tag="3">Modificado</value>
+      <value tag="4">Movido</value>
+      <value tag="5">Apresentado</value>
+      <value tag="6">Impresso</value>
+      <value tag="7">Renomeado</value>
+    </show>
+    <songs head7="Côro" head6="CCLI #" head5="Autor" head4="Título" head3="Atividade" head2="Tempo" head1="Data"/> 
+    <input_box>
+      <erase_all>Isto apagará todas as entradas. Continuar?</erase_all>
+    </input_box>
+    <description>Criado|Exclu[ido|Modificado|Movido|Apresentado|Impresso|Renomeado|Copiado</description>
+    <file_type>Arquivo de Registro de Atividades do OpenSong</file_type>
+    <merged>Mesclar completamente %1 entradas onde adicionará para o registro de atividades de canções.</merged>
+    <merged_dupes>%1 entradas duplicadas serão ignoradas.</merged_dupes>
+  </song_activity>
 
   <scripture_lookup title="Pesquisar Bíblia">
     <book caption="Livro da Bíblia"/>
@@ -773,6 +866,11 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
     <generate_index>Gerar índice para o arquivo da Bíblia?</generate_index>
     <generate_error>Erro ao gerar índice; você tem direitos de acesso para %1?</generate_error>
   </module>
+
+  <index_progress title="Por favor, aguarde">
+    <top caption="Construindo índice:"/>
+    <bottom caption="Pressione 'esc' para cancelar"/>
+  </index_progress>
 
   <import_from_ccli title="Importar do CCLI">
     <user_id caption="ID do Usuário"/>
@@ -864,7 +962,6 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
     <option name="Adoração: Gratidão"/>
   </theme_list>
 
-
   <tempo_list>
     <option name="Muito Rápido"/>
     <option name="Rápido"/>
@@ -882,18 +979,18 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
   </time_sig_list>
 
   <transition_list>
-    <option name="Default"/>
-    <option name="Yes"/>
-    <option name="No"/>
+    <option name="Padrão"/>
+    <option name="Sim"/>
+    <option name="Não"/>
   </transition_list>
   
   <imagequality_list>
-    <option name="Full, minimum quality, small set file"/>
-    <option name="High, low quality"/>
-    <option name="Medium, normal quality"/>
-    <option name="Little, high quality"/>
-    <option name="Low, maximum quality"/>
-    <option name="None, lossless, large set file"/>
+    <option name="Completo, qualidade mínima, menor tamanho para o arquivo"/>
+    <option name="Alta, baixa qualidade"/>
+    <option name="Média, qualidade normal"/>
+    <option name="Pequena, alta qualidade"/>
+    <option name="Baixa, qualidade máxima"/>
+    <option name="Nenhuma, menos perda, arquivo maior"/>
   </imagequality_list>
 
   <style_preview>
@@ -944,6 +1041,7 @@ Clique aqui para editar o estilo.</body>
     <paste caption="Colar"/>
     <select caption="Selecionar"/>
     <exit_program caption="Sair do Programa"/>
+    <export_to caption="Selecione a pasta para importação."/>
   </shared>
 
   <questions>
@@ -959,6 +1057,7 @@ Clique aqui para editar o estilo.</body>
     <generic_save_explanation caption="Se você não salvar, suas alterações serão perdidas"/>
     <set_changed caption="A configuração atual foi alterada, você deseja savar estas alterações?"/>
     <select_docs_folder caption="Selecionar a pasta do OpenSong">Onde o OpenSong deve armazenar seus arquivos (canções e configurações)?</select_docs_folder>
+    <activity_log caption="Você gostaria que as canções desta apresentação sejam adicionadas para o registro de atividades? Note que isto se aplica a canções adicionadas ultimamente também!"/>
   </questions>
 
   <about>
@@ -973,6 +1072,7 @@ StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
 iDeclare (http://www.declaresub.com/iDeclare
+SmartSplitter por Harry Hooie (http://www.harryhooie.com/source/)
 O arquivo de imagem PuffyClouds1.jpg incluído na pasta Backgrounds está sob Copyright de FreeStockPhotos.com</sources>
   </about>
 
@@ -1043,6 +1143,8 @@ Isto inutilizou a função Importar até que uma interface nova possa ser usada.
 Enquanto isso, por favor investigue o utilitário de Importação do OpenSong como uma opção.
 Os membros da equipe de desenvolvimento do OpenSong lamenta qualquer inconveniente.
     </cclinotavailable>
+    <activity_disabled>Não foi possível carregar a canção %1! do resitro de atividades. Por favor certifique-se de que este arquivo exista e esteja corrompido. A exibição do registro de atividades será desativada nesta sessão.</activity_disabled>
+    <adding_logentry>Erro ao Adicionar Entrada!</adding_logentry>
   </errors>
 
   <xml_errors>

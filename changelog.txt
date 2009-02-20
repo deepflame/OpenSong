@@ -1,4 +1,8 @@
-﻿* Updated translation for Português (Brasil) (thanx pauloneto)
+﻿-= 1.5.0 =-
+
+* Added Tim Howard to list of devs in About Window
+
+* Updated translation for Português (Brasil) (thanx pauloneto)
 
 * Show chorus/bridge on the right spot between the verses in title (gerritp)
 

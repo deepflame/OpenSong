@@ -877,7 +877,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <verse caption="Verse"/>
     </format>
     <shownumbers caption="Display verse numbers"/>
-    <preview caption="Voorbeeldweergave van schrift gedeelte"/>
+    <preview caption="Preview"/>
     <insert caption="link(shared/insert/@caption)"/>
     <bad_reference>
       <format>Please check the format of the query and try again.</format>

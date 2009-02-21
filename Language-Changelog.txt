@@ -1,3 +1,5 @@
+-= Version 1.5 =-
+scripture_lookup/preview(modified)
 sets_mode/current_item/paste
 style_tabs/properties/apply
 shared/apply

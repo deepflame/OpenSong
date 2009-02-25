@@ -168,11 +168,232 @@ Begin Window MainWindow Implements ScriptureReceiver
          Visible         =   True
          Width           =   240
          BehaviorIndex   =   5
+         Begin PopupMenu pop_songs_song_folders
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   14
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_controls_songs_mode"
+            InitialValue    =   ""
+            Italic          =   "False"
+            Left            =   10
+            ListIndex       =   -1
+            LockBottom      =   "False"
+            LockLeft        =   "True"
+            LockRight       =   "False"
+            LockTop         =   "True"
+            Scope           =   0
+            TabPanelIndex   =   1
+            TextFont        =   "Arial"
+            TextSize        =   11
+            Top             =   299
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   190
+            BehaviorIndex   =   20
+         End
+         Begin GroupBox grp_songs_all_songs
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            Caption         =   "All Songs"
+            ControlOrder    =   8
+            Enabled         =   True
+            Height          =   100
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_controls_songs_mode"
+            Italic          =   "False"
+            Left            =   10
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            TextFont        =   "Arial"
+            TextSize        =   11
+            Top             =   40
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   110
+            BehaviorIndex   =   25
+            Begin SButton btn_songs_print
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   28
+               Enabled         =   "True"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_all_songs"
+               LabelAlign      =   0
+               Left            =   21
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   61
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   26
+            End
+            Begin SButton btn_songs_export
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   29
+               Enabled         =   "True"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_all_songs"
+               LabelAlign      =   0
+               Left            =   21
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   86
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   27
+            End
+            Begin SButton btn_songs_find
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   30
+               Enabled         =   "True"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_all_songs"
+               LabelAlign      =   0
+               Left            =   21
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   111
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   28
+            End
+         End
+         Begin GroupBox grp_songs_new_song
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            Caption         =   "New Song"
+            ControlOrder    =   20
+            Enabled         =   True
+            Height          =   75
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_controls_songs_mode"
+            Italic          =   "False"
+            Left            =   10
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            TextFont        =   "Arial"
+            TextSize        =   11
+            Top             =   145
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   110
+            BehaviorIndex   =   16
+            Begin SButton btn_song_create
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   21
+               Enabled         =   "True"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_new_song"
+               LabelAlign      =   0
+               Left            =   21
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   166
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   17
+            End
+            Begin SButton btn_song_import
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   22
+               Enabled         =   "True"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_new_song"
+               LabelAlign      =   0
+               Left            =   21
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   191
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   18
+            End
+         End
          Begin GroupBox grp_songs_selected_song
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Selected Song"
-            ControlOrder    =   13
+            ControlOrder    =   7
             Enabled         =   True
             Height          =   249
             HelpTag         =   ""
@@ -192,8 +413,120 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   11
+            BehaviorIndex   =   6
+            Begin SButton btn_song_revert
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   11
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_selected_song"
+               LabelAlign      =   0
+               Left            =   141
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   85
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   8
+            End
             Begin SButton btn_song_present
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   9
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_selected_song"
+               LabelAlign      =   0
+               Left            =   141
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   135
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   7
+            End
+            Begin SButton btn_song_save
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   13
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_selected_song"
+               LabelAlign      =   0
+               Left            =   141
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   60
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   10
+            End
+            Begin SButton btn_song_print
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   12
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_selected_song"
+               LabelAlign      =   0
+               Left            =   141
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   110
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   9
+            End
+            Begin SButton btn_song_rename
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
@@ -215,69 +548,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
-               Top             =   135
+               Top             =   185
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   13
+               BehaviorIndex   =   11
             End
-            Begin SButton btn_song_revert
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   14
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_selected_song"
-               LabelAlign      =   0
-               Left            =   141
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   85
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   12
-            End
-            Begin SButton btn_song_print
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   17
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_selected_song"
-               LabelAlign      =   0
-               Left            =   141
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   110
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   15
-            End
-            Begin SButton btn_song_save
+            Begin SButton btn_song_export
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
@@ -299,18 +576,45 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
-               Top             =   60
+               Top             =   160
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   14
+               BehaviorIndex   =   12
             End
-            Begin SButton btn_song_rename
+            Begin SButton btn_song_copy
+               AcceptFocus     =   ""
+               AcceptTabs      =   ""
+               AutoDeactivate  =   "True"
+               Backdrop        =   ""
+               ControlOrder    =   17
+               Enabled         =   "True"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_songs_selected_song"
+               Left            =   141
+               LockBottom      =   ""
+               LockLeft        =   ""
+               LockRight       =   ""
+               LockTop         =   ""
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   1
+               Top             =   235
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   13
+            End
+            Begin SButton btn_song_move
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   20
+               ControlOrder    =   18
                Enabled         =   "False"
                EraseBackground =   "True"
                HasFocus        =   0
@@ -327,13 +631,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
-               Top             =   185
+               Top             =   210
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   17
+               BehaviorIndex   =   14
             End
-            Begin SButton btn_song_export
+            Begin SButton btn_song_delete
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
@@ -355,182 +659,17 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   1
-               Top             =   160
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   16
-            End
-            Begin SButton btn_song_copy
-               AcceptFocus     =   ""
-               AcceptTabs      =   ""
-               AutoDeactivate  =   "True"
-               Backdrop        =   ""
-               ControlOrder    =   22
-               Enabled         =   "True"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_selected_song"
-               Left            =   141
-               LockBottom      =   ""
-               LockLeft        =   ""
-               LockRight       =   ""
-               LockTop         =   ""
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   235
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   18
-            End
-            Begin SButton btn_song_move
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   23
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_selected_song"
-               LabelAlign      =   0
-               Left            =   141
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   210
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   19
-            End
-            Begin SButton btn_song_delete
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   24
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_selected_song"
-               LabelAlign      =   0
-               Left            =   141
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
                Top             =   260
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   20
-            End
-         End
-         Begin GroupBox grp_songs_new_song
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            Caption         =   "New Song"
-            ControlOrder    =   18
-            Enabled         =   True
-            Height          =   75
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_controls_songs_mode"
-            Italic          =   "False"
-            Left            =   10
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            TextFont        =   "Arial"
-            TextSize        =   11
-            Top             =   145
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   110
-            BehaviorIndex   =   21
-            Begin SButton btn_song_create
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   25
-               Enabled         =   "True"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_new_song"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   166
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   22
-            End
-            Begin SButton btn_song_import
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   26
-               Enabled         =   "True"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_new_song"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   191
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   23
+               BehaviorIndex   =   15
             End
          End
          Begin StaticText lbl_songs_song_folders
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   21
+            ControlOrder    =   23
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -556,41 +695,40 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   119
-            BehaviorIndex   =   24
+            BehaviorIndex   =   19
          End
-         Begin PopupMenu pop_songs_song_folders
+         Begin SButton btn_songs_song_folders_add
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   11
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
+            Backdrop        =   0
+            ControlOrder    =   25
+            Enabled         =   "False"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   18
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_controls_songs_mode"
-            InitialValue    =   ""
-            Italic          =   "False"
-            Left            =   10
-            ListIndex       =   -1
+            LabelAlign      =   0
+            Left            =   203
             LockBottom      =   "False"
-            LockLeft        =   "True"
+            LockLeft        =   "False"
             LockRight       =   "False"
             LockTop         =   "True"
             Scope           =   0
+            StickyBevel     =   0
             TabPanelIndex   =   1
-            TextFont        =   "Arial"
-            TextSize        =   11
-            Top             =   299
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   190
-            BehaviorIndex   =   10
+            Top             =   301
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   18
+            BehaviorIndex   =   22
          End
          Begin StaticText lbl_songs_songs
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   27
+            ControlOrder    =   24
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -616,68 +754,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   230
-            BehaviorIndex   =   25
-         End
-         Begin SButton btn_songs_song_folders_add
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   28
-            Enabled         =   "False"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   18
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_controls_songs_mode"
-            LabelAlign      =   0
-            Left            =   203
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            Scope           =   0
-            StickyBevel     =   0
-            TabPanelIndex   =   1
-            Top             =   301
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   18
-            BehaviorIndex   =   26
-         End
-         Begin SButton btn_songs_song_folders_delete
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   29
-            Enabled         =   "False"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   18
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_controls_songs_mode"
-            LabelAlign      =   0
-            Left            =   222
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            Scope           =   0
-            StickyBevel     =   0
-            TabPanelIndex   =   1
-            Top             =   301
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   18
-            BehaviorIndex   =   27
+            BehaviorIndex   =   21
          End
          Begin StaticText lbl_songs_curr_folder
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   30
+            ControlOrder    =   27
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -703,117 +785,35 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   230
-            BehaviorIndex   =   28
+            BehaviorIndex   =   24
          End
-         Begin GroupBox grp_songs_all_songs
+         Begin SButton btn_songs_song_folders_delete
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
-            Bold            =   "False"
-            Caption         =   "All Songs"
-            ControlOrder    =   7
-            Enabled         =   True
-            Height          =   100
+            Backdrop        =   0
+            ControlOrder    =   26
+            Enabled         =   "False"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   18
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_controls_songs_mode"
-            Italic          =   "False"
-            Left            =   10
+            LabelAlign      =   0
+            Left            =   222
             LockBottom      =   "False"
             LockLeft        =   "False"
             LockRight       =   "False"
-            LockTop         =   "False"
+            LockTop         =   "True"
             Scope           =   0
+            StickyBevel     =   0
             TabPanelIndex   =   1
-            TextFont        =   "Arial"
-            TextSize        =   11
-            Top             =   40
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   110
-            BehaviorIndex   =   6
-            Begin SButton btn_songs_print
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   9
-               Enabled         =   "True"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_all_songs"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   61
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   8
-            End
-            Begin SButton btn_songs_export
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   8
-               Enabled         =   "True"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_all_songs"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   86
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   7
-            End
-            Begin SButton btn_songs_find
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   12
-               Enabled         =   "True"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_songs_all_songs"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   1
-               Top             =   111
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   9
-            End
+            Top             =   301
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   18
+            BehaviorIndex   =   23
          End
          Begin Listbox lst_songs_songs
             AutoDeactivate  =   "True"
@@ -930,11 +930,94 @@ Begin Window MainWindow Implements ScriptureReceiver
          Visible         =   True
          Width           =   240
          BehaviorIndex   =   31
+         Begin GroupBox grp_sets_sets
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            Caption         =   "Sets"
+            ControlOrder    =   34
+            Enabled         =   True
+            Height          =   50
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_controls_sets_mode"
+            Italic          =   "False"
+            Left            =   10
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Scope           =   0
+            TabPanelIndex   =   2
+            TextFont        =   "Arial"
+            TextSize        =   11
+            Top             =   40
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   230
+            BehaviorIndex   =   50
+            Begin PopupMenu pop_sets_sets
+               AutoDeactivate  =   "True"
+               Bold            =   "False"
+               ControlOrder    =   35
+               DataField       =   ""
+               DataSource      =   ""
+               Enabled         =   True
+               Height          =   20
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_sets_sets"
+               InitialValue    =   ""
+               Italic          =   "False"
+               Left            =   21
+               ListIndex       =   0
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               TabPanelIndex   =   2
+               TextFont        =   "Arial"
+               TextSize        =   10
+               Top             =   58
+               Underline       =   "False"
+               Visible         =   True
+               Width           =   185
+               BehaviorIndex   =   51
+            End
+            Begin SButton btn_sets_add
+               AcceptFocus     =   "False"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   54
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   20
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_sets_sets"
+               LabelAlign      =   0
+               Left            =   210
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   59
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   20
+               BehaviorIndex   =   52
+            End
+         End
          Begin GroupBox grp_set_current_item
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Current Item"
-            ControlOrder    =   36
+            ControlOrder    =   33
             Enabled         =   True
             Height          =   177
             HelpTag         =   ""
@@ -954,13 +1037,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   35
+            BehaviorIndex   =   32
             Begin SButton btn_set_remove
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   38
+               ControlOrder    =   36
                Enabled         =   "False"
                EraseBackground =   "True"
                HasFocus        =   0
@@ -981,7 +1064,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   37
+               BehaviorIndex   =   33
             End
             Begin SButton btn_set_move_down
                AcceptFocus     =   "True"
@@ -1009,9 +1092,93 @@ Begin Window MainWindow Implements ScriptureReceiver
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
-               BehaviorIndex   =   36
+               BehaviorIndex   =   34
             End
             Begin SButton btn_set_copy
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   38
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_item"
+               LabelAlign      =   0
+               Left            =   138
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   312
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   35
+            End
+            Begin SButton btn_set_move_up
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   39
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_item"
+               LabelAlign      =   0
+               Left            =   138
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   237
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   36
+            End
+            Begin SButton btn_set_paste
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   40
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_item"
+               LabelAlign      =   0
+               Left            =   138
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   337
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   87
+               BehaviorIndex   =   37
+            End
+            Begin SButton btn_set_store
                AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
@@ -1033,350 +1200,17 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
-               Top             =   312
+               Top             =   362
                UseFocusRing    =   "True"
                Visible         =   "True"
                Width           =   87
                BehaviorIndex   =   38
             End
-            Begin SButton btn_set_move_up
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   42
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_item"
-               LabelAlign      =   0
-               Left            =   138
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   237
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   39
-            End
-            Begin SButton btn_set_paste
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   43
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_item"
-               LabelAlign      =   0
-               Left            =   138
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   337
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   40
-            End
-            Begin SButton btn_set_store
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   44
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_item"
-               LabelAlign      =   0
-               Left            =   138
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   362
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   87
-               BehaviorIndex   =   41
-            End
-         End
-         Begin GroupBox grp_set_current_set
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            Caption         =   "Current Set"
-            ControlOrder    =   39
-            Enabled         =   True
-            Height          =   122
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_controls_sets_mode"
-            Italic          =   "False"
-            Left            =   10
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Scope           =   0
-            TabPanelIndex   =   2
-            TextFont        =   "Arial"
-            TextSize        =   11
-            Top             =   92
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   230
-            BehaviorIndex   =   43
-            Begin SButton btn_set_present
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   46
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_set"
-               LabelAlign      =   0
-               Left            =   138
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   110
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   92
-               BehaviorIndex   =   44
-            End
-            Begin SButton btn_set_delete
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   48
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_set"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   160
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   92
-               BehaviorIndex   =   45
-            End
-            Begin SButton btn_set_print_songs
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   49
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_set"
-               LabelAlign      =   0
-               Left            =   138
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   135
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   92
-               BehaviorIndex   =   46
-            End
-            Begin SButton btn_set_rename
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   50
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_set"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   135
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   92
-               BehaviorIndex   =   47
-            End
-            Begin SButton btn_set_print_order
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   51
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_set"
-               LabelAlign      =   0
-               Left            =   138
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   160
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   92
-               BehaviorIndex   =   48
-            End
-            Begin SButton btn_set_save
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   52
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_set"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   110
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   92
-               BehaviorIndex   =   49
-            End
-            Begin SButton btn_set_saveas
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   53
-               Enabled         =   "True"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_set"
-               LabelAlign      =   0
-               Left            =   21
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   185
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   92
-               BehaviorIndex   =   50
-            End
-            Begin SButton btn_set_export
-               AcceptFocus     =   "True"
-               AcceptTabs      =   "False"
-               AutoDeactivate  =   "True"
-               Backdrop        =   0
-               ControlOrder    =   54
-               Enabled         =   "False"
-               EraseBackground =   "True"
-               HasFocus        =   0
-               Height          =   24
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_set_current_set"
-               Left            =   138
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               StickyBevel     =   0
-               TabPanelIndex   =   2
-               Top             =   185
-               UseFocusRing    =   "True"
-               Visible         =   "True"
-               Width           =   92
-               BehaviorIndex   =   51
-            End
          End
          Begin StaticText lbl_set_items
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   40
+            ControlOrder    =   43
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1402,62 +1236,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   115
-            BehaviorIndex   =   52
+            BehaviorIndex   =   48
          End
-         Begin Listbox lst_set_items
-            AutoDeactivate  =   "True"
-            AutoHideScrollbars=   "True"
-            Bold            =   "False"
-            ColumnCount     =   1
-            ColumnsResizable=   "False"
-            ColumnWidths    =   ""
-            ControlOrder    =   45
-            DataField       =   ""
-            DataSource      =   ""
-            DefaultRowHeight=   -1
-            Enabled         =   True
-            EnableDrag      =   "False"
-            EnableDragReorder=   "True"
-            GridLinesHorizontal=   0
-            GridLinesVertical=   0
-            HasHeading      =   "False"
-            HeadingIndex    =   -1
-            Height          =   148
-            HelpTag         =   ""
-            Hierarchical    =   "False"
-            Index           =   -2147483648
-            InitialParent   =   "can_controls_sets_mode"
-            InitialValue    =   ""
-            Italic          =   "False"
-            Left            =   10
-            LockBottom      =   "True"
-            LockLeft        =   "True"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            RequiresSelection=   ""
-            Scope           =   0
-            ScrollbarHorizontal=   "False"
-            ScrollBarVertical=   "True"
-            SelectionType   =   0
-            TabPanelIndex   =   2
-            TextFont        =   "Arial"
-            TextSize        =   11
-            Top             =   402
-            Underline       =   "False"
-            UseFocusRing    =   "True"
-            Visible         =   True
-            Width           =   230
-            _ScrollOffset   =   0
-            _ScrollWidth    =   -1
-            BehaviorIndex   =   42
-         End
-         Begin GroupBox grp_sets_sets
+         Begin GroupBox grp_set_current_set
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            Caption         =   "Sets"
-            ControlOrder    =   33
+            Caption         =   "Current Set"
+            ControlOrder    =   42
             Enabled         =   True
-            Height          =   50
+            Height          =   122
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_controls_sets_mode"
@@ -1471,55 +1258,26 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
-            Top             =   40
+            Top             =   92
             Underline       =   "False"
             Visible         =   True
             Width           =   230
-            BehaviorIndex   =   32
-            Begin PopupMenu pop_sets_sets
-               AutoDeactivate  =   "True"
-               Bold            =   "False"
-               ControlOrder    =   34
-               DataField       =   ""
-               DataSource      =   ""
-               Enabled         =   True
-               Height          =   20
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_sets_sets"
-               InitialValue    =   ""
-               Italic          =   "False"
-               Left            =   21
-               ListIndex       =   0
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "False"
-               LockTop         =   "False"
-               Scope           =   0
-               TabPanelIndex   =   2
-               TextFont        =   "Arial"
-               TextSize        =   10
-               Top             =   58
-               Underline       =   "False"
-               Visible         =   True
-               Width           =   185
-               BehaviorIndex   =   33
-            End
-            Begin SButton btn_sets_add
-               AcceptFocus     =   "False"
+            BehaviorIndex   =   39
+            Begin SButton btn_set_delete
+               AcceptFocus     =   "True"
                AcceptTabs      =   "False"
                AutoDeactivate  =   "True"
                Backdrop        =   0
-               ControlOrder    =   35
+               ControlOrder    =   45
                Enabled         =   "False"
                EraseBackground =   "True"
                HasFocus        =   0
-               Height          =   20
+               Height          =   24
                HelpTag         =   ""
                Index           =   -2147483648
-               InitialParent   =   "grp_sets_sets"
+               InitialParent   =   "grp_set_current_set"
                LabelAlign      =   0
-               Left            =   210
+               Left            =   21
                LockBottom      =   "False"
                LockLeft        =   "False"
                LockRight       =   "False"
@@ -1527,18 +1285,213 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                StickyBevel     =   0
                TabPanelIndex   =   2
-               Top             =   59
+               Top             =   160
                UseFocusRing    =   "True"
                Visible         =   "True"
-               Width           =   20
-               BehaviorIndex   =   34
+               Width           =   92
+               BehaviorIndex   =   41
+            End
+            Begin SButton btn_set_present
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   44
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               LabelAlign      =   0
+               Left            =   138
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   110
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   92
+               BehaviorIndex   =   40
+            End
+            Begin SButton btn_set_rename
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   47
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               LabelAlign      =   0
+               Left            =   21
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   135
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   92
+               BehaviorIndex   =   43
+            End
+            Begin SButton btn_set_print_songs
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   46
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               LabelAlign      =   0
+               Left            =   138
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   135
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   92
+               BehaviorIndex   =   42
+            End
+            Begin SButton btn_set_print_order
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   50
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               LabelAlign      =   0
+               Left            =   138
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   160
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   92
+               BehaviorIndex   =   44
+            End
+            Begin SButton btn_set_save
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   51
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               LabelAlign      =   0
+               Left            =   21
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   110
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   92
+               BehaviorIndex   =   45
+            End
+            Begin SButton btn_set_saveas
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   52
+               Enabled         =   "True"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               LabelAlign      =   0
+               Left            =   21
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   185
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   92
+               BehaviorIndex   =   46
+            End
+            Begin SButton btn_set_export
+               AcceptFocus     =   "True"
+               AcceptTabs      =   "False"
+               AutoDeactivate  =   "True"
+               Backdrop        =   0
+               ControlOrder    =   53
+               Enabled         =   "False"
+               EraseBackground =   "True"
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_current_set"
+               Left            =   138
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "False"
+               LockTop         =   "False"
+               Scope           =   0
+               StickyBevel     =   0
+               TabPanelIndex   =   2
+               Top             =   185
+               UseFocusRing    =   "True"
+               Visible         =   "True"
+               Width           =   92
+               BehaviorIndex   =   47
             End
          End
          Begin GroupBox grp_set_new_item
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "New Item"
-            ControlOrder    =   47
+            ControlOrder    =   48
             Enabled         =   True
             Height          =   151
             HelpTag         =   ""
@@ -1700,6 +1653,53 @@ Begin Window MainWindow Implements ScriptureReceiver
                BehaviorIndex   =   58
             End
          End
+         Begin Listbox lst_set_items
+            AutoDeactivate  =   "True"
+            AutoHideScrollbars=   "True"
+            Bold            =   "False"
+            ColumnCount     =   1
+            ColumnsResizable=   "False"
+            ColumnWidths    =   ""
+            ControlOrder    =   49
+            DataField       =   ""
+            DataSource      =   ""
+            DefaultRowHeight=   -1
+            Enabled         =   True
+            EnableDrag      =   "False"
+            EnableDragReorder=   "True"
+            GridLinesHorizontal=   0
+            GridLinesVertical=   0
+            HasHeading      =   "False"
+            HeadingIndex    =   -1
+            Height          =   148
+            HelpTag         =   ""
+            Hierarchical    =   "False"
+            Index           =   -2147483648
+            InitialParent   =   "can_controls_sets_mode"
+            InitialValue    =   ""
+            Italic          =   "False"
+            Left            =   10
+            LockBottom      =   "True"
+            LockLeft        =   "True"
+            LockRight       =   "False"
+            LockTop         =   "True"
+            RequiresSelection=   ""
+            Scope           =   0
+            ScrollbarHorizontal=   "False"
+            ScrollBarVertical=   "True"
+            SelectionType   =   0
+            TabPanelIndex   =   2
+            TextFont        =   "Arial"
+            TextSize        =   11
+            Top             =   402
+            Underline       =   "False"
+            UseFocusRing    =   "True"
+            Visible         =   True
+            Width           =   230
+            _ScrollOffset   =   0
+            _ScrollWidth    =   -1
+            BehaviorIndex   =   49
+         End
       End
    End
    Begin PagePanel pge_contents
@@ -1720,7 +1720,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   4
+      Value           =   0
       Visible         =   True
       Width           =   495
       BehaviorIndex   =   59
@@ -1779,38 +1779,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   460
             BehaviorIndex   =   61
          End
-         Begin RadioButton rad_style_change
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            Caption         =   "Change Style to the Following:"
-            ControlOrder    =   63
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "cnv_editor_style_change"
-            Italic          =   "False"
-            Left            =   275
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Scope           =   0
-            TabPanelIndex   =   4
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   130
-            Underline       =   "False"
-            Value           =   "False"
-            Visible         =   True
-            Width           =   250
-            BehaviorIndex   =   63
-         End
          Begin RadioButton rad_style_revert
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Revert to Previous Style"
-            ControlOrder    =   62
+            ControlOrder    =   63
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
@@ -1829,6 +1802,33 @@ Begin Window MainWindow Implements ScriptureReceiver
             Top             =   105
             Underline       =   "False"
             Value           =   "True"
+            Visible         =   True
+            Width           =   250
+            BehaviorIndex   =   63
+         End
+         Begin RadioButton rad_style_change
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            Caption         =   "Change Style to the Following:"
+            ControlOrder    =   62
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "cnv_editor_style_change"
+            Italic          =   "False"
+            Left            =   275
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Scope           =   0
+            TabPanelIndex   =   4
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   130
+            Underline       =   "False"
+            Value           =   "False"
             Visible         =   True
             Width           =   250
             BehaviorIndex   =   62
@@ -1944,7 +1944,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   175
-            BehaviorIndex   =   68
+            BehaviorIndex   =   67
          End
          Begin StaticText lbl_song_capo
             AutoDeactivate  =   "True"
@@ -1975,7 +1975,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   125
-            BehaviorIndex   =   69
+            BehaviorIndex   =   68
          End
          Begin Listbox lst_song_themes
             AutoDeactivate  =   "True"
@@ -2022,7 +2022,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   175
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
-            BehaviorIndex   =   67
+            BehaviorIndex   =   69
          End
          Begin StaticText lbl_song_key_line
             AutoDeactivate  =   "True"
@@ -2758,956 +2758,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             BehaviorIndex   =   91
          End
       End
-      Begin Canvas can_editor_general_song_editor
-         AcceptFocus     =   "False"
-         AcceptTabs      =   "False"
-         AutoDeactivate  =   "True"
-         Backdrop        =   0
-         ControlOrder    =   121
-         Enabled         =   True
-         EraseBackground =   "True"
-         Height          =   520
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "pge_contents"
-         Left            =   260
-         LockBottom      =   "True"
-         LockLeft        =   "True"
-         LockRight       =   "True"
-         LockTop         =   "True"
-         Scope           =   0
-         TabPanelIndex   =   1
-         Top             =   40
-         UseFocusRing    =   "True"
-         Visible         =   True
-         Width           =   485
-         BehaviorIndex   =   121
-         Begin StaticText hdr_song_header
-            AutoDeactivate  =   "True"
-            Bold            =   "True"
-            ControlOrder    =   122
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   30
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   270
-            LockBottom      =   "False"
-            LockLeft        =   "True"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "Song Editor"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   22
-            Top             =   50
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   200
-            BehaviorIndex   =   122
-         End
-         Begin StaticText lbl_song_ccli
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   123
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   505
-            LockBottom      =   "False"
-            LockLeft        =   "True"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "CCLI #:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   126
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   105
-            BehaviorIndex   =   123
-         End
-         Begin StaticText lbl_song_copyright
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   124
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   505
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "Copyright:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   91
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   225
-            BehaviorIndex   =   124
-         End
-         Begin SEditField edt_song_author
-            AcceptTabs      =   "False"
-            Alignment       =   0
-            AutoDeactivate  =   "True"
-            BackColor       =   16777215
-            Bold            =   "False"
-            Border          =   "True"
-            ControlOrder    =   126
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   "True"
-            Format          =   ""
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   270
-            LimitText       =   0
-            LockBottom      =   "False"
-            LockLeft        =   "True"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            Mask            =   ""
-            Multiline       =   "False"
-            Password        =   "False"
-            ReadOnly        =   "False"
-            Scope           =   0
-            ScrollbarHorizontal=   "False"
-            ScrollbarVertical=   "True"
-            Styled          =   "False"
-            TabPanelIndex   =   1
-            Text            =   ""
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   140
-            Underline       =   "False"
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   220
-            BehaviorIndex   =   126
-         End
-         Begin StaticText lbl_song_author
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   129
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   270
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "Author:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   126
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   220
-            BehaviorIndex   =   127
-         End
-         Begin StaticText lbl_song_presentation
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   130
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   625
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "Presentation:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   126
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   105
-            BehaviorIndex   =   128
-         End
-         Begin StaticText lbl_song_lyrics
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   131
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   270
-            LockBottom      =   "False"
-            LockLeft        =   "True"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "Chord/Lyrics:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   161
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   350
-            BehaviorIndex   =   129
-         End
-         Begin SEditField edf_song_lyrics
-            AcceptTabs      =   "False"
-            Alignment       =   0
-            AutoDeactivate  =   "True"
-            BackColor       =   16777215
-            Bold            =   "False"
-            Border          =   "True"
-            ControlOrder    =   132
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   "True"
-            Format          =   ""
-            Height          =   374
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   270
-            LimitText       =   0
-            LockBottom      =   "True"
-            LockLeft        =   "True"
-            LockRight       =   "True"
-            LockTop         =   "True"
-            Mask            =   ""
-            Multiline       =   "True"
-            Password        =   "False"
-            ReadOnly        =   "False"
-            Scope           =   0
-            ScrollbarHorizontal=   "True"
-            ScrollbarVertical=   "True"
-            Styled          =   "False"
-            TabPanelIndex   =   1
-            Text            =   ""
-            TextColor       =   0
-            TextFont        =   "Courier New"
-            TextSize        =   11
-            Top             =   175
-            Underline       =   "False"
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   340
-            BehaviorIndex   =   130
-         End
-         Begin StaticText lbl_song_hymn_number
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   133
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   13
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   625
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "Hymn #:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   175
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   105
-            BehaviorIndex   =   131
-         End
-         Begin SEditField edt_song_hymn_number
-            AcceptTabs      =   "False"
-            Alignment       =   0
-            AutoDeactivate  =   "True"
-            BackColor       =   16777215
-            Bold            =   "False"
-            Border          =   "True"
-            ControlOrder    =   134
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   "True"
-            Format          =   ""
-            Height          =   19
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   625
-            LimitText       =   0
-            LockBottom      =   "False"
-            LockLeft        =   "True"
-            LockRight       =   "True"
-            LockTop         =   "True"
-            Mask            =   ""
-            Multiline       =   "False"
-            Password        =   "False"
-            ReadOnly        =   "False"
-            Scope           =   0
-            ScrollbarHorizontal=   "False"
-            ScrollbarVertical=   "True"
-            Styled          =   "False"
-            TabPanelIndex   =   1
-            Text            =   ""
-            TextColor       =   0
-            TextFont        =   "System"
-            TextSize        =   12
-            Top             =   190
-            Underline       =   "False"
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   105
-            BehaviorIndex   =   132
-         End
-         Begin StaticText lbl_song_insert
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   135
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "Insert:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   215
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   120
-            BehaviorIndex   =   133
-         End
-         Begin SButton btn_song_ins_section
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   136
-            Enabled         =   "True"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            LabelAlign      =   0
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            StickyBevel     =   0
-            TabPanelIndex   =   1
-            Top             =   231
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   115
-            BehaviorIndex   =   134
-         End
-         Begin SButton btn_song_ins_lyrics
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   137
-            Enabled         =   "True"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            LabelAlign      =   0
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            StickyBevel     =   0
-            TabPanelIndex   =   1
-            Top             =   256
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   115
-            BehaviorIndex   =   135
-         End
-         Begin SButton btn_song_ins_multi_verse
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   138
-            Enabled         =   "True"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            LabelAlign      =   0
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            StickyBevel     =   0
-            TabPanelIndex   =   1
-            Top             =   281
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   115
-            BehaviorIndex   =   136
-         End
-         Begin SButton btn_song_ins_comment
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   139
-            Enabled         =   "True"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            LabelAlign      =   0
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            StickyBevel     =   0
-            TabPanelIndex   =   1
-            Top             =   306
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   115
-            BehaviorIndex   =   137
-         End
-         Begin SButton btn_song_ins_column
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   140
-            Enabled         =   "True"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            LabelAlign      =   0
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            StickyBevel     =   0
-            TabPanelIndex   =   1
-            Top             =   331
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   115
-            BehaviorIndex   =   138
-         End
-         Begin SButton btn_song_ins_page
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   141
-            Enabled         =   "True"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            LabelAlign      =   0
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            StickyBevel     =   0
-            TabPanelIndex   =   1
-            Top             =   356
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   115
-            BehaviorIndex   =   139
-         End
-         Begin StaticText lbl_song_title
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   125
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   270
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            Text            =   "Title:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   91
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   220
-            BehaviorIndex   =   125
-         End
-         Begin GroupBox grp_song_transpose
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            Caption         =   "Transpose"
-            ControlOrder    =   143
-            Enabled         =   True
-            Height          =   100
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   622
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            TabPanelIndex   =   1
-            TextFont        =   "Arial"
-            TextSize        =   11
-            Top             =   390
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   100
-            BehaviorIndex   =   141
-            Begin PopupMenu pop_song_accidentals
-               AutoDeactivate  =   "True"
-               Bold            =   "False"
-               ControlOrder    =   144
-               DataField       =   ""
-               DataSource      =   ""
-               Enabled         =   True
-               Height          =   20
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_song_transpose"
-               InitialValue    =   ""
-               Italic          =   "False"
-               Left            =   632
-               ListIndex       =   0
-               LockBottom      =   "False"
-               LockLeft        =   "False"
-               LockRight       =   "True"
-               LockTop         =   "False"
-               Scope           =   0
-               TabPanelIndex   =   1
-               TextFont        =   "Arial"
-               TextSize        =   10
-               Top             =   456
-               Underline       =   "False"
-               Visible         =   True
-               Width           =   80
-               BehaviorIndex   =   142
-            End
-            Begin StaticText lbl_song_using
-               AutoDeactivate  =   "True"
-               Bold            =   ""
-               ControlOrder    =   145
-               DataField       =   ""
-               DataSource      =   ""
-               Enabled         =   True
-               Height          =   20
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_song_transpose"
-               Italic          =   ""
-               Left            =   634
-               LockBottom      =   ""
-               LockLeft        =   ""
-               LockRight       =   ""
-               LockTop         =   ""
-               Multiline       =   ""
-               Scope           =   0
-               TabPanelIndex   =   1
-               Text            =   "Using:"
-               TextAlign       =   0
-               TextColor       =   &h000000
-               TextFont        =   "Arial"
-               TextSize        =   10
-               Top             =   435
-               Underline       =   ""
-               Visible         =   True
-               Width           =   86
-               BehaviorIndex   =   143
-            End
-            Begin PopupMenu pop_song_transpose
-               AutoDeactivate  =   "True"
-               Bold            =   ""
-               ControlOrder    =   146
-               DataField       =   ""
-               DataSource      =   ""
-               Enabled         =   True
-               Height          =   20
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "grp_song_transpose"
-               InitialValue    =   "-6\r\n-5\r\n-4\r\n-3\r\n-2\r\n-1\r\n0\r\n+1\r\n+2\r\n+3\r\n+4\r\n+5\r\n+6\r\n"
-               Italic          =   ""
-               Left            =   632
-               ListIndex       =   6
-               LockBottom      =   ""
-               LockLeft        =   ""
-               LockRight       =   "True"
-               LockTop         =   ""
-               Scope           =   0
-               TabPanelIndex   =   1
-               TextFont        =   "Arial"
-               TextSize        =   10
-               Top             =   412
-               Underline       =   ""
-               Visible         =   True
-               Width           =   80
-               BehaviorIndex   =   144
-            End
-         End
-         Begin SButton btn_song_show_general_editor
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   142
-            Enabled         =   "False"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   26
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            LabelAlign      =   1
-            Left            =   475
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            StickyBevel     =   "True"
-            TabPanelIndex   =   1
-            Top             =   50
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   125
-            BehaviorIndex   =   140
-         End
-         Begin SButton btn_song_show_advanced_editor
-            AcceptFocus     =   "True"
-            AcceptTabs      =   "False"
-            AutoDeactivate  =   "True"
-            Backdrop        =   0
-            ControlOrder    =   147
-            Enabled         =   "True"
-            EraseBackground =   "True"
-            HasFocus        =   0
-            Height          =   26
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            LabelAlign      =   1
-            Left            =   605
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Scope           =   0
-            StickyBevel     =   "True"
-            TabPanelIndex   =   1
-            Top             =   50
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   125
-            BehaviorIndex   =   145
-         End
-         Begin SEditField edt_song_ccli
-            AcceptTabs      =   "False"
-            Alignment       =   0
-            AutoDeactivate  =   "True"
-            BackColor       =   16777215
-            Bold            =   "False"
-            Border          =   "True"
-            ControlOrder    =   149
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   "True"
-            Format          =   ""
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   505
-            LimitText       =   0
-            LockBottom      =   "False"
-            LockLeft        =   "True"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            Mask            =   ""
-            Multiline       =   "False"
-            Password        =   "False"
-            ReadOnly        =   "False"
-            Scope           =   0
-            ScrollbarHorizontal=   "False"
-            ScrollbarVertical=   "True"
-            Styled          =   "False"
-            TabPanelIndex   =   1
-            Text            =   ""
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   140
-            Underline       =   "False"
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   105
-            BehaviorIndex   =   147
-         End
-         Begin SEditField edt_song_presentation
-            AcceptTabs      =   "False"
-            Alignment       =   0
-            AutoDeactivate  =   "True"
-            BackColor       =   16777215
-            Bold            =   "False"
-            Border          =   "True"
-            ControlOrder    =   148
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   "True"
-            Format          =   ""
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   625
-            LimitText       =   0
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            Mask            =   ">CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
-            Multiline       =   "False"
-            Password        =   "False"
-            ReadOnly        =   "False"
-            Scope           =   0
-            ScrollbarHorizontal=   "False"
-            ScrollbarVertical=   "True"
-            Styled          =   "False"
-            TabPanelIndex   =   1
-            Text            =   ""
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   140
-            Underline       =   "False"
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   105
-            BehaviorIndex   =   146
-         End
-         Begin SEditField edt_song_copyright
-            AcceptTabs      =   "False"
-            Alignment       =   0
-            AutoDeactivate  =   "True"
-            BackColor       =   16777215
-            Bold            =   "False"
-            Border          =   "True"
-            ControlOrder    =   154
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   "True"
-            Format          =   ""
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   505
-            LimitText       =   0
-            LockBottom      =   "False"
-            LockLeft        =   "True"
-            LockRight       =   "True"
-            LockTop         =   "True"
-            Mask            =   ""
-            Multiline       =   "False"
-            Password        =   "False"
-            ReadOnly        =   "False"
-            Scope           =   0
-            ScrollbarHorizontal=   "False"
-            ScrollbarVertical=   "True"
-            Styled          =   "False"
-            TabPanelIndex   =   1
-            Text            =   ""
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   105
-            Underline       =   "False"
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   225
-            BehaviorIndex   =   148
-         End
-         Begin SEditField edt_song_title
-            AcceptTabs      =   "False"
-            Alignment       =   0
-            AutoDeactivate  =   "True"
-            BackColor       =   16777215
-            Bold            =   "False"
-            Border          =   "True"
-            ControlOrder    =   155
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   "True"
-            Format          =   ""
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_general_song_editor"
-            Italic          =   "False"
-            Left            =   270
-            LimitText       =   0
-            LockBottom      =   "False"
-            LockLeft        =   "True"
-            LockRight       =   "False"
-            LockTop         =   "True"
-            Mask            =   ""
-            Multiline       =   "False"
-            Password        =   "False"
-            ReadOnly        =   "False"
-            Scope           =   0
-            ScrollbarHorizontal=   "False"
-            ScrollbarVertical=   "True"
-            Styled          =   "False"
-            TabPanelIndex   =   1
-            Text            =   ""
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   105
-            Underline       =   "False"
-            UseFocusRing    =   "True"
-            Visible         =   "True"
-            Width           =   220
-            BehaviorIndex   =   149
-         End
-      End
       Begin Canvas can_editor_slide_editor
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         ControlOrder    =   92
+         ControlOrder    =   112
          Enabled         =   True
          EraseBackground =   "True"
          Height          =   520
@@ -3725,12 +2781,105 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   "True"
          Visible         =   True
          Width           =   485
-         BehaviorIndex   =   92
+         BehaviorIndex   =   121
+         Begin StaticText lbl_slide_auto_advance
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   114
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_slide_editor"
+            Italic          =   "False"
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Multiline       =   "True"
+            Scope           =   0
+            TabPanelIndex   =   3
+            Text            =   "Auto-advance slide(s) every..."
+            TextAlign       =   1
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   240
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   130
+            BehaviorIndex   =   142
+         End
+         Begin StaticText txt_slide_seconds
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   115
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_slide_editor"
+            Italic          =   "False"
+            Left            =   630
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Multiline       =   "True"
+            Scope           =   0
+            TabPanelIndex   =   3
+            Text            =   "seconds"
+            TextAlign       =   1
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   290
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   100
+            BehaviorIndex   =   143
+         End
+         Begin StaticText lbl_slide_insert
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   113
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_slide_editor"
+            Italic          =   "False"
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   3
+            Text            =   "Insert:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   140
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   115
+            BehaviorIndex   =   141
+         End
          Begin CheckBox chk_slide_print
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Print in Set List"
-            ControlOrder    =   93
+            ControlOrder    =   126
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3753,7 +2902,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   93
+            BehaviorIndex   =   122
          End
          Begin EditField edt_slide_auto_advance
             AcceptTabs      =   "False"
@@ -3762,7 +2911,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   94
+            ControlOrder    =   127
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3796,13 +2945,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   True
             Width           =   40
-            BehaviorIndex   =   94
+            BehaviorIndex   =   123
          End
          Begin CheckBox chk_slide_loop
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Loop Slides"
-            ControlOrder    =   95
+            ControlOrder    =   130
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3825,13 +2974,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   95
+            BehaviorIndex   =   124
          End
          Begin CheckBox chk_slide_style
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Override Style"
-            ControlOrder    =   96
+            ControlOrder    =   131
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "False"
@@ -3854,12 +3003,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   True
             Width           =   100
-            BehaviorIndex   =   96
+            BehaviorIndex   =   125
          End
          Begin PopupMenu pop_slide_transition
             AutoDeactivate  =   "True"
             Bold            =   ""
-            ControlOrder    =   97
+            ControlOrder    =   132
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3883,7 +3032,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   ""
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   97
+            BehaviorIndex   =   126
          End
          Begin EditField edt_slide_origorder
             AcceptTabs      =   "False"
@@ -3892,7 +3041,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   98
+            ControlOrder    =   133
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3926,12 +3075,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   True
             Width           =   160
-            BehaviorIndex   =   98
+            BehaviorIndex   =   127
          End
          Begin StaticText hdr_slide_header
             AutoDeactivate  =   "True"
             Bold            =   "True"
-            ControlOrder    =   99
+            ControlOrder    =   134
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3957,12 +3106,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   460
-            BehaviorIndex   =   99
+            BehaviorIndex   =   128
          End
          Begin StaticText lbl_slide_presentation
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   100
+            ControlOrder    =   135
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -3988,12 +3137,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   170
-            BehaviorIndex   =   100
+            BehaviorIndex   =   129
          End
          Begin StaticText lbl_slide_origorder
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   101
+            ControlOrder    =   136
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4019,7 +3168,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   160
-            BehaviorIndex   =   101
+            BehaviorIndex   =   130
          End
          Begin EditField edt_slide_order
             AcceptTabs      =   "False"
@@ -4028,7 +3177,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   102
+            ControlOrder    =   137
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4062,12 +3211,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   True
             Width           =   170
-            BehaviorIndex   =   102
+            BehaviorIndex   =   131
          End
          Begin StaticText lbl_slide_name
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   103
+            ControlOrder    =   138
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4093,12 +3242,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   140
-            BehaviorIndex   =   104
+            BehaviorIndex   =   132
          End
          Begin StaticText lbl_slide_subtitle
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   105
+            ControlOrder    =   139
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4124,12 +3273,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   145
-            BehaviorIndex   =   103
+            BehaviorIndex   =   133
          End
          Begin StaticText lbl_slide_title
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   104
+            ControlOrder    =   140
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4155,7 +3304,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   145
-            BehaviorIndex   =   105
+            BehaviorIndex   =   134
          End
          Begin SEditField edt_slide_subtitle
             AcceptTabs      =   "False"
@@ -4164,7 +3313,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   106
+            ControlOrder    =   141
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -4198,7 +3347,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   145
-            BehaviorIndex   =   106
+            BehaviorIndex   =   135
          End
          Begin SEditField edt_slide_title
             AcceptTabs      =   "False"
@@ -4207,7 +3356,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   107
+            ControlOrder    =   142
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -4241,7 +3390,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   145
-            BehaviorIndex   =   107
+            BehaviorIndex   =   136
          End
          Begin SEditField edt_slide_name
             AcceptTabs      =   "False"
@@ -4250,7 +3399,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   108
+            ControlOrder    =   143
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -4284,12 +3433,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   140
-            BehaviorIndex   =   108
+            BehaviorIndex   =   137
          End
          Begin StaticText lbl_slide_slides
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   109
+            ControlOrder    =   144
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4315,7 +3464,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   340
-            BehaviorIndex   =   109
+            BehaviorIndex   =   138
          End
          Begin SEditField edt_slide_slides
             AcceptTabs      =   "False"
@@ -4324,7 +3473,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   110
+            ControlOrder    =   145
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -4358,136 +3507,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   110
-         End
-         Begin StaticText lbl_slide_folder
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   111
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   16
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_slide_editor"
-            Italic          =   "False"
-            Left            =   270
-            LockBottom      =   "True"
-            LockLeft        =   "False"
-            LockRight       =   "False"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   3
-            Text            =   "File Folder"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   401
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   170
-            BehaviorIndex   =   111
-         End
-         Begin StaticText lbl_slide_insert
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   112
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_slide_editor"
-            Italic          =   "False"
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Multiline       =   "False"
-            Scope           =   0
-            TabPanelIndex   =   3
-            Text            =   "Insert:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   140
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   115
-            BehaviorIndex   =   112
-         End
-         Begin StaticText lbl_slide_auto_advance
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   113
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   30
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_slide_editor"
-            Italic          =   "False"
-            Left            =   615
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Multiline       =   "True"
-            Scope           =   0
-            TabPanelIndex   =   3
-            Text            =   "Auto-advance slide(s) every..."
-            TextAlign       =   1
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   240
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   130
-            BehaviorIndex   =   113
-         End
-         Begin StaticText txt_slide_seconds
-            AutoDeactivate  =   "True"
-            Bold            =   "False"
-            ControlOrder    =   114
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "can_editor_slide_editor"
-            Italic          =   "False"
-            Left            =   630
-            LockBottom      =   "False"
-            LockLeft        =   "False"
-            LockRight       =   "True"
-            LockTop         =   "False"
-            Multiline       =   "True"
-            Scope           =   0
-            TabPanelIndex   =   3
-            Text            =   "seconds"
-            TextAlign       =   1
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   290
-            Underline       =   "False"
-            Visible         =   True
-            Width           =   100
-            BehaviorIndex   =   114
+            BehaviorIndex   =   139
          End
          Begin StaticText lbl_slide_transition
             AutoDeactivate  =   "True"
             Bold            =   ""
-            ControlOrder    =   115
+            ControlOrder    =   146
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4513,7 +3538,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   ""
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   115
+            BehaviorIndex   =   144
          End
          Begin SEditField edt_slide_folder
             AcceptTabs      =   "False"
@@ -4522,7 +3547,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   116
+            ControlOrder    =   147
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -4556,14 +3581,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   170
-            BehaviorIndex   =   116
+            BehaviorIndex   =   145
          End
          Begin SButton btn_slide_ins_slide
             AcceptFocus     =   "True"
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            ControlOrder    =   117
+            ControlOrder    =   148
             Enabled         =   "True"
             EraseBackground =   "True"
             HasFocus        =   0
@@ -4584,12 +3609,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   115
-            BehaviorIndex   =   117
+            BehaviorIndex   =   146
          End
          Begin StaticText lbl_slide_notes
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   118
+            ControlOrder    =   149
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4615,7 +3640,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   340
-            BehaviorIndex   =   118
+            BehaviorIndex   =   147
          End
          Begin SEditField edt_slide_notes
             AcceptTabs      =   "False"
@@ -4624,7 +3649,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             BackColor       =   16777215
             Bold            =   "False"
             Border          =   "True"
-            ControlOrder    =   119
+            ControlOrder    =   150
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   "True"
@@ -4658,14 +3683,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   340
-            BehaviorIndex   =   119
+            BehaviorIndex   =   148
          End
          Begin SStyleCanvas can_slide_style
             AcceptFocus     =   "True"
             AcceptTabs      =   "False"
             AutoDeactivate  =   "True"
             Backdrop        =   0
-            ControlOrder    =   120
+            ControlOrder    =   151
             Enabled         =   "True"
             EraseBackground =   "True"
             Height          =   77
@@ -4684,7 +3709,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   "True"
             Visible         =   "True"
             Width           =   102
-            BehaviorIndex   =   120
+            BehaviorIndex   =   149
          End
       End
       Begin Canvas can_editor_image_slide
@@ -4692,7 +3717,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
          Backdrop        =   0
-         ControlOrder    =   127
+         ControlOrder    =   128
          Enabled         =   True
          EraseBackground =   "True"
          Height          =   520
@@ -4714,7 +3739,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Begin StaticText txt_image_seconds
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   150
+            ControlOrder    =   152
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4740,12 +3765,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   100
-            BehaviorIndex   =   152
+            BehaviorIndex   =   151
          End
          Begin StaticText lbl_image_auto_advance
             AutoDeactivate  =   "True"
             Bold            =   "False"
-            ControlOrder    =   151
+            ControlOrder    =   153
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4771,12 +3796,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   130
-            BehaviorIndex   =   153
+            BehaviorIndex   =   152
          End
          Begin StaticText lbl_image_transition
             AutoDeactivate  =   "True"
             Bold            =   ""
-            ControlOrder    =   152
+            ControlOrder    =   154
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4802,13 +3827,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   ""
             Visible         =   True
             Width           =   110
-            BehaviorIndex   =   154
+            BehaviorIndex   =   153
          End
          Begin CheckBox chk_image_style
             AutoDeactivate  =   "True"
             Bold            =   "False"
             Caption         =   "Override Style"
-            ControlOrder    =   153
+            ControlOrder    =   155
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4831,12 +3856,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Value           =   "False"
             Visible         =   True
             Width           =   100
-            BehaviorIndex   =   155
+            BehaviorIndex   =   154
          End
          Begin StaticText hdr_image_header
             AutoDeactivate  =   "True"
             Bold            =   "True"
-            ControlOrder    =   128
+            ControlOrder    =   129
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -4862,7 +3887,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   460
-            BehaviorIndex   =   151
+            BehaviorIndex   =   155
          End
          Begin PopupMenu pop_image_transition
             AutoDeactivate  =   "True"
@@ -5069,7 +4094,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   340
-            BehaviorIndex   =   163
+            BehaviorIndex   =   162
          End
          Begin StaticText lbl_image_title
             AutoDeactivate  =   "True"
@@ -5100,7 +4125,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Underline       =   "False"
             Visible         =   True
             Width           =   145
-            BehaviorIndex   =   162
+            BehaviorIndex   =   163
          End
          Begin SEditField edt_image_title
             AcceptTabs      =   "False"
@@ -5682,6 +4707,981 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   115
             BehaviorIndex   =   180
          End
+      End
+      Begin Canvas can_editor_general_song_editor
+         AcceptFocus     =   "False"
+         AcceptTabs      =   "False"
+         AutoDeactivate  =   "True"
+         Backdrop        =   0
+         ControlOrder    =   92
+         Enabled         =   True
+         EraseBackground =   "True"
+         Height          =   520
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "pge_contents"
+         Left            =   260
+         LockBottom      =   "True"
+         LockLeft        =   "True"
+         LockRight       =   "True"
+         LockTop         =   "True"
+         Scope           =   0
+         TabPanelIndex   =   1
+         Top             =   40
+         UseFocusRing    =   "True"
+         Visible         =   True
+         Width           =   485
+         BehaviorIndex   =   92
+         Begin StaticText lbl_song_ccli
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   94
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   505
+            LockBottom      =   "False"
+            LockLeft        =   "True"
+            LockRight       =   "False"
+            LockTop         =   "True"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "CCLI #:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   126
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   105
+            BehaviorIndex   =   94
+         End
+         Begin StaticText lbl_song_copyright
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   95
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   505
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "Copyright:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   91
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   225
+            BehaviorIndex   =   95
+         End
+         Begin SEditField edt_song_author
+            AcceptTabs      =   "False"
+            Alignment       =   0
+            AutoDeactivate  =   "True"
+            BackColor       =   16777215
+            Bold            =   "False"
+            Border          =   "True"
+            ControlOrder    =   96
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   "True"
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   270
+            LimitText       =   0
+            LockBottom      =   "False"
+            LockLeft        =   "True"
+            LockRight       =   "False"
+            LockTop         =   "True"
+            Mask            =   ""
+            Multiline       =   "False"
+            Password        =   "False"
+            ReadOnly        =   "False"
+            Scope           =   0
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            Styled          =   "False"
+            TabPanelIndex   =   1
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   140
+            Underline       =   "False"
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   220
+            BehaviorIndex   =   96
+         End
+         Begin StaticText lbl_song_author
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   97
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   270
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "Author:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   126
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   220
+            BehaviorIndex   =   97
+         End
+         Begin StaticText lbl_song_presentation
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   98
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   625
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "True"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "Presentation:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   126
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   105
+            BehaviorIndex   =   98
+         End
+         Begin StaticText lbl_song_lyrics
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   99
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   270
+            LockBottom      =   "False"
+            LockLeft        =   "True"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "Chord/Lyrics:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   161
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   350
+            BehaviorIndex   =   99
+         End
+         Begin SEditField edf_song_lyrics
+            AcceptTabs      =   "False"
+            Alignment       =   0
+            AutoDeactivate  =   "True"
+            BackColor       =   16777215
+            Bold            =   "False"
+            Border          =   "True"
+            ControlOrder    =   100
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   "True"
+            Format          =   ""
+            Height          =   374
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   270
+            LimitText       =   0
+            LockBottom      =   "True"
+            LockLeft        =   "True"
+            LockRight       =   "True"
+            LockTop         =   "True"
+            Mask            =   ""
+            Multiline       =   "True"
+            Password        =   "False"
+            ReadOnly        =   "False"
+            Scope           =   0
+            ScrollbarHorizontal=   "True"
+            ScrollbarVertical=   "True"
+            Styled          =   "False"
+            TabPanelIndex   =   1
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Courier New"
+            TextSize        =   11
+            Top             =   175
+            Underline       =   "False"
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   340
+            BehaviorIndex   =   100
+         End
+         Begin StaticText lbl_song_hymn_number
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   101
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   13
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   625
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "Hymn #:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   175
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   105
+            BehaviorIndex   =   101
+         End
+         Begin SEditField edt_song_hymn_number
+            AcceptTabs      =   "False"
+            Alignment       =   0
+            AutoDeactivate  =   "True"
+            BackColor       =   16777215
+            Bold            =   "False"
+            Border          =   "True"
+            ControlOrder    =   102
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   "True"
+            Format          =   ""
+            Height          =   19
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   625
+            LimitText       =   0
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Mask            =   ""
+            Multiline       =   "False"
+            Password        =   "False"
+            ReadOnly        =   "False"
+            Scope           =   0
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            Styled          =   "False"
+            TabPanelIndex   =   1
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "System"
+            TextSize        =   12
+            Top             =   190
+            Underline       =   "False"
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   105
+            BehaviorIndex   =   102
+         End
+         Begin StaticText lbl_song_insert
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   103
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "Insert:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   215
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   120
+            BehaviorIndex   =   103
+         End
+         Begin SButton btn_song_ins_section
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
+            AutoDeactivate  =   "True"
+            Backdrop        =   0
+            ControlOrder    =   104
+            Enabled         =   "True"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            StickyBevel     =   0
+            TabPanelIndex   =   1
+            Top             =   231
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   115
+            BehaviorIndex   =   104
+         End
+         Begin SButton btn_song_ins_lyrics
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
+            AutoDeactivate  =   "True"
+            Backdrop        =   0
+            ControlOrder    =   105
+            Enabled         =   "True"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            StickyBevel     =   0
+            TabPanelIndex   =   1
+            Top             =   256
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   115
+            BehaviorIndex   =   105
+         End
+         Begin SButton btn_song_ins_multi_verse
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
+            AutoDeactivate  =   "True"
+            Backdrop        =   0
+            ControlOrder    =   106
+            Enabled         =   "True"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            StickyBevel     =   0
+            TabPanelIndex   =   1
+            Top             =   281
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   115
+            BehaviorIndex   =   106
+         End
+         Begin SButton btn_song_ins_comment
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
+            AutoDeactivate  =   "True"
+            Backdrop        =   0
+            ControlOrder    =   107
+            Enabled         =   "True"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            StickyBevel     =   0
+            TabPanelIndex   =   1
+            Top             =   306
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   115
+            BehaviorIndex   =   107
+         End
+         Begin SButton btn_song_ins_column
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
+            AutoDeactivate  =   "True"
+            Backdrop        =   0
+            ControlOrder    =   108
+            Enabled         =   "True"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            StickyBevel     =   0
+            TabPanelIndex   =   1
+            Top             =   331
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   115
+            BehaviorIndex   =   108
+         End
+         Begin SButton btn_song_ins_page
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
+            AutoDeactivate  =   "True"
+            Backdrop        =   0
+            ControlOrder    =   109
+            Enabled         =   "True"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            StickyBevel     =   0
+            TabPanelIndex   =   1
+            Top             =   356
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   115
+            BehaviorIndex   =   109
+         End
+         Begin GroupBox grp_song_transpose
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            Caption         =   "Transpose"
+            ControlOrder    =   116
+            Enabled         =   True
+            Height          =   100
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   622
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            TextFont        =   "Arial"
+            TextSize        =   11
+            Top             =   390
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   100
+            BehaviorIndex   =   111
+            Begin PopupMenu pop_song_accidentals
+               AutoDeactivate  =   "True"
+               Bold            =   "False"
+               ControlOrder    =   117
+               DataField       =   ""
+               DataSource      =   ""
+               Enabled         =   True
+               Height          =   20
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_song_transpose"
+               InitialValue    =   ""
+               Italic          =   "False"
+               Left            =   632
+               ListIndex       =   0
+               LockBottom      =   "False"
+               LockLeft        =   "False"
+               LockRight       =   "True"
+               LockTop         =   "False"
+               Scope           =   0
+               TabPanelIndex   =   1
+               TextFont        =   "Arial"
+               TextSize        =   10
+               Top             =   456
+               Underline       =   "False"
+               Visible         =   True
+               Width           =   80
+               BehaviorIndex   =   112
+            End
+            Begin StaticText lbl_song_using
+               AutoDeactivate  =   "True"
+               Bold            =   ""
+               ControlOrder    =   118
+               DataField       =   ""
+               DataSource      =   ""
+               Enabled         =   True
+               Height          =   20
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_song_transpose"
+               Italic          =   ""
+               Left            =   634
+               LockBottom      =   ""
+               LockLeft        =   ""
+               LockRight       =   ""
+               LockTop         =   ""
+               Multiline       =   ""
+               Scope           =   0
+               TabPanelIndex   =   1
+               Text            =   "Using:"
+               TextAlign       =   0
+               TextColor       =   &h000000
+               TextFont        =   "Arial"
+               TextSize        =   10
+               Top             =   435
+               Underline       =   ""
+               Visible         =   True
+               Width           =   86
+               BehaviorIndex   =   113
+            End
+            Begin PopupMenu pop_song_transpose
+               AutoDeactivate  =   "True"
+               Bold            =   ""
+               ControlOrder    =   119
+               DataField       =   ""
+               DataSource      =   ""
+               Enabled         =   True
+               Height          =   20
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_song_transpose"
+               InitialValue    =   "-6\r\n-5\r\n-4\r\n-3\r\n-2\r\n-1\r\n0\r\n+1\r\n+2\r\n+3\r\n+4\r\n+5\r\n+6\r\n"
+               Italic          =   ""
+               Left            =   632
+               ListIndex       =   6
+               LockBottom      =   ""
+               LockLeft        =   ""
+               LockRight       =   "True"
+               LockTop         =   ""
+               Scope           =   0
+               TabPanelIndex   =   1
+               TextFont        =   "Arial"
+               TextSize        =   10
+               Top             =   412
+               Underline       =   ""
+               Visible         =   True
+               Width           =   80
+               BehaviorIndex   =   114
+            End
+         End
+         Begin StaticText lbl_song_title
+            AutoDeactivate  =   "True"
+            Bold            =   "False"
+            ControlOrder    =   110
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   270
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "Title:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   91
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   220
+            BehaviorIndex   =   110
+         End
+         Begin SButton btn_song_show_general_editor
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
+            AutoDeactivate  =   "True"
+            Backdrop        =   0
+            ControlOrder    =   120
+            Enabled         =   "False"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   26
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   1
+            Left            =   475
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            StickyBevel     =   "True"
+            TabPanelIndex   =   1
+            Top             =   50
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   125
+            BehaviorIndex   =   115
+         End
+         Begin StaticText hdr_song_header
+            AutoDeactivate  =   "True"
+            Bold            =   "True"
+            ControlOrder    =   93
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   270
+            LockBottom      =   "False"
+            LockLeft        =   "True"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Multiline       =   "False"
+            Scope           =   0
+            TabPanelIndex   =   1
+            Text            =   "Song Editor"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   22
+            Top             =   50
+            Underline       =   "False"
+            Visible         =   True
+            Width           =   200
+            BehaviorIndex   =   93
+         End
+         Begin SButton btn_song_show_advanced_editor
+            AcceptFocus     =   "True"
+            AcceptTabs      =   "False"
+            AutoDeactivate  =   "True"
+            Backdrop        =   0
+            ControlOrder    =   121
+            Enabled         =   "True"
+            EraseBackground =   "True"
+            HasFocus        =   0
+            Height          =   26
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            LabelAlign      =   1
+            Left            =   605
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "True"
+            LockTop         =   "False"
+            Scope           =   0
+            StickyBevel     =   "True"
+            TabPanelIndex   =   1
+            Top             =   50
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   125
+            BehaviorIndex   =   116
+         End
+         Begin SEditField edt_song_ccli
+            AcceptTabs      =   "False"
+            Alignment       =   0
+            AutoDeactivate  =   "True"
+            BackColor       =   16777215
+            Bold            =   "False"
+            Border          =   "True"
+            ControlOrder    =   122
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   "True"
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   505
+            LimitText       =   0
+            LockBottom      =   "False"
+            LockLeft        =   "True"
+            LockRight       =   "False"
+            LockTop         =   "True"
+            Mask            =   ""
+            Multiline       =   "False"
+            Password        =   "False"
+            ReadOnly        =   "False"
+            Scope           =   0
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            Styled          =   "False"
+            TabPanelIndex   =   1
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   140
+            Underline       =   "False"
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   105
+            BehaviorIndex   =   117
+         End
+         Begin SEditField edt_song_presentation
+            AcceptTabs      =   "False"
+            Alignment       =   0
+            AutoDeactivate  =   "True"
+            BackColor       =   16777215
+            Bold            =   "False"
+            Border          =   "True"
+            ControlOrder    =   123
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   "True"
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   625
+            LimitText       =   0
+            LockBottom      =   "False"
+            LockLeft        =   "False"
+            LockRight       =   "False"
+            LockTop         =   "True"
+            Mask            =   ">CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+            Multiline       =   "False"
+            Password        =   "False"
+            ReadOnly        =   "False"
+            Scope           =   0
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            Styled          =   "False"
+            TabPanelIndex   =   1
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   140
+            Underline       =   "False"
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   105
+            BehaviorIndex   =   118
+         End
+         Begin SEditField edt_song_copyright
+            AcceptTabs      =   "False"
+            Alignment       =   0
+            AutoDeactivate  =   "True"
+            BackColor       =   16777215
+            Bold            =   "False"
+            Border          =   "True"
+            ControlOrder    =   124
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   "True"
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   505
+            LimitText       =   0
+            LockBottom      =   "False"
+            LockLeft        =   "True"
+            LockRight       =   "True"
+            LockTop         =   "True"
+            Mask            =   ""
+            Multiline       =   "False"
+            Password        =   "False"
+            ReadOnly        =   "False"
+            Scope           =   0
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            Styled          =   "False"
+            TabPanelIndex   =   1
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   105
+            Underline       =   "False"
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   225
+            BehaviorIndex   =   119
+         End
+         Begin SEditField edt_song_title
+            AcceptTabs      =   "False"
+            Alignment       =   0
+            AutoDeactivate  =   "True"
+            BackColor       =   16777215
+            Bold            =   "False"
+            Border          =   "True"
+            ControlOrder    =   125
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   "True"
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_general_song_editor"
+            Italic          =   "False"
+            Left            =   270
+            LimitText       =   0
+            LockBottom      =   "False"
+            LockLeft        =   "True"
+            LockRight       =   "False"
+            LockTop         =   "True"
+            Mask            =   ""
+            Multiline       =   "False"
+            Password        =   "False"
+            ReadOnly        =   "False"
+            Scope           =   0
+            ScrollbarHorizontal=   "False"
+            ScrollbarVertical=   "True"
+            Styled          =   "False"
+            TabPanelIndex   =   1
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   105
+            Underline       =   "False"
+            UseFocusRing    =   "True"
+            Visible         =   "True"
+            Width           =   220
+            BehaviorIndex   =   120
+         End
+      End
+      Begin StaticText lbl_slide_folder
+         AutoDeactivate  =   "True"
+         Bold            =   "False"
+         ControlOrder    =   111
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   16
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "pge_contents"
+         Italic          =   "False"
+         Left            =   270
+         LockBottom      =   "True"
+         LockLeft        =   "False"
+         LockRight       =   "False"
+         LockTop         =   "False"
+         Multiline       =   "False"
+         Scope           =   0
+         TabPanelIndex   =   3
+         Text            =   "File Folder"
+         TextAlign       =   0
+         TextColor       =   0
+         TextFont        =   "Arial"
+         TextSize        =   10
+         Top             =   401
+         Underline       =   "False"
+         Visible         =   True
+         Width           =   170
+         BehaviorIndex   =   140
       End
    End
    Begin Separator sep_vertical
@@ -9569,191 +9569,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_songs_export
-	#tag Event
-		Sub Action()
-		  //++
-		  // 3 December 2006, EMP
-		  // Change HTML file encoding to UTF-8 [Bug 1477964]
-		  Dim i As Integer
-		  Dim dlg as New SelectFolderDialog
-		  Dim f, g as FolderItem
-		  Dim output, goutput As TextOutputStream
-		  Dim song As XmlDocument
-		  
-		  'First get confirmation
-		  //++
-		  // Feature request 1528693: require confirmation
-		  //--
-		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
-		  
-		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  
-		  'build dialog
-		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
-		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = SpecialFolder.Documents
-		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
-		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
-		  
-		  f = dlg.ShowModal() 'show dialog
-		  If f <> Nil Then
-		    App.DoEvents
-		    g = f.Child("index.html")
-		    goutput = g.CreateTextFile
-		    If goutput <> Nil Then
-		      goutput.WriteLine "<html><head>"
-		      goutput.WriteLine "<meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />"
-		      goutput.WriteLine "<title>" + App.T.Translate("songs_mode/songs/@caption") + "</title><link rel=""stylesheet"" href=""style.css"" type=""text/css""/></head><body>"
-		      goutput.WriteLine "<div id=""title"">" + App.T.Translate("songs_mode/songs/@caption") + "</div><ul id=""song_list"">"
-		    End If
-		    App.MouseCursor = WatchCursor
-		    ProgressWindow.Show
-		    For i = 0 To lst_songs_songs.ListCount - 1
-		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
-		      song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(i,0) + lst_songs_songs.List(i)))
-		      If output <> Nil And song <> Nil Then
-		        output.Write SongML.ToHTML(song.DocumentElement)
-		        If goutput <> Nil Then goutput.WriteLine "<li><a href=""" + MakeSafeURLName(lst_songs_songs.List(i), True) + ".html"">" + lst_songs_songs.List(i) + "</a></li>"
-		        output.Close
-		      End If
-		      ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
-		      '++JRC
-		      ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/export") + "..."
-		      '--
-		      ProgressWindow.SetStatus lst_songs_songs.List(i)
-		    Next i
-		    If goutput <> Nil Then
-		      goutput.WriteLine "</ul><p><a class=""opensong"" href=""http://www.opensong.org/"">" + App.T.Translate("about/created_with_opensong") + "</a></p>"
-		      goutput.Write "</body></html>"
-		    End If
-		    goutput.Close
-		    App.MouseCursor = Nil
-		    g = App.AppFolder.Child("OpenSong Settings").Child("style.css")
-		    If g <> Nil Then g.CopyFileTo f
-		    
-		  End If
-		  ProgressWindow.Close
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "songs_mode/all_songs/export"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon filesaveaspic, filesaveasmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_songs_print
-	#tag Event
-		Sub Action()
-		  ActionSongPrintAll
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "songs_mode/all_songs/print"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon fileprintpic, fileprintmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events pop_songs_song_folders
-	#tag Event
-		Sub Change()
-		  '++JRC
-		  if Globals.OldFolderSel = Me.ListIndex then
-		    return
-		  end if
-		  
-		  Globals.OldFolderSel = Me.ListIndex
-		  '--
-		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  
-		  App.MouseCursor = WatchCursor
-		  Call Songs.GetFiles(Me.Text, lst_songs_songs)
-		  'If UBound(Songs.GetFiles(Me.Text, lst_songs_songs)) > 0 Then
-		  'lst_songs_songs.SortedColumn = 0
-		  'lst_songs_songs.Sort
-		  'End If
-		  edt_songs_curr_folder.Text = ""
-		  Globals.CurrentSongFolder = Me.Text
-		  App.MouseCursor = Nil
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "songs_mode/song_folders"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_songs_find
-	#tag Event
-		Sub Action()
-		  Find
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "songs_mode/all_songs/find"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon findpic, findmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_revert
-	#tag Event
-		Sub Action()
-		  ActionSongRevert True
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "songs_mode/selected_song/revert"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon undopic, undomask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events btn_song_present
 	#tag Event
 		Sub Action()
@@ -9794,15 +9609,15 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_song_save
+#tag Events btn_song_revert
 	#tag Event
 		Sub Action()
-		  ActionSongSave
+		  ActionSongRevert True
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
-		  SetHelp "songs_mode/selected_song/save"
+		  SetHelp "songs_mode/selected_song/revert"
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -9812,7 +9627,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Open()
-		  Me.SetIcon filesavepic, filesavemask
+		  Me.SetIcon undopic, undomask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -9835,6 +9650,86 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon fileprintpic, fileprintmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_save
+	#tag Event
+		Sub Action()
+		  ActionSongSave
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "songs_mode/selected_song/save"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon filesavepic, filesavemask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_songs_song_folders
+	#tag Event
+		Sub Change()
+		  '++JRC
+		  if Globals.OldFolderSel = Me.ListIndex then
+		    return
+		  end if
+		  
+		  Globals.OldFolderSel = Me.ListIndex
+		  '--
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  App.MouseCursor = WatchCursor
+		  Call Songs.GetFiles(Me.Text, lst_songs_songs)
+		  'If UBound(Songs.GetFiles(Me.Text, lst_songs_songs)) > 0 Then
+		  'lst_songs_songs.SortedColumn = 0
+		  'lst_songs_songs.Sort
+		  'End If
+		  edt_songs_curr_folder.Text = ""
+		  Globals.CurrentSongFolder = Me.Text
+		  App.MouseCursor = Nil
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "songs_mode/song_folders"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_rename
+	#tag Event
+		Sub Action()
+		  '++JRC Moved to Method
+		  ActionSongRename
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "songs_mode/selected_song/rename"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon redopic, redomask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -9888,29 +9783,6 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon filesaveaspic, filesaveasmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_rename
-	#tag Event
-		Sub Action()
-		  '++JRC Moved to Method
-		  ActionSongRename
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "songs_mode/selected_song/rename"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon redopic, redomask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -10123,6 +9995,134 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon removepic, removemask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_songs_print
+	#tag Event
+		Sub Action()
+		  ActionSongPrintAll
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "songs_mode/all_songs/print"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileprintpic, fileprintmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_songs_export
+	#tag Event
+		Sub Action()
+		  //++
+		  // 3 December 2006, EMP
+		  // Change HTML file encoding to UTF-8 [Bug 1477964]
+		  Dim i As Integer
+		  Dim dlg as New SelectFolderDialog
+		  Dim f, g as FolderItem
+		  Dim output, goutput As TextOutputStream
+		  Dim song As XmlDocument
+		  
+		  'First get confirmation
+		  //++
+		  // Feature request 1528693: require confirmation
+		  //--
+		  If Not InputBox.AskYN(App.T.Translate("questions/long_operation/@caption")) Then Return
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  'build dialog
+		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.InitialDirectory = SpecialFolder.Documents
+		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
+		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
+		  
+		  f = dlg.ShowModal() 'show dialog
+		  If f <> Nil Then
+		    App.DoEvents
+		    g = f.Child("index.html")
+		    goutput = g.CreateTextFile
+		    If goutput <> Nil Then
+		      goutput.WriteLine "<html><head>"
+		      goutput.WriteLine "<meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />"
+		      goutput.WriteLine "<title>" + App.T.Translate("songs_mode/songs/@caption") + "</title><link rel=""stylesheet"" href=""style.css"" type=""text/css""/></head><body>"
+		      goutput.WriteLine "<div id=""title"">" + App.T.Translate("songs_mode/songs/@caption") + "</div><ul id=""song_list"">"
+		    End If
+		    App.MouseCursor = WatchCursor
+		    ProgressWindow.Show
+		    For i = 0 To lst_songs_songs.ListCount - 1
+		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
+		      song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(i,0) + lst_songs_songs.List(i)))
+		      If output <> Nil And song <> Nil Then
+		        output.Write SongML.ToHTML(song.DocumentElement)
+		        If goutput <> Nil Then goutput.WriteLine "<li><a href=""" + MakeSafeURLName(lst_songs_songs.List(i), True) + ".html"">" + lst_songs_songs.List(i) + "</a></li>"
+		        output.Close
+		      End If
+		      ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
+		      '++JRC
+		      ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/export") + "..."
+		      '--
+		      ProgressWindow.SetStatus lst_songs_songs.List(i)
+		    Next i
+		    If goutput <> Nil Then
+		      goutput.WriteLine "</ul><p><a class=""opensong"" href=""http://www.opensong.org/"">" + App.T.Translate("about/created_with_opensong") + "</a></p>"
+		      goutput.Write "</body></html>"
+		    End If
+		    goutput.Close
+		    App.MouseCursor = Nil
+		    g = App.AppFolder.Child("OpenSong Settings").Child("style.css")
+		    If g <> Nil Then g.CopyFileTo f
+		    
+		  End If
+		  ProgressWindow.Close
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "songs_mode/all_songs/export"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon filesaveaspic, filesaveasmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_songs_find
+	#tag Event
+		Sub Action()
+		  Find
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "songs_mode/all_songs/find"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon findpic, findmask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -10396,15 +10396,15 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_sets_add
+#tag Events btn_set_remove
 	#tag Event
 		Sub Action()
-		  ActionSetNew
+		  ActionInSetRemove
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
-		  SetHelp "sets_mode/sets/add"
+		  SetHelp "sets_mode/current_item/remove"
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -10414,7 +10414,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub Open()
-		  Me.SetIcon addpic, addmask
+		  Me.SetIcon editdeletepic, editdeletemask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -10452,28 +10452,6 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon downpic, downmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_set_remove
-	#tag Event
-		Sub Action()
-		  ActionInSetRemove
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "sets_mode/current_item/remove"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon editdeletepic, editdeletemask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -10578,6 +10556,167 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon filesavepic, filesavemask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_set_present
+	#tag Event
+		Sub Action()
+		  If Me.MenuItem = App.T.Translate("sets_mode/current_set/present/single_screen/@caption") Then
+		    ActionSetPresent PresentWindow.MODE_SINGLE_SCREEN
+		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption") Then
+		    ActionSetPresent PresentWindow.MODE_PREVIEW
+		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/dual_screen/@caption") Then
+		    #If TargetLinux
+		      If (Screen(0).Width /2) > Screen(0).Height Then
+		        ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_multi_screen")
+		      End If
+		    #Else
+		      If ScreenCount > 1 Then
+		        ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
+		      Else
+		        InputBox.Message App.T.Translate("errors/no_multi_screen")
+		      End If
+		    #EndIF
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/current_set/present"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon backgroundpic, backgroundmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_set_delete
+	#tag Event
+		Sub Action()
+		  If Not ActionSetAskSave Then Return
+		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_sets_sets.Text)) Then
+		    App.DocsFolder.Child("Sets").Child(pop_sets_sets.Text).Delete
+		    
+		    pop_sets_sets.RemoveRow pop_sets_sets.ListIndex
+		    pop_sets_sets.ListIndex = -1
+		    
+		    Status_SetOpen = False
+		    Status_SetChanged = False
+		    Status_InSetOpen = False
+		    Status_InSetChanged = False
+		    Status_InSetEditable = False
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/current_set/delete"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon editdeletepic, editdeletemask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_set_print_songs
+	#tag Event
+		Sub Action()
+		  ActionSetPrint
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/current_set/print_songs"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileprintpic, fileprintmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_set_rename
+	#tag Event
+		Sub Action()
+		  Dim t as String
+		  Dim old as String
+		  Dim f as FolderItem
+		  Dim i As Integer
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSetAskSave Then Return 'User Canceled
+		  
+		  old = pop_sets_sets.Text
+		  
+		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
+		  If Len(t) > 0 Then
+		    If Not FileUtils.IsSafeFileName(t) Then
+		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
+		      Return
+		    End If
+		    
+		    f = App.DocsFolder.Child("Sets").Child(t)
+		    If f.Exists Then
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
+		      Exit
+		    End If
+		    
+		    f = App.DocsFolder.Child("Sets").Child(old)
+		    If Not f.Exists Then
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", f.AbsolutePath) ' could not find file
+		      Exit
+		    End If
+		    f.Name = t
+		    i = pop_sets_sets.ListIndex
+		    pop_sets_sets.RemoveRow i
+		    pop_sets_sets.InsertRow i, t
+		    '++JRC Prevent Second save prompt
+		    If Status_SetChanged Then
+		      Status_SetChanged = false
+		      pop_sets_sets.ListIndex = i
+		      Status_SetChanged = true
+		      EnableMenuItems
+		    else
+		      pop_sets_sets.ListIndex = i
+		    End If
+		    '--
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/current_set/rename"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon redopic, redomask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -10899,167 +11038,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_set_present
-	#tag Event
-		Sub Action()
-		  If Me.MenuItem = App.T.Translate("sets_mode/current_set/present/single_screen/@caption") Then
-		    ActionSetPresent PresentWindow.MODE_SINGLE_SCREEN
-		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption") Then
-		    ActionSetPresent PresentWindow.MODE_PREVIEW
-		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/dual_screen/@caption") Then
-		    #If TargetLinux
-		      If (Screen(0).Width /2) > Screen(0).Height Then
-		        ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #Else
-		      If ScreenCount > 1 Then
-		        ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #EndIF
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "sets_mode/current_set/present"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon backgroundpic, backgroundmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_set_delete
-	#tag Event
-		Sub Action()
-		  If Not ActionSetAskSave Then Return
-		  If InputBox.Ask(App.T.Translate("questions/delete/@caption", pop_sets_sets.Text)) Then
-		    App.DocsFolder.Child("Sets").Child(pop_sets_sets.Text).Delete
-		    
-		    pop_sets_sets.RemoveRow pop_sets_sets.ListIndex
-		    pop_sets_sets.ListIndex = -1
-		    
-		    Status_SetOpen = False
-		    Status_SetChanged = False
-		    Status_InSetOpen = False
-		    Status_InSetChanged = False
-		    Status_InSetEditable = False
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "sets_mode/current_set/delete"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon editdeletepic, editdeletemask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_set_print_songs
-	#tag Event
-		Sub Action()
-		  ActionSetPrint
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "sets_mode/current_set/print_songs"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon fileprintpic, fileprintmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_set_rename
-	#tag Event
-		Sub Action()
-		  Dim t as String
-		  Dim old as String
-		  Dim f as FolderItem
-		  Dim i As Integer
-		  
-		  'Ask if user wants to save
-		  If NOT ActionSetAskSave Then Return 'User Canceled
-		  
-		  old = pop_sets_sets.Text
-		  
-		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
-		  If Len(t) > 0 Then
-		    If Not FileUtils.IsSafeFileName(t) Then
-		      InputBox.Message App.T.Translate("errors/bad_file_name", t)
-		      Return
-		    End If
-		    
-		    f = App.DocsFolder.Child("Sets").Child(t)
-		    If f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=3]", f.AbsolutePath) ' already exists
-		      Exit
-		    End If
-		    
-		    f = App.DocsFolder.Child("Sets").Child(old)
-		    If Not f.Exists Then
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", f.AbsolutePath) ' could not find file
-		      Exit
-		    End If
-		    f.Name = t
-		    i = pop_sets_sets.ListIndex
-		    pop_sets_sets.RemoveRow i
-		    pop_sets_sets.InsertRow i, t
-		    '++JRC Prevent Second save prompt
-		    If Status_SetChanged Then
-		      Status_SetChanged = false
-		      pop_sets_sets.ListIndex = i
-		      Status_SetChanged = true
-		      EnableMenuItems
-		    else
-		      pop_sets_sets.ListIndex = i
-		    End If
-		    '--
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "sets_mode/current_set/rename"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon redopic, redomask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events btn_set_print_order
 	#tag Event
 		Sub Action()
@@ -11197,6 +11175,28 @@ End
 	#tag Event
 		Sub Open()
 		  Me.SetIcon filesaveaspic, filesaveasmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_sets_add
+	#tag Event
+		Sub Action()
+		  ActionSetNew
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/sets/add"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon addpic, addmask
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -11450,6 +11450,36 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events rad_style_change
+	#tag Event
+		Sub Action()
+		  Dim slide_group As XmlNode
+		  
+		  If Status_InSetEditable Then
+		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
+		    SmartML.SetValue slide_group, "@action", "new"
+		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/style")
+		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/style/@caption")
+		    SmartML.SafeImport SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), SmartML.GetNode(slide_group, "style", True)
+		    can_style_style.SetStyleNode SmartML.GetNode(slide_group, "style")
+		    Status_SetChanged = True
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "style_change/change"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events rad_style_revert
 	#tag Event
 		Sub Action()
@@ -11473,36 +11503,6 @@ End
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "style_change/revert"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events rad_style_change
-	#tag Event
-		Sub Action()
-		  Dim slide_group As XmlNode
-		  
-		  If Status_InSetEditable Then
-		    slide_group = SetML.GetSetItem(CurrentSet, lst_set_items.ListIndex+1)
-		    SmartML.SetValue slide_group, "@action", "new"
-		    SmartML.SetValue slide_group, "@name", App.T.Translate("sets_mode/items/style")
-		    lst_set_items.List(lst_set_items.ListIndex) = SmartML.GetValue(slide_group, "@name", True) + " " + App.T.Translate("sets_mode/items/style/@caption")
-		    SmartML.SafeImport SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), SmartML.GetNode(slide_group, "style", True)
-		    can_style_style.SetStyleNode SmartML.GetNode(slide_group, "style")
-		    Status_SetChanged = True
-		    Status_InSetChanged = True
-		    EnableMenuItems
-		  End If
-		  
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "style_change/change"
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -11960,6 +11960,526 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events edt_song_author
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 2
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/author"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edf_song_lyrics
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 6
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/lyrics"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_hymn_number
+	#tag Event
+		Sub GotFocus()
+		  'FindFocus = 3
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/hymn_number"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_section
+	#tag Event
+		Sub Action()
+		  Dim s As String
+		  If edf_song_lyrics.Enabled Then
+		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_section/section_name/@caption") + ":", "V1")
+		    If Len(s) > 0 Then
+		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then edf_song_lyrics.SelText = SmartML.Newline
+		      edf_song_lyrics.SelText = "[" + s + "]" + SmartML.Newline
+		    End If
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/ins_section"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewdetailedpic, viewdetailedmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_lyrics
+	#tag Event
+		Sub Action()
+		  Dim s, t As String
+		  Dim i As Integer
+		  If edf_song_lyrics.Enabled Then
+		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_lyrics/number_of_lines/@caption") + ":", "1")
+		    If Len(s) > 0 And Val(s) > 0 Then
+		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
+		      For i = 1 To Val(s)
+		        t = t + "." + SmartML.Newline + " " + SmartML.Newline
+		      Next i
+		      edf_song_lyrics.SelText = t
+		    End If
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/ins_lyrics"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewtextpic, viewtextmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_multi_verse
+	#tag Event
+		Sub Action()
+		  Dim s, t, u As String
+		  Dim i, j As Integer
+		  If edf_song_lyrics.Enabled Then
+		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_verses/@caption") + ":", "4")
+		    If Len(s) > 0 And Val(s) > 0 Then
+		      t = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_lines/@caption") + ":", "4")
+		      If Len(t) > 0 And Val(t) > 0 Then
+		        If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then u = SmartML.Newline
+		        u = u + "[V]" + SmartML.Newline
+		        For j = 1 To Val(t)
+		          u = u + "." + SmartML.Newline
+		          For i = 1 To Val(s)
+		            u = u + Str(i) + SmartML.Newline
+		          Next i
+		        Next j
+		        edf_song_lyrics.SelText = u
+		      End If
+		    End If
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/ins_multi_verse"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewchoosepic, viewchoosemask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_comment
+	#tag Event
+		Sub Action()
+		  Dim s, t As String
+		  If edf_song_lyrics.Enabled Then
+		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_comment/@caption") + ":", "")
+		    If Len(s) > 0 Then
+		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
+		      t = t + ";" + s + SmartML.Newline
+		      edf_song_lyrics.SelText = t
+		    End If
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/ins_comment"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewbottompic, viewbottommask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_column
+	#tag Event
+		Sub Action()
+		  Dim s As String
+		  If edf_song_lyrics.Enabled Then
+		    If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then s = SmartML.Newline
+		    s = s + "---" + SmartML.Newline
+		    edf_song_lyrics.SelText = s
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/ins_column"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewleftrightpic, viewleftrightmask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_ins_page
+	#tag Event
+		Sub Action()
+		  Dim s As String
+		  If edf_song_lyrics.Enabled Then
+		    If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then s = SmartML.Newline
+		    s = s + "-!!" + SmartML.Newline
+		    edf_song_lyrics.SelText = s
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/ins_page"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewnewpagepic, viewnewpagemask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_song_accidentals
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/transpose/using"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events pop_song_transpose
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/transpose"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Change()
+		  SmartML.SetValue CurrentSong.DocumentElement, "lyrics", edf_song_lyrics.Text.FormatUnixEndOfLine
+		  
+		  If MainWindow.pop_song_accidentals.ListIndex = 0 Then
+		    SongML.Transpose CurrentSong, Val(Me.Text), True
+		  Else
+		    SongML.Transpose CurrentSong, Val(Me.Text), False
+		  End If
+		  edf_song_lyrics.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics").FormatLocalEndOfLine
+		  Me.ListIndex = 6
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_show_general_editor
+	#tag Event
+		Sub Action()
+		  pge_contents.Value = 0
+		  LastSongPane = 0
+		  Me.Refresh True ' False
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewtext2pic, viewtext2mask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_song_show_advanced_editor
+	#tag Event
+		Sub Action()
+		  pge_contents.Value = 1
+		  LastSongPane = 1
+		  Me.Refresh True ' False
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "advanced_song_editor"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon viewdetailed2pic, viewdetailed2mask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_ccli
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 4
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/ccli"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_presentation
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 5
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/presentation"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_copyright
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 3
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/copyright"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_song_title
+	#tag Event
+		Sub GotFocus()
+		  FindFocus = 1
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "general_song_editor/title"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_SongOpen Then
+		    Status_SongChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events chk_slide_print
 	#tag Event
 		Sub Action()
@@ -12393,456 +12913,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events edt_song_author
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 2
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/author"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edf_song_lyrics
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 6
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/lyrics"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_hymn_number
-	#tag Event
-		Sub GotFocus()
-		  'FindFocus = 3
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/hymn_number"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_section
-	#tag Event
-		Sub Action()
-		  Dim s As String
-		  If edf_song_lyrics.Enabled Then
-		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_section/section_name/@caption") + ":", "V1")
-		    If Len(s) > 0 Then
-		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then edf_song_lyrics.SelText = SmartML.Newline
-		      edf_song_lyrics.SelText = "[" + s + "]" + SmartML.Newline
-		    End If
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/ins_section"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewdetailedpic, viewdetailedmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_lyrics
-	#tag Event
-		Sub Action()
-		  Dim s, t As String
-		  Dim i As Integer
-		  If edf_song_lyrics.Enabled Then
-		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_lyrics/number_of_lines/@caption") + ":", "1")
-		    If Len(s) > 0 And Val(s) > 0 Then
-		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
-		      For i = 1 To Val(s)
-		        t = t + "." + SmartML.Newline + " " + SmartML.Newline
-		      Next i
-		      edf_song_lyrics.SelText = t
-		    End If
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/ins_lyrics"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewtextpic, viewtextmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_multi_verse
-	#tag Event
-		Sub Action()
-		  Dim s, t, u As String
-		  Dim i, j As Integer
-		  If edf_song_lyrics.Enabled Then
-		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_verses/@caption") + ":", "4")
-		    If Len(s) > 0 And Val(s) > 0 Then
-		      t = InputBox.Input(App.T.Translate("general_song_editor/ins_multi_verse/number_of_lines/@caption") + ":", "4")
-		      If Len(t) > 0 And Val(t) > 0 Then
-		        If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then u = SmartML.Newline
-		        u = u + "[V]" + SmartML.Newline
-		        For j = 1 To Val(t)
-		          u = u + "." + SmartML.Newline
-		          For i = 1 To Val(s)
-		            u = u + Str(i) + SmartML.Newline
-		          Next i
-		        Next j
-		        edf_song_lyrics.SelText = u
-		      End If
-		    End If
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/ins_multi_verse"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewchoosepic, viewchoosemask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_comment
-	#tag Event
-		Sub Action()
-		  Dim s, t As String
-		  If edf_song_lyrics.Enabled Then
-		    s = InputBox.Input(App.T.Translate("general_song_editor/ins_comment/@caption") + ":", "")
-		    If Len(s) > 0 Then
-		      If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then t = SmartML.Newline
-		      t = t + ";" + s + SmartML.Newline
-		      edf_song_lyrics.SelText = t
-		    End If
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/ins_comment"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewbottompic, viewbottommask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_column
-	#tag Event
-		Sub Action()
-		  Dim s As String
-		  If edf_song_lyrics.Enabled Then
-		    If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then s = SmartML.Newline
-		    s = s + "---" + SmartML.Newline
-		    edf_song_lyrics.SelText = s
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/ins_column"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewleftrightpic, viewleftrightmask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_ins_page
-	#tag Event
-		Sub Action()
-		  Dim s As String
-		  If edf_song_lyrics.Enabled Then
-		    If edf_song_lyrics.SelStart > 0 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 10 And Asc(Mid(edf_song_lyrics.Text, edf_song_lyrics.SelStart, 1)) <> 13 Then s = SmartML.Newline
-		    s = s + "-!!" + SmartML.Newline
-		    edf_song_lyrics.SelText = s
-		  End If
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/ins_page"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewnewpagepic, viewnewpagemask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_show_general_editor
-	#tag Event
-		Sub Action()
-		  pge_contents.Value = 0
-		  LastSongPane = 0
-		  Me.Refresh True ' False
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewtext2pic, viewtext2mask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events pop_song_accidentals
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/transpose/using"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events pop_song_transpose
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/transpose"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Change()
-		  SmartML.SetValue CurrentSong.DocumentElement, "lyrics", edf_song_lyrics.Text.FormatUnixEndOfLine
-		  
-		  If MainWindow.pop_song_accidentals.ListIndex = 0 Then
-		    SongML.Transpose CurrentSong, Val(Me.Text), True
-		  Else
-		    SongML.Transpose CurrentSong, Val(Me.Text), False
-		  End If
-		  edf_song_lyrics.Text = SmartML.GetValue(CurrentSong.DocumentElement, "lyrics").FormatLocalEndOfLine
-		  Me.ListIndex = 6
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_song_show_advanced_editor
-	#tag Event
-		Sub Action()
-		  pge_contents.Value = 1
-		  LastSongPane = 1
-		  Me.Refresh True ' False
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "advanced_song_editor"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Open()
-		  Me.SetIcon viewdetailed2pic, viewdetailed2mask
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_presentation
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 5
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/presentation"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_ccli
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 4
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/ccli"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events chk_image_style
 	#tag Event
 		Sub Action()
@@ -12884,76 +12954,6 @@ End
 	#tag Event
 		Sub MouseExit()
 		  SetHelp ""
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_copyright
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 3
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/copyright"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events edt_song_title
-	#tag Event
-		Sub GotFocus()
-		  FindFocus = 1
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  If Me.Enabled And IsContextualClick Then
-		    ActiveEditField = Me
-		    PopupClicked = False
-		    mnu_clipboard.Open
-		    Return PopupClicked
-		  End If
-		End Function
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  SetHelp "general_song_editor/title"
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseExit()
-		  SetHelp ""
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub TextChange()
-		  If Status_SongOpen Then
-		    Status_SongChanged = True
-		    EnableMenuItems
-		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents

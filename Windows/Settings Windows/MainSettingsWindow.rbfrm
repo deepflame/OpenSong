@@ -1905,8 +1905,12 @@ End
 		    pop_imagequality_compression.AddRow App.ImageQualityList(i)
 		  Next i
 		  
-		  QTExporter= GetQTGraphicsExporter("JPEG")
-		  pop_imagequality_compression.Enabled = (QTExporter <> Nil)
+		  #If Not TargetLinux
+		    QTExporter= GetQTGraphicsExporter("JPEG")
+		    pop_imagequality_compression.Enabled = (QTExporter <> Nil)
+		  #Else
+		    pop_imagequality_compression.Enabled = False
+		  #EndIf
 		  QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
 		  QualitySetting = ImageQualityEnum(QualityValue)
 		  
@@ -1935,10 +1939,13 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  DefaultDocsFolder = SpecialFolder.Documents.Child("OpenSong")
+		  #If TargetLinux
+		    DefaultDocsFolder = SpecialFolder.UserHome.Child("OpenSong")
+		  #Else
+		    DefaultDocsFolder = SpecialFolder.Documents.Child("OpenSong")
+		  #EndIf
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
-		  
 		End Sub
 	#tag EndMethod
 

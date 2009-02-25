@@ -1890,7 +1890,11 @@ End
 		  App.CenterInControlScreen Me
 		  
 		  '++JRC Display DocsFolder Location
-		  nte_folder_folder.Text = DocsFolder.FormatFolderName
+		  If App.IsPortable Then
+		    nte_folder_folder.Text = "Portable Installation"
+		  Else
+		    nte_folder_folder.Text = DocsFolder.FormatFolderName
+		  End If
 		  '--
 		  //++ EMP July 2007
 		  // Add FolderDB flag
@@ -1939,11 +1943,12 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  #If TargetLinux
-		    DefaultDocsFolder = SpecialFolder.UserHome.Child("OpenSong")
-		  #Else
-		    DefaultDocsFolder = SpecialFolder.Documents.Child("OpenSong")
-		  #EndIf
+		  If App.IsPortable Then
+		    rad_documents_default.Enabled = false
+		    rad_documents_custom.Enabled = false
+		    btn_browse.Enabled = false
+		  End If
+		  DefaultDocsFolder = App.AppDocumentsFolderForOpenSong
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		End Sub
@@ -2361,7 +2366,7 @@ End
 		    dlg.InitialDirectory = logFileSaved.Parent
 		    dlg.SuggestedFileName = logFileSaved.Name
 		  Else
-		    dlg.InitialDirectory = SpecialFolder.Documents
+		    dlg.InitialDirectory = App.AppDocumentsFolder
 		    dlg.SuggestedFileName = "OpenSong.log"
 		  End If
 		  

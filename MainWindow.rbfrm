@@ -7019,30 +7019,31 @@ End
 		  Dim listindex As Integer
 		  
 		  'gp if in a lst_images only delete the selected picture, not the whole slide.
-		  if pge_contents.value = 4 then
+		  If pge_contents.value = 4 And lst_image_images.HasFocus() Then
 		    If lst_image_images.ListIndex > -1 Then
 		      lst_image_images.RemoveRow( lst_image_images.ListIndex )
+		      Status_InSetChanged = True
 		    end if
-		    
-		    Status_InSetChanged = True
 		  else
 		    listindex = lst_set_items.ListIndex
-		    slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		    slide_groups.RemoveChild slide_groups.Child(ListIndex)
-		    '++JRC Prevent OutofBounds Exception
-		    Status_InSetChanged = False
-		    '--
-		    '++JRC Fix issue where Currently selected  Set Item was not updating after removing an item from set list
-		    CurrentInSetItem = -2
-		    '--
-		    lst_set_items.RemoveRow ListIndex
-		    If listindex < lst_set_items.ListCount Then
-		      lst_set_items.ListIndex = listindex
-		    ElseIf listindex = lst_set_items.ListCount Then
-		      lst_set_items.ListIndex = listindex - 1
+		    If listindex > -1 Then
+		      slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		      slide_groups.RemoveChild slide_groups.Child(listindex)
+		      '++JRC Prevent OutofBounds Exception
+		      Status_InSetChanged = False
+		      '--
+		      '++JRC Fix issue where Currently selected  Set Item was not updating after removing an item from set list
+		      CurrentInSetItem = -2
+		      '--
+		      lst_set_items.RemoveRow listindex
+		      If listindex < lst_set_items.ListCount Then
+		        lst_set_items.ListIndex = listindex
+		      ElseIf listindex = lst_set_items.ListCount Then
+		        lst_set_items.ListIndex = listindex - 1
+		      End If
+		      
+		      Status_SetChanged = True
 		    End If
-		    
-		    Status_SetChanged = True
 		  end if
 		  
 		  EnableMenuItems
@@ -7112,7 +7113,7 @@ End
 		    Next i
 		    
 		    can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
-		    lst_set_items.List(CurrentInSetItem) = edt_image_name.Text + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    lst_set_items.List(CurrentInSetItem) = edt_image_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
 		  Case "style"
 		    
 		  Case Else

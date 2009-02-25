@@ -1,4 +1,6 @@
-﻿* Fix removal of image slide (make it work)
+﻿* Added portability mode (use '--portable' or modify the portable installation value in the 'OpenSong Settings/Globals' file (thanx marvap)
+
+* Fix removal of image slide (make it work)
 
 * Fix build problems for Linux target. Fix control order and alignment for MainWindow.
 

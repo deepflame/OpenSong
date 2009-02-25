@@ -7241,7 +7241,7 @@ End
 		  dlg.PromptText = App.T.Translate("shared/export_to/@caption")
 		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
 		  '--
-		  If targetFolder Is Nil Then dlg.InitialDirectory = SpecialFolder.Documents
+		  If targetFolder Is Nil Then dlg.InitialDirectory = App.AppDocumentsFolder
 		  targetFolder = dlg.ShowModal
 		  If targetFolder = Nil Then Return// User cancelled
 		  
@@ -9749,7 +9749,7 @@ End
 		  'build dialog
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = SpecialFolder.Documents
+		  dlg.InitialDirectory = App.AppDocumentsFolder
 		  dlg.PromptText = App.T.Translate("shared/export_to/@caption")
 		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
 		  
@@ -10045,7 +10045,7 @@ End
 		  'build dialog
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = SpecialFolder.Documents
+		  dlg.InitialDirectory = App.AppDocumentsFolder
 		  dlg.PromptText = App.T.Translate("songs_mode/selected_song/export/to/@caption")
 		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
 		  

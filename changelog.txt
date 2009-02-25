@@ -1,4 +1,6 @@
-﻿-= 1.5.0 =-
+* Fix build problems for Linux target. Fix control order and alignment for MainWindow.
+
+-= 1.5.0 =-
 
 * Added Tim Howard to list of devs in About Window
 

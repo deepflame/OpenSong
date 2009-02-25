@@ -1188,7 +1188,6 @@ Inherits Application
 		  Dim r As New Random
 		  Dim f As FolderItem
 		  Dim inputStream As BinaryStream
-		  Dim QTExporter as QTGraphicsExporter
 		  Dim QualityValue As Integer
 		  Dim QualitySetting As ImageQualityEnum
 		  Dim saveSuccess As Boolean
@@ -1198,32 +1197,38 @@ Inherits Application
 		    If f <> Nil Then
 		      
 		      saveSuccess = False
-		      //First try to use the QuickTime exporter, that object allows quality variance
-		      QTExporter= GetQTGraphicsExporter("JPEG")
-		      If QTExporter <> Nil Then
-		        
-		        QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
-		        QualitySetting = ImageQualityEnum(QualityValue)
-		        
-		        Select Case QualitySetting
-		        Case ImageQualityEnum.FullCompression
-		          QTExporter.CompressionQuality = 0
-		        Case ImageQualityEnum.HighCompression
-		          QTExporter.CompressionQuality = 256
-		        Case ImageQualityEnum.LittleCompression
-		          QTExporter.CompressionQuality = 768
-		        Case ImageQualityEnum.LowCompression
-		          QTExporter.CompressionQuality = 1023
-		        Case ImageQualityEnum.NoCompression
-		          QTExporter.CompressionQuality = 1024
-		        Else
-		          QTExporter.CompressionQuality = 512
-		        End Select
-		        
-		        QTExporter.OutputFileType="JPEG"
-		        QTExporter.OutputFileCreator="ogle"
-		        saveSuccess = QTExporter.SavePicture(f,img)
-		      End If
+		      #If Not TargetLinux
+		        //First try to use the QuickTime exporter, that object allows quality variance
+		        //This object is not available on Linux, hence the compiler directives
+		        Dim QTExporter as QTGraphicsExporter
+		        QTExporter= GetQTGraphicsExporter("JPEG")
+		        If QTExporter <> Nil Then
+		          
+		          QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
+		          QualitySetting = ImageQualityEnum(QualityValue)
+		          
+		          Select Case QualitySetting
+		          Case ImageQualityEnum.FullCompression
+		            QTExporter.CompressionQuality = 0
+		          Case ImageQualityEnum.HighCompression
+		            QTExporter.CompressionQuality = 256
+		          Case ImageQualityEnum.LittleCompression
+		            QTExporter.CompressionQuality = 768
+		          Case ImageQualityEnum.LowCompression
+		            QTExporter.CompressionQuality = 1023
+		          Case ImageQualityEnum.NoCompression
+		            QTExporter.CompressionQuality = 1024
+		          Else
+		            QTExporter.CompressionQuality = 512
+		          End Select
+		          
+		          QTExporter.OutputFileType="JPEG"
+		          QTExporter.OutputFileCreator="ogle"
+		          saveSuccess = QTExporter.SavePicture(f,img)
+		        End If
+		      #Else
+		        Dim QTExporter As Object = Nil
+		      #EndIf
 		      
 		      If (QTExporter = Nil) Or (saveSuccess = False) Then
 		        Try

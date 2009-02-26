@@ -6267,7 +6267,7 @@ End
 		    If pge_controls.Value = 0 Then
 		      If Status_SongOpen Then ActionSongRemove
 		    Else
-		      If Status_SetOpen And Status_InSetOpen Then ActionInSetRemove
+		      If Status_SetOpen And Status_InSetOpen Then ActionInSetRemove True
 		    End If
 		    'ElseIf Keyboard.AsyncKeyDown(&h78) Then ' F2
 		    'SetMode 0
@@ -7013,13 +7013,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionInSetRemove()
+		Sub ActionInSetRemove(autoDetectDeleteTarget As Boolean)
 		  Dim xslides As XmlNodeList
 		  Dim slide_groups As XmlNode
 		  Dim listindex As Integer
 		  
 		  'gp if in a lst_images only delete the selected picture, not the whole slide.
-		  If pge_contents.value = 4 And lst_image_images.HasFocus() Then
+		  If autoDetectDeleteTarget = True And pge_contents.value = 4 And lst_image_images.HasFocus() Then
 		    If lst_image_images.ListIndex > -1 Then
 		      lst_image_images.RemoveRow( lst_image_images.ListIndex )
 		      Status_InSetChanged = True
@@ -10400,7 +10400,7 @@ End
 #tag Events btn_set_remove
 	#tag Event
 		Sub Action()
-		  ActionInSetRemove
+		  ActionInSetRemove False
 		End Sub
 	#tag EndEvent
 	#tag Event

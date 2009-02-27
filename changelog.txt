@@ -1,3 +1,5 @@
+* Added package creation script for Linux (only .deb)
+
 * Updated translation for Hungarian (thanx gygellert)
 
 * Added portability mode (use '--portable' or modify the portable installation value in the 'OpenSong Settings/Globals' file (thanx marvap)

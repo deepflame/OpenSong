@@ -1,4 +1,6 @@
-﻿* Added portability mode (use '--portable' or modify the portable installation value in the 'OpenSong Settings/Globals' file (thanx marvap)
+* Updated translation for Hungarian (thanx gygellert)
+
+* Added portability mode (use '--portable' or modify the portable installation value in the 'OpenSong Settings/Globals' file (thanx marvap)
 
 * Fix removal of image slide (make it work)
 

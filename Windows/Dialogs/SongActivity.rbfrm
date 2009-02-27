@@ -825,7 +825,7 @@ End
 		  'build dialog
 		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = SpecialFolder.Documents
+		  dlg.InitialDirectory = App.AppDocumentsFolder
 		  dlg.PromptText = App.T.Translate("shared/export_to/@caption")
 		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
 		  

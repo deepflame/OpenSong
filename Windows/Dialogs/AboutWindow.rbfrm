@@ -9,7 +9,6 @@ Begin Window AboutWindow
    FullScreen      =   "False"
    HasBackColor    =   "False"
    Height          =   350
-   ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
    MaxHeight       =   32000
@@ -43,7 +42,6 @@ Begin Window AboutWindow
       LockLeft        =   "False"
       LockRight       =   "True"
       LockTop         =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       TextFont        =   "System"
       TextSize        =   12
@@ -67,7 +65,6 @@ Begin Window AboutWindow
       LockLeft        =   "True"
       LockRight       =   "False"
       LockTop         =   "True"
-      Scope           =   0
       TabPanelIndex   =   0
       Top             =   14
       Visible         =   True
@@ -92,9 +89,8 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
-      Text            =   "OpenSong V1.0"
+      Text            =   "OpenSong V1.5"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "System"
@@ -123,7 +119,6 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Copyright (c) 2003, 2004, 2005, 2006 Sean Lickfold"
       TextAlign       =   0
@@ -154,7 +149,6 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Licensed under the GNU Public License V2.1"
       TextAlign       =   0
@@ -185,7 +179,6 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "http://www.opensong.org"
       TextAlign       =   0
@@ -216,9 +209,8 @@ Begin Window AboutWindow
       LockRight       =   "True"
       LockTop         =   "True"
       Multiline       =   "True"
-      Scope           =   0
       TabPanelIndex   =   0
-      Text            =   "Joshua Coley, Ed Palmer, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt, Gerrit Prins."
+      Text            =   "Joshua Coley, Ed Palmer, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt, Gerrit Prins, Tim Howard."
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "System"
@@ -256,7 +248,6 @@ Begin Window AboutWindow
       Multiline       =   "True"
       Password        =   ""
       ReadOnly        =   "True"
-      Scope           =   0
       ScrollbarHorizontal=   ""
       ScrollbarVertical=   "True"
       Styled          =   ""
@@ -290,7 +281,6 @@ Begin Window AboutWindow
       LockRight       =   ""
       LockTop         =   ""
       Multiline       =   ""
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Compiler"
       TextAlign       =   2
@@ -321,7 +311,6 @@ Begin Window AboutWindow
       LockRight       =   ""
       LockTop         =   ""
       Multiline       =   ""
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Memory"
       TextAlign       =   2
@@ -352,7 +341,6 @@ Begin Window AboutWindow
       LockRight       =   ""
       LockTop         =   "True"
       Multiline       =   ""
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Object Count"
       TextAlign       =   2
@@ -383,7 +371,6 @@ Begin Window AboutWindow
       LockRight       =   ""
       LockTop         =   "True"
       Multiline       =   ""
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "Build"
       TextAlign       =   2
@@ -414,7 +401,6 @@ Begin Window AboutWindow
       LockRight       =   "False"
       LockTop         =   "True"
       Multiline       =   "False"
-      Scope           =   0
       TabPanelIndex   =   0
       Text            =   "English: Sean Lickfold"
       TextAlign       =   0

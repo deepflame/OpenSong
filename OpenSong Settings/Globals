@@ -2,4 +2,5 @@
 <globals>
   <documents folder=""/>
   <language file="English"/>
+  <portable installation="false"/>
 </globals>

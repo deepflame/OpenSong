@@ -398,11 +398,13 @@ Implements ScriptureNotifier
 		  CurrentChapter = SmartML.GetValueN(params, "last_scripture/@chapter")
 		  CurrentFromVerse = SmartML.GetValueN(params, "last_scripture/@verse")
 		  CurrentThruVerse = SmartML.GetValueN(params, "last_scripture/@thru")
-		  VersesPerSlide = Max(1, Min(SmartML.GetValueN(params, "last_scripture/@verse_per_slide"), 5))
-		  CharsPerSlide = Max(1, Min(SmartML.GetValueN(params, "last_scripture/@chars_per_slide"), 1000))
+		  VersesPerSlide = Max(0, Min(SmartML.GetValueN(params, "last_scripture/@verse_per_slide"), 5))
+		  CharsPerSlide = Max(0, Min(SmartML.GetValueN(params, "last_scripture/@chars_per_slide"), 1000))
 		  ShowVerseNumbers = SmartML.GetValueB(params, "last_scripture/@show_numbers", True, True)
 		  FormatParagraph = ("paragraph" = SmartML.GetValue(params, "last_scripture/@format"))
 		  
+		  If VersesPerSlide = 0 Then VersesPerSlide = 3
+		  If CharsPerSlide = 0 Then CharsPerSlide = 500
 		  mCurrentBible = BibleFactory.GetBible(CurrentBibleName)
 		  
 		  If CurrentBible Is Nil Then

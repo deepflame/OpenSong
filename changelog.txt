@@ -1,6 +1,68 @@
-﻿* (re)Enabled song style on a per slide basis (vwout)
+﻿* Added package creation script for Linux (only .deb)
+
+* Updated translation for Hungarian (thanx gygellert)
+
+* Added portability mode (use '--portable' or modify the portable installation value in the 'OpenSong Settings/Globals' file (thanx marvap)
+
+* Fix removal of image slide (make it work)
+
+* Fix build problems for Linux target. Fix control order and alignment for MainWindow.
+
+-= 1.5.0 =-
+
+* Added Tim Howard to list of devs in About Window
+
+* Updated translation for Português (Brasil) (thanx pauloneto)
+
+* Show chorus/bridge on the right spot between the verses in title (gerritp)
+
+* Replace DocumentsFolder and PreferencesFolder with their SpecialFolder counterparts for compatibily with RB 2008 (JRC)
+
+* OpenSong now only logs songs which the user actually displays (JRC)
+
+* Fix issue were PresentWindow wasn't getting focus when presenting single song (JRC0
+
+* Updated translations for Czech, Spanish and added Hungarian (thanx matysek03, brucio and gygellert)
+
+* Fix bug where if you press del in lst_image_images, it will delete the whole list, now it only deletes the selected picture (gerritp)
+
+* Added Gerrit Prins to list of devs in About Window
+
+* Copy/Paste of Set Items is now supported (gerritp)
+
+* Prevent Endless loop in SetML.DrawSlide (gerritp)
+
+* Indent song after forced line-break (gerritp)
+
+* Reload set when saving (temporary workaround for bug #2308669)
+
+* Fix tabulator issues, bug # 2484150
+
+* Fix broken set item type displaying in set list (JRC)
+
+* Updated Slovenian translation (thanx leeloo3)
+
+* Fix for bug id 2473781: Black screen with No Transition on initial item
+
+* Update Swedish (Svenska) translation for v1.4 (thanks edvinerdtman)
+
+* Added option to specify maximum number of characters per slide when inserting scripture verses (gerritp)
+
+* Reworked interface of ScripturePickerWindow and SearchWindow (vwout)
+
+* (re)Enabled song style on a per slide basis (vwout)
 
 * Added image slide to show one or more images instead of a (body) text (vwout)
+
+* Fix Slovenian translation, made OpenSong more clear on translation xml error
+
+* Fix for bug id 2465607: Presentation margins (title space is always subtracted from top)
+
+-= 1.4.0 =-
+
+* Fix the OpenPrinterDialog call in Report to attach to the window returned by GetFrontControlScreenWindow instead of Window(0). Although Window(0) should be the top window for the app, for some reason on OS X 10.5 (Leopard) this will return a handle to a window that is not visible. This prevents the hidden window from ever unloading, blocking the application from exiting without doing a Force Quit. (swampcat)
+
+* Fix in MainWindow to prevent a crash when selecting an empty row in the songs-list after a song edit (vwout)
 
 * Added Czech translation (thanks matysek03 and others)
 
@@ -1103,5 +1165,5 @@ OSX and MouseUp for the other platforms.  Action event is still called in MouseU
 * Added Print Categorized Table of Contents
 * Added Print Alphabetical Table of Contents
 
-$Date: 2008-11-11 22:27:49 +0100 (di, 11 nov 2008) $
-$Revision: 366 $
+$Date: 2009-02-28 00:07:11 +0100 (za, 28 feb 2009) $
+$Revision: 494 $

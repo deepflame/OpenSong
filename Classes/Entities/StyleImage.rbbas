@@ -34,7 +34,16 @@ Protected Class StyleImage
 		        outputStream.Write DecodeBase64(Base64)
 		        outputStream.Close
 		        Me.oImage = f.OpenAsPicture()
-		        f.Delete
+		        #If TargetLinux
+		          If IsNull(Me.oImage) Then
+		            Dim f_jpg As FolderItem = GetFolderItem( f.AbsolutePath() + ".jpg" )
+		            f.MoveFileTo( f_jpg )
+		            Me.oImage = f_jpg.OpenAsPicture()
+		            f_jpg.Delete
+		          End If
+		        #Else
+		          f.Delete
+		        #EndIf
 		        
 		        If Me.oImage <> Nil Then
 		          Me.sBase64 = Base64

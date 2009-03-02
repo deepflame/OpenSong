@@ -1,6 +1,23 @@
+-= Version 1.5 =-
+scripture_lookup/preview(modified)
+sets_mode/current_item/paste
+style_tabs/properties/apply
+shared/apply
+scripture_search/caption
+scripture_search/result
+scripture_lookup/book (Deleted)
+scripture_lookup/books
+scripture_lookup/search (Modified)
+scripture_lookup/paragraph
+scripture_lookup/from_verse
+scripture_lookup/to_verse
+scripture_lookup/chars_per_slide
+scripture_lookup/verse_per_slide (Deleted child nodes)
 sets_mode/items/image
 image_slide/*
 sets_mode/new_item/add_image
+
+-= Version 1.4 =-
 song_activity/merged
 song_activity/merged_dupes
 song_activity/file_type

@@ -2,5 +2,5 @@
 <globals>
   <documents folder=""/>
   <language file="English"/>
-  <portable installation="false"/>
+  <portable installation="true" absdatapath="" relativedatapath=""/>
 </globals>

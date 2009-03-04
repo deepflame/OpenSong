@@ -1181,6 +1181,7 @@ The OpenSong development team members regret any inconvenience.
     </cclinotavailable>
     <activity_disabled>Could not load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
     <adding_logentry>Error Adding log entry!</adding_logentry>
+    <chars_per_slide>Max characters per side must be between 1 and 1000.</chars_per_slide>
   </errors>
 
   <xml_errors>

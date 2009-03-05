@@ -1184,6 +1184,7 @@ Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
     <activity_disabled>Het logboek voor het bijhouden van lied gebruik kon niet geladen worden uit bestand %1! Controleer of dit bestand bestaat en niet corrupt is.
 De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <adding_logentry>Er is een fout opgetreden bij het toevoegen van een lied aan het logboek!</adding_logentry>
+    <chars_per_slide>Het aantal karakters dat maximaal getoond mag worden moet tussen 1 en 1000 liggen.</chars_per_slide>
   </errors>
 
   <xml_errors>

@@ -1,4 +1,6 @@
-﻿* Fix issue were OS would always insert one scripture per slide (bug #2628687) (JRC)
+* Fix typo in English translation (bug #2687080) and updated Dutch translation (thx gert, alex)
+
+* Fix issue were OS would always insert one scripture per slide (bug #2628687) (JRC)
 
 * Added package creation script for Linux (only .deb)
 

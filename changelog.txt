@@ -1,3 +1,5 @@
+* Updated languages: English, Swedish (thx edvinerdtman), Polish (thx myzzard), Hungarian (thx gygellert), Czech (txh matysek03) and German (thx s.mehrbrodt)
+
 * Fix crash on Linux when starting a presentation
 
 * Fix typo in English translation (bug #2687080) and updated Dutch translation (thx gert, alex)

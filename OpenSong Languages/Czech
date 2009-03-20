@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Czech" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.4.0">
+<language name="Czech" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.5.1">
 
   <load_settings>
     <checking_folders>Vytvářím/Kontroluji složku s dokumenty</checking_folders>
@@ -146,6 +146,7 @@
       <add_scripture caption="Bible">Přidá snímek s verši z Bible do aktuálního playlistu. Zobrazí se okno, které vám dovolí si vybrat verše, které si přejete zobrazit.</add_scripture>
       <add_slides caption="Snímky">Přidá uživatelský snímek do aktuálního playlistu. Uživatelské snímky vám dovolí vybrat si vlastní název, podnadpis, vlastní text a dokonce i styl. Uživatelský slide může ve skutečnosti obsahovat více snímků.</add_slides>
       <add_style caption="Styl">Mění aktuální základní styl kdekoli v playlistu. Změny stylů mohou definovat nový styl nebo navracet předchozí styl.</add_style>
+      <add_image caption="Obrázek">Přidá snímek s obrázkem do aktuálního playlistu. Obrázkové snímky dovolují promítat jeden obrázek nebo sérii obrázků místo textu.</add_image>
       <add_video caption="Video">Přidá video do aktuálního playlistu. Použijte, pokud chcete prezentovat video uvnitř OpenSongu.</add_video>
       <add_powerpoint caption="PowerPoint">Přidá PowerPoint prezentaci do aktuálního playlistu. Použijte, pokud chcete ovládat PowerPoint prezentaci z OpenSongu.</add_powerpoint>
     </new_item>
@@ -154,12 +155,14 @@
       <move_down caption="Dolu">Přesune vybranou položku níže.</move_down>
       <remove caption="Odstranit">Odstraní vybranou položku z playlistu.</remove>
       <copy caption="Kopírovat">Vytvoří kopii vybrané položky.</copy>
+      <paste caption="link(shared/insert/@caption)">Vloží kopírovanou položku za současnou pozici.</paste>      
       <store caption="Uložit">Uloží vybranou položku playlistu.</store>
     </current_item>
     <items caption="Položky playlistu">Klikněte na uživatelský snímek pro jeho otevření v editoru, dvojklik otevře píseň v editoru písní.
       <song caption="(píseň)"/>
       <custom caption="(uživatelský)"/>
       <scripture caption="(Bible)"/>
+      <image caption="(obrázek)"/>
       <style caption="(styl)">-- Změnit styl --</style>
       <revert caption="(styl)">-- Navrátit styl --</revert>
       <defaultstyle caption="(styl)">-- Exportovaný styl --</defaultstyle>
@@ -180,7 +183,7 @@
     <title caption="Název">Nastaví název snímku, který se zobrazí přímo ve snímku.</title>
     <subtitle caption="Podnadpis">Nastaví podnadpis snímku, který se zobrazí přímo ve snímku.</subtitle>
     <name caption="Název">Nastaví název snímku, který se zobrazí v okně Prezentační pomocník. Nezobrazí se přímo ve snímku.</name>
-    <slides caption="Snímky">Obsahuje hlavní text aktuálního uživatelského snímku(ů).</slides>
+    <slides caption="Snímky">Obsahuje hlavní text aktuálního uživatelského snímku(ů). Poznámka: Pro lehčí přidání přetáhněte jeden nebo více obrázků do tohoto seznamu.</slides>
     <presentation caption="Uživatelské pořadí prezentace">Přebije pořadí prezentace v písni.</presentation>
     <origorder caption="Původní pořadí prezentace">Pořadí prezentace v písni.</origorder>
     <folder caption="Složka s písní">Složka, kde se nachází vybraná položka.</folder>
@@ -194,6 +197,31 @@
     <seconds caption="sekund"/>
     <style caption="Přebít styl">Zaškrtnutí umožní snímku, aby obsahoval uživatelský styl. Klikněte na náhled pro editaci stylu.</style>
   </slide_editor>
+
+  <image_slide>
+    <header caption="Editor snímků s obrázky"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Popisek obrázku v podnadpisu">Přidá popisek zobrazovaného obrázku do podnadpisu.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Obrázky" head1="Náhled" head2="Popisek">Obsahuje obrázek, který bude zobrazen v tomto snímku.</images>
+    <fit_to_screen caption="Přizpůsobit velikost obrázku obrazovce">Obrázky, které jsou příliš velké pro projektoru, jsou přizposobeny velikosti obrazovky projektoru. Samozřejmě to platí obráceně i pro malé obrázky.</fit_to_screen>
+    <fit_to_body caption="Přizpůsobit velikost obrázků oblasti pro text">Velikost obrázků je vždy přizpůsoben oblasti pro text. Oblast pro text je vymezena aktuálním nastaveným stylem. Přizposobeny jsou velké i malé obrázky.</fit_to_body>
+    <keepaspect caption="Zachovat poměr stran při změně velikosti obrázků">V případě změně velikosti obrázků je zachován poměr stran obrázků.</keepaspect>
+    <store_as_link caption="Neukládat obrázek v playlistu, ale použije se odkaz na obrázek">Ukládání snímků v playlist o hodně zvětšuje velikost playlistu na disku a může také dojít k degradaci kvality obrázku. Použití odkazu tomu zabraňuje. Obrázky ze složky 'Backgrounds' (Pozadí) jsou ukládány jako relativní odkaz, což umožňuje lehčí přesun k počítači, určenému pro prezentace. Používejte uváženě, pokud prezentace je vytvářena na jiném počítači, než na počítači určenému pro prezentace.</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Akce" />
+      <ins_image caption="Přidat obrázek">Přidá obrázek do aktuálního snímku. Dovoluje sdílet stejný nadpis, podnadpis, styl i nastavení pro více obrázků v sérii. Snímky tvořeny tímto způsobem se mohou i automaticky posunovat.</ins_image>
+      <del_image caption="Odebrat obrázek">Odebere vybraný obrázek ze snímku.</del_image>
+      <move_up caption="Posun nahoru">Přesune vybraný obrázek blíže k začátku snímku.</move_up>
+      <move_down caption="Posun dolu">Přesune vybraný obrázek blíže ke konci snímku.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
 
   <style_change>
     <header caption="Změna stylu"/>
@@ -241,6 +269,8 @@
   </song_search>
 
   <scripture_search title="Hledat">
+    <caption caption="Hledat v Bibli pomocí klíčových slov"/>
+    <example caption="Pokud hledáte přesnou frázi, uzavřete ji do uvozovek, např. &quot;Šimon Petr&quot;"/>
     <match caption="Shoda">
       <exact caption="Př&amp;esná"/>
       <begin caption="&amp;Začíní s"/>
@@ -250,7 +280,7 @@
       <any caption="Ja&amp;kékoliv ze slov"/>
     </words>
     <search caption="&amp;Hledat"/>
-    <example caption="Pokud hledáte přesnou frázi, uzavřete ji do uvozovek, např. &quot;Šimon Petr&quot;"/>
+    <result caption="%1 záznamů nalezeno, použitím klíčových slov."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
     <result head1="Odkaz" head2="Text" />
@@ -767,6 +797,7 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
       <middle caption="Na střed"/>
       <right caption="Doprava"/>
       <char caption="Na znak"/>
+      <apply caption="link(shared/apply/@caption)n"/>
     </properties>
     <preview caption="Náhled"/>
   </style_tabs>
@@ -822,23 +853,32 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
   </song_activity>
   
   <scripture_lookup title="Vyhledávání v Bibli">
-    <book caption="Biblické knihy"/>         
     <lookup caption="Rychlé vyhledávání">
       <reference caption="Odkaz"/>
       <lookup caption="Najít"/>
       <example caption="Např: '2Pet 1:1-2' (Nefunkční s českou Biblí)"/>
     </lookup>
+    <search caption="Full text search"/>
+    <book caption="Biblické knihy">         
+	  <ot caption="Starý zákon"/>
+	  <nt caption="Nový zákon"/>
+    </book>
+    <paragraph caption="Kapitola"/>
+    <colon caption=","/>
+    <from_verse caption="Od verše"/>
+    <dash caption="-"/>
+    <to_verse caption="Do verše"/>
     <version caption="Překlad"/>
     <select_file caption="Vyberte prosím soubor s Biblí"/>
-    <verses_per_slide caption="Veršů na snímek">
-      <one caption="1"/>
-      <two caption="2"/>
-      <three caption="3"/>
-    </verses_per_slide>
+    <verses_per_slide caption="Veršů na snímek"/>
+    <chars_per_slide caption="Znaků na snímek"/>
     <format caption="Formát">
       <paragraph caption="Odstavec"/>
       <verse caption="Verš"/>
     </format>
+    <shownumbers caption="Zobrazit čísla veršů"/>
+    <preview caption="Náhled"/>
+    <insert caption="link(shared/insert/@caption)"/>
     <bad_reference>
       <format>Zkontrolujte prosím formát dotazu a zkuste to znovu.</format>
       <empty>Špatný odkaz: odkaz nebyl zadán.</empty>
@@ -849,11 +889,6 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
       <verse>Špatný odkaz: nemohu nalézt verš '%1'.</verse>
       <verse_range>Špatný odkaz: číslo verše 'do' musí být větší nebo shodné s číslem 'od'.</verse_range>
     </bad_reference>
-    <colon caption=":"/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
-    <insert caption="link(shared/insert/@caption)"/>
-    <shownumbers caption="Zobrazit čísla veršů"/>
   </scripture_lookup>
 
   <module>
@@ -1024,6 +1059,7 @@ Klikněte na snímek pro změnu jeho stylu.</body>
     <cancel caption="Zrušit"/>
     <yes caption="Ano"/>
     <no caption="Ne"/>
+    <apply caption="&amp;Použít"/>
     <browse caption="Procházet"/>
     <browse_for caption="Procházet složku"/>
     <add caption="Přidat"/>
@@ -1145,6 +1181,7 @@ OpenSong tým se omlouvá za problémy.
     </cclinotavailable>
     <activity_disabled>Nemohu načíst log písní: %1! Zkontrolujte prosím, že soubor existuje a není poškozen. Prohlížení logů a logování bude po toto sezení vypnuto.</activity_disabled>
     <adding_logentry>Chyba při přidávání do logu!</adding_logentry>
+    <chars_per_slide>Počet znaků na snímek musí být mezi 1 a 1000.</chars_per_slide>
   </errors>
 
   <xml_errors>

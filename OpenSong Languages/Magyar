@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="1.5.0">
+<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="1.5.1">
 
   <load_settings>
     <checking_folders>A dokumentumok mappáinak létrehozása/ellenőrzése</checking_folders>
@@ -1181,6 +1181,7 @@ Az OpenSong fejlesztői csapat sajnálja a kellemetlenséget.
     </cclinotavailable>
     <activity_disabled>Nem lehet betölteni az előzmények állományt: %1! Ellenőrizze, hogy a fájl létezik és nem sérül. Erre a munkamenetre az előzmények loggolása és megtekintése le lett tiltva.</activity_disabled>
     <adding_logentry>Hiba az előzményekhez való hozzáfűzés során!</adding_logentry>
+    <chars_per_slide>A diánkénti karakterek száma 1 és 1000 között kell legyen.</chars_per_slide>
   </errors>
 
   <xml_errors>

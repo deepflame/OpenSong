@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.5.1">
 
   <load_settings>
     <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
@@ -51,8 +51,8 @@
       <move caption="Verplaats">Verplaatsen naar een andere map.
         <where caption="Verplaats '%1' naar welke map:"/>
       </move>
-      <copy caption="Kopi�er">Kopi�er het huidige lied naar een andere map.
-        <where caption="Kopi�er '%1' naar map:"/>
+      <copy caption="Kopiëer">Kopiëer het huidige lied naar een andere map.
+        <where caption="Kopiëer '%1' naar map:"/>
       </copy>
       <delete caption="Verwijder">Verwijderen van het huidige lied.</delete>
     </selected_song>
@@ -78,7 +78,7 @@
     <copyright caption="Copyright">Geef het copyright van het geselecteerde lied.</copyright>
     <ccli caption="CCLI nummer">Geef het CCLI nummer van het geselecteerde lied.</ccli>
     <hymn_number caption="Lied nummer">Geef het nummer van het geselecteerde lied.</hymn_number>
-    <presentation caption="Presentatie">Cre�er de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
+    <presentation caption="Presentatie">Creëer de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
     <lyrics caption="Noten/Muziek">Wijzigen liederen met sectie regels, commentaar regels, notenbalken etc.</lyrics>
     <insert caption="Invoegen"/>
       <ins_section caption="Sectie">Secties worden gebruikt om een lied in meerdere delen te verdelen.
@@ -115,9 +115,9 @@
     <aka caption="Alt">Geeft de alternatieve titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
     <style caption="Aangepaste stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
-    <user1 caption="Door gebruiker gedefini�erd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
-    <user2 caption="Door gebruiker gedefini�erd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
-    <user3 caption="Door gebruiker gedefini�erd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+    <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
+    <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
+    <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
   <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
@@ -154,7 +154,7 @@
       <move_up caption="Omhoog">Verplaatst het huidige item naar boven (voren) in het project.</move_up>
       <move_down caption="Omlaag">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
       <remove caption="Verwijderen">Verwijdert het huidige item van het project.</remove>
-      <copy caption="Kopie�r">Maakt een kopie van het huidige item.</copy>
+      <copy caption="Kopieër">Maakt een kopie van het huidige item.</copy>
       <paste caption="link(shared/insert/@caption)">Voegt gekopieerd item in op huidige positie.</paste>  
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
     </current_item>
@@ -172,7 +172,7 @@
       <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
     </errors>
     <messages>
-      <export_complete>&quot;%1&quot; ge�xporteerd naar %2
+      <export_complete>&quot;%1&quot; geëxporteerd naar %2
       </export_complete>
     </messages>
   </sets_mode>
@@ -512,7 +512,7 @@
       <normal_screen caption="[M] Normaal Scherm"/>
       <return caption="[Esc] Terug"/>
     </actions>
-    <exit caption="Be�indig presentatie?"/>
+    <exit caption="Beëindig presentatie?"/>
     <loop caption="Loop"/>
     <keys>- Toetsen -
 Down: Volgende dia
@@ -534,7 +534,7 @@ T: Label</keys>
 
 De presentaties worden bediend met de volgende toetsen:
 
-Esc Toets: 			Be�indigen presentatie
+Esc Toets: 			Beëindigen presentatie
 Pijltje naar boven of,
 8 op Nummerieke blok of, 
 Backspace: 			Ga naar de vorige dia.
@@ -869,7 +869,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <value tag="5">Getoond</value>
       <value tag="6">Afgedrukt</value>
       <value tag="7">Hernoemd</value>
-      <value tag="8">Gekopi�erd</value>
+      <value tag="8">Gekopiëerd</value>
     </show>
     <songs head7="Heeft akkoorden" head6="CCLI #" head5="Auteur" head4="Titel" head3="Activiteit" head2="Tijdstip" head1="Datum"/> 
     <input_box>
@@ -1103,7 +1103,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <save caption="Opslaan" message="%1 is niet opgeslagen."/>
     <nosave caption="Niet opslaan"/>
     <cut caption="Knippen"/>
-    <copy caption="Kopi�ren"/>
+    <copy caption="Kopiëren"/>
     <paste caption="Plakken"/>
     <select caption="Selecteer"/>
     <exit_program caption="Programma afsluiten"/>
@@ -1131,7 +1131,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <copyright>Copyright</copyright>
     <gpl>Deze software is vrijgegeven onder de voorwaarden van de GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
-    <translating>Om OpenSong te vertalen, kopi�er de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
+    <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
     <created_with_opensong>Gemaakt met OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1281,7 +1281,7 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
 
   <progress_status>
     <folder>Caching map %1</folder>
-    <lead_sheets>Cre�ren uitgeprinte Sheets</lead_sheets>
+    <lead_sheets>Creëren uitgeprinte Sheets</lead_sheets>
     <process_themes>Verwerken thema's</process_themes>
     <process_songs>Verwerken liederen</process_songs>
     <export>Exporteren lied(eren)</export>

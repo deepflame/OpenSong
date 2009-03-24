@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Svenska" author="Edvin Erdtman" version="1.4">
+<language name="Svenska" author="Edvin Erdtman" version="1.5.1">
 
   <load_settings>
     <checking_folders>Skapar/Kontrollerar dokumentmappar</checking_folders>
@@ -143,9 +143,10 @@
     </current_set>
     <new_item caption="Ny">
       <add_song caption="Sång">Lägger till en sång från sångredigeraren till presentationen.</add_song>
-      <add_scripture caption="Bibelord">Lägger till en slajd med bibelord till presentationen, En ruta kommer upp där du kan välja ut ett textsammanhang att visa.</add_scripture>
+      <add_scripture caption="Bibelord">Lägger till en text-sida med bibelord till presentationen, En ruta kommer upp där du kan välja ut ett textsammanhang att visa.</add_scripture>
       <add_slides caption="Text">Lägger till en sida med text som du skriver in i textrutan nedan.</add_slides>
       <add_style caption="Utseende">Lägger till en post i listan som ändrar presentationens standardutseende var som helst i presentationen. Detta kan innebära ett helt nytt utseende, eller att gå tillbaka till ett tidigare använt utseende.</add_style>
+      <add_image caption="Bilder">Lägger till en eller flera bilder/foton till listan. Du kan på så sätt visa en bild eller en serie bilder istället för att skriva in text.</add_image>
       <add_video caption="Video">Lägger till en videofil till listan.</add_video>
       <add_powerpoint caption="PowerPoint">Lägger till en PowerPoint presentation till listan. Använd för att manövrera en ppt-fil i Opensong</add_powerpoint>
     </new_item>
@@ -154,12 +155,14 @@
       <move_down caption="Flytta ner">Flyttar markerad post i listan neråt.</move_down>
       <remove caption="Ta bort">Tar bort markerd post från listan.</remove>
       <copy caption="Kopiera">Kopierar markerad post i listan.</copy>
+      <paste caption="link(shared/paste/@caption)">Infoga kopierad post efter markerad post i listan.</paste>      
       <store caption="Spara">Sparar markerad textsida.</store>
     </current_item>
     <items caption="Presentationslista">Listar innehållet i presentationen. Klicka på en textsida för att redigera den till höger. Dubbelklicka på en sång för att redigera den i sångredigeraren.
       <song caption="(sång)"/>
       <custom caption="(text)"/>
       <scripture caption="(bibelord)"/>
+      <image caption="(bild)"/>
       <style caption="(utseende)">-- Ändra Utseende --</style>
       <revert caption="(utseende)">-- Återtag Utseende  --</revert> 
       <defaultstyle caption="(utseende)">-- Exporterat utseende --</defaultstyle>
@@ -194,6 +197,31 @@
     <seconds caption="sekunder"/>
     <style caption="Annat utseende">Kryssa i denna ruta för att ställa in uteendet vid visning av texten. Denna inställning åsidosätter standardinställningarna för visning. Klicka sedan på bilden ovanför, för att göra inställningar.</style>
   </slide_editor>
+
+  <image_slide>
+    <header caption="Bildspelsredigerare"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Bildtext i undertiteln">Lägg till bildtexten till den visade bilden i undertiteln/sånginfo.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Bilder" head1="Förhandsvisa" head2="Beskrivning">Visar bilderna som kommer att visas.</images>
+    <fit_to_screen caption="Ändra bildernas storlek för att passa bildskärmen">Bilder större än skärmupplösningen på projektorn förminskas, så att hela bilden visas. Små bilder förstoras så att de täcker hela skärmen.</fit_to_screen>
+    <fit_to_body caption="Ändra bildernas storlek så att passa innanför marginalerna ">Bildernas storlek ändras för att passa in innanför brödtextmarginalerna (Inställningar-Presentationsinställningar-Presentationsutseende-marginaler) .</fit_to_body>
+    <keepaspect caption="Behåll höjd-breddförhållande">När bildstorleken ändras enligt någon av ovanstående alternativ, kommer höjd-breddförhållandet på bilden behållas.</keepaspect>
+    <store_as_link caption="Länka bilderna - spara dem inte">Länkar bilderna till dess plats på datorn. Bilderna sparas alltså inte i presentationsfilen. Bilder kan göra filen stor, och kan försämra bildernas kvalitet. Bilder i mappen 'Backgrounds' sparas med relativa länkar, vilket gör hanteringen snabbare. Använd med försiktighet om du ska köra presentationen på en annan dator.</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Verktyg" />
+      <ins_image caption="Lägg till bild">Lägger till en bild till detta bildspel. Bildspelet har samma rubrik, underrubrik, utseende och ev. loop-funktion.</ins_image>
+      <del_image caption="Ta bort bild">Tar bort markerad bild från bildspelet.</del_image>
+      <move_up caption="link(sets_mode/current_item/move_up/@caption)">Flyttar markerad bild i listan uppåt.</move_up>
+      <move_down caption="link(sets_mode/current_item/move_down/@caption)">Flyttar markerad bild i listan neråt.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
 
   <style_change>
     <header caption="Ändra utseende"/>
@@ -240,7 +268,9 @@
     </fields>
   </song_search>
 
-  <scripture_search title="Sök">
+  <scripture_search title="Sök i bibeln">
+    <caption caption="Skriv in ett sökord"/>
+    <example caption="För att söka efter en exakt fras, använd citationstecken, tex. &quot;Simon Petrus&quot;"/>
     <match caption="Matcha">
       <exact caption="&amp;Exakt"/>
       <begin caption="&amp;Börjar med"/>
@@ -771,6 +801,7 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
       <middle caption="Mitten"/>
       <right caption="Höger"/>
       <char caption="Vid bokstaven"/>
+      <apply caption="link(shared/apply/@caption)n"/>
     </properties>
     <preview caption="Förhandsvisa"/>
   </style_tabs>
@@ -792,7 +823,7 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
     <find caption="Sök"></find>
     <clear_log caption="Ta bort historik"></clear_log>
     <print caption="Skriv ut"></print>
-    <view caption="Visa logfil"/>
+    <view caption="Öppna logfil"/>
     <merge caption="Sätt ihop"/>
     <export caption="Exportera"/>
     <done caption="Klart"/>
@@ -826,23 +857,32 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
   </song_activity>
 
   <scripture_lookup title="Sök upp bibelord">
-    <book caption="Bibelbok"/>
     <lookup caption="Snabbsökning">
       <reference caption="Referens"/>
       <lookup caption="Sök upp"/>
       <example caption="Ex: '2Pet 1:1-2' el. '2Pet 1:1-2 (KJV)'"/>
     </lookup>
-    <version caption="Version"/>
-    <select_file caption="Vänligen välj en bibelöversättning"/>    
-    <verses_per_slide caption="Verser per sida">
-      <one caption="1"/>
-      <two caption="2"/>
-      <three caption="3"/>
-    </verses_per_slide>
+    <search caption="Sök i bibeltexten"/>
+    <books caption="Bibelbok">
+	  <ot caption="Gamla testamentet"/>
+	  <nt caption="Nya testamentet"/>
+    </books>
+    <paragraph caption="Kapitel"/>
+    <colon caption=":"/>
+    <from_verse caption="Från vers"/>
+    <dash caption="-"/>
+    <to_verse caption="Till vers"/>
+    <version caption="Översättning"/>
+    <select_file caption="Vänligen välj en bibelöversättning"/>
+    <verses_per_slide caption="Ant verser / sida"/>
+    <chars_per_slide caption="Max. ant bokstäver / sida" />
     <format caption="Radbrytning?">
       <paragraph caption="Nej, i ett stycke"/>
-      <verse caption="Ja, efter varje Vers"/>
+      <verse caption="Ja, efter varje vers"/>
     </format>
+    <shownumbers caption="Visa versnummer"/>
+    <preview caption="Förhandsvisa"/>
+    <insert caption="link(shared/insert/@caption)"/>
     <bad_reference>
       <format>Datorn förstår inte formatet. Kontrollera din söksträng och försök igen.</format>
       <empty>Felaktig referens: Referensen var tom.</empty>
@@ -853,11 +893,6 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
       <verse>Felaktig referens: Hittade inte versen '%1'.</verse>
       <verse_range>Felaktig referens: 'till-versen' måste vara större än eller lika med 'från-versen'.</verse_range>
     </bad_reference>
-    <colon caption=":"/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
-    <insert caption="link(shared/insert/@caption)"/>
-    <shownumbers caption="Visa versnummer"/>
   </scripture_lookup>
 
   <module>
@@ -1028,6 +1063,7 @@ Klicka på den här bilden för att ändra utseendet.</body>
     <cancel caption="Avbryt"/>
     <yes caption="Ja"/>
     <no caption="Nej"/>
+    <apply caption="&amp;Verkställ"/>
     <browse caption="Bläddra"/>
     <browse_for caption="Leta efter mapp"/>
     <add caption="Lägg till"/>
@@ -1149,6 +1185,7 @@ Opensong-teamet beklagar problemen.
     </cclinotavailable>
     <activity_disabled>Kunde inte ladda Aktivitetslogfilen för sånger: %1! Kontrollera att denna fil existerar och inte är skadad. Loggning och visning av log kommer att vara inaktiverad under denna session.</activity_disabled>
     <adding_logentry>Ett fel uppstod vid aktivitetsloggning!</adding_logentry>
+ <chars_per_slide>Max antal tecken per sidaper slide måste vara mellan 1 and 1000.</chars_per_slide>
   </errors>
 
   <xml_errors>

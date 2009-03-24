@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Nederlands" author="Gert Vrieling en Ewout Voogt" version="1.3.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.5.1">
 
   <load_settings>
     <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
@@ -29,9 +29,9 @@
 
   <songs_mode caption="Liederen Mode">Gebruik dit om liederen toe te voegen of te wijzigen. Liederen kunnen worden geprint als noten bladen, of gepresenteerd als dia's.
     <all_songs caption="Alle liederen">
-      <print caption="Afdrukken">Printen van alle beschikbare liederen. Met deze optie kun je liederenbundels afdrukken.</print>
+      <print caption="Afdrukken">Drukt alle beschikbare liederen af. Met deze optie kun je liederenbundels afdrukken.</print>
       <export caption="Exporteren">Exporteren van alle liederen.</export>
-      <find caption="Zoeken">Zoeken naar liederen. Kan met een zin of 1 bepaald woord.</find>
+      <find caption="Zoeken">Zoeken naar liederen. Kan met 1 woord of gedeelte van een regel.</find>
     </all_songs>
     <new_song caption="Nieuw lied">
       <create caption="Maken">Voegt een nieuw lied toe.</create>
@@ -40,21 +40,21 @@
     <selected_song caption="Geselecteerd lied">
       <save caption="Opslaan">Opslaan van het geselecteerde lied op schijf.</save>
       <revert caption="Terugzetten">Terugzetten van het lied naar de vorige versie op schijf.</revert>
-      <print caption="Afdrukken">Afdrukken van het huidige lied.</print>
-      <present caption="Presenteren">Presenteer het lied. Als er wijzigingen zijn aangebracht in het huidige lied, worden die bewaard.
+      <print caption="Afdrukken">Drukt het huidige lied af.</print>
+      <present caption="Presenteer">Presenteer het lied. Als er wijzigingen zijn aangebracht in het huidige lied, worden die bewaard.
         <single_screen caption="Enkel scherm"/>
         <dual_screen caption="Twee schermen"/>
         <preview_dual_screen caption="Voorbeeld twee schermen"/>
       </present>
-      <export caption="Exporteren">Exporteren van het huidige lied.</export>
-      <rename caption="Hernoemen">Hernoemen van het lied.</rename>
-      <move caption="Verplaatsen">Verplaatsen naar een andere map.
+      <export caption="Exporteer">Exporteren van het huidige lied.</export>
+      <rename caption="Hernoem">Hernoemen van het lied.</rename>
+      <move caption="Verplaats">Verplaatsen naar een andere map.
         <where caption="Verplaats '%1' naar welke map:"/>
       </move>
-      <copy caption="Kopiëren">Kopiëer het huidige lied naar een andere map.
-        <where caption="Kopiëer '%1' naar map:"/>
+      <copy caption="KopiÃ«er">KopiÃ«er het huidige lied naar een andere map.
+        <where caption="KopiÃ«er '%1' naar map:"/>
       </copy>
-      <delete caption="Verwijderen">Verwijderen van het huidige lied.</delete>
+      <delete caption="Verwijder">Verwijderen van het huidige lied.</delete>
     </selected_song>
 
     <songs caption="Liederen">Selecteer een lied uit de lijst om de tekst aan te passen.</songs>
@@ -78,24 +78,24 @@
     <copyright caption="Copyright">Geef het copyright van het geselecteerde lied.</copyright>
     <ccli caption="CCLI nummer">Geef het CCLI nummer van het geselecteerde lied.</ccli>
     <hymn_number caption="Lied nummer">Geef het nummer van het geselecteerde lied.</hymn_number>
-    <presentation caption="Presentatie">Creër de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
+    <presentation caption="Presentatie">CreÃ«er de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
     <lyrics caption="Noten/Muziek">Wijzigen liederen met sectie regels, commentaar regels, notenbalken etc.</lyrics>
     <insert caption="Invoegen"/>
       <ins_section caption="Sectie">Secties worden gebruikt om een lied in meerdere delen te verdelen.
         <section_name caption="Sectie Naam"/>
       </ins_section>
-      <ins_lyrics caption="Akkoorden/Teksten">Voegt automatisch de prefix in voor akkoorden- en tekst regels.
+      <ins_lyrics caption="Akkoorden/Teksten">Voegt automatisch de prefix toe voor akkoorden- en tekst regels.
         <number_of_lines caption="Aantal regels"/>
       </ins_lyrics>
       <ins_multi_verse caption="Meerdere coupletten">Voegt automatisch de prefix in voor akkoorden- en tekstregels als u gebruik wilt maken van de meerdere coupletten optie.
         <number_of_verses caption="Aantal coupletten"/>
         <number_of_lines caption="Aantal regels"/>
       </ins_multi_verse>
-      <ins_comment caption="Opmerkingen">Opmerkingen worden geprint op de uitgeprinte sheets maar niet getoond in de Presentatie.</ins_comment>
+      <ins_comment caption="Opmerkingen">Opmerkingen worden afgedrukt op de uitgeprinte sheets maar niet getoond in de Presentatie.</ins_comment>
       <ins_column caption="Nieuwe kolom">Uitgeprinte sheets kunnen over twee kolommen worden verdeeld als de liederen meer dan 1 pagina beslaan.</ins_column>
-      <ins_page caption="Nieuwe pagina">Om aan te geven dat op deze plaats een nieuwe pagina wordt begonnen als langere liederen worden geprint.</ins_page>
+      <ins_page caption="Nieuwe pagina">Om aan te geven dat op deze plaats een nieuwe pagina wordt begonnen als langere liederen worden afgedrukt.</ins_page>
     <transpose caption="Transponeren">Gebruik deze optie om het lied automatisch te transponeren naar een andere toonsoort. Dit gebeurt in halve tonen.
-      <using caption="gebruik">Gebruik een kruis uit deze lijst om te transponeren naar hogere tonen. Gebruik mollen om naar een lagere toonsoort te transponeren.
+      <using caption="Gebruik">Gebruik een kruis uit deze lijst om te transponeren naar hogere tonen. Gebruik mollen om naar een lagere toonsoort te transponeren.
         <sharps caption="Kruisen"/>
         <flats caption="Mollen"/>
       </using>
@@ -112,22 +112,22 @@
     <time_sig caption="Maat">Geeft de maat weer van het geselecteerde lied.</time_sig>
     <tempo caption="Tempo">Geeft het tempo weer van het geselecteerde lied.</tempo>
     <key caption="Key">Geeft de sleutel weer van het geselecteerde lied.</key>
-    <aka caption="AKA">Geeft de algemene aangepaste titel weer van het geselecteerde lied.</aka>
+    <aka caption="Alt">Geeft de alternatieve titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
     <style caption="Aangepaste stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
-    <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
-    <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
-    <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+    <user1 caption="Door gebruiker gedefiniÃ«erd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
+    <user2 caption="Door gebruiker gedefiniÃ«erd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
+    <user3 caption="Door gebruiker gedefiniÃ«erd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
   <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
-    <sets caption="Projecten">Selecteer een projectuit de lijst om te kunnen aanpassen.
+    <sets caption="Projecten">Selecteer een project uit de lijst om te kunnen aanpassen.
       <add>Voegt een nieuw project toe aan OpenSong.</add>
     </sets>
     <current_set caption="Huidig project">
       <save caption="Opslaan">Slaat het huidige project op (inclusief alle items) op schijf.</save>
-      <rename caption="Hernoemen">Hernoemt het huidige project.</rename>
-      <delete caption="Verwijderen">Verwijdert het huidige project. (Liederen worden niet verwijderd.)</delete>
+      <rename caption="Hernoem">Hernoemt het huidige project.</rename>
+      <delete caption="Verwijder">Verwijdert het huidige project. (Liederen worden niet verwijderd.)</delete>
        <saveas caption="Opslaan Als">Bewaar het huidige project onder een andere naam.</saveas>
       <present caption="Presenteren">Presenteert het huidige project op scherm. U heeft de mogelijkheid om de presentatie op het huidige scherm, op 2 schermen of een voorbeeld hoe het op 2 schermen weergegeven kan worden.
         <single_screen caption="Enkel scherm"/>
@@ -146,16 +146,16 @@
       <add_scripture caption="Bijbeltekst">Voegt een Bijbeltekst toe aan het huidige project. Hier wordt de totale lijst met Bijbelteksten weer gegeven om te kiezen.</add_scripture>
       <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl. Een aangepaste dia kan een serie dia 's bevatten.</add_slides>
       <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
-      <add_image caption="Afbeelding">Voegt een afbeeldingsdia toe aan het huidige project. Hiermee wordt een afbeelding of een afbeeldingenserie getoond in plaats van een body tekst.</add_image>
+      <add_image caption="Afbeelding">Voegt een afbeelding als dia toe aan het huidige project. Deze optie geeft je de mogelijkheid om een enkele afbeelding dan wel een serie afbeeldingen weer te geven in plaats van tekst.</add_image>
       <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Voegt een PowerPoint presentatie toe aan het huidige project. Dit is te gebruiken om een PowerPoint presentatie te tonen vanuit OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Huidig Item">
-      <move_up caption="Naar boven">Verplaatst het huidige item naar boven (voren) in het project.</move_up>
-      <move_down caption="Naar beneden">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
+      <move_up caption="Omhoog">Verplaatst het huidige item naar boven (voren) in het project.</move_up>
+      <move_down caption="Omlaag">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
       <remove caption="Verwijderen">Verwijdert het huidige item van het project.</remove>
-      <copy caption="Kopiëren">Maakt een kopie van het huidige item.</copy>
-      <paste caption="link(shared/insert/@caption)">Voeg het gekopieerde item toe na de huidige positie.</paste>      
+      <copy caption="KopieÃ«r">Maakt een kopie van het huidige item.</copy>
+      <paste caption="link(shared/insert/@caption)">Voegt gekopieerd item in op huidige positie.</paste>  
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
     </current_item>
     <items caption="Project Items">Lijst met items in het huidige project. Klik op een aangepaste dia om die te kunnen wijzigen of dubbelklik een lied om te wijzigen.
@@ -172,8 +172,7 @@
       <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
     </errors>
     <messages>
-      <export_complete>&quot;%1&quot; geëxporteerd naar
-%2
+      <export_complete>&quot;%1&quot; geÃ«xporteerd naar %2
       </export_complete>
     </messages>
   </sets_mode>
@@ -189,32 +188,32 @@
     <folder caption="te vinden in Liederenmap">Map waar het geselecteerde lied staat</folder>
     <notes caption="Opmerkingen">Deze opmerkingen verschijnen in het Presentatie Hulp schermgedurende het weergeven op meerdere schermen.</notes>
     <insert caption="Invoegen"/>
-      <ins_slide caption="Dia">Staat toe bij het maken van meerdere dia's dat alle dia's een gelijkluidende titel, subtitel, stijl, en/of auto-uitgebreide setting krijgen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_slide>
-    <loop caption="Dia's herhalen">Geef hier een vinkje om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
+      <ins_slide caption="Dia">Staat het aanmaken toe van meerdere dia's met een gelijkluidende titel, subtitel, stijl, en/of auto-overgang instelling. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_slide>
+    <loop caption="Dia's herhalen">Gelecteer deze optie om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
     <print caption="Afdrukken in lijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
     <transition caption="Gebruik overgang">Selecteer deze optie om bij het tonen van deze dia een overgang te gebruiken.</transition>
-    <auto_advance caption="De volgende dia automatisch afspelen na">Geef een aantal seconden op voor het item zodat OpenSong automatisch doorgaat naar de volgende dia in dit item.</auto_advance>
+    <auto_advance caption="Automatische naar volgende iedere">Geef het aantal seconden dat de afbeelding getoond moet worden voordat de volgende wordt geprojecteerd.</auto_advance>
     <seconds caption="seconden."/>
-    <style caption="Aangepaste stijl">Geef een vinkje om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
+    <style caption="Aangepaste stijl">Selecteer deze optie om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
   </slide_editor>
 
   <image_slide>
-    <header caption="Wijzigen afbeeldingen dia"/>
+    <header caption="Afbeeldingen show bewerken"/>
     <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
-    <descriptions caption="Beschrijving van afbeelding in subtitel">Voeg de beschrijving van de getoonde afbeelding toe aan de subtitel.</descriptions>
+    <descriptions caption="Afbeelding beschrijving in subtitel">Voeg de beschrijving van de afbeelding toe aan de subtitel.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="Afbeeldingen" head1="Voorbeeldweergave" head2="Beschrijving">Bevat de afbeeldingen die worden getoond in deze dia. Tip: sleep voor het eenvoudig toevoegen een of meerdere afbeeldingen naar deze lijst.</images>
-    <fit_to_screen caption="Schaal afbeeldingen zodat ze op het scherm passen">Afbeeldingen die te groot zijn voor het projectie scherm worden geschaald zodat ze volledig getoond kunnen worden. Dit gebeurt ook voor afbeeldingen die kleiner zijn dan de schermresolutie.</fit_to_screen>
+    <images caption="Afbeeldingen" head1="Voorbeeldweergave" head2="Beschrijving">Bevat de afbeeldingen die in deze serie worden getoond. Tip: sleep voor het eenvoudig toevoegen een of meerdere afbeeldingen naar deze lijst.</images>
+    <fit_to_screen caption="Schaal afbeeldingen zodat ze op het scherm passen">Afbeeldingen die te groot zijn om te projecteren worden geschaald zodat ze volledig getoond kunnen worden. Dit gebeurt ook voor afbeeldingen die kleiner zijn dan de schermresolutie.</fit_to_screen>
     <fit_to_body caption="Schaal afbeeldingen zodat ze in het tekstgebied passen">Afbeeldingen worden geschaald zodat ze altijd in het tekstgebied passen dat is vastgelegd voor de body stijl. Dit geldt voor afbeeldingen die groter zijn dan de het body gebied zowel als voor afbeeldingen die kleiner zijn.</fit_to_body>
     <keepaspect caption="Behoudt hoogte- en breedteverhoudingen bij het schalen">Als afbeeldingen worden geschaald bij een van bovenstaande, zal de horizontale en verticale verhouding behouden blijven.</keepaspect>
-    <store_as_link caption="Sla afbeeldingen niet op in het project, maar gebruik een link">Het opslaan van afbeeldingen in het project zorgt voor een snelle toename van de bestandsgroote en kan de afbeeldingskwaliteit nadeling beïnvloeden. Het gebruik van links voorkomt dit. Afbeeldingen uit de map 'Backgrounds' worden met een relatieve link opgeslagen, zodat het transporteren naar de presentatiecomputer eenvoudiger is. Gebruik deze optie met zorg als het project op een andere computer wordt samengesteld dan de presentatiecomputer!</store_as_link>
+    <store_as_link caption="Bewaar de afbeelding niet in het project, maar gebruik een link naar de plek waar de afbeelding staat">Afbeeldingen bewaren in het project geeft snel grote project bestanden en kunnen de kwaliteit benadelen. Gebruik van een link voorkomt dit. Afbeeldingen worden vanuit de 'Backgrounds' directory bewaard als relatieve link, wat de switch naar de presentatie computer makkelijker maakt. Let op! als de presentatie gemaakt is op een macchine anders dan de presentatie computer!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
-    <action caption="Activiteit" />
-      <ins_image caption="Toevoegen">Voegt een afbeelding toe aan het project. Hiermee kunnen dia-series worden gemaakt die dezelfde titel-, subtitel-, stijl-, en automatische overgangsinstellingen delen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_image>
-      <del_image caption="Verwijderen">Verwijder de geselecteerde afbeelding.</del_image>
-      <move_up caption="Naar boven">Verplaatst de geselecteerde afbeelding naar het begin van de dia.</move_up>
-      <move_down caption="Naar beneden">Verplaatst de geselecteerde afbeelding naar het einde van de dia.</move_down>
+    <action caption="Optie" />
+      <ins_image caption="Voeg toe">Voegt een afbeelding toe aan de serie met een gemeenschappelijke titel, subtitel, stijl en/of automatisch volgende instelling. Op deze manier gemaakte serie kan ook worden ingesteld met een automatische loop.</ins_image>
+      <del_image caption="Verwijder afbeelding">Verwijdert de geselecteerde afbeelding uit de serie.</del_image>
+      <move_up caption="Omhoog">Schikt de geselecteerde afbeelding verder naar voren in de serie.</move_up>
+      <move_down caption="Omlaag">Schikt de geselecteerde afbeelding verder naar achteren in de serie.</move_down>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
     <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
     <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
@@ -226,7 +225,7 @@
   <style_change>
     <header caption="Wijzigen stijl"/>
     <revert caption="Keer terug naar vorige stijl">Deze optie neemt de stijl over van de vorige dia vanaf hier.</revert>
-    <change caption="Wijzig stijl in deze">Deze optie staat toe dat sets worden gewijzigd vanaf elk punt in de set. Stijlwijzigingen hebben effect op alle nog volgende dia's tot de volgende stijlwijziging.</change>
+    <change caption="Wijzig stijl in">Deze optie wijzigt de stijl van alle volgende dia's tot de volgende stijlwijziging.</change>
     <style>Klik hier om de nieuwe stijl te wijzigen.</style>
   </style_change>
 
@@ -234,7 +233,7 @@
     <header caption="Video Dia Wijzigen"/>
     <name caption="Video Naam"/>
     <file caption="Video Bestand">Geeft de naam van het bestand voor deze video dia.</file>
-    <loop caption="Video herhalen">Geef een vinkje om de video weer opnieuw te starten als hij aan het eind is gekomen.</loop>
+    <loop caption="Video herhalen">Selecteer deze optie om de video weer opnieuw te starten als hij aan het eind is gekomen.</loop>
   </video_slides>
 
   <powerpoint_slides>
@@ -269,8 +268,8 @@
   </song_search>
 
   <scripture_search title="Zoeken">
-    <caption caption="Zoek in de bijbel met het volgende trefwoord"/>
-    <example caption="Om te zoeken naar een letterlijke zin, plaatst tekst tussen dubbele aanhalingstekens: zoals &quot;Simon Petrus&quot;"/>
+    <caption caption="Zoeken in de Bijbel middels kernwoord"/>
+    <example caption="Om te zoeken naar exacte tekst, plaats dit tussen dubbele quotes, voorbeeld &quot;Simon Petrus&quot;"/>
     <match caption="Overeenkomst">
       <exact caption="Exact"/>
       <begin caption="Begint met"/>
@@ -280,7 +279,7 @@
       <any caption="Enkele woorden"/>
     </words>
     <search caption="Zoeken"/>
-    <result caption="Er zijn %1 resultaten gevonden met de opgegeven trefwoorden."/>
+    <result caption="%1 gevonden met het opgegeven kernwoord."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
     <result head1="Referentie" head2="Tekst" />
@@ -431,8 +430,16 @@
       <frames caption="Frames" helptag="Aantal frames voor overgang stappen tussen dia's"/>
     </transitions>
     <style caption="Stijl">
+	<inspring_after_line_break caption = "inspringen na regel afbreken"/>
+	<max_grow caption = "max lettersize groei"/>
       <border_thickness caption="Dikte randen"/>
-      <subtitles caption="Subtitels"/>
+      <subtitles caption="Subtitels">
+	<row0 caption="regel 0"/>
+	<row1 caption="regel 1"/>
+	<row2 caption="regel 2"/>
+	<row3 caption="regel 3"/>
+	<row4 caption="regel 4"/>
+      </subtitles>
       <modes>
         <normal caption="Normaal"/>
         <black caption="Zwart"/>
@@ -453,6 +460,7 @@
       <blanks caption="Een lege dia's invoegen"/>
       <blanks_between caption="tussen project items"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
+      <blank_default caption="standaard dia"/>
       <blank_prev caption="Vorige dia"/>
       <blank_next caption="Volgende dia"/>
       <initial_mode caption="Initiele presentatie modus"/>
@@ -504,7 +512,7 @@
       <normal_screen caption="[M] Normaal Scherm"/>
       <return caption="[Esc] Terug"/>
     </actions>
-    <exit caption="Beëindig presentatie?"/>
+    <exit caption="BeÃ«indig presentatie?"/>
     <loop caption="Loop"/>
     <keys>- Toetsen -
 Down: Volgende dia
@@ -526,7 +534,7 @@ T: Label</keys>
 
 De presentaties worden bediend met de volgende toetsen:
 
-Esc Toets: 			Beëindigen presentatie
+Esc Toets: 			BeÃ«indigen presentatie
 Pijltje naar boven of,
 8 op Nummerieke blok of, 
 Backspace: 			Ga naar de vorige dia.
@@ -643,7 +651,23 @@ Er is weinig te vertellen over de opmerking regels. Opmerkingen regels beginnen 
 &lt;h2&gt;Kolom onderbrekingen&lt;/h2&gt;&lt;h3&gt;
 
 Als een regel alleen 3 streepjes ("---") bevat, word de tekst geprint in een 2e kolom.&lt;/h3&gt;
-</format>
+
+
+&lt;h2&gt;Extra instellingen (bij Presentatie instellingen)&lt;/h2&gt;&lt;h3&gt;
+&lt;h2&gt;Marges:&lt;/h2&gt;&lt;h3&gt;
+Deze optie geeft de mogelijkheid om de titels, subtitels en body teksten op een meer flexibele manier in te vullen dan alleen 'Boven', 'Onder', 'Links',..... enz.
+Door een marge op te geven bij bijvoorbeeld de titel, kun je een gebied opgeven waar de tekst moet komen te staan.
+In het dialoog venster van de marges, worden er 2 rechthoeken getekend in het voorbeeld venster.  De buitenste (rose) geeft de ruimte aan die ingesteld wordt door 'Boven', 'Onder', 'Links',..... enz. De groene rechthoek (binnenste) geeft de effectieve ruimte weer dat wordt gebruikt voor de in te geven teksten.
+Het verschil tussen deze 2 ruimtes is noodzakelijk omdat OpenSong een interne grens aanhoudt rond alle tekst elementen om overlapping te voorkomen en voor de leesbaarheid.
+De uitlijning 'Boven', 'Onder', 'Links',..... enz. is relatief ten opzichte van de gespecificeerde marge ruimte.&lt;/h3&gt;
+
+&lt;h2&gt;Tabulators:&lt;/h2&gt;&lt;h3&gt;
+De optie tabulators geeft de mogelijkheid om kolommen te maken, zodat de tekst netjes uitgelijnd geprojecteerd wordt.
+Het werkt verglijkbaar als in de meeste Tekstverwerkingsprogramma's zoals Word en dergelijke.
+Als er spaties worden gebruikt om de uitlijning goed te krijgen, gaat dit meestal niet goed, omdat de gebruikte breedte per letter verschillend is (bij proportioneel lettertype). Alleen als bijv. Courier wordt gebruikt zal het met spaties wel netjes worden uitgelijnd.
+Om dit probleem met spatiering te voorkomen, gebruiken we tabulators. Deze kunnen in OpenSong met de toetscombinatie Ctrl+Tab worden gebruikt. De normale Tab functie wordt gebruikt om te springen naar een volgend invoerveld.;
+Tabulators gebruiken net als in tekstverwerkers een vaste afstand, tenzij je tabulators toevoegd, wat gebeurd in het tabulator dialoogvenster.&lt;/h3&gt;
+    </format>
 
     <presentation>
 &lt;h1&gt;OpenSong Presentatie Veld&lt;/h1&gt;&lt;h3&gt;
@@ -821,11 +845,14 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <find caption="Zoeken"></find>
     <clear_log caption="Logboek leegmaken"></clear_log>
     <print caption="Afdrukken"></print>
-    <view caption="Bekijk logbestand"/>
+    <view caption="Bekijk logboek"/>
     <merge caption="Samenvoegen"/>
     <export caption="Exporteren"/>
     <done caption="Klaar"/>
     <show caption="Tonen">
+    <export_to caption="Selecteer de map waar de export van het logboek moet worden geplaatst."/>
+    <activity_log caption="Moeten de liederen die in deze presentatie worden gebruikt aan het lied gebruik logboek worden toegevoegd? Dit heeft ook betrekking op liederen die tijdens het presenteren worden toegevoegd!"/>
+
       <!-- 
         "tag" attribute corresponds to the value of the
         constants found in the LogEntry class. The list order
@@ -836,13 +863,13 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       -->
       <value tag="0">Alles</value>
       <value tag="1">Gemaakt</value>
-      <value tag="8">Gekopiëerd</value>
       <value tag="2">Verwijderd</value>
       <value tag="3">Gewijzigd</value>
       <value tag="4">Verplaatst</value>
       <value tag="5">Getoond</value>
       <value tag="6">Afgedrukt</value>
       <value tag="7">Hernoemd</value>
+      <value tag="8">GekopiÃ«erd</value>
     </show>
     <songs head7="Heeft akkoorden" head6="CCLI #" head5="Auteur" head4="Titel" head3="Activiteit" head2="Tijdstip" head1="Datum"/> 
     <input_box>
@@ -855,21 +882,21 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   </song_activity>
   
   <scripture_lookup title="Bijbelteksten zoeken">
-    <lookup caption="Snel zoeken">
-      <reference caption="Referentie"/>
-      <lookup caption="Zoeken"/>
-      <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
-    </lookup>
     <search caption="Op bijbeltekst zoeken"/>
     <books caption="Bijbel boek">
 	  <ot caption="Oude testament"/>
 	  <nt caption="Nieuw testament"/>
     </books>
+    <lookup caption="Snel zoeken">
+      <reference caption="Referentie"/>
+      <lookup caption="Zoeken"/>
+      <example caption="Bijv:  2Pet 1:1-2 of  2Pet 1:1-2 (KJV)"/>
+    </lookup>
     <paragraph caption="Hoofdstuk"/>
     <colon caption=":"/>
-    <from_verse caption="Vanaf vers"/>
+    <from_verse caption="vanaf vers"/>
     <dash caption="-"/>
-    <to_verse caption="Tot vers"/>
+    <to_verse caption="t/m vers"/>
     <version caption="Vertaling"/>
     <select_file caption="Selecteer een bijbelvertalingsbestand."/>
     <verses_per_slide caption="Bijbelvers per dia" />
@@ -878,7 +905,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <paragraph caption="Hoofdstuk"/>
       <verse caption="Vers"/>
     </format>
-    <preview caption="Preview of scripture passage"/>
+    <preview caption="Voorbeeldweergave van schriftgedeelte"/>
     <bad_reference>
       <format>Controleer de samenstelling van de zoekopdracht en probeer het nogmaals.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
@@ -890,6 +917,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <verse_range>Foute referentie: het 'tot' vers moet groter dan of gelijk zijn aan het 'van' vers.</verse_range>
     </bad_reference>
     <insert caption="link(shared/insert/@caption)"/>
+    <search caption="link(shared/search/@caption)"/>
     <shownumbers caption="Toon vers nummers"/>
   </scripture_lookup>
 
@@ -1075,7 +1103,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <save caption="Opslaan" message="%1 is niet opgeslagen."/>
     <nosave caption="Niet opslaan"/>
     <cut caption="Knippen"/>
-    <copy caption="Kopiëren"/>
+    <copy caption="KopiÃ«ren"/>
     <paste caption="Plakken"/>
     <select caption="Selecteer"/>
     <exit_program caption="Programma afsluiten"/>
@@ -1095,7 +1123,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <generic_save_explanation caption="ALs je niet opslaat, zullen de wijzigingen verloren gaan"/>
     <set_changed caption="Het huidige project is gewijzigd, met het opgeslagen worden?"/>
     <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
-    <activity_log caption="Moeten de liederen die in deze presentatie worden gebruikt aan het lied gebruik logboek worden toegevoegd? Dit heeft ook betrekking op liederen die tijdens het presenteren worden toegevoegd!"/>
+    <activity_log caption="Wilt u de liederen in deze presentatie toevoegen aan de logfile voor liederengebruik? Let op: dit gebeurd ook voor 'on the fly' toegevoegde liederen!"/>
   </questions>
 
   <about>
@@ -1103,7 +1131,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <copyright>Copyright</copyright>
     <gpl>Deze software is vrijgegeven onder de voorwaarden van de GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
-    <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
+    <translating>Om OpenSong te vertalen, kopiÃ«er de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
     <created_with_opensong>Gemaakt met OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1253,7 +1281,7 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
 
   <progress_status>
     <folder>Caching map %1</folder>
-    <lead_sheets>Creëren uitgeprinte Sheets</lead_sheets>
+    <lead_sheets>CreÃ«ren uitgeprinte Sheets</lead_sheets>
     <process_themes>Verwerken thema's</process_themes>
     <process_songs>Verwerken liederen</process_songs>
     <export>Exporteren lied(eren)</export>

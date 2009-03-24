@@ -838,17 +838,21 @@ End
 		  temp = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "style/@mouse_cursor")
 		  Select Case temp
 		  Case "arrow"
-		    Self.MouseCursor = ArrowCursor
+		    Self.MouseCursor = System.Cursors.StandardPointer
 		  Case "cross"
-		    Self.MouseCursor = cross
+		    #If Not TargetLinux
+		      Self.MouseCursor = cross
+		    #Else
+		      Self.MouseCursor = System.Cursors.ArrowAllDirections
+		    #EndIf
 		  Case "hidden"
-		    Self.MouseCursor = hidden
+		    Self.MouseCursor = System.Cursors.InvisibleCursor
 		  Case "hourglass"
-		    Self.MouseCursor = WatchCursor
+		    Self.MouseCursor = System.Cursors.Wait
 		  Case "ibeam"
-		    Self.MouseCursor = IBeamCursor
+		    Self.MouseCursor = System.Cursors.IBeam
 		  Else
-		    Self.MouseCursor = hidden
+		    Self.MouseCursor = System.Cursors.InvisibleCursor
 		  End Select
 		  PresentCursor = Self.MouseCursor
 		  AppCursor = App.MouseCursor

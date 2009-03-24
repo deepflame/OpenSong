@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold" version="1.3.0">
+<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt" version="1.5.1">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -183,7 +183,7 @@
     <title caption="Title">Sets the title of the slide displayed on the slide itself.</title>
     <subtitle caption="Subtitle">Sets the subtitle of the slide displayed on the slide itself.</subtitle>
     <name caption="Name">Sets the title of the slide(s) displayed in the Presentation Helper window. It does not display on the actual slide(s).</name>
-    <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item. Hint: Drag one or more images to this list for easy adding.</slides>
+    <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item.</slides>
     <presentation caption="Custom presentation order">Overrides the presentation order in the song file</presentation>
     <origorder caption="Original presentation order">Presentation order in the song file</origorder>       
     <folder caption="Song folder">Folder containing the selected item</folder>
@@ -204,7 +204,7 @@
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
     <descriptions caption="Image description in subtitle">Add the description of the showing image to the subtitle.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="Images" head1="Preview" head2="Description">Contains the images that are shown in this slide.</images>
+    <images caption="Images" head1="Preview" head2="Description">Contains the images that are shown in this slide. Hint: Drag one or more images to this list for easy adding.</images>
     <fit_to_screen caption="Resize images to fit the screen">Images that are too large for the projector screen are resized to show the entire image. This also happens for images that are smaller than the screen size.</fit_to_screen>
     <fit_to_body caption="Resize images to fit the body area">Images are made to always fit in the area that is bounded by the body style settings. This goes for both images that are larger and smaller than the body area.</fit_to_body>
     <keepaspect caption="Keep aspect ratio when resizing images">In case of a resizing activity for either one of the above, the horizontal and vertical aspect will be maintained.</keepaspect>
@@ -829,7 +829,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
         constants found in the LogEntry class. The list order
         can be changed as desired for localisation (note that it is
         alphabetical in English) as long as the tags relate to the
-        correct item.  For example, the local language value of "Moved"
+        correct item. For example, the local language value of "Moved"
         should always have tag="4"
       -->
       <value tag="0">All</value>
@@ -1181,7 +1181,7 @@ The OpenSong development team members regret any inconvenience.
     </cclinotavailable>
     <activity_disabled>Could not load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
     <adding_logentry>Error Adding log entry!</adding_logentry>
-    <chars_per_slide>Max characters per side must be between 1 and 1000.</chars_per_slide>
+    <chars_per_slide>Max characters per slide must be between 1 and 1000.</chars_per_slide>
   </errors>
 
   <xml_errors>

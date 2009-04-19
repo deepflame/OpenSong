@@ -1417,7 +1417,18 @@ Inherits Application
 			Get
 			If IsPortable Then
 			Dim f As FolderItem
-			f = AppFolder.Child("OpenSong Data")
+			dim S As string
+			S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@absdatapath")
+			if S <> "" then
+			f = GetFolderItem(S, FolderItem.PathTypeAbsolute)
+			else
+			S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@relativedatapath")
+			if S = "" then
+			S = "OpenSong Data"
+			end if
+			f = AppFolder.Child(S)
+			end if
+			
 			If FileUtils.CreateFolder(f) Then
 			Return f
 			Else

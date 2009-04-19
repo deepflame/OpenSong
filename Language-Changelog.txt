@@ -1,3 +1,8 @@
+-= Version 1.5.1 =-
+slide_editor/slides_caption (modified)
+image_slide/images caption (modified)
+errors/chars_per_slide
+
 -= Version 1.5 =-
 scripture_lookup/preview(modified)
 sets_mode/current_item/paste

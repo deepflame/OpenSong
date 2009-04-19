@@ -1,4 +1,14 @@
-﻿* Added package creation script for Linux (only .deb)
+﻿-= 1.5.1 =-
+
+* Updated languages: English, Swedish (thx edvinerdtman), Polish (thx myzzard), Hungarian (thx gygellert), Czech (txh matysek03) and German (thx s.mehrbrodt)
+
+* Fix crash on Linux when starting a presentation
+
+* Fix typo in English translation (bug #2687080) and updated Dutch translation (thx gert, alex)
+
+* Fix issue were OS would always insert one scripture per slide (bug #2628687) (JRC)
+
+* Added package creation script for Linux (only .deb)
 
 * Updated translation for Hungarian (thanx gygellert)
 

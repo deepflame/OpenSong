@@ -236,6 +236,30 @@ Inherits Listbox
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="TabIndex"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabStop"
+			Visible=true
+			Group="Position"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Border"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
@@ -253,12 +277,6 @@ Inherits Listbox
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty

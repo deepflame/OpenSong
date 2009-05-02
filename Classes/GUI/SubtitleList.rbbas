@@ -100,9 +100,27 @@ Inherits Listbox
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="ControlOrder"
+			Name="TabIndex"
 			Visible=true
 			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabStop"
+			Visible=true
+			Group="Position"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Border"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty

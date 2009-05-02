@@ -333,7 +333,7 @@ Protected Class SlideStyle
 		    SmartML.SetValue(CurrChild, "@filename", background.GetImageFilename().Mid(App.DocsFolder.Child("Backgrounds").AbsolutePath().Len()+1))
 		  Else
 		    SmartML.SetValue(root, thisNode, Background.GetImageAsString())
-		  End If 
+		  End If
 		  
 		  Return XmlDoc
 		End Function
@@ -746,6 +746,7 @@ Protected Class SlideStyle
 		SubtitleEnable As Boolean
 	#tag EndProperty
 
+
 	#tag Constant, Name = POS_CENTER, Type = Integer, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant
 
@@ -789,6 +790,24 @@ Protected Class SlideStyle
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="BodyEnable"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TitleEnable"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="SubtitleEnable"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

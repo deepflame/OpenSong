@@ -38,12 +38,6 @@ Inherits Thread
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
-			InheritedFrom="Thread"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"

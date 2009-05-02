@@ -53,8 +53,13 @@ Inherits Application
 		  Profiler.BeginProfilerEntry "App::Open"
 		  
 		  DebugWriter = New DebugOutput
-		  
-		  AppFolder = GetFolderItem("")
+		  '++JRC For compatibilty with RB 2008 debugger
+		  'RB insists on outputing the executable in a subfolder (sigh)
+		  #If DebugBuild
+		    AppFolder = GetFolderItem("").Parent
+		  #Else
+		    AppFolder = GetFolderItem("")
+		  #Endif
 		  
 		  'Can't translate this until we've loaded the translator
 		  'Splash.SetStatus "Loading global settings..."
@@ -1417,7 +1422,18 @@ Inherits Application
 			Get
 			If IsPortable Then
 			Dim f As FolderItem
-			f = AppFolder.Child("OpenSong Data")
+			dim S As string
+			S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@absdatapath")
+			if S <> "" then
+			f = GetFolderItem(S, FolderItem.PathTypeAbsolute)
+			else
+			S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@relativedatapath")
+			if S = "" then
+			S = "OpenSong Data"
+			end if
+			f = AppFolder.Child(S)
+			end if
+			
 			If FileUtils.CreateFolder(f) Then
 			Return f
 			Else
@@ -1495,16 +1511,19 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ExcludeBackgroundsImages"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="IsPortable"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

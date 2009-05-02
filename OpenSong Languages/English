@@ -157,6 +157,12 @@
       <copy caption="Copy">Creates a copy of the currently selected set item.</copy>
       <paste caption="link(shared/insert/@caption)">Insert copied item after current position.</paste>      
       <store caption="Save">Stores the currently selected item in the set.</store>
+      <presentitem caption="Present">Presents the current set to the screen, starting from the currently selected item. You have the option of presenting to the current monitor, a secondary monitor, or using a single monitor to preview what it would be like with two monitors.
+        <single_screen caption="Single Screen"/>
+        <dual_screen caption="Dual Screen"/>
+        <preview_dual_screen caption="Preview Dual Screen"/>
+        <no_slides>You must have at least one slide in the set to present.</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Set Items">Lists the items in the current set. Click on a custom slide to load it into the custom slide editor or double-click a song to load it into the song editor.
       <song caption="(song)"/>

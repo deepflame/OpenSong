@@ -53,8 +53,13 @@ Inherits Application
 		  Profiler.BeginProfilerEntry "App::Open"
 		  
 		  DebugWriter = New DebugOutput
-		  
-		  AppFolder = GetFolderItem("")
+		  '++JRC For compatibilty with RB 2008 debugger
+		  'RB insists on outputing the executable in a subfolder (sigh)
+		  #If DebugBuild
+		    AppFolder = GetFolderItem("").Parent
+		  #Else
+		    AppFolder = GetFolderItem("")
+		  #Endif
 		  
 		  'Can't translate this until we've loaded the translator
 		  'Splash.SetStatus "Loading global settings..."
@@ -1506,16 +1511,19 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ExcludeBackgroundsImages"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="IsPortable"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

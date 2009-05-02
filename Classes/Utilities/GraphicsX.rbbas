@@ -220,7 +220,7 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer 'gp
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, width As Integer = 0, align As String = "left", height As Integer = 0, valign As String = "top", tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer'gp
 		  Profiler.BeginProfilerEntry "DrawFontString (" + str + ")"
 		  Dim dx, dy, xx, yy, i, j As Integer
 		  Dim lineCount, lineHeight, lineAscent, thisWidth As Integer
@@ -251,7 +251,7 @@ Protected Module GraphicsX
 		  hasTabs = False
 		  Try
 		    If UBound(tabs) > 0 And InStr(str, Chr(9)) > 0 Then
-		    hasTabs = True
+		      hasTabs = True
 		    End If
 		  Catch err as NilObjectException
 		    'tabs is Nill as it is an optional parameter; that is ok
@@ -522,7 +522,7 @@ Protected Module GraphicsX
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer 'gp
+		Function DrawFontString(g As Graphics, str As String, x As Integer, y As Integer, f As FontFace, borderSize as Integer, headerSize as Integer, footerSize as Integer, margins as StyleMarginType, width As Integer, align As String, height As Integer, valign As String, tabs() As StyleTabsType = Nil, InsertAfterBreak as string = "") As Integer'gp
 		  Dim drawHeight as Integer
 		  
 		  If x < margins.Left Then

@@ -605,6 +605,7 @@ Protected Module SetML
 		    Do Until slide_group = Nil Or SmartML.GetValue(slide_group, "@type") <> "style"
 		      slide_group = slide_group.NextSibling
 		    Loop
+		    
 		    If slide_group <> Nil Then
 		      Return SmartML.GetNode(slide_group, "slides", True).FirstChild
 		    Else

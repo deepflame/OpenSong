@@ -1,4 +1,8 @@
-﻿-= 1.5.1 =-
+﻿* Added the ability to start a presentation from a specific set item
+
+* Building with the RB 2008 r5.1 compiler
+
+-= 1.5.1 =-
 
 * Updated languages: English, Swedish (thx edvinerdtman), Polish (thx myzzard), Hungarian (thx gygellert), Czech (txh matysek03) and German (thx s.mehrbrodt)
 

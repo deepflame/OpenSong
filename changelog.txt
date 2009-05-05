@@ -1,4 +1,6 @@
-﻿* Added the ability to start a presentation from a specific set item
+﻿* Add support for displaying the same verse from 2 bible versions (thanks Ovidiu).
+
+* Added the ability to start a presentation from a specific set item (JRC)
 
 * Building with the RB 2008 r5.1 compiler
 

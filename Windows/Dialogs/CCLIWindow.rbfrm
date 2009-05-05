@@ -29,6 +29,7 @@ Begin Window CCLIWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   0
       ControlOrder    =   0
       Enabled         =   True
       EraseBackground =   True
@@ -55,6 +56,7 @@ Begin Window CCLIWindow
    End
    Begin StaticText lbl_ccli_user_id
       AutoDeactivate  =   True
+      BehaviorIndex   =   1
       Bold            =   False
       ControlOrder    =   1
       DataField       =   ""
@@ -91,6 +93,7 @@ Begin Window CCLIWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
+      BehaviorIndex   =   2
       Bold            =   False
       Border          =   True
       ControlOrder    =   2
@@ -133,6 +136,7 @@ Begin Window CCLIWindow
    End
    Begin StaticText lbl_ccli_password
       AutoDeactivate  =   True
+      BehaviorIndex   =   3
       Bold            =   False
       ControlOrder    =   3
       DataField       =   ""
@@ -169,6 +173,7 @@ Begin Window CCLIWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
+      BehaviorIndex   =   4
       Bold            =   False
       Border          =   True
       ControlOrder    =   4
@@ -211,6 +216,7 @@ Begin Window CCLIWindow
    End
    Begin StaticText lbl_search_for
       AutoDeactivate  =   True
+      BehaviorIndex   =   5
       Bold            =   False
       ControlOrder    =   5
       DataField       =   ""
@@ -247,6 +253,7 @@ Begin Window CCLIWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
+      BehaviorIndex   =   6
       Bold            =   False
       Border          =   True
       ControlOrder    =   6
@@ -289,6 +296,7 @@ Begin Window CCLIWindow
    End
    Begin StaticText txt_search_by
       AutoDeactivate  =   True
+      BehaviorIndex   =   7
       Bold            =   False
       ControlOrder    =   7
       DataField       =   ""
@@ -322,6 +330,7 @@ Begin Window CCLIWindow
    End
    Begin PopupMenu pop_by
       AutoDeactivate  =   True
+      BehaviorIndex   =   8
       Bold            =   False
       ControlOrder    =   8
       DataField       =   ""
@@ -353,6 +362,7 @@ Begin Window CCLIWindow
    End
    Begin StaticText txt_search_filter
       AutoDeactivate  =   True
+      BehaviorIndex   =   9
       Bold            =   False
       ControlOrder    =   9
       DataField       =   ""
@@ -386,6 +396,7 @@ Begin Window CCLIWindow
    End
    Begin PopupMenu pop_filter
       AutoDeactivate  =   True
+      BehaviorIndex   =   10
       Bold            =   False
       ControlOrder    =   10
       DataField       =   ""
@@ -417,6 +428,7 @@ Begin Window CCLIWindow
    End
    Begin PushButton btn_song_find
       AutoDeactivate  =   True
+      BehaviorIndex   =   11
       Bold            =   False
       Cancel          =   False
       Caption         =   "Find"
@@ -448,6 +460,7 @@ Begin Window CCLIWindow
    Begin ListBox lst_found_songs
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
+      BehaviorIndex   =   12
       Bold            =   False
       ColumnCount     =   10
       ColumnsResizable=   True
@@ -496,6 +509,7 @@ Begin Window CCLIWindow
    End
    Begin PushButton btn_page_previous_page
       AutoDeactivate  =   True
+      BehaviorIndex   =   13
       Bold            =   False
       Cancel          =   False
       Caption         =   "< Previous Page"
@@ -526,6 +540,7 @@ Begin Window CCLIWindow
    End
    Begin PushButton btn_page_next_page
       AutoDeactivate  =   True
+      BehaviorIndex   =   14
       Bold            =   False
       Cancel          =   False
       Caption         =   "Next Page >"
@@ -556,6 +571,7 @@ Begin Window CCLIWindow
    End
    Begin StaticText txt_prefix_page
       AutoDeactivate  =   True
+      BehaviorIndex   =   15
       Bold            =   False
       ControlOrder    =   15
       DataField       =   ""
@@ -589,6 +605,7 @@ Begin Window CCLIWindow
    End
    Begin PopupMenu pop_current_page
       AutoDeactivate  =   True
+      BehaviorIndex   =   16
       Bold            =   False
       ControlOrder    =   16
       DataField       =   ""
@@ -620,6 +637,7 @@ Begin Window CCLIWindow
    End
    Begin StaticText txt_number_of_pages
       AutoDeactivate  =   True
+      BehaviorIndex   =   17
       Bold            =   False
       ControlOrder    =   17
       DataField       =   ""
@@ -653,6 +671,7 @@ Begin Window CCLIWindow
    End
    Begin PushButton btn_song_import
       AutoDeactivate  =   True
+      BehaviorIndex   =   18
       Bold            =   False
       Cancel          =   False
       Caption         =   "Import"
@@ -683,6 +702,7 @@ Begin Window CCLIWindow
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
+      BehaviorIndex   =   19
       Bold            =   False
       Cancel          =   True
       Caption         =   "Cancel"
@@ -713,6 +733,7 @@ Begin Window CCLIWindow
    End
    Begin Separator sep_1
       AutoDeactivate  =   True
+      BehaviorIndex   =   20
       ControlOrder    =   20
       Enabled         =   True
       Height          =   4
@@ -737,6 +758,7 @@ Begin Window CCLIWindow
    End
    Begin PopupMenu pop_by_values
       AutoDeactivate  =   True
+      BehaviorIndex   =   21
       Bold            =   False
       ControlOrder    =   21
       DataField       =   ""
@@ -768,6 +790,7 @@ Begin Window CCLIWindow
    End
    Begin PopupMenu pop_filter_values
       AutoDeactivate  =   True
+      BehaviorIndex   =   22
       Bold            =   False
       ControlOrder    =   22
       DataField       =   ""
@@ -1052,7 +1075,7 @@ End
 		  form.value("password") = edt_ccli_password.Text
 		  socket.SetFormData form
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  headers = socket.GetHeaders("http://www.ccli.com/ccli_services/accounts/login.cfm", 20)
 		  If headers = Nil Or headers.Count <= 0 Then
@@ -1262,7 +1285,7 @@ End
 		  ccli = lst_found_songs.Cell(lst_found_songs.ListIndex, 9)
 		  socket = GetCCLISocket
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  Dim page As String
 		  page = socket.Get("http://www.ccli.com/CCLI_Services/SongSelect/dsp_SongDetail.cfm?song_id=" + ccli, 20)

@@ -26,6 +26,7 @@ Begin Window ImageChooserWindow
    Width           =   475
    Begin PushButton btn_browse
       AutoDeactivate  =   True
+      BehaviorIndex   =   0
       Bold            =   False
       Cancel          =   False
       Caption         =   "Browse..."
@@ -56,6 +57,7 @@ Begin Window ImageChooserWindow
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
+      BehaviorIndex   =   1
       Bold            =   False
       Cancel          =   True
       Caption         =   "Cancel"
@@ -86,6 +88,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText txt_path
       AutoDeactivate  =   True
+      BehaviorIndex   =   2
       Bold            =   False
       ControlOrder    =   2
       DataField       =   ""
@@ -119,6 +122,7 @@ Begin Window ImageChooserWindow
    End
    Begin Separator sep_1
       AutoDeactivate  =   True
+      BehaviorIndex   =   3
       ControlOrder    =   3
       Enabled         =   True
       Height          =   4
@@ -144,6 +148,7 @@ Begin Window ImageChooserWindow
    Begin ScrollBar scr_vertical
       AcceptFocus     =   true
       AutoDeactivate  =   True
+      BehaviorIndex   =   4
       ControlOrder    =   4
       Enabled         =   True
       Height          =   328
@@ -177,6 +182,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   5
       Enabled         =   True
       EraseBackground =   True
@@ -206,6 +212,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   6
       Enabled         =   True
       EraseBackground =   True
@@ -235,6 +242,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   7
       Enabled         =   True
       EraseBackground =   True
@@ -264,6 +272,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   8
       Enabled         =   True
       EraseBackground =   True
@@ -293,6 +302,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   9
       Enabled         =   True
       EraseBackground =   True
@@ -322,6 +332,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   10
       Enabled         =   True
       EraseBackground =   True
@@ -351,6 +362,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   11
       Enabled         =   True
       EraseBackground =   True
@@ -380,6 +392,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   12
       Enabled         =   True
       EraseBackground =   True
@@ -409,6 +422,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   13
       Enabled         =   True
       EraseBackground =   True
@@ -438,6 +452,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   14
       Enabled         =   True
       EraseBackground =   True
@@ -467,6 +482,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   15
       Enabled         =   True
       EraseBackground =   True
@@ -496,6 +512,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   16
       Enabled         =   True
       EraseBackground =   True
@@ -525,6 +542,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   17
       Enabled         =   True
       EraseBackground =   True
@@ -554,6 +572,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   18
       Enabled         =   True
       EraseBackground =   True
@@ -583,6 +602,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   19
       Enabled         =   True
       EraseBackground =   True
@@ -612,6 +632,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   20
       Enabled         =   True
       EraseBackground =   True
@@ -641,6 +662,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   21
       Enabled         =   True
       EraseBackground =   True
@@ -670,6 +692,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   22
       Enabled         =   True
       EraseBackground =   True
@@ -699,6 +722,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   23
       Enabled         =   True
       EraseBackground =   True
@@ -728,6 +752,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   24
       Enabled         =   True
       EraseBackground =   True
@@ -754,6 +779,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   25
       DataField       =   ""
@@ -787,6 +813,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   26
       DataField       =   ""
@@ -820,6 +847,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   27
       DataField       =   ""
@@ -853,6 +881,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   28
       DataField       =   ""
@@ -886,6 +915,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   29
       DataField       =   ""
@@ -919,6 +949,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   30
       DataField       =   ""
@@ -952,6 +983,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   31
       DataField       =   ""
@@ -985,6 +1017,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   32
       DataField       =   ""
@@ -1018,6 +1051,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   33
       DataField       =   ""
@@ -1051,6 +1085,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   34
       DataField       =   ""
@@ -1084,6 +1119,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   35
       DataField       =   ""
@@ -1117,6 +1153,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   36
       DataField       =   ""
@@ -1150,6 +1187,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   37
       DataField       =   ""
@@ -1183,6 +1221,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   38
       DataField       =   ""
@@ -1216,6 +1255,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   39
       DataField       =   ""
@@ -1249,6 +1289,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   40
       DataField       =   ""
@@ -1282,6 +1323,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   41
       DataField       =   ""
@@ -1315,6 +1357,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   42
       DataField       =   ""
@@ -1348,6 +1391,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   43
       DataField       =   ""
@@ -1381,6 +1425,7 @@ Begin Window ImageChooserWindow
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   44
       DataField       =   ""
@@ -1467,7 +1512,7 @@ End
 		    folderIndex = 1
 		  End If
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  For i = 1 To BackgroundFolder.Count
 		    If BackgroundFolder.Item(i).Name <> "thumbs.db" _
 		      And BackgroundFolder.Item(i).IsFileVisible Then
@@ -1591,7 +1636,7 @@ End
 		  Dim ImgNdx, picDepth as Integer                                            // JDL 2/01/2006
 		  ImgNdx = scr_vertical.Value * COLS + Index + 1                    // JDL 2/01/2006
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  If ImgNdx <= UBound(ImageFiles) Then                                  // JDL 2/01/2006
 		    g.TextSize = 8

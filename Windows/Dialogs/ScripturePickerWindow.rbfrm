@@ -1600,7 +1600,7 @@ End
 		  Dim c As RectControl
 		  count = Self.ControlCount - 1
 		  
-		  Self.MouseCursor = WatchCursor
+		  Self.MouseCursor = System.Cursors.Wait
 		  '++JRC Disable the close button while generating scripture index, (bug #1642437)
 		  CanClose = false
 		  

@@ -1583,7 +1583,9 @@ End
 		    sep = EndOfLine
 		  End If
 		  
-		  edt_preview.Text = Join(verses, sep)
+		  '++JRC Add support for displaying the same verse from 2 bibles versions (thanks Ovidiu).
+		  'edt_preview.Text = Join(verses, sep)
+		  edt_preview.Text = ReplaceAll(Join(verses, sep),"|", Chr(10)) 
 		End Sub
 	#tag EndMethod
 
@@ -1598,7 +1600,7 @@ End
 		  Dim c As RectControl
 		  count = Self.ControlCount - 1
 		  
-		  Self.MouseCursor = WatchCursor
+		  Self.MouseCursor = System.Cursors.Wait
 		  '++JRC Disable the close button while generating scripture index, (bug #1642437)
 		  CanClose = false
 		  

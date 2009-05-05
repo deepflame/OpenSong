@@ -29,7 +29,7 @@ Begin Window SearchWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   2
+      BehaviorIndex   =   0
       Bold            =   False
       Border          =   True
       ControlOrder    =   0
@@ -73,7 +73,7 @@ Begin Window SearchWindow
    End
    Begin GroupBox grp_search_match
       AutoDeactivate  =   True
-      BehaviorIndex   =   5
+      BehaviorIndex   =   1
       Bold            =   False
       Caption         =   "Match:"
       ControlOrder    =   1
@@ -102,7 +102,7 @@ Begin Window SearchWindow
       BehaviorIndex   =   1
       Begin RadioButton rad_match_exact
          AutoDeactivate  =   True
-         BehaviorIndex   =   6
+         BehaviorIndex   =   2
          Bold            =   False
          Caption         =   "Exact word"
          ControlOrder    =   2
@@ -133,7 +133,7 @@ Begin Window SearchWindow
       End
       Begin RadioButton rad_match_begin
          AutoDeactivate  =   True
-         BehaviorIndex   =   7
+         BehaviorIndex   =   3
          Bold            =   False
          Caption         =   "Begins with"
          ControlOrder    =   3
@@ -165,7 +165,7 @@ Begin Window SearchWindow
    End
    Begin GroupBox grp_search_words
       AutoDeactivate  =   True
-      BehaviorIndex   =   8
+      BehaviorIndex   =   4
       Bold            =   False
       Caption         =   "Verse must have:"
       ControlOrder    =   4
@@ -194,7 +194,7 @@ Begin Window SearchWindow
       BehaviorIndex   =   4
       Begin RadioButton rad_words_any
          AutoDeactivate  =   True
-         BehaviorIndex   =   9
+         BehaviorIndex   =   5
          Bold            =   False
          Caption         =   "Any word"
          ControlOrder    =   5
@@ -225,7 +225,7 @@ Begin Window SearchWindow
       End
       Begin RadioButton rad_words_all
          AutoDeactivate  =   True
-         BehaviorIndex   =   10
+         BehaviorIndex   =   6
          Bold            =   False
          Caption         =   "All words"
          ControlOrder    =   6
@@ -257,7 +257,7 @@ Begin Window SearchWindow
    End
    Begin PushButton btn_search_search
       AutoDeactivate  =   True
-      BehaviorIndex   =   3
+      BehaviorIndex   =   7
       Bold            =   False
       Cancel          =   False
       Caption         =   "Search"
@@ -290,7 +290,7 @@ Begin Window SearchWindow
    Begin ListBox lst_result
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
-      BehaviorIndex   =   4
+      BehaviorIndex   =   8
       Bold            =   False
       ColumnCount     =   2
       ColumnsResizable=   False
@@ -340,7 +340,7 @@ Begin Window SearchWindow
    End
    Begin PushButton btn_search_ok
       AutoDeactivate  =   True
-      BehaviorIndex   =   0
+      BehaviorIndex   =   9
       Bold            =   False
       Cancel          =   False
       Caption         =   "Ok"
@@ -372,7 +372,7 @@ Begin Window SearchWindow
    End
    Begin PushButton btn_search_cancel
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
+      BehaviorIndex   =   10
       Bold            =   False
       Cancel          =   True
       Caption         =   "Cancel"
@@ -661,7 +661,7 @@ End
 		  
 		  'used to tell the difference between list being empty b/c we haven't searched for any words yet and we have searched for words, but haven't found any matches
 		  found=false
-		  Self.MouseCursor = WatchCursor
+		  Self.MouseCursor = System.Cursors.Wait
 		  lbl_search_result.Caption = ""
 		  'get user input
 		  searchString= edt_search.Text

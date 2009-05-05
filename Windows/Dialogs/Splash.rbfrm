@@ -25,6 +25,7 @@ Begin Window Splash
    Visible         =   True
    Width           =   400
    Begin Timer closeTimer
+      BehaviorIndex   =   0
       ControlOrder    =   0
       Enabled         =   True
       Height          =   32
@@ -59,7 +60,7 @@ End
 	#tag Event
 		Sub Open()
 		  App.SplashShowing = True
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  secondsOpen = 0
 		  closeTimer.Reset
 		  closeTimer.Enabled = True

@@ -77,7 +77,7 @@ Inherits TOCReport
 		    App.DebugWriter.Write "AlphaTOCReport.Prepare: Exit (previously done)"
 		    Return IsCategorized
 		  End If
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  // Determine if a sort is necessary
 		  
 		  If Not IsSorted Then

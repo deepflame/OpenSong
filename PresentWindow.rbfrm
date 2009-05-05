@@ -665,7 +665,7 @@ End
 		  Dim NewStyleNode As XmlNode
 		  Dim tempSlideStyle As SlideStyle
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  PresentationMode = PresentMode
 		  // Copy the set to a working copy we can change
 		  CurrentSet = New XmlDocument
@@ -1562,7 +1562,7 @@ End
 		  
 		  f = SongPickerWindow.Popup(presentation)
 		  If f <> Nil Then
-		    App.MouseCursor = WatchCursor
+		    App.MouseCursor = System.Cursors.Wait
 		    
 		    s = SmartML.XDocFromFile(f)
 		    
@@ -1695,7 +1695,7 @@ End
 		  ' Get a reference
 		  newSetItem = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
 		  tempMode = Mode
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  newGroup = SmartML.ReplaceWithImportNode(newSetItem, scripture)
 		  
 		  '++JRC

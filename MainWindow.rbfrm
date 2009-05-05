@@ -6520,7 +6520,7 @@ End
 		  // Cancel the close if we're presenting.
 		  If Status_Presentation Then Return True
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@y", CStr(Top)
 		  SmartML.SetValue App.MyMainSettings.DocumentElement, "geometry/@x", CStr(Left)
@@ -7590,7 +7590,7 @@ End
 			Dim toChild As String
 			
 			Dim xfile As XmlDocument
-			App.MouseCursor = WatchCursor
+			App.MouseCursor = System.Cursors.Wait
 			xfile = SmartML.XDocFromFile(file)
 			App.MouseCursor = Nil
 			If xfile = Nil Then
@@ -7630,7 +7630,7 @@ End
 			If xfile.DocumentElement.Name = "bible" Then
 			If InputBox.AskYN(App.T.Translate("module/generate_index")) Then
 			newBible = New Bible
-			App.MouseCursor = WatchCursor
+			App.MouseCursor = System.Cursors.Wait
 			If Not newBible.LoadBible(file) Then
 			App.MouseCursor = Nil
 			InputBox.Message(App.T.Translate("module/generate_error", file.AbsolutePath))
@@ -7676,7 +7676,7 @@ End
 			'Ask if user wants to save
 			If NOT ActionSongAskSave Then Return True 'User Canceled
 			
-			App.MouseCursor = WatchCursor
+			App.MouseCursor = System.Cursors.Wait
 			Status_SongOpen = False
 			Status_SongChanged = False
 			Globals.OldFolderSel = -1 // If this isn't invalidated, the list box doesn't get rebuilt unless we are on a child folder
@@ -8028,7 +8028,7 @@ End
 		  End If
 		  
 		  //Start of the calculation and copying bit
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  Dim f, songFile, setFile As FolderItem
 		  Dim SongPath As String
 		  Dim AbsFiles(0) As FolderItem
@@ -8239,7 +8239,7 @@ End
 		  
 		  Globals.AddToLog = Import
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  ImportSongs setDoc, Import
 		  '--
@@ -8278,7 +8278,7 @@ End
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then Return 'User Canceled
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  rpt = New LeadSheetReport
 		  If Not rpt.Setup Then
@@ -8302,7 +8302,7 @@ End
 		        App.MouseCursor = Nil
 		        PrintWindow.Hide
 		        InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", SmartML.GetValue(xgroup, "@name"))
-		        App.MouseCursor = WatchCursor
+		        App.MouseCursor = System.Cursors.Wait
 		      End If
 		    End If
 		    xgroup = xgroup.NextSibling
@@ -8406,7 +8406,7 @@ End
 		  If Not Status_SetChanged Then Return
 		  If Status_InSetChanged Then ActionInSetSave
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  dim att as XMLattribute
 		  try
@@ -8519,7 +8519,7 @@ End
 		  If folder.Len = 0 Then Return
 		  If folder + "/" = oldfolder Then Return
 		  
-		  App.MouseCursor = WatchCursor // Wait...
+		  App.MouseCursor = System.Cursors.Wait // Wait...
 		  status = Songs.MoveFile(oldfolder + lst_songs_songs.Text, folder)
 		  App.MouseCursor = Nil // Don't wait...
 		  
@@ -8664,7 +8664,7 @@ End
 		  Dim song As XmlNode
 		  Dim StyleNode As XmlNode
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  setDoc = New XmlDocument
 		  song = setDoc.AppendChild(setDoc.CreateElement("set"))
 		  song = song.AppendChild(setDoc.CreateElement("slide_groups"))
@@ -8781,7 +8781,7 @@ End
 		  
 		  If Status_SongChanged Then Return 'Don't print if user cancelled the save
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  rpt = New LeadSheetReport
 		  If Not rpt.Setup Then'++JRC Reset Mouse Cursor
 		    App.MouseCursor = Nil
@@ -8872,7 +8872,7 @@ End
 		  'f = Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text)
 		  '
 		  'If f <> Nil And f.Exists Then
-		  'App.MouseCursor = WatchCursor
+		  'App.MouseCursor = System.Cursors.Wait
 		  'CurrentSong = SmartML.XDocFromFile(f)
 		  'App.MouseCursor = Nil
 		  'Status_SongOpen = False ' suppress updates
@@ -9003,7 +9003,7 @@ End
 		  Dim found As RectControl
 		  Dim edtFound As EditField
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  If Status_SongChanged Then ActionSongSave True ' updates CurrentSong but doesn't write it to file
 		  If pge_controls.Value <> 0 Then SetMode 0
@@ -9132,7 +9132,7 @@ End
 		            App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.list(i), 1)
 		            App.MouseCursor = Nil
 		            InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
-		            App.MouseCursor = WatchCursor
+		            App.MouseCursor = System.Cursors.Wait
 		          End If
 		        End If
 		      Loop Until s <> Nil
@@ -9191,7 +9191,7 @@ End
 		  Dim SongStyle, SlideSongStyle As XmlNode
 		  Dim SongPath As String
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
 		  slide_group = slide_groups.FirstChild
 		  
@@ -9298,7 +9298,7 @@ End
 		  Dim x As Integer
 		  Dim s(0) As String
 		  Dim SetDB As FolderDB
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  pop_sets_sets.DeleteAllRows
 		  If App.SplashShowing Then Splash.SetStatus App.T.Translate("load_data/sets") + "..."
 		  If App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB) Then
@@ -9968,7 +9968,7 @@ End
 		  If folder.Len = 0 Then Return
 		  If folder + "/" = oldfolder Then Return
 		  
-		  App.MouseCursor = WatchCursor // Wait...
+		  App.MouseCursor = System.Cursors.Wait // Wait...
 		  status = Songs.CopyFile(oldfolder + lst_songs_songs.Text, folder)
 		  App.MouseCursor = Nil // Don't wait...
 		  
@@ -10362,7 +10362,7 @@ End
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  Call Songs.GetFiles(Me.Text, lst_songs_songs)
 		  'If UBound(Songs.GetFiles(Me.Text, lst_songs_songs)) > 0 Then
 		  'lst_songs_songs.SortedColumn = 0
@@ -10534,7 +10534,7 @@ End
 		  
 		  f = dlg.ShowModal() 'show dialog
 		  If f <> Nil Then
-		    App.MouseCursor = WatchCursor
+		    App.MouseCursor = System.Cursors.Wait
 		    output = f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html").CreateTextFile
 		    song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
 		    If output <> Nil And song <> Nil Then
@@ -10694,7 +10694,7 @@ End
 		      goutput.WriteLine "<title>" + App.T.Translate("songs_mode/songs/@caption") + "</title><link rel=""stylesheet"" href=""style.css"" type=""text/css""/></head><body>"
 		      goutput.WriteLine "<div id=""title"">" + App.T.Translate("songs_mode/songs/@caption") + "</div><ul id=""song_list"">"
 		    End If
-		    App.MouseCursor = WatchCursor
+		    App.MouseCursor = System.Cursors.Wait
 		    ProgressWindow.Show
 		    For i = 0 To lst_songs_songs.ListCount - 1
 		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
@@ -10955,7 +10955,7 @@ End
 		    f = Songs.GetFile(fullpath)
 		    
 		    If f <> Nil And f.Exists Then
-		      App.MouseCursor = WatchCursor
+		      App.MouseCursor = System.Cursors.Wait
 		      CurrentSong = SmartML.XDocFromFile(f)
 		      
 		      // Open as Object...
@@ -11091,7 +11091,7 @@ End
 		  CurrentSetIndex = pop_sets_sets.ListIndex
 		  
 		  //
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  lst_set_items.DeleteAllRows
 		  If pop_sets_sets.ListIndex < 0 Or Len(pop_sets_sets.Text) <= 0 Then
 		    App.MouseCursor = Nil
@@ -11637,7 +11637,7 @@ End
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code=8]", oldf.AbsolutePath) ' could not find file
 		      Exit
 		    End If
-		    MainWindow.MouseCursor = WatchCursor
+		    MainWindow.MouseCursor = System.Cursors.Wait
 		    
 		    CurrentSet.DocumentElement.SetAttribute("name", t)
 		    

@@ -1,4 +1,6 @@
-﻿* Add support for displaying the same verse from 2 bible versions (thanks Ovidiu).
+﻿* Replace depreciated WatchCursor with System.Cursors.Wait (thanks Joseph Dol for pointing this out)
+
+* Add support for displaying the same verse from 2 bible versions (thanks Ovidiu).
 
 * Added the ability to start a presentation from a specific set item (JRC)
 

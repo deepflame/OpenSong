@@ -2061,7 +2061,7 @@ End
 		  Dim n As Integer 'EMP 09/05
 		  Dim subtitles() As String 'EMP 12/05
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  App.DebugWriter.Write("Opening PresentSettingsWindow")
 		  Me.BackColor = FillColor
 		  

@@ -1,4 +1,6 @@
-﻿* Replace depreciated WatchCursor with System.Cursors.Wait (thanks Joseph Dol for pointing this out)
+﻿* Remove second present dual-screen menu item in song mode (bug #2734093) (JRC)
+
+* Replace depreciated WatchCursor with System.Cursors.Wait (thanks Joseph Dol for pointing this out)
 
 * Add support for displaying the same verse from 2 bible versions (thanks Ovidiu).
 

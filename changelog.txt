@@ -1,4 +1,42 @@
-﻿* Replace DocumentsFolder and PreferencesFolder with their SpecialFolder counterparts for compatibily with RB 2008 (JRC)
+﻿* Remove second present dual-screen menu item in song mode (bug #2734093) (JRC)
+
+* Replace depreciated WatchCursor with System.Cursors.Wait (thanks Joseph Dol for pointing this out)
+
+* Add support for displaying the same verse from 2 bible versions (thanks Ovidiu).
+
+* Added the ability to start a presentation from a specific set item (JRC)
+
+* Building with the RB 2008 r5.1 compiler
+
+-= 1.5.1 =-
+
+* Updated languages: English, Swedish (thx edvinerdtman), Polish (thx myzzard), Hungarian (thx gygellert), Czech (txh matysek03) and German (thx s.mehrbrodt)
+
+* Fix crash on Linux when starting a presentation
+
+* Fix typo in English translation (bug #2687080) and updated Dutch translation (thx gert, alex)
+
+* Fix issue were OS would always insert one scripture per slide (bug #2628687) (JRC)
+
+* Added package creation script for Linux (only .deb)
+
+* Updated translation for Hungarian (thanx gygellert)
+
+* Added portability mode (use '--portable' or modify the portable installation value in the 'OpenSong Settings/Globals' file (thanx marvap)
+
+* Fix removal of image slide (make it work)
+
+* Fix build problems for Linux target. Fix control order and alignment for MainWindow.
+
+-= 1.5.0 =-
+
+* Added Tim Howard to list of devs in About Window
+
+* Updated translation for Português (Brasil) (thanx pauloneto)
+
+* Show chorus/bridge on the right spot between the verses in title (gerritp)
+
+* Replace DocumentsFolder and PreferencesFolder with their SpecialFolder counterparts for compatibily with RB 2008 (JRC)
 
 * OpenSong now only logs songs which the user actually displays (JRC)
 

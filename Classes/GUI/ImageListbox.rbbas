@@ -123,6 +123,20 @@ Inherits Listbox
 		End Function
 	#tag EndEvent
 
+	#tag Event
+		Sub GotFocus()
+		  isFocused = True
+		  GetFocus()
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub LostFocus()
+		  isFocused = False
+		  LostFocus()
+		End Sub
+	#tag EndEvent
+
 
 	#tag Method, Flags = &h0
 		Sub AddImage(image as StyleImage)
@@ -179,6 +193,12 @@ Inherits Listbox
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function HasFocus() As Boolean
+		  Return self.isFocused
+		End Function
+	#tag EndMethod
+
 
 	#tag Hook, Flags = &h0
 		Event DragOverRow(x As Integer, y As Integer, obj As DragItem, action As Integer, row as Integer) As Boolean
@@ -186,6 +206,14 @@ Inherits Listbox
 
 	#tag Hook, Flags = &h0
 		Event DropRowObject(obj As DragItem, action As Integer, row as Integer)
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event GetFocus()
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event LostFocus()
 	#tag EndHook
 
 
@@ -201,8 +229,36 @@ Inherits Listbox
 		Private currentDropRow As Integer
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private isFocused As Boolean = False
+	#tag EndProperty
+
 
 	#tag ViewBehavior
+		#tag ViewProperty
+			Name="TabIndex"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabStop"
+			Visible=true
+			Group="Position"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Border"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
@@ -221,12 +277,6 @@ Inherits Listbox
 			Name="Super"
 			Visible=true
 			Group="ID"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ControlOrder"
-			Visible=true
-			Group="Position"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty

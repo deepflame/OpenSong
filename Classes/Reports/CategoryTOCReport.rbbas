@@ -46,7 +46,7 @@ Inherits TOCReport
 		  CategoryAlign = "left"
 		  ReportName = App.T.Translate("print/categorized/@caption")
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  Status = PrintTOCPages(Categorized, MyPages, Zoom)
 		  App.MouseCursor = Nil
 		  If Not Status Then
@@ -116,7 +116,7 @@ Inherits TOCReport
 		  //
 		  songCount = UBound(Songs) + 1
 		  
-		  App.MouseCursor = WatchCursor  //We may be here awhile...
+		  App.MouseCursor = System.Cursors.Wait  //We may be here awhile...
 		  ClearArray(ThemesList)
 		  ThemesProcessed = False
 		  SongsProcessed = False
@@ -193,7 +193,7 @@ Inherits TOCReport
 		    If Not ProcessSongs Then Return False
 		  End If
 		  
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  
 		  // Invalidate the Categorized array
 		  ClearArray(Categorized)

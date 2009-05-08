@@ -261,7 +261,7 @@ Protected Module Globals
 			Name="Index"
 			Visible=true
 			Group="ID"
-			InitialValue="-2147483648"
+			InitialValue="2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -288,7 +288,6 @@ Protected Module Globals
 			Name="CurrentSongPickerFolder"
 			Group="Behavior"
 			Type="String"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

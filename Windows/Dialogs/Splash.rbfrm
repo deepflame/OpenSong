@@ -2,44 +2,48 @@
 Begin Window Splash
    BackColor       =   16777215
    Backdrop        =   0
-   BalloonHelp     =   ""
-   CloseButton     =   "True"
-   Composite       =   "False"
+   CloseButton     =   True
+   Composite       =   False
    Frame           =   4
-   FullScreen      =   "False"
-   HasBackColor    =   "False"
+   FullScreen      =   False
+   HasBackColor    =   False
    Height          =   300
-   ImplicitInstance=   "True"
-   LiveResize      =   "False"
+   ImplicitInstance=   True
+   LiveResize      =   False
    MacProcID       =   0
    MaxHeight       =   32000
-   MaximizeButton  =   "True"
+   MaximizeButton  =   True
    MaxWidth        =   32000
    MenuBar         =   0
-   MenuBarVisible  =   "True"
+   MenuBarVisible  =   True
    MinHeight       =   300
-   MinimizeButton  =   "True"
+   MinimizeButton  =   True
    MinWidth        =   400
    Placement       =   2
-   Resizeable      =   "True"
+   Resizeable      =   True
    Title           =   "OpenSong"
-   Visible         =   "True"
+   Visible         =   True
    Width           =   400
    Begin Timer closeTimer
+      BehaviorIndex   =   0
       ControlOrder    =   0
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   32
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Left            =   20
+      LockedInPosition=   False
       Mode            =   2
       Period          =   1000
+      TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
       Top             =   256
-      Visible         =   "True"
+      Visible         =   True
       Width           =   32
+      BehaviorIndex   =   0
    End
 End
 #tag EndWindow
@@ -56,7 +60,7 @@ End
 	#tag Event
 		Sub Open()
 		  App.SplashShowing = True
-		  App.MouseCursor = WatchCursor
+		  App.MouseCursor = System.Cursors.Wait
 		  secondsOpen = 0
 		  closeTimer.Reset
 		  closeTimer.Enabled = True

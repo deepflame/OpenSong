@@ -1,5 +1,4 @@
 Type=Desktop
-RBProjectVersion=2008.051
 FileTypeSet=FileTypes;FileTypes.rbbas;&h45B5FE02;&h0;false
 FileTypeSet=ImageFileTypes;ImageFileTypes.rbbas;&h37D50FFF;&h0;false
 Class=App;App.rbbas;&hBBC29220;&h0;false
@@ -200,6 +199,9 @@ Class=SmartSplitter;Classes/GUI/SmartSplitter.rbbas;&hBB74F85B;&h2F379AB5;false
 Class=CanvasSmartSplitterDebugger;Classes/GUI/CanvasSmartSplitterDebugger.rbbas;&hBBAA2315;&h2F379AB5;false
 Class=StyleImage;Classes/Entities/StyleImage.rbbas;&h7297B7FF;&h6B8E3AF0;false
 Class=ImageListbox;Classes/GUI/ImageListbox.rbbas;&h28B187FF;&h2F379AB5;false
+Module=Powerpoint;Classes/Utilities/Powerpoint.rbbas;&h59E90FFF;&hBD47E01A;false
+Picture=powerpoint_pic;Images/powerpoint_pic.jpg;&h3C1A5FFF;&hBCCC58C6;false;0;&h0
+Picture=powerpoint_mask;Images/powerpoint_mask.jpg;&h7D32EFFF;&hBCCC58C6;false;0;&h0
 AppMenuBar=MainMenu
 MajorVersion=1
 MinorVersion=5

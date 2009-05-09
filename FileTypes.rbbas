@@ -59,4 +59,13 @@
 		Name=WAV Files (*.wav)
 	#tag EndFileType
 
+	#tag FileType
+		CodeName=PowerpointFiles
+		Extension=.ppt; .pptx;
+		Flags=&h0
+		MacCreator=
+		MacType=
+		Name=Powerpoint Files
+	#tag EndFileType
+
 #tag EndFileTypeSet

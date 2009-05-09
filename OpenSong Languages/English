@@ -172,6 +172,7 @@
       <style caption="(style)">-- Change Style --</style>
       <revert caption="(style)">-- Revert Style --</revert>
       <defaultstyle caption="(style)">-- Exported Style --</defaultstyle>
+      <external caption="(external)" />
     </items>
     <untitled caption="Untitled"/>
     <errors>

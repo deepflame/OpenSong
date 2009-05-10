@@ -44,6 +44,8 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockTop         =   "True"
       Scope           =   0
       TabPanelIndex   =   0
+      TextFont        =   "System"
+      TextSize        =   0
       Top             =   -1
       UseFocusRing    =   "False"
       Visible         =   True
@@ -51,6 +53,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       BehaviorIndex   =   0
       Begin Timer timerAdvance
          ControlOrder    =   1
+         Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
          Left            =   248
@@ -58,11 +61,15 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Period          =   10000
          Scope           =   0
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   248
+         Width           =   32
          BehaviorIndex   =   1
       End
       Begin Timer timerTransition
          ControlOrder    =   2
+         Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
          Left            =   204
@@ -70,7 +77,10 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Period          =   125
          Scope           =   0
          TabPanelIndex   =   0
+         TextFont        =   "System"
+         TextSize        =   0
          Top             =   248
+         Width           =   32
          BehaviorIndex   =   2
       End
    End
@@ -573,7 +583,7 @@ End
 		  ElseIf Lowercase(Key) = "m" Then
 		    Return DoSwapFullScreen
 		  Elseif Lowercase(Key) = "e" Then 'gp
-		    Exporttohtml(false,true)
+		    Exporttohtml(false,true, true)
 		    return true
 		  Else
 		    Return False
@@ -1343,7 +1353,7 @@ End
 		  else // No prompt before exit
 		    Close
 		  end if
-		  
+		  Exporttohtml(false,true, false)
 		  return true
 		  '--End
 		End Function
@@ -1731,16 +1741,18 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub ExportToHtml(aBegin as boolean = false, aEinde as boolean = false)
+		Protected Sub ExportToHtml(aBegin as boolean = false, aHtml as boolean = false, aExecute as boolean = false)
 		  'gp start gpgpgpgpgp
 		  Dim f As FolderItem
 		  Dim TempDir, TempDir2, TempFile As FolderItem
 		  Dim TStream As TextOutputStream
 		  Dim thisshell As Shell
+		  static maxslide as integer
 		  dim i as integer
 		  try
-		    TempDir = TemporaryFolder()
-		    tempdir = tempdir.Child("OpensongExport")
+		    'TempDir = TemporaryFolder()
+		    'tempdir = tempdir.Child("OpensongExport")
+		    tempdir = app.AppDocumentsFolder.Child("OpensongExport")
 		    tempdir.CreateAsFolder
 		    tempdir2 = tempdir.Child(currentsetname)
 		    tempdir2.CreateAsFolder
@@ -1748,37 +1760,47 @@ End
 		      for i =  tempdir2.Count downto 1
 		        tempdir2.TrueItem( i ).delete
 		      next
+		      maxslide = 0
 		    else
-		      if aeinde then
+		      if currentslide > maxslide then
+		        maxslide = currentslide
+		      end if
+		      if aHtml  then
 		        TempFile = TempDir.Child(currentsetname+".html")
 		        TStream=tempfile.CreateTextFile
 		        TStream.WriteLine "<html><head>"
 		        TStream.WriteLine "<title>"+currentsetname+"</title></head>"
 		        TStream.WriteLine "<body>"
-		        for i = 1 to currentSlide
+		        for i = 1 to maxslide
 		          TStream.WriteLine "<img HEIGHT='225'  WIDTH='300' name='dia "+str(i)+ "'  src="+chr(34)+currentsetname +"\"  + right("000"+ str(i),3) + "opensong.jpg"+chr(34)+">"
 		        next
 		        TStream.WriteLine "</body></html>"
 		        TStream.Close
 		        TStream = nil
-		        thisshell =New Shell
-		        thisshell.TimeOut = 20000
-		        thisshell.mode = 1
-		        thisshell.Execute (TempFile.ShellPath)
-		        thisshell = nil
-		        thisshell =New Shell
-		        'msgbox(App.AppFolder.Child("ftpupload.bat").URLPath )
-		        if App.AppFolder.Child("ftpupload.bat").exists then
-		          thisshell.Execute ( "start "+App.AppFolder.Child("ftpupload.bat").URLPath+" "+ TempFile.Name + " "+currentsetname )
-		        end if
 		        
-		        thisshell = nil
 		      else
 		        TempFile = TempDir2.Child(right("000"+ str(currentSlide),3) + "opensong.jpg")
 		        TempFile.SaveAsPicture (currentpicture, FolderItem.SaveAsJPEG)
 		        TempFile = App.DocsFolder.Child("opensong.jpg")
 		        TempFile.SaveAsPicture (currentpicture, FolderItem.SaveAsJPEG)
 		      end if
+		      
+		    end if
+		    
+		    
+		    if aExecute then
+		      thisshell =New Shell
+		      thisshell.TimeOut = 20000
+		      thisshell.mode = 1
+		      thisshell.Execute (TempFile.ShellPath)
+		      thisshell = nil
+		      thisshell =New Shell
+		      'msgbox(App.AppFolder.Child("ftpupload.bat").URLPath )
+		      if App.AppFolder.Child("ftpupload.bat").exists then
+		        thisshell.Execute ( "start "+App.AppFolder.Child("ftpupload.bat").URLPath+" "+ TempFile.Name + " "+currentsetname )
+		      end if
+		      
+		      thisshell = nil
 		    end if
 		  exception err
 		  end

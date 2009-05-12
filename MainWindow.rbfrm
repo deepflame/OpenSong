@@ -8210,7 +8210,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = 1)
+		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = 0)
 		  Dim i As Integer
 		  Dim lastType As String
 		  'this is our working copy of the set's XML Doc

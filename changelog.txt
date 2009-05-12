@@ -1,4 +1,6 @@
-﻿* Remove second present dual-screen menu item in song mode (bug #2734093) (JRC)
+﻿* Fix issue were presentation was not starting on the first item (item list is zero-based, doh ;) (JRC)
+
+* Remove second present dual-screen menu item in song mode (bug #2734093) (JRC)
 
 * Replace depreciated WatchCursor with System.Cursors.Wait (thanks Joseph Dol for pointing this out)
 

@@ -640,7 +640,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Present(setDoc As XmlDocument, PresentMode As Integer, Item As Integer = 1)
+		Sub Present(setDoc As XmlDocument, PresentMode As Integer, Item As Integer = 0)
 		  Dim i, j As Integer
 		  Dim slide_groups, slide_group, slide As XmlNode
 		  Dim s As String

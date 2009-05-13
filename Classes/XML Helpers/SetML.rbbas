@@ -162,13 +162,15 @@ Protected Module SetML
 		  slideType = SmartML.GetValue(xslide.Parent.Parent, "@type")
 		  
 		  Select Case slideType
-		  case "external" 
+		  case "external"
 		    dim host as string
 		    host=SmartML.GetValue(xslide.Parent.Parent,"@host",False)
 		    if host = "ppt" then
 		      dim ppfilename as string
 		      ppfilename=SmartML.GetValue(xslide.Parent.Parent,"@filename",False)
 		      Powerpoint.Show(ppfilename)
+		      'don't draw the title or anything else
+		      return
 		    end if
 		    
 		  Case "image"

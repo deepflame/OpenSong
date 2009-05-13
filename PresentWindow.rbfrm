@@ -2,98 +2,86 @@
 Begin Window PresentWindow Implements ScriptureReceiver
    BackColor       =   0
    Backdrop        =   0
-   CloseButton     =   False
-   Composite       =   False
+   BalloonHelp     =   ""
+   CloseButton     =   "False"
+   Composite       =   "False"
    Frame           =   0
-   FullScreen      =   False
-   HasBackColor    =   True
+   FullScreen      =   "False"
+   HasBackColor    =   "True"
    Height          =   300
-   ImplicitInstance=   True
-   LiveResize      =   False
+   ImplicitInstance=   "True"
+   LiveResize      =   "False"
    MacProcID       =   1104
    MaxHeight       =   32000
-   MaximizeButton  =   False
+   MaximizeButton  =   "False"
    MaxWidth        =   32000
    MenuBar         =   0
-   MenuBarVisible  =   False
+   MenuBarVisible  =   "False"
    MinHeight       =   64
-   MinimizeButton  =   False
+   MinimizeButton  =   "False"
    MinWidth        =   64
    Placement       =   0
-   Resizeable      =   False
+   Resizeable      =   "False"
    Title           =   "Presentation"
-   Visible         =   False
+   Visible         =   "False"
    Width           =   300
    Begin Canvas cnvSlide
-      AcceptFocus     =   True
-      AcceptTabs      =   False
-      AutoDeactivate  =   True
+      AcceptFocus     =   "True"
+      AcceptTabs      =   "False"
+      AutoDeactivate  =   "True"
       Backdrop        =   0
-      BehaviorIndex   =   0
       ControlOrder    =   0
       Enabled         =   True
-      EraseBackground =   True
+      EraseBackground =   "True"
       Height          =   302
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   -1
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   True
-      LockTop         =   True
-      TabIndex        =   0
+      LockBottom      =   "True"
+      LockLeft        =   "True"
+      LockRight       =   "True"
+      LockTop         =   "True"
+      Scope           =   0
       TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   -1
-      UseFocusRing    =   False
+      UseFocusRing    =   "False"
       Visible         =   True
       Width           =   302
       BehaviorIndex   =   0
       Begin Timer timerAdvance
-         BehaviorIndex   =   1
          ControlOrder    =   1
-         Enabled         =   True
-         Height          =   32
-         Index           =   2147483648
-         InitialParent   =   "cnvSlide"
+         Index           =   -2147483648
          Left            =   248
-         LockedInPosition=   False
          Mode            =   0
          Period          =   10000
-         TabIndex        =   0
+         Scope           =   0
          TabPanelIndex   =   0
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   248
-         Visible         =   True
-         Width           =   32
          BehaviorIndex   =   1
       End
       Begin Timer timerTransition
-         BehaviorIndex   =   2
          ControlOrder    =   2
-         Enabled         =   True
-         Height          =   32
-         Index           =   2147483648
-         InitialParent   =   "cnvSlide"
+         Index           =   -2147483648
          Left            =   204
-         LockedInPosition=   False
          Mode            =   0
          Period          =   125
-         TabIndex        =   1
+         Scope           =   0
          TabPanelIndex   =   0
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   248
-         Visible         =   True
-         Width           =   32
          BehaviorIndex   =   2
+      End
+      Begin Timer timer_powerpoint_check
+         ControlOrder    =   3
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   160
+         Mode            =   0
+         Period          =   500
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   248
+         BehaviorIndex   =   3
       End
    End
 End
@@ -936,6 +924,11 @@ End
 		  curslideTransition = SetML.GetSlideTransition(slide)
 		  
 		  Profiler.EndProfilerEntry'
+		  
+		  if Powerpoint.PowerpointActive then 
+		    'powerpoint is active, don't do any more drawing
+		    return
+		  end if
 		  
 		  ' === Setup CurrentPicture based on Mode ===
 		  Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::CurrentPicture"
@@ -2147,6 +2140,26 @@ End
 		  End If
 		  
 		  cnvSlide.Refresh False
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events timer_powerpoint_check
+	#tag Event
+		Sub Action()
+		  if PowerPoint.PowerPointActive=false then
+		    
+		    if PresentWindow.HelperActive then
+		      App.SetForeground (PresentHelperWindow)
+		    else
+		      App.SetForeground (PresentWindow)
+		    end if
+		    
+		    dim whatever as boolean
+		     whatever=GoNextSection()
+		    
+		    timer_powerpoint_check.Mode=Timer.ModeOff
+		    
+		  end if
 		End Sub
 	#tag EndEvent
 #tag EndEvents

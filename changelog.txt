@@ -1,4 +1,8 @@
-﻿* Fix issue were presentation was not starting on the first item (item list is zero-based, doh ;) (JRC)
+﻿* No longer call HeapSort if we are filling a listBox as the array isn't used and doesn't need to be sorted. (TH)
+
+* No longer HeapSort twice if running on Mac. (TH)
+
+* Fix issue were presentation was not starting on the first item (item list is zero-based, doh ;) (JRC)
 
 * Remove second present dual-screen menu item in song mode (bug #2734093) (JRC)
 

@@ -616,6 +616,9 @@ End
 		  '--
 		  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
 		  End If
+		  
+		  Loading=false
+		  
 		  If Globals.CurrentSongPickerFolder = "" Then
 		    pop_select_folder.ListIndex = 0
 		  Else
@@ -629,7 +632,10 @@ End
 		  
 		  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
+		  
+		  
 		  lst_all_songs.ListIndex = 0
+		  
 		  edt_quick_lookup.SetFocus()
 		End Sub
 	#tag EndEvent
@@ -713,6 +719,10 @@ End
 		Protected PresentationOrder As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		Loading As boolean = true
+	#tag EndProperty
+
 
 	#tag Constant, Name = kListColumnPath, Type = Double, Dynamic = False, Default = \"1", Scope = Public
 	#tag EndConstant
@@ -732,10 +742,17 @@ End
 		  // Updated to show a second column with the folder name
 		  // Won't show if there is only one folder in the list
 		  //--
+		  
+		  if Loading then Return
+		  
 		  Dim multipleFolders As Boolean = False
+		  
 		  Dim lastFolder As String
+		  lst_all_songs.Visible=false
 		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
 		  End If
+		  lst_all_songs.Visible=true
+		  
 		  For i As Integer = 0 To lst_all_songs.ListCount - 1
 		    lst_all_songs.Cell(i, kListColumnPath) = _
 		    StringUtils.Chop(lst_all_songs.CellTag(i, kListColumnSong).StringValue, "/")

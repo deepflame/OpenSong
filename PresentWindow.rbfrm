@@ -52,6 +52,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Begin Timer timerAdvance
          ControlOrder    =   1
          Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
          Left            =   248
          Mode            =   0
          Period          =   10000
@@ -63,6 +64,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Begin Timer timerTransition
          ControlOrder    =   2
          Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
          Left            =   204
          Mode            =   0
          Period          =   125
@@ -628,7 +630,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Present(setDoc As XmlDocument, PresentMode As Integer, Item As Integer = 1)
+		Sub Present(setDoc As XmlDocument, PresentMode As Integer, Item As Integer = 0)
 		  Dim i, j As Integer
 		  Dim slide_groups, slide_group, slide As XmlNode
 		  Dim s As String
@@ -925,7 +927,7 @@ End
 		  
 		  Profiler.EndProfilerEntry'
 		  
-		  if Powerpoint.PowerpointActive then 
+		  if Powerpoint.PowerpointActive then
 		    'powerpoint is active, don't do any more drawing
 		    return
 		  end if
@@ -2155,7 +2157,7 @@ End
 		    end if
 		    
 		    dim whatever as boolean
-		     whatever=GoNextSection()
+		    whatever=GoNextSection()
 		    
 		    timer_powerpoint_check.Mode=Timer.ModeOff
 		    

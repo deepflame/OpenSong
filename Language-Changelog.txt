@@ -1,3 +1,4 @@
+presentation_settings/misc/use_viewer
 sets_mode/items/external
 sets_mode/current_item/presentitem/*
 

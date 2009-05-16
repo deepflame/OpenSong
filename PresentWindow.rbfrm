@@ -37,14 +37,14 @@ Begin Window PresentWindow Implements ScriptureReceiver
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   -1
+      Left            =   -2
       LockBottom      =   "True"
       LockLeft        =   "True"
       LockRight       =   "True"
       LockTop         =   "True"
       Scope           =   0
       TabPanelIndex   =   0
-      Top             =   -1
+      Top             =   -2
       UseFocusRing    =   "False"
       Visible         =   True
       Width           =   302
@@ -53,37 +53,46 @@ Begin Window PresentWindow Implements ScriptureReceiver
          ControlOrder    =   1
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
-         Left            =   248
+         Left            =   247
          Mode            =   0
          Period          =   10000
          Scope           =   0
          TabPanelIndex   =   0
-         Top             =   248
+         Top             =   247
          BehaviorIndex   =   1
       End
       Begin Timer timerTransition
          ControlOrder    =   2
          Index           =   -2147483648
-         InitialParent   =   "cnvSlide"
-         Left            =   204
+         Left            =   203
          Mode            =   0
          Period          =   125
          Scope           =   0
          TabPanelIndex   =   0
-         Top             =   248
+         Top             =   247
          BehaviorIndex   =   2
       End
-      Begin Timer timer_powerpoint_check
+      Begin Timer timerPowerpointCloseCheck
          ControlOrder    =   3
          Index           =   -2147483648
-         InitialParent   =   "cnvSlide"
-         Left            =   160
+         Left            =   159
          Mode            =   0
          Period          =   500
          Scope           =   0
          TabPanelIndex   =   0
-         Top             =   248
+         Top             =   247
          BehaviorIndex   =   3
+      End
+      Begin Timer timerPPViewer
+         ControlOrder    =   4
+         Index           =   -2147483648
+         Left            =   108
+         Mode            =   0
+         Period          =   500
+         Scope           =   0
+         TabPanelIndex   =   0
+         Top             =   247
+         BehaviorIndex   =   4
       End
    End
 End
@@ -2145,7 +2154,7 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events timer_powerpoint_check
+#tag Events timerPowerpointCloseCheck
 	#tag Event
 		Sub Action()
 		  if PowerPoint.PowerPointActive=false then
@@ -2159,8 +2168,33 @@ End
 		    dim whatever as boolean
 		    whatever=GoNextSection()
 		    
-		    timer_powerpoint_check.Mode=Timer.ModeOff
+		    timerPowerpointCloseCheck.Mode=Timer.ModeOff
 		    
+		  end if
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events timerPPViewer
+	#tag Event
+		Sub Action()
+		  if PowerPoint.PowerPointActive=true then
+		    //we have found a live PPViewer window
+		    //move it to right screen, and to front
+		    Powerpoint.EnsureVisibleWin32
+		    
+		    //stop this timer firing again
+		    timerPPViewer.Mode=Timer.ModeOff
+		    
+		    //start the timer which watches for finishing the presentation 
+		    PresentWindow.timerPowerpointCloseCheck.Mode=Timer.ModeMultiple
+		  else
+		    Powerpoint.WaitingForViewer= Powerpoint.WaitingForViewer + 500
+		    
+		    if Powerpoint.WaitingForViewer >= (30 * 1000) then
+		      //give up
+		      timerPPViewer.Mode=Timer.ModeOff
+		      MsgBox "Timeout waiting for pwoerpoint viewer to open"
+		    end if
 		  end if
 		End Sub
 	#tag EndEvent

@@ -492,6 +492,7 @@
 
     <misc caption="Misc">
       <exit_prompt caption="Prompt when exiting"/>
+      <use_viewer caption="Use Powerpoint Viewer" />
     </misc>
   </presentation_settings>
 

@@ -1,6 +1,8 @@
 presentation_settings/misc/powerpoint_custom
 errors/powerpoint/*
 sets_mode/items/external
+about/web (modified)
+main_menu/help/user_manual
 sets_mode/current_item/presentitem/*
 
 -= Version 1.5.1 =-

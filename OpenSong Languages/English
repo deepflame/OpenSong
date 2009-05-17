@@ -492,7 +492,7 @@
 
     <misc caption="Misc">
       <exit_prompt caption="Prompt when exiting"/>
-      <use_viewer caption="Use Powerpoint Viewer" />
+      <powerpoint_custom caption="Use custom powerpoint command:" />
     </misc>
   </presentation_settings>
 
@@ -1190,6 +1190,14 @@ The OpenSong development team members regret any inconvenience.
     <activity_disabled>Could not load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
     <adding_logentry>Error Adding log entry!</adding_logentry>
     <chars_per_slide>Max characters per slide must be between 1 and 1000.</chars_per_slide>
+    <powerpoint>
+      <ensurewindowvisibleerror>Unable to move powerpoint window or bring it to front</ensurewindowvisibleerror>
+      <getviewerpatherror>Unable to discover path of powerpoint viewer</getviewerpatherror>
+      <generalerror>Unable to show powerpoint file</generalerror>
+      <nosoftware>Unable to find powerpoint or powerpoint viewer, you must either install one of these OR specify a custom command in presentation settings</nosoftware>
+      <errorfullpowerpoint>Unable to show powerpoint using MS Powerpoint</errorfullpowerpoint>
+      <errorppviewer>Unable to show powerpoint using MS Powerpoint Viewer</errorppviewer>
+    </powerpoint>
   </errors>
 
   <xml_errors>

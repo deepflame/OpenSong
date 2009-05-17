@@ -168,6 +168,8 @@ Protected Module SetML
 		    if host = "ppt" then
 		      dim ppfilename as string
 		      ppfilename=SmartML.GetValue(xslide.Parent.Parent,"@filename",False)
+		      'this will test for full powerpoint, or free viewer and show the ppt
+		      'can also use a custom command if specified in presentation settings
 		      Powerpoint.Show(ppfilename)
 		      'don't draw the title or anything else
 		      return

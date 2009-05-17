@@ -1,4 +1,5 @@
-presentation_settings/misc/use_viewer
+presentation_settings/misc/powerpoint_custom
+errors/powerpoint/*
 sets_mode/items/external
 sets_mode/current_item/presentitem/*
 

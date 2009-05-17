@@ -34,12 +34,12 @@ Protected Module Powerpoint
 		  end if
 		  
 		Exception
-		  MsgBox "Error moving powerpoint window"
+		   MsgBox App.T.Translate("errors/powerpoint/ensurewindowvisibleerror")
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub ShowAutomation(filename as string)
+	#tag Method, Flags = &h21
+		Private Sub ShowAutomation(filename as string)
 		  #if TargetWin32 then
 		    App.MouseCursor = System.Cursors.Wait
 		    
@@ -71,21 +71,16 @@ Protected Module Powerpoint
 		    
 		  #endif
 		Exception
-		  MsgBox "Unable to show powerpoint using automation"
+		  MsgBox App.T.Translate("errors/powerpoint/errorfullpowerpoint")
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub ShowViewer(filename as string)
+	#tag Method, Flags = &h21
+		Private Sub ShowViewer(filename as string)
 		  #if TargetWin32
 		    
-		    //is powerpoint viewer installed
-		    //find the path for it
 		    
-		    if ViewerAvailable=false then
-		      MsgBox "Powerpoint viewer not found"
-		      return
-		    end if
+		    //find the viewers path for it
 		    
 		    dim fullcommand as string=GetViewerPath(filename)
 		    
@@ -101,7 +96,7 @@ Protected Module Powerpoint
 		  
 		Exception
 		  
-		  MsgBox "Could not show powerpoint using Powerpoint Viewer"
+		  MsgBox App.T.Translate("errors/powerpoint/errorppviewer")
 		  
 		  
 		End Sub
@@ -129,8 +124,8 @@ Protected Module Powerpoint
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function GetViewerPath(filename as string) As string
+	#tag Method, Flags = &h21
+		Private Function GetViewerPath(filename as string) As string
 		  
 		  'already checked ViewerAvailable
 		  
@@ -145,21 +140,62 @@ Protected Module Powerpoint
 		  return fullcommand
 		  
 		exception
-		  MsgBox "Error finding powerpoint viewer path"
+		   MsgBox App.T.Translate("errors/powerpointgetviewerpatherror")
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Show(filename as string)
-		  dim usePPViewer as boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "powerpoint/@use_viewer",true,false)
+		  dim UseCustomCommand as boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "powerpoint/@usecustomcommand",true,false)
+		  dim customCommand as string =  SmartML.GetValue(App.MyPresentSettings.DocumentElement, "powerpoint/@customcommand",true)
 		  
-		  if usePPViewer then
-		    ShowViewer(filename)
-		  else
-		    ShowAutomation(filename)
+		  if UseCustomCommand=true then
+		    customCommand=customCommand.Replace("%filename%",filename)
+		    dim s as new Shell
+		    S.Execute(customCommand)
+		    return
 		  end if
 		  
+		  if FullPowerpointAvailable then
+		    ShowAutomation(filename)
+		    return
+		  end if
+		  
+		  if ViewerAvailable then
+		    ShowViewer(filename)
+		    return
+		  end if
+		  
+		  'no full powerpoint, or powerpoint viewer, or custom command specified
+		  
+		  MsgBox App.T.Translate("errors/powerpoint/nosoftware")
+		  
+		exception
+		  
+		  MsgBox App.T.Translate("errors/powerpoint/generalerror")
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function FullPowerpointAvailable() As Boolean
+		  #if targetwin32
+		    
+		    dim r as new RegistryItem("HKEY_CLASSES_ROOT\Applications\POWERPNT.EXE\shell\Show\command",false)
+		    //this throws exception if key not found
+		    //so no exception = FOUND!
+		    
+		    return true
+		    
+		  #endif
+		  
+		  //not windows, so not available
+		  return false
+		  
+		Exception ex as  RegistryAccessErrorException
+		  //key not found, so not avilable
+		  return false
+		  
+		End Function
 	#tag EndMethod
 
 
@@ -226,6 +262,12 @@ Protected Module Powerpoint
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WaitingForViewer"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

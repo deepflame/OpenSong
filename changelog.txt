@@ -1,4 +1,6 @@
-﻿* Added link to the online user manual
+﻿* Use CheckBox.Value instead of CheckBox.State (compatibility with RB 2009) (JRC)
+
+* Added link to the online user manual
 
 * No longer call HeapSort if we are filling a listBox as the array isn't used and doesn't need to be sorted. (TH)
 

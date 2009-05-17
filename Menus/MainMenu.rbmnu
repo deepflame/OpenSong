@@ -331,6 +331,12 @@ Begin Menu MainMenu
          MenuModifier = True
          AutoEnable = True
       End
+      Begin MenuItem mnu_user_manual
+         SpecialMenu = 0
+         Text = "Online User Manual"
+         Index = -2147483648
+         AutoEnable = True
+      End
       Begin MenuItem mnu_help_translating
          SpecialMenu = 0
          Text = "Translating OpenSong..."

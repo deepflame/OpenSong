@@ -191,14 +191,9 @@ Protected Module PresentationFactory
 		    'the PPTView path in the main settings
 		    'm_PptViewAvailable = Integer(HostAvailable.No)
 		    
-		    'Detect Microsoft PPTView
-		    'How to detect? Use a configuration setting in the general OS settings and check for existence of the filename, for now...
-		    
-		    Dim PPTViewLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
+		    Dim PPTViewLocation As FolderItem = DetectPPTView()
 		    If Not IsNull(PPTViewLocation) Then
-		      If PPTViewLocation.Exists() Then
-		        m_PptViewAvailable = Integer(HostAvailable.Yes)
-		      End If
+		      m_PptViewAvailable = Integer(HostAvailable.Yes)
 		    End If
 		    
 		    
@@ -319,6 +314,67 @@ Protected Module PresentationFactory
 		  End If
 		  
 		  Return oPres
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function DetectPPTView() As FolderItem
+		  Dim result as FolderItem = Nil
+		  
+		  'Detect Microsoft PPTView
+		  'How to detect? 
+		  
+		  '1. Query the registry if an installation reference is found (only Windows)
+		  '2. Use a configuration setting in the general OS settings and check for existence of the filename
+		  '3. See if PowerPoint is installed and use that in 'simple' mode (only Windows)
+		  
+		  #If TargetWin32
+		    Try
+		      Dim PptViewReg As New RegistryItem("HKEY_CLASSES_ROOT\Applications\pptview.exe\shell\Show\command", False)
+		      Dim command As String=CStr(PptViewReg.DefaultValue)
+		      
+		      'Strip " %1"
+		      command = command.Replace(" ""%1""","")
+		      result = GetFolderItem(command)
+		      If Not result.Exists() Then
+		        result = Nil
+		      End If
+		      
+		    Catch e As  RegistryAccessErrorException
+		      'Key not available
+		    End Try
+		  #EndIf
+		  
+		  If IsNull( result ) Then
+		    result = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
+		    
+		    If Not IsNull(result) Then
+		      If Not result.Exists() Then
+		        result = Nil
+		      End If
+		    End If
+		  End If
+		  
+		  #If TargetWin32
+		    If IsNull( result ) Then
+		      Try
+		        Dim PptFullReg As New RegistryItem("HKEY_CLASSES_ROOT\Applications\POWERPNT.EXE\shell\Show\command", False)
+		        Dim command As String=CStr(PptFullReg.DefaultValue)
+		        
+		        'Strip " %1"
+		        command = command.Replace(" ""%1""","")
+		        result = GetFolderItem(command)
+		        If Not result.Exists() Then
+		          result = Nil
+		        End If
+		        
+		      Catch e As  RegistryAccessErrorException
+		        'Key not available
+		      End Try
+		    End If
+		  #EndIf
+		  
+		  Return result
 		End Function
 	#tag EndMethod
 

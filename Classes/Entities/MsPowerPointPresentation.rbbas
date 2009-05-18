@@ -113,6 +113,8 @@ Implements iPresentation
 		      If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
 		      
 		      ppWnd = m_oPpt.SlideShowSettings.Run
+		      ppWnd.Activate()
+		      
 		      If Not IsNull( ppWnd ) Then
 		        ppWnd.Left = Screen(presentScreen).Left * pixelsToPoints
 		        ppWnd.Top = Screen(presentScreen).Top * pixelsToPoints

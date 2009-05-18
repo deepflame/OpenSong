@@ -73,6 +73,9 @@ Inherits Application
 		  DebugWriter.Write d.SQLDateTime
 		  d = Nil
 		  AppFolder = GetFolderItem("")
+		  #If DebugBuild Then
+		    AppFolder = AppFolder.Parent()
+		  #EndIf
 		  
 		  //++
 		  // Initialize Factory objects
@@ -1350,12 +1353,12 @@ Inherits Application
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
+			  Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
+			  SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
 			End Set
 		#tag EndSetter
 		ExcludeBackgroundsImages As Boolean

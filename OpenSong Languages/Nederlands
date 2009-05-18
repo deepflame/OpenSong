@@ -214,6 +214,7 @@
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Activiteit" />
       <ins_image caption="Toevoegen">Voegt een afbeelding toe aan het project. Hiermee kunnen dia-series worden gemaakt die dezelfde titel-, subtitel-, stijl-, en automatische overgangsinstellingen delen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_image>
+      <imp_image caption="Importeren">Laadt alle beschikbare dia's uit een presentatie en voegt deze toe als afbeeldingen.</imp_image>
       <del_image caption="Verwijderen">Verwijder de geselecteerde afbeelding.</del_image>
       <move_up caption="Naar boven">Verplaatst de geselecteerde afbeelding naar het begin van de dia.</move_up>
       <move_down caption="Naar beneden">Verplaatst de geselecteerde afbeelding naar het einde van de dia.</move_down>
@@ -229,8 +230,7 @@
     <header caption="Wijzigen extern programma dia"/>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <application caption="Toepassing"/>
-    <powerpoint caption="PowerPoint">Gebruik deze dia om een persentatie te tonen met behulp van Microsoft PowerPoint.</powerpoint>
-    <impress caption="Impress">Gebruik deze dia om een persentatie te tonen met behulp van het gratis en open source OpenOffice.org Impress.</impress>
+    <presentation caption="PowerPoint">Gebruik deze dia om een persentatie te tonen met behulp van Microsoft PowerPoint of het gratis en open source OpenOffice.org Impress.</presentation>
     <videolan caption="Videolan">Gebruik deze dia om een mediabestand af te spelen met de veelzijdige en open source media speler Videolan (VLC).</videolan>
     <application caption="Toepassing">Gebruik deze dia om een extern programma te starten door middel van een commandoregel.</application>
     <presentation_settings caption="Presentatie instellingen">
@@ -358,7 +358,7 @@
   </main_menu>
 
   <general_settings title="Algemene instellingen">
-    <general caption="Algemeen" head1="Basis" head2="Extra">
+    <general caption="Algemeen" head1="Basis" head2="Bestandslocaties" head3="Systeem">
       <ccli caption="CCLI Licentie #"/>
       <version_check caption="Controleer voor nieuwere versies bij starten."/>
       <language caption="Taal"/>
@@ -411,7 +411,11 @@
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
     </startmode>
-    </general_settings>
+    <applications caption="Externe programma's">
+      <pptview caption="Locatie van de Powerpoint Viewer"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+  </general_settings>
 
   <print_settings title="Afdruk instellingen">
     <tabs head3="Marges" head1="Lettertype" head2="Layout"/>
@@ -968,6 +972,11 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <no_headers>Geen header data gevonden. Controleer de zoekopdracht en/of uw CCLI gebruikers-ID/wachtwoord.</no_headers>
       <no_connect>Kan geen verbinding maken met CCLI. Probeer het later nog eens.</no_connect>
       <already_exists>Lied bestaat al.</already_exists>
+      <presentations>
+        <nohost>Er kan geen programma gevonden worden om een presentatie te laden. Installeer OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
+        <unsupported_feature>Het programma '%1' ondersteund deze bewerking niet.</unsupported_feature>
+        <load_failed>The presentatie '%1' kon niet worden geopend.</load_failed>
+      </presentations>
     </errors>
   </import_from_ccli>
 
@@ -1122,6 +1131,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <set_changed caption="Het huidige project is gewijzigd, met het opgeslagen worden?"/>
     <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
     <activity_log caption="Moeten de liederen die in deze presentatie worden gebruikt aan het lied gebruik logboek worden toegevoegd? Dit heeft ook betrekking op liederen die tijdens het presenteren worden toegevoegd!"/>
+    <import_presentation caption="Presentatie afbeeldingen importeren">Selecteer de presentatie die als afbeeldingen moet worden geïmporteerd.</import_presentation>
   </questions>
 
   <about>

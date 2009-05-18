@@ -1,4 +1,11 @@
+errors/presentations
+general_settings/applications
+general_settings/general (Modified)
+questions/import_presentation
+image_slide/imp_image
 external_slide/*
+
+-= Version 1.5 =-
 sets_mode/current_item/paste
 style_tabs/properties/apply
 shared/apply

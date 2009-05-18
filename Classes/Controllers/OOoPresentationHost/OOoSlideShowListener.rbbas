@@ -61,7 +61,7 @@
 		#tag EndMethod
 
 		#tag Method, Flags = &h0
-			Sub dispose(Source As OLEObject)
+			Sub disposing(Source As OLEObject)
 			  
 			End Sub
 		#tag EndMethod

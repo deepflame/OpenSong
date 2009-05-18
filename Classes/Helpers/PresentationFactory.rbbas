@@ -6,7 +6,7 @@ Protected Module PresentationFactory
 		  Dim oPres As iPresentation = Nil
 		  Dim createdPres As iPresentation
 		  
-		  Dim presFile As FolderItem = New FolderItem( presentationFilename )
+		  Dim presFile As New FolderItem( presentationFilename )
 		  If presFile.Exists() Then
 		    
 		    For Each createdPres In m_PresentationList
@@ -15,7 +15,7 @@ Protected Module PresentationFactory
 		      End If
 		    Next createdPres
 		    
-		    if IsNull( oPres ) Then
+		    If IsNull( oPres ) Then
 		      If Host = PresentationHost.PowerPoint Then
 		        
 		        oPres = CreateMsPowerPointPresentation( presFile )
@@ -26,22 +26,30 @@ Protected Module PresentationFactory
 		        
 		      ElseIf Host = PresentationHost.OpenOffice Then
 		        
-		        oPres = CreateMsPowerPointPresentation( presFile )
+		        oPres = CreateOOoImpressPresentation( presFile )
 		        
 		      Else
 		        
-		        'Autodetect host to use. Order of preference is
-		        '1. File type associated host (prefer PowerPoint over PPTView
-		        '2. OpenOffice (can open both PowerPoint and Impess and others)
+		        If PowerPointAvailable(False) And (presFile.Type = PresentationFileTypes.PPTFiles.Name) Then
+		          
+		          oPres = CreateMsPowerPointPresentation( presFile )
+		          
+		        ElseIf PPTViewAvailable() And (presFile.Type = PresentationFileTypes.PPTFiles.Name) Then
+		          
+		          oPres = CreateMsPPTViewPresentation( presFile )
+		          
+		        ElseIf OpenOfficeAvailable() And (presFile.Type = PresentationFileTypes.ODPFiles.Name) Then
+		          
+		          oPres = CreateOOoImpressPresentation( presFile )
+		          
+		        End If
 		        
-		        'Todo
-		        
-		      End If
-		      
-		      If Not IsNull( oPres ) Then
-		        Call RegisterPresentation( oPres )
+		        If Not IsNull( oPres ) Then
+		          Call RegisterPresentation( oPres )
+		        End If
 		      End If
 		    End If
+		    
 		  End If
 		  
 		  Return oPres
@@ -178,11 +186,21 @@ Protected Module PresentationFactory
 		Function PPTViewAvailable() As Boolean
 		  If m_PptViewAvailable = Integer(HostAvailable.Unknown) Then
 		    
+		    'We leave the initial value to Unknown to make sure this is tested every time.
+		    'This is required to make PPTView detection work immediately after a change of
+		    'the PPTView path in the main settings
+		    'm_PptViewAvailable = Integer(HostAvailable.No)
+		    
 		    'Detect Microsoft PPTView
+		    'How to detect? Use a configuration setting in the general OS settings and check for existence of the filename, for now...
 		    
-		    m_PptViewAvailable = Integer(HostAvailable.No)
+		    Dim PPTViewLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
+		    If Not IsNull(PPTViewLocation) Then
+		      If PPTViewLocation.Exists() Then
+		        m_PptViewAvailable = Integer(HostAvailable.Yes)
+		      End If
+		    End If
 		    
-		    'How to detect? Use a configuration setting in the general OS settings and check for existence of the filename??
 		    
 		  End If
 		  
@@ -190,8 +208,8 @@ Protected Module PresentationFactory
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function CreateMsPowerPointPresentation(presentationFile As FolderItem) As MsPowerPointPresentation
+	#tag Method, Flags = &h21
+		Private Function CreateMsPowerPointPresentation(presentationFile As FolderItem) As MsPowerPointPresentation
 		  Dim oPres As MsPowerPointPresentation = Nil
 		  Dim oPpt As PowerPointPresentation = Nil
 		  
@@ -216,8 +234,8 @@ Protected Module PresentationFactory
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function CreateOOoImpressPresentation(presentationFile As FolderItem) As OooImpressPresentation
+	#tag Method, Flags = &h21
+		Private Function CreateOOoImpressPresentation(presentationFile As FolderItem) As OooImpressPresentation
 		  Dim oPres As OooImpressPresentation = Nil
 		  Dim oImpressDoc As OLEObject = Nil
 		  
@@ -228,28 +246,56 @@ Protected Module PresentationFactory
 		      Dim oDesktop as OLEObject = oServiceManager.createInstance("com.sun.star.frame.Desktop")
 		      If Not IsNull( oDesktop ) Then
 		        
-		        Dim aNoArgs() as Variant
-		        Dim aArgs() As Variant
+		        #If RBVersion >= 2009 Then
+		          
+		          Dim aArgs() As Variant
+		          
+		          'See http://api.openoffice.org/docs/common/ref/com/sun/star/frame/XComponentLoader.html
+		          
+		          Dim olePropHide As OLEObject = oServiceManager.Bridge_GetStruct("com.sun.star.beans.PropertyValue")
+		          olePropHide.Name = "Hidden"
+		          olePropHide.Value = True
+		          aArgs.Append( olePropHide )
+		          
+		          Dim olePropRO As OLEObject = oServiceManager.Bridge_GetStruct("com.sun.star.beans.PropertyValue")
+		          olePropRO.Name = "ReadOnly"
+		          olePropRO.Value = True
+		          aArgs.Append( olePropRO )
+		          
+		          Dim olePropSilent As OLEObject = oServiceManager.Bridge_GetStruct("com.sun.star.beans.PropertyValue")
+		          olePropSilent.Name = "Silent"
+		          olePropSilent.Value = True
+		          aArgs.Append( olePropSilent )
+		          
+		          oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, aArgs) '"file:///" + presentationFile.AbsolutePath().ReplaceAll("\", "/").ReplaceAll(":", "|").ReplaceAll(" ", "%20")
+		          
+		        #Else
+		          
+		          Dim aNoArgs() as Variant
+		          Dim param as new OLEParameter
+		          
+		          'This works
+		          param.Type = OLEParameter.ParamTypeString 'or something else?
+		          param.ValueArray = aNoArgs
+		          
+		          oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, param) '"file:///" + presentationFile.AbsolutePath().ReplaceAll("\", "/").ReplaceAll(":", "|").ReplaceAll(" ", "%20")
+		          
+		        #EndIf
 		        
-		        'See http://api.openoffice.org/docs/common/ref/com/sun/star/frame/XComponentLoader.html
-		        
-		        Dim oleArg As OLEObject = oServiceManager.Bridge_GetStruct("com.sun.star.beans.PropertyValue")
-		        oleArg.Name = "Hidden"
-		        oleArg.Value = True
-		        aArgs.Append( oleArg )
-		        
-		        Dim param as new OLEParameter
-		        
-		        'This works
-		        param.Type = OLEParameter.ParamTypeString 'or something else?
-		        param.ValueArray = aNoArgs
-		        
-		        'This does not work
-		        'param.Type = 0 'Use the variant (sub)type
-		        'param.ValueArray = aArgs
-		        
-		        oImpressDoc = oDesktop.loadComponentFromURL("file:///" + presentationFile.AbsolutePath().ReplaceAll("\", "/").ReplaceAll(":", "|").ReplaceAll(" ", "%20"), "_blank", 0, param)
 		        If Not IsNull( oImpressDoc ) Then
+		          
+		          Dim oController As OLEObject = oImpressDoc.getCurrentController()
+		          If Not IsNull( oController ) Then
+		            Dim oFrame As OLEObject = oController.getFrame()
+		            If Not IsNull( oFrame ) Then
+		              Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
+		              If Not IsNull( oComponentWin ) Then
+		                'Setting "Hidden" does not work for some reason...
+		                oComponentWin.setVisible( False )
+		              End If
+		            End If
+		          End If
+		          
 		          oPres = New OOoImpressPresentation( oImpressDoc )
 		        End If
 		        
@@ -259,6 +305,18 @@ Protected Module PresentationFactory
 		  Catch e As RuntimeException
 		    'prevent an application crash, inspect e for debugging.
 		  End Try
+		  
+		  Return oPres
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function CreateMsPPTViewPresentation(presentationFile As FolderItem) As MsPPTViewPresentation
+		  Dim oPres As MsPPTViewPresentation = Nil
+		  
+		  If presentationFile.Exists() Then
+		    oPres = New MsPPTViewPresentation( presentationFile )
+		  End If
 		  
 		  Return oPres
 		End Function
@@ -287,10 +345,10 @@ Protected Module PresentationFactory
 
 
 	#tag Enum, Name = PresentationHost, Flags = &h0
-		Automatic
-		  PowerPoint
-		  PowerPointViewer
-		OpenOffice
+		Automatic=0
+		  PowerPoint=1
+		  PowerPointViewer=2
+		OpenOffice=3
 	#tag EndEnum
 
 	#tag Enum, Name = HostAvailable, Flags = &h0

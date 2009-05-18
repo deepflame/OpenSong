@@ -213,10 +213,11 @@
     <store_as_link caption="Do not store the image in the set, use link to the image">Storing images in the set rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Action" />
-    <ins_image caption="Add image">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
-    <del_image caption="Remove image">Removes the currently selected image from the slide.</del_image>
-    <move_up caption="Move up">Moves the currently selected image in the slide closer to the beginning of the slide.</move_up>
-    <move_down caption="Move down">Moves the currently selected image in the slide closer to the end of the slide.</move_down>
+      <ins_image caption="Add">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
+      <imp_image caption="Import">Loads all available slides from a presentation and adds these as image.</imp_image>
+      <del_image caption="Remove">Removes the currently selected image from the slide.</del_image>
+      <move_up caption="Move up">Moves the currently selected image in the slide closer to the beginning of the slide.</move_up>
+      <move_down caption="Move down">Moves the currently selected image in the slide closer to the end of the slide.</move_down>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
     <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
     <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
@@ -229,8 +230,7 @@
     <header caption="External Slide Editor"/>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <application caption="Application"/>
-    <powerpoint caption="PowerPoint">Use this slide to show a presentation using Microsoft PowerPoint.</powerpoint>
-    <impress caption="Impress">Use this slide to show a presentation using the free and open source OpenOffice.org Impress.</impress>
+    <presentation caption="PowerPoint">Use this slide to show a presentation using Microsoft PowerPoint or the free and open source OpenOffice.org Impress.</presentation>
     <videolan caption="Videolan">Use this slide to run a media file using the versatile and open source media player Videolan (VLC).</videolan>
     <application caption="Application">Use this slide to run an external programm by using a command line.</application>
     <presentation_settings caption="Presentation settings">
@@ -357,8 +357,8 @@
     </help>
   </main_menu>
 
-  <general_settings title="General Configuration">
-    <general caption="General" head1="Basic" head2="Special">
+  <general_settings title="General configuration">
+    <general caption="General" head1="Basic" head2="File locations" head3="System">
       <ccli caption="Church CCLI License #"/>
       <version_check caption="Check for latest version at startup"/>
       <language caption="Language"/>
@@ -411,6 +411,10 @@
       <songs caption="Songs"/>
       <sets  caption="Sets"/>
     </startmode>
+    <applications caption="External applications">
+      <pptview caption="Location of Powerpoint Viewer"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+    </applications>
   </general_settings>
 
   <print_settings title="Print Settings">
@@ -966,6 +970,11 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <no_headers>No header data was returned. Please check your search string and/or your CCLI ID/password.</no_headers>
       <no_connect>Could not connect to CCLI. Please try again later.</no_connect>
       <already_exists>Song already exists.</already_exists>
+      <presentations>
+        <nohost>There is no application available to load a presentation. Please install OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
+        <unsupported_feature>The application '%1' does not support this feature.</unsupported_feature>
+        <load_failed>The presentation '%1' could not be opened.</load_failed>
+      </presentations>
     </errors>
   </import_from_ccli>
 
@@ -1120,6 +1129,7 @@ Click on this slide to edit its style.</body>
     <set_changed caption="Current set has been changed, do you want to save?"/>
     <select_docs_folder caption="Select the OpenSong Documents folder">Where should the OpenSong files (songs and sets) be stored?</select_docs_folder>
     <activity_log caption="Would you like the song(s) in this presentation added to the activity log? Note that this applies to songs added on-the-fly as well!"/>
+    <import_presentation caption="Import presentation images">Select the presentation file you want to import the slides from.</import_presentation>
   </questions>
 
   <about>

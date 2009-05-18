@@ -1,4 +1,5 @@
 Type=Desktop
+RBProjectVersion=2009.021
 FileTypeSet=FileTypes;FileTypes.rbbas;&h45B5FE02;&h0;false
 FileTypeSet=ImageFileTypes;ImageFileTypes.rbbas;&h37D50FFF;&h0;false
 FileTypeSet=PresentationFileTypes;PresentationFileTypes.rbbas;&h7AB957FF;&h0;false
@@ -144,6 +145,8 @@ Folder=XML Helpers;Classes/XML Helpers;&hBC9C38AB;&hBC8F0540;false
 Picture=ProgramIcon1288;Images/ProgramIcon128-8.jpg;&hC1AB716D;&hBCCC58C6;false;0;&h0
 Picture=powerpoint_pic;Images/powerpoint_pic.jpg;&h66FC17FF;&hBCCC58C6;false;0;&h0
 Picture=powerpoint_mask;Images/powerpoint_mask.jpg;&h77A06FFF;&hBCCC58C6;false;0;&h0
+Picture=videolan_pic;Images/videolan_pic.jpg;&h7175A7FF;&hBCCC58C6;false;0;&h0
+Picture=videolan_mask;Images/videolan_mask.jpg;&h78A80FFF;&hBCCC58C6;false;0;&h0
 Class=plist;Classes/Preferences/plist.rbbas;&hBBF2A741;&hC1D635E0;false
 Class=plistDict;Classes/Preferences/plistDict.rbbas;&hBBF2A750;&hC1D635E0;false
 Class=prefsPlist;Classes/Preferences/prefsPlist.rbbas;&hC1D6476A;&hC1D635E0;false

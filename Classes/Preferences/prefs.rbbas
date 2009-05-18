@@ -25,6 +25,9 @@ Protected Module prefs
 	#tag Constant, Name = kSongsPreviewWithChords, Type = String, Dynamic = False, Default = \"songs/preview/showchords", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = kPPTViewLocation, Type = String, Dynamic = False, Default = \"pptview_location", Scope = Protected
+	#tag EndConstant
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

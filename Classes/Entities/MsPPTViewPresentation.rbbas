@@ -58,7 +58,7 @@ Implements iPresentation
 		  '(these will just be ignored by PPView97)
 		  '
 		  '* /L -- Read a playlist of files contained within a text file (see below). Example: \pptview.exe /L "Playlist.txt"
-		  '* /S -- Start without splash screen.
+		  '* /S -- Start without splash screen (this means 'show' when used with PowerPoint)
 		  '* /P -- Print the presentation. Example: \pptview.exe /P "Presentation.ppt"
 		  '* /D -- Prompt the Open dialog box to appear when slide show ends.
 		  '* /N# -- Open presentation at a specified slide number "#". Example: /pptview.exe /n5 "presentation.ppt" would open at slide 5.
@@ -68,7 +68,7 @@ Implements iPresentation
 		    If Not IsNull(presentation) Then
 		      If presentation.Exists() Then
 		        
-		        Dim PPTViewLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
+		        Dim PPTViewLocation As FolderItem = DetectPPTView()
 		        If Not IsNull(PPTViewLocation) Then
 		          If PPTViewLocation.Exists() Then
 		            
@@ -189,7 +189,12 @@ Implements iPresentation
 		  
 		  If Not IsNull( PPTViewShell ) Then
 		    If PPTViewShell.IsRunning() Then
-		      result = True
+		      
+		      'Also validate there still is a presentation window
+		      If GetPPTViewWindow( PPTViewShell.PID ) > -1 Then
+		        result = True
+		      End If
+		      
 		    End If
 		  End If
 		  
@@ -253,14 +258,15 @@ Implements iPresentation
 		  'See http://support.microsoft.com/kb/242308
 		  
 		  #If TargetWin32
-		    Soft Declare Function FindWindowA Lib "user32.dll" ( lpClassName As integer, lpWindowName As integer ) As Integer
-		    Soft Declare Function FindWindowW Lib "user32.dll" ( lpClassName As integer, lpWindowName As integer ) As Integer
+		    Soft Declare Function FindWindowA Lib "user32.dll" ( lpClassName As CString, lpWindowName As CString ) As Integer
+		    Soft Declare Function FindWindowW Lib "user32.dll" ( lpClassName As CString, lpWindowName As CString ) As Integer
 		    Declare Function GetWindow Lib "user32" ( hWnd As integer, wCmd As integer ) As Integer
 		    Declare Function GetParent Lib "User32" ( hwnd as Integer ) As Integer
 		    Declare Sub GetWindowThreadProcessId  Lib "user32" ( hwnd as Integer, ByRef procId as Integer )
 		    
 		    Const GW_HWNDNEXT = 2
 		    
+		    'Try to find the first window that belongs to the PPTView process
 		    If processId > 0 Then
 		      
 		      ' Grab the first window handle that Windows finds:
@@ -268,9 +274,9 @@ Implements iPresentation
 		      Dim tmpProcessId As Integer = -1
 		      
 		      If System.IsFunctionAvailable( "FindWindowW", "User32" ) Then
-		        tmpHwnd = FindWindowW( 0, 0 )
+		        tmpHwnd = FindWindowW( Nil, Nil )
 		      Else
-		        tmpHwnd = FindWindowA( 0, 0 )
+		        tmpHwnd = FindWindowA( Nil, Nil )
 		      End If
 		      
 		      
@@ -281,7 +287,6 @@ Implements iPresentation
 		        If GetParent( tmpHwnd ) = 0 Then
 		          
 		          ' Check for PID match
-		          
 		          GetWindowThreadProcessId( tmpHwnd, tmpProcessId )
 		          If tmpProcessId = processId Then
 		            result = tmpHwnd
@@ -292,6 +297,17 @@ Implements iPresentation
 		        
 		        tmpHwnd = GetWindow(tmpHwnd, GW_HWNDNEXT )
 		      Wend
+		    End If
+		    
+		    'If the previous did not succeed, try to find the first window that is a 'screenClass'
+		    'This involves the risk of finding the wrong window in case of multiple open presentations
+		    If result = -1 Then
+		      
+		      If System.IsFunctionAvailable( "FindWindowW", "User32" ) Then
+		        result = FindWindowW( "screenClass", Nil )
+		      Else
+		        result = FindWindowA( "screenClass", Nil )
+		      End If
 		      
 		    End If
 		    
@@ -305,9 +321,12 @@ Implements iPresentation
 		Private Function MovePPTViewWindow(hwndId As Integer, x As Integer, y As Integer, w As Integer, h As Integer) As Boolean
 		  Dim result As Boolean = False
 		  
+		  'See http://msdn.microsoft.com/en-us/library/ms632599(VS.85).aspx
+		  
 		  #If TargetWin32
 		    Declare Sub SetWindowPos Lib "User32" Alias "SetWindowPos" ( hwnd as Integer, hWndInstertAfter as Integer, _
 		    x as Integer, y as Integer, cx as Integer, cy as Integer, flags as Integer )
+		    Declare Function BringWindowToTop Lib "user32"  ( hwnd as Integer) As Integer
 		    
 		    Const SWP_NOSIZE = &H1
 		    Const SWP_NOMOVE = &H2
@@ -315,6 +334,10 @@ Implements iPresentation
 		    
 		    If hwndId > 0 Then
 		      SetWindowPos( hwndId, 0, x, y, w, h, SWP_NOZORDER )
+		      'MoveWindow( hwndId, x, y, w, h, True )
+		      
+		      Call BringWindowToTop( hwndId )
+		      
 		      result = True
 		    End If
 		    

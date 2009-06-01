@@ -8929,6 +8929,7 @@ End
 		          If SongStyle <> Nil Then
 		            SmartML.RemoveChild(slide_group, SongStyle)
 		          End If
+		          Call SmartML.InsertChildNode(slide_group, SlideSongStyle, slide_group.ChildCount())
 		          SongML.ToSetML slide_group, SlideSongStyle
 		        Else
 		          '++JRC: Pass CurStyle

@@ -222,6 +222,29 @@
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
 
+  <external_slide>
+    <header caption="Wijzigen extern programma dia"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Toepassing"/>
+    <presentation caption="PowerPoint">Gebruik deze dia om een persentatie te tonen met behulp van Microsoft PowerPoint of het gratis en open source OpenOffice.org Impress.</presentation>
+    <videolan caption="Videolan">Gebruik deze dia om een mediabestand af te spelen met de veelzijdige en open source media speler Videolan (VLC).</videolan>
+    <application caption="Toepassing">Gebruik deze dia om een extern programma te starten door middel van een commandoregel.</application>
+    <presentation_settings caption="Presentatie instellingen">
+      <presentation_host caption="Welk programma moet worden gebruikt voor het weergeven van de presentatie?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <presentation_file caption="Presentatie bestandsnaam">Kies de presentatie bestandsnaam met behulp van een bestandskeuze dialoog.</presentation_file>
+      <loop_presentation caption="Presentatie herhalen"/>
+    </presentation_settings>
+    <videolan_settings caption="Videolan instellingen">
+    </videolan_settings>
+    <application_settings caption="Programma opstart instellingen">
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
+
   <style_change>
     <header caption="Wijzigen stijl"/>
     <revert caption="Keer terug naar vorige stijl">Deze optie neemt de stijl over van de vorige dia vanaf hier.</revert>
@@ -384,6 +407,10 @@
       <songs caption="Liederen"/>
       <sets  caption="Projecten (Diensten)"/>
     </startmode>
+    <applications caption="Externe programma's">
+      <pptview caption="Locatie van de Powerpoint Viewer"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+    </applications>
     </general_settings>
 
   <print_settings title="Afdruk instellingen">
@@ -888,6 +915,11 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   </song_activity>
   
   <scripture_lookup title="Bijbelteksten zoeken">
+    <lookup caption="Snel zoeken">
+      <reference caption="Referentie"/>
+      <lookup caption="Zoeken"/>
+      <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
+    </lookup>
     <search caption="Op bijbeltekst zoeken"/>
     <books caption="Bijbel boek">
 	  <ot caption="Oude testament"/>
@@ -976,6 +1008,12 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <no_headers>Geen header data gevonden. Controleer de zoekopdracht en/of uw CCLI gebruikers-ID/wachtwoord.</no_headers>
       <no_connect>Kan geen verbinding maken met CCLI. Probeer het later nog eens.</no_connect>
       <already_exists>Lied bestaat al.</already_exists>
+      <presentations>
+        <nohost>Er kan geen programma gevonden worden om een presentatie te laden. Installeer OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
+        <unsupported_feature>Het programma '%1' ondersteund deze bewerking niet.</unsupported_feature>
+        <load_failed>The presentatie '%1' kon niet worden geopend.</load_failed>
+      </presentations>
+ 
     </errors>
   </import_from_ccli>
 
@@ -1130,6 +1168,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <set_changed caption="Het huidige project is gewijzigd, met het opgeslagen worden?"/>
     <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
     <activity_log caption="Wilt u de liederen in deze presentatie toevoegen aan de logfile voor liederengebruik? Let op: dit gebeurd ook voor 'on the fly' toegevoegde liederen!"/>
+    <import_presentation caption="Presentatie afbeeldingen importeren">Selecteer de presentatie die als afbeeldingen moet worden geïmporteerd.</import_presentation>
   </questions>
 
   <about>

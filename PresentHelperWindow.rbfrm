@@ -8,7 +8,7 @@ Begin Window PresentHelperWindow
    Frame           =   0
    FullScreen      =   "False"
    HasBackColor    =   "False"
-   Height          =   750 'gp
+   Height          =   750
    ImplicitInstance=   "True"
    LiveResize      =   "False"
    MacProcID       =   0
@@ -31,7 +31,7 @@ Begin Window PresentHelperWindow
       Bold            =   "False"
       ColumnCount     =   3
       ColumnsResizable=   "True"
-      ColumnWidths    =   "33%,8%,59%" 'gp
+      ColumnWidths    =   "33%,8%,59%"
       ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
@@ -43,7 +43,7 @@ Begin Window PresentHelperWindow
       GridLinesVertical=   0
       HasHeading      =   "True"
       HeadingIndex    =   -1
-      Height          =   470 'gp
+      Height          =   470
       HelpTag         =   ""
       Hierarchical    =   "False"
       Index           =   -2147483648
@@ -403,7 +403,7 @@ Begin Window PresentHelperWindow
          Width           =   130
          BehaviorIndex   =   12
       End
-      Begin SButton btn_action_export 'gp
+      Begin SButton btn_action_export
          AcceptFocus     =   "False"
          AcceptTabs      =   "False"
          AutoDeactivate  =   "True"
@@ -559,7 +559,7 @@ Begin Window PresentHelperWindow
       Width           =   300
       BehaviorIndex   =   17
    End
-   Begin StaticText StaticText1 'gp
+   Begin StaticText StaticText1
       AutoDeactivate  =   "True"
       Bold            =   ""
       ControlOrder    =   18
@@ -613,7 +613,19 @@ End
 
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
-		  Return PresentWindow.KeyDownX(Key)
+		  dim status as boolean
+		  static busy as boolean = false
+		  static lastkey as string
+		  if (not busy) or  (key <>  lastkey)  then
+		    busy = true
+		    lastkey = key
+		    try
+		      status =PresentWindow.KeyDownX(Key)
+		    Finally
+		      busy = false
+		    end
+		  end if
+		  Return status
 		End Function
 	#tag EndEvent
 
@@ -937,7 +949,20 @@ End
 	#tag EndEvent
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
-		  Return PresentWindow.KeyDownX(key)
+		  dim status as boolean
+		  static busy as boolean = false
+		  static lastkey as string
+		  if (not busy) or  (key <>  lastkey)  then
+		    busy = true
+		    lastkey = key
+		    try
+		      status =PresentWindow.KeyDownX(Key)
+		    Finally
+		      busy = false
+		    end
+		  end if
+		  Return status
+		  
 		End Function
 	#tag EndEvent
 	#tag Event
@@ -1159,15 +1184,15 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btn_action_export 'gp
+#tag Events btn_action_export
 	#tag Event
-		Sub Action() 'gp
+		Sub Action()
 		  If PresentWindow.KeyDownX("e") Then
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub Open() 'gp
+		Sub Open()
 		  me.SetLabel "[E]Export html"
 		End Sub
 	#tag EndEvent

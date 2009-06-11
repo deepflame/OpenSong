@@ -28,7 +28,7 @@ Begin Window ProgressWindow
    Begin ProgressBar bar
       AutoDeactivate  =   "True"
       ControlOrder    =   0
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   12
       HelpTag         =   ""
       Index           =   -2147483648
@@ -39,13 +39,13 @@ Begin Window ProgressWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Maximum         =   100
+      Scope           =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   25
       Value           =   0
-      Visible         =   "True"
+      Visible         =   True
       Width           =   280
+      BehaviorIndex   =   0
    End
    Begin StaticText txt_StatusLine
       AutoDeactivate  =   "True"
@@ -53,7 +53,7 @@ Begin Window ProgressWindow
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -65,6 +65,7 @@ Begin Window ProgressWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
       Text            =   ""
       TextAlign       =   0
@@ -73,8 +74,9 @@ Begin Window ProgressWindow
       TextSize        =   11
       Top             =   40
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   280
+      BehaviorIndex   =   1
    End
    Begin StaticText lbl_status
       AutoDeactivate  =   "True"
@@ -82,7 +84,7 @@ Begin Window ProgressWindow
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -94,16 +96,18 @@ Begin Window ProgressWindow
       LockRight       =   "False"
       LockTop         =   "False"
       Multiline       =   "False"
+      Scope           =   0
       TabPanelIndex   =   0
-      Text            =   ""
+      Text            =   "druk op <Ctrl> toets om direct door te gaan."
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
       Top             =   3
       Underline       =   "False"
-      Visible         =   "True"
+      Visible         =   True
       Width           =   276
+      BehaviorIndex   =   2
    End
 End
 #tag EndWindow

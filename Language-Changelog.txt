@@ -1,3 +1,7 @@
+about/web (modified)
+main_menu/help/user_manual
+sets_mode/current_item/presentitem/*
+
 -= Version 1.5.1 =-
 slide_editor/slides_caption (modified)
 image_slide/images caption (modified)

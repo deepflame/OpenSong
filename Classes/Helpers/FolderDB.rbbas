@@ -223,6 +223,10 @@ Protected Class FolderDB
 		  If fileBox <> Nil Then
 		    filebox.SortedColumn = 0
 		    filebox.Sort
+		  else
+		    'TH - only do a HeapSort if fileBox is Nil, as we don't use it if filling a listbox
+		    'this speeds up the SongPicker by factor of 3
+		    Heapsort songList
 		  End If
 		  
 		  Return songList
@@ -453,10 +457,13 @@ Protected Class FolderDB
 		  last = UBound(fileDict)
 		  
 		  For i As Integer = 0 To last
-		    fileList.Append fileDict(i).Value("Name")
 		    If list <> Nil Then
+		      'we currently don't use array if the list is Nil
 		      list.AddRow fileDict(i).Value("Name")
 		      list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
+		    else
+		      'list is Nil, array WILL be used
+		      fileList.Append fileDict(i).Value("Name")
 		    End If
 		  Next
 		  
@@ -839,7 +846,9 @@ Protected Class FolderDB
 		    list.SortedColumn = 0
 		    list.Sort
 		  End If
-		  Heapsort fileList
+		  'TH - we appear to do this twice, once here and once in GetFiles
+		  'Heapsort fileList
+
 		  Return fileList
 		End Function
 	#tag EndMethod

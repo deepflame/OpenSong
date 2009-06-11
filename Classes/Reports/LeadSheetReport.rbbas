@@ -76,7 +76,7 @@ Inherits Report
 		    ProgressWindow.ShowWithin MainWindow
 		    ProgressWindowVisible = True
 		    ProgressWindow.CanCancel True
-		    App.MouseCursor = WatchCursor
+		    App.MouseCursor = System.Cursors.Wait
 		  End If
 		  
 		  '++JRC

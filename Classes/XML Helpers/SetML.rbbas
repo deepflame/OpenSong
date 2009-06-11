@@ -790,6 +790,7 @@ Protected Module SetML
 		  
 		  Dim prev_group, neighbor_slide, style As XmlNode
 		  Dim GetNext As Boolean
+		  Dim SlideType As String
 		  Dim GetDefault As Boolean 'gp
 		  'Dim SlideType As String became a property 'gp
 		  Dim SlideGroup As XmlNode
@@ -1250,33 +1251,36 @@ Protected Module SetML
 		  If slidegroup <> Nil Then
 		    if  SmartML.GetValue(slidegroup, "@path", False) <> "" then
 		      songFolder = SmartML.GetValue(slidegroup, "@path", False)'  slidegroup.GetAttributeNode("path")
-		    end if
-		    
-		    // Three possible cases here
-		    // xpath = Nil (no path) is a pre-V1 set format; look anywhere in the songs folder
-		    // xpath <> Nil, path = "": look only in top level folder (must anchor)
-		    // xpath <> Nil, path <> "": specific folder
-		    //If xpath <> Nil Then
-		    //If xpath.Value = "" Then
-		    //songFolder = "/"
-		    //Else
-		    //songFolder = xpath.Value
-		    //End If
-		    //End If
-		    if Songfolder = "" then
-		      songfolder = "/"
-		    end if
-		    
-		    songf = Songs.GetFile(songFolder + SmartML.GetValue(slidegroup, "@name", False))
-		    If songf = Nil Or (Not songf.Exists) Then
-		      songDoc = Nil
-		    Else
-		      songDoc = SmartML.XDocFromFile(songf)
-		      If songDoc = Nil Then
-		        InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
+		      If Songfolder = "" Then
+		        songfolder = "/"
+		      end if
+		      
+		      // Three possible cases here
+		      // xpath = Nil (no path) is a pre-V1 set format; look anywhere in the songs folder
+		      // xpath <> Nil, path = "": look only in top level folder (must anchor)
+		      // xpath <> Nil, path <> "": specific folder
+		      //If xpath <> Nil Then
+		      //If xpath.Value = "" Then
+		      //songFolder = "/"
+		      //Else
+		      //songFolder = xpath.Value
+		      //End If
+		      //End If
+		      if Songfolder = "" then
+		        songfolder = "/"
+		      end if
+		      
+		      songf = Songs.GetFile(songFolder + SmartML.GetValue(slidegroup, "@name", False))
+		      If songf = Nil Or (Not songf.Exists) Then
+		        songDoc = Nil
+		      Else
+		        songDoc = SmartML.XDocFromFile(songf)
+		        If songDoc = Nil Then
+		          InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
+		        End If
 		      End If
 		    End If
-		  End If
+		  end if
 		  
 		  If songDoc = Nil Then
 		    songFolder = ""

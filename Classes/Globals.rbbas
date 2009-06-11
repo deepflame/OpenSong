@@ -249,37 +249,58 @@ Protected Module Globals
 		NoCompression
 	#tag EndEnum
 
+	#tag Enum, Name = KeyStroke, Flags = &h0
+		VK_SPACE=&h20
+		  VK_END=&h23
+		  VK_HOME=&h24
+		  VK_LEFT=&h25
+		  VK_UP=&h26
+		  VK_RIGHT=&h27
+		VK_DOWN=&h28
+	#tag EndEnum
+
+	#tag Enum, Name = KeyState, Flags = &h21
+		WM_KEYDOWN=&h100
+		WM_KEYUP=&h101
+	#tag EndEnum
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="CurrentSongPickerFolder"
 			Group="Behavior"
 			Type="String"
 		#tag EndViewProperty

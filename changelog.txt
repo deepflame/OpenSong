@@ -1,4 +1,24 @@
-﻿-= 1.5.1 =-
+﻿* Use CheckBox.Value instead of CheckBox.State (compatibility with RB 2009) (JRC)
+
+* Added link to the online user manual
+
+* No longer call HeapSort if we are filling a listBox as the array isn't used and doesn't need to be sorted. (TH)
+
+* No longer HeapSort twice if running on Mac. (TH)
+
+* Fix issue were presentation was not starting on the first item (item list is zero-based, doh ;) (JRC)
+
+* Remove second present dual-screen menu item in song mode (bug #2734093) (JRC)
+
+* Replace depreciated WatchCursor with System.Cursors.Wait (thanks Joseph Dol for pointing this out)
+
+* Add support for displaying the same verse from 2 bible versions (thanks Ovidiu).
+
+* Added the ability to start a presentation from a specific set item (JRC)
+
+* Building with the RB 2008 r5.1 compiler
+
+-= 1.5.1 =-
 
 * Updated languages: English, Swedish (thx edvinerdtman), Polish (thx myzzard), Hungarian (thx gygellert), Czech (txh matysek03) and German (thx s.mehrbrodt)
 
@@ -1175,5 +1195,5 @@ OSX and MouseUp for the other platforms.  Action event is still called in MouseU
 * Added Print Categorized Table of Contents
 * Added Print Alphabetical Table of Contents
 
-$Date: 2009-02-28 00:07:11 +0100 (za, 28 feb 2009) $
-$Revision: 494 $
+$Date: 2009-05-18 01:14:41 +0200 (ma, 18 mei 2009) $
+$Revision: 546 $

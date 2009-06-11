@@ -1355,7 +1355,10 @@ Implements iBible
 		    child = child.NextSibling
 		  Wend
 		  
-		  Return re.Replace(Join(s))
+		  '++JRC Add support for displaying the same verse from 2 bibles versions (thanks Ovidiu).
+		  'Return re.Replace(Join(s))
+		  Return ReplaceAll(re.Replace(Join(s)),"|",Chr(10)) 
+
 		End Function
 	#tag EndMethod
 

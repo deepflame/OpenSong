@@ -7380,7 +7380,7 @@ End
 	#tag EndMenuHandler
 
 	#tag MenuHandler
-		Function mnu_user_manual() As Boolean Handles mnu_user_manual.Action
+		Function mnu_help_user_manual() As Boolean Handles mnu_help_user_manual.Action
 			ShowURL "http://www.opensong.org/d/manual"
 			Return True
 			

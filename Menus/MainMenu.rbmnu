@@ -235,34 +235,6 @@ Begin Menu MainMenu
          AutoEnable = True
       End
    End
-   Begin MenuItem mnu_bar_mode
-      SpecialMenu = 0
-      Text = "Mode"
-      Index = -2147483648
-      AutoEnable = True
-      Begin MenuItem mnu_mode_songs
-         SpecialMenu = 0
-         Text = "Songs Mode"
-         Index = -2147483648
-         MenuModifier = True
-         AutoEnable = True
-      End
-      Begin MenuItem mnu_mode_sets
-         SpecialMenu = 0
-         Text = "Sets Mode"
-         Index = -2147483648
-         ShortcutKey = "="
-         Shortcut = "Cmd+="
-         MenuModifier = True
-         AutoEnable = True
-      End
-      Begin MenuItem 
-         SpecialMenu = 2
-         Text = ""
-         Index = -2147483648
-         AutoEnable = True
-      End
-   End
    Begin MenuItem mnu_bar_settings
       SpecialMenu = 0
       Text = "Sett&ings"
@@ -317,6 +289,34 @@ Begin Menu MainMenu
          AutoEnable = True
       End
    End
+   Begin MenuItem mnu_bar_mode
+      SpecialMenu = 0
+      Text = "Mode"
+      Index = -2147483648
+      AutoEnable = True
+      Begin MenuItem mnu_mode_songs
+         SpecialMenu = 0
+         Text = "Songs Mode"
+         Index = -2147483648
+         MenuModifier = True
+         AutoEnable = True
+      End
+      Begin MenuItem mnu_mode_sets
+         SpecialMenu = 0
+         Text = "Sets Mode"
+         Index = -2147483648
+         ShortcutKey = "="
+         Shortcut = "Cmd+="
+         MenuModifier = True
+         AutoEnable = True
+      End
+      Begin MenuItem 
+         SpecialMenu = 2
+         Text = ""
+         Index = -2147483648
+         AutoEnable = True
+      End
+   End
    Begin MenuItem mnu_bar_help
       SpecialMenu = 0
       Text = "&Help"
@@ -329,6 +329,12 @@ Begin Menu MainMenu
          ShortcutKey = "H"
          Shortcut = "Cmd+H"
          MenuModifier = True
+         AutoEnable = True
+      End
+      Begin MenuItem mnu_help_user_manual
+         SpecialMenu = 0
+         Text = "Online User Manual"
+         Index = -2147483648
          AutoEnable = True
       End
       Begin MenuItem mnu_help_translating

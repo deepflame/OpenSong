@@ -26,6 +26,7 @@ Begin Window ImageChooserWindow
    Width           =   475
    Begin PushButton btn_browse
       AutoDeactivate  =   True
+      BehaviorIndex   =   0
       Bold            =   False
       Cancel          =   False
       Caption         =   "Browse..."
@@ -34,7 +35,7 @@ Begin Window ImageChooserWindow
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   156
@@ -52,9 +53,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   75
+      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
+      BehaviorIndex   =   1
       Bold            =   False
       Cancel          =   True
       Caption         =   "Cancel"
@@ -63,7 +66,7 @@ Begin Window ImageChooserWindow
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   241
@@ -81,9 +84,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   75
+      BehaviorIndex   =   1
    End
    Begin StaticText txt_path
       AutoDeactivate  =   True
+      BehaviorIndex   =   2
       Bold            =   False
       ControlOrder    =   2
       DataField       =   ""
@@ -91,7 +96,7 @@ Begin Window ImageChooserWindow
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   True
       Left            =   10
@@ -113,14 +118,16 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   455
+      BehaviorIndex   =   2
    End
    Begin Separator sep_1
       AutoDeactivate  =   True
+      BehaviorIndex   =   3
       ControlOrder    =   3
       Enabled         =   True
       Height          =   4
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Left            =   0
       LockBottom      =   True
@@ -136,15 +143,17 @@ Begin Window ImageChooserWindow
       Top             =   328
       Visible         =   True
       Width           =   475
+      BehaviorIndex   =   3
    End
    Begin ScrollBar scr_vertical
       AcceptFocus     =   true
       AutoDeactivate  =   True
+      BehaviorIndex   =   4
       ControlOrder    =   4
       Enabled         =   True
       Height          =   328
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Left            =   458
       LineStep        =   1
@@ -166,12 +175,14 @@ Begin Window ImageChooserWindow
       Value           =   0
       Visible         =   True
       Width           =   16
+      BehaviorIndex   =   4
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   5
       Enabled         =   True
       EraseBackground =   True
@@ -194,12 +205,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   6
       Enabled         =   True
       EraseBackground =   True
@@ -222,12 +235,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   7
       Enabled         =   True
       EraseBackground =   True
@@ -250,12 +265,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   8
       Enabled         =   True
       EraseBackground =   True
@@ -278,12 +295,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   9
       Enabled         =   True
       EraseBackground =   True
@@ -306,12 +325,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   10
       Enabled         =   True
       EraseBackground =   True
@@ -334,12 +355,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   11
       Enabled         =   True
       EraseBackground =   True
@@ -362,12 +385,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   12
       Enabled         =   True
       EraseBackground =   True
@@ -390,12 +415,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   13
       Enabled         =   True
       EraseBackground =   True
@@ -418,12 +445,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   14
       Enabled         =   True
       EraseBackground =   True
@@ -446,12 +475,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   15
       Enabled         =   True
       EraseBackground =   True
@@ -474,12 +505,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   16
       Enabled         =   True
       EraseBackground =   True
@@ -502,12 +535,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   17
       Enabled         =   True
       EraseBackground =   True
@@ -530,12 +565,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   18
       Enabled         =   True
       EraseBackground =   True
@@ -558,12 +595,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   19
       Enabled         =   True
       EraseBackground =   True
@@ -586,12 +625,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   20
       Enabled         =   True
       EraseBackground =   True
@@ -614,12 +655,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   21
       Enabled         =   True
       EraseBackground =   True
@@ -642,12 +685,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   22
       Enabled         =   True
       EraseBackground =   True
@@ -670,12 +715,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   23
       Enabled         =   True
       EraseBackground =   True
@@ -698,12 +745,14 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   5
       ControlOrder    =   24
       Enabled         =   True
       EraseBackground =   True
@@ -726,9 +775,11 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   5
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   25
       DataField       =   ""
@@ -758,9 +809,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   26
       DataField       =   ""
@@ -790,9 +843,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   27
       DataField       =   ""
@@ -822,9 +877,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   28
       DataField       =   ""
@@ -854,9 +911,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   29
       DataField       =   ""
@@ -886,9 +945,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   30
       DataField       =   ""
@@ -918,9 +979,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   31
       DataField       =   ""
@@ -950,9 +1013,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   32
       DataField       =   ""
@@ -982,9 +1047,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   33
       DataField       =   ""
@@ -1014,9 +1081,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   34
       DataField       =   ""
@@ -1046,9 +1115,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   35
       DataField       =   ""
@@ -1078,9 +1149,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   36
       DataField       =   ""
@@ -1110,9 +1183,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   37
       DataField       =   ""
@@ -1142,9 +1217,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   38
       DataField       =   ""
@@ -1174,9 +1251,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   39
       DataField       =   ""
@@ -1206,9 +1285,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   40
       DataField       =   ""
@@ -1238,9 +1319,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   41
       DataField       =   ""
@@ -1270,9 +1353,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   42
       DataField       =   ""
@@ -1302,9 +1387,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   43
       DataField       =   ""
@@ -1334,9 +1421,11 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       ControlOrder    =   44
       DataField       =   ""
@@ -1366,6 +1455,7 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
+      BehaviorIndex   =   6
    End
 End
 #tag EndWindow

@@ -103,7 +103,7 @@ Inherits SBufferedCanvas
 	#tag EndHook
 
 
-	#tag Property, Flags = &h4
+	#tag Property, Flags = &h0
 		SongStyle As Boolean
 	#tag EndProperty
 
@@ -118,9 +118,19 @@ Inherits SBufferedCanvas
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="ControlOrder"
+			Name="TabIndex"
 			Visible=true
 			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabStop"
+			Visible=true
+			Group="Position"
+			InitialValue="True"
+			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty

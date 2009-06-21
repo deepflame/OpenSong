@@ -1,14 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<language author="Jakob Schmidt, Rüdiger Greeb, Bernd und Dominic Tubach" name="Deutsch">
+<?xml version="1.0" encoding="UTF-8"?>
+<language author="Jakob Schmidt, Rüdiger Greeb, Bernd und Dominic Tubach" name="Deutsch" version="1.5.1">
 
   <load_settings>
     <checking_folders>Erstelle/Prüfe Ordner</checking_folders>
     <main>Lade Haupteinstellungen</main>
     <print>Lade Druckeinstellungen</print>
     <presentation>Lade Präsentationseinstellungen</presentation>
+    <transitions>Lade Überblendungen</transitions>
     <tempos>Lade Tempoliste</tempos>
     <themes>Lade Rubrikenliste</themes>
     <time_signatures>Lade Taktliste</time_signatures>
+    <imagequality>Lade Bildqualitätsliste</imagequality>
     <fonts>Lade Schriftartenliste</fonts>
     <latest_version>Suche nach aktueller Version
       <newer_available>Eine neuere Version (%1) ist verfügbar. Besuchen Sie http://www.opensong.org, um diese herunterzuladen.</newer_available>
@@ -51,12 +53,15 @@
       <move caption="Verschieben">Verschiebt das ausgewählte Lied in einen anderen Ordner.
         <where caption="Verschiebe '%1' in Ordner:"/>
       </move>
+      <copy caption="Copy">Kopiert das aktuelle Lied in einen anderen Ordner.
+        <where caption="Kopiere '%1' in Ordner:"/>
+      </copy>
       <delete caption="Löschen">Löscht das ausgewählte Lied.</delete>
     </selected_song>
 
     <songs caption="Lieder">Markieren Sie ein Lied in der Liste, um es in den Liededitor zu laden.</songs>
 
-    <curr_folder caption="Enthalten in Ordner">Zeigt den Ordner der diesen Song enthält. (relativ zum aktiven Ordner)</curr_folder>
+    <curr_folder caption="Enthalten in Ordner">Zeigt den Ordner, der diesen Song enthält (relativ zum aktiven Ordner).</curr_folder>
 
     <song_folders caption="Ordner">Wählen Sie den Ordner dessen Lieder angezeigt werden sollen.
       <new>Erstellt einen neuen Liedordner.</new>
@@ -74,7 +79,7 @@
     <author caption="Autor">Autor des Liedes.</author>
     <copyright caption="Copyright">Copyright-Information des Liedes.</copyright>
     <ccli caption="CCLI #">CCLI-Nummer des Liedes.</ccli>
-    <hymn_number caption="Liederbuch Nr.">Nummer des Liedes im Liederbuch.</hymn_number>
+    <hymn_number caption="Liederbuch-Nr.">Nummer des Liedes im Liederbuch.</hymn_number>
     <presentation caption="Reihenfolge">Bestimmt die Abspielreihenfolge. Liedteile müssen durch Leerzeichen getrennt sein. (Bsp. "V1 C V2 C")</presentation>
     <lyrics caption="Liedtext">Geben Sie hier das Lied ein. Verwenden Sie Steuerzeichen: '[C]' Refr., '[V1] Strophe', '.' Akkorde, ' ' Text, (mehr Infos in der Hilfe)</lyrics>
     <insert caption="Einfügen"/>
@@ -139,24 +144,27 @@
       <export caption="Export">Exportiert dieses Set (inklusive Lieder) in einen anderen Ordner.</export>
     </current_set>
     <new_item caption="Neuer Eintrag">
-      <add_song caption="Lied">Fügt dem ausgewählten Set ein oder mehrere Lieder hinzu. Zur Auswahl öffnet sich die Liederliste.</add_song>
-      <add_scripture caption="Bibeltext">Fügt dem aktuellen Set einen Bibeltext hinzu. Es öffnet sich das entsprechende Auswahlfenster.</add_scripture>
+      <add_song caption="Lied">Fügt dem ausgewählten Set ein/mehrere Lied/er hinzu. Zur Auswahl öffnet sich die Liederliste.</add_song>
+      <add_scripture caption="Bibeltext">Fügt dem aktuellen Set einen oder mehrere Bibeltext/e hinzu. Es öffnet sich das entsprechende Auswahlfenster.</add_scripture>
       <add_slides caption="Folie">Fügt dem aktuellen Set eine eigene Folie hinzu. Text und Layout dieser Folie sind frei definierbar. Eine Folie kann mehrere Seiten enthalten.</add_slides>
-      <add_style caption="Layout">Ändert das Layout des Sets für die folgenden Folien. Rückkehr in das Standardlayout ist auch möglich.</add_style>
-      <add_video caption="Video">Fügt eine Videodatei in das Set ein.</add_video>
-      <add_powerpoint caption="PowerPoint">Fügt eine Powerpoint Präsentation in OpenSong ein.</add_powerpoint>
+      <add_style caption="Layout">Ändert das Layout an einer beliebigen Stelle des Sets. Es kann auch zum vorherigen Layout zurückgekehrt werden.</add_style>
+      <add_image caption="Image">Fügt eine Bildfolie in das Set ein. Es können mehrere Bilder als Diashow angezeigt werden.</add_image>
+      <add_video caption="Video">Fügt ein Video in das Set ein.</add_video>
+      <add_powerpoint caption="PowerPoint">Fügt eine PowerPoint-Präsentation in OpenSong ein.</add_powerpoint>
     </new_item>
     <current_item caption="Aktueller Eintrag">
-      <move_up caption="Nach oben">Bewegt den ausgewählten Eintrag um einen Schritt nach oben.</move_up>
-      <move_down caption="Nach unten">Bewegt den ausgewählten Eintrag um einen Schritt nach unten.</move_down>
+      <move_up caption="Nach oben">Bewegt den ausgewählten Eintrag um eine Position nach oben.</move_up>
+      <move_down caption="Nach unten">Bewegt den ausgewählten Eintrag um eine Position nach unten.</move_down>
       <remove caption="Löschen">Löscht den ausgewählten Eintrag aus dem Set.</remove>
       <copy caption="Kopieren">Dupliziert den ausgewählten Eintrag.</copy>
-      <store caption="Speichern">Speichert Änderungen am ausgewählten Eintrag. Es wird nicht das Set gespeichert. Klicken Sie dazu auf "Aktuelles Set|Speichern".</store>
+      <paste caption="link(shared/insert/@caption)">Fügt den kopierten Eintrag hinter dem ausgewählten ein.</paste>      
+      <store caption="Speichern">Speichert Änderungen am ausgewählten Eintrag. Um das Set zu speichern, wählen Sie "Aktuelles Set|Speichern".</store>
     </current_item>
     <items caption="Set Einträge">Zeigt die Einträge des ausgewählten Sets. Klicken Sie auf einen Eintrag, um ihn zu editieren. Doppelklicken Sie auf ein Lied, um es im "Liededitor" zu bearbeiten. Einträge können Sie mit der Maus verschieben.
       <song caption="(Lied)"/>
       <custom caption="(Folie)"/>
       <scripture caption="(Bibeltext)"/>
+      <image caption="(Bild)"/>
       <style caption="(Layout)">-- Layout ändern --</style>
       <revert caption="(Layout)">-- Layout zurücksetzen --</revert>
       <defaultstyle caption="(Layout)">-- Exportiertes Layout --</defaultstyle>
@@ -186,10 +194,36 @@
     <ins_slide caption="Seitenumbruch">Fügt einen Seitenumbruch in den Text ein. Dadurch können mehrere Seiten erstellt werden.</ins_slide>
     <loop caption="Wiederholen">Ist diese Option aktiviert, springt OpenSong zur ersten Seite dieses Eintrags, nachdem die letzte Seite dieses Eintrags erreicht wurde.</loop>
     <print caption="Auf Liste drucken">Deaktivieren Sie diese Box, wenn Sie nicht möchten, dass dieser Eintrag auf der gedruckten Set-Liste erscheint.</print>
+    <transition caption="Use transition">Aktiviert Überblendungen zwischen den Seiten</transition>
     <auto_advance caption="Automatisch weiterschalten nach">Nach dieser Zeit wird zur nächsten Seite in diesem Eintrag geschaltet.</auto_advance>
     <seconds caption="Sekunden"/>
     <style caption="Eigenes Layout">Wenn Sie diese Funktion aktivieren, können Sie das Layout des Eintrags ändern. Klicken Sie dazu auf die Vorschau-Box.</style>
   </slide_editor>
+
+  <image_slide>
+    <header caption="Diashow-Editor"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Bildbeschreibung im Untertitel">Fügt die Beschreibung des aktuellen Bildes dem Untertitel hinzu</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Bilder" head1="Vorschau" head2="Beschreibung">Enthält die Bilder der Diashow.</images>
+    <fit_to_screen caption="Passe Bilder dem Monitor ann">Vergrößert/Verkleinert die Bilder, damit sie auf den Monitor passen.</fit_to_screen>
+    <fit_to_body caption="Passe Bilder dem Bildbereich an">Vergrößert/Verkleinert die Bilder, damit sie in den vom Layout vorgegebenen Bereich passen.</fit_to_body>    
+    <keepaspect caption="Behalte das Seitenverhältnis bei">Wenn Bilder in der Größe geändert werden, wird das Seitenverhältnis beibehalten.</keepaspect>
+    <store_as_link caption="Das Bild nicht im Set, sondern als Link speichern">Wenn das Bild im Set gespeichert wird, wird das Set mehr Speicherplatz benötigen und die Bildqualität kann sich verringern. Diese Option verhindert dies, sollte jedoch mit Vorsicht behandelt werden, wenn das Set auf einem anderen Computer verwendet wird (Bilder im Ordner "Backgrounds" werden als relativer Link gespeichert).</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Action" />
+      <ins_image caption="Bild hinzufügen">Fügt ein Bild zu dieser Diashow hinzu.</ins_image>
+      <del_image caption="Bild löschen">Löscht das ausgewählte Bild aus der Diashow.</del_image>
+      <move_up caption="Nach oben">Bewegt das ausgewählte Bild eine Position nach oben.</move_up>
+      <move_down caption="Nach unten">Bewegt das ausgewählte Bild eine Position nach unten.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
 
   <style_change>
     <header caption="Layout ändern"/>
@@ -237,6 +271,8 @@
   </song_search>
 
   <scripture_search title="Bibelsuche">
+  <caption caption="Suche nach einem Stichwort"/>
+  <example caption="Verwenden Sie Anführungszeichen um eine exakte Phrase zu suchen, z. Bsp.: &quot;Simon Petrus&quot;"/>
     <match caption="Vergleiche">
       <exact caption="Alles"/>
       <begin caption="Anfang"/>
@@ -246,7 +282,7 @@
       <any caption="Einen Begriff"/>
     </words>
     <search caption="Suche"/>
-    <example caption="Verwenden Sie Anführungszeichen um eine längere Phrase zu suchen, z. Bsp. &quot;Simon Petrus&quot;"/>
+    <result caption="%1 Übereinstimmungen gefunden."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
     <lst_result head1="Verweis" head2="Text"/>
@@ -265,7 +301,7 @@
       <print caption="_Drucken"/>
       <print_alphabetical_toc caption="Drucke _Alphabetische Liederliste"/>
       <print_categorical_toc caption="Drucke Liederliste Nach _Kategorien"/>
-      <exit caption="_Beenden"/>
+      <quit caption="_Beenden"/>
     </file>
     <edit caption="_Bearbeiten">
       <undo caption="_Rückgängig"/>
@@ -297,7 +333,7 @@
   </main_menu>
 
   <general_settings title="Allgemeine Einstellungen">
-    <general caption="Allgemein" head1="Primär" head2="Besonder">
+    <general caption="Allgemein" head1="Basis" head2="Erweitert">
       <ccli caption="CCLI Lizenz #"/>
       <version_check caption="Beim Start auf neue Version prüfen"/>
       <language caption="Sprache"/>
@@ -330,6 +366,11 @@
       <change caption="Übernehmen"/>
       <oldfolderdb caption="Alten Dateicache (vor V1.1) verwenden"/>
     </documents_folder>
+    <imagequality caption="Bild-Qualität">
+      <note caption="Opensong speichert die benutzten Bilder im JPEG-Format. Mit den untenstehenden Optionen können die Qualität und das Verhalten beim Speichern verändert werden (Diese Optionen funktionieren nur, wenn QuickTime installiert ist)."/>
+      <compression caption="Bild-Kompression" />
+      <extern caption="Hintergrund-Bilder nicht einschließen" />
+    </imagequality>
     <logging caption="Log Einstellungen">
       <append caption="An Logfile anhängen"/>
       <console caption="Auf Konsole loggen"/>
@@ -337,6 +378,10 @@
       <dialog caption="Bitte wählen Sie eine Logdatei aus"
               title="Logfile auswählen"/>
     </logging>
+    <log caption="Lieder-Aktivitäts-Log-Einstellungen">
+      <enable caption="Logging aktivieren"/>
+      <prompt caption="Vor Präsentation nachfragen"/>
+    </log>
     <startmode caption="Startfenster">
       <songs caption="link(songs_mode/@caption)"/>
       <sets caption="link(sets_mode/@caption)"/>
@@ -697,10 +742,15 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
       <subtitle caption="Untertitel"/>
       <body caption="Text"/>
       <align caption="Ausrichtung"/>
-      <subtitles caption="Lied Untertitel"/>
-      <highlight_chorus caption="Refrain hervorheben"/>
-      <descriptive_subtitle caption="Untertitelbeschreibung anzeigen"/>
+      <margin caption="Abstände"/>
+      <tabs caption="Tabulatoren"/>
     </fonts_and_alignment>
+    <options caption="Inhaltliche Optionen">
+      <subtitles caption="Lied-Untertitel"/>
+      <highlight_chorus caption="Refrain hervorheben"/>
+      <descriptive_subtitle caption="Descriptive subtitle info"/>
+      <verse_in_title caption="Strophennummer im Titel anzeigen"/>
+    </options>
     <background caption="Hintergrund">
       <color caption="Einfarbig"/>
       <image caption="Bild"/>
@@ -716,6 +766,36 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     </background>
     <trim_note caption="*Schneidet den unteren Teil des Bildes ab, um Wasserzeichen, URLs etc. zu verstecken. Damit das Verhälnis stimmt, wird auch von den Seiten abgeschnitten."/>
   </style_editor>
+
+  <style_margins title="Abstand-Editor">
+      <left caption="Links"/>
+      <right caption="Rechts"/>
+      <top caption="Oben"/>
+      <bottom caption="Unten"/>
+      <pixels caption="px"/>
+    <preview caption="Vorschau:"/>
+  </style_margins>
+  
+  <style_tabs title="Tabulatoren-Editor">
+    <tabs caption="Tabulatoren">
+      <new caption="&amp;Neu"/>
+      <remove caption="&amp;Entfernen"/>
+      <removeall caption="&amp;Alle Entfernen"/>
+    </tabs>
+    <properties caption="Eigenschaften">
+      <position caption="Position"/>
+      <pixels caption="px"/>
+      <align caption="Ausrichtung"/>
+      <left caption="Links"/>
+      <middle caption="Zentriert"/>
+      <right caption="Rechts"/>
+      <char caption="Anzahl Buchstaben:"/>
+      <apply caption="link(shared/apply/@caption)n"/>
+    </properties>
+    <preview caption="Vorschau"/>
+  </style_tabs>
+  
+
 
   <song_lookup title="Lied einfügen">
     <header caption="Wählen Sie ein Lied und bestätigen Sie mit Einfügen, Doppelklick oder Enter. Es ist möglich, den Anfang des Titels einzutippen und so das gewünschte Lied auszuwählen."/>
@@ -733,6 +813,8 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <find caption="Suchen"></find>
     <clear_log caption="Protokoll löschen"></clear_log>
     <print caption="Drucken"></print>
+    <view caption="View LogFile"/>
+    <merge caption="Merge"/>
     <export caption="Exportieren"/>
     <done caption="Schließen"/>
     <show caption="Zeige">
@@ -741,7 +823,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
         constants found in the LogEntry class. The list order
         can be changed as desired for localisation (note that it is
         alphabetical in English) as long as the tags relate to the
-        correct item.  For example, the local language value of "Moved"
+        correct item. For example, the local language value of "Moved"
         should always have tag="4"
       -->
       <value tag="0">Alle</value>
@@ -752,6 +834,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
       <value tag="5">Angezeigt</value>
       <value tag="6">Gedruckt</value>
       <value tag="7">Umbenannt</value>
+      <value tag="8">Kopiert</value>
     </show>
     <songs head7="Hat Akkorde" head6="CCLI #" head5="Autor" head4="Titel" head3="Änderung" head2="Zeit" head1="Datum"/>
     <input_box>
@@ -761,23 +844,32 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
   </song_activity>
 
   <scripture_lookup title="Bibeltext einfügen">
-    <book caption="Buch"/>
     <lookup caption="Schnelles Einfügen">
       <reference caption="Bibelstelle"/>
       <lookup caption="Einfügen"/>
       <example caption="Bsp: '2Pet 1:1-2' oder '2Pet 1:1-2 (KJV)'"/>
     </lookup>
+    <search caption="Volltextsuche"/>
+    <books caption="Bibel">
+	  <ot caption="Altes Testament"/>
+	  <nt caption="Neues Testament"/>
+    </books>
+    <paragraph caption="Kapitel"/>
+    <colon caption=":"/>
+    <from_verse caption="Von Vers"/>
+    <dash caption="-"/>
+    <to_verse caption="Bis Vers"/>
     <version caption="Übersetzung"/>
     <select_file caption="Bitte wählen Sie eine Übersetzungsdatei"/>
-    <verses_per_slide caption="Verse pro Seite">
-      <one caption="1"/>
-      <two caption="2"/>
-      <three caption="3"/>
-    </verses_per_slide>
+    <verses_per_slide caption="Verse pro Seite" />
+    <chars_per_slide caption="Max. Buchstaben pro Seite" />
     <format caption="Versformatierung">
       <paragraph caption="Absatz"/>
       <verse caption="Fließend"/>
     </format>
+    <shownumbers caption="Zeige Versnummern"/>
+    <preview caption="Vorschau"/>
+    <insert caption="link(shared/insert/@caption)"/>
     <bad_reference>
       <format>Bitte prüfen Sie die Syntax der Abfrage und versuchen Sie's erneut.</format>
       <empty>Ungültige Bibelstelle: Sie haben keine Bibelstelle eingegben.</empty>
@@ -788,11 +880,6 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
       <verse>Ungültige Bibelstelle: Der Vers '%1' wurde nicht gefunden.</verse>
       <verse_range>Ungültige Bibelstelle: Der Endvers muss größer oder gleich dem Startvers sein.</verse_range>
     </bad_reference>
-    <colon caption=","/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
-    <insert caption="link(shared/insert/@caption)"/>
-    <shownumbers caption="Strophennummern anzeigen"/>
   </scripture_lookup>
 
   <module>
@@ -801,10 +888,15 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <move_error>Fehler beim Verschieben der Modul-Datei. Bitte überprüfen Sie, ob Sie Schreibrechte für '%1' haben.</move_error>
     <rename_error>Fehler beim Umbenennen der Modul-Datei. Bitte überprüfen Sie, ob Sie Schreibrechte für '%1' haben.</rename_error>
     <success>Modul erfolgreich geladen."</success>
-    <file_type>OpenSong Modul (*.xmm)</file_type>
+    <file_type>OpenSong-Modul</file_type>
     <generate_index>Suchindex für Übersetzung generieren?</generate_index>
     <generate_error>Fehler bei Indexerstellung; Haben Sie Schreibzugriff auf %1?</generate_error>
   </module>
+
+  <index_progress title="Bitte warten">
+    <top caption="Erstelle Index:"/>
+    <bottom caption="'Esc' zum Abbrechen"/>
+  </index_progress>
 
   <import_from_ccli title="Importiere von CCLI">
     <user_id caption="Benutzer ID"/>
@@ -905,18 +997,18 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
   </time_sig_list>
 
   <transition_list>
-    <option name="Default"/>
-    <option name="Yes"/>
-    <option name="No"/>
+    <option name="Standard"/>
+    <option name="Ja"/>
+    <option name="Nein"/>
   </transition_list>
   
   <imagequality_list>
-    <option name="Full, minimum quality, small set file"/>
-    <option name="High, low quality"/>
-    <option name="Medium, normal quality"/>
-    <option name="Little, high quality"/>
-    <option name="Low, maximum quality"/>
-    <option name="None, lossless, large set file"/>
+    <option name="Voll, minimale Qualität, kleine Set-Datei"/>
+    <option name="Hoch, niedrige Qualität"/>
+    <option name="Mittel, normale Qualität"/>
+    <option name="Niedrig, hohe Qualität"/>
+    <option name="Sehr niedrig, maximale Qualität"/>
+    <option name="Kein, verlustfrei, große Set-Datei"/>
   </imagequality_list>
 
   <style_preview>
@@ -942,7 +1034,7 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <row1 caption="Autor|author"/>
     <row2 caption="Liederbuch Nummer|hymn_number"/>
     <row3 caption="CCLI Liednummer|ccli_number"/>
-    <row4 caption="CCLI Lizensnummer|ccli_license"/>
+    <row4 caption="CCLI Lizenznummer|ccli_license"/>
   </subtitles>
 
   <shared>
@@ -950,6 +1042,7 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <cancel caption="Abbrechen"/>
     <yes caption="Ja"/>
     <no caption="Nein"/>
+    <apply caption="&amp;Anwenden"/>
     <browse caption="Auswählen"/>
     <browse_for caption="Verzeichnis auswählen"/>
     <add caption="Hinzufügen"/>
@@ -960,13 +1053,14 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <insert caption="Einfügen"/>
     <close caption="Schließen"/>
     <search caption="Suchen"/>
-    <save caption="Save" message="%1 wurde nicht gespeichert."/>
+    <save caption="Speichern" message="%1 wurde nicht gespeichert."/>
     <nosave caption="Nicht speichern."/>
     <cut caption="Ausschneiden"/>
     <copy caption="Kopieren"/>
     <paste caption="Einfügen"/>
     <select caption="Markieren"/>
     <exit_program caption="Programm beenden"/>
+    <export_to caption="Wählen Sie einen Ordner für den Export aus."/>
   </shared>
 
   <questions>
@@ -979,9 +1073,10 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <revert caption="Alle Änderungen gehen verloren. Bestätigen?"/>
     <long_operation caption="Dies kann einige Zeit dauern. Fortsetzen?"/>
     <generic_save caption="Änderungen speichern?"/>
-    <generic_save_explanation caption="Wenn Sie nicht speichern, werden Ihre Änderungen verloren gehen"/>
+    <generic_save_explanation caption="Wenn Sie nicht speichern, werden Ihre Änderungen verloren gehen."/>
     <set_changed caption="Das aktuelle Set wurde geändert, wollen Sie die Änderungen speichern?"/>
-    <select_docs_folder caption="Select the OpenSong Documents folder">Wo sollen die OpenSong Dateien (Lieder und Präsentationen) gespeichert werden?</select_docs_folder>
+    <select_docs_folder caption="OpenSong Documenten-Ordner">Wo sollen die OpenSong-Dateien (Lieder und Präsentationen) gespeichert werden?</select_docs_folder>
+    <activity_log caption="Möchten Sie, dass die Lieder dieser Präsentation zu dem Tätigkeits-Log hinzugefügt werden (Gilt auch für während der Präsentation hinzugefügte Lieder)?"/>
   </questions>
 
   <about>
@@ -1040,11 +1135,11 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <no_backgrounds_folder>Kann Standardhintergründe nicht finden: %1</no_backgrounds_folder>
     <no_defaults_folder>Kann Vorgabeordner nicht finden: %1</no_defaults_folder>
     <no_scripture_folder>Kann Bibelordner nicht finden: %1</no_scripture_folder>
-    <no_sets_folder>Kann Standard Sets Ordner nicht finden: %1</no_sets_folder>
-    <no_settings_folder>Kann Standard Einstellungsordner nicht finden: %1</no_settings_folder>
-    <no_songs_folder>Kann Standard Liedordner nicht finden: %1</no_songs_folder>
-    <no_docs_folder>Kann OpenSong Dokumentordner nicht finden: %1</no_docs_folder>
-    <docs_folder>Der OpenSong Dokumentordner darf nicht unter 'OpenSong Defaults' liegen
+    <no_sets_folder>Kann Standard Sets-Ordner nicht finden: %1</no_sets_folder>
+    <no_settings_folder>Kann Standard-Einstellungsordner nicht finden: %1</no_settings_folder>
+    <no_songs_folder>Kann Standard-Lied-Ordner nicht finden: %1</no_songs_folder>
+    <no_docs_folder>Kann OpenSong-Dokument-Ordner nicht finden: %1</no_docs_folder>
+    <docs_folder>Der OpenSong-Dokumentordner darf nicht unter 'OpenSong Defaults' liegen
 Temporär wird %1 verwendet.
 Bitte ändern Sie diese Einstellung.</docs_folder>
      <fileutils>
@@ -1064,12 +1159,15 @@ Starten Sie OpenSong erneut und versuchen Sie es noch einmal.</notenoughmemory>
      <cclinotavailable>Die CCLI Homepage wurde stark verändert,
 deswegen funktioniert der CCLI Import bis auf weiteres nicht.
 Bitte verwenden Sie das Tool "OpenSong Import" als Alternative.
-Das OpenSong Entwicklerteam bedauert die Umstände, hat aber keinen Einfluss auf CCLI.
+Das OpenSong-Entwicklerteam bedauert die Umstände, hat aber keinen Einfluss auf CCLI.
      </cclinotavailable>
+     <activity_disabled>Konnte den Lieder-Aktivitäts-Log nicht laden: %1. Stellen Sie sicher, dass die Datei existiert und nicht kaputt ist. Log-Anzeige und Aktivitäts-Log werden für diese Sitzung deaktiviert.</activity_disabled>
+     <adding_logentry>Konnte den Log-Eintrag nicht hinzufügen!</adding_logentry>
+    <chars_per_slide>Die Anzahl Buchstaben pro Seite muss zwischen 1 und 1000 liegen.</chars_per_slide>
   </errors>
 
   <xml_errors>
-    <noattribute>Kann XML attribute '%1' nicht in '%2' finden.</noattribute>
+    <noattribute>Kann XML-Attribut '%1' nicht in '%2' finden.</noattribute>
   </xml_errors>
 
   <bible>
@@ -1084,7 +1182,7 @@ Das OpenSong Entwicklerteam bedauert die Umstände, hat aber keinen Einfluss auf
 
       <noindex>Kein Suchindex verfügbar. Wählen Sie eine andere Übersetzung oder starten Sie OpenSong neu.</noindex>
 
-      <missing_bnames>Kann Zefania Unterstützungsdatei 'bnames.xml' in 'OpenSong Settings'</missing_bnames>
+      <missing_bnames>Kann Zefania Unterstützungsdatei 'bnames.xml' in 'OpenSong Settings' nicht finden.</missing_bnames>
 
       <nobnames>Die Übersetzung enthält keine bname Attribute und es konnten auch keine hinzugefügt werden.</nobnames>
       <roman>Fehler beim Konvertieren von römischer Zahl '%1': %2</roman>
@@ -1101,7 +1199,7 @@ Das OpenSong Entwicklerteam bedauert die Umstände, hat aber keinen Einfluss auf
 
   <song>
     <errors>
-      <unknown_element>Unbekanntes element beim Laden von Lied '%1'.</unknown_element>
+      <unknown_element>Unbekanntes Element beim Laden von Lied '%1'.</unknown_element>
     </errors>
   </song>
 

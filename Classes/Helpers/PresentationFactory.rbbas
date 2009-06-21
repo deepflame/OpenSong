@@ -322,7 +322,7 @@ Protected Module PresentationFactory
 		  Dim result as FolderItem = Nil
 		  
 		  'Detect Microsoft PPTView
-		  'How to detect? 
+		  'How to detect?
 		  
 		  '1. Query the registry if an installation reference is found (only Windows)
 		  '2. Use a configuration setting in the general OS settings and check for existence of the filename
@@ -336,8 +336,10 @@ Protected Module PresentationFactory
 		      'Strip " %1"
 		      command = command.Replace(" ""%1""","")
 		      result = GetFolderItem(command)
-		      If Not result.Exists() Then
-		        result = Nil
+		      If Not IsNull(result) Then
+		        If Not result.Exists() Then
+		          result = Nil
+		        End If
 		      End If
 		      
 		    Catch e As  RegistryAccessErrorException
@@ -364,8 +366,10 @@ Protected Module PresentationFactory
 		        'Strip " %1"
 		        command = command.Replace(" ""%1""","")
 		        result = GetFolderItem(command)
-		        If Not result.Exists() Then
-		          result = Nil
+		        If Not IsNull(result) Then
+		          If Not result.Exists() Then
+		            result = Nil
+		          End If
 		        End If
 		        
 		      Catch e As  RegistryAccessErrorException

@@ -35,7 +35,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       EraseBackground =   True
       Height          =   302
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Left            =   -1
       LockBottom      =   True
@@ -52,12 +52,13 @@ Begin Window PresentWindow Implements ScriptureReceiver
       UseFocusRing    =   False
       Visible         =   True
       Width           =   302
+      BehaviorIndex   =   0
       Begin Timer timerAdvance
          BehaviorIndex   =   1
          ControlOrder    =   1
          Enabled         =   True
          Height          =   32
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "cnvSlide"
          Left            =   248
          LockedInPosition=   False
@@ -71,13 +72,14 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Top             =   248
          Visible         =   True
          Width           =   32
+         BehaviorIndex   =   1
       End
       Begin Timer timerTransition
          BehaviorIndex   =   2
          ControlOrder    =   2
          Enabled         =   True
          Height          =   32
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "cnvSlide"
          Left            =   204
          LockedInPosition=   False
@@ -91,6 +93,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Top             =   248
          Visible         =   True
          Width           =   32
+         BehaviorIndex   =   2
       End
    End
 End
@@ -200,6 +203,11 @@ End
 		  //
 		  App.DebugWriter.Write("PresentWindow.Open: Enter")
 		  Dim time As Integer
+		  
+		  '++JRC
+		  numBlanks = 0
+		  numStyles = 0
+		  '--
 		  time = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
 		  If time = 0 Then Time = 100 'Set a reasonable default
 		  TransitionFrames = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_frames", False)
@@ -362,9 +370,11 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub InsertBlanksIntoSet(ByRef Set As XmlDocument)
+		Protected Sub InsertBlanksIntoSet(ByRef Set As XmlDocument, ByRef Item As Integer)
 		  Dim slide_group As XmlNode
 		  Dim slide_groups As XmlNode
+		  Dim newItem As Integer
+		  Dim i As Integer
 		  
 		  slide_groups = SmartML.GetNode(Set.DocumentElement, "slide_groups")
 		  If slide_groups <> Nil Then
@@ -395,9 +405,20 @@ End
 		        SmartML.SetValue slide_group, "slides/slide/body", ""
 		      End If
 		      //--
+		      If i < Item Then
+		        numBlanks = numBlanks + 1
+		      End If
+		      
 		    End If ' for inserting blanks
+		    
+		    If SmartML.GetValue(slide_group, "@type") =  "style" And i < Item Then
+		      numStyles = numStyles + 1
+		    End If
+		    
+		    i = i + 1
 		    slide_group = slide_group.NextSibling
 		  Wend
+		  
 		End Sub
 	#tag EndMethod
 
@@ -619,7 +640,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Present(setDoc As XmlDocument, PresentMode As Integer)
+		Sub Present(setDoc As XmlDocument, PresentMode As Integer, Item As Integer = 0)
 		  Dim i, j As Integer
 		  Dim slide_groups, slide_group, slide As XmlNode
 		  Dim s As String
@@ -657,6 +678,9 @@ End
 		  StyleDict = New Dictionary
 		  //--EMP
 		  insertBlanks = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
+		  
+		  '++JRC
+		  NumberOfItems =Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
 		  
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  slide_group = slide_groups.FirstChild
@@ -710,8 +734,10 @@ End
 		  SmartML.SetValue de, "default_style/@index", "default_style"
 		  'System.DebugLog "Completed default_style"
 		  //--
-		  If insertBlanks Then InsertBlanksIntoSet(CurrentSet)
+		  '++JRC
+		  If insertBlanks Then InsertBlanksIntoSet(CurrentSet, Item)
 		  VerifySlideBodies(CurrentSet)
+		  
 		  'System.DebugLog "Add blanks and confirm bodies exist"
 		  
 		  '#if DebugBuild
@@ -720,8 +746,8 @@ End
 		  '#endif
 		  'System.DebugLog "Dumped CurrentSet"
 		  
-		  CurrentSlide = 1
-		  XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  'CurrentSlide = 1
+		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
 		  
 		  'System.DebugLog "Setup monitors"
 		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
@@ -814,6 +840,9 @@ End
 		    LogoCache.Mask.Graphics.DrawPicture SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo_mask"), 0, 0
 		  End If
 		  
+		  'CurrentSlide = 1
+		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
+		  
 		  If HelperActive Then
 		    PresentHelperWindow.Show
 		    i = 1
@@ -828,8 +857,14 @@ End
 		      'System.DebugLog "PresentWindow.Present: GetNextSlide for i = " + cstr(i) + " returned a " + SmartML.GetValue(slide.Parent.Parent, "@type") +_
 		      '" with name '" + SmartML.GetValue(slide.Parent.Parent, "@name") + "'"
 		    Wend
-		    PresentHelperWindow.lst_all_slides.ListIndex = 0
+		    'PresentHelperWindow.lst_all_slides.ListIndex = 0
 		  End If
+		  
+		  Dim DontCare As Boolean
+		  
+		  Item = Item + numBlanks
+		  DontCare = GoFirstSlide(False)
+		  DontCare =  GoSetItem(Item)
 		  
 		  'Show
 		  App.MouseCursor = Nil
@@ -853,7 +888,11 @@ End
 		  Case "arrow"
 		    Self.MouseCursor = System.Cursors.StandardPointer
 		  Case "cross"
-		    Self.MouseCursor = System.Cursors.ArrowAllDirections
+		    #If Not TargetLinux
+		      Self.MouseCursor = cross
+		    #Else
+		      Self.MouseCursor = System.Cursors.ArrowAllDirections
+		    #EndIf
 		  Case "hidden"
 		    Self.MouseCursor = System.Cursors.InvisibleCursor
 		  Case "hourglass"
@@ -1020,15 +1059,18 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function GoFirstSlide() As Boolean
+		Protected Function GoFirstSlide(Update As Boolean = True) As Boolean
 		  CurrentSlide = 1
 		  XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
 		  
-		  If HelperActive Then
-		    PresentHelperWindow.ScrollTo currentSlide
-		  Else
-		    ResetPaint XCurrentSlide
+		  If Update Then
+		    If HelperActive Then
+		      PresentHelperWindow.ScrollTo currentSlide
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
 		  End If
+		  
 		  Return True
 		End Function
 	#tag EndMethod
@@ -1057,7 +1099,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function GoNextSection() As Boolean
+		Protected Function GoNextSection(Update As Boolean = True) As Boolean
 		  Dim xNewSlide As XmlNode
 		  Dim newSlide As Integer
 		  Dim oldName As String
@@ -1067,7 +1109,10 @@ End
 		  
 		  //++EMP, 15 Jan 2006
 		  // Updated to recognize new section type "blank" for program-generated blank slides
+		  //++JRC, 2 Apr 2009
+		  //Updated to allow the option of moving to the next section without updating the screen
 		  //
+		  
 		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'What is the section name?
 		  oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?
 		  newSlide = CurrentSlide + 1 'move forward a slide
@@ -1075,8 +1120,8 @@ End
 		  If xNewSlide = Nil Then // at end of presentation, just return
 		    Return True
 		  End If
-		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		  newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
+		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		  
 		  ' Check to see if we started on a blank slide, if so, use the section name from the slide we just moved to
 		  '++JRC: Or if this is a custom slide without a name
@@ -1093,8 +1138,8 @@ End
 		    newSlide = newSlide + 1
 		    xNewSlide = SetML.GetNextSlide(XCurrentSlide)
 		    If xNewSlide <> Nil Then
-		      newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		      newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
+		      newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		    End If
 		  Wend
 		  
@@ -1107,11 +1152,16 @@ End
 		  End If
 		  //--EMP, 15 Jan 06
 		  
-		  If HelperActive Then
-		    PresentHelperWindow.ScrollTo currentSlide
-		  Else
-		    ResetPaint XCurrentSlide
+		  '++JRC
+		  If Update Then
+		    If HelperActive Then
+		      PresentHelperWindow.ScrollTo currentSlide
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
 		  End If
+		  '--
+		  
 		  Return True
 		  
 		End Function
@@ -1506,8 +1556,10 @@ End
 		  xOldSlide = XCurrentSlide
 		  OldSlide = CurrentSlide
 		  
+		  
 		  ' Get a reference
 		  newGroup = SmartML.InsertAfter(XCurrentSlide.Parent.Parent, "slide_group")
+		  
 		  f = SongPickerWindow.Popup(presentation)
 		  If f <> Nil Then
 		    App.MouseCursor = System.Cursors.Wait
@@ -1517,6 +1569,8 @@ End
 		    '++JRC get song info for logging
 		    'Don't log in preview mode
 		    Dim Log As LogEntry
+		    
+		    NumberOfItems = NumberOfItems + 1
 		    
 		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
 		      ActLog.Append(New LogEntry(Globals.SongActivityLog))
@@ -1530,9 +1584,11 @@ End
 		      ActLog(i).DateAndTime = d
 		      ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
 		      ActLog(i).Presented = True
-		      ActLog(i).SetItemNumber = i  'Assign an index to this song
+		      ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
 		      ActLog(i).Displayed = false 'Set this to true if user displays this song
 		      
+		    Else '++JRC We should probably bail if f is Nil ;)
+		      Return False
 		    End If
 		    '--
 		    
@@ -1548,20 +1604,9 @@ End
 		      Return False
 		    End If
 		    
-		    '++JRC Log Song Presentation
-		    'TODO determine if the user actually displays this song (uug)
-		    'If Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW  Then
-		    'If NOT Log.AddLogEntry Then
-		    'InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		    'Else
-		    'Log.UpdateNumEntries(Globals.SongActivityLog)
-		    'End If
-		    'End If
-		    '--
-		    
 		    newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
 		    '++JRC
-		    SmartML.SetValueN(newgroup, "@ItemNumber", i)
+		    SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
 		    
 		    ' --- Move to where we need to be ---
 		    temp = SmartML.GetValue(newGroup, "@name")
@@ -1653,6 +1698,10 @@ End
 		  App.MouseCursor = System.Cursors.Wait
 		  newGroup = SmartML.ReplaceWithImportNode(newSetItem, scripture)
 		  
+		  '++JRC
+		  NumberOfItems = NumberOfItems + 1
+		  SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
+		  
 		  ' --- Move to where we need to be ---
 		  temp = SmartML.GetValue(newGroup, "@name")
 		  Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
@@ -1730,6 +1779,44 @@ End
 		    If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
 		  Next i
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GoSetItem(Item As Integer) As Boolean
+		  '++JRC, 2 Apr 2009
+		  'This function will advance the presentation to the set item indicated by Item
+		  Dim Result As Boolean
+		  Dim i As Integer
+		  Dim newType As String
+		  Dim newName As String
+		  Dim xSetItem As XmlNode
+		  Dim ItemName As String
+		  Dim ItemType As String
+		  Dim newItem As Integer
+		  
+		  If Item < 0 Then Return False
+		  If Item = 0 Then goto update
+		  
+		  newItem = (Item - numStyles) - numBlanks
+		  If newItem = 0 Then goto update
+		  
+		  i = 1
+		  Result = GoNextSection(False)
+		  While i < newItem
+		    Result = GoNextSection(False)
+		    i = i + 1
+		  Wend
+		  
+		  Update:
+		  
+		  If HelperActive Then
+		    PresentHelperWindow.ScrollTo CurrentSlide
+		  Else
+		    ResetPaint XCurrentSlide
+		  End If
+		  
+		  Return Result
+		End Function
 	#tag EndMethod
 
 
@@ -1875,6 +1962,18 @@ End
 
 	#tag Property, Flags = &h1
 		Protected curslideTransition As SlideTransitionEnum
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		NumberOfItems As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected numBlanks As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected numStyles As Integer
 	#tag EndProperty
 
 

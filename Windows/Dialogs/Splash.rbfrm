@@ -25,10 +25,11 @@ Begin Window Splash
    Visible         =   True
    Width           =   400
    Begin Timer closeTimer
+      BehaviorIndex   =   0
       ControlOrder    =   0
       Enabled         =   True
       Height          =   32
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Left            =   20
       LockedInPosition=   False
@@ -42,6 +43,7 @@ Begin Window Splash
       Top             =   256
       Visible         =   True
       Width           =   32
+      BehaviorIndex   =   0
    End
 End
 #tag EndWindow

@@ -53,6 +53,30 @@ Inherits Application
 		  Profiler.BeginProfilerEntry "App::Open"
 		  
 		  DebugWriter = New DebugOutput
+		  '++JRC For compatibilty with RB 2008 debugger
+		  'RB insists on outputing the executable in a subfolder (sigh)
+		  AppFolder = GetFolderItem("")
+		  #If DebugBuild Then
+		    AppFolder = AppFolder.Parent()
+		  #EndIf
+		  
+		  'Can't translate this until we've loaded the translator
+		  'Splash.SetStatus "Loading global settings..."
+		  MyGlobals = SmartML.XDocFromFile(AppFolder.Child("OpenSong Settings").Child("Globals"))
+		  If MyGlobals = Nil Then
+		    MsgBox SmartML.ErrorString + ": " + _
+		    AppFolder.Child("OpenSong Settings").AbsolutePath + _
+		    " (" + Str(SmartML.ErrorCode) + ")"
+		    Quit
+		    Return
+		  End If
+		  
+		  Dim parameters() As String = System.CommandLine.Split()
+		  IsPortable = parameters.IndexOf("--portable")>-1 Or parameters.IndexOf("/portable")>-1
+		  If Not IsPortable Then
+		    IsPortable =  SmartML.GetValueB(MyGlobals.DocumentElement, "portable/@installation", True, False)
+		  End If
+		  
 		  LoadPreferences
 		  '++JRC Couldn't load Preferences, Log error and Bail
 		  If MainPreferences = Nil Then
@@ -72,10 +96,6 @@ Inherits Application
 		  Dim d As New Date
 		  DebugWriter.Write d.SQLDateTime
 		  d = Nil
-		  AppFolder = GetFolderItem("")
-		  #If DebugBuild Then
-		    AppFolder = AppFolder.Parent()
-		  #EndIf
 		  
 		  //++
 		  // Initialize Factory objects
@@ -89,17 +109,6 @@ Inherits Application
 		  
 		  '++JRC Moved translation init to beginning so we can translate error & status Msgs
 		  Dim temp As String
-		  
-		  'Can't translate this until we've loaded the translator
-		  'Splash.SetStatus "Loading global settings..."
-		  MyGlobals = SmartML.XDocFromFile(AppFolder.Child("OpenSong Settings").Child("Globals"))
-		  If MyGlobals = Nil Then
-		    MsgBox SmartML.ErrorString + ": " + _
-		    AppFolder.Child("OpenSong Settings").AbsolutePath + _
-		    " (" + Str(SmartML.ErrorCode) + ")"
-		    Quit
-		    Return
-		  End If
 		  
 		  'Can't translate this until we've loaded the translator
 		  'Splash.SetStatus "Loading translation text..."
@@ -437,6 +446,8 @@ Inherits Application
 		  //++
 		  // Determine the proper folder for storing the documents (Songs, sets, etc.)
 		  // The documents folder is determined as follows:
+		  // If it is a portable installation, use AppDocumentsFolder
+		  // otherwise
 		  // 1. If there is a folder set in the user's preferences, use that if it exists.
 		  // 2. If there is nothing in the user's preferences, check the OpenSong Globals
 		  //     file.
@@ -452,6 +463,16 @@ Inherits Application
 		  Dim e As RuntimeException
 		  Dim mb As SelectFolderDialog
 		  Dim Folder As String
+		  
+		  If IsPortable Then
+		    f = AppDocumentsFolder
+		    If f = Nil Then
+		      e = New RuntimeException
+		      e.Message = "GetDocsFolder: AppDocumentsFolder not found for Portable version"
+		      Raise e
+		    End If
+		    Return f
+		  End If
 		  
 		  f = MainPreferences.GetValueFI(Prefs.kDocumentsFolder, Nil, False)
 		  If f = Nil Then
@@ -490,8 +511,8 @@ Inherits Application
 		      End Try
 		      
 		      If FileUtils.IsChild(f, AppFolder.Child("OpenSong Defaults")) Then
-		        MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(SpecialFolder.Documents.Child("OpenSong"))))
-		        f = SpecialFolder.Documents.Child("OpenSong")
+		        MsgBox(App.T.Translate("errors/docs_folder", FileUtils.GetDisplayFullPath(AppDocumentsFolderForOpenSong)))
+		        f = AppDocumentsFolderForOpenSong
 		      End If
 		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If //If FolderName <> ""
@@ -549,13 +570,7 @@ Inherits Application
 		  Dim f As FolderItem
 		  Dim folder As String
 		  
-		  #if TargetLinux
-		    f = SpecialFolder.Preferences.Child(".OpenSong")
-		  #elseif TargetMacOS
-		    f = SpecialFolder.Preferences
-		  #elseif TargetWin32
-		    f = SpecialFolder.Preferences.Child("OpenSong")
-		  #endif
+		  f = AppPreferencesFolderForOpenSong
 		  
 		  If FileUtils.CreateFolder(f) Then
 		    Return f
@@ -808,8 +823,8 @@ Inherits Application
 		  Dim ask As Boolean = True
 		  
 		  defaultsFolder = AppFolder.Child("OpenSong Defaults")
-		  If path = Nil Then path = SpecialFolder.Documents
-		  If Not path.Exists Then path = SpecialFolder.Documents
+		  If path = Nil Then path = AppDocumentsFolder
+		  If Not path.Exists Then path = AppDocumentsFolder
 		  mb = New SelectFolderDialog
 		  mb.InitialDirectory = path.Child(suggested)
 		  While ask
@@ -1191,7 +1206,6 @@ Inherits Application
 		  Dim r As New Random
 		  Dim f As FolderItem
 		  Dim inputStream As BinaryStream
-		  Dim QTExporter as QTGraphicsExporter
 		  Dim QualityValue As Integer
 		  Dim QualitySetting As ImageQualityEnum
 		  Dim saveSuccess As Boolean
@@ -1201,32 +1215,38 @@ Inherits Application
 		    If f <> Nil Then
 		      
 		      saveSuccess = False
-		      //First try to use the QuickTime exporter, that object allows quality variance
-		      QTExporter= GetQTGraphicsExporter("JPEG")
-		      If QTExporter <> Nil Then
-		        
-		        QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
-		        QualitySetting = ImageQualityEnum(QualityValue)
-		        
-		        Select Case QualitySetting
-		        Case ImageQualityEnum.FullCompression
-		          QTExporter.CompressionQuality = 0
-		        Case ImageQualityEnum.HighCompression
-		          QTExporter.CompressionQuality = 256
-		        Case ImageQualityEnum.LittleCompression
-		          QTExporter.CompressionQuality = 768
-		        Case ImageQualityEnum.LowCompression
-		          QTExporter.CompressionQuality = 1023
-		        Case ImageQualityEnum.NoCompression
-		          QTExporter.CompressionQuality = 1024
-		        Else
-		          QTExporter.CompressionQuality = 512
-		        End Select
-		        
-		        QTExporter.OutputFileType="JPEG"
-		        QTExporter.OutputFileCreator="ogle"
-		        saveSuccess = QTExporter.SavePicture(f,img)
-		      End If
+		      #If Not TargetLinux
+		        //First try to use the QuickTime exporter, that object allows quality variance
+		        //This object is not available on Linux, hence the compiler directives
+		        Dim QTExporter as QTGraphicsExporter
+		        QTExporter= GetQTGraphicsExporter("JPEG")
+		        If QTExporter <> Nil Then
+		          
+		          QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
+		          QualitySetting = ImageQualityEnum(QualityValue)
+		          
+		          Select Case QualitySetting
+		          Case ImageQualityEnum.FullCompression
+		            QTExporter.CompressionQuality = 0
+		          Case ImageQualityEnum.HighCompression
+		            QTExporter.CompressionQuality = 256
+		          Case ImageQualityEnum.LittleCompression
+		            QTExporter.CompressionQuality = 768
+		          Case ImageQualityEnum.LowCompression
+		            QTExporter.CompressionQuality = 1023
+		          Case ImageQualityEnum.NoCompression
+		            QTExporter.CompressionQuality = 1024
+		          Else
+		            QTExporter.CompressionQuality = 512
+		          End Select
+		          
+		          QTExporter.OutputFileType="JPEG"
+		          QTExporter.OutputFileCreator="ogle"
+		          saveSuccess = QTExporter.SavePicture(f,img)
+		        End If
+		      #Else
+		        Dim QTExporter As Object = Nil
+		      #EndIf
 		      
 		      If (QTExporter = Nil) Or (saveSuccess = False) Then
 		        Try
@@ -1364,6 +1384,86 @@ Inherits Application
 		ExcludeBackgroundsImages As Boolean
 	#tag EndComputedProperty
 
+	#tag Property, Flags = &h0
+		IsPortable As Boolean
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Dim f As FolderItem = Nil
+			  
+			  If IsPortable Then
+			    f = AppFolder.Child("OpenSong Settings")
+			    If Not f.Exists Then
+			      App.DebugWriter.Write("AppPreferencesFolder: Error 'OpenSong Settings' sub folder doesn't exist", 1)
+			    End If
+			  Else // standard - not portable
+			    // RealBasic SpecialFolder with some platform dependent subfolder
+			    #if TargetLinux
+			      f = SpecialFolder.Preferences.Child(".OpenSong")
+			    #elseif TargetMacOS
+			      f = SpecialFolder.Preferences
+			    #elseif TargetWin32
+			      f = SpecialFolder.Preferences.Child("OpenSong")
+			    #endif
+			  End If
+			  
+			  Return f
+			  
+			End Get
+		#tag EndGetter
+		AppPreferencesFolderForOpenSong As FolderItem
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  If IsPortable Then
+			    Dim f As FolderItem
+			    dim S As string
+			    S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@absdatapath")
+			    if S <> "" then
+			      f = GetFolderItem(S, FolderItem.PathTypeAbsolute)
+			    else
+			      S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@relativedatapath")
+			      if S = "" then
+			        S = "OpenSong Data"
+			      end if
+			      f = AppFolder.Child(S)
+			    end if
+			    
+			    If FileUtils.CreateFolder(f) Then
+			      Return f
+			    Else
+			      If f <> Nil Then App.DebugWriter.Write("DocumentsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
+			      Return Nil
+			    End If
+			  Else // standard - not portable
+			    #If TargetLinux
+			      Return SpecialFolder.UserHome
+			    #Else
+			      Return SpecialFolder.Documents
+			    #EndIf
+			  End If
+			End Get
+		#tag EndGetter
+		AppDocumentsFolder As FolderItem
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  If IsPortable Then
+			    Return AppDocumentsFolder
+			  Else
+			    Return AppDocumentsFolder.Child("OpenSong")
+			  End If
+			End Get
+		#tag EndGetter
+		AppDocumentsFolderForOpenSong As FolderItem
+	#tag EndComputedProperty
+
 
 	#tag Constant, Name = POINT_TO_CM, Type = Double, Dynamic = False, Default = \"0.035277778", Scope = Public
 	#tag EndConstant
@@ -1417,6 +1517,12 @@ Inherits Application
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="ExcludeBackgroundsImages"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="IsPortable"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

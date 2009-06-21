@@ -218,11 +218,14 @@ Protected Class FolderDB
 		  End If
 		  If filebox <> Nil Then filebox.DeleteAllRows
 		  songList = GetFilesInFolder(pathFilter, fileBox, showAll)
-		  Heapsort songList
 		  
 		  If fileBox <> Nil Then
 		    filebox.SortedColumn = 0
 		    filebox.Sort
+		  else
+		    'TH - only do a HeapSort if fileBox is Nil, as we don't use it if filling a listbox
+		    'this speeds up the SongPicker by factor of 3
+		    Heapsort songList
 		  End If
 		  
 		  Return songList
@@ -453,10 +456,14 @@ Protected Class FolderDB
 		  last = UBound(fileDict)
 		  
 		  For i As Integer = 0 To last
-		    fileList.Append fileDict(i).Value("Name")
+		    
 		    If list <> Nil Then
+		      'we currently don't use array if the list is Nil
 		      list.AddRow fileDict(i).Value("Name")
 		      list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
+		    else
+		      'list is Nil, array WILL be used
+		      fileList.Append fileDict(i).Value("Name")
 		    End If
 		  Next
 		  
@@ -839,7 +846,10 @@ Protected Class FolderDB
 		    list.SortedColumn = 0
 		    list.Sort
 		  End If
-		  Heapsort fileList
+		  
+		  'TH - we appear to do this twice, once here and once in GetFiles
+		  'Heapsort fileList
+		  
 		  Return fileList
 		End Function
 	#tag EndMethod
@@ -1005,43 +1015,52 @@ Protected Class FolderDB
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
 			Visible=true
 			Group="ID"
-			InitialValue="-2147483648"
+			InitialValue="2147483648"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Super"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ErrorCode"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ErrorString"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="NumFiles"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"

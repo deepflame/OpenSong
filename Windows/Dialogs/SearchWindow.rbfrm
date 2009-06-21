@@ -39,7 +39,7 @@ Begin Window SearchWindow
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   12
@@ -69,6 +69,7 @@ Begin Window SearchWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   371
+      BehaviorIndex   =   0
    End
    Begin GroupBox grp_search_match
       AutoDeactivate  =   True
@@ -79,7 +80,7 @@ Begin Window SearchWindow
       Enabled         =   True
       Height          =   62
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   12
@@ -98,6 +99,7 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   130
+      BehaviorIndex   =   1
       Begin RadioButton rad_match_exact
          AutoDeactivate  =   True
          BehaviorIndex   =   2
@@ -107,7 +109,7 @@ Begin Window SearchWindow
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_search_match"
          Italic          =   False
          Left            =   23
@@ -127,6 +129,7 @@ Begin Window SearchWindow
          Value           =   True
          Visible         =   True
          Width           =   105
+         BehaviorIndex   =   2
       End
       Begin RadioButton rad_match_begin
          AutoDeactivate  =   True
@@ -137,7 +140,7 @@ Begin Window SearchWindow
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_search_match"
          Italic          =   False
          Left            =   23
@@ -157,6 +160,7 @@ Begin Window SearchWindow
          Value           =   False
          Visible         =   True
          Width           =   105
+         BehaviorIndex   =   3
       End
    End
    Begin GroupBox grp_search_words
@@ -168,7 +172,7 @@ Begin Window SearchWindow
       Enabled         =   True
       Height          =   62
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   160
@@ -187,6 +191,7 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   130
+      BehaviorIndex   =   4
       Begin RadioButton rad_words_any
          AutoDeactivate  =   True
          BehaviorIndex   =   5
@@ -196,7 +201,7 @@ Begin Window SearchWindow
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_search_words"
          Italic          =   False
          Left            =   176
@@ -216,6 +221,7 @@ Begin Window SearchWindow
          Value           =   False
          Visible         =   True
          Width           =   105
+         BehaviorIndex   =   5
       End
       Begin RadioButton rad_words_all
          AutoDeactivate  =   True
@@ -226,7 +232,7 @@ Begin Window SearchWindow
          Enabled         =   True
          Height          =   19
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_search_words"
          Italic          =   False
          Left            =   176
@@ -246,6 +252,7 @@ Begin Window SearchWindow
          Value           =   False
          Visible         =   True
          Width           =   105
+         BehaviorIndex   =   6
       End
    End
    Begin PushButton btn_search_search
@@ -259,7 +266,7 @@ Begin Window SearchWindow
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   317
@@ -278,6 +285,7 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   66
+      BehaviorIndex   =   7
    End
    Begin ListBox lst_result
       AutoDeactivate  =   True
@@ -301,7 +309,7 @@ Begin Window SearchWindow
       Height          =   183
       HelpTag         =   ""
       Hierarchical    =   False
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
@@ -328,6 +336,7 @@ Begin Window SearchWindow
       Width           =   372
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
+      BehaviorIndex   =   8
    End
    Begin PushButton btn_search_ok
       AutoDeactivate  =   True
@@ -340,7 +349,7 @@ Begin Window SearchWindow
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   238
@@ -359,6 +368,7 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   67
+      BehaviorIndex   =   9
    End
    Begin PushButton btn_search_cancel
       AutoDeactivate  =   True
@@ -371,7 +381,7 @@ Begin Window SearchWindow
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   317
@@ -390,6 +400,7 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   67
+      BehaviorIndex   =   10
    End
    Begin StaticText lbl_search_example
       AutoDeactivate  =   True
@@ -401,7 +412,7 @@ Begin Window SearchWindow
       Enabled         =   True
       Height          =   23
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   12
@@ -424,6 +435,7 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   373
+      BehaviorIndex   =   11
    End
    Begin StaticText lbl_search_caption
       AutoDeactivate  =   True
@@ -435,7 +447,7 @@ Begin Window SearchWindow
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   12
@@ -458,6 +470,7 @@ Begin Window SearchWindow
       Underline       =   ""
       Visible         =   True
       Width           =   285
+      BehaviorIndex   =   12
    End
    Begin StaticText lbl_search_result
       AutoDeactivate  =   True
@@ -469,7 +482,7 @@ Begin Window SearchWindow
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   12
@@ -492,6 +505,7 @@ Begin Window SearchWindow
       Underline       =   ""
       Visible         =   True
       Width           =   368
+      BehaviorIndex   =   13
    End
 End
 #tag EndWindow

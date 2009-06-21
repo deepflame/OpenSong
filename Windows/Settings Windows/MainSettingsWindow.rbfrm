@@ -2069,7 +2069,11 @@ End
 		  App.CenterInControlScreen Me
 		  
 		  '++JRC Display DocsFolder Location
-		  nte_folder_folder.Text = DocsFolder.FormatFolderName
+		  If App.IsPortable Then
+		    nte_folder_folder.Text = "Portable Installation"
+		  Else
+		    nte_folder_folder.Text = DocsFolder.FormatFolderName
+		  End If
 		  '--
 		  //++ EMP July 2007
 		  // Add FolderDB flag
@@ -2084,8 +2088,12 @@ End
 		    pop_imagequality_compression.AddRow App.ImageQualityList(i)
 		  Next i
 		  
-		  QTExporter= GetQTGraphicsExporter("JPEG")
-		  pop_imagequality_compression.Enabled = (QTExporter <> Nil)
+		  #If Not TargetLinux
+		    QTExporter= GetQTGraphicsExporter("JPEG")
+		    pop_imagequality_compression.Enabled = (QTExporter <> Nil)
+		  #Else
+		    pop_imagequality_compression.Enabled = False
+		  #EndIf
 		  QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
 		  QualitySetting = ImageQualityEnum(QualityValue)
 		  
@@ -2114,10 +2122,14 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  DefaultDocsFolder = SpecialFolder.Documents.Child("OpenSong")
+		  If App.IsPortable Then
+		    rad_documents_default.Enabled = false
+		    rad_documents_custom.Enabled = false
+		    btn_browse.Enabled = false
+		  End If
+		  DefaultDocsFolder = App.AppDocumentsFolderForOpenSong
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
-		  
 		End Sub
 	#tag EndMethod
 
@@ -2150,6 +2162,7 @@ End
 		  logToConsoleSaved = App.MainPreferences.GetValueB(App.kLogOutput + App.kLogConsole, True)
 		  logAppend = App.MainPreferences.GetValueB(App.kLogOutput + App.kLogAppend, False)
 		  
+		  '++JRC Comatibilty with RB 2009
 		  chk_logging_console.Value = logToConsoleSaved
 		  chk_logging_append.Value = logAppend
 		  
@@ -2173,6 +2186,7 @@ End
 		  'Lets set Prompting to disabled by default
 		  PromptBeforePresenting =  App.MainPreferences.GetValueB(App.kPromptBeforePresenting, False)
 		  
+		  '++JRC Comatibilty with RB 2009
 		  chk_logging_enable.Value = ActivityLogEnabled
 		  chk_logging_prompt.Value = PromptBeforePresenting
 		End Sub
@@ -2538,7 +2552,7 @@ End
 		    dlg.InitialDirectory = logFileSaved.Parent
 		    dlg.SuggestedFileName = logFileSaved.Name
 		  Else
-		    dlg.InitialDirectory = SpecialFolder.Documents
+		    dlg.InitialDirectory = App.AppDocumentsFolder
 		    dlg.SuggestedFileName = "OpenSong.log"
 		  End If
 		  

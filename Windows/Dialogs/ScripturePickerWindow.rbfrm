@@ -33,7 +33,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   75
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   10
@@ -42,7 +42,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
@@ -52,6 +51,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   404
+      BehaviorIndex   =   0
       Begin SEditField edt_quick_lookup
          AcceptTabs      =   False
          Alignment       =   0
@@ -67,7 +67,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Format          =   ""
          Height          =   22
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_quick_lookup"
          Italic          =   False
          Left            =   20
@@ -81,7 +81,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Multiline       =   False
          Password        =   False
          ReadOnly        =   False
-         Scope           =   0
          ScrollbarHorizontal=   False
          ScrollbarVertical=   True
          Styled          =   False
@@ -97,6 +96,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          UseFocusRing    =   True
          Visible         =   True
          Width           =   298
+         BehaviorIndex   =   1
       End
       Begin PushButton btn_quick_lookup
          AutoDeactivate  =   True
@@ -109,7 +109,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Enabled         =   True
          Height          =   22
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_quick_lookup"
          Italic          =   False
          Left            =   330
@@ -118,7 +118,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockLeft        =   False
          LockRight       =   True
          LockTop         =   True
-         Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
@@ -128,6 +127,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   False
          Visible         =   True
          Width           =   69
+         BehaviorIndex   =   2
       End
       Begin StaticText lbl_quick_reference
          AutoDeactivate  =   True
@@ -139,7 +139,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_quick_lookup"
          Italic          =   False
          Left            =   20
@@ -149,7 +149,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockRight       =   False
          LockTop         =   True
          Multiline       =   False
-         Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   0
          TabStop         =   True
@@ -162,6 +161,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   False
          Visible         =   True
          Width           =   65
+         BehaviorIndex   =   3
       End
       Begin StaticText nte_quick_example
          AutoDeactivate  =   True
@@ -173,7 +173,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_quick_lookup"
          Italic          =   True
          Left            =   97
@@ -183,7 +183,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockRight       =   True
          LockTop         =   True
          Multiline       =   False
-         Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   0
          TabStop         =   True
@@ -196,6 +195,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   False
          Visible         =   True
          Width           =   221
+         BehaviorIndex   =   4
       End
    End
    Begin PushButton btn_add
@@ -209,7 +209,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   456
@@ -218,7 +218,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   False
-      Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
@@ -228,6 +227,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   69
+      BehaviorIndex   =   5
    End
    Begin PushButton btn_done
       AutoDeactivate  =   True
@@ -240,7 +240,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   456
@@ -249,7 +249,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   False
-      Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
@@ -259,6 +258,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   69
+      BehaviorIndex   =   6
    End
    Begin PushButton btn_insert
       AutoDeactivate  =   True
@@ -271,7 +271,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   456
@@ -280,7 +280,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   False
-      Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
@@ -290,6 +289,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   False
       Width           =   69
+      BehaviorIndex   =   7
    End
    Begin PushButton btn_search
       AutoDeactivate  =   True
@@ -302,7 +302,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   425
@@ -311,7 +311,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
@@ -321,6 +320,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   135
+      BehaviorIndex   =   8
    End
    Begin GroupBox grp_books
       AutoDeactivate  =   True
@@ -331,7 +331,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   372
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   10
@@ -340,7 +340,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
       TabStop         =   True
@@ -350,7 +349,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   200
+      BehaviorIndex   =   9
       Begin HighlightList lst_scr_ot
+         =               =   1
          AutoDeactivate  =   True
          AutoHideScrollbars=   True
          BehaviorIndex   =   10
@@ -372,7 +373,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Height          =   325
          HelpTag         =   ""
          Hierarchical    =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_books"
          InitialValue    =   ""
          Italic          =   ""
@@ -383,7 +384,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockRight       =   False
          LockTop         =   True
          RequiresSelection=   ""
-         Scope           =   0
          ScrollbarHorizontal=   ""
          ScrollBarVertical=   True
          SelectionType   =   0
@@ -399,8 +399,10 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Width           =   80
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
+         BehaviorIndex   =   10
       End
       Begin HighlightList lst_scr_nt
+         =               =   1
          AutoDeactivate  =   True
          AutoHideScrollbars=   True
          BehaviorIndex   =   11
@@ -422,7 +424,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Height          =   325
          HelpTag         =   ""
          Hierarchical    =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_books"
          InitialValue    =   ""
          Italic          =   ""
@@ -433,7 +435,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockRight       =   True
          LockTop         =   True
          RequiresSelection=   ""
-         Scope           =   0
          ScrollbarHorizontal=   ""
          ScrollBarVertical=   True
          SelectionType   =   0
@@ -449,18 +450,19 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Width           =   85
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
+         BehaviorIndex   =   11
       End
       Begin StaticText lbl_scr_ot
          AutoDeactivate  =   True
          BehaviorIndex   =   12
          Bold            =   ""
-         ControlOrder    =   24
+         ControlOrder    =   12
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_books"
          Italic          =   ""
          Left            =   20
@@ -470,7 +472,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockRight       =   ""
          LockTop         =   True
          Multiline       =   ""
-         Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   0
          TabStop         =   True
@@ -483,18 +484,19 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   ""
          Visible         =   True
          Width           =   80
+         BehaviorIndex   =   12
       End
       Begin StaticText lbl_scr_nt
          AutoDeactivate  =   True
          BehaviorIndex   =   13
          Bold            =   ""
-         ControlOrder    =   25
+         ControlOrder    =   13
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_books"
          Italic          =   ""
          Left            =   112
@@ -504,7 +506,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockRight       =   True
          LockTop         =   True
          Multiline       =   ""
-         Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   0
          TabStop         =   True
@@ -517,112 +518,14 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   ""
          Visible         =   True
          Width           =   85
+         BehaviorIndex   =   13
       End
    End
    Begin HighlightList lst_scr_chapter
+      =               =   1
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
       BehaviorIndex   =   14
-      Bold            =   False
-      ColumnCount     =   1
-      ColumnsResizable=   False
-      ColumnWidths    =   ""
-      ControlOrder    =   12
-      DataField       =   ""
-      DataSource      =   ""
-      DefaultRowHeight=   -1
-      Enabled         =   True
-      EnableDrag      =   False
-      EnableDragReorder=   False
-      GridLinesHorizontal=   0
-      GridLinesVertical=   0
-      HasHeading      =   False
-      HeadingIndex    =   -1
-      Height          =   325
-      HelpTag         =   ""
-      Hierarchical    =   False
-      Index           =   -2147483648
-      InitialParent   =   ""
-      InitialValue    =   ""
-      Italic          =   False
-      Left            =   228
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   True
-      RequiresSelection=   ""
-      Scope           =   0
-      ScrollbarHorizontal=   False
-      ScrollBarVertical=   True
-      SelectionType   =   0
-      TabIndex        =   6
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   123
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   50
-      _ScrollOffset   =   0
-      _ScrollWidth    =   -1
-   End
-   Begin HighlightList lst_scr_from_verse
-      AutoDeactivate  =   True
-      AutoHideScrollbars=   True
-      BehaviorIndex   =   15
-      Bold            =   False
-      ColumnCount     =   1
-      ColumnsResizable=   False
-      ColumnWidths    =   ""
-      ControlOrder    =   13
-      DataField       =   ""
-      DataSource      =   ""
-      DefaultRowHeight=   -1
-      Enabled         =   True
-      EnableDrag      =   False
-      EnableDragReorder=   False
-      GridLinesHorizontal=   0
-      GridLinesVertical=   0
-      HasHeading      =   False
-      HeadingIndex    =   -1
-      Height          =   325
-      HelpTag         =   ""
-      Hierarchical    =   False
-      Index           =   -2147483648
-      InitialParent   =   ""
-      InitialValue    =   ""
-      Italic          =   False
-      Left            =   290
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   True
-      RequiresSelection=   ""
-      Scope           =   0
-      ScrollbarHorizontal=   False
-      ScrollBarVertical=   True
-      SelectionType   =   0
-      TabIndex        =   7
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   123
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   50
-      _ScrollOffset   =   0
-      _ScrollWidth    =   -1
-   End
-   Begin HighlightList lst_scr_to_verse
-      AutoDeactivate  =   True
-      AutoHideScrollbars=   True
-      BehaviorIndex   =   16
       Bold            =   False
       ColumnCount     =   1
       ColumnsResizable=   False
@@ -641,22 +544,21 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Height          =   325
       HelpTag         =   ""
       Hierarchical    =   False
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
-      Left            =   364
+      Left            =   228
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   True
       RequiresSelection=   ""
-      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollBarVertical=   True
       SelectionType   =   0
-      TabIndex        =   8
+      TabIndex        =   6
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
@@ -668,17 +570,18 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Width           =   50
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
+      BehaviorIndex   =   14
    End
    Begin GroupBox grp_options_version
       AutoDeactivate  =   True
-      BehaviorIndex   =   17
+      BehaviorIndex   =   15
       Bold            =   False
       Caption         =   "Version"
       ControlOrder    =   15
       Enabled         =   True
       Height          =   55
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   425
@@ -687,8 +590,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
-      TabIndex        =   9
+      TabIndex        =   7
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
@@ -697,9 +599,10 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   135
+      BehaviorIndex   =   15
       Begin PopupMenu pop_scr_version
          AutoDeactivate  =   True
-         BehaviorIndex   =   18
+         BehaviorIndex   =   16
          Bold            =   False
          ControlOrder    =   16
          DataField       =   ""
@@ -707,7 +610,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_options_version"
          InitialValue    =   ""
          Italic          =   False
@@ -718,7 +621,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   True
-         Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
@@ -728,18 +630,19 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   False
          Visible         =   True
          Width           =   110
+         BehaviorIndex   =   16
       End
    End
    Begin GroupBox grp_options_verses_per_slide
       AutoDeactivate  =   True
-      BehaviorIndex   =   19
+      BehaviorIndex   =   17
       Bold            =   False
       Caption         =   "Verses per slide"
       ControlOrder    =   17
       Enabled         =   True
       Height          =   50
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   425
@@ -748,8 +651,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
-      TabIndex        =   10
+      TabIndex        =   8
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
@@ -758,17 +660,18 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   135
+      BehaviorIndex   =   17
       Begin PopupMenu pop_scr_verses
          AutoDeactivate  =   True
-         BehaviorIndex   =   20
+         BehaviorIndex   =   18
          Bold            =   ""
-         ControlOrder    =   26
+         ControlOrder    =   22
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_options_verses_per_slide"
          InitialValue    =   2
          Italic          =   ""
@@ -779,7 +682,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   True
-         Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
@@ -789,18 +691,19 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Underline       =   ""
          Visible         =   True
          Width           =   110
+         BehaviorIndex   =   18
       End
    End
    Begin GroupBox grp_options_format
       AutoDeactivate  =   True
-      BehaviorIndex   =   21
+      BehaviorIndex   =   19
       Bold            =   False
       Caption         =   "Format"
       ControlOrder    =   18
       Enabled         =   True
       Height          =   67
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   425
@@ -809,8 +712,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
-      TabIndex        =   11
+      TabIndex        =   9
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
@@ -819,16 +721,17 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   135
+      BehaviorIndex   =   19
       Begin RadioButton rad_format_paragraph
          AutoDeactivate  =   True
-         BehaviorIndex   =   22
+         BehaviorIndex   =   20
          Bold            =   False
          Caption         =   "Paragraph"
          ControlOrder    =   19
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_options_format"
          Italic          =   False
          Left            =   435
@@ -837,7 +740,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   True
-         Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
@@ -848,17 +750,18 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Value           =   True
          Visible         =   True
          Width           =   120
+         BehaviorIndex   =   20
       End
       Begin RadioButton rad_format_verse
          AutoDeactivate  =   True
-         BehaviorIndex   =   23
+         BehaviorIndex   =   21
          Bold            =   False
          Caption         =   "Verse"
          ControlOrder    =   20
          Enabled         =   True
          Height          =   20
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_options_format"
          Italic          =   False
          Left            =   435
@@ -867,7 +770,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   True
-         Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
@@ -878,11 +780,12 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Value           =   False
          Visible         =   True
          Width           =   120
+         BehaviorIndex   =   21
       End
    End
    Begin Checkbox chk_shownumbers
       AutoDeactivate  =   True
-      BehaviorIndex   =   24
+      BehaviorIndex   =   22
       Bold            =   ""
       Caption         =   "Display verse numbers"
       ControlOrder    =   21
@@ -891,7 +794,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   425
@@ -900,9 +803,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   ""
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
-      State           =   1
-      TabIndex        =   12
+      TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "System"
@@ -912,23 +813,160 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Value           =   True
       Visible         =   True
       Width           =   130
+      BehaviorIndex   =   22
+   End
+   Begin StaticText txt_verse_dash
+      AutoDeactivate  =   True
+      BehaviorIndex   =   23
+      Bold            =   False
+      ControlOrder    =   23
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   350
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      Multiline       =   False
+      TabIndex        =   11
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "-"
+      TextAlign       =   1
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   107
+      Underline       =   False
+      Visible         =   True
+      Width           =   10
+      BehaviorIndex   =   23
+   End
+   Begin HighlightList lst_scr_from_verse
+      =               =   1
+      AutoDeactivate  =   True
+      AutoHideScrollbars=   True
+      BehaviorIndex   =   24
+      Bold            =   False
+      ColumnCount     =   1
+      ColumnsResizable=   False
+      ColumnWidths    =   ""
+      ControlOrder    =   24
+      DataField       =   ""
+      DataSource      =   ""
+      DefaultRowHeight=   -1
+      Enabled         =   True
+      EnableDrag      =   False
+      EnableDragReorder=   False
+      GridLinesHorizontal=   0
+      GridLinesVertical=   0
+      HasHeading      =   False
+      HeadingIndex    =   -1
+      Height          =   325
+      HelpTag         =   ""
+      Hierarchical    =   False
+      Index           =   2147483648
+      InitialParent   =   ""
+      InitialValue    =   ""
+      Italic          =   False
+      Left            =   290
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   False
+      ScrollBarVertical=   True
+      SelectionType   =   0
+      TabIndex        =   12
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   123
+      Underline       =   False
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   50
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
+      BehaviorIndex   =   24
+   End
+   Begin HighlightList lst_scr_to_verse
+      =               =   1
+      AutoDeactivate  =   True
+      AutoHideScrollbars=   True
+      BehaviorIndex   =   25
+      Bold            =   False
+      ColumnCount     =   1
+      ColumnsResizable=   False
+      ColumnWidths    =   ""
+      ControlOrder    =   25
+      DataField       =   ""
+      DataSource      =   ""
+      DefaultRowHeight=   -1
+      Enabled         =   True
+      EnableDrag      =   False
+      EnableDragReorder=   False
+      GridLinesHorizontal=   0
+      GridLinesVertical=   0
+      HasHeading      =   False
+      HeadingIndex    =   -1
+      Height          =   325
+      HelpTag         =   ""
+      Hierarchical    =   False
+      Index           =   2147483648
+      InitialParent   =   ""
+      InitialValue    =   ""
+      Italic          =   False
+      Left            =   364
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      RequiresSelection=   ""
+      ScrollbarHorizontal=   False
+      ScrollBarVertical=   True
+      SelectionType   =   0
+      TabIndex        =   13
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "Arial"
+      TextSize        =   10
+      Top             =   123
+      Underline       =   False
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   50
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
+      BehaviorIndex   =   25
    End
    Begin SEditField edt_preview
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   25
+      BehaviorIndex   =   26
       Bold            =   False
       Border          =   True
-      ControlOrder    =   22
+      ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   71
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   10
@@ -942,11 +980,10 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Multiline       =   True
       Password        =   False
       ReadOnly        =   True
-      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollbarVertical=   True
       Styled          =   False
-      TabIndex        =   13
+      TabIndex        =   14
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   ""
@@ -958,40 +995,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       UseFocusRing    =   True
       Visible         =   True
       Width           =   404
-   End
-   Begin StaticText txt_verse_dash
-      AutoDeactivate  =   True
       BehaviorIndex   =   26
-      Bold            =   False
-      ControlOrder    =   23
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   350
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      TabIndex        =   14
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   "-"
-      TextAlign       =   1
-      TextColor       =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      Top             =   107
-      Underline       =   False
-      Visible         =   True
-      Width           =   10
    End
    Begin StaticText txt_verse_colon
       AutoDeactivate  =   True
@@ -1003,7 +1007,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   280
@@ -1013,7 +1017,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockRight       =   True
       LockTop         =   True
       Multiline       =   False
-      Scope           =   0
       TabIndex        =   15
       TabPanelIndex   =   0
       TabStop         =   True
@@ -1026,6 +1029,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   10
+      BehaviorIndex   =   27
    End
    Begin StaticText lbl_scr_from_verse
       AutoDeactivate  =   True
@@ -1037,7 +1041,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   290
@@ -1047,7 +1051,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockRight       =   True
       LockTop         =   True
       Multiline       =   ""
-      Scope           =   0
       TabIndex        =   16
       TabPanelIndex   =   0
       TabStop         =   True
@@ -1060,6 +1063,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   ""
       Visible         =   True
       Width           =   55
+      BehaviorIndex   =   28
    End
    Begin StaticText lbl_scr_paragraph
       AutoDeactivate  =   True
@@ -1071,7 +1075,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   228
@@ -1081,7 +1085,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockRight       =   True
       LockTop         =   True
       Multiline       =   ""
-      Scope           =   0
       TabIndex        =   17
       TabPanelIndex   =   0
       TabStop         =   True
@@ -1094,6 +1097,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   ""
       Visible         =   True
       Width           =   50
+      BehaviorIndex   =   29
    End
    Begin StaticText lbl_src_preview
       AutoDeactivate  =   True
@@ -1105,7 +1109,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   10
@@ -1115,7 +1119,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockRight       =   ""
       LockTop         =   ""
       Multiline       =   ""
-      Scope           =   0
       TabIndex        =   18
       TabPanelIndex   =   0
       TabStop         =   True
@@ -1128,6 +1131,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   ""
       Visible         =   True
       Width           =   404
+      BehaviorIndex   =   30
    End
    Begin GroupBox grp_options_chars_per_slide
       AutoDeactivate  =   True
@@ -1138,7 +1142,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   50
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   425
@@ -1147,7 +1151,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
       TabIndex        =   19
       TabPanelIndex   =   0
       TabStop         =   True
@@ -1157,6 +1160,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   False
       Visible         =   True
       Width           =   135
+      BehaviorIndex   =   31
       Begin SEditFieldNumeric edt_scr_characters
          AcceptTabs      =   ""
          Alignment       =   0
@@ -1169,11 +1173,11 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
-         EnforceRange    =   True
+         EnforceRange    =   False
          Format          =   ""
          Height          =   22
          HelpTag         =   ""
-         Index           =   -2147483648
+         Index           =   2147483648
          InitialParent   =   "grp_options_chars_per_slide"
          Italic          =   ""
          Left            =   435
@@ -1189,7 +1193,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Multiline       =   ""
          Password        =   ""
          ReadOnly        =   ""
-         Scope           =   0
          ScrollbarHorizontal=   ""
          ScrollbarVertical=   False
          SignalRangeErrors=   0
@@ -1206,6 +1209,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          UseFocusRing    =   True
          Visible         =   True
          Width           =   110
+         BehaviorIndex   =   32
       End
    End
    Begin StaticText lbl_scr_to_verse
@@ -1218,7 +1222,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   364
@@ -1228,7 +1232,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockRight       =   True
       LockTop         =   True
       Multiline       =   ""
-      Scope           =   0
       TabIndex        =   20
       TabPanelIndex   =   0
       TabStop         =   True
@@ -1241,6 +1244,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Underline       =   ""
       Visible         =   True
       Width           =   55
+      BehaviorIndex   =   33
    End
 End
 #tag EndWindow
@@ -1579,7 +1583,9 @@ End
 		    sep = EndOfLine
 		  End If
 		  
-		  edt_preview.Text = Join(verses, sep)
+		  '++JRC Add support for displaying the same verse from 2 bibles versions (thanks Ovidiu).
+		  'edt_preview.Text = Join(verses, sep)
+		  edt_preview.Text = ReplaceAll(Join(verses, sep),"|", Chr(10)) 
 		End Sub
 	#tag EndMethod
 
@@ -1875,14 +1881,14 @@ End
 		#tag EndNote
 		#tag Getter
 			Get
-			  Return PresentationIsRunning
+			Return PresentationIsRunning
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  btn_insert.Visible = value
-			  btn_insert.Enabled = value
-			  PresentationIsRunning = value
+			btn_insert.Visible = value
+			btn_insert.Enabled = value
+			PresentationIsRunning = value
 			End Set
 		#tag EndSetter
 		Live As Boolean
@@ -1975,6 +1981,14 @@ End
 #tag Events btn_add
 	#tag Event
 		Sub Action()
+		  If Val(edt_scr_characters.Text) < 1 Or  Val(edt_scr_characters.Text) > 1000 Then
+		    InputBox.Message App.T.Translate("errors/chars_per_slide")
+		    CharsPerSlide(500)
+		    'TODO: Should we return here or use the default value and add the scripture?
+		    Return
+		  End If
+		  SendCommand ScripturePickerController.cmdFormatChanged
+		  
 		  SendCommand(ScripturePickerController.cmdAddToSet)
 		  Me.Default = True
 		End Sub
@@ -1984,6 +1998,12 @@ End
 	#tag Event
 		Sub Action()
 		  App.DebugWriter.Write "ScripturePickerWindow.btn_done.Action"
+		  'TODO: determine if we should  save the values when the user presses the Done button
+		  If Val(edt_scr_characters.Text) < 1 Or  Val(edt_scr_characters.Text) > 1000 Then
+		    CharsPerSlide(500)
+		  End If
+		  SendCommand ScripturePickerController.cmdFormatChanged
+		  
 		  SendCommand(ScripturePickerController.cmdDone)
 		End Sub
 	#tag EndEvent
@@ -2035,42 +2055,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events lst_scr_from_verse
-	#tag Event
-		Sub Change()
-		  Dim newSel As Integer
-		  newSel = Me.ListIndex
-		  
-		  If newSel = -1 Then Return
-		  If newSel = ActiveFromVerse Then Return
-		  
-		  If newSel > ActiveThruVerse Then
-		    ActiveThruVerse = newSel
-		    lst_scr_to_verse.ListIndex = newSel
-		  End If
-		  
-		  PassageChanged
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events lst_scr_to_verse
-	#tag Event
-		Sub Change()
-		  Dim NewSel As Integer
-		  NewSel = Me.ListIndex
-		  
-		  If NewSel = -1 Then Return // List maintenance in progress
-		  If NewSel = ActiveThruVerse Then Return
-		  
-		  // If a value less than ActiveFromVerse is selected, move it also
-		  If NewSel < ActiveFromVerse Then
-		    ActiveFromVerse = NewSel // Set first to keep Change from firing
-		    lst_scr_from_verse.ListIndex = NewSel
-		  End If
-		  PassageChanged
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events pop_scr_version
 	#tag Event
 		Sub Change()
@@ -2111,11 +2095,48 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events lst_scr_from_verse
+	#tag Event
+		Sub Change()
+		  Dim newSel As Integer
+		  newSel = Me.ListIndex
+		  
+		  If newSel = -1 Then Return
+		  If newSel = ActiveFromVerse Then Return
+		  
+		  If newSel > ActiveThruVerse Then
+		    ActiveThruVerse = newSel
+		    lst_scr_to_verse.ListIndex = newSel
+		  End If
+		  
+		  PassageChanged
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events lst_scr_to_verse
+	#tag Event
+		Sub Change()
+		  Dim NewSel As Integer
+		  NewSel = Me.ListIndex
+		  
+		  If NewSel = -1 Then Return // List maintenance in progress
+		  If NewSel = ActiveThruVerse Then Return
+		  
+		  // If a value less than ActiveFromVerse is selected, move it also
+		  If NewSel < ActiveFromVerse Then
+		    ActiveFromVerse = NewSel // Set first to keep Change from firing
+		    lst_scr_from_verse.ListIndex = NewSel
+		  End If
+		  PassageChanged
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events edt_scr_characters
 	#tag Event
 		Sub TextChange()
 		  If PropertiesUpdating Then Return
-		  SendCommand ScripturePickerController.cmdFormatChanged
+		  'No need to update format until user presses the Add or Done buttons
+		  'SendCommand ScripturePickerController.cmdFormatChanged
 		End Sub
 	#tag EndEvent
 #tag EndEvents

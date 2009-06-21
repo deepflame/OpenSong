@@ -146,7 +146,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   4
       TabPanelIndex   =   0
       Top             =   35
-      Value           =   0
+      Value           =   1
       Visible         =   True
       Width           =   250
       Begin Canvas can_controls_songs_mode
@@ -6353,7 +6353,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   0
             TabPanelIndex   =   6
             Top             =   146
-            Value           =   1
+            Value           =   0
             Visible         =   True
             Width           =   340
             Begin GroupBox grp_external_presentation_settings
@@ -6637,7 +6637,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Caption         =   "Include the presentation in the OpenSong set"
                   DataField       =   ""
                   DataSource      =   ""
-                  Enabled         =   True
+                  Enabled         =   False
                   Height          =   20
                   HelpTag         =   ""
                   Index           =   -2147483648
@@ -8485,6 +8485,38 @@ End
 		    
 		    can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
 		    lst_set_items.List(CurrentInSetItem) = edt_image_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    
+		  Case "external"
+		    SmartML.SetValue xgroup, "@name", edt_external_name.Text
+		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
+		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
+		    
+		    If btn_external_presentation.GetStuck() Then
+		      SmartML.SetValue xgroup, "@application", "presentation"
+		      
+		      If rad_external_host_powerpoint.Value Then
+		        SmartML.SetValue xgroup, "@host", "ppt"
+		      ElseIf rad_external_host_pptview.Value Then
+		        SmartML.SetValue xgroup, "@host", "pptview"
+		      ElseIf rad_external_host_impress.Value Then
+		        SmartML.SetValue xgroup, "@host", "impress"
+		      End If
+		      SmartML.SetValue xgroup, "@filename", edt_external_presentation_file.Text
+		      SmartML.SetValueB xgroup, "@loop_presentation", chk_external_loop_presentation.Value
+		      
+		    ElseIf btn_external_videolan.GetStuck() Then
+		      SmartML.SetValue xgroup, "@application", "videolan"
+		      'Not supported yet
+		      
+		    ElseIf btn_external_application.GetStuck() Then
+		      SmartML.SetValue xgroup, "@application", "launch"
+		      
+		      SmartML.SetValue xgroup, "@app_filename", edt_external_application_filename.Text
+		      SmartML.SetValue xgroup, "@app_parameters", edt_external_application_parameters.Text
+		      SmartML.SetValueB xgroup, "@app_wait_to_finish", chk_external_wait_for_application.Value
+		    End If
+		    lst_set_items.List(CurrentInSetItem) = edt_external_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    
 		  Case "style"
 		    
 		  Case Else
@@ -12885,10 +12917,73 @@ End
 		      pge_contents.Value = 5
 		      LastSetPane = 5
 		    End If
+		    Status_InSetEditable = False ' keeps the status from Refresh Falseing for every change
 		    
 		    rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
 		    rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
 		    rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
+		    
+		    edt_external_name.Text = SmartML.GetValue(xgroup, "@name")
+		    Select Case SmartML.GetValue(xgroup, "@application")
+		    Case "presentation"
+		      btn_external_presentation.SetStuck( True )
+		      btn_external_videolan.SetStuck( False )
+		      btn_external_application.SetStuck( False )
+		      pge_externals.Value = 1
+		      
+		      Select Case SmartML.GetValue(xgroup, "@host")
+		      Case "ppt"
+		        rad_external_host_powerpoint.Value = True
+		      Case "pptview"
+		        rad_external_host_pptview.Value = True
+		      Case "impress"
+		        rad_external_host_impress.Value = True
+		      End Select
+		      
+		      edt_external_presentation_file.Text = SmartML.GetValue(xgroup, "@filename")
+		      chk_external_loop_presentation.Value = SmartML.GetValueB(xgroup, "@loop_presentation")
+		      
+		    Case "videolan"
+		      btn_external_presentation.SetStuck( False )
+		      btn_external_videolan.SetStuck( True )
+		      btn_external_application.SetStuck( False )
+		      pge_externals.Value = 2
+		      'Not supported yet
+		      
+		    Case "launch"
+		      btn_external_presentation.SetStuck( False )
+		      btn_external_videolan.SetStuck( False )
+		      btn_external_application.SetStuck( True )
+		      pge_externals.Value = 3
+		      
+		      edt_external_application_filename.Text = SmartML.GetValue(xgroup, "@app_filename")
+		      edt_external_application_parameters.Text = SmartML.GetValue(xgroup, "@app_parameters")
+		      chk_external_wait_for_application.Value = SmartML.GetValueB(xgroup, "@app_wait_to_finish")
+		      
+		    Else
+		      btn_external_presentation.SetStuck( False )
+		      btn_external_videolan.SetStuck( False )
+		      btn_external_application.SetStuck( False )
+		      pge_externals.Value = 0
+		      
+		      rad_external_host_powerpoint.Value = False
+		      rad_external_host_pptview.Value = False
+		      rad_external_host_impress.Value = False
+		      
+		      edt_external_presentation_file.Text = ""
+		      chk_external_loop_presentation.Value = False
+		      edt_external_application_filename.Text = ""
+		      edt_external_application_parameters.Text = ""
+		      chk_external_wait_for_application.Value = True
+		      
+		    End Select
+		    edt_external_notes.Text = SmartML.GetValue(xgroup, "notes")
+		    chk_external_loop.Value = SmartML.GetValueB(xgroup, "@loop", False)
+		    
+		    Status_InSetOpen = True
+		    Status_InSetEditable = True
+		    Status_InSetChanged = False
+		    EnableMenuItems
 		    
 		  Case Else
 		    Status_InSetOpen = True
@@ -15238,6 +15333,10 @@ End
 		    End If
 		  End If
 		  
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -15280,6 +15379,10 @@ End
 		    End If
 		  End If
 		  
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -15316,12 +15419,26 @@ End
 		    End If
 		  End If
 		  
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub MouseEnter()
 		  SetHelp "external_slide/videolan"
 		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_loop_presentation
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -15344,6 +15461,84 @@ End
 		  
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  Dim f As FolderItem
+		  
+		  If PresentationFactory.PowerPointAvailable() And PresentationFactory.OpenOfficeAvailable() Then
+		    dlg.Filter = PresentationFileTypes.All
+		  ElseIf PresentationFactory.PowerPointAvailable() Or PresentationFactory.PPTViewAvailable() Then
+		    dlg.Filter = PresentationFileTypes.PPTFiles
+		  ElseIf PresentationFactory.OpenOfficeAvailable() Then
+		    dlg.Filter = PresentationFileTypes.ODPFiles + PresentationFileTypes.PPTFiles
+		  Else
+		    MsgBox(App.T.Translate("errors/presentations/nohost"))
+		    Return
+		  End If
+		  
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("external_slide/presentation_file/@caption")
+		  dlg.PromptText = App.T.Translate("external_slide/presentation_file")
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_external_presentation_file.Text = f.AbsolutePath()
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_host_impress
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_host_pptview
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_host_powerpoint
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_presentation_file
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_embed_presentation
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_external_application_filename
 	#tag Event
@@ -15362,6 +15557,54 @@ End
 		Sub MouseExit()
 		  SetHelp ""
 		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  Dim f As FolderItem
+		  
+		  dlg.Filter = "*.*"
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("external_slide/application_filename/@caption")
+		  dlg.PromptText = App.T.Translate("external_slide/application_filename")
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_external_application_filename.Text = f.AbsolutePath()
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_application_filename
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_wait_for_application
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_application_parameters
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 #tag EndEvents

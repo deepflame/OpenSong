@@ -236,7 +236,7 @@
     <header caption="External Slide Editor"/>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <application caption="Application"/>
-    <presentation caption="PowerPoint">Use this slide to show a presentation using Microsoft PowerPoint or the free and open source OpenOffice.org Impress.</presentation>
+    <presentation caption="Presentation">Use this slide to show a presentation using Microsoft PowerPoint or the free and open source OpenOffice.org Impress.</presentation>
     <videolan caption="Videolan">Use this slide to run a media file using the versatile and open source media player Videolan (VLC).</videolan>
     <application caption="Application">Use this slide to run an external programm by using a command line.</application>
     <no_application caption="No application">
@@ -255,7 +255,7 @@
       <videolan_not_available caption="Videolan support is not available yet."/>
     </videolan_settings>
     <application_settings caption="Application launcher settings">
-      <application_filename caption="Path to application executable"/>
+      <application_filename caption="Path to application executable">Choose the main executable file of the program that should be launched.</application_filename>
       <application_parameters caption="Application parameters"/>
       <wait_for_application caption="Wait for external application to finish before continuing."/>
     </application_settings>

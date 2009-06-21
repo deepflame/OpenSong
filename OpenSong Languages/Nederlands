@@ -236,7 +236,7 @@
     <header caption="Wijzigen extern programma dia"/>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <application caption="Toepassing"/>
-    <presentation caption="PowerPoint">Gebruik deze dia om een persentatie te tonen met behulp van Microsoft PowerPoint of het gratis en open source OpenOffice.org Impress.</presentation>
+    <presentation caption="Presentatie">Gebruik deze dia om een presentatie te tonen met behulp van Microsoft PowerPoint of het gratis en open source OpenOffice.org Impress.</presentation>
     <videolan caption="Videolan">Gebruik deze dia om een mediabestand af te spelen met de veelzijdige en open source media speler Videolan (VLC).</videolan>
     <application caption="Toepassing">Gebruik deze dia om een extern programma te starten door middel van een commandoregel.</application>
     <no_application caption="Geen toepassing">
@@ -255,7 +255,7 @@
       <videolan_not_available caption="Ondersteuning voor Videolan is nog niet beschikbaar."/>
     </videolan_settings>
     <application_settings caption="Programma opstart instellingen">
-      <application_filename caption="Bestandslocatie van extern programma"/>
+      <application_filename caption="Bestandslocatie van extern programma">Kies het het programm dat moet worden uitgevoerd.</application_filename>
       <application_parameters caption="Programma parameters"/>
       <wait_for_application caption="Wacht met het doorgaan naar de volgende dia tot het programma is geëindigd"/>
     </application_settings>

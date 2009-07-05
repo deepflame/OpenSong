@@ -1,4 +1,6 @@
-﻿* Use CheckBox.Value instead of CheckBox.State (compatibility with RB 2009) (JRC)
+﻿* Added new translation for Italian (thanx matteo)
+
+* Use CheckBox.Value instead of CheckBox.State (compatibility with RB 2009) (JRC)
 
 * Added link to the online user manual
 

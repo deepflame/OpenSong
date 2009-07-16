@@ -34,7 +34,7 @@ Protected Module Powerpoint
 		  end if
 		  
 		Exception
-		   MsgBox App.T.Translate("errors/powerpoint/ensurewindowvisibleerror")
+		  MsgBox App.T.Translate("errors/powerpoint/ensurewindowvisibleerror")
 		End Sub
 	#tag EndMethod
 
@@ -84,6 +84,8 @@ Protected Module Powerpoint
 		    
 		    dim fullcommand as string=GetViewerPath(filename)
 		    
+		    //MsgBox fullcommand
+		    
 		    dim s as new Shell
 		    
 		    s.Execute(fullcommand)
@@ -131,16 +133,22 @@ Protected Module Powerpoint
 		  
 		  dim r2 as new RegistryItem("HKEY_CLASSES_ROOT\Applications\pptview.exe\shell\Show\command",false)
 		  
+		  
 		  dim command as string=CStr(r2.DefaultValue)
 		  
 		  'need quotes around the path, and to replace %1 with the filename of the ppt
 		  dim fullcommand as string=command.Replace(" ""%1""","")
-		  fullcommand="""" + fullcommand + """" + " """ + filename + """"
+		  
+		  if fullcommand.StartsWith("""") then
+		    fullcommand=fullcommand + " """ + filename + """"
+		  else
+		    fullcommand="""" + fullcommand + """" + " """ + filename + """"
+		  end if
 		  
 		  return fullcommand
 		  
 		exception
-		   MsgBox App.T.Translate("errors/powerpointgetviewerpatherror")
+		  MsgBox App.T.Translate("errors/powerpointgetviewerpatherror")
 		End Function
 	#tag EndMethod
 

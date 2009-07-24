@@ -1,2 +1,3 @@
 ﻿-= JRC =-
 
+Added ability to print song activity log

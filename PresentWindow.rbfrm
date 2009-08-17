@@ -52,7 +52,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       UseFocusRing    =   False
       Visible         =   True
       Width           =   302
-      BehaviorIndex   =   0
       Begin Timer timerAdvance
          BehaviorIndex   =   1
          ControlOrder    =   1
@@ -72,7 +71,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Top             =   248
          Visible         =   True
          Width           =   32
-         BehaviorIndex   =   1
       End
       Begin Timer timerTransition
          BehaviorIndex   =   2
@@ -93,7 +91,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Top             =   248
          Visible         =   True
          Width           =   32
-         BehaviorIndex   =   2
       End
    End
 End
@@ -103,6 +100,7 @@ End
 	#tag Event
 		Sub Activate()
 		  App.DebugWriter.Write "PresentWindow.Activate: Enter"
+		  
 		  If Globals.Status_Presentation Then
 		    If HelperActive Then
 		      If PresentHelperWindow.IsCollapsed Then
@@ -111,15 +109,18 @@ End
 		        PresentHelperWindow.SetFocus
 		      End If
 		    Else
-		      If PresentWindow.IsCollapsed Then
-		        App.RestoreWindow(PresentWindow)
+		      If Not SetML.IsExternal(XCurrentSlide) Then
+		        If PresentWindow.IsCollapsed Then
+		          App.RestoreWindow(PresentWindow)
+		        End If
+		        App.SetForeground(PresentWindow)
+		        PresentWindow.SetFocus
 		      End If
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
 		    End If
 		    Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
 		    Me.SetFocus
 		  End If
+		  
 		  App.DebugWriter.Write "PresentWindow.Activate: Exit"
 		End Sub
 	#tag EndEvent
@@ -129,11 +130,15 @@ End
 		  'MainWindow.Status_Presentation = False
 		  'MainWindow.Show
 		  'MainWindow.SetFocus
+		  
+		  Call ResetPaint(Nil) 'This will cleanup external slide stuff
+		  
 		  App.MouseCursor = Nil
 		  MainWindow.Status_Presentation = False
 		  Globals.Status_Presentation = False
 		  If HelperActive Then PresentHelperWindow.Close
 		  timerAdvance.Enabled = False
+		  
 		  '++JRC Prevent resizing MainWindow
 		  'MainWindow.Show
 		  #If Not TargetMacOS
@@ -916,82 +921,205 @@ End
 		  Dim xStyle As XmlNode
 		  Dim w, h As Integer
 		  
-		  '++JRC
-		  SongSetDisplayed(slide)
-		  
-		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Enter", 5)
-		  ' Remember the current (old) slide for the transition
-		  LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
-		  'LastPicture = LastPicture.CXG_Composite(CurrentPicture, 1.0, 0, 0)
-		  
-		  ' === Draw the slide to the PreviewPicture ===
-		  
-		  Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::PreviewPicture"
-		  ' -- Old way -- (value not passed)
-		  'xStyle = SetML.GetStyle(XCurrentSlide)
-		  'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
-		  ' -- New way --
-		  xStyle = SetML.GetStyle(slide)
-		  SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
-		  curslideTransition = SetML.GetSlideTransition(slide)
-		  
-		  Profiler.EndProfilerEntry'
-		  
-		  ' === Setup CurrentPicture based on Mode ===
-		  Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::CurrentPicture"
-		  If Mode = "B" Then
-		    CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
-		    CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
-		  ElseIf Mode = "W" Then
-		    CurrentPicture.Graphics.ForeColor = RGB(255,255,255)
-		    CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
-		  ElseIf Mode = "H" Or Mode = "L" Then
-		    SetML.DrawSlide CurrentPicture.Graphics, Nil, xStyle
+		  If SetML.IsExternal(PreviousSlide) Then
+		    'Check if we need to close the running external.
+		    Dim bClose As Boolean = False
+		    Dim prevAppl As string = SmartML.GetValue(PreviousSlide, "@application", False)
+		    Dim prevHost As string = SmartML.GetValue(PreviousSlide, "@host", False)
+		    Dim prevFile As String = SmartML.GetValue(PreviousSlide, "@filename", False)
 		    
-		    If Mode = "L" Then
-		      If LogoCache <> Nil Then
-		        If LogoCache.Height > CurrentPicture.Height Then
-		          ' Logos only shrink if needed; they will not stretch out
-		          h = CurrentPicture.Height
-		          w = (CurrentPicture.Height/LogoCache.Height) * LogoCache.Width
-		        Else
-		          h = LogoCache.Height
-		          w = LogoCache.Width
-		        End If
-		        CurrentPicture.Graphics.DrawPicture LogoCache, (CurrentPicture.Width-w)/2, (CurrentPicture.Height-h)/2, w, h, 0, 0, LogoCache.Width, LogoCache.Height
+		    If Not SetML.IsExternal(slide) Then
+		      bClose = True
+		      App.RestoreWindow(PresentWindow)
+		    Else
+		      'See if the external in the new slide is equal to the current slide.
+		      If SmartML.GetValue(slide.Parent.Parent, "@application", False) <> prevAppl Or _
+		        SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
+		        SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile Then
+		        bClose = True
 		      End If
 		    End If
-		  ElseIf Mode = "F" Then
-		    ' Freeze: no changes to CurrentPicture
-		  Else ' Probably normal mode
-		    CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
-		    'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
+		    
+		    If bClose Then
+		      Select Case prevAppl
+		      Case "presentation"
+		        
+		        Dim presFile As FolderItem = GetFolderItem( prevFile )
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case prevHost
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
+		            If Not IsNull( oExtPres ) Then
+		              Call oExtPres.EndShow()
+		            End If
+		          End If
+		        End If
+		        
+		      Case "videolan"
+		        '!! TODO
+		        
+		      Case "launch"
+		        '!! TODO
+		        
+		      End Select
+		    End If
 		  End If
-		  Profiler.EndProfilerEntry
 		  
-		  ' === Add the Alert ===
-		  If Len(AlertText) > 0 Then
-		    DrawAlert CurrentPicture.Graphics, AlertText
-		    DrawAlert PreviewPicture.Graphics, AlertText
-		  End If
-		  ' === Check for auto-advance ===
-		  If SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) > 0 Then
-		    timerAdvance.Mode = 1
-		    timerAdvance.Period = SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) * 1000
-		    timerAdvance.Reset
-		    timerAdvance.Enabled = True
+		  If IsNull( slide ) Then Return
+		  
+		  If SetML.IsExternal(slide) Then
+		    
+		    If mode = "N" then
+		      Select Case SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		      Case "presentation"
+		        
+		        Dim presFile As FolderItem = GetFolderItem( SmartML.GetValue(slide.Parent.Parent, "@filename", False) )
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case SmartML.GetValue(slide.Parent.Parent, "@host", False)
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
+		            If Not IsNull( oExtPres ) Then
+		              
+		              Dim presIndex As Integer = SmartML.GetValueN(slide, "@id", False)
+		              If oExtPres.IsShowing() Then
+		                Call oExtPres.GotoSlide( presIndex )
+		              Else
+		                Dim loopPresentation As Boolean = SmartML.GetValueB(slide.Parent.Parent, "@loop_presentation", False)
+		                Call oExtPres.StartShow( loopPresentation, presIndex )
+		              End If
+		              
+		            End If
+		          End If
+		        End If
+		        
+		        Dim sPreviewImage As String = SmartML.GetValue(slide, "preview", False)
+		        If sPreviewImage <> "" Then
+		          Dim img As StyleImage = New StyleImage()
+		          If img.SetImageAsString( sPreviewImage ) Then
+		            PreviewPicture = img.GetImage()
+		          End If
+		        End If
+		        
+		      Case "videolan"
+		        '!! TODO
+		        
+		      Case "launch"
+		        '!! TODO
+		        
+		      End Select
+		      
+		      If SetML.IsExternal(slide) Then
+		        App.MinimizeWindow(PresentWindow)
+		      End If
+		    End If
+		    
 		  Else
-		    timerAdvance.Enabled = False
+		    
+		    If slideType = "song" Then
+		      '++JRC
+		      SongSetDisplayed(slide)
+		    End If
+		    
+		    'App.DebugWriter.Write("PresentWindow.ResetPaint: Enter", 5)
+		    ' Remember the current (old) slide for the transition
+		    LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
+		    'LastPicture = LastPicture.CXG_Composite(CurrentPicture, 1.0, 0, 0)
+		    
+		    ' === Draw the slide to the PreviewPicture ===
+		    
+		    Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::PreviewPicture"
+		    ' -- Old way -- (value not passed)
+		    'xStyle = SetML.GetStyle(XCurrentSlide)
+		    'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
+		    ' -- New way --
+		    xStyle = SetML.GetStyle(slide)
+		    SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+		    curslideTransition = SetML.GetSlideTransition(slide)
+		    
+		    Profiler.EndProfilerEntry'
+		    
+		    ' === Setup CurrentPicture based on Mode ===
+		    Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::CurrentPicture"
+		    If Mode = "B" Then
+		      CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		      CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		    ElseIf Mode = "W" Then
+		      CurrentPicture.Graphics.ForeColor = RGB(255,255,255)
+		      CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		    ElseIf Mode = "H" Or Mode = "L" Then
+		      SetML.DrawSlide CurrentPicture.Graphics, Nil, xStyle
+		      
+		      If Mode = "L" Then
+		        If LogoCache <> Nil Then
+		          If LogoCache.Height > CurrentPicture.Height Then
+		            ' Logos only shrink if needed; they will not stretch out
+		            h = CurrentPicture.Height
+		            w = (CurrentPicture.Height/LogoCache.Height) * LogoCache.Width
+		          Else
+		            h = LogoCache.Height
+		            w = LogoCache.Width
+		          End If
+		          CurrentPicture.Graphics.DrawPicture LogoCache, (CurrentPicture.Width-w)/2, (CurrentPicture.Height-h)/2, w, h, 0, 0, LogoCache.Width, LogoCache.Height
+		        End If
+		      End If
+		    ElseIf Mode = "F" Then
+		      ' Freeze: no changes to CurrentPicture
+		    Else ' Probably normal mode
+		      CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
+		      'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
+		    End If
+		    Profiler.EndProfilerEntry
+		    
+		    ' === Add the Alert ===
+		    If Len(AlertText) > 0 Then
+		      DrawAlert CurrentPicture.Graphics, AlertText
+		      DrawAlert PreviewPicture.Graphics, AlertText
+		    End If
+		    ' === Check for auto-advance ===
+		    If SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) > 0 Then
+		      timerAdvance.Mode = 1
+		      timerAdvance.Period = SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) * 1000
+		      timerAdvance.Reset
+		      timerAdvance.Enabled = True
+		    Else
+		      timerAdvance.Enabled = False
+		    End If
+		    
+		    ' === Start the transition ===
+		    If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
+		      TransitionFrame = 1
+		      timerTransition.Mode = 2
+		      timerTransition.Reset
+		      timerTransition.Enabled = True
+		    End If
+		    cnvSlide.Refresh False
 		  End If
 		  
-		  ' === Start the transition ===
-		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
-		    TransitionFrame = 1
-		    timerTransition.Mode = 2
-		    timerTransition.Reset
-		    timerTransition.Enabled = True
-		  End If
-		  cnvSlide.Refresh False
+		  'Keep a copy of this slide to be able do a cleanup when a next slide is shown
+		  'A 'next' slide is always set in XCurrentSlide before this method is called and can therefore not be used for this purpose
+		  PreviousSlide = slide.Parent.Parent.Clone( False )
+		  PreviousSlide.AppendChild( slide.Parent.Clone( False ) ).AppendChild( slide.Clone( False ) )
+		  
 		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Exit", 5)
 		End Sub
 	#tag EndMethod
@@ -1769,15 +1897,16 @@ End
 		  Dim ItemNumber As Integer
 		  
 		  If slide = Nil Then Return 'sanity check
-		  If SmartML.GetValue(slide.Parent.Parent, "@type", false) <> "song" Then Return
 		  
-		  'get set item number
-		  ItemNumber = SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber", false)
-		  
-		  'find item in the song activity log array
-		  For i as Integer = 1 To UBound(ActLog)
-		    If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
-		  Next i
+		  If SmartML.GetValue(slide.Parent.Parent, "@type", false) = "song" Then
+		    'get set item number
+		    ItemNumber = SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber", false)
+		    
+		    'find item in the song activity log array
+		    For i as Integer = 1 To UBound(ActLog)
+		      If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
+		    Next i
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -1974,6 +2103,10 @@ End
 
 	#tag Property, Flags = &h1
 		Protected numStyles As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private PreviousSlide As XmlNode = Nil
 	#tag EndProperty
 
 

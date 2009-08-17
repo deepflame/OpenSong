@@ -16,9 +16,11 @@ Inherits Application
 		      App.SetForeground(PresentHelperWindow)
 		      PresentHelperWindow.SetFocus
 		    Else
-		      App.RestoreWindow(PresentWindow)
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
+		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		        App.RestoreWindow(PresentWindow)
+		        App.SetForeground(PresentWindow)
+		        PresentWindow.SetFocus()
+		      End If
 		    End If
 		  End If
 		  

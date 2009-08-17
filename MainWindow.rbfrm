@@ -1869,7 +1869,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   5
+      Value           =   4
       Visible         =   True
       Width           =   495
       Begin Canvas cnv_editor_style_change
@@ -7089,8 +7089,10 @@ End
 		      App.RestoreWindow(PresentHelperWindow)
 		      App.SetForeground(PresentHelperWindow)
 		    Else
-		      App.RestoreWindow(PresentWindow)
-		      App.SetForeground(PresentWindow)
+		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		        App.RestoreWindow(PresentWindow)
+		        App.SetForeground(PresentWindow)
+		      End If
 		    End If
 		  End If
 		  '--
@@ -7653,16 +7655,6 @@ End
 
 	#tag Event
 		Sub Open()
-		  'Try
-		  'PPT = New PowerPointApplication
-		  'PPT.Visible = 1
-		  'PPT.Presentations.Open "C:\Documents and Settings\slickfold\My Documents\Youth Group\10Commandments_forkids.ppt", True, True, True
-		  'PPT.ActivePresentation.SlideShowSettings.Run
-		  'Catch e as RuntimeException
-		  'MsgBox e.Message
-		  'PPT = Nil
-		  'End Try
-		  
 		  Profiler.BeginProfilerEntry "MainWindow::Open"
 		  App.DebugWriter.Write "MainWindow.Open: Enter"
 		  Dim output As TextOutputStream
@@ -8888,7 +8880,7 @@ End
 		  App.MouseCursor = System.Cursors.Wait
 		  
 		  ImportSongs setDoc, Import
-		  ImportExternals setDoc
+		  ImportExternals setDoc, Mode
 		  
 		  If SetML.GetSlide(setDoc, 1) = Nil Then
 		    InputBox.Message App.T.Translate("sets_mode/current_set/present/no_slides")
@@ -9830,7 +9822,7 @@ End
 		  Dim Presentation As String
 		  '++JRC
 		  Dim CurStyle As XmlNode
-		  Dim ItemNumber As Integer
+		  Dim ItemNumber As Integer = 0
 		  Dim i As Integer
 		  '--
 		  Dim Transition As Integer
@@ -9841,10 +9833,19 @@ End
 		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
 		  slide_group = slide_groups.FirstChild
 		  
+		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_songs") + "..."
+		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
+		  ProgressWindow.SetProgress(ItemNumber)
+		  ProgressWindow.CanCancel False
+		  ProgressWindow.SetStatus( "" )
+		  ProgressWindow.Show()
+		  
 		  ItemNumber = 1
 		  i = 1
 		  While slide_group <> Nil
 		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
+		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
+		      
 		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
 		      Transition = SmartML.GetValueN(slide_group, "@transition", False)
 		      
@@ -9932,9 +9933,11 @@ End
 		      ItemNumber = ItemNumber + 1
 		    End If
 		    
+		    ProgressWindow.SetProgress(ItemNumber)
 		  Wend
 		  '++JRC
 		  setDoc.DocumentElement.SetAttribute("NumberOfItems",Str(ItemNumber))
+		  ProgressWindow.Close()
 		  
 		  App.MouseCursor = Nil
 		End Sub
@@ -10739,9 +10742,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub ImportExternals(setDoc As XmlDocument)
-		  'Todo: import number of slides and their names for presentations to make them show up in PresentHelperWindow
-		  
+		Protected Sub ImportExternals(setDoc As XmlDocument, PresentMode As Integer)
 		  Dim slide_group, slide_groups, temp As XmlNode
 		  Dim songDoc As XmlDocument
 		  Dim Presentation As String
@@ -10751,20 +10752,112 @@ End
 		  Dim Transition As Integer
 		  Dim SongStyle, SlideSongStyle As XmlNode
 		  Dim SongPath As String
+		  Dim slidesCount As Integer = 0
 		  
 		  App.MouseCursor = System.Cursors.Wait
+		  
 		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  
+		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_externals") + "..."
+		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
+		  ProgressWindow.SetProgress(slidesCount)
+		  ProgressWindow.CanCancel False
+		  ProgressWindow.SetStatus( "" )
+		  ProgressWindow.Show()
+		  
 		  slide_group = slide_groups.FirstChild
 		  While slide_group <> Nil
+		    slidesCount = slidesCount + 1
 		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
+		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
 		      
-		      MsgBox "Todo: load slides from external presentation (implement MainWindow:ImportExternals)"
-		      Exit While
-		      
+		      Select Case SmartML.GetValue(slide_group, "@application")
+		      Case "presentation"
+		        
+		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
+		        Dim presFile As FolderItem = GetFolderItem( presFileName )
+		        Dim presFileOk As Boolean = False
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            presFileOk = True
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case SmartML.GetValue(slide_group, "@host")
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath, presHost )
+		            If Not IsNull( oExtPres ) Then
+		              
+		              If oExtPres.CanControl() Then
+		                Dim img As StyleImage
+		                Dim i As Integer
+		                
+		                Dim presSlides As XmlNode = SmartML.InsertChild( slide_group, "slides", 0 )
+		                For i = 1 to oExtPres.SlideCount()
+		                  
+		                  If Not oExtPres.IsHidden(i) Then
+		                    Dim presSlide As XmlNode = SmartML.InsertChild( presSlides, "slide", presSlides.ChildCount() )
+		                    SmartML.SetValueN( presSlide, "@id", i )
+		                    SmartML.SetValue( presSlide, "description", oExtPres.SlideName(i) )
+		                    
+		                    If (PresentMode <> PresentWindow.MODE_SINGLE_SCREEN) And oExtPres.CanPreview() Then
+		                      img = New StyleImage()
+		                      img.SetImage( oExtPres.PreviewSlide( i, 320, 240 ) )
+		                      SmartML.SetValue(presSlide, "preview", img.GetImageAsString())
+		                    End If
+		                  End If
+		                  
+		                Next
+		              End If
+		              
+		            Else
+		              MsgBox(App.T.Translate("errors/presentations/unsupported_feature", oExtPres.HostName()))
+		            End If
+		            
+		          Else
+		            MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
+		          End If
+		        End If
+		        
+		        If Not presFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", presFileName)
+		        End If
+		        
+		      Case "videolan"
+		        'No action required here,
+		        'a check to validate the presence of media to play might be nice here
+		        
+		      Case "launch"
+		        'No action required here
+		        'As early warning, we will check if the application that is to be started does exist
+		        
+		        Dim appFileName As String = SmartML.GetValue(slide_group, "@app_filename")
+		        Dim appFile As FolderItem = GetFolderItem( appFileName )
+		        Dim appFileOk As Boolean = False
+		        If Not IsNull( appFile ) Then
+		          If appFile.Exists() Then
+		            appFileOk = True
+		          End If
+		        End If
+		        
+		        If Not appFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", appFileName)
+		        End If
+		        
+		      End Select
 		    End If
 		    
 		    slide_group  = slide_group.NextSibling
+		    ProgressWindow.SetProgress( slidesCount )
 		  Wend
+		  
+		  ProgressWindow.Close()
 		  App.MouseCursor = Nil
 		  
 		End Sub

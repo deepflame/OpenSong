@@ -168,7 +168,11 @@ Implements iPresentation
 		  Dim result As String
 		  
 		  If Not IsNull(m_oPpt) Then
-		    result = m_oPpt.FullName()
+		    Try
+		      result = m_oPpt.FullName()
+		    Catch
+		      'This sometimes fails for no reason...
+		    End Try
 		  End If
 		  
 		  Return result
@@ -343,6 +347,22 @@ Implements iPresentation
 		  // Part of the iPresentation interface.
 		  
 		  Return "Microsoft PowerPoint"
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsHidden(slideIndex As Integer) As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Boolean = False
+		  
+		  If Not IsNull(m_oPpt) Then
+		    If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
+		      result = m_oPpt.Slides.Item(slideIndex).SlideShowTransition.Hidden()
+		    End If
+		  End If
+		  
+		  Return result
 		End Function
 	#tag EndMethod
 

@@ -1015,11 +1015,6 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <no_headers>Geen header data gevonden. Controleer de zoekopdracht en/of uw CCLI gebruikers-ID/wachtwoord.</no_headers>
       <no_connect>Kan geen verbinding maken met CCLI. Probeer het later nog eens.</no_connect>
       <already_exists>Lied bestaat al.</already_exists>
-      <presentations>
-        <nohost>Er kan geen programma gevonden worden om een presentatie te laden. Installeer OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
-        <unsupported_feature>Het programma '%1' ondersteund deze bewerking niet.</unsupported_feature>
-        <load_failed>The presentatie '%1' kon niet worden geopend.</load_failed>
-      </presentations>
     </errors>
   </import_from_ccli>
 
@@ -1264,6 +1259,11 @@ Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
 De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <adding_logentry>Er is een fout opgetreden bij het toevoegen van een lied aan het logboek!</adding_logentry>
     <chars_per_slide>Het aantal karakters dat maximaal getoond mag worden moet tussen 1 en 1000 liggen.</chars_per_slide>
+    <presentations>
+      <nohost>Er kan geen programma gevonden worden om een presentatie te laden. Installeer OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>Het programma '%1' ondersteund deze bewerking niet.</unsupported_feature>
+      <load_failed>The presentatie '%1' kon niet worden geopend.</load_failed>
+    </presentations>
   </errors>
 
   <xml_errors>
@@ -1314,21 +1314,21 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
   	<ACTION_LAST_SLIDE>Ga naar de laatste dia in het project</ACTION_LAST_SLIDE>
   	<ACTION_NEXT_SECTION>Ga nar de volgende sectie in het project</ACTION_NEXT_SECTION>
   	<ACTION_PREV_SECTION>Ga naar het begin van het huidige project</ACTION_PREV_SECTION>
- 	<ACTION_VERSE>Ga naar het volgende couplet</ACTION_VERSE> 	
- 	<ACTION_BRIDGE>Ga naar de overgang</ACTION_BRIDGE>
- 	<ACTION_CHORUS>Ga naar het refrein</ACTION_CHORUS>
- 	<ACTION_PRECHORUS>Ga naar het pre-chorus</ACTION_PRECHORUS>
- 	<ACTION_TAG>Ga naar de tag</ACTION_TAG>
- 	<ACTION_NORMAL>Laat de huidige dia zien</ACTION_NORMAL>
- 	<ACTION_BLACK>Laat een zwart scherm zien</ACTION_BLACK>
- 	<ACTION_WHITE>Laat een wit scherm zien</ACTION_WHITE>
- 	<ACTION_FREEZE>Bevries met huidige dia</ACTION_FREEZE>
- 	<ACTION_LOGO>Laat logo zien</ACTION_LOGO>
- 	<ACTION_HIDE>Verberg huidige dia (achtergrond is wel zichtbaar)</ACTION_HIDE>
- 	<ACTION_EXIT>Sluit de Presentator</ACTION_EXIT>
- 	<ACTION_EXIT_PROMPT>Sluit de Presentator, bevestiging vereist</ACTION_EXIT_PROMPT>
- 	<ACTION_EXIT_NOPROMPT>Sluit Presentator direct</ACTION_EXIT_NOPROMPT>
- </hotkeys>
+   	<ACTION_VERSE>Ga naar het volgende couplet</ACTION_VERSE> 	
+   	<ACTION_BRIDGE>Ga naar de overgang</ACTION_BRIDGE>
+   	<ACTION_CHORUS>Ga naar het refrein</ACTION_CHORUS>
+   	<ACTION_PRECHORUS>Ga naar het pre-chorus</ACTION_PRECHORUS>
+   	<ACTION_TAG>Ga naar de tag</ACTION_TAG>
+   	<ACTION_NORMAL>Laat de huidige dia zien</ACTION_NORMAL>
+   	<ACTION_BLACK>Laat een zwart scherm zien</ACTION_BLACK>
+   	<ACTION_WHITE>Laat een wit scherm zien</ACTION_WHITE>
+   	<ACTION_FREEZE>Bevries met huidige dia</ACTION_FREEZE>
+   	<ACTION_LOGO>Laat logo zien</ACTION_LOGO>
+   	<ACTION_HIDE>Verberg huidige dia (achtergrond is wel zichtbaar)</ACTION_HIDE>
+   	<ACTION_EXIT>Sluit de Presentator</ACTION_EXIT>
+   	<ACTION_EXIT_PROMPT>Sluit de Presentator, bevestiging vereist</ACTION_EXIT_PROMPT>
+   	<ACTION_EXIT_NOPROMPT>Sluit Presentator direct</ACTION_EXIT_NOPROMPT>
+  </hotkeys>
 
   <progress_status>
     <folder>Caching map %1</folder>
@@ -1336,6 +1336,8 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <process_themes>Verwerken thema's</process_themes>
     <process_songs>Verwerken liederen</process_songs>
     <export>Exporteren lied(eren)</export>
+    <load_songs>Laden lied(eren)</load_songs>
+    <load_externals>Laden externe dia('s)</load_externals>
     <pass1>Sorteren, 1e ronde</pass1>
     <pass2>Sorteren, 2e ronde</pass2>
   </progress_status>

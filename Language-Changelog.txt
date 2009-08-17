@@ -1,3 +1,5 @@
+progress_status/load_songs
+progress_status/load_externals
 errors/presentations
 general_settings/applications
 general_settings/general (Modified)

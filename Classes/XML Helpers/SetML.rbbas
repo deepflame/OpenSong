@@ -1173,6 +1173,35 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function IsExternal(slide As XmlNode) As Boolean
+		  Dim slideType As String
+		  Dim external As Boolean = False
+		  
+		  Try
+		    If slide <> Nil Then
+		      If Not IsNull(slide) Then
+		        
+		        'Handle both the situation that the slide XmlNode is passend (PresentWindow.XCurrentSlide) and that the slideGroup XmlNode is passed (PresentWindow.PreviousSlide)
+		        If slide.Name = "slide" Then
+		          slideType = SmartML.GetValue(slide.Parent.Parent, "@type", False)
+		        ElseIf slide.Name = "slide_group" Then
+		          slideType = SmartML.GetValue(slide, "@type", False)
+		        End If
+		        
+		        If slideType = "external" Then
+		          external = True
+		        End If
+		      End If
+		    End If
+		  Catch e as NilObjectException
+		    '... no idea why this Nil and Null checks have no effect
+		  End Try
+		  
+		  Return external
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		SlideType As String

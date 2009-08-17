@@ -985,11 +985,6 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <no_headers>No header data was returned. Please check your search string and/or your CCLI ID/password.</no_headers>
       <no_connect>Could not connect to CCLI. Please try again later.</no_connect>
       <already_exists>Song already exists.</already_exists>
-      <presentations>
-        <nohost>There is no application available to load a presentation. Please install OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
-        <unsupported_feature>The application '%1' does not support this feature.</unsupported_feature>
-        <load_failed>The presentation '%1' could not be opened.</load_failed>
-      </presentations>
     </errors>
   </import_from_ccli>
 
@@ -1233,6 +1228,11 @@ The OpenSong development team members regret any inconvenience.
     <activity_disabled>Could not load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
     <adding_logentry>Error Adding log entry!</adding_logentry>
     <chars_per_slide>Max characters per slide must be between 1 and 1000.</chars_per_slide>
+    <presentations>
+      <nohost>There is no application available to load a presentation. Please install OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>The application '%1' does not support this feature.</unsupported_feature>
+      <load_failed>The presentation '%1' could not be opened.</load_failed>
+    </presentations>
   </errors>
 
   <xml_errors>
@@ -1284,21 +1284,21 @@ The OpenSong development team members regret any inconvenience.
   	<ACTION_LAST_SLIDE>Go to the last slide in the set</ACTION_LAST_SLIDE>
   	<ACTION_NEXT_SECTION>Go to the next section in the set</ACTION_NEXT_SECTION>
   	<ACTION_PREV_SECTION>Go to the start of the current or previous set</ACTION_PREV_SECTION>
- 	<ACTION_VERSE>Go to the next verse</ACTION_VERSE> 	
- 	<ACTION_BRIDGE>Go to the bridge</ACTION_BRIDGE>
- 	<ACTION_CHORUS>Go to the chorus</ACTION_CHORUS>
- 	<ACTION_PRECHORUS>Go to the pre-chorus</ACTION_PRECHORUS>
- 	<ACTION_TAG>Go to the tag</ACTION_TAG>
- 	<ACTION_NORMAL>Display current slide</ACTION_NORMAL>
- 	<ACTION_BLACK>Display black screen	</ACTION_BLACK>
- 	<ACTION_WHITE>Display white screen</ACTION_WHITE>
- 	<ACTION_FREEZE>Freeze display on current slide</ACTION_FREEZE>
- 	<ACTION_LOGO>Display the logo</ACTION_LOGO>
- 	<ACTION_HIDE>Hide current slide (background is still displayed)</ACTION_HIDE>
- 	<ACTION_EXIT>Exit presenter mode</ACTION_EXIT>
- 	<ACTION_EXIT_PROMPT>Exit presenter mode, require confirmation	</ACTION_EXIT_PROMPT>
- 	<ACTION_EXIT_NOPROMPT>Exit presenter mode immediately</ACTION_EXIT_NOPROMPT>
- </hotkeys>
+   	<ACTION_VERSE>Go to the next verse</ACTION_VERSE> 	
+   	<ACTION_BRIDGE>Go to the bridge</ACTION_BRIDGE>
+   	<ACTION_CHORUS>Go to the chorus</ACTION_CHORUS>
+   	<ACTION_PRECHORUS>Go to the pre-chorus</ACTION_PRECHORUS>
+   	<ACTION_TAG>Go to the tag</ACTION_TAG>
+   	<ACTION_NORMAL>Display current slide</ACTION_NORMAL>
+   	<ACTION_BLACK>Display black screen	</ACTION_BLACK>
+   	<ACTION_WHITE>Display white screen</ACTION_WHITE>
+   	<ACTION_FREEZE>Freeze display on current slide</ACTION_FREEZE>
+   	<ACTION_LOGO>Display the logo</ACTION_LOGO>
+   	<ACTION_HIDE>Hide current slide (background is still displayed)</ACTION_HIDE>
+   	<ACTION_EXIT>Exit presenter mode</ACTION_EXIT>
+   	<ACTION_EXIT_PROMPT>Exit presenter mode, require confirmation	</ACTION_EXIT_PROMPT>
+   	<ACTION_EXIT_NOPROMPT>Exit presenter mode immediately</ACTION_EXIT_NOPROMPT>
+  </hotkeys>
 
   <progress_status>
     <folder>Caching Folder %1</folder>
@@ -1306,6 +1306,8 @@ The OpenSong development team members regret any inconvenience.
     <process_themes>Processing Themes</process_themes>
     <process_songs>Processing Songs</process_songs>
     <export>Exporting Song(s)</export>
+    <load_songs>Loading Song(s)</load_songs>
+    <load_externals>Loading External sheet(s)</load_externals>
     <pass1>Sorting, 1st Pass</pass1>
     <pass2>Sorting, 2nd Pass</pass2>
   </progress_status>

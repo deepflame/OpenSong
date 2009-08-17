@@ -12,41 +12,31 @@ Protected Module PresentationFactory
 		    For Each createdPres In m_PresentationList
 		      If createdPres.Filename() = presFile.AbsolutePath() Then
 		        oPres = createdPres
+		        Exit
 		      End If
 		    Next createdPres
 		    
 		    If IsNull( oPres ) Then
 		      If Host = PresentationHost.PowerPoint Then
-		        
 		        oPres = CreateMsPowerPointPresentation( presFile )
-		        
 		      ElseIf Host = PresentationHost.PowerPointViewer Then
-		        
-		        'Todo
-		        
+		        oPres = CreateMsPPTViewPresentation( presFile )
 		      ElseIf Host = PresentationHost.OpenOffice Then
-		        
 		        oPres = CreateOOoImpressPresentation( presFile )
-		        
 		      Else
 		        
 		        If PowerPointAvailable(False) And (presFile.Type = PresentationFileTypes.PPTFiles.Name) Then
-		          
 		          oPres = CreateMsPowerPointPresentation( presFile )
-		          
 		        ElseIf PPTViewAvailable() And (presFile.Type = PresentationFileTypes.PPTFiles.Name) Then
-		          
 		          oPres = CreateMsPPTViewPresentation( presFile )
-		          
 		        ElseIf OpenOfficeAvailable() And (presFile.Type = PresentationFileTypes.ODPFiles.Name) Then
-		          
 		          oPres = CreateOOoImpressPresentation( presFile )
-		          
 		        End If
 		        
-		        If Not IsNull( oPres ) Then
-		          Call RegisterPresentation( oPres )
-		        End If
+		      End If
+		      
+		      If Not IsNull( oPres ) Then
+		        Call RegisterPresentation( oPres )
 		      End If
 		    End If
 		    
@@ -153,7 +143,7 @@ Protected Module PresentationFactory
 		  success = False
 		  
 		  If presentation IsA iPresentation Then
-		    If m_PresentationList.IndexOf( presentation ) > -1 Then
+		    If m_PresentationList.IndexOf( presentation ) = -1 Then
 		      m_PresentationList.Append( presentation )
 		      success = True
 		    End If
@@ -191,11 +181,12 @@ Protected Module PresentationFactory
 		    'the PPTView path in the main settings
 		    'm_PptViewAvailable = Integer(HostAvailable.No)
 		    
-		    Dim PPTViewLocation As FolderItem = DetectPPTView()
-		    If Not IsNull(PPTViewLocation) Then
+		    Dim PPTViewLocation As FolderItem
+		    Dim PPTViewParameters As String
+		    
+		    If DetectPPTView(PPTViewLocation, PPTViewParameters) Then
 		      m_PptViewAvailable = Integer(HostAvailable.Yes)
 		    End If
-		    
 		    
 		  End If
 		  
@@ -262,7 +253,7 @@ Protected Module PresentationFactory
 		          olePropSilent.Value = True
 		          aArgs.Append( olePropSilent )
 		          
-		          oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, aArgs) '"file:///" + presentationFile.AbsolutePath().ReplaceAll("\", "/").ReplaceAll(":", "|").ReplaceAll(" ", "%20")
+		          oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, aArgs)
 		          
 		        #Else
 		          
@@ -273,23 +264,27 @@ Protected Module PresentationFactory
 		          param.Type = OLEParameter.ParamTypeString 'or something else?
 		          param.ValueArray = aNoArgs
 		          
-		          oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, param) '"file:///" + presentationFile.AbsolutePath().ReplaceAll("\", "/").ReplaceAll(":", "|").ReplaceAll(" ", "%20")
+		          oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, param)
 		          
 		        #EndIf
 		        
 		        If Not IsNull( oImpressDoc ) Then
 		          
+		          'Setting "Hidden" does not work for some reason...
+		          'Get the window controller and minimize it
+		          'see http://api.openoffice.org/docs/common/ref/com/sun/star/frame/XController.html
+		          '#If False
 		          Dim oController As OLEObject = oImpressDoc.getCurrentController()
 		          If Not IsNull( oController ) Then
 		            Dim oFrame As OLEObject = oController.getFrame()
 		            If Not IsNull( oFrame ) Then
 		              Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
 		              If Not IsNull( oComponentWin ) Then
-		                'Setting "Hidden" does not work for some reason...
 		                oComponentWin.setVisible( False )
 		              End If
 		            End If
 		          End If
+		          '#EndIf
 		          
 		          oPres = New OOoImpressPresentation( oImpressDoc )
 		        End If
@@ -318,8 +313,11 @@ Protected Module PresentationFactory
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DetectPPTView() As FolderItem
-		  Dim result as FolderItem = Nil
+		Function DetectPPTView(ByRef application As FolderItem, ByRef parameters As String) As Boolean
+		  Dim result as Boolean = False
+		  Dim applCmd As String
+		  Dim applParam As String
+		  Dim appl As FolderItem = Nil
 		  
 		  'Detect Microsoft PPTView
 		  'How to detect?
@@ -333,12 +331,13 @@ Protected Module PresentationFactory
 		      Dim PptViewReg As New RegistryItem("HKEY_CLASSES_ROOT\Applications\pptview.exe\shell\Show\command", False)
 		      Dim command As String=CStr(PptViewReg.DefaultValue)
 		      
-		      'Strip " %1"
-		      command = command.Replace(" ""%1""","")
-		      result = GetFolderItem(command)
-		      If Not IsNull(result) Then
-		        If Not result.Exists() Then
-		          result = Nil
+		      SplitCommandString( command, applCmd, applParam )
+		      appl = GetFolderItem(applCmd)
+		      If Not IsNull(app) Then
+		        If Not appl.Exists() Then
+		          appl = Nil
+		        Else
+		          result = True
 		        End If
 		      End If
 		      
@@ -347,28 +346,72 @@ Protected Module PresentationFactory
 		    End Try
 		  #EndIf
 		  
-		  If IsNull( result ) Then
-		    result = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
+		  If IsNull( appl ) Or Not result Then
+		    appl = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
 		    
-		    If Not IsNull(result) Then
-		      If Not result.Exists() Then
-		        result = Nil
+		    If Not IsNull(appl) Then
+		      If Not appl.Exists() Then
+		        appl = Nil
+		      Else
+		        applCmd = appl.AbsolutePath()
+		        result = True
 		      End If
 		    End If
 		  End If
 		  
 		  #If TargetWin32
-		    If IsNull( result ) Then
+		    If IsNull( appl ) Or Not result Then
 		      Try
 		        Dim PptFullReg As New RegistryItem("HKEY_CLASSES_ROOT\Applications\POWERPNT.EXE\shell\Show\command", False)
 		        Dim command As String=CStr(PptFullReg.DefaultValue)
 		        
-		        'Strip " %1"
-		        command = command.Replace(" ""%1""","")
-		        result = GetFolderItem(command)
-		        If Not IsNull(result) Then
-		          If Not result.Exists() Then
-		            result = Nil
+		        SplitCommandString( command, applCmd, applParam )
+		        appl = GetFolderItem(applCmd)
+		        If Not IsNull(appl) Then
+		          If Not appl.Exists() Then
+		            appl = Nil
+		          Else
+		            result = True
+		          End If
+		        End If
+		        
+		      Catch e As  RegistryAccessErrorException
+		        'Key not available
+		      End Try
+		    End If
+		    
+		    If IsNull( appl ) Or Not result Then
+		      Try
+		        Dim PptFullReg As New RegistryItem("HKEY_CLASSES_ROOT\PowerPointViewer.SlideShow.11\shell\Show\command", False)
+		        Dim command As String=CStr(PptFullReg.DefaultValue)
+		        
+		        SplitCommandString( command, applCmd, applParam )
+		        appl = GetFolderItem(applCmd)
+		        If Not IsNull(appl) Then
+		          If Not appl.Exists() Then
+		            appl = Nil
+		          Else
+		            result = True
+		          End If
+		        End If
+		        
+		      Catch e As  RegistryAccessErrorException
+		        'Key not available
+		      End Try
+		    End If
+		    
+		    If IsNull( appl ) Or Not result Then
+		      Try
+		        Dim PptFullReg As New RegistryItem("HKEY_CLASSES_ROOT\PowerPointViewer.SlideShow.12\shell\Show\command", False)
+		        Dim command As String=CStr(PptFullReg.DefaultValue)
+		        
+		        SplitCommandString( command, applCmd, applParam )
+		        appl = GetFolderItem(applCmd)
+		        If Not IsNull(appl) Then
+		          If Not appl.Exists() Then
+		            appl = Nil
+		          Else
+		            result = True
 		          End If
 		        End If
 		        
@@ -378,8 +421,35 @@ Protected Module PresentationFactory
 		    End If
 		  #EndIf
 		  
+		  If Not IsNull( appl ) And result Then
+		    application = appl
+		    parameters = applParam.Replace(" ""%1""","")
+		  End If
+		  
 		  Return result
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub SplitCommandString(command As String, ByRef application As String, ByRef parameters As String)
+		  If command.StartsWith( """" ) Then
+		    
+		    Dim i As Integer = command.InStr( 2, """" )
+		    If i > 0 Then
+		      application = command.Mid( 2, i-2 )
+		      parameters = command.Mid( i+1 ).Trim()
+		    End If
+		    
+		  Else
+		    
+		    Dim i As Integer = command.InStr( 2, " " )
+		    If i > 0 Then
+		      application = command.Left( i )
+		      parameters = command.Mid( i+1 ).Trim()
+		    End If
+		    
+		  End If
+		End Sub
 	#tag EndMethod
 
 

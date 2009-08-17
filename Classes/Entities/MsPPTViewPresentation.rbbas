@@ -68,46 +68,50 @@ Implements iPresentation
 		    If Not IsNull(presentation) Then
 		      If presentation.Exists() Then
 		        
-		        Dim PPTViewLocation As FolderItem = DetectPPTView()
-		        If Not IsNull(PPTViewLocation) Then
-		          If PPTViewLocation.Exists() Then
-		            
-		            Dim cmd As String = PPTViewLocation.AbsolutePath()
-		            Dim params As String
-		            If startAt > -1 Then
-		              params = "/N" + Str(startAt) + " "
-		            End If
-		            
-		            params = params + """" + presentation.AbsolutePath() + """"
-		            
-		            PPTViewShell = New Shell
-		            PPTViewShell.Mode = 1 'Asynchronous
-		            PPTViewShell.Execute( cmd, params )
-		            
-		            Dim i As Integer
-		            For i = 0 To 10
-		              pptViewHwndId = GetPPTViewWindow( PPTViewShell.PID )
+		        Dim PPTViewLocation As FolderItem
+		        Dim PPTViewParameters As String
+		        
+		        If DetectPPTView(PPTViewLocation, PPTViewParameters) Then
+		          If Not IsNull(PPTViewLocation) Then
+		            If PPTViewLocation.Exists() Then
 		              
-		              If pptViewHwndId > 0 Then
-		                Exit For
+		              Dim cmd As String = PPTViewLocation.AbsolutePath()
+		              Dim params As String = PPTViewParameters
+		              If startAt > -1 Then
+		                params = params + " /N" + Str(startAt) + " "
 		              End If
 		              
-		              'The presentation must be loaded, give PTTView some slack to boot and try again..
-		              App.SleepCurrentThread 1000
-		            Next
-		            
-		            If pptViewHwndId > 0 Then
-		              Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		              If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
+		              params = params + """" + presentation.AbsolutePath() + """"
 		              
-		              Dim x As Integer =Screen(presentScreen).Left
-		              Dim y As Integer =Screen(presentScreen).Top
-		              Dim w As Integer =Screen(presentScreen).Width
-		              Dim h As Integer  =Screen(presentScreen).Height
+		              PPTViewShell = New Shell
+		              PPTViewShell.Mode = 1 'Asynchronous
+		              PPTViewShell.Execute( cmd, params )
 		              
-		              Call MovePPTViewWindow( pptViewHwndId, x, y, w, h )
+		              Dim i As Integer
+		              For i = 0 To 10
+		                pptViewHwndId = GetPPTViewWindow( PPTViewShell.PID )
+		                
+		                If pptViewHwndId > 0 Then
+		                  Exit For
+		                End If
+		                
+		                'The presentation must be loaded, give PTTView some slack to boot and try again..
+		                App.SleepCurrentThread 1000
+		              Next
+		              
+		              If pptViewHwndId > 0 Then
+		                Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		                If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
+		                
+		                Dim x As Integer =Screen(presentScreen).Left
+		                Dim y As Integer =Screen(presentScreen).Top
+		                Dim w As Integer =Screen(presentScreen).Width
+		                Dim h As Integer  =Screen(presentScreen).Height
+		                
+		                Call MovePPTViewWindow( pptViewHwndId, x, y, w, h )
+		              End If
+		              
 		            End If
-		            
 		          End If
 		        End If
 		        
@@ -367,6 +371,14 @@ Implements iPresentation
 		  #EndIf
 		  
 		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsHidden(slideIndex As Integer) As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  Return False
 		End Function
 	#tag EndMethod
 

@@ -27,12 +27,11 @@ Begin Window PresentHelperWindow
    Begin ListBox lst_all_slides
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
-      BehaviorIndex   =   0
       Bold            =   False
+      Border          =   True
       ColumnCount     =   3
       ColumnsResizable=   True
       ColumnWidths    =   "27%,8%,65%"
-      ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -46,7 +45,7 @@ Begin Window PresentHelperWindow
       Height          =   200
       HelpTag         =   ""
       Hierarchical    =   False
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
@@ -73,18 +72,15 @@ Begin Window PresentHelperWindow
       Width           =   460
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   0
    End
    Begin GroupBox grp_presentation_modes
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Bold            =   False
       Caption         =   "Mode"
-      ControlOrder    =   1
       Enabled         =   True
       Height          =   180
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   514
@@ -96,27 +92,24 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       Top             =   5
       Underline       =   False
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   1
       Begin SButton btn_mode_normal
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   2
-         ControlOrder    =   2
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
          Left            =   524
@@ -134,21 +127,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   2
       End
       Begin SButton btn_mode_black
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   3
-         ControlOrder    =   3
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
          Left            =   524
@@ -166,21 +157,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   3
       End
       Begin SButton btn_mode_white
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   4
-         ControlOrder    =   4
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
          Left            =   524
@@ -198,21 +187,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   4
       End
       Begin SButton btn_mode_hidden
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   5
-         ControlOrder    =   5
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
          Left            =   524
@@ -230,21 +217,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   5
       End
       Begin SButton btn_mode_logo
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   6
-         ControlOrder    =   6
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
          Left            =   524
@@ -262,21 +247,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   6
       End
       Begin SButton btn_mode_frozen
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   7
-         ControlOrder    =   7
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
          Left            =   524
@@ -294,7 +277,6 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   7
       End
    End
    Begin Canvas cnv_preview
@@ -302,13 +284,12 @@ Begin Window PresentHelperWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   8
-      ControlOrder    =   8
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   249
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   10
       LockBottom      =   True
@@ -324,19 +305,16 @@ Begin Window PresentHelperWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   346
-      BehaviorIndex   =   8
    End
    Begin StaticText txt_shortcut_keys
       AutoDeactivate  =   True
-      BehaviorIndex   =   9
       Bold            =   False
-      ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   138
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   373
@@ -349,7 +327,6 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
       TextColor       =   0
@@ -359,18 +336,15 @@ Begin Window PresentHelperWindow
       Underline       =   False
       Visible         =   True
       Width           =   135
-      BehaviorIndex   =   9
    End
    Begin GroupBox grp_presentation_actions
       AutoDeactivate  =   True
-      BehaviorIndex   =   10
       Bold            =   False
       Caption         =   "Actions"
-      ControlOrder    =   10
       Enabled         =   True
       Height          =   155
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   514
@@ -382,27 +356,24 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       Top             =   190
       Underline       =   False
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   10
       Begin SButton btn_action_alert
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   11
-         ControlOrder    =   11
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
          Left            =   524
@@ -420,21 +391,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   11
       End
       Begin SButton btn_action_quick_song
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   12
-         ControlOrder    =   12
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
          Left            =   524
@@ -452,21 +421,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   12
       End
       Begin SButton btn_action_scripture
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   13
-         ControlOrder    =   13
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
          Left            =   524
@@ -484,21 +451,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   13
       End
       Begin SButton btn_action_full_screen
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   14
-         ControlOrder    =   14
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
          Left            =   524
@@ -516,21 +481,19 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   14
       End
       Begin SButton btn_action_return
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   15
-         ControlOrder    =   15
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
          Left            =   524
@@ -548,7 +511,6 @@ Begin Window PresentHelperWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   130
-         BehaviorIndex   =   15
       End
    End
    Begin EditField edt_slide_notes
@@ -556,17 +518,15 @@ Begin Window PresentHelperWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   16
       Bold            =   True
       Border          =   True
-      ControlOrder    =   16
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   116
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   368
@@ -596,7 +556,6 @@ Begin Window PresentHelperWindow
       UseFocusRing    =   False
       Visible         =   True
       Width           =   300
-      BehaviorIndex   =   16
    End
 End
 #tag EndWindow
@@ -682,7 +641,7 @@ End
 		  lst_all_slides.Cell(index,1) = SmartML.GetValue(slide, "@id", False)
 		  lst_all_slides.CellAlignment(index, 1) = 2
 		  Select Case SmartML.GetValue(slide.Parent.Parent, "@type", False)
-		  Case "image"
+		  Case "image", "external"
 		    lst_all_slides.Cell(index,2) = Trim(SmartML.GetValue(slide, "description", True)).CleanSpaces
 		  Else
 		    lst_all_slides.Cell(index,2) = ReplaceAll(ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " "), Chr(9), " ").CleanSpaces

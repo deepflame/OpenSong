@@ -45,6 +45,7 @@ Implements iPresentation
 		          
 		          If slideIndex > 0 and slideIndex <= oPresController.getSlideCount() Then
 		            oPresController.gotoSlideIndex( slideIndex - 1 )
+		            SetPresentationWindow( oPresController, True )
 		            result = True
 		          End If
 		          
@@ -250,8 +251,11 @@ Implements iPresentation
 		      Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
 		      If Not IsNull( oPresentation ) Then
 		        
-		        If IsShowing() Then
+		        If Not IsShowing() Then
 		          
+		          If startAt > 1 Then
+		            oPresentation.FirstPage = SlideName( startAt )
+		          End If
 		          oPresentation.IsEndless = loopShow
 		          oPresentation.IsAlwaysOnTop = True
 		          oPresentation.IsAutomatic = False
@@ -276,29 +280,7 @@ Implements iPresentation
 		            result = False
 		          End Try
 		          
-		          If IsNull( oController ) Then
-		            oController = m_oImpressDoc.getCurrentController()
-		          End If
-		          If Not IsNull( oController ) Then
-		            
-		            Dim oFrame As OLEObject = oController.getFrame()
-		            If Not IsNull( oFrame ) Then
-		              
-		              Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		              If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		              
-		              Dim x As Integer =Screen(presentScreen).Left
-		              Dim y As Integer =Screen(presentScreen).Top
-		              Dim w As Integer =Screen(presentScreen).Width
-		              Dim h As Integer  =Screen(presentScreen).Height
-		              
-		              Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
-		              If Not IsNull( oComponentWin ) Then
-		                oComponentWin.setPosSize( x, y, w, h, OOoPresentationHost.OOoPosSize.POSSIZE )
-		              End If
-		              
-		            End If
-		          End If
+		          SetPresentationWindow( oController, True )
 		          
 		          m_IsRunning = True
 		          result = m_IsRunning
@@ -371,10 +353,12 @@ Implements iPresentation
 		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
 		    If Not IsNull( oPresentation ) Then
 		      Try
-		        Dim oPresController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to check for support
-		        If Not IsNull( oPresController ) Then
-		          result = True
-		        End If
+		        'The best test is to try and obtain the XSlideShowController object, but that is only available during presentation.
+		        'Dim oPresController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to check for support
+		        
+		        'Next best is to query another function that is only available in the OOo 3.0 XPresentation2 interface.
+		        Dim check As Boolean = oPresentation.isRunning()
+		        result = True
 		      Catch
 		        'catch exeption for OOo < 3.0
 		      End Try
@@ -415,8 +399,14 @@ Implements iPresentation
 		        result = m_oImpressDoc.getLocation()
 		        
 		        If result.StartsWith( "file://" ) Then
-		          result = result.Mid( 8 )
+		          #If TargetWin32
+		            result = result.Mid( 9 )
+		          #Else
+		            result = result.Mid( 8 )
+		          #EndIf
 		        End If
+		        
+		        result = DecodeURLComponent( result )
 		        result = result.ReplaceAll("|", ":")
 		        #If TargetWin32
 		          result = result.ReplaceAll("/", "\")
@@ -614,6 +604,66 @@ Implements iPresentation
 		  // Part of the iPresentation interface.
 		  
 		  Return "OpenOffice.org Impress"
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub SetPresentationWindow(oController As OLEObject, Showing As Boolean)
+		  If IsNull( oController ) Then
+		    oController = m_oImpressDoc.getCurrentController()
+		  End If
+		  If Not IsNull( oController ) Then
+		    
+		    Dim oFrame As OLEObject = oController.getFrame()
+		    If Not IsNull( oFrame ) Then
+		      
+		      Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		      If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
+		      
+		      Dim x As Integer =Screen(presentScreen).Left
+		      Dim y As Integer =Screen(presentScreen).Top
+		      Dim w As Integer =Screen(presentScreen).Width
+		      Dim h As Integer  =Screen(presentScreen).Height
+		      
+		      Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
+		      If Not IsNull( oComponentWin ) Then
+		        oComponentWin.setPosSize( x, y, w, h, OOoPresentationHost.OOoPosSize.POSSIZE )
+		        oComponentWin.setVisible( True )
+		      End If
+		      
+		    End If
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsHidden(slideIndex As Integer) As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Boolean = False
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    Dim oDrawPages As OLEObject = m_oImpressDoc.getDrawPages()
+		    If Not IsNull( oDrawPages ) Then
+		      
+		      If slideIndex > 0 and slideIndex <= oDrawPages.getCount() Then
+		        Dim oDrawPage As OLEObject = oDrawPages.getByIndex(  slideIndex - 1 )
+		        
+		        If Not IsNull( oDrawPage ) Then
+		          Try
+		            result = Not oDrawPage.Visible()
+		          Catch
+		            'prevent application crash
+		          End Try
+		        End If
+		        
+		      End If
+		      
+		    End If
+		  End If
+		  
+		  Return result
+		  
 		End Function
 	#tag EndMethod
 

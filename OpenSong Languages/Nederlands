@@ -157,6 +157,12 @@
       <copy caption="Kopieër">Maakt een kopie van het huidige item.</copy>
       <paste caption="link(shared/insert/@caption)">Voegt gekopieerd item in op huidige positie.</paste>  
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Presenteert het huidige project op scherm vanaf de huidig geselecteerde dia. U heeft de mogelijkheid om de presentatie op het huidige scherm, op 2 schermen of een voorbeeld hoe het op 2 schermen weergegeven kan worden.
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Project Items">Lijst met items in het huidige project. Klik op een aangepaste dia om die te kunnen wijzigen of dubbelklik een lied om te wijzigen.
       <song caption="(lied)"/>
@@ -172,7 +178,8 @@
       <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
     </errors>
     <messages>
-      <export_complete>&quot;%1&quot; geëxporteerd naar %2
+      <export_complete>&quot;%1&quot; geëxporteerd naar
+%2
       </export_complete>
     </messages>
   </sets_mode>
@@ -325,6 +332,7 @@
     </settings>
     <help caption="_Help">
       <help_topics caption="Help _Onderwerpen"/>
+      <user_manual caption="Online _Gebruikershandleiding"/>
       <translating caption="_Vertaal OpenSong"/>
       <about caption="_Over OpenSong"/>
     </help>

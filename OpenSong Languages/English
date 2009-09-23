@@ -157,11 +157,11 @@
       <copy caption="Copy">Creates a copy of the currently selected set item.</copy>
       <paste caption="link(shared/insert/@caption)">Insert copied item after current position.</paste>      
       <store caption="Save">Stores the currently selected item in the set.</store>
-      <presentitem caption="Present">Presents the current set to the screen, starting from the currently selected item. You have the option of presenting to the current monitor, a secondary monitor, or using a single monitor to preview what it would be like with two monitors.
-        <single_screen caption="Single Screen"/>
-        <dual_screen caption="Dual Screen"/>
-        <preview_dual_screen caption="Preview Dual Screen"/>
-        <no_slides>You must have at least one slide in the set to present.</no_slides>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Presents the current set to the screen, starting from the currently selected item. You have the option of presenting to the current monitor, a secondary monitor, or using a single monitor to preview what it would be like with two monitors.
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
       </presentitem>
     </current_item>
     <items caption="Set Items">Lists the items in the current set. Click on a custom slide to load it into the custom slide editor or double-click a song to load it into the song editor.
@@ -332,7 +332,7 @@
     </settings>
     <help caption="_Help">
       <help_topics caption="Help _Topics"/>
-      <user_manual caption="Online User Manual"/>
+      <user_manual caption="_Online User Manual"/>
       <translating caption="_Translating OpenSong"/>
       <about caption="_About OpenSong"/>
     </help>
@@ -460,7 +460,6 @@
       <blanks caption="Insert Blank Slides"/>
       <blanks_between caption="Between Set Items"/>
       <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
-      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
       <blank_style caption="Blank slides take style of"/>
       <blank_prev caption="Previous slide"/>
       <blank_next caption="Next slide"/>

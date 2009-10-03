@@ -26,6 +26,7 @@ Begin Window AboutWindow
    Width           =   562
    Begin PushButton btn_about_close
       AutoDeactivate  =   True
+      BehaviorIndex   =   0
       Bold            =   False
       Cancel          =   False
       Caption         =   "Close"
@@ -52,10 +53,10 @@ Begin Window AboutWindow
       Underline       =   False
       Visible         =   True
       Width           =   69
-      BehaviorIndex   =   0
    End
    Begin ImageWell ImageWell1
       AutoDeactivate  =   True
+      BehaviorIndex   =   1
       Enabled         =   True
       Height          =   128
       HelpTag         =   ""
@@ -75,10 +76,10 @@ Begin Window AboutWindow
       Top             =   14
       Visible         =   True
       Width           =   128
-      BehaviorIndex   =   1
    End
    Begin StaticText txt_about_version
       AutoDeactivate  =   True
+      BehaviorIndex   =   2
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
@@ -98,6 +99,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "OpenSong V1.5"
       TextAlign       =   0
       TextColor       =   0
@@ -107,10 +109,10 @@ Begin Window AboutWindow
       Underline       =   False
       Visible         =   True
       Width           =   328
-      BehaviorIndex   =   2
    End
    Begin StaticText txt_about_copyright
       AutoDeactivate  =   True
+      BehaviorIndex   =   3
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
@@ -130,6 +132,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Copyright (c) 2003, 2004, 2005, 2006 Sean Lickfold"
       TextAlign       =   0
       TextColor       =   0
@@ -139,10 +142,10 @@ Begin Window AboutWindow
       Underline       =   False
       Visible         =   True
       Width           =   376
-      BehaviorIndex   =   3
    End
    Begin StaticText txt_about_gpl
       AutoDeactivate  =   True
+      BehaviorIndex   =   4
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
@@ -162,6 +165,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Licensed under the GNU Public License V2.1"
       TextAlign       =   0
       TextColor       =   0
@@ -171,10 +175,10 @@ Begin Window AboutWindow
       Underline       =   False
       Visible         =   True
       Width           =   376
-      BehaviorIndex   =   4
    End
    Begin StaticText txt_about_web
       AutoDeactivate  =   True
+      BehaviorIndex   =   5
       Bold            =   True
       DataField       =   ""
       DataSource      =   ""
@@ -194,6 +198,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "http://www.opensong.org"
       TextAlign       =   0
       TextColor       =   &h0000FF
@@ -203,10 +208,10 @@ Begin Window AboutWindow
       Underline       =   True
       Visible         =   True
       Width           =   376
-      BehaviorIndex   =   5
    End
    Begin StaticText txt_about_programmers
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
@@ -226,6 +231,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   6
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Joshua Coley, Ed Palmer, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt, Gerrit Prins, Tim Howard."
       TextAlign       =   0
       TextColor       =   0
@@ -235,13 +241,13 @@ Begin Window AboutWindow
       Underline       =   False
       Visible         =   True
       Width           =   376
-      BehaviorIndex   =   6
    End
-   Begin EditField edt_about_libraries
+   Begin TextArea edt_about_libraries
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
+      BehaviorIndex   =   7
       Bold            =   ""
       Border          =   True
       DataField       =   ""
@@ -280,10 +286,10 @@ Begin Window AboutWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   376
-      BehaviorIndex   =   7
    End
    Begin StaticText txt_about_compiler
       AutoDeactivate  =   True
+      BehaviorIndex   =   8
       Bold            =   ""
       DataField       =   ""
       DataSource      =   ""
@@ -303,6 +309,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Compiler"
       TextAlign       =   2
       TextColor       =   0
@@ -312,10 +319,10 @@ Begin Window AboutWindow
       Underline       =   ""
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   8
    End
    Begin StaticText txt_about_memory
       AutoDeactivate  =   True
+      BehaviorIndex   =   9
       Bold            =   ""
       DataField       =   ""
       DataSource      =   ""
@@ -335,6 +342,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Memory"
       TextAlign       =   2
       TextColor       =   0
@@ -344,10 +352,10 @@ Begin Window AboutWindow
       Underline       =   ""
       Visible         =   True
       Width           =   102
-      BehaviorIndex   =   9
    End
    Begin StaticText txt_about_objects
       AutoDeactivate  =   True
+      BehaviorIndex   =   10
       Bold            =   ""
       DataField       =   ""
       DataSource      =   ""
@@ -367,6 +375,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   10
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Object Count"
       TextAlign       =   2
       TextColor       =   0
@@ -376,10 +385,10 @@ Begin Window AboutWindow
       Underline       =   ""
       Visible         =   True
       Width           =   102
-      BehaviorIndex   =   10
    End
    Begin StaticText txt_about_build
       AutoDeactivate  =   True
+      BehaviorIndex   =   11
       Bold            =   ""
       DataField       =   ""
       DataSource      =   ""
@@ -399,6 +408,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   11
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Build"
       TextAlign       =   2
       TextColor       =   0
@@ -408,10 +418,10 @@ Begin Window AboutWindow
       Underline       =   ""
       Visible         =   True
       Width           =   102
-      BehaviorIndex   =   11
    End
    Begin StaticText txt_about_language
       AutoDeactivate  =   True
+      BehaviorIndex   =   12
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
@@ -431,6 +441,7 @@ Begin Window AboutWindow
       Scope           =   0
       TabIndex        =   12
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "English: Sean Lickfold"
       TextAlign       =   0
       TextColor       =   0
@@ -440,7 +451,6 @@ Begin Window AboutWindow
       Underline       =   False
       Visible         =   True
       Width           =   376
-      BehaviorIndex   =   12
    End
 End
 #tag EndWindow

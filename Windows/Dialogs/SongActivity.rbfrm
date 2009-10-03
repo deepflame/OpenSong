@@ -72,7 +72,6 @@ Begin Window SongActivity
       Width           =   607
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_act_done
       AutoDeactivate  =   True
@@ -103,7 +102,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   86
-      BehaviorIndex   =   1
    End
    Begin PushButton btn_act_print
       AutoDeactivate  =   True
@@ -134,7 +132,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   2
    End
    Begin PushButton btn_act_find
       AutoDeactivate  =   True
@@ -165,9 +162,8 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   77
-      BehaviorIndex   =   3
    End
-   Begin EditField edt_search
+   Begin TextField edt_search
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
@@ -211,7 +207,6 @@ Begin Window SongActivity
       UseFocusRing    =   True
       Visible         =   True
       Width           =   159
-      BehaviorIndex   =   4
    End
    Begin StaticText lbl_show
       AutoDeactivate  =   True
@@ -245,7 +240,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin PopupMenu pop_show
       AutoDeactivate  =   True
@@ -277,7 +271,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   202
-      BehaviorIndex   =   6
    End
    Begin StaticText lbl_date_range
       AutoDeactivate  =   True
@@ -311,9 +304,8 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   262
-      BehaviorIndex   =   7
    End
-   Begin EditField edt_from
+   Begin TextField edt_from
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
@@ -357,9 +349,8 @@ Begin Window SongActivity
       UseFocusRing    =   True
       Visible         =   True
       Width           =   120
-      BehaviorIndex   =   8
    End
-   Begin EditField edt_to
+   Begin TextField edt_to
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
@@ -403,7 +394,6 @@ Begin Window SongActivity
       UseFocusRing    =   True
       Visible         =   True
       Width           =   120
-      BehaviorIndex   =   9
    End
    Begin StaticText txt_act_to
       AutoDeactivate  =   True
@@ -437,7 +427,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   20
-      BehaviorIndex   =   10
    End
    Begin PushButton btn_act_export
       AutoDeactivate  =   True
@@ -468,7 +457,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   11
    End
    Begin PushButton btn_act_clear_log
       AutoDeactivate  =   True
@@ -499,7 +487,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   90
-      BehaviorIndex   =   12
    End
    Begin PushButton btn_act_view
       AutoDeactivate  =   True
@@ -530,7 +517,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   13
    End
    Begin PushButton btn_act_merge
       AutoDeactivate  =   True
@@ -561,7 +547,6 @@ Begin Window SongActivity
       Underline       =   ""
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   14
    End
 End
 #tag EndWindow
@@ -588,6 +573,35 @@ End
 		End Sub
 	#tag EndEvent
 
+
+	#tag Method, Flags = &h0
+		Sub AddEntryToList(Log As LogEntry)
+		  'This is where we plug-in all the Log entry infos into the list
+		  'TODO Translate
+		  
+		  'Date
+		  lst_act_songs.AddRow Log.DateAndTime.ShortDate
+		  'Time
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 1) = Log.DateAndTime.ShortTime 'We could use LongTime for accuracy to the second (for our vulcan users :)
+		  
+		  'Description
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = NthField(App.T.Translate("song_activity/description"), "|", Log.Description)
+		  
+		  'Title
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 3) = Log.Title
+		  'Author
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 4) = Log.Author
+		  'CCLI Song #
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 5) = Log.CCLISongNumber
+		  'Chords
+		  If Log.HasChords Then
+		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/yes")
+		  Else
+		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/no")
+		  End If
+		  
+		End Sub
+	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub GetFromDate()
@@ -706,42 +720,17 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub AddEntryToList(Log As LogEntry)
-		  'This is where we plug-in all the Log entry infos into the list
-		  'TODO Translate
-		  
-		  'Date
-		  lst_act_songs.AddRow Log.DateAndTime.ShortDate
-		  'Time
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 1) = Log.DateAndTime.ShortTime 'We could use LongTime for accuracy to the second (for our vulcan users :)
-		  
-		  'Description
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = NthField(App.T.Translate("song_activity/description"), "|", Log.Description)
-		  
-		  'Title
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 3) = Log.Title
-		  'Author
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 4) = Log.Author
-		  'CCLI Song #
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 5) = Log.CCLISongNumber
-		  'Chords
-		  If Log.HasChords Then
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/yes")
-		  Else
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/no")
-		  End If
-		  
-		End Sub
-	#tag EndMethod
 
+	#tag Property, Flags = &h0
+		ActLog As ActivityLog
+	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		FromDate As Date
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		ToDate As Date
+		FromFile As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -749,19 +738,15 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		Search As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
 		OldIndex As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		ActLog As ActivityLog
+		Search As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		FromFile As Boolean
+		ToDate As Date
 	#tag EndProperty
 
 

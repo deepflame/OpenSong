@@ -329,6 +329,7 @@ Protected Class SlideStyle
 		  SmartML.SetValue(CurrChild, "@bgalign", BackgroundAlign)'gp
 		  SmartML.SetValueN(CurrChild, "@bgmaxsize", bgMaxSize)'gp
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
+		  SmartML.SetValueB(CurrChild, "@verse_as_image", verse_as_image)'gp
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
 		  SmartML.SetValueN(CurrChild, "@position", Position)
 		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And App.ExcludeBackgroundsImages() Then
@@ -510,6 +511,7 @@ Protected Class SlideStyle
 		  TitleMargins.Top = SmartML.GetValueN(xStyle, "title/@margin-top")
 		  TitleMargins.Bottom = SmartML.GetValueN(xStyle, "title/@margin-bottom")
 		  TitleIncludeVerse = SmartML.GetValueB(xStyle, "title/@include_verse", True, False)
+		  
 		  '++JRC
 		  TitleEnable = SmartML.GetValueB(xStyle, "title/@enabled", true, true)
 		  '--
@@ -543,6 +545,7 @@ Protected Class SlideStyle
 		  bgMaxSize = SmartML.GetValueN(xStyle, "background/@bgmaxsize")'gp
 		  
 		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
+		  verse_as_image = SmartML.GetValueB(xStyle, "background/@verse_as_image")'gp
 		  
 		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
 		  If Position < POS_STRETCH Or Position > POS_CENTER Then 'gp
@@ -817,6 +820,13 @@ Protected Class SlideStyle
 		bgMaxSize As Integer
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		#tag Note
+			'gp
+		#tag EndNote
+		verse_as_image As Boolean
+	#tag EndProperty
+
 
 	#tag Constant, Name = POS_CENTER, Type = Double, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant
@@ -885,6 +895,12 @@ Protected Class SlideStyle
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="verse_as_image"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

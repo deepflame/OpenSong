@@ -27,11 +27,12 @@ Begin Window SongActivity
    Begin ListBox lst_act_songs
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
+      BehaviorIndex   =   0
       Bold            =   ""
-      Border          =   True
       ColumnCount     =   7
       ColumnsResizable=   True
       ColumnWidths    =   "3*,3*,7*,5*,5*,3*,3*"
+      ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -45,7 +46,7 @@ Begin Window SongActivity
       Height          =   234
       HelpTag         =   ""
       Hierarchical    =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   ""
@@ -56,7 +57,6 @@ Begin Window SongActivity
       LockRight       =   True
       LockTop         =   True
       RequiresSelection=   ""
-      Scope           =   0
       ScrollbarHorizontal=   ""
       ScrollBarVertical=   True
       SelectionType   =   1
@@ -75,14 +75,16 @@ Begin Window SongActivity
    End
    Begin PushButton btn_act_done
       AutoDeactivate  =   True
+      BehaviorIndex   =   1
       Bold            =   ""
       Cancel          =   True
       Caption         =   "Done"
+      ControlOrder    =   1
       Default         =   ""
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   543
@@ -91,7 +93,6 @@ Begin Window SongActivity
       LockLeft        =   ""
       LockRight       =   True
       LockTop         =   ""
-      Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
@@ -104,23 +105,24 @@ Begin Window SongActivity
    End
    Begin PushButton btn_act_print
       AutoDeactivate  =   True
+      BehaviorIndex   =   2
       Bold            =   ""
       Cancel          =   ""
       Caption         =   "Print"
+      ControlOrder    =   2
       Default         =   ""
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   167
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
+      LockLeft        =   True
+      LockRight       =   False
       LockTop         =   ""
-      Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
@@ -133,14 +135,16 @@ Begin Window SongActivity
    End
    Begin PushButton btn_act_find
       AutoDeactivate  =   True
+      BehaviorIndex   =   3
       Bold            =   ""
       Cancel          =   ""
       Caption         =   "Find"
+      ControlOrder    =   3
       Default         =   ""
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   550
@@ -149,7 +153,6 @@ Begin Window SongActivity
       LockLeft        =   ""
       LockRight       =   True
       LockTop         =   True
-      Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
@@ -160,20 +163,22 @@ Begin Window SongActivity
       Visible         =   True
       Width           =   77
    End
-   Begin EditField edt_search
+   Begin TextField edt_search
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   &hFFFFFF
+      BehaviorIndex   =   4
       Bold            =   ""
       Border          =   True
+      ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   379
@@ -187,7 +192,6 @@ Begin Window SongActivity
       Multiline       =   ""
       Password        =   ""
       ReadOnly        =   ""
-      Scope           =   0
       ScrollbarHorizontal=   ""
       ScrollbarVertical=   True
       Styled          =   ""
@@ -206,23 +210,24 @@ Begin Window SongActivity
    End
    Begin StaticText lbl_show
       AutoDeactivate  =   True
+      BehaviorIndex   =   5
       Bold            =   ""
+      ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   169
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
+      LockLeft        =   True
+      LockRight       =   ""
       LockTop         =   ""
       Multiline       =   ""
-      Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
       TabStop         =   True
@@ -238,13 +243,15 @@ Begin Window SongActivity
    End
    Begin PopupMenu pop_show
       AutoDeactivate  =   True
+      BehaviorIndex   =   6
       Bold            =   ""
+      ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   ""
@@ -252,10 +259,9 @@ Begin Window SongActivity
       ListIndex       =   0
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
+      LockLeft        =   True
+      LockRight       =   ""
       LockTop         =   ""
-      Scope           =   0
       TabIndex        =   6
       TabPanelIndex   =   0
       TabStop         =   True
@@ -268,13 +274,15 @@ Begin Window SongActivity
    End
    Begin StaticText lbl_date_range
       AutoDeactivate  =   True
+      BehaviorIndex   =   7
       Bold            =   ""
+      ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   20
@@ -284,7 +292,6 @@ Begin Window SongActivity
       LockRight       =   ""
       LockTop         =   True
       Multiline       =   ""
-      Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
       TabStop         =   True
@@ -298,20 +305,22 @@ Begin Window SongActivity
       Visible         =   True
       Width           =   262
    End
-   Begin EditField edt_from
+   Begin TextField edt_from
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   &hFFFFFF
+      BehaviorIndex   =   8
       Bold            =   ""
       Border          =   True
+      ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   20
@@ -325,7 +334,6 @@ Begin Window SongActivity
       Multiline       =   ""
       Password        =   ""
       ReadOnly        =   ""
-      Scope           =   0
       ScrollbarHorizontal=   ""
       ScrollbarVertical=   True
       Styled          =   ""
@@ -342,20 +350,22 @@ Begin Window SongActivity
       Visible         =   True
       Width           =   120
    End
-   Begin EditField edt_to
+   Begin TextField edt_to
       AcceptTabs      =   ""
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   &hFFFFFF
+      BehaviorIndex   =   9
       Bold            =   ""
       Border          =   True
+      ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   166
@@ -369,7 +379,6 @@ Begin Window SongActivity
       Multiline       =   ""
       Password        =   ""
       ReadOnly        =   ""
-      Scope           =   0
       ScrollbarHorizontal=   ""
       ScrollbarVertical=   True
       Styled          =   ""
@@ -388,13 +397,15 @@ Begin Window SongActivity
    End
    Begin StaticText txt_act_to
       AutoDeactivate  =   True
+      BehaviorIndex   =   10
       Bold            =   ""
+      ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   143
@@ -404,7 +415,6 @@ Begin Window SongActivity
       LockRight       =   ""
       LockTop         =   True
       Multiline       =   ""
-      Scope           =   0
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
@@ -420,23 +430,24 @@ Begin Window SongActivity
    End
    Begin PushButton btn_act_export
       AutoDeactivate  =   True
+      BehaviorIndex   =   11
       Bold            =   ""
       Cancel          =   ""
       Caption         =   "Export"
+      ControlOrder    =   11
       Default         =   ""
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   436
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
+      LockLeft        =   True
+      LockRight       =   False
       LockTop         =   ""
-      Scope           =   0
       TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
@@ -449,14 +460,16 @@ Begin Window SongActivity
    End
    Begin PushButton btn_act_clear_log
       AutoDeactivate  =   True
+      BehaviorIndex   =   12
       Bold            =   ""
       Cancel          =   ""
       Caption         =   "Clear Log"
+      ControlOrder    =   12
       Default         =   ""
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   20
@@ -465,7 +478,6 @@ Begin Window SongActivity
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   ""
-      Scope           =   0
       TabIndex        =   12
       TabPanelIndex   =   0
       TabStop         =   True
@@ -478,23 +490,24 @@ Begin Window SongActivity
    End
    Begin PushButton btn_act_view
       AutoDeactivate  =   True
+      BehaviorIndex   =   13
       Bold            =   ""
       Cancel          =   ""
       Caption         =   "View LogFile"
+      ControlOrder    =   13
       Default         =   ""
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   257
-      LockBottom      =   True
+      LockBottom      =   ""
       LockedInPosition=   False
       LockLeft        =   ""
-      LockRight       =   True
+      LockRight       =   ""
       LockTop         =   ""
-      Scope           =   0
       TabIndex        =   13
       TabPanelIndex   =   0
       TabStop         =   True
@@ -507,23 +520,24 @@ Begin Window SongActivity
    End
    Begin PushButton btn_act_merge
       AutoDeactivate  =   True
+      BehaviorIndex   =   14
       Bold            =   ""
       Cancel          =   ""
       Caption         =   "Merge"
+      ControlOrder    =   14
       Default         =   ""
       Enabled         =   False
       Height          =   22
       HelpTag         =   ""
-      Index           =   -2147483648
+      Index           =   2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   346
-      LockBottom      =   True
+      LockBottom      =   ""
       LockedInPosition=   False
       LockLeft        =   ""
-      LockRight       =   True
+      LockRight       =   ""
       LockTop         =   ""
-      Scope           =   0
       TabIndex        =   14
       TabPanelIndex   =   0
       TabStop         =   True
@@ -559,6 +573,35 @@ End
 		End Sub
 	#tag EndEvent
 
+
+	#tag Method, Flags = &h0
+		Sub AddEntryToList(Log As LogEntry)
+		  'This is where we plug-in all the Log entry infos into the list
+		  'TODO Translate
+		  
+		  'Date
+		  lst_act_songs.AddRow Log.DateAndTime.ShortDate
+		  'Time
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 1) = Log.DateAndTime.ShortTime 'We could use LongTime for accuracy to the second (for our vulcan users :)
+		  
+		  'Description
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = NthField(App.T.Translate("song_activity/description"), "|", Log.Description)
+		  
+		  'Title
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 3) = Log.Title
+		  'Author
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 4) = Log.Author
+		  'CCLI Song #
+		  lst_act_songs.Cell(lst_act_songs.LastIndex, 5) = Log.CCLISongNumber
+		  'Chords
+		  If Log.HasChords Then
+		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/yes")
+		  Else
+		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/no")
+		  End If
+		  
+		End Sub
+	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub GetFromDate()
@@ -640,7 +683,6 @@ End
 		  End If
 		  
 		  lst_act_songs.DeleteAllRows
-		  ReDim DispLog(0)
 		  
 		  recordType = pop_show.RowTag(pop_show.ListIndex).IntegerValue
 		  
@@ -664,7 +706,6 @@ End
 		            Continue
 		          End If
 		          
-		          DispLog.Append(Log(j))
 		          AddEntryToList(Log(j))
 		          j = j + 1
 		          
@@ -672,74 +713,20 @@ End
 		          Continue
 		        End If
 		      End If
-		    Else
-		      'TODO Error
 		    End If
 		    
 		    Log.Remove(j)
 		  Next i
-		  
-		  If lst_act_songs.ListCount > 0 Then
-		    btn_act_print.Enabled = True
-		  Else
-		    btn_act_print.Enabled = False
-		  End If
-		  
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub AddEntryToList(Log As LogEntry)
-		  'This is where we plug-in all the Log entry infos into the list
-		  'TODO Translate
-		  
-		  'Date
-		  lst_act_songs.AddRow Log.DateAndTime.ShortDate
-		  'Time
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 1) = Log.DateAndTime.ShortTime 'We could use LongTime for accuracy to the second (for our vulcan users :)
-		  
-		  'Description
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 2) = NthField(App.T.Translate("song_activity/description"), "|", Log.Description)
-		  
-		  'Title
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 3) = Log.Title
-		  'Author
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 4) = Log.Author
-		  'CCLI Song #
-		  lst_act_songs.Cell(lst_act_songs.LastIndex, 5) = Log.CCLISongNumber
-		  'Chords
-		  If Log.HasChords Then
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/yes")
-		  Else
-		    lst_act_songs.Cell(lst_act_songs.LastIndex, 6) = App.T.Translate("shared/no")
-		  End If
-		  
-		End Sub
-	#tag EndMethod
-
-
-	#tag Property, Flags = &h0
-		FromDate As Date
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		ToDate As Date
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Initializing As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Search As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		OldIndex As Integer
-	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		ActLog As ActivityLog
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		FromDate As Date
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -747,7 +734,19 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		DispLog(0) As LogEntry
+		Initializing As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		OldIndex As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Search As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ToDate As Date
 	#tag EndProperty
 
 
@@ -789,42 +788,6 @@ End
 	#tag Event
 		Sub Action()
 		  Close
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_act_print
-	#tag Event
-		Sub Action()
-		  Dim rpt As SongActivityReport
-		  Dim i As Integer
-		  
-		  If lst_act_songs.ListCount  <  1 Then
-		    
-		    Return
-		  End If
-		  
-		  rpt = New SongActivityReport
-		  If Not rpt.Setup Then
-		    'Reset Mouse Cursor
-		    App.MouseCursor = Nil
-		    Return // User cancelled
-		  End If
-		  
-		  For i = 1 To UBound(DispLog)
-		    rpt.AddSong DispLog(i)
-		  Next i
-		  
-		  If rpt.Generate Then
-		    PrintWindow.SetReport(rpt)
-		    PrintWindow.Top = Self.Top + 40
-		    PrintWindow.Height = Self.Height - 80
-		    PrintWindow.Left = Self.Left + 40
-		    PrintWindow.Width = Self.Width - 80
-		    PrintWindow.ShowModalWithin Self
-		    App.DebugWriter.Write "MainWindow.ActionSongPrint: Return from PrintWindow"
-		  End If
-		  rpt = Nil
-		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -1,5 +1,5 @@
 #tag Class
-Protected Class Report
+Protected Class ReportClass
 	#tag Method, Flags = &h0
 		Function CalcPrintableHeight() As Double
 		  //
@@ -148,6 +148,31 @@ Protected Class Report
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function LogPrintedSongs() As Boolean
+		  '++JRC
+		  If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
+		    Dim i As Integer
+		    
+		    For i = 0 To Ubound(Log)
+		      If Log(i) <> Nil Then
+		        If NOT Log(i).AddLogEntry Then
+		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		          return false
+		        Else
+		          Log(i).UpdateNumEntries(Globals.SongActivityLog)
+		        End If
+		      End If
+		    Next i
+		    
+		    return true
+		  End If
+		  
+		  Return false
+		  '--
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function Print() As Boolean
 		  //
 		  // Time to put it on paper
@@ -258,34 +283,13 @@ Protected Class Report
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function LogPrintedSongs() As Boolean
-		  '++JRC
-		  If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
-		    Dim i As Integer
-		    
-		    For i = 0 To Ubound(Log)
-		      If Log(i) <> Nil Then
-		        If NOT Log(i).AddLogEntry Then
-		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		          return false
-		        Else
-		          Log(i).UpdateNumEntries(Globals.SongActivityLog)
-		        End If
-		      End If
-		    Next i
-		    
-		    return true
-		  End If
-		  
-		  Return false
-		  '--
-		End Function
-	#tag EndMethod
-
 
 	#tag Property, Flags = &h0
 		LeftMargin As Double
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Log() As LogEntry
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -329,18 +333,8 @@ Protected Class Report
 		TopMargin As Double
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		Log() As LogEntry
-	#tag EndProperty
-
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
@@ -349,20 +343,7 @@ Protected Class Report
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
@@ -375,6 +356,12 @@ Protected Class Report
 			Type="Double"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="PrintableHeight"
 			Group="Behavior"
 			InitialValue="0"
@@ -385,6 +372,19 @@ Protected Class Report
 			Group="Behavior"
 			InitialValue="0"
 			Type="Double"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TopMargin"

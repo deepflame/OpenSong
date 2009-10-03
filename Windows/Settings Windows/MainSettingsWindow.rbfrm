@@ -180,7 +180,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   215
          End
-         Begin EditField edt_general_ccli
+         Begin TextField edt_general_ccli
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -2154,43 +2154,6 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub SetupLogfileSettings()
-		  logFileSaved = App.MainPreferences.GetValueFI(App.kLogOutput)
-		  logLevelSaved = App.MainPreferences.GetValueN(App.kLogLevel)
-		  logToConsoleSaved = App.MainPreferences.GetValueB(App.kLogOutput + App.kLogConsole, True)
-		  logAppend = App.MainPreferences.GetValueB(App.kLogOutput + App.kLogAppend, False)
-		  
-		  '++JRC Comatibilty with RB 2009
-		  chk_logging_console.Value = logToConsoleSaved
-		  chk_logging_append.Value = logAppend
-		  
-		  pop_logging_level.DeleteAllRows
-		  
-		  pop_logging_level.AddRow(App.T.Translate("general_settings/logging/level/@disabled"))
-		  
-		  For i As Integer = App.DebugWriter.MINDEBUGLEVEL To App.DebugWriter.MAXDEBUGLEVEL
-		    pop_logging_level.AddRow CStr(i)
-		  Next
-		  
-		  If App.DebugWriter.Enabled Then
-		    pop_logging_level.ListIndex = logLevelSaved - App.DebugWriter.MINDEBUGLEVEL + 1
-		  Else
-		    pop_logging_level.ListIndex = 0
-		  End If
-		  
-		  '++JRC This looks like a good place to load the song activity settings as well
-		  'Lets set logging to enabled by default
-		  ActivityLogEnabled =  App.MainPreferences.GetValueB(App.kActivityLog, True)
-		  'Lets set Prompting to disabled by default
-		  PromptBeforePresenting =  App.MainPreferences.GetValueB(App.kPromptBeforePresenting, False)
-		  
-		  '++JRC Comatibilty with RB 2009
-		  chk_logging_enable.Value = ActivityLogEnabled
-		  chk_logging_prompt.Value = PromptBeforePresenting
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
 		Protected Sub SaveLogfileSettings()
 		  Dim needReInit As Boolean = False
 		  
@@ -2258,6 +2221,47 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Sub SetupLogfileSettings()
+		  logFileSaved = App.MainPreferences.GetValueFI(App.kLogOutput)
+		  logLevelSaved = App.MainPreferences.GetValueN(App.kLogLevel)
+		  logToConsoleSaved = App.MainPreferences.GetValueB(App.kLogOutput + App.kLogConsole, True)
+		  logAppend = App.MainPreferences.GetValueB(App.kLogOutput + App.kLogAppend, False)
+		  
+		  '++JRC Comatibilty with RB 2009
+		  chk_logging_console.Value = logToConsoleSaved
+		  chk_logging_append.Value = logAppend
+		  
+		  pop_logging_level.DeleteAllRows
+		  
+		  pop_logging_level.AddRow(App.T.Translate("general_settings/logging/level/@disabled"))
+		  
+		  For i As Integer = App.DebugWriter.MINDEBUGLEVEL To App.DebugWriter.MAXDEBUGLEVEL
+		    pop_logging_level.AddRow CStr(i)
+		  Next
+		  
+		  If App.DebugWriter.Enabled Then
+		    pop_logging_level.ListIndex = logLevelSaved - App.DebugWriter.MINDEBUGLEVEL + 1
+		  Else
+		    pop_logging_level.ListIndex = 0
+		  End If
+		  
+		  '++JRC This looks like a good place to load the song activity settings as well
+		  'Lets set logging to enabled by default
+		  ActivityLogEnabled =  App.MainPreferences.GetValueB(App.kActivityLog, True)
+		  'Lets set Prompting to disabled by default
+		  PromptBeforePresenting =  App.MainPreferences.GetValueB(App.kPromptBeforePresenting, False)
+		  
+		  '++JRC Comatibilty with RB 2009
+		  chk_logging_enable.Value = ActivityLogEnabled
+		  chk_logging_prompt.Value = PromptBeforePresenting
+		End Sub
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h1
+		Protected ActivityLogEnabled As Boolean
+	#tag EndProperty
 
 	#tag Property, Flags = &h1
 		Protected DefaultDocsFolder As FolderItem
@@ -2267,8 +2271,16 @@ End
 		Private DocsFolder As FolderItem
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private Init As Boolean
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
-		Protected NewDocsFolder As FolderItem
+		Protected logAppend As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected logFileNew As FolderItem
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -2284,19 +2296,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected logAppend As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected logFileNew As FolderItem
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private Init As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected ActivityLogEnabled As Boolean
+		Protected NewDocsFolder As FolderItem
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

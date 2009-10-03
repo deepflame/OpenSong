@@ -75,9 +75,45 @@ Protected Module SetML
 		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
 		  Dim bodyTabs() As StyleTabsType
 		  dim maxgrowFact as double
+		  Dim f As FolderItem
+		  Dim img2 As StyleImage
+		  dim verseAsImageFound  as boolean
+		  Dim versename as string
+		  dim BackgroundVAlign as string
+		  Dim BackgroundAlign as string
+		  
 		  SchrinkReason = ""
 		  maxgrowFact = (SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@max_grow")/100)
-		  
+		  verseAsImageFound = false
+		  if  style.verse_as_image then
+		    
+		    'sImageFile =  SmartML.GetValue(xslide.parent.parent, "@name") +"_"+ SmartML.GetValue(xslide, "@id")  +"_"+ SmartML.GetValue(xslide.parent.parent, "@songfilename" )
+		    
+		    'F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(xslide.parent.parent, "@songpath" )+"/"+SmartML.GetValue(xslide.parent.parent, "@songfilename" )+".png")
+		    F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(xslide.parent.parent, "@songpath" )+"/")
+		    if F <> nil then
+		      versename = SmartML.GetValue(xslide.parent.parent, "@songfilename" )
+		      versename = trim(Left(SmartML.GetValue(xslide.parent.parent, "@songfilename" ), InStr(1,versename," ")))
+		      if f.Child(versename+".png").Exists and SmartML.GetValue(xslide, "@id") ="V1" then
+		        f =  f.Child(versename+".png")
+		      else
+		        versename = versename + SmartML.GetValue(xslide, "@id")
+		        if f.Child(versename+".png").Exists then
+		          f =  f.Child(versename+".png")
+		        else
+		        end if
+		      end if
+		      if f <> nil and not f.Directory then
+		        'MsgBox(f.AbsolutePath )
+		        img2 = new StyleImage()
+		        call img2.SetImageFromFileName( f.AbsolutePath )
+		        'style.background = img2' 
+		         background = img2.getimage()
+		        verseAsImageFound = true
+		      end if
+		    end if
+		    
+		  end if
 		  'gpgpgpgpgp evt uitbreiden bijv alleen als song en blanks groot maken enz
 		  lastbodysize = bodysize 'gp
 		  lastslidetype = SlideType 'gp
@@ -90,6 +126,8 @@ Protected Module SetML
 		    subtitleMargins = Style.SubtitleMargins
 		    bodyMargins = Style.BodyMargins
 		    bodyTabs = Style.BodyTabItems()
+		     BackgroundVAlign =style.BackgroundVAlign
+		     BackgroundAlign = style.BackgroundAlign
 		  End If
 		  
 		  gWidth = g.Width
@@ -114,9 +152,9 @@ Protected Module SetML
 		  Profiler.BeginProfilerEntry "DrawSlide>Background" ' --------------------------------------------------
 		  
 		  aspect_ratio = gWidth / gHeight
-		  
-		  If Style <> Nil Then background = Style.Background().GetImage()
-		  
+		   if not verseAsImageFound then
+		    If Style <> Nil Then background = Style.Background().GetImage()
+		  end if
 		  //++EMP 09/05
 		  // Paint the background color first.  That way the borders from any trimming will
 		  // end up in that color.
@@ -150,12 +188,17 @@ Protected Module SetML
 		    if maxsizefact < 0.01 then
 		      maxSizeFact = 1
 		    end if
+		    if verseAsImageFound then
+		      maxsizefact = 0.94
+		      BackgroundVAlign = "bottom" 
+		      BackgroundAlign = "" 
+		    end if
 		    
 		    gHeight = g.Height * MaxSizeFact
 		    gWidth = g.Width * MaxSizeFact
 		    aspect_ratio = Min(gHeight /bgDrawH, gWidth / bgDrawW)
 		    
-		    if style.BackgroundAlign = "left" Then
+		    if BackgroundAlign = "left" Then
 		      LEFT =0
 		      if stretch then
 		        RIGHT = min(LEFT + bgDrawW,  gWidth)
@@ -163,7 +206,7 @@ Protected Module SetML
 		        RIGHT = min(LEFT + bgDrawW* aspect_ratio,  gWidth)
 		      end if
 		    else
-		      if  style.BackgroundAlign = "right" Then
+		      if  BackgroundAlign = "right" Then
 		        RIGHT = g.Width
 		        if stretch then
 		          LEFT = max(RIGHT- bgDrawW, g.width- gWidth)
@@ -180,7 +223,7 @@ Protected Module SetML
 		        end if
 		      end if
 		    end if
-		    if style.BackgroundVAlign = "bottom" Then
+		    if BackgroundVAlign = "bottom" Then
 		      BOTTOM = g.height
 		      if stretch then
 		        TOP = max(BOTTOM -bgDrawH,  g.height - gheight)
@@ -188,7 +231,7 @@ Protected Module SetML
 		        TOP = max(BOTTOM -bgDrawH* aspect_ratio,  g.height - gheight)
 		      end if
 		    else
-		      if  style.BackgroundVAlign = "top" Then
+		      if  BackgroundVAlign = "top" Then
 		        TOP= 0
 		        if stretch then
 		          BOTTOM = min(TOP+bgDrawH,  gheight)
@@ -225,17 +268,18 @@ Protected Module SetML
 		  Dim pic As Picture = Nil
 		  Dim resize As String
 		  Dim keepaspect As Boolean
+		  Dim sImageFile As String
 		  
 		  slideType = SmartML.GetValue(xslide.Parent.Parent, "@type")
 		  
 		  Select Case slideType
 		  Case "image"
 		    Dim img As StyleImage
-		    Dim sImageFile As String
 		    Dim scale as Double
 		    Dim Left, Top As Integer
 		    
 		    img = new StyleImage()
+		    
 		    sImageFile = SmartML.GetValue(xslide, "filename")
 		    If SmartML.GetValueB(xslide.Parent.Parent, "@link", False) = True And sImageFile<>"" Then
 		      Call img.SetImageFromFileName( sImageFile )
@@ -298,7 +342,7 @@ Protected Module SetML
 		    subtitle = SmartML.GetValue(xslide.Parent.Parent, "subtitle")
 		    
 		    If slideType = "image" Then
-		      If SmartML.GetValueB(xslide.Parent.Parent, "@descriptions_in_subtitle", False) = True And SmartML.GetValue(xslide, "description", False) <> "" Then
+		      If SmartML.GetValueB(xslide.Parent.Parent, "@  ", False) = True And SmartML.GetValue(xslide, "description", False) <> "" Then
 		        If subtitle <> "" Then
 		          subtitle = subtitle + Chr(10)
 		        End If
@@ -411,201 +455,204 @@ Protected Module SetML
 		      
 		    End If
 		  Else
-		    If SmartML.GetValueB(xslide, "@emphasize", False) And Style.HighlightChorus Then
-		      bodyStyle.Italic = Not bodyStyle.Italic
-		    End If
-		    
-		    Dim st, linecount, x2 As Integer
-		    Dim line, line2, lines(0) As String
-		    st = 1
-		    
-		    Profiler.EndProfilerEntry
-		    //++EMP 09/05
-		    // Take a pass at the slide to see if the lines will fit reasonably as they are.
-		    // Hopefully in most cases this will be all we need
-		    Profiler.BeginProfilerEntry "DrawSlide -> BestCaseBodyWrap"
-		    Dim MaxLineIndex, MaxLineLen As Integer '
-		    Dim NHeight As Integer
-		    Dim WrapPercent, HWrapPercent, VWrapPercent As Double
-		    Dim LineLen As Integer
-		    MaxLineLen = 0
-		    
-		    '++JRC:
-		    Dim s As string
-		    If Style.BodyEnable Then
-		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
-		      SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		    if not verseAsImageFound then
+		      If SmartML.GetValueB(xslide, "@emphasize", False) And Style.HighlightChorus Then
+		        bodyStyle.Italic = Not bodyStyle.Italic
+		      End If
 		      
-		      ' Find the longest line
-		      MaxLineIndex = UBound(lines)
-		      For i = 0 to UBound(lines)
-		        If g.StringWidth(lines(i)) > MaxLineLen Then
-		          MaxLineLen = g.StringWidth(lines(i))
-		          MaxLineIndex = i
-		        End If
-		      Next i
+		      Dim st, linecount, x2 As Integer
+		      Dim line, line2, lines(0) As String
+		      st = 1
 		      
-		    End If
-		    '--
-		    
-		    // Within reasonable wrapping limits?
-		    If MaxLineLen = 0 Then
 		      Profiler.EndProfilerEntry
-		      GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
-		    End If
-		    HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
-		    VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
-		    WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
-		    If WrapPercent >  1- maxgrowFact Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
-		      g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
-		      if wrappercent < 1 then
-		        SchrinkReason = SchrinkReason + "pre "+ str(wrappercent) + " "
-		      end if
-		      Profiler.EndProfilerEntry
-		      GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
-		    End If
-		    Profiler.EndProfilerEntry
-		    //--EMP
-		    
-		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 1" ' --------------------------------------------------
-		    
-		    ' Round Pre-1: Pre-guess shrinkage based on perfect wrapping
-		    '++JRC:
-		    line = ReplaceAll(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), Chr(10), "")
-		    '--
-		    
-		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
-		      g.TextSize = Floor(g.TextSize * .95)
-		      SchrinkReason = SchrinkReason + "H1 "
-		      if g.textsize <=0 then exit 'gp break endless loop
-		    Wend
-		    
-		    Profiler.EndProfilerEntry
-		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 2 / Wrap" ' --------------------------------------------------
-		    
-		    '++JRC:
-		    'SplitToArray(Trim(SmartML.GetValue(xslide, "body", True)).FormatUnixEndOfLine, lines, Chr(10))
-		    SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
-		    '--
-		    
-		    If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
-		    ' Round 1: Fit to size (pre-wrap)
-		    For i = 1 To UBound(lines)
-		      If (g.StringWidth(lines(i)) > UsableWidth * 2) Or (multiwrap And g.StringWidth(lines(i)) > UsableWidth) Then
-		        ' this line is more than twice as long: multiple-wrapping
-		        ' or this line is too long and this slide has already been multiwrapped
-		        multiwrap = True
-		        line = lines(i)
-		        x = 1
-		        y = 2
-		        ' add character by character until we are too long...
-		        While y <= Len(line) And g.StringWidth(Mid(line, x, y-x)) < UsableWidth 'EMP 09/05
-		          y = y + 1
-		        Wend
-		        y = y - 1
-		        ' back off until we fit...
-		        isWrapped = False
-		        For z = y DownTo x
-		          d = Mid(line, z, 1)
-		          If d = " " and z <> 2 Then ' wrap it here
-		            lines(i) = Mid(line, x, z-x)
-		            lines.Insert i+1, InsertAfterBreak+ Mid(line, z+1)
-		            isWrapped = True
-		            Exit
+		      //++EMP 09/05
+		      // Take a pass at the slide to see if the lines will fit reasonably as they are.
+		      // Hopefully in most cases this will be all we need
+		      Profiler.BeginProfilerEntry "DrawSlide -> BestCaseBodyWrap"
+		      Dim MaxLineIndex, MaxLineLen As Integer '
+		      Dim NHeight As Integer
+		      Dim WrapPercent, HWrapPercent, VWrapPercent As Double
+		      Dim LineLen As Integer
+		      MaxLineLen = 0
+		      
+		      '++JRC:
+		      Dim s As string
+		      If Style.BodyEnable Then
+		        s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
+		        SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		        
+		        ' Find the longest line
+		        MaxLineIndex = UBound(lines)
+		        For i = 0 to UBound(lines)
+		          If g.StringWidth(lines(i)) > MaxLineLen Then
+		            MaxLineLen = g.StringWidth(lines(i))
+		            MaxLineIndex = i
 		          End If
-		          //++
-		          // For CJK characters, it is perfectly ok to wrap before or after
-		          // a CJK character (Unicode codepoint between 4E00 and 9FBF)
-		          // (Additional fix for 1530629 added after section outside "For z" loop was inserted)
-		          //--
-		          If (z <> y) Then
-		            d2 = Mid(line, z-1, 1)
-		            If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
-		              (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
+		        Next i
+		        
+		      End If
+		      '--
+		      
+		      // Within reasonable wrapping limits?
+		      If MaxLineLen = 0 Then
+		        Profiler.EndProfilerEntry
+		        GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
+		      End If
+		      HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
+		      VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
+		      WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
+		      If WrapPercent >  1- maxgrowFact Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
+		        g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
+		        if wrappercent < 1 then
+		          SchrinkReason = SchrinkReason + "pre "+ str(wrappercent) + " "
+		        end if
+		        Profiler.EndProfilerEntry
+		        GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
+		      End If
+		      Profiler.EndProfilerEntry
+		      //--EMP
+		      
+		      Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 1" ' --------------------------------------------------
+		      
+		      ' Round Pre-1: Pre-guess shrinkage based on perfect wrapping
+		      '++JRC:
+		      line = ReplaceAll(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), Chr(10), "")
+		      '--
+		      
+		      While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
+		        g.TextSize = Floor(g.TextSize * .95)
+		        SchrinkReason = SchrinkReason + "H1 "
+		        if g.textsize <=0 then exit 'gp break endless loop
+		      Wend
+		      
+		      Profiler.EndProfilerEntry
+		      Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 2 / Wrap" ' --------------------------------------------------
+		      
+		      '++JRC:
+		      'SplitToArray(Trim(SmartML.GetValue(xslide, "body", True)).FormatUnixEndOfLine, lines, Chr(10))
+		      SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		      '--
+		      
+		      If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
+		      ' Round 1: Fit to size (pre-wrap)
+		      For i = 1 To UBound(lines)
+		        If (g.StringWidth(lines(i)) > UsableWidth * 2) Or (multiwrap And g.StringWidth(lines(i)) > UsableWidth) Then
+		          ' this line is more than twice as long: multiple-wrapping
+		          ' or this line is too long and this slide has already been multiwrapped
+		          multiwrap = True
+		          line = lines(i)
+		          x = 1
+		          y = 2
+		          ' add character by character until we are too long...
+		          While y <= Len(line) And g.StringWidth(Mid(line, x, y-x)) < UsableWidth 'EMP 09/05
+		            y = y + 1
+		          Wend
+		          y = y - 1
+		          ' back off until we fit...
+		          isWrapped = False
+		          For z = y DownTo x
+		            d = Mid(line, z, 1)
+		            If d = " " and z <> 2 Then ' wrap it here
 		              lines(i) = Mid(line, x, z-x)
-		              lines.Insert i+1,insertafterbreak+ Mid(line, z)
+		              lines.Insert i+1, InsertAfterBreak+ Mid(line, z+1)
 		              isWrapped = True
 		              Exit
 		            End If
+		            //++
+		            // For CJK characters, it is perfectly ok to wrap before or after
+		            // a CJK character (Unicode codepoint between 4E00 and 9FBF)
+		            // (Additional fix for 1530629 added after section outside "For z" loop was inserted)
+		            //--
+		            If (z <> y) Then
+		              d2 = Mid(line, z-1, 1)
+		              If (d.Asc >= &h4E00 and d.Asc <= &h9FBF) or _
+		                (d2.Asc >= &h4E00 and d2.Asc <= &h9FBF) Then
+		                lines(i) = Mid(line, x, z-x)
+		                lines.Insert i+1,insertafterbreak+ Mid(line, z)
+		                isWrapped = True
+		                Exit
+		              End If
+		            End If
+		          Next z
+		          
+		          //++
+		          // Fix added for wrapping Chinese characters [1530629]
+		          // May also affect other multi-byte character sets
+		          // Corrects issue where the line is too long but there isn't
+		          // a space character anywhere to be found.  Just wrap the midpoint.
+		          //--
+		          If Not isWrapped Then
+		            lines(i) = Mid(line, x, y-x)
+		            lines.Insert i + 1, insertafterbreak+Mid(line, y)
 		          End If
-		        Next z
-		        
-		        //++
-		        // Fix added for wrapping Chinese characters [1530629]
-		        // May also affect other multi-byte character sets
-		        // Corrects issue where the line is too long but there isn't
-		        // a space character anywhere to be found.  Just wrap the midpoint.
-		        //--
-		        If Not isWrapped Then
-		          lines(i) = Mid(line, x, y-x)
-		          lines.Insert i + 1, insertafterbreak+Mid(line, y)
+		        ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
+		          ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
+		          line = lines(i)
+		          lines.Insert i+1, insertafterbreak+SmartWrap(line)
+		          lines(i) = line
+		          'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
+		          While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
+		            g.TextSize = Floor(g.TextSize * .95)
+		            SchrinkReason = SchrinkReason + "W1 "
+		            if g.textsize <=0 then exit 'gp
+		          Wend
+		          'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
+		          While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
+		            g.TextSize = Floor(g.TextSize * .95)
+		            SchrinkReason = SchrinkReason + "W2 "
+		            if g.textsize <=0 then exit 'gp break endless loop
+		          Wend
+		          i = i + 1 ' skip the extra
 		        End If
-		      ElseIf g.StringWidth(lines(i)) > UsableWidth Then ' this line is less than twice as long, but still too long: smart wrap it (EMP 09/05)
-		        ' FUTURE PROBLEM: If a later longer line would end up shrinking the text, we may not have had to wrap a prior line
-		        line = lines(i)
-		        lines.Insert i+1, insertafterbreak+SmartWrap(line)
-		        lines(i) = line
-		        'While g.StringWidth(lines(i)) > g.Width - (2*RealBorder)
-		        While g.StringWidth(lines(i)) > UsableWidth 'EMP 09/05
-		          g.TextSize = Floor(g.TextSize * .95)
-		          SchrinkReason = SchrinkReason + "W1 "
-		          if g.textsize <=0 then exit 'gp
-		        Wend
-		        'While g.StringWidth(lines(i+1)) > g.Width - (2*RealBorder)
-		        While g.StringWidth(lines(i+1)) > UsableWidth 'EMP 09/05
-		          g.TextSize = Floor(g.TextSize * .95)
-		          SchrinkReason = SchrinkReason + "W2 "
-		          if g.textsize <=0 then exit 'gp break endless loop
-		        Wend
-		        i = i + 1 ' skip the extra
-		      End If
-		    Next i
-		    
-		    Profiler.EndProfilerEntry
-		    Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
-		    
-		    DrawText: 'EMP 09/05
-		    
-		    ' Post-shrink - we did our best, this is just in case.
-		    While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
-		      ' FUTURE PROBLEM: When we size it down, we should rewrap it all
-		      g.TextSize = Floor(g.TextSize * .95)
-		      SchrinkReason = SchrinkReason + "Hpost  "
-		      if g.textsize <=0 then exit 'gp
-		    Wend
-		    
-		    Profiler.EndProfilerEntry
-		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
-		    'gp start
-		    'todo as type song thrn size is max 10% greater then last size  in same songgroup
-		    if lastbodysize > 16 then
-		      if lastslidetype = SlideType then
-		        g.textsize = min  (g.textsize, round(lastbodysize * max( 1+ maxgrowFact,1)))
-		      end if
-		    end if
-		    
-		    bodyStyle.Size = g.TextSize
-		    bodysize = bodystyle.size
-		    'gp end
-		    
-		    
-		    
-		    line = ""
-		    For i = 1 To UBound(lines)
-		      if i <>  UBound(lines) and left(lines(i+1),3) = "   " and mid(lines(i+1),4,1) <> " " then
-		        if g.StringWidth(lines(i)+ " "+trim(lines(i+1))) <= UsableWidth then
-		          lines(i) = lines(i) + " "+trim(lines(i+1))
-		          lines(i+1)= ""
+		      Next i
+		      
+		      Profiler.EndProfilerEntry
+		      Profiler.BeginProfilerEntry "DrawSlide>Post-shrink" ' --------------------------------------------------
+		      
+		      DrawText: 'EMP 09/05
+		      
+		      ' Post-shrink - we did our best, this is just in case.
+		      While UBound(lines) * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight
+		        ' FUTURE PROBLEM: When we size it down, we should rewrap it all
+		        g.TextSize = Floor(g.TextSize * .95)
+		        SchrinkReason = SchrinkReason + "Hpost  "
+		        if g.textsize <=0 then exit 'gp
+		      Wend
+		      
+		      Profiler.EndProfilerEntry
+		      Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
+		      'gp start
+		      'todo as type song thrn size is max 10% greater then last size  in same songgroup
+		      if lastbodysize > 16 then
+		        if lastslidetype = SlideType then
+		          g.textsize = min  (g.textsize, round(lastbodysize * max( 1+ maxgrowFact,1)))
 		        end if
 		      end if
-		      if lines(i) <> "" then
-		        line = line + lines(i) + Chr(10)
-		      end if
 		      
-		    Next i
-		    line = RTrim(line)
-		    
-		    Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
+		      bodyStyle.Size = g.TextSize
+		      bodysize = bodystyle.size
+		      'gp end
+		      
+		      
+		      
+		      
+		      line = ""
+		      For i = 1 To UBound(lines)
+		        if i <>  UBound(lines) and left(lines(i+1),3) = "   " and mid(lines(i+1),4,1) <> " " then
+		          if g.StringWidth(lines(i)+ " "+trim(lines(i+1))) <= UsableWidth then
+		            lines(i) = lines(i) + " "+trim(lines(i+1))
+		            lines(i+1)= ""
+		          end if
+		        end if
+		        if lines(i) <> "" then
+		          line = line + lines(i) + Chr(10)
+		        end if
+		        
+		      Next i
+		      line = RTrim(line)
+		      
+		      Call DrawFontString(g, line, 0, HeaderSize, bodyStyle, RealBorder, 0, 0, bodyMargins, g.Width, Style.BodyAlign, MainHeight, Style.BodyVAlign, bodyTabs, insertafterbreak) 'EMP 09/05
+		    end if
 		  End Select
 		  
 		  Profiler.EndProfilerEntry

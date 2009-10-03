@@ -27,12 +27,10 @@ Begin Window HelpWindow
    Begin TabPanel nil_help_tabs
       AutoDeactivate  =   True
       Bold            =   False
-      ControlOrder    =   0
       Enabled         =   True
-      Facing          =   0
       Height          =   470
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   2
@@ -42,6 +40,7 @@ Begin Window HelpWindow
       LockRight       =   True
       LockTop         =   True
       Panels          =   ""
+      Scope           =   0
       SmallTabs       =   False
       TabDefinition   =   "Presentation Keys\rLyrics/Chords\rPresentation Field\rClose"
       TabIndex        =   0
@@ -49,27 +48,27 @@ Begin Window HelpWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   10
       Underline       =   False
       Value           =   0
       Visible         =   True
       Width           =   677
-      BehaviorIndex   =   0
-      Begin EditField edt_help_keys
+      Begin TextArea edt_help_keys
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
-         ControlOrder    =   2
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Format          =   ""
          Height          =   430
          HelpTag         =   ""
-         Index           =   2147483648
+         HideSelection   =   True
+         Index           =   -2147483648
          InitialParent   =   "nil_help_tabs"
          Italic          =   False
          Left            =   8
@@ -81,8 +80,8 @@ Begin Window HelpWindow
          LockTop         =   True
          Mask            =   ""
          Multiline       =   True
-         Password        =   False
          ReadOnly        =   True
+         Scope           =   0
          ScrollbarHorizontal=   False
          ScrollbarVertical=   True
          Styled          =   True
@@ -93,28 +92,28 @@ Begin Window HelpWindow
          TextColor       =   0
          TextFont        =   "Courier New"
          TextSize        =   12
+         TextUnit        =   0
          Top             =   40
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
          Width           =   657
-         BehaviorIndex   =   1
       End
-      Begin EditField edt_help_presentation
+      Begin TextArea edt_help_presentation
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
-         ControlOrder    =   3
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Format          =   ""
          Height          =   430
          HelpTag         =   ""
-         Index           =   2147483648
+         HideSelection   =   True
+         Index           =   -2147483648
          InitialParent   =   "nil_help_tabs"
          Italic          =   False
          Left            =   8
@@ -126,8 +125,8 @@ Begin Window HelpWindow
          LockTop         =   True
          Mask            =   ""
          Multiline       =   True
-         Password        =   False
          ReadOnly        =   True
+         Scope           =   0
          ScrollbarHorizontal=   False
          ScrollbarVertical=   True
          Styled          =   True
@@ -138,28 +137,28 @@ Begin Window HelpWindow
          TextColor       =   0
          TextFont        =   "Courier New"
          TextSize        =   12
+         TextUnit        =   0
          Top             =   39
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
          Width           =   657
-         BehaviorIndex   =   2
       End
-      Begin EditField edt_help_lyrics
+      Begin TextArea edt_help_lyrics
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
-         ControlOrder    =   4
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Format          =   ""
          Height          =   430
          HelpTag         =   ""
-         Index           =   2147483648
+         HideSelection   =   True
+         Index           =   -2147483648
          InitialParent   =   "nil_help_tabs"
          Italic          =   False
          Left            =   8
@@ -171,8 +170,8 @@ Begin Window HelpWindow
          LockTop         =   True
          Mask            =   ""
          Multiline       =   True
-         Password        =   False
          ReadOnly        =   True
+         Scope           =   0
          ScrollbarHorizontal=   False
          ScrollbarVertical=   True
          Styled          =   True
@@ -183,12 +182,12 @@ Begin Window HelpWindow
          TextColor       =   0
          TextFont        =   "Courier New"
          TextSize        =   12
+         TextUnit        =   0
          Top             =   40
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
          Width           =   657
-         BehaviorIndex   =   3
       End
    End
    Begin PushButton btn_help_print
@@ -196,12 +195,11 @@ Begin Window HelpWindow
       Bold            =   False
       Cancel          =   False
       Caption         =   "Print..."
-      ControlOrder    =   1
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   612
@@ -210,16 +208,17 @@ Begin Window HelpWindow
       LockLeft        =   False
       LockRight       =   True
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   4
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   4
    End
 End
 #tag EndWindow
@@ -243,7 +242,7 @@ End
 
 
 	#tag Method, Flags = &h0
-		Sub HTMLFormatField(field As EditField)
+		Sub HTMLFormatField(field As TextArea)
 		  Dim i,j,k As Integer
 		  Dim tag As String
 		  

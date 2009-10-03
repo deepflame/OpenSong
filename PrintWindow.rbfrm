@@ -49,7 +49,6 @@ Begin Window PrintWindow
       Value           =   0
       Visible         =   True
       Width           =   647
-      BehaviorIndex   =   0
       Begin Canvas cnv_page
          AcceptFocus     =   False
          AcceptTabs      =   False
@@ -77,13 +76,12 @@ Begin Window PrintWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   200
-         BehaviorIndex   =   1
       End
    End
    Begin ScrollBar scr_vertical
       AcceptFocus     =   true
       AutoDeactivate  =   True
-      BehaviorIndex   =   15
+      BehaviorIndex   =   2
       ControlOrder    =   2
       Enabled         =   True
       Height          =   406
@@ -109,12 +107,11 @@ Begin Window PrintWindow
       Value           =   0
       Visible         =   True
       Width           =   16
-      BehaviorIndex   =   2
    End
    Begin ScrollBar scr_horizontal
       AcceptFocus     =   true
       AutoDeactivate  =   True
-      BehaviorIndex   =   2
+      BehaviorIndex   =   3
       ControlOrder    =   3
       Enabled         =   True
       Height          =   16
@@ -140,11 +137,10 @@ Begin Window PrintWindow
       Value           =   0
       Visible         =   True
       Width           =   647
-      BehaviorIndex   =   3
    End
    Begin PagePanel nil_header
       AutoDeactivate  =   True
-      BehaviorIndex   =   3
+      BehaviorIndex   =   4
       ControlOrder    =   4
       Enabled         =   True
       Height          =   40
@@ -167,10 +163,9 @@ Begin Window PrintWindow
       Value           =   0
       Visible         =   True
       Width           =   647
-      BehaviorIndex   =   4
       Begin PushButton btn_page_print
          AutoDeactivate  =   True
-         BehaviorIndex   =   4
+         BehaviorIndex   =   5
          Bold            =   False
          Cancel          =   False
          Caption         =   "Print..."
@@ -198,11 +193,10 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   65
-         BehaviorIndex   =   5
       End
       Begin PushButton btn_cancel
          AutoDeactivate  =   True
-         BehaviorIndex   =   5
+         BehaviorIndex   =   6
          Bold            =   False
          Cancel          =   True
          Caption         =   "Cancel"
@@ -230,11 +224,10 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   65
-         BehaviorIndex   =   6
       End
       Begin PushButton btn_page_first
          AutoDeactivate  =   True
-         BehaviorIndex   =   6
+         BehaviorIndex   =   7
          Bold            =   False
          Cancel          =   False
          Caption         =   "<<"
@@ -262,11 +255,10 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   34
-         BehaviorIndex   =   7
       End
       Begin PushButton btn_page_previous
          AutoDeactivate  =   True
-         BehaviorIndex   =   7
+         BehaviorIndex   =   8
          Bold            =   False
          Cancel          =   False
          Caption         =   "<"
@@ -294,11 +286,10 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   30
-         BehaviorIndex   =   8
       End
       Begin StaticText txt_page_page
          AutoDeactivate  =   True
-         BehaviorIndex   =   8
+         BehaviorIndex   =   9
          Bold            =   False
          ControlOrder    =   9
          DataField       =   ""
@@ -329,11 +320,10 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   65
-         BehaviorIndex   =   9
       End
       Begin PushButton btn_page_next
          AutoDeactivate  =   True
-         BehaviorIndex   =   9
+         BehaviorIndex   =   10
          Bold            =   False
          Cancel          =   False
          Caption         =   ">"
@@ -361,11 +351,10 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   30
-         BehaviorIndex   =   10
       End
       Begin PushButton btn_page_last
          AutoDeactivate  =   True
-         BehaviorIndex   =   10
+         BehaviorIndex   =   11
          Bold            =   False
          Cancel          =   False
          Caption         =   ">>"
@@ -393,11 +382,10 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   34
-         BehaviorIndex   =   11
       End
       Begin PushButton btn_page_zoom_in
          AutoDeactivate  =   True
-         BehaviorIndex   =   11
+         BehaviorIndex   =   12
          Bold            =   False
          Cancel          =   False
          Caption         =   "-"
@@ -425,14 +413,13 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   30
-         BehaviorIndex   =   12
       End
-      Begin EditField edt_page_zoom
+      Begin TextField edt_page_zoom
          AcceptTabs      =   False
          Alignment       =   3
          AutoDeactivate  =   True
          BackColor       =   16777215
-         BehaviorIndex   =   12
+         BehaviorIndex   =   13
          Bold            =   False
          Border          =   True
          ControlOrder    =   13
@@ -472,11 +459,10 @@ Begin Window PrintWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   43
-         BehaviorIndex   =   13
       End
       Begin PushButton btn_page_zoom_out
          AutoDeactivate  =   True
-         BehaviorIndex   =   13
+         BehaviorIndex   =   14
          Bold            =   False
          Cancel          =   False
          Caption         =   "+"
@@ -504,11 +490,10 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   30
-         BehaviorIndex   =   14
       End
       Begin PushButton btn_page_print_setup
          AutoDeactivate  =   True
-         BehaviorIndex   =   14
+         BehaviorIndex   =   15
          Bold            =   False
          Cancel          =   False
          Caption         =   "Print Setup..."
@@ -536,7 +521,6 @@ Begin Window PrintWindow
          Underline       =   False
          Visible         =   True
          Width           =   100
-         BehaviorIndex   =   15
       End
    End
 End
@@ -694,8 +678,41 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Sub ScrollPreview(X As Integer, Y As Integer, deltaX As Integer, deltaY As Integer)
+		  //++
+		  // Handle the scroll wheel events
+		  //--
+		  
+		  Dim newX As Integer
+		  Dim newY As Integer
+		  Dim changed As Boolean = False
+		  
+		  If deltaX <> 0 Then
+		    newX = scr_horizontal.Value + (deltaX * scr_horizontal.LineStep)
+		    newX = Min(newX, scr_horizontal.Maximum)
+		    newX = Max(newX, scr_horizontal.Minimum)
+		    scr_horizontal.Value = newX
+		    changed = True
+		  End If
+		  
+		  If deltaY <> 0 Then
+		    newY = scr_vertical.Value + (deltaY * scr_vertical.LineStep)
+		    newY = Min(newY, scr_vertical.Maximum)
+		    newY = Max(newY, scr_vertical.Minimum)
+		    scr_vertical.Value = newY
+		    changed = True
+		  End If
+		  
+		  If changed Then
+		    nil_panel.Invalidate
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
-		Sub SetReport(Rpt As Report)
+		Sub SetReport(Rpt As ReportClass)
 		  App.DebugWriter.Write "PrintWindow.SetReport: Enter"
 		  PrintReport = Rpt
 		  If Rpt <> Nil Then
@@ -748,39 +765,6 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Sub ScrollPreview(X As Integer, Y As Integer, deltaX As Integer, deltaY As Integer)
-		  //++
-		  // Handle the scroll wheel events
-		  //--
-		  
-		  Dim newX As Integer
-		  Dim newY As Integer
-		  Dim changed As Boolean = False
-		  
-		  If deltaX <> 0 Then
-		    newX = scr_horizontal.Value + (deltaX * scr_horizontal.LineStep)
-		    newX = Min(newX, scr_horizontal.Maximum)
-		    newX = Max(newX, scr_horizontal.Minimum)
-		    scr_horizontal.Value = newX
-		    changed = True
-		  End If
-		  
-		  If deltaY <> 0 Then
-		    newY = scr_vertical.Value + (deltaY * scr_vertical.LineStep)
-		    newY = Min(newY, scr_vertical.Maximum)
-		    newY = Max(newY, scr_vertical.Minimum)
-		    scr_vertical.Value = newY
-		    changed = True
-		  End If
-		  
-		  If changed Then
-		    nil_panel.Invalidate
-		  End If
-		  
-		End Sub
-	#tag EndMethod
-
 
 	#tag Property, Flags = &h0
 		CurrentPage As Integer
@@ -788,6 +772,10 @@ End
 
 	#tag Property, Flags = &h0
 		HSizer As HalfSizer
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected initialActivation As Boolean = True
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -822,15 +810,11 @@ End
 			Report currently being displayed.
 			Using superclass to support more report types.
 		#tag EndNote
-		PrintReport As Report
+		PrintReport As ReportClass
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		Zoom As Double
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected initialActivation As Boolean = True
 	#tag EndProperty
 
 
@@ -850,6 +834,7 @@ End
 		  Dim x, y As Double
 		  Dim ps As PrinterSetup
 		  Dim pg As Object2D
+		  
 		  App.DebugWriter.Write "PrintWindow.cnv_page.paint: Enter"
 		  ps = App.GetPrinterSetup(False)
 		  If ps = Nil Then Return

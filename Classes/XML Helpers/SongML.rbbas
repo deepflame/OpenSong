@@ -2380,7 +2380,7 @@ Module SongML
 		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
 		  dim BeforePipeSign as boolean 'gp
 		  dim ChorusNr as integer 'GP
-		  dim part as string
+		  dim id, part as string
 		  dim i as integer
 		  ChorusNr = 0 'GP
 		  
@@ -2416,6 +2416,11 @@ Module SongML
 		        F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(songElement, "@songpath" )+"/")
 		        if F <> nil then
 		          versename = SmartML.GetValue(songElement, "@songfilename" )
+		          id =  SmartML.GetValue(slide, "@id") 
+		          if id = "C" then
+		            id = "ref"
+		          end if
+		          
 		          if InStr(1,versename,"-") > 0 then
 		            versename = trim(Left(versename , InStr(1,versename,"-")-1))
 		          end if
@@ -2423,10 +2428,10 @@ Module SongML
 		          if I > 1 then
 		            part = chr(I+64)
 		          end if
-		          if f.Child(versename+part+".png").Exists and SmartML.GetValue(slide, "@id") ="V1" then
+		          if f.Child(versename+part+".png").Exists and id ="V1" then
 		            f =  f.Child(versename+part+".png")
 		          else
-		            versename = versename + SmartML.GetValue(slide, "@id")+part
+		            versename = versename + id +part
 		            if f.Child(versename+".png").Exists then
 		              f =  f.Child(versename+".png")
 		            else
@@ -2438,7 +2443,7 @@ Module SongML
 		          end if
 		        end if
 		      Next
-		      'now loop over the extra .png files 
+		      'now loop over the extra .png files
 		      do until I > 26
 		        I = I + 1
 		        F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(songElement, "@songpath" )+"/")
@@ -2451,10 +2456,10 @@ Module SongML
 		          if I > 1 then
 		            part = chr(I+64)
 		          end if
-		          if f.Child(versename+part+".png").Exists and SmartML.GetValue(slide, "@id") ="V1" then
+		          if f.Child(versename+part+".png").Exists and id  ="V1" then
 		            f =  f.Child(versename+part+".png")
 		          else
-		            versename = versename + SmartML.GetValue(slide, "@id")+part
+		            versename = versename + id+part
 		            if f.Child(versename+".png").Exists then
 		              f =  f.Child(versename+".png")
 		            else

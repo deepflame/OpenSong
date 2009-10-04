@@ -1,4 +1,5 @@
 Type=Desktop
+RBProjectVersion=2009.02
 FileTypeSet=FileTypes;FileTypes.rbbas;&h45B5FE02;&h0;false
 FileTypeSet=ImageFileTypes;ImageFileTypes.rbbas;&h37D50FFF;&h0;false
 FileTypeSet=PresentationFileTypes;PresentationFileTypes.rbbas;&h7AB957FF;&h0;false
@@ -229,7 +230,7 @@ WinCompanyName=opensong.org
 WinInternalName=
 WinProductName=OpenSong
 AutoIncrementVersionInformation=False
-BuildFlags=&h4110
+BuildFlags=&h4100
 BuildLanguage=&h0
 DebugLanguage=&h0
 Region=0

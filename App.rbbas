@@ -393,7 +393,7 @@ Inherits Application
 		  
 		  'print stacktrace below error description
 		  Popup.ErrorDescription.AppendText(EndOfLine + EndOfLine + "Stacktrace:")
-		  For i = 0 To Ubound(error.Stack)
+		  For i = 0 To min(Ubound(error.Stack),200)
 		    Popup.ErrorDescription.AppendText(EndOfLine + StackTrace(i))
 		  Next
 		  
@@ -1369,12 +1369,12 @@ Inherits Application
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
+			  Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
+			  SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
 			End Set
 		#tag EndSetter
 		ExcludeBackgroundsImages As Boolean
@@ -1387,26 +1387,26 @@ Inherits Application
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			Dim f As FolderItem = Nil
-			
-			If IsPortable Then
-			f = AppFolder.Child("OpenSong Settings")
-			If Not f.Exists Then
-			App.DebugWriter.Write("AppPreferencesFolder: Error 'OpenSong Settings' sub folder doesn't exist", 1)
-			End If
-			Else // standard - not portable
-			// RealBasic SpecialFolder with some platform dependent subfolder
-			#if TargetLinux
-			f = SpecialFolder.Preferences.Child(".OpenSong")
-			#elseif TargetMacOS
-			f = SpecialFolder.Preferences
-			#elseif TargetWin32
-			f = SpecialFolder.Preferences.Child("OpenSong")
-			#endif
-			End If
-			
-			Return f
-			
+			  Dim f As FolderItem = Nil
+			  
+			  If IsPortable Then
+			    f = AppFolder.Child("OpenSong Settings")
+			    If Not f.Exists Then
+			      App.DebugWriter.Write("AppPreferencesFolder: Error 'OpenSong Settings' sub folder doesn't exist", 1)
+			    End If
+			  Else // standard - not portable
+			    // RealBasic SpecialFolder with some platform dependent subfolder
+			    #if TargetLinux
+			      f = SpecialFolder.Preferences.Child(".OpenSong")
+			    #elseif TargetMacOS
+			      f = SpecialFolder.Preferences
+			    #elseif TargetWin32
+			      f = SpecialFolder.Preferences.Child("OpenSong")
+			    #endif
+			  End If
+			  
+			  Return f
+			  
 			End Get
 		#tag EndGetter
 		AppPreferencesFolderForOpenSong As FolderItem
@@ -1415,33 +1415,33 @@ Inherits Application
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			If IsPortable Then
-			Dim f As FolderItem
-			dim S As string
-			S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@absdatapath")
-			if S <> "" then
-			f = GetFolderItem(S, FolderItem.PathTypeAbsolute)
-			else
-			S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@relativedatapath")
-			if S = "" then
-			S = "OpenSong Data"
-			end if
-			f = AppFolder.Child(S)
-			end if
-			
-			If FileUtils.CreateFolder(f) Then
-			Return f
-			Else
-			If f <> Nil Then App.DebugWriter.Write("DocumentsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
-			Return Nil
-			End If
-			Else // standard - not portable
-			#If TargetLinux
-			Return SpecialFolder.UserHome
-			#Else
-			Return SpecialFolder.Documents
-			#EndIf
-			End If
+			  If IsPortable Then
+			    Dim f As FolderItem
+			    dim S As string
+			    S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@absdatapath")
+			    if S <> "" then
+			      f = GetFolderItem(S, FolderItem.PathTypeAbsolute)
+			    else
+			      S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@relativedatapath")
+			      if S = "" then
+			        S = "OpenSong Data"
+			      end if
+			      f = AppFolder.Child(S)
+			    end if
+			    
+			    If FileUtils.CreateFolder(f) Then
+			      Return f
+			    Else
+			      If f <> Nil Then App.DebugWriter.Write("DocumentsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
+			      Return Nil
+			    End If
+			  Else // standard - not portable
+			    #If TargetLinux
+			      Return SpecialFolder.UserHome
+			    #Else
+			      Return SpecialFolder.Documents
+			    #EndIf
+			  End If
 			End Get
 		#tag EndGetter
 		AppDocumentsFolder As FolderItem
@@ -1450,11 +1450,11 @@ Inherits Application
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			If IsPortable Then
-			Return AppDocumentsFolder
-			Else
-			Return AppDocumentsFolder.Child("OpenSong")
-			End If
+			  If IsPortable Then
+			    Return AppDocumentsFolder
+			  Else
+			    Return AppDocumentsFolder.Child("OpenSong")
+			  End If
 			End Get
 		#tag EndGetter
 		AppDocumentsFolderForOpenSong As FolderItem
@@ -1506,16 +1506,19 @@ Inherits Application
 
 	#tag ViewBehavior
 		#tag ViewProperty
+			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ExcludeBackgroundsImages"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="IsPortable"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

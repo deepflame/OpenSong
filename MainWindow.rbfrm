@@ -122,6 +122,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   4
       Underline       =   False
       Visible         =   True
@@ -200,6 +201,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   299
             Underline       =   False
             Visible         =   True
@@ -226,6 +228,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   40
             Underline       =   False
             Visible         =   True
@@ -521,6 +524,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   40
             Underline       =   False
             Visible         =   True
@@ -637,6 +641,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   164
             Underline       =   False
             Visible         =   True
@@ -728,6 +733,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   284
             Underline       =   False
             Visible         =   True
@@ -759,6 +765,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   324
             Underline       =   False
             Visible         =   True
@@ -820,6 +827,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   515
             Underline       =   False
             Visible         =   True
@@ -896,6 +904,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   343
             Underline       =   False
             UseFocusRing    =   True
@@ -904,7 +913,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             _ScrollOffset   =   0
             _ScrollWidth    =   -1
          End
-         Begin EditField edt_songs_curr_folder
+         Begin SEditField edt_songs_curr_folder
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -917,6 +926,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_controls_songs_mode"
             Italic          =   False
@@ -928,8 +938,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
-            Multiline       =   False
-            Password        =   False
+            Multiline       =   True
             ReadOnly        =   True
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -941,7 +950,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             Text            =   ""
             TextColor       =   0
             TextFont        =   "Arial"
-            TextSize        =   8
+            TextSize        =   10
+            TextUnit        =   0
             Top             =   534
             Underline       =   False
             UseFocusRing    =   True
@@ -996,6 +1006,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   40
             Underline       =   False
             Visible         =   True
@@ -1025,6 +1036,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   10
+               TextUnit        =   0
                Top             =   58
                Underline       =   False
                Visible         =   True
@@ -1082,6 +1094,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   217
             Underline       =   False
             Visible         =   True
@@ -1318,6 +1331,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   92
             Underline       =   False
             Visible         =   True
@@ -1588,6 +1602,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   405
             Underline       =   False
             Visible         =   True
@@ -1614,6 +1629,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   217
             Underline       =   False
             Visible         =   True
@@ -1840,6 +1856,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   425
             Underline       =   False
             UseFocusRing    =   True
@@ -1924,6 +1941,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
+            TextUnit        =   0
             Top             =   50
             Underline       =   False
             Visible         =   True
@@ -1951,6 +1969,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   130
             Underline       =   False
             Value           =   False
@@ -1979,6 +1998,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             Value           =   True
@@ -2066,6 +2086,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   231
             Underline       =   False
             Visible         =   True
@@ -2097,6 +2118,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -2128,6 +2150,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   126
             Underline       =   False
             Visible         =   True
@@ -2159,6 +2182,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   266
             Underline       =   False
             Visible         =   True
@@ -2205,6 +2229,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -2269,6 +2294,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   161
             Underline       =   False
             Visible         =   True
@@ -2300,6 +2326,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   196
             Underline       =   False
             Visible         =   True
@@ -2330,6 +2357,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   211
             Underline       =   False
             Visible         =   True
@@ -2361,6 +2389,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   360
             Underline       =   False
             Visible         =   True
@@ -2392,6 +2421,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   231
             Underline       =   False
             Visible         =   True
@@ -2423,6 +2453,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   405
             Underline       =   False
             Visible         =   True
@@ -2453,6 +2484,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   185
             Underline       =   False
             Value           =   False
@@ -2484,6 +2516,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   140
             Underline       =   False
             Value           =   False
@@ -2545,6 +2578,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   245
             Underline       =   False
             Visible         =   True
@@ -2591,6 +2625,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   False
@@ -2603,7 +2638,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -2616,6 +2650,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   175
             Underline       =   False
             UseFocusRing    =   True
@@ -2635,6 +2670,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   False
@@ -2647,7 +2683,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -2660,6 +2695,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   245
             Underline       =   False
             UseFocusRing    =   True
@@ -2691,6 +2727,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   140
             Underline       =   False
             Visible         =   True
@@ -2709,6 +2746,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   False
@@ -2721,7 +2759,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -2734,6 +2771,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   280
             Underline       =   False
             UseFocusRing    =   True
@@ -2766,6 +2804,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   312
             Underline       =   False
             Visible         =   True
@@ -2797,6 +2836,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
+            TextUnit        =   0
             Top             =   50
             Underline       =   False
             Visible         =   True
@@ -2815,6 +2855,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   30
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   False
@@ -2827,7 +2868,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   True
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -2840,6 +2880,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   326
             Underline       =   False
             UseFocusRing    =   True
@@ -2859,6 +2900,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   30
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   False
@@ -2871,7 +2913,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   True
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -2884,6 +2925,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   374
             Underline       =   False
             UseFocusRing    =   True
@@ -2903,6 +2945,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   30
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_advanced_song_editor"
             Italic          =   False
@@ -2915,7 +2958,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   True
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -2928,6 +2970,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   419
             Underline       =   False
             UseFocusRing    =   True
@@ -2987,6 +3030,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
+            TextUnit        =   0
             Top             =   50
             Underline       =   False
             Visible         =   True
@@ -3018,6 +3062,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   126
             Underline       =   False
             Visible         =   True
@@ -3049,6 +3094,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -3080,6 +3126,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   126
             Underline       =   False
             Visible         =   True
@@ -3111,6 +3158,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   126
             Underline       =   False
             Visible         =   True
@@ -3142,6 +3190,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   161
             Underline       =   False
             Visible         =   True
@@ -3173,6 +3222,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   175
             Underline       =   False
             Visible         =   True
@@ -3204,6 +3254,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   215
             Underline       =   False
             Visible         =   True
@@ -3235,6 +3286,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -3261,6 +3313,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   390
             Underline       =   False
             Visible         =   True
@@ -3290,6 +3343,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   10
+               TextUnit        =   0
                Top             =   456
                Underline       =   False
                Visible         =   True
@@ -3321,6 +3375,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextColor       =   &h000000
                TextFont        =   "Arial"
                TextSize        =   10
+               TextUnit        =   0
                Top             =   435
                Underline       =   ""
                Visible         =   True
@@ -3351,6 +3406,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   10
+               TextUnit        =   0
                Top             =   412
                Underline       =   ""
                Visible         =   True
@@ -3370,6 +3426,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
@@ -3382,7 +3439,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -3395,6 +3451,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   140
             Underline       =   False
             UseFocusRing    =   True
@@ -3414,6 +3471,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   380
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
@@ -3426,7 +3484,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Mask            =   ""
             Multiline       =   True
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   True
@@ -3439,6 +3496,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Courier New"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   175
             Underline       =   False
             UseFocusRing    =   True
@@ -3458,6 +3516,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   19
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
@@ -3470,7 +3529,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -3483,6 +3541,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "System"
             TextSize        =   12
+            TextUnit        =   0
             Top             =   190
             Underline       =   False
             UseFocusRing    =   True
@@ -3742,6 +3801,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
@@ -3754,7 +3814,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -3767,6 +3826,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   140
             Underline       =   False
             UseFocusRing    =   True
@@ -3786,6 +3846,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
@@ -3798,7 +3859,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Mask            =   ">CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -3811,6 +3871,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   140
             Underline       =   False
             UseFocusRing    =   True
@@ -3830,6 +3891,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
@@ -3842,7 +3904,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -3855,6 +3916,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -3874,6 +3936,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_general_song_editor"
             Italic          =   False
@@ -3886,7 +3949,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -3899,6 +3961,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -3958,6 +4021,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   240
             Underline       =   False
             Visible         =   True
@@ -3989,6 +4053,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   290
             Underline       =   False
             Visible         =   True
@@ -4020,6 +4085,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   140
             Underline       =   False
             Visible         =   True
@@ -4050,13 +4116,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   215
             Underline       =   False
             Value           =   False
             Visible         =   True
             Width           =   110
          End
-         Begin EditField edt_slide_auto_advance
+         Begin SEditField edt_slide_auto_advance
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -4069,6 +4136,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4081,7 +4149,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -4094,6 +4161,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   270
             Underline       =   False
             UseFocusRing    =   True
@@ -4125,6 +4193,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   195
             Underline       =   False
             Value           =   False
@@ -4156,6 +4225,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   390
             Underline       =   False
             Value           =   False
@@ -4187,12 +4257,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   435
             Underline       =   ""
             Visible         =   True
             Width           =   110
          End
-         Begin EditField edt_slide_origorder
+         Begin SEditField edt_slide_origorder
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -4205,6 +4276,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4217,7 +4289,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   True
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -4230,6 +4301,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   385
             Underline       =   False
             UseFocusRing    =   True
@@ -4262,6 +4334,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   407
             Underline       =   False
             Visible         =   True
@@ -4293,6 +4366,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
+            TextUnit        =   0
             Top             =   50
             Underline       =   False
             Visible         =   True
@@ -4324,6 +4398,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   371
             Underline       =   False
             Visible         =   True
@@ -4355,12 +4430,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   371
             Underline       =   False
             Visible         =   True
             Width           =   160
          End
-         Begin EditField edt_slide_order
+         Begin SEditField edt_slide_order
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -4373,6 +4449,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4385,7 +4462,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -4398,6 +4474,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   385
             Underline       =   False
             UseFocusRing    =   True
@@ -4430,6 +4507,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -4461,6 +4539,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -4492,6 +4571,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -4523,6 +4603,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   126
             Underline       =   False
             Visible         =   True
@@ -4554,6 +4635,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   420
             Underline       =   ""
             Visible         =   True
@@ -4585,6 +4667,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   442
             Underline       =   False
             Visible         =   True
@@ -4603,6 +4686,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4615,7 +4699,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -4628,6 +4711,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -4647,6 +4731,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4659,7 +4744,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -4672,6 +4756,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -4691,6 +4776,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4703,7 +4789,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -4716,6 +4801,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -4735,6 +4821,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   226
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4747,7 +4834,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Mask            =   ""
             Multiline       =   True
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   True
@@ -4760,6 +4846,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   140
             Underline       =   False
             UseFocusRing    =   True
@@ -4779,6 +4866,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4791,7 +4879,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   True
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -4804,6 +4891,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   422
             Underline       =   False
             UseFocusRing    =   True
@@ -4853,6 +4941,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   100
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_slide_editor"
             Italic          =   False
@@ -4865,7 +4954,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   True
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   True
@@ -4878,6 +4966,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   456
             Underline       =   False
             UseFocusRing    =   True
@@ -4965,6 +5054,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   389
             Underline       =   False
             Visible         =   True
@@ -4996,6 +5086,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   519
             Underline       =   ""
             Visible         =   True
@@ -5026,6 +5117,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   489
             Underline       =   False
             Value           =   False
@@ -5058,6 +5150,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
+            TextUnit        =   0
             Top             =   50
             Underline       =   False
             Visible         =   True
@@ -5088,6 +5181,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   536
             Underline       =   ""
             Visible         =   True
@@ -5119,6 +5213,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -5149,6 +5244,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   371
             Underline       =   ""
             Value           =   False
@@ -5180,6 +5276,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   391
             Underline       =   ""
             Value           =   False
@@ -5211,6 +5308,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   431
             Underline       =   ""
             Value           =   False
@@ -5242,6 +5340,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   411
             Underline       =   ""
             Value           =   False
@@ -5274,6 +5373,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   454
             Underline       =   False
             Visible         =   True
@@ -5305,6 +5405,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -5336,6 +5437,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   146
             Underline       =   False
             Visible         =   True
@@ -5366,6 +5468,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   314
             Underline       =   False
             Value           =   False
@@ -5397,13 +5500,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   294
             Underline       =   False
             Value           =   False
             Visible         =   True
             Width           =   110
          End
-         Begin EditField edt_image_auto_advance
+         Begin SEditField edt_image_auto_advance
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -5416,6 +5520,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
@@ -5428,7 +5533,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -5441,6 +5545,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   369
             Underline       =   False
             UseFocusRing    =   True
@@ -5473,6 +5578,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   &h000000
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   ""
             Visible         =   True
@@ -5504,6 +5610,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   &h000000
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   142
             Underline       =   ""
             Visible         =   True
@@ -5534,6 +5641,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   126
             Underline       =   ""
             Value           =   False
@@ -5553,6 +5661,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
@@ -5565,7 +5674,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -5578,6 +5686,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -5625,6 +5734,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
@@ -5637,7 +5747,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -5650,6 +5759,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -5669,6 +5779,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
@@ -5681,7 +5792,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -5694,6 +5804,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -5741,6 +5852,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   0
+            TextUnit        =   0
             Top             =   160
             Underline       =   ""
             UseFocusRing    =   True
@@ -5762,6 +5874,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   88
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_image_slide"
             Italic          =   False
@@ -5774,7 +5887,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   True
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   True
@@ -5787,6 +5899,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   468
             Underline       =   False
             UseFocusRing    =   True
@@ -5970,6 +6083,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   10
+         TextUnit        =   0
          Top             =   339
          Underline       =   False
          Visible         =   True
@@ -6027,6 +6141,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
+            TextUnit        =   0
             Top             =   50
             Underline       =   False
             Visible         =   True
@@ -6058,6 +6173,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   91
             Underline       =   False
             Visible         =   True
@@ -6089,6 +6205,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   454
             Underline       =   False
             Visible         =   True
@@ -6120,6 +6237,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   146
             Underline       =   False
             Visible         =   True
@@ -6150,6 +6268,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   266
             Underline       =   False
             Value           =   False
@@ -6169,6 +6288,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
             Italic          =   False
@@ -6181,7 +6301,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
@@ -6194,6 +6313,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   105
             Underline       =   False
             UseFocusRing    =   True
@@ -6213,6 +6333,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Format          =   ""
             Height          =   88
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_editor_external_slide"
             Italic          =   False
@@ -6225,7 +6346,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Mask            =   ""
             Multiline       =   True
-            Password        =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   True
@@ -6238,6 +6358,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   468
             Underline       =   False
             UseFocusRing    =   True
@@ -6377,6 +6498,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   2
                TextFont        =   "System"
                TextSize        =   0
+               TextUnit        =   0
                Top             =   150
                Underline       =   ""
                Visible         =   True
@@ -6406,6 +6528,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabStop         =   True
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   311
                   Underline       =   ""
                   Value           =   False
@@ -6467,6 +6590,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   261
                   Underline       =   ""
                   Visible         =   True
@@ -6494,6 +6618,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabStop         =   True
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   228
                   Underline       =   ""
                   Value           =   ""
@@ -6522,6 +6647,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabStop         =   True
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   208
                   Underline       =   ""
                   Value           =   ""
@@ -6550,6 +6676,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabStop         =   True
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   188
                   Underline       =   ""
                   Value           =   ""
@@ -6582,6 +6709,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   168
                   Underline       =   ""
                   Visible         =   True
@@ -6600,6 +6728,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Format          =   ""
                   Height          =   22
                   HelpTag         =   ""
+                  HideSelection   =   True
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
                   Italic          =   ""
@@ -6612,7 +6741,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Mask            =   ""
                   Multiline       =   ""
-                  Password        =   ""
                   ReadOnly        =   ""
                   Scope           =   0
                   ScrollbarHorizontal=   ""
@@ -6625,6 +6753,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   283
                   Underline       =   ""
                   UseFocusRing    =   True
@@ -6656,6 +6785,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabStop         =   True
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   331
                   Underline       =   ""
                   Value           =   False
@@ -6684,6 +6814,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   4
                TextFont        =   "System"
                TextSize        =   0
+               TextUnit        =   0
                Top             =   150
                Underline       =   ""
                Visible         =   True
@@ -6714,6 +6845,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   168
                   Underline       =   ""
                   Visible         =   True
@@ -6761,6 +6893,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Format          =   ""
                   Height          =   22
                   HelpTag         =   ""
+                  HideSelection   =   True
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
                   Italic          =   ""
@@ -6773,7 +6906,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Mask            =   ""
                   Multiline       =   ""
-                  Password        =   ""
                   ReadOnly        =   ""
                   Scope           =   0
                   ScrollbarHorizontal=   ""
@@ -6786,6 +6918,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   190
                   Underline       =   ""
                   UseFocusRing    =   True
@@ -6817,6 +6950,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabStop         =   True
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   273
                   Underline       =   ""
                   Value           =   False
@@ -6849,6 +6983,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   217
                   Underline       =   ""
                   Visible         =   True
@@ -6867,6 +7002,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Format          =   ""
                   Height          =   22
                   HelpTag         =   ""
+                  HideSelection   =   True
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
                   Italic          =   ""
@@ -6879,7 +7015,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Mask            =   ""
                   Multiline       =   ""
-                  Password        =   ""
                   ReadOnly        =   ""
                   Scope           =   0
                   ScrollbarHorizontal=   ""
@@ -6892,6 +7027,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   239
                   Underline       =   ""
                   UseFocusRing    =   True
@@ -6920,6 +7056,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   3
                TextFont        =   "System"
                TextSize        =   0
+               TextUnit        =   0
                Top             =   150
                Underline       =   ""
                Visible         =   True
@@ -6950,6 +7087,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   267
                   Underline       =   ""
                   Visible         =   True
@@ -6977,6 +7115,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabPanelIndex   =   1
                TextFont        =   "System"
                TextSize        =   0
+               TextUnit        =   0
                Top             =   150
                Underline       =   ""
                Visible         =   True
@@ -7007,6 +7146,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
+                  TextUnit        =   0
                   Top             =   267
                   Underline       =   ""
                   Visible         =   True
@@ -8131,6 +8271,16 @@ End
 	#tag EndMenuHandler
 
 	#tag MenuHandler
+		Function mnu_file_song_act() As Boolean Handles mnu_file_song_act.Action
+			saWin = New SongActivity
+			saWin.ActLog = Globals.SongActivityLog
+			saWin.FromFile = false
+			saWin.RefreshList
+			saWin.btn_act_merge.Enabled = false
+		End Function
+	#tag EndMenuHandler
+
+	#tag MenuHandler
 		Function mnu_help_about() As Boolean Handles mnu_help_about.Action
 			AboutWindow.ShowModalWithin Self
 		End Function
@@ -8146,6 +8296,14 @@ End
 	#tag MenuHandler
 		Function mnu_help_translating() As Boolean Handles mnu_help_translating.Action
 			InputBox.Message App.T.Translate("about/translating")
+		End Function
+	#tag EndMenuHandler
+
+	#tag MenuHandler
+		Function mnu_help_user_manual() As Boolean Handles mnu_help_user_manual.Action
+			ShowURL "http://www.opensong.org/d/manual"
+			Return True
+			
 		End Function
 	#tag EndMenuHandler
 
@@ -8289,24 +8447,6 @@ End
 		End Function
 	#tag EndMenuHandler
 
-	#tag MenuHandler
-		Function mnu_file_song_act() As Boolean Handles mnu_file_song_act.Action
-			saWin = New SongActivity
-			saWin.ActLog = Globals.SongActivityLog
-			saWin.FromFile = false
-			saWin.RefreshList
-			saWin.btn_act_merge.Enabled = false
-		End Function
-	#tag EndMenuHandler
-
-	#tag MenuHandler
-		Function mnu_help_user_manual() As Boolean Handles mnu_help_user_manual.Action
-			ShowURL "http://www.opensong.org/d/manual"
-			Return True
-			
-		End Function
-	#tag EndMenuHandler
-
 
 	#tag Method, Flags = &h1
 		Protected Function ActionInSetAskSave() As Boolean
@@ -8372,6 +8512,45 @@ End
 		  '--
 		  '++JRC Refresh
 		  EnableMenuItems
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ActionInSetPaste()
+		  '++gerritp
+		  Dim xgroups, oldGroup, newGroup As XmlNode
+		  dim xml as XmlDocument
+		  'Ask if user wants to save
+		  If NOT ActionInSetAskSave Then Return 'User Canceled
+		  
+		  Dim c As New Clipboard
+		  if not(c.TextAvailable) then return
+		  if Left(c.text,12) <> "<slide_group" then return
+		  xml = SmartML.XDocFromString(c.text)
+		  c.close
+		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  oldGroup = xml.FirstChild
+		  
+		  newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
+		  
+		  '++JRC Show slidetype on pasted set item
+		  Dim SlideType As String
+		  slideType = App.T.Translate("sets_mode/items/" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption")
+		  If slideType = "" Then // unknown slide type
+		    App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption" + "'", 1
+		    slideType = "*ERROR*"
+		  End If
+		  lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(oldgroup , "@name", True) + " " + slideType
+		  
+		  
+		  
+		  SmartML.CloneChildren oldGroup, newGroup
+		  SmartML.CloneAttributes oldGroup, newGroup
+		  
+		  Status_SetChanged = True
+		  
+		  lst_set_items.ListIndex = lst_set_items.ListIndex + 1
+		  '--
 		End Sub
 	#tag EndMethod
 
@@ -9138,6 +9317,75 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub ActionSongCopy()
+		  Dim f As FolderItem
+		  Dim folder, folders(0) As String
+		  Dim oldfolder As String
+		  Dim listindex As Integer
+		  Dim status As Boolean
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  listindex = lst_songs_songs.ListIndex
+		  oldfolder = lst_songs_songs.CellTag(listindex, 0)
+		  folders = Songs.GetFolders
+		  folders.Remove 1 ' drop the ( All )
+		  folder = InputBox.Pick(App.T.Translate("songs_mode/selected_song/copy/where/@caption", lst_songs_songs.Text), folders, "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )")
+		  
+		  If folder.Len = 0 Then Return
+		  If folder + "/" = oldfolder Then Return
+		  
+		  App.MouseCursor = System.Cursors.Wait // Wait...
+		  status = Songs.CopyFile(oldfolder + lst_songs_songs.Text, folder)
+		  App.MouseCursor = Nil // Don't wait...
+		  
+		  If Not status Then
+		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text, folder)
+		  Else
+		    'If pop_songs_song_folders.Text <> "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Then
+		    'lst_songs_songs.RemoveRow lst_songs_songs.ListIndex
+		    // Open the song at the same index if possible
+		    'If listindex < lst_songs_songs.ListCount Then
+		    'lst_songs_songs.ListIndex = listindex
+		    'Else
+		    'Status_SongOpen = False
+		    'Status_SongChanged = False
+		    'End If
+		    'Else  // Fix the folder info on this file
+		    'lst_songs_songs.CellTag(listindex, 0) = folder + "/"
+		    'lst_songs_songs.ListIndex = listindex // Force a reopen...this will fix all the status items and fields
+		    'End If
+		    'EnableMenuItems
+		    
+		    '++JRC Log song copy
+		    If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
+		      Dim Log As New LogEntry(Globals.SongActivityLog)
+		      Dim d As New Date
+		      
+		      Log.Title = edt_song_title.Text
+		      Log.Author = edt_song_author.Text
+		      Log.CCLISongNumber = edt_song_ccli.Text
+		      Log.OldSongFileName =  oldfolder + lst_songs_songs.Text 'Should we use AbsolutePath?
+		      Log.SongFileName =  lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text 'Should we use AbsolutePath?
+		      Log.DateAndTime = d
+		      Log.HasChords = Log.CheckLyricsForChords(edf_song_lyrics.Text)
+		      Log.Copied = True
+		      
+		      If NOT Log.AddLogEntry Then
+		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		      Else
+		        Log.UpdateNumEntries(Globals.SongActivityLog)
+		      End If
+		    End If
+		    '--
+		    
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ActionSongMove()
 		  Dim f As FolderItem
 		  Dim folder, folders(0) As String
@@ -9490,6 +9738,65 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub ActionSongRename()
+		  Dim t as String
+		  Dim old as String
+		  Dim f as FolderItem
+		  Dim xdoc As XmlDocument
+		  Dim i As Integer
+		  
+		  'Ask if user wants to save
+		  If NOT ActionSongAskSave Then Return 'User Canceled
+		  
+		  old = lst_songs_songs.Text
+		  
+		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
+		  If Len(t) > 0 Then
+		    //++
+		    // Check for path characters
+		    //--
+		    If Instr(t, "/") > 0 Or Instr(t, ":") > 0 Or Instr(t, "\") > 0 Then
+		      InputBox.Message(App.T.Translate("errors/no_path_allowed"))
+		      Return
+		    End If
+		    
+		    'If Songs.RenameFile(pop_songs_song_folders.Text + "/" + old, t) Then
+		    If Songs.RenameFile(edt_songs_curr_folder.Text + "/" + old, t) Then
+		      lst_songs_songs.List(lst_songs_songs.ListIndex) = t
+		      lst_songs_songs.SortedColumn = 0
+		      lst_songs_songs.Sort
+		      
+		      '++JRC Log song rename
+		      If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
+		        Dim Log As New LogEntry(Globals.SongActivityLog)
+		        Dim d As New Date
+		        
+		        Log.Title = edt_song_title.Text
+		        Log.Author = edt_song_author.Text
+		        Log.CCLISongNumber = edt_song_ccli.Text
+		        Log.OldSongFileName =  edt_songs_curr_folder.Text + "/" + old 'Should we use AbsolutePath?
+		        Log.SongFileName =  lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text 'Should we use AbsolutePath?
+		        Log.DateAndTime = d
+		        Log.HasChords = Log.CheckLyricsForChords(edf_song_lyrics.Text)
+		        Log.Renamed = True
+		        
+		        If NOT Log.AddLogEntry Then
+		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		        Else
+		          Log.UpdateNumEntries(Globals.SongActivityLog)
+		        End If
+		      End If
+		      '--
+		      
+		    Else
+		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t, old)
+		    End If
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ActionSongRevert(Ask As Boolean)
 		  'Dim f As FolderItem
 		  Dim listindex As Integer
@@ -9588,6 +9895,39 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub AddPresentedSongsToLog()
+		  '++JRC This function as the name implies checks which songs were presented
+		  'and adds them to the activity log, then clears Globals.ActLog
+		  Dim i As Integer
+		  
+		  For  i = 1  To  UBound(ActLog)
+		    If ActLog(i) <> Nil Then
+		      If ActLog(i).Displayed Then
+		        'bit of a hack really, when AddLogEntry is called NumEntries  in the rest of the log entries
+		        'in the array become invalid. their's probably a more elegant way of fixing this
+		        'but this should do for now
+		        ActLog(i).SyncNumEntries(Globals.SongActivityLog)
+		        
+		        If NOT ActLog(i).AddLogEntry Then
+		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
+		        Else
+		          ActLog(i).UpdateNumEntries(Globals.SongActivityLog)
+		        End If
+		      End If
+		    End If
+		  Next i
+		  
+		  For i  = UBound(ActLog)  DownTo 1
+		    If ActLog(i) <> Nil Then
+		      ActLog.Remove(i)
+		    End If
+		  Next i
+		  
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function CheckLyricLines(source As String) As String
 		  //++
@@ -9639,7 +9979,7 @@ End
 		  Dim f As FolderItem
 		  
 		  Dim found As RectControl
-		  Dim edtFound As EditField
+		  Dim edtFound As SEditField
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -9720,8 +10060,8 @@ End
 		    If found <> Nil Then
 		      If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
 		      found.SetFocus
-		      If found IsA EditField Then
-		        edtFound = EditField(found)
+		      If found IsA SEditField Then
+		        edtFound = SEditField(found)
 		        If edtFound.SelStart+edtFound.SelLength = 0 Then
 		          edtFound.SelStart = InStr(Lowercase(edtFound.Text), t) - 1
 		        Else
@@ -9813,6 +10153,128 @@ End
 		  End If
 		  Return RealPath
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub ImportExternals(setDoc As XmlDocument, PresentMode As Integer)
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim songDoc As XmlDocument
+		  Dim Presentation As String
+		  '++JRC
+		  Dim CurStyle As XmlNode
+		  '--
+		  Dim Transition As Integer
+		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim SongPath As String
+		  Dim slidesCount As Integer = 0
+		  
+		  App.MouseCursor = System.Cursors.Wait
+		  
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  
+		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_externals") + "..."
+		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
+		  ProgressWindow.SetProgress(slidesCount)
+		  ProgressWindow.CanCancel False
+		  ProgressWindow.SetStatus( "" )
+		  ProgressWindow.Show()
+		  
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    slidesCount = slidesCount + 1
+		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
+		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
+		      
+		      Select Case SmartML.GetValue(slide_group, "@application")
+		      Case "presentation"
+		        
+		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
+		        Dim presFile As FolderItem = GetFolderItem( presFileName )
+		        Dim presFileOk As Boolean = False
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            presFileOk = True
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case SmartML.GetValue(slide_group, "@host")
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath, presHost )
+		            If Not IsNull( oExtPres ) Then
+		              
+		              If oExtPres.CanControl() Then
+		                Dim img As StyleImage
+		                Dim i As Integer
+		                
+		                Dim presSlides As XmlNode = SmartML.InsertChild( slide_group, "slides", 0 )
+		                For i = 1 to oExtPres.SlideCount()
+		                  
+		                  If Not oExtPres.IsHidden(i) Then
+		                    Dim presSlide As XmlNode = SmartML.InsertChild( presSlides, "slide", presSlides.ChildCount() )
+		                    SmartML.SetValueN( presSlide, "@id", i )
+		                    SmartML.SetValue( presSlide, "description", oExtPres.SlideName(i) )
+		                    
+		                    If (PresentMode <> PresentWindow.MODE_SINGLE_SCREEN) And oExtPres.CanPreview() Then
+		                      img = New StyleImage()
+		                      img.SetImage( oExtPres.PreviewSlide( i, 320, 240 ) )
+		                      SmartML.SetValue(presSlide, "preview", img.GetImageAsString())
+		                    End If
+		                  End If
+		                  
+		                Next
+		              End If
+		              
+		            Else
+		              MsgBox(App.T.Translate("errors/presentations/unsupported_feature", oExtPres.HostName()))
+		            End If
+		            
+		          Else
+		            MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
+		          End If
+		        End If
+		        
+		        If Not presFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", presFileName)
+		        End If
+		        
+		      Case "videolan"
+		        'No action required here,
+		        'a check to validate the presence of media to play might be nice here
+		        
+		      Case "launch"
+		        'No action required here
+		        'As early warning, we will check if the application that is to be started does exist
+		        
+		        Dim appFileName As String = SmartML.GetValue(slide_group, "@app_filename")
+		        Dim appFile As FolderItem = GetFolderItem( appFileName )
+		        Dim appFileOk As Boolean = False
+		        If Not IsNull( appFile ) Then
+		          If appFile.Exists() Then
+		            appFileOk = True
+		          End If
+		        End If
+		        
+		        If Not appFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", appFileName)
+		        End If
+		        
+		      End Select
+		    End If
+		    
+		    slide_group  = slide_group.NextSibling
+		    ProgressWindow.SetProgress( slidesCount )
+		  Wend
+		  
+		  ProgressWindow.Close()
+		  App.MouseCursor = Nil
+		  
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -9940,6 +10402,20 @@ End
 		  ProgressWindow.Close()
 		  
 		  App.MouseCursor = Nil
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub LiveDisplay(slide As XmlNode)
+		  //++
+		  // This is part of ScriptureReceiver and used for
+		  // presenting a verse slide without adding it to
+		  // the active set.
+		  // It shouldn't ever get called when Scripture Picker is run
+		  // from MainWindow.
+		  //--
+		  
+		  System.DebugLog "MainWindow.LiveDisplay should never be called, but here we are..."
 		End Sub
 	#tag EndMethod
 
@@ -10104,6 +10580,95 @@ End
 		    can_song_style.SetStyleNode SmartML.GetNode(CurrentSong.DocumentElement, "style")
 		    'can_song_style.SetStyleNode CurrentSongObj.SongStyle.ToXML.DocumentElement
 		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ReorderSetItemList(CurrentPosition As Integer, newPosition As Integer)
+		  '++JRC Handle Set Item list reordering
+		  If  newPosition = CurrentPosition Then
+		    return
+		  End If
+		  
+		  Dim xgroups As XmlNode
+		  
+		  'Ask if user wants to save
+		  If NOT ActionInSetAskSave Then
+		    Return 'User Canceled, cancel the reorder
+		  End If
+		  
+		  If Status_InSetChanged Then 'User chose not to save, set DontUpdateSetItem flag
+		    DontUpdateSetItem = True 'reorder the list without changing any edit fields
+		  End If
+		  
+		  'Update set XML with the new order
+		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  Status_SetChanged = True
+		  If newPosition > CurrentPosition Then
+		    If newPosition = lst_set_items.ListCount - 1 Then
+		      xgroups.AppendChild xgroups.Child(CurrentPosition)
+		    Else
+		      xgroups.Insert xgroups.Child(CurrentPosition), xgroups.Child(newPosition+1)
+		    End If
+		    'reorder the list
+		    lst_set_items.InsertRow newPosition+1, lst_set_items.List(CurrentPosition)
+		    lst_set_items.RemoveRow(CurrentPosition)
+		    CurrentInSetItem = newPosition
+		    
+		  ElseIf newPosition < CurrentPosition Then
+		    xgroups.Insert xgroups.Child(CurrentPosition), xgroups.Child(newPosition)
+		    'reorder the list
+		    lst_set_items.InsertRow newPosition, lst_set_items.List(CurrentPosition)
+		    lst_set_items.RemoveRow(CurrentPosition+1)
+		    CurrentInSetItem = newPosition
+		  End If
+		  
+		  lst_set_items.ListIndex = CurrentInSetItem
+		  If NOT Status_InSetChanged Then
+		    CurrentInSetItem = -1
+		  End If
+		  DontUpdateSetItem = false
+		  'EnableMenuItems
+		  '--
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ScriptureSelected(scripture As XmlNode)
+		  // Part of the ScriptureReceiver interface.
+		  // New scripture has been selected in the ScripturePicker.
+		  // Add to the set at the current position
+		  //
+		  
+		  If CurrentSet Is Nil Then Return
+		  
+		  Dim newGroup, newSetItem As XmlNode
+		  Dim xGroups As XmlNode
+		  
+		  xGroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  
+		  If lst_set_items.ListIndex >= 0 Then
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
+		  Else
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
+		  End If
+		  
+		  newSetItem = SmartML.ReplaceWithImportNode(newGroup, scripture)
+		  
+		  ' No need to EnableMenuItems, since the following selection change will call it
+		  
+		  If lst_set_items.ListIndex >= 0 Then
+		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newSetItem, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
+		  Else
+		    lst_set_items.AddRow SmartML.GetValue(newSetItem, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
+		  End If
+		  
+		  lst_set_items.ListIndex = lst_set_items.LastIndex
+		  
+		  
+		  Status_SetChanged = True
+		  Status_InSetChanged = False
 		  
 		End Sub
 	#tag EndMethod
@@ -10438,431 +11003,6 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h21
-		Private Sub LiveDisplay(slide As XmlNode)
-		  //++
-		  // This is part of ScriptureReceiver and used for
-		  // presenting a verse slide without adding it to
-		  // the active set.
-		  // It shouldn't ever get called when Scripture Picker is run
-		  // from MainWindow.
-		  //--
-		  
-		  System.DebugLog "MainWindow.LiveDisplay should never be called, but here we are..."
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub ScriptureSelected(scripture As XmlNode)
-		  // Part of the ScriptureReceiver interface.
-		  // New scripture has been selected in the ScripturePicker.
-		  // Add to the set at the current position
-		  //
-		  
-		  If CurrentSet Is Nil Then Return
-		  
-		  Dim newGroup, newSetItem As XmlNode
-		  Dim xGroups As XmlNode
-		  
-		  xGroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  
-		  If lst_set_items.ListIndex >= 0 Then
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
-		  Else
-		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
-		  End If
-		  
-		  newSetItem = SmartML.ReplaceWithImportNode(newGroup, scripture)
-		  
-		  ' No need to EnableMenuItems, since the following selection change will call it
-		  
-		  If lst_set_items.ListIndex >= 0 Then
-		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newSetItem, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
-		  Else
-		    lst_set_items.AddRow SmartML.GetValue(newSetItem, "@name", True) + " " + App.T.Translate("sets_mode/items/scripture/@caption")
-		  End If
-		  
-		  lst_set_items.ListIndex = lst_set_items.LastIndex
-		  
-		  
-		  Status_SetChanged = True
-		  Status_InSetChanged = False
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub ActionSongRename()
-		  Dim t as String
-		  Dim old as String
-		  Dim f as FolderItem
-		  Dim xdoc As XmlDocument
-		  Dim i As Integer
-		  
-		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  
-		  old = lst_songs_songs.Text
-		  
-		  t = InputBox.Input(App.T.Translate("questions/rename/@caption", old), old)
-		  If Len(t) > 0 Then
-		    //++
-		    // Check for path characters
-		    //--
-		    If Instr(t, "/") > 0 Or Instr(t, ":") > 0 Or Instr(t, "\") > 0 Then
-		      InputBox.Message(App.T.Translate("errors/no_path_allowed"))
-		      Return
-		    End If
-		    
-		    'If Songs.RenameFile(pop_songs_song_folders.Text + "/" + old, t) Then
-		    If Songs.RenameFile(edt_songs_curr_folder.Text + "/" + old, t) Then
-		      lst_songs_songs.List(lst_songs_songs.ListIndex) = t
-		      lst_songs_songs.SortedColumn = 0
-		      lst_songs_songs.Sort
-		      
-		      '++JRC Log song rename
-		      If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
-		        Dim Log As New LogEntry(Globals.SongActivityLog)
-		        Dim d As New Date
-		        
-		        Log.Title = edt_song_title.Text
-		        Log.Author = edt_song_author.Text
-		        Log.CCLISongNumber = edt_song_ccli.Text
-		        Log.OldSongFileName =  edt_songs_curr_folder.Text + "/" + old 'Should we use AbsolutePath?
-		        Log.SongFileName =  lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text 'Should we use AbsolutePath?
-		        Log.DateAndTime = d
-		        Log.HasChords = Log.CheckLyricsForChords(edf_song_lyrics.Text)
-		        Log.Renamed = True
-		        
-		        If NOT Log.AddLogEntry Then
-		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		        Else
-		          Log.UpdateNumEntries(Globals.SongActivityLog)
-		        End If
-		      End If
-		      '--
-		      
-		    Else
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", t, old)
-		    End If
-		  End If
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub ReorderSetItemList(CurrentPosition As Integer, newPosition As Integer)
-		  '++JRC Handle Set Item list reordering
-		  If  newPosition = CurrentPosition Then
-		    return
-		  End If
-		  
-		  Dim xgroups As XmlNode
-		  
-		  'Ask if user wants to save
-		  If NOT ActionInSetAskSave Then
-		    Return 'User Canceled, cancel the reorder
-		  End If
-		  
-		  If Status_InSetChanged Then 'User chose not to save, set DontUpdateSetItem flag
-		    DontUpdateSetItem = True 'reorder the list without changing any edit fields
-		  End If
-		  
-		  'Update set XML with the new order
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  Status_SetChanged = True
-		  If newPosition > CurrentPosition Then
-		    If newPosition = lst_set_items.ListCount - 1 Then
-		      xgroups.AppendChild xgroups.Child(CurrentPosition)
-		    Else
-		      xgroups.Insert xgroups.Child(CurrentPosition), xgroups.Child(newPosition+1)
-		    End If
-		    'reorder the list
-		    lst_set_items.InsertRow newPosition+1, lst_set_items.List(CurrentPosition)
-		    lst_set_items.RemoveRow(CurrentPosition)
-		    CurrentInSetItem = newPosition
-		    
-		  ElseIf newPosition < CurrentPosition Then
-		    xgroups.Insert xgroups.Child(CurrentPosition), xgroups.Child(newPosition)
-		    'reorder the list
-		    lst_set_items.InsertRow newPosition, lst_set_items.List(CurrentPosition)
-		    lst_set_items.RemoveRow(CurrentPosition+1)
-		    CurrentInSetItem = newPosition
-		  End If
-		  
-		  lst_set_items.ListIndex = CurrentInSetItem
-		  If NOT Status_InSetChanged Then
-		    CurrentInSetItem = -1
-		  End If
-		  DontUpdateSetItem = false
-		  'EnableMenuItems
-		  '--
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub ActionSongCopy()
-		  Dim f As FolderItem
-		  Dim folder, folders(0) As String
-		  Dim oldfolder As String
-		  Dim listindex As Integer
-		  Dim status As Boolean
-		  
-		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  
-		  listindex = lst_songs_songs.ListIndex
-		  oldfolder = lst_songs_songs.CellTag(listindex, 0)
-		  folders = Songs.GetFolders
-		  folders.Remove 1 ' drop the ( All )
-		  folder = InputBox.Pick(App.T.Translate("songs_mode/selected_song/copy/where/@caption", lst_songs_songs.Text), folders, "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )")
-		  
-		  If folder.Len = 0 Then Return
-		  If folder + "/" = oldfolder Then Return
-		  
-		  App.MouseCursor = System.Cursors.Wait // Wait...
-		  status = Songs.CopyFile(oldfolder + lst_songs_songs.Text, folder)
-		  App.MouseCursor = Nil // Don't wait...
-		  
-		  If Not status Then
-		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text, folder)
-		  Else
-		    'If pop_songs_song_folders.Text <> "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Then
-		    'lst_songs_songs.RemoveRow lst_songs_songs.ListIndex
-		    // Open the song at the same index if possible
-		    'If listindex < lst_songs_songs.ListCount Then
-		    'lst_songs_songs.ListIndex = listindex
-		    'Else
-		    'Status_SongOpen = False
-		    'Status_SongChanged = False
-		    'End If
-		    'Else  // Fix the folder info on this file
-		    'lst_songs_songs.CellTag(listindex, 0) = folder + "/"
-		    'lst_songs_songs.ListIndex = listindex // Force a reopen...this will fix all the status items and fields
-		    'End If
-		    'EnableMenuItems
-		    
-		    '++JRC Log song copy
-		    If App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil Then
-		      Dim Log As New LogEntry(Globals.SongActivityLog)
-		      Dim d As New Date
-		      
-		      Log.Title = edt_song_title.Text
-		      Log.Author = edt_song_author.Text
-		      Log.CCLISongNumber = edt_song_ccli.Text
-		      Log.OldSongFileName =  oldfolder + lst_songs_songs.Text 'Should we use AbsolutePath?
-		      Log.SongFileName =  lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text 'Should we use AbsolutePath?
-		      Log.DateAndTime = d
-		      Log.HasChords = Log.CheckLyricsForChords(edf_song_lyrics.Text)
-		      Log.Copied = True
-		      
-		      If NOT Log.AddLogEntry Then
-		        InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		      Else
-		        Log.UpdateNumEntries(Globals.SongActivityLog)
-		      End If
-		    End If
-		    '--
-		    
-		  End If
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub ActionInSetPaste()
-		  '++gerritp
-		  Dim xgroups, oldGroup, newGroup As XmlNode
-		  dim xml as XmlDocument
-		  'Ask if user wants to save
-		  If NOT ActionInSetAskSave Then Return 'User Canceled
-		  
-		  Dim c As New Clipboard
-		  if not(c.TextAvailable) then return
-		  if Left(c.text,12) <> "<slide_group" then return
-		  xml = SmartML.XDocFromString(c.text)
-		  c.close
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  oldGroup = xml.FirstChild
-		  
-		  newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
-		  
-		  '++JRC Show slidetype on pasted set item
-		  Dim SlideType As String
-		  slideType = App.T.Translate("sets_mode/items/" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption")
-		  If slideType = "" Then // unknown slide type
-		    App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption" + "'", 1
-		    slideType = "*ERROR*"
-		  End If
-		  lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(oldgroup , "@name", True) + " " + slideType
-		  
-		  
-		  
-		  SmartML.CloneChildren oldGroup, newGroup
-		  SmartML.CloneAttributes oldGroup, newGroup
-		  
-		  Status_SetChanged = True
-		  
-		  lst_set_items.ListIndex = lst_set_items.ListIndex + 1
-		  '--
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub AddPresentedSongsToLog()
-		  '++JRC This function as the name implies checks which songs were presented
-		  'and adds them to the activity log, then clears Globals.ActLog
-		  Dim i As Integer
-		  
-		  For  i = 1  To  UBound(ActLog)
-		    If ActLog(i) <> Nil Then
-		      If ActLog(i).Displayed Then
-		        'bit of a hack really, when AddLogEntry is called NumEntries  in the rest of the log entries
-		        'in the array become invalid. their's probably a more elegant way of fixing this
-		        'but this should do for now
-		        ActLog(i).SyncNumEntries(Globals.SongActivityLog)
-		        
-		        If NOT ActLog(i).AddLogEntry Then
-		          InputBox.Message App.T.Translate("errors/adding_entry") '++JRC Translated
-		        Else
-		          ActLog(i).UpdateNumEntries(Globals.SongActivityLog)
-		        End If
-		      End If
-		    End If
-		  Next i
-		  
-		  For i  = UBound(ActLog)  DownTo 1
-		    If ActLog(i) <> Nil Then
-		      ActLog.Remove(i)
-		    End If
-		  Next i
-		  
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub ImportExternals(setDoc As XmlDocument, PresentMode As Integer)
-		  Dim slide_group, slide_groups, temp As XmlNode
-		  Dim songDoc As XmlDocument
-		  Dim Presentation As String
-		  '++JRC
-		  Dim CurStyle As XmlNode
-		  '--
-		  Dim Transition As Integer
-		  Dim SongStyle, SlideSongStyle As XmlNode
-		  Dim SongPath As String
-		  Dim slidesCount As Integer = 0
-		  
-		  App.MouseCursor = System.Cursors.Wait
-		  
-		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
-		  
-		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_externals") + "..."
-		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
-		  ProgressWindow.SetProgress(slidesCount)
-		  ProgressWindow.CanCancel False
-		  ProgressWindow.SetStatus( "" )
-		  ProgressWindow.Show()
-		  
-		  slide_group = slide_groups.FirstChild
-		  While slide_group <> Nil
-		    slidesCount = slidesCount + 1
-		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
-		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
-		      
-		      Select Case SmartML.GetValue(slide_group, "@application")
-		      Case "presentation"
-		        
-		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
-		        Dim presFile As FolderItem = GetFolderItem( presFileName )
-		        Dim presFileOk As Boolean = False
-		        If Not IsNull(presFile) Then
-		          If presFile.Exists() Then
-		            
-		            presFileOk = True
-		            Dim presHost As PresentationHost = PresentationHost.Automatic
-		            Select Case SmartML.GetValue(slide_group, "@host")
-		            Case "ppt"
-		              presHost = PresentationHost.PowerPoint
-		            Case "pptview"
-		              presHost = PresentationHost.PowerPointViewer
-		            Case "impress"
-		              presHost = PresentationHost.OpenOffice
-		            End Select
-		            
-		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath, presHost )
-		            If Not IsNull( oExtPres ) Then
-		              
-		              If oExtPres.CanControl() Then
-		                Dim img As StyleImage
-		                Dim i As Integer
-		                
-		                Dim presSlides As XmlNode = SmartML.InsertChild( slide_group, "slides", 0 )
-		                For i = 1 to oExtPres.SlideCount()
-		                  
-		                  If Not oExtPres.IsHidden(i) Then
-		                    Dim presSlide As XmlNode = SmartML.InsertChild( presSlides, "slide", presSlides.ChildCount() )
-		                    SmartML.SetValueN( presSlide, "@id", i )
-		                    SmartML.SetValue( presSlide, "description", oExtPres.SlideName(i) )
-		                    
-		                    If (PresentMode <> PresentWindow.MODE_SINGLE_SCREEN) And oExtPres.CanPreview() Then
-		                      img = New StyleImage()
-		                      img.SetImage( oExtPres.PreviewSlide( i, 320, 240 ) )
-		                      SmartML.SetValue(presSlide, "preview", img.GetImageAsString())
-		                    End If
-		                  End If
-		                  
-		                Next
-		              End If
-		              
-		            Else
-		              MsgBox(App.T.Translate("errors/presentations/unsupported_feature", oExtPres.HostName()))
-		            End If
-		            
-		          Else
-		            MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
-		          End If
-		        End If
-		        
-		        If Not presFileOk Then
-		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", presFileName)
-		        End If
-		        
-		      Case "videolan"
-		        'No action required here,
-		        'a check to validate the presence of media to play might be nice here
-		        
-		      Case "launch"
-		        'No action required here
-		        'As early warning, we will check if the application that is to be started does exist
-		        
-		        Dim appFileName As String = SmartML.GetValue(slide_group, "@app_filename")
-		        Dim appFile As FolderItem = GetFolderItem( appFileName )
-		        Dim appFileOk As Boolean = False
-		        If Not IsNull( appFile ) Then
-		          If appFile.Exists() Then
-		            appFileOk = True
-		          End If
-		        End If
-		        
-		        If Not appFileOk Then
-		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", appFileName)
-		        End If
-		        
-		      End Select
-		    End If
-		    
-		    slide_group  = slide_group.NextSibling
-		    ProgressWindow.SetProgress( slidesCount )
-		  Wend
-		  
-		  ProgressWindow.Close()
-		  App.MouseCursor = Nil
-		  
-		End Sub
-	#tag EndMethod
-
 
 	#tag Note, Name = Status Hierarchy
 		SetOpen
@@ -10872,12 +11012,40 @@ End
 	#tag EndNote
 
 
+	#tag Property, Flags = &h1
+		Protected ActiveEditField As SEditField
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected CurrentInSetItem As Integer
+	#tag EndProperty
+
 	#tag Property, Flags = &h0
 		CurrentSet As XmlDocument
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected CurrentSetIndex As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected CurrentSetName As String
+	#tag EndProperty
+
 	#tag Property, Flags = &h0
 		CurrentSong As XmlDocument
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected CurrentSongName As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected CurrentSongObj As Song
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		DontUpdateSetItem As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -10886,73 +11054,6 @@ End
 
 	#tag Property, Flags = &h0
 		FindFocus As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		#tag Note
-			PowerPointApplication
-		#tag EndNote
-		PPT As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Untitled As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected TempSet As XmlDocument
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Status_SetOpen As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Status_ProgramInitialized As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Status_InSetSongEdit As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Status_InSetOpen As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Status_InSetEditable As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected Status_InSetChanged As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected PopupClicked As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected LastSongPane As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected LastSetPane As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected LastSearch As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected KeyedSearch As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected InSetNameCache As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected HSizer As HalfSizer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -10964,31 +11065,42 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected CurrentSongObj As Song
+		Protected HSizer As HalfSizer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected CurrentSongName As String
+		Protected InSetNameCache As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected CurrentSetName As String
+		Protected KeyedSearch As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected CurrentSetIndex As Integer
+		Protected LastSearch As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected CurrentInSetItem As Integer
+		Protected LastSetPane As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected ActiveEditField As EditField
+		Protected LastSongPane As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected Status_SetChanged As Boolean
+		Protected PopupClicked As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		#tag Note
+			PowerPointApplication
+		#tag EndNote
+		PPT As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		saWin As SongActivity
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -11003,8 +11115,40 @@ End
 		Songs As FolderDB
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected Status_Closing As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_InSetChanged As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_InSetEditable As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_InSetOpen As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_InSetSongEdit As Boolean
+	#tag EndProperty
+
 	#tag Property, Flags = &h0
 		Status_Presentation As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_ProgramInitialized As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_SetChanged As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_SetOpen As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -11016,15 +11160,11 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected Status_Closing As Boolean
+		Protected TempSet As XmlDocument
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		DontUpdateSetItem As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		saWin As SongActivity
+	#tag Property, Flags = &h1
+		Protected Untitled As Integer
 	#tag EndProperty
 
 

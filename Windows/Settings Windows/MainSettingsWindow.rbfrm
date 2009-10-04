@@ -167,7 +167,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   215
          End
-         Begin EditField edt_general_ccli
+         Begin TextField edt_general_ccli
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
@@ -1905,7 +1905,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   253
          End
-         Begin EditField edt_applications_pptview
+         Begin TextField edt_applications_pptview
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True

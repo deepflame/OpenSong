@@ -35,8 +35,118 @@ Protected Class Translator
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Translate(from As String, ParamArray args As String) As String
-		  Return Translate(from, args)
+		Sub LoadPopup(path As String, popCont As PopupMenu)
+		  //++
+		  // Load the possible selections for a PopupMenu control
+		  //
+		  // Ed Palmer, November 2007
+		  //--
+		  Dim valueNodes As XmlNodeList
+		  Dim tagNode As XmlAttribute
+		  
+		  If Left(path, 1) <> "/" Then path = "/" + path
+		  path = "/language" + path + "/value"
+		  
+		  Try
+		    valueNodes = Document.Xql(path)
+		  Catch e As XmlException
+		    App.DebugWriter.Write "Translator.LoadPopup: XML error looking for '" + path + "'", 1
+		    App.DebugWriter.Write "Error is '" + RuntimeException(e).Message, 1
+		    Return
+		  End Try
+		  
+		  For i As Integer = 0 To valueNodes.Length - 1
+		    popCont.AddRow(valueNodes.Item(i).GetText)
+		    tagNode = valueNodes.Item(i).GetAttributeNode("tag")
+		    If Not (tagNode Is Nil) Then
+		      popCont.RowTag(i) = tagNode.Value
+		    End If
+		  Next
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function ParseControlName(c As Control) As String
+		  Dim name As String
+		  Dim parts() As String
+		  
+		  name = c.Name
+		  if name.Left(1) = "/" Then name = name.mid(2)
+		  parts = Split(name, "_")
+		  
+		  //
+		  // First element is control type, should be three characters
+		  //
+		  // If the last element is numeric, drop it (control "array")
+		  //
+		  // If there are more than two elements after dropping the numeric,
+		  // delete the second one (will be replaced by the parent control's tag)
+		  //
+		  If UBound(parts) < 1 Then Return name // Can't do anything with a non-conforming name
+		  
+		  If parts(0).Len <> 3 Then Return name // Leading element is not in correct format
+		  
+		  If Val(parts(UBound(parts))) > 0 Then parts.Remove(UBound(parts))
+		  
+		  If UBound(parts) > 1 Then parts.Remove(1)
+		  
+		  name =  Join(parts, "_")
+		  Return name
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ParseHierarchicalName(tag As String, cont As RectControl) As String
+		  Dim ret As String
+		  Dim parent As RectControl
+		  Dim contName As String
+		  Dim parentParts() As String
+		  
+		  contName = ParseControlName(cont)
+		  ret = tag + contName.mid(5).Lowercase
+		  
+		  parent = cont.Parent
+		  
+		  // Validate the parent control
+		  If parent Is Nil Or (Not (parent IsA RectControl)) Then
+		    App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil parent for '" +_
+		    cont.Name + "', returning " + ret, 4
+		    Return ret
+		  End If
+		  
+		  // If the parent's name is "nil_something"  then look to its parent
+		  If parent.Name.Left(4) = "nil_" Then
+		    If parent.Parent Is Nil Or (Not (parent.Parent IsA RectControl)) Then
+		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil grandparent for '" +_
+		      cont.Name + "', returning " + ret, 4
+		      Return ret
+		    Else
+		      parent = parent.Parent
+		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Using grandparent for '" +_
+		      cont.Name + "', grandparent is '" + parent.Name + "'", 5
+		    End If
+		  End If
+		  
+		  // Finally, take the tag (window prefix) and add the third part of the parent to the
+		  // second part of the control
+		  
+		  parentParts = Split(parent.Name, "_")
+		  Select Case UBound(parentParts)
+		  Case 0
+		    App.DebugWriter.Write "Translator.ParseHierarchicalName: parent control for '" +_
+		    cont.Name + "' has too few components: " + parent.Name, 1
+		    
+		  Case 1
+		    parentParts.Remove 0
+		    ret = Lowercase(Tag + Join(parentParts, "_") + "/" + contName.Mid(5))
+		    
+		  Case Else
+		    parentParts.Remove 0
+		    parentParts.Remove 0
+		    ret = Lowercase(Tag + Join(parentParts, "_") + "/" + contName.Mid(5))
+		  End Select
+		  
+		  Return ret
 		End Function
 	#tag EndMethod
 
@@ -94,6 +204,12 @@ Protected Class Translator
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function Translate(from As String, ParamArray args As String) As String
+		  Return Translate(from, args)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub TranslateMenu(menuTag As String, menu As MenuItem)
 		  Dim i As Integer
 		  Dim tfrom, tto As String
@@ -140,7 +256,8 @@ Protected Class Translator
 		  Dim tabCont As TabPanel
 		  Dim sbuttonCont As SButton
 		  Dim listCont As ListBox
-		  Dim editCont As EditField
+		  '++JRC Fix for RB 2009R4 change of EditField to TextArea
+		  Dim editCont As TextArea
 		  Dim popCont As PopupMenu
 		  Dim sldCont As Slider 'EMP 09/05
 		  
@@ -215,8 +332,9 @@ Protected Class Translator
 		        checkCont.Underline = fonts(2).Underline
 		      End If
 		      
-		    ElseIf cont IsA EditField Then
-		      editCont = EditField(cont)
+		      '++JRC Fix for RB 2009R4 change of EditField to TextArea
+		    ElseIf cont IsA TextArea Then
+		      editCont = TextArea(cont)
 		      If doFonts And controlUsage = "edf" Then
 		        If fonts(6).Name.Len > 0 Then
 		          editCont.TextFont = fonts(6).Name
@@ -361,122 +479,6 @@ Protected Class Translator
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function ParseControlName(c As Control) As String
-		  Dim name As String
-		  Dim parts() As String
-		  
-		  name = c.Name
-		  if name.Left(1) = "/" Then name = name.mid(2)
-		  parts = Split(name, "_")
-		  
-		  //
-		  // First element is control type, should be three characters
-		  //
-		  // If the last element is numeric, drop it (control "array")
-		  //
-		  // If there are more than two elements after dropping the numeric,
-		  // delete the second one (will be replaced by the parent control's tag)
-		  //
-		  If UBound(parts) < 1 Then Return name // Can't do anything with a non-conforming name
-		  
-		  If parts(0).Len <> 3 Then Return name // Leading element is not in correct format
-		  
-		  If Val(parts(UBound(parts))) > 0 Then parts.Remove(UBound(parts))
-		  
-		  If UBound(parts) > 1 Then parts.Remove(1)
-		  
-		  name =  Join(parts, "_")
-		  Return name
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function ParseHierarchicalName(tag As String, cont As RectControl) As String
-		  Dim ret As String
-		  Dim parent As RectControl
-		  Dim contName As String
-		  Dim parentParts() As String
-		  
-		  contName = ParseControlName(cont)
-		  ret = tag + contName.mid(5).Lowercase
-		  
-		  parent = cont.Parent
-		  
-		  // Validate the parent control
-		  If parent Is Nil Or (Not (parent IsA RectControl)) Then
-		    App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil parent for '" +_
-		    cont.Name + "', returning " + ret, 4
-		    Return ret
-		  End If
-		  
-		  // If the parent's name is "nil_something"  then look to its parent
-		  If parent.Name.Left(4) = "nil_" Then
-		    If parent.Parent Is Nil Or (Not (parent.Parent IsA RectControl)) Then
-		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Nil grandparent for '" +_
-		      cont.Name + "', returning " + ret, 4
-		      Return ret
-		    Else
-		      parent = parent.Parent
-		      App.DebugWriter.Write "Translator.ParseHierarchicalName: Using grandparent for '" +_
-		      cont.Name + "', grandparent is '" + parent.Name + "'", 5
-		    End If
-		  End If
-		  
-		  // Finally, take the tag (window prefix) and add the third part of the parent to the
-		  // second part of the control
-		  
-		  parentParts = Split(parent.Name, "_")
-		  Select Case UBound(parentParts)
-		  Case 0
-		    App.DebugWriter.Write "Translator.ParseHierarchicalName: parent control for '" +_
-		    cont.Name + "' has too few components: " + parent.Name, 1
-		    
-		  Case 1
-		    parentParts.Remove 0
-		    ret = Lowercase(Tag + Join(parentParts, "_") + "/" + contName.Mid(5))
-		    
-		  Case Else
-		    parentParts.Remove 0
-		    parentParts.Remove 0
-		    ret = Lowercase(Tag + Join(parentParts, "_") + "/" + contName.Mid(5))
-		  End Select
-		  
-		  Return ret
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub LoadPopup(path As String, popCont As PopupMenu)
-		  //++
-		  // Load the possible selections for a PopupMenu control
-		  //
-		  // Ed Palmer, November 2007
-		  //--
-		  Dim valueNodes As XmlNodeList
-		  Dim tagNode As XmlAttribute
-		  
-		  If Left(path, 1) <> "/" Then path = "/" + path
-		  path = "/language" + path + "/value"
-		  
-		  Try
-		    valueNodes = Document.Xql(path)
-		  Catch e As XmlException
-		    App.DebugWriter.Write "Translator.LoadPopup: XML error looking for '" + path + "'", 1
-		    App.DebugWriter.Write "Error is '" + RuntimeException(e).Message, 1
-		    Return
-		  End Try
-		  
-		  For i As Integer = 0 To valueNodes.Length - 1
-		    popCont.AddRow(valueNodes.Item(i).GetText)
-		    tagNode = valueNodes.Item(i).GetAttributeNode("tag")
-		    If Not (tagNode Is Nil) Then
-		      popCont.RowTag(i) = tagNode.Value
-		    End If
-		  Next
-		End Sub
-	#tag EndMethod
-
 
 	#tag Property, Flags = &h1
 		Protected Document As XmlDocument
@@ -502,12 +504,6 @@ Protected Class Translator
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -515,16 +511,22 @@ Protected Class Translator
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

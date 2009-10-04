@@ -2336,11 +2336,15 @@ Module SongML
 		  Dim slides, slide As XmlNode
 		  Dim order As String
 		  Dim SubtitleText As String
+		  Dim f As FolderItem
+		  Dim versename as string
 		  
 		  ' This routine makes an in-place change of a song XML encoding to slides for use in a set.  The
 		  'XML node that we are passed is modified in-place instead of creating a new one.  That way,
 		  'if it is part of a larger grouping (i.e., a set), the node doesn't have to be replaced and the processing time
 		  'for repairing the XML linked lists is avoided.
+		  
+		  
 		  
 		  songElement.Name = "slide_group"
 		  SmartML.SetValue songElement, "@name", SmartML.GetValue(songElement, "title", True)
@@ -2360,6 +2364,11 @@ Module SongML
 		  Dim dict As New Dictionary
 		  Dim sub_section, sub_sections(), section, sections() As String
 		  
+		  
+		  'end if
+		  
+		  
+		  
 		  LyricsToSections songElement, dict, order
 		  
 		  Dim presentation As string
@@ -2371,7 +2380,10 @@ Module SongML
 		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
 		  dim BeforePipeSign as boolean 'gp
 		  dim ChorusNr as integer 'GP
+		  dim part as string
+		  dim i as integer
 		  ChorusNr = 0 'GP
+		  
 		  For Each section In sections
 		    If dict.HasKey(section) Then
 		      If Lowercase(Left(section, 1)) = "c" Then
@@ -2380,7 +2392,9 @@ Module SongML
 		      
 		      sub_sections = Split(dict.Value(section), "||")
 		      BeforePipeSign =  (sub_sections.Ubound  > 0) 'gp
+		      I =0
 		      For Each sub_section In sub_sections
+		        I = I + 1
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
 		        if BeforePipeSign then
 		          SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section+"  ...")))  'gp: if forced new slide then always show ...  so the public knows then verse is not finished 'gp
@@ -2398,7 +2412,74 @@ Module SongML
 		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
 		          
 		        End If
+		        'if style <> nil then 'and  style.verse_as_image then
+		        F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(songElement, "@songpath" )+"/")
+		        if F <> nil then
+		          versename = SmartML.GetValue(songElement, "@songfilename" )
+		          if InStr(1,versename,"-") > 0 then
+		            versename = trim(Left(versename , InStr(1,versename,"-")-1))
+		          end if
+		          part = ""
+		          if I > 1 then
+		            part = chr(I+64)
+		          end if
+		          if f.Child(versename+part+".png").Exists and SmartML.GetValue(slide, "@id") ="V1" then
+		            f =  f.Child(versename+part+".png")
+		          else
+		            versename = versename + SmartML.GetValue(slide, "@id")+part
+		            if f.Child(versename+".png").Exists then
+		              f =  f.Child(versename+".png")
+		            else
+		            end if
+		          end if
+		          if f <> nil and not f.Directory then
+		            SmartML.SetValue slide, "@songfilenamepath", f.AbsolutePath
+		            SmartML.SetValue slide, "@songfilenamewithoutpath", f.Name
+		          end if
+		        end if
 		      Next
+		      'now loop over the extra .png files 
+		      do until I > 26
+		        I = I + 1
+		        F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(songElement, "@songpath" )+"/")
+		        if F <> nil then
+		          versename = SmartML.GetValue(songElement, "@songfilename" )
+		          if InStr(1,versename,"-") > 0 then
+		            versename = trim(Left(versename , InStr(1,versename,"-")-1))
+		          end if
+		          part = ""
+		          if I > 1 then
+		            part = chr(I+64)
+		          end if
+		          if f.Child(versename+part+".png").Exists and SmartML.GetValue(slide, "@id") ="V1" then
+		            f =  f.Child(versename+part+".png")
+		          else
+		            versename = versename + SmartML.GetValue(slide, "@id")+part
+		            if f.Child(versename+".png").Exists then
+		              f =  f.Child(versename+".png")
+		            else
+		              exit 'the do until loop
+		            end if
+		          end if
+		          if f <> nil and not f.Directory then
+		            slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
+		            If section = "default" Then
+		              SmartML.SetValue(slide, "@id", "")
+		            Else
+		              SmartML.SetValue(slide, "@id", section)
+		            End If
+		            If Lowercase(Left(section, 1)) = "c" Then
+		              SmartML.SetValueB(slide, "@emphasize", True)
+		              SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
+		              
+		            End If
+		            SmartML.SetValue slide, "@songfilenamepath", f.AbsolutePath
+		            SmartML.SetValue slide, "@songfilenamewithoutpath", f.Name
+		          else
+		            exit 'the do until loop
+		          end if
+		        end if
+		      loop
 		    End If
 		  Next
 		  

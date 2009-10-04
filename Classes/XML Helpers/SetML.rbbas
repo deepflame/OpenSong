@@ -75,7 +75,6 @@ Protected Module SetML
 		  Dim titleMargins, subtitleMargins, bodyMargins as StyleMarginType
 		  Dim bodyTabs() As StyleTabsType
 		  dim maxgrowFact as double
-		  Dim f As FolderItem
 		  Dim img2 As StyleImage
 		  dim verseAsImageFound  as boolean
 		  Dim versename as string
@@ -86,33 +85,14 @@ Protected Module SetML
 		  maxgrowFact = (SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@max_grow")/100)
 		  verseAsImageFound = false
 		  if  style.verse_as_image then
-		    
-		    'sImageFile =  SmartML.GetValue(xslide.parent.parent, "@name") +"_"+ SmartML.GetValue(xslide, "@id")  +"_"+ SmartML.GetValue(xslide.parent.parent, "@songfilename" )
-		    
-		    'F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(xslide.parent.parent, "@songpath" )+"/"+SmartML.GetValue(xslide.parent.parent, "@songfilename" )+".png")
-		    F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(xslide.parent.parent, "@songpath" )+"/")
-		    if F <> nil then
-		      versename = SmartML.GetValue(xslide.parent.parent, "@songfilename" )
-		      versename = trim(Left(SmartML.GetValue(xslide.parent.parent, "@songfilename" ), InStr(1,versename," ")))
-		      if f.Child(versename+".png").Exists and SmartML.GetValue(xslide, "@id") ="V1" then
-		        f =  f.Child(versename+".png")
-		      else
-		        versename = versename + SmartML.GetValue(xslide, "@id")
-		        if f.Child(versename+".png").Exists then
-		          f =  f.Child(versename+".png")
-		        else
-		        end if
-		      end if
-		      if f <> nil and not f.Directory then
-		        'MsgBox(f.AbsolutePath )
-		        img2 = new StyleImage()
-		        call img2.SetImageFromFileName( f.AbsolutePath )
-		        'style.background = img2' 
-		         background = img2.getimage()
-		        verseAsImageFound = true
-		      end if
+		    versename = (SmartML.GetValue(xslide, "@songfilenamepath") )
+		    if trim(versename) <> "" then
+		      img2 = new StyleImage()
+		      call img2.SetImageFromFileName(versename )
+		      'style.background = img2'
+		      background = img2.getimage()
+		      verseAsImageFound = true
 		    end if
-		    
 		  end if
 		  'gpgpgpgpgp evt uitbreiden bijv alleen als song en blanks groot maken enz
 		  lastbodysize = bodysize 'gp
@@ -126,8 +106,8 @@ Protected Module SetML
 		    subtitleMargins = Style.SubtitleMargins
 		    bodyMargins = Style.BodyMargins
 		    bodyTabs = Style.BodyTabItems()
-		     BackgroundVAlign =style.BackgroundVAlign
-		     BackgroundAlign = style.BackgroundAlign
+		    BackgroundVAlign =style.BackgroundVAlign
+		    BackgroundAlign = style.BackgroundAlign
 		  End If
 		  
 		  gWidth = g.Width
@@ -152,7 +132,7 @@ Protected Module SetML
 		  Profiler.BeginProfilerEntry "DrawSlide>Background" ' --------------------------------------------------
 		  
 		  aspect_ratio = gWidth / gHeight
-		   if not verseAsImageFound then
+		  if not verseAsImageFound then
 		    If Style <> Nil Then background = Style.Background().GetImage()
 		  end if
 		  //++EMP 09/05
@@ -190,8 +170,8 @@ Protected Module SetML
 		    end if
 		    if verseAsImageFound then
 		      maxsizefact = 0.94
-		      BackgroundVAlign = "bottom" 
-		      BackgroundAlign = "" 
+		      BackgroundVAlign = "bottom"
+		      BackgroundAlign = ""
 		    end if
 		    
 		    gHeight = g.Height * MaxSizeFact

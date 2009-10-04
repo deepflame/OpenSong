@@ -268,17 +268,21 @@ Implements iPresentation
 		          Dim oController As OLEObject = Nil
 		          Try
 		            oController = oPresentation.getController() 'call XPresentation2 interterface method to get XSlideShowController
-		            
-		            If Not IsNull( oController ) Then
-		              If IsNull( m_ShowListener ) Then
-		                m_ShowListener = New OOoPresentationHost.OOoSlideShowListener()
-		              End If
-		              'oController.addSlideShowListener( m_ShowListener )
-		            End If
 		          Catch
 		            'As fallback for OOo < 3.0, use the main Impress window Controller
 		            result = False
 		          End Try
+		          
+		          If Not IsNull( oController ) Then
+		            Try
+		              If IsNull( m_ShowListener ) Then
+		                m_ShowListener = New OOoPresentationHost.OOoSlideShowListener()
+		              End If
+		              oController.addSlideShowListener( m_ShowListener )
+		            Catch
+		              'This does now work very well yet...
+		            End Try
+		          End If
 		          
 		          SetPresentationWindow( oController, True )
 		          

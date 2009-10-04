@@ -1,4 +1,10 @@
-﻿* Use CheckBox.Value instead of CheckBox.State (compatibility with RB 2009) (JRC)
+﻿* Rename Report class to ReportClass (compatibility with RB 2009R4) (JRC)
+
+* Various fixes to comply with RB 2009R4 changing Editfield class to TextField (JRC)
+
+* Added new translation for Italian (thanx matteo)
+
+* Use CheckBox.Value instead of CheckBox.State (compatibility with RB 2009) (JRC)
 
 * Added link to the online user manual
 

@@ -513,7 +513,7 @@ Begin Window PresentHelperWindow
          Width           =   130
       End
    End
-   Begin EditField edt_slide_notes
+   Begin TextArea edt_slide_notes
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True

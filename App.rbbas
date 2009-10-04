@@ -57,10 +57,11 @@ Inherits Application
 		  DebugWriter = New DebugOutput
 		  '++JRC For compatibilty with RB 2008 debugger
 		  'RB insists on outputing the executable in a subfolder (sigh)
-		  AppFolder = GetFolderItem("")
-		  #If DebugBuild Then
-		    AppFolder = AppFolder.Parent()
-		  #EndIf
+		  #If DebugBuild
+		    AppFolder = GetFolderItem("").Parent
+		  #Else
+		    AppFolder = GetFolderItem("")
+		  #Endif
 		  
 		  'Can't translate this until we've loaded the translator
 		  'Splash.SetStatus "Loading global settings..."

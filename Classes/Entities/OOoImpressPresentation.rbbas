@@ -2,6 +2,84 @@
 Protected Class OOoImpressPresentation
 Implements iPresentation
 	#tag Method, Flags = &h0
+		Function AnimationCount(slideIndex As Integer) As Integer
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Integer = -1
+		  
+		  'This is not exported in any of the OOo interfaces
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CanControl() As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  'The presentation controller object is an implementation of the XPresentation2 interface.
+		  'This extension of the XPresentation interface is available as of OOo 3.0.
+		  'Earlier editions of OpenOffice.org do not support presentation control.
+		  'See http://api.openoffice.org/docs/common/ref/com/sun/star/presentation/Presentation2.html
+		  
+		  Dim result As Boolean = False
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
+		    If Not IsNull( oPresentation ) Then
+		      Try
+		        'The best test is to try and obtain the XSlideShowController object, but that is only available during presentation.
+		        'Dim oPresController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to check for support
+		        
+		        'Next best is to query another function that is only available in the OOo 3.0 XPresentation2 interface.
+		        Dim check As Boolean = oPresentation.isRunning()
+		        result = True
+		      Catch
+		        'catch exeption for OOo < 3.0
+		      End Try
+		      
+		    End If
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CanPreview() As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Boolean = False
+		  'Exporting images is supported by OpenOffice, but the RealBasic OLE interaction is (as far as my knowledge goes) only supporting OLEObject arrays as parameter as of RB2009.
+		  
+		  #If RBVersion >= 2009 Then
+		    result = True
+		  #EndIf
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor(oOOoPresentationDocument As OLEObject)
+		  // Part of the iPresentation interface.
+		  m_oImpressDoc = oOOoPresentationDocument
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CurrentAnimation() As Integer
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Integer = -1
+		  
+		  'This is not exported in any of the OOo interfaces
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function CurrentSlide() As Integer
 		  // Part of the iPresentation interface.
 		  
@@ -24,6 +102,126 @@ Implements iPresentation
 		    End If
 		  End If
 		  
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Destructor()
+		  If IsShowing() Then
+		    Call EndShow()
+		  End If
+		  
+		  Call PresentationFactory.UnregisterPresentation( self )
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    m_oImpressDoc.close( False )
+		    m_oImpressDoc = Nil
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function EndShow() As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Boolean = False
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    
+		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
+		    If Not IsNull( oPresentation ) Then
+		      
+		      oPresentation.Invoke( "end" ) 'end is protected keyword, so the 'Invoke' workarround needs to be applied.
+		      
+		      'Try
+		      'Dim oController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to get XSlideShowController
+		      'If Not IsNull( oController ) Then
+		      'If Not IsNull( m_ShowListener ) Then
+		      'oController.removeSlideShowListener( m_ShowListener )
+		      'End If
+		      'End If
+		      'Catch
+		      ''As fallback for OOo < 3.0, use the main Impress window Controller
+		      'End Try
+		      
+		      m_IsRunning = True 'Keep track of status for OOo < 3.0
+		      result = True
+		      
+		    End If
+		    
+		  End If
+		  
+		  
+		  return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function Filename() As String
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As String
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    
+		    Try
+		      'Query the XStorable interface
+		      If m_oImpressDoc.hasLocation() Then
+		        result = m_oImpressDoc.getLocation()
+		        
+		        If result.StartsWith( "file://" ) Then
+		          #If TargetWin32
+		            result = result.Mid( 9 )
+		          #Else
+		            result = result.Mid( 8 )
+		          #EndIf
+		        End If
+		        
+		        result = DecodeURLComponent( result )
+		        result = result.ReplaceAll("|", ":")
+		        #If TargetWin32
+		          result = result.ReplaceAll("/", "\")
+		        #EndIf
+		        
+		      End If
+		    Catch
+		      'prevent crash in case
+		    End Try
+		    
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GotoAnimation(slideIndex As Integer, animationIndex As Integer) As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  'The OOo API does not provide a function to (re)set the animation to a specific effect step.
+		  'This function will always call 'gotoNextEffext' which can also mean 'nextSlide' when no effect is available
+		  
+		  Dim result As Boolean = False
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
+		    If Not IsNull( oPresentation ) Then
+		      Try
+		        
+		        Dim oPresController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to check for support
+		        If Not IsNull( oPresController ) Then
+		          oPresController.gotoNextEffect()
+		          result = True
+		        End If
+		        
+		      Catch
+		        'catch exeption for OOo < 3.0
+		      End Try
+		      
+		    End If
+		  End If
 		  
 		  Return result
 		End Function
@@ -63,6 +261,72 @@ Implements iPresentation
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function HostName() As String
+		  // Part of the iPresentation interface.
+		  
+		  Return "OpenOffice.org Impress"
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsHidden(slideIndex As Integer) As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Boolean = False
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    Dim oDrawPages As OLEObject = m_oImpressDoc.getDrawPages()
+		    If Not IsNull( oDrawPages ) Then
+		      
+		      If slideIndex > 0 and slideIndex <= oDrawPages.getCount() Then
+		        Dim oDrawPage As OLEObject = oDrawPages.getByIndex(  slideIndex - 1 )
+		        
+		        If Not IsNull( oDrawPage ) Then
+		          Try
+		            result = Not oDrawPage.Visible()
+		          Catch
+		            'prevent application crash
+		          End Try
+		        End If
+		        
+		      End If
+		      
+		    End If
+		  End If
+		  
+		  Return result
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsShowing() As Boolean
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Boolean = False
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    
+		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
+		    If Not IsNull( oPresentation ) Then
+		      
+		      Try
+		        result = oPresentation.isRunning()
+		      Catch
+		        result = m_IsRunning
+		        'fallback for OOo < 3.0 without XPresentation2 support
+		      End Try
+		      
+		    End If
+		    
+		  End If
+		  
+		  Return result
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function NextSlide() As Boolean
 		  // Part of the iPresentation interface.
 		  
@@ -89,6 +353,14 @@ Implements iPresentation
 		  
 		  Return result
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Notify(iEvent As PresentationEvent)
+		  // Part of the iPresentation interface.
+		  
+		  
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -239,8 +511,105 @@ Implements iPresentation
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Sub SetPresentationWindow(oController As OLEObject, Showing As Boolean)
+		  If IsNull( oController ) Then
+		    oController = m_oImpressDoc.getCurrentController()
+		  End If
+		  If Not IsNull( oController ) Then
+		    
+		    Dim oFrame As OLEObject = oController.getFrame()
+		    If Not IsNull( oFrame ) Then
+		      
+		      Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		      If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
+		      
+		      Dim x As Integer =Screen(presentScreen).Left
+		      Dim y As Integer =Screen(presentScreen).Top
+		      Dim w As Integer =Screen(presentScreen).Width
+		      Dim h As Integer  =Screen(presentScreen).Height
+		      
+		      Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
+		      If Not IsNull( oComponentWin ) Then
+		        oComponentWin.setPosSize( x, y, w, h, OOoPresentationHost.OOoPosSize.POSSIZE )
+		        oComponentWin.setVisible( True )
+		      End If
+		      
+		    End If
+		  End If
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
-		Function StartShow(loopShow As Boolean = False, startAt As Integer = 1, endAt As Integer = - 1) As Boolean
+		Function SlideCount() As Integer
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As Integer = -1
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
+		    If Not IsNull( oPresentation ) Then
+		      
+		      Dim oPresController As OLEObject = Nil
+		      Try
+		        
+		        oPresController = oPresentation.getController() 'call XPresentation2 interterface method to check for support
+		        If Not IsNull( oPresController ) Then
+		          result = oPresController.getSlideCount()
+		        End If
+		        
+		      Catch
+		        'catch exeption for OOo < 3.0
+		        oPresController = Nil
+		      End Try
+		      
+		      If IsNull( oPresController ) Then
+		        
+		        Dim oDrawPages As OLEObject = m_oImpressDoc.getDrawPages() 'com.sun.star.drawing.XDrawPages xDrawPages
+		        If Not IsNull( oDrawPages ) Then
+		          result = oDrawPages.getCount() 'number of slides, this may vary from the actual displayed slides in case of a custom show
+		        End If
+		        
+		      End If
+		      
+		    End If
+		  End If
+		  
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SlideName(slideIndex As Integer) As String
+		  // Part of the iPresentation interface.
+		  
+		  Dim result As String
+		  
+		  If Not IsNull( m_oImpressDoc ) Then
+		    
+		    Dim oDrawPages As OLEObject = m_oImpressDoc.getDrawPages() 'com.sun.star.drawing.XDrawPages xDrawPages
+		    If Not IsNull( oDrawPages ) Then
+		      
+		      If slideIndex > 0 and slideIndex <= oDrawPages.getCount() Then
+		        
+		        Dim oDrawPage As OLEObject = oDrawPages.getByIndex( slideIndex - 1 )
+		        If Not IsNull( oDrawPage ) Then
+		          
+		          result = oDrawPage.getName()
+		          
+		        End If
+		      End If
+		    End If
+		    
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function StartShow(loopShow As Boolean = False, startAt As Integer = 1, endAt As Integer = -1) As Boolean
 		  // Part of the iPresentation interface.
 		  
 		  Dim result As Boolean = False
@@ -302,375 +671,6 @@ Implements iPresentation
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function SlideCount() As Integer
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As Integer = -1
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
-		    If Not IsNull( oPresentation ) Then
-		      
-		      Dim oPresController As OLEObject = Nil
-		      Try
-		        
-		        oPresController = oPresentation.getController() 'call XPresentation2 interterface method to check for support
-		        If Not IsNull( oPresController ) Then
-		          result = oPresController.getSlideCount()
-		        End If
-		        
-		      Catch
-		        'catch exeption for OOo < 3.0
-		        oPresController = Nil
-		      End Try
-		      
-		      If IsNull( oPresController ) Then
-		        
-		        Dim oDrawPages As OLEObject = m_oImpressDoc.getDrawPages() 'com.sun.star.drawing.XDrawPages xDrawPages
-		        If Not IsNull( oDrawPages ) Then
-		          result = oDrawPages.getCount() 'number of slides, this may vary from the actual displayed slides in case of a custom show
-		        End If
-		        
-		      End If
-		      
-		    End If
-		  End If
-		  
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CanControl() As Boolean
-		  // Part of the iPresentation interface.
-		  
-		  'The presentation controller object is an implementation of the XPresentation2 interface.
-		  'This extension of the XPresentation interface is available as of OOo 3.0.
-		  'Earlier editions of OpenOffice.org do not support presentation control.
-		  'See http://api.openoffice.org/docs/common/ref/com/sun/star/presentation/Presentation2.html
-		  
-		  Dim result As Boolean = False
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
-		    If Not IsNull( oPresentation ) Then
-		      Try
-		        'The best test is to try and obtain the XSlideShowController object, but that is only available during presentation.
-		        'Dim oPresController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to check for support
-		        
-		        'Next best is to query another function that is only available in the OOo 3.0 XPresentation2 interface.
-		        Dim check As Boolean = oPresentation.isRunning()
-		        result = True
-		      Catch
-		        'catch exeption for OOo < 3.0
-		      End Try
-		      
-		    End If
-		  End If
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CanPreview() As Boolean
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As Boolean = False
-		  'Exporting images is supported by OpenOffice, but the RealBasic OLE interaction is (as far as my knowledge goes) only supporting OLEObject arrays as parameter as of RB2009.
-		  
-		  #If RBVersion >= 2009 Then
-		    result = True
-		  #EndIf
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Filename() As String
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As String
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    
-		    Try
-		      'Query the XStorable interface
-		      If m_oImpressDoc.hasLocation() Then
-		        result = m_oImpressDoc.getLocation()
-		        
-		        If result.StartsWith( "file://" ) Then
-		          #If TargetWin32
-		            result = result.Mid( 9 )
-		          #Else
-		            result = result.Mid( 8 )
-		          #EndIf
-		        End If
-		        
-		        result = DecodeURLComponent( result )
-		        result = result.ReplaceAll("|", ":")
-		        #If TargetWin32
-		          result = result.ReplaceAll("/", "\")
-		        #EndIf
-		        
-		      End If
-		    Catch
-		      'prevent crash in case
-		    End Try
-		    
-		  End If
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Notify(iEvent As PresentationEvent)
-		  // Part of the iPresentation interface.
-		  
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Constructor(oOOoPresentationDocument As OLEObject)
-		  // Part of the iPresentation interface.
-		  m_oImpressDoc = oOOoPresentationDocument
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Destructor()
-		  If IsShowing() Then
-		    Call EndShow()
-		  End If
-		  
-		  Call PresentationFactory.UnregisterPresentation( self )
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    m_oImpressDoc.close( False )
-		    m_oImpressDoc = Nil
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function IsShowing() As Boolean
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As Boolean = False
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    
-		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
-		    If Not IsNull( oPresentation ) Then
-		      
-		      Try
-		        result = oPresentation.isRunning()
-		      Catch
-		        result = m_IsRunning
-		        'fallback for OOo < 3.0 without XPresentation2 support
-		      End Try
-		      
-		    End If
-		    
-		  End If
-		  
-		  Return result
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function EndShow() As Boolean
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As Boolean = False
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    
-		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
-		    If Not IsNull( oPresentation ) Then
-		      
-		      oPresentation.Invoke( "end" ) 'end is protected keyword, so the 'Invoke' workarround needs to be applied.
-		      
-		      'Try
-		      'Dim oController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to get XSlideShowController
-		      'If Not IsNull( oController ) Then
-		      'If Not IsNull( m_ShowListener ) Then
-		      'oController.removeSlideShowListener( m_ShowListener )
-		      'End If
-		      'End If
-		      'Catch
-		      ''As fallback for OOo < 3.0, use the main Impress window Controller
-		      'End Try
-		      
-		      m_IsRunning = True 'Keep track of status for OOo < 3.0
-		      result = True
-		      
-		    End If
-		    
-		  End If
-		  
-		  
-		  return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function SlideName(slideIndex As Integer) As String
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As String
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    
-		    Dim oDrawPages As OLEObject = m_oImpressDoc.getDrawPages() 'com.sun.star.drawing.XDrawPages xDrawPages
-		    If Not IsNull( oDrawPages ) Then
-		      
-		      If slideIndex > 0 and slideIndex <= oDrawPages.getCount() Then
-		        
-		        Dim oDrawPage As OLEObject = oDrawPages.getByIndex( slideIndex - 1 )
-		        If Not IsNull( oDrawPage ) Then
-		          
-		          result = oDrawPage.getName()
-		          
-		        End If
-		      End If
-		    End If
-		    
-		  End If
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function AnimationCount(slideIndex As Integer) As Integer
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As Integer = -1
-		  
-		  'This is not exported in any of the OOo interfaces
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CurrentAnimation() As Integer
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As Integer = -1
-		  
-		  'This is not exported in any of the OOo interfaces
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GotoAnimation(slideIndex As Integer, animationIndex As Integer) As Boolean
-		  // Part of the iPresentation interface.
-		  
-		  'The OOo API does not provide a function to (re)set the animation to a specific effect step.
-		  'This function will always call 'gotoNextEffext' which can also mean 'nextSlide' when no effect is available
-		  
-		  Dim result As Boolean = False
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
-		    If Not IsNull( oPresentation ) Then
-		      Try
-		        
-		        Dim oPresController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to check for support
-		        If Not IsNull( oPresController ) Then
-		          oPresController.gotoNextEffect()
-		          result = True
-		        End If
-		        
-		      Catch
-		        'catch exeption for OOo < 3.0
-		      End Try
-		      
-		    End If
-		  End If
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function HostName() As String
-		  // Part of the iPresentation interface.
-		  
-		  Return "OpenOffice.org Impress"
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub SetPresentationWindow(oController As OLEObject, Showing As Boolean)
-		  If IsNull( oController ) Then
-		    oController = m_oImpressDoc.getCurrentController()
-		  End If
-		  If Not IsNull( oController ) Then
-		    
-		    Dim oFrame As OLEObject = oController.getFrame()
-		    If Not IsNull( oFrame ) Then
-		      
-		      Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		      If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		      
-		      Dim x As Integer =Screen(presentScreen).Left
-		      Dim y As Integer =Screen(presentScreen).Top
-		      Dim w As Integer =Screen(presentScreen).Width
-		      Dim h As Integer  =Screen(presentScreen).Height
-		      
-		      Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
-		      If Not IsNull( oComponentWin ) Then
-		        oComponentWin.setPosSize( x, y, w, h, OOoPresentationHost.OOoPosSize.POSSIZE )
-		        oComponentWin.setVisible( True )
-		      End If
-		      
-		    End If
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function IsHidden(slideIndex As Integer) As Boolean
-		  // Part of the iPresentation interface.
-		  
-		  Dim result As Boolean = False
-		  
-		  If Not IsNull( m_oImpressDoc ) Then
-		    Dim oDrawPages As OLEObject = m_oImpressDoc.getDrawPages()
-		    If Not IsNull( oDrawPages ) Then
-		      
-		      If slideIndex > 0 and slideIndex <= oDrawPages.getCount() Then
-		        Dim oDrawPage As OLEObject = oDrawPages.getByIndex(  slideIndex - 1 )
-		        
-		        If Not IsNull( oDrawPage ) Then
-		          Try
-		            result = Not oDrawPage.Visible()
-		          Catch
-		            'prevent application crash
-		          End Try
-		        End If
-		        
-		      End If
-		      
-		    End If
-		  End If
-		  
-		  Return result
-		  
-		End Function
-	#tag EndMethod
-
 
 	#tag Note, Name = Notes on OpenOffice . org Impress automation
 		
@@ -684,11 +684,11 @@ Implements iPresentation
 
 
 	#tag Property, Flags = &h21
-		Private m_oImpressDoc As OLEObject = Nil
+		Private m_IsRunning As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private m_IsRunning As Boolean = False
+		Private m_oImpressDoc As OLEObject = Nil
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -702,12 +702,6 @@ Implements iPresentation
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -715,16 +709,22 @@ Implements iPresentation
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

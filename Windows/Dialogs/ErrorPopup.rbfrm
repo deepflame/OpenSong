@@ -2,62 +2,64 @@
 Begin Window ErrorPopup
    BackColor       =   16777215
    Backdrop        =   ""
-   BalloonHelp     =   ""
-   CloseButton     =   "True"
-   Composite       =   "False"
+   CloseButton     =   True
+   Composite       =   False
    Frame           =   1
-   FullScreen      =   "False"
-   HasBackColor    =   "False"
+   FullScreen      =   False
+   HasBackColor    =   False
    Height          =   414
-   ImplicitInstance=   "True"
-   LiveResize      =   "True"
+   ImplicitInstance=   True
+   LiveResize      =   True
    MacProcID       =   0
    MaxHeight       =   32000
-   MaximizeButton  =   "False"
+   MaximizeButton  =   False
    MaxWidth        =   32000
    MenuBar         =   ""
-   MenuBarVisible  =   "False"
+   MenuBarVisible  =   False
    MinHeight       =   64
-   MinimizeButton  =   "False"
+   MinimizeButton  =   False
    MinWidth        =   64
    Placement       =   2
-   Resizeable      =   "True"
+   Resizeable      =   True
    Title           =   "#kError"
-   Visible         =   "False"
+   Visible         =   False
    Width           =   729
    Begin PushButton btn_error_close
-      AutoDeactivate  =   "True"
+      AutoDeactivate  =   True
       Bold            =   ""
       Cancel          =   ""
       Caption         =   "#kErrorClose"
       ControlOrder    =   0
-      Default         =   "True"
-      Enabled         =   "True"
+      Default         =   True
+      Enabled         =   True
       Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   609
-      LockBottom      =   "True"
+      LockBottom      =   True
+      LockedInPosition=   False
       LockLeft        =   ""
-      LockRight       =   "True"
+      LockRight       =   True
       LockTop         =   ""
+      TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
       Top             =   366
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   100
    End
    Begin StaticText lbl_error_description
-      AutoDeactivate  =   "True"
+      AutoDeactivate  =   True
       Bold            =   ""
       ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   15
       HelpTag         =   ""
       Index           =   -2147483648
@@ -65,11 +67,14 @@ Begin Window ErrorPopup
       Italic          =   ""
       Left            =   20
       LockBottom      =   ""
-      LockLeft        =   "True"
-      LockRight       =   "True"
-      LockTop         =   "True"
-      Multiline       =   "False"
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      Multiline       =   False
+      TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "#kErrorDescription"
       TextAlign       =   0
       TextColor       =   0
@@ -77,20 +82,20 @@ Begin Window ErrorPopup
       TextSize        =   0
       Top             =   14
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   689
    End
-   Begin EditField ErrorDescription
+   Begin TextArea ErrorDescription
       AcceptTabs      =   ""
       Alignment       =   0
-      AutoDeactivate  =   "True"
+      AutoDeactivate  =   True
       BackColor       =   16777215
       Bold            =   ""
-      Border          =   "True"
+      Border          =   True
       ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Format          =   ""
       Height          =   282
       HelpTag         =   ""
@@ -99,47 +104,53 @@ Begin Window ErrorPopup
       Italic          =   ""
       Left            =   20
       LimitText       =   0
-      LockBottom      =   "True"
-      LockLeft        =   "True"
-      LockRight       =   "True"
-      LockTop         =   "True"
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
       Mask            =   ""
-      Multiline       =   "True"
+      Multiline       =   True
       Password        =   ""
-      ReadOnly        =   "True"
+      ReadOnly        =   True
       ScrollbarHorizontal=   ""
-      ScrollbarVertical=   "True"
-      Styled          =   "True"
+      ScrollbarVertical=   True
+      Styled          =   True
+      TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   ""
       TextColor       =   0
       TextFont        =   "System"
       TextSize        =   0
       Top             =   41
       Underline       =   ""
-      UseFocusRing    =   "True"
-      Visible         =   "True"
+      UseFocusRing    =   True
+      Visible         =   True
       Width           =   689
    End
    Begin StaticText lbl_error_instructions
-      AutoDeactivate  =   "True"
+      AutoDeactivate  =   True
       Bold            =   ""
       ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
-      Enabled         =   "True"
+      Enabled         =   True
       Height          =   28
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   20
-      LockBottom      =   "True"
-      LockLeft        =   "True"
-      LockRight       =   "True"
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   True
       LockTop         =   ""
-      Multiline       =   "True"
+      Multiline       =   True
+      TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Please include this error description and the stack trace in your bug report."
       TextAlign       =   0
       TextColor       =   0
@@ -147,20 +158,20 @@ Begin Window ErrorPopup
       TextSize        =   0
       Top             =   332
       Underline       =   ""
-      Visible         =   "True"
+      Visible         =   True
       Width           =   689
    End
 End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Constant, Name = kError, Type = String, Dynamic = True, Default = \"Error", Scope = Private
+	#tag EndConstant
+
 	#tag Constant, Name = kErrorClose, Type = String, Dynamic = True, Default = \"C&lose", Scope = Private
 	#tag EndConstant
 
 	#tag Constant, Name = kErrorDescription, Type = String, Dynamic = True, Default = \"An unhandled &exception has been raised with the following error description:", Scope = Private
-	#tag EndConstant
-
-	#tag Constant, Name = kError, Type = String, Dynamic = True, Default = \"Error", Scope = Private
 	#tag EndConstant
 
 

@@ -1057,37 +1057,6 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   20
       End
-      Begin CheckBox chk_options_verse_as_image
-         AutoDeactivate  =   True
-         Bold            =   ""
-         Caption         =   "Use jpg in verse"
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "grp_style_background"
-         Italic          =   ""
-         Left            =   441
-         LockBottom      =   ""
-         LockedInPosition=   False
-         LockLeft        =   ""
-         LockRight       =   ""
-         LockTop         =   ""
-         Scope           =   0
-         State           =   0
-         TabIndex        =   16
-         TabPanelIndex   =   0
-         TabStop         =   True
-         TextFont        =   "Arial"
-         TextSize        =   10
-         Top             =   387
-         Underline       =   ""
-         Value           =   False
-         Visible         =   True
-         Width           =   123
-      End
    End
    Begin GroupBox grp_style_options
       AutoDeactivate  =   True
@@ -1335,7 +1304,7 @@ End
 		  can_background_image.bgColor = workingStyle.BGColor
 		  
 		  edt_background_trim_bottom.Text = CStr(workingStyle.StripFooter)
-		  chk_options_verse_as_image.value =workingstyle.verse_as_image'gp
+		  
 		  '++JRC
 		  chk_font_title.Value = workingStyle.TitleEnable
 		  chk_font_subtitle.Value = workingStyle.SubtitleEnable
@@ -1709,14 +1678,6 @@ End
 		  end if
 		  can_background_image.workingStyle = workingStyle
 		  can_background_image.Repaint
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events chk_options_verse_as_image
-	#tag Event
-		Sub Action()
-		  workingStyle.verse_as_image  = Me.Value
-		  'gp
 		End Sub
 	#tag EndEvent
 #tag EndEvents

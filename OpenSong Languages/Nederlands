@@ -192,6 +192,7 @@
     <loop caption="Dia's herhalen">Gelecteer deze optie om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
     <print caption="Afdrukken in lijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
     <transition caption="Gebruik overgang">Selecteer deze optie om bij het tonen van deze dia een overgang te gebruiken.</transition>
+	<verse_as_image caption="Toon als notenschrift (indien beschikbaar)">Toon vers als notenschrift (indien beschikbaar)</verse_as_image>
     <auto_advance caption="Automatische naar volgende iedere">Geef het aantal seconden dat de afbeelding getoond moet worden voordat de volgende wordt geprojecteerd.</auto_advance>
     <seconds caption="seconden."/>
     <style caption="Aangepaste stijl">Selecteer deze optie om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>

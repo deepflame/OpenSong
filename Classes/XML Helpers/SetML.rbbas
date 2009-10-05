@@ -84,15 +84,14 @@ Protected Module SetML
 		  SchrinkReason = ""
 		  maxgrowFact = (SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@max_grow")/100)
 		  verseAsImageFound = false
-		  if  style.verse_as_image then
-		    versename = (SmartML.GetValue(xslide, "@songfilenamepath") )
-		    if trim(versename) <> "" then
-		      img2 = new StyleImage()
-		      call img2.SetImageFromFileName(versename )
-		      'style.background = img2'
-		      background = img2.getimage()
-		      verseAsImageFound = true
-		    end if
+		  
+		  versename = (SmartML.GetValue(xslide, "@songfilenamepath") )
+		  if trim(versename) <> "" then
+		    img2 = new StyleImage()
+		    call img2.SetImageFromFileName(versename )
+		    'style.background = img2'
+		    background = img2.getimage()
+		    verseAsImageFound = true
 		  end if
 		  'gpgpgpgpgp evt uitbreiden bijv alleen als song en blanks groot maken enz
 		  lastbodysize = bodysize 'gp

@@ -818,13 +818,6 @@ Protected Class SlideStyle
 		bgMaxSize As Integer
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		#tag Note
-			'gp
-		#tag EndNote
-		verse_as_image As Boolean
-	#tag EndProperty
-
 
 	#tag Constant, Name = POS_CENTER, Type = Double, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant

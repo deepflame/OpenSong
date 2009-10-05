@@ -9450,6 +9450,7 @@ End
 		  Dim i As Integer
 		  '--
 		  Dim Transition As Integer
+		  dim verse_as_image as boolean
 		  Dim SongStyle, SlideSongStyle As XmlNode
 		  Dim SongPath,SongFileName As String
 		  
@@ -9463,6 +9464,7 @@ End
 		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
 		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
 		      Transition = SmartML.GetValueN(slide_group, "@transition", False)
+		      verse_as_image  = SmartML.GetValueB(slide_group, "@verse_as_image", False)
 		      SongFileName =  SmartML.GetValue(slide_group, "@name", False)
 		      songDoc = SetML.GetSong( slide_group, Songs, songPath )
 		      If songDoc <> Nil Then
@@ -9501,6 +9503,9 @@ End
 		        ItemNumber = ItemNumber + 1
 		        SmartML.SetValue(slide_group,"@songpath", SongPath)
 		        SmartML.SetValue(slide_group,"@songfilename", SongFileName)
+		        SmartML.SetValueB(slide_group,"@verse_as_image", verse_as_image)
+		        
+		        
 		        
 		        If Presentation <> "" Then 'Override the song's default presentation
 		          SmartML.SetValue(slide_group, "presentation", presentation)

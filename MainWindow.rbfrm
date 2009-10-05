@@ -25,7 +25,6 @@ Begin Window MainWindow Implements ScriptureReceiver
    Visible         =   False
    Width           =   750
    Begin Timer tmr_lookup
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -34,27 +33,20 @@ Begin Window MainWindow Implements ScriptureReceiver
       Mode            =   2
       Period          =   1500
       Scope           =   0
-      TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   -18
-      Visible         =   True
       Width           =   32
    End
    Begin ContextualMenu mnu_clipboard
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   759
       LockedInPosition=   False
       Scope           =   0
-      TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   26
       UseMacCMM       =   ""
-      Visible         =   True
       Width           =   32
    End
    Begin SButton btn_mode_songs_mode
@@ -108,7 +100,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ""
       TextAlign       =   0
       TextColor       =   0
@@ -137,7 +128,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   35
       Value           =   1
       Visible         =   True
@@ -217,7 +207,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   40
@@ -334,7 +323,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   145
@@ -423,7 +411,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Folders:"
             TextAlign       =   0
             TextColor       =   0
@@ -453,7 +440,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   40
@@ -751,7 +737,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Containing Folder:"
             TextAlign       =   0
             TextColor       =   0
@@ -783,7 +768,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Songs:"
             TextAlign       =   0
             TextColor       =   0
@@ -993,7 +977,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   92
@@ -1259,7 +1242,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   217
@@ -1468,7 +1450,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Items In Set:"
             TextAlign       =   0
             TextColor       =   0
@@ -1498,7 +1479,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   40
@@ -1634,7 +1614,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             Top             =   217
@@ -1842,7 +1821,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   34
       Value           =   2
       Visible         =   True
@@ -1894,7 +1872,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -1926,7 +1903,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "CCLI #:"
             TextAlign       =   0
             TextColor       =   0
@@ -2002,7 +1978,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Copyright:"
             TextAlign       =   0
             TextColor       =   0
@@ -2034,7 +2009,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -2066,7 +2040,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Author:"
             TextAlign       =   0
             TextColor       =   0
@@ -2098,7 +2071,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Presentation:"
             TextAlign       =   0
             TextColor       =   0
@@ -2130,7 +2102,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
             TextColor       =   0
@@ -2206,7 +2177,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Hymn #:"
             TextAlign       =   0
             TextColor       =   0
@@ -2238,7 +2208,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -2731,7 +2700,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   2
-         TabStop         =   True
          Text            =   "Song Editor"
          TextAlign       =   0
          TextColor       =   0
@@ -2763,7 +2731,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   2
-         TabStop         =   True
          Text            =   "User Defined 1:"
          TextAlign       =   0
          TextColor       =   0
@@ -2795,7 +2762,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   2
-         TabStop         =   True
          Text            =   "AKA:"
          TextAlign       =   0
          TextColor       =   0
@@ -2881,7 +2847,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Themes:"
             TextAlign       =   0
             TextColor       =   0
@@ -2913,7 +2878,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Capo:"
             TextAlign       =   0
             TextColor       =   0
@@ -2945,7 +2909,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key Line:"
             TextAlign       =   0
             TextColor       =   0
@@ -3037,7 +3000,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key:"
             TextAlign       =   0
             TextColor       =   0
@@ -3069,7 +3031,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Time Signature:"
             TextAlign       =   0
             TextColor       =   0
@@ -3131,7 +3092,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   0
@@ -3163,7 +3123,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   9
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Tempo:"
             TextAlign       =   0
             TextColor       =   0
@@ -3195,7 +3154,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   0
@@ -3717,7 +3675,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Style Change"
             TextAlign       =   0
             TextColor       =   0
@@ -3937,7 +3894,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -3969,7 +3925,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -4060,7 +4015,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   0
@@ -4092,7 +4046,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -4199,7 +4152,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   11
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -4231,7 +4183,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   12
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
             TextColor       =   0
@@ -4263,7 +4214,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   13
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
             TextColor       =   0
@@ -4383,7 +4333,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   16
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   0
@@ -4415,7 +4364,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   17
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   0
@@ -4447,7 +4395,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   18
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   0
@@ -4685,7 +4632,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   24
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Slides:"
             TextAlign       =   0
             TextColor       =   0
@@ -4717,7 +4663,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   25
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "File Folder"
             TextAlign       =   0
             TextColor       =   0
@@ -4749,7 +4694,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   26
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -4803,6 +4747,37 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   True
             Visible         =   True
             Width           =   340
+         End
+         Begin CheckBox chk_slide_verse_as_image
+            AutoDeactivate  =   True
+            Bold            =   False
+            Caption         =   "song as image"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   False
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_slide_editor"
+            Italic          =   False
+            Left            =   632
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            State           =   0
+            TabIndex        =   28
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   469
+            Underline       =   False
+            Value           =   False
+            Visible         =   True
+            Width           =   100
          End
       End
       Begin Canvas can_editor_image_slide
@@ -4914,7 +4889,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   0
@@ -4946,7 +4920,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   0
@@ -5070,7 +5043,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -5102,7 +5074,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Image Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -5134,7 +5105,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   9
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   0
@@ -5259,7 +5229,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   13
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -5291,7 +5260,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   14
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -5395,7 +5363,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   17
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -5471,7 +5438,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   19
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Images:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -5761,7 +5727,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   27
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -5924,7 +5889,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "External Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -5956,7 +5920,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -5988,7 +5951,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -6020,7 +5982,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Application:"
             TextAlign       =   0
             TextColor       =   0
@@ -6258,7 +6219,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   6
-            TabStop         =   True
             Top             =   146
             Value           =   1
             Visible         =   True
@@ -6282,7 +6242,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
-               TabStop         =   True
                TextFont        =   "System"
                TextSize        =   0
                Top             =   150
@@ -6370,7 +6329,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Scope           =   0
                   TabIndex        =   2
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Presentation filename"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -6486,7 +6444,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Scope           =   0
                   TabIndex        =   6
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Which application should be used to run the presentation?"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -6561,7 +6518,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   1
                TabPanelIndex   =   3
-               TabStop         =   True
                TextFont        =   "System"
                TextSize        =   0
                Top             =   150
@@ -6588,7 +6544,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   2
                TabPanelIndex   =   4
-               TabStop         =   True
                TextFont        =   "System"
                TextSize        =   0
                Top             =   150
@@ -6617,7 +6572,6 @@ Begin Window MainWindow Implements ScriptureReceiver
          Scope           =   0
          TabIndex        =   10
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          Top             =   390
@@ -6705,7 +6659,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Using:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -7138,6 +7091,7 @@ End
 		      chk_slide_loop.Enabled = Not Status_InSetSongEdit
 		      chk_slide_print.Enabled = Not Status_InSetSongEdit
 		      pop_slide_transition.Enabled = True 'Not Status_InSetSongEdit
+		      chk_slide_verse_as_image.Enabled = true
 		      edt_song_hymn_number.Enabled = Not Status_InSetSongEdit
 		      
 		      ' SHORTCUT
@@ -7216,6 +7170,7 @@ End
 		      chk_slide_loop.Enabled = False
 		      chk_slide_print.Enabled = False
 		      pop_slide_transition.Enabled = False
+		      chk_slide_verse_as_image.Enabled = False
 		      edt_slide_name.Text = ""
 		      edt_slide_slides.Text = ""
 		      edt_slide_title.Text = ""
@@ -8125,6 +8080,7 @@ End
 		  Case "song"
 		    SmartML.SetValue xgroup, "@presentation", edt_slide_order.Text
 		    SmartML.SetValueN xgroup, "@transition", pop_slide_transition.ListIndex
+		    SmartML.SetValueB xgroup, "@verse_as_image", chk_slide_verse_as_image.value
 		    
 		  Case "image"
 		    SmartML.SetValue xgroup, "@name", edt_image_name.Text
@@ -8187,6 +8143,7 @@ End
 		    SmartML.SetValueB xgroup, "@loop", chk_slide_loop.Value
 		    SmartML.SetValueB xgroup, "@print", chk_slide_print.Value
 		    SmartML.SetValueN xgroup, "@transition", pop_slide_transition.ListIndex
+		    SmartML.SetValueB xgroup, "@verse_as_image", chk_slide_verse_as_image.value
 		    
 		    ' Delete the old slides
 		    xslides = SmartML.GetNode(xgroup, "slides", False)
@@ -12043,6 +12000,10 @@ End
 		    chk_slide_loop.Value = SmartML.GetValueB(xgroup, "@loop", False)
 		    chk_slide_print.Value = SmartML.GetValueB(xgroup, "@print", True, True)
 		    pop_slide_transition.ListIndex = SmartML.GetValueN(xgroup, "@transition", False)
+		    
+		    chk_slide_verse_as_image.value =  SmartML.GetValueB(xgroup, "@verse_as_image")
+		    
+		    
 		    edt_slide_auto_advance.Text = Str(SmartML.GetValueN(xgroup, "@seconds", False))
 		    edt_slide_order.Text = ""
 		    edt_slide_origorder.Text = ""
@@ -12110,6 +12071,7 @@ End
 		      edt_slide_origorder.Text = SmartML.GetValue(sDoc.DocumentElement, "presentation", False)
 		      edt_slide_folder.Text = songPath.Left(songPath.Len - 1)
 		      pop_slide_transition.ListIndex = SmartML.GetValueN(xgroup, "@transition", False)
+		      chk_slide_verse_as_image.value =  SmartML.GetValueB(xgroup, "@verse_as_image")
 		      If  edt_slide_folder.Text.Len = 0 Then edt_slide_folder.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
 		      Status_InSetEditable = True 'EMP, changed 1/18/2005 for custom order
 		      Status_InSetChanged = False
@@ -14016,6 +13978,64 @@ End
 		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_slide_verse_as_image
+	#tag Event
+		Sub Action()
+		  Dim xnode, xgroup, songStyle As XmlNode
+		  Dim songDoc as XmlDocument
+		  Dim dummy As String
+		  
+		  If Status_InSetEditable Then
+		    xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).Child(lst_set_items.ListIndex)
+		    If Me.Value Then
+		      can_slide_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
+		      
+		      xnode = SmartML.GetNode(xgroup, "style", True)
+		      If Lowercase(SmartML.GetValue(xgroup, "@type")) = "scripture" Then
+		        SongML.CloneStyle SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style"), xnode
+		      ElseIf Lowercase(SmartML.GetValue(xgroup, "@type")) = "song" Then
+		        songStyle = Nil
+		        songDoc = SetML.GetSong(xgroup, Songs, dummy)
+		        If songDoc <> Nil then
+		          songStyle = SmartML.GetNode(songDoc.DocumentElement, "style", False)
+		        End If
+		        
+		        If songStyle <> Nil Then
+		          SongML.CloneStyle songStyle, xnode
+		        Else
+		          SongML.CloneStyle SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), xnode
+		        End If
+		      Else
+		        SongML.CloneStyle SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style"), xnode
+		      End If
+		      
+		      can_slide_style.SetStyleNode xnode
+		      can_slide_style.ClearPreviewSlide
+		    Else
+		      xnode = SmartML.GetNode(xgroup, "style", False)
+		      If xnode <> Nil Then SmartML.RemoveSelf xnode
+		      can_slide_style.ClearStyleNode
+		      can_slide_style.ClearPreviewSlide
+		    End If
+		    
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  '++JRC
+		  SetHelp "slide_editor/style"
+		  '--
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
 		End Sub
 	#tag EndEvent
 #tag EndEvents

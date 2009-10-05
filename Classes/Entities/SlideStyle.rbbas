@@ -329,7 +329,6 @@ Protected Class SlideStyle
 		  SmartML.SetValue(CurrChild, "@bgalign", BackgroundAlign)'gp
 		  SmartML.SetValueN(CurrChild, "@bgmaxsize", bgMaxSize)'gp
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
-		  SmartML.SetValueB(CurrChild, "@verse_as_image", verse_as_image)'gp
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
 		  SmartML.SetValueN(CurrChild, "@position", Position)
 		  If background.GetImageFilename().StartsWith(App.DocsFolder.Child("Backgrounds").AbsolutePath) And App.ExcludeBackgroundsImages() Then
@@ -545,7 +544,6 @@ Protected Class SlideStyle
 		  bgMaxSize = SmartML.GetValueN(xStyle, "background/@bgmaxsize")'gp
 		  
 		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
-		  verse_as_image = SmartML.GetValueB(xStyle, "background/@verse_as_image")'gp
 		  
 		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
 		  If Position < POS_STRETCH Or Position > POS_CENTER Then 'gp

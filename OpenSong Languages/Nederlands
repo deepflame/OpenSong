@@ -245,8 +245,11 @@
     <presentation_settings caption="Presentatie instellingen">
       <presentation_host caption="Welk programma moet worden gebruikt voor het weergeven van de presentatie?"/>
       <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="Voor controle over het weergeven van een PowerPoint presentatie is een installatie van Microsoft Office een vereiste."/>
       <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="Voor het tonen van PowerPoint presentaties (zonder interactie), kan de gratis Microsoft PowerPoint Viewer worden gebruikt. OpenSong probeert die te detecteren, maar deze kan ook worden ingesteld bij de algemene instellingen."/>
       <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="Voor volledige controle van een Impress of PowerPoint presentatie is de gratis OpenOffice.org suite nodig."/>
       <presentation_file caption="Presentatie bestandsnaam">Kies de presentatie bestandsnaam met behulp van een bestandskeuze dialoog.</presentation_file>
       <loop_presentation caption="Presentatie herhalen"/>
       <embed_presentation caption="De presentatie opslaan in het OpenSong project"/>

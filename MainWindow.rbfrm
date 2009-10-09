@@ -1886,7 +1886,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   4
+      Value           =   5
       Visible         =   True
       Width           =   495
       Begin Canvas cnv_editor_style_change
@@ -6474,7 +6474,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   0
             TabPanelIndex   =   6
             Top             =   146
-            Value           =   0
+            Value           =   1
             Visible         =   True
             Width           =   340
             Begin GroupBox grp_external_presentation_settings
@@ -6529,7 +6529,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   311
+                  Top             =   384
                   Underline       =   ""
                   Value           =   False
                   Visible         =   True
@@ -6559,7 +6559,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabIndex        =   5
                   TabPanelIndex   =   2
                   TabStop         =   True
-                  Top             =   261
+                  Top             =   339
                   UseFocusRing    =   True
                   Visible         =   True
                   Width           =   20
@@ -6591,7 +6591,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   261
+                  Top             =   341
                   Underline       =   ""
                   Visible         =   True
                   Width           =   278
@@ -6610,7 +6610,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockBottom      =   ""
                   LockedInPosition=   False
                   LockLeft        =   True
-                  LockRight       =   False
+                  LockRight       =   True
                   LockTop         =   True
                   Scope           =   0
                   TabIndex        =   3
@@ -6619,7 +6619,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   228
+                  Top             =   295
                   Underline       =   ""
                   Value           =   ""
                   Visible         =   True
@@ -6639,7 +6639,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockBottom      =   ""
                   LockedInPosition=   False
                   LockLeft        =   True
-                  LockRight       =   False
+                  LockRight       =   True
                   LockTop         =   True
                   Scope           =   0
                   TabIndex        =   2
@@ -6648,7 +6648,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   208
+                  Top             =   227
                   Underline       =   ""
                   Value           =   ""
                   Visible         =   True
@@ -6668,7 +6668,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockBottom      =   ""
                   LockedInPosition=   False
                   LockLeft        =   True
-                  LockRight       =   False
+                  LockRight       =   True
                   LockTop         =   True
                   Scope           =   0
                   TabIndex        =   1
@@ -6677,7 +6677,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   188
+                  Top             =   183
                   Underline       =   ""
                   Value           =   ""
                   Visible         =   True
@@ -6710,7 +6710,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   168
+                  Top             =   165
                   Underline       =   ""
                   Visible         =   True
                   Width           =   310
@@ -6754,7 +6754,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   283
+                  Top             =   359
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
@@ -6786,11 +6786,107 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   331
+                  Top             =   404
                   Underline       =   ""
                   Value           =   False
                   Visible         =   True
                   Width           =   310
+               End
+               Begin StaticText nte_external_host_powerpoint_info
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   30
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  TabIndex        =   9
+                  TabPanelIndex   =   2
+                  Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   200
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin StaticText nte_external_host_pptview_info
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   55
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  TabIndex        =   10
+                  TabPanelIndex   =   2
+                  Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   244
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin StaticText nte_external_host_impress_info
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   30
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  TabIndex        =   11
+                  TabPanelIndex   =   2
+                  Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   312
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
                End
             End
             Begin GroupBox grp_external_application_settings
@@ -9072,6 +9168,7 @@ End
 		  
 		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode, ItemNumber
+		  PresentationFactory.ClearPresentationCache()
 		  
 		  '++JRC reset cursor
 		  App.MouseCursor = Nil
@@ -13153,8 +13250,11 @@ End
 		    Status_InSetEditable = False ' keeps the status from Refresh Falseing for every change
 		    
 		    rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
+		    nte_external_host_powerpoint_info.Enabled = Not rad_external_host_powerpoint.Enabled
 		    rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
+		    nte_external_host_pptview_info.Enabled = Not rad_external_host_pptview.Enabled
 		    rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
+		    nte_external_host_impress_info.Enabled = Not rad_external_host_impress.Enabled
 		    
 		    edt_external_name.Text = SmartML.GetValue(xgroup, "@name")
 		    Select Case SmartML.GetValue(xgroup, "@application")
@@ -15414,7 +15514,7 @@ End
 		  If Not IsNull(f) Then
 		    
 		    Self.MouseCursor = System.Cursors.Wait
-		    Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( f.AbsolutePath, PresentationHost.Automatic )
+		    Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( f.AbsolutePath, PresentationHost.Automatic, False )
 		    If Not IsNull( oExtPres ) Then
 		      
 		      If oExtPres.CanPreview() Then

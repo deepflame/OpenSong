@@ -1,6 +1,26 @@
 #tag Class
 Protected Class OOoImpressPresentation
+Inherits Timer
 Implements iPresentation
+	#tag Event
+		Sub Action()
+		  If IsShowing() Then
+		    If m_currentSlide <> CurrentSlide() Then
+		      Enabled = False
+		      m_currentSlide = CurrentSlide()
+		      Notify(PresentationFactory.PresentationEvent.NextSlide)
+		      Enabled = True
+		    End If
+		  Else
+		    If m_IsRunning Then
+		      Call EndShow()
+		      Notify(PresentationFactory.PresentationEvent.EndPresentation)
+		    End If
+		  End If
+		End Sub
+	#tag EndEvent
+
+
 	#tag Method, Flags = &h0
 		Function AnimationCount(slideIndex As Integer) As Integer
 		  // Part of the iPresentation interface.
@@ -64,6 +84,12 @@ Implements iPresentation
 		Sub Constructor(oOOoPresentationDocument As OLEObject)
 		  // Part of the iPresentation interface.
 		  m_oImpressDoc = oOOoPresentationDocument
+		  
+		  'Setting the Timer values
+		  Enabled = False
+		  Period = 250 '250 ms, 4 times per second
+		  Mode =  Timer.ModeMultiple
+		  
 		End Sub
 	#tag EndMethod
 
@@ -113,6 +139,7 @@ Implements iPresentation
 		    Call EndShow()
 		  End If
 		  
+		  Enabled = False
 		  Call PresentationFactory.UnregisterPresentation( self )
 		  
 		  If Not IsNull( m_oImpressDoc ) Then
@@ -128,12 +155,11 @@ Implements iPresentation
 		  
 		  Dim result As Boolean = False
 		  
+		  Enabled = False
 		  If Not IsNull( m_oImpressDoc ) Then
 		    
 		    Dim oPresentation As OLEObject = m_oImpressDoc.getPresentation()
 		    If Not IsNull( oPresentation ) Then
-		      
-		      oPresentation.Invoke( "end" ) 'end is protected keyword, so the 'Invoke' workarround needs to be applied.
 		      
 		      'Try
 		      'Dim oController As OLEObject = oPresentation.getController() 'call XPresentation2 interterface method to get XSlideShowController
@@ -146,7 +172,10 @@ Implements iPresentation
 		      ''As fallback for OOo < 3.0, use the main Impress window Controller
 		      'End Try
 		      
-		      m_IsRunning = True 'Keep track of status for OOo < 3.0
+		      oPresentation.Invoke( "end" ) 'end is protected keyword, so the 'Invoke' workarround needs to be applied.
+		      
+		      m_IsRunning = False 'Keep track of status for OOo < 3.0
+		      
 		      result = True
 		      
 		    End If
@@ -190,6 +219,23 @@ Implements iPresentation
 		      'prevent crash in case
 		    End Try
 		    
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function FirstVisibleSlide() As Integer
+		  Dim result As Integer = 0
+		  
+		  If IsShowing() Then
+		    For i As Integer = 1 to SlideCount()
+		      If Not IsHidden(i) Then
+		        result = i
+		        Exit
+		      End If
+		    Next
 		  End If
 		  
 		  Return result
@@ -326,6 +372,23 @@ Implements iPresentation
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function LastVisibleSlide() As Integer
+		  Dim result As Integer = 0
+		  
+		  If IsShowing() Then
+		    For i As Integer = SlideCount() downto 1
+		      If Not IsHidden(i) Then
+		        result = i
+		        Exit
+		      End If
+		    Next
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function NextSlide() As Boolean
 		  // Part of the iPresentation interface.
@@ -359,6 +422,56 @@ Implements iPresentation
 		Sub Notify(iEvent As PresentationEvent)
 		  // Part of the iPresentation interface.
 		  
+		  If Not IsNull( PresentWindow.XCurrentSlide ) Then
+		    If SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		      
+		      Dim presAppl As string = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "@application", False)
+		      Dim presHost As string = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "@host", False)
+		      Dim presFilename As String = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "@filename", False)
+		      
+		      If presAppl = "presentation" And presHost = "impress" Then
+		        Dim presFile As FolderItem = GetFolderItem( presFilename)
+		        If Not IsNull(presFile) Then
+		          
+		          If Filename() = presFile.AbsolutePath() Then
+		            
+		            If iEvent = PresentationFactory.PresentationEvent.NextSlide Then
+		              
+		              If IsShowing() Then
+		                If Not PresentWindow.IsSlidechangeExternal() Then
+		                  Dim currSlideIndex As Integer = SmartML.GetValueN(PresentWindow.XCurrentSlide, "@id", False)
+		                  
+		                  If currSlideIndex < CurrentSlide() Then
+		                    'The presentation advanced to the next slide
+		                    Call PresentWindow.KeyDownX( Chr(31) ) 'ASC_KEY_DOWN
+		                    
+		                  ElseIf currSlideIndex > CurrentSlide() Then
+		                    'The presentation jumped back
+		                    'If the current slide is the last and the new slide is the first, the presentation has looped
+		                    If IsNull( PresentWindow.XCurrentSlide.NextSibling ) And _
+		                      CurrentSlide()=FirstVisibleSlide() Then
+		                      Call PresentWindow.KeyDownX( Chr(8) ) 'ASC_KEY_BACKSPACE
+		                    Else
+		                      Call PresentWindow.KeyDownX( Chr(30) ) 'ASC_KEY_UP
+		                    End If
+		                  End If
+		                End If
+		              End If
+		              
+		            ElseIf iEvent = PresentationFactory.PresentationEvent.EndPresentation Then
+		              
+		              If Not PresentWindow.IsClosingExternal() Then
+		                Call PresentWindow.KeyDownX( Chr(29) ) 'ASC_KEY_RIGHT
+		              End If
+		              
+		            End If
+		            
+		          End If
+		        End If
+		      End If
+		      
+		    End If
+		  End If
 		  
 		End Sub
 	#tag EndMethod
@@ -513,12 +626,21 @@ Implements iPresentation
 
 	#tag Method, Flags = &h21
 		Private Sub SetPresentationWindow(oController As OLEObject, Showing As Boolean)
-		  If IsNull( oController ) Then
-		    oController = m_oImpressDoc.getCurrentController()
-		  End If
+		  Try
+		    If IsNull( oController ) Then
+		      oController = m_oImpressDoc.getCurrentController()
+		    End If
+		  Catch
+		  End Try
+		  
 		  If Not IsNull( oController ) Then
 		    
-		    Dim oFrame As OLEObject = oController.getFrame()
+		    Dim oFrame As OLEObject = Nil
+		    Try
+		      oFrame = oController.getFrame()
+		    Catch
+		    End Try
+		    
 		    If Not IsNull( oFrame ) Then
 		      
 		      Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
@@ -529,14 +651,18 @@ Implements iPresentation
 		      Dim w As Integer =Screen(presentScreen).Width
 		      Dim h As Integer  =Screen(presentScreen).Height
 		      
-		      Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
-		      If Not IsNull( oComponentWin ) Then
-		        oComponentWin.setPosSize( x, y, w, h, OOoPresentationHost.OOoPosSize.POSSIZE )
-		        oComponentWin.setVisible( True )
-		      End If
+		      Try
+		        Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
+		        If Not IsNull( oComponentWin ) Then
+		          oComponentWin.setPosSize( x, y, w, h, OOoPresentationHost.OOoPosSize.POSSIZE )
+		          oComponentWin.setVisible( True )
+		        End If
+		      Catch
+		      End Try
 		      
 		    End If
 		  End If
+		  
 		End Sub
 	#tag EndMethod
 
@@ -609,7 +735,7 @@ Implements iPresentation
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function StartShow(loopShow As Boolean = False, startAt As Integer = 1, endAt As Integer = -1) As Boolean
+		Function StartShow(loopShow As Boolean = False, startAt As Integer = 1, endAt As Integer = - 1) As Boolean
 		  // Part of the iPresentation interface.
 		  
 		  Dim result As Boolean = False
@@ -642,13 +768,20 @@ Implements iPresentation
 		            result = False
 		          End Try
 		          
+		          Notify( PresentationFactory.PresentationEvent.BeginPresentation )
+		          
 		          If Not IsNull( oController ) Then
+		            'Enable the timer for polling the status as surrogate for registering an XSlideShowListener object
+		            'Polling has no use if the XPresentation2 interface is not available
+		            m_currentSlide = CurrentSlide()
+		            Enabled = True
+		            
 		            Try
-		              If IsNull( m_ShowListener ) Then
-		                m_ShowListener = New OOoPresentationHost.OOoSlideShowListener()
-		              End If
-		              oController.addSlideShowListener( m_ShowListener )
-		            Catch
+		              'If IsNull( m_ShowListener ) Then
+		              'm_ShowListener = New OOoPresentationHost.OOoSlideShowListener()
+		              'End If
+		              'oController.addSlideShowListener( m_ShowListener )
+		            Catch e As OLEException
 		              'This does now work very well yet...
 		            End Try
 		          End If
@@ -682,6 +815,10 @@ Implements iPresentation
 		For the same reasons retrieving images of a slide, using the PreviewSlide function is not available for now when compiling on RB < 2009.
 	#tag EndNote
 
+
+	#tag Property, Flags = &h21
+		Private m_currentSlide As Integer = -1
+	#tag EndProperty
 
 	#tag Property, Flags = &h21
 		Private m_IsRunning As Boolean = False

@@ -245,8 +245,11 @@
     <presentation_settings caption="Presentation settings">
       <presentation_host caption="Which application should be used to run the presentation?"/>
       <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="For full control over your PowerPoint presentation an installation of Microsoft Office is required."/>
       <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."/>
       <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."/>
       <presentation_file caption="Presentation filename">Choose the presentation filename using a file selection dialog.</presentation_file>
       <loop_presentation caption="Loop presentation"/>
       <embed_presentation caption="Include the presentation in the OpenSong set"/>

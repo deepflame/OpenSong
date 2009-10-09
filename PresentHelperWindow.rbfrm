@@ -65,6 +65,7 @@ Begin Window PresentHelperWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   10
       Underline       =   False
       UseFocusRing    =   False
@@ -94,6 +95,7 @@ Begin Window PresentHelperWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   5
       Underline       =   False
       Visible         =   True
@@ -332,6 +334,7 @@ Begin Window PresentHelperWindow
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   9
+      TextUnit        =   0
       Top             =   215
       Underline       =   False
       Visible         =   True
@@ -358,6 +361,7 @@ Begin Window PresentHelperWindow
       TabPanelIndex   =   0
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   190
       Underline       =   False
       Visible         =   True
@@ -526,6 +530,7 @@ Begin Window PresentHelperWindow
       Format          =   ""
       Height          =   116
       HelpTag         =   ""
+      HideSelection   =   True
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -538,7 +543,6 @@ Begin Window PresentHelperWindow
       LockTop         =   False
       Mask            =   ""
       Multiline       =   True
-      Password        =   False
       ReadOnly        =   True
       Scope           =   0
       ScrollbarHorizontal=   False
@@ -551,6 +555,7 @@ Begin Window PresentHelperWindow
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   16
+      TextUnit        =   0
       Top             =   358
       Underline       =   False
       UseFocusRing    =   False

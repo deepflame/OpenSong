@@ -51,6 +51,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   302
       Begin Timer timerAdvance
+         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -59,11 +60,15 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Mode            =   0
          Period          =   10000
          Scope           =   0
+         TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Top             =   248
+         Visible         =   True
          Width           =   32
       End
       Begin Timer timerTransition
+         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -72,8 +77,11 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Mode            =   0
          Period          =   125
          Scope           =   0
+         TabIndex        =   1
          TabPanelIndex   =   0
+         TabStop         =   True
          Top             =   248
+         Visible         =   True
          Width           =   32
       End
    End
@@ -201,6 +209,7 @@ End
 		  doTransition = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
 		  curslideTransition = SlideTransitionEnum.NoTransition
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
+		  
 		End Sub
 	#tag EndEvent
 
@@ -925,12 +934,12 @@ End
 		  ' -- New way --
 		  xStyle = SetML.GetStyle(slide)
 		  doetrans_nextblank = false 'gp
-		  doetrans = lastSlideType <> "blank" ' (SlideType = "song") or (SlideType= "scripture") 'gp
+		  doetrans =  (SlideType = "song") or (SlideType= "scripture") 'gp
 		  SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
 		  curslideTransition = SetML.GetSlideTransition(slide)
 		  'gp start
 		  if doetrans then
-		    doetrans = SlideType <> "blank" ' (SlideType = "song") or (SlideType= "scripture")
+		    doetrans = (SlideType = "song") or (SlideType= "scripture")
 		    doetrans_nextblank = (SlideType = "blank")
 		  end if
 		  Profiler.EndProfilerEntry'
@@ -2279,10 +2288,10 @@ End
 		      lastcurrentSlide = currentSlide
 		      time = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@transition_time", False)
 		      ProgressWindow.Left = PresentHelperWindow.left + 10
-		      ProgressWindow.SetMaximum(time * .5)
+		      ProgressWindow.SetMaximum(time * .20)
 		      ProgressWindow.Show
 		      ltime = ticks
-		      while ticks - ltime <  time * .3  and not keyboard.ControlKey
+		      while ticks - ltime <  time * .1  and not keyboard.ControlKey
 		        ProgressWindow.SetProgress(ticks-ltime)
 		        app.DoEvents(10)
 		      wend

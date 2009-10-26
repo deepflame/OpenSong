@@ -1797,7 +1797,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabStop         =   True
                Top             =   362
                UseFocusRing    =   True
-               Visible         =   True
+               Visible         =   False
                Width           =   87
             End
          End
@@ -9464,7 +9464,7 @@ End
 		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
 		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
 		      Transition = SmartML.GetValueN(slide_group, "@transition", False)
-		      verse_as_image  = SmartML.GetValueB(slide_group, "@verse_as_image", False)
+		      verse_as_image  = SmartML.GetValueB(slide_group, "@verse_as_image", True, True)
 		      SongFileName =  SmartML.GetValue(slide_group, "@name", False)
 		      songDoc = SetML.GetSong( slide_group, Songs, songPath )
 		      If songDoc <> Nil Then
@@ -9581,14 +9581,14 @@ End
 		    Next x
 		    heapsort s
 		    
-		    For x = 1 To UBound(s) 'DownTo 1
+		    For x =  UBound(s) DownTo 1
 		      pop_sets_sets.AddRow s(x)
 		    Next x
 		  Else
 		    Redim s(-1)
 		    SetDB = New FolderDB(folder)
 		    s = SetDB.GetFiles(".") // Current folder only
-		    For x = 0 to UBound(s)
+		    For x =  UBound(s) downto 0
 		      pop_sets_sets.AddRow s(x)
 		    Next
 		  End If
@@ -12006,7 +12006,7 @@ End
 		    chk_slide_print.Value = SmartML.GetValueB(xgroup, "@print", True, True)
 		    pop_slide_transition.ListIndex = SmartML.GetValueN(xgroup, "@transition", False)
 		    
-		    chk_slide_verse_as_image.value =  SmartML.GetValueB(xgroup, "@verse_as_image")
+		    chk_slide_verse_as_image.value =  SmartML.GetValueB(xgroup, "@verse_as_image", True, True)
 		    
 		    
 		    edt_slide_auto_advance.Text = Str(SmartML.GetValueN(xgroup, "@seconds", False))
@@ -12076,7 +12076,7 @@ End
 		      edt_slide_origorder.Text = SmartML.GetValue(sDoc.DocumentElement, "presentation", False)
 		      edt_slide_folder.Text = songPath.Left(songPath.Len - 1)
 		      pop_slide_transition.ListIndex = SmartML.GetValueN(xgroup, "@transition", False)
-		      chk_slide_verse_as_image.value =  SmartML.GetValueB(xgroup, "@verse_as_image")
+		      chk_slide_verse_as_image.value =  SmartML.GetValueB(xgroup, "@verse_as_image", True, True)
 		      If  edt_slide_folder.Text.Len = 0 Then edt_slide_folder.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )"
 		      Status_InSetEditable = True 'EMP, changed 1/18/2005 for custom order
 		      Status_InSetChanged = False

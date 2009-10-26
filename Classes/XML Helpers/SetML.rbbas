@@ -167,15 +167,12 @@ Protected Module SetML
 		    if maxsizefact < 0.01 then
 		      maxSizeFact = 1
 		    end if
-		    if verseAsImageFound then
-		      maxsizefact = 0.94
-		      BackgroundVAlign = "bottom"
-		      BackgroundAlign = ""
-		    end if
 		    
 		    gHeight = g.Height * MaxSizeFact
+		    
 		    gWidth = g.Width * MaxSizeFact
 		    aspect_ratio = Min(gHeight /bgDrawH, gWidth / bgDrawW)
+		    
 		    
 		    if BackgroundAlign = "left" Then
 		      LEFT =0
@@ -194,8 +191,8 @@ Protected Module SetML
 		        end if
 		      else
 		        if Stretch then
-		          LEFT = 0
-		          RIGHT =g.width
+		          LEFT = (g.width-gwidth)/2
+		          RIGHT =g.width -  (g.width-gwidth)/2
 		        else
 		          LEFT = (g.width- bgDrawW* aspect_ratio)/2
 		          RIGHT = LEFT +  bgDrawW* aspect_ratio
@@ -219,14 +216,20 @@ Protected Module SetML
 		        end if
 		      else
 		        if stretch then
-		          TOP = 0
-		          BOTTOM = g.height
+		          TOP =  (g.height-gheight)/2
+		          BOTTOM = g.height -  (g.height-gheight)/2
 		        else
 		          TOP = (g.height-bgDrawH* aspect_ratio)/2
 		          BOTTOM = TOP +bgDrawH* aspect_ratio
 		        end if
 		      end if
 		    end if
+		    if verseAsImageFound then
+		      Right = min (right, g.width *.99)
+		      top = max(top, g.width *.05)
+		      Bottom = min(bottom, g.height *.99)
+		    end if
+		    
 		    g.DrawPicture background, _
 		    LEFT, _
 		    TOP, _
@@ -243,7 +246,7 @@ Protected Module SetML
 		  If xslide = Nil Then Return
 		  
 		  Profiler.BeginProfilerEntry "DrawSlide>ImageSlide-Fullscreen" ' --------------------------------------------------
-		  Dim slideType As String
+		  'Dim slideType As String
 		  Dim pic As Picture = Nil
 		  Dim resize As String
 		  Dim keepaspect As Boolean

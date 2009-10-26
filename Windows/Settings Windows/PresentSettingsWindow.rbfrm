@@ -108,7 +108,7 @@ Begin Window PresentSettingsWindow
       TextSize        =   12
       Top             =   14
       Underline       =   False
-      Value           =   0
+      Value           =   1
       Visible         =   True
       Width           =   600
       Begin StaticText lbl_style_default_slides

@@ -59,4 +59,13 @@
 		Name=TIFF Files
 	#tag EndFileType
 
+	#tag FileType
+		CodeName=ALLFiles
+		Extension=.jfif;.jpe;.jpeg;.jpg;.png;.gif;.bmp
+		Flags=&h0
+		MacCreator=
+		MacType=
+		Name=ALL Files
+	#tag EndFileType
+
 #tag EndFileTypeSet

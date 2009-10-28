@@ -6525,6 +6525,103 @@ Begin Window MainWindow Implements ScriptureReceiver
                Visible         =   True
                Width           =   330
             End
+			               Begin StaticText nte_external_host_powerpoint_info
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   30
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  TabIndex        =   9
+                  TabPanelIndex   =   2
+                  Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   200
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin StaticText nte_external_host_pptview_info
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   55
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  TabIndex        =   10
+                  TabPanelIndex   =   2
+                  Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   244
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin StaticText nte_external_host_impress_info
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   30
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  TabIndex        =   11
+                  TabPanelIndex   =   2
+                  Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   312
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+
             Begin GroupBox grp_external_application_settings
                AutoDeactivate  =   True
                Bold            =   ""
@@ -8517,7 +8614,8 @@ End
 		  
 		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode, currentsetname
-		  
+  		  PresentationFactory.ClearPresentationCache()
+
 		  '++JRC reset cursor
 		  App.MouseCursor = Nil
 		  'Me.MouseCursor = Nil
@@ -9437,6 +9535,127 @@ End
 		  End If
 		  Return RealPath
 		End Function
+	#tag EndMethod
+	#tag Method, Flags = &h1
+		Protected Sub ImportExternals(setDoc As XmlDocument, PresentMode As Integer)
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim songDoc As XmlDocument
+		  Dim Presentation As String
+		  '++JRC
+		  Dim CurStyle As XmlNode
+		  '--
+		  Dim Transition As Integer
+		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim SongPath As String
+		  Dim slidesCount As Integer = 0
+		  
+		  App.MouseCursor = System.Cursors.Wait
+		  
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  
+		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_externals") + "..."
+		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
+		  ProgressWindow.SetProgress(slidesCount)
+		  ProgressWindow.CanCancel False
+		  ProgressWindow.SetStatus( "" )
+		  ProgressWindow.Show()
+		  
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    slidesCount = slidesCount + 1
+		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
+		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
+		      
+		      Select Case SmartML.GetValue(slide_group, "@application")
+		      Case "presentation"
+		        
+		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
+		        Dim presFile As FolderItem = GetFolderItem( presFileName )
+		        Dim presFileOk As Boolean = False
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            presFileOk = True
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case SmartML.GetValue(slide_group, "@host")
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath, presHost )
+		            If Not IsNull( oExtPres ) Then
+		              
+		              If oExtPres.CanControl() Then
+		                Dim img As StyleImage
+		                Dim i As Integer
+		                
+		                Dim presSlides As XmlNode = SmartML.InsertChild( slide_group, "slides", 0 )
+		                For i = 1 to oExtPres.SlideCount()
+		                  
+		                  If Not oExtPres.IsHidden(i) Then
+		                    Dim presSlide As XmlNode = SmartML.InsertChild( presSlides, "slide", presSlides.ChildCount() )
+		                    SmartML.SetValueN( presSlide, "@id", i )
+		                    SmartML.SetValue( presSlide, "description", oExtPres.SlideName(i) )
+		                    
+		                    If (PresentMode <> PresentWindow.MODE_SINGLE_SCREEN) And oExtPres.CanPreview() Then
+		                      img = New StyleImage()
+		                      img.SetImage( oExtPres.PreviewSlide( i, 320, 240 ) )
+		                      SmartML.SetValue(presSlide, "preview", img.GetImageAsString())
+		                    End If
+		                  End If
+		                  
+		                Next
+		              End If
+		              
+		            Else
+		              MsgBox(App.T.Translate("errors/presentations/unsupported_feature", oExtPres.HostName()))
+		            End If
+		            
+		          Else
+		            MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
+		          End If
+		        End If
+		        
+		        If Not presFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", presFileName)
+		        End If
+		        
+		      Case "videolan"
+		        'No action required here,
+		        'a check to validate the presence of media to play might be nice here
+		        
+		      Case "launch"
+		        'No action required here
+		        'As early warning, we will check if the application that is to be started does exist
+		        
+		        Dim appFileName As String = SmartML.GetValue(slide_group, "@app_filename")
+		        Dim appFile As FolderItem = GetFolderItem( appFileName )
+		        Dim appFileOk As Boolean = False
+		        If Not IsNull( appFile ) Then
+		          If appFile.Exists() Then
+		            appFileOk = True
+		          End If
+		        End If
+		        
+		        If Not appFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", appFileName)
+		        End If
+		        
+		      End Select
+		    End If
+		    
+		    slide_group  = slide_group.NextSibling
+		    ProgressWindow.SetProgress( slidesCount )
+		  Wend
+		  
+		  ProgressWindow.Close()
+		  App.MouseCursor = Nil
+		  
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -12174,8 +12393,11 @@ End
 		    End If
 		    
 		    rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
+		    nte_external_host_powerpoint_info.Enabled = Not rad_external_host_powerpoint.Enabled
 		    rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
+		    nte_external_host_pptview_info.Enabled = Not rad_external_host_pptview.Enabled
 		    rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
+		    nte_external_host_impress_info.Enabled = Not rad_external_host_impress.Enabled
 		    
 		  Case Else
 		    Status_InSetOpen = True
@@ -14655,7 +14877,7 @@ End
 		  If Not IsNull(f) Then
 		    
 		    Self.MouseCursor = System.Cursors.Wait
-		    Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( f.AbsolutePath, PresentationHost.Automatic )
+   		    Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( f.AbsolutePath, PresentationHost.Automatic, False )
 		    If Not IsNull( oExtPres ) Then
 		      
 		      If oExtPres.CanPreview() Then

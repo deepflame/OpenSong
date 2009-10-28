@@ -721,7 +721,7 @@ End
 		  lst_all_slides.Cell(index,1) = SmartML.GetValue(slide, "@id", False)
 		  lst_all_slides.CellAlignment(index, 1) = 2
 		  Select Case SmartML.GetValue(slide.Parent.Parent, "@type", False)
-		  Case "image"
+		  Case "image", "external"
 		    lst_all_slides.Cell(index,2) = Trim(SmartML.GetValue(slide, "description", True)).CleanSpaces
 		  Else
 		    lst_all_slides.Cell(index,2) = ReplaceAll(ReplaceAll(Trim(SmartML.GetValue(slide, "body", True)), Chr(10), " "), Chr(9), " ").CleanSpaces

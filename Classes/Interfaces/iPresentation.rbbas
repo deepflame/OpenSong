@@ -108,6 +108,12 @@ Protected Interface iPresentation
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function IsHidden(slideIndex As Integer) As Boolean
+		  
+		End Function
+	#tag EndMethod
+
 
 	#tag Note, Name = Interface description
 		General notes:

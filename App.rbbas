@@ -16,9 +16,11 @@ Inherits Application
 		      App.SetForeground(PresentHelperWindow)
 		      PresentHelperWindow.SetFocus
 		    Else
-		      App.RestoreWindow(PresentWindow)
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
+		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		        App.RestoreWindow(PresentWindow)
+		        App.SetForeground(PresentWindow)
+		        PresentWindow.SetFocus()
+		      End If
 		    End If
 		  End If
 		  
@@ -53,8 +55,13 @@ Inherits Application
 		  Profiler.BeginProfilerEntry "App::Open"
 		  
 		  DebugWriter = New DebugOutput
-		  
-		  AppFolder = GetFolderItem("")
+		  '++JRC For compatibilty with RB 2008 debugger
+		  'RB insists on outputing the executable in a subfolder (sigh)
+		  #If DebugBuild
+		    AppFolder = GetFolderItem("").Parent
+		  #Else
+		    AppFolder = GetFolderItem("")
+		  #Endif
 		  
 		  'Can't translate this until we've loaded the translator
 		  'Splash.SetStatus "Loading global settings..."

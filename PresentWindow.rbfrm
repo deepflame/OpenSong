@@ -1014,6 +1014,19 @@ End
 		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Exit", 5)
 		End Sub
 	#tag EndMethod
+	#tag Method, Flags = &h0
+		Function IsClosingExternal() As Boolean
+		 ' Return self._IsClosingExternal
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsSlidechangeExternal() As Boolean
+		  'Return self._IsSlidechangeExternal
+		End Function
+	#tag EndMethod
+
+
 
 	#tag Method, Flags = &h1
 		Protected Sub VerifySlideBodies(Set As XmlDocument)

@@ -147,6 +147,7 @@
       <add_slides caption="Slides">Adds a custom slide to the current set. Custom slides allow you to specify your own title, subtitle, body text, and even style. A custom slide item can actually contain a series of slides.</add_slides>
       <add_style caption="Style">Changes the current set's default style at any place in the set. Styles changes can define a new style or revert to the previous style.</add_style>
       <add_image caption="Image">Adds an image slide to the current set. Image slides will allow you to display a single image or a slideshow of multiple images instead of a body text.</add_image>
+      <add_external caption="External">Adds a new slide to the current set that enables activation of external sources such as a presentation or DVD playback software.</add_external>
       <add_video caption="Video">Adds a video file to the current set. Use this to present a video from within OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Adds a PowerPoint presentation to the current set. Use this to control a PowerPoint presentation from within OpenSong.</add_powerpoint>
     </new_item>
@@ -157,12 +158,19 @@
       <copy caption="Copy">Creates a copy of the currently selected set item.</copy>
       <paste caption="link(shared/insert/@caption)">Insert copied item after current position.</paste>      
       <store caption="Save">Stores the currently selected item in the set.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Presents the current set to the screen, starting from the currently selected item. You have the option of presenting to the current monitor, a secondary monitor, or using a single monitor to preview what it would be like with two monitors.
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Set Items">Lists the items in the current set. Click on a custom slide to load it into the custom slide editor or double-click a song to load it into the song editor.
       <song caption="(song)"/>
       <custom caption="(custom)"/>
       <scripture caption="(scripture)"/>
       <image caption="(image)"/>
+      <external caption="(external)"/>
       <style caption="(style)">-- Change Style --</style>
       <revert caption="(style)">-- Revert Style --</revert>
       <defaultstyle caption="(style)">-- Exported Style --</defaultstyle>
@@ -183,7 +191,7 @@
     <title caption="Title">Sets the title of the slide displayed on the slide itself.</title>
     <subtitle caption="Subtitle">Sets the subtitle of the slide displayed on the slide itself.</subtitle>
     <name caption="Name">Sets the title of the slide(s) displayed in the Presentation Helper window. It does not display on the actual slide(s).</name>
-    <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item.</slides>
+    <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item. Hint: Drag one or more images to this list for easy adding.</slides>
     <presentation caption="Custom presentation order">Overrides the presentation order in the song file</presentation>
     <origorder caption="Original presentation order">Presentation order in the song file</origorder>       
     <folder caption="Song folder">Folder containing the selected item</folder>
@@ -211,8 +219,9 @@
     <store_as_link caption="Do not store the image in the set, use link to the image">Storing images in the set rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Action" />
-      <ins_image caption="Add image">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
-      <del_image caption="Remove image">Removes the currently selected image from the slide.</del_image>
+      <ins_image caption="Add">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
+      <imp_image caption="Import">Loads all available slides from a presentation and adds these as image.</imp_image>
+      <del_image caption="Remove">Removes the currently selected image from the slide.</del_image>
       <move_up caption="Move up">Moves the currently selected image in the slide closer to the beginning of the slide.</move_up>
       <move_down caption="Move down">Moves the currently selected image in the slide closer to the end of the slide.</move_down>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
@@ -222,6 +231,40 @@
     <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
+
+  <external_slide>
+    <header caption="External Slide Editor"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Application"/>
+    <presentation caption="Presentation">Use this slide to show a presentation using Microsoft PowerPoint or the free and open source OpenOffice.org Impress.</presentation>
+    <videolan caption="Videolan">Use this slide to run a media file using the versatile and open source media player Videolan (VLC).</videolan>
+    <application caption="Application">Use this slide to run an external programm by using a command line.</application>
+    <no_application caption="No application">
+    <no_application caption="Select an application to use as source for this slides content."/>
+    </no_application>
+    <presentation_settings caption="Presentation settings">
+      <presentation_host caption="Which application should be used to run the presentation?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="For full control over your PowerPoint presentation an installation of Microsoft Office is required."/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."/>
+      <presentation_file caption="Presentation filename">Choose the presentation filename using a file selection dialog.</presentation_file>
+      <loop_presentation caption="Loop presentation"/>
+      <embed_presentation caption="Include the presentation in the OpenSong set"/>
+    </presentation_settings>
+    <videolan_settings caption="Videolan settings">
+      <videolan_not_available caption="Videolan support is not available yet."/>
+    </videolan_settings>
+    <application_settings caption="Application launcher settings">
+      <application_filename caption="Path to application executable">Choose the main executable file of the program that should be launched.</application_filename>
+      <application_parameters caption="Application parameters"/>
+      <wait_for_application caption="Wait for external application to finish before continuing."/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
 
   <style_change>
     <header caption="Style Change"/>
@@ -326,13 +369,14 @@
     </settings>
     <help caption="_Help">
       <help_topics caption="Help _Topics"/>
+      <user_manual caption="_Online User Manual"/>
       <translating caption="_Translating OpenSong"/>
       <about caption="_About OpenSong"/>
     </help>
   </main_menu>
 
-  <general_settings title="General Configuration">
-    <general caption="General" head1="Basic" head2="Special">
+  <general_settings title="General configuration">
+    <general caption="General" head1="Basic" head2="File locations" head3="System">
       <ccli caption="Church CCLI License #"/>
       <version_check caption="Check for latest version at startup"/>
       <language caption="Language"/>
@@ -385,6 +429,10 @@
       <songs caption="Songs"/>
       <sets  caption="Sets"/>
     </startmode>
+    <applications caption="External applications">
+      <pptview caption="Location of Powerpoint Viewer"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+    </applications>
   </general_settings>
 
   <print_settings title="Print Settings">
@@ -1094,13 +1142,14 @@ Click on this slide to edit its style.</body>
     <set_changed caption="Current set has been changed, do you want to save?"/>
     <select_docs_folder caption="Select the OpenSong Documents folder">Where should the OpenSong files (songs and sets) be stored?</select_docs_folder>
     <activity_log caption="Would you like the song(s) in this presentation added to the activity log? Note that this applies to songs added on-the-fly as well!"/>
+    <import_presentation caption="Import presentation images">Select the presentation file you want to import the slides from.</import_presentation>
   </questions>
 
   <about>
     <additional>Additional development by:</additional>
     <copyright>Copyright</copyright>
     <gpl>This software is released under the terms of the GPL.</gpl>
-    <web>Visit http://www.opensong.org/ for more information.</web>
+    <web>For more information visit http://www.opensong.org/.</web>
     <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to translator@opensong.org and we'll include it in the official release.</translating>
     <created_with_opensong>Created with OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
@@ -1182,6 +1231,11 @@ The OpenSong development team members regret any inconvenience.
     <activity_disabled>Could not load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
     <adding_logentry>Error Adding log entry!</adding_logentry>
     <chars_per_slide>Max characters per slide must be between 1 and 1000.</chars_per_slide>
+    <presentations>
+      <nohost>There is no application available to load a presentation. Please install OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>The application '%1' does not support this feature.</unsupported_feature>
+      <load_failed>The presentation '%1' could not be opened.</load_failed>
+    </presentations>
   </errors>
 
   <xml_errors>
@@ -1233,21 +1287,21 @@ The OpenSong development team members regret any inconvenience.
   	<ACTION_LAST_SLIDE>Go to the last slide in the set</ACTION_LAST_SLIDE>
   	<ACTION_NEXT_SECTION>Go to the next section in the set</ACTION_NEXT_SECTION>
   	<ACTION_PREV_SECTION>Go to the start of the current or previous set</ACTION_PREV_SECTION>
- 	<ACTION_VERSE>Go to the next verse</ACTION_VERSE> 	
- 	<ACTION_BRIDGE>Go to the bridge</ACTION_BRIDGE>
- 	<ACTION_CHORUS>Go to the chorus</ACTION_CHORUS>
- 	<ACTION_PRECHORUS>Go to the pre-chorus</ACTION_PRECHORUS>
- 	<ACTION_TAG>Go to the tag</ACTION_TAG>
- 	<ACTION_NORMAL>Display current slide</ACTION_NORMAL>
- 	<ACTION_BLACK>Display black screen	</ACTION_BLACK>
- 	<ACTION_WHITE>Display white screen</ACTION_WHITE>
- 	<ACTION_FREEZE>Freeze display on current slide</ACTION_FREEZE>
- 	<ACTION_LOGO>Display the logo</ACTION_LOGO>
- 	<ACTION_HIDE>Hide current slide (background is still displayed)</ACTION_HIDE>
- 	<ACTION_EXIT>Exit presenter mode</ACTION_EXIT>
- 	<ACTION_EXIT_PROMPT>Exit presenter mode, require confirmation	</ACTION_EXIT_PROMPT>
- 	<ACTION_EXIT_NOPROMPT>Exit presenter mode immediately</ACTION_EXIT_NOPROMPT>
- </hotkeys>
+   	<ACTION_VERSE>Go to the next verse</ACTION_VERSE> 	
+   	<ACTION_BRIDGE>Go to the bridge</ACTION_BRIDGE>
+   	<ACTION_CHORUS>Go to the chorus</ACTION_CHORUS>
+   	<ACTION_PRECHORUS>Go to the pre-chorus</ACTION_PRECHORUS>
+   	<ACTION_TAG>Go to the tag</ACTION_TAG>
+   	<ACTION_NORMAL>Display current slide</ACTION_NORMAL>
+   	<ACTION_BLACK>Display black screen	</ACTION_BLACK>
+   	<ACTION_WHITE>Display white screen</ACTION_WHITE>
+   	<ACTION_FREEZE>Freeze display on current slide</ACTION_FREEZE>
+   	<ACTION_LOGO>Display the logo</ACTION_LOGO>
+   	<ACTION_HIDE>Hide current slide (background is still displayed)</ACTION_HIDE>
+   	<ACTION_EXIT>Exit presenter mode</ACTION_EXIT>
+   	<ACTION_EXIT_PROMPT>Exit presenter mode, require confirmation	</ACTION_EXIT_PROMPT>
+   	<ACTION_EXIT_NOPROMPT>Exit presenter mode immediately</ACTION_EXIT_NOPROMPT>
+  </hotkeys>
 
   <progress_status>
     <folder>Caching Folder %1</folder>
@@ -1255,6 +1309,8 @@ The OpenSong development team members regret any inconvenience.
     <process_themes>Processing Themes</process_themes>
     <process_songs>Processing Songs</process_songs>
     <export>Exporting Song(s)</export>
+    <load_songs>Loading Song(s)</load_songs>
+    <load_externals>Loading External sheet(s)</load_externals>
     <pass1>Sorting, 1st Pass</pass1>
     <pass2>Sorting, 2nd Pass</pass2>
   </progress_status>

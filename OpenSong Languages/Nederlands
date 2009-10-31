@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.5.1">
 
   <load_settings>
-    <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
+    <checking_folders>Maken en controleren van documenten mappen</checking_folders>
     <main>Laden hoofd instellingen</main>
     <print>Laden printer instellingen</print>
     <presentation>Laden presentatie instellingen</presentation>
@@ -46,15 +46,15 @@
         <dual_screen caption="Twee schermen"/>
         <preview_dual_screen caption="Voorbeeld twee schermen"/>
       </present>
-      <export caption="Exporteer">Exporteren van het huidige lied.</export>
-      <rename caption="Hernoem">Hernoemen van het lied.</rename>
-      <move caption="Verplaats">Verplaatsen naar een andere map.
+      <export caption="Exporteren">Exporteren van het huidige lied.</export>
+      <rename caption="Hernoemen">Hernoemen van het lied.</rename>
+      <move caption="Verplaatsen">Verplaatsen naar een andere map.
         <where caption="Verplaats '%1' naar welke map:"/>
       </move>
-      <copy caption="Kopiëer">Kopiëer het huidige lied naar een andere map.
-        <where caption="Kopiëer '%1' naar map:"/>
+      <copy caption="KopiÃ«ren">KopiÃ«er het huidige lied naar een andere map.
+        <where caption="KopiÃ«er '%1' naar map:"/>
       </copy>
-      <delete caption="Verwijder">Verwijderen van het huidige lied.</delete>
+      <delete caption="Verwijderen">Verwijderen van het huidige lied.</delete>
     </selected_song>
 
     <songs caption="Liederen">Selecteer een lied uit de lijst om de tekst aan te passen.</songs>
@@ -78,7 +78,7 @@
     <copyright caption="Copyright">Geef het copyright van het geselecteerde lied.</copyright>
     <ccli caption="CCLI nummer">Geef het CCLI nummer van het geselecteerde lied.</ccli>
     <hymn_number caption="Lied nummer">Geef het nummer van het geselecteerde lied.</hymn_number>
-    <presentation caption="Presentatie">Creëer de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
+    <presentation caption="Presentatie">CreÃ«er de volgorde van de te presenteren lederen. Secties worden gescheiden middels spaties. (bijv. "V1 C V2 C")</presentation>
     <lyrics caption="Noten/Muziek">Wijzigen liederen met sectie regels, commentaar regels, notenbalken etc.</lyrics>
     <insert caption="Invoegen"/>
       <ins_section caption="Sectie">Secties worden gebruikt om een lied in meerdere delen te verdelen.
@@ -115,9 +115,9 @@
     <aka caption="Alt">Geeft de alternatieve titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
     <style caption="Aangepaste stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
-    <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
-    <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
-    <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+    <user1 caption="Door gebruiker gedefiniÃ«erd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
+    <user2 caption="Door gebruiker gedefiniÃ«erd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
+    <user3 caption="Door gebruiker gedefiniÃ«erd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
   <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
@@ -126,8 +126,8 @@
     </sets>
     <current_set caption="Huidig project">
       <save caption="Opslaan">Slaat het huidige project op (inclusief alle items) op schijf.</save>
-      <rename caption="Hernoem">Hernoemt het huidige project.</rename>
-      <delete caption="Verwijder">Verwijdert het huidige project. (Liederen worden niet verwijderd.)</delete>
+      <rename caption="Hernoemen">Hernoemt het huidige project.</rename>
+      <delete caption="Verwijderen">Verwijdert het huidige project. (Liederen worden niet verwijderd.)</delete>
        <saveas caption="Opslaan Als">Bewaar het huidige project onder een andere naam.</saveas>
       <present caption="Presenteren">Presenteert het huidige project op scherm. U heeft de mogelijkheid om de presentatie op het huidige scherm, op 2 schermen of een voorbeeld hoe het op 2 schermen weergegeven kan worden.
         <single_screen caption="Enkel scherm"/>
@@ -147,6 +147,7 @@
       <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl. Een aangepaste dia kan een serie dia 's bevatten.</add_slides>
       <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
       <add_image caption="Afbeelding">Voegt een afbeelding als dia toe aan het huidige project. Deze optie geeft je de mogelijkheid om een enkele afbeelding dan wel een serie afbeeldingen weer te geven in plaats van tekst.</add_image>
+      <add_external caption="Extern">Voegt een nieuwe dia toe aan het huidige project waarmee externe programma's kunnen worden gestart. Hiermee is het mogelijk om een presentatie of een DVD te vertonen.</add_external>
       <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Voegt een PowerPoint presentatie toe aan het huidige project. Dit is te gebruiken om een PowerPoint presentatie te tonen vanuit OpenSong.</add_powerpoint>
     </new_item>
@@ -154,15 +155,22 @@
       <move_up caption="Omhoog">Verplaatst het huidige item naar boven (voren) in het project.</move_up>
       <move_down caption="Omlaag">Verplaatst het huidige item naar beneden (achteren) in het project.</move_down>
       <remove caption="Verwijderen">Verwijdert het huidige item van het project.</remove>
-      <copy caption="Kopieër">Maakt een kopie van het huidige item.</copy>
-      <paste caption="link(shared/insert/@caption)">Voegt gekopieerd item in op huidige positie.</paste>  
+      <copy caption="KopiÃ«ren">Maakt een kopie van het huidige item.</copy>
+      <paste caption="link(shared/insert/@caption)">Voeg het gekopieerde item toe na de huidige positie.</paste>      
       <store caption="Opslaan">Slaat het huidige item op in het project.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Presenteert het huidige project op scherm vanaf de huidig geselecteerde dia. U heeft de mogelijkheid om de presentatie op het huidige scherm, op 2 schermen of een voorbeeld hoe het op 2 schermen weergegeven kan worden.
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Project Items">Lijst met items in het huidige project. Klik op een aangepaste dia om die te kunnen wijzigen of dubbelklik een lied om te wijzigen.
       <song caption="(lied)"/>
       <custom caption="(aangepast)"/>
       <scripture caption="(bijbelteksten)"/>
       <image caption="(afbeelding)"/>
+      <external caption="(extern)"/>
       <style caption="(stijl)">-- Wijzig Stijl --</style>
       <revert caption="(stijl)">-- Terug naar vorige Stijl --</revert>
       <defaultstyle caption="(stijl)">-- Geexporteerde Stijl --</defaultstyle>
@@ -172,7 +180,8 @@
       <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
     </errors>
     <messages>
-      <export_complete>&quot;%1&quot; geëxporteerd naar %2
+      <export_complete>&quot;%1&quot; geÃ«xporteerd naar
+%2
       </export_complete>
     </messages>
   </sets_mode>
@@ -192,17 +201,16 @@
     <loop caption="Dia's herhalen">Gelecteer deze optie om OpenSong automatisch terug te laten gaan naar de eerste dia nadat de laatste is gepresenteert.</loop>
     <print caption="Afdrukken in lijst">Haal het vinkje weg om deze aangepaste groep dia's niet te laten afdrukken.</print>
     <transition caption="Gebruik overgang">Selecteer deze optie om bij het tonen van deze dia een overgang te gebruiken.</transition>
-	<verse_as_image caption="Toon als notenschrift (indien beschikbaar)">Toon vers als notenschrift (indien beschikbaar)</verse_as_image>
-    <auto_advance caption="Automatische naar volgende iedere">Geef het aantal seconden dat de afbeelding getoond moet worden voordat de volgende wordt geprojecteerd.</auto_advance>
+    <auto_advance caption="De volgende dia automatisch afspelen na">Geef een aantal seconden op voor het item zodat OpenSong automatisch doorgaat naar de volgende dia in dit item.</auto_advance>
     <seconds caption="seconden."/>
     <style caption="Aangepaste stijl">Selecteer deze optie om aan te geven dat deze dia een aangepaste stijl gebruikt. Indien dit gebruikt wordt, klik de voorbeeldknop boven om de stijl aan te passen.</style>
   </slide_editor>
 
   <image_slide>
-    <header caption="Afbeeldingen show bewerken"/>
+    <header caption="Wijzigen afbeeldingen dia"/>
     <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
-    <descriptions caption="Afbeelding beschrijving in subtitel">Voeg de beschrijving van de afbeelding toe aan de subtitel.</descriptions>
+    <descriptions caption="Beschrijving van afbeelding in subtitel">Voeg de beschrijving van de getoonde afbeelding toe aan de subtitel.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <images caption="Afbeeldingen" head1="Voorbeeldweergave" head2="Beschrijving">Bevat de afbeeldingen die in deze serie worden getoond. Tip: sleep voor het eenvoudig toevoegen een of meerdere afbeeldingen naar deze lijst.</images>
     <fit_to_screen caption="Schaal afbeeldingen zodat ze op het scherm passen">Afbeeldingen die te groot zijn om te projecteren worden geschaald zodat ze volledig getoond kunnen worden. Dit gebeurt ook voor afbeeldingen die kleiner zijn dan de schermresolutie.</fit_to_screen>
@@ -210,9 +218,10 @@
     <keepaspect caption="Behoudt hoogte- en breedteverhoudingen bij het schalen">Als afbeeldingen worden geschaald bij een van bovenstaande, zal de horizontale en verticale verhouding behouden blijven.</keepaspect>
     <store_as_link caption="Bewaar de afbeelding niet in het project, maar gebruik een link naar de plek waar de afbeelding staat">Afbeeldingen bewaren in het project geeft snel grote project bestanden en kunnen de kwaliteit benadelen. Gebruik van een link voorkomt dit. Afbeeldingen worden vanuit de 'Backgrounds' directory bewaard als relatieve link, wat de switch naar de presentatie computer makkelijker maakt. Let op! als de presentatie gemaakt is op een macchine anders dan de presentatie computer!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
-    <action caption="Optie" />
-      <ins_image caption="Voeg toe">Voegt een afbeelding toe aan de serie met een gemeenschappelijke titel, subtitel, stijl en/of automatisch volgende instelling. Op deze manier gemaakte serie kan ook worden ingesteld met een automatische loop.</ins_image>
-      <del_image caption="Verwijder afbeelding">Verwijdert de geselecteerde afbeelding uit de serie.</del_image>
+    <action caption="Activiteit" />
+      <ins_image caption="Toevoegen">Voegt een afbeelding toe aan het project. Hiermee kunnen dia-series worden gemaakt die dezelfde titel-, subtitel-, stijl-, en automatische overgangsinstellingen delen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_image>
+      <imp_image caption="Importeren">Laadt alle beschikbare dia's uit een presentatie en voegt deze toe als afbeeldingen.</imp_image>
+      <del_image caption="Verwijderen">Verwijdert de geselecteerde afbeelding uit de serie.</del_image>
       <move_up caption="Omhoog">Schikt de geselecteerde afbeelding verder naar voren in de serie.</move_up>
       <move_down caption="Omlaag">Schikt de geselecteerde afbeelding verder naar achteren in de serie.</move_down>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
@@ -227,20 +236,31 @@
     <header caption="Wijzigen extern programma dia"/>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <application caption="Toepassing"/>
-    <presentation caption="PowerPoint">Gebruik deze dia om een persentatie te tonen met behulp van Microsoft PowerPoint of het gratis en open source OpenOffice.org Impress.</presentation>
+    <presentation caption="Presentatie">Gebruik deze dia om een presentatie te tonen met behulp van Microsoft PowerPoint of het gratis en open source OpenOffice.org Impress.</presentation>
     <videolan caption="Videolan">Gebruik deze dia om een mediabestand af te spelen met de veelzijdige en open source media speler Videolan (VLC).</videolan>
     <application caption="Toepassing">Gebruik deze dia om een extern programma te starten door middel van een commandoregel.</application>
+    <no_application caption="Geen toepassing">
+      <no_application caption="Kies een programma als bron voor de inhoud van deze dia."/>
+    </no_application>
     <presentation_settings caption="Presentatie instellingen">
       <presentation_host caption="Welk programma moet worden gebruikt voor het weergeven van de presentatie?"/>
       <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="Voor controle over het weergeven van een PowerPoint presentatie is een installatie van Microsoft Office een vereiste."/>
       <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="Voor het tonen van PowerPoint presentaties (zonder interactie), kan de gratis Microsoft PowerPoint Viewer worden gebruikt. OpenSong probeert die te detecteren, maar deze kan ook worden ingesteld bij de algemene instellingen."/>
       <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="Voor volledige controle van een Impress of PowerPoint presentatie is de gratis OpenOffice.org suite nodig."/>
       <presentation_file caption="Presentatie bestandsnaam">Kies de presentatie bestandsnaam met behulp van een bestandskeuze dialoog.</presentation_file>
       <loop_presentation caption="Presentatie herhalen"/>
+      <embed_presentation caption="De presentatie opslaan in het OpenSong project"/>
     </presentation_settings>
     <videolan_settings caption="Videolan instellingen">
+      <videolan_not_available caption="Ondersteuning voor Videolan is nog niet beschikbaar."/>
     </videolan_settings>
     <application_settings caption="Programma opstart instellingen">
+      <application_filename caption="Bestandslocatie van extern programma">Kies het het programm dat moet worden uitgevoerd.</application_filename>
+      <application_parameters caption="Programma parameters"/>
+      <wait_for_application caption="Wacht met het doorgaan naar de volgende dia tot het programma is geÃ«indigd"/>
     </application_settings>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
@@ -249,7 +269,7 @@
   <style_change>
     <header caption="Wijzigen stijl"/>
     <revert caption="Keer terug naar vorige stijl">Deze optie neemt de stijl over van de vorige dia vanaf hier.</revert>
-    <change caption="Wijzig stijl in">Deze optie wijzigt de stijl van alle volgende dia's tot de volgende stijlwijziging.</change>
+    <change caption="Wijzig stijl in deze">Deze optie staat toe dat sets worden gewijzigd vanaf elk punt in de set. Stijlwijzigingen hebben effect op alle nog volgende dia's tot de volgende stijlwijziging.</change>
     <style>Klik hier om de nieuwe stijl te wijzigen.</style>
   </style_change>
 
@@ -355,7 +375,7 @@
   </main_menu>
 
   <general_settings title="Algemene instellingen">
-    <general caption="Algemeen" head1="Basis" head2="Extra">
+    <general caption="Algemeen" head1="Basis" head2="Bestandslocaties" head3="Systeem">
       <ccli caption="CCLI Licentie #"/>
       <version_check caption="Controleer voor nieuwere versies bij starten."/>
       <language caption="Taal"/>
@@ -412,7 +432,7 @@
       <pptview caption="Locatie van de Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>
     </applications>
-    </general_settings>
+  </general_settings>
 
   <print_settings title="Afdruk instellingen">
     <tabs head3="Marges" head1="Lettertype" head2="Layout"/>
@@ -540,7 +560,7 @@
       <normal_screen caption="[M] Normaal Scherm"/>
       <return caption="[Esc] Terug"/>
     </actions>
-    <exit caption="Beëindig presentatie?"/>
+    <exit caption="BeÃ«indig presentatie?"/>
     <loop caption="Loop"/>
     <keys>- Toetsen -
 Down: Volgende dia
@@ -562,7 +582,7 @@ T: Label</keys>
 
 De presentaties worden bediend met de volgende toetsen:
 
-Esc Toets: 			Beëindigen presentatie
+Esc Toets: 			BeÃ«indigen presentatie
 Pijltje naar boven of,
 8 op Nummerieke blok of, 
 Backspace: 			Ga naar de vorige dia.
@@ -821,6 +841,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
           <row2 caption="top"/>
           <row3 caption="onder"/>
           <row4 caption="onder max helft"/>
+ 
           <!-- <row2 caption="Tegel"/> -->
       </position>
       <trim_bottom caption="*Onderkant bijsnijden"/>
@@ -903,7 +924,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <value tag="5">Getoond</value>
       <value tag="6">Afgedrukt</value>
       <value tag="7">Hernoemd</value>
-      <value tag="8">Gekopiëerd</value>
+      <value tag="8">GekopiÃ«erd</value>
     </show>
     <songs head7="Heeft akkoorden" head6="CCLI #" head5="Auteur" head4="Titel" head3="Activiteit" head2="Tijdstip" head1="Datum"/> 
     <input_box>
@@ -916,11 +937,6 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   </song_activity>
   
   <scripture_lookup title="Bijbelteksten zoeken">
-    <lookup caption="Snel zoeken">
-      <reference caption="Referentie"/>
-      <lookup caption="Zoeken"/>
-      <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
-    </lookup>
     <search caption="Op bijbeltekst zoeken"/>
     <books caption="Bijbel boek">
 	  <ot caption="Oude testament"/>
@@ -1009,12 +1025,6 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <no_headers>Geen header data gevonden. Controleer de zoekopdracht en/of uw CCLI gebruikers-ID/wachtwoord.</no_headers>
       <no_connect>Kan geen verbinding maken met CCLI. Probeer het later nog eens.</no_connect>
       <already_exists>Lied bestaat al.</already_exists>
-      <presentations>
-        <nohost>Er kan geen programma gevonden worden om een presentatie te laden. Installeer OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
-        <unsupported_feature>Het programma '%1' ondersteund deze bewerking niet.</unsupported_feature>
-        <load_failed>The presentatie '%1' kon niet worden geopend.</load_failed>
-      </presentations>
- 
     </errors>
   </import_from_ccli>
 
@@ -1148,7 +1158,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <save caption="Opslaan" message="%1 is niet opgeslagen."/>
     <nosave caption="Niet opslaan"/>
     <cut caption="Knippen"/>
-    <copy caption="Kopiëren"/>
+    <copy caption="KopiÃ«ren"/>
     <paste caption="Plakken"/>
     <select caption="Selecteer"/>
     <exit_program caption="Programma afsluiten"/>
@@ -1168,8 +1178,8 @@ Klik op de dia om de stijl te wijzigen.</body>
     <generic_save_explanation caption="ALs je niet opslaat, zullen de wijzigingen verloren gaan"/>
     <set_changed caption="Het huidige project is gewijzigd, met het opgeslagen worden?"/>
     <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
-    <activity_log caption="Wilt u de liederen in deze presentatie toevoegen aan de logfile voor liederengebruik? Let op: dit gebeurd ook voor 'on the fly' toegevoegde liederen!"/>
-    <import_presentation caption="Presentatie afbeeldingen importeren">Selecteer de presentatie die als afbeeldingen moet worden geïmporteerd.</import_presentation>
+    <activity_log caption="Moeten de liederen die in deze presentatie worden gebruikt aan het lied gebruik logboek worden toegevoegd? Dit heeft ook betrekking op liederen die tijdens het presenteren worden toegevoegd!"/>
+    <import_presentation caption="Presentatie afbeeldingen importeren">Selecteer de presentatie die als afbeeldingen moet worden geÃ¯mporteerd.</import_presentation>
   </questions>
 
   <about>
@@ -1177,7 +1187,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <copyright>Copyright</copyright>
     <gpl>Deze software is vrijgegeven onder de voorwaarden van de GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
-    <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
+    <translating>Om OpenSong te vertalen, kopiÃ«er de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
     <created_with_opensong>Gemaakt met OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1259,6 +1269,11 @@ Het spijt de leden van het OpenSong ontwikkelteam voor dit ongemak.
 De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <adding_logentry>Er is een fout opgetreden bij het toevoegen van een lied aan het logboek!</adding_logentry>
     <chars_per_slide>Het aantal karakters dat maximaal getoond mag worden moet tussen 1 en 1000 liggen.</chars_per_slide>
+    <presentations>
+      <nohost>Er kan geen programma gevonden worden om een presentatie te laden. Installeer OpenOffice.org, Microsoft PowerPoint of Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>Het programma '%1' ondersteund deze bewerking niet.</unsupported_feature>
+      <load_failed>The presentatie '%1' kon niet worden geopend.</load_failed>
+    </presentations>
   </errors>
 
   <xml_errors>
@@ -1309,28 +1324,30 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
   	<ACTION_LAST_SLIDE>Ga naar de laatste dia in het project</ACTION_LAST_SLIDE>
   	<ACTION_NEXT_SECTION>Ga nar de volgende sectie in het project</ACTION_NEXT_SECTION>
   	<ACTION_PREV_SECTION>Ga naar het begin van het huidige project</ACTION_PREV_SECTION>
- 	<ACTION_VERSE>Ga naar het volgende couplet</ACTION_VERSE> 	
- 	<ACTION_BRIDGE>Ga naar de overgang</ACTION_BRIDGE>
- 	<ACTION_CHORUS>Ga naar het refrein</ACTION_CHORUS>
- 	<ACTION_PRECHORUS>Ga naar het pre-chorus</ACTION_PRECHORUS>
- 	<ACTION_TAG>Ga naar de tag</ACTION_TAG>
- 	<ACTION_NORMAL>Laat de huidige dia zien</ACTION_NORMAL>
- 	<ACTION_BLACK>Laat een zwart scherm zien</ACTION_BLACK>
- 	<ACTION_WHITE>Laat een wit scherm zien</ACTION_WHITE>
- 	<ACTION_FREEZE>Bevries met huidige dia</ACTION_FREEZE>
- 	<ACTION_LOGO>Laat logo zien</ACTION_LOGO>
- 	<ACTION_HIDE>Verberg huidige dia (achtergrond is wel zichtbaar)</ACTION_HIDE>
- 	<ACTION_EXIT>Sluit de Presentator</ACTION_EXIT>
- 	<ACTION_EXIT_PROMPT>Sluit de Presentator, bevestiging vereist</ACTION_EXIT_PROMPT>
- 	<ACTION_EXIT_NOPROMPT>Sluit Presentator direct</ACTION_EXIT_NOPROMPT>
- </hotkeys>
+   	<ACTION_VERSE>Ga naar het volgende couplet</ACTION_VERSE> 	
+   	<ACTION_BRIDGE>Ga naar de overgang</ACTION_BRIDGE>
+   	<ACTION_CHORUS>Ga naar het refrein</ACTION_CHORUS>
+   	<ACTION_PRECHORUS>Ga naar het pre-chorus</ACTION_PRECHORUS>
+   	<ACTION_TAG>Ga naar de tag</ACTION_TAG>
+   	<ACTION_NORMAL>Laat de huidige dia zien</ACTION_NORMAL>
+   	<ACTION_BLACK>Laat een zwart scherm zien</ACTION_BLACK>
+   	<ACTION_WHITE>Laat een wit scherm zien</ACTION_WHITE>
+   	<ACTION_FREEZE>Bevries met huidige dia</ACTION_FREEZE>
+   	<ACTION_LOGO>Laat logo zien</ACTION_LOGO>
+   	<ACTION_HIDE>Verberg huidige dia (achtergrond is wel zichtbaar)</ACTION_HIDE>
+   	<ACTION_EXIT>Sluit de Presentator</ACTION_EXIT>
+   	<ACTION_EXIT_PROMPT>Sluit de Presentator, bevestiging vereist</ACTION_EXIT_PROMPT>
+   	<ACTION_EXIT_NOPROMPT>Sluit Presentator direct</ACTION_EXIT_NOPROMPT>
+  </hotkeys>
 
   <progress_status>
     <folder>Caching map %1</folder>
-    <lead_sheets>Creëren uitgeprinte Sheets</lead_sheets>
+    <lead_sheets>CreÃ«ren uitgeprinte Sheets</lead_sheets>
     <process_themes>Verwerken thema's</process_themes>
     <process_songs>Verwerken liederen</process_songs>
     <export>Exporteren lied(eren)</export>
+    <load_songs>Laden lied(eren)</load_songs>
+    <load_externals>Laden externe dia('s)</load_externals>
     <pass1>Sorteren, 1e ronde</pass1>
     <pass2>Sorteren, 2e ronde</pass2>
   </progress_status>

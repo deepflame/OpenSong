@@ -1824,7 +1824,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   4
+      Value           =   5
       Visible         =   True
       Width           =   495
       Begin Canvas can_editor_general_song_editor
@@ -12729,10 +12729,17 @@ End
 		      can_image_style.SetStyleNode SmartML.GetNode(xgroup, "style")
 		    End If
 		    
-		    resize = SmartML.GetValue(xgroup, "@resize")
-		    chk_image_fit_to_screen.Value = (resize = "screen")
-		    chk_image_fit_to_body.Value = (resize = "body")
-		    chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", True)
+			If SmartML.GetValue(xgroup, "@keep_aspect") = ""  Then
+			  'default 
+			  chk_image_fit_to_screen.Value = True
+			  chk_image_fit_to_body.Value = False
+			  chk_image_keepaspect.Value = True
+			else
+			  resize = SmartML.GetValue(xgroup, "@resize")
+		      chk_image_fit_to_screen.Value = (resize = "screen")
+			  chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", True)
+     		  chk_image_fit_to_body.Value = (resize = "body")
+			end if
 		    chk_image_keepaspect.Enabled = chk_image_fit_to_screen.Value Or chk_image_fit_to_body.Value
 		    chk_image_store_as_link.Value = imageLink
 		    
@@ -15232,7 +15239,8 @@ End
 		  If Not IsNull(f) Then
 		    
 		    Self.MouseCursor = System.Cursors.Wait
-		    Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( f.AbsolutePath, PresentationHost.Automatic, False )
+			Dim oExtPres As iPresentation
+			oExtPres = PresentationFactory.GetOrCreate( f.AbsolutePath, PresentationHost.automatic, False )
 		    If Not IsNull( oExtPres ) Then
 		      
 		      If oExtPres.CanPreview() Then
@@ -15242,8 +15250,8 @@ End
 		        
 		        presentScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
 		        If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		        width = Screen(presentScreen).Width
-		        height = Screen(presentScreen).Height
+		        width = 1024'Screen(presentScreen).Width
+		        height = 768'Screen(presentScreen).Height
 		        
 		        For i = 1 to oExtPres.SlideCount()
 		          
@@ -15251,7 +15259,7 @@ End
 		          img.SetImage( oExtPres.PreviewSlide( i, width, height ) )
 		          
 		          lst_image_images.AddImage( img )
-		          lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = oExtPres.SlideName( i )
+		          lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = str(i)+ " - "+oExtPres.SlideName( i )
 		          
 		          Status_InSetChanged = True
 		        Next

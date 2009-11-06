@@ -269,12 +269,14 @@ Protected Module PresentationFactory
 		        oPres = CreateOOoImpressPresentation( presFile )
 		      Else
 		        
-		        If PowerPointAvailable(False) And (presFile.Type = PresentationFileTypes.PPTFiles.Name) Then
-		          oPres = CreateMsPowerPointPresentation( presFile )
-		        ElseIf PPTViewAvailable() And (presFile.Type = PresentationFileTypes.PPTFiles.Name) Then
-		          oPres = CreateMsPPTViewPresentation( presFile )
-		        ElseIf OpenOfficeAvailable() And (presFile.Type = PresentationFileTypes.ODPFiles.Name) Then
+		        If IsNull( oPres ) And OpenOfficeAvailable() then ' And (presFile.Type = PresentationFileTypes.ODPFiles.Name) Then
 		          oPres = CreateOOoImpressPresentation( presFile )
+		        End If
+				If IsNull( oPres ) And PPTViewAvailable() then 'And (presFile.Type = PresentationFileTypes.PPTFiles.Name) Then
+		          oPres = CreateMsPPTViewPresentation( presFile )
+		        End If
+				If IsNull( oPres ) And PowerPointAvailable(False) then ' And (presFile.Type = PresentationFileTypes.PPTFiles.Name) Then
+		          oPres = CreateMsPowerPointPresentation( presFile )
 		        End If
 		        
 		      End If

@@ -626,7 +626,7 @@ Protected Module SetML
 		            lines(i+1)= ""
 		          end if
 		        end if
-		        if lines(i) <> "" then
+		        if (lines(i) <> "") or (slidetype <> "song") then
 		          line = line + lines(i) + Chr(10)
 		        end if
 		        

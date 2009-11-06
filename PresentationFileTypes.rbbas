@@ -10,7 +10,7 @@
 
 	#tag FileType
 		CodeName=ODPFiles
-		Extension=.odp;.sxi
+		Extension=.odp;.sxi;.ppt;.pps
 		Flags=&h0
 		MacCreator=
 		MacType=

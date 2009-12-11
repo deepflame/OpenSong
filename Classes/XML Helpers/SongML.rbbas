@@ -2380,12 +2380,13 @@ Module SongML
 		  
 		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
 		  dim BeforePipeSign as boolean 'gp
-		  dim ChorusNr as integer 'GP
+		  dim ChorusNr, PresentationIndex as integer 'GP
 		  dim id, part as string
 		  dim i as integer
 		  ChorusNr = 0 'GP
-		  
+		  PresentationIndex = 0
 		  For Each section In sections
+    		PresentationIndex = PresentationIndex + 1
 		    If dict.HasKey(section) Then
 		      If Lowercase(Left(section, 1)) = "c" Then
 		        ChorusNr = ChorusNr+ 1 'GP
@@ -2413,7 +2414,8 @@ Module SongML
 		          SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
 		          
 		        End If
-		        if verse_as_image  then
+  	            SmartML.SetValueN(slide, "@PresentationIndex", PresentationIndex) 'GP
+				if verse_as_image  then
 		          F = MainWindow.songs.getfile("../notenbalk/"+SmartML.GetValue(songElement, "@songpath" )+"/")
 		          if F <> nil then
 		            versename = SmartML.GetValue(songElement, "@songfilename" )
@@ -2482,6 +2484,7 @@ Module SongML
 		                SmartML.SetValueN(slide, "@ChorusNr", ChorusNr) 'GP
 		                
 		              End If
+					  SmartML.SetValueN(slide, "@PresentationIndex", PresentationIndex) 'GP
 		              SmartML.SetValue slide, "@songfilenamepath", f.AbsolutePath
 		              SmartML.SetValue slide, "@songfilenamewithoutpath", f.Name
 		            else

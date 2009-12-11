@@ -1083,7 +1083,7 @@ Protected Module SetML
 		  Dim fVerse, fCurrVerse As FontFace
 		  Dim align As String
 		  Dim currPart, section As String
-		  dim ChorusNr, currChorusNr as integer 'GP
+		  dim ChorusNr, PresentationIndex, currChorusNr as integer 'GP
 		  titleHeight = 0
 		  title = SmartML.GetValue(xslide.Parent.Parent, "title")
 		  title = ReplaceAll(title, "|", Chr(10))
@@ -1092,6 +1092,7 @@ Protected Module SetML
 		    presentation = SmartML.GetValue(xslide.Parent.Parent, "presentation")
 		    slideId = Trim(SmartML.GetValue(xslide, "@id"))
 		    ChorusNr = (SmartML.GetValueN (xslide, "@ChorusNr")) 'GP
+		    PresentationIndex = (SmartML.GetValueN (xslide, "@PresentationIndex")) 'GP
 		    If presentation <> "" and slideId<>"" Then
 		      If Left(slideId, 1) = "V" Then
 		        currentVerse = Trim(Mid(slideId, 2))
@@ -1117,37 +1118,47 @@ Protected Module SetML
 		        End If
 		        
 		        'If p = slideIndex Then
-		        If currPart = slideId Then
+		        'If p + 1 = PresentationIndex Then
 		          If section = "V" Then
-		            If main <> "" And curr = "" Then main = main + ", "
-		            curr = currentVerse
+					If p + 1 = PresentationIndex Then
+						If main <> "" And curr = "" Then main = main + ", "
+						curr = currentVerse
+					else
+						If verse <> "" Then
+							If curr = "" Then
+								If main <> "" Then
+									main = main + ", "
+								End If
+								main = main + verse
+							Else
+								rest = rest + ", " + verse
+							End If					
+						end if
+					end if
 		          ElseIf section = "P" Then
-		            If main <> "" And curr = "" Then main = main + ", "
-		            curr = App.T.Translate("songml/prechorus_abbreviation/@caption")
+					If currPart = slideId Then
+						If main <> "" And curr = "" Then main = main + ", "
+						curr = App.T.Translate("songml/prechorus_abbreviation/@caption")
+					end if
 		          ElseIf section = "C" Then
-		            currChorusNr = currChorusNr + 1 'GP
-		            if ChorusNr = currChorusNr then 'GP
-		              If main <> "" And curr = "" Then main = main + ", "
-		              curr = App.T.Translate("songml/chorus_abbreviation/@caption")
-		            end if
+					If currPart = slideId Then
+						currChorusNr = currChorusNr + 1 'GP
+						if ChorusNr = currChorusNr then 'GP
+							If main <> "" And curr = "" Then main = main + ", "
+							curr = App.T.Translate("songml/chorus_abbreviation/@caption")
+						end if
+					end if
 		          ElseIf section = "B" Then
-		            If main <> "" And curr = "" Then main = main + ", "
-		            curr = App.T.Translate("songml/bridge_abbreviation/@caption")
+					If currPart = slideId Then
+						If main <> "" And curr = "" Then main = main + ", "
+						curr = App.T.Translate("songml/bridge_abbreviation/@caption")
+					end if
 		          ElseIf section = "T" Then
-		            If main <> "" And curr = "" Then main = main + ", "
-		            curr = App.T.Translate("songml/tag_abbreviation/@caption")
+					If currPart = slideId Then
+						If main <> "" And curr = "" Then main = main + ", "
+						curr = App.T.Translate("songml/tag_abbreviation/@caption")
+					end if
 		          End If
-		        ElseIf verse <> "" And section = "V" Then
-		          If curr = "" Then
-		            If main <> "" Then
-		              main = main + ", "
-		            End If
-		            main = main + verse
-		          Else
-		            rest = rest + ", " + verse
-		          End If
-		        End If
-		        
 		      Next
 		      IF curr = "" and currChorusNr > 0 then 'gp
 		        'probaly never true,  for emergency only, ad to the end
@@ -1318,6 +1329,7 @@ Protected Module SetML
 		  Return songDoc
 		End Function
 	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function IsExternal(slide As XmlNode) As Boolean
 		  Dim slideType As String
@@ -1346,7 +1358,6 @@ Protected Module SetML
 		  Return external
 		End Function
 	#tag EndMethod
-
 
 
 	#tag Property, Flags = &h1

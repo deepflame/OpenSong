@@ -1,4 +1,6 @@
-﻿* Rename Report class to ReportClass (compatibility with RB 2009R4) (JRC)
+* Fix listing of verses in the song title for verses that occur multiple times in the presentation order (gerritp)
+
+* Rename Report class to ReportClass (compatibility with RB 2009R4) (JRC)
 
 * Various fixes to comply with RB 2009R4 changing Editfield class to TextField (JRC)
 

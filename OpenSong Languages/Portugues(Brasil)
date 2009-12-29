@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.4.0">
+<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.5.1">
 
   <load_settings>
     <checking_folders>Criando/Verificando pasta de documentos</checking_folders>
@@ -28,7 +28,7 @@
   <welcome>BEM-VINDO!</welcome>
 
   <songs_mode caption="Modo Canções">Use este modo para acrescentar e editar suas canções. As canções podem ser impressas como folhas cifradas, ou apresentadas como slides. Ao mudar o modo de canções par o modo de configuração, você será informado para salvar quaisquer alterações.
-    <all_songs caption="Todos os Itens">
+    <all_songs caption="Todas as Canções">
       <print caption="Imprimir">Imprime todas as canções disponíveis. Esta característica é excelente por poder imprimir um livro de canções.</print>
       <export caption="Exportar">Exporta todas as canções.</export>
       <find caption="Localizar">Procura o texto de todas as canções por uma palavra ou frase.</find>
@@ -146,6 +146,7 @@
       <add_scripture caption="Bíblia">Adiciona um ou mais slides com versículos bíblicos para a configuração atual. Uma janela será aberta onde lhe permitirá escolher uma passagem bíblica para exibição.</add_scripture>
       <add_slides caption="Slides">Adiciona um slide personalizado à configuração atual. O slide personalizado permite você especificar seu próprio título, sub-título, corpo de texto e até o estilo. Um slide personalizado pode na verdade conter uma série de slides.</add_slides>
       <add_style caption="Estilo">Modifica o estilo padrão da configuração atual em qualquer ponto da configuração. A mudança de um estio pode incluir um novo estilo ou reverter para um estilo anterior.</add_style>
+      <add_image caption="Image">Adiciona um slide de imagem para a atual configuração. Os slides de imagem permitirão você exibir uma imagem única ou uma exibição de múltiplas imagens em vez de um corpo de texto.</add_image>
       <add_video caption="Vídeo">Adiciona um arquivo de vídeo à configuração atual. Use esta opção para apresentar um vídeo dentro do OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Adiciona uma apresentação do PowerPoint à configuração atual. Eta opção é útil para controlar uma apresentação do PowerPoint de dentro do próprio OpenSong.</add_powerpoint>
     </new_item>
@@ -154,12 +155,20 @@
       <move_down caption="Abaixo">Move o item atualmente selecionado para um nível abaixo.</move_down>
       <remove caption="Remover">Remove o item atualmente selecionado da configuração atual.</remove>
       <copy caption="Copiar">Cria uma cópia do item atualmente selecionado.</copy>
+      <paste caption="link(shared/insert/@caption)">Insere um item copiado depois da posição atual.</paste>      
       <store caption="Salvar">Armazena o item atualmente selecionado para a configuração atual.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Itens Configurados">Lista os itens da configuração atual. Clique em um slide personalizado para carregá-lo no editor de personalização de slides ou dê um duplo clique sobre uma canção para carregá-la no editor de canções.
       <song caption="(canção)"/>
       <custom caption="(personalizado)"/>
       <scripture caption="(bíblia)"/>
+      <image caption="(imagem)"/>
       <style caption="(estilo)">-- Mudar Estilo --</style>
       <revert caption="(estilo)">-- Reverter Estilo --</revert>
       <defaultstyle caption="(estilo)">-- Exportar Estilo --</defaultstyle>
@@ -194,6 +203,31 @@
     <seconds caption="segundos"/>
     <style caption="Exibir Estilo">Marque esta opção para que este slide tenha um estilo personalizado. Quando habilitado, marque a caixa de exibição acima para editar o estilo deste item.</style>
   </slide_editor>
+
+  <image_slide>
+    <header caption="Editor de Imagens"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Descrição da imagem em subtítulo">Adiciona a descrição da imagem de exibição para o subtítulo.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Imagens" head1="Prévia" head2="Descrição">Contém as imagens que serão exibidas neste slide. Dica: Arraste uma ou mais imagens para esta lista para adicionamento fácil.</images>
+    <fit_to_screen caption="Redimencionar imagens para ajustar à tela">Imagens que são muito grandes para a tela do projetor serão redimencionadas para tela cheia. Isto acontecerá também para imagens que são menores que o tamanho da tela.</fit_to_screen>
+    <fit_to_body caption="Redimencionar imagens para ajustar a área do corpo">As imagens serão sempre ajustadas para se encaixarem à área do estilo de corpo. Isto vale para as imagens que são maiores e menores que a área de corpo.</fit_to_body>
+    <keepaspect caption="Manter o aspecto proporcional ao redimencionar imagens">No caso de ativar um redimencionamento para quaisquer tamanhos acima, o aspecto horizontal e vertical será mantido.</keepaspect>
+    <store_as_link caption="Não armazenar a imagem no conjunto, usar um link para a imagem">Armazenando imagens no conjunto aumenta o tamanho dele no disco e poderia degradar a qualidade da imagem. Usando um link você evita isto. Imagens da pasta 'Backgrounds' são armazenadas como um link relativo, que é uma alternativa de apresentação mais fácil. Use com cuidado se a apresentação for criada em uma máquina diferente do dispositivo de apresentação!</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Ação" />
+      <ins_image caption="Adicionar imagem">Adiciona uma imagem para este slide para permitir a uma apresentação que compartilha configurações de um título comum, subtítulo, estilo, e/ou avanço automático. Os deslizamentos criados deste modo também podem ser configurados para execução automática.</ins_image>
+      <del_image caption="Remover imagem">Remove a imagem atualmente selecionada do slide.</del_image>
+      <move_up caption="Mover para cima">Move a imagem atualmente selecionada no slide para o início do slide.</move_up>
+      <move_down caption="Mover para baixo">Move a imagem atualmente selecionada no slide para o final do slide.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
 
   <style_change>
     <header caption="Modificar Estilo"/>
@@ -241,7 +275,9 @@
   </song_search>
 
   <scripture_search title="Procurar">
-    <match caption="Inicio">
+    <caption caption="Localizar na Bíblia usando palavra chave"/>
+    <example caption="Para procurar por uma frase exata inclua a mesma entre aspas duplas, como &quot;Simão Pedro&quot;"/>
+    <match caption="Combinar">
       <exact caption="E&amp;xato"/>
       <begin caption="&amp;Iniciando com"/>
     </match>
@@ -250,7 +286,7 @@
       <any caption="Qual&amp;quer palavra"/>
     </words>
     <search caption="&amp;Localizar"/>
-    <example caption="A busca por uma frase exata deve ser incluída entre aspas duplas, por exemplo: &quot;Simão Pedro&quot;"/>
+    <result caption="A busca por uma frase exata deve ser incluída entre aspas duplas, por exemplo: &quot;Simão Pedro&quot;"/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
     <result head1="Referência" head2="Texto" />
@@ -487,7 +523,7 @@ Seta à Esquerda: Seção Anterior
 C: Coro
 P: Pré-Coro
 B: Ponte
-T: Topo</keys>
+T: Etiqueta</keys>
   </presentation_helper>
 
   <help_topics title="Tópicos de Ajuda">
@@ -616,7 +652,7 @@ Se a linha contém ("-!!") isto indica o local onde a quebra de linha deve ser co
 
 </format>
 
-    <presentation>
+	    <presentation>
 &lt;h1&gt;Campo de Apresentação do OpenSong&lt;/h1&gt;
 
 O campo de apresentação contém uma lista de seções do campo de Acordes e Letra da canção. Cada seção é seperada por um espaço. Por exemplo:
@@ -767,6 +803,7 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
       <middle caption="Centralizada"/>
       <right caption="Direita"/>
       <char caption="Pelo caractere"/>
+      <apply caption="link(shared/apply/@caption)n"/>
     </properties>
     <preview caption="Prévia"/>
   </style_tabs>
@@ -822,23 +859,32 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
   </song_activity>
 
   <scripture_lookup title="Pesquisar Bíblia">
-    <book caption="Livro da Bíblia"/>
     <lookup caption="Pesquisa Rápida">
       <reference caption="Referência"/>
       <lookup caption="Pesquisar"/>
       <example caption="Ex: '2Pe 1:1-2' ou '2Pe 1:1-2 (KJV)'"/>
     </lookup>
+    <search caption="Busca de texto"/>
+    <books caption="Livro da Bíblia">
+	  <ot caption="Antigo testamento"/>
+	  <nt caption="Novo testamento"/>
+    </books>
+    <paragraph caption="Parágrafo"/>
+    <colon caption=":"/>
+    <from_verse caption="Do verso"/>
+    <dash caption="-"/>
+    <to_verse caption="Para o verso"/>
     <version caption="Versão"/>
-    <select_file caption="Por favor selecione um arquivo da Bíblia"/>
-    <verses_per_slide caption="Versos por Slide">
-      <one caption="1"/>
-      <two caption="2"/>
-      <three caption="3"/>
-    </verses_per_slide>
+    <select_file caption="Por favor selecione um arquivo de escritura"/>
+    <verses_per_slide caption="Versos por slide" />
+    <chars_per_slide caption="Máx. de caracteres por slide" />
     <format caption="Formato">
       <paragraph caption="Parágrafo"/>
       <verse caption="Verso"/>
     </format>
+    <shownumbers caption="Exibir versículos"/>
+    <preview caption="Prévia"/>
+    <insert caption="link(shared/insert/@caption)"/>
     <bad_reference>
       <format>Por favor verifique o formato da questão e tente novamente.</format>
       <empty>Referência ruim: a referência estava vazia.</empty>
@@ -849,11 +895,6 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
       <verse>Referência ruim: não foi possível encontrar o verso '%1'.</verse>
       <verse_range>Referência ruim: o verso 'para' deve ser maior ou igual ao verso 'de'.</verse_range>
     </bad_reference>
-    <colon caption=":"/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
-    <insert caption="link(shared/insert/@caption)"/>
-    <shownumbers caption="Exibir versículos"/>
   </scripture_lookup>
 
   <module>
@@ -1011,19 +1052,20 @@ Clique aqui para editar o estilo.</body>
   </style_preview>
   
 
- <subtitles caption="Legendas" head1="Sort" head2="Enabled" head3="Descrição">
-   <row0 caption="Copyright|copyright"/>
-   <row1 caption="Autor|author"/>
-   <row2 caption="Número do Hino|hymn_number"/> 
-   <row3 caption="Número da Canção CCLI|ccli_number"/> 
-   <row4 caption="Número da Licença CCLI|ccli_license"/>
- </subtitles>
+  <subtitles caption="Legendas" head1="Sort" head2="Enabled" head3="Descrição">
+    <row0 caption="Copyright|copyright"/>
+    <row1 caption="Autor|author"/>
+    <row2 caption="Número do Hino|hymn_number"/> 
+    <row3 caption="Número da Canção CCLI|ccli_number"/> 
+    <row4 caption="Número da Licença CCLI|ccli_license"/>
+  </subtitles>
       
   <shared>
     <ok caption="OK"/>
     <cancel caption="Cancelar"/>
     <yes caption="Sim"/>
     <no caption="Não"/>
+    <apply caption="Apl&amp;icar"/>
     <browse caption="Procurar"/>
     <browse_for caption="Procurar por Pasta"/>
     <add caption="Adicionar"/>
@@ -1145,6 +1187,7 @@ Os membros da equipe de desenvolvimento do OpenSong lamenta qualquer inconvenien
     </cclinotavailable>
     <activity_disabled>Não foi possível carregar a canção %1! do resitro de atividades. Por favor certifique-se de que este arquivo exista e esteja corrompido. A exibição do registro de atividades será desativada nesta sessão.</activity_disabled>
     <adding_logentry>Erro ao Adicionar Entrada!</adding_logentry>
+    <chars_per_slide>Máximo de caracteres por slides devem estar entre 1 e 1000.</chars_per_slide>
   </errors>
 
   <xml_errors>

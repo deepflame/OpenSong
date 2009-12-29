@@ -1,3 +1,4 @@
+about/translating (modified)
 about/web (modified)
 main_menu/help/user_manual
 sets_mode/current_item/presentitem/*

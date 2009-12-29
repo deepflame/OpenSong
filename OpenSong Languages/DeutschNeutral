@@ -151,6 +151,12 @@
       <remove caption="Entfernen">Entfernt den aktuellen Eintrag aus dem Set.</remove>
       <copy caption="Kopieren">Kopiert den aktuellen Eintrag.</copy>
       <store caption="Speichern">Speichert den aktuellen Eintrag.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Set Einträge">Zeigt die Einträge im aktuellen Set. Ein Klick auf einen Eintrag öffnet ihn im Editor, ein Doppelklick auf ein Lied öffnet es im Liededitor.</items>
   </sets_mode>

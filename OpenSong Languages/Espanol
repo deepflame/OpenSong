@@ -155,6 +155,12 @@
       <remove caption="Quitar">Quita el item actual de la coordinación.</remove>
       <copy caption="Copiar">Crea una copia del item actual en la coordinación.</copy>
       <store caption="Guardar">Guarda el item actual en la coordinación.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Items en la Coordinación">Lista los items de la coordinación actual. Haga un click en una diapositiva para cargarla en el editor de diapositivas o doble click en una canción para cargarla en el editor de canciones.
     <song caption="(canción)"/>

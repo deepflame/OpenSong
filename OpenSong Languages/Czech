@@ -157,6 +157,12 @@
       <copy caption="Kopírovat">Vytvoří kopii vybrané položky.</copy>
       <paste caption="link(shared/insert/@caption)">Vloží kopírovanou položku za současnou pozici.</paste>      
       <store caption="Uložit">Uloží vybranou položku playlistu.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Položky playlistu">Klikněte na uživatelský snímek pro jeho otevření v editoru, dvojklik otevře píseň v editoru písní.
       <song caption="(píseň)"/>

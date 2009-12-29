@@ -157,6 +157,12 @@
       <copy caption="Másolás">Másolat készítése a kiválasztott elemről az összeállításban.</copy>
       <paste caption="link(shared/insert/@caption)">A másolat beillesztése az aktuális elem után.</paste>      
       <store caption="Mentés">A kiválasztott elem mentése az összeállításban.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Az összeállítás elemei:">Az aktuális összeállítás elemeinek kilistázása. Egy diára vagy dalra kattintva szerkeszthetjük annak tartalmát.
       <song caption="(Dal)"/>

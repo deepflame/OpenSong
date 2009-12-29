@@ -1139,7 +1139,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <copyright>Copyright</copyright>
     <gpl>Deze software is vrijgegeven onder de voorwaarden van de GPL.</gpl>
     <web>Bezoek http://www.opensong.org/ voor meer informatie.</web>
-    <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Daarna stuur het bestand naar translator@opensong.org en wij zullen het bestand toevoegen aan de officiele release.</translating>
+    <translating>Om OpenSong te vertalen, kopiëer de 'English file' in de 'OpenSong Languages' directory en geef het de naam van de taal waarin je wilt vertalen. Vertaal alles in het bestand behalve de 'tags' en attribuut namen. Stuur het bestand daarna naar opensong-translate@lists.sourceforge.net of voeg het toe aan de 'Patches' Tracker op de Source Forge pagina van OpenSong en wij zullen het bestand toevoegen aan de officiele release.</translating>
     <created_with_opensong>Gemaakt met OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)

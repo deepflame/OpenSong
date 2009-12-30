@@ -1,3 +1,7 @@
+* Fix for subtitle handling when using other styles than the generic song style (Vwout)
+
+* Enable (fix?) subtitle style modifications on slide specific style overides (Vwout)
+
 * Updated the 'translation howto' message and slightly enlarged the InputBox to make room for the enhanced message (Vwout)
 
 * Updated the language independent language file contents for the new present set item button in all languages (the hint-message is not included) (Vwout)

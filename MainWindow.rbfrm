@@ -11670,6 +11670,7 @@ End
 		      can_slide_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
 		      can_slide_style.SetStyleNode SmartML.GetNode(xgroup, "style")
 		    End If
+		    can_slide_style.SongStyle = False
 		    ' can_slide_custom_style.Refresh False
 		    s = ""
 		    xslides = SmartML.GetNode(xgroup, "slides", True)
@@ -11712,6 +11713,7 @@ End
 		      can_slide_style.ClearPreviewSlide
 		      can_slide_style.SetStyleNode SlideSongStyle
 		    End If
+		    can_slide_style.SongStyle = True
 		    
 		    sDoc = SetML.GetSong(xgroup, Songs, songPath)
 		    If sDoc = Nil Then

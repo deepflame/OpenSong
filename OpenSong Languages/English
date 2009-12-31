@@ -1107,7 +1107,7 @@ Click on this slide to edit its style.</body>
     <copyright>Copyright</copyright>
     <gpl>This software is released under the terms of the GPL.</gpl>
     <web>For more information visit http://www.opensong.org/.</web>
-    <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to translator@opensong.org and we'll include it in the official release.</translating>
+    <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to opensong-translate@lists.sourceforge.net or add it in the 'Patches' Tracker on the OpenSong project page at Source Forge and we'll include it in the official release.</translating>
     <created_with_opensong>Created with OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)

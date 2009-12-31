@@ -151,6 +151,12 @@
       <remove caption="Slett">Slett det valgte objektet fra denne listen.</remove>
       <copy caption="Kopier">Lag en kopi av det valgte objektet.</copy>
       <store caption="Lagre">Lagrer det valgte objektet til listen.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Liste innhold"></items>
   </sets_mode>

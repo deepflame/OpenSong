@@ -159,6 +159,12 @@
       <copy caption="Kopieren">Dupliziert den ausgewählten Eintrag.</copy>
       <paste caption="link(shared/insert/@caption)">Fügt den kopierten Eintrag hinter dem ausgewählten ein.</paste>      
       <store caption="Speichern">Speichert Änderungen am ausgewählten Eintrag. Um das Set zu speichern, wählen Sie "Aktuelles Set|Speichern".</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Set Einträge">Zeigt die Einträge des ausgewählten Sets. Klicken Sie auf einen Eintrag, um ihn zu editieren. Doppelklicken Sie auf ein Lied, um es im "Liededitor" zu bearbeiten. Einträge können Sie mit der Maus verschieben.
       <song caption="(Lied)"/>

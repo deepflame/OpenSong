@@ -157,6 +157,12 @@
       <copy caption="Kopiuj">Tworzy kopię wybranego elementu zestawu.</copy>
       <paste caption="link(shared/insert/@caption)">Wstawia kopię wybranego elementu zestawu za bieżącą pozycją.</paste>
 			<store caption="Zapisz">Zapisuje wybrany element w zestawie.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Elementy zestawu">Lista elementów w bieżącym zestawie. Kliknij na dowolny slajd, by załadować go do edytora lub kliknij dwukrotnie na piosenkę, by załadować ją do edytora piosenek.
       <song caption="(piosenka)"/>

@@ -954,7 +954,7 @@ Protected Module SetML
 		  Dim fVerse, fCurrVerse As FontFace
 		  Dim align As String
 		  Dim currPart, section As String
-		  dim ChorusNr, currChorusNr as integer 'GP
+		  dim ChorusNr, PresentationIndex, currChorusNr as integer 'GP
 		  
 		  titleHeight = 0
 		  title = SmartML.GetValue(xslide.Parent.Parent, "title")
@@ -964,6 +964,7 @@ Protected Module SetML
 		    presentation = SmartML.GetValue(xslide.Parent.Parent, "presentation")
 		    slideId = Trim(SmartML.GetValue(xslide, "@id"))
 		    ChorusNr = (SmartML.GetValueN (xslide, "@ChorusNr")) 'GP
+		    PresentationIndex = (SmartML.GetValueN (xslide, "@PresentationIndex")) 'GP
 		    
 		    If presentation <> "" and slideId<>"" Then
 		      If Left(slideId, 1) = "V" Then
@@ -990,37 +991,48 @@ Protected Module SetML
 		        End If
 		        
 		        'If p = slideIndex Then
-		        If currPart = slideId Then
-		          If section = "V" Then
+		        'If currPart = slideId Then
+		        If section = "V" Then
+		          If p + 1 = PresentationIndex Then
 		            If main <> "" And curr = "" Then main = main + ", "
 		            curr = currentVerse
-		          ElseIf section = "P" Then
+		          Else
+		            If verse <> "" Then
+		              If curr = "" Then
+		                If main <> "" Then
+		                  main = main + ", "
+		                End If
+		                main = main + verse
+		              Else
+		                rest = rest + ", " + verse
+		              End If
+		            End If
+		          End If
+		        ElseIf section = "P" Then
+		          If currPart = slideId Then
 		            If main <> "" And curr = "" Then main = main + ", "
 		            curr = App.T.Translate("songml/prechorus_abbreviation/@caption")
-		          ElseIf section = "C" Then
+		          End If
+		        ElseIf section = "C" Then
+		          If currPart = slideId Then
 		            currChorusNr = currChorusNr + 1 'GP
-		            if ChorusNr = currChorusNr then 'GP
+		            If ChorusNr = currChorusNr Then 'GP
 		              If main <> "" And curr = "" Then main = main + ", "
 		              curr = App.T.Translate("songml/chorus_abbreviation/@caption")
-		            end if
-		            
-		          ElseIf section = "B" Then
+		            End If
+		          End If
+		        ElseIf section = "B" Then
+		          If currPart = slideId Then
 		            If main <> "" And curr = "" Then main = main + ", "
 		            curr = App.T.Translate("songml/bridge_abbreviation/@caption")
-		          ElseIf section = "T" Then
+		          End If
+		        ElseIf section = "T" Then
+		          If currPart = slideId Then
 		            If main <> "" And curr = "" Then main = main + ", "
 		            curr = App.T.Translate("songml/tag_abbreviation/@caption")
 		          End If
-		        ElseIf verse <> "" And section = "V" Then
-		          If curr = "" Then
-		            If main <> "" Then
-		              main = main + ", "
-		            End If
-		            main = main + verse
-		          Else
-		            rest = rest + ", " + verse
-		          End If
 		        End If
+		        
 		        
 		      Next
 		      IF curr = "" and currChorusNr > 0 then 'gp

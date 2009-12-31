@@ -9008,7 +9008,7 @@ End
 		  Dim songDoc As XmlDocument
 		  Dim Presentation As String
 		  '++JRC
-		  Dim CurStyle As XmlNode
+		  Dim ActiveCustomStyle As XmlNode = Nil
 		  Dim ItemNumber As Integer
 		  Dim i As Integer
 		  '--
@@ -9071,9 +9071,16 @@ End
 		          Call SmartML.InsertChildNode(slide_group, SlideSongStyle, slide_group.ChildCount())
 		          SongML.ToSetML slide_group, SlideSongStyle
 		        Else
-		          '++JRC: Pass CurStyle
+		          '++JRC: Pass ActiveCustomStyle
 		          ' But check for an override first!
-		          If SongStyle = Nil Then SongStyle = CurStyle
+		          '++Vwout: The better place to do this is SetML
+		          If ActiveCustomStyle <> Nil Then
+		            If SongStyle <> Nil Then
+		              SmartML.RemoveChild(slide_group, SongStyle)
+		            End If
+		            Call SmartML.InsertChildNode(slide_group, ActiveCustomStyle, slide_group.ChildCount())
+		            SongStyle = ActiveCustomStyle
+		          End If
 		          SongML.ToSetML slide_group, SongStyle
 		        End If
 		        
@@ -9095,13 +9102,12 @@ End
 		      '++JRC: Save Current Style
 		    Elseif SmartML.GetValue(slide_group, "@type", True) = "style"  Then
 		      if SmartML.GetValue(slide_group, "@action", True) = "new" then
-		        CurStyle = slide_group
-		        slide_group  = slide_group.NextSibling
+		        ActiveCustomStyle = SmartML.GetNode(slide_group, "style", False)
 		      else
 		        'reverting to previous style
-		        slide_group  = slide_group.NextSibling
+		        ActiveCustomStyle = Nil
 		      end if
-		      '--
+		      slide_group  = slide_group.NextSibling
 		    Else
 		      '++JRC Assign an index for this set item
 		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber + 1)

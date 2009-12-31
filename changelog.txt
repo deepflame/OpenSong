@@ -1,3 +1,5 @@
+﻿* Changed behavior of style slide: this style now also overrides song specific styles (Vwout)
+
 * Fix for subtitle handling when using other styles than the generic song style (Vwout)
 
 * Enable (fix?) subtitle style modifications on slide specific style overides (Vwout)

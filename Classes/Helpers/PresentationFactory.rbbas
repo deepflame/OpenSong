@@ -365,13 +365,10 @@ Protected Module PresentationFactory
 		    
 		    m_PptAvailable = Integer(HostAvailable.No)
 		    Try
-		      
-		      Dim ppApp As PowerPointApplication
-		      ppApp = New PowerPointApplication
+		      Dim ppApp As MsPowerPointHost = New MsPowerPointHost()
 		      If Not IsNull( ppApp ) Then
 		        m_PptAvailable = Integer(HostAvailable.Yes)
 		      End If
-		      
 		    Catch
 		      'catch all
 		    End Try

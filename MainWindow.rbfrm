@@ -10328,11 +10328,11 @@ End
 		              End If
 		              
 		            Else
-		              MsgBox(App.T.Translate("errors/presentations/unsupported_feature", oExtPres.HostName()))
+		              MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
 		            End If
 		            
 		          Else
-		            MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
+		            MsgBox(App.T.Translate("errors/fileutils/destdoesnotexisterror", presFile.AbsolutePath ))
 		          End If
 		        End If
 		        

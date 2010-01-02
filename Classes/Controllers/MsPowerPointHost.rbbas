@@ -23,6 +23,19 @@ Inherits PowerPointApplication
 	#tag EndEvent
 
 
+	#tag Method, Flags = &h1000
+		Sub Constructor()
+		  Super.Constructor()
+		  
+		  #If Not TargetWin32 Then
+		    Dim e As RuntimeException = new RuntimeException
+		    e.Message = "MsPowerPointHost: Powerpoint interaction is only available on Windows"
+		    Raise e
+		  #EndIf
+		End Sub
+	#tag EndMethod
+
+
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Index"

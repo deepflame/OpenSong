@@ -11808,10 +11808,10 @@ End
 		      can_image_style.SetStyleNode SmartML.GetNode(xgroup, "style")
 		    End If
 		    
-		    resize = SmartML.GetValue(xgroup, "@resize")
-		    chk_image_fit_to_screen.Value = (resize = "screen")
+		    resize = SmartML.GetValue(xgroup, "@resize", False)
+		    chk_image_fit_to_screen.Value = (resize = "screen") Or (resize = "")
 		    chk_image_fit_to_body.Value = (resize = "body")
-		    chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", True)
+		    chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", False, True)
 		    chk_image_keepaspect.Enabled = chk_image_fit_to_screen.Value Or chk_image_fit_to_body.Value
 		    chk_image_store_as_link.Value = imageLink
 		    

@@ -1,4 +1,6 @@
-﻿* Removed quote actifact from 'scripture_lookup/bad_reference/ambiguous' error message (bug #2769373) (JRC)
+* Set Images to autosize to screen as default (feature request #2688285) (Vwout)
+
+* Removed quote actifact from 'scripture_lookup/bad_reference/ambiguous' error message (bug #2769373) (JRC)
 
 * Changed behavior of style slide: this style now also overrides song specific styles (Vwout)
 

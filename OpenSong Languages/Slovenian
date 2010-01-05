@@ -849,7 +849,7 @@ Pri več vrsticah besedila na eno vrstico akordov imej v mislih, da vsaka vrsti�
       <format>Prosim preveri format povpraševanja in poskusi ponovno.</format>
       <empty>Napačen navedek: navedek je prazen.</empty>
       <book>Napačen navedek: ne najdem knjige.</book>
-      <ambiguous>Napačen navedek: več knjig ustreza '%1': %2</ambiguous>
+      <ambiguous>Napačen navedek: več knjig ustreza %1: %2</ambiguous>
       <version>Napačen navedek: '%1' prevoda ni najti.</version>
       <chapter>Napačen navedek: ne najdem poglavja '%1'.</chapter>
       <verse>Napačen navedek: ne najdem vrstice '%1'.</verse>

@@ -889,7 +889,7 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
       <format>Por favor verifique o formato da questão e tente novamente.</format>
       <empty>Referência ruim: a referência estava vazia.</empty>
       <book>Referência ruim: não foi possível encontrar o livro.</book>
-      <ambiguous>Referência ruim: Múltiplos livros encontrados '%1': %2</ambiguous>
+      <ambiguous>Referência ruim: Múltiplos livros encontrados %1: %2</ambiguous>
       <version>Referência ruim: '%1' a versão não pode ser encontrada.</version>
       <chapter>Referência ruim: não foi possível encontrar o capítulo '%1'.</chapter>
       <verse>Referência ruim: não foi possível encontrar o verso '%1'.</verse>

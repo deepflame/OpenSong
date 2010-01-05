@@ -893,7 +893,7 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
       <format>Sprawdź poprawność frazy i wyszukaj ponownie.</format>
       <empty>Niepoprawna składnia: puste zapytanie.</empty>
       <book>Niepoprawna składnia: nie można znaleźć księgi.</book>
-      <ambiguous>Niepoprawna składnia: Znaleziono kilka pasujących ksiąg '%1': %2</ambiguous>
+      <ambiguous>Niepoprawna składnia: Znaleziono kilka pasujących ksiąg %1: %2</ambiguous>
       <version>Niepoprawna składnia: nie można znaleźć tłumaczenia '%1'.</version>
       <chapter>Niepoprawna składnia: nie można znaleźć rozdziału '%1'.</chapter>
       <verse>Niepoprawna składnia: nie można znaleźć wersetu '%1'.</verse>

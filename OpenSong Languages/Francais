@@ -885,7 +885,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <format>Vérifiez le format de la requête et réessayez.</format>
       <empty>Référence erronée : la référence est vide.</empty>
       <book>Référence erronée : livre introuvable.</book>
-      <ambiguous>Référence erronée : Plusieurs livres correspondent '%1': %2</ambiguous>
+      <ambiguous>Référence erronée : Plusieurs livres correspondent %1: %2</ambiguous>
       <version>Référence erronée : version '%1' introuvable.</version>
       <chapter>Référence erronée : Chapître '%1' introuvable.</chapter>
       <verse>Référence erronée : Verset '%1' introuvable.</verse>

@@ -880,7 +880,7 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
       <format>Bitte prüfen Sie die Syntax der Abfrage und versuchen Sie's erneut.</format>
       <empty>Ungültige Bibelstelle: Sie haben keine Bibelstelle eingegben.</empty>
       <book>Ungültige Bibelstelle: Das Buch wurde nicht gefunden.</book>
-      <ambiguous>Ungültige Bibelstelle: Mehrere Bücher passen auf '%1': %2</ambiguous>
+      <ambiguous>Ungültige Bibelstelle: Mehrere Bücher passen auf %1: %2</ambiguous>
       <version>Ungültige Bibelstelle: Die Übersetzung '%1' wurde nicht gefunden.</version>
       <chapter>Ungültige Bibelstelle: Das Kapitel '%1' wurde nicht gefunden.</chapter>
       <verse>Ungültige Bibelstelle: Der Vers '%1' wurde nicht gefunden.</verse>

@@ -850,7 +850,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <format>Please check the format of the query and try again.</format>
       <empty>Mala referencia: la referencia estaba vacía.</empty>
       <book>Mala referencia: no se pudo encontrar el lirbo.</book>
-      <ambiguous>Bad reference: Multiple books match '%1': %2</ambiguous>
+      <ambiguous>Bad reference: Multiple books match %1: %2</ambiguous>
       <version>Mala referencia: no se pudo encontrar la versión '%1'.</version>
       <chapter>Mala referencia: no se pudo encontrar el capítulo '%1'.</chapter>
       <verse>Mala referencia: no se pudo encontrar el versículo '%1'.</verse>

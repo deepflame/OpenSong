@@ -889,7 +889,7 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
       <format>Zkontrolujte prosím formát dotazu a zkuste to znovu.</format>
       <empty>Špatný odkaz: odkaz nebyl zadán.</empty>
       <book>Špatný odkaz: nemohu nalézt knihu.</book>
-      <ambiguous>Špatný odkaz: Mnoho knih odpovídá '%1': %2</ambiguous>
+      <ambiguous>Špatný odkaz: Mnoho knih odpovídá %1: %2</ambiguous>
       <version>Špatný odkaz: '%1' verze nemůže být nalezena.</version>
       <chapter>Špatný odkaz: nemohu nalézt kapitolu '%1'.</chapter>
       <verse>Špatný odkaz: nemohu nalézt verš '%1'.</verse>

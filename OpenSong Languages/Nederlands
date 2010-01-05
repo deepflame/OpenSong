@@ -918,7 +918,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <format>Controleer de samenstelling van de zoekopdracht en probeer het nogmaals.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
       <book>Foute referentie: kan het boek niet vinden.</book>
-      <ambiguous>Bad reference: Meerdere boeken komen overeen '%1': %2</ambiguous>
+      <ambiguous>Bad reference: Meerdere boeken komen overeen %1: %2</ambiguous>
       <version>Foute referentie: '%1' versie wordt niet gevonden.</version>
       <chapter>Foute referentie: kan hoofdstuk '%1' niet vinden.</chapter>
       <verse>Foute referentie: kan vers '%1' niet vinden.</verse>

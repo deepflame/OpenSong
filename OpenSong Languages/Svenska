@@ -893,7 +893,7 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
       <format>Datorn förstår inte formatet. Kontrollera din söksträng och försök igen.</format>
       <empty>Felaktig referens: Referensen var tom.</empty>
       <book>Felaktig referens: Hittade inte bok.</book>
-      <ambiguous>Felaktig referens: Flera böcker funna: '%1' och %2</ambiguous>
+      <ambiguous>Felaktig referens: Flera böcker funna: %1 och %2</ambiguous>
       <version>Felaktig referens: Översättningen '%1' hittades inte.</version>
       <chapter>Felaktig referens: Hittade inte kapitel '%1'.</chapter>
       <verse>Felaktig referens: Hittade inte versen '%1'.</verse>

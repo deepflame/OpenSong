@@ -887,7 +887,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <format>Per favore, controlla il formato della stringa e riprova.</format>
       <empty>Riferimento errato: vuoto.</empty>
       <book>Riferimento errato: non trovo il libro.</book>
-      <ambiguous>Riferimento ambiguo: trovati piu' libri '%1': %2</ambiguous>
+      <ambiguous>Riferimento ambiguo: trovati piu' libri %1: %2</ambiguous>
       <version>Riferimento errato: versione '%1' non trovata.</version>
       <chapter>Riferimento errato: capitolo '%1' non trovato.</chapter>
       <verse>Riferimento errato: versetto '%1' non trovato.</verse>

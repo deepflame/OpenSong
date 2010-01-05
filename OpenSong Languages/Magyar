@@ -889,7 +889,7 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
       <format>Ellenőrizd a kérés formátumát, és próbáld újra.</format>
       <empty>Téves paraméter: a hivatkozott hely üres.</empty>
       <book>Téves paraméter: a könyv nem található.</book>
-      <ambiguous>Téves paraméter: több könyvre is ráillik: „%1”: %2</ambiguous>
+      <ambiguous>Téves paraméter: több könyvre is ráillik: %1: %2</ambiguous>
       <version>Téves paraméter: nem található ez a verzió: „%1”.</version>
       <chapter>Téves paraméter: nem található a fejezet: „%1”.</chapter>
       <verse>Téves paraméter: nem található a vers „%1”.</verse>

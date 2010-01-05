@@ -1,3 +1,4 @@
+scripture_lookup/bad_reference/ambiguous (Modified)
 about/translating (modified)
 about/web (modified)
 main_menu/help/user_manual

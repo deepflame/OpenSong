@@ -1,4 +1,6 @@
-﻿* Changed behavior of style slide: this style now also overrides song specific styles (Vwout)
+﻿* Removed quote actifact from 'scripture_lookup/bad_reference/ambiguous' error message (bug #2769373) (JRC)
+
+* Changed behavior of style slide: this style now also overrides song specific styles (Vwout)
 
 * Fix for subtitle handling when using other styles than the generic song style (Vwout)
 

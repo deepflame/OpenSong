@@ -1,3 +1,9 @@
+﻿* Rather than display an error when the Bible book name provided by user is ambiguous just go the first matching book (JRC)
+
+* Support partial book names when doing scripture lookups (eg. 'Phile' for Philemon) (bug #2769373) (JRC)
+
+* Support bshort abbreviations when doing scripture lookups (bug #2769373) (JRC)
+
 * Set Images to autosize to screen as default (feature request #2688285) (Vwout)
 
 * Removed quote actifact from 'scripture_lookup/bad_reference/ambiguous' error message (bug #2769373) (JRC)

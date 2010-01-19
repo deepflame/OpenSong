@@ -1,4 +1,6 @@
-﻿* Added option to copy current scripture to the clipboard (JRC)
+﻿# Added Scirpture Lookup to File Menu, so now it's possible to lookup a scripture reference anytime (JRC)
+
+* Added option to copy current scripture to the clipboard (JRC)
 
 * Rather than display an error when the Bible book name provided by user is ambiguious just go the first matching book (JRC)
 

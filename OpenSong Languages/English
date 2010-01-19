@@ -306,6 +306,7 @@
       <print_alphabetical_toc caption="Print _Alphabetical TOC"/>
       <print_categorical_toc caption="Print _Categorical TOC"/>
       <song_act caption="View Song Activity _Log"/>
+      <scripture caption="Scripture Lookup"/>
       <quit caption="E_xit"/>
     </file>
     <edit caption="_Edit">
@@ -885,6 +886,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <shownumbers caption="Display verse numbers"/>
     <preview caption="Preview"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Please check the format of the query and try again.</format>
       <empty>Bad reference: the reference was empty.</empty>

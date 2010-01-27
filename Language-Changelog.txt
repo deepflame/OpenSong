@@ -1,4 +1,9 @@
-scripture_lookup/bad_reference/ambiguous (Modified)
+style_editor/fonts_and_alignment/body_autosize
+style_editor/fonts_and_alignment/title (modified)
+style_editor/fonts_and_alignment/subtitle (modified)
+style_editor/fonts_and_alignment/body (modified)
+main_menu/file/scripture
+scripture_lookup/bad_reference/ambiguous (modified)
 about/translating (modified)
 about/web (modified)
 main_menu/help/user_manual

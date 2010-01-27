@@ -383,16 +383,19 @@ Protected Module SetML
 		      Profiler.EndProfilerEntry
 		      GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
 		    End If
-		    HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
-		    VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
-		    WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
-		    If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
-		      g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
-		      Profiler.EndProfilerEntry
-		      GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
+		    
+		    'Skip all text size adjustments; we don't want to skip all code below, as wrapping will be required.
+		    If style.BodyScale Then
+		      HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
+		      VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
+		      WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
+		      If WrapPercent > .85 Then // arbitrary, but that means 32pt wouldn't go less than ~28pt
+		        g.TextSize = Floor(g.TextSize * WrapPercent) //TextSize is an Integer; keep from hanging on one number
+		        Profiler.EndProfilerEntry
+		        GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
+		      End If
 		    End If
 		    Profiler.EndProfilerEntry
-		    //--EMP
 		    
 		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 1" ' --------------------------------------------------
 		    
@@ -401,10 +404,12 @@ Protected Module SetML
 		    line = ReplaceAll(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), Chr(10), "")
 		    '--
 		    
-		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
-		      g.TextSize = Floor(g.TextSize * .95)
-		      if g.textsize <=0 then exit
-		    Wend
+		    If style.BodyScale Then
+		      While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
+		        g.TextSize = Floor(g.TextSize * .95)
+		        if g.textsize <=0 then exit
+		      Wend
+		    End If
 		    
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 2 / Wrap" ' --------------------------------------------------
@@ -497,12 +502,15 @@ Protected Module SetML
 		      if g.textsize <=0 then exit 'gp
 		    Wend
 		    
+		    'If automatic scaling of the body text is not enabled, the bodySize should not be altered.
+		    'Other adjustments, like line wrapping do need to be applied (the code above should be executed)
+		    If style.BodyScale Then
+		      bodyStyle.Size = g.TextSize
+		    End If
+		    
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
 		    
-		    
-		    
-		    bodyStyle.Size = g.TextSize
 		    line = ""
 		    For i = 1 To UBound(lines)
 		      line = line + lines(i) + Chr(10)

@@ -306,7 +306,7 @@
       <print_alphabetical_toc caption="Print _Alphabetical TOC"/>
       <print_categorical_toc caption="Print _Categorical TOC"/>
       <song_act caption="View Song Activity _Log"/>
-      <scripture caption="Scripture Lookup"/>
+      <scripture caption="Scripture Look_up"/>
       <quit caption="E_xit"/>
     </file>
     <edit caption="_Edit">
@@ -752,9 +752,10 @@ If the presentation field is empty, then the Presenter will order the slides bas
 
   <style_editor title="Style Editor">
     <fonts_and_alignment caption="Fonts and Alignment">
-      <title caption="Title"/>
-      <subtitle caption="Subtitle"/>
-      <body caption="Body"/>
+      <title caption="Show Title"/>
+      <subtitle caption="Show Subtitle"/>
+      <body caption="Show Body"/>
+      <body_autosize caption="Automatic font size scaling to make text fit"/>
       <align caption="Align"/>
       <margin caption="Margins"/>
       <tabs caption="Tabulators"/>

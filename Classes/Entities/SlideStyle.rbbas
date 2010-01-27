@@ -259,9 +259,8 @@ Protected Class SlideStyle
 		  
 		  thisNode = "title"
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
-		  '++JRC
+		  
 		  SmartML.SetValueB(CurrChild, "@enabled", TitleEnable)
-		  '--
 		  SmartML.SetValue(CurrChild, "@valign", TitleVAlign)
 		  SmartML.SetValue(CurrChild, "@align", TitleAlign)
 		  SmartML.SetValueB(CurrChild, "@include_verse", TitleIncludeVerse)
@@ -273,9 +272,8 @@ Protected Class SlideStyle
 		  
 		  thisNode = "subtitle"
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
-		  '++JRC
+		  
 		  SmartML.SetValueB(CurrChild, "@enabled", SubtitleEnable)
-		  '--
 		  SmartML.SetValue(CurrChild, "@valign", SubtitleVAlign)
 		  SmartML.SetValue(CurrChild, "@align", SubtitleAlign)
 		  SmartML.SetValueB(CurrChild, "@descriptive", SubtitleDescriptiveText)
@@ -290,9 +288,9 @@ Protected Class SlideStyle
 		  
 		  thisNode = "body"
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
-		  '++JRC
+		  
 		  SmartML.SetValueB(CurrChild, "@enabled", BodyEnable)
-		  '--
+		  SmartML.SetValueB(CurrChild, "@auto_scale", BodyScale)
 		  SmartML.SetValue(CurrChild, "@valign", BodyVAlign)
 		  SmartML.SetValue(CurrChild, "@align", BodyAlign)
 		  SmartML.SetValueB(CurrChild, "@highlight_chorus", Highlight)
@@ -465,9 +463,8 @@ Protected Class SlideStyle
 		  BodyMargins.Right = SmartML.GetValueN(xStyle, "body/@margin-right")
 		  BodyMargins.Top = SmartML.GetValueN(xStyle, "body/@margin-top")
 		  BodyMargins.Bottom = SmartML.GetValueN(xStyle, "body/@margin-bottom")
-		  '++JRC
 		  BodyEnable = SmartML.GetValueB(xStyle, "body/@enabled", true, true)
-		  '--
+		  BodyScale = SmartML.GetValueB(xStyle, "body/@auto_scale", true, true)
 		  
 		  tabsNode = SmartML.GetNode(xStyle, "body/tabs")
 		  If tabsNode <> Nil Then
@@ -505,9 +502,7 @@ Protected Class SlideStyle
 		  TitleMargins.Top = SmartML.GetValueN(xStyle, "title/@margin-top")
 		  TitleMargins.Bottom = SmartML.GetValueN(xStyle, "title/@margin-bottom")
 		  TitleIncludeVerse = SmartML.GetValueB(xStyle, "title/@include_verse", True, False)
-		  '++JRC
 		  TitleEnable = SmartML.GetValueB(xStyle, "title/@enabled", true, true)
-		  '--
 		  
 		  SubtitleFont = SmartML.GetValueF(xStyle, "subtitle")
 		  SubtitleAlign = SmartML.GetValue(xStyle, "subtitle/@align")
@@ -518,9 +513,7 @@ Protected Class SlideStyle
 		  SubtitleMargins.Bottom = SmartML.GetValueN(xStyle, "subtitle/@margin-bottom")
 		  Subtitles = SmartML.GetValue(xStyle, "song_subtitle")
 		  SubtitleDescriptiveText = SmartML.GetValueB(xStyle, "subtitle/@descriptive", True, False)
-		  '++JRC
 		  SubtitleEnable = SmartML.GetValueB(xStyle, "subtitle/@enabled", true, true)
-		  '--
 		  
 		  fileName = SmartML.GetValue(xstyle, "background/@filename", False)
 		  If fileName <> "" Then
@@ -654,6 +647,10 @@ Protected Class SlideStyle
 
 	#tag Property, Flags = &h21
 		Private BodyVAlign As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		BodyScale As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

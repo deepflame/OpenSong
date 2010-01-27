@@ -306,6 +306,7 @@
       <print_alphabetical_toc caption="Afdrukken _Alfabetisch TOC"/>
       <print_categorical_toc caption="Afdrukken _Per Categorie TOC"/>
       <song_act caption="Bekijk lied gebruik _logboek"/>
+      <scripture caption="Bijbelteksten _zoeken"/>
       <quit caption="Af_sluiten"/>
     </file>
     <edit caption="_Wijzigen">
@@ -779,9 +780,10 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
 
   <style_editor title="Wijzigen Stijlen">
     <fonts_and_alignment caption="Lettertypes en uitlijning">
-      <title caption="Titel"/>
-      <subtitle caption="Subtitel"/>
-      <body caption="Body"/>
+      <title caption="Titel tonen"/>
+      <subtitle caption="Subtitel tonen"/>
+      <body caption="Body tonen"/>
+      <body_autosize caption="Letter grootte automatisch aanpassen bij veel tekst"/>
       <align caption="Uitlijning"/>
       <margin caption="Marges"/>
       <tabs caption="Tabulators"/>

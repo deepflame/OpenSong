@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt" version="1.5.1">
+<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt" version="1.6.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>

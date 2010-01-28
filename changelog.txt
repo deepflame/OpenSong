@@ -1,4 +1,6 @@
-﻿# Added Scirpture Lookup to File Menu, so now it's possible to lookup a scripture reference anytime (JRC)
+﻿-= 1.6.0 =-
+
+* Added Scirpture Lookup to File Menu, so now it's possible to lookup a scripture reference anytime (JRC)
 
 * Added option to copy current scripture to the clipboard (JRC)
 

@@ -1,3 +1,4 @@
+-= Version 1.6 =-
 style_editor/fonts_and_alignment/body_autosize
 style_editor/fonts_and_alignment/title (modified)
 style_editor/fonts_and_alignment/subtitle (modified)

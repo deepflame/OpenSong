@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Svenska" author="Edvin Erdtman" version="1.5.1">
+<language name="Svenska" author="Edvin Erdtman" version="1.6.0">
 
   <load_settings>
     <checking_folders>Skapar/Kontrollerar dokumentmappar</checking_folders>
@@ -157,7 +157,7 @@
       <copy caption="Kopiera">Kopierar markerad post i listan.</copy>
       <paste caption="link(shared/paste/@caption)">Infoga kopierad post efter markerad post i listan.</paste>      
       <store caption="Spara">Sparar markerad textsida.</store>
-      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Visar den aktulla presntationen på skärmen, med början från den markerade posten i listan. Du kan välja att visa på den primära skärmen, två skärmar (med presentationsläge på primär skärm), och att förhandsvisa tvåskärmsläget.
         <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
         <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
         <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
@@ -189,7 +189,7 @@
     <title caption="Titel">Titeln eller rubriken på sidan som visas i presentationen.</title>
     <subtitle caption="Sånginfo/Undertitel">Undertitel eller sånginfo för sånger). Visas i presentationen.</subtitle>
     <name caption="Namn">Namn på bilden(erna) som visas i listan och vid utskrift av lista (Visas ej i själva presentationen).</name>
-    <slides caption="Text">Texten som ska visas i presentationen.</slides>
+    <slides caption="Text">Innehåller texten som ska visas i presentationen.</slides>
     <presentation caption="Egen visningsordning">Åsidosätter visningsordningen i sparad sång</presentation>
     <origorder caption="Sparad visningsordning">Visningssordning utifrån sparad sång (fältet "Visning" i sångredigeraren)</origorder>       
     <folder caption="Sångmapp">Visar vilken mapp markerad sång finns i</folder>
@@ -210,7 +210,7 @@
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
     <descriptions caption="Bildtext i undertiteln">Lägg till bildtexten till den visade bilden i undertiteln/sånginfo.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="Bilder" head1="Förhandsvisa" head2="Beskrivning">Visar bilderna som kommer att visas.</images>
+    <images caption="Bilder" head1="Förhandsvisa" head2="Beskrivning">Visar bilderna som kommer att visas. Tips: Lägg till bilder enkelt genom att 'Dra och släppa' bilder till denna lista.</images>
     <fit_to_screen caption="Ändra bildernas storlek för att passa bildskärmen">Bilder större än skärmupplösningen på projektorn förminskas, så att hela bilden visas. Små bilder förstoras så att de täcker hela skärmen.</fit_to_screen>
     <fit_to_body caption="Ändra bildernas storlek så att passa innanför marginalerna ">Bildernas storlek ändras för att passa in innanför brödtextmarginalerna (Inställningar-Presentationsinställningar-Presentationsutseende-marginaler) .</fit_to_body>
     <keepaspect caption="Behåll höjd-breddförhållande">När bildstorleken ändras enligt någon av ovanstående alternativ, kommer höjd-breddförhållandet på bilden behållas.</keepaspect>
@@ -306,6 +306,7 @@
       <print_alphabetical_toc caption="Skriv ut Sånglista AB_C"/>
       <print_categorical_toc caption="Skriv ut Sånglista _Kategori"/>
       <song_act caption="Visa Sångens aktivitets_historik"/>
+      <scripture caption="Sök efter _bibelord"/>
       <quit caption="_Avsluta"/>
     </file>
     <edit caption="_Redigera">
@@ -332,6 +333,7 @@
     </settings>
     <help caption="_Hjälp">
       <help_topics caption="_Hjälpavsnitt"/>
+      <user_manual caption="Användar_Manual Online"/>
       <translating caption="_Översätta OpenSong"/>
       <about caption="_Om OpenSong"/>
     </help>
@@ -459,7 +461,6 @@
       <blanks caption="Sätt in tomma bilder"/>
       <blanks_between caption="mellan sånger/poster"/>
       <time caption="Tid" helptag="Total tid för övertoning (kan i verkligheten ta längre tid på äldre system)"/>
-      <frames caption="Ramar" helptag="Antal ramar, eller steg mellan bilderna"/>
       <blank_style caption="Tomma bilder tar bakgrundsutseende från"/>
       <blank_prev caption="Föregående"/>
       <blank_next caption="Nästkommande"/>
@@ -755,9 +756,10 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
 
   <style_editor title="Ändra utseende">
     <fonts_and_alignment caption="Teckensnitt och textposition">
-      <title caption="Titel"/>
-      <subtitle caption="Sånginfo"/>
-      <body caption="Brödtext"/>
+      <title caption="Visa titel"/>
+      <subtitle caption="Visa sånginfo"/>
+      <body caption="Visa brödtext"/>
+      <body_autosize caption="Ställ in teckenstorleken automatiskt"/>
       <align caption="Textposition"/>
       <margin caption="Marginaler"/>
       <tabs caption="Tabulatur"/>
@@ -889,11 +891,14 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
     <shownumbers caption="Visa versnummer"/>
     <preview caption="Förhandsvisa"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Datorn förstår inte formatet. Kontrollera din söksträng och försök igen.</format>
       <empty>Felaktig referens: Referensen var tom.</empty>
       <book>Felaktig referens: Hittade inte bok.</book>
-      <ambiguous>Felaktig referens: Flera böcker funna: %1 och %2</ambiguous>
+      <ambiguous>Felaktig referens: Flera böcker matchar %1: %2</ambiguous>
       <version>Felaktig referens: Översättningen '%1' hittades inte.</version>
       <chapter>Felaktig referens: Hittade inte kapitel '%1'.</chapter>
       <verse>Felaktig referens: Hittade inte versen '%1'.</verse>
@@ -1111,7 +1116,7 @@ Klicka på den här bilden för att ändra utseendet.</body>
     <copyright>Copyright</copyright>
     <gpl>Denna programvara är baserat på GPL (General public license).</gpl>
     <web>Besök http://www.opensong.org/ för mer information.</web>
-    <translating>För att översätta OpenSong, kopiera en redan existerande språkfil i mappen 'OpenSong Languages', och byt namn på den till det språk du vill överstätta till. Översätt sedan allt i filen utom taggar o.dyl. (Tips använd ett program för att jämföra filer). Sänd sedan filen i ett mail till translator@opensong.org så kommer vi att ta med den i den officiella utgåvan.</translating>
+    <translating>För att översätta OpenSong, kopiera en redan existerande språkfil i mappen 'OpenSong Languages', och byt namn på den till det språk du vill överstätta till. Översätt sedan allt i filen utom taggar o.dyl. (Tips använd ett program för att jämföra filer). Sänd sedan filen i ett mail till opensong-translate@lists.sourceforge.net eller lägg in det i 'Patches' Tracker på OpenSongs projekt sida på Source Forge, så kommer vi att ta med den i den officiella utgåvan.</translating>
     <created_with_opensong>Skapad i OpenSong</created_with_opensong>
     <sources>OpenSong innehåller källkod från
 StringUtils (http://www.strout.net/info/coding/rb/)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Polski" author="Mariusz Mycielski" version="1.5.1">
+<language name="Polski" author="Mariusz Mycielski" version="1.6.0">
 
   <load_settings>
     <checking_folders>Tworzę/Sprawdzam foldery dokumentów</checking_folders>
@@ -156,12 +156,12 @@
       <remove caption="Usuń">Usuwa wybrany element z zestawu.</remove>
       <copy caption="Kopiuj">Tworzy kopię wybranego elementu zestawu.</copy>
       <paste caption="link(shared/insert/@caption)">Wstawia kopię wybranego elementu zestawu za bieżącą pozycją.</paste>
-			<store caption="Zapisz">Zapisuje wybrany element w zestawie.</store>
-      <presentitem caption="link(sets_mode/current_set/present/@caption)">
-        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
-        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
-        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
-        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      <store caption="Zapisz">Zapisuje wybrany element w zestawie.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Prezentuje bieżący zestaw na ekranie począwszy od aktualnie wybranego elementu. Masz do wyboru prezentację na bieżącym monitorze, drugim monitorze lub podgląd widoku dwumonitorowego na bieżącym monitorze.
+        <single_screen caption="Single Screen"/>
+        <dual_screen caption="Dual Screen"/>
+        <preview_dual_screen caption="Preview Dual Screen"/>
+        <no_slides>You must have at least one slide in the set to present.</no_slides>
       </presentitem>
     </current_item>
     <items caption="Elementy zestawu">Lista elementów w bieżącym zestawie. Kliknij na dowolny slajd, by załadować go do edytora lub kliknij dwukrotnie na piosenkę, by załadować ją do edytora piosenek.
@@ -306,6 +306,7 @@
       <print_alphabetical_toc caption="Drukuj spis treści alfabetycznie"/>
       <print_categorical_toc caption="Drukuj spis treści wg kategorii"/>
       <song_act caption="Wyświetl _raport aktywności piosenek"/>
+      <scripture caption="Wyszukuj wersety"/>
       <quit caption="_Zakończ"/>
     </file>
     <edit caption="_Edycja">
@@ -331,8 +332,9 @@
       <install_module caption="_Instaluj moduł"/>
     </settings>
     <help caption="_Pomoc">
-      <help_topics caption="_Tematy pomocy"/>
-      <translating caption="Tłumaczenie _OpenSong"/>
+      <help_topics caption="Tematy _pomocy"/>
+      <user_manual caption="Podręcznik _użytkownika online"/>
+      <translating caption="_Tłumaczenie OpenSong"/>
       <about caption="_O OpenSong"/>
     </help>
   </main_menu>
@@ -755,10 +757,11 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
 
   <style_editor title="Edytor stylu">
     <fonts_and_alignment caption="Czcionki i wyrównanie">
-      <title caption="Tytuł"/>
-      <subtitle caption="Podtytuł"/>
-      <body caption="Treść"/>
-      <align caption="Wyrównanie"/>
+      <title caption="Pokaż tytuł"/>
+      <subtitle caption="Pokaż podtytuł"/>
+      <body caption="Pokaż treść"/>
+      <body_autosize caption="Automatyczne dopasowanie rozmiaru czcionki"/>
+	<align caption="Wyrównanie"/>
       <margin caption="Marginesy"/>
       <tabs caption="Tabulatory"/>
    </fonts_and_alignment>
@@ -889,11 +892,14 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
     <shownumbers caption="Wstaw numery wersetów"/>
 		<preview caption="Podgląd"/>
 	  <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Sprawdź poprawność frazy i wyszukaj ponownie.</format>
       <empty>Niepoprawna składnia: puste zapytanie.</empty>
       <book>Niepoprawna składnia: nie można znaleźć księgi.</book>
-      <ambiguous>Niepoprawna składnia: Znaleziono kilka pasujących ksiąg %1: %2</ambiguous>
+      <ambiguous>Niepoprawna składnia: Znaleziono kilka pasujących ksiąg '%1': %2</ambiguous>
       <version>Niepoprawna składnia: nie można znaleźć tłumaczenia '%1'.</version>
       <chapter>Niepoprawna składnia: nie można znaleźć rozdziału '%1'.</chapter>
       <verse>Niepoprawna składnia: nie można znaleźć wersetu '%1'.</verse>
@@ -1119,8 +1125,8 @@ Kliknij na slajd, by edytować jego styl.</body>
     <additional>Pomagali nam:</additional>
     <copyright>Copyright</copyright>
     <gpl>To oprogramowanie jest udostępniane na licencji GPL.</gpl>
-    <web>Wejdź na http://www.opensong.org/ by dowiedzieć się więcej.</web>
-    <translating>Aby przetłumaczyć OpenSong na inny język, skopiuj plik 'English' w katalogu 'OpenSong Languages' i nazwij go nazwą docelowego języka. Przetłumacz całą jego zawartość z wyjątkiem tagów i nazw atrybutów. Następnie prześlij plik na adres translator@opensong.org a my umieścimy go na oficjalnej stronie programu.</translating>
+    <web>Więcej informacji na stronie http://www.opensong.org/.</web>
+    <translating>Aby przetłumaczyć OpenSong na inny język, skopiuj plik 'English' w katalogu 'OpenSong Languages' i nazwij go nazwą docelowego języka. Przetłumacz całą jego zawartość z wyjątkiem tagów i nazw atrybutów. Następnie prześlij plik na adres opensong-translate@lists.sourceforge.net albo umieść w sekcji 'Patches' Tracker na stronie projektu OpenSong, a my dołączymy go do kolejnej wersji programu.</translating>
     <created_with_opensong>Utworzone przez OpenSong</created_with_opensong>
     <sources>OpenSong korzysta z kodu:
 StringUtils (http://www.strout.net/info/coding/rb/)

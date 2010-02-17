@@ -1,4 +1,8 @@
-﻿-= 1.6.0 =-
+﻿-= 1.6.1 =-
+
+* Fix issue that was preventing adding a song to a presentation (JRC)
+
+-= 1.6.0 =-
 
 * Added Scirpture Lookup to File Menu, so now it's possible to lookup a scripture reference anytime (JRC)
 

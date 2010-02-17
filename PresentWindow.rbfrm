@@ -346,8 +346,8 @@ End
 		      ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
 		      ActLog(i).Displayed = false 'Set this to true if user displays this song
 		      
-		    Else '++JRC We should probably bail if f is Nil ;)
-		      Return False
+		    Else 
+		      
 		    End If
 		    '--
 		    

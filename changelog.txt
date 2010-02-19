@@ -1,6 +1,6 @@
 ﻿-= 1.6.1 =-
 
-* Fix issue that was preventing adding a song to a presentation (JRC)
+* Fix issue that was preventing adding a song to a presentation during live mode (JRC)
 
 -= 1.6.0 =-
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Español" author="Matías Orellana/Bruce Hoffman" version="1.4.0">
+<language name="Español" author="Matías Orellana/Bruce Hoffman" version="1.6.1">
 
   <load_settings>
     <checking_folders>Creando/Checando documentos y folders</checking_folders>
@@ -35,7 +35,7 @@
     </all_songs>
     <new_song caption="Nueva Canción">
       <create caption="Crear">Agrega una nueva canción a OpenSong.</create>
-      <import caption="Importar">Agrega una nueva canción a OpenSong desde el 'CCLI SongSelect'.</import>
+      <import caption="Importar">Agrega una nueva canción a OpenSong usando 'CCLI SongSelect'.</import>
     </new_song>
     <selected_song caption="Canción Actual">
       <save caption="Guardar">Almacena la canción actual en el disco.</save>
@@ -146,6 +146,7 @@
       <add_scripture caption="Versículo">Agrega uno o más versículos a la coordinación actual. Esto presentará una ventana que le permitirá escoger el versículo que Ud. desea presentar.</add_scripture>
       <add_slides caption="Diapositivas">Agrega una diapositiva a la coordinación actual. Las diapositivas le permiten a Ud. especificar su propio título, subtítulo, texto principal e incluso un estilo definido. Un item de estilo definido puede contener una serie de diapositivas.</add_slides>
       <add_style caption="Estilo">Cambia el estilo predefinido de la coordinación actual en cualquier lugar de la coordinación. Los cambios de estilo pueden definir un nuevo estilo o volver al estilo anterior.</add_style>
+      <add_image caption="Imagen">Agrega una diapositiva de imagen a la coordinación actual. Diapositivas de imágenes permiten mostrar una sola diapositiva o una presentación de varias imágenes en lugar de texto.</add_image>
       <add_video caption="Vídeo">PENDIENTE: Agrega un video a la coordinación actual. Se usa para presentar un video desde OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">PENDIENTE: Agrega una presentación de PowerPoint a la coordinación actual. Se usa para presentar un PowerPoint desde OpenSong.</add_powerpoint>
     </new_item>
@@ -154,8 +155,9 @@
       <move_down caption="Mover Abajo">Mueve el item actual más cerca del término de la coordinación.</move_down>
       <remove caption="Quitar">Quita el item actual de la coordinación.</remove>
       <copy caption="Copiar">Crea una copia del item actual en la coordinación.</copy>
+      <paste caption="link(shared/insert/@caption)">Insertar el item copiado después de la posición actual.</paste>      
       <store caption="Guardar">Guarda el item actual en la coordinación.</store>
-      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Presenta la coordinación actual en la pantalla, empezando con el item seleccionado. Tienes la opción de presentar al monitor actual, un monitor secundario, o una imagen vista preliminar en un solo monitor para ver como se vería usando 2 monitores.
         <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
         <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
         <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
@@ -166,6 +168,7 @@
     <song caption="(canción)"/>
       <custom caption="(custom)"/>
       <scripture caption="(escritura)"/>
+      <image caption="(imagen)"/>
       <style caption="(estilo)">-- Cambiar Estilo --</style>
       <revert caption="(estilo)">-- Revertir Estilo --</revert>
       <defaultstyle caption="(estilo)">-- Exportar Estilo --</defaultstyle>
@@ -183,18 +186,17 @@
 
   <slide_editor>
     <header caption="Editor de Diapositivas"/>
-    <title caption="Título">Ajusta el título de la diapositiva actual.</title>
-    <subtitle caption="Subtítulo">Ajusta el subtítulo de la diapositiva actual.</subtitle>
-    <name caption="Nombre">Ajusta el título de la diapositiva presentada en la ventana de ayuda. Este no se muestra en la diapositiva presentada.</name>
-    <slides caption="Diapositivas">Ajusta el texto principal de la diapositiva actual.</slides>
-
+    <title caption="Título">El título que se ve en la diapositiva actual.</title>
+    <subtitle caption="Subtítulo">El subtítulo que se ve en la diapositiva actual.</subtitle>
+    <name caption="Nombre">El título de la diapositiva que se ve en la ventana de ayuda; no se ve en la diapositiva presentada.</name>
+    <slides caption="Diapositivas">El texto principal de la diapositiva actual.</slides>
     <presentation caption="Orden de Presentación especial">Anula el orden normal en el archivo de la canción.</presentation>
      <folder caption="Folder de Canciones">Folder que contiene el item seleccionado.</folder>
-     <origorder caption="Orden de Presentación original">Orden de Presentación en el archivo de canción.</origorder>       
+     <origorder caption="Orden de Presentación original">Orden de Presentación en el archivo de canciones.</origorder>       
     <notes caption="Notas">Estas notas se ven en la ventana de ayuda de la presentación, mientras se presenta la coordinación utilizando el modo de Pantalla Doble.</notes>
     <insert caption="Insertar"/>
-      <ins_slide caption="Diapositiva">Permite la creación de múltiples diapositivas que comparten un título, subtítulo, estilo, y/o auto-avance. Las diapositivas creadas de esta forma pueden también ser ajustadas para que se repitan automaticamente (bucle).</ins_slide>
-    <loop caption="Bucle de Diapositivas">Marque esta casilla para que OpenSong repita automáticamente la primera diapositiva después que haya terminado de presentar la última diapositiva en esta coordinación.</loop>
+      <ins_slide caption="Diapositiva">Permite la creación de múltiples diapositivas que comparten un título, subtítulo, estilo, y/o auto-avance. Las diapositivas creadas de esta forma pueden también ser ajustadas para que se repitan automaticamente (ciclo).</ins_slide>
+    <loop caption="Ciclo">Marque esta casilla para que OpenSong vuelva automáticamente a la primera diapositiva después que haya terminado de presentar la última diapositiva en esta coordinación.</loop>
     <print caption="Imprimir Lista">Desmarque esta casilla para hacer que un grupo de diapositivas no aparezca cuando imprima la lista de items de esta coordinación.</print>
     <transition caption="Usar transición">Marque esta casilla para usar una transición cuando se presenta esta diapositiva.</transition>
     <auto_advance caption="Avanzar diapositivas automáticamente cada">Ingrese el número de segundos que OpenSong presentará cada diapositiva antes de presentar la siguiente diapositiva de esta coordinación.</auto_advance>
@@ -202,10 +204,35 @@
     <style caption="Definir Estilo">Marque esta casilla para permitir que esta diapositiva tenga un estilo personalizado. Cuando está marcado, haga un click en la casilla de previsualizar para editar el estilo de la diapositiva.</style>
   </slide_editor>
 
+<image_slide>
+    <header caption="Editor de Imágenes"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Usar descripción de imagen en subtítulo">Usar la descripción de la imagen en el campo del subtítulo.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Imágenes" head1="Prevista" head2="Descripción">Contiene las imágenes que se verán en esta diapositiva. Tip: Arrastra una imagen o más a esta lista para agregarlas.</images>
+    <fit_to_screen caption="Redimensionar la imagen conforme a la pantalla">Las imágenes demasiada grandes para la pantalla se redimensionan para mostrar la imagen completa, igual para las imágenes demasiada chicas para la pantalla.</fit_to_screen>
+    <fit_to_body caption="Redimensionar la imagen conforme al texto">Las imágenes siempre se redimensionan para acomodarse a la área del cuerpo de texto conforme al estilo.</fit_to_body>
+    <keepaspect caption="Mantener proporción de las imágenes al cambiar las dimensiones">En el caso de redimensionar las imágenes usando las opciones arriba, esto conservará las proporciones.</keepaspect>
+    <store_as_link caption="No guardar la imagen en la coordinación; guardar una liga a la imagen">Guardar imágenes en el archivo de la coordinación puede aumentar rápidamente el tamaño del archivo; el usar una liga evita esto. ¡Usa con cuidado si se crea la presentación en otra máquina que se va a usar para la presentación! Las imágenes del folder 'Backgrounds' se guardan como liga relativa, que facilita el cambio a la computadora donde se hace la presentación.</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Acción" />
+      <ins_image caption="Agregar imagen">Agrega una imagen a esta diapositiva que permite usar el mismo título, subtítulo, o estilo para una presentación dinámica de diapositivas. Diapositivas creadas de esta manera pueden presentarse automáticamente en un ciclo.</ins_image>
+      <del_image caption="Quitar imagen">Quita la imagen seleccionada de la diapositiva.</del_image>
+      <move_up caption="Mover arriba">Mueve la imagen seleccionada hacia el principio de la presentación.</move_up>
+      <move_down caption="Mover abajo">Mueve la imagen seleccionada hacia el fin de la presentación.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
+
   <style_change>
     <header caption="Cambiar Estilo"/>
-    <revert caption="Cambiar al estilo anterior">Esta opción causará que la coordinación actual vuelva al estilo anterior desde ahora.</revert>
-    <change caption="Cambiar el estilo a esto">Esta opción permite a las coordinaciones cambiar sus estilos en cualquier lugar de la coordinación. Los cambios de estilo afectan a todas las diapositivas hasta llegar al siguiente cambio de estilo.</change>
+    <revert caption="Cambiar al estilo anterior">Esta opción causará que la coordinación actual vuelva al estilo anterior del estilo actual.</revert>
+    <change caption="Cambiar el estilo a esto">Esta opción permite a las coordinaciones cambiar sus estilos en cualquier lugar de la coordinación. Cambios de estilo afectan a todas las diapositivas en adelante hasta llegar al siguiente cambio de estilo.</change>
     <style>Haga un click aquí para editar el estilo nuevo.</style>
   </style_change>
 
@@ -213,7 +240,7 @@
     <header caption="Editor de Diapositivas con Video"/>
     <name caption="Nombre Diapositiva">El nombre que usa OpenSong para identificar esta diapositiva.</name>
     <file caption="Nombre de Video">Ajusta el nombre del video para esta diapositiva.</file>
-    <loop caption="Bucle Video">Marca esta casilla para que el video haga bucle.</loop>
+    <loop caption="Ciclo Video">Marca esta casilla para que el video se repite en bucle.</loop>
   </video_slides>
 
   <powerpoint_slides>
@@ -224,7 +251,7 @@
   
   <song_search title="Buscar Canciones">
     <search caption="Ingrese una cadena a buscar:"/>
-    <fields caption="Buscar Campos">
+    <fields caption="Buscar Campos:">
       <title caption="link(general_song_editor/title/@caption)"/>
       <author caption="link(general_song_editor/author/@caption)"/>
       <copyright caption="link(general_song_editor/copyright/@caption)"/>
@@ -248,37 +275,39 @@
   </song_search>
    
   <scripture_search title="Buscar">
-    <match caption="Igualar">
-      <exact caption="Exactamente"/>
-      <begin caption="Frase comienza con:"/>
-    </match>
-    <words caption="Versículos requieren:">
-      <all caption="Todas las palabras"/>
-      <any caption="Cualquier palabra"/>
-    </words>
-    <search caption="Buscar"/>
+  <caption caption="Buscar en Biblia usando palabra clave."/>
     <example caption="Para buscar una expresión exacta, usa comillas así: &quot;Simon Pedro&quot;"/>
+    <match caption="Igualar">
+      <exact caption="E&amp;xactamente"/>
+      <begin caption="&amp;Frase comienza con"/>
+    </match>
+    <words caption="Versículos requieren">
+      <all caption="T&amp;odas las palabras"/>
+      <any caption="C&amp;ualquier palabra"/>
+    </words>
+    <search caption="&amp;Buscar"/>
+    <result caption="%1 palabra(s) se encontraron usando palabras claves."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
     <result head1="Referencia" head2="Texto" />
   </scripture_search>
 
   <main_menu>
-    <file caption="_Archivo">
-      <new caption="_Nuevo"/>
-      <save caption="_Guardar"/>
-      <present caption="_Presentar">
+    <file caption="Archivo">
+      <new caption="Nuevo"/>
+      <save caption="Guardar"/>
+      <present caption="Presentar">
         <single_screen caption="Pantalla Simple"/>
         <dual_screen caption="Pantalla Doble"/>
         <preview_dual_screen caption="Previsualizar Pantalla Doble"/>
       </present>
-
-      <pagesetup caption="Aj_ustar Pagina"/>
-      <print caption="_Imprimir"/>
-      <print_alphabetical_toc caption="Imprimir la Tabla de Contenidos _Alfabeticamente"/>
-      <print_categorical_toc caption="Imprimir la Tabla de Contenidos por _Categorias"/>
+      <pagesetup caption="Ajustar Pagina"/>
+      <print caption="Imprimir"/>
+      <print_alphabetical_toc caption="Imprimir TdC _Alfabeticamente"/>
+      <print_categorical_toc caption="Imprimir TdC por _Categorias"/>
       <song_act caption="Ver _Log de Actividad de Canciones"/>
-      <quit caption="_Salir"/>
+      <scripture caption="Buscar Escritura"/>
+      <quit caption="Salir"/>
     </file>
     <edit caption="_Editar">
       <undo caption="_Deshacer"/>
@@ -304,6 +333,7 @@
     </settings>
     <help caption="Ay_uda">
       <help_topics caption="_Temas de Ayuda"/>
+      <user_manual caption="_Manual de Usuario en Linea"/>
       <translating caption="_Traduciendo OpenSong"/>
       <about caption="_Acerca de OpenSong"/>
     </help>
@@ -312,7 +342,7 @@
   <general_settings title="Configuración General">
     <general caption="General" head1="Básico" head2="Avanzado">
       <ccli caption="# Licencia CCLI"/>
-      <version_check caption="Checar por red para una nueva versión."/>
+      <version_check caption="Checar internet para una nueva versión"/>
       <language caption="Idioma"/>
     </general>
     <proxy caption="Proxy">
@@ -374,6 +404,7 @@
       <bottom caption="Abajo"/>
       <width caption="Ancho"/>
       <height caption="Alto"/>
+      <message caption="Ver Archivo/Ajustar Pagina... para ajustar márgenes"/>
     </margins>
     <fonts>
       <title caption="Título"/>
@@ -430,7 +461,6 @@
       <blanks caption="Insertar Espacios Automáticamente"/>
       <blanks_between caption="Entre Items de la Coordinación"/>
       <time caption="Tiempo" helptag="Tiempo Total para transición (puede tardar mas en sistemas viejos)"/>
-      <frames caption="Campos" helptag="Numero de campos o pasos de transiciones entre diapositivas"/>
       <blank_style caption="Diapositivas nuevas toman estilo de"/>
       <blank_prev caption="Diapositiva Previa"/>
       <blank_next caption="Diapositiva Siguiente"/>
@@ -484,7 +514,7 @@
       <return caption="[Esc] Volver"/>
     </actions>
     <exit caption="Salir de Presentación?"/>
-    <loop caption="Bucle"/>
+    <loop caption="Ciclo"/>
     <keys>- Teclas -
 Abajo: Diapositiva Siguiente
 Arriba: Diapositiva Anterior
@@ -529,7 +559,7 @@ Nota que la función de las teclas del Teclado numérico dependen del estado de la
 </keys>
 
 
-<!--Favor de terminar la sección de Ayuda!!-->
+<!--Favor de terminar la sección que sigue de Ayuda!!-->
 
 
 
@@ -669,7 +699,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
   <print>
      <continued caption="(continuar)"/>
      <toc caption="Tabla de Contenidos"/>
-     <categorized caption="Categorizado"/>
+     <categorized caption="Por Categoría"/>
      <alphabetical caption="Alfabetico"/>
      <copyright caption="Copyright"/>
      <page caption="Pagina %1"/>
@@ -725,6 +755,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <title caption="Título"/>
       <subtitle caption="Subtítulo"/>
       <body caption="Cuerpo"/>
+      <body_autosize caption="Ajustar automáticamente tamaño de texto"/>
       <align caption="Alinear"/>
       <margin caption="Margenes"/>
        <tabs caption="Tabs"/>
@@ -774,12 +805,13 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <middle caption="Medio"/>
       <right caption="Derecha"/>
       <char caption="En caracter"/>
+      <apply caption="link(shared/apply/@caption)n"/>
     </properties>
     <preview caption="Previsualizar"/>
   </style_tabs>
   
   <song_lookup title="Buscar Canciones">
-    <header caption="Para agregar una canción, haga un click en el título de la canción y luego un click en el botón 'Agregar' o tipeando el título de la canción y luego la tecla 'Enter'."/>
+    <header caption="Para agregar una canción, haz doble click en el título, o seleciona la canción y haz click en el botón 'Agregar' o haz una busqueda del título y presiona la tecla 'Enter'."/>
     <no_selection>Ud. no ha seleccionado ninguna canción.</no_selection>
     <folder caption="Escoger Folder"/>
      <preview caption="Previsualizar Canción"/>
@@ -829,38 +861,45 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </song_activity>
   
   <scripture_lookup title="Buscar Versículos">
-  <book caption="Libro de la Biblia"/>
     <lookup caption="Busqueda Rápida">
       <reference caption="Referencia"/>
       <lookup caption="Buscar"/>
       <example caption="Ej: '2Tim 1:1-2' o '2Tim 1:1-2 (LBLA)'"/>
     </lookup>
+    <search caption="link(shared/search/@caption)"/>
+    <books caption="Libro de la Biblia">
+	  <ot caption="Ant Testamento"/>
+	  <nt caption="Nvo Testamento"/>
+    </books>
+    <paragraph caption="Capítulo"/>
+    <colon caption=":"/>
+    <from_verse caption="de versículo"/>
+    <dash caption="-"/>
+    <to_verse caption="a versículo"/>
     <version caption="Versión"/>
-    <select_file caption="Favor de escoger una versión"/>
-    <verses_per_slide caption="Versículos por Diapositiva">
-      <one caption="1"/>
-      <two caption="2"/>
-      <three caption="3"/>
-    </verses_per_slide>
+    <select_file caption="Favor de escoger un archivo de Biblia"/>
+    <verses_per_slide caption="Versículos/diap" />
+    <chars_per_slide caption="Max letras/diap" />
     <format caption="Formato">
       <paragraph caption="Párrafo"/>
       <verse caption="Versículo"/>
     </format>
+    <shownumbers caption="Mostrar números de vss."/>
+    <preview caption="Vista Preliminar"/>
+    <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
-      <format>Please check the format of the query and try again.</format>
+      <format>Favor de revisar el formato de consulta e intentar de nuevo.</format>
       <empty>Mala referencia: la referencia estaba vacía.</empty>
       <book>Mala referencia: no se pudo encontrar el lirbo.</book>
-      <ambiguous>Bad reference: Multiple books match %1: %2</ambiguous>
+      <ambiguous>Mala referencia: Varios libros igualan %1: %2</ambiguous>
       <version>Mala referencia: no se pudo encontrar la versión '%1'.</version>
       <chapter>Mala referencia: no se pudo encontrar el capítulo '%1'.</chapter>
       <verse>Mala referencia: no se pudo encontrar el versículo '%1'.</verse>
       <verse_range>Mala referencia: el versículo 'desde' debe ser mayor o igual al versículo 'hasta'.</verse_range>
     </bad_reference>
-    <colon caption=":"/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
-    <insert caption="link(shared/insert/@caption)"/>
-    <shownumbers caption="Mostrar # de vss."/>
   </scripture_lookup>
   
   <module>
@@ -870,8 +909,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <rename_error>Error renombrando el archivo de módulo. Por favor verifique que Ud. tiene permisos para escribir en '%1'.</rename_error>
     <success>Cargado correctamente.</success>
     <file_type>Módulos OpenSong (*.xmm)</file_type>
-     <generate_index>Generate index for scripture file?</generate_index>
-    <generate_error>Error generating index; do you have write access to %1?</generate_error>
+     <generate_index>Generar índice para Escrituras?</generate_index>
+    <generate_error>Error al generar índice; tiene permisos para escribir a %1?</generate_error>
   </module>
 
   <index_progress title="Esperando...">
@@ -1031,6 +1070,7 @@ Haga click aquí para editar este estilo.</body>
     <cancel caption="Cancelar"/>
     <yes caption="Sí"/>
     <no caption="No"/>
+    <apply caption="Apl&amp;icar"/>
     <browse caption="Explorar"/>
     <browse_for caption="Buscar Folder"/>
     <add caption="Agregar"/>
@@ -1145,13 +1185,16 @@ Reinicie OpenSong.</notenoughmemory>
        <notaregularfile>Esperaba que %1 fuera un archivo, no un folder.</notaregularfile>
        <notafolder>Esperaba que %1 fuera un folder, no un archivo.</notafolder>
     </fileutils>
-    <cclinotavailable>El sitio web de CCLI ha cambiado radicalmente.
-La función de Importar requiere cambios en el interfaz.
-Por mientras, favor de investigar la utilidad de OpenSong Import como una opción.
-Los miembros del equipo de desarrollo de OpenSong lo sientan.
+    <cclinotavailable>Importar solo funciona con el sitio web de CCLI.
+CCLI ha cambiado últimamente y la función de
+Importar requiere cambios en el interfaz.
+Por mientras, puede investigar la utilidad de 
+OpenSong Import como una opción.
+Los miembros del equipo de desarrollo lo sientan.
     </cclinotavailable>
     <activity_disabled>No se pudo cargar el log de Song Activity: %1! Favor de asegurar que el archivo existe y que no está corrompido. El Log será deshabilitado para esta sesión.</activity_disabled>
     <adding_logentry>Error para pasar datos al Log!</adding_logentry>
+     <chars_per_slide>Max. letras por diapositiva deben ser entre 1 and 1000.</chars_per_slide>
   </errors>
 
  <xml_errors>

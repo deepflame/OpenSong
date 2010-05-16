@@ -320,7 +320,7 @@ Begin Window StyleWindow
          Caption         =   "Show Title:"
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   False
+         Enabled         =   True
          Height          =   15
          HelpTag         =   ""
          Index           =   -2147483648

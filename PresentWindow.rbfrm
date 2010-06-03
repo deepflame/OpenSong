@@ -346,7 +346,7 @@ End
 		      ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
 		      ActLog(i).Displayed = false 'Set this to true if user displays this song
 		      
-		    Else 
+		    Else
 		      
 		    End If
 		    '--
@@ -670,6 +670,7 @@ End
 		  Dim oldType As String
 		  Dim newName As String
 		  Dim newType As String
+		  Dim prevIsStyleChange As Boolean = False
 		  
 		  //++EMP, 15 Jan 2006
 		  // Updated to recognize new section type "blank" for program-generated blank slides
@@ -677,16 +678,13 @@ End
 		  //Updated to allow the option of moving to the next section without updating the screen
 		  //
 		  
+		  xNewSlide = SetML.GetNextSlide(XCurrentSlide)
+		  If xNewSlide = Nil Then // at end of presentation, just return
+		    Return False
+		  End If
+		  
 		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'What is the section name?
 		  oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?
-		  newSlide = CurrentSlide + 1 'move forward a slide
-		  xNewSlide = SetML.GetNextSlide(XCurrentSlide) 'keep slide number and XML in step with each other
-		  If xNewSlide = Nil Then // at end of presentation, just return
-		    Return True
-		  End If
-		  newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
-		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
-		  
 		  ' Check to see if we started on a blank slide, if so, use the section name from the slide we just moved to
 		  '++JRC: Or if this is a custom slide without a name
 		  If xNewSlide <> Nil and oldType = "blank" Then
@@ -694,14 +692,28 @@ End
 		    oldName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		  end if
 		  '--
+		  newType = ""
+		  newName = oldName
+		  
+		  xNewSlide = xCurrentSlide
+		  newSlide = CurrentSlide
 		  
 		  ' Keep moving forward until the section name changes
-		  While xNewSlide <> Nil And newName = oldName And newType <> "blank"
-		    XCurrentSlide = xNewSlide
-		    CurrentSlide = newSlide
+		  While xNewSlide <> Nil And newName = oldName And newType <> "blank" And prevIsStyleChange = False
 		    newSlide = newSlide + 1
-		    xNewSlide = SetML.GetNextSlide(XCurrentSlide)
+		    xNewSlide = SetML.GetNextSlide(xNewSlide)
+		    
 		    If xNewSlide <> Nil Then
+		      //++V, 31-05-2010
+		      // Two slide(group)s with a stylechange slide in between need to be considered a seperate section
+		      // Not only is that more logical (probably), but it also facilitaties display of the correct slide
+		      // when PresentWindow.Present is called with 'Item > 2' AND the item in question is preceded
+		      // by a stylechange slide and a similarly named other slide
+		      Dim xPrevSlideGroup As XmlNode = xNewSlide.Parent.Parent.PreviousSibling
+		      If xPrevSlideGroup <> Nil Then
+		        prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
+		      End If
+		      
 		      newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
 		      newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		    End If
@@ -779,11 +791,21 @@ End
 		  Dim oldType As String
 		  Dim newName As String
 		  Dim newType As String
+		  Dim nextIsStyleChange As Boolean = False
 		  
 		  If CurrentSlide = 1 Then Return False ' Can't go back any further
+		  
 		  newSlide = CurrentSlide - 1 '  "New" is back one
-		  xNewSlide = SetML.GetPrevSlide(XCurrentSlide) ' xNew matches newSlide
-		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'Get name of current section
+		  xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
+		  If xNewSlide = Nil Then // at end of presentation, just return
+		    Return False
+		  End If
+		  
+		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'What is the section name?
+		  oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?
+		  If xNewSlide <> Nil and oldType = "blank" Then
+		    oldName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
+		  end if
 		  
 		  //++EMP, 15 Jan 06
 		  // Two options for finding the start of the section:
@@ -791,9 +813,8 @@ End
 		  // 2. No blanks: look for name change
 		  //
 		  'keep backing up until the name changes (well, it really becomes Nil)
-		  
-		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) //++
-		  newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True) //++
+		  newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
+		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		  
 		  // Before starting the loop, check to see if the current slide was the first one
 		  // of a section.  If so, update the pointers to the current slide.  That means
@@ -804,13 +825,29 @@ End
 		    XCurrentSlide = xNewSlide
 		    CurrentSlide = newSlide
 		  End If
+		  'newName = oldName
+		  'newType = ""
 		  
-		  While xNewSlide <> Nil And (newName = oldName And newType <> "blank") //++
+		  'xNewSlide = XCurrentSlide
+		  'newSlide = CurrentSlide
+		  
+		  While xNewSlide <> Nil And newName = oldName And newType <> "blank" And nextIsStyleChange = False
 		    XCurrentSlide = xNewSlide
 		    CurrentSlide = newSlide
+		    
 		    newSlide = newSlide - 1
 		    xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
-		    If xNewSlide <> Nil Then //++
+		    
+		    If xNewSlide <> Nil Then
+		      //++V, 31-05-2010
+		      // See the explanation in GoNextSection; this is equal, just the other way around
+		      If xNewSlide.PreviousSibling = Nil Then
+		        Dim xNextSlideGroup As XmlNode = xNewSlide.Parent.Parent.NextSibling
+		        If xNextSlideGroup <> Nil Then
+		          nextIsStyleChange = (SmartML.GetValue(xNextSlideGroup, "@type", False) = "style")
+		        End If
+		      End
+		      
 		      newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) //++
 		      newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True) //++
 		    End If //++
@@ -870,34 +907,42 @@ End
 		Protected Function GoSetItem(Item As Integer) As Boolean
 		  '++JRC, 2 Apr 2009
 		  'This function will advance the presentation to the set item indicated by Item
-		  Dim Result As Boolean
-		  Dim i As Integer
-		  Dim newType As String
-		  Dim newName As String
-		  Dim xSetItem As XmlNode
-		  Dim ItemName As String
-		  Dim ItemType As String
-		  Dim newItem As Integer
+		  Dim Result As Boolean = True
 		  
-		  If Item < 0 Then Return False
-		  If Item = 0 Then goto update
-		  
-		  newItem = (Item - numStyles) - numBlanks
-		  If newItem = 0 Then goto update
-		  
-		  i = 1
-		  Result = GoNextSection(False)
-		  While i < newItem
-		    Result = GoNextSection(False)
-		    i = i + 1
-		  Wend
-		  
-		  Update:
-		  
-		  If HelperActive Then
-		    PresentHelperWindow.ScrollTo CurrentSlide
+		  If Item < 0 Then
+		    Result = False
 		  Else
-		    ResetPaint XCurrentSlide
+		    If Item > 0 Then
+		      
+		      Dim xNewSlide As XmlNode = XCurrentSlide
+		      Dim newSlide As Integer = CurrentSlide
+		      
+		      Dim newItem As Integer = Item - numStyles
+		      Dim newSlideItemNumber As Integer = 0
+		      Do
+		        newSlide = newSlide + 1
+		        xNewSlide = SetML.GetNextSlide(xNewSlide)
+		        
+		        If xNewSlide <> Nil Then
+		          newSlideItemNumber = SmartML.GetValueN(xNewSlide.Parent.Parent, "@ItemNumber", False)
+		        Else
+		          Exit Do
+		        End If
+		        
+		      Loop Until newItem < newSlideItemNumber
+		      
+		      If xNewSlide <> Nil Then
+		        CurrentSlide = newSlide
+		        xCurrentSlide = xNewSlide
+		      End If
+		      
+		    End If
+		    
+		    If HelperActive Then
+		      PresentHelperWindow.ScrollTo CurrentSlide
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
 		  End If
 		  
 		  Return Result
@@ -949,7 +994,9 @@ End
 		  Dim slide_groups As XmlNode
 		  Dim newItem As Integer
 		  Dim i As Integer
+		  Dim insertBlanks As Boolean
 		  
+		  insertBlanks = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
 		  slide_groups = SmartML.GetNode(Set.DocumentElement, "slide_groups")
 		  If slide_groups <> Nil Then
 		    slide_group = slide_groups.FirstChild
@@ -957,30 +1004,34 @@ End
 		    Return
 		  End If
 		  
+		  i = 0
 		  While slide_group <> Nil
-		    '++JRC Fix corner case where the first item in a set is a style type, which causes two blank items at the beginning of a set
-		    If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
-		      SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
-		      slide_group.PreviousSibling = Nil And SmartML.GetValue(slide_group, "@type") <> "style" Then
-		      '--
-		      slide_group = SmartML.InsertBefore(slide_group, "slide_group")
-		      //++EMP, 15 Jan 2006
-		      // Change the type of a blank slide from "song" to "blank"
-		      // Makes moving to a blank much easier in PerformAction
-		      //
-		      'SmartML.SetValue slide_group, "@type", "song"
-		      SmartML.SetValue slide_group, "@type", "blank"
-		      SmartML.SetValue slide_group, "slides/slide/body", ""
-		      slide_group = slide_group.NextSibling
-		      If slide_group.NextSibling = Nil Then ' if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
-		        slide_group = SmartML.InsertAfter(slide_group, "slide_group")
+		    
+		    If insertBlanks Then
+		      '++JRC Fix corner case where the first item in a set is a style type, which causes two blank items at the beginning of a set
+		      If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
+		        SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
+		        slide_group.PreviousSibling = Nil And SmartML.GetValue(slide_group, "@type") <> "style" Then
+		        '--
+		        slide_group = SmartML.InsertBefore(slide_group, "slide_group")
+		        //++EMP, 15 Jan 2006
+		        // Change the type of a blank slide from "song" to "blank"
+		        // Makes moving to a blank much easier in PerformAction
+		        //
 		        'SmartML.SetValue slide_group, "@type", "song"
 		        SmartML.SetValue slide_group, "@type", "blank"
 		        SmartML.SetValue slide_group, "slides/slide/body", ""
-		      End If
-		      //--
-		      If i < Item Then
-		        numBlanks = numBlanks + 1
+		        slide_group = slide_group.NextSibling
+		        If slide_group.NextSibling = Nil Then ' if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
+		          slide_group = SmartML.InsertAfter(slide_group, "slide_group")
+		          'SmartML.SetValue slide_group, "@type", "song"
+		          SmartML.SetValue slide_group, "@type", "blank"
+		          SmartML.SetValue slide_group, "slides/slide/body", ""
+		        End If
+		        //--
+		        If i < Item Then
+		          numBlanks = numBlanks + 1
+		        End If
 		      End If
 		      
 		    End If ' for inserting blanks
@@ -1241,9 +1292,6 @@ End
 		  // the property...see below for the copy routine
 		  
 		  'CurrentSet = setDoc
-		  //--EMP
-		  Dim insertBlanks As Boolean
-		  
 		  //++EMP
 		  Dim tempSet As XmlNode
 		  Dim StyleNodes As XmlNodeList
@@ -1262,8 +1310,6 @@ End
 		  'setDoc.SaveXml f
 		  '#endif
 		  StyleDict = New Dictionary
-		  //--EMP
-		  insertBlanks = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
 		  
 		  '++JRC
 		  NumberOfItems =Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
@@ -1321,7 +1367,7 @@ End
 		  'System.DebugLog "Completed default_style"
 		  //--
 		  '++JRC
-		  If insertBlanks Then InsertBlanksIntoSet(CurrentSet, Item)
+		  InsertBlanksIntoSet(CurrentSet, Item)
 		  VerifySlideBodies(CurrentSet)
 		  
 		  'System.DebugLog "Add blanks and confirm bodies exist"
@@ -1432,11 +1478,19 @@ End
 		  If HelperActive Then
 		    PresentHelperWindow.Show
 		    i = 1
+		    
 		    slide = SetML.GetSlide(CurrentSet, i)
 		    'System.DebugLog "PresentWindow.Present: GetSlide 1 returned a " + SmartML.GetValue(slide.Parent.Parent, "@type") +_
 		    '" with name '" + SmartML.GetValue(slide.Parent.Parent, "@name") + "'"
 		    While slide <> Nil
-		      PresentHelperWindow.InsertItem slide, i
+		      
+		      Dim prevIsStyleChange As Boolean = False
+		      Dim xPrevSlideGroup As XmlNode = slide.Parent.Parent.PreviousSibling
+		      If xPrevSlideGroup <> Nil Then
+		        prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
+		      End If
+		      
+		      PresentHelperWindow.InsertItem slide, i, prevIsStyleChange
 		      i = i + 1
 		      slide = SetML.GetNextSlide(slide)
 		      'If slide <> Nil Then _
@@ -1446,11 +1500,8 @@ End
 		    'PresentHelperWindow.lst_all_slides.ListIndex = 0
 		  End If
 		  
-		  Dim DontCare As Boolean
-		  
-		  Item = Item + numBlanks
-		  DontCare = GoFirstSlide(False)
-		  DontCare =  GoSetItem(Item)
+		  Call GoFirstSlide(False)
+		  Call GoSetItem(Item)
 		  
 		  'Show
 		  App.MouseCursor = Nil

@@ -645,7 +645,7 @@ End
 
 
 	#tag Method, Flags = &h0
-		Sub InsertItem(slide As XmlNode, index As Integer)
+		Sub InsertItem(slide As XmlNode, index As Integer, forceSeparator As Boolean = False)
 		  Dim NamesEqual As Boolean = True
 		  Dim TagsEqual As Boolean = True //++EMP 15 Jan 06
 		  
@@ -678,7 +678,8 @@ End
 		  End If
 		  //--
 		  If index = 0 Or _
-		    (index > 0 And Not (TagsEqual And NamesEqual)) Then
+		    (index > 0 And Not (TagsEqual And NamesEqual)) Or _
+		    forceSeparator Then
 		    lst_all_slides.CellBorderTop(index, 0) = 4
 		    lst_all_slides.CellBorderTop(index, 1) = 4
 		    lst_all_slides.CellBorderTop(index, 2) = 4

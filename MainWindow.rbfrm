@@ -9214,7 +9214,7 @@ End
 		      slide_group  = slide_group.NextSibling
 		    Else
 		      '++JRC Assign an index for this set item
-		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber + 1)
+		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
 		      
 		      slide_group  = slide_group.NextSibling
 		      

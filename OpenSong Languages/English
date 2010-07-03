@@ -176,6 +176,7 @@
     <untitled caption="Untitled"/>
     <errors>
       <revert caption="Error reloading set &quot;%1&quot; from file."/>
+      <insert caption="Insertion of copied slides failed:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; exported to

@@ -6482,7 +6482,7 @@ End
 		      ' Copy
 		      btn_set_copy.Enabled = True
 		      Dim c As New Clipboard
-		      btn_set_paste.Enabled = (c.TextAvailable) and (Left(c.text,12) = "<slide_group")
+		      btn_set_paste.Enabled = (c.RawDataAvailable(CopyTypes.SetSlides.MacType)) and (Left(c.RawData(CopyTypes.SetSlides.MacType),12) = "<slide_group")
 		      c.close
 		    Else
 		      '++JRC
@@ -7461,8 +7461,7 @@ End
 		  'lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		  
 		  Dim c As New Clipboard
-		  
-		  c.SetText oldGroup.ToString
+		  c.AddRawData oldGroup.ToString, CopyTypes.SetSlides.MacType
 		  c.close
 		  '--
 		  '++JRC Refresh
@@ -7473,39 +7472,46 @@ End
 	#tag Method, Flags = &h0
 		Sub ActionInSetPaste()
 		  '++gerritp
+		  Dim text As String
 		  Dim xgroups, oldGroup, newGroup As XmlNode
 		  dim xml as XmlDocument
 		  'Ask if user wants to save
 		  If NOT ActionInSetAskSave Then Return 'User Canceled
 		  
 		  Dim c As New Clipboard
-		  if not(c.TextAvailable) then return
-		  if Left(c.text,12) <> "<slide_group" then return
-		  xml = SmartML.XDocFromString(c.text)
-		  c.close
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  oldGroup = xml.FirstChild
-		  
-		  newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
-		  
-		  '++JRC Show slidetype on pasted set item
-		  Dim SlideType As String
-		  slideType = App.T.Translate("sets_mode/items/" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption")
-		  If slideType = "" Then // unknown slide type
-		    App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption" + "'", 1
-		    slideType = "*ERROR*"
+		  If c.RawDataAvailable(CopyTypes.SetSlides.MacType) Then
+		    text = c.RawData(CopyTypes.SetSlides.MacType)
+		    If Left(text,12) = "<slide_group" Then
+		      xml = SmartML.XDocFromString(text)
+		      If IsNull(xml) Then
+		        InputBox.Message App.T.Translate("sets_mode/errors/insert/@caption", SmartML.ErrorString)
+		      Else
+		        xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		        oldGroup = xml.FirstChild
+		        
+		        newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
+		        
+		        '++JRC Show slidetype on pasted set item
+		        Dim SlideType As String
+		        slideType = App.T.Translate("sets_mode/items/" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption")
+		        If slideType = "" Then // unknown slide type
+		          App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption" + "'", 1
+		          slideType = "*ERROR*"
+		        End If
+		        lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(oldgroup , "@name", True) + " " + slideType
+		        
+		        
+		        SmartML.CloneChildren oldGroup, newGroup
+		        SmartML.CloneAttributes oldGroup, newGroup
+		        
+		        Status_SetChanged = True
+		        
+		        lst_set_items.ListIndex = lst_set_items.ListIndex + 1
+		      End If
+		    End If
 		  End If
-		  lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(oldgroup , "@name", True) + " " + slideType
+		  c.Close()
 		  
-		  
-		  
-		  SmartML.CloneChildren oldGroup, newGroup
-		  SmartML.CloneAttributes oldGroup, newGroup
-		  
-		  Status_SetChanged = True
-		  
-		  lst_set_items.ListIndex = lst_set_items.ListIndex + 1
-		  '--
 		End Sub
 	#tag EndMethod
 

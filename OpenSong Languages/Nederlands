@@ -176,6 +176,7 @@
     <untitled caption="Geen titel"/>
     <errors>
       <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
+      <insert caption="Het invoegen van gekopieërde dia's is niet gelukt:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; geëxporteerd naar

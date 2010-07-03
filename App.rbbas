@@ -749,7 +749,6 @@ Inherits Application
 		  Dim PrefFile As String
 		  Dim v As String
 		  Dim f As FolderItem
-		  Dim e As RuntimeException
 		  
 		  #if TargetMacOS
 		    f = GetPrefsFolder().Child("org.opensong.opensong.plist")
@@ -781,10 +780,25 @@ Inherits Application
 		  MainPreferences = New prefsPlist
 		  
 		  If Not MainPreferences.Load(f) Then
-		    e = New RuntimeException
-		    e.Message = MainPreferences.ErrorString
-		    MainPreferences = Nil
-		    Raise e
+		    Dim pListErrorWnd As PlistErrorWindow = New PlistErrorWindow()
+		    If pListErrorWnd.DoRecover(f) Then
+		      If f.Exists() Then
+		        f.Delete()
+		      End If
+		      MainPreferences = New prefsPlist
+		      
+		      'Try creating the preferences from scratch.
+		      'If that fails, crash anyway...
+		      If Not MainPreferences.Load(f) Then
+		        Dim e As RuntimeException = New RuntimeException()
+		        e.Message = MainPreferences.ErrorString
+		        MainPreferences = Nil
+		        Raise e
+		      End If
+		    Else
+		      MainPreferences = Nil
+		      Quit()
+		    End If
 		  End If
 		  
 		  //++

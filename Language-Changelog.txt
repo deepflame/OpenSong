@@ -1,4 +1,4 @@
--= Version 1.6.1 =-
+sets_mode/errors/insert
 
 -= Version 1.6 =-
 style_editor/fonts_and_alignment/body_autosize

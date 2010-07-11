@@ -1,4 +1,6 @@
-* Prevent crash and improve copy/inserting of set items (bug #2977387 and #2988718)
+* Fix for "Find Again" (Ctrl-G) not working (bug #2968179) (Vwout)
+
+* Prevent crash and improve copy/inserting of set items (bug #2977387 and #2988718) (Vwout)
 
 * Improved handling a corrupted plist preferences file. The error is now more descriptive and proposes to repair the file (bug #3021753) (Vwout)
 

@@ -8936,7 +8936,7 @@ End
 		  Dim f As FolderItem
 		  
 		  Dim found As RectControl
-		  Dim edtFound As EditField
+		  Dim edtFound As TextEdit 
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -8974,7 +8974,13 @@ End
 		    Return
 		  End If
 		  
+		  ProgressWindow.SetProgress 0
+		  ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/song_search") + "..."
+		  ProgressWindow.Show()
+		  
 		  While found = Nil And i < lst_songs_songs.ListCount
+		    ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
+		    ProgressWindow.SetStatus lst_songs_songs.List(i)
 		    
 		    If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 1 Or (FindFocus = 1 And (edt_song_title.SelStart+edt_song_title.SelLength = 0 Or InStr(edt_song_title.SelStart+edt_song_title.SelLength+1, Lowercase(edt_song_title.Text), t) > 0))) Then
 		      found = edt_song_title
@@ -9017,8 +9023,8 @@ End
 		    If found <> Nil Then
 		      If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
 		      found.SetFocus
-		      If found IsA EditField Then
-		        edtFound = EditField(found)
+		      If found IsA TextEdit Then
+		        edtFound = TextEdit(found)
 		        If edtFound.SelStart+edtFound.SelLength = 0 Then
 		          edtFound.SelStart = InStr(Lowercase(edtFound.Text), t) - 1
 		        Else
@@ -9060,6 +9066,7 @@ End
 		          If f = Nil Or Not f.Exists Then
 		            App.MouseCursor = Nil
 		            InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+		            ProgressWindow.Close()
 		            Return
 		          End If
 		          s = SmartML.XDocFromFile(f)
@@ -9079,6 +9086,8 @@ End
 		      Exit
 		    End If
 		  Wend
+		  
+		  ProgressWindow.Close()
 		  
 		  If found = Nil Then
 		    App.MouseCursor = Nil

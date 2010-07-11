@@ -1295,6 +1295,7 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <lead_sheets>Creëren uitgeprinte Sheets</lead_sheets>
     <process_themes>Verwerken thema's</process_themes>
     <process_songs>Verwerken liederen</process_songs>
+    <song_search>Liederen doorzoeken</song_search>
     <export>Exporteren lied(eren)</export>
     <pass1>Sorteren, 1e ronde</pass1>
     <pass2>Sorteren, 2e ronde</pass2>

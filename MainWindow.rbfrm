@@ -8935,8 +8935,8 @@ End
 		  Dim st, i, j As Integer
 		  Dim f As FolderItem
 		  
-		  Dim found As RectControl
-		  Dim edtFound As TextEdit 
+		  Dim found As RectControl = Nil
+		  Dim edtFound As TextEdit
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -8946,148 +8946,150 @@ End
 		  t = Lowercase(find.FindString)
 		  If Len(t) = 0 Then Return
 		  
-		  i = lst_songs_songs.ListIndex
-		  If i < 0 Then
-		    i = 0 ' if there is no song selected, select the first
-		    If FindStartSong < 0 Then FindStartSong = 0 //By implication, if i<0, this is too
-		    App.DebugWriter.Write("MainWindow.FindNext: Open " + str(i) + " " +  lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
-		    f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
-		    If f = Nil Or Not f.Exists Then
+		  If lst_songs_songs.ListCount() > 0 Then
+		    i = lst_songs_songs.ListIndex
+		    If i < 0 Then
+		      i = 0 ' if there is no song selected, select the first
+		      If FindStartSong < 0 Then FindStartSong = 0 //By implication, if i<0, this is too
+		      App.DebugWriter.Write("MainWindow.FindNext: Open " + str(i) + " " +  lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
+		      f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
+		      If f = Nil Or Not f.Exists Then
+		        App.MouseCursor = Nil
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+		        Return
+		      End If
+		      s = SmartML.XDocFromFile(f)
+		    Else
+		      s = CurrentSong
+		    End If
+		    
+		    //++
+		    // Bug 1089442: Catch s = Nil.  Unlikely to happen, but possible if i < 0 and the first document isn't valid
+		    //
+		    // For the moment, just error and return.  Could be avoided by splitting out the code that opens the song
+		    // files and determines when done (i.e., XmlDocument = GetNextSong( ByRef i, FindStartSong ))
+		    //--
+		    If s = Nil Then
 		      App.MouseCursor = Nil
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
 		      Return
 		    End If
-		    s = SmartML.XDocFromFile(f)
-		  Else
-		    s = CurrentSong
-		  End If
-		  
-		  //++
-		  // Bug 1089442: Catch s = Nil.  Unlikely to happen, but possible if i < 0 and the first document isn't valid
-		  //
-		  // For the moment, just error and return.  Could be avoided by splitting out the code that opens the song
-		  // files and determines when done (i.e., XmlDocument = GetNextSong( ByRef i, FindStartSong ))
-		  //--
-		  If s = Nil Then
-		    App.MouseCursor = Nil
-		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
-		    Return
-		  End If
-		  
-		  ProgressWindow.SetProgress 0
-		  ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/song_search") + "..."
-		  ProgressWindow.Show()
-		  
-		  While found = Nil And i < lst_songs_songs.ListCount
-		    ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
-		    ProgressWindow.SetStatus lst_songs_songs.List(i)
 		    
-		    If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 1 Or (FindFocus = 1 And (edt_song_title.SelStart+edt_song_title.SelLength = 0 Or InStr(edt_song_title.SelStart+edt_song_title.SelLength+1, Lowercase(edt_song_title.Text), t) > 0))) Then
-		      found = edt_song_title
-		    ElseIf find.FindAuthor And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "author")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 2 Or (FindFocus = 2 And (edt_song_author.SelStart+edt_song_author.SelLength = 0 Or InStr(edt_song_author.SelStart+edt_song_author.SelLength+1, Lowercase(edt_song_author.Text), t) > 0))) Then
-		      found = edt_song_author
-		    ElseIf find.FindCopyright And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "copyright")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 3 Or (FindFocus = 3 And (edt_song_copyright.SelStart+edt_song_copyright.SelLength = 0 Or InStr(edt_song_copyright.SelStart+edt_song_copyright.SelLength+1, Lowercase(edt_song_copyright.Text), t) > 0))) Then
-		      found = edt_song_copyright
-		    ElseIf find.FindCCLI And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "ccli")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 4 Or (FindFocus = 4 And (edt_song_ccli.SelStart+edt_song_ccli.SelLength = 0 Or InStr(edt_song_ccli.SelStart+edt_song_ccli.SelLength+1, Lowercase(edt_song_ccli.Text), t) > 0))) Then
-		      found = edt_song_ccli
-		    ElseIf find.FindPresentation And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "presentation")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 5 Or (FindFocus = 5 And (edt_song_presentation.SelStart+edt_song_presentation.SelLength = 0 Or InStr(edt_song_presentation.SelStart+edt_song_presentation.SelLength+1, Lowercase(edt_song_presentation.Text), t) > 0))) Then
-		      found = edt_song_presentation
-		    ElseIf find.FindLyrics And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 6 Or (FindFocus = 6 And (edf_song_lyrics.SelStart+edf_song_lyrics.SelLength = 0 Or InStr(edf_song_lyrics.SelStart+edf_song_lyrics.SelLength+1, Lowercase(edf_song_lyrics.Text), t) > 0))) Then
-		      found = edf_song_lyrics
-		    ElseIf find.FindThemes And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "theme")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 7) Then
-		      found = lst_song_themes
-		    ElseIf find.FindCapo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "capo")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 8) Then
-		      found = pop_song_capo
-		    ElseIf find.FindTimeSig And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "time_sig")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 9) Then
-		      found = pop_song_time_sig
-		    ElseIf find.FindTempo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "tempo")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 10) Then
-		      found = pop_song_tempo
-		    ElseIf find.FindKey And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 11 Or (FindFocus = 11 And (edt_song_key.SelStart+edt_song_key.SelLength = 0 Or InStr(edt_song_key.SelStart+edt_song_key.SelLength+1, Lowercase(edt_song_key.Text), t) > 0))) Then
-		      found = edt_song_key
-		    ElseIf find.FindAKA And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "aka")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 12 Or (FindFocus = 12 And (edt_song_aka.SelStart+edt_song_aka.SelLength = 0 Or InStr(edt_song_aka.SelStart+edt_song_aka.SelLength+1, Lowercase(edt_song_aka.Text), t) > 0))) Then
-		      found = edt_song_aka
-		    ElseIf find.FindKeyLine And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key_line")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 13 Or (FindFocus = 13 And (edt_song_key_line.SelStart+edt_song_key_line.SelLength = 0 Or InStr(edt_song_key_line.SelStart+edt_song_key_line.SelLength+1, Lowercase(edt_song_key_line.Text), t) > 0))) Then
-		      found = edt_song_key_line
-		    ElseIf find.FindUser1 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user1")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 14 Or (FindFocus = 14 And (edt_song_user1.SelStart+edt_song_user1.SelLength = 0 Or InStr(edt_song_user1.SelStart+edt_song_user1.SelLength+1, Lowercase(edt_song_user1.Text), t) > 0))) Then
-		      found = edt_song_user1
-		    ElseIf find.FindUser2 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user2")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 15 Or (FindFocus = 15 And (edt_song_user2.SelStart+edt_song_user2.SelLength = 0 Or InStr(edt_song_user2.SelStart+edt_song_user2.SelLength+1, Lowercase(edt_song_user2.Text), t) > 0))) Then
-		      found = edt_song_user2
-		    ElseIf find.FindUser3 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 16 Or (FindFocus = 16 And (edt_song_user3.SelStart+edt_song_user3.SelLength = 0 Or InStr(edt_song_user3.SelStart+edt_song_user3.SelLength+1, Lowercase(edt_song_user3.Text), t) > 0))) Then
-		      found = edt_song_user3
-		      '++JRC
-		    ElseIf find.FindHymnNumber And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 17 Or (FindFocus = 17 And (edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength = 0 Or InStr(edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength+1, Lowercase(edt_song_hymn_number.Text), t) > 0))) Then
-		      found = edt_song_hymn_number
-		      '--
-		    End If
+		    ProgressWindow.SetProgress 0
+		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/song_search") + "..."
+		    ProgressWindow.Show()
 		    
-		    If found <> Nil Then
-		      If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
-		      found.SetFocus
-		      If found IsA TextEdit Then
-		        edtFound = TextEdit(found)
-		        If edtFound.SelStart+edtFound.SelLength = 0 Then
-		          edtFound.SelStart = InStr(Lowercase(edtFound.Text), t) - 1
-		        Else
-		          edtFound.SelStart = InStr(edtFound.SelStart+edtFound.SelLength+1, Lowercase(edtFound.Text), t) - 1
-		        End If
-		        edtFound.SelLength = find.FindString.Len
+		    While found = Nil And i < lst_songs_songs.ListCount
+		      ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
+		      ProgressWindow.SetStatus lst_songs_songs.List(i)
+		      
+		      If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 1 Or (FindFocus = 1 And (edt_song_title.SelStart+edt_song_title.SelLength = 0 Or InStr(edt_song_title.SelStart+edt_song_title.SelLength+1, Lowercase(edt_song_title.Text), t) > 0))) Then
+		        found = edt_song_title
+		      ElseIf find.FindAuthor And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "author")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 2 Or (FindFocus = 2 And (edt_song_author.SelStart+edt_song_author.SelLength = 0 Or InStr(edt_song_author.SelStart+edt_song_author.SelLength+1, Lowercase(edt_song_author.Text), t) > 0))) Then
+		        found = edt_song_author
+		      ElseIf find.FindCopyright And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "copyright")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 3 Or (FindFocus = 3 And (edt_song_copyright.SelStart+edt_song_copyright.SelLength = 0 Or InStr(edt_song_copyright.SelStart+edt_song_copyright.SelLength+1, Lowercase(edt_song_copyright.Text), t) > 0))) Then
+		        found = edt_song_copyright
+		      ElseIf find.FindCCLI And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "ccli")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 4 Or (FindFocus = 4 And (edt_song_ccli.SelStart+edt_song_ccli.SelLength = 0 Or InStr(edt_song_ccli.SelStart+edt_song_ccli.SelLength+1, Lowercase(edt_song_ccli.Text), t) > 0))) Then
+		        found = edt_song_ccli
+		      ElseIf find.FindPresentation And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "presentation")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 5 Or (FindFocus = 5 And (edt_song_presentation.SelStart+edt_song_presentation.SelLength = 0 Or InStr(edt_song_presentation.SelStart+edt_song_presentation.SelLength+1, Lowercase(edt_song_presentation.Text), t) > 0))) Then
+		        found = edt_song_presentation
+		      ElseIf find.FindLyrics And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 6 Or (FindFocus = 6 And (edf_song_lyrics.SelStart+edf_song_lyrics.SelLength = 0 Or InStr(edf_song_lyrics.SelStart+edf_song_lyrics.SelLength+1, Lowercase(edf_song_lyrics.Text), t) > 0))) Then
+		        found = edf_song_lyrics
+		      ElseIf find.FindThemes And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "theme")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 7) Then
+		        found = lst_song_themes
+		      ElseIf find.FindCapo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "capo")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 8) Then
+		        found = pop_song_capo
+		      ElseIf find.FindTimeSig And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "time_sig")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 9) Then
+		        found = pop_song_time_sig
+		      ElseIf find.FindTempo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "tempo")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 10) Then
+		        found = pop_song_tempo
+		      ElseIf find.FindKey And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 11 Or (FindFocus = 11 And (edt_song_key.SelStart+edt_song_key.SelLength = 0 Or InStr(edt_song_key.SelStart+edt_song_key.SelLength+1, Lowercase(edt_song_key.Text), t) > 0))) Then
+		        found = edt_song_key
+		      ElseIf find.FindAKA And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "aka")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 12 Or (FindFocus = 12 And (edt_song_aka.SelStart+edt_song_aka.SelLength = 0 Or InStr(edt_song_aka.SelStart+edt_song_aka.SelLength+1, Lowercase(edt_song_aka.Text), t) > 0))) Then
+		        found = edt_song_aka
+		      ElseIf find.FindKeyLine And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key_line")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 13 Or (FindFocus = 13 And (edt_song_key_line.SelStart+edt_song_key_line.SelLength = 0 Or InStr(edt_song_key_line.SelStart+edt_song_key_line.SelLength+1, Lowercase(edt_song_key_line.Text), t) > 0))) Then
+		        found = edt_song_key_line
+		      ElseIf find.FindUser1 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user1")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 14 Or (FindFocus = 14 And (edt_song_user1.SelStart+edt_song_user1.SelLength = 0 Or InStr(edt_song_user1.SelStart+edt_song_user1.SelLength+1, Lowercase(edt_song_user1.Text), t) > 0))) Then
+		        found = edt_song_user1
+		      ElseIf find.FindUser2 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user2")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 15 Or (FindFocus = 15 And (edt_song_user2.SelStart+edt_song_user2.SelLength = 0 Or InStr(edt_song_user2.SelStart+edt_song_user2.SelLength+1, Lowercase(edt_song_user2.Text), t) > 0))) Then
+		        found = edt_song_user2
+		      ElseIf find.FindUser3 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 16 Or (FindFocus = 16 And (edt_song_user3.SelStart+edt_song_user3.SelLength = 0 Or InStr(edt_song_user3.SelStart+edt_song_user3.SelLength+1, Lowercase(edt_song_user3.Text), t) > 0))) Then
+		        found = edt_song_user3
+		        '++JRC
+		      ElseIf find.FindHymnNumber And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 17 Or (FindFocus = 17 And (edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength = 0 Or InStr(edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength+1, Lowercase(edt_song_hymn_number.Text), t) > 0))) Then
+		        found = edt_song_hymn_number
+		        '--
 		      End If
 		      
-		      //++
-		      // 3 December 2006, EMP
-		      // Change logic that verifies the control is visible to a more generic form
-		      // that doesn't rely on knowledge of the panel layout
-		      // (Note: the change from TabPanelIndex to PanelIndex may actually be with RB2005,
-		      // but I had no way to verify this.  Hopefully no one will be using the RB2005 compiler.)
-		      //
-		      #if RBVersion < 2006
-		        If pge_contents.Value <> Control(found).TabPanelIndex - 1 And Control(found).TabPanelIndex > 0 Then
-		          pge_contents.Value = Control(found).TabPanelIndex - 1
+		      If found <> Nil Then
+		        If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
+		        found.SetFocus
+		        If found IsA TextEdit Then
+		          edtFound = TextEdit(found)
+		          If edtFound.SelStart+edtFound.SelLength = 0 Then
+		            edtFound.SelStart = InStr(Lowercase(edtFound.Text), t) - 1
+		          Else
+		            edtFound.SelStart = InStr(edtFound.SelStart+edtFound.SelLength+1, Lowercase(edtFound.Text), t) - 1
+		          End If
+		          edtFound.SelLength = find.FindString.Len
 		        End If
-		      #else
-		        If pge_contents.Value <> Control(found).PanelIndex And Control(found).PanelIndex > -1 Then
-		          pge_contents.Value = Control(found).PanelIndex
-		        End If
-		      #endif
-		      //--
-		    Else
-		      Do
-		        i = i + 1
-		        If i >= lst_songs_songs.ListCount Then
-		          i = 0 // Circle around to the beginning
-		        End If
+		        
+		        //++
+		        // 3 December 2006, EMP
+		        // Change logic that verifies the control is visible to a more generic form
+		        // that doesn't rely on knowledge of the panel layout
+		        // (Note: the change from TabPanelIndex to PanelIndex may actually be with RB2005,
+		        // but I had no way to verify this.  Hopefully no one will be using the RB2005 compiler.)
 		        //
-		        //++ Check for finished
-		        //
-		        If i = FindStartSong Then Exit
+		        #if RBVersion < 2006
+		          If pge_contents.Value <> Control(found).TabPanelIndex - 1 And Control(found).TabPanelIndex > 0 Then
+		            pge_contents.Value = Control(found).TabPanelIndex - 1
+		          End If
+		        #else
+		          If pge_contents.Value <> Control(found).PanelIndex And Control(found).PanelIndex > -1 Then
+		            pge_contents.Value = Control(found).PanelIndex
+		          End If
+		        #endif
 		        //--
-		        If i < lst_songs_songs.ListCount Then
-		          f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
-		          If f = Nil Or Not f.Exists Then
-		            App.MouseCursor = Nil
-		            InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
-		            ProgressWindow.Close()
-		            Return
+		      Else
+		        Do
+		          i = i + 1
+		          If i >= lst_songs_songs.ListCount Then
+		            i = 0 // Circle around to the beginning
 		          End If
-		          s = SmartML.XDocFromFile(f)
-		          If s = Nil Then
-		            App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.list(i), 1)
-		            App.MouseCursor = Nil
-		            InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
-		            App.MouseCursor = System.Cursors.Wait
+		          //
+		          //++ Check for finished
+		          //
+		          If i = FindStartSong Then Exit
+		          //--
+		          If i < lst_songs_songs.ListCount Then
+		            f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
+		            If f = Nil Or Not f.Exists Then
+		              App.MouseCursor = Nil
+		              InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+		              ProgressWindow.Close()
+		              Return
+		            End If
+		            s = SmartML.XDocFromFile(f)
+		            If s = Nil Then
+		              App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.list(i), 1)
+		              App.MouseCursor = Nil
+		              InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
+		              App.MouseCursor = System.Cursors.Wait
+		            End If
 		          End If
-		        End If
-		      Loop Until s <> Nil
-		    End If
-		    //++
-		    // See if we left the loop because we are at the end.  If so, leave the While loop
-		    //--
-		    If i = FindStartSong Then
-		      Exit
-		    End If
-		  Wend
-		  
-		  ProgressWindow.Close()
+		        Loop Until s <> Nil
+		      End If
+		      //++
+		      // See if we left the loop because we are at the end.  If so, leave the While loop
+		      //--
+		      If i = FindStartSong Then
+		        Exit
+		      End If
+		    Wend
+		    
+		    ProgressWindow.Close()
+		  End If
 		  
 		  If found = Nil Then
 		    App.MouseCursor = Nil

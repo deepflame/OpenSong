@@ -1023,6 +1023,7 @@ End
 	#tag Event
 		Sub Paint(g As Graphics)
 		  If Not Globals.Status_Presentation Then Return
+		  If IsNull(PresentWindow.XCurrentSlide) Then Return
 		  edt_slide_notes.Text = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "notes", True)
 		  If edt_slide_notes.Text = "" Then
 		    // Load the text of the slide into the notes field for easy reference.

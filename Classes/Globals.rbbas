@@ -134,6 +134,14 @@ Protected Module Globals
 	#tag EndNote
 
 
+	#tag Property, Flags = &h0
+		ActLog(0) As LogEntry
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected AddToLog As Boolean
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected AudioPluginFormats As string
 	#tag EndProperty
@@ -166,6 +174,10 @@ Protected Module Globals
 		Protected OldSongSel As Integer
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		SongActivityLog As ActivityLog
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected Status_InputBoxOpen As Boolean
 	#tag EndProperty
@@ -182,20 +194,12 @@ Protected Module Globals
 		Protected Status_SongPickerOpen As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected WhitespaceChars() As string
-	#tag EndProperty
-
 	#tag Property, Flags = &h0
-		SongActivityLog As ActivityLog
+		UseSheetDialogs As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected AddToLog As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		ActLog(0) As LogEntry
+		Protected WhitespaceChars() As string
 	#tag EndProperty
 
 
@@ -220,25 +224,6 @@ Protected Module Globals
 	#tag EndStructure
 
 
-	#tag Enum, Name = StyleSectionEnum, Flags = &h0
-		Title
-		  Subtitle
-		Body
-	#tag EndEnum
-
-	#tag Enum, Name = StyleHAlignEnum, Flags = &h0
-		Left
-		  Middle
-		  Right
-		Char
-	#tag EndEnum
-
-	#tag Enum, Name = SlideTransitionEnum, Flags = &h0
-		ApplicationDefault
-		  UseTransition
-		NoTransition
-	#tag EndEnum
-
 	#tag Enum, Name = ImageQualityEnum, Flags = &h0
 		UninitialisedCompression
 		  FullCompression
@@ -249,25 +234,38 @@ Protected Module Globals
 		NoCompression
 	#tag EndEnum
 
+	#tag Enum, Name = SlideTransitionEnum, Flags = &h0
+		ApplicationDefault
+		  UseTransition
+		NoTransition
+	#tag EndEnum
+
+	#tag Enum, Name = StyleHAlignEnum, Flags = &h0
+		Left
+		  Middle
+		  Right
+		Char
+	#tag EndEnum
+
+	#tag Enum, Name = StyleSectionEnum, Flags = &h0
+		Title
+		  Subtitle
+		Body
+	#tag EndEnum
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
+			Name="CurrentSongPickerFolder"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -278,16 +276,23 @@ Protected Module Globals
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="CurrentSongPickerFolder"
-			Group="Behavior"
-			Type="String"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

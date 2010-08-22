@@ -243,7 +243,11 @@ Inherits ReportClass
 		  App.DebugWriter.Write "LeadSheetReport.Setup: Enter"
 		  ps = App.GetPrinterSetup
 		  If ps = Nil Then
-		    ps = App.GetPrinterSetup(True, Window(0))
+		    If Globals.UseSheetDialogs Then
+		      ps = App.GetPrinterSetup(True, Window(0))
+		    Else
+		      ps = App.GetPrinterSetup(True) 
+		    End If
 		    If ps = Nil Then Return False // User doesn't want to print
 		  End If
 		  Sequential = False
@@ -290,17 +294,31 @@ Inherits ReportClass
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="mFooterTop"
+			Name="LeftMargin"
 			Group="Behavior"
 			InitialValue="0"
-			Type="Integer"
-			InheritedFrom="Reports.RBReport"
+			Type="Double"
+			InheritedFrom="ReportClass"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PrintableHeight"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="ReportClass"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PrintableWidth"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="ReportClass"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
@@ -314,6 +332,13 @@ Inherits ReportClass
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TopMargin"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="ReportClass"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

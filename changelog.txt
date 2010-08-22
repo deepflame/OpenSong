@@ -1,3 +1,7 @@
+* Add global variable UseSheetDialogs to determine if the dialogs that support the "sheet" style on OS/X are sheets or independent dialogs. The global is forced to False on Windows and Linux and controlled by the hidden key "dialogs/@usesheets" on Mac and defaults to True. This is an attempt to fix the hard crash on Windows when printing. [Yes, it is not logical, but that's where the crash report points] (bug #3039651) (swampcat)
+
+* Change logic for determining location of files when in Debug mode since Mac is different from other platforms. (swampcat)
+
 * Resolve bug when searching an empty songs folder (bug #2789877) (Vwout)
 
 * Fix for "Find Again" (Ctrl-G) not working (bug #2968179) (Vwout)

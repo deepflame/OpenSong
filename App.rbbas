@@ -55,7 +55,7 @@ Inherits Application
 		  DebugWriter = New DebugOutput
 		  '++JRC For compatibilty with RB 2008 debugger
 		  'RB insists on outputing the executable in a subfolder (sigh)
-		  #If DebugBuild
+		  #If DebugBuild And Not TargetMacOS
 		    AppFolder = GetFolderItem("").Parent
 		  #Else
 		    AppFolder = GetFolderItem("")
@@ -680,6 +680,7 @@ Inherits Application
 		  
 		  Dim TempPS As PrinterSetup
 		  Dim NewPS As PrinterSetup
+		  Dim status as Boolean
 		  
 		  If MyPrinterSetup = Nil And Not ShowDialog Then Return Nil
 		  
@@ -692,7 +693,12 @@ Inherits Application
 		  End If
 		  
 		  If ShowDialog Then
-		    If TempPS.PageSetupDialog(Wnd) Then
+		    If Globals.UseSheetDialogs Then
+		      status = TempPS.PageSetupDialog(Wnd)
+		    Else
+		      status = TempPS.PageSetupDialog
+		    End If
+		    If status Then
 		      MyPrinterSetup = TempPS // Save the new settings
 		      If SmartML.GetValueB(MyPrintSettings.DocumentElement, "page/@points") Then
 		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height",_
@@ -890,11 +896,14 @@ Inherits Application
 		  #If TargetWin32
 		    // Windows items go here
 		    mnu_file_quit.CommandKey = ""
+		    Globals.UseSheetDialogs = False
 		  #elseif TargetMacOS
 		    // Macintosh items go here
 		    mnu_help_help_topics.CommandKey = "?"
+		    Globals.UseSheetDialogs = MainPreferences.GetValueB(prefs.kUseSheetDialogs, True)
 		  #elseif TargetLinux
 		    // Linux items go here
+		    Globals.UseSheetDialogs = False
 		  #endif
 		End Sub
 	#tag EndMethod

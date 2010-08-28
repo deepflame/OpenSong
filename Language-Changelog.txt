@@ -1,3 +1,4 @@
+-= Version 1.6.2 =-
 progress_status/song_search
 sets_mode/errors/insert
 

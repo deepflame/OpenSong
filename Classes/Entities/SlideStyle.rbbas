@@ -13,17 +13,17 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BGColor(Assigns bg As Color)
-		  BGColor = bg
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function BGColor() As Color
 		  Dim C As Color
 		  C = BGColor
 		  Return C
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BGColor(Assigns bg As Color)
+		  BGColor = bg
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -53,8 +53,119 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub BodyVAlign(Assigns VAlign As String)
-		  BodyVAlign = VAlign
+		Function BodyMargins() As StyleMarginType
+		  Return BodyMargins
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BodyMargins(newMargins As StyleMarginType)
+		  BodyMargins = newMargins
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BodyTabAdd(Position As Integer, Alignment As StyleHAlignEnum, alignCharacter As String = "")
+		  Dim tab as StyleTabsType
+		  
+		  tab.Position = Position
+		  tab.Align = Alignment
+		  If tab.Align = StyleHAlignEnum.Char Then
+		    tab.AlignChar = Left(alignCharacter, 1)
+		  Else
+		    tab.AlignChar = ""
+		  End If
+		  
+		  'Insert new tab at the first position; it will be relocated to the correct position by BodyTabsSort()
+		  bodytabs.Insert(0, tab)
+		  
+		  BodyTabsSort()
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BodyTabAdd(tab As StyleTabsType)
+		  'Insert new tab at the first position; it will be relocated to the correct position by BodyTabsSort()
+		  self.bodytabs.Insert(0, tab)
+		  
+		  BodyTabsSort()
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BodyTabClear()
+		  Redim self.BodyTabs(-1)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function BodyTabCount() As Integer
+		  Return UBound(BodyTabs)+1
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function BodyTabGet(Index as Integer) As StyleTabsType
+		  Dim result as StyleTabsType
+		  
+		  result.Position = 0
+		  result.Align = StyleHAlignEnum.Left
+		  result.AlignChar = ""
+		  
+		  If Index >= 0 And Index <= Ubound(BodyTabs) Then
+		    result = BodyTabs(Index)
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function BodyTabItems() As StyleTabsType()
+		  Dim tabs() as StyleTabsType
+		  Dim i As Integer
+		  
+		  //create a copy of the tabs list to prevent returning by reference
+		  For i = 0 to UBound(self.BodyTabs)
+		    tabs.Append(self.BodyTabs(i))
+		  Next i
+		  
+		  return tabs
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BodyTabRemove(Index as Integer)
+		  If Index >= 0 And Index < UBound(BodyTabs) Then
+		    BodyTabs.Remove Index
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub BodyTabsSort()
+		  Dim i As Integer
+		  Dim tmpTab As StyleTabsType
+		  Dim changed As Boolean
+		  
+		  Do
+		    changed = false
+		    
+		    For i = 0 to UBound(self.BodyTabs) - 1
+		      
+		      If self.BodyTabs(i).Position > self.BodyTabs(i + 1).Position Then
+		        
+		        tmpTab = self.BodyTabs(i)
+		        self.BodyTabs(i) = self.BodyTabs(i + 1)
+		        self.BodyTabs(i + 1) = tmpTab
+		        changed = true
+		        
+		      End If
+		      
+		    Next i
+		    
+		  Loop Until changed = false
+		  
 		End Sub
 	#tag EndMethod
 
@@ -67,6 +178,37 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub BodyVAlign(Assigns VAlign As String)
+		  BodyVAlign = VAlign
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor(xStyle As SlideStyle)
+		  //++
+		  // This isn't the most efficient clone constructor, but
+		  // since we don't create and destroy these at a high
+		  // rate it should be sufficient.
+		  //--
+		  Me.defaultBGColor = LightBevelColor
+		  Me.Background = new StyleImage()
+		  
+		  If xStyle Is Nil Then
+		    Dim e As New NilObjectException
+		    e.Message = "SlideStyle.Constructor: style to clone is Nil"
+		    Raise e
+		  End If
+		  
+		  Dim xStyleNode As XmlNode
+		  
+		  xStyleNode = xStyle.ToXML.DocumentElement
+		  
+		  
+		  FromXML(xStyleNode)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Constructor(xStyle As XmlNode)
 		  Me.defaultBGColor = LightBevelColor
 		  Me.Background = new StyleImage()
@@ -76,15 +218,105 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function DescriptiveSubtitles() As Boolean
+		  Return SubtitleDescriptiveText
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub DescriptiveSubtitles(Assigns Value As Boolean)
 		  SubtitleDescriptiveText = Value
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function DescriptiveSubtitles() As Boolean
-		  Return SubtitleDescriptiveText
-		End Function
+		Sub FromXML(xStyle As XmlNode)
+		  Dim tabsNode As XmlNode
+		  Dim tabNode as XmlNode
+		  Dim i As Integer
+		  Dim tmpVal as String
+		  Dim tab As StyleTabsType
+		  Dim tabs() As StyleTabsType
+		  Dim fileName As String
+		  
+		  BodyFont = SmartML.GetValueF(xStyle, "body")
+		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
+		  BodyVAlign = SmartML.GetValue(xStyle, "body/@valign")
+		  Highlight = SmartML.GetValueB(xStyle, "body/@highlight_chorus")
+		  BodyMargins.Left = SmartML.GetValueN(xStyle, "body/@margin-left")
+		  BodyMargins.Right = SmartML.GetValueN(xStyle, "body/@margin-right")
+		  BodyMargins.Top = SmartML.GetValueN(xStyle, "body/@margin-top")
+		  BodyMargins.Bottom = SmartML.GetValueN(xStyle, "body/@margin-bottom")
+		  BodyEnable = SmartML.GetValueB(xStyle, "body/@enabled", true, true)
+		  BodyScale = SmartML.GetValueB(xStyle, "body/@auto_scale", true, true)
+		  
+		  tabsNode = SmartML.GetNode(xStyle, "body/tabs")
+		  If tabsNode <> Nil Then
+		    For i = 0 to tabsNode.ChildCount() - 1
+		      tabNode = tabsNode.Child(i)
+		      
+		      If tabNode <> Nil Then
+		        tab.Position = SmartML.GetValueN(tabNode, "@position")
+		        tmpVal = SmartML.GetValue(tabNode, "@align")
+		        If tmpVal = "left" Then
+		          tab.align = StyleHAlignEnum.Left
+		        ElseIf tmpVal = "middle" Then
+		          tab.align = StyleHAlignEnum.Middle
+		        ElseIf tmpVal = "right" Then
+		          tab.align = StyleHAlignEnum.Right
+		        ElseIf tmpVal = "char" Then
+		          tab.align = StyleHAlignEnum.Char
+		          tmpVal = SmartML.GetValue(tabNode, "@char")
+		          tab.alignChar = Left(tmpVal, 1)
+		        End If
+		        
+		        tabs.Append(tab)
+		      End If
+		    Next
+		    
+		    self.BodyTabs = tabs
+		    BodyTabsSort()
+		  End If
+		  
+		  TitleFont = SmartML.GetValueF(xStyle, "title")
+		  TitleAlign = SmartML.GetValue(xStyle, "title/@align")
+		  TitleVAlign = SmartML.GetValue(xStyle, "title/@valign")
+		  TitleMargins.Left = SmartML.GetValueN(xStyle, "title/@margin-left")
+		  TitleMargins.Right = SmartML.GetValueN(xStyle, "title/@margin-right")
+		  TitleMargins.Top = SmartML.GetValueN(xStyle, "title/@margin-top")
+		  TitleMargins.Bottom = SmartML.GetValueN(xStyle, "title/@margin-bottom")
+		  TitleIncludeVerse = SmartML.GetValueB(xStyle, "title/@include_verse", True, False)
+		  TitleEnable = SmartML.GetValueB(xStyle, "title/@enabled", true, true)
+		  
+		  SubtitleFont = SmartML.GetValueF(xStyle, "subtitle")
+		  SubtitleAlign = SmartML.GetValue(xStyle, "subtitle/@align")
+		  SubtitleVAlign = SmartML.GetValue(xStyle, "subtitle/@valign")
+		  SubtitleMargins.Left = SmartML.GetValueN(xStyle, "subtitle/@margin-left")
+		  SubtitleMargins.Right = SmartML.GetValueN(xStyle, "subtitle/@margin-right")
+		  SubtitleMargins.Top = SmartML.GetValueN(xStyle, "subtitle/@margin-top")
+		  SubtitleMargins.Bottom = SmartML.GetValueN(xStyle, "subtitle/@margin-bottom")
+		  Subtitles = SmartML.GetValue(xStyle, "song_subtitle")
+		  SubtitleDescriptiveText = SmartML.GetValueB(xStyle, "subtitle/@descriptive", True, False)
+		  SubtitleEnable = SmartML.GetValueB(xStyle, "subtitle/@enabled", true, true)
+		  
+		  fileName = SmartML.GetValue(xstyle, "background/@filename", False)
+		  If fileName <> "" Then
+		    If Not Background.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + fileName ) Then
+		      Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
+		    End If
+		  Else
+		    Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
+		  End If
+		  If Not SmartML.GetValueC(xstyle, "background/@color", BGColor, False) Then
+		    BGColor = defaultBGColor
+		  End If
+		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
+		  
+		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
+		  If Position < POS_STRETCH Or Position > POS_CENTER Then
+		    Position = POS_STRETCH
+		  End If
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -100,21 +332,15 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Position(Assigns pos As Integer)
-		  If pos < 0 or pos > 2 Then pos = POS_STRETCH ' Defaults to Stretch if invalid
-		  Position = pos
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function Position() As Integer
 		  Return Position
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub StripFooter(Assigns Strip As Integer)
-		  StripFooter = Strip
+		Sub Position(Assigns pos As Integer)
+		  If pos < 0 or pos > 2 Then pos = POS_STRETCH ' Defaults to Stretch if invalid
+		  Position = pos
 		End Sub
 	#tag EndMethod
 
@@ -127,8 +353,8 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SubtitleAlign(Assigns Align As String)
-		  SubtitleAlign = Align
+		Sub StripFooter(Assigns Strip As Integer)
+		  StripFooter = Strip
 		End Sub
 	#tag EndMethod
 
@@ -141,6 +367,12 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub SubtitleAlign(Assigns Align As String)
+		  SubtitleAlign = Align
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function SubtitleFont() As FontFace
 		  Return SubtitleFont.Clone
 		End Function
@@ -150,6 +382,17 @@ Protected Class SlideStyle
 		Sub SubtitleFont(Assigns NewFont As FontFace)
 		  SubtitleFont = NewFont
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SubtitleList() As String
+		  //++
+		  // Returns the list of subtitles.
+		  // See comments under the Setter subroutine
+		  //--
+		  
+		  Return Subtitles
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -167,19 +410,14 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function SubtitleList() As String
-		  //++
-		  // Returns the list of subtitles.
-		  // See comments under the Setter subroutine
-		  //--
-		  
-		  Return Subtitles
+		Function SubtitleMargins() As StyleMarginType
+		  Return SubtitleMargins
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SubtitleVAlign(Assigns VAlign As String)
-		  SubtitleVAlign = VAlign
+		Sub SubtitleMargins(newMargins As StyleMarginType)
+		  SubtitleMargins = newMargins
 		End Sub
 	#tag EndMethod
 
@@ -189,6 +427,12 @@ Protected Class SlideStyle
 		  VA = Lowercase(SubtitleVAlign)
 		  Return VA
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SubtitleVAlign(Assigns VAlign As String)
+		  SubtitleVAlign = VAlign
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -206,15 +450,39 @@ Protected Class SlideStyle
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function TitleFont() As FontFace
+		  Return TitleFont.Clone
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub TitleFont(Assigns NewFont As FontFace)
 		  TitleFont = NewFont
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function TitleFont() As FontFace
-		  Return TitleFont.Clone
+		Function TitleIncludeVerse() As Boolean
+		  Return TitleIncludeVerse
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub TitleIncludeVerse(Assigns value As Boolean)
+		  TitleIncludeVerse = value
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function TitleMargins() As StyleMarginType
+		  Return TitleMargins
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub TitleMargins(newMargins As StyleMarginType)
+		  TitleMargins = newMargins
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -321,8 +589,6 @@ Protected Class SlideStyle
 		  
 		  thisNode = "background"
 		  CurrChild = root.AppendChild(XmlDoc.CreateElement(thisNode))
-		  Static r As New Random
-		  Dim f As FolderItem
 		  
 		  SmartML.SetValueN(CurrChild, "@strip_footer", StripFooter)
 		  SmartML.SetValueC(CurrChild, "@color", BGColor)
@@ -334,274 +600,6 @@ Protected Class SlideStyle
 		  End If
 		  
 		  Return XmlDoc
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function TitleMargins() As StyleMarginType
-		  Return TitleMargins
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function SubtitleMargins() As StyleMarginType
-		  Return SubtitleMargins
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function BodyMargins() As StyleMarginType
-		  Return BodyMargins
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub BodyTabAdd(Position As Integer, Alignment As StyleHAlignEnum, alignCharacter As String = "")
-		  Dim tab as StyleTabsType
-		  
-		  tab.Position = Position
-		  tab.Align = Alignment
-		  If tab.Align = StyleHAlignEnum.Char Then
-		    tab.AlignChar = Left(alignCharacter, 1)
-		  Else
-		    tab.AlignChar = ""
-		  End If
-		  
-		  'Insert new tab at the first position; it will be relocated to the correct position by BodyTabsSort()
-		  bodytabs.Insert(0, tab)
-		  
-		  BodyTabsSort()
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function BodyTabCount() As Integer
-		  Return UBound(BodyTabs)+1
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function BodyTabGet(Index as Integer) As StyleTabsType
-		  Dim result as StyleTabsType
-		  
-		  result.Position = 0
-		  result.Align = StyleHAlignEnum.Left
-		  result.AlignChar = ""
-		  
-		  If Index >= 0 And Index <= Ubound(BodyTabs) Then
-		    result = BodyTabs(Index)
-		  End If
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub BodyTabRemove(Index as Integer)
-		  If Index >= 0 And Index < UBound(BodyTabs) Then
-		    BodyTabs.Remove Index
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function BodyTabItems() As StyleTabsType()
-		  Dim tabs() as StyleTabsType
-		  Dim i As Integer
-		  
-		  //create a copy of the tabs list to prevent returning by reference
-		  For i = 0 to UBound(self.BodyTabs)
-		    tabs.Append(self.BodyTabs(i))
-		  Next i
-		  
-		  return tabs
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub BodyTabsSort()
-		  Dim i As Integer
-		  Dim tmpTab As StyleTabsType
-		  Dim changed As Boolean
-		  
-		  Do
-		    changed = false
-		    
-		    For i = 0 to UBound(self.BodyTabs) - 1
-		      
-		      If self.BodyTabs(i).Position > self.BodyTabs(i + 1).Position Then
-		        
-		        tmpTab = self.BodyTabs(i)
-		        self.BodyTabs(i) = self.BodyTabs(i + 1)
-		        self.BodyTabs(i + 1) = tmpTab
-		        changed = true
-		        
-		      End If
-		      
-		    Next i
-		    
-		  Loop Until changed = false
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub FromXML(xStyle As XmlNode)
-		  Dim tabsNode As XmlNode
-		  Dim tabNode as XmlNode
-		  Dim i As Integer
-		  Dim tmpVal as String
-		  Dim tab As StyleTabsType
-		  Dim tabs() As StyleTabsType
-		  Dim fileName As String
-		  
-		  BodyFont = SmartML.GetValueF(xStyle, "body")
-		  BodyAlign = SmartML.GetValue(xStyle, "body/@align")
-		  BodyVAlign = SmartML.GetValue(xStyle, "body/@valign")
-		  Highlight = SmartML.GetValueB(xStyle, "body/@highlight_chorus")
-		  BodyMargins.Left = SmartML.GetValueN(xStyle, "body/@margin-left")
-		  BodyMargins.Right = SmartML.GetValueN(xStyle, "body/@margin-right")
-		  BodyMargins.Top = SmartML.GetValueN(xStyle, "body/@margin-top")
-		  BodyMargins.Bottom = SmartML.GetValueN(xStyle, "body/@margin-bottom")
-		  BodyEnable = SmartML.GetValueB(xStyle, "body/@enabled", true, true)
-		  BodyScale = SmartML.GetValueB(xStyle, "body/@auto_scale", true, true)
-		  
-		  tabsNode = SmartML.GetNode(xStyle, "body/tabs")
-		  If tabsNode <> Nil Then
-		    For i = 0 to tabsNode.ChildCount() - 1
-		      tabNode = tabsNode.Child(i)
-		      
-		      If tabNode <> Nil Then
-		        tab.Position = SmartML.GetValueN(tabNode, "@position")
-		        tmpVal = SmartML.GetValue(tabNode, "@align")
-		        If tmpVal = "left" Then
-		          tab.align = StyleHAlignEnum.Left
-		        ElseIf tmpVal = "middle" Then
-		          tab.align = StyleHAlignEnum.Middle
-		        ElseIf tmpVal = "right" Then
-		          tab.align = StyleHAlignEnum.Right
-		        ElseIf tmpVal = "char" Then
-		          tab.align = StyleHAlignEnum.Char
-		          tmpVal = SmartML.GetValue(tabNode, "@char")
-		          tab.alignChar = Left(tmpVal, 1)
-		        End If
-		        
-		        tabs.Append(tab)
-		      End If
-		    Next
-		    
-		    self.BodyTabs = tabs
-		    BodyTabsSort()
-		  End If
-		  
-		  TitleFont = SmartML.GetValueF(xStyle, "title")
-		  TitleAlign = SmartML.GetValue(xStyle, "title/@align")
-		  TitleVAlign = SmartML.GetValue(xStyle, "title/@valign")
-		  TitleMargins.Left = SmartML.GetValueN(xStyle, "title/@margin-left")
-		  TitleMargins.Right = SmartML.GetValueN(xStyle, "title/@margin-right")
-		  TitleMargins.Top = SmartML.GetValueN(xStyle, "title/@margin-top")
-		  TitleMargins.Bottom = SmartML.GetValueN(xStyle, "title/@margin-bottom")
-		  TitleIncludeVerse = SmartML.GetValueB(xStyle, "title/@include_verse", True, False)
-		  TitleEnable = SmartML.GetValueB(xStyle, "title/@enabled", true, true)
-		  
-		  SubtitleFont = SmartML.GetValueF(xStyle, "subtitle")
-		  SubtitleAlign = SmartML.GetValue(xStyle, "subtitle/@align")
-		  SubtitleVAlign = SmartML.GetValue(xStyle, "subtitle/@valign")
-		  SubtitleMargins.Left = SmartML.GetValueN(xStyle, "subtitle/@margin-left")
-		  SubtitleMargins.Right = SmartML.GetValueN(xStyle, "subtitle/@margin-right")
-		  SubtitleMargins.Top = SmartML.GetValueN(xStyle, "subtitle/@margin-top")
-		  SubtitleMargins.Bottom = SmartML.GetValueN(xStyle, "subtitle/@margin-bottom")
-		  Subtitles = SmartML.GetValue(xStyle, "song_subtitle")
-		  SubtitleDescriptiveText = SmartML.GetValueB(xStyle, "subtitle/@descriptive", True, False)
-		  SubtitleEnable = SmartML.GetValueB(xStyle, "subtitle/@enabled", true, true)
-		  
-		  fileName = SmartML.GetValue(xstyle, "background/@filename", False)
-		  If fileName <> "" Then
-		    If Not Background.SetImageFromFileName( App.DocsFolder.Child("Backgrounds").AbsolutePath + fileName ) Then
-		      Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
-		    End If
-		  Else
-		    Call Background.SetImageAsString(SmartML.GetValue(xstyle, "background", False))
-		  End If
-		  If Not SmartML.GetValueC(xstyle, "background/@color", BGColor, False) Then
-		    BGColor = defaultBGColor
-		  End If
-		  StripFooter = SmartML.GetValueN(xStyle, "background/@strip_footer")
-		  
-		  Position = SmartML.GetValueN(xstyle, "background/@position", False)
-		  If Position < POS_STRETCH Or Position > POS_CENTER Then
-		    Position = POS_STRETCH
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Constructor(xStyle As SlideStyle)
-		  //++
-		  // This isn't the most efficient clone constructor, but
-		  // since we don't create and destroy these at a high
-		  // rate it should be sufficient.
-		  //--
-		  Me.defaultBGColor = LightBevelColor
-		  Me.Background = new StyleImage()
-		  
-		  If xStyle Is Nil Then
-		    Dim e As New NilObjectException
-		    e.Message = "SlideStyle.Constructor: style to clone is Nil"
-		    Raise e
-		  End If
-		  
-		  Dim xStyleNode As XmlNode
-		  
-		  xStyleNode = xStyle.ToXML.DocumentElement
-		  
-		  
-		  FromXML(xStyleNode)
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub BodyMargins(newMargins As StyleMarginType)
-		  BodyMargins = newMargins
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub TitleMargins(newMargins As StyleMarginType)
-		  TitleMargins = newMargins
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub SubtitleMargins(newMargins As StyleMarginType)
-		  SubtitleMargins = newMargins
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub BodyTabClear()
-		  Redim self.BodyTabs(-1)
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub BodyTabAdd(tab As StyleTabsType)
-		  'Insert new tab at the first position; it will be relocated to the correct position by BodyTabsSort()
-		  self.bodytabs.Insert(0, tab)
-		  
-		  BodyTabsSort()
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub TitleIncludeVerse(Assigns value As Boolean)
-		  TitleIncludeVerse = value
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function TitleIncludeVerse() As Boolean
-		  Return TitleIncludeVerse
 		End Function
 	#tag EndMethod
 
@@ -641,16 +639,32 @@ Protected Class SlideStyle
 		Private BodyAlign As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		BodyEnable As Boolean
+	#tag EndProperty
+
 	#tag Property, Flags = &h21
 		Private BodyFont As FontFace
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private BodyMargins As StyleMarginType
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		BodyScale As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private BodyTabs() As StyleTabsType
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
 		Private BodyVAlign As String
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		BodyScale As Boolean
+	#tag Property, Flags = &h21
+		Private defaultBGColor As Color
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -677,8 +691,16 @@ Protected Class SlideStyle
 		Protected SubtitleDescriptiveText As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		SubtitleEnable As Boolean
+	#tag EndProperty
+
 	#tag Property, Flags = &h21
 		Private SubtitleFont As FontFace
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private SubtitleMargins As StyleMarginType
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -696,15 +718,16 @@ Protected Class SlideStyle
 		Private TitleAlign As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		TitleEnable As Boolean
+	#tag EndProperty
+
 	#tag Property, Flags = &h21
 		Private TitleFont As Fontface
 	#tag EndProperty
 
-	#tag Property, Flags = &h21
-		#tag Note
-			Vertical alignment of the title
-		#tag EndNote
-		Private TitleVAlign As String
+	#tag Property, Flags = &h1
+		Protected TitleIncludeVerse As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -712,35 +735,10 @@ Protected Class SlideStyle
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private SubtitleMargins As StyleMarginType
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private BodyMargins As StyleMarginType
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private BodyTabs() As StyleTabsType
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private defaultBGColor As Color
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected TitleIncludeVerse As Boolean = False
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		BodyEnable As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		TitleEnable As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		SubtitleEnable As Boolean
+		#tag Note
+			Vertical alignment of the title
+		#tag EndNote
+		Private TitleVAlign As String
 	#tag EndProperty
 
 
@@ -756,22 +754,21 @@ Protected Class SlideStyle
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
+			Name="BodyEnable"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="BodyScale"
+			Group="Behavior"
+			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -782,17 +779,22 @@ Protected Class SlideStyle
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
+			Name="Name"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="BodyEnable"
+			Name="SubtitleEnable"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="TitleEnable"
@@ -801,10 +803,11 @@ Protected Class SlideStyle
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="SubtitleEnable"
-			Group="Behavior"
+			Name="Top"
+			Visible=true
+			Group="Position"
 			InitialValue="0"
-			Type="Boolean"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

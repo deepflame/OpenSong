@@ -294,6 +294,11 @@ Protected Module Globals
 			InitialValue="0"
 			InheritedFrom="Object"
 		#tag EndViewProperty
+		#tag ViewProperty
+			Name="UseSheetDialogs"
+			Group="Behavior"
+			Type="Boolean"
+		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module
 #tag EndModule

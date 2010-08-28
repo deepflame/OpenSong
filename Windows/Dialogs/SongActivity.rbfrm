@@ -505,9 +505,9 @@ Begin Window SongActivity
       Left            =   257
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       TabIndex        =   13
       TabPanelIndex   =   0
       TabStop         =   True
@@ -535,9 +535,9 @@ Begin Window SongActivity
       Left            =   346
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       TabIndex        =   14
       TabPanelIndex   =   0
       TabStop         =   True

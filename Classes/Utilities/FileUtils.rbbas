@@ -37,6 +37,57 @@ Protected Module FileUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function CopyFile(fromItem As FolderItem, toItem As FolderItem, overwrite As String = "NEVER") As Boolean
+		  If fromItem Is Nil or toItem Is Nil Then
+		    SetLastError(Nil)
+		    Return False
+		  End If
+		  
+		  If (Not fromItem.Parent.Exists) Then
+		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem.Parent))
+		    Return False
+		  End If
+		  If (Not toItem.Parent.Exists) Then
+		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(toItem.Parent))
+		    Return False
+		  End If
+		  
+		  If fromItem.Directory Then
+		    LastError = App.T.Translate("errors/fileutils/notaregularfile", GetDisplayFullPath(fromItem))
+		    Return False
+		  End If
+		  
+		  If Not fromItem.Exists Then
+		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem))
+		    Return False
+		  End If
+		  
+		  If toItem.Directory Then
+		    toItem = toItem.Child(fromItem.Name)
+		  End If
+		  
+		  If _
+		    (overwrite = kOverwriteAlways) Or _
+		    (overwrite = kOverwriteNever And Not toItem.Exists) Or _
+		    (overwrite = kOverwriteNewer And ((Not toItem.Exists) Or toItem.ModificationDate.TotalSeconds < fromItem.ModificationDate.TotalSeconds)) Then
+		    If toItem.Exists Then toItem.Delete
+		    If toItem.Exists Then
+		      SetLastError(toItem)
+		      Return False
+		    End If
+		    fromItem.CopyFileTo toItem.Parent
+		    If Not toItem.Exists Then
+		      SetLastError(toItem)
+		      Return False
+		    End If
+		  End If
+		  
+		  SetLastError(toItem)
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function CopyPath(fromFolder As FolderItem, toFolder As FolderItem, overwrite As String = "NEVER") As Boolean
 		  Dim i As Integer
 		  Dim fromItem, toItem As FolderItem
@@ -390,63 +441,14 @@ Protected Module FileUtils
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function CopyFile(fromItem As FolderItem, toItem As FolderItem, overwrite As String = "NEVER") As Boolean
-		  Dim i As Integer
-		  If fromItem Is Nil or toItem Is Nil Then
-		    SetLastError(Nil)
-		    Return False
-		  End If
-		  
-		  If (Not fromItem.Parent.Exists) Then
-		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem.Parent))
-		    Return False
-		  End If
-		  If (Not toItem.Parent.Exists) Then
-		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(toItem.Parent))
-		    Return False
-		  End If
-		  
-		  If fromItem.Directory Then
-		    LastError = App.T.Translate("errors/fileutils/notaregularfile", GetDisplayFullPath(fromItem))
-		    Return False
-		  End If
-		  
-		  If Not fromItem.Exists Then
-		    LastError = App.T.Translate("errors/fileutils/filenotfound", GetDisplayFullPath(fromItem))
-		    Return False
-		  End If
-		  
-		  If toItem.Directory Then
-		    toItem = toItem.Child(fromItem.Name)
-		  End If
-		  
-		  If _
-		    (overwrite = kOverwriteAlways) Or _
-		    (overwrite = kOverwriteNever And Not toItem.Exists) Or _
-		    (overwrite = kOverwriteNewer And ((Not toItem.Exists) Or toItem.ModificationDate.TotalSeconds < fromItem.ModificationDate.TotalSeconds)) Then
-		    If toItem.Exists Then toItem.Delete
-		    If toItem.Exists Then
-		      SetLastError(toItem)
-		      Return False
-		    End If
-		    fromItem.CopyFileTo toItem.Parent
-		    If Not toItem.Exists Then
-		      SetLastError(toItem)
-		      Return False
-		    End If
-		  End If
-		  
-		  SetLastError(toItem)
-		  Return True
-		End Function
-	#tag EndMethod
-
 
 	#tag Property, Flags = &h1
 		Protected LastError As String
 	#tag EndProperty
 
+
+	#tag Constant, Name = kOverwriteAlways, Type = String, Dynamic = False, Default = \"ALWAYS", Scope = Protected
+	#tag EndConstant
 
 	#tag Constant, Name = kOverwriteNever, Type = String, Dynamic = False, Default = \"NEVER", Scope = Protected
 	#tag EndConstant
@@ -454,17 +456,8 @@ Protected Module FileUtils
 	#tag Constant, Name = kOverwriteNewer, Type = String, Dynamic = False, Default = \"NEWER", Scope = Protected
 	#tag EndConstant
 
-	#tag Constant, Name = kOverwriteAlways, Type = String, Dynamic = False, Default = \"ALWAYS", Scope = Protected
-	#tag EndConstant
-
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
@@ -473,16 +466,22 @@ Protected Module FileUtils
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

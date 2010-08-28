@@ -41,9 +41,9 @@ Begin Window StyleMarginWindow
       Left            =   330
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
@@ -54,7 +54,6 @@ Begin Window StyleMarginWindow
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
@@ -86,7 +85,6 @@ Begin Window StyleMarginWindow
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   1
    End
    Begin StaticText lbl_margins_left
       AutoDeactivate  =   True
@@ -121,7 +119,6 @@ Begin Window StyleMarginWindow
       Underline       =   ""
       Visible         =   True
       Width           =   72
-      BehaviorIndex   =   2
    End
    Begin SEditFieldNumeric edt_margins_left
       AcceptTabs      =   ""
@@ -172,7 +169,6 @@ Begin Window StyleMarginWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   38
-      BehaviorIndex   =   3
    End
    Begin UpDownArrows ud_margins_left
       AcceptFocus     =   False
@@ -199,7 +195,6 @@ Begin Window StyleMarginWindow
       Top             =   146
       Visible         =   True
       Width           =   13
-      BehaviorIndex   =   4
    End
    Begin StaticText lbl_margins_right
       AutoDeactivate  =   True
@@ -219,7 +214,7 @@ Begin Window StyleMarginWindow
       LockedInPosition=   False
       LockLeft        =   ""
       LockRight       =   True
-      LockTop         =   ""
+      LockTop         =   True
       Multiline       =   ""
       Scope           =   0
       TabIndex        =   5
@@ -234,7 +229,6 @@ Begin Window StyleMarginWindow
       Underline       =   ""
       Visible         =   True
       Width           =   76
-      BehaviorIndex   =   5
    End
    Begin SEditFieldNumeric edt_margins_right
       AcceptTabs      =   ""
@@ -261,7 +255,7 @@ Begin Window StyleMarginWindow
       LockedInPosition=   False
       LockLeft        =   ""
       LockRight       =   True
-      LockTop         =   ""
+      LockTop         =   True
       Mask            =   ""
       Maximum         =   0
       Minimum         =   0
@@ -285,7 +279,6 @@ Begin Window StyleMarginWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   38
-      BehaviorIndex   =   6
    End
    Begin UpDownArrows ud_margins_right
       AcceptFocus     =   False
@@ -302,7 +295,7 @@ Begin Window StyleMarginWindow
       LockedInPosition=   False
       LockLeft        =   ""
       LockRight       =   True
-      LockTop         =   ""
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
@@ -312,7 +305,6 @@ Begin Window StyleMarginWindow
       Top             =   149
       Visible         =   True
       Width           =   13
-      BehaviorIndex   =   7
    End
    Begin StaticText lbl_margins_top
       AutoDeactivate  =   True
@@ -332,7 +324,7 @@ Begin Window StyleMarginWindow
       LockedInPosition=   False
       LockLeft        =   ""
       LockRight       =   True
-      LockTop         =   ""
+      LockTop         =   True
       Multiline       =   ""
       Scope           =   0
       TabIndex        =   8
@@ -347,7 +339,6 @@ Begin Window StyleMarginWindow
       Underline       =   ""
       Visible         =   True
       Width           =   107
-      BehaviorIndex   =   8
    End
    Begin SEditFieldNumeric edt_margins_top
       AcceptTabs      =   ""
@@ -372,9 +363,9 @@ Begin Window StyleMarginWindow
       LimitText       =   0
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Mask            =   ""
       Maximum         =   0
       Minimum         =   0
@@ -398,7 +389,6 @@ Begin Window StyleMarginWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   38
-      BehaviorIndex   =   9
    End
    Begin UpDownArrows ud_margins_top
       AcceptFocus     =   False
@@ -413,9 +403,9 @@ Begin Window StyleMarginWindow
       Left            =   256
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   10
       TabPanelIndex   =   0
@@ -425,7 +415,6 @@ Begin Window StyleMarginWindow
       Top             =   14
       Visible         =   True
       Width           =   13
-      BehaviorIndex   =   10
    End
    Begin StaticText txt_right_pixels
       AutoDeactivate  =   True
@@ -445,7 +434,7 @@ Begin Window StyleMarginWindow
       LockedInPosition=   False
       LockLeft        =   False
       LockRight       =   True
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       Scope           =   0
       TabIndex        =   11
@@ -460,7 +449,6 @@ Begin Window StyleMarginWindow
       Underline       =   False
       Visible         =   True
       Width           =   20
-      BehaviorIndex   =   11
    End
    Begin StaticText txt_top_pixels
       AutoDeactivate  =   True
@@ -478,9 +466,9 @@ Begin Window StyleMarginWindow
       Left            =   273
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       Scope           =   0
       TabIndex        =   12
@@ -495,7 +483,6 @@ Begin Window StyleMarginWindow
       Underline       =   False
       Visible         =   True
       Width           =   20
-      BehaviorIndex   =   12
    End
    Begin StaticText lbl_margins_bottom
       AutoDeactivate  =   True
@@ -530,7 +517,6 @@ Begin Window StyleMarginWindow
       Underline       =   ""
       Visible         =   True
       Width           =   107
-      BehaviorIndex   =   13
    End
    Begin SEditFieldNumeric edt_margins_bottom
       AcceptTabs      =   ""
@@ -581,7 +567,6 @@ Begin Window StyleMarginWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   38
-      BehaviorIndex   =   14
    End
    Begin UpDownArrows ud_margins_bottom
       AcceptFocus     =   False
@@ -608,7 +593,6 @@ Begin Window StyleMarginWindow
       Top             =   271
       Visible         =   True
       Width           =   13
-      BehaviorIndex   =   15
    End
    Begin StaticText lbl_style_preview
       AutoDeactivate  =   True
@@ -626,9 +610,9 @@ Begin Window StyleMarginWindow
       Left            =   103
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Multiline       =   ""
       Scope           =   0
       TabIndex        =   16
@@ -643,7 +627,6 @@ Begin Window StyleMarginWindow
       Underline       =   ""
       Visible         =   True
       Width           =   240
-      BehaviorIndex   =   16
    End
    Begin SBufferedCanvas can_style_preview
       AcceptFocus     =   ""
@@ -661,9 +644,9 @@ Begin Window StyleMarginWindow
       Left            =   103
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   17
       TabPanelIndex   =   0
@@ -674,7 +657,6 @@ Begin Window StyleMarginWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   280
-      BehaviorIndex   =   17
    End
    Begin StaticText txt_left_pixels
       AutoDeactivate  =   True
@@ -709,7 +691,6 @@ Begin Window StyleMarginWindow
       Underline       =   False
       Visible         =   True
       Width           =   20
-      BehaviorIndex   =   18
    End
    Begin StaticText txt_bottom_pixels
       AutoDeactivate  =   True
@@ -744,7 +725,6 @@ Begin Window StyleMarginWindow
       Underline       =   False
       Visible         =   True
       Width           =   20
-      BehaviorIndex   =   19
    End
    Begin StaticText txt_background_pixels1
       AutoDeactivate  =   True
@@ -762,9 +742,9 @@ Begin Window StyleMarginWindow
       Left            =   -365
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       Scope           =   0
       TabIndex        =   20
@@ -779,7 +759,6 @@ Begin Window StyleMarginWindow
       Underline       =   False
       Visible         =   True
       Width           =   20
-      BehaviorIndex   =   20
    End
 End
 #tag EndWindow
@@ -793,18 +772,34 @@ End
 	#tag EndEvent
 
 
+	#tag Method, Flags = &h0
+		Function Edit(style As SlideStyle, slide as XmlNode, sectionType As StyleSectionEnum) As Boolean
+		  self.editType = sectionType
+		  self.editStyle = style
+		  self.previewSlideNode = slide
+		  
+		  isUpdatingPreview = True
+		  LoadValues
+		  isUpdatingPreview = False
+		  UpdatePreview
+		  
+		  ReturnValue = False
+		  ShowModalWithin(MainWindow)
+		  
+		  Return ReturnValue
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h21
 		Private Sub LoadValues()
-		  dim margin_section as String
-		  
-		  select case self.editType
-		  case StyleSectionEnum.Title
+		  Select Case self.editType
+		  Case StyleSectionEnum.Title
 		    margins = self.editStyle.TitleMargins()
-		  case StyleSectionEnum.Subtitle
+		  Case StyleSectionEnum.Subtitle
 		    margins = self.editStyle.SubtitleMargins()
-		  case StyleSectionEnum.Body
+		  Case StyleSectionEnum.Body
 		    margins = self.editStyle.BodyMargins()
-		  end select
+		  End Select
 		  
 		  'Initialise the edit controls with the margin values
 		  edt_margins_left.SetValue(margins.Left)
@@ -829,27 +824,9 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function Edit(style As SlideStyle, slide as XmlNode, sectionType As StyleSectionEnum) As Boolean
-		  self.editType = sectionType
-		  self.editStyle = style
-		  self.previewSlideNode = slide
-		  
-		  isUpdatingPreview = True
-		  LoadValues
-		  isUpdatingPreview = False
-		  UpdatePreview
-		  
-		  ReturnValue = False
-		  ShowModalWithin(MainWindow)
-		  
-		  Return ReturnValue
-		End Function
-	#tag EndMethod
-
 
 	#tag Property, Flags = &h21
-		Private ReturnValue As boolean
+		Private editStyle As SlideStyle
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -861,15 +838,15 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private editStyle As SlideStyle
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
 		Private margins As StyleMarginType
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
 		Private previewSlideNode As XmlNode
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private ReturnValue As boolean
 	#tag EndProperty
 
 
@@ -1043,7 +1020,6 @@ End
 #tag Events can_style_preview
 	#tag Event
 		Sub Paint(g As Graphics)
-		  Dim c as Color
 		  Dim zoom as Double
 		  Dim realBorder as Double
 		  

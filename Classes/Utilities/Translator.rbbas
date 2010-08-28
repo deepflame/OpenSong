@@ -242,8 +242,7 @@ Protected Class Translator
 		  
 		  Dim i, j As Integer
 		  Dim cont As Control
-		  Dim parent As RectControl
-		  Dim name, parentName, old As String
+		  Dim name, old As String
 		  Dim temp As String
 		  Dim controlUsage As String
 		  Dim parts() As String

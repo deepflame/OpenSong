@@ -600,7 +600,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          ListIndex       =   0
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
          Scope           =   0
@@ -659,7 +659,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          ListIndex       =   1
          LockBottom      =   ""
          LockedInPosition=   False
-         LockLeft        =   ""
+         LockLeft        =   True
          LockRight       =   ""
          LockTop         =   True
          Scope           =   0
@@ -715,7 +715,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Left            =   435
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
          Scope           =   0
@@ -744,7 +744,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Left            =   435
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
          Scope           =   0
@@ -1152,7 +1152,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LimitText       =   0
          LockBottom      =   ""
          LockedInPosition=   False
-         LockLeft        =   ""
+         LockLeft        =   True
          LockRight       =   ""
          LockTop         =   True
          Mask            =   ""
@@ -1392,7 +1392,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Constructor(controller As ScripturePickerController, SetOpen As Boolean)
-		   
+		  
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		  

@@ -122,7 +122,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   0
@@ -153,7 +153,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   1
@@ -184,7 +184,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   2
@@ -215,7 +215,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   3
@@ -246,7 +246,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   4
@@ -277,7 +277,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   5
@@ -399,7 +399,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   0
@@ -430,7 +430,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   1
@@ -461,7 +461,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   2
@@ -492,7 +492,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   3
@@ -523,7 +523,7 @@ Begin Window PresentHelperWindow
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   4

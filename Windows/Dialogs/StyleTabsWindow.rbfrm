@@ -39,9 +39,9 @@ Begin Window StyleTabsWindow
       Left            =   10
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
@@ -52,7 +52,6 @@ Begin Window StyleTabsWindow
       Underline       =   ""
       Visible         =   True
       Width           =   293
-      BehaviorIndex   =   0
       Begin HighlightList lst_tabs
          AutoDeactivate  =   True
          AutoHideScrollbars=   True
@@ -82,9 +81,9 @@ Begin Window StyleTabsWindow
          Left            =   24
          LockBottom      =   ""
          LockedInPosition=   False
-         LockLeft        =   ""
+         LockLeft        =   True
          LockRight       =   ""
-         LockTop         =   ""
+         LockTop         =   True
          RequiresSelection=   False
          Scope           =   0
          ScrollbarHorizontal=   ""
@@ -102,7 +101,6 @@ Begin Window StyleTabsWindow
          Width           =   110
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
-         BehaviorIndex   =   1
       End
       Begin GroupBox grp_tabs_properties
          AutoDeactivate  =   True
@@ -119,9 +117,9 @@ Begin Window StyleTabsWindow
          Left            =   146
          LockBottom      =   ""
          LockedInPosition=   False
-         LockLeft        =   ""
+         LockLeft        =   True
          LockRight       =   ""
-         LockTop         =   ""
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   0
@@ -132,7 +130,6 @@ Begin Window StyleTabsWindow
          Underline       =   ""
          Visible         =   True
          Width           =   144
-         BehaviorIndex   =   2
          Begin StaticText lbl_position
             AutoDeactivate  =   True
             BehaviorIndex   =   3
@@ -149,9 +146,9 @@ Begin Window StyleTabsWindow
             Left            =   154
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   0
@@ -166,7 +163,6 @@ Begin Window StyleTabsWindow
             Underline       =   ""
             Visible         =   True
             Width           =   51
-            BehaviorIndex   =   3
          End
          Begin SEditFieldNumeric edt_position
             AcceptTabs      =   ""
@@ -191,9 +187,9 @@ Begin Window StyleTabsWindow
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Mask            =   ""
             Maximum         =   0
             Minimum         =   0
@@ -217,7 +213,6 @@ Begin Window StyleTabsWindow
             UseFocusRing    =   True
             Visible         =   True
             Width           =   38
-            BehaviorIndex   =   4
          End
          Begin UpDownArrows ud_tabs_position
             AcceptFocus     =   False
@@ -232,9 +227,9 @@ Begin Window StyleTabsWindow
             Left            =   247
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   0
@@ -242,7 +237,6 @@ Begin Window StyleTabsWindow
             Top             =   58
             Visible         =   True
             Width           =   13
-            BehaviorIndex   =   5
          End
          Begin StaticText txt_props_pixels
             AutoDeactivate  =   True
@@ -260,9 +254,9 @@ Begin Window StyleTabsWindow
             Left            =   264
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   3
@@ -277,7 +271,6 @@ Begin Window StyleTabsWindow
             Underline       =   False
             Visible         =   True
             Width           =   20
-            BehaviorIndex   =   6
          End
          Begin StaticText lbl_align
             AutoDeactivate  =   True
@@ -295,9 +288,9 @@ Begin Window StyleTabsWindow
             Left            =   154
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   4
@@ -312,7 +305,6 @@ Begin Window StyleTabsWindow
             Underline       =   ""
             Visible         =   True
             Width           =   51
-            BehaviorIndex   =   7
          End
          Begin RadioButton edt_left
             AutoDeactivate  =   True
@@ -329,9 +321,9 @@ Begin Window StyleTabsWindow
             Left            =   154
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   0
@@ -343,7 +335,6 @@ Begin Window StyleTabsWindow
             Value           =   False
             Visible         =   True
             Width           =   85
-            BehaviorIndex   =   8
          End
          Begin RadioButton edt_middle
             AutoDeactivate  =   True
@@ -360,9 +351,9 @@ Begin Window StyleTabsWindow
             Left            =   154
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   0
@@ -374,7 +365,6 @@ Begin Window StyleTabsWindow
             Value           =   ""
             Visible         =   True
             Width           =   85
-            BehaviorIndex   =   9
          End
          Begin RadioButton edt_right
             AutoDeactivate  =   True
@@ -391,9 +381,9 @@ Begin Window StyleTabsWindow
             Left            =   154
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   0
@@ -405,7 +395,6 @@ Begin Window StyleTabsWindow
             Value           =   ""
             Visible         =   True
             Width           =   85
-            BehaviorIndex   =   10
          End
          Begin RadioButton edt_char
             AutoDeactivate  =   True
@@ -422,9 +411,9 @@ Begin Window StyleTabsWindow
             Left            =   154
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   0
@@ -436,7 +425,6 @@ Begin Window StyleTabsWindow
             Value           =   ""
             Visible         =   True
             Width           =   85
-            BehaviorIndex   =   11
          End
          Begin SEditField edt_alignchar
             AcceptTabs      =   ""
@@ -460,9 +448,9 @@ Begin Window StyleTabsWindow
             LimitText       =   1
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   ""
             Password        =   ""
@@ -483,11 +471,10 @@ Begin Window StyleTabsWindow
             UseFocusRing    =   True
             Visible         =   True
             Width           =   25
-            BehaviorIndex   =   12
          End
          Begin PushButton btn_apply
             AutoDeactivate  =   True
-            BehaviorIndex   =   20
+            BehaviorIndex   =   13
             Bold            =   ""
             Cancel          =   ""
             Caption         =   "Appl&y"
@@ -502,9 +489,9 @@ Begin Window StyleTabsWindow
             Left            =   197
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   0
@@ -515,12 +502,11 @@ Begin Window StyleTabsWindow
             Underline       =   ""
             Visible         =   True
             Width           =   80
-            BehaviorIndex   =   13
          End
       End
       Begin PushButton btn_new
          AutoDeactivate  =   True
-         BehaviorIndex   =   13
+         BehaviorIndex   =   14
          Bold            =   ""
          Cancel          =   ""
          Caption         =   "&New"
@@ -535,9 +521,9 @@ Begin Window StyleTabsWindow
          Left            =   24
          LockBottom      =   ""
          LockedInPosition=   False
-         LockLeft        =   ""
+         LockLeft        =   True
          LockRight       =   ""
-         LockTop         =   ""
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   0
@@ -548,11 +534,10 @@ Begin Window StyleTabsWindow
          Underline       =   ""
          Visible         =   True
          Width           =   51
-         BehaviorIndex   =   14
       End
       Begin PushButton btn_remove
          AutoDeactivate  =   True
-         BehaviorIndex   =   14
+         BehaviorIndex   =   15
          Bold            =   ""
          Cancel          =   ""
          Caption         =   "&Remove"
@@ -567,9 +552,9 @@ Begin Window StyleTabsWindow
          Left            =   87
          LockBottom      =   ""
          LockedInPosition=   False
-         LockLeft        =   ""
+         LockLeft        =   True
          LockRight       =   ""
-         LockTop         =   ""
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   0
@@ -580,11 +565,10 @@ Begin Window StyleTabsWindow
          Underline       =   ""
          Visible         =   True
          Width           =   68
-         BehaviorIndex   =   15
       End
       Begin PushButton btn_removeall
          AutoDeactivate  =   True
-         BehaviorIndex   =   15
+         BehaviorIndex   =   16
          Bold            =   ""
          Cancel          =   ""
          Caption         =   "Remove &All"
@@ -599,9 +583,9 @@ Begin Window StyleTabsWindow
          Left            =   197
          LockBottom      =   ""
          LockedInPosition=   False
-         LockLeft        =   ""
+         LockLeft        =   True
          LockRight       =   ""
-         LockTop         =   ""
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   4
          TabPanelIndex   =   0
@@ -612,12 +596,11 @@ Begin Window StyleTabsWindow
          Underline       =   ""
          Visible         =   True
          Width           =   93
-         BehaviorIndex   =   16
       End
    End
    Begin StaticText lbl_style_preview
       AutoDeactivate  =   True
-      BehaviorIndex   =   16
+      BehaviorIndex   =   17
       Bold            =   ""
       ControlOrder    =   16
       DataField       =   ""
@@ -631,9 +614,9 @@ Begin Window StyleTabsWindow
       Left            =   315
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Multiline       =   ""
       Scope           =   0
       TabIndex        =   1
@@ -648,14 +631,13 @@ Begin Window StyleTabsWindow
       Underline       =   ""
       Visible         =   True
       Width           =   280
-      BehaviorIndex   =   17
    End
    Begin SBufferedCanvas can_style_preview
       AcceptFocus     =   ""
       AcceptTabs      =   ""
       AutoDeactivate  =   True
       Backdrop        =   ""
-      BehaviorIndex   =   17
+      BehaviorIndex   =   18
       ControlOrder    =   17
       Enabled         =   True
       EraseBackground =   True
@@ -666,9 +648,9 @@ Begin Window StyleTabsWindow
       Left            =   315
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
@@ -677,11 +659,10 @@ Begin Window StyleTabsWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   280
-      BehaviorIndex   =   18
    End
    Begin PushButton btn_ok
       AutoDeactivate  =   True
-      BehaviorIndex   =   18
+      BehaviorIndex   =   19
       Bold            =   False
       Cancel          =   False
       Caption         =   "OK"
@@ -696,9 +677,9 @@ Begin Window StyleTabsWindow
       Left            =   380
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
@@ -709,11 +690,10 @@ Begin Window StyleTabsWindow
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   19
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
-      BehaviorIndex   =   19
+      BehaviorIndex   =   20
       Bold            =   False
       Cancel          =   True
       Caption         =   "Cancel"
@@ -728,9 +708,9 @@ Begin Window StyleTabsWindow
       Left            =   460
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
@@ -741,7 +721,6 @@ Begin Window StyleTabsWindow
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   20
    End
 End
 #tag EndWindow
@@ -754,69 +733,6 @@ End
 		End Sub
 	#tag EndEvent
 
-
-	#tag Method, Flags = &h0
-		Function Edit(style As SlideStyle, slide As XmlNode) As Boolean
-		  self.editStyle = style
-		  self.previewSlideNode = slide
-		  
-		  lst_tabs.SortedColumn = 0
-		  lst_tabs.ColumnSortDirection(0) = ListBox.SortAscending
-		  DisableEditControls()
-		  
-		  self.isUpdatingUI = True
-		  self.isUpdatingPreview = True
-		  LoadValues
-		  self.isUpdatingPreview = False
-		  self.isUpdatingUI = False
-		  UpdatePreview
-		  
-		  
-		  self.ReturnValue = False
-		  ShowModalWithin(MainWindow)
-		  Return self.ReturnValue
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub UpdatePreview()
-		  Dim i As Integer
-		  Dim tab As StyleTabsType
-		  
-		  if not isUpdatingPreview then
-		    isUpdatingPreview = True
-		    
-		    self.editStyle.BodyTabClear()
-		    
-		    For i = 0 To lst_tabs.ListCount()-1
-		      tab.StringValue(true) = lst_tabs.Cell(i, 2)
-		      self.editStyle.BodyTabAdd(tab)
-		    Next
-		    
-		    can_style_preview.Repaint()
-		    
-		    isUpdatingPreview = False
-		  end if
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub LoadValues()
-		  Dim tabsNode As XmlNode
-		  Dim tabNode as XmlNode
-		  Dim i As Integer
-		  Dim tab As StyleTabsType
-		  
-		  lst_tabs.DeleteAllRows()
-		  For i = 0 to self.editStyle.BodyTabCount()-1
-		    tab = self.editStyle.BodyTabGet(i)
-		    
-		    lst_tabs.AddRow cStr(tab.Position)
-		    lst_tabs.Cell(lst_tabs.LastIndex, 1) = AlignmentDescription(tab)
-		    lst_tabs.Cell(lst_tabs.LastIndex, 2) = tab.StringValue(true)
-		  Next
-		End Sub
-	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Function AlignmentDescription(tab As StyleTabsType) As String
@@ -852,21 +768,70 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function Edit(style As SlideStyle, slide As XmlNode) As Boolean
+		  self.editStyle = style
+		  self.previewSlideNode = slide
+		  
+		  lst_tabs.SortedColumn = 0
+		  lst_tabs.ColumnSortDirection(0) = ListBox.SortAscending
+		  DisableEditControls()
+		  
+		  self.isUpdatingUI = True
+		  self.isUpdatingPreview = True
+		  LoadValues
+		  self.isUpdatingPreview = False
+		  self.isUpdatingUI = False
+		  UpdatePreview
+		  
+		  
+		  self.ReturnValue = False
+		  ShowModalWithin(MainWindow)
+		  Return self.ReturnValue
+		End Function
+	#tag EndMethod
 
-	#tag Property, Flags = &h21
-		Private isUpdatingPreview As Boolean
-	#tag EndProperty
+	#tag Method, Flags = &h21
+		Private Sub LoadValues()
+		  Dim i As Integer
+		  Dim tab As StyleTabsType
+		  
+		  lst_tabs.DeleteAllRows()
+		  For i = 0 to self.editStyle.BodyTabCount()-1
+		    tab = self.editStyle.BodyTabGet(i)
+		    
+		    lst_tabs.AddRow cStr(tab.Position)
+		    lst_tabs.Cell(lst_tabs.LastIndex, 1) = AlignmentDescription(tab)
+		    lst_tabs.Cell(lst_tabs.LastIndex, 2) = tab.StringValue(true)
+		  Next
+		End Sub
+	#tag EndMethod
 
-	#tag Property, Flags = &h21
-		Private ReturnValue As Boolean
-	#tag EndProperty
+	#tag Method, Flags = &h21
+		Private Sub UpdatePreview()
+		  Dim i As Integer
+		  Dim tab As StyleTabsType
+		  
+		  if not isUpdatingPreview then
+		    isUpdatingPreview = True
+		    
+		    self.editStyle.BodyTabClear()
+		    
+		    For i = 0 To lst_tabs.ListCount()-1
+		      tab.StringValue(true) = lst_tabs.Cell(i, 2)
+		      self.editStyle.BodyTabAdd(tab)
+		    Next
+		    
+		    can_style_preview.Repaint()
+		    
+		    isUpdatingPreview = False
+		  end if
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h21
 		Private currentTab As StyleTabsType
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private isUpdatingUI As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -874,7 +839,19 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private isUpdatingPreview As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private isUpdatingUI As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private previewSlideNode As XmlNode
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private ReturnValue As Boolean
 	#tag EndProperty
 
 
@@ -1129,10 +1106,8 @@ End
 #tag Events can_style_preview
 	#tag Event
 		Sub Paint(g As Graphics)
-		  Dim c as Color
 		  Dim zoom as Double
 		  Dim realBorder as Double
-		  Dim Style As SlideStyle
 		  Dim i as Integer
 		  Dim tab As StyleTabsType
 		  Dim margins As StyleMarginType

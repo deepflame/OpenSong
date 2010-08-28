@@ -2,6 +2,22 @@
 Protected Class SImageCanvas
 Inherits SBufferedCanvas
 	#tag Event
+		Function DragEnter(obj As DragItem, action As Integer) As Boolean
+		  Dim rejectdrop As Boolean
+		  
+		  If obj.PictureAvailable() Then
+		    rejectdrop = False
+		  ElseIf obj.FolderItemAvailable() Then
+		    rejectdrop = ( obj.FolderItem().OpenAsPicture() = Nil )
+		  Else
+		    rejectdrop = True
+		  End If
+		  
+		  Return rejectdrop
+		End Function
+	#tag EndEvent
+
+	#tag Event
 		Sub DropObject(obj As DragItem, action As Integer)
 		  If obj.PictureAvailable() Then
 		    If SetImageAsPicture( obj.Picture() ) Then
@@ -113,22 +129,6 @@ Inherits SBufferedCanvas
 		End Sub
 	#tag EndEvent
 
-	#tag Event
-		Function DragEnter(obj As DragItem, action As Integer) As Boolean
-		  Dim rejectdrop As Boolean
-		  
-		  If obj.PictureAvailable() Then
-		    rejectdrop = False
-		  ElseIf obj.FolderItemAvailable() Then
-		    rejectdrop = ( obj.FolderItem().OpenAsPicture() = Nil )
-		  Else
-		    rejectdrop = True
-		  End If
-		  
-		  Return rejectdrop
-		End Function
-	#tag EndEvent
-
 
 	#tag MenuHandler
 		Function mnu_options() As Boolean Handles mnu_options.Action
@@ -155,8 +155,20 @@ Inherits SBufferedCanvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetImage() As StyleImage
+		  Return Me.Image
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetImageAsString() As String
 		  Return Me.Image.GetImageAsString()
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetImageFilename() As String
+		  Return Me.Image.GetImageFilename()
 		End Function
 	#tag EndMethod
 
@@ -170,6 +182,17 @@ Inherits SBufferedCanvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub SetImage(img As StyleImage)
+		  If img = Nil Then
+		    Me.Image.Clear()
+		  Else
+		    Me.Image = New StyleImage(img)
+		  End If
+		  Repaint()
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function SetImageAsFile(f As FolderItem) As Boolean
 		  Dim bSuccess As Boolean
 		  
@@ -179,6 +202,15 @@ Inherits SBufferedCanvas
 		  End If
 		  
 		  Return bSuccess
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function SetImageAsPicture(img As Picture) As Boolean
+		  Me.Image.SetImage(img)
+		  Repaint()
+		  
+		  Return True
 		End Function
 	#tag EndMethod
 
@@ -196,38 +228,6 @@ Inherits SBufferedCanvas
 		  PictureAspect = Pos
 		  Repaint()
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub SetImage(img As StyleImage)
-		  If img = Nil Then
-		    Me.Image.Clear()
-		  Else
-		    Me.Image = New StyleImage(img)
-		  End If
-		  Repaint()
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetImageFilename() As String
-		  Return Me.Image.GetImageFilename()
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetImage() As StyleImage
-		  Return Me.Image
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function SetImageAsPicture(img As Picture) As Boolean
-		  Me.Image.SetImage(img)
-		  Repaint()
-		  
-		  Return True
-		End Function
 	#tag EndMethod
 
 
@@ -254,140 +254,21 @@ Inherits SBufferedCanvas
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="TabIndex"
+			Name="AcceptFocus"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="TabStop"
-			Visible=true
-			Group="Position"
-			InitialValue="True"
+			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Name"
+			Name="AcceptTabs"
 			Visible=true
-			Group="ID"
-			Type="String"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Width"
-			Visible=true
-			Group="Position"
-			InitialValue="100"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Height"
-			Visible=true
-			Group="Position"
-			InitialValue="100"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockLeft"
-			Visible=true
-			Group="Position"
+			Group="Behavior"
 			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockTop"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockRight"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockBottom"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="TabPanelIndex"
-			Group="Position"
-			InitialValue="0"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Visible"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="HelpTag"
-			Visible=true
-			Group="Appearance"
-			Type="String"
-			EditorType="MultiLineEditor"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="AutoDeactivate"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Enabled"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="UseFocusRing"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -403,16 +284,24 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="AcceptFocus"
+			Name="bgColor"
+			Group="Behavior"
+			InitialValue="&h000000"
+			Type="Color"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="DoubleBuffer"
 			Visible=true
 			Group="Behavior"
+			InitialValue="False"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="AcceptTabs"
+			Name="Enabled"
 			Visible=true
-			Group="Behavior"
+			Group="Appearance"
+			InitialValue="True"
 			Type="Boolean"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
@@ -425,14 +314,133 @@ Inherits SBufferedCanvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Height"
+			Visible=true
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="HelpTag"
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="InitialParent"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="bgColor"
-			Group="Behavior"
-			InitialValue="&h000000"
-			Type="Color"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockBottom"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockLeft"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockRight"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockTop"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			Type="String"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabIndex"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabPanelIndex"
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabStop"
+			Visible=true
+			Group="Position"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="UseFocusRing"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Visible"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Width"
+			Visible=true
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
+			InheritedFrom="Canvas"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

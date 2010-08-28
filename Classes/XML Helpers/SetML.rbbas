@@ -1,44 +1,6 @@
 #tag Module
 Protected Module SetML
 	#tag Method, Flags = &h1
-		Protected Sub DrawSlide(g As Graphics, xslide As XmlNode, xstyle As XmlNode)
-		  //++EMP
-		  // September 2005
-		  // Lots of changes here to support the separation of the slide style from the XML
-		  // to speed up slide changes.
-		  //
-		  // This method is mostly gutted and moved to the other DrawSlide method
-		  // (the one that takes a SlideStyle object as its third argument).
-		  // This just sets up the object from xstyle and calls down to the other one.
-		  // Easier maintenance: the bulk of the code isn't repeated.
-		  //
-		  // This routine also assumes that it is called from PresentWindow since
-		  // it makes a callback to get the style from the dictionary held there.
-		  // I debated whether that dictionary should be moved to App level, and
-		  // decided I couldn't state unequivocably that only one Style dictionary
-		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
-		  
-		  Dim Style As SlideStyle
-		  Dim StyleIndex As String
-		  
-		  StyleIndex = SmartML.GetValue(xstyle, "@index")
-		  If StyleIndex = "" Then 'is the XML a complete style?
-		    Style = New SlideStyle(xstyle)
-		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
-		      Style = PresentWindow.GetStyle("default_style")
-		    End If
-		  Else
-		    Style = PresentWindow.GetStyle(StyleIndex)
-		  End If
-		  
-		  // Forwarding...anyone at the new address??
-		  
-		  DrawSlide(g, xslide, Style)
-		  //--EMP
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
 		Protected Sub DrawSlide(g As Graphics, xslide As XmlNode, Style as SlideStyle)
 		  //++EMP
 		  // September 2005
@@ -525,429 +487,42 @@ Protected Module SetML
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h21
-		Private Function DrawTitle(g As Graphics, xslide As XmlNode, xstyle As XmlNode, x As Integer, y As Integer, width As Integer, align As String, valign As String) As Integer
-		  Dim RealSize, RealThickness, i, oldY, newX As Integer
-		  Dim zoom As Double
-		  Dim c As Color
-		  Dim title, subtitle, ccli As String
-		  Dim titleStyle, subtitleStyle As FontFace
-		  
-		  titleStyle = SmartML.GetValueF(xstyle, "title")
-		  subtitleStyle = SmartML.GetValueF(xstyle, "subtitle")
-		  
-		  oldY = y
-		  zoom = g.Width / 640
-		  
-		  title = SmartML.GetValue(xslide.Parent.Parent, "title")
-		  subtitle = SmartML.GetValue(xslide.Parent.Parent, "subtitle")
-		  
-		  For i = 1 To 2
-		    ' ----- SUBTITLE -----
-		    If (i = 1 And valign = "bottom") Or (i = 2 And valign = "top") Then
-		      subtitleStyle.Size = subtitleStyle.Size * zoom
-		      subtitleStyle.OntoGraphics g
-		      
-		      If align = "right" Then
-		        newX = x + width - FontFaceWidth(g, subtitle, subtitleStyle)
-		      ElseIf align = "center" Then
-		        newX = x + (width - FontFaceWidth(g, subtitle, subtitleStyle)) / 2
-		      Else
-		        newX = x
-		      End If
-		      If valign = "top" Then y = y + FontFaceHeight(g, subtitleStyle)
-		      
-		      Call DrawFontString(g, subtitle, newX, y, subtitleStyle, 0, "left", 0, "bottom")
-		      
-		      If valign = "bottom" Then y = y - FontFaceHeight(g, subtitleStyle)
-		      If valign = "top" Then Return y - oldY
-		    End If
-		    
-		    ' ----- TITLE -----
-		    If (i = 1 And valign = "top") Or (i = 2 And valign = "bottom") Then
-		      titleStyle.Size = titleStyle.Size * zoom
-		      titleStyle.OntoGraphics g
-		      
-		      If valign = "top" Then y = y + FontFaceAscent(g, titleStyle)
-		      
-		      If align = "right" Then
-		        newX = x + width - FontFaceWidth(g, title, titleStyle)
-		      ElseIf align = "center" Then
-		        newX = x + (width - FontFaceWidth(g, title, titleStyle)) / 2
-		      Else
-		        newX = x
-		      End If
-		      
-		      Call DrawFontString(g, title, newX, y, titleStyle, 0, "left", 0, "bottom")
-		      
-		      If valign = "bottom" Then
-		        y = y - FontFaceAscent(g, titleStyle)
-		        Return oldY - y
-		      End If
-		    End If
-		    
-		  Next i
-		  
-		End Function
-	#tag EndMethod
-
 	#tag Method, Flags = &h1
-		Protected Function FloorMinMax(d As Double, min As Integer, max As Integer) As Integer
-		  ' Rounds, but if it ends up 0, it jumps to 1.
-		  Dim i As Integer
-		  i = Floor(d)
-		  If i > max Then Return max
-		  If i < min Then Return min
-		  Return i
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetNextSlide(xSlide As XmlNode) As XmlNode
-		  Dim slide_group As XmlNode
+		Protected Sub DrawSlide(g As Graphics, xslide As XmlNode, xstyle As XmlNode)
+		  //++EMP
+		  // September 2005
+		  // Lots of changes here to support the separation of the slide style from the XML
+		  // to speed up slide changes.
+		  //
+		  // This method is mostly gutted and moved to the other DrawSlide method
+		  // (the one that takes a SlideStyle object as its third argument).
+		  // This just sets up the object from xstyle and calls down to the other one.
+		  // Easier maintenance: the bulk of the code isn't repeated.
+		  //
+		  // This routine also assumes that it is called from PresentWindow since
+		  // it makes a callback to get the style from the dictionary held there.
+		  // I debated whether that dictionary should be moved to App level, and
+		  // decided I couldn't state unequivocably that only one Style dictionary
+		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
 		  
-		  If xslide.NextSibling <> Nil Then
-		    Return xslide.NextSibling
+		  Dim Style As SlideStyle
+		  Dim StyleIndex As String
+		  
+		  StyleIndex = SmartML.GetValue(xstyle, "@index")
+		  If StyleIndex = "" Then 'is the XML a complete style?
+		    Style = New SlideStyle(xstyle)
+		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
+		      Style = PresentWindow.GetStyle("default_style")
+		    End If
 		  Else
-		    slide_group = xSlide.Parent.Parent.NextSibling
-		    Do Until slide_group = Nil Or SmartML.GetValue(slide_group, "@type") <> "style"
-		      slide_group = slide_group.NextSibling
-		    Loop
-		    
-		    If slide_group <> Nil Then
-		      Return SmartML.GetNode(slide_group, "slides", True).FirstChild
-		    Else
-		      Return Nil
-		    End If
-		  End If
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetPrevSlide(xSlide As XmlNode) As XmlNode
-		  Dim slide_group As XmlNode
-		  
-		  If xslide.PreviousSibling <> Nil Then
-		    Return xslide.PreviousSibling
-		  Else
-		    slide_group = xSlide.Parent.Parent.PreviousSibling
-		    Do Until slide_group = Nil Or SmartML.GetValue(slide_group, "@type") <> "style"
-		      slide_group = slide_group.PreviousSibling
-		    Loop
-		    If slide_group <> Nil Then
-		      Return SmartML.GetNode(slide_group, "slides", True).LastChild
-		    Else
-		      Return Nil
-		    End If
-		  End If
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetSetItem(xSet As XmlDocument, index As Integer) As XmlNode
-		  Dim slide_groups, slide_group As XmlNode
-		  Dim i As Integer
-		  i = 1
-		  
-		  slide_groups = SmartML.GetNode(xSet.DocumentElement, "slide_groups", True)
-		  If slide_groups = Nil Then Return Nil
-		  
-		  'slide_group = slide_groups.FirstChild
-		  'While slide_group <> Nil And i < index
-		  'slide_group = slide_group.NextSibling
-		  'i = i + 1
-		  'Wend
-		  
-		  'Return slide_group
-		  If index < 1 Or index > slide_groups.ChildCount Then Return Nil
-		  Return slide_groups.Child(index-1)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetSlide(xSet As XmlDocument, index As Integer) As XmlNode
-		  ' TODO: Use SlideCounts to speed up
-		  If index = 0 Then Return Nil
-		  index = index - 1
-		  
-		  Dim count As Integer
-		  Dim slide_group, slides As XmlNode
-		  
-		  slide_group = SmartML.GetNode(xSet.DocumentElement, "slide_groups", True).FirstChild
-		  
-		  While count <= index
-		    If slide_group = Nil Then
-		      Return Nil ' Ran out of slides
-		    ElseIf SmartML.GetValue(slide_group, "@type") <> "style" Then
-		      slides = SmartML.GetNode(slide_group, "slides", True)
-		      If count + slides.ChildCount > index Then
-		        index = index - count
-		        count = index + 1 ' flags the loop to stop
-		      Else
-		        count = count + slides.ChildCount
-		        slide_group  = slide_group.NextSibling
-		      End If
-		    Else ' this group is a style group; skip it
-		      slide_group  = slide_group.NextSibling
-		    End If
-		  Wend
-		  
-		  Return slides.Child(index)
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetStyle(xSlide As XmlNode) As XmlNode
-		  //++EMP 09/05
-		  
-		  Dim prev_group, neighbor_slide, style As XmlNode
-		  Dim GetNext As Boolean
-		  Dim SlideType As String
-		  Dim SlideGroup As XmlNode
-		  
-		  GetNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True)
-		  SlideGroup = xSlide.Parent.Parent
-		  SlideType = SmartML.GetValue(SlideGroup, "@type", False)
-		  
-		  ' Check for a directly defined override style
-		  style = SmartML.GetNode(SlideGroup, "style", False)
-		  //++
-		  // February 2007: Songs can either take on the style defined by the song
-		  // or by a style change.  The behavior prior to BL14 was that the song style
-		  // prevailed always.  In BL15, introduce a "hidden" control for this, allowing a style
-		  // change to control the song's appearance (which seems to me to be the
-		  // "path of least astonishment" after spending hours to chase down what I thought
-		  // was a bug -- EMP)
-		  //--
-		  If style <> Nil Then
-		    If SlideType <> "song" Then Return style
-		    //++
-		    // Only need to determine if the song style or the set style has precedence if there
-		    // is a style change affecting the song.
-		    //--
-		    If (Not StyleChangeActive(SlideGroup)) Or (SongStylePreferred(SlideGroup)) Then Return Style
+		    Style = PresentWindow.GetStyle(StyleIndex)
 		  End If
 		  
-		  ' If we are on a blank, and there is another slide after, we'll search for it's style instead.
-		  ' Or, if we're at the end and we're blank (name), then we'll use the previous
-		  ' TODO: Make this a selectable feature
-		  '
-		  'Changed (Joshua)
-		  ' Or custom slide that the user forgot to name(Yes I've done this)
-		  ' Incorporated into Ed's version by adding a condition to the outer If
-		  //++
-		  // February 2007: take advantage of the addition of a "blank" type.
-		  //--
+		  // Forwarding...anyone at the new address??
 		  
-		  If SlideType = "blank" Then
-		    If GetNext Then
-		      neighbor_slide = GetNextSlide(xSlide)
-		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		    Else
-		      neighbor_slide = GetPrevSlide(xSlide)
-		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
-		    End If
-		  End If
-		  
-		  //++
-		  // Chase back to find possible style changes
-		  //--
-		  Dim reverting As Boolean
-		  reverting = False
-		  
-		  prev_group = SlideGroup.PreviousSibling
-		  While prev_group <> Nil
-		    If SmartML.GetValue(prev_group, "@type") = "style" Then
-		      If SmartML.GetValue(prev_group, "@action") = "new" Then
-		        If reverting Then
-		          reverting = False
-		          prev_group = prev_group.PreviousSibling
-		        Else
-		          Return SmartML.GetNode(prev_group, "style", False)
-		        End If
-		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
-		        reverting = True
-		        prev_group = prev_group.PreviousSibling
-		      Else ' unknown action type
-		        prev_group = prev_group.PreviousSibling
-		      End If
-		    Else ' not a style group
-		      prev_group = prev_group.PreviousSibling
-		    End If
-		  Wend
-		  
-		  ' No directly connected styles, and no overrides, so...
-		  If SlideType = "scripture" Then
-		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
-		  Else
-		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
-		  End If
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function SetItemCount(xSet As XmlDocument) As Integer
-		  Dim slide_groups As XmlNode
-		  
-		  slide_groups = SmartML.GetNode(xSet.DocumentElement, "slide_groups", True)
-		  
-		  If slide_groups = Nil Then Return 0
-		  Return slide_groups.ChildCount
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function SmartWrap(ByRef str As String) As String
-		  // Truncates the passed string at the wrap point and returns the second line of the string
-		  
-		  Dim temp,c As String
-		  Dim back, fore, i, center, quarter, breakpoint As Integer
-		  Const Punctuation = ",.;?!)""" 'EMP 09/05
-		  Const PunctuationAndSpace = ",.;?!)"" "
-		  
-		  back = 1
-		  center = Len(str)/2
-		  quarter = Len(str)/4
-		  breakpoint = 0
-		  
-		  For i = quarter To 3*quarter
-		    c = Mid(str, i, 1)
-		    If c = "," Or c = ":" Or c = ";" Or c = "." Or c = "?" Or c = "!" Or c = ")" Then
-		      If Abs(i - center) < Abs(breakpoint - center) Then breakpoint = i
-		    End If
-		  Next i
-		  If breakpoint = 0 Then
-		    For i = 1 To Len(str)
-		      c = Mid(str, i, 1)
-		      If c = "," Or c = ":" Or c = ";" Or c = "." Or c = "?" Or c = "!" Or c = ")" Or c = " " Then
-		        If Abs(i - center) < Abs(breakpoint - center) Then breakpoint = i
-		      End If
-		    Next i
-		    If breakpoint = 0 Then Return ""
-		  End If
-		  //++EMP 09/05
-		  'Take care of a corner case with this....since the loop counts upward, it can miss
-		  ' the case where two or more punctuation marks immediately follow each other
-		  ' example is something like: Here I am ("Here I am"),
-		  ' this should wrap after the comma, not the quote mark
-		  '
-		  c = mid(str, breakpoint + 1, 1)
-		  While InStr(Punctuation, c) > 0
-		    breakpoint = breakpoint + 1
-		    c = mid(str, breakpoint + 1, 1)
-		  Wend
-		  //--EMP 09/05
-		  
-		  temp = Trim(Mid(str, breakpoint+1))
-		  str = Trim(Left(str, breakpoint))
-		  Return temp
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function SongStylePreferred(SlideGroup As XmlNode) As Boolean
-		  //++
-		  // Determine if a song-specific style should be used even
-		  // if a style change is active.
-		  // Current implementation does not use the song's
-		  // slide group passed as argument (looks at PresentationSettings).
-		  // Coded this way to allow for this to be handled on a song-by-song basis
-		  // in  the future.
-		  //--
-		  Return SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "song_style_preferred", True, True)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub SplitToArray(str As String, ByRef arr() As String, char As String)
-		  Dim st, x As Integer
-		  Dim c As String
-		  ReDim arr(0)
-		  
-		  str = str + char
-		  
-		  st = 1
-		  x = InStr(st, str, char)
-		  While x >= st
-		    '++JRC:
-		    'arr.Append RTrim(Mid(str, st, x-st))
-		    arr.Append StringUtils.RemoveWhitespace(Mid(str, st, x-st), Globals.WhitespaceChars, 1)
-		    '--
-		    
-		    st = x + Len(char)
-		    x = InStr(st, str, char)
-		  Wend
+		  DrawSlide(g, xslide, Style)
+		  //--EMP
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function StyleChangeActive(SlideGroup As XmlNode) As Boolean
-		  //++
-		  // Determine if the passed slide group is affected by an active style change
-		  //--
-		  
-		  Dim prev_group As XmlNode
-		  
-		  prev_group = SlideGroup.PreviousSibling
-		  While prev_group <> Nil
-		    If SmartML.GetValue(prev_group, "@type") = "style" Then
-		      If SmartML.GetValue(prev_group, "@action") = "new" Then
-		        Return True
-		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
-		        Return False
-		      End If
-		    End If ' not a style group
-		    prev_group = prev_group.PreviousSibling
-		  Wend
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub ZoomMargins(ByRef margins As StyleMarginType, zoom as Double)
-		  margins.Left = margins.Left * zoom
-		  margins.Right = margins.Right * zoom
-		  margins.Top = margins.Top * zoom
-		  margins.Bottom = margins.Bottom * zoom
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub ZoomTabs(ByRef tabs() As StyleTabsType, zoom as Double)
-		  Dim i As Integer
-		  
-		  For i = 0 to UBound(tabs)
-		    tabs(i).Position = tabs(i).Position * zoom
-		  Next i
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetSlideTransition(xSlide As XmlNode) As SlideTransitionEnum
-		  Dim transition As SlideTransitionEnum
-		  Dim slide_group As XmlNode
-		  Dim t As Integer
-		  
-		  transition = SlideTransitionEnum.ApplicationDefault
-		  
-		  If xslide <> Nil Then
-		    slide_group = xSlide.Parent.Parent
-		    If slide_group <> Nil Then
-		      t = SmartML.GetValueN(slide_group, "@transition", False)
-		      Select Case t
-		      Case 1
-		        transition = SlideTransitionEnum.UseTransition
-		      Case 2
-		        transition = SlideTransitionEnum.NoTransition
-		      Case Else
-		        transition = SlideTransitionEnum.ApplicationDefault
-		      End Select
-		    End If
-		  End If
-		  
-		  Return transition
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -1150,6 +725,205 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function DrawTitle(g As Graphics, xslide As XmlNode, xstyle As XmlNode, x As Integer, y As Integer, width As Integer, align As String, valign As String) As Integer
+		  Dim RealSize, RealThickness, i, oldY, newX As Integer
+		  Dim zoom As Double
+		  Dim c As Color
+		  Dim title, subtitle, ccli As String
+		  Dim titleStyle, subtitleStyle As FontFace
+		  
+		  titleStyle = SmartML.GetValueF(xstyle, "title")
+		  subtitleStyle = SmartML.GetValueF(xstyle, "subtitle")
+		  
+		  oldY = y
+		  zoom = g.Width / 640
+		  
+		  title = SmartML.GetValue(xslide.Parent.Parent, "title")
+		  subtitle = SmartML.GetValue(xslide.Parent.Parent, "subtitle")
+		  
+		  For i = 1 To 2
+		    ' ----- SUBTITLE -----
+		    If (i = 1 And valign = "bottom") Or (i = 2 And valign = "top") Then
+		      subtitleStyle.Size = subtitleStyle.Size * zoom
+		      subtitleStyle.OntoGraphics g
+		      
+		      If align = "right" Then
+		        newX = x + width - FontFaceWidth(g, subtitle, subtitleStyle)
+		      ElseIf align = "center" Then
+		        newX = x + (width - FontFaceWidth(g, subtitle, subtitleStyle)) / 2
+		      Else
+		        newX = x
+		      End If
+		      If valign = "top" Then y = y + FontFaceHeight(g, subtitleStyle)
+		      
+		      Call DrawFontString(g, subtitle, newX, y, subtitleStyle, 0, "left", 0, "bottom")
+		      
+		      If valign = "bottom" Then y = y - FontFaceHeight(g, subtitleStyle)
+		      If valign = "top" Then Return y - oldY
+		    End If
+		    
+		    ' ----- TITLE -----
+		    If (i = 1 And valign = "top") Or (i = 2 And valign = "bottom") Then
+		      titleStyle.Size = titleStyle.Size * zoom
+		      titleStyle.OntoGraphics g
+		      
+		      If valign = "top" Then y = y + FontFaceAscent(g, titleStyle)
+		      
+		      If align = "right" Then
+		        newX = x + width - FontFaceWidth(g, title, titleStyle)
+		      ElseIf align = "center" Then
+		        newX = x + (width - FontFaceWidth(g, title, titleStyle)) / 2
+		      Else
+		        newX = x
+		      End If
+		      
+		      Call DrawFontString(g, title, newX, y, titleStyle, 0, "left", 0, "bottom")
+		      
+		      If valign = "bottom" Then
+		        y = y - FontFaceAscent(g, titleStyle)
+		        Return oldY - y
+		      End If
+		    End If
+		    
+		  Next i
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function FloorMinMax(d As Double, min As Integer, max As Integer) As Integer
+		  ' Rounds, but if it ends up 0, it jumps to 1.
+		  Dim i As Integer
+		  i = Floor(d)
+		  If i > max Then Return max
+		  If i < min Then Return min
+		  Return i
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GetNextSlide(xSlide As XmlNode) As XmlNode
+		  Dim slide_group As XmlNode
+		  
+		  If xslide.NextSibling <> Nil Then
+		    Return xslide.NextSibling
+		  Else
+		    slide_group = xSlide.Parent.Parent.NextSibling
+		    Do Until slide_group = Nil Or SmartML.GetValue(slide_group, "@type") <> "style"
+		      slide_group = slide_group.NextSibling
+		    Loop
+		    
+		    If slide_group <> Nil Then
+		      Return SmartML.GetNode(slide_group, "slides", True).FirstChild
+		    Else
+		      Return Nil
+		    End If
+		  End If
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GetPrevSlide(xSlide As XmlNode) As XmlNode
+		  Dim slide_group As XmlNode
+		  
+		  If xslide.PreviousSibling <> Nil Then
+		    Return xslide.PreviousSibling
+		  Else
+		    slide_group = xSlide.Parent.Parent.PreviousSibling
+		    Do Until slide_group = Nil Or SmartML.GetValue(slide_group, "@type") <> "style"
+		      slide_group = slide_group.PreviousSibling
+		    Loop
+		    If slide_group <> Nil Then
+		      Return SmartML.GetNode(slide_group, "slides", True).LastChild
+		    Else
+		      Return Nil
+		    End If
+		  End If
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GetSetItem(xSet As XmlDocument, index As Integer) As XmlNode
+		  Dim slide_groups, slide_group As XmlNode
+		  Dim i As Integer
+		  i = 1
+		  
+		  slide_groups = SmartML.GetNode(xSet.DocumentElement, "slide_groups", True)
+		  If slide_groups = Nil Then Return Nil
+		  
+		  'slide_group = slide_groups.FirstChild
+		  'While slide_group <> Nil And i < index
+		  'slide_group = slide_group.NextSibling
+		  'i = i + 1
+		  'Wend
+		  
+		  'Return slide_group
+		  If index < 1 Or index > slide_groups.ChildCount Then Return Nil
+		  Return slide_groups.Child(index-1)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GetSlide(xSet As XmlDocument, index As Integer) As XmlNode
+		  ' TODO: Use SlideCounts to speed up
+		  If index = 0 Then Return Nil
+		  index = index - 1
+		  
+		  Dim count As Integer
+		  Dim slide_group, slides As XmlNode
+		  
+		  slide_group = SmartML.GetNode(xSet.DocumentElement, "slide_groups", True).FirstChild
+		  
+		  While count <= index
+		    If slide_group = Nil Then
+		      Return Nil ' Ran out of slides
+		    ElseIf SmartML.GetValue(slide_group, "@type") <> "style" Then
+		      slides = SmartML.GetNode(slide_group, "slides", True)
+		      If count + slides.ChildCount > index Then
+		        index = index - count
+		        count = index + 1 ' flags the loop to stop
+		      Else
+		        count = count + slides.ChildCount
+		        slide_group  = slide_group.NextSibling
+		      End If
+		    Else ' this group is a style group; skip it
+		      slide_group  = slide_group.NextSibling
+		    End If
+		  Wend
+		  
+		  Return slides.Child(index)
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GetSlideTransition(xSlide As XmlNode) As SlideTransitionEnum
+		  Dim transition As SlideTransitionEnum
+		  Dim slide_group As XmlNode
+		  Dim t As Integer
+		  
+		  transition = SlideTransitionEnum.ApplicationDefault
+		  
+		  If xslide <> Nil Then
+		    slide_group = xSlide.Parent.Parent
+		    If slide_group <> Nil Then
+		      t = SmartML.GetValueN(slide_group, "@transition", False)
+		      Select Case t
+		      Case 1
+		        transition = SlideTransitionEnum.UseTransition
+		      Case 2
+		        transition = SlideTransitionEnum.NoTransition
+		      Case Else
+		        transition = SlideTransitionEnum.ApplicationDefault
+		      End Select
+		    End If
+		  End If
+		  
+		  Return transition
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function GetSong(slidegroup As XmlNode, Songs As FolderDB, ByRef songFolder As String) As XmlDocument
 		  Dim songDoc As XmlDocument
@@ -1179,6 +953,95 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function GetStyle(xSlide As XmlNode) As XmlNode
+		  //++EMP 09/05
+		  
+		  Dim prev_group, neighbor_slide, style As XmlNode
+		  Dim GetNext As Boolean
+		  Dim SlideType As String
+		  Dim SlideGroup As XmlNode
+		  
+		  GetNext = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blank_uses_next", True, True)
+		  SlideGroup = xSlide.Parent.Parent
+		  SlideType = SmartML.GetValue(SlideGroup, "@type", False)
+		  
+		  ' Check for a directly defined override style
+		  style = SmartML.GetNode(SlideGroup, "style", False)
+		  //++
+		  // February 2007: Songs can either take on the style defined by the song
+		  // or by a style change.  The behavior prior to BL14 was that the song style
+		  // prevailed always.  In BL15, introduce a "hidden" control for this, allowing a style
+		  // change to control the song's appearance (which seems to me to be the
+		  // "path of least astonishment" after spending hours to chase down what I thought
+		  // was a bug -- EMP)
+		  //--
+		  If style <> Nil Then
+		    If SlideType <> "song" Then Return style
+		    //++
+		    // Only need to determine if the song style or the set style has precedence if there
+		    // is a style change affecting the song.
+		    //--
+		    If (Not StyleChangeActive(SlideGroup)) Or (SongStylePreferred(SlideGroup)) Then Return Style
+		  End If
+		  
+		  ' If we are on a blank, and there is another slide after, we'll search for it's style instead.
+		  ' Or, if we're at the end and we're blank (name), then we'll use the previous
+		  ' TODO: Make this a selectable feature
+		  '
+		  'Changed (Joshua)
+		  ' Or custom slide that the user forgot to name(Yes I've done this)
+		  ' Incorporated into Ed's version by adding a condition to the outer If
+		  //++
+		  // February 2007: take advantage of the addition of a "blank" type.
+		  //--
+		  
+		  If SlideType = "blank" Then
+		    If GetNext Then
+		      neighbor_slide = GetNextSlide(xSlide)
+		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
+		    Else
+		      neighbor_slide = GetPrevSlide(xSlide)
+		      If neighbor_slide <> Nil Then Return GetStyle(neighbor_slide)
+		    End If
+		  End If
+		  
+		  //++
+		  // Chase back to find possible style changes
+		  //--
+		  Dim reverting As Boolean
+		  reverting = False
+		  
+		  prev_group = SlideGroup.PreviousSibling
+		  While prev_group <> Nil
+		    If SmartML.GetValue(prev_group, "@type") = "style" Then
+		      If SmartML.GetValue(prev_group, "@action") = "new" Then
+		        If reverting Then
+		          reverting = False
+		          prev_group = prev_group.PreviousSibling
+		        Else
+		          Return SmartML.GetNode(prev_group, "style", False)
+		        End If
+		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
+		        reverting = True
+		        prev_group = prev_group.PreviousSibling
+		      Else ' unknown action type
+		        prev_group = prev_group.PreviousSibling
+		      End If
+		    Else ' not a style group
+		      prev_group = prev_group.PreviousSibling
+		    End If
+		  Wend
+		  
+		  ' No directly connected styles, and no overrides, so...
+		  If SlideType = "scripture" Then
+		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "scripture_style")
+		  Else
+		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
+		  End If
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function InsertAfterBreak() As String
 		  'gp start
@@ -1193,6 +1056,143 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function SetItemCount(xSet As XmlDocument) As Integer
+		  Dim slide_groups As XmlNode
+		  
+		  slide_groups = SmartML.GetNode(xSet.DocumentElement, "slide_groups", True)
+		  
+		  If slide_groups = Nil Then Return 0
+		  Return slide_groups.ChildCount
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function SmartWrap(ByRef str As String) As String
+		  // Truncates the passed string at the wrap point and returns the second line of the string
+		  
+		  Dim temp,c As String
+		  Dim back, fore, i, center, quarter, breakpoint As Integer
+		  Const Punctuation = ",.;?!)""" 'EMP 09/05
+		  Const PunctuationAndSpace = ",.;?!)"" "
+		  
+		  back = 1
+		  center = Len(str)/2
+		  quarter = Len(str)/4
+		  breakpoint = 0
+		  
+		  For i = quarter To 3*quarter
+		    c = Mid(str, i, 1)
+		    If c = "," Or c = ":" Or c = ";" Or c = "." Or c = "?" Or c = "!" Or c = ")" Then
+		      If Abs(i - center) < Abs(breakpoint - center) Then breakpoint = i
+		    End If
+		  Next i
+		  If breakpoint = 0 Then
+		    For i = 1 To Len(str)
+		      c = Mid(str, i, 1)
+		      If c = "," Or c = ":" Or c = ";" Or c = "." Or c = "?" Or c = "!" Or c = ")" Or c = " " Then
+		        If Abs(i - center) < Abs(breakpoint - center) Then breakpoint = i
+		      End If
+		    Next i
+		    If breakpoint = 0 Then Return ""
+		  End If
+		  //++EMP 09/05
+		  'Take care of a corner case with this....since the loop counts upward, it can miss
+		  ' the case where two or more punctuation marks immediately follow each other
+		  ' example is something like: Here I am ("Here I am"),
+		  ' this should wrap after the comma, not the quote mark
+		  '
+		  c = mid(str, breakpoint + 1, 1)
+		  While InStr(Punctuation, c) > 0
+		    breakpoint = breakpoint + 1
+		    c = mid(str, breakpoint + 1, 1)
+		  Wend
+		  //--EMP 09/05
+		  
+		  temp = Trim(Mid(str, breakpoint+1))
+		  str = Trim(Left(str, breakpoint))
+		  Return temp
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function SongStylePreferred(SlideGroup As XmlNode) As Boolean
+		  //++
+		  // Determine if a song-specific style should be used even
+		  // if a style change is active.
+		  // Current implementation does not use the song's
+		  // slide group passed as argument (looks at PresentationSettings).
+		  // Coded this way to allow for this to be handled on a song-by-song basis
+		  // in  the future.
+		  //--
+		  Return SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "song_style_preferred", True, True)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub SplitToArray(str As String, ByRef arr() As String, char As String)
+		  Dim st, x As Integer
+		  Dim c As String
+		  ReDim arr(0)
+		  
+		  str = str + char
+		  
+		  st = 1
+		  x = InStr(st, str, char)
+		  While x >= st
+		    '++JRC:
+		    'arr.Append RTrim(Mid(str, st, x-st))
+		    arr.Append StringUtils.RemoveWhitespace(Mid(str, st, x-st), Globals.WhitespaceChars, 1)
+		    '--
+		    
+		    st = x + Len(char)
+		    x = InStr(st, str, char)
+		  Wend
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function StyleChangeActive(SlideGroup As XmlNode) As Boolean
+		  //++
+		  // Determine if the passed slide group is affected by an active style change
+		  //--
+		  
+		  Dim prev_group As XmlNode
+		  
+		  prev_group = SlideGroup.PreviousSibling
+		  While prev_group <> Nil
+		    If SmartML.GetValue(prev_group, "@type") = "style" Then
+		      If SmartML.GetValue(prev_group, "@action") = "new" Then
+		        Return True
+		      ElseIf SmartML.GetValue(prev_group, "@action") = "revert" Then
+		        Return False
+		      End If
+		    End If ' not a style group
+		    prev_group = prev_group.PreviousSibling
+		  Wend
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ZoomMargins(ByRef margins As StyleMarginType, zoom as Double)
+		  margins.Left = margins.Left * zoom
+		  margins.Right = margins.Right * zoom
+		  margins.Top = margins.Top * zoom
+		  margins.Bottom = margins.Bottom * zoom
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ZoomTabs(ByRef tabs() As StyleTabsType, zoom as Double)
+		  Dim i As Integer
+		  
+		  For i = 0 to UBound(tabs)
+		    tabs(i).Position = tabs(i).Position * zoom
+		  Next i
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		SlideType As String
@@ -1201,22 +1201,10 @@ Protected Module SetML
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -1227,10 +1215,9 @@ Protected Module SetML
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
+			Name="Name"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -1238,6 +1225,19 @@ Protected Module SetML
 			Group="Behavior"
 			Type="String"
 			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

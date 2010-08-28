@@ -92,9 +92,9 @@ Begin Window AboutWindow
       Left            =   160
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       Scope           =   0
       TabIndex        =   2
@@ -302,9 +302,9 @@ Begin Window AboutWindow
       Left            =   22
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Multiline       =   ""
       Scope           =   0
       TabIndex        =   8
@@ -335,9 +335,9 @@ Begin Window AboutWindow
       Left            =   20
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Multiline       =   ""
       Scope           =   0
       TabIndex        =   9

@@ -1,6 +1,30 @@
 #tag Module
 Protected Module BibleFactory
 	#tag Method, Flags = &h0
+		Function BibleList() As String()
+		  //++
+		  // This is a readonly property; do not implement the Set method
+		  //
+		  // Return a list of scripture files found in the current folder
+		  //--
+		  Dim files() As String
+		  Dim i As Integer
+		  Dim max As Integer
+		  Dim f As FolderItem
+		  
+		  If ScriptureFolder = Nil Then Return files
+		  
+		  max = ScriptureFolder.Count
+		  For i = 1 to max
+		    f = ScriptureFolder.Item(i)
+		    If f.IsFileVisible And (Not f.Directory) Then files.Append(f.Name)
+		  Next
+		  
+		  Return files
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetBible(name As String) As iBible
 		  //++
 		  // This is the "factory" for the object.
@@ -42,30 +66,6 @@ Protected Module BibleFactory
 		  openedBibles.Append b
 		  
 		  Return b
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function BibleList() As String()
-		  //++
-		  // This is a readonly property; do not implement the Set method
-		  //
-		  // Return a list of scripture files found in the current folder
-		  //--
-		  Dim files() As String
-		  Dim i As Integer
-		  Dim max As Integer
-		  Dim f As FolderItem
-		  
-		  If ScriptureFolder = Nil Then Return files
-		  
-		  max = ScriptureFolder.Count
-		  For i = 1 to max
-		    f = ScriptureFolder.Item(i)
-		    If f.IsFileVisible And (Not f.Directory) Then files.Append(f.Name)
-		  Next
-		  
-		  Return files
 		End Function
 	#tag EndMethod
 
@@ -174,28 +174,24 @@ Protected Module BibleFactory
 	#tag EndNote
 
 
-	#tag Property, Flags = &h1
-		Protected ScriptureFolder As FolderItem
-	#tag EndProperty
-
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			Return ScriptureFolder
+			  Return ScriptureFolder
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			If value <> Nil Then
-			If value.Exists And value.IsFileVisible And _
-			value.Directory And value.IsReadable Then
-			ScriptureFolder = value
-			//++
-			// Remove all the existing Bibles since they belong to the old folder.
-			//--
-			ReDim openedBibles(-1)
-			End If
-			End If
+			  If value <> Nil Then
+			    If value.Exists And value.IsFileVisible And _
+			      value.Directory And value.IsReadable Then
+			      ScriptureFolder = value
+			      //++
+			      // Remove all the existing Bibles since they belong to the old folder.
+			      //--
+			      ReDim openedBibles(-1)
+			    End If
+			  End If
 			End Set
 		#tag EndSetter
 		Folder As FolderItem
@@ -205,18 +201,16 @@ Protected Module BibleFactory
 		Protected openedBibles() As iBible
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected ScriptureFolder As FolderItem
+	#tag EndProperty
+
 
 	#tag Constant, Name = kCitationRegEx, Type = String, Dynamic = False, Default = \"^((\?:\\d)\?\\s*(\?:[[:alpha:]]+))\\s+(\\b\\d+\\b)(:\\d{1\x2C2}\\b\\s*-\\s*\\d{1\x2C2}\\b|:\\d{1\x2C2}\\b(\?!-)|\\b(\?![:-]))(\?:\\s*\\(([[:alpha:].]+)\\)|\\b)$", Scope = Public
 	#tag EndConstant
 
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
@@ -225,16 +219,22 @@ Protected Module BibleFactory
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

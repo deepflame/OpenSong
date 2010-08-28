@@ -57,9 +57,9 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       StickyBevel     =   True
       TabIndex        =   1
@@ -87,9 +87,9 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   215
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       StickyBevel     =   True
       TabIndex        =   2
@@ -226,9 +226,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   130
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   1
@@ -257,9 +257,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -287,9 +287,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -317,9 +317,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -347,9 +347,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -377,9 +377,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -407,9 +407,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -436,9 +436,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   ""
                LockedInPosition=   False
-               LockLeft        =   ""
+               LockLeft        =   True
                LockRight       =   ""
-               LockTop         =   ""
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -466,9 +466,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   7
@@ -496,9 +496,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   8
@@ -523,9 +523,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   1
@@ -554,9 +554,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -584,9 +584,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -614,9 +614,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -641,9 +641,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   1
@@ -672,9 +672,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -702,9 +702,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -799,7 +799,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   203
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
@@ -862,7 +862,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   222
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
@@ -1010,9 +1010,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
@@ -1040,9 +1040,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                ListIndex       =   0
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
@@ -1072,9 +1072,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   210
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1099,9 +1099,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   127
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
@@ -1130,9 +1130,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1160,9 +1160,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1190,9 +1190,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1220,9 +1220,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1250,9 +1250,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -1280,9 +1280,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -1310,9 +1310,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -1337,9 +1337,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
@@ -1368,9 +1368,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1398,9 +1398,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1428,9 +1428,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1458,9 +1458,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1488,9 +1488,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -1518,9 +1518,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -1548,9 +1548,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -1577,9 +1577,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   7
@@ -1605,9 +1605,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   11
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   3
@@ -1637,9 +1637,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   2
@@ -1668,9 +1668,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1698,9 +1698,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1728,9 +1728,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1758,9 +1758,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1788,9 +1788,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -1917,9 +1917,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   0
@@ -1949,9 +1949,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   275
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   4
@@ -1978,9 +1978,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   275
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   4
@@ -2009,9 +2009,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   340
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   True
             TabIndex        =   3
@@ -2065,7 +2065,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   0
@@ -2096,7 +2096,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Multiline       =   False
@@ -2129,9 +2129,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   2
@@ -2164,7 +2164,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   3
@@ -2209,7 +2209,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             RequiresSelection=   ""
@@ -2250,7 +2250,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   5
@@ -2275,9 +2275,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   6
@@ -2308,9 +2308,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   7
@@ -2343,9 +2343,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   2
@@ -2374,7 +2374,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   9
@@ -2405,9 +2405,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   10
@@ -2440,7 +2440,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   11
@@ -2474,7 +2474,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   12
@@ -2504,9 +2504,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   525
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   13
@@ -2540,7 +2540,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   14
@@ -2567,9 +2567,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   15
             TabPanelIndex   =   2
@@ -2599,7 +2599,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   True
             TabIndex        =   16
@@ -2631,9 +2631,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2678,7 +2678,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2716,9 +2716,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   19
             TabPanelIndex   =   2
@@ -2754,7 +2754,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2792,7 +2792,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   21
@@ -2825,7 +2825,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   22
@@ -2865,7 +2865,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -2910,7 +2910,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -2955,7 +2955,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -3020,7 +3020,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   0
@@ -3084,9 +3084,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   505
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   2
@@ -3117,9 +3117,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   3
@@ -3150,7 +3150,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   625
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Multiline       =   False
@@ -3185,7 +3185,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   5
@@ -3218,7 +3218,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   6
@@ -3251,7 +3251,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   7
@@ -3282,9 +3282,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   8
@@ -3316,7 +3316,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   9
             TabPanelIndex   =   1
@@ -3346,7 +3346,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockedInPosition=   False
                LockLeft        =   False
                LockRight       =   True
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   1
@@ -3373,9 +3373,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   634
                LockBottom      =   ""
                LockedInPosition=   False
-               LockLeft        =   ""
+               LockLeft        =   True
                LockRight       =   ""
-               LockTop         =   ""
+               LockTop         =   True
                Multiline       =   ""
                Scope           =   0
                TabIndex        =   1
@@ -3410,7 +3410,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockedInPosition=   False
                LockLeft        =   ""
                LockRight       =   True
-               LockTop         =   ""
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   2
                TabPanelIndex   =   1
@@ -3537,7 +3537,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -3578,7 +3578,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   13
@@ -3608,7 +3608,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   14
@@ -3638,7 +3638,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   15
@@ -3668,7 +3668,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   16
@@ -3698,7 +3698,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   17
@@ -3728,7 +3728,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   18
@@ -3758,7 +3758,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   19
@@ -3788,7 +3788,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   20
@@ -3865,7 +3865,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Mask            =   ">CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
@@ -4022,7 +4022,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
             TabIndex        =   0
@@ -4055,7 +4055,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
             TabIndex        =   1
@@ -4088,7 +4088,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   2
@@ -4122,7 +4122,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   3
@@ -4160,7 +4160,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   ""
             ReadOnly        =   False
@@ -4199,7 +4199,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   5
@@ -4231,7 +4231,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   6
@@ -4264,7 +4264,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   3
@@ -4298,7 +4298,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
@@ -4336,7 +4336,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
@@ -4369,9 +4369,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   10
@@ -4402,7 +4402,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   271
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
@@ -4435,7 +4435,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   453
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
@@ -4475,7 +4475,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
@@ -4513,9 +4513,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   590
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   14
@@ -4546,9 +4546,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   15
@@ -4579,9 +4579,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   16
@@ -4614,7 +4614,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   17
@@ -4647,7 +4647,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   18
@@ -4718,9 +4718,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4763,9 +4763,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4808,9 +4808,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4898,7 +4898,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
@@ -4941,7 +4941,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   25
@@ -5014,7 +5014,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   False
             TabIndex        =   27
@@ -5068,7 +5068,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
             TabIndex        =   0
@@ -5101,7 +5101,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
             TabIndex        =   1
@@ -5134,7 +5134,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   2
@@ -5168,7 +5168,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   3
@@ -5197,9 +5197,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   4
@@ -5234,7 +5234,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   5
@@ -5261,9 +5261,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   590
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   6
@@ -5455,9 +5455,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   12
@@ -5490,7 +5490,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   13
@@ -5524,7 +5524,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   14
@@ -5556,7 +5556,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   15
@@ -5594,7 +5594,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   ""
             ReadOnly        =   False
@@ -5630,9 +5630,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   17
@@ -5663,9 +5663,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   18
@@ -5697,9 +5697,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   19
@@ -5735,9 +5735,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5776,7 +5776,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   False
             TabIndex        =   21
@@ -5808,9 +5808,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5853,9 +5853,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5991,7 +5991,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   26
@@ -6021,7 +6021,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   27
@@ -6051,7 +6051,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   28
@@ -6081,7 +6081,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   29
@@ -6104,7 +6104,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   249
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
       Scope           =   0
@@ -6127,7 +6127,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   True
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
@@ -6665,9 +6665,7 @@ End
 
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
-		  Dim i As Integer
-		  
-		  dim Mode as Integer
+		  Dim Mode as Integer
 		  
 		  If Globals.Status_Presentation Then
 		    App.DebugWriter.Write "MainWindow.KeyDown: Got a '" + Key + "' in Presentation Mode"
@@ -6744,13 +6742,10 @@ End
 		  
 		  Profiler.BeginProfilerEntry "MainWindow::Open"
 		  App.DebugWriter.Write "MainWindow.Open: Enter"
-		  Dim output As TextOutputStream
-		  Dim MainFolder As FolderItem
 		  Dim s As String
 		  Dim StartMode As Integer
 		  Dim i As Integer
 		  Dim bibleFiles() As String
-		  Dim f As FolderItem
 		  
 		  '++JRC
 		  Globals.OldFolderSel = -1
@@ -7517,7 +7512,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionInSetRemove(autoDetectDeleteTarget As Boolean)
-		  Dim xslides As XmlNodeList
 		  Dim slide_groups As XmlNode
 		  Dim listindex As Integer
 		  
@@ -7555,8 +7549,8 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionInSetSave()
-		  Dim i, j As Integer
-		  Dim line, str As String
+		  Dim i As Integer
+		  Dim str As String
 		  Dim xgroup, xslides, xslide As XmlNode
 		  Dim bodies() As String
 		  Dim img As StyleImage
@@ -7828,7 +7822,7 @@ End
 		  //Append the FolderItem used in each SlideGroup to AbsFiles
 		  //Should be a call to CurrentSet.GetChildFolderItems
 		  Dim setDoc As New XmlDocument
-		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim slide_group, slide_groups As XmlNode
 		  
 		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  
@@ -7929,7 +7923,6 @@ End
 	#tag Method, Flags = &h0
 		Sub ActionSetNew()
 		  Dim t as String
-		  Dim out As TextOutputStream
 		  Dim f as FolderItem
 		  Dim i As Integer
 		  
@@ -7985,13 +7978,10 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = 0)
-		  Dim i As Integer
-		  Dim lastType As String
 		  'this is our working copy of the set's XML Doc
 		  'not to be confused with any of our other copies
 		  'hope the user has losts of RAM eh!
 		  Dim setDoc As New XmlDocument
-		  Dim slide_groups As XmlNode
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then Return 'User Canceled
@@ -8039,7 +8029,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetPrint()
-		  Dim i As Integer
 		  Dim foundSong As Boolean = False
 		  Dim rpt As LeadSheetReport
 		  Dim song As FolderItem
@@ -8172,8 +8161,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetSave()
-		  Dim f, song As FolderItem
-		  Dim output As TextOutputStream
+		  Dim f As FolderItem
 		  Dim i As Integer
 		  Dim xSlide As XmlNode
 		  
@@ -8275,7 +8263,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSongCopy()
-		  Dim f As FolderItem
 		  Dim folder, folders(0) As String
 		  Dim oldfolder As String
 		  Dim listindex As Integer
@@ -8344,7 +8331,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSongMove()
-		  Dim f As FolderItem
 		  Dim folder, folders(0) As String
 		  Dim oldfolder As String
 		  Dim listindex As Integer
@@ -8416,10 +8402,8 @@ End
 		  Dim t as String
 		  Dim f as FolderItem
 		  Dim i As Integer
-		  dim j As Integer
 		  dim Loc As Integer 'location of file in list
 		  Dim xnode As XmlNode
-		  dim s(0) As string
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
@@ -8698,9 +8682,6 @@ End
 		Sub ActionSongRename()
 		  Dim t as String
 		  Dim old as String
-		  Dim f as FolderItem
-		  Dim xdoc As XmlDocument
-		  Dim i As Integer
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
@@ -8797,8 +8778,6 @@ End
 		  'prior to release of V1.0 (EMP, February 2007)
 		  
 		  Dim f As FolderItem
-		  Dim theme As String
-		  Dim i As Integer
 		  Dim FullName As String
 		  
 		  If Not noWrite Then
@@ -8932,7 +8911,7 @@ End
 		  
 		  Dim t as String
 		  Dim s As XmlDocument
-		  Dim st, i, j As Integer
+		  Dim i As Integer
 		  Dim f As FolderItem
 		  
 		  Dim found As RectControl = Nil
@@ -9125,7 +9104,7 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub ImportSongs(setDoc As XmlDocument, AddToLog As Boolean)
-		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim slide_group, slide_groups As XmlNode
 		  Dim songDoc As XmlDocument
 		  Dim Presentation As String
 		  '++JRC
@@ -9526,10 +9505,6 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Function SetLoadSet(f As FolderItem) As Boolean
-		  
-		  Dim song As FolderItem
-		  Dim input As TextInputStream
-		  Dim line As String
 		  Dim xnode As XmlNode
 		  Dim slideType As String
 		  
@@ -9556,8 +9531,6 @@ End
 		  //EMP 10/9/04
 		  dim nameAtt as xmlattribute
 		  
-		  dim strName as String
-		  
 		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
 		  
 		  if nameatt = Nil then
@@ -9567,7 +9540,6 @@ End
 		  CurrentSetName = pop_sets_sets.text
 		  //--
 		  Dim slide_groups, xchild As XmlNode
-		  Dim i As Integer
 		  
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If slide_groups = Nil Then Return True
@@ -10297,7 +10269,7 @@ End
 		  f = dlg.ShowModal() 'show dialog
 		  If f <> Nil Then
 		    App.MouseCursor = System.Cursors.Wait
-		    output = f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html").CreateTextFile
+		    output = TextOutputStream.Create(f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html"))
 		    song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
 		    If output <> Nil And song <> Nil Then
 		      output.Write SongML.ToHTML(song.DocumentElement)
@@ -10449,7 +10421,7 @@ End
 		  If f <> Nil Then
 		    App.DoEvents
 		    g = f.Child("index.html")
-		    goutput = g.CreateTextFile
+		    goutput = TextOutputStream.Create(g)
 		    If goutput <> Nil Then
 		      goutput.WriteLine "<html><head>"
 		      goutput.WriteLine "<meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />"
@@ -10459,7 +10431,7 @@ End
 		    App.MouseCursor = System.Cursors.Wait
 		    ProgressWindow.Show
 		    For i = 0 To lst_songs_songs.ListCount - 1
-		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
+		      output = TextOutputStream.Create(f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html"))
 		      song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(i,0) + lst_songs_songs.List(i)))
 		      If output <> Nil And song <> Nil Then
 		        output.Write SongML.ToHTML(song.DocumentElement)
@@ -10673,9 +10645,6 @@ End
 		Sub Change()
 		  Dim f As FolderItem
 		  Dim xnode As XmlNode
-		  Dim temp As String
-		  Dim path_to_songs As String
-		  Dim path_to_song As String
 		  Dim fullpath As String
 		  
 		  //++EMP 18 Feb 2006
@@ -10783,7 +10752,6 @@ End
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
 		  Dim i, l As Integer
-		  Dim temp As TextEncoding
 		  Dim NewKey As String
 		  Dim SearchedEntry As String
 		  //++
@@ -10860,9 +10828,7 @@ End
 		    Return
 		  End If
 		  
-		  Dim f, song As FolderItem
-		  'Dim input As TextInputStream
-		  Dim line As String
+		  Dim f As FolderItem
 		  Dim xnode As XmlNode
 		  Dim slideType As String
 		  
@@ -10882,8 +10848,6 @@ End
 		  //EMP 10/9/04
 		  dim nameAtt as xmlattribute
 		  
-		  dim strName as String
-		  
 		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
 		  
 		  if nameatt = Nil then
@@ -10893,7 +10857,6 @@ End
 		  CurrentSetName = me.text
 		  //--
 		  Dim slide_groups, xchild As XmlNode
-		  Dim i As Integer
 		  
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If slide_groups = Nil Then Return
@@ -11707,10 +11670,6 @@ End
 #tag Events lst_set_items
 	#tag Event
 		Sub Change()
-		  Dim songDoc As XmlDocument
-		  Dim xnode as  XmlNode
-		  Dim songTemp as String
-		  Dim songResult As Integer
 		  Dim sDoc As XmlDocument
 		  Dim resize As String
 		  Dim imageLink As Boolean
@@ -11721,7 +11680,7 @@ End
 		  Dim xgroup As XmlNode
 		  Dim xslides As XmlNode
 		  Dim s As String
-		  Dim i, j As Integer
+		  Dim i As Integer
 		  Dim groupType As String
 		  
 		  '++JRC Don't reload if same set item

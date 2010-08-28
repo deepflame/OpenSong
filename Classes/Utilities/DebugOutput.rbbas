@@ -1,8 +1,31 @@
 #tag Class
 Protected Class DebugOutput
+	#tag Method, Flags = &h1
+		Protected Sub CloseLog()
+		  If Not (DebugTOS Is Nil) Then
+		    DebugTOS.Close
+		    DebugTOS = Nil
+		  End If
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Sub Constructor()
 		  SetDefaults
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor(logFile As FolderItem)
+		  SetDefaults
+		  DebugFile = logFile
+		  OpenLog
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Destructor()
+		  Done
 		End Sub
 	#tag EndMethod
 
@@ -65,22 +88,19 @@ Protected Class DebugOutput
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub Write(text As String, Level As Integer = 3)
-		  If Not Enabled Then Return
-		  
-		  If (Not (DebugFile Is Nil)) And (DebugTOS Is Nil) Then
-		    OpenLog
-		  End If
-		  
-		  If Level <= DebugLevel Then
-		    If DebugFile Is Nil Then
-		      System.DebugLog "[OpenSong] " + text
+	#tag Method, Flags = &h1
+		Protected Sub OpenLog()
+		  If Not (DebugFile Is Nil) And (DebugTOS Is Nil) Then
+		    If AppendLog Then
+		      DebugTOS = TextOutputStream.Append(DebugFile)
 		    Else
-		      DebugTOS.WriteLine(text)
-		      DebugTOS.Flush
+		      If DebugFile.Exists Then DebugFile.Delete
+		      DebugTOS = TextOutputStream.Create(DebugFile)
 		    End If
 		  End If
+		  
+		Catch
+		  System.DebugLog "DebugOutput.OpenLog: Unable to open file."
 		End Sub
 	#tag EndMethod
 
@@ -97,20 +117,6 @@ Protected Class DebugOutput
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(logFile As FolderItem)
-		  SetDefaults
-		  DebugFile = logFile
-		  OpenLog
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Destructor()
-		  Done
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub SetOutput(logFile As FolderItem, append As Boolean = False)
 		  AppendLog = append
 		  If Not (DebugFile Is Nil) Then
@@ -122,28 +128,22 @@ Protected Class DebugOutput
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Sub CloseLog()
-		  If Not (DebugTOS Is Nil) Then
-		    DebugTOS.Close
-		    DebugTOS = Nil
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Sub OpenLog()
-		  If Not (DebugFile Is Nil) And (DebugTOS Is Nil) Then
-		    If AppendLog Then
-		      DebugTOS = DebugFile.AppendToTextFile
-		    Else
-		      If DebugFile.Exists Then DebugFile.Delete
-		      DebugTOS = DebugFile.CreateTextFile
-		    End If
+	#tag Method, Flags = &h0
+		Sub Write(text As String, Level As Integer = 3)
+		  If Not Enabled Then Return
+		  
+		  If (Not (DebugFile Is Nil)) And (DebugTOS Is Nil) Then
+		    OpenLog
 		  End If
 		  
-		Catch
-		  System.DebugLog "DebugOutput.OpenLog: Unable to open file."
+		  If Level <= DebugLevel Then
+		    If DebugFile Is Nil Then
+		      System.DebugLog "[OpenSong] " + text
+		    Else
+		      DebugTOS.WriteLine(text)
+		      DebugTOS.Flush
+		    End If
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -182,39 +182,6 @@ Protected Class DebugOutput
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="AppendLog"
 			Group="Behavior"
 			InitialValue="0"
@@ -225,6 +192,39 @@ Protected Class DebugOutput
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

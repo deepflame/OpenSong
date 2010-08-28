@@ -41,7 +41,7 @@ Begin Window ImageChooserWindow
       Left            =   156
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
       LockTop         =   False
       TabIndex        =   0
@@ -53,7 +53,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   75
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
@@ -72,7 +71,7 @@ Begin Window ImageChooserWindow
       Left            =   241
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
       LockTop         =   False
       TabIndex        =   1
@@ -84,7 +83,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   75
-      BehaviorIndex   =   1
    End
    Begin StaticText txt_path
       AutoDeactivate  =   True
@@ -102,9 +100,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   2
       TabPanelIndex   =   0
@@ -118,7 +116,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   455
-      BehaviorIndex   =   2
    End
    Begin Separator sep_1
       AutoDeactivate  =   True
@@ -143,7 +140,6 @@ Begin Window ImageChooserWindow
       Top             =   328
       Visible         =   True
       Width           =   475
-      BehaviorIndex   =   3
    End
    Begin ScrollBar scr_vertical
       AcceptFocus     =   true
@@ -175,7 +171,6 @@ Begin Window ImageChooserWindow
       Value           =   0
       Visible         =   True
       Width           =   16
-      BehaviorIndex   =   4
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -193,9 +188,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   5
       TabPanelIndex   =   0
       TabStop         =   True
@@ -205,7 +200,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -223,9 +217,9 @@ Begin Window ImageChooserWindow
       Left            =   100
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   6
       TabPanelIndex   =   0
       TabStop         =   True
@@ -235,7 +229,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -253,9 +246,9 @@ Begin Window ImageChooserWindow
       Left            =   190
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   7
       TabPanelIndex   =   0
       TabStop         =   True
@@ -265,7 +258,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -283,9 +275,9 @@ Begin Window ImageChooserWindow
       Left            =   280
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   8
       TabPanelIndex   =   0
       TabStop         =   True
@@ -295,7 +287,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -313,9 +304,9 @@ Begin Window ImageChooserWindow
       Left            =   370
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   9
       TabPanelIndex   =   0
       TabStop         =   True
@@ -325,7 +316,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -343,9 +333,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
@@ -355,7 +345,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -373,9 +362,9 @@ Begin Window ImageChooserWindow
       Left            =   100
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
@@ -385,7 +374,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -403,9 +391,9 @@ Begin Window ImageChooserWindow
       Left            =   190
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   12
       TabPanelIndex   =   0
       TabStop         =   True
@@ -415,7 +403,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -433,9 +420,9 @@ Begin Window ImageChooserWindow
       Left            =   280
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   13
       TabPanelIndex   =   0
       TabStop         =   True
@@ -445,7 +432,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -463,9 +449,9 @@ Begin Window ImageChooserWindow
       Left            =   370
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   14
       TabPanelIndex   =   0
       TabStop         =   True
@@ -475,7 +461,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -493,9 +478,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   15
       TabPanelIndex   =   0
       TabStop         =   True
@@ -505,7 +490,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -523,9 +507,9 @@ Begin Window ImageChooserWindow
       Left            =   100
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   16
       TabPanelIndex   =   0
       TabStop         =   True
@@ -535,7 +519,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -553,9 +536,9 @@ Begin Window ImageChooserWindow
       Left            =   190
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   17
       TabPanelIndex   =   0
       TabStop         =   True
@@ -565,7 +548,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -583,9 +565,9 @@ Begin Window ImageChooserWindow
       Left            =   280
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   18
       TabPanelIndex   =   0
       TabStop         =   True
@@ -595,7 +577,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -613,9 +594,9 @@ Begin Window ImageChooserWindow
       Left            =   370
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   19
       TabPanelIndex   =   0
       TabStop         =   True
@@ -625,7 +606,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -643,9 +623,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   20
       TabPanelIndex   =   0
       TabStop         =   True
@@ -655,7 +635,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -673,9 +652,9 @@ Begin Window ImageChooserWindow
       Left            =   100
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   21
       TabPanelIndex   =   0
       TabStop         =   True
@@ -685,7 +664,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -703,9 +681,9 @@ Begin Window ImageChooserWindow
       Left            =   190
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   22
       TabPanelIndex   =   0
       TabStop         =   True
@@ -715,7 +693,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -733,9 +710,9 @@ Begin Window ImageChooserWindow
       Left            =   280
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   23
       TabPanelIndex   =   0
       TabStop         =   True
@@ -745,7 +722,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin Canvas can
       AcceptFocus     =   False
@@ -763,9 +739,9 @@ Begin Window ImageChooserWindow
       Left            =   370
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   24
       TabPanelIndex   =   0
       TabStop         =   True
@@ -775,7 +751,6 @@ Begin Window ImageChooserWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   5
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -793,9 +768,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   25
       TabPanelIndex   =   0
@@ -809,7 +784,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -827,9 +801,9 @@ Begin Window ImageChooserWindow
       Left            =   100
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   26
       TabPanelIndex   =   0
@@ -843,7 +817,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -861,9 +834,9 @@ Begin Window ImageChooserWindow
       Left            =   190
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   27
       TabPanelIndex   =   0
@@ -877,7 +850,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -895,9 +867,9 @@ Begin Window ImageChooserWindow
       Left            =   280
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   28
       TabPanelIndex   =   0
@@ -911,7 +883,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -929,9 +900,9 @@ Begin Window ImageChooserWindow
       Left            =   370
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   29
       TabPanelIndex   =   0
@@ -945,7 +916,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -963,9 +933,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   30
       TabPanelIndex   =   0
@@ -979,7 +949,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -997,9 +966,9 @@ Begin Window ImageChooserWindow
       Left            =   100
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   31
       TabPanelIndex   =   0
@@ -1013,7 +982,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1031,9 +999,9 @@ Begin Window ImageChooserWindow
       Left            =   190
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   32
       TabPanelIndex   =   0
@@ -1047,7 +1015,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1065,9 +1032,9 @@ Begin Window ImageChooserWindow
       Left            =   280
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   33
       TabPanelIndex   =   0
@@ -1081,7 +1048,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1099,9 +1065,9 @@ Begin Window ImageChooserWindow
       Left            =   370
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   34
       TabPanelIndex   =   0
@@ -1115,7 +1081,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1133,9 +1098,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   35
       TabPanelIndex   =   0
@@ -1149,7 +1114,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1167,9 +1131,9 @@ Begin Window ImageChooserWindow
       Left            =   100
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   36
       TabPanelIndex   =   0
@@ -1183,7 +1147,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1201,9 +1164,9 @@ Begin Window ImageChooserWindow
       Left            =   190
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   37
       TabPanelIndex   =   0
@@ -1217,7 +1180,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1235,9 +1197,9 @@ Begin Window ImageChooserWindow
       Left            =   280
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   38
       TabPanelIndex   =   0
@@ -1251,7 +1213,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1269,9 +1230,9 @@ Begin Window ImageChooserWindow
       Left            =   370
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   39
       TabPanelIndex   =   0
@@ -1285,7 +1246,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1303,9 +1263,9 @@ Begin Window ImageChooserWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   40
       TabPanelIndex   =   0
@@ -1319,7 +1279,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1337,9 +1296,9 @@ Begin Window ImageChooserWindow
       Left            =   100
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   41
       TabPanelIndex   =   0
@@ -1353,7 +1312,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1371,9 +1329,9 @@ Begin Window ImageChooserWindow
       Left            =   190
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   42
       TabPanelIndex   =   0
@@ -1387,7 +1345,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1405,9 +1362,9 @@ Begin Window ImageChooserWindow
       Left            =   280
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   43
       TabPanelIndex   =   0
@@ -1421,7 +1378,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
    Begin StaticText nte_name
       AutoDeactivate  =   True
@@ -1439,9 +1395,9 @@ Begin Window ImageChooserWindow
       Left            =   370
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   44
       TabPanelIndex   =   0
@@ -1455,7 +1411,6 @@ Begin Window ImageChooserWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   6
    End
 End
 #tag EndWindow

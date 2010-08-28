@@ -65,7 +65,7 @@ Implements iBible
 		  
 		  'save the changes
 		  If InputBox.AskYN(App.T.Translate("bible/messages/save")) Then
-		    out= bibleFile.createTextFile
+		    out= TextOutputStream.Create(bibleFile)
 		    Scripture.PreserveWhitespace = True
 		    out.Write(Scripture.toString)
 		    out.close
@@ -604,7 +604,7 @@ Implements iBible
 		    end try
 		    Return
 		  Else
-		    out = newFile.CreateTextFile
+		    out = TextOutputStream.Create(newFile)
 		    If Not newFile.Exists Then
 		      ShouldGenerateIndex = False
 		      App.DebugWriter.Write "Bible.genindex: Exit (can't create index file), errorcode is " + CStr(newFile.LastErrorCode)
@@ -734,7 +734,7 @@ Implements iBible
 		  root.inorderTraverse(index)
 		  
 		  'write to file
-		  out= newFile.CreateTextFile
+		  out= TextOutputStream.Create(newFile)
 		  for x=0 to UBound(index)
 		    out.write(index(x).entry)
 		    
@@ -1788,7 +1788,7 @@ Implements iBible
 		    ErrorString = "File not found: " + file.AbsolutePath
 		    Return False
 		  End If
-		  input = file.OpenAsTextFile
+		  input = TextInputStream.Open(file)
 		  s = input.ReadAll
 		  input.Close
 		  
@@ -1987,7 +1987,7 @@ Implements iBible
 		  
 		  If IndexDict = Nil Then IndexDict = New Dictionary
 		  
-		  fileIn= file.OpenAsTextFile
+		  fileIn= TextInputStream.Open(file)
 		  
 		  line= fileIn.ReadLine().split("|")
 		  

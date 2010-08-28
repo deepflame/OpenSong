@@ -2,6 +2,33 @@
 Class SButton
 Inherits Canvas
 	#tag Event
+		Sub GotFocus()
+		  IsMouseOver = True
+		  HasFocus = True
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  Const KEY_RETURN = 13
+		  Const KEY_ENTER = 3
+		  If Key = " " Or Key = Chr(KEY_RETURN) Or Key = Chr(KEY_ENTER) Then
+		    Action
+		    Return True
+		  End If
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Sub LostFocus()
+		  IsMouseOver = False
+		  HasFocus = False
+		  If Enabled And Not IsStuck Then Refresh ' False Graphics
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  If IsStuck Then Return False
 		  IsMouseDown = True
@@ -73,7 +100,7 @@ Inherits Canvas
 
 	#tag Event
 		Sub Paint(g As Graphics)
-		  Dim i, j, offset, tri(6) As Integer
+		  Dim i, offset, tri(6) As Integer
 		  
 		  If NewPaint Then
 		    PaintNew(g)
@@ -154,33 +181,6 @@ Inherits Canvas
 		End Sub
 	#tag EndEvent
 
-	#tag Event
-		Function KeyDown(Key As String) As Boolean
-		  Const KEY_RETURN = 13
-		  Const KEY_ENTER = 3
-		  If Key = " " Or Key = Chr(KEY_RETURN) Or Key = Chr(KEY_ENTER) Then
-		    Action
-		    Return True
-		  End If
-		End Function
-	#tag EndEvent
-
-	#tag Event
-		Sub GotFocus()
-		  IsMouseOver = True
-		  HasFocus = True
-		  If Enabled And Not IsStuck Then Refresh ' False Graphics
-		End Sub
-	#tag EndEvent
-
-	#tag Event
-		Sub LostFocus()
-		  IsMouseOver = False
-		  HasFocus = False
-		  If Enabled And Not IsStuck Then Refresh ' False Graphics
-		End Sub
-	#tag EndEvent
-
 
 	#tag Method, Flags = &h0
 		Sub AddPopupRow(str As String)
@@ -228,13 +228,12 @@ Inherits Canvas
 
 	#tag Method, Flags = &h1
 		Protected Sub PaintNew(g As Graphics)
-		  
 		  '
 		  ' Significant changes made here to give the application a completely different look.
 		  '
 		  ' EMP, sometime in early 2005
 		  '
-		  Dim i, j, offset, tri(6) As Integer
+		  Dim i, offset, tri(6) As Integer
 		  Const ShadowWidth = 2
 		  Dim ShadowOffset as Integer
 		  
@@ -455,6 +454,25 @@ Inherits Canvas
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub SetGrayIcon(pic As Picture, mask As Picture)
+		  GrayIcon = NewPicture(pic.Width, pic.Height, 32)
+		  If GrayIcon Is Nil Then Return
+		  
+		  GrayIcon.Graphics.DrawPicture(pic, 0, 0)
+		  Dim surf As RGBSurface
+		  Dim newC As Double
+		  surf = GrayIcon.RGBSurface
+		  For y As Integer = 0 To GrayIcon.Height
+		    For x As Integer = 0 To GrayIcon.Width
+		      newC = (Surf.Pixel(x, y).Red * 0.299) + (Surf.Pixel(x, y).Green * 0.587) + (Surf.Pixel(x, y).Blue * 0.114)
+		      surf.Pixel(x, y) = RGB(Floor(newC), Floor(newC), Floor(newC))
+		    Next
+		  Next
+		  GrayIcon.Mask.Graphics.DrawPicture(mask, 0, 0)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub SetIcon(pic As Picture, mask As Picture)
 		  Icon = pic
 		  Icon.Mask.Graphics.DrawPicture mask, 0, 0
@@ -474,25 +492,6 @@ Inherits Canvas
 		Sub SetStuck(stuck As Boolean)
 		  IsStuck = stuck
 		  Refresh
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub SetGrayIcon(pic As Picture, mask As Picture)
-		  GrayIcon = NewPicture(pic.Width, pic.Height, 32)
-		  If GrayIcon Is Nil Then Return
-		  
-		  GrayIcon.Graphics.DrawPicture(pic, 0, 0)
-		  Dim surf As RGBSurface
-		  Dim newC As Double
-		  surf = GrayIcon.RGBSurface
-		  For y As Integer = 0 To GrayIcon.Height
-		    For x As Integer = 0 To GrayIcon.Width
-		      newC = (Surf.Pixel(x, y).Red * 0.299) + (Surf.Pixel(x, y).Green * 0.587) + (Surf.Pixel(x, y).Blue * 0.114)
-		      surf.Pixel(x, y) = RGB(Floor(newC), Floor(newC), Floor(newC))
-		    Next
-		  Next
-		  GrayIcon.Mask.Graphics.DrawPicture(mask, 0, 0)
 		End Sub
 	#tag EndMethod
 
@@ -523,6 +522,10 @@ Inherits Canvas
 			'EMP, added to support PaintNew method
 		#tag EndNote
 		Protected GrayIcon As Picture
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		HasFocus As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -565,161 +568,8 @@ Inherits Canvas
 		StickyBevel As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		HasFocus As Boolean
-	#tag EndProperty
-
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			Type="String"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Width"
-			Visible=true
-			Group="Position"
-			InitialValue="100"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Height"
-			Visible=true
-			Group="Position"
-			InitialValue="100"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockLeft"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockTop"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockRight"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockBottom"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="TabPanelIndex"
-			Group="Position"
-			InitialValue="0"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="TabIndex"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			Type="Integer"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="TabStop"
-			Visible=true
-			Group="Position"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Visible"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="HelpTag"
-			Visible=true
-			Group="Appearance"
-			Type="String"
-			EditorType="MultiLineEditor"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="AutoDeactivate"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Enabled"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="UseFocusRing"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Backdrop"
-			Visible=true
-			Group="Appearance"
-			Type="Picture"
-			EditorType="Picture"
-			InheritedFrom="Canvas"
-		#tag EndViewProperty
 		#tag ViewProperty
 			Name="AcceptFocus"
 			Visible=true
@@ -735,11 +585,72 @@ Inherits Canvas
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="AutoDeactivate"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Backdrop"
+			Visible=true
+			Group="Appearance"
+			Type="Picture"
+			EditorType="Picture"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="DoubleBuffer"
+			Visible=true
+			Group="Behavior"
+			InitialValue="False"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Enabled"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="EraseBackground"
 			Visible=true
 			Group="Behavior"
 			InitialValue="True"
 			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="HasFocus"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Height"
+			Visible=true
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="HelpTag"
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			Type="Integer"
 			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -753,9 +664,52 @@ Inherits Canvas
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockBottom"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockLeft"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockRight"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockTop"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="MenuItem"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			Type="String"
+			InheritedFrom="Canvas"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="StickyBevel"
@@ -764,10 +718,64 @@ Inherits Canvas
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="HasFocus"
-			Group="Behavior"
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabIndex"
+			Visible=true
+			Group="Position"
 			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabPanelIndex"
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabStop"
+			Visible=true
+			Group="Position"
+			InitialValue="True"
 			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="UseFocusRing"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Visible"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Canvas"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Width"
+			Visible=true
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
+			InheritedFrom="Canvas"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

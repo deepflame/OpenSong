@@ -151,9 +151,6 @@ Inherits Application
 		  Splash.SetStatus T.Translate("load_settings/checking_folders") + "..."
 		  '--
 		  
-		  Dim docsPath As String
-		  Dim tmp As New FolderItem
-		  
 		  ' --- CREATE DOCUMENTS FOLDER ---
 		  DocsFolder = GetDocsFolder
 		  
@@ -271,9 +268,6 @@ Inherits Application
 		    Quit
 		  End If
 		  
-		  Dim xml As XmlDocument
-		  Dim xnode As XmlNode
-		  
 		  ' --- LOAD SETTINGS ---
 		  '++JRC: Load default files if settings files in DocsFolder are corrupted (bug #1803741)
 		  'The settings folder should be handled in the Installer/Uninstaller as well
@@ -336,7 +330,6 @@ Inherits Application
 		  setVersion = SmartML.GetValueN(MyMainSettings.DocumentElement, "version/@sets")
 		  
 		  App.MouseCursor = Nil
-		  Dim f As FolderItem
 		  
 		  GraphicsX.ThicknessFactor = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@thickness")
 		  
@@ -462,7 +455,6 @@ Inherits Application
 		  Dim f As FolderItem
 		  Dim FolderName As String
 		  Dim e As RuntimeException
-		  Dim mb As SelectFolderDialog
 		  Dim Folder As String
 		  
 		  If IsPortable Then
@@ -537,7 +529,6 @@ Inherits Application
 		  // Returns the frontmost window on the control screen
 		  // EMP 26 Feb 2006
 		  //
-		  Dim w As Window
 		  Dim wc As Integer
 		  Dim i As Integer
 		  Dim cs As Integer
@@ -563,7 +554,6 @@ Inherits Application
 	#tag Method, Flags = &h0
 		Function GetImageAsString(img As Picture) As String
 		  Dim strBase64 As String
-		  Dim r As New Random
 		  Dim f As FolderItem
 		  Dim inputStream As BinaryStream
 		  Dim QualityValue As Integer
@@ -571,7 +561,7 @@ Inherits Application
 		  Dim saveSuccess As Boolean
 		  
 		  If img <> Nil Then
-		    f = SpecialFolder.Temporary.Child(Str(r.InRange(100000, 999999)))
+		    f = GetTemporaryFolderItem()
 		    If f <> Nil Then
 		      
 		      saveSuccess = False
@@ -618,7 +608,7 @@ Inherits Application
 		        End Try
 		      End If
 		      
-		      inputStream = f.OpenAsBinaryFile(False)
+		      inputStream = BinaryStream.Open(f, False)
 		      strBase64 = EncodeBase64(inputStream.Read(f.Length))
 		      inputStream.Close
 		      f.delete
@@ -638,7 +628,6 @@ Inherits Application
 		  // name on certain platforms.
 		  //--
 		  Dim f As FolderItem
-		  Dim folder As String
 		  
 		  f = AppPreferencesFolderForOpenSong
 		  
@@ -861,15 +850,12 @@ Inherits Application
 		  
 		  #If TargetWin32 Then
 		    Dim lparam As New MemoryBlock(4)
-		    Dim hwnd As Integer
 		    Const WM_SYSCOMMAND = 274
 		    Const SC_MINIMIZE = 61472
 		    
 		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
-		    hwnd = Wnd.WinHWND
-		    
-		    status = SendMessageA(wnd.WinHWND, WM_SYSCOMMAND, SC_MINIMIZE, lparam)
+		    status = SendMessageA(wnd.Handle, WM_SYSCOMMAND, SC_MINIMIZE, lparam)
 		    
 		    Return
 		    
@@ -1002,8 +988,6 @@ Inherits Application
 
 	#tag Method, Flags = &h0
 		Sub RestoreWindow(Wnd As Window)
-		  
-		  Dim hwnd As Integer
 		  Dim status As Integer
 		  Dim lparam As New MemoryBlock(4)
 		  Const WM_SYSCOMMAND = 274
@@ -1013,9 +997,7 @@ Inherits Application
 		  #If TargetWin32 Then
 		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
-		    hwnd = Wnd.WinHWND
-		    
-		    status = SendMessageA(wnd.WinHWND, WM_SYSCOMMAND, SC_RESTORE, lparam)
+		    status = SendMessageA(wnd.Handle, WM_SYSCOMMAND, SC_RESTORE, lparam)
 		    
 		    Return
 		    
@@ -1067,7 +1049,7 @@ Inherits Application
 		    
 		    Declare Sub SetForegroundWindow Lib "user32" (ByVal hwnd as Integer)
 		    
-		    SetForegroundWindow(wnd.WinHWND)
+		    SetForegroundWindow(wnd.Handle)
 		  #ElseIf TargetCarbon Then
 		    Dim Status As Integer
 		    #If TargetMachO
@@ -1088,7 +1070,7 @@ Inherits Application
 		  #If TargetWin32 Then
 		    Declare Sub ShowWindow Lib "user32" (ByVal hwnd as Integer, ByVal nCmdShow as Integer)
 		    
-		    ShowWindow(wnd.WinHWND, Cmd)
+		    ShowWindow(wnd.Handle, Cmd)
 		  #Endif
 		  '--
 		End Sub

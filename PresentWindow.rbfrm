@@ -327,8 +327,6 @@ End
 		    
 		    '++JRC get song info for logging
 		    'Don't log in preview mode
-		    Dim Log As LogEntry
-		    
 		    NumberOfItems = NumberOfItems + 1
 		    
 		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
@@ -992,7 +990,6 @@ End
 		Protected Sub InsertBlanksIntoSet(ByRef Set As XmlDocument, ByRef Item As Integer)
 		  Dim slide_group As XmlNode
 		  Dim slide_groups As XmlNode
-		  Dim newItem As Integer
 		  Dim i As Integer
 		  Dim insertBlanks As Boolean
 		  
@@ -1278,12 +1275,9 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Present(setDoc As XmlDocument, PresentMode As Integer, Item As Integer = 0)
-		  Dim i, j As Integer
+		  Dim i As Integer
 		  Dim slide_groups, slide_group, slide As XmlNode
-		  Dim s As String
-		  Dim msg As String // Error message in exception block
 		  Dim de As XmlNode // Holds PresentationSettings Document Element
-		  Dim f1 As FolderItem
 		  Dim tmpPic As Picture
 		  //++EMP
 		  // September 2005
@@ -1293,8 +1287,6 @@ End
 		  
 		  'CurrentSet = setDoc
 		  //++EMP
-		  Dim tempSet As XmlNode
-		  Dim StyleNodes As XmlNodeList
 		  Dim StyleNode As XmlNode
 		  Dim NewStyleNode As XmlNode
 		  Dim tempSlideStyle As SlideStyle
@@ -1372,6 +1364,7 @@ End
 		  
 		  'System.DebugLog "Add blanks and confirm bodies exist"
 		  
+		  'Dim f1 As FolderItem
 		  '#if DebugBuild
 		  'f1 = GetFolderItem("CurrentSet.xml")
 		  'CurrentSet.SaveXml f1
@@ -2170,8 +2163,6 @@ End
 	#tag Event
 		Sub Action()
 		  Dim dontcare As Boolean
-		  Dim xNewSlide As XmlNode
-		  Dim NewSlide As Integer
 		  
 		  If XCurrentSlide.NextSibling = Nil And SmartML.GetValueB(XCurrentSlide.Parent.Parent, "@loop") Then
 		    dontcare = PerformAction(ACTION_FIRST_SLIDE_OF_SECTION)

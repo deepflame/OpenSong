@@ -9,7 +9,7 @@ Scripture               Bible
 slide                   snímek
 
 -->
-<language name="Čeština" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.6.0">
+<language name="Čeština" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.6.2">
 
   <load_settings>
     <checking_folders>Vytvářím/Kontroluji složku s dokumenty</checking_folders>
@@ -186,6 +186,7 @@ slide                   snímek
     <untitled caption="Nepojmenovaný"/>
     <errors>
       <revert caption="Chyba při znovunačtení playlistu &quot;%1&quot; ze souboru."/>
+      <insert caption="Nepodařilo se vložit zkopírované snímky:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; exportováno do
@@ -1275,6 +1276,7 @@ OpenSong tým se omlouvá za problémy.
     <lead_sheets>Vytvářím úvodní listy</lead_sheets>
     <process_themes>Zpracovávám témata</process_themes>
     <process_songs>Zpracovávám písně</process_songs>
+    <song_search>Vyhledávám v pisních</song_search>
     <export>Exportuji písně</export>
     <pass1>Řadím, 1. průchod</pass1>
     <pass2>Řadím, 2. průchod</pass2>

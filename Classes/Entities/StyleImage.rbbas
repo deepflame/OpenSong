@@ -72,7 +72,7 @@ Protected Class StyleImage
 		      
 		      f = GetTemporaryFolderItem ()
 		      If f <> Nil Then
-		        outputStream = BinaryStream.Create(f)
+		        outputStream = BinaryStream.Create(f, True)
 		        outputStream.Write DecodeBase64(Base64)
 		        outputStream.Close
 		        Me.oImage = f.OpenAsPicture()

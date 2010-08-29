@@ -235,7 +235,7 @@ Protected Module SmartML
 		  
 		  f = GetTemporaryFolderItem()
 		  If f <> Nil Then
-		    outputStream = BinaryStream.Create(f)
+		    outputStream = BinaryStream.Create(f, True)
 		    outputStream.Write DecodeBase64(s)
 		    outputStream.Close
 		    p = f.OpenAsPicture

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.6.1">
+<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.6.2">
 
   <load_settings>
     <checking_folders>Criando/Verificando pasta de documentos</checking_folders>
@@ -176,6 +176,7 @@
     <untitled caption="Sem titulo"/>
     <errors>
       <revert caption="Erro ao recarregar a configuração &quot;%1&quot; do arquivo."/>
+      <insert caption="Falha na inserção do slide copiado:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; exportado para
@@ -333,8 +334,8 @@
     </settings>
     <help caption="_Ajuda">
       <help_topics caption="_Tópicos de Ajuda"/>
-       <user_manual caption="Manual do Usuário _Online"/>
-     <translating caption="Tradu_zindo o OpenSong"/>
+      <user_manual caption="Manual do Usuário _Online"/>
+      <translating caption="Tradu_zindo o OpenSong"/>
       <about caption="_Sobre o OpenSong"/>
     </help>
   </main_menu>
@@ -653,7 +654,7 @@ Se a linha contém ("-!!") isto indica o local onde a quebra de linha deve ser co
 
 </format>
 
-	    <presentation>
+	<presentation>
 &lt;h1&gt;Campo de Apresentação do OpenSong&lt;/h1&gt;
 
 O campo de apresentação contém uma lista de seções do campo de Acordes e Letra da música. Cada seção é seperada por um espaço. Por exemplo:
@@ -1265,7 +1266,8 @@ Os membros da equipe de desenvolvimento do OpenSong lamenta qualquer inconvenien
     <lead_sheets>Gerando Folhas de Rosto</lead_sheets>
     <process_themes>Processando Temas</process_themes>
     <process_songs>Processando Músicas</process_songs>
-    <export>Exportando Músicas</export>
+    <song_search>Localizando Músicas</song_search>
+	<export>Exportando Músicas</export>
     <pass1>Classificando, 1° Passo</pass1>
     <pass2>Classificando, 2° Passo</pass2>
   </progress_status>

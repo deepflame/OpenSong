@@ -707,9 +707,11 @@ End
 		      // Not only is that more logical (probably), but it also facilitaties display of the correct slide
 		      // when PresentWindow.Present is called with 'Item > 2' AND the item in question is preceded
 		      // by a stylechange slide and a similarly named other slide
-		      Dim xPrevSlideGroup As XmlNode = xNewSlide.Parent.Parent.PreviousSibling
-		      If xPrevSlideGroup <> Nil Then
-		        prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
+		      If xNewSlide.PreviousSibling Is Nil Then
+		        Dim xPrevSlideGroup As XmlNode = xNewSlide.Parent.Parent.PreviousSibling
+		        If xPrevSlideGroup <> Nil Then
+		          prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
+		        End If
 		      End If
 		      
 		      newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
@@ -795,7 +797,7 @@ End
 		  
 		  newSlide = CurrentSlide - 1 '  "New" is back one
 		  xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
-		  If xNewSlide = Nil Then // at end of presentation, just return
+		  If xNewSlide = Nil Then // at beginning of presentation, just return
 		    Return False
 		  End If
 		  
@@ -826,28 +828,29 @@ End
 		  'newName = oldName
 		  'newType = ""
 		  
-		  'xNewSlide = XCurrentSlide
-		  'newSlide = CurrentSlide
-		  
-		  While xNewSlide <> Nil And newName = oldName And newType <> "blank" And nextIsStyleChange = False
+		  While xNewSlide <> Nil And newName = oldName And newType <> "blank"
 		    XCurrentSlide = xNewSlide
 		    CurrentSlide = newSlide
 		    
-		    newSlide = newSlide - 1
+		    newSlide = CurrentSlide - 1
 		    xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
 		    
 		    If xNewSlide <> Nil Then
 		      //++V, 31-05-2010
 		      // See the explanation in GoNextSection; this is equal, just the other way around
-		      If xNewSlide.PreviousSibling = Nil Then
+		      If xNewSlide.NextSibling = Nil Then
 		        Dim xNextSlideGroup As XmlNode = xNewSlide.Parent.Parent.NextSibling
 		        If xNextSlideGroup <> Nil Then
 		          nextIsStyleChange = (SmartML.GetValue(xNextSlideGroup, "@type", False) = "style")
 		        End If
 		      End
 		      
-		      newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) //++
-		      newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True) //++
+		      If nextIsStyleChange Then
+		        xNewSlide = Nil
+		      Else
+		        newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) //++
+		        newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True) //++
+		      End If
 		    End If //++
 		  Wend
 		  
@@ -870,8 +873,9 @@ End
 		    End If
 		    '--
 		  End If
+		  
 		  If HelperActive Then
-		    PresentHelperWindow.ScrollTo currentSlide
+		    PresentHelperWindow.ScrollTo CurrentSlide
 		  Else
 		    ResetPaint XCurrentSlide
 		  End If
@@ -1478,9 +1482,11 @@ End
 		    While slide <> Nil
 		      
 		      Dim prevIsStyleChange As Boolean = False
-		      Dim xPrevSlideGroup As XmlNode = slide.Parent.Parent.PreviousSibling
-		      If xPrevSlideGroup <> Nil Then
-		        prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
+		      If slide.PreviousSibling Is Nil Then
+		        Dim xPrevSlideGroup As XmlNode = slide.Parent.Parent.PreviousSibling
+		        If xPrevSlideGroup <> Nil Then
+		          prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
+		        End If
 		      End If
 		      
 		      PresentHelperWindow.InsertItem slide, i, prevIsStyleChange

@@ -11701,6 +11701,7 @@ End
 		  End If
 		  
 		  If Me.ListIndex < 0 Then
+		    CurrentInSetItem = -1
 		    Status_InSetOpen = False
 		    Status_InSetEditable = False
 		    Status_InSetChanged = False

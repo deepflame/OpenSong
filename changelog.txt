@@ -1,3 +1,5 @@
+﻿* Fix in set item selection (reselection after unselection is not processed correctly) (Vwout)
+
 * Fix for 'Arrow keys bug - Moving left causes issues' (Vwout)
 
 -= 1.6.2 =-

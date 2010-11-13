@@ -554,13 +554,14 @@ Implements iBible
 		  Dim newFile as FolderItem
 		  Dim out as TextOutputStream
 		  Dim BookNode, ChapNode, VerseNode As XmlNode
-		  Dim sSplit(), verse, location, fileName, sBook, sChap, sVer as String
+		  Dim sSplit, aSplit(), verse, location, fileName, sBook, sChap, sVer as String
 		  Dim reg as RegEx
 		  Dim x,y,  book, chap, ver, bound as Integer
 		  Dim root, wordNode as TreeNode
 		  Dim Progress As Double
 		  Dim BookName As String
 		  Dim Passage As String
+		  Dim wProgress As IndexProgress
 		  
 		  // Only do this if allowed
 		  If Not ShouldGenerateIndex Then Return
@@ -637,7 +638,8 @@ Implements iBible
 		  
 		  'open progress window
 		  If Not (wSplash Is Nil) Then wSplash.Hide
-		  wProgress = New IndexProgress
+		  
+		  wProgress = New IndexProgress()
 		  wProgress.setProgress(0, "")
 		  wProgress.ShowWithin App.GetFrontControlScreenWindow
 		  'books
@@ -682,26 +684,27 @@ Implements iBible
 		          verse= reg.Replace( getVerseText(versenode), 0)
 		          
 		          'split verse into individual words
-		          sSplit= verse.Split()
+		          aSplit= verse.Split()
 		          
 		          'add to index
-		          for x=0 to UBound(sSplit)
+		          for x=0 to UBound(aSplit)
+		            sSplit = Trim(aSplit(x))
 		            'if string is empty or in the list of words not to index then skip
 		            
-		            if (Len(sSplit(x))>=1 AND notIndexed.IndexOf(sSplit(x)) <0) then
+		            if (Len(sSplit)>=1 AND notIndexed.IndexOf(sSplit) <0) then
 		              
 		              if (root=nil) then 'first entry
-		                root= new TreeNode(sSplit(x), IndexDict)
+		                root= new TreeNode(sSplit, IndexDict)
 		              else
-		                wordNode=root.find(sSplit(x))
+		                wordNode=root.find(sSplit)
 		                
 		                bound=UBound(wordNode.passages)
 		                
 		                if (bound >= 5000) then
 		                  ''add to not indexed list and remove from index
-		                  notIndexed.Append(sSplit(x))
+		                  notIndexed.Append(sSplit)
 		                  
-		                  root.delete(sSplit(x))
+		                  root.delete(sSplit)
 		                else
 		                  
 		                  ''make sure not to include the same verse twice
@@ -710,7 +713,7 @@ Implements iBible
 		                  end if '(bound < 0 Or location...
 		                end if '(bound >= 5000)
 		              end if '(root = Nil)
-		            end if '(Len(sSplit(x)) >= 1)...
+		            end if '(Len(sSplit) >= 1)...
 		          next x
 		        end if
 		        
@@ -736,16 +739,16 @@ Implements iBible
 		  'write to file
 		  out= TextOutputStream.Create(newFile)
 		  for x=0 to UBound(index)
-		    out.write(index(x).entry)
-		    
-		    Passage = "|" + Join(index(x).passages, "|")
+		    Passage = index(x).entry + "|" + Join(index(x).passages, "|")
 		    out.WriteLine(Passage)
 		  next x
 		  
 		  out.WriteLine("---")
 		  
 		  for x=0 to UBound(notIndexed)
-		    out.writeLine(notIndexed(x))
+		    If notIndexed(x)<>"" Then
+		      out.writeLine(notIndexed(x))
+		    End If
 		  next x
 		  
 		  out.Close
@@ -1988,7 +1991,6 @@ Implements iBible
 		  If IndexDict = Nil Then IndexDict = New Dictionary
 		  
 		  fileIn= TextInputStream.Open(file)
-		  
 		  line= fileIn.ReadLine().split("|")
 		  
 		  'read indexed words
@@ -2025,10 +2027,6 @@ Implements iBible
 		    file.Delete // Let's kill it for now
 		    Redim index(-1)
 		    Redim notIndexed(-1)
-		    CanSearch = False
-		    If IndexProgress.Visible = True Then
-		      IndexProgress.Close
-		    End If
 		    CanSearch = False
 		  Else // Toss it back up the chain
 		    CanSearch = False
@@ -2425,10 +2423,6 @@ Implements iBible
 
 	#tag Property, Flags = &h1
 		Protected WebBooks(0) As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
-		Protected wProgress As IndexProgress
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

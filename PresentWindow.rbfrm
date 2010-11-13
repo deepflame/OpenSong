@@ -336,7 +336,7 @@ End
 		      i = UBound(ActLog)
 		      ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
 		      ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
-		      ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		      ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
 		      ActLog(i).SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
 		      ActLog(i).DateAndTime = d
 		      ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))

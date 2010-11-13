@@ -1,4 +1,6 @@
-﻿* Fix in set item selection (reselection after unselection is not processed correctly) (Vwout)
+﻿* Fix for CCLI song number reporting for presented songs (Vwout)
+
+* Fix in set item selection (reselection after unselection is not processed correctly) (Vwout)
 
 * Fix for 'Arrow keys bug - Moving left causes issues' (Vwout)
 

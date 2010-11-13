@@ -477,6 +477,7 @@
       <presentation caption="Presentation Monitor"/>
       <detected caption="%1 monitor(s) detected."/>
       <default_mode caption="Default Monitor Mode"/>
+      <force_4_3_preview caption="Force 4:3 preview"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Mask"/>
@@ -526,6 +527,8 @@ C: Chorus
 P: Pre-chorus
 B: Bridge
 T: Tag</keys>
+    <preview caption="Current slide preview" />
+    <next caption="Next slide preview" />
   </presentation_helper>
 
   <help_topics title="Help Topics">

@@ -1,4 +1,8 @@
-﻿* Fix for CCLI song number reporting for presented songs (Vwout)
+﻿* Added an option to force 4:3 preview mode on wide or portrait screens. This allows correct presentation preparation for 4:3 screens on a monitor with a different aspect ratio. This option can be enabled on the Presentation Settings dialog. See the tab 'options' under 'Screens'. It is now also possible to make the Presentation Helper window even smaller. (Vwout)
+
+* Added next slide preview in presentation helper window. The availability and size of the preview is changed automatically when resizing the Presentation Helper (Vwout)
+
+* Fix for CCLI song number reporting for presented songs (Vwout)
 
 * Fix in set item selection (reselection after unselection is not processed correctly) (Vwout)
 

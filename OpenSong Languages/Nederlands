@@ -485,6 +485,7 @@
       <presentation caption="Presentatie scherm"/>
       <detected caption="%1 scherm(en) gevonden."/>
       <default_mode caption="Standaard scherm modus"/>
+      <force_4_3_preview caption="Forceer 4:3 voorbeeld"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Masker"/>
@@ -534,6 +535,8 @@ C: Refrein
 P: Voor-refrein
 B: Brug
 T: Label</keys>
+    <preview caption="Voorbeeldweergave huidige dia" />
+    <next caption="Voorbeeldweergave volgende dia" />
   </presentation_helper>
 
   <help_topics title="Help Onderwerpen">

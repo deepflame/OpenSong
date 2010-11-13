@@ -29,13 +29,12 @@ Begin Window PresentWindow Implements ScriptureReceiver
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   0
-      ControlOrder    =   0
+      DoubleBuffer    =   True
       Enabled         =   True
       EraseBackground =   True
       Height          =   302
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   -1
       LockBottom      =   True
@@ -43,51 +42,44 @@ Begin Window PresentWindow Implements ScriptureReceiver
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   -1
       UseFocusRing    =   False
       Visible         =   True
       Width           =   302
       Begin Timer timerAdvance
-         BehaviorIndex   =   1
-         ControlOrder    =   1
          Enabled         =   True
          Height          =   32
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "cnvSlide"
          Left            =   248
          LockedInPosition=   False
          Mode            =   0
          Period          =   10000
+         Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   248
          Visible         =   True
          Width           =   32
       End
       Begin Timer timerTransition
-         BehaviorIndex   =   2
-         ControlOrder    =   2
          Enabled         =   True
          Height          =   32
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "cnvSlide"
          Left            =   204
          LockedInPosition=   False
          Mode            =   0
          Period          =   125
+         Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   248
          Visible         =   True
          Width           =   32
@@ -1409,10 +1401,19 @@ End
 		    presentScreen = controlScreen
 		    Top = Screen(presentScreen).AvailableTop + 10
 		    Left = Screen(presentScreen).AvailableLeft + 10
-		    Width = Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 30
-		    Height = Width * Screen(presentScreen).AvailableHeight / Screen(presentScreen).Width ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
 		    
-		    PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).Width - PresentHelperWindow.Width - 10
+		    Width = Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 30
+		    Height = Width * Screen(presentScreen).AvailableHeight / Screen(presentScreen).AvailableWidth ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
+		    
+		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
+		      If Width > Height Then
+		        Width = Height * 4/3
+		      Else
+		        Height = Width * 3/4
+		      End If
+		    End If
+		    
+		    PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 10
 		    PresentHelperWindow.Top = Screen(presentScreen).AvailableTop + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
 		    
 		  ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens

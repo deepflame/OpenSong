@@ -18,21 +18,20 @@ Begin Window PresentHelperWindow
    MenuBarVisible  =   True
    MinHeight       =   480
    MinimizeButton  =   True
-   MinWidth        =   640
+   MinWidth        =   530
    Placement       =   0
    Resizeable      =   True
    Title           =   "Presentation Helper"
    Visible         =   True
-   Width           =   675
+   Width           =   800
    Begin ListBox lst_all_slides
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
-      BehaviorIndex   =   0
       Bold            =   False
+      Border          =   True
       ColumnCount     =   3
       ColumnsResizable=   True
       ColumnWidths    =   "27%,8%,65%"
-      ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -46,7 +45,7 @@ Begin Window PresentHelperWindow
       Height          =   200
       HelpTag         =   ""
       Hierarchical    =   False
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
@@ -66,27 +65,26 @@ Begin Window PresentHelperWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   10
       Underline       =   False
       UseFocusRing    =   False
       Visible         =   True
-      Width           =   460
+      Width           =   617
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
    End
    Begin GroupBox grp_presentation_modes
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Bold            =   False
       Caption         =   "Mode"
-      ControlOrder    =   1
       Enabled         =   True
       Height          =   180
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   514
+      Left            =   639
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
@@ -95,9 +93,9 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   5
       Underline       =   False
       Visible         =   True
@@ -107,17 +105,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   2
-         ControlOrder    =   2
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -138,17 +135,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   3
-         ControlOrder    =   3
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -169,17 +165,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   4
-         ControlOrder    =   4
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -200,17 +195,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   5
-         ControlOrder    =   5
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -231,17 +225,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   6
-         ControlOrder    =   6
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -262,17 +255,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   7
-         ControlOrder    =   7
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -294,13 +286,12 @@ Begin Window PresentHelperWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   8
-      ControlOrder    =   8
+      DoubleBuffer    =   True
       Enabled         =   True
       EraseBackground =   True
       Height          =   249
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   10
       LockBottom      =   True
@@ -315,22 +306,20 @@ Begin Window PresentHelperWindow
       Top             =   224
       UseFocusRing    =   True
       Visible         =   True
-      Width           =   346
+      Width           =   332
    End
    Begin StaticText txt_shortcut_keys
       AutoDeactivate  =   True
-      BehaviorIndex   =   9
       Bold            =   False
-      ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   138
+      Height          =   142
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   373
+      Left            =   526
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -340,30 +329,28 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   9
-      Top             =   215
+      TextUnit        =   0
+      Top             =   212
       Underline       =   False
       Visible         =   True
-      Width           =   135
+      Width           =   101
    End
    Begin GroupBox grp_presentation_actions
       AutoDeactivate  =   True
-      BehaviorIndex   =   10
       Bold            =   False
       Caption         =   "Actions"
-      ControlOrder    =   10
       Enabled         =   True
       Height          =   155
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   514
+      Left            =   639
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
@@ -372,9 +359,9 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   190
       Underline       =   False
       Visible         =   True
@@ -384,17 +371,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   11
-         ControlOrder    =   11
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -415,17 +401,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   12
-         ControlOrder    =   12
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -446,17 +431,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   13
-         ControlOrder    =   13
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -477,17 +461,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   14
-         ControlOrder    =   14
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -508,17 +491,16 @@ Begin Window PresentHelperWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   15
-         ControlOrder    =   15
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          HasFocus        =   0
          Height          =   24
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
@@ -540,20 +522,19 @@ Begin Window PresentHelperWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   16
       Bold            =   True
       Border          =   True
-      ControlOrder    =   16
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   116
+      Height          =   115
       HelpTag         =   ""
-      Index           =   2147483648
+      HideSelection   =   True
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   368
+      Left            =   354
       LimitText       =   0
       LockBottom      =   True
       LockedInPosition=   False
@@ -562,7 +543,6 @@ Begin Window PresentHelperWindow
       LockTop         =   False
       Mask            =   ""
       Multiline       =   True
-      Password        =   False
       ReadOnly        =   True
       Scope           =   0
       ScrollbarHorizontal=   False
@@ -575,11 +555,103 @@ Begin Window PresentHelperWindow
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   16
+      TextUnit        =   0
       Top             =   358
       Underline       =   False
       UseFocusRing    =   False
       Visible         =   True
-      Width           =   300
+      Width           =   435
+   End
+   Begin Canvas cnv_preview_next
+      AcceptFocus     =   ""
+      AcceptTabs      =   ""
+      AutoDeactivate  =   True
+      Backdrop        =   ""
+      DoubleBuffer    =   True
+      Enabled         =   True
+      EraseBackground =   True
+      Height          =   120
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   354
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   False
+      Scope           =   0
+      TabIndex        =   6
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   224
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   160
+   End
+   Begin StaticText lbl_preview
+      AutoDeactivate  =   True
+      Bold            =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   10
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   False
+      Multiline       =   ""
+      Scope           =   0
+      TabIndex        =   7
+      TabPanelIndex   =   0
+      Text            =   "Current slide preview"
+      TextAlign       =   0
+      TextColor       =   &h000000
+      TextFont        =   "System"
+      TextSize        =   0
+      TextUnit        =   0
+      Top             =   208
+      Underline       =   ""
+      Visible         =   True
+      Width           =   332
+   End
+   Begin StaticText lbl_preview_next
+      AutoDeactivate  =   True
+      Bold            =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   354
+      LockBottom      =   ""
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   True
+      Multiline       =   ""
+      Scope           =   0
+      TabIndex        =   8
+      TabPanelIndex   =   0
+      Text            =   "Next slide preview"
+      TextAlign       =   0
+      TextColor       =   &h000000
+      TextFont        =   "System"
+      TextSize        =   0
+      TextUnit        =   0
+      Top             =   208
+      Underline       =   ""
+      Visible         =   True
+      Width           =   160
    End
 End
 #tag EndWindow
@@ -622,8 +694,33 @@ End
 
 	#tag Event
 		Sub Open()
+		  Dim marginLeft As Integer
+		  
 		  App.T.TranslateWindow Me, "presentation_helper", App.TranslationFonts
 		  txt_shortcut_keys.Caption = App.T.Translate("presentation_helper/keys")
+		  
+		  Dim screenWidth As Double = Screen(PresentWindow.PresentScreen).Width
+		  Dim screenHeight As Double = Screen(PresentWindow.PresentScreen).Height
+		  m_screenRatio = screenWidth / screenHeight
+		  
+		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
+		    If m_screenRatio > 1.0 Then
+		      m_screenRatio = 4.0/3.0
+		    Else
+		      m_screenRatio = 3.0/4.0
+		    End If
+		  End If
+		  
+		  cnv_preview.Width = cnv_preview.Height * m_screenRatio
+		  marginLeft = cnv_preview.Left + cnv_preview.Width + 10
+		  Me.MinWidth = marginLeft + grp_presentation_actions.Width + 10
+		  
+		  cnv_preview_next.Left = marginLeft
+		  lbl_preview_next.Left = marginLeft
+		  txt_shortcut_keys.Left = marginLeft + lbl_preview_next.Width + 10
+		  edt_slide_notes.Left =marginLeft
+		  
+		  ResizePreview()
 		End Sub
 	#tag EndEvent
 
@@ -633,6 +730,12 @@ End
 		  RecalcLstAllSlidesColumnWidths
 		  Refresh
 		  '--
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resizing()
+		  ResizePreview()
 		End Sub
 	#tag EndEvent
 
@@ -726,6 +829,66 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Sub ResizePreview()
+		  Dim marginLeft As Integer = cnv_preview.Left + cnv_preview.Width + 10
+		  Dim marginRight As Integer = grp_presentation_actions.Width + 10
+		  Dim prvLargeHeight As Integer = cnv_preview.Height
+		  Dim prvSmallHeight As Integer = 120
+		  
+		  Dim prvLargeWidth As Integer = prvLargeHeight * m_screenRatio
+		  Dim prvSmallWidth As Integer = prvSmallHeight * m_screenRatio
+		  
+		  If Me.Width > (marginLeft + prvLargeWidth + 10 + marginRight) Then
+		    
+		    cnv_preview_next.Visible = True
+		    lbl_preview_next.Visible = True
+		    
+		    If Me.Width < (marginLeft + prvLargeWidth + 10 + marginRight + 100) Then
+		      txt_shortcut_keys.Visible = False
+		    Else
+		      txt_shortcut_keys.Visible = True
+		    End If
+		    
+		    If cnv_preview_next.Width <> prvLargeWidth Then
+		      cnv_preview_next.Width = prvLargeWidth
+		      cnv_preview_next.Height = prvLargeHeight
+		      txt_shortcut_keys.Left = marginLeft + prvLargeWidth + 10
+		      edt_slide_notes.Left = marginLeft + prvLargeWidth + 10
+		      edt_slide_notes.Width = Me.Width - edt_slide_notes.Left - 10
+		    End If
+		    
+		  Else
+		    
+		    If Me.Width >= (marginLeft + prvSmallWidth + 10 + marginRight) And Me.Width < (marginLeft + prvSmallWidth + 10 + marginRight + 100) Then
+		      
+		      txt_shortcut_keys.Visible = False
+		      cnv_preview_next.Visible = True
+		      lbl_preview_next.Visible = True
+		      
+		    ElseIf Me.Width < (marginLeft + prvSmallWidth + 10 + marginRight) Then
+		      
+		      txt_shortcut_keys.Visible = False
+		      cnv_preview_next.Visible = False
+		      lbl_preview_next.Visible = False
+		    Else
+		      cnv_preview_next.Visible = True
+		      lbl_preview_next.Visible = True
+		      txt_shortcut_keys.Visible = True
+		    End If
+		    
+		    If cnv_preview_next.Width <> prvSmallWidth Then
+		      cnv_preview_next.Width = prvSmallWidth
+		      cnv_preview_next.Height =prvSmallHeight
+		      txt_shortcut_keys.Left = marginLeft + prvSmallWidth + 10
+		      edt_slide_notes.Left =marginLeft
+		      edt_slide_notes.Width = Me.Width - edt_slide_notes.Left - 10
+		    End If
+		    
+		  End If
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Sub SavePos()
 		  SavedTop = Self.Top
@@ -811,6 +974,7 @@ End
 		  If refresh Then PresentWindow.ResetPaint PresentWindow.XCurrentSlide
 		  
 		  cnv_preview.Refresh False
+		  cnv_preview_next.Refresh False
 		  
 		End Sub
 	#tag EndMethod
@@ -879,6 +1043,10 @@ End
 		Protected IsMaximized As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private m_screenRatio As Double
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected SavedHeight As Integer
 	#tag EndProperty
@@ -914,6 +1082,7 @@ End
 		    
 		    Me.Refresh False
 		    cnv_preview.Refresh False
+		    cnv_preview_next.Refresh False
 		  End If
 		  
 		End Sub
@@ -1179,6 +1348,43 @@ End
 		Sub GotFocus()
 		  lst_all_slides.setFocus 'EMP: Don't allow this control to get focus
 		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events cnv_preview_next
+	#tag Event
+		Sub GotFocus()
+		  lst_all_slides.SetFocus
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Paint(g As Graphics)
+		  Dim nextSlide As XmlNode
+		  
+		  If Not Globals.Status_Presentation Then Return
+		  If Not Me.Visible Then Return
+		  If IsNull(PresentWindow.XCurrentSlide) Then Return
+		  
+		  nextSlide = SetML.GetNextSlide(PresentWindow.XCurrentSlide)
+		  If IsNull(nextSlide) Then
+		    g.ForeColor = RGB(200,200,200)
+		    g.FillRect 0, 0, g.Width, g.Height
+		  Else
+		    // Catch a race condition between this Paint event and PresentWindow still initializing
+		    Try
+		      SetML.DrawSlide g, nextSlide, SetML.GetStyle(nextSlide)
+		    Catch e As NilObjectException
+		      // Just make it black for the moment
+		      g.ForeColor = RGB(0,0,0)
+		      g.FillRect 0, 0, g.Width, g.Height
+		      Return
+		    End Try
+		  End If
+		  
+		  g.ForeColor = DarkBevelColor
+		  g.PenHeight = 1
+		  g.PenWidth = 1
+		  g.DrawRect 0, 0, g.Width, g.Height
 		End Sub
 	#tag EndEvent
 #tag EndEvents

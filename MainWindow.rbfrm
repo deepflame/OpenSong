@@ -9904,6 +9904,10 @@ End
 		Protected LastSongPane As Integer
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private m_Reordering As Boolean = False
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected PopupClicked As Boolean
 	#tag EndProperty
@@ -11687,7 +11691,7 @@ End
 		  If Me.ListIndex = CurrentInSetItem Then Return
 		  
 		  '++JRC
-		  If DontUpdateSetItem Then
+		  If DontUpdateSetItem Or m_Reordering Then
 		    Return
 		  End If
 		  '--
@@ -11944,8 +11948,12 @@ End
 	#tag Event
 		Function DragReorderRows(newPosition as Integer, parentRow as Integer) As Boolean
 		  '++JRC
-		  ReorderSetItemList(lst_set_items.ListIndex, newPosition)
-		  return true 'We'll handle the reorder manually, workaround for bug #1827986
+		  If Not m_Reordering Then
+		    m_Reordering = True
+		    ReorderSetItemList(lst_set_items.ListIndex, newPosition)
+		    m_Reordering = False
+		  End If
+		  Return True 'We'll handle the reorder manually, workaround for bug #1827986
 		  '--
 		End Function
 	#tag EndEvent
@@ -11982,6 +11990,11 @@ End
 		Sub MouseExit()
 		  SetHelp ""
 		End Sub
+	#tag EndEvent
+	#tag Event
+		Function DragRow(drag As DragItem, row As Integer) As Boolean
+		  Return Not m_Reordering
+		End Function
 	#tag EndEvent
 #tag EndEvents
 #tag Events rad_style_change

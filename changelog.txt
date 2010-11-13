@@ -1,4 +1,6 @@
-﻿* Added an option to force 4:3 preview mode on wide or portrait screens. This allows correct presentation preparation for 4:3 screens on a monitor with a different aspect ratio. This option can be enabled on the Presentation Settings dialog. See the tab 'options' under 'Screens'. It is now also possible to make the Presentation Helper window even smaller. (Vwout)
+﻿* Improve set item reordering - quick drag-and-drop could mess up the synchronisation between set list and contents window. This still can happen - looks like an RB issue, although you need to try harder now. (Vwout)
+
+* Added an option to force 4:3 preview mode on wide or portrait screens. This allows correct presentation preparation for 4:3 screens on a monitor with a different aspect ratio. This option can be enabled on the Presentation Settings dialog. See the tab 'options' under 'Screens'. It is now also possible to make the Presentation Helper window even smaller. (Vwout)
 
 * Added next slide preview in presentation helper window. The availability and size of the preview is changed automatically when resizing the Presentation Helper (Vwout)
 

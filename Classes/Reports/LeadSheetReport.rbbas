@@ -101,7 +101,7 @@ Inherits ReportClass
 		            Log.Append( New LogEntry(Globals.SongActivityLog))
 		            Log(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
 		            Log(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
-		            Log(i).CCLISongNumber =  SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		            Log(i).CCLISongNumber =  SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
 		            Log(i).SongFileName =   f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
 		            Log(i).DateAndTime = d
 		            Log(i).HasChords = Log(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
@@ -246,7 +246,7 @@ Inherits ReportClass
 		    If Globals.UseSheetDialogs Then
 		      ps = App.GetPrinterSetup(True, Window(0))
 		    Else
-		      ps = App.GetPrinterSetup(True) 
+		      ps = App.GetPrinterSetup(True)
 		    End If
 		    If ps = Nil Then Return False // User doesn't want to print
 		  End If

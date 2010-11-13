@@ -9137,7 +9137,7 @@ End
 		          
 		          ActLog(i).Title = SmartML.GetValue(SongDoc.DocumentElement, "title", True)
 		          ActLog(i).Author = SmartML.GetValue(SongDoc.DocumentElement, "author", True)
-		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli", True)  //The song's CCLI number
 		          ActLog(i).SongFileName = songPath + SmartML.GetValue(slide_group, "@name", False)
 		          ActLog(i).DateAndTime = d
 		          ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(edf_song_lyrics.Text)

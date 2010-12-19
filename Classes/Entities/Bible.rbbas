@@ -566,7 +566,7 @@ Implements iBible
 		  // Only do this if allowed
 		  If Not ShouldGenerateIndex Then Return
 		  
-		  App.DebugWriter.Write "Bible.genindex: Enter"
+		  App.DebugWriter.Write "Bible.genIndex: Enter"
 		  
 		  'clear index
 		  reDim index(-1)
@@ -632,7 +632,7 @@ Implements iBible
 		  
 		  'used to remove puncuation and xml tags
 		  reg= New RegEx
-		  reg.SearchPattern = "[^\w\s]+" ' Non-word, non-space
+		  reg.SearchPattern = "[[:punct:]]" ' Non-word, non-space
 		  reg.ReplacementPattern=""
 		  reg.Options.ReplaceAllMatches=true
 		  
@@ -680,7 +680,7 @@ Implements iBible
 		        if versenode.Child(0)<> nil then
 		          location=sBook + " " + sChap + " " + sVer
 		          
-		          'remove puncuation
+		          'remove puncuationı
 		          verse= reg.Replace( getVerseText(versenode), 0)
 		          
 		          'split verse into individual words
@@ -695,24 +695,25 @@ Implements iBible
 		              
 		              if (root=nil) then 'first entry
 		                root= new TreeNode(sSplit, IndexDict)
+		              end if
+		              
+		              wordNode=root.find(sSplit)
+		              
+		              bound=UBound(wordNode.passages)
+		              
+		              if (bound >= 5000) then
+		                ''add to not indexed list and remove from index
+		                notIndexed.Append(sSplit)
+		                
+		                root.delete(sSplit)
 		              else
-		                wordNode=root.find(sSplit)
 		                
-		                bound=UBound(wordNode.passages)
-		                
-		                if (bound >= 5000) then
-		                  ''add to not indexed list and remove from index
-		                  notIndexed.Append(sSplit)
-		                  
-		                  root.delete(sSplit)
-		                else
-		                  
-		                  ''make sure not to include the same verse twice
-		                  if (bound < 0 OR location <> wordNode.passages(bound)) then
-		                    wordNode.passages.Append(location)
-		                  end if '(bound < 0 Or location...
-		                end if '(bound >= 5000)
-		              end if '(root = Nil)
+		                ''make sure not to include the same verse twice
+		                if (bound < 0 OR location <> wordNode.passages(bound)) then
+		                  wordNode.passages.Append(location)
+		                end if '(bound < 0 Or location...
+		              end if '(bound >= 5000)
+		              
 		            end if '(Len(sSplit) >= 1)...
 		          next x
 		        end if

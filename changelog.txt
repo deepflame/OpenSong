@@ -1,4 +1,8 @@
-﻿* Fix bible indexing issue for bibles with newline characters (bug #3077366) (Vwout)
+﻿* Fix bible indexing issue where the first word in the first verse of the first chapter would be added to the index but the reference wouldn't be (swampcat)
+
+* Fix bible indexing issue where UTF-8 characters would be dropped from the index incorrectly (bug #3117855) (swampcat)
+
+* Fix bible indexing issue for bibles with newline characters (bug #3077366) (Vwout)
 
 * Improve set item reordering - quick drag-and-drop could mess up the synchronisation between set list and contents window. This still can happen - looks like an RB issue, although you need to try harder now. (Vwout)
 

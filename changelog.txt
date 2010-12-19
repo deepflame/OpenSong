@@ -1,4 +1,8 @@
-﻿* Fix bible indexing issue where the first word in the first verse of the first chapter would be added to the index but the reference wouldn't be (swampcat)
+﻿* Add option to turn off reversing the Bold attribute on the font used to print chorus lyrics (swampcat)
+
+* Misc. Mac stability fixes (swampcat)
+
+* Fix bible indexing issue where the first word in the first verse of the first chapter would be added to the index but the reference wouldn't be (swampcat)
 
 * Fix bible indexing issue where UTF-8 characters would be dropped from the index incorrectly (bug #3117855) (swampcat)
 

@@ -493,6 +493,9 @@ Module SongML
 		        g.Underline = tempFont.Underline
 		        g.ForeColor = tempFont.ForeColor
 		        If Left(section,1) = "C" Then
+		          If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		            g.Bold = Not tempFont.Bold
+		          End If
 		          g.Bold = True
 		        Else
 		          g.Bold = tempFont.Bold
@@ -628,7 +631,9 @@ Module SongML
 		        g.Underline = tempFont.Underline
 		        g.ForeColor = tempFont.ForeColor
 		        If Left(section,1) = "C" Then
-		          g.Bold = Not tempFont.Bold
+		          If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		            g.Bold = Not tempFont.Bold
+		          End If
 		        End If
 		        slices(i*lineCount+j) = ReplaceAll(slices(i*lineCount+j), "_", "")
 		        slices(i*lineCount+j) = slices(i*lineCount+j).CleanSpaces
@@ -1764,7 +1769,9 @@ Module SongML
 		  g.ForeColor = tempFont.ForeColor
 		  
 		  If Left(section,1) = "C" Then
-		    g.Bold = True
+		    If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		      g.Bold = Not tempFont.Bold
+		    End If
 		  Else
 		    g.Bold = tempFont.Bold
 		  End If
@@ -1791,8 +1798,9 @@ Module SongML
 		  tempFont.OntoGraphics g
 		  
 		  If Left(section,1) = "C" Then
-		    g.Bold = Not g.Bold
-		    tempFont.Bold = Not tempFont.Bold
+		    If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		      g.Bold = Not tempFont.Bold
+		    End If
 		  End If
 		  '
 		  ' This originally had MID(Line, 2), but that cut of the first character on set sheet custom items.

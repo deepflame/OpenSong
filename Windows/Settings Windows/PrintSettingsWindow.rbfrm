@@ -27,9 +27,9 @@ Begin Window PrintSettingsWindow
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
-      ControlOrder    =   0
       Default         =   True
       Enabled         =   True
       Height          =   22
@@ -43,11 +43,13 @@ Begin Window PrintSettingsWindow
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   294
       Underline       =   False
       Visible         =   True
@@ -56,9 +58,9 @@ Begin Window PrintSettingsWindow
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "&Cancel"
-      ControlOrder    =   1
       Default         =   False
       Enabled         =   True
       Height          =   22
@@ -72,11 +74,13 @@ Begin Window PrintSettingsWindow
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   294
       Underline       =   False
       Visible         =   True
@@ -85,9 +89,7 @@ Begin Window PrintSettingsWindow
    Begin TabPanel tab_main_tabs
       AutoDeactivate  =   True
       Bold            =   False
-      ControlOrder    =   2
       Enabled         =   True
-      Facing          =   0
       Height          =   275
       HelpTag         =   ""
       Index           =   -2147483648
@@ -100,6 +102,7 @@ Begin Window PrintSettingsWindow
       LockRight       =   False
       LockTop         =   False
       Panels          =   ""
+      Scope           =   0
       SmallTabs       =   False
       TabDefinition   =   "Fonts\rLayout\rMargins"
       TabIndex        =   2
@@ -107,9 +110,10 @@ Begin Window PrintSettingsWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   10
       Underline       =   False
-      Value           =   2
+      Value           =   1
       Visible         =   True
       Width           =   505
       Begin Canvas can_print_fonts
@@ -117,7 +121,7 @@ Begin Window PrintSettingsWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         ControlOrder    =   3
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          Height          =   245
@@ -130,19 +134,18 @@ Begin Window PrintSettingsWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   1
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   35
          UseFocusRing    =   True
          Visible         =   True
          Width           =   495
          Begin StaticText lbl_font_title
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   4
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -158,6 +161,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
             TabStop         =   True
@@ -167,17 +172,21 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   65
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   60
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_font_title
             AcceptFocus     =   False
+            AcceptMouseDown =   true
             AcceptTabs      =   False
             AdvancedOptions =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            ControlOrder    =   5
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   50
@@ -190,20 +199,19 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   50
             UseFocusRing    =   True
             Visible         =   True
             Width           =   160
          End
          Begin StaticText lbl_font_author
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   6
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -219,6 +227,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
@@ -228,17 +238,21 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   120
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   60
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_font_author
             AcceptFocus     =   False
+            AcceptMouseDown =   true
             AcceptTabs      =   False
             AdvancedOptions =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            ControlOrder    =   7
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   50
@@ -251,20 +265,19 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   105
             UseFocusRing    =   True
             Visible         =   True
             Width           =   160
          End
          Begin StaticText lbl_font_sections
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   8
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -280,6 +293,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   1
             TabStop         =   True
@@ -289,17 +304,21 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   175
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   60
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_font_sections
             AcceptFocus     =   False
+            AcceptMouseDown =   true
             AcceptTabs      =   False
             AdvancedOptions =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            ControlOrder    =   9
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   50
@@ -312,20 +331,19 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   160
             UseFocusRing    =   True
             Visible         =   True
             Width           =   160
          End
          Begin StaticText lbl_font_lyrics
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   10
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -341,6 +359,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
             TabStop         =   True
@@ -350,17 +370,21 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   230
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   60
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_font_lyrics
             AcceptFocus     =   False
+            AcceptMouseDown =   true
             AcceptTabs      =   False
             AdvancedOptions =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            ControlOrder    =   11
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   50
@@ -373,20 +397,19 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   215
             UseFocusRing    =   True
             Visible         =   True
             Width           =   160
          End
          Begin StaticText lbl_font_chords
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   12
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -402,6 +425,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   1
             TabStop         =   True
@@ -411,17 +436,21 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   65
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   80
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_font_chords
             AcceptFocus     =   False
+            AcceptMouseDown =   true
             AcceptTabs      =   False
             AdvancedOptions =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            ControlOrder    =   13
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   50
@@ -434,20 +463,19 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   9
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   50
             UseFocusRing    =   True
             Visible         =   True
             Width           =   160
          End
          Begin StaticText lbl_font_capo
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   14
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -463,6 +491,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   1
             TabStop         =   True
@@ -472,17 +502,21 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   120
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   80
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_font_capo
             AcceptFocus     =   False
+            AcceptMouseDown =   true
             AcceptTabs      =   False
             AdvancedOptions =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            ControlOrder    =   15
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   50
@@ -495,20 +529,19 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   11
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   105
             UseFocusRing    =   True
             Visible         =   True
             Width           =   160
          End
          Begin StaticText lbl_font_copyright
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   16
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -524,6 +557,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   12
             TabPanelIndex   =   1
             TabStop         =   True
@@ -533,17 +568,21 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   175
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   80
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_font_copyright
             AcceptFocus     =   False
+            AcceptMouseDown =   true
             AcceptTabs      =   False
             AdvancedOptions =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            ControlOrder    =   17
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   50
@@ -556,11 +595,10 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   13
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   160
             UseFocusRing    =   True
             Visible         =   True
@@ -572,7 +610,7 @@ Begin Window PrintSettingsWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         ControlOrder    =   18
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          Height          =   245
@@ -585,19 +623,18 @@ Begin Window PrintSettingsWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   2
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   35
          UseFocusRing    =   True
          Visible         =   True
          Width           =   495
          Begin StaticText lbl_layout_heading_border_thickness
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   19
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -613,6 +650,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
             TabStop         =   True
@@ -622,9 +661,12 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   55
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   300
+            Window          =   0
+            _mWindow        =   0
          End
          Begin TextField edt_layout_heading_border_thickness
             AcceptTabs      =   False
@@ -633,7 +675,7 @@ Begin Window PrintSettingsWindow
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
-            ControlOrder    =   20
+            CueText         =   ""
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -651,12 +693,9 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
-            Multiline       =   False
             Password        =   False
             ReadOnly        =   False
-            ScrollbarHorizontal=   False
-            ScrollbarVertical=   True
-            Styled          =   False
+            Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
             TabStop         =   True
@@ -664,6 +703,7 @@ Begin Window PrintSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   70
             Underline       =   False
             UseFocusRing    =   True
@@ -674,7 +714,6 @@ Begin Window PrintSettingsWindow
             AutoDeactivate  =   True
             Bold            =   False
             Caption         =   "Title in CAPS"
-            ControlOrder    =   21
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -689,16 +728,51 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
+            State           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   100
             Underline       =   False
             Value           =   False
             Visible         =   True
             Width           =   300
+         End
+         Begin CheckBox chk_layout_highlight_chorus
+            AutoDeactivate  =   True
+            Bold            =   False
+            Caption         =   "Highlight choruses"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_print_layout"
+            Italic          =   False
+            Left            =   30
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   4
+            TabPanelIndex   =   2
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   122
+            Underline       =   False
+            Value           =   False
+            Visible         =   True
+            Width           =   209
          End
       End
       Begin Canvas can_print_margins
@@ -706,7 +780,7 @@ Begin Window PrintSettingsWindow
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         ControlOrder    =   22
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          Height          =   245
@@ -719,19 +793,18 @@ Begin Window PrintSettingsWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   3
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   35
          UseFocusRing    =   True
          Visible         =   True
          Width           =   495
          Begin StaticText lbl_page_top
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   23
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -747,6 +820,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
             TabStop         =   True
@@ -756,9 +831,12 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   40
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditFieldNumeric edt_page_top
             AcceptTabs      =   False
@@ -767,7 +845,6 @@ Begin Window PrintSettingsWindow
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
-            ControlOrder    =   24
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -775,6 +852,7 @@ Begin Window PrintSettingsWindow
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_print_margins"
             Italic          =   False
@@ -789,8 +867,8 @@ Begin Window PrintSettingsWindow
             Maximum         =   431
             Minimum         =   4.310000e+6
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
+            Scope           =   0
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             SignalRangeErrors=   0
@@ -802,6 +880,7 @@ Begin Window PrintSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   55
             Underline       =   False
             UseFocusRing    =   True
@@ -809,9 +888,9 @@ Begin Window PrintSettingsWindow
             Width           =   45
          End
          Begin StaticText lbl_page_left
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   25
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -827,6 +906,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   3
             TabStop         =   True
@@ -836,9 +917,12 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   130
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   95
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditFieldNumeric edt_page_left
             AcceptTabs      =   False
@@ -847,7 +931,6 @@ Begin Window PrintSettingsWindow
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
-            ControlOrder    =   26
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -855,6 +938,7 @@ Begin Window PrintSettingsWindow
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_print_margins"
             Italic          =   False
@@ -869,8 +953,8 @@ Begin Window PrintSettingsWindow
             Maximum         =   4.310000e+6
             Minimum         =   4.310000e+6
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
+            Scope           =   0
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             SignalRangeErrors=   0
@@ -882,6 +966,7 @@ Begin Window PrintSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   145
             Underline       =   False
             UseFocusRing    =   True
@@ -889,9 +974,9 @@ Begin Window PrintSettingsWindow
             Width           =   45
          End
          Begin StaticText lbl_page_bottom
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   27
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -907,6 +992,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   3
             TabStop         =   True
@@ -916,9 +1003,12 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   235
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditFieldNumeric edt_page_bottom
             AcceptTabs      =   False
@@ -927,7 +1017,6 @@ Begin Window PrintSettingsWindow
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
-            ControlOrder    =   28
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -935,6 +1024,7 @@ Begin Window PrintSettingsWindow
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_print_margins"
             Italic          =   False
@@ -949,8 +1039,8 @@ Begin Window PrintSettingsWindow
             Maximum         =   4.310000e+6
             Minimum         =   4.310000e+6
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
+            Scope           =   0
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             SignalRangeErrors=   0
@@ -962,6 +1052,7 @@ Begin Window PrintSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   250
             Underline       =   False
             UseFocusRing    =   True
@@ -969,9 +1060,9 @@ Begin Window PrintSettingsWindow
             Width           =   45
          End
          Begin StaticText lbl_page_right
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
-            ControlOrder    =   29
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -987,6 +1078,8 @@ Begin Window PrintSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   3
             TabStop         =   True
@@ -996,9 +1089,12 @@ Begin Window PrintSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   132
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   95
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditFieldNumeric edt_page_right
             AcceptTabs      =   False
@@ -1007,7 +1103,6 @@ Begin Window PrintSettingsWindow
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
-            ControlOrder    =   30
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
@@ -1015,6 +1110,7 @@ Begin Window PrintSettingsWindow
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
+            HideSelection   =   True
             Index           =   -2147483648
             InitialParent   =   "can_print_margins"
             Italic          =   False
@@ -1029,8 +1125,8 @@ Begin Window PrintSettingsWindow
             Maximum         =   4.310000e+6
             Minimum         =   4.310000e+6
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
+            Scope           =   0
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             SignalRangeErrors=   0
@@ -1042,6 +1138,7 @@ Begin Window PrintSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   145
             Underline       =   False
             UseFocusRing    =   True
@@ -1052,7 +1149,6 @@ Begin Window PrintSettingsWindow
             AutoDeactivate  =   True
             BorderWidth     =   1
             BottomRightColor=   0
-            ControlOrder    =   31
             Enabled         =   True
             FillColor       =   16777215
             Height          =   150
@@ -1065,19 +1161,17 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   3
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   80
             TopLeftColor    =   0
             Visible         =   True
             Width           =   115
             Begin StaticText lbl_page_width
+               Active          =   ""
                AutoDeactivate  =   True
                Bold            =   False
-               ControlOrder    =   32
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
@@ -1093,6 +1187,8 @@ Begin Window PrintSettingsWindow
                LockRight       =   False
                LockTop         =   False
                Multiline       =   False
+               Scope           =   0
+               Selectable      =   False
                TabIndex        =   0
                TabPanelIndex   =   3
                TabStop         =   True
@@ -1102,9 +1198,12 @@ Begin Window PrintSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10
                Top             =   115
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   105
+               Window          =   0
+               _mWindow        =   0
             End
             Begin SEditFieldNumeric edt_page_width
                AcceptTabs      =   False
@@ -1113,7 +1212,6 @@ Begin Window PrintSettingsWindow
                BackColor       =   16777215
                Bold            =   False
                Border          =   True
-               ControlOrder    =   33
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
@@ -1121,6 +1219,7 @@ Begin Window PrintSettingsWindow
                Format          =   ""
                Height          =   20
                HelpTag         =   ""
+               HideSelection   =   True
                Index           =   -2147483648
                InitialParent   =   "nil_page"
                Italic          =   False
@@ -1135,8 +1234,8 @@ Begin Window PrintSettingsWindow
                Maximum         =   4.310000e+6
                Minimum         =   4.310000e+6
                Multiline       =   False
-               Password        =   False
                ReadOnly        =   False
+               Scope           =   0
                ScrollbarHorizontal=   False
                ScrollbarVertical=   True
                SignalRangeErrors=   0
@@ -1148,6 +1247,7 @@ Begin Window PrintSettingsWindow
                TextColor       =   0
                TextFont        =   "Arial"
                TextSize        =   10
+               TextUnit        =   0
                Top             =   130
                Underline       =   False
                UseFocusRing    =   True
@@ -1155,9 +1255,9 @@ Begin Window PrintSettingsWindow
                Width           =   45
             End
             Begin StaticText lbl_page_height
+               Active          =   ""
                AutoDeactivate  =   True
                Bold            =   False
-               ControlOrder    =   34
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
@@ -1173,6 +1273,8 @@ Begin Window PrintSettingsWindow
                LockRight       =   False
                LockTop         =   False
                Multiline       =   False
+               Scope           =   0
+               Selectable      =   False
                TabIndex        =   2
                TabPanelIndex   =   3
                TabStop         =   True
@@ -1182,9 +1284,12 @@ Begin Window PrintSettingsWindow
                TextFont        =   "Arial"
                TextSize        =   10
                Top             =   160
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   105
+               Window          =   0
+               _mWindow        =   0
             End
             Begin SEditFieldNumeric edt_page_height
                AcceptTabs      =   False
@@ -1193,7 +1298,6 @@ Begin Window PrintSettingsWindow
                BackColor       =   16777215
                Bold            =   False
                Border          =   True
-               ControlOrder    =   35
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
@@ -1201,6 +1305,7 @@ Begin Window PrintSettingsWindow
                Format          =   ""
                Height          =   20
                HelpTag         =   ""
+               HideSelection   =   True
                Index           =   -2147483648
                InitialParent   =   "nil_page"
                Italic          =   False
@@ -1215,8 +1320,8 @@ Begin Window PrintSettingsWindow
                Maximum         =   4.310000e+6
                Minimum         =   4.310000e+6
                Multiline       =   False
-               Password        =   False
                ReadOnly        =   False
+               Scope           =   0
                ScrollbarHorizontal=   False
                ScrollbarVertical=   True
                SignalRangeErrors=   0
@@ -1228,6 +1333,7 @@ Begin Window PrintSettingsWindow
                TextColor       =   0
                TextFont        =   "Arial"
                TextSize        =   10
+               TextUnit        =   0
                Top             =   175
                Underline       =   False
                UseFocusRing    =   True
@@ -1240,7 +1346,6 @@ Begin Window PrintSettingsWindow
          AutoDeactivate  =   True
          Bold            =   False
          Caption         =   "Units"
-         ControlOrder    =   36
          Enabled         =   True
          Height          =   78
          HelpTag         =   ""
@@ -1253,11 +1358,12 @@ Begin Window PrintSettingsWindow
          LockLeft        =   False
          LockRight       =   False
          LockTop         =   False
+         Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   3
-         TabStop         =   True
          TextFont        =   "System"
          TextSize        =   12
+         TextUnit        =   0
          Top             =   46
          Underline       =   False
          Visible         =   True
@@ -1266,7 +1372,6 @@ Begin Window PrintSettingsWindow
             AutoDeactivate  =   True
             Bold            =   False
             Caption         =   "Inches"
-            ControlOrder    =   37
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
@@ -1279,11 +1384,13 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   12
+            TextUnit        =   0
             Top             =   70
             Underline       =   False
             Value           =   False
@@ -1294,7 +1401,6 @@ Begin Window PrintSettingsWindow
             AutoDeactivate  =   True
             Bold            =   False
             Caption         =   "cm"
-            ControlOrder    =   38
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
@@ -1307,11 +1413,13 @@ Begin Window PrintSettingsWindow
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
+            Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   12
+            TextUnit        =   0
             Top             =   94
             Underline       =   False
             Value           =   False
@@ -1407,6 +1515,7 @@ End
 		  
 		  chk_layout_title_in_caps.Value = SmartML.GetValueB(PS, "style/@caps_song_title")
 		  edt_layout_heading_border_thickness.Text = SmartML.GetValue(PS, "style/@border_thickness")
+		  chk_layout_highlight_chorus.Value = SmartML.GetValueB(PS, "style/@highlight_chorus", False, True)
 		  
 		  App.T.TranslateWindow Me, "print_settings", App.TranslationFonts
 		  App.CenterInControlScreen Me
@@ -1545,6 +1654,7 @@ End
 		  
 		  SmartML.SetValueB(PS, "style/@caps_song_title", chk_layout_title_in_caps.Value)
 		  SmartML.SetValue(PS, "style/@border_thickness", edt_layout_heading_border_thickness.Text)
+		  SmartML.SetValueB(PS, "style/@highlight_chorus", chk_layout_highlight_chorus.Value)
 		  
 		  //++
 		  // Bug 1462055: Save settings on dialog exit

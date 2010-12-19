@@ -27,6 +27,7 @@ Begin Window PresentSettingsWindow
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
       Default         =   True
@@ -57,6 +58,7 @@ Begin Window PresentSettingsWindow
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
       Default         =   False
@@ -115,6 +117,7 @@ Begin Window PresentSettingsWindow
       Visible         =   True
       Width           =   600
       Begin StaticText lbl_style_default_slides
+         Active          =   ""
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -133,18 +136,22 @@ Begin Window PresentSettingsWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "Default Slide Style:"
          TextAlign       =   1
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         TextUnit        =   0
          Top             =   65
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   160
+         Window          =   0
+         _mWindow        =   0
       End
       Begin SStyleCanvas can_style_default
          AcceptFocus     =   False
@@ -175,6 +182,7 @@ Begin Window PresentSettingsWindow
          Width           =   160
       End
       Begin StaticText nte_style_click_to_change_1
+         Active          =   ""
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -193,20 +201,25 @@ Begin Window PresentSettingsWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "(click to change)"
          TextAlign       =   1
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   9
-         TextUnit        =   0
          Top             =   200
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   160
+         Window          =   0
+         _mWindow        =   0
       End
       Begin StaticText lbl_style_scripture_slides
+         Active          =   ""
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -225,18 +238,22 @@ Begin Window PresentSettingsWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "Scripture Slide Style:"
          TextAlign       =   1
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   10
-         TextUnit        =   0
          Top             =   65
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   160
+         Window          =   0
+         _mWindow        =   0
       End
       Begin SStyleCanvas can_style_scripture
          AcceptFocus     =   False
@@ -267,6 +284,7 @@ Begin Window PresentSettingsWindow
          Width           =   160
       End
       Begin StaticText nte_style_click_to_change_2
+         Active          =   ""
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -285,18 +303,22 @@ Begin Window PresentSettingsWindow
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "(click to change)"
          TextAlign       =   1
          TextColor       =   0
          TextFont        =   "Arial"
          TextSize        =   9
-         TextUnit        =   0
          Top             =   200
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   160
+         Window          =   0
+         _mWindow        =   0
       End
       Begin GroupBox grp_settings_alerts
          AutoDeactivate  =   True
@@ -325,6 +347,7 @@ Begin Window PresentSettingsWindow
          Visible         =   True
          Width           =   387
          Begin StaticText lbl_alerts_align
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -343,18 +366,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Align:"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   277
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   90
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SAlignCanvas sal_alerts
             AcceptFocus     =   False
@@ -384,6 +411,7 @@ Begin Window PresentSettingsWindow
             Width           =   44
          End
          Begin StaticText lbl_alerts_font
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -402,18 +430,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Font:"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   258
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   250
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_alerts_font
             AcceptFocus     =   False
@@ -500,6 +532,7 @@ Begin Window PresentSettingsWindow
             Width           =   80
          End
          Begin StaticText nte_logo_click_to_change_1
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -518,20 +551,25 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "(click to change)"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   9
-            TextUnit        =   0
             Top             =   159
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText nte_logo_right_click_to_clear_1
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -550,20 +588,25 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "(right-click to clear)"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   9
-            TextUnit        =   0
             Top             =   172
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_logo_mask
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -582,18 +625,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Mask:"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   223
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SImageCanvas can_logo_mask
             AcceptFocus     =   False
@@ -624,6 +671,7 @@ Begin Window PresentSettingsWindow
             Width           =   80
          End
          Begin StaticText nte_logo_click_to_change_2
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -642,20 +690,25 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "(click to change)"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   9
-            TextUnit        =   0
             Top             =   302
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText nte_logo_right_click_to_clear_2
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -674,18 +727,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "(right-click to clear)"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   9
-            TextUnit        =   0
             Top             =   315
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
       End
       Begin GroupBox grp_settings_transitions
@@ -747,6 +804,7 @@ Begin Window PresentSettingsWindow
             Width           =   151
          End
          Begin StaticText lbl_style_frames
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -765,18 +823,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Frames"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   82
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   151
+            Window          =   0
+            _mWindow        =   0
          End
          Begin Slider sld_style_frames
             AutoDeactivate  =   True
@@ -849,6 +911,7 @@ Begin Window PresentSettingsWindow
             Width           =   27
          End
          Begin StaticText lbl_style_time
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -867,18 +930,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Time:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   117
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   151
+            Window          =   0
+            _mWindow        =   0
          End
          Begin Slider sld_style_time
             AutoDeactivate  =   True
@@ -951,6 +1018,7 @@ Begin Window PresentSettingsWindow
             Width           =   38
          End
          Begin StaticText txt_style_transition_note
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -969,18 +1037,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   58
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   204
+            Window          =   0
+            _mWindow        =   0
          End
       End
       Begin GroupBox grp_settings_style
@@ -1010,6 +1082,7 @@ Begin Window PresentSettingsWindow
          Visible         =   True
          Width           =   392
          Begin StaticText lbl_style_border_thickness
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1028,18 +1101,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Border Thickness:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   257
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
+            Window          =   0
+            _mWindow        =   0
          End
          Begin TextField edt_style_border_thickness
             AcceptTabs      =   False
@@ -1084,6 +1161,7 @@ Begin Window PresentSettingsWindow
             Width           =   50
          End
          Begin StaticText lbl_style_initial_mode
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1102,18 +1180,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Initial Mode:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   296
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_style_initial_mode
             AutoDeactivate  =   True
@@ -1147,6 +1229,7 @@ Begin Window PresentSettingsWindow
             Width           =   140
          End
          Begin StaticText lbl_style_mouse_cursor
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1165,18 +1248,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Mouse Cursor:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   333
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   136
+            Window          =   0
+            _mWindow        =   0
          End
          Begin CheckBox chk_style_blanks
             AutoDeactivate  =   True
@@ -1242,6 +1329,7 @@ Begin Window PresentSettingsWindow
             Width           =   140
          End
          Begin StaticText txt_style_blanks_between
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1260,18 +1348,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "between set items"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   277
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   161
+            Window          =   0
+            _mWindow        =   0
          End
          Begin Canvas nil_blanks
             AcceptFocus     =   False
@@ -1300,6 +1392,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   177
             Begin StaticText lbl_style_blank_style
+               Active          =   ""
                AutoDeactivate  =   True
                Bold            =   False
                DataField       =   ""
@@ -1318,18 +1411,22 @@ Begin Window PresentSettingsWindow
                LockTop         =   True
                Multiline       =   False
                Scope           =   0
+               Selectable      =   False
                TabIndex        =   0
                TabPanelIndex   =   2
+               TabStop         =   True
                Text            =   "Blanks take style of:"
                TextAlign       =   0
                TextColor       =   0
                TextFont        =   "Arial"
                TextSize        =   10
-               TextUnit        =   0
                Top             =   300
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   164
+               Window          =   0
+               _mWindow        =   0
             End
             Begin RadioButton rad_style_blank_prev
                AutoDeactivate  =   True
@@ -1418,6 +1515,7 @@ Begin Window PresentSettingsWindow
          Visible         =   True
          Width           =   155
          Begin StaticText lbl_monitor_presentation
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1436,18 +1534,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Presentation Monitor:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   95
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_monitor_presentation
             AutoDeactivate  =   True
@@ -1481,6 +1583,7 @@ Begin Window PresentSettingsWindow
             Width           =   40
          End
          Begin StaticText nte_monitor_detected
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1499,18 +1602,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "(1 monitor(s) detected.)"
             TextAlign       =   1
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   135
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_monitor_control
             AutoDeactivate  =   True
@@ -1544,6 +1651,7 @@ Begin Window PresentSettingsWindow
             Width           =   40
          End
          Begin StaticText lbl_monitor_control
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1562,20 +1670,25 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Control Monitor:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   55
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_monitor_default_mode
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1594,18 +1707,22 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Default Mode:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   155
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_monitor_mode
             AutoDeactivate  =   True
@@ -1698,6 +1815,7 @@ Begin Window PresentSettingsWindow
          Visible         =   False
          Width           =   155
          Begin StaticText lbl_audio_file_to_play
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1716,22 +1834,27 @@ Begin Window PresentSettingsWindow
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "File to Play:"
             TextAlign       =   0
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   11
-            TextUnit        =   0
             Top             =   257
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   100
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PushButton btn_audio_browse
             AutoDeactivate  =   True
             Bold            =   False
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Browse"
             Default         =   False
@@ -1762,6 +1885,7 @@ Begin Window PresentSettingsWindow
          Begin PushButton btn_audio_play
             AutoDeactivate  =   True
             Bold            =   False
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Play"
             Default         =   False
@@ -1792,6 +1916,7 @@ Begin Window PresentSettingsWindow
          Begin PushButton btn_audio_stop
             AutoDeactivate  =   True
             Bold            =   False
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Stop"
             Default         =   False

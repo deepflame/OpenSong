@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt" version="1.6.2">
+<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt, Ed Palmer" version="1.6.3">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -418,7 +418,8 @@
     </fonts>
     <layout>
       <heading_border_thickness caption="Heading Border Thickness"/>
-      <title_in_caps caption="Title In Caps"/>
+      <title_in_caps caption="Title in Caps"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Units">
       <inches caption="Inches"/>

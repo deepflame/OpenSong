@@ -510,12 +510,19 @@ Inherits Application
 		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If //If FolderName <> ""
 		  Else // folder found in MainPreferences, make sure it exists.
-		    If Not f.exists Then
+		    //++
+		    // If the DocumentsFolder saved in preferences doesn't exist,
+		    // the Macintosh version apparently will grab a random file.
+		    // While this will not catch a case where that file is a directory,
+		    // the odds are with us that this will catch it.
+		    // EMP, 28 August 2010
+		    //--
+		    If (Not f.exists) Or (Not f.Directory) Then
 		      Try
 		        f = QueryDocsFolder(Nil)
 		      Catch
 		        System.DebugLog "OpenSong: user cancelled document folder selection"
-		        Return Nil
+		        Quit
 		      End Try
 		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If
@@ -1371,12 +1378,18 @@ Inherits Application
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
+			  If Not IsNull(App.MyMainSettings) Then
+			    Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
+			  Else
+			    Return False
+			  End If
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
+			  If Not IsNull(App.MyMainSettings) Then
+			    SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
+			  End If
 			End Set
 		#tag EndSetter
 		ExcludeBackgroundsImages As Boolean

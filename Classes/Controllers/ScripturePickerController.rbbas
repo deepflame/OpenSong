@@ -300,7 +300,17 @@ Implements ScriptureNotifier
 		  
 		  // See if we need to select a different scripture version
 		  
-		  versionRegEx.SearchPattern = BibleFactory.kCitationRegEx
+		  //++
+		  // The parsing regex was changed to work around an apparent bug in the regex library
+		  // that incorrectly excludes extended Latin-1 characters from the [[:alpha:]] and [[:alnum:]] classes
+		  // To allow the old regex to be used if it breaks other languages than Turkish (where the error
+		  // was first seen), allow a key to be added to the preferences to return to the old behavior.
+		  //--
+		  If App.MainPreferences.GetValueB(prefs.kUseOldBibleFactoryRegEx, False, False) Then
+		    versionRegEx.SearchPattern = BibleFactory.kOldCitationRegEx
+		  Else
+		    versionRegEx.SearchPattern = BibleFactory.kCitationRegEx
+		  End If
 		  versionMatch = versionRegEx.Search(cite)
 		  lookupBible = CurrentBible
 		  

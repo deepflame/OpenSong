@@ -22,6 +22,9 @@ Protected Module prefs
 	#tag Constant, Name = kSongsPreviewWithChords, Type = String, Dynamic = False, Default = \"songs/preview/showchords", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = kUseOldBibleFactoryRegEx, Type = String, Dynamic = False, Default = \"biblefactory/useoldregex", Scope = Protected
+	#tag EndConstant
+
 	#tag Constant, Name = kUseOldFolderDB, Type = String, Dynamic = False, Default = \"documents_folder/UseOldFolderDB", Scope = Protected
 	#tag EndConstant
 

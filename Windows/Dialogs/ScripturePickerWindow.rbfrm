@@ -43,7 +43,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   11
       TextUnit        =   0
@@ -99,6 +98,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Begin PushButton btn_quick_lookup
          AutoDeactivate  =   True
          Bold            =   False
+         ButtonStyle     =   0
          Cancel          =   False
          Caption         =   "Lookup"
          Default         =   False
@@ -145,9 +145,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Reference:"
          TextAlign       =   0
          TextColor       =   0
@@ -155,6 +155,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   0
          TextUnit        =   0
          Top             =   28
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   65
@@ -178,9 +179,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Ex: ""2Pet 1:1-2"" or ""2Pet 1:1-2 (KJV)"""
          TextAlign       =   0
          TextColor       =   0
@@ -188,6 +189,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   0
          TextUnit        =   0
          Top             =   28
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   221
@@ -196,6 +198,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
    Begin PushButton btn_add
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Add"
       Default         =   True
@@ -226,6 +229,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
    Begin PushButton btn_done
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Done"
       Default         =   False
@@ -256,6 +260,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
    Begin PushButton btn_insert
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Insert"
       Default         =   False
@@ -286,6 +291,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
    Begin PushButton btn_search
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Full text search"
       Default         =   False
@@ -332,7 +338,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   0
       TextUnit        =   0
@@ -459,9 +464,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockTop         =   True
          Multiline       =   ""
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Old testament"
          TextAlign       =   0
          TextColor       =   0
@@ -469,6 +474,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   0
          TextUnit        =   0
          Top             =   107
+         Transparent     =   False
          Underline       =   ""
          Visible         =   True
          Width           =   80
@@ -492,9 +498,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          LockTop         =   True
          Multiline       =   ""
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "New testament"
          TextAlign       =   0
          TextColor       =   0
@@ -502,6 +508,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TextSize        =   0
          TextUnit        =   0
          Top             =   107
+         Transparent     =   False
          Underline       =   ""
          Visible         =   True
          Width           =   85
@@ -576,7 +583,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -635,7 +641,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   0
       TextUnit        =   0
@@ -694,7 +699,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   0
       TextUnit        =   0
@@ -812,9 +816,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "-"
       TextAlign       =   1
       TextColor       =   0
@@ -822,6 +826,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       TextUnit        =   0
       Top             =   107
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   10
@@ -990,9 +995,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   15
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ":"
       TextAlign       =   1
       TextColor       =   0
@@ -1000,6 +1005,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   10
       TextUnit        =   0
       Top             =   107
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   10
@@ -1023,9 +1029,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   16
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "From verse"
       TextAlign       =   0
       TextColor       =   0
@@ -1033,6 +1039,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   0
       TextUnit        =   0
       Top             =   107
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   55
@@ -1056,9 +1063,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   17
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Paragraph"
       TextAlign       =   0
       TextColor       =   0
@@ -1066,6 +1073,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   0
       TextUnit        =   0
       Top             =   107
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   50
@@ -1089,9 +1097,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockTop         =   ""
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   18
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Preview of scripture passage"
       TextAlign       =   0
       TextColor       =   0
@@ -1099,6 +1107,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   0
       TextUnit        =   0
       Top             =   475
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   404
@@ -1122,7 +1131,6 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   19
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   0
       TextUnit        =   0
@@ -1199,9 +1207,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   20
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "To verse"
       TextAlign       =   0
       TextColor       =   0
@@ -1209,6 +1217,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TextSize        =   0
       TextUnit        =   0
       Top             =   107
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   55
@@ -1216,6 +1225,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
    Begin PushButton btn_copy
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Copy"
       Default         =   True
@@ -1571,7 +1581,7 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub RebuildBooklistListboxes()
-		  //
+		   //
 		  // Rebuild the OT & NT listboxes from the current bible
 		  //
 		  

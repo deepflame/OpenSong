@@ -1,4 +1,6 @@
-﻿* Add option to turn off reversing the Bold attribute on the font used to print chorus lyrics (swampcat)
+﻿* Complete the fix for bug 3117855 by correcting issue with quick lookup with extended Latin-1 characters in book name. Requires change to the regular expression that parses the citation, so by creating a new key in the preferences file,  biblefactory/useoldregex and setting it to true, the old regular expression will be used (swampcat)
+
+* Add option to turn off reversing the Bold attribute on the font used to print chorus lyrics (swampcat)
 
 * Misc. Mac stability fixes (swampcat)
 

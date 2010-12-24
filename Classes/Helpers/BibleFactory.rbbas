@@ -90,7 +90,17 @@ Protected Module BibleFactory
 		  Dim verses() As String
 		  Dim bibleException As New BibleRefException
 		  
-		  regexCite.SearchPattern = kCitationRegEx
+		  //++
+		  // The parsing regex was changed to work around an apparent bug in the regex library
+		  // that incorrectly excludes extended Latin-1 characters from the [[:alpha:]] and [[:alnum:]] classes
+		  // To allow the old regex to be used if it breaks other languages than Turkish (where the error
+		  // was first seen), allow a key to be added to the preferences to return to the old behavior.
+		  //--
+		  If App.MainPreferences.GetValueB(prefs.kUseOldBibleFactoryRegEx, False, False) Then
+		    regexCite.SearchPattern = kOldCitationRegEx
+		  Else
+		    regexCite.SearchPattern = kCitationRegEx
+		  End If
 		  cite = Trim(cite)
 		  
 		  Try
@@ -206,7 +216,10 @@ Protected Module BibleFactory
 	#tag EndProperty
 
 
-	#tag Constant, Name = kCitationRegEx, Type = String, Dynamic = False, Default = \"^((\?:\\d)\?\\s*(\?:[[:alpha:]]+))\\s+(\\b\\d+\\b)(:\\d{1\x2C2}\\b\\s*-\\s*\\d{1\x2C2}\\b|:\\d{1\x2C2}\\b(\?!-)|\\b(\?![:-]))(\?:\\s*\\(([[:alpha:].]+)\\)|\\b)$", Scope = Public
+	#tag Constant, Name = kCitationRegEx, Type = String, Dynamic = False, Default = \"^((\?:\\d\\s*)\?(\?:[^[:punct:][:space:]]+))\\s+(\\b\\d+\\b)(:\\d{1\x2C2}\\b\\s*-\\s*\\d{1\x2C2}\\b|:\\d{1\x2C2}\\b(\?!-)|\\b(\?![:-]))(\?:\\s*\\(([[:alpha:].]+)\\)|\\b)$", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kOldCitationRegEx, Type = String, Dynamic = False, Default = \"^((\?:\\d)\?\\s*(\?:[[:alpha:]]+))\\s+(\\b\\d+\\b)(:\\d{1\x2C2}\\b\\s*-\\s*\\d{1\x2C2}\\b|:\\d{1\x2C2}\\b(\?!-)|\\b(\?![:-]))(\?:\\s*\\(([[:alpha:].]+)\\)|\\b)$", Scope = Public
 	#tag EndConstant
 
 

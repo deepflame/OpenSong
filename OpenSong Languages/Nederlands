@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.6.2">
+<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.6.3">
 
   <load_settings>
     <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
@@ -419,6 +419,7 @@
     <layout>
       <heading_border_thickness caption="Dikte van de rand koptekst"/>
       <title_in_caps caption="Titel in Hoofdletters"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Eenheid">
       <inches caption="Inches"/>

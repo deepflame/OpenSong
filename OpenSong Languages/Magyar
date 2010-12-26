@@ -419,6 +419,7 @@
     <layout>
       <heading_border_thickness caption="Szakaszcím szegélyének vastagsága"/>
       <title_in_caps caption="Nagybetűs címek"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Mértékegység">
       <inches caption="Hüvelyk"/>

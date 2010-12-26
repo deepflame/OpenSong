@@ -76,7 +76,7 @@
     <title caption="Titre">Définit le titre du chant sélectionné.</title>
     <author caption="Auteur">Définit l'auteur du chant sélectionné.</author>
     <copyright caption="Copyright">Définit le copyright du chant sélectionné.</copyright>
-    <ccli caption="n°CCLI">Définit n°CCLI du chant sélectionné.</ccli>
+    <ccli caption="nÝCCLI">Définit nÝCCLI du chant sélectionné.</ccli>
     <hymn_number caption="Numéro">Définit le numéro de chant (dans un carnet, une liste...)</hymn_number>
     <presentation caption="Ordre des sections">Définit l'ordre de présentation du chant sélectionné. Les sections doivent êtr séparées par des espaces (ex. "V1 C V2 C")</presentation>
     <lyrics caption="Accords/Paroles">Modifier le chant en utilisant des lignes de section, de commentaires, d'accords et de paroles.</lyrics>
@@ -341,7 +341,7 @@
 
   <general_settings title="Configuration générale">
     <general caption="General" head1="Basic" head2="Special">
-      <ccli caption="N° de licence CCLI"/>
+      <ccli caption="NÝ de licence CCLI"/>
       <version_check caption="Vérifier si une nouvelle version est disponible au démarrage"/>
       <language caption="Langue"/>
     </general>
@@ -418,6 +418,7 @@
     <layout>
       <heading_border_thickness caption="Epaisseur de la bordure de titre"/>
       <title_in_caps caption="Titre en MAJ."/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Unités">
       <inches caption="Pouces"/>
@@ -727,9 +728,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <bridge_abbreviation caption="pont"/>
      <tag_abbreviation caption="lib"/>
      <author caption=""/>
-     <hymn_number caption="N°"/>
-     <ccli_number caption="N° CCLI"/>
-     <ccli_license caption="N° de licence CCLI"/>
+     <hymn_number caption="NÝ"/>
+     <ccli_number caption="NÝ CCLI"/>
+     <ccli_license caption="NÝ de licence CCLI"/>
      <presentation caption="Ordre de présentation"/>
      <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
      <separator caption="|NL|"/>
@@ -923,7 +924,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <password caption="Mot de passe"/>
     <for caption="Chercher"/>
     <songs head1="Pa" head2="Ch" head3="Le" head4="Titre" head5="Auteur"
-      head6="Catalogue" head7="autre titre" head8="Ligne princ." head9="tonamité" head10="n°CCLI"/>
+      head6="Catalogue" head7="autre titre" head8="Ligne princ." head9="tonamité" head10="nÝCCLI"/>
     <by caption="De">
       <title_and_aka caption="Titre et autre titre"/>
       <title caption="Titre"/>
@@ -931,7 +932,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <author caption="Auteur"/>
       <catalog caption="Catalogue"/>
       <theme caption="Thème"/>
-      <ccli caption="n°CCLI"/>
+      <ccli caption="nÝCCLI"/>
     </by>
     <filter caption="Filtre">
       <all caption="Tous"/>
@@ -1061,8 +1062,8 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <row0 caption="Copyright|copyright"/>
     <row1 caption="Auteur|author"/>
     <row2 caption="Numéro|hymn_number"/> 
-    <row3 caption="N° CCLI|ccli_number"/> 
-    <row4 caption="N° de licence CCLI|ccli_license"/>
+    <row3 caption="NÝ CCLI|ccli_number"/> 
+    <row4 caption="NÝ de licence CCLI|ccli_license"/>
   </subtitles>
 
   <shared>
@@ -1095,8 +1096,8 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <new_name caption="Veuillez entrer un nom :"/>
     <rename caption="Veuillez entrer un nom pour '%1':"/>
     <save caption="Voulez-vous enregistrer vos modifications pour '%1'?"/>
-    <delete caption="Êtes-vous sûr(e) de vouloir supprimer '%1'?"/>
-    <clear caption="Êtes-vous sûr(e) de vouloir effacer cela ?"/>
+    <delete caption="-tes-vous sûr(e) de vouloir supprimer '%1'?"/>
+    <clear caption="-tes-vous sûr(e) de vouloir effacer cela ?"/>
     <changed caption="Le chant a changé, voulez-vous le sauvegarder ?"/>
     <revert caption="Toutes les modifications vont être perdues. Continuer?"/>
     <long_operation caption="Cette opération peut prendre un certain temps. Continuer?"/>

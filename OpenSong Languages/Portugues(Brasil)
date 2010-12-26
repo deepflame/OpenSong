@@ -419,6 +419,7 @@
     <layout>
       <heading_border_thickness caption="Espessura da Borda do cabeçalho"/>
       <title_in_caps caption="Título em MAIÚSCULAS"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Unidades">
       <inches caption="Polegadas"/>

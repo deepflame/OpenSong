@@ -429,6 +429,7 @@ slide                   snímek
     <layout>
       <heading_border_thickness caption="Tloušťka okraje nadpisů"/>
       <title_in_caps caption="Nadpisy velkými písmeny (kapitálkami)"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Jednotky">
       <inches caption="Palce"/>

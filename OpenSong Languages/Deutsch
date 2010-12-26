@@ -420,6 +420,7 @@
     <layout>
       <heading_border_thickness caption="Konturdicke der Überschrift"/>
       <title_in_caps caption="Titel in Großbuchstaben"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Einheiten">
       <inches caption="Zoll"/>

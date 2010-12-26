@@ -386,6 +386,7 @@
     <layout>
       <heading_border_thickness caption="Debelina meje naslova"/>
       <title_in_caps caption="Naslov z velikimi črkami"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Merska enota">
       <inches caption="Inči"/>

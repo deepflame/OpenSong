@@ -87,6 +87,7 @@ Begin Window InputBox
    Begin PushButton btn_hidden_hidok
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
       Default         =   True
@@ -117,6 +118,7 @@ Begin Window InputBox
    Begin PushButton btn_hidden_hidcancel
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
       Default         =   False
@@ -163,6 +165,7 @@ Begin Window InputBox
       LockTop         =   True
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
       Text            =   "Label"
@@ -172,6 +175,7 @@ Begin Window InputBox
       TextSize        =   11
       TextUnit        =   0
       Top             =   7
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   297
@@ -380,8 +384,8 @@ End
 		  lbl_the_question.MultiLine = True
 		  lbl_the_question.Text = message
 		  edt_the_input.Visible = False
-		  '++JRC: Increased height
-		  lbl_the_question.Height = 150
+		  '++JRC: dereased height to make push buttons visible again
+		  lbl_the_question.Height = 80
 		  '--
 		  pop_the_input.Visible = False
 		  

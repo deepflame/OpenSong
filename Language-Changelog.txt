@@ -1,3 +1,4 @@
+presentation_settings/settings (modified, added child nodes)
 print_settings/layout/highlight_chorus
 presentation_settings/monitor/force_4_3_preview
 presentation_helper/preview

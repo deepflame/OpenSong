@@ -104,7 +104,7 @@ Begin Window PresentSettingsWindow
       Panels          =   ""
       Scope           =   0
       SmallTabs       =   False
-      TabDefinition   =   "Styles\rOptions"
+      TabDefinition   =   "Styles\rOptions\rSnapshots"
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
@@ -113,7 +113,7 @@ Begin Window PresentSettingsWindow
       TextUnit        =   0
       Top             =   14
       Underline       =   False
-      Value           =   1
+      Value           =   2
       Visible         =   True
       Width           =   600
       Begin StaticText lbl_style_default_slides
@@ -2004,6 +2004,242 @@ Begin Window PresentSettingsWindow
             Width           =   143
          End
       End
+      Begin CheckBox chk_settings_export_snapshot
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Export a snapshot of each presented slide to the following file"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   3
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   45
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   580
+      End
+      Begin TextField edt_settings_snapshot_filename
+         AcceptTabs      =   ""
+         Alignment       =   0
+         AutoDeactivate  =   True
+         BackColor       =   &hFFFFFF
+         Bold            =   ""
+         Border          =   True
+         CueText         =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LimitText       =   0
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Mask            =   ""
+         Password        =   ""
+         ReadOnly        =   ""
+         Scope           =   0
+         TabIndex        =   1
+         TabPanelIndex   =   3
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &h000000
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   67
+         Underline       =   ""
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   546
+      End
+      Begin SButton btn_settings_snapshot_file
+         AcceptFocus     =   ""
+         AcceptTabs      =   ""
+         AutoDeactivate  =   True
+         Backdrop        =   ""
+         DoubleBuffer    =   False
+         Enabled         =   True
+         EraseBackground =   True
+         HasFocus        =   0
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Left            =   578
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   False
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         StickyBevel     =   0
+         TabIndex        =   2
+         TabPanelIndex   =   3
+         TabStop         =   True
+         Top             =   67
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   22
+      End
+      Begin CheckBox chk_settings_export_preview
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Export snapshots during set preview"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   3
+         TabPanelIndex   =   3
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   101
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   546
+      End
+      Begin CheckBox chk_settings_export_live_insertions
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Export snapshots of slides inserted during a live presentation"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   4
+         TabPanelIndex   =   3
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   122
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   546
+      End
+      Begin CheckBox chk_settings_export_metadata
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Export slide details in a similarly named xml file"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   5
+         TabPanelIndex   =   3
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   143
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   546
+      End
+      Begin StaticText txt_settings_snapshot_parameters
+         Active          =   ""
+         AutoDeactivate  =   True
+         Bold            =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   219
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   ""
+         LockTop         =   True
+         Multiline       =   True
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   6
+         TabPanelIndex   =   3
+         TabStop         =   True
+         Text            =   "The following parameters can be used in the file name or path:\r\n- %d: The day of the current month (01-31)\r\n- %H: The hour from the current time of day in 24-hour format (00-23)\r\n- %i: The minutes from the current time (00-59)\r\n- %m: The current month (01-12)\r\n- %n: The number of the slide in the current set (with leading zeroes)\r\n- %N: The name of the current slide\r\n- %s: The seconds from the current time (00-59)\r\n- %S: The name of the current set\r\n- %Y: The current year (4 digits)\r\n"
+         TextAlign       =   0
+         TextColor       =   &h000000
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   169
+         Transparent     =   False
+         Underline       =   ""
+         Visible         =   True
+         Width           =   546
+         Window          =   0
+         _mWindow        =   0
+      End
    End
    Begin Timer AudioTimer
       Height          =   32
@@ -2179,6 +2415,12 @@ End
 		  rad_style_blank_prev.Value = Not rad_style_blank_next.Value
 		  //--
 		  
+		  chk_settings_export_snapshot.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@enable", False, False)
+		  edt_settings_snapshot_filename.Text = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
+		  chk_settings_export_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_preview", False, False)
+		  chk_settings_export_live_insertions.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
+		  chk_settings_export_metadata.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
+		  
 		  App.CenterInControlScreen Me
 		End Sub
 	#tag EndEvent
@@ -2331,6 +2573,17 @@ End
 		  '
 		  SmartML.SetValueB Settings, "style/@blank_uses_next", rad_style_blank_next.Value
 		  
+		  If  chk_settings_export_snapshot.Value and  edt_settings_snapshot_filename.Text="" Then
+		    MsgBox(App.T.Translate("presentation_settings/errors/snapshot_file"))
+		    Return
+		  Else
+		    SmartML.SetValueB(Settings, "snapshot/@enable", chk_settings_export_snapshot.Value)
+		    SmartML.SetValue(Settings, "snapshot/filename", edt_settings_snapshot_filename.Text)
+		    SmartML.SetValueB(Settings, "snapshot/@export_preview", chk_settings_export_preview.Value)
+		    SmartML.SetValueB(Settings, "snapshot/@export_live_insertions", chk_settings_export_live_insertions.Value)
+		    SmartML.SetValueB(Settings, "snapshot/@export_metadata", chk_settings_export_metadata.Value)
+		  End If
+		  
 		  '++JRC: Stop Audio if its playing
 		  if IsAudioPlaying = true then
 		    //++EMP, 17 Feb 2006
@@ -2338,6 +2591,7 @@ End
 		    //--
 		  end if
 		  '--
+		  
 		  //++
 		  // Bug 1462055: Save settings on dialog close
 		  //
@@ -2569,6 +2823,43 @@ End
 		  //IsAudioPlaying = false
 		  //--
 		  '--
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_settings_export_snapshot
+	#tag Event
+		Sub Action()
+		  edt_settings_snapshot_filename.Enabled = Me.Value
+		  btn_settings_snapshot_file.Enabled = Me.Value
+		  chk_settings_export_preview.Enabled = Me.Value
+		  chk_settings_export_live_insertions.Enabled = Me.Value
+		  chk_settings_export_metadata.Enabled = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_settings_snapshot_file
+	#tag Event
+		Sub Action()
+		  Dim dlg As New SaveAsDialog
+		  Dim f As FolderItem
+		  
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("presentation_settings/snapshot_file/@caption")
+		  dlg.PromptText = App.T.Translate("presentation_settings/snapshot_file")
+		  dlg.Filter=ImageFileTypes.JPGFiles
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_settings_snapshot_filename.Text = f.AbsolutePath()
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileopenpic, fileopenmask
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

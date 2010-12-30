@@ -207,6 +207,7 @@ End
 		  If Len(Mode) <> 1 Then Mode = "N"
 		  doTransition = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
 		  curslideTransition = SlideTransitionEnum.NoTransition
+		  m_Snapshots = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@enable", False, False)
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
 	#tag EndEvent
@@ -356,6 +357,7 @@ End
 		    newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
 		    '++JRC
 		    SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
+		    SmartML.SetValueB(newgroup, "@LiveInsertion", True)
 		    
 		    ' --- Move to where we need to be ---
 		    temp = SmartML.GetValue(newGroup, "@name")
@@ -450,6 +452,136 @@ End
 		  Border = CalcBorderSize(g)
 		  Call GraphicsX.DrawFontString(g, alert, Border*3, Border, _
 		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ExportSnapshot(image As Picture, slide As XmlNode, style As XmlNode)
+		  Dim snapshot_filename As String = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
+		  Dim export_live_insertions As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
+		  Dim export_metadata As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
+		  
+		  If SmartML.GetValue(slide.Parent.Parent, "@type") = "blank" Then
+		    'Blank slides will not be exported as snapshot
+		    Return
+		  End If
+		  
+		  If Not export_live_insertions Then
+		    'Check if the current slide is flagged that is has been added during a live set
+		    If SmartML.GetValueB(slide.Parent.Parent, "@LiveInsertion", False, False) Then
+		      Return
+		    End If
+		  End If
+		  
+		  Dim d As New Date
+		  Dim re As New RegEx
+		  Dim start As Integer=0
+		  re.SearchPattern = "(%[dHimnNsSY]{1})"
+		  re.Options.CaseSensitive = True
+		  
+		  Dim match As RegExMatch = re.Search(snapshot_filename)
+		  While match <> Nil
+		    Select Case Asc(Mid(match.SubExpressionString(1), 2, 1))
+		    Case Asc("d")
+		      'The day of the current month (01-31)
+		      Dim sd As String = Str(d.Day)
+		      If sd.Len() = 1 Then sd = "0" + sd
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%d", sd)
+		    Case Asc("H")
+		      'The hour from the current time of day in 24-hour format (00-23)
+		      Dim sH As String = Str(d.Hour)
+		      If sH.Len() = 1 Then sH = "0" + sH
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%H", sH)
+		    Case Asc("i")
+		      'The minutes from the current time (00-59)
+		      Dim si As String = Str(d.Minute)
+		      If si.Len() = 1 Then si = "0" + si
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%i", si)
+		    Case Asc("m")
+		      'The current month (01-12)
+		      Dim sm As String = Str(d.Month)
+		      If sm.Len() = 1 Then sm = "0" + sm
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%m", sm)
+		    Case Asc("n")
+		      'The number of the slide in the current set (with leading zeroes)
+		      Dim sn As String = Str(SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber"))
+		      If sn.Len() = 1 Then sn = "0" + sn
+		      If sn.Len() = 2 Then sn = "0" + sn
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%n", sn)
+		    Case Asc("N")
+		      'The name of the current slide
+		      Dim sN As String = SmartML.GetValue(slide.Parent.Parent, "title")
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%N", sN)
+		    Case Asc("s")
+		      'The seconds from the current time (00-59)
+		      Dim ss As String = Str(d.Second)
+		      If ss.Len() = 1 Then ss = "0" + ss
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%s", ss)
+		    Case Asc("S")
+		      'The name of the current set
+		      Dim sS As String = SmartML.GetValue(slide.Parent.Parent.Parent.Parent, "@name")
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%S", sS)
+		    Case Asc("Y")
+		      'The current year (4 digits)
+		      Dim sy As String = Str(d.Year)
+		      If sy.Len() = 1 Then sy = "0" + sy
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%Y", sy)
+		    Case Else
+		      start = match.SubExpressionStartB(1)+2
+		    End Select
+		    
+		    match = re.Search(snapshot_filename, start)
+		  Wend
+		  
+		  If snapshot_filename.EndsWith( ".jpg" ) Then
+		    snapshot_filename = Left(snapshot_filename, snapshot_filename.Len()-4)
+		  End If
+		  
+		  If IsNull(GetFolderItem(snapshot_filename + ".jpg")) Then
+		    Dim base_folder As FolderItem = Nil
+		    Dim folder_element As String
+		    Dim folder_elements() As String = Split(ReplaceAll(snapshot_filename, "\", "/"), "/")
+		    Call folder_elements.Pop() 'Remove the filename part
+		    
+		    For Each folder_element in folder_elements
+		      If IsNull(base_folder) Then
+		        base_folder = GetFolderItem(folder_element)
+		      Else
+		        base_folder = base_folder.Child(folder_element)
+		        If Not base_folder.Exists() Then
+		          base_folder.CreateAsFolder()
+		        End If
+		      End If
+		    Next
+		  End If
+		  
+		  Dim imageFileName As FolderItem = GetFolderItem(snapshot_filename + ".jpg")
+		  Dim metaFileName As FolderItem = GetFolderItem(snapshot_filename + ".xml")
+		  
+		  If Not IsNull(imageFileName) Then
+		    Try
+		      image.Save(ImageFileName, 151, 85)
+		      
+		      If export_metadata And Not IsNull(metaFileName) then
+		        Dim metaDoc As New XmlDocument
+		        Dim metaSlide As XmlElement = metaDoc.CreateElement("slide")
+		        metaDoc.DocumentElement.AppendChild(metaSlide)
+		        SmartML.CloneChildren(slide.Parent.Parent, metaSlide)
+		        SmartML.CloneAttributes(slide.Parent.Parent, metaSlide)
+		        
+		        metaDoc.DocumentElement.RemoveChild(SmartML.GetNode(metaSlide, "slides", True))
+		        metaDoc.DocumentElement.AppendChild metaDoc.ImportNode(slide, True)
+		        
+		        metaDoc.DocumentElement.RemoveChild(SmartML.GetNode(metaSlide, "style", True))
+		        metaDoc.DocumentElement.AppendChild metaDoc.ImportNode(style, True)
+		        
+		        Call SmartML.XDocToFile(metaDoc, metaFileName)
+		      End If
+		    Catch err
+		      'Snapshot will not be saved...
+		    End Try
+		  End If
+		  
 		End Sub
 	#tag EndMethod
 
@@ -1416,6 +1548,10 @@ End
 		    PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 10
 		    PresentHelperWindow.Top = Screen(presentScreen).AvailableTop + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
 		    
+		    If Not SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_preview", False, False) Then
+		      m_Snapshots = False
+		    End If
+		    
 		  ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens
 		    HelperActive = True
 		    Top = Screen(presentScreen).Top
@@ -1603,6 +1739,10 @@ End
 		  Else ' Probably normal mode
 		    CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
 		    'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
+		    
+		    If m_Snapshots Then
+		      ExportSnapshot PreviewPicture, slide, xStyle
+		    End If
 		  End If
 		  Profiler.EndProfilerEntry
 		  
@@ -1653,6 +1793,7 @@ End
 		  '++JRC
 		  NumberOfItems = NumberOfItems + 1
 		  SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
+		  SmartML.SetValueB(newgroup, "@LiveInsertion", True)
 		  
 		  ' --- Move to where we need to be ---
 		  temp = SmartML.GetValue(newGroup, "@name")
@@ -1974,6 +2115,10 @@ End
 
 	#tag Property, Flags = &h0
 		Mode As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected m_Snapshots As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

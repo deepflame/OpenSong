@@ -597,9 +597,13 @@ Protected Module SetML
 		            curr = App.T.Translate("songml/prechorus_abbreviation/@caption")
 		          End If
 		        ElseIf section = "C" Then
+		          currChorusNr = currChorusNr + 1 'GP
 		          If currPart = slideId Then
-		            currChorusNr = currChorusNr + 1 'GP
-		            If ChorusNr = currChorusNr Then 'GP
+		            If ChorusNr = Val(verse) And currChorusNr < ChorusNr Then
+		              'Fix verse display for presentation order C1 V1 C2 V2 C2 V3 C2
+		              currChorusNr = ChorusNr
+		            End If
+		            If ChorusNr = currChorusNr Then
 		              If main <> "" And curr = "" Then main = main + ", "
 		              curr = App.T.Translate("songml/chorus_abbreviation/@caption")
 		            End If

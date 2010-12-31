@@ -1,3 +1,5 @@
+* Fix verse display presentation for songs with multiple chorus variants like C1 V1 C2 V2 C2 V3 C2 (Vwout)
+
 * Add option in presentation settings to export snapshots of the slides that are presented as an image to a file (Vwout)
 
 * Decrease height of lbl_the_question in InputBox.Message to make push buttons visible again (JRC)

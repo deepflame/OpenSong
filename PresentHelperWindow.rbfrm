@@ -42,7 +42,7 @@ Begin Window PresentHelperWindow
       GridLinesVertical=   0
       HasHeading      =   True
       HeadingIndex    =   -1
-      Height          =   200
+      Height          =   195
       HelpTag         =   ""
       Hierarchical    =   False
       Index           =   -2147483648
@@ -590,6 +590,7 @@ Begin Window PresentHelperWindow
       Width           =   160
    End
    Begin StaticText lbl_preview
+      Active          =   ""
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -608,20 +609,25 @@ Begin Window PresentHelperWindow
       LockTop         =   False
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Current slide preview"
       TextAlign       =   0
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
-      TextUnit        =   0
-      Top             =   208
+      Top             =   204
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   332
+      Window          =   0
+      _mWindow        =   0
    End
    Begin StaticText lbl_preview_next
+      Active          =   ""
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -640,18 +646,22 @@ Begin Window PresentHelperWindow
       LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Next slide preview"
       TextAlign       =   0
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
-      TextUnit        =   0
-      Top             =   208
+      Top             =   204
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   160
+      Window          =   0
+      _mWindow        =   0
    End
 End
 #tag EndWindow

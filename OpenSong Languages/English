@@ -441,14 +441,17 @@
         <export_metadata caption="Export slide details in a similarly named xml file"/>
         <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">The following parameters can be used in the file name or path:
     - %d: The day of the current month (01-31)
-    - %H: The hour from the current time of day in 24-hour format (00-23)
+    - %h: The hour from the current time of day in 24-hour format (00-23)
     - %i: The minutes from the current time (00-59)
     - %m: The current month (01-12)
     - %n: The number of the slide in the current set (with leading zeroes)
     - %N: The name of the current slide
+    - %P: Presentation index for slides during presentation (with leading zeroes)
     - %s: The seconds from the current time (00-59)
     - %S: The name of the current set
-    - %Y: The current year (4 digits)</snapshot_parameters>
+    - %T: The title of the current slide
+    - %V: The verse indicator of the current slide (for songs, empty for other slides)
+    - %y: The current year (4 digits)</snapshot_parameters>
     </settings>
     <transitions caption="Transitions">
       <use_transitions caption="Enabled by default"/>

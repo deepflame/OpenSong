@@ -441,14 +441,17 @@
         <export_metadata caption="Exporteer informatie over de getoond dia in een gelijknamige xml file"/>
         <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">De volgende parameters kunnen worden gebruik in de bestands- of foldernaam van de momentopname:
     - %d: De dag van de huidige maand (01-31)
-    - %H: Het uur op dit moment in 24-uurs notatie (00-23)
+    - %h: Het uur op dit moment in 24-uurs notatie (00-23)
     - %i: De minuut op het moment van weergave van de dia (00-59)
     - %m: De huidige maand (01-12)
     - %n: Het nummer van de dia in het huidige project (aangevuld met nullen)
     - %N: De naam van de huidige dia
+    - %P: Volgordenummer van de dia tijdens presentatie (aangevuld met nullen)
     - %s: De seconde op het moment van weergave van de dia (00-59)
     - %S: De naam van het huidige project
-    - %Y: Het huidige jaar (4 decimalen)</snapshot_parameters>
+    - %T: De title van de huidige dia
+    - %V: Het vers van de huidige dia (alleen voor liederen, leeg voor overige dia's)
+    - %y: Het huidige jaar (4 decimalen)</snapshot_parameters>
     </settings>
     <transitions caption="Overgangen">
       <use_transitions caption="Standaard ingeschakeld"/>

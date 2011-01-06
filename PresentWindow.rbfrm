@@ -476,7 +476,7 @@ End
 		  Dim d As New Date
 		  Dim re As New RegEx
 		  Dim start As Integer=0
-		  re.SearchPattern = "(%[dHimnNsSY]{1})"
+		  re.SearchPattern = "(%[dhimnNPsSTVy]{1})"
 		  re.Options.CaseSensitive = True
 		  
 		  Dim match As RegExMatch = re.Search(snapshot_filename)
@@ -487,11 +487,11 @@ End
 		      Dim sd As String = Str(d.Day)
 		      If sd.Len() = 1 Then sd = "0" + sd
 		      snapshot_filename = ReplaceAllB(snapshot_filename, "%d", sd)
-		    Case Asc("H")
+		    Case Asc("h")
 		      'The hour from the current time of day in 24-hour format (00-23)
-		      Dim sH As String = Str(d.Hour)
-		      If sH.Len() = 1 Then sH = "0" + sH
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%H", sH)
+		      Dim sh As String = Str(d.Hour)
+		      If sh.Len() = 1 Then sh = "0" + sh
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%h", sh)
 		    Case Asc("i")
 		      'The minutes from the current time (00-59)
 		      Dim si As String = Str(d.Minute)
@@ -510,8 +510,14 @@ End
 		      snapshot_filename = ReplaceAllB(snapshot_filename, "%n", sn)
 		    Case Asc("N")
 		      'The name of the current slide
-		      Dim sN As String = SmartML.GetValue(slide.Parent.Parent, "title")
+		      Dim sN As String = SmartML.GetValue(slide.Parent.Parent, "@name")
 		      snapshot_filename = ReplaceAllB(snapshot_filename, "%N", sN)
+		    Case Asc("P")
+		      'The name of the current slide
+		      Dim sP As String = Str(CurrentSlide)
+		      If sP.Len() = 1 Then sP = "0" + sP
+		      If sP.Len() = 2 Then sP = "0" + sP
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%P", sP)
 		    Case Asc("s")
 		      'The seconds from the current time (00-59)
 		      Dim ss As String = Str(d.Second)
@@ -521,11 +527,19 @@ End
 		      'The name of the current set
 		      Dim sS As String = SmartML.GetValue(slide.Parent.Parent.Parent.Parent, "@name")
 		      snapshot_filename = ReplaceAllB(snapshot_filename, "%S", sS)
-		    Case Asc("Y")
+		    Case Asc("T")
+		      'The title of the current set
+		      Dim sT As String = SmartML.GetValue(slide.Parent.Parent, "title")
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%T", sT)
+		    Case Asc("V")
+		      'The title of the current set
+		      Dim sV As String = SmartML.GetValue(slide, "@id", False)
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%V", sV)
+		    Case Asc("y")
 		      'The current year (4 digits)
 		      Dim sy As String = Str(d.Year)
 		      If sy.Len() = 1 Then sy = "0" + sy
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%Y", sy)
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%y", sy)
 		    Case Else
 		      start = match.SubExpressionStartB(1)+2
 		    End Select

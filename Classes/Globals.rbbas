@@ -198,10 +198,6 @@ Protected Module Globals
 		UseSheetDialogs As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected WhitespaceChars() As string
-	#tag EndProperty
-
 
 	#tag Constant, Name = CTRL_V, Type = Integer, Dynamic = False, Default = \"22", Scope = Public
 	#tag EndConstant

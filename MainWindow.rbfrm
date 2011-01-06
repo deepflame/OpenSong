@@ -7614,7 +7614,7 @@ End
 		  Case "style"
 		    
 		  Case Else
-		    str = LTrim(edt_slide_slides.Text.FormatUnixEndOfLine)
+		    str = StringUtils.LTrim(edt_slide_slides.Text.FormatUnixEndOfLine, StringUtils.WhiteSpaces)
 		    bodies = OpenSongUtils.SplitRE(str, "^---$")
 		    ' Set the title and sub-title
 		    SmartML.SetValue xgroup, "@name", edt_slide_name.Text
@@ -7635,7 +7635,7 @@ End
 		    str = edt_slide_slides.Text
 		    For i = 0 To UBound(bodies)
 		      xslide = xslides.AppendChild(CurrentSet.CreateElement("slide"))
-		      SmartML.SetValue xslide, "body", Trim(bodies(i))
+		      SmartML.SetValue xslide, "body", StringUtils.Trim(bodies(i), StringUtils.WhiteSpaces)
 		    Next i
 		    
 		    lst_set_items.List(CurrentInSetItem) = edt_slide_name.Text + " (" + SmartML.GetValue(xgroup, "@type", True) + ")"
@@ -11759,10 +11759,9 @@ End
 		    s = ""
 		    xslides = SmartML.GetNode(xgroup, "slides", True)
 		    For i = 0 To xslides.ChildCount - 1
+		      s = s + StringUtils.Trim(SmartML.GetValue(xslides.Child(i), "body", False), StringUtils.WhiteSpaces)
 		      If i < xslides.ChildCount - 1 Then
-		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False)) + SmartML.Newline + "---" + SmartML.Newline
-		      Else
-		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False))
+		        s = s + SmartML.Newline + "---" + SmartML.Newline
 		      End If
 		    Next i
 		    edt_slide_slides.Text  = s

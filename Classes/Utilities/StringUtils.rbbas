@@ -1833,50 +1833,6 @@ Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function RemoveWhitespace(Input As string, chars() as string, which As integer) As string
-		  '++JRC
-		  'which = 0 Left
-		  'which = 1 Right
-		  'which = 2 Both
-		  dim s As string
-		  dim result As string
-		  dim i As integer
-		  
-		  i =0
-		  result = Input
-		  
-		  if which = 0 or which = 2 then
-		    s = Left(Input, 1)
-		    while i <= UBound(chars)
-		      if chars(i) = s then
-		        result = Mid(Input, 2)
-		        goto Right 'gimme a break, pun intended :)
-		      end if
-		      i = i + 1
-		    wend
-		  end if
-		  
-		  Right:
-		  i = 0
-		  
-		  if which = 1 or which = 2 then
-		    s = Right(Input, 1)
-		    while i <= UBound(chars)
-		      if chars(i) = s then
-		        result = Mid(Input, 1, Len(Input) - 1)
-		        goto endfunc 'sigh
-		      end if
-		      i = i + 1
-		    wend
-		  end if
-		  
-		  endfunc:
-		  return result
-		  '--
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
 		Protected Function Repeat(s as String, repeatCount as Integer) As String
 		  // Concatenate a string to itself 'repeatCount' times.
 		  // Example: Repeat("spam ", 5) = "spam spam spam spam spam ".
@@ -2667,6 +2623,24 @@ Module StringUtils
 		Private mThousandsSeparator As String
 	#tag EndProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  'String containing all whitespace characters used by Trim
+			  'except for the (horizontal) tab character \u0009.
+			  'see bug 3141443
+			  Static ws As String = &u000A + &u000B + &u000C + &u000D + &u000E + &u000D + &u0020 + &u0085 + &u00A0 + &u1680 + &u180E + &u2000 + &u2001 + &u2002 + &u2003 + &u2004 + &u2005 + &u2006 + &u2007 + &u2008 + &u200A + &u2028 + &u2029 + &u202F + &u205F + &u3000
+			  Return ws
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  'Not allowed!
+			End Set
+		#tag EndSetter
+		WhiteSpaces As String
+	#tag EndComputedProperty
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
@@ -2701,6 +2675,11 @@ Module StringUtils
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="whiteSpace"
+			Group="Behavior"
+			Type="String"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

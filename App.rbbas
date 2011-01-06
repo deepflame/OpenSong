@@ -347,11 +347,6 @@ Inherits Application
 		    checkVer.Run
 		  End If
 		  
-		  '
-		  '++JRC
-		  Globals.WhitespaceChars.Append " "
-		  Globals.WhitespaceChars.Append Chr(ENTER)
-		  
 		  '++JRC Load Song Activity Log so the user can view the log
 		  'reguardless of whether logging is enabled or not
 		  'If MainPreferences.GetValueB(App.kActivityLog, True) Then

@@ -639,11 +639,11 @@ Begin Window PresentHelperWindow
       InitialParent   =   ""
       Italic          =   ""
       Left            =   354
-      LockBottom      =   ""
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   True
+      LockTop         =   False
       Multiline       =   ""
       Scope           =   0
       Selectable      =   False

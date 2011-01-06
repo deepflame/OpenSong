@@ -1,3 +1,8 @@
+* Several fixes and improvements for tab processing: (Vwout)
+- tabs at the beginning of a slide now also work (bug #3141443)
+- styles with only 1 tabstop location now also work correct
+- improved behaviour of character-aligned tabstops
+
 * Fix verse display presentation for songs with multiple chorus variants like C1 V1 C2 V2 C2 V3 C2 (Vwout)
 
 * Add option in presentation settings to export snapshots of the slides that are presented as an image to a file (Vwout)

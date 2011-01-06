@@ -300,15 +300,14 @@ Protected Module GraphicsX
 		  lineAscent = FontFaceAscent(g, f) 'g.TextAscent
 		  
 		  hasTabs = False
-		  Try
-		    if tabs <> nil then
-		      If UBound(tabs) > 0 And InStr(str, Chr(9)) > 0 Then
+		  If Not IsNull(tabs) then
+		    If UBound(tabs) > -1 Then
+		      If InStr(str, Chr(9)) > 0 Or _
+		        ((tabs(0).Align = StyleHAlignEnum.Char) And (InStr(str, tabs(0).AlignChar) > 0)) Then
 		        hasTabs = True
 		      End If
-		    end if
-		  Catch err as NilObjectException
-		    'tabs is Nill as it is an optional parameter; that is ok
-		  End
+		    End If
+		  End If
 		  
 		  If width > 0 Then
 		    ' wrap
@@ -366,7 +365,13 @@ Protected Module GraphicsX
 		        
 		        linePart = NthField(thisLine, Chr(9), j)
 		        
-		        If j > 1 Then
+		        If j=1 Then
+		          tab = tabs(0)
+		          xx=x
+		        End If
+		        
+		        If j > 1 Or _
+		          (j=1 And tab.Align = StyleHAlignEnum.Char And InStr(linePart, tab.AlignChar) > 0) Then
 		          
 		          For k = lastTabIdx+1 to UBound(tabs)
 		            tab = tabs(k)
@@ -428,8 +433,6 @@ Protected Module GraphicsX
 		            End If
 		          Next k
 		          
-		        Else
-		          xx = x
 		        End If
 		        
 		        DrawFontSingleLine(g, linePart, xx, yy, f, borderSize, shadowFace, shadowSize)

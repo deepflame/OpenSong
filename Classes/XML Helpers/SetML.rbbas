@@ -326,7 +326,7 @@ Protected Module SetML
 		    Dim s As string
 		    If Style.BodyEnable Then
 		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
-		      SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		      SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		      
 		      ' Find the longest line
 		      MaxLineIndex = UBound(lines)
@@ -363,7 +363,7 @@ Protected Module SetML
 		    
 		    ' Round Pre-1: Pre-guess shrinkage based on perfect wrapping
 		    '++JRC:
-		    line = ReplaceAll(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), Chr(10), "")
+		    line = ReplaceAll(StringUtils.Trim(s, Globals.StringUtils.WhiteSpaces), Chr(10), "")
 		    '--
 		    
 		    If style.BodyScale Then
@@ -378,7 +378,7 @@ Protected Module SetML
 		    
 		    '++JRC:
 		    'SplitToArray(Trim(SmartML.GetValue(xslide, "body", True)).FormatUnixEndOfLine, lines, Chr(10))
-		    SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		    SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		    '--
 		    
 		    If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
@@ -1146,7 +1146,7 @@ Protected Module SetML
 		  While x >= st
 		    '++JRC:
 		    'arr.Append RTrim(Mid(str, st, x-st))
-		    arr.Append StringUtils.RemoveWhitespace(Mid(str, st, x-st), Globals.WhitespaceChars, 1)
+		    arr.Append StringUtils.RTrim(Mid(str, st, x-st), StringUtils.WhiteSpaces)
 		    '--
 		    
 		    st = x + Len(char)

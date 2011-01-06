@@ -1034,14 +1034,14 @@ Protected Module OpenSongUtils
 		  
 		  While match <> Nil
 		    If match.SubExpressionCount > 0 Then
-		      result.Append Trim(match.SubExpressionString(1))
+		      result.Append StringUtils.Trim(match.SubExpressionString(1), StringUtils.WhiteSpaces)
 		      Try
 		        If Len(match.SubExpressionString(2)) = 0 Then Exit
 		      Catch ex As NilObjectException
 		        Exit
 		      End Try
 		    Else
-		      result.Append Trim(match.SubExpressionString(0))
+		      result.Append StringUtils.Trim(match.SubExpressionString(0), StringUtils.WhiteSpaces)
 		      Exit
 		    End If
 		    're.SearchStartPosition = re.SearchStartPosition + 1 // Get past the trailing \n

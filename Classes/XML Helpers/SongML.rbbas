@@ -1974,8 +1974,7 @@ Module SongML
 		  For x = 1 To strlen
 		    If Mid(lyrics, x, 1) = Chr(10) Then
 		      '++JRC: Fixed, RTrim thinks "à" is a whitespace character?
-		      'line = RTrim(Mid(lyrics, st, x-st))
-		      line = StringUtils.RemoveWhitespace(Mid(lyrics, st, x-st), Globals.WhitespaceChars, 1)
+		      line = StringUtils.RTrim(Mid(lyrics, st, x-st), StringUtils.WhiteSpaces)
 		      '--
 		      If Left(line, 1) = "[" Then
 		        section = Mid(line, 2, Instr(2, line, "]") - 2)
@@ -1989,8 +1988,7 @@ Module SongML
 		          subsection = section + subsection
 		        End If
 		        '++JRC: Same Here
-		        'line = Trim(Mid(line, 2))
-		        line = StringUtils.RemoveWhitespace(Mid(line, 2), Globals.WhitespaceChars, 2)
+		        line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
 		        '--
 		        If Len(line) > 0 Then
 		          If dict.HasKey(subsection) Then
@@ -2438,7 +2436,7 @@ Module SongML
 		      sub_sections = Split(dict.Value(section), "||")
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section)))
+		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces)))
 		        If section = "default" Then
 		          SmartML.SetValue(slide, "@id", "")
 		        Else

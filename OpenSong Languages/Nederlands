@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.5.1">
+<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.6.3">
 
   <load_settings>
     <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
@@ -176,6 +176,7 @@
     <untitled caption="Geen titel"/>
     <errors>
       <revert caption="Fout bij herladen dienst &quot;%1&quot; uit bestand."/>
+      <insert caption="Het invoegen van gekopieërde dia's is niet gelukt:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; geëxporteerd naar
@@ -306,6 +307,7 @@
       <print_alphabetical_toc caption="Afdrukken _Alfabetisch TOC"/>
       <print_categorical_toc caption="Afdrukken _Per Categorie TOC"/>
       <song_act caption="Bekijk lied gebruik _logboek"/>
+      <scripture caption="Bijbelteksten _zoeken"/>
       <quit caption="Af_sluiten"/>
     </file>
     <edit caption="_Wijzigen">
@@ -417,6 +419,7 @@
     <layout>
       <heading_border_thickness caption="Dikte van de rand koptekst"/>
       <title_in_caps caption="Titel in Hoofdletters"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Eenheid">
       <inches caption="Inches"/>
@@ -425,11 +428,30 @@
   </print_settings>
 
   <presentation_settings title="Presentatie Instellingen">
-    <settings head1="Stijl" head2="Opties">
+    <settings head1="Stijl" head2="Opties" head3="Momentopname">
         <default_slides caption="Standaard dia stijl"/>
         <scripture_slides caption="Standaard bijbelteksten stijl"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+        <export_snapshot caption="Exporteer een momentopname van iedere gepresenteerde dia als afbeelding naar het volgende bestand:"/>
+        <snapshot_file caption="Bestandsnaam">Kies met de dialoog voor het openen van bestanden een bestandsnaam voor het opslaan van de momentopname.</snapshot_file>
+        <export_preview caption="Exporteer momentopnamen tijdens voorbeeldweergave van een presentatie"/>
+        <export_live_insertions caption="Exporteer momentopnamen van dia's die zijn toegevoegd tijdens een lopende presentatie"/>
+        <export_metadata caption="Exporteer informatie over de getoond dia in een gelijknamige xml file"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">De volgende parameters kunnen worden gebruik in de bestands- of foldernaam van de momentopname:
+    - %d: De dag van de huidige maand (01-31)
+    - %h: Het uur op dit moment in 24-uurs notatie (00-23)
+    - %i: De minuut op het moment van weergave van de dia (00-59)
+    - %m: De huidige maand (01-12)
+    - %n: Het nummer van de dia in het huidige project (aangevuld met nullen)
+    - %N: De naam van de huidige dia
+    - %P: Volgordenummer van de dia tijdens presentatie (aangevuld met nullen)
+    - %s: De seconde op het moment van weergave van de dia (00-59)
+    - %S: De naam van het huidige project
+    - %T: De title van de huidige dia
+    - %V: Het vers van de huidige dia (alleen voor liederen, leeg voor overige dia's)
+    - %y: Het huidige jaar (4 decimalen)</snapshot_parameters>
     </settings>
     <transitions caption="Overgangen">
       <use_transitions caption="Standaard ingeschakeld"/>
@@ -483,6 +505,7 @@
       <presentation caption="Presentatie scherm"/>
       <detected caption="%1 scherm(en) gevonden."/>
       <default_mode caption="Standaard scherm modus"/>
+      <force_4_3_preview caption="Forceer 4:3 voorbeeld"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Masker"/>
@@ -532,6 +555,8 @@ C: Refrein
 P: Voor-refrein
 B: Brug
 T: Label</keys>
+    <preview caption="Voorbeeldweergave huidige dia" />
+    <next caption="Voorbeeldweergave volgende dia" />
   </presentation_helper>
 
   <help_topics title="Help Onderwerpen">
@@ -779,9 +804,10 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
 
   <style_editor title="Wijzigen Stijlen">
     <fonts_and_alignment caption="Lettertypes en uitlijning">
-      <title caption="Titel"/>
-      <subtitle caption="Subtitel"/>
-      <body caption="Body"/>
+      <title caption="Titel tonen"/>
+      <subtitle caption="Subtitel tonen"/>
+      <body caption="Body tonen"/>
+      <body_autosize caption="Letter grootte automatisch aanpassen bij veel tekst"/>
       <align caption="Uitlijning"/>
       <margin caption="Marges"/>
       <tabs caption="Tabulators"/>
@@ -918,7 +944,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <format>Controleer de samenstelling van de zoekopdracht en probeer het nogmaals.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
       <book>Foute referentie: kan het boek niet vinden.</book>
-      <ambiguous>Bad reference: Meerdere boeken komen overeen '%1': %2</ambiguous>
+      <ambiguous>Bad reference: Meerdere boeken komen overeen %1: %2</ambiguous>
       <version>Foute referentie: '%1' versie wordt niet gevonden.</version>
       <chapter>Foute referentie: kan hoofdstuk '%1' niet vinden.</chapter>
       <verse>Foute referentie: kan vers '%1' niet vinden.</verse>
@@ -1292,6 +1318,7 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <lead_sheets>Creëren uitgeprinte Sheets</lead_sheets>
     <process_themes>Verwerken thema's</process_themes>
     <process_songs>Verwerken liederen</process_songs>
+    <song_search>Liederen doorzoeken</song_search>
     <export>Exporteren lied(eren)</export>
     <pass1>Sorteren, 1e ronde</pass1>
     <pass2>Sorteren, 2e ronde</pass2>

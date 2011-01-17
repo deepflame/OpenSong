@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language author="Jakob Schmidt, Rüdiger Greeb, Bernd und Dominic Tubach" name="Deutsch" version="1.5.1">
+<language author="Jakob Schmidt, Rüdiger Greeb, Bernd und Dominic Tubach, Samuel Mehrbrodt" name="Deutsch" version="1.6.0">
 
   <load_settings>
     <checking_folders>Erstelle/Prüfe Ordner</checking_folders>
@@ -159,7 +159,7 @@
       <copy caption="Kopieren">Dupliziert den ausgewählten Eintrag.</copy>
       <paste caption="link(shared/insert/@caption)">Fügt den kopierten Eintrag hinter dem ausgewählten ein.</paste>      
       <store caption="Speichern">Speichert Änderungen am ausgewählten Eintrag. Um das Set zu speichern, wählen Sie "Aktuelles Set|Speichern".</store>
-      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Präsentiert das aktuelle Set auf dem Monitor, beginnend beimm ausgewählten Eintrag. Sie können die Präsentation auf dem aktuellen oder auf dem zweiten Monitor anzeigen lassen, oder sich eine Vorschau anzeigen lassen, welche 2 Monitor imitiert.
         <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
         <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
         <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
@@ -307,6 +307,8 @@
       <print caption="_Drucken"/>
       <print_alphabetical_toc caption="Drucke _Alphabetische Liederliste"/>
       <print_categorical_toc caption="Drucke Liederliste Nach _Kategorien"/>
+      <song_act caption="_Liederaktivität anzeigen"/>
+      <scripture caption="B_ibel durchsuchen"/>
       <quit caption="_Beenden"/>
     </file>
     <edit caption="_Bearbeiten">
@@ -332,7 +334,8 @@
       <install_module caption="_Installiere Modul"/>
     </settings>
     <help caption="_Hilfe">
-      <help_topics caption="Hilfe_themen"/>
+      <help_topics caption="Ha_ndbuch"/>
+      <user_manual caption="_Online-Hilfe"/>
       <translating caption="_OpenSong übersetzen"/>
       <about caption="_Über OpenSong"/>
     </help>
@@ -417,6 +420,7 @@
     <layout>
       <heading_border_thickness caption="Konturdicke der Überschrift"/>
       <title_in_caps caption="Titel in Großbuchstaben"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Einheiten">
       <inches caption="Zoll"/>
@@ -457,10 +461,11 @@
         <hourglass caption="Sanduhr"/>
         <ibeam caption="Textcursor"/>
       </mouse_cursor>
-      <blanks caption="Leere Folien zwischen"/>
-      <blanks_between caption="Präsentationseinträgen einfügen"/>
-      <blank_style caption="Leere Folien nutzen Layout"/>
-      <blank_prev caption="der letzten Folie"/>
+      <blanks caption="Leere Folien einfügen"/>
+      <blanks_between caption="zwischen den Einträgen"/>
+      <time caption="Zeit" helptag="Zeit für Überblendungen (kann auf langsamen Systemen länger dauern)"/>
+      <blank_style caption="Leere Folien nutzen Layout von"/>
+      <blank_prev caption="der vorherigen Folie"/>
       <blank_next caption="der nächsten Folie"/>
       <initial_mode caption="Startmodus"/>
     </style>
@@ -744,9 +749,10 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
 
   <style_editor title="Layout">
     <fonts_and_alignment caption="Schrift und Ausrichtung">
-      <title caption="Titel"/>
-      <subtitle caption="Untertitel"/>
-      <body caption="Text"/>
+      <title caption="Zeige Titel"/>
+      <subtitle caption="Zeige Untertitel"/>
+      <body caption="Zeige Liedtext"/>
+      <body_autosize caption="Textgröße automatisch anpassen"/>
       <align caption="Ausrichtung"/>
       <margin caption="Abstände"/>
       <tabs caption="Tabulatoren"/>
@@ -876,11 +882,14 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <shownumbers caption="Zeige Versnummern"/>
     <preview caption="Vorschau"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
-      <format>Bitte prüfen Sie die Syntax der Abfrage und versuchen Sie's erneut.</format>
+      <format>Bitte überprüfen Sie ihre Eingabe</format>
       <empty>Ungültige Bibelstelle: Sie haben keine Bibelstelle eingegben.</empty>
       <book>Ungültige Bibelstelle: Das Buch wurde nicht gefunden.</book>
-      <ambiguous>Ungültige Bibelstelle: Mehrere Bücher passen auf '%1': %2</ambiguous>
+      <ambiguous>Ungültige Bibelstelle: Mehrere Bücher passen auf %1: %2</ambiguous>
       <version>Ungültige Bibelstelle: Die Übersetzung '%1' wurde nicht gefunden.</version>
       <chapter>Ungültige Bibelstelle: Das Kapitel '%1' wurde nicht gefunden.</chapter>
       <verse>Ungültige Bibelstelle: Der Vers '%1' wurde nicht gefunden.</verse>
@@ -1081,22 +1090,22 @@ Klicken Sie auf dieses Feld, um ein eigenes Layout zu definieren.</body>
     <generic_save caption="Änderungen speichern?"/>
     <generic_save_explanation caption="Wenn Sie nicht speichern, werden Ihre Änderungen verloren gehen."/>
     <set_changed caption="Das aktuelle Set wurde geändert, wollen Sie die Änderungen speichern?"/>
-    <select_docs_folder caption="OpenSong Documenten-Ordner">Wo sollen die OpenSong-Dateien (Lieder und Präsentationen) gespeichert werden?</select_docs_folder>
-    <activity_log caption="Möchten Sie, dass die Lieder dieser Präsentation zu dem Tätigkeits-Log hinzugefügt werden (Gilt auch für während der Präsentation hinzugefügte Lieder)?"/>
+    <select_docs_folder caption="OpenSong Dokumente-Ordner">Wo sollen die OpenSong-Dateien (Lieder und Präsentationen) gespeichert werden?</select_docs_folder>
+    <activity_log caption="Möchten Sie, dass die Lieder dieser Präsentation zu dem Aktivitäts-Log hinzugefügt werden (Gilt auch für während der Präsentation hinzugefügte Lieder)?"/>
   </questions>
 
   <about>
     <additional>Mitentwickler:</additional>
     <copyright>Copyright</copyright>
     <gpl>Diese Software wird unter den Bedingungen der GPL veröffentlicht.</gpl>
-    <web>Besuchen Sie http://www.opensong.org/ für weitere Informationen.</web>
-    <translating>Um OpenSong zu übersetzen, kopieren Sie die Datei 'English' im Ordner 'OpenSong Languages' und geben der Kopie den Namen der neuen Sprache. Übersetzen Sie alles, außer den Tag- und Attributnamen. Anschließend senden Sie die Datei an translator@opensong.org und es wird in die offizielle Version eingefügt.</translating>
+    <web>Für weitere Informationen besuchen Sie http://www.opensong.org.</web>
+    <translating>Um OpenSong zu übersetzen, kopieren Sie die Datei 'English' im Ordner 'OpenSong Languages' und geben der Kopie den Namen der neuen Sprache. Übersetzen Sie alles, außer den Tag- und Attributnamen. Anschließend senden Sie die Datei an translator@opensong.org oder fügen Sie es zu 'Patches' in der Kategorie 'Tracker' auf der Sourceforge-Projektseite hinzu und es wird in die offizielle Version aufgenommen.</translating>
     <created_with_opensong>Erstellt mit OpenSong</created_with_opensong>
     <sources>OpenSong enthält Quellcode von
 StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
-iDeclare (http://www.declaresub.com/iDeclare
+iDeclare (http://www.declaresub.com/iDeclare)
 The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
   </about>
 
@@ -1248,3 +1257,4 @@ Das OpenSong-Entwicklerteam bedauert die Umstände, hat aber keinen Einfluss auf
   </progress_status>
 
 </language>
+

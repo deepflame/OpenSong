@@ -10,6 +10,22 @@ Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function Chop(s As String, stringToCut As String) As String
+		  // Chops 'stringToCut' off of s, if stringToCut is found at the end.
+		  // Useful for removing file extensions, trailing punctuation, etc.
+		  
+		  Dim cutLen As Integer = stringToCut.Len
+		  if Right(s, cutLen) = stringToCut then
+		    return s.Left( s.Len - cutLen )
+		  else
+		    return s
+		  end if
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function ChopB(s As String, bytesToCut As Integer) As String
 		  // Return s with the rightmost 'bytesToCut' bytes removed.
 		  
@@ -24,7 +40,6 @@ Module StringUtils
 		  // Sean Lickfold, 2004
 		  
 		  Dim i As Integer
-		  Dim temp As String
 		  i = Instr(str, "  ")
 		  While i > 0
 		    str = Mid(str, 1, i-1) + Mid(str, i+1)
@@ -190,8 +205,6 @@ Module StringUtils
 		  Dim val1, val2 As Integer
 		  Dim t1, t2 As String
 		  Dim fn1, fn2 As String
-		  Dim CompareCode As Integer = 0
-		  Dim i As Integer
 		  
 		  //
 		  // Convert encoding to UTF-8
@@ -594,6 +607,33 @@ Module StringUtils
 		  
 		  return StrComp( RightB(s, withWhat.Len), withWhat, 0 ) = 0
 		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ExtractString(s As String, match As RegExMatch, num As Integer) As String
+		  //++
+		  // This is a workaround for i18n issues with RegEx.
+		  // Rather than using the returned string from RegEx,
+		  // extract the string from the original string
+		  // This isn't a verified problem, but since there are other
+		  // i18n issues this is a proactive workaround.
+		  //--
+		  
+		  Dim start As Integer
+		  Dim length As Integer
+		  Dim result As String
+		  #if DebugBuild
+		    Dim reString As String
+		    reString = match.SubExpressionString(num)
+		  #endif
+		  
+		  start = match.SubExpressionStartB(num) + 1 //RegEx is 0-based, Mid is 1-based
+		  length = match.SubExpressionString(num).Len
+		  
+		  result = Mid(s, start, length)
+		  
+		  Return result
 		End Function
 	#tag EndMethod
 
@@ -1763,46 +1803,32 @@ Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function RemoveWhitespace(Input As string, chars() as string, which As integer) As string
-		  '++JRC
-		  'which = 0 Left
-		  'which = 1 Right
-		  'which = 2 Both
-		  dim s As string
-		  dim result As string
-		  dim i As integer
+		Protected Function RemoveNotIn(s As String, charSet As String = " ") As String
+		  // Delete all characters which not are members of charSet. Example:
+		  // Delete("wooow maaan", "aeiou") = "oooaaa".
 		  
-		  i =0
-		  result = Input
+		  Dim sLenB As Integer = s.LenB
+		  if sLenB < 2 then return s
 		  
-		  if which = 0 or which = 2 then
-		    s = Left(Input, 1)
-		    while i <= UBound(chars)
-		      if chars(i) = s then
-		        result = Mid(Input, 2)
-		        goto Right 'gimme a break, pun intended :)
-		      end if
-		      i = i + 1
-		    wend
-		  end if
+		  Dim m As MemoryBlock
+		  m = NewMemoryBlock( sLenB )
 		  
-		  Right:
-		  i = 0
+		  charSet = ConvertEncoding( charSet, s.Encoding )
 		  
-		  if which = 1 or which = 2 then
-		    s = Right(Input, 1)
-		    while i <= UBound(chars)
-		      if chars(i) = s then
-		        result = Mid(Input, 1, Len(Input) - 1)
-		        goto endfunc 'sigh
-		      end if
-		      i = i + 1
-		    wend
-		  end if
+		  Dim sLen As Integer = s.Len
 		  
-		  endfunc:
-		  return result
-		  '--
+		  Dim char As String
+		  Dim spos, mpos As Integer
+		  for spos = 1 to sLen
+		    char = Mid( s, spos, 1 )
+		    if InStrB( charSet, char ) > 0 then
+		      m.StringValue( mpos, char.LenB ) = char
+		      mpos = mpos + char.LenB
+		    end if
+		  next
+		  
+		  return DefineEncoding( m.StringValue(0, mpos), s.Encoding )
+		  
 		End Function
 	#tag EndMethod
 
@@ -2236,7 +2262,7 @@ Module StringUtils
 		  
 		  dim rex as new RegEx
 		  dim match as RegExMatch
-		  dim argtype, padding, alignment, precstr, replacement, frmstr, s as string
+		  dim argtype, padding, alignment, precstr, replacement, frmstr as string
 		  dim p, width, precision, index, start, length as integer
 		  dim vf as double
 		  
@@ -2479,73 +2505,6 @@ Module StringUtils
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function Trim(source As String, charsToTrim As String) As String
-		  // This is an extended version of RB's Trim function that lets you specify
-		  // a set of characters to trim.
-		  
-		  Dim srcLen As Integer = source.Len
-		  Dim leftPos, i As Integer
-		  for i = 1 to srcLen
-		    if InStr( charsToTrim, Mid(source, i, 1) ) = 0 then exit
-		  next
-		  leftPos = i
-		  if leftPos > srcLen then return ""
-		  
-		  Dim rightPos As Integer
-		  for i = srcLen DownTo 1
-		    if InStr( charsToTrim, Mid(source, i, 1) ) = 0 then exit
-		  next
-		  rightPos = i
-		  
-		  return Mid( source, leftPos, rightPos - leftPos + 1 )
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function Chop(s As String, stringToCut As String) As String
-		  // Chops 'stringToCut' off of s, if stringToCut is found at the end.
-		  // Useful for removing file extensions, trailing punctuation, etc.
-		  
-		  Dim cutLen As Integer = stringToCut.Len
-		  if Right(s, cutLen) = stringToCut then
-		    return s.Left( s.Len - cutLen )
-		  else
-		    return s
-		  end if
-		  
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function ExtractString(s As String, match As RegExMatch, num As Integer) As String
-		  //++
-		  // This is a workaround for i18n issues with RegEx.
-		  // Rather than using the returned string from RegEx,
-		  // extract the string from the original string
-		  // This isn't a verified problem, but since there are other
-		  // i18n issues this is a proactive workaround.
-		  //--
-		  
-		  Dim start As Integer
-		  Dim length As Integer
-		  Dim result As String
-		  #if DebugBuild
-		    Dim reString As String
-		    reString = match.SubExpressionString(num)
-		  #endif
-		  
-		  start = match.SubExpressionStartB(num) + 1 //RegEx is 0-based, Mid is 1-based
-		  length = match.SubExpressionString(num).Len
-		  
-		  result = Mid(s, start, length)
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Function Translate(extends s As String, from_chars As String, to_chars As String) As String
 		  // Replaces all characters in from_chars to the corresponding character in to_chars
@@ -2580,31 +2539,25 @@ Module StringUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function RemoveNotIn(s As String, charSet As String = " ") As String
-		  // Delete all characters which not are members of charSet. Example:
-		  // Delete("wooow maaan", "aeiou") = "oooaaa".
+		Protected Function Trim(source As String, charsToTrim As String) As String
+		  // This is an extended version of RB's Trim function that lets you specify
+		  // a set of characters to trim.
 		  
-		  Dim sLenB As Integer = s.LenB
-		  if sLenB < 2 then return s
-		  
-		  Dim m As MemoryBlock
-		  m = NewMemoryBlock( sLenB )
-		  
-		  charSet = ConvertEncoding( charSet, s.Encoding )
-		  
-		  Dim sLen As Integer = s.Len
-		  
-		  Dim char As String
-		  Dim spos, mpos As Integer
-		  for spos = 1 to sLen
-		    char = Mid( s, spos, 1 )
-		    if InStrB( charSet, char ) > 0 then
-		      m.StringValue( mpos, char.LenB ) = char
-		      mpos = mpos + char.LenB
-		    end if
+		  Dim srcLen As Integer = source.Len
+		  Dim leftPos, i As Integer
+		  for i = 1 to srcLen
+		    if InStr( charsToTrim, Mid(source, i, 1) ) = 0 then exit
 		  next
+		  leftPos = i
+		  if leftPos > srcLen then return ""
 		  
-		  return DefineEncoding( m.StringValue(0, mpos), s.Encoding )
+		  Dim rightPos As Integer
+		  for i = srcLen DownTo 1
+		    if InStr( charsToTrim, Mid(source, i, 1) ) = 0 then exit
+		  next
+		  rightPos = i
+		  
+		  return Mid( source, leftPos, rightPos - leftPos + 1 )
 		  
 		End Function
 	#tag EndMethod
@@ -2670,25 +2623,31 @@ Module StringUtils
 		Private mThousandsSeparator As String
 	#tag EndProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  'String containing all whitespace characters used by Trim
+			  'except for the (horizontal) tab character \u0009.
+			  'see bug 3141443
+			  Static ws As String = &u000A + &u000B + &u000C + &u000D + &u000E + &u000D + &u0020 + &u0085 + &u00A0 + &u1680 + &u180E + &u2000 + &u2001 + &u2002 + &u2003 + &u2004 + &u2005 + &u2006 + &u2007 + &u2008 + &u200A + &u2028 + &u2029 + &u202F + &u205F + &u3000
+			  Return ws
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  'Not allowed!
+			End Set
+		#tag EndSetter
+		WhiteSpaces As String
+	#tag EndComputedProperty
+
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -2699,11 +2658,28 @@ Module StringUtils
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="whiteSpace"
+			Group="Behavior"
+			Type="String"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

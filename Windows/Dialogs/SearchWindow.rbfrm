@@ -672,7 +672,7 @@ End
 		  
 		  'used to remove puncuation
 		  reg= New RegEx
-		  reg.SearchPattern= "[^a-zA-z0-9\s]+"
+		  reg.SearchPattern= "[[:punct:]]"
 		  reg.ReplacementPattern=""
 		  reg.Options.ReplaceAllMatches=true
 		  

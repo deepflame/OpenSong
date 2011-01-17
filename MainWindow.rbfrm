@@ -25,15 +25,19 @@ Begin Window MainWindow Implements ScriptureReceiver
    Visible         =   False
    Width           =   750
    Begin ContextualMenu mnu_clipboard
+      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   759
       LockedInPosition=   False
       Scope           =   0
+      TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   26
       UseMacCMM       =   ""
+      Visible         =   True
       Width           =   32
    End
    Begin SButton btn_mode_songs_mode
@@ -53,9 +57,9 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       StickyBevel     =   True
       TabIndex        =   1
@@ -83,9 +87,9 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   215
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       StickyBevel     =   True
       TabIndex        =   2
@@ -117,6 +121,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   ""
       TextAlign       =   0
       TextColor       =   0
@@ -146,6 +151,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   35
       Value           =   0
       Visible         =   True
@@ -220,12 +226,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   130
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -250,9 +257,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -280,9 +287,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -310,9 +317,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -340,9 +347,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -370,9 +377,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -400,9 +407,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -429,9 +436,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   ""
                LockedInPosition=   False
-               LockLeft        =   ""
+               LockLeft        =   True
                LockRight       =   ""
-               LockTop         =   ""
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -459,9 +466,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   7
@@ -489,9 +496,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   141
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   8
@@ -516,12 +523,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -546,9 +554,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -576,9 +584,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -606,9 +614,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -633,12 +641,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -663,9 +672,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -693,9 +702,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -728,6 +737,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Folders:"
             TextAlign       =   0
             TextColor       =   0
@@ -760,6 +770,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Songs:"
             TextAlign       =   0
             TextColor       =   0
@@ -788,7 +799,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   203
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
@@ -822,6 +833,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Containing Folder:"
             TextAlign       =   0
             TextColor       =   0
@@ -850,7 +862,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   222
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
@@ -998,12 +1010,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1027,9 +1040,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                ListIndex       =   0
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
@@ -1059,9 +1072,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   210
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1086,12 +1099,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   127
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1116,9 +1130,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1146,9 +1160,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1176,9 +1190,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1206,9 +1220,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1236,9 +1250,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -1266,9 +1280,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -1296,9 +1310,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -1323,12 +1337,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1353,9 +1368,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1383,9 +1398,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1413,9 +1428,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1443,9 +1458,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1473,9 +1488,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -1503,9 +1518,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -1533,9 +1548,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -1562,9 +1577,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   138
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   7
@@ -1590,13 +1605,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   11
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Items In Set:"
             TextAlign       =   0
             TextColor       =   0
@@ -1621,12 +1637,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1651,9 +1668,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1681,9 +1698,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1711,9 +1728,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1741,9 +1758,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1771,9 +1788,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   21
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -1855,6 +1872,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   34
       Value           =   0
       Visible         =   True
@@ -1899,13 +1917,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   4
+            TabStop         =   True
             Text            =   "Style Change"
             TextAlign       =   0
             TextColor       =   0
@@ -1930,9 +1949,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   275
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   4
@@ -1959,9 +1978,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   275
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   4
@@ -1990,9 +2009,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   340
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   True
             TabIndex        =   3
@@ -2046,11 +2065,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "AKA:"
             TextAlign       =   0
             TextColor       =   0
@@ -2076,13 +2096,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Themes:"
             TextAlign       =   0
             TextColor       =   0
@@ -2108,13 +2129,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Capo:"
             TextAlign       =   0
             TextColor       =   0
@@ -2142,11 +2164,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Key Line:"
             TextAlign       =   0
             TextColor       =   0
@@ -2186,7 +2209,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             RequiresSelection=   ""
@@ -2227,7 +2250,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   5
@@ -2252,13 +2275,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Key:"
             TextAlign       =   0
             TextColor       =   0
@@ -2284,13 +2308,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Time Signature:"
             TextAlign       =   0
             TextColor       =   0
@@ -2318,9 +2343,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   2
@@ -2349,11 +2374,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   9
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   0
@@ -2379,13 +2405,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Tempo:"
             TextAlign       =   0
             TextColor       =   0
@@ -2413,11 +2440,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   11
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   0
@@ -2446,7 +2474,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   12
@@ -2476,9 +2504,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   525
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   13
@@ -2512,7 +2540,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   14
@@ -2539,9 +2567,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   15
             TabPanelIndex   =   2
@@ -2571,7 +2599,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   True
             TabIndex        =   16
@@ -2603,9 +2631,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2650,7 +2678,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2688,9 +2716,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   19
             TabPanelIndex   =   2
@@ -2726,7 +2754,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2764,11 +2792,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   21
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   0
@@ -2796,11 +2825,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   22
             TabPanelIndex   =   2
+            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -2835,7 +2865,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -2880,7 +2910,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -2925,7 +2955,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -2990,11 +3020,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -3027,6 +3058,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "CCLI #:"
             TextAlign       =   0
             TextColor       =   0
@@ -3052,13 +3084,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   505
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Copyright:"
             TextAlign       =   0
             TextColor       =   0
@@ -3084,13 +3117,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Author:"
             TextAlign       =   0
             TextColor       =   0
@@ -3116,13 +3150,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   625
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Presentation:"
             TextAlign       =   0
             TextColor       =   0
@@ -3150,11 +3185,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
             TextColor       =   0
@@ -3182,11 +3218,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Hymn #:"
             TextAlign       =   0
             TextColor       =   0
@@ -3214,11 +3251,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -3244,13 +3282,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   1
+            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -3277,10 +3316,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   9
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -3306,7 +3346,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockedInPosition=   False
                LockLeft        =   False
                LockRight       =   True
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   1
@@ -3333,13 +3373,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   634
                LockBottom      =   ""
                LockedInPosition=   False
-               LockLeft        =   ""
+               LockLeft        =   True
                LockRight       =   ""
-               LockTop         =   ""
+               LockTop         =   True
                Multiline       =   ""
                Scope           =   0
                TabIndex        =   1
                TabPanelIndex   =   1
+               TabStop         =   True
                Text            =   "Using:"
                TextAlign       =   0
                TextColor       =   &h000000
@@ -3369,7 +3410,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockedInPosition=   False
                LockLeft        =   ""
                LockRight       =   True
-               LockTop         =   ""
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   2
                TabPanelIndex   =   1
@@ -3496,7 +3537,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -3537,7 +3578,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   13
@@ -3567,7 +3608,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   14
@@ -3597,7 +3638,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   15
@@ -3627,7 +3668,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   16
@@ -3657,7 +3698,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   17
@@ -3687,7 +3728,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   18
@@ -3717,7 +3758,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   19
@@ -3747,7 +3788,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   20
@@ -3824,7 +3865,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Mask            =   ">CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
@@ -3981,11 +4022,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   0
@@ -4013,11 +4055,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   0
@@ -4045,11 +4088,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -4078,7 +4122,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   3
@@ -4116,7 +4160,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   ""
             ReadOnly        =   False
@@ -4155,7 +4199,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   5
@@ -4187,7 +4231,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   6
@@ -4220,7 +4264,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   7
             TabPanelIndex   =   3
@@ -4254,7 +4298,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
@@ -4292,13 +4336,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
             TabIndex        =   9
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "File Folder"
             TextAlign       =   0
             TextColor       =   0
@@ -4324,13 +4369,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -4356,13 +4402,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   271
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
             TabIndex        =   11
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
             TextColor       =   0
@@ -4388,13 +4435,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   453
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
             TabIndex        =   12
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
             TextColor       =   0
@@ -4427,7 +4475,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
@@ -4465,13 +4513,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   590
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   14
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -4497,13 +4546,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   15
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   0
@@ -4529,13 +4579,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   16
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -4563,11 +4614,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   17
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Slides:"
             TextAlign       =   0
             TextColor       =   0
@@ -4595,11 +4647,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   18
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   0
@@ -4632,6 +4685,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   19
             TabPanelIndex   =   3
+            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -4664,9 +4718,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4709,9 +4763,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4754,9 +4808,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4844,7 +4898,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
@@ -4887,7 +4941,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   25
@@ -4960,7 +5014,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   False
             TabIndex        =   27
@@ -5014,11 +5068,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   0
@@ -5046,11 +5101,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   0
@@ -5078,11 +5134,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   0
@@ -5111,7 +5168,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   3
@@ -5140,13 +5197,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Image Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -5176,7 +5234,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   5
@@ -5203,13 +5261,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   590
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -5370,6 +5429,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   11
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -5395,13 +5455,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   12
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -5429,11 +5490,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
             TabIndex        =   13
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -5462,7 +5524,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   14
@@ -5494,7 +5556,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   15
@@ -5532,7 +5594,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   ""
             ReadOnly        =   False
@@ -5568,13 +5630,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   17
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -5600,13 +5663,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
             TabIndex        =   18
             TabPanelIndex   =   5
+            TabStop         =   True
             Text            =   "Images:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -5633,9 +5697,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             State           =   0
             TabIndex        =   19
@@ -5671,9 +5735,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5712,7 +5776,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   False
             TabIndex        =   21
@@ -5744,9 +5808,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5789,9 +5853,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5927,7 +5991,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   26
@@ -5957,7 +6021,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   27
@@ -5987,7 +6051,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   28
@@ -6017,7 +6081,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
             TabIndex        =   29
@@ -6040,7 +6104,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   249
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
       Scope           =   0
@@ -6063,7 +6127,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   True
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
@@ -6073,6 +6137,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   750
    End
    Begin Timer tmr_lookup
+      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -6081,8 +6146,11 @@ Begin Window MainWindow Implements ScriptureReceiver
       Mode            =   2
       Period          =   1500
       Scope           =   0
+      TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   -18
+      Visible         =   True
       Width           =   32
    End
 End
@@ -6414,7 +6482,7 @@ End
 		      ' Copy
 		      btn_set_copy.Enabled = True
 		      Dim c As New Clipboard
-		      btn_set_paste.Enabled = (c.TextAvailable) and (Left(c.text,12) = "<slide_group")
+		      btn_set_paste.Enabled = (c.RawDataAvailable(CopyTypes.SetSlides.MacType)) and (Left(c.RawData(CopyTypes.SetSlides.MacType),12) = "<slide_group")
 		      c.close
 		    Else
 		      '++JRC
@@ -6597,9 +6665,7 @@ End
 
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
-		  Dim i As Integer
-		  
-		  dim Mode as Integer
+		  Dim Mode as Integer
 		  
 		  If Globals.Status_Presentation Then
 		    App.DebugWriter.Write "MainWindow.KeyDown: Got a '" + Key + "' in Presentation Mode"
@@ -6676,13 +6742,10 @@ End
 		  
 		  Profiler.BeginProfilerEntry "MainWindow::Open"
 		  App.DebugWriter.Write "MainWindow.Open: Enter"
-		  Dim output As TextOutputStream
-		  Dim MainFolder As FolderItem
 		  Dim s As String
 		  Dim StartMode As Integer
 		  Dim i As Integer
 		  Dim bibleFiles() As String
-		  Dim f As FolderItem
 		  
 		  '++JRC
 		  Globals.OldFolderSel = -1
@@ -7139,6 +7202,14 @@ End
 	#tag EndMenuHandler
 
 	#tag MenuHandler
+		Function mnu_file_scripture() As Boolean Handles mnu_file_scripture.Action
+			ActionSetAddScripture
+			Return True
+			
+		End Function
+	#tag EndMenuHandler
+
+	#tag MenuHandler
 		Function mnu_file_single_screen() As Boolean Handles mnu_file_single_screen.Action
 			If pge_controls.Value = 0 Then
 			ActionSongPresent PresentWindow.MODE_SINGLE_SCREEN
@@ -7385,8 +7456,7 @@ End
 		  'lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		  
 		  Dim c As New Clipboard
-		  
-		  c.SetText oldGroup.ToString
+		  c.AddRawData oldGroup.ToString, CopyTypes.SetSlides.MacType
 		  c.close
 		  '--
 		  '++JRC Refresh
@@ -7397,45 +7467,51 @@ End
 	#tag Method, Flags = &h0
 		Sub ActionInSetPaste()
 		  '++gerritp
+		  Dim text As String
 		  Dim xgroups, oldGroup, newGroup As XmlNode
 		  dim xml as XmlDocument
 		  'Ask if user wants to save
 		  If NOT ActionInSetAskSave Then Return 'User Canceled
 		  
 		  Dim c As New Clipboard
-		  if not(c.TextAvailable) then return
-		  if Left(c.text,12) <> "<slide_group" then return
-		  xml = SmartML.XDocFromString(c.text)
-		  c.close
-		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  oldGroup = xml.FirstChild
-		  
-		  newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
-		  
-		  '++JRC Show slidetype on pasted set item
-		  Dim SlideType As String
-		  slideType = App.T.Translate("sets_mode/items/" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption")
-		  If slideType = "" Then // unknown slide type
-		    App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption" + "'", 1
-		    slideType = "*ERROR*"
+		  If c.RawDataAvailable(CopyTypes.SetSlides.MacType) Then
+		    text = c.RawData(CopyTypes.SetSlides.MacType)
+		    If Left(text,12) = "<slide_group" Then
+		      xml = SmartML.XDocFromString(text)
+		      If IsNull(xml) Then
+		        InputBox.Message App.T.Translate("sets_mode/errors/insert/@caption", SmartML.ErrorString)
+		      Else
+		        xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		        oldGroup = xml.FirstChild
+		        
+		        newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
+		        
+		        '++JRC Show slidetype on pasted set item
+		        Dim SlideType As String
+		        slideType = App.T.Translate("sets_mode/items/" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption")
+		        If slideType = "" Then // unknown slide type
+		          App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + SmartML.GetValue(oldgroup , "@type", True) + "/@caption" + "'", 1
+		          slideType = "*ERROR*"
+		        End If
+		        lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(oldgroup , "@name", True) + " " + slideType
+		        
+		        
+		        SmartML.CloneChildren oldGroup, newGroup
+		        SmartML.CloneAttributes oldGroup, newGroup
+		        
+		        Status_SetChanged = True
+		        
+		        lst_set_items.ListIndex = lst_set_items.ListIndex + 1
+		      End If
+		    End If
 		  End If
-		  lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(oldgroup , "@name", True) + " " + slideType
+		  c.Close()
 		  
-		  
-		  
-		  SmartML.CloneChildren oldGroup, newGroup
-		  SmartML.CloneAttributes oldGroup, newGroup
-		  
-		  Status_SetChanged = True
-		  
-		  lst_set_items.ListIndex = lst_set_items.ListIndex + 1
-		  '--
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub ActionInSetRemove(autoDetectDeleteTarget As Boolean)
-		  Dim xslides As XmlNodeList
 		  Dim slide_groups As XmlNode
 		  Dim listindex As Integer
 		  
@@ -7473,8 +7549,8 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionInSetSave()
-		  Dim i, j As Integer
-		  Dim line, str As String
+		  Dim i As Integer
+		  Dim str As String
 		  Dim xgroup, xslides, xslide As XmlNode
 		  Dim bodies() As String
 		  Dim img As StyleImage
@@ -7538,7 +7614,7 @@ End
 		  Case "style"
 		    
 		  Case Else
-		    str = LTrim(edt_slide_slides.Text.FormatUnixEndOfLine)
+		    str = StringUtils.LTrim(edt_slide_slides.Text.FormatUnixEndOfLine, StringUtils.WhiteSpaces)
 		    bodies = OpenSongUtils.SplitRE(str, "^---$")
 		    ' Set the title and sub-title
 		    SmartML.SetValue xgroup, "@name", edt_slide_name.Text
@@ -7559,13 +7635,41 @@ End
 		    str = edt_slide_slides.Text
 		    For i = 0 To UBound(bodies)
 		      xslide = xslides.AppendChild(CurrentSet.CreateElement("slide"))
-		      SmartML.SetValue xslide, "body", Trim(bodies(i))
+		      SmartML.SetValue xslide, "body", StringUtils.Trim(bodies(i), StringUtils.WhiteSpaces)
 		    Next i
 		    
 		    lst_set_items.List(CurrentInSetItem) = edt_slide_name.Text + " (" + SmartML.GetValue(xgroup, "@type", True) + ")"
 		  End Select
 		  Status_InSetChanged = False
 		  EnableMenuItems
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ActionSetAddScripture()
+		  Dim w As ScripturePickerWindow
+		  
+		  Dim c As ScripturePickerController
+		  
+		  If Not ActionInSetAskSave Then Return
+		  
+		  c = New ScripturePickerController
+		  c.registerScriptureReceiver Self
+		  
+		  'Only enable 'Add' button if in Sets mode AND a set is currently open
+		  If Status_CurrentMode = 1 And Status_SetOpen Then
+		    w = New ScripturePickerWindow(c, True)
+		  Else
+		    w = New ScripturePickerWindow(c, False)
+		  End If
+		  
+		  w.ShowModal
+		  c.unregisterScriptureReceiver Self
+		  w = Nil
+		  c = Nil
+		  
+		  If Status_SetOpen Then lst_set_items.SetFocus
+		  
 		End Sub
 	#tag EndMethod
 
@@ -7718,7 +7822,7 @@ End
 		  //Append the FolderItem used in each SlideGroup to AbsFiles
 		  //Should be a call to CurrentSet.GetChildFolderItems
 		  Dim setDoc As New XmlDocument
-		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim slide_group, slide_groups As XmlNode
 		  
 		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  
@@ -7819,7 +7923,6 @@ End
 	#tag Method, Flags = &h0
 		Sub ActionSetNew()
 		  Dim t as String
-		  Dim out As TextOutputStream
 		  Dim f as FolderItem
 		  Dim i As Integer
 		  
@@ -7875,13 +7978,10 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = 0)
-		  Dim i As Integer
-		  Dim lastType As String
 		  'this is our working copy of the set's XML Doc
 		  'not to be confused with any of our other copies
 		  'hope the user has losts of RAM eh!
 		  Dim setDoc As New XmlDocument
-		  Dim slide_groups As XmlNode
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then Return 'User Canceled
@@ -7929,7 +8029,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetPrint()
-		  Dim i As Integer
 		  Dim foundSong As Boolean = False
 		  Dim rpt As LeadSheetReport
 		  Dim song As FolderItem
@@ -8062,8 +8161,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetSave()
-		  Dim f, song As FolderItem
-		  Dim output As TextOutputStream
+		  Dim f As FolderItem
 		  Dim i As Integer
 		  Dim xSlide As XmlNode
 		  
@@ -8165,7 +8263,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSongCopy()
-		  Dim f As FolderItem
 		  Dim folder, folders(0) As String
 		  Dim oldfolder As String
 		  Dim listindex As Integer
@@ -8234,7 +8331,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSongMove()
-		  Dim f As FolderItem
 		  Dim folder, folders(0) As String
 		  Dim oldfolder As String
 		  Dim listindex As Integer
@@ -8306,10 +8402,8 @@ End
 		  Dim t as String
 		  Dim f as FolderItem
 		  Dim i As Integer
-		  dim j As Integer
 		  dim Loc As Integer 'location of file in list
 		  Dim xnode As XmlNode
-		  dim s(0) As string
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
@@ -8588,9 +8682,6 @@ End
 		Sub ActionSongRename()
 		  Dim t as String
 		  Dim old as String
-		  Dim f as FolderItem
-		  Dim xdoc As XmlDocument
-		  Dim i As Integer
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
@@ -8687,8 +8778,6 @@ End
 		  'prior to release of V1.0 (EMP, February 2007)
 		  
 		  Dim f As FolderItem
-		  Dim theme As String
-		  Dim i As Integer
 		  Dim FullName As String
 		  
 		  If Not noWrite Then
@@ -8822,11 +8911,11 @@ End
 		  
 		  Dim t as String
 		  Dim s As XmlDocument
-		  Dim st, i, j As Integer
+		  Dim i As Integer
 		  Dim f As FolderItem
 		  
-		  Dim found As RectControl
-		  Dim edtFound As EditField
+		  Dim found As RectControl = Nil
+		  Dim edtFound As TextEdit
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -8836,139 +8925,150 @@ End
 		  t = Lowercase(find.FindString)
 		  If Len(t) = 0 Then Return
 		  
-		  i = lst_songs_songs.ListIndex
-		  If i < 0 Then
-		    i = 0 ' if there is no song selected, select the first
-		    If FindStartSong < 0 Then FindStartSong = 0 //By implication, if i<0, this is too
-		    App.DebugWriter.Write("MainWindow.FindNext: Open " + str(i) + " " +  lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
-		    f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
-		    If f = Nil Or Not f.Exists Then
+		  If lst_songs_songs.ListCount() > 0 Then
+		    i = lst_songs_songs.ListIndex
+		    If i < 0 Then
+		      i = 0 ' if there is no song selected, select the first
+		      If FindStartSong < 0 Then FindStartSong = 0 //By implication, if i<0, this is too
+		      App.DebugWriter.Write("MainWindow.FindNext: Open " + str(i) + " " +  lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
+		      f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
+		      If f = Nil Or Not f.Exists Then
+		        App.MouseCursor = Nil
+		        InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+		        Return
+		      End If
+		      s = SmartML.XDocFromFile(f)
+		    Else
+		      s = CurrentSong
+		    End If
+		    
+		    //++
+		    // Bug 1089442: Catch s = Nil.  Unlikely to happen, but possible if i < 0 and the first document isn't valid
+		    //
+		    // For the moment, just error and return.  Could be avoided by splitting out the code that opens the song
+		    // files and determines when done (i.e., XmlDocument = GetNextSong( ByRef i, FindStartSong ))
+		    //--
+		    If s = Nil Then
 		      App.MouseCursor = Nil
 		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
 		      Return
 		    End If
-		    s = SmartML.XDocFromFile(f)
-		  Else
-		    s = CurrentSong
-		  End If
-		  
-		  //++
-		  // Bug 1089442: Catch s = Nil.  Unlikely to happen, but possible if i < 0 and the first document isn't valid
-		  //
-		  // For the moment, just error and return.  Could be avoided by splitting out the code that opens the song
-		  // files and determines when done (i.e., XmlDocument = GetNextSong( ByRef i, FindStartSong ))
-		  //--
-		  If s = Nil Then
-		    App.MouseCursor = Nil
-		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
-		    Return
-		  End If
-		  
-		  While found = Nil And i < lst_songs_songs.ListCount
 		    
-		    If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 1 Or (FindFocus = 1 And (edt_song_title.SelStart+edt_song_title.SelLength = 0 Or InStr(edt_song_title.SelStart+edt_song_title.SelLength+1, Lowercase(edt_song_title.Text), t) > 0))) Then
-		      found = edt_song_title
-		    ElseIf find.FindAuthor And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "author")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 2 Or (FindFocus = 2 And (edt_song_author.SelStart+edt_song_author.SelLength = 0 Or InStr(edt_song_author.SelStart+edt_song_author.SelLength+1, Lowercase(edt_song_author.Text), t) > 0))) Then
-		      found = edt_song_author
-		    ElseIf find.FindCopyright And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "copyright")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 3 Or (FindFocus = 3 And (edt_song_copyright.SelStart+edt_song_copyright.SelLength = 0 Or InStr(edt_song_copyright.SelStart+edt_song_copyright.SelLength+1, Lowercase(edt_song_copyright.Text), t) > 0))) Then
-		      found = edt_song_copyright
-		    ElseIf find.FindCCLI And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "ccli")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 4 Or (FindFocus = 4 And (edt_song_ccli.SelStart+edt_song_ccli.SelLength = 0 Or InStr(edt_song_ccli.SelStart+edt_song_ccli.SelLength+1, Lowercase(edt_song_ccli.Text), t) > 0))) Then
-		      found = edt_song_ccli
-		    ElseIf find.FindPresentation And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "presentation")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 5 Or (FindFocus = 5 And (edt_song_presentation.SelStart+edt_song_presentation.SelLength = 0 Or InStr(edt_song_presentation.SelStart+edt_song_presentation.SelLength+1, Lowercase(edt_song_presentation.Text), t) > 0))) Then
-		      found = edt_song_presentation
-		    ElseIf find.FindLyrics And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 6 Or (FindFocus = 6 And (edf_song_lyrics.SelStart+edf_song_lyrics.SelLength = 0 Or InStr(edf_song_lyrics.SelStart+edf_song_lyrics.SelLength+1, Lowercase(edf_song_lyrics.Text), t) > 0))) Then
-		      found = edf_song_lyrics
-		    ElseIf find.FindThemes And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "theme")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 7) Then
-		      found = lst_song_themes
-		    ElseIf find.FindCapo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "capo")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 8) Then
-		      found = pop_song_capo
-		    ElseIf find.FindTimeSig And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "time_sig")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 9) Then
-		      found = pop_song_time_sig
-		    ElseIf find.FindTempo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "tempo")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 10) Then
-		      found = pop_song_tempo
-		    ElseIf find.FindKey And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 11 Or (FindFocus = 11 And (edt_song_key.SelStart+edt_song_key.SelLength = 0 Or InStr(edt_song_key.SelStart+edt_song_key.SelLength+1, Lowercase(edt_song_key.Text), t) > 0))) Then
-		      found = edt_song_key
-		    ElseIf find.FindAKA And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "aka")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 12 Or (FindFocus = 12 And (edt_song_aka.SelStart+edt_song_aka.SelLength = 0 Or InStr(edt_song_aka.SelStart+edt_song_aka.SelLength+1, Lowercase(edt_song_aka.Text), t) > 0))) Then
-		      found = edt_song_aka
-		    ElseIf find.FindKeyLine And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key_line")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 13 Or (FindFocus = 13 And (edt_song_key_line.SelStart+edt_song_key_line.SelLength = 0 Or InStr(edt_song_key_line.SelStart+edt_song_key_line.SelLength+1, Lowercase(edt_song_key_line.Text), t) > 0))) Then
-		      found = edt_song_key_line
-		    ElseIf find.FindUser1 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user1")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 14 Or (FindFocus = 14 And (edt_song_user1.SelStart+edt_song_user1.SelLength = 0 Or InStr(edt_song_user1.SelStart+edt_song_user1.SelLength+1, Lowercase(edt_song_user1.Text), t) > 0))) Then
-		      found = edt_song_user1
-		    ElseIf find.FindUser2 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user2")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 15 Or (FindFocus = 15 And (edt_song_user2.SelStart+edt_song_user2.SelLength = 0 Or InStr(edt_song_user2.SelStart+edt_song_user2.SelLength+1, Lowercase(edt_song_user2.Text), t) > 0))) Then
-		      found = edt_song_user2
-		    ElseIf find.FindUser3 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 16 Or (FindFocus = 16 And (edt_song_user3.SelStart+edt_song_user3.SelLength = 0 Or InStr(edt_song_user3.SelStart+edt_song_user3.SelLength+1, Lowercase(edt_song_user3.Text), t) > 0))) Then
-		      found = edt_song_user3
-		      '++JRC
-		    ElseIf find.FindHymnNumber And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 17 Or (FindFocus = 17 And (edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength = 0 Or InStr(edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength+1, Lowercase(edt_song_hymn_number.Text), t) > 0))) Then
-		      found = edt_song_hymn_number
-		      '--
-		    End If
+		    ProgressWindow.SetProgress 0
+		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/song_search") + "..."
+		    ProgressWindow.Show()
 		    
-		    If found <> Nil Then
-		      If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
-		      found.SetFocus
-		      If found IsA EditField Then
-		        edtFound = EditField(found)
-		        If edtFound.SelStart+edtFound.SelLength = 0 Then
-		          edtFound.SelStart = InStr(Lowercase(edtFound.Text), t) - 1
-		        Else
-		          edtFound.SelStart = InStr(edtFound.SelStart+edtFound.SelLength+1, Lowercase(edtFound.Text), t) - 1
-		        End If
-		        edtFound.SelLength = find.FindString.Len
+		    While found = Nil And i < lst_songs_songs.ListCount
+		      ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
+		      ProgressWindow.SetStatus lst_songs_songs.List(i)
+		      
+		      If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 1 Or (FindFocus = 1 And (edt_song_title.SelStart+edt_song_title.SelLength = 0 Or InStr(edt_song_title.SelStart+edt_song_title.SelLength+1, Lowercase(edt_song_title.Text), t) > 0))) Then
+		        found = edt_song_title
+		      ElseIf find.FindAuthor And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "author")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 2 Or (FindFocus = 2 And (edt_song_author.SelStart+edt_song_author.SelLength = 0 Or InStr(edt_song_author.SelStart+edt_song_author.SelLength+1, Lowercase(edt_song_author.Text), t) > 0))) Then
+		        found = edt_song_author
+		      ElseIf find.FindCopyright And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "copyright")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 3 Or (FindFocus = 3 And (edt_song_copyright.SelStart+edt_song_copyright.SelLength = 0 Or InStr(edt_song_copyright.SelStart+edt_song_copyright.SelLength+1, Lowercase(edt_song_copyright.Text), t) > 0))) Then
+		        found = edt_song_copyright
+		      ElseIf find.FindCCLI And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "ccli")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 4 Or (FindFocus = 4 And (edt_song_ccli.SelStart+edt_song_ccli.SelLength = 0 Or InStr(edt_song_ccli.SelStart+edt_song_ccli.SelLength+1, Lowercase(edt_song_ccli.Text), t) > 0))) Then
+		        found = edt_song_ccli
+		      ElseIf find.FindPresentation And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "presentation")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 5 Or (FindFocus = 5 And (edt_song_presentation.SelStart+edt_song_presentation.SelLength = 0 Or InStr(edt_song_presentation.SelStart+edt_song_presentation.SelLength+1, Lowercase(edt_song_presentation.Text), t) > 0))) Then
+		        found = edt_song_presentation
+		      ElseIf find.FindLyrics And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "lyrics")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 6 Or (FindFocus = 6 And (edf_song_lyrics.SelStart+edf_song_lyrics.SelLength = 0 Or InStr(edf_song_lyrics.SelStart+edf_song_lyrics.SelLength+1, Lowercase(edf_song_lyrics.Text), t) > 0))) Then
+		        found = edf_song_lyrics
+		      ElseIf find.FindThemes And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "theme")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 7) Then
+		        found = lst_song_themes
+		      ElseIf find.FindCapo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "capo")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 8) Then
+		        found = pop_song_capo
+		      ElseIf find.FindTimeSig And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "time_sig")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 9) Then
+		        found = pop_song_time_sig
+		      ElseIf find.FindTempo And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "tempo")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 10) Then
+		        found = pop_song_tempo
+		      ElseIf find.FindKey And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 11 Or (FindFocus = 11 And (edt_song_key.SelStart+edt_song_key.SelLength = 0 Or InStr(edt_song_key.SelStart+edt_song_key.SelLength+1, Lowercase(edt_song_key.Text), t) > 0))) Then
+		        found = edt_song_key
+		      ElseIf find.FindAKA And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "aka")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 12 Or (FindFocus = 12 And (edt_song_aka.SelStart+edt_song_aka.SelLength = 0 Or InStr(edt_song_aka.SelStart+edt_song_aka.SelLength+1, Lowercase(edt_song_aka.Text), t) > 0))) Then
+		        found = edt_song_aka
+		      ElseIf find.FindKeyLine And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "key_line")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 13 Or (FindFocus = 13 And (edt_song_key_line.SelStart+edt_song_key_line.SelLength = 0 Or InStr(edt_song_key_line.SelStart+edt_song_key_line.SelLength+1, Lowercase(edt_song_key_line.Text), t) > 0))) Then
+		        found = edt_song_key_line
+		      ElseIf find.FindUser1 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user1")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 14 Or (FindFocus = 14 And (edt_song_user1.SelStart+edt_song_user1.SelLength = 0 Or InStr(edt_song_user1.SelStart+edt_song_user1.SelLength+1, Lowercase(edt_song_user1.Text), t) > 0))) Then
+		        found = edt_song_user1
+		      ElseIf find.FindUser2 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user2")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 15 Or (FindFocus = 15 And (edt_song_user2.SelStart+edt_song_user2.SelLength = 0 Or InStr(edt_song_user2.SelStart+edt_song_user2.SelLength+1, Lowercase(edt_song_user2.Text), t) > 0))) Then
+		        found = edt_song_user2
+		      ElseIf find.FindUser3 And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "user3")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 16 Or (FindFocus = 16 And (edt_song_user3.SelStart+edt_song_user3.SelLength = 0 Or InStr(edt_song_user3.SelStart+edt_song_user3.SelLength+1, Lowercase(edt_song_user3.Text), t) > 0))) Then
+		        found = edt_song_user3
+		        '++JRC
+		      ElseIf find.FindHymnNumber And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "hymn_number")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 17 Or (FindFocus = 17 And (edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength = 0 Or InStr(edt_song_hymn_number.SelStart+edt_song_hymn_number.SelLength+1, Lowercase(edt_song_hymn_number.Text), t) > 0))) Then
+		        found = edt_song_hymn_number
+		        '--
 		      End If
 		      
-		      //++
-		      // 3 December 2006, EMP
-		      // Change logic that verifies the control is visible to a more generic form
-		      // that doesn't rely on knowledge of the panel layout
-		      // (Note: the change from TabPanelIndex to PanelIndex may actually be with RB2005,
-		      // but I had no way to verify this.  Hopefully no one will be using the RB2005 compiler.)
-		      //
-		      #if RBVersion < 2006
-		        If pge_contents.Value <> Control(found).TabPanelIndex - 1 And Control(found).TabPanelIndex > 0 Then
-		          pge_contents.Value = Control(found).TabPanelIndex - 1
+		      If found <> Nil Then
+		        If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
+		        found.SetFocus
+		        If found IsA TextEdit Then
+		          edtFound = TextEdit(found)
+		          If edtFound.SelStart+edtFound.SelLength = 0 Then
+		            edtFound.SelStart = InStr(Lowercase(edtFound.Text), t) - 1
+		          Else
+		            edtFound.SelStart = InStr(edtFound.SelStart+edtFound.SelLength+1, Lowercase(edtFound.Text), t) - 1
+		          End If
+		          edtFound.SelLength = find.FindString.Len
 		        End If
-		      #else
-		        If pge_contents.Value <> Control(found).PanelIndex And Control(found).PanelIndex > -1 Then
-		          pge_contents.Value = Control(found).PanelIndex
-		        End If
-		      #endif
-		      //--
-		    Else
-		      Do
-		        i = i + 1
-		        If i >= lst_songs_songs.ListCount Then
-		          i = 0 // Circle around to the beginning
-		        End If
+		        
+		        //++
+		        // 3 December 2006, EMP
+		        // Change logic that verifies the control is visible to a more generic form
+		        // that doesn't rely on knowledge of the panel layout
+		        // (Note: the change from TabPanelIndex to PanelIndex may actually be with RB2005,
+		        // but I had no way to verify this.  Hopefully no one will be using the RB2005 compiler.)
 		        //
-		        //++ Check for finished
-		        //
-		        If i = FindStartSong Then Exit
+		        #if RBVersion < 2006
+		          If pge_contents.Value <> Control(found).TabPanelIndex - 1 And Control(found).TabPanelIndex > 0 Then
+		            pge_contents.Value = Control(found).TabPanelIndex - 1
+		          End If
+		        #else
+		          If pge_contents.Value <> Control(found).PanelIndex And Control(found).PanelIndex > -1 Then
+		            pge_contents.Value = Control(found).PanelIndex
+		          End If
+		        #endif
 		        //--
-		        If i < lst_songs_songs.ListCount Then
-		          f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
-		          If f = Nil Or Not f.Exists Then
-		            App.MouseCursor = Nil
-		            InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
-		            Return
+		      Else
+		        Do
+		          i = i + 1
+		          If i >= lst_songs_songs.ListCount Then
+		            i = 0 // Circle around to the beginning
 		          End If
-		          s = SmartML.XDocFromFile(f)
-		          If s = Nil Then
-		            App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.list(i), 1)
-		            App.MouseCursor = Nil
-		            InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
-		            App.MouseCursor = System.Cursors.Wait
+		          //
+		          //++ Check for finished
+		          //
+		          If i = FindStartSong Then Exit
+		          //--
+		          If i < lst_songs_songs.ListCount Then
+		            f = Songs.GetFile(lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.List(i))
+		            If f = Nil Or Not f.Exists Then
+		              App.MouseCursor = Nil
+		              InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+		              ProgressWindow.Close()
+		              Return
+		            End If
+		            s = SmartML.XDocFromFile(f)
+		            If s = Nil Then
+		              App.DebugWriter.Write("MainWindow.FindNext: Error converting file to XML String: " + lst_songs_songs.CellTag(i, 0).StringValue + lst_songs_songs.list(i), 1)
+		              App.MouseCursor = Nil
+		              InputBox.Message App.T.Translate("errors/bad_format", lst_songs_songs.List(i))
+		              App.MouseCursor = System.Cursors.Wait
+		            End If
 		          End If
-		        End If
-		      Loop Until s <> Nil
-		    End If
-		    //++
-		    // See if we left the loop because we are at the end.  If so, leave the While loop
-		    //--
-		    If i = FindStartSong Then
-		      Exit
-		    End If
-		  Wend
+		        Loop Until s <> Nil
+		      End If
+		      //++
+		      // See if we left the loop because we are at the end.  If so, leave the While loop
+		      //--
+		      If i = FindStartSong Then
+		        Exit
+		      End If
+		    Wend
+		    
+		    ProgressWindow.Close()
+		  End If
 		  
 		  If found = Nil Then
 		    App.MouseCursor = Nil
@@ -9004,11 +9104,11 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub ImportSongs(setDoc As XmlDocument, AddToLog As Boolean)
-		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim slide_group, slide_groups As XmlNode
 		  Dim songDoc As XmlDocument
 		  Dim Presentation As String
 		  '++JRC
-		  Dim CurStyle As XmlNode
+		  Dim ActiveCustomStyle As XmlNode = Nil
 		  Dim ItemNumber As Integer
 		  Dim i As Integer
 		  '--
@@ -9037,7 +9137,7 @@ End
 		          
 		          ActLog(i).Title = SmartML.GetValue(SongDoc.DocumentElement, "title", True)
 		          ActLog(i).Author = SmartML.GetValue(SongDoc.DocumentElement, "author", True)
-		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli", True)  //The song's CCLI number
 		          ActLog(i).SongFileName = songPath + SmartML.GetValue(slide_group, "@name", False)
 		          ActLog(i).DateAndTime = d
 		          ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(edf_song_lyrics.Text)
@@ -9071,9 +9171,16 @@ End
 		          Call SmartML.InsertChildNode(slide_group, SlideSongStyle, slide_group.ChildCount())
 		          SongML.ToSetML slide_group, SlideSongStyle
 		        Else
-		          '++JRC: Pass CurStyle
+		          '++JRC: Pass ActiveCustomStyle
 		          ' But check for an override first!
-		          If SongStyle = Nil Then SongStyle = CurStyle
+		          '++Vwout: The better place to do this is SetML
+		          If ActiveCustomStyle <> Nil Then
+		            If SongStyle <> Nil Then
+		              SmartML.RemoveChild(slide_group, SongStyle)
+		            End If
+		            Call SmartML.InsertChildNode(slide_group, ActiveCustomStyle, slide_group.ChildCount())
+		            SongStyle = ActiveCustomStyle
+		          End If
 		          SongML.ToSetML slide_group, SongStyle
 		        End If
 		        
@@ -9095,16 +9202,15 @@ End
 		      '++JRC: Save Current Style
 		    Elseif SmartML.GetValue(slide_group, "@type", True) = "style"  Then
 		      if SmartML.GetValue(slide_group, "@action", True) = "new" then
-		        CurStyle = slide_group
-		        slide_group  = slide_group.NextSibling
+		        ActiveCustomStyle = SmartML.GetNode(slide_group, "style", False)
 		      else
 		        'reverting to previous style
-		        slide_group  = slide_group.NextSibling
+		        ActiveCustomStyle = Nil
 		      end if
-		      '--
+		      slide_group  = slide_group.NextSibling
 		    Else
 		      '++JRC Assign an index for this set item
-		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber + 1)
+		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
 		      
 		      slide_group  = slide_group.NextSibling
 		      
@@ -9399,10 +9505,6 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Function SetLoadSet(f As FolderItem) As Boolean
-		  
-		  Dim song As FolderItem
-		  Dim input As TextInputStream
-		  Dim line As String
 		  Dim xnode As XmlNode
 		  Dim slideType As String
 		  
@@ -9429,8 +9531,6 @@ End
 		  //EMP 10/9/04
 		  dim nameAtt as xmlattribute
 		  
-		  dim strName as String
-		  
 		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
 		  
 		  if nameatt = Nil then
@@ -9440,7 +9540,6 @@ End
 		  CurrentSetName = pop_sets_sets.text
 		  //--
 		  Dim slide_groups, xchild As XmlNode
-		  Dim i As Integer
 		  
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If slide_groups = Nil Then Return True
@@ -9507,6 +9606,9 @@ End
 		    mnu_mode_songs.Checked = False
 		    mnu_mode_sets.Checked = True
 		  End If
+		  '++JRC
+		  Status_CurrentMode = i
+		  '--
 		  EnableMenuItems
 		End Sub
 	#tag EndMethod
@@ -9802,6 +9904,10 @@ End
 		Protected LastSongPane As Integer
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private m_Reordering As Boolean = False
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected PopupClicked As Boolean
 	#tag EndProperty
@@ -9831,6 +9937,10 @@ End
 
 	#tag Property, Flags = &h1
 		Protected Status_Closing As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_CurrentMode As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -10163,7 +10273,7 @@ End
 		  f = dlg.ShowModal() 'show dialog
 		  If f <> Nil Then
 		    App.MouseCursor = System.Cursors.Wait
-		    output = f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html").CreateTextFile
+		    output = TextOutputStream.Create(f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html"))
 		    song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
 		    If output <> Nil And song <> Nil Then
 		      output.Write SongML.ToHTML(song.DocumentElement)
@@ -10315,7 +10425,7 @@ End
 		  If f <> Nil Then
 		    App.DoEvents
 		    g = f.Child("index.html")
-		    goutput = g.CreateTextFile
+		    goutput = TextOutputStream.Create(g)
 		    If goutput <> Nil Then
 		      goutput.WriteLine "<html><head>"
 		      goutput.WriteLine "<meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />"
@@ -10325,7 +10435,7 @@ End
 		    App.MouseCursor = System.Cursors.Wait
 		    ProgressWindow.Show
 		    For i = 0 To lst_songs_songs.ListCount - 1
-		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
+		      output = TextOutputStream.Create(f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html"))
 		      song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(i,0) + lst_songs_songs.List(i)))
 		      If output <> Nil And song <> Nil Then
 		        output.Write SongML.ToHTML(song.DocumentElement)
@@ -10539,9 +10649,6 @@ End
 		Sub Change()
 		  Dim f As FolderItem
 		  Dim xnode As XmlNode
-		  Dim temp As String
-		  Dim path_to_songs As String
-		  Dim path_to_song As String
 		  Dim fullpath As String
 		  
 		  //++EMP 18 Feb 2006
@@ -10649,7 +10756,6 @@ End
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
 		  Dim i, l As Integer
-		  Dim temp As TextEncoding
 		  Dim NewKey As String
 		  Dim SearchedEntry As String
 		  //++
@@ -10726,9 +10832,7 @@ End
 		    Return
 		  End If
 		  
-		  Dim f, song As FolderItem
-		  'Dim input As TextInputStream
-		  Dim line As String
+		  Dim f As FolderItem
 		  Dim xnode As XmlNode
 		  Dim slideType As String
 		  
@@ -10748,8 +10852,6 @@ End
 		  //EMP 10/9/04
 		  dim nameAtt as xmlattribute
 		  
-		  dim strName as String
-		  
 		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
 		  
 		  if nameatt = Nil then
@@ -10759,7 +10861,6 @@ End
 		  CurrentSetName = me.text
 		  //--
 		  Dim slide_groups, xchild As XmlNode
-		  Dim i As Integer
 		  
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If slide_groups = Nil Then Return
@@ -11354,22 +11455,8 @@ End
 		Sub Action()
 		  App.DebugWriter.Write "MainWindow.btn_set_add_scripture.Action: Enter", 4
 		  
-		  Dim w As ScripturePickerWindow
+		  ActionSetAddScripture
 		  
-		  Dim c As ScripturePickerController
-		  
-		  If Not ActionInSetAskSave Then Return
-		  
-		  c = New ScripturePickerController
-		  c.registerScriptureReceiver Self
-		  
-		  w = New ScripturePickerWindow(c)
-		  
-		  w.ShowModal
-		  c.unregisterScriptureReceiver Self
-		  w = Nil
-		  c = Nil
-		  lst_set_items.SetFocus
 		  App.DebugWriter.Write "MainWindow.btn_set_add_scripture.Action: Exit", 4
 		End Sub
 	#tag EndEvent
@@ -11587,10 +11674,6 @@ End
 #tag Events lst_set_items
 	#tag Event
 		Sub Change()
-		  Dim songDoc As XmlDocument
-		  Dim xnode as  XmlNode
-		  Dim songTemp as String
-		  Dim songResult As Integer
 		  Dim sDoc As XmlDocument
 		  Dim resize As String
 		  Dim imageLink As Boolean
@@ -11601,14 +11684,14 @@ End
 		  Dim xgroup As XmlNode
 		  Dim xslides As XmlNode
 		  Dim s As String
-		  Dim i, j As Integer
+		  Dim i As Integer
 		  Dim groupType As String
 		  
 		  '++JRC Don't reload if same set item
 		  If Me.ListIndex = CurrentInSetItem Then Return
 		  
 		  '++JRC
-		  If DontUpdateSetItem Then
+		  If DontUpdateSetItem Or m_Reordering Then
 		    Return
 		  End If
 		  '--
@@ -11622,6 +11705,7 @@ End
 		  End If
 		  
 		  If Me.ListIndex < 0 Then
+		    CurrentInSetItem = -1
 		    Status_InSetOpen = False
 		    Status_InSetEditable = False
 		    Status_InSetChanged = False
@@ -11675,10 +11759,9 @@ End
 		    s = ""
 		    xslides = SmartML.GetNode(xgroup, "slides", True)
 		    For i = 0 To xslides.ChildCount - 1
+		      s = s + StringUtils.Trim(SmartML.GetValue(xslides.Child(i), "body", False), StringUtils.WhiteSpaces)
 		      If i < xslides.ChildCount - 1 Then
-		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False)) + SmartML.Newline + "---" + SmartML.Newline
-		      Else
-		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False))
+		        s = s + SmartML.Newline + "---" + SmartML.Newline
 		      End If
 		    Next i
 		    edt_slide_slides.Text  = s
@@ -11802,10 +11885,10 @@ End
 		      can_image_style.SetStyleNode SmartML.GetNode(xgroup, "style")
 		    End If
 		    
-		    resize = SmartML.GetValue(xgroup, "@resize")
-		    chk_image_fit_to_screen.Value = (resize = "screen")
+		    resize = SmartML.GetValue(xgroup, "@resize", False)
+		    chk_image_fit_to_screen.Value = (resize = "screen") Or (resize = "")
 		    chk_image_fit_to_body.Value = (resize = "body")
-		    chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", True)
+		    chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", False, True)
 		    chk_image_keepaspect.Enabled = chk_image_fit_to_screen.Value Or chk_image_fit_to_body.Value
 		    chk_image_store_as_link.Value = imageLink
 		    
@@ -11864,8 +11947,12 @@ End
 	#tag Event
 		Function DragReorderRows(newPosition as Integer, parentRow as Integer) As Boolean
 		  '++JRC
-		  ReorderSetItemList(lst_set_items.ListIndex, newPosition)
-		  return true 'We'll handle the reorder manually, workaround for bug #1827986
+		  If Not m_Reordering Then
+		    m_Reordering = True
+		    ReorderSetItemList(lst_set_items.ListIndex, newPosition)
+		    m_Reordering = False
+		  End If
+		  Return True 'We'll handle the reorder manually, workaround for bug #1827986
 		  '--
 		End Function
 	#tag EndEvent
@@ -11902,6 +11989,11 @@ End
 		Sub MouseExit()
 		  SetHelp ""
 		End Sub
+	#tag EndEvent
+	#tag Event
+		Function DragRow(drag As DragItem, row As Integer) As Boolean
+		  Return Not m_Reordering
+		End Function
 	#tag EndEvent
 #tag EndEvents
 #tag Events rad_style_change

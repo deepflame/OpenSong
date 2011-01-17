@@ -1,6 +1,12 @@
 #tag Class
 Protected Class Song
 	#tag Method, Flags = &h0
+		Function AKA() As String
+		  Return SongAKA
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub AKA(Assigns NewValue As String)
 		  If NewValue <> SongAKA Then
 		    SongChanged = True
@@ -10,8 +16,8 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function AKA() As String
-		  Return SongAKA
+		Function Author() As String
+		  Return SongAuthor
 		End Function
 	#tag EndMethod
 
@@ -25,8 +31,8 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Author() As String
-		  Return SongAuthor
+		Function Capo() As Integer
+		  Return SongCapo
 		End Function
 	#tag EndMethod
 
@@ -37,12 +43,6 @@ Protected Class Song
 		    SongCapo = NewValue
 		  End If
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Capo() As Integer
-		  Return SongCapo
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -287,45 +287,18 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub KeyLine(Assigns NewValue As String)
-		  If NewValue <> SongKeyLine Then
-		    SongChanged = True
-		    SongKeyLine = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function KeyLine() As String
 		  Return SongKeyLine
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Load(sDoc As String) As Boolean
-		  //++
-		  // Load the object from the string that is passed.
-		  //
-		  // Note that SongFolderItem will be Nil when this is done.
-		  //--
-		  
-		  Dim xDoc As XmlDocument
-		  
-		  Try
-		    xDoc = New XmlDocument(sDoc)
-		  Catch ex As XmlException
-		    SongFolderItem = Nil
-		    Return False
-		  End Try
-		  
-		  If FromXML(xDoc) Then
-		    SongFolderItem = Nil
-		    SongChanged = True // True because this instance hasn't been written to a file
-		    Return True
-		  Else
-		    Return False
+		Sub KeyLine(Assigns NewValue As String)
+		  If NewValue <> SongKeyLine Then
+		    SongChanged = True
+		    SongKeyLine = NewValue
 		  End If
-		End Function
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -368,18 +341,45 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Lyrics(Assigns NewValue As String)
-		  If NewValue <> SongLyrics Then
-		    SongChanged = True
-		    SongLyrics = NewValue
+		Function Load(sDoc As String) As Boolean
+		  //++
+		  // Load the object from the string that is passed.
+		  //
+		  // Note that SongFolderItem will be Nil when this is done.
+		  //--
+		  
+		  Dim xDoc As XmlDocument
+		  
+		  Try
+		    xDoc = New XmlDocument(sDoc)
+		  Catch ex As XmlException
+		    SongFolderItem = Nil
+		    Return False
+		  End Try
+		  
+		  If FromXML(xDoc) Then
+		    SongFolderItem = Nil
+		    SongChanged = True // True because this instance hasn't been written to a file
+		    Return True
+		  Else
+		    Return False
 		  End If
-		End Sub
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function Lyrics() As String
 		  Return SongLyrics
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Lyrics(Assigns NewValue As String)
+		  If NewValue <> SongLyrics Then
+		    SongChanged = True
+		    SongLyrics = NewValue
+		  End If
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -453,16 +453,16 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function SongStyle() As SlideStyle
+		  Return SongStyle
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub SongStyle(Assigns NewStyle As SlideStyle)
 		  SongChanged = True
 		  SongStyle = NewStyle
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function SongStyle() As SlideStyle
-		  Return SongStyle
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -540,18 +540,18 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function TimeSignature() As String
+		  Return SongTimeSignature
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub TimeSignature(Assigns NewSignature As String)
 		  If NewSignature <> SongTimeSignature Then
 		    SongChanged = True
 		    SongTimeSignature = NewSignature
 		  End If
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function TimeSignature() As String
-		  Return SongTimeSignature
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -722,6 +722,12 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function User1() As String
+		  Return SongUser1
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub User1(Assigns NewValue As String)
 		  If NewValue <> SongUser1 Then
 		    SongChanged = True
@@ -731,8 +737,8 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function User1() As String
-		  Return SongUser1
+		Function User2() As String
+		  Return SongUser2
 		End Function
 	#tag EndMethod
 
@@ -743,12 +749,6 @@ Protected Class Song
 		    SongUser2 = NewValue
 		  End If
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function User2() As String
-		  Return SongUser2
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -977,12 +977,6 @@ Protected Class Song
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -990,16 +984,22 @@ Protected Class Song
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -7,7 +7,7 @@ Protected Module Profiler
 		  If ProfileFile = Nil Then
 		    ProfileFile = GetFolderItem("profile.txt")
 		    If ProfileFile.Exists Then ProfileFile.Delete
-		    ProfileStream = ProfileFile.CreateTextFile
+		    ProfileStream =  TextOutputStream.Create(ProfileFile)
 		  End If
 		  
 		  If ProfileFile <> Nil Then
@@ -32,7 +32,7 @@ Protected Module Profiler
 		  If ProfileFile = Nil Then
 		    ProfileFile = GetFolderItem("profile.txt")
 		    If ProfileFile.Exists Then ProfileFile.Delete
-		    ProfileStream = ProfileFile.CreateTextFile
+		    ProfileStream = TextOutputStream.Create(ProfileFile)
 		  End If
 		  
 		  Dim d As New Date
@@ -86,12 +86,6 @@ Protected Module Profiler
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -99,16 +93,22 @@ Protected Module Profiler
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

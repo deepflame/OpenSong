@@ -1,3 +1,20 @@
+presentation_settings/settings (modified, added child nodes)
+print_settings/layout/highlight_chorus
+presentation_settings/monitor/force_4_3_preview
+presentation_helper/preview
+presentation_helper/next
+
+-= Version 1.6.2 =-
+progress_status/song_search
+sets_mode/errors/insert
+
+-= Version 1.6 =-
+style_editor/fonts_and_alignment/body_autosize
+style_editor/fonts_and_alignment/title (modified)
+style_editor/fonts_and_alignment/subtitle (modified)
+style_editor/fonts_and_alignment/body (modified)
+main_menu/file/scripture
+scripture_lookup/bad_reference/ambiguous (modified)
 about/translating (modified)
 about/web (modified)
 main_menu/help/user_manual

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="1.5.1">
+<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="1.6.2">
 
   <load_settings>
     <checking_folders>A dokumentumok mappáinak létrehozása/ellenőrzése</checking_folders>
@@ -157,7 +157,7 @@
       <copy caption="Másolás">Másolat készítése a kiválasztott elemről az összeállításban.</copy>
       <paste caption="link(shared/insert/@caption)">A másolat beillesztése az aktuális elem után.</paste>      
       <store caption="Mentés">A kiválasztott elem mentése az összeállításban.</store>
-      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Kivetíti az aktuális összeállítást a képernyőre, az aktuális elemtől kezdve. Választhat, hogy az aktuális képernyőn vagy a másodlagos képernyőn vetít, ill. egy képernyőt használva megnézheti milyen lenne két képernyőn.
         <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
         <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
         <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
@@ -176,6 +176,7 @@
     <untitled caption="Névtelen"/>
     <errors>
       <revert caption="Hiba az összeállítás újratöltése során a következő fájlból: „%1.”"/>
+	  <insert caption="Hiba a másolt diák beszúrásakor:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>„%1” exportálva ide:
@@ -189,7 +190,7 @@
     <title caption="Cím">A dia címének módosítása, mely vetítéskor jelenik meg.</title>
     <subtitle caption="Alcím">A dia alcímének módosítása, mely vetítéskor jelenik meg.</subtitle>
     <name caption="Név">A dia nevének módosítása, mely a vetítési segédablakban jelenik meg az azonosítás, és az eligazodás megkönnyítéséhez, de nem jelenik meg magán dián.</name>
-    <slides caption="Diák">Az aktuális dia törzsszövegének módosítása ebben a diában. Útmutatás: A könnyű hozzáadáshoz ejtsünk egy vagy több képet erre a listára.</slides>
+    <slides caption="Diák">Az aktuális dia törzsszövegének módosítása ebben a diában.</slides>
     <presentation caption="Egyedi vetítési sorrend">A daloknál beállított megjelenítési sorrend felülírása egyéni sorrend megadásával.</presentation>
     <origorder caption="Eredeti vetítési sorrend">A megjelenítési sorrend a fájlban.</origorder>       
     <folder caption="A dal mappája">A kiválasztott elemet tartalmazó mappa.</folder>
@@ -210,7 +211,7 @@
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
     <descriptions caption="Kép leírása az alcímben">A megjelenített kép címe jelenjen meg az alcímben.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="Képek" head1="Előnézet" head2="Leírás">Tartalmazza azokat a képeket, amely ebben a diában szerepelnek.</images>
+    <images caption="Képek" head1="Előnézet" head2="Leírás">Tartalmazza azokat a képeket, amely ebben a diában szerepelnek. Tipp: A könnyű hozzáadáshoz ejtsünk egy vagy több képet erre a listára.</images>
     <fit_to_screen caption="A képek átméretezése a képernyő méretére">Azok a képek, amelyek túl nagyon a vetítő méretéhez viszonytva, át lesznek méretezve, hogy a teljes kép kiférjen. A túl kicsi képek pedig nagyításra kerülnek.</fit_to_screen>
     <fit_to_body caption="A képek átméretezése a törzsszöveg méretéhez">A képek minden elférnek a törzsszövegnek beállított területen. Ez a kissebb és a nagyobb képekre is vonatkozik.</fit_to_body>
     <keepaspect caption="Méretarány megtartása átméretezéskor">A fennti átméretezések alkalmával a vízszintes és a függőleges arány megmarad.</keepaspect>
@@ -306,6 +307,7 @@
       <print_alphabetical_toc caption="Tartalomjegyzék ABC szerinti _nyomtatása"/>
       <print_categorical_toc caption="Tartalomjegyzék kategóriák _szerint nyomtatása"/>
       <song_act caption="Előzmények _listázása"/>
+      <scripture caption="Igehely _keresése"/>
       <quit caption="K_ilép"/>
     </file>
     <edit caption="_Szerkesztés">
@@ -332,6 +334,7 @@
     </settings>
     <help caption="_Súgó">
       <help_topics caption="Súgó _témakörök"/>
+      <user_manual caption="_Online felhasználói kézikönyv"/>
       <translating caption="_Fordítás"/>
       <about caption="_Az OpenSong névjegye"/>
     </help>
@@ -416,6 +419,7 @@
     <layout>
       <heading_border_thickness caption="Szakaszcím szegélyének vastagsága"/>
       <title_in_caps caption="Nagybetűs címek"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Mértékegység">
       <inches caption="Hüvelyk"/>
@@ -459,7 +463,6 @@
       <blanks caption="Üres dia automatikus beszúrása"/>
       <blanks_between caption="a tételek (dalok, igék) közé"/>
       <time caption="Időtartam" helptag="Az áttűnés hossza (Lassabb gépeken tovább tarthat!)"/>
-      <frames caption="Képkockák" helptag="Az átmenetekben alkalmazott képkockák száma"/>
       <blank_style caption="Üres diák stílusa legyen"/>
       <blank_prev caption="Előző dia"/>
       <blank_next caption="Következő dia"/>
@@ -751,9 +754,10 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
 
   <style_editor title="Stílus szerkesztő">
     <fonts_and_alignment caption="Betűtípus és elhelyezkedés megadása">
-      <title caption="Cím"/>
-      <subtitle caption="Alcím"/>
-      <body caption="Törzsszöveg"/>
+      <title caption="Cím vetítése"/>
+      <subtitle caption="Alcím vetítése"/>
+      <body caption="Törzsszöveg vetítése"/>
+      <body_autosize caption="A betű méretének automatikus állítása, hogy elférjen a szöveg"/>
       <align caption="Igazítás"/>
       <margin caption="Margók"/>
       <tabs caption="Tabulátorok"/>
@@ -835,7 +839,7 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
         constants found in the LogEntry class. The list order
         can be changed as desired for localisation (note that it is
         alphabetical in English) as long as the tags relate to the
-        correct item.  For example, the local language value of "Moved"
+        correct item. For example, the local language value of "Moved"
         should always have tag="4"
       -->
       <value tag="0">Összes</value>
@@ -885,11 +889,14 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
     <shownumbers caption="Verszámok megjelenítése"/>
     <preview caption="Vers előnézete"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Ellenőrizd a kérés formátumát, és próbáld újra.</format>
       <empty>Téves paraméter: a hivatkozott hely üres.</empty>
       <book>Téves paraméter: a könyv nem található.</book>
-      <ambiguous>Téves paraméter: több könyvre is ráillik: „%1”: %2</ambiguous>
+      <ambiguous>Téves paraméter: több könyvre is ráillik: %1: %2</ambiguous>
       <version>Téves paraméter: nem található ez a verzió: „%1”.</version>
       <chapter>Téves paraméter: nem található a fejezet: „%1”.</chapter>
       <verse>Téves paraméter: nem található a vers „%1”.</verse>
@@ -1107,7 +1114,7 @@ Kattints ide a szerkesztéshez.</body>
     <copyright>Copyright</copyright>
     <gpl>Ez a program a GPL licenc alatt szabadon terjeszthető.</gpl>
     <web>Bővebb információ a http://www.opensong.org/ webhelyen.</web>
-    <translating>Ha új nyelvi modult szeretnél készíteni, másold át az „English” fájlt a „Languages” mappából. Nevezd át arra a nyelvre, amelyikre fordítod. A kész fordítást elküldheted a translator@opensong.org email címre, amely így bekerülhet a hivatalos telepítő csomagba is. A magyar fordítással kapcsolatos észrevételeket a http://groups.google.com/group/opensonghun helyen elérhető listára küldheted.</translating>
+    <translating>Ha új nyelvi modult szeretnél készíteni, másold át az „English” fájlt a „Languages” mappából. Nevezd át arra a nyelvre, amelyikre fordítod. A kész fordítást elküldheted az opensong-translate@lists.sourceforge.net címre vagy készíts egy foltot a Source Forge OpenSong projekt olalán (Tracker/Patches), amely így bekerülhet a hivatalos telepítő csomagba is. A magyar fordítással kapcsolatos észrevételeket a http://groups.google.com/group/opensonghun helyen elérhető listára küldheted.</translating>
     <created_with_opensong>Készült az OpenSonggal</created_with_opensong>
     <sources>Az OpenSong az alábbi programok forráskódjaiból is merített:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1260,6 +1267,7 @@ Az OpenSong fejlesztői csapat sajnálja a kellemetlenséget.
     <lead_sheets>Kottalapok generálása</lead_sheets>
     <process_themes>Témák feldolgozása</process_themes>
     <process_songs>Dalok feldolgozása</process_songs>
+	<song_search>Dalok keresése</song_search>
     <export>Dalok exportálása</export>
     <pass1>Rendezés, 1. művelet</pass1>
     <pass2>Rendezés, 2. művelet</pass2>

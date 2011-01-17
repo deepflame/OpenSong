@@ -26,6 +26,7 @@ Begin Window ProgressWindow
    Width           =   300
    Begin ProgressBar bar
       AutoDeactivate  =   True
+      BehaviorIndex   =   0
       ControlOrder    =   0
       Enabled         =   True
       Height          =   12
@@ -35,9 +36,9 @@ Begin Window ProgressWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Maximum         =   100
       TabIndex        =   0
       TabPanelIndex   =   0
@@ -48,10 +49,10 @@ Begin Window ProgressWindow
       Value           =   0
       Visible         =   True
       Width           =   280
-      BehaviorIndex   =   0
    End
    Begin StaticText txt_StatusLine
       AutoDeactivate  =   True
+      BehaviorIndex   =   1
       Bold            =   False
       ControlOrder    =   1
       DataField       =   ""
@@ -65,9 +66,9 @@ Begin Window ProgressWindow
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   1
       TabPanelIndex   =   0
@@ -81,10 +82,10 @@ Begin Window ProgressWindow
       Underline       =   False
       Visible         =   True
       Width           =   280
-      BehaviorIndex   =   1
    End
    Begin StaticText lbl_status
       AutoDeactivate  =   True
+      BehaviorIndex   =   2
       Bold            =   False
       ControlOrder    =   2
       DataField       =   ""
@@ -98,9 +99,9 @@ Begin Window ProgressWindow
       Left            =   12
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   2
       TabPanelIndex   =   0
@@ -114,7 +115,6 @@ Begin Window ProgressWindow
       Underline       =   False
       Visible         =   True
       Width           =   276
-      BehaviorIndex   =   2
    End
 End
 #tag EndWindow
@@ -122,7 +122,6 @@ End
 #tag WindowCode
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
-		  Dim Excep As RuntimeException
 		  If Not AllowEscape Then Return True
 		  
 		  If AscB(Key) = 27 Then //Escape
@@ -206,6 +205,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub SetStatus(StatusText As String)
+		  txt_StatusLine.Text = StatusText
+		  If Visible Then Refresh False
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function SetStatus(StatusText As String) As Boolean
 		  //
 		  // Set the StatusLine text and return the inverse of CancelRequested value
@@ -213,13 +219,6 @@ End
 		  SetStatus StatusText
 		  Return Not CancelRequested
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub SetStatus(StatusText As String)
-		  txt_StatusLine.Text = StatusText
-		  If Visible Then Refresh False
-		End Sub
 	#tag EndMethod
 
 

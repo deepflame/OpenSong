@@ -65,9 +65,9 @@ Begin Window PrintWindow
          Left            =   10
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   1
@@ -242,9 +242,9 @@ Begin Window PrintWindow
          Left            =   10
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   1
@@ -273,9 +273,9 @@ Begin Window PrintWindow
          Left            =   52
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   1
@@ -303,9 +303,9 @@ Begin Window PrintWindow
          Left            =   86
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Multiline       =   False
          Scope           =   0
          TabIndex        =   4
@@ -338,9 +338,9 @@ Begin Window PrintWindow
          Left            =   155
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   5
          TabPanelIndex   =   1
@@ -369,9 +369,9 @@ Begin Window PrintWindow
          Left            =   193
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   6
          TabPanelIndex   =   1
@@ -400,9 +400,9 @@ Begin Window PrintWindow
          Left            =   239
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   7
          TabPanelIndex   =   1
@@ -436,9 +436,9 @@ Begin Window PrintWindow
          LimitText       =   3
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Mask            =   999
          Multiline       =   False
          Password        =   False
@@ -477,9 +477,9 @@ Begin Window PrintWindow
          Left            =   324
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   9
          TabPanelIndex   =   1
@@ -508,9 +508,9 @@ Begin Window PrintWindow
          Left            =   362
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   10
          TabPanelIndex   =   1
@@ -602,7 +602,6 @@ End
 	#tag Method, Flags = &h1
 		Protected Sub ChangePage(PageNum As Integer)
 		  Dim newpg As Group2D
-		  Dim i As Integer
 		  
 		  App.DebugWriter.Write "PrintWindow.ChangePage: Enter, page = " + str(PageNum)
 		  If PrintReport = Nil Then Return

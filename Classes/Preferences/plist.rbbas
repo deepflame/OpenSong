@@ -30,6 +30,18 @@ Class plist
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub Constructor(f As FolderItem)
+		  Load(f,f)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor(f As folderItem, template As FolderItem)
+		  Load(f,template)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Dump()
 		  dim c As clipboard
 		  dim count As integer
@@ -87,7 +99,7 @@ Class plist
 		    f=template
 		  end
 		  if f.exists then
-		    t=f.OpenAsTextFile
+		    t=TextInputStream.Open(f)
 		    s=t.ReadLine
 		    if left(s,6)="bplist" then
 		      isBinary=true
@@ -103,11 +115,11 @@ Class plist
 		      sh.Execute command
 		      org=f
 		      f=copyTo
-		      t=f.OpenAsTextFile
+		      t=TextInputStream.Open(f)
 		      savePath=f
 		    else
 		      t.Close
-		      t=f.OpenAsTextFile
+		      t=TextInputStream.Open(f)
 		    end
 		    while not t.eof and s<>"<dict>"
 		      s=t.ReadLine
@@ -129,18 +141,6 @@ Class plist
 		    headers.append "<dict>"
 		    root.load(t,"root",false,nil,me,false)
 		  end
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Constructor(f As FolderItem)
-		  Load(f,f)
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Constructor(f As folderItem, template As FolderItem)
-		  Load(f,template)
 		End Sub
 	#tag EndMethod
 
@@ -193,7 +193,7 @@ Class plist
 		  dim path As string
 		  dim sh As shell
 		  
-		  o=savePath.CreateTextFile
+		  o=TextOutputStream.Create(savePath)
 		  if o<>nil then
 		    for count=1 to ubound(headers)
 		      o.WriteLine headers(count)
@@ -287,39 +287,6 @@ Class plist
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="brk"
 			Group="Behavior"
 			InitialValue="0"
@@ -368,10 +335,43 @@ Class plist
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="isBinary"
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="untitled"

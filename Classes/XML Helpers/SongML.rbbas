@@ -493,6 +493,9 @@ Module SongML
 		        g.Underline = tempFont.Underline
 		        g.ForeColor = tempFont.ForeColor
 		        If Left(section,1) = "C" Then
+		          If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		            g.Bold = Not tempFont.Bold
+		          End If
 		          g.Bold = True
 		        Else
 		          g.Bold = tempFont.Bold
@@ -628,7 +631,9 @@ Module SongML
 		        g.Underline = tempFont.Underline
 		        g.ForeColor = tempFont.ForeColor
 		        If Left(section,1) = "C" Then
-		          g.Bold = Not tempFont.Bold
+		          If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		            g.Bold = Not tempFont.Bold
+		          End If
 		        End If
 		        slices(i*lineCount+j) = ReplaceAll(slices(i*lineCount+j), "_", "")
 		        slices(i*lineCount+j) = slices(i*lineCount+j).CleanSpaces
@@ -1764,7 +1769,9 @@ Module SongML
 		  g.ForeColor = tempFont.ForeColor
 		  
 		  If Left(section,1) = "C" Then
-		    g.Bold = True
+		    If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		      g.Bold = Not tempFont.Bold
+		    End If
 		  Else
 		    g.Bold = tempFont.Bold
 		  End If
@@ -1791,8 +1798,9 @@ Module SongML
 		  tempFont.OntoGraphics g
 		  
 		  If Left(section,1) = "C" Then
-		    g.Bold = Not g.Bold
-		    tempFont.Bold = Not tempFont.Bold
+		    If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
+		      g.Bold = Not tempFont.Bold
+		    End If
 		  End If
 		  '
 		  ' This originally had MID(Line, 2), but that cut of the first character on set sheet custom items.
@@ -1966,8 +1974,7 @@ Module SongML
 		  For x = 1 To strlen
 		    If Mid(lyrics, x, 1) = Chr(10) Then
 		      '++JRC: Fixed, RTrim thinks "à" is a whitespace character?
-		      'line = RTrim(Mid(lyrics, st, x-st))
-		      line = StringUtils.RemoveWhitespace(Mid(lyrics, st, x-st), Globals.WhitespaceChars, 1)
+		      line = StringUtils.RTrim(Mid(lyrics, st, x-st), StringUtils.WhiteSpaces)
 		      '--
 		      If Left(line, 1) = "[" Then
 		        section = Mid(line, 2, Instr(2, line, "]") - 2)
@@ -1981,8 +1988,7 @@ Module SongML
 		          subsection = section + subsection
 		        End If
 		        '++JRC: Same Here
-		        'line = Trim(Mid(line, 2))
-		        line = StringUtils.RemoveWhitespace(Mid(line, 2), Globals.WhitespaceChars, 2)
+		        line = StringUtils.Trim(Mid(line, 2), StringUtils.WhiteSpaces)
 		        '--
 		        If Len(line) > 0 Then
 		          If dict.HasKey(subsection) Then
@@ -2430,7 +2436,7 @@ Module SongML
 		      sub_sections = Split(dict.Value(section), "||")
 		      For Each sub_section In sub_sections
 		        slide = SmartML.InsertChild(slides, "slide", slides.ChildCount)
-		        SmartML.SetValue(slide, "body", DeflateString(Trim(sub_section)))
+		        SmartML.SetValue(slide, "body", DeflateString(StringUtils.Trim(sub_section, StringUtils.WhiteSpaces)))
 		        If section = "default" Then
 		          SmartML.SetValue(slide, "@id", "")
 		        Else

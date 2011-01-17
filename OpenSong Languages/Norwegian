@@ -338,6 +338,7 @@
     <layout>
       <heading_border_thickness caption="Overskrifts kant tykkelse"/>
       <title_in_caps caption="Tittel i store bokstaver"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Units">
       <inches caption="Inches"/>
@@ -644,7 +645,7 @@ T: Tag</keys>
     <option name="Kirke: Frelse"/>
     <option name="Kirke: fornyelse"/>
     <option name="Kirke: Tjeneste"/>
-    <option name="Kirke: Åndelig sult"/>
+    <option name="Kirke: +ndelig sult"/>
     <option name="Frukt: Tro \ Håp"/>
     <option name="Frukt: Kjærlighet"/>
     <option name="Frukt: Glede"/>
@@ -663,7 +664,7 @@ T: Tag</keys>
     <option name="Gud: Seier"/>
     <option name="Gud: Ord"/>
     <option name="Lovsang: Tilit"/>
-    <option name="Lovsang: Åpning"/>
+    <option name="Lovsang: +pning"/>
     <option name="Lovsang: Feiring"/>
     <option name="Lovsang: Erklæring"/>
     <option name="Lovsang: Fortrolighet"/>

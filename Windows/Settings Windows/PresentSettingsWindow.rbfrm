@@ -26,16 +26,15 @@ Begin Window PresentSettingsWindow
    Width           =   620
    Begin PushButton btn_ok
       AutoDeactivate  =   True
-      BehaviorIndex   =   0
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
-      ControlOrder    =   0
       Default         =   True
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   462
@@ -50,6 +49,7 @@ Begin Window PresentSettingsWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   407
       Underline       =   False
       Visible         =   True
@@ -57,16 +57,15 @@ Begin Window PresentSettingsWindow
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
-      ControlOrder    =   1
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   542
@@ -81,6 +80,7 @@ Begin Window PresentSettingsWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   407
       Underline       =   False
       Visible         =   True
@@ -88,14 +88,11 @@ Begin Window PresentSettingsWindow
    End
    Begin TabPanel tab_present_settings
       AutoDeactivate  =   True
-      BehaviorIndex   =   2
       Bold            =   False
-      ControlOrder    =   2
       Enabled         =   True
-      Facing          =   0
       Height          =   385
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   10
@@ -107,38 +104,39 @@ Begin Window PresentSettingsWindow
       Panels          =   ""
       Scope           =   0
       SmallTabs       =   False
-      TabDefinition   =   "Styles\rOptions"
+      TabDefinition   =   "Styles\rOptions\rSnapshots"
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "System"
       TextSize        =   12
+      TextUnit        =   0
       Top             =   14
       Underline       =   False
-      Value           =   1
+      Value           =   2
       Visible         =   True
       Width           =   600
       Begin StaticText lbl_style_default_slides
+         Active          =   ""
          AutoDeactivate  =   True
-         BehaviorIndex   =   3
          Bold            =   False
-         ControlOrder    =   3
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Height          =   15
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
          Left            =   48
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   1
          TabStop         =   True
@@ -148,62 +146,62 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   10
          Top             =   65
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   160
+         Window          =   0
+         _mWindow        =   0
       End
       Begin SStyleCanvas can_style_default
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   4
-         ControlOrder    =   4
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          Height          =   120
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Left            =   47
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          SongStyle       =   True
          TabIndex        =   1
          TabPanelIndex   =   1
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   80
          UseFocusRing    =   True
          Visible         =   True
          Width           =   160
       End
       Begin StaticText nte_style_click_to_change_1
+         Active          =   ""
          AutoDeactivate  =   True
-         BehaviorIndex   =   5
          Bold            =   False
-         ControlOrder    =   5
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Height          =   13
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   True
          Left            =   47
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   1
          TabStop         =   True
@@ -213,31 +211,34 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   9
          Top             =   200
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   160
+         Window          =   0
+         _mWindow        =   0
       End
       Begin StaticText lbl_style_scripture_slides
+         Active          =   ""
          AutoDeactivate  =   True
-         BehaviorIndex   =   6
          Bold            =   False
-         ControlOrder    =   6
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Height          =   15
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
          Left            =   253
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   1
          TabStop         =   True
@@ -247,62 +248,62 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   10
          Top             =   65
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   160
+         Window          =   0
+         _mWindow        =   0
       End
       Begin SStyleCanvas can_style_scripture
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
          Backdrop        =   0
-         BehaviorIndex   =   7
-         ControlOrder    =   7
+         DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
          Height          =   120
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Left            =   254
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          SongStyle       =   False
          TabIndex        =   4
          TabPanelIndex   =   1
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
          Top             =   80
          UseFocusRing    =   True
          Visible         =   True
          Width           =   160
       End
       Begin StaticText nte_style_click_to_change_2
+         Active          =   ""
          AutoDeactivate  =   True
-         BehaviorIndex   =   8
          Bold            =   False
-         ControlOrder    =   8
          DataField       =   ""
          DataSource      =   ""
          Enabled         =   True
          Height          =   15
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   True
          Left            =   254
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Multiline       =   False
          Scope           =   0
+         Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   1
          TabStop         =   True
@@ -312,59 +313,60 @@ Begin Window PresentSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   9
          Top             =   200
+         Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   160
+         Window          =   0
+         _mWindow        =   0
       End
       Begin GroupBox grp_settings_alerts
          AutoDeactivate  =   True
-         BehaviorIndex   =   9
          Bold            =   False
          Caption         =   "Alerts"
-         ControlOrder    =   9
          Enabled         =   True
          Height          =   130
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
          Left            =   38
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   6
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
          Top             =   237
          Underline       =   False
          Visible         =   True
          Width           =   387
          Begin StaticText lbl_alerts_align
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   10
             Bold            =   False
-            ControlOrder    =   10
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
             Italic          =   False
             Left            =   46
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
             TabStop         =   True
@@ -374,61 +376,61 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   277
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   90
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SAlignCanvas sal_alerts
             AcceptFocus     =   False
             AcceptTabs      =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            BehaviorIndex   =   11
-            ControlOrder    =   11
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   44
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
             Left            =   70
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   292
             UseFocusRing    =   True
             Visible         =   True
             Width           =   44
          End
          Begin StaticText lbl_alerts_font
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   12
             Bold            =   False
-            ControlOrder    =   12
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
             Italic          =   False
             Left            =   140
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
@@ -438,36 +440,37 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   258
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   250
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SFontCanvas can_alerts_font
             AcceptFocus     =   False
+            AcceptMouseDown =   true
             AcceptTabs      =   False
             AdvancedOptions =   True
             AutoDeactivate  =   True
             Backdrop        =   0
-            BehaviorIndex   =   13
-            ControlOrder    =   13
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   80
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_alerts"
             Left            =   140
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   272
             UseFocusRing    =   True
             Visible         =   True
@@ -476,14 +479,12 @@ Begin Window PresentSettingsWindow
       End
       Begin GroupBox grp_option_logo
          AutoDeactivate  =   True
-         BehaviorIndex   =   14
          Bold            =   False
          Caption         =   "Logo"
-         ControlOrder    =   14
          Enabled         =   True
          Height          =   302
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
          Left            =   445
@@ -495,9 +496,9 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   7
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
          Top             =   65
          Underline       =   False
          Visible         =   True
@@ -507,53 +508,50 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            BehaviorIndex   =   15
             bgColor         =   0
-            ControlOrder    =   15
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   60
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Left            =   475
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   95
             UseFocusRing    =   True
             Visible         =   True
             Width           =   80
          End
          Begin StaticText nte_logo_click_to_change_1
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   16
             Bold            =   False
-            ControlOrder    =   16
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
             Left            =   450
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
@@ -563,31 +561,34 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   9
             Top             =   159
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText nte_logo_right_click_to_clear_1
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   17
             Bold            =   False
-            ControlOrder    =   17
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
             Left            =   450
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
@@ -597,31 +598,34 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   9
             Top             =   172
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_logo_mask
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   18
             Bold            =   False
-            ControlOrder    =   18
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   False
             Left            =   454
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
@@ -631,62 +635,62 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   223
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SImageCanvas can_logo_mask
             AcceptFocus     =   False
             AcceptTabs      =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            BehaviorIndex   =   19
             bgColor         =   0
-            ControlOrder    =   19
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   60
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Left            =   475
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
             Top             =   238
             UseFocusRing    =   True
             Visible         =   True
             Width           =   80
          End
          Begin StaticText nte_logo_click_to_change_2
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   20
             Bold            =   False
-            ControlOrder    =   20
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
             Left            =   454
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
             TabStop         =   True
@@ -696,31 +700,34 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   9
             Top             =   302
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText nte_logo_right_click_to_clear_2
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   21
             Bold            =   False
-            ControlOrder    =   21
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_option_logo"
             Italic          =   True
             Left            =   454
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
             TabStop         =   True
@@ -730,65 +737,66 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   9
             Top             =   315
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
       End
       Begin GroupBox grp_settings_transitions
          AutoDeactivate  =   True
-         BehaviorIndex   =   22
          Bold            =   ""
          Caption         =   "Transitions"
-         ControlOrder    =   22
          Enabled         =   True
-         Height          =   161
+         Height          =   190
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   ""
          Left            =   28
          LockBottom      =   ""
          LockedInPosition=   False
-         LockLeft        =   ""
+         LockLeft        =   True
          LockRight       =   ""
-         LockTop         =   ""
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   8
          TabPanelIndex   =   2
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
          Top             =   41
          Underline       =   ""
          Visible         =   True
          Width           =   392
          Begin CheckBox chk_style_use_transitions
             AutoDeactivate  =   True
-            BehaviorIndex   =   23
             Bold            =   False
             Caption         =   "Use transitions by default"
-            ControlOrder    =   23
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
             Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
+            State           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   58
             Underline       =   False
             Value           =   False
@@ -796,26 +804,26 @@ Begin Window PresentSettingsWindow
             Width           =   151
          End
          Begin StaticText lbl_style_frames
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   24
             Bold            =   False
-            ControlOrder    =   24
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
             Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
             TabStop         =   True
@@ -825,18 +833,19 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   82
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   151
+            Window          =   0
+            _mWindow        =   0
          End
          Begin Slider sld_style_frames
             AutoDeactivate  =   True
-            BehaviorIndex   =   25
-            ControlOrder    =   25
             Enabled         =   True
             Height          =   16
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Left            =   37
             LineStep        =   1
@@ -853,8 +862,7 @@ Begin Window PresentSettingsWindow
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TickStyle       =   0
             Top             =   101
             Value           =   5
             Visible         =   True
@@ -865,34 +873,29 @@ Begin Window PresentSettingsWindow
             Alignment       =   0
             AutoDeactivate  =   True
             BackColor       =   16777215
-            BehaviorIndex   =   26
             Bold            =   False
             Border          =   True
-            ControlOrder    =   26
+            CueText         =   ""
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
             Left            =   161
             LimitText       =   2
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   "9#"
-            Multiline       =   False
             Password        =   False
             ReadOnly        =   False
             Scope           =   0
-            ScrollbarHorizontal=   False
-            ScrollbarVertical=   True
-            Styled          =   False
             TabIndex        =   3
             TabPanelIndex   =   2
             TabStop         =   True
@@ -900,6 +903,7 @@ Begin Window PresentSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   97
             Underline       =   False
             UseFocusRing    =   True
@@ -907,26 +911,26 @@ Begin Window PresentSettingsWindow
             Width           =   27
          End
          Begin StaticText lbl_style_time
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   27
             Bold            =   False
-            ControlOrder    =   27
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
             Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
             TabStop         =   True
@@ -936,18 +940,19 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   117
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   151
+            Window          =   0
+            _mWindow        =   0
          End
          Begin Slider sld_style_time
             AutoDeactivate  =   True
-            BehaviorIndex   =   28
-            ControlOrder    =   28
             Enabled         =   True
             Height          =   16
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Left            =   38
             LineStep        =   10
@@ -964,8 +969,7 @@ Begin Window PresentSettingsWindow
             TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TickStyle       =   0
             Top             =   137
             Value           =   100
             Visible         =   True
@@ -976,34 +980,29 @@ Begin Window PresentSettingsWindow
             Alignment       =   0
             AutoDeactivate  =   True
             BackColor       =   16777215
-            BehaviorIndex   =   29
             Bold            =   False
             Border          =   True
-            ControlOrder    =   29
+            CueText         =   ""
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
             Left            =   150
             LimitText       =   4
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   "99##"
-            Multiline       =   False
             Password        =   False
             ReadOnly        =   False
             Scope           =   0
-            ScrollbarHorizontal=   False
-            ScrollbarVertical=   True
-            Styled          =   False
             TabIndex        =   6
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1011,6 +1010,7 @@ Begin Window PresentSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   137
             Underline       =   False
             UseFocusRing    =   True
@@ -1018,26 +1018,26 @@ Begin Window PresentSettingsWindow
             Width           =   38
          End
          Begin StaticText txt_style_transition_note
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   30
             Bold            =   False
-            ControlOrder    =   30
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   131
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_transitions"
             Italic          =   False
             Left            =   202
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1047,21 +1047,22 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   58
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   204
+            Window          =   0
+            _mWindow        =   0
          End
       End
       Begin GroupBox grp_settings_style
          AutoDeactivate  =   True
-         BehaviorIndex   =   31
          Bold            =   False
          Caption         =   "Style"
-         ControlOrder    =   31
          Enabled         =   True
-         Height          =   181
+         Height          =   147
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
          Left            =   28
@@ -1073,34 +1074,34 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   9
          TabPanelIndex   =   2
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
-         Top             =   205
+         TextUnit        =   0
+         Top             =   239
          Underline       =   False
          Visible         =   True
          Width           =   392
          Begin StaticText lbl_style_border_thickness
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   32
             Bold            =   False
-            ControlOrder    =   32
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
             Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1109,44 +1110,42 @@ Begin Window PresentSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   223
+            Top             =   257
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
+            Window          =   0
+            _mWindow        =   0
          End
          Begin TextField edt_style_border_thickness
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
             BackColor       =   16777215
-            BehaviorIndex   =   33
             Bold            =   False
             Border          =   True
-            ControlOrder    =   33
+            CueText         =   ""
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
             Left            =   37
             LimitText       =   4
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   "999#"
-            Multiline       =   False
             Password        =   False
             ReadOnly        =   False
             Scope           =   0
-            ScrollbarHorizontal=   False
-            ScrollbarVertical=   True
-            Styled          =   False
             TabIndex        =   1
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1154,33 +1153,34 @@ Begin Window PresentSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   238
+            TextUnit        =   0
+            Top             =   272
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
             Width           =   50
          End
          Begin StaticText lbl_style_initial_mode
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   34
             Bold            =   False
-            ControlOrder    =   34
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
             Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1189,22 +1189,23 @@ Begin Window PresentSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   262
+            Top             =   296
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_style_initial_mode
             AutoDeactivate  =   True
-            BehaviorIndex   =   35
             Bold            =   False
-            ControlOrder    =   35
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             InitialValue    =   ""
             Italic          =   False
@@ -1212,41 +1213,42 @@ Begin Window PresentSettingsWindow
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   277
+            TextUnit        =   0
+            Top             =   311
             Underline       =   False
             Visible         =   True
             Width           =   140
          End
          Begin StaticText lbl_style_mouse_cursor
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   36
             Bold            =   False
-            ControlOrder    =   36
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
             Left            =   37
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1255,38 +1257,41 @@ Begin Window PresentSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   299
+            Top             =   333
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   136
+            Window          =   0
+            _mWindow        =   0
          End
          Begin CheckBox chk_style_blanks
             AutoDeactivate  =   True
-            BehaviorIndex   =   37
             Bold            =   False
             Caption         =   "Insert blank slides"
-            ControlOrder    =   37
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
             Left            =   212
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
+            State           =   0
             TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   228
+            TextUnit        =   0
+            Top             =   262
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -1294,15 +1299,13 @@ Begin Window PresentSettingsWindow
          End
          Begin PopupMenu pop_style_mouse_cursor
             AutoDeactivate  =   True
-            BehaviorIndex   =   38
             Bold            =   False
-            ControlOrder    =   38
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             InitialValue    =   ""
             Italic          =   False
@@ -1310,41 +1313,42 @@ Begin Window PresentSettingsWindow
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   314
+            TextUnit        =   0
+            Top             =   348
             Underline       =   False
             Visible         =   True
             Width           =   140
          End
          Begin StaticText txt_style_blanks_between
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   39
             Bold            =   False
-            ControlOrder    =   39
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Italic          =   False
             Left            =   232
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1353,61 +1357,61 @@ Begin Window PresentSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   243
+            Top             =   277
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   161
+            Window          =   0
+            _mWindow        =   0
          End
          Begin Canvas nil_blanks
             AcceptFocus     =   False
             AcceptTabs      =   False
             AutoDeactivate  =   True
             Backdrop        =   0
-            BehaviorIndex   =   40
-            ControlOrder    =   40
+            DoubleBuffer    =   False
             Enabled         =   True
             EraseBackground =   True
             Height          =   72
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_style"
             Left            =   212
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   2
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   262
+            Top             =   296
             UseFocusRing    =   False
             Visible         =   True
             Width           =   177
             Begin StaticText lbl_style_blank_style
+               Active          =   ""
                AutoDeactivate  =   True
-               BehaviorIndex   =   41
                Bold            =   False
-               ControlOrder    =   41
                DataField       =   ""
                DataSource      =   ""
                Enabled         =   True
                Height          =   20
                HelpTag         =   ""
-               Index           =   2147483648
+               Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
                Left            =   224
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Multiline       =   False
                Scope           =   0
+               Selectable      =   False
                TabIndex        =   0
                TabPanelIndex   =   2
                TabStop         =   True
@@ -1416,36 +1420,38 @@ Begin Window PresentSettingsWindow
                TextColor       =   0
                TextFont        =   "Arial"
                TextSize        =   10
-               Top             =   266
+               Top             =   300
+               Transparent     =   False
                Underline       =   False
                Visible         =   True
                Width           =   164
+               Window          =   0
+               _mWindow        =   0
             End
             Begin RadioButton rad_style_blank_prev
                AutoDeactivate  =   True
-               BehaviorIndex   =   42
                Bold            =   False
                Caption         =   "Previous slide"
-               ControlOrder    =   42
                Enabled         =   True
                Height          =   20
                HelpTag         =   ""
-               Index           =   2147483648
+               Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
                Left            =   224
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   1
                TabPanelIndex   =   2
                TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   10
-               Top             =   285
+               TextUnit        =   0
+               Top             =   319
                Underline       =   False
                Value           =   False
                Visible         =   True
@@ -1453,29 +1459,28 @@ Begin Window PresentSettingsWindow
             End
             Begin RadioButton rad_style_blank_next
                AutoDeactivate  =   True
-               BehaviorIndex   =   43
                Bold            =   False
                Caption         =   "Next slide"
-               ControlOrder    =   43
                Enabled         =   True
                Height          =   20
                HelpTag         =   ""
-               Index           =   2147483648
+               Index           =   -2147483648
                InitialParent   =   "nil_blanks"
                Italic          =   False
                Left            =   224
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   2
                TabPanelIndex   =   2
                TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   10
-               Top             =   308
+               TextUnit        =   0
+               Top             =   342
                Underline       =   False
                Value           =   False
                Visible         =   True
@@ -1485,14 +1490,12 @@ Begin Window PresentSettingsWindow
       End
       Begin GroupBox grp_settings_monitor
          AutoDeactivate  =   True
-         BehaviorIndex   =   44
          Bold            =   False
          Caption         =   "Monitor Settings"
-         ControlOrder    =   44
          Enabled         =   True
-         Height          =   161
+         Height          =   190
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
          Left            =   432
@@ -1504,34 +1507,34 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   10
          TabPanelIndex   =   2
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
          Top             =   41
          Underline       =   False
          Visible         =   True
          Width           =   155
          Begin StaticText lbl_monitor_presentation
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   45
             Bold            =   False
-            ControlOrder    =   45
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   447
+            Left            =   441
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1541,63 +1544,65 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   95
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   130
+            Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_monitor_presentation
             AutoDeactivate  =   True
-            BehaviorIndex   =   46
             Bold            =   False
-            ControlOrder    =   46
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   "1\r\n2"
             Italic          =   False
-            Left            =   447
+            Left            =   441
             ListIndex       =   1
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   110
             Underline       =   False
             Visible         =   True
             Width           =   40
          End
          Begin StaticText nte_monitor_detected
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   47
             Bold            =   False
-            ControlOrder    =   47
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   True
-            Left            =   442
+            Left            =   441
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1607,63 +1612,65 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   135
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   130
+            Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_monitor_control
             AutoDeactivate  =   True
-            BehaviorIndex   =   48
             Bold            =   False
-            ControlOrder    =   48
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   "1\r\n2"
             Italic          =   False
-            Left            =   447
+            Left            =   441
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   70
             Underline       =   False
             Visible         =   True
             Width           =   40
          End
          Begin StaticText lbl_monitor_control
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   49
             Bold            =   False
-            ControlOrder    =   49
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   447
+            Left            =   441
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1673,31 +1680,34 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   55
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   130
+            Width           =   137
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_monitor_default_mode
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   50
             Bold            =   False
-            ControlOrder    =   50
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             Italic          =   False
-            Left            =   447
+            Left            =   441
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1707,92 +1717,124 @@ Begin Window PresentSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   155
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_monitor_mode
             AutoDeactivate  =   True
-            BehaviorIndex   =   51
             Bold            =   False
-            ControlOrder    =   51
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_monitor"
             InitialValue    =   ""
             Italic          =   False
-            Left            =   447
+            Left            =   441
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   6
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   169
             Underline       =   False
             Visible         =   True
             Width           =   127
          End
-      End
-      Begin GroupBox grp_settings_audio
-         AutoDeactivate  =   True
-         BehaviorIndex   =   52
-         Bold            =   False
-         Caption         =   "Audio"
-         ControlOrder    =   52
-         Enabled         =   True
-         Height          =   75
-         HelpTag         =   ""
-         Index           =   2147483648
-         InitialParent   =   "tab_present_settings"
-         Italic          =   False
-         Left            =   432
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   False
-         LockRight       =   False
-         LockTop         =   False
-         Scope           =   0
-         TabIndex        =   11
-         TabPanelIndex   =   2
-         TabStop         =   True
-         TextFont        =   "Arial"
-         TextSize        =   11
-         Top             =   205
-         Underline       =   False
-         Visible         =   False
-         Width           =   155
-         Begin StaticText lbl_audio_file_to_play
+         Begin CheckBox chk_monitor_force_4_3_preview
             AutoDeactivate  =   True
-            BehaviorIndex   =   53
-            Bold            =   False
-            ControlOrder    =   53
+            Bold            =   ""
+            Caption         =   "Force 4:3 preview"
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_monitor"
+            Italic          =   ""
+            Left            =   441
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   ""
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   7
+            TabPanelIndex   =   2
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   201
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   137
+         End
+      End
+      Begin GroupBox grp_settings_audio
+         AutoDeactivate  =   True
+         Bold            =   False
+         Caption         =   "Audio"
+         Enabled         =   True
+         Height          =   75
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   False
+         Left            =   432
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   11
+         TabPanelIndex   =   2
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   239
+         Underline       =   False
+         Visible         =   False
+         Width           =   155
+         Begin StaticText lbl_audio_file_to_play
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
             Left            =   441
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
             TabStop         =   True
@@ -1801,100 +1843,103 @@ Begin Window PresentSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   11
-            Top             =   223
+            Top             =   257
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   100
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PushButton btn_audio_browse
             AutoDeactivate  =   True
-            BehaviorIndex   =   54
             Bold            =   False
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Browse"
-            ControlOrder    =   54
             Default         =   False
             Enabled         =   True
             Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
             Left            =   503
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
-            Top             =   222
+            TextUnit        =   0
+            Top             =   256
             Underline       =   False
             Visible         =   True
             Width           =   69
          End
          Begin PushButton btn_audio_play
             AutoDeactivate  =   True
-            BehaviorIndex   =   55
             Bold            =   False
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Play"
-            ControlOrder    =   55
             Default         =   False
             Enabled         =   True
             Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
             Left            =   485
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
-            Top             =   250
+            TextUnit        =   0
+            Top             =   284
             Underline       =   False
             Visible         =   True
             Width           =   40
          End
          Begin PushButton btn_audio_stop
             AutoDeactivate  =   True
-            BehaviorIndex   =   56
             Bold            =   False
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Stop"
-            ControlOrder    =   59
             Default         =   False
             Enabled         =   True
             Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_audio"
             Italic          =   False
             Left            =   440
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
-            Top             =   250
+            TextUnit        =   0
+            Top             =   284
             Underline       =   False
             Visible         =   True
             Width           =   40
@@ -1902,58 +1947,56 @@ Begin Window PresentSettingsWindow
       End
       Begin GroupBox grp_settings_misc
          AutoDeactivate  =   True
-         BehaviorIndex   =   57
          Bold            =   False
          Caption         =   "Misc"
-         ControlOrder    =   56
          Enabled         =   True
          Height          =   63
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_present_settings"
          Italic          =   False
          Left            =   432
          LockBottom      =   False
          LockedInPosition=   False
-         LockLeft        =   False
+         LockLeft        =   True
          LockRight       =   False
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          TabIndex        =   12
          TabPanelIndex   =   2
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
          Top             =   323
          Underline       =   False
          Visible         =   True
          Width           =   155
          Begin CheckBox chk_style_exit_prompt
             AutoDeactivate  =   True
-            BehaviorIndex   =   58
             Bold            =   False
             Caption         =   "Prompt when exiting"
-            ControlOrder    =   57
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   26
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_misc"
             Italic          =   False
-            Left            =   442
+            Left            =   441
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
+            State           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
+            TextUnit        =   0
             Top             =   348
             Underline       =   False
             Value           =   False
@@ -1961,26 +2004,254 @@ Begin Window PresentSettingsWindow
             Width           =   143
          End
       End
+      Begin CheckBox chk_settings_export_snapshot
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Export a snapshot of each presented slide to the following file"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   3
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   45
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   580
+      End
+      Begin TextField edt_settings_snapshot_filename
+         AcceptTabs      =   ""
+         Alignment       =   0
+         AutoDeactivate  =   True
+         BackColor       =   &hFFFFFF
+         Bold            =   ""
+         Border          =   True
+         CueText         =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LimitText       =   0
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Mask            =   ""
+         Password        =   ""
+         ReadOnly        =   ""
+         Scope           =   0
+         TabIndex        =   1
+         TabPanelIndex   =   3
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &h000000
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   67
+         Underline       =   ""
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   546
+      End
+      Begin SButton btn_settings_snapshot_file
+         AcceptFocus     =   ""
+         AcceptTabs      =   ""
+         AutoDeactivate  =   True
+         Backdrop        =   ""
+         DoubleBuffer    =   False
+         Enabled         =   True
+         EraseBackground =   True
+         HasFocus        =   0
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Left            =   578
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   False
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         StickyBevel     =   0
+         TabIndex        =   2
+         TabPanelIndex   =   3
+         TabStop         =   True
+         Top             =   67
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   22
+      End
+      Begin CheckBox chk_settings_export_preview
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Export snapshots during set preview"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   3
+         TabPanelIndex   =   3
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   101
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   546
+      End
+      Begin CheckBox chk_settings_export_live_insertions
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Export snapshots of slides inserted during a live presentation"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   4
+         TabPanelIndex   =   3
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   122
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   546
+      End
+      Begin CheckBox chk_settings_export_metadata
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Export slide details in a similarly named xml file"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         State           =   0
+         TabIndex        =   5
+         TabPanelIndex   =   3
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0
+         TextUnit        =   0
+         Top             =   143
+         Underline       =   ""
+         Value           =   False
+         Visible         =   True
+         Width           =   546
+      End
+      Begin StaticText txt_settings_snapshot_parameters
+         Active          =   ""
+         AutoDeactivate  =   True
+         Bold            =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   219
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_present_settings"
+         Italic          =   ""
+         Left            =   20
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   ""
+         LockTop         =   True
+         Multiline       =   True
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   6
+         TabPanelIndex   =   3
+         TabStop         =   True
+         Text            =   "The following parameters can be used in the file name or path:\r\n- %d: The day of the current month (01-31)\r\n- %H: The hour from the current time of day in 24-hour format (00-23)\r\n- %i: The minutes from the current time (00-59)\r\n- %m: The current month (01-12)\r\n- %n: The number of the slide in the current set (with leading zeroes)\r\n- %N: The name of the current slide\r\n- %P: Presentation index for slides during presentation (with leading zeroes)\r\n- %s: The seconds from the current time (00-59)\r\n- %S: The name of the current set\r\n- %T: The title of the current slide\r\n- %V: The verse indicator of the current slide (for songs, empty for other slides)\r\n- %Y: The current year (4 digits)\r\n"
+         TextAlign       =   0
+         TextColor       =   &h000000
+         TextFont        =   "System"
+         TextSize        =   0
+         Top             =   169
+         Transparent     =   False
+         Underline       =   ""
+         Visible         =   True
+         Width           =   546
+         Window          =   0
+         _mWindow        =   0
+      End
    End
    Begin Timer AudioTimer
-      BehaviorIndex   =   59
-      ControlOrder    =   58
-      Enabled         =   True
       Height          =   32
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   418
       LockedInPosition=   False
       Mode            =   2
       Period          =   500
       Scope           =   0
-      TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   400
-      Visible         =   True
       Width           =   32
    End
 End
@@ -1999,7 +2270,6 @@ End
 		Sub Open()
 		  dim s as string
 		  Dim n As Integer 'EMP 09/05
-		  Dim subtitles() As String 'EMP 12/05
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  App.DebugWriter.Write("Opening PresentSettingsWindow")
@@ -2042,6 +2312,7 @@ End
 		  If pop_monitor_control.ListIndex < 0 Then pop_monitor_control.ListIndex = 0
 		  pop_monitor_presentation.ListIndex = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
 		  If pop_monitor_presentation.ListIndex < 0 Then pop_monitor_presentation.ListIndex = 1
+		  chk_monitor_force_4_3_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", True, False)
 		  
 		  can_style_default.SetStyleNode SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
 		  DefaultStyle = New SlideStyle(can_style_default.GetStyleNode)
@@ -2143,6 +2414,12 @@ End
 		  "style/@blank_uses_next", True, True)
 		  rad_style_blank_prev.Value = Not rad_style_blank_next.Value
 		  //--
+		  
+		  chk_settings_export_snapshot.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@enable", False, False)
+		  edt_settings_snapshot_filename.Text = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
+		  chk_settings_export_preview.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_preview", False, False)
+		  chk_settings_export_live_insertions.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
+		  chk_settings_export_metadata.Value = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
 		  
 		  App.CenterInControlScreen Me
 		End Sub
@@ -2249,6 +2526,7 @@ End
 		  
 		  SmartML.SetValueN Settings, "monitors/@control", pop_monitor_control.ListIndex+1
 		  SmartML.SetValueN Settings, "monitors/@present", pop_monitor_presentation.ListIndex+1
+		  SmartML.SetValueB Settings, "monitors/@force_4_3_preview", chk_monitor_force_4_3_preview.Value
 		  
 		  ' pop_pres_mode added EMP, 2005
 		  ' Allows user to specify default presentation mode (single screen, dual, preview)
@@ -2295,6 +2573,17 @@ End
 		  '
 		  SmartML.SetValueB Settings, "style/@blank_uses_next", rad_style_blank_next.Value
 		  
+		  If  chk_settings_export_snapshot.Value and  edt_settings_snapshot_filename.Text="" Then
+		    MsgBox(App.T.Translate("presentation_settings/errors/snapshot_file"))
+		    Return
+		  Else
+		    SmartML.SetValueB(Settings, "snapshot/@enable", chk_settings_export_snapshot.Value)
+		    SmartML.SetValue(Settings, "snapshot/filename", edt_settings_snapshot_filename.Text)
+		    SmartML.SetValueB(Settings, "snapshot/@export_preview", chk_settings_export_preview.Value)
+		    SmartML.SetValueB(Settings, "snapshot/@export_live_insertions", chk_settings_export_live_insertions.Value)
+		    SmartML.SetValueB(Settings, "snapshot/@export_metadata", chk_settings_export_metadata.Value)
+		  End If
+		  
 		  '++JRC: Stop Audio if its playing
 		  if IsAudioPlaying = true then
 		    //++EMP, 17 Feb 2006
@@ -2302,6 +2591,7 @@ End
 		    //--
 		  end if
 		  '--
+		  
 		  //++
 		  // Bug 1462055: Save settings on dialog close
 		  //
@@ -2533,6 +2823,43 @@ End
 		  //IsAudioPlaying = false
 		  //--
 		  '--
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_settings_export_snapshot
+	#tag Event
+		Sub Action()
+		  edt_settings_snapshot_filename.Enabled = Me.Value
+		  btn_settings_snapshot_file.Enabled = Me.Value
+		  chk_settings_export_preview.Enabled = Me.Value
+		  chk_settings_export_live_insertions.Enabled = Me.Value
+		  chk_settings_export_metadata.Enabled = Me.Value
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_settings_snapshot_file
+	#tag Event
+		Sub Action()
+		  Dim dlg As New SaveAsDialog
+		  Dim f As FolderItem
+		  
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("presentation_settings/snapshot_file/@caption")
+		  dlg.PromptText = App.T.Translate("presentation_settings/snapshot_file")
+		  dlg.Filter=ImageFileTypes.JPGFiles
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_settings_snapshot_filename.Text = f.AbsolutePath()
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileopenpic, fileopenmask
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

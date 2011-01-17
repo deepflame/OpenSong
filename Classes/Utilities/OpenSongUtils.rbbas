@@ -35,6 +35,83 @@ Protected Module OpenSongUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function CompareDates(d1 As Date, d2 As Date) As Integer
+		  // ++JRC September 2007
+		  // This function Compares two dates
+		  //
+		  // Returns 0 if equal, -1 if d1 < d2, 1 if d1 > d2
+		  
+		  'Compare Years
+		  If d1.Year < d2.Year Then Return -1
+		  If d1.Year > d2.Year Then Return 1
+		  
+		  'Years are equal, now compare months
+		  If d1.Month < d2.Month Then Return -1
+		  If d1.Month > d2.Month Then Return 1
+		  
+		  'Both Years & Months are equal, compare Days
+		  If d1.Day < d2.Day Then Return -1
+		  If d1.Day > d2.Day Then Return 1
+		  
+		  'Dates are equal
+		  Return 0
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CompareTimes(t1 As Date, t2 As Date) As Integer
+		  // ++JRC October 2008
+		  // This function Compares two times
+		  //
+		  // Returns 0 if equal, -1 if t1 < t2, 1 if t1 > t2
+		  
+		  'Compare hours
+		  If t1.Hour < t2.Hour Then Return -1
+		  If t1.Hour > t2.Hour Then Return 1
+		  
+		  'Compare minutes
+		  If t1.Minute < t2.Minute Then Return -1
+		  If t1.Minute > t2.Minute Then Return 1
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function DeleteWhiteSpace(s As String) As String
+		  Dim re As New RegEx
+		  
+		  re.SearchPattern = "\s+"
+		  re.ReplacementPattern = ""
+		  re.Options.ReplaceAllMatches = True
+		  Return re.Replace(s)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetText(Extends xNode As XmlNode, sep As String = " ") As String
+		  Dim s() As String
+		  Dim c As XmlNode
+		  
+		  If xNode Is Nil Then
+		    App.DebugWriter.Write "OpenSongUtils.XmlNode.GetText: got a Nil input", 1
+		    Dim n As New NilObjectException
+		    n.Message = "XmlNode.GetText: Nil input"
+		    Raise n
+		  End If
+		  
+		  c = xNode.FirstChild
+		  
+		  While Not (c Is Nil)
+		    If c.Type = XmlNodeType.TEXT_NODE Then s.Append c.Value
+		    c = c.NextSibling
+		  Wend
+		  
+		  Return Join(s, sep)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function HTMLEntityEncode(Extends s As String) As String
 		  //++
 		  // December 2006, Ed Palmer
@@ -608,16 +685,6 @@ Protected Module OpenSongUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function InchesToPoints(Inches As String) As String
-		  //++
-		  // Polymorphic version of InchesToPoints
-		  //--
-		  
-		  Return CStr(InchesToPoints(CDbl(Inches)))
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function InchesToPoints(Inches As Double) As Double
 		  //++
 		  // Convert Inches to points
@@ -631,6 +698,16 @@ Protected Module OpenSongUtils
 		  //--
 		  
 		  Return Inches / POINT_TO_INCH
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function InchesToPoints(Inches As String) As String
+		  //++
+		  // Polymorphic version of InchesToPoints
+		  //--
+		  
+		  Return CStr(InchesToPoints(CDbl(Inches)))
 		End Function
 	#tag EndMethod
 
@@ -701,7 +778,6 @@ Protected Module OpenSongUtils
 		  Dim SelectedRow As Integer
 		  Dim TopRow As Integer
 		  Dim VisibleRowCount As Integer
-		  Dim NewTopRow As Integer
 		  
 		  If L.ListCount = 0 Then Return
 		  
@@ -729,7 +805,6 @@ Protected Module OpenSongUtils
 		  Dim SelectedRow As Integer
 		  Dim TopRow As Integer
 		  Dim VisibleRowCount As Integer
-		  Dim NewTopRow As Integer
 		  
 		  If L.ListCount = 0 Then Return
 		  
@@ -743,12 +818,51 @@ Protected Module OpenSongUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function PointsToCM(Points As String) As String
-		  //++
-		  // Polymorphic version of PointsToCM
-		  //--
+		Function ParseTime(time As String, ByRef value As Date) As Boolean
+		  //++JRC October 2008
+		  //This function takes a time string and converts it to a Date structure
+		  //
+		  //Returns True if Successful
 		  
-		  Return CStr(PointsToCM(CDbl(Points)))
+		  Dim Pos As Integer
+		  Dim hour As Integer
+		  Dim s As String
+		  
+		  
+		  Pos = InStr(0, time, ":")
+		  If Pos = 0 Then Return False
+		  
+		  value = New Date
+		  
+		  'get hour
+		  hour = Val(Left(time, Pos-1))
+		  
+		  s = Mid(time, Pos+1)
+		  
+		  Pos = InStr(0, s, ":")
+		  If Pos = 0 Then
+		    Pos  = InStr(0, s, " ")
+		  End If
+		  
+		  'get minutes
+		  value.Minute = Val(Left(s, Pos-1))
+		  s = Mid(s, Pos+1)
+		  
+		  Pos = InStr(0, s, " ")
+		  If Pos <> 0 Then
+		    'get seconds
+		    value.Second = Val(Left(s, Pos-1))
+		    s = Mid(s, Pos+1)
+		  End If
+		  
+		  If Left(s, Pos-1) = "PM" Then
+		    hour = hour + 12
+		  End If
+		  
+		  value.Hour = hour
+		  
+		  Return True
+		  
 		End Function
 	#tag EndMethod
 
@@ -767,6 +881,16 @@ Protected Module OpenSongUtils
 		  //++
 		  
 		  Return Points * POINT_TO_CM
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function PointsToCM(Points As String) As String
+		  //++
+		  // Polymorphic version of PointsToCM
+		  //--
+		  
+		  Return CStr(PointsToCM(CDbl(Points)))
 		End Function
 	#tag EndMethod
 
@@ -897,10 +1021,6 @@ Protected Module OpenSongUtils
 		  Dim reopts As New RegExOptions
 		  Dim match As RegExMatch
 		  
-		  Dim rest As Integer
-		  
-		  Dim i  As Integer
-		  
 		  re.SearchPattern = "(.*)(" + delim + "|\Z)" // "\Z" matches the end of the search string or prior to final newline
 		  reopts.DotMatchAll = True
 		  reopts.Greedy = False
@@ -914,14 +1034,14 @@ Protected Module OpenSongUtils
 		  
 		  While match <> Nil
 		    If match.SubExpressionCount > 0 Then
-		      result.Append Trim(match.SubExpressionString(1))
+		      result.Append StringUtils.Trim(match.SubExpressionString(1), StringUtils.WhiteSpaces)
 		      Try
 		        If Len(match.SubExpressionString(2)) = 0 Then Exit
 		      Catch ex As NilObjectException
 		        Exit
 		      End Try
 		    Else
-		      result.Append Trim(match.SubExpressionString(0))
+		      result.Append StringUtils.Trim(match.SubExpressionString(0), StringUtils.WhiteSpaces)
 		      Exit
 		    End If
 		    're.SearchStartPosition = re.SearchStartPosition + 1 // Get past the trailing \n
@@ -1016,132 +1136,6 @@ Protected Module OpenSongUtils
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function DeleteWhiteSpace(s As String) As String
-		  Dim re As New RegEx
-		  
-		  re.SearchPattern = "\s+"
-		  re.ReplacementPattern = ""
-		  re.Options.ReplaceAllMatches = True
-		  Return re.Replace(s)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CompareDates(d1 As Date, d2 As Date) As Integer
-		  // ++JRC September 2007
-		  // This function Compares two dates
-		  //
-		  // Returns 0 if equal, -1 if d1 < d2, 1 if d1 > d2
-		  
-		  'Compare Years
-		  If d1.Year < d2.Year Then Return -1
-		  If d1.Year > d2.Year Then Return 1
-		  
-		  'Years are equal, now compare months
-		  If d1.Month < d2.Month Then Return -1
-		  If d1.Month > d2.Month Then Return 1
-		  
-		  'Both Years & Months are equal, compare Days
-		  If d1.Day < d2.Day Then Return -1
-		  If d1.Day > d2.Day Then Return 1
-		  
-		  'Dates are equal
-		  Return 0
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetText(Extends xNode As XmlNode, sep As String = " ") As String
-		  Dim s() As String
-		  Dim c As XmlNode
-		  
-		  If xNode Is Nil Then
-		    App.DebugWriter.Write "OpenSongUtils.XmlNode.GetText: got a Nil input", 1
-		    Dim n As New NilObjectException
-		    n.Message = "XmlNode.GetText: Nil input"
-		    Raise n
-		  End If
-		  
-		  c = xNode.FirstChild
-		  
-		  While Not (c Is Nil)
-		    If c.Type = XmlNodeType.TEXT_NODE Then s.Append c.Value
-		    c = c.NextSibling
-		  Wend
-		  
-		  Return Join(s, sep)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CompareTimes(t1 As Date, t2 As Date) As Integer
-		  // ++JRC October 2008
-		  // This function Compares two times
-		  //
-		  // Returns 0 if equal, -1 if t1 < t2, 1 if t1 > t2
-		  
-		  'Compare hours
-		  If t1.Hour < t2.Hour Then Return -1
-		  If t1.Hour > t2.Hour Then Return 1
-		  
-		  'Compare minutes
-		  If t1.Minute < t2.Minute Then Return -1
-		  If t1.Minute > t2.Minute Then Return 1
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function ParseTime(time As String, ByRef value As Date) As Boolean
-		  //++JRC October 2008
-		  //This function takes a time string and converts it to a Date structure
-		  //
-		  //Returns True if Successful
-		  
-		  Dim Pos As Integer
-		  Dim hour As Integer
-		  Dim s As String
-		  
-		  
-		  Pos = InStr(0, time, ":")
-		  If Pos = 0 Then Return False
-		  
-		  value = New Date
-		  
-		  'get hour
-		  hour = Val(Left(time, Pos-1))
-		  
-		  s = Mid(time, Pos+1)
-		  
-		  Pos = InStr(0, s, ":")
-		  If Pos = 0 Then
-		    Pos  = InStr(0, s, " ")
-		  End If
-		  
-		  'get minutes
-		  value.Minute = Val(Left(s, Pos-1))
-		  s = Mid(s, Pos+1)
-		  
-		  Pos = InStr(0, s, " ")
-		  If Pos <> 0 Then
-		    'get seconds
-		    value.Second = Val(Left(s, Pos-1))
-		    s = Mid(s, Pos+1)
-		  End If
-		  
-		  If Left(s, Pos-1) = "PM" Then
-		    hour = hour + 12
-		  End If
-		  
-		  value.Hour = hour
-		  
-		  Return True
-		  
-		End Function
-	#tag EndMethod
-
 
 	#tag Note, Name = Overview
 		
@@ -1179,12 +1173,6 @@ Protected Module OpenSongUtils
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -1192,16 +1180,22 @@ Protected Module OpenSongUtils
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

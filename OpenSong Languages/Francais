@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Francais" author="adorateur.com" version="1.5.1 Français">
+<language name="Francais" author="Karel Leorier / adorateur.com" version="1.6 Français">
 
   <load_settings>
     <checking_folders>Creation/Vérification des répertoires</checking_folders>
@@ -76,7 +76,7 @@
     <title caption="Titre">Définit le titre du chant sélectionné.</title>
     <author caption="Auteur">Définit l'auteur du chant sélectionné.</author>
     <copyright caption="Copyright">Définit le copyright du chant sélectionné.</copyright>
-    <ccli caption="n°CCLI">Définit n°CCLI du chant sélectionné.</ccli>
+    <ccli caption="nÝCCLI">Définit nÝCCLI du chant sélectionné.</ccli>
     <hymn_number caption="Numéro">Définit le numéro de chant (dans un carnet, une liste...)</hymn_number>
     <presentation caption="Ordre des sections">Définit l'ordre de présentation du chant sélectionné. Les sections doivent êtr séparées par des espaces (ex. "V1 C V2 C")</presentation>
     <lyrics caption="Accords/Paroles">Modifier le chant en utilisant des lignes de section, de commentaires, d'accords et de paroles.</lyrics>
@@ -157,7 +157,7 @@
       <copy caption="Copier">Créer une copie de l'élement sélectionné.</copy>
       <paste caption="link(shared/insert/@caption)">Insère l'élément copié après la position actuelle.</paste>
 	    <store caption="Enregistrer">Enregistrer l'élement sélectionné dans la liste.</store>
-      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Présente la liste courange à l'écran, à partir de l'élément courant sélectionné. Vous avez la possibilité de présenter sur le moniteur courant, ou en mode double écran avec pilotage, ou sur un seul moniteur en mode prévisualisation du mode double écran.
         <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
         <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
         <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
@@ -168,7 +168,7 @@
       <song caption="(chant)"/>
       <custom caption="(custom)"/>
       <scripture caption="(passage)"/>
-	  <image caption="(image)"/>
+	    <image caption="(image)"/>
       <style caption="(style)">-- Changer style --</style>
       <revert caption="(style)">-- Style précédent --</revert>
       <defaultstyle caption="(style)">-- Style exporté --</defaultstyle>
@@ -189,7 +189,7 @@
     <title caption="Titre">Définit le titre affiché sur la diapositive.</title>
     <subtitle caption="Sous-titre">Définit le titre affiché sur la diapositive.</subtitle>
     <name caption="Nom">Définit le nom affiché dans la fenêtre d'aide à la présentation. Ce nom ne s'affiche pas sur la diapositive elle-même.</name>
-    <slides caption="Diapositives">Contient le corps de texte de la (des) diapositive(s) en cours dans cette diapo personalisée.</slides>
+    <slides caption="Diapositives">Contient le corps de texte de la (des) diapositive(s) en cours.</slides>
     <presentation caption="Ordre personnalisé">Modifier l'ordre pour cette présentation</presentation>
     <origorder caption="Ordre de présentation d'origine">Ordre de présentation du chant</origorder>       
     <folder caption="Song folder">Folder containing the selected item</folder>
@@ -210,7 +210,7 @@
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
     <descriptions caption="Sous-titre">Définit le titre affiché sur la diapositive (image).</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="Images" head1="Prévisualisation" head2="Description">Contient la (les) image(s) visualisée(s) dans cette diapo. Astuce : vous pouvez ajouter des images en faisant un glisser/déposer.</images>
+    <images caption="Images" head1="Prévisualisation" head2="Description">Contien la (les) image(s) visualisée(s) dans cette diapo.</images>
     <fit_to_screen caption="Redimensionner l'image à la taille de l'écran">Fait correspondre la taille de l'image à la taille de l'écran de projection. Les petites images sont agrandies, les grandes sont rétrécies.</fit_to_screen>
     <fit_to_body caption="Redimensionner l'image à la taille de la zone de corps de texte">Les images sont toujours redimensionnées pour correspondre à zone définie dans le style du corps de texte. C'est valable pour les images plus petites ou plus grandes que la zone du corps de texte.</fit_to_body>
     <keepaspect caption="Garder les proportions">Garde les proportions de Hauteur x Largeur lors du redimensionnement.</keepaspect>
@@ -238,7 +238,7 @@
 
   <video_slides>
     <header caption="Editeur de diapositive vidéo"/>
-    <name caption="Nom de la Vidéo"/>
+    <name caption="Nom de la Vidéo">Nom utilisé par Opensong pour identifier cette diapositive.</name>
     <file caption="Fichier Vidéo">Définit le nom du fichier de cette diapositive vidéo.</file>
     <loop caption="Video en boucle">Cocher cette case pour redémarrer la vidéo lorsqu'elle se termine.</loop>
   </video_slides>
@@ -305,7 +305,8 @@
       <print caption="_Imprimer"/>
       <print_alphabetical_toc caption="Imprimer _Table des matières _alphabétique"/>
       <print_categorical_toc caption="Imprimer Table des matières par _catégories"/>
-      <song_act caption="Voir la trace activité du chant"/>
+      <song_act caption="Voir la trace _activité du chant"/>
+      <scripture caption="_Consultation de passage"/>
       <quit caption="_Quitter"/>
     </file>
     <edit caption="_Modifier">
@@ -332,6 +333,7 @@
     </settings>
     <help caption="_Aide">
       <help_topics caption="_Sommaire l'aide"/>
+      <user_manual caption="_Manuel utilisateur en ligne"/>
       <translating caption="_Traduire OpenSong"/>
       <about caption="A _Propos d'OpenSong"/>
     </help>
@@ -339,7 +341,7 @@
 
   <general_settings title="Configuration générale">
     <general caption="General" head1="Basic" head2="Special">
-      <ccli caption="N° de licence CCLI"/>
+      <ccli caption="NÝ de licence CCLI"/>
       <version_check caption="Vérifier si une nouvelle version est disponible au démarrage"/>
       <language caption="Langue"/>
     </general>
@@ -416,6 +418,7 @@
     <layout>
       <heading_border_thickness caption="Epaisseur de la bordure de titre"/>
       <title_in_caps caption="Titre en MAJ."/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Unités">
       <inches caption="Pouces"/>
@@ -459,7 +462,6 @@
       <blanks caption="Insérer des diapos vierges"/>
       <blanks_between caption="Esp. entre éléments"/>
       <time caption="Durée" helptag="Durée totale pour la transition (peut être plus longue sur des vieux systèmes)"/>
-      <frames caption="Frames" helptag="Nombre de frames ou d'étapes de transition entre les diapos"/>
       <blank_style caption="Les diapos viergent prennent le style de"/>
       <blank_prev caption="Diapo précédente"/>
       <blank_next caption="Diapo suivante"/>
@@ -726,9 +728,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <bridge_abbreviation caption="pont"/>
      <tag_abbreviation caption="lib"/>
      <author caption=""/>
-     <hymn_number caption="N°"/>
-     <ccli_number caption="N° CCLI"/>
-     <ccli_license caption="N° de licence CCLI"/>
+     <hymn_number caption="NÝ"/>
+     <ccli_number caption="NÝ CCLI"/>
+     <ccli_license caption="NÝ de licence CCLI"/>
      <presentation caption="Ordre de présentation"/>
      <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
      <separator caption="|NL|"/>
@@ -754,6 +756,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <title caption="Titre"/>
       <subtitle caption="Sous-titre"/>
       <body caption="Corps"/>
+      <body_autosize caption="Ajustement automatique de la taille de police des textes"/>
       <align caption="Alignement"/>
       <margin caption="Marges"/>
       <tabs caption="Tabulations"/>
@@ -864,23 +867,30 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <lookup caption="Consultation"/>
       <example caption="Ex: '2Pet 1:1-2' ou '2Pet 1:1-2 (KJV)'"/>
     </lookup>
-    <version caption="Version"/>
-	<search caption="Recherche de texte entier"/>
+  	<search caption="Recherche de texte entier"/>
     <books caption="Livres">
-	  <ot caption="Anc. testament"/>
-	  <nt caption="Nouv. testament"/>
+	    <ot caption="Anc. testament"/>
+	    <nt caption="Nouv. testament"/>
     </books>
-	<paragraph caption="Chapitre"/>
-	<select_file caption="Sélectionnez un fichier bible"/>
-	<from_verse caption="Du verset"/>
-	<to_verse caption="au verset"/>
-	<chars_per_slide caption="Nbr. de caractères par diapo" />
+	  <paragraph caption="Chapitre"/>
+    <colon caption=":"/>
+	  <from_verse caption="Du verset"/>
+    <dash caption="-"/>
+  	<to_verse caption="au verset"/>
+    <version caption="Version"/>
+	  <select_file caption="Sélectionnez un fichier bible"/>
     <verses_per_slide caption="Versets par diapo" />
-	<preview caption="Pévisualisation"/>
+  	<chars_per_slide caption="Nbr. de caractères par diapo" />
     <format caption="Format">
       <paragraph caption="Paragraphe"/>
       <verse caption="Verset"/>
     </format>
+    <shownumbers caption="Aff. les numéros de verset"/>
+  	<preview caption="Pévisualisation"/>
+    <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Vérifiez le format de la requête et réessayez.</format>
       <empty>Référence erronée : la référence est vide.</empty>
@@ -891,11 +901,6 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <verse>Référence erronée : Verset '%1' introuvable.</verse>
       <verse_range>Référence erronée : le verset de droite de la référence doit être plus grand que celui de gauche.</verse_range>
     </bad_reference>
-    <colon caption=":"/>
-    <dash caption="-"/>
-    <search caption="link(shared/search/@caption)"/>
-    <insert caption="link(shared/insert/@caption)"/>
-    <shownumbers caption="Aff. numéros de versets"/>
   </scripture_lookup>
 
   <module>
@@ -919,7 +924,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <password caption="Mot de passe"/>
     <for caption="Chercher"/>
     <songs head1="Pa" head2="Ch" head3="Le" head4="Titre" head5="Auteur"
-      head6="Catalogue" head7="autre titre" head8="Ligne princ." head9="tonamité" head10="n°CCLI"/>
+      head6="Catalogue" head7="autre titre" head8="Ligne princ." head9="tonamité" head10="nÝCCLI"/>
     <by caption="De">
       <title_and_aka caption="Titre et autre titre"/>
       <title caption="Titre"/>
@@ -927,7 +932,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <author caption="Auteur"/>
       <catalog caption="Catalogue"/>
       <theme caption="Thème"/>
-      <ccli caption="n°CCLI"/>
+      <ccli caption="nÝCCLI"/>
     </by>
     <filter caption="Filtre">
       <all caption="Tous"/>
@@ -1057,8 +1062,8 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <row0 caption="Copyright|copyright"/>
     <row1 caption="Auteur|author"/>
     <row2 caption="Numéro|hymn_number"/> 
-    <row3 caption="N° CCLI|ccli_number"/> 
-    <row4 caption="N° de licence CCLI|ccli_license"/>
+    <row3 caption="NÝ CCLI|ccli_number"/> 
+    <row4 caption="NÝ de licence CCLI|ccli_license"/>
   </subtitles>
 
   <shared>
@@ -1066,7 +1071,7 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <cancel caption="Annuler"/>
     <yes caption="Oui"/>
     <no caption="Non"/>
-	<apply caption="Appl&amp;iquer"/>
+	  <apply caption="Appl&amp;iquer"/>
     <browse caption="Parcourir"/>
     <browse_for caption="Parcourir les répertoires"/>
     <add caption="Ajouter"/>
@@ -1091,8 +1096,8 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <new_name caption="Veuillez entrer un nom :"/>
     <rename caption="Veuillez entrer un nom pour '%1':"/>
     <save caption="Voulez-vous enregistrer vos modifications pour '%1'?"/>
-    <delete caption="Êtes-vous sûr(e) de vouloir supprimer '%1'?"/>
-    <clear caption="Êtes-vous sûr(e) de vouloir effacer cela ?"/>
+    <delete caption="-tes-vous sûr(e) de vouloir supprimer '%1'?"/>
+    <clear caption="-tes-vous sûr(e) de vouloir effacer cela ?"/>
     <changed caption="Le chant a changé, voulez-vous le sauvegarder ?"/>
     <revert caption="Toutes les modifications vont être perdues. Continuer?"/>
     <long_operation caption="Cette opération peut prendre un certain temps. Continuer?"/>
@@ -1108,7 +1113,7 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <copyright>Copyright</copyright>
     <gpl>Ce logiciel est distribué sous licence GPL.</gpl>
     <web>Visitez http://www.opensong.org/ pour plus d'informations.</web>
-    <translating>La traduction française et le support en français sont assurés par adorateur.com. Rendez-vous sur http://opensong.adorateur.com. Pour la traduction dans une autre langue, merci de consulter le site officiel : http://opensong.org</translating>
+    <translating>Pour traduire OpenSong, copier le fichier 'English' dans le répertoire 'OpenSong Languages' et renommez-le avec la nouvelle langue. Traduire tout sauf les attributs et les balises. Ensuite envoyer le fichier à translator@opensong.org et nous l'incluerons dans la version officielle.</translating>
     <created_with_opensong>Créé avec OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1188,7 +1193,7 @@ L'équipe de développement Opensong vous prie d'excuser la gêne occasionnée.
     </cclinotavailable>
     <activity_disabled>Impossible de charger le fichier trace d'activité de chant: %1! Vérifiez que ce fichier existe et n'est pas corrompu. La visualisation des traces et le traçage d'activité seront désactivés pour cette session.</activity_disabled>
     <adding_logentry>Erreur en ajoutant une entrée dans la trace!</adding_logentry>
-    <chars_per_slide>Le nombre max de caractères par diapo doit être entre 1 et 1000.</chars_per_slide>
+    <chars_per_slide>Le nombre maximum de caractères par diapositive doit être compris entre 1 et 1000.</chars_per_slide>
   </errors>
 
   <xml_errors>
@@ -1267,5 +1272,3 @@ L'équipe de développement Opensong vous prie d'excuser la gêne occasionnée.
   </progress_status>
 
 </language>
-
- 	  	 

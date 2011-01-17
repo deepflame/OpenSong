@@ -55,7 +55,7 @@ Inherits Application
 		  DebugWriter = New DebugOutput
 		  '++JRC For compatibilty with RB 2008 debugger
 		  'RB insists on outputing the executable in a subfolder (sigh)
-		  #If DebugBuild
+		  #If DebugBuild And Not TargetMacOS
 		    AppFolder = GetFolderItem("").Parent
 		  #Else
 		    AppFolder = GetFolderItem("")
@@ -150,9 +150,6 @@ Inherits Application
 		  '++JRC translated
 		  Splash.SetStatus T.Translate("load_settings/checking_folders") + "..."
 		  '--
-		  
-		  Dim docsPath As String
-		  Dim tmp As New FolderItem
 		  
 		  ' --- CREATE DOCUMENTS FOLDER ---
 		  DocsFolder = GetDocsFolder
@@ -271,9 +268,6 @@ Inherits Application
 		    Quit
 		  End If
 		  
-		  Dim xml As XmlDocument
-		  Dim xnode As XmlNode
-		  
 		  ' --- LOAD SETTINGS ---
 		  '++JRC: Load default files if settings files in DocsFolder are corrupted (bug #1803741)
 		  'The settings folder should be handled in the Installer/Uninstaller as well
@@ -336,7 +330,6 @@ Inherits Application
 		  setVersion = SmartML.GetValueN(MyMainSettings.DocumentElement, "version/@sets")
 		  
 		  App.MouseCursor = Nil
-		  Dim f As FolderItem
 		  
 		  GraphicsX.ThicknessFactor = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "style/@thickness")
 		  
@@ -353,11 +346,6 @@ Inherits Application
 		    checkVer = new CheckVerThread
 		    checkVer.Run
 		  End If
-		  
-		  '
-		  '++JRC
-		  Globals.WhitespaceChars.Append " "
-		  Globals.WhitespaceChars.Append Chr(ENTER)
 		  
 		  '++JRC Load Song Activity Log so the user can view the log
 		  'reguardless of whether logging is enabled or not
@@ -462,7 +450,6 @@ Inherits Application
 		  Dim f As FolderItem
 		  Dim FolderName As String
 		  Dim e As RuntimeException
-		  Dim mb As SelectFolderDialog
 		  Dim Folder As String
 		  
 		  If IsPortable Then
@@ -518,12 +505,19 @@ Inherits Application
 		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If //If FolderName <> ""
 		  Else // folder found in MainPreferences, make sure it exists.
-		    If Not f.exists Then
+		    //++
+		    // If the DocumentsFolder saved in preferences doesn't exist,
+		    // the Macintosh version apparently will grab a random file.
+		    // While this will not catch a case where that file is a directory,
+		    // the odds are with us that this will catch it.
+		    // EMP, 28 August 2010
+		    //--
+		    If (Not f.exists) Or (Not f.Directory) Then
 		      Try
 		        f = QueryDocsFolder(Nil)
 		      Catch
 		        System.DebugLog "OpenSong: user cancelled document folder selection"
-		        Return Nil
+		        Quit
 		      End Try
 		      MainPreferences.SetValueFI(Prefs.kDocumentsFolder, f)
 		    End If
@@ -537,7 +531,6 @@ Inherits Application
 		  // Returns the frontmost window on the control screen
 		  // EMP 26 Feb 2006
 		  //
-		  Dim w As Window
 		  Dim wc As Integer
 		  Dim i As Integer
 		  Dim cs As Integer
@@ -560,6 +553,74 @@ Inherits Application
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetImageAsString(img As Picture) As String
+		  Dim strBase64 As String
+		  Dim f As FolderItem
+		  Dim inputStream As BinaryStream
+		  Dim QualityValue As Integer
+		  Dim QualitySetting As ImageQualityEnum
+		  Dim saveSuccess As Boolean
+		  
+		  If img <> Nil Then
+		    f = GetTemporaryFolderItem()
+		    If f <> Nil Then
+		      
+		      saveSuccess = False
+		      #If Not TargetLinux
+		        //First try to use the QuickTime exporter, that object allows quality variance
+		        //This object is not available on Linux, hence the compiler directives
+		        Dim QTExporter as QTGraphicsExporter
+		        QTExporter= GetQTGraphicsExporter("JPEG")
+		        If QTExporter <> Nil Then
+		          
+		          QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
+		          QualitySetting = ImageQualityEnum(QualityValue)
+		          
+		          Select Case QualitySetting
+		          Case ImageQualityEnum.FullCompression
+		            QTExporter.CompressionQuality = 0
+		          Case ImageQualityEnum.HighCompression
+		            QTExporter.CompressionQuality = 256
+		          Case ImageQualityEnum.LittleCompression
+		            QTExporter.CompressionQuality = 768
+		          Case ImageQualityEnum.LowCompression
+		            QTExporter.CompressionQuality = 1023
+		          Case ImageQualityEnum.NoCompression
+		            QTExporter.CompressionQuality = 1024
+		          Else
+		            QTExporter.CompressionQuality = 512
+		          End Select
+		          
+		          QTExporter.OutputFileType="JPEG"
+		          QTExporter.OutputFileCreator="ogle"
+		          saveSuccess = QTExporter.SavePicture(f,img)
+		        End If
+		      #Else
+		        Dim QTExporter As Object = Nil
+		      #EndIf
+		      
+		      If (QTExporter = Nil) Or (saveSuccess = False) Then
+		        Try
+		          //If QuickTime is not available, try to use GDI+ (Windows) or Linux, MacOS native
+		          f.SaveAsJPEG img
+		        Catch
+		          //If all others fail, use the OS default (Windows: bmp, Linux: jpg, MacOS: pict
+		          f.SaveAsPicture img
+		        End Try
+		      End If
+		      
+		      inputStream = BinaryStream.Open(f, False)
+		      strBase64 = EncodeBase64(inputStream.Read(f.Length))
+		      inputStream.Close
+		      f.delete
+		    End If
+		  End If
+		  
+		  Return strBase64
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GetPrefsFolder() As FolderItem
 		  //++
@@ -569,7 +630,6 @@ Inherits Application
 		  // name on certain platforms.
 		  //--
 		  Dim f As FolderItem
-		  Dim folder As String
 		  
 		  f = AppPreferencesFolderForOpenSong
 		  
@@ -611,6 +671,7 @@ Inherits Application
 		  
 		  Dim TempPS As PrinterSetup
 		  Dim NewPS As PrinterSetup
+		  Dim status as Boolean
 		  
 		  If MyPrinterSetup = Nil And Not ShowDialog Then Return Nil
 		  
@@ -623,7 +684,12 @@ Inherits Application
 		  End If
 		  
 		  If ShowDialog Then
-		    If TempPS.PageSetupDialog(Wnd) Then
+		    If Globals.UseSheetDialogs Then
+		      status = TempPS.PageSetupDialog(Wnd)
+		    Else
+		      status = TempPS.PageSetupDialog
+		    End If
+		    If status Then
 		      MyPrinterSetup = TempPS // Save the new settings
 		      If SmartML.GetValueB(MyPrintSettings.DocumentElement, "page/@points") Then
 		        SmartML.SetValueN(MyPrintSettings.DocumentElement, "page/@height",_
@@ -680,7 +746,6 @@ Inherits Application
 		  Dim PrefFile As String
 		  Dim v As String
 		  Dim f As FolderItem
-		  Dim e As RuntimeException
 		  
 		  #if TargetMacOS
 		    f = GetPrefsFolder().Child("org.opensong.opensong.plist")
@@ -712,10 +777,25 @@ Inherits Application
 		  MainPreferences = New prefsPlist
 		  
 		  If Not MainPreferences.Load(f) Then
-		    e = New RuntimeException
-		    e.Message = MainPreferences.ErrorString
-		    MainPreferences = Nil
-		    Raise e
+		    Dim pListErrorWnd As PlistErrorWindow = New PlistErrorWindow()
+		    If pListErrorWnd.DoRecover(f) Then
+		      If f.Exists() Then
+		        f.Delete()
+		      End If
+		      MainPreferences = New prefsPlist
+		      
+		      'Try creating the preferences from scratch.
+		      'If that fails, crash anyway...
+		      If Not MainPreferences.Load(f) Then
+		        Dim e As RuntimeException = New RuntimeException()
+		        e.Message = MainPreferences.ErrorString
+		        MainPreferences = Nil
+		        Raise e
+		      End If
+		    Else
+		      MainPreferences = Nil
+		      Quit()
+		    End If
 		  End If
 		  
 		  //++
@@ -772,15 +852,12 @@ Inherits Application
 		  
 		  #If TargetWin32 Then
 		    Dim lparam As New MemoryBlock(4)
-		    Dim hwnd As Integer
 		    Const WM_SYSCOMMAND = 274
 		    Const SC_MINIMIZE = 61472
 		    
 		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
-		    hwnd = Wnd.WinHWND
-		    
-		    status = SendMessageA(wnd.WinHWND, WM_SYSCOMMAND, SC_MINIMIZE, lparam)
+		    status = SendMessageA(wnd.Handle, WM_SYSCOMMAND, SC_MINIMIZE, lparam)
 		    
 		    Return
 		    
@@ -807,11 +884,14 @@ Inherits Application
 		  #If TargetWin32
 		    // Windows items go here
 		    mnu_file_quit.CommandKey = ""
+		    Globals.UseSheetDialogs = False
 		  #elseif TargetMacOS
 		    // Macintosh items go here
 		    mnu_help_help_topics.CommandKey = "?"
+		    Globals.UseSheetDialogs = MainPreferences.GetValueB(prefs.kUseSheetDialogs, True)
 		  #elseif TargetLinux
 		    // Linux items go here
+		    Globals.UseSheetDialogs = False
 		  #endif
 		End Sub
 	#tag EndMethod
@@ -910,8 +990,6 @@ Inherits Application
 
 	#tag Method, Flags = &h0
 		Sub RestoreWindow(Wnd As Window)
-		  
-		  Dim hwnd As Integer
 		  Dim status As Integer
 		  Dim lparam As New MemoryBlock(4)
 		  Const WM_SYSCOMMAND = 274
@@ -921,9 +999,7 @@ Inherits Application
 		  #If TargetWin32 Then
 		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
-		    hwnd = Wnd.WinHWND
-		    
-		    status = SendMessageA(wnd.WinHWND, WM_SYSCOMMAND, SC_RESTORE, lparam)
+		    status = SendMessageA(wnd.Handle, WM_SYSCOMMAND, SC_RESTORE, lparam)
 		    
 		    Return
 		    
@@ -975,7 +1051,7 @@ Inherits Application
 		    
 		    Declare Sub SetForegroundWindow Lib "user32" (ByVal hwnd as Integer)
 		    
-		    SetForegroundWindow(wnd.WinHWND)
+		    SetForegroundWindow(wnd.Handle)
 		  #ElseIf TargetCarbon Then
 		    Dim Status As Integer
 		    #If TargetMachO
@@ -996,7 +1072,7 @@ Inherits Application
 		  #If TargetWin32 Then
 		    Declare Sub ShowWindow Lib "user32" (ByVal hwnd as Integer, ByVal nCmdShow as Integer)
 		    
-		    ShowWindow(wnd.WinHWND, Cmd)
+		    ShowWindow(wnd.Handle, Cmd)
 		  #Endif
 		  '--
 		End Sub
@@ -1201,79 +1277,86 @@ Inherits Application
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function GetImageAsString(img As Picture) As String
-		  Dim strBase64 As String
-		  Dim r As New Random
-		  Dim f As FolderItem
-		  Dim inputStream As BinaryStream
-		  Dim QualityValue As Integer
-		  Dim QualitySetting As ImageQualityEnum
-		  Dim saveSuccess As Boolean
-		  
-		  If img <> Nil Then
-		    f = SpecialFolder.Temporary.Child(Str(r.InRange(100000, 999999)))
-		    If f <> Nil Then
-		      
-		      saveSuccess = False
-		      #If Not TargetLinux
-		        //First try to use the QuickTime exporter, that object allows quality variance
-		        //This object is not available on Linux, hence the compiler directives
-		        Dim QTExporter as QTGraphicsExporter
-		        QTExporter= GetQTGraphicsExporter("JPEG")
-		        If QTExporter <> Nil Then
-		          
-		          QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
-		          QualitySetting = ImageQualityEnum(QualityValue)
-		          
-		          Select Case QualitySetting
-		          Case ImageQualityEnum.FullCompression
-		            QTExporter.CompressionQuality = 0
-		          Case ImageQualityEnum.HighCompression
-		            QTExporter.CompressionQuality = 256
-		          Case ImageQualityEnum.LittleCompression
-		            QTExporter.CompressionQuality = 768
-		          Case ImageQualityEnum.LowCompression
-		            QTExporter.CompressionQuality = 1023
-		          Case ImageQualityEnum.NoCompression
-		            QTExporter.CompressionQuality = 1024
-		          Else
-		            QTExporter.CompressionQuality = 512
-		          End Select
-		          
-		          QTExporter.OutputFileType="JPEG"
-		          QTExporter.OutputFileCreator="ogle"
-		          saveSuccess = QTExporter.SavePicture(f,img)
-		        End If
-		      #Else
-		        Dim QTExporter As Object = Nil
-		      #EndIf
-		      
-		      If (QTExporter = Nil) Or (saveSuccess = False) Then
-		        Try
-		          //If QuickTime is not available, try to use GDI+ (Windows) or Linux, MacOS native
-		          f.SaveAsJPEG img
-		        Catch
-		          //If all others fail, use the OS default (Windows: bmp, Linux: jpg, MacOS: pict
-		          f.SaveAsPicture img
-		        End Try
-		      End If
-		      
-		      inputStream = f.OpenAsBinaryFile(False)
-		      strBase64 = EncodeBase64(inputStream.Read(f.Length))
-		      inputStream.Close
-		      f.delete
-		    End If
-		  End If
-		  
-		  Return strBase64
-		End Function
-	#tag EndMethod
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  If IsPortable Then
+			    Dim f As FolderItem
+			    dim S As string
+			    S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@absdatapath")
+			    if S <> "" then
+			      f = GetFolderItem(S, FolderItem.PathTypeAbsolute)
+			    else
+			      S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@relativedatapath")
+			      if S = "" then
+			        S = "OpenSong Data"
+			      end if
+			      f = AppFolder.Child(S)
+			    end if
+			    
+			    If FileUtils.CreateFolder(f) Then
+			      Return f
+			    Else
+			      If f <> Nil Then App.DebugWriter.Write("DocumentsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
+			      Return Nil
+			    End If
+			  Else // standard - not portable
+			    #If TargetLinux
+			      Return SpecialFolder.UserHome
+			    #Else
+			      Return SpecialFolder.Documents
+			    #EndIf
+			  End If
+			End Get
+		#tag EndGetter
+		AppDocumentsFolder As FolderItem
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  If IsPortable Then
+			    Return AppDocumentsFolder
+			  Else
+			    Return AppDocumentsFolder.Child("OpenSong")
+			  End If
+			End Get
+		#tag EndGetter
+		AppDocumentsFolderForOpenSong As FolderItem
+	#tag EndComputedProperty
 
 	#tag Property, Flags = &h0
 		AppFolder As FolderItem
 	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Dim f As FolderItem = Nil
+			  
+			  If IsPortable Then
+			    f = AppFolder.Child("OpenSong Settings")
+			    If Not f.Exists Then
+			      App.DebugWriter.Write("AppPreferencesFolder: Error 'OpenSong Settings' sub folder doesn't exist", 1)
+			    End If
+			  Else // standard - not portable
+			    // RealBasic SpecialFolder with some platform dependent subfolder
+			    #if TargetLinux
+			      f = SpecialFolder.Preferences.Child(".OpenSong")
+			    #elseif TargetMacOS
+			      f = SpecialFolder.Preferences
+			    #elseif TargetWin32
+			      f = SpecialFolder.Preferences.Child("OpenSong")
+			    #endif
+			  End If
+			  
+			  Return f
+			  
+			End Get
+		#tag EndGetter
+		AppPreferencesFolderForOpenSong As FolderItem
+	#tag EndComputedProperty
 
 	#tag Property, Flags = &h0
 		CapoList(0) As String
@@ -1287,8 +1370,36 @@ Inherits Application
 		DocsFolder As FolderItem
 	#tag EndProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  If Not IsNull(App.MyMainSettings) Then
+			    Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
+			  Else
+			    Return False
+			  End If
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Not IsNull(App.MyMainSettings) Then
+			    SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
+			  End If
+			End Set
+		#tag EndSetter
+		ExcludeBackgroundsImages As Boolean
+	#tag EndComputedProperty
+
 	#tag Property, Flags = &h0
 		FontList(0) As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ImageQualityList(0) As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		IsPortable As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -1360,111 +1471,31 @@ Inherits Application
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		TranslationFonts(0) As FontFace
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
 		TransitionList(0) As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		ImageQualityList(0) As String
+		TranslationFonts(0) As FontFace
 	#tag EndProperty
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", False)
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", value)
-			End Set
-		#tag EndSetter
-		ExcludeBackgroundsImages As Boolean
-	#tag EndComputedProperty
 
-	#tag Property, Flags = &h0
-		IsPortable As Boolean
-	#tag EndProperty
+	#tag Constant, Name = kActivityLog, Type = String, Dynamic = False, Default = \"activitylog/level", Scope = Public
+	#tag EndConstant
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			Dim f As FolderItem = Nil
-			
-			If IsPortable Then
-			f = AppFolder.Child("OpenSong Settings")
-			If Not f.Exists Then
-			App.DebugWriter.Write("AppPreferencesFolder: Error 'OpenSong Settings' sub folder doesn't exist", 1)
-			End If
-			Else // standard - not portable
-			// RealBasic SpecialFolder with some platform dependent subfolder
-			#if TargetLinux
-			f = SpecialFolder.Preferences.Child(".OpenSong")
-			#elseif TargetMacOS
-			f = SpecialFolder.Preferences
-			#elseif TargetWin32
-			f = SpecialFolder.Preferences.Child("OpenSong")
-			#endif
-			End If
-			
-			Return f
-			
-			End Get
-		#tag EndGetter
-		AppPreferencesFolderForOpenSong As FolderItem
-	#tag EndComputedProperty
+	#tag Constant, Name = kLogAppend, Type = String, Dynamic = False, Default = \"/@append", Scope = Public
+	#tag EndConstant
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			If IsPortable Then
-			Dim f As FolderItem
-			dim S As string
-			S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@absdatapath")
-			if S <> "" then
-			f = GetFolderItem(S, FolderItem.PathTypeAbsolute)
-			else
-			S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@relativedatapath")
-			if S = "" then
-			S = "OpenSong Data"
-			end if
-			f = AppFolder.Child(S)
-			end if
-			
-			If FileUtils.CreateFolder(f) Then
-			Return f
-			Else
-			If f <> Nil Then App.DebugWriter.Write("DocumentsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
-			Return Nil
-			End If
-			Else // standard - not portable
-			#If TargetLinux
-			Return SpecialFolder.UserHome
-			#Else
-			Return SpecialFolder.Documents
-			#EndIf
-			End If
-			End Get
-		#tag EndGetter
-		AppDocumentsFolder As FolderItem
-	#tag EndComputedProperty
+	#tag Constant, Name = kLogConsole, Type = String, Dynamic = False, Default = \"/@console", Scope = Public
+	#tag EndConstant
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			If IsPortable Then
-			Return AppDocumentsFolder
-			Else
-			Return AppDocumentsFolder.Child("OpenSong")
-			End If
-			End Get
-		#tag EndGetter
-		AppDocumentsFolderForOpenSong As FolderItem
-	#tag EndComputedProperty
+	#tag Constant, Name = kLogLevel, Type = String, Dynamic = False, Default = \"log/level", Scope = Public
+	#tag EndConstant
 
+	#tag Constant, Name = kLogOutput, Type = String, Dynamic = False, Default = \"log/file", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kPromptBeforePresenting, Type = String, Dynamic = False, Default = \"promptbeforepresenting", Scope = Public
+	#tag EndConstant
 
 	#tag Constant, Name = POINT_TO_CM, Type = Double, Dynamic = False, Default = \"0.035277778", Scope = Public
 	#tag EndConstant
@@ -1490,32 +1521,8 @@ Inherits Application
 	#tag Constant, Name = SW_SHOWNORMAL, Type = Integer, Dynamic = False, Default = \"1", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = kLogAppend, Type = String, Dynamic = False, Default = \"/@append", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = kLogConsole, Type = String, Dynamic = False, Default = \"/@console", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = kLogLevel, Type = String, Dynamic = False, Default = \"log/level", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = kLogOutput, Type = String, Dynamic = False, Default = \"log/file", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = kActivityLog, Type = String, Dynamic = False, Default = \"activitylog/level", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = kPromptBeforePresenting, Type = String, Dynamic = False, Default = \"promptbeforepresenting", Scope = Public
-	#tag EndConstant
-
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="SplashShowing"
-			Group="Behavior"
-			InitialValue="0"
-			Type="Boolean"
-		#tag EndViewProperty
 		#tag ViewProperty
 			Name="ExcludeBackgroundsImages"
 			Group="Behavior"
@@ -1524,6 +1531,12 @@ Inherits Application
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="IsPortable"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="SplashShowing"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"

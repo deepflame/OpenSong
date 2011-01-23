@@ -1,3 +1,5 @@
+﻿-= 1.7.0. =-
+
 * Several fixes and improvements for tab processing: (Vwout)
 - tabs at the beginning of a slide now also work (bug #3141443)
 - styles with only 1 tabstop location now also work correct

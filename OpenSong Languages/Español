@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Español" author="Matías Orellana/Bruce Hoffman, Joel Cáceres" version="1.6.2">
+<language name="Español" author="Joel Cáceres" version="1.7.0">
 
   <load_settings>
     <checking_folders>Creando/Chequeando las carpetas de los documentos</checking_folders>
@@ -33,7 +33,7 @@
       <export caption="Exportar">Exporta todas las canciones.</export>
       <find caption="Buscar">Busca en el texto de todas las canciones la palabra o frase determinada.</find>
     </all_songs>
-    <new_song caption="Nueva Canción">    
+    <new_song caption="Nueva Canción">
       <create caption="Crear">Añade una nueva canción a OpenSong.</create>
       <import caption="Importar">Importa una nueva canción dentro de OpenSong usando "OpenSong SongSelect".</import>
     </new_song>
@@ -89,13 +89,13 @@
       </ins_lyrics>
       <ins_multi_verse caption="Versos Múltiples">Inserta automáticamente los prefijos de línea para acordes y letra si desea usar el formato de versos múltiples.
         <number_of_verses caption="Número de Versos"/>
-        [Parcial] <number_of_lines caption="Número de Líneas"/>
+        <number_of_lines caption="Número de Líneas"/>
       </ins_multi_verse>
       <ins_comment caption="Comentario">Los comentarios se imprimen en el cifrado pero no se muestran en las presentaciones.</ins_comment>
       <ins_column caption="Nueva Columna">El cifrado puede contener dos columnas para ayudar a que las canciones largas se ajusten en una sola hoja.</ins_column>
       <ins_page caption="Nueva Página">Indica el lugar donde se debe insertar un salto de página en el cifrado.</ins_page>
     <transpose caption="Transportar">Use esta opción para transportar automáticamente su canción a cualquier tono. La cantidad se mide en semitonos.
-      <using caption="Usar">Seleccione sostenidos de la lista para hacer que OpenSong tranporte las alteraciones en sostenidos en vez de en bemoles y vice versa.
+      <using caption="Usar">Seleccione sostenidos de la lista para hacer que OpenSong transporte las alteraciones en sostenidos en vez de en bemoles. Seleccione bemoles de la lista para hacer que OpenSong transporte las alteraciones en bemoles en vez de en sostenidos.
         <sharps caption="Sostenidos"/>
         <flats caption="Bemoles"/>
       </using>
@@ -179,8 +179,7 @@
       <insert caption="La inserción de la diapositiva copiada falló:&#10;%1"/>
     </errors>
     <messages>
-      <export_complete>&quot;%1&quot; exportado a
-%2
+      <export_complete>&quot;%1&quot; exportado a %2
       </export_complete>
     </messages>
   </sets_mode>
@@ -370,12 +369,12 @@
       <default caption="Predeterminado"/>
       <custom caption="Personalizado"/>
       <message>La nueva ubicación para OpenSong no se hará efectiva hasta que reinicie OpenSong. Puede que quiera copiar sus documentos antiguos de OpenSong sobre la nueva ubicación primero.</message>
-      <changed>Usted seleccionó usar una Carpeta de Documentos Personalizada, pero no hizo clic sobre el botón cambiar. ¿Quiere usar la nueva carpeta?</changed>
+      <changed>Usted seleccionó usar una Carpeta de Documentos Personalizada, pero no hizo clic sobre el botón cambiar.  ¿Quiere usar la nueva carpeta?</changed>
       <change caption="Cambiar"/>
       <oldfolderdb caption="Usar caché de archivo pre-V1.1"/>
     </documents_folder>
     <imagequality caption="Ajustar Calidad de Imagen">
-      <note caption="OpenSong trata de almacenar las imágenes usadas en una colección en formato JPEG. La lista desplegable abajo controla la calidad y comportamiento de las imágenes almacenadas. La lista no funcionará si QuickTime no esta instalado ya que OpenSong depende de él para almacenar imágenes JPEG en distintos rangos de calidad."/>
+      <note caption="OpenSong trata de almacenar las imágenes que son usadas en una colección en formato JPEG. Los elementos abajo controlan la calidad y comportamiento de las imágenes almacenadas. La lista no funcionará si QuickTime no esta instalado ya que OpenSong depende de él para almacenar imágenes JPEG en distintos rangos de calidad."/>
       <compression caption="Compresión de imagen" />
       <extern caption="No incluir imágenes de fondos." />
     </imagequality>
@@ -392,7 +391,7 @@
     </log>
     <startmode caption="Ventana Inicial">
       <songs caption="Canciones"/>
-      <sets  caption="Colecciones"/>
+      <sets caption="Colecciones"/>
     </startmode>
   </general_settings>
 
@@ -428,11 +427,30 @@
   </print_settings>
 
   <presentation_settings title="Configurar Presentación">
-    <settings head1="Estilo" head2="Opciones">
+    <settings head1="Estilo" head2="Opciones" head3="Instantáneas">
         <default_slides caption="Estilo de Diapositiva Pred."/>
         <scripture_slides caption="Estilo de Escrituras Pred."/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+        <export_snapshot caption="Exporte una instantánea de cada diapositiva presentada al siguiente archivo"/>
+        <snapshot_file caption="Nombre de archivo de la instantánea">Elija el nombre de archivo de la instantánea usando un diálogo de selección de archivo.</snapshot_file>
+        <export_preview caption="Exporte instantáneas durante la previsualización de la colección"/>
+        <export_live_insertions caption="Exporte instantáneas de diapositivas insertadas durante una presentación en vivo"/>
+        <export_metadata caption="Exporte detalles de la diapositiva a un archivo xml con el mismo nombre"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Los siguientes parámetros pueden ser usados en el nombre de archivo o directorio:
+    - %d: El día del mes actual (01-31)
+    - %h: La hora actual del día en formato de 24 horas (00-23)
+    - %i: Los minutos de la hora actual (00-59)
+    - %m: El mes actual (01-12)
+    - %n: El número de diapositivas en la colección actual (con ceros a la izquierda)
+    - %N: The name of the current slide
+    - %P: Índice de presentación para las diapositivas durante la presentación (con ceros a la izquierda)
+    - %s: Los segundos de la hora actual (00-59)
+    - %S: El nombre de la colección actual
+    - %T: El título de la diapositiva actual
+    - %V: El indicador de verso de la diapositiva actual (para canciones, vacío para otras diapositivas)
+    - %y: El año actual (4 dígitos)</snapshot_parameters>
     </settings>
     <transitions caption="Transiciones">
       <use_transitions caption="Activar de manera predeterminada"/>
@@ -478,6 +496,7 @@
       <presentation caption="Monitor de Presentación"/>
       <detected caption="%1 monitor(es) detectado(s)."/>
       <default_mode caption="Modo de Monitor Predeterminado"/>
+      <force_4_3_preview caption="Forzar vista previa en 4:3"/>
     </monitor>
     <logo caption="Logotipo">
       <mask caption="Máscara"/>
@@ -495,6 +514,10 @@
     <misc caption="Misc.">
       <exit_prompt caption="Preguntar al Salir"/>
     </misc>
+
+    <errors>
+        <snapshot_file>Error: la creación de instantáneas está habilitada, pero no se ha especificado un nombre de archivo</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Ayudante de Presentación">
@@ -518,15 +541,17 @@
     <exit caption="¿Salir del Presentador?"/>
     <loop caption="Rebobinar"/>
     <keys>- Teclas -
-Abajo: Próxima Diapositiva
+Abajo: Siguiente Diapositiva
 Arriba: Diapositiva Anterior
-Derecha: Próxima Sección
+Derecha: Sección Siguiente
 Izquierda: Sección Anterior
 1-9: Verso
 C: Coro
 P: Precoro
 B: Puente
 T: Etiqueta</keys>
+    <preview caption="Vista preliminar de la diapositiva actual"/>
+    <next caption="Vista preliminar de la siguiente diapositiva"/>
   </presentation_helper>
 
   <help_topics title="Temas de Ayuda">
@@ -549,7 +574,7 @@ Tecla W: Apagar en Pantalla Blanca.
 Tecla K: Apagar en Pantalla Negra.
 Tecla L: Mostrar el Logotipo de OpenSong.
 Tecla H: Ocultar el Texto, muestra sólo la imagen de fondo.
-Tecla F: Congela la Presentación (i.e. previene que se muestren nuevas diapositivas, permitiéndole cambiar la diapositiva actual sin afectar la presentación, presione N para descongelar).
+Tecla F: Congela la presentación (en otras palabras, previene que se muestren nuevas diapositivas, permitiendo cambiar la diapositiva actual sin afectar la presentación, presione N para descongelar)
 Tecla N: Modo normal (sale de la pantalla negra, etc.)
 Tecla B: Ir al Puente (denotado por una [B#] en el editor de canciones). Si hay más de un Puente, entonces al presionar la tecla B se moverá al próximo Puente.
 Tecla C: Ir al Coro (denotado por una [C#] en el editor de canciones). Si hay más de un Coro, entonces al presionar la tecla C se moverá al próximo Coro.
@@ -561,9 +586,9 @@ Note que la función de las teclas del Teclado Numérico depende del estado de la 
 </keys>
 
     <format>
-&lt;h1&gt;Formato de Letra / Acordes de OpenSong&lt;/h1&gt;
+&lt;h1&gt;Formato de Letra/Acordes de OpenSong&lt;/h1&gt;
 
-Las canciones se desglosan en los siguientes tipos de líneas:líneas de Sección, líneas de Acorde, líneas de Letra y líneas de Comentarios . Una simple canción puede ser algo como esto: 
+Las canciones se desglosan en los siguientes tipos de líneas:líneas de Sección, líneas de Acorde, líneas de Letra y líneas de Comentarios . Una simple canción puede ser algo como esto:
 &lt;pre&gt;&lt;b&gt;
 ;Recuerde cantar el verso dos veces.
 [V]
@@ -572,7 +597,6 @@ Las canciones se desglosan en los siguientes tipos de líneas:líneas de Sección, 
 .D      G
  Eso es genial.
 
-[C]
 .G             C/D    D   C
  Canta el coro ahora, sí, sí,.
 .G                      C        D/F#      G
@@ -609,7 +633,7 @@ Las líneas de letra comienzan con un espacio: " ". La letra por lo general se al
 
 Los guiones bajos se sustituyen por un "-" apropiado centrado entre las partes de las palabras. 
 
-&lt;b&gt;"  "&lt;/b&gt; múltiples espacios entre las palabras son totalmente permitidos. Los guiones bajos y los espacios múltiples se eliminan automáticamente en el presentador. Al imprimir el cifrado, se quitan y se ajustan dinámicamente para adaptarse.
+&lt;b&gt;" "&lt;/b&gt; múltiples espacios entre las palabras son totalmente permitidos. Los guiones bajos y los espacios múltiples se eliminan automáticamente en el presentador. Al imprimir el cifrado, se quitan y se ajustan dinámicamente para adaptarse.
 
 &lt;b&gt;"|"&lt;/b&gt; Las barras verticales se sustituyen con espacios en el cifrado, y con nuevas líneas en el presentador.
 
@@ -619,25 +643,25 @@ Los guiones bajos se sustituyen por un "-" apropiado centrado entre las partes d
 
 Muchas canciones tienen versos múltiples que comparten los mismos acordes. En vez de repetir los acordes en cada sección de verso, podemos agruparlos por línea de verso y no por número de verso (como en un himnario). En este caso, en lugar de comenzar cada línea de letra con un espacio, empezamos cada línea de letra con el número de verso. Tenga en cuenta que la alineación de varias líneas de letra con una línea de acorde es un poco más complicado. Debe ser algo como esto:
 
-&lt;b&gt;&lt;i&gt;(No trate de cantar, el tiempo es terrible. * Sonrisa *) &lt;/i&gt;&lt;pre&gt;
+&lt;b&gt;&lt;i&gt;(No trate de cantar, el tiempo es terrible.  * Sonrisa *) &lt;/i&gt;&lt;pre&gt;
 [V]
-.G    C     G 
+.G    C     G
 1Esto es un verso;.
 2Este no es el verso dos;
 3A dónde se fue el verso tres;
 4Eter__namente no es el verso cuatro;
 
-.G       D  C                            D          G
-1Escucha la canción que estoy cantando, "Mo_________no"
-2Abre tus oídos a mi maravillosa canción.
+.G     D    C                   D          G
+1Escucha mi canción al cantar, "Mo_________no."
+2Abre tus oidos a mi maravillosa canción.
 3¿Por qué estamos cantando esta canción todavía?
-4Así no deben sonar las canciones. &lt;/pre&gt;
+4Así no debería sonar la canción.&lt;/pre&gt;
 &lt;/b&gt;
-En cuanto al Presentador se refiere, el primer carácter de cada línea de letra (es decir, 1, 2, 3, etc.) es añadido a la sección en que se encuentra. En otras palabras, una línea de sección de [V] con líneas de letra comenzando con 1, 2, 3, etc. se vería como V1, V2, V3, etc.
+En lo que concierne al Presentador, el primer carácter de cada línea de letra (es decir, 1, 2, 3, etc.) está agregado a la sección en la que está.  En otras palabras, una línea de sección de [V] con líneas de letra comenzando con 1, 2, 3, etc. se vería como V1, V2, V3, etc.
 
 &lt;h2&gt;Líneas de Comentario&lt;/h2&gt;
 
-No hay mucho que decir de una línea de comentario Las líneas de comentario son las líneas que comienzan con un punto y coma ";". Las líneas de comentario se omiten en el presentador, y aparecen con la fuente de comentario en el cifrado.
+No hay mucho que decir de una línea de comentario. Las líneas de comentario son las líneas que comienzan con un punto y coma ";". Las líneas de comentario se omiten en el presentador, y aparecen con la fuente de comentario en el cifrado.
 
 &lt;h2&gt;Saltos de Columna&lt;/h2&gt;
 
@@ -775,7 +799,7 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
     </background>
-    <trim_note caption="*Corta el pie de la imagen de fondo para esconder marcas de agua, direcciones de sitios web, etc. Esto evita distorsiones, también recorta de los lados para compensar."/>
+    <trim_note caption="*Cuts the bottom of the background to hide watermarks, web site urls, etc. To avoid distortion, this also trims from the sides to compensate."/>
   </style_editor>
 
   <style_margins title="Editor de Márgenes">
@@ -807,7 +831,7 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
   </style_tabs>
   
   <song_lookup title="Buscar Canción">
-    <header caption="Para añadir una canción, haga clic en el título de la canción y luego en 'Añadir'. Si conoce el nombre de la canción puede escribirlo en el campo de Búsqueda Rápida, hacer doble clic en el nombre de la canción o presionar ENTRAR para agregar la canción. "/>
+    <header caption="Para añadir una canción, haga clic en el título de la canción y luego en 'Añadir'. Si conoce el nombre de la canción puede escribirlo en el campo de Búsqueda Rápida,  hacer doble clic o presionar ENTRAR para agregarla. "/>
     <no_selection> No ha seleccionado una canción. </no_selection>
     <folder caption="Seleccionar Carpeta"/>
     <preview caption="Vista Preliminar de Canción"/>
@@ -836,15 +860,16 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
         correct item. For example, the local language value of "Moved"
         should always have tag="4"
       -->
-      <value tag="0">Todo</value>
-      <value tag="1">Creado</value>
-      <value tag="8">Copiado</value>
       <value tag="2">Borrado</value>
+      <value tag="8">Copiado</value>
+      <value tag="1">Creado</value>
+      <value tag="6">Imprimido</value>
       <value tag="3">Modificado</value>
       <value tag="4">Movido</value>
       <value tag="5">Presentado</value>
-      <value tag="6">Imprimido</value>
       <value tag="7">Renombrado</value>
+      <value tag="0">Todo</value>
+
     </show>
     <songs head7="Tiene acordes" head6="CCLI #" head5="Autor" head4="Título" head3="Actividad" head2="Tiempo" head1="Fecha"/> 
     <input_box>
@@ -863,9 +888,9 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
       <example caption="Ej.: '2Pe 1:1-2' o '2Pe 1:1-2 (RV)'"/>
     </lookup>
     <search caption="Buscar texto completo"/>
-    <books caption="Libro de la Biblia">
-	  <ot caption="Antiguo testamento"/>
-	  <nt caption="Nuevo testamento"/>
+    <books caption="Bible Book">
+<ot caption="Antiguo testamento"/>
+<nt caption="Nuevo testamento"/>
     </books>
     <paragraph caption="Párrafo"/>
     <colon caption=":"/>
@@ -875,7 +900,7 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
     <version caption="Versión"/>
     <select_file caption="Por favor, seleccione un archivo de Escrituras"/>
     <verses_per_slide caption="Versículos por diapositiva" />
-    <chars_per_slide caption="Máx. de caracteres/diap." />
+    <chars_per_slide caption="Máx. de caracteres/diap."/>
     <format caption="Formato">
       <paragraph caption="Párrafo"/>
       <verse caption="Verso"/>
@@ -891,7 +916,7 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
       <empty>Mala referencia: la referencia estaba vacía.</empty>
       <book>Mala referencia: no se pudo encontrar el libro.</book>
       <ambiguous>Mala referencia: Coincidencia múltiple de libros %1 %2</ambiguous>
-      <version>Mala referencia:  La versión '%1' no se pudo encontrar.</version>
+      <version>Mala referencia: La versión '%1' no se pudo encontrar.</version>
       <chapter>Mala referencia: no se pudo encontrar el capítulo '%1'.</chapter>
       <verse>Mala referencia: no se pudo encontrar el versículo '%1'.</verse>
       <verse_range>Mala referencia: el versículo "hasta" debe ser mayor o igual que el versículo desde.</verse_range>
@@ -942,10 +967,10 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
     <import caption="Importar"/>
     <errors>
       <no_data>No se encontraron datos. Por favor, verifique el texto de búsqueda y/o su ID de CCLI/contraseña.</no_data>
-      <bad_html>Error de análisis HTML. Contacte al soporte técnico de OpenSong.</bad_html>
+      <bad_html>Error parsing HTML. Contact OpenSong technical support.</bad_html>
       <no_results>No hubo resultados.</no_results>
       <no_headers>No se encontraron datos de encabezado. Por favor, compruebe el texto de búsqueda y/o su CCLI ID/contraseña .</no_headers>
-      <no_connect>No se pudo conectar a CCLI. Por favor, inténtelo de nuevo más tarde.</no_connect>
+      <no_connect>Could not connect to CCLI. Please try again later.</no_connect>
       <already_exists>La Canción ya existe.</already_exists>
     </errors>
   </import_from_ccli>
@@ -1066,7 +1091,7 @@ Haga clic en esta diapositiva para editar su estilo.</body>
     <cancel caption="Cancelar"/>
     <yes caption="Sí"/>
     <no caption="No"/>
-    <apply caption="Aplicar&amp;r"/>
+    <apply caption="Aplica&amp;r"/>
     <browse caption="Examinar"/>
     <browse_for caption="Examinar Carpeta"/>
     <add caption="Añadir"/>
@@ -1110,7 +1135,7 @@ Haga clic en esta diapositiva para editar su estilo.</body>
     <web>Para más información visite http://www.opensong.org/.</web>
     <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to opensong-translate@lists.sourceforge.net or add it in the 'Patches' Tracker on the OpenSong project page at Source Forge and we'll include it in the official release.</translating>
     <created_with_opensong>Creado con OpenSong</created_with_opensong>
-    <sources>OpenSong incluye el código fuente de:
+    <sources>OpenSong incluye código fuente de:
 StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 Ejemplos de REALbasic (http://www.declaresub.com/Articles/HowDoI.html)
@@ -1171,7 +1196,7 @@ Por favor, modifique sus preferencias.</docs_folder>
        <destdoesnotexisterror>El archivo no existe: 1%</destdoesnotexisterror>
        <nilobjecterror>NilObjectException: El argumento FolderItem para FileUtils es Nulo</nilobjecterror>
        <accessdenied>Error de protección de archivo, acceso denegado: 1%</accessdenied>
-       <fileinuse>Error de archivo en uso: 1% 
+       <fileinuse>Error de archivo en uso: 1%
 (¿Hay una segunda copia de OpenSong funcionando?)</fileinuse>
        <filenotfound>El archivo no se encontró: 1%</filenotfound>
        <invalidname>Nombre no válido para el archivo:% 1</invalidname>

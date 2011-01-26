@@ -7,9 +7,10 @@ set                     playlist
 song activity log       Záznam činností s písněmi
 Scripture               Bible
 slide                   snímek
+snapshot                momentka
 
 -->
-<language name="Čeština" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.6.2">
+<language name="Čeština" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.7.0">
 
   <load_settings>
     <checking_folders>Vytvářím/Kontroluji složku s dokumenty</checking_folders>
@@ -438,11 +439,30 @@ slide                   snímek
   </print_settings>
 
   <presentation_settings title="Nastavení prezentace">
-    <settings head1="Vzhled" head2="Nastavení">
+    <settings head1="Vzhled" head2="Nastavení" head3="Momentky">
       <default_slides caption="Výchozí styl snímku"/>
       <scripture_slides caption="Výchozí styl Bible"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+       <export_snapshot caption="Export momentky každého prezentovaného snímku do následujícího souboru"/>
+       <snapshot_file caption="Jméno souboru s momentkami">Vybrat jméno souboru momentkami v dialogu pro výběr souboru.</snapshot_file>
+       <export_preview caption="Export momentek během náhledu playlistu"/>
+       <export_live_insertions caption="Export momentek snímků vložených během prezentace naživo"/>
+       <export_metadata caption="Export podrobností snímků v podobně pojmenovaném xml souboru"/>
+       <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Následující parametry lze použít ve jménu souboru nebo cesty:
+    - %d: Den ve současném měsíci (01-31)
+    - %h: Hodina z aktuálního času dne ve 24-hodinovém formátu (00-23)
+    - %i: Minuty z aktuálního času (00-59)
+    - %m: Aktuální měsíc (01-12)
+    - %n: Počet snímků v současném playlistu (s nulami na začátku)
+    - %N: Jméno současného snímku
+    - %P: Index prezentace pro snímky během prezentace (s nulami na začátku)
+    - %s: Sekundy aktuálního času (00-59)
+    - %S: Název současného playlistu
+    - %T: Název současného snímku
+    - %V: Ukazatel verše současného snímku (pro písně, prázdné nebo jiné snímky)
+    - %y: Aktuální rok (4 číslice)</snapshot_parameters>
     </settings>
     <transitions caption="Přechody">
       <use_transitions caption="Použít přechody*"/>
@@ -488,6 +508,7 @@ slide                   snímek
       <presentation caption="Prezentační monitor"/>
       <detected caption="Počet detekovaných monitorů: %1."/>
       <default_mode caption="Výchozí typ prezentace"/>
+      <force_4_3_preview caption="Vynutit náhled v poměru 4:3"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Maska"/>     
@@ -504,7 +525,11 @@ slide                   snímek
 
     <misc caption="Různé">
       <exit_prompt caption="Dotazovat se před ukončením"/>
-   </misc>   
+    </misc>   
+
+    <errors>
+      <snapshot_file>Chyba: tvorba momentek je zapnuta, ale nebylo vloženo žádné jméno souboru.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Prezentační pomocník">
@@ -537,6 +562,8 @@ C: Refrén
 P: Před-refrén
 B: Přechod
 T: Tag (značka)</keys>
+    <preview caption="Náhled současného snímku" />
+    <next caption="Náhled dalšího snímku" />
   </presentation_helper>
 
   <help_topics title="Obsah nápovědy">

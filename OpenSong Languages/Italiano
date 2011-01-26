@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Italiano" author="Matteo TeOoh! Boca, Angelo Zampini" version="1.6.0">
+<language name="Italiano" author="Matteo TeOoh! Boca, Angelo Zampini" version="1.7.0">
 
   <load_settings>
-    <checking_folders>Sto creando/controllando la cartella Documenti</checking_folders>
-    <main>Sto caricando i settaggi principali</main>
-    <print>Sto caricando i settaggi di stampa</print>
-    <presentation>Sto caricando i settaggi della presentazione</presentation>
-    <transitions>Sto caricando la lista delle transizioni</transitions>
+    <checking_folders>Creazione/Controllo delle cartelle dei documenti</checking_folders>
+    <main>Caricamento impostazioni principali</main>
+    <print>Caricamento impostazioni di stampa</print>
+    <presentation>Caricamento settaggi della presentazione</presentation>
+    <transitions>Caricamento lista delle transizioni</transitions>
     <tempos>Sto caricando la lista dei tempi</tempos>
-    <themes>Sto caricando la lista dei temi</themes>
+    <themes>Caricamento lista dei temi</themes>
     <time_signatures>Sto caricando la lista delle notazioni temporali</time_signatures>
     <imagequality>Sto caricando la lista delle immagini</imagequality>
     <fonts>Sto caricando la lista dei font</fonts>
@@ -18,26 +18,26 @@
  </load_settings>
 
   <load_data>
-      <bible>Sto caricando la Bibbia standard</bible>
+      <bible>Caricamento Bibbia standard</bible>
       <songs_cache>Sto mettendo in cache le canzoni</songs_cache>
-      <folders>Sto caricando la cartella canzoni</folders>
-      <songs>Sto caricando le canzoni</songs>
-      <sets>Sto caricando i set</sets>
+      <folders>Caricamento delle cartelle dei canti</folders>
+      <songs>Caricamento canti</songs>
+      <sets>Caricamento dei set</sets>
   </load_data>
 
   <welcome>Benvenuti!</welcome>
 
   <songs_mode caption="Modalita' canzone">Utilizza questa modalita' per inserire o modificare le tue canzoni. Le canzoni possono essere stampate come fogli solista o mostrate con una presentazione. Ogni volta che vorrai cambiare tra le modalita' ti sara' chiesto di salvare i cambiamenti.
-    <all_songs caption="Tutte le Canzoni">
-      <print caption="Stampa">Stampa tutte le canzoni disponibili. Molto utile per stampare i canzonieri.</print>
-      <export caption="Esporta">Esporta tutte le canzoni</export>
+    <all_songs caption="Tutti i canti">
+      <print caption="Stampa">Stampa tutti i canti disponibili. Molto utile per stampare i canzonieri.</print>
+      <export caption="Esporta">Esporta tutti i canti</export>
       <find caption="Trova">Trova all'interno dei testi di tutte le canzoni la parola o frase richiesta.</find>
     </all_songs>
-    <new_song caption="Nuova Canzone">
-      <create caption="Crea">Aggiunge una nuova Canzone ad OpenSong.</create>
-      <import caption="Importa">Importa una nuova Canzone in OpenSong da CCLI SongSelect.</import>
+    <new_song caption="Nuovo Canto">
+      <create caption="Crea">Aggiungi un nuovo canto ad OpenSong.</create>
+      <import caption="Importa">Importa un nuovo canto in OpenSong da CCLI SongSelect.</import>
     </new_song>
-    <selected_song caption="Canzone attiva">
+    <selected_song caption="Canto attivo">
       <save caption="Salva">Scrive su disco la Canzone attiva.</save>
       <revert caption="Ripristina">Riporta la Canzone attiva all'ultima versione salvata su disco.</revert>
       <print caption="Stampa">Stampa la Canzone attiva.</print>
@@ -46,9 +46,9 @@
         <dual_screen caption="Schermo Doppio"/>
         <preview_dual_screen caption="Anteprima Schermo Doppio"/>
       </present>
-      <export caption="Esporta">Esporta la canzone attiva.</export>
+      <export caption="Esporta">Esporta il canto attivo.</export>
       <rename caption="Rinomina">Rinomina la canzone attiva.</rename>
-      <move caption="Sposta">Sposta la canzone attiva in un'altra cartella.
+      <move caption="Sposta">Sposta il canto attivo in un'altra cartella.
         <where caption="Sposta '%1' in:"/>
       </move>
       <copy caption="Copia">Copia la canzone attiva in un'altra cartella.
@@ -57,12 +57,12 @@
       <delete caption="Elimina">Elimina la canzone attiva.</delete>
     </selected_song>
 
-    <songs caption="Canzoni">Seleziona una canzone dalla lista per caricarla nell'editor.</songs>
+    <songs caption="Canti">Seleziona un canto dalla lista per caricarlo nell'editor.</songs>
 
-    <curr_folder caption="Cartella contenitore">Mostra la cartella contenente la canzone.</curr_folder>
+    <curr_folder caption="Cartella contenitore">Mostra la cartella contenente il canto.</curr_folder>
 
     <song_folders caption="Cartelle">Seleziona una cartella dalla lista per filtrare le canzoni mostrate.
-      <new>Crea una nuova cartella in cui salvare le canzoni.</new>
+      <new>Crea una nuova cartella in cui salvare i canti.</new>
       <delete>Elimina la cartella corrente. La cartella deve essere vuota.</delete>
       <filter_all caption="Tutte"/>
       <filter_main caption="Principale"/>
@@ -127,22 +127,22 @@
     <current_set caption="Set corrente">
       <save caption="Salva">Salva il set corrente su disco.</save>
       <rename caption="Rinomina">Rinomina il set corrente.</rename>
-      <delete caption="Elimina">Elimina il set corrente. (Le canzoni con questo settaggio non saranno rimosse)</delete>
+      <delete caption="Elimina">Elimina il set corrente. (Le canzoni in questo set non saranno rimosse)</delete>
        <saveas caption="Salva con nome">Salva il set corrente con un altro nome.</saveas>
       <present caption="Presentazione">Mostra il set corrente su schermo. Puoi scegliere il monitor attivo, un secondario o selezionare un solo monitor come se fossero due separati.
         <single_screen caption="Schermo singolo"/>
         <dual_screen caption="Schermo doppio"/>
         <preview_dual_screen caption="Anteprima schermo doppio"/>
-        <no_slides>Devi avere almeno una slide in questo set!</no_slides>
+        <no_slides>Devi avere almeno una slide nel set per presentare.</no_slides>
       </present>
-      <print_songs caption="Canzoni">Stampa solo le canzoni in questo set.
-        <no_songs>Non sono presenti canzoni in questo set.</no_songs>
+      <print_songs caption="Canti">Stampa solo i canti in questo set.
+        <no_songs>Non sono presenti canti in questo set.</no_songs>
       </print_songs>
       <print_order caption="Lista">Stampa un elenco del set.</print_order>
       <export caption="Esporta">Esporta il set in un'altra cartella.</export>
     </current_set>
     <new_item caption="Nuovo oggetto">
-      <add_song caption="Canzone">Aggiunge una canzone al set. Potrai scegliere tra tutte quelle presenti nell'editor.</add_song>
+      <add_song caption="Canto">Aggiungi un canto al set. Potrai scegliere tra tutte quelle presenti nell'editor.</add_song>
       <add_scripture caption="Citazione">Aggiunge una o piu' slide al set. Mostrera' una finestra in cui selezionare la citazione.</add_scripture>
       <add_slides caption="Slides">Aggiunge una slide personalizzata al set. Potrai aggiungere titolo, corpo e stile. Una slide personalizzata puo' essere formata anche da una serie di slides.</add_slides>
       <add_style caption="Stile">Cambia lo stile standard del set. Le modifiche possono definire un nuovo stile o tornare al precedente.</add_style>
@@ -165,7 +165,7 @@
       </presentitem>
     </current_item>
     <items caption="Oggetti nel set">Lista degli oggetti compresi nel set. Clicca su una slide per caricarla nell'editor o fai doppio click su una canzone per caricarla nell'editor.
-      <song caption="(canzone)"/>
+      <song caption="(canto)"/>
       <custom caption="(personalizzato)"/>
       <scripture caption="(scritture)"/>
       <image caption="(immagine)"/>
@@ -175,7 +175,8 @@
     </items>
     <untitled caption="Senza titolo"/>
     <errors>
-      <revert caption="Errore nel caricamento set &quot;%1&quot; dal file."/>
+      <revert caption="Errore ricaricando set &quot;%1&quot; dal file."/>
+      <insert caption="Inserimento delle slides copiate fallito:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; esportato in
@@ -230,7 +231,7 @@
   </image_slide>
 
   <style_change>
-    <header caption="Modifica Stile"/>
+    <header caption="Cambiamento stile"/>
     <revert caption="Ripristina lo stile precedente">Riporta lo stile all'ultima versione disponibile.</revert>
     <change caption="Cambia lo stile in questo">Cambia lo stile corrente in quello modificato. Le modifiche saranno valide fino ad una nuova modifica.</change>
     <style>Clicca qua per modificare lo stile.</style>
@@ -249,7 +250,7 @@
     <file caption="File PowerPoint">Imposta il nome del file PowerPoint per questa slide.</file>
   </powerpoint_slides>
 
-  <song_search title="Ricerca canzone">
+  <song_search title="Ricerca canto">
     <search caption="Inserisci i termini di ricerca:"/>
     <fields caption="Campi di ricerca">
       <title caption="link(general_song_editor/title/@caption)"/>
@@ -296,13 +297,13 @@
     <file caption="_File">
       <new caption="_Nuovo"/>
       <save caption="_Salva"/>
-      <present caption="_Presentazione">
-        <single_screen caption="Schermo Sin_golo"/>
-        <dual_screen caption="Schermo _Doppio"/>
-        <preview_dual_screen caption="_Anteprima Schermo Doppio"/>
+      <present caption="_Presenta">
+        <single_screen caption="_Singolo schermo"/>
+        <dual_screen caption="_Doppio schermo"/>
+        <preview_dual_screen caption="_Anteprima doppio schermo"/>
       </present>
-      <pagesetup caption="_Impostazione pagina"/>
-      <print caption="S_tampa"/>
+      <pagesetup caption="Imposta pa_gina"/>
+      <print caption="_Stampa"/>
       <print_alphabetical_toc caption="Stampa in ordine alfabetico"/>
       <print_categorical_toc caption="Stampa per categoria"/>
       <song_act caption="Mostra il _Log attivita'"/>
@@ -321,7 +322,7 @@
     </edit>
     <mode caption="_Modalita'">
       <songs caption="Modalita' _Canzone"/>
-      <sets caption="Impostazioni _Set"/>
+      <sets caption="Modalita' S_et"/>
     </mode>
     <settings caption="_Impostazioni">
       <presentation caption="Impostazioni della _Presentazione"/>
@@ -342,7 +343,7 @@
   <general_settings title="Configurazione Generale">
     <general caption="Generale" head1="Base" head2="Speciale">
       <ccli caption="Licenza CCLI # della Chiesa"/>
-      <version_check caption="Controlla disponibilita' aggiornamenti all'avvio"/>
+      <version_check caption="Verifica la versione più recente all'avvio"/>
       <language caption="Lingua"/>
     </general>
     <proxy caption="Proxy">
@@ -359,7 +360,7 @@
       <headings caption="Titoli"/>
       <labels caption="Etichette"/>
       <text_fields caption="Campi testo"/>
-      <fixed_width caption="Test a larghezza fissa"/>
+      <fixed_width caption="Testo a larghezza fissa"/>
       <buttons caption="Bottoni"/>
       <large_headings caption="Titoli grandi"/>
       <newpaint caption="Utilizza un nuovo stile grafico"/>
@@ -390,8 +391,8 @@
       <prompt caption="Chiedi prima della presentazione"/>
     </log>
     <startmode caption="Finestra iniziale">
-      <songs caption="Canzoni"/>
-      <sets  caption="Set"/>
+      <songs caption="Canti"/>
+      <sets  caption="Sets"/>
     </startmode>
   </general_settings>
 
@@ -417,7 +418,7 @@
     </fonts>
     <layout>
       <heading_border_thickness caption="Spessore Bordo Titolo"/>
-      <title_in_caps caption="Titolo in maiuscoletto"/>
+      <title_in_caps caption="Titolo in maiuscolo"/>
       <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Unità">
@@ -427,11 +428,30 @@
   </print_settings>
 
   <presentation_settings title="Impostazioni Presentazione">
-    <settings head1="Stile" head2="Opzioni">
+    <settings head1="Stile" head2="Opzioni" head3="Snapshots">
         <default_slides caption="Stile slide standard"/>
         <scripture_slides caption="Stile citazione standard"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+        <export_snapshot caption="Esporta una snapshot di ogni slide presentata nel seguente file"/>
+        <snapshot_file caption="Nome file Snapshot">Scegli il nome file per lo snapshot usando una finestra di selezione file.</snapshot_file>
+        <export_preview caption="Esporta le istantanee durante l'anteprima del set"/>
+        <export_live_insertions caption="Esporta le istantanee delle slide inserite durante una presentazione live"/>
+        <export_metadata caption="Esporta i dettagli della slide in un file xml con nome simile"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">I seguenti parametri possono essere usati nel nome o percorso del file:
+    - %d: Il giorno del mese in corso (01-31)
+    - %h: L'ora corrente nel formato 24-ore (00-23)
+    - %i: I minuti dall'ora corrente (00-59)
+    - %m: Il mese corrente (01-12)
+    - %n: Il numero della slide nel set corrente (con davanti zeri)
+    - %N: Il nome della slide corrente
+    - %P: L'indice di presentazione delle slides durante la presentazione (con davanti zeri)
+    - %s: I secondi dell'ora corrente (00-59)
+    - %S: Il nome del set corrente
+    - %T: Il titolo della slide corrente
+    - %V: L'indicatore di strofa della slide corrente (per canti, vuoto per le altre slide)
+    - %y: L'anno corrente (4 cifre)</snapshot_parameters>
     </settings>
     <transitions caption="Transizioni">
       <use_transitions caption="Attivate per default"/>
@@ -467,7 +487,7 @@
       <blank_next caption="Slide successiva"/>
       <initial_mode caption="Modalita' iniziale"/>
     </style>
-    <alerts caption="Avvertimenti">
+    <alerts caption="Avvisi">
       <font caption="Carattere"/>
       <align caption="Allineamento"/>
     </alerts>
@@ -477,6 +497,7 @@
       <presentation caption="Monitor Presentazione"/>
       <detected caption="%1 monitor(s) rilevato/i."/>
       <default_mode caption="Modalita' monitor standard"/>
+      <force_4_3_preview caption="Forza anteprima 4:3"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Maschera"/>
@@ -494,6 +515,10 @@
     <misc caption="Misc">
       <exit_prompt caption="Chiedi prima di uscire"/>
     </misc>
+
+    <errors>
+        <snapshot_file>Errore: la creazione di snapshots è attivata, ma non è stato inserito nessun nome file.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Assistente presentazione">
@@ -507,8 +532,8 @@
       <frozen caption="[F] Congelato"/>
     </modes>
     <actions caption="Azioni">
-      <alert caption="[A] Avvertimento">Nuovo avvertimento (lascia vuoto per cancellare)</alert>
-      <quick_song caption="[Q] Aggiungi canzone"/>
+      <alert caption="[A] Avviso">Nuovo avviso (lasciare vuoto per cancellare)</alert>
+      <quick_song caption="[Q] Aggiungi canto"/>
       <scripture caption="[S] Scrittura"/>
       <full_screen caption="[M] Schermo intero"/>
       <normal_screen caption="[M] Schermo normale"/>
@@ -526,6 +551,8 @@ C: Ritornello
 P: Pre-ritornello
 B: Bridge
 T: Tag</keys>
+    <preview caption="Anteprima slide presente" />
+    <next caption="Anteprima prossima slide" />
   </presentation_helper>
 
   <help_topics title="Help">
@@ -569,10 +596,10 @@ Attenzione: le funzioni dei tasti del Tastierino numerico dipendono dallo stato 
 
 Songs are broken down into the following line types: Section lines, Chord lines, Lyric lines, and Comment lines. A simple song might look something like this:
 &lt;pre&gt;&lt;b&gt;
-;Remember to sing the verse twice.
+;Ricorda di cantare il verso due volte.
 [V]
 .G                C
- This is a verse, this is a verse.
+ Questo è un verso, questo è un verso.
 .D          G
  That is so cool.
 
@@ -698,7 +725,7 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
     
 <print>
      <continued caption="(continua)"/>
-     <toc caption="Sommario"/>
+     <toc caption="Indice"/>
      <categorized caption="Per Categorie"/>
      <alphabetical caption="Alfabetico"/>
      <copyright caption="Copyright"/>
@@ -724,11 +751,11 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
      <verse caption="Strofa"/>
      <prechorus_abbreviation caption="pre-rit"/>
      <chorus_abbreviation caption="rit"/>
-     <bridge_abbreviation caption="brd"/>
+     <bridge_abbreviation caption="brdg"/>
      <tag_abbreviation caption="tag"/>
      <author caption=""/>
      <hymn_number caption="Numero Inno"/>
-     <ccli_number caption="CCLI #"/>
+     <ccli_number caption="Canto CCLI #"/>
      <ccli_license caption="Licenza CCLI #"/>
      <presentation caption="Ordine presentazione"/>
      <!--La stringa "|NL|" è un codice speciale per dire a OpenSong che ogni sottotitolo deve essere su una riga separata.-->
@@ -810,13 +837,13 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
     <preview caption="Anteprima"/>
   </style_tabs>
   
-  <song_lookup title="Adocchia canzone">
-    <header caption="Per aggiungere una canzone, clicca sul titolo e poi su 'Aggiungi'. Se sai il nome della canzone puoi scriverlo nel campo 'Adocchia' e scegliere 'Aggiungi'. Puoi anche doppio cliccare sulla canzone e premere INVIO."/>
+  <song_lookup title="Ricerca Canto">
+    <header caption="Per aggiungere un canto, clicca sul titolo e poi su 'Aggiungi'. Se sai il nome del canto puoi scriverlo nel campo 'Adocchia' e scegliere 'Aggiungi'. Puoi anche doppio cliccare sulla canzone e premere INVIO."/>
     <no_selection>Non hai selezionato alcuna canzone.</no_selection>
     <folder caption="Seleziona Cartella"/>
-    <preview caption="Anteprima canzone"/>
-    <lookup caption="Adocchia"/>
-    <songs head1="Nome canzone" head2="Cartella"/>
+    <preview caption="Anteprima Canto"/>
+    <lookup caption="Ricerca veloce"/>
+    <songs head1="Nome canto" head2="Cartella"/>
     <presentation caption="link(slide_editor/presentation/@caption)"/>
     <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
@@ -860,18 +887,18 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
     <merged_dupes>%1 voci duplicate sono state ignorate.</merged_dupes>
   </song_activity>
 
-  <scripture_lookup title="Adocchia citazione">
-    <lookup caption="Occhiata rapida">
+  <scripture_lookup title="Ricerca Scritture">
+    <lookup caption="Ricerca rapida">
       <reference caption="Riferimento"/>
-      <lookup caption="Adocchia"/>
-      <example caption="Es: '2Re 1:1-2'"/>
+      <lookup caption="Ricerca"/>
+      <example caption="Es: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
     </lookup>
-    <search caption="Cerca testo intero"/>
+    <search caption="Cerca in tutto il testo"/>
     <books caption="Libro della Bibbia">
 	  <ot caption="Antico testamento"/>
 	  <nt caption="Nuovo testamento"/>
     </books>
-    <paragraph caption="Paragrafo"/>
+    <paragraph caption="Capitolo"/>
     <colon caption=":"/>
     <from_verse caption="Dal versetto"/>
     <dash caption="-"/>
@@ -913,8 +940,8 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
     <generate_error>Errore nel generare l'indice; hai i permessi di scrittura in %1?</generate_error>
   </module>
 
-  <index_progress title="Attendi">
-    <top caption="Costruendo l'indice:"/>
+  <index_progress title="Attendere">
+    <top caption="Indice in costruzione:"/>
     <bottom caption="Premere 'esc' per annullare"/>
   </index_progress>
 
@@ -949,8 +976,8 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
       <bad_html>Error parsing HTML. Contatta il supporto tecnico OpenSong.</bad_html>
       <no_results>Nessun risultato.</no_results>
       <no_headers>Nessun dato. Controlla la tua parola di ricerca o il tuo CCLI ID/password.</no_headers>
-      <no_connect>Non riesco a connettermi a CCLI. Riprova piu' tardi.</no_connect>
-      <already_exists>La canzone esiste gia'.</already_exists>
+      <no_connect>Impossibile connettersi a CCLI. Riprovare piu' tardi.</no_connect>
+      <already_exists>Il canto esiste già.</already_exists>
     </errors>
   </import_from_ccli>
 
@@ -962,7 +989,7 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
   <theme_list>
     <option name="Cristo: Qualita'"/>
     <option name="Cristo: Nascita"/>
-    <option name="Cristo: Morte"/>
+    <option name="Cristo: Morte/Espiazione"/>
     <option name="Cristo: Potere/Maestà"/>
     <option name="Cristo: Amore"/>
     <option name="Cristo: Resurrezione"/>
@@ -970,7 +997,7 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
     <option name="Cristo: Vittoria"/>
     <option name="Chiesa: Obbedienza"/>
     <option name="Chiesa: Territorio"/>
-    <option name="Chiesa: Vita eterna"/>
+    <option name="Chiesa: Vita eterna/Paradiso"/>
     <option name="Chiesa: Evangelizzazione"/>
     <option name="Chiesa: Famiglia"/>
     <option name="Chiesa: Fratellanza con Dio"/>
@@ -983,8 +1010,8 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
     <option name="Frutto: Amore"/>
     <option name="Frutto: Gioia"/>
     <option name="Frutto: Pace/Conforto"/>
-    <option name="Frutto: Pazienza"/>
-    <option name="Frutto: Umilta'"/>
+    <option name="Frutto: Pazienza/Benevolenza"/>
+    <option name="Frutto: Umilta'/Mansuetudine"/>
     <option name="Dio: Attributi"/>
     <option name="Dio: Creatore/Creazione"/>
     <option name="Dio: Padre"/>
@@ -1060,9 +1087,9 @@ Clicca sulla slide per modificarne lo stile.</body>
   <subtitles caption="Sottotitoli" head1="Ordinato" head2="Attivo" head3="Descrizione">
     <row0 caption="Copyright|copyright"/>
     <row1 caption="Autore|author"/>
-    <row2 caption="Inno #|hymn_number"/> 
-    <row3 caption="#CCLI Canzone|ccli_number"/> 
-    <row4 caption="#CCLI Licenza|ccli_license"/>
+    <row2 caption="Numero Canto|hymn_number"/> 
+    <row3 caption="Numero canto CCLI|ccli_number"/> 
+    <row4 caption="Numero Licenza CCLI|ccli_license"/>
   </subtitles>
       
   <shared>
@@ -1070,13 +1097,13 @@ Clicca sulla slide per modificarne lo stile.</body>
     <cancel caption="Annulla"/>
     <yes caption="Si"/>
     <no caption="No"/>
-    <apply caption="Applica"/>
+    <apply caption="Appl&amp;ica"/>
     <browse caption="Sfoglia"/>
-    <browse_for caption="Sfoglia per cartella"/>
+    <browse_for caption="Sfoglia per cartelle"/>
     <add caption="Aggiungi"/>
     <done caption="Fatto"/>
     <untitled caption="Senza Titolo"/>
-    <click_to_change caption="Clicca per cambiare"/>
+    <click_to_change caption="Clicca per modificare"/>
     <right_click_to_clear caption="Clicca col destro per cancellare"/>
     <insert caption="Inserisci"/>
     <close caption="Chiudi"/>
@@ -1087,21 +1114,21 @@ Clicca sulla slide per modificarne lo stile.</body>
     <copy caption="Copia"/>
     <paste caption="Incolla"/>
     <select caption="Seleziona"/>
-    <exit_program caption="Esci da programma"/>
+    <exit_program caption="Esci dal programma"/>
     <export_to caption="Seleziona una cartella in cui esportare."/>
   </shared>
 
   <questions>
-    <new_name caption="Inserisci un nome:"/>
-    <rename caption="Inserisci un nuovo nome per '%1':"/>
-    <save caption="Salvare i cambiamenti a '%1'?"/>
-    <delete caption="Sicuro di voler cancellare '%1'?"/>
+    <new_name caption="Inserire un nome:"/>
+    <rename caption="Inserire un nuovo nome per '%1':"/>
+    <save caption="Vuoi salvare le modifiche a '%1'?"/>
+    <delete caption="Sei sicuro di voler cancellare '%1'?"/>
     <clear caption="Sicuro di voler azzerare?"/>
-    <changed caption="La canzone corrente e' stata modificata, salvare?"/>
-    <revert caption="Tutti i cambiamenti saranno persi. Continuare?"/>
+    <changed caption="Questo canto e' stato modificato, salvare?"/>
+    <revert caption="Tutte le modifiche saranno perse. Continuare?"/>
     <long_operation caption="Ci puo' voler molto tempo. Continuare?"/>
-    <generic_save caption="Salvare i cambiamenti?"/>
-    <generic_save_explanation caption="Non salvando, perderai tutti i cambiamenti"/>
+    <generic_save caption="Salvare le modifiche?"/>
+    <generic_save_explanation caption="Non salvando, perderai tutte le modifiche"/>
     <set_changed caption="Il set corrente e' stato modificato, vuoi salvare?"/>
     <select_docs_folder caption="Seleziona la cartella Documenti OpenSong">Dove saranno salvati tutti i file di OpenSong?</select_docs_folder>
     <activity_log caption="Vuoi che le canzoni in questa presentazione siano aggiunte al log? Questo si applichera' anche alle canzoni aggiunte al volo!"/>
@@ -1110,9 +1137,9 @@ Clicca sulla slide per modificarne lo stile.</body>
   <about>
     <additional>Sviluppo addizionale da parte di:</additional>
     <copyright>Copyright</copyright>
-    <gpl>Questo software e' rilasciato sotto licenza GPL.</gpl>
+    <gpl>Questo programma è rilasciato sotto licenza GPL.</gpl>
     <web>Visita http://www.opensong.org/ per ulteriori informazioni.</web>
-    <translating>Per tradurre OpenSong, copia il file chiamato 'English' all'interno della cartella 'OpenSong Languages' e rinominalo col nome della nuova lingua. Traduci tutto eccetto i tag e i nomi degli attributi. Poi, invia il file a opensong-translate@lists.sourceforge.net o aggiungilo nelle 'Patches' Tracker nella pagina del progetto OpenSong su Source Forge, verrà incluso nella release ufficiale.</translating>
+    <translating>Per tradurre OpenSong, copia il file 'English' nella cartella 'OpenSong Languages' e rinominalo col nome della nuova lingua. Traduci tutto eccetto i tag e i nomi degli attributi. Poi, invia il nuovo file a opensong-translate@lists.sourceforge.net o aggiungilo nelle 'Patches' Tracker nella pagina del progetto OpenSong su Source Forge, verrà incluso nella release ufficiale.</translating>
     <created_with_opensong>Creato con OpenSong</created_with_opensong>
     <sources>OpenSong include codice sorgente da:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1120,46 +1147,46 @@ HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
 iDeclare (http://www.declaresub.com/iDeclare
 SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/)
-L'immagine PuffyClouds1.jpg inclusa negli Sfondi e' Copyright FreeStockPhotos.com</sources>
+Il file immagine PuffyClouds1.jpg incluso nella cartella Backgrounds è Copyright FreeStockPhotos.com</sources>
   </about>
 
   <folderdb_errors>
     <error code="1">La cartella '%1' esiste già.</error>
-    <error code="2">Non riesco a creare la cartella '%1'.</error>
+    <error code="2">Impossibile creare la cartella '%1'.</error>
     <error code="3">Il File '%1' esiste già.</error>
     <error code="4">Non trovo il path per il file '%1'.</error>
-    <error code="5">Non riesco a scrivere nella cartella principale '%1'.</error>
+    <error code="5">Impossibile scrivere nella cartella principale '%1'.</error>
     <error code="6">Non trovo la cartella '%1'.</error>
-    <error code="7">Non riesco a cancellare la cartella '%1'.</error>
-    <error code="8">Non trovo il file '%1'.</error>
-    <error code="9">Non riesco a cancellare il file '%1'.</error>
-    <error code="10">Non riesco a rinominare il file '%2'.</error>
-    <error code="11">La cartella '%1' non e' vuota.</error>
-    <error code="12">Non riesco a spostare il file da '%1' a '%2'.</error>
+    <error code="7">Impossibile cancellare la cartella '%1'.</error>
+    <error code="8">Impossibile trovare il file '%1'.</error>
+    <error code="9">Impossibile cancellare il file '%1'.</error>
+    <error code="10">Impossibile rinominare il file '%2'.</error>
+    <error code="11">La cartella '%1' non è vuota.</error>
+    <error code="12">Impossibile spostare il file '%1' a '%2'.</error>
     <error code="13">Il File '%1' esiste gia' nella cartella '%2'.</error>
   </folderdb_errors>
 
   <errors>
     <empty_group>Il gruppo '%1' deve contenere almeno una slide.</empty_group>
     <unreadable_image>Il file immagine '%1' e' illeggibile.</unreadable_image>
-    <end_of_songs>Raggiunta la fine canzoni.</end_of_songs>
-    <already_exists>'%1' gia' esiste.</already_exists>
+    <end_of_songs>Raggiunta la fine dei canti.</end_of_songs>
+    <already_exists>'%1' esiste già.</already_exists>
     <bad_format>'%1' contiene formattazione erronea. Lo salto...</bad_format>
-    <no_songs>Non ci sono canzoni nella lista.</no_songs>
+    <no_songs>Non ci sono canti nella lista.</no_songs>
     <no_multi_screen>Non ho trovato schermi multipli.</no_multi_screen>
-    <bad_file_name>Nome file '%1' invalido.</bad_file_name>
+    <bad_file_name>Nome file '%1' non valido.</bad_file_name>
     <internal>Errore interno. Contatta il supporto tecnico.</internal>
     <no_such_song>Non trovo la canzone.</no_such_song>
     <number_please>Inserisci un numero valido.</number_please>
     <number_range>Per favore inserisci un numero compreso tra %1 e %2.</number_range>
     <no_path_allowed>Un nome file non puo' includere il percorso.</no_path_allowed>
-    <rename_error>Non riesco a rinominare il file.</rename_error>
+    <rename_error>Impossibile rinominare il file.</rename_error>
     <general1>In '%1': Errore ignoto</general1>
     <general2>In '%1': '%2'</general2>
     <folder_error>Errore cartella interno. Contatta il supporto tecnico.</folder_error>
     <create_backgrounds_folder>Non riesco a creare la cartella Sfondi: %1</create_backgrounds_folder>
     <create_sets_folder>Non riesco a creare/modificare la cartella Set %1</create_sets_folder>
-    <create_settings_folder>Non riesco a creare la cartella Settaggi: %1</create_settings_folder>
+    <create_settings_folder>Impossibile creare la cartella Settings: %1</create_settings_folder>
     <create_songs_folder>Non riesco a creare la cartella canzoni: %1</create_songs_folder>
     <no_backgrounds_folder>Non trovo la cartella Sfondi predefinita: %1, oppure e' vuota.</no_backgrounds_folder>
     <no_defaults_folder>Non trovo la cartella Standard: %1, oppure e' vuota.</no_defaults_folder>
@@ -1167,8 +1194,8 @@ L'immagine PuffyClouds1.jpg inclusa negli Sfondi e' Copyright FreeStockPhotos.co
     <no_sets_folder>Non trovo la cartella Sets predefinita: %1, oppure e' vuota.</no_sets_folder>
     <no_settings_folder>Non trovo la cartella Settaggo: %1, oppure e' vuota.</no_settings_folder>
     <no_songs_folder>Non trovo la cartella canzoni: %1, oppure e' vuota.</no_songs_folder>
-    <no_docs_folder>Non riesco a creare/trovare l cartella Documenti: %1</no_docs_folder>
-    <docs_folder>La cartella Documenti non puo' essere una sottocartella della 'OpenSong Predefinite'
+    <no_docs_folder>Impossibile creare/trovare la cartella Documenti: %1</no_docs_folder>
+    <docs_folder>La cartella Documenti non puo' essere una sottocartella di 'OpenSong Defaults'
 Cambio temporaneamente in: %1
 Per favore modifica le preferenze.</docs_folder>
     <fileutils>
@@ -1181,9 +1208,9 @@ Per favore modifica le preferenze.</docs_folder>
        <invalidname>Nome file invalido: %1</invalidname>
        <notenoughmemory>Memoria esaurita durante l'accesso al file %1
 Riavvia OpenSong e ritenta.</notenoughmemory>
-       <unknownerror>Errore ignoto di accesso al file %1</unknownerror>
-       <notaregularfile>Mi aspettavo che %1 fosse un file, non una cartella.</notaregularfile>
-       <notafolder>Mi aspettavo che %1 fosse una cartella, non un file.</notafolder>
+       <unknownerror>Errore sconosciuto accedendo al file %1</unknownerror>
+       <notaregularfile>E' previsto che %1 sia un file, non una cartella.</notaregularfile>
+       <notafolder>E' previsto che %1 sia una cartella, non un file.</notafolder>
     </fileutils>
     <cclinotavailable>Il sito CCLI e' cambiato significativamente.
 La funzione di Import e' quindi inutilizzabile fino a nuova interfaccia.
@@ -1192,7 +1219,7 @@ Il team di sviluppo di OpenSong si scusa per l'inconveniente.
     </cclinotavailable>
     <activity_disabled>Non riesco a caricare il file Log Attivita' canzoni: %1! Per favore verifica che esista e non sia corrotto. L'attivita' Log sara' disabilitata in questa sessione.</activity_disabled>
     <adding_logentry>Errore aggiungendo al log!</adding_logentry>
-    <chars_per_slide>I caratteri per slide devono essere compresi tra 1 e 1000.</chars_per_slide>
+    <chars_per_slide>I caratteri per slide devono essere tra 1 e 1000.</chars_per_slide>
   </errors>
 
   <xml_errors>
@@ -1206,7 +1233,7 @@ Il team di sviluppo di OpenSong si scusa per l'inconveniente.
       <loadxml>Errore XML caricando %1
 .&#10; L'errore è '%2' alla linea %3</loadxml>
 
-      <load1>Errore sconosciuto di caricamento %1</load1>
+      <load1>Errore sconosciuto caricando %1</load1>
       <load2>Errore durante il caricamento %1: %2</load2>
 
       <noindex>Non e' disponibile un indice di ricerca. Seleziona una nuova traduzione o riavvia OpenSong.</noindex>
@@ -1228,7 +1255,7 @@ Il team di sviluppo di OpenSong si scusa per l'inconveniente.
 
   <song>
     <errors>
-      <unknown_element>Elemento sconosciuto mentre caricavo: '%1'</unknown_element>
+      <unknown_element>Elemento sconosciuto caricando il canto: '%1'</unknown_element>
     </errors>
   </song>
 
@@ -1263,9 +1290,10 @@ Il team di sviluppo di OpenSong si scusa per l'inconveniente.
   <progress_status>
     <folder>Sistemando la cartella %1</folder>
     <lead_sheets>Generando i fogli solista</lead_sheets>
-    <process_themes>Processando i temi</process_themes>
-    <process_songs>Processando le canzoni</process_songs>
-    <export>Esportando la(e) canzone(i)</export>
+    <process_themes>Elaborazione Temi</process_themes>
+    <process_songs>Elaborazione Canti</process_songs>
+    <song_search>Ricerca Canti</song_search>
+    <export>Esportazione Canto(i)</export>
     <pass1>Ordinando, 1o passaggio</pass1>
     <pass2>Ordinando, 2o passaggio</pass2>
   </progress_status>

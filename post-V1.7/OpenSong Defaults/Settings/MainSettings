@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<main_settings>
+  <ccli id="" password="" number=""/>
+  <version songs="0.98" sets="0.96" check="false"/>
+  <geometry y="67" x="20" width="984" height="653"/>
+  <last_scripture verse_per_slide="2"/>
+  <proxy port="0" host=""/>
+  <fonts>
+  <headings font="Arial" size="11" bold="false" italic="false" underline="false" color="#000000" border="false" border_color="#000000" shadow="false" shadow_color="#000000" fill="false" fill_color="#000000"/>
+  <labels font="Arial" size="10" bold="false" italic="false" underline="false" color="#000000" border="false" border_color="#000000" shadow="false" shadow_color="#000000" fill="false" fill_color="#000000"/>
+  <text_fields font="Arial" size="10" bold="false" italic="false" underline="false" color="#000000" border="false" border_color="#000000" shadow="false" shadow_color="#000000" fill="false" fill_color="#000000"/>
+  <fixed_width font="Courier New" size="11" bold="false" italic="false" underline="false" color="#000000" border="false" border_color="#000000" shadow="false" shadow_color="#000000" fill="false" fill_color="#000000"/>
+  <large_headings font="Arial Black" size="24" bold="false" italic="false" underline="false" color="#000000" border="false" border_color="#000000" shadow="false" shadow_color="#000000" fill="false" fill_color="#000000"/>
+  <buttons font="Arial Narrow" size="11" bold="true" italic="false" underline="false" color="#000000" border="false" border_color="#000000" shadow="false" shadow_color="#000000" fill="false" fill_color="#000000"/>
+</fonts>
+  <user_defined user1="User Defined 1" user2="User Defined 2" user3="User Defined 3"/>
+</main_settings>

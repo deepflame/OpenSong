@@ -1,0 +1,1276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="1.6.2">
+
+  <load_settings>
+    <checking_folders>A dokumentumok mappáinak létrehozása/ellenőrzése</checking_folders>
+    <main>Fő beállítások betöltése</main>
+    <print>Nyomtatási beállítások betöltése</print>
+    <presentation>Vetítési beállítások betöltése</presentation>
+    <transitions>Áttűnések listájának betöltése</transitions>
+    <tempos>Tempó lista betöltése</tempos>
+    <themes>Témák betöltése</themes>
+    <time_signatures>Ütem lista  betöltése</time_signatures>
+    <imagequality>Képminőség lista betöltése</imagequality>
+    <fonts>Betűkészlet lista betöltése</fonts>
+    <latest_version>Frissítés keresése
+      <newer_available>Újabb verzió (%1) érhető el. Letölthető a www.opensong.org oldalról.</newer_available>
+    </latest_version>
+ </load_settings>
+
+  <load_data>
+      <bible>Az alapértelmezett Biblia betöltése</bible>
+      <songs_cache>Dalok gyorstárazása</songs_cache>
+      <folders>Dalok mappáinak betöltése</folders>
+      <songs>Dalok betöltése</songs>
+      <sets>Összeállítások betöltése</sets>
+  </load_data>
+
+  <welcome>Üdv mindenkinek!</welcome>
+
+  <songs_mode caption="Dal mód">Ezt az üzemmódot a dalok bevitelére és szerkesztésére használd. A dalok kinyomtathatók, vagy diaként kivetíthetők. Az összeállítás módra való átkapcsolás előtt a módosítások mentésére figyelmeztetést kapsz.
+    <all_songs caption="Minden dal">
+      <print caption="Nyomtatás">Az összes dal nyomtatása. Főként komplett akkordos kottafüzetek nyomtatásakor előnyös.</print>
+      <export caption="Exportálás">Az összes dal exportálása.</export>
+      <find caption="Keresés">A megadott szó vagy kifejezés keresése a dalok szövegében.</find>
+    </all_songs>
+    <new_song caption="Új dal">
+      <create caption="Létrehoz">Új dal hozzáadása az Opensongba.</create>
+      <import caption="Import">Dal importálása CCLI SongSelect formátumból az Opensongba.</import>
+    </new_song>
+    <selected_song caption="Kiválasztott dal">
+      <save caption="Mentés">A kiválasztott dal lemezre mentése.</save>
+      <revert caption="Visszavonás">Az aktuális dal visszaállítása a lemezen tárolt változatra.</revert>
+      <print caption="Nyomtatás">Az aktuális dal nyomtatása.</print>
+      <present caption="Vetítés">Az aktuális dal vetítése. Változások esetén a dal mentésre kerül.
+        <single_screen caption="Egy képernyő"/>
+        <dual_screen caption="Két képernyő"/>
+        <preview_dual_screen caption="Két képernyő előnézettel"/>
+      </present>
+      <export caption="Exportálás">Az aktuális dal exportálása.</export>
+      <rename caption="Átnevezés">Az aktuális dal átnevezése.</rename>
+      <move caption="Mozgatás">Az aktuális dal másik mappába mozgatása.
+        <where caption="„%1” dal ebbe a mappába kerül:"/>
+      </move>
+      <copy caption="Másolás">Az aktuális dal másik mappába másolása.
+        <where caption="„%1” dal másolata ebbe a mappába kerül:"/>
+      </copy>
+      <delete caption="Törlés">Az aktuális dal törlése.</delete>
+    </selected_song>
+
+    <songs caption="Dalok">A listából kiválasztott dal a szerkesztőbe kerül.</songs>
+
+    <curr_folder caption="Tartalmazó mappa">Megmutatja melyik mappában van az aktuális dal.</curr_folder>
+
+    <song_folders caption="Mappák">Válassz ki egy mappát a listából, hogy ezzel szűkítsd a dallistát.
+      <new>Új mappa létrehozása a dalok számára.</new>
+      <delete>Az adott mappa törlése. A mappa üres kell legyen a törlés előtt.</delete>
+      <filter_all caption="Összes"/>
+      <filter_main caption="Fő"/>
+    </song_folders>
+  </songs_mode>
+
+  <general_song_editor caption="Általános">Az aktuális dal címének, alcímének, szerzőjének, diáinak és dalszövegének elérése.
+    <header caption="Dal szerkesztő"/>
+    <show_general_editor caption="Általános"/>
+    <show_advanced_editor caption="Haladó"/>
+    <title caption="Cím">A kiválasztott dal címének beállítása.</title>
+    <author caption="Szerző">A kiválasztott dal szerzőjének beállítása.</author>
+    <copyright caption="Szerzői jog">A kiválasztott dal Szerzői jogi információk beállítása.</copyright>
+    <ccli caption="CCLI dal szám">A kiválasztott dal CCLI számának beállítása.</ccli>
+    <hymn_number caption="Dal száma">A kiválasztott dal számát beállítása.</hymn_number>
+    <presentation caption="Vetítési sorrend">A kiválasztott dal vetítési sorrendjének módosítása. Az egyes részeket szóközzel kell elválasztani. (például: „V1 C V2 C”)</presentation>
+    <lyrics caption="Akkord/dalszöveg">A dalok szerkesztése: szakasztörések, megjegyzések, akkordok és szöveg sorok beállítása.</lyrics>
+    <insert caption="Beszúrás"/>
+      <ins_section caption="Szakasz">A dal különböző részeinek (versszakok, refrén, stb.) elválasztása.
+        <section_name caption="A szakasz neve"/>
+      </ins_section>
+      <ins_lyrics caption="Akkord/Dalszöveg">Az akkordok és a szöveg sorok előtagjainak automatikus beszúrása.
+        <number_of_lines caption="Sorok száma"/>
+      </ins_lyrics>
+      <ins_multi_verse caption="Több versszak">Az akkordok és a szöveg sorok előtagjainak automatikus beszúrása több versszakos formátumban.
+        <number_of_verses caption="Versszakok száma"/>
+        <number_of_lines caption="Sorok száma"/>
+      </ins_multi_verse>
+      <ins_comment caption="Megjegyzés">A megjegyzések megjelennek nyomtatásban az akkordos kottán, de vetítés alatt nem.</ins_comment>
+      <ins_column caption="Új oszlop">A kották két oszlopot is tartalmazhatnak, hogy egy hosszabb dal is elférjen egy oldalon.</ins_column>
+      <ins_page caption="Új oldal">Oldaltörés beszúrása a nyomtatott kottában hosszú dal esetére.</ins_page>
+    <transpose caption="Transzponálás">Automatikus – fél hangközönkénti – transzponálás.
+      <using caption="Hangnemjelölés">Zenei előjegyzés (módosító jelek) megadása. A transzponálás során az akkordváltás lehet „lágy” (b – félhanggal le), illetve „erős” (# – félhanggal fel). A magyar szokásoknak megfelelően H-val jelöljük az angolszász elnevezésű B akkordot (B-vel pedig a Hb-t).
+        <sharps caption="# – kereszt"/>
+        <flats caption="b – bé"/>
+      </using>
+    </transpose>
+  </general_song_editor>
+
+  <advanced_song_editor caption="Haladó">Az aktuális dal témájának, kápójának, ütemének, stílusának, stb. elérése.
+    <header caption="Dal szerkesztő"/>
+    <show_general_editor caption="Általános"/>
+    <show_advanced_editor caption="Haladó"/>
+    <themes caption="Témák">A kiválasztott dal fő témáit módosítja.</themes>
+    <capo caption="Capo">A kiválasztott dal capóját módosítja.</capo>
+    <capo_print caption="Nyomtatás">Ha be van jelölve, akkor nyomtatásban a capós akkordok is szerepelni fognak.</capo_print>
+    <time_sig caption="Ütem">A kiválasztott dal ütemét módosítja.</time_sig>
+    <tempo caption="Tempó">A kiválasztott dal tempóját módosítja.</tempo>
+    <key caption="Hangnem">A kiválasztott dal hangnemét módosítja.</key>
+    <aka caption="Más néven">A kiválasztott dal közismert, másik címét módosítja.</aka>
+    <key_line caption="Azonosító sor">A dal azon sorának megadása, amely alapján könnyű azonosítani a keresőben.</key_line>
+    <style caption="Stílus felülírása">Kattints ide a dal egyedi stílusának módosításához. Az egyéni stílus felülírja az alapértelmezett megjelenítési beállításokat  az adott dalnál.</style>
+    <user1 caption="Egyéni megjegyzés 1">Ez az egyéni beállítások megadására használható, valamilyen külső program alkalmazása esetén. A dalszövegben tárolódik.</user1>
+    <user2 caption="Egyéni megjegyzés 2">Ez az egyéni beállítások megadására használható, valamilyen külső program alkalmazása esetén. A dalszövegben tárolódik.</user2>
+    <user3 caption="Egyéni megjegyzés 3">Ez az egyéni beállítások megadására használható, valamilyen külső program alkalmazása esetén. A dalszövegben tárolódik.</user3>
+  </advanced_song_editor>
+
+  <sets_mode caption="Összeállítás mód">Ezt az üzemmódot a dalok bevitelére és szerkesztésére használd. Az összeállítások dalok, diák sorozatainak összeállítására valók. Ha most épp dal módban vagy átkapcsolás előtt a módosítások mentésére figyelmeztetést kapsz.
+    <sets caption="Összeállítások">A legördülő menüből egy előre megadott összeállítás kiválasztása és az összeállítás szerkesztőbe való betöltése.
+      <add>Új összeállítás hozzáadása az Opensonghoz.</add>
+    </sets>
+    <current_set caption="Aktuális összeállítás">
+      <save caption="Mentés">Az aktuális összeállítás mentése (beleértve az összes elemét).</save>
+      <rename caption="Átnevezés">Az aktuális összeállítás átnevezése.</rename>
+      <delete caption="Törlés">Az aktuális összeállítás törlése. (A dalok, amelyek szerepelnek benne, nem kerülnek törlésre.)</delete>
+       <saveas caption="Más néven">Az aktuális összeállítás más néven történő elmentése.</saveas> <!-- nem fér ki: Mentés másként -->
+      <present caption="Vetítés">Az aktuális összeállítás vetítése. Lehetőséged van kiválasztani, hogy az aktuális monitoron, vagy a másodlagos monitoron, vagy az első monitoron vetíted a két monitor előnézetét.
+        <single_screen caption="Egy képernyő"/>
+        <dual_screen caption="Két képernyő"/>
+        <preview_dual_screen caption="Két képernyő előnézettel"/>
+        <no_slides>Legalább egy diát tartalmaznia kell az összeállításnak, hogy vetíthető legyen.</no_slides>
+      </present>
+      <print_songs caption="Dalok">Az összeállításban szereplő dalok nyomtatása.
+        <no_songs>Nincsenek dalok az összeállításban.</no_songs>
+      </print_songs>
+      <print_order caption="Lista">Az összeállítás vázlatát nyomtatja ki.</print_order>
+      <export caption="Exportálás">Exportálja az aktuális összeállítást egy másik mappába.</export>
+    </current_set>
+    <new_item caption="Új elem">
+      <add_song caption="Dal">Dal hozzáadása az aktuális összeállításhoz. Ha megnyomod, előugrik egy ablak, és az összes dal közül kiválaszthatod a kívánt dalt.</add_song>
+      <add_scripture caption="Ige">Igeversek hozzáadása a vetítési listához. A vers az előbukkanó ablak segítségével könnyen megkereshető, és beszúrható.</add_scripture>
+      <add_slides caption="Diák">Egyedi dia beszúrása a listába. Ide egyéni cím, alcím, szöveg kerülhet, és a megjelenítési mód is egyéni lehet. Akár több egyéni dia is egy csoportba foglalható és beszúrható.</add_slides>
+      <add_style caption="Stílus">Az aktuális összeállítás alapértelmezett stílusának módosítása bárhol az összeállításban. A stílusok révén új vetítési stílust adhatunk meg, vagy visszatérhetünk az előző/alapértelmezett stílushoz.</add_style>
+      <add_image caption="Kép">Új képdia hozzáadása az összeállításhoz. A képdiák lehetővé teszik, hogy egy képet vagy egy képsorozatot jelenítsünk meg a tórzsszöveg helyett.</add_image>      
+      <add_video caption="Videó">Új videofájl hozzáadása az összeállításhoz. A videót ilyenkor az OpenSong játssza le (feltéve, ha le tudja). </add_video>
+      <add_powerpoint caption="PowerPoint">Egy PowerPoint prezentáció beillesztése az összeállításba. A PowerPoint prezentáció vezérlése ilyenkor az Open Song-on keresztül történik.</add_powerpoint>
+    </new_item>
+    <current_item caption="Aktuális elem">
+      <move_up caption="Fel">A kiválasztott elme feljebb helyezése az összeállításban.</move_up>
+      <move_down caption="Le">A kiválasztott eleme lejjebb helyezése az összeállításban.</move_down>
+      <remove caption="Törlés">A kiválasztott elem eltávolítása az összeállításból.</remove>
+      <copy caption="Másolás">Másolat készítése a kiválasztott elemről az összeállításban.</copy>
+      <paste caption="link(shared/insert/@caption)">A másolat beillesztése az aktuális elem után.</paste>      
+      <store caption="Mentés">A kiválasztott elem mentése az összeállításban.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Kivetíti az aktuális összeállítást a képernyőre, az aktuális elemtől kezdve. Választhat, hogy az aktuális képernyőn vagy a másodlagos képernyőn vetít, ill. egy képernyőt használva megnézheti milyen lenne két képernyőn.
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
+    </current_item>
+    <items caption="Az összeállítás elemei:">Az aktuális összeállítás elemeinek kilistázása. Egy diára vagy dalra kattintva szerkeszthetjük annak tartalmát.
+      <song caption="(Dal)"/>
+      <custom caption="(Egyedi)"/>
+      <scripture caption="(Ige)"/>
+      <image caption="(Kép)"/>
+      <style caption="(Stílus)">-- Stílus módosítása --</style>
+      <revert caption="(Stílus)">-- Stílus visszaállítása --</revert>
+      <defaultstyle caption="(Stílus)">-- Exportált stílus --</defaultstyle>
+    </items>
+    <untitled caption="Névtelen"/>
+    <errors>
+      <revert caption="Hiba az összeállítás újratöltése során a következő fájlból: „%1.”"/>
+	  <insert caption="Hiba a másolt diák beszúrásakor:&#10;%1"/>
+    </errors>
+    <messages>
+      <export_complete>„%1” exportálva ide:
+„%2”
+      </export_complete>
+    </messages>
+  </sets_mode>
+
+  <slide_editor>
+    <header caption="Dia szerkesztő"/>
+    <title caption="Cím">A dia címének módosítása, mely vetítéskor jelenik meg.</title>
+    <subtitle caption="Alcím">A dia alcímének módosítása, mely vetítéskor jelenik meg.</subtitle>
+    <name caption="Név">A dia nevének módosítása, mely a vetítési segédablakban jelenik meg az azonosítás, és az eligazodás megkönnyítéséhez, de nem jelenik meg magán dián.</name>
+    <slides caption="Diák">Az aktuális dia törzsszövegének módosítása ebben a diában.</slides>
+    <presentation caption="Egyedi vetítési sorrend">A daloknál beállított megjelenítési sorrend felülírása egyéni sorrend megadásával.</presentation>
+    <origorder caption="Eredeti vetítési sorrend">A megjelenítési sorrend a fájlban.</origorder>       
+    <folder caption="A dal mappája">A kiválasztott elemet tartalmazó mappa.</folder>
+    <notes caption="Jegyzetek">Ezek a jegyzetek a vetítési segédablakban láthatók a vetítés alatt.</notes>
+    <insert caption="Beszúrás"/>
+      <ins_slide caption="Dia-csoport">Több dia csoportba foglalása. Így közös lesz a címük, alcímük, stílusuk, és az automata diavetítési beállításaik. Ezeket a diacsoportokat automatikus ismétlésre is be lehet állítani. </ins_slide>
+    <loop caption="Ismétlődő lejátszás">A jelölőnégyzetet bejelölve az OpenSong az utolsó dia bemutatása után újra elölről kezdi a bemutatót. </loop>
+    <print caption="Nyomtatható">A dia-csoport szerepeltetése nyomtatásban.</print> <!-- nem fér ki: Nyomtatásban szerepel -->
+    <transition caption="Átmenetek alkalmazása">A jelölőnégyzetet bejelölve e dia megjelenésekor az átmenetek megjelennek.</transition>
+    <auto_advance caption="Automatikus továbblépés">A másodpercek megadása, míg az egyes diák látszódni fognak automatikus diavetítés esetén. </auto_advance>
+    <seconds caption="másodpercenként"/>
+    <style caption="Stílus felülírása">A jelölőnégyzetet bejelölésével egyéni stílus adható meg. A megjelenő előnézeti képre kattintva a stílus szerkeszthetővé válik.</style>
+  </slide_editor>
+
+  <image_slide>
+    <header caption="Képdia szerkesztő"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Kép leírása az alcímben">A megjelenített kép címe jelenjen meg az alcímben.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Képek" head1="Előnézet" head2="Leírás">Tartalmazza azokat a képeket, amely ebben a diában szerepelnek. Tipp: A könnyű hozzáadáshoz ejtsünk egy vagy több képet erre a listára.</images>
+    <fit_to_screen caption="A képek átméretezése a képernyő méretére">Azok a képek, amelyek túl nagyon a vetítő méretéhez viszonytva, át lesznek méretezve, hogy a teljes kép kiférjen. A túl kicsi képek pedig nagyításra kerülnek.</fit_to_screen>
+    <fit_to_body caption="A képek átméretezése a törzsszöveg méretéhez">A képek minden elférnek a törzsszövegnek beállított területen. Ez a kissebb és a nagyobb képekre is vonatkozik.</fit_to_body>
+    <keepaspect caption="Méretarány megtartása átméretezéskor">A fennti átméretezések alkalmával a vízszintes és a függőleges arány megmarad.</keepaspect>
+    <store_as_link caption="A kép ne legyen az összeállításba mentve, hivatkozzon a képre">Az összeállításba mentett kép radikálisan megnöveli az összeállítás méretét a lemezen és a kép minőségét is befolyásolja. A hivatkozás megelőzi ezt. A „Backgrounds” mappában tárolt képek hivatkozása relatív lesz, így egy másik bemutató számítógépre való váltás könnyebben kivitelezhető. Óvatosnak kell lenni, ha a bemutató más számítógépen kerül vetítésre, mint amelyiken készült!</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Feladatok" />
+      <ins_image caption="Kép hozzáadása">Egy képet ad hozzá ehhez a diához, amelynek lehet címe, alcíme, stílusa és automatikus beállításai. Az így készített diák léptetése automatikus is lehet.</ins_image>
+      <del_image caption="Kép eltávolítása">A kiválasztott képet eltávolítja a diáról.</del_image>
+      <move_up caption="Fel">A kiválasztott képet a dia eleje felé mozgatja.</move_up>
+      <move_down caption="Le">A kiválasztott képet a dia vége felé mozgatja.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
+
+  <style_change>
+    <header caption="Stílus módosítása"/>
+    <revert caption="Előző stílus visszaállítása">Az összeállítás vetítés során innentől az előző stílusban folytatódik tovább a vetítés.</revert>
+    <change caption="Stílus módosítása erre">Az összeállítás bármely pontján megváltoztatható az adott elem stílusa. Az így módosított stílus egészen addig tart, amíg újra nem módosítunk az összeállítás elemeinek stílusán.</change>
+    <style>Új stílus szerkesztéséhez kattints ide.</style>
+  </style_change>
+
+  <video_slides>
+    <header caption="Videóbejátszás szerkesztő"/>
+    <name caption="Bejátszás neve">Az OpenSongban használatos név a bejátszás azonosítására.</name>
+    <file caption="Videó fájl">Az OpenSongban megjelenítendő videó fájl nevének módosítása.</file>
+    <loop caption="Videó ismétlése">Bejelölve ha vége van a videónak, a lejátszás újra kezdődik. (Végtelen sokszor, amíg le nem állítjuk.)</loop>
+  </video_slides>
+
+  <powerpoint_slides>
+    <header caption="PowerPoint vetítés szerkesztő"/>
+    <name caption="Diacsoport neve">Az OpenSongban használatos név a diacsoport azonosítására.</name>
+    <file caption="PowerPoint File">Az OpenSongban megjelenítendő PowerPoint fájl nevének módosítása.</file>
+  </powerpoint_slides>
+
+  <song_search title="Dal keresése">
+    <search caption="A keresendő kifejezés:"/>
+    <fields caption="Keresés helye">
+      <title caption="link(general_song_editor/title/@caption)"/>
+      <author caption="link(general_song_editor/author/@caption)"/>
+      <copyright caption="link(general_song_editor/copyright/@caption)"/>
+      <ccli caption="link(general_song_editor/ccli/@caption)"/>
+      <presentation caption="link(general_song_editor/presentation/@caption)"/>
+      <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+      <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
+      <themes caption="link(advanced_song_editor/themes/@caption)"/>
+      <capo caption="link(advanced_song_editor/capo/@caption)"/>
+      <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
+      <time_sig caption="link(advanced_song_editor/time_sig/@caption)"/>
+      <tempo caption="link(advanced_song_editor/tempo/@caption)"/>
+      <key caption="link(advanced_song_editor/key/@caption)"/>
+      <aka caption="link(advanced_song_editor/aka/@caption)"/>
+      <key_line caption="link(advanced_song_editor/key_line/@caption)"/>
+      <style caption="link(advanced_song_editor/style/@caption)"/>
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+    </fields>
+  </song_search>
+
+  <scripture_search title="Keresés">
+    <caption caption="Kulcsszóval való keresés"/>
+    <example caption="Egy pontos kifejezés kereséhez időzőjelbe tegyük a kifejezést, pl. &quot;Simon Péter&quot;"/>
+    <match caption="Találat">
+      <exact caption="P&amp;ontos előfordulás"/>
+      <begin caption="&amp;Szó eleji egyezés"/>
+    </match>
+    <words caption="A versben legyen benne">
+      <all caption="M&amp;inden keresett szó"/>
+      <any caption="Va&amp;lamelyik szó"/>
+    </words>
+    <search caption="&amp;Keresés"/>
+    <result caption="%1 találat van, ahol a megadott kifejezés megtalálható."/>
+    <ok caption="link(shared/ok/@caption)"/>
+    <cancel caption="link(shared/cancel/@caption)"/>
+    <result head1="Igehely" head2="Szöveg" />
+  </scripture_search>
+
+  <main_menu>
+    <file caption="_Fájl">
+      <new caption="_Új"/>
+      <save caption="_Mentés"/>
+      <present caption="_Vetítés">
+        <single_screen caption="_Egy képernyő"/>
+        <dual_screen caption="_Két képernyő"/>
+        <preview_dual_screen caption="_Két képernyő előnézettel"/>
+      </present>
+      <pagesetup caption="Ol_dalbeállítás"/>
+      <print caption="_Nyomtatás"/>
+      <print_alphabetical_toc caption="Tartalomjegyzék ABC szerinti _nyomtatása"/>
+      <print_categorical_toc caption="Tartalomjegyzék kategóriák _szerint nyomtatása"/>
+      <song_act caption="Előzmények _listázása"/>
+      <scripture caption="Igehely _keresése"/>
+      <quit caption="K_ilép"/>
+    </file>
+    <edit caption="_Szerkesztés">
+      <undo caption="_Visszavonás"/>
+      <cut caption="_Kivágás"/>
+      <copy caption="M_ásolás"/>
+      <paste caption="_Beillesztés"/>
+      <clear caption="_Törlés"/>
+      <find caption="_Keresés"/>
+      <find_next caption="K_övetkező keresése"/>
+      <selall caption="Összes _kijelölése"/>
+    </edit>
+    <mode caption="_Mód">
+      <songs caption="_Dal mód"/>
+      <sets caption="Összeállítás mód"/>
+    </mode>
+    <settings caption="_Beállítások">
+      <presentation caption="_Vetítési beállítások"/>
+      <print caption="Nyomtatási _beállítások"/>
+      <general caption="_Általános beállítások"/>
+      <refresh_songs caption="_Dal mappa frissítése"/>
+      <refresh_sets caption="_Összeállítás mappa frissítése"/>
+      <install_module caption="_Beépülő modul telepítése"/>
+    </settings>
+    <help caption="_Súgó">
+      <help_topics caption="Súgó _témakörök"/>
+      <user_manual caption="_Online felhasználói kézikönyv"/>
+      <translating caption="_Fordítás"/>
+      <about caption="_Az OpenSong névjegye"/>
+    </help>
+  </main_menu>
+
+  <general_settings title="Általános beállítások">
+    <general caption="Általános" head1="Alapvető" head2="Speciális">
+      <ccli caption="Gyülekezeti CCLI licenc szám"/>
+      <version_check caption="Frissítés keresése minden indításkor"/>
+      <language caption="Nyelv"/>
+    </general>
+    <proxy caption="Proxy">
+      <host caption="Kiszolgáló"/>
+      <port caption="Port"/>
+    </proxy>
+    <user_defined caption="Egyéni beállítások">
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <load caption="Nyelvi alapértelmezések betöltése"/>
+    </user_defined>
+    <fonts caption="Betűkészletek">
+      <headings caption="Mezőcsoport címkék"/>
+      <labels caption="Címkék"/>
+      <text_fields caption="Szövegmezők"/>
+      <fixed_width caption="Egyen-szélességű szöveg"/> <!-- nem fér ki: Rögzített szélességű szöveg -->
+      <buttons caption="Gombok"/>
+      <large_headings caption="Nagy címek"/>
+      <newpaint caption="Új vizuális stílus"/> <!-- nem fér ki: Új vizuális stílus alkalmazása -->
+    </fonts>
+    <documents_folder caption="Dokumentumok mappa">
+      <warning caption="A változások életbe lépéséhez újra kell indítani az OpenSongot."/>
+      <default caption="Alapértelmezett"/>
+      <custom caption="Egyéni"/>
+      <message>Az új dokumentumok mappa tartalma a program újraindításakor lesz elérhető. Célszerű a program bezárása után átmásolni a meglévő adatokat az új mappába.</message>
+      <changed>Egy új dokumentum mappát választottál ki, de nem kattintottál a „Változtatás” gombra. Kívánod ezt az új mappát használni?</changed>
+      <change caption="Változtatás"/>
+      <oldfolderdb caption="Az 1.1 ver. előtti gyorstárazás használata"/> <!-- nem fér ki: Az 1.1 verzió előtti fájl gyorstárazás használata -->
+    </documents_folder>
+    <imagequality caption="Képminőség">
+      <note caption="Az OpenSong az alkalmazott képeket JPEG formátumban próbálja tárolni. Az alábbiak a képek minőségének és viselkedésének beállítására szolgálnak. Az alábbi minőségbeállító le van tiltva amennyiben a QuickTime nincs telepítve, mivel az OpenSong erre építi a JPEG képek a felhasználó által beállítható minőségben való tárolását."/>
+      <compression caption="Képtömörítés" />
+      <extern caption="A háttérképek becsomagolásának tiltása." />
+    </imagequality>
+    <logging caption="A program hibás működésének rögzítése">
+      <append caption="Fájlba"/>
+      <console caption="A rendszer-események közé"/>
+      <level caption="Log szintje" disabled="Kikapcsolva"/>
+      <dialog caption="Válassz egy fájlt a logok tárolására."
+              title="Log fájl kiválasztása"/>
+    </logging>
+    <log caption="Előzmények loggolása">
+      <enable caption="Loggolás engedélyezése"/>
+      <prompt caption="Kérdezzen rá vetítés előtt"/>
+    </log>
+    <startmode caption="Kezdő képernyő">
+      <songs caption="Dalok"/>
+      <sets  caption="Összeállítások"/>
+    </startmode>
+  </general_settings>
+
+  <print_settings title="Nyomtatási beállítások">
+    <tabs head3="Margók" head1="Betűk" head2="Elrendezés"/>
+    <margins>
+      <left caption="Bal"/>
+      <top caption="Felső"/>
+      <right caption="Jobb"/>
+      <bottom caption="Alsó"/>
+      <width caption="Szélesség"/>
+      <height caption="Magasság"/>
+      <message caption="Lásd a Fájl/Oldalbeállítás menüpontot a margók beállításához"/>
+    </margins>
+    <fonts>
+      <title caption="Cím"/>
+      <author caption="Szerző"/>
+      <sections caption="Részek"/>
+      <lyrics caption="Dalszöveg"/>
+      <chords caption="Akkordok"/>
+      <capo caption="Capo"/>
+      <copyright caption="Szerzői jog"/>
+    </fonts>
+    <layout>
+      <heading_border_thickness caption="Szakaszcím szegélyének vastagsága"/>
+      <title_in_caps caption="Nagybetűs címek"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
+    </layout>
+    <units caption="Mértékegység">
+      <inches caption="Hüvelyk"/>
+      <cm caption="Centiméter"/>
+    </units>
+  </print_settings>
+
+  <presentation_settings title="Vetítési beállítások">
+    <settings head1="Stílus" head2="Beállítások">
+        <default_slides caption="Alapértelmezett diastílus"/>
+        <scripture_slides caption="Alapértelmezett Ige-stílus"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </settings>
+    <transitions caption="Áttűnések">
+      <use_transitions caption="Engedélyezve"/>
+      <transition_note caption="*Az áttűnések minősége függ a képernyő felbontásától. Ha az áttűnések lassan futnak, érdemes csökkenteni a számítógép képernyő felbontását. Ha nem jelennek meg az áttűnések, az lehet a monitor alacsony színmélysége miatt is."/>
+      <time caption="Idő" helptag="Az áttűnés teljes ideje (lassabb gépen ez tovább tarthat)"/>
+      <frames caption="Képkockák" helptag="A diák közötti áttűnés lépéseinek száma"/>
+    </transitions>      
+    <style caption="Stílus">
+      <border_thickness caption="Szegélyvastagság"/>
+      <subtitles caption="Alcímek"/>
+      <modes>
+        <normal caption="Normál"/>
+        <black caption="Fekete"/>
+        <white caption="Fehér"/>
+        <logo caption="Logó"/>
+        <hidden caption="Rejtett"/>
+        <frozen caption="Kimerevített"/>
+      </modes>
+     
+      <mouse_cursor caption="Egér mutató">
+         <!--Egyéni kurzorbeállítások megadása-->
+        <arrow caption="Mutató"/> 
+        <cross caption="Kereszt"/>
+        <hidden caption="Rejtett"/>
+        <hourglass caption="Foglalt"/> 
+        <ibeam caption="Szövegkijelölés"/> 
+      </mouse_cursor>
+      <blanks caption="Üres dia automatikus beszúrása"/>
+      <blanks_between caption="a tételek (dalok, igék) közé"/>
+      <time caption="Időtartam" helptag="Az áttűnés hossza (Lassabb gépeken tovább tarthat!)"/>
+      <blank_style caption="Üres diák stílusa legyen"/>
+      <blank_prev caption="Előző dia"/>
+      <blank_next caption="Következő dia"/>
+      <initial_mode caption="Alapértelmezett vetítési mód"/>
+    </style>
+    <alerts caption="Hirdetések">
+      <font caption="Betű"/>
+      <align caption="Igazítás"/>
+    </alerts>
+    
+    <monitor caption="Képernyők">
+      <control caption="Vezérlő képernyő"/>
+      <presentation caption="Vetítési képernyő"/>
+      <detected caption="%1 képernyőt sikerült detektálni."/>
+      <default_mode caption="Alap képernyő mód"/>
+    </monitor>
+    <logo caption="Logó">
+      <mask caption="Maszk"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </logo>
+
+    <audio caption="Audió">
+      <file_to_play caption="Lejátszandó hangfájl"/>
+      <browse caption="Tallózás"/>
+      <stop caption="Leállítás"/>
+      <play caption="Lejátszás"/>
+    </audio>
+
+    <misc caption="Egyéb">
+      <exit_prompt caption="Figyelmeztetés kilépéskor"/>
+    </misc>
+  </presentation_settings>
+
+  <presentation_helper title="Vetítési segédablak">
+    <slides head1="Cím" head2="ID" head3="Szöveg"/>
+    <modes caption="Mód">
+      <normal caption="[N] Normál"/>
+      <black caption="[K] Fekete"/>
+      <white caption="[W] Fehér"/>
+      <logo caption="[L] Logó"/>
+      <hidden caption="[H] Rejtett"/>
+      <frozen caption="[F] Kimerevített"/>
+    </modes>
+    <actions caption="Tevékenységek">
+      <alert caption="[A] Hirdetés">Gyors üzenet, hirdetmény beszúrása. Minden diára rákerül. (Törléshez hagyd üresen.)</alert>
+      <quick_song caption="[Q] Dal hozzáadása"/>
+      <scripture caption="[S] Ige hozzáadása"/>
+      <full_screen caption="[M] Teljes képernyő"/>
+      <normal_screen caption="[M] Ablakban"/>
+      <return caption="[Esc] Kilépés"/>
+    </actions>
+    <exit caption="Vetítés vége?"/>
+    <loop caption="Újra ismétel"/>
+    <keys>- Vezérlés -
+Lefelé: Következő dia
+Felfelé: Előző dia
+Jobbra: Következő rész
+Balra: Előző rész
+1-9: Versszak
+C: Refrén
+P: Elő-refrén
+B: Híd
+T: Coda</keys>
+  </presentation_helper>
+
+  <help_topics title="Súgó témakörök">
+    <tabs head1="Vetítés-vezérlő billentyűk" head2="Akkord/dalszöveg formátum" head3="Vetítési sorrend mező" head4="Bezár"/>
+    <print caption="Nyomtat"/>
+    <keys>
+&lt;h1&gt;Vetítések vezérlése&lt;/h1&gt;
+
+Vetítés alatt az alábbi billentyűk használhatók:
+
+Esc : Kilépés (vetítés vége).
+Felfelé nyíl, „8” a numerikus billentyűzeten, vagy Backspace: Előző diára ugrás.
+Lefelé nyíl, „2” a numerikus billentyűzeten, vagy Space: Következő diára ugrás.
+Balra nyíl, „4” a numerikus billentyűzeten: A lista előző elemére ugrás (előző dal kezdete).
+Jobbra nyíl, „6” a numerikus billentyűzeten: A lista következő elemére ugrás (következő dal kezdete).
+Q : Új dal beszúrása.
+A : Azonnali hirdetés beszúrása.
+S : Új Ige-vers beszúrása.
+W : Képernyő fehérré tétele.
+K : Képernyő feketévé tétele (elsötétítés).
+L : A logó megjelenítése.
+H : Csak a háttérkép látszik, a szöveg nem.
+F : Kimerevíti a képernyőn látható képet (Így nem látszanak a kivetített szövegek, ekkor új diára lehet átváltani, 
+anélkül, hogy az a képernyőn látható lenne. Kikapcsoláshoz az „N” gombot kell megnyomni).
+N : Normál mód (Ilyenkor lehet vetíteni, látszanak a szövegek, kilépés a sötétített képernyős módból, stb.)
+B : A hídhoz ugrik a dalszövegben. (Ha a dalban 
+meg van adva a szakasz a [B#] jelöléssel a dalszerkesztőben.) A # helyére számok kerülnek. 
+Ha több híd is van a dalban a B újbóli lenyomásával a következő szakaszhoz ugorhatunk.
+C : A refrénhez ugrik (A dal szerkesztőben ezek a  [C#] -vel jelölt szakaszok. 
+Ha többféle refrén van, a "C" másodszor történő lenyomásával a következő kórus-szakaszhoz ugorhatunk.
+T : A  Codára ugorhatunk vele (Ez szintén ismétlődő sorokra utalhat)  (Jelölése a [T#]  történik a szerkesztőben). 
+Másodszor történő lenyomás esetén, a második Codához ugrik.
+P : Az elő-refrérnre ugrik (Jelölése: [P#] a szerkesztőben). 
+Ha több van belőle a "P" újbóli lenyomásával, a következő számmal ellátott szakaszra ugorhatunk..
+1-9 : Az adott számú versszakra ugrik (Jelölése: [V#] a dalszerkesztőben).
+
+Figyelem: A numerikus billentyűzet bekapcsolásakor a „2”, a „4”, a „6” és a „8” billentyűk a versszakokra  fognak vonatkozni, és nem a diákra!
+</keys>
+
+    <format>
+&lt;h1&gt;OpenSong dalszövegek és akkordok&lt;/h1&gt;
+
+A Dalszerkesztőben beírt dalok az alábbi sorokból állhatnak: Szakasz-jelző sor, Akkord sor, Dalszöveg sor, és megjegyzések. Egy egyszerű dal esetében ez így néz ki:
+&lt;pre&gt;&lt;b&gt;
+;A versszakot kétszer kell elénekelni.
+[V]
+.G                C
+ Ez a dalszöveg első sora.
+.D          G
+ Ugye milyen egyszerű!
+
+[C]
+.G               C/D  D     C
+ Ez a refrén első sora, yeah, yeah,
+.G           C       D/F# G
+ Hülye egy dal, de most már ti is értitek hogyan kell.&lt;/b&gt;&lt;/pre&gt;
+
+Most nézzük meg sorról sorra...
+
+&lt;h2&gt;Szakasz-jelző sorok&lt;/h2&gt;
+
+A szakasz-jelölő sorok szögletes zárójelek közé írt betűk és/vagy számok: [  ]. Az ez után beírt sorokat a program mindaddig ide tartozónak veszi, amíg egy másik szakasz nem kezdődik, vagy vége nincs a dalnak. A szakasz-jelölők a vetítés alatt nem láthatóak. Legnagyobb jelentőségük abban van, hogy így egyszerűen meg tudjuk adni, hogy melyik szakasz hányszor jelenjen meg, és milyen sorrendben. Bármilyen betű használható, de az alábbiaknak speciális hatása van:
+
+&lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Versszakok. Nyomtatásban csak a szám jelenik meg bekarikázva. Példa: [V1], [V2], [V3].
+
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Refrén. Nyomtatásban a „Refrén” és a megadott szöveg jelenik meg. A Refrén felirat egy négyzetben jelenik meg nyomtatásban. Példák: [C], [C2], [CModulálás].
+
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Elő-refrén. Nyomtatásban az „Elő-refrén” felirat két vonal között fog szerepelni. Példa: [P], [P2].
+
+&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Híd. A nyomtatásban lekerekített téglalapban jelenik meg a „Híd” felirat. Példák: [B], [B2].
+
+&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Coda. Ez is csak nyomtatásban jelenik meg „Coda”-ként. Használata megegyezik az előzőekkel: [T], [T2].
+
+&lt;h2&gt;Akkord sorok&lt;/h2&gt;
+
+Az akkord sorok egy ponttal „.” kezdődnek. Az akkord első betűjének egyvonalban kell lennie a hozzá tartozó szöveggel. Az akkord sorok sem jelennek meg a vetítéskor, csak nyomtatásban. 
+
+&lt;h2&gt;Dalszöveg sorok&lt;/h2&gt;
+
+A dalszöveg sor e betűközzel (space) „ ” kezdődik. Célszerű a szöveget a felette lévő akkord sorhoz igazítani.
+
+&lt;b&gt;&lt;i&gt;„__”&lt;/i&gt;&lt;/b&gt; Ha egy adott szót ritkábban kell szedni, hogy az akkordhoz nyúljon, alulvonást kell használni: „_”. Például:
+&lt;b&gt;&lt;pre&gt;
+.Gsus7 C    G
+ Is___ten hozott otthon.&lt;/pre&gt;&lt;/b&gt;
+
+Az aláhúzást egy kötőjellel „-” jelöljük a szavak között. 
+
+&lt;b&gt;„  ”&lt;/b&gt; Ha több betűközt használunk a szavak között az sem baj. A diavetítés során az aláhúzás, és a több „space” úgyis automatikusan eltávolításra kerül, és nem látható.  Nyomtatásban láthatóak, és sorkizártan jelenítődnek meg.
+
+&lt;b&gt;„|”&lt;/b&gt; A függőleges vonal („|” AltGr+W) nyomtatásban betűközt, vetítve új sort jelöl. 
+
+&lt;b&gt;„||”&lt;/b&gt; Két függőleges vonal „||”  Diavetítés során új diát jelöl. Ez a csak sor végére kerülhet.
+
+&lt;h3&gt;Többféle dalszöveg sor, ugyanahhoz az akkordhoz?&lt;/h3&gt;
+
+Ezt a több versszak gomb megnyomásával is előhívhatjuk. Ha nem akarjuk mindig beírni az akkordokat akkor a vers sorait a betűköz helyett számmal jelöljük. Persze nem olyan egyszerű ez sem, mint ahogy gondolnátok. Valahogy így nézne ki:
+
+&lt;b&gt;&lt;i&gt;(Ne próbáljátok meg elénekelni, mert nem jó. *grin*)&lt;/i&gt;&lt;pre&gt;
+[V]
+.G     C               G
+1Ez az első versszak        one;
+2Ez  a második   two;
+3Ez  a harmadik;
+4Örök__ké tartó negyedik;
+
+.G     D    C                D            G
+1Hear  my   song as I sing,  "Mon_________key."
+2Open  your ears to my       wonderful    song.
+3Why   are  we still         singing this song?
+4This  is   not the way that songs should sound.&lt;/pre&gt;
+&lt;/b&gt;
+Ilyenkor a versszakok sorai (1, 2, 3, stb.)  a föléjük írt akkordokhoz  tartoznak. Ilyenkor a beírt 1, 2, 3 számok után beírt szöveget a program úgy értelmezi, mint különböző versszakokat. Vagyis az 1-es sorba írt szöveg az első versszak, azaz  V1 lesz a kivetítőn.
+
+&lt;h2&gt;Megjegyzések&lt;/h2&gt;
+
+A megjegyzések pontosvesszővel kezdődnek „;”. Nyomtatásban és a szerkesztőben láthatóak csak.
+
+&lt;h2&gt;Hasábok&lt;/h2&gt;
+
+Ha egy sorban három kötőjel van („---”), Nyomtatásban a szöveg két hasábban fog szerepelni.
+
+&lt;h2&gt;Oldaltörés&lt;/h2&gt;
+
+Ha egy sorban egy kötőjel és két felkiáltójel van („-!!”) Ez azt a helyet jelzi, ahol a nyomtatásban oldaltörés szükséges.
+
+</format>
+
+    <presentation>
+&lt;h1&gt;OpenSong vetítési mező&lt;/h1&gt;
+
+A menüben a „Vetítési sorrend” mezőben adhatjuk meg, hogy a dalt hogyan jelenítse meg a program kivetítéskor. Az egyes szakaszokat betűközzel kell elválasztani. Például:
+&lt;b&gt;
+V1 C V2 C V3 C
+&lt;/b&gt;
+Ekkor az első diára a dal első versszaka kerül, a második diára a refrén, a harmadikra a második versszak, stb.
+
+Ne feledjük, hogy ha egy akkordhoz többsoros dalszöveg formában írjuk a szöveget, akkor minden sor előtagja a saját részéhez lesz hozzáadva. Lásd erről még a Súgó „Dalszöveg sorok” részét az „Akkord/dalszöveg formátum” témakörben.
+
+&lt;h3&gt;Üres „Vetítési sorrend” mező&lt;/h3&gt;
+
+Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi.
+</presentation>
+  </help_topics>
+
+  <font_selection title="Betű kiválasztása">
+    <face caption="Betűkészlet"/>
+    <size caption="Méret"/>
+    <color caption="Szín"/>
+    <bold caption="Félkövér"/>
+    <italic caption="Dőlt"/>
+    <underline caption="Aláhúzott"/>
+    <border caption="Szegély"/>
+    <shadow caption="Árnyékolás"/>
+    <fill caption="Kitöltés"/>
+  </font_selection>
+
+  <print_preview title="Nyomtatási kép">
+    <first caption="&lt;&lt;"/>
+    <previous caption="&lt;"/>
+    <next caption="&gt;"/>
+    <last caption="&gt;&gt;"/>
+    <zoom_in caption="-"/>
+    <zoom_out caption="+"/>
+    <pages caption="%1 / %2"/>
+    <print_setup caption="Nyomtatási beállítások"/>
+    <print caption="Nyomtatás"/>
+    <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+    <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+    </print_preview>
+    
+<print>
+     <continued caption="(Folytatás)"/>
+     <toc caption="Tartalomjegyzék"/>
+     <categorized caption="Kategorizált"/>
+     <alphabetical caption="ABC sorrend"/>
+     <copyright caption="Szerzői jog"/>
+     <page caption="%1. oldal"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+     <create_list caption="Lista készítése: %1..."/>
+     <uncategorized caption="Egyéb"/>
+     <setlist caption="A szolgálat rendje">
+     <date caption="Nyomtatva: "/>
+     </setlist>
+</print>
+ 
+<songml>
+     <page caption="Oldal"/>
+     <capo caption="Capo"/>
+     <copyright caption="Szerzői jog"/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Elő-refrén"/>
+     <chorus caption="Refrén"/>
+     <bridge caption="Híd"/>
+     <tag caption="Capo"/>
+     <verse caption="Versszak"/>
+     <prechorus_abbreviation caption="chor"/><!--Ez a 4 mire való? -->
+     <chorus_abbreviation caption="chor"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>     
+     <author caption="Szerző"/>
+     <hymn_number caption="Szám"/>
+     <ccli_number caption="CCLI dal szám"/>
+     <ccli_license caption="CCLI licenc szám"/>
+     <presentation caption="Vetítési sorrend"/>
+     <!--Az  "|NL|" beírásakor az OpenSong Minden beírt címet új sorba tesz-->
+     <separator caption="|NL|"/>
+     <!--A kezdő vessző beírása fontos az adatintegritás megőrzéséhez.-->
+     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,H</sharpchords>
+     <altsharpchords>,H#,C#,D,D#,E,E#,F#,G,G#,A,A#,H</altsharpchords>
+     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,B,H</flatchords>
+     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,B,Cb</altflatchords>
+  </songml>
+  
+  <smartml>
+    <attrib_except>SmartML.GetAttribute: Kivétel az attribútum keresésében '%1' in '%2'</attrib_except>
+    <no_path>Az elérési út nem található.</no_path>
+    <no_File>A fájl nem található: %1</no_File>
+    <cant_open>Hiba a fájl megnyitásakor: %1</cant_open>
+    <cant_create>Fájl létrehozása nem lehetséges: %1</cant_create>
+    <xml_error>Hiba az XML értelmezésekor: %1</xml_error>
+    <xml_exterror>Hiba az XML értelmezésekor: %1: %2: %3</xml_exterror>
+  </smartml> 
+
+  <style_editor title="Stílus szerkesztő">
+    <fonts_and_alignment caption="Betűtípus és elhelyezkedés megadása">
+      <title caption="Cím vetítése"/>
+      <subtitle caption="Alcím vetítése"/>
+      <body caption="Törzsszöveg vetítése"/>
+      <body_autosize caption="A betű méretének automatikus állítása, hogy elférjen a szöveg"/>
+      <align caption="Igazítás"/>
+      <margin caption="Margók"/>
+      <tabs caption="Tabulátorok"/>
+    </fonts_and_alignment>
+    <options caption="Szöveg beállítások">
+      <subtitles caption="Dal alcíme"/>
+      <highlight_chorus caption="Refrén szövegének kiemelése"/>
+      <descriptive_subtitle caption="Alcím segéd info kiírása"/>
+      <verse_in_title caption="A versszámok beszúrása a címbe"/>
+    </options>
+		<background caption="Háttérszín">
+      <color caption="Előtérszín"/>
+      <image caption="Kép"/>
+      <position caption="Pozíció">
+          <row0 caption="Nyújtás"/>
+          <row1 caption="Középre"/>
+          <!-- <row2 caption="Tile"/> -->
+      </position>
+      <trim_bottom caption="*Alsó szél levágása"/>
+      <pixels caption="px"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </background>
+    <trim_note caption="*A háttér aljának levágása a vízjelek, weboldal URL és hasonlók elrejtése miatt. A torzulás elkerülése érdekében az oldalméretből is le lesz vágva."/>
+  </style_editor>
+
+  <style_margins title="Margószerkesztő">
+      <left caption="Bal oldali"/>
+      <right caption="Jobb oldali"/>
+      <top caption="Felső"/>
+      <bottom caption="Alsó"/>
+      <pixels caption="px"/>
+    <preview caption="Előnézet"/>
+  </style_margins>
+  
+  <style_tabs title="Tabulátor szerkesztő">
+    <tabs caption="Tabulátorok">
+      <new caption="&amp;Új"/>
+      <remove caption="&amp;Törlés"/>
+      <removeall caption="&amp;Mindent töröl"/>
+    </tabs>
+    <properties caption="Tulajdonságok">
+      <position caption="Pozíció"/>
+      <pixels caption="px"/>
+      <align caption="Igazítás"/>
+      <left caption="Balra"/>
+      <middle caption="Középre"/>
+      <right caption="Jobbra"/>
+      <char caption="Karakterre"/>
+      <apply caption="link(shared/apply/@caption)n"/>
+    </properties>
+    <preview caption="Előnézet"/>
+  </style_tabs>
+
+  <song_lookup title="Dal keresése">
+    <header caption="Dal hozzáadásához rá kell kattintani a dal címére és a „Hozzáad” gombra. Ha tudod a dal kezdő sorát, a gyorskereső mezőbe írhatod be. A dalokat dupla kattintással, vagy az ENTER billentyűvel is az összeállításhoz lehet adni."/>
+    <no_selection>Még nem választottál ki dalt.</no_selection>
+    <folder caption="Mappa kiválasztása"/>
+    <preview caption="Dal előnézete"/>
+    <lookup caption="Gyorskeresés"/>
+    <songs head1="Dalcím" head2="Mappa"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
+  </song_lookup>
+
+  <song_activity title="Előzmények listája">
+    <range caption="Dátum intervallum (éééé/hh/nn)"></range>
+    <to caption="-"/>
+    <find caption="Keresés"></find>
+    <clear_log caption="Előzmények törlése"></clear_log>
+    <print caption="Nyomtatás"></print>
+    <view caption="Logfájl megtekintése"/>
+    <merge caption="Egyesítés"/>
+    <export caption="Exportálás"/>
+    <done caption="Kész"/>
+    <show caption="Szűrés">
+      <!-- 
+        "tag" attribute corresponds to the value of the
+        constants found in the LogEntry class. The list order
+        can be changed as desired for localisation (note that it is
+        alphabetical in English) as long as the tags relate to the
+        correct item. For example, the local language value of "Moved"
+        should always have tag="4"
+      -->
+      <value tag="0">Összes</value>
+      <value tag="1">Elkészítve</value>
+      <value tag="8">Másolva</value>
+      <value tag="2">Törölve</value>
+      <value tag="3">Módosítva</value>
+      <value tag="4">Áthelyezve</value>
+      <value tag="5">Vetítve</value>
+      <value tag="6">Nyomtatva</value>
+      <value tag="7">Átnevezve</value>
+    </show>
+    <songs head7="Akkordokkal" head6="CCLI szám" head5="Szerző" head4="Cím" head3="Tevékenység" head2="Idő" head1="Dátum"/> 
+    <input_box>
+      <erase_all>Kitörlöd az előzmények listáját?</erase_all>
+    </input_box>
+    <description>Elkészítve|Törölve|Módosítva|Áthelyezve|Vetítve|Nyomtatva|Átnevezve|Másolva</description>
+    <file_type>OpenSong előzmények logfájl</file_type>
+    <merged>Ezen elemek egyesítése az előzményekben: „%1”</merged>
+    <merged_dupes>A duplikátum ki lett hagyva: „%1”</merged_dupes>
+  </song_activity>
+  
+	<scripture_lookup title="Ige keresése">
+    <lookup caption="Gyorskeresés">
+      <reference caption="Igehely"/> <!-- nem fér ki: Igehely rövidítve -->
+      <lookup caption="Ugrás"/>
+      <example caption="Például: „2Pet 1:1-2” vagy „2Pet 1:1-2 (KJV)”"/>
+    </lookup>
+    <search caption="Teljes szöveg keresés"/>
+    <books caption="Bibliai könyv">
+	  <ot caption="Ószövetség"/>
+	  <nt caption="Újszövetség"/>
+    </books>
+    <paragraph caption="Bekezdés"/>
+    <colon caption=":"/>
+    <from_verse caption="Kezdővers"/>
+    <dash caption="-"/>
+    <to_verse caption="Befejezővers"/>
+    <version caption="Verzió"/>
+    <select_file caption="Válaszd ki a Bibliafordítást."/>
+    <verses_per_slide caption="Versek száma diánként" />
+    <chars_per_slide caption="Max. karakterek száma diánként" />
+    <format caption="Formátum">
+      <paragraph caption="Egy bekezdésben"/>
+      <verse caption="Versenként"/>
+    </format>
+    <shownumbers caption="Verszámok megjelenítése"/>
+    <preview caption="Vers előnézete"/>
+    <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
+    <bad_reference>
+      <format>Ellenőrizd a kérés formátumát, és próbáld újra.</format>
+      <empty>Téves paraméter: a hivatkozott hely üres.</empty>
+      <book>Téves paraméter: a könyv nem található.</book>
+      <ambiguous>Téves paraméter: több könyvre is ráillik: %1: %2</ambiguous>
+      <version>Téves paraméter: nem található ez a verzió: „%1”.</version>
+      <chapter>Téves paraméter: nem található a fejezet: „%1”.</chapter>
+      <verse>Téves paraméter: nem található a vers „%1”.</verse>
+      <verse_range>Téves paraméter: A befejező vers száma nagyobb kell legyen mint a kezdő vers.</verse_range>
+    </bad_reference>
+  </scripture_lookup>
+
+  <module>
+    <read_error>A fájl nem olvasható vagy rossza a fájlformátum.</read_error>
+    <format_error>Érvénytelen a modul formátuma.</format_error>
+    <move_error>Hiba a modul fájljának mozgatásakor. Ellenőrizd, hogy van-e itt írási jogosultságod: '%1'.</move_error>
+    <rename_error>Hiba a modul fájljának átnevezésekor. Ellenőrizd, hogy van-e itt írási jogosultságod: '%1'.</rename_error>
+    <success>A modul sikeresen betöltve.</success>
+    <file_type>OpenSong modulok</file_type>
+    <generate_index>Generáljunk igehelymutatót az Bibliának?</generate_index>
+    <generate_error>Hiba a igehelymutatót generálásakor. Ellenőrizd, hogy van-e itt írási jogosultságod: '%1'.</generate_error>
+  </module>
+  
+  <index_progress title="Kérem várjon">
+    <top caption="Tartalomjegyzék készítése:"/>
+    <bottom caption="Megszakítás: „Esc”"/>
+  </index_progress>
+
+  <import_from_ccli title="Importálás CCLI-ből">
+    <user_id caption="Felhasználó ID"/>
+    <password caption="Jelszó"/>
+    <for caption="Keresés"/>
+    <songs head1="Ly" head2="So" head3="Le" head4="Cím" head5="Szerző"
+      head6="Katalógus" head7="Ismert név" head8="Kulcssor" head9="Hangnem" head10="CCLI #"/>
+    <by caption="Forrás">
+      <title_and_aka caption="Cím és ismert név"/>
+      <title caption="Cím"/>
+      <lyrics caption="Dalszöveg"/>
+      <author caption="Szerző"/>
+      <catalog caption="Katalógus"/>
+      <theme caption="Téma"/>
+      <ccli caption="CCLI #"/>
+    </by>
+    <filter caption="Szűrő">
+      <all caption="Mind"/>
+      <lead_sheets caption="Kotta akkorddal"/>
+      <sound_samples caption="Hangminták"/>
+    </filter>
+    <find caption="Keresés"/>
+    <previous_page caption="Előző oldal"/>
+    <next_page caption="Következő oldal"/>
+    <page caption=". oldal"/>
+    <of_pages caption="/ %1"/>
+    <import caption="Importálás"/>
+    <errors>
+      <no_data>Nem érkezett vissza adat. Ellenőrizd a keresendő kifejezést és/vagy a CCLI ID-t és jelszót.</no_data>
+      <bad_html>Hiba a HTML értelmezésekor. Lépj kapcsolatba az OpenSong technikai támogatással.</bad_html>
+      <no_results>Nem érkezett válasz.</no_results>
+      <no_headers>Nem érkezett fejléc adat. Ellenőrizd a keresendő kifejezést és/vagy a CCLI ID-t és jelszót.</no_headers>
+      <no_connect>Nem lehet elérni a CCLI-t. Próbálkozz később.</no_connect>
+      <already_exists>A dal már létezik.</already_exists>
+    </errors>
+  </import_from_ccli>
+
+  <find_image title="Kép megkeresése">
+    <parent caption="(Szülő)"/>
+  </find_image>
+  <input_box title="OpenSong"/>
+
+  <theme_list>
+    <option name="Krisztus: Tulajdonságai"/>
+    <option name="Krisztus: Születése"/>
+    <option name="Krisztus: Halála/Engesztelés"/>
+    <option name="Krisztus: Hatalma/Dicsősége"/>
+    <option name="Krisztus: Szeretete/Kegyelme"/>
+    <option name="Krisztus: Feltámadása"/>
+    <option name="Krisztus: Második eljövetele"/>
+    <option name="Krisztus: Győzelme"/>
+    <option name="Egyház: Elkötelezettség/Engedelmesség"/>
+    <option name="Egyház: Ország"/>
+    <option name="Egyház: Örök élet/Menny"/>
+    <option name="Egyház: Evangelizáció"/>
+    <option name="Egyház: Család/Közösség"/>
+    <option name="Egyház: Közösség Istennel"/>
+    <option name="Egyház: Tisztaság/Szentség"/>
+    <option name="Egyház: Megtérés/Üdvösség"/>
+    <option name="Egyház: Megújulás"/>
+    <option name="Egyház: Istentisztelet/Szolgálat"/>
+    <option name="Egyház: Szellemi éhség"/>
+    <option name="Gyümölcs: Hit/Remény"/> 
+    <option name="Gyümölcs: Szeretet"/>
+    <option name="Gyümölcs: Öröm"/>
+    <option name="Gyümölcs: Békesség/Vigasztalás"/>
+    <option name="Gyümölcs: Türelem/Kedvesség, jóság"/>
+    <option name="Gyümölcs: Alázat/Szelídség"/>
+    <option name="Isten: Tulajdonságai"/>
+    <option name="Isten: Teremtő/Teremtés"/>
+    <option name="Isten: Atya"/>
+    <option name="Isten: Vezetése/Gondoskodása"/>
+    <option name="Isten: Szentlélek"/>
+    <option name="Isten: Szentsége"/>
+    <option name="Isten: Szeretete/Irgalma"/>
+    <option name="Isten: Hatalma/Dicsősége"/>
+    <option name="Isten: Ígéretei"/>
+    <option name="Isten: Győzelem"/>
+    <option name="Isten: Igéje"/>
+    <option name="Imádat: Bizalom/Bizonyosság"/>
+    <option name="Imádat: Hívás/Megnyitás"/>
+    <option name="Imádat: Ünneplés"/>
+    <option name="Imádat: Kihirdetés, megvallás"/>
+    <option name="Imádat: Bensőségesség"/>
+    <option name="Imádat: Meghívás"/>
+    <option name="Imádat: Dicséret/Hódolat"/>
+    <option name="Imádat: Ima/Odaadás"/>
+    <option name="Imádat: Gondviselés/Ellátás"/>
+    <option name="Imádat: Hála"/>
+  </theme_list> <!--  nem fér ki, de helyesebb lenne az "Egyház" helyett a "Gyülekezet",  a "Gyümölcs"  helyett a "Szellemi/lelki gyümölcsök" -->
+
+  <tempo_list>
+    <option name="Nagyon gyors"/>
+    <option name="Gyors"/>
+    <option name="Mérsékelt"/>
+    <option name="Lassú"/>
+    <option name="Nagyon lassú"/>
+  </tempo_list>
+
+  <time_sig_list>
+    <option name="2/4"/>
+    <option name="3/4"/>
+    <option name="4/4"/>
+    <option name="3/8"/>
+    <option name="6/8"/>
+  </time_sig_list>
+
+  <transition_list>
+    <option name="Alapértelmezett"/>
+    <option name="Igen"/>
+    <option name="Nem"/>
+  </transition_list>
+  
+  <imagequality_list>
+    <option name="Teljes, minimum minőség, kis méret"/>
+    <option name="Magas, alacsony minőség"/>
+    <option name="Közepes, normál minőség"/>
+    <option name="Kicsi, magas minőség"/>
+    <option name="Alacsony, maximum minőség"/>
+    <option name="Nincs, veszteségmentes, nagy méret"/>
+  </imagequality_list>
+
+  <style_preview>
+    <slide_groups>
+      <slide_group name="Példa cím" type="Egyedi" seconds="0" loop="false">
+        <title>Cím</title>
+        <subtitle>Alcím</subtitle>
+        <notes>Jegyzet</notes>
+        <slides>
+          <slide>
+            <body>Ez a minta dia.
+Ez a szövegtörzs.
+Kattints ide a szerkesztéshez.</body>
+          </slide>
+        </slides>
+      </slide_group>
+    </slide_groups>
+  </style_preview>
+  
+
+  <subtitles caption="Alcímek" head1="Rendezés" head2="Engedélyezve" head3="Leírás">
+    <row0 caption="Szerzői jog|copyright"/>
+    <row1 caption="Szerző|author"/>
+    <row2 caption="Dal száma|hymn_szám"/> 
+    <row3 caption="CCLI dal szám|ccli_szám"/> 
+    <row4 caption="CCLI licenc szám|ccli_license"/>
+  </subtitles>
+      
+  <shared>
+    <ok caption="OK"/>
+    <cancel caption="Mégsem"/>
+    <yes caption="Igen"/>
+    <no caption="Nem"/>
+    <apply caption="A&amp;lkalmaz"/>
+    <browse caption="Tallózás"/>
+    <browse_for caption="Mappa tallózása"/>
+    <add caption="Hozzáad"/>
+    <done caption="Kész"/>
+    <untitled caption="Névtelen"/>
+    <click_to_change caption="Kattints a módosításhoz"/>
+    <right_click_to_clear caption="Törlés jobb egérgombbal"/>
+    <insert caption="Beszúrás"/>
+    <close caption="Bezárás"/>
+    <search caption="Keresés"/>
+    <save caption="Mentés" message="%1 nem került mentésre."/>
+    <nosave caption="Ne mentsd el."/>
+    <cut caption="Kivágás"/>
+    <copy caption="Másolás"/>
+    <paste caption="Beszúrás"/>
+    <select caption="Kijelölés"/>
+    <exit_program caption="Kilépés a programból"/>
+    <export_to caption="Válassz egy mappát az exportáláshoz."/>
+  </shared>
+
+  <questions>
+    <new_name caption="Adj meg egy nevet:"/>
+    <rename caption="Adj meg egy új nevet: „%1”:"/>
+    <save caption="Elmented a változásokat? „%1”?"/>
+    <delete caption="Biztos törölni akarod? „%1”?"/>
+    <clear caption="Biztosan ki akarod törölni?"/>
+    <changed caption="A dal megváltozott. Elmented a változtatásokat?"/>
+    <revert caption="Minden módosítás elveszik. Folytatod?"/>
+    <long_operation caption="Ez sokáig tarthat. Folytatható?"/>
+    <generic_save caption="Mented a változásokat?"/>
+    <generic_save_explanation caption="Ha nem mented el, a módosítások elvesznek!"/>
+    <set_changed caption="Változtattál a beállításokon. Elmented?"/>
+    <select_docs_folder caption="Add meg az OpenSong dokumentumok mappáját!">Hol legyenek az OpenSong adat-fájljai (dalok, összeállítások)?</select_docs_folder>
+    <activity_log caption="Szeretné az összeállítás dalait hozzáadni az előzményekhez? Ez a menet közben hozzáadott dalokra is vonatkozik!"/>
+  </questions>
+
+  <about>
+    <additional>További fejlesztők:</additional>
+    <copyright>Copyright</copyright>
+    <gpl>Ez a program a GPL licenc alatt szabadon terjeszthető.</gpl>
+    <web>Bővebb információ a http://www.opensong.org/ webhelyen.</web>
+    <translating>Ha új nyelvi modult szeretnél készíteni, másold át az „English” fájlt a „Languages” mappából. Nevezd át arra a nyelvre, amelyikre fordítod. A kész fordítást elküldheted az opensong-translate@lists.sourceforge.net címre vagy készíts egy foltot a Source Forge OpenSong projekt olalán (Tracker/Patches), amely így bekerülhet a hivatalos telepítő csomagba is. A magyar fordítással kapcsolatos észrevételeket a http://groups.google.com/group/opensonghun helyen elérhető listára küldheted.</translating>
+    <created_with_opensong>Készült az OpenSonggal</created_with_opensong>
+    <sources>Az OpenSong az alábbi programok forráskódjaiból is merített:
+StringUtils (http://www.strout.net/info/coding/rb/)
+HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
+REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
+iDeclare (http://www.declaresub.com/iDeclare
+SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/)
+A PuffyClouds1.jpg képfájl a Backgrounds mappában a FreeStockPhotos.com jogtulajdona</sources>
+  </about>
+
+  <folderdb_errors>
+    <error code="1">A mappa már létezik: '%1'</error>
+    <error code="2">Nem lehet létrehozni e mappát: '%1'.</error>
+    <error code="3">A fájl már létezik: '%1'.</error>
+    <error code="4">Nem található az útvonal ehhez a fájlhoz: '%1'.</error>
+    <error code="5">Nem lehet írni a fő könyvtárba: '%1'.</error>
+    <error code="6">Nem található a mappa: '%1'.</error>
+    <error code="7">Nem lehet törölni a mappát: '%1'.</error>
+    <error code="8">Nem található a fájl: '%1'.</error>
+    <error code="9">Nem törölhető a fájl: '%1'.</error>
+    <error code="10">Nem nevezhető át a fájl: '%2'.</error>
+    <error code="11">A mappa nem üres: '%1'.</error>
+    <error code="12">Could not move file '%1' to '%2'.</error>
+    <error code="13">Ez a fájl ('%1') már létezik ebben a mappában: '%2'.</error>
+  </folderdb_errors>
+
+  <errors>
+    <empty_group>A csoport ('%1') minimum egy diából kell álljon.</empty_group>
+    <unreadable_image>Nem olvasható ez a képfájl: '%1'.</unreadable_image>
+    <end_of_songs>A dalok végére értünk.</end_of_songs>
+    <already_exists>'%1' már létezik.</already_exists>
+    <bad_format>'%1' rossz formázást tartalmaz. Kilépek...</bad_format>
+    <no_songs>Nincs dal a dallistában.</no_songs>
+    <no_multi_screen>Nem található több képernyő.</no_multi_screen>
+    <bad_file_name>Helytelen fájlnév: '%1'.</bad_file_name>
+    <internal>Belső hiba. Lépj kapcsolatba az technikai támogatással.</internal>
+    <no_such_song>Nem található a dal.</no_such_song>
+    <number_please>Valós számod adj meg.</number_please>
+    <number_range>Ebben az intervallumban adj meg egy számot %1 - %2.</number_range>
+    <no_path_allowed>A fájl neve nem tartalmazhat útvonalat is.</no_path_allowed>
+    <rename_error>Nem módosítható a fájl.</rename_error>
+    <general1>Ismeretlen hiba itt: '%1'</general1>
+    <general2>H '%1': '%2'</general2>
+    <folder_error>Belső mappa hiba. Lépj kapcsolatba az technikai támogatással.</folder_error>
+    <create_backgrounds_folder>Nem lehet létrehozni a háttérképek (Backgrounds) mappát: %1</create_backgrounds_folder>
+    <create_sets_folder>Nem lehet létrehozni vagy módosítani az összeállítások (Sets) mappát: %1</create_sets_folder>
+    <create_settings_folder>Nem lehet létrehozni a beállítások mappáját (Settings): %1</create_settings_folder>
+    <create_songs_folder>Nem lehet létrehozni a dal mappát: %1</create_songs_folder>
+    <no_backgrounds_folder>Nem lehet olvasni az alapértelmezett háttérképek mappát: %1, vagy a mappa üres.</no_backgrounds_folder>
+    <no_defaults_folder>Nem található az alapértelmezett (Defaults) mappa: %1, vagy a mappa üres.</no_defaults_folder>
+    <no_scripture_folder>Nem található a Bibliák (Scripture) mappa: %1, vagy a mappa üres.</no_scripture_folder>
+    <no_sets_folder>Nem található az alapértelmezett összeállítás (Sets) mappa: %1, vagy a mappa üres.</no_sets_folder>
+    <no_settings_folder>Nem található az alapértelmezett beállítások (Settings) mappa: %1, vagy a mappa üres</no_settings_folder>
+    <no_songs_folder>Nem található az alapértelmezett dalok (Songs) mappája: %1, vagy a mappa üres</no_songs_folder>
+    <no_docs_folder>Nem hozható létre vagy nem található a dokumentumok (Documents) mappa: %1</no_docs_folder>
+    <docs_folder>A dokumentumok mappa (Documents) nem lehet almappája az „OpenSong Defaults” mappának.
+Átmenetileg módosítva lett erre: %1.
+Módosítsd a beállításokat.</docs_folder>
+    <fileutils>
+       <destdoesnotexisterror>A fájl nem található: %1</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: A FolderItem argumentum a FileUtils-ban Nil</nilobjecterror>
+       <accessdenied>Fájl hozzáférési hiba, a hozzáférés elutasítva: %1</accessdenied>
+       <fileinuse>Hiba, a fájl használatban van: %1
+(Talán az OpenSong egy második példányban is fut?)</fileinuse>
+       <filenotfound>A fájl nem található: %1</filenotfound>
+       <invalidname>Érvénytelen a fájl név: %1</invalidname>
+       <notenoughmemory>A memória elfogyott a fájl olvasása közben: %1
+Indítsd újra az OpenSong-ot és próbálkozz újra.</notenoughmemory>
+       <unknownerror>Ismeretlen hiba a fájl olvasása közben: %1</unknownerror>
+       <notaregularfile>Úgy tűnik, hogy a(z) %1 egy állomány és nem mappa.</notaregularfile>
+       <notafolder>Úgy tűnik, hogy a(z) %1 egy mappa és nem állomány.</notafolder>
+    </fileutils>
+    <cclinotavailable>A CCLI weboldal jelentősen megváltozott.
+Ez lehetetlenné teszi az importálást, míg az új felület elkészül.
+Időközben az OpenSong import eszköz egy opciónak tekinthető.
+Az OpenSong fejlesztői csapat sajnálja a kellemetlenséget.
+    </cclinotavailable>
+    <activity_disabled>Nem lehet betölteni az előzmények állományt: %1! Ellenőrizze, hogy a fájl létezik és nem sérül. Erre a munkamenetre az előzmények loggolása és megtekintése le lett tiltva.</activity_disabled>
+    <adding_logentry>Hiba az előzményekhez való hozzáfűzés során!</adding_logentry>
+    <chars_per_slide>A diánkénti karakterek száma 1 és 1000 között kell legyen.</chars_per_slide>
+  </errors>
+
+  <xml_errors>
+    <noattribute>Nem található az XML '%1' attribútum ebben a címkében: '%2'.</noattribute>
+  </xml_errors>
+
+  <bible>
+    <errors>
+      <index_generation>Hiba a keresési jegyzék készítésekor '%1.' A Biblia keresése ki lesz kapcsolva.</index_generation>
+
+      <loadxml>XML betöltési hiba %1
+.&#10; A '%2' hiba a %3. sorban van</loadxml>
+
+      <load1>Ismeretlen hiba betöltéskor %1</load1>
+      <load2>Betöltési hiba %1: %2</load2>
+
+      <noindex>Nem található a keresési jegyzékfájl. Válassz egy másik fordítást vagy indítsd újra az OpenSongot.</noindex>
+
+      <missing_bnames>Nem található a Zefania 'bnames.xml' támogatás az „OpenSong Settings” mappában.</missing_bnames>
+
+      <nobnames>Bible nem tartalmazza a szükséges bname attribútumokat és így nem adható hozzá.</nobnames>
+      <roman>Hiba a római számok konvertálásakor: '%1': %2</roman>
+
+      <save>Hiba a módosított fájl mentésekor: '%1.'</save>
+    </errors>
+
+    <messages>
+      <bnames>A könyvek neveit hozzá kell adni ehhez a fordításhoz.
+&#10; Mutasd meg a megfelelő nyelvet a nevek számára.</bnames>
+      <save>Mentsük a módosított fájlt?</save>
+    </messages>
+  </bible>
+
+  <song>
+    <errors>
+      <unknown_element>Ismeretlen elem a dal betöltésekor: '%1'</unknown_element>
+    </errors>
+  </song>
+
+  <open_titles>
+    <audio>Válaszd ki a megnyitandó audió-fájlt!</audio>
+  </open_titles>  
+  
+  <hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Menj az első diára az aktuális részben</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Menj a következő diára az összeállításban</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Menj az előző diára az összeállításban</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Menj az első diára az összeállításban</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Menj az utolsó diára az összeállításban</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Menj a következő részre az összeállításban</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Menj a előző részre az összeállításban</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Menj a következő versszakra</ACTION_VERSE>
+ 	<ACTION_BRIDGE>Menj a hídra</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Menj a kórusra</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Menj az előkórusra</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Menj a refrénre</ACTION_TAG>
+ 	<ACTION_NORMAL>Mutasd az aktuális diát</ACTION_NORMAL>
+ 	<ACTION_BLACK>Mutass fekete képernyőt</ACTION_BLACK>
+ 	<ACTION_WHITE>Mutass fehér képernyőt</ACTION_WHITE>
+ 	<ACTION_FREEZE>Fagyaszd a vetítést az aktuális diához</ACTION_FREEZE>
+ 	<ACTION_LOGO>Mutasd a logót</ACTION_LOGO>
+ 	<ACTION_HIDE>Rejtsd el az aktuális diát (csak a háttérkép fog látszódni)</ACTION_HIDE>
+ 	<ACTION_EXIT>Lépj ki a vetítési módból</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>A vetítési módból való kilépés megerősítéssel</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>A vetítési mód azonnali elhagyása</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
+
+  <progress_status>
+    <folder>Mappa gyorstárazása: %1</folder>
+    <lead_sheets>Kottalapok generálása</lead_sheets>
+    <process_themes>Témák feldolgozása</process_themes>
+    <process_songs>Dalok feldolgozása</process_songs>
+	<song_search>Dalok keresése</song_search>
+    <export>Dalok exportálása</export>
+    <pass1>Rendezés, 1. művelet</pass1>
+    <pass2>Rendezés, 2. művelet</pass2>
+  </progress_status>
+
+</language>

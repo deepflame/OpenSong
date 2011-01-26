@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="Slovenian" author="Dalila SP" version="1.4">
+
+  <load_settings>
+    <checking_folders>Ustvarjam/preverjam mapo dokumentov</checking_folders>
+    <main>Nalagam glavne nastavitve</main>
+    <print>Nalagam nastavitve za tiskanje</print>
+    <presentation>Nalagam nastavitve projekcije</presentation>
+	<transitions>Nalagam seznam prehodov</transitions>
+    <tempos>Nalagam seznam za tempo</tempos>
+    <themes>Nalagam seznam tem</themes>
+    <time_signatures>Nalagam seznam taktovskega načina</time_signatures>
+	<imagequality>Nalagam seznam kvalitete slik</imagequality>
+    <fonts>Nalagam seznam pisav</fonts>
+    <latest_version>Preverjam za novejšo verzijo
+      <newer_available>Na voljo je nova verzija programa(%1). Obiščite www.opensong.org in jo snemite.</newer_available>
+    </latest_version>
+ </load_settings>
+
+  <load_data>
+      <bible>Nalagam privzeto Biblijo</bible>
+      <songs_cache>V predpomnilnik nalagam pesmi</songs_cache>
+      <folders>Nalagam mapo pesmi</folders>
+      <songs>Nalagam pesmi</songs>
+      <sets>Nalagam zbirke</sets>
+  </load_data>
+
+  <welcome>Dobrodošli!</welcome>
+
+  <songs_mode caption="Način pesmi">Uporabi ta način za vstop in popravek pesmi. Pesmi se lahko natisnejo ali prikazujejo kot prosojnica. Pri spreminjanju iz načina pesmi v način zbirke, boste opozorjeni, da shranite kakršnekoli spremembe.
+    <all_songs caption="Vse pesmi">
+      <print caption="Natisni">Natisne vse skladbe, ki so na voljo. Ta možnost je namenjena tiskanju pesmaric.</print>
+      <export caption="Izvozi">Izvozi vse pesmi.</export>
+      <find caption="Najdi">Preišče besedilo vseh pesmi za dano besedo ali frazo.</find>
+    </all_songs>
+    <new_song caption="Nova pesem">
+      <create caption="Ustvari">Doda novo pesem v izbrano mapo programa OpenSong.</create>
+      <import caption="Uvozi">Uvozi novo pesem v program OpenSong iz CCLI zbirke pesmi.</import>
+    </new_song>
+    <selected_song caption="Izbrana pesem">
+      <save caption="Shrani">Zapiše izbrano pesem na disk.</save>
+      <revert caption="Povrni">Obnovi trenutno pesem nazaj v verzijo shranjeno na disku.</revert>
+      <print caption="Natisni">Natisne trenutno pesem.</print>
+      <present caption="Projekcija">Projicira trenutno pesem. Če ste naredili spremembe za trenutno pesem bodo spremembe shranjene.
+        <single_screen caption="Enojni zaslon"/>
+        <dual_screen caption="Dvojni zaslon"/>
+        <preview_dual_screen caption="Predogled dvojni zaslon"/>
+      </present>
+      <export caption="Izvozi">Izvozi trenutno pesem.</export>
+      <rename caption="Preimenuj">Preimenuje trenutno pesem.</rename>
+      <move caption="Premakni">Premakne pesem v drugo mapo.
+        <where caption="Premakni '%1' v mapo:"/>
+      </move>
+	   <copy caption="Kopiraj">Kopiraj trenutno pesem v drugo mapo.
+        <where caption="Copy '%1' to folder:"/>
+      </copy>
+      <delete caption="Izbriši">Izbriše trenutno pesem.</delete>
+    </selected_song>
+
+    <songs caption="Pesmi">Prikaže pesmi in izbere pesem iz seznama in jo naloži v urejevalnik pesmi.</songs>
+
+    <curr_folder caption="Vsebujoča mapa">Pokaže mapo, ki vsebuje to pesem (se nanaša na trenutno dejavno mapo)</curr_folder>
+
+    <song_folders caption="Mape">Izbere mapo iz seznama da omeji trenuten seznam pesmi.
+      <new>Ustvari novo mapo v katero shrani pesmi.</new>
+      <delete>Izbriše trenutno izbrano mapo pesmi. Mapa mora biti prazna.</delete>
+      <filter_all caption="Vse"/>
+      <filter_main caption="Osnovne"/>
+    </song_folders>
+  </songs_mode>
+
+  <general_song_editor caption="Splošno">Dostopa do naslova, podnaslova, avtorja, prosojnice in besedila trenutne pesmi.
+    <header caption="Urejevalnik pesmi"/>
+    <show_general_editor caption="Splošno"/>
+    <show_advanced_editor caption="Napredno"/>
+    <title caption="Naslov">Nastavi naslov izbrane pesmi.</title>
+    <author caption="Avtor">Nastavi avtorja izbrane pesmi.</author>
+    <copyright caption="Copyright">Nastavi avtorske pravice izbrane pesmi.</copyright>
+    <ccli caption="CCLI Song #">Nastavi številko CCLI izbrane pesmi.</ccli>
+    <hymn_number caption="Številka pesmi">Nastavi številko pesmi izbrane pesmi.</hymn_number>
+    <presentation caption="Vrstni red prikaza kitic">Nastavi vrstni red prikazovanja kitic izbrane pesmi. Kitice morajo biti ločene s presledkom (npr. "V1 C V2 C V3 C").</presentation>
+    <lyrics caption="Akordi/besedilo">Uredi pesmi z vstavitvijo vrstice za kitično oznako, komentar, akord in besedilo.</lyrics>
+    <insert caption="Vstavi"/>
+      <ins_section caption="Kitica">Kitice se uporabljajo za ločitev delov pesmi.
+        <section_name caption="Poimenovanje kitice"/>
+      </ins_section>
+      <ins_lyrics caption="Akordi/besedilo">Avtomatsko vstavi vrstično predpono za akorde in besedilo.
+        <number_of_lines caption="Število vrstic"/>
+      </ins_lyrics>
+      <ins_multi_verse caption="Več kitično">Avtomatsko vstavi vrstično predpono za akorde in besedila, če želite uporabiti več kitični format.
+        <number_of_verses caption="Število kitic"/>
+        <number_of_lines caption="Število vrstic"/>
+      </ins_multi_verse>
+      <ins_comment caption="Komentar">Komentarji se natisnejo na papir, vendar se ne pokažejo v projekcijah.</ins_comment>
+      <ins_column caption="Nov stolpec">Predloga pesmi za tisk lahko vsebuje dva stolpca, kar pripomore k temu, da se daljše pesmi prilegajo na eno stran.</ins_column>
+      <ins_page caption="Nova stran">Nakazuje lokacijo preloma strani na papirju, kadar se tiskajo daljše pesmi.</ins_page>
+    <transpose caption="Transponiraj">To možnost uporabite, da avtomatsko transponirate pesem v nov tonovski način. Vrednosti se merijo v poltonih.
+      <using caption="Uporabi">Izbere višaje iz seznama, da program OpenSong spremeni v višaje namesto nižaje. Izbere nižaje iz seznama, da program OpenSong spremeni v nižaje namesto višaje.
+        <sharps caption="Višaji"/>
+        <flats caption="Nižaji"/>
+      </using>
+    </transpose>
+  </general_song_editor>
+
+  <advanced_song_editor caption="Napredno">Dostopa do tematike, videza, taktovskega načina, kapodasterja itd.
+    <header caption="Urejevalnik pesmi"/>
+    <show_general_editor caption="Splošno"/>
+    <show_advanced_editor caption="Napredno"/>
+    <themes caption="Teme">Omogoča nastavitev poglavitne tematike izbrane pesmi.</themes>
+    <capo caption="Kapodaster">Nastavi položaj kapodasterja izbrane pesmi.</capo>
+    <capo_print caption="Natisni"> Če je označena ta možnost, bo program OpenSong natisnil akorde s kapodastrom in akorde brez kapodastra.</capo_print>
+    <time_sig caption="Taktovski način">Nastavi taktovski način izbrane pesmi.</time_sig>
+    <tempo caption="Tempo">Nastavi tempo izbrane pesmi.</tempo>
+    <key caption="Tonovski način">Nastavi tonaliteto izbrane pesmi.</key>
+    <aka caption="AKA">Nastavi znan alternativni naslov izbrane pesmi.</aka>
+    <key_line caption="Vrsta tonalitete">Nastavi vrsto tonalitete pesmi, ki pomaga identificirati izbrano pesem.</key_line>
+    <style caption="Poniči videz">S klikom izberi, da prilagodiš videz te pesmi po meri. Videz po meri poniči privzeti videz projekcije.</style>
+    <user1 caption="Uporabnikovo določilo 1">Nastavi to možnost v karkoli želiš, da vsebuje. To polje lahko na primer uporabiš za kakšen drug program, itd.</user1>
+    <user2 caption="Uporabnikovo določilo 2">Nastavi to možnost v karkoli želiš, da vsebuje. To polje lahko na primer uporabiš za kakšen drug program, itd.</user2>
+    <user3 caption="Uporabnikovo določilo 3">Nastavi to možnost v karkoli želiš, da vsebuje. To polje lahko na primer uporabiš za kakšen drug program, itd.</user3>
+  </advanced_song_editor>
+
+  <sets_mode caption="Način zbirke">Ta način uporabite, da vstopate in urejate svoje zbirke. Zbirke se uporabljajo za projekcijo zaporedja pesmi, prosojnic, besedil, obvestil in karkoli drugega. Če se trenutno nahajate v načinu pesmi in niste shranili sprememb, boste pozvani k shranjevanju.
+    <sets caption="Zbirke">Izbere zbirko iz seznama zbirk in ga naloži v urejevalnik.
+      <add>Dodaj novo zbirko v OpenSong.</add>
+    </sets>
+    <current_set caption="Trenutna zbirka">
+      <save caption="Shrani">Shrani trenutno zbirko (vključuje vse predmete) na disk.</save>
+      <rename caption="Preimenuj">Preimenuje trenutno zbirko.</rename>
+      <delete caption="Izbriši">Izbriše trenutno zbirko. (Pesmi, ki se trenutno nahajajo v tej zbirki ne bodo izbrisane iz urejevalnika pesmi.)</delete>
+       <saveas caption="Shrani kot">Shrani trenutno zbirko pod novim imenom.</saveas>
+      <present caption="Projekcija">Projicira trenutno izbrano zbirko na zaslon. Na izbiro je možnost projekcije na trenutni zaslon, sekundarni zaslon, ali uporabo enega zaslona za predogled videza na dveh zaslonih.
+        <single_screen caption="Enojni zaslon"/>
+        <dual_screen caption="Dvojni zaslon"/>
+        <preview_dual_screen caption="Predogled dvojnega zaslona"/>
+        <no_slides>Za projekcijo morate imeti vsaj eno prosojnico v zbirki.</no_slides>
+      </present>
+      <print_songs caption="Pesmi">Natisne samo pesmi v trenutni zbirki.
+        <no_songs>Ni pesmi v zbirki.</no_songs>
+      </print_songs>
+      <print_order caption="Seznam">Natisne osnutek zbirke.</print_order>
+      <export caption="Izvozi">Izvozi to zbirko v drugo mapo.</export>
+    </current_set>
+    <new_item caption="Nov predmet">
+      <add_song caption="Pesem">Doda pesem trenutni zbirki. To bo odprlo prikazno okno z možnostjo izbire pesmi iz seznama pesmi, ki so na voljo v urejevalniku pesmi.</add_song>
+      <add_scripture caption="Biblija">Doda prosojnico ali prosojnice k trenutni zbirki. To bo odprlo prikazno okno, ki bo omogočalo izbiro določenega odlomka Svetega pisma za prikaz.</add_scripture>
+      <add_slides caption="Prosojnica">Doda trenutni zbirki prosojnico po meri. Prosojnica po meri dopušča določiti lasten naslov, podnaslov, telo besedila in celo videz. Prosojnica po meri lahko vsebuje niz prosojnic.</add_slides>
+      <add_style caption="Videz">Spremeni privzeti videz zbirke na katerem koli mestu v zbirki. Sprememba videza lahko definira nov videz ali povrne predhoden videz.</add_style>
+      <add_video caption="Video">Doda video datoteko v trenutno zbirko. Uporabite, da predstavite video v programu OpenSong.</add_video>
+      <add_powerpoint caption="PowerPoint">Doda PowerPoint prezentacijo v trenutno zbirko. Uporabite za nadzor PowerPoint prezentacij v programu OpenSong.</add_powerpoint>
+    </new_item>
+    <current_item caption="Trenutni predmet">
+      <move_up caption="Gor">Premakne trenutno izbran predmet v zbirki bliže začetku zbirke.</move_up>
+      <move_down caption="Dol">Premakne trenutno izbran predmet v zbirki bliže koncu zbirke.</move_down>
+      <remove caption="Odstrani">Odstrani trenutno izbran predmet iz zbirke.</remove>
+      <copy caption="Kopiraj">Ustvari kopijo trenutno izbranega predmeta iz zbirke.</copy>
+      <store caption="Shrani">Shrani trenutno izbran predmet v zbirki.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
+    </current_item>
+    <items caption="Zbirka predmetov">Navaja predmete v trenutni zbirki. Klikni na prosojnico, da jo naložite v urejevalnik prosojnice po meri ali dvokliknite na pesem, da jo naložite v urejevalnik pesmi.
+      <song caption="(pesem)"/>
+      <custom caption="(po meri)"/>
+      <scripture caption="(Biblija)"/>
+      <style caption="(videz)">-- Spremeni videz --</style>
+      <revert caption="(videz)">-- Povrne videz --</revert>
+      <defaultstyle caption="(videz)">-- Izvožen videz --</defaultstyle>
+    </items>
+    <untitled caption="Brez naslova"/>
+    <errors>
+      <revert caption="Napaka nalaganja zbirke &quot;%1&quot; iz datoteke."/>
+    </errors>
+    <messages>
+      <export_complete>&quot;%1&quot; izvožen v
+%2
+      </export_complete>
+    </messages>
+  </sets_mode>
+
+  <slide_editor>
+    <header caption="Urejevalnik prosojnic"/>
+    <title caption="Naslov">Nastavi naslov prosojnice, ki je prikazan na sami prosojnici.</title>
+    <subtitle caption="Podnaslov">Nastavi podnaslov prosojnice, ki je prikazan na sami prosojnici.</subtitle>
+    <name caption="Poimenovanje">Nastavi naslov prosojnic(e) prikazan v oknu predstavitvenega pomočnika. Ne prikaže na dejanski prosojnici.</name>
+    <slides caption="Prosojnice">Vsebuje telo prosojnice v trenutnem predmetu prosojnice po meri.</slides>
+    <presentation caption="Lasten vrstni red kitic">Povozi vrstni red prikazovanja kitic iz datoteke pesmi</presentation>
+    <origorder caption="Originalen vrstni red kitic">Vrstni red prikazovanja kitic iz datoteke pesmi</origorder>       
+    <folder caption="Mapa pesmi">Mapa vsebuje izbran predmet</folder>
+    <notes caption="Opombe">Te opombe se kažejo v predstavitvenem pomočniku med projekcijo, ki uporablja več zaslonski način.</notes>
+    <insert caption="Vstavi"/>
+      <ins_slide caption="Nova prosojnica">Dovoli ustvarjanje prosojnic, ki si delijo naslov, podnaslov, videz in/ali lastne napredne nastavitve. Na ta način ustvarjene prosojnice se lahko nastavijo v avtomatsko zanko.</ins_slide>
+    <loop caption="Zazankanje prosojnic">Označi ta kvadratek, da program OpenSong po končanem prikazovanju tega predmeta avtomatsko zazanka na prvo prosojnico v tem predmetu.</loop>
+    <print caption="Natisni seznam">Odstrani oznako tega kvadratka, da se ta skupina prosojnic ne pojavi pri tiskanju seznama zbirke.</print>
+	<transition caption="Uporabi prehode">Označi ta kvadratek, za uporabo prehodov, ko bo prikazana ta prosojnica.</transition>
+    <auto_advance caption="Nastavi čas trajanja">Vstavi število sekund trajanja avtomatskega prikazovanja vsake prosojnice tega predmeta v projekciji, preden avtomatsko nadaljuje na naslednjo prosojnico iz tega predmeta.</auto_advance>
+    <seconds caption="sekund"/>
+    <style caption="Poniči videz">Označenje tega kvadratka omogoča tej prosojnici, da vsebuje videz po meri. Ko je omogočen, kliknite sličico za predogled za ureditev videza tega predmeta.</style>
+  </slide_editor>
+
+  <style_change>
+    <header caption="Spremeni videz"/>
+    <revert caption="Povrni predhoden videz">Ta možnost omogoča povrnitev predhodne nastavitve videza.</revert>
+    <change caption="Spremeni videz v tega">Ta možnost dovoljuje zbirkam nastavitev spremembe videza na kateri koli točki v zbirki. Sprememba videza vpliva na vse prosojnice do naslednje spremembe videza.</change>
+    <style>S klikom na sličico izberete možnost, za urejanje videza po meri.</style>
+  </style_change>
+
+  <video_slides>
+    <header caption="Urejevalnik video prosojnic"/>
+    <name caption="Ime prosojnice">Ime, ki ga uporablja program OpenSong za identifikacijo te prosojnice.</name>
+    <file caption="Video datoteka">Nastavi ime video datoteke za to prosojnico.</file>
+    <loop caption="Zazankaj video">Označi ta kvadratek in omogoči, da se video ponovno zažene, kadarkoli pride do konca.</loop>
+  </video_slides>
+
+  <powerpoint_slides>
+    <header caption="Urejevalnik PowerPoint prosojnic"/>
+    <name caption="Ime prosojnice">Ime, ki ga uporablja program OpenSong za identifikacijo te skupine prosojnic.</name>
+    <file caption="PowerPoint datoteka">Nastavi ime PowerPoint datoteke za to prosojnico.</file>
+  </powerpoint_slides>
+
+  <song_search title="Iskalnik pesmi">
+    <search caption="Vstavi iskalni niz:"/>
+    <fields caption="Iskalna polja">
+      <title caption="link(general_song_editor/title/@caption)"/>
+      <author caption="link(general_song_editor/author/@caption)"/>
+      <copyright caption="link(general_song_editor/copyright/@caption)"/>
+      <ccli caption="link(general_song_editor/ccli/@caption)"/>
+      <presentation caption="link(general_song_editor/presentation/@caption)"/>
+      <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+      <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
+      <themes caption="link(advanced_song_editor/themes/@caption)"/>
+      <capo caption="link(advanced_song_editor/capo/@caption)"/>
+      <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
+      <time_sig caption="link(advanced_song_editor/time_sig/@caption)"/>
+      <tempo caption="link(advanced_song_editor/tempo/@caption)"/>
+      <key caption="link(advanced_song_editor/key/@caption)"/>
+      <aka caption="link(advanced_song_editor/aka/@caption)"/>
+      <key_line caption="link(advanced_song_editor/key_line/@caption)"/>
+      <style caption="link(advanced_song_editor/style/@caption)"/>
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+    </fields>
+  </song_search>
+
+  <scripture_search title="Išči">
+    <match caption="Ujemanje">
+      <exact caption="&amp;natanko"/>
+      <begin caption="se &amp;začenja z"/>
+    </match>
+    <words caption="Vrstica mora vsebovati">
+      <all caption="&amp;katerokoli besedo"/>
+      <any caption="&amp;vse besede"/>
+    </words>
+    <search caption="&amp;Išči"/>
+    <example caption="Za iskanje natančne fraze jo omeji z narekovaji, kakor &quot;Simon Peter&quot;"/>
+    <ok caption="link(shared/ok/@caption)"/>
+    <cancel caption="link(shared/cancel/@caption)"/>
+    <result head1="Navedek" head2="Besedilo" />
+  </scripture_search>
+
+  <main_menu>
+    <file caption="_Datoteka">
+      <new caption="_Nova"/>
+      <save caption="_Shrani"/>
+      <present caption="_Projekcija">
+        <single_screen caption="_Enojni zaslon"/>
+        <dual_screen caption="_Dvojni zaslon"/>
+        <preview_dual_screen caption="Pred_ogled dvojnega zaslona"/>
+      </present>
+      <pagesetup caption="Nasta_vitev strani"/>
+      <print caption="Na_tisni"/>
+      <print_alphabetical_toc caption="Natisni po _abecednem seznamu"/>
+      <print_categorical_toc caption="Natisni po seznamu _kategorij"/>
+      <song_act caption="Ogled _dnevnika dejavnosti"/>
+      <quit caption="Iz_hod"/>
+    </file>
+    <edit caption="_Uredi">
+      <undo caption="_Razveljavi"/>
+      <cut caption="_Izreži"/>
+      <copy caption="_Kopiraj"/>
+      <paste caption="_Prilepi"/>
+      <clear caption="P_očisti"/>
+      <find caption="_Najdi"/>
+      <find_next caption="Ponovno naj_di"/>
+      <selall caption="Izberi _vse"/>
+    </edit>
+    <mode caption="_Način">
+      <songs caption="Način _pesmi"/>
+      <sets caption="Način _zbirke"/>
+    </mode>
+    <settings caption="Nas_tavitve">
+      <presentation caption="Nastavitve _projekcije"/>
+      <print caption="Nastavitve _tiskanja"/>
+      <general caption="_Splošne nastavitve"/>
+      <refresh_songs caption="Osveži mapo p_esmi"/>
+      <refresh_sets caption="Osveži mapo _zbirke"/>
+      <install_module caption="Namesti _modul"/>
+    </settings>
+    <help caption="_Pomoč">
+      <help_topics caption="_Vsebina pomoči"/>
+      <translating caption="P_revajanje OpenSong"/>
+      <about caption="_O programu OpenSong"/>
+    </help>
+  </main_menu>
+
+  <general_settings title="Splošne nastavitve">
+    <general caption="Splošne" head1="Osnovne" head2="Posebne">
+      <ccli caption="Cerkvena CCLI licenca #"/>
+      <version_check caption="Preveri za najnovejšo posodobitev ob zagonu"/>
+      <language caption="Jezik"/>
+    </general>
+    <proxy caption="Proxy">
+      <host caption="Host"/>
+      <port caption="Port"/>
+    </proxy>
+    <user_defined caption="Uporabnikovo določilo">
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <load caption="Naloži privzeti jezik"/>
+    </user_defined>
+    <fonts caption="Pisave">
+      <headings caption="Naslovi"/>
+      <labels caption="Označbe"/>
+      <text_fields caption="Telo besedila"/>
+      <fixed_width caption="Besedilo fiksne širine"/>
+      <buttons caption="Gumbki"/>
+      <large_headings caption="Veliki naslovi"/>
+      <newpaint caption="Uporabi nov videz"/>
+    </fonts>
+    <documents_folder caption="Mapa dokumentov">
+      <warning caption="Sprememba ne bo uveljavljena do naslednjega zagona programa OpenSong."/>
+      <default caption="Privzeto"/>
+      <custom caption="Po meri"/>
+      <message>Novo mesto dokumentov programa OpenSong ne bo uveljavljeno do naslednjega zagona. Morda boste najprej želeli prekopirati svoje stare dokumente programa OpenSong v novo mapo na drugem mestu.</message>
+      <changed>Izbrali ste uporabo lastne mape z dokumenti, vendar niste kliknili na gumb spremeni. Ali želite uporabiti novo mapo?</changed>
+      <change caption="Spremeni"/>
+      <oldfolderdb caption="Uporabi pre-V1.1 predpomnilnik datoteke"/>
+    </documents_folder>
+	 <imagequality caption="Nastavi kvaliteto slik">
+      <note caption="OpenSong skuša shraniti slike, ki jih uporablja v zbirki, v JPEG format. Spodnji predmet nadzira kvaliteto in vedenje hrambe slik. Izbirnik kvalitete bo izklopljen, če nimate nameščenega QuickTime, saj je OpenSong odvisen od tega programa za shranjevanje slik v želeni izbrani kvaliteti."/>
+      <compression caption="Stiskanje slik" />
+      <extern caption="Ne vključi slik iz ozadij." />
+    </imagequality>
+    <logging caption="Razhrošči nastavitve dnevnika">
+      <append caption="Priloži k dnevniku"/>
+      <console caption="Vpiši v sistemsko konzolo"/>
+      <level caption="Vpiši stopnjo" disabled="Onemogočeno"/>
+      <dialog caption="Prosim izberi datoteko za shranitev dnevnika"
+              title="Izberi datoteko dnevnika"/>
+    </logging>
+	<log caption="Nastavitve dnevnika aktivnosti pesmi">
+      <enable caption="Omogoči dnevnik"/>
+      <prompt caption="Najavi pred prikazom"/>
+    </log>
+    <startmode caption="Začetno okno">
+      <songs caption="Pesmi"/>
+      <sets  caption="Zbirke"/>
+    </startmode>
+  </general_settings>
+
+  <print_settings title="Nastavitve tiskanja">
+    <tabs head3="Robovi" head1="Pisave" head2="Postavitev"/>
+    <margins>
+      <left caption="Levi"/>
+      <top caption="Zgornji"/>
+      <right caption="Desni"/>
+      <bottom caption="Spodnji"/>
+      <width caption="Širina"/>
+      <height caption="Višina"/>
+      <message caption="Poglej datoteko/Nastavitev tiskanja... za nastavitev robov"/>
+    </margins>
+    <fonts>
+      <title caption="Naslov"/>
+      <author caption="Avtor"/>
+      <sections caption="Odsek"/>
+      <lyrics caption="Besedilo"/>
+      <chords caption="Akordi"/>
+      <capo caption="Kapodaster"/>
+      <copyright caption="Copyright"/>
+    </fonts>
+    <layout>
+      <heading_border_thickness caption="Debelina meje naslova"/>
+      <title_in_caps caption="Naslov z velikimi črkami"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
+    </layout>
+    <units caption="Merska enota">
+      <inches caption="Inči"/>
+      <cm caption="Centimetri"/>
+    </units>
+  </print_settings>
+
+  <presentation_settings title="Nastavitve projekcije">
+    <settings head1="Videz" head2="Možnosti">
+        <default_slides caption="Privzeti videz prosojnic"/>
+        <scripture_slides caption="Privzeti videz Biblije"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </settings>
+	<transitions caption="Prehodi">
+      <use_transitions caption="Privzeto omogoči"/>
+      <transition_note caption="*Na prehode v veliki meri vpliva resolucija ekrana. Če izkušate počasne prehode, razmislite o zmanjšanju resolucije zaslona na katerem se nahaja projekcija. Če opazite, da  se prehodi ne pojavljajo, je lahko razlog v tem, da je nivo barv na predstavitvenem zaslonu prenizek."/>
+      <time caption="Čas" helptag="Končen čas za prehod (je lahko daljši na počasnejših sistemih)"/>
+      <frames caption="Okvirji" helptag="Število okvirjev ali prehodov med prosojnicami"/>
+    </transitions>
+    <style caption="Videz">
+      <border_thickness caption="Debelina roba"/>
+      <subtitles caption="Podnaslovi"/>
+      <modes>
+        <normal caption="Normalno"/>
+        <black caption="Črno"/>
+        <white caption="Belo"/>
+        <logo caption="Logo"/>
+        <hidden caption="Skrito"/>
+        <frozen caption="Zamrznjeno"/>
+      </modes>
+     
+      <mouse_cursor caption="Miškin kazalec">
+         <!--These will be phased out in favor of user editable cursors-->
+        <arrow caption="Puščica"/> 
+        <cross caption="Križ"/>
+        <hidden caption="Skrito"/>
+        <hourglass caption="Peščena ura"/> 
+        <ibeam caption="Kurzor"/> 
+      </mouse_cursor>
+      <blanks caption="Vstavi prazno prosojnico"/>
+      <blanks_between caption="med dvema predmetoma zbirke"/>
+      <time caption="Čas" helptag="Skupen čas prehodov (lahko traja dlje na počasnejših sistemih)"/>
+      <frames caption="Okvirjev" helptag="Število okvirjev ali prehodnih korakov med dvema prosojnicama"/>
+      <blank_style caption="Prazna prosojnica prevzame videz"/>
+      <blank_prev caption="Predhodne prosojnice"/>
+      <blank_next caption="Naslednje prosojnice"/>
+      <initial_mode caption="Začetni način projekcije"/>
+    </style>
+    <alerts caption="Opozorila">
+      <font caption="Pisava"/>
+      <align caption="Poravnava"/>
+    </alerts>
+    
+    <monitor caption="Zasloni">
+      <control caption="Zaslon za nastavitve"/>
+      <presentation caption="Zaslon za projekcijo"/>
+      <detected caption="Zaznan(a) %1 zaslon(a)."/>
+      <default_mode caption="Privzeti način zaslona"/>
+    </monitor>
+    <logo caption="Logo">
+      <mask caption="Maska"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </logo>
+
+    <audio caption="Zvok">
+      <file_to_play caption="Datoteka za predvajanje"/>
+      <browse caption="Prebrskaj"/>
+      <stop caption="Ustavi"/>
+      <play caption="Predvajaj"/>
+    </audio>
+
+    <misc caption="Mešano">
+      <exit_prompt caption="Pozovi ob izhodu"/>
+    </misc>
+  </presentation_settings>
+
+  <presentation_helper title="Predstavitveni pomočnik">
+    <slides head1="Naslov" head2="ID" head3="Besedilo"/>
+    <modes caption="Način">
+      <normal caption="[N] Normalno"/>
+      <black caption="[K] Črno"/>
+      <white caption="[W] Belo"/>
+      <logo caption="[L] Logo"/>
+      <hidden caption="[H] Skrito"/>
+      <frozen caption="[F] Zamrznjeno"/>
+    </modes>
+    <actions caption="Dejanja">
+      <alert caption="[A] Opozorilo">Novo opozorilo (pusti prazno za prosto)</alert>
+      <quick_song caption="[Q] Dodaj pesem"/>
+      <scripture caption="[S] Dodaj Biblijo"/>
+      <full_screen caption="[M] Celoten zaslon"/>
+      <normal_screen caption="[M] Normalen zaslon"/>
+      <return caption="[Esc] Za vrnitev"/>
+    </actions>
+    <exit caption="Izhod iz predstavitve?"/>
+    <loop caption="Zazankaj"/>
+    <keys>- Tipke -
+Dol: Naslednja prosojnica
+Gor: Predhodna prosojnica
+Desno: Naslednji odsek
+Levo: Predhodni odsek
+1-9: Kitica
+C: Pripev
+P: Pred-pripev
+B: Prehod
+T: Oznaka (Tag)</keys>
+  </presentation_helper>
+
+  <help_topics title="Vsebina pomoči">
+    <tabs head1="Kontrolne tipke" head2="Format akordov/besedila" head3="Vrstni red prikaza" head4="Zapri"/>
+    <print caption="Natisni"/>
+    <keys>
+&lt;h1&gt;Kontrolne tipke&lt;/h1&gt;
+
+Projekcijo nadzorujemo z naslednjimi kontrolnimi tipkami:
+
+Tipka ESC: Konec projekcije.
+Puščica gor, 8 na številčni tipkovnici, vračalka: Pojdi na predhodno prosojnico.
+Puščica dol, 2 na številčni tipkovnici, preslednica: Pojdi na naslednjo prosojnico.
+Puščica levo, 4 na številčni tipkovnici: Pojdi na predhodni predmet v zbirki.
+Puščica desno, 6 na številčni tipkovnici: Pojdi na naslednji predmet v zbirki.
+Q tipka: Vstavi novo pesem v projekcijo.
+A tipka: Vstavi novo opozorilo.
+S tipka: Vstavi novo besedilo iz Biblije v projekcijo.
+W tipka: Preide v bel zaslon.
+K tipka: Preide v črn zaslon.
+L tipka: Prikaže OpenSong Logo.
+H tipka: Skrije besedilo, pokaže samo sliko ozadja.
+F tipka: Zamrzne projekcijo (Prepreči prikaz nove prosojnice, dovoljuje spremembo trenutne prosojnice
+ brez vpliva na projekcijo, izberi N za odmrznit).
+N tipka: Normalni način (izhod iz črnega zaslona, itd.)
+B tipka: Pojdi na prehod (označeno z [B#] 
+v urejevalniku pesmi). Če obstaja več, kot en prehod,
+ bo pritiskanje tipke B prešlo na naslednji prehod.
+C tipka: Pojdi na pripev (označeno z [C#] v urejevalniku pesmi). Če obstaja več, kot en pripev,
+ bo pritisk tipke C pomaknil na naslednji pripev.
+T tipka: Pojdi na oznako (Tag)(označeno z [T#] v urejevalniku pesmi). Če obstaja več, kot ena oznaka (Tag),
+ potem pritiskanje tipke T preide na naslednjo oznako.
+P tipka: Pojdi na pred-pripev (označeno z [P#] v urejevalniku pesmi). Če obstaja več, kot en pred-pripev,
+ potem pritiskanje tipke P preide na naslednji pred-pripev.
+1-9 tipka: Pojdi na kitico #(označeno z [V#] v urejevalniku pesmi).
+
+Opomba: Funkcija številčne tipkovnice je odvisna od tipke NumLock.
+</keys>
+
+    <format>
+&lt;h1&gt;Oblika besedila / akordov programa Open Song&lt;/h1&gt;
+
+Pesem se oblikuje na naslednji način: vrstico za kitico, vrstico za akord, vrstico za besedilo, in vrstico za komentar. Preprosta pesem je videti tako:
+&lt;pre&gt;&lt;b&gt;
+;Pomni, da se vrstica poje dvakrat! (komentar)
+[V]
+.G                C
+ To je prvi verz besedila pesmi.
+.D          G
+ To je drugi verz besedila pesmi.
+
+[C]
+.G               C/D  D     C
+ Sedaj se poje pripev, da, da,
+.G           C       D/F# G
+ to je preprosta pesmica.&lt;/b&gt;&lt;/pre&gt;
+
+Oglejmo si vsako vrsto posebej...
+
+&lt;h2&gt;Vrstica za kitico&lt;/h2&gt;
+
+Oznaka za kitico je omejena z oglatim oklepajem.: [ in ]. "Kitica" vključuje  katerokoli vrstico, ki sledi kitični oznaki do naslednje kitice ali konca pesmi. Oznaka se ne kaže na prosojnici projekcije temveč le določa vrstni red prikazovanja prosojnic. Katerokoli besedilo znotraj oglatih oklepajev je sprejemljivo, toda naslednje imajo posebne učinke:
+
+&lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Kitice. Natisnjena predloga bo samodejno odstranila "V" in natisnila preostalo številko, ki bo obkrožena. Primeri: [V1], [V2], [V3].
+
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Pripev. Natisnjena predloga bo samodejno prikazala "Pripev" z dodatnim besedilom (glej primere). Na natisnjeni predlogi bo "Pripev" obkrožal kvadrat. Primeri: [C], [C2], [CModulacija].
+
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Pred-pripev. Natisnjena predloga bo samodejno prikazala "Pred-pripev" z dodatnim besedilom (glej primere). Na natisnjeni predlogi bo "Pred-pripev" označevala vodoravna črta pod njim in nad njim. Primeri: [P], [P2].
+
+&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Prehod. Natisnjena predloga bo samodejno prikazala "Prehod" z dodatnim besedilom (glej primere). Na natisnjeni predlogi bo "Prehod" obkrožal kvadrat z zaobljenimi vogali. Primeri: [B], [B2].
+
+&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Tag. Natisnjena predloga bo samodejno prikazala "Tag" z dodatnim besedilom (glej primere). Na natisnjeni predlogi bo "Tag" obkrožal kvadrat z zaobljenimi vogali. Primeri: [T], [T2].
+
+&lt;h2&gt;Vrstica za akord&lt;/h2&gt;
+
+Vrstica za akord se začenja s piko: ".". Prva črka vsakega akorda naj bo poravnana z besedilom pod njim. Vrstica za akord se ne kaže v projekciji, temveč le na natisnjeni predlogi.
+
+&lt;h2&gt;Vrstica za besedilo&lt;/h2&gt;
+
+Vrstica za besedilo se začne s presledkom: " ". Besedilo se običajno poravna s predhodno vrstico za akorde, vendar ni nujno.
+
+&lt;b&gt;&lt;i&gt;"__"&lt;/i&gt;&lt;/b&gt; če je besedo potrebno raztegniti, da ustreza pod akord, uporabi podčrtanje s: "_". Na primer:
+&lt;b&gt;&lt;pre&gt;
+.Gsus7 C   G
+ Do____ber dan.&lt;/pre&gt;&lt;/b&gt;
+
+Podčrtano je zamenjano s primernejšim pomišljajem "-" med deli besed. 
+
+&lt;b&gt;"  "&lt;/b&gt; Več presledkov med besedami je dovoljenih. Podčrtanja in več presledkov v projekciji samodejno odstrani. Med tiskanjem predlog, sta obe obliki izpuščeni in dinamično prilagojeni, da ustrezata akordom.
+
+&lt;b&gt;"|"&lt;/b&gt; Navpične pregrade so zamenjane s presledki na predlogi za tisk, In kot nove vrstice v projekciji.
+
+&lt;b&gt;"||"&lt;/b&gt; Dvojna navpična pregrada je zamenjana z "novo prosojnico" v projekciji in prezrta v natisnjeni predlogi. Dvojna navpična pregrada mora biti na koncu vrstice.
+
+&lt;h3&gt; Več vrstic besedila na eno vrstico akordov!?&lt;/h3&gt;
+
+Mnoge pesmi vsebujejo fraze, ki si delijo iste akorde. Namesto ponavljanja akordov v vsakem delu kitice, lahko pesem namesto v kitice grupiramo v fraze. V tem primeru ne začnemo vsake fraze besedila s presledkom temveč s številko. Upoštevajmo, da je poravnava več vrstičnega besedila z eno vrstico akordov nekoliko zapletena. Videti naj bo tako:
+
+&lt;b&gt;&lt;i&gt;(Ne skušaj zapeti; saj je obupno sinhronizirano. *grin*)&lt;/i&gt;&lt;pre&gt;
+[V]
+.G     C               G
+1This  is verse        one;
+2This  is not verse    two;
+3Where did verse three go;
+4Ever__lasting is not  verse four;
+
+.G     D    C                D            G
+1Hear  my   song as I sing,  "Mon_________key."
+2Open  your ears to my       wonderful    song.
+3Why   are  we still         singing this song?
+4This  is   not the way that songs should sound.&lt;/pre&gt;
+&lt;/b&gt;
+Med projekcijo je vsak znak vrstice (t.j. 1, 2, 3, itd.) dodeljen kitici, ki ji pripada. Z drugimi besedami vsebuje izbira kitice [V] vrstico besedila, ki se začenja z 1, 2, 3, itd. Videti je kot V1, V2, V3, itd.
+
+&lt;h2&gt;Vrstica komentarja&lt;/h2&gt;
+
+Ni veliko za povedati. Vrstica komentarja je katerakoli vrstica, ki se začenja s podpičjem: ";". Vrstica komentarja se v projekciji preskoči in prikaže  z uporabljeno pisavo za komentar v predlogi za tisk.
+
+&lt;h2&gt;Prelom stolpca&lt;/h2&gt;
+
+Če vrstica vsebuje tri pomišljaje ("---"), bo predloga besedila natisnjena z dodatnim stolpcem, ki se začne s prelomom stolpca.
+
+&lt;h2&gt;Prelom strani&lt;/h2&gt;
+
+Če vrstica vsebuje ("-!!") to ponazarja, kje je potrebno narediti prelom strani v predlogi za tisk daljših pesmi.
+
+</format>
+
+    <presentation>
+&lt;h1&gt;Polje za vrstni red prikaza kitic&lt;/h1&gt;
+
+Polje za vrstni red prikaza kitic vsebuje seznam kitic pesmi. Vsaka kitica je ločena s presledkom. Na primer:
+&lt;b&gt;
+V1 C V2 C V3 C
+&lt;/b&gt;
+Ta primer bi prikazal na prvi prosojnici prvo kitico, na drugi prosojnici pripev, na tretji prosojnici drugo kitico, na  četrti prosojnici ponovno pripev, itd.
+
+Pri več vrsticah besedila na eno vrstico akordov imej v mislih, da vsaka vrstična oznaka pripada svoji kitici. Oglej si razlago o "Vrstici za besedilo" pod zavihkom pomoči "Oblika besedila / akordov" .
+
+&lt;h3&gt;Prazno polje vrstnega reda prikaza&lt;/h3&gt;
+
+Če je polje za vrstni red prikaza brez vpisa, bo v projekciji določen prikaz na podlagi vrstnega reda besedila/ akordov.
+</presentation>
+  </help_topics>
+
+  <font_selection title="Izbira pisave">
+    <face caption="Pisava"/>
+    <size caption="Velikost"/>
+    <color caption="Barva"/>
+    <bold caption="Krepko"/>
+    <italic caption="Poševno"/>
+    <underline caption="Podčrtano"/>
+    <border caption="Meja"/>
+    <shadow caption="Senca"/>
+    <fill caption="Zapolni"/>
+  </font_selection>
+
+  <print_preview title="Predogled tiskanja">
+    <first caption="&lt;&lt;"/>
+    <previous caption="&lt;"/>
+    <next caption="&gt;"/>
+    <last caption="&gt;&gt;"/>
+    <zoom_in caption="-"/>
+    <zoom_out caption="+"/>
+    <pages caption="%1 of %2"/>
+    <print_setup caption="Nastavitev tiskanja"/>
+    <print caption="Natisni"/>
+    <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+    <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+    </print_preview>
+    
+<print>
+     <continued caption="(continued)"/>
+     <toc caption="Seznam vsebine"/>
+     <categorized caption="Po kategorijah"/>
+     <alphabetical caption="Abecedni"/>
+     <copyright caption="Copyright"/>
+     <page caption="Stran %1"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+     <create_list caption="Ustvari seznam %1..."/>
+     <uncategorized caption="Drugo"/>
+     <setlist caption="Vrstni red službe">
+     <date caption="Natisnjeno "/>
+     </setlist>
+</print>
+ 
+<songml>
+     <page caption="Stran"/>
+     <capo caption="Kapodaster"/>
+     <copyright caption="Copyright"/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Pred-pripev"/>
+     <chorus caption="Pripev"/>
+     <bridge caption="Prehod"/>
+     <tag caption="Oznaka (Tag)"/>
+     <verse caption="Kitica"/>
+	 <prechorus_abbreviation caption="ppripev"/>
+     <chorus_abbreviation caption="pripev"/>
+     <bridge_abbreviation caption="prehod"/>
+     <tag_abbreviation caption="tag"/>
+     <author caption=""/>
+     <hymn_number caption="Številka pesmi"/>
+     <ccli_number caption="CCLI # pesmi"/>
+     <ccli_license caption="CCLI # licence"/>
+     <presentation caption="Vrstni red prikaza"/>
+     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
+     <separator caption="|NL|"/>
+     <!--The leading comma is needed for internal data structure reasons.-->
+     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
+     <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
+     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
+     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+  </songml>
+  
+  <smartml>
+    <attrib_except>SmartML.GetAttribute: Exception looking for attribute '%1' in '%2'</attrib_except>
+    <no_path>Ne najdem poti.</no_path>
+    <no_File>Ne najdem datoteke: %1</no_File>
+    <cant_open>Napaka pri odpiranju datoteke: %1</cant_open>
+    <cant_create>Datoteke ni mogoče ustvariti: %1</cant_create>
+    <xml_error>Napaka pri opredelitvi XML: %1</xml_error>
+    <xml_exterror>Napaka pri opredelitvi XML: %1: %2: %3</xml_exterror>
+  </smartml> 
+
+  <style_editor title="Urejevalnik videza">
+    <fonts_and_alignment caption="Pisave in poravnave">
+      <title caption="Naslov"/>
+      <subtitle caption="Podnaslov"/>
+      <body caption="Telo besedila"/>
+      <align caption="Poravnava"/>
+      <margin caption="Robovi"/>
+      <tabs caption="Tabulatorji"/>
+   </fonts_and_alignment>
+   <options caption="Besedilne možnosti">
+      <subtitles caption="Podnaslov pesmi"/>
+      <highlight_chorus caption="Poudari besedilo pripeva"/>
+      <descriptive_subtitle caption="Opisni podnaslov"/>
+      <verse_in_title caption="Vključi število kitice v naslov"/>
+    </options>
+      <background caption="Ozadje">
+      <color caption="Barva"/>
+      <image caption="Slika"/>
+      <position caption="Položaj">
+          <row0 caption="Raztegni"/>
+          <row1 caption="Na sredino"/>
+          <!-- <row2 caption="Tile"/> -->
+      </position>
+      <trim_bottom caption="*Pristrizi dno"/>
+      <pixels caption="px"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </background>
+    <trim_note caption="*Izreže dno ozadja da skrije vodni žig, naslov spletne strani, itd. V izogib motnjam prav tako pristriže strani za poravnavo."/>
+  </style_editor>
+  
+  <style_margins title="Urejevalnik robov">
+      <left caption="Levo"/>
+      <right caption="Desno"/>
+      <top caption="Zgoraj"/>
+      <bottom caption="Spodaj"/>
+      <pixels caption="px"/>
+    <preview caption="Predogled"/>
+  </style_margins>
+  
+  <style_tabs title="Urejevalnik tabulatorjev">
+    <tabs caption="Tabulatorji">
+      <new caption="&amp;Nov"/>
+      <remove caption="&amp;Odstrani"/>
+      <removeall caption="Odstrani &amp;vse"/>
+    </tabs>
+    <properties caption="Lastnosti">
+      <position caption="Polozaj"/>
+      <pixels caption="px"/>
+      <align caption="Poravnava"/>
+      <left caption="Levo"/>
+      <middle caption="Sredina"/>
+      <right caption="Desno"/>
+      <char caption="Pri znaku"/>
+    </properties>
+    <preview caption="Predogled"/>
+  </style_tabs>
+
+  <song_lookup title="Iskalnik pesmi">
+    <header caption="Za dodajanje pesmi, klikni na naslov pesmi in izberi 'Dodaj'. Če poznate naslov pesmi ga lahko napišete v polje za hitri iskalnik in izberete 'Dodaj'. Lahko tudi dvokliknete na naslov pesmi ali izberete ENTER, da dodate pesem."/>
+    <no_selection>Niste izbrali pesmi.</no_selection>
+    <folder caption="Izberi mapo"/>
+    <preview caption="Predogled pesmi"/>
+    <lookup caption="Hitri iskalnik"/>
+    <songs head1="Naslov pesmi" head2="Mapa"/>
+	<presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
+  </song_lookup>
+
+  <song_activity title="Dnevnik dejavnosti pesmi">
+    <range caption="Časovni razpon (mm/dd/yyyy)"></range>
+    <to caption="do"/>
+    <find caption="Najdi"></find>
+    <clear_log caption="Počisti dnevnik"></clear_log>
+    <print caption="Natisni"></print>
+	<view caption="Poglej dnevnik"/>
+    <merge caption="Zdruzi"/>
+    <export caption="Izvozi"/>
+    <done caption="Končaj"/>
+    <show caption="Pokaži">
+      <!-- 
+        "tag" attribute corresponds to the value of the
+        constants found in the LogEntry class. The list order
+        can be changed as desired for localisation (note that it is
+        alphabetical in English) as long as the tags relate to the
+        correct item.  For example, the local language value of "Moved"
+        should always have tag="4"
+      -->
+      <value tag="0">Vse</value>
+      <value tag="1">Ustvarjeno</value>
+      <value tag="8">Kopirano</value>
+      <value tag="2">Izbrisano</value>
+      <value tag="3">Spremenjeno</value>
+      <value tag="4">Premaknjeno</value>
+      <value tag="5">Projicirano</value>
+      <value tag="6">Natisnjeno</value>
+      <value tag="7">Preimenovano</value>
+    </show>
+    <songs head7="Ima akorde" head6="CCLI #" head5="Avtor" head4="Naslov" head3="Dejavnost" head2="Čas" head1="Datum"/> 
+    <input_box>
+      <erase_all>To bo izbrisalo vse vnose. Nadaljujem?</erase_all>
+    </input_box>
+    <description>Ustvarjeno|Izbrisano|Spremenjeno|Premaknjeno|Projicirano|Natisnjeno|Preimenovano</description>
+	 <file_type>OpenSong dnevnik aktivnosti</file_type>
+    <merged>Združitev zaključena, %1 vpisov je bilo dodanih v dnevnik aktivnosti pesmi.</merged>
+    <merged_dupes>%1 dvojnih vpisov je bilo prezrtih.</merged_dupes>
+  </song_activity>
+  
+  <scripture_lookup title="Iskalnik  Biblije">
+    <book caption="Knjiga Biblije"/>
+    <lookup caption="Hitri iskalnik">
+      <reference caption="Navedek"/>
+      <lookup caption="Poišči"/>
+      <example caption="Primer: '2Pet 1:1-2' ali '2Pet 1:1-2 (KJV)'"/>
+    </lookup>
+    <version caption="Prevod"/>
+    <select_file caption="Prosim izberi datoteko z Biblijo"/>
+    <verses_per_slide caption="Št. vrstic na prosojnico">
+      <one caption="1"/>
+      <two caption="2"/>
+      <three caption="3"/>
+    </verses_per_slide>
+    <format caption="Oblika">
+      <paragraph caption="Odstavek"/>
+      <verse caption="Vrstica"/>
+    </format>
+    <bad_reference>
+      <format>Prosim preveri format povpraševanja in poskusi ponovno.</format>
+      <empty>Napačen navedek: navedek je prazen.</empty>
+      <book>Napačen navedek: ne najdem knjige.</book>
+      <ambiguous>Napačen navedek: več knjig ustreza %1: %2</ambiguous>
+      <version>Napačen navedek: '%1' prevoda ni najti.</version>
+      <chapter>Napačen navedek: ne najdem poglavja '%1'.</chapter>
+      <verse>Napačen navedek: ne najdem vrstice '%1'.</verse>
+      <verse_range>Napačen navedek: vrstica 'do' mora biti večja ali enaka vrstici 'od'.</verse_range>
+    </bad_reference>
+    <colon caption=":"/>
+    <dash caption="-"/>
+    <search caption="link(shared/search/@caption)"/>
+    <insert caption="link(shared/insert/@caption)"/>
+    <shownumbers caption="Prikaži številko vrstice"/>
+  </scripture_lookup>
+
+  <module>
+    <read_error>Ne morem prebrati datoteke ali napačen format datoteke.</read_error>
+    <format_error>Napačen format modula.</format_error>
+    <move_error>Napaka v premikanju datoteke modula. Prosim preverite, če imate dovoljenje pisanja na '%1'.</move_error>
+    <rename_error>Napaka preimenovanja datoteke modula. Prosim preverite, če imate dovoljenje pisanja na '%1'.</rename_error>
+    <success>Modul uspešno naložen.</success>
+    <file_type>OpenSong moduli (*.xmm)</file_type>
+    <generate_index>Ustvari indeks datoteke Biblije?</generate_index>
+    <generate_error>Napaka ustvarjanja indeksa; ali imate dovoljenje pisanja na %1?</generate_error>
+  </module>
+
+  <index_progress title="Prosimo počakajte">
+    <top caption="Oblikujem seznam:"/>
+    <bottom caption="Pritisnite 'esc' za preklic"/>
+  </index_progress>
+  
+  <import_from_ccli title="Uvozi iz CCLI">
+    <user_id caption="Uporabnikov ID"/>
+    <password caption="Geslo"/>
+    <for caption="Išči"/>
+	<songs head1="Ly" head2="So" head3="Le" head4="Title" head5="Author"
+      head6="Catalog" head7="AKA" head8="Key Line" head9="Key" head10="CCLI #"/>
+    <by caption="By">
+      <title_and_aka caption="Naslov in AKA"/>
+      <title caption="Naslov"/>
+      <lyrics caption="Besedilo"/>
+      <author caption="Avtor"/>
+      <catalog caption="Katalog"/>
+      <theme caption="Tema"/>
+      <ccli caption="CCLI #"/>
+    </by>
+    <filter caption="Omeji">
+      <all caption="Vse"/>
+      <lead_sheets caption="Glasbena predloga"/>
+      <sound_samples caption="Zvočni primer"/>
+    </filter>
+    <find caption="Najdi"/>
+    <previous_page caption="Predhodna stran"/>
+    <next_page caption="Naslednja stran"/>
+    <page caption="Stran"/>
+    <of_pages caption="od %1"/>
+    <import caption="Uvozi"/>
+    <errors>
+      <no_data>Ni prenosa podatkov. Preverite prosim iskalne pojme in/ali vaš CCLI uporabniški ID/geslo.</no_data>
+      <bad_html>Napaka analize HTML. Obrnite se na tehnično pomoč OpenSong.</bad_html>
+      <no_results>Ne najdem.</no_results>
+      <no_headers>Ne najdem "header data". Preverite prosim iskalne pojme in/ali vaš CCLI uporabniški ID/geslo.</no_headers>
+      <no_connect>Ne morem se povezati z CCLI. Ponovno poskusite kasneje.</no_connect>
+      <already_exists>Pesem že obstaja.</already_exists>
+    </errors>
+  </import_from_ccli>
+
+  <find_image title="Najdi sliko">
+    <parent caption="(Parent)"/>
+  </find_image>
+  <input_box title="OpenSong"/>
+
+  <theme_list>
+    <option name="Kristus: atributi"/>
+    <option name="Kristus: rojstvo"/>
+    <option name="Kristus: smrt/sprava"/>
+    <option name="Kristus: moč/veličastvo"/>
+    <option name="Kristus: ljubezen/milost"/>
+    <option name="Kristus: vstajenje"/>
+    <option name="Kristus: drugi prihod"/>
+    <option name="Kristus: zmaga"/>
+    <option name="Cerkev: predanost/poslušnost"/>
+    <option name="Cerkev: ljudstvo"/>
+    <option name="Cerkev: večno življenje/nebesa"/>
+    <option name="Cerkev: oznanjevanje"/>
+    <option name="Cerkev: družina/občestvo"/>
+    <option name="Cerkev: občestvo z Bogom"/>
+    <option name="Cerkev: čistost/svetost"/>
+    <option name="Cerkev: spokorjenje/zveličanje"/>
+    <option name="Cerkev: obnova"/>
+    <option name="Cerkev: služba/bogoslužje"/>
+    <option name="Cerkev: duhovna lakota"/>
+    <option name="Sadovi: vera/upanje"/>
+    <option name="Sadovi: ljubezen"/>
+    <option name="Sadovi: veselje"/>
+    <option name="Sadovi: mir/tolažba"/>
+    <option name="Sadovi: potrpežljivost/prijaznost"/>
+    <option name="Sadovi: ponižnost/skromnost"/>
+    <option name="Bog: atributi"/>
+    <option name="Bog: Stvarnik/stvarjenje"/>
+    <option name="Bog: Oče"/>
+    <option name="Bog: vodstvo/skrb"/>
+    <option name="Bog: Sveti Duh"/>
+    <option name="Bog: svetost"/>
+    <option name="Bog: ljubezen/milost"/>
+    <option name="Bog: moč/veličastvo"/>
+    <option name="Bog: obljuba"/>
+    <option name="Bog: zmaga"/>
+    <option name="Bog: Beseda"/>
+    <option name="Hvalnica: zagotovilo/zaupanje"/>
+    <option name="Hvalnica: poziv/odpiranje"/>
+    <option name="Hvalnica: slavljenje"/>
+    <option name="Hvalnica: priznanje"/>
+    <option name="Hvalnica: zaupnost"/>
+    <option name="Hvalnica: povabilo"/>
+    <option name="Hvalnica: čaščenje/slavljenje"/>
+    <option name="Hvalnica: molitev/posvetitev"/>
+    <option name="Hvalnica: skrb/osvoboditev"/>
+    <option name="Hvalnica: hvaležnost"/>
+  </theme_list>
+
+  <tempo_list>
+    <option name="Zelo hiter"/>
+    <option name="Hiter"/>
+    <option name="Zmeren"/>
+    <option name="Počasen"/>
+    <option name="Zelo počasen"/>
+  </tempo_list>
+
+  <time_sig_list>
+    <option name="2/4"/>
+    <option name="3/4"/>
+    <option name="4/4"/>
+    <option name="3/8"/>
+    <option name="6/8"/>
+  </time_sig_list>
+
+  <transition_list>
+    <option name="Privzeto"/>
+    <option name="Da"/>
+    <option name="Ne"/>
+  </transition_list>
+  
+  <imagequality_list>
+    <option name="Popolno, minimalna kvaliteta, majhna datoteka zbirke"/>
+    <option name="Visoko, slaba kvaliteta"/>
+    <option name="Srednje, običajna kvaliteta"/>
+    <option name="Majhno, visoka kvaliteta"/>
+    <option name="Nizko, največja kvaliteta"/>
+    <option name="Brez, brez izgube, velika datoteka zbirke"/>
+  </imagequality_list>
+
+  <style_preview>
+    <slide_groups>
+      <slide_group name="Primer naslova" type="po meri" seconds="0" loop="false">
+        <title>Primer naslova</title>
+        <subtitle>Primer podnaslova</subtitle>
+        <notes>Vzorec not</notes>
+        <slides>
+          <slide>
+            <body>To je vzorčna prosojnica.
+To besedilo je telo besedila.
+Klikni na to prosojnico za spremembo videza prosojnice.</body>
+          </slide>
+        </slides>
+      </slide_group>
+    </slide_groups>
+  </style_preview>
+  
+
+  <subtitles caption="Podnaslov" head1="Razvrsti" head2="Omogočeno" head3="Opis">
+    <row0 caption="Copyright|copyright"/>
+    <row1 caption="Avtor|author"/>
+    <row2 caption="Številka pesmi|hymn_number"/> 
+    <row3 caption="CCLI Song Number|ccli_number"/> 
+    <row4 caption="CCLI License Number|ccli_license"/>
+  </subtitles>
+      
+  <shared>
+    <ok caption="OK"/>
+    <cancel caption="Prekliči"/>
+    <yes caption="Da"/>
+    <no caption="Ne"/>
+    <browse caption="Brskaj"/>
+    <browse_for caption="Brskaj za mapo"/>
+    <add caption="Dodaj"/>
+    <done caption="Končaj"/>
+    <untitled caption="Brez naslova"/>
+    <click_to_change caption="Klikni za spremembo"/>
+    <right_click_to_clear caption="Desni-klik da počistiš"/>
+    <insert caption="Vstavi"/>
+    <close caption="Zapri"/>
+    <search caption="Išči"/>
+    <save caption="Shrani" message="%1 ni bilo shranjeno"/>
+    <nosave caption="Ne shrani"/>
+    <cut caption="Izreži"/>
+    <copy caption="Kopiraj"/>
+    <paste caption="Prilepi"/>
+    <select caption="Izberi"/>
+    <exit_program caption="Izhod iz programa"/>
+	<export_to caption="Izberi mapo v katero izvažaš."/>
+  </shared>
+
+  <questions>
+    <new_name caption="Prosim vpišite naslov:"/>
+    <rename caption="Prosim vpišite nov naslov za '%1':"/>
+    <save caption="Ali želite shraniti spremembe v '%1'?"/>
+    <delete caption="Ali ste prepričani,da želite izbrisati '%1'?"/>
+    <clear caption="Ali ste prepričani,da želite počistiti to?"/>
+    <changed caption="Trenutna pesem je bila spremenjena, ali želite shraniti spremembe?"/>
+    <revert caption="Vse spremembe bodo izgubljene. Nadaljujem?"/>
+    <long_operation caption="Dokončanje tega lahko traja malo dlje. Nadaljujem?"/>
+    <generic_save caption="Shranim spremembe?"/>
+    <generic_save_explanation caption="Če ne shranite, bodo spremembe izgubljene"/>
+    <set_changed caption="Trenutna zbirka je spremenjena, ali želite shraniti spremembe?"/>
+    <select_docs_folder caption="Izberi mapo z dokumenti programa OpenSong.">Kje naj bodo shranjene datoteke (pesmi in zbirke) v OpenSong?</select_docs_folder>
+	<activity_log caption="Ali želiš pesm (i) v tej predstavitvi dodati v dnevnik aktivnosti? To se nanaša tudi na pesmi dodane naknadno!"/>
+  </questions>
+
+  <about>
+    <additional>Sorazvijalci:</additional>
+    <copyright>Copyright</copyright>
+    <gpl>Ta software je objavljen pod pogoji GPL.</gpl>
+    <web>Za več podatkov obiščite http://www.opensong.org/.</web>
+    <translating>Za prevajanje OpenSong, kopirajte datoteko 'English', ki se nahaja v mapi 'OpenSong Languages' in jo preimenujte v ime novega jezika. V datoteki prevedite vse razen značk in imen označb. Potem pošljite novo datoteko na translator@opensong.org  in mi jo bomo vključili v uradno izdajo.</translating>
+    <created_with_opensong>Ustvrjeno z OpenSong</created_with_opensong>
+    <sources>OpenSong vsebuje izvorno kodo od:
+StringUtils (http://www.strout.net/info/coding/rb/)
+HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
+REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
+iDeclare (http://www.declaresub.com/iDeclare
+SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/)
+Datoteka slike PuffyClouds1.jpg, vključena v mapi Backgrounds, je copyright FreeStockPhotos.com</sources>
+  </about>
+
+  <folderdb_errors>
+    <error code="1">Mapa '%1' že obstaja.</error>
+    <error code="2">Ne morem ustvariti mape '%1'.</error>
+    <error code="3">Datoteka '%1' že obstaja.</error>
+    <error code="4">Ne najdem poti do nove datoteke '%1'.</error>
+    <error code="5">Ne morem pisati v glavno mapo '%1'.</error>
+    <error code="6">ne najdem mape '%1'.</error>
+    <error code="7">Ne morem izbrisati mape '%1'.</error>
+    <error code="8">Ne najdem datoteke '%1'.</error>
+    <error code="9">Ne morem izbrisati datoteke '%1'.</error>
+    <error code="10">Ne morem preimenovati datoteke '%2'.</error>
+    <error code="11">Mapa '%1' ni prazna.</error>
+    <error code="12">Ne morem premakniti datoteke iz '%1' v '%2'.</error>
+    <error code="13">V mapi '%2' že obstaja datoteka'%1'.</error>
+  </folderdb_errors>
+
+  <errors>
+    <empty_group>Skupina  '%1' mora vsebovati vsaj eno prosojnico.</empty_group>
+    <unreadable_image>Ne morem prebrati slike datoteke '%1'.</unreadable_image>
+    <end_of_songs>Dosežen konec pesmi.</end_of_songs>
+    <already_exists>'%1' že obstaja.</already_exists>
+    <bad_format>'%1' vsebuje slabo formatiranje. Preskoči...</bad_format>
+    <no_songs>V seznamu pesmi ni te pesmi.</no_songs>
+    <no_multi_screen>Ni najti več zaslonov.</no_multi_screen>
+    <bad_file_name>Napačno ime datoteke '%1'.</bad_file_name>
+    <internal>Interna napaka. Obrnite se na tehnično pomoč.</internal>
+    <no_such_song>Ne najdem pesmi.</no_such_song>
+    <number_please>Prosim vpišite veljavno številko.</number_please>
+    <number_range>Prosim vstavite številko med %1 in %2.</number_range>
+    <no_path_allowed>Ime datoteke ne vsebuje poti.</no_path_allowed>
+    <rename_error>Ne morem preimenovati datoteke.</rename_error>
+    <general1>V '%1': Neznana napaka</general1>
+    <general2>v '%1': '%2'</general2>
+    <folder_error>Interna napaka mape. Obrnite se na tehnično pomoč.</folder_error>
+    <create_backgrounds_folder>Ne morem ustvariti mape za ozadja: %1</create_backgrounds_folder>
+    <create_sets_folder>Ne morem ustvariti/urediti mape zbirk %1</create_sets_folder>
+    <create_settings_folder>Ne morem ustvariti mape nastavitev: %1</create_settings_folder>
+    <create_songs_folder>Ne morem ustvariti mape pesmi: %1</create_songs_folder>
+    <no_backgrounds_folder>Ne najdem privzete mape za ozadja: %1, ali mapa je prazna</no_backgrounds_folder>
+    <no_defaults_folder>Ne najdem privzete mape: %1, ali mapa je prazna</no_defaults_folder>
+    <no_scripture_folder>Ne najdem privzete mape Biblij: %1, ali mapa je prazna</no_scripture_folder>
+    <no_sets_folder>Ne najdem privzete mape zbirk: %1, ali mapa je prazna</no_sets_folder>
+    <no_settings_folder>Ne najdem privzete mape nastavitev: %1, ali mapa je prazna</no_settings_folder>
+    <no_songs_folder>Ne najdem privzete mape pesmi: %1, ali mapa je prazna</no_songs_folder>
+    <no_docs_folder>Ne morem ustvariti/najti mape dokumentov: %1</no_docs_folder>
+    <docs_folder>Mapa dokumentov ne more biti podmapa privzetih map 'OpenSong Defaults'
+Trenutno spremenjeno v: %1
+Prosim prilagodi svoje izbire.</docs_folder>
+    <fileutils>
+       <destdoesnotexisterror>Datoteka ne obstaja: %1</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
+       <accessdenied>Napaka zaščite datoteke, dostop zavrnjen: %1</accessdenied>
+       <fileinuse>Napaka datoteke v uporabi: %1
+(Ali je že zagnana druga kopija programa OpenSong?)</fileinuse>
+       <filenotfound>Ne najdem datoteke: %1</filenotfound>
+       <invalidname>Napačno ime datoteke: %1</invalidname>
+       <notenoughmemory>Ni dovolj pomnilnika za dostop do datoteke %1
+Ponovno zaženi OpenSong in poskusi ponovno.</notenoughmemory>
+       <unknownerror>Neznana napaka v dostopu do datoteke %1</unknownerror>
+       <notaregularfile>Pričakujem %1 datoteko in ne mapo.</notaregularfile>
+       <notafolder>Pričakujem %1 mapo in ne datoteke.</notafolder>
+    </fileutils>
+    <cclinotavailable>Spletna stran CCLI se je signifikantno spremenila.
+To je pokvarilo funkcijo uvoza dokler ne bo mogoča nova uporaba vmesnika.
+Medtem časom preiskujte OpenSong-ov pripomoček uvoza kot možnost.
+Razvijalska ekipa OpenSong obžaluje težave.
+    </cclinotavailable>
+	 <activity_disabled>Ne morem naložiti datoteke dnevnika aktivnosti pesmi: %1! Prepričajte se, če datoteka obstaja in ni poškodovana. Ogled dnevnika bo onemogčen v tej seji.</activity_disabled>
+    <adding_logentry>Napaka v dodajanju vpisa v dnevnik!</adding_logentry>
+  </errors>
+
+  <xml_errors>
+    <noattribute>Ne morem najti XML označbe '%1' v '%2'.</noattribute>
+  </xml_errors>
+
+  <bible>
+    <errors>
+      <index_generation>Napaka ustvarjanja indeksa '%1.' Iskalnik Biblije bo onemogočen.</index_generation>
+
+      <loadxml>XML napaka nalaganja %1
+.&#10; Napak '%2' je v vrsti %3</loadxml>
+
+      <load1>Neznana napaka nalaganja %1</load1>
+      <load2>Napaka nalaganja %1: %2</load2>
+
+      <noindex>Iskalni indeks ni na voljo.  Izberite drug prevod ali ponovno zaženite OpenSong.</noindex>
+
+      <missing_bnames>Ne morem najti podporne datoteke Zefania 'bnames.xml' v 'OpenSong Settings'</missing_bnames>
+
+      <nobnames>Biblija ne vsebuje zahtevanih atributov knjig in ne morejo biti dodani</nobnames>
+      <roman>Napaka pretvarjanja rimskih številk '%1': %2</roman>
+
+      <save>Napaka shranjevanja posodobitvene datoteke '%1.'</save>
+    </errors>
+
+    <messages>
+      <bnames>Imena knjig morajo biti dodana k temu prevodu.
+&#10;Prosim nakažite primeren jezik za imena.</bnames>
+      <save>Shranim posodobitveno datoteko?</save>
+    </messages>
+  </bible>
+
+  <song>
+    <errors>
+      <unknown_element>Neznan element ob nalaganju pesmi: '%1'</unknown_element>
+    </errors>
+  </song>
+
+  <open_titles>
+    <audio>Izberi in odpri zvočno datoteko</audio>
+  </open_titles>  
+  
+  <hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Pojdi na prvo prosojnico v odseku</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Pojdi na naslednjo prosojnico v zbirki</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Pojdi na predhodno prosojnico v zbirki</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Pojdi na prvo prosojnico v zbirki</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Pojdi na zadnjo prosojnico v zbirki</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Pojdi na naslednji odsek v zbirki</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Pojdi na začetek trenutne ali predhodne zbirke</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Pojdi na naslednjo kitico</ACTION_VERSE> 	
+ 	<ACTION_BRIDGE>Pojdi na prehod</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Pojdi na pripev</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Pojdi na pred-pripev</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Pojdi na oznako (tag)</ACTION_TAG>
+ 	<ACTION_NORMAL>Prikaži trenutno prosojnico</ACTION_NORMAL>
+ 	<ACTION_BLACK>Prikaži črn zaslon	</ACTION_BLACK>
+ 	<ACTION_WHITE>Prikaži bel zaslon</ACTION_WHITE>
+ 	<ACTION_FREEZE>Zamrzni zaslon na trenutni prosojnici</ACTION_FREEZE>
+ 	<ACTION_LOGO>Prikaži logo</ACTION_LOGO>
+ 	<ACTION_HIDE>Skrij trenutno prosojnico (ozadje bo še vedno prikazano)</ACTION_HIDE>
+ 	<ACTION_EXIT>Izhod iz načina prikazovanja</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>Izhod iz načina projiciranja zahteva potrditev	</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>Takojšen izhod iz načina projiciranja</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
+
+  <progress_status>
+    <folder>Ustvarjam predpomnilnik mape %1</folder>
+    <lead_sheets>Ustvarjam glasbeno predlogo</lead_sheets>
+    <process_themes>Obdelujem teme</process_themes>
+    <process_songs>Obdelujem pesmi</process_songs>
+    <export>Izvažam pesmi</export>
+    <pass1>Razvrščam, 1. prehod</pass1>
+    <pass2>Razvrščam, 2, prehod</pass2>
+  </progress_status>
+
+</language>

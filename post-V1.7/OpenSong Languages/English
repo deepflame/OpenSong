@@ -1,0 +1,1302 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt, Ed Palmer" version="1.7.0">
+
+  <load_settings>
+    <checking_folders>Creating/Checking documents folders</checking_folders>
+    <main>Loading main settings</main>
+    <print>Loading print settings</print>
+    <presentation>Loading presentation settings</presentation>
+    <transitions>Loading transitions list</transitions>
+    <tempos>Loading tempo list</tempos>
+    <themes>Loading theme list</themes>
+    <time_signatures>Loading time signature list</time_signatures>
+    <imagequality>Loading image quality list</imagequality>
+    <fonts>Loading font list</fonts>
+    <latest_version>Checking for the latest version
+      <newer_available>A newer version (%1) is available. Visit www.opensong.org to download it.</newer_available>
+    </latest_version>
+ </load_settings>
+
+  <load_data>
+      <bible>Loading the default Bible</bible>
+      <songs_cache>Caching songs</songs_cache>
+      <folders>Loading song folders</folders>
+      <songs>Loading songs</songs>
+      <sets>Loading sets</sets>
+  </load_data>
+
+  <welcome>Welcome!</welcome>
+
+  <songs_mode caption="Song Mode">Use this mode to enter and edit your songs. Songs can be printed as lead sheets, or presented as slides. When changing from songs mode to sets mode, you will be prompted to save any changes.
+    <all_songs caption="All Songs">
+      <print caption="Print">Prints all of the songs available. This feature is great for printing song books.</print>
+      <export caption="Export">Exports all songs.</export>
+      <find caption="Find">Searches the text of all the songs for a given word or phrase.</find>
+    </all_songs>
+    <new_song caption="New Song">
+      <create caption="Create">Adds a new song to OpenSong.</create>
+      <import caption="Import">Imports a new song into OpenSong from CCLI SongSelect.</import>
+    </new_song>
+    <selected_song caption="Selected Song">
+      <save caption="Save">Writes the selected song to disk.</save>
+      <revert caption="Revert">Restores the current song back to the version stored on disk.</revert>
+      <print caption="Print">Prints the current song.</print>
+      <present caption="Present">Presents the current song. If you have made changes to the current song it will be saved.
+        <single_screen caption="Single Screen"/>
+        <dual_screen caption="Dual Screen"/>
+        <preview_dual_screen caption="Preview Dual Screen"/>
+      </present>
+      <export caption="Export">Exports the current song.</export>
+      <rename caption="Rename">Renames the current song.</rename>
+      <move caption="Move">Moves the current song into another folder.
+        <where caption="Move '%1' to folder:"/>
+      </move>
+      <copy caption="Copy">Copies the current song to another folder.
+        <where caption="Copy '%1' to folder:"/>
+      </copy>
+      <delete caption="Delete">Deletes the current song.</delete>
+    </selected_song>
+
+    <songs caption="Songs">Select a song from the list to load it into the song editor.</songs>
+
+    <curr_folder caption="Containing Folder">Shows the folder containing this song (relative to the Active folder)</curr_folder>
+
+    <song_folders caption="Folders">Select a folder from the list to filter the current list of songs.
+      <new>Creates a new folder to store songs in.</new>
+      <delete>Deletes the currently selected song folder. The folder must be empty.</delete>
+      <filter_all caption="All"/>
+      <filter_main caption="Main"/>
+    </song_folders>
+  </songs_mode>
+
+  <general_song_editor caption="General">Accesses the current song's title, subtitle, author, slides, and lyrics.
+    <header caption="Song Editor"/>
+    <show_general_editor caption="General"/>
+    <show_advanced_editor caption="Advanced"/>
+    <title caption="Title">Sets the title of the selected song.</title>
+    <author caption="Author">Sets the author of the selected song.</author>
+    <copyright caption="Copyright">Sets the copyright of the selected song.</copyright>
+    <ccli caption="CCLI Song #">Sets the CCLI number of the selected song.</ccli>
+    <hymn_number caption="Hymn #">Sets the Hymn number of the selected song.</hymn_number>
+    <presentation caption="Presentation">Sets the presentation order of the selected song. Sections should be separated with spaces. (i.e. "V1 C V2 C")</presentation>
+    <lyrics caption="Chords/Lyrics">Edit songs here using Section lines, Comment lines, Chord lines, and Lyric lines.</lyrics>
+    <insert caption="Insert"/>
+      <ins_section caption="Section">Sections are used to divide parts of a song.
+        <section_name caption="Section Name"/>
+      </ins_section>
+      <ins_lyrics caption="Chords/Lyrics">Automatically inserts the line prefixes for chords and lyrics.
+        <number_of_lines caption="Number of Lines"/>
+      </ins_lyrics>
+      <ins_multi_verse caption="Multiple Verses">Automatically inserts the line prefixes for chords and lyrics if you want to use the multi-verse format.
+        <number_of_verses caption="Number of Verses"/>
+        <number_of_lines caption="Number of Lines"/>
+      </ins_multi_verse>
+      <ins_comment caption="Comment">Comments are printed on lead sheets but do not show up in presentations.</ins_comment>
+      <ins_column caption="New Column">Lead sheets can contain two columns to aid in fitting longer songs onto a single page.</ins_column>
+      <ins_page caption="New Page">Indicates the location a page break should be placed in the lead sheet when printing longer songs.</ins_page>
+    <transpose caption="Transpose">Use this option to automatically transpose your song to any key. Amounts are measured in half-steps.
+      <using caption="Using">Select Sharps from this list to cause OpenSong to transpose accidentals to sharps rather than flats. Select Flats from this list to cause OpenSong to transpose accidentals to flats rather than sharps.
+        <sharps caption="Sharps"/>
+        <flats caption="Flats"/>
+      </using>
+    </transpose>
+  </general_song_editor>
+
+  <advanced_song_editor caption="Advanced">Accesses the current song's theme, capo, time signature, style, etc.
+    <header caption="Song Editor"/>
+    <show_general_editor caption="General"/>
+    <show_advanced_editor caption="Advanced"/>
+    <themes caption="Themes">Sets the main theme of the selected song.</themes>
+    <capo caption="Capo">Sets the capo position of the selected song.</capo>
+    <capo_print caption="Print"> If this option is checked, OpenSong will print the capo chords in addition to the non-capo chords.</capo_print>
+    <time_sig caption="Time Signature">Sets the time signature of the selected song.</time_sig>
+    <tempo caption="Tempo">Sets the tempo of the selected song.</tempo>
+    <key caption="Key">Sets the key signature of the selected song.</key>
+    <aka caption="AKA">Sets the common alternate title of the selected song.</aka>
+    <key_line caption="Key Line">Sets the line of the song that helps identify the selected song.</key_line>
+    <style caption="Override Style">Click here to customize the style for this song. Custom styles override the default presentation style.</style>
+    <user1 caption="User Defined 1">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user1>
+    <user2 caption="User Defined 2">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user2>
+    <user3 caption="User Defined 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+  </advanced_song_editor>
+
+  <sets_mode caption="Set Mode">Use this mode to enter and edit your sets. Sets are used to project a series of songs, slides, or whatever.  If currently in song mode and you have unsaved changes, you will be prompted to save.
+    <sets caption="Sets">Select a set from the list to load it into the set editor.
+      <add>Adds a new set to OpenSong.</add>
+    </sets>
+    <current_set caption="Current Set">
+      <save caption="Save">Saves the current set (including all items) to disk.</save>
+      <rename caption="Rename">Renames the current set.</rename>
+      <delete caption="Delete">Deletes the current set. (Songs currently in this set will not be deleted from the song editor.)</delete>
+       <saveas caption="Save As">Save the current set under a new name.</saveas>
+      <present caption="Present">Presents the current set to the screen. You have the option of presenting to the current monitor, a secondary monitor, or using a single monitor to preview what it would be like with two monitors.
+        <single_screen caption="Single Screen"/>
+        <dual_screen caption="Dual Screen"/>
+        <preview_dual_screen caption="Preview Dual Screen"/>
+        <no_slides>You must have at least one slide in the set to present.</no_slides>
+      </present>
+      <print_songs caption="Songs">Prints only the songs inside of the current set.
+        <no_songs>There are no songs in the set.</no_songs>
+      </print_songs>
+      <print_order caption="List">Prints an outline of this set.</print_order>
+      <export caption="Export">Export this set to another folder.</export>
+    </current_set>
+    <new_item caption="New Item">
+      <add_song caption="Song">Adds a song to the current set. This will present the list of songs available from the song editor for you to choose from.</add_song>
+      <add_scripture caption="Scripture">Adds a scripture slide or slides to the current set. This will display a window that will let you choose the particular passage that you wish to display.</add_scripture>
+      <add_slides caption="Slides">Adds a custom slide to the current set. Custom slides allow you to specify your own title, subtitle, body text, and even style. A custom slide item can actually contain a series of slides.</add_slides>
+      <add_style caption="Style">Changes the current set's default style at any place in the set. Styles changes can define a new style or revert to the previous style.</add_style>
+      <add_image caption="Image">Adds an image slide to the current set. Image slides will allow you to display a single image or a slideshow of multiple images instead of a body text.</add_image>
+      <add_video caption="Video">Adds a video file to the current set. Use this to present a video from within OpenSong.</add_video>
+      <add_powerpoint caption="PowerPoint">Adds a PowerPoint presentation to the current set. Use this to control a PowerPoint presentation from within OpenSong.</add_powerpoint>
+    </new_item>
+    <current_item caption="Current Item">
+      <move_up caption="Move Up">Moves the currently selected item in the set closer to the beginning of the set.</move_up>
+      <move_down caption="Move Dn">Moves the currently selected item in the set closer to the end of the set.</move_down>
+      <remove caption="Remove">Removes the currently selected item from the set.</remove>
+      <copy caption="Copy">Creates a copy of the currently selected set item.</copy>
+      <paste caption="link(shared/insert/@caption)">Insert copied item after current position.</paste>      
+      <store caption="Save">Stores the currently selected item in the set.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Presents the current set to the screen, starting from the currently selected item. You have the option of presenting to the current monitor, a secondary monitor, or using a single monitor to preview what it would be like with two monitors.
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
+    </current_item>
+    <items caption="Set Items">Lists the items in the current set. Click on a custom slide to load it into the custom slide editor or double-click a song to load it into the song editor.
+      <song caption="(song)"/>
+      <custom caption="(custom)"/>
+      <scripture caption="(scripture)"/>
+      <image caption="(image)"/>
+      <style caption="(style)">-- Change Style --</style>
+      <revert caption="(style)">-- Revert Style --</revert>
+      <defaultstyle caption="(style)">-- Exported Style --</defaultstyle>
+    </items>
+    <untitled caption="Untitled"/>
+    <errors>
+      <revert caption="Error reloading set &quot;%1&quot; from file."/>
+      <insert caption="Insertion of copied slides failed:&#10;%1"/>
+    </errors>
+    <messages>
+      <export_complete>&quot;%1&quot; exported to
+%2
+      </export_complete>
+    </messages>
+  </sets_mode>
+
+  <slide_editor>
+    <header caption="Slide Editor"/>
+    <title caption="Title">Sets the title of the slide displayed on the slide itself.</title>
+    <subtitle caption="Subtitle">Sets the subtitle of the slide displayed on the slide itself.</subtitle>
+    <name caption="Name">Sets the title of the slide(s) displayed in the Presentation Helper window. It does not display on the actual slide(s).</name>
+    <slides caption="Slides">Contains the bodies of the actual slide(s) in this custom slide item.</slides>
+    <presentation caption="Custom presentation order">Overrides the presentation order in the song file</presentation>
+    <origorder caption="Original presentation order">Presentation order in the song file</origorder>       
+    <folder caption="Song folder">Folder containing the selected item</folder>
+    <notes caption="Notes">These notes show up in the Presentation Helper window while giving a presentation using multiple monitors.</notes>
+    <insert caption="Insert"/>
+      <ins_slide caption="Slide">Allows for the creation of multiple slides that all share a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_slide>
+    <loop caption="Loop Slides">Check this box to have OpenSong automatically  loop back to the first slide in this item after it finishes displaying the last slide in this item.</loop>
+    <print caption="Print in List">Uncheck this box to have this custom slide group not appear when printing set lists.</print>
+    <transition caption="Use transition">Check this box to use a transition when this slide is shown.</transition>
+    <auto_advance caption="Auto-advance slides every">Enter the number of seconds that OpenSong should display each slide in this item before automatically advancing to the next slide in this item.</auto_advance>
+    <seconds caption="seconds"/>
+    <style caption="Override Style">Checking this box enables this slide item to contain a custom style. When enabled, click the preview box above to edit this item's style.</style>
+  </slide_editor>
+
+  <image_slide>
+    <header caption="Image Slide Editor"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+    <descriptions caption="Image description in subtitle">Add the description of the showing image to the subtitle.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <images caption="Images" head1="Preview" head2="Description">Contains the images that are shown in this slide. Hint: Drag one or more images to this list for easy adding.</images>
+    <fit_to_screen caption="Resize images to fit the screen">Images that are too large for the projector screen are resized to show the entire image. This also happens for images that are smaller than the screen size.</fit_to_screen>
+    <fit_to_body caption="Resize images to fit the body area">Images are made to always fit in the area that is bounded by the body style settings. This goes for both images that are larger and smaller than the body area.</fit_to_body>
+    <keepaspect caption="Keep aspect ratio when resizing images">In case of a resizing activity for either one of the above, the horizontal and vertical aspect will be maintained.</keepaspect>
+    <store_as_link caption="Do not store the image in the set, use link to the image">Storing images in the set rapidly increases the size of it on disk and might degrade the quality of the image. Using a link avoids this. Images from the 'Backgrounds' folder are stored as relative link, which makes the switch to the presentation computer easier. Use with care if the presentation is created on a machine different from the presentation device!</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Action" />
+      <ins_image caption="Add image">Adds an image to this slide to allow for a slideshow that shares a common title, subtitle, style, and/or auto-advance setting. Slides created this way can also be set to automatically loop.</ins_image>
+      <del_image caption="Remove image">Removes the currently selected image from the slide.</del_image>
+      <move_up caption="Move up">Moves the currently selected image in the slide closer to the beginning of the slide.</move_up>
+      <move_down caption="Move down">Moves the currently selected image in the slide closer to the end of the slide.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
+
+  <style_change>
+    <header caption="Style Change"/>
+    <revert caption="Revert to previous style">This option causes the set style to revert back to the previous style from here on.</revert>
+    <change caption="Change style to this">This option allows for sets to change their styles at any point in the set. Style changes affect all slides following them up to the next style change.</change>
+    <style>Click here to edit the new style.</style>
+  </style_change>
+
+  <video_slides>
+    <header caption="Video Slides Editor"/>
+    <name caption="Slides Name">The name used by OpenSong to identify this slide.</name>
+    <file caption="Video File">Sets the name of the video file for this slide.</file>
+    <loop caption="Loop Video">Check this box to make the movie restart each time it reaches its end.</loop>
+  </video_slides>
+
+  <powerpoint_slides>
+    <header caption="PowerPoint Slides Editor"/>
+    <name caption="Slides Name">The name used by OpenSong to identify this slide group.</name>
+    <file caption="PowerPoint File">Sets the name of the PowerPoint file for this slide.</file>
+  </powerpoint_slides>
+
+  <song_search title="Song Search">
+    <search caption="Enter search string:"/>
+    <fields caption="Search Fields">
+      <title caption="link(general_song_editor/title/@caption)"/>
+      <author caption="link(general_song_editor/author/@caption)"/>
+      <copyright caption="link(general_song_editor/copyright/@caption)"/>
+      <ccli caption="link(general_song_editor/ccli/@caption)"/>
+      <presentation caption="link(general_song_editor/presentation/@caption)"/>
+      <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+      <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
+      <themes caption="link(advanced_song_editor/themes/@caption)"/>
+      <capo caption="link(advanced_song_editor/capo/@caption)"/>
+      <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
+      <time_sig caption="link(advanced_song_editor/time_sig/@caption)"/>
+      <tempo caption="link(advanced_song_editor/tempo/@caption)"/>
+      <key caption="link(advanced_song_editor/key/@caption)"/>
+      <aka caption="link(advanced_song_editor/aka/@caption)"/>
+      <key_line caption="link(advanced_song_editor/key_line/@caption)"/>
+      <style caption="link(advanced_song_editor/style/@caption)"/>
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+    </fields>
+  </song_search>
+
+  <scripture_search title="Search">
+    <caption caption="Search in bible using keyword"/>
+    <example caption="To search for an exact phrase enclose it in double quotes, like &quot;Simon Peter&quot;"/>
+    <match caption="Match">
+      <exact caption="E&amp;xact"/>
+      <begin caption="&amp;Begins with"/>
+    </match>
+    <words caption="Verse must have">
+      <all caption="A&amp;ll words"/>
+      <any caption="An&amp;y word"/>
+    </words>
+    <search caption="&amp;Search"/>
+    <result caption="%1 matches were found using the specified keyword(s)."/>
+    <ok caption="link(shared/ok/@caption)"/>
+    <cancel caption="link(shared/cancel/@caption)"/>
+    <result head1="Reference" head2="Text" />
+  </scripture_search>
+
+  <main_menu>
+    <file caption="_File">
+      <new caption="_New"/>
+      <save caption="_Save"/>
+      <present caption="_Present">
+        <single_screen caption="_Single Screen"/>
+        <dual_screen caption="_Dual Screen"/>
+        <preview_dual_screen caption="_Preview Dual Screen"/>
+      </present>
+      <pagesetup caption="Pa_ge Setup"/>
+      <print caption="_Print"/>
+      <print_alphabetical_toc caption="Print _Alphabetical TOC"/>
+      <print_categorical_toc caption="Print _Categorical TOC"/>
+      <song_act caption="View Song Activity _Log"/>
+      <scripture caption="Scripture Look_up"/>
+      <quit caption="E_xit"/>
+    </file>
+    <edit caption="_Edit">
+      <undo caption="_Undo"/>
+      <cut caption="_Cut"/>
+      <copy caption="C_opy"/>
+      <paste caption="_Paste"/>
+      <clear caption="C_lear"/>
+      <find caption="_Find"/>
+      <find_next caption="Find A_gain"/>
+      <selall caption="Select _All"/>
+    </edit>
+    <mode caption="_Mode">
+      <songs caption="_Song Mode"/>
+      <sets caption="S_ets Mode"/>
+    </mode>
+    <settings caption="_Settings">
+      <presentation caption="_Presentation Settings"/>
+      <print caption="Print _Settings"/>
+      <general caption="_General Settings"/>
+      <refresh_songs caption="Refresh Songs _Folder"/>
+      <refresh_sets caption="R_efresh Sets Folder"/>
+      <install_module caption="_Install Module"/>
+    </settings>
+    <help caption="_Help">
+      <help_topics caption="Help _Topics"/>
+      <user_manual caption="_Online User Manual"/>
+      <translating caption="_Translating OpenSong"/>
+      <about caption="_About OpenSong"/>
+    </help>
+  </main_menu>
+
+  <general_settings title="General Configuration">
+    <general caption="General" head1="Basic" head2="Special">
+      <ccli caption="Church CCLI License #"/>
+      <version_check caption="Check for latest version at startup"/>
+      <language caption="Language"/>
+    </general>
+    <proxy caption="Proxy">
+      <host caption="Host"/>
+      <port caption="Port"/>
+    </proxy>
+    <user_defined caption="User Defined">
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <load caption="Load Language Defaults"/>
+    </user_defined>
+    <fonts caption="Fonts">
+      <headings caption="Headings"/>
+      <labels caption="Labels"/>
+      <text_fields caption="Text Fields"/>
+      <fixed_width caption="Fixed-width Text"/>
+      <buttons caption="Buttons"/>
+      <large_headings caption="Large Headings"/>
+      <newpaint caption="Use new visual style"/>
+    </fonts>
+    <documents_folder caption="Documents Folder">
+      <warning caption="Change will not be applied until OpenSong restarts."/>
+      <default caption="Default"/>
+      <custom caption="Custom"/>
+      <message>The new location for OpenSong documents will not take effect until OpenSong is restarted. You may want to copy your old OpenSong documents over to the new location first.</message>
+      <changed>You selected to use a custom Documents Folder, but didn't click the change button.  Do you want to use the new folder?</changed>
+      <change caption="Change"/>
+      <oldfolderdb caption="Use pre-V1.1 file cache"/>
+    </documents_folder>
+    <imagequality caption="Set Image Quality">
+      <note caption="OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."/>
+      <compression caption="Image compression" />
+      <extern caption="Do not include images from backgrounds." />
+    </imagequality>
+    <logging caption="Debug Log Settings">
+      <append caption="Append to log file"/>
+      <console caption="Log to system console"/>
+      <level caption="Log level" disabled="Disabled"/>
+      <dialog caption="Please select a file to store the log"
+              title="Select log file"/>
+    </logging>
+    <log caption="Song Activity Log Settings">
+      <enable caption="Enable Logging"/>
+      <prompt caption="Prompt Before Presenting"/>
+    </log>
+    <startmode caption="Initial Window">
+      <songs caption="Songs"/>
+      <sets  caption="Sets"/>
+    </startmode>
+  </general_settings>
+
+  <print_settings title="Print Settings">
+    <tabs head3="Margins" head1="Fonts" head2="Layout"/>
+    <margins>
+      <left caption="Left"/>
+      <top caption="Top"/>
+      <right caption="Right"/>
+      <bottom caption="Bottom"/>
+      <width caption="Width"/>
+      <height caption="Height"/>
+      <message caption="See File/Page Setup... to set margins"/>
+    </margins>
+    <fonts>
+      <title caption="Title"/>
+      <author caption="Author"/>
+      <sections caption="Sections"/>
+      <lyrics caption="Lyrics"/>
+      <chords caption="Chords"/>
+      <capo caption="Capo"/>
+      <copyright caption="Copyright"/>
+    </fonts>
+    <layout>
+      <heading_border_thickness caption="Heading Border Thickness"/>
+      <title_in_caps caption="Title in Caps"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
+    </layout>
+    <units caption="Units">
+      <inches caption="Inches"/>
+      <cm caption="Centimeters"/>
+    </units>
+  </print_settings>
+
+  <presentation_settings title="Presentation Settings">
+    <settings head1="Style" head2="Options" head3="Snapshots">
+        <default_slides caption="Default Slide Style"/>
+        <scripture_slides caption="Default Scripture Style"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+        <export_snapshot caption="Export a snapshot of each presented slide to the following file"/>
+        <snapshot_file caption="Snapshot filename">Choose the snapshot filename using a file selection dialog.</snapshot_file>
+        <export_preview caption="Export snapshots during set preview"/>
+        <export_live_insertions caption="Export snapshots of slides inserted during a live presentation"/>
+        <export_metadata caption="Export slide details in a similarly named xml file"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">The following parameters can be used in the file name or path:
+    - %d: The day of the current month (01-31)
+    - %h: The hour from the current time of day in 24-hour format (00-23)
+    - %i: The minutes from the current time (00-59)
+    - %m: The current month (01-12)
+    - %n: The number of the slide in the current set (with leading zeroes)
+    - %N: The name of the current slide
+    - %P: Presentation index for slides during presentation (with leading zeroes)
+    - %s: The seconds from the current time (00-59)
+    - %S: The name of the current set
+    - %T: The title of the current slide
+    - %V: The verse indicator of the current slide (for songs, empty for other slides)
+    - %y: The current year (4 digits)</snapshot_parameters>
+    </settings>
+    <transitions caption="Transitions">
+      <use_transitions caption="Enabled by default"/>
+      <transition_note caption="*Transitions are greatly affected by screen resolution. If you are experiencing slow transitions, consider decreasing the resolution of the monitor that the presentation resides on. Also, if you notice that transitions are not showing up, it may be because your color levels are too low on the presentation monitor."/>
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <frames caption="Frames" helptag="Number of frames or transition steps between slides"/>
+    </transitions>
+    <style caption="Style">
+      <border_thickness caption="Border Thickness"/>
+      <subtitles caption="Subtitles"/>
+      <modes>
+        <normal caption="Normal"/>
+        <black caption="Black"/>
+        <white caption="White"/>
+        <logo caption="Logo"/>
+        <hidden caption="Hidden"/>
+        <frozen caption="Frozen"/>
+      </modes>
+     
+      <mouse_cursor caption="Mouse Cursor">
+         <!--These will be phased out in favor of user editable cursors-->
+        <arrow caption="Arrow"/> 
+        <cross caption="Cross"/>
+        <hidden caption="Hidden"/>
+        <hourglass caption="Hourglass"/> 
+        <ibeam caption="IBeam"/> 
+      </mouse_cursor>
+      <blanks caption="Insert Blank Slides"/>
+      <blanks_between caption="Between Set Items"/>
+      <time caption="Time" helptag="Total time for transition (may actually take longer on slower systems)"/>
+      <blank_style caption="Blank slides take style of"/>
+      <blank_prev caption="Previous slide"/>
+      <blank_next caption="Next slide"/>
+      <initial_mode caption="Initial Presentation Mode"/>
+    </style>
+    <alerts caption="Alerts">
+      <font caption="Font"/>
+      <align caption="Align"/>
+    </alerts>
+    
+    <monitor caption="Monitors">
+      <control caption="Configuration Monitor"/>
+      <presentation caption="Presentation Monitor"/>
+      <detected caption="%1 monitor(s) detected."/>
+      <default_mode caption="Default Monitor Mode"/>
+      <force_4_3_preview caption="Force 4:3 preview"/>
+    </monitor>
+    <logo caption="Logo">
+      <mask caption="Mask"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </logo>
+
+    <audio caption="Audio">
+      <file_to_play caption="File to Play"/>
+      <browse caption="Browse"/>
+      <stop caption="Stop"/>
+      <play caption="Play"/>
+    </audio>
+
+    <misc caption="Misc">
+      <exit_prompt caption="Prompt when exiting"/>
+    </misc>
+
+    <errors>
+        <snapshot_file>Error: creating snapshots is enabled, but no filename is entered.</snapshot_file>
+    </errors>
+  </presentation_settings>
+
+  <presentation_helper title="Presentation Helper">
+    <slides head1="Title" head2="ID" head3="Text"/>
+    <modes caption="Mode">
+      <normal caption="[N] Normal"/>
+      <black caption="[K] Black"/>
+      <white caption="[W] White"/>
+      <logo caption="[L] Logo"/>
+      <hidden caption="[H] Hidden"/>
+      <frozen caption="[F] Frozen"/>
+    </modes>
+    <actions caption="Actions">
+      <alert caption="[A] Alert">New alert (leave blank to clear)</alert>
+      <quick_song caption="[Q] Add Song"/>
+      <scripture caption="[S] Scripture"/>
+      <full_screen caption="[M] Full Screen"/>
+      <normal_screen caption="[M] Normal Screen"/>
+      <return caption="[Esc] Return"/>
+    </actions>
+    <exit caption="Exit Presenter?"/>
+    <loop caption="Loop"/>
+    <keys>- Keys -
+Down: Next Slide
+Up: Previous Slide
+Right: Next Section
+Left: Previous Section
+1-9: Verse
+C: Chorus
+P: Pre-chorus
+B: Bridge
+T: Tag</keys>
+    <preview caption="Current slide preview" />
+    <next caption="Next slide preview" />
+  </presentation_helper>
+
+  <help_topics title="Help Topics">
+    <tabs head1="Presentation Keys" head2="Chords/Lyrics Format" head3="Presentation Field" head4="Close"/>
+    <print caption="Print"/>
+    <keys>
+&lt;h1&gt;Presentation Keys&lt;/h1&gt;
+
+The Presentation is controlled with the following keys:
+
+Esc Key: End the presentation.
+Up Arrow, 8 on Numpad, Backspace: Go to Previous Slide.
+Down Arrow, 2 on Numpad, Space Key: Go to Next Slide.
+Left Arrow, 4 on Numpad: Go to Previous item in set.
+Right Arrow, 6 on Numpad: Go to Next item in set.
+Q Key: Insert a new song into the presentation.
+A Key: Insert a new Alert.
+S Key: Insert a new scripture into the presentation.
+W Key: Fade to White screen.
+K Key: Fade to Black screen.
+L Key: Display OpenSong Logo.
+H Key: Hide Text, Show Background image only.
+F Key: Freezes Presentation(i.e. prevents displaying new slide, allowing you to change current slide
+without affecting the presentation, press N to unfreeze).
+N Key: Normal mode(get out of black screen, etc.)
+B Key: Go to Bridge(as denoted by a [B#] in song
+editor). If there is more than one Bridge,
+then pressing the B key will move to the next Bridge.
+C Key: Go to Chorus(as denoted by a [C#] in song editor). If there is more than one chorus,
+then pressing the C key will move to the next chorus.
+T Key: Go to Tag(as denoted by a [T#] in song editor). If there is more than one Tag,
+then pressing the T key will move to the next Tag.
+P Key: Go to Pre-Chorus(as denoted by a [P#] in song editor). If there is more than one Pre-Chorus,
+then pressing the P key will move to the next Pre-Chorus.
+1-9 Key: Go to Verse#(as denoted by a [V#] in song editor).
+
+Note the Numpad keys function depends on the state of the NumLock key.
+</keys>
+
+    <format>
+&lt;h1&gt;OpenSong Lyrics / Chords Format&lt;/h1&gt;
+
+Songs are broken down into the following line types: Section lines, Chord lines, Lyric lines, and Comment lines. A simple song might look something like this:
+&lt;pre&gt;&lt;b&gt;
+;Remember to sing the verse twice.
+[V]
+.G                C
+ This is a verse, this is a verse.
+.D          G
+ That is so cool.
+
+[C]
+.G               C/D  D     C
+ Sing the chorus now, yeah, yeah,
+.G           C       D/F# G
+ This is the dumbest song ever.&lt;/b&gt;&lt;/pre&gt;
+
+Lets look at each line type...
+
+&lt;h2&gt;Section Lines&lt;/h2&gt;
+
+Section lines are delimited by braces: [ and ]. A "section" includes any lines following this section line until the next section line or the end of the song. Sections are not displayed in the Presenter, but they are used to determine the order of the slides. Any text inside the braces is acceptable, but the following have special effects:
+
+&lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Verses. Lead sheets will automatically remove the "V" and print the remaining number with a circle around it. Examples: [V1], [V2], [V3].
+
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Chorus. Lead sheets will automatically display "Chorus" followed by any extra text (see examples). "Chorus" will be printed with a square around it. Examples: [C], [C2], [CModulation].
+
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Pre-chorus. Lead sheets will automatically display "Pre-chorus" followed by any extra text (see examples). "Pre-chorus" will be printed with horizontal lines above it and below it. Examples: [P], [P2].
+
+&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Bridge. Lead sheets will automatically display "Bridge" followed by any extra text (see examples). "Bridge" will be printed with a rounded square around it. Examples: [B], [B2].
+
+&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Tag. Lead sheets will automatically display "Tag" followed by any extra text (see examples). "Tag" will be printed with a rounded square around it. Examples: [T], [T2].
+
+&lt;h2&gt;Chord Lines&lt;/h2&gt;
+
+Chord lines start with a period: ".". The first letter of each chord should line up with the lyrics under it. Chord lines don't display on the Presenter, only on lead sheets.
+
+&lt;h2&gt;Lyric Lines&lt;/h2&gt;
+
+Lyric lines start with a space: " ". Lyrics generally line up with a previous chord line, but not necessarily.
+
+&lt;b&gt;&lt;i&gt;"__"&lt;/i&gt;&lt;/b&gt; If a word needs to be stretched to fit the chords, use underscores: "_". For example:
+&lt;b&gt;&lt;pre&gt;
+.Gsus7 C    G
+ Wel___come home.&lt;/pre&gt;&lt;/b&gt;
+
+Underscores are replaced by an appropriate "-" centered between the word parts. 
+
+&lt;b&gt;"  "&lt;/b&gt; Multiple spaces between words are just fine. Underscores and multiple spaces are automatically removed in the Presenter. When printing lead sheets, both are dropped and dynamically adjusted to fit.
+
+&lt;b&gt;"|"&lt;/b&gt; Vertical bars are replaced with spaces on lead sheets, and new lines in the Presenter.
+
+&lt;b&gt;"||"&lt;/b&gt; Double vertical bars are replaced by "new slide" in the Presenter and ignored when printing lead sheets. Double vertical bars must be at the end of the line.
+
+&lt;h3&gt;Multiple Lyric Lines for One Chord Line!?&lt;/h3&gt;
+
+Many songs have multiple verses which all share the same chords. Rather than repeat the chords in each verse section, we can group them by verse line rather than by verse number (like a hymnal). In this case, rather than start each lyric line with a space, start each lyric line with the verse number. Note that aligning multiple lyric lines with one chord line is a little trickier. It should look something like this:
+
+&lt;b&gt;&lt;i&gt;(Don't try to sing it; the timing is terrible. *grin*)&lt;/i&gt;&lt;pre&gt;
+[V]
+.G     C               G
+1This  is verse        one;
+2This  is not verse    two;
+3Where did verse three go;
+4Ever__lasting is not  verse four;
+
+.G     D    C                D            G
+1Hear  my   song as I sing,  "Mon_________key."
+2Open  your ears to my       wonderful    song.
+3Why   are  we still         singing this song?
+4This  is   not the way that songs should sound.&lt;/pre&gt;
+&lt;/b&gt;
+As far as the Presenter is concerned, the first character of each lyric line (i.e. 1, 2, 3, etc.) is appended to the section it is in. In other words, a section line of [V] with following lyric lines starting with 1, 2, 3, etc. would look like V1, V2, V3, etc.
+
+&lt;h2&gt;Comment Lines&lt;/h2&gt;
+
+There isn't much to a comment line. Comment lines are any lines that start with a semi-colon: ";". Comment lines are skipped in the Presenter, and displayed using the Comment font in Lead Sheets.
+
+&lt;h2&gt;Column Breaks&lt;/h2&gt;
+
+If a line contains only three dashes ("---"), lyrics sheets will print with a second column starting at the column break.
+
+&lt;h2&gt;Page Breaks&lt;/h2&gt;
+
+If a line contains ("-!!") this indicates the location where a page break should be placed in the lead sheet when printing longer songs.
+
+</format>
+
+    <presentation>
+&lt;h1&gt;OpenSong Presentation Field&lt;/h1&gt;
+
+The presentation field contains a list of sections from the song's lyrics/chords field. Each section is seperated by a space. For example:
+&lt;b&gt;
+V1 C V2 C V3 C
+&lt;/b&gt;
+This example would display the first verse on the first slide, the chorus on the second slide, the second verse on the third slide, and so on.
+
+Keep in mind that if your song uses multi-lyric lines for a single chord line, that each lyric line's prefix is appended to it's section. See the "Lyric Lines" section under the "Lyrics / Chords Format" help for more information.
+
+&lt;h3&gt;Empty Presentation Field&lt;/h3&gt;
+
+If the presentation field is empty, then the Presenter will order the slides based on the order in the Lyrics / Chords field.
+</presentation>
+  </help_topics>
+
+  <font_selection title="Font Selection">
+    <face caption="Font"/>
+    <size caption="Size"/>
+    <color caption="Color"/>
+    <bold caption="Bold"/>
+    <italic caption="Italic"/>
+    <underline caption="Underline"/>
+    <border caption="Border"/>
+    <shadow caption="Shadow"/>
+    <fill caption="Fill"/>
+  </font_selection>
+
+  <print_preview title="Print Preview">
+    <first caption="&lt;&lt;"/>
+    <previous caption="&lt;"/>
+    <next caption="&gt;"/>
+    <last caption="&gt;&gt;"/>
+    <zoom_in caption="-"/>
+    <zoom_out caption="+"/>
+    <pages caption="%1 of %2"/>
+    <print_setup caption="Print Setup"/>
+    <print caption="Print"/>
+    <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+    <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+    </print_preview>
+    
+<print>
+     <continued caption="(continued)"/>
+     <toc caption="Table of Contents"/>
+     <categorized caption="Categorized"/>
+     <alphabetical caption="Alphabetical"/>
+     <copyright caption="Copyright"/>
+     <page caption="Page %1"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+     <create_list caption="Creating list of %1..."/>
+     <uncategorized caption="Other"/>
+     <setlist caption="Order of Service">
+     <date caption="Printed "/>
+     </setlist>
+</print>
+ 
+<songml>
+     <page caption="Page"/>
+     <capo caption="Capo"/>
+     <copyright caption="Copyright"/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Pre-chorus"/>
+     <chorus caption="Chorus"/>
+     <bridge caption="Bridge"/>
+     <tag caption="Tag"/>
+     <verse caption="Verse"/>
+     <prechorus_abbreviation caption="chor"/>
+     <chorus_abbreviation caption="chor"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
+     <author caption=""/>
+     <hymn_number caption="Hymn Number"/>
+     <ccli_number caption="CCLI Song #"/>
+     <ccli_license caption="CCLI License #"/>
+     <presentation caption="Presentation Order"/>
+     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
+     <separator caption="|NL|"/>
+     <!--The leading comma is needed for internal data structure reasons.-->
+     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
+     <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
+     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
+     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+  </songml>
+  
+  <smartml>
+    <attrib_except>SmartML.GetAttribute: Exception looking for attribute '%1' in '%2'</attrib_except>
+    <no_path>Path not found.</no_path>
+    <no_File>File not found: %1</no_File>
+    <cant_open>Error Opening File: %1</cant_open>
+    <cant_create>File could not be created: %1</cant_create>
+    <xml_error>Error parsing XML: %1</xml_error>
+    <xml_exterror>Error parsing XML: %1: %2: %3</xml_exterror>
+  </smartml> 
+
+  <style_editor title="Style Editor">
+    <fonts_and_alignment caption="Fonts and Alignment">
+      <title caption="Show Title"/>
+      <subtitle caption="Show Subtitle"/>
+      <body caption="Show Body"/>
+      <body_autosize caption="Automatic font size scaling to make text fit"/>
+      <align caption="Align"/>
+      <margin caption="Margins"/>
+      <tabs caption="Tabulators"/>
+    </fonts_and_alignment>
+    <options caption="Textual options">
+      <subtitles caption="Song Subtitles"/>
+      <highlight_chorus caption="Highlight chorus text"/>
+      <descriptive_subtitle caption="Descriptive subtitle info"/>
+      <verse_in_title caption="Include verse numbers in title"/>
+    </options>
+    <background caption="Background">
+      <color caption="Color"/>
+      <image caption="Image"/>
+      <position caption="Position">
+          <row0 caption="Stretch"/>
+          <row1 caption="Center"/>
+          <!-- <row2 caption="Tile"/> -->
+      </position>
+      <trim_bottom caption="*Trim Bottom"/>
+      <pixels caption="px"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </background>
+    <trim_note caption="*Cuts the bottom of the background to hide watermarks, web site urls, etc. To avoid distortion, this also trims from the sides to compensate."/>
+  </style_editor>
+
+  <style_margins title="Margins Editor">
+      <left caption="Left"/>
+      <right caption="Right"/>
+      <top caption="Top"/>
+      <bottom caption="Bottom"/>
+      <pixels caption="px"/>
+    <preview caption="Preview"/>
+  </style_margins>
+  
+  <style_tabs title="Tabulators Editor">
+    <tabs caption="Tabulators">
+      <new caption="&amp;New"/>
+      <remove caption="&amp;Remove"/>
+      <removeall caption="Remove &amp;All"/>
+    </tabs>
+    <properties caption="Properties">
+      <position caption="Position"/>
+      <pixels caption="px"/>
+      <align caption="Alignment"/>
+      <left caption="Left"/>
+      <middle caption="Middle"/>
+      <right caption="Right"/>
+      <char caption="At character"/>
+      <apply caption="link(shared/apply/@caption)n"/>
+    </properties>
+    <preview caption="Preview"/>
+  </style_tabs>
+  
+  <song_lookup title="Song Lookup">
+    <header caption="To add a song, click the song title below and click 'Add'. If you know the name of the song you can type it in the Quick Lookup field and click 'Add'. You can also double-click on the song name or press ENTER to add the song."/>
+    <no_selection>You have not selected a song.</no_selection>
+    <folder caption="Select Folder"/>
+    <preview caption="Song Preview"/>
+    <lookup caption="Quick Lookup"/>
+    <songs head1="Song Name" head2="Folder"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
+  </song_lookup>
+
+  <song_activity title="Song Activity Log">
+    <range caption="Date range (mm/dd/yyyy)"></range>
+    <to caption="to"/>
+    <find caption="Find"></find>
+    <clear_log caption="Clear log"></clear_log>
+    <print caption="Print"></print>
+    <view caption="View LogFile"/>
+    <merge caption="Merge"/>
+    <export caption="Export"/>
+    <done caption="Done"/>
+    <show caption="Show">
+      <!-- 
+        "tag" attribute corresponds to the value of the
+        constants found in the LogEntry class. The list order
+        can be changed as desired for localisation (note that it is
+        alphabetical in English) as long as the tags relate to the
+        correct item. For example, the local language value of "Moved"
+        should always have tag="4"
+      -->
+      <value tag="0">All</value>
+      <value tag="1">Created</value>
+      <value tag="8">Copied</value>
+      <value tag="2">Deleted</value>
+      <value tag="3">Modified</value>
+      <value tag="4">Moved</value>
+      <value tag="5">Presented</value>
+      <value tag="6">Printed</value>
+      <value tag="7">Renamed</value>
+    </show>
+    <songs head7="Has Chords" head6="CCLI #" head5="Author" head4="Title" head3="Activity" head2="Time" head1="Date"/> 
+    <input_box>
+      <erase_all>This will erase all entries. Continue?</erase_all>
+    </input_box>
+    <description>Created|Deleted|Modified|Moved|Presented|Printed|Renamed|Copied</description>
+    <file_type>OpenSong Activity Log File</file_type>
+    <merged>Merge complete %1 entries were added to the song activity log.</merged>
+    <merged_dupes>%1 duplicate entries were ignored.</merged_dupes>
+  </song_activity>
+
+  <scripture_lookup title="Scripture Lookup">
+    <lookup caption="Quick Lookup">
+      <reference caption="Reference"/>
+      <lookup caption="Lookup"/>
+      <example caption="Ex: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
+    </lookup>
+    <search caption="Full text search"/>
+    <books caption="Bible Book">
+	  <ot caption="Old testament"/>
+	  <nt caption="New testament"/>
+    </books>
+    <paragraph caption="Paragraph"/>
+    <colon caption=":"/>
+    <from_verse caption="From verse"/>
+    <dash caption="-"/>
+    <to_verse caption="To verse"/>
+    <version caption="Version"/>
+    <select_file caption="Please select a scripture file"/>
+    <verses_per_slide caption="Verses per slide" />
+    <chars_per_slide caption="Max. characters per slide" />
+    <format caption="Format">
+      <paragraph caption="Paragraph"/>
+      <verse caption="Verse"/>
+    </format>
+    <shownumbers caption="Display verse numbers"/>
+    <preview caption="Preview"/>
+    <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
+    <bad_reference>
+      <format>Please check the format of the query and try again.</format>
+      <empty>Bad reference: the reference was empty.</empty>
+      <book>Bad reference: could not find book.</book>
+      <ambiguous>Bad reference: Multiple books match %1: %2</ambiguous>
+      <version>Bad reference: '%1' version could not be found.</version>
+      <chapter>Bad reference: could not find chapter '%1'.</chapter>
+      <verse>Bad reference: could not find verse '%1'.</verse>
+      <verse_range>Bad reference: the 'to' verse must be greater than or equal to the 'from' verse.</verse_range>
+    </bad_reference>
+  </scripture_lookup>
+
+  <module>
+    <read_error>Could not read file or invalid file format.</read_error>
+    <format_error>Invalid module format.</format_error>
+    <move_error>Error moving module file. Please verify that you have write access to '%1'.</move_error>
+    <rename_error>Error renaming module file. Please verify that you have write access to '%1'.</rename_error>
+    <success>Module successfully loaded.</success>
+    <file_type>OpenSong Modules</file_type>
+    <generate_index>Generate index for scripture file?</generate_index>
+    <generate_error>Error generating index; do you have write access to %1?</generate_error>
+  </module>
+
+  <index_progress title="Please Wait">
+    <top caption="Building index:"/>
+    <bottom caption="Press 'esc' to cancel"/>
+  </index_progress>
+
+  <import_from_ccli title="Import from CCLI">
+    <user_id caption="User ID"/>
+    <password caption="Password"/>
+    <for caption="Search For"/>
+    <songs head1="Ly" head2="So" head3="Le" head4="Title" head5="Author"
+      head6="Catalog" head7="AKA" head8="Key Line" head9="Key" head10="CCLI #"/>
+    <by caption="By">
+      <title_and_aka caption="Title and AKA"/>
+      <title caption="Title"/>
+      <lyrics caption="Lyrics"/>
+      <author caption="Author"/>
+      <catalog caption="Catalog"/>
+      <theme caption="Theme"/>
+      <ccli caption="CCLI #"/>
+    </by>
+    <filter caption="Filter">
+      <all caption="All"/>
+      <lead_sheets caption="Lead Sheets"/>
+      <sound_samples caption="Sound Samples"/>
+    </filter>
+    <find caption="Find"/>
+    <previous_page caption="Previous Page"/>
+    <next_page caption="Next Page"/>
+    <page caption="Page"/>
+    <of_pages caption="of %1"/>
+    <import caption="Import"/>
+    <errors>
+      <no_data>No data was returned. Please check your search string and/or your CCLI ID/password.</no_data>
+      <bad_html>Error parsing HTML. Contact OpenSong technical support.</bad_html>
+      <no_results>No results returned.</no_results>
+      <no_headers>No header data was returned. Please check your search string and/or your CCLI ID/password.</no_headers>
+      <no_connect>Could not connect to CCLI. Please try again later.</no_connect>
+      <already_exists>Song already exists.</already_exists>
+    </errors>
+  </import_from_ccli>
+
+  <find_image title="Find Image">
+    <parent caption="(Parent)"/>
+  </find_image>
+  <input_box title="OpenSong"/>
+
+  <theme_list>
+    <option name="Christ: Attributes"/>
+    <option name="Christ: Birth"/>
+    <option name="Christ: Death/Atonement"/>
+    <option name="Christ: Power/Majesty"/>
+    <option name="Christ: Love/Mercy"/>
+    <option name="Christ: Resurrection"/>
+    <option name="Christ: Second Coming"/>
+    <option name="Christ: Victory"/>
+    <option name="Church: Commitment/Obedience"/>
+    <option name="Church: Country"/>
+    <option name="Church: Eternal Life/Heaven"/>
+    <option name="Church: Evangelism"/>
+    <option name="Church: Family/Fellowship"/>
+    <option name="Church: Fellowship w/ God"/>
+    <option name="Church: Purity/Holiness"/>
+    <option name="Church: Repentance/Salvation"/>
+    <option name="Church: Renewal"/>
+    <option name="Church: Service/Ministry"/>
+    <option name="Church: Spiritual Hunger"/>
+    <option name="Fruit: Faith/Hope"/>
+    <option name="Fruit: Love"/>
+    <option name="Fruit: Joy"/>
+    <option name="Fruit: Peace/Comfort"/>
+    <option name="Fruit: Patience/Kindness"/>
+    <option name="Fruit: Humility/Meekness"/>
+    <option name="God: Attributes"/>
+    <option name="God: Creator/Creation"/>
+    <option name="God: Father"/>
+    <option name="God: Guidance/Care"/>
+    <option name="God: Holy Spirit"/>
+    <option name="God: Holiness"/>
+    <option name="God: Love/Mercy"/>
+    <option name="God: Power/Majesty"/>
+    <option name="God: Promises"/>
+    <option name="God: Victory"/>
+    <option name="God: Word"/>
+    <option name="Worship: Assurance/Trust"/>
+    <option name="Worship: Call/Opening"/>
+    <option name="Worship: Celebration"/>
+    <option name="Worship: Declaration"/>
+    <option name="Worship: Intimacy"/>
+    <option name="Worship: Invitation"/>
+    <option name="Worship: Praise/Adoration"/>
+    <option name="Worship: Prayer/Devotion"/>
+    <option name="Worship: Provision/Deliverance"/>
+    <option name="Worship: Thankfulness"/>
+  </theme_list>
+
+  <tempo_list>
+    <option name="Very Fast"/>
+    <option name="Fast"/>
+    <option name="Moderate"/>
+    <option name="Slow"/>
+    <option name="Very Slow"/>
+  </tempo_list>
+
+  <time_sig_list>
+    <option name="2/4"/>
+    <option name="3/4"/>
+    <option name="4/4"/>
+    <option name="3/8"/>
+    <option name="6/8"/>
+  </time_sig_list>
+
+  <transition_list>
+    <option name="Default"/>
+    <option name="Yes"/>
+    <option name="No"/>
+  </transition_list>
+  
+  <imagequality_list>
+    <option name="Full, minimum quality, small set file"/>
+    <option name="High, low quality"/>
+    <option name="Medium, normal quality"/>
+    <option name="Little, high quality"/>
+    <option name="Low, maximum quality"/>
+    <option name="None, lossless, large set file"/>
+  </imagequality_list>
+
+  <style_preview>
+    <slide_groups>
+      <slide_group name="Sample Title" type="custom" seconds="0" loop="false">
+        <title>Sample Title</title>
+        <subtitle>Sample Subtitle</subtitle>
+        <notes>Sample Notes</notes>
+        <slides>
+          <slide>
+            <body>This is a sample slide.
+This text is the body text.
+Click on this slide to edit its style.</body>
+          </slide>
+        </slides>
+      </slide_group>
+    </slide_groups>
+  </style_preview>
+  
+
+  <subtitles caption="Subtitles" head1="Sort" head2="Enabled" head3="Description">
+    <row0 caption="Copyright|copyright"/>
+    <row1 caption="Author|author"/>
+    <row2 caption="Hymn Number|hymn_number"/> 
+    <row3 caption="CCLI Song Number|ccli_number"/> 
+    <row4 caption="CCLI License Number|ccli_license"/>
+  </subtitles>
+      
+  <shared>
+    <ok caption="OK"/>
+    <cancel caption="Cancel"/>
+    <yes caption="Yes"/>
+    <no caption="No"/>
+    <apply caption="Appl&amp;y"/>
+    <browse caption="Browse"/>
+    <browse_for caption="Browse for Folder"/>
+    <add caption="Add"/>
+    <done caption="Done"/>
+    <untitled caption="Untitled"/>
+    <click_to_change caption="Click to change"/>
+    <right_click_to_clear caption="Right-click to clear"/>
+    <insert caption="Insert"/>
+    <close caption="Close"/>
+    <search caption="Search"/>
+    <save caption="Save" message="%1 has not been saved."/>
+    <nosave caption="Don't Save"/>
+    <cut caption="Cut"/>
+    <copy caption="Copy"/>
+    <paste caption="Paste"/>
+    <select caption="Select"/>
+    <exit_program caption="Exit Program"/>
+    <export_to caption="Select a folder to export to."/>
+  </shared>
+
+  <questions>
+    <new_name caption="Please enter a name:"/>
+    <rename caption="Please enter a new name for '%1':"/>
+    <save caption="Do you want to save changes to '%1'?"/>
+    <delete caption="Are you sure you want to delete '%1'?"/>
+    <clear caption="Are you sure you want to clear this?"/>
+    <changed caption="Current Song has been changed, do you want to save?"/>
+    <revert caption="All changes will be lost. Continue?"/>
+    <long_operation caption="This may take a long time to complete. Continue?"/>
+    <generic_save caption="Save changes?"/>
+    <generic_save_explanation caption="If you do not save, your changes will be lost"/>
+    <set_changed caption="Current set has been changed, do you want to save?"/>
+    <select_docs_folder caption="Select the OpenSong Documents folder">Where should the OpenSong files (songs and sets) be stored?</select_docs_folder>
+    <activity_log caption="Would you like the song(s) in this presentation added to the activity log? Note that this applies to songs added on-the-fly as well!"/>
+  </questions>
+
+  <about>
+    <additional>Additional development by:</additional>
+    <copyright>Copyright</copyright>
+    <gpl>This software is released under the terms of the GPL.</gpl>
+    <web>For more information visit http://www.opensong.org/.</web>
+    <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to opensong-translate@lists.sourceforge.net or add it in the 'Patches' Tracker on the OpenSong project page at Source Forge and we'll include it in the official release.</translating>
+    <created_with_opensong>Created with OpenSong</created_with_opensong>
+    <sources>OpenSong includes source code from:
+StringUtils (http://www.strout.net/info/coding/rb/)
+HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
+REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
+iDeclare (http://www.declaresub.com/iDeclare
+SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/)
+The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright FreeStockPhotos.com</sources>
+  </about>
+
+  <folderdb_errors>
+    <error code="1">Folder '%1' already exists.</error>
+    <error code="2">Could not create folder '%1'.</error>
+    <error code="3">File '%1' already exists.</error>
+    <error code="4">Could not find path to new file '%1'.</error>
+    <error code="5">Could not write to main folder '%1'.</error>
+    <error code="6">Could not find folder '%1'.</error>
+    <error code="7">Could not delete folder '%1'.</error>
+    <error code="8">Could not find file '%1'.</error>
+    <error code="9">Could not delete file '%1'.</error>
+    <error code="10">Could not rename file '%2'.</error>
+    <error code="11">Folder '%1' is not empty.</error>
+    <error code="12">Could not move file '%1' to '%2'.</error>
+    <error code="13">File '%1' already exists in folder '%2'.</error>
+  </folderdb_errors>
+
+  <errors>
+    <empty_group>Group '%1' must contain at least one slide.</empty_group>
+    <unreadable_image>Could not read image file '%1'.</unreadable_image>
+    <end_of_songs>End of songs reached.</end_of_songs>
+    <already_exists>'%1' already exists.</already_exists>
+    <bad_format>'%1' contains bad formatting. Skipping...</bad_format>
+    <no_songs>There are no songs in the song list.</no_songs>
+    <no_multi_screen>Multiple screens not found.</no_multi_screen>
+    <bad_file_name>Invalid file name '%1'.</bad_file_name>
+    <internal>Internal error. Contact technical support.</internal>
+    <no_such_song>Cannot find song.</no_such_song>
+    <number_please>Please enter a valid number.</number_please>
+    <number_range>Please enter a number between %1 and %2.</number_range>
+    <no_path_allowed>File name may not include a path.</no_path_allowed>
+    <rename_error>Unable to rename file.</rename_error>
+    <general1>In '%1': Unknown error</general1>
+    <general2>In '%1': '%2'</general2>
+    <folder_error>Internal folder error. Contact technical support.</folder_error>
+    <create_backgrounds_folder>Could not create Backgrounds folder: %1</create_backgrounds_folder>
+    <create_sets_folder>Could not create/edit Sets folder %1</create_sets_folder>
+    <create_settings_folder>Could not create Settings folder: %1</create_settings_folder>
+    <create_songs_folder>Could not create songs folder: %1</create_songs_folder>
+    <no_backgrounds_folder>Can't find default Backgrounds folder: %1, or folder is empty</no_backgrounds_folder>
+    <no_defaults_folder>Can't find Defaults folder: %1, or folder is empty</no_defaults_folder>
+    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty</no_scripture_folder>
+    <no_sets_folder>Can't find default Sets folder: %1, or folder is empty</no_sets_folder>
+    <no_settings_folder>Can't find default Settings folder: %1, or folder is empty</no_settings_folder>
+    <no_songs_folder>Can't find default Songs folder: %1, or folder is empty</no_songs_folder>
+    <no_docs_folder>Could not create/find Documents folder: %1</no_docs_folder>
+    <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
+Temporarily changing to: %1
+Please modify your preferences.</docs_folder>
+    <fileutils>
+       <destdoesnotexisterror>File does not exist: %1</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
+       <accessdenied>File protection error, access denied: %1</accessdenied>
+       <fileinuse>File in use error: %1
+(Is there a second copy of OpenSong running?)</fileinuse>
+       <filenotfound>File was not found: %1</filenotfound>
+       <invalidname>Invalid name for file: %1</invalidname>
+       <notenoughmemory>Memory exhausted accessing file %1
+Restart OpenSong and retry.</notenoughmemory>
+       <unknownerror>Unknown error accessing file %1</unknownerror>
+       <notaregularfile>Expected %1 to be a file, not a folder.</notaregularfile>
+       <notafolder>Expected %1 to be a folder, not a file.</notafolder>
+    </fileutils>
+    <cclinotavailable>The CCLI website has changed significantly.
+This has broken Import function until a new interface can be used.
+In the meantime, please investigate the OpenSong Import utility as an option.
+The OpenSong development team members regret any inconvenience.
+    </cclinotavailable>
+    <activity_disabled>Could not load Song Activity Log file: %1! Please ensure this file exists and is not corrupted. Log viewing and activity logging will be disabled for this session.</activity_disabled>
+    <adding_logentry>Error Adding log entry!</adding_logentry>
+    <chars_per_slide>Max characters per slide must be between 1 and 1000.</chars_per_slide>
+  </errors>
+
+  <xml_errors>
+    <noattribute>Unable to find XML attribute '%1' in '%2'.</noattribute>
+  </xml_errors>
+
+  <bible>
+    <errors>
+      <index_generation>Error generating index for '%1.' Bible search will be disabled.</index_generation>
+
+      <loadxml>XML error loading %1
+.&#10; Error is '%2' at line %3</loadxml>
+
+      <load1>Unknown error loading %1</load1>
+      <load2>Error loading %1: %2</load2>
+
+      <noindex>No search index available.  Select a different translation or restart OpenSong.</noindex>
+
+      <missing_bnames>Unable to find Zefania support file 'bnames.xml' in 'OpenSong Settings'</missing_bnames>
+
+      <nobnames>Bible does not have required bname attributes and they could not be added</nobnames>
+      <roman>Error converting Roman numeral '%1': %2</roman>
+
+      <save>Error saving updated file '%1.'</save>
+    </errors>
+
+    <messages>
+      <bnames>Book names must be added to this translation.
+&#10;Please indicate the appropriate language for the names.</bnames>
+      <save>Save updated file?</save>
+    </messages>
+  </bible>
+
+  <song>
+    <errors>
+      <unknown_element>Unknown element loading song: '%1'</unknown_element>
+    </errors>
+  </song>
+
+  <open_titles>
+    <audio>Select Audio File to Open</audio>
+  </open_titles>  
+  
+  <hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Go to first slide in section</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Go to next slide in the set</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Go to previous slide in the set</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Go to the first slide in the set</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Go to the last slide in the set</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Go to the next section in the set</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Go to the start of the current or previous set</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Go to the next verse</ACTION_VERSE> 	
+ 	<ACTION_BRIDGE>Go to the bridge</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Go to the chorus</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Go to the pre-chorus</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Go to the tag</ACTION_TAG>
+ 	<ACTION_NORMAL>Display current slide</ACTION_NORMAL>
+ 	<ACTION_BLACK>Display black screen	</ACTION_BLACK>
+ 	<ACTION_WHITE>Display white screen</ACTION_WHITE>
+ 	<ACTION_FREEZE>Freeze display on current slide</ACTION_FREEZE>
+ 	<ACTION_LOGO>Display the logo</ACTION_LOGO>
+ 	<ACTION_HIDE>Hide current slide (background is still displayed)</ACTION_HIDE>
+ 	<ACTION_EXIT>Exit presenter mode</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>Exit presenter mode, require confirmation	</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>Exit presenter mode immediately</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
+
+  <progress_status>
+    <folder>Caching Folder %1</folder>
+    <lead_sheets>Generating Lead Sheets</lead_sheets>
+    <process_themes>Processing Themes</process_themes>
+    <process_songs>Processing Songs</process_songs>
+    <song_search>Searching Songs</song_search>
+    <export>Exporting Song(s)</export>
+    <pass1>Sorting, 1st Pass</pass1>
+    <pass2>Sorting, 2nd Pass</pass2>
+  </progress_status>
+
+</language>

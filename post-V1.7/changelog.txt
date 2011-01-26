@@ -1,4 +1,6 @@
-﻿-= 1.7.0. =-
+﻿* Saving a song no longer causes the cursor to return to the begining of the lyrics (swampcat)
+
+-= 1.7.0. =-
 
 * Several fixes and improvements for tab processing: (Vwout)
 - tabs at the beginning of a slide now also work (bug #3141443)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Polski" author="Mariusz Mycielski" version="1.6.0">
+<language name="Polski" author="Mariusz Mycielski" version="1.7.0">
 
   <load_settings>
     <checking_folders>Tworzę/Sprawdzam foldery dokumentów</checking_folders>
@@ -158,10 +158,10 @@
       <paste caption="link(shared/insert/@caption)">Wstawia kopię wybranego elementu zestawu za bieżącą pozycją.</paste>
       <store caption="Zapisz">Zapisuje wybrany element w zestawie.</store>
       <presentitem caption="link(sets_mode/current_set/present/@caption)">Prezentuje bieżący zestaw na ekranie począwszy od aktualnie wybranego elementu. Masz do wyboru prezentację na bieżącym monitorze, drugim monitorze lub podgląd widoku dwumonitorowego na bieżącym monitorze.
-        <single_screen caption="Single Screen"/>
-        <dual_screen caption="Dual Screen"/>
-        <preview_dual_screen caption="Preview Dual Screen"/>
-        <no_slides>You must have at least one slide in the set to present.</no_slides>
+        <single_screen caption="Jeden monitor"/>
+        <dual_screen caption="Dwa monitory"/>
+        <preview_dual_screen caption="Podgląd dwóch monitorów"/>
+        <no_slides>Musisz mieć przynajmniej jeden slajd w zestawie, by rozpocząć prezentację.</no_slides>
       </presentitem>
     </current_item>
     <items caption="Elementy zestawu">Lista elementów w bieżącym zestawie. Kliknij na dowolny slajd, by załadować go do edytora lub kliknij dwukrotnie na piosenkę, by załadować ją do edytora piosenek.
@@ -176,6 +176,7 @@
     <untitled caption="Bez nazwy"/>
     <errors>
       <revert caption="Błąd przeładowania zestawu &quot;%1&quot; z pliku."/>
+      <insert caption="Błąd wklejania kopiowanych slajdów:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; wyeksportowany do
@@ -418,6 +419,7 @@
     <layout>
       <heading_border_thickness caption="Grubość linii obramowania"/>
       <title_in_caps caption="Tytuł dużymi literami"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Jednostki">
       <inches caption="Cale"/>
@@ -426,11 +428,30 @@
   </print_settings>
 
   <presentation_settings title="Ustawienia prezentacji">
-    <settings head1="Style" head2="Opcje">
+    <settings head1="Style" head2="Opcje" head3="Zrzuty">
         <default_slides caption="Domyślny styl slajdu"/>
         <scripture_slides caption="Domyślny styl wersetu biblijnego"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+        <export_snapshot caption="Eksportuj zrzut każdego prezentowanego slajdu do następującego pliku"/>
+        <snapshot_file caption="Nazwa pliku zrzutu">Wybierz nazwę pliku zrzutu w oknie wyboru.</snapshot_file>
+        <export_preview caption="Eksportuj zrzuty podczas podglądu zestawu"/>
+        <export_live_insertions caption="Eksportuj zrzuty slajdów wstawionych podczas prezentacji"/>
+        <export_metadata caption="Eksportuj szczegóły slajdu do tak samo nazwanego pliku XML"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">W nazwie pliku możesz użyć następujących parametrów::
+    - %d: Dzień bieżącego miesiąca (01-31)
+    - %h: Aktualna godzina w formacie 24h (00-23)
+    - %i: Aktualna minuta (00-59)
+    - %m: Bieżący miesiąc (01-12)
+    - %n: Numer slajdu w bieżącym zestawie (z wiodącymi zerami)
+    - %N: Nazwa bieżącego slajdu
+    - %P: Indeks prezentacji dla slajdów podczas prezentacji (z wiodącymi zerami)
+    - %s: Aktualna sekunda (00-59)
+    - %S: Nazwa bieżącego zestawu
+    - %T: Tytuł bieżącego slajdu
+    - %V: Numer zwrotki bieżącego slajdu (tylko dla piosenek, pusty dla pozostałych slajdów)
+    - %y: Bieżący rok (4 cyfry)</snapshot_parameters>
     </settings>
     <transitions caption="Przejścia">
       <use_transitions caption="Domyślnie włączone"/>
@@ -477,6 +498,7 @@
       <presentation caption="Monitor prezentacji"/>
       <detected caption="Wykryłem %1 monitor(y)."/>
       <default_mode caption="Domyślny tryb monitorów"/>
+      <force_4_3_preview caption="Wymuś podgląd 4:4"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Maska"/>
@@ -494,6 +516,10 @@
     <misc caption="Różne">
       <exit_prompt caption="Pytaj przed wyjściem"/>
     </misc>
+
+    <errors>
+        <snapshot_file>Błąd: włączono tworzenie zrzutów, lecz nie wprowadzono nazwy pliku.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Pomocnik Prezentacji">
@@ -526,6 +552,8 @@ C: Refren
 P: Przejście do refrenu
 B: Przejście
 T: Dodatek</keys>
+    <preview caption="Podgląd bieżącego slajdu" />
+    <next caption="Podgląd następnego slajdu" />
   </presentation_helper>
 
   <help_topics title="Tematy pomocy">
@@ -1278,6 +1306,7 @@ Przepraszamy za wszelkie niedogodności.
     <lead_sheets>Generuję wydruk</lead_sheets>
     <process_themes>Przetwarzam tematy</process_themes>
     <process_songs>Przetwarzam piosenki</process_songs>
+    <song_search>Wyszukuję piosenki</song_search>
     <export>Eksportuję piosenkę(i)</export>
     <pass1>Sortuję... pierwszy przebieg</pass1>
     <pass2>Sortuję... drugi przebieg</pass2>

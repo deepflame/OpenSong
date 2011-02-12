@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="1.6.2">
+<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="1.7.0">
 
   <load_settings>
     <checking_folders>A dokumentumok mappáinak létrehozása/ellenőrzése</checking_folders>
@@ -433,6 +433,24 @@
         <scripture_slides caption="Alapértelmezett Ige-stílus"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        <export_snapshot caption="Pillanatfelvétel exportálása minden diáról a következő fájlba"/>
+        <snapshot_file caption="Pillanatfelvétel fájl">A prábeszédablak segítségével válassz egy fájlnevet a pillanatfelvétel számára.</snapshot_file>
+        <export_preview caption="Pillanatfelvétel exportálása az összeállításról az előnézet során"/>
+        <export_live_insertions caption="Pillanatfelvétel a beillesztett diákról az élő bemutató során."/>
+        <export_metadata caption="Dia adatok exportálása hasonlóan elnevezett XML fájlokba"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Az alábbi paraméterek alkalmazhatók a fájl nevében, ill. útvonalában:
+    - %d: Az aktuális hónap napja (01-31)
+    - %h: A nap aktuális órája, 24 órás formátumban (00-23)
+    - %i: Az aktuális idő percei (00-59)
+    - %m: Az aktuális hónap (01-12)
+    - %n: Az aktuális összeállítás diáinak száma (vezető nullákkal)
+    - %N: Az aktuális dia neve
+    - %P: A bemutató diajegyzéke a bemutató alatt (vezető nullákkal)
+    - %s: Az aktuális idő másodpercei (00-59)
+    - %S: Az aktuális összeállítás neve
+    - %T: Az aktuális dia címe
+    - %V: Az aktuális verszak jelzője (csak a dalok számára, egyébként üres)
+    - %y: Az aktuális év (4 számmal)</snapshot_parameters>
     </settings>
     <transitions caption="Áttűnések">
       <use_transitions caption="Engedélyezve"/>
@@ -478,6 +496,7 @@
       <presentation caption="Vetítési képernyő"/>
       <detected caption="%1 képernyőt sikerült detektálni."/>
       <default_mode caption="Alap képernyő mód"/>
+      <force_4_3_preview caption="4:3 arányú nézet kényszerítése"/>
     </monitor>
     <logo caption="Logó">
       <mask caption="Maszk"/>
@@ -495,6 +514,10 @@
     <misc caption="Egyéb">
       <exit_prompt caption="Figyelmeztetés kilépéskor"/>
     </misc>
+    
+    <errors>
+        <snapshot_file>Hiba: A pillanatfelvétel készítése be van kapcsolva, de fájlnév nincs megadva.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Vetítési segédablak">
@@ -527,6 +550,8 @@ C: Refrén
 P: Elő-refrén
 B: Híd
 T: Coda</keys>
+    <preview caption="Aktuális dia előnézete" />
+    <next caption="Következő dia előnézete" />
   </presentation_helper>
 
   <help_topics title="Súgó témakörök">

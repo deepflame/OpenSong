@@ -404,10 +404,12 @@ Module SongML
 		        tempFont.OntoStringShape s, zoom
 		        // TODO: Wrap this if too wide
 		        s.X = lineLeft + (g.StringWidth(slices(i * lineCount + j)) / 2)
+		        linetop = linetop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before") * zoom)
 		        s.Y = linetop + g.TextAscent // Set baseline
 		        s.Text = slices(i * lineCount + j)
 		        OutputGraphics.Append s
-		        lineTop = lineTop + g.TextHeight //Next line
+		        lineTop = lineTop + g.TextHeight + _
+		        (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after") * zoom)
 		        
 		        ' Place Capo Chord
 		        If SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print") Then
@@ -423,19 +425,19 @@ Module SongML
 		          g.Italic = tempFont.Italic
 		          g.Underline = tempFont.Underline
 		          g.ForeColor = tempFont.ForeColor
-		          //lineWidths(lineCount+1) = g.StringWidth(capoChord) + (g.TextAscent/2)
 		          lineWidths(lineCount+1) = g.StringWidth(capoChord + "M")
 		          
 		          If lineLeft + lineWidths(lineCount+1) > nextLeft Then nextLeft = lineLeft + lineWidths(lineCount+1)
 		          
-		          // g.DrawString capoChord, lineLeft, lineTop + g.TextHeight - g.TextAscent
 		          s = New StringShape
 		          tempFont.OntoStringShape s, zoom
 		          s.X = lineLeft + (g.StringWidth(capoChord) / 2)
+		          lineTop = lineTop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before") * zoom)
 		          s.Y = lineTop + g.TextAscent
 		          s.Text = capoChord
 		          OutputGraphics.Append s
-		          lineTop = lineTop + g.TextHeight
+		          lineTop = lineTop + g.TextHeight + _
+		          (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after") * zoom)
 		        End If
 		      Else ' Lyric line
 		        tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
@@ -460,6 +462,7 @@ Module SongML
 		        tempFont.OntoStringShape s, zoom
 		        s.Bold = g.Bold // Special case -- handle "C" section
 		        s.X = lineLeft + (lineWidths(j) / 2)
+		        lineTop = lineTop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_before") * zoom)
 		        s.Y = lineTop + g.TextAscent
 		        s.Text = slices(i * lineCount + j)
 		        OutputGraphics.Append s
@@ -488,7 +491,8 @@ Module SongML
 		          ' It ends with a space. No chance of dashing.
 		          dashStarts(j) = g.Width
 		        End If
-		        lineTop = lineTop + g.TextHeight // Can't advance to next line until the dash mess is finished
+		        lineTop = lineTop + g.TextHeight + _ // Can't advance to next line until the dash mess is finished
+		        (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_after") * zoom)
 		        
 		      End If
 		    Next j
@@ -837,18 +841,17 @@ Module SongML
 		  tempFont.OntoGraphics g
 		  g.TextSize = Round(g.TextSize * zoom) //Adjust relative to 72dpi
 		  
-		  y = y + Round(6 * zoom)  // Put a little blank space before the heading (6 points, to be exact)
+		  y =  y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/sections/@space_before") * zoom)
 		  
 		  'oddOffSet = 1
 		  'If (g.PenWidth+2) Mod 2 = 0 Then oddOffSet = 0
 		  oddOffSet = (g.PenWidth + 2) Mod 2
 		  
 		  If Uppercase(Left(heading, 1)) = "V" Then   ' -- VERSE --
-		    heading = " " + Mid(heading, 2) + " "
-		    If Len(heading) = 2 Then heading = " " + Verse + " "
-		    'g.DrawRoundRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading) + g.PenWidth+oddOffset, g.TextHeight+1, g.TextHeight, g.TextHeight
-		    'g.DrawString heading, x + g.PenWidth+1, y
-		    'y = y + g.PenWidth+1
+		    heading = " " + Verse + " " + Mid(heading, 2)
+		    If Len(heading) > Len(Verse) + 2 Then 
+		      heading = heading + " "
+		    End If
 		    
 		    rr = New RoundRectShape
 		    rr.Width = g.StringWidth(heading) + g.PenWidth + oddOffSet
@@ -866,7 +869,7 @@ Module SongML
 		    HeadingLine.Append rr
 		    HeadingLine.Append GraphicsX.DrawStringShapeV(heading, rr.X, rry + g.TextAscent, tempFont, zoom)
 		    ' Position to new y
-		    y = rry + rr.Height + (3 * zoom) 'Add three points after
+		    y = rry + rr.Height
 		    
 		  ElseIf Uppercase(Left(heading, 1)) = "P" Then   ' -- PRE-CHORUS --
 		    If Len(heading) > 1 Then
@@ -958,7 +961,7 @@ Module SongML
 		  g.PenHeight = oldHeight
 		  
 		  Page.Append HeadingLine
-		  
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/sections/@space_after") *zoom)
 		  Return y - oldY
 		End Function
 	#tag EndMethod
@@ -1083,7 +1086,9 @@ Module SongML
 		    chordWidth = g.StringWidth(chords(i)) ' Don't get the chords too close together, add a little gap
 		    s = New StringShape
 		    s.x = x + (chordWidth / 2)
+		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before") * zoom)
 		    s.y = y + g.TextAscent
+		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after") * zoom)
 		    s.Text = chords(i)
 		    ChordFont.OntoStringShape s
 		    Page.Append s
@@ -1106,7 +1111,9 @@ Module SongML
 		      CapoFont.OntoStringShape s
 		      s.Text = capoChord
 		      s.x = x + (capoChordWidth / 2)
+		      y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before") * zoom)
 		      s.y = y + chordHeight + g.TextAscent
+		      y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after") * zoom)
 		      Page.Append s
 		      'g.DrawString capoChord, x, y + capoChordHeight + g.TextHeight - g.TextAscent
 		      If capoChordWidth > chordWidth Then chordWidth = capoChordWidth
@@ -1125,6 +1132,9 @@ Module SongML
 		Private Function Draw_SoloLyricLine(g As Graphics, x As Integer, y As Integer, zoom As Double, section As String, ByRef line As String, width As Integer, ByRef Page As Group2D) As Integer
 		  Dim tempFont As FontFace
 		  Dim tempstring As String
+		  Dim oldY As Integer
+		  
+		  oldY = y
 		  
 		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
 		  App.DebugWriter.Write "SongML.Draw_SoloLyricLine: lyrics font base size is " + str(tempFont.Size)
@@ -1142,7 +1152,9 @@ Module SongML
 		  ' LTrim is the more general solution
 		  '
 		  tempstring = LTrim(line)
-		  Return GraphicsX.DrawFontString(g, tempstring, x, y, tempFont, width, Page)
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_before") * zoom)
+		  y = y + GraphicsX.DrawFontString(g, tempstring, x, y, tempFont, width, Page)
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_after") * zoom)
 		End Function
 	#tag EndMethod
 

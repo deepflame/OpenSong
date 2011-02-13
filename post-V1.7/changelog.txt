@@ -1,4 +1,8 @@
-﻿* Saving a song no longer causes the cursor to return to the begining of the lyrics (swampcat)
+﻿* Section header for a verse now includes the translation for "verse" in addition to the verse number. Considering making this selectable in print settings.
+
+* Print Settings allows user to define amount of space before and after running elements of the song (sections, chords, capo chords, lyrics).
+
+* Saving a song no longer causes the cursor to return to the begining of the lyrics (swampcat)
 
 -= 1.7.0. =-
 

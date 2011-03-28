@@ -879,6 +879,7 @@ End
 		    Return False
 		  Else
 		    Me.SelText = "" + Key
+		    Me.SelStart = Me.SelStart+1
 		  End Select
 		  
 		  Found = False

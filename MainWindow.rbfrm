@@ -25,19 +25,15 @@ Begin Window MainWindow Implements ScriptureReceiver
    Visible         =   False
    Width           =   750
    Begin ContextualMenu mnu_clipboard
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   759
       LockedInPosition=   False
       Scope           =   0
-      TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   26
       UseMacCMM       =   ""
-      Visible         =   True
       Width           =   32
    End
    Begin SButton btn_mode_songs_mode
@@ -101,6 +97,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   200
    End
    Begin StaticText txt_context_help
+      Active          =   ""
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -119,6 +116,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockTop         =   True
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
@@ -127,11 +125,13 @@ Begin Window MainWindow Implements ScriptureReceiver
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
-      TextUnit        =   0
       Top             =   4
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   320
+      Window          =   0
+      _mWindow        =   0
    End
    Begin PagePanel pge_controls
       AutoDeactivate  =   True
@@ -151,7 +151,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   35
       Value           =   0
       Visible         =   True
@@ -202,7 +201,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   0
+            TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -230,9 +229,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   1
+            TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -262,7 +260,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   0
+               TabIndex        =   1
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   85
@@ -292,7 +290,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   1
+               TabIndex        =   3
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   135
@@ -322,7 +320,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   2
+               TabIndex        =   0
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   60
@@ -352,7 +350,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   3
+               TabIndex        =   2
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   110
@@ -382,7 +380,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   4
+               TabIndex        =   5
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   185
@@ -412,7 +410,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   5
+               TabIndex        =   4
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   160
@@ -441,7 +439,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   6
+               TabIndex        =   7
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   235
@@ -471,7 +469,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   7
+               TabIndex        =   6
                TabPanelIndex   =   1
                TabStop         =   True
                Top             =   210
@@ -527,9 +525,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   2
+            TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -645,9 +642,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   3
+            TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -717,6 +713,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             End
          End
          Begin StaticText lbl_songs_song_folders
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -735,7 +732,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   4
+            Selectable      =   False
+            TabIndex        =   6
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Folders:"
@@ -743,13 +741,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   284
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   119
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_songs_songs
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -768,7 +769,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   5
+            Selectable      =   False
+            TabIndex        =   7
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Songs:"
@@ -776,11 +778,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   11
-            TextUnit        =   0
             Top             =   324
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   230
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SButton btn_songs_song_folders_add
             AcceptFocus     =   True
@@ -804,7 +808,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   6
+            TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   301
@@ -813,6 +817,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   18
          End
          Begin StaticText lbl_songs_curr_folder
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -831,7 +836,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   7
+            Selectable      =   False
+            TabIndex        =   9
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Containing Folder:"
@@ -839,11 +845,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   509
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   230
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SButton btn_songs_song_folders_delete
             AcceptFocus     =   True
@@ -867,7 +875,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   8
+            TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   301
@@ -911,7 +919,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            TabIndex        =   9
+            TabIndex        =   8
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -929,6 +937,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -950,15 +959,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
-            Multiline       =   True
+            Multiline       =   False
             ReadOnly        =   True
             Scope           =   0
             ScrollbarHorizontal=   ""
-            ScrollbarVertical=   True
+            ScrollbarVertical=   False
             Styled          =   True
             TabIndex        =   10
             TabPanelIndex   =   1
-            TabStop         =   True
+            TabStop         =   False
             Text            =   ""
             TextColor       =   0
             TextFont        =   "Arial"
@@ -1016,7 +1025,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1103,9 +1111,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   1
+            TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1135,7 +1142,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   0
+               TabIndex        =   3
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   307
@@ -1165,7 +1172,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   1
+               TabIndex        =   2
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   282
@@ -1195,7 +1202,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   2
+               TabIndex        =   4
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   332
@@ -1225,7 +1232,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   3
+               TabIndex        =   1
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   257
@@ -1255,7 +1262,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   4
+               TabIndex        =   5
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   357
@@ -1285,7 +1292,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   5
+               TabIndex        =   6
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   382
@@ -1315,7 +1322,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   6
+               TabIndex        =   0
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   232
@@ -1341,9 +1348,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   2
+            TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1373,7 +1379,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   0
+               TabIndex        =   2
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   160
@@ -1403,7 +1409,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   1
+               TabIndex        =   4
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   110
@@ -1433,7 +1439,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   2
+               TabIndex        =   1
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   135
@@ -1463,7 +1469,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   3
+               TabIndex        =   5
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   135
@@ -1493,7 +1499,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   4
+               TabIndex        =   6
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   160
@@ -1523,7 +1529,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   5
+               TabIndex        =   0
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   110
@@ -1553,7 +1559,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   6
+               TabIndex        =   3
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   185
@@ -1592,6 +1598,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             End
          End
          Begin StaticText lbl_set_items
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1610,7 +1617,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   3
+            Selectable      =   False
+            TabIndex        =   4
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "Items In Set:"
@@ -1618,11 +1626,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   405
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   115
+            Window          =   0
+            _mWindow        =   0
          End
          Begin GroupBox grp_set_new_item
             AutoDeactivate  =   True
@@ -1641,9 +1651,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   4
+            TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1673,7 +1682,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   0
+               TabIndex        =   1
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   262
@@ -1703,7 +1712,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   1
+               TabIndex        =   2
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   287
@@ -1733,7 +1742,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   2
+               TabIndex        =   3
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   312
@@ -1763,7 +1772,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
-               TabIndex        =   3
+               TabIndex        =   0
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   236
@@ -1872,7 +1881,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   34
       Value           =   0
       Visible         =   True
@@ -1904,6 +1912,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Visible         =   True
          Width           =   485
          Begin StaticText hdr_style_header
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -1922,6 +1931,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
             TabStop         =   True
@@ -1930,11 +1940,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
-            TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   460
+            Window          =   0
+            _mWindow        =   0
          End
          Begin RadioButton rad_style_change
             AutoDeactivate  =   True
@@ -2042,7 +2054,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockRight       =   True
          LockTop         =   True
          Scope           =   0
-         TabIndex        =   1
+         TabIndex        =   0
          TabPanelIndex   =   2
          TabStop         =   True
          Top             =   40
@@ -2050,6 +2062,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Visible         =   True
          Width           =   485
          Begin StaticText lbl_song_aka
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2068,7 +2081,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   0
+            Selectable      =   False
+            TabIndex        =   12
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "AKA:"
@@ -2076,13 +2090,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   231
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   130
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_themes
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2101,6 +2118,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
             TabStop         =   True
@@ -2109,13 +2127,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   175
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_capo
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2134,7 +2155,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   2
+            Selectable      =   False
+            TabIndex        =   3
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "Capo:"
@@ -2142,13 +2164,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_key_line
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2167,7 +2192,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   3
+            Selectable      =   False
+            TabIndex        =   14
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "Key Line:"
@@ -2175,11 +2201,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   266
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   270
+            Window          =   0
+            _mWindow        =   0
          End
          Begin Listbox lst_song_themes
             AutoDeactivate  =   True
@@ -2217,7 +2245,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            TabIndex        =   4
+            TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2253,7 +2281,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
-            TabIndex        =   5
+            TabIndex        =   24
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   51
@@ -2262,6 +2290,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   125
          End
          Begin StaticText lbl_song_key
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2280,6 +2309,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   2
             TabStop         =   True
@@ -2288,13 +2318,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   161
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_time_sig
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2313,7 +2346,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   7
+            Selectable      =   False
+            TabIndex        =   8
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "Time Signature:"
@@ -2321,11 +2355,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   196
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_song_time_sig
             AutoDeactivate  =   True
@@ -2347,7 +2383,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   8
+            TabIndex        =   9
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2359,6 +2395,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   125
          End
          Begin StaticText lbl_song_user2
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2377,7 +2414,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   9
+            Selectable      =   False
+            TabIndex        =   18
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "User Defined 2:"
@@ -2385,13 +2423,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   360
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   270
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_tempo
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2410,6 +2451,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   2
             TabStop         =   True
@@ -2418,13 +2460,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   231
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_user3
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2443,7 +2488,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   11
+            Selectable      =   False
+            TabIndex        =   20
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "User Defined 3:"
@@ -2451,11 +2497,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   405
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   270
+            Window          =   0
+            _mWindow        =   0
          End
          Begin CheckBox chk_song_style
             AutoDeactivate  =   True
@@ -2477,7 +2525,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   12
+            TabIndex        =   23
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2509,7 +2557,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   13
+            TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2543,7 +2591,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
-            TabIndex        =   14
+            TabIndex        =   25
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   51
@@ -2571,7 +2619,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   15
+            TabIndex        =   11
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2602,7 +2650,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             SongStyle       =   True
-            TabIndex        =   16
+            TabIndex        =   22
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   105
@@ -2614,6 +2662,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2641,7 +2690,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   17
+            TabIndex        =   7
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2659,6 +2708,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2686,7 +2736,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   18
+            TabIndex        =   13
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2720,7 +2770,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   19
+            TabIndex        =   4
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2735,6 +2785,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2762,7 +2813,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   20
+            TabIndex        =   15
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2777,6 +2828,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   270
          End
          Begin StaticText lbl_song_user1
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2795,7 +2847,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   21
+            Selectable      =   False
+            TabIndex        =   16
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "User Defined 1:"
@@ -2803,13 +2856,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   312
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   270
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText hdr_song_header_2
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -2828,7 +2884,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   22
+            Selectable      =   False
+            TabIndex        =   0
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   "Song Editor"
@@ -2836,16 +2893,19 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
-            TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   200
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditField edt_song_user1
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2873,7 +2933,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   23
+            TabIndex        =   17
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2891,6 +2951,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2918,7 +2979,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   24
+            TabIndex        =   19
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2936,6 +2997,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2963,7 +3025,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   25
+            TabIndex        =   21
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -3005,6 +3067,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Visible         =   True
          Width           =   485
          Begin StaticText hdr_song_header
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -3023,6 +3086,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
             TabStop         =   True
@@ -3031,13 +3095,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
-            TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   200
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_ccli
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3056,7 +3123,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   1
+            Selectable      =   False
+            TabIndex        =   7
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "CCLI #:"
@@ -3064,13 +3132,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_copyright
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3089,7 +3160,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   2
+            Selectable      =   False
+            TabIndex        =   5
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Copyright:"
@@ -3097,13 +3169,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   225
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_author
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3122,6 +3197,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
@@ -3130,13 +3206,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   220
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_presentation
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3155,7 +3234,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   4
+            Selectable      =   False
+            TabIndex        =   9
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Presentation:"
@@ -3163,13 +3243,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_lyrics
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3188,7 +3271,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   5
+            Selectable      =   False
+            TabIndex        =   13
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Chord/Lyrics:"
@@ -3196,13 +3280,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   161
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   350
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_hymn_number
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3221,7 +3308,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   6
+            Selectable      =   False
+            TabIndex        =   11
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Hymn #:"
@@ -3229,13 +3317,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   175
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_insert
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3254,7 +3345,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   7
+            Selectable      =   False
+            TabIndex        =   15
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Insert:"
@@ -3262,13 +3354,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   215
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   120
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_song_title
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3287,7 +3382,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   8
+            Selectable      =   False
+            TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Title:"
@@ -3295,11 +3391,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   220
+            Window          =   0
+            _mWindow        =   0
          End
          Begin GroupBox grp_song_transpose
             AutoDeactivate  =   True
@@ -3318,9 +3416,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   True
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   9
+            TabIndex        =   22
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -3354,12 +3451,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   456
+               Top             =   427
                Underline       =   False
                Visible         =   True
                Width           =   80
             End
             Begin StaticText lbl_song_using
+               Active          =   ""
                AutoDeactivate  =   True
                Bold            =   ""
                DataField       =   ""
@@ -3378,6 +3476,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockTop         =   True
                Multiline       =   ""
                Scope           =   0
+               Selectable      =   False
                TabIndex        =   1
                TabPanelIndex   =   1
                TabStop         =   True
@@ -3386,11 +3485,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextColor       =   &h000000
                TextFont        =   "Arial"
                TextSize        =   10
-               TextUnit        =   0
-               Top             =   435
+               Top             =   406
+               Transparent     =   False
                Underline       =   ""
                Visible         =   True
                Width           =   86
+               Window          =   0
+               _mWindow        =   0
             End
             Begin PopupMenu pop_song_transpose
                AutoDeactivate  =   True
@@ -3418,7 +3519,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   412
+               Top             =   459
                Underline       =   ""
                Visible         =   True
                Width           =   80
@@ -3428,6 +3529,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3455,7 +3557,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   10
+            TabIndex        =   4
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3473,6 +3575,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3500,7 +3603,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   ""
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   11
+            TabIndex        =   14
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3518,6 +3621,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3581,7 +3685,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   13
+            TabIndex        =   16
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   231
@@ -3611,7 +3715,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   14
+            TabIndex        =   17
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   256
@@ -3641,7 +3745,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   15
+            TabIndex        =   18
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   281
@@ -3671,7 +3775,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   16
+            TabIndex        =   19
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   306
@@ -3701,7 +3805,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   17
+            TabIndex        =   20
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   331
@@ -3731,7 +3835,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   18
+            TabIndex        =   21
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   356
@@ -3803,6 +3907,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3830,7 +3935,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   21
+            TabIndex        =   8
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3848,6 +3953,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3875,7 +3981,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   22
+            TabIndex        =   10
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3893,6 +3999,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3920,7 +4027,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   23
+            TabIndex        =   6
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3938,6 +4045,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3965,7 +4073,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   24
+            TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -4007,6 +4115,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Visible         =   True
          Width           =   485
          Begin StaticText lbl_slide_auto_advance
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4025,7 +4134,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
-            TabIndex        =   0
+            Selectable      =   False
+            TabIndex        =   21
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
@@ -4033,13 +4143,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   240
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   130
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText txt_slide_seconds
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4058,7 +4171,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
-            TabIndex        =   1
+            Selectable      =   False
+            TabIndex        =   23
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "seconds"
@@ -4066,13 +4180,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   290
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   100
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_slide_insert
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4091,7 +4208,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   2
+            Selectable      =   False
+            TabIndex        =   17
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Insert:"
@@ -4099,11 +4217,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   140
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   115
+            Window          =   0
+            _mWindow        =   0
          End
          Begin CheckBox chk_slide_print
             AutoDeactivate  =   True
@@ -4125,7 +4245,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   3
+            TabIndex        =   20
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
@@ -4141,6 +4261,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4168,7 +4289,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   ""
             ScrollbarVertical=   True
             Styled          =   ""
-            TabIndex        =   4
+            TabIndex        =   22
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4202,7 +4323,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   5
+            TabIndex        =   19
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
@@ -4234,7 +4355,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   6
+            TabIndex        =   25
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
@@ -4266,7 +4387,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   True
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   7
+            TabIndex        =   27
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
@@ -4281,6 +4402,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4308,7 +4430,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   ""
             ScrollbarVertical=   True
             Styled          =   ""
-            TabIndex        =   8
+            TabIndex        =   12
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4323,6 +4445,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   160
          End
          Begin StaticText lbl_slide_folder
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4341,7 +4464,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   9
+            Selectable      =   False
+            TabIndex        =   13
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "File Folder"
@@ -4349,13 +4473,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   401
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   170
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText hdr_slide_header
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -4374,7 +4501,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   10
+            Selectable      =   False
+            TabIndex        =   0
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Custom Slide Editor"
@@ -4382,13 +4510,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
-            TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   460
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_slide_presentation
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4407,7 +4538,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   11
+            Selectable      =   False
+            TabIndex        =   9
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Custom Presentation Order:"
@@ -4415,13 +4547,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   365
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   170
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_slide_origorder
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4440,7 +4575,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   12
+            Selectable      =   False
+            TabIndex        =   11
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Original Presentation Order:"
@@ -4448,16 +4584,19 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   365
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   160
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditField edt_slide_order
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4485,7 +4624,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   ""
             ScrollbarVertical=   True
             Styled          =   ""
-            TabIndex        =   13
+            TabIndex        =   10
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4500,6 +4639,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   170
          End
          Begin StaticText lbl_slide_name
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4518,7 +4658,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   14
+            Selectable      =   False
+            TabIndex        =   5
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Name:"
@@ -4526,13 +4667,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_slide_subtitle
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4551,7 +4695,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   15
+            Selectable      =   False
+            TabIndex        =   3
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Subtitle:"
@@ -4559,13 +4704,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   145
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_slide_title
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4584,7 +4732,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   16
+            Selectable      =   False
+            TabIndex        =   1
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Title:"
@@ -4592,13 +4741,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   145
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_slide_slides
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4617,7 +4769,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   17
+            Selectable      =   False
+            TabIndex        =   7
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Slides:"
@@ -4625,13 +4778,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   340
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_slide_transition
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
             DataField       =   ""
@@ -4650,7 +4806,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   ""
             Scope           =   0
-            TabIndex        =   18
+            Selectable      =   False
+            TabIndex        =   26
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Use Transition"
@@ -4658,13 +4815,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   420
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   110
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_slide_notes
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4683,7 +4843,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   19
+            Selectable      =   False
+            TabIndex        =   15
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   "Notes:"
@@ -4691,16 +4852,19 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   436
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   340
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditField edt_slide_subtitle
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4728,7 +4892,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   20
+            TabIndex        =   4
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4746,6 +4910,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4773,7 +4938,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   21
+            TabIndex        =   2
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4791,6 +4956,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4818,7 +4984,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   22
+            TabIndex        =   6
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4836,6 +5002,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4863,7 +5030,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   True
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   23
+            TabIndex        =   8
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4881,6 +5048,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4908,7 +5076,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   24
+            TabIndex        =   14
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4944,7 +5112,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   25
+            TabIndex        =   18
             TabPanelIndex   =   3
             TabStop         =   True
             Top             =   155
@@ -4956,6 +5124,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4983,7 +5152,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   True
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   26
+            TabIndex        =   16
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -5017,7 +5186,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             SongStyle       =   False
-            TabIndex        =   27
+            TabIndex        =   24
             TabPanelIndex   =   3
             TabStop         =   True
             Top             =   310
@@ -5045,7 +5214,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockRight       =   True
          LockTop         =   True
          Scope           =   0
-         TabIndex        =   4
+         TabIndex        =   0
          TabPanelIndex   =   5
          TabStop         =   True
          Top             =   40
@@ -5053,6 +5222,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          Visible         =   True
          Width           =   485
          Begin StaticText txt_image_seconds
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5071,7 +5241,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
-            TabIndex        =   0
+            Selectable      =   False
+            TabIndex        =   26
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "seconds"
@@ -5079,13 +5250,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   364
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   100
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_image_auto_advance
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5104,7 +5278,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   True
             Scope           =   0
-            TabIndex        =   1
+            Selectable      =   False
+            TabIndex        =   18
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
@@ -5112,13 +5287,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   314
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   130
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_image_transition
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
             DataField       =   ""
@@ -5137,7 +5315,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   ""
             Scope           =   0
-            TabIndex        =   2
+            Selectable      =   False
+            TabIndex        =   29
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Use Transition"
@@ -5145,11 +5324,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   494
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   110
+            Window          =   0
+            _mWindow        =   0
          End
          Begin CheckBox chk_image_style
             AutoDeactivate  =   True
@@ -5171,7 +5352,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   3
+            TabIndex        =   28
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5184,6 +5365,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   100
          End
          Begin StaticText hdr_image_header
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -5202,7 +5384,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   4
+            Selectable      =   False
+            TabIndex        =   0
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Image Slide Editor"
@@ -5210,11 +5393,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   22
-            TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   460
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_image_transition
             AutoDeactivate  =   True
@@ -5236,7 +5421,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   True
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   5
+            TabIndex        =   30
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5248,6 +5433,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   110
          End
          Begin StaticText lbl_image_name
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5266,6 +5452,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   5
             TabStop         =   True
@@ -5274,11 +5461,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
+            Window          =   0
+            _mWindow        =   0
          End
          Begin CheckBox chk_image_fit_to_screen
             AutoDeactivate  =   True
@@ -5300,7 +5489,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   ""
             Scope           =   0
             State           =   0
-            TabIndex        =   7
+            TabIndex        =   20
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "System"
@@ -5332,7 +5521,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   ""
             Scope           =   0
             State           =   0
-            TabIndex        =   8
+            TabIndex        =   21
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "System"
@@ -5364,7 +5553,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   ""
             Scope           =   0
             State           =   0
-            TabIndex        =   9
+            TabIndex        =   23
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "System"
@@ -5396,7 +5585,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   ""
             Scope           =   0
             State           =   0
-            TabIndex        =   10
+            TabIndex        =   22
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "System"
@@ -5409,6 +5598,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   340
          End
          Begin StaticText lbl_image_notes
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5427,7 +5617,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   11
+            Selectable      =   False
+            TabIndex        =   24
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Notes:"
@@ -5435,13 +5626,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   448
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   340
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_image_title
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5460,7 +5654,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   12
+            Selectable      =   False
+            TabIndex        =   1
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Title:"
@@ -5468,13 +5663,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   145
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_image_action
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5493,7 +5691,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   13
+            Selectable      =   False
+            TabIndex        =   10
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Insert:"
@@ -5501,11 +5700,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   146
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   115
+            Window          =   0
+            _mWindow        =   0
          End
          Begin CheckBox chk_image_print
             AutoDeactivate  =   True
@@ -5527,7 +5728,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   14
+            TabIndex        =   17
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5559,7 +5760,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   15
+            TabIndex        =   16
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5575,6 +5776,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5602,7 +5804,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   ""
             ScrollbarVertical=   True
             Styled          =   ""
-            TabIndex        =   16
+            TabIndex        =   19
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
@@ -5617,6 +5819,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Width           =   40
          End
          Begin StaticText lbl_image_subtitle
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
             DataField       =   ""
@@ -5635,7 +5838,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   ""
             Scope           =   0
-            TabIndex        =   17
+            Selectable      =   False
+            TabIndex        =   3
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Subtitle:"
@@ -5643,13 +5847,16 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   &h000000
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   145
+            Window          =   0
+            _mWindow        =   0
          End
          Begin StaticText lbl_image_images
+            Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
             DataField       =   ""
@@ -5668,7 +5875,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   ""
             Scope           =   0
-            TabIndex        =   18
+            Selectable      =   False
+            TabIndex        =   8
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   "Images:"
@@ -5676,11 +5884,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   &h000000
             TextFont        =   "Arial"
             TextSize        =   10
-            TextUnit        =   0
             Top             =   142
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   333
+            Window          =   0
+            _mWindow        =   0
          End
          Begin CheckBox chk_image_descriptions
             AutoDeactivate  =   True
@@ -5702,7 +5912,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   19
+            TabIndex        =   5
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5718,6 +5928,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5745,7 +5956,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   20
+            TabIndex        =   2
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
@@ -5779,7 +5990,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             SongStyle       =   False
-            TabIndex        =   21
+            TabIndex        =   27
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   384
@@ -5791,6 +6002,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5818,7 +6030,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   22
+            TabIndex        =   4
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
@@ -5836,6 +6048,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5863,7 +6076,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   23
+            TabIndex        =   7
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
@@ -5913,7 +6126,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   ""
             ScrollBarVertical=   True
             SelectionType   =   1
-            TabIndex        =   24
+            TabIndex        =   9
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "System"
@@ -5931,6 +6144,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5994,7 +6208,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   26
+            TabIndex        =   11
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   161
@@ -6024,7 +6238,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   27
+            TabIndex        =   13
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   187
@@ -6054,7 +6268,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   28
+            TabIndex        =   15
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   238
@@ -6084,7 +6298,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   29
+            TabIndex        =   14
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   212
@@ -6137,7 +6351,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   750
    End
    Begin Timer tmr_lookup
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -6146,11 +6359,8 @@ Begin Window MainWindow Implements ScriptureReceiver
       Mode            =   2
       Period          =   1500
       Scope           =   0
-      TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   -18
-      Visible         =   True
       Width           =   32
    End
 End

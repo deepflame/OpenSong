@@ -1,8 +1,12 @@
-﻿* Section header for a verse now includes the translation for "verse" in addition to the verse number. Considering making this selectable in print settings.
+﻿* Update MacOSLib. (swampcat) (FSRef, FSSPec, MacFileManager)
 
-* Print Settings allows user to define amount of space before and after running elements of the song (sections, chords, capo chords, lyrics).
+* Cleanup on Song object to prepare for additional work on it. (swampcat) (Song)
 
-* Saving a song no longer causes the cursor to return to the begining of the lyrics (swampcat)
+* Section header for a verse now includes the translation for "verse" in addition to the verse number. Considering making this selectable in print settings. (swampcat) (SongML)
+
+* Print Settings allows user to define amount of space before and after running elements of the song (sections, chords, capo chords, lyrics). (swampcat) (PrintSettingsWindow)
+
+* Saving a song no longer causes the cursor to return to the begining of the lyrics (swampcat) (MainWindow)
 
 -= 1.7.0. =-
 

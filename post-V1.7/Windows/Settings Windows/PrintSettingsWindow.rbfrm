@@ -286,7 +286,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   False
-            Left            =   360
+            Left            =   265
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -307,7 +307,7 @@ Begin Window PrintSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   60
+            Width           =   95
             Window          =   0
             _mWindow        =   0
          End
@@ -325,7 +325,7 @@ Begin Window PrintSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
-            Left            =   425
+            Left            =   365
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -352,7 +352,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   False
-            Left            =   360
+            Left            =   265
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -373,7 +373,7 @@ Begin Window PrintSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   60
+            Width           =   95
             Window          =   0
             _mWindow        =   0
          End
@@ -391,7 +391,7 @@ Begin Window PrintSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
-            Left            =   425
+            Left            =   365
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -418,7 +418,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   False
-            Left            =   340
+            Left            =   265
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -439,7 +439,7 @@ Begin Window PrintSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   80
+            Width           =   95
             Window          =   0
             _mWindow        =   0
          End
@@ -457,7 +457,7 @@ Begin Window PrintSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
-            Left            =   425
+            Left            =   365
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -484,7 +484,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   False
-            Left            =   340
+            Left            =   265
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -505,7 +505,7 @@ Begin Window PrintSettingsWindow
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   80
+            Width           =   95
             Window          =   0
             _mWindow        =   0
          End
@@ -523,7 +523,7 @@ Begin Window PrintSettingsWindow
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
-            Left            =   425
+            Left            =   365
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -606,8 +606,9 @@ Begin Window PrintSettingsWindow
          End
          Begin TextField edt_font_chords_before
             AcceptTabs      =   ""
-            Alignment       =   0
+            Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -621,7 +622,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   592
+            Left            =   532
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -648,8 +649,9 @@ Begin Window PrintSettingsWindow
          End
          Begin TextField edt_font_chords_after
             AcceptTabs      =   ""
-            Alignment       =   0
+            Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -663,7 +665,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   592
+            Left            =   532
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -690,8 +692,9 @@ Begin Window PrintSettingsWindow
          End
          Begin TextField edt_font_capo_after
             AcceptTabs      =   ""
-            Alignment       =   0
+            Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -705,7 +708,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   592
+            Left            =   532
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -732,8 +735,9 @@ Begin Window PrintSettingsWindow
          End
          Begin TextField edt_font_capo_before
             AcceptTabs      =   ""
-            Alignment       =   0
+            Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -747,7 +751,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   592
+            Left            =   532
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -774,8 +778,9 @@ Begin Window PrintSettingsWindow
          End
          Begin TextField edt_font_lyrics_after
             AcceptTabs      =   ""
-            Alignment       =   0
+            Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -789,7 +794,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   592
+            Left            =   532
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -816,8 +821,9 @@ Begin Window PrintSettingsWindow
          End
          Begin TextField edt_font_lyrics_before
             AcceptTabs      =   ""
-            Alignment       =   0
+            Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -831,7 +837,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   592
+            Left            =   532
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -858,8 +864,9 @@ Begin Window PrintSettingsWindow
          End
          Begin TextField edt_font_sections_after
             AcceptTabs      =   ""
-            Alignment       =   0
+            Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -873,7 +880,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   592
+            Left            =   532
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -900,8 +907,9 @@ Begin Window PrintSettingsWindow
          End
          Begin TextField edt_font_sections_before
             AcceptTabs      =   ""
-            Alignment       =   0
+            Alignment       =   3
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -915,7 +923,7 @@ Begin Window PrintSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "can_print_fonts"
             Italic          =   ""
-            Left            =   592
+            Left            =   532
             LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
@@ -1008,6 +1016,7 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1178,6 +1187,7 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1264,6 +1274,7 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1350,6 +1361,7 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1436,6 +1448,7 @@ Begin Window PrintSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1545,6 +1558,7 @@ Begin Window PrintSettingsWindow
                AcceptTabs      =   False
                Alignment       =   0
                AutoDeactivate  =   True
+               AutomaticallyCheckSpelling=   True
                BackColor       =   16777215
                Bold            =   False
                Border          =   True
@@ -1631,6 +1645,7 @@ Begin Window PrintSettingsWindow
                AcceptTabs      =   False
                Alignment       =   0
                AutoDeactivate  =   True
+               AutomaticallyCheckSpelling=   True
                BackColor       =   16777215
                Bold            =   False
                Border          =   True

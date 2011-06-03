@@ -153,6 +153,13 @@ Inherits Application
 		  
 		  ' --- CREATE DOCUMENTS FOLDER ---
 		  DocsFolder = GetDocsFolder
+		  If DocsFolder = Nil Then
+		    App.MouseCursor = Nil
+		    '++JRC User canceled, show error msg and bail
+		    MsgBox T.Translate("errors/no_docs_folder","...")
+		    '--
+		    Quit
+		  End If
 		  
 		  ' Create whatever sub-folders are needed
 		  '++JRC: Fix corner case where the sub-Folders exist but are empty (bug #1803741)
@@ -164,6 +171,7 @@ Inherits Application
 		    Quit
 		  End If
 		  '--
+		  
 		  //++EMP 11/27/05
 		  If Not AppFolder.Child("OpenSong Defaults").Exists OR AppFolder.Child("OpenSong Defaults").Count = 0 Then
 		    App.MouseCursor = Nil
@@ -173,6 +181,7 @@ Inherits Application
 		    Quit
 		  End If
 		  //--
+		  
 		  If Not DocsFolder.Exists OR DocsFolder.Count = 0 Then
 		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults"), DocsFolder) Then
 		      App.MouseCursor = Nil
@@ -182,6 +191,7 @@ Inherits Application
 		      Quit
 		    End If
 		  End If
+		  
 		  //++EMP 11/27/05
 		  If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists OR AppFolder.Child("OpenSong Defaults").Child("Settings").Count = 0 Then
 		    App.MouseCursor = Nil

@@ -1,4 +1,8 @@
-﻿-= 1.7.0. =-
+﻿* Change behavior when user cancels selecting a Documents Folder: Inform user that OpenSong cannot continue
+without a Documents Folder, and shut down. Thus preventing a NilObjectException when OS tries to access the
+non-existent folder. (JRC)
+
+-= 1.7.0. =-
 
 * Several fixes and improvements for tab processing: (Vwout)
 - tabs at the beginning of a slide now also work (bug #3141443)

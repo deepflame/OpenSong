@@ -1,3 +1,9 @@
+﻿* Change behavior when user cancels selecting a Documents Folder: Inform user that OpenSong cannot continue
+without a Documents Folder, and shut down. Thus preventing a NilObjectException when OS tries to access the
+non-existent folder. (JRC)
+
+-= 1.7.0. =-
+
 * Several fixes and improvements for tab processing: (Vwout)
 - tabs at the beginning of a slide now also work (bug #3141443)
 - styles with only 1 tabstop location now also work correct
@@ -1284,5 +1290,5 @@ OSX and MouseUp for the other platforms.  Action event is still called in MouseU
 * Added Print Categorized Table of Contents
 * Added Print Alphabetical Table of Contents
 
-$Date: 2011-01-06 15:19:00 -0600 (Thu, 06 Jan 2011) $
-$Revision: 666 $
+$Date: 2011-01-22 22:49:07 -0600 (Sat, 22 Jan 2011) $
+$Revision: 669 $

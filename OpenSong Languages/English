@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt, Ed Palmer" version="1.6.3">
+<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt, Ed Palmer" version="1.7.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -1195,7 +1195,7 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <no_sets_folder>Can't find default Sets folder: %1, or folder is empty</no_sets_folder>
     <no_settings_folder>Can't find default Settings folder: %1, or folder is empty</no_settings_folder>
     <no_songs_folder>Can't find default Songs folder: %1, or folder is empty</no_songs_folder>
-    <no_docs_folder>Could not create/find Documents folder: %1</no_docs_folder>
+    <no_docs_folder>Could not create/find Documents folder: %1 OpenSong cannot continue without a Documents folder. Please restart OpenSong and select a Documents folder. If you are continuing to see this error, please contact your system Administrator.</no_docs_folder>
     <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
 Temporarily changing to: %1
 Please modify your preferences.</docs_folder>

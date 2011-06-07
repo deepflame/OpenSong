@@ -574,7 +574,8 @@ End
 		  
 		  If Not IsNull(imageFileName) Then
 		    Try
-		      image.Save(ImageFileName, 151, 85)
+		       '++JRC Comented out second parameter for compatibilty with RB 2010r3
+		      image.Save(ImageFileName, 151) ' , 85)
 		      
 		      If export_metadata And Not IsNull(metaFileName) then
 		        Dim metaDoc As New XmlDocument

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Francais" author="Karel Leorier / adorateur.com" version="1.6 Français">
+<language name="Francais" author="Karel Leorier / opensong.fr" version="1.7 Français">
 
   <load_settings>
     <checking_folders>Creation/Vérification des répertoires</checking_folders>
@@ -76,7 +76,7 @@
     <title caption="Titre">Définit le titre du chant sélectionné.</title>
     <author caption="Auteur">Définit l'auteur du chant sélectionné.</author>
     <copyright caption="Copyright">Définit le copyright du chant sélectionné.</copyright>
-    <ccli caption="nÝCCLI">Définit nÝCCLI du chant sélectionné.</ccli>
+    <ccli caption="n°CCLI">Définit n°CCLI du chant sélectionné.</ccli>
     <hymn_number caption="Numéro">Définit le numéro de chant (dans un carnet, une liste...)</hymn_number>
     <presentation caption="Ordre des sections">Définit l'ordre de présentation du chant sélectionné. Les sections doivent êtr séparées par des espaces (ex. "V1 C V2 C")</presentation>
     <lyrics caption="Accords/Paroles">Modifier le chant en utilisant des lignes de section, de commentaires, d'accords et de paroles.</lyrics>
@@ -176,7 +176,8 @@
     <untitled caption="Sans titre"/>
     <errors>
       <revert caption="Erreur en rechargeant la liste &quot;%1&quot; depuis le fichier."/>
-    </errors>
+	  <insert caption="L'insertion des diapos copiées a échoué:&#10;%1"/>
+	</errors>
     <messages>
       <export_complete>&quot;%1&quot; exporté vers
 %2
@@ -341,7 +342,7 @@
 
   <general_settings title="Configuration générale">
     <general caption="General" head1="Basic" head2="Special">
-      <ccli caption="NÝ de licence CCLI"/>
+      <ccli caption="N° de licence CCLI"/>
       <version_check caption="Vérifier si une nouvelle version est disponible au démarrage"/>
       <language caption="Langue"/>
     </general>
@@ -418,7 +419,7 @@
     <layout>
       <heading_border_thickness caption="Epaisseur de la bordure de titre"/>
       <title_in_caps caption="Titre en MAJ."/>
-      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
+	  <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Unités">
       <inches caption="Pouces"/>
@@ -427,12 +428,31 @@
   </print_settings>
 
   <presentation_settings title="Paramètres du diaporama">
-    <settings head1="Style" head2="Options">
+    <settings head1="Style" head2="Options" head3="Captures d'écran">
         <default_slides caption="Style de diapo par défaut"/>
         <scripture_slides caption="Style par défaut pour les versets"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-    </settings>
+       
+        <export_snapshot caption="Exporter une capture d'écran de chaque diapo affichée dans le fichier suivant"/>
+        <snapshot_file caption="Fichier de capture">Choisir le nom du fichier pour la capture.</snapshot_file>
+        <export_preview caption="Exporter les captures pendant la projection de la liste"/>
+        <export_live_insertions caption="Exporter les captures de diapos qui sont insérées pendant une présentation"/>
+        <export_metadata caption="Exporter le détail des diapos dans un fichier XML avec un nom similaire"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">The following parameters can be used in the file name or path:
+    - %d: Le jour du mois (01-31)
+    - %h: L'heure courante au format 24h (00-23)
+    - %i: Les minutes de l'heure courante (00-59)
+    - %m: Le mois courant (01-12)
+    - %n: Le nombre de diapos dans la liste en cours (avec complétion par des zéros)
+    - %N: Le nom de la diapositive courante
+    - %P: L'ordre de présentation des diapos dans la présentation courante (avec complétion par des zéros)
+    - %s: Les secondes de l'heure courante (00-59)
+    - %S: Le nom de la liste en cours
+    - %T: Le titre de la diapositive en cours
+    - %V: L'indicateur de couplet pour la diapositive en cours (pour les chants, vide pour les autres types)
+    - %y: L'année courante (4 chiffres)</snapshot_parameters>
+		</settings>
     <transitions caption="Transitions">
       <use_transitions caption="Utiliser des Transitions"/>
       <transition_note caption="*Les transitions dépendent beaucoup de la résolution de l'écran. Si vos transitions sont lentes, baissez la resolution de l'écran de projection. De plus, si les transitions n'ont pas lieu, il est possible que le nombre de couleurs de l'acran de projection ne soit trop faible."/>
@@ -477,6 +497,7 @@
       <presentation caption="Ecran de présentation"/>
       <detected caption="%1 écran(s) détecté."/>
       <default_mode caption="Mode moniteur par défaut"/>
+	  <force_4_3_preview caption="Forcer la prévisualisation 4:3"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Masque"/>
@@ -494,6 +515,10 @@
     <misc caption="Divers">
       <exit_prompt caption="Confirmer avant de quitter"/>
     </misc>
+	
+    <errors>
+        <snapshot_file>Erreurr: la création de captures est activée, mais aucun nom de fichier n'a été saisi.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Aide à la présentation">
@@ -526,6 +551,8 @@ C: Refrain
 P: Pré-refrain
 B: Bridge
 T: Tag</keys>
+    <preview caption="Prévisu diapo en cours" />
+    <next caption="Prévisu diapo suivante" />
   </presentation_helper>
 
   <help_topics title="Rubrique d'aide">
@@ -728,9 +755,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
      <bridge_abbreviation caption="pont"/>
      <tag_abbreviation caption="lib"/>
      <author caption=""/>
-     <hymn_number caption="NÝ"/>
-     <ccli_number caption="NÝ CCLI"/>
-     <ccli_license caption="NÝ de licence CCLI"/>
+     <hymn_number caption="N°"/>
+     <ccli_number caption="N° CCLI"/>
+     <ccli_license caption="N° de licence CCLI"/>
      <presentation caption="Ordre de présentation"/>
      <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
      <separator caption="|NL|"/>
@@ -924,7 +951,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <password caption="Mot de passe"/>
     <for caption="Chercher"/>
     <songs head1="Pa" head2="Ch" head3="Le" head4="Titre" head5="Auteur"
-      head6="Catalogue" head7="autre titre" head8="Ligne princ." head9="tonamité" head10="nÝCCLI"/>
+      head6="Catalogue" head7="autre titre" head8="Ligne princ." head9="tonamité" head10="n°CCLI"/>
     <by caption="De">
       <title_and_aka caption="Titre et autre titre"/>
       <title caption="Titre"/>
@@ -932,7 +959,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
       <author caption="Auteur"/>
       <catalog caption="Catalogue"/>
       <theme caption="Thème"/>
-      <ccli caption="nÝCCLI"/>
+      <ccli caption="n°CCLI"/>
     </by>
     <filter caption="Filtre">
       <all caption="Tous"/>
@@ -1062,8 +1089,8 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <row0 caption="Copyright|copyright"/>
     <row1 caption="Auteur|author"/>
     <row2 caption="Numéro|hymn_number"/> 
-    <row3 caption="NÝ CCLI|ccli_number"/> 
-    <row4 caption="NÝ de licence CCLI|ccli_license"/>
+    <row3 caption="N° CCLI|ccli_number"/> 
+    <row4 caption="N° de licence CCLI|ccli_license"/>
   </subtitles>
 
   <shared>
@@ -1096,8 +1123,8 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <new_name caption="Veuillez entrer un nom :"/>
     <rename caption="Veuillez entrer un nom pour '%1':"/>
     <save caption="Voulez-vous enregistrer vos modifications pour '%1'?"/>
-    <delete caption="-tes-vous sûr(e) de vouloir supprimer '%1'?"/>
-    <clear caption="-tes-vous sûr(e) de vouloir effacer cela ?"/>
+    <delete caption="Êtes-vous sûr(e) de vouloir supprimer '%1'?"/>
+    <clear caption="Êtes-vous sûr(e) de vouloir effacer cela ?"/>
     <changed caption="Le chant a changé, voulez-vous le sauvegarder ?"/>
     <revert caption="Toutes les modifications vont être perdues. Continuer?"/>
     <long_operation caption="Cette opération peut prendre un certain temps. Continuer?"/>

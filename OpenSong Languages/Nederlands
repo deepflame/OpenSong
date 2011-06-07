@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.6.3">
+<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.7.0">
 
   <load_settings>
     <checking_folders>Maken / Controleren van documenten mappen</checking_folders>
@@ -523,6 +523,10 @@
     <misc caption="Diversen">
       <exit_prompt caption="Waarschuwen bij afsluiten"/>
     </misc>
+
+    <errors>
+        <snapshot_file>Fout: het opslaan van momentopnamen is ingeschakeld, maar er is geen bestandsnaam opgegeven.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Presentatie Hulp">

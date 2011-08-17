@@ -574,7 +574,7 @@ End
 		  
 		  If Not IsNull(imageFileName) Then
 		    Try
-		       '++JRC Comented out second parameter for compatibilty with RB 2010r3
+		      '++JRC Comented out second parameter for compatibilty with RB 2010r3
 		      image.Save(ImageFileName, 151) ' , 85)
 		      
 		      If export_metadata And Not IsNull(metaFileName) then
@@ -1676,11 +1676,11 @@ End
 		  Case "arrow"
 		    Self.MouseCursor = System.Cursors.StandardPointer
 		  Case "cross"
-		    #If Not TargetLinux
-		      Self.MouseCursor = cross
-		    #Else
-		      Self.MouseCursor = System.Cursors.ArrowAllDirections
-		    #EndIf
+		    '#If Not TargetLinux
+		    'Self.MouseCursor = cross
+		    '#Else
+		    Self.MouseCursor = System.Cursors.ArrowAllDirections
+		    '#EndIf
 		  Case "hidden"
 		    Self.MouseCursor = System.Cursors.InvisibleCursor
 		  Case "hourglass"

@@ -16,6 +16,7 @@
 # ----------  ----------  --------
 # 2010-01-30  Vwout       Update to support the new Builds directory structure
 #                         and new external libraries
+# 2011-01-30  Vwout       Update to automate creation of binary archive
 #
 
 VERSION=`cat ../OpenSong.rbvcp | grep ShortVersion | cut -d = -f 2`
@@ -116,3 +117,9 @@ then
   rm opensong_$VERSION-1_i386.deb
 fi
 dpkg-deb -b opensong opensong_$VERSION-1_i386.deb
+
+echo "Creating binary packed archive"
+cd opensong/opt
+tar czf ../../opensong_${VERSION}_i386-linux.tar.gz OpenSong
+cd ../..
+

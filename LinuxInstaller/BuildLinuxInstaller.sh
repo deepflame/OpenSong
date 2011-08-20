@@ -53,7 +53,6 @@ mkdir -p opensong/usr/share/applications/
 
 cp "${BUILD_DIR}"/opensong opensong/opt/OpenSong/
 cp "${BUILD_DIR}"/opensong\ Libs/* opensong/opt/OpenSong/opensong\ Libs/
-cp "${BASE_DIR}"/changelog.txt opensong/opt/OpenSong/
 cp "${BASE_DIR}"/Language-Changelog.txt opensong/opt/OpenSong/
 cp "${BASE_DIR}"/Images/ProgramIconPic48-8.xpm opensong/opt/OpenSong/opensong.xpm
 cp "${BASE_DIR}"/OpenSong\ Defaults/Backgrounds/* opensong/opt/OpenSong/OpenSong\ Defaults/Backgrounds/
@@ -66,6 +65,10 @@ cp "${BASE_DIR}"/OpenSong\ Settings/bnames.xml opensong/opt/OpenSong/OpenSong\ S
 cp "${BASE_DIR}"/OpenSong\ Settings/Globals opensong/opt/OpenSong/OpenSong\ Settings/
 cp "${BASE_DIR}"/OpenSong\ Settings/keyconfig.dtd opensong/opt/OpenSong/OpenSong\ Settings/
 cp "${BASE_DIR}"/OpenSong\ Settings/style.css opensong/opt/OpenSong/OpenSong\ Settings/
+
+cp "${BASE_DIR}"/changelog.txt opensong/opt/OpenSong/CHANGES
+cp "${BASE_DIR}"/changelog.txt opensong/DEBIAN/changelog
+cp "${BASE_DIR}"/WindowsInstaller/gpl-en.txt opensong/opt/OpenSong/COPYING
 
 chmod +x opensong/opt/OpenSong/opensong
 
@@ -81,6 +84,7 @@ Essential: no
 Maintainer: Vwout <vwout@users.sourceforge.net>
 Depends: libc6 (>=2.3), libexpat1 (>=1.95.8), libglib2.0-0 (>=2.2.0), libgtk2.0-0 (>=2.2.0)
 Installed-Size: $INSTALL_SIZE
+Homepage: http://sourceforge.net/projects/opensong
 Description: managing and presenting worship lyrics, chords and more
  OpenSong is a free software application for managing chords and lyrics 
  sheets (lead sheets), presenting lyrics (and custom slides) using a 
@@ -88,12 +92,11 @@ Description: managing and presenting worship lyrics, chords and more
 
 echo "#!/bin/sh
 update-desktop-database
-exit 0
 " > opensong/DEBIAN/postinst
 chmod 755 opensong/DEBIAN/postinst
 
 echo "#!/bin/sh
-exit 0
+update-desktop-database
 " > opensong/DEBIAN/prerm
 chmod 755 opensong/DEBIAN/prerm
 
@@ -109,17 +112,46 @@ Terminal=false
 Type=Application
 Categories=Multimedia;Office" > opensong/usr/share/applications/opensong.desktop
 
-find opensong/opt -type f -print0 | xargs -0 md5sum > opensong/DEBIAN/md5sums
-find opensong/usr -type f -print0 | xargs -0 md5sum >> opensong/DEBIAN/md5sums
+echo "This package was debianized by Vwout <vwout@users.sourceforge.net>
+    on `date --rfc-2822`.
+
+It was downloaded from:
+    <https://opensong.svn.sourceforge.net/svnroot/opensong/source/trunk>
+
+Copyright (C) 2003 - 2011 Sean Lickfold
+
+License:
+
+   This package is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; version 2 dated June, 1991.
+
+   This package is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this package; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+    02110-1301, USA.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License can be found in '/usr/share/common-licenses/GPL-2'." > opensong/DEBIAN/copyright
+
+cd opensong
+find opt -type f -print0 | xargs -0 md5sum >  DEBIAN/md5sums
+find usr -type f -print0 | xargs -0 md5sum >> DEBIAN/md5sums
+cd ..
 
 if [ -e "opensong_$VERSION-1_i386.deb" ]
 then
   rm opensong_$VERSION-1_i386.deb
 fi
-dpkg-deb -b opensong opensong_$VERSION-1_i386.deb
+fakeroot dpkg-deb -b opensong opensong_$VERSION-1_i386.deb
 
 echo "Creating binary packed archive"
 cd opensong/opt
-tar czf ../../opensong_${VERSION}_i386-linux.tar.gz OpenSong
+fakeroot tar czf ../../opensong_${VERSION}_i386-linux.tar.gz OpenSong
 cd ../..
 

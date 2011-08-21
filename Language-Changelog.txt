@@ -1,5 +1,6 @@
 -= Version 1.7 =-
 presentation_settings/settings (modified, added child nodes)
+presentation_settings/errors/snapshot_file
 print_settings/layout/highlight_chorus
 presentation_settings/monitor/force_4_3_preview
 presentation_helper/preview

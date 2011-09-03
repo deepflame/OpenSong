@@ -25,15 +25,19 @@ Begin Window MainWindow Implements ScriptureReceiver
    Visible         =   False
    Width           =   750
    Begin ContextualMenu mnu_clipboard
+      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   759
       LockedInPosition=   False
       Scope           =   0
+      TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   26
       UseMacCMM       =   ""
+      Visible         =   True
       Width           =   32
    End
    Begin SButton btn_mode_songs_mode
@@ -151,6 +155,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   35
       Value           =   0
       Visible         =   True
@@ -231,6 +236,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -527,6 +533,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -644,6 +651,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -937,7 +945,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1025,6 +1032,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1113,6 +1121,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1350,6 +1359,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1653,6 +1663,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1881,6 +1892,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   34
       Value           =   0
       Visible         =   True
@@ -2662,7 +2674,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2708,7 +2719,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2785,7 +2795,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2905,7 +2914,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2951,7 +2959,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2997,7 +3004,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3418,6 +3424,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   22
             TabPanelIndex   =   1
+            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -3529,7 +3536,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3575,7 +3581,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3621,7 +3626,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3907,7 +3911,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3953,7 +3956,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3999,7 +4001,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4045,7 +4046,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4261,7 +4261,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4402,7 +4401,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4596,7 +4594,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4864,7 +4861,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4910,7 +4906,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4956,7 +4951,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5002,7 +4996,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5048,7 +5041,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5124,7 +5116,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5776,7 +5767,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5928,7 +5918,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -6002,7 +5991,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -6048,7 +6036,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -6144,7 +6131,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -6351,6 +6337,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   750
    End
    Begin Timer tmr_lookup
+      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -6359,8 +6346,11 @@ Begin Window MainWindow Implements ScriptureReceiver
       Mode            =   2
       Period          =   1500
       Scope           =   0
+      TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   -18
+      Visible         =   True
       Width           =   32
    End
 End
@@ -6453,12 +6443,7 @@ End
 		      btn_song_delete.Enabled = True
 		      mnu_file_print.Enabled = True
 		      mnu_file_single_screen.Enabled = True
-		      mnu_file_dual_screen.Enabled = (ScreenCount > 1) 'EMP 12/05
-		      #If TargetLinux
-		        If (Screen(0).Width /2) > Screen(0).Height Then
-		          mnu_file_dual_screen.Enabled = True
-		        End If
-		      #EndIf
+		      mnu_file_dual_screen.Enabled = (OSScreenCount() > 1) 'EMP 12/05
 		      mnu_file_preview_dual_screen.Enabled = True
 		      
 		      ' EDITOR FIELDS
@@ -6616,12 +6601,7 @@ End
 		      btn_set_saveas.Enabled = True
 		      mnu_file_print.Enabled = True
 		      mnu_file_single_screen.Enabled = True
-		      mnu_file_dual_screen.Enabled = (ScreenCount > 1) 'EMP 12/05
-		      #If TargetLinux
-		        If (Screen(0).Width /2) > Screen(0).Height Then
-		          mnu_file_dual_screen.Enabled = True
-		        End If
-		      #endif
+		      mnu_file_dual_screen.Enabled = (OSScreenCount() > 1) 'EMP 12/05
 		      mnu_file_preview_dual_screen.Enabled = True
 		    Else
 		      btn_set_add_song.Enabled = False
@@ -6899,7 +6879,7 @@ End
 		  end if
 		  
 		  If Keyboard.AsyncKeyDown(&h60) Then ' F5
-		    'If ScreenCount > 1 Then
+		    'If OSScreenCount() > 1 Then
 		    'i = 3
 		    'Else
 		    'i = 1
@@ -7042,7 +7022,7 @@ End
 		  
 		  Dim controlScreen As Integer
 		  controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
-		  If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
+		  If controlScreen < 0 Or controlScreen + 1 > OSScreenCount() Then controlScreen = 0
 		  
 		  LastSongPane = 0
 		  LastSetPane = 2
@@ -7189,26 +7169,16 @@ End
 
 	#tag MenuHandler
 		Function mnu_file_dual_screen() As Boolean Handles mnu_file_dual_screen.Action
-			#If TargetLinux
-			If (Screen(0).Width /2) > Screen(0).Height Then
-			If pge_controls.Value = 0 Then
-			ActionSongPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-			Else
-			ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-			End If
-			End If
-			#endif
-			
-			If ScreenCount = 1 Then
+			If OSScreenCount() = 1 Then
 			InputBox.Message App.T.Translate("errors/no_multi_screen")
-			Return True
-			End If
-			
+			Else
 			If pge_controls.Value = 0 Then
 			ActionSongPresent PresentWindow.MODE_DUAL_SCREEN
 			Else
 			ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
 			End If
+			End If
+			
 			Return True
 		End Function
 	#tag EndMenuHandler
@@ -9947,18 +9917,8 @@ End
 		  
 		  btn_song_present.DeletePopup
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
-		  '++JRC Don't need two Present Dual-Screen items ;)
-		  'if ScreenCount > 1 Then
-		  'btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
-		  'End If
 		  
-		  #If TargetLinux
-		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
-		      btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
-		    End If
-		  #EndIf
-		  
-		  if ScreenCount > 1 Then
+		  if OSScreenCount() > 1 Then
 		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
 		  End If
 		  
@@ -9968,13 +9928,7 @@ End
 		  btn_set_present.DeletePopup
 		  btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
 		  
-		  #If TargetLinux
-		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
-		      btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
-		    End If
-		  #EndIF
-		  
-		  If ScreenCount > 1 Then
+		  If OSScreenCount() > 1 Then
 		    btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
 		  End If
 		  
@@ -9984,13 +9938,8 @@ End
 		  '++JRC
 		  btn_set_presentitem.DeletePopup
 		  btn_set_presentitem.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/single_screen/@caption")
-		  #If TargetLinux
-		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
-		      btn_set_presentitem.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/dual_screen/@caption")
-		    End If
-		  #EndIF
 		  
-		  If ScreenCount > 1 Then
+		  If OSScreenCount() > 1 Then
 		    btn_set_presentitem.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/dual_screen/@caption")
 		  End If
 		  
@@ -10362,19 +10311,11 @@ End
 		  ElseIf Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption") Then
 		    ActionSongPresent PresentWindow.MODE_PREVIEW
 		  ElseIf Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption") Then
-		    #If TargetLinux
-		      If (Screen(0).Width /2) > Screen(0).Height Then
-		        ActionSongPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #Else
-		      If ScreenCount > 1 Then
-		        ActionSongPresent PresentWindow.MODE_DUAL_SCREEN
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #EndIF
+		    If OSScreenCount() > 1 Then
+		      ActionSongPresent PresentWindow.MODE_DUAL_SCREEN
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_multi_screen")
+		    End If
 		  End If
 		End Sub
 	#tag EndEvent
@@ -11312,19 +11253,11 @@ End
 		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_item/presentitem/preview_dual_screen/@caption") Then
 		    ActionSetPresent PresentWindow.MODE_PREVIEW, Item
 		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_item/presentitem/dual_screen/@caption") Then
-		    #If TargetLinux
-		      If (Screen(0).Width /2) > Screen(0).Height Then
-		        ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN, Item
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #Else
-		      If ScreenCount > 1 Then
-		        ActionSetPresent PresentWindow.MODE_DUAL_SCREEN, Item
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #EndIF
+		    If OSScreenCount() > 1 Then
+		      ActionSetPresent PresentWindow.MODE_DUAL_SCREEN, Item
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_multi_screen")
+		    End If
 		  End If
 		End Sub
 	#tag EndEvent
@@ -11387,19 +11320,11 @@ End
 		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption") Then
 		    ActionSetPresent PresentWindow.MODE_PREVIEW
 		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/dual_screen/@caption") Then
-		    #If TargetLinux
-		      If (Screen(0).Width /2) > Screen(0).Height Then
-		        ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #Else
-		      If ScreenCount > 1 Then
-		        ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #EndIF
+		    If OSScreenCount() > 1 Then
+		      ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_multi_screen")
+		    End If
 		  End If
 		End Sub
 	#tag EndEvent

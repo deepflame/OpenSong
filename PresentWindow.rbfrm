@@ -187,6 +187,10 @@ End
 
 	#tag Event
 		Sub Open()
+		  #If TargetLinux
+		    Soft Declare Sub gtk_window_set_decorated Lib "libgtk-x11-2.0.so" (gtkwindow As Integer, decorated As Boolean)
+		  #EndIf
+		  
 		  //++EMP 09/04
 		  // Rewritten to get transition speed characteristics from presentation preferences
 		  //
@@ -208,6 +212,15 @@ End
 		  doTransition = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
 		  curslideTransition = SlideTransitionEnum.NoTransition
 		  m_Snapshots = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@enable", False, False)
+		  
+		  #If TargetLinux
+		    Try
+		      gtk_window_set_decorated( self.handle, False )
+		    Catch
+		      'This could fail if libgtk cannot be loaded
+		    End Try
+		  #EndIf
+		  
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
 	#tag EndEvent
@@ -1422,6 +1435,7 @@ End
 		  Dim slide_groups, slide_group, slide As XmlNode
 		  Dim de As XmlNode // Holds PresentationSettings Document Element
 		  Dim tmpPic As Picture
+		  Dim availableWidth As Integer 'For screensize calculations adapted to Linux Xinerama in preview dual screen
 		  //++EMP
 		  // September 2005
 		  // Since the changes to pull the style information out of the XML
@@ -1520,15 +1534,8 @@ End
 		  'System.DebugLog "Setup monitors"
 		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
 		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
-		  If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		  If controlScreen < 0 Or controlScreen > ScreenCount -1 Then controlScreen = 0
-		  
-		  'System.DebugLog "PresentWindow.Present: presentScreen, controlScreen = " + str(presentScreen) + ", " + str(controlScreen)
-		  'System.DebugLog Chr(9) + "ScreenCount = " + str(ScreenCount)
-		  For i = 0 to ScreenCount - 1
-		    'System.DebugLog Chr(9) + "Screen(" + str(i) + "): Top, Left, Height, Width = " + _
-		    'StringUtils.Sprintf("%d, %d, %d, %d", Screen(i).Top, Screen(i).Left, Screen(i).Height, Screen(i).Width)
-		  Next i
+		  If presentScreen < 0 Or presentScreen > OSScreenCount() - 1 Then presentScreen = 0
+		  If controlScreen < 0 Or controlScreen > OSScreenCount() -1 Then controlScreen = 0
 		  
 		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
 		  'System.DebugLog "Determine correct PresentMode"
@@ -1536,21 +1543,22 @@ End
 		    presentScreen = controlScreen
 		    HelperActive = False
 		    MenuBarVisible = False
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left
-		    Width = Screen(presentScreen).Width
-		    Height = Screen(presentScreen).Height
+		    Top = OSScreen(presentScreen).Top
+		    Left = OSScreen(presentScreen).Left
+		    Width = OSScreen(presentScreen).Width
+		    Height = OSScreen(presentScreen).Height
 		    FullScreen = True
 		    
 		  ElseIf PresentMode = MODE_PREVIEW Then ' Split Screen
 		    HelperActive = True
 		    MenuBarVisible = True
 		    presentScreen = controlScreen
-		    Top = Screen(presentScreen).AvailableTop + 10
-		    Left = Screen(presentScreen).AvailableLeft + 10
+		    Top = OSScreen(presentScreen).AvailableTop + 10
+		    Left = OSScreen(presentScreen).AvailableLeft + 10
+		    availableWidth = OSScreen(presentScreen).AvailableWidth
 		    
-		    Width = Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 30
-		    Height = Width * Screen(presentScreen).AvailableHeight / Screen(presentScreen).AvailableWidth ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
+		    Width = availableWidth - PresentHelperWindow.Width - 30
+		    Height = Width * OSScreen(presentScreen).AvailableHeight / availableWidth ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
 		    
 		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
 		      If Width > Height Then
@@ -1560,8 +1568,8 @@ End
 		      End If
 		    End If
 		    
-		    PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 10
-		    PresentHelperWindow.Top = Screen(presentScreen).AvailableTop + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
+		    PresentHelperWindow.Left = OSScreen(presentScreen).AvailableLeft + availableWidth - PresentHelperWindow.Width - 10
+		    PresentHelperWindow.Top = OSScreen(presentScreen).AvailableTop + OSScreen(presentScreen).Height - PresentHelperWindow.Height - 40
 		    
 		    If Not SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_preview", False, False) Then
 		      m_Snapshots = False
@@ -1569,24 +1577,14 @@ End
 		    
 		  ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens
 		    HelperActive = True
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left
-		    Width = Screen(presentScreen).Width
-		    Height = Screen(presentScreen).Height
+		    Top = OSScreen(presentScreen).Top
+		    Left = OSScreen(presentScreen).Left
+		    Width = OSScreen(presentScreen).Width
+		    Height = OSScreen(presentScreen).Height
 		    FullScreen = True
 		    MenuBarVisible = (presentScreen > 0) // Only show the menu bar if we're presenting on a secondary screen
-		    PresentHelperWindow.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - PresentHelperWindow.Width) / 2
-		    PresentHelperWindow.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height - PresentHelperWindow.Height) / 2
-		    
-		  ElseIf PresentMode = MODE_LINUX_DUAL_SCREEN Then ' Linux Xinerama Screen
-		    HelperActive = True
-		    presentScreen = controlScreen
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left + (Screen(presentScreen).Width / 2)
-		    Width = Screen(presentScreen).Width / 2
-		    Height = Screen(presentScreen).Height
-		    PresentHelperWindow.Left = Screen(presentScreen).Left + (Screen(presentScreen).Width /2)  - PresentHelperWindow.Width - 10
-		    PresentHelperWindow.Top = Screen(presentScreen).Top + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
+		    PresentHelperWindow.Left = OSScreen(controlScreen).Left + (OSScreen(controlScreen).Width - PresentHelperWindow.Width) / 2
+		    PresentHelperWindow.Top = OSScreen(controlScreen).Top + (OSScreen(controlScreen).Height - PresentHelperWindow.Height) / 2
 		  End If
 		  cnvSlide.Visible = True
 		  
@@ -2255,9 +2253,6 @@ End
 	#tag EndConstant
 
 	#tag Constant, Name = MODE_DUAL_SCREEN, Type = Integer, Dynamic = False, Default = \"2", Scope = Public
-	#tag EndConstant
-
-	#tag Constant, Name = MODE_LINUX_DUAL_SCREEN, Type = Integer, Dynamic = False, Default = \"4", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = MODE_PREVIEW, Type = Integer, Dynamic = False, Default = \"3", Scope = Public

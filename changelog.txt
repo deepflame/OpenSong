@@ -1,4 +1,8 @@
-﻿* Fix issue where the chorus text was not being highlighted in printouts. (Bug #3284863) (JRC)
+﻿* Fix for multiscreen setup in Linux. Displays are now properly detected with support for different resolutions per screen (Bug #1904753, Forum topic 4040032) (Vwout)
+
+* Fix for fullscreen issue in Linux where title bar remains visible (Feature request #2916937, Forum topic 4040032) (Vwout)
+
+* Fix issue where the chorus text was not being highlighted in printouts. (Bug #3284863) (JRC)
 
 * Change behavior when user cancels selecting a Documents Folder: Inform user that OpenSong cannot continue
 without a Documents Folder, and shut down. Thus preventing a NilObjectException when OS tries to access the

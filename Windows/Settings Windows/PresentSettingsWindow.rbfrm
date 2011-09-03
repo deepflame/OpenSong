@@ -339,6 +339,7 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   6
          TabPanelIndex   =   1
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -496,6 +497,7 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   7
          TabPanelIndex   =   1
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -764,6 +766,7 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   8
          TabPanelIndex   =   2
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1074,6 +1077,7 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   9
          TabPanelIndex   =   2
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1507,6 +1511,7 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   10
          TabPanelIndex   =   2
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1807,6 +1812,7 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   11
          TabPanelIndex   =   2
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1964,6 +1970,7 @@ Begin Window PresentSettingsWindow
          Scope           =   0
          TabIndex        =   12
          TabPanelIndex   =   2
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -2242,6 +2249,7 @@ Begin Window PresentSettingsWindow
       End
    End
    Begin Timer AudioTimer
+      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -2250,8 +2258,11 @@ Begin Window PresentSettingsWindow
       Mode            =   2
       Period          =   500
       Scope           =   0
+      TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   400
+      Visible         =   True
       Width           =   32
    End
 End
@@ -2303,7 +2314,7 @@ End
 		  //--
 		  pop_monitor_control.DeleteAllRows
 		  pop_monitor_presentation.DeleteAllRows
-		  For n = 1 To Max(2, ScreenCount) // Permit dual-monitor configuration even if on single-monitor system.
+		  For n = 1 To Max(2, OSScreenCount()) // Permit dual-monitor configuration even if on single-monitor system.
 		    pop_monitor_control.AddRow CStr(n)
 		    pop_monitor_presentation.AddRow CStr(n)
 		  Next
@@ -2383,8 +2394,7 @@ End
 		  
 		  App.T.TranslateWindow Me, "presentation_settings", App.TranslationFonts
 		  s = App.T.Translate("presentation_settings/style/initial_mode/@caption")
-		  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(ScreenCount))
-		  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(ScreenCount))
+		  nte_monitor_detected.Caption = Replace(nte_monitor_detected.Caption, "%1", Str(OSScreenCount()))
 		  
 		  //++EMP 09/05
 		  // Code for user-selectable transitions

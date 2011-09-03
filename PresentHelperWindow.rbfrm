@@ -709,8 +709,8 @@ End
 		  App.T.TranslateWindow Me, "presentation_helper", App.TranslationFonts
 		  txt_shortcut_keys.Caption = App.T.Translate("presentation_helper/keys")
 		  
-		  Dim screenWidth As Double = Screen(PresentWindow.PresentScreen).Width
-		  Dim screenHeight As Double = Screen(PresentWindow.PresentScreen).Height
+		  Dim screenWidth As Double = OSScreen(PresentWindow.PresentScreen).Width
+		  Dim screenHeight As Double =  OSScreen(PresentWindow.PresentScreen).Height
 		  m_screenRatio = screenWidth / screenHeight
 		  
 		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
@@ -923,7 +923,7 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub SetMaxClientArea()
-		  Dim ControlScreen As Integer
+		  Dim controlScreen As Integer
 		  Dim de As XmlElement
 		  
 		  // having issues with Available... so for the time being use the version that makes estimates
@@ -934,12 +934,13 @@ End
 		  Return
 		  
 		  de = App.MyPresentSettings.DocumentElement
-		  ControlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
-		  If ControlScreen > ScreenCount Then ControlScreen = 0
-		  Self.Top = Screen(ControlScreen).AvailableTop
-		  Self.Left = Screen(ControlScreen).AvailableLeft
-		  Self.Height = Screen(ControlScreen).AvailableHeight
-		  Self.Width = Screen(ControlScreen).AvailableWidth
+		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
+		  If controlScreen > OSScreenCount() Then controlScreen = 0
+		  
+		  Self.Top =  OSScreen(controlScreen).AvailableTop
+		  Self.Left =  OSScreen(controlScreen).AvailableLeft
+		  Self.Height =  OSScreen(controlScreen).AvailableHeight
+		  Self.Width =  OSScreen(controlScreen).AvailableWidth
 		End Sub
 	#tag EndMethod
 

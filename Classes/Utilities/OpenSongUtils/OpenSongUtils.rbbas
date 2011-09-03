@@ -764,6 +764,68 @@ Protected Module OpenSongUtils
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function OSScreen(index As Integer) As OS_Screen
+		  'OSScreen is an extension of what Screen() is providing.
+		  'It wrap the core functionality implemented in OS_Screen
+		  
+		  Static aScreens() As OS_Screen
+		  Static screens_created As Boolean = False
+		  
+		  If Not screens_created Then
+		    ReDim aScreens(OSScreenCount()-1)
+		    Dim i As Integer
+		    For i = 0 to OSScreenCount()-1
+		      aScreens(i) = New OS_Screen(i)
+		    Next
+		    
+		    screens_created = True
+		  End If
+		  
+		  Return aScreens(index)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function OSScreenCount() As Integer
+		  'OSScreenCount replaces ScreenCount to provide a generic way of correct number of dispay reporting, including Linux.
+		  'Unfortunately, RealBasic is still not capable of properly providing number of display information, although it is not that complicated.
+		  
+		  #If TargetLinux
+		    Soft Declare Function gdk_screen_get_default  Lib "libgdk-x11-2.0.so" () As Integer
+		    Soft Declare Function gdk_screen_get_n_monitors Lib "libgdk-x11-2.0.so" (display As Integer) As Integer
+		    
+		    Dim screen As Integer
+		    Static monitor_count As Integer = -1
+		    
+		    If monitor_count = -1 Then
+		      monitor_count = 1
+		      Try
+		        screen = gdk_screen_get_default()
+		        monitor_count = gdk_screen_get_n_monitors(screen)
+		        
+		        If monitor_count>1 Then
+		          If OSScreen(0).Left = OSScreen(1).Left And _
+		            OSScreen(0).Top = OSScreen(1).Top Then
+		            'The screens are configured as clone, fallback to single screen mode
+		            monitor_count = 1
+		          End If
+		        End If
+		      Catch
+		        'This could fail if libgdk cannot be loaded; fallback to fingerprinting
+		        
+		        If ((Screen(0).Width /2) > Screen(0).Height) Then
+		          monitor_count = 2
+		        End If
+		      End Try
+		    End If
+		    Return monitor_count
+		  #Else
+		    Return ScreenCount()
+		  #EndIf
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub PageDown(Extends L As ListBox)
 		  //++
 		  // Perform a page down operation on a list box

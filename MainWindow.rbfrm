@@ -7,7 +7,7 @@ Begin Window MainWindow Implements ScriptureReceiver
    Frame           =   0
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   564
+   Height          =   570
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -25,19 +25,15 @@ Begin Window MainWindow Implements ScriptureReceiver
    Visible         =   False
    Width           =   750
    Begin ContextualMenu mnu_clipboard
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   759
       LockedInPosition=   False
       Scope           =   0
-      TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   26
       UseMacCMM       =   ""
-      Visible         =   True
       Width           =   32
    End
    Begin SButton btn_mode_songs_mode
@@ -140,7 +136,7 @@ Begin Window MainWindow Implements ScriptureReceiver
    Begin PagePanel pge_controls
       AutoDeactivate  =   True
       Enabled         =   True
-      Height          =   529
+      Height          =   535
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -155,9 +151,8 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   35
-      Value           =   0
+      Value           =   1
       Visible         =   True
       Width           =   250
       Begin Canvas can_controls_songs_mode
@@ -168,7 +163,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   520
+         Height          =   526
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_controls"
@@ -236,7 +231,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -533,7 +527,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -651,7 +644,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -853,7 +845,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   509
+            Top             =   515
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -909,7 +901,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             GridLinesVertical=   0
             HasHeading      =   False
             HeadingIndex    =   -1
-            Height          =   166
+            Height          =   172
             HelpTag         =   ""
             Hierarchical    =   False
             Index           =   -2147483648
@@ -980,7 +972,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   528
+            Top             =   534
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -995,7 +987,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   519
+         Height          =   525
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_controls"
@@ -1032,7 +1024,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1107,12 +1098,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   False
             Caption         =   "Current Item"
             Enabled         =   True
-            Height          =   196
+            Height          =   201
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_controls_sets_mode"
             Italic          =   False
-            Left            =   127
+            Left            =   128
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   True
@@ -1121,14 +1112,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
             Top             =   217
             Underline       =   False
             Visible         =   True
-            Width           =   110
+            Width           =   111
             Begin SButton btn_set_remove
                AcceptFocus     =   True
                AcceptTabs      =   False
@@ -1143,7 +1133,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_item"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1154,10 +1144,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   3
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   307
+               Top             =   311
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_move_down
                AcceptFocus     =   True
@@ -1173,7 +1163,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_item"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1184,10 +1174,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   2
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   282
+               Top             =   286
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_copy
                AcceptFocus     =   True
@@ -1203,7 +1193,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_item"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1214,10 +1204,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   4
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   332
+               Top             =   336
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_move_up
                AcceptFocus     =   True
@@ -1233,7 +1223,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_item"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1244,10 +1234,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   1
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   257
+               Top             =   261
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_paste
                AcceptFocus     =   True
@@ -1263,7 +1253,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_item"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1274,10 +1264,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   5
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   357
+               Top             =   361
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_store
                AcceptFocus     =   True
@@ -1293,7 +1283,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_item"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1304,10 +1294,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   6
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   382
+               Top             =   386
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_presentitem
                AcceptFocus     =   True
@@ -1323,7 +1313,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_item"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1334,10 +1324,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   0
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   232
+               Top             =   236
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
          End
          Begin GroupBox grp_set_current_set
@@ -1359,7 +1349,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1381,7 +1370,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_set"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1411,7 +1400,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_set"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1441,7 +1430,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_set"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1471,7 +1460,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_set"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1501,7 +1490,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_set"
                LabelAlign      =   0
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1531,7 +1520,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_set"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1561,7 +1550,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_set"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1590,7 +1579,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                HelpTag         =   ""
                Index           =   -2147483648
                InitialParent   =   "grp_set_current_set"
-               Left            =   138
+               Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1649,7 +1638,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Bold            =   False
             Caption         =   "New Item"
             Enabled         =   True
-            Height          =   151
+            Height          =   177
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "can_controls_sets_mode"
@@ -1663,7 +1652,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1685,7 +1673,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_new_item"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1696,10 +1684,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   1
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   262
+               Top             =   261
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_add_slides
                AcceptFocus     =   True
@@ -1715,7 +1703,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_new_item"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1726,10 +1714,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   2
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   287
+               Top             =   286
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_add_style
                AcceptFocus     =   True
@@ -1745,7 +1733,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_new_item"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1756,10 +1744,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   3
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   312
+               Top             =   311
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_add_song
                AcceptFocus     =   True
@@ -1775,7 +1763,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_new_item"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1789,7 +1777,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Top             =   236
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
             End
             Begin SButton btn_set_add_image
                AcceptFocus     =   True
@@ -1805,7 +1793,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Index           =   -2147483648
                InitialParent   =   "grp_set_new_item"
                LabelAlign      =   0
-               Left            =   21
+               Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
                LockLeft        =   True
@@ -1816,10 +1804,40 @@ Begin Window MainWindow Implements ScriptureReceiver
                TabIndex        =   4
                TabPanelIndex   =   2
                TabStop         =   True
-               Top             =   337
+               Top             =   336
                UseFocusRing    =   True
                Visible         =   True
-               Width           =   87
+               Width           =   92
+            End
+            Begin SButton btn_set_add_external
+               AcceptFocus     =   True
+               AcceptTabs      =   False
+               AutoDeactivate  =   True
+               Backdrop        =   0
+               DoubleBuffer    =   False
+               Enabled         =   False
+               EraseBackground =   True
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_new_item"
+               LabelAlign      =   0
+               Left            =   19
+               LockBottom      =   False
+               LockedInPosition=   False
+               LockLeft        =   False
+               LockRight       =   False
+               LockTop         =   False
+               Scope           =   0
+               StickyBevel     =   0
+               TabIndex        =   5
+               TabPanelIndex   =   2
+               TabStop         =   True
+               Top             =   361
+               UseFocusRing    =   True
+               Visible         =   True
+               Width           =   92
             End
          End
          Begin Listbox lst_set_items
@@ -1840,7 +1858,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             GridLinesVertical=   0
             HasHeading      =   False
             HeadingIndex    =   -1
-            Height          =   125
+            Height          =   131
             HelpTag         =   ""
             Hierarchical    =   False
             Index           =   -2147483648
@@ -1877,7 +1895,7 @@ Begin Window MainWindow Implements ScriptureReceiver
    Begin PagePanel pge_contents
       AutoDeactivate  =   True
       Enabled         =   True
-      Height          =   529
+      Height          =   535
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -1887,14 +1905,13 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
-      PanelCount      =   5
+      PanelCount      =   6
       Panels          =   ""
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   34
-      Value           =   0
+      Value           =   4
       Visible         =   True
       Width           =   495
       Begin Canvas cnv_editor_style_change
@@ -1905,7 +1922,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   519
+         Height          =   525
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -2055,7 +2072,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   521
+         Height          =   527
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -2239,7 +2256,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             GridLinesVertical=   0
             HasHeading      =   False
             HeadingIndex    =   -1
-            Height          =   421
+            Height          =   427
             HelpTag         =   ""
             Hierarchical    =   False
             Index           =   -2147483648
@@ -3054,7 +3071,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   520
+         Height          =   526
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -3424,7 +3441,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   22
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -3588,7 +3604,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   374
+            Height          =   380
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -4096,7 +4112,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   520
+         Height          =   526
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -4147,7 +4163,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   130
+            Width           =   128
             Window          =   0
             _mWindow        =   0
          End
@@ -4436,7 +4452,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   379
+            Top             =   385
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4471,7 +4487,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   401
+            Top             =   407
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -4545,7 +4561,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   365
+            Top             =   371
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -4582,7 +4598,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   365
+            Top             =   371
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -4629,7 +4645,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   379
+            Top             =   385
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -4849,7 +4865,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   436
+            Top             =   442
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -5003,7 +5019,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   220
+            Height          =   226
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -5076,7 +5092,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   416
+            Top             =   422
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5151,7 +5167,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   450
+            Top             =   456
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5194,7 +5210,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          DoubleBuffer    =   False
          Enabled         =   True
          EraseBackground =   True
-         Height          =   520
+         Height          =   526
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "pge_contents"
@@ -5241,7 +5257,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   364
+            Top             =   389
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -5278,11 +5294,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   314
+            Top             =   339
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   130
+            Width           =   128
             Window          =   0
             _mWindow        =   0
          End
@@ -5315,7 +5331,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   494
+            Top             =   519
             Transparent     =   False
             Underline       =   ""
             Visible         =   True
@@ -5349,7 +5365,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   464
+            Top             =   489
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -5418,7 +5434,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   509
+            Top             =   536
             Underline       =   ""
             Visible         =   True
             Width           =   110
@@ -5483,10 +5499,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   20
             TabPanelIndex   =   5
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             TextUnit        =   0
-            Top             =   365
+            Top             =   371
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -5515,10 +5531,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   21
             TabPanelIndex   =   5
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             TextUnit        =   0
-            Top             =   385
+            Top             =   391
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -5547,10 +5563,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   23
             TabPanelIndex   =   5
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             TextUnit        =   0
-            Top             =   425
+            Top             =   431
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -5579,10 +5595,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   22
             TabPanelIndex   =   5
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             TextUnit        =   0
-            Top             =   405
+            Top             =   411
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -5617,7 +5633,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
-            Top             =   448
+            Top             =   454
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -5725,7 +5741,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   289
+            Top             =   314
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -5757,7 +5773,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   269
+            Top             =   294
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -5802,7 +5818,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   344
+            Top             =   369
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -5982,7 +5998,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   27
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   384
+            Top             =   409
             UseFocusRing    =   True
             Visible         =   True
             Width           =   102
@@ -6095,7 +6111,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             GridLinesVertical=   0
             HasHeading      =   True
             HeadingIndex    =   -1
-            Height          =   200
+            Height          =   206
             HelpTag         =   ""
             Hierarchical    =   ""
             Index           =   -2147483648
@@ -6166,7 +6182,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   462
+            Top             =   468
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -6227,7 +6243,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   13
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   187
+            Top             =   212
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -6257,7 +6273,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   15
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   238
+            Top             =   263
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
@@ -6287,17 +6303,1658 @@ Begin Window MainWindow Implements ScriptureReceiver
             TabIndex        =   14
             TabPanelIndex   =   5
             TabStop         =   True
-            Top             =   212
+            Top             =   237
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
+         End
+         Begin SButton btn_image_imp_image
+            AcceptFocus     =   True
+            AcceptTabs      =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   True
+            EraseBackground =   True
+            HasFocus        =   0
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_image_slide"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            StickyBevel     =   0
+            TabIndex        =   31
+            TabPanelIndex   =   5
+            TabStop         =   False
+            Top             =   185
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   115
+         End
+      End
+      Begin Canvas can_editor_external_slide
+         AcceptFocus     =   False
+         AcceptTabs      =   False
+         AutoDeactivate  =   True
+         Backdrop        =   0
+         DoubleBuffer    =   False
+         Enabled         =   True
+         EraseBackground =   True
+         Height          =   526
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "pge_contents"
+         Left            =   260
+         LockBottom      =   True
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   6
+         TabStop         =   True
+         Top             =   40
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   485
+         Begin StaticText hdr_external_header
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            Italic          =   False
+            Left            =   270
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   0
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Text            =   "External Slide Editor"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   22
+            Top             =   50
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   460
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin StaticText lbl_external_name
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            Italic          =   False
+            Left            =   270
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   True
+            LockTop         =   True
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   1
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Text            =   "Name:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   91
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   460
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin StaticText lbl_external_notes
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            Italic          =   False
+            Left            =   270
+            LockBottom      =   True
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   True
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   2
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Text            =   "Notes:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   454
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   340
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin StaticText lbl_external_application
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            Italic          =   False
+            Left            =   615
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   3
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Text            =   "Application:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   146
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   115
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin CheckBox chk_external_loop
+            AutoDeactivate  =   True
+            Bold            =   False
+            Caption         =   "Loop Slides"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            Italic          =   False
+            Left            =   628
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            State           =   0
+            TabIndex        =   4
+            TabPanelIndex   =   6
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   266
+            Underline       =   False
+            Value           =   False
+            Visible         =   True
+            Width           =   110
+         End
+         Begin SEditField edt_external_name
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            BackColor       =   16777215
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            Italic          =   False
+            Left            =   270
+            LimitText       =   0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   True
+            LockTop         =   True
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   5
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   105
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   460
+         End
+         Begin SEditField edt_external_notes
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            BackColor       =   16777215
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   88
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            Italic          =   False
+            Left            =   270
+            LimitText       =   0
+            LockBottom      =   True
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   True
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   True
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   True
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   6
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   468
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   340
+         End
+         Begin SButton btn_external_presentation
+            AcceptFocus     =   True
+            AcceptTabs      =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   True
+            EraseBackground =   True
+            HasFocus        =   0
+            Height          =   25
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            StickyBevel     =   0
+            TabIndex        =   7
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Top             =   161
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   115
+         End
+         Begin SButton btn_external_application
+            AcceptFocus     =   True
+            AcceptTabs      =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   False
+            EraseBackground =   True
+            HasFocus        =   0
+            Height          =   25
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            StickyBevel     =   0
+            TabIndex        =   8
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Top             =   223
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   115
+         End
+         Begin SButton btn_external_videolan
+            AcceptFocus     =   True
+            AcceptTabs      =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   False
+            EraseBackground =   True
+            HasFocus        =   0
+            Height          =   25
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            LabelAlign      =   0
+            Left            =   615
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   False
+            Scope           =   0
+            StickyBevel     =   0
+            TabIndex        =   9
+            TabPanelIndex   =   6
+            TabStop         =   True
+            Top             =   192
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   115
+         End
+         Begin PagePanel pge_externals
+            AutoDeactivate  =   True
+            Enabled         =   True
+            Height          =   296
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_external_slide"
+            Left            =   270
+            LockBottom      =   True
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   True
+            LockTop         =   True
+            PanelCount      =   4
+            Panels          =   ""
+            Scope           =   0
+            TabIndex        =   10
+            TabPanelIndex   =   6
+            Top             =   146
+            Value           =   2
+            Visible         =   True
+            Width           =   340
+            Begin GroupBox grp_external_presentation_settings
+               AutoDeactivate  =   True
+               Bold            =   ""
+               Caption         =   "Presentation settings"
+               Enabled         =   True
+               Height          =   280
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "pge_externals"
+               Italic          =   ""
+               Left            =   275
+               LockBottom      =   True
+               LockedInPosition=   False
+               LockLeft        =   True
+               LockRight       =   True
+               LockTop         =   True
+               Scope           =   0
+               TabIndex        =   0
+               TabPanelIndex   =   2
+               TextFont        =   "Arial"
+               TextSize        =   11
+               TextUnit        =   0
+               Top             =   150
+               Underline       =   ""
+               Visible         =   True
+               Width           =   330
+               Begin CheckBox chk_external_loop_presentation
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Loop presentation"
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   ""
+                  LockTop         =   True
+                  Scope           =   0
+                  State           =   0
+                  TabIndex        =   0
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   384
+                  Underline       =   ""
+                  Value           =   False
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin SButton btn_external_presentation_file
+                  AcceptFocus     =   ""
+                  AcceptTabs      =   ""
+                  AutoDeactivate  =   True
+                  Backdrop        =   ""
+                  DoubleBuffer    =   False
+                  Enabled         =   True
+                  EraseBackground =   True
+                  HasFocus        =   0
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Left            =   575
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   ""
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  StickyBevel     =   0
+                  TabIndex        =   1
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  Top             =   339
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   20
+               End
+               Begin StaticText lbl_external_presentation_file
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   2
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  Text            =   "Presentation filename"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   341
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   278
+                  Window          =   0
+                  _mWindow        =   0
+               End
+               Begin RadioButton rad_external_host_impress
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "OpenOffice.org Impress"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   3
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   295
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin RadioButton rad_external_host_pptview
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Microsoft PowerPoint Viewer"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   4
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   227
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin RadioButton rad_external_host_powerpoint
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Microsoft PowerPoint"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   5
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   183
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin StaticText lbl_external_presentation_host
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   6
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  Text            =   "Which application should be used to run the presentation?"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   165
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   310
+                  Window          =   0
+                  _mWindow        =   0
+               End
+               Begin SEditField edt_external_presentation_file
+                  AcceptTabs      =   ""
+                  Alignment       =   0
+                  AutoDeactivate  =   True
+                  BackColor       =   &hFFFFFF
+                  Bold            =   ""
+                  Border          =   True
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Format          =   ""
+                  Height          =   22
+                  HelpTag         =   ""
+                  HideSelection   =   True
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LimitText       =   0
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Mask            =   ""
+                  Multiline       =   ""
+                  ReadOnly        =   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollbarVertical=   True
+                  Styled          =   ""
+                  TabIndex        =   7
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  Text            =   ""
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   359
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin CheckBox chk_external_embed_presentation
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Include the presentation in the OpenSong set"
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   False
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  State           =   0
+                  TabIndex        =   8
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   404
+                  Underline       =   ""
+                  Value           =   False
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin StaticText nte_external_host_powerpoint_info
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   30
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   9
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   200
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+                  Window          =   0
+                  _mWindow        =   0
+               End
+               Begin StaticText nte_external_host_pptview_info
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   55
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   10
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   244
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+                  Window          =   0
+                  _mWindow        =   0
+               End
+               Begin StaticText nte_external_host_impress_info
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   30
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_presentation_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   11
+                  TabPanelIndex   =   2
+                  TabStop         =   True
+                  Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   312
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+                  Window          =   0
+                  _mWindow        =   0
+               End
+            End
+            Begin GroupBox grp_external_no_application
+               AutoDeactivate  =   True
+               Bold            =   ""
+               Caption         =   "No application"
+               Enabled         =   True
+               Height          =   280
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "pge_externals"
+               Italic          =   ""
+               Left            =   275
+               LockBottom      =   True
+               LockedInPosition=   False
+               LockLeft        =   True
+               LockRight       =   True
+               LockTop         =   True
+               Scope           =   0
+               TabIndex        =   0
+               TabPanelIndex   =   1
+               TextFont        =   "Arial"
+               TextSize        =   11
+               TextUnit        =   0
+               Top             =   150
+               Underline       =   ""
+               Visible         =   True
+               Width           =   330
+               Begin StaticText txt_external_no_application
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   50
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_no_application"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   0
+                  TabPanelIndex   =   1
+                  TabStop         =   True
+                  Text            =   "Select an application to use as source for this slides content."
+                  TextAlign       =   1
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   265
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   310
+                  Window          =   0
+                  _mWindow        =   0
+               End
+            End
+            Begin GroupBox grp_external_application_settings
+               AutoDeactivate  =   True
+               Bold            =   ""
+               Caption         =   "Application launcher settings"
+               Enabled         =   True
+               Height          =   280
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "pge_externals"
+               Italic          =   ""
+               Left            =   275
+               LockBottom      =   True
+               LockedInPosition=   False
+               LockLeft        =   True
+               LockRight       =   True
+               LockTop         =   True
+               Scope           =   0
+               TabIndex        =   0
+               TabPanelIndex   =   4
+               TextFont        =   "Arial"
+               TextSize        =   11
+               TextUnit        =   0
+               Top             =   150
+               Underline       =   ""
+               Visible         =   True
+               Width           =   330
+               Begin StaticText lbl_external_application_parameters
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   0
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  Text            =   "Application parameters"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   236
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+                  Window          =   0
+                  _mWindow        =   0
+               End
+               Begin StaticText lbl_external_application_filename
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   1
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  Text            =   "Path to application executable"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   192
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   258
+                  Window          =   0
+                  _mWindow        =   0
+               End
+               Begin SButton btn_external_application_filename
+                  AcceptFocus     =   ""
+                  AcceptTabs      =   ""
+                  AutoDeactivate  =   True
+                  Backdrop        =   ""
+                  DoubleBuffer    =   False
+                  Enabled         =   True
+                  EraseBackground =   True
+                  HasFocus        =   0
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Left            =   575
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   ""
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  StickyBevel     =   0
+                  TabIndex        =   2
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  Top             =   192
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   20
+               End
+               Begin SEditField edt_external_application_filename
+                  AcceptTabs      =   ""
+                  Alignment       =   0
+                  AutoDeactivate  =   True
+                  BackColor       =   &hFFFFFF
+                  Bold            =   ""
+                  Border          =   True
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Format          =   ""
+                  Height          =   22
+                  HelpTag         =   ""
+                  HideSelection   =   True
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LimitText       =   0
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Mask            =   ""
+                  Multiline       =   ""
+                  ReadOnly        =   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollbarVertical=   True
+                  Styled          =   ""
+                  TabIndex        =   3
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  Text            =   ""
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   212
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin SEditField edt_external_application_parameters
+                  AcceptTabs      =   ""
+                  Alignment       =   0
+                  AutoDeactivate  =   True
+                  BackColor       =   &hFFFFFF
+                  Bold            =   ""
+                  Border          =   True
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Format          =   ""
+                  Height          =   22
+                  HelpTag         =   ""
+                  HideSelection   =   True
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LimitText       =   0
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Mask            =   ""
+                  Multiline       =   ""
+                  ReadOnly        =   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollbarVertical=   True
+                  Styled          =   ""
+                  TabIndex        =   4
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  Text            =   ""
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   256
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin CheckBox chk_external_wait_for_application
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Wait for external application to finish before continuing"
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  State           =   0
+                  TabIndex        =   5
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   281
+                  Underline       =   ""
+                  Value           =   False
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin RadioButton rad_external_application_start
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Start an external application"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   ""
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   6
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   173
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin RadioButton rad_external_application_stop
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Stop any currently running launched application"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   ""
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   7
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   311
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+            End
+            Begin GroupBox grp_external_videolan_settings
+               AutoDeactivate  =   True
+               Bold            =   ""
+               Caption         =   "Videolan settings"
+               Enabled         =   True
+               Height          =   280
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "pge_externals"
+               Italic          =   ""
+               Left            =   275
+               LockBottom      =   True
+               LockedInPosition=   False
+               LockLeft        =   True
+               LockRight       =   True
+               LockTop         =   True
+               Scope           =   0
+               TabIndex        =   0
+               TabPanelIndex   =   3
+               TextFont        =   "Arial"
+               TextSize        =   11
+               TextUnit        =   0
+               Top             =   150
+               Underline       =   ""
+               Visible         =   True
+               Width           =   330
+               Begin Listbox lst_external_videolan_preset
+                  AutoDeactivate  =   True
+                  AutoHideScrollbars=   True
+                  Bold            =   ""
+                  Border          =   True
+                  ColumnCount     =   1
+                  ColumnsResizable=   ""
+                  ColumnWidths    =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  DefaultRowHeight=   -1
+                  Enabled         =   True
+                  EnableDrag      =   ""
+                  EnableDragReorder=   ""
+                  GridLinesHorizontal=   0
+                  GridLinesVertical=   0
+                  HasHeading      =   ""
+                  HeadingIndex    =   -1
+                  Height          =   68
+                  HelpTag         =   ""
+                  Hierarchical    =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  InitialValue    =   ""
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  RequiresSelection=   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollBarVertical=   True
+                  SelectionType   =   0
+                  TabIndex        =   1
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   256
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+                  _ScrollWidth    =   -1
+               End
+               Begin RadioButton rad_external_videolan_start
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Launch Videolan"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   ""
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   2
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   173
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin SButton btn_external_videolan_mediafilename
+                  AcceptFocus     =   ""
+                  AcceptTabs      =   ""
+                  AutoDeactivate  =   True
+                  Backdrop        =   ""
+                  DoubleBuffer    =   False
+                  Enabled         =   True
+                  EraseBackground =   True
+                  HasFocus        =   0
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Left            =   575
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   ""
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  StickyBevel     =   0
+                  TabIndex        =   3
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  Top             =   192
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   20
+               End
+               Begin SEditField edt_external_videolan_mediafilename
+                  AcceptTabs      =   ""
+                  Alignment       =   0
+                  AutoDeactivate  =   True
+                  BackColor       =   &hFFFFFF
+                  Bold            =   ""
+                  Border          =   True
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Format          =   ""
+                  Height          =   22
+                  HelpTag         =   ""
+                  HideSelection   =   True
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LimitText       =   0
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Mask            =   ""
+                  Multiline       =   ""
+                  ReadOnly        =   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollbarVertical=   True
+                  Styled          =   ""
+                  TabIndex        =   4
+                  TabPanelIndex   =   3
+                  TabStop         =   False
+                  Text            =   ""
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   212
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin RadioButton rad_external_videolan_stop
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Stop any launched instance of Videolan"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   False
+                  Scope           =   0
+                  TabIndex        =   5
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   405
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin StaticText lbl_external_videolan_mediafilename
+                  Active          =   ""
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   6
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  Text            =   "Path to media file to play"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  Top             =   192
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   258
+                  Window          =   0
+                  _mWindow        =   0
+               End
+               Begin Label lbl_external_videolan_preset
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   False
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   7
+                  TabPanelIndex   =   3
+                  Text            =   "Use the following preset with parameters"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   236
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin Label lbl_external_videolan_manual
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   False
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   8
+                  TabPanelIndex   =   3
+                  Text            =   "Manually adjusted parameters (use %d for display number, %s for mediafile)"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   322
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin SEditField edt_external_videolan_manual
+                  AcceptTabs      =   ""
+                  Alignment       =   0
+                  AutoDeactivate  =   True
+                  BackColor       =   &hFFFFFF
+                  Bold            =   ""
+                  Border          =   True
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Format          =   ""
+                  Height          =   22
+                  HelpTag         =   ""
+                  HideSelection   =   True
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LimitText       =   0
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   False
+                  Mask            =   ""
+                  Multiline       =   ""
+                  ReadOnly        =   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollbarVertical=   True
+                  Styled          =   ""
+                  TabIndex        =   9
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  Text            =   ""
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   342
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin CheckBox chk_external_wait_for_videolan
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Wait for playback to finish before continuing to next slide"
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   False
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   False
+                  Scope           =   0
+                  State           =   0
+                  TabIndex        =   10
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   365
+                  Underline       =   ""
+                  Value           =   False
+                  Visible         =   True
+                  Width           =   290
+               End
+            End
          End
       End
    End
    Begin Separator sep_vertical
       AutoDeactivate  =   True
       Enabled         =   True
-      Height          =   506
+      Height          =   512
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -6337,7 +7994,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   750
    End
    Begin Timer tmr_lookup
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -6346,11 +8002,8 @@ Begin Window MainWindow Implements ScriptureReceiver
       Mode            =   2
       Period          =   1500
       Scope           =   0
-      TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   -18
-      Visible         =   True
       Width           =   32
    End
 End
@@ -6371,8 +8024,10 @@ End
 		      App.RestoreWindow(PresentHelperWindow)
 		      App.SetForeground(PresentHelperWindow)
 		    Else
-		      App.RestoreWindow(PresentWindow)
-		      App.SetForeground(PresentWindow)
+		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		        App.RestoreWindow(PresentWindow)
+		        App.SetForeground(PresentWindow)
+		      End If
 		    End If
 		  End If
 		  '--
@@ -6592,6 +8247,7 @@ End
 		      btn_set_add_slides.Enabled = True
 		      btn_set_add_scripture.Enabled = True
 		      btn_set_add_image.Enabled = True
+		      btn_set_add_external.Enabled = True
 		      btn_set_present.Enabled = True And (Not Status_Presentation)
 		      btn_set_print_songs.Enabled = True
 		      btn_set_print_order.Enabled = True
@@ -6609,6 +8265,7 @@ End
 		      btn_set_add_slides.Enabled = False
 		      btn_set_add_scripture.Enabled = False
 		      btn_set_add_image.Enabled = False
+		      btn_set_add_external.Enabled = False
 		      btn_set_present.Enabled = False
 		      btn_set_print_songs.Enabled = False
 		      btn_set_print_order.Enabled = False
@@ -6770,6 +8427,32 @@ End
 		          can_image_style.SetEnabled False
 		        End If
 		      End If
+		      
+		      'External slide
+		      edt_external_name.Enabled = True
+		      edt_external_presentation_file.Enabled = True
+		      chk_external_loop_presentation.Enabled = True
+		      chk_external_embed_presentation.Enabled = True
+		      rad_external_videolan_start.Enabled = true
+		      lbl_external_videolan_mediafilename.Enabled = rad_external_videolan_start.Value
+		      edt_external_videolan_mediafilename.Enabled = rad_external_videolan_start.Value
+		      lbl_external_videolan_preset.Enabled = rad_external_videolan_start.Value
+		      lst_external_videolan_preset.Enabled = rad_external_videolan_start.Value
+		      lbl_external_videolan_manual.Enabled = rad_external_videolan_start.Value And _
+		      (App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "") = "")
+		      edt_external_videolan_manual.Enabled = rad_external_videolan_start.Value And _
+		      (App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "") = "")
+		      chk_external_wait_for_videolan.Enabled = False 'This feature is not available (yet)
+		      rad_external_videolan_stop.Enabled = True
+		      rad_external_application_start.Enabled = True
+		      lbl_external_application_filename.Enabled = rad_external_application_start.Value
+		      edt_external_application_filename.Enabled = rad_external_application_start.Value
+		      btn_external_application_filename.Enabled = rad_external_application_start.Value
+		      lbl_external_application_parameters.Enabled = rad_external_application_start.Value
+		      edt_external_application_parameters.Enabled = rad_external_application_start.Value
+		      chk_external_wait_for_application.Enabled = rad_external_application_start.Value
+		      rad_external_application_stop.Enabled = True
+		      chk_external_loop.Enabled = True
 		    Else
 		      
 		      edt_slide_name.Enabled = False
@@ -6834,6 +8517,7 @@ End
 		      chk_image_store_as_link.Enabled = False
 		      edt_image_notes.Enabled = False
 		      btn_image_ins_image.Enabled = False
+		      btn_image_imp_image.Enabled = False
 		      btn_image_del_image.Enabled = False
 		      btn_image_move_up.Enabled = False
 		      btn_image_move_down.Enabled = False
@@ -6846,6 +8530,25 @@ End
 		      chk_image_style.Enabled = False
 		      can_image_style.ClearStyleNode
 		      can_image_style.SetEnabled False
+		      
+		      'External slide
+		      edt_external_name.Enabled = False
+		      edt_external_presentation_file.Enabled = False
+		      chk_external_loop_presentation.Enabled = False
+		      chk_external_embed_presentation.Enabled = False
+		      rad_external_videolan_start.Enabled = False
+		      edt_external_videolan_mediafilename.Enabled = False
+		      lst_external_videolan_preset.Enabled = False
+		      edt_external_videolan_manual.Enabled = False
+		      chk_external_wait_for_videolan.Enabled = False
+		      rad_external_videolan_stop.Enabled = False
+		      rad_external_application_start.Enabled = False
+		      btn_external_application_filename.Enabled = False
+		      edt_external_application_filename.Enabled = False
+		      edt_external_application_parameters.Enabled = False
+		      chk_external_wait_for_application.Enabled = False
+		      rad_external_application_stop.Enabled = False
+		      chk_external_loop.Enabled = False
 		      
 		    End If
 		    
@@ -7729,8 +9432,8 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionInSetSave()
-		  Dim i As Integer
-		  Dim str As String
+		  Dim i, j As Integer
+		  Dim line, str As String
 		  Dim xgroup, xslides, xslide As XmlNode
 		  Dim bodies() As String
 		  Dim img As StyleImage
@@ -7791,6 +9494,57 @@ End
 		    
 		    can_image_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
 		    lst_set_items.List(CurrentInSetItem) = edt_image_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    
+		  Case "external"
+		    SmartML.SetValue xgroup, "@name", edt_external_name.Text
+		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
+		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
+		    
+		    If btn_external_presentation.GetStuck() Then
+		      SmartML.SetValue xgroup, "@application", "presentation"
+		      
+		      If rad_external_host_powerpoint.Value Then
+		        SmartML.SetValue xgroup, "@host", "ppt"
+		      ElseIf rad_external_host_pptview.Value Then
+		        SmartML.SetValue xgroup, "@host", "pptview"
+		      ElseIf rad_external_host_impress.Value Then
+		        SmartML.SetValue xgroup, "@host", "impress"
+		      End If
+		      SmartML.SetValue xgroup, "@filename", edt_external_presentation_file.Text
+		      SmartML.SetValueB xgroup, "@loop_presentation", chk_external_loop_presentation.Value
+		      
+		    ElseIf btn_external_videolan.GetStuck() Then
+		      SmartML.SetValue xgroup, "@application", "videolan"
+		      
+		      If rad_external_videolan_start.Value Then
+		        SmartML.SetValue xgroup, "@action", "start"
+		      ElseIf rad_external_videolan_stop.Value Then
+		        SmartML.SetValue xgroup, "@action", "stop"
+		      End If
+		      SmartML.SetValue xgroup, "@filename", edt_external_videolan_mediafilename.Text
+		      
+		      Dim videoLanPresetParams As String
+		      If lst_external_videolan_preset.ListIndex > -1 Then
+		        videoLanPresetParams = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
+		      End If
+		      If videoLanPresetParams = "" Then videoLanPresetParams = edt_external_videolan_manual.Text
+		      SmartML.SetValue xgroup, "@videolan_parameters", videoLanPresetParams
+		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_videolan.Value
+		      
+		    ElseIf btn_external_application.GetStuck() Then
+		      SmartML.SetValue xgroup, "@application", "launch"
+		      
+		      If rad_external_application_start.Value Then
+		        SmartML.SetValue xgroup, "@action", "start"
+		      ElseIf rad_external_application_stop.Value Then
+		        SmartML.SetValue xgroup, "@action", "stop"
+		      End If
+		      SmartML.SetValue xgroup, "@app_filename", edt_external_application_filename.Text
+		      SmartML.SetValue xgroup, "@app_parameters", edt_external_application_parameters.Text
+		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_application.Value
+		    End If
+		    lst_set_items.List(CurrentInSetItem) = edt_external_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
+		    
 		  Case "style"
 		    
 		  Case Else
@@ -8158,10 +9912,13 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetPresent(mode As Integer, ItemNumber As Integer = 0)
+		  Dim i As Integer
+		  Dim lastType As String
 		  'this is our working copy of the set's XML Doc
 		  'not to be confused with any of our other copies
 		  'hope the user has losts of RAM eh!
 		  Dim setDoc As New XmlDocument
+		  Dim slide_groups As XmlNode
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then Return 'User Canceled
@@ -8186,7 +9943,7 @@ End
 		  App.MouseCursor = System.Cursors.Wait
 		  
 		  ImportSongs setDoc, Import
-		  '--
+		  ImportExternals setDoc, Mode
 		  
 		  If SetML.GetSlide(setDoc, 1) = Nil Then
 		    InputBox.Message App.T.Translate("sets_mode/current_set/present/no_slides")
@@ -8199,6 +9956,7 @@ End
 		  
 		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode, ItemNumber
+		  PresentationFactory.ClearPresentationCache()
 		  
 		  '++JRC reset cursor
 		  App.MouseCursor = Nil
@@ -9283,6 +11041,128 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Sub ImportExternals(setDoc As XmlDocument, PresentMode As Integer)
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim songDoc As XmlDocument
+		  Dim Presentation As String
+		  '++JRC
+		  Dim CurStyle As XmlNode
+		  '--
+		  Dim Transition As Integer
+		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim SongPath As String
+		  Dim slidesCount As Integer = 0
+		  
+		  App.MouseCursor = System.Cursors.Wait
+		  
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  
+		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_externals") + "..."
+		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
+		  ProgressWindow.SetProgress(slidesCount)
+		  ProgressWindow.CanCancel False
+		  ProgressWindow.SetStatus( "" )
+		  ProgressWindow.Show()
+		  
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    slidesCount = slidesCount + 1
+		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
+		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
+		      
+		      Select Case SmartML.GetValue(slide_group, "@application")
+		      Case "presentation"
+		        
+		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
+		        Dim presFile As FolderItem = GetFolderItem( presFileName )
+		        Dim presFileOk As Boolean = False
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            presFileOk = True
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case SmartML.GetValue(slide_group, "@host")
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath, presHost )
+		            If Not IsNull( oExtPres ) Then
+		              
+		              If oExtPres.CanControl() Then
+		                Dim img As StyleImage
+		                Dim i As Integer
+		                
+		                Dim presSlides As XmlNode = SmartML.InsertChild( slide_group, "slides", 0 )
+		                For i = 1 to oExtPres.SlideCount()
+		                  
+		                  If Not oExtPres.IsHidden(i) Then
+		                    Dim presSlide As XmlNode = SmartML.InsertChild( presSlides, "slide", presSlides.ChildCount() )
+		                    SmartML.SetValueN( presSlide, "@id", i )
+		                    SmartML.SetValue( presSlide, "description", oExtPres.SlideName(i) )
+		                    
+		                    If (PresentMode <> PresentWindow.MODE_SINGLE_SCREEN) And oExtPres.CanPreview() Then
+		                      img = New StyleImage()
+		                      img.SetImage( oExtPres.PreviewSlide( i, 320, 240 ) )
+		                      SmartML.SetValue(presSlide, "preview", img.GetImageAsString())
+		                    End If
+		                  End If
+		                  
+		                Next
+		              End If
+		              
+		            Else
+		              MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
+		            End If
+		            
+		          Else
+		            MsgBox(App.T.Translate("errors/fileutils/destdoesnotexisterror", presFile.AbsolutePath ))
+		          End If
+		        End If
+		        
+		        If Not presFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", presFileName)
+		        End If
+		        
+		      Case "videolan"
+		        'No action required here,
+		        'a check to validate the presence of media to play might be nice here
+		        
+		      Case "launch"
+		        'No action required here
+		        'As early warning, we will check if the application that is to be started does exist
+		        
+		        Dim appFileName As String = SmartML.GetValue(slide_group, "@app_filename")
+		        Dim appFile As FolderItem = GetFolderItem( appFileName )
+		        Dim appFileOk As Boolean = False
+		        If Not IsNull( appFile ) Then
+		          If appFile.Exists() Then
+		            appFileOk = True
+		          End If
+		        End If
+		        
+		        If Not appFileOk Then
+		          InputBox.Message App.T.Translate("errors/fileutils/destdoesnotexisterror", appFileName)
+		        End If
+		        
+		      End Select
+		    End If
+		    
+		    slide_group  = slide_group.NextSibling
+		    ProgressWindow.SetProgress( slidesCount )
+		  Wend
+		  
+		  ProgressWindow.Close()
+		  App.MouseCursor = Nil
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Sub ImportSongs(setDoc As XmlDocument, AddToLog As Boolean)
 		  Dim slide_group, slide_groups As XmlNode
 		  Dim songDoc As XmlDocument
@@ -9300,10 +11180,19 @@ End
 		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
 		  slide_group = slide_groups.FirstChild
 		  
+		  ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/load_songs") + "..."
+		  ProgressWindow.SetMaximum( slide_groups.ChildCount() )
+		  ProgressWindow.SetProgress(ItemNumber)
+		  ProgressWindow.CanCancel False
+		  ProgressWindow.SetStatus( "" )
+		  ProgressWindow.Show()
+		  
 		  ItemNumber = 1
 		  i = 1
 		  While slide_group <> Nil
 		    If SmartML.GetValue(slide_group, "@type", True) = "song" Then
+		      ProgressWindow.SetStatus( slide_group.GetAttribute("name") )
+		      
 		      Presentation = SmartML.GetValue(slide_group, "@presentation", False)
 		      Transition = SmartML.GetValueN(slide_group, "@transition", False)
 		      
@@ -9397,9 +11286,11 @@ End
 		      ItemNumber = ItemNumber + 1
 		    End If
 		    
+		    ProgressWindow.SetProgress(ItemNumber)
 		  Wend
 		  '++JRC
 		  setDoc.DocumentElement.SetAttribute("NumberOfItems",Str(ItemNumber))
+		  ProgressWindow.Close()
 		  
 		  App.MouseCursor = Nil
 		End Sub
@@ -11806,6 +13697,52 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events btn_set_add_external
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim xgroups, newGroup As XmlNode
+		  
+		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		  If lst_set_items.ListIndex >= 0 Then
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListIndex + 1)
+		  Else
+		    newGroup = SmartML.InsertChild(xgroups, "slide_group", lst_set_items.ListCount)
+		  End If
+		  
+		  SmartML.SetValue newGroup, "@name", App.T.Translate("sets_mode/untitled/@caption")
+		  SmartML.SetValue newGroup, "@type", "external"
+		  
+		  Status_SetChanged = True
+		  ' No need to EnableMenuItems, since the following selection change will call it
+		  
+		  If lst_set_items.ListIndex >= 0 Then
+		    lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/external/@caption")
+		    lst_set_items.ListIndex = lst_set_items.ListIndex + 1
+		  Else
+		    lst_set_items.AddRow SmartML.GetValue(newGroup, "@name", True) + " " + App.T.Translate("sets_mode/items/external/@caption")
+		    lst_set_items.ListIndex = lst_set_items.ListCount - 1
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "sets_mode/new_item/add_external"
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon textbackgroundpic, textbackgroundmask
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events lst_set_items
 	#tag Event
 		Sub Change()
@@ -12005,6 +13942,7 @@ End
 		    edt_image_subtitle.Text = SmartML.GetValue(xgroup, "subtitle")
 		    chk_image_descriptions.Value = SmartML.GetValueB(xgroup, "@descriptions_in_subtitle", False)
 		    edt_image_notes.Text = SmartML.GetValue(xgroup, "notes")
+		    btn_image_imp_image.Enabled = PresentationFactory.PowerPointAvailable() or PresentationFactory.OpenOfficeAvailable()
 		    chk_image_loop.Value = SmartML.GetValueB(xgroup, "@loop", False)
 		    chk_image_print.Value = SmartML.GetValueB(xgroup, "@print", True, True)
 		    pop_image_transition.ListIndex = SmartML.GetValueN(xgroup, "@transition", False)
@@ -12031,6 +13969,122 @@ End
 		    Status_InSetEditable = True
 		    Status_InSetChanged = False
 		    EnableMenuItems
+		    
+		  Case "external"
+		    If pge_contents.Value <> 5 Then
+		      pge_contents.Value = 5
+		      LastSetPane = 5
+		    End If
+		    Status_InSetEditable = False ' keeps the status from Refresh Falseing for every change
+		    
+		    edt_external_name.Text = SmartML.GetValue(xgroup, "@name")
+		    
+		    rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
+		    rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
+		    rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
+		    
+		    lst_external_videolan_preset.DeleteAllRows
+		    For i = 0 To App.VideolanPresetList.Count()-1
+		      lst_external_videolan_preset.AddRow App.VideolanPresetList.Key(i)
+		    Next i
+		    
+		    Select Case SmartML.GetValue(xgroup, "@application")
+		    Case "presentation"
+		      btn_external_presentation.SetStuck( True )
+		      btn_external_videolan.SetStuck( False )
+		      btn_external_application.SetStuck( False )
+		      pge_externals.Value = 1
+		      
+		      Select Case SmartML.GetValue(xgroup, "@host")
+		      Case "ppt"
+		        rad_external_host_powerpoint.Value = True
+		      Case "pptview"
+		        rad_external_host_pptview.Value = True
+		      Case "impress"
+		        rad_external_host_impress.Value = True
+		      End Select
+		      
+		      edt_external_presentation_file.Text = SmartML.GetValue(xgroup, "@filename")
+		      chk_external_loop_presentation.Value = SmartML.GetValueB(xgroup, "@loop_presentation")
+		      
+		    Case "videolan"
+		      btn_external_presentation.SetStuck( False )
+		      btn_external_videolan.SetStuck( True )
+		      btn_external_application.SetStuck( False )
+		      pge_externals.Value = 2
+		      
+		      Select Case SmartML.GetValue(xgroup, "@action")
+		      Case "start"
+		        rad_external_videolan_start.Value = True
+		      Case "stop"
+		        rad_external_videolan_stop.Value = True
+		      End Select
+		      
+		      edt_external_videolan_mediafilename.Text = SmartML.GetValue(xgroup, "@filename")
+		      
+		      Dim videolanParams As String = SmartML.GetValue(xgroup, "@videolan_parameters")
+		      lst_external_videolan_preset.ListIndex = -1
+		      For i = 0 to lst_external_videolan_preset.ListCount()-1
+		        If App.VideolanPresetList.Value(lst_external_videolan_preset.Cell(i, 0)) = videolanParams Then
+		          lst_external_videolan_preset.ListIndex = i
+		        End If
+		      Next i
+		      
+		      If lst_external_videolan_preset.ListIndex = -1 Then
+		        lst_external_videolan_preset.ListIndex = lst_external_videolan_preset.ListCount()-1
+		      End If
+		      edt_external_videolan_manual.Text = videolanParams
+		      chk_external_wait_for_videolan.Value = SmartML.GetValueB(xgroup, "@wait_to_finish")
+		      
+		    Case "launch"
+		      btn_external_presentation.SetStuck( False )
+		      btn_external_videolan.SetStuck( False )
+		      btn_external_application.SetStuck( True )
+		      pge_externals.Value = 3
+		      
+		      Select Case SmartML.GetValue(xgroup, "@action")
+		      Case "start"
+		        rad_external_application_start.Value = True
+		      Case "stop"
+		        rad_external_application_stop.Value = True
+		      End Select
+		      edt_external_application_filename.Text = SmartML.GetValue(xgroup, "@app_filename")
+		      edt_external_application_parameters.Text = SmartML.GetValue(xgroup, "@app_parameters")
+		      chk_external_wait_for_application.Value = SmartML.GetValueB(xgroup, "@wait_to_finish")
+		      
+		    Else
+		      'Clear fields for all externals
+		      btn_external_presentation.SetStuck( False )
+		      btn_external_videolan.SetStuck( False )
+		      btn_external_application.SetStuck( False )
+		      pge_externals.Value = 0
+		      
+		      rad_external_host_powerpoint.Value = False
+		      rad_external_host_pptview.Value = False
+		      rad_external_host_impress.Value = False
+		      
+		      rad_external_videolan_start.Value = False
+		      rad_external_videolan_stop.Value = False
+		      edt_external_videolan_mediafilename.Text = ""
+		      lst_external_videolan_preset.ListIndex = -1
+		      edt_external_videolan_manual.Text = ""
+		      chk_external_wait_for_application.Value = True
+		      
+		      edt_external_presentation_file.Text = ""
+		      chk_external_loop_presentation.Value = False
+		      edt_external_application_filename.Text = ""
+		      edt_external_application_parameters.Text = ""
+		      chk_external_wait_for_application.Value = True
+		      
+		    End Select
+		    edt_external_notes.Text = SmartML.GetValue(xgroup, "notes")
+		    chk_external_loop.Value = SmartML.GetValueB(xgroup, "@loop", False)
+		    
+		    Status_InSetOpen = True
+		    Status_InSetEditable = True
+		    Status_InSetChanged = False
+		    EnableMenuItems
+		    
 		  Case Else
 		    Status_InSetOpen = True
 		    Status_InSetEditable = False
@@ -14201,6 +16255,594 @@ End
 		      Status_InSetChanged = True
 		      EnableMenuItems
 		    End If
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_image_imp_image
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  Dim f As FolderItem
+		  
+		  If PresentationFactory.PowerPointAvailable() And PresentationFactory.OpenOfficeAvailable() Then
+		    dlg.Filter = PresentationFileTypes.All
+		  ElseIf PresentationFactory.PowerPointAvailable() Then
+		    dlg.Filter = PresentationFileTypes.PPTFiles
+		  ElseIf PresentationFactory.OpenOfficeAvailable() Then
+		    dlg.Filter = PresentationFileTypes.ODPFiles + PresentationFileTypes.PPTFiles
+		  Else
+		    MsgBox(App.T.Translate("errors/presentations/nohost"))
+		    Return
+		  End If
+		  
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("questions/import_presentation/@caption")
+		  dlg.PromptText = App.T.Translate("questions/import_presentation")
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    
+		    Self.MouseCursor = System.Cursors.Wait
+		    Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( f.AbsolutePath, PresentationHost.Automatic, False )
+		    If Not IsNull( oExtPres ) Then
+		      
+		      If oExtPres.CanPreview() Then
+		        
+		        Dim img As StyleImage
+		        Dim i, presentScreen, width, height As Integer
+		        
+		        presentScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		        If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
+		        width = Screen(presentScreen).Width
+		        height = Screen(presentScreen).Height
+		        
+		        For i = 1 to oExtPres.SlideCount()
+		          
+		          img = New StyleImage()
+		          img.SetImage( oExtPres.PreviewSlide( i, width, height ) )
+		          
+		          lst_image_images.AddImage( img )
+		          lst_image_images.Cell( lst_image_images.LastIndex(), 1 ) = oExtPres.SlideName( i )
+		          
+		          Status_InSetChanged = True
+		        Next
+		        
+		        EnableMenuItems
+		        
+		      Else
+		        MsgBox(App.T.Translate("errors/presentations/unsupported_feature", oExtPres.HostName()))
+		      End If
+		      
+		    Else
+		      MsgBox(App.T.Translate("errors/presentations/load_failed", f.AbsolutePath ))
+		    End If
+		    Self.MouseCursor = System.Cursors.StandardPointer
+		    
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "image_slide/imp_image"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon powerpoint_pic, powerpoint_mask
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_loop
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/loop"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_name
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/name"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_notes
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  If Me.Enabled And IsContextualClick Then
+		    ActiveEditField = Me
+		    PopupClicked = False
+		    mnu_clipboard.Open
+		    Return PopupClicked
+		  End If
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "slide_editor/notes"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_external_presentation
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  btn_external_presentation.SetStuck( Not btn_external_presentation.GetStuck() )
+		  btn_external_videolan.SetStuck( False )
+		  btn_external_application.SetStuck( False )
+		  
+		  If btn_external_presentation.GetStuck() Then
+		    If pge_externals.Value <> 1 Then
+		      pge_externals.Value = 1
+		    End If
+		  Else
+		    If pge_externals.Value <> 0 Then
+		      pge_externals.Value = 0
+		    End If
+		  End If
+		  
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "external_slide/powerpoint"
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon powerpoint_pic, powerpoint_mask
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_external_application
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon whitebackgroundpic, whitebackgroundmask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  btn_external_presentation.SetStuck( False )
+		  btn_external_videolan.SetStuck( False )
+		  btn_external_application.SetStuck( Not btn_external_application.GetStuck() )
+		  
+		  If btn_external_application.GetStuck() Then
+		    If pge_externals.Value <> 3 Then
+		      pge_externals.Value = 3
+		    End If
+		  Else
+		    If pge_externals.Value <> 0 Then
+		      pge_externals.Value = 0
+		    End If
+		  End If
+		  
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "external_slide/application"
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_external_videolan
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Me.SetIcon videolan_pic, videolan_mask
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  btn_external_presentation.SetStuck( False )
+		  btn_external_videolan.SetStuck( Not btn_external_videolan.GetStuck() )
+		  btn_external_application.SetStuck( False )
+		  
+		  If btn_external_videolan.GetStuck() Then
+		    If pge_externals.Value <> 2 Then
+		      pge_externals.Value = 2
+		    End If
+		  Else
+		    If pge_externals.Value <> 0 Then
+		      pge_externals.Value = 0
+		    End If
+		  End If
+		  
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "external_slide/videolan"
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_loop_presentation
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_external_presentation_file
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileopenpic, fileopenmask
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "external_slide/presentation_settings/presentation_file"
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  Dim f As FolderItem
+		  
+		  If PresentationFactory.PowerPointAvailable() And PresentationFactory.OpenOfficeAvailable() Then
+		    dlg.Filter = PresentationFileTypes.All
+		  ElseIf PresentationFactory.PowerPointAvailable() Or PresentationFactory.PPTViewAvailable() Then
+		    dlg.Filter = PresentationFileTypes.PPTFiles
+		  ElseIf PresentationFactory.OpenOfficeAvailable() Then
+		    dlg.Filter = PresentationFileTypes.ODPFiles + PresentationFileTypes.PPTFiles
+		  Else
+		    MsgBox(App.T.Translate("errors/presentations/nohost"))
+		    Return
+		  End If
+		  
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("external_slide/presentation_file/@caption")
+		  dlg.PromptText = App.T.Translate("external_slide/presentation_file")
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_external_presentation_file.Text = f.AbsolutePath()
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_host_impress
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_host_pptview
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_host_powerpoint
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_presentation_file
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_embed_presentation
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_external_application_filename
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileopenpic, fileopenmask
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "external_slide/presentation_settings/presentation_file"
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  Dim f As FolderItem
+		  
+		  dlg.Filter = "*.*"
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("external_slide/application_settings/application_filename/@caption")
+		  dlg.PromptText = App.T.Translate("external_slide/application_settings/application_filename")
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_external_application_filename.Text = f.AbsolutePath()
+		    
+		    If Status_InSetEditable Then
+		      Status_InSetChanged = True
+		      EnableMenuItems
+		    End If
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_application_filename
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_application_parameters
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_wait_for_application
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_application_start
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_application_stop
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events lst_external_videolan_preset
+	#tag Event
+		Sub Change()
+		  If Status_InSetEditable Then
+		    edt_external_videolan_manual.Text = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
+		    
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_videolan_start
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_external_videolan_mediafilename
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileopenpic, fileopenmask
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "external_slide/presentation_settings/presentation_file"
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  Dim f As FolderItem
+		  
+		  dlg.Filter = "*.*"
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("external_slide/videolan_settings/videolan_mediafilename/@caption")
+		  dlg.PromptText = App.T.Translate("external_slide/videolan_settings/videolan_mediafilename")
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_external_videolan_mediafilename.Text = f.AbsolutePath()
+		    
+		    If Status_InSetEditable Then
+		      Status_InSetChanged = True
+		      EnableMenuItems
+		    End If
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_videolan_mediafilename
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_videolan_stop
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_videolan_manual
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_wait_for_videolan
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
 		  End If
 		End Sub
 	#tag EndEvent

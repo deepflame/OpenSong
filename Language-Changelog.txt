@@ -1,3 +1,16 @@
+load_settings/videolan_preset
+sets_mode/new_item/add_external
+slide_editor/slides (modified)
+progress_status/load_songs
+progress_status/load_externals
+errors/presentations
+general_settings/applications
+general_settings/general (modified)
+questions/import_presentation
+image_slide/imp_image
+external_slide/*
+videolan_preset_list/*
+
 -= Version 1.7 =-
 presentation_settings/settings (modified, added child nodes)
 presentation_settings/errors/snapshot_file

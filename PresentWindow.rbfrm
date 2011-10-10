@@ -32,11 +32,11 @@ Begin Window PresentWindow Implements ScriptureReceiver
       DoubleBuffer    =   True
       Enabled         =   True
       EraseBackground =   True
-      Height          =   302
+      Height          =   300
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   -1
+      Left            =   0
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -46,42 +46,34 @@ Begin Window PresentWindow Implements ScriptureReceiver
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      Top             =   -1
+      Top             =   0
       UseFocusRing    =   False
       Visible         =   True
-      Width           =   302
+      Width           =   300
       Begin Timer timerAdvance
-         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
-         Left            =   248
+         Left            =   249
          LockedInPosition=   False
          Mode            =   0
          Period          =   10000
          Scope           =   0
-         TabIndex        =   0
          TabPanelIndex   =   0
-         TabStop         =   True
-         Top             =   248
-         Visible         =   True
+         Top             =   249
          Width           =   32
       End
       Begin Timer timerTransition
-         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
-         Left            =   204
+         Left            =   205
          LockedInPosition=   False
          Mode            =   0
          Period          =   125
          Scope           =   0
-         TabIndex        =   1
          TabPanelIndex   =   0
-         TabStop         =   True
-         Top             =   248
-         Visible         =   True
+         Top             =   249
          Width           =   32
       End
    End
@@ -92,6 +84,7 @@ End
 	#tag Event
 		Sub Activate()
 		  App.DebugWriter.Write "PresentWindow.Activate: Enter"
+		  
 		  If Globals.Status_Presentation Then
 		    If HelperActive Then
 		      If PresentHelperWindow.IsCollapsed Then
@@ -100,15 +93,18 @@ End
 		        PresentHelperWindow.SetFocus
 		      End If
 		    Else
-		      If PresentWindow.IsCollapsed Then
-		        App.RestoreWindow(PresentWindow)
+		      If Not SetML.IsExternal(XCurrentSlide) Then
+		        If PresentWindow.IsCollapsed Then
+		          App.RestoreWindow(PresentWindow)
+		        End If
+		        App.SetForeground(PresentWindow)
+		        PresentWindow.SetFocus
 		      End If
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
 		    End If
 		    Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
 		    Me.SetFocus
 		  End If
+		  
 		  App.DebugWriter.Write "PresentWindow.Activate: Exit"
 		End Sub
 	#tag EndEvent
@@ -118,11 +114,15 @@ End
 		  'MainWindow.Status_Presentation = False
 		  'MainWindow.Show
 		  'MainWindow.SetFocus
+		  
+		  Call ResetPaint(Nil) 'This will cleanup external slide stuff
+		  
 		  App.MouseCursor = Nil
 		  MainWindow.Status_Presentation = False
 		  Globals.Status_Presentation = False
 		  If HelperActive Then PresentHelperWindow.Close
 		  timerAdvance.Enabled = False
+		  
 		  '++JRC Prevent resizing MainWindow
 		  'MainWindow.Show
 		  #If Not TargetMacOS
@@ -220,6 +220,9 @@ End
 		      'This could fail if libgtk cannot be loaded
 		    End Try
 		  #EndIf
+		  
+		  m_videolanController = New VideolanController 'Initialise shell control for videolan
+		  m_AppLaunchShell = New Shell 'Initialise shell control for external applications
 		  
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
@@ -1201,6 +1204,18 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function IsClosingExternal() As Boolean
+		  Return self._IsClosingExternal
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsSlidechangeExternal() As Boolean
+		  Return self._IsSlidechangeExternal
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function KeyDownX(Key As String) As Boolean
 		  '
 		  ' This routine was originally where all the code to decode a keystroke was kept
@@ -1701,88 +1716,269 @@ End
 		Sub ResetPaint(slide As XmlNode)
 		  Dim xStyle As XmlNode
 		  Dim w, h As Integer
+		  Dim advanceNext As Boolean = False
 		  
-		  '++JRC
-		  SongSetDisplayed(slide)
-		  
-		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Enter", 5)
-		  ' Remember the current (old) slide for the transition
-		  LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
-		  'LastPicture = LastPicture.CXG_Composite(CurrentPicture, 1.0, 0, 0)
-		  
-		  ' === Draw the slide to the PreviewPicture ===
-		  
-		  Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::PreviewPicture"
-		  ' -- Old way -- (value not passed)
-		  'xStyle = SetML.GetStyle(XCurrentSlide)
-		  'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
-		  ' -- New way --
-		  xStyle = SetML.GetStyle(slide)
-		  SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
-		  curslideTransition = SetML.GetSlideTransition(slide)
-		  
-		  Profiler.EndProfilerEntry'
-		  
-		  ' === Setup CurrentPicture based on Mode ===
-		  Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::CurrentPicture"
-		  If Mode = "B" Then
-		    CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
-		    CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
-		  ElseIf Mode = "W" Then
-		    CurrentPicture.Graphics.ForeColor = RGB(255,255,255)
-		    CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
-		  ElseIf Mode = "H" Or Mode = "L" Then
-		    SetML.DrawSlide CurrentPicture.Graphics, Nil, xStyle
+		  If SetML.IsExternal(PreviousSlide) Then
+		    'Check if we need to close the running external.
+		    Dim bClose As Boolean = False
+		    Dim prevAppl As string = SmartML.GetValue(PreviousSlide, "@application", False)
+		    Dim prevHost As string = SmartML.GetValue(PreviousSlide, "@host", False)
+		    Dim prevFile As String = SmartML.GetValue(PreviousSlide, "@filename", False)
 		    
-		    If Mode = "L" Then
-		      If LogoCache <> Nil Then
-		        If LogoCache.Height > CurrentPicture.Height Then
-		          ' Logos only shrink if needed; they will not stretch out
-		          h = CurrentPicture.Height
-		          w = (CurrentPicture.Height/LogoCache.Height) * LogoCache.Width
-		        Else
-		          h = LogoCache.Height
-		          w = LogoCache.Width
-		        End If
-		        CurrentPicture.Graphics.DrawPicture LogoCache, (CurrentPicture.Width-w)/2, (CurrentPicture.Height-h)/2, w, h, 0, 0, LogoCache.Width, LogoCache.Height
+		    If Not SetML.IsExternal(slide) Then
+		      bClose = True
+		    Else
+		      'See if the external in the new slide is equal to the current slide.
+		      If SmartML.GetValue(slide.Parent.Parent, "@application", False) <> prevAppl Or _
+		        SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
+		        SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile Then
+		        bClose = True
 		      End If
 		    End If
-		  ElseIf Mode = "F" Then
-		    ' Freeze: no changes to CurrentPicture
-		  Else ' Probably normal mode
-		    CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
-		    'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
 		    
-		    If m_Snapshots Then
-		      ExportSnapshot PreviewPicture, slide, xStyle
+		    If bClose Then
+		      self._IsClosingExternal = True
+		      
+		      Select Case prevAppl
+		      Case "presentation"
+		        App.RestoreWindow(PresentWindow)
+		        
+		        Dim presFile As FolderItem = GetFolderItem( prevFile )
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case prevHost
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
+		            If Not IsNull( oExtPres ) Then
+		              Call oExtPres.EndShow()
+		            End If
+		          End If
+		        End If
+		        
+		      Case "videolan"
+		        m_VideolanController.Stop()
+		        
+		      Case "launch"
+		        If IsNull(slide) And m_AppLaunchShell.IsRunning Then
+		          'Close any running external application instance.
+		          m_AppLaunchShell.Close()
+		        End If
+		        
+		      End Select
+		      
+		      self._IsClosingExternal = False
 		    End If
 		  End If
-		  Profiler.EndProfilerEntry
 		  
-		  ' === Add the Alert ===
-		  If Len(AlertText) > 0 Then
-		    DrawAlert CurrentPicture.Graphics, AlertText
-		    DrawAlert PreviewPicture.Graphics, AlertText
-		  End If
-		  ' === Check for auto-advance ===
-		  If SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) > 0 Then
-		    timerAdvance.Mode = 1
-		    timerAdvance.Period = SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) * 1000
-		    timerAdvance.Reset
-		    timerAdvance.Enabled = True
+		  If IsNull( slide ) Then Return
+		  
+		  If SetML.IsExternal(slide) Then
+		    _IsSlidechangeExternal = True
+		    
+		    If mode = "N" then
+		      Select Case SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		      Case "presentation"
+		        
+		        Dim presFile As FolderItem = GetFolderItem( SmartML.GetValue(slide.Parent.Parent, "@filename", False) )
+		        If Not IsNull(presFile) Then
+		          If presFile.Exists() Then
+		            
+		            Dim presHost As PresentationHost = PresentationHost.Automatic
+		            Select Case SmartML.GetValue(slide.Parent.Parent, "@host", False)
+		            Case "ppt"
+		              presHost = PresentationHost.PowerPoint
+		            Case "pptview"
+		              presHost = PresentationHost.PowerPointViewer
+		            Case "impress"
+		              presHost = PresentationHost.OpenOffice
+		            End Select
+		            
+		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
+		            If Not IsNull( oExtPres ) Then
+		              
+		              Dim presIndex As Integer = SmartML.GetValueN(slide, "@id", False)
+		              If presIndex <> oExtPres.CurrentSlide() Then
+		                If oExtPres.IsShowing() Then
+		                  Call oExtPres.GotoSlide( presIndex )
+		                Else
+		                  Dim loopPresentation As Boolean = SmartML.GetValueB(slide.Parent.Parent, "@loop_presentation", False)
+		                  Call oExtPres.StartShow( loopPresentation )
+		                  
+		                  'Starting a presentation from a different slide (index) than the default (first), breaks the slide preview synchronisation
+		                  'Thefore, the index is set directly after startin, in case it is different from the first slide
+		                  'The slideindex of the first slide does not need to be 1 as a first slide can be hidden.
+		                  'We thus cannot use the index, but must use the slide structure.
+		                  If Not IsNull( slide.PreviousSibling ) Then
+		                    Call oExtPres.GotoSlide( presIndex )
+		                  End If
+		                End If
+		              End If
+		              
+		            End If
+		          End If
+		        End If
+		        
+		        Dim sPreviewImage As String = SmartML.GetValue(slide, "preview", False)
+		        If sPreviewImage <> "" Then
+		          Dim img As StyleImage = New StyleImage()
+		          If img.SetImageAsString( sPreviewImage ) Then
+		            Dim slidePreview As Picture = img.GetImage()
+		            PreviewPicture.Graphics.DrawPicture slidePreview, 0, 0, PreviewPicture.Width, PreviewPicture.Height, 0, 0, slidePreview.Width, slidePreview.Height
+		          End If
+		        End If
+		        
+		        App.MinimizeWindow(PresentWindow)
+		        
+		      Case "videolan"
+		        m_VideolanController.Stop()
+		        
+		        If SmartML.GetValue(slide.Parent.Parent, "@action") = "start" Then
+		          Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@videolan_parameters")
+		          params = ReplaceAllB(params, "%d", Str(SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control")))
+		          If InStr(params, "%s") = 0 Then
+		            params = params + " """ + SmartML.GetValue(slide.Parent.Parent, "@filename") + """"
+		          Else
+		            params = ReplaceAllB(params, "%s", """" + SmartML.GetValue(slide.Parent.Parent, "@filename") + """")
+		          End If
+		          
+		          Call m_VideolanController.Start(params)
+		        Else
+		          'Case @action = stop is covered by generic application close above
+		        End If
+		        
+		        advanceNext = True
+		        
+		      Case "launch"
+		        Dim launchAppLocation As FolderItem = GetFolderItem(SmartML.GetValue(slide.Parent.Parent, "@app_filename", False))
+		        Dim cmd As String = launchAppLocation.AbsolutePath()
+		        Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@app_parameters", False)
+		        
+		        If m_AppLaunchShell.IsRunning Then
+		          'Close any running external application instance.
+		          m_AppLaunchShell.Close()
+		        End If
+		        
+		        If SmartML.GetValue(slide.Parent.Parent, "@action") = "start" Then
+		          If SmartML.GetValueB(slide.Parent.Parent, "@wait_to_finish", False) = True Then
+		            m_AppLaunchShell.Mode = 0 'Synchronous
+		          Else
+		            m_AppLaunchShell.Mode = 1 'Asynchronous
+		          End If
+		          m_AppLaunchShell.Execute( """" + cmd + """" + " " + params )
+		        Else
+		          'Case @action = stop is covered by generic application close above
+		        End If
+		        
+		        advanceNext = True
+		      End Select
+		      
+		    End If
+		    
+		    _IsSlidechangeExternal = False
 		  Else
-		    timerAdvance.Enabled = False
+		    
+		    If slideType = "song" Then
+		      '++JRC
+		      SongSetDisplayed(slide)
+		    End If
+		    
+		    'App.DebugWriter.Write("PresentWindow.ResetPaint: Enter", 5)
+		    ' Remember the current (old) slide for the transition
+		    LastPicture.Graphics.DrawPicture CurrentPicture, 0, 0
+		    'LastPicture = LastPicture.CXG_Composite(CurrentPicture, 1.0, 0, 0)
+		    
+		    ' === Draw the slide to the PreviewPicture ===
+		    
+		    Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::PreviewPicture"
+		    ' -- Old way -- (value not passed)
+		    'xStyle = SetML.GetStyle(XCurrentSlide)
+		    'SetML.DrawSlide PreviewPicture.Graphics, XCurrentSlide, xStyle
+		    ' -- New way --
+		    xStyle = SetML.GetStyle(slide)
+		    SetML.DrawSlide PreviewPicture.Graphics, slide, xStyle
+		    curslideTransition = SetML.GetSlideTransition(slide)
+		    
+		    Profiler.EndProfilerEntry'
+		    
+		    ' === Setup CurrentPicture based on Mode ===
+		    Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::CurrentPicture"
+		    If Mode = "B" Then
+		      CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		      CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		    ElseIf Mode = "W" Then
+		      CurrentPicture.Graphics.ForeColor = RGB(255,255,255)
+		      CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		    ElseIf Mode = "H" Or Mode = "L" Then
+		      SetML.DrawSlide CurrentPicture.Graphics, Nil, xStyle
+		      
+		      If Mode = "L" Then
+		        If LogoCache <> Nil Then
+		          If LogoCache.Height > CurrentPicture.Height Then
+		            ' Logos only shrink if needed; they will not stretch out
+		            h = CurrentPicture.Height
+		            w = (CurrentPicture.Height/LogoCache.Height) * LogoCache.Width
+		          Else
+		            h = LogoCache.Height
+		            w = LogoCache.Width
+		          End If
+		          CurrentPicture.Graphics.DrawPicture LogoCache, (CurrentPicture.Width-w)/2, (CurrentPicture.Height-h)/2, w, h, 0, 0, LogoCache.Width, LogoCache.Height
+		        End If
+		      End If
+		    ElseIf Mode = "F" Then
+		      ' Freeze: no changes to CurrentPicture
+		    Else ' Probably normal mode
+		      CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
+		      'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
+		      If m_Snapshots Then
+		        ExportSnapshot PreviewPicture, slide, xStyle
+		      End If
+		    End If
+		    Profiler.EndProfilerEntry
+		    
+		    ' === Add the Alert ===
+		    If Len(AlertText) > 0 Then
+		      DrawAlert CurrentPicture.Graphics, AlertText
+		      DrawAlert PreviewPicture.Graphics, AlertText
+		    End If
+		    ' === Check for auto-advance ===
+		    If SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) > 0 Then
+		      timerAdvance.Mode = 1
+		      timerAdvance.Period = SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) * 1000
+		      timerAdvance.Reset
+		      timerAdvance.Enabled = True
+		    Else
+		      timerAdvance.Enabled = False
+		    End If
+		    
+		    ' === Start the transition ===
+		    If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
+		      TransitionFrame = 1
+		      timerTransition.Mode = 2
+		      timerTransition.Reset
+		      timerTransition.Enabled = True
+		    End If
+		    cnvSlide.Refresh False
 		  End If
 		  
-		  ' === Start the transition ===
-		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
-		    TransitionFrame = 1
-		    timerTransition.Mode = 2
-		    timerTransition.Reset
-		    timerTransition.Enabled = True
-		  End If
-		  cnvSlide.Refresh False
+		  'Keep a copy of this slide to be able do a cleanup when a next slide is shown
+		  'A 'next' slide is always set in XCurrentSlide before this method is called and can therefore not be used for this purpose
+		  PreviousSlide = slide.Parent.Parent.Clone( False )
+		  PreviousSlide.AppendChild( slide.Parent.Clone( False ) ).AppendChild( slide.Clone( False ) )
+		  
 		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Exit", 5)
+		  
+		  If advanceNext Then
+		    Call PerformAction(ACTION_NEXT_SLIDE)
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -2130,8 +2326,16 @@ End
 		Mode As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private m_AppLaunchShell As Shell = Nil
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected m_Snapshots As Boolean = False
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_VideolanController As VideolanController = Nil
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -2162,6 +2366,10 @@ End
 		PreviewPicture As Picture
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private PreviousSlide As XmlNode = Nil
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected savedMode As String
 	#tag EndProperty
@@ -2180,6 +2388,14 @@ End
 
 	#tag Property, Flags = &h0
 		XCurrentSlide As XmlNode
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private _IsClosingExternal As Boolean = False
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private _IsSlidechangeExternal As Boolean = False
 	#tag EndProperty
 
 
@@ -2324,14 +2540,12 @@ End
 #tag Events timerAdvance
 	#tag Event
 		Sub Action()
-		  Dim dontcare As Boolean
-		  
 		  If XCurrentSlide.NextSibling = Nil And SmartML.GetValueB(XCurrentSlide.Parent.Parent, "@loop") Then
-		    dontcare = PerformAction(ACTION_FIRST_SLIDE_OF_SECTION)
+		    Call PerformAction(ACTION_FIRST_SLIDE_OF_SECTION)
 		  Else
 		    'TODO Should probably check if next slide is a new set item
 		    'and stop auto-advancing if it is
-		    dontcare = PerformAction(ACTION_NEXT_SLIDE)
+		    Call PerformAction(ACTION_NEXT_SLIDE)
 		  End If
 		End Sub
 	#tag EndEvent

@@ -16,9 +16,11 @@ Inherits Application
 		      App.SetForeground(PresentHelperWindow)
 		      PresentHelperWindow.SetFocus
 		    Else
-		      App.RestoreWindow(PresentWindow)
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
+		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		        App.RestoreWindow(PresentWindow)
+		        App.SetForeground(PresentWindow)
+		        PresentWindow.SetFocus()
+		      End If
 		    End If
 		  End If
 		  
@@ -125,6 +127,8 @@ Inherits Application
 		      If temp = "" Then Quit // User cancelled
 		    End If
 		  End If
+		  
+		  VideolanPresetList = New Dictionary
 		  
 		  T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
 		  If Not T.IsLoaded Then
@@ -1154,6 +1158,17 @@ Inherits Application
 		    xnode = xnode.NextSibling
 		  Wend
 		  
+		  ' --- BUILD VIDEOLAN PRESET LIST ---
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/videolan_preset") + " ..."
+		  xnode = T.GetNode("videolan_preset_list").FirstChild
+		  VideolanPresetList.Clear()
+		  While xnode <> Nil
+		    If xnode.Name = "preset" Then
+		      VideolanPresetList.Value(SmartML.GetValue(xnode, "@name")) = SmartML.GetValue(xnode, "@parameters")
+		    End If
+		    xnode = xnode.NextSibling
+		  Wend
+		  
 		End Sub
 	#tag EndMethod
 
@@ -1461,6 +1476,10 @@ Inherits Application
 
 	#tag Property, Flags = &h0
 		TranslationFonts(0) As FontFace
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		VideolanPresetList As Dictionary = Nil
 	#tag EndProperty
 
 

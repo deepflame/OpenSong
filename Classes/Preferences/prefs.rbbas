@@ -16,6 +16,9 @@ Protected Module prefs
 	#tag Constant, Name = kLyricsReplaceWithSpace, Type = String, Dynamic = False, Default = \"songs/lyrics/whitespace", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = kPPTViewLocation, Type = String, Dynamic = False, Default = \"pptview_location", Scope = Protected
+	#tag EndConstant
+
 	#tag Constant, Name = kSetsLastExportFolder, Type = String, Dynamic = False, Default = \"sets/last_export", Scope = Protected
 	#tag EndConstant
 
@@ -29,6 +32,9 @@ Protected Module prefs
 	#tag EndConstant
 
 	#tag Constant, Name = kUseSheetDialogs, Type = String, Dynamic = False, Default = \"dialogs/@usesheets", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kVideolanLocation, Type = String, Dynamic = False, Default = \"videolan_location", Scope = Protected
 	#tag EndConstant
 
 

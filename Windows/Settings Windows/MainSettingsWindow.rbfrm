@@ -26,16 +26,15 @@ Begin Window MainSettingsWindow
    Width           =   619
    Begin PushButton btn_ok
       AutoDeactivate  =   True
-      BehaviorIndex   =   0
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
-      ControlOrder    =   0
       Default         =   True
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   401
@@ -50,6 +49,7 @@ Begin Window MainSettingsWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   449
       Underline       =   False
       Visible         =   True
@@ -57,16 +57,15 @@ Begin Window MainSettingsWindow
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
-      ControlOrder    =   1
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   509
@@ -81,6 +80,7 @@ Begin Window MainSettingsWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   449
       Underline       =   False
       Visible         =   True
@@ -88,14 +88,11 @@ Begin Window MainSettingsWindow
    End
    Begin TabPanel tab_general_general
       AutoDeactivate  =   True
-      BehaviorIndex   =   2
       Bold            =   ""
-      ControlOrder    =   2
       Enabled         =   True
-      Facing          =   0
       Height          =   430
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   20
@@ -107,27 +104,26 @@ Begin Window MainSettingsWindow
       Panels          =   ""
       Scope           =   0
       SmallTabs       =   ""
-      TabDefinition   =   "Basic\rSpecial"
+      TabDefinition   =   "Basic configuration\rFile locations\rSpecial"
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   7
       Underline       =   ""
-      Value           =   1
+      Value           =   0
       Visible         =   True
       Width           =   579
       Begin GroupBox grp_settings_general
          AutoDeactivate  =   True
-         BehaviorIndex   =   3
          Bold            =   False
          Caption         =   "General"
-         ControlOrder    =   3
          Enabled         =   True
          Height          =   130
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_general_general"
          Italic          =   False
          Left            =   35
@@ -139,24 +135,23 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
          Top             =   44
          Underline       =   False
          Visible         =   True
          Width           =   250
          Begin StaticText lbl_general_ccli
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   4
             Bold            =   False
-            ControlOrder    =   4
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
             Italic          =   False
             Left            =   51
@@ -167,35 +162,38 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Church CCLI License"
             TextAlign       =   0
             TextColor       =   0
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             Top             =   58
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   215
+            Window          =   0
+            _mWindow        =   0
          End
          Begin TextField edt_general_ccli
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
             BackColor       =   16777215
-            BehaviorIndex   =   5
             Bold            =   False
             Border          =   True
-            ControlOrder    =   5
+            CueText         =   ""
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
             Italic          =   False
             Left            =   51
@@ -206,13 +204,9 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
-            Multiline       =   False
             Password        =   False
             ReadOnly        =   False
             Scope           =   0
-            ScrollbarHorizontal=   False
-            ScrollbarVertical=   True
-            Styled          =   False
             TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
@@ -220,6 +214,7 @@ Begin Window MainSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   73
             Underline       =   False
             UseFocusRing    =   True
@@ -228,16 +223,14 @@ Begin Window MainSettingsWindow
          End
          Begin CheckBox chk_general_version_check
             AutoDeactivate  =   True
-            BehaviorIndex   =   6
             Bold            =   False
             Caption         =   "Check for newer versions on startup"
-            ControlOrder    =   6
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
             Italic          =   False
             Left            =   50
@@ -247,11 +240,13 @@ Begin Window MainSettingsWindow
             LockRight       =   False
             LockTop         =   False
             Scope           =   0
+            State           =   0
             TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
             Top             =   102
             Underline       =   False
             Value           =   False
@@ -259,16 +254,15 @@ Begin Window MainSettingsWindow
             Width           =   220
          End
          Begin StaticText lbl_general_language
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   7
             Bold            =   False
-            ControlOrder    =   7
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
             Italic          =   False
             Left            =   50
@@ -279,30 +273,32 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   "Language:"
             TextAlign       =   0
             TextColor       =   0
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             Top             =   128
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   150
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PopupMenu pop_general_language
             AutoDeactivate  =   True
-            BehaviorIndex   =   8
             Bold            =   False
-            ControlOrder    =   8
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_general"
             InitialValue    =   ""
             Italic          =   False
@@ -319,6 +315,7 @@ Begin Window MainSettingsWindow
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   145
             Underline       =   False
             Visible         =   True
@@ -327,14 +324,12 @@ Begin Window MainSettingsWindow
       End
       Begin GroupBox grp_settings_user_defined
          AutoDeactivate  =   True
-         BehaviorIndex   =   9
          Bold            =   False
          Caption         =   "User Defined Field Names"
-         ControlOrder    =   9
          Enabled         =   True
          Height          =   178
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_general_general"
          Italic          =   False
          Left            =   35
@@ -346,24 +341,23 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
          Top             =   230
          Underline       =   False
          Visible         =   True
          Width           =   250
          Begin StaticText lbl_define_user1
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   10
             Bold            =   False
-            ControlOrder    =   10
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
             Italic          =   False
             Left            =   50
@@ -374,6 +368,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
             TabStop         =   True
@@ -383,26 +378,28 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   250
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   200
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditField edt_define_user1
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
             BackColor       =   16777215
-            BehaviorIndex   =   11
             Bold            =   False
             Border          =   True
-            ControlOrder    =   11
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            HideSelection   =   True
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
             Italic          =   False
             Left            =   50
@@ -414,8 +411,8 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
+            Scope           =   0
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
@@ -426,6 +423,7 @@ Begin Window MainSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   265
             Underline       =   False
             UseFocusRing    =   True
@@ -433,16 +431,15 @@ Begin Window MainSettingsWindow
             Width           =   200
          End
          Begin StaticText lbl_define_user2
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   12
             Bold            =   False
-            ControlOrder    =   12
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
             Italic          =   False
             Left            =   50
@@ -453,6 +450,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
@@ -462,26 +460,28 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   290
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   200
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditField edt_define_user2
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
             BackColor       =   16777215
-            BehaviorIndex   =   13
             Bold            =   False
             Border          =   True
-            ControlOrder    =   13
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            HideSelection   =   True
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
             Italic          =   False
             Left            =   50
@@ -493,8 +493,8 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
+            Scope           =   0
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
@@ -505,6 +505,7 @@ Begin Window MainSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   305
             Underline       =   False
             UseFocusRing    =   True
@@ -512,16 +513,15 @@ Begin Window MainSettingsWindow
             Width           =   200
          End
          Begin StaticText lbl_define_user3
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   14
             Bold            =   False
-            ControlOrder    =   14
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   15
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
             Italic          =   False
             Left            =   50
@@ -532,6 +532,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   1
             TabStop         =   True
@@ -541,26 +542,28 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   330
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   200
+            Window          =   0
+            _mWindow        =   0
          End
          Begin SEditField edt_define_user3
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
             BackColor       =   16777215
-            BehaviorIndex   =   15
             Bold            =   False
             Border          =   True
-            ControlOrder    =   18
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            HideSelection   =   True
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
             Italic          =   False
             Left            =   50
@@ -572,8 +575,8 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Mask            =   ""
             Multiline       =   False
-            Password        =   False
             ReadOnly        =   False
+            Scope           =   0
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
@@ -584,6 +587,7 @@ Begin Window MainSettingsWindow
             TextColor       =   0
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   345
             Underline       =   False
             UseFocusRing    =   True
@@ -592,16 +596,15 @@ Begin Window MainSettingsWindow
          End
          Begin PushButton btn_define_load
             AutoDeactivate  =   True
-            BehaviorIndex   =   16
             Bold            =   False
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Load Language Defaults"
-            ControlOrder    =   19
             Default         =   False
             Enabled         =   True
             Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_user_defined"
             Italic          =   False
             Left            =   50
@@ -616,6 +619,7 @@ Begin Window MainSettingsWindow
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   374
             Underline       =   False
             Visible         =   True
@@ -624,14 +628,12 @@ Begin Window MainSettingsWindow
       End
       Begin GroupBox grp_settings_startmode
          AutoDeactivate  =   True
-         BehaviorIndex   =   17
          Bold            =   False
          Caption         =   "Start Mode"
-         ControlOrder    =   15
          Enabled         =   True
          Height          =   40
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_general_general"
          Italic          =   False
          Left            =   35
@@ -643,23 +645,21 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
          Top             =   182
          Underline       =   False
          Visible         =   True
          Width           =   250
          Begin RadioButton rad_start_songs
             AutoDeactivate  =   True
-            BehaviorIndex   =   18
             Bold            =   False
             Caption         =   "Songs"
-            ControlOrder    =   16
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_startmode"
             Italic          =   False
             Left            =   46
@@ -674,6 +674,7 @@ Begin Window MainSettingsWindow
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   198
             Underline       =   False
             Value           =   False
@@ -682,14 +683,12 @@ Begin Window MainSettingsWindow
          End
          Begin RadioButton rad_start_sets
             AutoDeactivate  =   True
-            BehaviorIndex   =   19
             Bold            =   False
             Caption         =   "Sets"
-            ControlOrder    =   17
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_startmode"
             Italic          =   False
             Left            =   165
@@ -704,6 +703,7 @@ Begin Window MainSettingsWindow
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   198
             Underline       =   False
             Value           =   False
@@ -711,16 +711,792 @@ Begin Window MainSettingsWindow
             Width           =   110
          End
       End
-      Begin GroupBox grp_settings_documents_folder
+      Begin GroupBox grp_settings_logging
          AutoDeactivate  =   True
-         BehaviorIndex   =   20
-         Bold            =   False
-         Caption         =   "Documents Folder"
-         ControlOrder    =   20
+         Bold            =   ""
+         Caption         =   "Logging"
          Enabled         =   True
-         Height          =   203
+         Height          =   154
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   ""
+         Left            =   34
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   ""
+         LockRight       =   ""
+         LockTop         =   ""
+         Scope           =   0
+         TabIndex        =   4
+         TabPanelIndex   =   3
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   44
+         Underline       =   ""
+         Visible         =   True
+         Width           =   235
+         Begin StaticText lbl_logging_level
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_logging"
+            Italic          =   ""
+            Left            =   48
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Multiline       =   ""
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   0
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   "Log level (0-10)"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   65
+            Transparent     =   False
+            Underline       =   ""
+            Visible         =   True
+            Width           =   206
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin Checkbox chk_logging_console
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Log to system console"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_logging"
+            Italic          =   ""
+            Left            =   48
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            State           =   0
+            TabIndex        =   1
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   119
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   206
+         End
+         Begin PopupMenu pop_logging_level
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_logging"
+            InitialValue    =   "Disabled\r1 (Info)\r2\r3 (Warn)\r4 (Debug)\r5\r6\r7\r8\r9 (Detailed)\r10"
+            Italic          =   ""
+            Left            =   48
+            ListIndex       =   0
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            TabIndex        =   2
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   87
+            Underline       =   ""
+            Visible         =   True
+            Width           =   206
+         End
+         Begin Checkbox chk_logging_append
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Append to logfile"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_logging"
+            Italic          =   ""
+            Left            =   48
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            State           =   0
+            TabIndex        =   3
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   140
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   206
+         End
+      End
+      Begin GroupBox grp_settings_fonts
+         AutoDeactivate  =   True
+         Bold            =   False
+         Caption         =   "Fonts"
+         Enabled         =   True
+         Height          =   364
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   False
+         Left            =   361
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   False
+         LockRight       =   False
+         LockTop         =   False
+         Scope           =   0
+         TabIndex        =   5
+         TabPanelIndex   =   1
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   44
+         Underline       =   False
+         Visible         =   True
+         Width           =   221
+         Begin StaticText lbl_fonts_headings
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Italic          =   False
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   0
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Text            =   "Headings:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   62
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin StaticText lbl_fonts_labels
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Italic          =   False
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   1
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Text            =   "Labels:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   112
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin StaticText lbl_fonts_text_fields
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Italic          =   False
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   2
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Text            =   "Text Fields:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   162
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin StaticText lbl_fonts_fixed_width
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Italic          =   False
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   3
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Text            =   "Fixed-width Text:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   212
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin SFontCanvas can_fonts_headings
+            AcceptFocus     =   False
+            AcceptMouseDown =   true
+            AcceptTabs      =   False
+            AdvancedOptions =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   True
+            EraseBackground =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Scope           =   0
+            TabIndex        =   4
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Top             =   77
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   195
+         End
+         Begin StaticText lbl_fonts_buttons
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Italic          =   False
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   5
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Text            =   "Buttons:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   262
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin SFontCanvas can_fonts_labels
+            AcceptFocus     =   False
+            AcceptMouseDown =   true
+            AcceptTabs      =   False
+            AdvancedOptions =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   True
+            EraseBackground =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Scope           =   0
+            TabIndex        =   6
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Top             =   127
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   195
+         End
+         Begin StaticText lbl_fonts_large_headings
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Italic          =   False
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   7
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Text            =   "Large Headings:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   311
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin SFontCanvas can_fonts_text_fields
+            AcceptFocus     =   False
+            AcceptMouseDown =   true
+            AcceptTabs      =   False
+            AdvancedOptions =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   True
+            EraseBackground =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Scope           =   0
+            TabIndex        =   8
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Top             =   177
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   195
+         End
+         Begin CheckBox chk_general_newpaint
+            AutoDeactivate  =   True
+            Bold            =   False
+            Caption         =   "Use new control design"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Italic          =   False
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Scope           =   0
+            State           =   0
+            TabIndex        =   9
+            TabPanelIndex   =   1
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   378
+            Underline       =   False
+            Value           =   False
+            Visible         =   True
+            Width           =   134
+         End
+         Begin SFontCanvas can_fonts_fixed_width
+            AcceptFocus     =   False
+            AcceptMouseDown =   true
+            AcceptTabs      =   False
+            AdvancedOptions =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   True
+            EraseBackground =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Scope           =   0
+            TabIndex        =   10
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Top             =   227
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   195
+         End
+         Begin SFontCanvas can_fonts_buttons
+            AcceptFocus     =   False
+            AcceptMouseDown =   true
+            AcceptTabs      =   False
+            AdvancedOptions =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   True
+            EraseBackground =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Left            =   378
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Scope           =   0
+            TabIndex        =   11
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Top             =   277
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   195
+         End
+         Begin SFontCanvas can_fonts_large_headings
+            AcceptFocus     =   False
+            AcceptMouseDown =   true
+            AcceptTabs      =   False
+            AdvancedOptions =   False
+            AutoDeactivate  =   True
+            Backdrop        =   0
+            DoubleBuffer    =   False
+            Enabled         =   True
+            EraseBackground =   True
+            Height          =   45
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_fonts"
+            Left            =   377
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Scope           =   0
+            TabIndex        =   12
+            TabPanelIndex   =   1
+            TabStop         =   True
+            Top             =   327
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   195
+         End
+      End
+      Begin GroupBox grp_settings_imagequality
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Set Image Quality"
+         Enabled         =   True
+         Height          =   241
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   ""
+         Left            =   295
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   ""
+         LockRight       =   ""
+         LockTop         =   ""
+         Scope           =   0
+         TabIndex        =   6
+         TabPanelIndex   =   3
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   44
+         Underline       =   ""
+         Visible         =   True
+         Width           =   280
+         Begin PopupMenu pop_imagequality_compression
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagequality"
+            InitialValue    =   "Full, minimum quality\r\nHigh, low quality\r\nMedium, normal quality\r\nLittle, high quality\r\nLow, maximum quality\r\nNone, lossless"
+            Italic          =   ""
+            Left            =   310
+            ListIndex       =   0
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            TabIndex        =   0
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   209
+            Underline       =   ""
+            Visible         =   True
+            Width           =   250
+         End
+         Begin StaticText lbl_imagequality_compression
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagequality"
+            Italic          =   ""
+            Left            =   310
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Multiline       =   ""
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   1
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   "Image compression:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   189
+            Transparent     =   False
+            Underline       =   ""
+            Visible         =   True
+            Width           =   250
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin StaticText txt_imagequality_note
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   120
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagequality"
+            Italic          =   ""
+            Left            =   310
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Multiline       =   True
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   2
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   65
+            Transparent     =   False
+            Underline       =   ""
+            Visible         =   True
+            Width           =   250
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin CheckBox chk_imagequality_extern
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Do not include images from backgrounds"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagequality"
+            Italic          =   ""
+            Left            =   310
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            State           =   0
+            TabIndex        =   3
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   235
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   250
+         End
+      End
+      Begin GroupBox grp_settings_proxy
+         AutoDeactivate  =   True
+         Bold            =   False
+         Caption         =   "HTTP Proxy"
+         Enabled         =   True
+         Height          =   70
+         HelpTag         =   ""
+         Index           =   -2147483648
          InitialParent   =   "tab_general_general"
          Italic          =   False
          Left            =   34
@@ -730,25 +1506,305 @@ Begin Window MainSettingsWindow
          LockRight       =   False
          LockTop         =   False
          Scope           =   0
-         TabIndex        =   3
-         TabPanelIndex   =   2
-         TabStop         =   True
+         TabIndex        =   7
+         TabPanelIndex   =   3
          TextFont        =   "Arial"
          TextSize        =   11
+         TextUnit        =   0
+         Top             =   215
+         Underline       =   False
+         Visible         =   True
+         Width           =   235
+         Begin StaticText lbl_proxy_host
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_proxy"
+            Italic          =   False
+            Left            =   49
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   0
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   "Server:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   238
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin StaticText lbl_proxy_port
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_proxy"
+            Italic          =   False
+            Left            =   195
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   1
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   "Port:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   238
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   63
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin SEditField edt_proxy_host
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            BackColor       =   16777215
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_proxy"
+            Italic          =   False
+            Left            =   49
+            LimitText       =   0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   2
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   258
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   134
+         End
+         Begin SEditField edt_proxy_port
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            BackColor       =   16777215
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_proxy"
+            Italic          =   False
+            Left            =   195
+            LimitText       =   0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   3
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   258
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   50
+         End
+      End
+      Begin GroupBox grp_activity_log
+         AutoDeactivate  =   True
+         Bold            =   ""
+         Caption         =   "Activity Log Settings"
+         Enabled         =   True
+         Height          =   72
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   ""
+         Left            =   34
+         LockBottom      =   ""
+         LockedInPosition=   False
+         LockLeft        =   ""
+         LockRight       =   ""
+         LockTop         =   ""
+         Scope           =   0
+         TabIndex        =   8
+         TabPanelIndex   =   3
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   309
+         Underline       =   ""
+         Visible         =   True
+         Width           =   235
+         Begin CheckBox chk_logging_enable
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Enable Logging"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_activity_log"
+            Italic          =   ""
+            Left            =   44
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            State           =   0
+            TabIndex        =   0
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   331
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   215
+         End
+         Begin CheckBox chk_logging_prompt
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Prompt Before Presenting"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_activity_log"
+            Italic          =   ""
+            Left            =   44
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Scope           =   0
+            State           =   0
+            TabIndex        =   1
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   353
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   215
+         End
+      End
+      Begin GroupBox grp_settings_documents_folder
+         AutoDeactivate  =   True
+         Bold            =   False
+         Caption         =   "Documents Folder"
+         Enabled         =   True
+         Height          =   203
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   False
+         Left            =   34
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   False
+         LockRight       =   False
+         LockTop         =   False
+         Scope           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   2
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
          Top             =   44
          Underline       =   False
          Visible         =   True
          Width           =   235
          Begin RadioButton rad_documents_default
             AutoDeactivate  =   True
-            BehaviorIndex   =   21
             Bold            =   False
             Caption         =   "Default"
-            ControlOrder    =   21
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
             Italic          =   False
             Left            =   49
@@ -763,6 +1819,7 @@ Begin Window MainSettingsWindow
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   89
             Underline       =   False
             Value           =   True
@@ -771,14 +1828,12 @@ Begin Window MainSettingsWindow
          End
          Begin RadioButton rad_documents_custom
             AutoDeactivate  =   True
-            BehaviorIndex   =   22
             Bold            =   False
             Caption         =   "Custom:"
-            ControlOrder    =   22
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
             Italic          =   False
             Left            =   49
@@ -793,6 +1848,7 @@ Begin Window MainSettingsWindow
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   109
             Underline       =   False
             Value           =   False
@@ -800,16 +1856,15 @@ Begin Window MainSettingsWindow
             Width           =   205
          End
          Begin StaticText nte_folder_folder
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   23
             Bold            =   False
-            ControlOrder    =   23
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   31
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
             Italic          =   False
             Left            =   49
@@ -820,6 +1875,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
@@ -829,22 +1885,24 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   137
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   211
+            Window          =   0
+            _mWindow        =   0
          End
          Begin PushButton btn_browse
             AutoDeactivate  =   True
-            BehaviorIndex   =   24
             Bold            =   False
+            ButtonStyle     =   0
             Cancel          =   False
             Caption         =   "Browse..."
-            ControlOrder    =   24
             Default         =   False
             Enabled         =   False
             Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
             Italic          =   False
             Left            =   90
@@ -859,22 +1917,22 @@ Begin Window MainSettingsWindow
             TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   176
             Underline       =   False
             Visible         =   True
             Width           =   120
          End
          Begin StaticText nte_documents_warning
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   25
             Bold            =   False
-            ControlOrder    =   25
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   27
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
             Italic          =   False
             Left            =   49
@@ -885,6 +1943,7 @@ Begin Window MainSettingsWindow
             LockTop         =   False
             Multiline       =   True
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
             TabStop         =   True
@@ -894,22 +1953,23 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             Top             =   62
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   205
+            Window          =   0
+            _mWindow        =   0
          End
          Begin Checkbox chk_documents_oldfolderdb
             AutoDeactivate  =   True
-            BehaviorIndex   =   26
             Bold            =   ""
             Caption         =   "Use Pre-V1.1 FolderDB cache"
-            ControlOrder    =   26
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
+            Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
             Italic          =   ""
             Left            =   50
@@ -919,60 +1979,59 @@ Begin Window MainSettingsWindow
             LockRight       =   ""
             LockTop         =   ""
             Scope           =   0
+            State           =   0
             TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "System"
             TextSize        =   10
+            TextUnit        =   0
             Top             =   210
             Underline       =   ""
-            Value           =   ""
+            Value           =   False
             Visible         =   True
             Width           =   204
          End
       End
-      Begin GroupBox grp_settings_logging
+      Begin GroupBox grp_settings_applications
          AutoDeactivate  =   True
-         BehaviorIndex   =   27
          Bold            =   ""
-         Caption         =   "Logging"
-         ControlOrder    =   27
+         Caption         =   "External applications"
          Enabled         =   True
-         Height          =   154
+         Height          =   216
          HelpTag         =   ""
-         Index           =   2147483648
+         Index           =   -2147483648
          InitialParent   =   "tab_general_general"
-         Italic          =   ""
-         Left            =   34
+         Italic          =   False
+         Left            =   295
          LockBottom      =   ""
          LockedInPosition=   False
          LockLeft        =   ""
          LockRight       =   ""
          LockTop         =   ""
          Scope           =   0
-         TabIndex        =   4
+         TabIndex        =   1
          TabPanelIndex   =   2
-         TabStop         =   True
-         TextFont        =   "SmallSystem"
-         TextSize        =   0
-         Top             =   267
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   44
          Underline       =   ""
          Visible         =   True
-         Width           =   235
-         Begin StaticText lbl_logging_level
+         Width           =   280
+         Begin StaticText lbl_applications_pptview
+            Active          =   ""
             AutoDeactivate  =   True
-            BehaviorIndex   =   28
             Bold            =   ""
-            ControlOrder    =   28
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
             Height          =   20
             HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_logging"
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_applications"
             Italic          =   ""
-            Left            =   48
+            Left            =   309
             LockBottom      =   ""
             LockedInPosition=   False
             LockLeft        =   ""
@@ -980,1006 +2039,205 @@ Begin Window MainSettingsWindow
             LockTop         =   ""
             Multiline       =   ""
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
             TabStop         =   True
-            Text            =   "Log level (0-10)"
+            Text            =   "Location of Powerpoint Viewer"
             TextAlign       =   0
             TextColor       =   0
-            TextFont        =   "SmallSystem"
-            TextSize        =   0
-            Top             =   288
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   65
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
-            Width           =   206
+            Width           =   253
+            Window          =   0
+            _mWindow        =   0
          End
-         Begin Checkbox chk_logging_console
+         Begin TextField edt_applications_pptview
+            AcceptTabs      =   ""
+            Alignment       =   0
             AutoDeactivate  =   True
-            BehaviorIndex   =   29
+            BackColor       =   &hFFFFFF
             Bold            =   ""
-            Caption         =   "Log to system console"
-            ControlOrder    =   31
+            Border          =   True
+            CueText         =   ""
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   20
+            Format          =   ""
+            Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_logging"
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_applications"
             Italic          =   ""
-            Left            =   48
+            Left            =   309
+            LimitText       =   0
             LockBottom      =   ""
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   ""
             LockTop         =   ""
+            Mask            =   ""
+            Password        =   ""
+            ReadOnly        =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
             TabStop         =   True
-            TextFont        =   "SmallSystem"
-            TextSize        =   0
-            Top             =   342
+            Text            =   ""
+            TextColor       =   &h000000
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   87
             Underline       =   ""
-            Value           =   ""
-            Visible         =   True
-            Width           =   206
-         End
-         Begin PopupMenu pop_logging_level
-            AutoDeactivate  =   True
-            BehaviorIndex   =   30
-            Bold            =   ""
-            ControlOrder    =   33
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_logging"
-            InitialValue    =   "Disabled\r1 (Info)\r2\r3 (Warn)\r4 (Debug)\r5\r6\r7\r8\r9 (Detailed)\r10"
-            Italic          =   ""
-            Left            =   48
-            ListIndex       =   0
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Scope           =   0
-            TabIndex        =   2
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   310
-            Underline       =   ""
-            Visible         =   True
-            Width           =   206
-         End
-         Begin Checkbox chk_logging_append
-            AutoDeactivate  =   True
-            BehaviorIndex   =   31
-            Bold            =   ""
-            Caption         =   "Append to logfile"
-            ControlOrder    =   35
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_logging"
-            Italic          =   ""
-            Left            =   48
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Scope           =   0
-            TabIndex        =   3
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "SmallSystem"
-            TextSize        =   0
-            Top             =   363
-            Underline       =   ""
-            Value           =   ""
-            Visible         =   True
-            Width           =   206
-         End
-      End
-      Begin GroupBox grp_settings_fonts
-         AutoDeactivate  =   True
-         BehaviorIndex   =   32
-         Bold            =   False
-         Caption         =   "Fonts"
-         ControlOrder    =   29
-         Enabled         =   True
-         Height          =   364
-         HelpTag         =   ""
-         Index           =   2147483648
-         InitialParent   =   "tab_general_general"
-         Italic          =   False
-         Left            =   361
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   False
-         LockRight       =   False
-         LockTop         =   False
-         Scope           =   0
-         TabIndex        =   5
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TextFont        =   "Arial"
-         TextSize        =   11
-         Top             =   44
-         Underline       =   False
-         Visible         =   True
-         Width           =   221
-         Begin StaticText lbl_fonts_headings
-            AutoDeactivate  =   True
-            BehaviorIndex   =   33
-            Bold            =   False
-            ControlOrder    =   30
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Italic          =   False
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Multiline       =   False
-            Scope           =   0
-            TabIndex        =   0
-            TabPanelIndex   =   1
-            TabStop         =   True
-            Text            =   "Headings:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   62
-            Underline       =   False
-            Visible         =   True
-            Width           =   120
-         End
-         Begin StaticText lbl_fonts_labels
-            AutoDeactivate  =   True
-            BehaviorIndex   =   34
-            Bold            =   False
-            ControlOrder    =   32
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Italic          =   False
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Multiline       =   False
-            Scope           =   0
-            TabIndex        =   1
-            TabPanelIndex   =   1
-            TabStop         =   True
-            Text            =   "Labels:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   112
-            Underline       =   False
-            Visible         =   True
-            Width           =   120
-         End
-         Begin StaticText lbl_fonts_text_fields
-            AutoDeactivate  =   True
-            BehaviorIndex   =   35
-            Bold            =   False
-            ControlOrder    =   34
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Italic          =   False
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Multiline       =   False
-            Scope           =   0
-            TabIndex        =   2
-            TabPanelIndex   =   1
-            TabStop         =   True
-            Text            =   "Text Fields:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   162
-            Underline       =   False
-            Visible         =   True
-            Width           =   120
-         End
-         Begin StaticText lbl_fonts_fixed_width
-            AutoDeactivate  =   True
-            BehaviorIndex   =   36
-            Bold            =   False
-            ControlOrder    =   36
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Italic          =   False
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Multiline       =   False
-            Scope           =   0
-            TabIndex        =   3
-            TabPanelIndex   =   1
-            TabStop         =   True
-            Text            =   "Fixed-width Text:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   212
-            Underline       =   False
-            Visible         =   True
-            Width           =   120
-         End
-         Begin SFontCanvas can_fonts_headings
-            AcceptFocus     =   False
-            AcceptMouseDown =   true
-            AcceptTabs      =   False
-            AdvancedOptions =   False
-            AutoDeactivate  =   True
-            Backdrop        =   0
-            BehaviorIndex   =   37
-            ControlOrder    =   37
-            Enabled         =   True
-            EraseBackground =   True
-            Height          =   30
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            TabIndex        =   4
-            TabPanelIndex   =   1
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   77
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   195
+            Width           =   253
          End
-         Begin StaticText lbl_fonts_buttons
+         Begin PushButton btn_applications_pptview_browse
             AutoDeactivate  =   True
-            BehaviorIndex   =   38
             Bold            =   False
-            ControlOrder    =   38
-            DataField       =   ""
-            DataSource      =   ""
+            ButtonStyle     =   0
+            Cancel          =   False
+            Caption         =   "Browse..."
+            Default         =   False
             Enabled         =   True
-            Height          =   15
+            Height          =   22
             HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_applications"
             Italic          =   False
-            Left            =   378
+            Left            =   375
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   False
             LockTop         =   False
-            Multiline       =   False
+            Scope           =   0
+            TabIndex        =   2
+            TabPanelIndex   =   2
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   121
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+         End
+         Begin PushButton btn_applications_videolan_browse
+            AutoDeactivate  =   True
+            Bold            =   False
+            ButtonStyle     =   0
+            Cancel          =   False
+            Caption         =   "Browse..."
+            Default         =   False
+            Enabled         =   True
+            Height          =   22
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_applications"
+            Italic          =   False
+            Left            =   375
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Scope           =   0
+            TabIndex        =   3
+            TabPanelIndex   =   2
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   225
+            Underline       =   False
+            Visible         =   True
+            Width           =   120
+         End
+         Begin StaticText lbl_applications_videolan
+            Active          =   ""
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_applications"
+            Italic          =   ""
+            Left            =   309
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Multiline       =   ""
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   4
+            TabPanelIndex   =   2
+            TabStop         =   True
+            Text            =   "Location of Videolan client"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            Top             =   169
+            Transparent     =   False
+            Underline       =   ""
+            Visible         =   True
+            Width           =   253
+            Window          =   0
+            _mWindow        =   0
+         End
+         Begin TextField edt_applications_videolan
+            AcceptTabs      =   ""
+            Alignment       =   0
+            AutoDeactivate  =   True
+            BackColor       =   &hFFFFFF
+            Bold            =   ""
+            Border          =   True
+            CueText         =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   22
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_applications"
+            Italic          =   ""
+            Left            =   309
+            LimitText       =   0
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Mask            =   ""
+            Password        =   ""
+            ReadOnly        =   True
             Scope           =   0
             TabIndex        =   5
-            TabPanelIndex   =   1
-            TabStop         =   True
-            Text            =   "Buttons:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   262
-            Underline       =   False
-            Visible         =   True
-            Width           =   120
-         End
-         Begin SFontCanvas can_fonts_labels
-            AcceptFocus     =   False
-            AcceptMouseDown =   true
-            AcceptTabs      =   False
-            AdvancedOptions =   False
-            AutoDeactivate  =   True
-            Backdrop        =   0
-            BehaviorIndex   =   39
-            ControlOrder    =   39
-            Enabled         =   True
-            EraseBackground =   True
-            Height          =   30
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            TabIndex        =   6
-            TabPanelIndex   =   1
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   127
-            UseFocusRing    =   True
-            Visible         =   True
-            Width           =   195
-         End
-         Begin StaticText lbl_fonts_large_headings
-            AutoDeactivate  =   True
-            BehaviorIndex   =   40
-            Bold            =   False
-            ControlOrder    =   40
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Italic          =   False
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Multiline       =   False
-            Scope           =   0
-            TabIndex        =   7
-            TabPanelIndex   =   1
-            TabStop         =   True
-            Text            =   "Large Headings:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   311
-            Underline       =   False
-            Visible         =   True
-            Width           =   120
-         End
-         Begin SFontCanvas can_fonts_text_fields
-            AcceptFocus     =   False
-            AcceptMouseDown =   true
-            AcceptTabs      =   False
-            AdvancedOptions =   False
-            AutoDeactivate  =   True
-            Backdrop        =   0
-            BehaviorIndex   =   41
-            ControlOrder    =   41
-            Enabled         =   True
-            EraseBackground =   True
-            Height          =   30
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            TabIndex        =   8
-            TabPanelIndex   =   1
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   177
-            UseFocusRing    =   True
-            Visible         =   True
-            Width           =   195
-         End
-         Begin CheckBox chk_general_newpaint
-            AutoDeactivate  =   True
-            BehaviorIndex   =   42
-            Bold            =   False
-            Caption         =   "Use new control design"
-            ControlOrder    =   42
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Italic          =   False
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Scope           =   0
-            TabIndex        =   9
-            TabPanelIndex   =   1
-            TabStop         =   True
-            TextFont        =   "Arial"
-            TextSize        =   10
-            Top             =   378
-            Underline       =   False
-            Value           =   False
-            Visible         =   True
-            Width           =   134
-         End
-         Begin SFontCanvas can_fonts_fixed_width
-            AcceptFocus     =   False
-            AcceptMouseDown =   true
-            AcceptTabs      =   False
-            AdvancedOptions =   False
-            AutoDeactivate  =   True
-            Backdrop        =   0
-            BehaviorIndex   =   43
-            ControlOrder    =   43
-            Enabled         =   True
-            EraseBackground =   True
-            Height          =   30
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            TabIndex        =   10
-            TabPanelIndex   =   1
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   227
-            UseFocusRing    =   True
-            Visible         =   True
-            Width           =   195
-         End
-         Begin SFontCanvas can_fonts_buttons
-            AcceptFocus     =   False
-            AcceptMouseDown =   true
-            AcceptTabs      =   False
-            AdvancedOptions =   False
-            AutoDeactivate  =   True
-            Backdrop        =   0
-            BehaviorIndex   =   44
-            ControlOrder    =   44
-            Enabled         =   True
-            EraseBackground =   True
-            Height          =   30
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Left            =   378
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            TabIndex        =   11
-            TabPanelIndex   =   1
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   277
-            UseFocusRing    =   True
-            Visible         =   True
-            Width           =   195
-         End
-         Begin SFontCanvas can_fonts_large_headings
-            AcceptFocus     =   False
-            AcceptMouseDown =   true
-            AcceptTabs      =   False
-            AdvancedOptions =   False
-            AutoDeactivate  =   True
-            Backdrop        =   0
-            BehaviorIndex   =   45
-            ControlOrder    =   45
-            Enabled         =   True
-            EraseBackground =   True
-            Height          =   45
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_fonts"
-            Left            =   377
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            TabIndex        =   12
-            TabPanelIndex   =   1
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   327
-            UseFocusRing    =   True
-            Visible         =   True
-            Width           =   195
-         End
-      End
-      Begin GroupBox grp_settings_imagequality
-         AutoDeactivate  =   True
-         BehaviorIndex   =   46
-         Bold            =   ""
-         Caption         =   "Set Image Quality"
-         ControlOrder    =   46
-         Enabled         =   True
-         Height          =   203
-         HelpTag         =   ""
-         Index           =   2147483648
-         InitialParent   =   "tab_general_general"
-         Italic          =   ""
-         Left            =   295
-         LockBottom      =   ""
-         LockedInPosition=   False
-         LockLeft        =   ""
-         LockRight       =   ""
-         LockTop         =   ""
-         Scope           =   0
-         TabIndex        =   6
-         TabPanelIndex   =   2
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
-         Top             =   44
-         Underline       =   ""
-         Visible         =   True
-         Width           =   280
-         Begin PopupMenu pop_imagequality_compression
-            AutoDeactivate  =   True
-            BehaviorIndex   =   47
-            Bold            =   ""
-            ControlOrder    =   47
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_imagequality"
-            InitialValue    =   "Full, minimum quality\r\nHigh, low quality\r\nMedium, normal quality\r\nLittle, high quality\r\nLow, maximum quality\r\nNone, lossless"
-            Italic          =   ""
-            Left            =   310
-            ListIndex       =   0
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Scope           =   0
-            TabIndex        =   0
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   190
-            Underline       =   ""
-            Visible         =   True
-            Width           =   250
-         End
-         Begin StaticText lbl_imagequality_compression
-            AutoDeactivate  =   True
-            BehaviorIndex   =   48
-            Bold            =   ""
-            ControlOrder    =   48
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_imagequality"
-            Italic          =   ""
-            Left            =   310
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Multiline       =   ""
-            Scope           =   0
-            TabIndex        =   1
-            TabPanelIndex   =   2
-            TabStop         =   True
-            Text            =   "Image compression:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   170
-            Underline       =   ""
-            Visible         =   True
-            Width           =   250
-         End
-         Begin StaticText txt_imagequality_note
-            AutoDeactivate  =   True
-            BehaviorIndex   =   49
-            Bold            =   ""
-            ControlOrder    =   49
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   99
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_imagequality"
-            Italic          =   ""
-            Left            =   310
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Multiline       =   True
-            Scope           =   0
-            TabIndex        =   2
-            TabPanelIndex   =   2
-            TabStop         =   True
-            Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   65
-            Underline       =   ""
-            Visible         =   True
-            Width           =   250
-         End
-         Begin CheckBox chk_imagequality_extern
-            AutoDeactivate  =   True
-            BehaviorIndex   =   50
-            Bold            =   ""
-            Caption         =   "Do not include images from backgrounds"
-            ControlOrder    =   50
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_imagequality"
-            Italic          =   ""
-            Left            =   310
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Scope           =   0
-            TabIndex        =   3
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   215
-            Underline       =   ""
-            Value           =   ""
-            Visible         =   True
-            Width           =   250
-         End
-      End
-      Begin GroupBox grp_settings_proxy
-         AutoDeactivate  =   True
-         BehaviorIndex   =   51
-         Bold            =   False
-         Caption         =   "HTTP Proxy"
-         ControlOrder    =   51
-         Enabled         =   True
-         Height          =   70
-         HelpTag         =   ""
-         Index           =   2147483648
-         InitialParent   =   "tab_general_general"
-         Italic          =   False
-         Left            =   295
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   False
-         LockRight       =   False
-         LockTop         =   False
-         Scope           =   0
-         TabIndex        =   7
-         TabPanelIndex   =   2
-         TabStop         =   True
-         TextFont        =   "Arial"
-         TextSize        =   11
-         Top             =   267
-         Underline       =   False
-         Visible         =   True
-         Width           =   280
-         Begin StaticText lbl_proxy_host
-            AutoDeactivate  =   True
-            BehaviorIndex   =   52
-            Bold            =   False
-            ControlOrder    =   52
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_proxy"
-            Italic          =   False
-            Left            =   310
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Multiline       =   False
-            Scope           =   0
-            TabIndex        =   0
-            TabPanelIndex   =   2
-            TabStop         =   True
-            Text            =   "Server:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "SmallSystem"
-            TextSize        =   0
-            Top             =   290
-            Underline       =   False
-            Visible         =   True
-            Width           =   120
-         End
-         Begin StaticText lbl_proxy_port
-            AutoDeactivate  =   True
-            BehaviorIndex   =   53
-            Bold            =   False
-            ControlOrder    =   53
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   15
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_proxy"
-            Italic          =   False
-            Left            =   456
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Multiline       =   False
-            Scope           =   0
-            TabIndex        =   1
-            TabPanelIndex   =   2
-            TabStop         =   True
-            Text            =   "Port:"
-            TextAlign       =   0
-            TextColor       =   0
-            TextFont        =   "SmallSystem"
-            TextSize        =   0
-            Top             =   290
-            Underline       =   False
-            Visible         =   True
-            Width           =   63
-         End
-         Begin SEditField edt_proxy_host
-            AcceptTabs      =   False
-            Alignment       =   0
-            AutoDeactivate  =   True
-            BackColor       =   16777215
-            BehaviorIndex   =   54
-            Bold            =   False
-            Border          =   True
-            ControlOrder    =   54
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Format          =   ""
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_proxy"
-            Italic          =   False
-            Left            =   310
-            LimitText       =   0
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Mask            =   ""
-            Multiline       =   False
-            Password        =   False
-            ReadOnly        =   False
-            ScrollbarHorizontal=   False
-            ScrollbarVertical=   True
-            Styled          =   False
-            TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
-            TextColor       =   0
-            TextFont        =   "SmallSystem"
-            TextSize        =   0
-            Top             =   310
-            Underline       =   False
+            TextColor       =   &h000000
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   191
+            Underline       =   ""
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   134
-         End
-         Begin SEditField edt_proxy_port
-            AcceptTabs      =   False
-            Alignment       =   0
-            AutoDeactivate  =   True
-            BackColor       =   16777215
-            BehaviorIndex   =   55
-            Bold            =   False
-            Border          =   True
-            ControlOrder    =   55
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Format          =   ""
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_settings_proxy"
-            Italic          =   False
-            Left            =   456
-            LimitText       =   0
-            LockBottom      =   False
-            LockedInPosition=   False
-            LockLeft        =   False
-            LockRight       =   False
-            LockTop         =   False
-            Mask            =   ""
-            Multiline       =   False
-            Password        =   False
-            ReadOnly        =   False
-            ScrollbarHorizontal=   False
-            ScrollbarVertical=   True
-            Styled          =   False
-            TabIndex        =   3
-            TabPanelIndex   =   2
-            TabStop         =   True
-            Text            =   ""
-            TextColor       =   0
-            TextFont        =   "SmallSystem"
-            TextSize        =   0
-            Top             =   310
-            Underline       =   False
-            UseFocusRing    =   True
-            Visible         =   True
-            Width           =   50
-         End
-      End
-      Begin GroupBox grp_activity_log
-         AutoDeactivate  =   True
-         BehaviorIndex   =   56
-         Bold            =   ""
-         Caption         =   "Activity Log Settings"
-         ControlOrder    =   56
-         Enabled         =   True
-         Height          =   72
-         HelpTag         =   ""
-         Index           =   2147483648
-         InitialParent   =   "tab_general_general"
-         Italic          =   ""
-         Left            =   295
-         LockBottom      =   ""
-         LockedInPosition=   False
-         LockLeft        =   ""
-         LockRight       =   ""
-         LockTop         =   ""
-         Scope           =   0
-         TabIndex        =   8
-         TabPanelIndex   =   2
-         TabStop         =   True
-         TextFont        =   "Arial"
-         TextSize        =   11
-         Top             =   349
-         Underline       =   ""
-         Visible         =   True
-         Width           =   280
-         Begin CheckBox chk_logging_enable
-            AutoDeactivate  =   True
-            BehaviorIndex   =   57
-            Bold            =   ""
-            Caption         =   "Enable Logging"
-            ControlOrder    =   57
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_activity_log"
-            Italic          =   ""
-            Left            =   305
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Scope           =   0
-            TabIndex        =   0
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   371
-            Underline       =   ""
-            Value           =   ""
-            Visible         =   True
-            Width           =   255
-         End
-         Begin CheckBox chk_logging_prompt
-            AutoDeactivate  =   True
-            BehaviorIndex   =   58
-            Bold            =   ""
-            Caption         =   "Prompt Before Presenting"
-            ControlOrder    =   58
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   2147483648
-            InitialParent   =   "grp_activity_log"
-            Italic          =   ""
-            Left            =   305
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   ""
-            LockRight       =   ""
-            LockTop         =   ""
-            Scope           =   0
-            TabIndex        =   1
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
-            Top             =   393
-            Underline       =   ""
-            Value           =   ""
-            Visible         =   True
-            Width           =   236
+            Width           =   253
          End
       End
    End
@@ -2011,6 +2269,16 @@ End
 		  rad_documents_default.Value = (DocsFolder.URLPath = DefaultDocsFolder.URLPath)
 		  rad_documents_custom.Value = Not rad_documents_default.Value
 		  btn_browse.Enabled = rad_documents_custom.Value
+		  
+		  PPTViewLocation = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
+		  If Not IsNull( PPTViewLocation ) Then
+		    edt_applications_pptview.Text = PPTViewLocation.AbsolutePath()
+		  End If
+		  
+		  VideolanLocation = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
+		  If Not IsNull( VideolanLocation ) Then
+		    edt_applications_videolan.Text = VideolanLocation.AbsolutePath()
+		  End If
 		  
 		  s = App.MainPreferences.GetValue(Prefs.kLanguage, "English")
 		  Dim f As FolderItem
@@ -2300,7 +2568,15 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
+		Protected PPTViewLocation As FolderItem = Nil
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
 		Protected PromptBeforePresenting As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected VideolanLocation As FolderItem = Nil
 	#tag EndProperty
 
 
@@ -2371,6 +2647,8 @@ End
 		  SmartML.SetValueB(App.MyMainSettings.DocumentElement, "image_quality/@exclude_backgrounds", chk_imagequality_extern.Value)
 		  
 		  SaveLogfileSettings
+		  App.MainPreferences.SetValueFI(Prefs.kPPTViewLocation, PPTViewLocation)
+		  App.MainPreferences.SetValueFI(Prefs.kVideolanLocation, VideolanLocation)
 		  
 		  //++
 		  // Bug 1462055: Save changes on dialog exit instead of program exit
@@ -2465,55 +2743,6 @@ End
 		  edt_define_user1.Text = App.T.Translate("advanced_song_editor/user1/@caption")
 		  edt_define_user2.Text = App.T.Translate("advanced_song_editor/user2/@caption")
 		  edt_define_user3.Text = App.T.Translate("advanced_song_editor/user3/@caption")
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events rad_documents_default
-	#tag Event
-		Sub Action()
-		  btn_browse.Enabled = False
-		  
-		  If NewDocsFolder = Nil Then
-		    If DocsFolder.URLPath <> DefaultDocsFolder.URLPath Then
-		      NewDocsFolder = DefaultDocsFolder
-		      nte_folder_folder.Text = NewDocsFolder.FormatFolderName
-		    End If
-		  Else
-		    NewDocsFolder = DefaultDocsFolder
-		    nte_folder_folder.Text = NewDocsFolder.FormatFolderName
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events rad_documents_custom
-	#tag Event
-		Sub Action()
-		  btn_browse.Enabled = True
-		  EnableMenuItems
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btn_browse
-	#tag Event
-		Sub Action()
-		  
-		  Dim dlg As New SelectFolderDialog
-		  
-		  dlg.InitialDirectory = App.DocsFolder
-		  
-		  NewDocsFolder = dlg.ShowModal
-		  
-		  If NewDocsFolder = Nil Then Return // User cancelled
-		  
-		  // Is the selected folder the same as previous?
-		  If NewDocsFolder.AbsolutePath = DocsFolder.AbsolutePath Then
-		    NewDocsFolder = Nil
-		    Return
-		  End If
-		  
-		  nte_folder_folder.Text = NewDocsFolder.FormatFolderName
-		  // Is this the default?
-		  rad_documents_default.Value = (NewDocsFolder.URLPath = DefaultDocsFolder.URLPath)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -2612,5 +2841,94 @@ End
 		  end if
 		  c.close
 		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_documents_default
+	#tag Event
+		Sub Action()
+		  btn_browse.Enabled = False
+		  
+		  If NewDocsFolder = Nil Then
+		    If DocsFolder.URLPath <> DefaultDocsFolder.URLPath Then
+		      NewDocsFolder = DefaultDocsFolder
+		      nte_folder_folder.Text = NewDocsFolder.FormatFolderName
+		    End If
+		  Else
+		    NewDocsFolder = DefaultDocsFolder
+		    nte_folder_folder.Text = NewDocsFolder.FormatFolderName
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_documents_custom
+	#tag Event
+		Sub Action()
+		  btn_browse.Enabled = True
+		  EnableMenuItems
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_browse
+	#tag Event
+		Sub Action()
+		  
+		  Dim dlg As New SelectFolderDialog
+		  
+		  dlg.InitialDirectory = App.DocsFolder
+		  
+		  NewDocsFolder = dlg.ShowModal
+		  
+		  If NewDocsFolder = Nil Then Return // User cancelled
+		  
+		  // Is the selected folder the same as previous?
+		  If NewDocsFolder.AbsolutePath = DocsFolder.AbsolutePath Then
+		    NewDocsFolder = Nil
+		    Return
+		  End If
+		  
+		  nte_folder_folder.Text = NewDocsFolder.FormatFolderName
+		  // Is this the default?
+		  rad_documents_default.Value = (NewDocsFolder.URLPath = DefaultDocsFolder.URLPath)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_applications_pptview_browse
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  
+		  #If TargetLinux
+		    dlg.InitialDirectory = SpecialFolder.Bin
+		  #Else
+		    dlg.InitialDirectory = SpecialFolder.Applications
+		  #EndIf
+		  
+		  Dim NewPPTViewLocation As FolderItem = dlg.ShowModal
+		  If NewPPTViewLocation = Nil Then Return // User cancelled
+		  
+		  PPTViewLocation = NewPPTViewLocation
+		  edt_applications_pptview.Text = PPTViewLocation.AbsolutePath()
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_applications_videolan_browse
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  
+		  #If TargetLinux
+		    dlg.InitialDirectory = SpecialFolder.Bin
+		  #Else
+		    dlg.InitialDirectory = SpecialFolder.Applications
+		  #EndIf
+		  
+		  Dim NewVideolanLocation As FolderItem = dlg.ShowModal
+		  If NewVideolanLocation = Nil Then Return // User cancelled
+		  
+		  VideolanLocation = NewVideolanLocation
+		  edt_applications_videolan.Text = VideolanLocation.AbsolutePath()
+		  
+		End Sub
 	#tag EndEvent
 #tag EndEvents

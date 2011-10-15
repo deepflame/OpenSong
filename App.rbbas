@@ -16,9 +16,11 @@ Inherits Application
 		      App.SetForeground(PresentHelperWindow)
 		      PresentHelperWindow.SetFocus
 		    Else
-		      App.RestoreWindow(PresentWindow)
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
+		      If Not SetML.IsExternal(PresentWindow.XCurrentSlide) Then
+		        App.RestoreWindow(PresentWindow)
+		        App.SetForeground(PresentWindow)
+		        PresentWindow.SetFocus()
+		      End If
 		    End If
 		  End If
 		  
@@ -125,6 +127,8 @@ Inherits Application
 		      If temp = "" Then Quit // User cancelled
 		    End If
 		  End If
+		  
+		  VideolanPresetList = New Dictionary
 		  
 		  T = New Translator(AppFolder.Child("OpenSong Languages").Child(temp))
 		  If Not T.IsLoaded Then
@@ -412,25 +416,13 @@ Inherits Application
 		  Dim controlScreen As Integer
 		  If App.MyPresentSettings <> Nil Then
 		    controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
-		    If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
+		    If controlScreen < 0 Or controlScreen + 1 > OSScreenCount() Then controlScreen = 0
 		  Else
 		    controlScreen = 0
 		  End If
 		  
-		  // Do something reasonable for TwinView screens.
-		  // Thanks, Jon!  EMP, June 2006
-		  
-		  #If TargetLinux
-		    If (Screen(controlScreen).Width /2) > Screen(controlScreen).Height Then
-		      win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 4
-		    Else
-		      win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
-		    End If
-		  #Else
-		    win.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - win.Width) / 2
-		  #EndIf
-		  
-		  win.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height  - win.Height) / 2 + 10
+		  win.Left = OSScreen(controlScreen).Left + (OSScreen(controlScreen).Width - win.Width) / 2
+		  win.Top = OSScreen(controlScreen).Top + (OSScreen(controlScreen).Height  - win.Height) / 2 + 10
 		End Sub
 	#tag EndMethod
 
@@ -550,10 +542,10 @@ Inherits Application
 		  
 		  For i = 0 To wc
 		    If Window(i).Visible Then
-		      If Window(i).Left >= Screen(cs).Left _
-		        And Window(i).Left < Screen(cs).Left + Screen(cs).Width _
-		        And Window(i).Top >= Screen(cs).Top _
-		        And Window(i).Top < Screen(cs).Top + Screen(cs).Height _
+		      If Window(i).Left >= OSScreen(cs).Left _
+		        And Window(i).Left < OSScreen(cs).Left + OSScreen(cs).Width _
+		        And Window(i).Top >= OSScreen(cs).Top _
+		        And Window(i).Top < OSScreen(cs).Top + OSScreen(cs).Height _
 		        Then
 		        Return Window(i)
 		      End If
@@ -821,28 +813,15 @@ Inherits Application
 		  Dim controlScreen As Integer
 		  If App.MyPresentSettings <> Nil Then
 		    controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
-		    If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
+		    If controlScreen < 0 Or controlScreen + 1 > OSScreenCount() Then controlScreen = 0
 		  Else
 		    controlScreen = 0
 		  End If
 		  
-		  // Added to support TwinView displays under Linux
-		  // Thanks, Jon!  EMP, June 2006
-		  
-		  #If TargetLinux
-		    If (Screen(controlScreen).AvailableWidth /2) > Screen(controlScreen).AvailableHeight Then
-		      win.Width = (Screen(controlScreen).AvailableWidth /2) - 40
-		    else
-		      win.Width = Screen(controlScreen).AvailableWidth - 40
-		    End If
-		  #Else
-		    win.Width = Screen(controlScreen).AvailableWidth - 40
-		  #EndIf
-		  
-		  win.Height = Screen(controlScreen).AvailableHeight - 115
-		  
-		  win.Top = Screen(controlScreen).AvailableTop + (Screen(controlScreen).AvailableHeight  - win.Height) / 2 + 10
-		  win.Left = Screen(controlScreen).AvailableLeft + (Screen(controlScreen).AvailableWidth - win.Width) / 2
+		  win.Width = OSScreen(controlScreen).AvailableWidth - 40
+		  win.Height = OSScreen(controlScreen).AvailableHeight - 115
+		  win.Top = OSScreen(controlScreen).AvailableTop + (OSScreen(controlScreen).AvailableHeight  - win.Height) / 2 + 10
+		  win.Left = OSScreen(controlScreen).AvailableLeft + (OSScreen(controlScreen).AvailableWidth - win.Width) / 2
 		End Sub
 	#tag EndMethod
 
@@ -1179,6 +1158,17 @@ Inherits Application
 		    xnode = xnode.NextSibling
 		  Wend
 		  
+		  ' --- BUILD VIDEOLAN PRESET LIST ---
+		  If splashShowing Then Splash.SetStatus T.Translate("load_settings/videolan_preset") + " ..."
+		  xnode = T.GetNode("videolan_preset_list").FirstChild
+		  VideolanPresetList.Clear()
+		  While xnode <> Nil
+		    If xnode.Name = "preset" Then
+		      VideolanPresetList.Value(SmartML.GetValue(xnode, "@name")) = SmartML.GetValue(xnode, "@parameters")
+		    End If
+		    xnode = xnode.NextSibling
+		  Wend
+		  
 		End Sub
 	#tag EndMethod
 
@@ -1488,6 +1478,10 @@ Inherits Application
 		TranslationFonts(0) As FontFace
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		VideolanPresetList As Dictionary = Nil
+	#tag EndProperty
+
 
 	#tag Constant, Name = kActivityLog, Type = String, Dynamic = False, Default = \"activitylog/level", Scope = Public
 	#tag EndConstant
@@ -1528,7 +1522,7 @@ Inherits Application
 	#tag Constant, Name = SW_SHOWNOACTIVATE, Type = Integer, Dynamic = False, Default = \"4", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = SW_SHOWNORMAL, Type = Integer, Dynamic = False, Default = \"1", Scope = Public
+	#tag Constant, Name = SW_SHOWNORMAL, Type = Double, Dynamic = False, Default = \"1", Scope = Public
 	#tag EndConstant
 
 

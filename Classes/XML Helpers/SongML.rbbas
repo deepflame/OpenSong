@@ -1795,11 +1795,17 @@ Module SongML
 		  App.DebugWriter.Write "SongML.Draw_SoloLyricLine: lyrics font base size is " + str(tempFont.Size)
 		  tempFont.Size = Round(tempFont.Size * zoom)
 		  App.DebugWriter.Write "SongML.Draw_SoloLyricLine: after zoom, size is " + str(tempFont.size)
-		  tempFont.OntoGraphics g
+		  
+		  '++JRC Redundant as we set the font in DrawFontString below
+		  'tempFont.OntoGraphics g
 		  
 		  If Left(section,1) = "C" Then
 		    If SmartML.GetValueB(App.MyPrintSettings.DocumentElement, "style/@highlight_chorus", True, True) Then
-		      g.Bold = Not tempFont.Bold
+		      '++JRC Redundant and unnecessary as tempFont overwrites this value in
+		      'DrawFontString anyway (Bug #3284863)
+		      'g.Bold = Not tempFont.Bold
+		      tempFont.Bold = True
+		      
 		    End If
 		  End If
 		  '

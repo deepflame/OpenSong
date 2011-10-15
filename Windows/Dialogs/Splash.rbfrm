@@ -43,7 +43,6 @@ Begin Window Splash
       Top             =   256
       Visible         =   True
       Width           =   32
-      BehaviorIndex   =   0
    End
 End
 #tag EndWindow
@@ -64,6 +63,8 @@ End
 		  secondsOpen = 0
 		  closeTimer.Reset
 		  closeTimer.Enabled = True
+		  
+		  App.CenterInControlScreen Me
 		End Sub
 	#tag EndEvent
 

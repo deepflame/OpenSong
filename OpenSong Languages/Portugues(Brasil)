@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.6.2">
+<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.7.0">
 
   <load_settings>
     <checking_folders>Criando/Verificando pasta de documentos</checking_folders>
@@ -433,6 +433,25 @@
         <scripture_slides caption="Estilo Padrão da Bíblia"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+        <export_snapshot caption="Exportar uma tela de cada slide da apresentação para o seguinte arquivo"/>
+        <snapshot_file caption="Nome da tela">Choose the snapshot filename using a file selection dialog.</snapshot_file>
+        <export_preview caption="Exportar as telas durante configuração de visualização"/>
+        <export_live_insertions caption="Exportar telas dos slides inseridos durante uma apresentação ao vivo"/>
+        <export_metadata caption="Exportar detalhes do slide em um arquivo xml de nome similar"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Os seguintes parâmetros podem ser usados no nome do arquivo ou caminho:
+    - %d: O dia do mês atual (01-31)
+    - %h: A hora do dia no formato de 24-horas (00-23)
+    - %i: Os minutos do tempo atual (00-59)
+    - %m: O mês atual (01-12)
+    - %n: O número do slide na atual configuração (com zeros)
+    - %N: O nome do slide atual
+    - %P: Índice de apresentação para slides durante a apresentação (com zeros)
+    - %s: Os segundos do tempo atual (00-59)
+    - %S: O nome da atual configuração
+    - %T: O título do slide atual
+    - %V: O indicador de verso do slide atual (para músicas, vazio para outros slides)
+    - %y: O ano atual (4 dígitos)</snapshot_parameters>
     </settings>
     <transitions caption="Transições">
       <use_transitions caption="Ativado por padrão"/>
@@ -478,6 +497,7 @@
       <presentation caption="Apresentação no Monitor"/>
       <detected caption="%1 monitor(es) detectado(s)."/>
       <default_mode caption="Modo de Monitor Padrão"/>
+      <force_4_3_preview caption="Forçar visualização 4:3"/>
     </monitor>
     <logo caption="Logotipo">
       <mask caption="Máscara"/>
@@ -495,6 +515,10 @@
     <misc caption="Miscelâneas">
       <exit_prompt caption="Peguntar ao sair"/>
     </misc>
+
+    <errors>
+        <snapshot_file>Erro: a criação de telas está habilitado, mas nenhum nome de arquivo foi digitado.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Ajudante de Apresentação">
@@ -527,6 +551,8 @@ C: Coro
 P: Pré-Coro
 B: Ponte
 T: Etiqueta</keys>
+    <preview caption="Visualização do slide atual" />
+    <next caption="Visualização do próximo slide" />
   </presentation_helper>
 
   <help_topics title="Tópicos de Ajuda">
@@ -1114,7 +1140,7 @@ Clique aqui para editar o estilo.</body>
     <copyright>Copyright</copyright>
     <gpl>Este software foi liberado sob as condições GPL.</gpl>
     <web>Visite http://www.opensong.org/ para mais informações.</web>
-    <translating>Para traduzir o OpenSong, copie o arquivo 'English' da pasta 'OpenSong Languages' e renomeie para o nome do seu idioma. Traduza tudo no arquivo com exceção dos nomes de etiqueta (tags) e atributos. Então, envie o novo arquivo para o e-mail translator@opensong.org e nós o incluiremos na próxima versão oficial.</translating>
+    <translating>Para traduzir o OpenSong, copie o arquivo 'English' da pasta 'OpenSong Languages' e renomeie para o nome do seu idioma. Traduza tudo no arquivo com exceção dos nomes das tags e atributos. Então, envie o novo arquivo para o e-mail opensong-translate@lists.sourceforge.net ou adicione-o no Tópico 'Patches' na página do projeto do OpenSong em Source Forge e nós o incluiremos na próxima versão oficial.</translating>
     <created_with_opensong>Criado com o OpenSong</created_with_opensong>
     <sources>O OpenSong inclui códigos e recursos de:
 StringUtils (http://www.strout.net/info/coding/rb/)

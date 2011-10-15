@@ -1,4 +1,6 @@
-﻿* Introduced new slide type ('external') featuring:
+﻿* Prevent NilObjectException when user cancels selecting the default Bible. (JRC)
+
+* Introduced new slide type ('external') featuring:
 - Full interactive support for OpenOffice.org Impress and Microsoft PowerPoint including Live preview
 - Import of OpenOffice.org Impress and Microsoft PowerPoint slides as snapshot in the Images slide
 - Videolan integration for adding media (video and sound to your presentations)

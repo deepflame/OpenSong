@@ -1,4 +1,19 @@
-﻿* Fix for multiscreen setup in Linux. Displays are now properly detected with support for different resolutions per screen (Bug #1904753, Forum topic 4040032) (Vwout)
+﻿* Introduced new slide type ('external') featuring:
+- Full interactive support for OpenOffice.org Impress and Microsoft PowerPoint including Live preview
+- Import of OpenOffice.org Impress and Microsoft PowerPoint slides as snapshot in the Images slide
+- Videolan integration for adding media (video and sound to your presentations)
+- Launch any application from OpenSong
+
+To store all this, a new slide type 'application' was added to the slide types. This slide has three sections: 'presentation', 'videolan' and 'external'.
+The first is the actual interaction with tightly integrated control to OpenOffice.org Impress and Microsoft PowerPoint. The well known applications are started and controlled from OpenSong, so you don't need to leave the presentation control helper window. Of course, you are free to do so and hand over control to the presentation programs. OpenSong will follow and update the previews in the presentation helper window. At present only on Windows and feedback to OpenSong unfortunately is yet only available for Microsoft PowerPoint. For a cut down and free setup, support for the free Microsoft PowerPoint Viewer is also build-in.
+The videolan section allows playing of media files like video or sound clips using the full power of Videolan. Videolan itself is not included in OpenSong and needs to be installed separately. Next to media files, using live video from a capture card, or playback from DVD is supported as long as you manage to get the command line parameters right.
+The parameters can be stored as 'preset' in the language translation file in the section 'videolan_preset_list'. Please feel yourself encouraged to share your presents in the forums on SourceForge (http://sourceforge.net/projects/opensong/forums/forum/373378).
+As default presets are available to show a video as slide background using directX video overlay (Windows only), Fullscreen video and video playback from an external capture card using DirectShow. Freely adjustable and extensible :)
+The mode 'external' probably is the most flexible of all as it simply starts or stops an external program, allowing basic control over any program, such as your favorite DVD player, WinAmp or DMX light control unit, or anything as long as it is command line driven.
+
+As icing on the cake, for those who do not have access to Impress or PowerPoint at the presentation desk, a presentation import facility was added to the images slide. All slides from any OpenOffice.org Impress or Microsoft PowerPoint presentation file are imported as static image. The only remark is that one slide is one image, which means that animations or 'clicks' on a single presentation slide do not transfer into individual images.
+
+* Fix for multiscreen setup in Linux. Displays are now properly detected with support for different resolutions per screen (Bug #1904753, Forum topic 4040032) (Vwout)
 
 * Fix for fullscreen issue in Linux where title bar remains visible (Feature request #2916937, Forum topic 4040032) (Vwout)
 

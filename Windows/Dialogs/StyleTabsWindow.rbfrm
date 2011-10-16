@@ -130,7 +130,7 @@ Begin Window StyleTabsWindow
          Underline       =   ""
          Visible         =   True
          Width           =   144
-         Begin StaticText lbl_position
+         Begin Label lbl_position
             AutoDeactivate  =   True
             BehaviorIndex   =   3
             Bold            =   ""
@@ -238,7 +238,7 @@ Begin Window StyleTabsWindow
             Visible         =   True
             Width           =   13
          End
-         Begin StaticText txt_props_pixels
+         Begin Label txt_props_pixels
             AutoDeactivate  =   True
             BehaviorIndex   =   6
             Bold            =   False
@@ -272,7 +272,7 @@ Begin Window StyleTabsWindow
             Visible         =   True
             Width           =   20
          End
-         Begin StaticText lbl_align
+         Begin Label lbl_align
             AutoDeactivate  =   True
             BehaviorIndex   =   7
             Bold            =   ""
@@ -598,7 +598,7 @@ Begin Window StyleTabsWindow
          Width           =   93
       End
    End
-   Begin StaticText lbl_style_preview
+   Begin Label lbl_style_preview
       AutoDeactivate  =   True
       BehaviorIndex   =   17
       Bold            =   ""

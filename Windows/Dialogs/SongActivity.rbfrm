@@ -208,7 +208,7 @@ Begin Window SongActivity
       Visible         =   True
       Width           =   159
    End
-   Begin StaticText lbl_show
+   Begin Label lbl_show
       AutoDeactivate  =   True
       BehaviorIndex   =   5
       Bold            =   ""
@@ -272,7 +272,7 @@ Begin Window SongActivity
       Visible         =   True
       Width           =   202
    End
-   Begin StaticText lbl_date_range
+   Begin Label lbl_date_range
       AutoDeactivate  =   True
       BehaviorIndex   =   7
       Bold            =   ""
@@ -395,7 +395,7 @@ Begin Window SongActivity
       Visible         =   True
       Width           =   120
    End
-   Begin StaticText txt_act_to
+   Begin Label txt_act_to
       AutoDeactivate  =   True
       BehaviorIndex   =   10
       Bold            =   ""

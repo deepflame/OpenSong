@@ -77,7 +77,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   128
    End
-   Begin StaticText txt_about_version
+   Begin Label txt_about_version
       AutoDeactivate  =   True
       BehaviorIndex   =   2
       Bold            =   False
@@ -110,7 +110,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   328
    End
-   Begin StaticText txt_about_copyright
+   Begin Label txt_about_copyright
       AutoDeactivate  =   True
       BehaviorIndex   =   3
       Bold            =   False
@@ -143,7 +143,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   376
    End
-   Begin StaticText txt_about_gpl
+   Begin Label txt_about_gpl
       AutoDeactivate  =   True
       BehaviorIndex   =   4
       Bold            =   False
@@ -176,7 +176,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   376
    End
-   Begin StaticText txt_about_web
+   Begin Label txt_about_web
       AutoDeactivate  =   True
       BehaviorIndex   =   5
       Bold            =   True
@@ -209,7 +209,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   376
    End
-   Begin StaticText txt_about_programmers
+   Begin Label txt_about_programmers
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -287,7 +287,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   376
    End
-   Begin StaticText txt_about_compiler
+   Begin Label txt_about_compiler
       AutoDeactivate  =   True
       BehaviorIndex   =   8
       Bold            =   ""
@@ -320,7 +320,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   100
    End
-   Begin StaticText txt_about_memory
+   Begin Label txt_about_memory
       AutoDeactivate  =   True
       BehaviorIndex   =   9
       Bold            =   ""
@@ -353,7 +353,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   102
    End
-   Begin StaticText txt_about_objects
+   Begin Label txt_about_objects
       AutoDeactivate  =   True
       BehaviorIndex   =   10
       Bold            =   ""
@@ -386,7 +386,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   102
    End
-   Begin StaticText txt_about_build
+   Begin Label txt_about_build
       AutoDeactivate  =   True
       BehaviorIndex   =   11
       Bold            =   ""
@@ -419,7 +419,7 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   102
    End
-   Begin StaticText txt_about_language
+   Begin Label txt_about_language
       AutoDeactivate  =   True
       BehaviorIndex   =   12
       Bold            =   False

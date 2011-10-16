@@ -50,7 +50,7 @@ Begin Window ProgressWindow
       Visible         =   True
       Width           =   280
    End
-   Begin StaticText txt_StatusLine
+   Begin Label txt_StatusLine
       AutoDeactivate  =   True
       BehaviorIndex   =   1
       Bold            =   False
@@ -83,7 +83,7 @@ Begin Window ProgressWindow
       Visible         =   True
       Width           =   280
    End
-   Begin StaticText lbl_status
+   Begin Label lbl_status
       AutoDeactivate  =   True
       BehaviorIndex   =   2
       Bold            =   False

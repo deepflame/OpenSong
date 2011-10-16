@@ -135,6 +135,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   1
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -142,7 +143,7 @@ Begin Window MainSettingsWindow
          Underline       =   False
          Visible         =   True
          Width           =   250
-         Begin StaticText lbl_general_ccli
+         Begin Label lbl_general_ccli
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -253,7 +254,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   220
          End
-         Begin StaticText lbl_general_language
+         Begin Label lbl_general_language
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -341,6 +342,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   1
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -348,7 +350,7 @@ Begin Window MainSettingsWindow
          Underline       =   False
          Visible         =   True
          Width           =   250
-         Begin StaticText lbl_define_user1
+         Begin Label lbl_define_user1
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -430,7 +432,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   200
          End
-         Begin StaticText lbl_define_user2
+         Begin Label lbl_define_user2
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -512,7 +514,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   200
          End
-         Begin StaticText lbl_define_user3
+         Begin Label lbl_define_user3
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -645,6 +647,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   1
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -730,6 +733,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   4
          TabPanelIndex   =   3
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -737,7 +741,7 @@ Begin Window MainSettingsWindow
          Underline       =   ""
          Visible         =   True
          Width           =   235
-         Begin StaticText lbl_logging_level
+         Begin Label lbl_logging_level
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
@@ -889,6 +893,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   5
          TabPanelIndex   =   1
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -896,7 +901,7 @@ Begin Window MainSettingsWindow
          Underline       =   False
          Visible         =   True
          Width           =   221
-         Begin StaticText lbl_fonts_headings
+         Begin Label lbl_fonts_headings
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -933,7 +938,7 @@ Begin Window MainSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_fonts_labels
+         Begin Label lbl_fonts_labels
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -970,7 +975,7 @@ Begin Window MainSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_fonts_text_fields
+         Begin Label lbl_fonts_text_fields
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1007,7 +1012,7 @@ Begin Window MainSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_fonts_fixed_width
+         Begin Label lbl_fonts_fixed_width
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1073,7 +1078,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   195
          End
-         Begin StaticText lbl_fonts_buttons
+         Begin Label lbl_fonts_buttons
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1139,7 +1144,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   195
          End
-         Begin StaticText lbl_fonts_large_headings
+         Begin Label lbl_fonts_large_headings
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1344,6 +1349,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   6
          TabPanelIndex   =   3
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1382,7 +1388,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   250
          End
-         Begin StaticText lbl_imagequality_compression
+         Begin Label lbl_imagequality_compression
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
@@ -1419,7 +1425,7 @@ Begin Window MainSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText txt_imagequality_note
+         Begin Label txt_imagequality_note
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
@@ -1508,6 +1514,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   7
          TabPanelIndex   =   3
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1515,7 +1522,7 @@ Begin Window MainSettingsWindow
          Underline       =   False
          Visible         =   True
          Width           =   235
-         Begin StaticText lbl_proxy_host
+         Begin Label lbl_proxy_host
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1552,7 +1559,7 @@ Begin Window MainSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_proxy_port
+         Begin Label lbl_proxy_port
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1699,6 +1706,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   8
          TabPanelIndex   =   3
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1790,6 +1798,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   2
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1855,7 +1864,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   205
          End
-         Begin StaticText nte_folder_folder
+         Begin Label nte_folder_folder
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1923,7 +1932,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   120
          End
-         Begin StaticText nte_documents_warning
+         Begin Label nte_documents_warning
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2012,6 +2021,7 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   2
+         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -2019,7 +2029,7 @@ Begin Window MainSettingsWindow
          Underline       =   ""
          Visible         =   True
          Width           =   280
-         Begin StaticText lbl_applications_pptview
+         Begin Label lbl_applications_pptview
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
@@ -2160,7 +2170,7 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   120
          End
-         Begin StaticText lbl_applications_videolan
+         Begin Label lbl_applications_videolan
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""

@@ -100,7 +100,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   200
    End
-   Begin StaticText txt_context_help
+   Begin Label txt_context_help
       Active          =   ""
       AutoDeactivate  =   True
       Bold            =   False
@@ -720,7 +720,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Width           =   87
             End
          End
-         Begin StaticText lbl_songs_song_folders
+         Begin Label lbl_songs_song_folders
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -757,7 +757,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_songs_songs
+         Begin Label lbl_songs_songs
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -824,7 +824,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   18
          End
-         Begin StaticText lbl_songs_curr_folder
+         Begin Label lbl_songs_curr_folder
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1607,7 +1607,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Width           =   92
             End
          End
-         Begin StaticText lbl_set_items
+         Begin Label lbl_set_items
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1953,7 +1953,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText hdr_style_header
+         Begin Label hdr_style_header
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
@@ -2103,7 +2103,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText lbl_song_aka
+         Begin Label lbl_song_aka
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2140,7 +2140,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_themes
+         Begin Label lbl_song_themes
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2177,7 +2177,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_capo
+         Begin Label lbl_song_capo
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2214,7 +2214,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_key_line
+         Begin Label lbl_song_key_line
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2331,7 +2331,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   125
          End
-         Begin StaticText lbl_song_key
+         Begin Label lbl_song_key
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2368,7 +2368,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_time_sig
+         Begin Label lbl_song_time_sig
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2436,7 +2436,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   125
          End
-         Begin StaticText lbl_song_user2
+         Begin Label lbl_song_user2
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2473,7 +2473,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_tempo
+         Begin Label lbl_song_tempo
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2510,7 +2510,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_user3
+         Begin Label lbl_song_user3
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2866,7 +2866,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   270
          End
-         Begin StaticText lbl_song_user1
+         Begin Label lbl_song_user1
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2903,7 +2903,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText hdr_song_header_2
+         Begin Label hdr_song_header_2
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
@@ -3102,7 +3102,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText hdr_song_header
+         Begin Label hdr_song_header
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
@@ -3139,7 +3139,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_ccli
+         Begin Label lbl_song_ccli
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -3176,7 +3176,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_copyright
+         Begin Label lbl_song_copyright
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -3213,7 +3213,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_author
+         Begin Label lbl_song_author
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -3250,7 +3250,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_presentation
+         Begin Label lbl_song_presentation
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -3287,7 +3287,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_lyrics
+         Begin Label lbl_song_lyrics
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -3324,7 +3324,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_hymn_number
+         Begin Label lbl_song_hymn_number
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -3361,7 +3361,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_insert
+         Begin Label lbl_song_insert
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -3398,7 +3398,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_song_title
+         Begin Label lbl_song_title
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -3493,7 +3493,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Visible         =   True
                Width           =   80
             End
-            Begin StaticText lbl_song_using
+            Begin Label lbl_song_using
                Active          =   ""
                AutoDeactivate  =   True
                Bold            =   ""
@@ -4144,7 +4144,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText lbl_slide_auto_advance
+         Begin Label lbl_slide_auto_advance
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4181,7 +4181,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText txt_slide_seconds
+         Begin Label txt_slide_seconds
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4218,7 +4218,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_slide_insert
+         Begin Label lbl_slide_insert
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4472,7 +4472,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   160
          End
-         Begin StaticText lbl_slide_folder
+         Begin Label lbl_slide_folder
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4509,7 +4509,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText hdr_slide_header
+         Begin Label hdr_slide_header
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
@@ -4546,7 +4546,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_slide_presentation
+         Begin Label lbl_slide_presentation
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4583,7 +4583,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_slide_origorder
+         Begin Label lbl_slide_origorder
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4665,7 +4665,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   170
          End
-         Begin StaticText lbl_slide_name
+         Begin Label lbl_slide_name
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4702,7 +4702,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_slide_subtitle
+         Begin Label lbl_slide_subtitle
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4739,7 +4739,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_slide_title
+         Begin Label lbl_slide_title
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4776,7 +4776,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_slide_slides
+         Begin Label lbl_slide_slides
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -4813,7 +4813,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_slide_transition
+         Begin Label lbl_slide_transition
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
@@ -4850,7 +4850,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_slide_notes
+         Begin Label lbl_slide_notes
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -5242,7 +5242,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText txt_image_seconds
+         Begin Label txt_image_seconds
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -5279,7 +5279,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_image_auto_advance
+         Begin Label lbl_image_auto_advance
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -5316,7 +5316,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_image_transition
+         Begin Label lbl_image_transition
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
@@ -5385,7 +5385,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   100
          End
-         Begin StaticText hdr_image_header
+         Begin Label hdr_image_header
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
@@ -5453,7 +5453,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   110
          End
-         Begin StaticText lbl_image_name
+         Begin Label lbl_image_name
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -5618,7 +5618,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   340
          End
-         Begin StaticText lbl_image_notes
+         Begin Label lbl_image_notes
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -5655,7 +5655,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_image_title
+         Begin Label lbl_image_title
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -5692,7 +5692,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_image_action
+         Begin Label lbl_image_action
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -5838,7 +5838,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   40
          End
-         Begin StaticText lbl_image_subtitle
+         Begin Label lbl_image_subtitle
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
@@ -5875,7 +5875,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_image_images
+         Begin Label lbl_image_images
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   ""
@@ -6379,7 +6379,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText hdr_external_header
+         Begin Label hdr_external_header
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   True
@@ -6416,7 +6416,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_external_name
+         Begin Label lbl_external_name
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -6453,7 +6453,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_external_notes
+         Begin Label lbl_external_notes
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -6490,7 +6490,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_external_application
+         Begin Label lbl_external_application
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -6850,7 +6850,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Visible         =   True
                   Width           =   20
                End
-               Begin StaticText lbl_external_presentation_file
+               Begin Label lbl_external_presentation_file
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -6974,7 +6974,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Visible         =   True
                   Width           =   310
                End
-               Begin StaticText lbl_external_presentation_host
+               Begin Label lbl_external_presentation_host
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -7088,7 +7088,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Visible         =   True
                   Width           =   310
                End
-               Begin StaticText nte_external_host_powerpoint_info
+               Begin Label nte_external_host_powerpoint_info
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -7125,7 +7125,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Window          =   0
                   _mWindow        =   0
                End
-               Begin StaticText nte_external_host_pptview_info
+               Begin Label nte_external_host_pptview_info
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -7162,7 +7162,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Window          =   0
                   _mWindow        =   0
                End
-               Begin StaticText nte_external_host_impress_info
+               Begin Label nte_external_host_impress_info
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -7227,7 +7227,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Underline       =   ""
                Visible         =   True
                Width           =   330
-               Begin StaticText txt_external_no_application
+               Begin Label txt_external_no_application
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -7292,7 +7292,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Underline       =   ""
                Visible         =   True
                Width           =   330
-               Begin StaticText lbl_external_application_parameters
+               Begin Label lbl_external_application_parameters
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -7329,7 +7329,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Window          =   0
                   _mWindow        =   0
                End
-               Begin StaticText lbl_external_application_filename
+               Begin Label lbl_external_application_filename
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""
@@ -7784,7 +7784,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Visible         =   True
                   Width           =   310
                End
-               Begin StaticText lbl_external_videolan_mediafilename
+               Begin Label lbl_external_videolan_mediafilename
                   Active          =   ""
                   AutoDeactivate  =   True
                   Bold            =   ""

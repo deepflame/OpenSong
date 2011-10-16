@@ -24,7 +24,7 @@ Begin Window SongPickerWindow
    Title           =   "Song Lookup"
    Visible         =   True
    Width           =   436
-   Begin StaticText txt_explanation_header
+   Begin Label txt_explanation_header
       AutoDeactivate  =   True
       BehaviorIndex   =   0
       Bold            =   False
@@ -58,7 +58,7 @@ Begin Window SongPickerWindow
       Visible         =   True
       Width           =   378
    End
-   Begin StaticText lbl_select_folder
+   Begin Label lbl_select_folder
       AutoDeactivate  =   True
       BehaviorIndex   =   1
       Bold            =   True
@@ -124,7 +124,7 @@ Begin Window SongPickerWindow
       Visible         =   True
       Width           =   206
    End
-   Begin StaticText lbl_quick_lookup
+   Begin Label lbl_quick_lookup
       AutoDeactivate  =   True
       BehaviorIndex   =   3
       Bold            =   False
@@ -294,7 +294,7 @@ Begin Window SongPickerWindow
       Visible         =   True
       Width           =   406
    End
-   Begin StaticText lbl_song_preview
+   Begin Label lbl_song_preview
       AutoDeactivate  =   True
       BehaviorIndex   =   7
       Bold            =   False
@@ -374,7 +374,7 @@ Begin Window SongPickerWindow
       Visible         =   True
       Width           =   408
    End
-   Begin StaticText lbl_presentation
+   Begin Label lbl_presentation
       AutoDeactivate  =   True
       BehaviorIndex   =   9
       Bold            =   False
@@ -454,7 +454,7 @@ Begin Window SongPickerWindow
       Visible         =   True
       Width           =   197
    End
-   Begin StaticText lbl_origorder
+   Begin Label lbl_origorder
       AutoDeactivate  =   True
       BehaviorIndex   =   11
       Bold            =   False

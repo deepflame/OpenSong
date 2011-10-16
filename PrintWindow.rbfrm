@@ -287,7 +287,7 @@ Begin Window PrintWindow
          Visible         =   True
          Width           =   30
       End
-      Begin StaticText txt_page_page
+      Begin Label txt_page_page
          AutoDeactivate  =   True
          BehaviorIndex   =   9
          Bold            =   False

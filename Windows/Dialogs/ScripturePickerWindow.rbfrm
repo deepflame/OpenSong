@@ -43,6 +43,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   11
       TextUnit        =   0
@@ -126,7 +127,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Visible         =   True
          Width           =   69
       End
-      Begin StaticText lbl_quick_reference
+      Begin Label lbl_quick_reference
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -148,6 +149,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Reference:"
          TextAlign       =   0
          TextColor       =   0
@@ -160,7 +162,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Visible         =   True
          Width           =   65
       End
-      Begin StaticText nte_quick_example
+      Begin Label nte_quick_example
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -182,6 +184,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Ex: ""2Pet 1:1-2"" or ""2Pet 1:1-2 (KJV)"""
          TextAlign       =   0
          TextColor       =   0
@@ -338,6 +341,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   0
       TextUnit        =   0
@@ -445,7 +449,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
       End
-      Begin StaticText lbl_scr_ot
+      Begin Label lbl_scr_ot
          AutoDeactivate  =   True
          Bold            =   ""
          DataField       =   ""
@@ -467,6 +471,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Old testament"
          TextAlign       =   0
          TextColor       =   0
@@ -479,7 +484,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Visible         =   True
          Width           =   80
       End
-      Begin StaticText lbl_scr_nt
+      Begin Label lbl_scr_nt
          AutoDeactivate  =   True
          Bold            =   ""
          DataField       =   ""
@@ -501,6 +506,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "New testament"
          TextAlign       =   0
          TextColor       =   0
@@ -583,6 +589,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -641,6 +648,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   0
       TextUnit        =   0
@@ -699,6 +707,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   0
       TextUnit        =   0
@@ -797,7 +806,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Visible         =   True
       Width           =   130
    End
-   Begin StaticText txt_verse_dash
+   Begin Label txt_verse_dash
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -819,6 +828,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "-"
       TextAlign       =   1
       TextColor       =   0
@@ -976,7 +986,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Visible         =   True
       Width           =   404
    End
-   Begin StaticText txt_verse_colon
+   Begin Label txt_verse_colon
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -998,6 +1008,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   15
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   ":"
       TextAlign       =   1
       TextColor       =   0
@@ -1010,7 +1021,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Visible         =   True
       Width           =   10
    End
-   Begin StaticText lbl_scr_from_verse
+   Begin Label lbl_scr_from_verse
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -1032,6 +1043,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   16
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "From verse"
       TextAlign       =   0
       TextColor       =   0
@@ -1044,7 +1056,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Visible         =   True
       Width           =   55
    End
-   Begin StaticText lbl_scr_paragraph
+   Begin Label lbl_scr_paragraph
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -1066,6 +1078,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   17
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Paragraph"
       TextAlign       =   0
       TextColor       =   0
@@ -1078,7 +1091,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Visible         =   True
       Width           =   50
    End
-   Begin StaticText lbl_src_preview
+   Begin Label lbl_src_preview
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -1100,6 +1113,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   18
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Preview of scripture passage"
       TextAlign       =   0
       TextColor       =   0
@@ -1131,6 +1145,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   19
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   0
       TextUnit        =   0
@@ -1188,7 +1203,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Width           =   110
       End
    End
-   Begin StaticText lbl_scr_to_verse
+   Begin Label lbl_scr_to_verse
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -1210,6 +1225,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Selectable      =   False
       TabIndex        =   20
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "To verse"
       TextAlign       =   0
       TextColor       =   0
@@ -1581,7 +1597,7 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub RebuildBooklistListboxes()
-		   //
+		  //
 		  // Rebuild the OT & NT listboxes from the current bible
 		  //
 		  

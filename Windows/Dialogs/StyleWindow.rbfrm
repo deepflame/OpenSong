@@ -103,6 +103,7 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
@@ -168,7 +169,7 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   250
       End
-      Begin StaticText lbl_font_align
+      Begin Label lbl_font_align
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -189,6 +190,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Align:"
          TextAlign       =   1
          TextColor       =   0
@@ -578,6 +580,7 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
@@ -585,7 +588,7 @@ Begin Window StyleWindow
       Underline       =   False
       Visible         =   True
       Width           =   140
-      Begin StaticText lbl_background_color
+      Begin Label lbl_background_color
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -606,6 +609,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Color:"
          TextAlign       =   2
          TextColor       =   0
@@ -617,7 +621,7 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   55
       End
-      Begin StaticText lbl_background_image
+      Begin Label lbl_background_image
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -638,6 +642,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Image:"
          TextAlign       =   1
          TextColor       =   0
@@ -649,7 +654,7 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   80
       End
-      Begin StaticText nte_background_click_to_change
+      Begin Label nte_background_click_to_change
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -670,6 +675,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "(left-click to change)"
          TextAlign       =   1
          TextColor       =   0
@@ -681,7 +687,7 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   140
       End
-      Begin StaticText nte_background_right_click_to_clear
+      Begin Label nte_background_right_click_to_clear
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -702,6 +708,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "(right-click to clear)"
          TextAlign       =   1
          TextColor       =   0
@@ -713,7 +720,7 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   140
       End
-      Begin StaticText lbl_background_position
+      Begin Label lbl_background_position
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -734,6 +741,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   4
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Position:"
          TextAlign       =   1
          TextColor       =   0
@@ -745,7 +753,7 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   108
       End
-      Begin StaticText lbl_background_trim_bottom
+      Begin Label lbl_background_trim_bottom
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -766,6 +774,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   5
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Trim Bottom*:"
          TextAlign       =   1
          TextColor       =   0
@@ -808,7 +817,7 @@ Begin Window StyleWindow
          Visible         =   True
          Width           =   80
       End
-      Begin StaticText txt_background_pixels
+      Begin Label txt_background_pixels
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -829,6 +838,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   7
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "px"
          TextAlign       =   0
          TextColor       =   0
@@ -947,7 +957,7 @@ Begin Window StyleWindow
          Width           =   30
       End
    End
-   Begin StaticText nte_style_trim_note
+   Begin Label nte_style_trim_note
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -968,6 +978,7 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "*Cuts the bottom of the background to hide watermarks, web site urls, etc. (To avoid distortion, this also trims from the sides to compensate.)"
       TextAlign       =   0
       TextColor       =   0
@@ -998,6 +1009,7 @@ Begin Window StyleWindow
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
@@ -1005,7 +1017,7 @@ Begin Window StyleWindow
       Underline       =   ""
       Visible         =   True
       Width           =   410
-      Begin StaticText lbl_options_subtitles
+      Begin Label lbl_options_subtitles
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -1026,6 +1038,7 @@ Begin Window StyleWindow
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Song Subtitles:"
          TextAlign       =   0
          TextColor       =   0

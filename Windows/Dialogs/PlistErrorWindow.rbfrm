@@ -84,7 +84,7 @@ Begin Window PlistErrorWindow
       Visible         =   True
       Width           =   110
    End
-   Begin StaticText lbl_message
+   Begin Label lbl_message
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -105,6 +105,7 @@ Begin Window PlistErrorWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Error loading plist..."
       TextAlign       =   0
       TextColor       =   0

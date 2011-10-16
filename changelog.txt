@@ -1,5 +1,7 @@
 ﻿* Replace depreciated StaticText class with Label class for compatibility with RB 2010r4 and above (JRC)
 
+* Prevent NilObjectException when user cancels selecting the default Bible. (JRC)
+
 * Introduced new slide type ('external') featuring:
 - Full interactive support for OpenOffice.org Impress and Microsoft PowerPoint including Live preview
 - Import of OpenOffice.org Impress and Microsoft PowerPoint slides as snapshot in the Images slide

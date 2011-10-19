@@ -17,6 +17,7 @@
 # 2010-01-30  Vwout       Update to support the new Builds directory structure
 #                         and new external libraries
 # 2011-01-30  Vwout       Update to automate creation of binary archive
+# 2011-10-19  Vwout       Update to automate creation of source archive
 #
 
 VERSION=`cat ../OpenSong.rbvcp | grep ShortVersion | cut -d = -f 2`
@@ -154,4 +155,16 @@ echo "Creating binary packed archive"
 cd opensong/opt
 fakeroot tar czf ../../opensong_${VERSION}_i386-linux.tar.gz OpenSong
 cd ../..
+
+echo "Creating source archive"
+if [ -d "opensong_$VERSION" ]
+then
+  rm -rf opensong_$VERSION
+fi
+mkdir opensong_$VERSION
+svn_root=`svn info .. | grep "URL:" | cut -d" " -f 2`
+echo "  .. creating svn snapshot ($svn_root)"
+svn co $svn_root opensong_$VERSION
+echo "  .. creating archive"
+fakeroot tar czf opensong_$VERSION-source.tar.gz --exclude-vcs opensong_$VERSION
 

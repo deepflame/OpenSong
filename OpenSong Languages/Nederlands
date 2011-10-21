@@ -386,7 +386,7 @@
   </main_menu>
 
   <general_settings title="Algemene instellingen">
-    <general caption="Algemeen" head1="Basis" head2="Bestandslocaties" head3="Systeem">
+    <general caption="Algemeen" head1="Basis" head2="Bestandslocaties" head3="Systeem" head4="Uiterlijk">
       <ccli caption="CCLI Licentie #"/>
       <version_check caption="Controleer voor nieuwere versies bij starten."/>
       <language caption="Taal"/>
@@ -445,6 +445,19 @@
       <videolan caption="Locatie van Videolan client"/>
       <videolan_browse caption="link(shared/browse/@caption)"/>
     </applications>
+	<slidetype_coloring caption="Dia soort kleurmarkering">
+	  <coloring caption="Achtergrond kleuren gebruiken"/>
+	  <verse caption="Lied, vers"/>
+	  <bridge caption="Lied, brug"/>
+	  <prechorus caption="Lied, pre-chorus"/>
+	  <chorus caption="Lied, refrein"/>
+	  <tag caption="Lied, tag"/>
+	  <scripture caption="Bijbeltekst"/>
+	  <custom caption="Aangepaste dia"/>
+	  <image caption="Afbeeldingen"/>
+	  <application caption="Externe toepassing"/>
+	  <blank caption="Leeg (tussengevoegd)"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Afdruk instellingen">

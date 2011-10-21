@@ -1118,6 +1118,48 @@ End
 		  Return True
 		End Function
 	#tag EndEvent
+	#tag Event
+		Function CellBackgroundPaint(g As Graphics, row As Integer, column As Integer) As Boolean
+		  // Based on a contribution by fmate14
+		  // User contributed from https://sourceforge.net/projects/opensong/forums/forum/373378/topic/1679116?message=4171729
+		  
+		  If App.SlideStyleColorEnabled() Then
+		    g.ForeColor=rgb(255,255,255)
+		    
+		    If row <me.listCount() Then
+		      g.ForeColor=App.SlideStyleColor("blank") // Default for inserted blanks
+		      
+		      Select Case me.CellTag(row,0)
+		      Case "song"
+		        Select Case me.Cell(row,1).Left(1)
+		        Case "V" // Verse
+		          g.ForeColor = App.SlideStyleColor("verse")
+		        Case "B" // Bridge
+		          g.ForeColor = App.SlideStyleColor("bridge")
+		        Case "P" // Pre-Chorus
+		          g.ForeColor = App.SlideStyleColor("pre-chorus")
+		        Case "C" // Chorus
+		          g.ForeColor = App.SlideStyleColor("chorus")
+		        Case "T" // Tag
+		          g.ForeColor = App.SlideStyleColor("tag")
+		        End Select
+		      Case "custom"
+		        g.ForeColor = App.SlideStyleColor("custom")
+		      Case "scripture"
+		        g.ForeColor = App.SlideStyleColor("scripture")
+		      Case "style"
+		        g.ForeColor = App.SlideStyleColor("style")
+		      Case "image"
+		        g.ForeColor = App.SlideStyleColor("image")
+		      Case "external"
+		        g.ForeColor = App.SlideStyleColor("external")
+		      End Select
+		    End If
+		    
+		    g.fillRect(0,0,g.width, g.height)
+		  End If
+		End Function
+	#tag EndEvent
 #tag EndEvents
 #tag Events btn_mode_normal
 	#tag Event

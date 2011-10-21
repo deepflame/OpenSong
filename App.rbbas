@@ -1068,6 +1068,45 @@ Inherits Application
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function SlideStyleColor(type As String) As Color
+		  Dim slideColor As Color = rgb(255,255,255)
+		  
+		  If Not SmartML.GetValueC(App. MyMainSettings.DocumentElement, "slide_style_color/"+type+"/@color", slideColor, False) Then
+		    Select Case type
+		    Case "verse"
+		      slideColor = rgb(213,213,255)
+		    Case "bridge"
+		      slideColor = rgb(138,138,255)
+		    Case "pre-chorus"
+		      slideColor = rgb(113,113,255)
+		    Case "chorus"
+		      slideColor = rgb(188,188,255)
+		    Case "tag"
+		      slideColor = rgb(163,163,255)
+		    Case "custom"
+		      slideColor = rgb(255,227,213)
+		    Case "scripture"
+		      slideColor = rgb(255,180,180)
+		    Case "style"
+		      slideColor = rgb(234,234,255)
+		    Case "image"
+		      slideColor = rgb(255,255,180)
+		    Case "external"
+		      slideColor = rgb(213,255,213)
+		    End Select
+		  End If
+		  
+		  Return slideColor
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function SlideStyleColorEnabled() As Boolean
+		  Return SmartML.GetValueB(App.MyMainSettings.DocumentElement, "slide_style_color/@enabled", True, True)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function SmartVersion() As String
 		  Dim t As String
 		  

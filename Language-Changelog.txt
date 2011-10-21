@@ -1,3 +1,5 @@
+general_settings/slidetype_coloring/*
+general_settings/general (modified)
 load_settings/videolan_preset
 sets_mode/new_item/add_external
 slide_editor/slides (modified)

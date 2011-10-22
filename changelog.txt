@@ -1,4 +1,6 @@
-﻿* Added color markings for different slide and verse types in set list and presentation helper window (Vwout, thanks to fmate14)
+﻿* Fix issue when doing a live insertion of a song. In case of equal names (equal songs) the positioning in the PresentationHelperWindow was incorrect (Vwout)
+
+* Added color markings for different slide and verse types in set list and presentation helper window (Vwout, thanks to fmate14)
 Each slide or vers line has a background color that indicates what kind of slide is presented. This provides a quick overview during live presentation.
 This feature can be switched off in the general settings. All colors can be customised. These color settings do not affect the background color of presented slides.
 

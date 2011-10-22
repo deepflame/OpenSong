@@ -26,9 +26,7 @@ Begin Window SongPickerWindow
    Width           =   436
    Begin Label txt_explanation_header
       AutoDeactivate  =   True
-      BehaviorIndex   =   0
       Bold            =   False
-      ControlOrder    =   0
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -45,24 +43,24 @@ Begin Window SongPickerWindow
       LockTop         =   True
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. You can also double-click on the song name to add it."
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   5
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   378
    End
    Begin Label lbl_select_folder
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Bold            =   True
-      ControlOrder    =   1
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -79,24 +77,24 @@ Begin Window SongPickerWindow
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Select Folder:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   55
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   197
    End
    Begin PopupMenu pop_select_folder
       AutoDeactivate  =   True
-      BehaviorIndex   =   2
       Bold            =   False
-      ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -117,8 +115,9 @@ Begin Window SongPickerWindow
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   12
+      TextFont        =   "Arial"
+      TextSize        =   10
+      TextUnit        =   0
       Top             =   69
       Underline       =   False
       Visible         =   True
@@ -126,9 +125,7 @@ Begin Window SongPickerWindow
    End
    Begin Label lbl_quick_lookup
       AutoDeactivate  =   True
-      BehaviorIndex   =   3
       Bold            =   False
-      ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -145,15 +142,17 @@ Begin Window SongPickerWindow
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Quick Lookup:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   52
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   171
@@ -163,16 +162,15 @@ Begin Window SongPickerWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   4
       Bold            =   False
       Border          =   True
-      ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   20
       HelpTag         =   ""
+      HideSelection   =   True
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -185,7 +183,6 @@ Begin Window SongPickerWindow
       LockTop         =   True
       Mask            =   ""
       Multiline       =   False
-      Password        =   False
       ReadOnly        =   False
       Scope           =   0
       ScrollbarHorizontal=   False
@@ -196,8 +193,9 @@ Begin Window SongPickerWindow
       TabStop         =   True
       Text            =   ""
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
+      TextFont        =   "Arial"
+      TextSize        =   10
+      TextUnit        =   0
       Top             =   69
       Underline       =   False
       UseFocusRing    =   True
@@ -207,12 +205,11 @@ Begin Window SongPickerWindow
    Begin ListBox lst_all_songs
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
-      BehaviorIndex   =   5
       Bold            =   False
+      Border          =   True
       ColumnCount     =   2
       ColumnsResizable=   False
       ColumnWidths    =   "66%,*"
-      ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -246,6 +243,7 @@ Begin Window SongPickerWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
+      TextUnit        =   0
       Top             =   106
       Underline       =   False
       UseFocusRing    =   True
@@ -259,10 +257,9 @@ Begin Window SongPickerWindow
       AcceptTabs      =   ""
       AutoDeactivate  =   True
       Backdrop        =   ""
-      BehaviorIndex   =   6
-      ControlOrder    =   6
       DisableLiveDrag =   0
       doNotAttachEmbeddedControls=   0
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       handleDimple    =   0
@@ -286,7 +283,7 @@ Begin Window SongPickerWindow
       StayProportional=   0
       StopAtMaxOffset =   0
       StopAtMinOffset =   0
-      TabIndex        =   6
+      TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
       Top             =   278
@@ -296,9 +293,7 @@ Begin Window SongPickerWindow
    End
    Begin Label lbl_song_preview
       AutoDeactivate  =   True
-      BehaviorIndex   =   7
       Bold            =   False
-      ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -315,15 +310,17 @@ Begin Window SongPickerWindow
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Preview:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   289
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   204
@@ -333,16 +330,15 @@ Begin Window SongPickerWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   8
       Bold            =   False
       Border          =   True
-      ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   117
       HelpTag         =   ""
+      HideSelection   =   True
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -355,7 +351,6 @@ Begin Window SongPickerWindow
       LockTop         =   True
       Mask            =   ""
       Multiline       =   True
-      Password        =   False
       ReadOnly        =   True
       Scope           =   0
       ScrollbarHorizontal=   True
@@ -366,8 +361,9 @@ Begin Window SongPickerWindow
       TabStop         =   True
       Text            =   ""
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
+      TextFont        =   "Arial"
+      TextSize        =   10
+      TextUnit        =   0
       Top             =   304
       Underline       =   False
       UseFocusRing    =   True
@@ -376,9 +372,7 @@ Begin Window SongPickerWindow
    End
    Begin Label lbl_presentation
       AutoDeactivate  =   True
-      BehaviorIndex   =   9
       Bold            =   False
-      ControlOrder    =   9
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -395,15 +389,17 @@ Begin Window SongPickerWindow
       LockTop         =   False
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Custom Presentation Order:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   433
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   170
@@ -413,10 +409,9 @@ Begin Window SongPickerWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   10
       Bold            =   False
       Border          =   True
-      ControlOrder    =   10
+      CueText         =   ""
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -434,13 +429,9 @@ Begin Window SongPickerWindow
       LockRight       =   True
       LockTop         =   False
       Mask            =   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
-      Multiline       =   False
       Password        =   False
       ReadOnly        =   False
       Scope           =   0
-      ScrollbarHorizontal=   False
-      ScrollbarVertical=   True
-      Styled          =   False
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
@@ -448,6 +439,7 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   447
       Underline       =   False
       UseFocusRing    =   True
@@ -456,9 +448,7 @@ Begin Window SongPickerWindow
    End
    Begin Label lbl_origorder
       AutoDeactivate  =   True
-      BehaviorIndex   =   11
       Bold            =   False
-      ControlOrder    =   11
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -475,15 +465,17 @@ Begin Window SongPickerWindow
       LockTop         =   False
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Original Presentation Order:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   433
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   160
@@ -493,10 +485,9 @@ Begin Window SongPickerWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   12
       Bold            =   False
       Border          =   True
-      ControlOrder    =   12
+      CueText         =   ""
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   False
@@ -514,13 +505,9 @@ Begin Window SongPickerWindow
       LockRight       =   True
       LockTop         =   False
       Mask            =   ""
-      Multiline       =   False
       Password        =   False
       ReadOnly        =   True
       Scope           =   0
-      ScrollbarHorizontal=   False
-      ScrollbarVertical=   True
-      Styled          =   False
       TabIndex        =   12
       TabPanelIndex   =   0
       TabStop         =   True
@@ -528,6 +515,7 @@ Begin Window SongPickerWindow
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   447
       Underline       =   False
       UseFocusRing    =   True
@@ -536,11 +524,10 @@ Begin Window SongPickerWindow
    End
    Begin PushButton btn_add
       AutoDeactivate  =   True
-      BehaviorIndex   =   13
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Add"
-      ControlOrder    =   13
       Default         =   False
       Enabled         =   False
       Height          =   22
@@ -560,6 +547,7 @@ Begin Window SongPickerWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   491
       Underline       =   False
       Visible         =   True
@@ -567,11 +555,10 @@ Begin Window SongPickerWindow
    End
    Begin PushButton btn_done
       AutoDeactivate  =   True
-      BehaviorIndex   =   14
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Done"
-      ControlOrder    =   14
       Default         =   False
       Enabled         =   True
       Height          =   22
@@ -591,15 +578,14 @@ Begin Window SongPickerWindow
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   490
       Underline       =   False
       Visible         =   True
       Width           =   69
    End
    Begin Timer timerLookup
-      BehaviorIndex   =   15
-      ControlOrder    =   15
-      Enabled         =   True
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   443
@@ -607,20 +593,17 @@ Begin Window SongPickerWindow
       Mode            =   2
       Period          =   1500
       Scope           =   0
-      TabIndex        =   15
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   0
-      Visible         =   True
+      Width           =   32
    End
    Begin CanvasSmartSplitterDebugger CanvasSmartSplitterDebugger1
       AcceptFocus     =   ""
       AcceptTabs      =   ""
       AutoDeactivate  =   True
       Backdrop        =   ""
-      BehaviorIndex   =   16
-      ControlOrder    =   16
       debug           =   0
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   100

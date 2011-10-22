@@ -1,4 +1,4 @@
-﻿* Fix issue when doing a live insertion of a song. In case of equal names (equal songs) the positioning in the PresentationHelperWindow was incorrect (Vwout)
+﻿* Fix issue when doing a live insertion of a song. In case of equal names (equal songs) the positioning in the PresentationHelperWindow was incorrect (Bug #3404474) (Vwout)
 
 * Added color markings for different slide and verse types in set list and presentation helper window (Vwout, thanks to fmate14)
 Each slide or vers line has a background color that indicates what kind of slide is presented. This provides a quick overview during live presentation.
@@ -21,7 +21,7 @@ The parameters can be stored as 'preset' in the language translation file in the
 As default presets are available to show a video as slide background using directX video overlay (Windows only), Fullscreen video and video playback from an external capture card using DirectShow. Freely adjustable and extensible :)
 The mode 'external' probably is the most flexible of all as it simply starts or stops an external program, allowing basic control over any program, such as your favorite DVD player, WinAmp or DMX light control unit, or anything as long as it is command line driven.
 
-As icing on the cake, for those who do not have access to Impress or PowerPoint at the presentation desk, a presentation import facility was added to the images slide. All slides from any OpenOffice.org Impress or Microsoft PowerPoint presentation file are imported as static image. The only remark is that one slide is one image, which means that animations or 'clicks' on a single presentation slide do not transfer into individual images.
+As icing on the cake, for those who do not have access to Impress or PowerPoint at the presentation desk, a presentation import facility was added to the images slide. All slides from any OpenOffice.org Impress or Microsoft PowerPoint presentation file are imported as static image. The only remark is that one slide is one image, which means that animations or 'clicks' on a single presentation slide do not transfer into individual images. (Vwout)
 
 * Fix for multiscreen setup in Linux. Displays are now properly detected with support for different resolutions per screen (Bug #1904753, Forum topic 4040032) (Vwout)
 

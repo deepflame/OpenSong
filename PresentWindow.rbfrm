@@ -304,7 +304,6 @@ End
 		  Dim newGroup As XmlNode
 		  Dim s As XmlDocument
 		  Dim f As FolderItem
-		  Dim temp As String
 		  Dim xOldSlide As XmlNode
 		  Dim xNewSlide As XmlNode
 		  Dim oldSlide As Integer
@@ -376,8 +375,7 @@ End
 		    SmartML.SetValueB(newgroup, "@LiveInsertion", True)
 		    
 		    ' --- Move to where we need to be ---
-		    temp = SmartML.GetValue(newGroup, "@name")
-		    Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
+		    Do Until SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@ItemNumber") = NumberOfItems
 		      currentSlide = currentSlide + 1
 		      XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
 		    Loop

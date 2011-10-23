@@ -1,4 +1,6 @@
-﻿* Fix issue when doing a live insertion of a song. In case of equal names (equal songs) the positioning in the PresentationHelperWindow was incorrect (Bug #3404474) (Vwout)
+﻿* Fix issue where a reminder to save the slide after a change in the override style is not always given, causing the style change to get lost. (Vwout)
+
+* Fix issue when doing a live insertion of a song. In case of equal names (equal songs) the positioning in the PresentationHelperWindow was incorrect (Bug #3404474) (Vwout)
 
 * Added color markings for different slide and verse types in set list and presentation helper window (Vwout, thanks to fmate14)
 Each slide or vers line has a background color that indicates what kind of slide is presented. This provides a quick overview during live presentation.

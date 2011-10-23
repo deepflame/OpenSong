@@ -15471,8 +15471,10 @@ End
 #tag Events can_slide_style
 	#tag Event
 		Sub Action()
-		  If Status_SetOpen Then Status_SetChanged = True
-		  EnableMenuItems
+		  If Status_InSetEditable Then 
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -15771,8 +15773,10 @@ End
 #tag Events can_image_style
 	#tag Event
 		Sub Action()
-		  If Status_SetOpen Then Status_InSetChanged = True
-		  EnableMenuItems
+		  If Status_InSetEditable Then 
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event

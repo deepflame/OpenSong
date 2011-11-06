@@ -1668,7 +1668,7 @@ Module SongML
 		                lastChar = Right(slices(currSlice*lineCount + currVerse), 1)
 		                If StringUtils.isalpha(asc(lastChar)) Then 'Not an explicitly designated syllable end or a word break
 		                  If StringUtils.isalpha(asc(Left(slices((currSlice + 1)*lineCount + currVerse), 1))) Then 'there is no space at the end of this slice or beginning of the next
-		                    slices(currSlice*lineCount + currVerse) = slices(currSlice*lineCount + currVerse) + " -&nbsp"
+		                    slices(currSlice*lineCount + currVerse) = slices(currSlice*lineCount + currVerse) + " -&nbsp;"
 		                  End If
 		                End If
 		              End If

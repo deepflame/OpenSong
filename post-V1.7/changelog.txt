@@ -1,4 +1,6 @@
-﻿* Update MacOSLib. (swampcat) (FSRef, FSSPec, MacFileManager)
+﻿* Fix some UTF-8 processing issues in the Song Picker and Bible lookup. (swampcat)
+
+* Update MacOSLib. (swampcat) (FSRef, FSSPec, MacFileManager)
 
 * Cleanup on Song object to prepare for additional work on it. (swampcat) (Song)
 

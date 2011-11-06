@@ -790,6 +790,17 @@ Module StringUtils
 
 	#tag Method, Flags = &h0
 		Function isalnum(c As Integer) As Boolean
+		  Dim re As RegEx
+		  Dim reMatch As RegExMatch
+		  re = New RegEx
+		  
+		  re.SearchPattern = "[[:alnum:]]"
+		  Dim char As String
+		  char = Chr(c)
+		  reMatch = re.Search(char)
+		  Return Not (reMatch = Nil)
+		  
+		  
 		  if c >= Asc("0") then
 		    if c <= Asc("9") then
 		      return true
@@ -814,6 +825,15 @@ Module StringUtils
 
 	#tag Method, Flags = &h0
 		Function isalpha(c As Integer) As Boolean
+		  Dim re As RegEx
+		  Dim reMatch As RegExMatch
+		  re = New RegEx
+		  
+		  re.SearchPattern = "[[:alpha:]]"
+		  Dim char As String
+		  char = Chr(c)
+		  reMatch = re.Search(char)
+		  Return Not (reMatch = Nil)
 		  
 		  if c >= Asc("a") then
 		    if c <= Asc("z") then
@@ -2677,7 +2697,7 @@ Module StringUtils
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="whiteSpace"
+			Name="WhiteSpaces"
 			Group="Behavior"
 			Type="String"
 		#tag EndViewProperty

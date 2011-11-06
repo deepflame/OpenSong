@@ -849,7 +849,7 @@ Module SongML
 		  
 		  If Uppercase(Left(heading, 1)) = "V" Then   ' -- VERSE --
 		    heading = " " + Verse + " " + Mid(heading, 2)
-		    If Len(heading) > Len(Verse) + 2 Then 
+		    If Len(heading) > Len(Verse) + 2 Then
 		      heading = heading + " "
 		    End If
 		    
@@ -1582,6 +1582,8 @@ Module SongML
 		  CleanLyrics songElement.OwnerDocument
 		  
 		  Dim s As String
+		  Dim lastChar As String
+		  
 		  s = "<html><head>" + EndOfLine
 		  s = s + "  <meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />" + EndOfLine
 		  s = s + "  <title>" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</title>" + EndOfLine
@@ -1606,14 +1608,14 @@ Module SongML
 		  '--
 		  Dim slices(0), lines(0) As String
 		  LyricsToLines songElement.OwnerDocument, lines
-		  Dim i, j, lineCount, sliceCount As Integer
+		  Dim currSlice, currVerse, lineCount, sliceCount As Integer
 		  
 		  s = s + "<br/>" + EndOfLine
-		  Dim l as Integer
-		  For l = 1 To UBound(lines)
-		    If Left(lines(l), 1) = "." And l < UBound(lines) And InStr("123456789 ", Left(lines(l+1), 1)) > 0 Then
+		  Dim currLine as Integer
+		  For currLine = 1 To UBound(lines)
+		    If Left(lines(currLine), 1) = "." And currLine < UBound(lines) And InStr("123456789 ", Left(lines(currLine+1), 1)) > 0 Then
 		      ' --------------- CHORDS W/ LYRICS ---------------
-		      lineCount = LinesToSlices(lines, l, slices, False)
+		      lineCount = LinesToSlices(lines, currLine, slices, False)
 		      sliceCount = UBound(slices) / lineCount
 		      s = s + "  <table border=""0"" cellpadding=""0"" cellspacing=""0"">" + EndOfLine
 		      
@@ -1622,78 +1624,92 @@ Module SongML
 		      //--
 		      If SmartML.GetValueB(songElement, "capo/@print", True, False) Then
 		        s = s + "    <tr>" + EndOfLine
-		        For i = 0 To sliceCount - 1 ' Loop through each chord slice
-		          If i = 0 Then
-		            s = s + "      <td class=""capochords"">" + Trim(Mid(SingleTranspose(slices(i*lineCount+1),_
+		        For currSlice = 0 To sliceCount - 1 ' Loop through each chord slice
+		          If currSlice = 0 Then
+		            s = s + "      <td class=""capochords"">" + Trim(Mid(SingleTranspose(slices(currSlice*lineCount+1),_
 		            12-SmartML.GetValueN(songElement, "capo"), True), 2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
 		          Else
-		            s = s + "      <td class=""capochords"">" + Trim(SingleTranspose(slices(i*lineCount+1),_
+		            s = s + "      <td class=""capochords"">" + Trim(SingleTranspose(slices(currSlice*lineCount+1),_
 		            12-SmartML.GetValueN(songElement, "capo"), False)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
 		          End If
-		        Next i
+		        Next currSlice
 		        s = s + "    </tr>" + EndOfLine
 		      End If
 		      
-		      For i = 0 To sliceCount - 1 ' Loop through each chord slice
-		        If i = 0 Then
-		          s = s + "      <td class=""chords"">" + Trim(Mid(slices(i*lineCount+1),2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		      For currSlice = 0 To sliceCount - 1 ' Loop through each chord slice
+		        If currSlice = 0 Then
+		          s = s + "      <td class=""chords"">" + Trim(Mid(slices(currSlice*lineCount+1),2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
 		        Else
-		          s = s + "      <td class=""chords"">" + Trim(slices(i*lineCount+1)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		          s = s + "      <td class=""chords"">" + Trim(slices(currSlice*lineCount+1)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
 		        End If
-		      Next i
+		      Next currSlice
 		      s = s + "    </tr>" + EndOfLine
 		      
-		      For j = 2 To lineCount ' Loop through the lines and print
+		      For currVerse = 2 To lineCount ' Loop through the lines and print
 		        s = s + "    <tr>" + EndOfLine
-		        For i = 0 To sliceCount - 1 ' Loop through each slice
-		          If slices(i*lineCount+j).Len = 0 Then
-		            slices(i*lineCount+j) = "&nbsp;"
+		        For currSlice = 0 To sliceCount - 1 ' Loop through each slice
+		          If slices(currSlice*lineCount+currVerse).Len = 0 Then
+		            slices(currSlice*lineCount+currVerse) = "&nbsp;"
 		          Else
-		            slices(i*linecount+j) = slices(i*linecount+j).HTMLEntityEncode
-		            If Right(slices(i*lineCount+j),1) = " " Then
-		              If i = 0 Then
-		                If Left(slices(i*lineCount+j),2) = "  " Then slices(i*lineCount+j) = " &nbsp;" + Mid(slices(i*lineCount+j),2)
-		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(i*lineCount+j),2)) + "&nbsp;</td>" + EndOfLine
+		            slices(currSlice*linecount+currVerse) = slices(currSlice*linecount+currVerse).HTMLEntityEncode
+		            If Right(slices(currSlice*lineCount+currVerse),1) = " " Then
+		              If currSlice = 0 Then
+		                If Left(slices(currSlice*lineCount+currVerse),2) = "  " Then slices(currSlice*lineCount+currVerse) = " &nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(currSlice*lineCount+currVerse),2)) + "&nbsp;</td>" + EndOfLine
 		              Else
-		                If Left(slices(i*lineCount+j),1) = " " Then slices(i*lineCount+j) = "&nbsp;" + Mid(slices(i*lineCount+j),2)
-		                s = s + "      <td class=""lyrics"">" + Trim(slices(i*lineCount+j)) + "&nbsp;</td>" + EndOfLine
+		                If Left(slices(currSlice*lineCount+currVerse),1) = " " Then slices(currSlice*lineCount+currVerse) = "&nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(slices(currSlice*lineCount+currVerse)) + "&nbsp;</td>" + EndOfLine
 		              End If
 		            Else
-		              slices(i*lineCount+j) = StringUtils.Squeeze(slices(i*lineCount+j), "_")
-		              slices(i*lineCount+j) = ReplaceAll(slices(i*lineCount+j), "_", " -&nbsp;")
-		              If i = 0 Then
-		                If Left(slices(i*lineCount+j),2) = "  " Then slices(i*lineCount+j) = " &nbsp;" + Mid(slices(i*lineCount+j),2)
-		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(i*lineCount+j),2)) + "</td>" + EndOfLine
+		              '
+		              ' Check for a break in the middle of the word
+		              '
+		              If currSlice < sliceCount - 1 Then 'Not on the last slice
+		                lastChar = Right(slices(currSlice*lineCount + currVerse), 1)
+		                If StringUtils.isalpha(asc(lastChar)) Then 'Not an explicitly designated syllable end or a word break
+		                  If StringUtils.isalpha(asc(Left(slices((currSlice + 1)*lineCount + currVerse), 1))) Then 'there is no space at the end of this slice or beginning of the next
+		                    slices(currSlice*lineCount + currVerse) = slices(currSlice*lineCount + currVerse) + " -&nbsp"
+		                  End If
+		                End If
+		              End If
+		              slices(currSlice*lineCount+currVerse) = StringUtils.Squeeze(slices(currSlice*lineCount+currVerse), "_")
+		              slices(currSlice*lineCount+currVerse) = ReplaceAll(slices(currSlice*lineCount+currVerse), "_", " -&nbsp;")
+		              If currSlice = 0 Then
+		                If Left(slices(currSlice*lineCount+currVerse),2) = "  " Then slices(currSlice*lineCount+currVerse) = " &nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(currSlice*lineCount+currVerse),2)) + "</td>" + EndOfLine
 		              Else
-		                If Left(slices(i*lineCount+j),1) = " " Then slices(i*lineCount+j) = "&nbsp;" + Mid(slices(i*lineCount+j),2)
-		                s = s + "      <td class=""lyrics"">" + Trim(slices(i*lineCount+j)) + "</td>" + EndOfLine
+		                If Left(slices(currSlice*lineCount+currVerse),1) = " " Then slices(currSlice*lineCount+currVerse) = "&nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(slices(currSlice*lineCount+currVerse)) + "</td>" + EndOfLine
 		              End If
 		            End If
 		          End If
-		        Next i
+		        Next currSlice
 		        s = s + "    </tr>" + EndOfLine
-		      Next j
+		      Next currVerse
 		      
 		      s = s + "</table>" + EndOfLine
-		      l = l + lineCount - 1 ' l will increment again b/c of the For loop
+		      currLine = currLine + lineCount - 1 ' currLine will increment again b/c of the For loop
 		      
-		    ElseIf Left(lines(l), 1) = "-" Then // A variety of printing directives
-		      If Mid(lines(l), 2, 2) = "__" Then _ // Horizontal line
-		      s = s + "<hr />" + EndOfLine
-		    ElseIf Left(lines(l), 1) = "." Then
-		      s = s + "  <div class=""chords"">" + Mid(lines(l), 2).HTMLEntityEncode + "</div>" + EndOfLine
+		    ElseIf Left(lines(currLine), 1) = "-" Then // A variety of printing directives
+		      If Mid(lines(currLine), 2, 2) = "!!" Then // PageBreak
+		        s = s + "<div style=""page-break-before: always;""></div>"
+		      ElseIf Mid(lines(currLine), 2, 2) = "__" Then // Horizontal line
+		        s = s + "<hr />" + EndOfLine
+		      End If
+		    ElseIf Left(lines(currLine), 1) = "." Then
+		      s = s + "  <div class=""chords"">" + Mid(lines(currLine), 2).HTMLEntityEncode + "</div>" + EndOfLine
 		      
-		    ElseIf Left(lines(l), 1) = ";" Then
-		      s = s + "  <div class=""comment"">" + Mid(lines(l), 2).HTMLEntityEncode + "</div>" + EndOfLine
+		    ElseIf Left(lines(currLine), 1) = ";" Then
+		      s = s + "  <div class=""comment"">" + Mid(lines(currLine), 2).HTMLEntityEncode + "</div>" + EndOfLine
 		      
-		    ElseIf Left(lines(l), 1) = "[" Then
-		      s = s + "  <p/><div class=""heading"">" + FullHeading(Mid(lines(l), 2, lines(l).Len-2), True).HTMLEntityEncode + "</div>" + EndOfLine
+		    ElseIf Left(lines(currLine), 1) = "[" Then
+		      s = s + "  <p/><div class=""heading"">" + FullHeading(Mid(lines(currLine), 2, lines(currLine).Len-2), True).HTMLEntityEncode + "</div>" + EndOfLine
 		      
 		    Else
-		      s = s + "  <div class=""lyrics"">" + Mid(lines(l), 2, lines(l).Len-1).HTMLEntityEncode + "</div>" + EndOfLine
+		      s = s + "  <div class=""lyrics"">" + Mid(lines(currLine), 2, lines(currLine).Len-1).HTMLEntityEncode + "</div>" + EndOfLine
 		      
 		    End If
-		  Next l
+		  Next currLine
 		  s = s + "<br/>" + EndOfLine
 		  
 		  If SmartML.GetValue(songElement, "aka").Len > 0 Then _

@@ -1000,6 +1000,9 @@ Pri veÄ vrsticah besedila na eno vrstico akordov imej v mislih, da vsaka vrstiÄ
     <option name="Brez, brez izgube, velika datoteka zbirke"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Primer naslova" type="po meri" seconds="0" loop="false">

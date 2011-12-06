@@ -1066,6 +1066,9 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
     <option name="Nincs, veszteségmentes, nagy méret"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Példa cím" type="Egyedi" seconds="0" loop="false">

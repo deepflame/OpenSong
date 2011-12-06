@@ -1067,6 +1067,9 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <option name="Aucune, sans perte, gros fichier liste"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Exemple de titre" type="custom" seconds="0" loop="false">

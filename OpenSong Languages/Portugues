@@ -598,6 +598,9 @@ T: Topo</keys>
     <option name="None, lossless, large set file"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Título Exemplo" type="custom" seconds="0" loop="false">

@@ -1044,6 +1044,9 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
     <option name="Ingen, ingen komprimering, stor fil!!"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Test Titel" type="egen" seconds="0" loop="false">

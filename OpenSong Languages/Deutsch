@@ -1026,6 +1026,9 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <option name="Kein, verlustfrei, große Set-Datei"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group loop="false" type="custom" name="Beispieltitel" seconds="0">

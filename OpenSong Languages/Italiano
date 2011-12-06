@@ -1066,6 +1066,9 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
     <option name="Nessuna, senza perdita, file grande"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Titolo esemplificativo" type="custom" seconds="0" loop="false">

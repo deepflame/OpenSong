@@ -706,6 +706,9 @@ T: Tag</keys>
     <option name="None, lossless, large set file"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Eksempel tittel" type="Egendefinert" seconds="0" loop="false">

@@ -1775,6 +1775,7 @@ Implements iBible
 		  Dim BookAbbrevRoot As XmlNode
 		  Dim BookNode, node As XmlNode
 		  Dim BookName As String
+		  Dim BookNameShort As String
 		  Dim StdName As String
 		  Dim names() as String
 		  Dim splashHidden As Boolean = False
@@ -1925,8 +1926,11 @@ Implements iBible
 		    If list.Length > 0 Then
 		      For i = 0 To list.Length - 1
 		        BookName = list.Item(i).GetAttribute("bname")
+		        BookNameShort = list.item(i).GetAttribute("bsname")
+		        If BookName = "" Then BookName = list.Item(i).GetAttribute("bnumber")
+		        If BookNameShort = "" Then BookNameShort = list.Item(i).GetAttribute("bnumber")
 		        Books.Append BookName
-		        BookNode = BookAbbrevRoot.AppendChild(BookAbbrev.CreateElement(Lowercase(list.item(i).GetAttribute("bsname"))))
+		        BookNode = BookAbbrevRoot.AppendChild(BookAbbrev.CreateElement(Lowercase(BookNameShort)))
 		        BookNode.SetAttribute("bname", BookName)
 		      Next
 		      

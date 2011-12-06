@@ -1060,6 +1060,9 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
     <option name="Ninguna, sin pérdida, archivo grande"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Sample Title" type="custom" seconds="0" loop="false">

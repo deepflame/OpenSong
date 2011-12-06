@@ -1040,6 +1040,9 @@ Ak je Políčko prezentácie prázdne, pri premietaní bude poradie snímok tak�
     <option name="Žiadna, bez straty kvality, veľký súbor playlistu"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Ukážkový názov" type="custom" seconds="0" loop="false">

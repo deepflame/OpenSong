@@ -1067,6 +1067,9 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
     <option name="Nenhuma, menos perda, arquivo maior"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Exemplo de Título" type="custom" seconds="0" loop="false">

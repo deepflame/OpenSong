@@ -1081,6 +1081,9 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
     <option name="Żadna, bezstratna, duży plik zestawu"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Przykładowy tytuł" type="niestandardowy" seconds="0" loop="false">

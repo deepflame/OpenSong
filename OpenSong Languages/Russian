@@ -1040,6 +1040,9 @@ V1 C V2 C V3 C
     <option name="Нет, без потерь, большой файл"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Пример названия" type="собственный" seconds="0" loop="нет">

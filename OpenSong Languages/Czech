@@ -1078,6 +1078,9 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     <option name="Žádná, bezeztrátově, velký soubor playlistu"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Ukázkový název" type="custom" seconds="0" loop="false">

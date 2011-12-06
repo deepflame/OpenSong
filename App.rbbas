@@ -539,6 +539,7 @@ Inherits Application
 		  
 		  wc = WindowCount - 1
 		  cs = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
+		  If cs < 0 Or cs + 1 > OSScreenCount() Then cs = 0
 		  
 		  For i = 0 To wc
 		    If Window(i).Visible Then

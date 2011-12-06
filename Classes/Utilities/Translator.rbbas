@@ -247,7 +247,7 @@ Protected Class Translator
 		  Dim controlUsage As String
 		  Dim parts() As String
 		  
-		  Dim staticCont As StaticText
+		  Dim staticCont As Label 'Was StaticText before rb2010r4
 		  Dim groupCont As GroupBox
 		  Dim buttonCont As PushButton
 		  Dim checkCont As CheckBox
@@ -269,8 +269,8 @@ Protected Class Translator
 		    name = ParseControlName(cont)
 		    controlUsage = name.Left(3)
 		    
-		    If cont IsA StaticText Then
-		      staticCont = StaticText(cont)
+		    If cont IsA Label Then
+		      staticCont = Label(cont)
 		      If doCaptions Then
 		        name = ParseHierarchicalName(tag, staticCont) + kAttributeCaption
 		        temp = Translate(name)

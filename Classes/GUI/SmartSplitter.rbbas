@@ -1375,7 +1375,7 @@ Inherits Canvas
 		  
 		  if isVertical and (c isA checkBox or c isA radioButton) then return 60
 		  
-		  if isVertical and (c isA PopupMenu or c isA StaticText) then return 40
+		  if isVertical and (c isA PopupMenu or c isA Label) then return 40
 		  
 		  return 30
 		  
@@ -1402,8 +1402,8 @@ Inherits Canvas
 		    if isVertical or editField(c).multiLine then return true
 		  end if
 		  
-		  if c isA StaticText then
-		    if not isVertical and StaticText(c).multiLine then return true
+		  if c isA Label then
+		    if not isVertical and Label(c).multiLine then return true
 		  end if
 		  
 		  if isVertical and c isA PopupMenu then return true

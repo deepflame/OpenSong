@@ -813,6 +813,8 @@ End
 		  Dim i As Integer
 		  Dim SearchedEntry, SearchText As String
 		  Dim found As Boolean
+		  Dim reSearch As RegEx
+		  Dim reoSearch As RegExOptions
 		  
 		  If Keyboard.CommandKey Or Keyboard.ControlKey Or Keyboard.OptionKey Then Return False
 		  
@@ -892,11 +894,20 @@ End
 		  
 		  'If no matches were found, try to find the first song that has a part that 'is like' the search text (skipping punctuation, spaces and others)
 		  If Not found Then
-		    SearchText = StringUtils.RemoveNotIn(Me.Text, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+		    //++
+		    // Set up regular expression to delete all non-alphanumeric characters for 'is like' search
+		    //--
+		    reSearch = New RegEx
+		    reoSearch = New RegExOptions
+		    reoSearch.ReplaceAllMatches = True
+		    reoSearch.CaseSensitive = False
+		    reSearch.Options = reoSearch
+		    reSearch.ReplacementPattern = ""
+		    reSearch.SearchPattern = "[^[:alnum:]]"
+		    SearchText = reSearch.Replace(Me.Text)
 		    
 		    For i = 0 To lst_all_songs.ListCount - 1
-		      SearchedEntry = StringUtils.RemoveNotIn(ConvertEncoding(lst_all_songs.List(i), Encodings.UTF8), "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-		      
+		      SearchedEntry = reSearch.Replace(ConvertEncoding(lst_all_songs.List(i),Encodings.UTF8))
 		      If InStr(SearchedEntry, SearchText) > 0 Then
 		        lst_all_songs.ListIndex = i
 		        found = True

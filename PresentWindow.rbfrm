@@ -51,6 +51,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   300
       Begin Timer timerAdvance
+         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -59,11 +60,15 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Mode            =   0
          Period          =   10000
          Scope           =   0
+         TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Top             =   249
+         Visible         =   True
          Width           =   32
       End
       Begin Timer timerTransition
+         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -72,8 +77,11 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Mode            =   0
          Period          =   125
          Scope           =   0
+         TabIndex        =   1
          TabPanelIndex   =   0
+         TabStop         =   True
          Top             =   249
+         Visible         =   True
          Width           =   32
       End
    End
@@ -1105,6 +1113,51 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function GoSong(number As Integer) As Boolean
+		  'RealBasic: The Definitive Guide
+		  'http://books.google.com/books?id=1NfFvedzfggC&lpg=PA593&ots=vXNPwnD8nD&dq=realbasic%20keycode%20keyboard%20layout&pg=PA460#v=onepage&q&f=false
+		  Dim newSlide As Integer = 1
+		  Dim songSlide As Integer = 0
+		  Dim songName As String = ""
+		  Dim songItemNr As Integer = -1
+		  Dim xNewSlide As XmlNode = SetML.GetSlide(CurrentSet, 1)
+		  
+		  While songSlide < number And xNewSlide <> Nil
+		    
+		    If SmartML.GetValue(xNewSlide.Parent.Parent, "@type") = "song" Then
+		      If songName <> SmartML.GetValue(xNewSlide.Parent.Parent, "@name") Or _
+		        SongItemNr <> SmartML.GetValueN(xNewSlide.Parent.Parent, "@ItemNumber") Then
+		        songSlide = songSlide + 1
+		        songName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name")
+		        SongItemNr = SmartML.GetValueN(xNewSlide.Parent.Parent, "@ItemNumber")
+		      End If
+		    End If
+		    
+		    If songSlide < number Then
+		      xNewSlide = SetML.GetNextSlide(xNewSlide)
+		      If xNewSlide <> Nil Then
+		        newSlide = newSlide + 1
+		      End If
+		    End If
+		  Wend
+		  
+		  If songSlide = number Then
+		    CurrentSlide = newSlide
+		    XCurrentSlide = xNewSlide
+		    
+		    If HelperActive Then
+		      PresentHelperWindow.ScrollTo currentSlide
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
+		    
+		  End If
+		  
+		  Return songSlide = number
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function GoTag() As Boolean
 		  Dim xNewSlide As XmlNode
 		  Dim newSlide As Integer
@@ -1221,7 +1274,7 @@ End
 		  ' What I'd like to do is use this to decode keypresses and then pass a function code on
 		  ' to PerformAction.  That way, it starts separating the function to be performed from
 		  ' the keystrokes used, allowing us to (a) call PerformAction from elsewhere with
-		  ' a command code, and (b) support keyboard remapping through this routine.
+		  ' a command code, and (b) support keyboard remapping through this routine.È
 		  
 		  ' TODO: Put the commands into the Language file and load it from there
 		  ' TODO: Find all the places KeyDownX is called and redirect the call to PerformAction with the proper command
@@ -1291,6 +1344,7 @@ End
 		  Const KEY_UP=&h7e
 		  Const KEY_DOWN=&h7d
 		  Const KEY_ESCAPE = 27
+		  
 		  '
 		  'Temporary hack until the command arguments are fixed
 		  '
@@ -1357,6 +1411,39 @@ End
 		    '
 		  ElseIf lowercase(key) = "v" or isNumeric(key) Then ' n = Verse
 		    Return GoVerse(key)
+		    '
+		    ' Jump to Song "N"
+		    '
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F1) Then
+		    Return GoSong(1)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F2) Then
+		    Return GoSong(2)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F3) Then
+		    Return GoSong(3)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F4) Then
+		    Return GoSong(4)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F5) Then
+		    Return GoSong(5)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F6) Then
+		    Return GoSong(6)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F7) Then
+		    Return GoSong(7)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F8) Then
+		    Return GoSong(8)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F9) Then
+		    Return GoSong(9)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F10) Then
+		    Return GoSong(10)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F11) Then
+		    Return GoSong(11)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F12) Then
+		    Return GoSong(12)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F13) Then ' AKA PrintScreen
+		    Return GoSong(13)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F14) Then ' AKA ScreenLock
+		    Return GoSong(14)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F15) Then ' AKA Pause
+		    Return GoSong(15)
 		    '
 		    ' Close Presentation
 		    '
@@ -2466,6 +2553,51 @@ End
 	#tag Constant, Name = CopyAllChildren, Type = Boolean, Dynamic = False, Default = \"True", Scope = Protected
 	#tag EndConstant
 
+	#tag Constant, Name = KEY_F1, Type = Double, Dynamic = False, Default = \"&h7A", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F10, Type = Double, Dynamic = False, Default = \"&h6D", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F11, Type = Double, Dynamic = False, Default = \"&h67", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F12, Type = Double, Dynamic = False, Default = \"&h6F", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F13, Type = Double, Dynamic = False, Default = \"&h69", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F14, Type = Double, Dynamic = False, Default = \"&h6B", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F15, Type = Double, Dynamic = False, Default = \"&h71", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F2, Type = Double, Dynamic = False, Default = \"&h78", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F3, Type = Double, Dynamic = False, Default = \"&h63", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F4, Type = Double, Dynamic = False, Default = \"&h76", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F5, Type = Double, Dynamic = False, Default = \"&h60", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F6, Type = Double, Dynamic = False, Default = \"&h61", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F7, Type = Double, Dynamic = False, Default = \"&h62", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F8, Type = Double, Dynamic = False, Default = \"&h64", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F9, Type = Double, Dynamic = False, Default = \"&h65", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = MODE_DUAL_SCREEN, Type = Integer, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant
 
@@ -2479,6 +2611,9 @@ End
 	#tag EndConstant
 
 	#tag Constant, Name = ShiftKey, Type = Integer, Dynamic = False, Default = \"&h100", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = Untitled, Type = Double, Dynamic = False, Default = \"&h62", Scope = Protected
 	#tag EndConstant
 
 

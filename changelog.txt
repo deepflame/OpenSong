@@ -1,4 +1,6 @@
-﻿* Make OpenSong more tolerant when loading Zefania XML bibles. Full names and short names are expected where actually only the book number is mandatory. (Vwout)
+﻿* Add shortcuts (F1-F15) for jumping straight to songs during a live presentation. Depending on the keyboard layout, F13 equals Printscreen, F14 equals Screenlock and F15 equals Pause. (Feature request #3305126) (Vwout)
+
+* Make OpenSong more tolerant when loading Zefania XML bibles. Full names and short names are expected where actually only the book number is mandatory. (Vwout)
 
 * Fix issue where a reminder to save the slide after a change in the override style is not always given, causing the style change to get lost. (Vwout)
 

@@ -741,6 +741,7 @@ End
 		Sub Resized()
 		  '++JRC: Recalc whenever window is resized
 		  RecalcLstAllSlidesColumnWidths
+		  ResizePreview()
 		  Refresh
 		  '--
 		End Sub

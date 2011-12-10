@@ -102,7 +102,7 @@ Protected Module MacFileManager
 	#tag Constant, Name = InterfaceLib, Type = String, Dynamic = False, Default = \"", Scope = Private
 		#Tag Instance, Platform = Mac Classic, Language = Default, Definition  = \"InterfaceLib"
 		#Tag Instance, Platform = Mac Carbon PEF, Language = Default, Definition  = \"CarbonLib"
-		#Tag Instance, Platform = Mac Mach-O, Language = Default, Definition  = \"/System/Library/Frameworks/Carbon.framework/Carbon"
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"/System/Library/Frameworks/Carbon.framework/Carbon"
 	#tag EndConstant
 
 

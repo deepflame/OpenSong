@@ -1,4 +1,20 @@
-﻿* Add shortcuts (F1-F15) for jumping straight to songs during a live presentation. Depending on the keyboard layout, F13 equals Printscreen, F14 equals Screenlock and F15 equals Pause. (Feature request #3305126) (Vwout)
+﻿* The "Use pre-V1.1 file cache" flag has been disabled in the dialog and is ignored at startup due to unresolved crashes on Windows.  If someone wants to take a look at it, the underlying code is still present. (swampcat) (MainSettingsWindow, MainWindow)
+
+* Correct some field spacing in the Main Settings/Preferences dialog. (swampcat) (MainSettingsWindow)
+
+* Fix some UTF-8 processing issues in the Song Picker and Bible lookup. (swampcat)
+
+* Update MacOSLib. (swampcat) (FSRef, FSSPec, MacFileManager)
+
+* Cleanup on Song object to prepare for additional work on it. (swampcat) (Song)
+
+* Section header for a verse now includes the translation for "verse" in addition to the verse number. Potential future change:  making this selectable in print settings. (swampcat) (SongML)
+
+* Print Settings allows user to define amount of space before and after running elements of the song (sections, chords, capo chords, lyrics). (swampcat) (PrintSettingsWindow)
+
+* Saving a song no longer causes the cursor to return to the begining of the lyrics (swampcat) (MainWindow)
+
+* Add shortcuts (F1-F15) for jumping straight to songs during a live presentation. Depending on the keyboard layout, F13 equals Printscreen, F14 equals Screenlock and F15 equals Pause. (Feature request #3305126) (Vwout)
 
 * Make OpenSong more tolerant when loading Zefania XML bibles. Full names and short names are expected where actually only the book number is mandatory. (Vwout)
 

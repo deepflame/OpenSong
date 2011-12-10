@@ -1120,9 +1120,19 @@ Inherits Application
 		  // identify a true UB vs. a target-specific binary or an Intel Mac running the UB under Rosetta.
 		  // This identifies the processor architecture the executable is running.
 		  //--
+		  '++JRC
 		  If App.StageCode <> App.Final Then
 		    t = t + "-"
+		    select case App.StageCode 
+		    case 0 
+		      t = t + "Development"
+		    case 1
+		      t = t + "Alpha"
+		    case 2
+		      t = t + "Beta"
+		    End Select
 		  End If
+		  '--
 		  #If TargetMacOS
 		    If RBVersion >= 2006.04 Then
 		      #If TargetPPC

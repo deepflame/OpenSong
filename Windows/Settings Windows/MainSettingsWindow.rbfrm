@@ -113,7 +113,7 @@ Begin Window MainSettingsWindow
       TextUnit        =   0
       Top             =   7
       Underline       =   ""
-      Value           =   3
+      Value           =   0
       Visible         =   True
       Width           =   579
       Begin GroupBox grp_settings_general
@@ -121,7 +121,7 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "General"
          Enabled         =   True
-         Height          =   130
+         Height          =   135
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -170,7 +170,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   58
+            Top             =   70
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -180,6 +180,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -212,7 +213,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   73
+            Top             =   86
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -244,7 +245,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   102
+            Top             =   112
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -278,11 +279,11 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   128
+            Top             =   138
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   150
+            Width           =   200
          End
          Begin PopupMenu pop_general_language
             AutoDeactivate  =   True
@@ -310,7 +311,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   145
+            Top             =   155
             Underline       =   False
             Visible         =   True
             Width           =   200
@@ -321,7 +322,7 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "User Defined Field Names"
          Enabled         =   True
-         Height          =   178
+         Height          =   193
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -380,6 +381,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -459,6 +461,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -538,6 +541,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -605,7 +609,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   188
+            Top             =   200
             Underline       =   False
             Visible         =   True
             Width           =   220
@@ -616,7 +620,7 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "Start Mode"
          Enabled         =   True
-         Height          =   40
+         Height          =   46
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -633,7 +637,7 @@ Begin Window MainSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   182
+         Top             =   191
          Underline       =   False
          Visible         =   True
          Width           =   250
@@ -660,7 +664,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   198
+            Top             =   211
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -689,7 +693,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   198
+            Top             =   211
             Underline       =   False
             Value           =   False
             Visible         =   True
@@ -1043,6 +1047,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1088,6 +1093,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1410,7 +1416,7 @@ Begin Window MainSettingsWindow
             Caption         =   "Use Pre-V1.1 FolderDB cache"
             DataField       =   ""
             DataSource      =   ""
-            Enabled         =   True
+            Enabled         =   False
             Height          =   20
             HelpTag         =   ""
             Index           =   -2147483648
@@ -1501,6 +1507,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -1639,6 +1646,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True

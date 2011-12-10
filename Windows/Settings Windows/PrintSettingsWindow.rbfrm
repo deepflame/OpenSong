@@ -142,7 +142,7 @@ Begin Window PrintSettingsWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   641
-         Begin StaticText lbl_font_title
+         Begin Label lbl_font_title
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -208,7 +208,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   160
          End
-         Begin StaticText lbl_font_author
+         Begin Label lbl_font_author
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -274,7 +274,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   160
          End
-         Begin StaticText lbl_font_sections
+         Begin Label lbl_font_sections
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -340,7 +340,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   160
          End
-         Begin StaticText lbl_font_lyrics
+         Begin Label lbl_font_lyrics
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -406,7 +406,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   160
          End
-         Begin StaticText lbl_font_chords
+         Begin Label lbl_font_chords
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -472,7 +472,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   160
          End
-         Begin StaticText lbl_font_capo
+         Begin Label lbl_font_capo
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -567,7 +567,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   160
          End
-         Begin StaticText lbl_font_copyright
+         Begin Label lbl_font_copyright
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -975,7 +975,7 @@ Begin Window PrintSettingsWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   634
-         Begin StaticText lbl_layout_heading_border_thickness
+         Begin Label lbl_layout_heading_border_thickness
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1146,7 +1146,7 @@ Begin Window PrintSettingsWindow
          UseFocusRing    =   True
          Visible         =   True
          Width           =   635
-         Begin StaticText lbl_page_top
+         Begin Label lbl_page_top
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1233,7 +1233,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   45
          End
-         Begin StaticText lbl_page_left
+         Begin Label lbl_page_left
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1320,7 +1320,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   45
          End
-         Begin StaticText lbl_page_bottom
+         Begin Label lbl_page_bottom
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1407,7 +1407,7 @@ Begin Window PrintSettingsWindow
             Visible         =   True
             Width           =   45
          End
-         Begin StaticText lbl_page_right
+         Begin Label lbl_page_right
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1513,11 +1513,12 @@ Begin Window PrintSettingsWindow
             Scope           =   0
             TabIndex        =   8
             TabPanelIndex   =   3
+            TabStop         =   True
             Top             =   86
             TopLeftColor    =   0
             Visible         =   True
             Width           =   115
-            Begin StaticText lbl_page_width
+            Begin Label lbl_page_width
                Active          =   ""
                AutoDeactivate  =   True
                Bold            =   False
@@ -1604,7 +1605,7 @@ Begin Window PrintSettingsWindow
                Visible         =   True
                Width           =   45
             End
-            Begin StaticText lbl_page_height
+            Begin Label lbl_page_height
                Active          =   ""
                AutoDeactivate  =   True
                Bold            =   False
@@ -1712,6 +1713,7 @@ Begin Window PrintSettingsWindow
          Scope           =   0
          TabIndex        =   3
          TabPanelIndex   =   3
+         TabStop         =   True
          TextFont        =   "System"
          TextSize        =   12
          TextUnit        =   0

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Francais" author="Karel Leorier / opensong.fr" version="1.7 Français">
+<language name="Francais" author="Karel Leorier / opensong.fr" version="2.0 Français">
 
   <load_settings>
     <checking_folders>Creation/Vérification des répertoires</checking_folders>
@@ -11,7 +11,8 @@
     <themes>Chargement de la liste des thèmes</themes>
     <time_signatures>Chargement de la liste des signatures</time_signatures>
     <imagequality>Chargement de la liste des qualités d'image</imagequality>
-    <fonts>Chargement de la liste des polices de caractères</fonts>
+    <videolan_preset>Chargement des paramètres Videolan</videolan_preset>
+	<fonts>Chargement de la liste des polices de caractères</fonts>
     <latest_version>Recherche de la dernière version
       <newer_available>Une nouvelle version (%1) est dispo.</newer_available>
     </latest_version>
@@ -147,6 +148,7 @@
       <add_slides caption="Texte">Ajoute une diapo personnalisée à la liste en cours. Vous pourrez y personnaliser votre propre titre, sous-titre, texte et style. Une diapo texte peut en réalité contenir plusieurs diapos.</add_slides>
       <add_style caption="Style">Change le style par défaut de la liste à n'importe quel endroit de celle-ci. Les changement de style peuvent en définir un nouveau ou revenir au précédant.</add_style>
 	  <add_image caption="Image">Ajoute une image à la liste en cours. Les diapos d'images vous permettront de montrer une image seule ou un diaporama d'images au lieu d'un texte.</add_image>
+	  <add_external caption="Externe">Ajoute un nouvel élement à la liste en cours permettant d'activier une source externe comme la lecture d'un DVD.</add_external>	  
 	  <add_video caption="Vidéo">Ajoute un fichier vidéo à la liste en cours. A utiliser pour projeter une vidéo dans OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Ajoute une présentation PowerPoint à la liste en cours. A utiliser pour controler une présentation PowerPoint directement dans OpenSong.</add_powerpoint>
     </new_item>
@@ -169,7 +171,8 @@
       <custom caption="(custom)"/>
       <scripture caption="(passage)"/>
 	    <image caption="(image)"/>
-      <style caption="(style)">-- Changer style --</style>
+      <external caption="(externe)"/>
+	  <style caption="(style)">-- Changer style --</style>
       <revert caption="(style)">-- Style précédent --</revert>
       <defaultstyle caption="(style)">-- Style exporté --</defaultstyle>
     </items>
@@ -219,6 +222,7 @@
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Action" />
       <ins_image caption="Ajouter une image">Ajoute une image pour créer un diaporama avec un titre, une description, un style et-ou une durée commun. On peut également passer en boucle les images de cette diapo.</ins_image>
+      <imp_image caption="Import">Charge toutes les diapositives d'une présentation et les ajoute comme images.</imp_image>
       <del_image caption="Supprimer l'image">Supprime l'image sélectionnée de la diapositive en cours.</del_image>
       <move_up caption="Vers le haut">Déplace l'image sélectionnée vers le début du diaporama d'images.</move_up>
       <move_down caption="Vers le bas">Déplace l'image sélectionnée vers la fin du diaporama d'images.</move_down>
@@ -230,6 +234,46 @@
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
   
+  <external_slide>
+    <header caption="Editeur de diapos externes"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Application"/>
+    <presentation caption="Presentation">Utiliser cet élément pour afficher une présentation à partir de Microsoft PowerPoint ou du logiciel libre OpenOffice Impress.</presentation>
+    <videolan caption="Videolan">Utiliser cet élément pour lancer un fichier multimédia en utilisant le lecteur polyvalent et gratuit VideoLan (VLC).</videolan>
+    <application caption="Application">Utiliser cet élément pour lancer un programme externe en ligne de commande.</application>
+    <no_application caption="Aucune application">
+    <no_application caption="Sélectionner une application à utiliser pour ces diapositives."/>
+    </no_application>
+    <presentation_settings caption="Paramètres de présentation">
+      <presentation_host caption="Quelle application doit être utilisée pour lancer la présentation ?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="Pour un contrôle maximal de votre présentation, une installation de Microsoft office sur votre ordinateur est recommandée."/>
+      <host_pptview caption="Microsoft PowerPoint Viewer (visionneuse)"/>
+      <host_pptview_info caption="Pour afficher votre présentation vous pouvez utiliser la visionneuse gratuite de PowerPoint. OpenSong essaiera de la détecter. Une visionneuse spécifique peut être paramétrée dans les paramètres généraux."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="Pour un contrôle maximal de votre présentation OpenOffice Impress, une installation de la suite OpenOffice est recommandée."/>
+      <presentation_file caption="Presentation filename">Sélectionner le fichier de présentation en utilisant la fenêtre de sélection.</presentation_file>
+      <loop_presentation caption="Présentation en boucle"/>
+      <embed_presentation caption="Insérer la présentation dans le liste OpenSong"/>
+    </presentation_settings>
+    <videolan_settings caption="Paramètres Videolan">
+      <videolan_start caption="Lancer Videolan"/>
+	  <videolan_mediafilename caption="Chemin vers le fichier multimédia">Choisir le fichier audio ou vidéo à lire.</videolan_mediafilename>
+	  <videolan_preset caption="Utiliser le preset et les paramètres suivants"/>
+	  <videolan_manual caption="Paramètres ajustés manuellement (utiliser %d pour le nombre d'affichage, %s pour le fichier multimedia)"/>
+      <wait_for_videolan caption="Attendre que la lecture soit terminée avant de lancer la diapo suivante"/>
+      <videolan_stop caption="Arrêter toutes les instances VideoLan lancées"/>
+    </videolan_settings>
+    <application_settings caption="Paramètres du lanceur d'application">
+      <application_start caption="Lancer une application externe"/>
+      <application_filename caption="Chemin vers l'exécutable de l'application">Choisir le fichier exécutable du programme qui doit être lancé.</application_filename>
+      <application_parameters caption="Paramètres de l'application"/>
+      <wait_for_application caption="Attendre que l'application soit terminée avant de continuer"/>
+      <application_stop caption="Arrêter tout application lancée et toujours en cours."/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
   <style_change>
     <header caption="Changement de style"/>
     <revert caption="Revenir au style précédent">Cette option permet de revenir au style précédent à partir de ce point.</revert>
@@ -394,6 +438,25 @@
     	<songs caption="Chants"/>
       <sets  caption="Listes"/>
     </startmode>
+<applications caption="Applications externes">
+      <pptview caption="Emplacement de la visionneuse PowerPoint"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Emplacement du client VideoLan"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+	<slidetype_coloring caption="Couleur des types de diapos">
+	  <coloring caption="Appliquer des couleurs de fond"/>
+	  <verse caption="Chant, couplet [V]"/>
+	  <bridge caption="Chant, pont [B]"/>
+	  <prechorus caption="Chant, pré-refrain [P]"/>
+	  <chorus caption="Chant, refrain [C]"/>
+	  <tag caption="Chant, tag [T]"/>
+	  <scripture caption="Passage biblique"/>
+	  <custom caption="Diapo perosnnalisée"/>
+	  <image caption="Diapo image"/>
+	  <application caption="Application externe"/>
+	  <blank caption="Vide"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Paramètres d'impression">
@@ -556,145 +619,136 @@ T: Tag</keys>
   </presentation_helper>
 
   <help_topics title="Rubrique d'aide">
-    <tabs head1="Format des accords et paroles" head2="Champ de présentation" head3="Fermer"/>
+    <tabs head1="Raccourcis clavier" head2="Format de saisie des chants" head3="Ordre des sections" head4="Fermer"/>
     <print caption="Imprimer"/>
      <keys>
-&lt;h1&gt;Presentation Keys&lt;/h1&gt;
+&lt;h1&gt;Raccourcis clavier lors de la présentation&lt;/h1&gt;
 
-The Presentation is controlled with the following keys:
+La présentation utilise les raccourcis clavier suivants:
 
-Esc Key: End the presentation.
-Up Arrow, 8 on Numpad, Backspace: Go to Previous Slide.
-Down Arrow, 2 on Numpad, Space Key: Go to Next Slide.
-Left Arrow, 4 on Numpad: Go to Previous item in set.
-Right Arrow, 6 on Numpad: Go to Next item in set.
-Q Key: Insert a new song into the presentation.
-A Key: Insert a new Alert.
-S Key: Insert a new scripture into the presentation.
-W Key: Fade to White screen.
-K Key: Fade to Black screen.
-L Key: Display OpenSong Logo.
-H Key: Hide Text, Show Background image only.
-F Key: Freezes Presentation(i.e. prevents displaying new slide, allowing you to change current slide
-without affecting the presentation, press N to unfreeze).
-N Key: Normal mode(get out of black screen, etc.)
-B Key: Go to Bridge(as denoted by a [B#] in song
-editor). If there is more than one Bridge,
-then pressing the B key will move to the next Bridge.
-C Key: Go to Chorus(as denoted by a [C#] in song editor). If there is more than one chorus,
-then pressing the C key will move to the next chorus.
-T Key: Go to Tag(as denoted by a [T#] in song editor). If there is more than one Tag,
-then pressing the T key will move to the next Tag.
-P Key: Go to Pre-Chorus(as denoted by a [P#] in song editor). If there is more than one Pre-Chorus,
-then pressing the P key will move to the next Pre-Chorus.
-1-9 Key: Go to Verse#(as denoted by a [V#] in song editor).
+Esc: Stoppe la présentation.
+Flèche haut, 8 sur le pavé numérique, Rertour-arrière: Diapo précédente.
+Flèche bas, 2 sur le pavé numérique, Espace: Diapo suivante.
+Flèche gauche, 4 sur le pavé numérique: Aller à l'élément précédent de la liste.
+Flèche droite, 6 sur le pavé numérique: Aller à l'élément suivant de la liste.
+Q: Insérer un chant à la volée dans la présentation.
+A: Insérer une alerte.
+S: Insérer un verset dans la présentation.
+W: Fondu blanc.
+K: Fondu noir.
+L: Affichage du logo.
+H: Chacher le texte, image d'arrière-plan seulement.
+F: Figer la présentation (par exemple empêche l'affichage d'une nouvelle diapositive, vous permettant de changer de diapo
+sans modifier l'affichage, utiliser N pour défiger).
+N: Mode Normal (enlever l'écran noir, etc.)
+B: Aller au pont (une section [B#] du chant). S'il y a plusieurs ponts,
+appuyer sur la touche B fera aller au pont suivant.
+C: Aller au refrain (une section [C#] du chant). S'il y a plusieurs refrains,
+appuyer sur la touche C fera aller au refrain suivant.
+T: Aller au Tag (une section [T#] du chant). S'il y a plusieurs tags,
+appuyer sur la touche T fera aller au tag suivant.
+P: Aller au pré-refrain (une section [P#] du chant). S'il y a plusieurs pré-refrains,
+appuyer sur la touche P fera aller au prérefrain suivant.
+1-9: Aller au couplet n°#(section [V#] du chant).
 
-Note the Numpad keys function depends on the state of the NumLock key.
 </keys>
 
     <format>
-&lt;h1&gt;OpenSong Lyrics / Chords Format&lt;/h1&gt;
+&lt;h1&gt;Format de saisie des chants sous OpenSong&lt;/h1&gt;
 
-Songs are broken down into the following line types: Section lines, Chord lines, Lyric lines, and Comment lines. A simple song might look something like this:
+Les chants dans OpenSong sont subdivisés de la mnière suivante : Lignes indiquant une section, Lignes indiquant des accords, Lignes indiquant des paroles, et des lignes de commantaires. Un chant simple peut ressembler à ceci :
 &lt;pre&gt;&lt;b&gt;
-;Remember to sing the verse twice.
+;Chanter le couplet deux fois.
 [V]
-.G                C
- This is a verse, this is a verse.
-.D          G
- That is so cool.
+.Sol               Do
+ Voici un couplet, voici un couplet.
+.Ré       Sol
+ C'est génial.
 
 [C]
-.G               C/D  D     C
- Sing the chorus now, yeah, yeah,
-.G           C       D/F# G
- This is the dumbest song ever.&lt;/b&gt;&lt;/pre&gt;
+.Sol               Do/Ré  Ré     Do
+ Chanter le refrain, yeah, yeah,
+.La           Do    Ré/Fa# Sol
+ C'est vraiment un super chant.&lt;/b&gt;&lt;/pre&gt;
 
-Lets look at each line type...
+Regardons chaque type de ligne...
 
-&lt;h2&gt;Section Lines&lt;/h2&gt;
+&lt;h2&gt;Lignes indiquant une section&lt;/h2&gt;
 
-Section lines are delimited by braces: [ and ]. A "section" includes any lines following this section line until the next section line or the end of the song. Sections are not displayed in the Presenter, but they are used to determine the order of the slides. Any text inside the braces is acceptable, but the following have special effects:
+Les lignes de section sont délimitées par des crochets: [ et ]. Une "section" inclue toutes les lignes suivantes jusqu'à une autre ligne indiquant une section ou jusqu'à la fin du chant. Les indications de section ne s'affichent pas lors de la présentation, mais elles servent à déterminer l'ordre des diapos. On peut utiliser n'importe quel texte entre les crochets, mais les suivants on un effet particulier :
 
-&lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Verses. Lead sheets will automatically remove the "V" and print the remaining number with a circle around it. Examples: [V1], [V2], [V3].
+&lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Couplet. Les partitions imprimées n'affichent pas le "V" mais impriment le n° dans un cercle. Exemples: [V1], [V2], [V3].
 
-&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Chorus. Lead sheets will automatically display "Chorus" followed by any extra text (see examples). "Chorus" will be printed with a square around it. Examples: [C], [C2], [CModulation].
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Refrain. Les partitions imprimées vont faire apparaître le mot "Refrain" suivi du texte souhaité (voir exemples). Le mot "Refrain" sera imprimé entouré d'une bordure. Exemples: [C], [C2], [CChoeurs].
 
-&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Pre-chorus. Lead sheets will automatically display "Pre-chorus" followed by any extra text (see examples). "Pre-chorus" will be printed with horizontal lines above it and below it. Examples: [P], [P2].
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Pre-refrain. Les partitions imprimées vont faire apparaître le mot "Pré-Refrain" suivi du texte souhaité (voir exemples). Le mot "Pré-Refrain" sera imprimé souligné au-dessus et au-dessous. Exemples: [P], [P2].
 
-&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Bridge. Lead sheets will automatically display "Bridge" followed by any extra text (see examples). "Bridge" will be printed with a rounded square around it. Examples: [B], [B2].
+&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Pont. Les partitions imprimées vont faire apparaître le mot "Pont" suivi du texte souhaité (voir exemples). Le mot "Pont" sera imprimé dans un rectangle aux angles arrondis. Examples: [B], [B2].
 
-&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Tag. Lead sheets will automatically display "Tag" followed by any extra text (see examples). "Tag" will be printed with a rounded square around it. Examples: [T], [T2].
+&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Tag. Les partitions imprimées vont faire apparaître le mot "Tag" suivi du texte souhaité (voir exemples). Le mot "Tag" sera imprimé dans un rectangle aux angles arrondis. Examples: [T], [T2].
 
-&lt;h2&gt;Chord Lines&lt;/h2&gt;
+&lt;h2&gt;Lignes d'accords&lt;/h2&gt;
 
-Chord lines start with a period: ".". The first letter of each chord should line up with the lyrics under it. Chord lines don't display on the Presenter, only on lead sheets.
+Les lignes d'accord commencent par un point: ".". La première lettre de l'accord doit être alignée avec le texte qui lui correspond au-dessous. Les lignes d'accord ne s'affichent pas lors de la présentation mais apparaissent sur les partitions.
 
-&lt;h2&gt;Lyric Lines&lt;/h2&gt;
+&lt;h2&gt;Lignes de paroles&lt;/h2&gt;
 
-Lyric lines start with a space: " ". Lyrics generally line up with a previous chord line, but not necessarily.
+Les lignes de paroles commencent par un espace : " ". La ligne de parole peut s'aligner avec la ligne d'accord du dessus mais pas obligatoirement.
 
-&lt;b&gt;&lt;i&gt;"__"&lt;/i&gt;&lt;/b&gt; If a word needs to be stretched to fit the chords, use underscores: "_". For example:
+&lt;b&gt;&lt;i&gt;"__"&lt;/i&gt;&lt;/b&gt; Si un mot doit être étendu pour s'ajuster à l'accord, utiliser le caractère underscore: "_". Par exempl:
 &lt;b&gt;&lt;pre&gt;
-.Gsus7 C    G
- Wel___come home.&lt;/pre&gt;&lt;/b&gt;
+.Solsus7 Do   Sol
+ Bien____venu chez toi.&lt;/pre&gt;&lt;/b&gt;
 
-Underscores are replaced by an appropriate "-" centered between the word parts. 
+Le caractère underscore est remplacé par un tiret "-" approprié centré entre les syllabes du mot.
 
-&lt;b&gt;"  "&lt;/b&gt; Multiple spaces between words are just fine. Underscores and multiple spaces are automatically removed in the Presenter. When printing lead sheets, both are dropped and dynamically adjusted to fit.
+&lt;b&gt;"  "&lt;/b&gt; Il est possible de sasir des espaces multiples entre les mots. Les underscore et espaces multiples sont automatiquement enlevés dans la présentation. Lorsque vous imprimer des partitions, les deux sont enlevés et remplacés dynamiquement.
 
-&lt;b&gt;"|"&lt;/b&gt; Vertical bars are replaced with spaces on lead sheets, and new lines in the Presenter.
+&lt;b&gt;"|"&lt;/b&gt; Les barres verticales sont remplacées par des espaces dans les partitions, Par un retour à la ligne dans la présentation écran.
 
-&lt;b&gt;"||"&lt;/b&gt; Double vertical bars are replaced by "new slide" in the Presenter and ignored when printing lead sheets. Double vertical bars must be at the end of the line.
+&lt;b&gt;"||"&lt;/b&gt; Les doubles barres verticales sont remplacées par "une nouvelle diapo" dans la présentation écran et ignorés sur les partitions. Les doubles barres verticales doivent se trouver en fin de ligne.
 
-&lt;h3&gt;Multiple Lyric Lines for One Chord Line!?&lt;/h3&gt;
+&lt;h3&gt;Plusieurs lignes de paroles pour une seule ligne d'accords!?&lt;/h3&gt;
 
-Many songs have multiple verses which all share the same chords. Rather than repeat the chords in each verse section, we can group them by verse line rather than by verse number (like a hymnal). In this case, rather than start each lyric line with a space, start each lyric line with the verse number. Note that aligning multiple lyric lines with one chord line is a little trickier. It should look something like this:
+Beaucoup de chants ont plusieurs couplets avec les mêmes accords. Plutôt que de répéter la ligne d'accords à chaque fois, il est possible de faire un regroupement avec le n° de couplet. Dans ce cas, au lieu de démarrer chaque ligne du couplet avec un espace, commencez chaque ligne avec le n° de couplet. Noter qu'aligner les mots de chaque couplet avec sa ligne d'accord est du coup un peu plus compliqué. Cela devrait ressembler à ceci :
 
-&lt;b&gt;&lt;i&gt;(Don't try to sing it; the timing is terrible. *grin*)&lt;/i&gt;&lt;pre&gt;
+&lt;b&gt;&lt;i&gt;(n'essayez pas de chanter ça, hein. *grin*)&lt;/i&gt;&lt;pre&gt;
 [V]
-.G     C               G
-1This  is verse        one;
-2This  is not verse    two;
-3Where did verse three go;
-4Ever__lasting is not  verse four;
-
-.G     D    C                D            G
-1Hear  my   song as I sing,  "Mon_________key."
-2Open  your ears to my       wonderful    song.
-3Why   are  we still         singing this song?
-4This  is   not the way that songs should sound.&lt;/pre&gt;
+.G         C               G
+1Voici     le couplet      un;
+2Voici     le deuxième     couplet;
+3Et encore le troisiè______me;
+&lt;/pre&gt;
 &lt;/b&gt;
-As far as the Presenter is concerned, the first character of each lyric line (i.e. 1, 2, 3, etc.) is appended to the section it is in. In other words, a section line of [V] with following lyric lines starting with 1, 2, 3, etc. would look like V1, V2, V3, etc.
+Pour la présentation, le premier caractère de chaque ligne (1, 2, 3, etc.) fait un ajout à la section concernée. En d'autres termes, une section [V] dont les lignes commencent par 1, 2, 3, etc. ressemblera à V1, V2, V3, etc.
 
-&lt;h2&gt;Comment Lines&lt;/h2&gt;
+&lt;h2&gt;Lignes de commentaires&lt;/h2&gt;
 
-There isn't much to a comment line. Comment lines are any lines that start with a semi-colon: ";". Comment lines are skipped in the Presenter, and displayed using the Comment font in Lead Sheets.
+Elles commencent par un point-virgule: ";". Elles sont ignorées lors de la présentation à l'écran, et affichées avec la police de commentaire dans les partitions.
 
-&lt;h2&gt;Column Breaks&lt;/h2&gt;
+&lt;h2&gt;Sauts de colonnes&lt;/h2&gt;
 
-If a line contains only three dashes ("---"), lyrics sheets will print with a second column starting at the column break.
+Si une ligne ne contient que 3 tirets ("---"), les partitions seront imprimées sur deux colonnes à partir de ce saut de colonne.
 
-&lt;h2&gt;Page Breaks&lt;/h2&gt;
+&lt;h2&gt;Sauts de page&lt;/h2&gt;
 
-If a line contains ("-!!") this indicates the location where a page break should be placed in the lead sheet when printing longer songs.
+Si une ligne contient "-!!" cela indique l'emplacement d'un saut de page pour l'impression des partitions (utile pour les chants longs).
 
 </format>
 
     <presentation>
-&lt;h1&gt;OpenSong Presentation Field&lt;/h1&gt;
+&lt;h1&gt;Ordre des sections&lt;/h1&gt;
 
-The presentation field contains a list of sections from the song's lyrics/chords field. Each section is seperated by a space. For example:
+Le champ ordre des sections est destiné à recevoir des indications de section. Chaque indicateur de section est séparé par un espace. Exemple :
 &lt;b&gt;
 V1 C V2 C V3 C
 &lt;/b&gt;
-This example would display the first verse on the first slide, the chorus on the second slide, the second verse on the third slide, and so on.
+Dans cet exemple, sera affiché le premier couplet, puis le refrain, puis le second couplet, etc.
+A utiliser par exemple pour ne saisir le refrain qu'une seule fois mais l'afficher entre chaque couplet.
 
-Keep in mind that if your song uses multi-lyric lines for a single chord line, that each lyric line's prefix is appended to it's section. See the "Lyric Lines" section under the "Lyrics / Chords Format" help for more information.
+&lt;h3&gt;Si le champ est vide&lt;/h3&gt;
 
-&lt;h3&gt;Empty Presentation Field&lt;/h3&gt;
-
-If the presentation field is empty, then the Presenter will order the slides based on the order in the Lyrics / Chords field.
+Si l'ordre des sections est vide, la présentation se fera dans l'ordre des sections du chant.
 </presentation>
  </help_topics>
 
@@ -1068,8 +1122,12 @@ If the presentation field is empty, then the Presenter will order the slides bas
   </imagequality_list>
 
   <videolan_preset_list>
+	<preset name="Vidéo comme fond d'écran Windows (utilise la couleur RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Vidéo plein écran sur l'écran de présentation" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Vidéo plein écran à partir de l'entrée vidéo DirectShow par défaut" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+	<preset name="Manuel" parameters=""/>
   </videolan_preset_list>
-
   <style_preview>
     <slide_groups>
       <slide_group name="Exemple de titre" type="custom" seconds="0" loop="false">
@@ -1136,6 +1194,7 @@ Cliquer sur cette diapo pour en modifier le style.</body>
     <set_changed caption="La liste en cours a été modifiée, voulez-vous sauvegarder?"/>
     <select_docs_folder caption="Sélectionnez le répertoire de documents Opensong">Où les fichiers OpenSong (chants et listes) devraient être stockées?</select_docs_folder>
     <activity_log caption="Voulez-vous que le(s) chants(s) dans ce diaporama soit ajoutée(s) dans la trace activité? Veuillez noter que cela s'applique également aux chants ajoutés à la volée!"/>
+    <import_presentation caption="Importer les images d'une présentation">Sélectionner le fichier de présentation à partir duquel vous souhaitez importer.</import_presentation>
   </questions>
 
   <about>
@@ -1224,6 +1283,12 @@ L'équipe de développement Opensong vous prie d'excuser la gêne occasionnée.
     <activity_disabled>Impossible de charger le fichier trace d'activité de chant: %1! Vérifiez que ce fichier existe et n'est pas corrompu. La visualisation des traces et le traçage d'activité seront désactivés pour cette session.</activity_disabled>
     <adding_logentry>Erreur en ajoutant une entrée dans la trace!</adding_logentry>
     <chars_per_slide>Le nombre maximum de caractères par diapositive doit être compris entre 1 et 1000.</chars_per_slide>
+<presentations>
+      <nohost>Aucune application disponible pour charger la présentation. Veuillez installer la suite OpenOffice, Microsoft PowerPoint ou Microsoft PowerPoint Viewer (visionneuse).</nohost>
+      <unsupported_feature>L'application '%1' ne permet pas cetta ction.</unsupported_feature>
+      <load_failed>La présentation '%1' ne peut pas être ouverte.</load_failed>
+    </presentations>
+	<videolan_app_missing>L'application VideoLan n'est pas correctement paramétrée. Veuillez préciser le client VideoLan dans la fenêtre de paramètres généraux sur l'onglet Emplacement de fichier.</videolan_app_missing>
   </errors>
 
   <xml_errors>
@@ -1296,7 +1361,10 @@ L'équipe de développement Opensong vous prie d'excuser la gêne occasionnée.
     <lead_sheets>Génération de la feuille de chant</lead_sheets>
     <process_themes>Traitement des thèmes</process_themes>
     <process_songs>Traitement des chants</process_songs>
+    <song_search>Recherche de chants</song_search>
     <export>Exporte le(s) chant(s)</export>
+    <load_songs>Chanrgement de(s) chant(s)</load_songs>
+    <load_externals>Chargement des diapos externes</load_externals>
     <pass1>Tri, 1ère passe</pass1>
     <pass2>Tri, 2ème passe</pass2>
   </progress_status>

@@ -454,6 +454,7 @@
 	  <tag caption="Song, Tag"/>
 	  <scripture caption="Scripture"/>
 	  <custom caption="Custom slide"/>
+	  <style caption="Style Change"/>
 	  <image caption="Image slide"/>
 	  <application caption="External application"/>
 	  <blank caption="Blank (inserted)"/>

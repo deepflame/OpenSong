@@ -531,6 +531,7 @@ T: Značka</keys>
   <help_topics title="Témy pomocníka">
     <tabs head1="Klávesové skratky" head2="Formát akordov/textu" head3="Políčko premietania" head4="Zavrieť"/>
     <print caption="Tlač"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Klávesové skratky pri premietaní&lt;/h1&gt;
 

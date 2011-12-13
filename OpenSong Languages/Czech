@@ -569,6 +569,7 @@ T: Tag (značka)</keys>
   <help_topics title="Obsah nápovědy">
     <tabs head1="Klávesové zkratky" head2="Formát Akordů/Slov" head3="Políčko Prezentace" head4="Zavřít"/>
     <print caption="Tisk"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Klávesové zkratky při prezentaci&lt;/h1&gt;
 

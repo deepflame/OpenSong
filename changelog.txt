@@ -1,4 +1,6 @@
-﻿-= 2.0 Beta 1 =-
+﻿* Changed layout to Help window and added a Close button.  Help is now modeless: the dialog can remain open while continuing to work in OpenSong. (swampcat)
+
+-= 2.0 Beta 1 =-
 * Small change to SmartVersion to show the current stage code (alpha, beta, etc.) (JRC)
 
 * The "Use pre-V1.1 file cache" flag has been disabled in the dialog and is ignored at startup due to unresolved crashes on Windows.  If someone wants to take a look at it, the underlying code is still present. (swampcat) (MainSettingsWindow, MainWindow)

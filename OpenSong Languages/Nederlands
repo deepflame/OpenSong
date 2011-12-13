@@ -631,6 +631,7 @@ T: Label</keys>
   <help_topics title="Help Onderwerpen">
     <tabs head1="Presentatie toetsen" head2="Formaat Akkoorden/Teksten" head3="Presentatie Veld" head4="Sluiten"/>
     <print caption="Afdrukken"/>
+    <close caption="link(shared/close/@caption)"/>
 <keys>
 &lt;h1&gt;Presentatie Toetsen&lt;/h1&gt;&lt;h3&gt;
 

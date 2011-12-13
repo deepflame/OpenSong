@@ -531,6 +531,7 @@ T: Тэг</keys>
   <help_topics title="Разделы справки">
     <tabs head1="Клавиши управления показом" head2="Формат аккордов/текста" head3="Поле показа" head4="Закрыть"/>
     <print caption="Печать"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Клавиши управления показом&lt;/h1&gt;
 

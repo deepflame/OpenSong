@@ -454,6 +454,7 @@ T: Tag</keys>
   <help_topics title="Hjelpe emner">
     <tabs head1="Presentasjons Knapper" head2="Akkorder/Tekst Format" head3="Presentasjons område" head4="Lukk"/>
     <print caption="Skriv ut"/>
+    <close caption="link(shared/close/@caption)"/>
   </help_topics>
 
   <font_selection title="Skrift type valg">

@@ -500,6 +500,7 @@ T: Oznaka (Tag)</keys>
   <help_topics title="Vsebina pomoči">
     <tabs head1="Kontrolne tipke" head2="Format akordov/besedila" head3="Vrstni red prikaza" head4="Zapri"/>
     <print caption="Natisni"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Kontrolne tipke&lt;/h1&gt;
 

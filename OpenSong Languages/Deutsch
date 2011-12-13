@@ -533,6 +533,7 @@ T: Markierung</keys>
   <help_topics title="Hilfethemen">
     <tabs head1="Präsentationstasten" head2="Akkord/Liedtext Formatierung" head3="Abspielreihenfolge" head4="Schließen"/>
     <print caption="Drucken"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Präsentationstasten&lt;/h1&gt;
 

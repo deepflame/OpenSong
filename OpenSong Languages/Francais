@@ -621,6 +621,7 @@ T: Tag</keys>
   <help_topics title="Rubrique d'aide">
     <tabs head1="Raccourcis clavier" head2="Format de saisie des chants" head3="Ordre des sections" head4="Fermer"/>
     <print caption="Imprimer"/>
+    <close caption="link(shared/close/@caption)"/>
      <keys>
 &lt;h1&gt;Raccourcis clavier lors de la présentation&lt;/h1&gt;
 

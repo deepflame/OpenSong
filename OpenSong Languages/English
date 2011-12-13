@@ -624,6 +624,7 @@ T: Tag</keys>
   <help_topics title="Help Topics">
     <tabs head1="Presentation Keys" head2="Chords/Lyrics Format" head3="Presentation Field" head4="Close"/>
     <print caption="Print"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Presentation Keys&lt;/h1&gt;
 

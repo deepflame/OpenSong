@@ -531,6 +531,7 @@ T: Coda</keys>
   <help_topics title="Hjälpavsnitt">
     <tabs head1="Kortkommandon" head2="Text-/Ackordformat" head3="Visningsfältet" head4="Stäng"/>
     <print caption="Skriv ut"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Kortkommandon under presentationen&lt;/h1&gt;
 

@@ -391,6 +391,7 @@ T: Topo</keys>
   <help_topics title="Tópicos de Ajuda">
     <tabs head1="Formatar Acordes/Letras" head2="Campo de Apresentação" head3="Fechar"/>
     <print caption="Imprimir"/>
+    <close caption="link(shared/close/@caption)"/>
   </help_topics>
 
   <font_selection title="Selecionar Fonte">

@@ -558,6 +558,7 @@ T: Tag</keys>
   <help_topics title="Help">
     <tabs head1="Tasti presentazione" head2="Formattare testo/accordi" head3="Campo Presentazione" head4="Chiudi"/>
     <print caption="Stampa"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Tasti per la Presentazione&lt;/h1&gt;
 

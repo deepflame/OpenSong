@@ -557,6 +557,7 @@ T: Coda</keys>
   <help_topics title="Súgó témakörök">
     <tabs head1="Vetítés-vezérlő billentyűk" head2="Akkord/dalszöveg formátum" head3="Vetítési sorrend mező" head4="Bezár"/>
     <print caption="Nyomtat"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Vetítések vezérlése&lt;/h1&gt;
 

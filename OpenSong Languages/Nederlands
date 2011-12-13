@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.7.0">
+<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="2.0">
 
   <load_settings>
     <checking_folders>Maken en controleren van documenten mappen</checking_folders>
@@ -454,6 +454,7 @@
 	  <tag caption="Lied, tag"/>
 	  <scripture caption="Bijbeltekst"/>
 	  <custom caption="Aangepaste dia"/>
+	  <style caption="Stijl verandering"/>
 	  <image caption="Afbeeldingen"/>
 	  <application caption="Externe toepassing"/>
 	  <blank caption="Leeg (tussengevoegd)"/>

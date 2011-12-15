@@ -10635,6 +10635,8 @@ End
 		  Dim lineCode As String
 		  Dim linePos As Integer
 		  Dim iLineCode As Integer
+		  Dim lyrics As String
+		  Dim linePosOffset As Integer
 		  
 		  numLines = edfLyrics.LineNumAtCharPos(edfLyrics.Text.Len)
 		  cursorStart = edfLyrics.SelStart
@@ -10649,17 +10651,23 @@ End
 		    codes = codes + EndOfLine.UNIX
 		  #endif
 		  
+		  lyrics = edfLyrics.Text
+		  linePosOffset = 0
+		  
 		  For i = 0 to numLines
-		    linePos = edfLyrics.CharPosAtLineNum(i)
-		    lineCode = Mid(edfLyrics.Text, linePos, 1)
+		    linePos = edfLyrics.CharPosAtLineNum(i) + linePosOffset
+		    lineCode = Mid(lyrics, linePos, 1)
 		    iLineCode = Asc(lineCode)
 		    If InStr(codes, lineCode) = 0 Then
-		      edfLyrics.Text = Left(edfLyrics.Text, linePos - 1) + " " + Mid(edfLyrics.Text, linePos)
+		      lyrics = Left(lyrics, linePos - 1) + " " + Mid(lyrics, linePos)
+		      linePosOffset = linePosOffset + 1
 		      If i <= cursorLine Then
 		        cursorStart = cursorStart + 1
 		      End If
 		    End If
 		  Next
+		  
+		  edfLyrics.Text = lyrics
 		  
 		  If cursorStart <> edfLyrics.SelStart Then
 		    edfLyrics.SelStart = cursorStart

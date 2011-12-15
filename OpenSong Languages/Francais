@@ -252,7 +252,7 @@
       <host_pptview_info caption="Pour afficher votre présentation vous pouvez utiliser la visionneuse gratuite de PowerPoint. OpenSong essaiera de la détecter. Une visionneuse spécifique peut être paramétrée dans les paramètres généraux."/>
       <host_impress caption="OpenOffice.org Impress"/>
       <host_impress_info caption="Pour un contrôle maximal de votre présentation OpenOffice Impress, une installation de la suite OpenOffice est recommandée."/>
-      <presentation_file caption="Presentation filename">Sélectionner le fichier de présentation en utilisant la fenêtre de sélection.</presentation_file>
+      <presentation_file caption="Fichier de présentation">Sélectionner le fichier de présentation en utilisant la fenêtre de sélection.</presentation_file>
       <loop_presentation caption="Présentation en boucle"/>
       <embed_presentation caption="Insérer la présentation dans le liste OpenSong"/>
     </presentation_settings>
@@ -385,7 +385,7 @@
   </main_menu>
 
   <general_settings title="Configuration générale">
-    <general caption="General" head1="Basic" head2="Special">
+    <general caption="General" head1="Basic" head2="Emplacements" head3="Système" head4="Apparence">
       <ccli caption="N° de licence CCLI"/>
       <version_check caption="Vérifier si une nouvelle version est disponible au démarrage"/>
       <language caption="Langue"/>
@@ -456,6 +456,7 @@
 	  <image caption="Diapo image"/>
 	  <application caption="Application externe"/>
 	  <blank caption="Vide"/>
+      <style caption="Changement de style"/>
 	</slidetype_coloring>
   </general_settings>
 

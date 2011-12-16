@@ -1,4 +1,10 @@
-﻿* Fix for automatic lyric indentation in song editor on Linux (Bug #3459158) (Vwout)
+﻿* Mark window dirty using Window.ContentsChanged so the appropriate visual indication is given in the close button on OSX. (swampcat)
+
+* Fix error in line spacing for chord lines with no lyrics (Bug #3459341). (swampcat)
+
+* Add special/any filetype to allow for selection of files on Mac for use with VideoLan external. (swampcat)
+
+* Fix for automatic lyric indentation in song editor on Linux (Bug #3459158) (Vwout)
 
 * Changed layout to Help window and added a Close button.  Help is now modeless: the dialog can remain open while continuing to work in OpenSong. (swampcat)
 

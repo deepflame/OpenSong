@@ -8046,6 +8046,8 @@ End
 		      mnu_file_save.Enabled = False
 		    End If
 		    
+		    Self.ContentsChanged = Status_SongChanged
+		    
 		    
 		    
 		  Else ' Sets tab
@@ -8161,6 +8163,8 @@ End
 		    Else
 		      btn_set_store.Enabled = False
 		    End If
+		    
+		    Self.ContentsChanged = Status_SetChanged Or Status_InSetChanged
 		    
 		    If Status_InSetEditable Then
 		      'Custom/Scripture slide
@@ -16553,7 +16557,7 @@ End
 		  Dim dlg As New OpenDialog
 		  Dim f As FolderItem
 		  
-		  dlg.Filter = "*.*"
+		  dlg.Filter = FileTypes.SpecialAny
 		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
 		  dlg.Title = App.T.Translate("external_slide/application_settings/application_filename/@caption")

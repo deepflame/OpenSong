@@ -59,4 +59,13 @@
 		Name=WAV Files (*.wav)
 	#tag EndFileType
 
+	#tag FileType
+		CodeName=SpecialAny
+		Extension=
+		Flags=&h0
+		MacCreator=????
+		MacType=????
+		Name=special/any
+	#tag EndFileType
+
 #tag EndFileTypeSet

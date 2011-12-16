@@ -1048,31 +1048,47 @@ Module SongML
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function Draw_SoloChordLine(songDoc As XmlDocument, g As Graphics, x As Integer, y As Integer, ColWidth As Integer, zoom As Double, ByRef chords() As String, ByRef Page As Group2D) As Integer
+		Private Function Draw_SoloChordLine(songDoc As XmlDocument, g As Graphics, x As Single, y As Single, ColWidth As Single, zoom As Double, ByRef chords() As String, ByRef Page As Group2D) As Single
 		  //++
 		  // EMP, 23 March 2006
 		  //  Fix bug where scaling doesn't get applied to font [Bug 1456327]
 		  //  Streamline to quit making calls to GetValueF all the time
+		  //
+		  // EMP, 16 December 2011
+		  //  Add support for spacing before and after lines
+		  //  Slight optimizations
+		  //  Change X & Y calculations to floating point as part of a transition from integer calculations for x, y and font size.
 		  //--
-		  Dim oldY, chordHeight, chordWidth, capoChordHeight, capoChordWidth As Integer
+		  Dim oldY, chordHeight, chordWidth, capoChordHeight, capoChordWidth As Single
 		  Dim ChordFont As FontFace
 		  Dim CapoFont As FontFace
 		  Dim capoChord As String
-		  Dim OneEMSpace As Integer
+		  Dim OneEMSpace As Single
 		  Dim temp As Integer
+		  Dim ChordSpaceBefore, ChordSpaceAfter, CapoSpaceBefore, CapoSpaceAfter As Single
+		  Dim ChordY, CapoY As Single
+		  Dim PrintCapo As Boolean
 		  
 		  Dim s As StringShape
 		  
 		  oldY = y
 		  
-		  CapoFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
-		  CapoFont.Size = Round(CapoFont.Size * zoom)
-		  CapoFont.OntoGraphics g
-		  OneEMSpace = g.StringWidth("M")
+		  ChordSpaceBefore = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before")
+		  ChordSpaceAfter = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after")
+		  CapoSpaceBefore = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before")
+		  CapoSpaceAfter = SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after")
+		  PrintCapo = SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print")
 		  
 		  ChordFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "chords")
 		  ChordFont.Size = Round(ChordFont.Size * zoom)
 		  ChordFont.OntoGraphics g
+		  ChordY = y + (ChordSpaceAfter * zoom) + g.TextAscent
+		  OneEMSpace = g.StringWidth("M")
+		  
+		  CapoFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "capo_chords")
+		  CapoFont.Size = Round(CapoFont.Size * zoom)
+		  CapoFont.OntoGraphics g
+		  CapoY = ChordY + (ChordSpaceAfter + CapoSpaceBefore) * zoom + g.TextAscent
 		  temp = g.StringWidth("M")
 		  If temp > OneEMSpace Then OneEMSpace = temp
 		  
@@ -1086,18 +1102,15 @@ Module SongML
 		    chordWidth = g.StringWidth(chords(i)) ' Don't get the chords too close together, add a little gap
 		    s = New StringShape
 		    s.x = x + (chordWidth / 2)
-		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before") * zoom)
-		    s.y = y + g.TextAscent
-		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after") * zoom)
+		    s.y = ChordY
 		    s.Text = chords(i)
 		    ChordFont.OntoStringShape s
 		    Page.Append s
-		    'g.DrawString chords(i), x, y + g.TextHeight - g.TextAscent
 		    
 		    ' Place Capo Chord
 		    
 		    capoChordHeight = 0
-		    If SmartML.GetValueB(SmartML.GetNode(songDoc.DocumentElement, "capo"), "@print") Then
+		    If PrintCapo Then
 		      If MainWindow.pop_song_accidentals.ListIndex = 0 Then
 		        capoChord = SingleTranspose(chords(i), -SmartML.GetValueN(songDoc.DocumentElement, "capo"), True)
 		      Else
@@ -1111,11 +1124,9 @@ Module SongML
 		      CapoFont.OntoStringShape s
 		      s.Text = capoChord
 		      s.x = x + (capoChordWidth / 2)
-		      y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before") * zoom)
-		      s.y = y + chordHeight + g.TextAscent
-		      y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after") * zoom)
+		      s.y = CapoY
 		      Page.Append s
-		      'g.DrawString capoChord, x, y + capoChordHeight + g.TextHeight - g.TextAscent
+		      
 		      If capoChordWidth > chordWidth Then chordWidth = capoChordWidth
 		    End If
 		    
@@ -1123,7 +1134,12 @@ Module SongML
 		    
 		  Next i
 		  
-		  y = y + capoChordHeight + chordHeight
+		  If PrintCapo Then
+		    y = CapoY + (CapoSpaceAfter * zoom)
+		  Else
+		    y = ChordY + (ChordSpaceAfter * zoom)
+		  End If
+		  
 		  Return y - oldY
 		End Function
 	#tag EndMethod

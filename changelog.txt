@@ -1,4 +1,6 @@
-﻿* Mark window dirty using Window.ContentsChanged so the appropriate visual indication is given in the close button on OSX. (swampcat)
+﻿* Fix display issues with font preview. (swampcat)
+
+* Mark window dirty using Window.ContentsChanged so the appropriate visual indication is given in the close button on OSX. (swampcat)
 
 * Fix error in line spacing for chord lines with no lyrics (Bug #3459341). (swampcat)
 

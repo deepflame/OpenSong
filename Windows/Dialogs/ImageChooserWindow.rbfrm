@@ -84,7 +84,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   75
    End
-   Begin StaticText txt_path
+   Begin Label txt_path
       AutoDeactivate  =   True
       BehaviorIndex   =   2
       Bold            =   False
@@ -752,7 +752,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -785,7 +785,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -818,7 +818,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -851,7 +851,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -884,7 +884,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -917,7 +917,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -950,7 +950,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -983,7 +983,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1016,7 +1016,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1049,7 +1049,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1082,7 +1082,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1115,7 +1115,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1148,7 +1148,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1181,7 +1181,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1214,7 +1214,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1247,7 +1247,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1280,7 +1280,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1313,7 +1313,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1346,7 +1346,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False
@@ -1379,7 +1379,7 @@ Begin Window ImageChooserWindow
       Visible         =   True
       Width           =   80
    End
-   Begin StaticText nte_name
+   Begin Label nte_name
       AutoDeactivate  =   True
       BehaviorIndex   =   6
       Bold            =   False

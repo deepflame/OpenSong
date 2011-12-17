@@ -558,6 +558,7 @@ T: Etiqueta</keys>
   <help_topics title="Tópicos de Ajuda">
     <tabs head1="Teclas de Apresentação" head2="Formato das Letras e Acordes" head3="Campo de Apresentação" head4="Fechar"/>
     <print caption="Imprimir"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Teclas de Apresentação&lt;/h1&gt;
 
@@ -1066,6 +1067,9 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
     <option name="Baixa, qualidade máxima"/>
     <option name="Nenhuma, menos perda, arquivo maior"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

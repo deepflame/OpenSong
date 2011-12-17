@@ -531,6 +531,7 @@ T: Тэг</keys>
   <help_topics title="Разделы справки">
     <tabs head1="Клавиши управления показом" head2="Формат аккордов/текста" head3="Поле показа" head4="Закрыть"/>
     <print caption="Печать"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Клавиши управления показом&lt;/h1&gt;
 
@@ -1039,6 +1040,9 @@ V1 C V2 C V3 C
     <option name="Низкое, максимальное качество"/>
     <option name="Нет, без потерь, большой файл"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

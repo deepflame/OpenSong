@@ -569,6 +569,7 @@ T: Tag (značka)</keys>
   <help_topics title="Obsah nápovědy">
     <tabs head1="Klávesové zkratky" head2="Formát Akordů/Slov" head3="Políčko Prezentace" head4="Zavřít"/>
     <print caption="Tisk"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Klávesové zkratky při prezentaci&lt;/h1&gt;
 
@@ -1077,6 +1078,9 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     <option name="Nízká, maximální kvalita"/>
     <option name="Žádná, bezeztrátově, velký soubor playlistu"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

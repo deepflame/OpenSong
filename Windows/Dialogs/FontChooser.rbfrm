@@ -26,6 +26,7 @@ Begin Window FontChooser
    Width           =   345
    Begin PushButton btn_ok
       AutoDeactivate  =   True
+      BehaviorIndex   =   0
       Bold            =   False
       Cancel          =   False
       Caption         =   "OK"
@@ -52,10 +53,10 @@ Begin Window FontChooser
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
+      BehaviorIndex   =   1
       Bold            =   False
       Cancel          =   True
       Caption         =   "Cancel"
@@ -82,10 +83,10 @@ Begin Window FontChooser
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   1
    End
-   Begin StaticText lbl_font_face
+   Begin Label lbl_font_face
       AutoDeactivate  =   True
+      BehaviorIndex   =   2
       Bold            =   False
       ControlOrder    =   2
       DataField       =   ""
@@ -115,13 +116,13 @@ Begin Window FontChooser
       Underline       =   False
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   2
    End
    Begin SEditField edt_font_face
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
+      BehaviorIndex   =   3
       Bold            =   False
       Border          =   True
       ControlOrder    =   3
@@ -160,11 +161,11 @@ Begin Window FontChooser
       UseFocusRing    =   True
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   3
    End
    Begin ListBox lst_font_faces
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
+      BehaviorIndex   =   4
       Bold            =   False
       ColumnCount     =   1
       ColumnsResizable=   False
@@ -209,10 +210,10 @@ Begin Window FontChooser
       Width           =   150
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   4
    End
-   Begin StaticText lbl_font_size
+   Begin Label lbl_font_size
       AutoDeactivate  =   True
+      BehaviorIndex   =   5
       Bold            =   False
       ControlOrder    =   5
       DataField       =   ""
@@ -242,13 +243,13 @@ Begin Window FontChooser
       Underline       =   False
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   5
    End
    Begin SEditField edt_font_size
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
+      BehaviorIndex   =   6
       Bold            =   False
       Border          =   True
       ControlOrder    =   6
@@ -287,11 +288,11 @@ Begin Window FontChooser
       UseFocusRing    =   True
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   6
    End
    Begin ListBox lst_font_size
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
+      BehaviorIndex   =   7
       Bold            =   False
       ColumnCount     =   1
       ColumnsResizable=   False
@@ -336,10 +337,10 @@ Begin Window FontChooser
       Width           =   60
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   7
    End
-   Begin StaticText lbl_font_color
+   Begin Label lbl_font_color
       AutoDeactivate  =   True
+      BehaviorIndex   =   8
       Bold            =   False
       ControlOrder    =   8
       DataField       =   ""
@@ -369,13 +370,13 @@ Begin Window FontChooser
       Underline       =   False
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   8
    End
    Begin SColorCanvas can_font_color
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   9
       ControlOrder    =   9
       Enabled         =   True
       EraseBackground =   True
@@ -400,10 +401,10 @@ Begin Window FontChooser
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   9
    End
    Begin CheckBox chk_font_bold
       AutoDeactivate  =   True
+      BehaviorIndex   =   10
       Bold            =   False
       Caption         =   "Bold"
       ControlOrder    =   10
@@ -431,10 +432,10 @@ Begin Window FontChooser
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   10
    End
    Begin CheckBox chk_font_italic
       AutoDeactivate  =   True
+      BehaviorIndex   =   11
       Bold            =   False
       Caption         =   "Italic"
       ControlOrder    =   11
@@ -462,10 +463,10 @@ Begin Window FontChooser
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   11
    End
    Begin CheckBox chk_font_underline
       AutoDeactivate  =   True
+      BehaviorIndex   =   12
       Bold            =   False
       Caption         =   "Underline"
       ControlOrder    =   12
@@ -493,10 +494,10 @@ Begin Window FontChooser
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   12
    End
    Begin CheckBox chk_font_border
       AutoDeactivate  =   True
+      BehaviorIndex   =   13
       Bold            =   False
       Caption         =   "Border"
       ControlOrder    =   13
@@ -524,13 +525,13 @@ Begin Window FontChooser
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   13
    End
    Begin SColorCanvas can_font_border
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   14
       ControlOrder    =   14
       Enabled         =   True
       EraseBackground =   True
@@ -555,10 +556,10 @@ Begin Window FontChooser
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   14
    End
    Begin CheckBox chk_font_shadow
       AutoDeactivate  =   True
+      BehaviorIndex   =   15
       Bold            =   False
       Caption         =   "Shadow"
       ControlOrder    =   15
@@ -586,13 +587,13 @@ Begin Window FontChooser
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   15
    End
    Begin SColorCanvas can_font_shadow
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   16
       ControlOrder    =   16
       Enabled         =   True
       EraseBackground =   True
@@ -617,10 +618,10 @@ Begin Window FontChooser
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   16
    End
    Begin CheckBox chk_font_fill
       AutoDeactivate  =   True
+      BehaviorIndex   =   17
       Bold            =   False
       Caption         =   "Fill"
       ControlOrder    =   17
@@ -648,13 +649,13 @@ Begin Window FontChooser
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   17
    End
    Begin SColorCanvas can_font_fill
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   18
       ControlOrder    =   18
       Enabled         =   True
       EraseBackground =   True
@@ -679,7 +680,6 @@ Begin Window FontChooser
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   18
    End
    Begin SFontCanvas can_font_preview
       AcceptFocus     =   False
@@ -687,6 +687,7 @@ Begin Window FontChooser
       AdvancedOptions =   False
       AutoDeactivate  =   True
       Backdrop        =   0
+      BehaviorIndex   =   19
       ControlOrder    =   19
       Enabled         =   False
       EraseBackground =   True
@@ -709,7 +710,6 @@ Begin Window FontChooser
       UseFocusRing    =   True
       Visible         =   True
       Width           =   220
-      BehaviorIndex   =   19
    End
 End
 #tag EndWindow

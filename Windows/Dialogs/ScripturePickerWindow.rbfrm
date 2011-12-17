@@ -43,7 +43,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
-      TextFont        =   "System"
+      TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
       Top             =   10
@@ -87,7 +87,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Text            =   ""
          TextColor       =   0
          TextFont        =   "Arial"
-         TextSize        =   12
+         TextSize        =   11
          TextUnit        =   0
          Top             =   50
          Underline       =   False
@@ -118,15 +118,15 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
          Top             =   50
          Underline       =   False
          Visible         =   True
          Width           =   69
       End
-      Begin StaticText lbl_quick_reference
+      Begin Label lbl_quick_reference
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -151,8 +151,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Text            =   "Reference:"
          TextAlign       =   0
          TextColor       =   0
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
          Top             =   28
          Transparent     =   False
@@ -160,7 +160,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Visible         =   True
          Width           =   65
       End
-      Begin StaticText nte_quick_example
+      Begin Label nte_quick_example
          AutoDeactivate  =   True
          Bold            =   False
          DataField       =   ""
@@ -185,8 +185,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Text            =   "Ex: ""2Pet 1:1-2"" or ""2Pet 1:1-2 (KJV)"""
          TextAlign       =   0
          TextColor       =   0
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
          Top             =   28
          Transparent     =   False
@@ -208,7 +208,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   456
+      Left            =   445
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -218,13 +218,13 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
       TextUnit        =   0
-      Top             =   468
+      Top             =   467
       Underline       =   False
       Visible         =   True
-      Width           =   69
+      Width           =   100
    End
    Begin PushButton btn_done
       AutoDeactivate  =   True
@@ -239,7 +239,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   456
+      Left            =   445
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -249,13 +249,13 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
       TextUnit        =   0
-      Top             =   529
+      Top             =   528
       Underline       =   False
       Visible         =   True
-      Width           =   69
+      Width           =   100
    End
    Begin PushButton btn_insert
       AutoDeactivate  =   True
@@ -270,7 +270,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   456
+      Left            =   445
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -280,13 +280,13 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
       TextUnit        =   0
-      Top             =   434
+      Top             =   433
       Underline       =   False
       Visible         =   False
-      Width           =   69
+      Width           =   100
    End
    Begin PushButton btn_search
       AutoDeactivate  =   True
@@ -311,8 +311,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
       TextUnit        =   0
       Top             =   50
       Underline       =   False
@@ -339,7 +339,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   5
       TabPanelIndex   =   0
       TextFont        =   "Arial"
-      TextSize        =   0
+      TextSize        =   11
       TextUnit        =   0
       Top             =   91
       Underline       =   False
@@ -384,10 +384,10 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
-         Top             =   123
+         Top             =   128
          Underline       =   ""
          UseFocusRing    =   True
          Visible         =   True
@@ -434,10 +434,10 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
-         Top             =   123
+         Top             =   128
          Underline       =   ""
          UseFocusRing    =   True
          Visible         =   True
@@ -445,7 +445,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
       End
-      Begin StaticText lbl_scr_ot
+      Begin Label lbl_scr_ot
          AutoDeactivate  =   True
          Bold            =   ""
          DataField       =   ""
@@ -470,8 +470,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Text            =   "Old testament"
          TextAlign       =   0
          TextColor       =   0
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
          Top             =   107
          Transparent     =   False
@@ -479,7 +479,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Visible         =   True
          Width           =   80
       End
-      Begin StaticText lbl_scr_nt
+      Begin Label lbl_scr_nt
          AutoDeactivate  =   True
          Bold            =   ""
          DataField       =   ""
@@ -504,8 +504,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Text            =   "New testament"
          TextAlign       =   0
          TextColor       =   0
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
          Top             =   107
          Transparent     =   False
@@ -554,9 +554,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   11
       TextUnit        =   0
-      Top             =   123
+      Top             =   128
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -614,7 +614,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
-         TextSize        =   12
+         TextSize        =   11
          TextUnit        =   0
          Top             =   111
          Underline       =   False
@@ -642,7 +642,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   8
       TabPanelIndex   =   0
       TextFont        =   "Arial"
-      TextSize        =   0
+      TextSize        =   11
       TextUnit        =   0
       Top             =   156
       Underline       =   False
@@ -671,8 +671,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
          Top             =   176
          Underline       =   ""
@@ -700,7 +700,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   9
       TabPanelIndex   =   0
       TextFont        =   "Arial"
-      TextSize        =   0
+      TextSize        =   11
       TextUnit        =   0
       Top             =   285
       Underline       =   False
@@ -727,7 +727,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
-         TextSize        =   0
+         TextSize        =   11
          TextUnit        =   0
          Top             =   305
          Underline       =   False
@@ -756,7 +756,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TabPanelIndex   =   0
          TabStop         =   True
          TextFont        =   "Arial"
-         TextSize        =   0
+         TextSize        =   11
          TextUnit        =   0
          Top             =   325
          Underline       =   False
@@ -788,48 +788,14 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
       TextUnit        =   0
       Top             =   364
       Underline       =   ""
       Value           =   True
       Visible         =   True
       Width           =   130
-   End
-   Begin StaticText txt_verse_dash
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   350
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   11
-      TabPanelIndex   =   0
-      Text            =   "-"
-      TextAlign       =   1
-      TextColor       =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      TextUnit        =   0
-      Top             =   107
-      Transparent     =   False
-      Underline       =   False
-      Visible         =   True
-      Width           =   10
    End
    Begin HighlightList lst_scr_from_verse
       AutoDeactivate  =   True
@@ -871,9 +837,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   11
       TextUnit        =   0
-      Top             =   123
+      Top             =   128
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -921,9 +887,9 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
-      TextSize        =   10
+      TextSize        =   11
       TextUnit        =   0
-      Top             =   123
+      Top             =   128
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -967,148 +933,12 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabStop         =   True
       Text            =   ""
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
+      TextFont        =   "Arial"
+      TextSize        =   11
       TextUnit        =   0
       Top             =   491
       Underline       =   False
       UseFocusRing    =   True
-      Visible         =   True
-      Width           =   404
-   End
-   Begin StaticText txt_verse_colon
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   280
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   15
-      TabPanelIndex   =   0
-      Text            =   ":"
-      TextAlign       =   1
-      TextColor       =   0
-      TextFont        =   "Arial"
-      TextSize        =   10
-      TextUnit        =   0
-      Top             =   107
-      Transparent     =   False
-      Underline       =   False
-      Visible         =   True
-      Width           =   10
-   End
-   Begin StaticText lbl_scr_from_verse
-      AutoDeactivate  =   True
-      Bold            =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   ""
-      Left            =   290
-      LockBottom      =   ""
-      LockedInPosition=   False
-      LockLeft        =   ""
-      LockRight       =   True
-      LockTop         =   True
-      Multiline       =   ""
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   16
-      TabPanelIndex   =   0
-      Text            =   "From verse"
-      TextAlign       =   0
-      TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      TextUnit        =   0
-      Top             =   107
-      Transparent     =   False
-      Underline       =   ""
-      Visible         =   True
-      Width           =   55
-   End
-   Begin StaticText lbl_scr_paragraph
-      AutoDeactivate  =   True
-      Bold            =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   ""
-      Left            =   228
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   ""
-      LockRight       =   True
-      LockTop         =   True
-      Multiline       =   ""
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   17
-      TabPanelIndex   =   0
-      Text            =   "Paragraph"
-      TextAlign       =   0
-      TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      TextUnit        =   0
-      Top             =   107
-      Transparent     =   False
-      Underline       =   ""
-      Visible         =   True
-      Width           =   50
-   End
-   Begin StaticText lbl_src_preview
-      AutoDeactivate  =   True
-      Bold            =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   ""
-      Left            =   10
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   ""
-      LockTop         =   ""
-      Multiline       =   ""
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   18
-      TabPanelIndex   =   0
-      Text            =   "Preview of scripture passage"
-      TextAlign       =   0
-      TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   0
-      TextUnit        =   0
-      Top             =   475
-      Transparent     =   False
-      Underline       =   ""
       Visible         =   True
       Width           =   404
    End
@@ -1132,7 +962,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   19
       TabPanelIndex   =   0
       TextFont        =   "Arial"
-      TextSize        =   0
+      TextSize        =   11
       TextUnit        =   0
       Top             =   221
       Underline       =   False
@@ -1178,8 +1008,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          TabStop         =   True
          Text            =   500
          TextColor       =   0
-         TextFont        =   "System"
-         TextSize        =   0
+         TextFont        =   "Arial"
+         TextSize        =   11
          TextUnit        =   0
          Top             =   241
          Underline       =   ""
@@ -1188,7 +1018,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
          Width           =   110
       End
    End
-   Begin StaticText lbl_scr_to_verse
+   Begin Label lbl_scr_to_verse
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -1213,8 +1043,8 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Text            =   "To verse"
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
       TextUnit        =   0
       Top             =   107
       Transparent     =   False
@@ -1235,7 +1065,7 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   456
+      Left            =   445
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -1245,13 +1075,183 @@ Begin Window ScripturePickerWindow Implements iScripturePicker
       TabIndex        =   21
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
       TextUnit        =   0
-      Top             =   496
+      Top             =   495
       Underline       =   False
       Visible         =   True
-      Width           =   69
+      Width           =   100
+   End
+   Begin Label lbl_src_preview
+      AutoDeactivate  =   True
+      Bold            =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   10
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   ""
+      Multiline       =   ""
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   18
+      TabPanelIndex   =   0
+      Text            =   "Preview of scripture passage"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   470
+      Transparent     =   False
+      Underline       =   ""
+      Visible         =   True
+      Width           =   404
+   End
+   Begin Label txt_verse_dash
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   350
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   22
+      TabPanelIndex   =   0
+      Text            =   "-"
+      TextAlign       =   1
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   107
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   10
+   End
+   Begin Label txt_verse_colon
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   280
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   23
+      TabPanelIndex   =   0
+      Text            =   ":"
+      TextAlign       =   1
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   107
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   10
+   End
+   Begin Label lbl_scr_from_verse
+      AutoDeactivate  =   True
+      Bold            =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   290
+      LockBottom      =   ""
+      LockedInPosition=   False
+      LockLeft        =   ""
+      LockRight       =   True
+      LockTop         =   True
+      Multiline       =   ""
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   24
+      TabPanelIndex   =   0
+      Text            =   "From verse"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   107
+      Transparent     =   False
+      Underline       =   ""
+      Visible         =   True
+      Width           =   55
+   End
+   Begin Label lbl_scr_paragraph
+      AutoDeactivate  =   True
+      Bold            =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   228
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   ""
+      LockRight       =   True
+      LockTop         =   True
+      Multiline       =   ""
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   25
+      TabPanelIndex   =   0
+      Text            =   "Paragraph"
+      TextAlign       =   0
+      TextColor       =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   107
+      Transparent     =   False
+      Underline       =   ""
+      Visible         =   True
+      Width           =   50
    End
 End
 #tag EndWindow
@@ -1581,7 +1581,7 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub RebuildBooklistListboxes()
-		   //
+		  //
 		  // Rebuild the OT & NT listboxes from the current bible
 		  //
 		  

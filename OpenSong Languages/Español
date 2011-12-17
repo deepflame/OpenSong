@@ -557,6 +557,7 @@ T: Etiqueta</keys>
   <help_topics title="Temas de Ayuda">
     <tabs head1="Teclas de Presentación" head2="Formato de Acordes/Letra" head3="Campo de Presentación" head4="Cerrar"/>
     <print caption="Imprimir"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Teclas de Presentación&lt;/h1&gt;
 
@@ -1059,6 +1060,9 @@ Si el campo de presentación está vacío, a continuación, el presentador ordenará 
     <option name="Baja, máxima calidad"/>
     <option name="Ninguna, sin pérdida, archivo grande"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

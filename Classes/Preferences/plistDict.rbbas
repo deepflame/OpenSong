@@ -585,6 +585,12 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub GetLabel(txt as Label)
+		  txt.Caption=GetString(txt.Name,txt.Caption)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub GetList(key as string, byref items() as string, indexStart as integer)
 		  dim count As integer
 		  dim newArray(0) as string
@@ -685,12 +691,6 @@ Class plistDict
 		  end
 		  return value
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub GetStaticText(txt as StaticText)
-		  txt.Caption=GetString(txt.Name,txt.Caption)
-		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -1232,6 +1232,12 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub SetLabel(txt as Label)
+		  SetString(txt.Name,txt.Caption)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub SetList(key as string, items() as string, startIndex as integer, endIndex as integer)
 		  dim count,si,ei as Integer
 		  
@@ -1332,12 +1338,6 @@ Class plistDict
 		  Elseif CheckType(key, kTypeDouble) <> 0 Then
 		    SetDouble(key, v)
 		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub SetStaticText(txt as StaticText)
-		  SetString(txt.Name,txt.Caption)
 		End Sub
 	#tag EndMethod
 

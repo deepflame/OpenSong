@@ -93,6 +93,7 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -308,7 +309,7 @@ Begin Window PresentHelperWindow
       Visible         =   True
       Width           =   332
    End
-   Begin StaticText txt_shortcut_keys
+   Begin Label txt_shortcut_keys
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -329,6 +330,7 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
       TextColor       =   0
@@ -359,6 +361,7 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -589,7 +592,7 @@ Begin Window PresentHelperWindow
       Visible         =   True
       Width           =   160
    End
-   Begin StaticText lbl_preview
+   Begin Label lbl_preview
       Active          =   ""
       AutoDeactivate  =   True
       Bold            =   ""
@@ -626,7 +629,7 @@ Begin Window PresentHelperWindow
       Window          =   0
       _mWindow        =   0
    End
-   Begin StaticText lbl_preview_next
+   Begin Label lbl_preview_next
       Active          =   ""
       AutoDeactivate  =   True
       Bold            =   ""
@@ -738,6 +741,7 @@ End
 		Sub Resized()
 		  '++JRC: Recalc whenever window is resized
 		  RecalcLstAllSlidesColumnWidths
+		  ResizePreview()
 		  Refresh
 		  '--
 		End Sub
@@ -1113,6 +1117,48 @@ End
 		Function SortColumn(column As Integer) As Boolean
 		  Me.setFocus 'EMP: If we don't do this, focus stays on the header and keystrokes won't go to the command handler
 		  Return True
+		End Function
+	#tag EndEvent
+	#tag Event
+		Function CellBackgroundPaint(g As Graphics, row As Integer, column As Integer) As Boolean
+		  // Based on a contribution by fmate14
+		  // User contributed from https://sourceforge.net/projects/opensong/forums/forum/373378/topic/1679116?message=4171729
+		  
+		  If App.SlideStyleColorEnabled() Then
+		    g.ForeColor=rgb(255,255,255)
+		    
+		    If row <me.listCount() Then
+		      g.ForeColor=App.SlideStyleColor("blank") // Default for inserted blanks
+		      
+		      Select Case me.CellTag(row,0)
+		      Case "song"
+		        Select Case me.Cell(row,1).Left(1)
+		        Case "V" // Verse
+		          g.ForeColor = App.SlideStyleColor("verse")
+		        Case "B" // Bridge
+		          g.ForeColor = App.SlideStyleColor("bridge")
+		        Case "P" // Pre-Chorus
+		          g.ForeColor = App.SlideStyleColor("pre-chorus")
+		        Case "C" // Chorus
+		          g.ForeColor = App.SlideStyleColor("chorus")
+		        Case "T" // Tag
+		          g.ForeColor = App.SlideStyleColor("tag")
+		        End Select
+		      Case "custom"
+		        g.ForeColor = App.SlideStyleColor("custom")
+		      Case "scripture"
+		        g.ForeColor = App.SlideStyleColor("scripture")
+		      Case "style"
+		        g.ForeColor = App.SlideStyleColor("style")
+		      Case "image"
+		        g.ForeColor = App.SlideStyleColor("image")
+		      Case "external"
+		        g.ForeColor = App.SlideStyleColor("external")
+		      End Select
+		    End If
+		    
+		    g.fillRect(0,0,g.width, g.height)
+		  End If
 		End Function
 	#tag EndEvent
 #tag EndEvents

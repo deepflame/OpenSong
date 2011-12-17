@@ -53,7 +53,7 @@ Begin Window ErrorPopup
       Visible         =   True
       Width           =   100
    End
-   Begin StaticText lbl_error_description
+   Begin Label lbl_error_description
       AutoDeactivate  =   True
       Bold            =   ""
       ControlOrder    =   1
@@ -129,7 +129,7 @@ Begin Window ErrorPopup
       Visible         =   True
       Width           =   689
    End
-   Begin StaticText lbl_error_instructions
+   Begin Label lbl_error_instructions
       AutoDeactivate  =   True
       Bold            =   ""
       ControlOrder    =   3

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="1.7.0">
+<language name="Nederlands" author="Gert Vrieling, Ewout Voogt en Alex Visser" version="2.0">
 
   <load_settings>
     <checking_folders>Maken en controleren van documenten mappen</checking_folders>
@@ -386,7 +386,7 @@
   </main_menu>
 
   <general_settings title="Algemene instellingen">
-    <general caption="Algemeen" head1="Basis" head2="Bestandslocaties" head3="Systeem">
+    <general caption="Algemeen" head1="Basis" head2="Bestandslocaties" head3="Systeem" head4="Uiterlijk">
       <ccli caption="CCLI Licentie #"/>
       <version_check caption="Controleer voor nieuwere versies bij starten."/>
       <language caption="Taal"/>
@@ -445,6 +445,20 @@
       <videolan caption="Locatie van Videolan client"/>
       <videolan_browse caption="link(shared/browse/@caption)"/>
     </applications>
+	<slidetype_coloring caption="Dia soort kleurmarkering">
+	  <coloring caption="Achtergrond kleuren gebruiken"/>
+	  <verse caption="Lied, vers"/>
+	  <bridge caption="Lied, brug"/>
+	  <prechorus caption="Lied, pre-chorus"/>
+	  <chorus caption="Lied, refrein"/>
+	  <tag caption="Lied, tag"/>
+	  <scripture caption="Bijbeltekst"/>
+	  <custom caption="Aangepaste dia"/>
+	  <style caption="Stijl verandering"/>
+	  <image caption="Afbeeldingen"/>
+	  <application caption="Externe toepassing"/>
+	  <blank caption="Leeg (tussengevoegd)"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Afdruk instellingen">
@@ -605,6 +619,7 @@ Down: Volgende dia
 Up: Vorige dia
 Right: Volgende Sectie
 Left: Vorige Sectie
+F1-F15: Lied
 1-9: Verzen
 C: Refrein
 P: Voor-refrein
@@ -617,6 +632,7 @@ T: Label</keys>
   <help_topics title="Help Onderwerpen">
     <tabs head1="Presentatie toetsen" head2="Formaat Akkoorden/Teksten" head3="Presentatie Veld" head4="Sluiten"/>
     <print caption="Afdrukken"/>
+    <close caption="link(shared/close/@caption)"/>
 <keys>
 &lt;h1&gt;Presentatie Toetsen&lt;/h1&gt;&lt;h3&gt;
 

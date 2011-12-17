@@ -116,7 +116,7 @@ Begin Window PresentSettingsWindow
       Value           =   2
       Visible         =   True
       Width           =   600
-      Begin StaticText lbl_style_default_slides
+      Begin Label lbl_style_default_slides
          Active          =   ""
          AutoDeactivate  =   True
          Bold            =   False
@@ -181,7 +181,7 @@ Begin Window PresentSettingsWindow
          Visible         =   True
          Width           =   160
       End
-      Begin StaticText nte_style_click_to_change_1
+      Begin Label nte_style_click_to_change_1
          Active          =   ""
          AutoDeactivate  =   True
          Bold            =   False
@@ -218,7 +218,7 @@ Begin Window PresentSettingsWindow
          Window          =   0
          _mWindow        =   0
       End
-      Begin StaticText lbl_style_scripture_slides
+      Begin Label lbl_style_scripture_slides
          Active          =   ""
          AutoDeactivate  =   True
          Bold            =   False
@@ -283,7 +283,7 @@ Begin Window PresentSettingsWindow
          Visible         =   True
          Width           =   160
       End
-      Begin StaticText nte_style_click_to_change_2
+      Begin Label nte_style_click_to_change_2
          Active          =   ""
          AutoDeactivate  =   True
          Bold            =   False
@@ -347,7 +347,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          Visible         =   True
          Width           =   387
-         Begin StaticText lbl_alerts_align
+         Begin Label lbl_alerts_align
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -411,7 +411,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   44
          End
-         Begin StaticText lbl_alerts_font
+         Begin Label lbl_alerts_font
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -533,7 +533,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   80
          End
-         Begin StaticText nte_logo_click_to_change_1
+         Begin Label nte_logo_click_to_change_1
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -570,7 +570,7 @@ Begin Window PresentSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText nte_logo_right_click_to_clear_1
+         Begin Label nte_logo_right_click_to_clear_1
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -607,7 +607,7 @@ Begin Window PresentSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_logo_mask
+         Begin Label lbl_logo_mask
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -672,7 +672,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   80
          End
-         Begin StaticText nte_logo_click_to_change_2
+         Begin Label nte_logo_click_to_change_2
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -709,7 +709,7 @@ Begin Window PresentSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText nte_logo_right_click_to_clear_2
+         Begin Label nte_logo_right_click_to_clear_2
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -806,7 +806,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   151
          End
-         Begin StaticText lbl_style_frames
+         Begin Label lbl_style_frames
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -913,7 +913,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   27
          End
-         Begin StaticText lbl_style_time
+         Begin Label lbl_style_time
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1020,7 +1020,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   38
          End
-         Begin StaticText txt_style_transition_note
+         Begin Label txt_style_transition_note
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1085,7 +1085,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          Visible         =   True
          Width           =   392
-         Begin StaticText lbl_style_border_thickness
+         Begin Label lbl_style_border_thickness
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1164,7 +1164,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   50
          End
-         Begin StaticText lbl_style_initial_mode
+         Begin Label lbl_style_initial_mode
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1232,7 +1232,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   140
          End
-         Begin StaticText lbl_style_mouse_cursor
+         Begin Label lbl_style_mouse_cursor
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1332,7 +1332,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   140
          End
-         Begin StaticText txt_style_blanks_between
+         Begin Label txt_style_blanks_between
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1395,7 +1395,7 @@ Begin Window PresentSettingsWindow
             UseFocusRing    =   False
             Visible         =   True
             Width           =   177
-            Begin StaticText lbl_style_blank_style
+            Begin Label lbl_style_blank_style
                Active          =   ""
                AutoDeactivate  =   True
                Bold            =   False
@@ -1519,7 +1519,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          Visible         =   True
          Width           =   155
-         Begin StaticText lbl_monitor_presentation
+         Begin Label lbl_monitor_presentation
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1587,7 +1587,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   40
          End
-         Begin StaticText nte_monitor_detected
+         Begin Label nte_monitor_detected
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1655,7 +1655,7 @@ Begin Window PresentSettingsWindow
             Visible         =   True
             Width           =   40
          End
-         Begin StaticText lbl_monitor_control
+         Begin Label lbl_monitor_control
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1692,7 +1692,7 @@ Begin Window PresentSettingsWindow
             Window          =   0
             _mWindow        =   0
          End
-         Begin StaticText lbl_monitor_default_mode
+         Begin Label lbl_monitor_default_mode
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -1820,7 +1820,7 @@ Begin Window PresentSettingsWindow
          Underline       =   False
          Visible         =   False
          Width           =   155
-         Begin StaticText lbl_audio_file_to_play
+         Begin Label lbl_audio_file_to_play
             Active          =   ""
             AutoDeactivate  =   True
             Bold            =   False
@@ -2210,7 +2210,7 @@ Begin Window PresentSettingsWindow
          Visible         =   True
          Width           =   546
       End
-      Begin StaticText txt_settings_snapshot_parameters
+      Begin Label txt_settings_snapshot_parameters
          Active          =   ""
          AutoDeactivate  =   True
          Bold            =   ""

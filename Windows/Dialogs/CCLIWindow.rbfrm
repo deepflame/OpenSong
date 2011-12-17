@@ -53,7 +53,7 @@ Begin Window CCLIWindow
       Visible         =   True
       Width           =   151
    End
-   Begin StaticText lbl_ccli_user_id
+   Begin Label lbl_ccli_user_id
       AutoDeactivate  =   True
       BehaviorIndex   =   1
       Bold            =   False
@@ -131,7 +131,7 @@ Begin Window CCLIWindow
       Visible         =   True
       Width           =   150
    End
-   Begin StaticText lbl_ccli_password
+   Begin Label lbl_ccli_password
       AutoDeactivate  =   True
       BehaviorIndex   =   3
       Bold            =   False
@@ -209,7 +209,7 @@ Begin Window CCLIWindow
       Visible         =   True
       Width           =   150
    End
-   Begin StaticText lbl_search_for
+   Begin Label lbl_search_for
       AutoDeactivate  =   True
       BehaviorIndex   =   5
       Bold            =   False
@@ -287,7 +287,7 @@ Begin Window CCLIWindow
       Visible         =   True
       Width           =   150
    End
-   Begin StaticText txt_search_by
+   Begin Label txt_search_by
       AutoDeactivate  =   True
       BehaviorIndex   =   7
       Bold            =   False
@@ -351,7 +351,7 @@ Begin Window CCLIWindow
       Visible         =   True
       Width           =   100
    End
-   Begin StaticText txt_search_filter
+   Begin Label txt_search_filter
       AutoDeactivate  =   True
       BehaviorIndex   =   9
       Bold            =   False
@@ -554,7 +554,7 @@ Begin Window CCLIWindow
       Visible         =   True
       Width           =   110
    End
-   Begin StaticText txt_prefix_page
+   Begin Label txt_prefix_page
       AutoDeactivate  =   True
       BehaviorIndex   =   15
       Bold            =   False
@@ -618,7 +618,7 @@ Begin Window CCLIWindow
       Visible         =   True
       Width           =   50
    End
-   Begin StaticText txt_number_of_pages
+   Begin Label txt_number_of_pages
       AutoDeactivate  =   True
       BehaviorIndex   =   17
       Bold            =   False

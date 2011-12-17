@@ -1,4 +1,41 @@
-﻿* Prevent NilObjectException when user cancels selecting the default Bible. (JRC)
+﻿* Fix for automatic lyric indentation in song editor on Linux (Bug #3459158) (Vwout)
+
+* Changed layout to Help window and added a Close button.  Help is now modeless: the dialog can remain open while continuing to work in OpenSong. (swampcat)
+
+-= 2.0 Beta 1 =-
+* Small change to SmartVersion to show the current stage code (alpha, beta, etc.) (JRC)
+
+* The "Use pre-V1.1 file cache" flag has been disabled in the dialog and is ignored at startup due to unresolved crashes on Windows.  If someone wants to take a look at it, the underlying code is still present. (swampcat) (MainSettingsWindow, MainWindow)
+
+* Correct some field spacing in the Main Settings/Preferences dialog. (swampcat) (MainSettingsWindow)
+
+* Fix some UTF-8 processing issues in the Song Picker and Bible lookup. (swampcat)
+
+* Update MacOSLib. (swampcat) (FSRef, FSSPec, MacFileManager)
+
+* Cleanup on Song object to prepare for additional work on it. (swampcat) (Song)
+
+* Section header for a verse now includes the translation for "verse" in addition to the verse number. Potential future change:  making this selectable in print settings. (swampcat) (SongML)
+
+* Print Settings allows user to define amount of space before and after running elements of the song (sections, chords, capo chords, lyrics). (swampcat) (PrintSettingsWindow)
+
+* Saving a song no longer causes the cursor to return to the begining of the lyrics (swampcat) (MainWindow)
+
+* Add shortcuts (F1-F15) for jumping straight to songs during a live presentation. Depending on the keyboard layout, F13 equals Printscreen, F14 equals Screenlock and F15 equals Pause. (Feature request #3305126) (Vwout)
+
+* Make OpenSong more tolerant when loading Zefania XML bibles. Full names and short names are expected where actually only the book number is mandatory. (Vwout)
+
+* Fix issue where a reminder to save the slide after a change in the override style is not always given, causing the style change to get lost. (Vwout)
+
+* Fix issue when doing a live insertion of a song. In case of equal names (equal songs) the positioning in the PresentationHelperWindow was incorrect (Bug #3404474) (Vwout)
+
+* Added color markings for different slide and verse types in set list and presentation helper window (Vwout, thanks to fmate14)
+Each slide or vers line has a background color that indicates what kind of slide is presented. This provides a quick overview during live presentation.
+This feature can be switched off in the general settings. All colors can be customised. These color settings do not affect the background color of presented slides.
+
+* Replace depreciated StaticText class with Label class for compatibility with RB 2010r4 and above (JRC)
+
+* Prevent NilObjectException when user cancels selecting the default Bible. (JRC)
 
 * Introduced new slide type ('external') featuring:
 - Full interactive support for OpenOffice.org Impress and Microsoft PowerPoint including Live preview
@@ -13,7 +50,7 @@ The parameters can be stored as 'preset' in the language translation file in the
 As default presets are available to show a video as slide background using directX video overlay (Windows only), Fullscreen video and video playback from an external capture card using DirectShow. Freely adjustable and extensible :)
 The mode 'external' probably is the most flexible of all as it simply starts or stops an external program, allowing basic control over any program, such as your favorite DVD player, WinAmp or DMX light control unit, or anything as long as it is command line driven.
 
-As icing on the cake, for those who do not have access to Impress or PowerPoint at the presentation desk, a presentation import facility was added to the images slide. All slides from any OpenOffice.org Impress or Microsoft PowerPoint presentation file are imported as static image. The only remark is that one slide is one image, which means that animations or 'clicks' on a single presentation slide do not transfer into individual images.
+As icing on the cake, for those who do not have access to Impress or PowerPoint at the presentation desk, a presentation import facility was added to the images slide. All slides from any OpenOffice.org Impress or Microsoft PowerPoint presentation file are imported as static image. The only remark is that one slide is one image, which means that animations or 'clicks' on a single presentation slide do not transfer into individual images. (Vwout)
 
 * Fix for multiscreen setup in Linux. Displays are now properly detected with support for different resolutions per screen (Bug #1904753, Forum topic 4040032) (Vwout)
 
@@ -1313,5 +1350,5 @@ OSX and MouseUp for the other platforms.  Action event is still called in MouseU
 * Added Print Categorized Table of Contents
 * Added Print Alphabetical Table of Contents
 
-$Date: 2011-10-15 14:06:01 -0500 (Sat, 15 Oct 2011) $
-$Revision: 692 $
+$Date: 2011-12-15 16:06:06 -0600 (Thu, 15 Dec 2011) $
+$Revision: 726 $

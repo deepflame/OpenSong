@@ -86,7 +86,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   70
    End
-   Begin StaticText lbl_margins_left
+   Begin Label lbl_margins_left
       AutoDeactivate  =   True
       BehaviorIndex   =   2
       Bold            =   ""
@@ -196,7 +196,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   13
    End
-   Begin StaticText lbl_margins_right
+   Begin Label lbl_margins_right
       AutoDeactivate  =   True
       BehaviorIndex   =   5
       Bold            =   ""
@@ -306,7 +306,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   13
    End
-   Begin StaticText lbl_margins_top
+   Begin Label lbl_margins_top
       AutoDeactivate  =   True
       BehaviorIndex   =   8
       Bold            =   ""
@@ -416,7 +416,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   13
    End
-   Begin StaticText txt_right_pixels
+   Begin Label txt_right_pixels
       AutoDeactivate  =   True
       BehaviorIndex   =   11
       Bold            =   False
@@ -450,7 +450,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   20
    End
-   Begin StaticText txt_top_pixels
+   Begin Label txt_top_pixels
       AutoDeactivate  =   True
       BehaviorIndex   =   12
       Bold            =   False
@@ -484,7 +484,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   20
    End
-   Begin StaticText lbl_margins_bottom
+   Begin Label lbl_margins_bottom
       AutoDeactivate  =   True
       BehaviorIndex   =   13
       Bold            =   ""
@@ -594,7 +594,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   13
    End
-   Begin StaticText lbl_style_preview
+   Begin Label lbl_style_preview
       AutoDeactivate  =   True
       BehaviorIndex   =   16
       Bold            =   ""
@@ -658,7 +658,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   280
    End
-   Begin StaticText txt_left_pixels
+   Begin Label txt_left_pixels
       AutoDeactivate  =   True
       BehaviorIndex   =   18
       Bold            =   False
@@ -692,7 +692,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   20
    End
-   Begin StaticText txt_bottom_pixels
+   Begin Label txt_bottom_pixels
       AutoDeactivate  =   True
       BehaviorIndex   =   19
       Bold            =   False
@@ -726,7 +726,7 @@ Begin Window StyleMarginWindow
       Visible         =   True
       Width           =   20
    End
-   Begin StaticText txt_background_pixels1
+   Begin Label txt_background_pixels1
       AutoDeactivate  =   True
       BehaviorIndex   =   20
       Bold            =   False

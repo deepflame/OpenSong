@@ -4,10 +4,10 @@ Begin Window HelpWindow
    Backdrop        =   0
    CloseButton     =   True
    Composite       =   False
-   Frame           =   1
+   Frame           =   11
    FullScreen      =   False
    HasBackColor    =   False
-   Height          =   485
+   Height          =   5.28e+2
    ImplicitInstance=   True
    LiveResize      =   False
    MacProcID       =   0
@@ -23,17 +23,17 @@ Begin Window HelpWindow
    Resizeable      =   True
    Title           =   "Help Topics"
    Visible         =   True
-   Width           =   687
+   Width           =   6.95e+2
    Begin TabPanel nil_help_tabs
       AutoDeactivate  =   True
       Bold            =   False
       Enabled         =   True
-      Height          =   470
+      Height          =   459
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   2
+      Left            =   21
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -42,18 +42,18 @@ Begin Window HelpWindow
       Panels          =   ""
       Scope           =   0
       SmallTabs       =   False
-      TabDefinition   =   "Presentation Keys\rLyrics/Chords\rPresentation Field\rClose"
+      TabDefinition   =   "Presentation Keys\rLyrics/Chords\rPresentation Field"
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
-      Top             =   10
+      Top             =   14
       Underline       =   False
-      Value           =   0
+      Value           =   2
       Visible         =   True
-      Width           =   677
+      Width           =   665
       Begin TextArea edt_help_keys
          AcceptTabs      =   False
          Alignment       =   0
@@ -65,13 +65,13 @@ Begin Window HelpWindow
          DataSource      =   ""
          Enabled         =   True
          Format          =   ""
-         Height          =   430
+         Height          =   419
          HelpTag         =   ""
          HideSelection   =   True
          Index           =   -2147483648
          InitialParent   =   "nil_help_tabs"
          Italic          =   False
-         Left            =   8
+         Left            =   29
          LimitText       =   0
          LockBottom      =   True
          LockedInPosition=   False
@@ -93,11 +93,11 @@ Begin Window HelpWindow
          TextFont        =   "Courier New"
          TextSize        =   12
          TextUnit        =   0
-         Top             =   40
+         Top             =   44
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   657
+         Width           =   637
       End
       Begin TextArea edt_help_presentation
          AcceptTabs      =   False
@@ -110,13 +110,13 @@ Begin Window HelpWindow
          DataSource      =   ""
          Enabled         =   True
          Format          =   ""
-         Height          =   430
+         Height          =   419
          HelpTag         =   ""
          HideSelection   =   True
          Index           =   -2147483648
          InitialParent   =   "nil_help_tabs"
          Italic          =   False
-         Left            =   8
+         Left            =   29
          LimitText       =   0
          LockBottom      =   True
          LockedInPosition=   False
@@ -138,11 +138,11 @@ Begin Window HelpWindow
          TextFont        =   "Courier New"
          TextSize        =   12
          TextUnit        =   0
-         Top             =   39
+         Top             =   44
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   657
+         Width           =   637
       End
       Begin TextArea edt_help_lyrics
          AcceptTabs      =   False
@@ -155,13 +155,13 @@ Begin Window HelpWindow
          DataSource      =   ""
          Enabled         =   True
          Format          =   ""
-         Height          =   430
+         Height          =   419
          HelpTag         =   ""
          HideSelection   =   True
          Index           =   -2147483648
          InitialParent   =   "nil_help_tabs"
          Italic          =   False
-         Left            =   8
+         Left            =   29
          LimitText       =   0
          LockBottom      =   True
          LockedInPosition=   False
@@ -175,7 +175,7 @@ Begin Window HelpWindow
          ScrollbarHorizontal=   False
          ScrollbarVertical=   True
          Styled          =   True
-         TabIndex        =   2
+         TabIndex        =   1
          TabPanelIndex   =   2
          TabStop         =   True
          Text            =   "<h1>OpenSong Lyrics / Chords Format</h1>\r\n\r\nSongs are broken down into the following line types: Section lines, Chord lines, Lyric lines, and Comment lines. A simple song might look something like this:\r\n<pre><b>\r\n;Remember to sing the verse twice.\r\n[V]\r\n.G                C\r\n This is a verse, this is a verse.\r\n.D          G\r\n That is so cool.\r\n\r\n[C]\r\n.G               C/D  D     C\r\n Sing the chorus now, yeah, yeah,\r\n.G           C       D/F# G\r\n This is the dumbest song ever.</b></pre>\r\n\r\nLets look at each line type...\r\n\r\n<h2>Section Lines</h2>\r\n\r\nSection lines are delimited by braces: [ and ]. A ""section"" includes any lines following this section line until the next section line or the end of the song. Sections are not displayed in the Presenter, but they are used to determine the order of the slides. Any text inside the braces is acceptable, but the following have special effects:\r\n\r\n<b><i>[V]: </i></b>Verses. Lead sheets will automatically remove the ""V"" and print the remaining number with a circle around it. Examples: [V1], [V2], [V3].\r\n\r\n<b><i>[C]: </i></b>Chorus. Lead sheets will automatically display ""Chorus"" followed by any extra text (see examples). ""Chorus"" will be printed with a square around it. Examples: [C], [C2], [CModulation].\r\n\r\n<b><i>[P]: </i></b>Pre-chorus. Lead sheets will automatically display ""Pre-chorus"" followed by any extra text (see examples). ""Pre-chorus"" will be printed with horizontal lines above it and below it. Examples: [P], [P2].\r\n\r\n<b><i>[B]: </i></b>Bridge. Lead sheets will automatically display ""Bridge"" followed by any extra text (see examples). ""Bridge"" will be printed with a rounded square around it. Examples: [B], [B2].\r\n\r\n<b><i>[T]: </i></b>Tag. Lead sheets will automatically display ""Tag"" followed by any extra text (see examples). ""Tag"" will be printed with a rounded square around it. Examples: [T], [T2].\r\n\r\n<h2>Chord Lines</h2>\r\n\r\nChord lines start with a period: ""."". The first letter of each chord should line up with the lyrics under it. Chord lines don't display on the Presenter, only on lead sheets.\r\n\r\n<h2>Lyric Lines</h2>\r\n\r\nLyric lines start with a space: "" "". Lyrics generally line up with a previous chord line, but not necessarily.\r\n\r\n<b><i>""__""</i></b> If a word needs to be stretched to fit the chords, use underscores: ""_"". For example:\r\n<b><pre>\r\n.Gsus7 C    G\r\n Wel___come home.</pre></b>\r\n\r\nUnderscores are replaced by an appropriate ""-"" centered between the word parts. \r\n\r\n<b>""  ""</b> Multiple spaces between words are just fine. Underscores and multiple spaces are automatically removed in the Presenter. When printing lead sheets, both are dropped and dynamically adjusted to fit.\r\n\r\n<b>""|""</b> Vertical bars are replaced with spaces on lead sheets, and new lines in the Presenter.\r\n\r\n<b>""||""</b> Double vertical bars are replaced by ""new slide"" in the Presenter and ignored when printing lead sheets. Double vertical bars must be at the end of the line.\r\n\r\n<h3>Multiple Lyric Lines for One Chord Line!?</h3>\r\n\r\nMany songs have multiple verses which all share the same chords. Rather than repeat the chords in each verse section, we can group them by verse line rather than by verse number (like a hymnal). In this case, rather than start each lyric line with a space, start each lyric line with the verse number. Note that aligning multiple lyric lines with one chord line is a little trickier. It should look something like this:\r\n\r\n<b><i>(Don't try to sing it; the timing is terrible. *grin*)</i><pre>\r\n[V]\r\n.G     C               G\r\n1This  is verse        one;\r\n2This  is not verse    two;\r\n3Where did verse three go;\r\n4Ever__lasting is not  verse four;\r\n\r\n.G     D    C                D            G\r\n1Hear  my   song as I sing,  ""Mon_________key.""\r\n2Open  your ears to my       wonderful    song.\r\n3Why   are  we still         singing this song?\r\n4This  is   not the way that songs should sound.</pre>\r\n</b>\r\nAs far as the Presenter is concerned, the first character of each lyric line (i.e. 1, 2, 3, etc.) is appended to the section it is in. In other words, a section line of [V] with following lyric lines starting with 1, 2, 3, etc. would look like V1, V2, V3, etc.\r\n\r\n<h2>Comment Lines</h2>\r\n\r\nThere isn't much to a comment line. Comment lines are any lines that start with a semi-colon: "";"". Comment lines are skipped in the Presenter, and displayed using the Comment font in Lead Sheets.\r\n\r\n<h2>Column Breaks</h2>\r\n\r\nIf a line contains only three dashes (""---""), lyrics sheets will print with a second column starting at the column break."
@@ -183,42 +183,74 @@ Begin Window HelpWindow
          TextFont        =   "Courier New"
          TextSize        =   12
          TextUnit        =   0
-         Top             =   40
+         Top             =   44
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
-         Width           =   657
+         Width           =   637
       End
    End
    Begin PushButton btn_help_print
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Print..."
       Default         =   False
       Enabled         =   True
-      Height          =   22
+      Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   612
-      LockBottom      =   False
+      Left            =   494
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
       LockRight       =   True
-      LockTop         =   True
+      LockTop         =   False
       Scope           =   0
-      TabIndex        =   1
+      TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
-      Top             =   4
+      Top             =   486
       Underline       =   False
       Visible         =   True
-      Width           =   70
+      Width           =   90
+   End
+   Begin PushButton btn_help_close
+      AutoDeactivate  =   True
+      Bold            =   ""
+      ButtonStyle     =   0
+      Cancel          =   True
+      Caption         =   "Close"
+      Default         =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   596
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   False
+      Scope           =   0
+      TabIndex        =   3
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   486
+      Underline       =   ""
+      Visible         =   True
+      Width           =   90
    End
 End
 #tag EndWindow
@@ -343,6 +375,14 @@ End
 		      If Not stp.EOF Then g.NextPage
 		    Loop
 		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_help_close
+	#tag Event
+		Sub Action()
+		  Self.Close
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

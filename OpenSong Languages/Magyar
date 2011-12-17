@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="1.7.0">
+<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="2.0.0">
 
   <load_settings>
     <checking_folders>A dokumentumok mappáinak létrehozása/ellenőrzése</checking_folders>
@@ -11,6 +11,7 @@
     <themes>Témák betöltése</themes>
     <time_signatures>Ütem lista  betöltése</time_signatures>
     <imagequality>Képminőség lista betöltése</imagequality>
+    <videolan_preset>Videolan előre definiált paramétereinek betöltése</videolan_preset>
     <fonts>Betűkészlet lista betöltése</fonts>
     <latest_version>Frissítés keresése
       <newer_available>Újabb verzió (%1) érhető el. Letölthető a www.opensong.org oldalról.</newer_available>
@@ -147,6 +148,7 @@
       <add_slides caption="Diák">Egyedi dia beszúrása a listába. Ide egyéni cím, alcím, szöveg kerülhet, és a megjelenítési mód is egyéni lehet. Akár több egyéni dia is egy csoportba foglalható és beszúrható.</add_slides>
       <add_style caption="Stílus">Az aktuális összeállítás alapértelmezett stílusának módosítása bárhol az összeállításban. A stílusok révén új vetítési stílust adhatunk meg, vagy visszatérhetünk az előző/alapértelmezett stílushoz.</add_style>
       <add_image caption="Kép">Új képdia hozzáadása az összeállításhoz. A képdiák lehetővé teszik, hogy egy képet vagy egy képsorozatot jelenítsünk meg a tórzsszöveg helyett.</add_image>      
+      <add_external caption="Külső">Új külső dia hozzáadása az összeállításhoz, amely lehetővé teszi olyan külső forrás aktiválását, mint pl. a bemutatók vagy egy DVD lejátszó.</add_external>
       <add_video caption="Videó">Új videofájl hozzáadása az összeállításhoz. A videót ilyenkor az OpenSong játssza le (feltéve, ha le tudja). </add_video>
       <add_powerpoint caption="PowerPoint">Egy PowerPoint prezentáció beillesztése az összeállításba. A PowerPoint prezentáció vezérlése ilyenkor az Open Song-on keresztül történik.</add_powerpoint>
     </new_item>
@@ -169,6 +171,7 @@
       <custom caption="(Egyedi)"/>
       <scripture caption="(Ige)"/>
       <image caption="(Kép)"/>
+      <external caption="(Külső)"/>
       <style caption="(Stílus)">-- Stílus módosítása --</style>
       <revert caption="(Stílus)">-- Stílus visszaállítása --</revert>
       <defaultstyle caption="(Stílus)">-- Exportált stílus --</defaultstyle>
@@ -190,7 +193,7 @@
     <title caption="Cím">A dia címének módosítása, mely vetítéskor jelenik meg.</title>
     <subtitle caption="Alcím">A dia alcímének módosítása, mely vetítéskor jelenik meg.</subtitle>
     <name caption="Név">A dia nevének módosítása, mely a vetítési segédablakban jelenik meg az azonosítás, és az eligazodás megkönnyítéséhez, de nem jelenik meg magán dián.</name>
-    <slides caption="Diák">Az aktuális dia törzsszövegének módosítása ebben a diában.</slides>
+    <slides caption="Diák">Az aktuális dia törzsszövegének módosítása ebben a diában. Tipp: Gyors hozzáadáshoz húzz és ejts be egy vagy több képet ebbe a listába.</slides>
     <presentation caption="Egyedi vetítési sorrend">A daloknál beállított megjelenítési sorrend felülírása egyéni sorrend megadásával.</presentation>
     <origorder caption="Eredeti vetítési sorrend">A megjelenítési sorrend a fájlban.</origorder>       
     <folder caption="A dal mappája">A kiválasztott elemet tartalmazó mappa.</folder>
@@ -219,6 +222,7 @@
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Feladatok" />
       <ins_image caption="Kép hozzáadása">Egy képet ad hozzá ehhez a diához, amelynek lehet címe, alcíme, stílusa és automatikus beállításai. Az így készített diák léptetése automatikus is lehet.</ins_image>
+      <imp_image caption="Importálás">Egy bemutató összes diáinak betöltése és képként való hozzáadásuk.</imp_image>
       <del_image caption="Kép eltávolítása">A kiválasztott képet eltávolítja a diáról.</del_image>
       <move_up caption="Fel">A kiválasztott képet a dia eleje felé mozgatja.</move_up>
       <move_down caption="Le">A kiválasztott képet a dia vége felé mozgatja.</move_down>
@@ -229,6 +233,47 @@
     <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
+
+  <external_slide>
+    <header caption="Külső dia szerkesztő"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Alkalmazás"/>
+    <presentation caption="Bemutató">Ez a dia típus Microsoft PowerPoint prezentációk vagy a szabad és ingyenes OpenOffice.org Impress bemutatók megjelenítésére használható.</presentation>
+    <videolan caption="Videolan">Ez a dia típus mádiaállományok megjelenítésére használható a sokoldalú és nyílt forráskódú Videolan (VLC) médialejátszóval.</videolan>
+    <application caption="Alkalmazás">E dia típus segítségével parancsoros külső program futtatható.</application>
+    <no_application caption="Nincs kiválasztott alkalmazás">
+    <no_application caption="Válassz egy alkamazást, hogy meghatározd a dia tartalmát."/>
+    </no_application>
+    <presentation_settings caption="Bemutató beállítások">
+      <presentation_host caption="Melyik alkalmazás jelenítse meg a bemutatót?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="A PowerPoint prezentáció feletti teljes kontrollhoz egy telepített Microsoft Office szükséges."/>
+      <host_pptview caption="Microsoft PowerPoint megjelenítő"/>
+      <host_pptview_info caption="A PowerPoint prezentáció beavatkozás nélküli vetítéséhez az ingyenes Microsoft PowerPoint megjelenítő használható. Az OpenSong megpróbálja felderíteni. Egy másik meghatározott megjelenítő progamo az általános beállítások között adható meg."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="A PowerPoint prezentáció vagy Impress bemutató feletti teljes kontrollhoz egy ingyenesen telepíthető OpenOffice.org csomag szükséges."/>
+      <presentation_file caption="Bemutató fájlnév">Jelöld ki a bemutató fájl a párbeszédablak segítségével.</presentation_file>
+      <loop_presentation caption="Bemutató ismétlése"/>
+      <embed_presentation caption="Bemutató beillesztése az OpenSong összeállításba"/>
+    </presentation_settings>
+    <videolan_settings caption="Videolan beállítások">
+      <videolan_start caption="Videolan futtatása"/>
+	  <videolan_mediafilename caption="A média fájl elérési útvonala">Jelöld ki a lejátszandó audio- vagy videofájl.</videolan_mediafilename>
+	  <videolan_preset caption="Az alábbi előre difiniált beállítások alkalmazása"/>
+	  <videolan_manual caption="Kézzel beállított értékek (%d: képernyő száma, %s: médiafájl)"/>
+      <wait_for_videolan caption="Várakozás a lejátszás befejezőséig, mielőtt tovább lépne a következő diára"/>
+      <videolan_stop caption="A Videolan minden elindított példányának leállítása"/>
+    </videolan_settings>
+    <application_settings caption="Alkalmazás indító beállítások">
+      <application_start caption="Egy külső alklamazás indítása"/>
+      <application_filename caption="A futtatandó alkalmazás elérési útvonala">Jelöld ki az indítani kívánt alkalmazás fő futtatatási állományát.</application_filename>
+      <application_parameters caption="Alkalmazás praméterei"/>
+      <wait_for_application caption="Folytatás előtt várakozzon a külső alkalmazás bezárásáig"/>
+      <application_stop caption="Minden futó külső alkalmazás leállítása"/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
 
   <style_change>
     <header caption="Stílus módosítása"/>
@@ -341,7 +386,7 @@
   </main_menu>
 
   <general_settings title="Általános beállítások">
-    <general caption="Általános" head1="Alapvető" head2="Speciális">
+    <general caption="Általános" head1="Alapvető" head2="Útvonalak" head3="Rendszer" head4="Megjelenés">
       <ccli caption="Gyülekezeti CCLI licenc szám"/>
       <version_check caption="Frissítés keresése minden indításkor"/>
       <language caption="Nyelv"/>
@@ -394,6 +439,26 @@
       <songs caption="Dalok"/>
       <sets  caption="Összeállítások"/>
     </startmode>
+    <applications caption="Külső alkalmazások">
+      <pptview caption="Powerpoint megjelenítő elérési útvonala"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Videolan kliens elérési útvonala"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+	<slidetype_coloring caption="Dia típus színezés">
+	  <coloring caption="Háttérszínek alkalmazása"/>
+	  <verse caption="Dal, Versszak"/>
+	  <bridge caption="Dal, Híd"/>
+	  <prechorus caption="Dal, Elő-refrén"/>
+	  <chorus caption="Dal, Refrén"/>
+	  <tag caption="Dal, Coda"/>
+	  <scripture caption="Ige"/>
+	  <custom caption="Egyéni dia"/>
+	  <style caption="Stílus módosítás"/>
+	  <image caption="Kép"/>
+	  <application caption="Külső alalmazás"/>
+	  <blank caption="Üres (beszúrt)"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Nyomtatási beállítások">
@@ -428,7 +493,7 @@
   </print_settings>
 
   <presentation_settings title="Vetítési beállítások">
-    <settings head1="Stílus" head2="Beállítások">
+    <settings head1="Stílus" head2="Beállítások" head3="Pillanatfelvétel">
         <default_slides caption="Alapértelmezett diastílus"/>
         <scripture_slides caption="Alapértelmezett Ige-stílus"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
@@ -436,7 +501,7 @@
         <export_snapshot caption="Pillanatfelvétel exportálása minden diáról a következő fájlba"/>
         <snapshot_file caption="Pillanatfelvétel fájl">A prábeszédablak segítségével válassz egy fájlnevet a pillanatfelvétel számára.</snapshot_file>
         <export_preview caption="Pillanatfelvétel exportálása az összeállításról az előnézet során"/>
-        <export_live_insertions caption="Pillanatfelvétel a beillesztett diákról az élő bemutató során."/>
+        <export_live_insertions caption="Pillanatfelvétel a beillesztett diákról az élő bemutató során"/>
         <export_metadata caption="Dia adatok exportálása hasonlóan elnevezett XML fájlokba"/>
         <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Az alábbi paraméterek alkalmazhatók a fájl nevében, ill. útvonalában:
     - %d: Az aktuális hónap napja (01-31)
@@ -454,7 +519,7 @@
     </settings>
     <transitions caption="Áttűnések">
       <use_transitions caption="Engedélyezve"/>
-      <transition_note caption="*Az áttűnések minősége függ a képernyő felbontásától. Ha az áttűnések lassan futnak, érdemes csökkenteni a számítógép képernyő felbontását. Ha nem jelennek meg az áttűnések, az lehet a monitor alacsony színmélysége miatt is."/>
+      <transition_note caption="*Az áttűnések minősége függ a képernyő felbontásától. Ha az áttűnések lassan futnak, érdemes csökkenteni a számítógép képernyőjének felbontását. Ha nem jelennek meg az áttűnések, az lehet a monitor alacsony színmélysége miatt is."/>
       <time caption="Idő" helptag="Az áttűnés teljes ideje (lassabb gépen ez tovább tarthat)"/>
       <frames caption="Képkockák" helptag="A diák közötti áttűnés lépéseinek száma"/>
     </transitions>      
@@ -496,7 +561,7 @@
       <presentation caption="Vetítési képernyő"/>
       <detected caption="%1 képernyőt sikerült detektálni."/>
       <default_mode caption="Alap képernyő mód"/>
-      <force_4_3_preview caption="4:3 arányú nézet kényszerítése"/>
+      <force_4_3_preview caption="4:3 arány kényszerítése"/>
     </monitor>
     <logo caption="Logó">
       <mask caption="Maszk"/>
@@ -545,6 +610,7 @@ Lefelé: Következő dia
 Felfelé: Előző dia
 Jobbra: Következő rész
 Balra: Előző rész
+F1-F15: Dalok
 1-9: Versszak
 C: Refrén
 P: Elő-refrén
@@ -557,6 +623,7 @@ T: Coda</keys>
   <help_topics title="Súgó témakörök">
     <tabs head1="Vetítés-vezérlő billentyűk" head2="Akkord/dalszöveg formátum" head3="Vetítési sorrend mező" head4="Bezár"/>
     <print caption="Nyomtat"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Vetítések vezérlése&lt;/h1&gt;
 
@@ -1066,6 +1133,14 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
     <option name="Nincs, veszteségmentes, nagy méret"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+	<preset name="Háttérkép videó Windowson (RGB 0,0,1 háttér alkalmazása)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Teljes képernyős videó a bemutató képernyőn" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Teljes képernyős videó az alapértelmezett DirectShow videó bemeneten" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+	<preset name="Kézi" parameters=""/>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Példa cím" type="Egyedi" seconds="0" loop="false">
@@ -1132,6 +1207,7 @@ Kattints ide a szerkesztéshez.</body>
     <set_changed caption="Változtattál a beállításokon. Elmented?"/>
     <select_docs_folder caption="Add meg az OpenSong dokumentumok mappáját!">Hol legyenek az OpenSong adat-fájljai (dalok, összeállítások)?</select_docs_folder>
     <activity_log caption="Szeretné az összeállítás dalait hozzáadni az előzményekhez? Ez a menet közben hozzáadott dalokra is vonatkozik!"/>
+    <import_presentation caption="Bemutató képeinek importálása">Jelöld ki a bemutató fájl, melynek importálni kívánod a képeit.</import_presentation>
   </questions>
 
   <about>
@@ -1194,7 +1270,7 @@ A PuffyClouds1.jpg képfájl a Backgrounds mappában a FreeStockPhotos.com jogtu
     <no_sets_folder>Nem található az alapértelmezett összeállítás (Sets) mappa: %1, vagy a mappa üres.</no_sets_folder>
     <no_settings_folder>Nem található az alapértelmezett beállítások (Settings) mappa: %1, vagy a mappa üres</no_settings_folder>
     <no_songs_folder>Nem található az alapértelmezett dalok (Songs) mappája: %1, vagy a mappa üres</no_songs_folder>
-    <no_docs_folder>Nem hozható létre vagy nem található a dokumentumok (Documents) mappa: %1</no_docs_folder>
+    <no_docs_folder>Nem hozható létre vagy nem található a dokumentumok (Documents) mappa: %1. Az OpenSong nem működhet dokumentumok mappa mélkül. Indítsd újra az OpenSong-ot és jelölj ki egy mappát. Ha ez a hibaüzenet ezek után is megjelenik, lépj kapcsolatba a rendszeradminisztrátorral.</no_docs_folder>
     <docs_folder>A dokumentumok mappa (Documents) nem lehet almappája az „OpenSong Defaults” mappának.
 Átmenetileg módosítva lett erre: %1.
 Módosítsd a beállításokat.</docs_folder>
@@ -1220,6 +1296,12 @@ Az OpenSong fejlesztői csapat sajnálja a kellemetlenséget.
     <activity_disabled>Nem lehet betölteni az előzmények állományt: %1! Ellenőrizze, hogy a fájl létezik és nem sérül. Erre a munkamenetre az előzmények loggolása és megtekintése le lett tiltva.</activity_disabled>
     <adding_logentry>Hiba az előzményekhez való hozzáfűzés során!</adding_logentry>
     <chars_per_slide>A diánkénti karakterek száma 1 és 1000 között kell legyen.</chars_per_slide>
+    <presentations>
+      <nohost>Nincs egyetlen megfelelő alkalmazás sem telepítve a bemutatók betöltéséhez. Telepítsd ezek egyikét: OpenOffice.org, Microsoft PowerPoint vagy Microsoft PowerPoint megjelenítő.</nohost>
+      <unsupported_feature>A(z) '%1' alkalmazás nem támogatja ezt a funkciót.</unsupported_feature>
+      <load_failed>A(z) '%1' bemutatót nem lehetett betölteni.</load_failed>
+    </presentations>
+	<videolan_app_missing>A Videolan alkalmazás nincs még beállítva. Állítsd be a Videolan klienst az Általános beállítások párbeszédablaknak az Útvonalak fülén.</videolan_app_missing>
   </errors>
 
   <xml_errors>
@@ -1294,6 +1376,8 @@ Az OpenSong fejlesztői csapat sajnálja a kellemetlenséget.
     <process_songs>Dalok feldolgozása</process_songs>
 	<song_search>Dalok keresése</song_search>
     <export>Dalok exportálása</export>
+    <load_songs>Dalok betöltése</load_songs>
+    <load_externals>Külső diák betöltése</load_externals>
     <pass1>Rendezés, 1. művelet</pass1>
     <pass2>Rendezés, 2. művelet</pass2>
   </progress_status>

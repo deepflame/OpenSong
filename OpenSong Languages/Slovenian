@@ -500,6 +500,7 @@ T: Oznaka (Tag)</keys>
   <help_topics title="Vsebina pomoči">
     <tabs head1="Kontrolne tipke" head2="Format akordov/besedila" head3="Vrstni red prikaza" head4="Zapri"/>
     <print caption="Natisni"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Kontrolne tipke&lt;/h1&gt;
 
@@ -999,6 +1000,9 @@ Pri več vrsticah besedila na eno vrstico akordov imej v mislih, da vsaka vrsti�
     <option name="Nizko, največja kvaliteta"/>
     <option name="Brez, brez izgube, velika datoteka zbirke"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

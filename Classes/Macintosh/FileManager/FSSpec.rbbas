@@ -28,6 +28,36 @@ Inherits MemoryBlock
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub Constructor(theFSRef as FSRef)
+		  Soft Declare Function FSMakeFSSpec Lib InterfaceLib (vRefNum as Short, dirID as Integer, filename as Pstring, spec as Ptr) as Short
+		  Soft Declare Function FSGetCatalogInfo Lib InterfaceLib (ref as Ptr, whichInfo as Integer, catalogInfo as Ptr, outName as Ptr, fsSpec as Ptr, parentRef as Ptr) as Short
+		  
+		  Const noError = 0
+		  Const fileNotFound = -43
+		  Const kFSCatInfoNone = 0
+		  
+		  me.Constructor
+		  If theFSRef Is Nil then
+		    dim OSError as Integer = FSMakeFSSpec(0, 0, "", me)
+		    If OSError <> noError and OSError <> fileNotFound then
+		      Raise new MacOSException("FSMakeFSSpec", OSError)
+		    End if
+		  Else
+		    dim OSError as Integer = FSGetCatalogInfo(theFSRef, kFSCatInfoNone, Nil, Nil, me, Nil)
+		    If OSError <> 0 then
+		      Raise new MacOSException("FSGetCatalogInfo", OSError)
+		    End if
+		  End if
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function Name() As String
+		  Return DefineEncoding(me.PString(6), Encodings.SystemDefault)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function Operator_Convert() As FolderItem
 		  Soft Declare Function FSMakeFSSpec Lib InterfaceLib (vRefNum as Short, dirID as Integer, filename as Pstring, spec as Ptr) as Short
 		  
@@ -59,44 +89,14 @@ Inherits MemoryBlock
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(theFSRef as FSRef)
-		  Soft Declare Function FSMakeFSSpec Lib InterfaceLib (vRefNum as Short, dirID as Integer, filename as Pstring, spec as Ptr) as Short
-		  Soft Declare Function FSGetCatalogInfo Lib InterfaceLib (ref as Ptr, whichInfo as Integer, catalogInfo as Ptr, outName as Ptr, fsSpec as Ptr, parentRef as Ptr) as Short
-		  
-		  Const noError = 0
-		  Const fileNotFound = -43
-		  Const kFSCatInfoNone = 0
-		  
-		  me.Constructor
-		  If theFSRef Is Nil then
-		    dim OSError as Integer = FSMakeFSSpec(0, 0, "", me)
-		    If OSError <> noError and OSError <> fileNotFound then
-		      Raise new MacOSException("FSMakeFSSpec", OSError)
-		    End if
-		  Else
-		    dim OSError as Integer = FSGetCatalogInfo(theFSRef, kFSCatInfoNone, Nil, Nil, me, Nil)
-		    If OSError <> 0 then
-		      Raise new MacOSException("FSGetCatalogInfo", OSError)
-		    End if
-		  End if
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function vRefNum() As Integer
-		  Return me.Short(0)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function parID() As Integer
 		  Return me.Long(2)
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Name() As String
-		  Return DefineEncoding(me.PString(6), Encodings.SystemDefault)
+		Function vRefNum() As Integer
+		  Return me.Short(0)
 		End Function
 	#tag EndMethod
 
@@ -113,7 +113,7 @@ Inherits MemoryBlock
 	#tag Constant, Name = InterfaceLib, Type = String, Dynamic = False, Default = \"", Scope = Private
 		#Tag Instance, Platform = Mac Classic, Language = Default, Definition  = \"InterfaceLib"
 		#Tag Instance, Platform = Mac Carbon PEF, Language = Default, Definition  = \"CarbonLib"
-		#Tag Instance, Platform = Mac Mach-O, Language = Default, Definition  = \"/System/Library/Frameworks/Carbon.framework/Carbon"
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"/System/Library/Frameworks/Carbon.framework/Carbon"
 	#tag EndConstant
 
 	#tag Constant, Name = sizeOfFSSpec, Type = Double, Dynamic = False, Default = \"", Scope = Private
@@ -124,12 +124,6 @@ Inherits MemoryBlock
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -137,20 +131,7 @@ Inherits MemoryBlock
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
@@ -164,11 +145,30 @@ Inherits MemoryBlock
 			InheritedFrom="MemoryBlock"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Size"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 			InheritedFrom="MemoryBlock"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

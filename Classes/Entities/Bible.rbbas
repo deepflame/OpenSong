@@ -1775,6 +1775,7 @@ Implements iBible
 		  Dim BookAbbrevRoot As XmlNode
 		  Dim BookNode, node As XmlNode
 		  Dim BookName As String
+		  Dim BookNameShort As String
 		  Dim StdName As String
 		  Dim names() as String
 		  Dim splashHidden As Boolean = False
@@ -1925,8 +1926,11 @@ Implements iBible
 		    If list.Length > 0 Then
 		      For i = 0 To list.Length - 1
 		        BookName = list.Item(i).GetAttribute("bname")
+		        BookNameShort = list.item(i).GetAttribute("bsname")
+		        If BookName = "" Then BookName = list.Item(i).GetAttribute("bnumber")
+		        If BookNameShort = "" Then BookNameShort = list.Item(i).GetAttribute("bnumber")
 		        Books.Append BookName
-		        BookNode = BookAbbrevRoot.AppendChild(BookAbbrev.CreateElement(Lowercase(list.item(i).GetAttribute("bsname"))))
+		        BookNode = BookAbbrevRoot.AppendChild(BookAbbrev.CreateElement(Lowercase(BookNameShort)))
 		        BookNode.SetAttribute("bname", BookName)
 		      Next
 		      
@@ -2043,6 +2047,8 @@ Implements iBible
 		  //
 		  // Ed Palmer, September 2005
 		  //
+		  // April 2011: Original RegEx used \s, which isn't UTF-8 clean. Replace with [:space:] instead
+		  //
 		  Dim FoundBooks() As String
 		  Dim xn As XmlNodeList
 		  Dim j As Integer
@@ -2051,6 +2057,9 @@ Implements iBible
 		  Dim bookname As String
 		  Dim re As New RegEx
 		  
+		  //
+		  // Normalize the user input to all lowercase and remove spaces and periods
+		  //
 		  ShortName = Lowercase(ShortName)
 		  ShortName = ReplaceAll(ShortName, ".", "")
 		  ShortName = ReplaceAll(ShortName, " ", "")
@@ -2067,8 +2076,6 @@ Implements iBible
 		  'also added support for partial Bible book names (e.g. Phile for Philemon)
 		  'It's also now possible to use the whole book name in searches as well
 		  
-		  'For i = 3 To Len(ShortName)
-		  'xn = BookAbbrev.Xql("/abbrev/*[starts-with(name(), '" + Left(ShortName, i) + "')]")
 		  xn = BookAbbrev.Xql("/abbrev/*[starts-with(name(), '" + ShortName + "')]")
 		  Select Case xn.Length
 		  Case 0 'No abbreviations match see if Shortname matches part of a book name
@@ -2080,7 +2087,7 @@ Implements iBible
 		      For j = 0 To xn.Length - 1
 		        
 		        booknode = xn.Item(j)
-		        re.SearchPattern = "[\s.,]+"
+		        re.SearchPattern = "[[:space:].,]+"
 		        re.ReplacementPattern = ""
 		        re.Options.ReplaceAllMatches = True
 		        re.Options.CaseSensitive = False
@@ -2091,27 +2098,14 @@ Implements iBible
 		        End If
 		      Next j
 		    End If
-		  Case 1
-		    'Exit
-		  Case Else
-		    'Rather than display an error here, just go the first book in the list
 		    
-		    'If i = Len(ShortName) Then // The reference is still ambiguous
-		    'ErrorString = ""
-		    'For j = 0 To xn.Length - 1
-		    'FoundBooks.Append xn.Item(j).GetAttribute("bname")
-		    'Next
-		    'ErrorString = Join(FoundBooks, ", ")
-		    'Return ""
-		    'End If
 		  End Select
-		  'Next i
 		  
 		  // Control here means that at least a substring of ShortName matches exactly one book.
 		  // Verify that the entire ShortName matches this book, otherwise it's not a match
 		  
 		  booknode = xn.Item(0)
-		  re.SearchPattern = "[\s.,]+"
+		  re.SearchPattern = "[[:space:].,]+"
 		  re.ReplacementPattern = ""
 		  re.Options.ReplaceAllMatches = True
 		  re.Options.CaseSensitive = False

@@ -559,6 +559,7 @@ T: Dodatek</keys>
   <help_topics title="Tematy pomocy">
     <tabs head1="Klawisze prezentacji" head2="Format akordów i tekstu" head3="Kolejność prezentacji" head4="Zamknij"/>
     <print caption="Drukuj"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Klawisze prezentacji&lt;/h1&gt;
 
@@ -1080,6 +1081,9 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
     <option name="Niska, maksymalna jakość"/>
     <option name="Żadna, bezstratna, duży plik zestawu"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

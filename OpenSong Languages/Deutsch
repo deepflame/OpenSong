@@ -533,6 +533,7 @@ T: Markierung</keys>
   <help_topics title="Hilfethemen">
     <tabs head1="Präsentationstasten" head2="Akkord/Liedtext Formatierung" head3="Abspielreihenfolge" head4="Schließen"/>
     <print caption="Drucken"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Präsentationstasten&lt;/h1&gt;
 
@@ -1025,6 +1026,9 @@ Wenn keine Abspielreihenfolge angegeben wird, wird die Reihenfolge aus dem Textf
     <option name="Sehr niedrig, maximale Qualität"/>
     <option name="Kein, verlustfrei, große Set-Datei"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

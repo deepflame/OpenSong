@@ -146,7 +146,7 @@ Begin Window InputBox
       Visible         =   True
       Width           =   22
    End
-   Begin StaticText lbl_the_question
+   Begin Label lbl_the_question
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -168,6 +168,7 @@ Begin Window InputBox
       Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Label"
       TextAlign       =   0
       TextColor       =   0

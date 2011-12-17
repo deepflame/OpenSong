@@ -69,7 +69,6 @@ Begin Window SearchWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   371
-      BehaviorIndex   =   0
    End
    Begin GroupBox grp_search_match
       AutoDeactivate  =   True
@@ -99,7 +98,6 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   130
-      BehaviorIndex   =   1
       Begin RadioButton rad_match_exact
          AutoDeactivate  =   True
          BehaviorIndex   =   2
@@ -129,7 +127,6 @@ Begin Window SearchWindow
          Value           =   True
          Visible         =   True
          Width           =   105
-         BehaviorIndex   =   2
       End
       Begin RadioButton rad_match_begin
          AutoDeactivate  =   True
@@ -160,7 +157,6 @@ Begin Window SearchWindow
          Value           =   False
          Visible         =   True
          Width           =   105
-         BehaviorIndex   =   3
       End
    End
    Begin GroupBox grp_search_words
@@ -191,7 +187,6 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   130
-      BehaviorIndex   =   4
       Begin RadioButton rad_words_any
          AutoDeactivate  =   True
          BehaviorIndex   =   5
@@ -221,7 +216,6 @@ Begin Window SearchWindow
          Value           =   False
          Visible         =   True
          Width           =   105
-         BehaviorIndex   =   5
       End
       Begin RadioButton rad_words_all
          AutoDeactivate  =   True
@@ -252,7 +246,6 @@ Begin Window SearchWindow
          Value           =   False
          Visible         =   True
          Width           =   105
-         BehaviorIndex   =   6
       End
    End
    Begin PushButton btn_search_search
@@ -285,7 +278,6 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   66
-      BehaviorIndex   =   7
    End
    Begin ListBox lst_result
       AutoDeactivate  =   True
@@ -336,7 +328,6 @@ Begin Window SearchWindow
       Width           =   372
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   8
    End
    Begin PushButton btn_search_ok
       AutoDeactivate  =   True
@@ -368,7 +359,6 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   67
-      BehaviorIndex   =   9
    End
    Begin PushButton btn_search_cancel
       AutoDeactivate  =   True
@@ -400,9 +390,8 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   67
-      BehaviorIndex   =   10
    End
-   Begin StaticText lbl_search_example
+   Begin Label lbl_search_example
       AutoDeactivate  =   True
       BehaviorIndex   =   11
       Bold            =   False
@@ -435,9 +424,8 @@ Begin Window SearchWindow
       Underline       =   False
       Visible         =   True
       Width           =   373
-      BehaviorIndex   =   11
    End
-   Begin StaticText lbl_search_caption
+   Begin Label lbl_search_caption
       AutoDeactivate  =   True
       BehaviorIndex   =   12
       Bold            =   ""
@@ -470,9 +458,8 @@ Begin Window SearchWindow
       Underline       =   ""
       Visible         =   True
       Width           =   285
-      BehaviorIndex   =   12
    End
-   Begin StaticText lbl_search_result
+   Begin Label lbl_search_result
       AutoDeactivate  =   True
       BehaviorIndex   =   13
       Bold            =   ""
@@ -505,7 +492,6 @@ Begin Window SearchWindow
       Underline       =   ""
       Visible         =   True
       Width           =   368
-      BehaviorIndex   =   13
    End
 End
 #tag EndWindow
@@ -593,6 +579,16 @@ End
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub DoSearch(controller As ScripturePickerController)
+		  controllerObject = controller
+		  bibleToSearch = controller.CurrentBible
+		  //If edt_search.Text <> "" Then search // This updates everything to account for possible changes elsewhere
+		  Self.Visible = True
+		  Show
 		End Sub
 	#tag EndMethod
 
@@ -795,16 +791,6 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub DoSearch(controller As ScripturePickerController)
-		  controllerObject = controller
-		  bibleToSearch = controller.CurrentBible
-		  //If edt_search.Text <> "" Then search // This updates everything to account for possible changes elsewhere
-		  Self.Visible = True
-		  Show
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h1
 		Protected Sub SelectResult()
 		  if lst_result.ListIndex > -1 Then
@@ -819,7 +805,7 @@ End
 
 
 	#tag Property, Flags = &h1
-		Protected HS As HalfSizer
+		Protected bibleToSearch As iBible
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -827,7 +813,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected bibleToSearch As iBible
+		Protected HS As HalfSizer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1

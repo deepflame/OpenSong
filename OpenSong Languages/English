@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt, Ed Palmer" version="1.7.0">
+<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt, Ed Palmer" version="2.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -386,7 +386,7 @@
   </main_menu>
 
   <general_settings title="General configuration">
-    <general caption="General" head1="Basic" head2="File locations" head3="System">
+    <general caption="General" head1="Basic" head2="File locations" head3="System" head4="Appearance">
       <ccli caption="Church CCLI License #"/>
       <version_check caption="Check for latest version at startup"/>
       <language caption="Language"/>
@@ -445,6 +445,20 @@
       <videolan caption="Location of Videolan client"/>
       <videolan_browse caption="link(shared/browse/@caption)"/>
     </applications>
+	<slidetype_coloring caption="Slide type coloring">
+	  <coloring caption="Apply background colors"/>
+	  <verse caption="Song, Verse"/>
+	  <bridge caption="Song, Bridge"/>
+	  <prechorus caption="Song, Pre-Chorus"/>
+	  <chorus caption="Song, Chorus"/>
+	  <tag caption="Song, Tag"/>
+	  <scripture caption="Scripture"/>
+	  <custom caption="Custom slide"/>
+	  <style caption="Style Change"/>
+	  <image caption="Image slide"/>
+	  <application caption="External application"/>
+	  <blank caption="Blank (inserted)"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Print Settings">
@@ -597,6 +611,7 @@ Down: Next Slide
 Up: Previous Slide
 Right: Next Section
 Left: Previous Section
+F1-F15: Song
 1-9: Verse
 C: Chorus
 P: Pre-chorus
@@ -609,6 +624,7 @@ T: Tag</keys>
   <help_topics title="Help Topics">
     <tabs head1="Presentation Keys" head2="Chords/Lyrics Format" head3="Presentation Field" head4="Close"/>
     <print caption="Print"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Presentation Keys&lt;/h1&gt;
 

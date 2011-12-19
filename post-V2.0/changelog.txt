@@ -1,4 +1,6 @@
-﻿* Fix display issues with font preview. (swampcat)
+﻿* Basic work for a Comments font separate from the Copyright font for printing. Additional work in SmartML required to support this, or refactoring for current SmartML behavior.
+
+* Fix display issues with font preview. (swampcat)
 
 * Mark window dirty using Window.ContentsChanged so the appropriate visual indication is given in the close button on OSX. (swampcat)
 

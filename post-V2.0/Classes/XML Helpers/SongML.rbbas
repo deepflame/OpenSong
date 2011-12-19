@@ -517,7 +517,15 @@ Module SongML
 		  If Left(line, 2) = ";;" Then Return 0
 		  //--
 		  
-		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "copyright")
+		  //++EMP
+		  // V2.0 adds support for a separate comments font
+		  //  Fallback to the copyright font (pre-V2.0 behavior) if the user has not
+		  //  set a new preference.
+		  //--
+		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "comments", False)
+		  If tempFont = Nil Then
+		    tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "copyright", False)
+		  End If
 		  tempFont.Size = Round(tempFont.size * zoom)
 		  Comment = Mid(line, 2)
 		  

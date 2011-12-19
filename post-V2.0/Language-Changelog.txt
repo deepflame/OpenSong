@@ -1,0 +1,295 @@
+-= Version 2.0 =-
+presentation_helper/keys (modified)
+general_settings/slidetype_coloring/*
+general_settings/general (modified)
+load_settings/videolan_preset
+sets_mode/new_item/add_external
+slide_editor/slides (modified)
+progress_status/load_songs
+progress_status/load_externals
+errors/presentations
+general_settings/applications
+general_settings/general (modified)
+questions/import_presentation
+image_slide/imp_image
+external_slide/*
+videolan_preset_list/*
+
+-= Version 1.7 =-
+presentation_settings/settings (modified, added child nodes)
+presentation_settings/errors/snapshot_file
+print_settings/layout/highlight_chorus
+presentation_settings/monitor/force_4_3_preview
+presentation_helper/preview
+presentation_helper/next
+
+-= Version 1.6.2 =-
+progress_status/song_search
+sets_mode/errors/insert
+
+-= Version 1.6 =-
+style_editor/fonts_and_alignment/body_autosize
+style_editor/fonts_and_alignment/title (modified)
+style_editor/fonts_and_alignment/subtitle (modified)
+style_editor/fonts_and_alignment/body (modified)
+main_menu/file/scripture
+scripture_lookup/bad_reference/ambiguous (modified)
+about/translating (modified)
+about/web (modified)
+main_menu/help/user_manual
+sets_mode/current_item/presentitem/*
+
+-= Version 1.5.1 =-
+slide_editor/slides_caption (modified)
+image_slide/images caption (modified)
+errors/chars_per_slide
+
+-= Version 1.5 =-
+scripture_lookup/preview(modified)
+sets_mode/current_item/paste
+style_tabs/properties/apply
+shared/apply
+scripture_search/caption
+scripture_search/result
+scripture_lookup/book (Deleted)
+scripture_lookup/books
+scripture_lookup/search (Modified)
+scripture_lookup/paragraph
+scripture_lookup/from_verse
+scripture_lookup/to_verse
+scripture_lookup/chars_per_slide
+scripture_lookup/verse_per_slide (Deleted child nodes)
+sets_mode/items/image
+image_slide/*
+sets_mode/new_item/add_image
+
+-= Version 1.4 =-
+song_activity/merged
+song_activity/merged_dupes
+song_activity/file_type
+module/file_type (Modified)
+song_activity/merge
+song_activity/view
+shared/export_to
+songs_mode/selected_song/export/to (Deleted)
+questions/activity_log
+errors/activity_disabled (modified)
+song_activity/value
+songs_mode/selected_song/copy
+general_settings/log*
+imagequality_list/*
+general/imagequality
+load_settings/imagequality
+load_settings/transitions
+slide_editor/transition
+presentation_settings/transitions
+style/use_transitions
+style_transition_note
+songml/prechorus_abbreviation
+songml/chorus_abbreviation
+songml/bridge_abbreviation
+songml/tag_abbreviation
+style_editor/fonts_and_alignment/margin
+style_editor/fonts_and_alignment/tabs
+style_editor/options
+style_editor/options/verse_in_title
+style_margins/*
+style_tabs/*
+song_lookup/presentation
+song_lookup/origorder
+index_progress/*
+transition_list/*
+errors/activity_disabled
+error/adding_logentry
+songs_mode/curr_folder
+sets_mode/current_set/saveas
+slide_editor/presentation
+slide_editor/origorder
+video_slides
+powerpoint_slides
+main_menu/settings/refresh_sets
+main_menu/file/quit
+main_menu/file/exit (Deleted)
+general_settings/general/startmode/song
+general_settings/general/startmode/set
+general_settings/newpaint
+presentation_helper/exit
+presentation_settings/click_to_change (Deleted)
+presentation_settings/right_click_to_clear (Deleted)
+presentation_settings/style/time
+presentation_settings/style/frames
+presentation_settings/style/initial_mode
+presentation_settings/default_slides -> presentation_settings/settings/default_slides
+presentation_settings/scripture_slides -> presentation_settings/settings/scripture_slides
+presentation_settings/transition_note -> presentation_settings/settings/transition_note
+presentation_settings/monitor/initial_mode
+*presentation_settings/style/song_subtitles/hymn_number
+*presentation_settings/style/song_subtitles/ccli_number
+*presentation_settings/style/song_subtitles/copyright
+*presentation_settings/style/song_subtitles/author
+presentation_settings/style/subtitles
+presentation_settings/style/subtitles/row0
+presentation_settings/style/subtitles/row1
+presentation_settings/style/subtitles/row2
+presentation_settings/style/subtitles/row3
+presentation_settings/style/subtitles/row4
+presentation_settings/style/highlight_chorus
+presentation_settings/style/initial_mode
+presentation_settings/style/blank_style
+presentation_settings/style/blank_prev
+presentation_settings/style/blank_next
+presentation_settings/logo/click_to_change
+presentation_settings/logo/right_click_to_clear
+presentation_settings/mouse_cursor
+presentation_settings/settings
+presentation_settings/settings/click_to_change
+presentation_settings/settings/right_click_to_clear
+print_preview/ccli_license
+print_preview/ccli_number
+print/*
+songml/*
+shared/untitled
+general_song_editor/hymn_number
+questions/changed
+
+help_topics
+style_editor/fonts_and_alignment/subtitles
+style_editor/fonts_and_alignment/song_subtitles
+song_lookup/folder
+print_settings/units
+print_settings/units/inches
+print_settings/units/cm
+main_menu/edit/selall
+questions/revert
+questions/long_operation
+
+-= Baselevel 13 =-
+xml_errors
+xml_errors/noattribute
+scripture_loookup/errors
+scripture_lookup/errors/ot_bounds
+scripture_lookup/errors/nt_bounds
+bible
+bible/errors
+bible/errors/index_generation
+bible/errors/loadxml
+bible/errors/load1
+bible/errors/load2
+bible/errors/nobnames
+bible/errors/noindex
+errors/general1
+errors/general2
+errors/folder_error
+errors/create_backgrounds_folder
+errors/create_sets_folder
+errors/create_settings_folder
+errors/create_songs_folder
+errors/no_backgrounds_folder
+errors/no_defaults_folder
+errors/no_scripture_folder
+errors/no_sets_folder
+errors/no_settings_folder
+errors/no_songs_folder
+errors/no_docs_folder
+errors/docs_folder
+song
+song/errors
+song/errors/unknown_element
+bible/errors/missing_bnames
+bible/errors/roman
+bible/errors/save
+bible/messages
+bible/messages/bnames
+bible/messages/save
+sets_mode/items/custom
+sets_mode/items/song
+sets_mode/items/scripture
+sets_mode/items/style
+sets_mode/items/revert
+print/setlist
+print/setlist/date
+songml/sharpchords
+songml/flatchords
+songml/altsharpchords
+songml/altflatchords
+Deleted load_settings/init_audio
+Deleted load_settings/load_plugins
+load_settings/checking_folders
+load_settings/main
+song_search/hymn_number
+folderdb_errors/error@code=13
+sets_mode/untitled
+
+progress_status/folder
+progress_status/lead_sheets
+progress_status/process_themes
+progress_status/process_song
+progress_status/pass1
+progress_status/pass2
+progress_status/export
+progress_status
+shared/browse_for
+scripture_search/ok
+scripture_search/cancel
+scripture_search/example
+scripture_search/search
+scripture_search/words/all
+scripture_search/words/any
+scripture_search/words
+scripture_search/match/begins
+scripture_search/match/exact
+scripture_search/match
+scripture_search
+about/additional
+smartml/attrib_except
+smartml/no_path
+smartml/no_file
+smartml/cant_open
+smartml/cant_create
+smartml/xml_error
+smartml/xml_exterror
+presentation_settings/misc/descriptive_subtitle_info moved to style_editor/fonts_and_alignment
+presentation_settings/style/highlight_chorus moved to style_editor/fonts_and_alignment
+songml/presentation
+scripture_search/lst_result
+find_image/parent
+about/sources
+scripture_lookup/book
+questions/generic_save
+questions/generic_save_explanation
+questions/set_changed
+set_mode/errors/revert
+general_settings/documents_folder/warning
+general_settings/documents_folder/message
+songs_mode/ (Modified)
+sets_mode/ (Modified)
+general_settings/documents_folder/changed
+questions/song_changed
+questions/set_changed
+questions/changed (Deleted)
+shared/select
+questions/select_docs_folder
+general_song_editor/ccli (Modified)
+general_settings/ccli (Modified)
+scripture_lookup/select_file
+module/generate_index
+module/generate_error
+song_lookup/preview
+song_lookup/header (Modified)
+general_settings/documents_folder/oldfolderdb
+sets_mode/current_set/export
+sets_mode/items/defaultstyle
+sets_mode/messages/export_complete
+errors/fileutils/*
+errors/cclinotavailable
+scripture_search/lst_result renamed to scripture_search/result
+scripture_lookup/bad_reference/format
+scripture_lookup/shownumbers
+general_settings/general/startmode/song -> general_settings/startmode/songs
+general_settings/general/startmode/set -> general_settings/startmode/sets
+general_settings/newpaint -> general_settings/fonts/newpaint
+style_editor/fonts_and_alignment/descriptive_subtitle_info ->
+    style_editor/fonts_and_alignment/descriptive_subtitle
+help_topics/format (Modified)
+general_settings/logging (Modified)
+song_lookup/songs

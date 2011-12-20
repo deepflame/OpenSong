@@ -94,21 +94,23 @@ Protected Module SmartML
 	#tag Method, Flags = &h1
 		Protected Function GetNode(xnode As XmlNode, nodePath As String, create As Boolean = False) As XmlNode
 		  Dim parent As XmlNode
-		  
+		  Dim paths() As String
 		  Dim i, j As Integer
 		  
-		  parent = xnode
+		  If xnode = Nil Then Return Nil
 		  
-		  nodePath = nodePath + "/"
-		  i = 1
-		  j = InStr(i, nodePath, "/")
-		  While j > 0
-		    parent = GetChildNode(parent, Mid(nodePath, i, j-i), create) ' GetNode will create a node if asked
+		  parent = xnode
+		  paths = Split(nodePath, "/")
+		  j = UBound(paths)
+		  If Left(paths(j),1) = "@" Then // the last node is an attribute, so strip it
+		    ReDim paths(j-1)
+		    j = j - 1
+		  End If
+		  
+		  For i = 0 To j
+		    parent = GetChildNode(parent, paths(i), create) ' GetNode will create a node if asked
 		    If parent = Nil Then Return Nil
-		    
-		    i = j + 1
-		    j = InStr(i, nodePath, "/")
-		  Wend
+		  Next
 		  
 		  Return parent
 		End Function
@@ -189,27 +191,33 @@ Protected Module SmartML
 		Protected Function GetValueF(xnode As XmlNode, childPath As String, create As Boolean = True) As FontFace
 		  Dim f As New FontFace
 		  Dim c As Color
+		  Dim fontNode As XmlNode
 		  
-		  f.Name = GetValue(xnode, childPath + "/@font")
-		  f.Size = GetValueN(xnode, childPath  + "/@size")
-		  f.Bold = GetValueB(xnode, childPath  + "/@bold")
-		  f.Italic = GetValueB(xnode, childPath  + "/@italic")
-		  f.Underline = GetValueB(xnode, childPath  + "/@underline")
+		  If xnode = Nil Then Return Nil
 		  
-		  f.Border = GetValueB(xnode, childPath  + "/@border")
-		  If GetValueC(xnode, childPath  + "/@border_color", c) Then
+		  fontNode = GetNode(xnode, childPath, create)
+		  If fontNode = Nil Then Return Nil
+		  
+		  f.Name = GetValue(fontNode, "@font", create)
+		  f.Size = GetValueN(fontNode, "@size", create)
+		  f.Bold = GetValueB(fontNode, "@bold", create)
+		  f.Italic = GetValueB(fontNode, "@italic", create)
+		  f.Underline = GetValueB(fontNode, "@underline", create)
+		  
+		  f.Border = GetValueB(fontNode, "@border", create)
+		  If GetValueC(fontNode, "@border_color", c, create) Then
 		    f.BorderColor = c
 		  End If
-		  f.Shadow = GetValueB(xnode, childPath  + "/@shadow")
-		  If GetValueC(xnode, childPath  + "/@shadow_color", c) Then
+		  f.Shadow = GetValueB(fontNode, "@shadow", create)
+		  If GetValueC(fontNode, "@shadow_color", c, create) Then
 		    f.ShadowColor = c
 		  End If
-		  f.Fill = GetValueB(xnode, childPath  + "/@fill")
-		  If GetValueC(xnode, childPath  + "/@fill_color", c) Then
+		  f.Fill = GetValueB(fontNode, "@fill", create)
+		  If GetValueC(fontNode, "@fill_color", c, create) Then
 		    f.FillColor = c
 		  End If
 		  
-		  If GetValueC(xnode, childPath  + "/@color", c) Then
+		  If GetValueC(fontNode, "@color", c, create) Then
 		    f.ForeColor = c
 		  End If
 		  
@@ -238,7 +246,7 @@ Protected Module SmartML
 		    outputStream = BinaryStream.Create(f, True)
 		    outputStream.Write DecodeBase64(s)
 		    outputStream.Close
-		    p = f.OpenAsPicture
+		    p = Picture.Open(f)
 		    f.Delete
 		  End If
 		  

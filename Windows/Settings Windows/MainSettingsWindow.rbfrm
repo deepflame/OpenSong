@@ -113,7 +113,7 @@ Begin Window MainSettingsWindow
       TextUnit        =   0
       Top             =   7
       Underline       =   ""
-      Value           =   0
+      Value           =   2
       Visible         =   True
       Width           =   579
       Begin GroupBox grp_settings_general
@@ -180,7 +180,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -381,7 +380,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -461,7 +459,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -541,7 +538,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -948,6 +944,40 @@ Begin Window MainSettingsWindow
             Visible         =   True
             Width           =   226
          End
+         Begin Label lbl_imagequality_compression
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_imagequality"
+            Italic          =   ""
+            Left            =   330
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   ""
+            LockRight       =   ""
+            LockTop         =   ""
+            Multiline       =   ""
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   4
+            TabPanelIndex   =   3
+            Text            =   "Image compression:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   299
+            Transparent     =   False
+            Underline       =   ""
+            Visible         =   True
+            Width           =   226
+         End
       End
       Begin GroupBox grp_settings_proxy
          AutoDeactivate  =   True
@@ -1047,7 +1077,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1093,7 +1122,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1507,7 +1535,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -1646,7 +1673,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -2153,40 +2179,6 @@ Begin Window MainSettingsWindow
          Underline       =   ""
          Visible         =   True
          Width           =   220
-      End
-      Begin Label lbl_imagequality_compression
-         AutoDeactivate  =   True
-         Bold            =   ""
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "tab_general_general"
-         Italic          =   ""
-         Left            =   330
-         LockBottom      =   ""
-         LockedInPosition=   False
-         LockLeft        =   ""
-         LockRight       =   ""
-         LockTop         =   ""
-         Multiline       =   ""
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   10
-         TabPanelIndex   =   3
-         Text            =   "Image compression:"
-         TextAlign       =   0
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         TextUnit        =   0
-         Top             =   299
-         Transparent     =   False
-         Underline       =   ""
-         Visible         =   True
-         Width           =   226
       End
       Begin GroupBox grp_settings_slidetype_coloring
          AutoDeactivate  =   True

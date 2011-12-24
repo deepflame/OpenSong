@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Italiano" author="Matteo TeOoh! Boca, Angelo Zampini" version="1.7.0">
+<language name="Italiano" author="Matteo TeOoh! Boca, Angelo Zampini" version="2.0">
 
   <load_settings>
     <checking_folders>Creazione/Controllo delle cartelle dei documenti</checking_folders>
@@ -11,8 +11,9 @@
     <themes>Caricamento lista dei temi</themes>
     <time_signatures>Sto caricando la lista delle notazioni temporali</time_signatures>
     <imagequality>Sto caricando la lista delle immagini</imagequality>
-    <fonts>Sto caricando la lista dei font</fonts>
-    <latest_version>Controllo la disponibilita' di una nuova versione
+ 	<videolan_preset>Caricamentoimpostazioni parametri Videolan</videolan_preset>
+    <fonts>Caricamento lista dei font</fonts>
+    <latest_version>Controllo ultima versione
       <newer_available>E' disponibile una nuova versione (%1). Visita www.opensong.org per scaricarla.</newer_available>
     </latest_version>
  </load_settings>
@@ -38,30 +39,30 @@
       <import caption="Importa">Importa un nuovo canto in OpenSong da CCLI SongSelect.</import>
     </new_song>
     <selected_song caption="Canto attivo">
-      <save caption="Salva">Scrive su disco la Canzone attiva.</save>
+      <save caption="Salva">Scrive su disco il canto attivo.</save>
       <revert caption="Ripristina">Riporta la Canzone attiva all'ultima versione salvata su disco.</revert>
-      <print caption="Stampa">Stampa la Canzone attiva.</print>
-      <present caption="Presentazione">Attiva la presentazione della canzone attiva. Se sono presenti modifiche, saranno salvate.
+      <print caption="Stampa">Stampa il canto attivo.</print>
+      <present caption="Presentazione">Attiva la presentazione del canto attivo. Se sono presenti modifiche, saranno salvate.
         <single_screen caption="Schermo Singolo"/>
         <dual_screen caption="Schermo Doppio"/>
         <preview_dual_screen caption="Anteprima Schermo Doppio"/>
       </present>
       <export caption="Esporta">Esporta il canto attivo.</export>
-      <rename caption="Rinomina">Rinomina la canzone attiva.</rename>
+      <rename caption="Rinomina">Rinomina il canto attivo.</rename>
       <move caption="Sposta">Sposta il canto attivo in un'altra cartella.
         <where caption="Sposta '%1' in:"/>
       </move>
-      <copy caption="Copia">Copia la canzone attiva in un'altra cartella.
+      <copy caption="Copia">Copia il canto attivo in un'altra cartella.
         <where caption="Copia '%1' in:"/>
       </copy>
-      <delete caption="Elimina">Elimina la canzone attiva.</delete>
+      <delete caption="Elimina">Elimina il canto attivo.</delete>
     </selected_song>
 
     <songs caption="Canti">Seleziona un canto dalla lista per caricarlo nell'editor.</songs>
 
     <curr_folder caption="Cartella contenitore">Mostra la cartella contenente il canto.</curr_folder>
 
-    <song_folders caption="Cartelle">Seleziona una cartella dalla lista per filtrare le canzoni mostrate.
+    <song_folders caption="Cartelle">Seleziona una cartella dalla lista per filtrare i canti mostrati.
       <new>Crea una nuova cartella in cui salvare i canti.</new>
       <delete>Elimina la cartella corrente. La cartella deve essere vuota.</delete>
       <filter_all caption="Tutte"/>
@@ -70,12 +71,12 @@
   </songs_mode>
 
   <general_song_editor caption="Generale">Da' accesso al titolo, sottotitolo, autore, slides e testo.
-    <header caption="Editor Canzoni"/>
+    <header caption="Editor Canti"/>
     <show_general_editor caption="Generale"/>
     <show_advanced_editor caption="Avanzato"/>
-    <title caption="Titolo">Imposta il titolo della canzone attiva.</title>
-    <author caption="Autore">Imposta l'autore della canzone attiva.</author>
-    <copyright caption="Copyright">Imposta i copyright della canzone attiva.</copyright>
+    <title caption="Titolo">Imposta il titolo del canto attivo.</title>
+    <author caption="Autore">Imposta l'autore del canto attivo.</author>
+    <copyright caption="Copyright">Imposta i copyright del canto attivo.</copyright>
     <ccli caption="CCLI #">Imposta il numero CCLI della canzone attiva.</ccli>
     <hymn_number caption="Inno #">Imposta il numero dell'inno riguardante la canzone attiva.</hymn_number>
     <presentation caption="Presentazione">Imposta l'ordine della presentazione della canzone attiva. Le sezioni dovranno essere separate dagli spazi (es: "V1 C V2 C")</presentation>
@@ -94,7 +95,7 @@
       <ins_comment caption="Commento">I commenti appaiono sul foglio solista ma non nelle presentazioni.</ins_comment>
       <ins_column caption="Nuova colonna">I fogli solista possono contenere due colonne per comprimere le canzoni piu' lunghe su una sola pagina.</ins_column>
       <ins_page caption="Nuova pagina">Indica dove posizionare l'interruzione di pagina sul foglio solista.</ins_page>
-    <transpose caption="Transpose">Questa opzione traspone automaticamente la canzone in un'altra tonalita'. Il passo e' dei semitoni.
+    <transpose caption="Transpose">Questa opzione traspone automaticamente il canto in un'altra tonalita'. Il passo e' dei semitoni.
       <using caption="Modo">Seleziona diesis per far si' che OpenSong utilizzi il diesis anziche' i bemolle. O viceversa.
         <sharps caption="Diesis"/>
         <flats caption="Bemolle"/>
@@ -103,7 +104,7 @@
   </general_song_editor>
 
   <advanced_song_editor caption="Avanzato">Da' accesso al tema, stile, tempo, ecc della canzone attiva.
-    <header caption="Editor Canzone"/>
+    <header caption="Editor Canto"/>
     <show_general_editor caption="Generale"/>
     <show_advanced_editor caption="Avanzato"/>
     <themes caption="Temi">Imposta il tema principale della canzone attiva.</themes>
@@ -147,6 +148,7 @@
       <add_slides caption="Slides">Aggiunge una slide personalizzata al set. Potrai aggiungere titolo, corpo e stile. Una slide personalizzata puo' essere formata anche da una serie di slides.</add_slides>
       <add_style caption="Stile">Cambia lo stile standard del set. Le modifiche possono definire un nuovo stile o tornare al precedente.</add_style>
       <add_image caption="Immagine">Aggiunge una slide con immagine al set. Potrai selezionare un'immagine singola o piu' immagini anziche' testo.</add_image>
+      <add_external caption="Esterno">Aggiunge una nuova slide al set che permette l'attivazione di sorgenti esterne come una presentazione o un software di visione DVD.</add_external>
       <add_video caption="Video">Aggiunge un video al set. Utilizzalo per mostrare un video da OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Aggiunge una presentazione PowerPoint al set.</add_powerpoint>
     </new_item>
@@ -169,6 +171,7 @@
       <custom caption="(personalizzato)"/>
       <scripture caption="(scritture)"/>
       <image caption="(immagine)"/>
+      <external caption="(esterno)"/>
       <style caption="(stile)">-- Cambia stile --</style>
       <revert caption="(stile)">-- Ripristina stile --</revert>
       <defaultstyle caption="(stile)">-- Stile esportato --</defaultstyle>
@@ -190,7 +193,7 @@
     <title caption="Titolo">Imposta il titolo della slide mostrato all'interno della slide stessa.</title>
     <subtitle caption="Sottotitolo">Imposta il sottotitolo della slide mostrato all'interno della slide stessa.</subtitle>
     <name caption="Nome">Imposta il titolo della slide mostrato nella finestra di Aiuto. Non viene mostrato nella presentazione.</name>
-    <slides caption="Slides">Contiene il corpo della slide corrente.</slides>
+    <slides caption="Slides">Contiene il corpo della slide corrente. Hint: Drag one or more images to this list for easy adding.</slides>
     <presentation caption="Ordine presentazione personalizzato">Sovrascrive l'ordine della presentazione.</presentation>
     <origorder caption="Ordine presentazione originale">Ripristina l'ordine della presentazione salvato.</origorder>       
     <folder caption="Cartella canzone">Cartella contenente la canzone corrente.</folder>
@@ -217,9 +220,10 @@
     <keepaspect caption="Keep aspect ratio when resizing images">In case of a resizing activity for either one of the above, the horizontal and vertical aspect will be maintained.</keepaspect>
     <store_as_link caption="Non salvare l'immagine nel set, usa link all'immagine">Memorizzare immagini nel set aumenta rapidamente le sue dimensioni sul disco e potrebbe degradare la qualità delle immagini. Utilizzando un collegamento si evita questo. Immagini dalla cartella 'Sfondi' vengono memorizzati come link relativo, il che rende il passaggio al computer di presentazione più facile. Utilizzare con attenzione se la presentazione è stata creata su una macchina diversa da quella di presentazione!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
-    <action caption="Azione"/>
-      <ins_image caption="Aggiungi immagine">Aggiunge una immagine a questa slide per consentire alla presentazione di condividere un comune titolo, sottotitolo, lo stile e/o impostazione di auto-avanzamento. Le slides create in questo modo possono anche essere impostate in ciclo automatico.</ins_image>
-      <del_image caption="Rimuovi immagine">Rimuove l'immagine selezionata dalla slide.</del_image>
+    <action caption="Azione" />
+      <ins_image caption="Aggiungi">Aggiunge una immagine a questa slide per consentire alla presentazione di condividere un comune titolo, sottotitolo, lo stile e/o impostazione di auto-avanzamento. Le slides create in questo modo possono anche essere impostate in ciclo automatico.</ins_image>
+      <imp_image caption="Importa">Carica tutte le slides disponibili da una presentazione e le aggiunge come immagine.</imp_image>
+      <del_image caption="Rimuovi">Rimuove l'immagine selezionata dalla slide.</del_image>
       <move_up caption="Sposta su">Sposta l'immagine correntemente selezionata nella slide più vicina all'inizio della slide.</move_up>
       <move_down caption="Sposta giù">Sposta l'immagine correntemente selezionata nella slide più vicina alla fine della slide.</move_down>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
@@ -229,6 +233,47 @@
     <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
+
+  <external_slide>
+    <header caption="Editor Slide Esterno"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Applicazione"/>
+    <presentation caption="Presentazione">Usa questa slide per mostrare una presentazione usando Microsoft PowerPoint o il programma free e open source OpenOffice.org Impress.</presentation>
+    <videolan caption="Videolan">Usa questa slide per riprodurre un file media usando il media player versatile e open source Videolan (VLC).</videolan>
+    <application caption="Applicazione">Usa questa slide per eseguire un programma esterno usando una riga di comando.</application>
+    <no_application caption="Nessuna applicazione">
+    <no_application caption="Seleziona una applicazione da usare come sorgente per il contenuto di queste slides."/>
+    </no_application>
+    <presentation_settings caption="Impostazioni Presentazione">
+      <presentation_host caption="Quale applicazione deve essere usata per eseguire la presentazione?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="Per il pieno controllo sulle tue presentazioni PowerPoint è necessaria una installazione di Microsoft Office."/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="Per mostrare le tue presentazioni PowerPoint senza interazione, è possibile usare il programma free Microsoft PowerPoint Viewer. OpenSong cerca di rilevarlo. E' possibile impostare un visualizzatore specifico nelle impostazioni generali."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="Per il pieno controllo di una presentazione Impress o PowerPoint è necessaria la suite free OpenOffice.org."/>
+      <presentation_file caption="Presentation filename">Scegliere il nome del file della presentazione usando una finestra di selezione file.</presentation_file>
+      <loop_presentation caption="Loop presentation"/>
+      <embed_presentation caption="Includere la presentazione nel set OpenSong"/>
+    </presentation_settings>
+    <videolan_settings caption="Impostazioni Videolan">
+      <videolan_start caption="Avviare Videolan"/>
+	  <videolan_mediafilename caption="Path to media file to play">Choose the filename of the audio or video file to play.</videolan_mediafilename>
+	  <videolan_preset caption="Usa le seguenti impostazioni con i parametri"/>
+	  <videolan_manual caption="Parametri adattati manualmente (usare %d per numero display, %s per mediafile)"/>
+      <wait_for_videolan caption="Aspetta che la riproduzione finisca prima di continuare con la prossima slide"/>
+      <videolan_stop caption="Stop any launched instance of Videolan"/>
+    </videolan_settings>
+    <application_settings caption="Application launcher settings">
+      <application_start caption="Avviare una applicazione esterna"/>
+      <application_filename caption="Path to application executable">Choose the main executable file of the program that should be launched.</application_filename>
+      <application_parameters caption="Parametri Applicazione"/>
+      <wait_for_application caption="Wait for external application to finish before continuing"/>
+      <application_stop caption="Stop any currently running launched application"/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
 
   <style_change>
     <header caption="Cambiamento stile"/>
@@ -311,37 +356,37 @@
       <quit caption="E_sci"/>
     </file>
     <edit caption="_Modifica">
-      <undo caption="_Annulla"/>
+      <undo caption="Ann_ulla"/>
       <cut caption="_Taglia"/>
       <copy caption="C_opia"/>
       <paste caption="_Incolla"/>
-      <clear caption="P_ulisci"/>
+      <clear caption="Pu_lisci"/>
       <find caption="_Trova"/>
       <find_next caption="Trova di _nuovo"/>
-      <selall caption="Seleziona T_utto"/>
+      <selall caption="Selezion_a Tutto"/>
     </edit>
     <mode caption="_Modalita'">
       <songs caption="Modalita' _Canzone"/>
       <sets caption="Modalita' S_et"/>
     </mode>
-    <settings caption="_Impostazioni">
+    <settings caption="Impo_stazioni">
       <presentation caption="Impostazioni della _Presentazione"/>
       <print caption="Impostazioni di _Stampa"/>
       <general caption="Impostazioni _Generali"/>
       <refresh_songs caption="Aggiorna la cartella _Canzoni"/>
-      <refresh_sets caption="Aggiorna la cartella _Set"/>
+      <refresh_sets caption="Aggiorna la cartella S_et"/>
       <install_module caption="_Installa un modulo addizionale"/>
     </settings>
     <help caption="_Aiuto">
       <help_topics caption="Aiuto _in linea"/>
-      <user_manual caption="_Online User Manual"/>
+      <user_manual caption="Manuale Utente _Online"/>
       <translating caption="_Tradurre OpenSong"/>
       <about caption="_About OpenSong"/>
     </help>
   </main_menu>
 
   <general_settings title="Configurazione Generale">
-    <general caption="Generale" head1="Base" head2="Speciale">
+    <general caption="Generale" head1="Base" head2="File locations" head3="System" head4="Aspetto">
       <ccli caption="Licenza CCLI # della Chiesa"/>
       <version_check caption="Verifica la versione più recente all'avvio"/>
       <language caption="Lingua"/>
@@ -394,6 +439,26 @@
       <songs caption="Canti"/>
       <sets  caption="Sets"/>
     </startmode>
+    <applications caption="Applicazioni esterne">
+      <pptview caption="Posizione di Powerpoint Viewer"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Posizione di Videolan client"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+	<slidetype_coloring caption="Slide type coloring">
+	  <coloring caption="Apply background colors"/>
+	  <verse caption="Canto, Verso"/>
+	  <bridge caption="Canto, Ponte"/>
+	  <prechorus caption="Canto, Pre-Chorus"/>
+	  <chorus caption="Canto, Ritornello"/>
+	  <tag caption="Canto, Tag"/>
+	  <scripture caption="Scrittura"/>
+	  <custom caption="Custom slide"/>
+	  <style caption="Cambio Stile"/>
+	  <image caption="Image slide"/>
+	  <application caption="Applicazione Esterna"/>
+	  <blank caption="Blank (inserted)"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Impostazioni di Stampa">
@@ -546,7 +611,8 @@ Giu': Slide successiva
 Su: Slide precedente
 Destra: Sezione successiva
 Sinistra: Sezione precedente
-1-9: Strofe
+F1-F15: Canto
+1-9: Strofa
 C: Ritornello
 P: Pre-ritornello
 B: Bridge
@@ -583,8 +649,8 @@ Tasto B: Vai a Bridge (come contrassegnato da un [B#] nel song editor). Se c'è p
 allora premendo il tasto B si passerà al prossimo Bridge.
 Tasto C: Vai a Chorus (come contrassegnato da un [C#] nel song editor). Se c'è più di un chorus, 
 allora premendo il tasto C si passerà al prossimo chorus.
-Tasto T: Go to Tag (as denoted by a [T#] in song editor). If there is more than one Tag,
-then pressing the T key will move to the next Tag.
+Tasto T: Vai al Tag (come contrassegnato da una [T#] nel song editor). Se c'è più di un Tag,
+allora premendo il tasto T si passerà al prossimo Tag.
 Tasto P: Go to Pre-Chorus(as denoted by a [P#] in song editor). If there is more than one Pre-Chorus,
 then pressing the P key will move to the next Pre-Chorus.
 Tasti 1-9: Vai al Verso# (come indicato da [V#] in song editor).
@@ -673,7 +739,7 @@ There isn't much to a comment line. Comment lines are any lines that start with 
 
 &lt;h2&gt;Interruzioni di Colonna&lt;/h2&gt;
 
-If a line contains only three dashes ("---"), lyrics sheets will print with a second column starting at the column break.
+Se una riga contiene solo tre lineette ("---"), i fogli dei canti saranno stampati con una seconda colonna che inizia all'interruzione di colonna.
 
 &lt;h2&gt;Interruzioni di Pagina&lt;/h2&gt;
 
@@ -747,7 +813,7 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
      <symbol caption="&#169;"/>
      <prechorus caption="Pre-ritornello"/>
      <chorus caption="Ritornello"/>
-     <bridge caption="Bridge"/>
+     <bridge caption="Ponte"/>
      <tag caption="Tag"/>
      <verse caption="Strofa"/>
      <prechorus_abbreviation caption="pre-rit"/>
@@ -789,7 +855,7 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
       <tabs caption="Tabulazioni"/>
     </fonts_and_alignment>
     <options caption="Opzioni di testo">
-      <subtitles caption="Sottotitoli canzone"/>
+      <subtitles caption="Sottotitoli canto"/>
       <highlight_chorus caption="Evidenzia il testo del ritornello"/>
       <descriptive_subtitle caption="Informazioni descrittive sottotitolo"/>
       <verse_in_title caption="Includi numeri di strofe nel titolo"/>
@@ -1068,6 +1134,11 @@ Se il campo presentazione è vuoto, allora il Presenter ordinerà le slides basand
   </imagequality_list>
 
   <videolan_preset_list>
+	<preset name="Video as wallpaper background in Windows (use background color RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Video a tutto schermo sullo schermo di presentazione" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Fullscreen video from default DirectShow video input" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+	<preset name="Manuale" parameters=""/>
   </videolan_preset_list>
 
   <style_preview>
@@ -1136,6 +1207,7 @@ Clicca sulla slide per modificarne lo stile.</body>
     <set_changed caption="Il set corrente e' stato modificato, vuoi salvare?"/>
     <select_docs_folder caption="Seleziona la cartella Documenti OpenSong">Dove saranno salvati tutti i file di OpenSong?</select_docs_folder>
     <activity_log caption="Vuoi che le canzoni in questa presentazione siano aggiunte al log? Questo si applichera' anche alle canzoni aggiunte al volo!"/>
+    <import_presentation caption="Importa le immagini della presentazione">Seleziona il file di presentazione da cui vuoi importare le slides.</import_presentation>
   </questions>
 
   <about>
@@ -1224,6 +1296,12 @@ Il team di sviluppo di OpenSong si scusa per l'inconveniente.
     <activity_disabled>Non riesco a caricare il file Log Attivita' canzoni: %1! Per favore verifica che esista e non sia corrotto. L'attivita' Log sara' disabilitata in questa sessione.</activity_disabled>
     <adding_logentry>Errore aggiungendo al log!</adding_logentry>
     <chars_per_slide>I caratteri per slide devono essere tra 1 e 1000.</chars_per_slide>
+    <presentations>
+      <nohost>Nessuna applicazione disponibile per caricare una presentazione. Installare OpenOffice.org, Microsoft PowerPoint o Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>L'applicazione '%1' non supporta questa caratteristica.</unsupported_feature>
+      <load_failed>La presentazione '%1' non può essere aperta.</load_failed>
+    </presentations>
+	<videolan_app_missing>L'applicazione videolan non è impostata correttamente. Specificare il client videolan nella finestra Impostazioni Generali nella tabella Posizioni File.</videolan_app_missing>
   </errors>
 
   <xml_errors>
@@ -1293,11 +1371,13 @@ Il team di sviluppo di OpenSong si scusa per l'inconveniente.
 
   <progress_status>
     <folder>Sistemando la cartella %1</folder>
-    <lead_sheets>Generando i fogli solista</lead_sheets>
+    <lead_sheets>Generazione fogli solista</lead_sheets>
     <process_themes>Elaborazione Temi</process_themes>
     <process_songs>Elaborazione Canti</process_songs>
     <song_search>Ricerca Canti</song_search>
     <export>Esportazione Canto(i)</export>
+    <load_songs>Caricamento Canto(i)</load_songs>
+    <load_externals>Loading External sheet(s)</load_externals>
     <pass1>Ordinando, 1o passaggio</pass1>
     <pass2>Ordinando, 2o passaggio</pass2>
   </progress_status>

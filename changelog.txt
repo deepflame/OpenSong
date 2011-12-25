@@ -1,4 +1,6 @@
-﻿* Fix display issues with font preview. (swampcat)
+﻿* Support displaying verse numbers without having to define the presentation order (JRC)
+
+* Fix display issues with font preview. (swampcat)
 
 * Mark window dirty using Window.ContentsChanged so the appropriate visual indication is given in the close button on OSX. (swampcat)
 

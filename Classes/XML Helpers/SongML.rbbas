@@ -1801,7 +1801,16 @@ Module SongML
 		  'sections = Split(Trim(SmartML.GetValue(songElement, "presentation", True)), " ")
 		  sections = Split(Trim(presentation), " ")
 		  
-		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
+		  If UBound(sections) < 0 Then
+		    '++JRC
+		    ' If there is no presentation defined, we just do the sections in order
+		    'modified to pull the presentation order from the lyrics
+		    order = Trim(order)
+		    order = ReplaceAll(order, "|", " ")
+		    SmartML.SetValue(songElement, "presentation", order)
+		    sections = Split(order, " ") 
+		  End If
+		  '--
 		  
 		  Dim ChorusNr, PresentationIndex as integer 'GP
 		  ChorusNr = 0 'GP

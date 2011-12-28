@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<language name="Slovak" author="Oto BREZINA, Peter KOZAR" version="1.6.0">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<language name="Slovak" author="Oto BREZINA, Peter KOZAR, Matej Kovacik" version="2.0-Beta">
 
   <load_settings>
     <checking_folders>Vytvorenie/kontrola zložiek s dokumentmi</checking_folders>
@@ -11,6 +11,7 @@
     <themes>Načítanie zoznamu tém</themes>
     <time_signatures>Načítanie zoznamu časových značiek</time_signatures>
     <imagequality>Načítanie zoznamu obrázkov</imagequality>
+    <videolan_preset>Načítanie parametrov nastavenia Videolan</videolan_preset>
     <fonts>Načítanie zoznamu fontov</fonts>
     <latest_version>Kontrola najnovšej verzie
       <newer_available>Je dostupná nová verzia (%1). Môžete si ju stiahnuť na www.opensong.org.</newer_available>
@@ -41,7 +42,7 @@
       <save caption="Uložiť">Uloží vybranú pieseň na disk.</save>
       <revert caption="Vrátiť">Obnoví aktuálnu pieseň na verziu uloženú na disku.</revert>
       <print caption="Tlačiť">Vytlačí aktuálnu pieseň.</print>
-      <present caption="Premietnuť">Premietne aktuálnu pieseň. Ak ste v aktuálnej piesni urobili zmeny, budú uložené.
+      <present caption="Premietať">Premietne aktuálnu pieseň. Ak ste v aktuálnej piesni urobili zmeny, budú uložené.
         <single_screen caption="Jedna obrazovka"/>
         <dual_screen caption="Dve obrazovky"/>
         <preview_dual_screen caption="Náhľad druhej obrazovky"/>
@@ -147,6 +148,7 @@
       <add_slides caption="Snímky">Pridá užívateľskú snímku do aktuálneho playlistu. Uživateľské snímky vám umožnia vybrať si vlastný názov, podnadpis, vlastný text ba i štýl. Užívateľská snímka môže v skutočnosti obsahovať sériu snímok.</add_slides>
       <add_style caption="Štýl">Zmení aktuálny základný štýl kdekoľvek v playliste. Zmeny štýlov môžu definovať nový štýl alebo vrátiť sa k predchádzajúcemu štýlu.</add_style>
       <add_image caption="Obrázok">Pridá snímok s obrázkom do aktuálneho playlistu. Obrázkové snímky umožňujú premietnuť jeden obrázok alebo sériu obrázkov namiesto textu.</add_image>
+      <add_external caption="External">Pridá nový snímok ktorý povolí aktiváciu zobrazenia z externého zdroja, ako napríklad Power Point, prehratie DVD videa a pod.</add_external>
       <add_video caption="Video">Pridá video do aktuálneho playlistu. Použite to, ak chcete z programu OpenSong premietnuť video.</add_video>
       <add_powerpoint caption="PowerPoint">Pridá prezentáciu PowerPoint do aktuálneho playlistu. Použite to, ak chcete z programu OpenSong ovládať prezentáciu PowerPoint.</add_powerpoint>
     </new_item>
@@ -168,7 +170,8 @@
       <song caption="(pieseň)"/>
       <custom caption="(užívateľský)"/>
       <scripture caption="(Biblia)"/>
-      <image caption="(obrázek)"/>
+      <image caption="(obrázok)"/>
+      <external caption="(externý)"/>
       <style caption="(štýl)">-- Zmeniť štýl --</style>
       <revert caption="(štýl)">-- Navrátiť štýl --</revert>
       <defaultstyle caption="(štýl)">-- Exportovaný štýl --</defaultstyle>
@@ -176,6 +179,7 @@
     <untitled caption="Bez názvu"/>
     <errors>
       <revert caption="Chyba pri opätovnom načítaní playlistu &quot;%1&quot; zo súboru."/>
+      <insert caption="Chyba pri vkladaní kopírovaných snímkov:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; exportované do
@@ -218,6 +222,7 @@
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Akcia" />
       <ins_image caption="Pridať obrázok">Pridá obrázok do aktuálnej snímky. Umožňuje to viacerým obrázkom v sérii zdieľať nadpis, podnadpis, štýl i nastavenia. Snímky vytvorené týmto spôsobom sa dajú automaticky posúvať v slučke.</ins_image>
+      <imp_image caption="Import">Načítam všetky dostupné snímky z prezentácie a pridávam ich ako obrázky.</imp_image>
       <del_image caption="Odobrať obrázok">Odoberie vybraný obrázok zo snímky.</del_image>
       <move_up caption="Posunúť nahor">Presunie vybraný obrázok bližšie k začiatku snímky.</move_up>
       <move_down caption="Posunúť nadol">Presunie vybraný obrázok bližšie ku koncu snímky.</move_down>
@@ -228,6 +233,47 @@
     <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
+
+  <external_slide>
+    <header caption="Externý Editor Snímkov"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Aplikácia"/>
+    <presentation caption="Presentácia">Použi tento snímok na zobrazenie prezentácie pomocou Microsoft PowerPoint, alebo OpenOffice.org/LibreOffice Impress.</presentation>
+    <videolan caption="VLC video">Použi tento snímok pre spustenie multimediálneho súboru pomocou univerzálneho prehrávača Videolan (VLC).</videolan>
+    <application caption="Applikácia">Použi tento snímok na spustenie externej aplikácie pomocou príkazového riadku.</application>
+    <no_application caption="Žiadna aplikácia">
+    <no_application caption="Vyberte aplikáciu, ktorú chcete použiť ako zdroj pre obsah tejto snímky."/>
+    </no_application>
+    <presentation_settings caption="Nastavenie prezentácie">
+      <presentation_host caption="Ktorá aplikácia má byť použitá pre spustenie prezentácie?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="Pre plnú kontrolu nad vašou PowerPoint prezentáciou je potrebné mať nainštalovaný Microsoft Office."/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="Pre zobrazenie prezentácie programu PowerPoint bez interakcie, môžete využiť zdarma Microsoft PowerPoint Viewer. OpenSong sa ho snaží nájsť. Môžete aj priamo nastaviť konkrétny prehliadač vo všeobecnom nastavení."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="Pre plnú kontrolu nad prezentáciami v Impress alebo PowerPointe treba mať nainštalovaný balík OpenOffice.org."/>
+      <presentation_file caption="Presentation filename">Vyberte si súbor prezentácie pomocou výberového dialógu.</presentation_file>
+      <loop_presentation caption="Slučka prezentácie"/>
+      <embed_presentation caption="Zahrnúť prezentáciu do OpenSong playlistu"/>
+    </presentation_settings>
+    <videolan_settings caption="Nastavenie VLC">
+      <videolan_start caption="Spustiť VLC"/>
+	  <videolan_mediafilename caption="Cesta k multimediálnemu súboru pre prehrávanie">Vyberte si audio alebo video súbor na prehratie.</videolan_mediafilename>
+	  <videolan_preset caption="Použiť nasledujúce nastavené parametre"/>
+	  <videolan_manual caption="Nastaviť parametre ručne (použiť %d pre zobrazenie čísla, %s pre multimediálny súbor)"/>
+      <wait_for_videolan caption="Čakať na dokončenie prehrávania audia/videa pred prepnutím na další snímok"/>
+      <videolan_stop caption="Stopnúť akúkoľvek spustenú inštanciu vo VLC"/>
+    </videolan_settings>
+    <application_settings caption="Nastavenie Spúšťača Aplikácie">
+      <application_start caption="Spustiť externú aplikáciu"/>
+      <application_filename caption="Cesta k spustiteľnej aplikácii">Vyberte si hlavný spustiteľný súbor programu (.exe), ktorý by mal byť spustený.</application_filename>
+      <application_parameters caption="Parametre aplikácie"/>
+      <wait_for_application caption="Čakať, až externá aplikácia skončí než sa bude pokračovať"/>
+      <application_stop caption="Zastaviť niektorú práve spustenú aplikáciu"/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
 
   <style_change>
     <header caption="Zmena štýlu"/>
@@ -340,7 +386,7 @@
   </main_menu>
 
   <general_settings title="Všeobecné nastavenia">
-    <general caption="Všeobecné" head1="Základné" head2="Rozšírené">
+    <general caption="Všeobecné" head1="Základné" head2="Umiestnenie súborov" head3="Systém" head4="Rozšírené">
       <ccli caption="Číslo licencie CCLI"/>
       <version_check caption="Kontrolovať najnovšiu verziu pri spustení"/>
       <language caption="Jazyk"/>
@@ -393,6 +439,25 @@
       <songs caption="Piesne"/>
       <sets  caption="Playlisty"/>
     </startmode>
+    <applications caption="Externé aplikácie">
+      <pptview caption="Umiestnenie Powerpoint Viewer-a"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Umiestnenie VLC.EXE - Videolan klient"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+	<slidetype_coloring caption="Podfarbenie snímok podľa typu">
+	  <coloring caption="Použiť farbu pozadia"/>
+	  <verse caption="Pieseň, Verše"/>
+	  <bridge caption="Pieseň, Prechod"/>
+	  <prechorus caption="Pieseň, Prerefrén"/>
+	  <chorus caption="Pieseň, Refrén"/>
+	  <tag caption="Pieseň, Značka"/>
+	  <scripture caption="Biblia"/>
+	  <custom caption="Užívateľská snímka"/>
+	  <image caption="Obrázkový snímok"/>
+	  <application caption="Externá aplikácia"/>
+	  <blank caption="Prázdne (vložené medzi)"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Nastavenie tlače">
@@ -432,7 +497,26 @@
         <scripture_slides caption="Predvolený štýl biblického textu"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
-    </settings>
+            
+        <export_snapshot caption="Exportovať snapshot každého prezentovaného snímku do nasledujúceho súboru"/>
+        <snapshot_file caption="Snapshot filename">Veberte názov snapshot súboru, použite výberový dialog.</snapshot_file>
+        <export_preview caption="Exportovať snapshoty počas prezerania playlistu"/>
+        <export_live_insertions caption="Exportovať snapshoty snímkov vložených počas živej prezentácie"/>
+        <export_metadata caption="Exportovať detaily snímky do podobne pomenovaného xml súboru"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Nasledujúce parametre je možné použiť v názve súboru alebo cesty:
+    - %d: Deň v mesiaci (01-31)
+    - %h: Hodina aktuálneho času v 24-hodinovom formáte (00-23)
+    - %i: Minúty aktuálneho času (00-59)
+    - %m: Mesiac v roku (01-12)
+    - %n: Počet snímok v aktuálnom playliste (počínajúc s nulami)
+    - %N: Názov aktuálneho snímku
+    - %P: Index snímkov počas prezentácie (počínajúc s nulami)
+    - %s: Sekundy z aktuálneho času (00-59)
+    - %S: Názov aktuálneho playlistu
+    - %T: Názov aktuálnej snímky
+    - %V: Indikátor verša v aktuálnej snímke (pre piesne, prázdne pre iné typy)
+    - %y: Aktuálny rok (4 číslice)</snapshot_parameters>
+</settings>
     <transitions caption="Prechody">
       <use_transitions caption="Použiť prechody*"/>
       <transition_note caption="*Prechody veľmi ovplyvňuje rozlíšenie obrazovky. Ak sú prechody pomalé, zvážte možnosť zníženia rozlíšenia projektoru. Ak sa prechody vôbec nezobrazujú, možno máte nastavenú malú hĺbku farieb projektora."/>
@@ -477,6 +561,7 @@
       <presentation caption="Premietací monitor"/>
       <detected caption="Počet detekovaných monitorov: %1"/>
       <default_mode caption="Predvolený režim monitoru"/>
+      <force_4_3_preview caption="Vynútený 4:3 náhľad"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Maska"/>
@@ -494,6 +579,10 @@
     <misc caption="Rôzne">
       <exit_prompt caption="Spýtať sa pred ukončením"/>
     </misc>
+    
+    <errors>
+        <snapshot_file>Chyba: vytváranie snapshotov je zapnuté, ale nie je zadané meno súboru.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Pomocník premietania">
@@ -531,7 +620,6 @@ T: Značka</keys>
   <help_topics title="Témy pomocníka">
     <tabs head1="Klávesové skratky" head2="Formát akordov/textu" head3="Políčko premietania" head4="Zavrieť"/>
     <print caption="Tlač"/>
-    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Klávesové skratky pri premietaní&lt;/h1&gt;
 
@@ -1042,6 +1130,11 @@ Ak je Políčko prezentácie prázdne, pri premietaní bude poradie snímok tak�
   </imagequality_list>
 
   <videolan_preset_list>
+  <preset name="Video ako pozadie ma ploche vo Windows (použiť farbu pozadia RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Video na celú obrazovku na prezentačnej obrazovke" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Video na celú obrazovku z predvoleného DirectShow video vstupu" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+	<preset name="Ručne" parameters=""/>
   </videolan_preset_list>
 
   <style_preview>
@@ -1060,6 +1153,7 @@ Kliknite na snímku, ak chcete upraviť jej štýl.</body>
       </slide_group>
     </slide_groups>
   </style_preview> 
+
 
   <subtitles caption="Podnadpisy" head1="Zoradiť" head2="Povolené" head3="Popis">
     <row0 caption="Copyright|copyright"/>
@@ -1109,14 +1203,15 @@ Kliknite na snímku, ak chcete upraviť jej štýl.</body>
     <set_changed caption="Aktuálny playlist bol zmenený. Chcete uložiť zmeny?"/>
     <select_docs_folder caption="Vyberte zložku s piesňami a pozadiami">Kam sa majú ukladať súbory (piesne a playlisty)?</select_docs_folder>
     <activity_log caption="Chcete piesne v prezentácii pridať do záznamu činností? Týka sa to aj piesní pridaných za chodu!"/>
+    <import_presentation caption="Importovať obrázky prezentácie">Vyberte súbor prezentácie z ktorého chcete importovať snímky.</import_presentation>
   </questions>
 
   <about>
     <additional>Ďalší vývoj:</additional>
     <copyright>Copyright</copyright>
     <gpl>Tento softvér je uvoľnený pod licenciou GPL.</gpl>
-    <web>http://www.opensong.org, http://cb.cz/pardubice/opensong</web>
-    <translating>Ak chcete preložiť OpenSong, skopírujte súbor 'English' do zložky 'OpenSong Languages' a premenujte na názov nového jazyka. Preložte všetko v tomto súbore okrem tagov a názvov atribútov. Potom pošlite nový súbor na translator@opensong.org a my ho dáme do oficiálnej verzie.</translating>
+    <web>http://www.opensong.org, http://www.opensong.cz</web>
+    <translating>Ak chcete preložiť OpenSong, skopírujte súbor 'English' do zložky 'OpenSong Languages' a premenujte na názov nového jazyka. Preložte všetko v tomto súbore okrem tagov a názvov atribútov. Potom pošlite nový súbor na opensong-translate@lists.sourceforge.net , alebo pridať do 'Patches' Tracker na stránke projektu OpenSong pri zdroji Forge a my ho zahrnieme do oficiálneho vydania.</translating>
     <created_with_opensong>Vytvorené pomocou programu OpenSong</created_with_opensong>
     <sources>OpenSong obsahuje zdrojové kódy z:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1197,7 +1292,13 @@ OpenSong sa týmto ospravedlňuje za problémy.
     <activity_disabled>Nemôžem načítať záznam činností s piesňami: %1! Prosím, skontrolujte, či súbor existuje a nie je poškodený. Prehliadanie a vytváranie záznamov bude pri tomto spustení vypnuté.</activity_disabled>
     <adding_logentry>Chyba pri pridávaní do záznamu!</adding_logentry>
     <chars_per_slide>Počet znakov na snímku musí byť medzi 1 a 1000.</chars_per_slide>
-  </errors>
+    <presentations>
+      <nohost>Neexistuje k dispozícii žiadna aplikácia pre načítanie prezentácie. Prosím, nainštalujte OpenOffice.org, LibreOffice, Microsoft PowerPoint, alebo Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>Aplikácia '%1' nepodoporuje túto funkciu.</unsupported_feature>
+      <load_failed>Prezentácia '%1' sa nedá otvoriť.</load_failed>
+    </presentations>
+	<videolan_app_missing>Videolan application (VLC) nie je správne nastavený. Prosím určite umiestnenie videolan klienta (VLC.EXE) vo Všeobecných nastavenaich, tabuľka umistnenia súborov.</videolan_app_missing>
+  </errors>                                                                                                                                                              
 
   <xml_errors>
     <noattribute>Nemôžem nájsť XML atribút '%1' in '%2'.</noattribute>
@@ -1269,7 +1370,10 @@ OpenSong sa týmto ospravedlňuje za problémy.
     <lead_sheets>Vytváram notové listy</lead_sheets>
     <process_themes>Spracúvam témy</process_themes>
     <process_songs>Spracúvam piesne</process_songs>
+    <song_search>Hľadanie piesní</song_search>
     <export>Exportujem piesne</export>
+    <load_songs>Nahrávam piesne</load_songs>
+    <load_externals>Nahrávam externé formuláre</load_externals>
     <pass1>Triedim, 1. prechod</pass1>
     <pass2>Triedim, 2. prechod</pass2>
   </progress_status>

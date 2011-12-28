@@ -982,6 +982,8 @@ Module SongML
 		  tempFont.OntoGraphics g
 		  g.TextSize = Round(g.TextSize * zoom)
 		  y = y + g.TextHeight ' Skip past the chord line
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before") * zoom)
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after") * zoom)
 		  
 		  ' Skip the capo line if needed
 		  If SmartML.GetValueB(songDoc.DocumentElement, "capo/@print") Then
@@ -989,6 +991,8 @@ Module SongML
 		    tempFont.OntoGraphics g
 		    g.TextSize = Round(g.TextSize * zoom)
 		    y = y + g.TextHeight ' Skip past the chord line
+		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before") * zoom)
+		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after") * zoom)
 		  End If
 		  
 		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
@@ -999,6 +1003,7 @@ Module SongML
 		  
 		  lineTop = y
 		  For j = 2 To lineCount ' Loop through the lines and print
+		    lineTop = lineTop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_before") * zoom)
 		    prefix = Left(slices(j),1)
 		    lineLeft = x + g.StringWidth(prefix)
 		    ts = New StringShape
@@ -1014,6 +1019,7 @@ Module SongML
 		    ts.Bold = tempFont.Bold
 		    If lineLeft > nextLeft Then nextLeft = lineLeft
 		    lineTop = lineTop + g.TextHeight
+		    lineTop = lineTop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_after") * zoom)
 		  Next j
 		  
 		  ' Draw the line
@@ -1171,6 +1177,7 @@ Module SongML
 		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_before") * zoom)
 		  y = y + GraphicsX.DrawFontString(g, tempstring, x, y, tempFont, width, Page)
 		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_after") * zoom)
+		  Return y - oldY
 		End Function
 	#tag EndMethod
 
@@ -1808,7 +1815,7 @@ Module SongML
 		    order = Trim(order)
 		    order = ReplaceAll(order, "|", " ")
 		    SmartML.SetValue(songElement, "presentation", order)
-		    sections = Split(order, " ") 
+		    sections = Split(order, " ")
 		  End If
 		  '--
 		  

@@ -851,8 +851,6 @@ Module SongML
 		  
 		  y =  y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/sections/@space_before") * zoom)
 		  
-		  'oddOffSet = 1
-		  'If (g.PenWidth+2) Mod 2 = 0 Then oddOffSet = 0
 		  oddOffSet = (g.PenWidth + 2) Mod 2
 		  
 		  If Uppercase(Left(heading, 1)) = "V" Then   ' -- VERSE --
@@ -888,15 +886,12 @@ Module SongML
 		    
 		    j = y + (g.PenWidth / 2)
 		    If (g.PenWidth+3) Mod 2 = 0 Then j = j + 1
-		    //g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
 		    HeadingLine.Append GraphicsX.DrawLineV(x + 1, j, x + g.PenWidth + g.StringWidth(heading) + oddOffSet + 1, j, g.ForeColor, g.PenWidth)
 		    j = j + g.TextHeight + (1 * zoom) ' Add one point to give a little space between the text and the line
 		    HeadingLine.Append GraphicsX.DrawLineV(x + 1, j, x + g.PenWidth + g.StringWidth(heading) + oddOffSet + 1, j, g.ForeColor, g.PenWidth)
-		    'g.DrawLine x + 1, j, x + g.PenWidth + g.StringWidth(heading)+oddOffset+1, j
-		    'g.DrawString heading, x + g.PenWidth+1, y
 		    HeadingLine.Append GraphicsX.DrawStringShapeV(heading, x + g.PenWidth + 1 + (g.StringWidth(heading) / 2), j - (g.TextHeight - g.TextAscent) - (1 * zoom), _
 		    tempFont, zoom) // That nasty Y coordinate is just reversing out the one point whitespace and then going up to the baseline (height - ascent = decent)
-		    y = j + (g.PenWidth / 2) + (3 * zoom) // Add whitespace at bottom
+		    y = j + (g.PenWidth / 2)
 		    
 		  ElseIf Uppercase(Left(heading, 1)) = "C" Then   ' -- CHORUS --
 		    prefix = " " + Chorus
@@ -910,12 +905,7 @@ Module SongML
 		    y + (g.PenWidth / 2) + (g.TextHeight + (1 * zoom)) / 2, g.StringWidth(heading) + g.PenWidth + oddOffSet, g.TextHeight + (1 * zoom), _
 		    g.ForeColor, g.PenWidth)
 		    HeadingLine.Append GraphicsX.DrawStringShapeV(heading, midx, y + g.PenWidth + g.TextAscent, tempFont, zoom)
-		    
-		    'g.DrawRect x + g.PenWidth/2+1, y - g.TextAscent, g.StringWidth(heading)+g.PenWidth + oddOffset, g.TextHeight+1
-		    'g.DrawString heading, x + g.PenWidth+1, y
-		    'y = y + g.PenWidth+1
-		    
-		    y = y + g.PenWidth + g.TextHeight + (3 * zoom)
+		    y = y + g.PenWidth + g.TextHeight
 		    
 		  ElseIf Uppercase(Left(heading, 1)) = "B" Then   ' -- BRIDGE --
 		    prefix = " " + Bridge
@@ -938,7 +928,7 @@ Module SongML
 		    HeadingLine.Append rr
 		    HeadingLine.Append GraphicsX.DrawStringShapeV(heading, rr.X, rry + g.TextAscent, tempFont, zoom)
 		    ' Position to new y
-		    y = rry + rr.Height + (3 * zoom) 'Add three points after
+		    y = rry + rr.Height
 		    
 		  ElseIf Uppercase(Left(heading, 1)) = "T" Then   ' -- TAG --
 		    prefix = " " + Tag
@@ -946,7 +936,6 @@ Module SongML
 		    heading = prefix + Mid(heading, 2) + " "
 		    ' Side
 		    HeadingLine.Append GraphicsX.DrawLineV(x + g.PenWidth / 2, y, x + g.PenWidth / 2, y + g.TextHeight + g.PenWidth, g.ForeColor, g.PenWidth)
-		    'g.DrawLine x + g.PenWidth/2, y - g.TextAscent, x + g.PenWidth/2, y+3
 		    ' Bottom
 		    HeadingLine.Append GraphicsX.DrawLineV(x + g.PenWidth / 2, y + g.TextHeight + g.PenWidth, _
 		    x + g.StringWidth(heading) + oddOffSet + (2 * zoom), y + g.TextHeight + g.PenWidth, g.ForeColor, g.PenWidth)
@@ -954,15 +943,10 @@ Module SongML
 		    HeadingLine.Append GraphicsX.DrawStringShapeV(heading, x + g.PenWidth + (g.StringWidth(heading) / 2), _
 		    y + g.TextAscent, tempFont, zoom)
 		    
-		    y = y + g.TextHeight + g.PenHeight + (3 * zoom)
-		    
-		    'g.DrawLine x + g.PenWidth/2, y+3, x + g.StringWidth(heading) + oddOffset + 2, y+3
-		    'g.DrawString heading, x + g.PenWidth+1, y
-		    'y = y + g.PenWidth+1
+		    y = y + g.TextHeight + g.PenHeight
 		  Else
-		    'g.DrawString heading, x, y
 		    HeadingLine.Append GraphicsX.DrawStringShapeV(heading, x + (g.StringWidth(heading) / 2), y + g.TextAscent, tempFont, zoom)
-		    y = y + g.TextHeight + (3 * zoom)
+		    y = y + g.TextHeight
 		  End If
 		  
 		  g.PenWidth = oldWidth
@@ -990,6 +974,8 @@ Module SongML
 		  tempFont.OntoGraphics g
 		  g.TextSize = Round(g.TextSize * zoom)
 		  y = y + g.TextHeight ' Skip past the chord line
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_before") * zoom)
+		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/chords/@space_after") * zoom)
 		  
 		  ' Skip the capo line if needed
 		  If SmartML.GetValueB(songDoc.DocumentElement, "capo/@print") Then
@@ -997,6 +983,8 @@ Module SongML
 		    tempFont.OntoGraphics g
 		    g.TextSize = Round(g.TextSize * zoom)
 		    y = y + g.TextHeight ' Skip past the chord line
+		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_before") * zoom)
+		    y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/capo/@space_after") * zoom)
 		  End If
 		  
 		  tempFont = SmartML.GetValueF(App.MyPrintSettings.DocumentElement, "lyrics")
@@ -1007,6 +995,7 @@ Module SongML
 		  
 		  lineTop = y
 		  For j = 2 To lineCount ' Loop through the lines and print
+		    lineTop = lineTop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_before") * zoom)
 		    prefix = Left(slices(j),1)
 		    lineLeft = x + g.StringWidth(prefix)
 		    ts = New StringShape
@@ -1022,6 +1011,7 @@ Module SongML
 		    ts.Bold = tempFont.Bold
 		    If lineLeft > nextLeft Then nextLeft = lineLeft
 		    lineTop = lineTop + g.TextHeight
+		    lineTop = lineTop + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_after") * zoom)
 		  Next j
 		  
 		  ' Draw the line
@@ -1179,6 +1169,7 @@ Module SongML
 		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_before") * zoom)
 		  y = y + GraphicsX.DrawFontString(g, tempstring, x, y, tempFont, width, Page)
 		  y = y + (SmartML.GetValueN(App.MyPrintSettings.DocumentElement, "layout/lyrics/@space_after") * zoom)
+		  Return y - oldY
 		End Function
 	#tag EndMethod
 
@@ -1809,7 +1800,16 @@ Module SongML
 		  'sections = Split(Trim(SmartML.GetValue(songElement, "presentation", True)), " ")
 		  sections = Split(Trim(presentation), " ")
 		  
-		  If UBound(sections) < 0 Then sections = Split(order, "|") ' If there is no presentation defined, we just do the sections in order
+		  If UBound(sections) < 0 Then
+		    '++JRC
+		    ' If there is no presentation defined, we just do the sections in order
+		    'modified to pull the presentation order from the lyrics
+		    order = Trim(order)
+		    order = ReplaceAll(order, "|", " ")
+		    SmartML.SetValue(songElement, "presentation", order)
+		    sections = Split(order, " ")
+		  End If
+		  '--
 		  
 		  Dim ChorusNr, PresentationIndex as integer 'GP
 		  ChorusNr = 0 'GP

@@ -1,4 +1,6 @@
-﻿* Fix line spacing when printing lyrics without chords and multiple verse format (with verse numbers at beginning of the lyric line) (Bug #3466172). (swampcat)
+﻿* Fix bug when Reverting a song -- was asking twice (Bug #3455320). (swampcat)
+
+* Fix line spacing when printing lyrics without chords and multiple verse format (with verse numbers at beginning of the lyric line) (Bug #3466172). (swampcat)
 
 * Support displaying verse numbers without having to define the presentation order (JRC)
 

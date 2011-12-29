@@ -10499,28 +10499,14 @@ End
 		  If Ask Then
 		    If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
 		  End If
-		  //++
-		  // EMP, September 2006
-		  // Found easier way to do this that won't require as much maintenance.
-		  // Left old code as comments in case there's an unexpected side effect.
-		  //--
 		  listindex = lst_songs_songs.ListIndex
+		  //++
+		  // Bug 3455320 -- Was asking for "Save/Don't Save" after InputBox above.
+		  Status_SongChanged = False ' This prevents ActionSongAskSave from firing
+		  //--
 		  lst_songs_songs.ListIndex = -1
 		  lst_songs_songs.ListIndex = ListIndex
-		  'f = Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text)
-		  '
-		  'If f <> Nil And f.Exists Then
-		  'App.MouseCursor = System.Cursors.Wait
-		  'CurrentSong = SmartML.XDocFromFile(f)
-		  'App.MouseCursor = Nil
-		  'Status_SongOpen = False ' suppress updates
-		  'LoadSongFields
-		  'Status_SongOpen = True
-		  'Status_SongChanged = False
-		  'EnableMenuItems
-		  'Else
-		  'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
-		  'End If
+		  
 		End Sub
 	#tag EndMethod
 

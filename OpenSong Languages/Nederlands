@@ -11,7 +11,7 @@
     <themes>Laden thema lijst</themes>
     <time_signatures>Laden maatsoort lijst</time_signatures>
     <imagequality>Laden afbeeldingskwaliteiten lijst</imagequality>
-	<videolan_preset>Laden Videolan parameter voorkeuzen</videolan_preset>
+	<videolan_preset>Laden Videolan parameter voorkeuzes</videolan_preset>
 	<fonts>Laden lettertype lijst</fonts>
     <latest_version>Controle laatste versie
       <newer_available>Er is een nieuwere versie (%1) beschikbaar. Ga naar: www.opensong.org voor downloaden.</newer_available>
@@ -23,12 +23,12 @@
       <songs_cache>Caching liederen</songs_cache>
       <folders>Laden liederen mappen</folders>
       <songs>Laden liederen</songs>
-      <sets>Laden sets</sets>
+      <sets>Laden projecten</sets>
   </load_data>
 
   <welcome>Welkom !</welcome>
 
-  <songs_mode caption="Liederen Mode">Gebruik dit om liederen toe te voegen of te wijzigen. Liederen kunnen worden geprint als noten bladen, of gepresenteerd als dia's.
+  <songs_mode caption="Liederen Mode">Gebruik deze modus om liederen toe te voegen of te wijzigen. Liederen kunnen worden afgedrukt als noten bladen, of gepresenteerd als dia's. Bij het omschakelen van lied naar project modus, zal worden gevraagd om eventuele wijzigingen op te slaan.
     <all_songs caption="Alle liederen">
       <print caption="Afdrukken">Drukt alle beschikbare liederen af. Met deze optie kun je liederenbundels afdrukken.</print>
       <export caption="Exporteren">Exporteren van alle liederen.</export>
@@ -115,13 +115,13 @@
     <key caption="Key">Geeft de sleutel weer van het geselecteerde lied.</key>
     <aka caption="Alt">Geeft de alternatieve titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
-    <style caption="Aangepaste stijl">Klik hier om de stijl voordit lied aan te passen. Aangepaste stijlen worden gebruikt boven de standaars stijl.</style>
+    <style caption="Aangepaste stijl">Klik hier om de stijl voor dit lied aan te passen. Aangepaste stijlen vervangen de standaard stijl voor liederen.</style>
     <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
     <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
     <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
   </advanced_song_editor>
 
-  <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc.
+  <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc. Bij het omschakelen van project naar lied modus, zal worden gevraagd om eventuele wijzigingen op te slaan.
     <sets caption="Projecten">Selecteer een project uit de lijst om te kunnen aanpassen.
       <add>Voegt een nieuw project toe aan OpenSong.</add>
     </sets>
@@ -134,7 +134,7 @@
         <single_screen caption="Enkel scherm"/>
         <dual_screen caption="Dubbel scherm"/>
         <preview_dual_screen caption="Voorbeeld dubbel scherm"/>
-        <no_slides>Er moet minimaal 1 dia aanwezig zijn voor om te presenteren.</no_slides>
+        <no_slides>Er moet minimaal 1 dia aanwezig zijn in het project om het te kunnen presenteren.</no_slides>
       </present>
       <print_songs caption="Liederen">Afdrukken liederen die in het project staan.
         <no_songs>Er zitten geen liederen in het project.</no_songs>
@@ -145,8 +145,8 @@
     <new_item caption="Nieuw Item">
       <add_song caption="Lied">Voegt een lied toe aan het huidige project. De totale lijst liederen die beschikbaar zijn wordt hier weergegeven om te kiezen.</add_song>
       <add_scripture caption="Bijbeltekst">Voegt een Bijbeltekst toe aan het huidige project. Hier wordt de totale lijst met Bijbelteksten weer gegeven om te kiezen.</add_scripture>
-      <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl. Een aangepaste dia kan een serie dia 's bevatten.</add_slides>
-      <add_style caption="Stijl">Wijzigt de stijl van het huidige project en plaatst dit in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
+      <add_slides caption="Dia">Voegt een aangepaste dia toe aan het huidige project. Hier kun je je eigen titel, subtitel, body tekst en stijl opgeven. Een aangepaste dia kan een serie dia's bevatten.</add_slides>
+      <add_style caption="Stijl">Wijzigt de huidige stijl van het project op de (willekeurig) gekozen plaats  in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
       <add_image caption="Afbeelding">Voegt een afbeelding als dia toe aan het huidige project. Deze optie geeft je de mogelijkheid om een enkele afbeelding dan wel een serie afbeeldingen weer te geven in plaats van tekst.</add_image>
       <add_external caption="Extern">Voegt een nieuwe dia toe aan het huidige project waarmee externe programma's kunnen worden gestart. Hiermee is het mogelijk om een presentatie of een DVD te vertonen.</add_external>
       <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
@@ -218,7 +218,7 @@
     <fit_to_screen caption="Schaal afbeeldingen zodat ze op het scherm passen">Afbeeldingen die te groot zijn om te projecteren worden geschaald zodat ze volledig getoond kunnen worden. Dit gebeurt ook voor afbeeldingen die kleiner zijn dan de schermresolutie.</fit_to_screen>
     <fit_to_body caption="Schaal afbeeldingen zodat ze in het tekstgebied passen">Afbeeldingen worden geschaald zodat ze altijd in het tekstgebied passen dat is vastgelegd voor de body stijl. Dit geldt voor afbeeldingen die groter zijn dan de het body gebied zowel als voor afbeeldingen die kleiner zijn.</fit_to_body>
     <keepaspect caption="Behoudt hoogte- en breedteverhoudingen bij het schalen">Als afbeeldingen worden geschaald bij een van bovenstaande, zal de horizontale en verticale verhouding behouden blijven.</keepaspect>
-    <store_as_link caption="Bewaar de afbeelding niet in het project, maar gebruik een link naar de plek waar de afbeelding staat">Afbeeldingen bewaren in het project geeft snel grote project bestanden en kunnen de kwaliteit benadelen. Gebruik van een link voorkomt dit. Afbeeldingen worden vanuit de 'Backgrounds' directory bewaard als relatieve link, wat de switch naar de presentatie computer makkelijker maakt. Let op! als de presentatie gemaakt is op een macchine anders dan de presentatie computer!</store_as_link>
+    <store_as_link caption="Bewaar de afbeelding niet in het project, maar gebruik een link naar de plek waar de afbeelding staat">Afbeeldingen bewaren in het project geeft snel grote project bestanden en kunnen de afbeeldingskwaliteit verminderen. Gebruik van een link voorkomt dit. Afbeeldingen worden vanuit de 'Backgrounds' directory bewaard als relatieve link, wat de switch naar de presentatie computer makkelijker maakt. Let op! wees voorzichtig en controleer de werking als het project op een andere computer is opgemaakt als de presentatie-computer!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Activiteit" />
       <ins_image caption="Toevoegen">Voegt een afbeelding toe aan het project. Hiermee kunnen dia-series worden gemaakt die dezelfde titel-, subtitel-, stijl-, en automatische overgangsinstellingen delen. Op deze wijze gemaakte dia's kunnen ook in een automatische loop worden gezet.</ins_image>
@@ -324,14 +324,14 @@
     <caption caption="Zoeken in de Bijbel middels kernwoord"/>
     <example caption="Om te zoeken naar exacte tekst, plaats dit tussen dubbele quotes, voorbeeld &quot;Simon Petrus&quot;"/>
     <match caption="Overeenkomst">
-      <exact caption="Exact"/>
-      <begin caption="Begint met"/>
+      <exact caption="E&amp;xact"/>
+      <begin caption="&amp;Begint met"/>
     </match>
     <words caption="Vers moet bevatten">
-      <all caption="Alle woorden"/>
-      <any caption="Enkele woorden"/>
+      <all caption="A&amp;lle woorden"/>
+      <any caption="E&amp;nkele woorden"/>
     </words>
-    <search caption="Zoeken"/>
+    <search caption="&amp;Zoeken"/>
     <result caption="%1 gevonden met het opgegeven kernwoord."/>
     <ok caption="link(shared/ok/@caption)"/>
     <cancel caption="link(shared/cancel/@caption)"/>
@@ -341,28 +341,28 @@
   <main_menu>
     <file caption="_Bestand">
       <new caption="_Nieuw"/>
-      <save caption="_Opslaan"/>
+      <save caption="Op_slaan"/>
       <present caption="_Presenteer">
         <single_screen caption="_Enkel Scherm"/>
         <dual_screen caption="_Twee schermen"/>
         <preview_dual_screen caption="_Voorbeeld twee schermen"/>
       </present>
       <pagesetup caption="Pa_gina Instellingen"/>
-      <print caption="_Afdrukken"/>
-      <print_alphabetical_toc caption="Afdrukken _Alfabetisch TOC"/>
-      <print_categorical_toc caption="Afdrukken _Per Categorie TOC"/>
+      <print caption="Af_drukken"/>
+      <print_alphabetical_toc caption="Afdrukken Alfabetisch _TOC"/>
+      <print_categorical_toc caption="Afdrukken per _Categorie TOC"/>
       <song_act caption="Bekijk lied gebruik _logboek"/>
       <scripture caption="Bijbelteksten _zoeken"/>
-      <quit caption="Af_sluiten"/>
+      <quit caption="_Afsluiten"/>
     </file>
     <edit caption="_Wijzigen">
       <undo caption="_Ongedaan maken"/>
-      <cut caption="_Knippen"/>
-      <copy caption="K_opieren"/>
+      <cut caption="Kn_ippen"/>
+      <copy caption="_Kopieren"/>
       <paste caption="_Plakken"/>
       <clear caption="_Leegmaken"/>
       <find caption="_Zoeken"/>
-      <find_next caption="Zoeken _Opnieuw"/>
+      <find_next caption="Zoeken Opnieu_w"/>
       <selall caption="Selecteer _Alles" />
     </edit>
     <mode caption="_Versie">
@@ -374,21 +374,21 @@
       <print caption="Afdruk _instellingen"/>
       <general caption="_Algemene  instellingen"/>
       <refresh_songs caption="_Liederen map verversen"/>
-      <refresh_sets caption="_Projekten map verversen"/>
-      <install_module caption="_Installeer Module"/>
+      <refresh_sets caption="Projekten map _verversen"/>
+      <install_module caption="Installeer _Module"/>
     </settings>
     <help caption="_Help">
       <help_topics caption="Help _Onderwerpen"/>
       <user_manual caption="Online _Gebruikershandleiding"/>
       <translating caption="_Vertaal OpenSong"/>
-      <about caption="_Over OpenSong"/>
+      <about caption="Over Open_Song"/>
     </help>
   </main_menu>
 
   <general_settings title="Algemene instellingen">
     <general caption="Algemeen" head1="Basis" head2="Bestandslocaties" head3="Systeem" head4="Uiterlijk">
       <ccli caption="CCLI Licentie #"/>
-      <version_check caption="Controleer voor nieuwere versies bij starten."/>
+      <version_check caption="Controleer op nieuwere versies bij het opstarten."/>
       <language caption="Taal"/>
     </general>
     <proxy caption="Proxy">
@@ -411,7 +411,7 @@
       <newpaint caption="Gebruik nieuwe stijl"/>
     </fonts>
     <documents_folder caption="Documenten map">
-      <warning caption="Wees voorzichtig met het gebruik; forceert een herstart van het programma."/>
+      <warning caption="Wees voorzichtig met het gebruik; aanpassingen pas actief worden na herstart van het programma."/>
       <default caption="Standaard"/>
       <custom caption="Aangepast"/>
       <message>Om het gebruikt van de nieuwe documenten map te voltooien moet OpenSong worden afgesloten. Verplaats indien gewenst de OpenSong documenten naar de nieuwe locatie voordat OpenSong wordt gestart.</message>
@@ -553,7 +553,7 @@
         <ibeam caption="Tekstselector"/> 
       </mouse_cursor>
       <blanks caption="Een lege dia's invoegen"/>
-      <blanks_between caption="tussen project items"/>
+      <blanks_between caption="tussen de project items"/>
       <blank_style caption="Blanco dia's nemen stijl over van"/>
       <blank_default caption="standaard dia"/>
       <blank_prev caption="Vorige dia"/>
@@ -987,30 +987,35 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   </song_activity>
   
   <scripture_lookup title="Bijbelteksten zoeken">
-    <search caption="Op bijbeltekst zoeken"/>
-    <books caption="Bijbel boek">
-	  <ot caption="Oude testament"/>
-	  <nt caption="Nieuw testament"/>
-    </books>
     <lookup caption="Snel zoeken">
       <reference caption="Referentie"/>
       <lookup caption="Zoeken"/>
       <example caption="Bijv:  2Pet 1:1-2 of  2Pet 1:1-2 (KJV)"/>
     </lookup>
+    <search caption="Op bijbeltekst zoeken"/>
+    <books caption="Bijbel boek">
+	  <ot caption="Oude testament"/>
+	  <nt caption="Nieuw testament"/>
+    </books>
     <paragraph caption="Hoofdstuk"/>
     <colon caption=":"/>
     <from_verse caption="vanaf vers"/>
     <dash caption="-"/>
     <to_verse caption="t/m vers"/>
-    <version caption="Vertaling"/>
+    <version caption="Gebruikte vertaling"/>
     <select_file caption="Selecteer een bijbelvertalingsbestand."/>
-    <verses_per_slide caption="Bijbelvers per dia" />
-    <chars_per_slide caption="Max. karakters per dia" />
+    <verses_per_slide caption="Aantal versen per dia" />
+    <chars_per_slide caption="Aantal tekens per dia" />
     <format caption="Formaat">
       <paragraph caption="Hoofdstuk"/>
       <verse caption="Vers"/>
     </format>
-    <preview caption="Voorbeeldweergave van schriftgedeelte"/>
+    <shownumbers caption="Toon vers nummers"/>
+    <preview caption="Voorbeeldweergave van het geselecteerde schriftgedeelte"/>
+    <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Controleer de samenstelling van de zoekopdracht en probeer het nogmaals.</format>
       <empty>Foute referentie: de referentie was leeg.</empty>
@@ -1021,9 +1026,6 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
       <verse>Foute referentie: kan vers '%1' niet vinden.</verse>
       <verse_range>Foute referentie: het 'tot' vers moet groter dan of gelijk zijn aan het 'van' vers.</verse_range>
     </bad_reference>
-    <insert caption="link(shared/insert/@caption)"/>
-    <search caption="link(shared/search/@caption)"/>
-    <shownumbers caption="Toon vers nummers"/>
   </scripture_lookup>
 
   <module>

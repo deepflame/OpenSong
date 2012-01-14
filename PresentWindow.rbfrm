@@ -290,6 +290,10 @@ End
 		  
 		  Dim c As ScripturePickerController
 		  
+		  '++JRC No Bibles were found, return
+		  If UBound(BibleFactory.BibleList) < 0 Then Return False
+		  '--
+		  
 		  c = New ScripturePickerController
 		  c.registerScriptureReceiver Self
 		  

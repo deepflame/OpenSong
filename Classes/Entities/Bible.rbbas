@@ -577,6 +577,9 @@ Implements iBible
 		  'create folder if necessary
 		  newFile= New FolderItem(file.Parent.child("indexes"))
 		  if Not newFile.Exists then
+		    '++JRC Prompt before creating index
+		    If NOT InputBox.AskYN(App.T.Translate("module/generate_index", file.Name)) Then Return
+		    
 		    newFile.CreateAsFolder
 		    If Not newFile.Exists Then
 		      ShouldGenerateIndex = False
@@ -1892,6 +1895,7 @@ Implements iBible
 		      End If
 		    Next
 		    genIndex(file)
+		    
 		    App.DebugWriter.Write "Bible.LoadBible: Exit successfully"
 		    Return True
 		    

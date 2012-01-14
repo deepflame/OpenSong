@@ -390,8 +390,21 @@ Implements ScriptureNotifier
 		  If CharsPerSlide = 0 Then CharsPerSlide = 500
 		  mCurrentBible = BibleFactory.GetBible(CurrentBibleName)
 		  
+		  
 		  If CurrentBible Is Nil Then
-		    mCurrentBible = BibleFactory.GetBible(BibleFactory.BibleList.Pop)
+		    '++JRC Catch OutOfBounds Exception
+		    Try
+		      mCurrentBible = BibleFactory.GetBible(BibleFactory.BibleList.Pop)
+		    Catch ex As OutOfBoundsException
+		      // OOB Here is probably due to the BibleList being Empty
+		      RuntimeException(ex).Message = "ScripturePickerController: OOB in BeginPickScripture"
+		      For Each o As iScripturePicker In Observers
+		        o.CloseScripturePicker
+		      Next
+		      mCurrentBible = Nil
+		      Return
+		    End Try
+		    '--
 		  End If
 		  
 		  Try

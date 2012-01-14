@@ -1004,7 +1004,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <rename_error>Error renaming module file. Please verify that you have write access to '%1'.</rename_error>
     <success>Module successfully loaded.</success>
     <file_type>OpenSong Modules</file_type>
-    <generate_index>Generate index for scripture file?</generate_index>
+    <generate_index>Generate index for scripture file: '%1'?</generate_index>
     <generate_error>Error generating index; do you have write access to %1?</generate_error>
   </module>
 
@@ -1267,7 +1267,8 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <create_songs_folder>Could not create songs folder: %1</create_songs_folder>
     <no_backgrounds_folder>Can't find default Backgrounds folder: %1, or folder is empty</no_backgrounds_folder>
     <no_defaults_folder>Can't find Defaults folder: %1, or folder is empty</no_defaults_folder>
-    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty</no_scripture_folder>
+    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty. Scripture Lookup will be unavailible. Please add a Bible file by selecting Install Module from the Settings Menu, or re-installing OpenSong.</no_scripture_folder>
+    <load_bible>Could not load default Bible: '%1'. OpenSong will attempt to open the next available Bible.</load_bible>
     <no_sets_folder>Can't find default Sets folder: %1, or folder is empty</no_sets_folder>
     <no_settings_folder>Can't find default Settings folder: %1, or folder is empty</no_settings_folder>
     <no_songs_folder>Can't find default Songs folder: %1, or folder is empty</no_songs_folder>
@@ -1329,6 +1330,7 @@ The OpenSong development team members regret any inconvenience.
       <save>Error saving updated file '%1.'</save>
     </errors>
 
+    <load_successful>Successfully loaded Bible: '%1'.</load_successful>
     <messages>
       <bnames>Book names must be added to this translation.
 &#10;Please indicate the appropriate language for the names.</bnames>

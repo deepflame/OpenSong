@@ -172,7 +172,8 @@ Inherits Application
 		  If Not AppFolder.Child("OpenSong Scripture").Exists OR AppFolder.Child("OpenSong Scripture").Count = 0 Then
 		    App.MouseCursor = Nil
 		    MsgBox T.Translate("errors/no_scripture_folder", AppFolder.Child("OpenSong Scripture").AbsolutePath)
-		    Quit
+		    '++JRC Change behavior here to notify user but continue operation
+		    'Quit
 		  End If
 		  '--
 		  
@@ -1123,8 +1124,8 @@ Inherits Application
 		  '++JRC
 		  If App.StageCode <> App.Final Then
 		    t = t + "-"
-		    select case App.StageCode 
-		    case 0 
+		    select case App.StageCode
+		    case 0
 		      t = t + "Development"
 		    case 1
 		      t = t + "Alpha"

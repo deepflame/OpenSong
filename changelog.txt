@@ -1,4 +1,10 @@
-﻿* Fix bug when Reverting a song -- was asking twice (Bug #3455320). (swampcat)
+﻿* OpenSong now tries to load the next available Bible if the default Bible cannot be loaded. (JRC)
+
+* Change behavior for empty scripture folder to inform user and continue running with Scripture Picker disabled. (JRC)
+
+* Prompt before Generating Scripture Index. (JRC)
+
+* Fix bug when Reverting a song -- was asking twice (Bug #3455320). (swampcat)
 
 * Fix line spacing when printing lyrics without chords and multiple verse format (with verse numbers at beginning of the lyric line) (Bug #3466172). (swampcat)
 

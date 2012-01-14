@@ -716,6 +716,14 @@ End
 		  Dim screenHeight As Double =  OSScreen(PresentWindow.PresentScreen).Height
 		  m_screenRatio = screenWidth / screenHeight
 		  
+		  '++JRC 
+		  If UBound(BibleFactory.BibleList) < 0 Then
+		    btn_action_scripture.Enabled = False
+		  Else
+		    btn_action_scripture.Enabled = True
+		  End If
+		  '
+		  
 		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
 		    If m_screenRatio > 1.0 Then
 		      m_screenRatio = 4.0/3.0

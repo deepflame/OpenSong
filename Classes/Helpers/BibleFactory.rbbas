@@ -37,6 +37,9 @@ Protected Module BibleFactory
 		  Dim names() As String
 		  Dim nameFound As Boolean
 		  
+		  'Sanity check
+		  If name = "" Then Return Nil
+		  
 		  // Does the name correspond to one of the names we see?
 		  
 		  names = BibleList

@@ -1,4 +1,6 @@
-﻿* OpenSong now tries to load the next available Bible if the default Bible cannot be loaded. (JRC)
+﻿* Prevent OutOfBounds Exception in TranslateWindow (if e.g. passed font list is less than six) (JRC)
+
+* OpenSong now tries to load the next available Bible if the default Bible cannot be loaded. (JRC)
 
 * Change behavior for empty scripture folder to inform user and continue running with Scripture Picker disabled. (JRC)
 

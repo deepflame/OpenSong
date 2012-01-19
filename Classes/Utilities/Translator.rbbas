@@ -260,6 +260,10 @@ Protected Class Translator
 		  Dim popCont As PopupMenu
 		  Dim sldCont As Slider 'EMP 09/05
 		  
+		  '++JRC Prevent OutOfBoundsException
+		  If UBound(fonts) < 6 Then doFonts = False
+		  '--
+		  
 		  tag = tag + "/"
 		  App.DebugWriter.Write "Translator.TranslateWindow: Begin translating window " + win.Title + " with tag " + tag, 4
 		  

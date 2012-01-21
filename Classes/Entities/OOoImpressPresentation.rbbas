@@ -85,6 +85,9 @@ Implements iPresentation
 		  // Part of the iPresentation interface.
 		  m_oImpressDoc = oOOoPresentationDocument
 		  
+		  m_presentScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		  If m_presentScreen < 0 Or m_presentScreen + 1 > OSScreenCount() Then m_presentScreen = 0
+		  
 		  'Setting the Timer values
 		  Enabled = False
 		  Period = 250 '250 ms, 4 times per second
@@ -143,7 +146,22 @@ Implements iPresentation
 		  Call PresentationFactory.UnregisterPresentation( self )
 		  
 		  If Not IsNull( m_oImpressDoc ) Then
-		    m_oImpressDoc.close( False )
+		    
+		    Try
+		      If (m_oImpressDoc.isModified) Then
+		        m_oImpressDoc.setModified(False)
+		      End If
+		    Catch
+		    End Try
+		    
+		    Try
+		      m_oImpressDoc.close( True )
+		    Catch
+		      Try
+		        m_oImpressDoc.Dispose()
+		      Catch
+		      End Try
+		    End Try
 		    m_oImpressDoc = Nil
 		  End If
 		End Sub
@@ -289,7 +307,7 @@ Implements iPresentation
 		          
 		          If slideIndex > 0 and slideIndex <= oPresController.getSlideCount() Then
 		            oPresController.gotoSlideIndex( slideIndex - 1 )
-		            SetPresentationWindow( oPresController, True )
+		            SetPresentationWindow( True )
 		            result = True
 		          End If
 		          
@@ -625,11 +643,10 @@ Implements iPresentation
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub SetPresentationWindow(oController As OLEObject, Showing As Boolean)
+		Private Sub SetPresentationWindow(Showing As Boolean)
+		  Dim oController As OleObject = Nil
 		  Try
-		    If IsNull( oController ) Then
-		      oController = m_oImpressDoc.getCurrentController()
-		    End If
+		    oController = m_oImpressDoc.getCurrentController()
 		  Catch
 		  End Try
 		  
@@ -642,20 +659,16 @@ Implements iPresentation
 		    End Try
 		    
 		    If Not IsNull( oFrame ) Then
-		      
-		      Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		      If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		      
-		      Dim x As Integer =Screen(presentScreen).Left
-		      Dim y As Integer =Screen(presentScreen).Top
-		      Dim w As Integer =Screen(presentScreen).Width
-		      Dim h As Integer  =Screen(presentScreen).Height
+		      Dim x As Integer = OSScreen(m_presentScreen).Left
+		      Dim y As Integer = OSScreen(m_presentScreen).Top
+		      Dim w As Integer = OSScreen(m_presentScreen).Width
+		      Dim h As Integer = OSScreen(m_presentScreen).Height
 		      
 		      Try
 		        Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
 		        If Not IsNull( oComponentWin ) Then
 		          oComponentWin.setPosSize( x, y, w, h, OOoPresentationHost.OOoPosSize.POSSIZE )
-		          oComponentWin.setVisible( True )
+		          'oComponentWin.setVisible( True )
 		        End If
 		      Catch
 		      End Try
@@ -739,7 +752,7 @@ Implements iPresentation
 		  // Part of the iPresentation interface.
 		  
 		  Dim result As Boolean = False
-		  
+		  Dim forcePresentScreen As Boolean = True
 		  If Not IsNull( m_oImpressDoc ) Then
 		    
 		    Try
@@ -757,6 +770,12 @@ Implements iPresentation
 		          'oPresentation.IsFullScreen = True
 		          oPresentation.Pause = 0
 		          oPresentation.StartWithNavigator = False
+		          Try
+		            'The undocumented feature: http://user.services.openoffice.org/en/forum/viewtopic.php?f=20&t=21173
+		            oPresentation.Display = m_presentScreen+1 'The Display propert is 1-based
+		          Catch
+		            forcePresentScreen = True
+		          End Try
 		          
 		          oPresentation.start()
 		          
@@ -782,11 +801,13 @@ Implements iPresentation
 		              'End If
 		              'oController.addSlideShowListener( m_ShowListener )
 		            Catch e As OLEException
-		              'This does now work very well yet...
+		              'This does not work very well yet...
 		            End Try
 		          End If
 		          
-		          SetPresentationWindow( oController, True )
+		          If forcePresentScreen Then
+		            SetPresentationWindow( True )
+		          End If
 		          
 		          m_IsRunning = True
 		          result = m_IsRunning
@@ -832,6 +853,10 @@ Implements iPresentation
 		Private m_oServiceManager As OLEObject = Nil
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		m_presentScreen As Integer
+	#tag EndProperty
+
 	#tag Property, Flags = &h21
 		Private m_ShowListener As OOoPresentationHost.OOoSlideShowListener = Nil
 	#tag EndProperty
@@ -853,10 +878,37 @@ Implements iPresentation
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Mode"
+			Visible=true
+			Group="Behavior"
+			InitialValue="2"
+			Type="Integer"
+			EditorType="Enum"
+			InheritedFrom="Timer"
+			#tag EnumValues
+				"0 - Off"
+				"1 - Single"
+				"2 - Multiple"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="m_presentScreen"
+			Group="Behavior"
+			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Period"
+			Visible=true
+			Group="Behavior"
+			InitialValue="1000"
+			Type="Integer"
+			InheritedFrom="Timer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"

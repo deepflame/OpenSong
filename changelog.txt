@@ -1,4 +1,24 @@
-﻿* Prevent OutOfBounds Exception in TranslateWindow (if e.g. passed font list is less than six) (JRC)
+* Improved external presentation application detection for Impress (bug #3471022) (Vwout)
+
+* Improved loading and detection order for PPTView, manually set path in general settings always overides automatic detection of PPTView (bug #3471022) (Vwout)
+
+* Reduced screen flickering while changing forth an back between an OpenSong slide and an external presentation item or VideoLan (bug #3471022) (Vwout)
+
+* Flickering when changing to an external presentation or VideoLan can be caused by animation effects that Windows applies when minimizing and maximizing. It is adviced to disable these. An option is added to OpenSong to assist in this. A tutorial on how to disable the animations in Windows 7 can be found here: http://www.addictivetips.com/windows-tips/disable-the-maximize-minimize-windows-animation-in-windows-7/ (thx Marten) (Vwout)
+
+* The OpenSong presentation window no longer maintains the last presented OpenSong slide when switching to an external item. Instead a black screen is used (bug #3471022) (Vwout)
+
+* Improved internal exception handling of external presentation objects (OLE and DCOM) to solve several different types of crashes on start and end of PowerPoint and Impress presentations (bug #3468371) (Vwout)
+
+* Userinterface improvements on external slide panels (Vwout)
+
+* Fix embedding of presentation items (PowerPoint and Impress files) in the set. Added embedding of media files for playback with Videolan (Vwout)
+
+* Overhauled VLC integration to fix fullscreen playback on presentation screen. OpenSong is now also using the RemoteControl interface instead of telnet for controling VideoLan. Note: a VideoLan instance that is launched by OpenSong can always manually be closed using the global keystroke 'Ctrl-Alt-Shift-Q'. (Vwout)
+
+* Small improvement in forcing Impress to use the presentation screen. OpenOffice Impress seems to ignore the display settings if display 1 is set as secondary (presentation) screen and display 2 as primary (control) screen. (Vwout)
+
+* Prevent OutOfBounds Exception in TranslateWindow (if e.g. passed font list is less than six) (JRC)
 
 * OpenSong now tries to load the next available Bible if the default Bible cannot be loaded. (JRC)
 

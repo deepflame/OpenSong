@@ -131,6 +131,8 @@ End
 		  If HelperActive Then PresentHelperWindow.Close
 		  timerAdvance.Enabled = False
 		  
+		  MainWindow.CleanupPresentation CurrentSet
+		  
 		  '++JRC Prevent resizing MainWindow
 		  'MainWindow.Show
 		  #If Not TargetMacOS
@@ -138,8 +140,6 @@ End
 		  #endif
 		  App.SetForeground(MainWindow)
 		  '--
-		  '++JRC
-		  MainWindow.AddPresentedSongsToLog
 		  
 		  MainWindow.SetFocus
 		End Sub
@@ -1812,7 +1812,10 @@ End
 		    Dim bClose As Boolean = False
 		    Dim prevAppl As string = SmartML.GetValue(PreviousSlide, "@application", False)
 		    Dim prevHost As string = SmartML.GetValue(PreviousSlide, "@host", False)
-		    Dim prevFile As String = SmartML.GetValue(PreviousSlide, "@filename", False)
+		    Dim prevFile As String = SmartML.GetValue(PreviousSlide, "@_localfilename", False)
+		    If prevFile.Len() = 0 Then
+		      prevFile = SmartML.GetValue(PreviousSlide, "@filename", False)
+		    End If
 		    
 		    If Not SetML.IsExternal(slide) Then
 		      bClose = True
@@ -1820,7 +1823,8 @@ End
 		      'See if the external in the new slide is equal to the current slide.
 		      If SmartML.GetValue(slide.Parent.Parent, "@application", False) <> prevAppl Or _
 		        SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
-		        SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile Then
+		        (SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False) <> prevFile And _
+		        SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile) Then
 		        bClose = True
 		      End If
 		    End If
@@ -1830,7 +1834,7 @@ End
 		      
 		      Select Case prevAppl
 		      Case "presentation"
-		        App.RestoreWindow(PresentWindow)
+		        PresentWindow.Restore()
 		        
 		        Dim presFile As FolderItem = GetFolderItem( prevFile )
 		        If Not IsNull(presFile) Then
@@ -1839,11 +1843,20 @@ End
 		            Dim presHost As PresentationHost = PresentationHost.Automatic
 		            Select Case prevHost
 		            Case "ppt"
-		              presHost = PresentationHost.PowerPoint
+		              If PresentationFactory.PowerPointAvailable() Then
+		                presHost = PresentationHost.PowerPoint
+		              End If
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            Case "pptview"
-		              presHost = PresentationHost.PowerPointViewer
+		              If PresentationFactory.PPTViewAvailable() Then
+		                presHost = PresentationHost.PowerPointViewer
+		              End If
 		            Case "impress"
-		              presHost = PresentationHost.OpenOffice
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            End Select
 		            
 		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
@@ -1854,6 +1867,7 @@ End
 		        End If
 		        
 		      Case "videolan"
+		        PresentWindow.Restore()
 		        m_VideolanController.Stop()
 		        
 		      Case "launch"
@@ -1877,18 +1891,32 @@ End
 		      Select Case SmartML.GetValue(slide.Parent.Parent, "@application", False)
 		      Case "presentation"
 		        
-		        Dim presFile As FolderItem = GetFolderItem( SmartML.GetValue(slide.Parent.Parent, "@filename", False) )
+		        'First check if there is a 'local' filename (a saved embedded presentation)
+		        Dim presFilename As String = SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False)
+		        If presFilename.Len() = 0 Then
+		          presFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
+		        End If
+		        Dim presFile As FolderItem = GetFolderItem( presFilename )
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
 		            
 		            Dim presHost As PresentationHost = PresentationHost.Automatic
 		            Select Case SmartML.GetValue(slide.Parent.Parent, "@host", False)
 		            Case "ppt"
-		              presHost = PresentationHost.PowerPoint
+		              If PresentationFactory.PowerPointAvailable() Then
+		                presHost = PresentationHost.PowerPoint
+		              End If
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            Case "pptview"
-		              presHost = PresentationHost.PowerPointViewer
+		              If PresentationFactory.PPTViewAvailable() Then
+		                presHost = PresentationHost.PowerPointViewer
+		              End If
 		            Case "impress"
-		              presHost = PresentationHost.OpenOffice
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            End Select
 		            
 		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
@@ -1922,9 +1950,14 @@ End
 		          If img.SetImageAsString( sPreviewImage ) Then
 		            Dim slidePreview As Picture = img.GetImage()
 		            PreviewPicture.Graphics.DrawPicture slidePreview, 0, 0, PreviewPicture.Width, PreviewPicture.Height, 0, 0, slidePreview.Width, slidePreview.Height
+		            CurrentPicture.Graphics.DrawPicture slidePreview, 0, 0, CurrentPicture.Width, CurrentPicture.Height, 0, 0, slidePreview.Width, slidePreview.Height
 		          End If
+		        Else
+		          CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		          CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
 		        End If
 		        
+		        PresentWindow.Hide()
 		        App.MinimizeWindow(PresentWindow)
 		        
 		      Case "videolan"
@@ -1932,24 +1965,38 @@ End
 		        
 		        If SmartML.GetValue(slide.Parent.Parent, "@action") = "start" Then
 		          Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@videolan_parameters")
-		          params = ReplaceAllB(params, "%d", Str(SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control")))
-		          If InStr(params, "%s") = 0 Then
-		            params = params + " """ + SmartML.GetValue(slide.Parent.Parent, "@filename") + """"
-		          Else
-		            params = ReplaceAllB(params, "%s", """" + SmartML.GetValue(slide.Parent.Parent, "@filename") + """")
+		          Dim waitForPlayback As Boolean = SmartML.GetValueB(slide.Parent.Parent, "@wait_to_finish")
+		          
+		          'First check if there is a 'local' filename (a saved embedded media file)
+		          Dim mediaFilename As String = SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False)
+		          If mediaFilename.Len = 0 Then
+		            mediaFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
 		          End If
 		          
-		          Call m_VideolanController.Start(params)
+		          If m_VideolanController.Start(mediaFilename, params, presentScreen, waitForPlayback) Then
+		            CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		            CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		            
+		            PresentWindow.Hide()
+		            App.MinimizeWindow(PresentWindow)
+		            
+		            advanceNext = Not waitForPlayback
+		          End If
 		        Else
-		          'Case @action = stop is covered by generic application close above
+		          'Case @action = stop is covered by generic application close above _
+		          advanceNext = True
 		        End If
-		        
-		        advanceNext = True
 		        
 		      Case "launch"
 		        Dim launchAppLocation As FolderItem = GetFolderItem(SmartML.GetValue(slide.Parent.Parent, "@app_filename", False))
-		        Dim cmd As String = launchAppLocation.AbsolutePath()
+		        Dim cmd As String
 		        Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@app_parameters", False)
+		        
+		        If Not IsNull(launchAppLocation) Then
+		          If launchAppLocation.Exists() Then
+		            cmd = launchAppLocation.AbsolutePath()
+		          End If
+		        End If
 		        
 		        If m_AppLaunchShell.IsRunning Then
 		          'Close any running external application instance.
@@ -1962,7 +2009,13 @@ End
 		          Else
 		            m_AppLaunchShell.Mode = 1 'Asynchronous
 		          End If
-		          m_AppLaunchShell.Execute( """" + cmd + """" + " " + params )
+		          
+		          CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		          CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		          
+		          If cmd.Len() > 0 Then
+		            m_AppLaunchShell.Execute( """" + cmd + """" + " " + params )
+		          End If
 		        Else
 		          'Case @action = stop is covered by generic application close above
 		        End If

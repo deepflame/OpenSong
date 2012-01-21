@@ -116,9 +116,9 @@
     <aka caption="Alt">Geeft de alternatieve titel weer van het geselecteerde lied.</aka>
     <key_line caption="Key Line">Geef een regel op waarmee het lied makkelijker is te zoeken.</key_line>
     <style caption="Aangepaste stijl">Klik hier om de stijl voor dit lied aan te passen. Aangepaste stijlen vervangen de standaard stijl voor liederen.</style>
-    <user1 caption="Door gebruiker gedefiniëerd 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
-    <user2 caption="Door gebruiker gedefiniëerd 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
-    <user3 caption="Door gebruiker gedefiniëerd 3">Set this to whatever you want it to be. This field can be used by 3rd party applications, etc.</user3>
+    <user1 caption="Vrij definiëerbaar veld 1">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user1>
+    <user2 caption="Vrij definiëerbaar veld 2">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user2>
+    <user3 caption="Vrij definiëerbaar veld 3">Hier kun je alles gebruiken wat je wilt m.b.t. tot liederen. Kan ook worden gebruikt door andere applicaties.</user3>
   </advanced_song_editor>
 
   <sets_mode caption="Projecten (diensten)">Gebruik dit om projecten (diensten) samen te stellen. Projecten zijn een verzameling liederen, bijbelteksten, dia's etc. Bij het omschakelen van project naar lied modus, zal worden gevraagd om eventuele wijzigingen op te slaan.
@@ -259,6 +259,7 @@
     <videolan_settings caption="Videolan instellingen">
       <videolan_start caption="Start Videolan"/>
 	  <videolan_mediafilename caption="Locatie van het af te spelen mediabestand">Kies de bestandsnaam van het audio of videobestand dat moet worden afgespeeld.</videolan_mediafilename>
+	  <embed_mediafile caption="Het mediabestand opslaan in het OpenSong project"/>
 	  <videolan_preset caption="Gebruik de volgende voorkeuze met parameters"/>
 	  <videolan_manual caption="Handmatig aangepaste parameters (gebruik %d voor het beeldschermnummer, %s voor de bestandsnaam)"/>
       <wait_for_videolan caption="Wacht met het doorgaan naar de volgende dia tot het afspelen is voltooid"/>
@@ -395,7 +396,7 @@
       <host caption="Host"/>
       <port caption="Poort"/>
     </proxy>
-    <user_defined caption="Door gebruiker gedefinieerd">
+    <user_defined caption="Naamgeving voor instelbare velden voor liederen">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -442,6 +443,8 @@
     <applications caption="Externe programma's">
       <pptview caption="Locatie van Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>
+	  <minmax_animation caption="Gebruik animaties bij maximaliseren"/>
+	  <animations caption="In Windows worden visuele effecten toegepast bij het maximaliseren en minimaliseren van schermen. Soms is dit niet gewensd. Als bovenstaande optie geen effect heeft, ga dan naar de 'Instellingen voor prestaties' (Visuele Effecten) van Windows en schakel de optie 'Vensteranimaties bij minimaliseren en maximaliseren' uit."/>
       <videolan caption="Locatie van Videolan client"/>
       <videolan_browse caption="link(shared/browse/@caption)"/>
     </applications>
@@ -1035,7 +1038,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <rename_error>Fout bij hernoemen van het module bestand. Controleer of u schrijfrechten heeft voor '%1'.</rename_error>
     <success>Module succesvol geladen.</success>
     <file_type>OpenSong Modules (*.xmm)</file_type>
-    <generate_index>Moet er een index worden opgebouwd voor het bijbel bestand?</generate_index>
+    <generate_index>Moet er een index worden opgebouwd voor het bijbel bestand: '%1'?</generate_index>
     <generate_error>Er is een fout opgetreden bij het opbouwen van de index; heeft u schrijftoegang voor '%1'?</generate_error>
   </module>
 
@@ -1168,8 +1171,8 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   
   <videolan_preset_list>
 	<preset name="Videoweergave als bureaublad achtergrond in Windows (gebruik achtergrondkleur RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Volledig scherm videoweergave op presentatiescherm" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Volledig scherm videoweergave vanaf DirectShow video apparaat" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<preset name="Volledig scherm videoweergave op presentatiescherm" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance  %s"/>
+	<preset name="Volledig scherm videoweergave vanaf DirectShow video apparaat" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Handmatig" parameters=""/>
   </videolan_preset_list>
@@ -1298,7 +1301,8 @@ Het afbeeldingsbestand PuffyClouds1.jpg wat opgenomen is in de map Backgrounds v
     <create_songs_folder>Kan de liederenmap: %1 niet maken</create_songs_folder>
     <no_backgrounds_folder>Kan de standaard achtergrondmap: %1 niet vinden.</no_backgrounds_folder>
     <no_defaults_folder>Kan de standaard map: %1 niet vinden</no_defaults_folder>
-    <no_scripture_folder>Kan de Bijbelteksten map: %1 niet vinden</no_scripture_folder>
+    <no_scripture_folder>Kan de Bijbelteksten map: '%1' niet vinden. Het zoeken in de bijbel wordt uitgeschakeld. Voeg een bijbel toe door in het menu 'Instellingen, de optie 'Installeer Module' te kiezen, of door het opnieuw installeren van OpenSong.</no_scripture_folder>
+    <load_bible>De standaard bijbel kan niet worden geladen: '%1'. OpenSong zal proberen om de eerstvolgende beschikbare bijbel te openen.</load_bible>
     <no_sets_folder>Kan de standaard projecten map: %1 niet vinden</no_sets_folder>
     <no_settings_folder>Kan de standaard instellingen map: %1 niet vinden</no_settings_folder>
     <no_songs_folder>Kan de standaard liedernmap: %1 niet vinden</no_songs_folder>
@@ -1319,6 +1323,7 @@ Herstart OpenSong en probeer het nogmaals.</notenoughmemory>
        <unknownerror>Onbekende fout bij de toegang tot bestand %1</unknownerror>
        <notaregularfile>Er wordt verwacht dat %1 een bestand is en geen map.</notaregularfile>
        <notafolder>Er wordt verwacht dat %1 een map is en geen bestand.</notafolder>
+	   <temporaryfailed>Het maken van een tijdelijk bestand voor %1 is mislukt.</temporaryfailed>
     </fileutils>
     <cclinotavailable>De CCLI website is ingrijpend veranderd.
 Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface is ontwikkeld.
@@ -1360,6 +1365,7 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
       <save>Fout bij het opslaan van gewijzigd bestand '%1.'</save>
     </errors>
 
+    <load_successful>Het laden van bijbelbestand '%1' is gelukt.</load_successful>
     <messages>
       <bnames>Boek namen moeten worden toegevoegd aan deze vertaling.
 &#10;Kies de juiste taal voor de namen.</bnames>
@@ -1412,6 +1418,7 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <load_externals>Laden externe dia('s)</load_externals>
     <pass1>Sorteren, 1e ronde</pass1>
     <pass2>Sorteren, 2e ronde</pass2>
+    <detect_presentation_hosts>Detecteren van beschikbare presentatie programma's</detect_presentation_hosts>
   </progress_status>
 
 </language>

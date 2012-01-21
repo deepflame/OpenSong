@@ -108,12 +108,12 @@ Begin Window MainSettingsWindow
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   10
       TextUnit        =   0
       Top             =   7
       Underline       =   ""
-      Value           =   2
+      Value           =   1
       Visible         =   True
       Width           =   579
       Begin GroupBox grp_settings_general
@@ -170,7 +170,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   70
+            Top             =   64
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -212,7 +212,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   86
+            Top             =   79
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
@@ -244,11 +244,11 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   112
+            Top             =   104
             Underline       =   False
             Value           =   False
             Visible         =   True
-            Width           =   220
+            Width           =   216
          End
          Begin Label lbl_general_language
             AutoDeactivate  =   True
@@ -278,7 +278,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   138
+            Top             =   132
             Transparent     =   False
             Underline       =   False
             Visible         =   True
@@ -310,10 +310,10 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   155
+            Top             =   151
             Underline       =   False
             Visible         =   True
-            Width           =   200
+            Width           =   216
          End
       End
       Begin GroupBox grp_settings_user_defined
@@ -1260,7 +1260,7 @@ Begin Window MainSettingsWindow
          Bold            =   False
          Caption         =   "Documents Folder"
          Enabled         =   True
-         Height          =   203
+         Height          =   244
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -1345,7 +1345,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   31
+            Height          =   62
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
@@ -1386,7 +1386,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
             Italic          =   False
-            Left            =   91
+            Left            =   95
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -1399,7 +1399,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   176
+            Top             =   211
             Underline       =   False
             Visible         =   True
             Width           =   120
@@ -1450,7 +1450,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_documents_folder"
             Italic          =   ""
-            Left            =   51
+            Left            =   50
             LockBottom      =   ""
             LockedInPosition=   False
             LockLeft        =   ""
@@ -1464,11 +1464,11 @@ Begin Window MainSettingsWindow
             TextFont        =   "System"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   210
+            Top             =   249
             Underline       =   ""
             Value           =   False
             Visible         =   True
-            Width           =   204
+            Width           =   211
          End
       End
       Begin GroupBox grp_settings_applications
@@ -1476,7 +1476,7 @@ Begin Window MainSettingsWindow
          Bold            =   ""
          Caption         =   "External applications"
          Enabled         =   True
-         Height          =   216
+         Height          =   368
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -1630,7 +1630,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   225
+            Top             =   356
             Underline       =   False
             Visible         =   True
             Width           =   120
@@ -1663,7 +1663,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   169
+            Top             =   300
             Transparent     =   False
             Underline       =   ""
             Visible         =   True
@@ -1705,9 +1705,75 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   191
+            Top             =   322
             Underline       =   ""
             UseFocusRing    =   True
+            Visible         =   True
+            Width           =   220
+         End
+         Begin CheckBox chk_applications_minmax_animation
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Use animation when max- and minimizing"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_applications"
+            Italic          =   ""
+            Left            =   329
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   ""
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   6
+            TabPanelIndex   =   2
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   155
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   220
+         End
+         Begin Label nte_applications_animations
+            AutoDeactivate  =   True
+            Bold            =   ""
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   112
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_applications"
+            Italic          =   ""
+            Left            =   329
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   ""
+            LockTop         =   True
+            Multiline       =   True
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   7
+            TabPanelIndex   =   2
+            Text            =   "In Windows, visual effects are applied by default when maximizing and minimizing windows. This may not be required. If the checkbox above does not work, navigate to the Performance settings of Windows and uncheck 'Animate windows when maximizing and minimizing'."
+            TextAlign       =   0
+            TextColor       =   &h000000
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   176
+            Transparent     =   False
+            Underline       =   ""
             Visible         =   True
             Width           =   220
          End
@@ -3099,6 +3165,18 @@ End
 		    btn_browse.Enabled = false
 		  End If
 		  DefaultDocsFolder = App.AppDocumentsFolderForOpenSong
+		  
+		  #If TargetWin32
+		    Dim useAnimations As Integer = Me.MinMaxAnimations
+		    chk_applications_minmax_animation.Value = (useAnimations > 0)
+		    chk_applications_minmax_animation.Enabled = (useAnimations > -1)
+		    
+		    nte_applications_animations.Enabled = True
+		  #Else
+		    chk_applications_minmax_animation.Enabled = False
+		    nte_applications_animations.Enabled = False
+		  #EndIf
+		  
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		End Sub
@@ -3268,6 +3346,40 @@ End
 		Protected logToConsoleSaved As Boolean
 	#tag EndProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Dim useAnimations As Integer = -1
+			  
+			  #If TargetWin32
+			    Try
+			      Dim keyVisualFX As New RegistryItem("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics", False)
+			      useAnimations = keyVisualFX.Value("MinAnimate")
+			    Catch
+			    End Try
+			  #EndIf
+			  
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  #If TargetWin32
+			    Try
+			      Dim keyVisualFX As New RegistryItem("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics", False)
+			      If value > 0 Then
+			        keyVisualFX.Value("MinAnimate") = 1
+			      Else
+			        keyVisualFX.Value("MinAnimate") = 0
+			      End If
+			    Catch
+			    End Try
+			  #EndIf
+			  
+			End Set
+		#tag EndSetter
+		MinMaxAnimations As Integer
+	#tag EndComputedProperty
+
 	#tag Property, Flags = &h1
 		Protected NewDocsFolder As FolderItem
 	#tag EndProperty
@@ -3353,7 +3465,15 @@ End
 		  
 		  SaveLogfileSettings
 		  App.MainPreferences.SetValueFI(Prefs.kPPTViewLocation, PPTViewLocation)
+		  Call PresentationFactory.PPTViewAvailable(True) 'Force re-evaluation of PPTView availability
 		  App.MainPreferences.SetValueFI(Prefs.kVideolanLocation, VideolanLocation)
+		  If chk_applications_minmax_animation.Enabled Then
+		    If chk_applications_minmax_animation.Value Then
+		      MinMaxAnimations = 1
+		    Else
+		      MinMaxAnimations = 0
+		    End If
+		  End If
 		  
 		  SmartML.SetValueB(App.MyMainSettings.DocumentElement, "slide_style_color/@enabled", chk_slidetype_coloring.Value)
 		  Dim slideColor As color

@@ -259,6 +259,7 @@
     <videolan_settings caption="Videolan settings">
       <videolan_start caption="Launch Videolan"/>
 	  <videolan_mediafilename caption="Path to media file to play">Choose the filename of the audio or video file to play.</videolan_mediafilename>
+	  <embed_mediafile caption="Include the media file in the OpenSong set"/>
 	  <videolan_preset caption="Use the following preset with parameters"/>
 	  <videolan_manual caption="Manually adjusted parameters (use %d for display number, %s for mediafile)"/>
       <wait_for_videolan caption="Wait for playback to finish before continuing to next slide"/>
@@ -395,7 +396,7 @@
       <host caption="Host"/>
       <port caption="Port"/>
     </proxy>
-    <user_defined caption="User Defined">
+    <user_defined caption="Naming for user defined song fields">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -442,6 +443,8 @@
     <applications caption="External applications">
       <pptview caption="Location of Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>
+	  <minmax_animation caption="Use animation when max- and minimizing"/>
+	  <animations caption="In Windows, visual effects are applied by default when maximizing and minimizing windows. This may not be required. If the checkbox above does not work, navigate to the Performance settings of Windows and uncheck 'Animate windows when maximizing and minimizing'."/>
       <videolan caption="Location of Videolan client"/>
       <videolan_browse caption="link(shared/browse/@caption)"/>
     </applications>
@@ -1136,8 +1139,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
 
   <videolan_preset_list>
 	<preset name="Video as wallpaper background in Windows (use background color RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Fullscreen video on presentation screen" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Fullscreen video from default DirectShow video input" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<preset name="Fullscreen video on presentation screen" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance  %s"/>
+	<preset name="Fullscreen video from default DirectShow video input" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance  dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Manual" parameters=""/>
   </videolan_preset_list>
@@ -1289,6 +1292,7 @@ Restart OpenSong and retry.</notenoughmemory>
        <unknownerror>Unknown error accessing file %1</unknownerror>
        <notaregularfile>Expected %1 to be a file, not a folder.</notaregularfile>
        <notafolder>Expected %1 to be a folder, not a file.</notafolder>
+	   <temporaryfailed>Creating a temporary file for %1 failed.</temporaryfailed>
     </fileutils>
     <cclinotavailable>The CCLI website has changed significantly.
 This has broken Import function until a new interface can be used.
@@ -1383,6 +1387,7 @@ The OpenSong development team members regret any inconvenience.
     <load_externals>Loading External sheet(s)</load_externals>
     <pass1>Sorting, 1st Pass</pass1>
     <pass2>Sorting, 2nd Pass</pass2>
+    <detect_presentation_hosts>Detecting available presentation applications</detect_presentation_hosts>
   </progress_status>
 
 </language>

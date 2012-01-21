@@ -25,10 +25,14 @@ Protected Module PresentationFactory
 		    m_MsPowerPointHost = Nil
 		  End Try
 		  
-		  If Not IsNull( m_MsPowerPointHost ) Then
-		    oPpt = m_MsPowerPointHost.Presentations.Open( presentationFile.AbsolutePath(), false, false, false )
-		    oPres = New MsPowerPointPresentation( oPpt )
-		  End If
+		  Try
+		    If Not IsNull( m_MsPowerPointHost ) Then
+		      oPpt = m_MsPowerPointHost.Presentations.Open( presentationFile.AbsolutePath(), false, false, false )
+		      oPres = New MsPowerPointPresentation( oPpt )
+		    End If
+		  Catch
+		    oPres = Nil
+		  End Try
 		  
 		  Return oPres
 		End Function
@@ -79,7 +83,11 @@ Protected Module PresentationFactory
 		          olePropSilent.Value = True
 		          aArgs.Append( olePropSilent )
 		          
-		          oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, aArgs)
+		          Try
+		            oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_blank", 0, aArgs)
+		          Catch
+		            oImpressDoc = Nil
+		          End Try
 		          
 		        #Else
 		          
@@ -90,27 +98,33 @@ Protected Module PresentationFactory
 		          param.Type = OLEParameter.ParamTypeString 'or something else?
 		          param.ValueArray = aNoArgs
 		          
-		          oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, param)
+		          Try
+		            oImpressDoc = oDesktop.loadComponentFromURL(presentationFile.URLPath(), "_default", 0, param)
+		          Catch
+		            oImpressDoc = Nil
+		          End Try
 		          
 		        #EndIf
 		        
 		        If Not IsNull( oImpressDoc ) Then
 		          
-		          'Setting "Hidden" does not work for some reason...
-		          'Get the window controller and minimize it
-		          'see http://api.openoffice.org/docs/common/ref/com/sun/star/frame/XController.html
-		          '#If False
-		          Dim oController As OLEObject = oImpressDoc.getCurrentController()
-		          If Not IsNull( oController ) Then
-		            Dim oFrame As OLEObject = oController.getFrame()
-		            If Not IsNull( oFrame ) Then
-		              Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
-		              If Not IsNull( oComponentWin ) Then
-		                oComponentWin.setVisible( False )
+		          If oImpressDoc.supportsService("com.sun.star.presentation.PresentationDocument") Then
+		            'Setting "Hidden" does not work for some reason...
+		            'Get the window controller and minimize it
+		            'see http://api.openoffice.org/docs/common/ref/com/sun/star/frame/XController.html
+		            '#If False
+		            Dim oController As OLEObject = oImpressDoc.getCurrentController()
+		            If Not IsNull( oController ) Then
+		              Dim oFrame As OLEObject = oController.getFrame()
+		              If Not IsNull( oFrame ) Then
+		                Dim oComponentWin As OLEObject = oFrame.getContainerWindow()
+		                If Not IsNull( oComponentWin ) Then
+		                  oComponentWin.setVisible( False )
+		                End If
 		              End If
 		            End If
+		            '#EndIf
 		          End If
-		          '#EndIf
 		          
 		          oPres = New OOoImpressPresentation( oImpressDoc )
 		        End If
@@ -127,6 +141,38 @@ Protected Module PresentationFactory
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub DetectAllHosts()
+		  If m_PptAvailable = Integer(HostAvailable.Unknown) Or _
+		    m_PptViewAvailable = Integer(HostAvailable.Unknown) Or _
+		    m_OOoAvailable = Integer(HostAvailable.Unknown) Then
+		    
+		    ProgressWindow.lbl_status.Text = App.T.Translate("progress_status/detect_presentation_hosts") + "..."
+		    ProgressWindow.SetMaximum( 3 )
+		    ProgressWindow.CanCancel False
+		    ProgressWindow.Show()
+		    
+		    ProgressWindow.SetProgress(0)
+		    ProgressWindow.SetStatus( App.T.Translate("external_slide/presentation_settings/host_impress") )
+		    Call OpenOfficeAvailable()
+		    
+		    ProgressWindow.SetProgress(1)
+		    ProgressWindow.SetStatus( App.T.Translate("external_slide/presentation_settings/host_powerpoint") )
+		    Call PowerPointAvailable()
+		    
+		    ProgressWindow.SetProgress(2)
+		    ProgressWindow.SetStatus( App.T.Translate("external_slide/presentation_settings/host_pptview") )
+		    Call PPTViewAvailable()
+		    
+		    ProgressWindow.SetProgress(3)
+		    ProgressWindow.SetStatus( "" )
+		    
+		    ProgressWindow.Close()
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function DetectPPTView(ByRef application As FolderItem, ByRef parameters As String) As Boolean
 		  Dim result as Boolean = False
 		  Dim applCmd As String
@@ -136,29 +182,9 @@ Protected Module PresentationFactory
 		  'Detect Microsoft PPTView
 		  'How to detect?
 		  
-		  '1. Query the registry if an installation reference is found (only Windows)
-		  '2. Use a configuration setting in the general OS settings and check for existence of the filename
+		  '1. Use a configuration setting in the general OS settings and check for existence of the filename
+		  '2. Query the registry if an installation reference is found (only Windows)
 		  '3. See if PowerPoint is installed and use that in 'simple' mode (only Windows)
-		  
-		  #If TargetWin32
-		    Try
-		      Dim PptViewReg As New RegistryItem("HKEY_CLASSES_ROOT\Applications\pptview.exe\shell\Show\command", False)
-		      Dim command As String=CStr(PptViewReg.DefaultValue)
-		      
-		      SplitCommandString( command, applCmd, applParam )
-		      appl = GetFolderItem(applCmd)
-		      If Not IsNull(app) Then
-		        If Not appl.Exists() Then
-		          appl = Nil
-		        Else
-		          result = True
-		        End If
-		      End If
-		      
-		    Catch e As  RegistryAccessErrorException
-		      'Key not available
-		    End Try
-		  #EndIf
 		  
 		  If IsNull( appl ) Or Not result Then
 		    appl = App.MainPreferences.GetValueFI(Prefs.kPPTViewLocation, Nil, False)
@@ -172,6 +198,28 @@ Protected Module PresentationFactory
 		      End If
 		    End If
 		  End If
+		  
+		  #If TargetWin32
+		    If IsNull( appl ) Or Not result Then
+		      Try
+		        Dim PptViewReg As New RegistryItem("HKEY_CLASSES_ROOT\Applications\pptview.exe\shell\Show\command", False)
+		        Dim command As String=CStr(PptViewReg.DefaultValue)
+		        
+		        SplitCommandString( command, applCmd, applParam )
+		        appl = GetFolderItem(applCmd)
+		        If Not IsNull(app) Then
+		          If Not appl.Exists() Then
+		            appl = Nil
+		          Else
+		            result = True
+		          End If
+		        End If
+		        
+		      Catch e As  RegistryAccessErrorException
+		        'Key not available
+		      End Try
+		    End If
+		  #EndIf
 		  
 		  #If TargetWin32
 		    If IsNull( appl ) Or Not result Then
@@ -311,8 +359,9 @@ Protected Module PresentationFactory
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function OpenOfficeAvailable() As Boolean
-		  If m_OOoAvailable = Integer(HostAvailable.Unknown) Then
+		Function OpenOfficeAvailable(forceDetect As Boolean = False) As Boolean
+		  If m_OOoAvailable = Integer(HostAvailable.Unknown) Or _
+		    forceDetect Then
 		    
 		    'Detect OpenOffice Impress
 		    
@@ -324,24 +373,28 @@ Protected Module PresentationFactory
 		        Dim oDesktop as OLEObject = oServiceManager.createInstance("com.sun.star.frame.Desktop")
 		        If Not IsNull( oDesktop ) Then
 		          
-		          Dim aNoArgs() as Variant
-		          
-		          Dim param as new OLEParameter
-		          param.Type = OLEParameter.ParamTypeString
-		          param.ValueArray = aNoArgs
-		          
-		          Dim oImpressDoc as OLEObject =  oDesktop.loadComponentFromURL("private:factory/simpress", "", 0, param)
-		          m_OOoAvailable = Integer(HostAvailable.Yes)
-		          
-		          'If the creation of the object from the URL above does not throw an error, OOo Impress installed;
-		          'the actual document creation does not need too be checked (afaik).
-		          'If this is required, make sure the targetFrame parameter is not "" but "_blank" (or something like that)
-		          
-		          If Not IsNull( oImpressDoc ) Then
-		            'm_OOoAvailable = Integer(HostAvailable.Yes)
+		          #If False Then 'Set to True if a full check is required
+		            Dim aNoArgs() as Variant
 		            
-		            oImpressDoc.close( False )
-		          End If
+		            Dim param as new OLEParameter
+		            param.Type = OLEParameter.ParamTypeString
+		            param.ValueArray = aNoArgs
+		            
+		            Dim oImpressDoc as OLEObject =  oDesktop.loadComponentFromURL("private:factory/simpress", "", 0, param)
+		            m_OOoAvailable = Integer(HostAvailable.Yes)
+		            
+		            'If the creation of the object from the URL above does not throw an error, OOo Impress installed;
+		            'the actual document creation does not need too be checked (afaik).
+		            'If this is required, make sure the targetFrame parameter is not "" but "_blank" (or something like that)
+		            
+		            If Not IsNull( oImpressDoc ) Then
+		              'm_OOoAvailable = Integer(HostAvailable.Yes)
+		              
+		              oImpressDoc.close( False )
+		            End If
+		          #Else
+		            m_OOoAvailable = Integer(HostAvailable.Yes)
+		          #Endif
 		          
 		        End If
 		        
@@ -358,8 +411,9 @@ Protected Module PresentationFactory
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function PowerPointAvailable(viewerAcceptable As Boolean = True) As Boolean
-		  If m_PptAvailable = Integer(HostAvailable.Unknown) Then
+		Function PowerPointAvailable(viewerAcceptable As Boolean = True, forceDetect As Boolean = False) As Boolean
+		  If m_PptAvailable = Integer(HostAvailable.Unknown)Or _
+		    forceDetect Then
 		    
 		    'Detect Microsoft Office PowerPoint
 		    
@@ -380,21 +434,18 @@ Protected Module PresentationFactory
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function PPTViewAvailable() As Boolean
-		  If m_PptViewAvailable = Integer(HostAvailable.Unknown) Then
-		    
-		    'We leave the initial value to Unknown to make sure this is tested every time.
-		    'This is required to make PPTView detection work immediately after a change of
-		    'the PPTView path in the main settings
-		    'm_PptViewAvailable = Integer(HostAvailable.No)
+		Function PPTViewAvailable(forceDetect As Boolean = False) As Boolean
+		  If m_PptViewAvailable = Integer(HostAvailable.Unknown) Or _
+		    forceDetect Then
 		    
 		    Dim PPTViewLocation As FolderItem
 		    Dim PPTViewParameters As String
 		    
 		    If DetectPPTView(PPTViewLocation, PPTViewParameters) Then
 		      m_PptViewAvailable = Integer(HostAvailable.Yes)
+		    Else
+		      m_PptViewAvailable = Integer(HostAvailable.No)
 		    End If
-		    
 		  End If
 		  
 		  Return m_PptViewAvailable = Integer(HostAvailable.Yes)
@@ -403,9 +454,7 @@ Protected Module PresentationFactory
 
 	#tag Method, Flags = &h0
 		Function RegisterPresentation(presentation As iPresentation) As Boolean
-		  Dim success As Boolean
-		  
-		  success = False
+		  Dim success As Boolean = False
 		  
 		  If presentation IsA iPresentation Then
 		    If m_PresentationList.IndexOf( presentation ) = -1 Then

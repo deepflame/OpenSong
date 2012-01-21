@@ -1,4 +1,19 @@
--= Version 2.0 =-
+-= Version 2.0 Beta 2 =-
+videolan_preset_list (modified parameters)
+module/generate_index (modified)
+errors/no_scripture_folder (modified)
+errors/load_bible
+bible/load_successful
+progress_status/detect_presentation_hosts
+errors/fileutils/temporaryfailed
+general_settings/applications/animations
+general_settings/applications/minmax_animation
+general_settings/user_defined (modified)
+external_slide/videolan_settings/embed_mediafile
+general_settings/applications/minmax_animation
+general_settings/applications/animations
+
+-= Version 2.0 Beta 1 =-
 presentation_helper/keys (modified)
 general_settings/slidetype_coloring/*
 general_settings/general (modified)
@@ -289,7 +304,7 @@ general_settings/general/startmode/song -> general_settings/startmode/songs
 general_settings/general/startmode/set -> general_settings/startmode/sets
 general_settings/newpaint -> general_settings/fonts/newpaint
 style_editor/fonts_and_alignment/descriptive_subtitle_info ->
-    style_editor/fonts_and_alignment/descriptive_subtitle
+style_editor/fonts_and_alignment/descriptive_subtitle
 help_topics/format (Modified)
 general_settings/logging (Modified)
 song_lookup/songs

@@ -25,19 +25,15 @@ Begin Window MainWindow Implements ScriptureReceiver
    Visible         =   False
    Width           =   750
    Begin ContextualMenu mnu_clipboard
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   759
       LockedInPosition=   False
       Scope           =   0
-      TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   26
       UseMacCMM       =   ""
-      Visible         =   True
       Width           =   32
    End
    Begin SButton btn_mode_songs_mode
@@ -122,7 +118,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ""
       TextAlign       =   0
       TextColor       =   0
@@ -153,7 +148,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   35
       Value           =   1
       Visible         =   True
@@ -234,7 +228,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -531,7 +524,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -649,7 +641,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -740,7 +731,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Folders:"
             TextAlign       =   0
             TextColor       =   0
@@ -775,7 +765,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Songs:"
             TextAlign       =   0
             TextColor       =   0
@@ -840,7 +829,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Containing Folder:"
             TextAlign       =   0
             TextColor       =   0
@@ -1024,7 +1012,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1113,7 +1100,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1351,7 +1337,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1621,7 +1606,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Items In Set:"
             TextAlign       =   0
             TextColor       =   0
@@ -1653,7 +1637,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -1912,7 +1895,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   34
       Value           =   5
       Visible         =   True
@@ -1965,7 +1947,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Style Change"
             TextAlign       =   0
             TextColor       =   0
@@ -2113,7 +2094,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   12
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "AKA:"
             TextAlign       =   0
             TextColor       =   0
@@ -2148,7 +2128,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Themes:"
             TextAlign       =   0
             TextColor       =   0
@@ -2183,7 +2162,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Capo:"
             TextAlign       =   0
             TextColor       =   0
@@ -2218,7 +2196,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   14
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key Line:"
             TextAlign       =   0
             TextColor       =   0
@@ -2333,7 +2310,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Key:"
             TextAlign       =   0
             TextColor       =   0
@@ -2368,7 +2344,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Time Signature:"
             TextAlign       =   0
             TextColor       =   0
@@ -2434,7 +2409,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   0
@@ -2469,7 +2443,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Tempo:"
             TextAlign       =   0
             TextColor       =   0
@@ -2504,7 +2477,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   20
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   0
@@ -2858,7 +2830,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   16
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   0
@@ -2893,7 +2864,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -3090,7 +3060,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Song Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -3125,7 +3094,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "CCLI #:"
             TextAlign       =   0
             TextColor       =   0
@@ -3160,7 +3128,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Copyright:"
             TextAlign       =   0
             TextColor       =   0
@@ -3195,7 +3162,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Author:"
             TextAlign       =   0
             TextColor       =   0
@@ -3230,7 +3196,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Presentation:"
             TextAlign       =   0
             TextColor       =   0
@@ -3265,7 +3230,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
             TextColor       =   0
@@ -3300,7 +3264,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Hymn #:"
             TextAlign       =   0
             TextColor       =   0
@@ -3335,7 +3298,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -3370,7 +3332,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -3402,7 +3363,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   22
             TabPanelIndex   =   1
-            TabStop         =   True
             TextFont        =   "Arial"
             TextSize        =   11
             TextUnit        =   0
@@ -3463,7 +3423,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Selectable      =   False
                TabIndex        =   1
                TabPanelIndex   =   1
-               TabStop         =   True
                Text            =   "Using:"
                TextAlign       =   0
                TextColor       =   &h000000
@@ -4112,7 +4071,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   0
@@ -4147,7 +4105,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   23
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   0
@@ -4182,7 +4139,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -4434,7 +4390,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "File Folder"
             TextAlign       =   0
             TextColor       =   0
@@ -4469,7 +4424,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -4504,7 +4458,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
             TextColor       =   0
@@ -4539,7 +4492,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
             TextColor       =   0
@@ -4619,7 +4571,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -4654,7 +4605,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   0
@@ -4689,7 +4639,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -4724,7 +4673,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Slides:"
             TextAlign       =   0
             TextColor       =   0
@@ -4759,7 +4707,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   0
@@ -4794,7 +4741,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -5184,7 +5130,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   26
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "seconds"
             TextAlign       =   1
             TextColor       =   0
@@ -5219,7 +5164,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   18
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
             TextColor       =   0
@@ -5254,7 +5198,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   29
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Use Transition"
             TextAlign       =   0
             TextColor       =   0
@@ -5321,7 +5264,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Image Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -5387,7 +5329,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -5550,7 +5491,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   24
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -5585,7 +5525,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Title:"
             TextAlign       =   0
             TextColor       =   0
@@ -5620,7 +5559,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Insert:"
             TextAlign       =   0
             TextColor       =   0
@@ -5764,7 +5702,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Subtitle:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -5799,7 +5736,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   5
-            TabStop         =   True
             Text            =   "Images:"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -6301,7 +6237,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "External Slide Editor"
             TextAlign       =   0
             TextColor       =   0
@@ -6336,7 +6271,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Name:"
             TextAlign       =   0
             TextColor       =   0
@@ -6371,7 +6305,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Notes:"
             TextAlign       =   0
             TextColor       =   0
@@ -6406,7 +6339,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   6
-            TabStop         =   True
             Text            =   "Application:"
             TextAlign       =   0
             TextColor       =   0
@@ -6649,9 +6581,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             Scope           =   0
             TabIndex        =   10
             TabPanelIndex   =   6
-            TabStop         =   True
             Top             =   146
-            Value           =   1
+            Value           =   2
             Visible         =   True
             Width           =   340
             Begin GroupBox grp_external_presentation_settings
@@ -6673,7 +6604,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11
                TextUnit        =   0
@@ -6764,7 +6694,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   2
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Presentation filename"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -6886,7 +6815,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "Which application should be used to run the presentation?"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -6938,7 +6866,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   359
+                  Top             =   360
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
@@ -6982,7 +6910,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   30
+                  Height          =   28
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -6998,7 +6926,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   9
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7017,7 +6944,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   55
+                  Height          =   53
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7033,7 +6960,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   10
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7052,7 +6978,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   30
+                  Height          =   26
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -7068,7 +6994,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   11
                   TabPanelIndex   =   2
-                  TabStop         =   True
                   Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7101,7 +7026,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   1
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11
                TextUnit        =   0
@@ -7131,7 +7055,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   1
-                  TabStop         =   True
                   Text            =   "Select an application to use as source for this slides content."
                   TextAlign       =   1
                   TextColor       =   &h000000
@@ -7164,7 +7087,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   4
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11
                TextUnit        =   0
@@ -7194,7 +7116,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   0
                   TabPanelIndex   =   4
-                  TabStop         =   True
                   Text            =   "Application parameters"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7229,7 +7150,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   1
                   TabPanelIndex   =   4
-                  TabStop         =   True
                   Text            =   "Path to application executable"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7266,7 +7186,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabIndex        =   2
                   TabPanelIndex   =   4
                   TabStop         =   True
-                  Top             =   192
+                  Top             =   191
                   UseFocusRing    =   True
                   Visible         =   True
                   Width           =   20
@@ -7471,7 +7391,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   3
-               TabStop         =   True
                TextFont        =   "Arial"
                TextSize        =   11
                TextUnit        =   0
@@ -7521,7 +7440,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   256
+                  Top             =   275
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
@@ -7581,7 +7500,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabIndex        =   3
                   TabPanelIndex   =   3
                   TabStop         =   True
-                  Top             =   192
+                  Top             =   191
                   UseFocusRing    =   True
                   Visible         =   True
                   Width           =   20
@@ -7682,7 +7601,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   6
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Path to media file to play"
                   TextAlign       =   0
                   TextColor       =   &h000000
@@ -7717,14 +7635,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   7
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Use the following preset with parameters"
                   TextAlign       =   0
                   TextColor       =   &h000000
                   TextFont        =   "Arial"
                   TextSize        =   10
                   TextUnit        =   0
-                  Top             =   236
+                  Top             =   255
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
@@ -7752,14 +7669,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Selectable      =   False
                   TabIndex        =   8
                   TabPanelIndex   =   3
-                  TabStop         =   True
                   Text            =   "Manually adjusted parameters (use %d for display number, %s for mediafile)"
                   TextAlign       =   0
                   TextColor       =   &h000000
                   TextFont        =   "Arial"
                   TextSize        =   10
                   TextUnit        =   0
-                  Top             =   322
+                  Top             =   343
                   Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
@@ -7804,7 +7720,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   342
+                  Top             =   362
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
@@ -7816,7 +7732,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Caption         =   "Wait for playback to finish before continuing to next slide"
                   DataField       =   ""
                   DataSource      =   ""
-                  Enabled         =   False
+                  Enabled         =   True
                   Height          =   20
                   HelpTag         =   ""
                   Index           =   -2147483648
@@ -7836,7 +7752,39 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "Arial"
                   TextSize        =   10
                   TextUnit        =   0
-                  Top             =   365
+                  Top             =   385
+                  Underline       =   ""
+                  Value           =   False
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin CheckBox chk_external_embed_mediafile
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Include the media file in the OpenSong set"
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   False
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  State           =   0
+                  TabIndex        =   11
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   234
                   Underline       =   ""
                   Value           =   False
                   Visible         =   True
@@ -7889,7 +7837,6 @@ Begin Window MainWindow Implements ScriptureReceiver
       Width           =   750
    End
    Begin Timer tmr_lookup
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -7898,11 +7845,8 @@ Begin Window MainWindow Implements ScriptureReceiver
       Mode            =   2
       Period          =   1500
       Scope           =   0
-      TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   -18
-      Visible         =   True
       Width           =   32
    End
 End
@@ -8341,17 +8285,17 @@ End
 		      edt_external_name.Enabled = True
 		      edt_external_presentation_file.Enabled = True
 		      chk_external_loop_presentation.Enabled = True
-		      chk_external_embed_presentation.Enabled = True
+		      'chk_external_embed_presentation.Enabled = True
 		      rad_external_videolan_start.Enabled = true
 		      lbl_external_videolan_mediafilename.Enabled = rad_external_videolan_start.Value
+		      'chk_external_embed_mediafile.Enabled = True
+		      If rad_external_videolan_start.Value = False Then chk_external_embed_mediafile.Enabled = False
 		      edt_external_videolan_mediafilename.Enabled = rad_external_videolan_start.Value
 		      lbl_external_videolan_preset.Enabled = rad_external_videolan_start.Value
 		      lst_external_videolan_preset.Enabled = rad_external_videolan_start.Value
-		      lbl_external_videolan_manual.Enabled = rad_external_videolan_start.Value And _
-		      (App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "") = "")
-		      edt_external_videolan_manual.Enabled = rad_external_videolan_start.Value And _
-		      (App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "") = "")
-		      chk_external_wait_for_videolan.Enabled = False 'This feature is not available (yet)
+		      lbl_external_videolan_manual.Enabled = rad_external_videolan_start.Value
+		      edt_external_videolan_manual.Enabled = rad_external_videolan_start.Value
+		      chk_external_wait_for_videolan.Enabled = rad_external_videolan_start.Value
 		      rad_external_videolan_stop.Enabled = True
 		      rad_external_application_start.Enabled = True
 		      lbl_external_application_filename.Enabled = rad_external_application_start.Value
@@ -8447,6 +8391,7 @@ End
 		      chk_external_embed_presentation.Enabled = False
 		      rad_external_videolan_start.Enabled = False
 		      edt_external_videolan_mediafilename.Enabled = False
+		      chk_external_embed_mediafile.Enabled = False
 		      lst_external_videolan_preset.Enabled = False
 		      edt_external_videolan_manual.Enabled = False
 		      chk_external_wait_for_videolan.Enabled = False
@@ -8588,7 +8533,7 @@ End
 		          Exit For
 		        End If
 		        
-		      Next 
+		      Next
 		      's = InputBox.Pick(App.T.Translate("scripture_lookup/select_file/@caption"), bibleFiles)
 		      'App.MyBible = BibleFactory.GetBible(s)
 		    Else
@@ -9232,7 +9177,9 @@ End
 		    Select Case SaveDialog( App.T.Translate("questions/save/@caption", lst_set_items.Cell(CurrentInSetItem, 0)))
 		    Case 1
 		      'User pressed Yes, so save
-		      ActionInSetSave
+		      If Not ActionInSetSave() Then
+		        Return False
+		      End If
 		    Case 0
 		      //++EMP:
 		      // Don't reset the modified flag, otherwise the user could select not to save,
@@ -9363,14 +9310,14 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionInSetSave()
+		Function ActionInSetSave() As Boolean
 		  Dim i, j As Integer
 		  Dim line, str As String
 		  Dim xgroup, xslides, xslide As XmlNode
 		  Dim bodies() As String
 		  Dim img As StyleImage
 		  
-		  If Not Status_InSetChanged then return
+		  If Not Status_InSetChanged Then Return True
 		  
 		  xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).Child(CurrentInSetItem)
 		  
@@ -9428,11 +9375,28 @@ End
 		    lst_set_items.List(CurrentInSetItem) = edt_image_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
 		    
 		  Case "external"
-		    SmartML.SetValue xgroup, "@name", edt_external_name.Text
-		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
-		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
-		    
 		    If btn_external_presentation.GetStuck() Then
+		      If chk_external_embed_presentation.Enabled Then
+		        Dim f As FolderItem = GetFolderItem(edt_external_presentation_file.Text)
+		        If f.Exists() Then
+		          If chk_external_embed_presentation.Value Then
+		            Dim inputStream As BinaryStream = BinaryStream.Open(f, False)
+		            SmartML.SetValue xgroup, "file", EncodeBase64(inputStream.Read(f.Length))
+		            SmartML.SetValue xgroup, "@filename", f.Name
+		            inputStream.Close
+		            
+		            chk_external_embed_presentation.Enabled = False
+		          Else
+		            SmartML.SetValue xgroup, "@filename",  f.AbsolutePath
+		          End If
+		        Else
+		          MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
+		          Return False
+		        End If
+		      Else
+		        SmartML.SetValue xgroup, "@filename", edt_external_presentation_file.Text
+		      End If
+		      
 		      SmartML.SetValue xgroup, "@application", "presentation"
 		      
 		      If rad_external_host_powerpoint.Value Then
@@ -9442,10 +9406,31 @@ End
 		      ElseIf rad_external_host_impress.Value Then
 		        SmartML.SetValue xgroup, "@host", "impress"
 		      End If
-		      SmartML.SetValue xgroup, "@filename", edt_external_presentation_file.Text
+		      
 		      SmartML.SetValueB xgroup, "@loop_presentation", chk_external_loop_presentation.Value
 		      
 		    ElseIf btn_external_videolan.GetStuck() Then
+		      If chk_external_embed_mediafile.Enabled Then
+		        Dim f As FolderItem = GetFolderItem(edt_external_videolan_mediafilename.Text)
+		        If f.Exists() Then
+		          If chk_external_embed_mediafile.Value Then
+		            Dim inputStream As BinaryStream = BinaryStream.Open(f, False)
+		            SmartML.SetValue xgroup, "file", EncodeBase64(inputStream.Read(f.Length))
+		            SmartML.SetValue xgroup, "@filename", f.Name
+		            inputStream.Close
+		            
+		            chk_external_embed_mediafile.Enabled = False
+		          Else
+		            SmartML.SetValue xgroup, "@filename",  f.AbsolutePath
+		          End If
+		        Else
+		          MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
+		          Return False
+		        End If
+		      Else
+		        SmartML.SetValue xgroup, "@filename", edt_external_videolan_mediafilename.Text
+		      End If
+		      
 		      SmartML.SetValue xgroup, "@application", "videolan"
 		      
 		      If rad_external_videolan_start.Value Then
@@ -9453,8 +9438,6 @@ End
 		      ElseIf rad_external_videolan_stop.Value Then
 		        SmartML.SetValue xgroup, "@action", "stop"
 		      End If
-		      SmartML.SetValue xgroup, "@filename", edt_external_videolan_mediafilename.Text
-		      
 		      Dim videoLanPresetParams As String
 		      If lst_external_videolan_preset.ListIndex > -1 Then
 		        videoLanPresetParams = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
@@ -9464,6 +9447,14 @@ End
 		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_videolan.Value
 		      
 		    ElseIf btn_external_application.GetStuck() Then
+		      Dim f As FolderItem = GetFolderItem(edt_external_application_filename.Text)
+		      If f.Exists() Then
+		        SmartML.SetValue xgroup, "@app_filename", f.AbsolutePath
+		      Else
+		        MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
+		        Return False
+		      End If
+		      
 		      SmartML.SetValue xgroup, "@application", "launch"
 		      
 		      If rad_external_application_start.Value Then
@@ -9471,10 +9462,14 @@ End
 		      ElseIf rad_external_application_stop.Value Then
 		        SmartML.SetValue xgroup, "@action", "stop"
 		      End If
-		      SmartML.SetValue xgroup, "@app_filename", edt_external_application_filename.Text
 		      SmartML.SetValue xgroup, "@app_parameters", edt_external_application_parameters.Text
 		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_application.Value
 		    End If
+		    
+		    SmartML.SetValue xgroup, "@name", edt_external_name.Text
+		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
+		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
+		    
 		    lst_set_items.List(CurrentInSetItem) = edt_external_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
 		    
 		  Case "style"
@@ -9506,9 +9501,12 @@ End
 		    
 		    lst_set_items.List(CurrentInSetItem) = edt_slide_name.Text + " (" + SmartML.GetValue(xgroup, "@type", True) + ")"
 		  End Select
+		  
 		  Status_InSetChanged = False
 		  EnableMenuItems
-		End Sub
+		  
+		  Return True
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -9566,8 +9564,11 @@ End
 		    Select Case SaveDialog(App.T.Translate("questions/set_changed/@caption"))
 		    Case 1
 		      'User pressed Yes, so save
-		      ActionInSetSave
-		      ActionSetSave
+		      If ActionInSetSave() Then
+		        ActionSetSave
+		      Else
+		        Return False
+		      End If
 		    Case 0
 		      '++JRC Check if the App is Closing, if it is we don't need to reload
 		      If Status_Closing Then Return True 'Continue closing
@@ -9898,7 +9899,6 @@ End
 		  
 		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode, ItemNumber
-		  PresentationFactory.ClearPresentationCache()
 		  
 		  '++JRC reset cursor
 		  App.MouseCursor = Nil
@@ -10046,7 +10046,11 @@ End
 		  Dim xSlide As XmlNode
 		  
 		  If Not Status_SetChanged Then Return
-		  If Status_InSetChanged Then ActionInSetSave
+		  If Status_InSetChanged Then
+		    If Not ActionInSetSave() then
+		      Return
+		    End If
+		  End If
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -10697,8 +10701,8 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub AddPresentedSongsToLog()
+	#tag Method, Flags = &h1
+		Protected Sub AddPresentedSongsToLog()
 		  '++JRC This function as the name implies checks which songs were presented
 		  'and adds them to the activity log, then clears Globals.ActLog
 		  Dim i As Integer
@@ -10788,6 +10792,62 @@ End
 		    edfLyrics.SelStart = cursorStart
 		    edfLyrics.SelLength = selectionLen
 		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub CleanupExternals(setDoc As XmlDocument)
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim songDoc As XmlDocument
+		  Dim Presentation As String
+		  '++JRC
+		  Dim CurStyle As XmlNode
+		  '--
+		  Dim Transition As Integer
+		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim SongPath As String
+		  
+		  App.MouseCursor = System.Cursors.Wait
+		  
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
+		      
+		      Select Case SmartML.GetValue(slide_group, "@application")
+		      Case "presentation", "videolan"
+		        
+		        If Not IsNull(SmartML.GetNode(slide_group, "file")) Then
+		          
+		          'This is an embedded file that was stored to disk for presenting, delete it ...
+		          Dim embedFile As FolderItem = GetFolderItem(SmartML.GetValue(slide_group, "@filename", False))
+		          If embedFile.Exists() Then
+		            
+		            'Doublecheck this is a temporary file
+		            If embedFile.AbsolutePath().StartsWith( SpecialFolder.Temporary.AbsolutePath() ) Then
+		              embedFile.Delete()
+		            End If
+		          End If
+		        End If
+		        
+		      End Select
+		    End If
+		    
+		    slide_group  = slide_group.NextSibling
+		  Wend
+		  
+		  App.MouseCursor = Nil
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub CleanupPresentation(ByRef setDoc As XmlDocument)
+		  AddPresentedSongsToLog
+		  
+		  PresentationFactory.ClearPresentationCache()
+		  CleanupExternals setDoc
 		End Sub
 	#tag EndMethod
 
@@ -11005,7 +11065,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub ImportExternals(setDoc As XmlDocument, PresentMode As Integer)
+		Protected Sub ImportExternals(byRef setDoc As XmlDocument, PresentMode As Integer)
 		  Dim slide_group, slide_groups, temp As XmlNode
 		  Dim songDoc As XmlDocument
 		  Dim Presentation As String
@@ -11016,6 +11076,12 @@ End
 		  Dim SongStyle, SlideSongStyle As XmlNode
 		  Dim SongPath As String
 		  Dim slidesCount As Integer = 0
+		  Dim embeddedFilesBase As FolderItem = GetTemporaryFolderItem()
+		  Try
+		    embeddedFilesBase.Delete()
+		    embeddedFilesBase.CreateAsFolder()
+		  Catch
+		  End Try
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -11039,6 +11105,22 @@ End
 		        
 		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
 		        Dim presFile As FolderItem = GetFolderItem( presFileName )
+		        
+		        Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
+		        If embedFiledata.Len() > 0 Then
+		          Try
+		            presFile = embeddedFilesBase.Child(presFileName)
+		            
+		            Dim outputStream As BinaryStream = BinaryStream.Create(presFile, True)
+		            outputStream.Write DecodeBase64(embedFiledata)
+		            outputStream.Close
+		            
+		            SmartML.SetValue slide_group, "@_localfilename", presFile.AbsolutePath()
+		          Catch
+		            InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", presFileName)
+		          End Try
+		        End If
+		        
 		        Dim presFileOk As Boolean = False
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
@@ -11080,11 +11162,11 @@ End
 		              End If
 		              
 		            Else
-		              MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
+		              InputBox.Message App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath)
 		            End If
 		            
 		          Else
-		            MsgBox(App.T.Translate("errors/fileutils/destdoesnotexisterror", presFile.AbsolutePath ))
+		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", presFile.AbsolutePath)
 		          End If
 		        End If
 		        
@@ -11093,8 +11175,33 @@ End
 		        End If
 		        
 		      Case "videolan"
-		        'No action required here,
-		        'a check to validate the presence of media to play might be nice here
+		        Dim videolanLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
+		        If Not IsNull(videolanLocation) And videolanLocation.Exists Then
+		          Dim mediaFileName As String = SmartML.GetValue(slide_group, "@filename")
+		          Dim mediaFile As FolderItem = GetFolderItem( mediaFileName )
+		          
+		          Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
+		          If embedFiledata.Len() > 0 Then
+		            Try
+		              mediaFile = embeddedFilesBase.Child(mediaFileName)
+		              
+		              Dim outputStream As BinaryStream = BinaryStream.Create(mediaFile, True)
+		              outputStream.Write DecodeBase64(embedFiledata)
+		              outputStream.Close
+		              
+		              SmartML.SetValue slide_group, "@_localfilename", mediaFile.AbsolutePath()
+		            Catch
+		              InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", mediaFileName)
+		            End Try
+		          End If
+		          
+		          If IsNull(mediaFile) Or Not mediaFile.Exists() Then
+		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
+		          End If
+		        Else
+		          InputBox.Message App.T.Translate("errors/videolan_app_missing")
+		        End If
+		        
 		        
 		      Case "launch"
 		        'No action required here
@@ -13078,7 +13185,7 @@ End
 #tag Events btn_set_store
 	#tag Event
 		Sub Action()
-		  ActionInSetSave
+		  Call ActionInSetSave
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -13944,10 +14051,6 @@ End
 		    
 		    edt_external_name.Text = SmartML.GetValue(xgroup, "@name")
 		    
-		    rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
-		    rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
-		    rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
-		    
 		    lst_external_videolan_preset.DeleteAllRows
 		    For i = 0 To App.VideolanPresetList.Count()-1
 		      lst_external_videolan_preset.AddRow App.VideolanPresetList.Key(i)
@@ -13960,6 +14063,12 @@ End
 		      btn_external_application.SetStuck( False )
 		      pge_externals.Value = 1
 		      
+		      'Detect all presentation hosts at once, including progress indicator
+		      PresentationFactory.DetectAllHosts()
+		      rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
+		      rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
+		      rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
+		      
 		      Select Case SmartML.GetValue(xgroup, "@host")
 		      Case "ppt"
 		        rad_external_host_powerpoint.Value = True
@@ -13971,6 +14080,8 @@ End
 		      
 		      edt_external_presentation_file.Text = SmartML.GetValue(xgroup, "@filename")
 		      chk_external_loop_presentation.Value = SmartML.GetValueB(xgroup, "@loop_presentation")
+		      chk_external_embed_presentation.Value = Not IsNull(SmartML.GetNode(xgroup, "file"))
+		      chk_external_embed_presentation.Enabled = False
 		      
 		    Case "videolan"
 		      btn_external_presentation.SetStuck( False )
@@ -13986,6 +14097,8 @@ End
 		      End Select
 		      
 		      edt_external_videolan_mediafilename.Text = SmartML.GetValue(xgroup, "@filename")
+		      chk_external_embed_mediafile.Value = Not IsNull(SmartML.GetNode(xgroup, "file"))
+		      chk_external_embed_mediafile.Enabled = False
 		      
 		      Dim videolanParams As String = SmartML.GetValue(xgroup, "@videolan_parameters")
 		      lst_external_videolan_preset.ListIndex = -1
@@ -16294,9 +16407,9 @@ End
 		        Dim i, presentScreen, width, height As Integer
 		        
 		        presentScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		        If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		        width = Screen(presentScreen).Width
-		        height = Screen(presentScreen).Height
+		        If presentScreen < 0 Or presentScreen + 1 > OSScreenCount() Then presentScreen = 0
+		        width = OSScreen(presentScreen).Width
+		        height = OSScreen(presentScreen).Height
 		        
 		        For i = 1 to oExtPres.SlideCount()
 		          
@@ -16429,6 +16542,13 @@ End
 		  
 		  If btn_external_presentation.GetStuck() Then
 		    If pge_externals.Value <> 1 Then
+		      
+		      'Detect all presentation hosts at once, including progress indicator
+		      PresentationFactory.DetectAllHosts()
+		      rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
+		      rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
+		      rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
+		      
 		      pge_externals.Value = 1
 		    End If
 		  Else
@@ -16628,6 +16748,8 @@ End
 	#tag Event
 		Sub TextChange()
 		  If Status_InSetEditable Then
+		    chk_external_embed_presentation.Enabled = True
+		    
 		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
@@ -16806,6 +16928,8 @@ End
 	#tag Event
 		Sub TextChange()
 		  If Status_InSetEditable Then
+		    chk_external_embed_mediafile.Enabled = True
+		    
 		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
@@ -16826,6 +16950,27 @@ End
 	#tag Event
 		Sub TextChange()
 		  If Status_InSetEditable Then
+		    
+		    Dim selected As Integer = -1
+		    Dim manualItem As Integer = -1
+		    Dim i As Integer
+		    
+		    For i = 0 to lst_external_videolan_preset.ListCount()-1
+		      If App.VideolanPresetList.Value(lst_external_videolan_preset.Cell(i, 0)) = Me.Text Then
+		        selected = i
+		      ElseIf App.VideolanPresetList.Value(lst_external_videolan_preset.Cell(i, 0)) = "" Then
+		        manualItem = i
+		      End If
+		    Next i
+		    
+		    If selected > -1 then
+		      lst_external_videolan_preset.ListIndex = selected
+		    Else
+		      Status_InSetEditable = False 'Prevent updating of the parameter control because the preset selection changed
+		      lst_external_videolan_preset.ListIndex = manualItem
+		      Status_InSetEditable = True
+		    End If
+		    
 		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
@@ -16833,6 +16978,16 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events chk_external_wait_for_videolan
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_embed_mediafile
 	#tag Event
 		Sub Action()
 		  If Status_InSetEditable Then

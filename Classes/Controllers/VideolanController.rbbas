@@ -88,9 +88,10 @@ Inherits Timer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Start(mediaFilename as String, parameters As String, screen As Integer, waitForPlayback As Boolean = False) As Boolean
+		Function Start(mediaFilename as String, parameters As String, screen As Integer, waitForPlayback As Boolean = False, fullScreen As Boolean = True) As Boolean
 		  Dim videolanLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
 		  Dim mediaFile As FolderItem = GetFolderItem(mediaFilename)
+		  Dim VLCparams As String = VLC_INIT
 		  
 		  If m_running Then
 		    Stop()
@@ -99,7 +100,11 @@ Inherits Timer
 		  
 		  If screen < 0 Or screen > OSScreenCount() - 1 Then screen = 0
 		  
-		  parameters = VLC_INIT + " " + parameters
+		  If fullScreen Then
+		    VLCparams = VLCparams + " --fullscreen"
+		  End If
+		  
+		  parameters = VLCparams + " " + parameters
 		  parameters  = ReplaceAllB(parameters , "%d", Str(screen))
 		  parameters  = ReplaceAllB(parameters, "%x", Str(OSScreen(screen).Left+1))
 		  parameters  = ReplaceAllB(parameters, "%y", Str(OSScreen(screen).Top+1))
@@ -197,7 +202,7 @@ Inherits Timer
 	#tag EndProperty
 
 
-	#tag Constant, Name = VLC_INIT, Type = String, Dynamic = False, Default = \"-I rc --rc-host\x3Dlocalhost:11777 --quiet --global-key-quit\x3DCtrl-Alt-Shift-q --video-x\x3D%x --video-y\x3D%y --fullscreen", Scope = Private
+	#tag Constant, Name = VLC_INIT, Type = String, Dynamic = False, Default = \"-I rc --rc-host\x3Dlocalhost:11777 --quiet --global-key-quit\x3DCtrl-Alt-Shift-q --video-x\x3D%x --video-y\x3D%y", Scope = Private
 	#tag EndConstant
 
 

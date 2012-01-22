@@ -6,8 +6,6 @@ errors/load_bible
 bible/load_successful
 progress_status/detect_presentation_hosts
 errors/fileutils/temporaryfailed
-general_settings/applications/animations
-general_settings/applications/minmax_animation
 general_settings/user_defined (modified)
 external_slide/videolan_settings/embed_mediafile
 general_settings/applications/minmax_animation

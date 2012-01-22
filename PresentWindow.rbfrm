@@ -1806,6 +1806,11 @@ End
 		  Dim xStyle As XmlNode
 		  Dim w, h As Integer
 		  Dim advanceNext As Boolean = False
+		  Dim currAppl As String
+		  
+		  If Not IsNull(slide) Then
+		    currAppl = SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		  End If
 		  
 		  If SetML.IsExternal(PreviousSlide) Then
 		    'Check if we need to close the running external.
@@ -1821,21 +1826,31 @@ End
 		      bClose = True
 		    Else
 		      'See if the external in the new slide is equal to the current slide.
-		      If SmartML.GetValue(slide.Parent.Parent, "@application", False) <> prevAppl Or _
-		        SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
-		        (SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False) <> prevFile And _
-		        SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile) Then
-		        bClose = True
+		      If Not IsNull(slide) Then
+		        If currAppl <> prevAppl Or _
+		          SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
+		          (SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False) <> prevFile And _
+		          SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile) Then
+		          bClose = True
+		        End If
 		      End If
 		    End If
 		    
 		    If bClose Then
 		      self._IsClosingExternal = True
 		      
+		      If prevAppl = "presentation" Or prevAppl = "videolan" Then
+		        If currAppl <> "presentation" And currAppl <> "videolan" Then
+		          PresentWindow.Restore()
+		          'PresentWindow.Show()
+		          'If PresentWindow.HelperActive Then
+		          'PresentHelperWindow.SetFocus
+		          'End If
+		        End If
+		      End If
+		      
 		      Select Case prevAppl
 		      Case "presentation"
-		        PresentWindow.Restore()
-		        
 		        Dim presFile As FolderItem = GetFolderItem( prevFile )
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
@@ -1867,7 +1882,6 @@ End
 		        End If
 		        
 		      Case "videolan"
-		        PresentWindow.Restore()
 		        m_VideolanController.Stop()
 		        
 		      Case "launch"
@@ -1888,7 +1902,7 @@ End
 		    _IsSlidechangeExternal = True
 		    
 		    If mode = "N" then
-		      Select Case SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		      Select Case currAppl
 		      Case "presentation"
 		        
 		        'First check if there is a 'local' filename (a saved embedded presentation)
@@ -1957,7 +1971,7 @@ End
 		          CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
 		        End If
 		        
-		        PresentWindow.Hide()
+		        'PresentWindow.Hide()
 		        App.MinimizeWindow(PresentWindow)
 		        
 		      Case "videolan"
@@ -1973,11 +1987,12 @@ End
 		            mediaFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
 		          End If
 		          
-		          If m_VideolanController.Start(mediaFilename, params, presentScreen, waitForPlayback) Then
+		          Dim fullScreen As Boolean = PresentationMode <> MODE_PREVIEW
+		          If m_VideolanController.Start(mediaFilename, params, presentScreen, waitForPlayback, fullScreen) Then
 		            CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
 		            CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
 		            
-		            PresentWindow.Hide()
+		            'PresentWindow.Hide()
 		            App.MinimizeWindow(PresentWindow)
 		            
 		            advanceNext = Not waitForPlayback

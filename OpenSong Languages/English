@@ -443,8 +443,6 @@
     <applications caption="External applications">
       <pptview caption="Location of Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>
-	  <minmax_animation caption="Use animation when max- and minimizing"/>
-	  <animations caption="In Windows, visual effects are applied by default when maximizing and minimizing windows. This may not be required. If the checkbox above does not work, navigate to the Performance settings of Windows and uncheck 'Animate windows when maximizing and minimizing'."/>
       <videolan caption="Location of Videolan client"/>
       <videolan_browse caption="link(shared/browse/@caption)"/>
     </applications>

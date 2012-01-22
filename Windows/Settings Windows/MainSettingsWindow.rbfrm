@@ -1630,7 +1630,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   356
+            Top             =   214
             Underline       =   False
             Visible         =   True
             Width           =   120
@@ -1663,7 +1663,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   300
+            Top             =   158
             Transparent     =   False
             Underline       =   ""
             Visible         =   True
@@ -1705,75 +1705,9 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   322
+            Top             =   180
             Underline       =   ""
             UseFocusRing    =   True
-            Visible         =   True
-            Width           =   220
-         End
-         Begin CheckBox chk_applications_minmax_animation
-            AutoDeactivate  =   True
-            Bold            =   ""
-            Caption         =   "Use animation when max- and minimizing"
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   20
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_applications"
-            Italic          =   ""
-            Left            =   329
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   True
-            LockRight       =   ""
-            LockTop         =   True
-            Scope           =   0
-            State           =   0
-            TabIndex        =   6
-            TabPanelIndex   =   2
-            TabStop         =   True
-            TextFont        =   "Arial"
-            TextSize        =   10
-            TextUnit        =   0
-            Top             =   155
-            Underline       =   ""
-            Value           =   False
-            Visible         =   True
-            Width           =   220
-         End
-         Begin Label nte_applications_animations
-            AutoDeactivate  =   True
-            Bold            =   ""
-            DataField       =   ""
-            DataSource      =   ""
-            Enabled         =   True
-            Height          =   112
-            HelpTag         =   ""
-            Index           =   -2147483648
-            InitialParent   =   "grp_settings_applications"
-            Italic          =   ""
-            Left            =   329
-            LockBottom      =   ""
-            LockedInPosition=   False
-            LockLeft        =   True
-            LockRight       =   ""
-            LockTop         =   True
-            Multiline       =   True
-            Scope           =   0
-            Selectable      =   False
-            TabIndex        =   7
-            TabPanelIndex   =   2
-            Text            =   "In Windows, visual effects are applied by default when maximizing and minimizing windows. This may not be required. If the checkbox above does not work, navigate to the Performance settings of Windows and uncheck 'Animate windows when maximizing and minimizing'."
-            TextAlign       =   0
-            TextColor       =   &h000000
-            TextFont        =   "Arial"
-            TextSize        =   10
-            TextUnit        =   0
-            Top             =   176
-            Transparent     =   False
-            Underline       =   ""
             Visible         =   True
             Width           =   220
          End
@@ -3166,17 +3100,6 @@ End
 		  End If
 		  DefaultDocsFolder = App.AppDocumentsFolderForOpenSong
 		  
-		  #If TargetWin32
-		    Dim useAnimations As Integer = Me.MinMaxAnimations
-		    chk_applications_minmax_animation.Value = (useAnimations > 0)
-		    chk_applications_minmax_animation.Enabled = (useAnimations > -1)
-		    
-		    nte_applications_animations.Enabled = True
-		  #Else
-		    chk_applications_minmax_animation.Enabled = False
-		    nte_applications_animations.Enabled = False
-		  #EndIf
-		  
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		End Sub
@@ -3346,40 +3269,6 @@ End
 		Protected logToConsoleSaved As Boolean
 	#tag EndProperty
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			  Dim useAnimations As Integer = -1
-			  
-			  #If TargetWin32
-			    Try
-			      Dim keyVisualFX As New RegistryItem("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics", False)
-			      useAnimations = keyVisualFX.Value("MinAnimate")
-			    Catch
-			    End Try
-			  #EndIf
-			  
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  #If TargetWin32
-			    Try
-			      Dim keyVisualFX As New RegistryItem("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics", False)
-			      If value > 0 Then
-			        keyVisualFX.Value("MinAnimate") = 1
-			      Else
-			        keyVisualFX.Value("MinAnimate") = 0
-			      End If
-			    Catch
-			    End Try
-			  #EndIf
-			  
-			End Set
-		#tag EndSetter
-		MinMaxAnimations As Integer
-	#tag EndComputedProperty
-
 	#tag Property, Flags = &h1
 		Protected NewDocsFolder As FolderItem
 	#tag EndProperty
@@ -3467,13 +3356,6 @@ End
 		  App.MainPreferences.SetValueFI(Prefs.kPPTViewLocation, PPTViewLocation)
 		  Call PresentationFactory.PPTViewAvailable(True) 'Force re-evaluation of PPTView availability
 		  App.MainPreferences.SetValueFI(Prefs.kVideolanLocation, VideolanLocation)
-		  If chk_applications_minmax_animation.Enabled Then
-		    If chk_applications_minmax_animation.Value Then
-		      MinMaxAnimations = 1
-		    Else
-		      MinMaxAnimations = 0
-		    End If
-		  End If
 		  
 		  SmartML.SetValueB(App.MyMainSettings.DocumentElement, "slide_style_color/@enabled", chk_slidetype_coloring.Value)
 		  Dim slideColor As color

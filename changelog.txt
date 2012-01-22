@@ -4,7 +4,7 @@
 
 * Reduced screen flickering while changing forth an back between an OpenSong slide and an external presentation item or VideoLan (bug #3471022) (Vwout)
 
-* Flickering when changing to an external presentation or VideoLan can be caused by animation effects that Windows applies when minimizing and maximizing. It is adviced to disable these. An option is added to OpenSong to assist in this. A tutorial on how to disable the animations in Windows 7 can be found here: http://www.addictivetips.com/windows-tips/disable-the-maximize-minimize-windows-animation-in-windows-7/ (thx Marten) (Vwout)
+* Flickering when changing to an external presentation or VideoLan can be caused by animation effects that Windows applies when minimizing and maximizing. OpenSong will automatically try to disable animations during a presentation. A tutorial on how to disable the animations in Windows 7 can be found here: http://www.addictivetips.com/windows-tips/disable-the-maximize-minimize-windows-animation-in-windows-7/ (thx Marten) (Vwout)
 
 * The OpenSong presentation window no longer maintains the last presented OpenSong slide when switching to an external item. Instead a black screen is used (bug #3471022) (Vwout)
 

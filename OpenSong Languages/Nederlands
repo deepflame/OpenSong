@@ -443,8 +443,6 @@
     <applications caption="Externe programma's">
       <pptview caption="Locatie van Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>
-	  <minmax_animation caption="Gebruik animaties bij maximaliseren"/>
-	  <animations caption="In Windows worden visuele effecten toegepast bij het maximaliseren en minimaliseren van schermen. Soms is dit niet gewensd. Als bovenstaande optie geen effect heeft, ga dan naar de 'Instellingen voor prestaties' (Visuele Effecten) van Windows en schakel de optie 'Vensteranimaties bij minimaliseren en maximaliseren' uit."/>
       <videolan caption="Locatie van Videolan client"/>
       <videolan_browse caption="link(shared/browse/@caption)"/>
     </applications>

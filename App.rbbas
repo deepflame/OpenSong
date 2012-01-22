@@ -982,12 +982,12 @@ Inherits Application
 	#tag Method, Flags = &h0
 		Sub RestoreWindow(Wnd As Window)
 		  Dim status As Integer
-		  Dim lparam As New MemoryBlock(4)
-		  Const WM_SYSCOMMAND = 274
-		  Const SC_MINIMIZE = 61472
-		  Const SC_RESTORE = &HF120
 		  
 		  #If TargetWin32 Then
+		    Dim lparam As New MemoryBlock(4)
+		    Const WM_SYSCOMMAND = 274
+		    Const SC_RESTORE = &HF120
+		    
 		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
 		    status = SendMessageA(wnd.Handle, WM_SYSCOMMAND, SC_RESTORE, lparam)

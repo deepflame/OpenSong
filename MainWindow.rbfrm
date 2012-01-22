@@ -9897,6 +9897,8 @@ End
 		  Globals.Status_Presentation = True
 		  'Self.Hide
 		  
+		  PreparePresentation
+		  
 		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode, ItemNumber
 		  
@@ -10435,6 +10437,8 @@ End
 		  '--
 		  Globals.AddToLog = Answer
 		  
+		  PreparePresentation
+		  
 		  '++JRC Fix issue were PresentWindow wasn't getting focus
 		  MainWindow.SetFocus
 		  
@@ -10848,6 +10852,10 @@ End
 		  
 		  PresentationFactory.ClearPresentationCache()
 		  CleanupExternals setDoc
+		  
+		  #If TargetWin32 Then
+		    WinAPI.Animation = m_oldAnimationsEnabled
+		  #EndIf
 		End Sub
 	#tag EndMethod
 
@@ -11547,6 +11555,15 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub PreparePresentation()
+		  #If TargetWin32 Then
+		    m_oldAnimationsEnabled = WinAPI.Animation
+		    WinAPI.Animation =False
+		  #EndIf
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ReorderSetItemList(CurrentPosition As Integer, newPosition As Integer)
 		  '++JRC Handle Set Item list reordering
 		  If  newPosition = CurrentPosition Then
@@ -12023,6 +12040,10 @@ End
 
 	#tag Property, Flags = &h1
 		Protected LastSongPane As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_oldAnimationsEnabled As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h21

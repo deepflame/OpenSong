@@ -218,6 +218,7 @@ Class=MsPowerPointHost;Classes/Controllers/MsPowerPointHost.rbbas;&h1A167FFF;&h6
 Module=OOoPresentationHost;Classes/Controllers/OOoPresentationHost/OOoPresentationHost.rbbas;&hEA6E7FF;&h6B93A7F1;false
 Class=OOoSlideShowListener;Classes/Controllers/OOoPresentationHost/OOoSlideShowListener.rbbas;&h1F94A7FF;&hEA6E7FF;false
 Class=VideolanController;Classes/Controllers/VideolanController.rbbas;&h55CC9FFF;&h6B93A7F1;false
+Module=WinAPI;Classes/Helpers/WinAPI.rbbas;&h2497F7FF;&h46BFDB60;false
 AppMenuBar=MainMenu
 MajorVersion=2
 MinorVersion=0

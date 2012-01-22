@@ -10,6 +10,13 @@ Protected Class FolderDB
 		  
 		  f = FileUtils.RelativePathToFolderItem(Folder, path)
 		  
+		  '++JRC Prevent NilObjectException
+		  If f = Nil Then
+		    ErrorCode = 4
+		    ErrorString = "Could not find path to folder."
+		    Return Nil
+		  End If
+		  
 		  If f.Exists Then
 		    ErrorCode = 3
 		    ErrorString = "File already exists."

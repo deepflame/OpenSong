@@ -1147,8 +1147,8 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
 
   <videolan_preset_list>
   	<preset name="Film jako tapeta Windows (użyj koloru tła RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-  	<preset name="Pełnoekranowy film na projektorze" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-  	<preset name="Pełnowymiarowy film z domyślnego wejścia DirectShow" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+  	<preset name="Pełnoekranowy film na projektorze" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+  	<preset name="Pełnowymiarowy film z domyślnego wejścia DirectShow" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
   	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
   	<preset name="Ręcznie" parameters=""/>
   </videolan_preset_list>

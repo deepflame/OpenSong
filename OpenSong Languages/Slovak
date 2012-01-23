@@ -1131,8 +1131,8 @@ Ak je Políčko prezentácie prázdne, pri premietaní bude poradie snímok tak�
 
   <videolan_preset_list>
   <preset name="Video ako pozadie ma ploche vo Windows (použiť farbu pozadia RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Video na celú obrazovku na prezentačnej obrazovke" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Video na celú obrazovku z predvoleného DirectShow video vstupu" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<preset name="Video na celú obrazovku na prezentačnej obrazovke" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Video na celú obrazovku z predvoleného DirectShow video vstupu" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Ručne" parameters=""/>
   </videolan_preset_list>

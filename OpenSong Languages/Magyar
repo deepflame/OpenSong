@@ -1135,8 +1135,8 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
 
   <videolan_preset_list>
 	<preset name="Háttérkép videó Windowson (RGB 0,0,1 háttér alkalmazása)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Teljes képernyős videó a bemutató képernyőn" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Teljes képernyős videó az alapértelmezett DirectShow videó bemeneten" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<preset name="Teljes képernyős videó a bemutató képernyőn" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Teljes képernyős videó az alapértelmezett DirectShow videó bemeneten" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Kézi" parameters=""/>
   </videolan_preset_list>

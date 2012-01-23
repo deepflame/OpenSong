@@ -1131,8 +1131,8 @@ V1 C V2 C V3 C
 
 	<videolan_preset_list>
 		<preset name="Видео на фоне окна (используйте цвет фона RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-		<preset name="Полноэкранное видео на экране показа" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-		<preset name="Полноэкранное видео с использованием стандартного вывода DirectShow" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+		<preset name="Полноэкранное видео на экране показа" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+		<preset name="Полноэкранное видео с использованием стандартного вывода DirectShow" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
 		<!-- Строка ниже обязательна. Переводчикам: изменять только значение атрибута 'name' -->
 		<preset name="Указанные пользователем" parameters=""/>
 	</videolan_preset_list>

@@ -1125,8 +1125,8 @@ Si l'ordre des sections est vide, la présentation se fera dans l'ordre des secti
 
   <videolan_preset_list>
 	<preset name="Vidéo comme fond d'écran Windows (utilise la couleur RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Vidéo plein écran sur l'écran de présentation" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Vidéo plein écran à partir de l'entrée vidéo DirectShow par défaut" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+	<preset name="Vidéo plein écran sur l'écran de présentation" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Vidéo plein écran à partir de l'entrée vidéo DirectShow par défaut" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Manuel" parameters=""/>
   </videolan_preset_list>

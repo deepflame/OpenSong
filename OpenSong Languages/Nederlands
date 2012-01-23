@@ -1169,8 +1169,8 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   
   <videolan_preset_list>
 	<preset name="Videoweergave als bureaublad achtergrond in Windows (gebruik achtergrondkleur RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Volledig scherm videoweergave op presentatiescherm" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance  %s"/>
-	<preset name="Volledig scherm videoweergave vanaf DirectShow video apparaat" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance dshow://"/>
+	<preset name="Volledig scherm videoweergave op presentatiescherm" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Volledig scherm videoweergave vanaf DirectShow video apparaat" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Handmatig" parameters=""/>
   </videolan_preset_list>

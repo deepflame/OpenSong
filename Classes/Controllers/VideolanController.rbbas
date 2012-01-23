@@ -102,6 +102,8 @@ Inherits Timer
 		  
 		  If fullScreen Then
 		    VLCparams = VLCparams + " --fullscreen"
+		  Else
+		    VLCparams = VLCparams + " --no-fullscreen"
 		  End If
 		  
 		  parameters = VLCparams + " " + parameters
@@ -202,7 +204,7 @@ Inherits Timer
 	#tag EndProperty
 
 
-	#tag Constant, Name = VLC_INIT, Type = String, Dynamic = False, Default = \"-I rc --rc-host\x3Dlocalhost:11777 --quiet --global-key-quit\x3DCtrl-Alt-Shift-q --video-x\x3D%x --video-y\x3D%y", Scope = Private
+	#tag Constant, Name = VLC_INIT, Type = String, Dynamic = False, Default = \"-I rc --rc-host\x3Dlocalhost:11777 --rc-quiet --quiet --global-key-quit\x3DCtrl-Alt-Shift-q --video-x\x3D%x --video-y\x3D%y", Scope = Private
 	#tag EndConstant
 
 

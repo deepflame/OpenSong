@@ -1137,8 +1137,8 @@ If the presentation field is empty, then the Presenter will order the slides bas
 
   <videolan_preset_list>
 	<preset name="Video as wallpaper background in Windows (use background color RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
-	<preset name="Fullscreen video on presentation screen" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance  %s"/>
-	<preset name="Fullscreen video from default DirectShow video input" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance  dshow://"/>
+	<preset name="Fullscreen video on presentation screen" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Fullscreen video from default DirectShow video input" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
 	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
 	<preset name="Manual" parameters=""/>
   </videolan_preset_list>

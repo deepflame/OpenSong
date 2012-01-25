@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Czech" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.5.1">
+<!--
+
+Translations:
+
+set                     playlist
+song activity log       Záznam činností s písněmi
+Scripture               Bible
+slide                   snímek
+snapshot                momentka
+
+-->
+<language name="Čeština" author="Tomas Jenicek, Petr Mares, Martin Zibricky" version="1.7.0">
 
   <load_settings>
     <checking_folders>Vytvářím/Kontroluji složku s dokumenty</checking_folders>
@@ -157,6 +168,12 @@
       <copy caption="Kopírovat">Vytvoří kopii vybrané položky.</copy>
       <paste caption="link(shared/insert/@caption)">Vloží kopírovanou položku za současnou pozici.</paste>      
       <store caption="Uložit">Uloží vybranou položku playlistu.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Prezentuje aktuální playlist na obrazovku. Prezentace začne od aktuálně vybrané položky. Prezentaci lze zobrazit na současný monitor, druhý monitor, nebo lze také použít jeden pro náhled toho, co by se zobrazilo na obou monitorech.
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Položky playlistu">Klikněte na uživatelský snímek pro jeho otevření v editoru, dvojklik otevře píseň v editoru písní.
       <song caption="(píseň)"/>
@@ -170,6 +187,7 @@
     <untitled caption="Nepojmenovaný"/>
     <errors>
       <revert caption="Chyba při znovunačtení playlistu &quot;%1&quot; ze souboru."/>
+      <insert caption="Nepodařilo se vložit zkopírované snímky:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; exportováno do
@@ -183,7 +201,7 @@
     <title caption="Název">Nastaví název snímku, který se zobrazí přímo ve snímku.</title>
     <subtitle caption="Podnadpis">Nastaví podnadpis snímku, který se zobrazí přímo ve snímku.</subtitle>
     <name caption="Název">Nastaví název snímku, který se zobrazí v okně Prezentační pomocník. Nezobrazí se přímo ve snímku.</name>
-    <slides caption="Snímky">Obsahuje hlavní text aktuálního uživatelského snímku(ů). Poznámka: Pro lehčí přidání přetáhněte jeden nebo více obrázků do tohoto seznamu.</slides>
+    <slides caption="Snímky">Obsahuje hlavní text aktuálního uživatelského snímku(ů).</slides>
     <presentation caption="Uživatelské pořadí prezentace">Přebije pořadí prezentace v písni.</presentation>
     <origorder caption="Původní pořadí prezentace">Pořadí prezentace v písni.</origorder>
     <folder caption="Složka s písní">Složka, kde se nachází vybraná položka.</folder>
@@ -204,7 +222,7 @@
     <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
     <descriptions caption="Popisek obrázku v podnadpisu">Přidá popisek zobrazovaného obrázku do podnadpisu.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
-    <images caption="Obrázky" head1="Náhled" head2="Popisek">Obsahuje obrázek, který bude zobrazen v tomto snímku.</images>
+    <images caption="Obrázky" head1="Náhled" head2="Popisek">Obsahuje obrázek, který bude zobrazen v tomto snímku. Poznámka: Pro lehčí přidání přetáhněte jeden nebo více obrázků do tohoto seznamu.</images>
     <fit_to_screen caption="Přizpůsobit velikost obrázku obrazovce">Obrázky, které jsou příliš velké pro projektoru, jsou přizposobeny velikosti obrazovky projektoru. Samozřejmě to platí obráceně i pro malé obrázky.</fit_to_screen>
     <fit_to_body caption="Přizpůsobit velikost obrázků oblasti pro text">Velikost obrázků je vždy přizpůsoben oblasti pro text. Oblast pro text je vymezena aktuálním nastaveným stylem. Přizposobeny jsou velké i malé obrázky.</fit_to_body>
     <keepaspect caption="Zachovat poměr stran při změně velikosti obrázků">V případě změně velikosti obrázků je zachován poměr stran obrázků.</keepaspect>
@@ -300,6 +318,7 @@
       <print_alphabetical_toc caption="Tisk _Abecední seznam"/>
       <print_categorical_toc caption="Tisk _Kategorie seznam"/>
       <song_act caption="_Záznam činností s písněmi"/>
+      <scripture caption="Hledat v Bibli"/>
       <quit caption="K_onec"/>
     </file>
     <edit caption="_Úpravy">
@@ -326,6 +345,7 @@
     </settings>
     <help caption="_Nápověda">
       <help_topics caption="Obsah _nápovědy"/>
+      <user_manual caption="_Internetová příručka"/>
       <translating caption="_Překlad aplikace"/>
       <about caption="_O aplikaci OpenSong"/>
     </help>
@@ -410,6 +430,7 @@
     <layout>
       <heading_border_thickness caption="Tloušťka okraje nadpisů"/>
       <title_in_caps caption="Nadpisy velkými písmeny (kapitálkami)"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Jednotky">
       <inches caption="Palce"/>
@@ -418,11 +439,30 @@
   </print_settings>
 
   <presentation_settings title="Nastavení prezentace">
-    <settings head1="Vzhled" head2="Nastavení">
+    <settings head1="Vzhled" head2="Nastavení" head3="Momentky">
       <default_slides caption="Výchozí styl snímku"/>
       <scripture_slides caption="Výchozí styl Bible"/>
       <click_to_change caption="link(shared/click_to_change/@caption)"/>
       <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+       <export_snapshot caption="Export momentky každého prezentovaného snímku do následujícího souboru"/>
+       <snapshot_file caption="Jméno souboru s momentkami">Vybrat jméno souboru momentkami v dialogu pro výběr souboru.</snapshot_file>
+       <export_preview caption="Export momentek během náhledu playlistu"/>
+       <export_live_insertions caption="Export momentek snímků vložených během prezentace naživo"/>
+       <export_metadata caption="Export podrobností snímků v podobně pojmenovaném xml souboru"/>
+       <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Následující parametry lze použít ve jménu souboru nebo cesty:
+    - %d: Den ve současném měsíci (01-31)
+    - %h: Hodina z aktuálního času dne ve 24-hodinovém formátu (00-23)
+    - %i: Minuty z aktuálního času (00-59)
+    - %m: Aktuální měsíc (01-12)
+    - %n: Počet snímků v současném playlistu (s nulami na začátku)
+    - %N: Jméno současného snímku
+    - %P: Index prezentace pro snímky během prezentace (s nulami na začátku)
+    - %s: Sekundy aktuálního času (00-59)
+    - %S: Název současného playlistu
+    - %T: Název současného snímku
+    - %V: Ukazatel verše současného snímku (pro písně, prázdné nebo jiné snímky)
+    - %y: Aktuální rok (4 číslice)</snapshot_parameters>
     </settings>
     <transitions caption="Přechody">
       <use_transitions caption="Použít přechody*"/>
@@ -453,7 +493,6 @@
       <blanks caption="Vložit prázdný snímek"/>
       <blanks_between caption="mezi položky playlistu"/>
       <time caption="Čas trvání přechodu" helptag="Celkový čas přechodu (ve skutečnosti může být delší na pomalejším počítači)."/>
-      <frames caption="Počet kroků přechodu" helptag="Počet kroků přechodů mezi snímky."/>
       <blank_style caption="Prázdné snímky přebírají styl"/>
       <blank_prev caption="Předchozího snímku"/>
       <blank_next caption="Následujícího snímku"/>
@@ -469,6 +508,7 @@
       <presentation caption="Prezentační monitor"/>
       <detected caption="Počet detekovaných monitorů: %1."/>
       <default_mode caption="Výchozí typ prezentace"/>
+      <force_4_3_preview caption="Vynutit náhled v poměru 4:3"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Maska"/>     
@@ -485,7 +525,11 @@
 
     <misc caption="Různé">
       <exit_prompt caption="Dotazovat se před ukončením"/>
-   </misc>   
+    </misc>   
+
+    <errors>
+      <snapshot_file>Chyba: tvorba momentek je zapnuta, ale nebylo vloženo žádné jméno souboru.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Prezentační pomocník">
@@ -518,11 +562,14 @@ C: Refrén
 P: Před-refrén
 B: Přechod
 T: Tag (značka)</keys>
+    <preview caption="Náhled současného snímku" />
+    <next caption="Náhled dalšího snímku" />
   </presentation_helper>
 
   <help_topics title="Obsah nápovědy">
     <tabs head1="Klávesové zkratky" head2="Formát Akordů/Slov" head3="Políčko Prezentace" head4="Zavřít"/>
     <print caption="Tisk"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Klávesové zkratky při prezentaci&lt;/h1&gt;
 
@@ -745,9 +792,10 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     
   <style_editor title="Editor stylu">
     <fonts_and_alignment caption="Písma a zarovnání">
-      <title caption="Nadpis"/>
-      <subtitle caption="Podnadpis"/>
-      <body caption="Text"/>
+      <title caption="Zobrazit nadpis"/>
+      <subtitle caption="Zobrazit podnadpis"/>
+      <body caption="Zobrazit text"/>
+      <body_autosize caption="Automatická změna velikosti písma, aby se text vešel na obrazovku"/>
       <align caption="Zarovnání"/>
       <margin caption="Okraje"/>
       <tabs caption="Tabulátory"/>    
@@ -829,7 +877,7 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
         constants found in the LogEntry class. The list order
         can be changed as desired for localisation (note that it is
         alphabetical in English) as long as the tags relate to the
-        correct item.  For example, the local language value of "Moved"
+        correct item. For example, the local language value of "Moved"
         should always have tag="4"
       -->
       <value tag="0">Vše</value>
@@ -879,11 +927,14 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     <shownumbers caption="Zobrazit čísla veršů"/>
     <preview caption="Náhled"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Zkontrolujte prosím formát dotazu a zkuste to znovu.</format>
       <empty>Špatný odkaz: odkaz nebyl zadán.</empty>
       <book>Špatný odkaz: nemohu nalézt knihu.</book>
-      <ambiguous>Špatný odkaz: Mnoho knih odpovídá '%1': %2</ambiguous>
+      <ambiguous>Špatný odkaz: Mnoho knih odpovídá %1: %2</ambiguous>
       <version>Špatný odkaz: '%1' verze nemůže být nalezena.</version>
       <chapter>Špatný odkaz: nemohu nalézt kapitolu '%1'.</chapter>
       <verse>Špatný odkaz: nemohu nalézt verš '%1'.</verse>
@@ -1028,6 +1079,9 @@ Pokud je políčko Prezentace prázdné, pak při promítání bude pořadí sn�
     <option name="Žádná, bezeztrátově, velký soubor playlistu"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Ukázkový název" type="custom" seconds="0" loop="false">
@@ -1100,8 +1154,8 @@ Klikněte na snímek pro změnu jeho stylu.</body>
     <additional>Další vývoj:</additional>
     <copyright>Copyright</copyright>
     <gpl>Tento software je uvolněn pod licencí GPL.</gpl>
-    <web>http://www.opensong.org, http://cb.cz/pardubice/opensong</web>
-    <translating>Pro vytvoření překladu aplikace OpenSong, zkopírujte soubor 'English' do složky 'OpenSong Languages' a přejmenujte na název nového jazyka. Přeložte vše v tomto souboru kromě tagů a názvů atributů. Poté pošlete nový soubor na translator@opensong.org a my ho dáme do oficiální verze.</translating>
+    <web>Navštivte http://www.opensong.org nebo http://cb.cz/pardubice/opensong pro více informací.</web>
+    <translating>Pro vytvoření překladu aplikace OpenSong, zkopírujte soubor 'English' do složky 'OpenSong Languages' a přejmenujte na název nového jazyka. Přeložte vše v tomto souboru kromě tagů a názvů atributů. Poté pošlete nový soubor na opensong-translate@lists.sourceforge.net nebo ho přidejte do 'Patches' v bugtracking systému na Source Forge projektových stránkách této aplikace a my ho dáme do oficiální verze.</translating>
     <created_with_opensong>Vytvořeno pomocí  OpenSong.</created_with_opensong>
     <sources>OpenSong obsahuje zdrojové kódy z:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1254,6 +1308,7 @@ OpenSong tým se omlouvá za problémy.
     <lead_sheets>Vytvářím úvodní listy</lead_sheets>
     <process_themes>Zpracovávám témata</process_themes>
     <process_songs>Zpracovávám písně</process_songs>
+    <song_search>Vyhledávám v pisních</song_search>
     <export>Exportuji písně</export>
     <pass1>Řadím, 1. průchod</pass1>
     <pass2>Řadím, 2. průchod</pass2>

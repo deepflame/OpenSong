@@ -65,13 +65,65 @@ Implements iBible
 		  
 		  'save the changes
 		  If InputBox.AskYN(App.T.Translate("bible/messages/save")) Then
-		    out= bibleFile.createTextFile
+		    out= TextOutputStream.Create(bibleFile)
 		    Scripture.PreserveWhitespace = True
 		    out.Write(Scripture.toString)
 		    out.close
 		    ShouldGenerateIndex = True
 		  End If
 		  return true
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function combineLists(one() as String, two() as String) As String()
+		  'takes two sorted lists and combines them
+		  
+		  Dim returnVal(-1) as String
+		  Dim left, right as SearchResult
+		  Dim x,y, comp as Integer
+		  
+		  'since both lists are sorted all you have to do is combine them
+		  while x<= UBound(one) AND y<= UBound(two)
+		    
+		    
+		    left= new SearchResult(one(x))
+		    right= new SearchResult(two(y))
+		    
+		    comp= left.compareTo(right)
+		    
+		    if comp=0 then
+		      
+		      returnVal.Append(one(x))
+		      
+		      x=x+1
+		      y=y+1
+		    elseif comp<0 then
+		      returnVal.Append(one(x))
+		      
+		      x=x+1
+		    else
+		      
+		      returnVal.Append(two(y))
+		      
+		      y=y+1
+		    end if
+		    
+		  wend
+		  
+		  
+		  while x<=UBound(one)
+		    returnVal.Append(one(x))
+		    x=x+1
+		  wend
+		  
+		  while y<= UBound(two)
+		    returnVal.Append(two(y))
+		    y=y+1
+		  wend
+		  
+		  
+		  return returnVal
 		End Function
 	#tag EndMethod
 
@@ -348,58 +400,6 @@ Implements iBible
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function combineLists(one() as String, two() as String) As String()
-		  'takes two sorted lists and combines them
-		  
-		  Dim returnVal(-1) as String
-		  Dim left, right as SearchResult
-		  Dim x,y, comp as Integer
-		  
-		  'since both lists are sorted all you have to do is combine them
-		  while x<= UBound(one) AND y<= UBound(two)
-		    
-		    
-		    left= new SearchResult(one(x))
-		    right= new SearchResult(two(y))
-		    
-		    comp= left.compareTo(right)
-		    
-		    if comp=0 then
-		      
-		      returnVal.Append(one(x))
-		      
-		      x=x+1
-		      y=y+1
-		    elseif comp<0 then
-		      returnVal.Append(one(x))
-		      
-		      x=x+1
-		    else
-		      
-		      returnVal.Append(two(y))
-		      
-		      y=y+1
-		    end if
-		    
-		  wend
-		  
-		  
-		  while x<=UBound(one)
-		    returnVal.Append(one(x))
-		    x=x+1
-		  wend
-		  
-		  while y<= UBound(two)
-		    returnVal.Append(two(y))
-		    y=y+1
-		  wend
-		  
-		  
-		  return returnVal
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
 		Protected Function ConvVal(intVal as Integer) As Integer
 		  '
 		  ' Given the "rank" of a character from a Roman numeral, return its equivalent integer
@@ -424,6 +424,14 @@ Implements iBible
 		    Conv = 1
 		  End Select
 		  return Conv
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ErrorString() As String
+		  // Part of the iBible interface.
+		  Return ErrorString
+		  
 		End Function
 	#tag EndMethod
 
@@ -546,18 +554,19 @@ Implements iBible
 		  Dim newFile as FolderItem
 		  Dim out as TextOutputStream
 		  Dim BookNode, ChapNode, VerseNode As XmlNode
-		  Dim sSplit(), verse, location, fileName, sBook, sChap, sVer as String
+		  Dim sSplit, aSplit(), verse, location, fileName, sBook, sChap, sVer as String
 		  Dim reg as RegEx
 		  Dim x,y,  book, chap, ver, bound as Integer
 		  Dim root, wordNode as TreeNode
 		  Dim Progress As Double
 		  Dim BookName As String
 		  Dim Passage As String
+		  Dim wProgress As IndexProgress
 		  
 		  // Only do this if allowed
 		  If Not ShouldGenerateIndex Then Return
 		  
-		  App.DebugWriter.Write "Bible.genindex: Enter"
+		  App.DebugWriter.Write "Bible.genIndex: Enter"
 		  
 		  'clear index
 		  reDim index(-1)
@@ -568,6 +577,9 @@ Implements iBible
 		  'create folder if necessary
 		  newFile= New FolderItem(file.Parent.child("indexes"))
 		  if Not newFile.Exists then
+		    '++JRC Prompt before creating index
+		    If NOT InputBox.AskYN(App.T.Translate("module/generate_index", file.Name)) Then Return
+		    
 		    newFile.CreateAsFolder
 		    If Not newFile.Exists Then
 		      ShouldGenerateIndex = False
@@ -596,7 +608,7 @@ Implements iBible
 		    end try
 		    Return
 		  Else
-		    out = newFile.CreateTextFile
+		    out = TextOutputStream.Create(newFile)
 		    If Not newFile.Exists Then
 		      ShouldGenerateIndex = False
 		      App.DebugWriter.Write "Bible.genindex: Exit (can't create index file), errorcode is " + CStr(newFile.LastErrorCode)
@@ -623,13 +635,14 @@ Implements iBible
 		  
 		  'used to remove puncuation and xml tags
 		  reg= New RegEx
-		  reg.SearchPattern = "[^\w\s]+" ' Non-word, non-space
+		  reg.SearchPattern = "[[:punct:]]" ' Non-word, non-space
 		  reg.ReplacementPattern=""
 		  reg.Options.ReplaceAllMatches=true
 		  
 		  'open progress window
 		  If Not (wSplash Is Nil) Then wSplash.Hide
-		  wProgress = New IndexProgress
+		  
+		  wProgress = New IndexProgress()
 		  wProgress.setProgress(0, "")
 		  wProgress.ShowWithin App.GetFrontControlScreenWindow
 		  'books
@@ -670,30 +683,32 @@ Implements iBible
 		        if versenode.Child(0)<> nil then
 		          location=sBook + " " + sChap + " " + sVer
 		          
-		          'remove puncuation
+		          'remove puncuationı
 		          verse= reg.Replace( getVerseText(versenode), 0)
 		          
 		          'split verse into individual words
-		          sSplit= verse.Split()
+		          aSplit= verse.Split()
 		          
 		          'add to index
-		          for x=0 to UBound(sSplit)
+		          for x=0 to UBound(aSplit)
+		            sSplit = Trim(aSplit(x))
 		            'if string is empty or in the list of words not to index then skip
 		            
-		            if (Len(sSplit(x))>=1 AND notIndexed.IndexOf(sSplit(x)) <0) then
+		            if (Len(sSplit)>=1 AND notIndexed.IndexOf(sSplit) <0) then
 		              
 		              if (root=nil) then 'first entry
-		                root= new TreeNode(sSplit(x), IndexDict)
-		              else
-		                wordNode=root.find(sSplit(x))
+		                root= new TreeNode(sSplit, IndexDict)
+		              end if
 		                
+		              wordNode=root.find(sSplit)
+		              
 		                bound=UBound(wordNode.passages)
 		                
 		                if (bound >= 5000) then
 		                  ''add to not indexed list and remove from index
-		                  notIndexed.Append(sSplit(x))
+		                notIndexed.Append(sSplit)
 		                  
-		                  root.delete(sSplit(x))
+		                root.delete(sSplit)
 		                else
 		                  
 		                  ''make sure not to include the same verse twice
@@ -701,8 +716,8 @@ Implements iBible
 		                    wordNode.passages.Append(location)
 		                  end if '(bound < 0 Or location...
 		                end if '(bound >= 5000)
-		              end if '(root = Nil)
-		            end if '(Len(sSplit(x)) >= 1)...
+		              
+		            end if '(Len(sSplit) >= 1)...
 		          next x
 		        end if
 		        
@@ -726,18 +741,18 @@ Implements iBible
 		  root.inorderTraverse(index)
 		  
 		  'write to file
-		  out= newFile.CreateTextFile
+		  out= TextOutputStream.Create(newFile)
 		  for x=0 to UBound(index)
-		    out.write(index(x).entry)
-		    
-		    Passage = "|" + Join(index(x).passages, "|")
+		    Passage = index(x).entry + "|" + Join(index(x).passages, "|")
 		    out.WriteLine(Passage)
 		  next x
 		  
 		  out.WriteLine("---")
 		  
 		  for x=0 to UBound(notIndexed)
+		    If notIndexed(x)<>"" Then
 		    out.writeLine(notIndexed(x))
+		    End If
 		  next x
 		  
 		  out.Close
@@ -788,9 +803,157 @@ Implements iBible
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function GetBookNameFromStdBookNumber(bookNumber As Integer) As String
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL, XML_NAB
+		    Return GetBookName(bookNumber)
+		    
+		  Case XML_ZEFANIA
+		    Try
+		      Return Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber=" + CStr(bookNumber) + "]").Item(0).GetAttribute("bname")
+		    Catch
+		      Return ""
+		    End Try
+		  End Select
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function GetBookNum(book as String) As Integer
 		  return Books.indexOf(book)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetChapterCount(bookNumber As Integer) As Integer
+		  // Part of the iBible interface.
+		  
+		  //
+		  // Updated to support different XML schemas
+		  //
+		  // Ed Palmer, October 2004 (NAB format), August 2005 (Zefania)
+		  //
+		  dim i as integer
+		  dim xn as xmlNodeList
+		  
+		  i = 0
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL
+		    
+		    i =  Len(VersesInChapters(bookNumber)) / 4
+		    
+		  Case XML_NAB
+		    xn = Scripture.Xql("/bible/b[" + str(bookNumber) + "]")
+		    
+		    i = val(xn.item(0).GetAttribute("CHAPTERS"))
+		    
+		  Case XML_ZEFANIA
+		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[" + Str(bookNumber) + "]/CHAPTER")
+		    
+		    i = xn.Length
+		    
+		  Case Else
+		    //
+		    // TODO: provide descriptive error
+		    //
+		  End Select
+		  
+		  Return i
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetCitation(bookNumber As Integer, chapterNumber As Integer, startVerse As Integer, endVerse As Integer = - 1) As String
+		  // Part of the iBible interface
+		  
+		  //++
+		  // Given a specific Bible reference in relative references, return
+		  // a textual citation for that reference.
+		  // For example, GetCitation(1, 1, 1, 2) would return
+		  // "Genesis 1:1-2" for KJV
+		  // If endVerse is omitted or < 1, assume the same as startVerse
+		  //
+		  // Ed Palmer, July 2007
+		  //--
+		  
+		  Dim sVerseStart As String
+		  Dim sVerseEnd As String
+		  Dim cite As String
+		  
+		  If endVerse < 1 Then endVerse = startVerse
+		  If Not ValidateCitation(bookNumber, chapterNumber, startVerse, endVerse) Then
+		    Return ""
+		  End If
+		  
+		  cite = GetBookNameFromStdBookNumber(bookNumber)
+		  cite = cite + " " + CStr(chapterNumber) + ":"
+		  GetVerseRange(bookNumber, chapterNumber, startVerse, sVerseStart, sVerseEnd)
+		  cite = cite + sVerseStart
+		  If endVerse = startVerse Then
+		    If sVerseEnd <> "" Then
+		      cite = cite + "-" + sVerseEnd
+		    End If
+		  Else
+		    GetVerseRange(bookNumber, chapterNumber, endVerse, sVerseStart, sVerseEnd)
+		    If sVerseEnd = "" Then
+		      cite = cite + ":" + sVerseStart
+		    Else
+		      cite = cite + ":" + sVerseEnd
+		    End If
+		  End If
+		  
+		  Return cite
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetNTBooks() As String()
+		  //
+		  // Returns a string array with the names of the books
+		  // of the New Testament from the currently-loaded Bible.
+		  //
+		  // Must use this routine to allow for both I18N issues
+		  // and to handle Zefania files with incomplete
+		  // books.
+		  //
+		  // Ed Palmer, September 2005
+		  //
+		  Dim BookNames(0) As String
+		  Dim xn As XmlNodeList
+		  Dim i As Integer
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL
+		    For i = 1 to NT_PROTESTANT
+		      BookNames.Append GetBookName(i + OT_PROTESTANT)
+		    Next
+		    
+		  Case XML_NAB
+		    xn = Scripture.Xql("/bible/NT/book")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("n")
+		    Next
+		    
+		  Case XML_ZEFANIA
+		    //
+		    // Look at books in the book number range 40-66
+		    // 40 = Matthew, 66 = Revelation
+		    //
+		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("bname")
+		    Next
+		    
+		  End Select
+		  
+		  Return BookNames
+		  
 		End Function
 	#tag EndMethod
 
@@ -851,52 +1014,6 @@ Implements iBible
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetNTBooks() As String()
-		  //
-		  // Returns a string array with the names of the books
-		  // of the New Testament from the currently-loaded Bible.
-		  //
-		  // Must use this routine to allow for both I18N issues
-		  // and to handle Zefania files with incomplete
-		  // books.
-		  //
-		  // Ed Palmer, September 2005
-		  //
-		  Dim BookNames(0) As String
-		  Dim xn As XmlNodeList
-		  Dim i As Integer
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL
-		    For i = 1 to NT_PROTESTANT
-		      BookNames.Append GetBookName(i + OT_PROTESTANT)
-		    Next
-		    
-		  Case XML_NAB
-		    xn = Scripture.Xql("/bible/NT/book")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("n")
-		    Next
-		    
-		  Case XML_ZEFANIA
-		    //
-		    // Look at books in the book number range 40-66
-		    // 40 = Matthew, 66 = Revelation
-		    //
-		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber >= 40 and @bnumber <= 66]")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("bname")
-		    Next
-		    
-		  End Select
-		  
-		  Return BookNames
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function GetNTCount() As Integer
 		  '
 		  ' Returns count of New Testament books
@@ -938,6 +1055,52 @@ Implements iBible
 		    End Try
 		  End Select
 		  Return BookCount
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetOTBooks() As String()
+		  //
+		  // Returns a string array with the names of the books
+		  // of the Old Testament from the currently-loaded Bible.
+		  //
+		  // Must use this routine to allow for both I18N issues
+		  // and to handle Apocrypha or Zefania files with incomplete
+		  // books.
+		  //
+		  // Ed Palmer, September 2005
+		  //
+		  Dim BookNames(0) As String
+		  Dim xn As XmlNodeList
+		  Dim i As Integer
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL
+		    For i = 1 to OT_PROTESTANT
+		      BookNames.Append GetBookName(i)
+		    Next
+		    
+		  Case XML_NAB
+		    xn = Scripture.Xql("/bible/OT/book")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("n")
+		    Next
+		    
+		  Case XML_ZEFANIA
+		    //
+		    // Look at books outside the book number range 40-66
+		    // 40 = Matthew, 66 = Revelation
+		    //
+		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber < 40 or @bnumber > 66]")
+		    For i = 0 to xn.Length - 1
+		      BookNames.Append xn.Item(i).GetAttribute("bname")
+		    Next
+		    
+		  End Select
+		  
+		  Return BookNames
+		  
 		End Function
 	#tag EndMethod
 
@@ -996,52 +1159,6 @@ Implements iBible
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetOTBooks() As String()
-		  //
-		  // Returns a string array with the names of the books
-		  // of the Old Testament from the currently-loaded Bible.
-		  //
-		  // Must use this routine to allow for both I18N issues
-		  // and to handle Apocrypha or Zefania files with incomplete
-		  // books.
-		  //
-		  // Ed Palmer, September 2005
-		  //
-		  Dim BookNames(0) As String
-		  Dim xn As XmlNodeList
-		  Dim i As Integer
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL
-		    For i = 1 to OT_PROTESTANT
-		      BookNames.Append GetBookName(i)
-		    Next
-		    
-		  Case XML_NAB
-		    xn = Scripture.Xql("/bible/OT/book")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("n")
-		    Next
-		    
-		  Case XML_ZEFANIA
-		    //
-		    // Look at books outside the book number range 40-66
-		    // 40 = Matthew, 66 = Revelation
-		    //
-		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber < 40 or @bnumber > 66]")
-		    For i = 0 to xn.Length - 1
-		      BookNames.Append xn.Item(i).GetAttribute("bname")
-		    Next
-		    
-		  End Select
-		  
-		  Return BookNames
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function GetOTCount() As Integer
 		  //
 		  // Returns count of Old Testament books
@@ -1082,6 +1199,116 @@ Implements iBible
 		    
 		  End Select
 		  Return BookCount
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetPassage(bookNumber As Integer, chapterNumber As Integer, startVerseOffset As Integer, endVerseOffset As Integer, embedVerseNumbers As Boolean = True) As String()
+		  // Part of the iBible interface.
+		  
+		  // Updated 8 October 2004 to fix "3John issue" in book parsing algorithm and NAB format
+		  // 29 August 2005: Add support for Zefania format
+		  // Original version parsed a text string to determine the reference
+		  // This version uses distinct parameters.
+		  // Ed Palmer
+		  // November 2006: Overloaded to numerics to simplify XQL queries.
+		  //
+		  // GetPassage parameters are one-based.
+		  //
+		  Dim list As New XmlNodeList
+		  Dim query As String
+		  Dim i As Integer
+		  Dim ret(), verse As String
+		  Dim reg as RegEx
+		  
+		  If endVerseOffset < startVerseOffset Then endVerseOffset = startVerseOffset
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL, XML_NAB
+		    Try
+		      query = "/bible/b[" + CStr(bookNumber) + "]/c[" + CStr(chapterNumber) + "]/v[position() >= " + CStr(startVerseOffset) +_
+		      " and position() <= " + CStr(endVerseOffset) + "]"
+		      list = Scripture.Xql(query)
+		    Catch ex
+		      If ex IsA XmlException Then
+		        ErrorCode = ex.ErrorNumber
+		        ErrorString = ex.Message + chr(10) + "At " + XmlException(ex).Node + ", Token: " + XmlException(ex).Token
+		        ex.Message = ErrorString
+		      Else
+		        ErrorString = "Bible.GetPassage exception in query '" + query + "'"
+		        ex.Message = ErrorString
+		      End If
+		      Return ret
+		    End Try
+		    
+		    If list = Nil Then
+		      App.DebugWriter.Write "In Bible.GetVerse, using " + LoadedBibleFilename + ", got an empty list."
+		      App.DebugWriter.Write Chr(9) + "Asking for Book/Chap/From/To = " + _
+		      Join(Array(CStr(bookNumber), CStr(chapterNumber), CStr(startVerseOffset), CStr(endVerseOffset)), "/")
+		    Else
+		      For i = 0 To list.Length - 1
+		        Verse = ""
+		        If embedVerseNumbers Then
+		          Verse = list.Item(i).GetAttribute("n")
+		          If list.Item(i).GetAttribute("t") <> "" Then
+		            Verse = verse + "-" + list.Item(i).GetAttribute("t")
+		          End If
+		          Verse = verse + " "
+		        End If
+		        ret.Append Verse + getVerseText(list.Item(i))
+		      Next
+		    End If //list = Nil
+		  Case XML_ZEFANIA
+		    // The bsname attribute doesn't have spaces between the number and name
+		    // ("3John" instead of "3 John")
+		    //
+		    'book = Replace(book, " ", "")
+		    
+		    'bhenny- some Zefania bibles are red-letter, so we need to remove the tags for the red since OS doesn't currently support red letters
+		    reg= New RegEx
+		    reg.SearchPattern= "[<][^>]*[>]"
+		    reg.ReplacementPattern=""
+		    reg.Options.ReplaceAllMatches=true
+		    
+		    query = "/XMLBIBLE/BIBLEBOOK[@bnumber = '" + CStr(bookNumber) + "']/CHAPTER[@cnumber='" + CStr(chapterNumber)  _
+		    + "']/VERS[position() >= " + CStr(startVerseOffset) + " and position() <= " + CStr(endVerseOffset) + "]"
+		    Try
+		      list = Scripture.Xql(query)
+		    Catch ex2
+		      If ex2 IsA XmlException Then
+		        ErrorCode = ex2.ErrorNumber
+		        ErrorString = ex2.Message + chr(10) + "At " + XmlException(ex2).Node + ", Token: " + XmlException(ex2).Token
+		        ex2.Message = ErrorString
+		      Else
+		        ErrorString = "Bible.GetPassage exception in query " + query
+		        ex2.Message = ErrorString
+		      End If
+		      Return ret
+		    End Try
+		    
+		    If list = Nil Then
+		      App.DebugWriter.Write "In Bible.GetVerse, using " + LoadedBibleFilename + ", got an empty list."
+		      App.DebugWriter.Write Chr(9) + "Asking for Book/Chap/From/To = " + _
+		      Join(Array(CStr(bookNumber), CStr(chapterNumber), CStr(startVerseOffset), CStr(endVerseOffset)), "/")
+		    Else
+		      For i = 0 To list.Length - 1
+		        Verse = ""
+		        If embedVerseNumbers Then
+		          Verse = list.Item(i).GetAttribute("vnumber") + list.Item(i).GetAttribute("aix")
+		          If list.Item(i).GetAttribute("enumber") <> "" Then
+		            verse = verse + "-" + list.Item(i).GetAttribute("enumber")
+		          End If
+		          verse = verse + " "
+		        End If
+		        verse = verse + getVerseText(list.Item(i))
+		        ret.Append verse
+		      Next
+		    End If
+		  End Select
+		  
+		  Return ret
+		  
 		End Function
 	#tag EndMethod
 
@@ -1200,6 +1427,128 @@ Implements iBible
 		  else
 		    return getVerse(node.child(0)) + getVerse(node.nextSibling)
 		  end if
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetVerseCount(bookNumber As Integer, chapterNumber As Integer) As Integer
+		  // Part of the iBible interface.
+		  
+		  //
+		  // Updated to support different XML schemas
+		  //
+		  // Ed Palmer, October 2004 (NAB format), August 2005 (Zefania)
+		  //
+		  dim i as integer
+		  dim s as string
+		  dim xn as XmlNodeList
+		  i = 0
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL
+		    i = Val(Mid(VersesInChapters(bookNumber), (chapterNumber-1)*4+1, 3))
+		    
+		  Case XML_NAB
+		    s = "/bible/b[" + str(bookNumber) + "]/c[" + str(chapterNumber) + "]"
+		    xn = Scripture.Xql(s)
+		    if xn.item(0) <> nil then
+		      i = val(xn.item(0).GetAttribute("VERSES"))
+		    end if
+		    
+		  Case XML_ZEFANIA
+		    s = "/XMLBIBLE/BIBLEBOOK[" + str(bookNumber) + "]/CHAPTER[" + str(chapterNumber) + "]/VERS"
+		    xn = Scripture.Xql(s)
+		    i = xn.Length
+		    
+		  Case Else
+		    // TODO: Descriptive error message
+		    
+		  End Select
+		  return i
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GetVerseNodeFromNumber(bookNumber As Integer, chapterNumber As Integer, verseNumber As Integer, verseAix As String) As Integer
+		  //
+		  // Given verseNumber + verseAix, return the number of the verse node that
+		  // contains that verse.
+		  // This is a 1-based number, thus the unusual return values.
+		  //
+		  Dim verselist() As String
+		  Dim v As Integer
+		  Dim aix As String
+		  Dim splitRE As New RegEx
+		  Dim match As RegExMatch
+		  
+		  verselist = GetVerseNumbers(bookNumber, chapterNumber)
+		  
+		  If verselist.UBound < 0 Then Return -1
+		  
+		  SplitRE.SearchPattern = "(\d+)(\w*)"
+		  For i As Integer = 0 To verselist.UBound
+		    match = splitRE.Search(verselist(i))
+		    v = CDbl(match.SubExpressionString(1))
+		    aix = match.SubExpressionString(2)
+		    If v > verseNumber Then
+		      Return i
+		    ElseIf v = verseNumber Then
+		      If aix = verseAix Then
+		        Return i + 1
+		      Else
+		        Return i
+		      End If
+		    End If
+		  Next
+		  
+		  Return -1 // verseNumber > verselist(UBound(verselist))
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetVerseNumbers(bookNumber As Integer, chapterNumber As Integer) As String()
+		  // Part of the iBible interface.
+		  
+		  //
+		  // Given the input book and chapter, return an array of verse numbers.
+		  //
+		  // Why is this here as well as GetVerseCount?  Provides support for subverses
+		  // such as 14a, 14b, etc. (defined either in the "n" attribute of the NAB or
+		  // the aix (Alpha Index) attribute from a Zefania document
+		  //
+		  // Overloaded version using bookNumber instead of BookName added 24 April 2007
+		  
+		  Dim Verses() As String
+		  Dim i as Integer
+		  Dim xn As XmlNodeList
+		  Dim s As String
+		  
+		  Select Case XMLTYPE
+		    
+		  Case XML_ORIGINAL, XML_NAB
+		    s = "/bible/b[" + str(bookNumber) + "]/c[" + str(chapterNumber) + "]/v"
+		    xn = Scripture.Xql(s)
+		    if xn <> Nil Then
+		      For i = 0 to xn.Length - 1
+		        Verses.Append xn.Item(i).GetAttribute("n")
+		      Next
+		    end if
+		    
+		  Case XML_ZEFANIA
+		    s = "/XMLBIBLE/BIBLEBOOK[" + str(bookNumber) + "]/CHAPTER[" + str(chapterNumber) + "]/VERS"
+		    xn = Scripture.Xql(s)
+		    If xn <> Nil Then
+		      For i = 0 to xn.Length - 1
+		        Verses.Append xn.Item(i).GetAttribute("vnumber") +_
+		        xn.Item(i).GetAttribute("aix")
+		      Next
+		    End If
+		  Case Else
+		    // TODO: Descriptive error message
+		    
+		  End Select
+		  Return Verses
 		End Function
 	#tag EndMethod
 
@@ -1357,7 +1706,7 @@ Implements iBible
 		  
 		  '++JRC Add support for displaying the same verse from 2 bibles versions (thanks Ovidiu).
 		  'Return re.Replace(Join(s))
-		  Return ReplaceAll(re.Replace(Join(s)),"|",Chr(10)) 
+		  Return ReplaceAll(re.Replace(Join(s)),"|",Chr(10))
 		  
 		End Function
 	#tag EndMethod
@@ -1429,6 +1778,7 @@ Implements iBible
 		  Dim BookAbbrevRoot As XmlNode
 		  Dim BookNode, node As XmlNode
 		  Dim BookName As String
+		  Dim BookNameShort As String
 		  Dim StdName As String
 		  Dim names() as String
 		  Dim splashHidden As Boolean = False
@@ -1446,7 +1796,7 @@ Implements iBible
 		    ErrorString = "File not found: " + file.AbsolutePath
 		    Return False
 		  End If
-		  input = file.OpenAsTextFile
+		  input = TextInputStream.Open(file)
 		  s = input.ReadAll
 		  input.Close
 		  
@@ -1545,6 +1895,7 @@ Implements iBible
 		      End If
 		    Next
 		    genIndex(file)
+		    
 		    App.DebugWriter.Write "Bible.LoadBible: Exit successfully"
 		    Return True
 		    
@@ -1579,8 +1930,11 @@ Implements iBible
 		    If list.Length > 0 Then
 		      For i = 0 To list.Length - 1
 		        BookName = list.Item(i).GetAttribute("bname")
+		        BookNameShort = list.item(i).GetAttribute("bsname")
+		        If BookName = "" Then BookName = list.Item(i).GetAttribute("bnumber")
+		        If BookNameShort = "" Then BookNameShort = list.Item(i).GetAttribute("bnumber")
 		        Books.Append BookName
-		        BookNode = BookAbbrevRoot.AppendChild(BookAbbrev.CreateElement(Lowercase(list.item(i).GetAttribute("bsname"))))
+		        BookNode = BookAbbrevRoot.AppendChild(BookAbbrev.CreateElement(Lowercase(BookNameShort)))
 		        BookNode.SetAttribute("bname", BookName)
 		      Next
 		      
@@ -1645,8 +1999,7 @@ Implements iBible
 		  
 		  If IndexDict = Nil Then IndexDict = New Dictionary
 		  
-		  fileIn= file.OpenAsTextFile
-		  
+		  fileIn= TextInputStream.Open(file)
 		  line= fileIn.ReadLine().split("|")
 		  
 		  'read indexed words
@@ -1684,10 +2037,6 @@ Implements iBible
 		    Redim index(-1)
 		    Redim notIndexed(-1)
 		    CanSearch = False
-		    If IndexProgress.Visible = True Then
-		      IndexProgress.Close
-		    End If
-		    CanSearch = False
 		  Else // Toss it back up the chain
 		    CanSearch = False
 		    Raise ex
@@ -1702,6 +2051,8 @@ Implements iBible
 		  //
 		  // Ed Palmer, September 2005
 		  //
+		  // April 2011: Original RegEx used \s, which isn't UTF-8 clean. Replace with [:space:] instead
+		  //
 		  Dim FoundBooks() As String
 		  Dim xn As XmlNodeList
 		  Dim j As Integer
@@ -1710,6 +2061,9 @@ Implements iBible
 		  Dim bookname As String
 		  Dim re As New RegEx
 		  
+		  //
+		  // Normalize the user input to all lowercase and remove spaces and periods
+		  //
 		  ShortName = Lowercase(ShortName)
 		  ShortName = ReplaceAll(ShortName, ".", "")
 		  ShortName = ReplaceAll(ShortName, " ", "")
@@ -1719,38 +2073,54 @@ Implements iBible
 		  // and there was no way to lookup Judges and Jude.
 		  //--
 		  
+		  
 		  If Len(ShortName) < 3 Then Return ""
-		  For i = 3 To Len(ShortName)
-		    xn = BookAbbrev.Xql("/abbrev/*[starts-with(name(), '" + Left(ShortName, i) + "')]")
+		  
+		  '++JRC: Fix issue where certain Zefania Bible books were not accesible (bug #2769373)
+		  'also added support for partial Bible book names (e.g. Phile for Philemon)
+		  'It's also now possible to use the whole book name in searches as well
+		  
+		  xn = BookAbbrev.Xql("/abbrev/*[starts-with(name(), '" + ShortName + "')]")
 		    Select Case xn.Length
-		    Case 0 // Nothing matches
+		  Case 0 'No abbreviations match see if Shortname matches part of a book name
+		    xn = BookAbbrev.Xql("/abbrev/*")
+		    If xn.Length = 0 Then
 		      ErrorString = ""  // Indicates no match
 		      Return ""
-		    Case 1
-		      Exit
-		    Case Else
-		      If i = Len(ShortName) Then // The reference is still ambiguous
-		        ErrorString = ""
+		    Else
 		        For j = 0 To xn.Length - 1
-		          FoundBooks.Append xn.Item(j).GetAttribute("bname")
-		        Next
-		        ErrorString = Join(FoundBooks, ", ")
-		        Return ""
+		        
+		        booknode = xn.Item(j)
+		        re.SearchPattern = "[[:space:].,]+"
+		        re.ReplacementPattern = ""
+		        re.Options.ReplaceAllMatches = True
+		        re.Options.CaseSensitive = False
+		        bookname = re.Replace(booknode.GetAttribute("bname"))
+		        
+		        If Left(bookname, Len(ShortName)) = ShortName Then
+		          Return xn.Item(j).GetAttribute("bname")
 		      End If
+		      Next j
+		    End If
+		    
 		    End Select
-		  Next i
 		  
 		  // Control here means that at least a substring of ShortName matches exactly one book.
 		  // Verify that the entire ShortName matches this book, otherwise it's not a match
 		  
 		  booknode = xn.Item(0)
-		  re.SearchPattern = "[\s.,]+"
+		  re.SearchPattern = "[[:space:].,]+"
 		  re.ReplacementPattern = ""
 		  re.Options.ReplaceAllMatches = True
 		  re.Options.CaseSensitive = False
 		  bookname = re.Replace(booknode.GetAttribute("bname"))
 		  
-		  If Left(bookname, Len(ShortName)) <> ShortName Then Return ""
+		  If Left(bookname, Len(ShortName)) <> ShortName Then
+		    'No match, try comparing to the bshort attribute
+		    If Left(xn.Item(0).Name, Len(ShortName)) <> ShortName Then
+		      Return ""
+		    End If
+		  End If
 		  
 		  Return xn.Item(0).GetAttribute("bname")
 		End Function
@@ -1780,372 +2150,8 @@ Implements iBible
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function search(word as String, partialMatch as Boolean) As String()
-		  Dim min, max, mid, x as Integer
-		  Dim returnVal() as String
-		  
-		  'make sure an index is loaded
-		  if (UBound(index)<0) then
-		    InputBox.Message App.T.Translate("bible/errors/noindex")
-		    return  returnVal
-		  end if
-		  
-		  min=0
-		  max=UBound(index)
-		  
-		  while min<=max
-		    mid= (max-min)/2+ min
-		    
-		    if partialMatch=false then 'look for exact word
-		      if (index(mid).entry= word) then
-		        for x=0 to UBound(index(mid).passages)
-		          returnVal.Append(index(mid).passages(x))
-		        next x
-		        exit
-		      elseif (word<index(mid).entry)  then
-		        max=mid-1
-		      else
-		        min=mid+1
-		      end if
-		    else 'look for partial word
-		      if (InStr(index(mid).entry, word)) >0 then 'partial match
-		        
-		        returnVal= combineLists(returnVal, index(mid).passages)
-		        
-		      end if
-		      
-		      if (word<index(mid).entry)  then
-		        max=mid-1
-		      else
-		        min=mid+1
-		      end if
-		    end if
-		  wend
-		  
-		  return returnVal
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function validSearch(word as String) As Boolean
-		  'returns true if the word isn't in the notIndexed list
-		  
-		  if (notIndexed.IndexOf(word) = -1) then
-		    return true
-		  else
-		    return false
-		  end if
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function ErrorString() As String
-		  // Part of the iBible interface.
-		  Return ErrorString
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetVerseNumbers(bookNumber As Integer, chapterNumber As Integer) As String()
-		  // Part of the iBible interface.
-		  
-		  //
-		  // Given the input book and chapter, return an array of verse numbers.
-		  //
-		  // Why is this here as well as GetVerseCount?  Provides support for subverses
-		  // such as 14a, 14b, etc. (defined either in the "n" attribute of the NAB or
-		  // the aix (Alpha Index) attribute from a Zefania document
-		  //
-		  // Overloaded version using bookNumber instead of BookName added 24 April 2007
-		  
-		  Dim Verses() As String
-		  Dim i as Integer
-		  Dim xn As XmlNodeList
-		  Dim s As String
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL, XML_NAB
-		    s = "/bible/b[" + str(bookNumber) + "]/c[" + str(chapterNumber) + "]/v"
-		    xn = Scripture.Xql(s)
-		    if xn <> Nil Then
-		      For i = 0 to xn.Length - 1
-		        Verses.Append xn.Item(i).GetAttribute("n")
-		      Next
-		    end if
-		    
-		  Case XML_ZEFANIA
-		    s = "/XMLBIBLE/BIBLEBOOK[" + str(bookNumber) + "]/CHAPTER[" + str(chapterNumber) + "]/VERS"
-		    xn = Scripture.Xql(s)
-		    If xn <> Nil Then
-		      For i = 0 to xn.Length - 1
-		        Verses.Append xn.Item(i).GetAttribute("vnumber") +_
-		        xn.Item(i).GetAttribute("aix")
-		      Next
-		    End If
-		  Case Else
-		    // TODO: Descriptive error message
-		    
-		  End Select
-		  Return Verses
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetChapterCount(bookNumber As Integer) As Integer
-		  // Part of the iBible interface.
-		  
-		  //
-		  // Updated to support different XML schemas
-		  //
-		  // Ed Palmer, October 2004 (NAB format), August 2005 (Zefania)
-		  //
-		  dim i as integer
-		  dim xn as xmlNodeList
-		  
-		  i = 0
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL
-		    
-		    i =  Len(VersesInChapters(bookNumber)) / 4
-		    
-		  Case XML_NAB
-		    xn = Scripture.Xql("/bible/b[" + str(bookNumber) + "]")
-		    
-		    i = val(xn.item(0).GetAttribute("CHAPTERS"))
-		    
-		  Case XML_ZEFANIA
-		    xn = Scripture.Xql("/XMLBIBLE/BIBLEBOOK[" + Str(bookNumber) + "]/CHAPTER")
-		    
-		    i = xn.Length
-		    
-		  Case Else
-		    //
-		    // TODO: provide descriptive error
-		    //
-		  End Select
-		  
-		  Return i
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetVerseCount(bookNumber As Integer, chapterNumber As Integer) As Integer
-		  // Part of the iBible interface.
-		  
-		  //
-		  // Updated to support different XML schemas
-		  //
-		  // Ed Palmer, October 2004 (NAB format), August 2005 (Zefania)
-		  //
-		  dim i as integer
-		  dim s as string
-		  dim xn as XmlNodeList
-		  i = 0
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL
-		    i = Val(Mid(VersesInChapters(bookNumber), (chapterNumber-1)*4+1, 3))
-		    
-		  Case XML_NAB
-		    s = "/bible/b[" + str(bookNumber) + "]/c[" + str(chapterNumber) + "]"
-		    xn = Scripture.Xql(s)
-		    if xn.item(0) <> nil then
-		      i = val(xn.item(0).GetAttribute("VERSES"))
-		    end if
-		    
-		  Case XML_ZEFANIA
-		    s = "/XMLBIBLE/BIBLEBOOK[" + str(bookNumber) + "]/CHAPTER[" + str(chapterNumber) + "]/VERS"
-		    xn = Scripture.Xql(s)
-		    i = xn.Length
-		    
-		  Case Else
-		    // TODO: Descriptive error message
-		    
-		  End Select
-		  return i
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetPassage(bookNumber As Integer, chapterNumber As Integer, startVerseOffset As Integer, endVerseOffset As Integer, embedVerseNumbers As Boolean = True) As String()
-		  // Part of the iBible interface.
-		  
-		  // Updated 8 October 2004 to fix "3John issue" in book parsing algorithm and NAB format
-		  // 29 August 2005: Add support for Zefania format
-		  // Original version parsed a text string to determine the reference
-		  // This version uses distinct parameters.
-		  // Ed Palmer
-		  // November 2006: Overloaded to numerics to simplify XQL queries.
-		  //
-		  // GetPassage parameters are one-based.
-		  //
-		  Dim list As New XmlNodeList
-		  Dim query As String
-		  Dim i As Integer
-		  Dim ret(), verse As String
-		  Dim reg as RegEx
-		  
-		  If endVerseOffset < startVerseOffset Then endVerseOffset = startVerseOffset
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL, XML_NAB
-		    Try
-		      query = "/bible/b[" + CStr(bookNumber) + "]/c[" + CStr(chapterNumber) + "]/v[position() >= " + CStr(startVerseOffset) +_
-		      " and position() <= " + CStr(endVerseOffset) + "]"
-		      list = Scripture.Xql(query)
-		    Catch ex
-		      If ex IsA XmlException Then
-		        ErrorCode = ex.ErrorNumber
-		        ErrorString = ex.Message + chr(10) + "At " + XmlException(ex).Node + ", Token: " + XmlException(ex).Token
-		        ex.Message = ErrorString
-		      Else
-		        ErrorString = "Bible.GetPassage exception in query '" + query + "'"
-		        ex.Message = ErrorString
-		      End If
-		      Return ret
-		    End Try
-		    
-		    If list = Nil Then
-		      App.DebugWriter.Write "In Bible.GetVerse, using " + LoadedBibleFilename + ", got an empty list."
-		      App.DebugWriter.Write Chr(9) + "Asking for Book/Chap/From/To = " + _
-		      Join(Array(CStr(bookNumber), CStr(chapterNumber), CStr(startVerseOffset), CStr(endVerseOffset)), "/")
-		    Else
-		      For i = 0 To list.Length - 1
-		        Verse = ""
-		        If embedVerseNumbers Then
-		          Verse = list.Item(i).GetAttribute("n")
-		          If list.Item(i).GetAttribute("t") <> "" Then
-		            Verse = verse + "-" + list.Item(i).GetAttribute("t")
-		          End If
-		          Verse = verse + " "
-		        End If
-		        ret.Append Verse + getVerseText(list.Item(i))
-		      Next
-		    End If //list = Nil
-		  Case XML_ZEFANIA
-		    // The bsname attribute doesn't have spaces between the number and name
-		    // ("3John" instead of "3 John")
-		    //
-		    'book = Replace(book, " ", "")
-		    
-		    'bhenny- some Zefania bibles are red-letter, so we need to remove the tags for the red since OS doesn't currently support red letters
-		    reg= New RegEx
-		    reg.SearchPattern= "[<][^>]*[>]"
-		    reg.ReplacementPattern=""
-		    reg.Options.ReplaceAllMatches=true
-		    
-		    query = "/XMLBIBLE/BIBLEBOOK[@bnumber = '" + CStr(bookNumber) + "']/CHAPTER[@cnumber='" + CStr(chapterNumber)  _
-		    + "']/VERS[position() >= " + CStr(startVerseOffset) + " and position() <= " + CStr(endVerseOffset) + "]"
-		    Try
-		      list = Scripture.Xql(query)
-		    Catch ex2
-		      If ex2 IsA XmlException Then
-		        ErrorCode = ex2.ErrorNumber
-		        ErrorString = ex2.Message + chr(10) + "At " + XmlException(ex2).Node + ", Token: " + XmlException(ex2).Token
-		        ex2.Message = ErrorString
-		      Else
-		        ErrorString = "Bible.GetPassage exception in query " + query
-		        ex2.Message = ErrorString
-		      End If
-		      Return ret
-		    End Try
-		    
-		    If list = Nil Then
-		      App.DebugWriter.Write "In Bible.GetVerse, using " + LoadedBibleFilename + ", got an empty list."
-		      App.DebugWriter.Write Chr(9) + "Asking for Book/Chap/From/To = " + _
-		      Join(Array(CStr(bookNumber), CStr(chapterNumber), CStr(startVerseOffset), CStr(endVerseOffset)), "/")
-		    Else
-		      For i = 0 To list.Length - 1
-		        Verse = ""
-		        If embedVerseNumbers Then
-		          Verse = list.Item(i).GetAttribute("vnumber") + list.Item(i).GetAttribute("aix")
-		          If list.Item(i).GetAttribute("enumber") <> "" Then
-		            verse = verse + "-" + list.Item(i).GetAttribute("enumber")
-		          End If
-		          verse = verse + " "
-		        End If
-		        verse = verse + getVerseText(list.Item(i))
-		        ret.Append verse
-		      Next
-		    End If
-		  End Select
-		  
-		  Return ret
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function Name() As String
 		  Return LoadedBibleFilename
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function ValidateCitation(bookNum As Integer, chapterNum As Integer, fromVerse As Integer, thruVerse As Integer) As Boolean
-		  // Part of the iBible interface.
-		  
-		  Dim count As Integer
-		  
-		  If Not ValidateBook(bookNum) Then Return False
-		  
-		  count = GetChapterCount(bookNum)
-		  
-		  If chapterNum < 1 Or chapterNum > count Then Return False
-		  
-		  count = GetVerseCount(bookNum, chapterNum)
-		  
-		  If fromVerse < 1 Or fromVerse > count Then Return False
-		  If thruVerse < 1 Or thruVerse > count Then Return False
-		  If thruVerse < fromVerse Then Return False
-		  
-		  Return True
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function ValidateBook(bookNum As Integer) As Boolean
-		  Dim nums() As Integer
-		  Dim names() As String
-		  Dim count As Integer
-		  Dim found As Boolean = True
-		  
-		  count = GetNTBooks(names, nums)
-		  
-		  If nums.IndexOf(bookNum) < 0 Then
-		    count = GetOTBooks(names, nums)
-		    If nums.IndexOf(bookNum) < 0 Then
-		      found = False
-		    End If
-		  End If
-		  
-		  Return found
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function GetBookNameFromStdBookNumber(bookNumber As Integer) As String
-		  
-		  Select Case XMLTYPE
-		    
-		  Case XML_ORIGINAL, XML_NAB
-		    Return GetBookName(bookNumber)
-		    
-		  Case XML_ZEFANIA
-		    Try
-		      Return Scripture.Xql("/XMLBIBLE/BIBLEBOOK[@bnumber=" + CStr(bookNumber) + "]").Item(0).GetAttribute("bname")
-		    Catch
-		      Return ""
-		    End Try
-		  End Select
 		End Function
 	#tag EndMethod
 
@@ -2234,84 +2240,106 @@ Implements iBible
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function GetVerseNodeFromNumber(bookNumber As Integer, chapterNumber As Integer, verseNumber As Integer, verseAix As String) As Integer
-		  //
-		  // Given verseNumber + verseAix, return the number of the verse node that
-		  // contains that verse.
-		  // This is a 1-based number, thus the unusual return values.
-		  //
-		  Dim verselist() As String
-		  Dim v As Integer
-		  Dim aix As String
-		  Dim splitRE As New RegEx
-		  Dim match As RegExMatch
+	#tag Method, Flags = &h0
+		Function search(word as String, partialMatch as Boolean) As String()
+		  Dim min, max, mid, x as Integer
+		  Dim returnVal() as String
 		  
-		  verselist = GetVerseNumbers(bookNumber, chapterNumber)
+		  'make sure an index is loaded
+		  if (UBound(index)<0) then
+		    InputBox.Message App.T.Translate("bible/errors/noindex")
+		    return  returnVal
+		  end if
 		  
-		  If verselist.UBound < 0 Then Return -1
+		  min=0
+		  max=UBound(index)
 		  
-		  SplitRE.SearchPattern = "(\d+)(\w*)"
-		  For i As Integer = 0 To verselist.UBound
-		    match = splitRE.Search(verselist(i))
-		    v = CDbl(match.SubExpressionString(1))
-		    aix = match.SubExpressionString(2)
-		    If v > verseNumber Then
-		      Return i
-		    ElseIf v = verseNumber Then
-		      If aix = verseAix Then
-		        Return i + 1
-		      Else
-		        Return i
-		      End If
-		    End If
-		  Next
+		  while min<=max
+		    mid= (max-min)/2+ min
+		    
+		    if partialMatch=false then 'look for exact word
+		      if (index(mid).entry= word) then
+		        for x=0 to UBound(index(mid).passages)
+		          returnVal.Append(index(mid).passages(x))
+		        next x
+		        exit
+		      elseif (word<index(mid).entry)  then
+		        max=mid-1
+		      else
+		        min=mid+1
+		      end if
+		    else 'look for partial word
+		      if (InStr(index(mid).entry, word)) >0 then 'partial match
+		        
+		        returnVal= combineLists(returnVal, index(mid).passages)
+		        
+		      end if
+		      
+		      if (word<index(mid).entry)  then
+		        max=mid-1
+		      else
+		        min=mid+1
+		      end if
+		    end if
+		  wend
 		  
-		  Return -1 // verseNumber > verselist(UBound(verselist))
+		  return returnVal
+		  
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetCitation(bookNumber As Integer, chapterNumber As Integer, startVerse As Integer, endVerse As Integer = - 1) As String
-		  // Part of the iBible interface
+		Function ValidateBook(bookNum As Integer) As Boolean
+		  Dim nums() As Integer
+		  Dim names() As String
+		  Dim count As Integer
+		  Dim found As Boolean = True
 		  
-		  //++
-		  // Given a specific Bible reference in relative references, return
-		  // a textual citation for that reference.
-		  // For example, GetCitation(1, 1, 1, 2) would return
-		  // "Genesis 1:1-2" for KJV
-		  // If endVerse is omitted or < 1, assume the same as startVerse
-		  //
-		  // Ed Palmer, July 2007
-		  //--
+		  count = GetNTBooks(names, nums)
 		  
-		  Dim sVerseStart As String
-		  Dim sVerseEnd As String
-		  Dim cite As String
-		  
-		  If endVerse < 1 Then endVerse = startVerse
-		  If Not ValidateCitation(bookNumber, chapterNumber, startVerse, endVerse) Then
-		    Return ""
-		  End If
-		  
-		  cite = GetBookNameFromStdBookNumber(bookNumber)
-		  cite = cite + " " + CStr(chapterNumber) + ":"
-		  GetVerseRange(bookNumber, chapterNumber, startVerse, sVerseStart, sVerseEnd)
-		  cite = cite + sVerseStart
-		  If endVerse = startVerse Then
-		    If sVerseEnd <> "" Then
-		      cite = cite + "-" + sVerseEnd
+		  If nums.IndexOf(bookNum) < 0 Then
+		    count = GetOTBooks(names, nums)
+		    If nums.IndexOf(bookNum) < 0 Then
+		      found = False
+		      End If
 		    End If
-		  Else
-		    GetVerseRange(bookNumber, chapterNumber, endVerse, sVerseStart, sVerseEnd)
-		    If sVerseEnd = "" Then
-		      cite = cite + ":" + sVerseStart
-		    Else
-		      cite = cite + ":" + sVerseEnd
-		    End If
-		  End If
 		  
-		  Return cite
+		  Return found
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ValidateCitation(bookNum As Integer, chapterNum As Integer, fromVerse As Integer, thruVerse As Integer) As Boolean
+		  // Part of the iBible interface.
+		  
+		  Dim count As Integer
+		  
+		  If Not ValidateBook(bookNum) Then Return False
+		  
+		  count = GetChapterCount(bookNum)
+		  
+		  If chapterNum < 1 Or chapterNum > count Then Return False
+		  
+		  count = GetVerseCount(bookNum, chapterNum)
+		  
+		  If fromVerse < 1 Or fromVerse > count Then Return False
+		  If thruVerse < 1 Or thruVerse > count Then Return False
+		  If thruVerse < fromVerse Then Return False
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function validSearch(word as String) As Boolean
+		  'returns true if the word isn't in the notIndexed list
+		  
+		  if (notIndexed.IndexOf(word) = -1) then
+		    return true
+		  else
+		    return false
+		  end if
 		End Function
 	#tag EndMethod
 
@@ -2397,10 +2425,6 @@ Implements iBible
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected wProgress As IndexProgress
-	#tag EndProperty
-
-	#tag Property, Flags = &h1
 		Protected wSplash As Splash
 	#tag EndProperty
 
@@ -2435,22 +2459,16 @@ Implements iBible
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
+			Name="ErrorCode"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -2461,17 +2479,23 @@ Implements iBible
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ErrorCode"
-			Group="Behavior"
-			InitialValue="0"
-			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

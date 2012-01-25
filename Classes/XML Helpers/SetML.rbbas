@@ -1,44 +1,6 @@
 #tag Module
 Protected Module SetML
 	#tag Method, Flags = &h1
-		Protected Sub DrawSlide(g As Graphics, xslide As XmlNode, xstyle As XmlNode)
-		  //++EMP
-		  // September 2005
-		  // Lots of changes here to support the separation of the slide style from the XML
-		  // to speed up slide changes.
-		  //
-		  // This method is mostly gutted and moved to the other DrawSlide method
-		  // (the one that takes a SlideStyle object as its third argument).
-		  // This just sets up the object from xstyle and calls down to the other one.
-		  // Easier maintenance: the bulk of the code isn't repeated.
-		  //
-		  // This routine also assumes that it is called from PresentWindow since
-		  // it makes a callback to get the style from the dictionary held there.
-		  // I debated whether that dictionary should be moved to App level, and
-		  // decided I couldn't state unequivocably that only one Style dictionary
-		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
-		  
-		  Dim Style As SlideStyle
-		  Dim StyleIndex As String
-		  
-		  StyleIndex = SmartML.GetValue(xstyle, "@index")
-		  If StyleIndex = "" Then 'is the XML a complete style?
-		    Style = New SlideStyle(xstyle)
-		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
-		      Style = PresentWindow.GetStyle("default_style")
-		    End If
-		  Else
-		    Style = PresentWindow.GetStyle(StyleIndex)
-		  End If
-		  
-		  // Forwarding...anyone at the new address??
-		  
-		  DrawSlide(g, xslide, Style)
-		  //--EMP
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
 		Protected Sub DrawSlide(g As Graphics, xslide As XmlNode, Style as SlideStyle)
 		  //++EMP
 		  // September 2005
@@ -364,7 +326,7 @@ Protected Module SetML
 		    Dim s As string
 		    If Style.BodyEnable Then
 		      s = SmartML.GetValue(xslide, "body", True).FormatUnixEndOfLine
-		      SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		      SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		      
 		      ' Find the longest line
 		      MaxLineIndex = UBound(lines)
@@ -383,6 +345,9 @@ Protected Module SetML
 		      Profiler.EndProfilerEntry
 		      GoTo DrawText // Don't need to check any wrapping, but still draw header and footer (Bug [1453812])
 		    End If
+		    
+		    'Skip all text size adjustments; we don't want to skip all code below, as wrapping will be required.
+		    If style.BodyScale Then
 		    HWrapPercent = Min(UsableWidth / MaxLineLen, 1.0)
 		    VWrapPercent = Min(MainHeight / GraphicsX.FontFaceHeight(g, bodyStyle) , 1.0)
 		    WrapPercent = Min(HWrapPercent, VWrapPercent) // Consensus number
@@ -391,27 +356,29 @@ Protected Module SetML
 		      Profiler.EndProfilerEntry
 		      GoTo DrawText // I know, but the alternatives are a HUGE Else clause or put everything below in a new method
 		    End If
+		    End If
 		    Profiler.EndProfilerEntry
-		    //--EMP
 		    
 		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 1" ' --------------------------------------------------
 		    
 		    ' Round Pre-1: Pre-guess shrinkage based on perfect wrapping
 		    '++JRC:
-		    line = ReplaceAll(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), Chr(10), "")
+		    line = ReplaceAll(StringUtils.Trim(s, Globals.StringUtils.WhiteSpaces), Chr(10), "")
 		    '--
 		    
+		    If style.BodyScale Then
 		    While g.StringWidth(line) / UsableWidth * GraphicsX.FontFaceHeight(g, bodyStyle) > MainHeight * .85 ' last number offsets the non-perfectness of this guessing
 		      g.TextSize = Floor(g.TextSize * .95)
 		      if g.textsize <=0 then exit
 		    Wend
+		    End If
 		    
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Pre-shrink 2 / Wrap" ' --------------------------------------------------
 		    
 		    '++JRC:
 		    'SplitToArray(Trim(SmartML.GetValue(xslide, "body", True)).FormatUnixEndOfLine, lines, Chr(10))
-		    SplitToArray(StringUtils.RemoveWhitespace(s, Globals.WhitespaceChars, 2), lines, Chr(10))
+		    SplitToArray(StringUtils.Trim(s, StringUtils.WhiteSpaces), lines, Chr(10))
 		    '--
 		    
 		    If Val(Left(lines(1), 2)) > 0 Then multiwrap = True ' If the slide starts with a number, it is probably a verse; lets force multiwrap
@@ -497,12 +464,15 @@ Protected Module SetML
 		      if g.textsize <=0 then exit 'gp
 		    Wend
 		    
+		    'If automatic scaling of the body text is not enabled, the bodySize should not be altered.
+		    'Other adjustments, like line wrapping do need to be applied (the code above should be executed)
+		    If style.BodyScale Then
+		      bodyStyle.Size = g.TextSize
+		    End If
+		    
 		    Profiler.EndProfilerEntry
 		    Profiler.BeginProfilerEntry "DrawSlide>Draw Text" ' --------------------------------------------------
 		    
-		    
-		    
-		    bodyStyle.Size = g.TextSize
 		    line = ""
 		    For i = 1 To UBound(lines)
 		      line = line + lines(i) + Chr(10)
@@ -515,6 +485,248 @@ Protected Module SetML
 		  Profiler.EndProfilerEntry
 		  
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub DrawSlide(g As Graphics, xslide As XmlNode, xstyle As XmlNode)
+		  //++EMP
+		  // September 2005
+		  // Lots of changes here to support the separation of the slide style from the XML
+		  // to speed up slide changes.
+		  //
+		  // This method is mostly gutted and moved to the other DrawSlide method
+		  // (the one that takes a SlideStyle object as its third argument).
+		  // This just sets up the object from xstyle and calls down to the other one.
+		  // Easier maintenance: the bulk of the code isn't repeated.
+		  //
+		  // This routine also assumes that it is called from PresentWindow since
+		  // it makes a callback to get the style from the dictionary held there.
+		  // I debated whether that dictionary should be moved to App level, and
+		  // decided I couldn't state unequivocably that only one Style dictionary
+		  // would ever be required.  If I'm wrong, so be it, but it gets V1 out the door.
+		  
+		  Dim Style As SlideStyle
+		  Dim StyleIndex As String
+		  
+		  StyleIndex = SmartML.GetValue(xstyle, "@index")
+		  If StyleIndex = "" Then 'is the XML a complete style?
+		    Style = New SlideStyle(xstyle)
+		    If Style.BodyFont = Nil Then 'assume if this isn't set, xstyle didn't have all the elements
+		      Style = PresentWindow.GetStyle("default_style")
+		    End If
+		  Else
+		    Style = PresentWindow.GetStyle(StyleIndex)
+		  End If
+		  
+		  // Forwarding...anyone at the new address??
+		  
+		  DrawSlide(g, xslide, Style)
+		  //--EMP
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function DrawSlideTitle(g As Graphics, xslide As XmlNode, Style as SlideStyle, x As Integer, y As Integer, f As FontFace, RealBorder as Integer, HeaderSize as Integer, FooterSize as Integer, titleMargins as StyleMarginType) As Integer
+		  Dim presentation, slideId, currentVerse, verse as String
+		  Dim parts() As String
+		  Dim title As String
+		  Dim titleHeight, drawHeight As Integer
+		  Dim p, slideIndex As Integer
+		  Dim main, curr, rest As String
+		  Dim fontHeight, titleWidth, mainWidth, currWidth, restWidth As Integer
+		  Dim fVerse, fCurrVerse As FontFace
+		  Dim align As String
+		  Dim currPart, section As String
+		  dim ChorusNr, PresentationIndex, currChorusNr as integer 'GP
+		  
+		  titleHeight = 0
+		  title = SmartML.GetValue(xslide.Parent.Parent, "title")
+		  title = ReplaceAll(title, "|", Chr(10))
+		  
+		  If Style.TitleIncludeVerse Then
+		    presentation = SmartML.GetValue(xslide.Parent.Parent, "presentation")
+		    slideId = Trim(SmartML.GetValue(xslide, "@id"))
+		    ChorusNr = (SmartML.GetValueN (xslide, "@ChorusNr")) 'GP
+		    PresentationIndex = (SmartML.GetValueN (xslide, "@PresentationIndex")) 'GP
+		    
+		    If presentation <> "" and slideId<>"" Then
+		      If Left(slideId, 1) = "V" Then
+		        currentVerse = Trim(Mid(slideId, 2))
+		      End If
+		      
+		      'slideIndex = -1
+		      'For p = 0 to xslide.Parent.ChildCount-1
+		      'If xslide.Parent.Child(p) = xslide Then
+		      'slideIndex = p
+		      'Exit
+		      'End If
+		      'Next
+		      
+		      parts = presentation.split(" ")
+		      currChorusNr = 0 'GP
+		      For p = 0 to UBound(parts)
+		        currPart = parts(p)
+		        section = Left(currPart, 1)
+		        If Len(currPart) > 1 Then
+		          verse = Trim(Mid(currPart, 2))
+		        Else
+		          verse = ""
+		        End If
+		        
+		        'If p = slideIndex Then
+		        'If currPart = slideId Then
+		        If section = "V" Then
+		          If p + 1 = PresentationIndex Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = currentVerse
+		          Else
+		            If verse <> "" Then
+		              If curr = "" Then
+		                If main <> "" Then
+		                  main = main + ", "
+		                End If
+		                main = main + verse
+		              Else
+		                rest = rest + ", " + verse
+		              End If
+		            End If
+		          End If
+		        ElseIf section = "P" Then
+		          If currPart = slideId Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = App.T.Translate("songml/prechorus_abbreviation/@caption")
+		          End If
+		        ElseIf section = "C" Then
+		          currChorusNr = currChorusNr + 1 'GP
+		          If currPart = slideId Then
+		            If ChorusNr = Val(verse) And currChorusNr < ChorusNr Then
+		              'Fix verse display for presentation order C1 V1 C2 V2 C2 V3 C2
+		              currChorusNr = ChorusNr
+		            End If
+		            If ChorusNr = currChorusNr Then
+		              If main <> "" And curr = "" Then main = main + ", "
+		              curr = App.T.Translate("songml/chorus_abbreviation/@caption")
+		            End If
+		          End If
+		        ElseIf section = "B" Then
+		          If currPart = slideId Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = App.T.Translate("songml/bridge_abbreviation/@caption")
+		          End If
+		        ElseIf section = "T" Then
+		          If currPart = slideId Then
+		            If main <> "" And curr = "" Then main = main + ", "
+		            curr = App.T.Translate("songml/tag_abbreviation/@caption")
+		          End If
+		        End If
+		        
+		        
+		      Next
+		      IF curr = "" and currChorusNr > 0 then 'gp
+		        'probaly never true,  for emergency only, ad to the end
+		        If main <> "" And curr = "" Then main = main + ", "
+		        curr = App.T.Translate("songml/chorus_abbreviation/@caption")
+		      end if
+		      
+		      fVerse = f.Clone()
+		      fVerse.Bold = False
+		      fCurrVerse = f.Clone()
+		      If main <> "" or rest <> "" Then
+		        fCurrVerse.Bold=True
+		      End If
+		      
+		      If main <> "" Or curr <> "" Or rest <> "" Then
+		        main = ": " + main
+		      End If
+		      title = Trim(title)
+		      
+		      f.OntoGraphics(g)
+		      fontHeight = FontFaceHeight(g, f) + FontFaceAscent(g, f)
+		      titleHeight = CountFields(title, Chr(10)) * fontHeight
+		      titleWidth = FontFaceWidth(g, title, f)
+		      fVerse.OntoGraphics(g)
+		      If rest <> "" Then restWidth = FontFaceWidth(g, rest, fVerse)
+		      If main <> "" Then mainWidth = FontFaceWidth(g, main, fVerse)
+		      fCurrVerse.OntoGraphics(g)
+		      If curr <> "" Then currWidth = FontFaceWidth(g, curr, fCurrVerse)
+		      
+		      align = Style.TitleAlign
+		      If align = "center" Then
+		        'titleMargins.Left = titleMargins.Left + (g.Width / 2) - ((titleWidth + mainWidth + currWidth + restWidth) / 2)
+		        x = x + (g.Width / 2) - ((titleWidth + mainWidth + currWidth + restWidth) / 2)
+		        align = "left"
+		      End If
+		      
+		      If align = "left" Then
+		        drawHeight = DrawFontString(g, title, _
+		        x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		        If drawHeight > titleHeight Then titleHeight = drawHeight
+		        titleMargins.Left = titleMargins.Left + titleWidth
+		        
+		        'Adjust the starting y position to make sure the verses have the same vertical alignment as a multiline title
+		        If Style.TitleVAlign = "top" Then
+		          y = y + (titleHeight - fontHeight)
+		        End If
+		        
+		        If main <> "" then
+		          drawHeight = DrawFontString(g, main, _
+		          x+titleWidth, y, fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Left = titleMargins.Left + mainWidth
+		        End If
+		        If curr <> "" Then
+		          drawHeight = DrawFontString(g, curr, _
+		          x+titleWidth+mainWidth, y, fCurrVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Left = titleMargins.Left + currWidth
+		        End If
+		        If rest <> "" Then
+		          drawHeight = DrawFontString(g, rest, _
+		          x+titleWidth+mainWidth+currWidth, y, fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		        End If
+		        
+		      ElseIf align = "right" Then
+		        'Adjust the value for calculating the starting y position to make sure the verses have the same vertical alignment as a multiline title
+		        If Style.TitleVAlign = "bottom" Then
+		          fontHeight = titleHeight
+		        End If
+		        
+		        If rest <> "" Then
+		          drawHeight = DrawFontString(g, rest, _
+		          x, y + (titleHeight - fontHeight), fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Right = titleMargins.Right+restWidth
+		        End If
+		        If curr <> "" Then
+		          drawHeight = DrawFontString(g, curr, _
+		          x, y + (titleHeight - fontHeight), fCurrVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Right = titleMargins.Right+currWidth
+		        End If
+		        If main <> "" then
+		          drawHeight = DrawFontString(g, main, _
+		          x, y + (titleHeight - fontHeight), fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth-currWidth, align, g.Height, Style.TitleVAlign)
+		          If drawHeight > titleHeight Then titleHeight = drawHeight
+		          titleMargins.Right = titleMargins.Right+mainWidth
+		        End If
+		        drawHeight = DrawFontString(g, title, _
+		        x, y + (titleHeight - fontHeight), f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth-currWidth-mainWidth, align, g.Height, Style.TitleVAlign)
+		        If drawHeight > titleHeight Then titleHeight = drawHeight
+		      End If
+		      
+		    Else
+		      titleHeight = DrawFontString(g, title, _
+		      x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
+		    End If
+		    
+		  Else
+		    titleHeight = DrawFontString(g, title, _
+		    x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
+		  End If
+		  
+		  Return titleHeight
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
@@ -690,6 +902,62 @@ Protected Module SetML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
+		Protected Function GetSlideTransition(xSlide As XmlNode) As SlideTransitionEnum
+		  Dim transition As SlideTransitionEnum
+		  Dim slide_group As XmlNode
+		  Dim t As Integer
+		  
+		  transition = SlideTransitionEnum.ApplicationDefault
+		  
+		  If xslide <> Nil Then
+		    slide_group = xSlide.Parent.Parent
+		    If slide_group <> Nil Then
+		      t = SmartML.GetValueN(slide_group, "@transition", False)
+		      Select Case t
+		      Case 1
+		        transition = SlideTransitionEnum.UseTransition
+		      Case 2
+		        transition = SlideTransitionEnum.NoTransition
+		      Case Else
+		        transition = SlideTransitionEnum.ApplicationDefault
+		      End Select
+		    End If
+		  End If
+		  
+		  Return transition
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetSong(slidegroup As XmlNode, Songs As FolderDB, ByRef songFolder As String) As XmlDocument
+		  Dim songDoc As XmlDocument
+		  Dim songF as FolderItem
+		  
+		  If slidegroup <> Nil Then
+		    
+		    songFolder = SmartML.GetValue(slidegroup, "@path", False)
+		    If Songfolder = "" Then
+		      songfolder = "/"
+		    End If
+		    
+		    songf = Songs.GetFile(songFolder + SmartML.GetValue(slidegroup, "@name", False))
+		    If songf = Nil Or (Not songf.Exists) Then
+		      songDoc = Nil
+		    Else
+		      songDoc = SmartML.XDocFromFile(songf)
+		      If songDoc = Nil Then
+		        InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
+		      End If
+		    End If
+		  Else
+		    songFolder = ""
+		  End If
+		  
+		  Return songDoc
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
 		Protected Function GetStyle(xSlide As XmlNode) As XmlNode
 		  //++EMP 09/05
 		  
@@ -775,6 +1043,20 @@ Protected Module SetML
 		  Else
 		    Return SmartML.GetNode(App.MyPresentSettings.DocumentElement, "default_style")
 		  End If
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function InsertAfterBreak() As String
+		  'gp start
+		  if slidetype = "song" then
+		    if  SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@insping_after_break", True, True) then
+		      Return "   "
+		    end if
+		  end if
+		  return ""
+		  'gp end
+		  
 		End Function
 	#tag EndMethod
 
@@ -864,7 +1146,7 @@ Protected Module SetML
 		  While x >= st
 		    '++JRC:
 		    'arr.Append RTrim(Mid(str, st, x-st))
-		    arr.Append StringUtils.RemoveWhitespace(Mid(str, st, x-st), Globals.WhitespaceChars, 1)
+		    arr.Append StringUtils.RTrim(Mid(str, st, x-st), StringUtils.WhiteSpaces)
 		    '--
 		    
 		    st = x + Len(char)
@@ -915,263 +1197,6 @@ Protected Module SetML
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function GetSlideTransition(xSlide As XmlNode) As SlideTransitionEnum
-		  Dim transition As SlideTransitionEnum
-		  Dim slide_group As XmlNode
-		  Dim t As Integer
-		  
-		  transition = SlideTransitionEnum.ApplicationDefault
-		  
-		  If xslide <> Nil Then
-		    slide_group = xSlide.Parent.Parent
-		    If slide_group <> Nil Then
-		      t = SmartML.GetValueN(slide_group, "@transition", False)
-		      Select Case t
-		      Case 1
-		        transition = SlideTransitionEnum.UseTransition
-		      Case 2
-		        transition = SlideTransitionEnum.NoTransition
-		      Case Else
-		        transition = SlideTransitionEnum.ApplicationDefault
-		      End Select
-		    End If
-		  End If
-		  
-		  Return transition
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function DrawSlideTitle(g As Graphics, xslide As XmlNode, Style as SlideStyle, x As Integer, y As Integer, f As FontFace, RealBorder as Integer, HeaderSize as Integer, FooterSize as Integer, titleMargins as StyleMarginType) As Integer
-		  Dim presentation, slideId, currentVerse, verse as String
-		  Dim parts() As String
-		  Dim title As String
-		  Dim titleHeight, drawHeight As Integer
-		  Dim p, slideIndex As Integer
-		  Dim main, curr, rest As String
-		  Dim fontHeight, titleWidth, mainWidth, currWidth, restWidth As Integer
-		  Dim fVerse, fCurrVerse As FontFace
-		  Dim align As String
-		  Dim currPart, section As String
-		  dim ChorusNr, currChorusNr as integer 'GP
-		  
-		  titleHeight = 0
-		  title = SmartML.GetValue(xslide.Parent.Parent, "title")
-		  title = ReplaceAll(title, "|", Chr(10))
-		  
-		  If Style.TitleIncludeVerse Then
-		    presentation = SmartML.GetValue(xslide.Parent.Parent, "presentation")
-		    slideId = Trim(SmartML.GetValue(xslide, "@id"))
-		    ChorusNr = (SmartML.GetValueN (xslide, "@ChorusNr")) 'GP
-		    
-		    If presentation <> "" and slideId<>"" Then
-		      If Left(slideId, 1) = "V" Then
-		        currentVerse = Trim(Mid(slideId, 2))
-		      End If
-		      
-		      'slideIndex = -1
-		      'For p = 0 to xslide.Parent.ChildCount-1
-		      'If xslide.Parent.Child(p) = xslide Then
-		      'slideIndex = p
-		      'Exit
-		      'End If
-		      'Next
-		      
-		      parts = presentation.split(" ")
-		      currChorusNr = 0 'GP
-		      For p = 0 to UBound(parts)
-		        currPart = parts(p)
-		        section = Left(currPart, 1)
-		        If Len(currPart) > 1 Then
-		          verse = Trim(Mid(currPart, 2))
-		        Else
-		          verse = ""
-		        End If
-		        
-		        'If p = slideIndex Then
-		        If currPart = slideId Then
-		          If section = "V" Then
-		            If main <> "" And curr = "" Then main = main + ", "
-		            curr = currentVerse
-		          ElseIf section = "P" Then
-		            If main <> "" And curr = "" Then main = main + ", "
-		            curr = App.T.Translate("songml/prechorus_abbreviation/@caption")
-		          ElseIf section = "C" Then
-		            currChorusNr = currChorusNr + 1 'GP
-		            if ChorusNr = currChorusNr then 'GP
-		              If main <> "" And curr = "" Then main = main + ", "
-		              curr = App.T.Translate("songml/chorus_abbreviation/@caption")
-		            end if
-		            
-		          ElseIf section = "B" Then
-		            If main <> "" And curr = "" Then main = main + ", "
-		            curr = App.T.Translate("songml/bridge_abbreviation/@caption")
-		          ElseIf section = "T" Then
-		            If main <> "" And curr = "" Then main = main + ", "
-		            curr = App.T.Translate("songml/tag_abbreviation/@caption")
-		          End If
-		        ElseIf verse <> "" And section = "V" Then
-		          If curr = "" Then
-		            If main <> "" Then
-		              main = main + ", "
-		            End If
-		            main = main + verse
-		          Else
-		            rest = rest + ", " + verse
-		          End If
-		        End If
-		        
-		      Next
-		      IF curr = "" and currChorusNr > 0 then 'gp
-		        'probaly never true,  for emergency only, ad to the end
-		        If main <> "" And curr = "" Then main = main + ", "
-		        curr = App.T.Translate("songml/chorus_abbreviation/@caption")
-		      end if
-		      
-		      fVerse = f.Clone()
-		      fVerse.Bold = False
-		      fCurrVerse = f.Clone()
-		      If main <> "" or rest <> "" Then
-		        fCurrVerse.Bold=True
-		      End If
-		      
-		      If main <> "" Or curr <> "" Or rest <> "" Then
-		        main = ": " + main
-		      End If
-		      title = Trim(title)
-		      
-		      f.OntoGraphics(g)
-		      fontHeight = FontFaceHeight(g, f) + FontFaceAscent(g, f)
-		      titleHeight = CountFields(title, Chr(10)) * fontHeight
-		      titleWidth = FontFaceWidth(g, title, f)
-		      fVerse.OntoGraphics(g)
-		      If rest <> "" Then restWidth = FontFaceWidth(g, rest, fVerse)
-		      If main <> "" Then mainWidth = FontFaceWidth(g, main, fVerse)
-		      fCurrVerse.OntoGraphics(g)
-		      If curr <> "" Then currWidth = FontFaceWidth(g, curr, fCurrVerse)
-		      
-		      align = Style.TitleAlign
-		      If align = "center" Then
-		        'titleMargins.Left = titleMargins.Left + (g.Width / 2) - ((titleWidth + mainWidth + currWidth + restWidth) / 2)
-		        x = x + (g.Width / 2) - ((titleWidth + mainWidth + currWidth + restWidth) / 2)
-		        align = "left"
-		      End If
-		      
-		      If align = "left" Then
-		        drawHeight = DrawFontString(g, title, _
-		        x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
-		        If drawHeight > titleHeight Then titleHeight = drawHeight
-		        titleMargins.Left = titleMargins.Left + titleWidth
-		        
-		        'Adjust the starting y position to make sure the verses have the same vertical alignment as a multiline title
-		        If Style.TitleVAlign = "top" Then
-		          y = y + (titleHeight - fontHeight)
-		        End If
-		        
-		        If main <> "" then
-		          drawHeight = DrawFontString(g, main, _
-		          x+titleWidth, y, fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
-		          If drawHeight > titleHeight Then titleHeight = drawHeight
-		          titleMargins.Left = titleMargins.Left + mainWidth
-		        End If
-		        If curr <> "" Then
-		          drawHeight = DrawFontString(g, curr, _
-		          x+titleWidth+mainWidth, y, fCurrVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
-		          If drawHeight > titleHeight Then titleHeight = drawHeight
-		          titleMargins.Left = titleMargins.Left + currWidth
-		        End If
-		        If rest <> "" Then
-		          drawHeight = DrawFontString(g, rest, _
-		          x+titleWidth+mainWidth+currWidth, y, fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
-		          If drawHeight > titleHeight Then titleHeight = drawHeight
-		        End If
-		        
-		      ElseIf align = "right" Then
-		        'Adjust the value for calculating the starting y position to make sure the verses have the same vertical alignment as a multiline title
-		        If Style.TitleVAlign = "bottom" Then
-		          fontHeight = titleHeight
-		        End If
-		        
-		        If rest <> "" Then
-		          drawHeight = DrawFontString(g, rest, _
-		          x, y + (titleHeight - fontHeight), fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, align, g.Height, Style.TitleVAlign)
-		          If drawHeight > titleHeight Then titleHeight = drawHeight
-		          titleMargins.Right = titleMargins.Right+restWidth
-		        End If
-		        If curr <> "" Then
-		          drawHeight = DrawFontString(g, curr, _
-		          x, y + (titleHeight - fontHeight), fCurrVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth, align, g.Height, Style.TitleVAlign)
-		          If drawHeight > titleHeight Then titleHeight = drawHeight
-		          titleMargins.Right = titleMargins.Right+currWidth
-		        End If
-		        If main <> "" then
-		          drawHeight = DrawFontString(g, main, _
-		          x, y + (titleHeight - fontHeight), fVerse, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth-currWidth, align, g.Height, Style.TitleVAlign)
-		          If drawHeight > titleHeight Then titleHeight = drawHeight
-		          titleMargins.Right = titleMargins.Right+mainWidth
-		        End If
-		        drawHeight = DrawFontString(g, title, _
-		        x, y + (titleHeight - fontHeight), f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width-restWidth-currWidth-mainWidth, align, g.Height, Style.TitleVAlign)
-		        If drawHeight > titleHeight Then titleHeight = drawHeight
-		      End If
-		      
-		    Else
-		      titleHeight = DrawFontString(g, title, _
-		      x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
-		    End If
-		    
-		  Else
-		    titleHeight = DrawFontString(g, title, _
-		    x, y, f, RealBorder, HeaderSize, FooterSize, titleMargins, g.Width, Style.TitleAlign, g.Height, Style.TitleVAlign)
-		  End If
-		  
-		  Return titleHeight
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetSong(slidegroup As XmlNode, Songs As FolderDB, ByRef songFolder As String) As XmlDocument
-		  Dim songDoc As XmlDocument
-		  Dim songF as FolderItem
-		  
-		  If slidegroup <> Nil Then
-		    
-		    songFolder = SmartML.GetValue(slidegroup, "@path", False)
-		    If Songfolder = "" Then
-		      songfolder = "/"
-		    End If
-		    
-		    songf = Songs.GetFile(songFolder + SmartML.GetValue(slidegroup, "@name", False))
-		    If songf = Nil Or (Not songf.Exists) Then
-		      songDoc = Nil
-		    Else
-		      songDoc = SmartML.XDocFromFile(songf)
-		      If songDoc = Nil Then
-		        InputBox.Message App.T.Translate("errors/bad_format", SmartML.GetValue(slidegroup, "@name", False))
-		      End If
-		    End If
-		  Else
-		    songFolder = ""
-		  End If
-		  
-		  Return songDoc
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function InsertAfterBreak() As String
-		  'gp start
-		  if slidetype = "song" then
-		    if  SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@insping_after_break", True, True) then
-		      Return "   "
-		    end if
-		  end if
-		  return ""
-		  'gp end
-		  
-		End Function
-	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function IsExternal(slide As XmlNode) As Boolean
@@ -1181,19 +1206,19 @@ Protected Module SetML
 		  Try
 		    If slide <> Nil Then
 		      If Not IsNull(slide) Then
-		        
+		    
 		        'Handle both the situation that the slide XmlNode is passend (PresentWindow.XCurrentSlide) and that the slideGroup XmlNode is passed (PresentWindow.PreviousSlide)
 		        If slide.Name = "slide" Then
 		          slideType = SmartML.GetValue(slide.Parent.Parent, "@type", False)
 		        ElseIf slide.Name = "slide_group" Then
 		          slideType = SmartML.GetValue(slide, "@type", False)
-		        End If
-		        
+		    End If
+		    
 		        If slideType = "external" Then
 		          external = True
-		        End If
 		      End If
 		    End If
+		  End If
 		  Catch e as NilObjectException
 		    '... no idea why this Nil and Null checks have no effect
 		  End Try
@@ -1202,7 +1227,6 @@ Protected Module SetML
 		End Function
 	#tag EndMethod
 
-
 	#tag Property, Flags = &h0
 		SlideType As String
 	#tag EndProperty
@@ -1210,22 +1234,10 @@ Protected Module SetML
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
 			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -1236,10 +1248,9 @@ Protected Module SetML
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Top"
+			Name="Name"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -1247,6 +1258,19 @@ Protected Module SetML
 			Group="Behavior"
 			Type="String"
 			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

@@ -40,9 +40,9 @@ Begin Window CCLIWindow
       Left            =   5
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
@@ -52,9 +52,8 @@ Begin Window CCLIWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   151
-      BehaviorIndex   =   0
    End
-   Begin StaticText lbl_ccli_user_id
+   Begin Label lbl_ccli_user_id
       AutoDeactivate  =   True
       BehaviorIndex   =   1
       Bold            =   False
@@ -86,7 +85,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   130
-      BehaviorIndex   =   1
    End
    Begin SEditField edt_ccli_user_id
       AcceptTabs      =   False
@@ -132,9 +130,8 @@ Begin Window CCLIWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   2
    End
-   Begin StaticText lbl_ccli_password
+   Begin Label lbl_ccli_password
       AutoDeactivate  =   True
       BehaviorIndex   =   3
       Bold            =   False
@@ -166,7 +163,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   130
-      BehaviorIndex   =   3
    End
    Begin SEditField edt_ccli_password
       AcceptTabs      =   False
@@ -212,9 +208,8 @@ Begin Window CCLIWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   4
    End
-   Begin StaticText lbl_search_for
+   Begin Label lbl_search_for
       AutoDeactivate  =   True
       BehaviorIndex   =   5
       Bold            =   False
@@ -230,9 +225,9 @@ Begin Window CCLIWindow
       Left            =   5
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   5
       TabPanelIndex   =   0
@@ -246,7 +241,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   65
-      BehaviorIndex   =   5
    End
    Begin SEditField edt_search
       AcceptTabs      =   False
@@ -270,9 +264,9 @@ Begin Window CCLIWindow
       LimitText       =   0
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Mask            =   ""
       Multiline       =   False
       Password        =   False
@@ -292,9 +286,8 @@ Begin Window CCLIWindow
       UseFocusRing    =   True
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   6
    End
-   Begin StaticText txt_search_by
+   Begin Label txt_search_by
       AutoDeactivate  =   True
       BehaviorIndex   =   7
       Bold            =   False
@@ -310,9 +303,9 @@ Begin Window CCLIWindow
       Left            =   222
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   7
       TabPanelIndex   =   0
@@ -326,7 +319,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   25
-      BehaviorIndex   =   7
    End
    Begin PopupMenu pop_by
       AutoDeactivate  =   True
@@ -346,9 +338,9 @@ Begin Window CCLIWindow
       ListIndex       =   0
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   8
       TabPanelIndex   =   0
       TabStop         =   True
@@ -358,9 +350,8 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   8
    End
-   Begin StaticText txt_search_filter
+   Begin Label txt_search_filter
       AutoDeactivate  =   True
       BehaviorIndex   =   9
       Bold            =   False
@@ -376,9 +367,9 @@ Begin Window CCLIWindow
       Left            =   350
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       TabIndex        =   9
       TabPanelIndex   =   0
@@ -392,7 +383,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   35
-      BehaviorIndex   =   9
    End
    Begin PopupMenu pop_filter
       AutoDeactivate  =   True
@@ -412,9 +402,9 @@ Begin Window CCLIWindow
       ListIndex       =   0
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
@@ -424,7 +414,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   10
    End
    Begin PushButton btn_song_find
       AutoDeactivate  =   True
@@ -443,9 +432,9 @@ Begin Window CCLIWindow
       Left            =   490
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
@@ -455,7 +444,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   55
-      BehaviorIndex   =   11
    End
    Begin ListBox lst_found_songs
       AutoDeactivate  =   True
@@ -505,7 +493,6 @@ Begin Window CCLIWindow
       Width           =   540
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   12
    End
    Begin PushButton btn_page_previous_page
       AutoDeactivate  =   True
@@ -536,7 +523,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   110
-      BehaviorIndex   =   13
    End
    Begin PushButton btn_page_next_page
       AutoDeactivate  =   True
@@ -567,9 +553,8 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   110
-      BehaviorIndex   =   14
    End
-   Begin StaticText txt_prefix_page
+   Begin Label txt_prefix_page
       AutoDeactivate  =   True
       BehaviorIndex   =   15
       Bold            =   False
@@ -601,7 +586,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   50
-      BehaviorIndex   =   15
    End
    Begin PopupMenu pop_current_page
       AutoDeactivate  =   True
@@ -633,9 +617,8 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   50
-      BehaviorIndex   =   16
    End
-   Begin StaticText txt_number_of_pages
+   Begin Label txt_number_of_pages
       AutoDeactivate  =   True
       BehaviorIndex   =   17
       Bold            =   False
@@ -667,7 +650,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   30
-      BehaviorIndex   =   17
    End
    Begin PushButton btn_song_import
       AutoDeactivate  =   True
@@ -698,7 +680,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   18
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
@@ -729,7 +710,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   19
    End
    Begin Separator sep_1
       AutoDeactivate  =   True
@@ -745,7 +725,7 @@ Begin Window CCLIWindow
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   True
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   20
       TabPanelIndex   =   0
       TabStop         =   True
@@ -754,7 +734,6 @@ Begin Window CCLIWindow
       Top             =   60
       Visible         =   True
       Width           =   540
-      BehaviorIndex   =   20
    End
    Begin PopupMenu pop_by_values
       AutoDeactivate  =   True
@@ -774,9 +753,9 @@ Begin Window CCLIWindow
       ListIndex       =   0
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   21
       TabPanelIndex   =   0
       TabStop         =   True
@@ -786,7 +765,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   False
       Width           =   10
-      BehaviorIndex   =   21
    End
    Begin PopupMenu pop_filter_values
       AutoDeactivate  =   True
@@ -806,9 +784,9 @@ Begin Window CCLIWindow
       ListIndex       =   0
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       TabIndex        =   22
       TabPanelIndex   =   0
       TabStop         =   True
@@ -818,7 +796,6 @@ Begin Window CCLIWindow
       Underline       =   False
       Visible         =   False
       Width           =   10
-      BehaviorIndex   =   22
    End
 End
 #tag EndWindow

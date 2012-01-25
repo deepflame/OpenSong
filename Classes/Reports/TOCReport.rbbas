@@ -40,12 +40,8 @@ Inherits ReportClass
 
 	#tag Method, Flags = &h1
 		Protected Function PrintTOCPages(Items() As String, MyPages As Group2D, Scale As Double = 1.0) As Boolean
-		  
 		  Dim dummySong As New XmlDocument
-		  Dim DummyReturn As  Integer
 		  Dim TempFont As FontFace
-		  Dim StartPage As Integer
-		  Dim CurrentLetter As String
 		  Dim CurrentCategory As String
 		  Dim Continued As String
 		  Dim Pic As Picture
@@ -245,17 +241,31 @@ Inherits ReportClass
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="mFooterTop"
+			Name="LeftMargin"
 			Group="Behavior"
 			InitialValue="0"
-			Type="Integer"
-			InheritedFrom="Reports.RBReport"
+			Type="Double"
+			InheritedFrom="ReportClass"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PrintableHeight"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="ReportClass"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PrintableWidth"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="ReportClass"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
@@ -269,6 +279,13 @@ Inherits ReportClass
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TopMargin"
+			Group="Behavior"
+			InitialValue="0"
+			Type="Double"
+			InheritedFrom="ReportClass"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

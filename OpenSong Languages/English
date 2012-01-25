@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt" version="1.5.1">
+<language name="English" author="Sean Lickfold, Joshua Coley, Ewout Voogt, Ed Palmer" version="2.0">
 
   <load_settings>
     <checking_folders>Creating/Checking documents folders</checking_folders>
@@ -11,6 +11,7 @@
     <themes>Loading theme list</themes>
     <time_signatures>Loading time signature list</time_signatures>
     <imagequality>Loading image quality list</imagequality>
+ 	<videolan_preset>Loading Videolan parameter presets</videolan_preset>
     <fonts>Loading font list</fonts>
     <latest_version>Checking for the latest version
       <newer_available>A newer version (%1) is available. Visit www.opensong.org to download it.</newer_available>
@@ -178,6 +179,7 @@
     <untitled caption="Untitled"/>
     <errors>
       <revert caption="Error reloading set &quot;%1&quot; from file."/>
+      <insert caption="Insertion of copied slides failed:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; exported to
@@ -255,12 +257,20 @@
       <embed_presentation caption="Include the presentation in the OpenSong set"/>
     </presentation_settings>
     <videolan_settings caption="Videolan settings">
-      <videolan_not_available caption="Videolan support is not available yet."/>
+      <videolan_start caption="Launch Videolan"/>
+	  <videolan_mediafilename caption="Path to media file to play">Choose the filename of the audio or video file to play.</videolan_mediafilename>
+	  <embed_mediafile caption="Include the media file in the OpenSong set"/>
+	  <videolan_preset caption="Use the following preset with parameters"/>
+	  <videolan_manual caption="Manually adjusted parameters (use %d for display number, %s for mediafile)"/>
+      <wait_for_videolan caption="Wait for playback to finish before continuing to next slide"/>
+      <videolan_stop caption="Stop any launched instance of Videolan"/>
     </videolan_settings>
     <application_settings caption="Application launcher settings">
+      <application_start caption="Start an external application"/>
       <application_filename caption="Path to application executable">Choose the main executable file of the program that should be launched.</application_filename>
       <application_parameters caption="Application parameters"/>
-      <wait_for_application caption="Wait for external application to finish before continuing."/>
+      <wait_for_application caption="Wait for external application to finish before continuing"/>
+      <application_stop caption="Stop any currently running launched application"/>
     </application_settings>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
@@ -343,6 +353,7 @@
       <print_alphabetical_toc caption="Print _Alphabetical TOC"/>
       <print_categorical_toc caption="Print _Categorical TOC"/>
       <song_act caption="View Song Activity _Log"/>
+      <scripture caption="Scripture Look_up"/>
       <quit caption="E_xit"/>
     </file>
     <edit caption="_Edit">
@@ -376,7 +387,7 @@
   </main_menu>
 
   <general_settings title="General configuration">
-    <general caption="General" head1="Basic" head2="File locations" head3="System">
+    <general caption="General" head1="Basic" head2="File locations" head3="System" head4="Appearance">
       <ccli caption="Church CCLI License #"/>
       <version_check caption="Check for latest version at startup"/>
       <language caption="Language"/>
@@ -385,7 +396,7 @@
       <host caption="Host"/>
       <port caption="Port"/>
     </proxy>
-    <user_defined caption="User Defined">
+    <user_defined caption="Naming for user defined song fields">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -432,7 +443,23 @@
     <applications caption="External applications">
       <pptview caption="Location of Powerpoint Viewer"/>
       <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Location of Videolan client"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
     </applications>
+	<slidetype_coloring caption="Slide type coloring">
+	  <coloring caption="Apply background colors"/>
+	  <verse caption="Song, Verse"/>
+	  <bridge caption="Song, Bridge"/>
+	  <prechorus caption="Song, Pre-Chorus"/>
+	  <chorus caption="Song, Chorus"/>
+	  <tag caption="Song, Tag"/>
+	  <scripture caption="Scripture"/>
+	  <custom caption="Custom slide"/>
+	  <style caption="Style Change"/>
+	  <image caption="Image slide"/>
+	  <application caption="External application"/>
+	  <blank caption="Blank (inserted)"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Print Settings">
@@ -457,7 +484,8 @@
     </fonts>
     <layout>
       <heading_border_thickness caption="Heading Border Thickness"/>
-      <title_in_caps caption="Title In Caps"/>
+      <title_in_caps caption="Title in Caps"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Units">
       <inches caption="Inches"/>
@@ -466,11 +494,30 @@
   </print_settings>
 
   <presentation_settings title="Presentation Settings">
-    <settings head1="Style" head2="Options">
+    <settings head1="Style" head2="Options" head3="Snapshots">
         <default_slides caption="Default Slide Style"/>
         <scripture_slides caption="Default Scripture Style"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+        <export_snapshot caption="Export a snapshot of each presented slide to the following file"/>
+        <snapshot_file caption="Snapshot filename">Choose the snapshot filename using a file selection dialog.</snapshot_file>
+        <export_preview caption="Export snapshots during set preview"/>
+        <export_live_insertions caption="Export snapshots of slides inserted during a live presentation"/>
+        <export_metadata caption="Export slide details in a similarly named xml file"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">The following parameters can be used in the file name or path:
+    - %d: The day of the current month (01-31)
+    - %h: The hour from the current time of day in 24-hour format (00-23)
+    - %i: The minutes from the current time (00-59)
+    - %m: The current month (01-12)
+    - %n: The number of the slide in the current set (with leading zeroes)
+    - %N: The name of the current slide
+    - %P: Presentation index for slides during presentation (with leading zeroes)
+    - %s: The seconds from the current time (00-59)
+    - %S: The name of the current set
+    - %T: The title of the current slide
+    - %V: The verse indicator of the current slide (for songs, empty for other slides)
+    - %y: The current year (4 digits)</snapshot_parameters>
     </settings>
     <transitions caption="Transitions">
       <use_transitions caption="Enabled by default"/>
@@ -517,6 +564,7 @@
       <presentation caption="Presentation Monitor"/>
       <detected caption="%1 monitor(s) detected."/>
       <default_mode caption="Default Monitor Mode"/>
+      <force_4_3_preview caption="Force 4:3 preview"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Mask"/>
@@ -534,6 +582,10 @@
     <misc caption="Misc">
       <exit_prompt caption="Prompt when exiting"/>
     </misc>
+
+    <errors>
+        <snapshot_file>Error: creating snapshots is enabled, but no filename is entered.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Presentation Helper">
@@ -561,16 +613,20 @@ Down: Next Slide
 Up: Previous Slide
 Right: Next Section
 Left: Previous Section
+F1-F15: Song
 1-9: Verse
 C: Chorus
 P: Pre-chorus
 B: Bridge
 T: Tag</keys>
+    <preview caption="Current slide preview" />
+    <next caption="Next slide preview" />
   </presentation_helper>
 
   <help_topics title="Help Topics">
     <tabs head1="Presentation Keys" head2="Chords/Lyrics Format" head3="Presentation Field" head4="Close"/>
     <print caption="Print"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Presentation Keys&lt;/h1&gt;
 
@@ -793,9 +849,10 @@ If the presentation field is empty, then the Presenter will order the slides bas
 
   <style_editor title="Style Editor">
     <fonts_and_alignment caption="Fonts and Alignment">
-      <title caption="Title"/>
-      <subtitle caption="Subtitle"/>
-      <body caption="Body"/>
+      <title caption="Show Title"/>
+      <subtitle caption="Show Subtitle"/>
+      <body caption="Show Body"/>
+      <body_autosize caption="Automatic font size scaling to make text fit"/>
       <align caption="Align"/>
       <margin caption="Margins"/>
       <tabs caption="Tabulators"/>
@@ -927,11 +984,14 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <shownumbers caption="Display verse numbers"/>
     <preview caption="Preview"/>
     <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Please check the format of the query and try again.</format>
       <empty>Bad reference: the reference was empty.</empty>
       <book>Bad reference: could not find book.</book>
-      <ambiguous>Bad reference: Multiple books match '%1': %2</ambiguous>
+      <ambiguous>Bad reference: Multiple books match %1: %2</ambiguous>
       <version>Bad reference: '%1' version could not be found.</version>
       <chapter>Bad reference: could not find chapter '%1'.</chapter>
       <verse>Bad reference: could not find verse '%1'.</verse>
@@ -946,7 +1006,7 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <rename_error>Error renaming module file. Please verify that you have write access to '%1'.</rename_error>
     <success>Module successfully loaded.</success>
     <file_type>OpenSong Modules</file_type>
-    <generate_index>Generate index for scripture file?</generate_index>
+    <generate_index>Generate index for scripture file: '%1'?</generate_index>
     <generate_error>Error generating index; do you have write access to %1?</generate_error>
   </module>
 
@@ -1076,6 +1136,14 @@ If the presentation field is empty, then the Presenter will order the slides bas
     <option name="None, lossless, large set file"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+	<preset name="Video as wallpaper background in Windows (use background color RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Fullscreen video on presentation screen" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Fullscreen video from default DirectShow video input" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
+	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+	<preset name="Manual" parameters=""/>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Sample Title" type="custom" seconds="0" loop="false">
@@ -1150,7 +1218,7 @@ Click on this slide to edit its style.</body>
     <copyright>Copyright</copyright>
     <gpl>This software is released under the terms of the GPL.</gpl>
     <web>For more information visit http://www.opensong.org/.</web>
-    <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to translator@opensong.org and we'll include it in the official release.</translating>
+    <translating>To translate OpenSong, copy the 'English' file in the 'OpenSong Languages' folder and rename it to the name of the new language. Translate everything in the file except for the tag and attribute names. Then, send the new file to opensong-translate@lists.sourceforge.net or add it in the 'Patches' Tracker on the OpenSong project page at Source Forge and we'll include it in the official release.</translating>
     <created_with_opensong>Created with OpenSong</created_with_opensong>
     <sources>OpenSong includes source code from:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1201,11 +1269,12 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <create_songs_folder>Could not create songs folder: %1</create_songs_folder>
     <no_backgrounds_folder>Can't find default Backgrounds folder: %1, or folder is empty</no_backgrounds_folder>
     <no_defaults_folder>Can't find Defaults folder: %1, or folder is empty</no_defaults_folder>
-    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty</no_scripture_folder>
+    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty. Scripture Lookup will be unavailible. Please add a Bible file by selecting Install Module from the Settings Menu, or re-installing OpenSong.</no_scripture_folder>
+    <load_bible>Could not load default Bible: '%1'. OpenSong will attempt to open the next available Bible.</load_bible>
     <no_sets_folder>Can't find default Sets folder: %1, or folder is empty</no_sets_folder>
     <no_settings_folder>Can't find default Settings folder: %1, or folder is empty</no_settings_folder>
     <no_songs_folder>Can't find default Songs folder: %1, or folder is empty</no_songs_folder>
-    <no_docs_folder>Could not create/find Documents folder: %1</no_docs_folder>
+    <no_docs_folder>Could not create/find Documents folder: %1 OpenSong cannot continue without a Documents folder. Please restart OpenSong and select a Documents folder. If you are continuing to see this error, please contact your system Administrator.</no_docs_folder>
     <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
 Temporarily changing to: %1
 Please modify your preferences.</docs_folder>
@@ -1222,6 +1291,7 @@ Restart OpenSong and retry.</notenoughmemory>
        <unknownerror>Unknown error accessing file %1</unknownerror>
        <notaregularfile>Expected %1 to be a file, not a folder.</notaregularfile>
        <notafolder>Expected %1 to be a folder, not a file.</notafolder>
+	   <temporaryfailed>Creating a temporary file for %1 failed.</temporaryfailed>
     </fileutils>
     <cclinotavailable>The CCLI website has changed significantly.
 This has broken Import function until a new interface can be used.
@@ -1236,6 +1306,7 @@ The OpenSong development team members regret any inconvenience.
       <unsupported_feature>The application '%1' does not support this feature.</unsupported_feature>
       <load_failed>The presentation '%1' could not be opened.</load_failed>
     </presentations>
+	<videolan_app_missing>The videolan application is not correctly set. Please specify the videolan client in the General settings dialog on the File locations tab.</videolan_app_missing>
   </errors>
 
   <xml_errors>
@@ -1262,6 +1333,7 @@ The OpenSong development team members regret any inconvenience.
       <save>Error saving updated file '%1.'</save>
     </errors>
 
+    <load_successful>Successfully loaded Bible: '%1'.</load_successful>
     <messages>
       <bnames>Book names must be added to this translation.
 &#10;Please indicate the appropriate language for the names.</bnames>
@@ -1308,11 +1380,13 @@ The OpenSong development team members regret any inconvenience.
     <lead_sheets>Generating Lead Sheets</lead_sheets>
     <process_themes>Processing Themes</process_themes>
     <process_songs>Processing Songs</process_songs>
+    <song_search>Searching Songs</song_search>
     <export>Exporting Song(s)</export>
     <load_songs>Loading Song(s)</load_songs>
     <load_externals>Loading External sheet(s)</load_externals>
     <pass1>Sorting, 1st Pass</pass1>
     <pass2>Sorting, 2nd Pass</pass2>
+    <detect_presentation_hosts>Detecting available presentation applications</detect_presentation_hosts>
   </progress_status>
 
 </language>

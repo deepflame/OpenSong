@@ -440,12 +440,12 @@ Implements iPresentation
 		              
 		              If pptViewHwndId > 0 Then
 		                Dim presentScreen As Integer = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		                If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
+		                If presentScreen < 0 Or presentScreen + 1 > OSScreenCount() Then presentScreen = 0
 		                
-		                Dim x As Integer =Screen(presentScreen).Left
-		                Dim y As Integer =Screen(presentScreen).Top
-		                Dim w As Integer =Screen(presentScreen).Width
-		                Dim h As Integer  =Screen(presentScreen).Height
+		                Dim x As Integer = OSScreen(presentScreen).Left
+		                Dim y As Integer = OSScreen(presentScreen).Top
+		                Dim w As Integer = OSScreen(presentScreen).Width
+		                Dim h As Integer = OSScreen(presentScreen).Height
 		                
 		                Call MovePPTViewWindow( pptViewHwndId, x, y, w, h )
 		              End If

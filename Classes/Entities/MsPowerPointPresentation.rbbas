@@ -28,8 +28,6 @@ Implements iPresentation
 		Function CanControl() As Boolean
 		  // Part of the iPresentation interface.
 		  Return True
-		  
-		  
 		End Function
 	#tag EndMethod
 
@@ -74,7 +72,10 @@ Implements iPresentation
 		  Dim result As Integer = 0
 		  
 		  If IsShowing() Then
-		    result = m_oPpt.SlideShowWindow.View.Slide.SlideIndex
+		    Try
+		      result = m_oPpt.SlideShowWindow.View.Slide.SlideIndex
+		    Catch
+		    End Try
 		  End If
 		  
 		  Return result
@@ -89,9 +90,13 @@ Implements iPresentation
 		  
 		  Call PresentationFactory.UnregisterPresentation( self )
 		  
-		  If Not IsNull( m_oPpt ) Then
-		    m_oPpt.Saved = True
-		    m_oPpt.Close()
+		  If Not IsNull(m_oPpt) Then
+		    Try
+		      m_oPpt.Saved = True
+		      m_oPpt.Close()
+		    Catch
+		      'The actual PowerPoint object must have been destroyed without our knowing ...
+		    End Try
 		  End If
 		End Sub
 	#tag EndMethod
@@ -103,8 +108,12 @@ Implements iPresentation
 		  Dim result As Boolean = False
 		  
 		  If IsShowing() Then
-		    m_oPpt.SlideShowWindow.View.Exit_()
-		    result = True
+		    Try
+		      m_oPpt.SlideShowWindow.View.Exit_()
+		      result = True
+		    Catch
+		      'so PowerPoint decided to end the show before we did
+		    End Try
 		  End If
 		  
 		  Return result
@@ -119,9 +128,9 @@ Implements iPresentation
 		  
 		  If Not IsNull(m_oPpt) Then
 		    Try
-		      result = m_oPpt.FullName()
+		      result = m_oPpt.FullName
 		    Catch
-		      'This sometimes fails for no reason...
+		      'this sometimes fails for no reason...
 		    End Try
 		  End If
 		  
@@ -192,12 +201,14 @@ Implements iPresentation
 		  Dim result As Boolean = False
 		  
 		  If IsShowing() Then
-		    If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
-		      
-		      m_oPpt.SlideShowWindow.View.GotoSlide( slideIndex )
-		      result = True
-		      
-		    End If
+		    Try
+		      If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
+		        
+		        m_oPpt.SlideShowWindow.View.GotoSlide( slideIndex )
+		        result = True
+		      End If
+		    Catch
+		    End Try
 		  End If
 		  
 		  Return result
@@ -219,9 +230,12 @@ Implements iPresentation
 		  Dim result As Boolean = False
 		  
 		  If Not IsNull(m_oPpt) Then
-		    If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
-		      result = m_oPpt.Slides.Item(slideIndex).SlideShowTransition.Hidden()
-		    End If
+		    Try
+		      If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
+		        result = m_oPpt.Slides.Item(slideIndex).SlideShowTransition.Hidden()
+		      End If
+		    Catch
+		    End Try
 		  End If
 		  
 		  Return result
@@ -345,17 +359,19 @@ Implements iPresentation
 		  Dim f As FolderItem
 		  
 		  If Not IsNull(m_oPpt) Then
-		    If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
-		      
-		      f = SpecialFolder.Temporary.Child(Str(r.InRange(100000, 999999)))
-		      If f <> Nil Then
-		        m_oPpt.Slides.Item(slideIndex).Export( f.AbsolutePath(), "JPG", width, height )
+		    Try
+		      If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
 		        
-		        result = f.OpenAsPicture()
-		        f.Delete
+		        f = SpecialFolder.Temporary.Child(Str(r.InRange(100000, 999999)))
+		        If f <> Nil Then
+		          m_oPpt.Slides.Item(slideIndex).Export( f.AbsolutePath(), "JPG", width, height )
+		          
+		          result = f.OpenAsPicture()
+		          f.Delete
+		        End If
 		      End If
-		      
-		    End If
+		    Catch
+		    End Try
 		  End If
 		  
 		  Return result
@@ -383,7 +399,10 @@ Implements iPresentation
 		  Dim result As Integer = 0
 		  
 		  If Not IsNull( m_oPpt ) Then
-		    result = m_oPpt.Slides.Count
+		    Try
+		      result = m_oPpt.Slides.Count
+		    Catch
+		    End Try
 		  End If
 		  
 		  Return result
@@ -397,11 +416,12 @@ Implements iPresentation
 		  Dim result As String
 		  
 		  If Not IsNull(m_oPpt) Then
-		    If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
-		      
-		      result = m_oPpt.Slides.Item(slideIndex).Name
-		      
-		    End If
+		    Try
+		      If slideIndex <= m_oPpt.Slides.Count And slideIndex > 0 Then
+		        result = m_oPpt.Slides.Item(slideIndex).Name
+		      End If
+		    Catch
+		    End Try
 		  End If
 		  
 		  Return result
@@ -419,30 +439,32 @@ Implements iPresentation
 		  
 		  If Not IsShowing() Then
 		    If Not IsNull( m_oPpt ) Then
-		      
-		      m_oPpt.SlideShowSettings.LoopUntilStopped = loopShow
-		      
-		      If startAt > 0 And startAt <= m_oPpt.Slides.Count And startAt <= endAt Then
-		        m_oPpt.SlideShowSettings.StartingSlide = startAt
-		      End If
-		      If endAt > 0 And endAt <= m_oPpt.Slides.Count And endAt >= startAt Then
-		        m_oPpt.SlideShowSettings.EndingSlide = endAt
-		      End If
-		      
-		      presentScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		      If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		      
-		      ppWnd = m_oPpt.SlideShowSettings.Run
-		      ppWnd.Activate()
-		      
-		      If Not IsNull( ppWnd ) Then
-		        ppWnd.Left = Screen(presentScreen).Left * pixelsToPoints
-		        ppWnd.Top = Screen(presentScreen).Top * pixelsToPoints
-		        ppWnd.Width = Screen(presentScreen).Width * pixelsToPoints
-		        ppWnd.Height = Screen(presentScreen).Height * pixelsToPoints
+		      Try
+		        m_oPpt.SlideShowSettings.LoopUntilStopped = loopShow
 		        
-		        return Result
-		      End If
+		        If startAt > 0 And startAt <= m_oPpt.Slides.Count And startAt <= endAt Then
+		          m_oPpt.SlideShowSettings.StartingSlide = startAt
+		        End If
+		        If endAt > 0 And endAt <= m_oPpt.Slides.Count And endAt >= startAt Then
+		          m_oPpt.SlideShowSettings.EndingSlide = endAt
+		        End If
+		        
+		        presentScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
+		        If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
+		        
+		        ppWnd = m_oPpt.SlideShowSettings.Run
+		        ppWnd.Activate()
+		        
+		        If Not IsNull( ppWnd ) Then
+		          ppWnd.Left = OSScreen(presentScreen).Left * pixelsToPoints
+		          ppWnd.Top = OSScreen(presentScreen).Top * pixelsToPoints
+		          ppWnd.Width = OSScreen(presentScreen).Width * pixelsToPoints
+		          ppWnd.Height = OSScreen(presentScreen).Height * pixelsToPoints
+		          
+		          return Result
+		        End If
+		      Catch
+		      End Try
 		      
 		    End If
 		  End If

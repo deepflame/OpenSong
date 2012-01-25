@@ -53,9 +53,9 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       StickyBevel     =   True
       TabIndex        =   1
@@ -83,9 +83,9 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   215
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       StickyBevel     =   True
       TabIndex        =   2
@@ -96,7 +96,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   200
    End
-   Begin StaticText txt_context_help
+   Begin Label txt_context_help
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -115,6 +115,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockTop         =   True
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
       Text            =   ""
@@ -124,6 +125,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TextSize        =   10
       TextUnit        =   0
       Top             =   4
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   320
@@ -196,7 +198,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
-            TabIndex        =   0
+            TabIndex        =   1
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -220,11 +222,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   128
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   1
+            TabIndex        =   0
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
@@ -250,9 +252,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -280,9 +282,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -310,9 +312,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -340,9 +342,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -370,9 +372,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -400,9 +402,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -429,9 +431,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   ""
                LockedInPosition=   False
-               LockLeft        =   ""
+               LockLeft        =   True
                LockRight       =   ""
-               LockTop         =   ""
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   7
@@ -459,9 +461,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -489,9 +491,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   8
@@ -516,11 +518,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   2
+            TabIndex        =   5
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
@@ -546,9 +548,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -576,9 +578,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -606,9 +608,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -633,11 +635,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   3
+            TabIndex        =   4
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
@@ -663,9 +665,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -693,9 +695,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -707,7 +709,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Width           =   92
             End
          End
-         Begin StaticText lbl_songs_song_folders
+         Begin Label lbl_songs_song_folders
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -726,7 +728,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   4
+            Selectable      =   False
+            TabIndex        =   6
             TabPanelIndex   =   1
             Text            =   "Folders:"
             TextAlign       =   0
@@ -735,11 +738,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   284
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   119
          End
-         Begin StaticText lbl_songs_songs
+         Begin Label lbl_songs_songs
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -758,7 +762,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   5
+            Selectable      =   False
+            TabIndex        =   7
             TabPanelIndex   =   1
             Text            =   "Songs:"
             TextAlign       =   0
@@ -767,6 +772,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   11
             TextUnit        =   0
             Top             =   324
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   230
@@ -788,12 +794,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   203
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   6
+            TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   301
@@ -801,7 +807,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   18
          End
-         Begin StaticText lbl_songs_curr_folder
+         Begin Label lbl_songs_curr_folder
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -820,7 +826,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   7
+            Selectable      =   False
+            TabIndex        =   9
             TabPanelIndex   =   1
             Text            =   "Containing Folder:"
             TextAlign       =   0
@@ -829,6 +836,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   515
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   230
@@ -850,12 +858,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   222
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   8
+            TabIndex        =   3
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   301
@@ -899,7 +907,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            TabIndex        =   9
+            TabIndex        =   8
             TabPanelIndex   =   1
             TabStop         =   True
             TextFont        =   "Arial"
@@ -938,15 +946,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
-            Multiline       =   True
+            Multiline       =   False
             ReadOnly        =   True
             Scope           =   0
-            ScrollbarHorizontal=   False
+            ScrollbarHorizontal=   ""
             ScrollbarVertical=   False
-            Styled          =   False
+            Styled          =   True
             TabIndex        =   10
             TabPanelIndex   =   1
-            TabStop         =   True
+            TabStop         =   False
             Text            =   ""
             TextColor       =   0
             TextFont        =   "Arial"
@@ -998,9 +1006,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   0
             TabPanelIndex   =   2
@@ -1027,9 +1035,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                ListIndex       =   0
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
@@ -1059,9 +1067,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   210
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1086,11 +1094,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   128
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   1
+            TabIndex        =   3
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
@@ -1116,9 +1124,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1146,9 +1154,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1176,9 +1184,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -1206,9 +1214,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1236,9 +1244,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -1266,9 +1274,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -1296,9 +1304,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1323,11 +1331,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   2
+            TabIndex        =   1
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
@@ -1353,9 +1361,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1383,9 +1391,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
@@ -1413,9 +1421,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1443,9 +1451,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   5
@@ -1473,9 +1481,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   6
@@ -1503,9 +1511,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1533,9 +1541,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1562,9 +1570,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   137
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   7
@@ -1576,7 +1584,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                Width           =   92
             End
          End
-         Begin StaticText lbl_set_items
+         Begin Label lbl_set_items
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -1590,12 +1598,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   11
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   3
+            Selectable      =   False
+            TabIndex        =   4
             TabPanelIndex   =   2
             Text            =   "Items In Set:"
             TextAlign       =   0
@@ -1604,6 +1613,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   405
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   115
@@ -1621,11 +1631,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   10
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   4
+            TabIndex        =   2
             TabPanelIndex   =   2
             TextFont        =   "Arial"
             TextSize        =   11
@@ -1651,9 +1661,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   1
@@ -1681,9 +1691,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   2
@@ -1711,9 +1721,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   3
@@ -1741,9 +1751,9 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   0
@@ -1771,15 +1781,45 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   19
                LockBottom      =   False
                LockedInPosition=   False
-               LockLeft        =   False
+               LockLeft        =   True
                LockRight       =   False
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                StickyBevel     =   0
                TabIndex        =   4
                TabPanelIndex   =   2
                TabStop         =   True
                Top             =   336
+               UseFocusRing    =   True
+               Visible         =   True
+               Width           =   92
+            End
+            Begin SButton btn_set_add_external
+               AcceptFocus     =   True
+               AcceptTabs      =   False
+               AutoDeactivate  =   True
+               Backdrop        =   0
+               DoubleBuffer    =   False
+               Enabled         =   False
+               EraseBackground =   True
+               HasFocus        =   0
+               Height          =   24
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "grp_set_new_item"
+               LabelAlign      =   0
+               Left            =   19
+               LockBottom      =   False
+               LockedInPosition=   False
+               LockLeft        =   False
+               LockRight       =   False
+               LockTop         =   False
+               Scope           =   0
+               StickyBevel     =   0
+               TabIndex        =   5
+               TabPanelIndex   =   2
+               TabStop         =   True
+               Top             =   361
                UseFocusRing    =   True
                Visible         =   True
                Width           =   92
@@ -1915,7 +1955,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText hdr_style_header
+         Begin Label hdr_style_header
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -1929,11 +1969,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
             Text            =   "Style Change"
@@ -1943,6 +1984,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   460
@@ -1960,9 +2002,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   275
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   1
             TabPanelIndex   =   4
@@ -1989,9 +2031,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   275
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             TabIndex        =   2
             TabPanelIndex   =   4
@@ -2020,9 +2062,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   340
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   True
             TabIndex        =   3
@@ -2053,14 +2095,14 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockRight       =   True
          LockTop         =   True
          Scope           =   0
-         TabIndex        =   1
+         TabIndex        =   0
          TabPanelIndex   =   2
          TabStop         =   True
          Top             =   40
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText lbl_song_aka
+         Begin Label lbl_song_aka
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2076,10 +2118,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   0
+            Selectable      =   False
+            TabIndex        =   12
             TabPanelIndex   =   2
             Text            =   "AKA:"
             TextAlign       =   0
@@ -2088,11 +2131,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   231
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   130
          End
-         Begin StaticText lbl_song_themes
+         Begin Label lbl_song_themes
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2106,11 +2150,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   2
             Text            =   "Themes:"
@@ -2120,11 +2165,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   175
          End
-         Begin StaticText lbl_song_capo
+         Begin Label lbl_song_capo
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2138,12 +2184,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   2
+            Selectable      =   False
+            TabIndex        =   3
             TabPanelIndex   =   2
             Text            =   "Capo:"
             TextAlign       =   0
@@ -2152,11 +2199,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
          End
-         Begin StaticText lbl_song_key_line
+         Begin Label lbl_song_key_line
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2172,10 +2220,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   3
+            Selectable      =   False
+            TabIndex        =   14
             TabPanelIndex   =   2
             Text            =   "Key Line:"
             TextAlign       =   0
@@ -2184,6 +2233,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   266
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   270
@@ -2216,7 +2266,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             RequiresSelection=   ""
@@ -2224,7 +2274,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollBarVertical=   True
             SelectionType   =   0
-            TabIndex        =   4
+            TabIndex        =   2
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2257,10 +2307,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
-            TabIndex        =   5
+            TabIndex        =   24
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   51
@@ -2268,7 +2318,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   125
          End
-         Begin StaticText lbl_song_key
+         Begin Label lbl_song_key
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2282,11 +2332,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   2
             Text            =   "Key:"
@@ -2296,11 +2347,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   161
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
          End
-         Begin StaticText lbl_song_time_sig
+         Begin Label lbl_song_time_sig
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2314,12 +2366,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   7
+            Selectable      =   False
+            TabIndex        =   8
             TabPanelIndex   =   2
             Text            =   "Time Signature:"
             TextAlign       =   0
@@ -2328,6 +2381,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   196
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
@@ -2348,11 +2402,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   8
+            TabIndex        =   9
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2363,7 +2417,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   125
          End
-         Begin StaticText lbl_song_user2
+         Begin Label lbl_song_user2
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2379,10 +2433,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   9
+            Selectable      =   False
+            TabIndex        =   18
             TabPanelIndex   =   2
             Text            =   "User Defined 2:"
             TextAlign       =   0
@@ -2391,11 +2446,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   360
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   270
          End
-         Begin StaticText lbl_song_tempo
+         Begin Label lbl_song_tempo
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2409,11 +2465,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   460
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   10
             TabPanelIndex   =   2
             Text            =   "Tempo:"
@@ -2423,11 +2480,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   231
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   125
          End
-         Begin StaticText lbl_song_user3
+         Begin Label lbl_song_user3
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2443,10 +2501,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   11
+            Selectable      =   False
+            TabIndex        =   20
             TabPanelIndex   =   2
             Text            =   "User Defined 3:"
             TextAlign       =   0
@@ -2455,6 +2514,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   405
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   270
@@ -2476,10 +2536,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   12
+            TabIndex        =   23
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2506,12 +2566,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   525
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   13
+            TabIndex        =   5
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2542,10 +2602,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
-            TabIndex        =   14
+            TabIndex        =   25
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   51
@@ -2569,11 +2629,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   15
+            TabIndex        =   11
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2601,10 +2661,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   True
-            TabIndex        =   16
+            TabIndex        =   22
             TabPanelIndex   =   2
             TabStop         =   True
             Top             =   105
@@ -2633,9 +2693,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2643,7 +2703,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   17
+            TabIndex        =   7
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2680,7 +2740,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2688,7 +2748,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   18
+            TabIndex        =   13
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2718,11 +2778,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             ListIndex       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   19
+            TabIndex        =   4
             TabPanelIndex   =   2
             TabStop         =   True
             TextFont        =   "Arial"
@@ -2756,7 +2816,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -2764,7 +2824,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   20
+            TabIndex        =   15
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2778,7 +2838,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   270
          End
-         Begin StaticText lbl_song_user1
+         Begin Label lbl_song_user1
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -2794,10 +2854,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   21
+            Selectable      =   False
+            TabIndex        =   16
             TabPanelIndex   =   2
             Text            =   "User Defined 1:"
             TextAlign       =   0
@@ -2806,11 +2867,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   312
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   270
          End
-         Begin StaticText hdr_song_header_2
+         Begin Label hdr_song_header_2
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -2826,10 +2888,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   22
+            Selectable      =   False
+            TabIndex        =   0
             TabPanelIndex   =   2
             Text            =   "Song Editor"
             TextAlign       =   0
@@ -2838,6 +2901,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   200
@@ -2865,7 +2929,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -2873,7 +2937,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   23
+            TabIndex        =   17
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2910,7 +2974,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -2918,7 +2982,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   24
+            TabIndex        =   19
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -2955,7 +3019,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   True
             ReadOnly        =   False
@@ -2963,7 +3027,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   25
+            TabIndex        =   21
             TabPanelIndex   =   2
             TabStop         =   True
             Text            =   ""
@@ -3004,7 +3068,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText hdr_song_header
+         Begin Label hdr_song_header
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -3020,9 +3084,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
             Text            =   "Song Editor"
@@ -3032,11 +3097,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   200
          End
-         Begin StaticText lbl_song_ccli
+         Begin Label lbl_song_ccli
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3055,7 +3121,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   1
+            Selectable      =   False
+            TabIndex        =   7
             TabPanelIndex   =   1
             Text            =   "CCLI #:"
             TextAlign       =   0
@@ -3064,11 +3131,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
          End
-         Begin StaticText lbl_song_copyright
+         Begin Label lbl_song_copyright
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3082,12 +3150,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   505
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   2
+            Selectable      =   False
+            TabIndex        =   5
             TabPanelIndex   =   1
             Text            =   "Copyright:"
             TextAlign       =   0
@@ -3096,11 +3165,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   225
          End
-         Begin StaticText lbl_song_author
+         Begin Label lbl_song_author
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3114,11 +3184,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
             Text            =   "Author:"
@@ -3128,11 +3199,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   220
          End
-         Begin StaticText lbl_song_presentation
+         Begin Label lbl_song_presentation
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3146,12 +3218,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   625
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   4
+            Selectable      =   False
+            TabIndex        =   9
             TabPanelIndex   =   1
             Text            =   "Presentation:"
             TextAlign       =   0
@@ -3160,11 +3233,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
          End
-         Begin StaticText lbl_song_lyrics
+         Begin Label lbl_song_lyrics
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3180,10 +3254,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   5
+            Selectable      =   False
+            TabIndex        =   13
             TabPanelIndex   =   1
             Text            =   "Chord/Lyrics:"
             TextAlign       =   0
@@ -3192,11 +3267,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   161
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   350
          End
-         Begin StaticText lbl_song_hymn_number
+         Begin Label lbl_song_hymn_number
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3212,10 +3288,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   6
+            Selectable      =   False
+            TabIndex        =   11
             TabPanelIndex   =   1
             Text            =   "Hymn #:"
             TextAlign       =   0
@@ -3224,11 +3301,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   175
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   105
          End
-         Begin StaticText lbl_song_insert
+         Begin Label lbl_song_insert
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3244,10 +3322,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   7
+            Selectable      =   False
+            TabIndex        =   15
             TabPanelIndex   =   1
             Text            =   "Insert:"
             TextAlign       =   0
@@ -3256,11 +3335,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   215
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   120
          End
-         Begin StaticText lbl_song_title
+         Begin Label lbl_song_title
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -3274,12 +3354,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   8
+            Selectable      =   False
+            TabIndex        =   1
             TabPanelIndex   =   1
             Text            =   "Title:"
             TextAlign       =   0
@@ -3288,6 +3369,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   220
@@ -3307,9 +3389,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   9
+            TabIndex        =   22
             TabPanelIndex   =   1
             TextFont        =   "Arial"
             TextSize        =   11
@@ -3336,7 +3418,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockedInPosition=   False
                LockLeft        =   False
                LockRight       =   True
-               LockTop         =   False
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   1
@@ -3344,12 +3426,12 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   456
+               Top             =   427
                Underline       =   False
                Visible         =   True
                Width           =   80
             End
-            Begin StaticText lbl_song_using
+            Begin Label lbl_song_using
                AutoDeactivate  =   True
                Bold            =   ""
                DataField       =   ""
@@ -3363,11 +3445,12 @@ Begin Window MainWindow Implements ScriptureReceiver
                Left            =   634
                LockBottom      =   ""
                LockedInPosition=   False
-               LockLeft        =   ""
+               LockLeft        =   True
                LockRight       =   ""
-               LockTop         =   ""
+               LockTop         =   True
                Multiline       =   ""
                Scope           =   0
+               Selectable      =   False
                TabIndex        =   1
                TabPanelIndex   =   1
                Text            =   "Using:"
@@ -3376,7 +3459,8 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   435
+               Top             =   406
+               Transparent     =   False
                Underline       =   ""
                Visible         =   True
                Width           =   86
@@ -3399,7 +3483,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                LockedInPosition=   False
                LockLeft        =   ""
                LockRight       =   True
-               LockTop         =   ""
+               LockTop         =   True
                Scope           =   0
                TabIndex        =   2
                TabPanelIndex   =   1
@@ -3407,7 +3491,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                TextFont        =   "Arial"
                TextSize        =   10
                TextUnit        =   0
-               Top             =   412
+               Top             =   459
                Underline       =   ""
                Visible         =   True
                Width           =   80
@@ -3444,7 +3528,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   10
+            TabIndex        =   4
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3489,7 +3573,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   True
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   11
+            TabIndex        =   14
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3526,7 +3610,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -3567,10 +3651,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   13
+            TabIndex        =   16
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   231
@@ -3597,10 +3681,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   14
+            TabIndex        =   17
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   256
@@ -3627,10 +3711,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   15
+            TabIndex        =   18
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   281
@@ -3657,10 +3741,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   16
+            TabIndex        =   19
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   306
@@ -3687,10 +3771,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   17
+            TabIndex        =   20
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   331
@@ -3717,10 +3801,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   18
+            TabIndex        =   21
             TabPanelIndex   =   1
             TabStop         =   True
             Top             =   356
@@ -3747,7 +3831,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   19
@@ -3777,7 +3861,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   True
             TabIndex        =   20
@@ -3819,7 +3903,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   21
+            TabIndex        =   8
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3854,7 +3938,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   True
             Mask            =   ">CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
@@ -3864,7 +3948,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   22
+            TabIndex        =   10
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3909,7 +3993,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   23
+            TabIndex        =   6
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3954,7 +4038,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   24
+            TabIndex        =   2
             TabPanelIndex   =   1
             TabStop         =   True
             Text            =   ""
@@ -3995,7 +4079,7 @@ Begin Window MainWindow Implements ScriptureReceiver
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText lbl_slide_auto_advance
+         Begin Label lbl_slide_auto_advance
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4011,10 +4095,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
-            TabIndex        =   0
+            Selectable      =   False
+            TabIndex        =   21
             TabPanelIndex   =   3
             Text            =   "Auto-advance slide(s) every..."
             TextAlign       =   1
@@ -4023,11 +4108,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   240
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   130
+            Width           =   128
          End
-         Begin StaticText txt_slide_seconds
+         Begin Label txt_slide_seconds
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4043,10 +4129,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
-            TabIndex        =   1
+            Selectable      =   False
+            TabIndex        =   23
             TabPanelIndex   =   3
             Text            =   "seconds"
             TextAlign       =   1
@@ -4055,11 +4142,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   290
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   100
          End
-         Begin StaticText lbl_slide_insert
+         Begin Label lbl_slide_insert
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4075,10 +4163,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   2
+            Selectable      =   False
+            TabIndex        =   17
             TabPanelIndex   =   3
             Text            =   "Insert:"
             TextAlign       =   0
@@ -4087,6 +4176,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   140
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   115
@@ -4108,10 +4198,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   3
+            TabIndex        =   20
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
@@ -4146,7 +4236,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4154,7 +4244,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   4
+            TabIndex        =   22
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4185,10 +4275,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   5
+            TabIndex        =   19
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
@@ -4217,10 +4307,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   6
+            TabIndex        =   25
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
@@ -4250,9 +4340,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   7
+            TabIndex        =   27
             TabPanelIndex   =   3
             TabStop         =   True
             TextFont        =   "Arial"
@@ -4284,7 +4374,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
@@ -4294,7 +4384,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   8
+            TabIndex        =   12
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4308,7 +4398,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   160
          End
-         Begin StaticText lbl_slide_folder
+         Begin Label lbl_slide_folder
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4322,12 +4412,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   9
+            Selectable      =   False
+            TabIndex        =   13
             TabPanelIndex   =   3
             Text            =   "File Folder"
             TextAlign       =   0
@@ -4336,11 +4427,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   407
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   170
          End
-         Begin StaticText hdr_slide_header
+         Begin Label hdr_slide_header
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -4354,12 +4446,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   10
+            Selectable      =   False
+            TabIndex        =   0
             TabPanelIndex   =   3
             Text            =   "Custom Slide Editor"
             TextAlign       =   0
@@ -4368,11 +4461,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   460
          End
-         Begin StaticText lbl_slide_presentation
+         Begin Label lbl_slide_presentation
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4386,12 +4480,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   271
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   11
+            Selectable      =   False
+            TabIndex        =   9
             TabPanelIndex   =   3
             Text            =   "Custom Presentation Order:"
             TextAlign       =   0
@@ -4399,12 +4494,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   371
+            Top             =   369
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   170
          End
-         Begin StaticText lbl_slide_origorder
+         Begin Label lbl_slide_origorder
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4418,12 +4514,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   453
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   12
+            Selectable      =   False
+            TabIndex        =   11
             TabPanelIndex   =   3
             Text            =   "Original Presentation Order:"
             TextAlign       =   0
@@ -4431,7 +4528,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   371
+            Top             =   369
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   160
@@ -4457,7 +4555,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
@@ -4467,7 +4565,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   13
+            TabIndex        =   10
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4481,7 +4579,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   170
          End
-         Begin StaticText lbl_slide_name
+         Begin Label lbl_slide_name
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4495,12 +4593,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   590
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   14
+            Selectable      =   False
+            TabIndex        =   5
             TabPanelIndex   =   3
             Text            =   "Name:"
             TextAlign       =   0
@@ -4509,11 +4608,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
          End
-         Begin StaticText lbl_slide_subtitle
+         Begin Label lbl_slide_subtitle
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4527,12 +4627,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   15
+            Selectable      =   False
+            TabIndex        =   3
             TabPanelIndex   =   3
             Text            =   "Subtitle:"
             TextAlign       =   0
@@ -4541,11 +4642,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   145
          End
-         Begin StaticText lbl_slide_title
+         Begin Label lbl_slide_title
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4559,12 +4661,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   16
+            Selectable      =   False
+            TabIndex        =   1
             TabPanelIndex   =   3
             Text            =   "Title:"
             TextAlign       =   0
@@ -4573,11 +4676,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   145
          End
-         Begin StaticText lbl_slide_slides
+         Begin Label lbl_slide_slides
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4593,10 +4697,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   True
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   17
+            Selectable      =   False
+            TabIndex        =   7
             TabPanelIndex   =   3
             Text            =   "Slides:"
             TextAlign       =   0
@@ -4605,11 +4710,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   126
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   340
          End
-         Begin StaticText lbl_slide_transition
+         Begin Label lbl_slide_transition
             AutoDeactivate  =   True
             Bold            =   ""
             DataField       =   ""
@@ -4625,10 +4731,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
-            TabIndex        =   18
+            Selectable      =   False
+            TabIndex        =   26
             TabPanelIndex   =   3
             Text            =   "Use Transition"
             TextAlign       =   0
@@ -4636,12 +4743,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   420
+            Top             =   417
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   110
          End
-         Begin StaticText lbl_slide_notes
+         Begin Label lbl_slide_notes
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -4660,7 +4768,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   19
+            Selectable      =   False
+            TabIndex        =   15
             TabPanelIndex   =   3
             Text            =   "Notes:"
             TextAlign       =   0
@@ -4669,6 +4778,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   442
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   340
@@ -4694,9 +4804,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4704,7 +4814,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   20
+            TabIndex        =   4
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4739,9 +4849,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4749,7 +4859,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   21
+            TabIndex        =   2
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4784,9 +4894,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -4794,7 +4904,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   22
+            TabIndex        =   6
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4819,7 +4929,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             DataSource      =   ""
             Enabled         =   True
             Format          =   ""
-            Height          =   226
+            Height          =   222
             HelpTag         =   ""
             HideSelection   =   True
             Index           =   -2147483648
@@ -4839,7 +4949,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   True
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   23
+            TabIndex        =   8
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4874,7 +4984,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   True
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
             LockTop         =   False
             Mask            =   ""
@@ -4884,7 +4994,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   24
+            TabIndex        =   14
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4917,10 +5027,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   25
+            TabIndex        =   18
             TabPanelIndex   =   3
             TabStop         =   True
             Top             =   155
@@ -4959,7 +5069,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   True
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   26
+            TabIndex        =   16
             TabPanelIndex   =   3
             TabStop         =   True
             Text            =   ""
@@ -4990,10 +5100,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   False
-            TabIndex        =   27
+            TabIndex        =   24
             TabPanelIndex   =   3
             TabStop         =   True
             Top             =   310
@@ -5021,14 +5131,14 @@ Begin Window MainWindow Implements ScriptureReceiver
          LockRight       =   True
          LockTop         =   True
          Scope           =   0
-         TabIndex        =   4
+         TabIndex        =   0
          TabPanelIndex   =   5
          TabStop         =   True
          Top             =   40
          UseFocusRing    =   True
          Visible         =   True
          Width           =   485
-         Begin StaticText txt_image_seconds
+         Begin Label txt_image_seconds
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5044,10 +5154,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   True
             Scope           =   0
-            TabIndex        =   0
+            Selectable      =   False
+            TabIndex        =   26
             TabPanelIndex   =   5
             Text            =   "seconds"
             TextAlign       =   1
@@ -5056,11 +5167,46 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   389
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   100
          End
-         Begin StaticText lbl_image_transition
+         Begin Label lbl_image_auto_advance
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   30
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "can_editor_image_slide"
+            Italic          =   False
+            Left            =   615
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   True
+            LockTop         =   True
+            Multiline       =   True
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   18
+            TabPanelIndex   =   5
+            Text            =   "Auto-advance slide(s) every..."
+            TextAlign       =   1
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   339
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   128
+         End
+         Begin Label lbl_image_transition
             AutoDeactivate  =   True
             Bold            =   ""
             DataField       =   ""
@@ -5076,10 +5222,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
-            TabIndex        =   2
+            Selectable      =   False
+            TabIndex        =   29
             TabPanelIndex   =   5
             Text            =   "Use Transition"
             TextAlign       =   0
@@ -5088,6 +5235,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   519
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   110
@@ -5109,10 +5257,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   3
+            TabIndex        =   28
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5124,7 +5272,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   100
          End
-         Begin StaticText hdr_image_header
+         Begin Label hdr_image_header
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -5138,12 +5286,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   4
+            Selectable      =   False
+            TabIndex        =   0
             TabPanelIndex   =   5
             Text            =   "Image Slide Editor"
             TextAlign       =   0
@@ -5152,6 +5301,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   460
@@ -5174,9 +5324,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   ""
             LockRight       =   True
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
-            TabIndex        =   15
+            TabIndex        =   30
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5187,7 +5337,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   110
          End
-         Begin StaticText lbl_image_name
+         Begin Label lbl_image_name
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5201,11 +5351,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   590
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   5
             Text            =   "Name:"
@@ -5215,6 +5366,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   140
@@ -5239,11 +5391,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   ""
             Scope           =   0
             State           =   0
-            TabIndex        =   4
+            TabIndex        =   20
             TabPanelIndex   =   5
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             TextUnit        =   0
             Top             =   371
             Underline       =   ""
@@ -5271,11 +5423,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   ""
             Scope           =   0
             State           =   0
-            TabIndex        =   6
+            TabIndex        =   21
             TabPanelIndex   =   5
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             TextUnit        =   0
             Top             =   391
             Underline       =   ""
@@ -5303,11 +5455,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   ""
             Scope           =   0
             State           =   0
-            TabIndex        =   8
+            TabIndex        =   23
             TabPanelIndex   =   5
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             TextUnit        =   0
             Top             =   431
             Underline       =   ""
@@ -5335,11 +5487,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   ""
             Scope           =   0
             State           =   0
-            TabIndex        =   7
+            TabIndex        =   22
             TabPanelIndex   =   5
             TabStop         =   True
-            TextFont        =   "System"
-            TextSize        =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
             TextUnit        =   0
             Top             =   411
             Underline       =   ""
@@ -5347,7 +5499,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   340
          End
-         Begin StaticText lbl_image_notes
+         Begin Label lbl_image_notes
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5366,7 +5518,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   11
+            Selectable      =   False
+            TabIndex        =   24
             TabPanelIndex   =   5
             Text            =   "Notes:"
             TextAlign       =   0
@@ -5375,11 +5528,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   454
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   340
          End
-         Begin StaticText lbl_image_title
+         Begin Label lbl_image_title
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5393,12 +5547,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   12
+            Selectable      =   False
+            TabIndex        =   1
             TabPanelIndex   =   5
             Text            =   "Title:"
             TextAlign       =   0
@@ -5407,11 +5562,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   145
          End
-         Begin StaticText lbl_image_action
+         Begin Label lbl_image_action
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -5427,10 +5583,11 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   13
+            Selectable      =   False
+            TabIndex        =   10
             TabPanelIndex   =   5
             Text            =   "Insert:"
             TextAlign       =   0
@@ -5439,6 +5596,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   146
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   115
@@ -5460,10 +5618,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   14
+            TabIndex        =   17
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5492,10 +5650,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   15
+            TabIndex        =   16
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5530,15 +5688,15 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
             Scope           =   0
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
-            Styled          =   False
-            TabIndex        =   14
+            Styled          =   ""
+            TabIndex        =   19
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
@@ -5552,7 +5710,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             Visible         =   True
             Width           =   40
          End
-         Begin StaticText lbl_image_subtitle
+         Begin Label lbl_image_subtitle
             AutoDeactivate  =   True
             Bold            =   ""
             DataField       =   ""
@@ -5566,12 +5724,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
-            TabIndex        =   17
+            Selectable      =   False
+            TabIndex        =   3
             TabPanelIndex   =   5
             Text            =   "Subtitle:"
             TextAlign       =   0
@@ -5580,11 +5739,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   145
          End
-         Begin StaticText lbl_image_images
+         Begin Label lbl_image_images
             AutoDeactivate  =   True
             Bold            =   ""
             DataField       =   ""
@@ -5598,12 +5758,13 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   270
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Multiline       =   ""
             Scope           =   0
-            TabIndex        =   18
+            Selectable      =   False
+            TabIndex        =   8
             TabPanelIndex   =   5
             Text            =   "Images:"
             TextAlign       =   0
@@ -5612,6 +5773,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   142
+            Transparent     =   False
             Underline       =   ""
             Visible         =   True
             Width           =   333
@@ -5631,12 +5793,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             Left            =   430
             LockBottom      =   ""
             LockedInPosition=   False
-            LockLeft        =   ""
+            LockLeft        =   True
             LockRight       =   ""
-            LockTop         =   ""
+            LockTop         =   True
             Scope           =   0
             State           =   0
-            TabIndex        =   19
+            TabIndex        =   5
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "Arial"
@@ -5669,9 +5831,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5679,7 +5841,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   0
+            TabIndex        =   2
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
@@ -5710,10 +5872,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             SongStyle       =   False
-            TabIndex        =   21
+            TabIndex        =   27
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   409
@@ -5742,9 +5904,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5752,7 +5914,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   1
+            TabIndex        =   4
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
@@ -5787,9 +5949,9 @@ Begin Window MainWindow Implements ScriptureReceiver
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
-            LockLeft        =   False
+            LockLeft        =   True
             LockRight       =   False
-            LockTop         =   False
+            LockTop         =   True
             Mask            =   ""
             Multiline       =   False
             ReadOnly        =   False
@@ -5797,7 +5959,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   2
+            TabIndex        =   7
             TabPanelIndex   =   5
             TabStop         =   True
             Text            =   ""
@@ -5847,7 +6009,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   ""
             ScrollBarVertical=   True
             SelectionType   =   1
-            TabIndex        =   3
+            TabIndex        =   9
             TabPanelIndex   =   5
             TabStop         =   True
             TextFont        =   "System"
@@ -5925,10 +6087,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   9
+            TabIndex        =   11
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   161
@@ -5955,10 +6117,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   11
+            TabIndex        =   13
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   212
@@ -5985,10 +6147,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   13
+            TabIndex        =   15
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   263
@@ -6015,10 +6177,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockedInPosition=   False
             LockLeft        =   False
             LockRight       =   True
-            LockTop         =   False
+            LockTop         =   True
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   12
+            TabIndex        =   14
             TabPanelIndex   =   5
             TabStop         =   True
             Top             =   237
@@ -6048,46 +6210,14 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   10
+            TabIndex        =   31
             TabPanelIndex   =   5
-            TabStop         =   True
-            Top             =   186
+            TabStop         =   False
+            Top             =   185
             UseFocusRing    =   True
             Visible         =   True
             Width           =   115
          End
-      End
-      Begin StaticText lbl_image_auto_advance
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   30
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "pge_contents"
-         Italic          =   False
-         Left            =   615
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   False
-         LockRight       =   True
-         LockTop         =   False
-         Multiline       =   True
-         Scope           =   0
-         TabIndex        =   5
-         TabPanelIndex   =   5
-         Text            =   "Auto-advance slide(s) every..."
-         TextAlign       =   1
-         TextColor       =   0
-         TextFont        =   "Arial"
-         TextSize        =   10
-         TextUnit        =   0
-         Top             =   339
-         Underline       =   False
-         Visible         =   True
-         Width           =   130
       End
       Begin Canvas can_editor_external_slide
          AcceptFocus     =   False
@@ -6110,12 +6240,12 @@ Begin Window MainWindow Implements ScriptureReceiver
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   6
-         TabStop         =   True
+            TabStop         =   True
          Top             =   40
-         UseFocusRing    =   True
-         Visible         =   True
+            UseFocusRing    =   True
+            Visible         =   True
          Width           =   485
-         Begin StaticText hdr_external_header
+         Begin Label hdr_external_header
             AutoDeactivate  =   True
             Bold            =   True
             DataField       =   ""
@@ -6134,6 +6264,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   6
             Text            =   "External Slide Editor"
@@ -6143,11 +6274,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   22
             TextUnit        =   0
             Top             =   50
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   460
          End
-         Begin StaticText lbl_external_name
+         Begin Label lbl_external_name
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -6166,6 +6298,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   True
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   6
             Text            =   "Name:"
@@ -6175,11 +6308,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   91
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   460
          End
-         Begin StaticText lbl_external_notes
+         Begin Label lbl_external_notes
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -6198,7 +6332,8 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
-            TabIndex        =   8
+            Selectable      =   False
+            TabIndex        =   2
             TabPanelIndex   =   6
             Text            =   "Notes:"
             TextAlign       =   0
@@ -6207,11 +6342,12 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   454
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   340
          End
-         Begin StaticText lbl_external_application
+         Begin Label lbl_external_application
             AutoDeactivate  =   True
             Bold            =   False
             DataField       =   ""
@@ -6230,6 +6366,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Multiline       =   False
             Scope           =   0
+            Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   6
             Text            =   "Application:"
@@ -6239,6 +6376,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             TextSize        =   10
             TextUnit        =   0
             Top             =   146
+            Transparent     =   False
             Underline       =   False
             Visible         =   True
             Width           =   115
@@ -6263,7 +6401,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Scope           =   0
             State           =   0
-            TabIndex        =   7
+            TabIndex        =   4
             TabPanelIndex   =   6
             TabStop         =   True
             TextFont        =   "Arial"
@@ -6306,7 +6444,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   False
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   2
+            TabIndex        =   5
             TabPanelIndex   =   6
             TabStop         =   True
             Text            =   ""
@@ -6319,7 +6457,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             UseFocusRing    =   True
             Visible         =   True
             Width           =   460
-         End
+      End
          Begin SEditField edt_external_notes
             AcceptTabs      =   False
             Alignment       =   0
@@ -6351,7 +6489,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             ScrollbarHorizontal=   True
             ScrollbarVertical=   True
             Styled          =   False
-            TabIndex        =   9
+            TabIndex        =   6
             TabPanelIndex   =   6
             TabStop         =   True
             Text            =   ""
@@ -6387,7 +6525,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   4
+            TabIndex        =   7
             TabPanelIndex   =   6
             TabStop         =   True
             Top             =   161
@@ -6417,7 +6555,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   6
+            TabIndex        =   8
             TabPanelIndex   =   6
             TabStop         =   True
             Top             =   223
@@ -6447,7 +6585,7 @@ Begin Window MainWindow Implements ScriptureReceiver
             LockTop         =   False
             Scope           =   0
             StickyBevel     =   0
-            TabIndex        =   5
+            TabIndex        =   9
             TabPanelIndex   =   6
             TabStop         =   True
             Top             =   192
@@ -6471,10 +6609,10 @@ Begin Window MainWindow Implements ScriptureReceiver
             PanelCount      =   4
             Panels          =   ""
             Scope           =   0
-            TabIndex        =   0
+            TabIndex        =   10
             TabPanelIndex   =   6
             Top             =   146
-            Value           =   1
+            Value           =   2
             Visible         =   True
             Width           =   340
             Begin GroupBox grp_external_presentation_settings
@@ -6496,8 +6634,8 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   2
-               TextFont        =   "System"
-               TextSize        =   0
+               TextFont        =   "Arial"
+               TextSize        =   11
                TextUnit        =   0
                Top             =   150
                Underline       =   ""
@@ -6523,11 +6661,11 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Scope           =   0
                   State           =   0
-                  TabIndex        =   7
+                  TabIndex        =   0
                   TabPanelIndex   =   2
                   TabStop         =   True
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
                   Top             =   384
                   Underline       =   ""
@@ -6556,7 +6694,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Scope           =   0
                   StickyBevel     =   0
-                  TabIndex        =   5
+                  TabIndex        =   1
                   TabPanelIndex   =   2
                   TabStop         =   True
                   Top             =   339
@@ -6564,7 +6702,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Visible         =   True
                   Width           =   20
                End
-               Begin StaticText lbl_external_presentation_file
+               Begin Label lbl_external_presentation_file
                   AutoDeactivate  =   True
                   Bold            =   ""
                   DataField       =   ""
@@ -6583,15 +6721,17 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Multiline       =   ""
                   Scope           =   0
-                  TabIndex        =   4
+                  Selectable      =   False
+                  TabIndex        =   2
                   TabPanelIndex   =   2
                   Text            =   "Presentation filename"
                   TextAlign       =   0
                   TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
                   Top             =   341
+                  Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
                   Width           =   278
@@ -6616,8 +6756,8 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabIndex        =   3
                   TabPanelIndex   =   2
                   TabStop         =   True
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
                   Top             =   295
                   Underline       =   ""
@@ -6642,11 +6782,11 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockRight       =   True
                   LockTop         =   True
                   Scope           =   0
-                  TabIndex        =   2
+                  TabIndex        =   4
                   TabPanelIndex   =   2
                   TabStop         =   True
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
                   Top             =   227
                   Underline       =   ""
@@ -6671,11 +6811,11 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockRight       =   True
                   LockTop         =   True
                   Scope           =   0
-                  TabIndex        =   1
+                  TabIndex        =   5
                   TabPanelIndex   =   2
                   TabStop         =   True
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
                   Top             =   183
                   Underline       =   ""
@@ -6683,7 +6823,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Visible         =   True
                   Width           =   310
                End
-               Begin StaticText lbl_external_presentation_host
+               Begin Label lbl_external_presentation_host
                   AutoDeactivate  =   True
                   Bold            =   ""
                   DataField       =   ""
@@ -6702,15 +6842,17 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Multiline       =   ""
                   Scope           =   0
-                  TabIndex        =   0
+                  Selectable      =   False
+                  TabIndex        =   6
                   TabPanelIndex   =   2
                   Text            =   "Which application should be used to run the presentation?"
                   TextAlign       =   0
                   TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
                   Top             =   165
+                  Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
                   Width           =   310
@@ -6746,7 +6888,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   ScrollbarHorizontal=   ""
                   ScrollbarVertical=   True
                   Styled          =   ""
-                  TabIndex        =   6
+                  TabIndex        =   7
                   TabPanelIndex   =   2
                   TabStop         =   True
                   Text            =   ""
@@ -6754,7 +6896,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   359
+                  Top             =   360
                   Underline       =   ""
                   UseFocusRing    =   True
                   Visible         =   True
@@ -6783,8 +6925,8 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TabIndex        =   8
                   TabPanelIndex   =   2
                   TabStop         =   True
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
                   Top             =   404
                   Underline       =   ""
@@ -6792,13 +6934,13 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Visible         =   True
                   Width           =   310
                End
-               Begin StaticText nte_external_host_powerpoint_info
+               Begin Label nte_external_host_powerpoint_info
                   AutoDeactivate  =   True
                   Bold            =   ""
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   30
+                  Height          =   28
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -6811,26 +6953,28 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Multiline       =   True
                   Scope           =   0
+                  Selectable      =   False
                   TabIndex        =   9
                   TabPanelIndex   =   2
                   Text            =   "For full control over your PowerPoint presentation an installation of Microsoft Office is required."
                   TextAlign       =   0
                   TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
-                  Top             =   200
+                  Top             =   201
+                  Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
                   Width           =   290
                End
-               Begin StaticText nte_external_host_pptview_info
+               Begin Label nte_external_host_pptview_info
                   AutoDeactivate  =   True
                   Bold            =   ""
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   55
+                  Height          =   53
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -6843,26 +6987,28 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Multiline       =   True
                   Scope           =   0
+                  Selectable      =   False
                   TabIndex        =   10
                   TabPanelIndex   =   2
                   Text            =   "For showing your PowerPoint presentation without interaction, you can use the free Microsoft PowerPoint Viewer. OpenSong tries to detect it. You can set a specific viewer in the general settings."
                   TextAlign       =   0
                   TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
-                  Top             =   244
+                  Top             =   245
+                  Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
                   Width           =   290
                End
-               Begin StaticText nte_external_host_impress_info
+               Begin Label nte_external_host_impress_info
                   AutoDeactivate  =   True
                   Bold            =   ""
                   DataField       =   ""
                   DataSource      =   ""
                   Enabled         =   True
-                  Height          =   30
+                  Height          =   26
                   HelpTag         =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_presentation_settings"
@@ -6875,18 +7021,81 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Multiline       =   True
                   Scope           =   0
+                  Selectable      =   False
                   TabIndex        =   11
                   TabPanelIndex   =   2
                   Text            =   "For full control of an Impress or PowerPoint presentation the free OpenOffice.org suite is required."
                   TextAlign       =   0
                   TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
-                  Top             =   312
+                  Top             =   313
+                  Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
                   Width           =   290
+               End
+            End
+            Begin GroupBox grp_external_no_application
+               AutoDeactivate  =   True
+               Bold            =   ""
+               Caption         =   "No application"
+               Enabled         =   True
+               Height          =   280
+               HelpTag         =   ""
+               Index           =   -2147483648
+               InitialParent   =   "pge_externals"
+               Italic          =   ""
+               Left            =   275
+               LockBottom      =   True
+               LockedInPosition=   False
+               LockLeft        =   True
+               LockRight       =   True
+               LockTop         =   True
+               Scope           =   0
+               TabIndex        =   0
+               TabPanelIndex   =   1
+               TextFont        =   "Arial"
+               TextSize        =   11
+               TextUnit        =   0
+               Top             =   150
+               Underline       =   ""
+               Visible         =   True
+               Width           =   330
+               Begin Label txt_external_no_application
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   50
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_no_application"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   True
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   0
+                  TabPanelIndex   =   1
+                  Text            =   "Select an application to use as source for this slides content."
+                  TextAlign       =   1
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   265
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   310
                End
             End
             Begin GroupBox grp_external_application_settings
@@ -6908,14 +7117,14 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   4
-               TextFont        =   "System"
-               TextSize        =   0
+               TextFont        =   "Arial"
+               TextSize        =   11
                TextUnit        =   0
                Top             =   150
                Underline       =   ""
                Visible         =   True
                Width           =   330
-               Begin StaticText lbl_external_application_filename
+               Begin Label lbl_external_application_parameters
                   AutoDeactivate  =   True
                   Bold            =   ""
                   DataField       =   ""
@@ -6926,7 +7135,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
                   Italic          =   ""
-                  Left            =   285
+                  Left            =   305
                   LockBottom      =   ""
                   LockedInPosition=   False
                   LockLeft        =   True
@@ -6934,18 +7143,54 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Multiline       =   ""
                   Scope           =   0
+                  Selectable      =   False
                   TabIndex        =   0
+                  TabPanelIndex   =   4
+                  Text            =   "Application parameters"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   236
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin Label lbl_external_application_filename
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   1
                   TabPanelIndex   =   4
                   Text            =   "Path to application executable"
                   TextAlign       =   0
                   TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
+                  TextFont        =   "Arial"
+                  TextSize        =   10
                   TextUnit        =   0
-                  Top             =   168
+                  Top             =   192
+                  Transparent     =   False
                   Underline       =   ""
                   Visible         =   True
-                  Width           =   278
+                  Width           =   258
                End
                Begin SButton btn_external_application_filename
                   AcceptFocus     =   ""
@@ -6968,10 +7213,10 @@ Begin Window MainWindow Implements ScriptureReceiver
                   LockTop         =   True
                   Scope           =   0
                   StickyBevel     =   0
-                  TabIndex        =   1
+                  TabIndex        =   2
                   TabPanelIndex   =   4
                   TabStop         =   True
-                  Top             =   168
+                  Top             =   191
                   UseFocusRing    =   True
                   Visible         =   True
                   Width           =   20
@@ -6993,116 +7238,7 @@ Begin Window MainWindow Implements ScriptureReceiver
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_application_settings"
                   Italic          =   ""
-                  Left            =   285
-                  LimitText       =   0
-                  LockBottom      =   ""
-                  LockedInPosition=   False
-                  LockLeft        =   True
-                  LockRight       =   True
-                  LockTop         =   True
-                  Mask            =   ""
-                  Multiline       =   ""
-                  ReadOnly        =   ""
-                  Scope           =   0
-                  ScrollbarHorizontal=   ""
-                  ScrollbarVertical=   True
-                  Styled          =   ""
-                  TabIndex        =   1
-                  TabPanelIndex   =   4
-                  TabStop         =   True
-                  Text            =   ""
-                  TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
-                  TextUnit        =   0
-                  Top             =   190
-                  Underline       =   ""
-                  UseFocusRing    =   True
-                  Visible         =   True
-                  Width           =   310
-               End
-               Begin CheckBox chk_external_wait_for_application
-                  AutoDeactivate  =   True
-                  Bold            =   ""
-                  Caption         =   "Wait for external application to finish before continuing."
-                  DataField       =   ""
-                  DataSource      =   ""
-                  Enabled         =   True
-                  Height          =   20
-                  HelpTag         =   ""
-                  Index           =   -2147483648
-                  InitialParent   =   "grp_external_application_settings"
-                  Italic          =   ""
-                  Left            =   285
-                  LockBottom      =   ""
-                  LockedInPosition=   False
-                  LockLeft        =   True
-                  LockRight       =   True
-                  LockTop         =   True
-                  Scope           =   0
-                  State           =   0
-                  TabIndex        =   4
-                  TabPanelIndex   =   4
-                  TabStop         =   True
-                  TextFont        =   "System"
-                  TextSize        =   0
-                  TextUnit        =   0
-                  Top             =   273
-                  Underline       =   ""
-                  Value           =   False
-                  Visible         =   True
-                  Width           =   310
-               End
-               Begin StaticText lbl_external_application_parameters
-                  AutoDeactivate  =   True
-                  Bold            =   ""
-                  DataField       =   ""
-                  DataSource      =   ""
-                  Enabled         =   True
-                  Height          =   20
-                  HelpTag         =   ""
-                  Index           =   -2147483648
-                  InitialParent   =   "grp_external_application_settings"
-                  Italic          =   ""
-                  Left            =   285
-                  LockBottom      =   ""
-                  LockedInPosition=   False
-                  LockLeft        =   True
-                  LockRight       =   True
-                  LockTop         =   True
-                  Multiline       =   ""
-                  Scope           =   0
-                  TabIndex        =   2
-                  TabPanelIndex   =   4
-                  Text            =   "Application parameters"
-                  TextAlign       =   0
-                  TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
-                  TextUnit        =   0
-                  Top             =   217
-                  Underline       =   ""
-                  Visible         =   True
-                  Width           =   278
-               End
-               Begin SEditField edt_external_application_parameters
-                  AcceptTabs      =   ""
-                  Alignment       =   0
-                  AutoDeactivate  =   True
-                  BackColor       =   &hFFFFFF
-                  Bold            =   ""
-                  Border          =   True
-                  DataField       =   ""
-                  DataSource      =   ""
-                  Enabled         =   True
-                  Format          =   ""
-                  Height          =   22
-                  HelpTag         =   ""
-                  HideSelection   =   True
-                  Index           =   -2147483648
-                  InitialParent   =   "grp_external_application_settings"
-                  Italic          =   ""
-                  Left            =   285
+                  Left            =   305
                   LimitText       =   0
                   LockBottom      =   ""
                   LockedInPosition=   False
@@ -7124,9 +7260,144 @@ Begin Window MainWindow Implements ScriptureReceiver
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   239
+                  Top             =   212
                   Underline       =   ""
                   UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin SEditField edt_external_application_parameters
+                  AcceptTabs      =   ""
+                  Alignment       =   0
+                  AutoDeactivate  =   True
+                  BackColor       =   &hFFFFFF
+                  Bold            =   ""
+                  Border          =   True
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Format          =   ""
+                  Height          =   22
+                  HelpTag         =   ""
+                  HideSelection   =   True
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LimitText       =   0
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Mask            =   ""
+                  Multiline       =   ""
+                  ReadOnly        =   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollbarVertical=   True
+                  Styled          =   ""
+                  TabIndex        =   4
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  Text            =   ""
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   256
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin CheckBox chk_external_wait_for_application
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Wait for external application to finish before continuing"
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  State           =   0
+                  TabIndex        =   5
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   281
+                  Underline       =   ""
+                  Value           =   False
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin RadioButton rad_external_application_start
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Start an external application"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   ""
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   6
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   173
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin RadioButton rad_external_application_stop
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Stop any currently running launched application"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_application_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   ""
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   7
+                  TabPanelIndex   =   4
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   311
+                  Underline       =   ""
+                  Value           =   ""
                   Visible         =   True
                   Width           =   310
                End
@@ -7150,103 +7421,404 @@ Begin Window MainWindow Implements ScriptureReceiver
                Scope           =   0
                TabIndex        =   0
                TabPanelIndex   =   3
-               TextFont        =   "System"
-               TextSize        =   0
+               TextFont        =   "Arial"
+               TextSize        =   11
                TextUnit        =   0
                Top             =   150
                Underline       =   ""
                Visible         =   True
                Width           =   330
-               Begin StaticText txt_external_videolan_not_available
+               Begin Listbox lst_external_videolan_preset
                   AutoDeactivate  =   True
+                  AutoHideScrollbars=   True
                   Bold            =   ""
+                  Border          =   True
+                  ColumnCount     =   1
+                  ColumnsResizable=   ""
+                  ColumnWidths    =   ""
                   DataField       =   ""
                   DataSource      =   ""
+                  DefaultRowHeight=   -1
                   Enabled         =   True
-                  Height          =   39
+                  EnableDrag      =   ""
+                  EnableDragReorder=   ""
+                  GridLinesHorizontal=   0
+                  GridLinesVertical=   0
+                  HasHeading      =   ""
+                  HeadingIndex    =   -1
+                  Height          =   68
                   HelpTag         =   ""
+                  Hierarchical    =   ""
                   Index           =   -2147483648
                   InitialParent   =   "grp_external_videolan_settings"
+                  InitialValue    =   ""
                   Italic          =   ""
-                  Left            =   284
-                  LockBottom      =   ""
-                  LockedInPosition=   False
-                  LockLeft        =   True
-                  LockRight       =   True
-                  LockTop         =   False
-                  Multiline       =   True
-                  Scope           =   0
-                  TabIndex        =   0
-                  TabPanelIndex   =   3
-                  Text            =   "Select an application to use as source for this slides content."
-                  TextAlign       =   1
-                  TextColor       =   &h000000
-                  TextFont        =   "System"
-                  TextSize        =   0
-                  TextUnit        =   0
-                  Top             =   267
-                  Underline       =   ""
-                  Visible         =   True
-                  Width           =   310
-               End
-            End
-            Begin GroupBox grp_external_no_application
-               AutoDeactivate  =   True
-               Bold            =   ""
-               Caption         =   "No application"
-               Enabled         =   True
-               Height          =   280
-               HelpTag         =   ""
-               Index           =   -2147483648
-               InitialParent   =   "pge_externals"
-               Italic          =   ""
-               Left            =   275
-               LockBottom      =   True
-               LockedInPosition=   False
-               LockLeft        =   True
-               LockRight       =   True
-               LockTop         =   True
-               Scope           =   0
-               TabIndex        =   1
-               TabPanelIndex   =   1
-               TextFont        =   "System"
-               TextSize        =   0
-               TextUnit        =   0
-               Top             =   150
-               Underline       =   ""
-               Visible         =   True
-               Width           =   330
-               Begin StaticText txt_external_no_application
-                  AutoDeactivate  =   True
-                  Bold            =   ""
-                  DataField       =   ""
-                  DataSource      =   ""
-                  Enabled         =   True
-                  Height          =   39
-                  HelpTag         =   ""
-                  Index           =   -2147483648
-                  InitialParent   =   "grp_external_no_application"
-                  Italic          =   ""
-                  Left            =   284
+                  Left            =   305
                   LockBottom      =   True
                   LockedInPosition=   False
                   LockLeft        =   True
                   LockRight       =   True
                   LockTop         =   True
-                  Multiline       =   True
+                  RequiresSelection=   ""
                   Scope           =   0
-                  TabIndex        =   0
-                  TabPanelIndex   =   1
-                  Text            =   "Select an application to use as source for this slides content."
-                  TextAlign       =   1
+                  ScrollbarHorizontal=   ""
+                  ScrollBarVertical=   True
+                  SelectionType   =   0
+                  TabIndex        =   1
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   275
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+                  _ScrollWidth    =   -1
+               End
+               Begin RadioButton rad_external_videolan_start
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Launch Videolan"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   ""
+                  LockTop         =   True
+                  Scope           =   0
+                  TabIndex        =   2
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   173
+                  Underline       =   ""
+                  Value           =   ""
+                  Visible         =   True
+                  Width           =   310
+               End
+               Begin SButton btn_external_videolan_mediafilename
+                  AcceptFocus     =   ""
+                  AcceptTabs      =   ""
+                  AutoDeactivate  =   True
+                  Backdrop        =   ""
+                  DoubleBuffer    =   False
+                  Enabled         =   True
+                  EraseBackground =   True
+                  HasFocus        =   0
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Left            =   575
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   ""
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  StickyBevel     =   0
+                  TabIndex        =   3
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  Top             =   191
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   20
+               End
+               Begin SEditField edt_external_videolan_mediafilename
+                  AcceptTabs      =   ""
+                  Alignment       =   0
+                  AutoDeactivate  =   True
+                  BackColor       =   &hFFFFFF
+                  Bold            =   ""
+                  Border          =   True
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Format          =   ""
+                  Height          =   22
+                  HelpTag         =   ""
+                  HideSelection   =   True
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LimitText       =   0
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Mask            =   ""
+                  Multiline       =   ""
+                  ReadOnly        =   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollbarVertical=   True
+                  Styled          =   ""
+                  TabIndex        =   4
+                  TabPanelIndex   =   3
+                  TabStop         =   False
+                  Text            =   ""
                   TextColor       =   &h000000
                   TextFont        =   "System"
                   TextSize        =   0
                   TextUnit        =   0
-                  Top             =   267
+                  Top             =   212
                   Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin RadioButton rad_external_videolan_stop
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Stop any launched instance of Videolan"
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   285
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   False
+                  Scope           =   0
+                  TabIndex        =   5
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   405
+                  Underline       =   ""
+                  Value           =   ""
                   Visible         =   True
                   Width           =   310
+               End
+               Begin Label lbl_external_videolan_mediafilename
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   6
+                  TabPanelIndex   =   3
+                  Text            =   "Path to media file to play"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   192
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   258
+               End
+               Begin Label lbl_external_videolan_preset
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   False
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   7
+                  TabPanelIndex   =   3
+                  Text            =   "Use the following preset with parameters"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   255
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin Label lbl_external_videolan_manual
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   False
+                  Multiline       =   ""
+                  Scope           =   0
+                  Selectable      =   False
+                  TabIndex        =   8
+                  TabPanelIndex   =   3
+                  Text            =   "Manually adjusted parameters (use %d for display number, %s for mediafile)"
+                  TextAlign       =   0
+                  TextColor       =   &h000000
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   343
+                  Transparent     =   False
+                  Underline       =   ""
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin SEditField edt_external_videolan_manual
+                  AcceptTabs      =   ""
+                  Alignment       =   0
+                  AutoDeactivate  =   True
+                  BackColor       =   &hFFFFFF
+                  Bold            =   ""
+                  Border          =   True
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Format          =   ""
+                  Height          =   22
+                  HelpTag         =   ""
+                  HideSelection   =   True
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LimitText       =   0
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   False
+                  Mask            =   ""
+                  Multiline       =   ""
+                  ReadOnly        =   ""
+                  Scope           =   0
+                  ScrollbarHorizontal=   ""
+                  ScrollbarVertical=   True
+                  Styled          =   ""
+                  TabIndex        =   9
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  Text            =   ""
+                  TextColor       =   &h000000
+                  TextFont        =   "System"
+                  TextSize        =   0
+                  TextUnit        =   0
+                  Top             =   362
+                  Underline       =   ""
+                  UseFocusRing    =   True
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin CheckBox chk_external_wait_for_videolan
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Wait for playback to finish before continuing to next slide"
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   True
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   True
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   False
+                  Scope           =   0
+                  State           =   0
+                  TabIndex        =   10
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   385
+                  Underline       =   ""
+                  Value           =   False
+                  Visible         =   True
+                  Width           =   290
+               End
+               Begin CheckBox chk_external_embed_mediafile
+                  AutoDeactivate  =   True
+                  Bold            =   ""
+                  Caption         =   "Include the media file in the OpenSong set"
+                  DataField       =   ""
+                  DataSource      =   ""
+                  Enabled         =   False
+                  Height          =   20
+                  HelpTag         =   ""
+                  Index           =   -2147483648
+                  InitialParent   =   "grp_external_videolan_settings"
+                  Italic          =   ""
+                  Left            =   305
+                  LockBottom      =   ""
+                  LockedInPosition=   False
+                  LockLeft        =   True
+                  LockRight       =   True
+                  LockTop         =   True
+                  Scope           =   0
+                  State           =   0
+                  TabIndex        =   11
+                  TabPanelIndex   =   3
+                  TabStop         =   True
+                  TextFont        =   "Arial"
+                  TextSize        =   10
+                  TextUnit        =   0
+                  Top             =   234
+                  Underline       =   ""
+                  Value           =   False
+                  Visible         =   True
+                  Width           =   290
                End
             End
          End
@@ -7262,7 +7834,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       Left            =   249
       LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
       Scope           =   0
@@ -7285,7 +7857,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   True
-      LockTop         =   False
+      LockTop         =   True
       Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
@@ -7381,6 +7953,10 @@ End
 		  Else
 		    mnu_file_song_act.Enabled = false
 		  End If
+		  '++JRC No Bibles found disable, disable Scripture Lookup
+		  If UBound(BibleFactory.BibleList) < 0 Then
+		    mnu_file_scripture.Enabled = False
+		  End If
 		  '--
 		  If pge_controls.Value = 0 Then ' Songs tab
 		    mnu_mode_songs.Checked = True
@@ -7399,12 +7975,7 @@ End
 		      btn_song_delete.Enabled = True
 		      mnu_file_print.Enabled = True
 		      mnu_file_single_screen.Enabled = True
-		      mnu_file_dual_screen.Enabled = (ScreenCount > 1) 'EMP 12/05
-		      #If TargetLinux
-		        If (Screen(0).Width /2) > Screen(0).Height Then
-		          mnu_file_dual_screen.Enabled = True
-		        End If
-		      #EndIf
+		      mnu_file_dual_screen.Enabled = (OSScreenCount() > 1) 'EMP 12/05
 		      mnu_file_preview_dual_screen.Enabled = True
 		      
 		      ' EDITOR FIELDS
@@ -7548,10 +8119,16 @@ End
 		    mnu_mode_sets.Checked = True
 		    mnu_file_pagesetup.Enabled = True
 		    If Status_SetOpen Then
+		      '++JRC No Bibles found disable, disable Scripture Lookup
+		      If UBound(BibleFactory.BibleList) < 0 Then
+		        btn_set_add_scripture.Enabled = False
+		      Else
+		        btn_set_add_scripture.Enabled = True
+		      End If
+		      '--
 		      btn_set_add_song.Enabled = True
 		      btn_set_add_style.Enabled = True
 		      btn_set_add_slides.Enabled = True
-		      btn_set_add_scripture.Enabled = True
 		      btn_set_add_image.Enabled = True
 		      btn_set_add_external.Enabled = True
 		      btn_set_present.Enabled = True And (Not Status_Presentation)
@@ -7563,12 +8140,7 @@ End
 		      btn_set_saveas.Enabled = True
 		      mnu_file_print.Enabled = True
 		      mnu_file_single_screen.Enabled = True
-		      mnu_file_dual_screen.Enabled = (ScreenCount > 1) 'EMP 12/05
-		      #If TargetLinux
-		        If (Screen(0).Width /2) > Screen(0).Height Then
-		          mnu_file_dual_screen.Enabled = True
-		        End If
-		      #endif
+		      mnu_file_dual_screen.Enabled = (OSScreenCount() > 1) 'EMP 12/05
 		      mnu_file_preview_dual_screen.Enabled = True
 		    Else
 		      btn_set_add_song.Enabled = False
@@ -7640,7 +8212,7 @@ End
 		      ' Copy
 		      btn_set_copy.Enabled = True
 		      Dim c As New Clipboard
-		      btn_set_paste.Enabled = (c.TextAvailable) and (Left(c.text,12) = "<slide_group")
+		      btn_set_paste.Enabled = (c.RawDataAvailable(CopyTypes.SetSlides.MacType)) and (Left(c.RawData(CopyTypes.SetSlides.MacType),12) = "<slide_group")
 		      c.close
 		    Else
 		      '++JRC
@@ -7738,6 +8310,32 @@ End
 		          can_image_style.SetEnabled False
 		        End If
 		      End If
+		      
+		      'External slide
+		      edt_external_name.Enabled = True
+		      edt_external_presentation_file.Enabled = True
+		      chk_external_loop_presentation.Enabled = True
+		      'chk_external_embed_presentation.Enabled = True
+		      rad_external_videolan_start.Enabled = true
+		      lbl_external_videolan_mediafilename.Enabled = rad_external_videolan_start.Value
+		      'chk_external_embed_mediafile.Enabled = True
+		      If rad_external_videolan_start.Value = False Then chk_external_embed_mediafile.Enabled = False
+		      edt_external_videolan_mediafilename.Enabled = rad_external_videolan_start.Value
+		      lbl_external_videolan_preset.Enabled = rad_external_videolan_start.Value
+		      lst_external_videolan_preset.Enabled = rad_external_videolan_start.Value
+		      lbl_external_videolan_manual.Enabled = rad_external_videolan_start.Value
+		      edt_external_videolan_manual.Enabled = rad_external_videolan_start.Value
+		      chk_external_wait_for_videolan.Enabled = rad_external_videolan_start.Value
+		      rad_external_videolan_stop.Enabled = True
+		      rad_external_application_start.Enabled = True
+		      lbl_external_application_filename.Enabled = rad_external_application_start.Value
+		      edt_external_application_filename.Enabled = rad_external_application_start.Value
+		      btn_external_application_filename.Enabled = rad_external_application_start.Value
+		      lbl_external_application_parameters.Enabled = rad_external_application_start.Value
+		      edt_external_application_parameters.Enabled = rad_external_application_start.Value
+		      chk_external_wait_for_application.Enabled = rad_external_application_start.Value
+		      rad_external_application_stop.Enabled = True
+		      chk_external_loop.Enabled = True
 		    Else
 		      
 		      edt_slide_name.Enabled = False
@@ -7816,6 +8414,26 @@ End
 		      can_image_style.ClearStyleNode
 		      can_image_style.SetEnabled False
 		      
+		      'External slide
+		      edt_external_name.Enabled = False
+		      edt_external_presentation_file.Enabled = False
+		      chk_external_loop_presentation.Enabled = False
+		      chk_external_embed_presentation.Enabled = False
+		      rad_external_videolan_start.Enabled = False
+		      edt_external_videolan_mediafilename.Enabled = False
+		      chk_external_embed_mediafile.Enabled = False
+		      lst_external_videolan_preset.Enabled = False
+		      edt_external_videolan_manual.Enabled = False
+		      chk_external_wait_for_videolan.Enabled = False
+		      rad_external_videolan_stop.Enabled = False
+		      rad_external_application_start.Enabled = False
+		      btn_external_application_filename.Enabled = False
+		      edt_external_application_filename.Enabled = False
+		      edt_external_application_parameters.Enabled = False
+		      chk_external_wait_for_application.Enabled = False
+		      rad_external_application_stop.Enabled = False
+		      chk_external_loop.Enabled = False
+		      
 		    End If
 		    
 		  End If
@@ -7824,9 +8442,7 @@ End
 
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
-		  Dim i As Integer
-		  
-		  dim Mode as Integer
+		  Dim Mode as Integer
 		  
 		  If Globals.Status_Presentation Then
 		    App.DebugWriter.Write "MainWindow.KeyDown: Got a '" + Key + "' in Presentation Mode"
@@ -7850,7 +8466,7 @@ End
 		  end if
 		  
 		  If Keyboard.AsyncKeyDown(&h60) Then ' F5
-		    'If ScreenCount > 1 Then
+		    'If OSScreenCount() > 1 Then
 		    'i = 3
 		    'Else
 		    'i = 1
@@ -7893,13 +8509,10 @@ End
 		Sub Open()
 		  Profiler.BeginProfilerEntry "MainWindow::Open"
 		  App.DebugWriter.Write "MainWindow.Open: Enter"
-		  Dim output As TextOutputStream
-		  Dim MainFolder As FolderItem
 		  Dim s As String
 		  Dim StartMode As Integer
 		  Dim i As Integer
 		  Dim bibleFiles() As String
-		  Dim f As FolderItem
 		  
 		  '++JRC
 		  Globals.OldFolderSel = -1
@@ -7921,28 +8534,43 @@ End
 		    // element 0.  Otherwise, the first valid file isn't shown.
 		    //--
 		    Splash.Hide
-		    Redim bibleFiles(-1)
+		    'Redim bibleFiles(-1)
 		    bibleFiles = BibleFactory.BibleList
-		    bibleFiles.Insert 0, ""
-		    s = InputBox.Pick(App.T.Translate("scripture_lookup/select_file/@caption"), bibleFiles)
-		    App.MyBible = BibleFactory.GetBible(s)
+		    'bibleFiles.Insert 0, ""
+		    
+		    If UBound(bibleFiles) >= 0 Then
+		      '++JRC Notify user that we could not load default Bible
+		      MsgBox App.T.Translate("errors/load_bible", s)
+		      
+		      'run through the list and try to load the next available Bible
+		      For i = 0 To UBound(bibleFiles)
+		        App.MyBible = BibleFactory.GetBible(bibleFiles(i))
 		    If App.MyBible <> Nil Then
-		      SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", s)
-		      App.DebugWriter.Write "MainWindow.Open: Successfully opened newly selected Bible " + s
+		          MsgBox App.T.Translate("bible/load_successful", bibleFiles(i))
+		          
+		          App.DebugWriter.Write "MainWindow.Open: Successfully opened newly selected Bible " + bibleFiles(i)
+		          SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", bibleFiles(i))
+		          Exit For
+		        End If
+		        
+		      Next
+		      's = InputBox.Pick(App.T.Translate("scripture_lookup/select_file/@caption"), bibleFiles)
+		      'App.MyBible = BibleFactory.GetBible(s)
 		    Else
-		      App.DebugWriter.Write "MainWindow.Open: Unable to load newly selected Bible " + s + ", App.MyBible = Nil"
-		      App.DebugWriter.Write Chr(9) + App.MyBible.ErrorString
+		      '++JRC If no Scripture files were found, set MyBible to Nil and continue operation
 		      App.MyBible = Nil
 		    End If
+		    '--
+		    
 		    Splash.Show
 		  End If
 		  
 		  Splash.SetStatus App.T.Translate("load_data/songs_cache") + "..."
-		  If App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB) Then
-		    Songs = New FolderDBOld(App.DocsFolder.Child("Songs"))
-		  Else
+		  'If App.MainPreferences.GetValueB(Prefs.kUseOldFolderDB) Then
+		  'Songs = New FolderDBOld(App.DocsFolder.Child("Songs"))
+		  'Else
 		    Songs = New FolderDB(App.DocsFolder.Child("Songs"))
-		  End If
+		  'End If
 		  Songs.SetBuiltinFilters "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )", _
 		  "( " + App.T.Translate("/songs_mode/song_folders/filter_main/@caption") + " )"
 		  
@@ -7986,7 +8614,7 @@ End
 		  
 		  Dim controlScreen As Integer
 		  controlScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@control") - 1
-		  If controlScreen < 0 Or controlScreen + 1 > ScreenCount Then controlScreen = 0
+		  If controlScreen < 0 Or controlScreen + 1 > OSScreenCount() Then controlScreen = 0
 		  
 		  LastSongPane = 0
 		  LastSetPane = 2
@@ -8133,26 +8761,16 @@ End
 
 	#tag MenuHandler
 		Function mnu_file_dual_screen() As Boolean Handles mnu_file_dual_screen.Action
-			#If TargetLinux
-			If (Screen(0).Width /2) > Screen(0).Height Then
-			If pge_controls.Value = 0 Then
-			ActionSongPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-			Else
-			ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-			End If
-			End If
-			#endif
-			
-			If ScreenCount = 1 Then
+			If OSScreenCount() = 1 Then
 			InputBox.Message App.T.Translate("errors/no_multi_screen")
-			Return True
-			End If
-			
+			Else
 			If pge_controls.Value = 0 Then
 			ActionSongPresent PresentWindow.MODE_DUAL_SCREEN
 			Else
 			ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
 			End If
+			End If
+			
 			Return True
 		End Function
 	#tag EndMenuHandler
@@ -8356,6 +8974,14 @@ End
 	#tag EndMenuHandler
 
 	#tag MenuHandler
+		Function mnu_file_scripture() As Boolean Handles mnu_file_scripture.Action
+			ActionSetAddScripture
+			Return True
+			
+		End Function
+	#tag EndMenuHandler
+
+	#tag MenuHandler
 		Function mnu_file_single_screen() As Boolean Handles mnu_file_single_screen.Action
 			If pge_controls.Value = 0 Then
 			ActionSongPresent PresentWindow.MODE_SINGLE_SCREEN
@@ -8418,6 +9044,7 @@ End
 	#tag MenuHandler
 		Function mnu_settings_general() As Boolean Handles mnu_settings_general.Action
 			MainSettingsWindow.ShowModalWithin MainWindow
+			lst_set_items.Invalidate(True)
 			Return True
 		End Function
 	#tag EndMenuHandler
@@ -8480,7 +9107,6 @@ End
 			// If a Bible, offer to generate the index now.
 			//--
 			If xfile.DocumentElement.Name = "bible" Then
-			If InputBox.AskYN(App.T.Translate("module/generate_index")) Then
 			newBible = New Bible
 			App.MouseCursor = System.Cursors.Wait
 			If Not newBible.LoadBible(file) Then
@@ -8489,9 +9115,17 @@ End
 			Return True
 			End If
 			End If
-			End If
 			App.MouseCursor = Nil
+			
 			InputBox.Message App.T.Translate("module/success")
+			
+			'Bible added successfully
+			'If no other Bibles are installed make this the default
+			If  App.MyBible = Nil Then
+			App.MyBible = newbible
+			SmartML.SetValue(App.MyMainSettings.DocumentElement, "last_scripture/@version", file.Name)
+			End If
+			
 			Return True
 		End Function
 	#tag EndMenuHandler
@@ -8563,7 +9197,9 @@ End
 		    Select Case SaveDialog( App.T.Translate("questions/save/@caption", lst_set_items.Cell(CurrentInSetItem, 0)))
 		    Case 1
 		      'User pressed Yes, so save
-		      ActionInSetSave
+		      If Not ActionInSetSave() Then
+		        Return False
+		      End If
 		    Case 0
 		      //++EMP:
 		      // Don't reset the modified flag, otherwise the user could select not to save,
@@ -8602,8 +9238,7 @@ End
 		  'lst_set_items.ListIndex = lst_set_items.ListIndex + 1
 		  
 		  Dim c As New Clipboard
-		  
-		  c.SetText oldGroup.ToString
+		  c.AddRawData oldGroup.ToString, CopyTypes.SetSlides.MacType
 		  c.close
 		  '--
 		  '++JRC Refresh
@@ -8614,16 +9249,20 @@ End
 	#tag Method, Flags = &h0
 		Sub ActionInSetPaste()
 		  '++gerritp
+		  Dim text As String
 		  Dim xgroups, oldGroup, newGroup As XmlNode
 		  dim xml as XmlDocument
 		  'Ask if user wants to save
 		  If NOT ActionInSetAskSave Then Return 'User Canceled
 		  
 		  Dim c As New Clipboard
-		  if not(c.TextAvailable) then return
-		  if Left(c.text,12) <> "<slide_group" then return
-		  xml = SmartML.XDocFromString(c.text)
-		  c.close
+		  If c.RawDataAvailable(CopyTypes.SetSlides.MacType) Then
+		    text = c.RawData(CopyTypes.SetSlides.MacType)
+		    If Left(text,12) = "<slide_group" Then
+		      xml = SmartML.XDocFromString(text)
+		      If IsNull(xml) Then
+		        InputBox.Message App.T.Translate("sets_mode/errors/insert/@caption", SmartML.ErrorString)
+		      Else
 		  xgroups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  oldGroup = xml.FirstChild
 		  
@@ -8639,20 +9278,22 @@ End
 		  lst_set_items.InsertRow lst_set_items.ListIndex + 1, SmartML.GetValue(oldgroup , "@name", True) + " " + slideType
 		  
 		  
-		  
 		  SmartML.CloneChildren oldGroup, newGroup
 		  SmartML.CloneAttributes oldGroup, newGroup
 		  
 		  Status_SetChanged = True
 		  
 		  lst_set_items.ListIndex = lst_set_items.ListIndex + 1
-		  '--
+		      End If
+		    End If
+		  End If
+		  c.Close()
+		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub ActionInSetRemove(autoDetectDeleteTarget As Boolean)
-		  Dim xslides As XmlNodeList
 		  Dim slide_groups As XmlNode
 		  Dim listindex As Integer
 		  
@@ -8689,14 +9330,14 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionInSetSave()
+		Function ActionInSetSave() As Boolean
 		  Dim i, j As Integer
 		  Dim line, str As String
 		  Dim xgroup, xslides, xslide As XmlNode
 		  Dim bodies() As String
 		  Dim img As StyleImage
 		  
-		  If Not Status_InSetChanged then return
+		  If Not Status_InSetChanged Then Return True
 		  
 		  xgroup = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True).Child(CurrentInSetItem)
 		  
@@ -8754,11 +9395,28 @@ End
 		    lst_set_items.List(CurrentInSetItem) = edt_image_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
 		    
 		  Case "external"
-		    SmartML.SetValue xgroup, "@name", edt_external_name.Text
-		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
-		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
-		    
 		    If btn_external_presentation.GetStuck() Then
+		      If chk_external_embed_presentation.Enabled Then
+		        Dim f As FolderItem = GetFolderItem(edt_external_presentation_file.Text)
+		        If f.Exists() Then
+		          If chk_external_embed_presentation.Value Then
+		            Dim inputStream As BinaryStream = BinaryStream.Open(f, False)
+		            SmartML.SetValue xgroup, "file", EncodeBase64(inputStream.Read(f.Length))
+		            SmartML.SetValue xgroup, "@filename", f.Name
+		            inputStream.Close
+		            
+		            chk_external_embed_presentation.Enabled = False
+		          Else
+		            SmartML.SetValue xgroup, "@filename",  f.AbsolutePath
+		          End If
+		        Else
+		          MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
+		          Return False
+		        End If
+		      Else
+		        SmartML.SetValue xgroup, "@filename", edt_external_presentation_file.Text
+		      End If
+		      
 		      SmartML.SetValue xgroup, "@application", "presentation"
 		      
 		      If rad_external_host_powerpoint.Value Then
@@ -8768,26 +9426,76 @@ End
 		      ElseIf rad_external_host_impress.Value Then
 		        SmartML.SetValue xgroup, "@host", "impress"
 		      End If
-		      SmartML.SetValue xgroup, "@filename", edt_external_presentation_file.Text
+		      
 		      SmartML.SetValueB xgroup, "@loop_presentation", chk_external_loop_presentation.Value
 		      
 		    ElseIf btn_external_videolan.GetStuck() Then
+		      If chk_external_embed_mediafile.Enabled Then
+		        Dim f As FolderItem = GetFolderItem(edt_external_videolan_mediafilename.Text)
+		        If f.Exists() Then
+		          If chk_external_embed_mediafile.Value Then
+		            Dim inputStream As BinaryStream = BinaryStream.Open(f, False)
+		            SmartML.SetValue xgroup, "file", EncodeBase64(inputStream.Read(f.Length))
+		            SmartML.SetValue xgroup, "@filename", f.Name
+		            inputStream.Close
+		            
+		            chk_external_embed_mediafile.Enabled = False
+		          Else
+		            SmartML.SetValue xgroup, "@filename",  f.AbsolutePath
+		          End If
+		        Else
+		          MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
+		          Return False
+		        End If
+		      Else
+		        SmartML.SetValue xgroup, "@filename", edt_external_videolan_mediafilename.Text
+		      End If
+		      
 		      SmartML.SetValue xgroup, "@application", "videolan"
-		      'Not supported yet
+		      
+		      If rad_external_videolan_start.Value Then
+		        SmartML.SetValue xgroup, "@action", "start"
+		      ElseIf rad_external_videolan_stop.Value Then
+		        SmartML.SetValue xgroup, "@action", "stop"
+		      End If
+		      Dim videoLanPresetParams As String
+		      If lst_external_videolan_preset.ListIndex > -1 Then
+		        videoLanPresetParams = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
+		      End If
+		      If videoLanPresetParams = "" Then videoLanPresetParams = edt_external_videolan_manual.Text
+		      SmartML.SetValue xgroup, "@videolan_parameters", videoLanPresetParams
+		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_videolan.Value
 		      
 		    ElseIf btn_external_application.GetStuck() Then
+		      Dim f As FolderItem = GetFolderItem(edt_external_application_filename.Text)
+		      If f.Exists() Then
+		        SmartML.SetValue xgroup, "@app_filename", f.AbsolutePath
+		      Else
+		        MsgBox(App.T.Translate("errors/fileutils/filenotfound", f.AbsolutePath))
+		        Return False
+		      End If
+		      
 		      SmartML.SetValue xgroup, "@application", "launch"
 		      
-		      SmartML.SetValue xgroup, "@app_filename", edt_external_application_filename.Text
+		      If rad_external_application_start.Value Then
+		        SmartML.SetValue xgroup, "@action", "start"
+		      ElseIf rad_external_application_stop.Value Then
+		        SmartML.SetValue xgroup, "@action", "stop"
+		      End If
 		      SmartML.SetValue xgroup, "@app_parameters", edt_external_application_parameters.Text
-		      SmartML.SetValueB xgroup, "@app_wait_to_finish", chk_external_wait_for_application.Value
+		      SmartML.SetValueB xgroup, "@wait_to_finish", chk_external_wait_for_application.Value
 		    End If
+		    
+		    SmartML.SetValue xgroup, "@name", edt_external_name.Text
+		    SmartML.SetValue xgroup, "notes", edt_external_notes.Text
+		    SmartML.SetValueB xgroup, "@loop", chk_external_loop.Value
+		    
 		    lst_set_items.List(CurrentInSetItem) = edt_external_name.Text + " " + App.T.Translate("sets_mode/items/" + SmartML.GetValue(xgroup, "@type") + "/@caption")
 		    
 		  Case "style"
 		    
 		  Case Else
-		    str = LTrim(edt_slide_slides.Text.FormatUnixEndOfLine)
+		    str = StringUtils.LTrim(edt_slide_slides.Text.FormatUnixEndOfLine, StringUtils.WhiteSpaces)
 		    bodies = OpenSongUtils.SplitRE(str, "^---$")
 		    ' Set the title and sub-title
 		    SmartML.SetValue xgroup, "@name", edt_slide_name.Text
@@ -8808,13 +9516,54 @@ End
 		    str = edt_slide_slides.Text
 		    For i = 0 To UBound(bodies)
 		      xslide = xslides.AppendChild(CurrentSet.CreateElement("slide"))
-		      SmartML.SetValue xslide, "body", Trim(bodies(i))
+		      SmartML.SetValue xslide, "body", StringUtils.Trim(bodies(i), StringUtils.WhiteSpaces)
 		    Next i
 		    
 		    lst_set_items.List(CurrentInSetItem) = edt_slide_name.Text + " (" + SmartML.GetValue(xgroup, "@type", True) + ")"
 		  End Select
+		  
 		  Status_InSetChanged = False
 		  EnableMenuItems
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ActionSetAddScripture()
+		  Dim w As ScripturePickerWindow
+		  
+		  Dim c As ScripturePickerController
+		  
+		  If Not ActionInSetAskSave Then Return
+		  
+		  '++JRC No Bibles were found, return
+		  If UBound(BibleFactory.BibleList) < 0 Then Return
+		  '--
+		  
+		  c = New ScripturePickerController
+		  c.registerScriptureReceiver Self
+		  
+		  'Only enable 'Add' button if in Sets mode AND a set is currently open
+		  If Status_CurrentMode = 1 And Status_SetOpen Then
+		    w = New ScripturePickerWindow(c, True)
+		  Else
+		    w = New ScripturePickerWindow(c, False)
+		  End If
+		  
+		  '++JRC
+		  If App.MyBible = Nil Then
+		    App.MyBible = c.CurrentBible
+		  End If
+		  '--
+		  
+		  w.ShowModal
+		  c.unregisterScriptureReceiver Self
+		  w = Nil
+		  c = Nil
+		  
+		  If Status_SetOpen Then lst_set_items.SetFocus
+		  
 		End Sub
 	#tag EndMethod
 
@@ -8835,8 +9584,11 @@ End
 		    Select Case SaveDialog(App.T.Translate("questions/set_changed/@caption"))
 		    Case 1
 		      'User pressed Yes, so save
-		      ActionInSetSave
+		      If ActionInSetSave() Then
 		      ActionSetSave
+		      Else
+		        Return False
+		      End If
 		    Case 0
 		      '++JRC Check if the App is Closing, if it is we don't need to reload
 		      If Status_Closing Then Return True 'Continue closing
@@ -8967,7 +9719,7 @@ End
 		  //Append the FolderItem used in each SlideGroup to AbsFiles
 		  //Should be a call to CurrentSet.GetChildFolderItems
 		  Dim setDoc As New XmlDocument
-		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim slide_group, slide_groups As XmlNode
 		  
 		  setDoc.AppendChild setDoc.ImportNode(CurrentSet.DocumentElement, True)
 		  
@@ -9068,7 +9820,6 @@ End
 	#tag Method, Flags = &h0
 		Sub ActionSetNew()
 		  Dim t as String
-		  Dim out As TextOutputStream
 		  Dim f as FolderItem
 		  Dim i As Integer
 		  
@@ -9166,6 +9917,8 @@ End
 		  Globals.Status_Presentation = True
 		  'Self.Hide
 		  
+		  PreparePresentation
+		  
 		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode, ItemNumber
 		  PresentationFactory.ClearPresentationCache()
@@ -9179,7 +9932,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetPrint()
-		  Dim i As Integer
 		  Dim foundSong As Boolean = False
 		  Dim rpt As LeadSheetReport
 		  Dim song As FolderItem
@@ -9312,13 +10064,16 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSetSave()
-		  Dim f, song As FolderItem
-		  Dim output As TextOutputStream
+		  Dim f As FolderItem
 		  Dim i As Integer
 		  Dim xSlide As XmlNode
 		  
 		  If Not Status_SetChanged Then Return
-		  If Status_InSetChanged Then ActionInSetSave
+		  If Status_InSetChanged Then
+		    If Not ActionInSetSave() then
+		      Return
+		    End If
+		  End If
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -9415,7 +10170,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSongCopy()
-		  Dim f As FolderItem
 		  Dim folder, folders(0) As String
 		  Dim oldfolder As String
 		  Dim listindex As Integer
@@ -9484,7 +10238,6 @@ End
 
 	#tag Method, Flags = &h0
 		Sub ActionSongMove()
-		  Dim f As FolderItem
 		  Dim folder, folders(0) As String
 		  Dim oldfolder As String
 		  Dim listindex As Integer
@@ -9556,10 +10309,8 @@ End
 		  Dim t as String
 		  Dim f as FolderItem
 		  Dim i As Integer
-		  dim j As Integer
 		  dim Loc As Integer 'location of file in list
 		  Dim xnode As XmlNode
-		  dim s(0) As string
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
@@ -9707,6 +10458,8 @@ End
 		  '--
 		  Globals.AddToLog = Answer
 		  
+		  PreparePresentation
+		  
 		  '++JRC Fix issue were PresentWindow wasn't getting focus
 		  MainWindow.SetFocus
 		  
@@ -9838,9 +10591,6 @@ End
 		Sub ActionSongRename()
 		  Dim t as String
 		  Dim old as String
-		  Dim f as FolderItem
-		  Dim xdoc As XmlDocument
-		  Dim i As Integer
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled
@@ -9903,28 +10653,14 @@ End
 		  If Ask Then
 		    If Not InputBox.AskYN(App.T.Translate("questions/revert/@caption")) Then Return
 		  End If
-		  //++
-		  // EMP, September 2006
-		  // Found easier way to do this that won't require as much maintenance.
-		  // Left old code as comments in case there's an unexpected side effect.
-		  //--
 		  listindex = lst_songs_songs.ListIndex
+		  //++
+		  // Bug 3455320 -- Was asking for "Save/Don't Save" after InputBox above.
+		  Status_SongChanged = False ' This prevents ActionSongAskSave from firing
+		  //--
 		  lst_songs_songs.ListIndex = -1
 		  lst_songs_songs.ListIndex = ListIndex
-		  'f = Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex, 0) + lst_songs_songs.Text)
-		  '
-		  'If f <> Nil And f.Exists Then
-		  'App.MouseCursor = System.Cursors.Wait
-		  'CurrentSong = SmartML.XDocFromFile(f)
-		  'App.MouseCursor = Nil
-		  'Status_SongOpen = False ' suppress updates
-		  'LoadSongFields
-		  'Status_SongOpen = True
-		  'Status_SongChanged = False
-		  'EnableMenuItems
-		  'Else
-		  'InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
-		  'End If
+		  
 		End Sub
 	#tag EndMethod
 
@@ -9937,8 +10673,6 @@ End
 		  'prior to release of V1.0 (EMP, February 2007)
 		  
 		  Dim f As FolderItem
-		  Dim theme As String
-		  Dim i As Integer
 		  Dim FullName As String
 		  
 		  If Not noWrite Then
@@ -9992,8 +10726,8 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub AddPresentedSongsToLog()
+	#tag Method, Flags = &h1
+		Protected Sub AddPresentedSongsToLog()
 		  '++JRC This function as the name implies checks which songs were presented
 		  'and adds them to the activity log, then clears Globals.ActLog
 		  Dim i As Integer
@@ -10026,28 +10760,124 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function CheckLyricLines(source As String) As String
-		  //++
+		Protected Sub CheckLyricLines(edfLyrics As SEditField)
+		  //+
+		  // Revised version of CheckLyricLines works on the edit field instead of a string
+		  // Goal: maintain cursor position while changing contents of the field
+		  //
 		  // Do a basic check on the lyrics lines
 		  // If the first character on the line isn't a code of some sort,
 		  // assume it's a lyric line and adjust the line to include
 		  // the space at the start of the line.
 		  //--
-		  Dim lines() As String
 		  Dim codes As String
+		  Dim numLines As Integer
+		  Dim i As Integer
+		  Dim cursorStart As Integer
+		  Dim selectionLen As Integer
+		  Dim cursorLine As Integer
+		  Dim lineCode As String
+		  Dim linePos As Integer
+		  Dim iLineCode As Integer
+		  Dim lyrics As String
+		  Dim linePosOffset As Integer
 		  
+		  numLines = edfLyrics.LineNumAtCharPos(edfLyrics.Text.Len)
+		  cursorStart = edfLyrics.SelStart
+		  selectionLen = edfLyrics.SelLength
+		  cursorLine = edfLyrics.LineNumAtCharPos(cursorStart)
 		  codes = " [-0123456789.!;"
-		  source = ReplaceLineEndings(source, EndOfLine.Unix)
-		  lines = Split(source, EndOfLine.Unix)
+		  #if TargetWin32
+		    codes = codes + EndOfLine.Windows
+		  #elseif TargetMacOS
+		    codes = codes + EndOfLine.Macintosh
+		  #elseif TargetLinux
+		    codes = codes + EndOfLine.UNIX
+		  #endif
 		  
-		  For i As Integer = 0 To lines.UBound
-		    If InStr(codes, Left(lines(i).ConvertEncoding(Encodings.UTF8), 1)) = 0 Then
-		      lines(i) = " " + lines(i)
+		  lyrics = edfLyrics.Text
+		  linePosOffset = 0
+		  
+		  For i = 0 to numLines
+		    linePos = edfLyrics.CharPosAtLineNum(i) + linePosOffset
+		    lineCode = Mid(lyrics, linePos, 1)
+		    iLineCode = Asc(lineCode)
+		    If InStr(codes, lineCode) = 0 Then
+		      lyrics = Left(lyrics, linePos - 1) + " " + Mid(lyrics, linePos)
+		      linePosOffset = linePosOffset + 1
+		      If i <= cursorLine Then
+		        cursorStart = cursorStart + 1
+		    End If
 		    End If
 		  Next
 		  
-		  Return Join(lines, EndOfLine.Unix)
-		End Function
+		  edfLyrics.Text = lyrics
+		  
+		  If cursorStart <> edfLyrics.SelStart Then
+		    edfLyrics.SelStart = cursorStart
+		    edfLyrics.SelLength = selectionLen
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub CleanupExternals(setDoc As XmlDocument)
+		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim songDoc As XmlDocument
+		  Dim Presentation As String
+		  '++JRC
+		  Dim CurStyle As XmlNode
+		  '--
+		  Dim Transition As Integer
+		  Dim SongStyle, SlideSongStyle As XmlNode
+		  Dim SongPath As String
+		  
+		  App.MouseCursor = System.Cursors.Wait
+		  
+		  slide_groups = SmartML.GetNode(setDoc.DocumentElement, "slide_groups", True)
+		  
+		  slide_group = slide_groups.FirstChild
+		  While slide_group <> Nil
+		    If SmartML.GetValue(slide_group, "@type", True) = "external" Then
+		      
+		      Select Case SmartML.GetValue(slide_group, "@application")
+		      Case "presentation", "videolan"
+		        
+		        If Not IsNull(SmartML.GetNode(slide_group, "file")) Then
+		          
+		          'This is an embedded file that was stored to disk for presenting, delete it ...
+		          Dim embedFile As FolderItem = GetFolderItem(SmartML.GetValue(slide_group, "@filename", False))
+		          If embedFile.Exists() Then
+		            
+		            'Doublecheck this is a temporary file
+		            If embedFile.AbsolutePath().StartsWith( SpecialFolder.Temporary.AbsolutePath() ) Then
+		              embedFile.Delete()
+		            End If
+		          End If
+		        End If
+		        
+		      End Select
+		    End If
+		    
+		    slide_group  = slide_group.NextSibling
+		  Wend
+		  
+		  App.MouseCursor = Nil
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub CleanupPresentation(ByRef setDoc As XmlDocument)
+		  AddPresentedSongsToLog
+		  
+		  PresentationFactory.ClearPresentationCache()
+		  CleanupExternals setDoc
+		  
+		  #If TargetWin32 Then
+		    WinAPI.Animation = m_oldAnimationsEnabled
+		  #EndIf
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -10072,11 +10902,11 @@ End
 		  
 		  Dim t as String
 		  Dim s As XmlDocument
-		  Dim st, i, j As Integer
+		  Dim i As Integer
 		  Dim f As FolderItem
 		  
-		  Dim found As RectControl
-		  Dim edtFound As SEditField
+		  Dim found As RectControl = Nil
+		  Dim edtFound As TextEdit
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -10086,6 +10916,7 @@ End
 		  t = Lowercase(find.FindString)
 		  If Len(t) = 0 Then Return
 		  
+		  If lst_songs_songs.ListCount() > 0 Then
 		  i = lst_songs_songs.ListIndex
 		  If i < 0 Then
 		    i = 0 ' if there is no song selected, select the first
@@ -10114,7 +10945,13 @@ End
 		    Return
 		  End If
 		  
+		    ProgressWindow.SetProgress 0
+		    ProgressWindow.lbl_status.Text =  App.T.Translate("progress_status/song_search") + "..."
+		    ProgressWindow.Show()
+		    
 		  While found = Nil And i < lst_songs_songs.ListCount
+		      ProgressWindow.SetProgress (i+1) / lst_songs_songs.ListCount * 100
+		      ProgressWindow.SetStatus lst_songs_songs.List(i)
 		    
 		    If find.FindTitle And InStr(Lowercase(SmartML.GetValue(s.DocumentElement, "title")), t) > 0 And (i <> lst_songs_songs.ListIndex Or FindFocus < 1 Or (FindFocus = 1 And (edt_song_title.SelStart+edt_song_title.SelLength = 0 Or InStr(edt_song_title.SelStart+edt_song_title.SelLength+1, Lowercase(edt_song_title.Text), t) > 0))) Then
 		      found = edt_song_title
@@ -10157,8 +10994,8 @@ End
 		    If found <> Nil Then
 		      If lst_songs_songs.ListIndex <> i Then lst_songs_songs.ListIndex = i
 		      found.SetFocus
-		      If found IsA SEditField Then
-		        edtFound = SEditField(found)
+		        If found IsA TextEdit Then
+		          edtFound = TextEdit(found)
 		        If edtFound.SelStart+edtFound.SelLength = 0 Then
 		          edtFound.SelStart = InStr(Lowercase(edtFound.Text), t) - 1
 		        Else
@@ -10200,6 +11037,7 @@ End
 		          If f = Nil Or Not f.Exists Then
 		            App.MouseCursor = Nil
 		            InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.List(i))
+		              ProgressWindow.Close()
 		            Return
 		          End If
 		          s = SmartML.XDocFromFile(f)
@@ -10219,6 +11057,9 @@ End
 		      Exit
 		    End If
 		  Wend
+		  
+		    ProgressWindow.Close()
+		  End If
 		  
 		  If found = Nil Then
 		    App.MouseCursor = Nil
@@ -10253,7 +11094,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub ImportExternals(setDoc As XmlDocument, PresentMode As Integer)
+		Protected Sub ImportExternals(byRef setDoc As XmlDocument, PresentMode As Integer)
 		  Dim slide_group, slide_groups, temp As XmlNode
 		  Dim songDoc As XmlDocument
 		  Dim Presentation As String
@@ -10264,6 +11105,12 @@ End
 		  Dim SongStyle, SlideSongStyle As XmlNode
 		  Dim SongPath As String
 		  Dim slidesCount As Integer = 0
+		  Dim embeddedFilesBase As FolderItem = GetTemporaryFolderItem()
+		  Try
+		    embeddedFilesBase.Delete()
+		    embeddedFilesBase.CreateAsFolder()
+		  Catch
+		  End Try
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -10287,6 +11134,22 @@ End
 		        
 		        Dim presFileName As String = SmartML.GetValue(slide_group, "@filename")
 		        Dim presFile As FolderItem = GetFolderItem( presFileName )
+		        
+		        Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
+		        If embedFiledata.Len() > 0 Then
+		          Try
+		            presFile = embeddedFilesBase.Child(presFileName)
+		            
+		            Dim outputStream As BinaryStream = BinaryStream.Create(presFile, True)
+		            outputStream.Write DecodeBase64(embedFiledata)
+		            outputStream.Close
+		            
+		            SmartML.SetValue slide_group, "@_localfilename", presFile.AbsolutePath()
+		          Catch
+		            InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", presFileName)
+		          End Try
+		        End If
+		        
 		        Dim presFileOk As Boolean = False
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
@@ -10328,11 +11191,11 @@ End
 		              End If
 		              
 		            Else
-		              MsgBox(App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath ))
+		              InputBox.Message App.T.Translate("errors/presentations/load_failed", presFile.AbsolutePath)
 		            End If
 		            
 		          Else
-		            MsgBox(App.T.Translate("errors/fileutils/destdoesnotexisterror", presFile.AbsolutePath ))
+		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", presFile.AbsolutePath)
 		          End If
 		        End If
 		        
@@ -10341,8 +11204,33 @@ End
 		        End If
 		        
 		      Case "videolan"
-		        'No action required here,
-		        'a check to validate the presence of media to play might be nice here
+		        Dim videolanLocation As FolderItem = App.MainPreferences.GetValueFI(Prefs.kVideolanLocation, Nil, False)
+		        If Not IsNull(videolanLocation) And videolanLocation.Exists Then
+		          Dim mediaFileName As String = SmartML.GetValue(slide_group, "@filename")
+		          Dim mediaFile As FolderItem = GetFolderItem( mediaFileName )
+		          
+		          Dim embedFiledata As String = SmartML.GetValue(slide_group, "file", False)
+		          If embedFiledata.Len() > 0 Then
+		            Try
+		              mediaFile = embeddedFilesBase.Child(mediaFileName)
+		              
+		              Dim outputStream As BinaryStream = BinaryStream.Create(mediaFile, True)
+		              outputStream.Write DecodeBase64(embedFiledata)
+		              outputStream.Close
+		              
+		              SmartML.SetValue slide_group, "@_localfilename", mediaFile.AbsolutePath()
+		            Catch
+		              InputBox.Message App.T.Translate("errors/fileutils/temporaryfailed", mediaFileName)
+		            End Try
+		          End If
+		          
+		          If IsNull(mediaFile) Or Not mediaFile.Exists() Then
+		            InputBox.Message App.T.Translate("errors/fileutils/filenotfound", mediaFileName)
+		          End If
+		        Else
+		          InputBox.Message App.T.Translate("errors/videolan_app_missing")
+		        End If
+		        
 		        
 		      Case "launch"
 		        'No action required here
@@ -10376,12 +11264,12 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub ImportSongs(setDoc As XmlDocument, AddToLog As Boolean)
-		  Dim slide_group, slide_groups, temp As XmlNode
+		  Dim slide_group, slide_groups As XmlNode
 		  Dim songDoc As XmlDocument
 		  Dim Presentation As String
 		  '++JRC
-		  Dim CurStyle As XmlNode
-		  Dim ItemNumber As Integer = 0
+		  Dim ActiveCustomStyle As XmlNode = Nil
+		  Dim ItemNumber As Integer
 		  Dim i As Integer
 		  '--
 		  Dim Transition As Integer
@@ -10418,7 +11306,7 @@ End
 		          
 		          ActLog(i).Title = SmartML.GetValue(SongDoc.DocumentElement, "title", True)
 		          ActLog(i).Author = SmartML.GetValue(SongDoc.DocumentElement, "author", True)
-		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		          ActLog(i).CCLISongNumber = SmartML.GetValue(SongDoc.DocumentElement, "ccli", True)  //The song's CCLI number
 		          ActLog(i).SongFileName = songPath + SmartML.GetValue(slide_group, "@name", False)
 		          ActLog(i).DateAndTime = d
 		          ActLog(i).HasChords = ActLog(i).CheckLyricsForChords(edf_song_lyrics.Text)
@@ -10452,9 +11340,16 @@ End
 		          Call SmartML.InsertChildNode(slide_group, SlideSongStyle, slide_group.ChildCount())
 		          SongML.ToSetML slide_group, SlideSongStyle
 		        Else
-		          '++JRC: Pass CurStyle
+		          '++JRC: Pass ActiveCustomStyle
 		          ' But check for an override first!
-		          If SongStyle = Nil Then SongStyle = CurStyle
+		          '++Vwout: The better place to do this is SetML
+		          If ActiveCustomStyle <> Nil Then
+		            If SongStyle <> Nil Then
+		              SmartML.RemoveChild(slide_group, SongStyle)
+		            End If
+		            Call SmartML.InsertChildNode(slide_group, ActiveCustomStyle, slide_group.ChildCount())
+		            SongStyle = ActiveCustomStyle
+		          End If
 		          SongML.ToSetML slide_group, SongStyle
 		        End If
 		        
@@ -10476,16 +11371,15 @@ End
 		      '++JRC: Save Current Style
 		    Elseif SmartML.GetValue(slide_group, "@type", True) = "style"  Then
 		      if SmartML.GetValue(slide_group, "@action", True) = "new" then
-		        CurStyle = slide_group
-		        slide_group  = slide_group.NextSibling
+		        ActiveCustomStyle = SmartML.GetNode(slide_group, "style", False)
 		      else
 		        'reverting to previous style
-		        slide_group  = slide_group.NextSibling
+		        ActiveCustomStyle = Nil
 		      end if
-		      '--
+		        slide_group  = slide_group.NextSibling
 		    Else
 		      '++JRC Assign an index for this set item
-		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber + 1)
+		      SmartML.SetValueN(slide_group, "@ItemNumber", ItemNumber)
 		      
 		      slide_group  = slide_group.NextSibling
 		      
@@ -10682,6 +11576,15 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub PreparePresentation()
+		  #If TargetWin32 Then
+		    m_oldAnimationsEnabled = WinAPI.Animation
+		    WinAPI.Animation =False
+		  #EndIf
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ReorderSetItemList(CurrentPosition As Integer, newPosition As Integer)
 		  '++JRC Handle Set Item list reordering
 		  If  newPosition = CurrentPosition Then
@@ -10782,10 +11685,6 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Function SetLoadSet(f As FolderItem) As Boolean
-		  
-		  Dim song As FolderItem
-		  Dim input As TextInputStream
-		  Dim line As String
 		  Dim xnode As XmlNode
 		  Dim slideType As String
 		  
@@ -10812,8 +11711,6 @@ End
 		  //EMP 10/9/04
 		  dim nameAtt as xmlattribute
 		  
-		  dim strName as String
-		  
 		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
 		  
 		  if nameatt = Nil then
@@ -10823,7 +11720,6 @@ End
 		  CurrentSetName = pop_sets_sets.text
 		  //--
 		  Dim slide_groups, xchild As XmlNode
-		  Dim i As Integer
 		  
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If slide_groups = Nil Then Return True
@@ -10890,6 +11786,9 @@ End
 		    mnu_mode_songs.Checked = False
 		    mnu_mode_sets.Checked = True
 		  End If
+		  '++JRC
+		  Status_CurrentMode = i
+		  '--
 		  EnableMenuItems
 		End Sub
 	#tag EndMethod
@@ -10993,7 +11892,7 @@ End
 		  SmartML.SetValue CurrentSong.DocumentElement, "user2", edt_song_user2.Text
 		  SmartML.SetValue CurrentSong.DocumentElement, "user3", edt_song_user3.Text
 		  
-		  edf_song_lyrics.Text = CheckLyricLines(edf_song_lyrics.Text)
+		  CheckLyricLines(edf_song_lyrics)
 		  SmartML.SetValue CurrentSong.DocumentElement, "lyrics", edf_song_lyrics.Text.FormatUnixEndOfLine
 		  
 		End Sub
@@ -11018,20 +11917,10 @@ End
 		  
 		  btn_song_present.DeletePopup
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/single_screen/@caption")
-		  '++JRC Don't need two Present Dual-Screen items ;)
-		  'if ScreenCount > 1 Then
-		  'btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
-		  'End If
 		  
-		  #If TargetLinux
-		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
+		  if OSScreenCount() > 1 Then
 		      btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
 		    End If
-		  #EndIf
-		  
-		  if ScreenCount > 1 Then
-		    btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption")
-		  End If
 		  
 		  btn_song_present.AddPopupSeparator
 		  btn_song_present.AddPopupRow App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption")
@@ -11039,15 +11928,9 @@ End
 		  btn_set_present.DeletePopup
 		  btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/single_screen/@caption")
 		  
-		  #If TargetLinux
-		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
+		  If OSScreenCount() > 1 Then
 		      btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
 		    End If
-		  #EndIF
-		  
-		  If ScreenCount > 1 Then
-		    btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/dual_screen/@caption")
-		  End If
 		  
 		  btn_set_present.AddPopupSeparator
 		  btn_set_present.AddPopupRow App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption")
@@ -11055,13 +11938,8 @@ End
 		  '++JRC
 		  btn_set_presentitem.DeletePopup
 		  btn_set_presentitem.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/single_screen/@caption")
-		  #If TargetLinux
-		    If ((Screen(0).Width /2) > Screen(0).Height) And (ScreenCount = 1) Then
-		      btn_set_presentitem.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/dual_screen/@caption")
-		    End If
-		  #EndIF
 		  
-		  If ScreenCount > 1 Then
+		  If OSScreenCount() > 1 Then
 		    btn_set_presentitem.AddPopupRow App.T.Translate("sets_mode/current_item/presentitem/dual_screen/@caption")
 		  End If
 		  
@@ -11185,6 +12063,14 @@ End
 		Protected LastSongPane As Integer
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private m_oldAnimationsEnabled As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_Reordering As Boolean = False
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected PopupClicked As Boolean
 	#tag EndProperty
@@ -11214,6 +12100,10 @@ End
 
 	#tag Property, Flags = &h1
 		Protected Status_Closing As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected Status_CurrentMode As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -11425,19 +12315,11 @@ End
 		  ElseIf Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/preview_dual_screen/@caption") Then
 		    ActionSongPresent PresentWindow.MODE_PREVIEW
 		  ElseIf Me.MenuItem = App.T.Translate("songs_mode/selected_song/present/dual_screen/@caption") Then
-		    #If TargetLinux
-		      If (Screen(0).Width /2) > Screen(0).Height Then
-		        ActionSongPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #Else
-		      If ScreenCount > 1 Then
+		    If OSScreenCount() > 1 Then
 		        ActionSongPresent PresentWindow.MODE_DUAL_SCREEN
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_multi_screen")
 		      End If
-		    #EndIF
 		  End If
 		End Sub
 	#tag EndEvent
@@ -11546,7 +12428,7 @@ End
 		  f = dlg.ShowModal() 'show dialog
 		  If f <> Nil Then
 		    App.MouseCursor = System.Cursors.Wait
-		    output = f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html").CreateTextFile
+		    output = TextOutputStream.Create(f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html"))
 		    song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
 		    If output <> Nil And song <> Nil Then
 		      output.Write SongML.ToHTML(song.DocumentElement)
@@ -11698,7 +12580,7 @@ End
 		  If f <> Nil Then
 		    App.DoEvents
 		    g = f.Child("index.html")
-		    goutput = g.CreateTextFile
+		    goutput = TextOutputStream.Create(g)
 		    If goutput <> Nil Then
 		      goutput.WriteLine "<html><head>"
 		      goutput.WriteLine "<meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />"
@@ -11708,7 +12590,7 @@ End
 		    App.MouseCursor = System.Cursors.Wait
 		    ProgressWindow.Show
 		    For i = 0 To lst_songs_songs.ListCount - 1
-		      output = f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html").CreateTextFile
+		      output = TextOutputStream.Create(f.Child(MakeSafeURLName(lst_songs_songs.List(i), False) + ".html"))
 		      song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(i,0) + lst_songs_songs.List(i)))
 		      If output <> Nil And song <> Nil Then
 		        output.Write SongML.ToHTML(song.DocumentElement)
@@ -11922,9 +12804,6 @@ End
 		Sub Change()
 		  Dim f As FolderItem
 		  Dim xnode As XmlNode
-		  Dim temp As String
-		  Dim path_to_songs As String
-		  Dim path_to_song As String
 		  Dim fullpath As String
 		  
 		  //++EMP 18 Feb 2006
@@ -12032,7 +12911,6 @@ End
 	#tag Event
 		Function KeyDown(Key As String) As Boolean
 		  Dim i, l As Integer
-		  Dim temp As TextEncoding
 		  Dim NewKey As String
 		  Dim SearchedEntry As String
 		  //++
@@ -12109,9 +12987,7 @@ End
 		    Return
 		  End If
 		  
-		  Dim f, song As FolderItem
-		  'Dim input As TextInputStream
-		  Dim line As String
+		  Dim f As FolderItem
 		  Dim xnode As XmlNode
 		  Dim slideType As String
 		  
@@ -12131,8 +13007,6 @@ End
 		  //EMP 10/9/04
 		  dim nameAtt as xmlattribute
 		  
-		  dim strName as String
-		  
 		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
 		  
 		  if nameatt = Nil then
@@ -12142,7 +13016,6 @@ End
 		  CurrentSetName = me.text
 		  //--
 		  Dim slide_groups, xchild As XmlNode
-		  Dim i As Integer
 		  
 		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
 		  If slide_groups = Nil Then Return
@@ -12156,6 +13029,7 @@ End
 		      slideType = "*ERROR*"
 		    End If
 		    lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
+		    lst_set_items.CellTag(lst_set_items.ListCount-1, 0) = xchild.GetAttribute("type")
 		    xchild = xchild.NextSibling
 		  Wend
 		  
@@ -12353,7 +13227,7 @@ End
 #tag Events btn_set_store
 	#tag Event
 		Sub Action()
-		  ActionInSetSave
+		  Call ActionInSetSave
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -12384,19 +13258,11 @@ End
 		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_item/presentitem/preview_dual_screen/@caption") Then
 		    ActionSetPresent PresentWindow.MODE_PREVIEW, Item
 		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_item/presentitem/dual_screen/@caption") Then
-		    #If TargetLinux
-		      If (Screen(0).Width /2) > Screen(0).Height Then
-		        ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN, Item
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #Else
-		      If ScreenCount > 1 Then
+		    If OSScreenCount() > 1 Then
 		        ActionSetPresent PresentWindow.MODE_DUAL_SCREEN, Item
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_multi_screen")
 		      End If
-		    #EndIF
 		  End If
 		End Sub
 	#tag EndEvent
@@ -12459,19 +13325,11 @@ End
 		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/preview_dual_screen/@caption") Then
 		    ActionSetPresent PresentWindow.MODE_PREVIEW
 		  ElseIf Me.MenuItem = App.T.Translate("sets_mode/current_set/present/dual_screen/@caption") Then
-		    #If TargetLinux
-		      If (Screen(0).Width /2) > Screen(0).Height Then
-		        ActionSetPresent PresentWindow.MODE_LINUX_DUAL_SCREEN
-		      Else
-		        InputBox.Message App.T.Translate("errors/no_multi_screen")
-		      End If
-		    #Else
-		      If ScreenCount > 1 Then
+		    If OSScreenCount() > 1 Then
 		        ActionSetPresent PresentWindow.MODE_DUAL_SCREEN
 		      Else
 		        InputBox.Message App.T.Translate("errors/no_multi_screen")
 		      End If
-		    #EndIF
 		  End If
 		End Sub
 	#tag EndEvent
@@ -12737,22 +13595,8 @@ End
 		Sub Action()
 		  App.DebugWriter.Write "MainWindow.btn_set_add_scripture.Action: Enter", 4
 		  
-		  Dim w As ScripturePickerWindow
+		  ActionSetAddScripture
 		  
-		  Dim c As ScripturePickerController
-		  
-		  If Not ActionInSetAskSave Then Return
-		  
-		  c = New ScripturePickerController
-		  c.registerScriptureReceiver Self
-		  
-		  w = New ScripturePickerWindow(c)
-		  
-		  w.ShowModal
-		  c.unregisterScriptureReceiver Self
-		  w = Nil
-		  c = Nil
-		  lst_set_items.SetFocus
 		  App.DebugWriter.Write "MainWindow.btn_set_add_scripture.Action: Exit", 4
 		End Sub
 	#tag EndEvent
@@ -13016,10 +13860,6 @@ End
 #tag Events lst_set_items
 	#tag Event
 		Sub Change()
-		  Dim songDoc As XmlDocument
-		  Dim xnode as  XmlNode
-		  Dim songTemp as String
-		  Dim songResult As Integer
 		  Dim sDoc As XmlDocument
 		  Dim resize As String
 		  Dim imageLink As Boolean
@@ -13030,14 +13870,14 @@ End
 		  Dim xgroup As XmlNode
 		  Dim xslides As XmlNode
 		  Dim s As String
-		  Dim i, j As Integer
+		  Dim i As Integer
 		  Dim groupType As String
 		  
 		  '++JRC Don't reload if same set item
 		  If Me.ListIndex = CurrentInSetItem Then Return
 		  
 		  '++JRC
-		  If DontUpdateSetItem Then
+		  If DontUpdateSetItem Or m_Reordering Then
 		    Return
 		  End If
 		  '--
@@ -13051,6 +13891,7 @@ End
 		  End If
 		  
 		  If Me.ListIndex < 0 Then
+		    CurrentInSetItem = -1
 		    Status_InSetOpen = False
 		    Status_InSetEditable = False
 		    Status_InSetChanged = False
@@ -13099,14 +13940,14 @@ End
 		      can_slide_style.PreviewSlide = SmartML.GetNode(xgroup, "slides/slide")
 		      can_slide_style.SetStyleNode SmartML.GetNode(xgroup, "style")
 		    End If
+		    can_slide_style.SongStyle = False
 		    ' can_slide_custom_style.Refresh False
 		    s = ""
 		    xslides = SmartML.GetNode(xgroup, "slides", True)
 		    For i = 0 To xslides.ChildCount - 1
+		      s = s + StringUtils.Trim(SmartML.GetValue(xslides.Child(i), "body", False), StringUtils.WhiteSpaces)
 		      If i < xslides.ChildCount - 1 Then
-		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False)) + SmartML.Newline + "---" + SmartML.Newline
-		      Else
-		        s = s + Trim(SmartML.GetValue(xslides.Child(i), "body", False))
+		        s = s + SmartML.Newline + "---" + SmartML.Newline
 		      End If
 		    Next i
 		    edt_slide_slides.Text  = s
@@ -13141,6 +13982,7 @@ End
 		      can_slide_style.ClearPreviewSlide
 		      can_slide_style.SetStyleNode SlideSongStyle
 		    End If
+		    can_slide_style.SongStyle = True
 		    
 		    sDoc = SetML.GetSong(xgroup, Songs, songPath)
 		    If sDoc = Nil Then
@@ -13230,10 +14072,10 @@ End
 		      can_image_style.SetStyleNode SmartML.GetNode(xgroup, "style")
 		    End If
 		    
-		    resize = SmartML.GetValue(xgroup, "@resize")
-		    chk_image_fit_to_screen.Value = (resize = "screen")
+		    resize = SmartML.GetValue(xgroup, "@resize", False)
+		    chk_image_fit_to_screen.Value = (resize = "screen") Or (resize = "")
 		    chk_image_fit_to_body.Value = (resize = "body")
-		    chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", True)
+		    chk_image_keepaspect.Value = SmartML.GetValueB(xgroup, "@keep_aspect", False, True)
 		    chk_image_keepaspect.Enabled = chk_image_fit_to_screen.Value Or chk_image_fit_to_body.Value
 		    chk_image_store_as_link.Value = imageLink
 		    
@@ -13249,20 +14091,25 @@ End
 		    End If
 		    Status_InSetEditable = False ' keeps the status from Refresh Falseing for every change
 		    
-		    rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
-		    nte_external_host_powerpoint_info.Enabled = Not rad_external_host_powerpoint.Enabled
-		    rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
-		    nte_external_host_pptview_info.Enabled = Not rad_external_host_pptview.Enabled
-		    rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
-		    nte_external_host_impress_info.Enabled = Not rad_external_host_impress.Enabled
-		    
 		    edt_external_name.Text = SmartML.GetValue(xgroup, "@name")
+		    
+		    lst_external_videolan_preset.DeleteAllRows
+		    For i = 0 To App.VideolanPresetList.Count()-1
+		      lst_external_videolan_preset.AddRow App.VideolanPresetList.Key(i)
+		    Next i
+		    
 		    Select Case SmartML.GetValue(xgroup, "@application")
 		    Case "presentation"
 		      btn_external_presentation.SetStuck( True )
 		      btn_external_videolan.SetStuck( False )
 		      btn_external_application.SetStuck( False )
 		      pge_externals.Value = 1
+		      
+		      'Detect all presentation hosts at once, including progress indicator
+		      PresentationFactory.DetectAllHosts()
+		      rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
+		      rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
+		      rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
 		      
 		      Select Case SmartML.GetValue(xgroup, "@host")
 		      Case "ppt"
@@ -13275,13 +14122,39 @@ End
 		      
 		      edt_external_presentation_file.Text = SmartML.GetValue(xgroup, "@filename")
 		      chk_external_loop_presentation.Value = SmartML.GetValueB(xgroup, "@loop_presentation")
+		      chk_external_embed_presentation.Value = Not IsNull(SmartML.GetNode(xgroup, "file"))
+		      chk_external_embed_presentation.Enabled = False
 		      
 		    Case "videolan"
 		      btn_external_presentation.SetStuck( False )
 		      btn_external_videolan.SetStuck( True )
 		      btn_external_application.SetStuck( False )
 		      pge_externals.Value = 2
-		      'Not supported yet
+		      
+		      Select Case SmartML.GetValue(xgroup, "@action")
+		      Case "start"
+		        rad_external_videolan_start.Value = True
+		      Case "stop"
+		        rad_external_videolan_stop.Value = True
+		      End Select
+		      
+		      edt_external_videolan_mediafilename.Text = SmartML.GetValue(xgroup, "@filename")
+		      chk_external_embed_mediafile.Value = Not IsNull(SmartML.GetNode(xgroup, "file"))
+		      chk_external_embed_mediafile.Enabled = False
+		      
+		      Dim videolanParams As String = SmartML.GetValue(xgroup, "@videolan_parameters")
+		      lst_external_videolan_preset.ListIndex = -1
+		      For i = 0 to lst_external_videolan_preset.ListCount()-1
+		        If App.VideolanPresetList.Value(lst_external_videolan_preset.Cell(i, 0)) = videolanParams Then
+		          lst_external_videolan_preset.ListIndex = i
+		        End If
+		      Next i
+		      
+		      If lst_external_videolan_preset.ListIndex = -1 Then
+		        lst_external_videolan_preset.ListIndex = lst_external_videolan_preset.ListCount()-1
+		      End If
+		      edt_external_videolan_manual.Text = videolanParams
+		      chk_external_wait_for_videolan.Value = SmartML.GetValueB(xgroup, "@wait_to_finish")
 		      
 		    Case "launch"
 		      btn_external_presentation.SetStuck( False )
@@ -13289,11 +14162,18 @@ End
 		      btn_external_application.SetStuck( True )
 		      pge_externals.Value = 3
 		      
+		      Select Case SmartML.GetValue(xgroup, "@action")
+		      Case "start"
+		        rad_external_application_start.Value = True
+		      Case "stop"
+		        rad_external_application_stop.Value = True
+		      End Select
 		      edt_external_application_filename.Text = SmartML.GetValue(xgroup, "@app_filename")
 		      edt_external_application_parameters.Text = SmartML.GetValue(xgroup, "@app_parameters")
-		      chk_external_wait_for_application.Value = SmartML.GetValueB(xgroup, "@app_wait_to_finish")
+		      chk_external_wait_for_application.Value = SmartML.GetValueB(xgroup, "@wait_to_finish")
 		      
 		    Else
+		      'Clear fields for all externals
 		      btn_external_presentation.SetStuck( False )
 		      btn_external_videolan.SetStuck( False )
 		      btn_external_application.SetStuck( False )
@@ -13302,6 +14182,13 @@ End
 		      rad_external_host_powerpoint.Value = False
 		      rad_external_host_pptview.Value = False
 		      rad_external_host_impress.Value = False
+		      
+		      rad_external_videolan_start.Value = False
+		      rad_external_videolan_stop.Value = False
+		      edt_external_videolan_mediafilename.Text = ""
+		      lst_external_videolan_preset.ListIndex = -1
+		      edt_external_videolan_manual.Text = ""
+		      chk_external_wait_for_application.Value = True
 		      
 		      edt_external_presentation_file.Text = ""
 		      chk_external_loop_presentation.Value = False
@@ -13369,8 +14256,12 @@ End
 	#tag Event
 		Function DragReorderRows(newPosition as Integer, parentRow as Integer) As Boolean
 		  '++JRC
+		  If Not m_Reordering Then
+		    m_Reordering = True
 		  ReorderSetItemList(lst_set_items.ListIndex, newPosition)
-		  return true 'We'll handle the reorder manually, workaround for bug #1827986
+		    m_Reordering = False
+		  End If
+		  Return True 'We'll handle the reorder manually, workaround for bug #1827986
 		  '--
 		End Function
 	#tag EndEvent
@@ -13407,6 +14298,37 @@ End
 		Sub MouseExit()
 		  SetHelp ""
 		End Sub
+	#tag EndEvent
+	#tag Event
+		Function DragRow(drag As DragItem, row As Integer) As Boolean
+		  Return Not m_Reordering
+		End Function
+	#tag EndEvent
+	#tag Event
+		Function CellBackgroundPaint(g As Graphics, row As Integer, column As Integer) As Boolean
+		  If App.SlideStyleColorEnabled() Then
+		    g.ForeColor = rgb(255,255,255)
+		    
+		    If row <me.listCount() Then
+		      Select Case me.CellTag(row,0)
+		      Case "song"
+		        g.ForeColor = App.SlideStyleColor("verse")
+		      Case "custom"
+		        g.ForeColor = App.SlideStyleColor("custom")
+		      Case "scripture"
+		        g.ForeColor = App.SlideStyleColor("scripture")
+		      Case "style"
+		        g.ForeColor = App.SlideStyleColor("style")
+		      Case "image"
+		        g.ForeColor = App.SlideStyleColor("image")
+		      Case "external"
+		        g.ForeColor = App.SlideStyleColor("external")
+		      End Select
+		    End If
+		    
+		    g.fillRect(0,0,g.width, g.height)
+		  End If
+		End Function
 	#tag EndEvent
 #tag EndEvents
 #tag Events rad_style_change
@@ -14855,8 +15777,10 @@ End
 #tag Events can_slide_style
 	#tag Event
 		Sub Action()
-		  If Status_SetOpen Then Status_SetChanged = True
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
 		  EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -15155,8 +16079,10 @@ End
 #tag Events can_image_style
 	#tag Event
 		Sub Action()
-		  If Status_SetOpen Then Status_InSetChanged = True
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
 		  EnableMenuItems
+		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -15523,9 +16449,9 @@ End
 		        Dim i, presentScreen, width, height As Integer
 		        
 		        presentScreen = SmartML.GetValueN(App.MyPresentSettings.DocumentElement, "monitors/@present") - 1
-		        If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		        width = Screen(presentScreen).Width
-		        height = Screen(presentScreen).Height
+		        If presentScreen < 0 Or presentScreen + 1 > OSScreenCount() Then presentScreen = 0
+		        width = OSScreen(presentScreen).Width
+		        height = OSScreen(presentScreen).Height
 		        
 		        For i = 1 to oExtPres.SlideCount()
 		          
@@ -15658,6 +16584,13 @@ End
 		  
 		  If btn_external_presentation.GetStuck() Then
 		    If pge_externals.Value <> 1 Then
+		      
+		      'Detect all presentation hosts at once, including progress indicator
+		      PresentationFactory.DetectAllHosts()
+		      rad_external_host_powerpoint.Enabled = PresentationFactory.PowerPointAvailable()
+		      rad_external_host_pptview.Enabled = PresentationFactory.PPTViewAvailable()
+		      rad_external_host_impress.Enabled = PresentationFactory.OpenOfficeAvailable()
+		      
 		      pge_externals.Value = 1
 		    End If
 		  Else
@@ -15857,6 +16790,8 @@ End
 	#tag Event
 		Sub TextChange()
 		  If Status_InSetEditable Then
+		    chk_external_embed_presentation.Enabled = True
+		    
 		    Status_InSetChanged = True
 		    EnableMenuItems
 		  End If
@@ -15900,18 +16835,33 @@ End
 		  dlg.Filter = "*.*"
 		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
 		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.Title = App.T.Translate("external_slide/application_filename/@caption")
-		  dlg.PromptText = App.T.Translate("external_slide/application_filename")
+		  dlg.Title = App.T.Translate("external_slide/application_settings/application_filename/@caption")
+		  dlg.PromptText = App.T.Translate("external_slide/application_settings/application_filename")
 		  
 		  f = dlg.ShowModal()
 		  If Not IsNull(f) Then
 		    edt_external_application_filename.Text = f.AbsolutePath()
+		    
+		    If Status_InSetEditable Then
+		      Status_InSetChanged = True
+		      EnableMenuItems
+		    End If
 		  End If
 		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events edt_external_application_filename
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_application_parameters
 	#tag Event
 		Sub TextChange()
 		  If Status_InSetEditable Then
@@ -15931,9 +16881,157 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events edt_external_application_parameters
+#tag Events rad_external_application_start
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_application_stop
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events lst_external_videolan_preset
+	#tag Event
+		Sub Change()
+		  If Status_InSetEditable Then
+		    edt_external_videolan_manual.Text = App.VideolanPresetList.Lookup(lst_external_videolan_preset.Cell(lst_external_videolan_preset.ListIndex,0), "")
+		    
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_videolan_start
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btn_external_videolan_mediafilename
+	#tag Event
+		Sub Open()
+		  Me.SetIcon fileopenpic, fileopenmask
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseEnter()
+		  SetHelp "external_slide/presentation_settings/presentation_file"
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MouseExit()
+		  SetHelp ""
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action()
+		  Dim dlg As New OpenDialog
+		  Dim f As FolderItem
+		  
+		  dlg.Filter = "*.*"
+		  dlg.ActionButtonCaption = App.T.Translate("shared/select/@caption")
+		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
+		  dlg.Title = App.T.Translate("external_slide/videolan_settings/videolan_mediafilename/@caption")
+		  dlg.PromptText = App.T.Translate("external_slide/videolan_settings/videolan_mediafilename")
+		  
+		  f = dlg.ShowModal()
+		  If Not IsNull(f) Then
+		    edt_external_videolan_mediafilename.Text = f.AbsolutePath()
+		    
+		    If Status_InSetEditable Then
+		      Status_InSetChanged = True
+		      EnableMenuItems
+		    End If
+		  End If
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_videolan_mediafilename
 	#tag Event
 		Sub TextChange()
+		  If Status_InSetEditable Then
+		    chk_external_embed_mediafile.Enabled = True
+		    
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rad_external_videolan_stop
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_external_videolan_manual
+	#tag Event
+		Sub TextChange()
+		  If Status_InSetEditable Then
+		    
+		    Dim selected As Integer = -1
+		    Dim manualItem As Integer = -1
+		    Dim i As Integer
+		    
+		    For i = 0 to lst_external_videolan_preset.ListCount()-1
+		      If App.VideolanPresetList.Value(lst_external_videolan_preset.Cell(i, 0)) = Me.Text Then
+		        selected = i
+		      ElseIf App.VideolanPresetList.Value(lst_external_videolan_preset.Cell(i, 0)) = "" Then
+		        manualItem = i
+		      End If
+		    Next i
+		    
+		    If selected > -1 then
+		      lst_external_videolan_preset.ListIndex = selected
+		    Else
+		      Status_InSetEditable = False 'Prevent updating of the parameter control because the preset selection changed
+		      lst_external_videolan_preset.ListIndex = manualItem
+		      Status_InSetEditable = True
+		    End If
+		    
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_wait_for_videolan
+	#tag Event
+		Sub Action()
+		  If Status_InSetEditable Then
+		    Status_InSetChanged = True
+		    EnableMenuItems
+		  End If
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events chk_external_embed_mediafile
+	#tag Event
+		Sub Action()
 		  If Status_InSetEditable Then
 		    Status_InSetChanged = True
 		    EnableMenuItems

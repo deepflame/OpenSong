@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Polski" author="Mariusz Mycielski" version="1.5.1">
+<language name="Polski" author="Mariusz Mycielski" version="2.0.0">
 
   <load_settings>
     <checking_folders>Tworzę/Sprawdzam foldery dokumentów</checking_folders>
@@ -11,7 +11,8 @@
     <themes>Ładuje listę tematów</themes>
     <time_signatures>Ładuję listę metrum</time_signatures>
     <imagequality>Ładuję listę jakości obrazków</imagequality>
-		<fonts>Ładuję listę czcionek</fonts>
+		<videolan_preset>Ładuję ustawienia parametrów VLC</videolan_preset>
+    <fonts>Ładuję listę czcionek</fonts>
     <latest_version>Sprawdzam czy jest nowsza wersja
       <newer_available>Nowsza wersja programu (%1) jest dostępna na stronie www.opensong.org. Mozesz ją stamtąd pobrać.</newer_available>
     </latest_version>
@@ -147,8 +148,9 @@
       <add_slides caption="Slajd">Dodaje slajd niestandardowy do zestawu. Slajdy niestandardowe pozwalają na zdefiniowanie własnego tytułu, podtytułu, treści a nawet stylu. Slajd niestandardowy może zawierać wiele zwykłych slajdów.</add_slides>
       <add_style caption="Styl">Zamienia bieżący styl zestawu od tego miejsca. Zmiana stylu pozwala na zdefiniowanie nowego stylu lub powrót do poprzedniego.</add_style>
 			<add_image caption="Obrazek">Dodaje slajd obrazkowy do bieżącego zestawu. Slajdy obrazkowe umożliwiają wyświetlanie pojedynczego obrazka lub ich sekwencji zamiast tekstu.</add_image>
+      <add_external caption="Zewnętrzny">Dodaje do bieżącego zestawu slajd umożliwiający wyświetlenie zewnętrznej prezentacji lub uruchomienie odtwarzacza plików multimedialnych.</add_external>
       <add_video caption="Film">Dodaje film do bieżącego zestawu. Użyj tego przycisku, by wyświetlić film w OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Dodaje prezentację PowerPoint do bieżącego zestawu. Użytj tego przycisku, by wyświetlić prezentację PowerPoint w OpenSong.</add_powerpoint>
+      <add_powerpoint caption="PowerPoint">Dodaje prezentację PowerPoint do bieżącego zestawu. Użyj tego przycisku, by wyświetlić prezentację PowerPoint w OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Element">
       <move_up caption="Do góry">Przesuwa wybrany element zestawu w kierunku jego początku.</move_up>
@@ -156,7 +158,13 @@
       <remove caption="Usuń">Usuwa wybrany element z zestawu.</remove>
       <copy caption="Kopiuj">Tworzy kopię wybranego elementu zestawu.</copy>
       <paste caption="link(shared/insert/@caption)">Wstawia kopię wybranego elementu zestawu za bieżącą pozycją.</paste>
-			<store caption="Zapisz">Zapisuje wybrany element w zestawie.</store>
+      <store caption="Zapisz">Zapisuje wybrany element w zestawie.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Prezentuje bieżący zestaw na ekranie począwszy od aktualnie wybranego elementu. Masz do wyboru prezentację na bieżącym monitorze, drugim monitorze lub podgląd widoku dwumonitorowego na bieżącym monitorze.
+        <single_screen caption="Jeden monitor"/>
+        <dual_screen caption="Dwa monitory"/>
+        <preview_dual_screen caption="Podgląd dwóch monitorów"/>
+        <no_slides>Musisz mieć przynajmniej jeden slajd w zestawie, by rozpocząć prezentację.</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Elementy zestawu">Lista elementów w bieżącym zestawie. Kliknij na dowolny slajd, by załadować go do edytora lub kliknij dwukrotnie na piosenkę, by załadować ją do edytora piosenek.
       <song caption="(piosenka)"/>
@@ -170,6 +178,7 @@
     <untitled caption="Bez nazwy"/>
     <errors>
       <revert caption="Błąd przeładowania zestawu &quot;%1&quot; z pliku."/>
+      <insert caption="Błąd wklejania kopiowanych slajdów:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; wyeksportowany do
@@ -183,7 +192,7 @@
     <title caption="Tytul">Edycja tytułu slajdu, który będzie wyświetlany w prezentacji.</title>
     <subtitle caption="Podtytul">Edycja podtytułu slajdu, który będzie wyświetlany w prezentacji.</subtitle>
     <name caption="Nazwa">Edycja nazwy slajdu, która jest wyświetlana w oknie Pomocnika Prezentacji. Nie jest ona widoczna na wyświetlanym slajdzie.</name>
-    <slides caption="Slajdy">Zawiera definicje slajdu(ów) należących do bieżącego elementu zestawu.</slides>
+    <slides caption="Slajdy">Zawiera definicje slajdu(ów) należących do bieżącego elementu zestawu. Podpowiedź: przeciągnij jeden lub więcej obrazków do listy w celu ich prostego dodania.</slides>
     <presentation caption="Kolejność niestandardowa">Zamienia oryginalną kolejność prezentacji slajdów piosenki zdefiniowaną w edytorze piosenek.</presentation>
     <origorder caption="Kolejność oryginalna">Oryginalna kolejność prezentacji slajdów piosenki.</origorder>       
     <folder caption="Folder piosenek">Nazwa folderu zawierającego bieżący element.</folder>
@@ -211,8 +220,9 @@
     <store_as_link caption="Nie przechowuj obrazka w zestawie, użyj linka do obrazka">Przechowywanie obrazków w zestawie znacząco zwiększa rozmiar pliku zestawu na dysku i może wpłynąć na jakość obrazka. Zapobiega temu użycie linka. Ścieżki do obrazków z folderu 'Backgrounds'(Tła) są przechowywane jako względne, co ułatwia przenoszenie zestawów między komputerami. Zachowaj ostrożność podczas przygotowywania prezentacji na innym komputerze niż ten, na którym wyświetlasz prezentację!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Czynności" />
-      <ins_image caption="Dodaj obrazek">Dodaje obrazek do tego slajdu, by podczas prezentacji dzielić wspólny tytuł, podtytuł, styl i/lub ustawienia zaawansowane. Utworzone w ten sposób slajdy mogą być również wyświetlane w pętli.</ins_image>
-      <del_image caption="Usuń obrazek">Usuwa wybrany obrazek ze slajdu.</del_image>
+      <ins_image caption="Dodaj">Dodaje obrazek do tego slajdu, by podczas prezentacji dzielić wspólny tytuł, podtytuł, styl i/lub ustawienia zaawansowane. Utworzone w ten sposób slajdy mogą być również wyświetlane w pętli.</ins_image>
+      <imp_image caption="Importuj">Wczytuje wszystkie slajdy z prezentacji i dodaje je jako obrazki.</imp_image>
+      <del_image caption="Usuń">Usuwa wybrany obrazek ze slajdu.</del_image>
       <move_up caption="W górę">Przesuwa wybrany obrazek slajdu w kierunku jego początku.</move_up>
       <move_down caption="W dół">Przesuwa wybrany obrazek slajdu w kierunku jego końca.</move_down>
     <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
@@ -222,6 +232,47 @@
     <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
+
+  <external_slide>
+    <header caption="Edytor slajdów zewnętrznych"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Aplikacja"/>
+    <presentation caption="Prezentacja">Użyj tego slajdu do wyświetlenia prezentacji z użyciem Microsoft PowerPoint lub darmowego OpenOffice.org Impress.</presentation>
+    <videolan caption="VLC">Użyj tego slajdu do wyświetlenia pliku mediów z użyciem uniwersalnego darmowego programu VLC.</videolan>
+    <application caption="Program">Użyj tego slajdu do uruchomienia zewnętrznego programu z linii poleceń.</application>
+    <no_application caption="Bez programu">
+    <no_application caption="Wybierz aplikację wyświetlającą zawartość tego slajdu."/>
+    </no_application>
+    <presentation_settings caption="Ustawienia prezentacji">
+      <presentation_host caption="Której aplikacji użyć do wyświetlenia tej prezentacji?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="Instalacja Microsoft Office jest wymagana do uzyskania pełnej kontroli nad prezentacją PowerPoint."/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="Do wyświetlenia prezentacji PowerPoint bez interakcji możesz użyć darmowego Microsoft PowerPoint Viewer. OpenSong próbuje go odnaleźć. Przeglądarkę możesz ustawić w Ustawieniach programu."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="Instalacja darmowego pakietu OpenOffice.org jest wymagana do uzyskania pełnej kontroli nad prezentacją PowerPoint lub Impress."/>
+      <presentation_file caption="Plik prezentacji">Wybierz prezentację w oknie wyboru pliku.</presentation_file>
+      <loop_presentation caption="Prezentacja w pętli"/>
+      <embed_presentation caption="Włącz prezentację do zestawu OpenSong"/>
+    </presentation_settings>
+    <videolan_settings caption="Ustawienia VLC">
+      <videolan_start caption="Uruchom VLC"/>
+	  <videolan_mediafilename caption="Ścieżka do pliku mediów">Wybierz plik audio lub video do uruchomienia.</videolan_mediafilename>
+	  <videolan_preset caption="Użyj następujących ustawień"/>
+	  <videolan_manual caption="Parametry ustawiane ręcznie (użyj %d do wyświetlenia numeru, %s do wyświetlenia nazwy pliku)"/>
+      <wait_for_videolan caption="Odtwarzaj do końca, zanim przejdziesz do następnego slajdu"/>
+      <videolan_stop caption="Zatrzymaj każdą kopię uruchomionego programu VLC"/>
+    </videolan_settings>
+    <application_settings caption="Ustawienia uruchamiania aplikacji">
+      <application_start caption="Uruchom zewnętrzną aplikację"/>
+      <application_filename caption="Ścieżka do pliku aplikacji">Wybierz plik aplikacji, która ma być uruchomiona.</application_filename>
+      <application_parameters caption="Parametry aplikacji"/>
+      <wait_for_application caption="Poczekaj z kontynuacją do zakończenia działania zewnętrznej aplikacji"/>
+      <application_stop caption="Zatrzymaj wszystkie aplikacje uruchomione przez Opensong"/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
 
   <style_change>
     <header caption="Zmiana stylu"/>
@@ -300,6 +351,7 @@
       <print_alphabetical_toc caption="Drukuj spis treści alfabetycznie"/>
       <print_categorical_toc caption="Drukuj spis treści wg kategorii"/>
       <song_act caption="Wyświetl _raport aktywności piosenek"/>
+      <scripture caption="Wyszukuj wersety"/>
       <quit caption="_Zakończ"/>
     </file>
     <edit caption="_Edycja">
@@ -325,14 +377,15 @@
       <install_module caption="_Instaluj moduł"/>
     </settings>
     <help caption="_Pomoc">
-      <help_topics caption="_Tematy pomocy"/>
-      <translating caption="Tłumaczenie _OpenSong"/>
+      <help_topics caption="Tematy _pomocy"/>
+      <user_manual caption="Podręcznik _użytkownika online"/>
+      <translating caption="_Tłumaczenie OpenSong"/>
       <about caption="_O OpenSong"/>
     </help>
   </main_menu>
 
   <general_settings title="Ustawienia programu">
-    <general caption="Główne" head1="Podstawowe" head2="Dodatkowe">
+    <general caption="Główne" head1="Podstawowe" head2="Pliki" head3="System" head4="Wyświetlanie">
       <ccli caption="Numer licencji CCLI"/>
       <version_check caption="Przy uruchamianiu szukaj nowej wersji"/>
       <language caption="Język"/>
@@ -385,6 +438,25 @@
       <songs caption="Piosenki"/>
       <sets  caption="Zestawy"/>
     </startmode>
+    <applications caption="Aplikacje zewnętrzne">
+      <pptview caption="Ścieżka do przeglądarki PowerPoint"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Ścieżka do VLC"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+  	<slidetype_coloring caption="Kolorowanie wg typów slajdów">
+  	  <coloring caption="Zastosuj kolory tła"/>
+  	  <verse caption="Piosenka, Zwrotka"/>
+  	  <bridge caption="Piosenka, Przejście"/>
+  	  <prechorus caption="Piosenka, Przejście do refrenu"/>
+  	  <chorus caption="Piosenka, Refren"/>
+  	  <tag caption="Piosenka, Dodatek"/>
+  	  <scripture caption="Werset biblijny"/>
+  	  <custom caption="Slajd niestandardowy"/>
+  	  <image caption="Slajd obrazkowy"/>
+  	  <application caption="Zewnętrzna aplikacja"/>
+  	  <blank caption="Pusty (wstawiony)"/>
+  	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Ustawienia drukowania">
@@ -410,6 +482,7 @@
     <layout>
       <heading_border_thickness caption="Grubość linii obramowania"/>
       <title_in_caps caption="Tytuł dużymi literami"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Jednostki">
       <inches caption="Cale"/>
@@ -418,11 +491,30 @@
   </print_settings>
 
   <presentation_settings title="Ustawienia prezentacji">
-    <settings head1="Style" head2="Opcje">
+    <settings head1="Style" head2="Opcje" head3="Zrzuty">
         <default_slides caption="Domyślny styl slajdu"/>
         <scripture_slides caption="Domyślny styl wersetu biblijnego"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+        
+        <export_snapshot caption="Eksportuj zrzut każdego prezentowanego slajdu do następującego pliku"/>
+        <snapshot_file caption="Nazwa pliku zrzutu">Wybierz nazwę pliku zrzutu w oknie wyboru.</snapshot_file>
+        <export_preview caption="Eksportuj zrzuty podczas podglądu zestawu"/>
+        <export_live_insertions caption="Eksportuj zrzuty slajdów wstawionych podczas prezentacji"/>
+        <export_metadata caption="Eksportuj szczegóły slajdu do tak samo nazwanego pliku XML"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">W nazwie pliku możesz użyć następujących parametrów::
+    - %d: Dzień bieżącego miesiąca (01-31)
+    - %h: Aktualna godzina w formacie 24h (00-23)
+    - %i: Aktualna minuta (00-59)
+    - %m: Bieżący miesiąc (01-12)
+    - %n: Numer slajdu w bieżącym zestawie (z wiodącymi zerami)
+    - %N: Nazwa bieżącego slajdu
+    - %P: Indeks prezentacji dla slajdów podczas prezentacji (z wiodącymi zerami)
+    - %s: Aktualna sekunda (00-59)
+    - %S: Nazwa bieżącego zestawu
+    - %T: Tytuł bieżącego slajdu
+    - %V: Numer zwrotki bieżącego slajdu (tylko dla piosenek, pusty dla pozostałych slajdów)
+    - %y: Bieżący rok (4 cyfry)</snapshot_parameters>
     </settings>
     <transitions caption="Przejścia">
       <use_transitions caption="Domyślnie włączone"/>
@@ -469,6 +561,7 @@
       <presentation caption="Monitor prezentacji"/>
       <detected caption="Wykryłem %1 monitor(y)."/>
       <default_mode caption="Domyślny tryb monitorów"/>
+      <force_4_3_preview caption="Wymuś podgląd 4:4"/>
     </monitor>
     <logo caption="Logo">
       <mask caption="Maska"/>
@@ -486,6 +579,10 @@
     <misc caption="Różne">
       <exit_prompt caption="Pytaj przed wyjściem"/>
     </misc>
+
+    <errors>
+        <snapshot_file>Błąd: włączono tworzenie zrzutów, lecz nie wprowadzono nazwy pliku.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Pomocnik Prezentacji">
@@ -513,11 +610,14 @@ W dół: Następny slajd
 W górę: Poprzedni slajd
 W prawo: Następna sekcja
 W lewo: Poprzednia sekcja
+F1-F15: Piosenka
 1-9: Zwrotka
 C: Refren
 P: Przejście do refrenu
 B: Przejście
 T: Dodatek</keys>
+    <preview caption="Podgląd bieżącego slajdu" />
+    <next caption="Podgląd następnego slajdu" />
   </presentation_helper>
 
   <help_topics title="Tematy pomocy">
@@ -581,9 +681,9 @@ Linia sekcji jest ograniczona nawiasami: [ oraz ]. Sekcja obejmuje wszystkie nas
 
 &lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Zwrotka. Na wydruku zostanie usunięta literka "V" i zostanie wydrukowany numer zwrotki w kółeczku. Np. [V1], [V2], [V3].
 
-&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Refren. Na wydruku po tekście "Refren" będzie wyswietlony określony tekst (zobacz przykłady). Tekst "Refren" zostanie wydrukowany wraz z zaokrągloną prostokątną otoczką. Przykłady: [C], [C2], [CModulation].
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Refren. Na wydruku po tekście "Refren" będzie wyświetlony określony tekst (zobacz przykłady). Tekst "Refren" zostanie wydrukowany wraz z zaokrągloną prostokątną otoczką. Przykłady: [C], [C2], [CModulation].
 
-&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Przejście do refrenu. Na wydruku po tekście "Przejście do refrenu" będzie wyswietlony określony tekst (zobacz przykłady). Tekst "Przejście do refrenu" zostanie wydrukowany wraz z poziomymi liniami pod oraz nad nim. Przykłady: [P], [P2].
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Przejście do refrenu. Na wydruku po tekście "Przejście do refrenu" będzie wyświetlony określony tekst (zobacz przykłady). Tekst "Przejście do refrenu" zostanie wydrukowany wraz z poziomymi liniami pod oraz nad nim. Przykłady: [P], [P2].
 
 &lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Przejście. Na wydruku po tekście "Przejście" będzie wyświetlony określony tekst (zobacz przykłady). Tekst "Przejście" zostanie wydrukowany wraz z zaokrągloną prostokątną otoczką. Przykłady: [B], [B2].
 
@@ -749,10 +849,11 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
 
   <style_editor title="Edytor stylu">
     <fonts_and_alignment caption="Czcionki i wyrównanie">
-      <title caption="Tytuł"/>
-      <subtitle caption="Podtytuł"/>
-      <body caption="Treść"/>
-      <align caption="Wyrównanie"/>
+      <title caption="Pokaż tytuł"/>
+      <subtitle caption="Pokaż podtytuł"/>
+      <body caption="Pokaż treść"/>
+      <body_autosize caption="Automatyczne dopasowanie rozmiaru czcionki"/>
+	<align caption="Wyrównanie"/>
       <margin caption="Marginesy"/>
       <tabs caption="Tabulatory"/>
    </fonts_and_alignment>
@@ -883,6 +984,9 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
     <shownumbers caption="Wstaw numery wersetów"/>
 		<preview caption="Podgląd"/>
 	  <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+    <done caption="link(shared/done/@caption)"/>
     <bad_reference>
       <format>Sprawdź poprawność frazy i wyszukaj ponownie.</format>
       <empty>Niepoprawna składnia: puste zapytanie.</empty>
@@ -1041,6 +1145,14 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
     <option name="Żadna, bezstratna, duży plik zestawu"/>
   </imagequality_list>
 
+  <videolan_preset_list>
+  	<preset name="Film jako tapeta Windows (użyj koloru tła RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+  	<preset name="Pełnoekranowy film na projektorze" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+  	<preset name="Pełnowymiarowy film z domyślnego wejścia DirectShow" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
+  	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+  	<preset name="Ręcznie" parameters=""/>
+  </videolan_preset_list>
+
   <style_preview>
     <slide_groups>
       <slide_group name="Przykładowy tytuł" type="niestandardowy" seconds="0" loop="false">
@@ -1107,14 +1219,15 @@ Kliknij na slajd, by edytować jego styl.</body>
     <set_changed caption="Bieżący zestaw został zmieniony, czy zapisać go?"/>
     <select_docs_folder caption="Wybierz katalog dokumentów OpenSong">Gdzie mają być przechowywane pliki OpenSong (piosenki i zestawy)?</select_docs_folder>
     <activity_log caption="Czy chcesz, by piosenki z tej prezentacji zostały dodane do raportu aktywności?"/>
+    <import_presentation caption="Import obrazków prezentacji">Wybierz plik prezentacji, z której chcesz importować slajdy.</import_presentation>
   </questions>
 
   <about>
     <additional>Pomagali nam:</additional>
     <copyright>Copyright</copyright>
     <gpl>To oprogramowanie jest udostępniane na licencji GPL.</gpl>
-    <web>Wejdź na http://www.opensong.org/ by dowiedzieć się więcej.</web>
-    <translating>Aby przetłumaczyć OpenSong na inny język, skopiuj plik 'English' w katalogu 'OpenSong Languages' i nazwij go nazwą docelowego języka. Przetłumacz całą jego zawartość z wyjątkiem tagów i nazw atrybutów. Następnie prześlij plik na adres translator@opensong.org a my umieścimy go na oficjalnej stronie programu.</translating>
+    <web>Więcej informacji na stronie http://www.opensong.org/.</web>
+    <translating>Aby przetłumaczyć OpenSong na inny język, skopiuj plik 'English' w katalogu 'OpenSong Languages' i nazwij go nazwą docelowego języka. Przetłumacz całą jego zawartość z wyjątkiem tagów i nazw atrybutów. Następnie prześlij plik na adres opensong-translate@lists.sourceforge.net albo umieść w sekcji 'Patches' Tracker na stronie projektu OpenSong, a my dołączymy go do kolejnej wersji programu.</translating>
     <created_with_opensong>Utworzone przez OpenSong</created_with_opensong>
     <sources>OpenSong korzysta z kodu:
 StringUtils (http://www.strout.net/info/coding/rb/)
@@ -1169,7 +1282,7 @@ Obrazek PuffyClouds1.jpg zawarty w katalogu Backgrounds jest własnością FreeS
     <no_sets_folder>Nie można odnaleźć domyślnego katalogu zestawów: %1 lub katalog jest pusty</no_sets_folder>
     <no_settings_folder>Nie można odnaleźć domyślnego katalogu z ustawieniami: %1 lub katalog jest pusty</no_settings_folder>
     <no_songs_folder>Nie można odnaleźć domyślnego katalogu piosenek: %1 lub katalog jest pusty</no_songs_folder>
-    <no_docs_folder>Nie można utworzyć/znaleźć katalogu z dokumentami: %1</no_docs_folder>
+    <no_docs_folder>Nie można utworzyć/znaleźć folderu dokumentów: %1 Opensong nie może dalej działać bez tego folderu. Uruchom ponownie OpenSong i wybierz folder dokumentów. Jeżeli nadal będzie występował ten błąd, skontaktuj się z administratorem.</no_docs_folder>
     <docs_folder>Katalog dokumentów nie może być podkatalogiem w 'OpenSong Defaults'
 Tymczasowo zmieniam go na: %1
 Zmień swoje ustawienia.</docs_folder>
@@ -1194,6 +1307,12 @@ Przepraszamy za wszelkie niedogodności.
     </cclinotavailable>
 		<activity_disabled>Nie można załadować pliku raportu aktywności piosenek: %1! Upewnij się, że plik ten istnieje i nie jest uszkodzony. Na czas tej sesji przeglądanie raportu zostaje zawieszone.</activity_disabled>
     <adding_logentry>Błąd zapisu do pliku raportu!</adding_logentry>
+    <presentations>
+      <nohost>Brak aplikacji zdolnej do wyświetlenia tej prezentacji. Zainstaluj OpenOffice.org, Microsoft PowerPoint lub Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>Aplikacja '%1' nie obsługuje tego formatu.</unsupported_feature>
+      <load_failed>Nie można otworzyć prezentacji '%1'.</load_failed>
+    </presentations>
+	  <videolan_app_missing>Niepoprawne ustawienia aplikacji VLC. Podaj ścieżkę do programu VLC w oknie ustawień programu w zakładce Pliki.</videolan_app_missing>
   </errors>
 
   <xml_errors>
@@ -1266,7 +1385,10 @@ Przepraszamy za wszelkie niedogodności.
     <lead_sheets>Generuję wydruk</lead_sheets>
     <process_themes>Przetwarzam tematy</process_themes>
     <process_songs>Przetwarzam piosenki</process_songs>
+    <song_search>Wyszukuję piosenki</song_search>
     <export>Eksportuję piosenkę(i)</export>
+    <load_songs>Ładuję piosenkę(i)</load_songs>
+    <load_externals>Ładuję pliki zewnętrzne</load_externals>
     <pass1>Sortuję... pierwszy przebieg</pass1>
     <pass2>Sortuję... drugi przebieg</pass2>
   </progress_status>

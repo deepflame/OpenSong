@@ -120,6 +120,12 @@ Begin Menu MainMenu
          Index = -2147483648
          AutoEnable = True
       End
+      Begin MenuItem mnu_file_scripture
+         SpecialMenu = 0
+         Text = "Scripture Lookup..."
+         Index = -2147483648
+         AutoEnable = True
+      End
       Begin MenuItem UntitledMenu4
          SpecialMenu = 0
          Text = "-"

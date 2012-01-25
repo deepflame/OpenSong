@@ -308,6 +308,15 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub Constructor()
+		  values=new dictionary
+		  types=new dictionary
+		  searched=new Dictionary
+		  indexOf=-1
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Copy(key as string, dest as plistDict)
 		  Move(key,dest,false,"")
 		End Sub
@@ -407,6 +416,12 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetBoolean(key As string) As boolean
+		  return GetBoolean(key,true)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetBoolean(key As string, default As boolean) As boolean
 		  dim value As boolean
 		  
@@ -419,12 +434,6 @@ Class plistDict
 		    value=true
 		  end
 		  return value
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetBoolean(key As string) As boolean
-		  return GetBoolean(key,true)
 		End Function
 	#tag EndMethod
 
@@ -471,6 +480,15 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetDate(key As string) As date
+		  dim dt As date
+		  
+		  dt=new date
+		  return GetDate(key,dt)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetDate(key As string, default As date) As date
 		  dim dt As Date
 		  dim value,datePart,timePart,month,day,year As string
@@ -511,11 +529,8 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetDate(key As string) As date
-		  dim dt As date
-		  
-		  dt=new date
-		  return GetDate(key,dt)
+		Function GetDouble(key As string) As double
+		  return GetDouble(key,0)
 		End Function
 	#tag EndMethod
 
@@ -539,15 +554,15 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetDouble(key As string) As double
-		  return GetDouble(key,0)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub GetEditField(field as EditField)
 		  field.Text=GetString(field.Name,field.text)
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetInteger(key As string) As integer
+		  return GetInteger(key,0)
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -570,9 +585,9 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetInteger(key As string) As integer
-		  return GetInteger(key,0)
-		End Function
+		Sub GetLabel(txt as Label)
+		  txt.Caption=GetString(txt.Name,txt.Caption)
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -679,9 +694,9 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetStaticText(txt as StaticText)
-		  txt.Caption=GetString(txt.Name,txt.Caption)
-		End Sub
+		Function GetString(key As string) As string
+		  return GetString(key,"")
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -691,14 +706,14 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetString(key As string) As string
-		  return GetString(key,"")
+		Function GetType(key As string) As string
+		  return types.value(key)
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetType(key As string) As string
-		  return types.value(key)
+		Function GetValue(key As string) As string
+		  return GetValue(key,"")
 		End Function
 	#tag EndMethod
 
@@ -720,12 +735,6 @@ Class plistDict
 		    SetError(true,"Key "+key+" does not exist")
 		  end
 		  return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetValue(key As string) As string
-		  return GetValue(key,"")
 		End Function
 	#tag EndMethod
 
@@ -887,6 +896,12 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub Move(key as string, dest as plistDict)
+		  Move(key,dest,true,"")
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Move(key as string, dest as plistDict, deleteSrc as boolean, newName as string)
 		  dim value as Variant
 		  dim type,nm,ck,targetName As string
@@ -998,12 +1013,6 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Move(key as string, dest as plistDict)
-		  Move(key,dest,true,"")
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub MoveFirst()
 		  currentIndex=0
 		  eof=false
@@ -1023,15 +1032,6 @@ Class plistDict
 		    currentIndex=0
 		    eof=true
 		  end
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Constructor()
-		  values=new dictionary
-		  types=new dictionary
-		  searched=new Dictionary
-		  indexOf=-1
 		End Sub
 	#tag EndMethod
 
@@ -1232,6 +1232,12 @@ Class plistDict
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub SetLabel(txt as Label)
+		  SetString(txt.Name,txt.Caption)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub SetList(key as string, items() as string, startIndex as integer, endIndex as integer)
 		  dim count,si,ei as Integer
 		  
@@ -1332,12 +1338,6 @@ Class plistDict
 		  Elseif CheckType(key, kTypeDouble) <> 0 Then
 		    SetDouble(key, v)
 		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub SetStaticText(txt as StaticText)
-		  SetString(txt.Name,txt.Caption)
 		End Sub
 	#tag EndMethod
 
@@ -1519,9 +1519,6 @@ Class plistDict
 	#tag Constant, Name = kTypeBoolean, Type = String, Dynamic = False, Default = \"boolean", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = kTypeString, Type = String, Dynamic = False, Default = \"string", Scope = Public
-	#tag EndConstant
-
 	#tag Constant, Name = kTypeData, Type = String, Dynamic = False, Default = \"data", Scope = Public
 	#tag EndConstant
 
@@ -1537,51 +1534,20 @@ Class plistDict
 	#tag Constant, Name = kTypeInteger, Type = String, Dynamic = False, Default = \"integer", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = kValueTrue, Type = String, Dynamic = False, Default = \"true", Scope = Private
+	#tag Constant, Name = kTypeReal, Type = String, Dynamic = False, Default = \"real", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = kTypeString, Type = String, Dynamic = False, Default = \"string", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = kValueFalse, Type = String, Dynamic = False, Default = \"false", Scope = Private
 	#tag EndConstant
 
-	#tag Constant, Name = kTypeReal, Type = String, Dynamic = False, Default = \"real", Scope = Public
+	#tag Constant, Name = kValueTrue, Type = String, Dynamic = False, Default = \"true", Scope = Private
 	#tag EndConstant
 
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			Type="string"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
 		#tag ViewProperty
 			Name="currentIndex"
 			Group="Behavior"
@@ -1595,6 +1561,13 @@ Class plistDict
 			Type="boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="indexOf"
 			Group="Behavior"
 			InitialValue="0"
@@ -1605,6 +1578,33 @@ Class plistDict
 			Group="Behavior"
 			InitialValue="0"
 			Type="boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			Type="string"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

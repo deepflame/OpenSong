@@ -85,6 +85,12 @@ Protected Module SmartML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetErrorMessage() As String
+		  Return ErrorString + " (" + Str(ErrorCode) + ")"
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GetNode(xnode As XmlNode, nodePath As String, create As Boolean = False) As XmlNode
 		  Dim parent As XmlNode
@@ -161,6 +167,24 @@ Protected Module SmartML
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetValueDate(xnode As XmlNode, childPath As String, create As Boolean = True, default As Date = Nil) As Date
+		  'TODO Internationalize & cross-platform
+		  
+		  Dim s As String
+		  Dim d As New Date
+		  
+		  s = GetValue(xnode, childPath, create)
+		  If create And Len(s) = 0 Then
+		    SetValueDate(xnode, childPath, default)
+		    Return default
+		  End If
+		  d.SQLDate = s
+		  return d
+		  
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GetValueF(xnode As XmlNode, childPath As String, create As Boolean = True) As FontFace
 		  Dim f As New FontFace
@@ -206,13 +230,12 @@ Protected Module SmartML
 		  s = GetValue(xnode, childPath, create)
 		  If Len(s) = 0 Then Return Nil
 		  
-		  Dim r As New Random
 		  Dim f As FolderItem
 		  Dim outputStream As BinaryStream
 		  
 		  f = GetTemporaryFolderItem()
 		  If f <> Nil Then
-		    outputStream = f.CreateBinaryFile("image/jpeg")
+		    outputStream = BinaryStream.Create(f, True)
 		    outputStream.Write DecodeBase64(s)
 		    outputStream.Close
 		    p = f.OpenAsPicture
@@ -220,6 +243,24 @@ Protected Module SmartML
 		  End If
 		  
 		  Return p
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetValueTime(xnode As XmlNode, childPath As String, create As Boolean = True, default As Date = Nil) As Date
+		  'TODO Internationalize & cross-platform
+		  
+		  Dim s As String
+		  Dim d As New Date
+		  
+		  s = GetValue(xnode, childPath, create)
+		  If create And Len(s) = 0 Then
+		    SetValueTime(xnode, childPath, default)
+		    Return default
+		  End If
+		  d.SQLDateTime = d.SQLDate + " " + s
+		  return d
+		  
 		End Function
 	#tag EndMethod
 
@@ -288,14 +329,14 @@ Protected Module SmartML
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub RemoveChild(xnode As XmlNode, child As XmlNode)
-		  xnode.RemoveChild child
+		Protected Sub RemoveChild(xnode As XmlNode, index As Integer)
+		  xnode.RemoveChild xnode.Child(index)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub RemoveChild(xnode As XmlNode, index As Integer)
-		  xnode.RemoveChild xnode.Child(index)
+		Protected Sub RemoveChild(xnode As XmlNode, child As XmlNode)
+		  xnode.RemoveChild child
 		End Sub
 	#tag EndMethod
 
@@ -422,6 +463,14 @@ Protected Module SmartML
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub SetValueDate(xnode As XmlNode, childPath As String, D As Date)
+		  If D = Nil Then Return
+		  
+		  SetValue xnode, childPath, D.SQLDate
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Sub SetValueF(xnode As XmlNode, childPath As String, f As FontFace)
 		  SetValue xnode, childPath + "/@font", f.Name
@@ -452,12 +501,24 @@ Protected Module SmartML
 		  Dim inputStream As BinaryStream
 		  
 		  If f <> Nil Then
-		    inputStream = f.OpenAsBinaryFile(False)
+		    inputStream = BinaryStream.Open(f)
 		    If inputStream <> Nil Then
 		      SetValue xnode, childPath, EncodeBase64(inputStream.Read(f.Length))
 		      inputStream.Close
 		    End If
 		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetValueTime(xnode As XmlNode, childPath As String, T As Date)
+		  'TODO Internationalize & cross-platform
+		  If T = Nil Then Return
+		  Dim timeString As String
+		  
+		  timeString = T.SQLDateTime
+		  timeString = Mid(timeString, Len(T.SQLDate) + 2)
+		  SetValue xnode, childPath, timeString
 		End Sub
 	#tag EndMethod
 
@@ -469,6 +530,27 @@ Protected Module SmartML
 		  temp = MoveChild(xnode, index2, index1)
 		  
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function TranslateMessage(id As String, altText As String = "", param1 As String = "", param2 As String = "", param3 As String = "") As String
+		  //++
+		  // Even though Translator.Translate is defined with a paramarray argument, there's no way
+		  // to use one as input here and pass it along.  Therefore, only handle the most basic cases
+		  // (0, 1, 2 or 3)
+		  //
+		  // This routine helps eliminate excessive If...Then coding in error traps by providing a
+		  // means to generate a meaningful error message if the translator object is not loaded.
+		  //
+		  // Ed Palmer, June 2007
+		  //--
+		  
+		  If App.T Is Nil Then
+		    Return StringUtils.Sprintf(altText, param1, param2, param3)
+		  Else
+		    Return App.T.Translate(id, param1, param2, param3)
+		  End If
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -491,7 +573,7 @@ Protected Module SmartML
 		    '--
 		    Return Nil
 		  End If
-		  input = f.OpenAsTextFile
+		  input = TextInputStream.Open(f)
 		  '++JRC Prevent NilObject Exception if file could not be opened
 		  If input = Nil Then
 		    ErrorCode = 4
@@ -577,7 +659,7 @@ Protected Module SmartML
 		  
 		  Dim output As TextOutputStream
 		  'xdoc.Encoding = "ISO-8859-1"
-		  output = f.CreateTextFile
+		  output = TextOutputStream.Create(f)
 		  If output <> Nil Then
 		    output.Write XDocToString(xdoc).FormatLocalEndOfLine
 		    output.Close
@@ -611,89 +693,6 @@ Protected Module SmartML
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function TranslateMessage(id As String, altText As String = "", param1 As String = "", param2 As String = "", param3 As String = "") As String
-		  //++
-		  // Even though Translator.Translate is defined with a paramarray argument, there's no way
-		  // to use one as input here and pass it along.  Therefore, only handle the most basic cases
-		  // (0, 1, 2 or 3)
-		  //
-		  // This routine helps eliminate excessive If...Then coding in error traps by providing a
-		  // means to generate a meaningful error message if the translator object is not loaded.
-		  //
-		  // Ed Palmer, June 2007
-		  //--
-		  
-		  If App.T Is Nil Then
-		    Return StringUtils.Sprintf(altText, param1, param2, param3)
-		  Else
-		    Return App.T.Translate(id, param1, param2, param3)
-		  End If
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub SetValueDate(xnode As XmlNode, childPath As String, D As Date)
-		  If D = Nil Then Return
-		  
-		  SetValue xnode, childPath, D.SQLDate
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub SetValueTime(xnode As XmlNode, childPath As String, T As Date)
-		  'TODO Internationalize & cross-platform
-		  If T = Nil Then Return
-		  Dim timeString As String
-		  
-		  timeString = T.SQLDateTime
-		  timeString = Mid(timeString, Len(T.SQLDate) + 2)
-		  SetValue xnode, childPath, timeString
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetValueDate(xnode As XmlNode, childPath As String, create As Boolean = True, default As Date = Nil) As Date
-		  'TODO Internationalize & cross-platform
-		  
-		  Dim s As String
-		  Dim d As New Date
-		  
-		  s = GetValue(xnode, childPath, create)
-		  If create And Len(s) = 0 Then
-		    SetValueDate(xnode, childPath, default)
-		    Return default
-		  End If
-		  d.SQLDate = s
-		  return d
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetValueTime(xnode As XmlNode, childPath As String, create As Boolean = True, default As Date = Nil) As Date
-		  'TODO Internationalize & cross-platform
-		  
-		  Dim s As String
-		  Dim d As New Date
-		  
-		  s = GetValue(xnode, childPath, create)
-		  If create And Len(s) = 0 Then
-		    SetValueTime(xnode, childPath, default)
-		    Return default
-		  End If
-		  d.SQLDateTime = d.SQLDate + " " + s
-		  return d
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetErrorMessage() As String
-		  Return ErrorString + " (" + Str(ErrorCode) + ")"
-		End Function
-	#tag EndMethod
-
 
 	#tag Property, Flags = &h1
 		Protected ErrorCode As Integer
@@ -714,12 +713,6 @@ Protected Module SmartML
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -727,16 +720,22 @@ Protected Module SmartML
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

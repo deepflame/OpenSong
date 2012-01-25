@@ -29,14 +29,14 @@ Begin Window PresentWindow Implements ScriptureReceiver
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      DoubleBuffer    =   False
+      DoubleBuffer    =   True
       Enabled         =   True
       EraseBackground =   True
-      Height          =   302
+      Height          =   300
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   -1
+      Left            =   0
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -46,16 +46,16 @@ Begin Window PresentWindow Implements ScriptureReceiver
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      Top             =   -1
+      Top             =   0
       UseFocusRing    =   False
       Visible         =   True
-      Width           =   302
+      Width           =   300
       Begin Timer timerAdvance
          Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
-         Left            =   248
+         Left            =   249
          LockedInPosition=   False
          Mode            =   0
          Period          =   10000
@@ -63,7 +63,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
-         Top             =   248
+         Top             =   249
          Visible         =   True
          Width           =   32
       End
@@ -72,7 +72,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
-         Left            =   204
+         Left            =   205
          LockedInPosition=   False
          Mode            =   0
          Period          =   125
@@ -80,7 +80,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
-         Top             =   248
+         Top             =   249
          Visible         =   True
          Width           =   32
       End
@@ -131,6 +131,8 @@ End
 		  If HelperActive Then PresentHelperWindow.Close
 		  timerAdvance.Enabled = False
 		  
+		  MainWindow.CleanupPresentation CurrentSet
+		  
 		  '++JRC Prevent resizing MainWindow
 		  'MainWindow.Show
 		  #If Not TargetMacOS
@@ -138,8 +140,6 @@ End
 		  #endif
 		  App.SetForeground(MainWindow)
 		  '--
-		  '++JRC
-		  MainWindow.AddPresentedSongsToLog
 		  
 		  MainWindow.SetFocus
 		End Sub
@@ -195,6 +195,10 @@ End
 
 	#tag Event
 		Sub Open()
+		  #If TargetLinux
+		    Soft Declare Sub gtk_window_set_decorated Lib "libgtk-x11-2.0.so" (gtkwindow As Integer, decorated As Boolean)
+		  #EndIf
+		  
 		  //++EMP 09/04
 		  // Rewritten to get transition speed characteristics from presentation preferences
 		  //
@@ -215,6 +219,19 @@ End
 		  If Len(Mode) <> 1 Then Mode = "N"
 		  doTransition = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@transition")
 		  curslideTransition = SlideTransitionEnum.NoTransition
+		  m_Snapshots = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@enable", False, False)
+		  
+		  #If TargetLinux
+		    Try
+		      gtk_window_set_decorated( self.handle, False )
+		    Catch
+		      'This could fail if libgtk cannot be loaded
+		    End Try
+		  #EndIf
+		  
+		  m_videolanController = New VideolanController 'Initialise shell control for videolan
+		  m_AppLaunchShell = New Shell 'Initialise shell control for external applications
+		  
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
 	#tag EndEvent
@@ -273,10 +290,14 @@ End
 		  
 		  Dim c As ScripturePickerController
 		  
+		  '++JRC No Bibles were found, return
+		  If UBound(BibleFactory.BibleList) < 0 Then Return False
+		  '--
+		  
 		  c = New ScripturePickerController
 		  c.registerScriptureReceiver Self
 		  
-		  w = New ScripturePickerWindow(c)
+		  w = New ScripturePickerWindow(c, True)
 		  savedMode = Mode
 		  w.Live = True
 		  w.ShowModal
@@ -295,7 +316,6 @@ End
 		  Dim newGroup As XmlNode
 		  Dim s As XmlDocument
 		  Dim f As FolderItem
-		  Dim temp As String
 		  Dim xOldSlide As XmlNode
 		  Dim xNewSlide As XmlNode
 		  Dim oldSlide As Integer
@@ -327,8 +347,6 @@ End
 		    
 		    '++JRC get song info for logging
 		    'Don't log in preview mode
-		    Dim Log As LogEntry
-		    
 		    NumberOfItems = NumberOfItems + 1
 		    
 		    If  App.MainPreferences.GetValueB(App.kActivityLog, True) And Globals.SongActivityLog <> Nil And PresentationMode <> MODE_PREVIEW And Globals.AddToLog Then
@@ -338,7 +356,7 @@ End
 		      i = UBound(ActLog)
 		      ActLog(i).Title = SmartML.GetValue(s.DocumentElement, "title", True)
 		      ActLog(i).Author = SmartML.GetValue(s.DocumentElement, "author", True)
-		      ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli_number", True)  //The song's CCLI number
+		      ActLog(i).CCLISongNumber = SmartML.GetValue(s.DocumentElement, "ccli", True)  //The song's CCLI number
 		      ActLog(i).SongFileName =  f.Parent.Name + "/" +  f.Name 'Should we use AbsolutePath?
 		      ActLog(i).DateAndTime = d
 		      ActLog(i).HasChords =ActLog(i).CheckLyricsForChords( SmartML.GetValue(s.DocumentElement, "lyrics", True))
@@ -346,8 +364,8 @@ End
 		      ActLog(i).SetItemNumber = NumberOfItems  'Assign an index to this song
 		      ActLog(i).Displayed = false 'Set this to true if user displays this song
 		      
-		    Else '++JRC We should probably bail if f is Nil ;)
-		      Return False
+		    Else
+		      
 		    End If
 		    '--
 		    
@@ -366,10 +384,10 @@ End
 		    newGroup = SmartML.ReplaceWithImportNode(newGroup, s.DocumentElement)
 		    '++JRC
 		    SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
+		    SmartML.SetValueB(newgroup, "@LiveInsertion", True)
 		    
 		    ' --- Move to where we need to be ---
-		    temp = SmartML.GetValue(newGroup, "@name")
-		    Do Until SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name") = temp
+		    Do Until SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@ItemNumber") = NumberOfItems
 		      currentSlide = currentSlide + 1
 		      XCurrentSlide = SetML.GetSlide(CurrentSet, currentSlide)
 		    Loop
@@ -460,6 +478,151 @@ End
 		  Border = CalcBorderSize(g)
 		  Call GraphicsX.DrawFontString(g, alert, Border*3, Border, _
 		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ExportSnapshot(image As Picture, slide As XmlNode, style As XmlNode)
+		  Dim snapshot_filename As String = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
+		  Dim export_live_insertions As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
+		  Dim export_metadata As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
+		  
+		  If SmartML.GetValue(slide.Parent.Parent, "@type") = "blank" Then
+		    'Blank slides will not be exported as snapshot
+		    Return
+		  End If
+		  
+		  If Not export_live_insertions Then
+		    'Check if the current slide is flagged that is has been added during a live set
+		    If SmartML.GetValueB(slide.Parent.Parent, "@LiveInsertion", False, False) Then
+		      Return
+		    End If
+		  End If
+		  
+		  Dim d As New Date
+		  Dim re As New RegEx
+		  Dim start As Integer=0
+		  re.SearchPattern = "(%[dhimnNPsSTVy]{1})"
+		  re.Options.CaseSensitive = True
+		  
+		  Dim match As RegExMatch = re.Search(snapshot_filename)
+		  While match <> Nil
+		    Select Case Asc(Mid(match.SubExpressionString(1), 2, 1))
+		    Case Asc("d")
+		      'The day of the current month (01-31)
+		      Dim sd As String = Str(d.Day)
+		      If sd.Len() = 1 Then sd = "0" + sd
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%d", sd)
+		    Case Asc("h")
+		      'The hour from the current time of day in 24-hour format (00-23)
+		      Dim sh As String = Str(d.Hour)
+		      If sh.Len() = 1 Then sh = "0" + sh
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%h", sh)
+		    Case Asc("i")
+		      'The minutes from the current time (00-59)
+		      Dim si As String = Str(d.Minute)
+		      If si.Len() = 1 Then si = "0" + si
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%i", si)
+		    Case Asc("m")
+		      'The current month (01-12)
+		      Dim sm As String = Str(d.Month)
+		      If sm.Len() = 1 Then sm = "0" + sm
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%m", sm)
+		    Case Asc("n")
+		      'The number of the slide in the current set (with leading zeroes)
+		      Dim sn As String = Str(SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber"))
+		      If sn.Len() = 1 Then sn = "0" + sn
+		      If sn.Len() = 2 Then sn = "0" + sn
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%n", sn)
+		    Case Asc("N")
+		      'The name of the current slide
+		      Dim sN As String = SmartML.GetValue(slide.Parent.Parent, "@name")
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%N", sN)
+		    Case Asc("P")
+		      'The name of the current slide
+		      Dim sP As String = Str(CurrentSlide)
+		      If sP.Len() = 1 Then sP = "0" + sP
+		      If sP.Len() = 2 Then sP = "0" + sP
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%P", sP)
+		    Case Asc("s")
+		      'The seconds from the current time (00-59)
+		      Dim ss As String = Str(d.Second)
+		      If ss.Len() = 1 Then ss = "0" + ss
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%s", ss)
+		    Case Asc("S")
+		      'The name of the current set
+		      Dim sS As String = SmartML.GetValue(slide.Parent.Parent.Parent.Parent, "@name")
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%S", sS)
+		    Case Asc("T")
+		      'The title of the current set
+		      Dim sT As String = SmartML.GetValue(slide.Parent.Parent, "title")
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%T", sT)
+		    Case Asc("V")
+		      'The title of the current set
+		      Dim sV As String = SmartML.GetValue(slide, "@id", False)
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%V", sV)
+		    Case Asc("y")
+		      'The current year (4 digits)
+		      Dim sy As String = Str(d.Year)
+		      If sy.Len() = 1 Then sy = "0" + sy
+		      snapshot_filename = ReplaceAllB(snapshot_filename, "%y", sy)
+		    Case Else
+		      start = match.SubExpressionStartB(1)+2
+		    End Select
+		    
+		    match = re.Search(snapshot_filename, start)
+		  Wend
+		  
+		  If snapshot_filename.EndsWith( ".jpg" ) Then
+		    snapshot_filename = Left(snapshot_filename, snapshot_filename.Len()-4)
+		  End If
+		  
+		  If IsNull(GetFolderItem(snapshot_filename + ".jpg")) Then
+		    Dim base_folder As FolderItem = Nil
+		    Dim folder_element As String
+		    Dim folder_elements() As String = Split(ReplaceAll(snapshot_filename, "\", "/"), "/")
+		    Call folder_elements.Pop() 'Remove the filename part
+		    
+		    For Each folder_element in folder_elements
+		      If IsNull(base_folder) Then
+		        base_folder = GetFolderItem(folder_element)
+		      Else
+		        base_folder = base_folder.Child(folder_element)
+		        If Not base_folder.Exists() Then
+		          base_folder.CreateAsFolder()
+		        End If
+		      End If
+		    Next
+		  End If
+		  
+		  Dim imageFileName As FolderItem = GetFolderItem(snapshot_filename + ".jpg")
+		  Dim metaFileName As FolderItem = GetFolderItem(snapshot_filename + ".xml")
+		  
+		  If Not IsNull(imageFileName) Then
+		    Try
+		      '++JRC Comented out second parameter for compatibilty with RB 2010r3
+		      image.Save(ImageFileName, 151) ' , 85)
+		      
+		      If export_metadata And Not IsNull(metaFileName) then
+		        Dim metaDoc As New XmlDocument
+		        Dim metaSlide As XmlElement = metaDoc.CreateElement("slide")
+		        metaDoc.DocumentElement.AppendChild(metaSlide)
+		        SmartML.CloneChildren(slide.Parent.Parent, metaSlide)
+		        SmartML.CloneAttributes(slide.Parent.Parent, metaSlide)
+		        
+		        metaDoc.DocumentElement.RemoveChild(SmartML.GetNode(metaSlide, "slides", True))
+		        metaDoc.DocumentElement.AppendChild metaDoc.ImportNode(slide, True)
+		        
+		        metaDoc.DocumentElement.RemoveChild(SmartML.GetNode(metaSlide, "style", True))
+		        metaDoc.DocumentElement.AppendChild metaDoc.ImportNode(style, True)
+		        
+		        Call SmartML.XDocToFile(metaDoc, metaFileName)
+		      End If
+		    Catch err
+		      'Snapshot will not be saved...
+		    End Try
+		  End If
+		  
 		End Sub
 	#tag EndMethod
 
@@ -670,6 +833,7 @@ End
 		  Dim oldType As String
 		  Dim newName As String
 		  Dim newType As String
+		  Dim prevIsStyleChange As Boolean = False
 		  
 		  //++EMP, 15 Jan 2006
 		  // Updated to recognize new section type "blank" for program-generated blank slides
@@ -677,16 +841,13 @@ End
 		  //Updated to allow the option of moving to the next section without updating the screen
 		  //
 		  
+		  xNewSlide = SetML.GetNextSlide(XCurrentSlide)
+		  If xNewSlide = Nil Then // at end of presentation, just return
+		    Return False
+		  End If
+		  
 		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'What is the section name?
 		  oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?
-		  newSlide = CurrentSlide + 1 'move forward a slide
-		  xNewSlide = SetML.GetNextSlide(XCurrentSlide) 'keep slide number and XML in step with each other
-		  If xNewSlide = Nil Then // at end of presentation, just return
-		    Return True
-		  End If
-		  newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
-		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
-		  
 		  ' Check to see if we started on a blank slide, if so, use the section name from the slide we just moved to
 		  '++JRC: Or if this is a custom slide without a name
 		  If xNewSlide <> Nil and oldType = "blank" Then
@@ -694,14 +855,30 @@ End
 		    oldName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		  end if
 		  '--
+		  newType = ""
+		  newName = oldName
+		  
+		  xNewSlide = xCurrentSlide
+		  newSlide = CurrentSlide
 		  
 		  ' Keep moving forward until the section name changes
-		  While xNewSlide <> Nil And newName = oldName And newType <> "blank"
-		    XCurrentSlide = xNewSlide
-		    CurrentSlide = newSlide
+		  While xNewSlide <> Nil And newName = oldName And newType <> "blank" And prevIsStyleChange = False
 		    newSlide = newSlide + 1
-		    xNewSlide = SetML.GetNextSlide(XCurrentSlide)
+		    xNewSlide = SetML.GetNextSlide(xNewSlide)
+		    
 		    If xNewSlide <> Nil Then
+		      //++V, 31-05-2010
+		      // Two slide(group)s with a stylechange slide in between need to be considered a seperate section
+		      // Not only is that more logical (probably), but it also facilitaties display of the correct slide
+		      // when PresentWindow.Present is called with 'Item > 2' AND the item in question is preceded
+		      // by a stylechange slide and a similarly named other slide
+		      If xNewSlide.PreviousSibling Is Nil Then
+		        Dim xPrevSlideGroup As XmlNode = xNewSlide.Parent.Parent.PreviousSibling
+		        If xPrevSlideGroup <> Nil Then
+		          prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
+		        End If
+		      End If
+		      
 		      newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
 		      newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		    End If
@@ -779,11 +956,21 @@ End
 		  Dim oldType As String
 		  Dim newName As String
 		  Dim newType As String
+		  Dim nextIsStyleChange As Boolean = False
 		  
 		  If CurrentSlide = 1 Then Return False ' Can't go back any further
+		  
 		  newSlide = CurrentSlide - 1 '  "New" is back one
-		  xNewSlide = SetML.GetPrevSlide(XCurrentSlide) ' xNew matches newSlide
-		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'Get name of current section
+		  xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
+		  If xNewSlide = Nil Then // at beginning of presentation, just return
+		    Return False
+		  End If
+		  
+		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'What is the section name?
+		  oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?
+		  If xNewSlide <> Nil and oldType = "blank" Then
+		    oldName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
+		  end if
 		  
 		  //++EMP, 15 Jan 06
 		  // Two options for finding the start of the section:
@@ -791,9 +978,8 @@ End
 		  // 2. No blanks: look for name change
 		  //
 		  'keep backing up until the name changes (well, it really becomes Nil)
-		  
-		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) //++
-		  newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True) //++
+		  newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
+		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
 		  
 		  // Before starting the loop, check to see if the current slide was the first one
 		  // of a section.  If so, update the pointers to the current slide.  That means
@@ -804,15 +990,32 @@ End
 		    XCurrentSlide = xNewSlide
 		    CurrentSlide = newSlide
 		  End If
+		  'newName = oldName
+		  'newType = ""
 		  
-		  While xNewSlide <> Nil And (newName = oldName And newType <> "blank") //++
+		  While xNewSlide <> Nil And newName = oldName And newType <> "blank"
 		    XCurrentSlide = xNewSlide
 		    CurrentSlide = newSlide
-		    newSlide = newSlide - 1
+		    
+		    newSlide = CurrentSlide - 1
 		    xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
-		    If xNewSlide <> Nil Then //++
-		      newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) //++
-		      newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True) //++
+		    
+		    If xNewSlide <> Nil Then
+		      //++V, 31-05-2010
+		      // See the explanation in GoNextSection; this is equal, just the other way around
+		      If xNewSlide.NextSibling = Nil Then
+		        Dim xNextSlideGroup As XmlNode = xNewSlide.Parent.Parent.NextSibling
+		        If xNextSlideGroup <> Nil Then
+		          nextIsStyleChange = (SmartML.GetValue(xNextSlideGroup, "@type", False) = "style")
+		        End If
+		      End
+		      
+		      If nextIsStyleChange Then
+		        xNewSlide = Nil
+		      Else
+		        newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) //++
+		        newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True) //++
+		      End If
 		    End If //++
 		  Wend
 		  
@@ -835,8 +1038,9 @@ End
 		    End If
 		    '--
 		  End If
+		  
 		  If HelperActive Then
-		    PresentHelperWindow.ScrollTo currentSlide
+		    PresentHelperWindow.ScrollTo CurrentSlide
 		  Else
 		    ResetPaint XCurrentSlide
 		  End If
@@ -870,37 +1074,90 @@ End
 		Protected Function GoSetItem(Item As Integer) As Boolean
 		  '++JRC, 2 Apr 2009
 		  'This function will advance the presentation to the set item indicated by Item
-		  Dim Result As Boolean
-		  Dim i As Integer
-		  Dim newType As String
-		  Dim newName As String
-		  Dim xSetItem As XmlNode
-		  Dim ItemName As String
-		  Dim ItemType As String
-		  Dim newItem As Integer
+		  Dim Result As Boolean = True
 		  
-		  If Item < 0 Then Return False
-		  If Item = 0 Then goto update
-		  
-		  newItem = (Item - numStyles) - numBlanks
-		  If newItem = 0 Then goto update
-		  
-		  i = 1
-		  Result = GoNextSection(False)
-		  While i < newItem
-		    Result = GoNextSection(False)
-		    i = i + 1
-		  Wend
-		  
-		  Update:
-		  
-		  If HelperActive Then
-		    PresentHelperWindow.ScrollTo CurrentSlide
+		  If Item < 0 Then
+		    Result = False
 		  Else
-		    ResetPaint XCurrentSlide
+		    If Item > 0 Then
+		      
+		      Dim xNewSlide As XmlNode = XCurrentSlide
+		      Dim newSlide As Integer = CurrentSlide
+		      
+		      Dim newItem As Integer = Item - numStyles
+		      Dim newSlideItemNumber As Integer = 0
+		      Do
+		        newSlide = newSlide + 1
+		        xNewSlide = SetML.GetNextSlide(xNewSlide)
+		        
+		        If xNewSlide <> Nil Then
+		          newSlideItemNumber = SmartML.GetValueN(xNewSlide.Parent.Parent, "@ItemNumber", False)
+		        Else
+		          Exit Do
+		        End If
+		        
+		      Loop Until newItem < newSlideItemNumber
+		      
+		      If xNewSlide <> Nil Then
+		        CurrentSlide = newSlide
+		        xCurrentSlide = xNewSlide
+		      End If
+		      
+		    End If
+		    
+		    If HelperActive Then
+		      PresentHelperWindow.ScrollTo CurrentSlide
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
 		  End If
 		  
 		  Return Result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function GoSong(number As Integer) As Boolean
+		  'RealBasic: The Definitive Guide
+		  'http://books.google.com/books?id=1NfFvedzfggC&lpg=PA593&ots=vXNPwnD8nD&dq=realbasic%20keycode%20keyboard%20layout&pg=PA460#v=onepage&q&f=false
+		  Dim newSlide As Integer = 1
+		  Dim songSlide As Integer = 0
+		  Dim songName As String = ""
+		  Dim songItemNr As Integer = -1
+		  Dim xNewSlide As XmlNode = SetML.GetSlide(CurrentSet, 1)
+		  
+		  While songSlide < number And xNewSlide <> Nil
+		    
+		    If SmartML.GetValue(xNewSlide.Parent.Parent, "@type") = "song" Then
+		      If songName <> SmartML.GetValue(xNewSlide.Parent.Parent, "@name") Or _
+		        SongItemNr <> SmartML.GetValueN(xNewSlide.Parent.Parent, "@ItemNumber") Then
+		        songSlide = songSlide + 1
+		        songName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name")
+		        SongItemNr = SmartML.GetValueN(xNewSlide.Parent.Parent, "@ItemNumber")
+		      End If
+		    End If
+		    
+		    If songSlide < number Then
+		      xNewSlide = SetML.GetNextSlide(xNewSlide)
+		      If xNewSlide <> Nil Then
+		        newSlide = newSlide + 1
+		      End If
+		    End If
+		  Wend
+		  
+		  If songSlide = number Then
+		    CurrentSlide = newSlide
+		    XCurrentSlide = xNewSlide
+		    
+		    If HelperActive Then
+		      PresentHelperWindow.ScrollTo currentSlide
+		    Else
+		      ResetPaint XCurrentSlide
+		    End If
+		    
+		  End If
+		  
+		  Return songSlide = number
 		End Function
 	#tag EndMethod
 
@@ -947,9 +1204,10 @@ End
 		Protected Sub InsertBlanksIntoSet(ByRef Set As XmlDocument, ByRef Item As Integer)
 		  Dim slide_group As XmlNode
 		  Dim slide_groups As XmlNode
-		  Dim newItem As Integer
 		  Dim i As Integer
+		  Dim insertBlanks As Boolean
 		  
+		  insertBlanks = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
 		  slide_groups = SmartML.GetNode(Set.DocumentElement, "slide_groups")
 		  If slide_groups <> Nil Then
 		    slide_group = slide_groups.FirstChild
@@ -957,7 +1215,10 @@ End
 		    Return
 		  End If
 		  
+		  i = 0
 		  While slide_group <> Nil
+		    
+		    If insertBlanks Then
 		    '++JRC Fix corner case where the first item in a set is a style type, which causes two blank items at the beginning of a set
 		    If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
 		      SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
@@ -981,6 +1242,7 @@ End
 		      //--
 		      If i < Item Then
 		        numBlanks = numBlanks + 1
+		      End If
 		      End If
 		      
 		    End If ' for inserting blanks
@@ -1016,7 +1278,7 @@ End
 		  ' What I'd like to do is use this to decode keypresses and then pass a function code on
 		  ' to PerformAction.  That way, it starts separating the function to be performed from
 		  ' the keystrokes used, allowing us to (a) call PerformAction from elsewhere with
-		  ' a command code, and (b) support keyboard remapping through this routine.
+		  ' a command code, and (b) support keyboard remapping through this routine.È
 		  
 		  ' TODO: Put the commands into the Language file and load it from there
 		  ' TODO: Find all the places KeyDownX is called and redirect the call to PerformAction with the proper command
@@ -1086,6 +1348,7 @@ End
 		  Const KEY_UP=&h7e
 		  Const KEY_DOWN=&h7d
 		  Const KEY_ESCAPE = 27
+		  
 		  '
 		  'Temporary hack until the command arguments are fixed
 		  '
@@ -1152,6 +1415,39 @@ End
 		    '
 		  ElseIf lowercase(key) = "v" or isNumeric(key) Then ' n = Verse
 		    Return GoVerse(key)
+		    '
+		    ' Jump to Song "N"
+		    '
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F1) Then
+		    Return GoSong(1)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F2) Then
+		    Return GoSong(2)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F3) Then
+		    Return GoSong(3)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F4) Then
+		    Return GoSong(4)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F5) Then
+		    Return GoSong(5)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F6) Then
+		    Return GoSong(6)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F7) Then
+		    Return GoSong(7)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F8) Then
+		    Return GoSong(8)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F9) Then
+		    Return GoSong(9)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F10) Then
+		    Return GoSong(10)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F11) Then
+		    Return GoSong(11)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F12) Then
+		    Return GoSong(12)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F13) Then ' AKA PrintScreen
+		    Return GoSong(13)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F14) Then ' AKA ScreenLock
+		    Return GoSong(14)
+		  ElseIf KeyBoard.AsyncKeyDown(KEY_F15) Then ' AKA Pause
+		    Return GoSong(15)
 		    '
 		    ' Close Presentation
 		    '
@@ -1239,13 +1535,11 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Present(setDoc As XmlDocument, PresentMode As Integer, Item As Integer = 0)
-		  Dim i, j As Integer
+		  Dim i As Integer
 		  Dim slide_groups, slide_group, slide As XmlNode
-		  Dim s As String
-		  Dim msg As String // Error message in exception block
 		  Dim de As XmlNode // Holds PresentationSettings Document Element
-		  Dim f1 As FolderItem
 		  Dim tmpPic As Picture
+		  Dim availableWidth As Integer 'For screensize calculations adapted to Linux Xinerama in preview dual screen
 		  //++EMP
 		  // September 2005
 		  // Since the changes to pull the style information out of the XML
@@ -1253,12 +1547,7 @@ End
 		  // the property...see below for the copy routine
 		  
 		  'CurrentSet = setDoc
-		  //--EMP
-		  Dim insertBlanks As Boolean
-		  
 		  //++EMP
-		  Dim tempSet As XmlNode
-		  Dim StyleNodes As XmlNodeList
 		  Dim StyleNode As XmlNode
 		  Dim NewStyleNode As XmlNode
 		  Dim tempSlideStyle As SlideStyle
@@ -1274,8 +1563,6 @@ End
 		  'setDoc.SaveXml f
 		  '#endif
 		  StyleDict = New Dictionary
-		  //--EMP
-		  insertBlanks = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@blanks")
 		  
 		  '++JRC
 		  NumberOfItems =Val(setDoc.DocumentElement.GetAttribute("NumberOfItems"))
@@ -1333,11 +1620,12 @@ End
 		  'System.DebugLog "Completed default_style"
 		  //--
 		  '++JRC
-		  If insertBlanks Then InsertBlanksIntoSet(CurrentSet, Item)
+		  InsertBlanksIntoSet(CurrentSet, Item)
 		  VerifySlideBodies(CurrentSet)
 		  
 		  'System.DebugLog "Add blanks and confirm bodies exist"
 		  
+		  'Dim f1 As FolderItem
 		  '#if DebugBuild
 		  'f1 = GetFolderItem("CurrentSet.xml")
 		  'CurrentSet.SaveXml f1
@@ -1350,15 +1638,8 @@ End
 		  'System.DebugLog "Setup monitors"
 		  presentScreen = SmartML.GetValueN(de, "monitors/@present") - 1
 		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
-		  If presentScreen < 0 Or presentScreen > ScreenCount - 1 Then presentScreen = 0
-		  If controlScreen < 0 Or controlScreen > ScreenCount -1 Then controlScreen = 0
-		  
-		  'System.DebugLog "PresentWindow.Present: presentScreen, controlScreen = " + str(presentScreen) + ", " + str(controlScreen)
-		  'System.DebugLog Chr(9) + "ScreenCount = " + str(ScreenCount)
-		  For i = 0 to ScreenCount - 1
-		    'System.DebugLog Chr(9) + "Screen(" + str(i) + "): Top, Left, Height, Width = " + _
-		    'StringUtils.Sprintf("%d, %d, %d, %d", Screen(i).Top, Screen(i).Left, Screen(i).Height, Screen(i).Width)
-		  Next i
+		  If presentScreen < 0 Or presentScreen > OSScreenCount() - 1 Then presentScreen = 0
+		  If controlScreen < 0 Or controlScreen > OSScreenCount() -1 Then controlScreen = 0
 		  
 		  cnvSlide.Visible = False 'Prevent the canvas to redraw itself for all size changes below
 		  'System.DebugLog "Determine correct PresentMode"
@@ -1366,44 +1647,48 @@ End
 		    presentScreen = controlScreen
 		    HelperActive = False
 		    MenuBarVisible = False
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left
-		    Width = Screen(presentScreen).Width
-		    Height = Screen(presentScreen).Height
+		    Top = OSScreen(presentScreen).Top
+		    Left = OSScreen(presentScreen).Left
+		    Width = OSScreen(presentScreen).Width
+		    Height = OSScreen(presentScreen).Height
 		    FullScreen = True
 		    
 		  ElseIf PresentMode = MODE_PREVIEW Then ' Split Screen
 		    HelperActive = True
 		    MenuBarVisible = True
 		    presentScreen = controlScreen
-		    Top = Screen(presentScreen).AvailableTop + 10
-		    Left = Screen(presentScreen).AvailableLeft + 10
-		    Width = Screen(presentScreen).AvailableWidth - PresentHelperWindow.Width - 30
-		    Height = Width * Screen(presentScreen).AvailableHeight / Screen(presentScreen).Width ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
+		    Top = OSScreen(presentScreen).AvailableTop + 10
+		    Left = OSScreen(presentScreen).AvailableLeft + 10
+		    availableWidth = OSScreen(presentScreen).AvailableWidth
 		    
-		    PresentHelperWindow.Left = Screen(presentScreen).AvailableLeft + Screen(presentScreen).Width - PresentHelperWindow.Width - 10
-		    PresentHelperWindow.Top = Screen(presentScreen).AvailableTop + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
+		    Width = availableWidth - PresentHelperWindow.Width - 30
+		    Height = Width * OSScreen(presentScreen).AvailableHeight / availableWidth ' Screen(presentScreen).Height - PresentHelperWindow.Height - 30
+		    
+		    If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
+		      If Width > Height Then
+		        Width = Height * 4/3
+		      Else
+		        Height = Width * 3/4
+		      End If
+		    End If
+		    
+		    PresentHelperWindow.Left = OSScreen(presentScreen).AvailableLeft + availableWidth - PresentHelperWindow.Width - 10
+		    PresentHelperWindow.Top = OSScreen(presentScreen).AvailableTop + OSScreen(presentScreen).Height - PresentHelperWindow.Height - 40
+		    
+		    If Not SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_preview", False, False) Then
+		      m_Snapshots = False
+		    End If
 		    
 		  ElseIf PresentMode = MODE_DUAL_SCREEN Then ' Multiple Screens
 		    HelperActive = True
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left
-		    Width = Screen(presentScreen).Width
-		    Height = Screen(presentScreen).Height
+		    Top = OSScreen(presentScreen).Top
+		    Left = OSScreen(presentScreen).Left
+		    Width = OSScreen(presentScreen).Width
+		    Height = OSScreen(presentScreen).Height
 		    FullScreen = True
 		    MenuBarVisible = (presentScreen > 0) // Only show the menu bar if we're presenting on a secondary screen
-		    PresentHelperWindow.Left = Screen(controlScreen).Left + (Screen(controlScreen).Width - PresentHelperWindow.Width) / 2
-		    PresentHelperWindow.Top = Screen(controlScreen).Top + (Screen(controlScreen).Height - PresentHelperWindow.Height) / 2
-		    
-		  ElseIf PresentMode = MODE_LINUX_DUAL_SCREEN Then ' Linux Xinerama Screen
-		    HelperActive = True
-		    presentScreen = controlScreen
-		    Top = Screen(presentScreen).Top
-		    Left = Screen(presentScreen).Left + (Screen(presentScreen).Width / 2)
-		    Width = Screen(presentScreen).Width / 2
-		    Height = Screen(presentScreen).Height
-		    PresentHelperWindow.Left = Screen(presentScreen).Left + (Screen(presentScreen).Width /2)  - PresentHelperWindow.Width - 10
-		    PresentHelperWindow.Top = Screen(presentScreen).Top + Screen(presentScreen).Height - PresentHelperWindow.Height - 40
+		    PresentHelperWindow.Left = OSScreen(controlScreen).Left + (OSScreen(controlScreen).Width - PresentHelperWindow.Width) / 2
+		    PresentHelperWindow.Top = OSScreen(controlScreen).Top + (OSScreen(controlScreen).Height - PresentHelperWindow.Height) / 2
 		  End If
 		  cnvSlide.Visible = True
 		  
@@ -1444,11 +1729,21 @@ End
 		  If HelperActive Then
 		    PresentHelperWindow.Show
 		    i = 1
+		    
 		    slide = SetML.GetSlide(CurrentSet, i)
 		    'System.DebugLog "PresentWindow.Present: GetSlide 1 returned a " + SmartML.GetValue(slide.Parent.Parent, "@type") +_
 		    '" with name '" + SmartML.GetValue(slide.Parent.Parent, "@name") + "'"
 		    While slide <> Nil
-		      PresentHelperWindow.InsertItem slide, i
+		      
+		      Dim prevIsStyleChange As Boolean = False
+		      If slide.PreviousSibling Is Nil Then
+		        Dim xPrevSlideGroup As XmlNode = slide.Parent.Parent.PreviousSibling
+		        If xPrevSlideGroup <> Nil Then
+		          prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
+		        End If
+		      End If
+		      
+		      PresentHelperWindow.InsertItem slide, i, prevIsStyleChange
 		      i = i + 1
 		      slide = SetML.GetNextSlide(slide)
 		      'If slide <> Nil Then _
@@ -1458,11 +1753,8 @@ End
 		    'PresentHelperWindow.lst_all_slides.ListIndex = 0
 		  End If
 		  
-		  Dim DontCare As Boolean
-		  
-		  Item = Item + numBlanks
-		  DontCare = GoFirstSlide(False)
-		  DontCare =  GoSetItem(Item)
+		  Call GoFirstSlide(False)
+		  Call GoSetItem(Item)
 		  
 		  'Show
 		  App.MouseCursor = Nil
@@ -1486,11 +1778,11 @@ End
 		  Case "arrow"
 		    Self.MouseCursor = System.Cursors.StandardPointer
 		  Case "cross"
-		    #If Not TargetLinux
-		      Self.MouseCursor = cross
-		    #Else
+		    '#If Not TargetLinux
+		    'Self.MouseCursor = cross
+		    '#Else
 		      Self.MouseCursor = System.Cursors.ArrowAllDirections
-		    #EndIf
+		    '#EndIf
 		  Case "hidden"
 		    Self.MouseCursor = System.Cursors.InvisibleCursor
 		  Case "hourglass"
@@ -1513,32 +1805,52 @@ End
 		Sub ResetPaint(slide As XmlNode)
 		  Dim xStyle As XmlNode
 		  Dim w, h As Integer
+		  Dim advanceNext As Boolean = False
+		  Dim currAppl As String
+		  
+		  If Not IsNull(slide) Then
+		    currAppl = SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		  End If
 		  
 		  If SetML.IsExternal(PreviousSlide) Then
 		    'Check if we need to close the running external.
 		    Dim bClose As Boolean = False
 		    Dim prevAppl As string = SmartML.GetValue(PreviousSlide, "@application", False)
 		    Dim prevHost As string = SmartML.GetValue(PreviousSlide, "@host", False)
-		    Dim prevFile As String = SmartML.GetValue(PreviousSlide, "@filename", False)
+		    Dim prevFile As String = SmartML.GetValue(PreviousSlide, "@_localfilename", False)
+		    If prevFile.Len() = 0 Then
+		      prevFile = SmartML.GetValue(PreviousSlide, "@filename", False)
+		    End If
 		    
 		    If Not SetML.IsExternal(slide) Then
 		      bClose = True
-		      App.RestoreWindow(PresentWindow)
 		    Else
 		      'See if the external in the new slide is equal to the current slide.
-		      If SmartML.GetValue(slide.Parent.Parent, "@application", False) <> prevAppl Or _
-		        SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
-		        SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile Then
-		        bClose = True
+		      If Not IsNull(slide) Then
+		        If currAppl <> prevAppl Or _
+		          SmartML.GetValue(slide.Parent.Parent, "@host", False) <> prevHost Or _
+		          (SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False) <> prevFile And _
+		          SmartML.GetValue(slide.Parent.Parent, "@filename", False) <> prevFile) Then
+		          bClose = True
+		        End If
 		      End If
 		    End If
 		    
 		    If bClose Then
 		      self._IsClosingExternal = True
 		      
+		      If prevAppl = "presentation" Or prevAppl = "videolan" Then
+		        If currAppl <> "presentation" And currAppl <> "videolan" Then
+		          PresentWindow.Restore()
+		          'PresentWindow.Show()
+		          'If PresentWindow.HelperActive Then
+		          'PresentHelperWindow.SetFocus
+		          'End If
+		        End If
+		      End If
+		      
 		      Select Case prevAppl
 		      Case "presentation"
-		        
 		        Dim presFile As FolderItem = GetFolderItem( prevFile )
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
@@ -1546,11 +1858,20 @@ End
 		            Dim presHost As PresentationHost = PresentationHost.Automatic
 		            Select Case prevHost
 		            Case "ppt"
-		              presHost = PresentationHost.PowerPoint
+		              If PresentationFactory.PowerPointAvailable() Then
+		                presHost = PresentationHost.PowerPoint
+		              End If
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            Case "pptview"
-		              presHost = PresentationHost.PowerPointViewer
+		              If PresentationFactory.PPTViewAvailable() Then
+		                presHost = PresentationHost.PowerPointViewer
+		              End If
 		            Case "impress"
-		              presHost = PresentationHost.OpenOffice
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            End Select
 		            
 		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
@@ -1561,10 +1882,13 @@ End
 		        End If
 		        
 		      Case "videolan"
-		        '!! TODO
+		        m_VideolanController.Stop()
 		        
 		      Case "launch"
-		        '!! TODO
+		        If IsNull(slide) And m_AppLaunchShell.IsRunning Then
+		          'Close any running external application instance.
+		          m_AppLaunchShell.Close()
+		        End If
 		        
 		      End Select
 		      
@@ -1578,21 +1902,35 @@ End
 		    _IsSlidechangeExternal = True
 		    
 		    If mode = "N" then
-		      Select Case SmartML.GetValue(slide.Parent.Parent, "@application", False)
+		      Select Case currAppl
 		      Case "presentation"
 		        
-		        Dim presFile As FolderItem = GetFolderItem( SmartML.GetValue(slide.Parent.Parent, "@filename", False) )
+		        'First check if there is a 'local' filename (a saved embedded presentation)
+		        Dim presFilename As String = SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False)
+		        If presFilename.Len() = 0 Then
+		          presFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
+		        End If
+		        Dim presFile As FolderItem = GetFolderItem( presFilename )
 		        If Not IsNull(presFile) Then
 		          If presFile.Exists() Then
 		            
 		            Dim presHost As PresentationHost = PresentationHost.Automatic
 		            Select Case SmartML.GetValue(slide.Parent.Parent, "@host", False)
 		            Case "ppt"
-		              presHost = PresentationHost.PowerPoint
+		              If PresentationFactory.PowerPointAvailable() Then
+		                presHost = PresentationHost.PowerPoint
+		              End If
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            Case "pptview"
-		              presHost = PresentationHost.PowerPointViewer
+		              If PresentationFactory.PPTViewAvailable() Then
+		                presHost = PresentationHost.PowerPointViewer
+		              End If
 		            Case "impress"
-		              presHost = PresentationHost.OpenOffice
+		              If PresentationFactory.OpenOfficeAvailable() Then
+		                presHost = PresentationHost.OpenOffice
+		              End If
 		            End Select
 		            
 		            Dim oExtPres As iPresentation = PresentationFactory.GetOrCreate( presFile.AbsolutePath(), presHost )
@@ -1626,20 +1964,80 @@ End
 		          If img.SetImageAsString( sPreviewImage ) Then
 		            Dim slidePreview As Picture = img.GetImage()
 		            PreviewPicture.Graphics.DrawPicture slidePreview, 0, 0, PreviewPicture.Width, PreviewPicture.Height, 0, 0, slidePreview.Width, slidePreview.Height
+		            CurrentPicture.Graphics.DrawPicture slidePreview, 0, 0, CurrentPicture.Width, CurrentPicture.Height, 0, 0, slidePreview.Width, slidePreview.Height
+		          End If
+		        Else
+		          CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		          CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		        End If
+		        
+		        'PresentWindow.Hide()
+		        App.MinimizeWindow(PresentWindow)
+		        
+		      Case "videolan"
+		        m_VideolanController.Stop()
+		        
+		        If SmartML.GetValue(slide.Parent.Parent, "@action") = "start" Then
+		          Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@videolan_parameters")
+		          Dim waitForPlayback As Boolean = SmartML.GetValueB(slide.Parent.Parent, "@wait_to_finish")
+		          
+		          'First check if there is a 'local' filename (a saved embedded media file)
+		          Dim mediaFilename As String = SmartML.GetValue(slide.Parent.Parent, "@_localfilename", False)
+		          If mediaFilename.Len = 0 Then
+		            mediaFilename = SmartML.GetValue(slide.Parent.Parent, "@filename", False)
+		          End If
+		          
+		          Dim fullScreen As Boolean = PresentationMode <> MODE_PREVIEW
+		          If m_VideolanController.Start(mediaFilename, params, presentScreen, waitForPlayback, fullScreen) Then
+		            CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		            CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		            
+		            'PresentWindow.Hide()
+		            App.MinimizeWindow(PresentWindow)
+		            
+		            advanceNext = Not waitForPlayback
+		          End If
+		        Else
+		          'Case @action = stop is covered by generic application close above _
+		          advanceNext = True
+		        End If
+		        
+		      Case "launch"
+		        Dim launchAppLocation As FolderItem = GetFolderItem(SmartML.GetValue(slide.Parent.Parent, "@app_filename", False))
+		        Dim cmd As String
+		        Dim params As String = SmartML.GetValue(slide.Parent.Parent, "@app_parameters", False)
+		        
+		        If Not IsNull(launchAppLocation) Then
+		          If launchAppLocation.Exists() Then
+		            cmd = launchAppLocation.AbsolutePath()
 		          End If
 		        End If
 		        
-		      Case "videolan"
-		        '!! TODO
+		        If m_AppLaunchShell.IsRunning Then
+		          'Close any running external application instance.
+		          m_AppLaunchShell.Close()
+		        End If
 		        
-		      Case "launch"
-		        '!! TODO
+		        If SmartML.GetValue(slide.Parent.Parent, "@action") = "start" Then
+		          If SmartML.GetValueB(slide.Parent.Parent, "@wait_to_finish", False) = True Then
+		            m_AppLaunchShell.Mode = 0 'Synchronous
+		          Else
+		            m_AppLaunchShell.Mode = 1 'Asynchronous
+		          End If
+		          
+		          CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
+		          CurrentPicture.Graphics.FillRect 0, 0, CurrentPicture.Graphics.Width, CurrentPicture.Graphics.Height
+		          
+		          If cmd.Len() > 0 Then
+		            m_AppLaunchShell.Execute( """" + cmd + """" + " " + params )
+		          End If
+		        Else
+		          'Case @action = stop is covered by generic application close above
+		        End If
 		        
+		        advanceNext = True
 		      End Select
 		      
-		      If SetML.IsExternal(slide) Then
-		        App.MinimizeWindow(PresentWindow)
-		      End If
 		    End If
 		    
 		    _IsSlidechangeExternal = False
@@ -1697,6 +2095,9 @@ End
 		    Else ' Probably normal mode
 		      CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
 		      'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
+		      If m_Snapshots Then
+		        ExportSnapshot PreviewPicture, slide, xStyle
+		    End If
 		    End If
 		    Profiler.EndProfilerEntry
 		    
@@ -1731,6 +2132,10 @@ End
 		  PreviousSlide.AppendChild( slide.Parent.Clone( False ) ).AppendChild( slide.Clone( False ) )
 		  
 		  'App.DebugWriter.Write("PresentWindow.ResetPaint: Exit", 5)
+		  
+		  If advanceNext Then
+		    Call PerformAction(ACTION_NEXT_SLIDE)
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -1754,6 +2159,7 @@ End
 		  '++JRC
 		  NumberOfItems = NumberOfItems + 1
 		  SmartML.SetValueN(newgroup, "@ItemNumber", NumberOfItems)
+		  SmartML.SetValueB(newgroup, "@LiveInsertion", True)
 		  
 		  ' --- Move to where we need to be ---
 		  temp = SmartML.GetValue(newGroup, "@name")
@@ -1782,7 +2188,7 @@ End
 		      SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
 		      SmartML.SetValue xNewSlide, "body", ""
 		      If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
-		    End If
+		  End If
 		    If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
 		      xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
 		      xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
@@ -1826,8 +2232,7 @@ End
 		  Else
 		    ResetPaint XCurrentSlide
 		  End If
-		  Return True
-		End Function
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -1835,16 +2240,15 @@ End
 		  Dim ItemNumber As Integer
 		  
 		  If slide = Nil Then Return 'sanity check
+		  If SmartML.GetValue(slide.Parent.Parent, "@type", false) <> "song" Then Return
 		  
-		  If SmartML.GetValue(slide.Parent.Parent, "@type", false) = "song" Then
-		    'get set item number
-		    ItemNumber = SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber", false)
-		    
-		    'find item in the song activity log array
-		    For i as Integer = 1 To UBound(ActLog)
-		      If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
-		    Next i
-		  End If
+		  'get set item number
+		  ItemNumber = SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber", false)
+		  
+		  'find item in the song activity log array
+		  For i as Integer = 1 To UBound(ActLog)
+		    If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
+		  Next i
 		End Sub
 	#tag EndMethod
 
@@ -2078,6 +2482,18 @@ End
 		Mode As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private m_AppLaunchShell As Shell = Nil
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected m_Snapshots As Boolean = False
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_VideolanController As VideolanController = Nil
+	#tag EndProperty
+
 	#tag Property, Flags = &h0
 		NumberOfItems As Integer
 	#tag EndProperty
@@ -2208,10 +2624,52 @@ End
 	#tag Constant, Name = CopyAllChildren, Type = Boolean, Dynamic = False, Default = \"True", Scope = Protected
 	#tag EndConstant
 
-	#tag Constant, Name = MODE_DUAL_SCREEN, Type = Integer, Dynamic = False, Default = \"2", Scope = Public
+	#tag Constant, Name = KEY_F1, Type = Double, Dynamic = False, Default = \"&h7A", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = MODE_LINUX_DUAL_SCREEN, Type = Integer, Dynamic = False, Default = \"4", Scope = Public
+	#tag Constant, Name = KEY_F10, Type = Double, Dynamic = False, Default = \"&h6D", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F11, Type = Double, Dynamic = False, Default = \"&h67", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F12, Type = Double, Dynamic = False, Default = \"&h6F", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F13, Type = Double, Dynamic = False, Default = \"&h69", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F14, Type = Double, Dynamic = False, Default = \"&h6B", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F15, Type = Double, Dynamic = False, Default = \"&h71", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F2, Type = Double, Dynamic = False, Default = \"&h78", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F3, Type = Double, Dynamic = False, Default = \"&h63", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F4, Type = Double, Dynamic = False, Default = \"&h76", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F5, Type = Double, Dynamic = False, Default = \"&h60", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F6, Type = Double, Dynamic = False, Default = \"&h61", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F7, Type = Double, Dynamic = False, Default = \"&h62", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F8, Type = Double, Dynamic = False, Default = \"&h64", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = KEY_F9, Type = Double, Dynamic = False, Default = \"&h65", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = MODE_DUAL_SCREEN, Type = Integer, Dynamic = False, Default = \"2", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = MODE_PREVIEW, Type = Integer, Dynamic = False, Default = \"3", Scope = Public
@@ -2224,6 +2682,9 @@ End
 	#tag EndConstant
 
 	#tag Constant, Name = ShiftKey, Type = Integer, Dynamic = False, Default = \"&h100", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = Untitled, Type = Double, Dynamic = False, Default = \"&h62", Scope = Protected
 	#tag EndConstant
 
 
@@ -2283,16 +2744,12 @@ End
 #tag Events timerAdvance
 	#tag Event
 		Sub Action()
-		  Dim dontcare As Boolean
-		  Dim xNewSlide As XmlNode
-		  Dim NewSlide As Integer
-		  
 		  If XCurrentSlide.NextSibling = Nil And SmartML.GetValueB(XCurrentSlide.Parent.Parent, "@loop") Then
-		    dontcare = PerformAction(ACTION_FIRST_SLIDE_OF_SECTION)
+		    Call PerformAction(ACTION_FIRST_SLIDE_OF_SECTION)
 		  Else
 		    'TODO Should probably check if next slide is a new set item
 		    'and stop auto-advancing if it is
-		    dontcare = PerformAction(ACTION_NEXT_SLIDE)
+		    Call PerformAction(ACTION_NEXT_SLIDE)
 		  End If
 		End Sub
 	#tag EndEvent

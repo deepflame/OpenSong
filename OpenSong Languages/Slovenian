@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <language name="Slovenian" author="Dalila SP" version="1.4">
 
   <load_settings>
@@ -155,6 +155,12 @@
       <remove caption="Odstrani">Odstrani trenutno izbran predmet iz zbirke.</remove>
       <copy caption="Kopiraj">Ustvari kopijo trenutno izbranega predmeta iz zbirke.</copy>
       <store caption="Shrani">Shrani trenutno izbran predmet v zbirki.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Zbirka predmetov">Navaja predmete v trenutni zbirki. Klikni na prosojnico, da jo naložite v urejevalnik prosojnice po meri ali dvokliknite na pesem, da jo naložite v urejevalnik pesmi.
       <song caption="(pesem)"/>
@@ -380,6 +386,7 @@
     <layout>
       <heading_border_thickness caption="Debelina meje naslova"/>
       <title_in_caps caption="Naslov z velikimi črkami"/>
+      <highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
     </layout>
     <units caption="Merska enota">
       <inches caption="Inči"/>
@@ -493,6 +500,7 @@ T: Oznaka (Tag)</keys>
   <help_topics title="Vsebina pomoči">
     <tabs head1="Kontrolne tipke" head2="Format akordov/besedila" head3="Vrstni red prikaza" head4="Zapri"/>
     <print caption="Natisni"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Kontrolne tipke&lt;/h1&gt;
 
@@ -843,7 +851,7 @@ Pri več vrsticah besedila na eno vrstico akordov imej v mislih, da vsaka vrsti�
       <format>Prosim preveri format povpraševanja in poskusi ponovno.</format>
       <empty>Napačen navedek: navedek je prazen.</empty>
       <book>Napačen navedek: ne najdem knjige.</book>
-      <ambiguous>Napačen navedek: več knjig ustreza '%1': %2</ambiguous>
+      <ambiguous>Napačen navedek: več knjig ustreza %1: %2</ambiguous>
       <version>Napačen navedek: '%1' prevoda ni najti.</version>
       <chapter>Napačen navedek: ne najdem poglavja '%1'.</chapter>
       <verse>Napačen navedek: ne najdem vrstice '%1'.</verse>
@@ -992,6 +1000,9 @@ Pri več vrsticah besedila na eno vrstico akordov imej v mislih, da vsaka vrsti�
     <option name="Nizko, največja kvaliteta"/>
     <option name="Brez, brez izgube, velika datoteka zbirke"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

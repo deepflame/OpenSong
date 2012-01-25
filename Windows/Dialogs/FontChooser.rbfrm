@@ -27,14 +27,14 @@ Begin Window FontChooser
    Begin PushButton btn_ok
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "OK"
-      ControlOrder    =   0
       Default         =   True
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   163
@@ -43,28 +43,29 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   277
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   0
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
-      ControlOrder    =   1
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   255
@@ -73,27 +74,27 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   277
       Underline       =   False
       Visible         =   True
       Width           =   70
-      BehaviorIndex   =   1
    End
-   Begin StaticText lbl_font_face
+   Begin Label lbl_font_face
       AutoDeactivate  =   True
       Bold            =   False
-      ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   15
@@ -103,19 +104,21 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Font:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   15
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   100
-      BehaviorIndex   =   2
    End
    Begin SEditField edt_font_face
       AcceptTabs      =   False
@@ -124,14 +127,14 @@ Begin Window FontChooser
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
-      ControlOrder    =   3
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      HideSelection   =   True
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   15
@@ -143,8 +146,8 @@ Begin Window FontChooser
       LockTop         =   False
       Mask            =   ""
       Multiline       =   False
-      Password        =   False
       ReadOnly        =   False
+      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollbarVertical=   True
       Styled          =   False
@@ -155,21 +158,21 @@ Begin Window FontChooser
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   30
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
       Width           =   150
-      BehaviorIndex   =   3
    End
    Begin ListBox lst_font_faces
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
       Bold            =   False
+      Border          =   True
       ColumnCount     =   1
       ColumnsResizable=   False
       ColumnWidths    =   ""
-      ControlOrder    =   4
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -183,7 +186,7 @@ Begin Window FontChooser
       Height          =   113
       HelpTag         =   ""
       Hierarchical    =   False
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   False
@@ -194,6 +197,7 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       RequiresSelection=   ""
+      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollBarVertical=   True
       SelectionType   =   0
@@ -202,6 +206,7 @@ Begin Window FontChooser
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   55
       Underline       =   False
       UseFocusRing    =   True
@@ -209,18 +214,16 @@ Begin Window FontChooser
       Width           =   150
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   4
    End
-   Begin StaticText lbl_font_size
+   Begin Label lbl_font_size
       AutoDeactivate  =   True
       Bold            =   False
-      ControlOrder    =   5
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   175
@@ -230,19 +233,21 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Size:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   15
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   5
    End
    Begin SEditField edt_font_size
       AcceptTabs      =   False
@@ -251,14 +256,14 @@ Begin Window FontChooser
       BackColor       =   16777215
       Bold            =   False
       Border          =   True
-      ControlOrder    =   6
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      HideSelection   =   True
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   175
@@ -270,8 +275,8 @@ Begin Window FontChooser
       LockTop         =   False
       Mask            =   "##9"
       Multiline       =   False
-      Password        =   False
       ReadOnly        =   False
+      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollbarVertical=   True
       Styled          =   False
@@ -282,21 +287,21 @@ Begin Window FontChooser
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   30
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   6
    End
    Begin ListBox lst_font_size
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
       Bold            =   False
+      Border          =   True
       ColumnCount     =   1
       ColumnsResizable=   False
       ColumnWidths    =   ""
-      ControlOrder    =   7
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -310,7 +315,7 @@ Begin Window FontChooser
       Height          =   113
       HelpTag         =   ""
       Hierarchical    =   False
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       InitialValue    =   "8\r9\r10\r11\r12\r14\r16\r18\r20\r22\r24\r26\r28\r36\r48\r72"
       Italic          =   False
@@ -321,6 +326,7 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       RequiresSelection=   ""
+      Scope           =   0
       ScrollbarHorizontal=   False
       ScrollBarVertical=   True
       SelectionType   =   0
@@ -329,6 +335,7 @@ Begin Window FontChooser
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   55
       Underline       =   False
       UseFocusRing    =   True
@@ -336,18 +343,16 @@ Begin Window FontChooser
       Width           =   60
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
-      BehaviorIndex   =   7
    End
-   Begin StaticText lbl_font_color
+   Begin Label lbl_font_color
       AutoDeactivate  =   True
       Bold            =   False
-      ControlOrder    =   8
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   245
@@ -357,31 +362,33 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Color:"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   15
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   60
-      BehaviorIndex   =   8
    End
    Begin SColorCanvas can_font_color
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      ControlOrder    =   9
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       IsColorSet      =   0
       Left            =   245
@@ -391,28 +398,25 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       MyColor         =   0
+      Scope           =   0
       TabIndex        =   9
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   30
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   9
    End
    Begin CheckBox chk_font_bold
       AutoDeactivate  =   True
       Bold            =   False
       Caption         =   "Bold"
-      ControlOrder    =   10
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   245
@@ -421,29 +425,30 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
+      State           =   0
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   60
       Underline       =   False
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   10
    End
    Begin CheckBox chk_font_italic
       AutoDeactivate  =   True
       Bold            =   False
       Caption         =   "Italic"
-      ControlOrder    =   11
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   245
@@ -452,29 +457,30 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
+      State           =   0
       TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   85
       Underline       =   False
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   11
    End
    Begin CheckBox chk_font_underline
       AutoDeactivate  =   True
       Bold            =   False
       Caption         =   "Underline"
-      ControlOrder    =   12
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   245
@@ -483,29 +489,30 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
+      State           =   0
       TabIndex        =   12
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   110
       Underline       =   False
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   12
    End
    Begin CheckBox chk_font_border
       AutoDeactivate  =   True
       Bold            =   False
       Caption         =   "Border"
-      ControlOrder    =   13
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   245
@@ -514,29 +521,31 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
+      State           =   0
       TabIndex        =   13
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   135
       Underline       =   False
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   13
    End
    Begin SColorCanvas can_font_border
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      ControlOrder    =   14
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       IsColorSet      =   0
       Left            =   245
@@ -546,28 +555,25 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       MyColor         =   0
+      Scope           =   0
       TabIndex        =   14
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   155
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   14
    End
    Begin CheckBox chk_font_shadow
       AutoDeactivate  =   True
       Bold            =   False
       Caption         =   "Shadow"
-      ControlOrder    =   15
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   245
@@ -576,29 +582,31 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
+      State           =   0
       TabIndex        =   15
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   180
       Underline       =   False
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   15
    End
    Begin SColorCanvas can_font_shadow
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      ControlOrder    =   16
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       IsColorSet      =   0
       Left            =   245
@@ -608,28 +616,25 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       MyColor         =   0
+      Scope           =   0
       TabIndex        =   16
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   200
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   16
    End
    Begin CheckBox chk_font_fill
       AutoDeactivate  =   True
       Bold            =   False
       Caption         =   "Fill"
-      ControlOrder    =   17
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   245
@@ -638,29 +643,31 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
+      State           =   0
       TabIndex        =   17
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   225
       Underline       =   False
       Value           =   False
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   17
    End
    Begin SColorCanvas can_font_fill
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      ControlOrder    =   18
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       IsColorSet      =   0
       Left            =   245
@@ -670,29 +677,28 @@ Begin Window FontChooser
       LockRight       =   False
       LockTop         =   False
       MyColor         =   0
+      Scope           =   0
       TabIndex        =   18
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   245
       UseFocusRing    =   True
       Visible         =   True
       Width           =   80
-      BehaviorIndex   =   18
    End
    Begin SFontCanvas can_font_preview
       AcceptFocus     =   False
+      AcceptMouseDown =   true
       AcceptTabs      =   False
       AdvancedOptions =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      ControlOrder    =   19
-      Enabled         =   False
+      DoubleBuffer    =   False
+      Enabled         =   True
       EraseBackground =   True
       Height          =   85
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   15
       LockBottom      =   False
@@ -700,16 +706,14 @@ Begin Window FontChooser
       LockLeft        =   False
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   19
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   180
       UseFocusRing    =   True
       Visible         =   True
       Width           =   220
-      BehaviorIndex   =   19
    End
 End
 #tag EndWindow
@@ -727,27 +731,7 @@ End
 
 	#tag Method, Flags = &h0
 		Function Ask(fromFont As FontFace, advancedOptions As Boolean = True) As FontFace
-		  Dim c As Color
 		  MyFont = fromFont.Clone
-		  
-		  If MyFont <> Nil Then
-		    edt_font_face.Text = MyFont.Name
-		    edt_font_size.Text = Str(MyFont.Size)
-		    chk_font_bold.Value = MyFont.Bold
-		    chk_font_italic.Value = MyFont.Italic
-		    chk_font_underline.Value = MyFont.Underline
-		    c = MyFont.ForeColor
-		    can_font_color.SetColor c
-		    c = MyFont.BorderColor
-		    can_font_border.SetColor c
-		    c = MyFont.ShadowColor
-		    can_font_shadow.SetColor c
-		    c = MyFont.FillColor
-		    can_font_fill.SetColor c
-		    chk_font_border.Value = MyFont.Border
-		    chk_font_shadow.Value = MyFont.Shadow
-		    chk_font_fill.Value = MyFont.Fill
-		  End If
 		  
 		  Dim x As Integer
 		  For x = 1 To UBound(App.FontList)
@@ -775,9 +759,46 @@ End
 		Protected BorderFraction As Integer
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected MyFont As FontFace
+	#tag Property, Flags = &h21
+		Private mMyFont As FontFace
 	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  return mMyFont
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mMyFont = value
+			  
+			  Dim c As Color
+			  
+			  If MyFont <> Nil Then
+			    edt_font_face.Text = MyFont.Name
+			    edt_font_size.Text = Str(MyFont.Size)
+			    chk_font_bold.Value = MyFont.Bold
+			    chk_font_italic.Value = MyFont.Italic
+			    chk_font_underline.Value = MyFont.Underline
+			    c = MyFont.ForeColor
+			    can_font_color.SetColor c
+			    c = MyFont.BorderColor
+			    can_font_border.SetColor c
+			    c = MyFont.ShadowColor
+			    can_font_shadow.SetColor c
+			    c = MyFont.FillColor
+			    can_font_fill.SetColor c
+			    chk_font_border.Value = MyFont.Border
+			    chk_font_shadow.Value = MyFont.Shadow
+			    chk_font_fill.Value = MyFont.Fill
+			    can_font_preview.SetFont MyFont
+			  End If
+			  
+			End Set
+		#tag EndSetter
+		MyFont As FontFace
+	#tag EndComputedProperty
 
 
 #tag EndWindowCode

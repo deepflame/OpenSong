@@ -1,4 +1,195 @@
-﻿* Rename Report class to ReportClass (compatibility with RB 2009R4) (JRC)
+* Improved external presentation application detection for Impress (bug #3471022) (Vwout)
+
+* Improved loading and detection order for PPTView, manually set path in general settings always overides automatic detection of PPTView (bug #3471022) (Vwout)
+
+* Reduced screen flickering while changing forth an back between an OpenSong slide and an external presentation item or VideoLan (bug #3471022) (Vwout)
+
+* Flickering when changing to an external presentation or VideoLan can be caused by animation effects that Windows applies when minimizing and maximizing. OpenSong will automatically try to disable animations during a presentation. A tutorial on how to disable the animations in Windows 7 can be found here: http://www.addictivetips.com/windows-tips/disable-the-maximize-minimize-windows-animation-in-windows-7/ (thx Marten) (Vwout)
+
+* The OpenSong presentation window no longer maintains the last presented OpenSong slide when switching to an external item. Instead a black screen is used (bug #3471022) (Vwout)
+
+* Improved internal exception handling of external presentation objects (OLE and DCOM) to solve several different types of crashes on start and end of PowerPoint and Impress presentations (bug #3468371) (Vwout)
+
+* Userinterface improvements on external slide panels (Vwout)
+
+* Fix embedding of presentation items (PowerPoint and Impress files) in the set. Added embedding of media files for playback with Videolan (Vwout)
+
+* Overhauled VLC integration to fix fullscreen playback on presentation screen. OpenSong is now also using the RemoteControl interface instead of telnet for controling VideoLan. Note: a VideoLan instance that is launched by OpenSong can always manually be closed using the global keystroke 'Ctrl-Alt-Shift-Q'. (Vwout)
+
+* Small improvement in forcing Impress to use the presentation screen. OpenOffice Impress seems to ignore the display settings if display 1 is set as secondary (presentation) screen and display 2 as primary (control) screen. (Vwout)
+
+* Prevent OutOfBounds Exception in TranslateWindow (if e.g. passed font list is less than six) (JRC)
+
+* OpenSong now tries to load the next available Bible if the default Bible cannot be loaded. (JRC)
+
+* Change behavior for empty scripture folder to inform user and continue running with Scripture Picker disabled. (JRC)
+
+* Prompt before Generating Scripture Index. (JRC)
+
+* Fix bug when Reverting a song -- was asking twice (Bug #3455320). (swampcat)
+
+* Fix line spacing when printing lyrics without chords and multiple verse format (with verse numbers at beginning of the lyric line) (Bug #3466172). (swampcat)
+
+* Support displaying verse numbers without having to define the presentation order (JRC)
+
+* Fix display issues with font preview. (swampcat)
+
+* Mark window dirty using Window.ContentsChanged so the appropriate visual indication is given in the close button on OSX. (swampcat)
+
+* Fix error in line spacing for chord lines with no lyrics (Bug #3459341). (swampcat)
+
+* Add special/any filetype to allow for selection of files on Mac for use with VideoLan external. (swampcat)
+
+* Fix for automatic lyric indentation in song editor on Linux (Bug #3459158) (Vwout)
+
+* Changed layout to Help window and added a Close button.  Help is now modeless: the dialog can remain open while continuing to work in OpenSong. (swampcat)
+
+-= 2.0 Beta 1 =-
+* Small change to SmartVersion to show the current stage code (alpha, beta, etc.) (JRC)
+
+* The "Use pre-V1.1 file cache" flag has been disabled in the dialog and is ignored at startup due to unresolved crashes on Windows.  If someone wants to take a look at it, the underlying code is still present. (swampcat) (MainSettingsWindow, MainWindow)
+
+* Correct some field spacing in the Main Settings/Preferences dialog. (swampcat) (MainSettingsWindow)
+
+* Fix some UTF-8 processing issues in the Song Picker and Bible lookup. (swampcat)
+
+* Update MacOSLib. (swampcat) (FSRef, FSSPec, MacFileManager)
+
+* Cleanup on Song object to prepare for additional work on it. (swampcat) (Song)
+
+* Section header for a verse now includes the translation for "verse" in addition to the verse number. Potential future change:  making this selectable in print settings. (swampcat) (SongML)
+
+* Print Settings allows user to define amount of space before and after running elements of the song (sections, chords, capo chords, lyrics). (swampcat) (PrintSettingsWindow)
+
+* Saving a song no longer causes the cursor to return to the begining of the lyrics (swampcat) (MainWindow)
+
+* Add shortcuts (F1-F15) for jumping straight to songs during a live presentation. Depending on the keyboard layout, F13 equals Printscreen, F14 equals Screenlock and F15 equals Pause. (Feature request #3305126) (Vwout)
+
+* Make OpenSong more tolerant when loading Zefania XML bibles. Full names and short names are expected where actually only the book number is mandatory. (Vwout)
+
+* Fix issue where a reminder to save the slide after a change in the override style is not always given, causing the style change to get lost. (Vwout)
+
+* Fix issue when doing a live insertion of a song. In case of equal names (equal songs) the positioning in the PresentationHelperWindow was incorrect (Bug #3404474) (Vwout)
+
+* Added color markings for different slide and verse types in set list and presentation helper window (Vwout, thanks to fmate14)
+Each slide or vers line has a background color that indicates what kind of slide is presented. This provides a quick overview during live presentation.
+This feature can be switched off in the general settings. All colors can be customised. These color settings do not affect the background color of presented slides.
+
+* Replace depreciated StaticText class with Label class for compatibility with RB 2010r4 and above (JRC)
+
+* Prevent NilObjectException when user cancels selecting the default Bible. (JRC)
+
+* Introduced new slide type ('external') featuring:
+- Full interactive support for OpenOffice.org Impress and Microsoft PowerPoint including Live preview
+- Import of OpenOffice.org Impress and Microsoft PowerPoint slides as snapshot in the Images slide
+- Videolan integration for adding media (video and sound to your presentations)
+- Launch any application from OpenSong
+
+To store all this, a new slide type 'application' was added to the slide types. This slide has three sections: 'presentation', 'videolan' and 'external'.
+The first is the actual interaction with tightly integrated control to OpenOffice.org Impress and Microsoft PowerPoint. The well known applications are started and controlled from OpenSong, so you don't need to leave the presentation control helper window. Of course, you are free to do so and hand over control to the presentation programs. OpenSong will follow and update the previews in the presentation helper window. At present only on Windows and feedback to OpenSong unfortunately is yet only available for Microsoft PowerPoint. For a cut down and free setup, support for the free Microsoft PowerPoint Viewer is also build-in.
+The videolan section allows playing of media files like video or sound clips using the full power of Videolan. Videolan itself is not included in OpenSong and needs to be installed separately. Next to media files, using live video from a capture card, or playback from DVD is supported as long as you manage to get the command line parameters right.
+The parameters can be stored as 'preset' in the language translation file in the section 'videolan_preset_list'. Please feel yourself encouraged to share your presents in the forums on SourceForge (http://sourceforge.net/projects/opensong/forums/forum/373378).
+As default presets are available to show a video as slide background using directX video overlay (Windows only), Fullscreen video and video playback from an external capture card using DirectShow. Freely adjustable and extensible :)
+The mode 'external' probably is the most flexible of all as it simply starts or stops an external program, allowing basic control over any program, such as your favorite DVD player, WinAmp or DMX light control unit, or anything as long as it is command line driven.
+
+As icing on the cake, for those who do not have access to Impress or PowerPoint at the presentation desk, a presentation import facility was added to the images slide. All slides from any OpenOffice.org Impress or Microsoft PowerPoint presentation file are imported as static image. The only remark is that one slide is one image, which means that animations or 'clicks' on a single presentation slide do not transfer into individual images. (Vwout)
+
+* Fix for multiscreen setup in Linux. Displays are now properly detected with support for different resolutions per screen (Bug #1904753, Forum topic 4040032) (Vwout)
+
+* Fix for fullscreen issue in Linux where title bar remains visible (Feature request #2916937, Forum topic 4040032) (Vwout)
+
+* Fix issue where the chorus text was not being highlighted in printouts. (Bug #3284863) (JRC)
+
+* Change behavior when user cancels selecting a Documents Folder: Inform user that OpenSong cannot continue
+without a Documents Folder, and shut down. Thus preventing a NilObjectException when OS tries to access the
+non-existent folder. (JRC)
+
+-= 1.7.0. =-
+
+* Several fixes and improvements for tab processing: (Vwout)
+- tabs at the beginning of a slide now also work (bug #3141443)
+- styles with only 1 tabstop location now also work correct
+- improved behaviour of character-aligned tabstops
+
+* Fix verse display presentation for songs with multiple chorus variants like C1 V1 C2 V2 C2 V3 C2 (Vwout)
+
+* Add option in presentation settings to export snapshots of the slides that are presented as an image to a file (Vwout)
+
+* Decrease height of lbl_the_question in InputBox.Message to make push buttons visible again (JRC)
+
+* Complete the fix for bug 3117855 by correcting issue with quick lookup with extended Latin-1 characters in book name. Requires change to the regular expression that parses the citation, so by creating a new key in the preferences file,  biblefactory/useoldregex and setting it to true, the old regular expression will be used (swampcat)
+
+* Add option to turn off reversing the Bold attribute on the font used to print chorus lyrics (swampcat)
+
+* Misc. Mac stability fixes (swampcat)
+
+* Fix bible indexing issue where the first word in the first verse of the first chapter would be added to the index but the reference wouldn't be (swampcat)
+
+* Fix bible indexing issue where UTF-8 characters would be dropped from the index incorrectly (bug #3117855) (swampcat)
+
+* Fix bible indexing issue for bibles with newline characters (bug #3077366) (Vwout)
+
+* Improve set item reordering - quick drag-and-drop could mess up the synchronisation between set list and contents window. This still can happen - looks like an RB issue, although you need to try harder now. (Vwout)
+
+* Added an option to force 4:3 preview mode on wide or portrait screens. This allows correct presentation preparation for 4:3 screens on a monitor with a different aspect ratio. This option can be enabled on the Presentation Settings dialog. See the tab 'options' under 'Screens'. It is now also possible to make the Presentation Helper window even smaller. (Vwout)
+
+* Added next slide preview in presentation helper window. The availability and size of the preview is changed automatically when resizing the Presentation Helper (Vwout)
+
+* Fix for CCLI song number reporting for presented songs (Vwout)
+
+* Fix in set item selection (reselection after unselection is not processed correctly) (Vwout)
+
+* Fix for 'Arrow keys bug - Moving left causes issues' (Vwout)
+
+-= 1.6.2 =-
+
+* Add global variable UseSheetDialogs to determine if the dialogs that support the "sheet" style on OS/X are sheets or independent dialogs. The global is forced to False on Windows and Linux and controlled by the hidden key "dialogs/@usesheets" on Mac and defaults to True. This is an attempt to fix the hard crash on Windows when printing. [Yes, it is not logical, but that's where the crash report points] (bug #3039651) (swampcat)
+
+* Change logic for determining location of files when in Debug mode since Mac is different from other platforms. (swampcat)
+
+* Resolve bug when searching an empty songs folder (bug #2789877) (Vwout)
+
+* Fix for "Find Again" (Ctrl-G) not working (bug #2968179) (Vwout)
+
+* Prevent crash and improve copy/inserting of set items (bug #2977387 and #2988718) (Vwout)
+
+* Improved handling a corrupted plist preferences file. The error is now more descriptive and proposes to repair the file (bug #3021753) (Vwout)
+
+-= 1.6.1 =-
+
+* Fix issue that was preventing adding a song to a presentation during live mode (JRC)
+
+-= 1.6.0 =-
+
+* Added Scirpture Lookup to File Menu, so now it's possible to lookup a scripture reference anytime (JRC)
+
+* Added option to copy current scripture to the clipboard (JRC)
+
+* Rather than display an error when the Bible book name provided by user is ambiguious just go the first matching book (JRC)
+
+* Support partial book names when doing scripture lookups (eg. 'Phile' for Philemon) (bug #2769373) (JRC)
+
+* Support bshort abbreviations when doing scripture lookups (bug #2769373) (JRC)
+
+* Set Images to autosize to screen as default (feature request #2688285) (Vwout)
+
+* Removed quote actifact from 'scripture_lookup/bad_reference/ambiguous' error message (bug #2769373) (JRC)
+
+* Changed behavior of style slide: this style now also overrides song specific styles (Vwout)
+
+* Fix for subtitle handling when using other styles than the generic song style (Vwout)
+
+* Enable (fix?) subtitle style modifications on slide specific style overides (Vwout)
+
+* Updated the 'translation howto' message and slightly enlarged the InputBox to make room for the enhanced message (Vwout)
+
+* Updated the language independent language file contents for the new present set item button in all languages (the hint-message is not included) (Vwout)
+
+* Added new translation for Russion (thanx Vlad) and updated Português (Brasil) (thanx pauloneto) 
+
+* Fix listing of verses in the song title for verses that occur multiple times in the presentation order (gerritp)
+
+* Rename Report class to ReportClass (compatibility with RB 2009R4) (JRC)
 
 * Various fixes to comply with RB 2009R4 changing Editfield class to TextField (JRC)
 

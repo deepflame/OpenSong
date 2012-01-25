@@ -144,6 +144,12 @@
       <remove caption="Remover">Remove o item selecionado do programa.</remove>
       <copy caption="Copiar">Cria uma cópia do item selecionado.</copy>
       <store caption="Salvar">Salva o item selecionado no programa.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
     </current_item>
     <items caption="Itens do Programa">Lista os itens deste programa. Clique num slide padrão para carrega-lo no editor padrão de slide ou duplo-clique numa canção para carregá-la no editor de canção.</items>
   </sets_mode>
@@ -385,6 +391,7 @@ T: Topo</keys>
   <help_topics title="Tópicos de Ajuda">
     <tabs head1="Formatar Acordes/Letras" head2="Campo de Apresentação" head3="Fechar"/>
     <print caption="Imprimir"/>
+    <close caption="link(shared/close/@caption)"/>
   </help_topics>
 
   <font_selection title="Selecionar Fonte">
@@ -591,6 +598,9 @@ T: Topo</keys>
     <option name="Low, maximum quality"/>
     <option name="None, lossless, large set file"/>
   </imagequality_list>
+
+  <videolan_preset_list>
+  </videolan_preset_list>
 
   <style_preview>
     <slide_groups>

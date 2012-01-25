@@ -26,18 +26,18 @@ Begin Window AboutWindow
    Width           =   562
    Begin PushButton btn_about_close
       AutoDeactivate  =   True
-      BehaviorIndex   =   0
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Close"
       Default         =   True
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   467
+      Left            =   442
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -47,21 +47,21 @@ Begin Window AboutWindow
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
+      TextFont        =   "Arial"
       TextSize        =   12
+      TextUnit        =   0
       Top             =   310
       Underline       =   False
       Visible         =   True
-      Width           =   69
+      Width           =   100
    End
    Begin ImageWell ImageWell1
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Enabled         =   True
       Height          =   128
       HelpTag         =   ""
       Image           =   -1045728915
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   20
       LockBottom      =   False
@@ -77,49 +77,49 @@ Begin Window AboutWindow
       Visible         =   True
       Width           =   128
    End
-   Begin StaticText txt_about_version
+   Begin Label txt_about_version
       AutoDeactivate  =   True
-      BehaviorIndex   =   2
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   29
+      Height          =   36
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   160
       LockBottom      =   False
       LockedInPosition=   False
-      LockLeft        =   False
+      LockLeft        =   True
       LockRight       =   False
-      LockTop         =   False
+      LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "OpenSong V1.5"
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
+      TextFont        =   "Arial"
       TextSize        =   24
-      Top             =   14
+      TextUnit        =   0
+      Top             =   12
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   328
    End
-   Begin StaticText txt_about_copyright
+   Begin Label txt_about_copyright
       AutoDeactivate  =   True
-      BehaviorIndex   =   3
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   160
@@ -130,29 +130,30 @@ Begin Window AboutWindow
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Copyright (c) 2003, 2004, 2005, 2006 Sean Lickfold"
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
+      TextFont        =   "Arial"
       TextSize        =   12
-      Top             =   55
+      TextUnit        =   0
+      Top             =   54
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   376
    End
-   Begin StaticText txt_about_gpl
+   Begin Label txt_about_gpl
       AutoDeactivate  =   True
-      BehaviorIndex   =   4
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   160
@@ -163,29 +164,30 @@ Begin Window AboutWindow
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Licensed under the GNU Public License V2.1"
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
+      TextFont        =   "Arial"
       TextSize        =   12
-      Top             =   75
+      TextUnit        =   0
+      Top             =   74
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   376
    End
-   Begin StaticText txt_about_web
+   Begin Label txt_about_web
       AutoDeactivate  =   True
-      BehaviorIndex   =   5
       Bold            =   True
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   160
@@ -196,29 +198,30 @@ Begin Window AboutWindow
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   5
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "http://www.opensong.org"
       TextAlign       =   0
       TextColor       =   &h0000FF
-      TextFont        =   "System"
+      TextFont        =   "Arial"
       TextSize        =   12
+      TextUnit        =   0
       Top             =   95
+      Transparent     =   False
       Underline       =   True
       Visible         =   True
       Width           =   376
    End
-   Begin StaticText txt_about_programmers
+   Begin Label txt_about_programmers
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   71
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   160
@@ -229,15 +232,17 @@ Begin Window AboutWindow
       LockTop         =   True
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   6
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Joshua Coley, Ed Palmer, Gareth Evans, Joseph Dol, Sebastian Schöps, Rüdiger Greeb, Martyn Eggleton, Ben Henny, Matt Gillies, Jon Wright, Dean Whisnant, Ewout Voogt, Gerrit Prins, Tim Howard."
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   12
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
       Top             =   127
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   376
@@ -247,7 +252,6 @@ Begin Window AboutWindow
       Alignment       =   0
       AutoDeactivate  =   True
       BackColor       =   16777215
-      BehaviorIndex   =   7
       Bold            =   ""
       Border          =   True
       DataField       =   ""
@@ -256,7 +260,8 @@ Begin Window AboutWindow
       Format          =   ""
       Height          =   82
       HelpTag         =   ""
-      Index           =   2147483648
+      HideSelection   =   True
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   160
@@ -268,7 +273,6 @@ Begin Window AboutWindow
       LockTop         =   True
       Mask            =   ""
       Multiline       =   True
-      Password        =   ""
       ReadOnly        =   True
       Scope           =   0
       ScrollbarHorizontal=   ""
@@ -279,90 +283,92 @@ Begin Window AboutWindow
       TabStop         =   True
       Text            =   ""
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   0
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
       Top             =   210
       Underline       =   ""
       UseFocusRing    =   True
       Visible         =   True
       Width           =   376
    End
-   Begin StaticText txt_about_compiler
+   Begin Label txt_about_compiler
       AutoDeactivate  =   True
-      BehaviorIndex   =   8
       Bold            =   ""
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   22
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Compiler"
       TextAlign       =   2
       TextColor       =   0
-      TextFont        =   "SmallSystem"
-      TextSize        =   0
-      Top             =   251
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   235
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   100
    End
-   Begin StaticText txt_about_memory
+   Begin Label txt_about_memory
       AutoDeactivate  =   True
-      BehaviorIndex   =   9
       Bold            =   ""
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   20
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   ""
+      LockLeft        =   True
       LockRight       =   ""
-      LockTop         =   ""
+      LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Memory"
       TextAlign       =   2
       TextColor       =   0
-      TextFont        =   "SmallSystem"
-      TextSize        =   0
-      Top             =   264
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   249
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   102
    End
-   Begin StaticText txt_about_objects
+   Begin Label txt_about_objects
       AutoDeactivate  =   True
-      BehaviorIndex   =   10
       Bold            =   ""
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   20
@@ -373,29 +379,30 @@ Begin Window AboutWindow
       LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   10
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Object Count"
       TextAlign       =   2
       TextColor       =   0
-      TextFont        =   "SmallSystem"
-      TextSize        =   0
-      Top             =   277
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   263
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   102
    End
-   Begin StaticText txt_about_build
+   Begin Label txt_about_build
       AutoDeactivate  =   True
-      BehaviorIndex   =   11
       Bold            =   ""
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
       Left            =   20
@@ -406,29 +413,30 @@ Begin Window AboutWindow
       LockTop         =   True
       Multiline       =   ""
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Build"
       TextAlign       =   2
       TextColor       =   0
-      TextFont        =   "SmallSystem"
-      TextSize        =   0
-      Top             =   290
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
+      Top             =   277
+      Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   102
    End
-   Begin StaticText txt_about_language
+   Begin Label txt_about_language
       AutoDeactivate  =   True
-      BehaviorIndex   =   12
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   15
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   20
@@ -439,18 +447,20 @@ Begin Window AboutWindow
       LockTop         =   True
       Multiline       =   False
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   12
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "English: Sean Lickfold"
       TextAlign       =   0
       TextColor       =   0
-      TextFont        =   "System"
-      TextSize        =   10
+      TextFont        =   "Arial"
+      TextSize        =   11
+      TextUnit        =   0
       Top             =   313
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   376
+      Width           =   410
    End
 End
 #tag EndWindow

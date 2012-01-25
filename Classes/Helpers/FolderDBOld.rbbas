@@ -411,9 +411,7 @@ Inherits FolderDB
 		Sub Load(folder As FolderItem)
 		  Me.Folder = folder
 		  
-		  Dim input As TextInputStream
-		  
-		  input = folder.Child("_cache").OpenAsTextFile
+		  Dim input As TextInputStream = TextInputStream.Open(folder.Child("_cache"))
 		  If input = Nil Then
 		    If Not RefreshCache Then
 		      MsgBox ErrorString
@@ -559,8 +557,7 @@ Inherits FolderDB
 
 	#tag Method, Flags = &h0
 		Function Save() As Boolean
-		  Dim output As TextOutputStream
-		  output = Folder.Child("_cache").CreateTextFile
+		  Dim output As TextOutputStream = TextOutputStream.Create(Folder.Child("_cache"))
 		  
 		  If output = Nil Then
 		    ErrorCode = 5
@@ -595,39 +592,6 @@ Inherits FolderDB
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="ErrorCode"
 			Group="Behavior"
 			InitialValue="0"
@@ -642,11 +606,44 @@ Inherits FolderDB
 			InheritedFrom="FolderDB"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="NumFiles"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 			InheritedFrom="FolderDB"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

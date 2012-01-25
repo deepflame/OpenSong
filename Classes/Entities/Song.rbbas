@@ -1,120 +1,8 @@
 #tag Class
 Protected Class Song
 	#tag Method, Flags = &h0
-		Sub AKA(Assigns NewValue As String)
-		  If NewValue <> SongAKA Then
-		    SongChanged = True
-		    SongAKA = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function AKA() As String
-		  Return SongAKA
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Author(Assigns NewValue As String)
-		  If NewValue <> SongAuthor Then
-		    SongChanged = True
-		    SongAuthor = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Author() As String
-		  Return SongAuthor
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Capo(Assigns NewValue As Integer)
-		  If NewValue <> SongCapo Then
-		    SongChanged = True
-		    SongCapo = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Capo() As Integer
-		  Return SongCapo
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CCLISongNumber() As String
-		  Return SongCCLISongNumber
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub CCLISongNumber(Assigns NewValue As String)
-		  If NewValue <> SongCCLISongNumber Then
-		    SongChanged = True
-		    SongCCLISongNumber = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Changed() As Boolean
-		  //
-		  // No Setter for this property.
-		  //
-		  Return SongChanged
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function Clone(OriginalObject As Song) As Song
 		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Copyright() As String
-		  Return SongCopyright
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Copyright(Assigns NewValue As String)
-		  If NewValue <> SongCopyright Then
-		    SongChanged = True
-		    SongCopyright = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function CustomPresentation() As String
-		  Return SongCustomPresentation
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub CustomPresentation(Assigns NewValue As String)
-		  //
-		  // This is temporary...TODO: validate the presentation order
-		  //
-		  If NewValue <> SongCustomPresentation Then
-		    SongChanged = True
-		    SongCustomPresentation = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function FolderItem() As FolderItem
-		  //
-		  // No Setter for this property...will use other methods
-		  //
-		  Return SongFolderItem
 		End Function
 	#tag EndMethod
 
@@ -247,21 +135,6 @@ Protected Class Song
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function HymnNumber() As String
-		  Return SongHymnNumber
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub HymnNumber(Assigns NewValue As String)
-		  If NewValue <> SongHymnNumber Then
-		    SongChanged = True
-		    SongHymnNumber = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h1
 		Protected Sub IndentXml(xNode As XmlNode, Level As Integer = 1)
 		  Dim s As String
@@ -269,63 +142,6 @@ Protected Class Song
 		  s = StringUtils.Repeat(" ", Level * 2)
 		  xNode.AppendChild xnode.OwnerDocument.CreateTextNode(EndOfLine + s)
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Key() As String
-		  Return SongKey
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Key(Assigns NewValue As String)
-		  If NewValue <> SongKey Then
-		    SongChanged = True
-		    SongKey = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub KeyLine(Assigns NewValue As String)
-		  If NewValue <> SongKeyLine Then
-		    SongChanged = True
-		    SongKeyLine = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function KeyLine() As String
-		  Return SongKeyLine
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Load(sDoc As String) As Boolean
-		  //++
-		  // Load the object from the string that is passed.
-		  //
-		  // Note that SongFolderItem will be Nil when this is done.
-		  //--
-		  
-		  Dim xDoc As XmlDocument
-		  
-		  Try
-		    xDoc = New XmlDocument(sDoc)
-		  Catch ex As XmlException
-		    SongFolderItem = Nil
-		    Return False
-		  End Try
-		  
-		  If FromXML(xDoc) Then
-		    SongFolderItem = Nil
-		    SongChanged = True // True because this instance hasn't been written to a file
-		    Return True
-		  Else
-		    Return False
-		  End If
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -368,48 +184,30 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Lyrics(Assigns NewValue As String)
-		  If NewValue <> SongLyrics Then
-		    SongChanged = True
-		    SongLyrics = NewValue
+		Function Load(sDoc As String) As Boolean
+		  //++
+		  // Load the object from the string that is passed.
+		  //
+		  // Note that SongFolderItem will be Nil when this is done.
+		  //--
+		  
+		  Dim xDoc As XmlDocument
+		  
+		  Try
+		    xDoc = New XmlDocument(sDoc)
+		  Catch ex As XmlException
+		    SongFolderItem = Nil
+		    Return False
+		  End Try
+		  
+		  If FromXML(xDoc) Then
+		    SongFolderItem = Nil
+		    SongChanged = True // True because this instance hasn't been written to a file
+		    Return True
+		  Else
+		    Return False
 		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Lyrics() As String
-		  Return SongLyrics
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Presentation() As String
-		  Return SongPresentation
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Presentation(Assigns NewValue As String)
-		  If NewValue <> SongPresentation Then
-		    SongChanged = True
-		    SongPresentation = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function PrintCapoChords() As Boolean
-		  Return SongPrintCapoChords
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub PrintCapoChords(Assigns NewValue As Boolean)
-		  If NewValue <> SongPrintCapoChords Then
-		    SongChanged = True
-		    SongPrintCapoChords = NewValue
-		  End If
-		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -452,34 +250,6 @@ Protected Class Song
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub SongStyle(Assigns NewStyle As SlideStyle)
-		  SongChanged = True
-		  SongStyle = NewStyle
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function SongStyle() As SlideStyle
-		  Return SongStyle
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Tempo() As String
-		  Return SongTempo
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Tempo(Assigns NewValue As String)
-		  If NewValue <> SongTempo Then
-		    SongChanged = True
-		    SongTempo = NewValue
-		  End If
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h1
 		Protected Function TextNode(node As XmlNode) As String
 		  //+
@@ -505,67 +275,45 @@ Protected Class Song
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function ThemeList() As String
+		Function Themes() As String()
 		  //++
-		  // Return a semi-colon separated list of themes
+		  // Return a copy of the SongThemes array
+		  // It's done this way since arrays are always passed by reference, so returning
+		  // the SongThemes array directly would result in a modifiable reference
 		  //--
 		  
-		  Dim ThemeString As String
-		  Dim s As String
-		  Dim Exists As Boolean = False
+		  Dim i As Integer
+		  Dim numThemes As Integer
+		  Dim ThemeList() As String
 		  
-		  For Each s in Themes
-		    If Exists Then
-		      ThemeString = ThemeString + ";" + s
-		    Else
-		      Exists = True
-		      ThemeString = s
-		    End If
-		  Next
+		  numThemes = UBound(SongThemes)
 		  
-		  Return ThemeString
-		Catch ex As RuntimeException
-		  If ex IsA OutOfBoundsException Then // That's odd
-		    If Right(ThemeString, 1) = ";" Then ThemeString = Left(ThemeString, Len(ThemeString) - 1)
-		    Return ThemeString
-		  End If
-		  Raise ex // Can't do anything with it, needs further investigation.
+		  ReDim ThemeList(numThemes)
+		  
+		  i = 0
+		  Do Until i > numThemes
+		    ThemeList(i) = SongThemes(i)
+		    i = i + 1
+		  Loop
+		  
+		  Return ThemeList
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Themes() As String()
-		  Return SongThemes
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub TimeSignature(Assigns NewSignature As String)
-		  If NewSignature <> SongTimeSignature Then
-		    SongChanged = True
-		    SongTimeSignature = NewSignature
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function TimeSignature() As String
-		  Return SongTimeSignature
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Title() As String
-		  Return SongTitle
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Title(Assigns NewTitle As String)
-		  If NewTitle <> SongTitle Then
-		    SongChanged = True
-		    SongTitle = NewTitle
-		  End If
+		Sub Themes(Assigns newThemes() As String)
+		  Dim i As Integer
+		  Dim numThemes As Integer
+		  
+		  numThemes = UBound(newThemes)
+		  
+		  ReDim SongThemes(numThemes)
+		  
+		  i = 0
+		  Do Until i > numThemes
+		    SongThemes(i) = newThemes(i)
+		    i = i + 1
+		  Loop
 		End Sub
 	#tag EndMethod
 
@@ -721,51 +469,234 @@ Protected Class Song
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub User1(Assigns NewValue As String)
-		  If NewValue <> SongUser1 Then
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongAKA
+			  
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If value <> SongAKA Then
 		    SongChanged = True
-		    SongUser1 = NewValue
+			    SongAKA = value
 		  End If
-		End Sub
-	#tag EndMethod
+			End Set
+		#tag EndSetter
+		AKA As String
+	#tag EndComputedProperty
 
-	#tag Method, Flags = &h0
-		Function User1() As String
-		  Return SongUser1
-		End Function
-	#tag EndMethod
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongAuthor
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongAuthor Then
+			    SongChanged = True
+			    SongAuthor = Value
+			  End If
+			End Set
+		#tag EndSetter
+		Author As String
+	#tag EndComputedProperty
 
-	#tag Method, Flags = &h0
-		Sub User2(Assigns NewValue As String)
-		  If NewValue <> SongUser2 Then
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongCapo
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongCapo Then
 		    SongChanged = True
-		    SongUser2 = NewValue
+			    SongCapo = Value
 		  End If
-		End Sub
-	#tag EndMethod
+			End Set
+		#tag EndSetter
+		Capo As Integer
+	#tag EndComputedProperty
 
-	#tag Method, Flags = &h0
-		Function User2() As String
-		  Return SongUser2
-		End Function
-	#tag EndMethod
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongCCLISongNumber
+			  
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongCCLISongNumber Then
+			    SongChanged = True
+			    SongCCLISongNumber = Value
+			  End If
+			End Set
+		#tag EndSetter
+		CCLISongNumber As String
+	#tag EndComputedProperty
 
-	#tag Method, Flags = &h0
-		Function User3() As String
-		  Return SongUser3
-		End Function
-	#tag EndMethod
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  //
+			  // No Setter for this property.
+			  //
+			  Return SongChanged
+			End Get
+		#tag EndGetter
+		Changed As Boolean
+	#tag EndComputedProperty
 
-	#tag Method, Flags = &h0
-		Sub User3(Assigns NewValue As String)
-		  If NewValue <> SongUser3 Then
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongCopyright
+			  
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If value <> SongCopyright Then
 		    SongChanged = True
-		    SongUser3 = NewValue
+			    SongCopyright = value
 		  End If
-		End Sub
-	#tag EndMethod
+			End Set
+		#tag EndSetter
+		Copyright As String
+	#tag EndComputedProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongCustomPresentation
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If value <> SongCustomPresentation Then
+			    SongChanged = True
+			    SongCustomPresentation = value
+			  End If
+			End Set
+		#tag EndSetter
+		CustomPresentation As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongFolderItem
+			End Get
+		#tag EndGetter
+		FolderItem As FolderItem
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongHymnNumber
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongHymnNumber Then
+			    SongChanged = True
+			    SongHymnNumber = Value
+			  End If
+			End Set
+		#tag EndSetter
+		HymnNumber As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongKey
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongKey Then
+			    SongChanged = True
+			    SongKey = Value
+			  End If
+			End Set
+		#tag EndSetter
+		Key As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongKeyLine
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongKeyLine Then
+			    SongChanged = True
+			    SongKeyLine = Value
+			  End If
+			End Set
+		#tag EndSetter
+		KeyLine As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongLyrics
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongLyrics Then
+			    SongChanged = True
+			    SongLyrics = Value
+			  End If
+			End Set
+		#tag EndSetter
+		Lyrics As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongPresentation
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongPresentation Then
+			    SongChanged = True
+			    SongPresentation = Value
+			  End If
+			End Set
+		#tag EndSetter
+		Presentation As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongPrintCapoChords
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If value <> SongPrintCapoChords Then
+			    SongChanged = True
+			    SongPrintCapoChords = value
+			  End If
+			End Set
+		#tag EndSetter
+		PrintCapoChords As Boolean
+	#tag EndComputedProperty
 
 	#tag Property, Flags = &h1
 		Protected SongAKA As String
@@ -862,12 +793,20 @@ Protected Class Song
 		Protected SongPrintCapoChords As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		#tag Note
-			Custom style for the song.  May be Nil.
-		#tag EndNote
-		Protected SongStyle As SlideStyle
-	#tag EndProperty
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return _Style
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  SongChanged = True
+			  _Style = value
+			End Set
+		#tag EndSetter
+		SongStyle As SlideStyle
+	#tag EndComputedProperty
 
 	#tag Property, Flags = &h1
 		Protected SongTempo As String
@@ -902,6 +841,153 @@ Protected Class Song
 
 	#tag Property, Flags = &h1
 		Protected SongUser3 As String
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongTempo
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If value <> SongTempo Then
+			    SongChanged = True
+			    SongTempo = value
+			  End If
+			End Set
+		#tag EndSetter
+		Tempo As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  //++
+			  // Return a semi-colon separated list of themes
+			  //--
+			  
+			  Dim ThemeString As String
+			  
+			  ThemeString = Join(SongThemes, ";")
+			  
+			  Return ThemeString
+			  
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  //++
+			  // Take a semi-colon separated list of themes and replace the SongThemes array
+			  //--
+			  Dim newThemes() As String
+			  Dim i As Integer
+			  Dim numThemes As Integer
+			  
+			  newThemes = Split(value, ";")
+			  
+			  numThemes = UBound(newThemes)
+			  
+			  ReDim SongThemes(numThemes)
+			  
+			  For i = 0 to numThemes - 1
+			    SongThemes(i) = newThemes(i)
+			  Next
+			End Set
+		#tag EndSetter
+		ThemeList As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongTimeSignature
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If value <> SongTimeSignature Then
+			    SongChanged = True
+			    SongTimeSignature = value
+			  End If
+			End Set
+		#tag EndSetter
+		TimeSignature As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongTitle
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If value <> SongTitle Then
+			    SongChanged = True
+			    SongTitle = value
+			  End If
+			End Set
+		#tag EndSetter
+		Title As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongUser1
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongUser1 Then
+			    SongChanged = True
+			    SongUser1 = Value
+			  End If
+			End Set
+		#tag EndSetter
+		User1 As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongUser2
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongUser2 Then
+			    SongChanged = True
+			    SongUser2 = Value
+			  End If
+			End Set
+		#tag EndSetter
+		User2 As String
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return SongUser3
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  If Value <> SongUser3 Then
+			    SongChanged = True
+			    SongUser3 = Value
+			  End If
+			End Set
+		#tag EndSetter
+		User3 As String
+	#tag EndComputedProperty
+
+	#tag Property, Flags = &h1
+		#tag Note
+			Custom style for the song.  May be Nil.
+		#tag EndNote
+		Protected _Style As SlideStyle
 	#tag EndProperty
 
 
@@ -977,10 +1063,44 @@ Protected Class Song
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
+			Name="AKA"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Author"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Capo"
+			Group="Behavior"
+			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CCLISongNumber"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Changed"
+			Group="Behavior"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Copyright"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CustomPresentation"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="HymnNumber"
+			Group="Behavior"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -990,10 +1110,14 @@ Protected Class Song
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
+			Name="Key"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="KeyLine"
+			Group="Behavior"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -1003,11 +1127,68 @@ Protected Class Song
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Lyrics"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Presentation"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PrintCapoChords"
+			Group="Behavior"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Tempo"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TimeSignature"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Title"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
 			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="User1"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="User2"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="User3"
+			Group="Behavior"
+			Type="String"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

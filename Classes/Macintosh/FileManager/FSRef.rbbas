@@ -2,6 +2,37 @@
 Protected Class FSRef
 Inherits MemoryBlock
 	#tag Method, Flags = &h0
+		Sub AlternateConstructor(f as FolderItem)
+		  If f Is Nil then
+		    Raise new InvalidParameterException("FSRef.Constructor: f cannot be nil")
+		  End if
+		  If NOT f.Exists then
+		    Raise new InvalidParameterException("FSRef.Constructor: f must exist.")
+		  End if
+		  
+		  Soft Declare Function FSGetVolumeInfo Lib InterfaceLib (volume as Short, volumeIndex as Integer, actualVolume as Ptr, whichInfo as Integer, info as Ptr, volumeName as Ptr, rootDirectory as Ptr) as Short
+		  Soft Declare Function FSMakeFSRefUnicode Lib InterfaceLib (parentPtr as Ptr, nameLength as Integer, name as CString, enc as Integer, outRef as Ptr) as Short
+		  
+		  Const kTextEncodingUnknown = &hffff
+		  Const fsRtParID = 1
+		  Const kFSVolInfoNone = &h0000
+		  
+		  me.Constructor()
+		  If f.MacDirID = fsRtParID then //f is a volume, so get root directory directly
+		    dim OSError as Integer = FSGetVolumeInfo(f.MacVRefNum, 0, Nil, kFSVolInfoNone, Nil, Nil, me)
+		  Else
+		    dim parentRef as new FSRef(new FSSpec(f.Parent))
+		    dim fileName as String = ConvertEncoding(f.name, Encodings.UTF16)
+		    dim OSError as Integer = FSMakeFSRefUnicode(parentRef, Len(fileName), fileName, kTextEncodingUnknown, me)
+		    If OSError <> 0 then
+		      Raise new MacOSException("FSMakeFSRefUnicode", OSError)
+		    End if
+		  End if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Constructor()
 		  
 		  Super.MemoryBlock sizeOfFSRef
@@ -37,25 +68,67 @@ Inherits MemoryBlock
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Path() As String
-		  If Not System.IsFunctionAvailable("FSRefMakePath", InterfaceLib) then
-		    Return ""
+		Sub Constructor(theFSSpec as FSSpec)
+		  If theFSSpec Is Nil then
+		    theFSSpec = new FSSpec
 		  End if
-		  Soft Declare Function FSRefMakePath Lib InterfaceLib (ref as Ptr, path as Ptr, maxPathSize as Integer) as Integer
 		  
-		  dim pathBuffer as MemoryBlock = new MemoryBlock(256)
-		  dim OSError as Integer = FSRefMakePath(me, pathBuffer, pathBuffer.Size)
+		  Soft Declare Function FSpMakeFSRef Lib InterfaceLib (source as Ptr, newRef as Ptr) as Short
+		  
+		  me.Constructor()
+		  dim OSError as Integer = FSpMakeFSRef(theFSSpec, me)
 		  If OSError <> 0 then
+		    Raise new MacOSException("FSpMakeFSRef", OSError)
+		  End if
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function Equals(theFSRef as FSRef) As Boolean
+		  If theFSRef Is Nil then
+		    Return false
+		  End if
+		  
+		  If Not System.IsFunctionAvailable("FSCompareFSRefs", InterfaceLib) then
+		    Return false
+		  End if
+		  Soft Declare Function FSCompareFSRefs Lib InterfaceLib (ref1 as Ptr, ref2 as Ptr) as Short
+		  
+		  dim OSError as Integer = FSCompareFSRefs(me, theFSRef)
+		  Return (OSError <> 0)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsValid() As Boolean
+		  If Not System.IsFunctionAvailable("FSGetCatalogInfo", InterfaceLib) then
+		    Return false
+		  End if
+		  Soft Declare Function FSGetCatalogInfo Lib InterfaceLib (ref as Ptr, whichInfo as Integer, catalogInfo as Ptr, outName as Ptr, fsSpec as Ptr, parentRef as Ptr) as Short
+		  
+		  Const kFSCatInfoNone = 0
+		  
+		  dim OSError as Integer = FSGetCatalogInfo(me, kFSCatInfoNone, Nil, Nil, Nil, Nil)
+		  Return (OSError = 0)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function Name() As String
+		  If Not System.IsFunctionAvailable("FSGetCatalogInfo", InterfaceLib) then
 		    Return ""
 		  End if
-		  Return Trim(DefineEncoding(pathBuffer.StringValue(0, pathBuffer.Size), Encodings.ASCII))
+		  Soft Declare Function FSGetCatalogInfo Lib InterfaceLib (ref as Ptr, whichInfo as Integer, catalogInfo as Ptr, outName as Ptr, fsSpec as Ptr, parentRef as Ptr) as Short
 		  
+		  Const kFSCatInfoNone = 0
 		  
-		  'OSStatus FSRefMakePath (
-		  'const FSRef * ref,
-		  'UInt8 * path,
-		  'UInt32 maxPathSize
-		  ');
+		  dim itemName as new HFSUniStr255
+		  dim OSErr as Integer = FSGetCatalogInfo(me, kFSCatInfoNone, Nil, itemName, Nil, Nil)
+		  If OSErr = 0 then
+		    Return itemName
+		  Else
+		    Return ""
+		  End if
 		End Function
 	#tag EndMethod
 
@@ -115,102 +188,6 @@ Inherits MemoryBlock
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(theFSSpec as FSSpec)
-		  If theFSSpec Is Nil then
-		    theFSSpec = new FSSpec
-		  End if
-		  
-		  Soft Declare Function FSpMakeFSRef Lib InterfaceLib (source as Ptr, newRef as Ptr) as Short
-		  
-		  me.Constructor()
-		  dim OSError as Integer = FSpMakeFSRef(theFSSpec, me)
-		  If OSError <> 0 then
-		    Raise new MacOSException("FSpMakeFSRef", OSError)
-		  End if
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function IsValid() As Boolean
-		  If Not System.IsFunctionAvailable("FSGetCatalogInfo", InterfaceLib) then
-		    Return false
-		  End if
-		  Soft Declare Function FSGetCatalogInfo Lib InterfaceLib (ref as Ptr, whichInfo as Integer, catalogInfo as Ptr, outName as Ptr, fsSpec as Ptr, parentRef as Ptr) as Short
-		  
-		  Const kFSCatInfoNone = 0
-		  
-		  dim OSError as Integer = FSGetCatalogInfo(me, kFSCatInfoNone, Nil, Nil, Nil, Nil)
-		  Return (OSError = 0)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Name() As String
-		  If Not System.IsFunctionAvailable("FSGetCatalogInfo", InterfaceLib) then
-		    Return ""
-		  End if
-		  Soft Declare Function FSGetCatalogInfo Lib InterfaceLib (ref as Ptr, whichInfo as Integer, catalogInfo as Ptr, outName as Ptr, fsSpec as Ptr, parentRef as Ptr) as Short
-		  
-		  Const kFSCatInfoNone = 0
-		  
-		  dim itemName as new HFSUniStr255
-		  dim OSErr as Integer = FSGetCatalogInfo(me, kFSCatInfoNone, Nil, itemName, Nil, Nil)
-		  If OSErr = 0 then
-		    Return itemName
-		  Else
-		    Return ""
-		  End if
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub AlternateConstructor(f as FolderItem)
-		  If f Is Nil then
-		    Raise new InvalidParameterException("FSRef.Constructor: f cannot be nil")
-		  End if
-		  If NOT f.Exists then
-		    Raise new InvalidParameterException("FSRef.Constructor: f must exist.")
-		  End if
-		  
-		  Soft Declare Function FSGetVolumeInfo Lib InterfaceLib (volume as Short, volumeIndex as Integer, actualVolume as Ptr, whichInfo as Integer, info as Ptr, volumeName as Ptr, rootDirectory as Ptr) as Short
-		  Soft Declare Function FSMakeFSRefUnicode Lib InterfaceLib (parentPtr as Ptr, nameLength as Integer, name as CString, enc as Integer, outRef as Ptr) as Short
-		  
-		  Const kTextEncodingUnknown = &hffff
-		  Const fsRtParID = 1
-		  Const kFSVolInfoNone = &h0000
-		  
-		  me.Constructor()
-		  If f.MacDirID = fsRtParID then //f is a volume, so get root directory directly
-		    dim OSError as Integer = FSGetVolumeInfo(f.MacVRefNum, 0, Nil, kFSVolInfoNone, Nil, Nil, me)
-		  Else
-		    dim parentRef as new FSRef(new FSSpec(f.Parent))
-		    dim fileName as String = ConvertEncoding(f.name, Encodings.UTF16)
-		    dim OSError as Integer = FSMakeFSRefUnicode(parentRef, Len(fileName), fileName, kTextEncodingUnknown, me)
-		    If OSError <> 0 then
-		      Raise new MacOSException("FSMakeFSRefUnicode", OSError)
-		    End if
-		  End if
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function Equals(theFSRef as FSRef) As Boolean
-		  If theFSRef Is Nil then
-		    Return false
-		  End if
-		  
-		  If Not System.IsFunctionAvailable("FSCompareFSRefs", InterfaceLib) then
-		    Return false
-		  End if
-		  Soft Declare Function FSCompareFSRefs Lib InterfaceLib (ref1 as Ptr, ref2 as Ptr) as Short
-		  
-		  dim OSError as Integer = FSCompareFSRefs(me, theFSRef)
-		  Return (OSError <> 0)
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function Parent() As FSRef
 		  If Not System.IsFunctionAvailable("FSGetCatalogInfo", InterfaceLib) then
 		    Return nil
@@ -229,11 +206,34 @@ Inherits MemoryBlock
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function Path() As String
+		  If Not System.IsFunctionAvailable("FSRefMakePath", InterfaceLib) then
+		    Return ""
+		  End if
+		  Soft Declare Function FSRefMakePath Lib InterfaceLib (ref as Ptr, path as Ptr, maxPathSize as Integer) as Integer
+		  
+		  dim pathBuffer as MemoryBlock = new MemoryBlock(256)
+		  dim OSError as Integer = FSRefMakePath(me, pathBuffer, pathBuffer.Size)
+		    If OSError <> 0 then
+		    Return ""
+		    End if
+		  Return Trim(DefineEncoding(pathBuffer.StringValue(0, pathBuffer.Size), Encodings.ASCII))
+		  
+		  
+		  'OSStatus FSRefMakePath (
+		  'const FSRef * ref,
+		  'UInt8 * path,
+		  'UInt32 maxPathSize
+		  ');
+		End Function
+	#tag EndMethod
+
 
 	#tag Constant, Name = InterfaceLib, Type = String, Dynamic = False, Default = \"", Scope = Private
 		#Tag Instance, Platform = Mac Classic, Language = Default, Definition  = \"InterfaceLib"
 		#Tag Instance, Platform = Mac Carbon PEF, Language = Default, Definition  = \"CarbonLib"
-		#Tag Instance, Platform = Mac Mach-O, Language = Default, Definition  = \"/System/Library/Frameworks/Carbon.framework/Carbon"
+		#Tag Instance, Platform = Any, Language = Default, Definition  = \"/System/Library/Frameworks/Carbon.framework/Carbon"
 	#tag EndConstant
 
 	#tag Constant, Name = sizeofFSRef, Type = Double, Dynamic = False, Default = \"80", Scope = Public
@@ -242,12 +242,6 @@ Inherits MemoryBlock
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -255,20 +249,7 @@ Inherits MemoryBlock
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
 			Visible=true
 			Group="Position"
 			InitialValue="0"
@@ -282,11 +263,30 @@ Inherits MemoryBlock
 			InheritedFrom="MemoryBlock"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Size"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
 			InheritedFrom="MemoryBlock"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

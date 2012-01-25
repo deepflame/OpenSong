@@ -18,12 +18,12 @@ Begin Window PresentHelperWindow
    MenuBarVisible  =   True
    MinHeight       =   480
    MinimizeButton  =   True
-   MinWidth        =   640
+   MinWidth        =   530
    Placement       =   0
    Resizeable      =   True
    Title           =   "Presentation Helper"
    Visible         =   True
-   Width           =   675
+   Width           =   800
    Begin ListBox lst_all_slides
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
@@ -42,7 +42,7 @@ Begin Window PresentHelperWindow
       GridLinesVertical=   0
       HasHeading      =   True
       HeadingIndex    =   -1
-      Height          =   200
+      Height          =   195
       HelpTag         =   ""
       Hierarchical    =   False
       Index           =   -2147483648
@@ -70,7 +70,7 @@ Begin Window PresentHelperWindow
       Underline       =   False
       UseFocusRing    =   False
       Visible         =   True
-      Width           =   460
+      Width           =   617
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
    End
@@ -84,7 +84,7 @@ Begin Window PresentHelperWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   514
+      Left            =   639
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
@@ -114,12 +114,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   0
@@ -144,12 +144,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   1
@@ -174,12 +174,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   2
@@ -204,12 +204,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   3
@@ -234,12 +234,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   4
@@ -264,12 +264,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_modes"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   5
@@ -286,7 +286,7 @@ Begin Window PresentHelperWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      DoubleBuffer    =   False
+      DoubleBuffer    =   True
       Enabled         =   True
       EraseBackground =   True
       Height          =   249
@@ -306,20 +306,20 @@ Begin Window PresentHelperWindow
       Top             =   224
       UseFocusRing    =   True
       Visible         =   True
-      Width           =   346
+      Width           =   332
    End
-   Begin StaticText txt_shortcut_keys
+   Begin Label txt_shortcut_keys
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   138
+      Height          =   142
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   373
+      Left            =   526
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
@@ -335,10 +335,10 @@ Begin Window PresentHelperWindow
       TextFont        =   "Arial"
       TextSize        =   9
       TextUnit        =   0
-      Top             =   215
+      Top             =   212
       Underline       =   False
       Visible         =   True
-      Width           =   135
+      Width           =   101
    End
    Begin GroupBox grp_presentation_actions
       AutoDeactivate  =   True
@@ -350,7 +350,7 @@ Begin Window PresentHelperWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   514
+      Left            =   639
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   False
@@ -380,12 +380,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   0
@@ -410,12 +410,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   1
@@ -440,12 +440,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   2
@@ -470,12 +470,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   3
@@ -500,12 +500,12 @@ Begin Window PresentHelperWindow
          Index           =   -2147483648
          InitialParent   =   "grp_presentation_actions"
          LabelAlign      =   0
-         Left            =   524
+         Left            =   649
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   False
          LockRight       =   True
-         LockTop         =   False
+         LockTop         =   True
          Scope           =   0
          StickyBevel     =   False
          TabIndex        =   4
@@ -528,13 +528,13 @@ Begin Window PresentHelperWindow
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   116
+      Height          =   115
       HelpTag         =   ""
       HideSelection   =   True
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   368
+      Left            =   354
       LimitText       =   0
       LockBottom      =   True
       LockedInPosition=   False
@@ -560,7 +560,108 @@ Begin Window PresentHelperWindow
       Underline       =   False
       UseFocusRing    =   False
       Visible         =   True
-      Width           =   300
+      Width           =   435
+   End
+   Begin Canvas cnv_preview_next
+      AcceptFocus     =   ""
+      AcceptTabs      =   ""
+      AutoDeactivate  =   True
+      Backdrop        =   ""
+      DoubleBuffer    =   True
+      Enabled         =   True
+      EraseBackground =   True
+      Height          =   120
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   354
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   False
+      Scope           =   0
+      TabIndex        =   6
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   224
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   160
+   End
+   Begin Label lbl_preview
+      Active          =   ""
+      AutoDeactivate  =   True
+      Bold            =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   10
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   False
+      Multiline       =   ""
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   7
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "Current slide preview"
+      TextAlign       =   0
+      TextColor       =   &h000000
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   204
+      Transparent     =   False
+      Underline       =   ""
+      Visible         =   True
+      Width           =   332
+      Window          =   0
+      _mWindow        =   0
+   End
+   Begin Label lbl_preview_next
+      Active          =   ""
+      AutoDeactivate  =   True
+      Bold            =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   ""
+      Left            =   354
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   ""
+      LockTop         =   False
+      Multiline       =   ""
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   8
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "Next slide preview"
+      TextAlign       =   0
+      TextColor       =   &h000000
+      TextFont        =   "System"
+      TextSize        =   0
+      Top             =   204
+      Transparent     =   False
+      Underline       =   ""
+      Visible         =   True
+      Width           =   160
+      Window          =   0
+      _mWindow        =   0
    End
 End
 #tag EndWindow
@@ -603,8 +704,41 @@ End
 
 	#tag Event
 		Sub Open()
+		  Dim marginLeft As Integer
+		  
 		  App.T.TranslateWindow Me, "presentation_helper", App.TranslationFonts
 		  txt_shortcut_keys.Caption = App.T.Translate("presentation_helper/keys")
+		  
+		  Dim screenWidth As Double = OSScreen(PresentWindow.PresentScreen).Width
+		  Dim screenHeight As Double =  OSScreen(PresentWindow.PresentScreen).Height
+		  m_screenRatio = screenWidth / screenHeight
+		  
+		  '++JRC 
+		  If UBound(BibleFactory.BibleList) < 0 Then
+		    btn_action_scripture.Enabled = False
+		  Else
+		    btn_action_scripture.Enabled = True
+		  End If
+		  '
+		  
+		  If SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "monitors/@force_4_3_preview", False, False) Then
+		    If m_screenRatio > 1.0 Then
+		      m_screenRatio = 4.0/3.0
+		    Else
+		      m_screenRatio = 3.0/4.0
+		    End If
+		  End If
+		  
+		  cnv_preview.Width = cnv_preview.Height * m_screenRatio
+		  marginLeft = cnv_preview.Left + cnv_preview.Width + 10
+		  Me.MinWidth = marginLeft + grp_presentation_actions.Width + 10
+		  
+		  cnv_preview_next.Left = marginLeft
+		  lbl_preview_next.Left = marginLeft
+		  txt_shortcut_keys.Left = marginLeft + lbl_preview_next.Width + 10
+		  edt_slide_notes.Left =marginLeft
+		  
+		  ResizePreview()
 		End Sub
 	#tag EndEvent
 
@@ -612,8 +746,15 @@ End
 		Sub Resized()
 		  '++JRC: Recalc whenever window is resized
 		  RecalcLstAllSlidesColumnWidths
+		  ResizePreview()
 		  Refresh
 		  '--
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resizing()
+		  ResizePreview()
 		End Sub
 	#tag EndEvent
 
@@ -626,7 +767,7 @@ End
 
 
 	#tag Method, Flags = &h0
-		Sub InsertItem(slide As XmlNode, index As Integer)
+		Sub InsertItem(slide As XmlNode, index As Integer, forceSeparator As Boolean = False)
 		  Dim NamesEqual As Boolean = True
 		  Dim TagsEqual As Boolean = True //++EMP 15 Jan 06
 		  
@@ -659,7 +800,8 @@ End
 		  End If
 		  //--
 		  If index = 0 Or _
-		    (index > 0 And Not (TagsEqual And NamesEqual)) Then
+		    (index > 0 And Not (TagsEqual And NamesEqual)) Or _
+		    forceSeparator Then
 		    lst_all_slides.CellBorderTop(index, 0) = 4
 		    lst_all_slides.CellBorderTop(index, 1) = 4
 		    lst_all_slides.CellBorderTop(index, 2) = 4
@@ -706,6 +848,66 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Sub ResizePreview()
+		  Dim marginLeft As Integer = cnv_preview.Left + cnv_preview.Width + 10
+		  Dim marginRight As Integer = grp_presentation_actions.Width + 10
+		  Dim prvLargeHeight As Integer = cnv_preview.Height
+		  Dim prvSmallHeight As Integer = 120
+		  
+		  Dim prvLargeWidth As Integer = prvLargeHeight * m_screenRatio
+		  Dim prvSmallWidth As Integer = prvSmallHeight * m_screenRatio
+		  
+		  If Me.Width > (marginLeft + prvLargeWidth + 10 + marginRight) Then
+		    
+		    cnv_preview_next.Visible = True
+		    lbl_preview_next.Visible = True
+		    
+		    If Me.Width < (marginLeft + prvLargeWidth + 10 + marginRight + 100) Then
+		      txt_shortcut_keys.Visible = False
+		    Else
+		      txt_shortcut_keys.Visible = True
+		    End If
+		    
+		    If cnv_preview_next.Width <> prvLargeWidth Then
+		      cnv_preview_next.Width = prvLargeWidth
+		      cnv_preview_next.Height = prvLargeHeight
+		      txt_shortcut_keys.Left = marginLeft + prvLargeWidth + 10
+		      edt_slide_notes.Left = marginLeft + prvLargeWidth + 10
+		      edt_slide_notes.Width = Me.Width - edt_slide_notes.Left - 10
+		    End If
+		    
+		  Else
+		    
+		    If Me.Width >= (marginLeft + prvSmallWidth + 10 + marginRight) And Me.Width < (marginLeft + prvSmallWidth + 10 + marginRight + 100) Then
+		      
+		      txt_shortcut_keys.Visible = False
+		      cnv_preview_next.Visible = True
+		      lbl_preview_next.Visible = True
+		      
+		    ElseIf Me.Width < (marginLeft + prvSmallWidth + 10 + marginRight) Then
+		      
+		      txt_shortcut_keys.Visible = False
+		      cnv_preview_next.Visible = False
+		      lbl_preview_next.Visible = False
+		    Else
+		      cnv_preview_next.Visible = True
+		      lbl_preview_next.Visible = True
+		      txt_shortcut_keys.Visible = True
+		    End If
+		    
+		    If cnv_preview_next.Width <> prvSmallWidth Then
+		      cnv_preview_next.Width = prvSmallWidth
+		      cnv_preview_next.Height =prvSmallHeight
+		      txt_shortcut_keys.Left = marginLeft + prvSmallWidth + 10
+		      edt_slide_notes.Left =marginLeft
+		      edt_slide_notes.Width = Me.Width - edt_slide_notes.Left - 10
+		    End If
+		    
+		  End If
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Sub SavePos()
 		  SavedTop = Self.Top
@@ -730,7 +932,7 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Sub SetMaxClientArea()
-		  Dim ControlScreen As Integer
+		  Dim controlScreen As Integer
 		  Dim de As XmlElement
 		  
 		  // having issues with Available... so for the time being use the version that makes estimates
@@ -741,12 +943,13 @@ End
 		  Return
 		  
 		  de = App.MyPresentSettings.DocumentElement
-		  ControlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
-		  If ControlScreen > ScreenCount Then ControlScreen = 0
-		  Self.Top = Screen(ControlScreen).AvailableTop
-		  Self.Left = Screen(ControlScreen).AvailableLeft
-		  Self.Height = Screen(ControlScreen).AvailableHeight
-		  Self.Width = Screen(ControlScreen).AvailableWidth
+		  controlScreen = SmartML.GetValueN(de, "monitors/@control") - 1
+		  If controlScreen > OSScreenCount() Then controlScreen = 0
+		  
+		  Self.Top =  OSScreen(controlScreen).AvailableTop
+		  Self.Left =  OSScreen(controlScreen).AvailableLeft
+		  Self.Height =  OSScreen(controlScreen).AvailableHeight
+		  Self.Width =  OSScreen(controlScreen).AvailableWidth
 		End Sub
 	#tag EndMethod
 
@@ -791,6 +994,7 @@ End
 		  If refresh Then PresentWindow.ResetPaint PresentWindow.XCurrentSlide
 		  
 		  cnv_preview.Refresh False
+		  cnv_preview_next.Refresh False
 		  
 		End Sub
 	#tag EndMethod
@@ -859,6 +1063,10 @@ End
 		Protected IsMaximized As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private m_screenRatio As Double
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected SavedHeight As Integer
 	#tag EndProperty
@@ -894,6 +1102,7 @@ End
 		    
 		    Me.Refresh False
 		    cnv_preview.Refresh False
+		    cnv_preview_next.Refresh False
 		  End If
 		  
 		End Sub
@@ -913,6 +1122,48 @@ End
 		Function SortColumn(column As Integer) As Boolean
 		  Me.setFocus 'EMP: If we don't do this, focus stays on the header and keystrokes won't go to the command handler
 		  Return True
+		End Function
+	#tag EndEvent
+	#tag Event
+		Function CellBackgroundPaint(g As Graphics, row As Integer, column As Integer) As Boolean
+		  // Based on a contribution by fmate14
+		  // User contributed from https://sourceforge.net/projects/opensong/forums/forum/373378/topic/1679116?message=4171729
+		  
+		  If App.SlideStyleColorEnabled() Then
+		    g.ForeColor=rgb(255,255,255)
+		    
+		    If row <me.listCount() Then
+		      g.ForeColor=App.SlideStyleColor("blank") // Default for inserted blanks
+		      
+		      Select Case me.CellTag(row,0)
+		      Case "song"
+		        Select Case me.Cell(row,1).Left(1)
+		        Case "V" // Verse
+		          g.ForeColor = App.SlideStyleColor("verse")
+		        Case "B" // Bridge
+		          g.ForeColor = App.SlideStyleColor("bridge")
+		        Case "P" // Pre-Chorus
+		          g.ForeColor = App.SlideStyleColor("pre-chorus")
+		        Case "C" // Chorus
+		          g.ForeColor = App.SlideStyleColor("chorus")
+		        Case "T" // Tag
+		          g.ForeColor = App.SlideStyleColor("tag")
+		        End Select
+		      Case "custom"
+		        g.ForeColor = App.SlideStyleColor("custom")
+		      Case "scripture"
+		        g.ForeColor = App.SlideStyleColor("scripture")
+		      Case "style"
+		        g.ForeColor = App.SlideStyleColor("style")
+		      Case "image"
+		        g.ForeColor = App.SlideStyleColor("image")
+		      Case "external"
+		        g.ForeColor = App.SlideStyleColor("external")
+		      End Select
+		    End If
+		    
+		    g.fillRect(0,0,g.width, g.height)
+		  End If
 		End Function
 	#tag EndEvent
 #tag EndEvents
@@ -1003,6 +1254,7 @@ End
 	#tag Event
 		Sub Paint(g As Graphics)
 		  If Not Globals.Status_Presentation Then Return
+		  If IsNull(PresentWindow.XCurrentSlide) Then Return
 		  edt_slide_notes.Text = SmartML.GetValue(PresentWindow.XCurrentSlide.Parent.Parent, "notes", True)
 		  If edt_slide_notes.Text = "" Then
 		    // Load the text of the slide into the notes field for easy reference.
@@ -1158,6 +1410,43 @@ End
 		Sub GotFocus()
 		  lst_all_slides.setFocus 'EMP: Don't allow this control to get focus
 		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events cnv_preview_next
+	#tag Event
+		Sub GotFocus()
+		  lst_all_slides.SetFocus
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Paint(g As Graphics)
+		  Dim nextSlide As XmlNode
+		  
+		  If Not Globals.Status_Presentation Then Return
+		  If Not Me.Visible Then Return
+		  If IsNull(PresentWindow.XCurrentSlide) Then Return
+		  
+		  nextSlide = SetML.GetNextSlide(PresentWindow.XCurrentSlide)
+		  If IsNull(nextSlide) Then
+		    g.ForeColor = RGB(200,200,200)
+		    g.FillRect 0, 0, g.Width, g.Height
+		  Else
+		    // Catch a race condition between this Paint event and PresentWindow still initializing
+		    Try
+		      SetML.DrawSlide g, nextSlide, SetML.GetStyle(nextSlide)
+		    Catch e As NilObjectException
+		      // Just make it black for the moment
+		      g.ForeColor = RGB(0,0,0)
+		      g.FillRect 0, 0, g.Width, g.Height
+		      Return
+		    End Try
+		  End If
+		  
+		  g.ForeColor = DarkBevelColor
+		  g.PenHeight = 1
+		  g.PenWidth = 1
+		  g.DrawRect 0, 0, g.Width, g.Height
 		End Sub
 	#tag EndEvent
 #tag EndEvents

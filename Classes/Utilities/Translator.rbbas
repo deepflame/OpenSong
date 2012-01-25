@@ -242,13 +242,12 @@ Protected Class Translator
 		  
 		  Dim i, j As Integer
 		  Dim cont As Control
-		  Dim parent As RectControl
-		  Dim name, parentName, old As String
+		  Dim name, old As String
 		  Dim temp As String
 		  Dim controlUsage As String
 		  Dim parts() As String
 		  
-		  Dim staticCont As StaticText
+		  Dim staticCont As Label 'Was StaticText before rb2010r4
 		  Dim groupCont As GroupBox
 		  Dim buttonCont As PushButton
 		  Dim checkCont As CheckBox
@@ -261,6 +260,10 @@ Protected Class Translator
 		  Dim popCont As PopupMenu
 		  Dim sldCont As Slider 'EMP 09/05
 		  
+		  '++JRC Prevent OutOfBoundsException
+		  If UBound(fonts) < 6 Then doFonts = False
+		  '--
+		  
 		  tag = tag + "/"
 		  App.DebugWriter.Write "Translator.TranslateWindow: Begin translating window " + win.Title + " with tag " + tag, 4
 		  
@@ -270,8 +273,8 @@ Protected Class Translator
 		    name = ParseControlName(cont)
 		    controlUsage = name.Left(3)
 		    
-		    If cont IsA StaticText Then
-		      staticCont = StaticText(cont)
+		    If cont IsA Label Then
+		      staticCont = Label(cont)
 		      If doCaptions Then
 		        name = ParseHierarchicalName(tag, staticCont) + kAttributeCaption
 		        temp = Translate(name)

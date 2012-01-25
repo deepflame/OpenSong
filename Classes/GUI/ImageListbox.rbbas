@@ -2,20 +2,6 @@
 Protected Class ImageListbox
 Inherits Listbox
 	#tag Event
-		Sub DropObject(obj As DragItem, action As Integer)
-		  Dim r, c As Integer
-		  
-		  DropRowObject( obj, action, Me.currentDropRow )
-		  
-		  For r = 0 to ListCount()-1
-		    For c = 0 to ColumnCount()-1
-		      CellBorderTop( r, c ) = ListBox.BorderDefault
-		    Next
-		  Next
-		End Sub
-	#tag EndEvent
-
-	#tag Event
 		Function CellBackgroundPaint(g As Graphics, row As Integer, column As Integer) As Boolean
 		  Dim result As Boolean
 		  Dim img As StyleImage
@@ -124,6 +110,20 @@ Inherits Listbox
 	#tag EndEvent
 
 	#tag Event
+		Sub DropObject(obj As DragItem, action As Integer)
+		  Dim r, c As Integer
+		  
+		  DropRowObject( obj, action, Me.currentDropRow )
+		  
+		  For r = 0 to ListCount()-1
+		    For c = 0 to ColumnCount()-1
+		      CellBorderTop( r, c ) = ListBox.BorderDefault
+		    Next
+		  Next
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub GotFocus()
 		  isFocused = True
 		  GetFocus()
@@ -143,6 +143,25 @@ Inherits Listbox
 		  AddRow( "" )
 		  CellTag( LastIndex(), 0 ) = image
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetImage(row As Integer) As StyleImage
+		  Dim result As StyleImage
+		  result = Nil
+		  
+		  If row > -1 And row < Me.ListCount() Then
+		    result = CellTag( row, 0 )
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function HasFocus() As Boolean
+		  Return self.isFocused
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -177,25 +196,6 @@ Inherits Listbox
 		  End If
 		  
 		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function GetImage(row As Integer) As StyleImage
-		  Dim result As StyleImage
-		  result = Nil
-		  
-		  If row > -1 And row < Me.ListCount() Then
-		    result = CellTag( row, 0 )
-		  End If
-		  
-		  Return result
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function HasFocus() As Boolean
-		  Return self.isFocused
 		End Function
 	#tag EndMethod
 
@@ -236,131 +236,6 @@ Inherits Listbox
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="TabIndex"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			Type="Integer"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="TabStop"
-			Visible=true
-			Group="Position"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Border"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			Type="String"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			Type="Integer"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			Type="Integer"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Width"
-			Visible=true
-			Group="Position"
-			InitialValue="100"
-			Type="Integer"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Height"
-			Visible=true
-			Group="Position"
-			InitialValue="100"
-			Type="Integer"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockLeft"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockTop"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockRight"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="LockBottom"
-			Visible=true
-			Group="Position"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="TabPanelIndex"
-			Group="Position"
-			InitialValue="0"
-			Type="Integer"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Visible"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="HelpTag"
-			Visible=true
-			Group="Appearance"
-			Type="String"
-			EditorType="MultiLineEditor"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="AutoDeactivate"
 			Visible=true
 			Group="Appearance"
@@ -369,7 +244,22 @@ Inherits Listbox
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Enabled"
+			Name="AutoHideScrollbars"
+			Visible=true
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Bold"
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Border"
 			Visible=true
 			Group="Appearance"
 			InitialValue="True"
@@ -385,6 +275,13 @@ Inherits Listbox
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ColumnsResizable"
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="ColumnWidths"
 			Visible=true
 			Group="Appearance"
@@ -393,30 +290,23 @@ Inherits Listbox
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="HasHeading"
+			Name="DataField"
 			Visible=true
-			Group="Appearance"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="UseFocusRing"
-			Visible=true
-			Group="Appearance"
-			InitialValue="True"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="InitialValue"
-			Visible=true
-			Group="Appearance"
+			Group="Database Binding"
 			Type="String"
-			EditorType="MultiLineEditor"
+			EditorType="DataField"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="HeadingIndex"
+			Name="DataSource"
+			Visible=true
+			Group="Database Binding"
+			Type="String"
+			EditorType="DataSource"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="DefaultRowHeight"
 			Visible=true
 			Group="Appearance"
 			InitialValue="-1"
@@ -424,17 +314,24 @@ Inherits Listbox
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ScrollbarHorizontal"
+			Name="Enabled"
 			Visible=true
 			Group="Appearance"
+			InitialValue="True"
 			Type="Boolean"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ScrollBarVertical"
+			Name="EnableDrag"
 			Visible=true
-			Group="Appearance"
-			InitialValue="True"
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="EnableDragReorder"
+			Visible=true
+			Group="Behavior"
 			Type="Boolean"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
@@ -457,7 +354,14 @@ Inherits Listbox
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="DefaultRowHeight"
+			Name="HasHeading"
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="HeadingIndex"
 			Visible=true
 			Group="Appearance"
 			InitialValue="-1"
@@ -465,19 +369,154 @@ Inherits Listbox
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="_ScrollWidth"
+			Name="Height"
 			Visible=true
-			Group="Appearance"
-			InitialValue="-1"
+			Group="Position"
+			InitialValue="100"
 			Type="Integer"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="_ScrollOffset"
+			Name="HelpTag"
 			Visible=true
 			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Hierarchical"
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="InitialParent"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="InitialValue"
+			Visible=true
+			Group="Appearance"
+			Type="String"
+			EditorType="MultiLineEditor"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Italic"
+			Visible=true
+			Group="Font"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockBottom"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockLeft"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockRight"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="LockTop"
+			Visible=true
+			Group="Position"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			Type="String"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="RequiresSelection"
+			Visible=true
+			Group="Behavior"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ScrollbarHorizontal"
+			Visible=true
+			Group="Appearance"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ScrollBarVertical"
+			Visible=true
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="SelectionType"
+			Visible=true
+			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+			EditorType="Enum"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabIndex"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabPanelIndex"
+			Group="Position"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabStop"
+			Visible=true
+			Group="Position"
+			InitialValue="True"
+			Type="Boolean"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -497,17 +536,26 @@ Inherits Listbox
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Bold"
+			Name="TextUnit"
 			Visible=true
 			Group="Font"
-			Type="Boolean"
+			InitialValue="0"
+			Type="FontUnits"
+			EditorType="Enum"
 			InheritedFrom="Listbox"
+			#tag EnumValues
+				"0 - Default"
+				"1 - Pixel"
+				"2 - Point"
+				"3 - Inch"
+				"4 - Millimeter"
+			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Italic"
+			Name="Top"
 			Visible=true
-			Group="Font"
-			Type="Boolean"
+			Group="Position"
+			Type="Integer"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -518,75 +566,43 @@ Inherits Listbox
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Hierarchical"
+			Name="UseFocusRing"
 			Visible=true
-			Group="Behavior"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="EnableDrag"
-			Visible=true
-			Group="Behavior"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="EnableDragReorder"
-			Visible=true
-			Group="Behavior"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="RequiresSelection"
-			Visible=true
-			Group="Behavior"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="SelectionType"
-			Visible=true
-			Group="Behavior"
-			InitialValue="0"
-			Type="Integer"
-			EditorType="Enum"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ColumnsResizable"
-			Visible=true
-			Group="Behavior"
-			Type="Boolean"
-			InheritedFrom="Listbox"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="AutoHideScrollbars"
-			Visible=true
-			Group="Behavior"
+			Group="Appearance"
 			InitialValue="True"
 			Type="Boolean"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="DataSource"
+			Name="Visible"
 			Visible=true
-			Group="Database Binding"
-			Type="String"
-			EditorType="DataSource"
+			Group="Appearance"
+			InitialValue="True"
+			Type="Boolean"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="DataField"
+			Name="Width"
 			Visible=true
-			Group="Database Binding"
-			Type="String"
-			EditorType="DataField"
+			Group="Position"
+			InitialValue="100"
+			Type="Integer"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="InitialParent"
+			Name="_ScrollOffset"
+			Visible=true
+			Group="Appearance"
+			InitialValue="0"
+			Type="Integer"
+			InheritedFrom="Listbox"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="_ScrollWidth"
+			Visible=true
+			Group="Appearance"
+			InitialValue="-1"
+			Type="Integer"
 			InheritedFrom="Listbox"
 		#tag EndViewProperty
 	#tag EndViewBehavior

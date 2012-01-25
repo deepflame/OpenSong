@@ -1,10 +1,29 @@
 #tag Class
 Protected Class StyleImage
 	#tag Method, Flags = &h0
-		Sub SetImage(img As Picture)
-		  Me.oImage = img
+		Sub Clear()
+		  Me.oImage = Nil
 		  Me.sFilename = ""
 		  Me.sBase64 = ""
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor()
+		  Clear
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor(img As StyleImage)
+		  If img<> Nil Then
+		    Me.oImage = img.GetImage()
+		    Me.sBase64 = img.GetImageAsString(False)
+		    Me.sFilename = img.GetImageFilename()
+		  Else
+		    Clear()
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -15,8 +34,31 @@ Protected Class StyleImage
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetImageAsString(generateIfMissing As Boolean = True) As String
+		  If Me.sBase64 = "" And Me.oImage <> Nil And generateIfMissing Then
+		    Me.sBase64 = App.GetImageAsString(Me.oImage)
+		  End If
+		  
+		  Return Me.sBase64
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetImageFilename() As String
+		  Return Me.sFilename
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetImage(img As Picture)
+		  Me.oImage = img
+		  Me.sFilename = ""
+		  Me.sBase64 = ""
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function SetImageAsString(Base64 as String) As Boolean
-		  Dim r As New Random
 		  Dim f As FolderItem
 		  Dim outputStream As BinaryStream
 		  Dim bSuccess As Boolean
@@ -28,9 +70,9 @@ Protected Class StyleImage
 		  Else
 		    If Base64 <> Me.sBase64 Then
 		      
-		      f = SpecialFolder.Temporary.Child(Str(r.InRange(100000, 999999)))
+		      f = GetTemporaryFolderItem ()
 		      If f <> Nil Then
-		        outputStream = f.CreateBinaryFile("")
+		        outputStream = BinaryStream.Create(f, True)
 		        outputStream.Write DecodeBase64(Base64)
 		        outputStream.Close
 		        Me.oImage = f.OpenAsPicture()
@@ -62,16 +104,6 @@ Protected Class StyleImage
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetImageAsString(generateIfMissing As Boolean = True) As String
-		  If Me.sBase64 = "" And Me.oImage <> Nil And generateIfMissing Then
-		    Me.sBase64 = App.GetImageAsString(Me.oImage)
-		  End If
-		  
-		  Return Me.sBase64
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function SetImageFromFile(File As FolderItem) As Boolean
 		  Dim inputStream As BinaryStream
 		  Dim bSuccess As Boolean
@@ -80,7 +112,7 @@ Protected Class StyleImage
 		  If File<>Nil And File.Exists() Then
 		    If File.AbsolutePath() <> Me.sFilename Then
 		      
-		      inputStream = File.OpenAsBinaryFile(False)
+		      inputStream = BinaryStream.Open(File, False)
 		      If inputStream <> Nil Then
 		        Me.oImage = File.OpenAsPicture()
 		        
@@ -118,27 +150,6 @@ Protected Class StyleImage
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetImageFilename() As String
-		  Return Me.sFilename
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Clear()
-		  Me.oImage = Nil
-		  Me.sFilename = ""
-		  Me.sBase64 = ""
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub Constructor()
-		  Clear
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function SetImageFromFileName(Filename As String) As Boolean
 		  Dim result As Boolean = False
 		  Dim f as FolderItem
@@ -156,25 +167,13 @@ Protected Class StyleImage
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Sub Constructor(img As StyleImage)
-		  If img<> Nil Then
-		    Me.oImage = img.GetImage()
-		    Me.sBase64 = img.GetImageAsString(False)
-		    Me.sFilename = img.GetImageFilename()
-		  Else
-		    Clear()
-		  End If
-		End Sub
-	#tag EndMethod
-
-
-	#tag Property, Flags = &h1
-		Protected sBase64 As String
-	#tag EndProperty
 
 	#tag Property, Flags = &h1
 		Protected oImage As Picture
+	#tag EndProperty
+
+	#tag Property, Flags = &h1
+		Protected sBase64 As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -184,12 +183,6 @@ Protected Class StyleImage
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Index"
 			Visible=true
 			Group="ID"
@@ -197,16 +190,22 @@ Protected Class StyleImage
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Super"
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
 			Visible=true
 			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Left"
+			Name="Super"
 			Visible=true
-			Group="Position"
-			InitialValue="0"
+			Group="ID"
 			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty

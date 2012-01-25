@@ -1,11 +1,53 @@
+-= Version 2.0 Beta 2 =-
+videolan_preset_list (modified parameters)
+module/generate_index (modified)
+errors/no_scripture_folder (modified)
+errors/load_bible
+bible/load_successful
+progress_status/detect_presentation_hosts
+errors/fileutils/temporaryfailed
+general_settings/user_defined (modified)
+external_slide/videolan_settings/embed_mediafile
+general_settings/applications/minmax_animation
+general_settings/applications/animations
+
+-= Version 2.0 Beta 1 =-
+presentation_helper/keys (modified)
+general_settings/slidetype_coloring/*
+general_settings/general (modified)
+load_settings/videolan_preset
+sets_mode/new_item/add_external
+slide_editor/slides (modified)
 progress_status/load_songs
 progress_status/load_externals
 errors/presentations
 general_settings/applications
-general_settings/general (Modified)
+general_settings/general (modified)
 questions/import_presentation
 image_slide/imp_image
 external_slide/*
+videolan_preset_list/*
+
+-= Version 1.7 =-
+presentation_settings/settings (modified, added child nodes)
+presentation_settings/errors/snapshot_file
+print_settings/layout/highlight_chorus
+presentation_settings/monitor/force_4_3_preview
+presentation_helper/preview
+presentation_helper/next
+
+-= Version 1.6.2 =-
+progress_status/song_search
+sets_mode/errors/insert
+
+-= Version 1.6 =-
+style_editor/fonts_and_alignment/body_autosize
+style_editor/fonts_and_alignment/title (modified)
+style_editor/fonts_and_alignment/subtitle (modified)
+style_editor/fonts_and_alignment/body (modified)
+main_menu/file/scripture
+scripture_lookup/bad_reference/ambiguous (modified)
+about/translating (modified)
 about/web (modified)
 main_menu/help/user_manual
 sets_mode/current_item/presentitem/*
@@ -260,7 +302,7 @@ general_settings/general/startmode/song -> general_settings/startmode/songs
 general_settings/general/startmode/set -> general_settings/startmode/sets
 general_settings/newpaint -> general_settings/fonts/newpaint
 style_editor/fonts_and_alignment/descriptive_subtitle_info ->
-    style_editor/fonts_and_alignment/descriptive_subtitle
+style_editor/fonts_and_alignment/descriptive_subtitle
 help_topics/format (Modified)
 general_settings/logging (Modified)
 song_lookup/songs

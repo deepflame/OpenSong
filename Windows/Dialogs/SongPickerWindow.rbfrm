@@ -46,6 +46,7 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. You can also double-click on the song name to add it."
       TextAlign       =   0
       TextColor       =   0
@@ -80,6 +81,7 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Select Folder:"
       TextAlign       =   0
       TextColor       =   0
@@ -145,6 +147,7 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Quick Lookup:"
       TextAlign       =   0
       TextColor       =   0
@@ -313,6 +316,7 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Preview:"
       TextAlign       =   0
       TextColor       =   0
@@ -392,6 +396,7 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Custom Presentation Order:"
       TextAlign       =   0
       TextColor       =   0
@@ -468,6 +473,7 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Original Presentation Order:"
       TextAlign       =   0
       TextColor       =   0
@@ -585,6 +591,7 @@ Begin Window SongPickerWindow
       Width           =   69
    End
    Begin Timer timerLookup
+      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -593,8 +600,11 @@ Begin Window SongPickerWindow
       Mode            =   2
       Period          =   1500
       Scope           =   0
+      TabIndex        =   15
       TabPanelIndex   =   0
+      TabStop         =   True
       Top             =   0
+      Visible         =   True
       Width           =   32
    End
    Begin CanvasSmartSplitterDebugger CanvasSmartSplitterDebugger1
@@ -661,7 +671,9 @@ End
 		      End If
 		    Next
 		  End If
-		  
+		  '++JRC
+		  SongFolderSel = pop_select_folder.ListIndex
+		  '--
 		  App.T.TranslateWindow Me, "song_lookup", App.TranslationFonts
 		  App.CenterInControlScreen Me
 		  lst_all_songs.ListIndex = 0
@@ -748,6 +760,10 @@ End
 		Protected PresentationOrder As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected SongFolderSel As Integer
+	#tag EndProperty
+
 
 	#tag Constant, Name = kListColumnPath, Type = Double, Dynamic = False, Default = \"1", Scope = Public
 	#tag EndConstant
@@ -769,6 +785,52 @@ End
 		  //--
 		  Dim multipleFolders As Boolean = False
 		  Dim lastFolder As String
+		  '++JRC
+		  Dim f As FolderItem
+		  
+		  f = FileUtils.RelativePathToFolderItem(App.DocsFolder.Child(App.STR_SONGS), Me.Text)
+		  
+		  If f = Nil Or NOT f.Exists Then
+		    If Me.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_all/@caption") + " )" Or Me.Text = "( " + App.T.Translate("songs_mode/song_folders/filter_main/@caption") + " )" Then
+		      'Check if we have a songs folder if not offer to create one
+		      If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		        If InputBox.AskYN(App.T.Translate("questions/no_songs_folder/@caption")) Then
+		          If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SONGS)) Then
+		            InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
+		            Globals.Status_SongsFolderUpdating = True
+		            Me.ListIndex = SongFolderSel
+		          End If
+		        Else
+		          InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
+		          Globals.Status_SongsFolderUpdating = True
+		          Me.ListIndex = SongFolderSel
+		        End If
+		      End If
+		      '--
+		      
+		    Else
+		      If InputBox.AskYN(App.T.Translate("questions/no_folder/@caption", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath + "\" + ReplaceAll(Me.Text, "/", "\"))) Then
+		        If NOT FileUtils.CreateFolderTree(App.DocsFolder.Child(App.STR_SONGS), Me.Text) Then
+		          Globals.Status_SongsFolderUpdating = True
+		          Me.ListIndex = SongFolderSel
+		        End If
+		      Else
+		        Globals.Status_SongsFolderUpdating = True
+		        Me.ListIndex = SongFolderSel
+		      End If
+		    End If
+		    
+		  End If
+		  
+		  If SongFolderSel = Me.ListIndex Then
+		    Return
+		  end If
+		  
+		  If Globals.Status_SongsFolderUpdating Then Globals.Status_SongsFolderUpdating = False
+		  
+		  SongFolderSel = Me.ListIndex
+		  
+		  '--
 		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
 		  End If
 		  For i As Integer = 0 To lst_all_songs.ListCount - 1

@@ -178,17 +178,19 @@ Inherits Application
 		  '--
 		  
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Exists OR AppFolder.Child("OpenSong Defaults").Count = 0 Then
+		  '++JRC Moved default folder checks to function
+		  If CheckDefaultFolders(DEFAULTS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
-		    MsgBox T.Translate("errors/no_defaults_folder", AppFolder.Child("OpenSong Defaults").AbsolutePath)
+		    MsgBox T.Translate("errors/no_defaults_folder", AppFolder.Child(STR_OS_DEFAULTS).AbsolutePath)
 		    '--
 		    Quit
 		  End If
 		  //--
 		  
-		  If Not DocsFolder.Exists OR DocsFolder.Count = 0 Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults"), DocsFolder) Then
+		  '++JRC Moved document folder checks to function
+		  If CheckDocumentFolders(DOCUMENTS_FOLDER) <> FOLDER_EXISTS Then
+		    If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS), DocsFolder) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
 		      MsgBox T.Translate("errors/no_docs_folder", DocsFolder.AbsolutePath)
@@ -198,39 +200,55 @@ Inherits Application
 		  End If
 		  
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Settings").Exists OR AppFolder.Child("OpenSong Defaults").Child("Settings").Count = 0 Then
+		  '++JRC Moved default folder checks to function
+		  If CheckDefaultFolders(SETTINGS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
-		    MsgBox  T.Translate("errors/no_settings_folder", AppFolder.Child("OpenSong Defaults").Child("Settings").AbsolutePath)
+		    MsgBox  T.Translate("errors/no_settings_folder", AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETTINGS).AbsolutePath)
 		    '--
 		    Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Settings").Exists OR DocsFolder.Child("Settings").Count = 0 Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Settings"), DocsFolder.Child("Settings")) Then
+		  '++JRC Moved document folder checks to function
+		  If CheckDocumentFolders(SETTINGS_FOLDER) <> FOLDER_EXISTS Then
+		    If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETTINGS), DocsFolder.Child(STR_SETTINGS)) Then
 		      App.MouseCursor = Nil
 		      '++JRC Translated
-		      MsgBox T.Translate("errors/create_settings_folder", DocsFolder.Child("Settings").AbsolutePath)
+		      MsgBox T.Translate("errors/create_settings_folder", DocsFolder.Child(STR_SETTINGS).AbsolutePath)
 		      '--
 		      Quit
 		    End If
 		  End If
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Songs").Exists OR AppFolder.Child("OpenSong Defaults").Child("Songs").Count = 0 Then
+		  '++JRC Moved default folder checks to function
+		  If CheckDefaultFolders(SONGS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
-		    MsgBox   T.Translate("errors/no_songs_folder",  AppFolder.Child("OpenSong Defaults").Child("Songs").AbsolutePath)
+		    MsgBox   T.Translate("errors/no_songs_folder",  AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SONGS).AbsolutePath)
 		    '--
-		    Quit
+		    '++JRC Change behavior here to notify user but continue operation
+		    'Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Songs").Exists OR  DocsFolder.Child("Songs").Count = 0 Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Songs"), DocsFolder.Child("Songs")) Then
-		      App.MouseCursor = Nil
-		      '++JRC Translated
-		      MsgBox T.Translate("errors/create_songs_folder",  DocsFolder.Child("Songs").AbsolutePath)
-		      '--
-		      Quit
+		  '++JRC Moved document folder checks to function
+		  If CheckDocumentFolders(SONGS_FOLDER) <> FOLDER_EXISTS Then
+		    If FileUtils.CreateFolder(DocsFolder.Child(STR_SONGS)) Then
+		      'Songs folder is empty, ask the user if want to try to copy the default songs to the docs folder
+		      '(as long as the defaults folder isn't empty of course ;)
+		      If  CheckDefaultFolders(SONGS_FOLDER) =  FOLDER_EXISTS Then
+		        App.MouseCursor = Nil
+		        If InputBox.AskYN(App.T.Translate("questions/docsfolder_empty/@caption")) Then
+		          If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SONGS), DocsFolder.Child(STR_SONGS)) Then
+		            '++JRC Translated
+		            MsgBox T.Translate("errors/copy_default_songs",  DocsFolder.Child(STR_SONGS).AbsolutePath)
+		            '--
+		            'Quit
+		          End If
+		        End If
+		      End If
+		    Else
+		      MsgBox T.Translate("errors/create_songs_folder",  DocsFolder.Child(STR_SONGS).AbsolutePath)
+		      'Quit
 		    End If
 		  End If
 		  //++EMP 11/27/05
@@ -425,6 +443,85 @@ Inherits Application
 		  win.Left = OSScreen(controlScreen).Left + (OSScreen(controlScreen).Width - win.Width) / 2
 		  win.Top = OSScreen(controlScreen).Top + (OSScreen(controlScreen).Height  - win.Height) / 2 + 10
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CheckDefaultFolders(which As Integer) As Integer
+		  '++JRC This function checks whether or not the default  folders exist or are empty
+		  '       Parameters: which as Integer
+		  'DEFAULTS_FOLDER = Main Defaults Folder
+		  'SONGS_FOLDER = Songs Folder
+		  'SETS_FOLDER = Set Folder
+		  'BACKGROUNDS_FOLDER = Backgrounds Folder
+		  '
+		  '       Return Values:
+		  'FOLDER_EXISTS = The folder exists and has files
+		  'NO_FOLDER = The folder does NOT exist
+		  'FOLDER_EMPTY = The folder exists but is empty
+		  'INVAILD_FOLDER = Invaild folder specified
+		  
+		  Dim f As FolderItem
+		  
+		  Select Case which
+		  Case DEFAULTS_FOLDER
+		    f = AppFolder.Child(STR_OS_DEFAULTS)
+		  Case SONGS_FOLDER
+		    f = AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SONGS)
+		  Case SETS_FOLDER
+		    f = AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETS)
+		  Case BACKGROUNDS_FOLDER
+		    f = AppFolder.Child(STR_OS_DEFAULTS).Child(STR_BACKGROUNDS)
+		  Case SETTINGS_FOLDER
+		    f = AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETTINGS)
+		  Else 'sanity check
+		    Return INVAILD_FOLDER
+		  End Select
+		  
+		  If NOT f.Exists Then Return NO_FOLDER
+		  IF f.Count = 0 Then Return FOLDER_EMPTY
+		  
+		  Return FOLDER_EXISTS
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function CheckDocumentFolders(which As Integer) As Integer
+		  '++JRC This function checks whether or not the document  folders exist or are empty
+		  '       Parameters: which as Integer
+		  'DOCUMENTS_FOLDER = Main Documents Folder
+		  'SONGS_FOLDER = Songs Folder
+		  'SETS_FOLDER = Set Folder
+		  'BACKGROUNDS_FOLDER = Backgrounds Folder
+		  '
+		  '       Return Values:
+		  'FOLDER_EXISTS = The folder exists and has files
+		  'NO_FOLDER = The folder does NOT exist
+		  'FOLDER_EMPTY = The folder exists but is empty
+		  'INVAILD_FOLDER = Invaild folder specified
+		  
+		  Dim f As FolderItem
+		  
+		  Select Case which
+		  Case DOCUMENTS_FOLDER
+		    f = DocsFolder
+		  Case SONGS_FOLDER
+		    f = DocsFolder.Child(STR_SONGS)
+		  Case SETS_FOLDER
+		    f = DocsFolder.Child(STR_SETS)
+		  Case BACKGROUNDS_FOLDER
+		    f = DocsFolder.Child(STR_BACKGROUNDS)
+		  Case SETTINGS_FOLDER
+		    f = DocsFolder.Child(STR_SETTINGS)
+		  Else 'sanity check
+		    Return INVAILD_FOLDER
+		  End Select
+		  
+		  If NOT f.Exists Then Return NO_FOLDER
+		  IF f.Count = 0 Then Return FOLDER_EMPTY
+		  
+		  Return FOLDER_EXISTS
+		  
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -1534,6 +1631,24 @@ Inherits Application
 	#tag EndProperty
 
 
+	#tag Constant, Name = BACKGROUNDS_FOLDER, Type = Double, Dynamic = False, Default = \"3", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = DEFAULTS_FOLDER, Type = Double, Dynamic = False, Default = \"0", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = DOCUMENTS_FOLDER, Type = Double, Dynamic = False, Default = \"0", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = FOLDER_EMPTY, Type = Double, Dynamic = False, Default = \"2", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = FOLDER_EXISTS, Type = Double, Dynamic = False, Default = \"0", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = INVAILD_FOLDER, Type = Double, Dynamic = False, Default = \"-1", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = kActivityLog, Type = String, Dynamic = False, Default = \"activitylog/level", Scope = Public
 	#tag EndConstant
 
@@ -1552,10 +1667,37 @@ Inherits Application
 	#tag Constant, Name = kPromptBeforePresenting, Type = String, Dynamic = False, Default = \"promptbeforepresenting", Scope = Public
 	#tag EndConstant
 
+	#tag Constant, Name = NO_FOLDER, Type = Double, Dynamic = False, Default = \"1", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = POINT_TO_CM, Type = Double, Dynamic = False, Default = \"0.035277778", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = PREFERENCESVERSION, Type = Double, Dynamic = False, Default = \"1.0", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = SETS_FOLDER, Type = Double, Dynamic = False, Default = \"2", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = SETTINGS_FOLDER, Type = Double, Dynamic = False, Default = \"4", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = SONGS_FOLDER, Type = Double, Dynamic = False, Default = \"1", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = STR_BACKGROUNDS, Type = String, Dynamic = False, Default = \"Backgrounds", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = STR_OS_DEFAULTS, Type = String, Dynamic = False, Default = \"OpenSong Defaults", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = STR_SETS, Type = String, Dynamic = False, Default = \"Sets", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = STR_SETTINGS, Type = String, Dynamic = False, Default = \"Settings", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = STR_SONGS, Type = String, Dynamic = False, Default = \"Songs", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = SW_NORMAL, Type = Integer, Dynamic = False, Default = \"1", Scope = Public

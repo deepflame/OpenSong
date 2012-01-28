@@ -1,3 +1,11 @@
+﻿* If song folders do not exist OpenSong now tries to create them. (JRC)
+
+* Change behavior for empty Songs folder to: Ask user if they want to copy the default songs to the folder. (JRC)
+
+* Moved default folder check to a separate function. (JRC)
+
+* Added Function CreateFolderTree to FileUtils (JRC)
+
 * Improved external presentation application detection for Impress (bug #3471022) (Vwout)
 
 * Improved loading and detection order for PPTView, manually set path in general settings always overides automatic detection of PPTView (bug #3471022) (Vwout)

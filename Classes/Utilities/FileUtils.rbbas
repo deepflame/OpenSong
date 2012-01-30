@@ -161,6 +161,49 @@ Protected Module FileUtils
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Function CreateFolderTree(Root As FolderItem, path As String) As Boolean
+		  '++JRC This function create a folder tree
+		  'Root specifies the starting Folder
+		  'path specifies the subfolder(s) to create (relative)
+		  
+		  Dim i, count As Integer
+		  Dim folder As String
+		  
+		  App.DebugWriter.Write "FileUtils.CreateFolderTree: parent is '" + Root.URLPath + "'", 5
+		  App.DebugWriter.Write "FileUtils.CreateFolderTree: path is '" + path + "'", 5
+		  path = ReplaceAll(path, "\", "/")
+		  App.DebugWriter.Write "FileUtils.CreateFolderTree: path after ReplaceAll '" + path + "'", 5
+		  count = CountFields(path, "/")
+		  App.DebugWriter.Write "FileUtils.CreateFolderTree: count of leaf nodes is " + CStr(count), 5
+		  
+		  'first create the root folder (if it doesn't exist)
+		  If NOT CreateFolder(Root) Then 
+		    SetLastError(Root)
+		    Return False
+		  End If
+		  
+		  For i = 1 To count
+		    folder = NthField(path, "/", i)
+		    
+		    App.DebugWriter.Write "FileUtils.CreateFolderTree: On leaf number " + Cstr(i) + " create child folder: '" + folder + "'", 5
+		    
+		    If folder.Len > 0 Then
+		      Root = Root.Child(folder)
+		      If Root = Nil Then Return False
+		      
+		      If NOT CreateFolder(Root) Then 
+		        SetLastError(Root)
+		        Return False
+		      End If
+		    End If
+		  Next i
+		  
+		  Return True
+		  
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function FormatFolderName(Extends f As Folderitem, maxLen As Integer = 60) As String
 		  //++

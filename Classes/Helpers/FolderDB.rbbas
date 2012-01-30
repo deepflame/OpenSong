@@ -418,7 +418,7 @@ Protected Class FolderDB
 		    
 		    If list <> Nil Then
 		      'we currently don't use array if the list is Nil
-		      list.AddRow fileDict(i).Value("Name")
+		      list.AddRow CStr(fileDict(i).Value("Name"))
 		      list.CellTag(list.LastIndex, 0) = ReplaceAll(path + fileDict(i).Value("Path"), "\", "/")
 		    else
 		      'list is Nil, array WILL be used

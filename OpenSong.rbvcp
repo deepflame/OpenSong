@@ -1,5 +1,6 @@
 Type=Desktop
-RBProjectVersion=2010.051
+RBProjectVersion=2011.04
+MinIDEVersion=20070100
 FileTypeSet=FileTypes;FileTypes.rbbas;&h45B5FE02;&h0;false
 FileTypeSet=ImageFileTypes;ImageFileTypes.rbbas;&h37D50FFF;&h0;false
 FileTypeSet=CopyTypes;CopyTypes.rbbas;&h4312CFFF;&h0;false

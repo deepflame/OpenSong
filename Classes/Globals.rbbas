@@ -194,6 +194,10 @@ Protected Module Globals
 		Protected Status_SongPickerOpen As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h1
+		Protected Status_SongsFolderUpdating As Boolean
+	#tag EndProperty
+
 	#tag Property, Flags = &h0
 		UseSheetDialogs As Boolean
 	#tag EndProperty

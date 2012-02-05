@@ -90,30 +90,6 @@ End
 
 #tag WindowCode
 	#tag Event
-		Sub Activate()
-		  App.DebugWriter.Write "PresentWindow.Activate: Enter"
-		  If Globals.Status_Presentation Then
-		    If HelperActive Then
-		      If PresentHelperWindow.IsCollapsed Then
-		        App.RestoreWindow(PresentHelperWindow)
-		      Else
-		        PresentHelperWindow.SetFocus
-		      End If
-		    Else
-		      If PresentWindow.IsCollapsed Then
-		        App.RestoreWindow(PresentWindow)
-		      End If
-		      App.SetForeground(PresentWindow)
-		      PresentWindow.SetFocus
-		    End If
-		    Me.MenuBarVisible = (Not Me.FullScreen) Or (PresentScreen <> 0) // Make assumption that screen 0 has the menu; not always true
-		    Me.SetFocus
-		  End If
-		  App.DebugWriter.Write "PresentWindow.Activate: Exit"
-		End Sub
-	#tag EndEvent
-
-	#tag Event
 		Sub Close()
 		  'MainWindow.Status_Presentation = False
 		  'MainWindow.Show
@@ -574,7 +550,7 @@ End
 		  
 		  If Not IsNull(imageFileName) Then
 		    Try
-		       '++JRC Comented out second parameter for compatibilty with RB 2010r3
+		      '++JRC Comented out second parameter for compatibilty with RB 2010r3
 		      image.Save(ImageFileName, 151) ' , 85)
 		      
 		      If export_metadata And Not IsNull(metaFileName) then
@@ -802,83 +778,19 @@ End
 	#tag Method, Flags = &h1
 		Protected Function GoNextSection(Update As Boolean = True) As Boolean
 		  Dim xNewSlide As XmlNode
-		  Dim newSlide As Integer
-		  Dim oldName As String
-		  Dim oldType As String
-		  Dim newName As String
-		  Dim newType As String
-		  Dim prevIsStyleChange As Boolean = False
-		  
-		  //++EMP, 15 Jan 2006
-		  // Updated to recognize new section type "blank" for program-generated blank slides
-		  //++JRC, 2 Apr 2009
-		  //Updated to allow the option of moving to the next section without updating the screen
-		  //
 		  
 		  xNewSlide = SetML.GetNextSlide(XCurrentSlide)
-		  If xNewSlide = Nil Then // at end of presentation, just return
-		    Return False
-		  End If
-		  
-		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'What is the section name?
-		  oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?
-		  ' Check to see if we started on a blank slide, if so, use the section name from the slide we just moved to
-		  '++JRC: Or if this is a custom slide without a name
-		  If xNewSlide <> Nil and oldType = "blank" Then
-		    'If oldName = "" And xNewSlide <> Nil And SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) <> "custom" Then
-		    oldName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
-		  end if
-		  '--
-		  newType = ""
-		  newName = oldName
-		  
-		  xNewSlide = xCurrentSlide
-		  newSlide = CurrentSlide
-		  
-		  ' Keep moving forward until the section name changes
-		  While xNewSlide <> Nil And newName = oldName And newType <> "blank" And prevIsStyleChange = False
-		    newSlide = newSlide + 1
-		    xNewSlide = SetML.GetNextSlide(xNewSlide)
-		    
-		    If xNewSlide <> Nil Then
-		      //++V, 31-05-2010
-		      // Two slide(group)s with a stylechange slide in between need to be considered a seperate section
-		      // Not only is that more logical (probably), but it also facilitaties display of the correct slide
-		      // when PresentWindow.Present is called with 'Item > 2' AND the item in question is preceded
-		      // by a stylechange slide and a similarly named other slide
-		      If xNewSlide.PreviousSibling Is Nil Then
-		        Dim xPrevSlideGroup As XmlNode = xNewSlide.Parent.Parent.PreviousSibling
-		        If xPrevSlideGroup <> Nil Then
-		          prevIsStyleChange = (SmartML.GetValue(xPrevSlideGroup, "@type", False) = "style")
-		        End If
-		      End If
-		      
-		      newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
-		      newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
-		    End If
-		  Wend
-		  
-		  // If the slide pointed to by newSlide exists (in other words, we're not at the end)
-		  // then we move to it.
-		  //
 		  If xNewSlide <> Nil Then
+		    currentSlide = currentSlide + 1
 		    XCurrentSlide = xNewSlide
-		    CurrentSlide = newSlide
-		  End If
-		  //--EMP, 15 Jan 06
-		  
-		  '++JRC
-		  If Update Then
 		    If HelperActive Then
 		      PresentHelperWindow.ScrollTo currentSlide
 		    Else
 		      ResetPaint XCurrentSlide
 		    End If
+		    Return True
 		  End If
-		  '--
-		  
-		  Return True
-		  
+		  Return False
 		End Function
 	#tag EndMethod
 
@@ -922,106 +834,20 @@ End
 
 	#tag Method, Flags = &h1
 		Protected Function GoPreviousSection(Action As Integer) As Boolean
-		  Const ASC_KEY_BACKSPACE = 8
-		  
-		  Dim newSlide As Integer
 		  Dim xNewSlide As XmlNode
-		  Dim oldName As String
-		  Dim oldType As String
-		  Dim newName As String
-		  Dim newType As String
-		  Dim nextIsStyleChange As Boolean = False
 		  
-		  If CurrentSlide = 1 Then Return False ' Can't go back any further
-		  
-		  newSlide = CurrentSlide - 1 '  "New" is back one
 		  xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
-		  If xNewSlide = Nil Then // at beginning of presentation, just return
-		    Return False
-		  End If
-		  
-		  oldName = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@name", True) 'What is the section name?
-		  oldType = SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) 'And its type?
-		  If xNewSlide <> Nil and oldType = "blank" Then
-		    oldName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
-		  end if
-		  
-		  //++EMP, 15 Jan 06
-		  // Two options for finding the start of the section:
-		  // 1. If blanks are being used, just look type="blank" as we count back
-		  // 2. No blanks: look for name change
-		  //
-		  'keep backing up until the name changes (well, it really becomes Nil)
-		  newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True)
-		  newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True)
-		  
-		  // Before starting the loop, check to see if the current slide was the first one
-		  // of a section.  If so, update the pointers to the current slide.  That means
-		  // the first time through the loop both current and next are the same.
-		  If newName <> oldName Then
-		    oldName = newName
-		    oldType = newType
-		    XCurrentSlide = xNewSlide
-		    CurrentSlide = newSlide
-		  End If
-		  'newName = oldName
-		  'newType = ""
-		  
-		  While xNewSlide <> Nil And newName = oldName And newType <> "blank"
-		    XCurrentSlide = xNewSlide
-		    CurrentSlide = newSlide
-		    
-		    newSlide = CurrentSlide - 1
-		    xNewSlide = SetML.GetPrevSlide(XCurrentSlide)
-		    
-		    If xNewSlide <> Nil Then
-		      //++V, 31-05-2010
-		      // See the explanation in GoNextSection; this is equal, just the other way around
-		      If xNewSlide.NextSibling = Nil Then
-		        Dim xNextSlideGroup As XmlNode = xNewSlide.Parent.Parent.NextSibling
-		        If xNextSlideGroup <> Nil Then
-		          nextIsStyleChange = (SmartML.GetValue(xNextSlideGroup, "@type", False) = "style")
-		        End If
-		      End
-		      
-		      If nextIsStyleChange Then
-		        xNewSlide = Nil
-		      Else
-		        newName = SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) //++
-		        newType = SmartML.GetValue(xNewSlide.Parent.Parent, "@type", True) //++
-		      End If
-		    End If //++
-		  Wend
-		  
-		  //
-		  // At this point, XCurrentSlide is the first slide of a section.
-		  // xNewSlide will either be Nil or have type="blank"
-		  // If blank, make it the current slide if the command is ACTION_START_OF_SECTION
-		  // Otherwise, stay on the first slide of the section
-		  //
-		  
-		  If xNewSlide <> Nil Then ' See if this is a blank
-		    '++JRC: If this is a custom slide without a name, ignore
-		    'If SmartML.GetValue(xNewSlide.Parent.Parent, "@name", True) = ""_
-		    'And SmartML.GetValue(XCurrentSlide.Parent.Parent, "@type", True) <> "custom"_
-		    'And Not (Action = ASC_KEY_BACKSPACE  Or Action = ACTION_FIRST_SLIDE_OF_SECTION) Then 'Stay on first slide if BS or special code instead of the separating blank slide
-		    If newType = "blank" _
-		      And Not (Action = ASC_KEY_BACKSPACE Or Action = ACTION_FIRST_SLIDE_OF_SECTION) Then
-		      XCurrentSlide = xNewSlide
-		      CurrentSlide = newSlide
+		  If xNewSlide <> Nil Then
+		    currentSlide = currentSlide - 1
+		    xCurrentSlide = xNewSlide
+		    If HelperActive Then
+		      PresentHelperWindow.ScrollTo currentSlide
+		    Else
+		      ResetPaint XCurrentSlide
 		    End If
-		    '--
+		    Return True
 		  End If
-		  
-		  If HelperActive Then
-		    PresentHelperWindow.ScrollTo CurrentSlide
-		  Else
-		    ResetPaint XCurrentSlide
-		  End If
-		  Return True
-		  
-		  //--EMP, 15 Jan 06
-		  
+		  Return False
 		End Function
 	#tag EndMethod
 
@@ -1218,9 +1044,6 @@ End
 		  Dim DontCare As Boolean
 		  Dim Command As Integer
 		  
-		  If Asc(Key) = ASC_KEY_PGDN Then Key = Chr(ASC_KEY_DOWN)
-		  If Asc(Key) = ASC_KEY_PGUP Then Key = Chr(ASC_KEY_UP)
-		  
 		  Command = AscB(Lowercase(Key))
 		  
 		  Select Case Command
@@ -1265,6 +1088,7 @@ End
 		  Const KEY_UP=&h7e
 		  Const KEY_DOWN=&h7d
 		  Const KEY_ESCAPE = 27
+		  Const KEY_SHIFT=16
 		  '
 		  'Temporary hack until the command arguments are fixed
 		  '
@@ -1294,18 +1118,23 @@ End
 		    '
 		  ElseIf Action = ASC_KEY_END Then
 		    Return GoLastSlide
-		    '
-		    ' NEXT SECTION
-		    '
-		  ElseIf (Keyboard.AsyncKeyDown(KEY_RIGHT) Or Action = ASC_KEY_RIGHT) Then
+		    
+		  ElseIf (Keyboard.AsyncKeyDown(KEY_PGUP) Or Action = ASC_KEY_PGUP) Then
 		    Return GoNextSection
 		    '
 		    ' PREVIOUS SECTION
 		    '
-		  ElseIf Keyboard.AsyncKeyDown(KEY_LEFT) Or Action = ASC_KEY_LEFT _
-		    Or Action = ASC_KEY_BACKSPACE _
+		  ElseIf Keyboard.AsyncKeyDown(KEY_PGDN) Or Action = ASC_KEY_PGDN _
 		    Or Action = ACTION_FIRST_SLIDE_OF_SECTION Then 'special code 126 comes from inside the program instead of keyboard
 		    Return GoPreviousSection(Action)
+		    
+		    
+		  ElseIf (Keyboard.AsyncKeyDown(KEY_RIGHT) Or Action = ASC_KEY_RIGHT) Then
+		    Return GoNextSlide
+		    
+		  ElseIf (Keyboard.AsyncKeyDown(KEY_LEFT) Or Action=ASC_KEY_RIGHT) Then 'special code 126 comes from inside the program instead of keyboard
+		    Return GoPreviousSlide
+		    
 		    '
 		    ' Jump to Chorus
 		    '
@@ -1656,9 +1485,7 @@ End
 		  
 		  'Show
 		  App.MouseCursor = Nil
-		  #if Not TargetMacOS
-		    App.MinimizeWindow(MainWindow)
-		  #endif
+		  
 		  If HelperActive Then
 		    PresentHelperWindow.SetMode Me.Mode, False
 		    App.RestoreWindow(PresentHelperWindow)

@@ -7,9 +7,6 @@ Inherits Application
 		  DebugWriter.Write "Begin App.Activate"
 		  
 		  If Globals.Status_Presentation Then
-		    #if Not TargetMacOS
-		      App.MinimizeWindow(MainWindow)
-		    #endif
 		    
 		    If PresentWindow.HelperActive Then
 		      App.RestoreWindow(PresentHelperWindow)

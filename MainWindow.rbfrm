@@ -6368,31 +6368,6 @@ End
 
 #tag WindowCode
 	#tag Event
-		Sub Activate()
-		  '++JRC
-		  App.DebugWriter.Write "Begin MainWindow.Activate:"
-		  
-		  If Globals.Status_Presentation Or Status_Presentation Then
-		    #if Not TargetMacOS
-		      App.MinimizeWindow(MainWindow)
-		    #endif
-		    
-		    If PresentWindow.HelperActive Then
-		      App.RestoreWindow(PresentHelperWindow)
-		      App.SetForeground(PresentHelperWindow)
-		    Else
-		      App.RestoreWindow(PresentWindow)
-		      App.SetForeground(PresentWindow)
-		    End If
-		  End If
-		  '--
-		  If App.SplashShowing Then Splash.Show
-		  
-		  App.DebugWriter.Write "End MainWindow.Activate:"
-		End Sub
-	#tag EndEvent
-
-	#tag Event
 		Function CancelClose(appQuitting as Boolean) As Boolean
 		  Status_Closing = True
 		  If Status_SongChanged Then
@@ -8225,15 +8200,12 @@ End
 		  
 		  Status_Presentation = True
 		  Globals.Status_Presentation = True
-		  'Self.Hide
 		  
-		  'App.MinimizeWindow(Self)
 		  PresentWindow.Present setDoc, Mode, ItemNumber
 		  
-		  '++JRC reset cursor
+		  
 		  App.MouseCursor = Nil
-		  'Me.MouseCursor = Nil
-		  '--
+		  
 		End Sub
 	#tag EndMethod
 

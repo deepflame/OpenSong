@@ -872,6 +872,7 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -979,6 +980,7 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1122,6 +1124,7 @@ Begin Window PresentSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2040,6 +2043,7 @@ Begin Window PresentSettingsWindow
          AcceptTabs      =   ""
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   False
          BackColor       =   &hFFFFFF
          Bold            =   ""
          Border          =   True

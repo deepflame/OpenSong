@@ -2,7 +2,7 @@
 Begin Window PresentHelperWindow
    BackColor       =   16777215
    Backdrop        =   0
-   CloseButton     =   False
+   CloseButton     =   True
    Composite       =   False
    Frame           =   0
    FullScreen      =   False
@@ -309,6 +309,7 @@ Begin Window PresentHelperWindow
       Width           =   332
    End
    Begin StaticText txt_shortcut_keys
+      Active          =   ""
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -327,18 +328,22 @@ Begin Window PresentHelperWindow
       LockTop         =   False
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
+      TabStop         =   True
+      Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Slide\r\nLeft: Previous Slide\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   9
-      TextUnit        =   0
       Top             =   212
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   101
+      Window          =   0
+      _mWindow        =   0
    End
    Begin GroupBox grp_presentation_actions
       AutoDeactivate  =   True
@@ -521,6 +526,7 @@ Begin Window PresentHelperWindow
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   True
       BackColor       =   16777215
       Bold            =   True
       Border          =   True
@@ -668,19 +674,8 @@ End
 
 #tag WindowCode
 	#tag Event
-		Sub Activate()
-		  App.DebugWriter.Write "Begin PresentHelperWindow.Activate:"
-		  If Globals.Status_ScripturePickerOpen Then App.SetForeground(ScripturePickerWindow)
-		  If Globals.Status_SongPickerOpen Then App.SetForeground(SongPickerWindow)
-		  If Globals.Status_InputBoxOpen Then App.SetForeground(InputBox)
-		  App.ShowWin(PresentWindow, App.SW_SHOWNA)
-		  App.DebugWriter.Write "End PresentHelperWindow.Activate:"
-		End Sub
-	#tag EndEvent
-
-	#tag Event
 		Function CancelClose(appQuitting as Boolean) As Boolean
-		  If MainWindow.Status_Presentation And Not appQuitting Then Return True
+		  PresentWindow.Close
 		End Function
 	#tag EndEvent
 
@@ -707,7 +702,7 @@ End
 		  Dim marginLeft As Integer
 		  
 		  App.T.TranslateWindow Me, "presentation_helper", App.TranslationFonts
-		  txt_shortcut_keys.Caption = App.T.Translate("presentation_helper/keys")
+		  txt_shortcut_keys.Caption = " -Arrows:-"+ REALbasic.EndOfLine  + "Down: Next Slide" + REALbasic.EndOfLine+ "Up: Previous Slide" + REALbasic.EndOfLine+" Right: Next Slide" + REALbasic.EndOfLine + "Left: Previous Slide" + REALbasic.EndOfLine + "-Jump To:-"+ REALbasic.EndOfLine +" 1-9: Verse" + REALbasic.EndOfLine+ "C: Chorus" + REALbasic.EndOfLine + "P: Pre-chorus" + REALbasic.EndOfLine +"B: Bridge" + REALbasic.EndOfLine+"T: Tag"
 		  
 		  Dim screenWidth As Double = Screen(PresentWindow.PresentScreen).Width
 		  Dim screenHeight As Double = Screen(PresentWindow.PresentScreen).Height

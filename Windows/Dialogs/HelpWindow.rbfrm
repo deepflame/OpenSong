@@ -51,13 +51,14 @@ Begin Window HelpWindow
       TextUnit        =   0
       Top             =   10
       Underline       =   False
-      Value           =   0
+      Value           =   1
       Visible         =   True
       Width           =   677
       Begin TextArea edt_help_keys
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
@@ -103,6 +104,7 @@ Begin Window HelpWindow
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
@@ -148,6 +150,7 @@ Begin Window HelpWindow
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   True
          BackColor       =   16777215
          Bold            =   False
          Border          =   True
@@ -193,6 +196,7 @@ Begin Window HelpWindow
    Begin PushButton btn_help_print
       AutoDeactivate  =   True
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Print..."
       Default         =   False

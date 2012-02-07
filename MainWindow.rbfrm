@@ -8585,6 +8585,9 @@ End
 		  '++JRC
 		  Globals.OldFolderSel = -1
 		  CurrentSetIndex = -1
+		  
+		  pop_sets_sets.AddRow("")
+		  pop_sets_sets.DeleteAllRows
 		  '--
 		  
 		  Splash.SetStatus App.T.Translate("load_data/bible") + "..."
@@ -9894,6 +9897,20 @@ End
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then Return 'User Canceled
 		  
+		  '++JRC Check if we have a sets folder if not offer to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If InputBox.AskYN(App.T.Translate("questions/no_sets_folder/@caption")) Then
+		      If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SETS)) Then
+		        InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).AbsolutePath)
+		        Return
+		      End If
+		    Else
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).AbsolutePath)
+		      Return
+		    End If
+		  End If
+		  '--
+		  
 		  t = InputBox.Input(App.T.Translate("questions/new_name/@caption"), "")
 		  If Len(t) > 0 Then
 		    If Not FileUtils.IsSafeFileName(t) Then
@@ -10141,6 +10158,20 @@ End
 		      Return
 		    End If
 		  End If
+		  
+		  '++JRC Check if we have a sets folder if not offer to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If InputBox.AskYN(App.T.Translate("questions/no_sets_folder/@caption")) Then
+		      If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SETS)) Then
+		        InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).AbsolutePath)
+		        Return
+		      End If
+		    Else
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).AbsolutePath)
+		      Return
+		    End If
+		  End If
+		  '--
 		  
 		  App.MouseCursor = System.Cursors.Wait
 		  
@@ -12357,13 +12388,13 @@ End
 		        If InputBox.AskYN(App.T.Translate("questions/no_songs_folder/@caption")) Then
 		          If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SONGS)) Then
 		            InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
-		            Globals.Status_SongsFolderUpdating = True
-		            Me.ListIndex = Globals.OldFolderSel
+		            Me.ListIndex = -1
+		            Globals.OldFolderSel = -1
 		          End If
 		        Else
 		          InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
-		          Globals.Status_SongsFolderUpdating = True
-		          Me.ListIndex = Globals.OldFolderSel
+		          Me.ListIndex = -1
+		          Globals.OldFolderSel = -1
 		        End If
 		      End If
 		      '--
@@ -12371,23 +12402,20 @@ End
 		    Else
 		      If InputBox.AskYN(App.T.Translate("questions/no_folder/@caption", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath + "\" + ReplaceAll(Me.Text, "/", "\"))) Then
 		        If NOT FileUtils.CreateFolderTree(App.DocsFolder.Child(App.STR_SONGS), Me.Text) Then
-		          Globals.Status_SongsFolderUpdating = True
-		          Me.ListIndex = Globals.OldFolderSel
+		          Me.ListIndex = -1
+		          Globals.OldFolderSel = -1
 		        End If
 		      Else
-		        Globals.Status_SongsFolderUpdating = True
-		        Me.ListIndex = Globals.OldFolderSel
+		        Me.ListIndex = -1
+		        Globals.OldFolderSel = -1
 		      End If
 		    End If
 		    
 		  End If
 		  
-		  
 		  If Globals.OldFolderSel = Me.ListIndex Then
 		    Return
 		  end If
-		  
-		  If Globals.Status_SongsFolderUpdating Then Globals.Status_SongsFolderUpdating = False
 		  
 		  Globals.OldFolderSel = Me.ListIndex
 		  '--
@@ -13100,6 +13128,29 @@ End
 #tag Events pop_sets_sets
 	#tag Event
 		Sub Change()
+		  If Me.ListIndex < 0 Then
+		    CurrentSetIndex = -1
+		    Return
+		  End If
+		  
+		  '++JRC Check if we have a sets folder if not offer to create one
+		  If App.CheckDocumentFolders(App.SETS_FOLDER) = App.NO_FOLDER Then
+		    If InputBox.AskYN(App.T.Translate("questions/no_sets_folder/@caption")) Then
+		      If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SETS)) Then
+		        InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).AbsolutePath)
+		        Me.ListIndex = -1
+		        CurrentSetIndex = -1
+		        Return
+		      End If
+		    Else
+		      InputBox.Message App.T.Translate("errors/create_sets_folder", App.DocsFolder.Child(App.STR_SETS).AbsolutePath)
+		      Me.ListIndex = -1
+		      CurrentSetIndex = -1
+		      Return
+		    End If
+		  End If
+		  '--
+		  
 		  'Ask if user wants to save
 		  If NOT ActionSetAskSave Then
 		    If CurrentSetIndex >= 0 Then
@@ -14226,7 +14277,7 @@ End
 		    
 		    lst_external_videolan_preset.DeleteAllRows
 		    For i = 0 To App.VideolanPresetList.Count()-1
-		      lst_external_videolan_preset.AddRow CStr(App.VideolanPresetList.Key(i))
+		      lst_external_videolan_preset.AddRow App.VideolanPresetList.Key(i)
 		    Next i
 		    
 		    Select Case SmartML.GetValue(xgroup, "@application")

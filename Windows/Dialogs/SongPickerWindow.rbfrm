@@ -788,6 +788,11 @@ End
 		  '++JRC
 		  Dim f As FolderItem
 		  
+		  If Me.ListIndex < 0 Then
+		    SongFolderSel = -1
+		    Return
+		  End If
+		  
 		  f = FileUtils.RelativePathToFolderItem(App.DocsFolder.Child(App.STR_SONGS), Me.Text)
 		  
 		  If f = Nil Or NOT f.Exists Then
@@ -797,13 +802,13 @@ End
 		        If InputBox.AskYN(App.T.Translate("questions/no_songs_folder/@caption")) Then
 		          If Not FileUtils.CreateFolder(App.DocsFolder.Child(App.STR_SONGS)) Then
 		            InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
-		            Globals.Status_SongsFolderUpdating = True
-		            Me.ListIndex = SongFolderSel
+		            Me.ListIndex = -1
+		            SongFolderSel = -1
 		          End If
 		        Else
 		          InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath)
-		          Globals.Status_SongsFolderUpdating = True
-		          Me.ListIndex = SongFolderSel
+		          Me.ListIndex = -1
+		          SongFolderSel = -1
 		        End If
 		      End If
 		      '--
@@ -811,12 +816,12 @@ End
 		    Else
 		      If InputBox.AskYN(App.T.Translate("questions/no_folder/@caption", App.DocsFolder.Child(App.STR_SONGS).AbsolutePath + "\" + ReplaceAll(Me.Text, "/", "\"))) Then
 		        If NOT FileUtils.CreateFolderTree(App.DocsFolder.Child(App.STR_SONGS), Me.Text) Then
-		          Globals.Status_SongsFolderUpdating = True
-		          Me.ListIndex = SongFolderSel
+		          Me.ListIndex = -1
+		          SongFolderSel = -1
 		        End If
 		      Else
-		        Globals.Status_SongsFolderUpdating = True
-		        Me.ListIndex = SongFolderSel
+		        Me.ListIndex = -1
+		        SongFolderSel = -1
 		      End If
 		    End If
 		    
@@ -826,7 +831,6 @@ End
 		    Return
 		  end If
 		  
-		  If Globals.Status_SongsFolderUpdating Then Globals.Status_SongsFolderUpdating = False
 		  
 		  SongFolderSel = Me.ListIndex
 		  

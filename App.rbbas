@@ -237,7 +237,7 @@ Inherits Application
 		      '(as long as the defaults folder isn't empty of course ;)
 		      If  CheckDefaultFolders(SONGS_FOLDER) =  FOLDER_EXISTS Then
 		        App.MouseCursor = Nil
-		        If InputBox.AskYN(App.T.Translate("questions/docsfolder_empty/@caption")) Then
+		        If InputBox.AskYN(App.T.Translate("questions/songs_folder_empty/@caption")) Then
 		          If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SONGS), DocsFolder.Child(STR_SONGS)) Then
 		            '++JRC Translated
 		            MsgBox T.Translate("errors/copy_default_songs",  DocsFolder.Child(STR_SONGS).AbsolutePath)
@@ -252,21 +252,35 @@ Inherits Application
 		    End If
 		  End If
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Sets").Exists OR AppFolder.Child("OpenSong Defaults").Child("Sets").Count = 0 Then
+		  '++JRC Moved default folder checks to function
+		  If CheckDefaultFolders(SETS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
-		    MsgBox T.Translate("errors/no_sets_folder",  AppFolder.Child("OpenSong Defaults").Child("Sets").AbsolutePath)
+		    MsgBox T.Translate("errors/no_sets_folder",  AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETS).AbsolutePath)
 		    '--
-		    Quit
+		    '++JRC Change behavior here to notify user but continue operation
+		    'Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Sets").Exists OR DocsFolder.Child("Sets").Count = 0 Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Sets"), DocsFolder.Child("Sets")) Then
-		      App.MouseCursor = Nil
-		      '++JRC Translated
-		      MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child("Sets").AbsolutePath)
-		      '--
-		      Quit
+		  '++JRC Moved document folder checks to function
+		  If CheckDocumentFolders(SETS_FOLDER) <> FOLDER_EXISTS Then
+		    If FileUtils.CreateFolder(DocsFolder.Child(STR_SETS)) Then
+		      'Sets folder is empty, ask the user if want to try to copy the default sets to the docs folder
+		      '(as long as the defaults folder isn't empty of course ;)
+		      If  CheckDefaultFolders(SETS_FOLDER) =  FOLDER_EXISTS Then
+		        If InputBox.AskYN(App.T.Translate("questions/sets_folder_empty/@caption")) Then
+		          App.MouseCursor = Nil
+		          If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETS), DocsFolder.Child(STR_SETS)) Then
+		            '++JRC Translated
+		            MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child(STR_SETS).AbsolutePath)
+		            '--
+		            'Quit
+		          End If
+		        End If
+		      End If
+		    Else
+		      MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child(STR_SETS).AbsolutePath)
+		      'Quit
 		    End If
 		  End If
 		  

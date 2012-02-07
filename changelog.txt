@@ -1,4 +1,8 @@
-﻿* If song folders do not exist OpenSong now tries to create them. (JRC)
+﻿* If Set folder does not exist OpenSong now tries to create it. (JRC)
+
+* Change behavior for empty Sets folder to: Ask user if they want to copy the default Set to the folder. (JRC)
+
+* If song folders do not exist OpenSong now tries to create them. (JRC)
 
 * Change behavior for empty Songs folder to: Ask user if they want to copy the default songs to the folder. (JRC)
 

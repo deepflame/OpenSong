@@ -26,16 +26,15 @@ Begin Window ImageChooserWindow
    Width           =   475
    Begin PushButton btn_browse
       AutoDeactivate  =   True
-      BehaviorIndex   =   0
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   False
       Caption         =   "Browse..."
-      ControlOrder    =   0
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   156
@@ -44,11 +43,13 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   340
       Underline       =   False
       Visible         =   True
@@ -56,16 +57,15 @@ Begin Window ImageChooserWindow
    End
    Begin PushButton btn_cancel
       AutoDeactivate  =   True
-      BehaviorIndex   =   1
       Bold            =   False
+      ButtonStyle     =   0
       Cancel          =   True
       Caption         =   "Cancel"
-      ControlOrder    =   1
       Default         =   False
       Enabled         =   True
       Height          =   22
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
       Left            =   241
@@ -74,11 +74,13 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   340
       Underline       =   False
       Visible         =   True
@@ -86,15 +88,13 @@ Begin Window ImageChooserWindow
    End
    Begin Label txt_path
       AutoDeactivate  =   True
-      BehaviorIndex   =   2
       Bold            =   False
-      ControlOrder    =   2
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   True
       Left            =   10
@@ -104,27 +104,28 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   ""
       TextAlign       =   1
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   365
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   455
    End
    Begin Separator sep_1
       AutoDeactivate  =   True
-      BehaviorIndex   =   3
-      ControlOrder    =   3
       Enabled         =   True
       Height          =   4
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   0
       LockBottom      =   True
@@ -132,11 +133,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   False
+      Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   328
       Visible         =   True
       Width           =   475
@@ -144,12 +144,10 @@ Begin Window ImageChooserWindow
    Begin ScrollBar scr_vertical
       AcceptFocus     =   true
       AutoDeactivate  =   True
-      BehaviorIndex   =   4
-      ControlOrder    =   4
       Enabled         =   True
       Height          =   328
       HelpTag         =   ""
-      Index           =   2147483648
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   458
       LineStep        =   1
@@ -162,11 +160,10 @@ Begin Window ImageChooserWindow
       Maximum         =   0
       Minimum         =   0
       PageStep        =   3
+      Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   1
       Value           =   0
       Visible         =   True
@@ -177,8 +174,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   5
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -191,11 +187,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   5
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   10
       UseFocusRing    =   True
       Visible         =   True
@@ -206,8 +201,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   6
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -220,11 +214,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   6
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   10
       UseFocusRing    =   True
       Visible         =   True
@@ -235,8 +228,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   7
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -249,11 +241,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   7
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   10
       UseFocusRing    =   True
       Visible         =   True
@@ -264,8 +255,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   8
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -278,11 +268,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   8
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   10
       UseFocusRing    =   True
       Visible         =   True
@@ -293,8 +282,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   9
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -307,11 +295,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   9
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   10
       UseFocusRing    =   True
       Visible         =   True
@@ -322,8 +309,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   10
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -336,11 +322,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   90
       UseFocusRing    =   True
       Visible         =   True
@@ -351,8 +336,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   11
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -365,11 +349,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   90
       UseFocusRing    =   True
       Visible         =   True
@@ -380,8 +363,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   12
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -394,11 +376,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   12
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   90
       UseFocusRing    =   True
       Visible         =   True
@@ -409,8 +390,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   13
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -423,11 +403,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   13
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   90
       UseFocusRing    =   True
       Visible         =   True
@@ -438,8 +417,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   14
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -452,11 +430,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   14
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   90
       UseFocusRing    =   True
       Visible         =   True
@@ -467,8 +444,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   15
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -481,11 +457,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   15
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   170
       UseFocusRing    =   True
       Visible         =   True
@@ -496,8 +471,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   16
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -510,11 +484,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   16
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   170
       UseFocusRing    =   True
       Visible         =   True
@@ -525,8 +498,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   17
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -539,11 +511,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   17
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   170
       UseFocusRing    =   True
       Visible         =   True
@@ -554,8 +525,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   18
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -568,11 +538,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   18
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   170
       UseFocusRing    =   True
       Visible         =   True
@@ -583,8 +552,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   19
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -597,11 +565,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   19
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   170
       UseFocusRing    =   True
       Visible         =   True
@@ -612,8 +579,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   20
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -626,11 +592,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   20
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   250
       UseFocusRing    =   True
       Visible         =   True
@@ -641,8 +606,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   21
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -655,11 +619,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   21
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   250
       UseFocusRing    =   True
       Visible         =   True
@@ -670,8 +633,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   22
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -684,11 +646,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   22
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   250
       UseFocusRing    =   True
       Visible         =   True
@@ -699,8 +660,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   23
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -713,11 +673,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   23
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   250
       UseFocusRing    =   True
       Visible         =   True
@@ -728,8 +687,7 @@ Begin Window ImageChooserWindow
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      BehaviorIndex   =   5
-      ControlOrder    =   24
+      DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
       Height          =   60
@@ -742,11 +700,10 @@ Begin Window ImageChooserWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Scope           =   0
       TabIndex        =   24
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0
       Top             =   250
       UseFocusRing    =   True
       Visible         =   True
@@ -754,9 +711,7 @@ Begin Window ImageChooserWindow
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   25
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -772,24 +727,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   25
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   70
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   26
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -805,24 +761,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   26
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   70
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   27
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -838,24 +795,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   27
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   70
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   28
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -871,24 +829,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   28
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   70
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   29
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -904,24 +863,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   29
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   70
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   30
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -937,24 +897,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   30
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   150
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   31
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -970,24 +931,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   31
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   150
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   32
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1003,24 +965,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   32
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   150
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   33
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1036,24 +999,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   33
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   150
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   34
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1069,24 +1033,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   34
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   150
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   35
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1102,24 +1067,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   35
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   230
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   36
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1135,24 +1101,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   36
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   230
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   37
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1168,24 +1135,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   37
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   230
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   38
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1201,24 +1169,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   38
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   230
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   39
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1234,24 +1203,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   39
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   230
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   40
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1267,24 +1237,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   40
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   310
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   41
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1300,24 +1271,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   41
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   310
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   42
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1333,24 +1305,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   42
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   310
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   43
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1366,24 +1339,25 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   43
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   310
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
    End
    Begin Label nte_name
       AutoDeactivate  =   True
-      BehaviorIndex   =   6
       Bold            =   False
-      ControlOrder    =   44
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -1399,15 +1373,18 @@ Begin Window ImageChooserWindow
       LockRight       =   False
       LockTop         =   True
       Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
       TabIndex        =   44
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "file name"
       TextAlign       =   0
       TextColor       =   0
       TextFont        =   "Arial"
       TextSize        =   10
+      TextUnit        =   0
       Top             =   310
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -1427,8 +1404,21 @@ End
 	#tag Event
 		Sub Open()
 		  Dim pic As Picture
-		  BackgroundFolder = App.DocsFolder.Child("Backgrounds")
 		  
+		  '++JRC Added check here for backgrounds folder
+		  'if it doesn't exist then switch to the Op System documents folder
+		  If App.CheckDocumentFolders(App.BACKGROUNDS_FOLDER) <> App.NO_FOLDER Then
+		    BackgroundFolder = App.DocsFolder.Child(App.STR_BACKGROUNDS)
+		  Else
+		    #If TargetWin32                                                                            
+		      BackgroundFolder = SpecialFolder.Documents
+		    #ElseIf TargetMacOS                                                                    
+		      BackgroundFolder = SpecialFolder.Documents
+		    #ElseIf TargetLinux                                                                       
+		      BackgroundFolder = Nil
+		    #EndIf                                                                                           
+		  End If
+		  '--
 		  App.T.TranslateWindow Me, "find_image", App.TranslationFonts
 		  ReloadDirectory
 		  App.CenterInControlScreen Me
@@ -1450,6 +1440,9 @@ End
 		  // JDL 2/01/2006  Added some OpSys specific code for the txt_path.Caption
 		  Dim path As String
 		  Dim folderIndex,i, j, TotImg, jd, jd2 As Integer
+		  '++JRC If BackgroundFolder is Nil do nothing
+		  If BackgroundFolder = Nil Then Return
+		  
 		  path = BackgroundFolder.AbsolutePath
 		  #If TargetWin32                                                                            // JDL 2/01/2006
 		    If InStr(path, "My Documents") > 0 Then path = Mid(path, InStr(path, "My Documents"))
@@ -1551,7 +1544,7 @@ End
 #tag EndEvents
 #tag Events can
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		Function MouseDown(index as Integer, X As Integer, Y As Integer) As Boolean
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Also replaced (and modified) hard coded argument with variable.
 		  Dim ImgNdx as Integer
@@ -1578,7 +1571,7 @@ End
 		End Function
 	#tag EndEvent
 	#tag Event
-		Sub Paint(g As Graphics)
+		Sub Paint(index as Integer, g As Graphics)
 		  // JDL 2/01/2006  Created ImgNdx to use as index in the ImageFiles array.
 		  // JDL 2/01/2006  Replaced (and modified) hard coded argument with variable.
 		  // JDL 2/01/2006  Replaced pic.Depth with variable picDepth

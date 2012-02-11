@@ -268,8 +268,8 @@ Inherits Application
 		      'Sets folder is empty, ask the user if want to try to copy the default sets to the docs folder
 		      '(as long as the defaults folder isn't empty of course ;)
 		      If  CheckDefaultFolders(SETS_FOLDER) =  FOLDER_EXISTS Then
+		        App.MouseCursor = Nil
 		        If InputBox.AskYN(App.T.Translate("questions/sets_folder_empty/@caption")) Then
-		          App.MouseCursor = Nil
 		          If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETS), DocsFolder.Child(STR_SETS)) Then
 		            '++JRC Translated
 		            MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child(STR_SETS).AbsolutePath)
@@ -285,29 +285,45 @@ Inherits Application
 		  End If
 		  
 		  //++EMP 11/27/05
-		  If Not AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Exists OR AppFolder.Child("OpenSong Defaults").Child("Backgrounds").Count = 0 Then
+		  '++JRC Moved default folder checks to function
+		  If CheckDefaultFolders(BACKGROUNDS_FOLDER) <> FOLDER_EXISTS Then
 		    App.MouseCursor = Nil
 		    '++JRC Translated
-		    MsgBox  T.Translate("errors/no_backgrounds_folder",  AppFolder.Child("OpenSong Defaults").Child("Backgrounds").AbsolutePath)
+		    MsgBox  T.Translate("errors/no_backgrounds_folder",  AppFolder.Child(STR_OS_DEFAULTS).Child(STR_BACKGROUNDS).AbsolutePath)
 		    '--
-		    Quit
+		    '++JRC Change behavior here to notify user but continue operation
+		    'Quit
 		  End If
 		  //--
-		  If Not DocsFolder.Child("Backgrounds").Exists OR DocsFolder.Child("Backgrounds").Count = 0 Then
-		    If Not FileUtils.CopyPath(AppFolder.Child("OpenSong Defaults").Child("Backgrounds"), DocsFolder.Child("Backgrounds")) Then
-		      App.MouseCursor = Nil
-		      '++JRC Translated
-		      MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
-		      '--
-		      Quit
+		  '++JRC Moved document folder checks to function
+		  If CheckDocumentFolders(BACKGROUNDS_FOLDER) <> FOLDER_EXISTS Then
+		    If FileUtils.CreateFolder(DocsFolder.Child(STR_BACKGROUNDS)) Then
+		      'Backgrounds folder is empty, ask the user if want to try to copy the default Backgrounds to the docs folder
+		      '(as long as the defaults folder isn't empty of course ;)
+		      If  CheckDefaultFolders(BACKGROUNDS_FOLDER) =  FOLDER_EXISTS Then
+		        App.MouseCursor = Nil
+		        If InputBox.AskYN(App.T.Translate("questions/backgrounds_folder_empty/@caption")) Then
+		          If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_BACKGROUNDS), DocsFolder.Child(STR_BACKGROUNDS)) Then
+		            '++JRC Translated
+		            MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
+		            '--
+		            'Quit
+		          End If
+		        End If
+		      End If
 		    End If
+		  Else
+		    MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
+		    'Quit
 		  End If
 		  
-		  If (Not DocsFolder.Exists) Or _
-		    (Not DocsFolder.Child("Songs").Exists) Or _
-		    (Not DocsFolder.Child("Sets").Exists) Or _
-		    (Not DocsFolder.Child("Settings").Exists) Or _
-		    (Not DocsFolder.Child("Backgrounds").Exists) Then
+		  '++JRC
+		  If CheckDocumentFolders(DOCUMENTS_FOLDER) <> FOLDER_EXISTS  Or _
+		     CheckDocumentFolders(SETTINGS_FOLDER) <> FOLDER_EXISTS Then
+		    '(Not DocsFolder.Child("Songs").Exists) Or _
+		    '(Not DocsFolder.Child("Sets").Exists) Or _
+		    '(Not DocsFolder.Child("Backgrounds").Exists) Then
+		    
 		    App.MouseCursor = Nil
 		    '++JRC Translated
 		    MsgBox T.Translate("errors/folder_error")

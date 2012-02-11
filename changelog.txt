@@ -1,4 +1,10 @@
-﻿* If Set folder does not exist OpenSong now tries to create it. (JRC)
+﻿* Added check for backgrounds folder in ImageChooserWindow. If it doesn't exist switch to the Op System documents folder.(JRC)
+
+* If Backgrounds folder does not exist OpenSong now tries to create it. (JRC)
+
+* Change behavior for empty Backgrounds folder to: Ask user if they want to copy the default Backgrounds to the folder. (JRC)
+
+* If Set folder does not exist OpenSong now tries to create it. (JRC)
 
 * Change behavior for empty Sets folder to: Ask user if they want to copy the default Set to the folder. (JRC)
 

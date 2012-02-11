@@ -1212,6 +1212,7 @@ Click on this slide to edit its style.</body>
     <import_presentation caption="Import presentation images">Select the presentation file you want to import the slides from.</import_presentation>
     <songs_folder_empty caption="The Songs folder is empty. Would you like to copy the Default Songs to this folder?"/>
     <sets_folder_empty caption="The Sets folder is empty. Would you like to copy the Default Set to this folder?"/>
+    <backgrounds_folder_empty caption="The Backgrounds folder is empty. Would you like to copy the Default Backgrounds to this folder?"/>
     <no_songs_folder caption="Could not find Songs folder, would you like to create this folder?"/>
     <no_sets_folder caption="Could not find Sets folder, would you like to create this folder?"/>
     <no_folder caption="Could not find folder '%1', would you like to create this folder?"/>
@@ -1267,8 +1268,8 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <general1>In '%1': Unknown error</general1>
     <general2>In '%1': '%2'</general2>
     <folder_error>Internal folder error. Contact technical support.</folder_error>
-    <create_backgrounds_folder>Could not create Backgrounds folder: %1</create_backgrounds_folder>
-    <create_sets_folder>Could not create/edit Sets folder %1 Please make sure you have write access to this folder, or select a new Documents folder from the General Settings. Please note that you will be unable to save/present Sets without a Sets folder.</create_sets_folder>
+    <create_backgrounds_folder>Could not create Backgrounds folder: %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings.</create_backgrounds_folder>
+    <create_sets_folder>Could not create/edit Sets folder %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings. Please note that you will be unable to save/present Sets without a Sets folder.</create_sets_folder>
     <create_settings_folder>Could not create Settings folder: %1</create_settings_folder>
     <create_songs_folder>Could not create songs folder: %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings. Please note that you will be unable to save/present Songs without a Songs folder.</create_songs_folder>
     <copy_default_songs>Could not copy default songs to folder: %1. Please ensure you have write acces to this folder.</copy_default_songs>

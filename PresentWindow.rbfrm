@@ -238,7 +238,7 @@ End
 
 
 	#tag Method, Flags = &h1
-		Protected Function DoClosePresentation() As Boolean
+		Protected Function DoClosePresentation(confirmClose As Boolean = True) As Boolean
 		  Dim messagebox As New MessageDialog
 		  Dim msgboxbutton As MessageDialogButton
 		  Dim bFound As Boolean
@@ -257,7 +257,8 @@ End
 		  Next
 		  If bFound Then Return True
 		  '++JRC: made the prompt optional
-		  if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
+		  if confirmClose And _
+		    SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
 		    If PresentationMode = MODE_SINGLE_SCREEN Then // Use operating system message box
 		      messagebox.Message = App.T.Translate("presentation_helper/exit/@caption")
 		      messagebox.Title = "OpenSong"
@@ -1116,6 +1117,16 @@ End
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GoSlide(slideIndex As Integer) As Boolean
+		  me.CurrentSlide = slideIndex
+		  me.XCurrentSlide = SetML.GetSlide(me.CurrentSet, slideIndex)
+		  me.ResetPaint me.XCurrentSlide
+		  
+		  Return Not IsNull(me.XCurrentSlide)
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GoSong(number As Integer) As Boolean
 		  'RealBasic: The Definitive Guide
@@ -1219,30 +1230,30 @@ End
 		  While slide_group <> Nil
 		    
 		    If insertBlanks Then
-		    '++JRC Fix corner case where the first item in a set is a style type, which causes two blank items at the beginning of a set
-		    If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
-		      SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
-		      slide_group.PreviousSibling = Nil And SmartML.GetValue(slide_group, "@type") <> "style" Then
-		      '--
-		      slide_group = SmartML.InsertBefore(slide_group, "slide_group")
-		      //++EMP, 15 Jan 2006
-		      // Change the type of a blank slide from "song" to "blank"
-		      // Makes moving to a blank much easier in PerformAction
-		      //
-		      'SmartML.SetValue slide_group, "@type", "song"
-		      SmartML.SetValue slide_group, "@type", "blank"
-		      SmartML.SetValue slide_group, "slides/slide/body", ""
-		      slide_group = slide_group.NextSibling
-		      If slide_group.NextSibling = Nil Then ' if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
-		        slide_group = SmartML.InsertAfter(slide_group, "slide_group")
+		      '++JRC Fix corner case where the first item in a set is a style type, which causes two blank items at the beginning of a set
+		      If SmartML.GetValue(slide_group, "@name") <> SmartML.GetValue(slide_group.PreviousSibling, "@name") And _
+		        SmartML.GetValue(slide_group, "@type") <> "style"  And SmartML.GetValue(slide_group, "@type") <> "blank" Or _
+		        slide_group.PreviousSibling = Nil And SmartML.GetValue(slide_group, "@type") <> "style" Then
+		        '--
+		        slide_group = SmartML.InsertBefore(slide_group, "slide_group")
+		        //++EMP, 15 Jan 2006
+		        // Change the type of a blank slide from "song" to "blank"
+		        // Makes moving to a blank much easier in PerformAction
+		        //
 		        'SmartML.SetValue slide_group, "@type", "song"
 		        SmartML.SetValue slide_group, "@type", "blank"
 		        SmartML.SetValue slide_group, "slides/slide/body", ""
-		      End If
-		      //--
-		      If i < Item Then
-		        numBlanks = numBlanks + 1
-		      End If
+		        slide_group = slide_group.NextSibling
+		        If slide_group.NextSibling = Nil Then ' if we are on the last slide item/group, lets go ahead and add the last blank while we're here.
+		          slide_group = SmartML.InsertAfter(slide_group, "slide_group")
+		          'SmartML.SetValue slide_group, "@type", "song"
+		          SmartML.SetValue slide_group, "@type", "blank"
+		          SmartML.SetValue slide_group, "slides/slide/body", ""
+		        End If
+		        //--
+		        If i < Item Then
+		          numBlanks = numBlanks + 1
+		        End If
 		      End If
 		      
 		    End If ' for inserting blanks
@@ -1298,7 +1309,6 @@ End
 		  Const ASC_KEY_HOME=1
 		  Const ASC_KEY_END=4
 		  
-		  Dim DontCare As Boolean
 		  Dim Command As Integer
 		  
 		  If Asc(Key) = ASC_KEY_PGDN Then Key = Chr(ASC_KEY_DOWN)
@@ -1311,8 +1321,7 @@ End
 		    Command = ACTION_NEXT_SLIDE
 		  End Select
 		  
-		  DontCare = PerformAction(Command)
-		  Return DontCare
+		  Return PerformAction(Command)
 		End Function
 	#tag EndMethod
 
@@ -1328,8 +1337,8 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function PerformAction(Action As Integer) As Boolean
+	#tag Method, Flags = &h0
+		Function PerformAction(Action As Integer, param As Variant = Nil) As Boolean
 		  
 		  'Constants added for clarity EMP 9/30/04
 		  Const ASC_KEY_LEFT = 28
@@ -1366,55 +1375,69 @@ End
 		    ' PREVIOUS SLIDE
 		    '
 		  ElseIf Keyboard.AsyncKeyDown(KEY_UP)  Or _
-		    Action = ASC_KEY_UP Then
+		    Action = ASC_KEY_UP Or _
+		    Action = ACTION_PREV_SLIDE Then
 		    Return GoPreviousSlide
 		    '
 		    ' FIRST SLIDE in presentation
 		    '
-		  ElseIf Action = ASC_KEY_HOME Then
+		  ElseIf Action = ASC_KEY_HOME Or _
+		    Action = ACTION_FIRST_SLIDE Then
 		    Return GoFirstSlide
 		    '
 		    ' LAST SLIDE in presentation
 		    '
-		  ElseIf Action = ASC_KEY_END Then
+		  ElseIf Action = ASC_KEY_END Or _
+		    Action = ACTION_LAST_SLIDE Then
 		    Return GoLastSlide
 		    '
 		    ' NEXT SECTION
 		    '
-		  ElseIf (Keyboard.AsyncKeyDown(KEY_RIGHT) Or Action = ASC_KEY_RIGHT) Then
+		  ElseIf Keyboard.AsyncKeyDown(KEY_RIGHT) Or _
+		    Action = ASC_KEY_RIGHT Or _
+		    Action = ACTION_NEXT_SECTION Then
 		    Return GoNextSection
 		    '
 		    ' PREVIOUS SECTION
 		    '
-		  ElseIf Keyboard.AsyncKeyDown(KEY_LEFT) Or Action = ASC_KEY_LEFT _
-		    Or Action = ASC_KEY_BACKSPACE _
-		    Or Action = ACTION_FIRST_SLIDE_OF_SECTION Then 'special code 126 comes from inside the program instead of keyboard
+		  ElseIf Keyboard.AsyncKeyDown(KEY_LEFT) Or _
+		    Action = ASC_KEY_LEFT Or _
+		    Action = ASC_KEY_BACKSPACE Or _
+		    Action = ACTION_FIRST_SLIDE_OF_SECTION Or _
+		    Action = ACTION_PREV_SECTION Then 'special code 126 comes from inside the program instead of keyboard
 		    Return GoPreviousSection(Action)
 		    '
 		    ' Jump to Chorus
 		    '
-		  ElseIf Lowercase(Key) = "c" Or Key = "`" Then ' c = Chorus
+		  ElseIf Lowercase(Key) = "c" Or Key = "`" Or _
+		    Action = ACTION_CHORUS Then ' c = Chorus
 		    Return GoChorus
 		    '
 		    ' Jump to  Bridge
 		    '
-		  ElseIf Lowercase(Key) = "b" Then ' b = Bridge
+		  ElseIf Lowercase(Key) = "b" Or _
+		    Action = ACTION_BRIDGE Then ' b = Bridge
 		    Return GoBridge
 		    '
 		    ' Jump to PreChorus
 		    '
-		  ElseIf Lowercase(Key) = "p" Then ' p = Pre-chorus
+		  ElseIf Lowercase(Key) = "p" Or _
+		    Action = ACTION_PRECHORUS Then ' p = Pre-chorus
 		    Return GoPreChorus
 		    '
 		    ' Jump to tag
 		    '
-		  ElseIf Lowercase(Key) = "t" Then ' t = Tag
+		  ElseIf Lowercase(Key) = "t" Or _
+		    Action = ACTION_TAG Then ' t = Tag
 		    Return GoTag
 		    '
 		    ' Jump to Verse "N"
 		    '
 		  ElseIf lowercase(key) = "v" or isNumeric(key) Then ' n = Verse
 		    Return GoVerse(key)
+		  ElseIf Action = ACTION_VERSE And _
+		    Not IsNull(param) And param.IsNumeric Then
+		    Return GoVerse(param.StringValue)
 		    '
 		    ' Jump to Song "N"
 		    '
@@ -1448,47 +1471,61 @@ End
 		    Return GoSong(14)
 		  ElseIf KeyBoard.AsyncKeyDown(KEY_F15) Then ' AKA Pause
 		    Return GoSong(15)
+		    'ElseIf Action = ACTION_SONG And _
+		    'Not IsNull(param) And param.IsNumeric Then
+		    'Return GoSong(param.IntegerValue)
+		    
 		    '
 		    ' Close Presentation
 		    '
 		  ElseIf  Action = KEY_ESCAPE Then ' Escape
 		    Return DoClosePresentation
+		  ElseIf Action = ACTION_EXIT_NOPROMPT Then
+		    Return DoClosePresentation(False)
+		    
 		    '
 		    ' Black screen (can't be "B" since that's the hotkey for "Bridge" :-(
 		    '
-		  ElseIf Lowercase(Key) = "k"  Then
+		  ElseIf Lowercase(Key) = "k"Or _
+		    Action = ACTION_BLACK Then
 		    Return ToggleBlack
 		    '
 		    ' White Screen
 		    '
-		  ElseIf Lowercase(Key) = "w" Then
+		  ElseIf Lowercase(Key) = "w"Or _
+		    Action = ACTION_WHITE Then
 		    Return ToggleWhite
 		    '
 		    ' Hide Slide (leaves background up)
 		    '
-		  ElseIf Lowercase(Key) = "h" Then
+		  ElseIf Lowercase(Key) = "h"Or _
+		    Action = ACTION_HIDE Then
 		    Return ToggleHidden
 		    '
 		    ' Put up the LOGO
 		    '
-		  ElseIf Lowercase(Key) = "l" Then
+		  ElseIf Lowercase(Key) = "l"Or _
+		    Action = ACTION_LOGO Then
 		    Return ToggleLogo
 		    '
 		    ' Freeze display screen
 		    '
-		  ElseIf Lowercase(Key) = "f" Then
+		  ElseIf Lowercase(Key) = "f" Or _
+		    Action = ACTION_FREEZE Then
 		    Return ToggleFreeze
 		    '
 		    '  Normal Screen (less important now that the modes are toggles)
 		    '  It's a trump -- disables any other mode
 		    '
-		  ElseIf Lowercase(Key) = "n" Then
+		  ElseIf Lowercase(Key) = "n" Or _
+		    Action = ACTION_NORMAL Then
 		    Return ShowNormal
 		    '
 		    ' Put up an ALERT
 		    '
 		  ElseIf Lowercase(Key) = "a" Then
 		    Return ShowAlert
+		    
 		    '
 		    ' SCRIPTURE
 		    '
@@ -1781,7 +1818,7 @@ End
 		    '#If Not TargetLinux
 		    'Self.MouseCursor = cross
 		    '#Else
-		      Self.MouseCursor = System.Cursors.ArrowAllDirections
+		    Self.MouseCursor = System.Cursors.ArrowAllDirections
 		    '#EndIf
 		  Case "hidden"
 		    Self.MouseCursor = System.Cursors.InvisibleCursor
@@ -2097,9 +2134,11 @@ End
 		      'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
 		      If m_Snapshots Then
 		        ExportSnapshot PreviewPicture, slide, xStyle
-		    End If
+		      End If
 		    End If
 		    Profiler.EndProfilerEntry
+		    
+		    UpdateStatusNotifiers "change"
 		    
 		    ' === Add the Alert ===
 		    If Len(AlertText) > 0 Then
@@ -2188,7 +2227,7 @@ End
 		      SmartML.SetValue xNewSlide.Parent.Parent, "@type", "song"
 		      SmartML.SetValue xNewSlide, "body", ""
 		      If HelperActive Then PresentHelperWindow.InsertItem xNewSlide, currentSlide + XCurrentSlide.Parent.ChildCount - 1
-		  End If
+		    End If
 		    If XCurrentSlide.Parent.Parent.PreviousSibling = Nil Or SmartML.GetValue(XCurrentSlide.Parent.Parent.PreviousSibling, "@name") <> "" Then
 		      xNewSlide = SmartML.InsertBefore(XCurrentSlide.Parent.Parent, "slide_group")
 		      xNewSlide = SmartML.GetNode(xNewSlide, "slides/slide", True)
@@ -2232,7 +2271,7 @@ End
 		  Else
 		    ResetPaint XCurrentSlide
 		  End If
-		End Sub
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -2249,6 +2288,15 @@ End
 		  For i as Integer = 1 To UBound(ActLog)
 		    If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
 		  Next i
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SubscribeStatusNotifier(subject As iStatusNotifier)
+		  if m_statusNotifiers.IndexOf(subject) < 0 Then
+		    m_statusNotifiers.Append(subject)
+		    subject.StatusNotification("present", "subscribe")
+		  end if
 		End Sub
 	#tag EndMethod
 
@@ -2347,6 +2395,23 @@ End
 		  End If
 		  Return True
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub UnsubscribeStatusNotifier(subject As iStatusNotifier)
+		  Dim i As Integer = m_statusNotifiers.IndexOf(subject)
+		  If i >= 0 Then
+		    m_statusNotifiers.Remove(i)
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub UpdateStatusNotifiers(info As String)
+		  For Each subject As iStatusNotifier in m_statusNotifiers
+		    subject.StatusNotification("present", info)
+		  Next
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -2490,6 +2555,10 @@ End
 		Protected m_Snapshots As Boolean = False
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		m_statusNotifiers() As iStatusNotifier
+	#tag EndProperty
+
 	#tag Property, Flags = &h21
 		Private m_VideolanController As VideolanController = Nil
 	#tag EndProperty
@@ -2554,6 +2623,9 @@ End
 		Private _IsSlidechangeExternal As Boolean = False
 	#tag EndProperty
 
+
+	#tag Constant, Name = ACTION_ALERT, Type = Double, Dynamic = False, Default = \"1021", Scope = Public
+	#tag EndConstant
 
 	#tag Constant, Name = ACTION_BLACK, Type = Integer, Dynamic = False, Default = \"1013", Scope = Public
 	#tag EndConstant

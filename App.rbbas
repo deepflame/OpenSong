@@ -377,6 +377,18 @@ Inherits Application
 		  '--
 		  T.TranslateMenu("main_menu", MainMenu)
 		  PlatformSpecific
+		  
+		  m_ControlServer = New REST.RESTServer()
+		  m_ControlServer.AddResource(New REST.RESTResourceStatus)
+		  m_ControlServer.AddResource(New REST.RESTResourceSong)
+		  m_ControlServer.AddResource(New REST.RESTResourceSet)
+		  m_ControlServer.AddResource(New REST.RESTResourcePresent)
+		  m_ControlServer.AddResource(New REST.RESTResourceWebSocket)
+		  m_ControlServer.Port = 8080
+		  m_ControlServer.MinimumSocketsAvailable = 2
+		  m_ControlServer.MaximumSocketsConnected = 25
+		  m_ControlServer.Listen
+		  
 		  MainWindow.Show
 		End Sub
 	#tag EndEvent
@@ -792,10 +804,10 @@ Inherits Application
 		      'If that fails, crash anyway...
 		      If Not MainPreferences.Load(f) Then
 		        Dim e As RuntimeException = New RuntimeException()
-		    e.Message = MainPreferences.ErrorString
-		    MainPreferences = Nil
-		    Raise e
-		  End If
+		        e.Message = MainPreferences.ErrorString
+		        MainPreferences = Nil
+		        Raise e
+		      End If
 		    Else
 		      MainPreferences = Nil
 		      Quit()
@@ -984,10 +996,10 @@ Inherits Application
 		  Dim status As Integer
 		  
 		  #If TargetWin32 Then
-		  Dim lparam As New MemoryBlock(4)
-		  Const WM_SYSCOMMAND = 274
-		  Const SC_RESTORE = &HF120
-		  
+		    Dim lparam As New MemoryBlock(4)
+		    Const WM_SYSCOMMAND = 274
+		    Const SC_RESTORE = &HF120
+		    
 		    Declare Function SendMessageA Lib "user32" (ByVal hwnd as Integer, ByVal msg as Integer, ByVal wParam as Integer, ByVal lParam as Ptr) as Integer
 		    
 		    status = SendMessageA(wnd.Handle, WM_SYSCOMMAND, SC_RESTORE, lparam)
@@ -1333,7 +1345,7 @@ Inherits Application
 		#tag Getter
 			Get
 			  If IsPortable Then
-		  Dim f As FolderItem
+			    Dim f As FolderItem
 			    dim S As string
 			    S =  SmartML.GetValue(MyGlobals.DocumentElement, "portable/@absdatapath")
 			    if S <> "" then
@@ -1345,20 +1357,20 @@ Inherits Application
 			      end if
 			      f = AppFolder.Child(S)
 			    end if
-		  
+			    
 			    If FileUtils.CreateFolder(f) Then
 			      Return f
-		          Else
+			    Else
 			      If f <> Nil Then App.DebugWriter.Write("DocumentsFolder: Error in CreateFolder for " + f.AbsolutePath + ", " + FileUtils.LastError, 1)
 			      Return Nil
-		        End If
+			    End If
 			  Else // standard - not portable
 			    #If TargetLinux
 			      Return SpecialFolder.UserHome
-		      #Else
+			    #Else
 			      Return SpecialFolder.Documents
-		      #EndIf
-		      End If
+			    #EndIf
+			  End If
 			End Get
 		#tag EndGetter
 		AppDocumentsFolder As FolderItem
@@ -1371,7 +1383,7 @@ Inherits Application
 			    Return AppDocumentsFolder
 			  Else
 			    Return AppDocumentsFolder.Child("OpenSong")
-		    End If
+			  End If
 			End Get
 		#tag EndGetter
 		AppDocumentsFolderForOpenSong As FolderItem
@@ -1495,6 +1507,10 @@ Inherits Application
 
 	#tag Property, Flags = &h0
 		MyPrintSettings As XmlDocument
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_ControlServer As REST.RESTServer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

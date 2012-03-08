@@ -1,0 +1,1471 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<language name="Eesti" author="Jargo Paikla" version="1.7.0">
+<!-- Laadimise osa -->
+  <load_settings>
+    <checking_folders>Loon/Kontrollin dokumentide kausta</checking_folders>
+    <main>Laen vaikimisi seadeid</main>
+    <print>Laen printimise seadeid</print>  
+    <presentation>Laen presentatsiooni seadeid</presentation>
+    <transitions>Laen tõlke nimekirja</transitions>
+    <tempos>Laen tempo nimekirja</tempos>
+    <themes>Laen teemade nimekirja</themes>
+    <time_signatures>Laen ajamäärangute nimekirja</time_signatures>
+    <imagequality>Kaen kujundus kvaliteedi määranguid</imagequality>
+	<videolan_preset>Loading Videolan parameter presets</videolan_preset>
+    <fonts>Laen fronte</fonts>	
+    <latest_version>Kontrollin versiooni uuendust
+      <newer_available>Uuem versioon (%1) on saadaval. Mine www.opensong.org allalaadimiseks.</newer_available>
+    </latest_version>
+ </load_settings>
+
+  <load_data>
+      <bible>Laen määratud Piiblit</bible>
+      <songs_cache>Puhverdan laule</songs_cache>
+      <folders>Laen laulude kausta</folders>
+      <songs>Laen laule</songs>
+      <sets>Laen komplekte</sets>
+  </load_data>
+
+  <welcome>Tere tulemast!</welcome>
+<!-- Laulude tööreziimi osa -->
+    <songs_mode caption="Laulude tööreziim">Kasuta seda reziimi, laulude lisamiaeks ja muutmiseks. Laule on võimalik printida juht lehtedeks, või presenteerida, kui slaide. Kui muudad tööreziimi laulude tööreziimist komplektide tööreziimi, palutakse teil salvestada kõik muudatused.
+    <all_songs caption="Kõik laulud">
+<print caption="Prindi">Prindib kõik saadaolevad laulud. Selle funksiooniga on hea printida laulikut.</print>
+      <export caption="Eksport">Ekspordib kogu lauliku.</export>
+      <find caption="Otsi">Otsib lauludest etteantud sõna või fraasi.</find>
+    </all_songs>
+    <new_song caption="Uus laul">
+      <create caption="Loo">Lisab uue laulu OpenSong´i.</create>
+      <import caption="Impordi">Impordib uue laulu OpenSong´i CCLI SongSelect andmebaasist.</import>
+    </new_song>
+    <selected_song caption="Valitud laulud">
+      <save caption="Salvesta">Salvestab valitud laulu andmebaasi.</save>
+      <revert caption="Tagasi">Võtab tagasi viimase käsu ja jätab eelnevad muudatused alles.</revert>
+      <print caption="Prindi">Prindib käesoleva laulu.</print>
+      <present caption="Kuva">Kuvab valitud laulu. Kui oled teinud käesolevas laulus muudatusi, siis muudatused salvestatakse.	  
+        <single_screen caption="Eesoleval ekraanil"/>
+        <dual_screen caption="Kahel ekraanil"/>
+        <preview_dual_screen caption="Kahe ekraani eelvaade"/>
+      </present>
+      <export caption="Ekspordi">Ekspordib käesoleva laulu.</export>
+      <rename caption="Nimeta ümber">Nimetab ümber käesoleva laulu failinime.</rename>
+      <move caption="Liiguta">Liigutab käesoleva laulu uude kausta.
+        <where caption="Liiguta '%1' kausta:"/>
+      </move>
+     <copy caption="Kopeeri">Kopeerib käesoleva laulu uude kausta.
+        <where caption="Kopeeri '%1' kausta:"/>
+      </copy>
+      <delete caption="Kustuta">Kustutab käesoleva laulu.</delete>
+    </selected_song>
+
+    <songs caption="Laulud">Valige laul nimekirjast, laadimiseks see laulu toimetajase.</songs>
+    <curr_folder caption="Käesolev Kaust">Näitab kausta, kus käesolev laul asetseb (Sama kui aktiivne kaust)</curr_folder>
+ 
+	<song_folders caption="Kaustad">Vali nimistust kaust, kus asetseb soovitud laul.
+	<new>Loob lauludele uue kausta.</new>
+      <delete>Kustutab valitud laulude kausta(lauliku). Kaust peab olema tühi.</delete>
+	<filter_all caption="Kõik"/>
+      <filter_main caption="Tavaline"/>
+    </song_folders>
+  </songs_mode>
+
+  <general_song_editor caption="Tavaline">Juurdepääs käesoleva laulu pealkirja, alampealkirja, autori, slaidijärjekorra, ja sõnade juurde.
+    <header caption="Laulu toimetaja"/>
+    <show_general_editor caption="Tavaline"/>
+    <show_advanced_editor caption="Täpsemalt"/>
+    <title caption="Pealkiri">Valitud laulu pealkiri.</title>
+    <author caption="Autor">Valitud laulu autor.</author>
+    <copyright caption="Autoriõigus">Valitud laulu autoriõigus.</copyright>
+    <ccli caption="CCLI Song #">Valitud laulu CCLI number.</ccli>
+    <hymn_number caption="Laul nr #">Valitud laulu number.</hymn_number>
+    <presentation caption="Esitlus">Valitud laulu esitlusjärjekord. Valikud peavad olema lahutatud tühikuga. (nt. "V1 C V2 C")</presentation>
+    <lyrics caption="Akordid/Sõnad">Toimeta laulu siin, kasutades: Valikuid, Komentaare, Akorde ja Sõnade lisamise võimalusi.</lyrics>
+    <insert caption="Lisa"/>
+      <ins_section caption="Valik">Valiku funksiooni kasutades saad jagada laulu osadeks, näiteks salmideks.
+        <section_name caption="Valiku nimi"/>
+      </ins_section>
+      <ins_lyrics caption="Akordid/Sõnad">Lisab automaatselt rea eelliidese, akordide ja sõnade kirjutamiseks.
+        <number_of_lines caption="Ridade arv?"/>
+      </ins_lyrics>
+      <ins_multi_verse caption="Korduvad read">Lisab automaatselt rea eelliidese, akordidele ja sõnadele, kui sa soovid neid kasutada korduvate ridade formaadis.
+        <number_of_verses caption="Salmide arv?"/>
+        <number_of_lines caption="Ridade arv?"/>
+      </ins_multi_verse>
+     <ins_comment caption="Komentaar">Komentaarid kuvatakse printimisel juhtlehtedele ja ei ole nähtavad presentatsiooni ajal.</ins_comment>
+      <ins_column caption="Uus veerg">Juhtlehele kahe veeru printimiseks, et mahutada pikemaid laule.</ins_column>
+      <ins_page caption="Uus lehekülg">Määrab printimisel kahe lehe vahekoha pikematel lauludel.(NT. Et salmid poolikult ei jääks. ).</ins_page>
+    <transpose caption="Vahetus">Kasuta seda võimalust, et vahetada akorde kõtgemaks või madalamaks. Ühikud on mõõdetud pool astmetes.
+      <using caption="Kasuta">Select Sharps from this list to cause OpenSong to transpose accidentals to sharps rather than flats. Select Flats from this list to cause OpenSong to transpose accidentals to flats rather than sharps.
+        <sharps caption="Diees-Sharps"/>
+        <flats caption="Bemoll-Flats"/>
+      </using>
+    </transpose>
+  </general_song_editor>
+
+  <advanced_song_editor caption="Täpsemalt">Juurdepääs käesoleva laulu kujundusele, capole, taktimõõdule, stiilile, jne.
+    <header caption="Laulu toimetaja"/>
+    <show_general_editor caption="Tavaline"/>
+    <show_advanced_editor caption="Täpsemalt"/>
+    <themes caption="Kujundus">Paigaldab põhikujunduse valitud laulule.</themes>
+    <capo caption="Capo">Näitab Capo kohta valitud laulule (printimisel) .</capo>
+    <capo_print caption="Prindi"> Kui sellel valikul on linnuke, OpenSong Prindib Capo akordid tava akordide asemel.</capo_print>
+    <time_sig caption="Taktimõõt">Määrab käesoleva laulu taktimõõdu.</time_sig>
+    <tempo caption="Tempo">Näitab valitud laulu tempot.</tempo>
+    <key caption="Võti">Määrab valitud laulu noodivõtme.</key>
+    <aka caption="AKA">Määrab alternatiivae pealkirja valitud laulule.</aka>
+    <key_line caption="Võtme rida">Määrab rea laulust, mis aitab kindlaks teha valitud laulu.</key_line>
+    <style caption="Muuda stiili">Kliki siia, kui soovid muuta stiili. Määrab stiili selles komplektis presentatsiooni ajaks.</style>
+    <user1 caption="Kasutaja määrang 1">Määra see milleks iganes soovid sa selle määrata. Seda välja saab näiteks kasutada mõne muu sobiva programmi määranguteks.</user1>
+    <user2 caption="Kasutaja määrang 2">Määra see milleks iganes soovid sa selle määrata. Seda välja saab näiteks kasutada mõne muu sobiva programmi määranguteks.</user2>
+    <user3 caption="Kasutaja määrang 3">Määra see milleks iganes soovid sa selle määrata. Seda välja saab näiteks kasutada mõne muu sobiva programmi määranguteks.</user3>
+  </advanced_song_editor>
+
+  <sets_mode caption="Komplektide tööreziim">Kasuta seda moodulit, et lisada või muuta komplekte. Komplekte kasutatakse, et ette valmistada tunde, kuvada mitmeid laule, - kirjakohti, slaide või milleks iganes. Kui oled laulude tööreziimis palutakse sul pooleli olev salvestamatta laul salvestada.
+    <sets caption="Komplektid">Vali nimekirjast komplekt, mida soovid presenteerida või muuta.
+      <add>Lisa uus komplekt OpenSong-i.</add>
+    </sets>
+    <current_set caption="Käesolev komplekt">
+      <save caption="Salvesta">Salvestab käesoleva komplekti.</save>
+      <rename caption="Nimeta ümber">Nimetab käesoleva komplekti ümber.</rename>
+      <delete caption="Kustuta">Kustutab käesoleva komplekti. (Laule mis on käesolevas komplektis laulude andmebaasist ei kustutatta.)</delete>
+       <saveas caption="Salvesta kui">Salvestab käesoleva komplekti uue nimega.</saveas>
+      <present caption="Kuva">Kuvab käesoleva komplekti ekraanile. Sul on võimalik kuvada käesolev presentatsioon eesoleval ekraanil, Lisaekraanil, Või kasutada eesolevat ekraani, nägemaks, kuidas näeb presentatsioon välja kahel ekraanil kuvatuna.
+        <single_screen caption="Eesoleval ekraanil"/>
+        <dual_screen caption="Kahel ekraanil"/>
+        <preview_dual_screen caption="Kahe ekraani eelvaade"/>
+        <no_slides>Sul peab olema vähemalt üks slaid presenteerimiseks.</no_slides>
+      </present>
+      <print_songs caption="Prindi Laulud">Prindib ainult laulud käesolevast komplektist.
+        <no_songs>Komplektis pole laule.</no_songs>
+      </print_songs>
+      <print_order caption="Prindi Nimekiri">Prindib käesoleva komplekti nimekirja.</print_order>
+      <export caption="Ekspordi">Ekspordib käesoleva komplekti uude kausta.</export>
+    </current_set>
+    <new_item caption="Lisa uus">
+      <add_song caption="Laul">Asetab uue laulu käesolevasse komplekti. Avab laulude nimekirja andmebaasist, kust saad valida laulu mida soovid presenteerida.</add_song>
+      <add_scripture caption="Piibel">Asetab Piibli kirjakoha slaididena käesolevasse komplekti. Avab kirjakoha otsimise akna, kust saad valida millisest piiblist ja millist kirjakohta soovid presenteerida.</add_scripture>
+      <add_slides caption="Slaid">Lisab tühja slaidi. Tühi slaid võimaldab sul endal midagi kirjutada, saad määrata ka eraldi kujunduse, pealkirja, alampealkirja jne. See slaid võib koosneda ka tegelikult mitmetest slaididest.</add_slides>
+      <add_style caption="Stiil">Muudab praeguse komplekti vaikimisi stiili mis tahes kohas komplektis. Stiili muutused võivad määratleda uue stiil või taastada eelneva stiil</add_style>
+      <add_image caption="Pilt">Lisab pildi(foto) käesolevasse komplekti. Pildislaid võimaldab sul näidata ühte pilti või piltide seerjat.</add_image>
+<add_external caption="External">Lisab uue slaidi komplekti, mis võimaldab aktiveerida välistest allikatest nagu esitluse või DVD taasesituse tarkvara.</add_external> 
+     <add_video caption="Video">Lisab video faili käesolevale komplektile. Kasuta seda, kui soovid näidata videot läbi OpenSong-i.</add_video>
+      <add_powerpoint caption="PowerPoint">Lisab PowerPoint- presentatsiooni käesolevasse komplekti.Kasutage seda kontrolli, et kontrollida PowerPointi esitlust OpenSong programmist.</add_powerpoint>
+    </new_item>
+    <current_item caption="Valitud slaid">
+      <move_up caption="Liiguta üles">Liigutab valitud slaidi järjekorras üles poole.</move_up>
+      <move_down caption="Liiguta alla">Liigutab valitud slaidi järjekorras alla poole.</move_down>
+      <remove caption="Eemaldada">Eemaldadab valitud slaidi käesolevast komplektist.</remove>
+      <copy caption="Kopeeri">Kopeerib valitud slaidi.</copy>
+      <paste caption="link(shared/insert/@caption)">Asetab kopeeritud slaidi määratud kohta.</paste>      
+      <store caption="Salvesta">Salvestab valitud slaidi(d) käesolevasse komplekti.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Esitab praeguse komplekti ekraanil alates parajasti valitud elemendist. Sul on võimalus esitada praegusele monitoril teisel monitoril , või kasutades ühte monitori eelvaatet mis oleks nagu kaks monitori.
+        <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
+        <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
+        <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
+        <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
+      </presentitem>
+    </current_item>
+    <items caption="Komplekti slaidid">Nimekiri slaididest käesolevas komplektis. Klikkides slaidil kuvatakse valitud slaid toimetajasse Lauluga laulude tööreziimi minekuks tee vastaval laulul topelt klikk.
+      <song caption="(Laul)"/>
+      <custom caption="(Kohandatud slaid)"/>
+      <scripture caption="(Kirjakoht)"/>
+      <image caption="(Pilt)"/>
+	<external caption="(Väline)"/>
+      <style caption="(Stiil)">-- Muuda stiili --</style>
+      <revert caption="(Stiil)">-- Taasta eelnev stiil --</revert>
+      <defaultstyle caption="(Stiil)">-- Eksporditud stiil --</defaultstyle>
+    </items>
+    <untitled caption="Nimetu"/>
+    <errors>
+      <revert caption="Viga komplekti laadimisel &quot;%1&quot; failist."/>
+      <insert caption="Kopeeritud slaidide lisamine ebaõnnestus:&#10;%1"/>
+    </errors>
+    <messages>
+      <export_complete>&quot;%1&quot; kaust eksporditud
+%2
+      </export_complete>
+    </messages>
+  </sets_mode>
+
+  <slide_editor>
+    <header caption="Slaidi toimetaja"/>
+
+    <title caption="Pealkiri">Asetab slaidile pealkirja, mida slaidil endal kuvatakse.</title>
+    <subtitle caption="Alampealkiri">Asetab slaidile kuvamiseks alampealkirja.</subtitle>
+    <name caption="Nimi">Asetab slaidile nime mida näidatakse  Presentatsiooni Abimehe aknas. Seda nime slaidil presentatsiooni ajal ei kuvata.</name>
+    <slides caption="Slaidid">Näitab valitud slaidi sisu. Vihje: Lohistage üks või mitu pilti sellese nimekirja lihtsaks piltide lisamiseks.</slides>
+    <presentation caption="Muudetud presentatsiooni järjekord">Siin saab muuta vaikimisi määratud presentatsiooni järjekorda. Määrang on ainult esitamiseks käesolevas komplektis.</presentation>
+    <origorder caption="Määratud presentatsiooni järjekord">Valitud laulu määratud kuvamise järjekord</origorder>       
+    <folder caption=" Laulude kaust">Kaust, kus asetsevad valitud laulud</folder>
+
+    <notes caption="Märkused">Märkuseid näidatakse Presentatsiooni Abimehe aknas, siis kui kuvatakse presentatsiooni kahel ekraanil.</notes>
+    <insert caption="Lisa"/>
+
+      <ins_slide caption="Slaid">Lubab moodustada alamslaide, mis jagavad sama pealkirja, alampealkirja ja stiili. Slaide, mis on selliselt valmistatud on võimalik panna automaatselt näitama NB Ära unusta valimast mitu sekundit slaidi kuvatakse!.</ins_slide>
+    <loop caption="Korda slaide">Märkides selle valiku hakkab OpenSong valitid slaidi alamslaide kordama ringiratast vastavalt ette antud ajale.</loop>
+    <print caption="Prindi nimekirjas">Kui see kastike on märkimatta, siis juhtlehe printimis nimekirja seda slaidi(alamslaidide gruppi) ei lisata. Presentatsiooni kuvamist see ei muuda.</print>
+    <transition caption="Kasuta üleminekuid">Märgi see kastike, kui soovid kasutada slaidivahetusel üleminekuid.</transition>
+    <auto_advance caption="Slaidi kuvatakse">Sisesta siia number kui mitu sekundit sa soovid, et slaide presentatsioonil kuvatakse.</auto_advance>
+    <seconds caption="sekundit"/>
+
+    <style caption="Muuda stiili">Pannes siia linnukese võimaldas sa valitud slaidil kasutada muudetud tiili . Stiili muutmiseks kliki üleval pool asetsevale eelvaateaknale ja muuda stiili.</style>
+  </slide_editor>
+
+  <image_slide>
+    <header caption="Pildi Slaidi toimetaja"/>
+    <title caption="link(slide_editor/title/@caption)">link(slide_editor/title)</title>
+    <subtitle caption="link(slide_editor/subtitle/@caption)">link(slide_editor/subtitle)</subtitle>
+
+    <descriptions caption="Pildi kirjeldus alampealkirjas">Lisab pildi(Foto) kirjelduse alampealkirjaks.</descriptions>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+
+    <images caption="Pildid" head1="Eelvaade" head2="Kirjeldus">Sisaldab pilte mida kuvatakse selles slaidis. Vihje: Lihtsamaks lisamiseks tõmba hiirega üks või mitu pilti siia nimekirja .</images>
+    <fit_to_screen caption="Muuda pildi suurust, et mahutada pilt ekraanile">Pildid, mahutatakse ekraanile. Suuri pilte vähendatakse ja väiksemaid pilte suurendatakse, et täita terve ekraan .</fit_to_screen>
+    <fit_to_body caption="Muuda pildi suurust, mahutamaks pilti sisu aknasse">Valides selle võimaluse mahutatakse pilt sisu seadete järgi ekraanile. St pilt paigutatakse ekraanile juhindudes veeriste sätetest.</fit_to_body>
+    <keepaspect caption="Hoia kuvasuhet, kui muudad pildi suurust">Pildi suuruse muutmisel arvestatakse kuvasuhet. ST Pildi suurust muudetakse proportsionaalselt.</keepaspect>
+    <store_as_link caption="Ära hoia pilti komplektide failis. Kasuta linki pildi juurde">Salvestades pildi komplektide faili vähendad sa kiiresti kõvaketta ruumi, mis võib presentatsoooni ajal pildi kvaliteedile kehvasti mõjuda. Linkides pildi komplektiga väldib seda. Pildid 'Backgrounds' kaustas on salvestatud kui sõltuv link, Mis teeb ümberlülituse presentatsiooni kiiremaks. NB ettevaatust kui valmistad presentatsiooni ette teises arvutis Pildi failitee peab jääma samaks, et OpenSong oskaks pilti leida!</store_as_link>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <action caption="Toiminguid" />
+
+
+      <ins_image caption="Lisa pilt">Lisab uue pildi slaidi. Pildid ühes slaidis jagavad sama pealkirja ja muid sätteid. Slaidid, mis on nii moodistatud on võimalik panna automaatselt kordama.</ins_image>
+      <imp_image caption="Impordi">Laeb kõiki olemasolevaid esitluse slaidid ja lisab need nagu pildid.</imp_image>
+      <del_image caption="Eemalda pilt">Eemaldab valitud pildi slaidist.</del_image>
+      <move_up caption="Liiguta üles">Liigutab valitud slaidi järjekorras üles poole.</move_up>
+      <move_down caption="Liiguta alla">Liigutab valitud slaidi järjekorras alla poole.</move_down>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+    <print caption="link(slide_editor/print/@caption)">link(slide_editor/print)</print>
+    <transition caption="link(slide_editor/transition/@caption)">link(slide_editor/transition)</transition>
+    <auto_advance caption="link(slide_editor/auto_advance/@caption)">link(slide_editor/auto_advance)</auto_advance>
+    <seconds caption="link(slide_editor/seconds/@caption)">link(slide_editor/seconds)</seconds>
+    <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
+  </image_slide>
+
+  <external_slide>
+    <header caption="Välise slaidi toimetaja"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Rakendus"/>
+    <presentation caption="Presentatsioon">Kasutage seda slaidi et näidata esitlust kasutades Microsoft PowerPoint või tasuta ja avatud lähtekoodiga OpenOffice.org Impress presentatsiooni.</presentation>
+    <videolan caption="Videolan">Kasutage seda slidi,et näidata videot või muud meedjat mitmekülgse ja avatud lähtekoodiga Media Player Videolan (VLC)'iga.</videolan>
+
+    <application caption="Rakendus">Kasutage seda slaidi,et jooksutada välist programmi, kasutades käsurida.</application>
+    <no_application caption="No application">
+    <no_application caption="Select an application to use as source for this slides content."/>
+    </no_application>
+    <presentation_settings caption="Presentatsiooni seaded">
+
+      <presentation_host caption="Millist programmi soovid kasutada presentatsiooni näitamiseks?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="Täielik kontroll sinu PowerPoint presentatsiooni üle ja Microsoft Officei installeeringu on vajalik."/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="Et näidata oma PowerPointi esitlust, saate kasutada tasuta Microsoft PowerPoint Viewerit. OpenSong püüab tuvastada seda. Saate seadistada konkreetse näitaja üldseadeid."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="Täielik kontroll Impress või PowerPointi esitluse või OpenOffice.org rakenduste üle on vajalik."/>
+      <presentation_file caption="Presentatsiooni failinimi">Vali presentatsioonile failinimi kasutades failivaliku dialoogi.</presentation_file>
+      <loop_presentation caption="Korda esitlust"/>
+      <embed_presentation caption="Lisa presentatsioon  OpenSongi presentatsiooni komplekti"/>
+    </presentation_settings>
+    <videolan_settings caption="Videolan Seaded">
+      <videolan_start caption="Käivita Videolan"/>
+	  <videolan_mediafilename caption="Tee meediumifailini">Vali heli-või videofaili et mängida.</videolan_mediafilename>
+	  <videolan_preset caption="Kasuta järgmisi eelseadistatud parameetrid"/>
+	  <videolan_manual caption="Käsitsi kohandatud parameetreid (use %d for display number, %s for mediafile)"/>
+      <wait_for_videolan caption="Oodake taasesituse lõpuni enne, järgmise slaidi jätkamist"/>
+      <videolan_stop caption="Lõpetage iga käivitatud Videolan esitlus"/>
+    </videolan_settings>
+    <application_settings caption="Rakenduse käivitus seaded">
+      <application_start caption="Alusta välist rakendust"/>
+      <application_filename caption="Tee käivitatava rakenduseni">Vali peamine programm, mille peaks käivitatama.</application_filename>
+      <application_parameters caption="Rakenduse parameetrid"/>
+      <wait_for_application caption="Enne jätkamist oodake kuni väline rakendus lõpetab"/>
+      <application_stop caption="Lõpetage kõik praegu töötavad käivitatud rakendused"/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
+
+ <style_change>
+    <header caption="Stiili muutmine"/>
+
+
+
+    <revert caption="Taasta eelnev stiil">Taastab eelneva stiili valitud komplektis.</revert>
+    <change caption="Muuda stiili">See võimalus võimaldab muuta stiili üks kõik millises slaidis käesolevas komplektis. Muutus mõjub igale järgnevale slaidile, kuni järgmise stiilimuutuseni.</change>
+    <style>Kliki siia, et muuta  stiili kujundust.</style>
+  </style_change>
+
+  <video_slides>
+    <header caption="Video Slaidi toimetaja"/>
+    <name caption="Slaidi nimi">Nimi, mida OpenSong kasutab selle slaidi identifitseerimiseks.</name>
+    <file caption="Video Fail">Asetab nime videofailile käesolevas slaidis.</file>
+
+    <loop caption="Korda videot">Valides selle võimaluse hakkab videofail end kordama iga kord kui jõuab lõppu.</loop>
+  </video_slides>
+
+  <powerpoint_slides>
+    <header caption="PowerPoint Slaidi toimetaja"/>
+    <name caption="Slaidi nimi">Nimi, mida kasutab OpenSong selle slaidide grupi identifitseerimiseks.</name>
+    <file caption="PowerPoint Fail">Asetab nime PowerPoint failile käesolevas slaidis.</file>
+  </powerpoint_slides>
+
+  <song_search title="Laulu otsing">
+    <search caption="Sisesta otsitav sõna (d) või täht:"/>
+    <fields caption="Otsingu parameetrid">
+      <title caption="link(general_song_editor/title/@caption)"/>
+      <author caption="link(general_song_editor/author/@caption)"/>
+      <copyright caption="link(general_song_editor/copyright/@caption)"/>
+      <ccli caption="link(general_song_editor/ccli/@caption)"/>
+      <presentation caption="link(general_song_editor/presentation/@caption)"/>
+      <lyrics caption="link(general_song_editor/lyrics/@caption)"/>
+      <hymn_number caption="link(general_song_editor/hymn_number/@caption)"/>
+      <themes caption="link(advanced_song_editor/themes/@caption)"/>
+      <capo caption="link(advanced_song_editor/capo/@caption)"/>
+      <print_capo caption="link(advanced_song_editor/print_capo/caption)"/>
+      <time_sig caption="link(advanced_song_editor/time_sig/@caption)"/>
+      <tempo caption="link(advanced_song_editor/tempo/@caption)"/>
+      <key caption="link(advanced_song_editor/key/@caption)"/>
+      <aka caption="link(advanced_song_editor/aka/@caption)"/>
+      <key_line caption="link(advanced_song_editor/key_line/@caption)"/>
+      <style caption="link(advanced_song_editor/style/@caption)"/>
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+    </fields>
+  </song_search>
+
+  <scripture_search title="Otsi teksti">
+    <caption caption="Otsi Piiblist kasutades otsingusõna(d) "/>
+    <example caption="Täpse fraasi leidmiseks paiguta sõnad jutumärkidesse, näiteks &quot;Simon Peter&quot;"/>
+    <match caption="Võrdle">
+      <exact caption="S&amp;isaldab"/>
+      <begin caption="&amp;Algab"/>
+    </match>
+    <words caption="Salmis peab olema">
+      <all caption="K&amp;õik sõnad"/>
+      <any caption="Os&amp;a fraasist"/>
+    </words>
+    <search caption="&amp;Otsi"/>
+
+    <result caption="%1 sobivus(t) on leitud selle otsingusõnaga."/>
+    <ok caption="link(shared/ok/@caption)"/>
+    <cancel caption="link(shared/cancel/@caption)"/>
+    <result head1="Kirjakoht" head2="Tekst" />
+  </scripture_search>
+
+  <main_menu>
+    <file caption="_Fail">
+      <new caption="_Uus"/>
+      <save caption="_Salvesta"/>
+      <present caption="_Kuva">
+        <single_screen caption="_Ühel ekraanil"/>
+        <dual_screen caption="_Kahel ekraanil"/>
+        <preview_dual_screen caption="Ka_he ekraani eelvaade"/>
+      </present>
+      <pagesetup caption="Pr_interi seaded"/>
+      <print caption="_Prindi"/>
+      <print_alphabetical_toc caption="Prindi _Tähestikuliselt TOC"/>
+      <print_categorical_toc caption="Prindi _Katekoorja järgi TOC"/>
+      <song_act caption="Laulude kasutus _Logi"/>
+      <scripture caption="Scripture Look_up"/>
+      <quit caption="_Välju"/>
+    </file>
+    <edit caption="To_imeta">
+      <undo caption="_Tagasi"/>
+      <cut caption="_Lõika"/>
+      <copy caption="Kop_eeri"/>
+      <paste caption="_Kleebi"/>
+      <clear caption="P_uhasta"/>
+      <find caption="_Otsi"/>
+      <find_next caption="Otsi U_uesti"/>
+      <selall caption="Va_li Kõik"/>
+    </edit>
+    <mode caption="_Tööreziim">
+      <songs caption="_Laulude tööteziim"/>
+      <sets caption="_Komplektide tööreziim"/>
+    </mode>
+    <settings caption="_Seaded">
+      <presentation caption="_Presentatsiooni seaded"/>
+      <print caption="Printimis _Seaded"/>
+      <general caption="_Üldised seaded"/>
+      <refresh_songs caption="Värskenda laulude _kausta"/>
+      <refresh_sets caption="_Värskenda komplektide kausta"/>
+      <install_module caption="_Installeeri moodul"/>
+    </settings>
+    <help caption="_Abi">
+      <help_topics caption="Temaatiline _Abi"/>
+      <user_manual caption="_Online Kasutusjuhend"/>
+      <translating caption="_OpenSong´i tõlkimine"/>
+      <about caption="_OpenSong-ist"/>
+    </help>
+  </main_menu>
+
+  <general_settings title="Üldised seaded">
+
+    <general caption="Üldised" head1="Põhilised" head2="Failide asukohad" head3="Süsteem" head4="Välimus">
+      <ccli caption="Kiriku CCLI lissents #"/>
+      <version_check caption="Kontrolli programmi uuendusi avamisel."/>
+      <language caption="Keel"/>
+    </general>
+    <proxy caption="Puhverserver">
+      <host caption="Host"/>
+      <port caption="Port"/>
+    </proxy>
+    <user_defined caption="Kasutaja määrangud">
+      <user1 caption="link(advanced_song_editor/user1/@caption)"/>
+      <user2 caption="link(advanced_song_editor/user2/@caption)"/>
+      <user3 caption="link(advanced_song_editor/user3/@caption)"/>
+      <load caption="Lae vaikimisi keel"/>
+    </user_defined>
+    <fonts caption="Frondid">
+      <headings caption="Pealkirjad"/>
+      <labels caption="Sildid"/>
+      <text_fields caption="Teksti väljad"/>
+      <fixed_width caption="Fikseeritud laiusega tekst"/>
+      <buttons caption="Nupud"/>
+      <large_headings caption="Suured pealkirjad"/>
+      <newpaint caption="Kasuta uut visuaalset stiili"/>
+    </fonts>
+    <documents_folder caption="Dokumentide kaust">
+      <warning caption="Muutused jõustuvad OpenSong-i järgmisel käivitamisel."/>
+      <default caption="Vaikimisi"/>
+      <custom caption="Kasutaja kohandatud valikud"/>
+
+
+      <message>Uus kaustatee ei jõustu enne OpenSong programmi uut käivitamist. Võbolla soovid vanadest OpenSong´i kaustadest ennem midagi uude kausta tõsta?</message>
+      <changed>Sa valisid kasutamiseks uue dokumentide kausta, aga sa ei vajutanud muuda nuppu. Kas soovid kasutada uut kausta?</changed>
+      <change caption="Muuda"/>
+      <oldfolderdb caption="Kasuta eelmise versiooni kausta"/>
+    </documents_folder>
+    <imagequality caption="Määra pildi kvaliteet">
+
+      <note caption="OpenSong üritab salvestada pilte, mida kasutatakse komplektides JPEG formaadis. Allpool esitatavad valikud kvaliteeti ja käitumist piltide talletamisel.Kvaliteedi liugur all on blokeeritud, kui QuickTime ei ole paigaldatud OpenSong  sõltub sellest programmist salvestamiseks JPEG pilte kasutaja poolt valitud kvaliteediga."/>
+      <compression caption="Pildi pakkimine" />
+
+      <extern caption="Ära kasuta seadeid tagapõhja piltidele." />
+    </imagequality>
+    <logging caption="Silumislogi seaded">
+      <append caption="Lisa logifaili"/>
+      <console caption="Logi sisse süsteemi konsooli"/>
+      <level caption="Logi tase" disabled="Disabled"/>
+      <dialog caption="Palun valige fail logi salvestamiseks"
+
+              title="Vali log fail"/>
+    </logging>
+
+    <log caption="Laulude kasutuslogi seaded">
+      <enable caption="Logimise lubamise"/>
+      <prompt caption="Küsi enne esitlemist"/>
+    </log>
+    <startmode caption="Startimisel ava">
+      <songs caption="Laulude tööreziim"/>
+      <sets  caption="Komplektide tööreziim"/>
+    </startmode>
+    <applications caption="Väline rakendus">
+
+      <pptview caption="Powerpoint Vieweri asukoht(.exe failitee)"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Videolan(VLC)pleieri asukoht(.exe failitee)"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+	<slidetype_coloring caption="Slaidi värvitüüp">
+	  <coloring caption="Rakenda taustavärvi"/>
+	  <verse caption="Laul, Salm"/>
+	  <bridge caption="Laul, Bridge"/>
+	  <prechorus caption="Laul, Eel-refrään"/>
+	  <chorus caption="Laul, Refrään"/>
+	  <tag caption="Laul, Silt"/>
+	  <scripture caption="Kirjakoht"/>
+	  <custom caption="Kohandatud slaid"/>
+	  <image caption="Pildi(foto) slaid"/>
+	  <application caption="Väline rakendus"/>
+	  <blank caption="Tühi (lisatud)"/>
+	</slidetype_coloring>
+  </general_settings>
+
+  <print_settings title="Printimise määrangud">
+    <tabs head3="Äärised" head1="Frondid" head2="Kujundus"/>
+    <margins>
+      <left caption="Vasakult"/>
+      <top caption="Ülevalt"/>
+      <right caption="Paremalt"/>
+      <bottom caption="Alt"/>
+      <width caption="Laius"/>
+      <height caption="Kõrgus"/>
+      <message caption="Vaata faili/Kujundus... et määrata äärised"/>
+    </margins>
+    <fonts>
+      <title caption="Pealkiri"/>
+      <author caption="Autor"/>
+      <sections caption="Seksoonid"/>
+      <lyrics caption="Sõnad"/>
+      <chords caption="Akordid"/>
+      <capo caption="Capo"/>
+      <copyright caption="Autoriõigus"/>
+    </fonts>
+    <layout>
+      <heading_border_thickness caption="Pealkirja äärise paksus"/>
+      <title_in_caps caption="Pealkiri suurte tähtedegs"/>
+<highlight_chorus caption="link(style_editor/options/highlight_chorus/@caption)"/>
+    </layout>
+    <units caption="Ühikud">
+      <inches caption="Tollides"/>
+      <cm caption="Sentimeetrites"/>
+    </units>
+  </print_settings>
+
+  <presentation_settings title="Presentatsiooni määrangud">
+    <settings head1="Stiil" head2="Valikud">
+        <default_slides caption="Vaikimisi määratud slaidi stiil"/>
+        <scripture_slides caption="Vaikimisi määratud kirjakoha stiil"/>
+        <click_to_change caption="link(shared/click_to_change/@caption)"/>
+        <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+
+
+
+        <export_snapshot caption="Ekspordi hetktõmmis igast esitatud slaidilst järgmisse faili"/>
+        <snapshot_file caption="Hetketõmmise failinimi">Vali hetketõmmisele failinimi kasutades failivaliku dialoogi.</snapshot_file>
+        <export_preview caption="Ekspordi hetketõmmis kui vaatad komplekti eelvaadet"/>
+
+        <export_live_insertions caption="Ekspordi hetketõmmis kui presenteerid komplekti laivis"/>
+        <export_metadata caption="Ekspordi slaidi andmed sarnaselt nimetatud xml fili"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Järgnevaid parameetreid saad validafaili nimeks või teeks:
+
+
+
+
+
+
+
+
+
+
+
+    - %d: Tänase päeva kuupäev (01-31)
+    - %h: Käesoleva kellaaja tund 24 tunni formaadis (00-23)
+    - %i: Käesoleva kellaaja minut (00-59)
+    - %m: Käesolev kuu (01-12)
+    - %n: Käesoleva slaidi number kasutatavas komplektis (ka tühjad slaidid)
+    - %N: Käesoleva slaidi nimi
+    - %P: Presentatsiooni slaidi indeks kasutatavas komplektis (ka tühjad slaidid)
+    - %s: Käesoleva kellaaja sekund (00-59)
+    - %S: Käesoleva komplekti nimi
+    - %T: Käesoleva slaidi pealkiri
+    - %V: Käesoleva slaidi salmi number (Ainult lauludel, teistel slaididel tühi)
+    - %y: Käesolev aasta (4 numbrit)</snapshot_parameters>
+    </settings>
+    <transitions caption="Üleminekud">
+      <use_transitions caption="Lubatud vaikimisi"/>
+
+
+      <transition_note caption="*Üleminekud on suuresti mõjutatud ekraani resolutsioonist. Kui märkad, et üleminekud venivad proovi presentatsiooni monitori resolutsiooni vähendada. Ja veel kui üleminekuid üldse ei näita, võib olla viga selles, et presenteerimis monitooril on värvi tase (Color level) liiga madal."/>
+      <time caption="Time" helptag="Kogu aeg üleminekuks (Tegelikuses võib rohkem aega võtta)"/>
+      <frames caption="Frames" helptag="Kaadrite arv või ülemineku sammud slaidide vahel"/>
+       </transitions>
+    <style caption="Stiil">
+      <border_thickness caption="Äärise paksus"/>
+      <subtitles caption="Alapealkiri"/>
+      <modes>
+        <normal caption="Normaalne"/>
+        <black caption="Must"/>
+        <white caption="Valge"/>
+        <logo caption="Logo"/>
+        <hidden caption="Peidetud"/>
+        <frozen caption="Külmutatud"/>
+      </modes>
+     
+      <mouse_cursor caption="Hiire kursor">
+
+         <!--Need kuvatakse järk-järgult kasutaja poolt valitud kursoriks-->
+        <arrow caption="Nool"/> 
+        <cross caption="Rist"/>
+        <hidden caption="Peidetud"/>
+        <hourglass caption="Liivakell"/> 
+        <ibeam caption="I-kuju"/> 
+      </mouse_cursor>
+      <blanks caption="Lisa tühi slaid"/>
+      <blanks_between caption="Kahe slaidi vahele"/>
+
+      <time caption="Aeg" helptag="Ülemineku aeg (aeglasemas süsteemis võib rohkem aega võtta)"/>
+      <blank_style caption="Tühjad slaidid võtavad stiili"/>
+      <blank_prev caption="Eelnevalt slaidilt"/>
+      <blank_next caption="Järgnevalt slaidilt"/>
+      <initial_mode caption="Sisenedes Presentatsiooni"/>
+    </style>
+    <alerts caption="Kiir Teated">
+      <font caption="Front"/>
+      <align caption="Paigutus"/>
+    </alerts>
+    
+    <monitor caption="Monitorid">
+      <control caption="Juhtimis monitor"/>
+      <presentation caption="Presentatsiooni monitor"/>
+      <detected caption="%1 monitor(e) leitud."/>
+      <default_mode caption="Vaikimisi monitori stiil"/>
+	<force_4_3_preview caption="Force 4:3 preview"/>
+    </monitor>
+    <logo caption="Logo">
+      <mask caption="Mask"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </logo>
+
+    <audio caption="Audio">
+      <file_to_play caption="Fail mida mängida"/>
+      <browse caption="Otsi"/>
+      <stop caption="Stopp"/>
+      <play caption="Mängi"/>
+    </audio>
+
+    <misc caption="Muud-Lisaks">
+      <exit_prompt caption="Hoiata väljumisel"/>
+    </misc>
+
+    <errors>
+
+        <snapshot_file>Hoiatus: Lubatud on hetketõmmise tegemine, kuid failinime pole sisestatud!!!.</snapshot_file>
+    </errors>
+  </presentation_settings>
+
+  <presentation_helper title="Presentatsiooni abimees">
+    <slides head1="Pealkiri" head2="ID" head3="Tekst"/>
+    <modes caption="Ekraani olek">
+      <normal caption="[N] Normaalne"/>
+      <black caption="[K] Must"/>
+      <white caption="[W] Valge"/>
+      <logo caption="[L] Logo"/>
+      <hidden caption="[H] Peidetud"/>
+      <frozen caption="[F] Külmuta"/>
+    </modes>
+    <actions caption="Lisa Tegevus">
+      <alert caption="[A] Kiirteade">Uus kiirteade (Välja puhastamiseks jäta tühjaks)</alert>
+      <quick_song caption="[Q] Lisa laul"/>
+      <scripture caption="[S] Piibel"/>
+      <full_screen caption="[M] Täis ekraanil"/>
+      <normal_screen caption="[M] Normaalses aknas"/>
+      <return caption="[Esc] Tagasi"/>
+    </actions>
+    <exit caption=" Väljun esitlusest?"/>
+    <loop caption="Korda"/>
+    <keys>- Lühiteed -
+
+
+
+
+Alla: Järgmine slaid
+Üles: Eelnev slaid
+Paremale: Järgnev valik
+Vasakule: Eelnev valik
+F1-F15: Laul
+1-9: Salm
+
+
+C: Kordus
+P: Eel-kordus
+B: Bridge
+T: Tag</keys>
+ <preview caption="Käesoleva slaidi eelvaade" />
+    <next caption="Järgmise slaidi eelvaade" />  
+
+</presentation_helper>
+
+  <help_topics title="Temaatiline abi">
+    <tabs head1="Presentatsiooni kiir klahvid" head2="Akordide/Sõnade formaat" head3="Presentatsiooni väljad" head4="Sulge"/>
+    <print caption="Prindi"/>
+    <keys>
+&lt;h1&gt;Presentation Keys&lt;/h1&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+Presentstsiooni saab kiiresti juhtida järgnevate klavjatuuri lühikombimatsioonidega:
+Esc Klahv: Lõpetab presentatsiooni.
+Nool üles, 8 numbrilaual, tagasisammu nupp: Eelnev slaid.
+Nool alla, 2 numbrilaual, Space Key: Mine järgmisele slaidile.
+Nool vasakule, 4 numbrilaual: Mine eelmise üksusesse komplektis.
+Nool paremale, 6 numbrilaual:Mine järgmisse üksusesse komplektis..
+Q Klahv: Avab laulu lisamise dialoogi akna.
+A Klahv: Avab kiirteate sisestamise ja kuvamise dialoogi akna.
+S Klahv: Avab kirjakoha lisamise dialoogi akna.
+W Klahv: Sujuv üleminek valgeks ekraaniks.
+K Klahv: Sujuv üleminek mustaks ekraaniks.
+L Klahv: Kuvab OpenSong Logo.
+
+H Klahv: Peidab teksti, kuvab ainult taustapildi.
+F Key: Külmutab presentatsiooni ekraani(nt prevents displaying new slide, allowing you to change current slide
+without affecting the presentation, press N to unfreeze).
+N Key: Normal mode(get out of black screen, etc.)
+B Key: Go to Bridge(as denoted by a [B#] in song
+editor). If there is more than one Bridge,
+then pressing the B key will move to the next Bridge.
+C Key: Go to Chorus(as denoted by a [C#] in song editor). If there is more than one chorus,
+then pressing the C key will move to the next chorus.
+T Key: Go to Tag(as denoted by a [T#] in song editor). If there is more than one Tag,
+then pressing the T key will move to the next Tag.
+P Key: Go to Pre-Chorus(as denoted by a [P#] in song editor). If there is more than one Pre-Chorus,
+then pressing the P key will move to the next Pre-Chorus.
+1-9 Key: Go to Verse#(as denoted by a [V#] in song editor).
+
+Note the Numpad keys function depends on the state of the NumLock key.
+</keys>
+
+    <format>
+&lt;h1&gt;OpenSong Lyrics / Chords Format&lt;/h1&gt;
+
+Songs are broken down into the following line types: Section lines, Chord lines, Lyric lines, and Comment lines. A simple song might look something like this:
+&lt;pre&gt;&lt;b&gt;
+;Remember to sing the verse twice.
+[V]
+.G                C
+ This is a verse, this is a verse.
+.D          G
+ That is so cool.
+
+[C]
+.G               C/D  D     C
+ Sing the chorus now, yeah, yeah,
+.G           C       D/F# G
+ This is the dumbest song ever.&lt;/b&gt;&lt;/pre&gt;
+
+Lets look at each line type...
+
+&lt;h2&gt;Section Lines&lt;/h2&gt;
+
+Section lines are delimited by braces: [ and ]. A "section" includes any lines following this section line until the next section line or the end of the song. Sections are not displayed in the Presenter, but they are used to determine the order of the slides. Any text inside the braces is acceptable, but the following have special effects:
+
+&lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Verses. Lead sheets will automatically remove the "V" and print the remaining number with a circle around it. Examples: [V1], [V2], [V3].
+
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Chorus. Lead sheets will automatically display "Chorus" followed by any extra text (see examples). "Chorus" will be printed with a square around it. Examples: [C], [C2], [CModulation].
+
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Pre-chorus. Lead sheets will automatically display "Pre-chorus" followed by any extra text (see examples). "Pre-chorus" will be printed with horizontal lines above it and below it. Examples: [P], [P2].
+
+&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Bridge. Lead sheets will automatically display "Bridge" followed by any extra text (see examples). "Bridge" will be printed with a rounded square around it. Examples: [B], [B2].
+
+&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Tag. Lead sheets will automatically display "Tag" followed by any extra text (see examples). "Tag" will be printed with a rounded square around it. Examples: [T], [T2].
+
+&lt;h2&gt;Chord Lines&lt;/h2&gt;
+
+Chord lines start with a period: ".". The first letter of each chord should line up with the lyrics under it. Chord lines don't display on the Presenter, only on lead sheets.
+
+&lt;h2&gt;Lyric Lines&lt;/h2&gt;
+
+Lyric lines start with a space: " ". Lyrics generally line up with a previous chord line, but not necessarily.
+
+&lt;b&gt;&lt;i&gt;"__"&lt;/i&gt;&lt;/b&gt; If a word needs to be stretched to fit the chords, use underscores: "_". For example:
+&lt;b&gt;&lt;pre&gt;
+.Gsus7 C    G
+ Wel___come home.&lt;/pre&gt;&lt;/b&gt;
+
+Underscores are replaced by an appropriate "-" centered between the word parts. 
+
+&lt;b&gt;"  "&lt;/b&gt; Multiple spaces between words are just fine. Underscores and multiple spaces are automatically removed in the Presenter. When printing lead sheets, both are dropped and dynamically adjusted to fit.
+
+&lt;b&gt;"|"&lt;/b&gt; Vertical bars are replaced with spaces on lead sheets, and new lines in the Presenter.
+
+&lt;b&gt;"||"&lt;/b&gt; Double vertical bars are replaced by "new slide" in the Presenter and ignored when printing lead sheets. Double vertical bars must be at the end of the line.
+
+&lt;h3&gt;Multiple Lyric Lines for One Chord Line!?&lt;/h3&gt;
+
+Many songs have multiple verses which all share the same chords. Rather than repeat the chords in each verse section, we can group them by verse line rather than by verse number (like a hymnal). In this case, rather than start each lyric line with a space, start each lyric line with the verse number. Note that aligning multiple lyric lines with one chord line is a little trickier. It should look something like this:
+
+&lt;b&gt;&lt;i&gt;(Don't try to sing it; the timing is terrible. *grin*)&lt;/i&gt;&lt;pre&gt;
+[V]
+.G     C               G
+1This  is verse        one;
+2This  is not verse    two;
+3Where did verse three go;
+4Ever__lasting is not  verse four;
+
+.G     D    C                D            G
+1Hear  my   song as I sing,  "Mon_________key."
+2Open  your ears to my       wonderful    song.
+3Why   are  we still         singing this song?
+4This  is   not the way that songs should sound.&lt;/pre&gt;
+&lt;/b&gt;
+As far as the Presenter is concerned, the first character of each lyric line (i.e. 1, 2, 3, etc.) is appended to the section it is in. In other words, a section line of [V] with following lyric lines starting with 1, 2, 3, etc. would look like V1, V2, V3, etc.
+
+&lt;h2&gt;Comment Lines&lt;/h2&gt;
+
+There isn't much to a comment line. Comment lines are any lines that start with a semi-colon: ";". Comment lines are skipped in the Presenter, and displayed using the Comment font in Lead Sheets.
+
+&lt;h2&gt;Column Breaks&lt;/h2&gt;
+
+If a line contains only three dashes ("---"), lyrics sheets will print with a second column starting at the column break.
+
+&lt;h2&gt;Page Breaks&lt;/h2&gt;
+
+If a line contains ("-!!") this indicates the location where a page break should be placed in the lead sheet when printing longer songs.
+
+</format>
+
+    <presentation>
+&lt;h1&gt;OpenSong Presentation Field&lt;/h1&gt;
+
+The presentation field contains a list of sections from the song's lyrics/chords field. Each section is seperated by a space. For example:
+&lt;b&gt;
+V1 C V2 C V3 C
+&lt;/b&gt;
+This example would display the first verse on the first slide, the chorus on the second slide, the second verse on the third slide, and so on.
+
+Keep in mind that if your song uses multi-lyric lines for a single chord line, that each lyric line's prefix is appended to it's section. See the "Lyric Lines" section under the "Lyrics / Chords Format" help for more information.
+
+&lt;h3&gt;Empty Presentation Field&lt;/h3&gt;
+
+If the presentation field is empty, then the Presenter will order the slides based on the order in the Lyrics / Chords field.
+</presentation>
+  </help_topics>
+
+  <font_selection title="Frondi valik">
+    <face caption="Front"/>
+    <size caption="Suurus"/>
+    <color caption="Värv"/>
+    <bold caption="Jämedalt"/>
+    <italic caption="Italic"/>
+    <underline caption="Alla kriipsutatult"/>
+    <border caption="Ääris"/>
+    <shadow caption="Aseta vari"/>
+    <fill caption="Täida tagus"/>
+  </font_selection>
+
+  <print_preview title="Printimise eelvaade">
+    <first caption="&lt;&lt;"/>
+    <previous caption="&lt;"/>
+    <next caption="&gt;"/>
+    <last caption="&gt;&gt;"/>
+    <zoom_in caption="-"/>
+    <zoom_out caption="+"/>
+    <pages caption="%1 lk %2 -st"/>
+    <print_setup caption="Printimis seaded"/>
+    <print caption="Prindi"/>
+    <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+    <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+    </print_preview>
+    
+<print>
+     <continued caption="(Jätka)"/>
+     <toc caption="Konteksti tabel"/>
+     <categorized caption="Kategoorjatega"/>
+     <alphabetical caption="Tähestikuliselt"/>
+     <copyright caption="Autoriõigus"/>
+     <page caption="Lehekülg %1"/>
+     <ccli_number caption="link(general_song_editor/ccli/@caption)"/>
+     <ccli_license caption="link(general_settings/general/ccli/@caption)"/>
+     <create_list caption="Loon nimekirja %1..."/>
+     <uncategorized caption="Muu"/>
+     <setlist caption="Present.Juhtleht">
+     <date caption="Prinditud "/>
+     </setlist>
+</print>
+ 
+<songml>
+     <page caption="Page"/>
+     <capo caption="Capo"/>
+     <copyright caption="Copyright"/>
+     <symbol caption="&#169;"/>
+     <prechorus caption="Pre-chorus"/>
+     <chorus caption="Chorus"/>
+     <bridge caption="Bridge"/>
+     <tag caption="Tag"/>
+     <verse caption="Salm"/>
+     <prechorus_abbreviation caption="chor"/>
+     <chorus_abbreviation caption="chor"/>
+     <bridge_abbreviation caption="brdg"/>
+     <tag_abbreviation caption="tag"/>
+     <author caption=""/>
+     <hymn_number caption="Hymn Number"/>
+     <ccli_number caption="CCLI Song #"/>
+     <ccli_license caption="CCLI License #"/>
+     <presentation caption="Kuvamis järjekord"/>
+     <!--The string "|NL|" is a special code to tell OpenSong that each subtitle should be on a separate line.-->
+     <separator caption="|NL|"/>
+     <!--The leading comma is needed for internal data structure reasons.-->
+     <sharpchords>,C,C#,D,D#,E,F,F#,G,G#,A,A#,B</sharpchords>
+     <altsharpchords>,B#,C#,D,D#,E,E#,F#,G,G#,A,A#,B</altsharpchords>
+     <flatchords>,C,Db,D,Eb,E,F,Gb,G,Ab,A,Bb,B</flatchords>
+     <altflatchords>,C,Db,D,Eb,Fb,F,Gb,G,Ab,A,Bb,Cb</altflatchords>
+  </songml>
+  
+  <smartml>
+    <attrib_except>SmartML.GetAttribute: Exception looking for attribute '%1' in '%2'</attrib_except>
+    <no_path>Path not found.</no_path>
+    <no_File>Faili ei leitud: %1</no_File>
+    <cant_open>Viga faili avamisel: %1</cant_open>
+    <cant_create>Faili ei saa luua: %1</cant_create>
+    <xml_error>Error parsing XML: %1</xml_error>
+    <xml_exterror>Error parsing XML: %1: %2: %3</xml_exterror>
+  </smartml> 
+
+  <style_editor title="Stiili toimetaja">
+    <fonts_and_alignment caption="Frondid ja paigutus">
+      <title caption="Pealkiri"/>
+      <subtitle caption="Alam pealkiri"/>
+      <body caption="Sisu"/>
+      <body_autosize caption="Automaatne kirjasuuruse muutmine teksti mahutamiseks"/>
+      <align caption="Paigutus"/>
+      <margin caption="Veerised"/>
+      <tabs caption="Tabulaator"/>
+    </fonts_and_alignment>
+    <options caption="Teksti valikud">
+      <subtitles caption="Laulu Alapealkiri"/>
+      <highlight_chorus caption="Tõsta refrääni osa esile(bold)"/>
+      <descriptive_subtitle caption="Kirjeldav alapealkirja info"/>
+      <verse_in_title caption="Lisa salmide numbrid pealkirjadele"/>
+    </options>
+    <background caption="Tagapõhi">
+      <color caption="Värv"/>
+      <image caption="Pilt"/>
+      <position caption="Asetus">
+          <row0 caption="Venita"/>
+          <row1 caption="Keskel"/>
+          <!-- <row2 caption="Pisi"/> -->
+      </position>
+      <trim_bottom caption="*Asetus alt"/>
+      <pixels caption="px"/>
+      <click_to_change caption="link(shared/click_to_change/@caption)"/>
+      <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+    </background>
+
+    <trim_note caption="*Lõikab ära alumise ääre taustapildist, et mitte näidata vesipilte, veebiaadresse, jms. Et vältida moonutusi lõigatakse proportsionaalselt ka külgedelt."/>
+  </style_editor>
+
+  <style_margins title="Veeriste toimetaja">
+      <left caption="Vasakult"/>
+      <right caption="Paremalt"/>
+      <top caption="Ülevalt"/>
+      <bottom caption="Alt"/>
+      <pixels caption="px"/>
+    <preview caption="Eelvaade"/>
+  </style_margins>
+  
+  <style_tabs title="Tabulaatori Toimetaja">
+    <tabs caption="Tabulaator">
+      <new caption="&amp;New"/>
+      <remove caption="&amp;Puhasta"/>
+      <removeall caption="Puhasta &amp; kõik"/>
+    </tabs>
+    <properties caption="Määrangud">
+      <position caption="Asetus"/>
+      <pixels caption="px"/>
+      <align caption="Paigutus"/>
+      <left caption="Vasakule"/>
+      <middle caption="Keskele"/>
+      <right caption="Paremale"/>
+      <char caption="Tähest"/>
+      <apply caption="link(shared/apply/@caption)n"/>
+    </properties>
+    <preview caption="Eelvaade"/>
+  </style_tabs>
+  
+  <song_lookup title="Laulu otsing">
+
+    <header caption="Laulu lisamiseks kliki laulu pealkirjale ja vajuta -Lisa-. Kui tead laulu nime võid sisestada trükkida nime kiirotsingu väljale ja vajuta -Lisa-. Või tee soovitud laulul topelt-klikk. Või vali laul ja vajuta -ENTER-"/>
+    <no_selection>Sa ei valinud laulu.</no_selection>
+    <folder caption="Vali kaust"/>
+    <preview caption="Laulu eelvaade"/>
+    <lookup caption="Kiirotsing"/>
+    <songs head1="Laulu nimi" head2="Kaust"/>
+    <presentation caption="link(slide_editor/presentation/@caption)"/>
+    <origorder caption="link(slide_editor/origorder/@caption)"/>
+  </song_lookup>
+
+  <song_activity title="Laulude kasutuslogi">
+    <range caption="Kuupäeva järgi (kk/pp/aaaa)"></range>
+    <to caption="kuni"/>
+    <find caption="Otsi"></find>
+    <clear_log caption="Tühjenda logi"></clear_log>
+    <print caption="Prindi"></print>
+    <view caption="Vaata logi"/>
+    <merge caption="Liida"/>
+    <export caption="Ekspordi"/>
+    <done caption="Valmis"/>
+    <show caption="Näita">
+      <!-- 
+        "tag"omadus vastab väärtusele
+konstandid LogEntry klassis. Loetelu
+saab muuta vastavalt soovile ja soovitud asukohta (pange tähele, et see on
+tähestikulises inglise keeles) kui sildid on seotud
+õigesti. Näiteks kohalikus keeles väärtus "liigutamine"
+peaks alati olema tag = "4"
+      -->
+      <value tag="0">Kõik</value>
+      <value tag="1">Loodud</value>
+      <value tag="8">Kopeeritud</value>
+      <value tag="2">Kustutatud</value>
+      <value tag="3">Muudetud</value>
+      <value tag="4">Liigutatud</value>
+      <value tag="5">Presenteeritud</value>
+      <value tag="6">Prinditud</value>
+      <value tag="7">Ümber nimetatud</value>
+    </show>
+    <songs head7="Duuridega" head6="CCLI #" head5="Autor" head4="Tiitel" head3="Aktiivsus" head2="Korda" head1="Kuupäev"/> 
+    <input_box>
+      <erase_all>Kustutad kogu kasutuslogi?</erase_all>
+    </input_box>
+    <description>Loodud|Kustutatud|Muudetud|Liigutatud|Presenteeritud|Prinditud|Ümber nimetatud|Kopeeritud</description>
+    <file_type>Ava OpenSongi laulude kasutuslogi fail</file_type>
+
+    <merged>Liitmine on lõpetatud %1 sisestust liideti laulude kasutuslogisse.</merged>
+    <merged_dupes>%1 dublikaati ignoreeriti.</merged_dupes>
+  </song_activity>
+
+  <scripture_lookup title="Kirjakoha otsing">
+    <lookup caption="Kiirotsing">
+      <reference caption="Otsinguviide"/>
+      <lookup caption="Otsi"/>
+      <example caption="NT: '2Pet 1:1-2' o '2Pet 1:1-2 (KJV)'"/>
+    </lookup>
+    <search caption="Täisteksti otsing"/>
+    <books caption="Piibli raamatud">
+	  <ot caption="Vana Testament"/>
+	  <nt caption="Uus Testament"/>
+    </books>
+    <paragraph caption="Peatükk"/>
+    <colon caption=":"/>
+    <from_verse caption="Salmist"/>
+    <dash caption="-"/>
+    <to_verse caption="salmini"/>
+    <version caption="Piibel"/>
+    <select_file caption="Palun vali Piibli fail"/>
+    <verses_per_slide caption="Salme ühes slaidis" />
+    <chars_per_slide caption="Maks arv. Tähti ühes slaidis" />
+    <format caption="Formaadi">
+      <paragraph caption="Peatükk"/>
+      <verse caption="Salm"/>
+    </format>
+    <shownumbers caption="Näita salmi numbreid"/>
+    <preview caption="Eelvaade"/>
+    <insert caption="link(shared/insert/@caption)"/>
+    <add caption="link(shared/add/@caption)"/>
+    <copy caption="link(shared/copy/@caption)"/>
+
+
+
+
+
+    <done caption="link(shared/done/@caption)"/>    
+<bad_reference>
+      <format>Palun kontrolli küsimuse formaati ja proovi uuesti.</format>
+      <empty>Halb viide: Viide oli tühi.</empty>
+      <book>Halb viide: Ei suutnud leida raamatut.</book>
+      <ambiguous>Halb viide: Mitu sama nimega raamatut '%1': %2</ambiguous>
+      <version>Halb viide: '%1' versiooni ei leitud.</version>
+      <chapter>Halb viide: ei leidnud peatükki '%1'.</chapter>
+      <verse>Halb viide: ei leidnud salmi '%1'.</verse>
+
+      <verse_range>Halb viide: salm millest peab olema väiksem kui milleni (NT 5-9 mitte 6-4).</verse_range>
+    </bad_reference>
+  </scripture_lookup>
+
+  <module>
+    <read_error>Ei suutnud lugeda faili, või on vale formaat.</read_error>
+    <format_error>Vale mooduli formaat.</format_error>
+
+
+    <move_error>Viga mooduli faili liigutamisel. Palun kontrolli '%1' kirjutusõigust .</move_error>
+    <rename_error>Viga mooduli faili ümbernimetamisel. Palun kontrolli '%1' kirjutusõigust.</rename_error>
+    <success>Mooduli laadimine õnnestus.</success>
+    <file_type>OpenSong Modulid</file_type>
+    <generate_index>Indekseeri Piibli fail kiirotsinguks?</generate_index>
+    <generate_error>Ei saa indekseerida; Palun kontrolli %1 kirjutusõigust?</generate_error>
+  </module>
+
+  <index_progress title="Palun oota">
+    <top caption="Indekseerin faili:"/>
+    <bottom caption="Vajuta 'esc' katkestamiseks"/>
+  </index_progress>
+
+  <import_from_ccli title="Impordi CCLI-ist">
+    <user_id caption="Kasutaja ID"/>
+    <password caption="Salasõna"/>
+    <for caption="Otsi"/>
+    <songs head1="Ly" head2="So" head3="Le" head4="Nimi" head5="Autor"
+      head6="Catalog" head7="AKA" head8="Key Line" head9="Key" head10="CCLI #"/>
+    <by caption="By">
+      <title_and_aka caption="Nimi ja AKA"/>
+      <title caption="Pealkiri"/>
+      <lyrics caption="Sõnad"/>
+      <author caption="Autor"/>
+      <catalog caption="Kataloog"/>
+      <theme caption="Teema"/>
+      <ccli caption="CCLI #"/>
+    </by>
+    <filter caption="Filter">
+      <all caption="Kõik"/>
+      <lead_sheets caption="Juhtlehed"/>
+      <sound_samples caption="Heli näited"/>
+    </filter>
+    <find caption="Otsi"/>
+    <previous_page caption="Eelmine lehekülg"/>
+    <next_page caption="Järgmine lehekülg"/>
+    <page caption="Lehekülg"/>
+    <of_pages caption="of %1"/>
+    <import caption="Impordi"/>
+    <errors>
+      <no_data>Mingeid andmeid ei tagastatatud. Palun kontrollige oma otsisõna ja / või oma CCLI ID / salasõna.</no_data>
+      <bad_html>HTML Parsimis viga- Võta ühendust OpenSongi tehnilise toega.</bad_html>
+      <no_results>Ei andnud tulemusi.</no_results>
+      <no_headers>Mingit päise andmeid ei tagastatatud. Palun kontrollige oma otsisõna ja / või oma CCLI ID / salasõna.</no_headers>
+      <no_connect>Ei saanud ühendust CCLI ga. Palun proovige hiljem uuesti.</no_connect>
+      <already_exists>Laul on juba olemas.</already_exists>
+    </errors>
+  </import_from_ccli>
+
+  <find_image title="Pildi otsija">
+    <parent caption="(Parent)"/>
+  </find_image>
+  <input_box title="OpenSong"/>
+
+  <theme_list>
+    <option name="Kristus: Omadused"/>
+    <option name="Kristus: Sünd"/>
+    <option name="Kristus: Surm/Lunastus"/>
+    <option name="Kristus: Suurus/Majesteetlikus"/>
+    <option name="Kristus: Armastus/Arm"/>
+    <option name="Kristus: Ülestõusmine"/>
+    <option name="Kristus: Teine tulemine"/>
+    <option name="Kristus: Võit"/>
+    <option name="Kristus: Pühendumine/Kuulekus"/>
+    <option name="Kirik: Maa"/>
+    <option name="Kirik: Igavene elu/Taevas"/>
+    <option name="Kirik: Evangelism"/>
+    <option name="Kirik: Perekond/Sõprus"/>
+    <option name="Kirik: Sõprus w/ Jumal"/>
+    <option name="Kirik: Puhtus/Pühadus"/>
+    <option name="Kirik: Meeleparandus/Lunastus"/>
+    <option name="Kirik: Uuendamine"/>
+    <option name="Kirik: Teenimine/Teenistus"/>
+    <option name="Kirik: Vaimne nälg"/>
+    <option name="Vili: Usk/Lootus"/>
+    <option name="Vili: Armastus"/>
+    <option name="Vili: Rõõm"/>
+    <option name="Vili: Rahu/Trööst"/>
+    <option name="Vili: Kannatlikkus/Lahkus"/>
+    <option name="Vili: Tagasihoidlikkus/Alandlikkus"/>
+    <option name="Jumal: Omadused"/>
+    <option name="Jumal: Looja/Loomine"/>
+    <option name="Jumal: Isa"/>
+    <option name="Jumal: Lahkus/Hoolivus"/>
+    <option name="Jumal: Püha Vaim"/>
+    <option name="Jumal: Pühadus"/>
+    <option name="Jumal: Armastus/Arm"/>
+    <option name="Jumal: Võimsus/Majesteetlikkus"/>
+    <option name="Jumal: Tõotused"/>
+    <option name="Jumal: Võit"/>
+    <option name="Jumal: Sõna"/>
+    <option name="Ülistus: Assurance/Trust"/>
+    <option name="Ülistus: Call/Opening"/>
+    <option name="Ülistus: Celebration"/>
+    <option name="Ülistus: Declaration"/>
+    <option name="Ülistus: Intimacy"/>
+    <option name="Ülistus: Invitation"/>
+    <option name="Ülistus: Praise/Adoration"/>
+    <option name="Ülistus: Prayer/Devotion"/>
+    <option name="Ülistus: Provision/Deliverance"/>
+    <option name="Ülistus: Tänulikkus"/>
+  </theme_list>
+
+  <tempo_list>
+    <option name="Väga kiiresti"/>
+    <option name="Kiiresti"/>
+    <option name="Moderate"/>
+    <option name="Aeglaselt"/>
+    <option name="Väga aeglaselt"/>
+  </tempo_list>
+
+  <time_sig_list>
+    <option name="2/4"/>
+    <option name="3/4"/>
+    <option name="4/4"/>
+    <option name="3/8"/>
+    <option name="6/8"/>
+  </time_sig_list>
+
+  <transition_list>
+    <option name="Vaikimisi"/>
+    <option name="Jah"/>
+    <option name="Ei"/>
+  </transition_list>
+  
+  <imagequality_list>
+
+    <option name="Maksimum, minimaalne kvaliteet"/>
+    <option name="Kõrge, madal kvaliteet"/>
+    <option name="Normaalne, normaalne kvaliteet"/>
+    <option name="Väike, kõrge kvaliteet"/>
+    <option name="Madal, maksimaalne kvaliteet"/>
+
+    <option name="Pole, kadudetta"/>
+  </imagequality_list>
+
+  <videolan_preset_list>
+	<preset name="Video kui taustapilt Windowsis (kasuta tagapõhja värve RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Video esitlus täisekraanil" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Täisekraanil video vaikimisi DirectShow video sisendist" parameters="--no-video-deco --no-video-title-show --no-osd --fullscreen --one-instance --directx-device=\\.\DISPLAY%d dshow://"/>
+
+	<!-- Rida allpool on kohustuslik. Tõlkijad: ainult muuta väärtust "nimi" -->
+	<preset name="Käsitsi" parameters=""/>
+  </videolan_preset_list>
+
+  <style_preview>
+    <slide_groups>
+      <slide_group name="Tiitli näidis" type="custom" seconds="0" loop="false">
+        <title>Tiitli näidis</title>
+        <subtitle>Alapealkirja näidis</subtitle>
+        <notes>Märkuste näidis</notes>
+        <slides>
+          <slide>
+
+
+
+            <body>See on näidis slaid.
+See on sisu(keha)tekst.
+Kliki sellel pildil slaidi stiili muutmiseks.</body>
+          </slide>
+        </slides>
+      </slide_group>
+    </slide_groups>
+  </style_preview>
+  
+
+  <subtitles caption="Alampealkiri" head1="Sort" head2="Lubatud" head3="Kirjeldus">
+    <row0 caption="Autoriõigus|copyright"/>
+    <row1 caption="Autor|author"/>
+    <row2 caption="Laulu number|hymn_number"/> 
+    <row3 caption="CCLI Laulu number|ccli_number"/> 
+    <row4 caption="CCLI Lisentsi number|ccli_license"/>
+  </subtitles>
+      
+  <shared>
+    <ok caption="OK"/>
+    <cancel caption="Tühista"/>
+    <yes caption="Jah"/>
+    <no caption="Ei"/>
+    <apply caption="Appl&amp;y"/>
+    <browse caption="Otsi"/>
+    <browse_for caption="Otsi kausta"/>
+    <add caption="Lisa"/>
+    <done caption="Valmis"/>
+    <untitled caption="Nimetu"/>
+    <click_to_change caption="Vahetamiseks kliki"/>
+    <right_click_to_clear caption="Puhasta parema klikiga"/>
+    <insert caption="Kuva"/>
+    <close caption="Sulge"/>
+    <search caption="Otsi teksti"/>
+    <save caption="Salvesta" message="%1 pole salvestatud."/>
+    <nosave caption="Ära salvesta"/>
+    <cut caption="Lõika"/>
+    <copy caption="Kopeeri"/>
+    <paste caption="Kleebi"/>
+    <select caption="Vali"/>
+    <exit_program caption="Sulge programm"/>
+    <export_to caption="Vali kaust, kuhu eksportida."/>
+  </shared>
+
+  <questions>
+    <new_name caption="Palun sisesta nimi:"/>
+
+    <rename caption="Palun sisesta uus nimi  '%1' asemel:"/>
+    <save caption="Soovid salvestada muudatused '%1'?"/>
+    <delete caption="Oled kindel, et soovid kustutada '%1'?"/>
+
+
+
+    <clear caption="Oled kindel, et soovid puhastada?"/>
+    <changed caption="Käesolevat laulu on muudetud, soovid sa muudatusi salvestada?"/>
+    <revert caption="Ühtegi muudatust ei rakendata. Jätkan?"/>
+    <long_operation caption="Valitud tegevus võib võtta kaua aega. Jätkan?"/>
+    <generic_save caption="Salvestan muudatused?"/>
+    <generic_save_explanation caption="Kui sa ei salvesta, lähevad kõik muudatused kaduma!"/>
+
+    <set_changed caption="Käesolevat komplekti on muudetud, soovid sa muudatusi salvestada?"/>
+    <select_docs_folder caption="Vali OpenSong-i dokumentide kaust">Kuhu OpenSong salvestab laulud (laulikud), komplektid, seaded, jne?</select_docs_folder>
+
+    <activity_log caption="Soovid sa, et laul(ud) sellest komplektist salvestatakse ka laulude kasutuslogis ? See kehtib ka reaalajas lisatud lauludele!"/>
+    <import_presentation caption="Import presentation images">Select the presentation file you want to import the slides from.</import_presentation>
+  </questions>
+
+  <about>
+    <additional>Täiendav arendus:</additional>
+    <copyright>Autoriõigus</copyright>
+
+    <gpl>See tarkvara on välja lastud GPL lisentsi alusel.</gpl>
+    <web>Kui soovid rohkem infot külasta http://www.opensong.org/.</web>
+
+    <translating>Et tõlkida OpenSongi, kopeerige "English" fail "OpenSong Languages??" kaustas ja nimeta see nimetus uueks keeleks. Tõlgi kõik failis välja arvatud tag ja atribuutide nimed. Seejärel saada uus fail opensong-translate@lists.sourceforge.net või lisada selle "Patches" Jälgija on OpenSong projekti leheküljel Source Forge ja me lisame selle ametlikku väljaandesse.</translating>
+    <created_with_opensong>Loodud OpenSong´is</created_with_opensong>
+
+    <sources>OpenSongis on kasutatud lähtekoode:
+StringUtils (http://www.strout.net/info/coding/rb/)
+HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
+REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
+iDeclare (http://www.declaresub.com/iDeclare
+SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/)
+Pildi fail PuffyClouds1.jpg mis asub Backgrounds kaustas omab autorikaitseõigusi FreeStockPhotos.com</sources>
+  </about>
+
+  <folderdb_errors>
+    <error code="1">Kaust nimega '%1' On juba olemas.</error>
+    <error code="2">Ei suutnud luua kausta '%1'.</error>
+    <error code="3">Fail nimega '%1' on juba olemas.</error>
+    <error code="4">Ei leidnud failiteed uue faili '%1' juurde.</error>
+    <error code="5">Ei saa kirjutada põhikausta '%1'.</error>
+    <error code="6">Ei leidnud kausta '%1'.</error>
+    <error code="7">Ei saanud kustuada kausta '%1'.</error>
+    <error code="8">Ei leidnud faili '%1'.</error>
+    <error code="9">Ei saanud kustutada faili '%1'.</error>
+    <error code="10">Ei saanud ümber nimetada faili '%2'.</error>
+    <error code="11">Kaust '%1' ei ole tühi.</error>
+    <error code="12">Ei saanud liigutada faili '%1' - '%2'.</error>
+    <error code="13">Fail '%1' on juba kaustas '%2' olemas.</error>
+  </folderdb_errors>
+
+  <errors>
+    <empty_group>Grupp '%1' peab sisaldama vähemalt ühte salidi.</empty_group>
+    <unreadable_image>Ei suutnud avada pildi faili '%1'.</unreadable_image>
+    <end_of_songs>Laulude lõpp saavutatud.</end_of_songs>
+    <already_exists>'%1' on juba olemas.</already_exists>
+    <bad_format>'%1' sisaldab halba vormingut. Skipping...</bad_format>
+    <no_songs>Puuduvad laulud laulude nimekirjas.</no_songs>
+    <no_multi_screen>Lisa ekraane ei leitud.</no_multi_screen>
+    <bad_file_name>Vale faili nimi '%1'.</bad_file_name>
+    <internal>Sisemine viga. Võta ühendust tehnilise toega.</internal>
+    <no_such_song>Ei suuda leida laulu.</no_such_song>
+    <number_please>Palun sisesta kehtiv number.</number_please>
+    <number_range>Palun sisesta number vahemikus %1 kuni %2.</number_range>
+    <no_path_allowed>Faili nimi ei tohi sisaldada faili teed.</no_path_allowed>
+    <rename_error>Ei saa faili ümber nimetada.</rename_error>
+    <general1>In '%1': tundmatu viga</general1>
+    <general2>In '%1': '%2'</general2>
+    <folder_error>Sisemine kausta viga. Võta ühendust tehnilise toega.</folder_error>
+    <create_backgrounds_folder>Ei suutnud luua Taustapildid kausta: %1</create_backgrounds_folder>
+    <create_sets_folder>Ei suutnud luua / muuta Komplektid kausta %1</create_sets_folder>
+    <create_settings_folder>Ei suutnud luua Seadete kausta: %1</create_settings_folder>
+    <create_songs_folder>Ei suutnud luua laulude kausta: %1</create_songs_folder>
+    <no_backgrounds_folder>Ei suuda leida vaikimisi Taustapildid(Backgrounds) kausta: %1, or folder is empty</no_backgrounds_folder>
+    <no_defaults_folder>Ei suuda leida vaikesättete kausta: %1, või on kaust tühi</no_defaults_folder>
+    <no_scripture_folder>Ei suuda leida Pühakirja kausta: %1, või on kaust tühi</no_scripture_folder>
+    <no_sets_folder>Ei suuda leida vaikimisi Komplektide (Sets) kausta: %1, või on kaust tühi</no_sets_folder>
+    <no_settings_folder>Ei suuda leida vaikimisi Seaded (Settings) kausta: %1, või on kaust tühi</no_settings_folder>
+    <no_songs_folder>Ei suuda leida vaikimisi laulude (Songs) kausta: %1, või on kaust tühi</no_songs_folder>
+    <no_docs_folder>Ei suutnud luua / leida kausta Dokumendid: %1 OpenSong ei saa jätkata ilma kaustata Dokumendid. Palun taaskäivita OpenSongi ja valige kaust Dokumendid. Kui viga kordub, võtke ühendust oma süsteemi administraatoriga.</no_docs_folder>
+    <docs_folder>Dokumentide kausta ei saa olla alam-kaust "OpenSong Defaults"
+Vahetan ajutiselt: %1
+Palun muutke oma seadeid.</docs_folder>
+    <fileutils>
+       <destdoesnotexisterror>Faili ei eksisteeri: %1</destdoesnotexisterror>
+       <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
+       <accessdenied>Fail kaitstud , juurdepääs keelatud: %1</accessdenied>
+       <fileinuse>Fail kasutusel: %1
+(Kas teine eksemplar OpenSong töötab?)</fileinuse>
+       <filenotfound>Faili ei leitud: %1</filenotfound>
+       <invalidname>Vigane failinimi: %1</invalidname>
+       <notenoughmemory>Mälu ammendatud faille juurdepääsuks %1
+Taaskäivitage OpenSong ja proovige uuesti.</notenoughmemory>
+       <unknownerror>Tundmatu viga juurdepääsul faille %1</unknownerror>
+       <notaregularfile>Eeldatav %1 on fail mitte kaust.</notaregularfile>
+       <notafolder>Eeldatav %1 on kaust, mitte fail.</notafolder>
+    </fileutils>
+    <cclinotavailable>CCLI ga veebileht on oluliselt muutunud.
+See on murdunud Import funktsioon kuni uue kasutajaliidese valmimiseni.
+Vahepealpalun uurida OpenSong Import kasulikkust ja valikust.
+OpenSong arengu meeskonna liikmed kahetsevad ebamugavuste pärast.
+    </cclinotavailable>
+    <activity_disabled>Nurjus Laulude aktiivsus Logifaili avamine: %1! Palun kontrollige selle fail olemasolu ja et fail ei oleks rikutud. Logi vaatamise ja aktiivsus logimine on blokeeritud sellel sessiooni.</activity_disabled>
+    <adding_logentry>Viga logikirje lisamisel!</adding_logentry>
+    <chars_per_slide>Maksimaalne tähe märkide arv Slaidil peab olema vahemikus 1 kuni 1000.</chars_per_slide>
+    <presentations>
+      <nohost>Ei ole rakendust saadaval esitluse laadimiseks. Palun paigaldada OpenOffice.org, Microsoft PowerPoint ja Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>Rakendus '%1' ei toeta seda funktsiooni.</unsupported_feature>
+      <load_failed> Esitlust "% 1" ei saa avada.</load_failed>
+    </presentations>
+
+	<videolan_app_missing>VideoLAN rakendus pole korrektselt seadistatud. Palun täpsustage VideoLAN(VLC) Üldseaded dialoogi kohta vahekaardil Failide asukohad.</videolan_app_missing>
+  </errors>
+
+  <xml_errors>
+    <noattribute>Ei leia XML omadusi '%1' - '%2'.</noattribute>
+  </xml_errors>
+
+  <bible>
+    <errors>
+      <index_generation>Viga indeksifaili loomisel '%1.' Piibli otsing on blokeeritud.</index_generation>
+
+      <loadxml>XML viga laadimisel %1
+.&#10; Error is '%2' at line %3</loadxml>
+
+      <load1>Tundmatu viga laadimisel %1</load1>
+      <load2>Vga laadimisel %1: %2</load2>
+
+      <noindex>Otsingu index ei ole saadaval. Valige teine ??tõlge või taaskäivitada OpenSong.</noindex>
+
+      <missing_bnames>Ei leia Zefania toetust faili bnames.xml  OpenSong Seadedtes "</missing_bnames>
+
+      <nobnames>Piibel ei nõudnud bname atribuute ja neid ei saa lisada</nobnames>
+      <roman>Viga teisendades Rooma numbrile '%1': %2</roman>
+
+      <save>Viga uuendatud faili salvestamisel '%1.'</save>
+    </errors>
+
+    <messages>
+      <bnames>Raamatu nimed tuleb lisada selle tõlkele.
+&#10;Palun märkige nimedele sobiv keel.</bnames>
+      <save>Salvesta uuendatud faili?</save>
+    </messages>
+  </bible>
+
+  <song>
+    <errors>
+      <unknown_element>Tundmatu element laeb laulu: '%1'</unknown_element>
+    </errors>
+  </song>
+
+  <open_titles>
+    <audio>Vali avamiseks Audio fail</audio>
+  </open_titles>  
+  
+  <hotkeys>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Liigu esimesele slaidile lõigus</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Mine järgmisele slaidile komplektis</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Mine eelmisele slaidile komplektis</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Mine esimesele slaidile komplektis</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Mine viimase slaidini komplektis</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Mine järgmisese osase komplektis</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Mine algusesse praeguse või eelmise komplekti</ACTION_PREV_SECTION>
+ 	<ACTION_VERSE>Minna järgmise salmi</ACTION_VERSE> 	
+ 	<ACTION_BRIDGE>Mine bridge</ACTION_BRIDGE>
+ 	<ACTION_CHORUS>Mine refrääni</ACTION_CHORUS>
+ 	<ACTION_PRECHORUS>Mine eel-refrääni</ACTION_PRECHORUS>
+ 	<ACTION_TAG>Mine märksõnani</ACTION_TAG>
+ 	<ACTION_NORMAL>Kuva praegune slaid</ACTION_NORMAL>
+ 	<ACTION_BLACK>Kuva must ekraan	</ACTION_BLACK>
+ 	<ACTION_WHITE>Kuva valge ekraan</ACTION_WHITE>
+ 	<ACTION_FREEZE>Külmuta kuva praeguse slaidiga</ACTION_FREEZE>
+ 	<ACTION_LOGO>Näita logo</ACTION_LOGO>
+ 	<ACTION_HIDE>Peida praegune slaid (taust on endiselt kuvatud)</ACTION_HIDE>
+ 	<ACTION_EXIT>Välju esitleja reþiimist</ACTION_EXIT>
+ 	<ACTION_EXIT_PROMPT>Väljumiseks esitleja reþiimist nõuab kinnitust</ACTION_EXIT_PROMPT>
+ 	<ACTION_EXIT_NOPROMPT>Välju esitleja reþiimist kohe</ACTION_EXIT_NOPROMPT>
+ </hotkeys>
+
+  <progress_status>
+    <folder>Kausta vahemällu salvestamine %1</folder>
+    <lead_sheets>Loon juht lehti</lead_sheets>
+    <process_themes>Laen Kujundusi</process_themes>
+    <process_songs>Laen laule</process_songs>
+    <song_search>Otsin laule</song_search>
+    <export>Ekspordin laulu(sid)</export>
+    <load_songs>Laen laulu(sid)</load_songs>
+    <load_externals>Laen välised lehte(i)</load_externals>
+    <pass1>Sorteerin, 1. Pass</pass1>
+    <pass2>Sorteerin, 2. Pass</pass2>
+  </progress_status>
+
+</language>

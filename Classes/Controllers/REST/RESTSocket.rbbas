@@ -40,7 +40,9 @@ Inherits TCPSocket
 		  End Try
 		  
 		  If Not IsNull(response) Then
-		    handler.SendData(response)
+		    If Me.IsConnected() Then
+		      handler.SendData(response)
+		    End If
 		  End If
 		  
 		  'Resources that call ProtocolUpgrade() will insert new handlers in a stack (as first item)
@@ -78,6 +80,16 @@ Inherits TCPSocket
 		  m_protocolHandler.Append(New REST.RESTHttpHandler(self))
 		  m_server = server
 		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Destructor()
+		  'Actively remove all protocalhandlers from the list of handlers (should only contain one handler)
+		  'This will trigger the destructor, allowing the handler to do closing activities
+		  While(m_protocolHandler.Ubound()>1)
+		    Call m_protocolHandler.Pop()
+		  Wend
 		End Sub
 	#tag EndMethod
 

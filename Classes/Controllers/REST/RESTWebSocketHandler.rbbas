@@ -29,19 +29,20 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		Sub Constructor(restSocket AS REST.RESTSocket, protocol As Integer = kProtocolRFC6455)
 		  m_restSocket = restSocket
 		  m_parameters = New Dictionary()
+		  m_open = true
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Function DecodeRFC6455(payload As String) As Boolean
 		  Dim success As Boolean = False
+		  Dim mode As OpCode = OpCode.Close
+		  Dim masked As Boolean = False
 		  
 		  Dim frame As MemoryBlock
 		  frame = payload
 		  If frame.size >= 2 Then
 		    
-		    Dim mode As OpCode
-		    Dim masked As Boolean
 		    Dim mask(3) As UInt8
 		    Dim dataLength As UInt64
 		    Dim headerLength As UInt8
@@ -54,14 +55,20 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		    If dataLength <= 125 Then
 		      headerLength = 2
 		    ElseIf dataLength = 126 Then
-		      dataLength = frame.UInt16Value(1)
+		      dataLength = _
+		      Bitwise.ShiftLeft(frame.Byte(2), 8) + _
+		      frame.Byte(3)
 		      headerLength = 4
 		    ElseIf dataLength = 127 Then
 		      dataLength = _
-		      Bitwise.ShiftLeft(frame.UInt16Value(1), &hFFFFFFFFFFFF) + _
-		      Bitwise.ShiftLeft(frame.UInt16Value(2), &hFFFFFFFF) + _
-		      Bitwise.ShiftLeft(frame.UInt16Value(3), &hFFFF) + _
-		      frame.UInt16Value(4)
+		      Bitwise.ShiftLeft(frame.Byte(2), 56) + _
+		      Bitwise.ShiftLeft(frame.Byte(3), 48) + _
+		      Bitwise.ShiftLeft(frame.Byte(4), 40) + _
+		      Bitwise.ShiftLeft(frame.Byte(5), 32) + _
+		      Bitwise.ShiftLeft(frame.Byte(6), 24) + _
+		      Bitwise.ShiftLeft(frame.Byte(7), 16) + _
+		      Bitwise.ShiftLeft(frame.Byte(8), 8) + _
+		      frame.Byte(9)
 		      headerLength = 10
 		    End If
 		    
@@ -93,15 +100,37 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		    
 		  End If
 		  
+		  If success Then
+		    If mode = OpCode.Close Then
+		      SendClose(StatusCode.NormalClosure)
+		      m_restSocket.Close()
+		    End If
+		  ElseIf Not success or Not masked Then
+		    SendClose(StatusCode.ProtocolError)
+		    m_restSocket.Close()
+		  End If
+		  
 		  Return success
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub Destructor()
+		  If m_open Then
+		    
+		    If Not IsNull(m_restSocket) Then
+		      SendClose(StatusCode.GoingAway)
+		    End If
+		    m_open = false
+		  End If
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h21
 		Private Function EncodeRFC6455(payload As String, mode As OpCode = OpCode.Text, masked As Boolean = True) As String
-		  'Dim rawPayload As MemoryBlock
-		  'rawPayload = payload
-		  Dim dataLength As UInt64 = LenB(payload) 'rawPayload.Size
+		  Dim rawPayload As MemoryBlock
+		  rawPayload = payload.ConvertEncoding(Encodings.UTF8)
+		  Dim dataLength As UInt64 = rawPayload.Size 'LenB(payload)
 		  Dim headerLength As UInt8 = 1
 		  
 		  If dataLength <= 125 Then
@@ -128,15 +157,20 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		  ElseIf dataLength <= &hFFFF Then '65535
 		    frame.Byte(1) = 126
 		    'set byte 2-3
-		    frame.UInt16Value(1) = dataLength
+		    frame.Byte(2) = Bitwise.ShiftRight(dataLength, 8) And &hFF
+		    frame.Byte(3) = dataLength And &hFF
 		    frameSize = 4
 		  Else
 		    frame.Byte(1) = 127
 		    'set byte 2-9
-		    frame.UInt16Value(1) = Bitwise.ShiftRight(dataLength, &hFFFFFFFFFFFF) And &hFFFF
-		    frame.UInt16Value(2) = Bitwise.ShiftRight(dataLength, &hFFFFFFFF) And &hFFFF
-		    frame.UInt16Value(3) = Bitwise.ShiftRight(dataLength, &hFFFF) And &hFFFF
-		    frame.UInt16Value(4) = dataLength And &hFFFF
+		    frame.Byte(2) = Bitwise.ShiftRight(dataLength, 56) And &hFF
+		    frame.Byte(3) = Bitwise.ShiftRight(dataLength, 48) And &hFF
+		    frame.Byte(4) = Bitwise.ShiftRight(dataLength, 40) And &hFF
+		    frame.Byte(5) = Bitwise.ShiftRight(dataLength, 32) And &hFF
+		    frame.Byte(6) = Bitwise.ShiftRight(dataLength, 24) And &hFF
+		    frame.Byte(7) = Bitwise.ShiftRight(dataLength, 16) And &hFF
+		    frame.Byte(8) = Bitwise.ShiftRight(dataLength, 8) And &hFF
+		    frame.Byte(9) = dataLength And &hFF
 		    frameSize = 10
 		  End If
 		  
@@ -166,7 +200,7 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		  Dim char As Byte
 		  For i As UInt64 = 1 to dataLength
 		    
-		    char = AscB(payload.MidB(i, 1)) 'rawPayload.Byte(i-1)
+		    char = rawPayload.Byte(i-1) 'AscB(payload.MidB(i, 1))
 		    If masked Then
 		      char = char Xor mask((i-1) Mod 4)
 		    End If
@@ -260,6 +294,15 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Sub SendClose(closeCode As StatusCode)
+		  Dim closing As String = Str(closeCode) + Chr(0) + Chr(0)
+		  
+		  m_restSocket.Write(EncodeRFC6455(closing, OpCode.Close))
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Sub SendData(ByRef response As REST.RESTResponse)
 		  // Part of the REST.RESTProtocolHandler interface.
@@ -280,8 +323,8 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		Sub StatusNotification(subject As String, info As String)
 		  // Part of the iStatusNotifier interface.
 		  
-		  Dim resource As New RESTResourceStatus()
-		  Dim response As REST.RESTResponse = resource.Process(me)
+		  Dim resource As New RESTResourcePresent()
+		  Dim response As REST.RESTResponse = resource.GetStatus()
 		  SendData response
 		End Sub
 	#tag EndMethod
@@ -291,7 +334,7 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		  Dim success As Boolean = True
 		  
 		  Select Case Lowercase(context)
-		  Case "present"
+		  Case "presentation"
 		    PresentWindow.SubscribeStatusNotifier(me)
 		  Else
 		    success = False
@@ -323,6 +366,10 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 
 	#tag Property, Flags = &h21
 		Private m_identifier As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_open As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -369,6 +416,18 @@ Implements REST.RESTProtocolHandler,iStatusNotifier
 		  Close = 8
 		  Ping = 9
 		Pong = 10
+	#tag EndEnum
+
+	#tag Enum, Name = StatusCode, Type = Integer, Flags = &h21
+		NormalClosure=1000
+		  GoingAway=1001
+		  ProtocolError=1002
+		  UnsupportedDataType=1003
+		  InconsistentMessage=1007
+		  PolicyViolation=1008
+		  MessageTooBig=1009
+		  ExtensionSupportExpected=1010
+		UnexpectedCondition=1011
 	#tag EndEnum
 
 

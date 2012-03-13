@@ -2,13 +2,13 @@
 Protected Class RESTResourceSet
 Implements REST.RESTResource
 	#tag Method, Flags = &h21
-		Private Function GetSetList() As REST.RESTResponse
+		Private Function ListSets() As REST.RESTResponse
 		  Dim result As New REST.RESTresponse
-		  Dim xml As New XmlDocument()
+		  Dim xml As XmlDocument
 		  Dim root, set As XmlNode
 		  
-		  xml.Encoding = "UTF8"
-		  root = xml.AppendChild(xml.CreateElement("response"))
+		  xml = result.CreateXmlResponse(Name())
+		  root = xml.DocumentElement()
 		  
 		  For i As Integer = 0 To MainWindow.pop_sets_sets.ListCount()-1
 		    set = root.AppendChild(xml.CreateElement("set"))
@@ -17,8 +17,6 @@ Implements REST.RESTResource
 		  Next
 		  
 		  result.response = xml.ToString
-		  result.headers.Value(REST.kContentType) = REST.kContentTypeXml
-		  
 		  return result
 		End Function
 	#tag EndMethod
@@ -37,16 +35,18 @@ Implements REST.RESTResource
 		  Dim result As REST.RESTresponse
 		  
 		  Select Case protocolHandler.Action()
-		  Case "list"
+		  Case "", _
+		    "list"
 		    
-		    result = GetSetList()
+		    result = ListSets()
 		    
-		  Case "list_slides", _
-		    "slide_detail"
+		  Case "slides", _
+		    "slide"
 		    
 		    result = New REST.RESTresponse("Todo.", "501 Not Implemented")
 		    
-		  case "load", "present"
+		  case "load", _
+		    "present"
 		    
 		    Select Case protocolHandler.Method()
 		    Case "POST"

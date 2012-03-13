@@ -133,6 +133,8 @@ End
 		  
 		  MainWindow.CleanupPresentation CurrentSet
 		  
+		  UpdateStatusNotifiers "closed"
+		  
 		  '++JRC Prevent resizing MainWindow
 		  'MainWindow.Show
 		  #If Not TargetMacOS
@@ -1471,9 +1473,9 @@ End
 		    Return GoSong(14)
 		  ElseIf KeyBoard.AsyncKeyDown(KEY_F15) Then ' AKA Pause
 		    Return GoSong(15)
-		    'ElseIf Action = ACTION_SONG And _
-		    'Not IsNull(param) And param.IsNumeric Then
-		    'Return GoSong(param.IntegerValue)
+		  ElseIf Action = ACTION_SONG And _
+		    Not IsNull(param) And param.IsNumeric Then
+		    Return GoSong(param.IntegerValue)
 		    
 		    '
 		    ' Close Presentation
@@ -1523,8 +1525,9 @@ End
 		    '
 		    ' Put up an ALERT
 		    '
-		  ElseIf Lowercase(Key) = "a" Then
-		    Return ShowAlert
+		  ElseIf Lowercase(Key) = "a" Or _
+		    Action = ACTION_ALERT Then
+		    Return ShowAlert(param)
 		    
 		    '
 		    ' SCRIPTURE
@@ -1763,6 +1766,8 @@ End
 		  'CurrentSlide = 1
 		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
 		  
+		  UpdateStatusNotifiers "starting"
+		  
 		  If HelperActive Then
 		    PresentHelperWindow.Show
 		    i = 1
@@ -1798,6 +1803,7 @@ End
 		  #if Not TargetMacOS
 		    App.MinimizeWindow(MainWindow)
 		  #endif
+		  
 		  If HelperActive Then
 		    PresentHelperWindow.SetMode Me.Mode, False
 		    App.RestoreWindow(PresentHelperWindow)
@@ -1933,7 +1939,10 @@ End
 		    End If
 		  End If
 		  
-		  If IsNull( slide ) Then Return
+		  If IsNull( slide ) Then
+		    UpdateStatusNotifiers "clear"
+		    Return
+		  End If
 		  
 		  If SetML.IsExternal(slide) Then
 		    _IsSlidechangeExternal = True
@@ -2251,8 +2260,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function ShowAlert() As Boolean
-		  AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		Protected Function ShowAlert(alert As Variant = Nil) As Boolean
+		  If IsNull(alert) Then
+		    AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		  Else
+		    AlertText = alert.StringValue
+		  End If
+		  
 		  If HelperActive Then
 		    ResetPaint XCurrentSlide
 		    PresentHelperWindow.Refresh False
@@ -2555,8 +2569,8 @@ End
 		Protected m_Snapshots As Boolean = False
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		m_statusNotifiers() As iStatusNotifier
+	#tag Property, Flags = &h21
+		Private m_statusNotifiers() As iStatusNotifier
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -2679,6 +2693,9 @@ End
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_PREV_SLIDE, Type = Integer, Dynamic = False, Default = \"1002", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = ACTION_SONG, Type = Double, Dynamic = False, Default = \"1021", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_TAG, Type = Integer, Dynamic = False, Default = \"1011", Scope = Public

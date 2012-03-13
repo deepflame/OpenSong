@@ -110,7 +110,6 @@ Protected Module REST
 		Credits:
 		The REST Server is inspired by the HTTP Server Classes for REALbasic 2006r3
 		by The ZAZ Studios, http://www.thezaz.com/opensource/realbasic/server/http/
-		
 	#tag EndNote
 
 

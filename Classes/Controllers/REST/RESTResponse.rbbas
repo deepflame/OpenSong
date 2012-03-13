@@ -16,6 +16,30 @@ Protected Class RESTResponse
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function CreateXmlResponse(resource As String, action As String = "", identifier As String = "") As XmlDocument
+		  Dim xml As New XmlDocument()
+		  Dim root As XmlNode
+		  
+		  xml.Encoding = "UTF8"
+		  root = xml.AppendChild(xml.CreateElement("response"))
+		  
+		  root.SetAttribute("resource", resource)
+		  
+		  If action.Len() > 0 Then
+		    root.SetAttribute("action", action)
+		  End If
+		  
+		  If identifier.Len() > 0 Then
+		    root.SetAttribute("identifier", identifier)
+		  End If
+		  
+		  headers.Value(REST.kContentType) = REST.kContentTypeXml
+		  
+		  Return xml
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		headers As Dictionary

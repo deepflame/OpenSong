@@ -225,7 +225,6 @@ Class=RESTServer;Classes/Controllers/REST/RESTServer.rbbas;&h451F07FF;&h3C5B2FFF
 Class=RESTSocket;Classes/Controllers/REST/RESTSocket.rbbas;&h207627FF;&h3C5B2FFF;false
 Interface=RESTResource;Classes/Controllers/REST/RESTResource.rbbas;&h22B327FF;&h3C5B2FFF;false
 Class=RESTResponse;Classes/Controllers/REST/RESTResponse.rbbas;&h67CD07FF;&h3C5B2FFF;false
-Class=RESTResourceStatus;Classes/Controllers/REST/RESTResourceStatus.rbbas;&h51220FFF;&h3C5B2FFF;false
 Class=RESTResourceSet;Classes/Controllers/REST/RESTResourceSet.rbbas;&h503CEFFF;&h3C5B2FFF;false
 Class=RESTResourceSong;Classes/Controllers/REST/RESTResourceSong.rbbas;&h36482FFF;&h3C5B2FFF;false
 Class=RESTResourcePresent;Classes/Controllers/REST/RESTResourcePresent.rbbas;&h19AEDFFF;&h3C5B2FFF;false

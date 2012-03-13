@@ -1,6 +1,36 @@
 #tag Class
 Protected Class RESTResourceSong
 Implements REST.RESTResource
+	#tag Method, Flags = &h21
+		Private Function ListFolders() As REST.RESTResponse
+		  Dim result As New REST.RESTresponse
+		  Dim xml As XmlDocument
+		  Dim root, folder As XmlNode
+		  
+		  xml = result.CreateXmlResponse(Name(), "folders")
+		  root = xml.DocumentElement()
+		  
+		  
+		  result.response = xml.ToString
+		  return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function ListSongs() As REST.RESTResponse
+		  Dim result As New REST.RESTresponse
+		  Dim xml As XmlDocument
+		  Dim root, song As XmlNode
+		  
+		  xml = result.CreateXmlResponse(Name())
+		  root = xml.DocumentElement()
+		  
+		  
+		  result.response = xml.ToString
+		  return result
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function Name() As String
 		  // Part of the REST.RESTResource interface.
@@ -16,9 +46,24 @@ Implements REST.RESTResource
 		  Dim result As New REST.RESTresponse
 		  
 		  Select Case protocolHandler.Action()
-		  Case "detail", _
-		    "folders", _
+		  Case "", _
 		    "list"
+		    
+		    If protocolHandler.Identifier().Len() = 0 Then
+		      result = ListSongs()
+		    Else
+		      'result = GetSong(protocolHandler.Identifier())
+		      result.response = "Todo."
+		      result.status = "501 Not Implemented"
+		    End If
+		    
+		  Case "folders"
+		    
+		    'result = ListFolders()
+		    result.response = "Todo."
+		    result.status = "501 Not Implemented"
+		    
+		  Case "detail"
 		    
 		    result.response = "Todo."
 		    result.status = "501 Not Implemented"

@@ -379,7 +379,6 @@ Inherits Application
 		  PlatformSpecific
 		  
 		  m_ControlServer = New REST.RESTServer()
-		  m_ControlServer.AddResource(New REST.RESTResourceStatus)
 		  m_ControlServer.AddResource(New REST.RESTResourceSong)
 		  m_ControlServer.AddResource(New REST.RESTResourceSet)
 		  m_ControlServer.AddResource(New REST.RESTResourcePresent)

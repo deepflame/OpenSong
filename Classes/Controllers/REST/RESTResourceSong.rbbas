@@ -1,15 +1,28 @@
 #tag Class
 Protected Class RESTResourceSong
 Implements REST.RESTResource
+	#tag Method, Flags = &h0
+		Sub Constructor()
+		  m_songFolder = New FolderDB(App.DocsFolder.Child("Songs"))
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h21
 		Private Function ListFolders() As REST.RESTResponse
 		  Dim result As New REST.RESTresponse
 		  Dim xml As XmlDocument
 		  Dim root, folder As XmlNode
+		  Dim folderList(0) As String
 		  
 		  xml = result.CreateXmlResponse(Name(), "folders")
 		  root = xml.DocumentElement()
 		  
+		  folderList = m_songFolder.GetFolders()
+		  For i AS Integer = 0 to UBound(folderList)
+		    folder = root.AppendChild(xml.CreateElement("folder"))
+		    SmartML.SetValueN(folder, "@id", i)
+		    folder.AppendChild(xml.CreateTextNode(folderList(i)))
+		  Next
 		  
 		  result.response = xml.ToString
 		  return result
@@ -59,9 +72,7 @@ Implements REST.RESTResource
 		    
 		  Case "folders"
 		    
-		    'result = ListFolders()
-		    result.response = "Todo."
-		    result.status = "501 Not Implemented"
+		    result = ListFolders()
 		    
 		  Case "detail"
 		    
@@ -92,6 +103,11 @@ Implements REST.RESTResource
 		  
 		End Function
 	#tag EndMethod
+
+
+	#tag Property, Flags = &h21
+		Private m_songFolder As FolderDB
+	#tag EndProperty
 
 
 	#tag ViewBehavior

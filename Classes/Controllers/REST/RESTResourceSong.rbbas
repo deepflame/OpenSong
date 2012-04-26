@@ -35,7 +35,7 @@ Implements REST.RESTResource
 		Function Name() As String
 		  // Part of the REST.RESTResource interface.
 		  
-		  Return "song"
+		  Return "songs"
 		End Function
 	#tag EndMethod
 

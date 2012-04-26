@@ -99,11 +99,11 @@ This resources requires an action to be specified.
 Exchanging song related data.
 
 ^ Method ^ URI ^ Implemented ^ Response or consequence ^
-| GET  | %%/song%% \\ or \\ %%/song/list/folder:name%%     |  | A list of all songs in the root song directory, or the song in the folder specified by the parameter 'folder'. |
-| GET  | %%/song/[detail]/identifier/folder:name%% |  | The raw XML of a song. |
-| GET  | %%/song/folders%%                         |  | A list with the names of the available song folders. |
-| POST | %%/song/load/identifier/folder:name%%     |  | Loads the song specified by the song name as identifier. |
-| POST | %%/song/present/identifier%%              |  | Starts a presentation using the song specified by the set name as identifier. \\ Optionally a starting slide can be specified. Omission of the parameter has the same effect as using slide_index=1. \\ The optional display parameter determines the display mode where 1 is single display and 2 is dual display (launching presentation helper). \\ Parameter 1 and Parameter 2 can be swapped and both are optional. |
+| GET  | %%/songs%% \\ or \\ %%/songs/list/folder:name%%     |  | A list of all songs in the root song directory, or the song in the folder specified by the parameter 'folder'. |
+| GET  | %%/songs/[detail]/identifier/folder:name%% |  | The raw XML of a song. |
+| GET  | %%/songs/folders%%                         |  | A list with the names of the available song folders. |
+| POST | %%/songs/load/identifier/folder:name%%     |  | Loads the song specified by the song name as identifier. |
+| POST | %%/songs/present/identifier%%              |  | Starts a presentation using the song specified by the set name as identifier. \\ Optionally a starting slide can be specified. Omission of the parameter has the same effect as using slide_index=1. \\ The optional display parameter determines the display mode where 1 is single display and 2 is dual display (launching presentation helper). \\ Parameter 1 and Parameter 2 can be swapped and both are optional. |
 
 
 === set ===

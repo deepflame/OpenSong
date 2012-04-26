@@ -34,10 +34,17 @@ Implements REST.RESTResource
 		  Dim result As New REST.RESTresponse
 		  Dim xml As XmlDocument
 		  Dim root, song As XmlNode
+		  Dim songList(0) As String
 		  
 		  xml = result.CreateXmlResponse(Name())
 		  root = xml.DocumentElement()
 		  
+		  songList = m_songFolder.GetFiles(".") // Current folder only
+		  For i AS Integer = 0 to UBound(songList)
+		    song = root.AppendChild(xml.CreateElement("song"))
+		    SmartML.SetValueN(song, "@id", i)
+		    song.AppendChild(xml.CreateTextNode(songList(i)))
+		  Next
 		  
 		  result.response = xml.ToString
 		  return result

@@ -14277,7 +14277,7 @@ End
 		    
 		    lst_external_videolan_preset.DeleteAllRows
 		    For i = 0 To App.VideolanPresetList.Count()-1
-		      lst_external_videolan_preset.AddRow App.VideolanPresetList.Key(i)
+		      lst_external_videolan_preset.AddRow CStr(App.VideolanPresetList.Key(i))
 		    Next i
 		    
 		    Select Case SmartML.GetValue(xgroup, "@application")

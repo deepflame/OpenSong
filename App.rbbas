@@ -311,10 +311,10 @@ Inherits Application
 		          End If
 		        End If
 		      End If
+		    Else
+		      MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
+		      'Quit
 		    End If
-		  Else
-		    MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
-		    'Quit
 		  End If
 		  
 		  '++JRC

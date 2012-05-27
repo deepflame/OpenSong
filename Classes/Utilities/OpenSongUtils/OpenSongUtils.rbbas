@@ -34,6 +34,28 @@ Protected Module OpenSongUtils
 		End Function
 	#tag EndMethod
 
+        #tag Method, Flags = &h0
+                Function ColorToCSS(c As Color) As String
+                  //++
+                  // Convert a Color to a CSS RGB string
+                  // Truncates the Alpha channel introduced in RB2011r4 and does not alter the RGB
+                  // (Although the debugger shows the string as &cRRGGBBAA, CStr function makes it &hAARRGGBB)
+                  //--
+                  Dim s As String = "#"
+                  Dim cs As String
+                  Dim start, count As Int8
+                  cs = Str(c)
+                  #if RBVersion >= 2011.04 Then
+                    start = 5
+                  #else
+                    start = 3
+                  #endif
+                  count = 6
+                  s = s + Mid(Str(c), start, count)
+                  Return s
+                End Function
+        #tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function CompareDates(d1 As Date, d2 As Date) As Integer
 		  // ++JRC September 2007
@@ -982,6 +1004,127 @@ Protected Module OpenSongUtils
 		  Return CStr(PointsToInches(CDbl(Points)))
 		End Function
 	#tag EndMethod
+        #tag Method, Flags = &h0
+                Function PrintSettingsToCSS(printSettings As XmlNode) As String
+                  //++
+                  // Converts the PrintSettings to CSS Style that matches what is used
+                  // by the output of SongML.ToHTML so it can be used as a style sheet
+                  //--
+
+                  Dim s As String
+                  Dim tab As String = "    "
+                  Dim font As FontFace
+                  Dim borderWidth As Int8
+
+                  s = ""
+                  borderWidth = SmartML.GetValueN(printSettings, "style/@border_thickness", False)
+
+                  //++
+                  // HTML body defaults to Lyrics
+                  //--
+                  font = SmartML.GetValueF(printSettings, "lyrics", False)
+
+                  s = s + "body { "+ EndOfLine
+                  s = s + font.ToCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+                  //++
+                  // Take the decoration off any hyperlinks (this is the way it is done in style.css, not certain why)
+                  //--
+                  s = s + "a {" + EndOfLine
+                  s = s + tab + "text-decoration: none;" + EndOfLine
+                  s = s + tab + "color: " + ColorToCSS(font.ForeColor) + ";" + EndOfLine
+                  s = s + "}" + EndOfLine
+
+                  //++
+                  // Lyrics
+                  //--
+                  s = s + ".lyrics {" + EndOfLine
+                  s = s + font.toCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+                  //++
+                  // Title
+                  //--
+                  font = SmartML.GetValueF(printSettings, "title", False)
+
+                  s = s + "#title {" + EndOfLine
+                  s = s + font.ToCSS(borderWidth)
+                  If SmartML.GetValueB(printSettings, "style/@caps_title", False) Then
+                    s = s + tab + "text-transform: uppercase;" + EndOfLine
+                  End If
+                  s = s + "}" + EndOfLine
+
+                  //++
+                  // Author
+                  //--
+                  font = SmartML.GetValueF(printSettings, "author", False)
+
+                  s = s + "#author {" + EndOfLine
+                  s = s + font.ToCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+                  //++
+                  // Most of the non-lyrics, non-chord content
+                  //--
+                  font = SmartML.GetValueF(printSettings, "copyright", False)
+
+                  s = s + "#presentation, #hymn_number, #time_sig, #tempo, #key, #aka," + EndOfLine
+                  s = s + "#copyright, #ccli, #themes, #key_line, #user1, #user2, #user3, #capo {" + EndOfLine
+                  s = s + font.ToCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+                  //+
+                  // Similar to the lyrics class, the comment class is now based on the copyright font
+                  //--
+
+                  s = s + ".comment {" + EndOfLine
+                  s = s + font.ToCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+                  //++
+                  // OpenSong class - based from Copyright, but a little smaller
+                  //--
+
+                  s = s + ".opensong {" + EndOfLine
+                  If font.Size >= 8 Then
+                    font.Size = font.Size - 2
+                  End If
+                  s = s + font.ToCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+                  //++
+                  // Headings
+                  //--
+                  font = SmartML.GetValueF(printSettings, "heading", False)
+
+                  s = s + ".heading {" + EndOfLine
+                  s = s + font.ToCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+                  //+
+                  // Chords
+                  //--
+                  font = SmartML.GetValueF(printSettings, "chords", False)
+
+                  s = s + ".chords {" + EndOfLine
+                  s = s + font.ToCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+                  //++
+                  // Capo Chords
+                  //--
+                  font = SmartML.GetValueF(printSettings, "capo_chords", False)
+
+                  s = s + ".capo_chords {" + EndOfLine
+                  s = s + font.ToCSS(borderWidth)
+                  s = s + "}" + EndOfLine
+
+
+                  Return s
+                End Function
+        #tag EndMethod
+
 
 	#tag Method, Flags = &h0
 		Function RowHeight(Extends L As ListBox) As Integer

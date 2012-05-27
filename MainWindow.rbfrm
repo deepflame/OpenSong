@@ -9129,6 +9129,7 @@ End
 			Dim newBible As Bible
 			
 			'++JRC Fixed GetOpenFolderItem was not being called correctly
+			XMM = FileTypes.OpenSongModule
 			XMM.Name = App.T.Translate("module/file_type")
 			XMM.Extensions = "xmm"
 			XMM.MacType = "XMM"
@@ -10333,6 +10334,66 @@ End
 		  
 		End Sub
 	#tag EndMethod
+
+        #tag Method, Flags = &h0
+                Sub ActionSongExport()
+                  Dim output As TextOutputStream
+                  Dim song As XmlDocument
+                  Dim exportOptionsWin As HTMLExportWindow
+                  Dim exportOptions As HTMLExportOptions
+                  Dim cancelled As Boolean
+                  Dim songHTML As String
+                  Dim printSettings as XmlElement
+                  Dim printCSSfile As FolderItem
+                  Dim printCSS As String
+                  
+                  'Ask if user wants to save
+                  If NOT ActionSongAskSave Then Return 'User Canceled
+                  
+                  exportOptions = New HTMLExportOptions
+                  exportOptions.Load(App.MainPreferences)
+                  
+                  exportOptionsWin = New HTMLExportWindow
+                  cancelled = exportOptionsWin.ShowDialog(exportOptions)
+                  
+                  If cancelled Then
+                    Return
+                  End If
+                  
+                  exportOptions.Save(App.MainPreferences)
+                  App.MouseCursor = System.Cursors.Wait
+                  output = TextOutputStream.Create(exportOptions.OutputFolder.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html"))
+                  song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
+                  If output <> Nil And song <> Nil Then
+                    //++
+                    // If the user has selected to use the printer settings, create a CSS file based on those settings
+                    //--
+                    If exportOptions.PrintStyle Then
+                      printSettings = App.MyPrintSettings.DocumentElement
+                      printCSS = PrintSettingsToCSS(printSettings)
+                      printCSSfile = GetTemporaryFolderItem()
+                      If printCSSfile <> Nil Then
+                        printCSSfile.Name = printCSSfile.Name + ".css"
+                        Dim printCSSoutput As TextOutputStream
+                        printCSSoutput = TextOutputStream.Create(printCSSfile)
+                        printCSSoutput.Write printCSS
+                        printCSSoutput.Close
+                      End If
+                      exportOptions.StyleSheet = printCSSfile
+                    End If
+                    songHTML = SongML.ToHTML(song.DocumentElement, exportOptions)
+                    output.Write songHTML
+                    output.Close
+                  End If
+                  App.MouseCursor = Nil
+                  
+                  If (exportOptions.StyleSheet <> Nil) And (Not exportOptions.EmbedCSS) Then
+                    exportOptions.StyleSheet.CopyFileTo exportOptions.OutputFolder
+                  End If
+                  
+                  InputBox.Message App.T.Translate("shared/done/@caption")
+                End Sub
+        #tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub ActionSongMove()
@@ -12568,38 +12629,7 @@ End
 #tag Events btn_song_export
 	#tag Event
 		Sub Action()
-		  Dim i As Integer
-		  Dim dlg as New SelectFolderDialog
-		  Dim f, g as FolderItem
-		  Dim output, goutput As TextOutputStream
-		  Dim song As XmlDocument
-		  
-		  'Ask if user wants to save
-		  If NOT ActionSongAskSave Then Return 'User Canceled
-		  
-		  'build dialog
-		  dlg.ActionButtonCaption = App.T.Translate("shared/ok/@caption")
-		  dlg.CancelButtonCaption = App.T.Translate("shared/cancel/@caption")
-		  dlg.InitialDirectory = App.AppDocumentsFolder
-		  dlg.PromptText = App.T.Translate("shared/export_to/@caption")
-		  dlg.Title = App.T.Translate("shared/browse_for/@caption")
-		  
-		  f = dlg.ShowModal() 'show dialog
-		  If f <> Nil Then
-		    App.MouseCursor = System.Cursors.Wait
-		    output = TextOutputStream.Create(f.Child(MakeSafeURLName(lst_songs_songs.Text, False) + ".html"))
-		    song = SmartML.XDocFromFile(Songs.GetFile(lst_songs_songs.CellTag(lst_songs_songs.ListIndex ,0) + lst_songs_songs.List(lst_songs_songs.ListIndex)))
-		    If output <> Nil And song <> Nil Then
-		      output.Write SongML.ToHTML(song.DocumentElement)
-		      If goutput <> Nil Then goutput.WriteLine "<li><a href=""" + MakeSafeURLName(lst_songs_songs.List(i), True) + ".html"">" + lst_songs_songs.List(i) + "</a></li>"
-		      output.Close
-		    End If
-		    App.MouseCursor = Nil
-		    g = App.AppFolder.Child("OpenSong Settings").Child("style.css")
-		    If g <> Nil Then g.CopyFileTo f
-		    
-		    InputBox.Message App.T.Translate("shared/done/@caption")
-		  End If
+		  ActionSongExport
 		End Sub
 	#tag EndEvent
 	#tag Event

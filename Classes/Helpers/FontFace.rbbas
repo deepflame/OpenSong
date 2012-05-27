@@ -61,6 +61,47 @@ Protected Class FontFace
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function ToCSS(borderWidth As Int8 = 1) As String
+		  //++
+		  // Convert the FontFace to its CSS equivalent declarations
+		  //
+		  // Since Border is an attribute of FontFace, but the width of the border is set in the PrintPreferences,
+		  // pass this in as an optional parameter
+		  //
+		  // For the moment, ignores the FillColor attribute.  TODO: Investigate where this is used and if it needs
+		  // to be incorporated in this method
+		  //
+		  // Shadow and ShadowColor are likewise ignored.
+		  //--
+		  
+		  Dim s As String = ""
+		  Dim tab As String = "    "
+		  
+		  s = s + tab + "font-family: """ + Name + """;" + EndOfLine
+		  s = s + tab + "color: " + ColorToCSS(ForeColor) + ";" + EndOfLine
+		  s = s + tab + "font-size: " + CStr(Size) + "pt;" + EndOfLine
+		  
+		  If Italic Then
+		    s = s + tab + "font-style: italic;" + EndOfLine
+		  End If
+		  
+		  If Bold Then
+		    s = s + tab + "font-weight: bold;" + EndOfLine
+		  End If
+		  
+		  If Border Then
+		    s = s + tab + "border: " + CStr(borderWidth) + "px solid " + ColorToCSS(BorderColor) + ";" + EndOfLine
+		  End If
+		  
+		  If Underline Then
+		    s = s + tab + "text-decoration: underline;" + EndOfLine
+		  End If
+		  
+		  Return s
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		Bold As Boolean
@@ -113,40 +154,6 @@ Protected Class FontFace
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="Index"
-			Visible=true
-			Group="ID"
-			InitialValue="-2147483648"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Super"
-			Visible=true
-			Group="ID"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Left"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Top"
-			Visible=true
-			Group="Position"
-			InitialValue="0"
-			InheritedFrom="Object"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Name"
-			Visible=true
-			Group="ID"
-			Type="String"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Bold"
 			Group="Behavior"
 			InitialValue="0"
@@ -183,10 +190,31 @@ Protected Class FontFace
 			Type="Color"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Index"
+			Visible=true
+			Group="ID"
+			InitialValue="-2147483648"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Italic"
 			Group="Behavior"
 			InitialValue="0"
 			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Left"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Name"
+			Visible=true
+			Group="ID"
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Shadow"
@@ -205,6 +233,19 @@ Protected Class FontFace
 			Group="Behavior"
 			InitialValue="0"
 			Type="Integer"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Super"
+			Visible=true
+			Group="ID"
+			InheritedFrom="Object"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Top"
+			Visible=true
+			Group="Position"
+			InitialValue="0"
+			InheritedFrom="Object"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Underline"

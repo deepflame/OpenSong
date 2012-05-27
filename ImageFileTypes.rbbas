@@ -7,6 +7,7 @@
 		MacCreator=
 		MacType=BMPf
 		Name=BMP Files
+		UTI=com.microsoft.bmp
 	#tag EndFileType
 
 	#tag FileType
@@ -17,6 +18,7 @@
 		MacCreator=
 		MacType=GIFf
 		Name=GIF Files
+		UTI=com.compuserve.gif
 	#tag EndFileType
 
 	#tag FileType
@@ -27,6 +29,7 @@
 		MacCreator=
 		MacType=JPEG
 		Name=JPG Files
+		UTI=public.jpeg
 	#tag EndFileType
 
 	#tag FileType
@@ -37,6 +40,7 @@
 		MacCreator=
 		MacType=PICT
 		Name=PICT Files
+		UTI=com.apple.pict
 	#tag EndFileType
 
 	#tag FileType
@@ -47,6 +51,7 @@
 		MacCreator=
 		MacType=PNGf
 		Name=PNG Files
+		UTI=public.png
 	#tag EndFileType
 
 	#tag FileType
@@ -57,6 +62,7 @@
 		MacCreator=????
 		MacType=TIFF
 		Name=TIFF Files
+		UTI=public.tiff
 	#tag EndFileType
 
 #tag EndFileTypeSet

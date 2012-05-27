@@ -1,4 +1,12 @@
-﻿* Added check for backgrounds folder in ImageChooserWindow. If it doesn't exist switch to the Op System documents folder.(JRC)
+﻿* Add new dialog on exporting a song to HTML to give the user more control over the style and resulting HTML file. (swampcat)
+
+* Fix Mac issues on certain filetypes because of missing UTI definition. (swampcat)
+
+* Fix UTF-8 issues in StringUtils.isalpha and StringUtils.isalnum. (swampcat)
+
+* Fix a drawing error in the SFontCanvas that prevented previewing the font when certain colors were chosen. (swampcat)
+
+* Added check for backgrounds folder in ImageChooserWindow. If it doesn't exist switch to the Op System documents folder.(JRC)
 
 * If Backgrounds folder does not exist OpenSong now tries to create it. (JRC)
 

@@ -60,7 +60,19 @@ Inherits SBufferedCanvas
 		    
 		    Call DrawFontString(g, MyFont.Name + " " + Str(MyFont.Size), 0, 0, MyFont, g.Width, "center", g.Height, "middle")
 		    
+		    If (c.Red > 128 And c.Green > 128) Or _
+		      (c.Green > 128 And c.Blue > 128) Or _
+		      (c.Red > 128 And c.Blue > 128) Then
+		      g.ForeColor = RGB(0,0,0)
+		      g.DrawRect 0, 0, Width, Height
+		      Return
+		    End If
+		    
 		  End If
+		  
+		  g.ForeColor = DarkBevelColor
+		  g.DrawRect 0, 0, Width, Height
+		  
 		End Sub
 	#tag EndEvent
 

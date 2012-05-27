@@ -1600,17 +1600,230 @@ Module SongML
 		  // Tag HTML with UTF-8 encoding [Bug 1477964]
 		  // Properly encode text in HTML.  Utilizes the HTMLEntityEncode method
 		  // in OpenSongUtils [Bug 1607916]
+		  //
+		  // May 2012, EMP
+		  //   This version is now deprecated.  Please make all changes to the new version that supports HTMLExportOptions
+		  //
 		  //--
-		  'TODO: Configurable Export Options?
-		  CleanLyrics songElement.OwnerDocument
 		  
 		  Dim s As String
 		  Dim lastChar As String
+		  
+		  CleanLyrics songElement.OwnerDocument
 		  
 		  s = "<html><head>" + EndOfLine
 		  s = s + "  <meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />" + EndOfLine
 		  s = s + "  <title>" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</title>" + EndOfLine
 		  s = s + "  <link rel=""stylesheet"" href=""style.css"" type=""text/css""/>" + EndOfLine
+		  s = s + "</head>" + EndOfLine + "<body>" + EndOfLine
+		  
+		  s = s + "  <div id=""title"">" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</div>" + EndOfLine
+		  s = s + "  <div id=""author"">" + SmartML.GetValue(songElement, "author").HTMLEntityEncode + "</div>" + EndOfLine
+		  '++JRC inlucde hymn number in export
+		  If SmartML.GetValue(songElement, "hymn_number").Len > 0 Then _
+		  s = s + "  <div id=""hymn_number"">" + App.T.Translate("general_song_editor/hymn_number/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "hymn_number").HTMLEntityEncode + "</div>" + EndOfLine
+		  '--
+		  If SmartML.GetValue(songElement, "time_sig").Len > 0 Then _
+		  s = s + "  <div id=""time_sig"">" + App.T.Translate("advanced_song_editor/time_sig/@caption").HTMLEntityEncode + ": " + SmartML.GetValue(songElement, "time_sig").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "tempo").Len > 0 Then _
+		  s = s + "  <div id=""tempo"">" + App.T.Translate("advanced_song_editor/tempo/@caption").HTMLEntityEncode + ": " + SmartML.GetValue(songElement, "tempo").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "capo").Len > 0 Then _
+		  s = s + "  <div id=""capo"">" + App.T.Translate("advanced_song_editor/capo/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "capo").HTMLEntityEncode + "</div>" + EndOfLine
+		  '++JRC inlucde presentation order in export
+		  If SmartML.GetValue(songElement, "presentation").Len > 0 Then _
+		  s = s + "  <div id=""presentation"">" + App.T.Translate("general_song_editor/presentation/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "presentation").HTMLEntityEncode + "</div>" + EndOfLine
+		  '--
+		  Dim slices(0), lines(0) As String
+		  LyricsToLines songElement.OwnerDocument, lines
+		  Dim currSlice, currVerse, lineCount, sliceCount As Integer
+		  
+		  s = s + "<br/>" + EndOfLine
+		  Dim currLine as Integer
+		  For currLine = 1 To UBound(lines)
+		    If Left(lines(currLine), 1) = "." And currLine < UBound(lines) And InStr("123456789 ", Left(lines(currLine+1), 1)) > 0 Then
+		      ' --------------- CHORDS W/ LYRICS ---------------
+		      lineCount = LinesToSlices(lines, currLine, slices, False)
+		      sliceCount = UBound(slices) / lineCount
+		      s = s + "  <table border=""0"" cellpadding=""0"" cellspacing=""0"">" + EndOfLine
+		      
+		      //++
+		      // Don't print capo chords if we wouldn't on regular hardcopy [Bug 1691058]
+		      //--
+		      If SmartML.GetValueB(songElement, "capo/@print", True, False) Then
+		        s = s + "    <tr>" + EndOfLine
+		        For currSlice = 0 To sliceCount - 1 ' Loop through each chord slice
+		          If currSlice = 0 Then
+		            s = s + "      <td class=""capochords"">" + Trim(Mid(SingleTranspose(slices(currSlice*lineCount+1),_
+		            12-SmartML.GetValueN(songElement, "capo"), True), 2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		          Else
+		            s = s + "      <td class=""capochords"">" + Trim(SingleTranspose(slices(currSlice*lineCount+1),_
+		            12-SmartML.GetValueN(songElement, "capo"), False)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		          End If
+		        Next currSlice
+		        s = s + "    </tr>" + EndOfLine
+		      End If
+		      
+		      For currSlice = 0 To sliceCount - 1 ' Loop through each chord slice
+		        If currSlice = 0 Then
+		          s = s + "      <td class=""chords"">" + Trim(Mid(slices(currSlice*lineCount+1),2)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		        Else
+		          s = s + "      <td class=""chords"">" + Trim(slices(currSlice*lineCount+1)).HTMLEntityEncode + "&nbsp;</td>" + EndOfLine
+		        End If
+		      Next currSlice
+		      s = s + "    </tr>" + EndOfLine
+		      
+		      For currVerse = 2 To lineCount ' Loop through the lines and print
+		        s = s + "    <tr>" + EndOfLine
+		        For currSlice = 0 To sliceCount - 1 ' Loop through each slice
+		          If slices(currSlice*lineCount+currVerse).Len = 0 Then
+		            slices(currSlice*lineCount+currVerse) = "&nbsp;"
+		          Else
+		            slices(currSlice*linecount+currVerse) = slices(currSlice*linecount+currVerse).HTMLEntityEncode
+		            If Right(slices(currSlice*lineCount+currVerse),1) = " " Then
+		              If currSlice = 0 Then
+		                If Left(slices(currSlice*lineCount+currVerse),2) = "  " Then slices(currSlice*lineCount+currVerse) = " &nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(currSlice*lineCount+currVerse),2)) + "&nbsp;</td>" + EndOfLine
+		              Else
+		                If Left(slices(currSlice*lineCount+currVerse),1) = " " Then slices(currSlice*lineCount+currVerse) = "&nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(slices(currSlice*lineCount+currVerse)) + "&nbsp;</td>" + EndOfLine
+		              End If
+		            Else
+		              '
+		              ' Check for a break in the middle of the word
+		              '
+		              If currSlice < sliceCount - 1 Then 'Not on the last slice
+		                lastChar = Right(slices(currSlice*lineCount + currVerse), 1)
+		                If StringUtils.isalpha(asc(lastChar)) Then 'Not an explicitly designated syllable end or a word break
+		                  If StringUtils.isalpha(asc(Left(slices((currSlice + 1)*lineCount + currVerse), 1))) Then 'there is no space at the end of this slice or beginning of the next
+		                    slices(currSlice*lineCount + currVerse) = slices(currSlice*lineCount + currVerse) + " -&nbsp;"
+		                  End If
+		                End If
+		              End If
+		              slices(currSlice*lineCount+currVerse) = StringUtils.Squeeze(slices(currSlice*lineCount+currVerse), "_")
+		              slices(currSlice*lineCount+currVerse) = ReplaceAll(slices(currSlice*lineCount+currVerse), "_", " -&nbsp;")
+		              If currSlice = 0 Then
+		                If Left(slices(currSlice*lineCount+currVerse),2) = "  " Then slices(currSlice*lineCount+currVerse) = " &nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(Mid(slices(currSlice*lineCount+currVerse),2)) + "</td>" + EndOfLine
+		              Else
+		                If Left(slices(currSlice*lineCount+currVerse),1) = " " Then slices(currSlice*lineCount+currVerse) = "&nbsp;" + Mid(slices(currSlice*lineCount+currVerse),2)
+		                s = s + "      <td class=""lyrics"">" + Trim(slices(currSlice*lineCount+currVerse)) + "</td>" + EndOfLine
+		              End If
+		            End If
+		          End If
+		        Next currSlice
+		        s = s + "    </tr>" + EndOfLine
+		      Next currVerse
+		      
+		      s = s + "</table>" + EndOfLine
+		      currLine = currLine + lineCount - 1 ' currLine will increment again b/c of the For loop
+		      
+		    ElseIf Left(lines(currLine), 1) = "-" Then // A variety of printing directives
+		      If Mid(lines(currLine), 2, 2) = "!!" Then // PageBreak
+		        s = s + "<div style=""page-break-before: always;""></div>"
+		      ElseIf Mid(lines(currLine), 2, 2) = "__" Then // Horizontal line
+		        s = s + "<hr />" + EndOfLine
+		      End If
+		    ElseIf Left(lines(currLine), 1) = "." Then
+		      s = s + "  <div class=""chords"">" + Mid(lines(currLine), 2).HTMLEntityEncode + "</div>" + EndOfLine
+		      
+		    ElseIf Left(lines(currLine), 1) = ";" Then
+		      s = s + "  <div class=""comment"">" + Mid(lines(currLine), 2).HTMLEntityEncode + "</div>" + EndOfLine
+		      
+		    ElseIf Left(lines(currLine), 1) = "[" Then
+		      s = s + "  <p/><div class=""heading"">" + FullHeading(Mid(lines(currLine), 2, lines(currLine).Len-2), True).HTMLEntityEncode + "</div>" + EndOfLine
+		      
+		    Else
+		      s = s + "  <div class=""lyrics"">" + Mid(lines(currLine), 2, lines(currLine).Len-1).HTMLEntityEncode + "</div>" + EndOfLine
+		      
+		    End If
+		  Next currLine
+		  s = s + "<br/>" + EndOfLine
+		  
+		  If SmartML.GetValue(songElement, "aka").Len > 0 Then _
+		  s = s + "  <div id=""aka"">" + App.T.Translate("advanced_song_editor/aka/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "aka").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "copyright").Len > 0 Then _
+		  s = s + "  <div id=""copyright"">" + App.T.Translate("general_song_editor/copyright/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "copyright").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "ccli").Len > 0 Then _
+		  s = s + "  <div id=""ccli"">" + App.T.Translate("general_song_editor/ccli/@caption").HTMLEntityEncode + " " + SmartML.GetValue(songElement, "ccli").HTMLEntityEncode + "</div>" + EndOfLine
+		  If ColonTrim(SmartML.GetValue(songElement, "theme")).Len > 0 Then _
+		  s = s + "  <div id=""themes"">" + App.T.Translate("advanced_song_editor/themes/@caption").HTMLEntityEncode + ": " + _
+		  ColonTrim(SmartML.GetValue(songElement, "theme")).HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "key_line").Len > 0 Then _
+		  s = s + "  <div id=""key_line"">" + App.T.Translate("advanced_song_editor/key_line/@caption").HTMLEntityEncode + ": " + _
+		  SmartML.GetValue(songElement, "key_line").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "key").Len > 0 Then _
+		  s = s + "  <div id=""key"">" + App.T.Translate("advanced_song_editor/key/@caption").HTMLEntityEncode + " " + _
+		  SmartML.GetValue(songElement, "key").HTMLEntityEncode + "</div>" + EndOfLine
+		  
+		  If SmartML.GetValue(songElement, "user1").Len > 0 Then _
+		  s = s + "  <div id=""user1"">" + MainWindow.lbl_song_user1.Text.HTMLEntityEncode + " " + _
+		  SmartML.GetValue(songElement, "user1").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "user2").Len > 0 Then _
+		  s = s + "  <div id=""user2"">" + MainWindow.lbl_song_user2.Text.HTMLEntityEncode + " " + _
+		  SmartML.GetValue(songElement, "user2").HTMLEntityEncode + "</div>" + EndOfLine
+		  If SmartML.GetValue(songElement, "user3").Len > 0 Then _
+		  s = s + "  <div id=""user3"">" + MainWindow.lbl_song_user3.Text.HTMLEntityEncode + " " + _
+		  SmartML.GetValue(songElement, "user3").HTMLEntityEncode + "</div>" + EndOfLine
+		  
+		  s = s + "<p><a class=""opensong"" href=""http://www.opensong.org/"">" + _
+		  App.T.Translate("about/created_with_opensong").HTMLEntityEncode + "</a></p>" + EndOfLine
+		  s = s + "</body></html>"
+		  
+		  Return s
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ToHTML(songElement As XmlNode, exportOptions As HTMLExportOptions) As String
+		  //++
+		  // 3 December 2006, EMP
+		  // Tag HTML with UTF-8 encoding [Bug 1477964]
+		  // Properly encode text in HTML.  Utilizes the HTMLEntityEncode method
+		  // in OpenSongUtils [Bug 1607916]
+		  //
+		  // May 2012, EMP
+		  //   Add HTMLExportOptions and logic for embedding CSS instead of linking to a statically-named CSS file
+		  //   Copied from original ToHTML(XmlNode) routine, which is now deprecated
+		  //--
+		  
+		  
+		  Dim s As String
+		  Dim lastChar As String
+		  
+		  CleanLyrics songElement.OwnerDocument
+		  
+		  s = "<html><head>" + EndOfLine
+		  s = s + "  <meta http-equiv=""Content-type"" content=""text/html;charset=UTF-8"" />" + EndOfLine
+		  s = s + "  <title>" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</title>" + EndOfLine
+		  //++
+		  // Process the CSS. Link or Embed per the HTMLExportOptions
+		  //--
+		  If exportOptions.EmbedCSS Then
+		    Dim cssText As String
+		    Dim cssInput As TextInputStream
+		    If exportOptions.StyleSheet <> Nil Then
+		      cssInput = TextInputStream.Open(exportOptions.StyleSheet)
+		      //++
+		      // Read the file the long way (with a loop) because the CSS file may not use the platform's native line endings
+		      // ReadLine will ignore all line endings; ReadAll maintains the input file's line endings even if
+		      // they aren't native to the platform.
+		      //--
+		      While Not cssInput.EOF
+		        cssText = cssText + cssInput.ReadLine + EndOfLine
+		      Wend
+		      cssInput.Close
+		    End If
+		    s = s + "<style type=""text/css"">" + EndOfLine
+		    s = s + "<!--" + EndOfLine
+		    s = s + cssText + EndOfLine
+		    s = s + "-->" + EndOfLine
+		    s = s + "</style>"
+		  Else
+		    //++
+		    // This makes the (possibly inaccurate) assumption that the stylesheet can be found in the same folder as the HTML
+		    //--
+		    s = s + "  <link rel=""stylesheet"" href=""" + exportOptions.StyleSheet.Name + """ type=""text/css""/>" + EndOfLine
+		  End If
 		  s = s + "</head>" + EndOfLine + "<body>" + EndOfLine
 		  
 		  s = s + "  <div id=""title"">" + SmartML.GetValue(songElement, "title").HTMLEntityEncode + "</div>" + EndOfLine

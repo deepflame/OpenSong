@@ -14,8 +14,8 @@
 		DocIcon=OpenSong.rbres;&hC
 		Extension=*.*
 		Flags=&h0
-		MacCreator=
-		MacType=
+		MacCreator=????
+		MacType=????
 		Name=All Files (*.*)
 	#tag EndFileType
 
@@ -40,16 +40,6 @@
 	#tag EndFileType
 
 	#tag FileType
-		CodeName=OpenSongModuleXmm
-		DocIcon=OpenSong.rbres;&h30
-		Extension=.xmm
-		Flags=&h0
-		MacCreator=
-		MacType=
-		Name=OpenSong Module (*.xmm)
-	#tag EndFileType
-
-	#tag FileType
 		CodeName=WAVFilesWav
 		DocIcon=OpenSong.rbres;&h3C
 		Extension=.wav
@@ -66,6 +56,46 @@
 		MacCreator=????
 		MacType=????
 		Name=special/any
+	#tag EndFileType
+
+	#tag FileType
+		CodeName=OpenSongModule
+		DocIcon=OpenSong.rbres;&h30
+		Extension=.xmm
+		Flags=&h0
+		MacCreator=OSng
+		MacType=OXmm
+		Name=OpenSong Module
+		UTI=org.opensong.module
+	#tag EndFileType
+
+	#tag FileType
+		CodeName=CSSFiles
+		Extension=.css
+		Flags=&h0
+		MacCreator=
+		MacType=css
+		Name=Cascading Style Sheets
+		UTI=public.css
+	#tag EndFileType
+
+	#tag FileType
+		CodeName=TextHtml
+		Extension=.htm;.html
+		Flags=&h0
+		MacCreator=????
+		MacType=TEXT
+		Name=HTML Source
+		UTI=public.html
+	#tag EndFileType
+
+	#tag FileType
+		CodeName=SpecialFolder
+		Extension=
+		Flags=&h0
+		MacCreator=MACS
+		MacType=fold
+		Name=special/folder
 	#tag EndFileType
 
 #tag EndFileTypeSet

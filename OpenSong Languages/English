@@ -1193,7 +1193,8 @@ Click on this slide to edit its style.</body>
     <select caption="Select"/>
     <exit_program caption="Exit Program"/>
     <export_to caption="Select a folder to export to."/>
-  </shared>
+		<style_file caption="Select a style file"/>
+	</shared>
 
   <questions>
     <new_name caption="Please enter a name:"/>
@@ -1394,5 +1395,25 @@ The OpenSong development team members regret any inconvenience.
     <pass2>Sorting, 2nd Pass</pass2>
     <detect_presentation_hosts>Detecting available presentation applications</detect_presentation_hosts>
   </progress_status>
-
+	<export_options title="Export to HTML Options">
+		<handling caption="CSS Style Sheet Placement">
+			<link caption="Link to style sheet file"/>
+			<embed caption="Embed style in export file"/>
+		</handling>
+		<options caption="CSS Style Sheet Options">
+			<default caption="Use specified style sheet"/>
+			<print caption="Use style sheet based on print settings"/>
+		</options>
+		<export caption="Multiple export">
+			<single caption="Single file for all songs"/>
+			<unique caption="Unique file for all songs"/>
+		</export>
+		<cssfile caption="Style Sheet">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Output folder">link(shared/export_to/@caption)</outdir>
+		<outfile>Output file</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(None)</nofile>
+		<filter_css>Cascading Style Sheet</filter_css>
+	</export_options>
 </language>

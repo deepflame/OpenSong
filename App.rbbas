@@ -31,15 +31,18 @@ Inherits Application
 
 	#tag Event
 		Sub Close()
-		  
-		  If App.MyPrintSettings <> Nil Then
-		    If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child("Settings").Child("PrintSettings")) Then SmartML.DisplayError
-		  End If
-		  If App.MyMainSettings <> Nil Then
-		    If Not SmartML.XDocToFile(App.MyMainSettings, App.DocsFolder.Child("Settings").Child("MainSettings")) Then SmartML.DisplayError
-		  End If
-		  If App.MyPresentSettings <> Nil Then
-		    If Not SmartML.XDocToFile(App.MyPresentSettings, App.DocsFolder.Child("Settings").Child("PresentSettings")) Then SmartML.DisplayError
+		  If CheckDocumentFolders(SETTINGS_FOLDER) <> NO_FOLDER Then
+		    If MyPrintSettings <> Nil Then
+		      If Not SmartML.XDocToFile(MyPrintSettings, DocsFolder.Child(STR_SETTINGS).Child("PrintSettings")) Then SmartML.DisplayError
+		    End If
+		    If MyMainSettings <> Nil Then
+		      If Not SmartML.XDocToFile(MyMainSettings, DocsFolder.Child(STR_SETTINGS).Child("MainSettings")) Then SmartML.DisplayError
+		    End If
+		    If MyPresentSettings <> Nil Then
+		      If Not SmartML.XDocToFile(MyPresentSettings, DocsFolder.Child(STR_SETTINGS).Child("PresentSettings")) Then SmartML.DisplayError
+		    End If
+		  Else
+		    MsgBox T.Translate("errors/create_settings_folder", DocsFolder.Child(STR_SETTINGS).AbsolutePath)
 		  End If
 		  
 		  Globals.Status_Presentation = False
@@ -184,19 +187,36 @@ Inherits Application
 		    '++JRC Translated
 		    MsgBox T.Translate("errors/no_defaults_folder", AppFolder.Child(STR_OS_DEFAULTS).AbsolutePath)
 		    '--
-		    Quit
+		    'Quit
 		  End If
 		  //--
+		  Dim result As Integer
 		  
 		  '++JRC Moved document folder checks to function
-		  If CheckDocumentFolders(DOCUMENTS_FOLDER) <> FOLDER_EXISTS Then
-		    If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS), DocsFolder) Then
-		      App.MouseCursor = Nil
-		      '++JRC Translated
-		      MsgBox T.Translate("errors/no_docs_folder", DocsFolder.AbsolutePath)
-		      '--
-		      Quit
+		  result = CheckDocumentFolders(DOCUMENTS_FOLDER)
+		  If result = FOLDER_EMPTY Then
+		    'Documents folder is empty, ask the user if want to try to copy the Default Documents to the docs folder
+		    '(as long as the defaults folder isn't empty of course ;)
+		    App.MouseCursor = Nil
+		    If InputBox.AskYN(App.T.Translate("questions/documents_folder_empty/@caption")) Then
+		      If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS), DocsFolder) Then
+		        '++JRC Translated
+		        If DocsFolder <> Nil Then
+		          MsgBox T.Translate("errors/no_docs_folder", DocsFolder.AbsolutePath)
+		        Else
+		          MsgBox T.Translate("errors/no_docs_folder", "")
+		        End If
+		        '--
+		        'Quit
+		      End If
 		    End If
+		  ElseIf result = NO_FOLDER Then
+		    If DocsFolder <> Nil Then
+		      MsgBox T.Translate("errors/no_docs_folder", DocsFolder.AbsolutePath)
+		    Else
+		      MsgBox T.Translate("errors/no_docs_folder", "")
+		    End If
+		    'Quit
 		  End If
 		  
 		  //++EMP 11/27/05
@@ -206,18 +226,35 @@ Inherits Application
 		    '++JRC Translated
 		    MsgBox  T.Translate("errors/no_settings_folder", AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETTINGS).AbsolutePath)
 		    '--
-		    Quit
+		    'Quit
 		  End If
 		  //--
 		  '++JRC Moved document folder checks to function
-		  If CheckDocumentFolders(SETTINGS_FOLDER) <> FOLDER_EXISTS Then
-		    If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETTINGS), DocsFolder.Child(STR_SETTINGS)) Then
+		  
+		  result = CheckDocumentFolders(SETTINGS_FOLDER)
+		  If result = FOLDER_EMPTY Then
+		    'Settings folder is empty, ask the user if want to try to copy the default Settings to the docs folder
+		    '(as long as the defaults folder isn't empty of course ;)
+		    If  CheckDefaultFolders(SETTINGS_FOLDER) =  FOLDER_EXISTS Then
 		      App.MouseCursor = Nil
-		      '++JRC Translated
-		      MsgBox T.Translate("errors/create_settings_folder", DocsFolder.Child(STR_SETTINGS).AbsolutePath)
-		      '--
-		      Quit
+		      If InputBox.AskYN(App.T.Translate("questions/settings_folder_empty/@caption")) Then
+		        If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETTINGS), DocsFolder.Child(STR_SETTINGS)) Then
+		          '++JRC Translated
+		          MsgBox T.Translate("errors/create_settings_folder", DocsFolder.Child(STR_SETTINGS).AbsolutePath)
+		          MsgBox T.Translate("errors/load_default_settings")
+		          '--
+		          'Quit
+		        End If
+		      End If
 		    End If
+		  ElseIf result = NO_FOLDER Then
+		    If DocsFolder <> Nil Then
+		      MsgBox T.Translate("errors/create_settings_folder",  DocsFolder.Child(STR_SETTINGS).AbsolutePath)
+		    Else
+		      MsgBox T.Translate("errors/no_docs_folder", "")
+		    End If
+		    MsgBox T.Translate("errors/load_default_settings")
+		    'Quit
 		  End If
 		  //++EMP 11/27/05
 		  '++JRC Moved default folder checks to function
@@ -231,26 +268,30 @@ Inherits Application
 		  End If
 		  //--
 		  '++JRC Moved document folder checks to function
-		  If CheckDocumentFolders(SONGS_FOLDER) <> FOLDER_EXISTS Then
-		    If FileUtils.CreateFolder(DocsFolder.Child(STR_SONGS)) Then
-		      'Songs folder is empty, ask the user if want to try to copy the default songs to the docs folder
-		      '(as long as the defaults folder isn't empty of course ;)
-		      If  CheckDefaultFolders(SONGS_FOLDER) =  FOLDER_EXISTS Then
-		        App.MouseCursor = Nil
-		        If InputBox.AskYN(App.T.Translate("questions/songs_folder_empty/@caption")) Then
-		          If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SONGS), DocsFolder.Child(STR_SONGS)) Then
-		            '++JRC Translated
-		            MsgBox T.Translate("errors/copy_default_songs",  DocsFolder.Child(STR_SONGS).AbsolutePath)
-		            '--
-		            'Quit
-		          End If
+		  result =  CheckDocumentFolders(SONGS_FOLDER)
+		  If result = FOLDER_EMPTY Then
+		    'Songs folder is empty, ask the user if want to try to copy the default songs to the docs folder
+		    '(as long as the defaults folder isn't empty of course ;)
+		    If  CheckDefaultFolders(SONGS_FOLDER) =  FOLDER_EXISTS Then
+		      App.MouseCursor = Nil
+		      If InputBox.AskYN(App.T.Translate("questions/songs_folder_empty/@caption")) Then
+		        If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SONGS), DocsFolder.Child(STR_SONGS)) Then
+		          '++JRC Translated
+		          MsgBox T.Translate("errors/copy_default_songs",  DocsFolder.Child(STR_SONGS).AbsolutePath)
+		          '--
+		          'Quit
 		        End If
 		      End If
-		    Else
-		      MsgBox T.Translate("errors/create_songs_folder",  DocsFolder.Child(STR_SONGS).AbsolutePath)
-		      'Quit
 		    End If
+		  ElseIf result = NO_FOLDER Then
+		    If DocsFolder <> Nil Then
+		      MsgBox T.Translate("errors/create_songs_folder",  DocsFolder.Child(STR_SONGS).AbsolutePath)
+		    Else
+		      MsgBox T.Translate("errors/no_docs_folder", "")
+		    End If
+		    'Quit
 		  End If
+		  
 		  //++EMP 11/27/05
 		  '++JRC Moved default folder checks to function
 		  If CheckDefaultFolders(SETS_FOLDER) <> FOLDER_EXISTS Then
@@ -263,25 +304,28 @@ Inherits Application
 		  End If
 		  //--
 		  '++JRC Moved document folder checks to function
-		  If CheckDocumentFolders(SETS_FOLDER) <> FOLDER_EXISTS Then
-		    If FileUtils.CreateFolder(DocsFolder.Child(STR_SETS)) Then
-		      'Sets folder is empty, ask the user if want to try to copy the default sets to the docs folder
-		      '(as long as the defaults folder isn't empty of course ;)
-		      If  CheckDefaultFolders(SETS_FOLDER) =  FOLDER_EXISTS Then
-		        App.MouseCursor = Nil
-		        If InputBox.AskYN(App.T.Translate("questions/sets_folder_empty/@caption")) Then
-		          If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETS), DocsFolder.Child(STR_SETS)) Then
-		            '++JRC Translated
-		            MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child(STR_SETS).AbsolutePath)
-		            '--
-		            'Quit
-		          End If
+		  result = CheckDocumentFolders(SETS_FOLDER)
+		  If result = FOLDER_EMPTY Then
+		    'Sets folder is empty, ask the user if want to try to copy the default sets to the docs folder
+		    '(as long as the defaults folder isn't empty of course ;)
+		    If  CheckDefaultFolders(SETS_FOLDER) =  FOLDER_EXISTS Then
+		      App.MouseCursor = Nil
+		      If InputBox.AskYN(App.T.Translate("questions/sets_folder_empty/@caption")) Then
+		        If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_SETS), DocsFolder.Child(STR_SETS)) Then
+		          '++JRC Translated
+		          MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child(STR_SETS).AbsolutePath)
+		          '--
+		          'Quit
 		        End If
 		      End If
-		    Else
-		      MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child(STR_SETS).AbsolutePath)
-		      'Quit
 		    End If
+		  ElseIf result = NO_FOLDER Then
+		    If DocsFolder <> Nil Then
+		      MsgBox T.Translate("errors/create_sets_folder",  DocsFolder.Child(STR_SETS).AbsolutePath)
+		    Else
+		      MsgBox T.Translate("errors/no_docs_folder", "")
+		    End If
+		    'Quit
 		  End If
 		  
 		  //++EMP 11/27/05
@@ -296,48 +340,58 @@ Inherits Application
 		  End If
 		  //--
 		  '++JRC Moved document folder checks to function
-		  If CheckDocumentFolders(BACKGROUNDS_FOLDER) <> FOLDER_EXISTS Then
-		    If FileUtils.CreateFolder(DocsFolder.Child(STR_BACKGROUNDS)) Then
-		      'Backgrounds folder is empty, ask the user if want to try to copy the default Backgrounds to the docs folder
-		      '(as long as the defaults folder isn't empty of course ;)
-		      If  CheckDefaultFolders(BACKGROUNDS_FOLDER) =  FOLDER_EXISTS Then
-		        App.MouseCursor = Nil
-		        If InputBox.AskYN(App.T.Translate("questions/backgrounds_folder_empty/@caption")) Then
-		          If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_BACKGROUNDS), DocsFolder.Child(STR_BACKGROUNDS)) Then
-		            '++JRC Translated
-		            MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
-		            '--
-		            'Quit
-		          End If
+		  result = CheckDocumentFolders(BACKGROUNDS_FOLDER)
+		  If result = FOLDER_EMPTY Then
+		    'Backgrounds folder is empty, ask the user if want to try to copy the default Backgrounds to the docs folder
+		    '(as long as the defaults folder isn't empty of course ;)
+		    If  CheckDefaultFolders(BACKGROUNDS_FOLDER) =  FOLDER_EXISTS Then
+		      App.MouseCursor = Nil
+		      If InputBox.AskYN(App.T.Translate("questions/backgrounds_folder_empty/@caption")) Then
+		        If Not FileUtils.CopyPath(AppFolder.Child(STR_OS_DEFAULTS).Child(STR_BACKGROUNDS), DocsFolder.Child(STR_BACKGROUNDS)) Then
+		          '++JRC Translated
+		          MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
+		          '--
+		          'Quit
 		        End If
 		      End If
-		    Else
-		      MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
-		      'Quit
 		    End If
+		  ElseIf result = NO_FOLDER Then
+		    If DocsFolder <> Nil Then
+		      MsgBox T.Translate("errors/create_backgrounds_folder",  DocsFolder.Child("Backgrounds").AbsolutePath)
+		    Else
+		      MsgBox T.Translate("errors/no_docs_folder", "")
+		    End If
+		    'Quit
 		  End If
 		  
 		  '++JRC
-		  If CheckDocumentFolders(DOCUMENTS_FOLDER) <> FOLDER_EXISTS  Or _
-		     CheckDocumentFolders(SETTINGS_FOLDER) <> FOLDER_EXISTS Then
-		    '(Not DocsFolder.Child("Songs").Exists) Or _
-		    '(Not DocsFolder.Child("Sets").Exists) Or _
-		    '(Not DocsFolder.Child("Backgrounds").Exists) Then
-		    
-		    App.MouseCursor = Nil
-		    '++JRC Translated
-		    MsgBox T.Translate("errors/folder_error")
-		    '--
-		    Quit
-		  End If
+		  'If CheckDocumentFolders(DOCUMENTS_FOLDER) = NO_FOLDER  Then
+		  '(Not DocsFolder.Child("Songs").Exists) Or _
+		  '(Not DocsFolder.Child("Sets").Exists) Or _
+		  '(Not DocsFolder.Child("Settings").Exists) Or _
+		  '(Not DocsFolder.Child("Backgrounds").Exists) Then
 		  
+		  'App.MouseCursor = Nil
+		  '++JRC Translated
+		  'MsgBox T.Translate("errors/folder_error")
+		  '--
+		  'Quit
+		  'End If
+		  '--
 		  ' --- LOAD SETTINGS ---
 		  '++JRC: Load default files if settings files in DocsFolder are corrupted (bug #1803741)
 		  'The settings folder should be handled in the Installer/Uninstaller as well
 		  '++JRC translated
 		  Splash.SetStatus T.Translate("load_settings/main") + "..."
 		  '--
-		  MyMainSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("MainSettings"))
+		  '++JRC
+		  result = CheckDocumentFolders(SETTINGS_FOLDER)
+		  If result = FOLDER_EXISTS Then
+		    MyMainSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("MainSettings"))
+		  Else
+		    MyMainSettings = Nil
+		  End If
+		  '--
 		  If MyMainSettings = Nil Then
 		    MyMainSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("MainSettings"))
 		    If MyMainSettings = Nil Then
@@ -347,7 +401,13 @@ Inherits Application
 		  End If
 		  
 		  Splash.SetStatus T.Translate("load_settings/print") + "..."
-		  MyPrintSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PrintSettings"))
+		  '++JRC
+		  If result = FOLDER_EXISTS Then
+		    MyPrintSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PrintSettings"))
+		  Else
+		    MyPrintSettings = Nil
+		  End If
+		  '--
 		  If MyPrintSettings = Nil Then
 		    MyPrintSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("PrintSettings"))
 		    If MyPrintSettings = Nil Then
@@ -359,7 +419,13 @@ Inherits Application
 		  UpdatePrintSettings
 		  
 		  Splash.SetStatus T.Translate("load_settings/presentation") + "..."
-		  MyPresentSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PresentSettings"))
+		  '++JRC
+		  If result = FOLDER_EXISTS Then
+		    MyPresentSettings = SmartML.XDocFromFile(DocsFolder.Child("Settings").Child("PresentSettings"))
+		  Else
+		    MyPresentSettings = Nil
+		  End If
+		  '--
 		  If MyPresentSettings = Nil Then
 		    MyPresentSettings = SmartML.XDocFromFile(AppFolder.Child("OpenSong Defaults").Child("Settings").Child("PresentSettings"))
 		    If MyPresentSettings = Nil Then
@@ -417,12 +483,21 @@ Inherits Application
 		  Globals.SongActivityLog = New ActivityLog
 		  'TODO Decide where we want to store the log file
 		  '+++EMP Use FolderItem and .Child instead of AbsolutePath
-		  If NOT Globals.SongActivityLog.Load(DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
-		    MsgBox  T.Translate("errors/activity_disabled", DocsFolder.Child("Settings").Child("ActivityLog.xml").AbsolutePath)  '++JRC Translated
+		  result = CheckDocumentFolders(SETTINGS_FOLDER)
+		  If  result <> NO_FOLDER Then
+		    If NOT Globals.SongActivityLog.Load(DocsFolder.Child("Settings").Child("ActivityLog.xml")) Then
+		      MsgBox  T.Translate("errors/activity_disabled", DocsFolder.Child("Settings").Child("ActivityLog.xml").AbsolutePath)  '++JRC Translated
+		      Globals.SongActivityLog = Nil
+		    End If
+		  Else
+		    If DocsFolder <> Nil Then
+		      MsgBox  T.Translate("errors/activity_disabled", DocsFolder.AbsolutePath + "Settings\ActivityLog.xml")
+		    Else
+		      MsgBox T.Translate("errors/no_docs_folder", "")
+		    End If
 		    Globals.SongActivityLog = Nil
 		  End If
-		  'End If
-		  '--
+		  
 		  T.TranslateMenu("main_menu", MainMenu)
 		  PlatformSpecific
 		  MainWindow.Show
@@ -507,6 +582,7 @@ Inherits Application
 		    Return INVAILD_FOLDER
 		  End Select
 		  
+		  If f = Nil Then Return NO_FOLDER
 		  If NOT f.Exists Then Return NO_FOLDER
 		  IF f.Count = 0 Then Return FOLDER_EMPTY
 		  
@@ -515,14 +591,19 @@ Inherits Application
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function CheckDocumentFolders(which As Integer) As Integer
+		Function CheckDocumentFolders(which As Integer, Create As Boolean = True, Prompt As Boolean = False) As Integer
 		  '++JRC This function checks whether or not the document  folders exist or are empty
 		  '       Parameters: which as Integer
 		  'DOCUMENTS_FOLDER = Main Documents Folder
 		  'SONGS_FOLDER = Songs Folder
 		  'SETS_FOLDER = Set Folder
 		  'BACKGROUNDS_FOLDER = Backgrounds Folder
-		  '
+		  '       Create as Boolean
+		  'Tells the function whether to create the specified folder or not
+		  'default is True
+		  '       Prompt as Boolean
+		  'Tells the function whether to prompt the user before creating specified folder
+		  '(not currently used)
 		  '       Return Values:
 		  'FOLDER_EXISTS = The folder exists and has files
 		  'NO_FOLDER = The folder does NOT exist
@@ -530,6 +611,13 @@ Inherits Application
 		  'INVAILD_FOLDER = Invaild folder specified
 		  
 		  Dim f As FolderItem
+		  
+		  If DocsFolder = Nil Then Return NO_FOLDER
+		  
+		  'Try to create Documents folder it doesn't exist
+		  If Create Then
+		    If NOT FileUtils.CreateFolder(DocsFolder) Then Return NO_FOLDER
+		  End If
 		  
 		  Select Case which
 		  Case DOCUMENTS_FOLDER
@@ -545,6 +633,13 @@ Inherits Application
 		  Else 'sanity check
 		    Return INVAILD_FOLDER
 		  End Select
+		  
+		  If f = Nil Then Return NO_FOLDER
+		  
+		  'Try to create folder it doesn't exist
+		  If Create Then
+		    If NOT FileUtils.CreateFolder(f) Then Return NO_FOLDER
+		  End If
 		  
 		  If NOT f.Exists Then Return NO_FOLDER
 		  IF f.Count = 0 Then Return FOLDER_EMPTY

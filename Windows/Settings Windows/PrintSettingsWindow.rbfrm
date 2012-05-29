@@ -2030,7 +2030,15 @@ End
 		  //++
 		  // Bug 1462055: Save settings on dialog exit
 		  //
-		  If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child("Settings").Child("PrintSettings")) Then SmartML.DisplayError
+		  If App.CheckDocumentFolders(App.SETTINGS_FOLDER) <> App.NO_FOLDER Then
+		    If Not SmartML.XDocToFile(App.MyPrintSettings, App.DocsFolder.Child(App.STR_SETTINGS).Child("PrintSettings")) Then SmartML.DisplayError
+		  Else
+		    If App.DocsFolder <> Nil Then
+		      MsgBox App.T.Translate("errors/create_settings_folder",  App.DocsFolder.AbsolutePath + App.STR_SETTINGS)
+		    Else
+		      MsgBox App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		  End If
 		  //--
 		  
 		  Close

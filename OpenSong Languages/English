@@ -1211,8 +1211,10 @@ Click on this slide to edit its style.</body>
     <select_docs_folder caption="Select the OpenSong Documents folder">Where should the OpenSong files (songs and sets) be stored?</select_docs_folder>
     <activity_log caption="Would you like the song(s) in this presentation added to the activity log? Note that this applies to songs added on-the-fly as well!"/>
     <import_presentation caption="Import presentation images">Select the presentation file you want to import the slides from.</import_presentation>
+    <documents_folder_empty caption="The Documents folder does not exist or is empty. Would you like to copy the Default Documents?"/>
     <songs_folder_empty caption="The Songs folder is empty. Would you like to copy the Default Songs to this folder?"/>
     <sets_folder_empty caption="The Sets folder is empty. Would you like to copy the Default Set to this folder?"/>
+    <settings_folder_empty caption="The Settings folder is empty. Would you like to copy the Default Settings to this folder?"/>
     <backgrounds_folder_empty caption="The Backgrounds folder is empty. Would you like to copy the Default Backgrounds to this folder?"/>
     <no_songs_folder caption="Could not find Songs folder, would you like to create this folder?"/>
     <no_sets_folder caption="Could not find Sets folder, would you like to create this folder?"/>
@@ -1262,6 +1264,7 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <bad_file_name>Invalid file name '%1'.</bad_file_name>
     <internal>Internal error. Contact technical support.</internal>
     <no_such_song>Cannot find song.</no_such_song>
+    <no_such_set>Could not find Set file: '%1'.</no_such_set>
     <number_please>Please enter a valid number.</number_please>
     <number_range>Please enter a number between %1 and %2.</number_range>
     <no_path_allowed>File name may not include a path.</no_path_allowed>
@@ -1271,7 +1274,8 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <folder_error>Internal folder error. Contact technical support.</folder_error>
     <create_backgrounds_folder>Could not create Backgrounds folder: %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings.</create_backgrounds_folder>
     <create_sets_folder>Could not create/edit Sets folder %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings. Please note that you will be unable to save/present Sets without a Sets folder.</create_sets_folder>
-    <create_settings_folder>Could not create Settings folder: %1</create_settings_folder>
+    <create_settings_folder>Could not create Settings folder: %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings.</create_settings_folder>
+    <load_default_settings>OpenSong will attempt to load the Default Settings.</load_default_settings>
     <create_songs_folder>Could not create songs folder: %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings. Please note that you will be unable to save/present Songs without a Songs folder.</create_songs_folder>
     <copy_default_songs>Could not copy default songs to folder: %1. Please ensure you have write acces to this folder.</copy_default_songs>
     <no_backgrounds_folder>Can't find default Backgrounds folder: %1, or folder is empty</no_backgrounds_folder>
@@ -1281,7 +1285,7 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <no_sets_folder>Can't find Default Sets folder: %1, or folder is empty</no_sets_folder>
     <no_settings_folder>Can't find Default Settings folder: %1, or folder is empty</no_settings_folder>
     <no_songs_folder>Can't find Default Songs folder: %1, or folder is empty.</no_songs_folder>
-    <no_docs_folder>Could not create/find Documents folder: %1 OpenSong cannot continue without a Documents folder. Please restart OpenSong and select a Documents folder. If you are continuing to see this error, please contact your system Administrator.</no_docs_folder>
+    <no_docs_folder>Could not create/find Documents folder: %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings. Please note that much of OpenSong's functionality will be unavailable without a Documents folder.</no_docs_folder>
     <docs_folder>Documents folder cannot be a sub-folder of 'OpenSong Defaults'
 Temporarily changing to: %1
 Please modify your preferences.</docs_folder>

@@ -323,6 +323,31 @@ End
 		  Dim i As Integer
 		  Dim presentation As String
 		  
+		  '++JRC Check if we have a songs folder if not try to create one
+		  If App.CheckDocumentFolders(App.SONGS_FOLDER) = App.NO_FOLDER Then
+		    If  App.DocsFolder <> Nil Then
+		      InputBox.Message App.T.Translate("errors/create_songs_folder", App.DocsFolder.AbsolutePath + App.STR_SONGS)
+		    Else
+		      InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		    End If
+		    Return False
+		  End If
+		  '--
+		  '++JRC If Songs is Nil, try to generate FolderDB
+		  If MainWindow.Songs = Nil Then
+		    If App.DocsFolder <> Nil Then
+		      MainWindow.Songs = New FolderDB(App.DocsFolder.Child(App.STR_SONGS))
+		    Else
+		      'InputBox.Message App.T.Translate("errors/no_docs_folder", "")
+		      Return False
+		    End If
+		    If MainWindow.Songs = Nil Then
+		      'Songs is still Nil, return (should never get here but we probably should
+		      'give some error message anyway ;)
+		      Return False
+		    End If
+		  End If
+		  
 		  ' Added code to remember current position so song can be inserted without changing
 		  ' what's up on the screen (allows operator to cue next song in a highly dynamic,
 		  ' Spirit-lead P&W service before the previous song is finished).

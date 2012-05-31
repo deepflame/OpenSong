@@ -16727,7 +16727,7 @@ End
 		    If obj.PictureAvailable() Then
 		      rejectdrop = False
 		    ElseIf obj.FolderItemAvailable() Then
-		      rejectdrop = ( obj.FolderItem().OpenAsPicture() = Nil )
+		      rejectdrop = ( Picture.Open(obj.FolderItem()) = Nil )
 		    ElseIf obj.PrivateRawData("StIm")<>"" Then
 		      rejectdrop = False
 		    End If

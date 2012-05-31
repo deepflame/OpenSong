@@ -829,10 +829,26 @@ Inherits Application
 		      If (QTExporter = Nil) Or (saveSuccess = False) Then
 		        Try
 		          //If QuickTime is not available, try to use GDI+ (Windows) or Linux, MacOS native
-		          f.SaveAsJPEG img
+		          Dim quality as Integer = -1 'Default
+		          Select Case QualitySetting
+		          Case ImageQualityEnum.FullCompression
+		            quality = 0
+		          Case ImageQualityEnum.HighCompression
+		            quality = 40
+		          Case ImageQualityEnum.LittleCompression
+		            quality = 65
+		          Case ImageQualityEnum.LowCompression
+		            quality = 85
+		          Case ImageQualityEnum.NoCompression
+		            quality = 100
+		          Else
+		            quality = -1 'Default - no one knows :D
+		          End Select
+		          
+		          img.Save(f, Picture.SaveAsJPEG, quality)
 		        Catch
 		          //If all others fail, use the OS default (Windows: bmp, Linux: jpg, MacOS: pict
-		          f.SaveAsPicture img
+		          img.Save(f, Picture.SaveAsMostCompatible)
 		        End Try
 		      End If
 		      
@@ -1096,7 +1112,7 @@ Inherits Application
 		  //--
 		  #If TargetWin32
 		    // Windows items go here
-		    mnu_file_quit.CommandKey = ""
+		    mnu_file_quit.KeyboardShortcut = ""
 		    Globals.UseSheetDialogs = False
 		  #elseif TargetMacOS
 		    // Macintosh items go here

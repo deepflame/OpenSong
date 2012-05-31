@@ -1410,13 +1410,13 @@ End
 		  If App.CheckDocumentFolders(App.BACKGROUNDS_FOLDER) <> App.NO_FOLDER Then
 		    BackgroundFolder = App.DocsFolder.Child(App.STR_BACKGROUNDS)
 		  Else
-		    #If TargetWin32                                                                            
+		    #If TargetWin32
 		      BackgroundFolder = SpecialFolder.Documents
-		    #ElseIf TargetMacOS                                                                    
+		    #ElseIf TargetMacOS
 		      BackgroundFolder = SpecialFolder.Documents
-		    #ElseIf TargetLinux                                                                       
+		    #ElseIf TargetLinux
 		      BackgroundFolder = Nil
-		    #EndIf                                                                                           
+		    #EndIf
 		  End If
 		  '--
 		  App.T.TranslateWindow Me, "find_image", App.TranslationFonts
@@ -1598,13 +1598,13 @@ End
 		      If cache <> Nil And cache.Exists And cache.Child(name).Exists And _
 		        ImageFiles(ImgNdx).ModificationDate <= cache.Child(name).ModificationDate _
 		        Then ' read from the cache                                         // JDL 2/01/2006
-		        pic = cache.Child(name).OpenAsPicture
+		        pic = Picture.Open(cache.Child(name))
 		        picDepth = pic.Depth                                                       // JDL 2/01/2006
 		        If picDepth = 0 then                                                         // JDL 2/01/2006
 		          picDepth = 24                                                               // JDL 2/01/2006
 		        End If                                                                                // JDL 2/01/2006
 		        If pic <> Nil Then
-		          thumb = NewPicture(80, 60, picDepth)                          // JDL 2/01/2006
+		          thumb = New Picture(80, 60, picDepth)                          // JDL 2/01/2006
 		          thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
 		        End If
 		        '++JRC Fix issue where two files with the same name but different Extensions would get
@@ -1615,17 +1615,17 @@ End
 		        'ElseIf cache <> Nil And cache.Exists And cache.Child(Left(name, InStr(name, "."))+"bmp").Exists And _
 		        'ImageFiles(ImgNdx).ModificationDate <= cache.Child(Left(name, InStr(name, "."))+"bmp").ModificationDate Then ' read from the cache   // JDL 2/01/2006
 		        
-		        pic = cache.Child(name +".bmp").OpenAsPicture
+		        pic = Picture.Open(cache.Child(name +".bmp"))
 		        'pic = cache.Child(Left(name, InStr(name, "."))+"bmp").OpenAsPicture
 		        '
 		        If pic <> Nil Then
 		          picDepth = pic.Depth
 		          If picDepth = 0 Then picDepth = 32
-		          thumb = NewPicture(80, 60, picDepth)
+		          thumb = New Picture(80, 60, picDepth)
 		          thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
 		        End If
 		      Else '  read from the file
-		        pic = ImageFiles(ImgNdx).OpenAsPicture                         // JDL 2/01/2006
+		        pic = Picture.Open(ImageFiles(ImgNdx))                         // JDL 2/01/2006
 		        If pic <> Nil Then
 		          picDepth = pic.Depth                                                       // JDL 2/01/2006
 		          If picDepth = 0 then                                                         // JDL 2/01/2006
@@ -1633,10 +1633,10 @@ End
 		          End If                                                                                // JDL 2/01/2006
 		          If cache <> Nil Then ' create the cache
 		            If Not cache.Exists Then cache.CreateAsFolder
-		            thumb = NewPicture(80, 60, picDepth)                          // JDL 2/01/2006
+		            thumb = New Picture(80, 60, picDepth)                          // JDL 2/01/2006
 		            thumb.Graphics.DrawPicture pic, 0, 0, thumb.Width, thumb.Height, 0, 0, pic.Width, pic.Height
 		            '++JRC
-		            cache.Child(name + ".bmp").SaveAsPicture thumb
+		            thumb.Save(cache.Child(name + ".bmp"), Picture.SaveAsDefault)
 		            '
 		          End If // cache <> Nil
 		        Else

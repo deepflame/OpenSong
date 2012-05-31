@@ -1726,13 +1726,13 @@ End
 		  //--
 		  'System.DebugLog "Allocate Picture space"
 		  If HelperActive And Width < 320 Then
-		    CurrentPicture = NewPicture(320, 240, 32)
-		    LastPicture = NewPicture(320, 240, 32)
-		    PreviewPicture = NewPicture(320, 240, 32)
+		    CurrentPicture = New Picture(320, 240, 32)
+		    LastPicture = New Picture(320, 240, 32)
+		    PreviewPicture = New Picture(320, 240, 32)
 		  Else
-		    CurrentPicture = NewPicture(Width, Height, 32)
-		    LastPicture = NewPicture(Width, Height, 32)
-		    PreviewPicture = NewPicture(Width, Height, 32)
+		    CurrentPicture = New Picture(Width, Height, 32)
+		    LastPicture = New Picture(Width, Height, 32)
+		    PreviewPicture = New Picture(Width, Height, 32)
 		  End If
 		  CurrentPicture.Graphics.ForeColor = RGB(0,0,0)
 		  CurrentPicture.Graphics.FillRect(0, 0, CurrentPicture.Width, CurrentPicture.Height)
@@ -1743,7 +1743,7 @@ End
 		  tmpPic = SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo")
 		  
 		  If tmpPic <> Nil Then
-		    LogoCache = NewPicture(tmpPic.Width, tmpPic.Height, 32)
+		    LogoCache = New Picture(tmpPic.Width, tmpPic.Height, 32)
 		    LogoCache.Graphics.DrawPicture tmpPic, 0, 0
 		    LogoCache.Mask.Graphics.DrawPicture SmartML.GetValueP(App.MyPresentSettings.DocumentElement, "logo_mask"), 0, 0
 		  End If

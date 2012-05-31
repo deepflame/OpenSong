@@ -366,7 +366,7 @@ Implements iPresentation
 		        If f <> Nil Then
 		          m_oPpt.Slides.Item(slideIndex).Export( f.AbsolutePath(), "JPG", width, height )
 		          
-		          result = f.OpenAsPicture()
+		          result = Picture.Open(f)
 		          f.Delete
 		        End If
 		      End If

@@ -2,37 +2,6 @@
 Protected Class FSRef
 Inherits MemoryBlock
 	#tag Method, Flags = &h0
-		Sub AlternateConstructor(f as FolderItem)
-		  If f Is Nil then
-		    Raise new InvalidParameterException("FSRef.Constructor: f cannot be nil")
-		  End if
-		  If NOT f.Exists then
-		    Raise new InvalidParameterException("FSRef.Constructor: f must exist.")
-		  End if
-		  
-		  Soft Declare Function FSGetVolumeInfo Lib InterfaceLib (volume as Short, volumeIndex as Integer, actualVolume as Ptr, whichInfo as Integer, info as Ptr, volumeName as Ptr, rootDirectory as Ptr) as Short
-		  Soft Declare Function FSMakeFSRefUnicode Lib InterfaceLib (parentPtr as Ptr, nameLength as Integer, name as CString, enc as Integer, outRef as Ptr) as Short
-		  
-		  Const kTextEncodingUnknown = &hffff
-		  Const fsRtParID = 1
-		  Const kFSVolInfoNone = &h0000
-		  
-		  me.Constructor()
-		  If f.MacDirID = fsRtParID then //f is a volume, so get root directory directly
-		    dim OSError as Integer = FSGetVolumeInfo(f.MacVRefNum, 0, Nil, kFSVolInfoNone, Nil, Nil, me)
-		  Else
-		    dim parentRef as new FSRef(new FSSpec(f.Parent))
-		    dim fileName as String = ConvertEncoding(f.name, Encodings.UTF16)
-		    dim OSError as Integer = FSMakeFSRefUnicode(parentRef, Len(fileName), fileName, kTextEncodingUnknown, me)
-		    If OSError <> 0 then
-		      Raise new MacOSException("FSMakeFSRefUnicode", OSError)
-		    End if
-		  End if
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub Constructor()
 		  
 		  Super.MemoryBlock sizeOfFSRef

@@ -725,7 +725,7 @@ Module StringUtils
 		  Dim hexChar() As Integer = Array( _
 		  48,49,50,51,52,53,54,55,56,57,65,66,67,68,69,70 )
 		  
-		  m = NewMemoryBlock( bytes*2 + bytes - 1 )
+		  m = New MemoryBlock( bytes*2 + bytes - 1 )
 		  for spos = 1 to bytes
 		    b = AscB( MidB( s, spos, 1 ) )
 		    if b < 16 then
@@ -1801,7 +1801,7 @@ Module StringUtils
 		  if sLenB < 2 then return s
 		  
 		  Dim m As MemoryBlock
-		  m = NewMemoryBlock( sLenB )
+		  m = New MemoryBlock( sLenB )
 		  
 		  charSet = ConvertEncoding( charSet, s.Encoding )
 		  
@@ -1831,7 +1831,7 @@ Module StringUtils
 		  if sLenB < 2 then return s
 		  
 		  Dim m As MemoryBlock
-		  m = NewMemoryBlock( sLenB )
+		  m = New MemoryBlock( sLenB )
 		  
 		  charSet = ConvertEncoding( charSet, s.Encoding )
 		  
@@ -1905,7 +1905,7 @@ Module StringUtils
 		  Dim c As String
 		  Dim pos, mpos, csize As Integer
 		  
-		  m = NewMemoryBlock( s.LenB )
+		  m = New MemoryBlock( s.LenB )
 		  
 		  pos = 1
 		  mpos = m.Size
@@ -1935,7 +1935,7 @@ Module StringUtils
 		  Dim pos, bytes As Integer
 		  bytes = s.LenB
 		  
-		  m = NewMemoryBlock( bytes )
+		  m = New MemoryBlock( bytes )
 		  
 		  for pos = bytes - 1 DownTo 0
 		    m.Byte(pos) = AscB( s.MidB( bytes - pos, 1 ) )
@@ -2395,7 +2395,7 @@ Module StringUtils
 		  if sLenB < 2 then return s
 		  
 		  Dim m As MemoryBlock
-		  m = NewMemoryBlock( sLenB )
+		  m = New MemoryBlock( sLenB )
 		  
 		  charSet = ConvertEncoding( charSet, s.Encoding )
 		  
@@ -2700,6 +2700,7 @@ Module StringUtils
 			Name="WhiteSpaces"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

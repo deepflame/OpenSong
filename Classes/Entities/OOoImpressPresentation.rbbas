@@ -587,7 +587,7 @@ Implements iPresentation
 		                  aMdProps.Append( olePropFD )
 		                  
 		                  If oExporter.filter( aMdProps ) Then
-		                    result = f.OpenAsPicture()
+		                    result = Picture.Open(f)
 		                  End If
 		                  
 		                End If

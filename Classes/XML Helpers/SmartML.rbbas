@@ -238,7 +238,7 @@ Protected Module SmartML
 		    outputStream = BinaryStream.Create(f, True)
 		    outputStream.Write DecodeBase64(s)
 		    outputStream.Close
-		    p = f.OpenAsPicture
+		    p = Picture.Open(f)
 		    f.Delete
 		  End If
 		  

@@ -54,7 +54,7 @@ Inherits ReportClass
 		  
 		  If MyPages = Nil Then MyPages = Pages
 		  
-		  pic = NewPicture(Round(PrintableWidth * 72 * Zoom), Round(PrintableHeight * 72 * Zoom), 32)
+		  pic = New Picture(Round(PrintableWidth * 72 * Zoom), Round(PrintableHeight * 72 * Zoom), 32)
 		  
 		  //Clear out the arrays
 		  

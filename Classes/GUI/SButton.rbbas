@@ -455,7 +455,7 @@ Inherits Canvas
 
 	#tag Method, Flags = &h0
 		Sub SetGrayIcon(pic As Picture, mask As Picture)
-		  GrayIcon = NewPicture(pic.Width, pic.Height, 32)
+		  GrayIcon = New Picture(pic.Width, pic.Height, 32)
 		  If GrayIcon Is Nil Then Return
 		  
 		  GrayIcon.Graphics.DrawPicture(pic, 0, 0)

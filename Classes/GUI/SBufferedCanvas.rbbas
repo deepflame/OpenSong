@@ -4,7 +4,7 @@ Inherits Canvas
 	#tag Event
 		Sub Paint(g As Graphics)
 		  If Buffer = Nil Or Buffer.Width <> Width Or Buffer.Height <> Height Then
-		    Buffer = NewPicture(Width, Height, 32)
+		    Buffer = New Picture(Width, Height, 32)
 		    Paint Buffer.Graphics
 		  End If
 		  

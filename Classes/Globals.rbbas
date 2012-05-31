@@ -50,7 +50,7 @@ Protected Module Globals
 		  CurrPos = 0
 		  Pos = 0
 		  Ext = false
-		  Globals.Filters = NewMemoryBlock(5000)
+		  Globals.Filters = New MemoryBlock(5000)
 		  c = InStr(CurrPos, Globals.AudioPluginFormats, "|")
 		  
 		  while c <> 0

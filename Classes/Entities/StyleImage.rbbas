@@ -75,7 +75,7 @@ Protected Class StyleImage
 		        outputStream = BinaryStream.Create(f, True)
 		        outputStream.Write DecodeBase64(Base64)
 		        outputStream.Close
-		        Me.oImage = f.OpenAsPicture()
+		        Me.oImage = Picture.Open(f)
 		        #If TargetLinux
 		          If IsNull(Me.oImage) Then
 		            Dim f_jpg As FolderItem = GetFolderItem( f.AbsolutePath() + ".jpg" )
@@ -114,7 +114,7 @@ Protected Class StyleImage
 		      
 		      inputStream = BinaryStream.Open(File, False)
 		      If inputStream <> Nil Then
-		        Me.oImage = File.OpenAsPicture()
+		        Me.oImage = Picture.Open(File)
 		        
 		        If Me.oImage <> Nil Then
 		          

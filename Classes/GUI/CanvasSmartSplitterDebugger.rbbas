@@ -61,12 +61,12 @@ Inherits Canvas
 		  if debug and p = nil then
 		    if targetMacOS or targetWin32 then
 		      if targetPPC then
-		        p = newPicture(1024,768,16)   '  limit canvas so Mac OS 9 won't crash
+		        p = new Picture(1024,768,16)   '  limit canvas so Mac OS 9 won't crash
 		      else
-		        p = newPicture(screen(0).width,screen(0).height,screen(0).depth)
+		        p = new Picture(screen(0).width,screen(0).height,screen(0).depth)
 		      end if
 		    else
-		      p = newPicture(1024,768,screen(0).depth)   '  limit canvas so Linux won't crash
+		      p = new Picture(1024,768,screen(0).depth)   '  limit canvas so Linux won't crash
 		    end if
 		    
 		    if p = nil then

@@ -58,7 +58,7 @@ Inherits ReportClass
 		  //
 		  // Allocate a picture to build Object2D's against
 		  //
-		  Pic = NewPicture(PrintableWidth * 72 * Scale, PrintableHeight * 72 * Scale, 32)
+		  Pic = New Picture(PrintableWidth * 72 * Scale, PrintableHeight * 72 * Scale, 32)
 		  If Pic = Nil Then Return False // Sorry, out of memory (TODO: Log and report)
 		  g = Pic.Graphics
 		  

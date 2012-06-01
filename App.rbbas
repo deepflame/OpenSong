@@ -782,81 +782,39 @@ Inherits Application
 	#tag Method, Flags = &h0
 		Function GetImageAsString(img As Picture) As String
 		  Dim strBase64 As String
-		  Dim f As FolderItem
-		  Dim inputStream As BinaryStream
 		  Dim QualityValue As Integer
 		  Dim QualitySetting As ImageQualityEnum
-		  Dim saveSuccess As Boolean
+		  Dim data As MemoryBlock = Nil
 		  
 		  If img <> Nil Then
-		    f = GetTemporaryFolderItem()
-		    If f <> Nil Then
+		    QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
+		    QualitySetting = ImageQualityEnum(QualityValue)
+		    
+		    Try
+		      //Try to use GDI+ (fallback to QuickTime) (Windows) or Linux, MacOS native
+		      Dim quality as Integer = Picture.QualityDefault
+		      Select Case QualitySetting
+		      Case ImageQualityEnum.FullCompression
+		        quality = 0
+		      Case ImageQualityEnum.HighCompression
+		        quality = 40
+		      Case ImageQualityEnum.LittleCompression
+		        quality = 65
+		      Case ImageQualityEnum.LowCompression
+		        quality = 85
+		      Case ImageQualityEnum.NoCompression
+		        quality = 100
+		      Else
+		        quality = Picture.QualityDefault 'Default - no one knows :D
+		      End Select
 		      
-		      saveSuccess = False
-		      #If Not TargetLinux
-		        //First try to use the QuickTime exporter, that object allows quality variance
-		        //This object is not available on Linux, hence the compiler directives
-		        Dim QTExporter as QTGraphicsExporter
-		        QTExporter= GetQTGraphicsExporter("JPEG")
-		        If QTExporter <> Nil Then
-		          
-		          QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
-		          QualitySetting = ImageQualityEnum(QualityValue)
-		          
-		          Select Case QualitySetting
-		          Case ImageQualityEnum.FullCompression
-		            QTExporter.CompressionQuality = 0
-		          Case ImageQualityEnum.HighCompression
-		            QTExporter.CompressionQuality = 256
-		          Case ImageQualityEnum.LittleCompression
-		            QTExporter.CompressionQuality = 768
-		          Case ImageQualityEnum.LowCompression
-		            QTExporter.CompressionQuality = 1023
-		          Case ImageQualityEnum.NoCompression
-		            QTExporter.CompressionQuality = 1024
-		          Else
-		            QTExporter.CompressionQuality = 512
-		          End Select
-		          
-		          QTExporter.OutputFileType="JPEG"
-		          QTExporter.OutputFileCreator="ogle"
-		          saveSuccess = QTExporter.SavePicture(f,img)
-		        End If
-		      #Else
-		        Dim QTExporter As Object = Nil
-		      #EndIf
-		      
-		      If (QTExporter = Nil) Or (saveSuccess = False) Then
-		        Try
-		          //If QuickTime is not available, try to use GDI+ (Windows) or Linux, MacOS native
-		          Dim quality as Integer = -1 'Default
-		          Select Case QualitySetting
-		          Case ImageQualityEnum.FullCompression
-		            quality = 0
-		          Case ImageQualityEnum.HighCompression
-		            quality = 40
-		          Case ImageQualityEnum.LittleCompression
-		            quality = 65
-		          Case ImageQualityEnum.LowCompression
-		            quality = 85
-		          Case ImageQualityEnum.NoCompression
-		            quality = 100
-		          Else
-		            quality = -1 'Default - no one knows :D
-		          End Select
-		          
-		          img.Save(f, Picture.SaveAsJPEG, quality)
-		        Catch
-		          //If all others fail, use the OS default (Windows: bmp, Linux: jpg, MacOS: pict
-		          img.Save(f, Picture.SaveAsMostCompatible)
-		        End Try
-		      End If
-		      
-		      inputStream = BinaryStream.Open(f, False)
-		      strBase64 = EncodeBase64(inputStream.Read(f.Length))
-		      inputStream.Close
-		      f.delete
-		    End If
+		      data = img.GetData(Picture.FormatJPEG, quality)
+		    Catch
+		      //If JPEG fails, use the most safe ...
+		      data = img.GetData(Picture.FormatBMP)
+		    End Try
+		    
+		    strBase64 = EncodeBase64(data)
 		  End If
 		  
 		  Return strBase64

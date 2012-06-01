@@ -113,7 +113,7 @@ Begin Window MainSettingsWindow
       TextUnit        =   0
       Top             =   7
       Underline       =   ""
-      Value           =   1
+      Value           =   2
       Visible         =   True
       Width           =   579
       Begin GroupBox grp_settings_general
@@ -135,7 +135,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -165,7 +164,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Church CCLI License"
             TextAlign       =   0
             TextColor       =   0
@@ -182,6 +180,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -274,7 +273,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "Language:"
             TextAlign       =   0
             TextColor       =   0
@@ -338,7 +336,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -368,7 +365,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 1:"
             TextAlign       =   0
             TextColor       =   0
@@ -385,6 +381,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -448,7 +445,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 2:"
             TextAlign       =   0
             TextColor       =   0
@@ -465,6 +461,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -528,7 +525,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   1
-            TabStop         =   True
             Text            =   "User Defined 3:"
             TextAlign       =   0
             TextColor       =   0
@@ -545,6 +541,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -637,7 +634,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   2
          TabPanelIndex   =   1
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -723,7 +719,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   4
          TabPanelIndex   =   3
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -753,7 +748,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Log level (0-10)"
             TextAlign       =   0
             TextColor       =   0
@@ -881,7 +875,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   6
          TabPanelIndex   =   3
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -911,7 +904,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "OpenSong tries to store the images that are used in a set in JPEG format. The items below control the quality and behaviour of image storage. The quality slider below will be disabled if QuickTime is not installed as OpenSong depends on that for storing JPEG images in user selectable quality."
             TextAlign       =   0
             TextColor       =   0
@@ -978,7 +970,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Image compression:"
             TextAlign       =   0
             TextColor       =   0
@@ -1011,7 +1002,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   7
          TabPanelIndex   =   3
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1041,7 +1031,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Server:"
             TextAlign       =   0
             TextColor       =   0
@@ -1076,7 +1065,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   3
-            TabStop         =   True
             Text            =   "Port:"
             TextAlign       =   0
             TextColor       =   0
@@ -1093,6 +1081,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1138,6 +1127,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1199,7 +1189,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   8
          TabPanelIndex   =   3
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1291,7 +1280,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   2
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1379,7 +1367,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "\\"
             TextAlign       =   0
             TextColor       =   0
@@ -1445,7 +1432,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "(use with caution; forces restart)"
             TextAlign       =   0
             TextColor       =   16711680
@@ -1510,7 +1496,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   2
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1540,7 +1525,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Location of Powerpoint Viewer"
             TextAlign       =   0
             TextColor       =   0
@@ -1557,6 +1541,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -1679,7 +1664,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   4
             TabPanelIndex   =   2
-            TabStop         =   True
             Text            =   "Location of Videolan client"
             TextAlign       =   0
             TextColor       =   0
@@ -1696,6 +1680,7 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
+            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -1754,7 +1739,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   4
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -1784,7 +1768,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Headings:"
             TextAlign       =   0
             TextColor       =   0
@@ -1819,7 +1802,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Labels:"
             TextAlign       =   0
             TextColor       =   0
@@ -1854,7 +1836,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Text Fields:"
             TextAlign       =   0
             TextColor       =   0
@@ -1889,7 +1870,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Fixed-width Text:"
             TextAlign       =   0
             TextColor       =   0
@@ -1953,7 +1933,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Buttons:"
             TextAlign       =   0
             TextColor       =   0
@@ -2017,7 +1996,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Large Headings:"
             TextAlign       =   0
             TextColor       =   0
@@ -2229,7 +2207,6 @@ Begin Window MainSettingsWindow
          Scope           =   0
          TabIndex        =   1
          TabPanelIndex   =   4
-         TabStop         =   True
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
@@ -2320,7 +2297,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Song, verse"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2355,7 +2331,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   3
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Song, bridge"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2419,7 +2394,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   5
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Song, pre-chorus"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2483,7 +2457,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Song, chorus"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2547,7 +2520,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   9
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Song, tag"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2611,7 +2583,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   11
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Scripture"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2675,7 +2646,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   13
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Custom slide"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2739,7 +2709,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   15
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Style change"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2803,7 +2772,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   17
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Image"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2867,7 +2835,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   19
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "External application"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -2931,7 +2898,6 @@ Begin Window MainSettingsWindow
             Selectable      =   False
             TabIndex        =   21
             TabPanelIndex   =   4
-            TabStop         =   True
             Text            =   "Blank (inserted)"
             TextAlign       =   0
             TextColor       =   &h000000
@@ -3081,19 +3047,13 @@ End
 		  
 		  Dim QualityValue As Integer
 		  Dim QualitySetting As ImageQualityEnum
-		  Dim QTExporter as QTGraphicsExporter
 		  
 		  pop_imagequality_compression.DeleteAllRows
 		  For i = 0 To UBound(App.ImageQualityList)
 		    pop_imagequality_compression.AddRow App.ImageQualityList(i)
 		  Next i
 		  
-		  #If Not TargetLinux
-		    QTExporter= GetQTGraphicsExporter("JPEG")
-		    pop_imagequality_compression.Enabled = (QTExporter <> Nil)
-		  #Else
-		    pop_imagequality_compression.Enabled = False
-		  #EndIf
+		  pop_imagequality_compression.Enabled = True
 		  QualityValue = SmartML.GetValueN(App.MyMainSettings.DocumentElement, "image_quality/@compression", False)
 		  QualitySetting = ImageQualityEnum(QualityValue)
 		  

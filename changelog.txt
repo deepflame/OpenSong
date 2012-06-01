@@ -1,4 +1,6 @@
-﻿* The code for the following MainWindow buttons was moved to separate functions: btn_SetAddSong, btn_set_delete, btn_set_rename, btn_song_folders_add, btn_song_folders_delete. (JRC)
+﻿* Code cleanup, removed deprecated and incorrect type casting code constructions
+
+* The code for the following MainWindow buttons was moved to separate functions: btn_SetAddSong, btn_set_delete, btn_set_rename, btn_song_folders_add, btn_song_folders_delete. (JRC)
 
 * If Documents folder does not exist OpenSong now tries to create it. (JRC)
 

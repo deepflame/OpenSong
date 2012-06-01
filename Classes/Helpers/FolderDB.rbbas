@@ -112,7 +112,7 @@ Protected Class FolderDB
 		  
 		  // by Mike Bailey ... http://forums.realbasic.com/viewtopic.php?t=4637
 		  
-		  dim bit as integer
+		  dim bit as uint64
 		  bit = bitwise.shiftLeft( 1, offset-1 )
 		  return (bitwise.bitAnd( number, bit ) > 0)
 		  

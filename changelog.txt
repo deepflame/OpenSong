@@ -1,4 +1,6 @@
-﻿* Code cleanup, removed deprecated and incorrect type casting code constructions
+﻿* Improved snapshotting behavior to be less intrusive to the presentation interaction. At slow storage systems, the response on slide changes degraded. This is improved by moving the snapshot storage to a seperate thread with less priority.
+
+* Code cleanup, removed deprecated and incorrect type casting code constructions
 
 * The code for the following MainWindow buttons was moved to separate functions: btn_SetAddSong, btn_set_delete, btn_set_rename, btn_song_folders_add, btn_song_folders_delete. (JRC)
 

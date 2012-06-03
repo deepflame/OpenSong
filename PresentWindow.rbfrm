@@ -51,7 +51,6 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   300
       Begin Timer timerAdvance
-         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -60,15 +59,11 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Mode            =   0
          Period          =   10000
          Scope           =   0
-         TabIndex        =   0
          TabPanelIndex   =   0
-         TabStop         =   True
          Top             =   249
-         Visible         =   True
          Width           =   32
       End
       Begin Timer timerTransition
-         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -77,11 +72,21 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Mode            =   0
          Period          =   125
          Scope           =   0
-         TabIndex        =   1
          TabPanelIndex   =   0
-         TabStop         =   True
          Top             =   249
-         Visible         =   True
+         Width           =   32
+      End
+      Begin SnapshotThread m_SnapshotThread
+         Height          =   32
+         Index           =   -2147483648
+         InitialParent   =   "cnvSlide"
+         Left            =   161
+         LockedInPosition=   False
+         Priority        =   5
+         Scope           =   2
+         StackSize       =   0
+         TabPanelIndex   =   0
+         Top             =   249
          Width           =   32
       End
    End
@@ -130,6 +135,11 @@ End
 		  Globals.Status_Presentation = False
 		  If HelperActive Then PresentHelperWindow.Close
 		  timerAdvance.Enabled = False
+		  
+		  m_updatingSlide = False
+		  While m_SnapshotThread.State = Thread.Running Or m_SnapshotThread.State = Thread.Sleeping
+		    App.SleepCurrentThread(100)
+		  Wend
 		  
 		  MainWindow.CleanupPresentation CurrentSet
 		  
@@ -231,6 +241,7 @@ End
 		  
 		  m_videolanController = New VideolanController 'Initialise shell control for videolan
 		  m_AppLaunchShell = New Shell 'Initialise shell control for external applications
+		  m_updatingSlide = False
 		  
 		  App.DebugWriter.Write("PresentWindow.Open: Exit")
 		End Sub
@@ -503,151 +514,6 @@ End
 		  Border = CalcBorderSize(g)
 		  Call GraphicsX.DrawFontString(g, alert, Border*3, Border, _
 		  alertFont, cnvSlide.Width-Border*6, align, cnvSlide.Height-Border*7, valign)
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub ExportSnapshot(image As Picture, slide As XmlNode, style As XmlNode)
-		  Dim snapshot_filename As String = SmartML.GetValue(App.MyPresentSettings.DocumentElement, "snapshot/filename", False)
-		  Dim export_live_insertions As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_live_insertions", False, True)
-		  Dim export_metadata As Boolean = SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "snapshot/@export_metadata", False, True)
-		  
-		  If SmartML.GetValue(slide.Parent.Parent, "@type") = "blank" Then
-		    'Blank slides will not be exported as snapshot
-		    Return
-		  End If
-		  
-		  If Not export_live_insertions Then
-		    'Check if the current slide is flagged that is has been added during a live set
-		    If SmartML.GetValueB(slide.Parent.Parent, "@LiveInsertion", False, False) Then
-		      Return
-		    End If
-		  End If
-		  
-		  Dim d As New Date
-		  Dim re As New RegEx
-		  Dim start As Integer=0
-		  re.SearchPattern = "(%[dhimnNPsSTVy]{1})"
-		  re.Options.CaseSensitive = True
-		  
-		  Dim match As RegExMatch = re.Search(snapshot_filename)
-		  While match <> Nil
-		    Select Case Asc(Mid(match.SubExpressionString(1), 2, 1))
-		    Case Asc("d")
-		      'The day of the current month (01-31)
-		      Dim sd As String = Str(d.Day)
-		      If sd.Len() = 1 Then sd = "0" + sd
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%d", sd)
-		    Case Asc("h")
-		      'The hour from the current time of day in 24-hour format (00-23)
-		      Dim sh As String = Str(d.Hour)
-		      If sh.Len() = 1 Then sh = "0" + sh
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%h", sh)
-		    Case Asc("i")
-		      'The minutes from the current time (00-59)
-		      Dim si As String = Str(d.Minute)
-		      If si.Len() = 1 Then si = "0" + si
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%i", si)
-		    Case Asc("m")
-		      'The current month (01-12)
-		      Dim sm As String = Str(d.Month)
-		      If sm.Len() = 1 Then sm = "0" + sm
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%m", sm)
-		    Case Asc("n")
-		      'The number of the slide in the current set (with leading zeroes)
-		      Dim sn As String = Str(SmartML.GetValueN(slide.Parent.Parent, "@ItemNumber"))
-		      If sn.Len() = 1 Then sn = "0" + sn
-		      If sn.Len() = 2 Then sn = "0" + sn
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%n", sn)
-		    Case Asc("N")
-		      'The name of the current slide
-		      Dim sN As String = SmartML.GetValue(slide.Parent.Parent, "@name")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%N", sN)
-		    Case Asc("P")
-		      'The name of the current slide
-		      Dim sP As String = Str(CurrentSlide)
-		      If sP.Len() = 1 Then sP = "0" + sP
-		      If sP.Len() = 2 Then sP = "0" + sP
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%P", sP)
-		    Case Asc("s")
-		      'The seconds from the current time (00-59)
-		      Dim ss As String = Str(d.Second)
-		      If ss.Len() = 1 Then ss = "0" + ss
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%s", ss)
-		    Case Asc("S")
-		      'The name of the current set
-		      Dim sS As String = SmartML.GetValue(slide.Parent.Parent.Parent.Parent, "@name")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%S", sS)
-		    Case Asc("T")
-		      'The title of the current set
-		      Dim sT As String = SmartML.GetValue(slide.Parent.Parent, "title")
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%T", sT)
-		    Case Asc("V")
-		      'The title of the current set
-		      Dim sV As String = SmartML.GetValue(slide, "@id", False)
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%V", sV)
-		    Case Asc("y")
-		      'The current year (4 digits)
-		      Dim sy As String = Str(d.Year)
-		      If sy.Len() = 1 Then sy = "0" + sy
-		      snapshot_filename = ReplaceAllB(snapshot_filename, "%y", sy)
-		    Case Else
-		      start = match.SubExpressionStartB(1)+2
-		    End Select
-		    
-		    match = re.Search(snapshot_filename, start)
-		  Wend
-		  
-		  If snapshot_filename.EndsWith( ".jpg" ) Then
-		    snapshot_filename = Left(snapshot_filename, snapshot_filename.Len()-4)
-		  End If
-		  
-		  If IsNull(GetFolderItem(snapshot_filename + ".jpg")) Then
-		    Dim base_folder As FolderItem = Nil
-		    Dim folder_element As String
-		    Dim folder_elements() As String = Split(ReplaceAll(snapshot_filename, "\", "/"), "/")
-		    Call folder_elements.Pop() 'Remove the filename part
-		    
-		    For Each folder_element in folder_elements
-		      If IsNull(base_folder) Then
-		        base_folder = GetFolderItem(folder_element)
-		      Else
-		        base_folder = base_folder.Child(folder_element)
-		        If Not base_folder.Exists() Then
-		          base_folder.CreateAsFolder()
-		        End If
-		      End If
-		    Next
-		  End If
-		  
-		  Dim imageFileName As FolderItem = GetFolderItem(snapshot_filename + ".jpg")
-		  Dim metaFileName As FolderItem = GetFolderItem(snapshot_filename + ".xml")
-		  
-		  If Not IsNull(imageFileName) Then
-		    Try
-		      '++JRC Comented out second parameter for compatibilty with RB 2010r3
-		      image.Save(ImageFileName, 151) ' , 85)
-		      
-		      If export_metadata And Not IsNull(metaFileName) then
-		        Dim metaDoc As New XmlDocument
-		        Dim metaSlide As XmlElement = metaDoc.CreateElement("slide")
-		        metaDoc.DocumentElement.AppendChild(metaSlide)
-		        SmartML.CloneChildren(slide.Parent.Parent, metaSlide)
-		        SmartML.CloneAttributes(slide.Parent.Parent, metaSlide)
-		        
-		        metaDoc.DocumentElement.RemoveChild(SmartML.GetNode(metaSlide, "slides", True))
-		        metaDoc.DocumentElement.AppendChild metaDoc.ImportNode(slide, True)
-		        
-		        metaDoc.DocumentElement.RemoveChild(SmartML.GetNode(metaSlide, "style", True))
-		        metaDoc.DocumentElement.AppendChild metaDoc.ImportNode(style, True)
-		        
-		        Call SmartML.XDocToFile(metaDoc, metaFileName)
-		      End If
-		    Catch err
-		      'Snapshot will not be saved...
-		    End Try
-		  End If
-		  
 		End Sub
 	#tag EndMethod
 
@@ -1292,6 +1158,13 @@ End
 	#tag Method, Flags = &h0
 		Function IsSlidechangeExternal() As Boolean
 		  Return self._IsSlidechangeExternal
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IsUpdatingSlide() As Boolean
+		  Return m_updatingSlide Or _
+		  (timerTransition.Enabled And timerTransition.Mode <> Timer.ModeOff)
 		End Function
 	#tag EndMethod
 
@@ -2079,6 +1952,7 @@ End
 		    'LastPicture = LastPicture.CXG_Composite(CurrentPicture, 1.0, 0, 0)
 		    
 		    ' === Draw the slide to the PreviewPicture ===
+		    m_updatingSlide = True
 		    
 		    Profiler.BeginProfilerEntry "PresentWindow::ResetPaint::PreviewPicture"
 		    ' -- Old way -- (value not passed)
@@ -2121,7 +1995,7 @@ End
 		      CurrentPicture.Graphics.DrawPicture PreviewPicture, 0, 0
 		      'CurrentPicture = CurrentPicture.CXG_Composite(PreviewPicture, 1.0, 0, 0)
 		      If m_Snapshots Then
-		        ExportSnapshot PreviewPicture, slide, xStyle
+		        m_snapshotThread.Export CurrentSlide, PreviewPicture, slide, xStyle
 		      End If
 		    End If
 		    Profiler.EndProfilerEntry
@@ -2131,6 +2005,7 @@ End
 		      DrawAlert CurrentPicture.Graphics, AlertText
 		      DrawAlert PreviewPicture.Graphics, AlertText
 		    End If
+		    
 		    ' === Check for auto-advance ===
 		    If SmartML.GetValueN(XCurrentSlide.Parent.Parent, "@seconds", True) > 0 Then
 		      timerAdvance.Mode = 1
@@ -2148,7 +2023,9 @@ End
 		      timerTransition.Reset
 		      timerTransition.Enabled = True
 		    End If
+		    
 		    cnvSlide.Refresh False
+		    m_updatingSlide = False
 		  End If
 		  
 		  'Keep a copy of this slide to be able do a cleanup when a next slide is shown
@@ -2517,6 +2394,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private m_updatingSlide As Boolean = False
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private m_VideolanController As VideolanController = Nil
 	#tag EndProperty
 
@@ -2736,9 +2617,11 @@ End
 	#tag Event
 		Sub Paint(g As Graphics)
 		  If Not Globals.Status_Presentation Then Return
+		  
 		  '#if DebugBuild then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Enter")
 		  '#endif
+		  
 		  If (doTransition And (curslideTransition = SlideTransitionEnum.ApplicationDefault)) Or (curslideTransition = SlideTransitionEnum.UseTransition) Then
 		    Profiler.BeginProfilerEntry "PresentWindow::Repaint Timer::Blit"
 		    CurrentPicture.Mask.Graphics.ForeColor = rgb(255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames, 255*(TransitionFrames-TransitionFrame)/TransitionFrames)
@@ -2752,9 +2635,11 @@ End
 		  Else
 		    g.DrawPicture CurrentPicture, 0, 0, g.Width, g.Height, 0, 0, CurrentPicture.Width, CurrentPicture.Height
 		  End If
+		  
 		  '#if DebugBuild Then
 		  'App.DebugWriter.Write("PresentWindow.cnvSlide.Paint: Exit")
 		  '#endif
+		  
 		  //++
 		  // EMP: handle any exceptions by ignoring them.
 		  // This corrects an issue seen when changing the SButton style
@@ -2770,6 +2655,11 @@ End
 #tag Events timerAdvance
 	#tag Event
 		Sub Action()
+		  If Not Globals.Status_Presentation Then
+		    Me.Enabled = False
+		    Return
+		  End If
+		  
 		  If XCurrentSlide.NextSibling = Nil And SmartML.GetValueB(XCurrentSlide.Parent.Parent, "@loop") Then
 		    Call PerformAction(ACTION_FIRST_SLIDE_OF_SECTION)
 		  Else
@@ -2783,6 +2673,10 @@ End
 #tag Events timerTransition
 	#tag Event
 		Sub Action()
+		  If Not Globals.Status_Presentation Then
+		    Me.Enabled = False
+		    Return
+		  End If
 		  
 		  If TransitionFrame = TransitionFrames Then
 		    Me.Enabled = False

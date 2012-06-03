@@ -1,6 +1,5 @@
 Type=Desktop
-RBProjectVersion=2011.04
-MinIDEVersion=20070100
+RBProjectVersion=2010.051
 FileTypeSet=FileTypes;FileTypes.rbbas;&h45B5FE02;&h0;false
 FileTypeSet=ImageFileTypes;ImageFileTypes.rbbas;&h37D50FFF;&h0;false
 FileTypeSet=CopyTypes;CopyTypes.rbbas;&h4312CFFF;&h0;false
@@ -223,6 +222,8 @@ Module=OOoPresentationHost;Classes/Controllers/OOoPresentationHost/OOoPresentati
 Class=OOoSlideShowListener;Classes/Controllers/OOoPresentationHost/OOoSlideShowListener.rbbas;&h1F94A7FF;&hEA6E7FF;false
 Class=VideolanController;Classes/Controllers/VideolanController.rbbas;&h55CC9FFF;&h6B93A7F1;false
 Module=WinAPI;Classes/Helpers/WinAPI.rbbas;&h2497F7FF;&h46BFDB60;false
+Class=SnapshotThread;Classes/Helpers/SnapshotThread.rbbas;&h237E7FF;&h46BFDB60;false
+Class=SnapshotData;Classes/Helpers/SnapshotData.rbbas;&h5882CFFF;&h46BFDB60;false
 AppMenuBar=MainMenu
 MajorVersion=2
 MinorVersion=0

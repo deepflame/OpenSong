@@ -8,26 +8,6 @@ Inherits MemoryBlock
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(f as FolderItem)
-		  If f Is Nil then
-		    f = GetFolderItem("")
-		  End if
-		  
-		  Soft Declare Function FSMakeFSSpec Lib InterfaceLib (vRefNum as Short, dirID as Integer, filename as Pstring, spec as Ptr) as Short
-		  
-		  Const noError = 0
-		  Const fileNotFound = -43
-		  
-		  me.Constructor
-		  dim fileName as String = ConvertEncoding(f.Name, Encodings.SystemDefault)
-		  dim OSError as Integer = FSMakeFSSpec(f.MacVRefNum, f.MacDirID, fileName, me)
-		  If OSError <> noError and OSError <> fileNotFound then
-		    Raise new MacOSException("FSMakeFSSpec", OSError)
-		  End if
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub Constructor(theFSRef as FSRef)
 		  Soft Declare Function FSMakeFSSpec Lib InterfaceLib (vRefNum as Short, dirID as Integer, filename as Pstring, spec as Ptr) as Short
 		  Soft Declare Function FSGetCatalogInfo Lib InterfaceLib (ref as Ptr, whichInfo as Integer, catalogInfo as Ptr, outName as Ptr, fsSpec as Ptr, parentRef as Ptr) as Short

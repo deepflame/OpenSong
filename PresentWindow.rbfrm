@@ -51,6 +51,7 @@ Begin Window PresentWindow Implements ScriptureReceiver
       Visible         =   True
       Width           =   300
       Begin Timer timerAdvance
+         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -59,11 +60,15 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Mode            =   0
          Period          =   10000
          Scope           =   0
+         TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Top             =   249
+         Visible         =   True
          Width           =   32
       End
       Begin Timer timerTransition
+         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -72,11 +77,15 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Mode            =   0
          Period          =   125
          Scope           =   0
+         TabIndex        =   1
          TabPanelIndex   =   0
+         TabStop         =   True
          Top             =   249
+         Visible         =   True
          Width           =   32
       End
       Begin SnapshotThread m_SnapshotThread
+         Enabled         =   True
          Height          =   32
          Index           =   -2147483648
          InitialParent   =   "cnvSlide"
@@ -85,8 +94,11 @@ Begin Window PresentWindow Implements ScriptureReceiver
          Priority        =   5
          Scope           =   2
          StackSize       =   0
+         TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Top             =   249
+         Visible         =   True
          Width           =   32
       End
    End
@@ -142,6 +154,8 @@ End
 		  Wend
 		  
 		  MainWindow.CleanupPresentation CurrentSet
+		  
+		  UpdateStatusNotifiers "closed"
 		  
 		  '++JRC Prevent resizing MainWindow
 		  'MainWindow.Show
@@ -249,7 +263,7 @@ End
 
 
 	#tag Method, Flags = &h1
-		Protected Function DoClosePresentation() As Boolean
+		Protected Function DoClosePresentation(confirmClose As Boolean = True) As Boolean
 		  Dim messagebox As New MessageDialog
 		  Dim msgboxbutton As MessageDialogButton
 		  Dim bFound As Boolean
@@ -268,7 +282,8 @@ End
 		  Next
 		  If bFound Then Return True
 		  '++JRC: made the prompt optional
-		  if SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
+		  if confirmClose And _
+		    SmartML.GetValueB(App.MyPresentSettings.DocumentElement, "style/@exit_prompt") then
 		    If PresentationMode = MODE_SINGLE_SCREEN Then // Use operating system message box
 		      messagebox.Message = App.T.Translate("presentation_helper/exit/@caption")
 		      messagebox.Title = "OpenSong"
@@ -1007,6 +1022,16 @@ End
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GoSlide(slideIndex As Integer) As Boolean
+		  me.CurrentSlide = slideIndex
+		  me.XCurrentSlide = SetML.GetSlide(me.CurrentSet, slideIndex)
+		  me.ResetPaint me.XCurrentSlide
+		  
+		  Return Not IsNull(me.XCurrentSlide)
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GoSong(number As Integer) As Boolean
 		  'RealBasic: The Definitive Guide
@@ -1196,7 +1221,6 @@ End
 		  Const ASC_KEY_HOME=1
 		  Const ASC_KEY_END=4
 		  
-		  Dim DontCare As Boolean
 		  Dim Command As Integer
 		  
 		  If Asc(Key) = ASC_KEY_PGDN Then Key = Chr(ASC_KEY_DOWN)
@@ -1209,8 +1233,7 @@ End
 		    Command = ACTION_NEXT_SLIDE
 		  End Select
 		  
-		  DontCare = PerformAction(Command)
-		  Return DontCare
+		  Return PerformAction(Command)
 		End Function
 	#tag EndMethod
 
@@ -1226,8 +1249,8 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function PerformAction(Action As Integer) As Boolean
+	#tag Method, Flags = &h0
+		Function PerformAction(Action As Integer, param As Variant = Nil) As Boolean
 		  
 		  'Constants added for clarity EMP 9/30/04
 		  Const ASC_KEY_LEFT = 28
@@ -1264,55 +1287,69 @@ End
 		    ' PREVIOUS SLIDE
 		    '
 		  ElseIf Keyboard.AsyncKeyDown(KEY_UP)  Or _
-		    Action = ASC_KEY_UP Then
+		    Action = ASC_KEY_UP Or _
+		    Action = ACTION_PREV_SLIDE Then
 		    Return GoPreviousSlide
 		    '
 		    ' FIRST SLIDE in presentation
 		    '
-		  ElseIf Action = ASC_KEY_HOME Then
+		  ElseIf Action = ASC_KEY_HOME Or _
+		    Action = ACTION_FIRST_SLIDE Then
 		    Return GoFirstSlide
 		    '
 		    ' LAST SLIDE in presentation
 		    '
-		  ElseIf Action = ASC_KEY_END Then
+		  ElseIf Action = ASC_KEY_END Or _
+		    Action = ACTION_LAST_SLIDE Then
 		    Return GoLastSlide
 		    '
 		    ' NEXT SECTION
 		    '
-		  ElseIf (Keyboard.AsyncKeyDown(KEY_RIGHT) Or Action = ASC_KEY_RIGHT) Then
+		  ElseIf Keyboard.AsyncKeyDown(KEY_RIGHT) Or _
+		    Action = ASC_KEY_RIGHT Or _
+		    Action = ACTION_NEXT_SECTION Then
 		    Return GoNextSection
 		    '
 		    ' PREVIOUS SECTION
 		    '
-		  ElseIf Keyboard.AsyncKeyDown(KEY_LEFT) Or Action = ASC_KEY_LEFT _
-		    Or Action = ASC_KEY_BACKSPACE _
-		    Or Action = ACTION_FIRST_SLIDE_OF_SECTION Then 'special code 126 comes from inside the program instead of keyboard
+		  ElseIf Keyboard.AsyncKeyDown(KEY_LEFT) Or _
+		    Action = ASC_KEY_LEFT Or _
+		    Action = ASC_KEY_BACKSPACE Or _
+		    Action = ACTION_FIRST_SLIDE_OF_SECTION Or _
+		    Action = ACTION_PREV_SECTION Then 'special code 126 comes from inside the program instead of keyboard
 		    Return GoPreviousSection(Action)
 		    '
 		    ' Jump to Chorus
 		    '
-		  ElseIf Lowercase(Key) = "c" Or Key = "`" Then ' c = Chorus
+		  ElseIf Lowercase(Key) = "c" Or Key = "`" Or _
+		    Action = ACTION_CHORUS Then ' c = Chorus
 		    Return GoChorus
 		    '
 		    ' Jump to  Bridge
 		    '
-		  ElseIf Lowercase(Key) = "b" Then ' b = Bridge
+		  ElseIf Lowercase(Key) = "b" Or _
+		    Action = ACTION_BRIDGE Then ' b = Bridge
 		    Return GoBridge
 		    '
 		    ' Jump to PreChorus
 		    '
-		  ElseIf Lowercase(Key) = "p" Then ' p = Pre-chorus
+		  ElseIf Lowercase(Key) = "p" Or _
+		    Action = ACTION_PRECHORUS Then ' p = Pre-chorus
 		    Return GoPreChorus
 		    '
 		    ' Jump to tag
 		    '
-		  ElseIf Lowercase(Key) = "t" Then ' t = Tag
+		  ElseIf Lowercase(Key) = "t" Or _
+		    Action = ACTION_TAG Then ' t = Tag
 		    Return GoTag
 		    '
 		    ' Jump to Verse "N"
 		    '
 		  ElseIf lowercase(key) = "v" or isNumeric(key) Then ' n = Verse
 		    Return GoVerse(key)
+		  ElseIf Action = ACTION_VERSE And _
+		    Not IsNull(param) And param.IsNumeric Then
+		    Return GoVerse(param.StringValue)
 		    '
 		    ' Jump to Song "N"
 		    '
@@ -1346,47 +1383,62 @@ End
 		    Return GoSong(14)
 		  ElseIf KeyBoard.AsyncKeyDown(KEY_F15) Then ' AKA Pause
 		    Return GoSong(15)
+		  ElseIf Action = ACTION_SONG And _
+		    Not IsNull(param) And param.IsNumeric Then
+		    Return GoSong(param.IntegerValue)
+		    
 		    '
 		    ' Close Presentation
 		    '
 		  ElseIf  Action = KEY_ESCAPE Then ' Escape
 		    Return DoClosePresentation
+		  ElseIf Action = ACTION_EXIT_NOPROMPT Then
+		    Return DoClosePresentation(False)
+		    
 		    '
 		    ' Black screen (can't be "B" since that's the hotkey for "Bridge" :-(
 		    '
-		  ElseIf Lowercase(Key) = "k"  Then
+		  ElseIf Lowercase(Key) = "k"Or _
+		    Action = ACTION_BLACK Then
 		    Return ToggleBlack
 		    '
 		    ' White Screen
 		    '
-		  ElseIf Lowercase(Key) = "w" Then
+		  ElseIf Lowercase(Key) = "w"Or _
+		    Action = ACTION_WHITE Then
 		    Return ToggleWhite
 		    '
 		    ' Hide Slide (leaves background up)
 		    '
-		  ElseIf Lowercase(Key) = "h" Then
+		  ElseIf Lowercase(Key) = "h"Or _
+		    Action = ACTION_HIDE Then
 		    Return ToggleHidden
 		    '
 		    ' Put up the LOGO
 		    '
-		  ElseIf Lowercase(Key) = "l" Then
+		  ElseIf Lowercase(Key) = "l"Or _
+		    Action = ACTION_LOGO Then
 		    Return ToggleLogo
 		    '
 		    ' Freeze display screen
 		    '
-		  ElseIf Lowercase(Key) = "f" Then
+		  ElseIf Lowercase(Key) = "f" Or _
+		    Action = ACTION_FREEZE Then
 		    Return ToggleFreeze
 		    '
 		    '  Normal Screen (less important now that the modes are toggles)
 		    '  It's a trump -- disables any other mode
 		    '
-		  ElseIf Lowercase(Key) = "n" Then
+		  ElseIf Lowercase(Key) = "n" Or _
+		    Action = ACTION_NORMAL Then
 		    Return ShowNormal
 		    '
 		    ' Put up an ALERT
 		    '
-		  ElseIf Lowercase(Key) = "a" Then
-		    Return ShowAlert
+		  ElseIf Lowercase(Key) = "a" Or _
+		    Action = ACTION_ALERT Then
+		    Return ShowAlert(param)
+		    
 		    '
 		    ' SCRIPTURE
 		    '
@@ -1624,6 +1676,8 @@ End
 		  'CurrentSlide = 1
 		  'XCurrentSlide = SetML.GetSlide(CurrentSet, 1)
 		  
+		  UpdateStatusNotifiers "starting"
+		  
 		  If HelperActive Then
 		    PresentHelperWindow.Show
 		    i = 1
@@ -1659,6 +1713,7 @@ End
 		  #if Not TargetMacOS
 		    App.MinimizeWindow(MainWindow)
 		  #endif
+		  
 		  If HelperActive Then
 		    PresentHelperWindow.SetMode Me.Mode, False
 		    App.RestoreWindow(PresentHelperWindow)
@@ -1794,7 +1849,10 @@ End
 		    End If
 		  End If
 		  
-		  If IsNull( slide ) Then Return
+		  If IsNull( slide ) Then
+		    UpdateStatusNotifiers "clear"
+		    Return
+		  End If
 		  
 		  If SetML.IsExternal(slide) Then
 		    _IsSlidechangeExternal = True
@@ -2028,6 +2086,8 @@ End
 		    m_updatingSlide = False
 		  End If
 		  
+		  UpdateStatusNotifiers "change"
+		  
 		  'Keep a copy of this slide to be able do a cleanup when a next slide is shown
 		  'A 'next' slide is always set in XCurrentSlide before this method is called and can therefore not be used for this purpose
 		  PreviousSlide = slide.Parent.Parent.Clone( False )
@@ -2114,8 +2174,13 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function ShowAlert() As Boolean
-		  AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		Protected Function ShowAlert(alert As Variant = Nil) As Boolean
+		  If IsNull(alert) Then
+		    AlertText = InputBox.Input(App.T.Translate("presentation_helper/actions/alert") + ":", "")
+		  Else
+		    AlertText = alert.StringValue
+		  End If
+		  
 		  If HelperActive Then
 		    ResetPaint XCurrentSlide
 		    PresentHelperWindow.Refresh False
@@ -2152,6 +2217,15 @@ End
 		  For i as Integer = 1 To UBound(ActLog)
 		    If ActLog(i).SetItemNumber = ItemNumber Then ActLog(i).Displayed = true
 		  Next i
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SubscribeStatusNotifier(subject As iStatusNotifier)
+		  if m_statusNotifiers.IndexOf(subject) < 0 Then
+		    m_statusNotifiers.Append(subject)
+		    subject.StatusNotification("present", "subscribe")
+		  end if
 		End Sub
 	#tag EndMethod
 
@@ -2250,6 +2324,23 @@ End
 		  End If
 		  Return True
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub UnsubscribeStatusNotifier(subject As iStatusNotifier)
+		  Dim i As Integer = m_statusNotifiers.IndexOf(subject)
+		  If i >= 0 Then
+		    m_statusNotifiers.Remove(i)
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub UpdateStatusNotifiers(info As String)
+		  For Each subject As iStatusNotifier in m_statusNotifiers
+		    subject.StatusNotification("present", info)
+		  Next
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
@@ -2394,6 +2485,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private m_statusNotifiers() As iStatusNotifier
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private m_updatingSlide As Boolean = False
 	#tag EndProperty
 
@@ -2462,6 +2557,9 @@ End
 	#tag EndProperty
 
 
+	#tag Constant, Name = ACTION_ALERT, Type = Double, Dynamic = False, Default = \"1021", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = ACTION_BLACK, Type = Integer, Dynamic = False, Default = \"1013", Scope = Public
 	#tag EndConstant
 
@@ -2514,6 +2612,9 @@ End
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_PREV_SLIDE, Type = Integer, Dynamic = False, Default = \"1002", Scope = Public
+	#tag EndConstant
+
+	#tag Constant, Name = ACTION_SONG, Type = Double, Dynamic = False, Default = \"1021", Scope = Public
 	#tag EndConstant
 
 	#tag Constant, Name = ACTION_TAG, Type = Integer, Dynamic = False, Default = \"1011", Scope = Public

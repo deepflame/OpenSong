@@ -93,7 +93,6 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -328,9 +327,9 @@ Begin Window PresentHelperWindow
       LockTop         =   False
       Multiline       =   True
       Scope           =   0
+      Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "- Arrows: -\r\nDown: Next Slide\r\nUp: Previous Slide\r\nRight: Next Section\r\nLeft: Previous Section\r\n- Jump To: -\r\n1-9: Verse\r\nC: Chorus\r\nP: Pre-chorus\r\nB: Bridge\r\nT: Tag"
       TextAlign       =   0
       TextColor       =   0
@@ -338,6 +337,7 @@ Begin Window PresentHelperWindow
       TextSize        =   9
       TextUnit        =   0
       Top             =   212
+      Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   101
@@ -361,7 +361,6 @@ Begin Window PresentHelperWindow
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
-      TabStop         =   True
       TextFont        =   "Arial"
       TextSize        =   11
       TextUnit        =   0
@@ -593,7 +592,6 @@ Begin Window PresentHelperWindow
       Width           =   160
    End
    Begin Label lbl_preview
-      Active          =   ""
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -615,22 +613,19 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Current slide preview"
       TextAlign       =   0
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   204
       Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   332
-      Window          =   0
-      _mWindow        =   0
    End
    Begin Label lbl_preview_next
-      Active          =   ""
       AutoDeactivate  =   True
       Bold            =   ""
       DataField       =   ""
@@ -652,19 +647,17 @@ Begin Window PresentHelperWindow
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Next slide preview"
       TextAlign       =   0
       TextColor       =   &h000000
       TextFont        =   "System"
       TextSize        =   0
+      TextUnit        =   0
       Top             =   204
       Transparent     =   False
       Underline       =   ""
       Visible         =   True
       Width           =   160
-      Window          =   0
-      _mWindow        =   0
    End
 End
 #tag EndWindow
@@ -716,7 +709,7 @@ End
 		  Dim screenHeight As Double =  OSScreen(PresentWindow.PresentScreen).Height
 		  m_screenRatio = screenWidth / screenHeight
 		  
-		  '++JRC 
+		  '++JRC
 		  If UBound(BibleFactory.BibleList) < 0 Then
 		    btn_action_scripture.Enabled = False
 		  Else
@@ -1094,9 +1087,8 @@ End
 		Sub Change()
 		  Dim midpoint As Integer
 		  If Me.ListIndex >= 0 Then
-		    PresentWindow.CurrentSlide = Me.ListIndex + 1
-		    PresentWindow.XCurrentSlide = SetML.GetSlide(PresentWindow.CurrentSet, Me.ListIndex + 1)
-		    PresentWindow.ResetPaint PresentWindow.XCurrentSlide
+		    Call PresentWindow.GoSlide(Me.ListIndex + 1)
+		    
 		    //++
 		    // Try to keep the active slide in the center of the visible items
 		    //--

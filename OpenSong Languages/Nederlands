@@ -396,6 +396,11 @@
       <host caption="Host"/>
       <port caption="Poort"/>
     </proxy>
+    <rcserver caption="Automatiserings API">
+      <enable caption="Remote control server inschakelen"/>
+      <key caption="Beveiligings sleutel"/>
+      <port caption="Poort"/>
+    </rcserver>
     <user_defined caption="Naamgeving voor instelbare velden voor liederen">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>

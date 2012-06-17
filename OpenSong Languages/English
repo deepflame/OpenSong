@@ -396,6 +396,11 @@
       <host caption="Host"/>
       <port caption="Port"/>
     </proxy>
+    <rcserver caption="Automation API">
+      <enable caption="Enable remote control server"/>
+      <key caption="Authentication key"/>
+      <port caption="Port"/>
+    </rcserver>
     <user_defined caption="Naming for user defined song fields">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>

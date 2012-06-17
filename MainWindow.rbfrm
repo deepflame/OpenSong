@@ -925,7 +925,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2647,7 +2646,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2693,7 +2691,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2770,7 +2767,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2884,7 +2880,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2930,7 +2925,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -2976,7 +2970,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3478,7 +3471,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3524,7 +3516,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3570,7 +3561,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3856,7 +3846,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3902,7 +3891,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3948,7 +3936,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -3994,7 +3981,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4201,7 +4187,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4342,7 +4327,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4524,7 +4508,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4774,7 +4757,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4820,7 +4802,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4866,7 +4847,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4912,7 +4892,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -4958,7 +4937,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5034,7 +5012,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5662,7 +5639,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5808,7 +5784,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5882,7 +5857,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -5928,7 +5902,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -6024,7 +5997,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -6415,7 +6387,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -6461,7 +6432,6 @@ Begin Window MainWindow Implements ScriptureReceiver
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -6861,7 +6831,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   ""
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
                   BackColor       =   &hFFFFFF
                   Bold            =   ""
                   Border          =   True
@@ -7226,7 +7195,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   ""
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
                   BackColor       =   &hFFFFFF
                   Bold            =   ""
                   Border          =   True
@@ -7272,7 +7240,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   ""
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
                   BackColor       =   &hFFFFFF
                   Bold            =   ""
                   Border          =   True
@@ -7542,7 +7509,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   ""
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
                   BackColor       =   &hFFFFFF
                   Bold            =   ""
                   Border          =   True
@@ -7719,7 +7685,6 @@ Begin Window MainWindow Implements ScriptureReceiver
                   AcceptTabs      =   ""
                   Alignment       =   0
                   AutoDeactivate  =   True
-                  AutomaticallyCheckSpelling=   True
                   BackColor       =   &hFFFFFF
                   Bold            =   ""
                   Border          =   True
@@ -9070,6 +9035,7 @@ End
 	#tag MenuHandler
 		Function mnu_settings_general() As Boolean Handles mnu_settings_general.Action
 			MainSettingsWindow.ShowModalWithin MainWindow
+			App.InitControlServer()
 			lst_set_items.Invalidate(True)
 			Return True
 		End Function
@@ -14608,7 +14574,7 @@ End
 		    
 		    lst_external_videolan_preset.DeleteAllRows
 		    For i = 0 To App.VideolanPresetList.Count()-1
-		      lst_external_videolan_preset.AddRow CStr(App.VideolanPresetList.Key(i))
+		      lst_external_videolan_preset.AddRow App.VideolanPresetList.Key(i).StringValue
 		    Next i
 		    
 		    Select Case SmartML.GetValue(xgroup, "@application")

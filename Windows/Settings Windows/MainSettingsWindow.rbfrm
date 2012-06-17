@@ -180,7 +180,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -381,7 +380,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -461,7 +459,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -541,7 +538,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -705,7 +701,7 @@ Begin Window MainSettingsWindow
          Bold            =   ""
          Caption         =   "Logging"
          Enabled         =   True
-         Height          =   154
+         Height          =   118
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -786,7 +782,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   119
+            Top             =   116
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -849,7 +845,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   140
+            Top             =   136
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -861,7 +857,7 @@ Begin Window MainSettingsWindow
          Bold            =   ""
          Caption         =   "Set Image Quality"
          Enabled         =   True
-         Height          =   337
+         Height          =   373
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -888,7 +884,7 @@ Begin Window MainSettingsWindow
             DataField       =   ""
             DataSource      =   ""
             Enabled         =   True
-            Height          =   222
+            Height          =   249
             HelpTag         =   ""
             Index           =   -2147483648
             InitialParent   =   "grp_settings_imagequality"
@@ -942,7 +938,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   353
+            Top             =   380
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -976,7 +972,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   299
+            Top             =   326
             Transparent     =   False
             Underline       =   ""
             Visible         =   True
@@ -1005,7 +1001,7 @@ Begin Window MainSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   215
+         Top             =   244
          Underline       =   False
          Visible         =   True
          Width           =   250
@@ -1037,11 +1033,11 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   238
+            Top             =   265
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   120
+            Width           =   143
          End
          Begin Label lbl_proxy_port
             AutoDeactivate  =   True
@@ -1054,7 +1050,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   196
+            Left            =   205
             LockBottom      =   False
             LockedInPosition=   False
             LockLeft        =   False
@@ -1071,17 +1067,16 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   238
+            Top             =   265
             Transparent     =   False
             Underline       =   False
             Visible         =   True
-            Width           =   63
+            Width           =   50
          End
          Begin SEditField edt_proxy_host
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1095,7 +1090,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   50
+            Left            =   49
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1117,17 +1112,16 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   258
+            Top             =   280
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   134
+            Width           =   144
          End
          Begin SEditField edt_proxy_port
             AcceptTabs      =   False
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   True
             BackColor       =   16777215
             Bold            =   False
             Border          =   True
@@ -1141,7 +1135,7 @@ Begin Window MainSettingsWindow
             Index           =   -2147483648
             InitialParent   =   "grp_settings_proxy"
             Italic          =   False
-            Left            =   196
+            Left            =   205
             LimitText       =   0
             LockBottom      =   False
             LockedInPosition=   False
@@ -1163,11 +1157,11 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   258
+            Top             =   280
             Underline       =   False
             UseFocusRing    =   True
             Visible         =   True
-            Width           =   50
+            Width           =   47
          End
       End
       Begin GroupBox grp_activity_log
@@ -1175,7 +1169,7 @@ Begin Window MainSettingsWindow
          Bold            =   ""
          Caption         =   "Activity Log Settings"
          Enabled         =   True
-         Height          =   72
+         Height          =   69
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "tab_general_general"
@@ -1192,7 +1186,7 @@ Begin Window MainSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   11
          TextUnit        =   0
-         Top             =   309
+         Top             =   170
          Underline       =   ""
          Visible         =   True
          Width           =   250
@@ -1222,7 +1216,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   331
+            Top             =   188
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -1254,7 +1248,7 @@ Begin Window MainSettingsWindow
             TextFont        =   "Arial"
             TextSize        =   10
             TextUnit        =   0
-            Top             =   353
+            Top             =   212
             Underline       =   ""
             Value           =   False
             Visible         =   True
@@ -1541,7 +1535,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -1680,7 +1673,6 @@ Begin Window MainSettingsWindow
             AcceptTabs      =   ""
             Alignment       =   0
             AutoDeactivate  =   True
-            AutomaticallyCheckSpelling=   False
             BackColor       =   &hFFFFFF
             Bold            =   ""
             Border          =   True
@@ -2183,7 +2175,7 @@ Begin Window MainSettingsWindow
          TextFont        =   "Arial"
          TextSize        =   10
          TextUnit        =   0
-         Top             =   321
+         Top             =   348
          Underline       =   ""
          Visible         =   True
          Width           =   220
@@ -2940,6 +2932,223 @@ Begin Window MainSettingsWindow
             Width           =   25
          End
       End
+      Begin GroupBox grp_settings_rcserver
+         AutoDeactivate  =   True
+         Bold            =   False
+         Caption         =   "Remote Control"
+         Enabled         =   True
+         Height          =   95
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "tab_general_general"
+         Italic          =   False
+         Left            =   35
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   False
+         LockRight       =   False
+         LockTop         =   False
+         Scope           =   0
+         TabIndex        =   10
+         TabPanelIndex   =   3
+         TextFont        =   "Arial"
+         TextSize        =   11
+         TextUnit        =   0
+         Top             =   322
+         Underline       =   False
+         Visible         =   True
+         Width           =   250
+         Begin Label lbl_rcserver_key
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_rcserver"
+            Italic          =   False
+            Left            =   50
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   0
+            TabPanelIndex   =   3
+            Text            =   "Authentication key:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   367
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   143
+         End
+         Begin Label lbl_rcserver_port
+            AutoDeactivate  =   True
+            Bold            =   False
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   15
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_rcserver"
+            Italic          =   False
+            Left            =   205
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Multiline       =   False
+            Scope           =   0
+            Selectable      =   False
+            TabIndex        =   1
+            TabPanelIndex   =   3
+            Text            =   "Port:"
+            TextAlign       =   0
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   367
+            Transparent     =   False
+            Underline       =   False
+            Visible         =   True
+            Width           =   50
+         End
+         Begin SEditField edt_rcserver_key
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            BackColor       =   16777215
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_rcserver"
+            Italic          =   False
+            Left            =   49
+            LimitText       =   0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   2
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   384
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   144
+         End
+         Begin SEditField edt_rcserver_port
+            AcceptTabs      =   False
+            Alignment       =   0
+            AutoDeactivate  =   True
+            BackColor       =   16777215
+            Bold            =   False
+            Border          =   True
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Format          =   ""
+            Height          =   20
+            HelpTag         =   ""
+            HideSelection   =   True
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_rcserver"
+            Italic          =   False
+            Left            =   205
+            LimitText       =   0
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   False
+            LockRight       =   False
+            LockTop         =   False
+            Mask            =   ""
+            Multiline       =   False
+            ReadOnly        =   False
+            Scope           =   0
+            ScrollbarHorizontal=   False
+            ScrollbarVertical=   True
+            Styled          =   False
+            TabIndex        =   3
+            TabPanelIndex   =   3
+            TabStop         =   True
+            Text            =   ""
+            TextColor       =   0
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   383
+            Underline       =   False
+            UseFocusRing    =   True
+            Visible         =   True
+            Width           =   50
+         End
+         Begin CheckBox chk_rcserver_enable
+            AutoDeactivate  =   True
+            Bold            =   ""
+            Caption         =   "Enable remote control server"
+            DataField       =   ""
+            DataSource      =   ""
+            Enabled         =   True
+            Height          =   20
+            HelpTag         =   ""
+            Index           =   -2147483648
+            InitialParent   =   "grp_settings_rcserver"
+            Italic          =   ""
+            Left            =   49
+            LockBottom      =   ""
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   ""
+            LockTop         =   True
+            Scope           =   0
+            State           =   0
+            TabIndex        =   4
+            TabPanelIndex   =   3
+            TabStop         =   True
+            TextFont        =   "Arial"
+            TextSize        =   10
+            TextUnit        =   0
+            Top             =   341
+            Underline       =   ""
+            Value           =   False
+            Visible         =   True
+            Width           =   206
+         End
+      End
    End
 End
 #tag EndWindow
@@ -2960,6 +3169,13 @@ End
 		  chk_general_version_check.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "version/@check", False)
 		  edt_proxy_host.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@host")
 		  edt_proxy_port.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "proxy/@port")
+		  
+		  chk_rcserver_enable.Value = SmartML.GetValueB(App.MyMainSettings.DocumentElement, "rcserver/@enable", False, False)
+		  edt_rcserver_key.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "rcserver/key", False)
+		  edt_rcserver_port.Text = SmartML.GetValue(App.MyMainSettings.DocumentElement, "rcserver/@port", False)
+		  If edt_rcserver_port.Text = "" Or edt_rcserver_port.Text = "0" Then
+		    edt_rcserver_port.Text = "8082"
+		  End If
 		  
 		  //++
 		  // EMP, July 2007
@@ -3332,6 +3548,10 @@ End
 		  SmartML.SetValueB Settings, "version/@check", chk_general_version_check.Value
 		  SmartML.SetValue Settings, "proxy/@host", edt_proxy_host.Text
 		  SmartML.SetValueN Settings, "proxy/@port", Val(edt_proxy_port.Text)
+		  
+		  SmartML.SetValueB Settings, "rcserver/@enable", chk_rcserver_enable.Value
+		  SmartML.SetValue Settings, "rcserver/key", edt_rcserver_key.Text
+		  SmartML.SetValueN Settings, "rcserver/@port", Val(edt_rcserver_port.Text)
 		  
 		  SmartML.SetValue Settings, "user_defined/@user1", edt_define_user1.Text
 		  SmartML.SetValue Settings, "user_defined/@user2", edt_define_user2.Text
@@ -3713,5 +3933,39 @@ End
 		  edt_applications_videolan.Text = VideolanLocation.AbsolutePath()
 		  
 		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_rcserver_key
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_proxy_host.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events edt_rcserver_port
+	#tag Event
+		Function KeyDown(Key As String) As Boolean
+		  dim c As New Clipboard
+		  
+		  if strComp(Key, Chr(CTRL_V), 0) = 0 then 'ctrl-v
+		    
+		    if c.TextAvailable then
+		      edt_proxy_port.Text  = c.Text
+		      return true
+		    end if
+		    
+		  end if
+		  c.close
+		End Function
 	#tag EndEvent
 #tag EndEvents

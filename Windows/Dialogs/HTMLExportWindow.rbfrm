@@ -34,11 +34,11 @@ Begin Window HTMLExportWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   135
+      Left            =   20
       LockBottom      =   ""
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
       TabIndex        =   0
@@ -46,10 +46,10 @@ Begin Window HTMLExportWindow
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
-      Top             =   22
+      Top             =   19
       Underline       =   ""
       Visible         =   True
-      Width           =   362
+      Width           =   560
       Begin RadioButton rad_css_link
          AutoDeactivate  =   True
          Bold            =   ""
@@ -60,11 +60,11 @@ Begin Window HTMLExportWindow
          Index           =   -2147483648
          InitialParent   =   "grp_css_handling"
          Italic          =   ""
-         Left            =   149
+         Left            =   34
          LockBottom      =   ""
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   True
          LockTop         =   True
          Scope           =   0
          TabIndex        =   0
@@ -73,11 +73,11 @@ Begin Window HTMLExportWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   51
+         Top             =   48
          Underline       =   ""
          Value           =   ""
          Visible         =   True
-         Width           =   244
+         Width           =   532
       End
       Begin RadioButton rad_css_embed
          AutoDeactivate  =   True
@@ -89,11 +89,11 @@ Begin Window HTMLExportWindow
          Index           =   -2147483648
          InitialParent   =   "grp_css_handling"
          Italic          =   ""
-         Left            =   149
+         Left            =   34
          LockBottom      =   ""
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   True
          LockTop         =   True
          Scope           =   0
          TabIndex        =   1
@@ -102,11 +102,11 @@ Begin Window HTMLExportWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   76
+         Top             =   73
          Underline       =   ""
          Value           =   ""
          Visible         =   True
-         Width           =   244
+         Width           =   532
       End
    End
    Begin GroupBox grp_css_options
@@ -119,11 +119,11 @@ Begin Window HTMLExportWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   ""
-      Left            =   134
+      Left            =   20
       LockBottom      =   ""
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
       TabIndex        =   2
@@ -131,10 +131,10 @@ Begin Window HTMLExportWindow
       TextFont        =   "System"
       TextSize        =   0
       TextUnit        =   0
-      Top             =   129
+      Top             =   117
       Underline       =   ""
       Visible         =   True
-      Width           =   363
+      Width           =   560
       Begin RadioButton rad_css_print
          AutoDeactivate  =   True
          Bold            =   ""
@@ -145,11 +145,11 @@ Begin Window HTMLExportWindow
          Index           =   -2147483648
          InitialParent   =   "grp_css_options"
          Italic          =   ""
-         Left            =   148
+         Left            =   34
          LockBottom      =   ""
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   True
          LockTop         =   True
          Scope           =   0
          TabIndex        =   1
@@ -158,11 +158,11 @@ Begin Window HTMLExportWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   184
+         Top             =   172
          Underline       =   ""
          Value           =   ""
          Visible         =   True
-         Width           =   342
+         Width           =   532
       End
       Begin RadioButton rad_css_default
          AutoDeactivate  =   True
@@ -174,11 +174,11 @@ Begin Window HTMLExportWindow
          Index           =   -2147483648
          InitialParent   =   "grp_css_options"
          Italic          =   ""
-         Left            =   148
+         Left            =   34
          LockBottom      =   ""
          LockedInPosition=   False
          LockLeft        =   True
-         LockRight       =   ""
+         LockRight       =   True
          LockTop         =   True
          Scope           =   0
          TabIndex        =   0
@@ -187,11 +187,11 @@ Begin Window HTMLExportWindow
          TextFont        =   "System"
          TextSize        =   0
          TextUnit        =   0
-         Top             =   159
+         Top             =   147
          Underline       =   ""
          Value           =   ""
          Visible         =   True
-         Width           =   342
+         Width           =   532
       End
    End
    Begin GroupBox grp_multiple_export
@@ -311,7 +311,7 @@ Begin Window HTMLExportWindow
       Transparent     =   False
       Underline       =   ""
       Visible         =   True
-      Width           =   122
+      Width           =   160
    End
    Begin PushButton btn_ok
       AutoDeactivate  =   True
@@ -329,8 +329,8 @@ Begin Window HTMLExportWindow
       Left            =   500
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   ""
+      LockLeft        =   False
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
       TabIndex        =   11
@@ -360,8 +360,8 @@ Begin Window HTMLExportWindow
       Left            =   408
       LockBottom      =   ""
       LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   ""
+      LockLeft        =   False
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
       TabIndex        =   10
@@ -407,7 +407,7 @@ Begin Window HTMLExportWindow
       Transparent     =   False
       Underline       =   ""
       Visible         =   True
-      Width           =   122
+      Width           =   160
    End
    Begin SPopupMenu pop_cssfile
       AutoDeactivate  =   True
@@ -421,12 +421,12 @@ Begin Window HTMLExportWindow
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   ""
-      Left            =   154
+      Left            =   192
       ListIndex       =   0
       LockBottom      =   ""
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
       TabIndex        =   12
@@ -438,7 +438,7 @@ Begin Window HTMLExportWindow
       Top             =   228
       Underline       =   ""
       Visible         =   True
-      Width           =   380
+      Width           =   388
    End
    Begin SPopupMenu pop_outdir
       AutoDeactivate  =   True
@@ -452,12 +452,12 @@ Begin Window HTMLExportWindow
       InitialParent   =   ""
       InitialValue    =   ""
       Italic          =   ""
-      Left            =   154
+      Left            =   192
       ListIndex       =   0
       LockBottom      =   ""
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   ""
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
       TabIndex        =   13
@@ -469,7 +469,7 @@ Begin Window HTMLExportWindow
       Top             =   261
       Underline       =   ""
       Visible         =   True
-      Width           =   380
+      Width           =   388
    End
 End
 #tag EndWindow
@@ -532,7 +532,7 @@ End
 		  pop_outdir.Changing = True
 		  If pop_outdir.ListCount > 2 Then pop_outdir.RemoveRow 0
 		  If prefs.OutputFolder <> Nil Then
-		    pop_outdir.InsertRow (0, prefs.OutputFolder.Name)
+		    pop_outdir.InsertRow (0, prefs.OutputFolder.DisplayName)
 		  Else
 		    pop_outdir.InsertRow (0, App.T.Translate(kTranslationRoot + kNoFile))
 		  End If
@@ -542,7 +542,7 @@ End
 		  pop_cssfile.Changing = True
 		  If pop_cssfile.ListCount > 2 Then pop_cssfile.RemoveRow 0
 		  If prefs.StyleSheet <> Nil Then
-		    pop_cssfile.InsertRow(0, prefs.StyleSheet.Name)
+		    pop_cssfile.InsertRow(0, prefs.StyleSheet.DisplayName)
 		  Else
 		    pop_cssfile.InsertRow(0, App.T.Translate(kTranslationRoot + kNoFile))
 		  End If
@@ -703,7 +703,7 @@ End
 		Sub Open()
 		  Me.Changing = True
 		  Me.AddSeparator
-		  Me.AddRow("Select...")
+		  Me.AddRow(App.T.Translate("shared/select/@caption") + "...")
 		  Me.ListIndex = Me.ListCount - 1
 		  Me.Changing = False
 		End Sub
@@ -714,7 +714,7 @@ End
 		Sub Open()
 		  Me.Changing = True
 		  Me.AddSeparator
-		  Me.AddRow("Select...")
+		  Me.AddRow(App.T.Translate("shared/select/@caption") + "...")
 		  Me.ListIndex = Me.ListCount - 1
 		  Me.Changing = False
 		End Sub

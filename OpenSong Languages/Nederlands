@@ -872,7 +872,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
   <smartml>
     <attrib_except>SmartML.GetAttribute: Uitzondering kijkt naar naar attribuut '%1' in '%2'</attrib_except>
     <no_path>Pad niet gevonden.</no_path>
-    <no_File>Bestand niet gevonden: %1</no_File>
+    <no_file>Bestand niet gevonden: %1</no_file>
     <cant_open>Fout bij openen bestand: %1</cant_open>
     <cant_create>Bestand kan niet gemaakt worden: %1</cant_create>
     <xml_error>Error parsing XML: %1</xml_error>
@@ -1135,7 +1135,7 @@ Als het Presentatie veld leeg is, ordend de Presentatie de dia's gebaseerd op de
     <option name="Aanbidding: Intimiteit"/>
     <option name="Aanbidding: Uitnodigen"/>
     <option name="Aanbidding: Aanbidding"/>
-    <option name="Aanbidding: Gebed/Devotion"/>
+    <option name="Aanbidding: Gebed/Toewijding"/>
     <option name="Aanbidding: Toerusten"/>
     <option name="Aanbidding: Dankbaarheid"/>
     <option name="Aanbidding: Rust"/>
@@ -1229,6 +1229,7 @@ Klik op de dia om de stijl te wijzigen.</body>
     <select caption="Selecteer"/>
     <exit_program caption="Programma afsluiten"/>
     <export_to caption="Selecteer de map waar de export van het logboek moet worden geplaatst."/>
+    <style_file caption="Selecteer een opmaak definitie (XSL)"/>
   </shared>
 
   <questions>
@@ -1246,6 +1247,14 @@ Klik op de dia om de stijl te wijzigen.</body>
     <select_docs_folder caption="Selecteer de OpenSong Documenten map">Waar moeten de OpenSong bestanden (liederen en projecten) worden opgeslagen?</select_docs_folder>
     <activity_log caption="Moeten de liederen die in deze presentatie worden gebruikt aan het lied gebruik logboek worden toegevoegd? Dit heeft ook betrekking op liederen die tijdens het presenteren worden toegevoegd!"/>
     <import_presentation caption="Presentatie afbeeldingen importeren">Selecteer de presentatie die als afbeeldingen moet worden geïmporteerd.</import_presentation>
+    <documents_folder_empty caption="De Documenten map bestaat niet of is leeg. Moeten de standaard bestanden worden gekopieerd?"/>
+    <songs_folder_empty caption="De map met liederen is leeg. Moeten de standaard liederen naar deze map worden gekopieerd?"/>
+    <sets_folder_empty caption="De projecten map is leeg. Moeten de standaard projecten worden gekopieerd naar deze map?"/>
+    <settings_folder_empty caption="De instellingen map is leeg. Moeten de standaard instellingen worden gekopieerd naar deze map?"/>
+    <backgrounds_folder_empty caption="De map met achtergronden is leeg. Moeten de standaard achtergronden worden gekopieerd naar deze map?"/>
+    <no_songs_folder caption="De map met liederen kan niet worden gevonden, moet deze map worden gemaakt?"/>
+    <no_sets_folder caption="De map met projecten kan niet gevonden worden, moet deze map worden gemaakt?"/>
+    <no_folder caption="De map '%1' kan niet gevonden worden, moet deze map worden gemaakt?"/>
   </questions>
 
   <about>
@@ -1291,6 +1300,7 @@ Het afbeeldingsbestand PuffyClouds1.jpg wat opgenomen is in de map Backgrounds v
     <bad_file_name>Foutieve bestandsnaam '%1'.</bad_file_name>
     <internal>Interne fout. Neem contact op met de technische ondersteuning.</internal>
     <no_such_song>Kan lied niet vinden.</no_such_song>
+    <no_such_set>Het projectbestand kan niet worden gevonden: '%1'.</no_such_set>
     <number_please>Geef een goed nummer.</number_please>
     <number_range>Geef een nnummer tussen %1 en %2.</number_range>
     <no_path_allowed>Bestandsnaam mag geen pad bevatten.</no_path_allowed>
@@ -1298,18 +1308,20 @@ Het afbeeldingsbestand PuffyClouds1.jpg wat opgenomen is in de map Backgrounds v
     <general1>In '%1': Onbekende fout</general1>
     <general2>In '%1': '%2'</general2>
     <folder_error>Interne map error. Neem contact op met support.</folder_error>
-    <create_backgrounds_folder>Kan achtergrond map: %1 niet maken.</create_backgrounds_folder>
-    <create_sets_folder>Kan projecten map:  %1 niet maken/wijzigen.</create_sets_folder>
-    <create_settings_folder>Kan de instellingen map: %1 niet maken.</create_settings_folder>
-    <create_songs_folder>Kan de liederenmap: %1 niet maken</create_songs_folder>
+    <create_backgrounds_folder>Kan de map met achtergronden niet maken: %1. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen.</create_backgrounds_folder>
+    <create_sets_folder>Kan de map met projecten niet maken of wijzigen: %1. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen. Het is niet mogelijk om projecten op te slaan of te presenteren zonder een projecten map.</create_sets_folder>
+    <create_settings_folder>Kan de instellingen map: %1 niet maken. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen.</create_settings_folder>
+    <load_default_settings>OpenSong probeert om de standaard instellingen te laden.</load_default_settings>
+    <create_songs_folder>Kan de liederenmap: %1 niet maken. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen. Het is niet mogelijk om liederen op te slaan of te presenteren zonder een liederen map.</create_songs_folder>
+    <copy_default_songs>Er is een fout opgetreden bij het kopieeren van de standaard liederen naar de liederen map: %1. Zorg ervoor dat er schrijf toegang is naar deze map.</copy_default_songs>
     <no_backgrounds_folder>Kan de standaard achtergrondmap: %1 niet vinden.</no_backgrounds_folder>
     <no_defaults_folder>Kan de standaard map: %1 niet vinden</no_defaults_folder>
     <no_scripture_folder>Kan de Bijbelteksten map: '%1' niet vinden. Het zoeken in de bijbel wordt uitgeschakeld. Voeg een bijbel toe door in het menu 'Instellingen, de optie 'Installeer Module' te kiezen, of door het opnieuw installeren van OpenSong.</no_scripture_folder>
     <load_bible>De standaard bijbel kan niet worden geladen: '%1'. OpenSong zal proberen om de eerstvolgende beschikbare bijbel te openen.</load_bible>
-    <no_sets_folder>Kan de standaard projecten map: %1 niet vinden</no_sets_folder>
-    <no_settings_folder>Kan de standaard instellingen map: %1 niet vinden</no_settings_folder>
-    <no_songs_folder>Kan de standaard liedernmap: %1 niet vinden</no_songs_folder>
-    <no_docs_folder>Kan de documenten map: %1 niet maken/wijzigen</no_docs_folder>
+    <no_sets_folder>Kan de standaard projecten map: %1 niet vinden, of deze map is leeg.</no_sets_folder>
+    <no_settings_folder>Kan de standaard instellingen map: %1 niet vinden, of deze map is leeg.</no_settings_folder>
+    <no_songs_folder>Kan de standaard liederenmap: %1 niet vinden, of deze map is leeg.</no_songs_folder>
+    <no_docs_folder>De Documenten map: %1 kan niet gemaakt of gewijzigd worden. Zorg ervoor dat er schrijf toegang is naar deze map, of selecteer een nieuwe Documenten map in de Algemene Instellingen. Veel van de functionaliteit van OpenSong is niet beschikbaar zonder aanwezigheid van een Documenten map.</no_docs_folder>
     <docs_folder>De Documenten map kan geen submap zijn van 'OpenSong Defaults'
 Tijdelijk gewwijzigd in: %1
 Wijzig de instellingen.</docs_folder>
@@ -1326,7 +1338,7 @@ Herstart OpenSong en probeer het nogmaals.</notenoughmemory>
        <unknownerror>Onbekende fout bij de toegang tot bestand %1</unknownerror>
        <notaregularfile>Er wordt verwacht dat %1 een bestand is en geen map.</notaregularfile>
        <notafolder>Er wordt verwacht dat %1 een map is en geen bestand.</notafolder>
-	   <temporaryfailed>Het maken van een tijdelijk bestand voor %1 is mislukt.</temporaryfailed>
+       <temporaryfailed>Het maken van een tijdelijk bestand voor %1 is mislukt.</temporaryfailed>
     </fileutils>
     <cclinotavailable>De CCLI website is ingrijpend veranderd.
 Hierdoor is de Import functie niet bruikbaar meer totdat er een nieuwe interface is ontwikkeld.
@@ -1423,5 +1435,25 @@ De logging van lied gebruik is uitgeschakeld.</activity_disabled>
     <pass2>Sorteren, 2e ronde</pass2>
     <detect_presentation_hosts>Detecteren van beschikbare presentatie programma's</detect_presentation_hosts>
   </progress_status>
-
+	<export_options title="Instellingen voor exporteren naar HTML">
+		<handling caption="CSS opmaak lokatie">
+			<link caption="Gebruik een link naar het opmaakbestand"/>
+			<embed caption="De CSS opmaak opnemen in het export bestand"/>
+		</handling>
+		<options caption="CSS opmaak instellingen">
+			<default caption="Gebruik een opgegeven opmaak bestand"/>
+			<print caption="Gebruik de opmaak gebaseerd op de afdruk instellingen"/>
+		</options>
+		<export caption="Gecombineerde export">
+			<single caption="Een enkel export bestand voor alle liederen"/>
+			<unique caption="Een uniek bestand per lied"/>
+		</export>
+		<cssfile caption="CSS opmaak bestand">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Export map">link(shared/export_to/@caption)</outdir>
+		<outfile>Export bestand</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(Geen)</nofile>
+		<filter_css>Cascading Style Sheet</filter_css>
+	</export_options>
 </language>

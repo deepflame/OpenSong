@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Svenska" author="Edvin Erdtman" version="1.6.0">
+<language name="Svenska" author="Edvin Erdtman" version="2.0beta2">
 
   <load_settings>
     <checking_folders>Skapar/Kontrollerar dokumentmappar</checking_folders>
@@ -11,7 +11,8 @@
     <themes>Laddar teman</themes>
     <time_signatures>Laddar takter</time_signatures>
     <imagequality>Laddar bildkvaliteter</imagequality>
-    <fonts>Laddar teckensnitt</fonts>
+ 	<videolan_preset>Laddar Videolan parametrar</videolan_preset>
+   <fonts>Laddar teckensnitt</fonts>
     <latest_version>Letar efter uppdateringar
       <newer_available>En ny version (%1) finns tillgänglig. Gå till www.opensong.org för att hämta.</newer_available>
     </latest_version>
@@ -39,7 +40,7 @@
     </new_song>
     <selected_song caption="Aktuell sång">
       <save caption="Spara">Sparar aktuell sång till hårddisken.</save>
-      <revert caption="+terställ">+terställer aktuell sång.</revert>
+      <revert caption="Återställ">Återställer aktuell sång.</revert>
       <print caption="Skriv ut">Skriver ut aktuell sång.</print>
       <present caption="Visa">Visar aktuell sång. Har du gjort ändringar i sången kommer du bli tillfrågad om du spara dem.
         <single_screen caption="på en skärm"/>
@@ -147,6 +148,7 @@
       <add_slides caption="Text">Lägger till en sida med text som du skriver in i textrutan nedan.</add_slides>
       <add_style caption="Utseende">Lägger till en post i listan som ändrar presentationens standardutseende var som helst i presentationen. Detta kan innebära ett helt nytt utseende, eller att gå tillbaka till ett tidigare använt utseende.</add_style>
       <add_image caption="Bilder">Lägger till en eller flera bilder/foton till listan. Du kan på så sätt visa en bild eller en serie bilder istället för att skriva in text.</add_image>
+      <add_external caption="Extern">Lägger till en ny bild till listan så att externa media såsom en PowerPoint eller DVD-film kan visas med ett externt program.</add_external>
       <add_video caption="Video">Lägger till en videofil till listan.</add_video>
       <add_powerpoint caption="PowerPoint">Lägger till en PowerPoint presentation till listan. Använd för att manövrera en ppt-fil i Opensong</add_powerpoint>
     </new_item>
@@ -169,13 +171,15 @@
       <custom caption="(text)"/>
       <scripture caption="(bibelord)"/>
       <image caption="(bild)"/>
-      <style caption="(utseende)">-- -ndra Utseende --</style>
-      <revert caption="(utseende)">-- +tertag Utseende  --</revert> 
+      <external caption="(extern)"/>
+      <style caption="(utseende)">-- Ändra Utseende --</style>
+      <revert caption="(utseende)">-- Återtag Utseende  --</revert> 
       <defaultstyle caption="(utseende)">-- Exporterat utseende --</defaultstyle>
     </items>
     <untitled caption="Namnlös"/>
     <errors>
       <revert caption="Fel vid öppning av presentation &quot;%1&quot; från fil."/>
+      <insert caption="Fel när kopierade sidor skulle infogas:&#10;%1"/>
     </errors>
     <messages>
       <export_complete>&quot;%1&quot; exporterad till
@@ -189,7 +193,7 @@
     <title caption="Titel">Titeln eller rubriken på sidan som visas i presentationen.</title>
     <subtitle caption="Sånginfo/Undertitel">Undertitel eller sånginfo för sånger). Visas i presentationen.</subtitle>
     <name caption="Namn">Namn på bilden(erna) som visas i listan och vid utskrift av lista (Visas ej i själva presentationen).</name>
-    <slides caption="Text">Innehåller texten som ska visas i presentationen.</slides>
+    <slides caption="Text">Innehåller texten som ska visas i presentationen. TIPS: Lägg enkelt till bider genom drag-och-släpp-principen.</slides>
     <presentation caption="Egen visningsordning">+sidosätter visningsordningen i sparad sång</presentation>
     <origorder caption="Sparad visningsordning">Visningssordning utifrån sparad sång (fältet "Visning" i sångredigeraren)</origorder>       
     <folder caption="Sångmapp">Visar vilken mapp markerad sång finns i</folder>
@@ -211,13 +215,14 @@
     <descriptions caption="Bildtext i undertiteln">Lägg till bildtexten till den visade bilden i undertiteln/sånginfo.</descriptions>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <images caption="Bilder" head1="Förhandsvisa" head2="Beskrivning">Visar bilderna som kommer att visas. Tips: Lägg till bilder enkelt genom att 'Dra och släppa' bilder till denna lista.</images>
-    <fit_to_screen caption="-ndra bildernas storlek för att passa bildskärmen">Bilder större än skärmupplösningen på projektorn förminskas, så att hela bilden visas. Små bilder förstoras så att de täcker hela skärmen.</fit_to_screen>
-    <fit_to_body caption="-ndra bildernas storlek så att passa innanför marginalerna ">Bildernas storlek ändras för att passa in innanför brödtextmarginalerna (Inställningar-Presentationsinställningar-Presentationsutseende-marginaler) .</fit_to_body>
+    <fit_to_screen caption="ändra bildernas storlek för att passa bildskärmen">Bilder större än skärmupplösningen på projektorn förminskas, så att hela bilden visas. Små bilder förstoras så att de täcker hela skärmen.</fit_to_screen>
+    <fit_to_body caption="Ändra bildernas storlek så att passa innanför marginalerna ">Bildernas storlek ändras för att passa in innanför brödtextmarginalerna (Inställningar-Presentationsinställningar-Presentationsutseende-marginaler) .</fit_to_body>
     <keepaspect caption="Behåll höjd-breddförhållande">När bildstorleken ändras enligt någon av ovanstående alternativ, kommer höjd-breddförhållandet på bilden behållas.</keepaspect>
     <store_as_link caption="Länka bilderna - spara dem inte">Länkar bilderna till dess plats på datorn. Bilderna sparas alltså inte i presentationsfilen. Bilder kan göra filen stor, och kan försämra bildernas kvalitet. Bilder i mappen 'Backgrounds' sparas med relativa länkar, vilket gör hanteringen snabbare. Använd med försiktighet om du ska köra presentationen på en annan dator.</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Verktyg" />
       <ins_image caption="Lägg till bild">Lägger till en bild till detta bildspel. Bildspelet har samma rubrik, underrubrik, utseende och ev. loop-funktion.</ins_image>
+      <imp_image caption="Importera bild">Laddar in alla bilder från en presentation och lägger till dem som bildfiler.</imp_image>
       <del_image caption="Ta bort bild">Tar bort markerad bild från bildspelet.</del_image>
       <move_up caption="link(sets_mode/current_item/move_up/@caption)">Flyttar markerad bild i listan uppåt.</move_up>
       <move_down caption="link(sets_mode/current_item/move_down/@caption)">Flyttar markerad bild i listan neråt.</move_down>
@@ -229,10 +234,51 @@
     <style caption="link(slide_editor/style/@caption)">link(slide_editor/style)</style>
   </image_slide>
 
+  <external_slide>
+    <header caption="Regigera Extern länk"/>
+    <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
+    <application caption="Program"/>
+    <presentation caption="Presentation">Visa en presentation med Microsoft PowerPoint eller gratisprogrammet OpenOffice.org Impress.</presentation>
+    <videolan caption="Videolan">Visa en media fil med media spelaren Videolan (VLC). (Finns som gratisprogram)</videolan>
+    <application caption="Kommando">Visa genom att köra ett externt program genom ett kommando.</application>
+    <no_application caption="Inget program">
+    <no_application caption="Välj ett program för attt visa innehållet."/>
+    </no_application>
+    <presentation_settings caption="Presentationsinställningar">
+      <presentation_host caption="Vilket program ska användas?"/>
+      <host_powerpoint caption="Microsoft PowerPoint"/>
+      <host_powerpoint_info caption="För total kontroll över din PowerPoint presentation behöver du installera MS PowerPoint på din dator."/>
+      <host_pptview caption="Microsoft PowerPoint Viewer"/>
+      <host_pptview_info caption="För att visa din PowerPoint presentation utan att ha hela programmet. Du kan använda Microsoft PowerPoint Viewer som är gratis. OpenSong försöker att hitta det åt dig, men du kan välja en specifik sökväg i &quot;Allmänna inställningar&quot;."/>
+      <host_impress caption="OpenOffice.org Impress"/>
+      <host_impress_info caption="För total kontroll över din Impress eller PowerPoint presentation behöver OpenOffice.org vara installerat (gratis program)."/>
+      <presentation_file caption="Filnamn på Presentation">Välj en fil med hjälp av dialogfönstret.</presentation_file>
+      <loop_presentation caption="Loopa presentation"/>
+      <embed_presentation caption="Infoga presentationen i  presentationslistan i OpenSong"/>
+    </presentation_settings>
+    <videolan_settings caption="Videolan-inställningar">
+      <videolan_start caption="Kör Videolan"/>
+	  <videolan_mediafilename caption="Sökväg till media filen som du vill spela">Välj en fil med hjälp av dialogfönstret.</videolan_mediafilename>
+	  <embed_mediafile caption="Infoga mediafilen i presentationslistan i OpenSong"/>
+	  <videolan_preset caption="Använd följande parametrar:"/>
+	  <videolan_manual caption="Manuellt modifierade parametrar (använd %d för monitor-nummer, %s för media-filens filnamn)"/>
+      <wait_for_videolan caption="Vänta tills uppspelningen är klar innan nästa bild i presentationslistan visas."/>
+      <videolan_stop caption="Stäng Videolan fönster som körs"/>
+    </videolan_settings>
+    <application_settings caption="Programkörningsinställningar">
+      <application_start caption="Starta ett externt program"/>
+      <application_filename caption="Sökväg till programmet">Välj en exekverbar fil för programmet. </application_filename>
+      <application_parameters caption="Program-parametrar"/>
+      <wait_for_application caption="Vänta tills det externa programmet är stängt innan nästa bild i presentationslistan visas."/>
+      <application_stop caption="Stäng fönster som körs av programmet"/>
+    </application_settings>
+    <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
+    <loop caption="link(slide_editor/loop/@caption)">link(slide_editor/loop)</loop>
+  </external_slide>
   <style_change>
-    <header caption="-ndra utseende"/>
+    <header caption="Ändra utseende"/>
     <revert caption="Gå tillbaka till det tidigare utseendet">Ställer tillbaka utseendeintsällningarna till tidigare intsällning.</revert>
-    <change caption="-ndra utseende till">Gör att du kan ändra utseendeintsällningarna var som helst i listan. Inställningarna påverkar alla följande bilder tills det kommer en ny inställning i listan.</change>
+    <change caption="Ändra utseende till">Gör att du kan ändra utseendeintsällningarna var som helst i listan. Inställningarna påverkar alla följande bilder tills det kommer en ny inställning i listan.</change>
     <style>Klicka här för att redigera utseendet.</style>
   </style_change>
 
@@ -310,7 +356,7 @@
       <quit caption="_Avsluta"/>
     </file>
     <edit caption="_Redigera">
-      <undo caption="_+ngra"/>
+      <undo caption="_Ångra"/>
       <cut caption="_Klipp ut"/>
       <copy caption="K_opiera"/>
       <paste caption="K_listra in"/>
@@ -340,7 +386,7 @@
   </main_menu>
 
   <general_settings title="Allmänna inställningar">
-    <general caption="Allmänt" head1="Enkelt" head2="Special">
+    <general caption="Allmänt" head1="Enkelt" head2="Filmappar" head3="System" head4="Appearance">
       <ccli caption="CCLI Licensnummer"/>
       <version_check caption="Sök efter uppdateringar vid uppstart"/>
       <language caption="Språk"/>
@@ -349,6 +395,11 @@
       <host caption="Adress"/>
       <port caption="Port"/>
     </proxy>
+    <rcserver caption="Automation API">
+      <enable caption="Aktivera fjärrkontroll-server"/>
+      <key caption="Authentication key"/>
+      <port caption="Port"/>
+    </rcserver>
     <user_defined caption="Egendefinierade">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
@@ -365,12 +416,12 @@
       <newpaint caption="Använd 3D layout"/>
     </fonts>
     <documents_folder caption="Dokumentmapp">
-      <warning caption="-ndringen kommer inte att genomföras förrän Opensong har startats om"/>
+      <warning caption="Ändringen kommer inte att genomföras förrän Opensong har startats om"/>
       <default caption="Standard"/>
       <custom caption="Annan"/>
-      <message>-ndringen kommer inte att genomföras förrän Opensong har startats om (Kopiera över de gamla OpenSong-dokumenten till den nya mappen först). </message>
-      <changed>Du har valt en ny dokumentmapp, men glömde att klicka på '-ndra'. Vill du använda den nya mappen?</changed>
-      <change caption="-ndra"/>
+      <message>Ändringen kommer inte att genomföras förrän Opensong har startats om (Kopiera över de gamla OpenSong-dokumenten till den nya mappen först). </message>
+      <changed>Du har valt en ny dokumentmapp, men glömde att klicka på 'ändra'. Vill du använda den nya mappen?</changed>
+      <change caption="ändra"/>
       <oldfolderdb caption="Använd gammal filhantering (före V1.1)"/>
     </documents_folder>
     <imagequality caption="Ställ in Bildkvalitet">
@@ -378,11 +429,11 @@
       <compression caption="Bildkomprimering" />
       <extern caption="Inkludera inte bilder från mappen 'Backgrounds'." />
     </imagequality>
-    <logging caption="logga inställningar">
+    <logging caption="Logga inställningar">
       <append caption="Fyll på loggfilen"/>
       <console caption="Logga till systemkonsolen"/>
-      <level caption="Loggningsnivå" disabled="Inaktivera"/>
-      <dialog caption="Välj en fil att logga till"
+      <level caption="Loggningsnivå" disabled="Inaktiverad"/>
+      <dialog caption="Välj en fil att skriva till"
               title="Välj loggfil"/>
     </logging>
     <log caption="Inställningar för aktivitetslog för sånger ">
@@ -393,6 +444,26 @@
 		<songs caption="Sånger"/>
 		<sets  caption="Presentationer"/>
       </startmode>
+    <applications caption="Externa program">
+      <pptview caption="Sökväg till Powerpoint Viewer"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Sökväg till Videolan (VLC)"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+	<slidetype_coloring caption="Färgläggning av bilder">
+	  <coloring caption="Använd bakgrundsfärger"/>
+	  <verse caption="Sång, Vers"/>
+	  <bridge caption="Sång, Stick"/>
+	  <prechorus caption="Sång, Brygga"/>
+	  <chorus caption="Sång, Refräng"/>
+	  <tag caption="Sång, coda"/>
+	  <scripture caption="Bibeltext"/>
+	  <custom caption="Text"/>
+	  <style caption="Ändring av utseende"/>
+	  <image caption="Bilder"/>
+	  <application caption="Externt program"/>
+	  <blank caption="Tom"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Utskriftsinställningar">
@@ -427,11 +498,30 @@
   </print_settings>
 
   <presentation_settings title="Presentationsinställningar">
-    <settings head1="Utseende" head2="Inställningar">
+    <settings head1="Utseende" head2="Inställningar" head3="Ögonblicksbilder">
         <default_slides caption="Presentationsutseende"/>
         <scripture_slides caption="Bibeltextsutseende"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
+		
+        <export_snapshot caption="Exportera en ögonblicksbild av varje bild till följande fil:"/>
+        <snapshot_file caption="Filnamn">Välj filen som bilderna ska exporteras till.</snapshot_file>
+        <export_preview caption="Exportera i förhandsvisningsläget"/>
+        <export_live_insertions caption="Exportera även bilder som importerats under presentationen"/>
+        <export_metadata caption="Exportera detaljer i en xml fil med samma namn"/>
+        <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Följande parametrar kan användas i filnamnet eller sökvägen till filen:
+    - %d: Dagens datum (01-31)
+    - %h: Timme i 24-timmarsformat (00-23)
+    - %i: Minuter (00-59)
+    - %m: Innevarande månad (01-12)
+    - %n: Antalet bilder i presentationslistan (med inledande nollor)
+    - %N: Namnet på bilden
+    - %P: Index för bilderna i presentationen (med inledande nollor)
+    - %s: Sekunder (00-59)
+    - %S: Namn på Presentationen
+    - %T: Titeln på bilden
+    - %V: Vers-indikatorn för sången (endast för sånger, annars tom)
+    - %y: År (YYYY)</snapshot_parameters>
     </settings>
     <transitions caption="Bildövertoningar">
       <use_transitions caption="Använd som standard"/>
@@ -477,6 +567,7 @@
       <presentation caption="PresentationsSkärm"/>
       <detected caption="%1 bildskärm(ar) funna."/>
       <default_mode caption="Standardvisning"/>
+      <force_4_3_preview caption="Tvinga visning i 4:3"/>
     </monitor>
     <logo caption="Logotype">
       <mask caption="Mask"/>
@@ -494,6 +585,10 @@
     <misc caption="Övrigt">
       <exit_prompt caption="Fråga innan avslut"/>
     </misc>
+
+    <errors>
+        <snapshot_file>Fel: Ögonblicksbilder är aktiverat, men inget filnamn har uppgetts. Skriv in ett filnamn i rutan under fliken Ögonblicksbilder.</snapshot_file>
+    </errors>
   </presentation_settings>
 
   <presentation_helper title="Presentationsfönster">
@@ -511,7 +606,7 @@
       <quick_song caption="[Q] Lägg till sång"/>
       <scripture caption="[S] Lägg till Bibelord"/>
       <full_screen caption="[M] Maximera till Fullskärm"/>
-      <normal_screen caption="[M] +terställ"/>
+      <normal_screen caption="[M] Återställ"/>
       <return caption="[Esc] Stäng"/>
     </actions>
     <exit caption="Ska presentationen avbrytas?"/>
@@ -521,11 +616,14 @@ Ner: Nästa bild
 Upp: Föreg. bild
 Höger: Nästa sång
 Vänster: Föreg. sång
+F1-F15 Sång
 1-9: Vers
 C: Refräng
 P: Brygga
 B: Stick
 T: Coda</keys>
+    <preview caption="Visas nu:" />
+    <next caption="Nästa bild:" />
   </presentation_helper>
 
   <help_topics title="Hjälpavsnitt">
@@ -591,13 +689,13 @@ Tag heter nu inte stick utan 'coda'
 
 &lt;b&gt;&lt;i&gt;[V]: &lt;/i&gt;&lt;/b&gt;Verser (eng. Verses). På ackordbladen kommer enbart numreringen att visas, med en ring runt. Tex: [V1], [V2], [V3].
 
-&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Refräng (eng. Chorus). På ackordbladen kommer ordet "Rerfräng" visas med en ram runt. -ven det som följer efter C skrivs ut (se exemplen). Tex: [C], [C2], [C-ndrad]. 
+&lt;b&gt;&lt;i&gt;[C]: &lt;/i&gt;&lt;/b&gt;Refräng (eng. Chorus). På ackordbladen kommer ordet "Rerfräng" visas med en ram runt. Även det som följer efter C skrivs ut (se exemplen). Tex: [C], [C2], [Cändrad]. 
 
-&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Brygga (eng. Pre-chorus). Bryggar över från vers till refräng, som bidrar till att bygga upp energin inför refrängen. På ackordbladen kommer ordet "Brygga" visas med en linje över och under. -ven det som följer efter P skrivs ut (se exemplen). Tex: [P], [P2], [POBS ny text].
+&lt;b&gt;&lt;i&gt;[P]: &lt;/i&gt;&lt;/b&gt;Brygga (eng. Pre-chorus). Bryggar över från vers till refräng, som bidrar till att bygga upp energin inför refrängen. På ackordbladen kommer ordet "Brygga" visas med en linje över och under. Även det som följer efter P skrivs ut (se exemplen). Tex: [P], [P2], [POBS ny text].
 
-&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Stick (eng. Bridge). Betecknar en del av en låt som sätts in istället för vers, eller innan en refräng. På ackordbladen kommer ordet "Stick" visas med en rundad ram runt. -ven det som följer efter B skrivs ut (se exemplen). Tex:  [B], [B2], [Bsista gången].
+&lt;b&gt;&lt;i&gt;[B]: &lt;/i&gt;&lt;/b&gt;Stick (eng. Bridge). Betecknar en del av en låt som sätts in istället för vers, eller innan en refräng. På ackordbladen kommer ordet "Stick" visas med en rundad ram runt. Även det som följer efter B skrivs ut (se exemplen). Tex:  [B], [B2], [Bsista gången].
 
-&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Coda (eng. Tag). Betecknar slutraden/erna på sången. På ackordbladen kommer ordet "Coda" visas med en linje till vänster och under. -ven det som följer efter T skrivs ut (se exemplen). Tex: [T], [T2], [Tspecial].
+&lt;b&gt;&lt;i&gt;[T]: &lt;/i&gt;&lt;/b&gt;Coda (eng. Tag). Betecknar slutraden/erna på sången. På ackordbladen kommer ordet "Coda" visas med en linje till vänster och under. Även det som följer efter T skrivs ut (se exemplen). Tex: [T], [T2], [Tspecial].
 
 &lt;h2&gt;Ackordrader&lt;/h2&gt;
 
@@ -614,7 +712,7 @@ Textrader börjar &lt;b&gt;alltid&lt;/b&gt; med: " " (Mellanslag). Om ackordrader
 
 Understrecken byts ut mot "-" mellan stavelserna vid utskrift av ackordblad, och de tas bort i presentationen. 
 
-&lt;b&gt;"  "&lt;/b&gt; Flera mellanslag mellan ord kan man också använda för att matcha ackorden och texten. -ven 'överflödiga' mellanslag tas bort i presentationen. Vid utskrift ställs avstånden mellan orden in automatiskt beroende på textstorlek och teckensnitt.
+&lt;b&gt;"  "&lt;/b&gt; Flera mellanslag mellan ord kan man också använda för att matcha ackorden och texten. Även 'överflödiga' mellanslag tas bort i presentationen. Vid utskrift ställs avstånden mellan orden in automatiskt beroende på textstorlek och teckensnitt.
 
 &lt;b&gt;"|"&lt;/b&gt; Vertikala streck byts ut till mellanslag vid utskrift, men &lt;b&gt;ny rad&lt;/b&gt; i presentationer.
 
@@ -633,7 +731,7 @@ Många sånger har fler än en vers som har samma ackordföljd. Istället för att upp
 4Fyran kommer          sist
 
 .G     D      C              D      G
-1+h    vilken underbar       härlig sång
+1åh    vilken underbar       härlig sång
 2Nu på två____ans            andra  rad.
 3Nu    måste  det väl snarta vara   slut?
 4Detta är hur man sjunger en trudde_lutt.&lt;/pre&gt;
@@ -672,8 +770,8 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
 &lt;h3&gt;Om "Visning"-fältet är tomt...&lt;/h3&gt;
 
 ... så kommer sektionerna ordnas efter hur de skrevs in i Ackord/Text-fältet
-
 </presentation> 
+
   </help_topics>
 
   <font_selection title="Tecken">
@@ -756,7 +854,7 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
     <xml_exterror>Filen kunde inte läsas, XML-error: %1: %2: %3</xml_exterror>
   </smartml> 
 
-  <style_editor title="-ndra utseende">
+  <style_editor title="Ändra utseende">
     <fonts_and_alignment caption="Teckensnitt och textposition">
       <title caption="Visa titel"/>
       <subtitle caption="Visa sånginfo"/>
@@ -915,7 +1013,7 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
     <rename_error>Det gick inte att byta namn på modulen. Se till att '%1' ej är skrivskyddad.</rename_error>
     <success>Modulen har laddats.</success>
     <file_type>OpenSong Moduler</file_type>
-    <generate_index>Vill du skapa indexfil för bibeln?</generate_index>
+    <generate_index>Vill du skapa indexfil för bibel-filen: '%1'?</generate_index>
     <generate_error>Ett fel uppstod vid skapande av index. Se till så att mappen %1 inte är skrivskyddad!</generate_error>
   </module>
 
@@ -972,7 +1070,7 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
     <option name="Jesus: Mäktighet/Majestät"/>
     <option name="Jesus: Kärlek/Barmhärtighet"/>
     <option name="Jesus: Uppståndelsen"/>
-    <option name="Jesus: +terkomsten"/>
+    <option name="Jesus: Återkomsten"/>
     <option name="Jesus: Seger"/>
     <option name="Församling: Plikt/Lyda"/>
     <option name="Församling: Land"/>
@@ -981,7 +1079,7 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
     <option name="Församling: Familj/Kamratskap"/>
     <option name="Församling: Vänskapen till Gud"/>
     <option name="Församling: Renhet/Helighet"/>
-    <option name="Församling: +nger/Frälsning"/>
+    <option name="Församling: Ånger/Frälsning"/>
     <option name="Församling: Förnyelse"/>
     <option name="Församling: Tjänst/Kallelse"/>
     <option name="Församling: Andlig hunger"/>
@@ -1046,8 +1144,12 @@ Tänk på att om du har skivit in sången med flera verser under samma ackordrad, s
   </imagequality_list>
 
   <videolan_preset_list>
+	<preset name="Video som skrivbordsunderlägg i Windows (Använd bakgrundsfärg RGB: 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Video som helskärm på presentations-skärmen" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Helskärms-video från DirectShow video input" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
+	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+	<preset name="Manuellt" parameters=""/>
   </videolan_preset_list>
-
   <style_preview>
     <slide_groups>
       <slide_group name="Test Titel" type="egen" seconds="0" loop="false">
@@ -1098,7 +1200,8 @@ Klicka på den här bilden för att ändra utseendet.</body>
     <select caption="Välj"/>
     <exit_program caption="Stäng Programmet"/>
     <export_to caption="Välj en mapp att exportera till."/>
-  </shared>
+		<style_file caption="Välj en utseende-fil"/>  
+</shared>
 
   <questions>
     <new_name caption="Skriv in ett namn:"/>
@@ -1114,6 +1217,15 @@ Klicka på den här bilden för att ändra utseendet.</body>
     <set_changed caption="Aktuell presentation har ändrats, Vill du spara?"/>
     <select_docs_folder caption="Välj dokumentmapp">Mapp där Opensong ska spara filer(sånger och presentationer)</select_docs_folder>
     <activity_log caption="Vill du att sångerna i denna presentation ska sparas i aktivitetsloggen? Notera att detta även gäller sånger som läggs till underr presentationens gång (on-the-fly). "/>
+    <import_presentation caption="Importera bildfiler från presentation ">Välj en presentations-fil att importera från.</import_presentation>
+    <documents_folder_empty caption="Dokument-mappen är tom eller existerar inte. Vill du kopiera standard-dokument till mappen?"/>
+    <songs_folder_empty caption="Sång-mappen är tom. Vill du kopiera några test-sånger till mappen?"/>
+    <sets_folder_empty caption="Presentations-mappen är tom. Vill du kopiera en test-presentation till mappen?"/>
+    <settings_folder_empty caption="Inställningar-mappen är tom. Vill du kopiera standardinställningar till mappen?"/>
+    <backgrounds_folder_empty caption="Bakgrunds-mappen är tom. Vill du kopiera några test-bakgrunder till mappen?"/>
+    <no_songs_folder caption="Kunde inte hitta sång-mappen! Vill du skapa mappen?"/>
+    <no_sets_folder caption="Kunde inte hitta presentations-mappen! Vill du skapa mappen?"/>
+    <no_folder caption="Kunde inte hitta mappen: '%1'. Vill du skapa mappen?"/>
   </questions>
 
   <about>
@@ -1159,6 +1271,7 @@ Bildfilen PuffyClouds1.jpg i mappen för bakgrunder: Copyright FreeStockPhotos.co
     <bad_file_name>Felaktigt filnamn: '%1'.</bad_file_name>
     <internal>Internt fel! Kontakta teknisk support.</internal>
     <no_such_song>Kan inte hitta sången.</no_such_song>
+    <no_such_set>Kan inte hitta presentatonslistan: '%1'.</no_such_set>
     <number_please>Skriv in en siffra tack.</number_please>
     <number_range>Skriv in en siffra mellan %1 och %2.</number_range>
     <no_path_allowed>Filnamnet får inte innehålla en hel sökväg.</no_path_allowed>
@@ -1166,24 +1279,27 @@ Bildfilen PuffyClouds1.jpg i mappen för bakgrunder: Copyright FreeStockPhotos.co
     <general1>Okänt fel i '%1' !</general1>
     <general2>'%2' i '%1'</general2>
     <folder_error>Internt mappfel. Kontakta teknisk support.</folder_error>
-    <create_backgrounds_folder>Kunde inte skapa bakgrund-mappen: %1</create_backgrounds_folder>
-    <create_sets_folder>Kunde inte skapa/redigera Presentationsmappen: %1</create_sets_folder>
-    <create_settings_folder>Kunde inte skapa mappen: %1 för inställningar.</create_settings_folder>
-    <create_songs_folder>Kunde inte skapa sångmappen: %1</create_songs_folder>
+    <create_backgrounds_folder>Kunde inte skapa bakgrund-mappen: %1. Se till att du har skrivrättigheter i mappen, eller ändra den i allmänna inställningar.</create_backgrounds_folder>
+    <create_sets_folder>Kunde inte skapa/redigera Presentationsmappen: %1. Se till att du har skrivrättigheter i mappen, eller ändra den i allmänna inställningar.</create_sets_folder>
+    <create_settings_folder>Kunde inte skapa mappen: %1 för inställningar. Se till att du har skrivrättigheter i mappen, eller ändra den i allmänna inställningar.</create_settings_folder>
+    <load_default_settings>OpenSong försöker ladda standard-inställningar.</load_default_settings>   
+    <create_songs_folder>Kunde inte skapa sångmappen: %1. Se till att du har skrivrättigheter i mappen, eller ändra den i allmänna inställningar.</create_songs_folder>
+    <copy_default_songs>Kan inte kopiera test-sånger till mappen: %1. Se till att du har skrivrättigheter i mappen.</copy_default_songs>
     <no_backgrounds_folder>Kan inte hitta bakgrund-mappen: %1. Eller så är mappen tom.</no_backgrounds_folder>
     <no_defaults_folder>Kan inte hitta standardmappen: %1. Eller så är mappen tom.</no_defaults_folder>
-    <no_scripture_folder>Kan inte hitta bibelmappen: %1. Eller så är mappen tom.</no_scripture_folder>
+    <no_scripture_folder>Kan inte hitta bibelmappen: %1. Eller så är mappen tom. Man kan nu inte söka i bibeltexten. Lägg till en Bibel-fil genom att välja "Installera mudul" på menyn inställningar, eller gör en ominstallation av Opensong.</no_scripture_folder>
+    <load_bible>Kan inte ladda standard-bibeln: '%1'. OpenSong försöker öppna nästa tillgängliga bibel.</load_bible>
     <no_sets_folder>Kan inte hitta presetationsmappen: %1. Eller så är mappen tom.</no_sets_folder>
     <no_settings_folder>Kan inte hitta inställningsmappen: %1. Eller så är mappen tom.</no_settings_folder>
     <no_songs_folder>Kan inte hitta sångmappen: %1. Eller så är mappen tom.</no_songs_folder>
-    <no_docs_folder>Kunde inte skapa/hitta dokumentmappen: %1</no_docs_folder>
+    <no_docs_folder>Kunde inte skapa/hitta dokumentmappen: %1. Se till att du har skrivrättigheter i mappen, eller ändra den i allmänna inställningar. Opensong kanske inte fungerar normalt om du inte anger en dokument-mapp</no_docs_folder>
     <docs_folder>Dokumentmappen kan inte vara en undermapp till 'OpenSong Defaults'
 ändrar temporärt till: %1
 Var vänlig att ändra dina inställningar.</docs_folder>
     <fileutils>
        <destdoesnotexisterror>Filen: %1 finns inte</destdoesnotexisterror>
        <nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
-       <accessdenied>+tkomst nekad: Filen %1 är skrivskyddad.</accessdenied>
+       <accessdenied>Åtkomst nekad: Filen %1 är skrivskyddad.</accessdenied>
        <fileinuse>Filen %1 används!
 (Körs ett annat fönster med OpenSong?)</fileinuse>
        <filenotfound>Filen: %1 kunde inte hittas</filenotfound>
@@ -1193,6 +1309,7 @@ Starta om OpenSong och försök igen.</notenoughmemory>
        <unknownerror>Okänt fel när filen: %1 fösökte läsas</unknownerror>
        <notaregularfile>Förväntade att %1 skulle vara en fil, inte en mapp.</notaregularfile>
        <notafolder>Förväntade att %1 skulle vara en mapp, inte en fil.</notafolder>
+	   <temporaryfailed>Att skapa en temporär fil för %1 misslyckades!</temporaryfailed>
     </fileutils>
     <cclinotavailable>CCLI:s internetsida har ändrats.
 Detta har gjort att import-funktionen inte kan användas.
@@ -1202,6 +1319,12 @@ Opensong-teamet beklagar problemen.
     <activity_disabled>Kunde inte ladda Aktivitetslogfilen för sånger: %1! Kontrollera att denna fil existerar och inte är skadad. Loggning och visning av log kommer att vara inaktiverad under denna session.</activity_disabled>
     <adding_logentry>Ett fel uppstod vid aktivitetsloggning!</adding_logentry>
  <chars_per_slide>Max antal tecken per sidaper slide måste vara mellan 1 and 1000.</chars_per_slide>
+    <presentations>
+      <nohost>Det finns inget tillgängligt program för att ladda en presentation. Installera OpenOffice.org, Microsoft PowerPoint eller Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>Programmet '%1' stödjer inte detta.</unsupported_feature>
+      <load_failed>Presentationen '%1' kunde inte öppnas.</load_failed>
+    </presentations>
+	<videolan_app_missing>VLC är inte specificerat korrekt. Ställ in sökväg till videolan i Allmänna inställningar.</videolan_app_missing>
   </errors>
 
   <xml_errors>
@@ -1210,7 +1333,7 @@ Opensong-teamet beklagar problemen.
 
   <bible>
     <errors>
-      <index_generation>Ett fel uppstod vid indexering av '%1.' Bibelsökningen är deaktiverad.</index_generation>
+      <index_generation>Ett fel uppstod vid indexering av '%1.' Bibelsökningen är deaktiverad.</index_generation> 
 
       <loadxml>Fel vid läsning av XML %1
 .&#10; Felet är '%2' på rad %3</loadxml>
@@ -1228,6 +1351,7 @@ Opensong-teamet beklagar problemen.
       <save>Fel när den updaterade filen '%1' skulle sparas</save>
     </errors>
 
+    <load_successful>Laddat bibel: '%1'.</load_successful>
     <messages>
       <bnames>Boknamnen måste läggas till i den här bibelöversättningen.
 &#10;Vänligen, skriv in vilket språk som översättningen är på.</bnames>
@@ -1274,9 +1398,33 @@ Opensong-teamet beklagar problemen.
     <lead_sheets>Genererar Ackordblad</lead_sheets>
     <process_themes>Hanterar teman</process_themes>
     <process_songs>Hanterar sånger</process_songs>
+    <song_search>Söker i sånger</song_search>
     <export>Exporterar sång(er)</export>
-    <pass1>Sorterar, 1a</pass1>
+    <load_songs>Laddar sång(er)</load_songs>
+    <load_externals>Laddar Externa länkar</load_externals>       <pass1>Sorterar, 1a</pass1>
     <pass2>Sorterar, 2a</pass2>
-  </progress_status>
 
+    <detect_presentation_hosts>Söker efter tillgängliga presentations-program</detect_presentation_hosts>
+  </progress_status>
+	<export_options title="Val för export till HTML">
+		<handling caption="CSS Stilmall">
+			<link caption="Länk till stilmall-fil (css)"/>
+			<embed caption="Inkludera utseende i exporterad fil"/>
+		</handling>
+		<options caption="Val för CSS stilmall">
+			<default caption="Använd specificerad stilmall"/>
+			<print caption="Använd stilmall baserad på utskriftsinställningar"/>
+		</options>
+		<export caption="Exportera flera">
+			<single caption="En fil med alla sånger"/>
+			<unique caption="En fil per sång"/>
+		</export>
+		<cssfile caption="Stilmall">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Mapp för export">link(shared/export_to/@caption)</outdir>
+		<outfile>Fil för export</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(Ingen fil)</nofile>
+		<filter_css>Stilmall (css)</filter_css>
+	</export_options>
 </language>

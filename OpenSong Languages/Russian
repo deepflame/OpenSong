@@ -259,10 +259,11 @@
 		<videolan_settings caption="Настройки видеопотока">
 			<videolan_start caption="Запуск видеопотока"/>
 			<videolan_mediafilename caption="Путь к медиафайлу">Укажите аудио или видеофайл, используя диалоговое окно выбора файлов.</videolan_mediafilename>
+			<embed_mediafile caption="Добавить медиафайл в текущую программу"/>
 			<videolan_preset caption="Использовать следующие предустановленные параметры"/>
 			<videolan_manual caption="Параметры, указываемые Вами (используйте %d для указания номера экрана, %s для медиафайла)"/>
 			<wait_for_videolan caption="Ожидать завершения воспроизведения перед переходом на следующий слайд"/>
-			<videolan_stop caption="Остановить все запущенный копии VLC"/>
+			<videolan_stop caption="Остановить все запущенные VLC процессы"/>
 		</videolan_settings>
 		<application_settings caption="Настройки запуска приложения">
 			<application_start caption="Запуск внешнего приложения"/>
@@ -395,7 +396,12 @@
 			<host caption="Хост"/>
 			<port caption="Порт"/>
 		</proxy>
-		<user_defined caption="Пользовательские настройки">
+		<rcserver caption="API для автоматизации">
+			<enable caption="Включение удаленного управления сервером"/>
+			<key caption="Ключ проверки права доступа"/>
+			<port caption="Порт"/>
+		</rcserver>
+		<user_defined caption="Обозначения полей песни, определенных пользователем">
 			<user1 caption="link(advanced_song_editor/user1/@caption)"/>
 			<user2 caption="link(advanced_song_editor/user2/@caption)"/>
 			<user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -453,6 +459,7 @@
 			<tag caption="Песня, Тэг"/>
 			<scripture caption="Писание"/>
 			<custom caption="Свой слайд"/>
+			<style caption="Изменить стиль"/>
 			<image caption="Изображение"/>
 			<application caption="Внешнее приложение"/>
 			<blank caption="Пустой (добавленный)"/>
@@ -622,6 +629,7 @@ T: Тэг
 	<help_topics title="Разделы справки">
 		<tabs head1="Клавиши управления показом" head2="Формат аккордов/текста" head3="Поле показа" head4="Закрыть"/>
 		<print caption="Печать"/>
+		<close caption="link(shared/close/@caption)"/>
 		<keys>
 &lt;h1&gt;Клавиши управления показом&lt;/h1&gt;
 
@@ -834,7 +842,7 @@ V1 C V2 C V3 C
 	<smartml>
 		<attrib_except>SmartML.GetAttribute: Не найден следующий атрибут для '%1' в '%2'</attrib_except>
 		<no_path>Путь не найден</no_path>
-		<no_File>Файл не найден: %1</no_File>
+		<no_file>Файл не найден: %1</no_file>
 		<cant_open>Ошибка при открытии файла: %1</cant_open>
 		<cant_create>Невозможно создать файл: %1</cant_create>
 		<xml_error>Ошибка структуры XML: %1</xml_error>
@@ -1000,7 +1008,7 @@ V1 C V2 C V3 C
 		<rename_error>Ошибка переименования файла модуля. Пожалуйста, убедитесь в наличии доступа к записи в '%1'</rename_error>
 		<success>Модуль успешно загружен</success>
 		<file_type>Модули OpenSong</file_type>
-		<generate_index>Проиндексировать файл Библии?</generate_index>
+		<generate_index>Проиндексировать файл Библии '%1'?</generate_index>
 		<generate_error>Ошибка индексации; убедитесь в наличии доступа к записи %1</generate_error>
 	</module>
 
@@ -1187,6 +1195,7 @@ V1 C V2 C V3 C
 		<select caption="Выбрать"/>
 		<exit_program caption="Выйти из программы"/>
 		<export_to caption="Выбор каталога для экспорта"/>
+		<style_file caption="Укажите файл стилей"/>
 	</shared>
 
 	<questions>
@@ -1204,6 +1213,14 @@ V1 C V2 C V3 C
 		<select_docs_folder caption="Укажите Каталог документов OpenSong">Укажите место, где должны храниться файлы OpenSong (песни и программы)</select_docs_folder>
 		<activity_log caption="Хотите ли Вы, чтобы песни этого показа были добавлены в Отчет активности? Это будет применено также и к песням, добавленным в ходе показа!"/>
 		<import_presentation caption="Импорт изображений презентации">Укажите файл презентации, из которого Вам необходимо слайды</import_presentation>
+		<documents_folder_empty caption="Каталог с документами не существет или пуст. Скопировать в него документы, поставляемые с программой OpenSong?"/>
+		<songs_folder_empty caption="Каталог песен пуст. Скопировать в него песни, поставляемые с программой OpenSong?"/>
+		<sets_folder_empty caption="Каталог программ пуст. Скопировать в него программы, поставляемые с программой OpenSong?"/>
+		<settings_folder_empty caption="Каталог настроек пуст. Скопировать в него настройки, поставляемые с программой OpenSong?"/>
+		<backgrounds_folder_empty caption="Каталог фоновых изображений пуст. Скопировать в него фоновые изображения, поставляемые с программой OpenSong?"/>
+		<no_songs_folder caption="Не могу найти Каталог песен, создать его?"/>
+		<no_sets_folder caption="Не могу найти Каталог программ, создать его?"/>
+		<no_folder caption="Не могу найти каталог '%1', создать его?"/>
 	</questions>
 
 	<about>
@@ -1250,6 +1267,7 @@ SmartSplitter от Harry Hooie (http://www.harryhooie.com/source/)
 		<bad_file_name>Неверное имя файла '%1'.</bad_file_name>
 		<internal>Внутренняя ошибка. Свяжитесь с технической поддержкой.</internal>
 		<no_such_song>Невозможно найти песню.</no_such_song>
+		<no_such_set>Невозможно найти файл программы: '%1'.</no_such_set>
 		<number_please>Пожалуйста введите верный номер.</number_please>
 		<number_range>Пожалуйста введите номер между %1 и %2.</number_range>
 		<no_path_allowed>Имя файла не может содержать путь.</no_path_allowed>
@@ -1257,36 +1275,37 @@ SmartSplitter от Harry Hooie (http://www.harryhooie.com/source/)
 		<general1>Неизвестная ошибка в '%1'</general1>
 		<general2>В '%1': '%2'</general2>
 		<folder_error>Внутренняя ошибка каталога. Свяжитесь с технической поддержкой.</folder_error>
-		<create_backgrounds_folder>Невозможно создать Каталог фонов: %1</create_backgrounds_folder>
-		<create_sets_folder>Невозможно создать/изменить Каталог программ: %1.</create_sets_folder>
-		<create_settings_folder>Невозможно создать Каталог настроек: %1.</create_settings_folder>
-		<create_songs_folder>Невозможно создать Каталог песен: %1.</create_songs_folder>
+		<create_backgrounds_folder>Невозможно создать Каталог фонов: %1. Убедитесь, что у Вас есть права доступа к этому каталогу, или укажите новое имя Каталога документов в Основных настройках.</create_backgrounds_folder>
+		<create_sets_folder>Невозможно создать/изменить Каталог программ: %1. Убедитесь, что у Вас есть права доступа к этому каталогу, или укажите новое имя Каталога документов в Основных настройках. Имейте ввиду, что Вы не сможете сохранять и показывать Программы без Каталога программ.</create_sets_folder>
+		<create_settings_folder>Невозможно создать Каталог настроек: %1. Убедитесь, что у Вас есть права доступа к этому каталогу, или укажите новое имя Каталога документов в Основных настройках.</create_settings_folder>
+		<load_default_settings>OpenSong попытается загрузить настройки по умолчанию.</load_default_settings>
+		<create_songs_folder>Невозможно создать Каталог песен: %1. Убедитесь, что у Вас есть права доступа к этому каталогу, или укажите новое имя Каталога документов в Основных настройках. Имейте ввиду, что Вы не сможете сохранять и показывать Программы без Каталога песен.</create_songs_folder>
+		<copy_default_songs>Невозможно скопировать песни, поставляемые по умолчанию в каталог: %1. Убедитесь, что у Вас есть права доступа к этому каталогу.</copy_default_songs>
 		<no_backgrounds_folder>Невозможно найти Каталог фонов, установленный по умолчанию: %1 или каталог пуст.</no_backgrounds_folder>
 		<no_defaults_folder>Невозможно найти Каталог настроек, установленный по умолчанию: %1 или каталог пуст.</no_defaults_folder>
-		<no_scripture_folder>Невозможно найти Каталог переводов Библии: %1 или каталог пуст.</no_scripture_folder>
-		<no_sets_folder>Невозможно найти Каталог программ, установленный по умолчанию: %1 или каталог пуст.</no_sets_folder>
-		<no_settings_folder>Невозможно найти Каталог настроек, установленный по умолчанию: %1 или каталог пуст.</no_settings_folder>
-		<no_songs_folder>Невозможно найти Каталог песен, установленный по умолчанию: %1 или каталог пуст.</no_songs_folder>
-		<no_docs_folder>Невозможно создать/найти Каталог документов: %1 OpenSong не может продолжить работу без этого каталога. Пожалуйста, перезагрузите OpenSong и укажите Каталог документов. Если Вы увидите эту ошибку вновь, свяжитесь с Вашим системным администратором.</no_docs_folder>
+		<no_scripture_folder>Невозможно найти Каталог переводов Библии: %1 или каталог пуст. Обзор писания будет недоступен. Добавьте файл Библии, выбрав "Установить модуль" в меню Настроек, или переустановите OpenSong.</no_scripture_folder>
+		<load_bible>Невозможно загрузить Библию, используемую по умолчанию: '%1'. OpenSong попробует открыть следующую возможную Библию.</load_bible>
+		<no_sets_folder>Невозможно найти Каталог программ, установленный по умолчанию: %1, или каталог пуст.</no_sets_folder>
+		<no_settings_folder>Невозможно найти Каталог настроек, установленный по умолчанию: %1, или каталог пуст.</no_settings_folder>
+		<no_songs_folder>Невозможно найти Каталог песен, установленный по умолчанию: %1, или каталог пуст.</no_songs_folder>
+		<no_docs_folder>Невозможно создать/найти Каталог документов: %1. Убедитесь, что у Вас есть права доступа к этому каталогу, или укажите новое имя Каталога документов в Основных настройках. Имейте ввиду, что большинство основных функций OpenSong будут недоступны без Каталога документов.</no_docs_folder>
 		<docs_folder>Каталог документов не может находится внутри каталога 'OpenSong Defaults'
 Временно изменен на: %1
-Пожалуйста, измените Ваши настройки.
-		</docs_folder>
+Пожалуйста, измените Ваши настройки.</docs_folder>
 		<fileutils>
 			<destdoesnotexisterror>Файл не существует: %1</destdoesnotexisterror>
 			<nilobjecterror>NilObjectException: FolderItem argument to FileUtils is Nil</nilobjecterror>
 			<accessdenied>Ошибка защиты файла, доступ запрещен: %1</accessdenied>
 			<fileinuse>Ошибка, файл '%1' используется.
-(Не запущена ли вторая копия OpenSong?)
-			</fileinuse>
+(Не запущена ли вторая копия OpenSong?)</fileinuse>
 			<filenotfound>Файл '%1' не найден</filenotfound>
 			<invalidname>Неверное имя файла: %1</invalidname>
 			<notenoughmemory>Недостаточно памяти для доступа к файлу '%1'.
-Перезагрузите OpenSong и попробуйте снова.
-			</notenoughmemory>
+Перезагрузите OpenSong и попробуйте снова.</notenoughmemory>
 			<unknownerror>Неизвестная ошибка доступа к файлу '%1'</unknownerror>
 			<notaregularfile>%1 - должен быть файлом, а не каталогом</notaregularfile>
 			<notafolder>%1 - должен быть каталогом, а не файлом</notafolder>
+			<temporaryfailed>Не удалось создать временный файл для %1.</temporaryfailed>
 		</fileutils>
 		<cclinotavailable>Вебсайт CCLI изменил подписи. Это привело к неработоспособности
 функции импорта до выпуска новой версии программы. Тем не менее, Вы можете,
@@ -1322,10 +1341,10 @@ OpenSong приносит свои извинения.
 			<roman>Ошибка конвертации римских чисел '%1': %2</roman>
 			<save>Ошибка сохранения измененного файла '%1'</save>
 		</errors>
+		<load_successful>Библия '%1' успешно загружена.</load_successful>
 		<messages>
 			<bnames>В этот перевод необходимо добавить названия книг.
-&#10;Пожалуйста укажите подходящий язык для названий.
-			</bnames>
+&#10;Пожалуйста укажите подходящий язык для названий.</bnames>
 			<save>Сохранить измененный файл?</save>
 		</messages>
 	</bible>
@@ -1375,6 +1394,29 @@ OpenSong приносит свои извинения.
 		<load_externals>Загрузка внешних листов</load_externals>
 		<pass1>Сортировка, 1-й проход</pass1>
 		<pass2>Сортировка, 2-й проход</pass2>
+		<detect_presentation_hosts>Поиск доступных приложений для показа презентаций</detect_presentation_hosts>
 	</progress_status>
+
+	<export_options title="Настройки экспорта в HTML">
+		<handling caption="Расположение CSS файла">
+			<link caption="Ссылка на файл стилей"/>
+			<embed caption="Включить стили в экспортируемый файл"/>
+		</handling>
+		<options caption="Параметры CSS стиля">
+			<default caption="Использовать указанный стиль"/>
+			<print caption="Использовать стиль, основанный на настройках печати"/>
+		</options>
+		<export caption="Множественный экспорт">
+			<single caption="Отдельный файл для каждой песни"/>
+			<unique caption="Один файл для всех песен"/>
+		</export>
+		<cssfile caption="CSS файл стилей">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Каталог для экспорта">link(shared/export_to/@caption)</outdir>
+		<outfile>Файл экспорта</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(Нет)</nofile>
+		<filter_css>CSS файл стилей</filter_css>
+	</export_options>
 
 </language>

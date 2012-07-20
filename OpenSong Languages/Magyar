@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="2.0.0">
+<language name="Magyar" author="Kónya Pál, Gyuris Gellért, Kovács Katalin-Tünde" version="2.0.1">
 
   <load_settings>
     <checking_folders>A dokumentumok mappáinak létrehozása/ellenőrzése</checking_folders>
@@ -259,6 +259,7 @@
     <videolan_settings caption="Videolan beállítások">
       <videolan_start caption="Videolan futtatása"/>
 	  <videolan_mediafilename caption="A média fájl elérési útvonala">Jelöld ki a lejátszandó audio- vagy videofájl.</videolan_mediafilename>
+	  <embed_mediafile caption="Média fájl beszúrása az OpenSong összeállításba"/>
 	  <videolan_preset caption="Az alábbi előre difiniált beállítások alkalmazása"/>
 	  <videolan_manual caption="Kézzel beállított értékek (%d: képernyő száma, %s: médiafájl)"/>
       <wait_for_videolan caption="Várakozás a lejátszás befejezőséig, mielőtt tovább lépne a következő diára"/>
@@ -395,7 +396,7 @@
       <host caption="Kiszolgáló"/>
       <port caption="Port"/>
     </proxy>
-    <user_defined caption="Egyéni beállítások">
+    <user_defined caption="Az egyéni dal mezők elnevezései">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -837,7 +838,7 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
   <smartml>
     <attrib_except>SmartML.GetAttribute: Kivétel az attribútum keresésében '%1' in '%2'</attrib_except>
     <no_path>Az elérési út nem található.</no_path>
-    <no_File>A fájl nem található: %1</no_File>
+    <no_file>A fájl nem található: %1</no_file>
     <cant_open>Hiba a fájl megnyitásakor: %1</cant_open>
     <cant_create>Fájl létrehozása nem lehetséges: %1</cant_create>
     <xml_error>Hiba az XML értelmezésekor: %1</xml_error>
@@ -1003,7 +1004,7 @@ Ha nem írunk be semmit, a bemutató a dalszerkesztőbe beírt sorrendet követi
     <rename_error>Hiba a modul fájljának átnevezésekor. Ellenőrizd, hogy van-e itt írási jogosultságod: '%1'.</rename_error>
     <success>A modul sikeresen betöltve.</success>
     <file_type>OpenSong modulok</file_type>
-    <generate_index>Generáljunk igehelymutatót az Bibliának?</generate_index>
+    <generate_index>Generáljunk igehelymutatót ennek a Bibliának: %1</generate_index>
     <generate_error>Hiba a igehelymutatót generálásakor. Ellenőrizd, hogy van-e itt írási jogosultságod: '%1'.</generate_error>
   </module>
   
@@ -1191,6 +1192,7 @@ Kattints ide a szerkesztéshez.</body>
     <select caption="Kijelölés"/>
     <exit_program caption="Kilépés a programból"/>
     <export_to caption="Válassz egy mappát az exportáláshoz."/>
+    <style_file caption="Stílus fájl kijelölése"/>
   </shared>
 
   <questions>
@@ -1208,6 +1210,14 @@ Kattints ide a szerkesztéshez.</body>
     <select_docs_folder caption="Add meg az OpenSong dokumentumok mappáját!">Hol legyenek az OpenSong adat-fájljai (dalok, összeállítások)?</select_docs_folder>
     <activity_log caption="Szeretné az összeállítás dalait hozzáadni az előzményekhez? Ez a menet közben hozzáadott dalokra is vonatkozik!"/>
     <import_presentation caption="Bemutató képeinek importálása">Jelöld ki a bemutató fájl, melynek importálni kívánod a képeit.</import_presentation>
+    <documents_folder_empty caption="A dokumentunok mappa nem létezik vagy üres. Másoljuk át az alapértelmezett dokumentumokat?"/>
+    <songs_folder_empty caption="A dalok mappája üres. Másoljuk át az elapértelmezzett dalokat a mappába?"/>
+    <sets_folder_empty caption="Az összeállítások mapppa üres. Másoljuk át az elapértelmezzett összeállításokat a mappába?"/>
+    <settings_folder_empty caption="A beállítások mapppa üres. Másoljuk át az elapértelmezzett beállításokat a mappába?"/>
+    <backgrounds_folder_empty caption="A háttérképek mapppa üres. Másoljuk át az elapértelmezzett háttérképek a mappába?"/>
+    <no_songs_folder caption="Nem található a dalok mappa. Hozzuk létre a mappát?"/>
+    <no_sets_folder caption="Nem található az összeállítáok mappa. Hozzuk létre a mappát?"/>
+    <no_folder caption="Nem található e mappa: '%1'. Hozzuk létre?"/>
   </questions>
 
   <about>
@@ -1253,6 +1263,7 @@ A PuffyClouds1.jpg képfájl a Backgrounds mappában a FreeStockPhotos.com jogtu
     <bad_file_name>Helytelen fájlnév: '%1'.</bad_file_name>
     <internal>Belső hiba. Lépj kapcsolatba az technikai támogatással.</internal>
     <no_such_song>Nem található a dal.</no_such_song>
+    <no_such_set>Nem található ez az összeállítás fájl: '%1'.</no_such_set>
     <number_please>Valós számod adj meg.</number_please>
     <number_range>Ebben az intervallumban adj meg egy számot %1 - %2.</number_range>
     <no_path_allowed>A fájl neve nem tartalmazhat útvonalat is.</no_path_allowed>
@@ -1260,17 +1271,19 @@ A PuffyClouds1.jpg képfájl a Backgrounds mappában a FreeStockPhotos.com jogtu
     <general1>Ismeretlen hiba itt: '%1'</general1>
     <general2>H '%1': '%2'</general2>
     <folder_error>Belső mappa hiba. Lépj kapcsolatba az technikai támogatással.</folder_error>
-    <create_backgrounds_folder>Nem lehet létrehozni a háttérképek (Backgrounds) mappát: %1</create_backgrounds_folder>
-    <create_sets_folder>Nem lehet létrehozni vagy módosítani az összeállítások (Sets) mappát: %1</create_sets_folder>
-    <create_settings_folder>Nem lehet létrehozni a beállítások mappáját (Settings): %1</create_settings_folder>
+    <create_backgrounds_folder>Nem lehet létrehozni a háttérképek (Backgrounds) mappát: %1. Ellenőrizni kell az írási jogot a mappára, vagy új mappát kell kijelölni az Általános beállításokban.</create_backgrounds_folder>
+    <create_sets_folder>Nem lehet létrehozni vagy módosítani az összeállítások (Sets) mappát: %1. Ellenőrizni kell az írási jogot a mappára, vagy új mappát kell kijelölni az Általános beállításokban. Ne feledjük, hogy e mappa nélkül menteni és vetíteni sem lehet az összeállítást.</create_sets_folder>
+    <create_settings_folder>Nem lehet létrehozni a beállítások mappáját (Settings): %1.  Ellenőrizni kell az írási jogot a mappára, vagy új mappát kell kijelölni az Általános beállításokban.</create_settings_folder>
+    <load_default_settings>Az OpenSong megkísérli betölteni az alapértelmezett beállításokat.</load_default_settings>
     <create_songs_folder>Nem lehet létrehozni a dal mappát: %1</create_songs_folder>
     <no_backgrounds_folder>Nem lehet olvasni az alapértelmezett háttérképek mappát: %1, vagy a mappa üres.</no_backgrounds_folder>
     <no_defaults_folder>Nem található az alapértelmezett (Defaults) mappa: %1, vagy a mappa üres.</no_defaults_folder>
-    <no_scripture_folder>Nem található a Bibliák (Scripture) mappa: %1, vagy a mappa üres.</no_scripture_folder>
+    <no_scripture_folder>Nem található a Bibliák (Scripture) mappa: %1, vagy a mappa üres. A igehely kereső le lesz tiltva. A telepítés modullal adjunk hozzá egy Biblia fájlt vagy telepítsük újra az OpenSongot.</no_scripture_folder>
+    <load_bible>Nem lehet betölteni az alapértelmezett bibliát: '%1'. Az OpenSong megkísérli betölteni a következő elérhető bibliát.</load_bible>
     <no_sets_folder>Nem található az alapértelmezett összeállítás (Sets) mappa: %1, vagy a mappa üres.</no_sets_folder>
-    <no_settings_folder>Nem található az alapértelmezett beállítások (Settings) mappa: %1, vagy a mappa üres</no_settings_folder>
-    <no_songs_folder>Nem található az alapértelmezett dalok (Songs) mappája: %1, vagy a mappa üres</no_songs_folder>
-    <no_docs_folder>Nem hozható létre vagy nem található a dokumentumok (Documents) mappa: %1. Az OpenSong nem működhet dokumentumok mappa mélkül. Indítsd újra az OpenSong-ot és jelölj ki egy mappát. Ha ez a hibaüzenet ezek után is megjelenik, lépj kapcsolatba a rendszeradminisztrátorral.</no_docs_folder>
+    <no_settings_folder>Nem található az alapértelmezett beállítások (Settings) mappa: %1, vagy a mappa üres.</no_settings_folder>
+    <no_songs_folder>Nem található az alapértelmezett dalok (Songs) mappája: %1, vagy a mappa üres.</no_songs_folder>
+    <no_docs_folder>Nem hozható létre vagy nem található a dokumentumok (Documents) mappa: %1. Ellenőrizni kell az írási jogot a mappára, vagy új mappát kell kijelölni az Általános beállításokban. Ne feledjük, hogy az OpenSong képességeinek nagy része elérhetetlen dokumentumok mappa nélkül.</no_docs_folder>
     <docs_folder>A dokumentumok mappa (Documents) nem lehet almappája az „OpenSong Defaults” mappának.
 Átmenetileg módosítva lett erre: %1.
 Módosítsd a beállításokat.</docs_folder>
@@ -1287,6 +1300,7 @@ Indítsd újra az OpenSong-ot és próbálkozz újra.</notenoughmemory>
        <unknownerror>Ismeretlen hiba a fájl olvasása közben: %1</unknownerror>
        <notaregularfile>Úgy tűnik, hogy a(z) %1 egy állomány és nem mappa.</notaregularfile>
        <notafolder>Úgy tűnik, hogy a(z) %1 egy mappa és nem állomány.</notafolder>
+       <temporaryfailed>Nem sikerült létrehozni az ideiglenes fájlt: %1.</temporaryfailed>
     </fileutils>
     <cclinotavailable>A CCLI weboldal jelentősen megváltozott.
 Ez lehetetlenné teszi az importálást, míg az új felület elkészül.
@@ -1328,6 +1342,7 @@ Az OpenSong fejlesztői csapat sajnálja a kellemetlenséget.
       <save>Hiba a módosított fájl mentésekor: '%1.'</save>
     </errors>
 
+    <load_successful>A biblia betöltése sikerült: '%1'.</load_successful>
     <messages>
       <bnames>A könyvek neveit hozzá kell adni ehhez a fordításhoz.
 &#10; Mutasd meg a megfelelő nyelvet a nevek számára.</bnames>
@@ -1380,6 +1395,27 @@ Az OpenSong fejlesztői csapat sajnálja a kellemetlenséget.
     <load_externals>Külső diák betöltése</load_externals>
     <pass1>Rendezés, 1. művelet</pass1>
     <pass2>Rendezés, 2. művelet</pass2>
+    <detect_presentation_hosts>Rendelkezésre álló bemutató alkalmazások keresése</detect_presentation_hosts>
   </progress_status>
-
+	<export_options title="HTML exportálás beállításai">
+		<handling caption="CSS stíluslap helye">
+			<link caption="Link a stíluslapra"/>
+			<embed caption="Stílus beágyazása az exportált fájlba"/>
+		</handling>
+		<options caption="CSS stíluslap beállításai">
+			<default caption="A megadott stíluslap alkalmazása"/>
+			<print caption="A nyomtatási beállításokra épülő stíluslap alkalmazása"/>
+		</options>
+		<export caption="Többszörös export">
+			<single caption="Minden dal egy állományba"/>
+			<unique caption="Különálló fájl minden egyes dalnak"/>
+		</export>
+		<cssfile caption="Stíluslap">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Kimenti mappa">link(shared/export_to/@caption)</outdir>
+		<outfile>Kimeneti állomány</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(Nincs)</nofile>
+		<filter_css>CSS stíluslap</filter_css>
+	</export_options>
 </language>

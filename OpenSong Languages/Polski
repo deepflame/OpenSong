@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Polski" author="Mariusz Mycielski" version="2.0.0">
+<language name="Polski" author="Mariusz Mycielski" version="2.0.1">
 
   <load_settings>
     <checking_folders>Tworzę/Sprawdzam foldery dokumentów</checking_folders>
@@ -258,6 +258,7 @@
     <videolan_settings caption="Ustawienia VLC">
       <videolan_start caption="Uruchom VLC"/>
 	  <videolan_mediafilename caption="Ścieżka do pliku mediów">Wybierz plik audio lub video do uruchomienia.</videolan_mediafilename>
+    <embed_mediafile caption="Dodaj plik multimedialny do zestawu OpenSong"/>
 	  <videolan_preset caption="Użyj następujących ustawień"/>
 	  <videolan_manual caption="Parametry ustawiane ręcznie (użyj %d do wyświetlenia numeru, %s do wyświetlenia nazwy pliku)"/>
       <wait_for_videolan caption="Odtwarzaj do końca, zanim przejdziesz do następnego slajdu"/>
@@ -394,7 +395,12 @@
       <host caption="Host"/>
       <port caption="Port"/>
     </proxy>
-    <user_defined caption="Dane użytkownika">
+    <rcserver caption="Automation API">
+      <enable caption="Włącz serwer zdalnej kontroli"/>
+      <key caption="Klucz uwierzytelniania"/>
+      <port caption="Port"/>
+    </rcserver>
+    <user_defined caption="Nazwy pól użytkownika">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -453,7 +459,8 @@
   	  <tag caption="Piosenka, Dodatek"/>
   	  <scripture caption="Werset biblijny"/>
   	  <custom caption="Slajd niestandardowy"/>
-  	  <image caption="Slajd obrazkowy"/>
+  	  <style caption="Zmiana stylu"/>
+      <image caption="Slajd obrazkowy"/>
   	  <application caption="Zewnętrzna aplikacja"/>
   	  <blank caption="Pusty (wstawiony)"/>
   	</slidetype_coloring>
@@ -623,6 +630,7 @@ T: Dodatek</keys>
   <help_topics title="Tematy pomocy">
     <tabs head1="Klawisze prezentacji" head2="Format akordów i tekstu" head3="Kolejność prezentacji" head4="Zamknij"/>
     <print caption="Drukuj"/>
+    <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Klawisze prezentacji&lt;/h1&gt;
 
@@ -840,7 +848,7 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
   <smartml>
     <attrib_except>SmartML.GetAttribute: Wyjątek podczas szukania atrybutu '%1' w '%2'</attrib_except>
     <no_path>Nie znaleziono ścieżki.</no_path>
-    <no_File>Nie znaleziono ścieżki: %1</no_File>
+    <no_file>Nie znaleziono ścieżki: %1</no_file>
     <cant_open>Błąd otwarcia pliku: %1</cant_open>
     <cant_create>Nie można utworzyć pliku: %1</cant_create>
     <xml_error>Błąd analizatora XML: %1</xml_error>
@@ -1006,7 +1014,7 @@ Jeżeli pole 'Kolejność prezentacji' jest puste, to sekcje będą wyświetlone
     <rename_error>Błąd zmiany nazwy pliku modułu. Sprawdź, czy masz prawa do zapisu do pliku '%1'.</rename_error>
     <success>Poprawnie załadowano moduł.</success>
     <file_type>Moduły OpenSong</file_type>
-    <generate_index>Czy wygenerować indeks pliku Biblii?</generate_index>
+    <generate_index>Czy wygenerować indeks pliku Biblii: '%1'?</generate_index>
     <generate_error>Błąd generowania indeksu; czy masz prawo do zapisu do pliku %1?</generate_error>
   </module>
 
@@ -1203,6 +1211,7 @@ Kliknij na slajd, by edytować jego styl.</body>
     <select caption="Zaznacz"/>
     <exit_program caption="Wyjdź z programu"/>
     <export_to caption="Wybierz folder docelowy eksportu."/>
+    <style_file caption="Wybierz plik stylu"/>
   </shared>
 
   <questions>
@@ -1217,9 +1226,17 @@ Kliknij na slajd, by edytować jego styl.</body>
     <generic_save caption="Zapisać zmiany?"/>
     <generic_save_explanation caption="Jeśli nie zapiszesz, Twoje zmiany zostaną utracone"/>
     <set_changed caption="Bieżący zestaw został zmieniony, czy zapisać go?"/>
-    <select_docs_folder caption="Wybierz katalog dokumentów OpenSong">Gdzie mają być przechowywane pliki OpenSong (piosenki i zestawy)?</select_docs_folder>
+    <select_docs_folder caption="Wybierz folder dokumentów OpenSong">Gdzie mają być przechowywane pliki OpenSong (piosenki i zestawy)?</select_docs_folder>
     <activity_log caption="Czy chcesz, by piosenki z tej prezentacji zostały dodane do raportu aktywności?"/>
     <import_presentation caption="Import obrazków prezentacji">Wybierz plik prezentacji, z której chcesz importować slajdy.</import_presentation>
+    <documents_folder_empty caption="Folder dokumentów nie istnieje lub jest pusty. Czy chcesz skopiować dokumenty domyślne?"/>
+    <songs_folder_empty caption="Folder piosenek jest pusty. Czy chcesz skopiować domyślne piosenki do tego folderu?"/>
+    <sets_folder_empty caption="Folder zestawów jest pusty. Czy chcesz skopiować domyślny zestaw do tego folderu?"/>
+    <settings_folder_empty caption="Folder ustawień jest pusty. Czy chcesz skopiować domyślne ustawienia do tego folderu?"/>
+    <backgrounds_folder_empty caption="Folder plików tła jest pusty. Czy chcesz skopiować domyślne pliki tła do tego folderu?"/>
+    <no_songs_folder caption="Nie można odnaleźć folderu piosenek, czy chcesz go utworzyć?"/>
+    <no_sets_folder caption="Nie można odnaleźć folderu zestawów, czy chcesz go utworzyć?"/>
+    <no_folder caption="Nie można odnaleźć folderu '%1', czy chcesz go utworzyć?"/>
   </questions>
 
   <about>
@@ -1265,6 +1282,7 @@ Obrazek PuffyClouds1.jpg zawarty w katalogu Backgrounds jest własnością FreeS
     <bad_file_name>Niepoprawna nazwa pliku '%1'.</bad_file_name>
     <internal>Błąd wewnętrzny. Skontaktuj się z pomocą techniczną.</internal>
     <no_such_song>Nie można znaleźć piosenki.</no_such_song>
+    <no_such_set>Nie można znaleźć pliku zestawu: '%1'.</no_such_set>
     <number_please>Wprowadź poprawny numer.</number_please>
     <number_range>Wprowadź numer pomiędzy %1 a %2.</number_range>
     <no_path_allowed>Prawdopodobnie nazwa pliku nie zawiera ściezki.</no_path_allowed>
@@ -1272,17 +1290,20 @@ Obrazek PuffyClouds1.jpg zawarty w katalogu Backgrounds jest własnością FreeS
     <general1>In '%1': Nieznany błąd</general1>
     <general2>In '%1': '%2'</general2>
     <folder_error>Wewnętrzny błąd folderu. Skontaktuj się z pomocą techniczną.</folder_error>
-    <create_backgrounds_folder>Nie można utworzyć katalogu obrazków tła: %1</create_backgrounds_folder>
-    <create_sets_folder>Nie można utworzyć/edytować katalogu zestawów %1</create_sets_folder>
-    <create_settings_folder>Nie można utworzyć katalogu ustawień: %1</create_settings_folder>
-    <create_songs_folder>Nie można utworzyć katalogu piosenek: %1</create_songs_folder>
+    <create_backgrounds_folder>Nie można utworzyć katalogu obrazków tła: %1. Upewnij się, czy posiadasz prawa do zapisu tego folderu lub wybierz inny folder dokumentów w Ustawieniach programu.</create_backgrounds_folder>
+    <create_sets_folder>Nie można utworzyć/edytować katalogu zestawów %1. Upewnij się, czy posiadasz prawa do zapisu tego folderu lub wybierz inny folder dokumentów w Ustawieniach programu. Bez folderu zestawów nie będziesz mógł zapisywać zestawów.</create_sets_folder>
+    <create_settings_folder>Nie można utworzyć katalogu ustawień: %1. Upewnij się, czy posiadasz prawa do zapisu tego folderu lub wybierz inny folder dokumentów w Ustawieniach programu.</create_settings_folder>
+    <load_default_settings>Opensong spróbuje załadować ustawienia domyślne.</load_default_settings>
+    <create_songs_folder>Nie można utworzyć katalogu piosenek: %1. Upewnij się, czy posiadasz prawa do zapisu tego folderu lub wybierz inny folder dokumentów w Ustawieniach programu. Bez folderu piosenek nie będziesz mógł zapisywać/wyświetlać piosenek.</create_songs_folder>
+    <copy_default_songs>Nie można skopiować domyślnych piosenek do folderu: %1. Upewnij się, czy posiadasz prawa do zapisu tego folderu.</copy_default_songs>
     <no_backgrounds_folder>Nie można odnaleźć katalogu obrazków tła: %1 lub katalog jest pusty</no_backgrounds_folder>
     <no_defaults_folder>Nie można odnaleźć domyślnego katalogu: %1 lub katalog jest pusty</no_defaults_folder>
-    <no_scripture_folder>Nie można odnaleźć katalogu z bibliami: %1 lub katalog jest pusty</no_scripture_folder>
+    <no_scripture_folder>Nie można odnaleźć katalogu z bibliami: %1 lub katalog jest pusty. Wyszukiwanie wersetów będzie niedostępne. Dodaj plik Biblii wybierając z menu Ustawienia opcję Instaluj moduł lub przeinstaluj Opensong.</no_scripture_folder>
+    <load_bible>Nie można załadować domyślnej Biblii: '%1'. OpenSong spróbuje otworzyć pierwszą dostępną.</load_bible>
     <no_sets_folder>Nie można odnaleźć domyślnego katalogu zestawów: %1 lub katalog jest pusty</no_sets_folder>
     <no_settings_folder>Nie można odnaleźć domyślnego katalogu z ustawieniami: %1 lub katalog jest pusty</no_settings_folder>
     <no_songs_folder>Nie można odnaleźć domyślnego katalogu piosenek: %1 lub katalog jest pusty</no_songs_folder>
-    <no_docs_folder>Nie można utworzyć/znaleźć folderu dokumentów: %1 Opensong nie może dalej działać bez tego folderu. Uruchom ponownie OpenSong i wybierz folder dokumentów. Jeżeli nadal będzie występował ten błąd, skontaktuj się z administratorem.</no_docs_folder>
+    <no_docs_folder>Nie można utworzyć/znaleźć folderu dokumentów: %1. Upewnij się, czy posiadasz prawa do zapisu tego folderu lub wybierz inny folder dokumentów w Ustawieniach programu. Bez tego folderu większość opcji Opensong będzie niedostępna.</no_docs_folder>
     <docs_folder>Katalog dokumentów nie może być podkatalogiem w 'OpenSong Defaults'
 Tymczasowo zmieniam go na: %1
 Zmień swoje ustawienia.</docs_folder>
@@ -1299,6 +1320,7 @@ Uruchom ponownie OpenSong.</notenoughmemory>
        <unknownerror>Nieznany błąd dostępu do pliku %1</unknownerror>
        <notaregularfile>%1 spodziewany jako plik, a nie katalog.</notaregularfile>
        <notafolder>%1 spodziewany jako katalog, a nie plik.</notafolder>
+	     <temporaryfailed>Tworzenie tymczasowego pliku %1 zakończyło się niepowodzeniem.</temporaryfailed>
     </fileutils>
     <cclinotavailable>Strona CCLI uległa dużym zmianom.
 To sprawiło, że na razie funkcja importu nie działa.
@@ -1339,6 +1361,7 @@ Przepraszamy za wszelkie niedogodności.
       <save>Błąd zapisu zmienionego pliku '%1.'</save>
     </errors>
 
+    <load_successful>Wczytywanie Biblii: '%1' zakończone pomyślnie.</load_successful>
     <messages>
       <bnames>Do tego tłumaczenia trzeba dodać nazwy ksiąg.
 &#10;Wskaż język dla tych nazw.</bnames>
@@ -1391,6 +1414,28 @@ Przepraszamy za wszelkie niedogodności.
     <load_externals>Ładuję pliki zewnętrzne</load_externals>
     <pass1>Sortuję... pierwszy przebieg</pass1>
     <pass2>Sortuję... drugi przebieg</pass2>
+    <detect_presentation_hosts>Wyszukiwanie dostępnych aplikacji prezentacji</detect_presentation_hosts>
   </progress_status>
 
+	<export_options title="Opcje eksportu do HTML">
+		<handling caption="Polożenie plików stylów CSS">
+			<link caption="Ścieżka do pliku stylów"/>
+			<embed caption="Osadź styl w eksportowanym pliku"/>
+		</handling>
+		<options caption="Opcje stylów CSS">
+			<default caption="Użyj określonej listy stylów"/>
+			<print caption="Użyj listy stylów wg ustawień drukowania"/>
+		</options>
+		<export caption="Multiple export">
+			<single caption="Single file for all songs"/>
+			<unique caption="Unique file for all songs"/>
+		</export>
+		<cssfile caption="Style Sheet">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Output folder">link(shared/export_to/@caption)</outdir>
+		<outfile>Plik eksportu</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(Brak)</nofile>
+		<filter_css>Cascading Style Sheet</filter_css>
+	</export_options>
 </language>

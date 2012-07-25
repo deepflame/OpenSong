@@ -1,4 +1,6 @@
-﻿-= 2.0 Beta 2 =-
+﻿* Moved Linux install script to utilities subproject
+
+-= 2.0 Beta 2 =-
 * Introduced an Automation API for remote control purposes using REST over HTTP and/or WebSocket. (Vwout)
 For a full description of the API see http://opensong.org/d/api. The current implementation supports all information retrieval operations (GET).
 

@@ -240,7 +240,7 @@
     <application caption="Application"/>
     <presentation caption="Presentation">Use this slide to show a presentation using Microsoft PowerPoint or the free and open source OpenOffice.org Impress.</presentation>
     <videolan caption="Videolan">Use this slide to run a media file using the versatile and open source media player Videolan (VLC).</videolan>
-    <application caption="Application">Use this slide to run an external programm by using a command line.</application>
+    <application caption="Application">Use this slide to run an external program by using a command line.</application>
     <no_application caption="No application">
     <no_application caption="Select an application to use as source for this slides content."/>
     </no_application>
@@ -757,7 +757,7 @@ If a line contains ("-!!") this indicates the location where a page break should
     <presentation>
 &lt;h1&gt;OpenSong Presentation Field&lt;/h1&gt;
 
-The presentation field contains a list of sections from the song's lyrics/chords field. Each section is seperated by a space. For example:
+The presentation field contains a list of sections from the song's lyrics/chords field. Each section is separated by a space. For example:
 &lt;b&gt;
 V1 C V2 C V3 C
 &lt;/b&gt;
@@ -1282,10 +1282,10 @@ The image file PuffyClouds1.jpg included in the Backgrounds folder is Copyright 
     <create_settings_folder>Could not create Settings folder: %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings.</create_settings_folder>
     <load_default_settings>OpenSong will attempt to load the Default Settings.</load_default_settings>
     <create_songs_folder>Could not create songs folder: %1. Please make sure you have write access to this folder, or select a new Documents folder from the General Settings. Please note that you will be unable to save/present Songs without a Songs folder.</create_songs_folder>
-    <copy_default_songs>Could not copy default songs to folder: %1. Please ensure you have write acces to this folder.</copy_default_songs>
+    <copy_default_songs>Could not copy default songs to folder: %1. Please ensure you have write access to this folder.</copy_default_songs>
     <no_backgrounds_folder>Can't find default Backgrounds folder: %1, or folder is empty</no_backgrounds_folder>
     <no_defaults_folder>Can't find Defaults folder: %1, or folder is empty</no_defaults_folder>
-    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty. Scripture Lookup will be unavailible. Please add a Bible file by selecting Install Module from the Settings Menu, or re-installing OpenSong.</no_scripture_folder>
+    <no_scripture_folder>Can't find Scriptures folder: %1, or folder is empty. Scripture Lookup will be unavailable. Please add a Bible file by selecting Install Module from the Settings Menu, or re-installing OpenSong.</no_scripture_folder>
     <load_bible>Could not load default Bible: '%1'. OpenSong will attempt to open the next available Bible.</load_bible>
     <no_sets_folder>Can't find Default Sets folder: %1, or folder is empty</no_sets_folder>
     <no_settings_folder>Can't find Default Settings folder: %1, or folder is empty</no_settings_folder>

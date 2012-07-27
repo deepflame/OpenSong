@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="1.7.0">
+<language name="Português (Brasil)" author="Paulo Neto (layoutbr@lexxa.com.br)" version="2.0.1">
 
   <load_settings>
     <checking_folders>Criando/Verificando pasta de documentos</checking_folders>
@@ -11,6 +11,7 @@
     <themes>Carregando lista de temas</themes>
     <time_signatures>Carregando lista de assinatura de tempo</time_signatures>
     <imagequality>Carregando lista de qualidade de imagem</imagequality>
+ 	<videolan_preset>Carregando predefinições de parâmetros Videolan</videolan_preset>
     <fonts>Carregando lista de fontes</fonts>
     <latest_version>Verificando versão mais recente
       <newer_available>Uma versão mais nova (%1) está disponível. Visite www.opensong.org para receber a nova versão.</newer_available>
@@ -147,6 +148,7 @@
       <add_slides caption="Slides">Adiciona um slide personalizado à configuração atual. O slide personalizado permite você especificar seu próprio título, sub-título, corpo de texto e até o estilo. Um slide personalizado pode na verdade conter uma série de slides.</add_slides>
       <add_style caption="Estilo">Modifica o estilo padrão da configuração atual em qualquer ponto da configuração. A mudança de um estio pode incluir um novo estilo ou reverter para um estilo anterior.</add_style>
       <add_image caption="Image">Adiciona um slide de imagem para a atual configuração. Os slides de imagem permitirão você exibir uma imagem única ou uma exibição de múltiplas imagens em vez de um corpo de texto.</add_image>
+      <add_external caption="External">Adiciona um novo slide para a configuração atual que permite a ativação de fontes externas, como uma apresentação ou software de reprodução de DVD.</add_external>
       <add_video caption="Vídeo">Adiciona um arquivo de vídeo à configuração atual. Use esta opção para apresentar um vídeo dentro do OpenSong.</add_video>
       <add_powerpoint caption="PowerPoint">Adiciona uma apresentação do PowerPoint à configuração atual. Eta opção é útil para controlar uma apresentação do PowerPoint de dentro do próprio OpenSong.</add_powerpoint>
     </new_item>
@@ -169,6 +171,7 @@
       <custom caption="(personalizado)"/>
       <scripture caption="(bíblia)"/>
       <image caption="(imagem)"/>
+      <external caption="(externo)"/>
       <style caption="(estilo)">-- Mudar Estilo --</style>
       <revert caption="(estilo)">-- Reverter Estilo --</revert>
       <defaultstyle caption="(estilo)">-- Exportar Estilo --</defaultstyle>
@@ -219,6 +222,7 @@
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Ação" />
       <ins_image caption="Adicionar imagem">Adiciona uma imagem para este slide para permitir a uma apresentação que compartilha configurações de um título comum, subtítulo, estilo, e/ou avanço automático. Os deslizamentos criados deste modo também podem ser configurados para execução automática.</ins_image>
+      <imp_image caption="Import">Carrega todos os slides disponíveis de uma apresentação e as adiciona como imagem.</imp_image>
       <del_image caption="Remover imagem">Remove a imagem atualmente selecionada do slide.</del_image>
       <move_up caption="Mover para cima">Move a imagem atualmente selecionada no slide para o início do slide.</move_up>
       <move_down caption="Mover para baixo">Move a imagem atualmente selecionada no slide para o final do slide.</move_down>
@@ -341,7 +345,7 @@
   </main_menu>
 
   <general_settings title="Configurações Gerais">
-    <general caption="Geral" head1="Básico" head2="Especial">
+    <general caption="Geral" head1="Básico" head2="Localização" head3="Sistema" head4="Aparência">
       <ccli caption="Licença CCLI"/>
       <version_check caption="Verificar nova versão ao iniciar"/>
       <language caption="Idiomas"/>
@@ -350,6 +354,11 @@
       <host caption="Domínio"/>
       <port caption="Porta"/>
     </proxy>
+    <rcserver caption="Automação API">
+      <enable caption="Ativar servidor de controle remoto"/>
+      <key caption="Chave de autenticação"/>
+      <port caption="Porta"/>
+    </rcserver>
     <user_defined caption="Definições do Usuário">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
@@ -394,6 +403,26 @@
       <songs caption="Músicas"/>
       <sets  caption="Configurações"/>
     </startmode>
+    <applications caption="Aplicativos externos">
+      <pptview caption="Localização do Powerpoint Viewer"/>
+      <pptview_browse caption="link(shared/browse/@caption)"/>
+      <videolan caption="Localização do cliente Videolan"/>
+      <videolan_browse caption="link(shared/browse/@caption)"/>
+    </applications>
+	<slidetype_coloring caption="Coloração do tipo de slide">
+	  <coloring caption="Aplicar cores de fundo"/>
+	  <verse caption="Música, Verso"/>
+	  <bridge caption="Música, Ponte"/>
+	  <prechorus caption="Música, Pré-Refrão"/>
+	  <chorus caption="Música, Refrão"/>
+	  <tag caption="Música, Etiqueta"/>
+	  <scripture caption="Escritura"/>
+	  <custom caption="Slide personalizado"/>
+	  <style caption="Alterar Estilo"/>
+	  <image caption="Imagem do slide"/>
+	  <application caption="Aplicativo externo"/>
+	  <blank caption="Branco (inserido)"/>
+	</slidetype_coloring>
   </general_settings>
 
   <print_settings title="Configurações de Impressão">
@@ -546,6 +575,7 @@ Seta Abaixo: Próximo Slide
 Seta Acima: Slide Anterior
 Seta à Direita: Próxima Seção
 Seta à Esquerda: Seção Anterior
+F1-F15: Música
 1-9: Verso
 C: Coro
 P: Pré-Coro
@@ -1069,6 +1099,11 @@ Se o campo de apresentação estiver vazio, então a Exibição pedirá os slides base
   </imagequality_list>
 
   <videolan_preset_list>
+	<preset name="Vídeo como papel de parede de fundo no Windows (usar a cor de fundo RGB 0,0,1)" parameters="--no-video-deco --no-video-title-show --no-osd --video-wallpaper --direct3d-desktop --one-instance --directx-device=\\.\DISPLAY%d %s"/>
+	<preset name="Vídeo em tela cheia na tela de apresentação" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance %s"/>
+	<preset name="Vídeo em tela cheia a partir do padrão de entrada de vídeo DirectShow" parameters="--no-video-deco --no-video-title-show --no-osd --one-instance dshow://"/>
+	<!-- The line below is mandatory. Translators: only modify the value for 'name' -->
+	<preset name="Manual" parameters=""/>
   </videolan_preset_list>
 
   <style_preview>
@@ -1121,14 +1156,15 @@ Clique aqui para editar o estilo.</body>
     <select caption="Selecionar"/>
     <exit_program caption="Sair do Programa"/>
     <export_to caption="Selecione a pasta para importação."/>
+	<style_file caption="Selcione o arquivo de estilo"/>
   </shared>
 
   <questions>
     <new_name caption="Por favor digite um nome:"/>
     <rename caption="Por favor digite um novo nome para '%1':"/>
     <save caption="Você deseja salvar as alterações para '%1'?"/>
-    <delete caption="Vocë deseja realmente excluir '%1'?"/>
-    <clear caption="Vocë deseja realmente limpar isto?"/>
+    <delete caption="Você deseja realmente excluir '%1'?"/>
+    <clear caption="Você deseja realmente limpar isto?"/>
     <changed caption="A música atual foi alterada, deseja salvar as alterações?"/>
     <revert caption="Todas as alterações serão perdidas. Continuar?"/>
     <long_operation caption="Esta operação pode demorar muito tempo. Continuar?"/>
@@ -1137,6 +1173,15 @@ Clique aqui para editar o estilo.</body>
     <set_changed caption="A configuração atual foi alterada, você deseja savar estas alterações?"/>
     <select_docs_folder caption="Selecionar a pasta do OpenSong">Onde o OpenSong deve armazenar seus arquivos (músicas e configurações)?</select_docs_folder>
     <activity_log caption="Você gostaria que as músicas desta apresentação sejam adicionadas para o registro de atividades? Note que isto se aplica a músicas adicionadas ultimamente também!"/>
+    <import_presentation caption="Importar imagens da apresentação">Selecione o arquivo de apresentação que você deseja importar os slides.</import_presentation>
+    <documents_folder_empty caption="A pasta Documentos não existe ou está vazia. Você gostaria de copiar os Documentos Padrão?"/>
+    <songs_folder_empty caption="A pasta Songs está vazia. Você gostaria de copiar as Músicas Padrão para esta pasta?"/>
+    <sets_folder_empty caption="A pasta Sets está vazia. Você gostaria de copiar as Configurações Padrão para esta pasta?"/>
+    <settings_folder_empty caption="A pasta Settings está vazia. Você gostaria de copiar as Configurações Padrão para esta pasta?"/>
+    <backgrounds_folder_empty caption="A pasta Backgrounds está vazia. Você gostaria de copiar os Fundos Padrão para esta pasta?"/>
+    <no_songs_folder caption="Não foi possível encontrar a pasta Songs, você gostaria de criar esta pasta?"/>
+    <no_sets_folder caption="Não foi possível encontrar a pasta Sets, você gostaria de criar esta pasta?"/>
+    <no_folder caption="Não foi possível encontrar a pasta '%1', você gostaria de criar esta pasta?"/>
   </questions>
 
   <about>
@@ -1182,6 +1227,7 @@ O arquivo de imagem PuffyClouds1.jpg incluído na pasta Backgrounds está sob Copy
     <bad_file_name>Nome de arquivo inválido '%1'.</bad_file_name>
     <internal>Erro interno. Contacte o suporte técnico.</internal>
     <no_such_song>Não foi possível encontrar a música.</no_such_song>
+    <no_such_set>Não foi possível encontrar o arquivo: '%1'.</no_such_set>
     <number_please>Por favor digite um número válido.</number_please>
     <number_range>Por favor digite um número entre %1 e %2.</number_range>
     <no_path_allowed>O nome de arquivo não pode incluir um caminho.</no_path_allowed>
@@ -1192,10 +1238,13 @@ O arquivo de imagem PuffyClouds1.jpg incluído na pasta Backgrounds está sob Copy
     <create_backgrounds_folder>Não foi possível criar a pasta de Fundos: %1</create_backgrounds_folder>
     <create_sets_folder>Não foi possível criar/editar a pasta de configurações %1</create_sets_folder>
     <create_settings_folder>Não foi possível criar a pasta de Configurações: %1</create_settings_folder>
-    <create_songs_folder>Não foi possível criar a pasta de músicas: %1</create_songs_folder>
+    <load_default_settings>O OpenSong tentará carregar as Configurações Padrão.</load_default_settings>
+    <create_songs_folder>Não foi possível criar a pasta songs: %1. Por favor, certifique-se de ter acesso à gravação para essa pasta, ou selecione uma pasta Documentos nova das Configurações Gerais. Por favor, note que você não poderá salvar/apresentar as músicas sem uma pasta Songs.</create_songs_folder>
+    <copy_default_songs>Não foi possível copiar músicas para a pasta padrão: %1. Por favor, certifique-se de ter acesso à gravação para essa pasta.</copy_default_songs>
     <no_backgrounds_folder>Não foi possível encontrar a pasta de Fundos padrão: %1</no_backgrounds_folder>
     <no_defaults_folder>Não foi possível encontrar a pasta padrão: %1</no_defaults_folder>
     <no_scripture_folder>Não foi possível encontrar a pasta da Bíblia: %1</no_scripture_folder>
+    <load_bible>Não foi possível carregar a Bíblia padrão: '%1'. O OpenSong tentará abrir a próxima Bíblia disponível.</load_bible>
     <no_sets_folder>Não foi possível encontrar a pasta padrão de configurações: %1</no_sets_folder>
     <no_settings_folder>Não foi possível encontrar a pasta padrão de configurações: %1</no_settings_folder>
     <no_songs_folder>Não foi possível encontrar a pasta de Músicas padrão: %1</no_songs_folder>
@@ -1216,6 +1265,7 @@ Reinicie o OpenSong e tente novamente.</notenoughmemory>
        <unknownerror>Erro desconhecido acessando o arquivo %1</unknownerror>
        <notaregularfile>Esperado %1 para ser um arquivo, não uma pasta.</notaregularfile>
        <notafolder>Esperado %1 para ser uma pasta, não um arquivo.</notafolder>
+	   <temporaryfailed>Falha ao criar um arquivo temporário para %1.</temporaryfailed>
     </fileutils>
     <cclinotavailable>O website CCLI mudou significativamente.
 Isto inutilizou a função Importar até que uma interface nova possa ser usada.
@@ -1225,6 +1275,12 @@ Os membros da equipe de desenvolvimento do OpenSong lamenta qualquer inconvenien
     <activity_disabled>Não foi possível carregar a música %1! do resitro de atividades. Por favor certifique-se de que este arquivo exista e esteja corrompido. A exibição do registro de atividades será desativada nesta sessão.</activity_disabled>
     <adding_logentry>Erro ao Adicionar Entrada!</adding_logentry>
     <chars_per_slide>Máximo de caracteres por slides devem estar entre 1 e 1000.</chars_per_slide>
+    <presentations>
+      <nohost>Não existe um aplicativo disponível para carregar a apresentação. Por favor, instale o OpenOffice.org, Microsoft PowerPoint ou Microsoft PowerPoint Viewer.</nohost>
+      <unsupported_feature>O aplicativo '%1' não suporta este recurso.</unsupported_feature>
+      <load_failed>A apresentação '%1' não pode ser aberta.</load_failed>
+    </presentations>
+	<videolan_app_missing>O aplicativo videolan não está corretamente configurado. Por favor, especifique o cliente videolan na caixa de diálogo Configurações Gerais na guia Localização de Arquivos.</videolan_app_missing>
   </errors>
 
   <xml_errors>
@@ -1251,6 +1307,7 @@ Os membros da equipe de desenvolvimento do OpenSong lamenta qualquer inconvenien
       <save>Arro ao salvar arquivo atualizado '%1.'</save>
     </errors>
 
+    <load_successful>Bíblia carregada com êxito: '%1'.</load_successful>
     <messages>
       <bnames>O nome do livro deve ser adicionado para esta tradução.
 &#10;Por favor indique o idioma apropriado para os nomes.</bnames>
@@ -1294,13 +1351,36 @@ Os membros da equipe de desenvolvimento do OpenSong lamenta qualquer inconvenien
 
   <progress_status>
     <folder>Pasta de Cache %1</folder>
-    <lead_sheets>Gerando Folhas de Rosto</lead_sheets>
+    <lead_sheets>Gerando Folha de Estilos</lead_sheets>
     <process_themes>Processando Temas</process_themes>
     <process_songs>Processando Músicas</process_songs>
     <song_search>Localizando Músicas</song_search>
 	<export>Exportando Músicas</export>
+    <load_songs>Carregando Música(s)</load_songs>
+    <load_externals>Carregando planilha(s) extarna(s)</load_externals>
     <pass1>Classificando, 1° Passo</pass1>
     <pass2>Classificando, 2° Passo</pass2>
+    <detect_presentation_hosts>Detectando aplicativos de apresentação disponíveis</detect_presentation_hosts>
   </progress_status>
-
+	<export_options title="Opções de Exportação HTML">
+		<handling caption="Posição da folha de estilos CSS">
+			<link caption="Vincular à folha de estilos"/>
+			<embed caption="Incorporar estilo ao arquivo exportado"/>
+		</handling>
+		<options caption="Opções da Folha de Estilos CSS">
+			<default caption="Usar estilo específico da folha de estilos"/>
+			<print caption="Usar folha de estilos baseada nas configurações de impressão"/>
+		</options>
+		<export caption="Exportação múltipla">
+			<single caption="Único arquivo para todas as músicas"/>
+			<unique caption="Arquivo único para todas as músicas"/>
+		</export>
+		<cssfile caption="Folha de Estilos">link(shared/style_file/@caption)</cssfile>
+		<outdir caption="Pasta de saída">link(shared/export_to/@caption)</outdir>
+		<outfile>Arquivo de saída</outfile>
+		<cancel caption="link(shared/cancel/@caption)"/>
+		<ok caption="link(shared/ok/@caption)"/>
+		<nofile>(Nenhum)</nofile>
+		<filter_css>Folha de Estilos</filter_css>
+	</export_options>
 </language>

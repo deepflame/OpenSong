@@ -150,8 +150,6 @@
       <add_style caption="Stil">Fügt dem aktuellen Set einen Eintrag hinzu, der den Stil für die nachfolgenden Set-Einträge definiert. Es kann ein neuer Stil definiert werden oder zum vorhergehenden Stil zurückgekehrt werden.</add_style>
       <add_image caption="Bild">Fügt dem aktuellen Set ein Bild hinzu. Bilder erlauben es ein einzelnes Bild oder eine Diaschau ohne Texte anzuzeigen.</add_image>
       <add_external caption="Fremdinhalt">Fügt dem aktuellen Set einen Eintrag hinzu, der das Einbinden externer Programme als Quellen ermöglicht wie z.B. eine Präsentation oder eine DVD.</add_external>
-      <add_video caption="Video">TODO: Adds a video file to the current set. Use this to present a video from within OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">TODO: Adds a PowerPoint presentation to the current set. Use this to control a PowerPoint presentation from within OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Aktueller Eintrag">
       <move_up caption="Nach oben">Verschiebt den aktuellen Eintrag um eine Position nach oben.</move_up>

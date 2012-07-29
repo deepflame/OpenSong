@@ -146,8 +146,6 @@
       <add_scripture caption="Biblija">Doda prosojnico ali prosojnice k trenutni zbirki. To bo odprlo prikazno okno, ki bo omogočalo izbiro določenega odlomka Svetega pisma za prikaz.</add_scripture>
       <add_slides caption="Prosojnica">Doda trenutni zbirki prosojnico po meri. Prosojnica po meri dopušča določiti lasten naslov, podnaslov, telo besedila in celo videz. Prosojnica po meri lahko vsebuje niz prosojnic.</add_slides>
       <add_style caption="Videz">Spremeni privzeti videz zbirke na katerem koli mestu v zbirki. Sprememba videza lahko definira nov videz ali povrne predhoden videz.</add_style>
-      <add_video caption="Video">Doda video datoteko v trenutno zbirko. Uporabite, da predstavite video v programu OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Doda PowerPoint prezentacijo v trenutno zbirko. Uporabite za nadzor PowerPoint prezentacij v programu OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Trenutni predmet">
       <move_up caption="Gor">Premakne trenutno izbran predmet v zbirki bliže začetku zbirke.</move_up>

@@ -149,8 +149,6 @@
       <add_style caption="Stile">Cambia lo stile standard del set. Le modifiche possono definire un nuovo stile o tornare al precedente.</add_style>
       <add_image caption="Immagine">Aggiunge una slide con immagine al set. Potrai selezionare un'immagine singola o piu' immagini anziche' testo.</add_image>
       <add_external caption="Esterno">Aggiunge una nuova slide al set che permette l'attivazione di sorgenti esterne come una presentazione o un software di visione DVD.</add_external>
-      <add_video caption="Video">Aggiunge un video al set. Utilizzalo per mostrare un video da OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Aggiunge una presentazione PowerPoint al set.</add_powerpoint>
     </new_item>
     <current_item caption="Oggetto corrente">
       <move_up caption="Sposta su">Sposta l'oggetto corrente verso l'alto di un passo.</move_up>

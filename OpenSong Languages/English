@@ -149,8 +149,6 @@
       <add_style caption="Style">Changes the current set's default style at any place in the set. Styles changes can define a new style or revert to the previous style.</add_style>
       <add_image caption="Image">Adds an image slide to the current set. Image slides will allow you to display a single image or a slideshow of multiple images instead of a body text.</add_image>
       <add_external caption="External">Adds a new slide to the current set that enables activation of external sources such as a presentation or DVD playback software.</add_external>
-      <add_video caption="Video">Adds a video file to the current set. Use this to present a video from within OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Adds a PowerPoint presentation to the current set. Use this to control a PowerPoint presentation from within OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Current Item">
       <move_up caption="Move Up">Moves the currently selected item in the set closer to the beginning of the set.</move_up>

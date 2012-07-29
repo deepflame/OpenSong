@@ -142,8 +142,6 @@
       <add_scripture caption="Bibeltekst">Legg til en bibeltekst eller et lysbilde til denne listen.</add_scripture>
       <add_slides caption="Lysbilde">Legg til et egendefinert lysbilde til denne listen.</add_slides>
       <add_style caption="Stil">Skift stil hvorsomhelst på listen.</add_style>
-      <add_video caption="Video">Legg til en video fil til listen.</add_video>
-      <add_powerpoint caption="PowerPoint">legg til en PowerPoint presentasjon til listen.</add_powerpoint>
     </new_item>
     <current_item caption="Valgt objekt">
       <move_up caption="Flytt opp">Flytter det valgte objektet opp</move_up>

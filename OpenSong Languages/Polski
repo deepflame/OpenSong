@@ -149,8 +149,6 @@
       <add_style caption="Styl">Zamienia bieżący styl zestawu od tego miejsca. Zmiana stylu pozwala na zdefiniowanie nowego stylu lub powrót do poprzedniego.</add_style>
 			<add_image caption="Obrazek">Dodaje slajd obrazkowy do bieżącego zestawu. Slajdy obrazkowe umożliwiają wyświetlanie pojedynczego obrazka lub ich sekwencji zamiast tekstu.</add_image>
       <add_external caption="Zewnętrzny">Dodaje do bieżącego zestawu slajd umożliwiający wyświetlenie zewnętrznej prezentacji lub uruchomienie odtwarzacza plików multimedialnych.</add_external>
-      <add_video caption="Film">Dodaje film do bieżącego zestawu. Użyj tego przycisku, by wyświetlić film w OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Dodaje prezentację PowerPoint do bieżącego zestawu. Użyj tego przycisku, by wyświetlić prezentację PowerPoint w OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Element">
       <move_up caption="Do góry">Przesuwa wybrany element zestawu w kierunku jego początku.</move_up>

@@ -149,8 +149,6 @@
       <add_style caption="Stílus">Az aktuális összeállítás alapértelmezett stílusának módosítása bárhol az összeállításban. A stílusok révén új vetítési stílust adhatunk meg, vagy visszatérhetünk az előző/alapértelmezett stílushoz.</add_style>
       <add_image caption="Kép">Új képdia hozzáadása az összeállításhoz. A képdiák lehetővé teszik, hogy egy képet vagy egy képsorozatot jelenítsünk meg a tórzsszöveg helyett.</add_image>      
       <add_external caption="Külső">Új külső dia hozzáadása az összeállításhoz, amely lehetővé teszi olyan külső forrás aktiválását, mint pl. a bemutatók vagy egy DVD lejátszó.</add_external>
-      <add_video caption="Videó">Új videofájl hozzáadása az összeállításhoz. A videót ilyenkor az OpenSong játssza le (feltéve, ha le tudja). </add_video>
-      <add_powerpoint caption="PowerPoint">Egy PowerPoint prezentáció beillesztése az összeállításba. A PowerPoint prezentáció vezérlése ilyenkor az Open Song-on keresztül történik.</add_powerpoint>
     </new_item>
     <current_item caption="Aktuális elem">
       <move_up caption="Fel">A kiválasztott elme feljebb helyezése az összeállításban.</move_up>

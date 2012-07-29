@@ -149,8 +149,6 @@
       <add_style caption="Style">Change le style par défaut de la liste à n'importe quel endroit de celle-ci. Les changement de style peuvent en définir un nouveau ou revenir au précédant.</add_style>
 	  <add_image caption="Image">Ajoute une image à la liste en cours. Les diapos d'images vous permettront de montrer une image seule ou un diaporama d'images au lieu d'un texte.</add_image>
 	  <add_external caption="Externe">Ajoute un nouvel élement à la liste en cours permettant d'activier une source externe comme la lecture d'un DVD.</add_external>	  
-	  <add_video caption="Vidéo">Ajoute un fichier vidéo à la liste en cours. A utiliser pour projeter une vidéo dans OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Ajoute une présentation PowerPoint à la liste en cours. A utiliser pour controler une présentation PowerPoint directement dans OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Elément en cours">
       <move_up caption="Vers le haut">Déplace l'élément sélectionné vers le haut de la liste.</move_up>

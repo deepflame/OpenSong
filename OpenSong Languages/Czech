@@ -158,8 +158,6 @@ snapshot                momentka
       <add_slides caption="Snímky">Přidá uživatelský snímek do aktuálního playlistu. Uživatelské snímky vám dovolí vybrat si vlastní název, podnadpis, vlastní text a dokonce i styl. Uživatelský slide může ve skutečnosti obsahovat více snímků.</add_slides>
       <add_style caption="Styl">Mění aktuální základní styl kdekoli v playlistu. Změny stylů mohou definovat nový styl nebo navracet předchozí styl.</add_style>
       <add_image caption="Obrázek">Přidá snímek s obrázkem do aktuálního playlistu. Obrázkové snímky dovolují promítat jeden obrázek nebo sérii obrázků místo textu.</add_image>
-      <add_video caption="Video">Přidá video do aktuálního playlistu. Použijte, pokud chcete prezentovat video uvnitř OpenSongu.</add_video>
-      <add_powerpoint caption="PowerPoint">Přidá PowerPoint prezentaci do aktuálního playlistu. Použijte, pokud chcete ovládat PowerPoint prezentaci z OpenSongu.</add_powerpoint>
     </new_item>
     <current_item caption="Aktuální položka">
       <move_up caption="Nahoru">Přesune vybranou položku výše.</move_up>

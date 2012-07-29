@@ -147,9 +147,7 @@
       <add_slides caption="Slaid">Lisab tühja slaidi. Tühi slaid võimaldab sul endal midagi kirjutada, saad määrata ka eraldi kujunduse, pealkirja, alampealkirja jne. See slaid võib koosneda ka tegelikult mitmetest slaididest.</add_slides>
       <add_style caption="Stiil">Muudab praeguse komplekti vaikimisi stiili mis tahes kohas komplektis. Stiili muutused võivad määratleda uue stiil või taastada eelneva stiil</add_style>
       <add_image caption="Pilt">Lisab pildi(foto) käesolevasse komplekti. Pildislaid võimaldab sul näidata ühte pilti või piltide seerjat.</add_image>
-<add_external caption="External">Lisab uue slaidi komplekti, mis võimaldab aktiveerida välistest allikatest nagu esitluse või DVD taasesituse tarkvara.</add_external> 
-     <add_video caption="Video">Lisab video faili käesolevale komplektile. Kasuta seda, kui soovid näidata videot läbi OpenSong-i.</add_video>
-      <add_powerpoint caption="PowerPoint">Lisab PowerPoint- presentatsiooni käesolevasse komplekti.Kasutage seda kontrolli, et kontrollida PowerPointi esitlust OpenSong programmist.</add_powerpoint>
+      <add_external caption="External">Lisab uue slaidi komplekti, mis võimaldab aktiveerida välistest allikatest nagu esitluse või DVD taasesituse tarkvara.</add_external> 
     </new_item>
     <current_item caption="Valitud slaid">
       <move_up caption="Liiguta üles">Liigutab valitud slaidi järjekorras üles poole.</move_up>

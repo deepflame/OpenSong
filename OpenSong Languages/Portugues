@@ -135,8 +135,6 @@
       <add_scripture caption="Leitura">Adiciona um slide de versículo ou slides ao programa atual. Mostrará uma janela que lhe permitirá escolher a passagem bíblica que você quer mostrar.</add_scripture>
       <add_slides caption="Slides">Adiciona um slide padrão ao programa atual. Slides padrão permitem especificar seu próprio título, sub-título, corpo de texto e até o estilo. Um slide padrão pode na verdade conter uma série de slides.</add_slides>
       <add_style caption="Estilo">Muda o estilo padrão do programa atual em qualquer ponto do programa. Mudança de estio pode definir um novo estilo ou reverter para o estilo anterior.</add_style>
-      <add_video caption="Vídeo">Adiciona um arquivo de vídeo ao programa atual. Use para apresentar um vídeo dentro de OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Adiciona uma apresentação do PowerPoint ao programa atual. Use para controlar uma apresentação do PowerPoint de dentro de OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Item Atual">
       <move_up caption="Acima">Move o item selecionado mais próximo do início do programa.</move_up>

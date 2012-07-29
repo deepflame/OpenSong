@@ -147,8 +147,6 @@
       <add_slides caption="Diapositivas">Añade una diapositiva personalizada a la colección actual. Las diapositivas personalizadas le permiten especificar su propio título, subtítulo, cuerpo del texto, e incluso el estilo. Una diapositiva personalizada puede, de hecho, contener otras diapositivas.</add_slides>
       <add_style caption="Estilo">Cambia el estilo predefinido actual de la colección en cualquier parte de ella. Los cambios de estilo pueden definir uno nuevo o revertirlo al estilo anterior.</add_style>
       <add_image caption="Imagen">Añade una diapositiva de imagen a la colección actual. Las diapositivas de imágenes le permiten presentar un sola imagen o una presentación de varias imágenes en vez de texto.</add_image>
-      <add_video caption="Video">Agrega un archivo de video a la colección actual. Use esto para presentar un video desde OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Añade una presentación de PowerPoint a la colección actual. Use esto para controlar una presentación de PowerPoint desde OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Elemento Actual">
       <move_up caption="Mover Arriba">Mueve el elemento actualmente seleccionado más cerca del principio de la colección.</move_up>

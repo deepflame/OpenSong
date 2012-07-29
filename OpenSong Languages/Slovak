@@ -149,8 +149,6 @@
       <add_style caption="Štýl">Zmení aktuálny základný štýl kdekoľvek v playliste. Zmeny štýlov môžu definovať nový štýl alebo vrátiť sa k predchádzajúcemu štýlu.</add_style>
       <add_image caption="Obrázok">Pridá snímok s obrázkom do aktuálneho playlistu. Obrázkové snímky umožňujú premietnuť jeden obrázok alebo sériu obrázkov namiesto textu.</add_image>
       <add_external caption="External">Pridá nový snímok ktorý povolí aktiváciu zobrazenia z externého zdroja, ako napríklad Power Point, prehratie DVD videa a pod.</add_external>
-      <add_video caption="Video">Pridá video do aktuálneho playlistu. Použite to, ak chcete z programu OpenSong premietnuť video.</add_video>
-      <add_powerpoint caption="PowerPoint">Pridá prezentáciu PowerPoint do aktuálneho playlistu. Použite to, ak chcete z programu OpenSong ovládať prezentáciu PowerPoint.</add_powerpoint>
     </new_item>
     <current_item caption="Aktuálna položka">
       <move_up caption="Nahor">Presunie vybranú položku bližšie k začiatku playlistu.</move_up>

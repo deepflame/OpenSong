@@ -149,8 +149,6 @@
       <add_style caption="Stijl">Wijzigt de huidige stijl van het project op de (willekeurig) gekozen plaats  in het project. Stijlwijzigingen kunnen een nieuwe stijl definieren of terug keren naar een vorige stijl.</add_style>
       <add_image caption="Afbeelding">Voegt een afbeelding als dia toe aan het huidige project. Deze optie geeft je de mogelijkheid om een enkele afbeelding dan wel een serie afbeeldingen weer te geven in plaats van tekst.</add_image>
       <add_external caption="Extern">Voegt een nieuwe dia toe aan het huidige project waarmee externe programma's kunnen worden gestart. Hiermee is het mogelijk om een presentatie of een DVD te vertonen.</add_external>
-      <add_video caption="Video">Voegt een video bestand toe aan het huidige project. Dit is te gebruiken om een filmpje te laten zien vanuit OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Voegt een PowerPoint presentatie toe aan het huidige project. Dit is te gebruiken om een PowerPoint presentatie te tonen vanuit OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Huidig Item">
       <move_up caption="Omhoog">Verplaatst het huidige item naar boven (voren) in het project.</move_up>

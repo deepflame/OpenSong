@@ -149,8 +149,6 @@
       <add_style caption="Utseende">Lägger till en post i listan som ändrar presentationens standardutseende var som helst i presentationen. Detta kan innebära ett helt nytt utseende, eller att gå tillbaka till ett tidigare använt utseende.</add_style>
       <add_image caption="Bilder">Lägger till en eller flera bilder/foton till listan. Du kan på så sätt visa en bild eller en serie bilder istället för att skriva in text.</add_image>
       <add_external caption="Extern">Lägger till en ny bild till listan så att externa media såsom en PowerPoint eller DVD-film kan visas med ett externt program.</add_external>
-      <add_video caption="Video">Lägger till en videofil till listan.</add_video>
-      <add_powerpoint caption="PowerPoint">Lägger till en PowerPoint presentation till listan. Använd för att manövrera en ppt-fil i Opensong</add_powerpoint>
     </new_item>
     <current_item caption="Markerad">
       <move_up caption="Flytta upp">Flyttar markerad post i listan uppåt.</move_up>

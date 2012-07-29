@@ -149,8 +149,6 @@
       <add_style caption="Estilo">Modifica o estilo padrão da configuração atual em qualquer ponto da configuração. A mudança de um estio pode incluir um novo estilo ou reverter para um estilo anterior.</add_style>
       <add_image caption="Image">Adiciona um slide de imagem para a atual configuração. Os slides de imagem permitirão você exibir uma imagem única ou uma exibição de múltiplas imagens em vez de um corpo de texto.</add_image>
       <add_external caption="External">Adiciona um novo slide para a configuração atual que permite a ativação de fontes externas, como uma apresentação ou software de reprodução de DVD.</add_external>
-      <add_video caption="Vídeo">Adiciona um arquivo de vídeo à configuração atual. Use esta opção para apresentar um vídeo dentro do OpenSong.</add_video>
-      <add_powerpoint caption="PowerPoint">Adiciona uma apresentação do PowerPoint à configuração atual. Eta opção é útil para controlar uma apresentação do PowerPoint de dentro do próprio OpenSong.</add_powerpoint>
     </new_item>
     <current_item caption="Item Atual">
       <move_up caption="Acima">Move o item atualmente selecionado um nível acima.</move_up>

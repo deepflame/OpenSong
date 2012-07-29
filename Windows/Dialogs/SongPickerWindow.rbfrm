@@ -46,7 +46,6 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "To add a song, click the song title below and click the ""Add"" button. If you know the name of the song you can type it into the Quick Lookup field, and click ""Add"" or press Enter. You can also double-click on the song name to add it."
       TextAlign       =   0
       TextColor       =   0
@@ -81,7 +80,6 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Select Folder:"
       TextAlign       =   0
       TextColor       =   0
@@ -147,7 +145,6 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Quick Lookup:"
       TextAlign       =   0
       TextColor       =   0
@@ -316,7 +313,6 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Preview:"
       TextAlign       =   0
       TextColor       =   0
@@ -396,7 +392,6 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Custom Presentation Order:"
       TextAlign       =   0
       TextColor       =   0
@@ -473,7 +468,6 @@ Begin Window SongPickerWindow
       Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Original Presentation Order:"
       TextAlign       =   0
       TextColor       =   0
@@ -591,7 +585,6 @@ Begin Window SongPickerWindow
       Width           =   69
    End
    Begin Timer timerLookup
-      Enabled         =   True
       Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
@@ -600,11 +593,8 @@ Begin Window SongPickerWindow
       Mode            =   2
       Period          =   1500
       Scope           =   0
-      TabIndex        =   15
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   0
-      Visible         =   True
       Width           =   32
    End
    Begin CanvasSmartSplitterDebugger CanvasSmartSplitterDebugger1
@@ -654,23 +644,22 @@ End
 
 	#tag Event
 		Sub Open()
-		  Dim x As Integer
-		  
 		  '++JRC
 		  CurrentSel = -1
 		  '--
-		  If UBound(MainWindow.Songs.GetFolders(pop_select_folder)) = 0 Then
-		  End If
+		  Call MainWindow.Songs.GetFolders(pop_select_folder)
+		  
 		  If Globals.CurrentSongPickerFolder = "" Then
 		    pop_select_folder.ListIndex = 0
 		  Else
-		    For x = 0 to pop_select_folder.ListCount - 1
+		    For x As Integer = 0 to pop_select_folder.ListCount - 1
 		      If Globals.CurrentSongPickerFolder = pop_select_folder.List(x) Then
 		        pop_select_folder.ListIndex = x
 		        Exit
 		      End If
 		    Next
 		  End If
+		  
 		  '++JRC
 		  SongFolderSel = pop_select_folder.ListIndex
 		  '--
@@ -702,6 +691,9 @@ End
 		  If Globals.CurrentSongPickerFolder = "" Then
 		    Globals.CurrentSongPickerFolder = Globals.CurrentSongFolder
 		  End If
+		  // Make sure for proper initialisation
+		  SongFolderSel = -1
+		  
 		  // call the Window constructor, or Open events will not fire
 		  Super.Window()
 		  
@@ -761,7 +753,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
-		Protected SongFolderSel As Integer
+		Protected SongFolderSel As Integer = -1
 	#tag EndProperty
 
 
@@ -835,8 +827,9 @@ End
 		  SongFolderSel = Me.ListIndex
 		  
 		  '--
-		  If UBound(MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)) = 0 Then
-		  End If
+		  App.MouseCursor = System.Cursors.Wait
+		  Call MainWindow.Songs.GetFiles(Me.Text, lst_all_songs)
+		  
 		  For i As Integer = 0 To lst_all_songs.ListCount - 1
 		    lst_all_songs.Cell(i, kListColumnPath) = _
 		    StringUtils.Chop(lst_all_songs.CellTag(i, kListColumnSong).StringValue, "/")
@@ -848,6 +841,8 @@ End
 		      lastFolder = lst_all_songs.Cell(i, kListColumnPath)
 		    End If
 		  Next
+		  App.MouseCursor = Nil
+		  
 		  If multipleFolders Then
 		    lst_all_songs.ColumnWidths = "66%,*"
 		  Else

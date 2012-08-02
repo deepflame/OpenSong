@@ -394,6 +394,11 @@
       <host caption="Kiszolgáló"/>
       <port caption="Port"/>
     </proxy>
+    <rcserver caption="Automatikus API">
+      <enable caption="Távoli vezérlés szerver bekapcsolása"/>
+      <key caption="Hitelesítési kulcs"/>
+      <port caption="Port"/>
+    </rcserver>
     <user_defined caption="Az egyéni dal mezők elnevezései">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>

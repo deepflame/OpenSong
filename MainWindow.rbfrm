@@ -1896,7 +1896,7 @@ Begin Window MainWindow Implements ScriptureReceiver
       TabIndex        =   5
       TabPanelIndex   =   0
       Top             =   34
-      Value           =   5
+      Value           =   0
       Visible         =   True
       Width           =   495
       Begin Canvas cnv_editor_style_change
@@ -10875,7 +10875,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub ActionSongPresent(mode As Integer)
+		Sub ActionSongPresent(mode As Integer, ItemNumber As Integer = 0)
 		  
 		  'Ask if user wants to save
 		  If NOT ActionSongAskSave Then Return 'User Canceled, Don't Present
@@ -10949,7 +10949,7 @@ End
 		  '++JRC Fix issue were PresentWindow wasn't getting focus
 		  MainWindow.SetFocus
 		  
-		  PresentWindow.Present setDoc, Mode
+		  PresentWindow.Present setDoc, Mode, ItemNumber
 		  
 		  'Self.Hide
 		  
@@ -11984,6 +11984,101 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function LoadSet(setName As String) As Boolean
+		  Dim success As Boolean = False
+		  Dim f As FolderItem
+		  Dim xnode As XmlNode
+		  Dim slideType As String
+		  
+		  If Status_InSetLoading Then
+		    Return success
+		  End If
+		  Status_InSetLoading = True
+		  
+		  lst_set_items.DeleteAllRows
+		  
+		  Dim index As Integer = -1
+		  For i As Integer = 0 To pop_sets_sets.ListCount-1
+		    If pop_sets_sets.List(i) = setName Then
+		      index = i
+		      Exit
+		    End If
+		  Next
+		  
+		  If index > -1 Then
+		    pop_sets_sets.ListIndex = index
+		    CurrentSetIndex = index
+		    
+		    f = App.DocsFolder.Child("Sets").Child(setName)
+		    CurrentSet = SmartML.XDocFromFile(f)
+		    If CurrentSet = Nil Then
+		      App.MouseCursor = Nil
+		      CurrentSet = New XmlDocument
+		      xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
+		      SmartML.DisplayError
+		    End If
+		    // This section gets the /set/@name value from the current document
+		    // Since this is a non-existent attribute in the released version, add it if
+		    // it's not already there.
+		    //EMP 10/9/04
+		    dim nameAtt as xmlattribute
+		    
+		    nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
+		    
+		    if nameatt = Nil then
+		      CurrentSet.DocumentElement.SetAttribute("name", setName)
+		    end if
+		    
+		    CurrentSetName = setName
+		    
+		    //--
+		    Dim slide_groups, xchild As XmlNode
+		    
+		    slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
+		    If Not IsNull(slide_groups)Then
+		      xchild = slide_groups.FirstChild
+		      While xchild <> Nil
+		        '++JRC Fix broken set item type displaying in set list
+		        slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type") + "/@caption")
+		        If slideType = "" Then // unknown slide type
+		          App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "/@caption" + "'", 1
+		          slideType = "*ERROR*"
+		        End If
+		        lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
+		        lst_set_items.CellTag(lst_set_items.ListCount-1, 0) = xchild.GetAttribute("type")
+		        xchild = xchild.NextSibling
+		      Wend
+		      
+		      '++JRC Save backup copy
+		      TempSet = New XmlDocument
+		      TempSet.AppendChild TempSet.ImportNode(CurrentSet.DocumentElement, True)
+		      '--
+		      
+		      Status_SetOpen = True
+		      Status_SetChanged = False
+		      Status_InSetOpen = False
+		      Status_InSetChanged = False
+		      '++JRC Correct issue where the first and last item in a set weren't accessable
+		      CurrentInSetItem = -1
+		      '--
+		      EnableMenuItems
+		      
+		      success = True
+		    Else
+		      
+		      success = False
+		    End If
+		    
+		  Else
+		    success = False
+		  End If
+		  
+		  Status_InSetLoading = False
+		  Return success
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub LoadSets(folder As FolderItem)
 		  Dim x As Integer
 		  Dim s(0) As String
@@ -12014,6 +12109,103 @@ End
 		  lst_set_items.DeleteAllRows
 		  App.MouseCursor = Nil
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function LoadSong(f As FolderItem) As Boolean
+		  Dim result As Boolean = False
+		  
+		  If Status_InSongLoading Then
+		    Return result
+		  End If
+		  Status_InSongLoading = True
+		  
+		  Dim fullpath As String = f.AbsolutePath().Mid(Songs.GetRootFolder().AbsolutePath().Len + 1)
+		  
+		  If f <> Nil And f.Exists Then
+		    App.MouseCursor = System.Cursors.Wait
+		    
+		    Dim folderPath As String = fullpath.Mid(1, fullpath.Len() - f.Name().Len() - 1)
+		    folderPath = ReplaceAll(folderPath, "\", "/")
+		    
+		    Dim index As Integer = -1
+		    For i As Integer = 0 To pop_songs_song_folders.ListCount-1
+		      If pop_songs_song_folders.List(i) = folderPath Or _
+		        pop_songs_song_folders.List(i) = folderPath.ReplaceAll("/", "\") Then
+		        index = i
+		        folderPath = pop_songs_song_folders.List(i)
+		        Exit
+		      End If
+		    Next
+		    
+		    If index > -1 Then
+		      If pop_songs_song_folders.ListIndex <> index Then
+		        pop_songs_song_folders.ListIndex = index
+		        
+		        Globals.OldFolderSel = index
+		        Globals.CurrentSongFolder = folderPath
+		        
+		        Call Songs.GetFiles(folderPath, lst_songs_songs)
+		      End If
+		      
+		      index = -1
+		      For i As Integer = 0 To lst_songs_songs.ListCount-1
+		        If lst_songs_songs.List(i) = f.Name Then
+		          index = i
+		          Exit
+		        End If
+		      Next
+		      
+		      lst_songs_songs.ListIndex = index
+		      
+		      CurrentSong = SmartML.XDocFromFile(f)
+		      
+		      // Open as Object...
+		      'CurrentSongObj = New Song
+		      'Call CurrentSongObj.Load(f) // We'll ignore error handling for the moment.  Not a good thing.
+		      
+		      'Changed save current song filename
+		      Globals.OldSongFileName = fullpath
+		      //++EMP 8/9/05 -- Show which folder this song is found in
+		      edt_songs_curr_folder.Text = folderPath
+		      
+		      If right(edt_songs_curr_folder.Text, 1) = "/" Then edt_songs_curr_folder.Text = Left(edt_songs_curr_folder.Text, Len(edt_songs_curr_folder.Text) - 1)
+		      //--
+		      App.MouseCursor = Nil
+		      If CurrentSong <> Nil  Then
+		        Status_SongOpen = False ' Just to keep the field changes from calling EnableMenuItems
+		        LoadSongFields
+		        Status_SongOpen = True
+		        Status_SongChanged = False
+		        EnableMenuItems
+		        
+		        result = True
+		      Else
+		        // Dummy up a doc to avoid a Nil object
+		        CurrentSong = New XmlDocument
+		        Dim xnode As XmlNode = CurrentSong.AppendChild(CurrentSong.CreateElement("song"))
+		        SmartML.SetValue xnode, "title", f.Name
+		        LoadSongFields
+		        Status_SongOpen = True
+		        Status_SongChanged = False
+		        EnableMenuItems
+		        SmartML.DisplayError
+		      End If
+		    Else
+		      result = False
+		    End If
+		  Else
+		    InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
+		    Status_SongOpen = False
+		    Status_SongChanged = False
+		    EnableMenuItems
+		  End If
+		  
+		  
+		  App.MouseCursor = Nil
+		  Status_InSongLoading = False
+		  Return result
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -12254,64 +12446,6 @@ End
 		    txt_context_help.Text = App.T.Translate(str)
 		  End If
 		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h1
-		Protected Function SetLoadSet(f As FolderItem) As Boolean
-		  Dim xnode As XmlNode
-		  Dim slideType As String
-		  
-		  // Simple sanity checks
-		  If f = Nil Then Return False
-		  If Not f.Exists Then Return False
-		  
-		  CurrentSet = SmartML.XDocFromFile(f)
-		  Status_InSetChanged = False
-		  Status_SetChanged = False
-		  Status_InSetOpen = False
-		  lst_set_items.DeleteAllRows
-		  If CurrentSet = Nil Then
-		    Status_SetOpen = False
-		    CurrentSet = New XmlDocument
-		    xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
-		    SmartML.DisplayError
-		    Return False
-		  End If
-		  Status_SetOpen = True
-		  // This section gets the /set/@name value from the current document
-		  // Since this is a non-existent attribute in the 0.9.9 version, add it if
-		  // it's not already there.
-		  //EMP 10/9/04
-		  dim nameAtt as xmlattribute
-		  
-		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
-		  
-		  if nameatt = Nil then
-		    CurrentSet.DocumentElement.SetAttribute("name", pop_sets_sets.text)
-		  end if
-		  
-		  CurrentSetName = pop_sets_sets.text
-		  //--
-		  Dim slide_groups, xchild As XmlNode
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  If slide_groups = Nil Then Return True
-		  
-		  xchild = slide_groups.FirstChild
-		  While xchild <> Nil
-		    '++JRC Fix broken set item type displaying in set list
-		    slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type") + "/@caption")
-		    If slideType = "" Then // unknown slide type
-		      App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "/@caption" + "'", 1
-		      slideType = "*ERROR*"
-		    End If
-		    lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
-		    xchild = xchild.NextSibling
-		  Wend
-		  
-		  EnableMenuItems
-		  Return True
-		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -12687,12 +12821,20 @@ End
 		Protected Status_InSetEditable As Boolean
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private Status_InSetLoading As Boolean = False
+	#tag EndProperty
+
 	#tag Property, Flags = &h1
 		Protected Status_InSetOpen As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
 		Protected Status_InSetSongEdit As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private Status_InSongLoading As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -12703,8 +12845,8 @@ End
 		Protected Status_ProgramInitialized As Boolean
 	#tag EndProperty
 
-	#tag Property, Flags = &h1
-		Protected Status_SetChanged As Boolean
+	#tag Property, Flags = &h0
+		Status_SetChanged As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -12826,9 +12968,12 @@ End
 #tag Events pop_songs_song_folders
 	#tag Event
 		Sub Change()
+		  If Status_InSongLoading Then
+		    Return
+		  End If
+		  
 		  '++JRC
 		  Dim f As FolderItem
-		  
 		  f = FileUtils.RelativePathToFolderItem(App.DocsFolder.Child(App.STR_SONGS), Me.Text)
 		  
 		  If f = Nil Or NOT f.Exists Then
@@ -13347,8 +13492,11 @@ End
 	#tag Event
 		Sub Change()
 		  Dim f As FolderItem
-		  Dim xnode As XmlNode
 		  Dim fullpath As String
+		  
+		  If Status_InSongLoading Then
+		    Return
+		  End If
 		  
 		  //++EMP 18 Feb 2006
 		  // If Globals.OldSongSel < 0, then immediately return.
@@ -13414,46 +13562,8 @@ End
 		    
 		    'f = Songs.GetFile(pop_songs_song_folders.Text + "/" + lst_songs_songs.Text)
 		    fullpath = lst_songs_songs.CellTag(Me.ListIndex, 0).StringValue + lst_songs_songs.Text
-		    f = Songs.GetFile(fullpath)
+		    Call LoadSong(Songs.GetFile(fullpath))
 		    
-		    If f <> Nil And f.Exists Then
-		      App.MouseCursor = System.Cursors.Wait
-		      CurrentSong = SmartML.XDocFromFile(f)
-		      
-		      // Open as Object...
-		      'CurrentSongObj = New Song
-		      'Call CurrentSongObj.Load(f) // We'll ignore error handling for the moment.  Not a good thing.
-		      
-		      'Changed save current song filename
-		      Globals.OldSongFileName = fullpath
-		      //++EMP 8/9/05 -- Show which folder this song is found in
-		      edt_songs_curr_folder.Text = lst_songs_songs.CellTag(Me.ListIndex, 0).StringValue
-		      If right(edt_songs_curr_folder.Text, 1) = "/" Then edt_songs_curr_folder.Text = Left(edt_songs_curr_folder.Text, Len(edt_songs_curr_folder.Text) - 1)
-		      //--
-		      App.MouseCursor = Nil
-		      If CurrentSong <> Nil  Then
-		        Status_SongOpen = False ' Just to keep the field changes from calling EnableMenuItems
-		        LoadSongFields
-		        Status_SongOpen = True
-		        Status_SongChanged = False
-		        EnableMenuItems
-		      Else
-		        // Dummy up a doc to avoid a Nil object
-		        CurrentSong = New XmlDocument
-		        xnode = CurrentSong.AppendChild(CurrentSong.CreateElement("song"))
-		        SmartML.SetValue xnode, "title", f.Name
-		        LoadSongFields
-		        Status_SongOpen = True
-		        Status_SongChanged = False
-		        EnableMenuItems
-		        SmartML.DisplayError
-		      End If
-		    Else
-		      InputBox.Message App.T.Translate("folderdb_errors/error[@code='"+Str(Songs.ErrorCode)+"']", lst_songs_songs.Text)
-		      Status_SongOpen = False
-		      Status_SongChanged = False
-		      EnableMenuItems
-		    End If
 		  Else
 		    Status_SongOpen = False
 		    Status_SongChanged = False
@@ -13541,6 +13651,10 @@ End
 #tag Events pop_sets_sets
 	#tag Event
 		Sub Change()
+		  If Status_InSetLoading Then
+		    Return
+		  End If
+		  
 		  If Me.ListIndex < 0 Then
 		    CurrentSetIndex = -1
 		    Return
@@ -13578,67 +13692,9 @@ End
 		    Return
 		  End If
 		  
-		  Dim f As FolderItem
-		  Dim xnode As XmlNode
-		  Dim slideType As String
-		  
-		  lst_set_items.DeleteAllRows
-		  
-		  f = App.DocsFolder.Child("Sets").Child(pop_sets_sets.Text)
-		  CurrentSet = SmartML.XDocFromFile(f)
-		  If CurrentSet = Nil Then
-		    App.MouseCursor = Nil
-		    CurrentSet = New XmlDocument
-		    xnode = CurrentSet.AppendChild(CurrentSet.CreateElement("set"))
-		    SmartML.DisplayError
-		  End If
-		  // This section gets the /set/@name value from the current document
-		  // Since this is a non-existent attribute in the released version, add it if
-		  // it's not already there.
-		  //EMP 10/9/04
-		  dim nameAtt as xmlattribute
-		  
-		  nameAtt = CurrentSet.DocumentElement.GetAttributeNode("name")
-		  
-		  if nameatt = Nil then
-		    CurrentSet.DocumentElement.SetAttribute("name", me.text)
-		  end if
-		  
-		  CurrentSetName = me.text
-		  //--
-		  Dim slide_groups, xchild As XmlNode
-		  
-		  slide_groups = SmartML.GetNode(CurrentSet.DocumentElement, "slide_groups", True)
-		  If slide_groups = Nil Then Return
-		  
-		  xchild = slide_groups.FirstChild
-		  While xchild <> Nil
-		    '++JRC Fix broken set item type displaying in set list
-		    slideType = App.T.Translate("sets_mode/items/" + xchild.GetAttribute("type") + "/@caption")
-		    If slideType = "" Then // unknown slide type
-		      App.DebugWriter.Write "MainWindow.pop_sets_sets.Change: Unknown slide type '" + xchild.GetAttribute("type") + "/@caption" + "'", 1
-		      slideType = "*ERROR*"
-		    End If
-		    lst_set_items.AddRow xchild.GetAttribute("name") + " " + slideType
-		    lst_set_items.CellTag(lst_set_items.ListCount-1, 0) = xchild.GetAttribute("type")
-		    xchild = xchild.NextSibling
-		  Wend
-		  
-		  '++JRC Save backup copy
-		  TempSet = New XmlDocument
-		  TempSet.AppendChild TempSet.ImportNode(CurrentSet.DocumentElement, True)
-		  '--
-		  
-		  Status_SetOpen = True
-		  Status_SetChanged = False
-		  Status_InSetOpen = False
-		  Status_InSetChanged = False
-		  '++JRC Correct issue where the first and last item in a set weren't accessable
-		  CurrentInSetItem = -1
-		  '--
-		  EnableMenuItems
-		  
+		  Call LoadSet(me.Text)
 		  App.MouseCursor = Nil
+		  
 		End Sub
 	#tag EndEvent
 	#tag Event

@@ -1,4 +1,8 @@
-﻿Fix for "Song Lookup" does not populate 'All' at initial load - (Bug # 3546361) (Vwout)
+﻿* Extended Automation API implementation: added load and present actions for song and set. (Vwout)
+
+* Small bugfixes in Automation API. (Vwout)
+
+* Fix for "Song Lookup" does not populate 'All' at initial load - (Bug # 3546361) (Vwout)
 
 * Moved Linux install script to utilities subproject
 
@@ -6,7 +10,7 @@
 * Introduced an Automation API for remote control purposes using REST over HTTP and/or WebSocket. (Vwout)
 For a full description of the API see http://opensong.org/d/api. The current implementation supports all information retrieval operations (GET).
 
-* Improved snapshotting behavior to be less intrusive to the presentation interaction. At slow storage systems, the response on slide changes degraded. This is improved by moving the snapshot storage to a seperate thread with less priority.
+* Improved snapshotting behavior to be less intrusive to the presentation interaction. At slow storage systems, the response on slide changes degraded. This is improved by moving the snapshot storage to a seperate thread with less priority. (Vwout)
 
 * Code cleanup, removed deprecated and incorrect type casting code constructions
 

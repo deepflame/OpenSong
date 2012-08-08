@@ -10,7 +10,6 @@ Implements REST.RESTResource
 		  setName = ReplaceAll(setName, "\", "")
 		  setName = ReplaceAll(setName, "..", "")
 		  
-		  
 		  f = App.DocsFolder.Child("Sets").Child(setName)
 		  If (f.Exists()) Then
 		    setXml = SmartML.XDocFromFile(f)
@@ -34,9 +33,7 @@ Implements REST.RESTResource
 		  If IsNull(setXml) Then
 		    result = New REST.RESTresponse("The requested set is not available.", "404 Not Found")
 		  Else
-		    
 		    result = New REST.RESTresponse
-		    
 		    xml = result.CreateXmlResponse(Name(), "slide", setName)
 		    root = xml.DocumentElement()
 		    slide = root.AppendChild(xml.CreateElement("slide"))
@@ -110,9 +107,7 @@ Implements REST.RESTResource
 		  If IsNull(setXml) Then
 		    result = New REST.RESTresponse("The requested set is not available.", "404 Not Found")
 		  Else
-		    
 		    result = New REST.RESTresponse
-		    
 		    xml = result.CreateXmlResponse(Name(), "slides", setName)
 		    root = xml.DocumentElement()
 		    
@@ -150,11 +145,73 @@ Implements REST.RESTResource
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function LoadSet(setName As String) As REST.RESTResponse
+		  Dim result As REST.RESTresponse = Nil
+		  Dim setXml As XmlDocument
+		  
+		  If MainWindow.Status_SetChanged Then
+		    result = New REST.RESTresponse("The currently loaded set has unsaved changes, requested action cannot be executed.", "403 Forbidden")
+		  Else
+		    
+		    setXml = GetSet(setName)
+		    If IsNull(setXml) Then
+		      result = New REST.RESTresponse("The requested set is not available.", "404 Not Found")
+		    Else
+		      
+		      If MainWindow.LoadSet(setName) Then
+		        result = New REST.RESTResponse("OK")
+		      Else
+		        result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
+		      End If
+		      
+		    End If
+		  End If
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Function Name() As String
 		  // Part of the REST.RESTResource interface.
 		  
 		  Return "set"
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function PresentSet(setName As String, slideIndex As Integer = 1, mode As Integer = PresentWindow.MODE_DUAL_SCREEN) As REST.RESTResponse
+		  Dim result As REST.RESTresponse = Nil
+		  Dim setXml As XmlDocument
+		  
+		  slideIndex = Max(slideIndex, 1)
+		  'Restrict supported display modes to single and dual screen; it makes no sense to start remote preview
+		  If mode <> PresentWindow.MODE_SINGLE_SCREEN And _
+		    mode <> PresentWindow.MODE_DUAL_SCREEN Then
+		    mode = PresentWindow.MODE_DUAL_SCREEN
+		  End If
+		  
+		  If MainWindow.Status_SetChanged Then
+		    result = New REST.RESTresponse("The currently loaded set has unsaved changes, requested action cannot be executed.", "403 Forbidden")
+		  Else
+		    
+		    setXml = GetSet(setName)
+		    If IsNull(setXml) Then
+		      result = New REST.RESTresponse("The requested set is not available.", "404 Not Found")
+		    Else
+		      
+		      If MainWindow.LoadSet(setName) Then
+		        Call MainWindow.ActionSetPresent(mode, slideIndex)
+		        result = New REST.RESTResponse("OK")
+		      Else
+		        result = New REST.RESTResponse("The requested action failed.", "500 Internal Server Error")
+		      End If
+		      
+		    End If
+		  End If
+		  
+		  Return result
 		End Function
 	#tag EndMethod
 
@@ -184,7 +241,19 @@ Implements REST.RESTResource
 		    Select Case protocolHandler.Method()
 		    Case "POST"
 		      
-		      result = New REST.RESTresponse("Todo.", "501 Not Implemented")
+		      If Globals.Status_Presentation Then
+		        result = New REST.RESTresponse("There currently is a running presentation, requested action cannot be executed.", "403 Forbidden")
+		      Else
+		        Select Case protocolHandler.Action()
+		          
+		        case "load"
+		          result = LoadSet(protocolHandler.Identifier())
+		          
+		        case "present"
+		          result = PresentSet(protocolHandler.Identifier(), protocolHandler.Parameter("slide", 0), protocolHandler.Parameter("display", 0))
+		          
+		        End Select
+		      End If
 		      
 		    Else
 		      result = New REST.RESTresponse("The request method is not allowed, use POST.", "405 Method Not Allowed")

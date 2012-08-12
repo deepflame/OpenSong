@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<language name="Slovak" author="Oto BREZINA, Peter KOZAR, Matej Kovacik" version="2.0-Beta">
+<language name="Slovak" author="Oto BREZINA, Peter KOZAR, Matej Kovacik" version="2.0-Beta2">
 
   <load_settings>
-    <checking_folders>Vytvorenie/kontrola zložiek s dokumentmi</checking_folders>
+    <checking_folders>Vytvorenie/kontrola adresárov s dokumentami</checking_folders>
     <main>Načítanie hlavných nastavení</main>
     <print>Načítanie nastavení tlače</print>
     <presentation>Načítanie nastavení prezentácie</presentation>
@@ -21,14 +21,14 @@
   <load_data>
       <bible>Načítanie predvolenej Biblie</bible>
       <songs_cache>Vytvorenie zásobníka piesní</songs_cache>
-      <folders>Načítanie zložiek s piesňami</folders>
+      <folders>Načítanie adresárov s piesňami</folders>
       <songs>Načítanie piesní</songs>
-      <sets>Načítanie playlistov</sets>
+      <sets>Načítanie scenárov prezentácie</sets>
   </load_data>
 
   <welcome>Vitajte!</welcome>
 
-  <songs_mode caption="Režim piesní">Použite tento režim, ak chcete vložiť alebo upraviť svoje piesne. Piesne sa dajú vytlačiť alebo premietať. Pri prechode z režimu piesní do režimu playlistov budete vyzvaní uložiť vykonané zmeny.
+  <songs_mode caption="Režim piesní">Použite tento režim, ak chcete vložiť alebo upraviť svoje piesne. Piesne sa dajú vytlačiť alebo premietať. Pri prechode z režimu piesní do režimu scenárov prezentácie budete vyzvaní uložiť vykonané zmeny.
     <all_songs caption="Všetky piesne">
       <print caption="Tlačiť">Vytlačí všetky dostupné piesne. Táto vlastnosť sa využije pri tlači spevníkov.</print>
       <export caption="Exportovať">Exportuje všetky piesne.</export>
@@ -49,24 +49,24 @@
       </present>
       <export caption="Exportovať">Exportuje aktuálnu pieseň.</export>
       <rename caption="Premenovať">Premenuje aktuálnu pieseň.</rename>
-      <move caption="Presunúť">Presunie vybranú pieseň do inej zložky.
-        <where caption="Presunúť '%1' do zložky:"/>
+      <move caption="Presunúť">Presunie vybranú pieseň do iného adresára.
+        <where caption="Presunúť '%1' do adresára:"/>
       </move>
-      <copy caption="Kopírovať">Skopíruje vybranú pieseň do inej zložky.
-        <where caption="Kopírovať '%1' do zložky:"/>
+      <copy caption="Kopírovať">Skopíruje vybranú pieseň do iného adresára.
+        <where caption="Kopírovať '%1' do adresára:"/>
       </copy>
       <delete caption="Vymazať">Vymaže aktuálnu pieseň.</delete>
     </selected_song>
 
     <songs caption="Piesne">Vyberte pieseň zo zoznamu na načítanie do editora piesní.</songs>
 
-    <curr_folder caption="Containing Folder">Nachádza sa v zložke (vzhľadom na aktívnu zložku)</curr_folder>
+    <curr_folder caption="Nachádza sa v adresári">Nachádza sa v adresári (vzhľadom na aktívny adresár)</curr_folder>
 
-    <song_folders caption="Zložky">Vyberte zložku zo zoznamu na zúženie súčasnej ponuky.
-      <new>Vytvorí zložku na ukladanie piesní.</new>
-      <delete>Vymaže vybranú zložku. Zložka musí byť prázdna.</delete>
-      <filter_all caption="Všetky"/>
-      <filter_main caption="Hlavné"/>
+    <song_folders caption="Adresáre">Vyberte adresár zo zoznamu pre zúženie súčasnej ponuky piesní.
+      <new>Vytvorí adresár na ukladanie piesní.</new>
+      <delete>Vymaže vybraný adresár. Adresár musí byť prázdny.</delete>
+      <filter_all caption="Všetky adresáre"/>
+      <filter_main caption="Hlavný adresár"/>
     </song_folders>
   </songs_mode>
 
@@ -76,7 +76,7 @@
     <show_advanced_editor caption="Pokročilé"/>
     <title caption="Názov">Nastaví názov vybranej piesne.</title>
     <author caption="Autor">Nastaví autora vybranej piesne.</author>
-    <copyright caption="Copyright">Nastaví copyright vybranej piesne.</copyright>
+    <copyright caption="Autorské práva">Názov/meno vlastníka autorských práv (copyright) vybranej piesne.</copyright>
     <ccli caption="Číslo CCLI">Nastaví číslo vybranej piesne v databáze CCLI.</ccli>
     <hymn_number caption="Číslo piesne">Nastaví číslo vybranej piesne.</hymn_number>
     <presentation caption="Prezentácia">Nastaví poradie prezentácie vybranej piesne. Oddiely by mali byť oddelené medzerami (napr. "V1 C V2 C").</presentation>
@@ -96,7 +96,7 @@
       <ins_column caption="Nový stĺpec">Vytlačené listy môžu obsahovať dva stĺpce, ak je pieseň príliš dlhá a nezmestí sa na stránku.</ins_column>
       <ins_page caption="Nová stránka">Označí miesto zalomenia stránky pri tlači dlhších piesní.</ins_page>
     <transpose caption="Transpozícia">Použite túto funkciu na automatickú transpozíciu piesne do ľubovoľnej tóniny. Výška transpozície sa udáva v poltónoch.
-      <using caption="Krížiky alebo béčka">Zvoľte Krížiky pre prednostné použitie krížikov pri transpozícii. Alebo zvoľte Béčka pre prednostné použitie béčok.
+      <using caption="Krížiky / béčka">Zvoľte Krížiky pre prednostné použitie krížikov pri transpozícii. Alebo zvoľte Béčka pre prednostné použitie béčok.
         <sharps caption="Krížiky"/>
         <flats caption="Béčka"/>
       </using>
@@ -115,58 +115,60 @@
     <key caption="Tónina">Nastaví tóninu vybranej piesne.</key>
     <aka caption="Iný názov">Nastaví alternatívny názov vybranej piesne.</aka>
     <key_line caption="Kľúčová fráza">Nastaví frázu, podľa ktorej možno vybranú pieseň identifikovať.</key_line>
-    <style caption="Prebiť štýl">Zaškrtnite, ak chcete použiť vlastný štýl namiesto predvoleného štýlu prezentácie.</style>
-    <user1 caption="Užívateľom definované 1">Nastavte ľubovoľne. Toto pole môžu použiť programy tretích strán, atď.</user1>
-    <user2 caption="Užívateľom definované 2">Nastavte ľubovoľne. Toto pole môžu použiť programy tretích strán, atď.</user2>
-    <user3 caption="Užívateľom definované 3">Nastavte ľubovoľne. Toto pole môžu použiť programy tretích strán, atď.</user3>
+    <style caption="Vlastný štýl">Zaškrtnite, ak chcete použiť vlastný štýl namiesto predvoleného štýlu prezentácie.</style>
+    <user1 caption="Používateľom definované 1">Nastavte ľubovoľne. Toto pole môžu použiť programy tretích strán, atď.</user1>
+    <user2 caption="Používateľom definované 2">Nastavte ľubovoľne. Toto pole môžu použiť programy tretích strán, atď.</user2>
+    <user3 caption="Používateľom definované 3">Nastavte ľubovoľne. Toto pole môžu použiť programy tretích strán, atď.</user3>
   </advanced_song_editor>
 
-  <sets_mode caption="Režim playlistov">Tento režim použite na vkladanie a úpravu svojich playlistov. Playlisty sa používajú na premietnutie skupiny piesní, veršov a podobne. Ak sa nachádzate v režime piesní a nemáte uložené zmeny, budete na to vyzvaní.
-    <sets caption="Playlisty">Vyberte playlist zo zoznamu na editáciu.
-      <add>Pridá nový playlist do programu OpenSong.</add>
+  <sets_mode caption="Režim scenárov prezentácii">Tento režim použite na vkladanie a úpravu svojich scenárov prezentácii. Scenáre sa používajú na premietnutie vopred vybraných piesní, Biblických veršov, videoklipov, power pointov a podobne. Ak sa nachádzate v režime upravovania piesní a nemáte uložené zmeny, budete na to vyzvaní pri prechode do iného režimu.
+    <sets caption="Scenáre">Vyberte si scenár prezentácie zo zoznamu, ktorý následne môžete použiť, alebo upraviť.
+      <add>Pridá nový scenár prezentácie do programu OpenSong.</add>
     </sets>
-    <current_set caption="Vybraný playlist">
-      <save caption="Uložiť">Uloží aktuálny playlist (vrátane všetkých položiek) na disk.</save>
-      <rename caption="Premenovať">Premenuje aktuálny playlist.</rename>
-      <delete caption="Vymazať">Vymaže aktuálny playlist. (Piesne v playliste nebudú vymazané z disku ani zoznamu piesní.)</delete>
-       <saveas caption="Uložiť ako">Uloží aktuálny playlist pod novým menom.</saveas>
-      <present caption="Premietnuť">Premietne aktuálny playlist. Máte na výber premietnuť na aktuálny monitor, na sekundárny monitor, alebo použiť jediný monitor na náhľad, ako to bude vyzerať s dvoma monitormi.
+    <current_set caption="Vybraný scenár">
+      <save caption="Uložiť">Uloží aktuálny scenár prezentácie (vrátane všetkých položiek) na disk.</save>
+      <rename caption="Premenovať">Premenuje aktuálny scenár prezentácie.</rename>
+      <delete caption="Vymazať">Vymaže aktuálny scenár prezentácie. (Piesne v scenáry nebudú vymazané z disku ani zo zoznamu piesní.)</delete>
+       <saveas caption="Uložiť ako">Uloží aktuálny scenár prezentácie pod novým menom.</saveas>
+      <present caption="Premietnuť">Premietne aktuálny scenár prezentácie. Máte na výber premietnuť na aktuálny monitor (režisérsky), na sekundárny externý monitor (projektor), alebo použiť simulovaný náhľad dvoch monitorov na prvom "režisérskom" monitore a skontrolovať si ako to bude vizerať s dvoma monitormi.
         <single_screen caption="Jedna obrazovka"/>
         <dual_screen caption="Dve obrazovky"/>
         <preview_dual_screen caption="Náhľad dvoch obrazoviek"/>
-        <no_slides>V playliste na premietnutie musí byť aspoň jedna snímka.</no_slides>
+        <no_slides>V scenári prezentácie musí byť aspoň jedna položka na premietnutie.</no_slides>
       </present>
-      <print_songs caption="Piesne">Vytlačí iba piesne v aktuálnom playliste.
-        <no_songs>Playlist neobsahuje žiadnu pieseň.</no_songs>
+      <print_songs caption="Piesne">Vytlačí iba piesne v aktuálnom scenári prezentácie.
+        <no_songs>Scenár prezentácie neobsahuje žiadnu pieseň.</no_songs>
       </print_songs>
-      <print_order caption="Zoznam">Vytlačí prehľad položiek v playliste.</print_order>
-      <export caption="Exportovať">Exportuje playlist do inej zložky.</export>
+      <print_order caption="Zoznam">Vytlačí prehľad položiek v scenári prezentácie.</print_order>
+      <export caption="Exportovať">Exportuje scenár prezentácie do iného adresára.</export>
     </current_set>
     <new_item caption="Nová položka">
-      <add_song caption="Pieseň">Pridá pieseň do aktuálneho playlistu. Ponúkne zoznam piesní z Editoru piesní.</add_song>
-      <add_scripture caption="Biblický text">Pridá snímku s biblickými veršami do aktuálneho playlistu. Zobrazí sa okno, ktoré vám umožní vybrať si verše na zobrazenie.</add_scripture>
-      <add_slides caption="Snímky">Pridá užívateľskú snímku do aktuálneho playlistu. Uživateľské snímky vám umožnia vybrať si vlastný názov, podnadpis, vlastný text ba i štýl. Užívateľská snímka môže v skutočnosti obsahovať sériu snímok.</add_slides>
-      <add_style caption="Štýl">Zmení aktuálny základný štýl kdekoľvek v playliste. Zmeny štýlov môžu definovať nový štýl alebo vrátiť sa k predchádzajúcemu štýlu.</add_style>
-      <add_image caption="Obrázok">Pridá snímok s obrázkom do aktuálneho playlistu. Obrázkové snímky umožňujú premietnuť jeden obrázok alebo sériu obrázkov namiesto textu.</add_image>
-      <add_external caption="External">Pridá nový snímok ktorý povolí aktiváciu zobrazenia z externého zdroja, ako napríklad Power Point, prehratie DVD videa a pod.</add_external>
+      <add_song caption="Pieseň">Pridá pieseň do aktuálneho scenára prezentácie. Ponúkne zoznam piesní z Editoru piesní.</add_song>
+      <add_scripture caption="Biblický text">Pridá snímku s vybranými Biblickými veršami do aktuálneho scenbára prezentácie. Zobrazí sa okno, ktoré vám umožní vybrať si verše, ktoré chcete pridať do scenára.</add_scripture>
+      <add_slides caption="Snímky">Pridá používateľskú snímku do aktuálneho scenára prezentácie. Použivateľské snímky vám umožnia vybrať si vlastný názov, podnadpis, vlastný text a aj vlastný štýl. Používateľská snímka môže v skutočnosti obsahovať sériu snímok, avšak s tým istým štýlom.</add_slides>
+      <add_style caption="Štýl">Zmení aktuálny základný štýl kdekoľvek v scenári prezentácie. Zmeny štýlov môžu definovať nový štýl, ktorý ovplyvní všetky položky nasledujúce za ním, alebo vrátiť sa k predchádzajúcemu štýlu.</add_style>
+      <add_image caption="Obrázok">Pridá snímok s obrázkom do aktuálneho scenára prezentácie. Obrázkové snímky umožňujú premietnuť jeden obrázok alebo sériu obrázkov namiesto textu.</add_image>
+      <add_external caption="Externý">Pridá nový snímok ktorý povolí aktiváciu zobrazenia z externého zdroja, ako napríklad Power Point, prehratie DVD videa a pod.</add_external>
+      <add_video caption="Video">Pridá video do aktuálneho scenára prezentácie. Použite to, ak chcete z programu OpenSong premietnuť video. Na prehrávanie veda sa používa VLC, preto ak ho nemáte si ho doinštalujte.</add_video>
+      <add_powerpoint caption="PowerPoint">Pridá prezentáciu PowerPoint do aktuálneho scenára prezentácie. Použite to, ak chcete z programu OpenSong ovládať prezentáciu PowerPoint.</add_powerpoint>
     </new_item>
     <current_item caption="Aktuálna položka">
-      <move_up caption="Nahor">Presunie vybranú položku bližšie k začiatku playlistu.</move_up>
-      <move_down caption="Nadol">Presunie vybranú položku bližšie ku koncu playlistu.</move_down>
-      <remove caption="Odstrániť">Odstráni vybranú položku z playlistu.</remove>
-      <copy caption="Kopírovať">Vytvorí kópiu vybranej položky playlistu.</copy>
+      <move_up caption="Nahor">Presunie vybranú položku bližšie k začiatku scenára prezentácie.</move_up>
+      <move_down caption="Nadol">Presunie vybranú položku bližšie ku koncu scenára prezentácie.</move_down>
+      <remove caption="Odstrániť">Odstráni vybranú položku zo scenára prezentácie.</remove>
+      <copy caption="Kopírovať">Vytvorí kópiu vybranej položky scenára prezentácie.</copy>
       <paste caption="link(shared/insert/@caption)">Vloží kopírovanú položku za súčasnú pozíciu.</paste>
-      <store caption="Uložiť">Uloží vybranú položku playlistu.</store>
-      <presentitem caption="link(sets_mode/current_set/present/@caption)">Premietne aktuálny playlist počnúc od zvolenej položky. Máte na výber premietnuť na aktuálny monitor, na sekundárny monitor, alebo použiť jediný monitor na náhľad, ako to bude vyzerať s dvoma monitormi.
+      <store caption="Uložiť">Uloží vybranú položku scenára prezentácie.</store>
+      <presentitem caption="link(sets_mode/current_set/present/@caption)">Premietne aktuálny scenár prezentácie počnúc od zvolenej položky. Máte na výber premietnuť na aktuálny monitor, na sekundárny monitor, alebo použiť jediný monitor na náhľad, ako to bude vyzerať s dvoma monitormi.
         <single_screen caption="link(sets_mode/current_set/present/single_screen/@caption)"/>
         <dual_screen caption="link(sets_mode/current_set/present/dual_screen/@caption)"/>
         <preview_dual_screen caption="link(sets_mode/current_set/present/preview_dual_screen/@caption)"/>
         <no_slides>link(sets_mode/current_set/present/no_slides)</no_slides>
       </presentitem>
     </current_item>
-    <items caption="Položky playlistu">Kliknutím sa otvorí užívateľská snímka v editore. Dvojklikom sa otvorí pieseň v editore piesní.
+    <items caption="Položky scenára">Kliknutím sa otvorí používateľská snímka v editore. Dvojklikom sa otvorí pieseň v editore piesní.
       <song caption="(pieseň)"/>
-      <custom caption="(užívateľský)"/>
+      <custom caption="(používateľský)"/>
       <scripture caption="(Biblia)"/>
       <image caption="(obrázok)"/>
       <external caption="(externý)"/>
@@ -176,7 +178,7 @@
     </items>
     <untitled caption="Bez názvu"/>
     <errors>
-      <revert caption="Chyba pri opätovnom načítaní playlistu &quot;%1&quot; zo súboru."/>
+      <revert caption="Chyba pri opätovnom načítaní scenára prezentácie &quot;%1&quot; zo súboru."/>
       <insert caption="Chyba pri vkladaní kopírovaných snímkov:&#10;%1"/>
     </errors>
     <messages>
@@ -191,19 +193,19 @@
     <title caption="Názov">Nastaví názov snímky, ktorý sa zobrazí v nej.</title>
     <subtitle caption="Podnadpis">Nastaví podnadpis snímky, ktorý sa zobrazí v nej.</subtitle>
     <name caption="Meno">Nastaví meno snímky, ktoré sa zobrazí v okne Pomocníka premietania. Nezobrazí sa však v snímke.</name>
-    <slides caption="Snímky">Obsahuje hlavný text aktuálnej užívateľskej snímky (snímok). Poznámka: Pre ľahšie pridanie pretiahnite jeden alebo viac obrázkov do tohto zoznamu.</slides>
-    <presentation caption="Užívateľské poradie premietania">Prebije poradie premietania v súbore piesne.</presentation>
+    <slides caption="Snímky">Obsahuje hlavný text aktuálnej používateľskej snímky (snímok). Poznámka: Pre ľahšie pridanie pretiahnite jeden alebo viac obrázkov do tohto zoznamu.</slides>
+    <presentation caption="Používateľské poradie premietania">Určí nové poradie premietania v súbore piesne.</presentation>
     <origorder caption="Pôvodné poradie premietania">Poradie premietania v súbore piesne.</origorder>
-    <folder caption="Zložka piesne">Zložka, v ktorej sa nachádza vybraná položka.</folder>
+    <folder caption="Adresár piesne">Adresár, v ktorom sa nachádza vybraná položka.</folder>
     <notes caption="Poznámky">Tieto poznámky sa zobrazia v Pomocníkovi premietania, ak púšťate prezentáciu na viacerých monitoroch.</notes>
     <insert caption="Vložiť"/>
       <ins_slide caption="Snímka">Slúži na vytvorenie súboru snímkov, ktoré mají spoločný názov, podnadpis, štýl a/alebo automatické prozeranie. Snímky vytvorené takýmto spôsobom sa tiež môžu automaticky opakovať v slučke.</ins_slide>
-    <loop caption="Slučka">Zaškrtnite, ak chcete, aby sa program OpenSong automaticky vrátil na prvú snímku tejto položky, keď príde na koniec.</loop>
-    <print caption="Tlačiť v zozname">Zrušte zaškrtnutie, ak nechcete, aby sa táto skupina snímok tlačila v zozname playlistu.</print>
+    <loop caption="Opakovacia slučka">Zaškrtnite, ak chcete, aby sa program OpenSong automaticky vrátil na prvú snímku tejto položky, keď príde na jej koniec.</loop>
+    <print caption="Tlačiť v zozname">Zrušte zaškrtnutie, ak nechcete, aby sa táto skupina snímok tlačila v zozname scenára prezentácie.</print>
     <transition caption="Použiť prechod">Zaškrtnite, ak sa má použiť prechod pri zobrazení snímky.</transition>
-    <auto_advance caption="Automatický prechod po:">Zadajte čas v sekundách, ako dlho má byť zobrazená každá snímka v súbore, než dôjde k automatickému prechodu na ďalšiu (0=neaktívny).</auto_advance>
+    <auto_advance caption="Automatický prechod po">Zadajte čas v sekundách, ako dlho má byť zobrazená každá snímka v súbore, než dôjde k automatickému prechodu na ďalšiu (0=neaktívny).</auto_advance>
     <seconds caption="sekundách"/>
-    <style caption="Prebiť štýl">Zaškrtnutie umožní snímke obsahovať užívateľský štýl. Kliknite na náhľad, ak chcete editovať štýl.</style>
+    <style caption="Vlastný štýl">Zaškrtnutie umožní snímke mať používateľsky zmenený štýl. Kliknite na náhľad, ak chcete editovať štýl.</style>
   </slide_editor>
 
   <image_slide>
@@ -216,10 +218,10 @@
     <fit_to_screen caption="Prispôsobiť veľkosť obrázku obrazovke">Obrázky, ktoré sú príliš veľké, sa prispôsobia veľkosti obrazovky projektora. Platí to aj obrátene pre malé obrázky.</fit_to_screen>
     <fit_to_body caption="Prispôsobiť veľkosť obrázku oblasti pre text">Veľkosť obrázkov sa vždy prispôsobí oblasti pre text. Oblasť pre text je vymedzená aktuálnym nastaveným štýlom. Prispôsobia sa veľké i malé obrázky.</fit_to_body>
     <keepaspect caption="Zachovať pomer strán">Pri zmene veľkosti obrázkov sa zachová pomer strán.</keepaspect>
-    <store_as_link caption="Neukladať obrázok v playliste; použiť odkaz na obrázok">Ukladanie obrázkov v playliste výrazne zväčšuje veľkosť playlistu na disku a môže znížiť kvalitu obrázku. Použitie odkazu tomu zabráni. Obrázky zo zložky 'Backgrounds' (Pozadia) sa ukladajú ako relatívny odkaz, čo uľahčuje prenos na počítač určený na premietanie. Používajte opatrne, ak vytvárate prezentáciu na inom počítači, než na počítači určenom na premietanie!</store_as_link>
+    <store_as_link caption="Neukladať obrázok do scenára; použiť odkaz na obrázok">Ukladanie obrázkov v scenári výrazne zväčšuje veľkosť scenára prezentácie na disku a môže znížiť kvalitu obrázku. Použitie odkazu tomu zabráni. Obrázky z adresára 'Backgrounds' (Pozadia) sa ukladajú ako relatívny odkaz, čo uľahčuje prenos na počítač určený na premietanie. Používajte opatrne, ak vytvárate prezentáciu na inom počítači, než na počítači určenom na premietanie, pretože odkazované súbory musia byť aj na druhom PC!</store_as_link>
     <notes caption="link(slide_editor/notes/@caption)">link(slide_editor/notes)</notes>
     <action caption="Akcia" />
-      <ins_image caption="Pridať obrázok">Pridá obrázok do aktuálnej snímky. Umožňuje to viacerým obrázkom v sérii zdieľať nadpis, podnadpis, štýl i nastavenia. Snímky vytvorené týmto spôsobom sa dajú automaticky posúvať v slučke.</ins_image>
+      <ins_image caption="Pridať obrázok">Pridá obrázok do aktuálnej snímky. Umožňuje to viacerým obrázkom v sérii zdieľať nadpis, podnadpis, štýl i nastavenia. Snímky vytvorené týmto spôsobom sa dajú automaticky posúvať v opakujúcej slučke.</ins_image>
       <imp_image caption="Import">Načítam všetky dostupné snímky z prezentácie a pridávam ich ako obrázky.</imp_image>
       <del_image caption="Odobrať obrázok">Odoberie vybraný obrázok zo snímky.</del_image>
       <move_up caption="Posunúť nahor">Presunie vybraný obrázok bližšie k začiatku snímky.</move_up>
@@ -236,7 +238,7 @@
     <header caption="Externý Editor Snímkov"/>
     <name caption="link(slide_editor/name/@caption)">link(slide_editor/name)</name>
     <application caption="Aplikácia"/>
-    <presentation caption="Presentácia">Použi tento snímok na zobrazenie prezentácie pomocou Microsoft PowerPoint, alebo OpenOffice.org/LibreOffice Impress.</presentation>
+    <presentation caption="Prezentácia">Použi tento snímok na zobrazenie prezentácie pomocou Microsoft PowerPoint, alebo OpenOffice.org/LibreOffice Impress.</presentation>
     <videolan caption="VLC video">Použi tento snímok pre spustenie multimediálneho súboru pomocou univerzálneho prehrávača Videolan (VLC).</videolan>
     <application caption="Applikácia">Použi tento snímok na spustenie externej aplikácie pomocou príkazového riadku.</application>
     <no_application caption="Žiadna aplikácia">
@@ -251,8 +253,8 @@
       <host_impress caption="OpenOffice.org Impress"/>
       <host_impress_info caption="Pre plnú kontrolu nad prezentáciami v Impress alebo PowerPointe treba mať nainštalovaný balík OpenOffice.org."/>
       <presentation_file caption="Presentation filename">Vyberte si súbor prezentácie pomocou výberového dialógu.</presentation_file>
-      <loop_presentation caption="Slučka prezentácie"/>
-      <embed_presentation caption="Zahrnúť prezentáciu do OpenSong playlistu"/>
+      <loop_presentation caption="Opakovacia slučka prezentácie"/>
+      <embed_presentation caption="Zahrnúť prezentáciu do OpenSong scenára"/>
     </presentation_settings>
     <videolan_settings caption="Nastavenie VLC">
       <videolan_start caption="Spustiť VLC"/>
@@ -261,6 +263,7 @@
 	  <videolan_manual caption="Nastaviť parametre ručne (použiť %d pre zobrazenie čísla, %s pre multimediálny súbor)"/>
       <wait_for_videolan caption="Čakať na dokončenie prehrávania audia/videa pred prepnutím na další snímok"/>
       <videolan_stop caption="Stopnúť akúkoľvek spustenú inštanciu vo VLC"/>
+      <videolan_stop caption="Zastaviť akúkoľvek inštanciu Videolan VLC"/>
     </videolan_settings>
     <application_settings caption="Nastavenie Spúšťača Aplikácie">
       <application_start caption="Spustiť externú aplikáciu"/>
@@ -276,15 +279,15 @@
   <style_change>
     <header caption="Zmena štýlu"/>
     <revert caption="Návrat k predchádzajúcemu štýlu">Táto voľba zmení štýl naspäť na predchádzajúci.</revert>
-    <change caption="Zmeniť štýl na tento">Umožní zmeniť štýl playlistu. Zmena ovplyvní všetky nasledujúce snímky.</change>
-    <style>Kliknite, ak chcete editovať nový štýl.</style>
+    <change caption="Zmeniť štýl na vlastný">Umožní zmeniť štýl scenára prezentácie. Zmena ovplyvní všetky nasledujúce snímky.</change>
+    <style>Kliknite sem, ak chcete vytvoriť iný nový štýl.</style>
   </style_change>
 
   <video_slides>
     <header caption="Editor videosnímok"/>
     <name caption="Názov snímky">Meno, ktoré použije OpenSong na identifikáciu snímky.</name>
     <file caption="Súbor videa">Nastaví meno videosúboru pre túto snímku.</file>
-    <loop caption="Slučka videa">Zaškrtnite, ak sa má snímka prehrávať stále dookola.</loop>
+    <loop caption="Opakovacia slučka videa">Zaškrtnite, ak sa má video prehrávať stále dookola.</loop>
   </video_slides>
 
   <powerpoint_slides>
@@ -371,8 +374,8 @@
       <presentation caption="_Premietanie"/>
       <print caption="_Tlač"/>
       <general caption="_Všeobecné"/>
-      <refresh_songs caption="Znova načítať _zložku s piesňami"/>
-      <refresh_sets caption="Znova načítať _zložku s p_laylistmi"/>
+      <refresh_songs caption="Znova načítať _adresár s piesňami"/>
+      <refresh_sets caption="Znova načítať _adresár s p_laylistmi"/>
       <install_module caption="_Inštalovať modul"/>
     </settings>
     <help caption="_Pomocník">
@@ -393,7 +396,12 @@
       <host caption="Server"/>
       <port caption="Port"/>
     </proxy>
-    <user_defined caption="Definované užívateľom ">
+    <rcserver caption="Automazačné API">
+      <enable caption="Zapnúť server vzdialeného ovládania"/>
+      <key caption="Autentifikačný kľúč"/>
+      <port caption="Port"/>
+    </rcserver>
+    <user_defined caption="Definované používateľom ">
       <user1 caption="link(advanced_song_editor/user1/@caption)"/>
       <user2 caption="link(advanced_song_editor/user2/@caption)"/>
       <user3 caption="link(advanced_song_editor/user3/@caption)"/>
@@ -408,17 +416,17 @@
       <large_headings caption="Veľké nadpisy"/>
       <newpaint caption="Použiť nový vzhľad"/>
     </fonts>
-    <documents_folder caption="Zložka s piesňami">
+    <documents_folder caption="Adresár s piesňami">
       <warning caption="Zmena sa prejaví až po reštarte programu OpenSong."/>
       <default caption="Predvolené"/>
-      <custom caption="Užívateľské"/>
+      <custom caption="Používateľské"/>
       <message>Vypínam OpenSong. Stlačte OK a potom znova spustite OpenSong. Môžete tiež vopred nakopírovať piesne zo starého umiestnenia do nového.</message>
-      <changed>Chcete použiť užívateľom definovanú zložku, ale nepoužili ste tlačidlo na potvrdenie zmeny. Skutočne chcete použiť nové nastavenie?</changed>
+      <changed>Chcete použiť používateľom definovaný adresár, ale nepoužili ste tlačidlo na potvrdenie zmeny. Skutočne chcete použiť nové nastavenie?</changed>
       <change caption="Zmeniť"/>
       <oldfolderdb caption="Použiť pre-V1.1 súborovú cache"/>
     </documents_folder>
     <imagequality caption="Nastaviť kvalitu obrázkov">
-      <note caption="OpenSong sa pokúsi uložiť obrázky použité v playlistu do formátu JPEG. Vyberte si kvalitu obrázkov. Posuvník pre výber kvality nebude aktívny, ak nie je nainštalovaný QuickTime. OpenSong vyžaduje QuickTime pre ukladanie JPEG obrázkov v kvalite voliteľnej užívateľem."/>
+      <note caption="OpenSong sa pokúsi uložiť obrázky použité v scenári do formátu JPEG. Vyberte si kvalitu obrázkov. Posuvník pre výber kvality nebude aktívny, ak nie je nainštalovaný QuickTime. OpenSong vyžaduje QuickTime pre ukladanie JPEG obrázkov v kvalite voliteľnej používateľom."/>
       <compression caption="Kompresia obrázkov" />
       <extern caption="Nezahŕňať obrázky z pozadia" />
     </imagequality>
@@ -435,7 +443,7 @@
     </log>
     <startmode caption="Počiatočné okno">
       <songs caption="Piesne"/>
-      <sets  caption="Playlisty"/>
+      <sets  caption="Scenáre prezentácie"/>
     </startmode>
     <applications caption="Externé aplikácie">
       <pptview caption="Umiestnenie Powerpoint Viewer-a"/>
@@ -451,7 +459,8 @@
 	  <chorus caption="Pieseň, Refrén"/>
 	  <tag caption="Pieseň, Značka"/>
 	  <scripture caption="Biblia"/>
-	  <custom caption="Užívateľská snímka"/>
+	  <custom caption="Používateľská snímka"/>
+	  <style caption="Zmena štýlu"/>
 	  <image caption="Obrázkový snímok"/>
 	  <application caption="Externá aplikácia"/>
 	  <blank caption="Prázdne (vložené medzi)"/>
@@ -490,34 +499,34 @@
   </print_settings>
 
   <presentation_settings title="Nastavenie premietania">
-    <settings head1="Vzhľad" head2="Nastavenia">
+    <settings head1="Vzhľad" head2="Nastavenia" head3="Zábery snímkov">
         <default_slides caption="Predvolený štýl snímky"/>
         <scripture_slides caption="Predvolený štýl biblického textu"/>
         <click_to_change caption="link(shared/click_to_change/@caption)"/>
         <right_click_to_clear caption="link(shared/right_click_to_clear/@caption)"/>
             
-        <export_snapshot caption="Exportovať snapshot každého prezentovaného snímku do nasledujúceho súboru"/>
-        <snapshot_file caption="Snapshot filename">Veberte názov snapshot súboru, použite výberový dialog.</snapshot_file>
-        <export_preview caption="Exportovať snapshoty počas prezerania playlistu"/>
-        <export_live_insertions caption="Exportovať snapshoty snímkov vložených počas živej prezentácie"/>
+        <export_snapshot caption="Exportovať záber každého prezentovaného snímku do nasledujúceho súboru"/>
+        <snapshot_file caption="Snapshot filename">Veberte názov súboru záberu. Použite výberový dialog.</snapshot_file>
+        <export_preview caption="Exportovať zábery počas prezerania scenára prezentácie"/>
+        <export_live_insertions caption="Exportovať zábery snímkov vložených počas živej prezentácie"/>
         <export_metadata caption="Exportovať detaily snímky do podobne pomenovaného xml súboru"/>
         <snapshot_parameters caption="link(/presentation_settings/settings/snapshot_parameters)">Nasledujúce parametre je možné použiť v názve súboru alebo cesty:
     - %d: Deň v mesiaci (01-31)
     - %h: Hodina aktuálneho času v 24-hodinovom formáte (00-23)
     - %i: Minúty aktuálneho času (00-59)
     - %m: Mesiac v roku (01-12)
-    - %n: Počet snímok v aktuálnom playliste (počínajúc s nulami)
+    - %n: Počet snímok v aktuálnom scenári prezentácie (počínajúc s nulami)
     - %N: Názov aktuálneho snímku
     - %P: Index snímkov počas prezentácie (počínajúc s nulami)
     - %s: Sekundy z aktuálneho času (00-59)
-    - %S: Názov aktuálneho playlistu
+    - %S: Názov aktuálneho scenára prezentácie
     - %T: Názov aktuálnej snímky
     - %V: Indikátor verša v aktuálnej snímke (pre piesne, prázdne pre iné typy)
     - %y: Aktuálny rok (4 číslice)</snapshot_parameters>
 </settings>
     <transitions caption="Prechody">
       <use_transitions caption="Použiť prechody*"/>
-      <transition_note caption="*Prechody veľmi ovplyvňuje rozlíšenie obrazovky. Ak sú prechody pomalé, zvážte možnosť zníženia rozlíšenia projektoru. Ak sa prechody vôbec nezobrazujú, možno máte nastavenú malú hĺbku farieb projektora."/>
+      <transition_note caption="*Prechody veľmi ovplyvňujú rozlíšenie obrazovky. Ak sú prechody pomalé, zvážte možnosť zníženia rozlíšenia projektoru. Ak sa prechody vôbec nezobrazujú, možno máte nastavenú malú hĺbku farieb projektora."/>
       <time caption="Čas" helptag="Celkový čas prechodu (môže trvať dlhšie na pomalšom počítači)"/>
       <frames caption="Snímky" helptag="Počet snímok alebo počet krokov prechodu medzi snímkami"/>
     </transitions>
@@ -542,7 +551,7 @@
         <ibeam caption="I-Kurzor"/>
       </mouse_cursor>
       <blanks caption="Vložiť prázdnu snímku"/>
-      <blanks_between caption="medzi položkami playlistu"/>
+      <blanks_between caption="medzi položkami scenára"/>
       <time caption="Čas trvania prechodu" helptag="Celkový čas prechodu (môže trvať dlhšie na pomalšom počítači)"/>
       <blank_style caption="Prázdne snímky preberajú štýl"/>
       <blank_prev caption="predchádzajúcej snímky"/>
@@ -557,8 +566,8 @@
     <monitor caption="Monitory">
       <control caption="Konfiguračný monitor"/>
       <presentation caption="Premietací monitor"/>
-      <detected caption="Počet detekovaných monitorov: %1"/>
-      <default_mode caption="Predvolený režim monitoru"/>
+      <detected caption="Detekovaných monitorov: %1"/>
+      <default_mode caption="Predvolený režim"/>
       <force_4_3_preview caption="Vynútený 4:3 náhľad"/>
     </monitor>
     <logo caption="Logo">
@@ -579,7 +588,7 @@
     </misc>
     
     <errors>
-        <snapshot_file>Chyba: vytváranie snapshotov je zapnuté, ale nie je zadané meno súboru.</snapshot_file>
+        <snapshot_file>Chyba: vytváranie záberov je zapnuté, ale nie je zadané meno súboru.</snapshot_file>
     </errors>
   </presentation_settings>
 
@@ -602,22 +611,26 @@
       <return caption="[Esc] Návrat"/>
     </actions>
     <exit caption="Ukončiť premietanie?"/>
-    <loop caption="Slučka"/>
-    <keys>- Klávesy -
+    <loop caption="Opakovať v slučke"/>
+    <keys>- Klávesové skratky -
 Nadol: Ďalšia snímka
 Nahor: Predchádzajúca s.
 Vpravo: Ďalší oddiel
 Vľavo: Predchádzajúci o.
+F1-F12: Pieseň
 1-9: Slohy
 C: Refrén
 P: Predrefrén
 B: Prechod
 T: Značka</keys>
+    <preview caption="Náhľad aktuálnej snímky" />
+    <next caption="Náhľad nasledujúcej snímky" />
   </presentation_helper>
 
   <help_topics title="Témy pomocníka">
     <tabs head1="Klávesové skratky" head2="Formát akordov/textu" head3="Políčko premietania" head4="Zavrieť"/>
     <print caption="Tlač"/>
+        <close caption="link(shared/close/@caption)"/>
     <keys>
 &lt;h1&gt;Klávesové skratky pri premietaní&lt;/h1&gt;
 
@@ -901,10 +914,10 @@ Ak je Políčko prezentácie prázdne, pri premietaní bude poradie snímok tak�
   <song_lookup title="Hľadať piesne">
     <header caption="Na pridanie piesne vyberte jej názov a kliknite na 'Pridať' alebo začnite písať názov piesne a potvrďte klávesom Enter."/>
     <no_selection>Nevybrali ste pieseň.</no_selection>
-    <folder caption="Vybrať zložku"/>
+    <folder caption="Vybrať adresár"/>
     <preview caption="Náhľad piesne"/>
     <lookup caption="Rýchle vyhľadanie"/>
-    <songs head1="Meno piesne" head2="Zložka"/>
+    <songs head1="Meno piesne" head2="Adresár"/>
     <presentation caption="link(slide_editor/presentation/@caption)"/>
     <origorder caption="link(slide_editor/origorder/@caption)"/>
   </song_lookup>
@@ -1007,7 +1020,7 @@ Ak je Políčko prezentácie prázdne, pri premietaní bude poradie snímok tak�
   </index_progress>
 
   <import_from_ccli title="Import z databázy CCLI">
-    <user_id caption="ID užívateľa"/>
+    <user_id caption="ID používateľa"/>
     <password caption="Heslo"/>
     <for caption="Hľadaj"/>
     <songs head1="Ly" head2="So" head3="Le" head4="Názov" head5="Autor"
@@ -1119,12 +1132,12 @@ Ak je Políčko prezentácie prázdne, pri premietaní bude poradie snímok tak�
   </transition_list>
 
   <imagequality_list>
-    <option name="Plná, minimálna kvalita, malý súbor playlistu"/>
+    <option name="Plná, minimálna kvalita, malý súbor scenára prezentácie"/>
     <option name="Vysoká, nízka kvalita"/>
     <option name="Stredná, normálna kvalita"/>
     <option name="Malá, vysoká kvalita"/>
     <option name="Nízka, maximálna kvalita"/>
-    <option name="Žiadna, bez straty kvality, veľký súbor playlistu"/>
+    <option name="Žiadna, bez straty kvality, veľký súbor scenára prezentácie"/>
   </imagequality_list>
 
   <videolan_preset_list>
@@ -1168,12 +1181,12 @@ Kliknite na snímku, ak chcete upraviť jej štýl.</body>
     <no caption="Nie"/>
     <apply caption="&amp;Použiť"/>
     <browse caption="Prehľadávať"/>
-    <browse_for caption="Prehľadávať zložku"/>
+    <browse_for caption="Prehľadávať adresár"/>
     <add caption="Pridať"/>
     <done caption="Hotovo"/>
     <untitled caption="Bez názvu"/>
     <click_to_change caption="Kliknite, ak chcete zmeniť"/>
-    <right_click_to_clear caption="Kliknite pravým, ak chcete vymazať"/>
+    <right_click_to_clear caption="Kliknite pravým, ak zmazať"/>
     <insert caption="Vložiť"/>
     <close caption="Zavrieť"/>
     <search caption="Hľadať"/>
@@ -1184,7 +1197,8 @@ Kliknite na snímku, ak chcete upraviť jej štýl.</body>
     <paste caption="Vložiť"/>
     <select caption="Vybrať"/>
     <exit_program caption="Ukončiť program"/>
-    <export_to caption="Vyberte zložku pre export."/>
+    <export_to caption="Vyberte adresár kam exportovať."/>
+    		<style_file caption="Select a style file"/>
   </shared>
 
   <questions>
@@ -1198,10 +1212,19 @@ Kliknite na snímku, ak chcete upraviť jej štýl.</body>
     <long_operation caption="Toto môže trvať nejaký čas. Pokračovať?"/>
     <generic_save caption="Uložiť zmeny?"/>
     <generic_save_explanation caption="Ak neuložíte, zmeny budú stratené"/>
-    <set_changed caption="Aktuálny playlist bol zmenený. Chcete uložiť zmeny?"/>
-    <select_docs_folder caption="Vyberte zložku s piesňami a pozadiami">Kam sa majú ukladať súbory (piesne a playlisty)?</select_docs_folder>
+    <set_changed caption="Aktuálny scenár prezentácie bol zmenený. Chcete uložiť zmeny?"/>
+    <select_docs_folder caption="Vyberte adresár OpenSong dokumentov">Kam sa majú ukladať súbory (piesne, scenáre prezentácii, ...)?</select_docs_folder>
     <activity_log caption="Chcete piesne v prezentácii pridať do záznamu činností? Týka sa to aj piesní pridaných za chodu!"/>
     <import_presentation caption="Importovať obrázky prezentácie">Vyberte súbor prezentácie z ktorého chcete importovať snímky.</import_presentation>
+      <documents_folder_empty caption="Adresár z dokumentami nie je k dispozícii, alebo je prázdny. Prajete si skopírovať základné dokumenty z pôvodnej inštalácie?"/>
+    <songs_folder_empty caption="Adresár s piesňami je prázdny. Prajete si skopírovať základné piesne z inštalátora do tohoto adresára?"/>
+    <sets_folder_empty caption="Adresár so scenármi prezentácii je prázdny. Prajete si skopírovať základné scenáre prezentácii z inštalátora do tohoto adresára?"/>
+    <settings_folder_empty caption="Adresár nastavení je prázdny. Prajete si skopírovať základné nastavenia z inštalátora do tohoto adresára?"/>
+    <backgrounds_folder_empty caption="Adresár s pozadiami je prázdny. Prajete si skopírovať základné pozadia z inštalátora do tohoto adresára?"/>
+    <no_songs_folder caption="Nedá sa nájsť adresár s piesňami, prajete si vytvoriť tento adresár?"/>
+    <no_sets_folder caption="Nedá sa nájsť adresár so scenármi prezentácii, prajete si vytvoriť tento adresár?"/>
+    <no_folder caption="Nedá sa nájsť adresár '%1', prajete si vytvoriť tento adresár?"/>
+
   </questions>
 
   <about>
@@ -1209,31 +1232,31 @@ Kliknite na snímku, ak chcete upraviť jej štýl.</body>
     <copyright>Copyright</copyright>
     <gpl>Tento softvér je uvoľnený pod licenciou GPL.</gpl>
     <web>http://www.opensong.org, http://www.opensong.cz</web>
-    <translating>Ak chcete preložiť OpenSong, skopírujte súbor 'English' do zložky 'OpenSong Languages' a premenujte na názov nového jazyka. Preložte všetko v tomto súbore okrem tagov a názvov atribútov. Potom pošlite nový súbor na opensong-translate@lists.sourceforge.net , alebo pridať do 'Patches' Tracker na stránke projektu OpenSong pri zdroji Forge a my ho zahrnieme do oficiálneho vydania.</translating>
-    <created_with_opensong>Vytvorené pomocou programu OpenSong</created_with_opensong>
+    <translating>Ak chcete preložiť OpenSong, skopírujte súbor 'English' do adresára 'OpenSong Languages' a premenujte na názov nového jazyka. Preložte všetko v tomto súbore okrem tagov a názvov atribútov. Potom pošlite nový súbor na opensong-translate@lists.sourceforge.net , alebo pridať do 'Patches Tracker' na stránke projektu OpenSong na www.SourceForge.net a my ho zahrnieme do oficiálneho vydania.</translating>
+    <created_with_opensong>Vytvorené pomocou slobodného programu OpenSong</created_with_opensong>
     <sources>OpenSong obsahuje zdrojové kódy z:
 StringUtils (http://www.strout.net/info/coding/rb/)
 HTMLEntityEncode (http://sourceforge.jp/project/php-i18n/)
 REALbasic Examples (http://www.declaresub.com/Articles/HowDoI.html)
 iDeclare (http://www.declaresub.com/iDeclare
 SmartSplitter by Harry Hooie (http://www.harryhooie.com/source/)
-Obrázek PuffyClouds1.jpg v zložke s pozadiami je copyright FreeStockPhotos.com</sources>
+Autorské práva na obrázok PuffyClouds1.jpg v adresári s pozadiami vlastní FreeStockPhotos.com</sources>
   </about>
 
   <folderdb_errors>
-    <error code="1">Zložka '%1' už existuje.</error>
-    <error code="2">Nemôžem vytvoriť zložku '%1'.</error>
+    <error code="1">Adresár '%1' už existuje.</error>
+    <error code="2">Nemôžem vytvoriť adresár '%1'.</error>
     <error code="3">Súbor '%1' už existuje.</error>
     <error code="4">Nemôžem nájsť cestu k novému súboru '%1'.</error>
-    <error code="5">Nemôžem zapisovať do hlavnej zložky '%1'.</error>
-    <error code="6">Nemôžem nájsť zložku '%1'.</error>
-    <error code="7">Nemôžem zmazať zložku '%1'.</error>
+    <error code="5">Nemôžem zapisovať do hlavného adresára '%1'.</error>
+    <error code="6">Nemôžem nájsť adresár '%1'.</error>
+    <error code="7">Nemôžem zmazať adresár '%1'.</error>
     <error code="8">Nemôžem nájsť súbor '%1'.</error>
     <error code="9">Nemôžem zmazať súbor '%1'.</error>
     <error code="10">Nemôžem premenovať súbor '%2'.</error>
-    <error code="11">Zložka '%1' nie je prázdna.</error>
+    <error code="11">Adresár '%1' nie je prázdny.</error>
     <error code="12">Nemôžem presunúť súbor '%1' do '%2'.</error>
-    <error code="13">Súbor '%1' už existuje v zložke '%2'.</error>
+    <error code="13">Súbor '%1' už existuje v adresári '%2'.</error>
   </folderdb_errors>
 
   <errors>
@@ -1253,19 +1276,22 @@ Obrázek PuffyClouds1.jpg v zložke s pozadiami je copyright FreeStockPhotos.com
     <rename_error>Nemôžem premenovať súbor.</rename_error>
     <general1>In '%1': Neznáma chyba</general1>
     <general2>In '%1': '%2'</general2>
-    <folder_error>Interná chyba so zložkou. Kontaktujte technickú podporu.</folder_error>
-    <create_backgrounds_folder>Nemôžem vytvoriť zložku pre pozadia: %1</create_backgrounds_folder>
-    <create_sets_folder>Nemôžem vytvoriť/upraviť zložku s playlistmi %1</create_sets_folder>
-    <create_settings_folder>Nemôžem vytvoriť zložku pre nastavenia: %1</create_settings_folder>
-    <create_songs_folder>Nemôžem vytvoriť zložku s piesňami: %1</create_songs_folder>
-    <no_backgrounds_folder>Nemôžem nájsť štandardnú zložku pre pozadia: %1, alebo je prázdna</no_backgrounds_folder>
-    <no_defaults_folder>Nemôžem nájsť zložku s predvoľbami: %1, alebo je prázdna</no_defaults_folder>
-    <no_scripture_folder>Nemôžem nájsť zložku s Bibliami: %1, alebo je prázdna</no_scripture_folder>
-    <no_sets_folder>Nemôžem nájsť štandardnú zložku pre playlisty: %1, alebo je prázdna</no_sets_folder>
-    <no_settings_folder>Nemôžem nájsť štandardnú zložku pre nastavenia: %1, alebo je prázdna</no_settings_folder>
-    <no_songs_folder>Nemôžem nájsť štandardnú zložku piesní: %1, alebo je prázdna</no_songs_folder>
-    <no_docs_folder>Nemôžem vytvoriť/nájsť zložku pre dokumenty: %1</no_docs_folder>
-    <docs_folder>Zložka pre dokumenty nemôže byť podzložkou 'OpenSong Defaults'
+    <folder_error>Interná chyba s adresárom. Kontaktujte technickú podporu.</folder_error>
+    <create_backgrounds_folder>Nemôžem vytvoriť adresár pre pozadia: %1</create_backgrounds_folder>
+    <create_sets_folder>Nemôžem vytvoriť/upraviť adresár so scenármi prezentácii %1</create_sets_folder>
+    <create_settings_folder>Nemôžem vytvoriť adresár pre nastavenia: %1</create_settings_folder>
+    <load_default_settings>OpenSong sa pokúsi nahrať základné nastavenia.</load_default_settings>
+    <create_songs_folder>Nemôžem vytvoriť adresár s piesňami: %1</create_songs_folder>
+    <copy_default_songs>Piesne sa nedajú skopírovať do adresára %1. Prosím presvedčte sa či máte práva na zapisovanie do tohoto adresára.</copy_default_songs>
+    <no_backgrounds_folder>Nemôžem nájsť štandardný adresár pre pozadia: %1, alebo je prázdny</no_backgrounds_folder>
+    <no_defaults_folder>Nemôžem nájsť adresár s predvoľbami: %1, alebo je prázdny</no_defaults_folder>
+    <no_scripture_folder>Nemôžem nájsť adresár s Bibliami: %1, alebo je prázdny</no_scripture_folder>
+    <load_bible>Nedá sa nahrať predvolená Biblia: '%1'. OpenSong sa pokúsi otvoriť inú dostupnú Bibliu.</load_bible>
+    <no_sets_folder>Nemôžem nájsť štandardný adresár pre scenáre prezentácii: %1, alebo je prázdny</no_sets_folder>
+    <no_settings_folder>Nemôžem nájsť štandardný adresár pre nastavenia: %1, alebo je prázdny</no_settings_folder>
+    <no_songs_folder>Nemôžem nájsť štandardný adresár piesní: %1, alebo je prázdny</no_songs_folder>
+    <no_docs_folder>Nemôžem vytvoriť/nájsť adresár pre dokumenty: %1</no_docs_folder>
+    <docs_folder>Adresár pre dokumenty nemôže byť podadresárom 'OpenSong Defaults'
 Dočasne mením na: %1
 Prosím, zmeňte svoje nastavenia.</docs_folder>
     <fileutils>
@@ -1279,8 +1305,9 @@ Prosím, zmeňte svoje nastavenia.</docs_folder>
        <notenoughmemory>Bola prekročená pamäť pri prístupe k súboru %1
 Reštartujte OpenSong a skúste znova.</notenoughmemory>
        <unknownerror>Neznáma chyba pri prístupe k %1</unknownerror>
-       <notaregularfile>Očakávam, že %1 bude súbor, nie zložka.</notaregularfile>
-       <notafolder>Očakávam, že %1 bude zložka, nie súbor.</notafolder>
+       <notaregularfile>Bolo očakávané, že %1 bude súbor, nie adresár.</notaregularfile>
+       <notafolder>Bolo očakávané, že %1 bude adresár, nie súbor.</notafolder>
+       	   <temporaryfailed>Vytvorenie dočasného súboru %1 zlyhalo.</temporaryfailed>
     </fileutils>
     <cclinotavailable>Stránky CCLI sa významne zmenili.
 To postihlo funkciu Import, než sa prispôsobíme.
@@ -1322,6 +1349,7 @@ OpenSong sa týmto ospravedlňuje za problémy.
       <save>Chyba pri ukladaní aktualizovaného súboru '%1.'</save>
     </errors>
 
+    <load_successful>Úspešne nahraná Biblia: '%1'.</load_successful>
     <messages>
       <bnames>Do tohto prekladu treba pridať názvy kníh.
 &#10;Prosím, označte vhodný jazyk pre názvy.</bnames>
@@ -1340,13 +1368,13 @@ OpenSong sa týmto ospravedlňuje za problémy.
   </open_titles>
 
   <hotkeys>
-  	<ACTION_FIRST_SLIDE_OF_SECTION>Choď na prvú snímku v oddiele</ACTION_FIRST_SLIDE_OF_SECTION>
-  	<ACTION_NEXT_SLIDE>Choď na ďalšiu snímku v playliste</ACTION_NEXT_SLIDE>
-  	<ACTION_PREV_SLIDE>Choď na predchádzajúcu snímku v playliste</ACTION_PREV_SLIDE>
-  	<ACTION_FIRST_SLIDE>Choď na prvú snímku v playliste</ACTION_FIRST_SLIDE>
-  	<ACTION_LAST_SLIDE>Choď na poslednú snímku v playliste</ACTION_LAST_SLIDE>
-  	<ACTION_NEXT_SECTION>Choď na ďalší oddiel v playliste</ACTION_NEXT_SECTION>
-  	<ACTION_PREV_SECTION>Choď na začiatok aktuálneho alebo predchádzajúceho playlistu.</ACTION_PREV_SECTION>
+  	<ACTION_FIRST_SLIDE_OF_SECTION>Choď na prvú snímku v položke scenára</ACTION_FIRST_SLIDE_OF_SECTION>
+  	<ACTION_NEXT_SLIDE>Choď na ďalšiu snímku v scenári</ACTION_NEXT_SLIDE>
+  	<ACTION_PREV_SLIDE>Choď na predchádzajúcu snímku v scenári</ACTION_PREV_SLIDE>
+  	<ACTION_FIRST_SLIDE>Choď na prvú snímku v scenári</ACTION_FIRST_SLIDE>
+  	<ACTION_LAST_SLIDE>Choď na poslednú snímku v scenári</ACTION_LAST_SLIDE>
+  	<ACTION_NEXT_SECTION>Choď na ďalšiu položku v scenári</ACTION_NEXT_SECTION>
+  	<ACTION_PREV_SECTION>Choď na začiatok aktuálneho alebo predchádzajúceho scenára.</ACTION_PREV_SECTION>
  	<ACTION_VERSE>Choď na ďalšiu slohu</ACTION_VERSE>
  	<ACTION_BRIDGE>Choď na prechod</ACTION_BRIDGE>
  	<ACTION_CHORUS>Choď na refrén</ACTION_CHORUS>
@@ -1364,7 +1392,7 @@ OpenSong sa týmto ospravedlňuje za problémy.
  </hotkeys>
 
   <progress_status>
-    <folder>Ukladám zložky do vyrovnávacej pamäti %1</folder>
+    <folder>Ukladám adresár do vyrovnávacej pamäte %1</folder>
     <lead_sheets>Vytváram notové listy</lead_sheets>
     <process_themes>Spracúvam témy</process_themes>
     <process_songs>Spracúvam piesne</process_songs>
@@ -1374,6 +1402,27 @@ OpenSong sa týmto ospravedlňuje za problémy.
     <load_externals>Nahrávam externé formuláre</load_externals>
     <pass1>Triedim, 1. prechod</pass1>
     <pass2>Triedim, 2. prechod</pass2>
+    <detect_presentation_hosts>Zisťovanie dostupných prezentačných aplikácii</detect_presentation_hosts>    
   </progress_status>
-
+				<export_options title="Nastavenia exportu do HTML">
+					<handling caption="Umiestnenie CSS štýlu stránky">
+						<link caption="Adresa súboru štýlu stránky"/>
+						<embed caption="Vložiť štýl do exportovaného súboru"/>
+					</handling>
+					<options caption="Nastavenie CSS štýlu stránky">
+						<default caption="Použiť špecifikovaný štýl stránky"/>
+						<print caption="Použiť štýl stránky založený na nastaveniach tlače"/>
+					</options>
+					<export caption="Mnohonásobný export">
+						<single caption="Jeden súbor pre všetky piesne"/>
+						<unique caption="Jedinečný súbor pre všetky piesne"/>
+					</export>
+					<cssfile caption="Štýl stránky">link(shared/style_file/@caption)</cssfile>
+					<outdir caption="Výstupný adresár">link(shared/export_to/@caption)</outdir>
+					<outfile>Výstupný súbor</outfile>
+					<cancel caption="link(shared/cancel/@caption)"/>
+					<ok caption="link(shared/ok/@caption)"/>
+					<nofile>(Žiadny)</nofile>
+					<filter_css>Cascading Style Sheet</filter_css>
+				</export_options>
 </language>

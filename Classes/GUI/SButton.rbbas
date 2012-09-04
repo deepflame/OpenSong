@@ -39,7 +39,11 @@ Inherits Canvas
 		    // Windows & Linux open in MouseUp
 		    #If TargetMacOS
 		      If Popup <> Nil Then
-		        Popup.Open
+		        Dim selectedItem As MenuItem
+		        selectedItem = Popup.PopUp
+		        If selectedItem <> Nil Then
+		          MenuItem = selectedItem.Text
+		        End If
 		      End If
 		    #Endif
 		    Return True
@@ -71,7 +75,11 @@ Inherits Canvas
 		  // does it on mouse down.
 		  #if Not TargetMacOS
 		    If Popup <> Nil Then
-		      Popup.Open
+		      Dim selectedItem As MenuItem
+		      selectedItem = Popup.PopUp
+		      If selectedItem <> Nil Then
+		        MenuItem = selectedItem.Text
+		      End If
 		    End If
 		  #endif
 		  IsMouseDown = False
@@ -191,7 +199,8 @@ Inherits Canvas
 		  
 		  '++JRC Workaround for RB 2007 issue where UTF-8 strings are
 		  'improperly encoded in ContextualMenus (bug #1829317)
-		  Popup.AddRow str
+		  'Popup.AddRow str
+		  Popup.Append New MenuItem(str)
 		  Popup.GoodStrings.Append str
 		  
 		End Sub
@@ -204,7 +213,7 @@ Inherits Canvas
 		    Popup.Parent = Me
 		  End If
 		  
-		  Popup.AddSeparator
+		  Popup.Append New MenuItem(popup.TextSeparator)
 		End Sub
 	#tag EndMethod
 
